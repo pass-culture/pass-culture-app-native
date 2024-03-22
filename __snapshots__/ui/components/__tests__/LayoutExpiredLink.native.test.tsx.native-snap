@@ -250,40 +250,52 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          accessibilityLabel="Nouvelle fenêtre"
-          height={20}
-          testID="button-icon"
-          width={20}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            accessibilityLabel="Nouvelle fenêtre"
+            height={20}
+            testID="button-icon-left"
+            width={20}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Consulter l’article d’aide
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          [
-            {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 8,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Consulter l’article d’aide
-      </Text>
     </View>
     <View
       accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
@@ -338,39 +350,51 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          height={20}
-          testID="button-icon"
-          width={20}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            testID="button-icon-left"
+            width={20}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Contacter le support
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          [
-            {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 8,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Contacter le support
-      </Text>
     </View>
     <View
       numberOfSpaces={30}
@@ -457,24 +481,35 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
         testID="Renvoyer l’email"
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+        <View
           style={
             [
               {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
-          Renvoyer l’email
-        </Text>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 0,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Renvoyer l’email
+          </Text>
+        </View>
       </View>
       <View
         numberOfSpaces={4}
@@ -539,39 +574,51 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           style={
             [
               {
-                "flexShrink": 0,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <View
-            height={20}
-            testID="button-icon"
-            width={20}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              height={20}
+              testID="button-icon-left"
+              width={20}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
           </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 8,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Retourner à l’accueil
+          </Text>
         </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 8,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Retourner à l’accueil
-        </Text>
       </View>
     </View>
     <View

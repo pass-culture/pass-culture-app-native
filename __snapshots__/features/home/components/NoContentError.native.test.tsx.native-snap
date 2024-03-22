@@ -223,39 +223,51 @@ exports[`NoContentError should render correctly 1`] = `
           style={
             [
               {
-                "flexShrink": 0,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <View
-            height={24}
-            testID="button-icon"
-            width={24}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              height={24}
+              testID="button-icon-left"
+              width={24}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
           </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 8,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Rechercher une offre
+          </Text>
         </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 8,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Rechercher une offre
-        </Text>
       </View>
     </View>
     <View

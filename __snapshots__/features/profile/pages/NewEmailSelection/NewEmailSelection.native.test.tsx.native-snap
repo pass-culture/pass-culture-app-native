@@ -464,24 +464,35 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
           }
           testID="Modifier mon adresse e-mail"
         >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
+          <View
             style={
               [
                 {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginLeft": 0,
-                  "maxWidth": "100%",
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            Modifier mon adresse e-mail
-          </Text>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 0,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Modifier mon adresse e-mail
+            </Text>
+          </View>
         </View>
       </View>
     </View>

@@ -64,24 +64,35 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
       }
       testID="Aller à l’écran suivant"
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        Passer
-      </Text>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Passer
+        </Text>
+      </View>
     </View>
   </View>,
   <View
@@ -253,24 +264,35 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
         }
         testID="Utiliser ma position"
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+        <View
           style={
             [
               {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
-          Utiliser ma position
-        </Text>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 0,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Utiliser ma position
+          </Text>
+        </View>
       </View>
     </View>
     <View

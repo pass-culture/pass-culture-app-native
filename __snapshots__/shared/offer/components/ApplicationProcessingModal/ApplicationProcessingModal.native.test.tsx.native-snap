@@ -409,24 +409,35 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
                 }
                 testID="Aller sur mon profil"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Aller sur mon profil
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Aller sur mon profil
+                  </Text>
+                </View>
               </View>
               <View
                 numberOfSpaces={4}
@@ -491,39 +502,51 @@ exports[`<ApplicationProcessingModal /> should match previous snapshot 1`] = `
                   style={
                     [
                       {
-                        "flexShrink": 0,
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    height={20}
-                    testID="button-icon"
-                    width={20}
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
                   >
-                    <Text>
-                      button-icon-SVG-Mock
-                    </Text>
+                    <View
+                      height={20}
+                      testID="button-icon-left"
+                      width={20}
+                    >
+                      <Text>
+                        button-icon-left-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#eb0055",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 8,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Mettre en favori
+                  </Text>
                 </View>
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#eb0055",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 8,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                >
-                  Mettre en favori
-                </Text>
               </View>
             </View>
           </View>

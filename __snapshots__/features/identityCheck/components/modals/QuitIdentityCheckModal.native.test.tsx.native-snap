@@ -249,24 +249,35 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
           }
           testID="Continuer la vérification"
         >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
+          <View
             style={
               [
                 {
-                  "color": "#eb0055",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginLeft": 0,
-                  "maxWidth": "100%",
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            Continuer la vérification
-          </Text>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 0,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Continuer la vérification
+            </Text>
+          </View>
         </View>
         <View
           numberOfSpaces={4}
@@ -331,40 +342,52 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
             style={
               [
                 {
-                  "flexShrink": 0,
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
             <View
-              fill="#ffffff"
-              height={20}
-              testID="button-icon"
-              width={20}
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "flexShrink": 0,
+                  },
+                ]
+              }
             >
-              <Text>
-                button-icon-SVG-Mock
-              </Text>
+              <View
+                fill="#ffffff"
+                height={20}
+                testID="button-icon-left"
+                width={20}
+              >
+                <Text>
+                  button-icon-left-SVG-Mock
+                </Text>
+              </View>
             </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 8,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Abandonner la vérification
+            </Text>
           </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginLeft": 8,
-                  "maxWidth": "100%",
-                },
-              ]
-            }
-          >
-            Abandonner la vérification
-          </Text>
         </View>
       </View>
       <View

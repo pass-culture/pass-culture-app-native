@@ -273,39 +273,51 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 [
                   {
-                    "flexShrink": 0,
+                    "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
-                height={20}
-                testID="button-icon"
-                width={20}
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
               >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
+                <View
+                  height={20}
+                  testID="button-icon-left"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
               </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 8,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Copier l’adresse
+              </Text>
             </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 8,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Copier l’adresse
-            </Text>
           </View>
           <View
             numberOfSpaces={3}
@@ -381,40 +393,52 @@ exports[`<Venue /> should match snapshot 1`] = `
                 style={
                   [
                     {
-                      "flexShrink": 0,
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
                 <View
-                  accessibilityLabel="Nouvelle fenêtre"
-                  height={20}
-                  testID="button-icon"
-                  width={20}
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
+                  <View
+                    accessibilityLabel="Nouvelle fenêtre"
+                    height={20}
+                    testID="button-icon-left"
+                    width={20}
+                  >
+                    <Text>
+                      button-icon-left-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 8,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Voir l’itinéraire
+                </Text>
               </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 8,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Voir l’itinéraire
-              </Text>
             </View>
           </View>
         </View>
@@ -3715,40 +3739,52 @@ d’options
           style={
             [
               {
-                "flexShrink": 0,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
         >
           <View
-            fill="none"
-            height={24}
-            testID="button-icon"
-            width={24}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
+            <View
+              fill="none"
+              height={24}
+              testID="button-icon-left"
+              width={24}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
           </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 8,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Rechercher une offre
+          </Text>
         </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 8,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Rechercher une offre
-        </Text>
       </View>
       <View
         numberOfSpaces={6}

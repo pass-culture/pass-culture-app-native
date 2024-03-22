@@ -137,24 +137,35 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is active 1`] = 
     }
     testID="Confirmer la demande"
   >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
+    <View
       style={
         [
           {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
-      Confirmer la demande
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Confirmer la demande
+      </Text>
+    </View>
   </View>
   <View
     numberOfSpaces={4}
@@ -219,40 +230,52 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is active 1`] = 
       style={
         [
           {
-            "flexShrink": 0,
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
-        fill="#161617"
-        height={20}
-        testID="button-icon"
-        width={20}
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "flexShrink": 0,
+            },
+          ]
+        }
       >
-        <Text>
-          button-icon-SVG-Mock
-        </Text>
+        <View
+          fill="#161617"
+          height={20}
+          testID="button-icon-left"
+          width={20}
+        >
+          <Text>
+            button-icon-left-SVG-Mock
+          </Text>
+        </View>
       </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Annuler
+      </Text>
     </View>
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 8,
-            "maxWidth": "100%",
-          },
-        ]
-      }
-    >
-      Annuler
-    </Text>
   </View>
   <View
     flex={0.3}
@@ -406,24 +429,35 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is disabled 1`] 
     }
     testID="Confirmer la demande"
   >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
+    <View
       style={
         [
           {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
-      Confirmer la demande
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Confirmer la demande
+      </Text>
+    </View>
   </View>
   <View
     numberOfSpaces={4}
@@ -488,40 +522,52 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is disabled 1`] 
       style={
         [
           {
-            "flexShrink": 0,
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
-        fill="#161617"
-        height={20}
-        testID="button-icon"
-        width={20}
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "flexShrink": 0,
+            },
+          ]
+        }
       >
-        <Text>
-          button-icon-SVG-Mock
-        </Text>
+        <View
+          fill="#161617"
+          height={20}
+          testID="button-icon-left"
+          width={20}
+        >
+          <Text>
+            button-icon-left-SVG-Mock
+          </Text>
+        </View>
       </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Annuler
+      </Text>
     </View>
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 8,
-            "maxWidth": "100%",
-          },
-        ]
-      }
-    >
-      Annuler
-    </Text>
   </View>
   <View
     flex={0.3}

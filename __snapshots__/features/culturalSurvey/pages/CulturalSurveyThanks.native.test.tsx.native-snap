@@ -185,24 +185,35 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
       }
       testID="Découvrir le catalogue"
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
         style={
           [
             {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        Découvrir le catalogue
-      </Text>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Découvrir le catalogue
+        </Text>
+      </View>
     </View>
   </View>
   <View

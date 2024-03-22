@@ -343,24 +343,35 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
     }
     testID="Modifier mon mot de passe"
   >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
+    <View
       style={
         [
           {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
-      Modifier mon mot de passe
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Modifier mon mot de passe
+      </Text>
+    </View>
   </View>
   <View
     numberOfSpaces={4}
@@ -424,24 +435,35 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
     }
     testID="Suspendre mon compte"
   >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
+    <View
       style={
         [
           {
-            "color": "#eb0055",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
-      Suspendre mon compte
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#eb0055",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Suspendre mon compte
+      </Text>
+    </View>
   </View>
   <View
     numberOfSpaces={2}
@@ -506,40 +528,52 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
       style={
         [
           {
-            "flexShrink": 0,
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
-        fill="#161617"
-        height={20}
-        testID="button-icon"
-        width={20}
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "flexShrink": 0,
+            },
+          ]
+        }
       >
-        <Text>
-          button-icon-SVG-Mock
-        </Text>
+        <View
+          fill="#161617"
+          height={20}
+          testID="button-icon-left"
+          width={20}
+        >
+          <Text>
+            button-icon-left-SVG-Mock
+          </Text>
+        </View>
       </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Ne pas sécuriser mon compte
+      </Text>
     </View>
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 8,
-            "maxWidth": "100%",
-          },
-        ]
-      }
-    >
-      Ne pas sécuriser mon compte
-    </Text>
   </View>
   <View
     flex={1.5}
@@ -899,24 +933,35 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
     }
     testID="Suspendre mon compte"
   >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
+    <View
       style={
         [
           {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
-      Suspendre mon compte
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Suspendre mon compte
+      </Text>
+    </View>
   </View>
   <View
     numberOfSpaces={2}
@@ -981,40 +1026,52 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
       style={
         [
           {
-            "flexShrink": 0,
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
-        fill="#161617"
-        height={20}
-        testID="button-icon"
-        width={20}
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "flexShrink": 0,
+            },
+          ]
+        }
       >
-        <Text>
-          button-icon-SVG-Mock
-        </Text>
+        <View
+          fill="#161617"
+          height={20}
+          testID="button-icon-left"
+          width={20}
+        >
+          <Text>
+            button-icon-left-SVG-Mock
+          </Text>
+        </View>
       </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Ne pas sécuriser mon compte
+      </Text>
     </View>
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 8,
-            "maxWidth": "100%",
-          },
-        ]
-      }
-    >
-      Ne pas sécuriser mon compte
-    </Text>
   </View>
   <View
     flex={1.5}
@@ -1374,24 +1431,35 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
     }
     testID="Modifier mon mot de passe"
   >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
+    <View
       style={
         [
           {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
-      Modifier mon mot de passe
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Modifier mon mot de passe
+      </Text>
+    </View>
   </View>
   <View
     numberOfSpaces={4}
@@ -1455,24 +1523,35 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
     }
     testID="Suspendre mon compte"
   >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
+    <View
       style={
         [
           {
-            "color": "#eb0055",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
-      Suspendre mon compte
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#eb0055",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Suspendre mon compte
+      </Text>
+    </View>
   </View>
   <View
     numberOfSpaces={2}
@@ -1537,40 +1616,52 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
       style={
         [
           {
-            "flexShrink": 0,
+            "alignItems": "center",
+            "flexDirection": "row",
           },
         ]
       }
     >
       <View
-        fill="#161617"
-        height={20}
-        testID="button-icon"
-        width={20}
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "flexShrink": 0,
+            },
+          ]
+        }
       >
-        <Text>
-          button-icon-SVG-Mock
-        </Text>
+        <View
+          fill="#161617"
+          height={20}
+          testID="button-icon-left"
+          width={20}
+        >
+          <Text>
+            button-icon-left-SVG-Mock
+          </Text>
+        </View>
       </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 8,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        Ne pas sécuriser mon compte
+      </Text>
     </View>
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 8,
-            "maxWidth": "100%",
-          },
-        ]
-      }
-    >
-      Ne pas sécuriser mon compte
-    </Text>
   </View>
   <View
     flex={1.5}

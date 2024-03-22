@@ -69,24 +69,35 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
       }
       testID="CheatMenu"
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        CheatMenu
-      </Text>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          CheatMenu
+        </Text>
+      </View>
     </View>
   </View>,
   <View
@@ -533,24 +544,35 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
       }
       testID="CheatMenu"
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        CheatMenu
-      </Text>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          CheatMenu
+        </Text>
+      </View>
     </View>
   </View>,
   <View
@@ -685,24 +707,35 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
       }
       testID="CheatMenu"
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
         style={
           [
             {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
-        CheatMenu
-      </Text>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          CheatMenu
+        </Text>
+      </View>
     </View>
   </View>,
   <View

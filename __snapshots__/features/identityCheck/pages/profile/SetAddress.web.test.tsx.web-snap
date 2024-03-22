@@ -289,10 +289,14 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 type="submit"
               >
                 <div
-                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
-                  dir="ltr"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                 >
-                  Continuer
+                  <div
+                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+                    dir="ltr"
+                  >
+                    Continuer
+                  </div>
                 </div>
               </button>
               <div
@@ -592,10 +596,14 @@ exports[`<SetAddress/> should render correctly 1`] = `
               type="submit"
             >
               <div
-                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
-                dir="ltr"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
-                Continuer
+                <div
+                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+                  dir="ltr"
+                >
+                  Continuer
+                </div>
               </div>
             </button>
             <div

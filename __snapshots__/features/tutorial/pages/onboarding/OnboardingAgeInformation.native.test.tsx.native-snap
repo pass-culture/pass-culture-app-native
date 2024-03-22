@@ -1543,39 +1543,51 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          height={20}
-          testID="button-icon"
-          width={20}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            testID="button-icon-left"
+            width={20}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Plus tard
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 8,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Plus tard
-      </Text>
     </View>
   </View>,
   <View
@@ -3122,39 +3134,51 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          height={20}
-          testID="button-icon"
-          width={20}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            testID="button-icon-left"
+            width={20}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Plus tard
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 8,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Plus tard
-      </Text>
     </View>
   </View>,
   <View
@@ -4688,39 +4712,51 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          height={20}
-          testID="button-icon"
-          width={20}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            testID="button-icon-left"
+            width={20}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Plus tard
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 8,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Plus tard
-      </Text>
     </View>
   </View>,
   <View
@@ -6095,39 +6131,51 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
         style={
           [
             {
-              "flexShrink": 0,
+              "alignItems": "center",
+              "flexDirection": "row",
             },
           ]
         }
       >
         <View
-          height={20}
-          testID="button-icon"
-          width={20}
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
+          <View
+            height={20}
+            testID="button-icon-left"
+            width={20}
+          >
+            <Text>
+              button-icon-left-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Plus tard
+        </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 8,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Plus tard
-      </Text>
     </View>
   </View>,
   <View

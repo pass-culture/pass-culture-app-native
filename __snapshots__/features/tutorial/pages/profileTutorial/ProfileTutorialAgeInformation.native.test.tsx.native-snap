@@ -2516,40 +2516,52 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               style={
                 [
                   {
-                    "flexShrink": 0,
+                    "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={16}
-                testID="button-icon"
-                width={16}
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
               >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={16}
+                  testID="button-icon-left"
+                  width={16}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
               </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#320096",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                      "marginLeft": 4,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Donner mon avis
+              </Text>
             </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#320096",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                    "marginLeft": 4,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Donner mon avis
-            </Text>
           </View>
         </View>
       </View>
@@ -5566,40 +5578,52 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               style={
                 [
                   {
-                    "flexShrink": 0,
+                    "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={16}
-                testID="button-icon"
-                width={16}
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
               >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={16}
+                  testID="button-icon-left"
+                  width={16}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
               </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#320096",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                      "marginLeft": 4,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Donner mon avis
+              </Text>
             </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#320096",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                    "marginLeft": 4,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Donner mon avis
-            </Text>
           </View>
         </View>
       </View>

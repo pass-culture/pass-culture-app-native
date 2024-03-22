@@ -1224,24 +1224,35 @@ exports[`<Search/> should render SearchResults 1`] = `
             }
             testID="Modifier mes filtres"
           >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
+            <View
               style={
                 [
                   {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 0,
-                    "maxWidth": "100%",
+                    "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
-              Modifier mes filtres
-            </Text>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Modifier mes filtres
+              </Text>
+            </View>
           </View>
         </View>
       </View>

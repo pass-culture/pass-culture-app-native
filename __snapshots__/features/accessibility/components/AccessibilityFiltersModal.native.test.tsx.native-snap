@@ -868,39 +868,51 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
                   style={
                     [
                       {
-                        "flexShrink": 0,
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    height={16}
-                    testID="button-icon"
-                    width={16}
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
                   >
-                    <Text>
-                      button-icon-SVG-Mock
-                    </Text>
+                    <View
+                      height={16}
+                      testID="button-icon-left"
+                      width={16}
+                    >
+                      <Text>
+                        button-icon-left-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 4,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Réinitialiser
+                  </Text>
                 </View>
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "marginLeft": 4,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                >
-                  Réinitialiser
-                </Text>
               </View>
               <View
                 numberOfSpaces={4}
@@ -962,24 +974,35 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
                 }
                 testID="Rechercher"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Rechercher
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Rechercher
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -1869,39 +1892,51 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
                   style={
                     [
                       {
-                        "flexShrink": 0,
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    height={16}
-                    testID="button-icon"
-                    width={16}
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
                   >
-                    <Text>
-                      button-icon-SVG-Mock
-                    </Text>
+                    <View
+                      height={16}
+                      testID="button-icon-left"
+                      width={16}
+                    >
+                      <Text>
+                        button-icon-left-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 4,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Réinitialiser
+                  </Text>
                 </View>
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "marginLeft": 4,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                >
-                  Réinitialiser
-                </Text>
               </View>
               <View
                 numberOfSpaces={4}
@@ -1963,24 +1998,35 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
                 }
                 testID="Rechercher"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Rechercher
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Rechercher
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -2870,39 +2916,51 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   style={
                     [
                       {
-                        "flexShrink": 0,
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    height={16}
-                    testID="button-icon"
-                    width={16}
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
                   >
-                    <Text>
-                      button-icon-SVG-Mock
-                    </Text>
+                    <View
+                      height={16}
+                      testID="button-icon-left"
+                      width={16}
+                    >
+                      <Text>
+                        button-icon-left-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 4,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Réinitialiser
+                  </Text>
                 </View>
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "marginLeft": 4,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                >
-                  Réinitialiser
-                </Text>
               </View>
               <View
                 numberOfSpaces={4}
@@ -2964,24 +3022,35 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                 }
                 testID="Rechercher"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Rechercher
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Rechercher
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -3871,39 +3940,51 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
                   style={
                     [
                       {
-                        "flexShrink": 0,
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    height={16}
-                    testID="button-icon"
-                    width={16}
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
                   >
-                    <Text>
-                      button-icon-SVG-Mock
-                    </Text>
+                    <View
+                      height={16}
+                      testID="button-icon-left"
+                      width={16}
+                    >
+                      <Text>
+                        button-icon-left-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 4,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Réinitialiser
+                  </Text>
                 </View>
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "marginLeft": 4,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                >
-                  Réinitialiser
-                </Text>
               </View>
               <View
                 numberOfSpaces={4}
@@ -3965,24 +4046,35 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
                 }
                 testID="Rechercher"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Rechercher
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Rechercher
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -4881,39 +4973,51 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
                   style={
                     [
                       {
-                        "flexShrink": 0,
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
                   <View
-                    height={16}
-                    testID="button-icon"
-                    width={16}
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
                   >
-                    <Text>
-                      button-icon-SVG-Mock
-                    </Text>
+                    <View
+                      height={16}
+                      testID="button-icon-left"
+                      width={16}
+                    >
+                      <Text>
+                        button-icon-left-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginLeft": 4,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Réinitialiser
+                  </Text>
                 </View>
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "marginLeft": 4,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                >
-                  Réinitialiser
-                </Text>
               </View>
               <View
                 numberOfSpaces={4}
@@ -4975,24 +5079,35 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
                 }
                 testID="Rechercher"
               >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
+                <View
                   style={
                     [
                       {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Rechercher
-                </Text>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginLeft": 0,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Rechercher
+                  </Text>
+                </View>
               </View>
             </View>
           </View>

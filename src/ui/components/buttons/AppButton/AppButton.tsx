@@ -15,6 +15,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 const _AppButton = <T extends AppButtonProps>({
   icon: Icon,
+  iconPosition = 'left',
   title: Title,
   inline,
   disabled,
@@ -62,6 +63,7 @@ const _AppButton = <T extends AppButtonProps>({
         loadingIndicator={LoadingIndicator}
         isLoading={isLoading}
         icon={Icon}
+        iconPosition={iconPosition}
         title={Title}
         adjustsFontSizeToFit={adjustsFontSizeToFit}
         numberOfLines={numberOfLines}

@@ -651,39 +651,51 @@ exports[`<Login/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "flexShrink": 0,
+                    "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
-                height={20}
-                testID="button-icon"
-                width={20}
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
               >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
+                <View
+                  height={20}
+                  testID="button-icon-left"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
               </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 8,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Mot de passe oublié ?
+              </Text>
             </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 8,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Mot de passe oublié ?
-            </Text>
           </View>
         </View>
         <View
@@ -745,24 +757,35 @@ exports[`<Login/> should render correctly 1`] = `
           }
           testID="Se connecter"
         >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
+          <View
             style={
               [
                 {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginLeft": 0,
-                  "maxWidth": "100%",
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            Se connecter
-          </Text>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 0,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Se connecter
+            </Text>
+          </View>
         </View>
         <View
           numberOfSpaces={8}
@@ -1593,39 +1616,51 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               style={
                 [
                   {
-                    "flexShrink": 0,
+                    "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
-                height={20}
-                testID="button-icon"
-                width={20}
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
               >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
+                <View
+                  height={20}
+                  testID="button-icon-left"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
               </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 8,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Mot de passe oublié ?
+              </Text>
             </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 8,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Mot de passe oublié ?
-            </Text>
           </View>
         </View>
         <View
@@ -1687,24 +1722,35 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           }
           testID="Se connecter"
         >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
+          <View
             style={
               [
                 {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginLeft": 0,
-                  "maxWidth": "100%",
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            Se connecter
-          </Text>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 0,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Se connecter
+            </Text>
+          </View>
         </View>
         <View
           numberOfSpaces={4}
@@ -1839,39 +1885,51 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             style={
               [
                 {
-                  "flexShrink": 0,
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
             <View
-              height={20}
-              testID="button-icon"
-              width={20}
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "flexShrink": 0,
+                  },
+                ]
+              }
             >
-              <Text>
-                button-icon-SVG-Mock
-              </Text>
+              <View
+                height={20}
+                testID="button-icon-left"
+                width={20}
+              >
+                <Text>
+                  button-icon-left-SVG-Mock
+                </Text>
+              </View>
             </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 8,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Se connecter avec Google
+            </Text>
           </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginLeft": 8,
-                  "maxWidth": "100%",
-                },
-              ]
-            }
-          >
-            Se connecter avec Google
-          </Text>
         </View>
         <View
           numberOfSpaces={10}

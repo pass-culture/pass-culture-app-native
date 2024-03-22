@@ -1,17 +1,45 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { FakeDoorModal } from 'ui/components/modals/FakeDoorModal'
+import { useModal } from 'ui/components/modals/useModal'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
-  artists: string | undefined
+  artists: string
   numberOfLines?: number
+  shouldDisplayFakeDoor?: boolean
 }
 
-export function OfferArtists({ artists, numberOfLines = 2 }: Readonly<Props>) {
-  return artists ? (
+export const OfferArtists: FunctionComponent<Props> = ({
+  artists,
+  numberOfLines = 2,
+  shouldDisplayFakeDoor,
+}) => {
+  const { visible, showModal, hideModal } = useModal()
+  return shouldDisplayFakeDoor ? (
+    <FakeDoorContainer>
+      <Typo.ButtonTextNeutralInfo>de </Typo.ButtonTextNeutralInfo>
+      <ButtonTertiaryBlack
+        wording={artists}
+        icon={ArrowNext}
+        inline
+        buttonHeight="extraSmall"
+        accessibilityLabel={`Accéder à la page de ${artists}`}
+        iconPosition="right"
+        onPress={showModal}
+      />
+      <FakeDoorModal
+        visible={visible}
+        hideModal={hideModal}
+        surveyUrl="https://fr.wikipedia.org/wiki/FIEALD"
+      />
+    </FakeDoorContainer>
+  ) : (
     <ArtistsText
       allowFontScaling={false}
       numberOfLines={numberOfLines}
@@ -19,9 +47,14 @@ export function OfferArtists({ artists, numberOfLines = 2 }: Readonly<Props>) {
       {...accessibilityAndTestId(`Nom de l’artiste\u00a0: ${artists}`)}>
       de {artists}
     </ArtistsText>
-  ) : null
+  )
 }
 
 const ArtistsText = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
+
+const FakeDoorContainer = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+})

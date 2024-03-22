@@ -1948,24 +1948,35 @@ exports[`<SetStatus/> should render correctly 1`] = `
             }
             testID="Choisis ton statut"
           >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
+            <View
               style={
                 [
                   {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 0,
-                    "maxWidth": "100%",
+                    "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
-              Choisis ton statut
-            </Text>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 0,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Choisis ton statut
+              </Text>
+            </View>
           </View>
           <View
             customHeight={8}

@@ -619,39 +619,51 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 style={
                   [
                     {
-                      "flexShrink": 0,
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
                 <View
-                  height={16}
-                  testID="button-icon"
-                  width={16}
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
+                  <View
+                    height={16}
+                    testID="button-icon-left"
+                    width={16}
+                  >
+                    <Text>
+                      button-icon-left-SVG-Mock
+                    </Text>
+                  </View>
                 </View>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginLeft": 4,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Réinitialiser
+                </Text>
               </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                      "marginLeft": 4,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Réinitialiser
-              </Text>
             </View>
             <View
               numberOfSpaces={4}
@@ -713,24 +725,35 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
               }
               testID="Rechercher"
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
                 style={
                   [
                     {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 0,
-                      "maxWidth": "100%",
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Rechercher
-              </Text>
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginLeft": 0,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Rechercher
+                </Text>
+              </View>
             </View>
           </View>
         </View>
