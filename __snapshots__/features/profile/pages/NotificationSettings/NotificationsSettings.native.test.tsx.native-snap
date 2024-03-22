@@ -1918,7 +1918,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                     ]
                   }
                 >
-                  Cours et Ateliers
+                  Activités créatives
                 </Text>
               </Text>
             </View>
@@ -2000,7 +2000,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                       "userSelect": "auto",
                     }
                   }
-                  testID="Interrupteur Cours et Ateliers"
+                  testID="Interrupteur Activités créatives"
                 >
                   <View
                     active={false}
@@ -2078,7 +2078,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             }
             accessible={true}
             collapsable={false}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -4077,7 +4077,7 @@ exports[`NotificationSettings should render correctly when user is not logged in
                     ]
                   }
                 >
-                  Cours et Ateliers
+                  Activités créatives
                 </Text>
               </Text>
             </View>
@@ -4159,7 +4159,7 @@ exports[`NotificationSettings should render correctly when user is not logged in
                       "userSelect": "auto",
                     }
                   }
-                  testID="Interrupteur Cours et Ateliers"
+                  testID="Interrupteur Activités créatives"
                 >
                   <View
                     active={false}

@@ -5,41 +5,67 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
+import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
+import { hasUserChangedParameters } from 'features/profile/pages/NotificationSettings/helpers/hasUserChangedParameters'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
+import { mapSubscriptionThemeToName } from 'features/subscription/mapSubscriptionThemeToName'
 import { SubscriptionTheme, TOTAL_NUMBER_OF_THEME } from 'features/subscription/types'
+import { analytics } from 'libs/analytics'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
+import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type State = {
+export type NotificationsSettingsState = {
   allowEmails?: boolean
   allowPush?: boolean
   themePreferences: SubscriptionTheme[]
 }
 
 export const NotificationsSettings = () => {
-  const { isLoggedIn } = useAuthContext()
+  const { isLoggedIn, user } = useAuthContext()
+  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
-  const [state, dispatch] = useReducer(settingsReducer, {
-    allowEmails: undefined,
-    allowPush: undefined,
-    themePreferences: [],
-  })
+  const initialState = {
+    allowEmails: user?.subscriptions.marketingEmail,
+    allowPush: user?.subscriptions.marketingPush,
+    themePreferences:
+      (user?.subscriptions.subscribedThemes as unknown as SubscriptionTheme[]) || [],
+  }
+
+  const [state, dispatch] = useReducer(settingsReducer, initialState)
+
+  const hasUserChanged = !!user && hasUserChangedParameters(user, state)
 
   const updatePushPermissionFromSettings = (permission: PermissionStatus) => {
     if (permission === 'granted' && !state.allowPush) {
-      dispatch('push')
-    } else if (permission !== 'granted' && state.allowPush) dispatch('push')
+      dispatch({ type: 'push' })
+    } else if (permission !== 'granted' && state.allowPush) dispatch({ type: 'push' })
   }
 
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
+
+  const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
+    () => {
+      showSuccessSnackBar({
+        message: 'Tes modifications ont été enregistrées\u00a0!',
+      })
+      analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
+    },
+    () => {
+      showErrorSnackBar({
+        message: 'Une erreur est survenue',
+      })
+      dispatch({ type: 'reset', initialState })
+    }
+  )
 
   const areNotificationsEnabled = state.allowEmails || state.allowPush
 
@@ -62,9 +88,23 @@ export const NotificationsSettings = () => {
 
   const togglePush = () => {
     if (pushPermission === 'granted') {
-      dispatch('push')
+      dispatch({ type: 'push' })
     } else {
       showPushModal()
+    }
+  }
+
+  const isSaveButtonDisabled = !isLoggedIn || !hasUserChanged || isUpdatingProfile
+
+  const submitProfile = () => {
+    if (state.allowEmails !== undefined && state.allowPush !== undefined) {
+      updateProfile({
+        subscriptions: {
+          marketingEmail: state.allowEmails,
+          marketingPush: state.allowPush,
+          subscribedThemes: state.themePreferences,
+        },
+      })
     }
   }
 
@@ -90,7 +130,7 @@ export const NotificationsSettings = () => {
           <SectionWithSwitch
             title="Autoriser l’envoi d’e-mails"
             active={state.allowEmails}
-            toggle={() => dispatch('email')}
+            toggle={() => dispatch({ type: 'email' })}
             disabled={!isLoggedIn}
           />
           {!state.allowEmails && isLoggedIn ? (
@@ -126,24 +166,25 @@ export const NotificationsSettings = () => {
             active={
               areNotificationsEnabled && state.themePreferences.length === TOTAL_NUMBER_OF_THEME
             }
-            toggle={() => dispatch('allTheme')}
+            toggle={() => dispatch({ type: 'allTheme' })}
             disabled={areThemeTogglesDisabled}
           />
           <Spacer.Column numberOfSpaces={2} />
           {Object.values(SubscriptionTheme).map((theme) => (
             <SectionWithSwitch
               key={theme}
-              title={theme}
+              title={mapSubscriptionThemeToName[theme]}
               active={isThemeToggled(theme)}
               disabled={areThemeTogglesDisabled}
-              toggle={() => dispatch(theme)}
+              toggle={() => dispatch({ type: 'toggleTheme', theme })}
             />
           ))}
           <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary
             wording="Enregistrer"
             accessibilityLabel="Enregistrer les modifications"
-            disabled={!isLoggedIn}
+            onPress={submitProfile}
+            disabled={isSaveButtonDisabled}
           />
         </Form.Flex>
         <PushNotificationsModal
@@ -162,10 +203,13 @@ const Container = styled.View(({ theme }) => ({
   alignSelf: 'center',
 }))
 
-type ToggleActions = SubscriptionTheme | 'email' | 'push' | 'allTheme'
+type ToggleActions =
+  | { type: 'email' | 'push' | 'allTheme' }
+  | { type: 'toggleTheme'; theme: SubscriptionTheme }
+  | { type: 'reset'; initialState: NotificationsSettingsState }
 
-const settingsReducer = (state: State, toggle: ToggleActions) => {
-  switch (toggle) {
+const settingsReducer = (state: NotificationsSettingsState, action: ToggleActions) => {
+  switch (action.type) {
     case 'email':
       return {
         ...state,
@@ -184,12 +228,16 @@ const settingsReducer = (state: State, toggle: ToggleActions) => {
             ? []
             : Object.values(SubscriptionTheme),
       }
-    default:
+    case 'toggleTheme':
       return {
         ...state,
-        themePreferences: state.themePreferences.includes(toggle)
-          ? state.themePreferences.filter((t) => t !== toggle)
-          : [...state.themePreferences, toggle],
+        themePreferences: state.themePreferences.includes(action.theme)
+          ? state.themePreferences.filter((t) => t !== action.theme)
+          : [...state.themePreferences, action.theme],
       }
+    case 'reset':
+      return action.initialState
+    default:
+      return state
   }
 }
