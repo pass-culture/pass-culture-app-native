@@ -1,16 +1,32 @@
 import React from 'react'
 import { Linking } from 'react-native'
 
+import * as API from 'api/api'
+import { UserProfileResponse } from 'api/gen'
 import { IAuthContext, useAuthContext } from 'features/auth/context/AuthContext'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import * as usePushPermission from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { fireEvent, render, screen } from 'tests/utils'
+import { mockServer } from 'tests/mswServer'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { NotificationsSettings } from './NotificationsSettings'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+
+const postProfileSpy = jest.spyOn(API.api, 'postNativeV1Profile')
+
+const mockShowSuccessSnackBar = jest.fn()
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showSuccessSnackBar: mockShowSuccessSnackBar,
+    showErrorSnackBar: mockShowErrorSnackBar,
+  }),
+}))
 
 const baseAuthContext: IAuthContext = {
   isLoggedIn: true,
@@ -34,7 +50,7 @@ const usePushPermissionSpy = jest.spyOn(usePushPermission, 'usePushPermission').
 describe('NotificationSettings', () => {
   it('should render correctly when user is logged in', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     expect(screen).toMatchSnapshot()
   })
@@ -45,7 +61,7 @@ describe('NotificationSettings', () => {
       user: undefined,
       isLoggedIn: false,
     })
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     expect(screen).toMatchSnapshot()
   })
@@ -56,7 +72,7 @@ describe('NotificationSettings', () => {
       user: undefined,
       isLoggedIn: false,
     })
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     expect(screen.getByText('Enregistrer')).toBeDisabled()
   })
@@ -68,7 +84,7 @@ describe('NotificationSettings', () => {
       isLoggedIn: false,
     })
 
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     expect(screen.getByText('Enregistrer')).toBeDisabled()
   })
@@ -80,7 +96,7 @@ describe('NotificationSettings', () => {
       isLoggedIn: false,
     })
 
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     const toggleSwitch = screen.getByTestId('Interrupteur Cinéma')
     fireEvent.press(toggleSwitch)
@@ -101,7 +117,7 @@ describe('NotificationSettings', () => {
       },
       isLoggedIn: true,
     })
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     expect(screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')).toHaveAccessibilityState(
       {
@@ -119,7 +135,7 @@ describe('NotificationSettings', () => {
 
   it('should switch on all thematic toggles when the "Suivre tous les thèmes" toggle is pressed', async () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleEmail)
@@ -143,7 +159,7 @@ describe('NotificationSettings', () => {
 
   it('should switch off all thematic toggles when the "Suivre tous les thèmes" toggle is pressed when active', async () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleEmail)
@@ -168,7 +184,7 @@ describe('NotificationSettings', () => {
 
   it('should toggle on specific theme when its toggle is pressed', async () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleEmail)
@@ -181,7 +197,7 @@ describe('NotificationSettings', () => {
 
   it('should disabled all thematic toggles when email toggle and push toggle are inactive', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     expect(screen.getByTestId('Interrupteur Cinéma')).toBeDisabled()
     expect(screen.getByTestId('Interrupteur Lecture')).toBeDisabled()
@@ -193,7 +209,7 @@ describe('NotificationSettings', () => {
 
   it('should switch off thematic toggle when disabling email and push toggle at the same time', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleEmail)
@@ -206,7 +222,7 @@ describe('NotificationSettings', () => {
 
   it('should display help message when the email toggle is inactive and user is logged in', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     expect(
       screen.getByText(
@@ -217,7 +233,7 @@ describe('NotificationSettings', () => {
 
   it('should display info banner when email and push toggles are inactive', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     expect(
       screen.getByText(
@@ -228,7 +244,7 @@ describe('NotificationSettings', () => {
 
   it('should not display info banner when at least email or push toggles is active', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleEmail)
@@ -246,13 +262,72 @@ describe('NotificationSettings', () => {
       isLoggedIn: false,
       user: undefined,
     })
-    render(<NotificationsSettings />)
+    render(reactQueryProviderHOC(<NotificationsSettings />))
 
     expect(
       screen.queryByText(
         'Pour suivre un thème, tu dois accepter l’envoi d’e-mails ou de notifications.'
       )
     ).not.toBeOnTheScreen()
+  })
+
+  describe('When the user saves the changes', () => {
+    it('should update profile', async () => {
+      mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+      mockServer.postApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+
+      render(reactQueryProviderHOC(<NotificationsSettings />))
+
+      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      await act(async () => fireEvent.press(toggleEmail))
+
+      const saveButton = screen.getByText('Enregistrer')
+      await act(async () => fireEvent.press(saveButton))
+
+      await waitFor(() => {
+        expect(postProfileSpy).toHaveBeenCalledWith({
+          subscriptions: {
+            marketingEmail: true,
+            marketingPush: false,
+            subscribedThemes: [],
+          },
+        })
+      })
+    })
+
+    it('should goBack and show snackbar on success', async () => {
+      mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+      mockServer.postApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+
+      render(reactQueryProviderHOC(<NotificationsSettings />))
+
+      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      fireEvent.press(toggleEmail)
+
+      const saveButton = screen.getByText('Enregistrer')
+      await act(async () => fireEvent.press(saveButton))
+
+      expect(mockGoBack).toHaveBeenCalledTimes(1)
+      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({ message: 'Paramètre enregistré' })
+    })
+
+    it('should not go back and show snackbar on error', async () => {
+      mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+      mockServer.postApi('/v1/profile', {
+        responseOptions: { statusCode: 400, data: {} },
+      })
+
+      render(reactQueryProviderHOC(<NotificationsSettings />))
+
+      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      fireEvent.press(toggleEmail)
+
+      const saveButton = screen.getByText('Enregistrer')
+      await act(async () => fireEvent.press(saveButton))
+
+      expect(mockGoBack).not.toHaveBeenCalled()
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue' })
+    })
   })
 
   describe('The behavior of the push switch', () => {
@@ -262,7 +337,7 @@ describe('NotificationSettings', () => {
         pushPermission: 'blocked',
         refreshPermission: jest.fn(),
       })
-      render(<NotificationsSettings />)
+      render(reactQueryProviderHOC(<NotificationsSettings />))
 
       const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
       fireEvent.press(toggleSwitch)
@@ -276,7 +351,7 @@ describe('NotificationSettings', () => {
         pushPermission: 'blocked',
         refreshPermission: jest.fn(),
       })
-      render(<NotificationsSettings />)
+      render(reactQueryProviderHOC(<NotificationsSettings />))
 
       const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
       fireEvent.press(toggleSwitch)

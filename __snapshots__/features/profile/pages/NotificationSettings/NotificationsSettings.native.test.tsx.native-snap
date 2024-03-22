@@ -2078,7 +2078,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             }
             accessible={true}
             collapsable={false}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}

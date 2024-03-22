@@ -2,6 +2,7 @@ import React from 'react'
 
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import * as usePushPermission from 'features/profile/pages/NotificationSettings/usePushPermission'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, waitFor } from 'tests/utils/web'
 
 // Fix the error "IDs used in ARIA and labels must be unique (duplicate-id-aria)" because the UUIDV4 mock return "testUuidV4"
@@ -20,14 +21,14 @@ jest.spyOn(usePushPermission, 'usePushPermission').mockReturnValue({
 
 describe('NotificationSettings', () => {
   it('should render correctly', () => {
-    const { container } = render(<NotificationsSettings />)
+    const { container } = render(reactQueryProviderHOC(<NotificationsSettings />))
 
     expect(container).toMatchSnapshot()
   })
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<NotificationsSettings />)
+      const { container } = render(reactQueryProviderHOC(<NotificationsSettings />))
 
       const results = await checkAccessibilityFor(container)
 

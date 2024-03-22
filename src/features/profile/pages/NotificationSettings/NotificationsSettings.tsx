@@ -4,17 +4,22 @@ import { PermissionStatus } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
+import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { hasUserChangedParameters } from 'features/profile/pages/NotificationSettings/hasUserChangedParameters'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { mapSubscriptionThemeToName } from 'features/subscription/mapSubscriptionThemeToName'
 import { SubscriptionTheme, TOTAL_NUMBER_OF_THEME } from 'features/subscription/types'
+import { analytics } from 'libs/analytics'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
+import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
 import { Spacer, Typo } from 'ui/theme'
@@ -28,6 +33,8 @@ export type NotificationsSettingsState = {
 
 export const NotificationsSettings = () => {
   const { isLoggedIn, user } = useAuthContext()
+  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
 
   const [state, dispatch] = useReducer(settingsReducer, {
     allowEmails: user?.subscriptions.marketingEmail,
@@ -45,6 +52,22 @@ export const NotificationsSettings = () => {
   }
 
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
+
+  const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
+    () => {
+      showSuccessSnackBar({
+        message: 'Paramètre enregistré',
+      })
+      analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
+
+      goBack()
+    },
+    () => {
+      showErrorSnackBar({
+        message: 'Une erreur est survenue',
+      })
+    }
+  )
 
   const areNotificationsEnabled = state.allowEmails || state.allowPush
 
@@ -70,6 +93,20 @@ export const NotificationsSettings = () => {
       dispatch('push')
     } else {
       showPushModal()
+    }
+  }
+
+  const isSaveButtonDisabled = !isLoggedIn || !hasUserChanged || isUpdatingProfile
+
+  const submitProfile = () => {
+    if (state.allowEmails !== undefined && state.allowPush !== undefined) {
+      updateProfile({
+        subscriptions: {
+          marketingEmail: state.allowEmails,
+          marketingPush: state.allowPush,
+          subscribedThemes: state.themePreferences,
+        },
+      })
     }
   }
 
@@ -148,7 +185,8 @@ export const NotificationsSettings = () => {
           <ButtonPrimary
             wording="Enregistrer"
             accessibilityLabel="Enregistrer les modifications"
-            disabled={!isLoggedIn || !hasUserChanged}
+            onPress={submitProfile}
+            disabled={isSaveButtonDisabled}
           />
         </Form.Flex>
         <PushNotificationsModal
