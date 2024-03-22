@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
-import { render, screen } from 'tests/utils'
+import { render, screen, fireEvent } from 'tests/utils'
 
 describe('<OfferArtists />', () => {
   it('should display artists', () => {
@@ -20,5 +20,13 @@ describe('<OfferArtists />', () => {
     render(<OfferArtists artists="Edith Piaf" />)
 
     expect(screen.queryByText('Edith Piaf')).not.toBeOnTheScreen()
+  })
+
+  it('should open fake door modal when pressing artist button', () => {
+    render(<OfferArtists artists="Edith Piaf" shouldDisplayFakeDoor />)
+
+    fireEvent.press(screen.getByText('Edith Piaf'))
+
+    expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen()
   })
 })

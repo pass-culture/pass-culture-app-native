@@ -3,6 +3,8 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { FakeDoorModal } from 'ui/components/modals/FakeDoorModal'
+import { useModal } from 'ui/components/modals/useModal'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -18,6 +20,7 @@ export const OfferArtists: FunctionComponent<Props> = ({
   numberOfLines = 2,
   shouldDisplayFakeDoor,
 }) => {
+  const { visible, showModal, hideModal } = useModal()
   return shouldDisplayFakeDoor ? (
     <FakeDoorContainer>
       <Typo.ButtonTextNeutralInfo>de </Typo.ButtonTextNeutralInfo>
@@ -29,6 +32,11 @@ export const OfferArtists: FunctionComponent<Props> = ({
         accessibilityLabel={`Accéder à la page de ${artists}`}
         iconPosition="right"
         onPress={showModal}
+      />
+      <FakeDoorModal
+        visible={visible}
+        hideModal={hideModal}
+        surveyUrl="https://fr.wikipedia.org/wiki/FIEALD"
       />
     </FakeDoorContainer>
   ) : (
