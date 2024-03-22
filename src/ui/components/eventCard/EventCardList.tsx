@@ -23,6 +23,8 @@ export const EventCardList: React.FC<Props> = ({ data }) => {
           setWebViewWidth(width)
         }}>
         <FlatList<EventCardProps>
+          listAs="ul"
+          itemAs="li"
           key={numColumns}
           data={data}
           renderItem={({ item }: { item: EventCardProps }) => (

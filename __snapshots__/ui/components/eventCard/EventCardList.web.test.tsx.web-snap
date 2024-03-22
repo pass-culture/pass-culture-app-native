@@ -82,221 +82,361 @@ exports[`EventCardList should render correctly 1`] = `
           <div
             class="css-view-175oi2r r-alignItems-1habvwh"
           >
-            <div
-              class="css-view-175oi2r"
-            >
-              <button
-                class="c0 c1 sc-gEvEer c1"
-                tabindex="0"
-                type="button"
-              >
+            <ul>
+              <li>
                 <div
-                  aria-label="8h"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                  dir="ltr"
+                  class="css-view-175oi2r"
                 >
-                  8h
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-hdaws3"
-                />
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
-                >
-                  <div
-                    aria-label="VO, 3D"
-                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                    dir="ltr"
+                  <button
+                    class="c0 c1 sc-gEvEer c1"
+                    tabindex="0"
+                    type="button"
                   >
-                    VO, 3D
-                  </div>
+                    <div
+                      aria-label="8h"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      8h
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-height-hdaws3"
+                    />
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                    >
+                      <div
+                        aria-label="VO, 3D"
+                        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                        dir="ltr"
+                      >
+                        VO, 3D
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-width-10g5efv"
+                      />
+                      <div
+                        aria-label="5,99€"
+                        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
+                        dir="ltr"
+                      >
+                        5,99€
+                      </div>
+                    </div>
+                  </button>
                   <div
-                    class="css-view-175oi2r r-width-10g5efv"
+                    class="css-view-175oi2r r-width-1janqcz"
                   />
                   <div
-                    aria-label="5,99€"
-                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                    dir="ltr"
-                  >
-                    5,99€
-                  </div>
+                    class="css-view-175oi2r r-height-10ptun7"
+                  />
                 </div>
-              </button>
-              <div
-                class="css-view-175oi2r r-width-1janqcz"
-              />
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
-            </div>
-            <div
-              class="css-view-175oi2r"
-            >
-              <button
-                class="c0 c1 sc-gEvEer c1"
-                tabindex="0"
-                type="button"
-              >
+              </li>
+              <li>
                 <div
-                  aria-label="9h30"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                  dir="ltr"
+                  class="css-view-175oi2r"
                 >
-                  9h30
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-hdaws3"
-                />
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
-                >
-                  <div
-                    aria-label="VF, ICE, 3D"
-                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                    dir="ltr"
+                  <button
+                    class="c0 c1 sc-gEvEer c1"
+                    tabindex="0"
+                    type="button"
                   >
-                    VF, ICE, 3D
-                  </div>
+                    <div
+                      aria-label="9h30"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      9h30
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-height-hdaws3"
+                    />
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                    >
+                      <div
+                        aria-label="VF, ICE, 3D"
+                        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                        dir="ltr"
+                      >
+                        VF, ICE, 3D
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-width-10g5efv"
+                      />
+                      <div
+                        aria-label="7,99€"
+                        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
+                        dir="ltr"
+                      >
+                        7,99€
+                      </div>
+                    </div>
+                  </button>
                   <div
-                    class="css-view-175oi2r r-width-10g5efv"
+                    class="css-view-175oi2r r-width-1janqcz"
                   />
                   <div
-                    aria-label="7,99€"
-                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                    dir="ltr"
-                  >
-                    7,99€
-                  </div>
+                    class="css-view-175oi2r r-height-10ptun7"
+                  />
                 </div>
-              </button>
-              <div
-                class="css-view-175oi2r r-width-1janqcz"
-              />
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
-            </div>
-            <div
-              class="css-view-175oi2r"
-            >
-              <button
-                class="c0 c2 sc-gEvEer c2"
-                disabled=""
-                tabindex="0"
-                type="button"
-              >
+              </li>
+              <li>
                 <div
-                  aria-label="10h55"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                  dir="ltr"
+                  class="css-view-175oi2r"
                 >
-                  10h55
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-hdaws3"
-                />
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
-                >
-                  <div
-                    aria-label="Complet"
-                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                    dir="ltr"
+                  <button
+                    class="c0 c2 sc-gEvEer c2"
+                    disabled=""
+                    tabindex="0"
+                    type="button"
                   >
-                    Complet
-                  </div>
+                    <div
+                      aria-label="10h55"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      10h55
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-height-hdaws3"
+                    />
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                    >
+                      <div
+                        aria-label="Complet"
+                        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                        dir="ltr"
+                      >
+                        Complet
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-width-10g5efv"
+                      />
+                      <div
+                        aria-label="12,99€"
+                        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
+                        dir="ltr"
+                      >
+                        12,99€
+                      </div>
+                    </div>
+                  </button>
                   <div
-                    class="css-view-175oi2r r-width-10g5efv"
+                    class="css-view-175oi2r r-width-1janqcz"
                   />
                   <div
-                    aria-label="12,99€"
-                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                    dir="ltr"
+                    class="css-view-175oi2r r-height-10ptun7"
+                  />
+                </div>
+              </li>
+              <li>
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <button
+                    class="c0 c2 sc-gEvEer c2"
+                    disabled=""
+                    tabindex="0"
+                    type="button"
                   >
-                    12,99€
-                  </div>
-                </div>
-              </button>
-              <div
-                class="css-view-175oi2r r-width-1janqcz"
-              />
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
-            </div>
-            <div
-              class="css-view-175oi2r"
-            >
-              <button
-                class="c0 c2 sc-gEvEer c2"
-                disabled=""
-                tabindex="0"
-                type="button"
-              >
-                <div
-                  aria-label="13h12"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                  dir="ltr"
-                >
-                  13h12
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-hdaws3"
-                />
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
-                >
+                    <div
+                      aria-label="13h12"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      13h12
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-height-hdaws3"
+                    />
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                    >
+                      <div
+                        aria-label="Crédit insuffisant"
+                        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                        dir="ltr"
+                      >
+                        Crédit insuffisant
+                      </div>
+                    </div>
+                  </button>
                   <div
-                    aria-label="Crédit insuffisant"
-                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                    dir="ltr"
-                  >
-                    Crédit insuffisant
-                  </div>
-                </div>
-              </button>
-              <div
-                class="css-view-175oi2r r-width-1janqcz"
-              />
-              <div
-                class="css-view-175oi2r r-height-10ptun7"
-              />
-            </div>
-            <div
-              class="css-view-175oi2r"
-            >
-              <button
-                class="c0 c2 sc-gEvEer c2"
-                disabled=""
-                tabindex="0"
-                type="button"
-              >
-                <div
-                  aria-label="13h12"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                  dir="ltr"
-                >
-                  13h12
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-hdaws3"
-                />
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
-                >
+                    class="css-view-175oi2r r-width-1janqcz"
+                  />
                   <div
-                    aria-label="Déjà réservé"
-                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                    dir="ltr"
-                  >
-                    Déjà réservé
-                  </div>
+                    class="css-view-175oi2r r-height-10ptun7"
+                  />
                 </div>
-              </button>
-              <div
-                class="css-view-175oi2r r-width-1janqcz"
-              />
-            </div>
+              </li>
+              <li>
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <button
+                    class="c0 c2 sc-gEvEer c2"
+                    disabled=""
+                    tabindex="0"
+                    type="button"
+                  >
+                    <div
+                      aria-label="14h12"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      14h12
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-height-hdaws3"
+                    />
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                    >
+                      <div
+                        aria-label="Déjà réservé"
+                        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                        dir="ltr"
+                      >
+                        Déjà réservé
+                      </div>
+                    </div>
+                  </button>
+                  <div
+                    class="css-view-175oi2r r-width-1janqcz"
+                  />
+                  <div
+                    class="css-view-175oi2r r-height-10ptun7"
+                  />
+                </div>
+              </li>
+              <li>
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <button
+                    class="c0 c1 sc-gEvEer c1"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <div
+                      aria-label="15h55"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      15h55
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-height-hdaws3"
+                    />
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                    >
+                      <div
+                        aria-label="Complet"
+                        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                        dir="ltr"
+                      >
+                        Complet
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-width-10g5efv"
+                      />
+                      <div
+                        aria-label="12,99€"
+                        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
+                        dir="ltr"
+                      >
+                        12,99€
+                      </div>
+                    </div>
+                  </button>
+                  <div
+                    class="css-view-175oi2r r-width-1janqcz"
+                  />
+                  <div
+                    class="css-view-175oi2r r-height-10ptun7"
+                  />
+                </div>
+              </li>
+              <li>
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <button
+                    class="c0 c2 sc-gEvEer c2"
+                    disabled=""
+                    tabindex="0"
+                    type="button"
+                  >
+                    <div
+                      aria-label="16h12"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      16h12
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-height-hdaws3"
+                    />
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                    >
+                      <div
+                        aria-label="Crédit insuffisant"
+                        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                        dir="ltr"
+                      >
+                        Crédit insuffisant
+                      </div>
+                    </div>
+                  </button>
+                  <div
+                    class="css-view-175oi2r r-width-1janqcz"
+                  />
+                  <div
+                    class="css-view-175oi2r r-height-10ptun7"
+                  />
+                </div>
+              </li>
+              <li>
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <button
+                    class="c0 c1 sc-gEvEer c1"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <div
+                      aria-label="17h12"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      17h12
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-height-hdaws3"
+                    />
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                    >
+                      <div
+                        aria-label="Déjà réservé"
+                        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                        dir="ltr"
+                      >
+                        Déjà réservé
+                      </div>
+                    </div>
+                  </button>
+                  <div
+                    class="css-view-175oi2r r-width-1janqcz"
+                  />
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -380,221 +520,361 @@ exports[`EventCardList should render correctly 1`] = `
         <div
           class="css-view-175oi2r r-alignItems-1habvwh"
         >
-          <div
-            class="css-view-175oi2r"
-          >
-            <button
-              class="c0 c1 sc-gEvEer c1"
-              tabindex="0"
-              type="button"
-            >
+          <ul>
+            <li>
               <div
-                aria-label="8h"
-                class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                dir="ltr"
+                class="css-view-175oi2r"
               >
-                8h
-              </div>
-              <div
-                class="css-view-175oi2r r-height-hdaws3"
-              />
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
-              >
-                <div
-                  aria-label="VO, 3D"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                  dir="ltr"
+                <button
+                  class="c0 c1 sc-gEvEer c1"
+                  tabindex="0"
+                  type="button"
                 >
-                  VO, 3D
-                </div>
+                  <div
+                    aria-label="8h"
+                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                    dir="ltr"
+                  >
+                    8h
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-height-hdaws3"
+                  />
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                  >
+                    <div
+                      aria-label="VO, 3D"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      VO, 3D
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-width-10g5efv"
+                    />
+                    <div
+                      aria-label="5,99€"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
+                      dir="ltr"
+                    >
+                      5,99€
+                    </div>
+                  </div>
+                </button>
                 <div
-                  class="css-view-175oi2r r-width-10g5efv"
+                  class="css-view-175oi2r r-width-1janqcz"
                 />
                 <div
-                  aria-label="5,99€"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                  dir="ltr"
-                >
-                  5,99€
-                </div>
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
               </div>
-            </button>
-            <div
-              class="css-view-175oi2r r-width-1janqcz"
-            />
-            <div
-              class="css-view-175oi2r r-height-10ptun7"
-            />
-          </div>
-          <div
-            class="css-view-175oi2r"
-          >
-            <button
-              class="c0 c1 sc-gEvEer c1"
-              tabindex="0"
-              type="button"
-            >
+            </li>
+            <li>
               <div
-                aria-label="9h30"
-                class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                dir="ltr"
+                class="css-view-175oi2r"
               >
-                9h30
-              </div>
-              <div
-                class="css-view-175oi2r r-height-hdaws3"
-              />
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
-              >
-                <div
-                  aria-label="VF, ICE, 3D"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                  dir="ltr"
+                <button
+                  class="c0 c1 sc-gEvEer c1"
+                  tabindex="0"
+                  type="button"
                 >
-                  VF, ICE, 3D
-                </div>
+                  <div
+                    aria-label="9h30"
+                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                    dir="ltr"
+                  >
+                    9h30
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-height-hdaws3"
+                  />
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                  >
+                    <div
+                      aria-label="VF, ICE, 3D"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      VF, ICE, 3D
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-width-10g5efv"
+                    />
+                    <div
+                      aria-label="7,99€"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
+                      dir="ltr"
+                    >
+                      7,99€
+                    </div>
+                  </div>
+                </button>
                 <div
-                  class="css-view-175oi2r r-width-10g5efv"
+                  class="css-view-175oi2r r-width-1janqcz"
                 />
                 <div
-                  aria-label="7,99€"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                  dir="ltr"
-                >
-                  7,99€
-                </div>
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
               </div>
-            </button>
-            <div
-              class="css-view-175oi2r r-width-1janqcz"
-            />
-            <div
-              class="css-view-175oi2r r-height-10ptun7"
-            />
-          </div>
-          <div
-            class="css-view-175oi2r"
-          >
-            <button
-              class="c0 c2 sc-gEvEer c2"
-              disabled=""
-              tabindex="0"
-              type="button"
-            >
+            </li>
+            <li>
               <div
-                aria-label="10h55"
-                class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                dir="ltr"
+                class="css-view-175oi2r"
               >
-                10h55
-              </div>
-              <div
-                class="css-view-175oi2r r-height-hdaws3"
-              />
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
-              >
-                <div
-                  aria-label="Complet"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                  dir="ltr"
+                <button
+                  class="c0 c2 sc-gEvEer c2"
+                  disabled=""
+                  tabindex="0"
+                  type="button"
                 >
-                  Complet
-                </div>
+                  <div
+                    aria-label="10h55"
+                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                    dir="ltr"
+                  >
+                    10h55
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-height-hdaws3"
+                  />
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                  >
+                    <div
+                      aria-label="Complet"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      Complet
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-width-10g5efv"
+                    />
+                    <div
+                      aria-label="12,99€"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
+                      dir="ltr"
+                    >
+                      12,99€
+                    </div>
+                  </div>
+                </button>
                 <div
-                  class="css-view-175oi2r r-width-10g5efv"
+                  class="css-view-175oi2r r-width-1janqcz"
                 />
                 <div
-                  aria-label="12,99€"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
-                  dir="ltr"
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
+              </div>
+            </li>
+            <li>
+              <div
+                class="css-view-175oi2r"
+              >
+                <button
+                  class="c0 c2 sc-gEvEer c2"
+                  disabled=""
+                  tabindex="0"
+                  type="button"
                 >
-                  12,99€
-                </div>
-              </div>
-            </button>
-            <div
-              class="css-view-175oi2r r-width-1janqcz"
-            />
-            <div
-              class="css-view-175oi2r r-height-10ptun7"
-            />
-          </div>
-          <div
-            class="css-view-175oi2r"
-          >
-            <button
-              class="c0 c2 sc-gEvEer c2"
-              disabled=""
-              tabindex="0"
-              type="button"
-            >
-              <div
-                aria-label="13h12"
-                class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                dir="ltr"
-              >
-                13h12
-              </div>
-              <div
-                class="css-view-175oi2r r-height-hdaws3"
-              />
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
-              >
+                  <div
+                    aria-label="13h12"
+                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                    dir="ltr"
+                  >
+                    13h12
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-height-hdaws3"
+                  />
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                  >
+                    <div
+                      aria-label="Crédit insuffisant"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      Crédit insuffisant
+                    </div>
+                  </div>
+                </button>
                 <div
-                  aria-label="Crédit insuffisant"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                  dir="ltr"
-                >
-                  Crédit insuffisant
-                </div>
-              </div>
-            </button>
-            <div
-              class="css-view-175oi2r r-width-1janqcz"
-            />
-            <div
-              class="css-view-175oi2r r-height-10ptun7"
-            />
-          </div>
-          <div
-            class="css-view-175oi2r"
-          >
-            <button
-              class="c0 c2 sc-gEvEer c2"
-              disabled=""
-              tabindex="0"
-              type="button"
-            >
-              <div
-                aria-label="13h12"
-                class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                dir="ltr"
-              >
-                13h12
-              </div>
-              <div
-                class="css-view-175oi2r r-height-hdaws3"
-              />
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
-              >
+                  class="css-view-175oi2r r-width-1janqcz"
+                />
                 <div
-                  aria-label="Déjà réservé"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
-                  dir="ltr"
-                >
-                  Déjà réservé
-                </div>
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
               </div>
-            </button>
-            <div
-              class="css-view-175oi2r r-width-1janqcz"
-            />
-          </div>
+            </li>
+            <li>
+              <div
+                class="css-view-175oi2r"
+              >
+                <button
+                  class="c0 c2 sc-gEvEer c2"
+                  disabled=""
+                  tabindex="0"
+                  type="button"
+                >
+                  <div
+                    aria-label="14h12"
+                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                    dir="ltr"
+                  >
+                    14h12
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-height-hdaws3"
+                  />
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                  >
+                    <div
+                      aria-label="Déjà réservé"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      Déjà réservé
+                    </div>
+                  </div>
+                </button>
+                <div
+                  class="css-view-175oi2r r-width-1janqcz"
+                />
+                <div
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
+              </div>
+            </li>
+            <li>
+              <div
+                class="css-view-175oi2r"
+              >
+                <button
+                  class="c0 c1 sc-gEvEer c1"
+                  tabindex="0"
+                  type="button"
+                >
+                  <div
+                    aria-label="15h55"
+                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                    dir="ltr"
+                  >
+                    15h55
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-height-hdaws3"
+                  />
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                  >
+                    <div
+                      aria-label="Complet"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-flexBasis-1mlwlqe r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      Complet
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-width-10g5efv"
+                    />
+                    <div
+                      aria-label="12,99€"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-flexGrow-16y2uox r-flexShrink-1q142lx r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-1ff274t"
+                      dir="ltr"
+                    >
+                      12,99€
+                    </div>
+                  </div>
+                </button>
+                <div
+                  class="css-view-175oi2r r-width-1janqcz"
+                />
+                <div
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
+              </div>
+            </li>
+            <li>
+              <div
+                class="css-view-175oi2r"
+              >
+                <button
+                  class="c0 c2 sc-gEvEer c2"
+                  disabled=""
+                  tabindex="0"
+                  type="button"
+                >
+                  <div
+                    aria-label="16h12"
+                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                    dir="ltr"
+                  >
+                    16h12
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-height-hdaws3"
+                  />
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                  >
+                    <div
+                      aria-label="Crédit insuffisant"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-15h1czk r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      Crédit insuffisant
+                    </div>
+                  </div>
+                </button>
+                <div
+                  class="css-view-175oi2r r-width-1janqcz"
+                />
+                <div
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
+              </div>
+            </li>
+            <li>
+              <div
+                class="css-view-175oi2r"
+              >
+                <button
+                  class="c0 c1 sc-gEvEer c1"
+                  tabindex="0"
+                  type="button"
+                >
+                  <div
+                    aria-label="17h12"
+                    class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                    dir="ltr"
+                  >
+                    17h12
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-height-hdaws3"
+                  />
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-textOverflow-1udbk01 r-width-13qz1uu"
+                  >
+                    <div
+                      aria-label="Déjà réservé"
+                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-rjixqe r-textAlign-fdjqy7"
+                      dir="ltr"
+                    >
+                      Déjà réservé
+                    </div>
+                  </div>
+                </button>
+                <div
+                  class="css-view-175oi2r r-width-1janqcz"
+                />
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
