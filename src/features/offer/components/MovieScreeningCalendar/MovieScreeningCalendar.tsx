@@ -56,7 +56,7 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
         onTabChange={setSelectedDate}
         scrollViewRef={scrollViewRef}
       />
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={4} />
       {eventCardData != undefined && <EventCardList data={eventCardData} />}
       <Spacer.Column numberOfSpaces={6} />
       {CTAOfferModal}

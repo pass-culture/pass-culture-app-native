@@ -26,8 +26,8 @@ export const EventCard: React.FC<EventCardProps> = ({
 }) => {
   const hasSubtitleRight = !!subtitleRight
   return (
-    <StyledTouchableOpacity isDisabled={isDisabled} onPress={onPress}>
-      <Title accessibilityLabel={title} numberOfLines={1} isDisabled={isDisabled}>
+    <StyledTouchableOpacity disabled={isDisabled} onPress={onPress}>
+      <Title accessibilityLabel={title} numberOfLines={1} disabled={isDisabled}>
         {title}
       </Title>
 
@@ -36,7 +36,7 @@ export const EventCard: React.FC<EventCardProps> = ({
         <SubtitleLeft
           accessibilityLabel={subtitleLeft}
           numberOfLines={1}
-          isDisabled={isDisabled}
+          disabled={isDisabled}
           hasSubtitleRight={hasSubtitleRight}>
           {subtitleLeft}
         </SubtitleLeft>
@@ -46,7 +46,7 @@ export const EventCard: React.FC<EventCardProps> = ({
             <SubtitleRight
               accessibilityLabel={subtitleRight}
               numberOfLines={1}
-              isDisabled={isDisabled}>
+              disabled={isDisabled}>
               {subtitleRight}
             </SubtitleRight>
           </React.Fragment>
@@ -56,29 +56,29 @@ export const EventCard: React.FC<EventCardProps> = ({
   )
 }
 
-const StyledTouchableOpacity = styledButton(Touchable)<{ isDisabled: boolean }>(
-  ({ theme, isDisabled }) => ({
+const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
+  ({ theme, disabled }) => ({
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
     boxSizing: 'border-box',
     padding: getSpacing(3),
     justifyContent: 'flex-start',
-    borderWidth: isDisabled ? 0 : BORDER_WIDTH,
+    borderWidth: disabled ? 0 : BORDER_WIDTH,
     borderRadius: theme.borderRadius.radius,
-    backgroundColor: isDisabled ? theme.colors.greyLight : theme.colors.white,
-    ...(!isDisabled
-      ? getShadow({
+    backgroundColor: disabled ? theme.colors.greyLight : theme.colors.white,
+    ...(disabled
+      ? {}
+      : getShadow({
           shadowOffset: { width: 0, height: getSpacing(1) },
           shadowRadius: getSpacing(1),
           shadowColor: theme.colors.greyDark,
           shadowOpacity: 0.2,
-        })
-      : {}),
+        })),
   })
 )
 
-const Title = styled(Typo.ButtonText)<{ isDisabled: boolean }>(({ theme, isDisabled }) => ({
-  color: isDisabled ? theme.colors.greyDark : theme.colors.black,
+const Title = styled(Typo.ButtonText)<{ disabled: boolean }>(({ theme, disabled }) => ({
+  color: disabled ? theme.colors.greyDark : theme.colors.black,
   textAlign: 'left',
 }))
 
@@ -91,17 +91,17 @@ const SubtitleContainer = styled.View({
   textOverflow: 'ellipsis',
 })
 
-const SubtitleLeft = styled(Typo.Caption)<{ isDisabled: boolean; hasSubtitleRight: boolean }>(
-  ({ theme, isDisabled, hasSubtitleRight }) => ({
-    color: isDisabled ? theme.colors.greySemiDark : theme.colors.greyDark,
+const SubtitleLeft = styled(Typo.Caption)<{ disabled: boolean; hasSubtitleRight: boolean }>(
+  ({ theme, disabled, hasSubtitleRight }) => ({
+    color: disabled ? theme.colors.greySemiDark : theme.colors.greyDark,
     lineHeight: `${getSpacing(5)}px`,
     textAlign: 'left',
     flex: hasSubtitleRight ? 'auto' : 1,
   })
 )
 
-const SubtitleRight = styled(Typo.Body)<{ isDisabled: boolean }>(({ theme, isDisabled }) => ({
-  color: isDisabled ? theme.colors.greySemiDark : theme.colors.black,
+const SubtitleRight = styled(Typo.Body)<{ disabled: boolean }>(({ theme, disabled }) => ({
+  color: disabled ? theme.colors.greySemiDark : theme.colors.black,
   textAlign: 'right',
   flexShrink: 0,
   flexGrow: 1,
