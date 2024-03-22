@@ -31,6 +31,7 @@ import { NavigationAccountSuspension } from 'features/internal/cheatcodes/pages/
 import { NavigationNotScreensPages } from 'features/internal/cheatcodes/pages/NavigationNotScreensPages'
 import { NavigationProfile } from 'features/internal/cheatcodes/pages/NavigationProfile'
 import { NavigationShareApp } from 'features/internal/cheatcodes/pages/NavigationShareApp/NavigationShareApp'
+import { NavigationSubscription } from 'features/internal/cheatcodes/pages/NavigationSubscription/NavigationSubscription'
 import { CategoryThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/CategoryThematicHomeHeaderCheatcode'
 import { DefaultThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/DefaultThematicHomeHeaderCheatcode'
 import { HighlightThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/HighlightThematicHomeHeaderCheatcode'
@@ -288,6 +289,11 @@ export const routes: RootRoute[] = [
     name: 'NavigationShareApp',
     component: NavigationShareApp,
     path: 'cheat-navigation-share-app',
+  },
+  {
+    name: 'NavigationSubscription',
+    component: NavigationSubscription,
+    path: 'cheat-navigation-subscription',
   },
   {
     name: 'PersonalData',
