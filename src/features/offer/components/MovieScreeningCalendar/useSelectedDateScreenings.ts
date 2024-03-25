@@ -71,7 +71,8 @@ export const useSelectedDateScreening = (
 
         const shouldNotHaveSubtitleRight =
           subtitleLeft === EventCardSubtitleEnum.NOT_ENOUGH_CREDIT ||
-          subtitleLeft === EventCardSubtitleEnum.ALREADY_BOOKED
+          subtitleLeft === EventCardSubtitleEnum.ALREADY_BOOKED ||
+          subtitleLeft === EventCardSubtitleEnum.FULLY_BOOKED
         const subtitleRight = shouldNotHaveSubtitleRight ? undefined : price
 
         const onPress = () => {
