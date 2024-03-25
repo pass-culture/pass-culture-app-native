@@ -7,20 +7,14 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Venue } from 'features/venue/types'
 import { VenueMapCluster } from 'features/venuemap/components/VenueMapCluster/VenueMapCluster'
 import { VenueMapPreview } from 'features/venuemap/components/VenueMapPreview/VenueMapPreview'
-import {
-  calculateHorizontalDistance,
-  calculateRoundRadiusInKilometers,
-  calculateVerticalDistance,
-  distanceToLatitudeDelta,
-  distanceToLongitudeDelta,
-} from 'features/venuemap/helpers/calculateDistanceMap'
+import { calculateRoundRadiusInKilometers } from 'features/venuemap/helpers/calculateDistanceMap'
 import { getVenueTags } from 'features/venuemap/helpers/getVenueTags/getVenueTags'
 import { isGeolocValid } from 'features/venuemap/helpers/isGeolocValid'
+import { useGetDefaultRegion } from 'features/venuemap/hook/useGetDefautRegion'
 import { useGetAllVenues } from 'features/venuemap/useGetAllVenues'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import MapView, { EdgePadding, Marker, Region, MarkerPressEvent, Map } from 'libs/maps/maps'
 import { parseType } from 'libs/parsers/venueType'
@@ -32,7 +26,6 @@ type Props = {
   padding: EdgePadding
 }
 
-const RADIUS_IN_METERS = 10_000
 const PREVIEW_HEIGHT_ESTIMATION = 114
 const PREVIEW_BOTTOM_MARGIN = getSpacing(10)
 const CENTER_PIN_THRESHOLD = getSpacing(4)
@@ -43,35 +36,18 @@ type GeolocatedVenue = Omit<Venue, 'venueId'> & {
 }
 
 export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
-  const { userLocation } = useLocation()
   const { navigate } = useNavigation<UseNavigationType>()
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const mapViewRef = useRef<Map>(null)
   const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
 
   const { height, width } = useWindowDimensions()
-  const screenRatio = height / width
   const headerHeight = useGetHeaderHeight()
 
-  const verticalDistanceInMeters = calculateVerticalDistance(RADIUS_IN_METERS, screenRatio)
-  const horizontalDistanceInMeters = calculateHorizontalDistance(RADIUS_IN_METERS, screenRatio)
-
-  const latitudeDelta = distanceToLatitudeDelta(verticalDistanceInMeters)
-  const longitudeDelta = distanceToLongitudeDelta(
-    horizontalDistanceInMeters,
-    userLocation?.latitude ?? 0
-  )
-
-  const defaultCoordinates: Region = {
-    latitude: userLocation?.latitude ?? 0,
-    longitude: userLocation?.longitude ?? 0,
-    latitudeDelta,
-    longitudeDelta,
-  }
-
+  const defaultRegion = useGetDefaultRegion()
   const [selectedVenue, setSelectedVenue] = useState<GeolocatedVenue | null>(null)
-  const [currentRegion, setCurrentRegion] = useState<Region>(defaultCoordinates)
-  const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultCoordinates)
+  const [currentRegion, setCurrentRegion] = useState<Region>(defaultRegion)
+  const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultRegion)
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
   const radius = calculateRoundRadiusInKilometers(lastRegionSearched)
 
@@ -164,7 +140,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
       <StyledMapView
         ref={mapViewRef}
         showsUserLocation
-        initialRegion={defaultCoordinates}
+        initialRegion={defaultRegion}
         mapPadding={padding}
         rotateEnabled={false}
         pitchEnabled={false}
