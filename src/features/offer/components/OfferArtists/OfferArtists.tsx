@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { analytics } from 'libs/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { FakeDoorModal } from 'ui/components/modals/FakeDoorModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -21,6 +22,12 @@ export const OfferArtists: FunctionComponent<Props> = ({
   shouldDisplayFakeDoor,
 }) => {
   const { visible, showModal, hideModal } = useModal()
+
+  const handleOnPress = () => {
+    analytics.logConsultArtistFakeDoor()
+    showModal()
+  }
+
   return shouldDisplayFakeDoor ? (
     <FakeDoorContainer>
       <Typo.ButtonTextNeutralInfo>de </Typo.ButtonTextNeutralInfo>
@@ -31,7 +38,7 @@ export const OfferArtists: FunctionComponent<Props> = ({
         buttonHeight="extraSmall"
         accessibilityLabel={`Accéder à la page de ${artists}`}
         iconPosition="right"
-        onPress={showModal}
+        onPress={handleOnPress}
       />
       <FakeDoorModal
         visible={visible}
