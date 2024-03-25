@@ -35,6 +35,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logConsultAccessibility: jest.fn(),
   logConsultApplicationProcessingModal: jest.fn(),
   logConsultArticleAccountDeletion: jest.fn(),
+  logConsultArtistFakeDoor: jest.fn(),
   logConsultAuthenticationModal: jest.fn(),
   logConsultAvailableDates: jest.fn(),
   logConsultDescriptionDetails: jest.fn(),

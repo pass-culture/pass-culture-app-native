@@ -181,6 +181,8 @@ export const logEventAnalytics = {
     ),
   logConsultArticleAccountDeletion: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTICLE_ACCOUNT_DELETION }),
+  logConsultArtistFakeDoor: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ARTIST_FAKE_DOOR }),
   logConsultAuthenticationModal: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_AUTHENTICATION_MODAL }, { offerId }),
   logConsultAvailableDates: (offerId: number) =>

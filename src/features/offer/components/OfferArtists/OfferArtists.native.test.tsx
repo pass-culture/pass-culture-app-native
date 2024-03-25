@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
+import { analytics } from 'libs/analytics'
 import { render, screen, fireEvent } from 'tests/utils'
 
 describe('<OfferArtists />', () => {
@@ -28,5 +29,13 @@ describe('<OfferArtists />', () => {
     fireEvent.press(screen.getByText('Edith Piaf'))
 
     expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen()
+  })
+
+  it('should log artist fake door consultation when pressing artist button', () => {
+    render(<OfferArtists artists="Edith Piaf" shouldDisplayFakeDoor />)
+
+    fireEvent.press(screen.getByText('Edith Piaf'))
+
+    expect(analytics.logConsultArtistFakeDoor).toHaveBeenCalledTimes(1)
   })
 })
