@@ -48,27 +48,30 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   const [currentRegion, setCurrentRegion] = useState<Region>(defaultRegion)
   const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultRegion)
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
-  const radius = calculateRoundRadiusInKilometers(lastRegionSearched)
 
+  const radius = calculateRoundRadiusInKilometers(lastRegionSearched)
   const { data: venues = [] } = useGetAllVenues({ region: lastRegionSearched, radius })
   const geolocatedVenues = venues.filter(
     (venue): venue is GeolocatedVenue => !!(venue.venueId && isGeolocValid(venue._geoloc))
   )
+  const hasSelectionOutsideSearchArea =
+    selectedVenue && !geolocatedVenues.find((venue) => venue.venueId === selectedVenue.venueId)
+  if (hasSelectionOutsideSearchArea) {
+    geolocatedVenues.push(selectedVenue)
+  }
+
   const distanceToVenue = useDistance({
     lat: selectedVenue?._geoloc.lat,
     lng: selectedVenue?._geoloc.lng,
   })
-
   const venueTypeLabel = parseType(selectedVenue?.venue_type)
-
   const tags = getVenueTags({ distance: distanceToVenue, venue_type: venueTypeLabel })
 
-  const hasSelectionOutsideSearchArea =
-    selectedVenue && !geolocatedVenues.find((venue) => venue.venueId === selectedVenue.venueId)
-
-  if (hasSelectionOutsideSearchArea) {
-    geolocatedVenues.push(selectedVenue)
-  }
+  const centerOnLocation = useCenterOnLocation({
+    currentRegion,
+    previewHeight: previewHeight.current,
+    mapViewRef,
+  })
 
   const handleRegionChangeComplete = (region: Region) => {
     setCurrentRegion(region)
@@ -84,12 +87,6 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     onNavigateToVenuePress(venueId)
     navigate('Venue', { id: venueId })
   }
-
-  const centerOnLocation = useCenterOnLocation({
-    currentRegion,
-    previewHeight: previewHeight.current,
-    mapViewRef,
-  })
 
   const handleMarkerPress = (venue: GeolocatedVenue, event: MarkerPressEvent) => {
     // Prevents the onPress of the MapView from being triggered
