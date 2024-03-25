@@ -16,6 +16,14 @@ describe('useHomeRecommendedIdsQuery', () => {
     })
   })
 
+  it('should not fetch recommendation api when no endpoint is provided', async () => {
+    renderHook(() => useHomeRecommendedIdsQuery({ endpointUrl: undefined }), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    expect(fetch).not.toHaveBeenCalled()
+  })
+
   it('should capture an exception when fetch call fails', async () => {
     mockFetch.mockRejectedValueOnce('some error')
     renderHook(() => useHomeRecommendedIdsQuery({ endpointUrl: 'http://passculture.reco' }), {
