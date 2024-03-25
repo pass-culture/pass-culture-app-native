@@ -1,15 +1,17 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useRef, useState } from 'react'
-import { LayoutChangeEvent, useWindowDimensions } from 'react-native'
+import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Venue } from 'features/venue/types'
 import { VenueMapCluster } from 'features/venuemap/components/VenueMapCluster/VenueMapCluster'
 import { VenueMapPreview } from 'features/venuemap/components/VenueMapPreview/VenueMapPreview'
+import { PREVIEW_BOTTOM_MARGIN } from 'features/venuemap/components/VenueMapView/constant'
 import { calculateRoundRadiusInKilometers } from 'features/venuemap/helpers/calculateDistanceMap'
 import { getVenueTags } from 'features/venuemap/helpers/getVenueTags/getVenueTags'
 import { isGeolocValid } from 'features/venuemap/helpers/isGeolocValid'
+import { useCenterOnLocation } from 'features/venuemap/hook/useCenterOnLocation'
 import { useGetDefaultRegion } from 'features/venuemap/hook/useGetDefautRegion'
 import { useGetAllVenues } from 'features/venuemap/useGetAllVenues'
 import { analytics } from 'libs/analytics'
@@ -27,8 +29,6 @@ type Props = {
 }
 
 const PREVIEW_HEIGHT_ESTIMATION = 114
-const PREVIEW_BOTTOM_MARGIN = getSpacing(10)
-const CENTER_PIN_THRESHOLD = getSpacing(4)
 
 type GeolocatedVenue = Omit<Venue, 'venueId'> & {
   _geoloc: { lat: number; lng: number }
@@ -41,7 +41,6 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   const mapViewRef = useRef<Map>(null)
   const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
 
-  const { height, width } = useWindowDimensions()
   const headerHeight = useGetHeaderHeight()
 
   const defaultRegion = useGetDefaultRegion()
@@ -86,22 +85,11 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     navigate('Venue', { id: venueId })
   }
 
-  const centerOnLocation = async (latitude: number, longitude: number) => {
-    if (!mapViewRef.current || !previewHeight.current) return
-
-    const region = { ...currentRegion, latitude, longitude }
-    const point = await mapViewRef.current.pointForCoordinate({ latitude, longitude })
-
-    const isBehindPreview =
-      point.y > height - (PREVIEW_BOTTOM_MARGIN + previewHeight.current + CENTER_PIN_THRESHOLD)
-    const isBehindHeader = point.y < headerHeight + CENTER_PIN_THRESHOLD
-    const isBehindRightBorder = point.x > width - CENTER_PIN_THRESHOLD
-    const isBehindLeftBorder = point.x < CENTER_PIN_THRESHOLD
-
-    if (isBehindHeader || isBehindRightBorder || isBehindPreview || isBehindLeftBorder) {
-      mapViewRef.current.animateToRegion(region)
-    }
-  }
+  const centerOnLocation = useCenterOnLocation({
+    currentRegion,
+    previewHeight: previewHeight.current,
+    mapViewRef,
+  })
 
   const handleMarkerPress = (venue: GeolocatedVenue, event: MarkerPressEvent) => {
     // Prevents the onPress of the MapView from being triggered
