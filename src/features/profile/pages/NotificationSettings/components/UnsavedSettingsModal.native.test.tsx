@@ -5,6 +5,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
 const mockDismissModal = jest.fn()
+const mockOnPressSaveChanges = jest.fn()
 
 describe('<UnsavedSettingsModal />', () => {
   it('should dismiss modal on press rightIconButton', () => {
@@ -36,6 +37,16 @@ describe('<UnsavedSettingsModal />', () => {
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
+
+  it('should call onPressSaveChanges when saving changes', async () => {
+    renderModal(true)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Enregistrer mes modifications'))
+    })
+
+    expect(mockOnPressSaveChanges).toHaveBeenCalledTimes(1)
+  })
 })
 
 const renderModal = (visible: boolean) => {
@@ -44,7 +55,7 @@ const renderModal = (visible: boolean) => {
       <UnsavedSettingsModal
         visible={visible}
         dismissModal={mockDismissModal}
-        onPressSaveChanges={() => {}}
+        onPressSaveChanges={mockOnPressSaveChanges}
       />
     )
   )
