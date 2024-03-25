@@ -21,12 +21,12 @@ export async function flushAllPromises() {
 }
 
 /**
-  __Warning__ : avoid usage of this function as much as possible.
+ __Warning__ : avoid usage of this function as much as possible.
 
-  Usecase : when you get the "state update not wrapped in act" warning
-  no matter what you do.
-  @param times number of times you want to call `flushAllPromises()`. Increment `times` until the warning disappears.
-*/
+ Usecase : when you get the "state update not wrapped in act" warning
+ no matter what you do.
+ @param times number of times you want to call `flushAllPromises()`. Increment `times` until the warning disappears.
+ */
 async function flushAllPromisesTimes(times: number) {
   for (let i = 0; i < times; i++) {
     await flushAllPromises()
@@ -74,7 +74,7 @@ type RenderOptions = {
   createNodeMock?: (element: React.ReactElement) => any
 }
 
-type CustomRenderOptions = {
+export type CustomRenderOptions = {
   theme?: Partial<DefaultTheme>
 } & RenderOptions
 
@@ -94,6 +94,7 @@ function customRender(ui: React.ReactElement<any>, options?: CustomRenderOptions
 }
 
 type MeasureOptions = Parameters<typeof measurePerformance>[1]
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function customMeasurePerformance(ui: React.ReactElement<any>, options?: MeasureOptions) {
   const { wrapper, ...restOfOptions } = options || {}
@@ -138,4 +139,5 @@ export async function waitForModalToShow() {
     await sleep(300)
   })
 }
+
 export const waitForModalToHide = waitForModalToShow
