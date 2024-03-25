@@ -3,8 +3,8 @@ import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 
 const EARTH_RADIUS_M = 6378137
 
-// Calculates the horizontal distance in meters on the screen
-// based on the radius in meters and the screen ratio.
+/** Calculates the horizontal distance in meters on the screen
+ *  based on the radius in meters and the screen ratio. */
 export const calculateHorizontalDistance = (
   radiusInMeters: number,
   screenRatio: number
@@ -12,19 +12,19 @@ export const calculateHorizontalDistance = (
   return radiusInMeters / Math.sqrt(1 + screenRatio * screenRatio)
 }
 
-// Calculates the vertical distance in meters on the screen
-// based on the radius in meters and the screen ratio.
+/** Calculates the vertical distance in meters on the screen
+ *  based on the radius in meters and the screen ratio. */
 export const calculateVerticalDistance = (radiusInMeters: number, screenRatio: number): number => {
   return (radiusInMeters * screenRatio) / Math.sqrt(1 + screenRatio * screenRatio)
 }
 
-// Converts a vertical distance in meters to degrees of latitude.
+/** Converts a vertical distance in meters to a difference of latitude in degrees. */
 export const distanceToLatitudeDelta = (distanceInMeters: number): number => {
   const distanceInRadians = distanceInMeters / EARTH_RADIUS_M
   return distanceInRadians * (180 / Math.PI)
 }
 
-// Converts a horizontal distance in meters to degrees of longitude.
+/** Converts a horizontal distance in meters to degrees of longitude. */
 export const distanceToLongitudeDelta = (
   distanceInMeters: number,
   latitudeInDegrees: number
