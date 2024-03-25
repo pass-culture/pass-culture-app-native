@@ -24,6 +24,10 @@ export const ThematicHeaders = () => {
           title="Category"
           onPress={() => navigate('CategoryThematicHomeHeaderCheatcode')}
         />
+        <LinkToComponent
+          title="Category with subscribe"
+          onPress={() => navigate('ThematicHomeWithSubscribeCheatcode')}
+        />
       </StyledContainer>
     </React.Fragment>
   )

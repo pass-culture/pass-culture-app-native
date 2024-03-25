@@ -28,6 +28,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   alignSelf: 'flex-start',
+  backgroundColor: theme.colors.white,
 }))
 
 const StyledBell = styled(Bell).attrs(({ theme }) => ({

@@ -36,6 +36,7 @@ import { CategoryThematicHomeHeaderCheatcode } from 'features/internal/cheatcode
 import { DefaultThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/DefaultThematicHomeHeaderCheatcode'
 import { HighlightThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/HighlightThematicHomeHeaderCheatcode'
 import { ThematicHeaders } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHeaders'
+import { ThematicHomeWithSubscribeCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHomeWithSubscribeCheatcode'
 import { DeeplinksGenerator } from 'features/internal/marketingAndCommunication/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/marketingAndCommunication/pages/UTMParameters'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
@@ -464,6 +465,12 @@ export const routes: RootRoute[] = [
     // debug route: in navigation component
     name: 'CategoryThematicHomeHeaderCheatcode',
     component: CategoryThematicHomeHeaderCheatcode,
+    path: 'cheat-category-home-header',
+  },
+  {
+    // debug route: in navigation component
+    name: 'ThematicHomeWithSubscribeCheatcode',
+    component: ThematicHomeWithSubscribeCheatcode,
     path: 'cheat-category-home-header',
   },
   {
