@@ -6,7 +6,7 @@ import { CloseButton } from 'ui/components/headers/CloseButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
-import { getSpacing } from 'ui/theme'
+import { getShadow, getSpacing } from 'ui/theme'
 
 type Props = {
   venueName: string
@@ -49,6 +49,15 @@ const Container = styled(InternalTouchableLink)(({ theme }) => ({
   borderColor: theme.colors.greyDark,
   borderWidth: 1,
   padding: getSpacing(4),
+  ...getShadow({
+    shadowOffset: {
+      width: 0,
+      height: getSpacing(1),
+    },
+    shadowRadius: getSpacing(4),
+    shadowColor: theme.colors.secondaryDark,
+    shadowOpacity: 0.2,
+  }),
 }))
 
 const Row = styled.View({

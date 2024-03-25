@@ -184,6 +184,7 @@ export const theme = {
     primaryDark: ColorsEnum.PRIMARY_DARK,
     secondary: ColorsEnum.SECONDARY,
     secondaryLight: ColorsEnum.SECONDARY_LIGHT,
+    secondaryDark: ColorsEnum.SECONDARY_DARK,
     tertiary: ColorsEnum.TERTIARY,
     transparent: ColorsEnum.TRANSPARENT,
     white: ColorsEnum.WHITE,
