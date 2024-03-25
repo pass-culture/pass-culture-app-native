@@ -1,15 +1,19 @@
 import { ScopeContext } from '@sentry/types'
-import { useMutation } from 'react-query'
+import { useQuery } from 'react-query'
 
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
 
-export const useHomeRecommendedIdsMutation = () => {
-  return useMutation(
-    [QueryKeys.RECOMMENDATION_OFFER_IDS],
-    async (parameters: RecommendedIdsRequest) => {
+type Parameters = Omit<RecommendedIdsRequest, 'endpointUrl'> & { endpointUrl?: string }
+
+export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
+  return useQuery(
+    [QueryKeys.RECOMMENDATION_OFFER_IDS, parameters],
+    async () => {
       const { endpointUrl, ...requestBodyParams } = parameters
+      if (!endpointUrl) return { playlist_recommended_offers: [] }
+
       try {
         const response = await fetch(endpointUrl, {
           method: 'POST',
@@ -37,6 +41,7 @@ export const useHomeRecommendedIdsMutation = () => {
 
         return { playlist_recommended_offers: [] }
       }
-    }
+    },
+    { staleTime: 1000 * 60 * 5, enabled: !!parameters.endpointUrl }
   )
 }

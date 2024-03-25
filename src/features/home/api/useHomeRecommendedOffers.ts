@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-
 import { SubcategoryIdEnumv2 } from 'api/gen'
 import { buildRecommendationOfferTypesList } from 'features/home/api/helpers/buildRecommendationOfferTypesList'
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
@@ -7,8 +5,8 @@ import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommen
 import { RecommendedOffersModule } from 'features/home/types'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { Position } from 'libs/location'
-import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
-import { useHomeRecommendedIdsMutation } from 'libs/recommendation/useHomeRecommendedIdsMutation'
+import { RecommendedIdsRequest } from 'libs/recommendation/types'
+import { useHomeRecommendedIdsQuery } from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { SubcategoryLabelMapping } from 'libs/subcategories/types'
 import { Offer, RecommendationApiParams } from 'shared/offer/types'
@@ -61,23 +59,15 @@ export const useHomeRecommendedOffers = (
     position,
     modelEndpoint: recommendationParameters?.modelEndpoint,
   })
-  const [recommendedIdsResponse, setRecommendedIdsResponse] = useState<RecommendedIdsResponse>()
-  const { mutate: getRecommendedIds } = useHomeRecommendedIdsMutation()
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
-
-  useEffect(() => {
-    if (!recommendationEndpoint) return
-    const requestParameters = getRecommendationParameters(
-      recommendationParameters,
-      subcategoryLabelMapping
-    )
-    getRecommendedIds(
-      { ...requestParameters, endpointUrl: recommendationEndpoint },
-      {
-        onSuccess: (response) => setRecommendedIdsResponse(response),
-      }
-    )
-  }, [getRecommendedIds, recommendationParameters, recommendationEndpoint, subcategoryLabelMapping])
+  const requestParameters = getRecommendationParameters(
+    recommendationParameters,
+    subcategoryLabelMapping
+  )
+  const { data: recommendedIdsResponse } = useHomeRecommendedIdsQuery({
+    ...requestParameters,
+    endpointUrl: recommendationEndpoint,
+  })
 
   return {
     offers: useAlgoliaRecommendedOffers(
