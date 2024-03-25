@@ -30,6 +30,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_STEPPER_RETRY_UBBLE = 'wipStepperRetryUbble',
   WIP_NEW_MAPPING_BOOKS = 'wipNewMappingBooks',
   WIP_VENUE_MAP = 'wipVenueMap',
+  WIP_VENUE_MAP_SEARCH_RESULTS = 'wipVenueMapSearchResults',
   WIP_VENUE_MAP_WITHOUT_PREVIEW = 'wipVenueMapWithoutPreview',
   WIP_SEARCH_ACCESSIBILITY_FILTER = 'wipSearchAccessibilityFilter',
   WIP_ENABLE_NEW_XP_CINE_FROM_OFFER = 'wipEnableNewXpCineFromOffer',
