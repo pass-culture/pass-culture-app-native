@@ -6,8 +6,8 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { getShadow, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const BORDER_WIDTH = getSpacing(0.25)
-const CARD_HEIGHT = getSpacing(17)
-const CARD_WIDTH = getSpacing(30)
+const EVENT_CARD_HEIGHT = getSpacing(17)
+export const EVENT_CARD_WIDTH = getSpacing(30)
 
 export type EventCardProps = {
   onPress: () => void
@@ -58,8 +58,8 @@ export const EventCard: React.FC<EventCardProps> = ({
 
 const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
   ({ theme, disabled }) => ({
-    width: CARD_WIDTH,
-    height: CARD_HEIGHT,
+    width: EVENT_CARD_WIDTH,
+    height: EVENT_CARD_HEIGHT,
     boxSizing: 'border-box',
     padding: getSpacing(3),
     justifyContent: 'flex-start',

@@ -1,8 +1,8 @@
-import React from 'react'
-import { View } from 'react-native'
-import styled from 'styled-components/native'
+import React, { useState } from 'react'
+import { View, FlatList, StyleSheet } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { EventCard, EventCardProps } from 'ui/components/eventCard/EventCard'
+import { EventCard, EventCardProps, EVENT_CARD_WIDTH } from 'ui/components/eventCard/EventCard'
 import { Spacer, getSpacing } from 'ui/theme'
 
 type Props = {
@@ -10,6 +10,38 @@ type Props = {
 }
 
 export const EventCardList: React.FC<Props> = ({ data }) => {
+  const [webViewWidth, setWebViewWidth] = useState(0)
+  const { isDesktopViewport } = useTheme()
+
+  const numColumns = Math.max(Math.floor(webViewWidth / (EVENT_CARD_WIDTH + getSpacing(4))), 1)
+
+  if (isDesktopViewport) {
+    return (
+      <View
+        onLayout={(event) => {
+          const { width } = event.nativeEvent.layout
+          setWebViewWidth(width)
+        }}>
+        <FlatList<EventCardProps>
+          listAs="ul"
+          itemAs="li"
+          key={numColumns}
+          data={data}
+          renderItem={({ item }: { item: EventCardProps }) => (
+            <React.Fragment>
+              <EventCard {...item} />
+              <Spacer.Row numberOfSpaces={4} />
+            </React.Fragment>
+          )}
+          keyExtractor={(item) => JSON.stringify(item)}
+          ItemSeparatorComponent={FlatListLineSpacer}
+          numColumns={numColumns}
+          contentContainerStyle={styles.contentContainerStyle}
+        />
+      </View>
+    )
+  }
+
   return (
     <Container horizontal showsHorizontalScrollIndicator={false}>
       <Spacer.Row numberOfSpaces={2} />
@@ -41,3 +73,10 @@ export const EventCardList: React.FC<Props> = ({ data }) => {
 const Container = styled.ScrollView({
   paddingVertical: getSpacing(2),
 })
+const styles = StyleSheet.create({
+  contentContainerStyle: {
+    alignItems: 'flex-start',
+  },
+})
+
+const FlatListLineSpacer = () => <Spacer.Column numberOfSpaces={4} />
