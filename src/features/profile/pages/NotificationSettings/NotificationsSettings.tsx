@@ -117,7 +117,7 @@ export const NotificationsSettings = () => {
     }
   }
 
-  const { goBack: goBackAndLeaveNotificationSettings } = useGoBack(...getTabNavConfig('Profile'))
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
 
   return (
     <SecondaryPageWithBlurHeader
@@ -127,7 +127,7 @@ export const NotificationsSettings = () => {
         if (hasUserChanged) {
           showUnsavedModal()
         } else {
-          goBackAndLeaveNotificationSettings()
+          goBack()
         }
       }}>
       <Container>
