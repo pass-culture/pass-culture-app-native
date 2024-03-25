@@ -1,5 +1,5 @@
 import mockdate from 'mockdate'
-import { UseMutationResult } from 'react-query'
+import { UseQueryResult } from 'react-query'
 
 import * as algoliaRecommendedOffersAPI from 'features/home/api/useAlgoliaRecommendedOffers'
 import {
@@ -7,13 +7,12 @@ import {
   useHomeRecommendedOffers,
 } from 'features/home/api/useHomeRecommendedOffers'
 import { RecommendedOffersModule, RecommendedOffersParameters } from 'features/home/types'
-import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
-import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsMutation'
+import { RecommendedIdsResponse } from 'libs/recommendation/types'
+import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
-const mockUserId = 1234
 const position = {
   latitude: 6,
   longitude: 22,
@@ -31,13 +30,10 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 }))
 
 describe('useHomeRecommendedOffers', () => {
-  const mutate = jest.fn()
   jest
-    .spyOn(recommendedIdsAPI, 'useHomeRecommendedIdsMutation')
-    .mockReturnValue({ mutate } as unknown as UseMutationResult<
+    .spyOn(recommendedIdsAPI, 'useHomeRecommendedIdsQuery')
+    .mockReturnValue({ data: { playlist_recommended_offers: ['1234'] } } as UseQueryResult<
       RecommendedIdsResponse,
-      unknown,
-      RecommendedIdsRequest,
       unknown
     >)
 
@@ -45,26 +41,10 @@ describe('useHomeRecommendedOffers', () => {
     .spyOn(algoliaRecommendedOffersAPI, 'useAlgoliaRecommendedOffers')
     .mockImplementation(jest.fn())
 
-  it('should not call recommendation mutation when user is not connected', () => {
-    renderHook(() => useHomeRecommendedOffers(undefined, position, mockModuleId))
-
-    expect(mutate).not.toHaveBeenCalled()
-  })
-
-  it('should call recommendation mutation when user is connected', () => {
-    renderHook(() => useHomeRecommendedOffers(mockUserId, position, mockModuleId))
-
-    expect(mutate).toHaveBeenCalledTimes(1)
-  })
-
   it('should call algolia hook', () => {
     renderHook(() => useHomeRecommendedOffers(undefined, position, mockModuleId))
 
-    expect(algoliaSpy).toHaveBeenCalledTimes(1)
-
-    renderHook(() => useHomeRecommendedOffers(mockUserId, position, mockModuleId))
-
-    expect(algoliaSpy).toHaveBeenCalledTimes(2)
+    expect(algoliaSpy).toHaveBeenCalledWith(['1234'], 'abcd', true)
   })
 })
 

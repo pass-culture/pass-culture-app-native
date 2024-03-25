@@ -3,11 +3,11 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
-import { useHomeRecommendedIdsMutation } from './useHomeRecommendedIdsMutation'
+import { useHomeRecommendedIdsQuery } from './useHomeRecommendedIdsQuery'
 
 jest.mock('libs/monitoring')
 
-describe('useHomeRecommendedIdsMutation', () => {
+describe('useHomeRecommendedIdsQuery', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
 
   beforeEach(() => {
@@ -16,12 +16,19 @@ describe('useHomeRecommendedIdsMutation', () => {
     })
   })
 
-  it('should capture an exception when fetch call fails', async () => {
-    mockFetch.mockRejectedValueOnce('some error')
-    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
+  it('should not fetch recommendation api when no endpoint is provided', async () => {
+    renderHook(() => useHomeRecommendedIdsQuery({ endpointUrl: undefined }), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
+
+    expect(fetch).not.toHaveBeenCalled()
+  })
+
+  it('should capture an exception when fetch call fails', async () => {
+    mockFetch.mockRejectedValueOnce('some error')
+    renderHook(() => useHomeRecommendedIdsQuery({ endpointUrl: 'http://passculture.reco' }), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
 
     await waitFor(() => {
       expect(eventMonitoring.logError).toHaveBeenCalledWith('Error with recommendation endpoint', {
@@ -40,10 +47,9 @@ describe('useHomeRecommendedIdsMutation', () => {
       })
     )
 
-    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
+    renderHook(() => useHomeRecommendedIdsQuery({ endpointUrl: 'http://passculture.reco' }), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
 
     await act(async () => {})
 
@@ -62,10 +68,9 @@ describe('useHomeRecommendedIdsMutation', () => {
         status: 200,
       })
     )
-    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
+    renderHook(() => useHomeRecommendedIdsQuery({ endpointUrl: 'http://passculture.reco' }), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
 
     await waitFor(() => {
       expect(eventMonitoring.logInfo).toHaveBeenCalledWith('Recommended offers playlist is empty', {
@@ -84,10 +89,12 @@ describe('useHomeRecommendedIdsMutation', () => {
         status: 200,
       })
     )
-    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
+    const { result } = renderHook(
+      () => useHomeRecommendedIdsQuery({ endpointUrl: 'http://passculture.reco' }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
 
     await act(async () => {})
 
