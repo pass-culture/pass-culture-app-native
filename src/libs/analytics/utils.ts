@@ -67,10 +67,17 @@ export const buildLocationFilterParam = (searchState: SearchState) => {
 }
 
 export const buildAccessibilityFilterParam = (disabilities: DisabilitiesProperties): string => {
+  const formatAccessibilityFilters: { [key: string]: string } = {
+    isAudioDisabilityCompliant: 'Audio',
+    isMentalDisabilityCompliant: 'Mental',
+    isMotorDisabilityCompliant: 'Motor',
+    isVisualDisabilityCompliant: 'Visual',
+  }
+
   const formattedDisability = Object.fromEntries(
     Object.entries(disabilities).map(([key, value]) => [
-      key,
-      value === undefined ? 'undefined' : value,
+      formatAccessibilityFilters[key],
+      value === undefined ? false : value,
     ])
   )
 
