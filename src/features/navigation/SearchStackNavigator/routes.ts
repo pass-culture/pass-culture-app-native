@@ -23,10 +23,11 @@ const routes: SearchStackRoute[] = [
   },
 ]
 
-export const { screensConfig: searchScreensConfig, Screens: SearchScreens } = getScreensAndConfig(
+const { screensConfig: searchScreensConfig, Screens: SearchScreens } = getScreensAndConfig(
   routes,
   SearchStack.Screen
 )
+export { SearchScreens }
 
 export const searchNavigatorPathConfig: LinkingOptions<SearchStackParamList>['config'] = {
   initialRouteName,

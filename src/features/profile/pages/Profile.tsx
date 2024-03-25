@@ -1,5 +1,4 @@
 import { useFocusEffect } from '@react-navigation/native'
-import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
@@ -29,6 +28,7 @@ import { SectionRow } from 'ui/components/SectionRow'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { VerticalUl } from 'ui/components/Ul'
+import { useDebounce } from 'ui/hooks/useDebounce'
 import { useVersion } from 'ui/hooks/useVersion'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
@@ -101,10 +101,9 @@ const OnlineProfile: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [permissionState])
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debouncedLogLocationToggle = useCallback(
-    debounce(analytics.logLocationToggle, DEBOUNCE_TOGGLE_DELAY_MS),
-    []
+  const debouncedLogLocationToggle = useDebounce(
+    analytics.logLocationToggle,
+    DEBOUNCE_TOGGLE_DELAY_MS
   )
 
   function scrollToTop() {
@@ -112,7 +111,7 @@ const OnlineProfile: React.FC = () => {
       scrollViewRef.current.scrollTo({ x: 0, y: 0, animated: true })
     }
   }
-  const debouncedScrollToTop = debounce(scrollToTop, 400)
+  const debouncedScrollToTop = useDebounce(scrollToTop, 400)
 
   useEffect(() => {
     if (!isLoggedIn) {
