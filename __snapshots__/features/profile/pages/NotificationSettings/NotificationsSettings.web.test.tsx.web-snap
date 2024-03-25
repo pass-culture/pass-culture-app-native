@@ -152,7 +152,7 @@ exports[`NotificationSettings should render correctly 1`] = `
         >
           <button
             aria-label="Revenir en arrière"
-            class="c0 c1 sc-jXbUNg c1"
+            class="c0 c1 sc-dhKdcB c1"
             data-testid="Revenir en arrière"
             tabindex="0"
             title="Revenir en arrière"
