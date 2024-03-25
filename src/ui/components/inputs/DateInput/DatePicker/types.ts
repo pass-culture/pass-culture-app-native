@@ -1,3 +1,5 @@
+import { CapitalizedMonth, CapitalizedShortMonth } from 'shared/date/months'
+
 export type DatePickerProps = {
   date: Date
   onChange: (date?: Date) => void
@@ -8,8 +10,11 @@ export type DatePickerProps = {
   isDisabled?: boolean
 }
 
-export type PartialDate = {
+export type MonthType<MonthNameType extends 'short' | 'long' = 'short'> =
+  MonthNameType extends 'long' ? CapitalizedMonth : CapitalizedShortMonth
+
+export type PartialDate<MonthNameType extends 'short' | 'long' = 'short'> = {
   year?: string
-  month?: string
+  month?: MonthType<MonthNameType>
   day?: string
 }

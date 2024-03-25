@@ -39,7 +39,6 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
     setDate((prevDateValues) => ({ ...prevDateValues, [name]: value }))
   }
 
-  // @ts-expect-error: because of noUncheckedIndexedAccess
   const dateMonth = CAPITALIZED_SHORT_MONTHS.indexOf(date.month) + 1
   const birthdate = new Date(`${date.year}-${pad(dateMonth)}-${pad(Number(date.day))}`)
 
@@ -60,7 +59,6 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
       <Spacer.Column numberOfSpaces={2} />
       <SpinnerPickerWrapper testID="date-picker-spinner-touch">
         <StyledPicker
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           valueGroups={date}
           optionGroups={optionGroups}
           onChange={onDateChange}

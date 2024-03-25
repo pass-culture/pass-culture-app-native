@@ -26,9 +26,9 @@ import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPreviou
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 LocaleConfig.locales['fr'] = {
-  monthNames: CAPITALIZED_MONTHS,
-  monthNamesShort: CAPITALIZED_SHORT_MONTHS,
-  dayNames: DAYS,
+  monthNames: [...CAPITALIZED_MONTHS],
+  monthNamesShort: [...CAPITALIZED_SHORT_MONTHS],
+  dayNames: [...DAYS],
   dayNamesShort,
 }
 LocaleConfig.defaultLocale = 'fr'

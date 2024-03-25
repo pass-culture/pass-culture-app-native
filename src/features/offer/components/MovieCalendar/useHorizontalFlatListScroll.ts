@@ -18,7 +18,6 @@ export const useHorizontalFlatListScroll = ({
   const [isEnd, setIsEnd] = useState<boolean>(false)
 
   useEffect(() => {
-    // Ajustez `isEnd` une fois que vous avez les deux mesures.
     setIsEnd(contentWidth <= containerWidth)
   }, [containerWidth, contentWidth])
 
@@ -49,7 +48,7 @@ export const useHorizontalFlatListScroll = ({
 
       setScrollPosition(currentScrollPosition)
       setIsStart(currentScrollPosition <= 0)
-      setIsEnd(endScrollPosition >= endPosition - 1)
+      setIsEnd(endScrollPosition >= endPosition - 1) // -1px to make the isEnd being triggered
     },
     [isActive]
   )

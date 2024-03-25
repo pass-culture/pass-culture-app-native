@@ -18,7 +18,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerDropDownProps> = ({
 }) => {
   const { day, month, year } = getDefaultDateValues(initialDate)
 
-  const [date, setDate] = useState<PartialDate>({
+  const [date, setDate] = useState<PartialDate<'long'>>({
     day,
     month,
     year,
@@ -79,7 +79,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerDropDownProps> = ({
   )
 }
 
-const getDefaultDateValues = (initialDate?: Date): PartialDate => {
+const getDefaultDateValues = (initialDate?: Date): PartialDate<'long'> => {
   if (!initialDate)
     return {
       day: undefined,
@@ -94,7 +94,7 @@ const getDefaultDateValues = (initialDate?: Date): PartialDate => {
   }
 }
 
-const getValidDate = (date: PartialDate) => {
+const getValidDate = (date: PartialDate<'long'>) => {
   if (!date.year || !date.month || !date.day) return
 
   const dateMonth = CAPITALIZED_MONTHS.indexOf(date.month)
