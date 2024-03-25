@@ -1,8 +1,11 @@
-import { useRef, useEffect } from 'react'
+import { useCallback, useRef } from 'react'
 
 import { useAppStateChange } from 'libs/appState'
 
-export const useTrackSessionDuration = (callback: (durationInSeconds: number) => void) => {
+/**
+ * Use it in a useEffect or useFocusEffect, The passed callback should be wrapped in React.useCallback to avoid running the effect too often.
+ */
+export const useTrackDuration = (callback: (durationInSeconds: number) => void) => {
   const timeInBackground = useRef(0)
   const startTimeBackground = useRef<Date | null>(null)
   const onAppBecomeActive = () => {
@@ -17,7 +20,7 @@ export const useTrackSessionDuration = (callback: (durationInSeconds: number) =>
 
   useAppStateChange(onAppBecomeActive, onAppBecomeInactive)
 
-  useEffect(() => {
+  const getMappSeenDuration = useCallback(() => {
     const startTime = new Date()
     return () => {
       const endTime = new Date()
@@ -26,4 +29,5 @@ export const useTrackSessionDuration = (callback: (durationInSeconds: number) =>
       callback(Number(durationWithoutBackgroundTime.toFixed(3)))
     }
   }, [callback])
+  return getMappSeenDuration
 }

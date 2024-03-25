@@ -560,8 +560,6 @@ export const logEventAnalytics = {
         times: numberOfTimes,
       }
     ),
-  logSessionDurationFromVenueMap: (duration: number) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.SESSION_DURATION_FROM_VENUE_MAP }, { duration }),
   logSetAddressClicked: () => analytics.logEvent({ amplitude: AmplitudeEvent.SET_ADDRESS_CLICKED }),
   logSetIdOriginClicked: (type: IDOrigin) =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SET_ID_ORIGIN_CLICKED }, { type }),
@@ -618,6 +616,10 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.USER_SET_VENUE }, { venueLabel }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
+  logVenueMapSeenDuration: (duration: number) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.VENUE_MAP_SEEN_DURATION }, { duration }),
+  logVenueMapSessionDuration: (duration: number) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.VENUE_MAP_SESSION_DURATION }, { duration }),
   logVenuePlaylistDisplayedOnSearchResults: ({
     searchId,
     isLocated,
