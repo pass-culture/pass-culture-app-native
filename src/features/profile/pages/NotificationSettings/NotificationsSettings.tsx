@@ -4,9 +4,12 @@ import { PermissionStatus } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
+import { UnsavedSettingsModal } from 'features/profile/pages/NotificationSettings/components/UnsavedSettingsModal'
 import { hasUserChangedParameters } from 'features/profile/pages/NotificationSettings/helpers/hasUserChangedParameters'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { mapSubscriptionThemeToName } from 'features/subscription/mapSubscriptionThemeToName'
@@ -76,6 +79,12 @@ export const NotificationsSettings = () => {
   }
 
   const {
+    visible: isUnsavedModalVisible,
+    showModal: showUnsavedModal,
+    hideModal: hideUnsavedModal,
+  } = useModal(false)
+
+  const {
     visible: isPushModalVisible,
     showModal: showPushModal,
     hideModal: hidePushModal,
@@ -108,8 +117,19 @@ export const NotificationsSettings = () => {
     }
   }
 
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+
   return (
-    <SecondaryPageWithBlurHeader title="Suivi et notifications" scrollable>
+    <SecondaryPageWithBlurHeader
+      title="Suivi et notifications"
+      scrollable
+      onGoBack={() => {
+        if (hasUserChanged) {
+          showUnsavedModal()
+        } else {
+          goBack()
+        }
+      }}>
       <Container>
         {isLoggedIn ? null : (
           <React.Fragment>
@@ -191,6 +211,11 @@ export const NotificationsSettings = () => {
           visible={isPushModalVisible}
           onRequestPermission={onRequestNotificationPermissionFromModal}
           onDismiss={hidePushModal}
+        />
+        <UnsavedSettingsModal
+          visible={isUnsavedModalVisible}
+          dismissModal={hideUnsavedModal}
+          onPressSaveChanges={submitProfile}
         />
       </Container>
     </SecondaryPageWithBlurHeader>

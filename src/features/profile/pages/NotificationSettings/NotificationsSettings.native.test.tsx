@@ -396,4 +396,19 @@ describe('NotificationSettings', () => {
       expect(toggleSwitch).toHaveAccessibilityState({ checked: true })
     })
   })
+
+  describe('When user has unsaved changes and attempts to go back', () => {
+    it('should display a modal', async () => {
+      mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+      render(reactQueryProviderHOC(<NotificationsSettings />))
+
+      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      fireEvent.press(toggleEmail)
+
+      const goBackButton = screen.getByTestId('Revenir en arrière')
+      fireEvent.press(goBackButton)
+
+      expect(screen.getByText('Quitter sans enregistrer')).toBeOnTheScreen()
+    })
+  })
 })
