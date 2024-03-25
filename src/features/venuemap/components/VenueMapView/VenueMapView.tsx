@@ -4,16 +4,14 @@ import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { Venue } from 'features/venue/types'
 import { VenueMapCluster } from 'features/venuemap/components/VenueMapCluster/VenueMapCluster'
 import { VenueMapPreview } from 'features/venuemap/components/VenueMapPreview/VenueMapPreview'
 import { PREVIEW_BOTTOM_MARGIN } from 'features/venuemap/components/VenueMapView/constant'
-import { calculateRoundRadiusInKilometers } from 'features/venuemap/helpers/calculateDistanceMap'
+import { GeolocatedVenue } from 'features/venuemap/components/VenueMapView/types'
 import { getVenueTags } from 'features/venuemap/helpers/getVenueTags/getVenueTags'
-import { isGeolocValid } from 'features/venuemap/helpers/isGeolocValid'
 import { useCenterOnLocation } from 'features/venuemap/hook/useCenterOnLocation'
 import { useGetDefaultRegion } from 'features/venuemap/hook/useGetDefautRegion'
-import { useGetAllVenues } from 'features/venuemap/useGetAllVenues'
+import { useGetVenuesInRegion } from 'features/venuemap/hook/useGetVenuesInRegion'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -30,11 +28,6 @@ type Props = {
 
 const PREVIEW_HEIGHT_ESTIMATION = 114
 
-type GeolocatedVenue = Omit<Venue, 'venueId'> & {
-  _geoloc: { lat: number; lng: number }
-  venueId: number
-}
-
 export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
@@ -49,16 +42,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
   const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultRegion)
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
 
-  const radius = calculateRoundRadiusInKilometers(lastRegionSearched)
-  const { data: venues = [] } = useGetAllVenues({ region: lastRegionSearched, radius })
-  const geolocatedVenues = venues.filter(
-    (venue): venue is GeolocatedVenue => !!(venue.venueId && isGeolocValid(venue._geoloc))
-  )
-  const hasSelectionOutsideSearchArea =
-    selectedVenue && !geolocatedVenues.find((venue) => venue.venueId === selectedVenue.venueId)
-  if (hasSelectionOutsideSearchArea) {
-    geolocatedVenues.push(selectedVenue)
-  }
+  const venues = useGetVenuesInRegion(lastRegionSearched, selectedVenue)
 
   const distanceToVenue = useDistance({
     lat: selectedVenue?._geoloc.lat,
@@ -134,7 +118,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
         onPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         onClusterPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         testID="venue-map-view">
-        {geolocatedVenues.map((venue) => (
+        {venues.map((venue) => (
           <Marker
             key={venue.venueId}
             coordinate={{
