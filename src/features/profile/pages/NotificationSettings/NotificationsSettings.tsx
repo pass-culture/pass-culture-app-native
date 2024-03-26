@@ -36,16 +36,18 @@ export const NotificationsSettings = () => {
   const { isLoggedIn, user } = useAuthContext()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
-  const initialState = {
-    allowEmails: user?.subscriptions.marketingEmail,
-    allowPush: user?.subscriptions.marketingPush,
-    themePreferences:
-      (user?.subscriptions.subscribedThemes as unknown as SubscriptionTheme[]) || [],
-  }
+  const initialState = user?.subscriptions
+    ? {
+        allowEmails: user?.subscriptions.marketingEmail,
+        allowPush: user?.subscriptions.marketingPush,
+        themePreferences:
+          (user?.subscriptions.subscribedThemes as unknown as SubscriptionTheme[]) || [],
+      }
+    : { allowEmails: false, allowPush: false, themePreferences: [] }
 
   const [state, dispatch] = useReducer(settingsReducer, initialState)
 
-  const hasUserChanged = !!user && hasUserChangedParameters(user, state)
+  const hasUserChanged = !!user?.subscriptions && hasUserChangedParameters(user, state)
 
   const updatePushPermissionFromSettings = (permission: PermissionStatus) => {
     if (permission === 'granted' && !state.allowPush) {
