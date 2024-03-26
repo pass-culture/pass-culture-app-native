@@ -1,10 +1,12 @@
 import { SearchResponse } from '@algolia/client-search'
+import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useMemo } from 'react'
-import { ScrollViewProps, View } from 'react-native'
+import { Platform, ScrollViewProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
@@ -13,11 +15,14 @@ import { VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { Playlist } from 'ui/components/Playlist'
@@ -50,6 +55,7 @@ const renderVenueItem = (
 const VENUE_ITEM_HEIGHT = LENGTH_XXS
 const VENUE_ITEM_WIDTH = LENGTH_XS
 const keyExtractor = (item: AlgoliaVenue) => item.objectID
+const isWeb = Platform.OS === 'web'
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   nbHits,
@@ -62,6 +68,10 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   const {
     searchState: { searchId, venue, offerCategories },
   } = useSearch()
+  const enableVenueMapSearchResults = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_VENUE_MAP_SEARCH_RESULTS
+  )
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const isLocated = useMemo(
     () => selectedLocationMode !== LocationMode.EVERYWHERE,
@@ -105,6 +115,13 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
 
+  const shouldDisplaySeeOnTheMap =
+    shouldDisplayVenuesPlaylist && isLocated && enableVenueMapSearchResults && !isWeb
+
+  const handleSeeMapPress = () => {
+    navigate('VenueMap')
+  }
+
   return (
     <View testID="searchListHeader">
       {!!shouldDisplayGeolocationButton && (
@@ -134,7 +151,17 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           <Spacer.Column numberOfSpaces={4} />
           <View>
             <Title>{venueTitle}</Title>
-            <NumberOfResults nbHits={venues?.length ?? 0} />
+            {shouldDisplaySeeOnTheMap ? (
+              <ButtonContainer>
+                <Spacer.Column numberOfSpaces={4} />
+                <ButtonTertiaryBlack
+                  wording={`Voir sur la carte (${venues?.length})`}
+                  onPress={handleSeeMapPress}
+                />
+              </ButtonContainer>
+            ) : (
+              <NumberOfResults nbHits={venues?.length ?? 0} />
+            )}
             <Playlist
               data={venues ?? []}
               // +4 to take into account the margin top
@@ -185,4 +212,9 @@ const StyledSeparator = styled(Separator.Horizontal)({
   width: 'auto',
   marginLeft: getSpacing(6),
   marginRight: getSpacing(6),
+})
+
+const ButtonContainer = styled.View({
+  marginLeft: getSpacing(6),
+  alignSelf: 'flex-start',
 })

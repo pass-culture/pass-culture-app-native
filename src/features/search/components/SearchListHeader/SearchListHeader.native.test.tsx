@@ -2,19 +2,20 @@ import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { VenueTypeCodeKey } from 'api/gen'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
 import { initialSearchState } from 'features/search/context/reducer'
+import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { act, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SearchListHeader } from './SearchListHeader'
 
@@ -32,6 +33,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
     selectedLocationMode: mockSelectedLocationMode,
   }),
 }))
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const mockDisabilities = {
   [DisplayedDisabilitiesEnum.AUDIO]: false,
@@ -53,153 +56,6 @@ const nativeEventEnd = {
   contentSize: { width: 1600 },
 } as NativeSyntheticEvent<NativeScrollEvent>['nativeEvent']
 
-const mockVenues: AlgoliaVenue[] = [
-  {
-    audio_disability: false,
-    banner_url:
-      'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/krists-luhaers-AtPWnYNDJnM-unsplash.png',
-    city: 'Bordeaux',
-    description: '',
-    email: null,
-    facebook: null,
-
-    instagram: null,
-    mental_disability: false,
-    motor_disability: false,
-    name: 'EMS 0063 (ne fonctionne pas)',
-    objectID: '7931',
-    offerer_name: 'Structure du cinéma EMS',
-    phone_number: null,
-    snapchat: null,
-    twitter: null,
-    venue_type: VenueTypeCodeKey.MOVIE,
-    visual_disability: false,
-    website: null,
-    _geoloc: { lat: 44.82186, lng: -0.56366 },
-    postalCode: '75000',
-  },
-
-  {
-    audio_disability: false,
-    banner_url:
-      'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/darya-tryfanava-UCNaGWn4EfU-unsplash.jpg',
-    city: 'Paris',
-    description: '',
-    email: null,
-    facebook: null,
-    instagram: null,
-    mental_disability: false,
-    motor_disability: false,
-    name: 'ETABLISSEMENT PUBLIC DU MUSEE DU LOUVRE',
-    objectID: '7929',
-    offerer_name: 'ETABLISSEMENT PUBLIC DU MUSEE DU LOUVRE',
-    phone_number: null,
-    snapchat: null,
-    twitter: null,
-    venue_type: VenueTypeCodeKey.VISUAL_ARTS,
-    visual_disability: false,
-    website: null,
-    _geoloc: { lat: 48.85959, lng: 2.33561 },
-    postalCode: '75000',
-  },
-
-  {
-    audio_disability: false,
-    banner_url:
-      'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/uxuipc_High_angle_avec_un_Canon_R5_50_mm_DSLR_planetarium_with__f16e10f2-eb38-4314-b5f2-784819f04c05%20(1).png',
-    city: 'Bordeaux',
-    description: '',
-    email: null,
-    facebook: null,
-    instagram: null,
-    mental_disability: false,
-    motor_disability: false,
-    name: 'culture scientifique 2',
-    objectID: '7927',
-    offerer_name: '0 - Structure avec justificatif copieux',
-    phone_number: null,
-    snapchat: null,
-    twitter: null,
-    venue_type: VenueTypeCodeKey.SCIENTIFIC_CULTURE,
-    visual_disability: false,
-    website: null,
-    _geoloc: { lat: 44.85597, lng: -0.63444 },
-    postalCode: '75000',
-  },
-
-  {
-    audio_disability: false,
-    banner_url:
-      'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/edd_Medium-Shot_avec_un_Canon_R5_50_mm_DSLR_Science_class_with__0251a3c2-c494-4b61-8116-a22c61848947%20(1).png',
-    city: 'Marseille',
-    description: '',
-    email: null,
-    facebook: null,
-    instagram: null,
-    mental_disability: false,
-    motor_disability: false,
-    name: 'culture scientifique 1',
-    objectID: '7926',
-    offerer_name: '0 - Structure avec justificatif copieux',
-    phone_number: null,
-    snapchat: null,
-    twitter: null,
-    venue_type: VenueTypeCodeKey.SCIENTIFIC_CULTURE,
-    visual_disability: false,
-    website: null,
-    _geoloc: { lat: 43.3112, lng: 5.3832 },
-    postalCode: '75000',
-  },
-
-  {
-    audio_disability: true,
-    banner_url:
-      'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/amy-leigh-barnard-H3APOiYLyzk-unsplashed.png',
-    city: 'Paris',
-    description: '',
-    email: null,
-    facebook: null,
-    instagram: null,
-    mental_disability: true,
-    motor_disability: true,
-    name: 'musee test2',
-    objectID: '7924',
-    offerer_name: '0 - Structure avec justificatif copieux',
-    phone_number: null,
-    snapchat: null,
-    twitter: null,
-    venue_type: VenueTypeCodeKey.MUSEUM,
-    visual_disability: true,
-    website: null,
-    _geoloc: { lat: 48.84303, lng: 2.30445 },
-    postalCode: '75000',
-  },
-
-  {
-    audio_disability: false,
-    banner_url:
-      'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/erik-mclean-PFfA3xlHFbQ-unsplash_(1).png',
-    city: 'Paris',
-    description: 'Them bill possible decision wide claim so.',
-    email: 'contact@venue.com',
-    facebook: null,
-    instagram: 'http://instagram.com/@venue',
-    mental_disability: false,
-    motor_disability: false,
-    name: 'Le Sous-sol DATA',
-    objectID: '7922',
-    offerer_name: 'Herbert Marcuse Entreprise',
-    phone_number: '+33102030405',
-    snapchat: null,
-    twitter: null,
-    venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
-    visual_disability: false,
-    website: 'https://my.website.com',
-    _geoloc: { lat: 50.63111, lng: 3.0716 },
-    postalCode: '75000',
-  },
-]
-
 const kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
@@ -216,6 +72,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 describe('<SearchListHeader />', () => {
   beforeEach(() => {
     mockUseAccessibilityFiltersContext.mockReturnValue(defaultValuesAccessibilityContext)
+    useFeatureFlagSpy.mockReturnValue(false)
   })
 
   afterEach(() => {
@@ -226,13 +83,17 @@ describe('<SearchListHeader />', () => {
   it('should display the number of results', () => {
     mockSearchState = { ...mockSearchState, searchId }
 
-    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+    render(
+      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+    )
 
     expect(screen.getByText('10 résultats')).toBeOnTheScreen()
   })
 
   it('should show correct title when NO userData exists', () => {
-    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+    render(
+      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+    )
 
     expect(screen.getByText('Les lieux culturels')).toBeOnTheScreen()
   })
@@ -243,7 +104,7 @@ describe('<SearchListHeader />', () => {
         nbHits={10}
         userData={[]}
         venuesUserData={[{ venue_playlist_title: 'test' }]}
-        venues={mockVenues}
+        venues={mockAlgoliaVenues}
       />
     )
 
@@ -252,14 +113,18 @@ describe('<SearchListHeader />', () => {
   })
 
   it('should not display the geolocation button if position is not null', () => {
-    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+    render(
+      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+    )
 
     expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
   })
 
   it('should display the geolocation incitation button when position is null', () => {
     mockPosition = null
-    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+    render(
+      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+    )
 
     expect(screen.getByText('Géolocalise-toi')).toBeOnTheScreen()
   })
@@ -283,13 +148,17 @@ describe('<SearchListHeader />', () => {
   })
 
   it('should render venue items when there are venues', () => {
-    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+    render(
+      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+    )
 
     expect(screen.getByTestId('search-venue-list')).toBeOnTheScreen()
   })
 
   it('should render venues nbHits', () => {
-    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+    render(
+      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+    )
 
     expect(screen.getByText('6 résultats')).toBeOnTheScreen()
   })
@@ -305,7 +174,14 @@ describe('<SearchListHeader />', () => {
     ({ locationFilter, isLocated }) => {
       mockSearchState = { ...mockSearchState, searchId, locationFilter }
       mockSelectedLocationMode = locationFilter?.locationType ?? LocationMode.EVERYWHERE
-      render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+      render(
+        <SearchListHeader
+          nbHits={10}
+          userData={[]}
+          venuesUserData={[]}
+          venues={mockAlgoliaVenues}
+        />
+      )
 
       expect(analytics.logVenuePlaylistDisplayedOnSearchResults).toHaveBeenNthCalledWith(1, {
         isLocated,
@@ -316,15 +192,23 @@ describe('<SearchListHeader />', () => {
   )
 
   it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is VENUE with isLocated param = true', () => {
-    mockSearchState = { ...mockSearchState, searchId, venue: mockVenues[0] as unknown as Venue }
-    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+    mockSearchState = {
+      ...mockSearchState,
+      searchId,
+      venue: mockAlgoliaVenues[0] as unknown as Venue,
+    }
+    render(
+      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+    )
 
     expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
   })
 
   it('should trigger AllTilesSeen log when there are venues', async () => {
     mockSearchState = { ...mockSearchState, searchId }
-    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+    render(
+      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+    )
 
     const scrollView = screen.getByTestId('search-venue-list')
     await act(async () => {
@@ -377,7 +261,9 @@ describe('<SearchListHeader />', () => {
       setDisabilities: jest.fn(),
     })
 
-    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+    render(
+      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+    )
 
     await screen.findByText('Les offres')
 
@@ -395,8 +281,105 @@ describe('<SearchListHeader />', () => {
       setDisabilities: jest.fn(),
     })
 
-    render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockVenues} />)
+    render(
+      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+    )
 
     expect(screen.getByText('Les offres dans des lieux accessibles')).toBeOnTheScreen()
+  })
+
+  describe('When wipVenueMapSearchResults feature flag activated', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
+    })
+
+    it('should not display see map button when user is not located and there is a venues playlist', () => {
+      mockSearchState = {
+        ...mockSearchState,
+        searchId,
+        locationFilter: { locationType: LocationMode.EVERYWHERE },
+      }
+      mockSelectedLocationMode = LocationMode.EVERYWHERE
+      render(
+        <SearchListHeader
+          nbHits={10}
+          userData={[]}
+          venuesUserData={[]}
+          venues={mockAlgoliaVenues}
+        />
+      )
+
+      expect(
+        screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
+      ).not.toBeOnTheScreen()
+    })
+
+    it('should display see map button when user location mode is around me and there is a venues playlist', () => {
+      mockSearchState = {
+        ...mockSearchState,
+        searchId,
+        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
+      }
+      mockSelectedLocationMode = LocationMode.AROUND_ME
+      render(
+        <SearchListHeader
+          nbHits={10}
+          userData={[]}
+          venuesUserData={[]}
+          venues={mockAlgoliaVenues}
+        />
+      )
+
+      expect(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)).toBeOnTheScreen()
+    })
+
+    it('should display see map button when user location mode is around place and there is a venues playlist', () => {
+      mockSearchState = {
+        ...mockSearchState,
+        searchId,
+        locationFilter: {
+          locationType: LocationMode.AROUND_PLACE,
+          place: kourou,
+          aroundRadius: MAX_RADIUS,
+        },
+      }
+      mockSelectedLocationMode = LocationMode.AROUND_PLACE
+      render(
+        <SearchListHeader
+          nbHits={10}
+          userData={[]}
+          venuesUserData={[]}
+          venues={mockAlgoliaVenues}
+        />
+      )
+
+      expect(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)).toBeOnTheScreen()
+    })
+
+    describe('When see map button displayed', () => {
+      beforeEach(() => {
+        mockSearchState = {
+          ...mockSearchState,
+          searchId,
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
+        }
+        mockSelectedLocationMode = LocationMode.AROUND_ME
+      })
+
+      it('should redirect to venue map when pressing see map button', () => {
+        render(
+          <SearchListHeader
+            nbHits={10}
+            userData={[]}
+            venuesUserData={[]}
+            venues={mockAlgoliaVenues}
+          />
+        )
+
+        fireEvent.press(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`))
+
+        expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap')
+      })
+    })
   })
 })
