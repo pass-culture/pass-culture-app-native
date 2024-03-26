@@ -45,7 +45,8 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
       setSelectedDate(movieScreeningDates[0])
       flatListRef.current?.scrollToOffset({ offset: 0 })
     }
-  }, [flatListRef, movieScreeningDates, offerId, setSelectedDate])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [flatListRef, offerId, setSelectedDate]) // should be triggered by offerIdChange and not by movieScreeningDates
 
   return (
     <React.Fragment>
