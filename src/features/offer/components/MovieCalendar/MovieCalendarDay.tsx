@@ -60,7 +60,7 @@ const DefaultCalendarText = styled(Typo.ButtonText)<{ isDesktopViewport?: boolea
   ({ theme, isDesktopViewport }) => ({
     color: theme.colors.greyDark,
     textAlign: 'center',
-    width: getSpacing(isDesktopViewport ? 25 : 10),
+    width: getSpacing(isDesktopViewport ? 22 : 10),
   })
 )
 
