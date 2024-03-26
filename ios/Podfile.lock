@@ -16,8 +16,8 @@ PODS:
     - Batch (~> 1.19)
     - Firebase/Analytics
   - boost (1.76.0)
-  - BVLinearGradient (2.5.6):
-    - React
+  - BVLinearGradient (2.8.3):
+    - React-Core
   - CocoaAsyncSocket (7.6.5)
   - CodePush (8.1.0):
     - Base64 (~> 1.1)
@@ -1071,7 +1071,7 @@ SPEC CHECKSUMS:
   Batch: 0a7afbf8bcbc2f1a97c7a599760ad998e5ee4ebb
   BatchFirebaseDispatcher: 6758d8dc969b75c667908d922b708ab942690fc0
   boost: 7dcd2de282d72e344012f7d6564d024930a6a440
-  BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
+  BVLinearGradient: 880f91a7854faff2df62518f0281afb1c60d49a3
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   CodePush: 255d7607f428dcbec39085f81a206b170e01d012
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
