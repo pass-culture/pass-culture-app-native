@@ -8,7 +8,7 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates } from 'libs/location'
-import { LocationMode } from 'libs/location/types'
+import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { render, screen } from 'tests/utils/web'
 
@@ -17,7 +17,7 @@ const searchId = uuidv4()
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 const mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 
-const mockUseLocation = jest.fn(() => ({
+const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => ({
   geolocPosition: mockPosition,
   selectedLocationMode: LocationMode.EVERYWHERE,
 }))

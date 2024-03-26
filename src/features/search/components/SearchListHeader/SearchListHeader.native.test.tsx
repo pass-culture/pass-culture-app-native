@@ -13,7 +13,7 @@ import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates } from 'libs/location'
-import { LocationMode } from 'libs/location/types'
+import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -22,16 +22,14 @@ import { SearchListHeader } from './SearchListHeader'
 const searchId = uuidv4()
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
-let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
-const mockShowGeolocPermissionModal = jest.fn()
-let mockSelectedLocationMode = LocationMode.EVERYWHERE
+const mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 
+const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => ({
+  geolocPosition: mockPosition,
+  selectedLocationMode: LocationMode.EVERYWHERE,
+}))
 jest.mock('libs/location/LocationWrapper', () => ({
-  useLocation: () => ({
-    geolocPosition: mockPosition,
-    showGeolocPermissionModal: mockShowGeolocPermissionModal,
-    selectedLocationMode: mockSelectedLocationMode,
-  }),
+  useLocation: () => mockUseLocation(),
 }))
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
@@ -62,11 +60,12 @@ const kourou: SuggestedPlace = {
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 
-let mockSearchState: SearchState = initialSearchState
-
-const mockDispatch = jest.fn()
+const mockSearchState: SearchState = initialSearchState
+const mockUseSearch = jest.fn(() => ({
+  searchState: initialSearchState,
+}))
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
+  useSearch: () => mockUseSearch(),
 }))
 
 describe('<SearchListHeader />', () => {
@@ -75,13 +74,10 @@ describe('<SearchListHeader />', () => {
     useFeatureFlagSpy.mockReturnValue(false)
   })
 
-  afterEach(() => {
-    mockSearchState = initialSearchState
-    mockSelectedLocationMode = LocationMode.EVERYWHERE
-  })
-
   it('should display the number of results', () => {
-    mockSearchState = { ...mockSearchState, searchId }
+    mockUseSearch.mockReturnValueOnce({
+      searchState: { ...mockSearchState, searchId },
+    })
 
     render(
       <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
@@ -121,7 +117,10 @@ describe('<SearchListHeader />', () => {
   })
 
   it('should display the geolocation incitation button when position is null', () => {
-    mockPosition = null
+    mockUseLocation.mockReturnValueOnce({
+      geolocPosition: null,
+      selectedLocationMode: LocationMode.EVERYWHERE,
+    })
     render(
       <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
     )
@@ -172,8 +171,14 @@ describe('<SearchListHeader />', () => {
   `(
     'should trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is $locationType with isLocated param = $isLocated',
     ({ locationFilter, isLocated }) => {
-      mockSearchState = { ...mockSearchState, searchId, locationFilter }
-      mockSelectedLocationMode = locationFilter?.locationType ?? LocationMode.EVERYWHERE
+      mockUseSearch.mockReturnValueOnce({
+        searchState: { ...mockSearchState, searchId, locationFilter },
+      })
+      mockUseLocation.mockReturnValueOnce({
+        geolocPosition: mockPosition,
+        selectedLocationMode: locationFilter?.locationType ?? LocationMode.EVERYWHERE,
+      })
+
       render(
         <SearchListHeader
           nbHits={10}
@@ -192,11 +197,13 @@ describe('<SearchListHeader />', () => {
   )
 
   it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is VENUE with isLocated param = true', () => {
-    mockSearchState = {
-      ...mockSearchState,
-      searchId,
-      venue: mockAlgoliaVenues[0] as unknown as Venue,
-    }
+    mockUseSearch.mockReturnValueOnce({
+      searchState: {
+        ...mockSearchState,
+        searchId,
+        venue: mockAlgoliaVenues[0] as unknown as Venue,
+      },
+    })
     render(
       <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
     )
@@ -205,7 +212,9 @@ describe('<SearchListHeader />', () => {
   })
 
   it('should trigger AllTilesSeen log when there are venues', async () => {
-    mockSearchState = { ...mockSearchState, searchId }
+    mockUseSearch.mockReturnValueOnce({
+      searchState: { ...mockSearchState, searchId },
+    })
     render(
       <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
     )
@@ -244,7 +253,9 @@ describe('<SearchListHeader />', () => {
   })
 
   it('should not trigger AllTilesSeen log when there are not venues', () => {
-    mockSearchState = { ...mockSearchState, searchId }
+    mockUseSearch.mockReturnValueOnce({
+      searchState: { ...mockSearchState, searchId },
+    })
     render(<SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={[]} />)
 
     expect(analytics.logAllTilesSeen).not.toHaveBeenCalled()
@@ -294,12 +305,13 @@ describe('<SearchListHeader />', () => {
     })
 
     it('should not display see map button when user is not located and there is a venues playlist', () => {
-      mockSearchState = {
-        ...mockSearchState,
-        searchId,
-        locationFilter: { locationType: LocationMode.EVERYWHERE },
-      }
-      mockSelectedLocationMode = LocationMode.EVERYWHERE
+      mockUseSearch.mockReturnValueOnce({
+        searchState: {
+          ...mockSearchState,
+          searchId,
+          locationFilter: { locationType: LocationMode.EVERYWHERE },
+        },
+      })
       render(
         <SearchListHeader
           nbHits={10}
@@ -315,12 +327,18 @@ describe('<SearchListHeader />', () => {
     })
 
     it('should display see map button when user location mode is around me and there is a venues playlist', () => {
-      mockSearchState = {
-        ...mockSearchState,
-        searchId,
-        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
-      }
-      mockSelectedLocationMode = LocationMode.AROUND_ME
+      mockUseSearch.mockReturnValueOnce({
+        searchState: {
+          ...mockSearchState,
+          searchId,
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
+        },
+      })
+      mockUseLocation.mockReturnValueOnce({
+        geolocPosition: mockPosition,
+        selectedLocationMode: LocationMode.AROUND_ME,
+      })
+
       render(
         <SearchListHeader
           nbHits={10}
@@ -334,16 +352,22 @@ describe('<SearchListHeader />', () => {
     })
 
     it('should display see map button when user location mode is around place and there is a venues playlist', () => {
-      mockSearchState = {
-        ...mockSearchState,
-        searchId,
-        locationFilter: {
-          locationType: LocationMode.AROUND_PLACE,
-          place: kourou,
-          aroundRadius: MAX_RADIUS,
+      mockUseSearch.mockReturnValueOnce({
+        searchState: {
+          ...mockSearchState,
+          searchId,
+          locationFilter: {
+            locationType: LocationMode.AROUND_PLACE,
+            place: kourou,
+            aroundRadius: MAX_RADIUS,
+          },
         },
-      }
-      mockSelectedLocationMode = LocationMode.AROUND_PLACE
+      })
+      mockUseLocation.mockReturnValueOnce({
+        geolocPosition: mockPosition,
+        selectedLocationMode: LocationMode.AROUND_PLACE,
+      })
+
       render(
         <SearchListHeader
           nbHits={10}
@@ -356,30 +380,31 @@ describe('<SearchListHeader />', () => {
       expect(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)).toBeOnTheScreen()
     })
 
-    describe('When see map button displayed', () => {
-      beforeEach(() => {
-        mockSearchState = {
+    it('should redirect to venue map when pressing see map button', () => {
+      mockUseSearch.mockReturnValueOnce({
+        searchState: {
           ...mockSearchState,
           searchId,
           locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
-        }
-        mockSelectedLocationMode = LocationMode.AROUND_ME
+        },
+      })
+      mockUseLocation.mockReturnValueOnce({
+        geolocPosition: mockPosition,
+        selectedLocationMode: LocationMode.AROUND_ME,
       })
 
-      it('should redirect to venue map when pressing see map button', () => {
-        render(
-          <SearchListHeader
-            nbHits={10}
-            userData={[]}
-            venuesUserData={[]}
-            venues={mockAlgoliaVenues}
-          />
-        )
+      render(
+        <SearchListHeader
+          nbHits={10}
+          userData={[]}
+          venuesUserData={[]}
+          venues={mockAlgoliaVenues}
+        />
+      )
 
-        fireEvent.press(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`))
+      fireEvent.press(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`))
 
-        expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap')
-      })
+      expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap')
     })
   })
 })
