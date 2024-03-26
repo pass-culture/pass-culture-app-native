@@ -3,6 +3,7 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: "Bienvenue\_!"
 - tapOn: "Débloque tes 300\_€"
 
+
 - assertVisible: "C'est très rapide\_!"
 - tapOn: "Numéro de téléphone"
 
@@ -23,6 +24,7 @@ appId: ${MAESTRO_APP_ID}
 - inputRandomNumber:
     length: 6
 - tapOn: "Continuer"
+
 
 - assertVisible: "C'est très rapide\_!"
 - tapOn: "Profil non complété"

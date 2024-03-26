@@ -72,6 +72,28 @@ const defaultOfferResponse: OfferResponse = {
 }
 
 describe('Movie screening calendar', () => {
+  it('should render <MovieScreeningCalendar /> with screening ordered by hours', async () => {
+    renderMovieScreeningCalendar({
+      offer: {
+        ...defaultOfferResponse,
+        stocks: [
+          defaultOfferStockResponse,
+          { ...defaultOfferStockResponse, beginningDatetime: '2024-02-27T13:20:00Z' },
+          { ...defaultOfferStockResponse, beginningDatetime: '2024-02-27T10:20:00Z' },
+          { ...defaultOfferStockResponse, beginningDatetime: '2024-02-27T12:20:00Z' },
+          { ...defaultOfferStockResponse, beginningDatetime: '2024-02-27T12:00:00Z' },
+          { ...defaultOfferStockResponse, beginningDatetime: '2024-02-27T00:10:00Z' },
+          { ...defaultOfferStockResponse, beginningDatetime: '2024-02-27T00:00:00Z' },
+        ],
+      },
+      isDesktopViewport: true,
+    })
+
+    await screen.findByLabelText('Mardi 27 février')
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should render <MovieScreeningCalendar /> without duplicated screening dates', async () => {
     renderMovieScreeningCalendar({
       offer: {
@@ -281,9 +303,14 @@ describe('Movie screening calendar', () => {
 const renderMovieScreeningCalendar = ({
   offer = offerResponseSnap,
   subcategory = mockSubcategory,
+  isDesktopViewport = false,
 }: {
   offer: OfferResponse
   subcategory?: Subcategory
+  isDesktopViewport?: boolean
 }) => {
-  render(reactQueryProviderHOC(<MovieScreeningCalendar offer={offer} subcategory={subcategory} />))
+  render(
+    reactQueryProviderHOC(<MovieScreeningCalendar offer={offer} subcategory={subcategory} />),
+    { theme: { isDesktopViewport: isDesktopViewport } }
+  )
 }
