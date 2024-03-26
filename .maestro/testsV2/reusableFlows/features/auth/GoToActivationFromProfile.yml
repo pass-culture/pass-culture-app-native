@@ -1,17 +1,17 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- assertVisible: 'Bienvenue\_!'
-- tapOn: 'Débloque tes 300 €'
+- assertVisible: "Bienvenue\_!"
+- tapOn: "Débloque tes 300\_€"
 
-- assertVisible: "C'est très rapide !"
-- tapOn: 'Numéro de téléphone non complété'
+- assertVisible: "C'est très rapide\_!"
+- tapOn: "Numéro de téléphone"
 
-- assertVisible: 'Quelques conseils'
-- tapOn: 'J’ai compris'
+- assertVisible: "Quelques conseils"
+- tapOn: "J’ai compris"
 
-- assertVisible: 'Quel est ton numéro de téléphone ?'
+- assertVisible: "Quel est ton numéro de téléphone\_?"
 - tapOn:
-    id: 'Entrée pour le numéro de téléphone'
+    id: "Entrée pour le numéro de téléphone"
 - inputText: '07' # Phone number prefix
 - inputRandomNumber:
     length: 8
@@ -24,5 +24,5 @@ appId: ${MAESTRO_APP_ID}
     length: 6
 - tapOn: "Continuer"
 
-- assertVisible: "C'est très rapide !"
+- assertVisible: "C'est très rapide\_!"
 - tapOn: "Profil non complété"
