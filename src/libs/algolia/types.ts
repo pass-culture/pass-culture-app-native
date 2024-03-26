@@ -51,7 +51,6 @@ export type SearchQueryParameters = {
   maxPrice?: string
   minBookingsThreshold?: number
   minPrice?: string
-  noFocus?: boolean
   offerCategories: SearchGroupNameEnumv2[]
   offerGenreTypes?: OfferGenreType[]
   offerGtlLabel?: string

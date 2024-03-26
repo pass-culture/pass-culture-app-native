@@ -106,13 +106,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchState.query])
 
-  useEffect(() => {
-    if (appEnableAutocomplete === undefined) return
-    if (!searchState.noFocus && searchState.view === SearchView.Results && !appEnableAutocomplete) {
-      inputRef.current?.focus()
-    }
-  }, [appEnableAutocomplete, searchState.query, searchState.view, searchState.noFocus])
-
   const resetQuery = useCallback(() => {
     inputRef.current?.focus()
     clear()

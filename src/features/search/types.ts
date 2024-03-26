@@ -52,7 +52,6 @@ export interface SearchState {
   tags: string[]
   query: string
   view: SearchView
-  noFocus?: boolean
   minPrice?: string
   maxPrice?: string
   searchId?: string
