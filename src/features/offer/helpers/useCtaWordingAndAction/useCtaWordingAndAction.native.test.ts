@@ -1,8 +1,15 @@
 import mockdate from 'mockdate'
 
-import { OfferResponse, YoungStatusType, SubscriptionStatus, SearchGroupNameEnumv2 } from 'api/gen'
+import {
+  OfferResponse,
+  YoungStatusType,
+  SubscriptionStatus,
+  SearchGroupNameEnumv2,
+  SubcategoryIdEnum,
+} from 'api/gen'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Subcategory } from 'libs/subcategories/types'
 import { OfferModal } from 'shared/offer/enums'
@@ -10,6 +17,25 @@ import { OfferModal } from 'shared/offer/enums'
 import { getCtaWordingAndAction } from './useCtaWordingAndAction'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
+const CineScreeningOffer = {
+  ...baseOffer,
+  subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+}
+
+const defaultParameters = {
+  isLoggedIn: true,
+  userStatus: { statusType: YoungStatusType.non_eligible },
+  isBeneficiary: false,
+  hasEnoughCredit: false,
+  bookedOffers: {},
+  isUnderageBeneficiary: false,
+  bookOffer: () => {},
+  isBookingLoading: false,
+  booking: undefined,
+  isDepositExpired: false,
+}
 
 describe('getCtaWordingAndAction', () => {
   describe('logged out user', () => {
@@ -636,6 +662,91 @@ describe('getCtaWordingAndAction', () => {
       if (onPress) onPress()
 
       expect(analytics.logConsultErrorApplicationModal).toHaveBeenNthCalledWith(1, baseOffer.id)
+    })
+
+    describe('When WIP_ENABLE_NEW_XP_CINE_FROM_OFFER feature flag activated', () => {
+      it('should return bottomBannerText and no wording if user is not eligible', async () => {
+        const result = getCtaWordingAndAction({
+          ...defaultParameters,
+          offer: CineScreeningOffer,
+          subcategory: buildSubcategory({}),
+          enableNewXpCine: true,
+        })
+
+        expect(result).toEqual({
+          bottomBannerText:
+            'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
+        })
+      })
+
+      it('should return bottomBannerText and no wording if user has expired credit', async () => {
+        const result = getCtaWordingAndAction({
+          ...defaultParameters,
+          userStatus: { statusType: YoungStatusType.ex_beneficiary },
+          isBeneficiary: false,
+          offer: CineScreeningOffer,
+          subcategory: buildSubcategory({}),
+          enableNewXpCine: true,
+          isDepositExpired: true,
+        })
+
+        expect(result).toEqual({
+          bottomBannerText: 'Tu ne peux pas réserver cette offre car ton crédit a expiré.',
+        })
+      })
+
+      it('should return bottomBannerText and no wording if user has not enough credit', async () => {
+        const result = getCtaWordingAndAction({
+          ...defaultParameters,
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer: CineScreeningOffer,
+          subcategory: buildSubcategory({}),
+          enableNewXpCine: true,
+          hasEnoughCredit: false,
+        })
+
+        expect(result).toEqual({
+          bottomBannerText: 'Tu ne peux pas réserver cette offre car ton crédit est insuffisant.',
+        })
+      })
+
+      it('should return bottomBannerText and wording if user has already booked this offer', async () => {
+        const result = getCtaWordingAndAction({
+          ...defaultParameters,
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer: CineScreeningOffer,
+          bookedOffers: { [baseOffer.id]: 116656 },
+          subcategory: buildSubcategory({}),
+          enableNewXpCine: true,
+          hasEnoughCredit: true,
+        })
+
+        expect(result).toEqual({
+          wording: 'Voir ma réservation',
+          bottomBannerText: 'Tu ne peux reserver ce film qu’une seule fois.',
+          navigateTo: {
+            fromRef: true,
+            params: {
+              id: 116656,
+            },
+            screen: 'BookingDetails',
+          },
+        })
+      })
+
+      it('should return no bottomBannerText and no wording if user is not connected', async () => {
+        const result = getCtaWordingAndAction({
+          ...defaultParameters,
+          isLoggedIn: false,
+          offer: CineScreeningOffer,
+          subcategory: buildSubcategory({}),
+          enableNewXpCine: true,
+        })
+
+        expect(result).toEqual(undefined)
+      })
     })
   })
 })
