@@ -28,21 +28,6 @@ export const CAPITALIZED_SHORT_MONTHS = [
   'Déc.',
 ] as const
 
-export const SHORT_MONTHS = [
-  'janv.',
-  'févr.',
-  'mars',
-  'avr.',
-  'mai',
-  'juin',
-  'juill.',
-  'août',
-  'sept.',
-  'oct.',
-  'nov.',
-  'déc.',
-] as const
-
 export const MONTHS = [
   'janvier',
   'février',
@@ -59,6 +44,5 @@ export const MONTHS = [
 ] as const
 
 export type FullMonth = typeof MONTHS[number]
-export type ShortMonth = typeof SHORT_MONTHS[number]
 export type CapitalizedMonth = typeof CAPITALIZED_MONTHS[number]
 export type CapitalizedShortMonth = typeof CAPITALIZED_SHORT_MONTHS[number]

@@ -27,13 +27,13 @@ describe('<MovieCalendar/>', () => {
   })
 
   describe('Dates format', () => {
-    it('should display the short days of weeks on a mobile screen', async () => {
+    it('should display the short days of weeks on a mobile screen', () => {
       renderMovieCalendar(dummyDates, { isDesktopViewport: false })
 
       expect(screen.getAllByText('Mar.').length).toBeGreaterThan(0)
     })
 
-    it('should display the full days of weeks on a desktop screen', async () => {
+    it('should display the full days of weeks on a desktop screen', () => {
       renderMovieCalendar(dummyDates, { isDesktopViewport: true })
 
       expect(screen.getAllByText('Mardi').length).toBeGreaterThan(0)
@@ -41,7 +41,7 @@ describe('<MovieCalendar/>', () => {
   })
 
   describe('Right arrow button', () => {
-    it('should appear when the component renders before any user interaction', async () => {
+    it('should appear when the component renders before any user interaction', () => {
       renderMovieCalendar(dummyDates, { isDesktopViewport: true })
 
       fireEvent.scroll(screen.getByTestId('movie-calendar-flat-list'), {
@@ -55,7 +55,7 @@ describe('<MovieCalendar/>', () => {
       expect(screen.getByTestId('movie-calendar-right-arrow')).toBeOnTheScreen()
     })
 
-    it('should not appear when the content reached the end', async () => {
+    it('should not appear when the content reached the end', () => {
       renderMovieCalendar(dummyDates, { isDesktopViewport: true })
 
       fireEvent.scroll(screen.getByTestId('movie-calendar-flat-list'), {
@@ -71,7 +71,7 @@ describe('<MovieCalendar/>', () => {
   })
 
   describe('Left arrow button', () => {
-    it('should not appear when the component renders before any user interaction', async () => {
+    it('should not appear when the component renders before any user interaction', () => {
       renderMovieCalendar(dummyDates, { isDesktopViewport: true })
 
       fireEvent.scroll(screen.getByTestId('movie-calendar-flat-list'), {
@@ -85,7 +85,7 @@ describe('<MovieCalendar/>', () => {
       expect(screen.queryByTestId('movie-calendar-left-arrow')).not.toBeOnTheScreen()
     })
 
-    it('should appear when the content is scrolled', async () => {
+    it('should appear when the content is scrolled', () => {
       renderMovieCalendar(dummyDates, { isDesktopViewport: true })
 
       fireEvent.scroll(screen.getByTestId('movie-calendar-flat-list'), {
