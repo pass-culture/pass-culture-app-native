@@ -107,6 +107,12 @@ export const useSelectedDateScreening = (
     ]
   )
 
+  const convertToMinutes = (time: string): number => {
+    const [hours, minutes] = time.split('h').map(Number)
+    if (hours === undefined || minutes === undefined) return 0
+    return hours * 60 + minutes
+  }
+
   const selectedDateScreenings = useMemo(
     () => (offerVenueId: number, onPressOfferCTA?: () => void) => {
       if (!selectedScreeningStock) {
@@ -115,7 +121,11 @@ export const useSelectedDateScreening = (
 
       return selectedScreeningStock
         .map((screening) => mapScreeningsToEventCardProps(screening, offerVenueId, onPressOfferCTA))
-        .filter(Boolean) as EventCardProps[]
+        .filter(Boolean)
+        .sort(
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- filter(Boolean) removes undefined
+          (a, b) => convertToMinutes(a!.title) - convertToMinutes(b!.title)
+        ) as EventCardProps[]
     },
     [selectedScreeningStock, mapScreeningsToEventCardProps]
   )
