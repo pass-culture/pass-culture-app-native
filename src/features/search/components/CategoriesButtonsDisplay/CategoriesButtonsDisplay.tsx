@@ -6,7 +6,7 @@ import {
   CategoryButton,
   CategoryButtonProps,
 } from 'features/search/components/CategoryButton/CategoryButton'
-import { VenueMapBlock } from 'features/venuemap/components/VenueMapBlock/VenueMapBlock'
+import { VenueMapBlock } from 'features/toto/components/VenueMapBlock/VenueMapBlock'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
