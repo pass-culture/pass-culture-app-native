@@ -430,7 +430,6 @@ ton crédit
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
-                          "marginLeft": 0,
                           "maxWidth": "100%",
                         },
                       ]
@@ -528,6 +527,16 @@ ton crédit
                         button-icon-left-SVG-Mock
                       </Text>
                     </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        [
+                          {
+                            "width": 8,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <Text
                     adjustsFontSizeToFit={false}
@@ -539,7 +548,6 @@ ton crédit
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
-                          "marginLeft": 8,
                           "maxWidth": "100%",
                         },
                       ]

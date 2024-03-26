@@ -30,9 +30,6 @@ export const ButtonSecondaryWhite = styledButton(AppButton).attrs<BaseButtonProp
         ? theme.buttons.disabled.secondaryWhite.textColor
         : theme.buttons.secondaryWhite.textColor,
       fontSize: textSize,
-      marginLeft: icon
-        ? theme.buttons.secondaryWhite.marginLeftWithIcon
-        : theme.buttons.secondaryWhite.marginLeft,
     })
 
     return {

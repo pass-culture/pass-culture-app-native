@@ -7,7 +7,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { FakeDoorModal } from 'ui/components/modals/FakeDoorModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -30,7 +30,8 @@ export const OfferArtists: FunctionComponent<Props> = ({
 
   return shouldDisplayFakeDoor ? (
     <FakeDoorContainer>
-      <Typo.ButtonTextNeutralInfo>de </Typo.ButtonTextNeutralInfo>
+      <Typo.ButtonTextNeutralInfo>de</Typo.ButtonTextNeutralInfo>
+      <Spacer.Row numberOfSpaces={2} />
       <ButtonTertiaryBlack
         wording={artists}
         icon={ArrowNext}

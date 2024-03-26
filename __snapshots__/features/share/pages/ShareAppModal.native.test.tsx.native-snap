@@ -441,6 +441,16 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
                       button-icon-left-SVG-Mock
                     </Text>
                   </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
                 </View>
                 <Text
                   adjustsFontSizeToFit={false}
@@ -452,7 +462,6 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
-                        "marginLeft": 4,
                         "maxWidth": "100%",
                       },
                     ]
@@ -923,6 +932,16 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
                       button-icon-left-SVG-Mock
                     </Text>
                   </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
                 </View>
                 <Text
                   adjustsFontSizeToFit={false}
@@ -934,7 +953,6 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
-                        "marginLeft": 4,
                         "maxWidth": "100%",
                       },
                     ]
@@ -1407,6 +1425,16 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
                       button-icon-left-SVG-Mock
                     </Text>
                   </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
                 </View>
                 <Text
                   adjustsFontSizeToFit={false}
@@ -1418,7 +1446,6 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
-                        "marginLeft": 4,
                         "maxWidth": "100%",
                       },
                     ]

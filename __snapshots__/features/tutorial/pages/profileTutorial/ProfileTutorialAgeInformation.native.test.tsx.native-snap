@@ -2542,6 +2542,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                     button-icon-left-SVG-Mock
                   </Text>
                 </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
               </View>
               <Text
                 adjustsFontSizeToFit={false}
@@ -2553,7 +2563,6 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
-                      "marginLeft": 4,
                       "maxWidth": "100%",
                     },
                   ]
@@ -5604,6 +5613,16 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                     button-icon-left-SVG-Mock
                   </Text>
                 </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
               </View>
               <Text
                 adjustsFontSizeToFit={false}
@@ -5615,7 +5634,6 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
-                      "marginLeft": 4,
                       "maxWidth": "100%",
                     },
                   ]

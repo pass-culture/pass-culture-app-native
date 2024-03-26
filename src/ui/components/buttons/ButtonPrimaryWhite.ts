@@ -26,9 +26,6 @@ export const ButtonPrimaryWhite = styledButton(AppButton).attrs<BaseButtonProps>
         ? theme.buttons.disabled.primaryWhite.textColor
         : theme.buttons.primaryWhite.textColor,
       fontSize: textSize,
-      marginLeft: icon
-        ? theme.buttons.primaryWhite.marginLeftWithIcon
-        : theme.buttons.primaryWhite.marginLeft,
     })
 
     return {

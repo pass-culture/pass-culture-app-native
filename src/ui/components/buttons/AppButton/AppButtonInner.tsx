@@ -25,6 +25,7 @@ export function AppButtonInner({
           {!!(iconPosition === 'left' && Icon) && (
             <IconWrapper>
               <Icon testID="button-icon-left" />
+              <Spacer.Row numberOfSpaces={2} />
             </IconWrapper>
           )}
           {!!Title && (
@@ -37,7 +38,7 @@ export function AppButtonInner({
           )}
           {!!(iconPosition === 'right' && Icon) && (
             <IconWrapper>
-              <Spacer.Row numberOfSpaces={1} />
+              <Spacer.Row numberOfSpaces={2} />
               <Icon testID="button-icon-right" />
             </IconWrapper>
           )}

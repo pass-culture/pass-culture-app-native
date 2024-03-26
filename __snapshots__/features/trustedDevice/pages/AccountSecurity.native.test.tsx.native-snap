@@ -363,7 +363,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 0,
               "maxWidth": "100%",
             },
           ]
@@ -455,7 +454,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 0,
               "maxWidth": "100%",
             },
           ]
@@ -554,6 +552,16 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             button-icon-left-SVG-Mock
           </Text>
         </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "width": 8,
+              },
+            ]
+          }
+        />
       </View>
       <Text
         adjustsFontSizeToFit={false}
@@ -565,7 +573,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 8,
               "maxWidth": "100%",
             },
           ]
@@ -953,7 +960,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 0,
               "maxWidth": "100%",
             },
           ]
@@ -1052,6 +1058,16 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
             button-icon-left-SVG-Mock
           </Text>
         </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "width": 8,
+              },
+            ]
+          }
+        />
       </View>
       <Text
         adjustsFontSizeToFit={false}
@@ -1063,7 +1079,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 8,
               "maxWidth": "100%",
             },
           ]
@@ -1451,7 +1466,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 0,
               "maxWidth": "100%",
             },
           ]
@@ -1543,7 +1557,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 0,
               "maxWidth": "100%",
             },
           ]
@@ -1642,6 +1655,16 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             button-icon-left-SVG-Mock
           </Text>
         </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "width": 8,
+              },
+            ]
+          }
+        />
       </View>
       <Text
         adjustsFontSizeToFit={false}
@@ -1653,7 +1676,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 8,
               "maxWidth": "100%",
             },
           ]

@@ -237,9 +237,12 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
                     button-icon-left-SVG-Mock
                   </div>
                 </div>
+                <div
+                  class="css-view-175oi2r r-width-1jg9483"
+                />
               </div>
               <div
-                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
                 dir="ltr"
               >
                 En savoir plus
@@ -264,7 +267,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
               class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
             >
               <div
-                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
                 dir="ltr"
               >
                 Débuter le questionnaire
@@ -298,9 +301,12 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
                     button-icon-left-SVG-Mock
                   </div>
                 </div>
+                <div
+                  class="css-view-175oi2r r-width-1jg9483"
+                />
               </div>
               <div
-                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
                 dir="ltr"
               >
                 Plus tard
@@ -547,9 +553,12 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
                   button-icon-left-SVG-Mock
                 </div>
               </div>
+              <div
+                class="css-view-175oi2r r-width-1jg9483"
+              />
             </div>
             <div
-              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
               dir="ltr"
             >
               En savoir plus
@@ -574,7 +583,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
             class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
           >
             <div
-              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-11wrixw r-maxWidth-dnmrzs"
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
               dir="ltr"
             >
               Débuter le questionnaire
@@ -608,9 +617,12 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
                   button-icon-left-SVG-Mock
                 </div>
               </div>
+              <div
+                class="css-view-175oi2r r-width-1jg9483"
+              />
             </div>
             <div
-              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
               dir="ltr"
             >
               Plus tard

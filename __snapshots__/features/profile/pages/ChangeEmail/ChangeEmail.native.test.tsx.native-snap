@@ -775,7 +775,6 @@ exports[`<ChangeEmail/> email change already in progress should render correctly
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "marginLeft": 0,
                         "maxWidth": "100%",
                       },
                     ]
@@ -1518,7 +1517,6 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "marginLeft": 0,
                         "maxWidth": "100%",
                       },
                     ]

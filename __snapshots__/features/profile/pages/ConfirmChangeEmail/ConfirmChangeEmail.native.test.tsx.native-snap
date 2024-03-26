@@ -157,7 +157,6 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is active 1`] = 
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 0,
               "maxWidth": "100%",
             },
           ]
@@ -256,6 +255,16 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is active 1`] = 
             button-icon-left-SVG-Mock
           </Text>
         </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "width": 8,
+              },
+            ]
+          }
+        />
       </View>
       <Text
         adjustsFontSizeToFit={false}
@@ -267,7 +276,6 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is active 1`] = 
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 8,
               "maxWidth": "100%",
             },
           ]
@@ -449,7 +457,6 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is disabled 1`] 
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 0,
               "maxWidth": "100%",
             },
           ]
@@ -548,6 +555,16 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is disabled 1`] 
             button-icon-left-SVG-Mock
           </Text>
         </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "width": 8,
+              },
+            ]
+          }
+        />
       </View>
       <Text
         adjustsFontSizeToFit={false}
@@ -559,7 +576,6 @@ exports[`<ConfirmChangeEmail /> should render correctly when FF is disabled 1`] 
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 8,
               "maxWidth": "100%",
             },
           ]

@@ -2126,7 +2126,6 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
-                      "marginLeft": 0,
                       "maxWidth": "100%",
                     },
                   ]
@@ -4327,7 +4326,6 @@ exports[`NotificationSettings should render correctly when user is not logged in
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
-                      "marginLeft": 0,
                       "maxWidth": "100%",
                     },
                   ]

@@ -311,7 +311,6 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 0,
                   "maxWidth": "100%",
                 },
               ]
@@ -409,6 +408,16 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
                 button-icon-left-SVG-Mock
               </Text>
             </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -420,7 +429,6 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 8,
                   "maxWidth": "100%",
                 },
               ]

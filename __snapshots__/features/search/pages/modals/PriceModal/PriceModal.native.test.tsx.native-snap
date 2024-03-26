@@ -1185,6 +1185,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       button-icon-left-SVG-Mock
                     </Text>
                   </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
                 </View>
                 <Text
                   adjustsFontSizeToFit={false}
@@ -1196,7 +1206,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
-                        "marginLeft": 4,
                         "maxWidth": "100%",
                       },
                     ]
@@ -1286,7 +1295,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "marginLeft": 0,
                         "maxWidth": "100%",
                       },
                     ]

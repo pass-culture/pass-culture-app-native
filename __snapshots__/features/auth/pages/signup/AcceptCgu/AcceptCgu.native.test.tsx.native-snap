@@ -333,6 +333,16 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             button-icon-left-SVG-Mock
           </Text>
         </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "width": 8,
+              },
+            ]
+          }
+        />
       </View>
       <Text
         adjustsFontSizeToFit={false}
@@ -344,7 +354,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
-              "marginLeft": 4,
               "maxWidth": "100%",
             },
           ]
@@ -434,6 +443,16 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
             button-icon-left-SVG-Mock
           </Text>
         </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "width": 8,
+              },
+            ]
+          }
+        />
       </View>
       <Text
         adjustsFontSizeToFit={false}
@@ -445,7 +464,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
-              "marginLeft": 4,
               "maxWidth": "100%",
             },
           ]
@@ -645,7 +663,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 0,
               "maxWidth": "100%",
             },
           ]

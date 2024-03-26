@@ -379,7 +379,6 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible ov
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 0,
                   "maxWidth": "100%",
                 },
               ]
@@ -769,6 +768,16 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
                 button-icon-left-SVG-Mock
               </Text>
             </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -780,7 +789,6 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 8,
                   "maxWidth": "100%",
                 },
               ]
@@ -894,7 +902,6 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 0,
                   "maxWidth": "100%",
                 },
               ]
@@ -1300,7 +1307,6 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 0,
                   "maxWidth": "100%",
                 },
               ]
@@ -1705,7 +1711,6 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 0,
                   "maxWidth": "100%",
                 },
               ]
