@@ -13,10 +13,13 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Rechercher'
 - tapOn:
     id: '.*Voir tous les filtres.*'
-- tapOn: 'Duo'
+- tapOn:
+    id: "FilterRow"
+    index: 1
 - tapOn:
     id: "Interrupteur limitDuoOfferSearch"
 - tapOn: "Appliquer le filtre"
 - tapOn: "Rechercher"
+
 - tapOn: 'Ma position'
 - tapOn: 'Partout'

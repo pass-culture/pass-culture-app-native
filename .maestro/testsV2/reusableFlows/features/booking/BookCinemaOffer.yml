@@ -6,6 +6,16 @@ appId: ${MAESTRO_APP_ID}
     below:
       text: .*résultats
 
+- repeat: #Vérifier que l'offre est bien réservable
+    while:
+      notVisible: 'Voir les disponibilités'
+    commands:
+      - pressKey: back
+      - scroll
+      - tapOn:
+          text: "Séances de cinéma"
+          index: 0
+
 - tapOn: "Voir les disponibilités"
 
 - assertVisible: "Date"
@@ -22,6 +32,16 @@ appId: ${MAESTRO_APP_ID}
     below:
       text: "Horaire"
 - tapOn: "Valider lʼhoraire"
+
+- runFlow: #Si différentes gamme de prix pour l'offre
+    when:
+      visible: "Prix"
+    commands:
+        - tapOn:
+            label: "Sélection du 1er prix disponible"
+            below:
+              text: "Prix"
+        - tapOn: "Valider le prix"
 
 - assertVisible: "Nombre de places"
 - tapOn: "Solo"

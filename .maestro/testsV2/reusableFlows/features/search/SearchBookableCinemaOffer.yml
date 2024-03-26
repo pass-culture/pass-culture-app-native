@@ -11,5 +11,17 @@ appId: ${MAESTRO_APP_ID}
 
 - assertVisible: 'Séances de cinéma'
 - tapOn: 'Rechercher'
+
+- tapOn:
+    id: '.*Voir tous les filtres.*'
+- tapOn: "Dates & heures"
+
+- assertVisible: "Dates & heures"
+- tapOn:
+    id: "Interrupteur date"
+- tapOn: "Cette semaine"
+- tapOn: "Appliquer le filtre"
+- tapOn: "Rechercher"
+
 - tapOn: "Ma position"
 - tapOn: "Partout"
