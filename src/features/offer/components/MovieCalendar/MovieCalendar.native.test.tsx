@@ -29,14 +29,12 @@ describe('<MovieCalendar/>', () => {
   describe('Dates format', () => {
     it('should display the short days of weeks on a mobile screen', async () => {
       renderMovieCalendar(dummyDates, { isDesktopViewport: false })
-      await act(async () => {})
 
       expect(screen.getAllByText('Mar.').length).toBeGreaterThan(0)
     })
 
     it('should display the full days of weeks on a desktop screen', async () => {
       renderMovieCalendar(dummyDates, { isDesktopViewport: true })
-      await act(async () => {})
 
       expect(screen.getAllByText('Mardi').length).toBeGreaterThan(0)
     })
@@ -54,9 +52,7 @@ describe('<MovieCalendar/>', () => {
         },
       })
 
-      await act(async () => {})
-
-      expect(screen.queryByTestId('movie-calendar-right-arrow')).toBeOnTheScreen()
+      expect(screen.getByTestId('movie-calendar-right-arrow')).toBeOnTheScreen()
     })
 
     it('should not appear when the content reached the end', async () => {
@@ -69,8 +65,6 @@ describe('<MovieCalendar/>', () => {
           layoutMeasurement: { width: 800 },
         },
       })
-
-      await act(async () => {})
 
       expect(screen.queryByTestId('movie-calendar-right-arrow')).not.toBeOnTheScreen()
     })
@@ -88,8 +82,6 @@ describe('<MovieCalendar/>', () => {
         },
       })
 
-      await act(async () => {})
-
       expect(screen.queryByTestId('movie-calendar-left-arrow')).not.toBeOnTheScreen()
     })
 
@@ -104,9 +96,7 @@ describe('<MovieCalendar/>', () => {
         },
       })
 
-      await act(async () => {})
-
-      expect(screen.queryByTestId('movie-calendar-left-arrow')).toBeOnTheScreen()
+      expect(screen.getByTestId('movie-calendar-left-arrow')).toBeOnTheScreen()
     })
   })
 })
