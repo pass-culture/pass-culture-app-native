@@ -639,6 +639,16 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
                   button-icon-left-SVG-Mock
                 </Text>
               </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
             </View>
             <Text
               adjustsFontSizeToFit={false}
@@ -650,7 +660,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 16,
-                    "marginLeft": 4,
                     "maxWidth": "100%",
                   },
                 ]
@@ -740,6 +749,16 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
                   button-icon-left-SVG-Mock
                 </Text>
               </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
             </View>
             <Text
               adjustsFontSizeToFit={false}
@@ -751,7 +770,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 16,
-                    "marginLeft": 4,
                     "maxWidth": "100%",
                   },
                 ]
@@ -951,7 +969,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginLeft": 0,
                     "maxWidth": "100%",
                   },
                 ]
@@ -1685,7 +1702,6 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
-                      "marginLeft": 0,
                       "maxWidth": "100%",
                     },
                   ]
@@ -2235,7 +2251,6 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginLeft": 0,
                     "maxWidth": "100%",
                   },
                 ]
@@ -3409,7 +3424,6 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginLeft": 0,
                     "maxWidth": "100%",
                   },
                 ]

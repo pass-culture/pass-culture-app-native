@@ -545,6 +545,16 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                 button-icon-left-SVG-Mock
               </Text>
             </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -556,7 +566,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 8,
                   "maxWidth": "100%",
                 },
               ]
@@ -1061,6 +1070,16 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                 button-icon-left-SVG-Mock
               </Text>
             </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -1072,7 +1091,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 8,
                   "maxWidth": "100%",
                 },
               ]

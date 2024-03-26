@@ -29,9 +29,6 @@ export const ButtonQuaternaryBlack = styledButton(AppButton).attrs<BaseButtonPro
       color: disabled
         ? theme.buttons.disabled.quaternaryBlack.textColor
         : theme.buttons.quaternaryBlack.textColor,
-      marginLeft: icon
-        ? theme.buttons.quaternaryBlack.marginLeftWithIcon
-        : theme.buttons.quaternaryBlack.marginLeft,
     })
 
     return {

@@ -1038,6 +1038,16 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
               button-icon-left-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -1049,7 +1059,6 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
-                "marginLeft": 4,
                 "maxWidth": "100%",
               },
             ]
@@ -1528,6 +1537,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 15 yea
               button-icon-left-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -1539,7 +1558,6 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 15 yea
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
-                "marginLeft": 4,
                 "maxWidth": "100%",
               },
             ]
@@ -2018,6 +2036,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 16 yea
               button-icon-left-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -2029,7 +2057,6 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 16 yea
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
-                "marginLeft": 4,
                 "maxWidth": "100%",
               },
             ]
@@ -2508,6 +2535,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 17 yea
               button-icon-left-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -2519,7 +2556,6 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 17 yea
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
-                "marginLeft": 4,
                 "maxWidth": "100%",
               },
             ]
@@ -2919,6 +2955,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
               button-icon-left-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -2930,7 +2976,6 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
-                "marginLeft": 4,
                 "maxWidth": "100%",
               },
             ]
@@ -3330,6 +3375,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
               button-icon-left-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -3341,7 +3396,6 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
-                "marginLeft": 4,
                 "maxWidth": "100%",
               },
             ]
@@ -3741,6 +3795,16 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
               button-icon-left-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -3752,7 +3816,6 @@ exports[`CreditHeader Beneficiary is underage should render correctly with exhau
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
-                "marginLeft": 4,
                 "maxWidth": "100%",
               },
             ]

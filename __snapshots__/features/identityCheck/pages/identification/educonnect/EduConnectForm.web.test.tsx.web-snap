@@ -287,9 +287,12 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                         button-icon-left-SVG-Mock
                       </div>
                     </div>
+                    <div
+                      class="css-view-175oi2r r-width-1jg9483"
+                    />
                   </div>
                   <div
-                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
                     dir="ltr"
                   >
                     Ouvrir un onglet ÉduConnect
@@ -591,9 +594,12 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
                       button-icon-left-SVG-Mock
                     </div>
                   </div>
+                  <div
+                    class="css-view-175oi2r r-width-1jg9483"
+                  />
                 </div>
                 <div
-                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
                   dir="ltr"
                 >
                   Ouvrir un onglet ÉduConnect

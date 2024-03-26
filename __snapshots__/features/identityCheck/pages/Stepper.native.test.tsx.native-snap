@@ -1198,6 +1198,16 @@ exports[`Stepper navigation should render correctly 1`] = `
               button-icon-left-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -1209,7 +1219,6 @@ exports[`Stepper navigation should render correctly 1`] = `
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]

@@ -288,6 +288,16 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
                 button-icon-left-SVG-Mock
               </Text>
             </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -299,7 +309,6 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 8,
                   "maxWidth": "100%",
                 },
               ]
@@ -397,6 +406,16 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
                 button-icon-left-SVG-Mock
               </Text>
             </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -408,7 +427,6 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 8,
                   "maxWidth": "100%",
                 },
               ]

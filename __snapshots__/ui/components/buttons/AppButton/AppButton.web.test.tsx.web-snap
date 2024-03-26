@@ -81,6 +81,9 @@ exports[`AppButton Component * inline property should use inline css style when 
                 button-icon-left-SVG-Mock
               </div>
             </div>
+            <div
+              class="css-view-175oi2r r-width-1jg9483"
+            />
           </div>
           <div
             class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
@@ -169,6 +172,9 @@ exports[`AppButton Component * inline property should use inline css style when 
               button-icon-left-SVG-Mock
             </div>
           </div>
+          <div
+            class="css-view-175oi2r r-width-1jg9483"
+          />
         </div>
         <div
           class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"

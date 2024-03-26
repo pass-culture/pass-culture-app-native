@@ -891,6 +891,16 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       button-icon-left-SVG-Mock
                     </Text>
                   </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
                 </View>
                 <Text
                   adjustsFontSizeToFit={false}
@@ -902,7 +912,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
-                        "marginLeft": 4,
                         "maxWidth": "100%",
                       },
                     ]
@@ -992,7 +1001,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "marginLeft": 0,
                         "maxWidth": "100%",
                       },
                     ]

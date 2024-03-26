@@ -296,6 +296,16 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
                 button-icon-left-SVG-Mock
               </Text>
             </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
           </View>
           <Text
             adjustsFontSizeToFit={false}
@@ -307,7 +317,6 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 8,
                   "maxWidth": "100%",
                 },
               ]

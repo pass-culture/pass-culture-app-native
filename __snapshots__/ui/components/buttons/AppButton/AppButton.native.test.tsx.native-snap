@@ -80,6 +80,16 @@ exports[`AppButton Component * inline property should use inline css style when 
           button-icon-left-SVG-Mock
         </Text>
       </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          [
+            {
+              "width": 8,
+            },
+          ]
+        }
+      />
     </View>
     <Text
       adjustsFontSizeToFit={false}

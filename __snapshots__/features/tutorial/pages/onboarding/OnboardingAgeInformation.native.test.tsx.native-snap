@@ -1568,6 +1568,16 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               button-icon-left-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -1579,7 +1589,6 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]
@@ -3159,6 +3168,16 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               button-icon-left-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -3170,7 +3189,6 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]
@@ -4737,6 +4755,16 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               button-icon-left-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -4748,7 +4776,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]
@@ -6156,6 +6183,16 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               button-icon-left-SVG-Mock
             </Text>
           </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
         </View>
         <Text
           adjustsFontSizeToFit={false}
@@ -6167,7 +6204,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]

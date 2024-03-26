@@ -152,7 +152,6 @@ exports[`<BookingImpossible /> When offer is already favorite should render with
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 0,
               "maxWidth": "100%",
             },
           ]
@@ -327,7 +326,6 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 0,
               "maxWidth": "100%",
             },
           ]
@@ -425,6 +423,16 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
             button-icon-left-SVG-Mock
           </Text>
         </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            [
+              {
+                "width": 8,
+              },
+            ]
+          }
+        />
       </View>
       <Text
         adjustsFontSizeToFit={false}
@@ -436,7 +444,6 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 8,
               "maxWidth": "100%",
             },
           ]

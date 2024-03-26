@@ -893,6 +893,16 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
                         button-icon-left-SVG-Mock
                       </Text>
                     </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        [
+                          {
+                            "width": 8,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <Text
                     adjustsFontSizeToFit={false}
@@ -904,7 +914,6 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 16,
-                          "marginLeft": 4,
                           "maxWidth": "100%",
                         },
                       ]
@@ -994,7 +1003,6 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
-                          "marginLeft": 0,
                           "maxWidth": "100%",
                         },
                       ]
@@ -1917,6 +1925,16 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
                         button-icon-left-SVG-Mock
                       </Text>
                     </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        [
+                          {
+                            "width": 8,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <Text
                     adjustsFontSizeToFit={false}
@@ -1928,7 +1946,6 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 16,
-                          "marginLeft": 4,
                           "maxWidth": "100%",
                         },
                       ]
@@ -2018,7 +2035,6 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
-                          "marginLeft": 0,
                           "maxWidth": "100%",
                         },
                       ]
@@ -2941,6 +2957,16 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                         button-icon-left-SVG-Mock
                       </Text>
                     </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        [
+                          {
+                            "width": 8,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <Text
                     adjustsFontSizeToFit={false}
@@ -2952,7 +2978,6 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 16,
-                          "marginLeft": 4,
                           "maxWidth": "100%",
                         },
                       ]
@@ -3042,7 +3067,6 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
-                          "marginLeft": 0,
                           "maxWidth": "100%",
                         },
                       ]
@@ -3965,6 +3989,16 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
                         button-icon-left-SVG-Mock
                       </Text>
                     </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        [
+                          {
+                            "width": 8,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <Text
                     adjustsFontSizeToFit={false}
@@ -3976,7 +4010,6 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 16,
-                          "marginLeft": 4,
                           "maxWidth": "100%",
                         },
                       ]
@@ -4066,7 +4099,6 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
-                          "marginLeft": 0,
                           "maxWidth": "100%",
                         },
                       ]
@@ -4998,6 +5030,16 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
                         button-icon-left-SVG-Mock
                       </Text>
                     </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        [
+                          {
+                            "width": 8,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <Text
                     adjustsFontSizeToFit={false}
@@ -5009,7 +5051,6 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 16,
-                          "marginLeft": 4,
                           "maxWidth": "100%",
                         },
                       ]
@@ -5099,7 +5140,6 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
-                          "marginLeft": 0,
                           "maxWidth": "100%",
                         },
                       ]

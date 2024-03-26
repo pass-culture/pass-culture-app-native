@@ -89,7 +89,6 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 0,
                 "maxWidth": "100%",
               },
             ]
@@ -564,7 +563,6 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 0,
                 "maxWidth": "100%",
               },
             ]
@@ -727,7 +725,6 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 0,
                 "maxWidth": "100%",
               },
             ]

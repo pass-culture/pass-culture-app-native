@@ -577,7 +577,6 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
-                        "marginLeft": 0,
                         "maxWidth": "100%",
                       },
                     ]

@@ -29,9 +29,6 @@ export const ButtonQuaternarySecondary = styledButton(AppButton).attrs<BaseButto
       color: disabled
         ? theme.buttons.disabled.quaternarySecondary.textColor
         : theme.buttons.quaternarySecondary.textColor,
-      marginLeft: icon
-        ? theme.buttons.quaternarySecondary.marginLeftWithIcon
-        : theme.buttons.quaternarySecondary.marginLeft,
     })
 
     return {

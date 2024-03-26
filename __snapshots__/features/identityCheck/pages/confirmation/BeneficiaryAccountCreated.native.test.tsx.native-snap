@@ -331,7 +331,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 0,
                   "maxWidth": "100%",
                 },
               ]
@@ -698,7 +697,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "marginLeft": 0,
                   "maxWidth": "100%",
                 },
               ]
