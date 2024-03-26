@@ -1,4 +1,4 @@
-import { useGetDefaultRegion } from 'features/venuemap/hook/useGetDefautRegion'
+import { useGetDefaultRegion } from 'features/venuemap/hook/useGetDefaultRegion'
 import { renderHook } from 'tests/utils'
 
 jest.mock('libs/location', () => ({

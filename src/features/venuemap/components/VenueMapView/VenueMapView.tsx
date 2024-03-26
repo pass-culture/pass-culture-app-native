@@ -10,7 +10,7 @@ import { PREVIEW_BOTTOM_MARGIN } from 'features/venuemap/components/VenueMapView
 import { GeolocatedVenue } from 'features/venuemap/components/VenueMapView/types'
 import { getVenueTags } from 'features/venuemap/helpers/getVenueTags/getVenueTags'
 import { useCenterOnLocation } from 'features/venuemap/hook/useCenterOnLocation'
-import { useGetDefaultRegion } from 'features/venuemap/hook/useGetDefautRegion'
+import { useGetDefaultRegion } from 'features/venuemap/hook/useGetDefaultRegion'
 import { useGetVenuesInRegion } from 'features/venuemap/hook/useGetVenuesInRegion'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
