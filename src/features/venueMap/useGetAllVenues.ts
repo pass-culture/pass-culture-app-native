@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { Venue } from 'features/venue/types'
@@ -10,12 +11,17 @@ import { QueryKeys } from 'libs/queryKeys'
 type Props = {
   region: Region
   radius: number
+  initialVenues?: Venue[]
 }
 
-export const useGetAllVenues = ({ region, radius }: Props) => {
+export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
   const netInfo = useNetInfoContext()
 
-  return useQuery<Venue[]>(
+  const shouldFetchVenues = useMemo(() => {
+    return !!netInfo.isConnected && !initialVenues?.length
+  }, [netInfo.isConnected, initialVenues])
+
+  const { data: fetchedVenues } = useQuery<Venue[]>(
     [QueryKeys.VENUES, region],
     () =>
       fetchVenues({
@@ -31,7 +37,11 @@ export const useGetAllVenues = ({ region, radius }: Props) => {
         },
       }),
     {
-      enabled: !!netInfo.isConnected,
+      enabled: shouldFetchVenues,
     }
   )
+
+  const venues = initialVenues?.length ? initialVenues : fetchedVenues
+
+  return { venues }
 }
