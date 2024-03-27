@@ -1,11 +1,9 @@
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { renderHook, waitFor } from 'tests/utils'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 const WIDTH_MOCK = 300
-const HEIGHT_MOCK = 500
+
 const mockUseWindowDimensions = jest.fn().mockReturnValue({
-  height: HEIGHT_MOCK,
   width: WIDTH_MOCK,
   scale: 1,
   fontScale: 1,
@@ -14,11 +12,6 @@ jest.mock('react-native/Libraries/Utilities/useWindowDimensions', () => ({
   default: mockUseWindowDimensions,
 }))
 
-const HEADER_HEIGHT = 50
-jest.mock('ui/components/headers/PageHeaderWithoutPlaceholder')
-const mockUseGetHeaderHeight = useGetHeaderHeight as jest.Mock
-mockUseGetHeaderHeight.mockReturnValue(HEADER_HEIGHT)
-
 const currentRegion = {
   latitude: 48.8566,
   longitude: 2.3522,
@@ -26,6 +19,7 @@ const currentRegion = {
   longitudeDelta: 0.0421,
 }
 const previewHeight = 100
+const mapHeight = 700
 const pointForCoordinate = jest.fn()
 const animateToRegion = jest.fn()
 
@@ -61,7 +55,7 @@ describe('useCenterOnLocation', () => {
   })
 
   it('should center on location if the pin is too far on the top', async () => {
-    pointForCoordinate.mockResolvedValueOnce({ x: 200, y: HEADER_HEIGHT })
+    pointForCoordinate.mockResolvedValueOnce({ x: 200, y: 0 })
     const centerOnLocation = renderUseCenterOnLocation()
 
     centerOnLocation(49, 2.3522)
@@ -76,7 +70,7 @@ describe('useCenterOnLocation', () => {
   })
 
   it('should center on location if the pin is too far on the bottom', async () => {
-    pointForCoordinate.mockResolvedValueOnce({ x: 200, y: HEIGHT_MOCK - previewHeight })
+    pointForCoordinate.mockResolvedValueOnce({ x: 200, y: mapHeight - previewHeight })
     const centerOnLocation = renderUseCenterOnLocation()
 
     centerOnLocation(48, 2.3522)
@@ -102,6 +96,7 @@ const renderUseCenterOnLocation = () => {
       currentRegion,
       previewHeight,
       mapViewRef,
+      mapHeight,
     })
   )
   return centerOnLocation

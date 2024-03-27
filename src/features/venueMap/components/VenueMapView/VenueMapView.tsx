@@ -16,25 +16,22 @@ import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
-import MapView, { EdgePadding, Marker, Region, MarkerPressEvent, Map } from 'libs/maps/maps'
+import MapView, { Marker, Region, MarkerPressEvent, Map } from 'libs/maps/maps'
 import { parseType } from 'libs/parsers/venueType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
-  padding: EdgePadding
+  height: number
 }
 
 const PREVIEW_HEIGHT_ESTIMATION = 114
 
-export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
+export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const mapViewRef = useRef<Map>(null)
   const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
-
-  const headerHeight = useGetHeaderHeight()
 
   const defaultRegion = useGetDefaultRegion()
   const [selectedVenue, setSelectedVenue] = useState<GeolocatedVenue | null>(null)
@@ -55,6 +52,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
     currentRegion,
     previewHeight: previewHeight.current,
     mapViewRef,
+    mapHeight: height,
   })
 
   const handleRegionChangeComplete = (region: Region) => {
@@ -110,7 +108,6 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
         ref={mapViewRef}
         showsUserLocation
         initialRegion={defaultRegion}
-        mapPadding={padding}
         rotateEnabled={false}
         pitchEnabled={false}
         onRegionChangeComplete={handleRegionChangeComplete}
@@ -133,7 +130,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
         ))}
       </StyledMapView>
       {showSearchButton ? (
-        <ButtonContainer top={headerHeight}>
+        <ButtonContainer>
           <ButtonPrimary wording="Rechercher dans cette zone" onPress={handleSearchPress} />
         </ButtonContainer>
       ) : null}
@@ -157,13 +154,13 @@ export const VenueMapView: FunctionComponent<Props> = ({ padding }) => {
 
 const StyledMapView = styled(MapView)({ height: '100%', width: '100%' })
 
-const ButtonContainer = styled.View<{ top: number }>(({ top }) => ({
+const ButtonContainer = styled.View({
   position: 'absolute',
-  top: top + getSpacing(4),
+  top: getSpacing(4),
   left: getSpacing(13.5),
   right: getSpacing(13.5),
   alignItems: 'center',
-}))
+})
 
 const StyledVenueMapPreview = styled(VenueMapPreview)(({ theme }) => ({
   position: 'absolute',
