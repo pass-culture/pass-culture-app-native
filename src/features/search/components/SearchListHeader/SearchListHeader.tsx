@@ -14,6 +14,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenue } from 'libs/algolia'
+import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -120,7 +121,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     shouldDisplayVenuesPlaylist && isLocated && enableVenueMapSearchResults && !isWeb
 
   const handleSeeMapPress = () => {
-    navigate('VenueMap')
+    navigate('VenueMap', venues?.length ? { initialVenues: adaptAlgoliaVenues(venues) } : {})
   }
 
   return (
