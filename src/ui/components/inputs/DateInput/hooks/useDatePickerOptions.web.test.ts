@@ -39,7 +39,7 @@ describe('useDatePickerOptions', () => {
   it('should return options with short month names if asked', () => {
     const { result } = renderHook(() =>
       useDatePickerOptions({
-        date: { day: '13', month: 'Décembre', year: '2000' },
+        date: { day: '13', month: 'Déc.', year: '2000' },
         minimumYear: 2000,
         maximumYear: 2004,
         monthNamesType: 'short',

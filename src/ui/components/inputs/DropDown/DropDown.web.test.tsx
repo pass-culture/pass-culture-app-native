@@ -7,7 +7,12 @@ import { DropDown } from 'ui/components/inputs/DropDown/DropDown.web'
 describe('<DropDown />', () => {
   it('should correctly set default option', () => {
     render(
-      <DropDown label="Mois" placeholder="Mois" options={CAPITALIZED_MONTHS} onChange={jest.fn()} />
+      <DropDown
+        label="Mois"
+        placeholder="Mois"
+        options={[...CAPITALIZED_MONTHS]}
+        onChange={jest.fn()}
+      />
     )
 
     expect((screen.getByRole('option', { name: 'Mois' }) as HTMLOptionElement).selected).toBe(true)
@@ -16,7 +21,12 @@ describe('<DropDown />', () => {
   it('should select correct month on change', () => {
     const onChange = jest.fn()
     render(
-      <DropDown label="Mois" placeholder="Mois" options={CAPITALIZED_MONTHS} onChange={onChange} />
+      <DropDown
+        label="Mois"
+        placeholder="Mois"
+        options={[...CAPITALIZED_MONTHS]}
+        onChange={onChange}
+      />
     )
 
     fireEvent.change(screen.getByTestId('select-Mois'), {

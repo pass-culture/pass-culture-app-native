@@ -4,22 +4,29 @@ import { dayNumbers } from 'shared/date/days'
 import { getDatesInMonth } from 'shared/date/getDatesInMonth'
 import { getPastYears } from 'shared/date/getPastYears'
 import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
-import { PartialDate } from 'ui/components/inputs/DateInput/DatePicker/types'
+import { MonthType, PartialDate } from 'ui/components/inputs/DateInput/DatePicker/types'
 
-type Args = {
-  date: PartialDate
+type Args<MonthNameType extends 'short' | 'long'> = {
+  date: PartialDate<MonthNameType>
   minimumYear: number
   maximumYear: number
-  monthNamesType?: 'long' | 'short'
+  monthNamesType?: MonthNameType
 }
 
-export const useDatePickerOptions = ({
+export const useDatePickerOptions = <
+  MonthNameType extends 'short' | 'long',
+  MonthNames extends MonthType<MonthNameType>[]
+>({
   date,
   minimumYear,
   maximumYear,
   monthNamesType,
-}: Args): { optionGroups: { day: string[]; month: string[]; year: string[] } } => {
-  const monthNames = monthNamesType === 'short' ? CAPITALIZED_SHORT_MONTHS : CAPITALIZED_MONTHS
+}: Args<MonthNameType>): {
+  optionGroups: { day: string[]; month: MonthType<MonthNameType>[]; year: string[] }
+} => {
+  // @ts-ignore strict typing of dates introduces new errors
+  const monthNames: MonthNames =
+    monthNamesType === 'short' ? CAPITALIZED_SHORT_MONTHS : CAPITALIZED_MONTHS
   const optionGroups = useMemo(() => {
     const year = getPastYears(minimumYear, maximumYear)
 

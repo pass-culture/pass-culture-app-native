@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useMemo, useRef } from 'react'
-import { ScrollView } from 'react-native'
+import { FlatList } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
@@ -32,7 +32,7 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
     bookingData
   )
 
-  const scrollViewRef = useRef<ScrollView | null>(null)
+  const flatListRef = useRef<FlatList | null>(null)
 
   const eventCardData = useMemo(
     () => selectedDateScreenings(offerVenueId, onPressOfferCTA),
@@ -41,12 +41,12 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
 
   // Reset scroll and first selected date when user selects a new offer venue
   useEffect(() => {
-    if (scrollViewRef?.current) {
+    if (flatListRef?.current) {
       setSelectedDate(movieScreeningDates[0])
-      scrollViewRef.current.scrollTo({ x: 0 })
+      flatListRef.current?.scrollToOffset({ offset: 0 })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [offerId, scrollViewRef])
+  }, [flatListRef, offerId, setSelectedDate]) // should be triggered by offerIdChange and not by movieScreeningDates
 
   return (
     <React.Fragment>
@@ -54,7 +54,7 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
         dates={movieScreeningDates}
         selectedDate={selectedDate}
         onTabChange={setSelectedDate}
-        scrollViewRef={scrollViewRef}
+        flatListRef={flatListRef}
       />
       <Spacer.Column numberOfSpaces={4} />
       {eventCardData != undefined && <EventCardList data={eventCardData} />}

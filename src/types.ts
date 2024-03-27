@@ -1,6 +1,20 @@
 export {}
 
+type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
+  ? Acc[number]
+  : Enumerate<N, [...Acc, Acc['length']]>
+
+type NumberRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>
+
 declare global {
+  interface Date {
+    getDay(): NumberRange<0, 7>
+
+    getMonth(): NumberRange<0, 12>
+
+    getDate(): NumberRange<0, 31>
+  }
+
   // Web only
   interface Window {
     // See usage of `window.grecaptcha` in ReCaptcha.web.tsx

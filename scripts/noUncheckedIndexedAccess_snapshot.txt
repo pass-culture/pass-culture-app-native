@@ -393,10 +393,6 @@
 ./src/features/navigation/helpers/useCurrentRoute.ts:4
 ./src/features/navigation/helpers/usePreviousRoute.ts:4
 ./src/features/navigation/sanitizeNavigationState.ts:5
-./src/features/offer/components/MovieCalendar/MovieCalendar.tsx:26
-./src/features/offer/components/MovieCalendar/MovieCalendar.tsx:28
-./src/features/offer/components/MovieCalendar/MovieCalendar.tsx:31
-./src/features/offer/components/MovieCalendar/MovieCalendar.tsx:33
 ./src/features/offer/components/OfferPlaylistList/OfferPlaylistList.native.test.tsx:120
 ./src/features/offer/components/OfferPlaylistList/OfferPlaylistList.native.test.tsx:86
 ./src/features/offer/components/OfferTile/OfferTile.native.test.tsx:16
@@ -434,9 +430,6 @@
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:83
 ./src/features/search/components/AutocompleteVenueItem/AutocompleteVenueItem.native.test.tsx:10
 ./src/features/search/components/AutocompleteVenueItem/AutocompleteVenueItem.native.test.tsx:18
-./src/features/search/components/CalendarPicker/CalendarPicker.web.tsx:127
-./src/features/search/components/CalendarPicker/CalendarPicker.web.tsx:147
-./src/features/search/components/CalendarPicker/CalendarPicker.web.tsx:98
 ./src/features/search/components/Highlight/Highlight.native.test.tsx:102
 ./src/features/search/components/Highlight/Highlight.native.test.tsx:109
 ./src/features/search/components/Highlight/Highlight.native.test.tsx:74
@@ -481,7 +474,6 @@
 ./src/libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition.test.ts:18
 ./src/libs/amplitude/amplitude.ts:34
 ./src/libs/contentful/adapters/modules/adaptVenuesModule.ts:24
-./src/libs/dates.ts:75
 ./src/libs/firebase/remoteConfig/remoteConfig.services.ts:22
 ./src/libs/firebase/remoteConfig/remoteConfig.services.ts:24
 ./src/libs/firebase/remoteConfig/remoteConfig.services.ts:26
@@ -521,8 +513,6 @@
 ./src/libs/parsers/formatDates.ts:139
 ./src/libs/parsers/formatDates.ts:162
 ./src/libs/parsers/formatDates.ts:164
-./src/libs/parsers/formatDates.ts:166
-./src/libs/parsers/formatDates.ts:169
 ./src/libs/parsers/formatDates.ts:58
 ./src/libs/parsers/formatDates.ts:60
 ./src/libs/parsers/formatDates.ts:87
@@ -565,8 +555,6 @@
 ./src/ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web.test.tsx:37
 ./src/ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web.test.tsx:40
 ./src/ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web.test.tsx:42
-./src/ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web.tsx:42
-./src/ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web.tsx:63
 ./src/ui/components/inputs/Slider.tsx:99
 ./src/ui/components/tiles/HorizontalOfferTile.native.test.tsx:110
 ./src/ui/components/tiles/HorizontalOfferTile.native.test.tsx:122

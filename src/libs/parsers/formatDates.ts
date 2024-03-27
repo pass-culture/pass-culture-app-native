@@ -1,7 +1,7 @@
 import { utcToZonedTime } from 'date-fns-tz'
 
 import { DAYS } from 'shared/date/days'
-import { MONTHS, Month } from 'shared/date/months'
+import { MONTHS, FullMonth } from 'shared/date/months'
 
 export const pad = (num: number): string => {
   const res = num.toString()
@@ -62,7 +62,7 @@ export const formatDates = (timestamps?: number[]): string | undefined => {
 }
 
 type MonthDays = number[]
-type YearGroup = Partial<Record<Month, MonthDays>>
+type YearGroup = Partial<Record<FullMonth, MonthDays>>
 export type GroupResult = Record<number, YearGroup>
 
 /**
@@ -163,10 +163,8 @@ export const formatDatePeriod = (timestamps: number[]) => {
   const first = decomposeDate(timestamps[0])
   // @ts-expect-error: because of noUncheckedIndexedAccess
   const last = decomposeDate(timestamps.slice(-1)[0])
-  // @ts-expect-error: because of noUncheckedIndexedAccess
   const formattedEndDate = formatToFrenchDate(last)
 
-  // @ts-expect-error: because of noUncheckedIndexedAccess
   if (first.year !== last.year) return `Du ${formatToFrenchDate(first)} au ${formattedEndDate}`
   if (first.month !== last.month) return `Du ${first.day} ${first.month} au ${formattedEndDate}`
   if (first.day !== last.day) return `Du ${first.day} au ${formattedEndDate}`
