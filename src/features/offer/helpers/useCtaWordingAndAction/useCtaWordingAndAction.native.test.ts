@@ -725,7 +725,7 @@ describe('getCtaWordingAndAction', () => {
 
         expect(result).toEqual({
           wording: 'Voir ma réservation',
-          bottomBannerText: 'Tu ne peux reserver ce film qu’une seule fois.',
+          bottomBannerText: 'Tu ne peux réserver ce film qu’une seule fois.',
           navigateTo: {
             fromRef: true,
             params: {
