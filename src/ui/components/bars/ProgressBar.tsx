@@ -20,7 +20,10 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({ colors, progress, he
     colors: LinearColors,
     useAngle: true,
     angle: 90,
-  })({ flex: progress, borderRadius: getSpacing(12) })
+  })({
+    flex: Math.max(progress, 0.01), // When less than 0,01 -> Crash on iOS 17 (we don't know why)
+    borderRadius: getSpacing(12),
+  })
 
   return (
     <Container height={height}>
