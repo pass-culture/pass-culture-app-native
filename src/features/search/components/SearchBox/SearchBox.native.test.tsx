@@ -352,7 +352,7 @@ describe('SearchBox component', () => {
     })
   })
 
-  it('should reset query when user go goBack to Landing', async () => {
+  it('should reset searchState when user go goBack to Landing', async () => {
     mockSearchState = {
       ...mockSearchState,
       view: SearchView.Results,
@@ -368,11 +368,7 @@ describe('SearchBox component', () => {
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
-      payload: {
-        ...mockSearchState,
-        query: '',
-        view: SearchView.Landing,
-      },
+      payload: initialSearchState,
     })
   })
 
