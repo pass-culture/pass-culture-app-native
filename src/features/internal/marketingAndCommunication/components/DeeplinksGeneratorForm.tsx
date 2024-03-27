@@ -51,7 +51,6 @@ export function getDefaultScreenParams(screenName: ScreensUsedByMarketing) {
     return {
       view: SearchView.Results,
       locationFilter: { locationType: LocationMode.EVERYWHERE },
-      noFocus: true,
       from: 'deeplink',
     }
   }
