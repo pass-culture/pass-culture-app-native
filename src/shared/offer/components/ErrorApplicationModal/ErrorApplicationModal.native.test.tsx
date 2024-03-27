@@ -1,8 +1,11 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { FavoriteResponse } from 'api/gen'
+import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent, screen, waitFor } from 'tests/utils'
 
@@ -49,6 +52,7 @@ describe('<ErrorApplicationModal />', () => {
   })
 
   it('should close modal when clicking on button "Mettre en favori', async () => {
+    mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
     render(
       reactQueryProviderHOC(
         <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
@@ -63,6 +67,7 @@ describe('<ErrorApplicationModal />', () => {
   })
 
   it('should log analytics when clicking on button "Mettre en favori', async () => {
+    mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
     render(
       reactQueryProviderHOC(
         <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
