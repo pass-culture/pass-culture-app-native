@@ -28,9 +28,9 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
 
   return (
     <StickyBottomWrapper>
-      <BlurryWrapper>
-        <CallToActionContainer testID="sticky-booking-button">
-          {wording ? (
+      {wording ? (
+        <BlurryWrapper>
+          <CallToActionContainer testID="sticky-booking-button">
             <CTAButton
               wording={wording}
               onPress={onPress}
@@ -40,15 +40,11 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
               isFreeDigitalOffer={isFreeDigitalOffer}
               isLoggedIn={isLoggedIn}
             />
-          ) : null}
-        </CallToActionContainer>
+          </CallToActionContainer>
+        </BlurryWrapper>
+      ) : null}
 
-        {bottomBannerText ? (
-          <StyledBottomBanner text={bottomBannerText} />
-        ) : (
-          <Spacer.BottomScreen />
-        )}
-      </BlurryWrapper>
+      {bottomBannerText ? <StyledBottomBanner text={bottomBannerText} /> : <Spacer.BottomScreen />}
     </StickyBottomWrapper>
   )
 }
