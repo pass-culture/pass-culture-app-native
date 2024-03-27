@@ -1,0 +1,53 @@
+import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
+
+import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
+import { SubscriptionTheme } from 'features/subscription/types'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
+import { BicolorRingingBellOff } from 'ui/svg/BicolorRingingBellOff'
+import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Spacer, Typo } from 'ui/theme'
+
+interface Props {
+  visible: boolean
+  theme: SubscriptionTheme
+  dismissModal: () => void
+}
+
+export const UnsubscribingConfirmationModal: FunctionComponent<Props> = ({
+  visible,
+  theme,
+  dismissModal,
+}) => {
+  return (
+    <AppModalWithIllustration
+      visible={visible}
+      title="Es-tu sûr de ne plus vouloir suivre ce thème&nbsp;?"
+      Illustration={StyledIcon}
+      hideModal={dismissModal}>
+      <StyledBody>
+        {`Tu ne recevras plus toutes les dernières offres et l’actu liées au thème "${mapSubscriptionThemeToName[theme]}".`}
+      </StyledBody>
+      <Spacer.Column numberOfSpaces={6} />
+      <StyledButtonContainer>
+        <ButtonPrimary wording="Ne plus suivre ce thème" />
+        <ButtonTertiaryBlack wording="Annuler" icon={Invalidate} onPress={dismissModal} />
+      </StyledButtonContainer>
+      <Spacer.Column numberOfSpaces={4} />
+    </AppModalWithIllustration>
+  )
+}
+
+const StyledButtonContainer = styled.View({
+  width: '100%',
+})
+
+const StyledBody = styled(Typo.Body)({
+  textAlign: 'center',
+})
+
+const StyledIcon = styled(BicolorRingingBellOff).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+}))``

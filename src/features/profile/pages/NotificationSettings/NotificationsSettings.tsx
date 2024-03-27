@@ -12,7 +12,7 @@ import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch
 import { UnsavedSettingsModal } from 'features/profile/pages/NotificationSettings/components/UnsavedSettingsModal'
 import { hasUserChangedParameters } from 'features/profile/pages/NotificationSettings/helpers/hasUserChangedParameters'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
-import { mapSubscriptionThemeToName } from 'features/subscription/mapSubscriptionThemeToName'
+import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme, TOTAL_NUMBER_OF_THEME } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -36,16 +36,18 @@ export const NotificationsSettings = () => {
   const { isLoggedIn, user } = useAuthContext()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
-  const initialState = {
-    allowEmails: user?.subscriptions.marketingEmail,
-    allowPush: user?.subscriptions.marketingPush,
-    themePreferences:
-      (user?.subscriptions.subscribedThemes as unknown as SubscriptionTheme[]) || [],
-  }
+  const initialState = user?.subscriptions
+    ? {
+        allowEmails: user?.subscriptions.marketingEmail,
+        allowPush: user?.subscriptions.marketingPush,
+        themePreferences:
+          (user?.subscriptions.subscribedThemes as unknown as SubscriptionTheme[]) || [],
+      }
+    : { allowEmails: false, allowPush: false, themePreferences: [] }
 
   const [state, dispatch] = useReducer(settingsReducer, initialState)
 
-  const hasUserChanged = !!user && hasUserChangedParameters(user, state)
+  const hasUserChanged = !!user?.subscriptions && hasUserChangedParameters(user, state)
 
   const updatePushPermissionFromSettings = (permission: PermissionStatus) => {
     if (permission === 'granted' && !state.allowPush) {

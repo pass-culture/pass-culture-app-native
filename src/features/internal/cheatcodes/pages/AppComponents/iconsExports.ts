@@ -82,6 +82,7 @@ import { More } from 'ui/svg/icons/More'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
 import { Offers } from 'ui/svg/icons/Offers'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
+import { Parameters } from 'ui/svg/icons/Parameters'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -232,6 +233,7 @@ export const TertiaryAndSmallerIcons = {
   LocationPointerWithBorder,
   MagnifyingGlass,
   Lock,
+  Parameters,
   PhoneFilled,
   PlainArrowNext,
   PlainArrowPrevious,
