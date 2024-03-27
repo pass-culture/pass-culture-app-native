@@ -153,7 +153,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
             <Title>{venueTitle}</Title>
             {shouldDisplaySeeOnTheMap ? (
               <ButtonContainer>
-                <Spacer.Column numberOfSpaces={4} />
+                <Spacer.Column numberOfSpaces={1} />
                 <ButtonTertiaryBlack
                   wording={`Voir sur la carte (${venues?.length})`}
                   onPress={handleSeeMapPress}
