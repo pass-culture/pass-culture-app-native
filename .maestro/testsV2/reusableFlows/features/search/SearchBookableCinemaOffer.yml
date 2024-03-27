@@ -12,8 +12,8 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Séances de cinéma'
 - tapOn: 'Rechercher'
 
-- tapOn:
-    id: '.*Voir tous les filtres.*'
+- tapOn:  
+    id: '.*Voir tous les filtres.*' # Sélection de l'icone filtre pour ouvrir la modale
 - tapOn: "Dates & heures"
 
 - assertVisible: "Dates & heures"

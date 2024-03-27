@@ -14,7 +14,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: '.*Voir tous les filtres.*'
 - tapOn:
-    id: "FilterRow"
+    id: "FilterRow" # Sélectionne le filtre Duo dans la modale Filtres
     index: 1
 - tapOn:
     id: "Interrupteur limitDuoOfferSearch"
