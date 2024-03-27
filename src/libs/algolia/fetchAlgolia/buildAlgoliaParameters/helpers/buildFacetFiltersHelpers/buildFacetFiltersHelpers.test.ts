@@ -189,7 +189,7 @@ describe('buildOfferGtlsPredicate', () => {
       { code: '03040800', level: 3, label: 'Yaoi' },
     ])
 
-    expect(gtlsPredicate).toEqual(['gtlCodeLevel3:03040500', 'gtlCodeLevel3:03040800'])
+    expect(gtlsPredicate).toEqual(['offer.gtlCodeLevel3:03040500', 'offer.gtlCodeLevel3:03040800'])
   })
 })
 
