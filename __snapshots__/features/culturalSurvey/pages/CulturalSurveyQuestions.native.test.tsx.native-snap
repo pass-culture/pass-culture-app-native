@@ -205,7 +205,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                         {
                           "borderRadius": 48,
                           "flexBasis": 0,
-                          "flexGrow": 0,
+                          "flexGrow": 0.01,
                           "flexShrink": 1,
                         },
                       ]
