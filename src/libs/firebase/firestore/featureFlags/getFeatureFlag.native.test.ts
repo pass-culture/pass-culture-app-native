@@ -22,6 +22,7 @@ describe('getFeatureFlag', () => {
     RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE,
     RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS,
     RemoteStoreFeatureFlags.WIP_VENUE_MAP,
+    RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER,
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_SEARCH_RESULTS,
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_PREVIEW,
     RemoteStoreFeatureFlags.WIP_SEARCH_ACCESSIBILITY_FILTER,
