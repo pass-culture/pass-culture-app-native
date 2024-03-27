@@ -54,9 +54,10 @@ const StyledButtonContainer = styled.View({
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
-const StyledCaption = styled(Typo.Caption)({
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
   textAlign: 'center',
-})
+}))
 
 const StyledIcon = styled(BicolorRingingBell).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
