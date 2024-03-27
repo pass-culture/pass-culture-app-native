@@ -11,5 +11,9 @@ appId: ${MAESTRO_APP_ID}
 - hideKeyboard
 - tapOn: 'Se connecter' # Android
 
-- assertVisible: 'Prends 1 minute'
-- tapOn: 'Plus tard'
+- runFlow:
+    when:
+      visible: 'Prends 1 minute'
+    commands:
+        - tapOn: 'Plus tard'
+

@@ -4,3 +4,4 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "Profil non complété"
 
 # TODO: Compléter le parcours
+
