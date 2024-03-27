@@ -13,6 +13,7 @@ type ScreensRequiringParsing = Extract<
   | 'ReinitializePassword'
   | 'ResetPasswordExpiredLink'
   | 'Venue'
+  | 'VenueMap'
   | 'SearchFilter'
   | 'SuspensionChoice'
   | 'LocationFilter'
@@ -123,6 +124,9 @@ export const screenParamsParser: ParamsParsers = {
     from: identityFn,
     searchId: identityFn,
   },
+  VenueMap: {
+    initialVenues: JSON.parse,
+  },
   Search: searchParamsParser,
   SearchFilter: searchParamsParser,
   LocationFilter: {
@@ -171,7 +175,7 @@ function parseDataWithISODates(data: any) {
 
 type ScreensRequiringStringifying = Extract<
   ScreenNames,
-  'SearchFilter' | 'LocationFilter' | 'Search'
+  'SearchFilter' | 'LocationFilter' | 'Search' | 'VenueMap'
 >
 type ParamsStringifiers = {
   [Screen in ScreensRequiringStringifying]: {
@@ -219,5 +223,8 @@ export const screenParamsStringifier: ParamsStringifiers = {
   LocationFilter: {
     selectedVenue: JSON.stringify,
     selectedPlace: JSON.stringify,
+  },
+  VenueMap: {
+    initialVenues: JSON.stringify,
   },
 }
