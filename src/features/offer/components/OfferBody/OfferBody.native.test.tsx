@@ -293,7 +293,7 @@ describe('<OfferBody />', () => {
         offer,
       })
 
-      expect(await screen.findByLabelText('Mardi 27 février')).toBeOnTheScreen()
+      expect(await screen.findByLabelText('Mardi 27 Février')).toBeOnTheScreen()
     })
   })
 

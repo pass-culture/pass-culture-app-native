@@ -89,7 +89,7 @@ describe('Movie screening calendar', () => {
       isDesktopViewport: true,
     })
 
-    await screen.findByLabelText('Mardi 27 février')
+    await screen.findByLabelText('Mardi 27 Février')
 
     expect(screen).toMatchSnapshot()
   })
@@ -105,7 +105,7 @@ describe('Movie screening calendar', () => {
       },
     })
 
-    expect(await screen.findByLabelText('Mardi 27 février')).toBeOnTheScreen()
+    expect(await screen.findByLabelText('Mardi 27 Février')).toBeOnTheScreen()
   })
 
   it('should render <MovieScreeningCalendar /> without expired screenings', async () => {
@@ -123,7 +123,7 @@ describe('Movie screening calendar', () => {
       },
     })
 
-    await screen.findByLabelText('Mardi 27 février')
+    await screen.findByLabelText('Mardi 27 Février')
 
     expect(screen.queryByLabelText('Jeudi 29 février')).not.toBeOnTheScreen()
   })
@@ -143,7 +143,7 @@ describe('Movie screening calendar', () => {
       },
     })
 
-    await screen.findByLabelText('Mardi 27 février')
+    await screen.findByLabelText('Mardi 27 Février')
 
     expect(screen.queryByLabelText('Lundi 19 février')).not.toBeOnTheScreen()
   })
@@ -161,7 +161,7 @@ describe('Movie screening calendar', () => {
       },
     })
 
-    await screen.findByLabelText('Mardi 27 février')
+    await screen.findByLabelText('Mardi 27 Février')
 
     expect(screen.getByLabelText('Complet')).toBeOnTheScreen()
   })
@@ -225,7 +225,7 @@ describe('Movie screening calendar', () => {
         },
       })
 
-      await screen.findByLabelText('Lundi 15 mars')
+      await screen.findByLabelText('Lundi 15 Mars')
 
       expect(await screen.findByText('Déjà réservé')).toBeOnTheScreen()
     })
@@ -247,7 +247,7 @@ describe('Movie screening calendar', () => {
 
       renderMovieScreeningCalendar({ offer: defaultOfferResponse })
 
-      await screen.findByLabelText('Mardi 27 février')
+      await screen.findByLabelText('Mardi 27 Février')
 
       expect(await screen.findByText('Crédit insuffisant')).toBeOnTheScreen()
     })
@@ -259,7 +259,7 @@ describe('Movie screening calendar', () => {
 
       renderMovieScreeningCalendar({ offer: defaultOfferResponse })
 
-      await screen.findByLabelText('Mardi 27 février')
+      await screen.findByLabelText('Mardi 27 Février')
 
       const eventCard = await screen.findByLabelText('VO')
       await act(async () => {
@@ -286,14 +286,14 @@ describe('Movie screening calendar', () => {
 
       renderMovieScreeningCalendar({ offer: defaultOfferResponse })
 
-      await screen.findByLabelText('Mardi 27 février')
+      await screen.findByLabelText('Mardi 27 Février')
 
       const eventCard = await screen.findByLabelText('Crédit insuffisant')
       await act(async () => {
         fireEvent.press(eventCard)
       })
 
-      await screen.findByLabelText('Mardi 27 février')
+      await screen.findByLabelText('Mardi 27 Février')
 
       expect(analytics.logBookingProcessStart).not.toHaveBeenCalled()
     })

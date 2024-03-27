@@ -108,7 +108,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <View
-            accessibilityLabel="Mardi 1 février"
+            accessibilityLabel="Mardi 1 Février"
             style={
               [
                 {
@@ -170,7 +170,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 ]
               }
             >
-              févr.
+              Févr.
             </Text>
           </View>
           <View
@@ -241,7 +241,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <View
-            accessibilityLabel="Jeudi 1 mars"
+            accessibilityLabel="Jeudi 1 Mars"
             style={
               [
                 {
@@ -303,7 +303,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 ]
               }
             >
-              mars
+              Mars
             </Text>
           </View>
         </View>
@@ -359,7 +359,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <View
-            accessibilityLabel="Vendredi 4 octobre"
+            accessibilityLabel="Vendredi 4 Octobre"
             style={
               [
                 {
@@ -421,7 +421,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 ]
               }
             >
-              oct.
+              Oct.
             </Text>
           </View>
         </View>
@@ -477,7 +477,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <View
-            accessibilityLabel="Samedi 29 novembre"
+            accessibilityLabel="Samedi 29 Novembre"
             style={
               [
                 {
@@ -539,7 +539,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 ]
               }
             >
-              nov.
+              Nov.
             </Text>
           </View>
         </View>
@@ -595,7 +595,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <View
-            accessibilityLabel="Mercredi 1 juin"
+            accessibilityLabel="Mercredi 1 Juin"
             style={
               [
                 {
@@ -657,7 +657,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 ]
               }
             >
-              juin
+              Juin
             </Text>
           </View>
         </View>
@@ -713,7 +713,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <View
-            accessibilityLabel="Mercredi 1 novembre"
+            accessibilityLabel="Mercredi 1 Novembre"
             style={
               [
                 {
@@ -775,7 +775,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 ]
               }
             >
-              nov.
+              Nov.
             </Text>
           </View>
         </View>
@@ -831,7 +831,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <View
-            accessibilityLabel="Samedi 1 juin"
+            accessibilityLabel="Samedi 1 Juin"
             style={
               [
                 {
@@ -893,7 +893,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 ]
               }
             >
-              juin
+              Juin
             </Text>
           </View>
         </View>
@@ -949,7 +949,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <View
-            accessibilityLabel="Mardi 1 décembre"
+            accessibilityLabel="Mardi 1 Décembre"
             style={
               [
                 {
@@ -1011,7 +1011,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 ]
               }
             >
-              déc.
+              Déc.
             </Text>
           </View>
         </View>
@@ -1067,7 +1067,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
           }
         >
           <View
-            accessibilityLabel="Mercredi 1 juin"
+            accessibilityLabel="Mercredi 1 Juin"
             style={
               [
                 {
@@ -1129,7 +1129,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 ]
               }
             >
-              juin
+              Juin
             </Text>
           </View>
         </View>
