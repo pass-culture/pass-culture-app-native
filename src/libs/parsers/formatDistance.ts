@@ -1,7 +1,7 @@
 import { Geoloc } from 'libs/algolia'
 import { Position } from 'libs/location'
 
-const EARTH_RADIUS = 6_378_137
+export const EARTH_RADIUS = 6_378_137
 
 export const getHumanizeRelativeDistance = (
   userLocation: Geoloc,

@@ -66,7 +66,7 @@ import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { Venue } from 'features/venue/pages/Venue/Venue'
-import { VenueMap } from 'features/venuemap/pages/VenueMap/VenueMap'
+import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
 import { RootRoute } from './types'
