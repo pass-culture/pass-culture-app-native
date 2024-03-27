@@ -11,6 +11,7 @@ export type CustomRemoteConfig = {
   homeEntryId_18: string
   homeEntryId_15_17: string
   sameAuthorPlaylist: string
+  shouldDisplayReassuranceMention: boolean
 }
 
 /* The purpose of GenericRemoteConfig is only to resolve type conflicts.
