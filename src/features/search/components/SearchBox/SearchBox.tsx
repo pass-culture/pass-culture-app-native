@@ -153,7 +153,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         setQuery('')
         dispatch({
           type: 'SET_STATE',
-          payload: { ...searchState, view: SearchView.Landing, query: '' },
+          payload: initialSearchState,
         })
         break
       default:
