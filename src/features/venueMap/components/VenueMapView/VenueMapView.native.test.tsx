@@ -60,5 +60,5 @@ describe('<VenueMapView />', () => {
 })
 
 function renderVenueMapView() {
-  render(reactQueryProviderHOC(<VenueMapView padding={{ top: 0, left: 0, right: 0, bottom: 0 }} />))
+  render(reactQueryProviderHOC(<VenueMapView height={700} />))
 }

@@ -3,7 +3,6 @@ import { useWindowDimensions } from 'react-native'
 
 import { PREVIEW_BOTTOM_MARGIN } from 'features/venueMap/components/VenueMapView/constant'
 import type { Region, Map } from 'libs/maps/maps'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { getSpacing } from 'ui/theme'
 
 const CENTER_PIN_THRESHOLD = getSpacing(4)
@@ -12,11 +11,16 @@ type Params = {
   currentRegion: Region
   previewHeight: number
   mapViewRef: RefObject<Map>
+  mapHeight: number
 }
 
-export const useCenterOnLocation = ({ currentRegion, previewHeight, mapViewRef }: Params) => {
-  const { height, width } = useWindowDimensions()
-  const headerHeight = useGetHeaderHeight()
+export const useCenterOnLocation = ({
+  currentRegion,
+  previewHeight,
+  mapViewRef,
+  mapHeight,
+}: Params) => {
+  const { width } = useWindowDimensions()
 
   return async (latitude: number, longitude: number) => {
     if (!mapViewRef?.current) return
@@ -25,8 +29,8 @@ export const useCenterOnLocation = ({ currentRegion, previewHeight, mapViewRef }
     const point = await mapViewRef.current.pointForCoordinate({ latitude, longitude })
 
     const isBehindPreview =
-      point.y > height - (PREVIEW_BOTTOM_MARGIN + previewHeight + CENTER_PIN_THRESHOLD)
-    const isBehindHeader = point.y < headerHeight + CENTER_PIN_THRESHOLD
+      point.y > mapHeight - (PREVIEW_BOTTOM_MARGIN + previewHeight + CENTER_PIN_THRESHOLD)
+    const isBehindHeader = point.y < CENTER_PIN_THRESHOLD
     const isBehindRightBorder = point.x > width - CENTER_PIN_THRESHOLD
     const isBehindLeftBorder = point.x < CENTER_PIN_THRESHOLD
 
