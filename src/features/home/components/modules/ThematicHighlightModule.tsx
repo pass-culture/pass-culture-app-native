@@ -47,7 +47,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
         id,
         ContentTypes.THEMATIC_HIGHLIGHT,
         index,
-        toThematicHomeEntryId
+        homeEntryId
       )
     // should send analytics event only once
     // eslint-disable-next-line react-hooks/exhaustive-deps
