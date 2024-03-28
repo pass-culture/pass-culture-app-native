@@ -1359,7 +1359,9 @@ exports[`TrackEmailChange v2 should render correctly when choose new email step 
                       {
                         "borderColor": "#F1F1F4",
                         "borderWidth": 2,
-                        "height": 88,
+                        "minHeight": 88,
+                        "paddingRight": 16,
+                        "paddingVertical": 16,
                         "width": "98%",
                       },
                     ]
@@ -1607,7 +1609,7 @@ exports[`TrackEmailChange v2 should render correctly when choose new email step 
                       [
                         {
                           "borderColor": "#161617",
-                          "height": 92,
+                          "minHeight": 92,
                         },
                       ],
                     ]
@@ -1859,7 +1861,9 @@ exports[`TrackEmailChange v2 should render correctly when choose new email step 
                       },
                       {
                         "borderColor": "#CBCDD2",
-                        "height": 88,
+                        "minHeight": 88,
+                        "paddingRight": 16,
+                        "paddingVertical": 16,
                         "width": "98%",
                       },
                     ]
@@ -2293,7 +2297,7 @@ exports[`TrackEmailChange v2 should render correctly when confirmation step is a
                       [
                         {
                           "borderColor": "#161617",
-                          "height": 92,
+                          "minHeight": 92,
                         },
                       ],
                     ]
@@ -2359,7 +2363,7 @@ exports[`TrackEmailChange v2 should render correctly when confirmation step is a
                         ]
                       }
                     >
-                      Depuis l’email envoyé à "example@example.com"
+                      Depuis l’e-mail envoyé à "example@example.com"
                     </Text>
                   </View>
                   <View>
@@ -2556,7 +2560,9 @@ exports[`TrackEmailChange v2 should render correctly when confirmation step is a
                       },
                       {
                         "borderColor": "#CBCDD2",
-                        "height": 88,
+                        "minHeight": 88,
+                        "paddingRight": 16,
+                        "paddingVertical": 16,
                         "width": "98%",
                       },
                     ]
@@ -2786,7 +2792,9 @@ exports[`TrackEmailChange v2 should render correctly when confirmation step is a
                       },
                       {
                         "borderColor": "#CBCDD2",
-                        "height": 88,
+                        "minHeight": 88,
+                        "paddingRight": 16,
+                        "paddingVertical": 16,
                         "width": "98%",
                       },
                     ]
@@ -3195,7 +3203,9 @@ exports[`TrackEmailChange v2 should render correctly when validate new email ste
                       {
                         "borderColor": "#F1F1F4",
                         "borderWidth": 2,
-                        "height": 88,
+                        "minHeight": 88,
+                        "paddingRight": 16,
+                        "paddingVertical": 16,
                         "width": "98%",
                       },
                     ]
@@ -3418,7 +3428,9 @@ exports[`TrackEmailChange v2 should render correctly when validate new email ste
                       {
                         "borderColor": "#F1F1F4",
                         "borderWidth": 2,
-                        "height": 88,
+                        "minHeight": 88,
+                        "paddingRight": 16,
+                        "paddingVertical": 16,
                         "width": "98%",
                       },
                     ]
@@ -3655,7 +3667,7 @@ exports[`TrackEmailChange v2 should render correctly when validate new email ste
                       [
                         {
                           "borderColor": "#161617",
-                          "height": 92,
+                          "minHeight": 92,
                         },
                       ],
                     ]

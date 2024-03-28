@@ -53,7 +53,7 @@ export const TrackEmailChangeContent = () => {
     CONFIRMATION: {
       currentTitle: 'Confirme ta demande',
       defaultTitle: 'Confirmation de ta demande',
-      subtitle: `Depuis l’email envoyé à "${currentEmail}"`,
+      subtitle: `Depuis l’e-mail envoyé à "${currentEmail}"`,
       icon: {
         current: BicolorEmailIcon,
         completed: CompletedEmailIcon,
