@@ -9,7 +9,7 @@ import { SearchResults } from 'features/search/pages/SearchResults/SearchResults
 
 import { SearchStackRoute, SearchStackParamList, SearchStackRouteName } from './types'
 
-const initialRouteName: SearchStackRouteName = 'SearchLanding'
+export const initialSearchStackRouteName: SearchStackRouteName = 'SearchLanding'
 
 const routes: SearchStackRoute[] = [
   {
@@ -41,7 +41,7 @@ const { screensConfig: searchScreensConfig, Screens: SearchScreens } = getScreen
 export { SearchScreens }
 
 export const searchNavigatorPathConfig: LinkingOptions<SearchStackParamList>['config'] = {
-  initialRouteName,
+  initialRouteName: initialSearchStackRouteName,
   screens: searchScreensConfig,
 }
 
