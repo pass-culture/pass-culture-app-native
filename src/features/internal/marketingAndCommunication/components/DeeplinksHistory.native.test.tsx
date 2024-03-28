@@ -1,5 +1,4 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import flushPromises from 'flush-promises'
 import React from 'react'
 
 import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
@@ -73,13 +72,10 @@ describe('<DeeplinksHistory />', () => {
       rehydrateHistory,
     })
 
-    await flushPromises()
-
-    expect(setKeepHistory).toHaveBeenCalledWith(true)
-
-    const persistedHistory = await AsyncStorage.getItem('mac_history')
-
-    expect(rehydrateHistory).toHaveBeenCalledWith(JSON.parse(persistedHistory || '[]'))
+    await waitFor(() => {
+      expect(setKeepHistory).toHaveBeenCalledWith(true)
+      expect(rehydrateHistory).toHaveBeenCalledWith(history)
+    })
   })
 })
 

@@ -30,10 +30,11 @@ describe('MappingTree', () => {
       mockedUndefinedFacets,
       mockedNewMappingEnabled
     )
-    const bookResult = result['LIVRES'].children
-      ? result['LIVRES'].children['ROMANS_ET_LITTERATURE']
-      : undefined
 
-    expect(bookResult).toEqual(bookTreeResultFixture.SearchGroup.children.ROMANS_ET_LITTERATURE)
+    expect(result['LIVRES'].children).toEqual(
+      expect.objectContaining({
+        ROMANS_ET_LITTERATURE: bookTreeResultFixture.SearchGroup.children.ROMANS_ET_LITTERATURE,
+      })
+    )
   })
 })
