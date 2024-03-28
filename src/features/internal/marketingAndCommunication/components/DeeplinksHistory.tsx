@@ -11,7 +11,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
 
 export interface DeeplinksHistoryProps {
-  history: Array<GeneratedDeeplink>
+  history: Readonly<GeneratedDeeplink[]>
   keepHistory: boolean
   setKeepHistory: (keepHistory: boolean) => void
   rehydrateHistory: (history: GeneratedDeeplink[]) => void

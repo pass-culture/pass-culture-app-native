@@ -1,8 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import flushPromises from 'flush-promises'
 import React from 'react'
 
-import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
 import {
   DeeplinksHistory,
   DeeplinksHistoryProps,
@@ -10,7 +8,7 @@ import {
 import { render, screen, waitFor } from 'tests/utils'
 
 describe('<DeeplinksHistory />', () => {
-  const history: Array<GeneratedDeeplink> = [
+  const history = [
     {
       firebaseLink: 'https://passculture.app/recherche',
       universalLink:
@@ -21,7 +19,7 @@ describe('<DeeplinksHistory />', () => {
       universalLink:
         'https://passcultureapp.page.link/?link=https%3A%2F%2Fpassculture.app%2Flieu%2F34323&apn=app.passculture.webapp&isi=1557887412&ibi=app.passculture&efr=1',
     },
-  ]
+  ] as const
 
   it('should display deeplinks history', () => {
     renderDeeplinksHistory({
@@ -32,15 +30,11 @@ describe('<DeeplinksHistory />', () => {
     })
 
     expect(screen.getByText('#0')).toBeOnTheScreen()
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(screen.getByText(history[0].universalLink)).toBeOnTheScreen()
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(screen.getByText(history[0].firebaseLink)).toBeOnTheScreen()
 
     expect(screen.getByText('#1')).toBeOnTheScreen()
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(screen.getByText(history[1].universalLink)).toBeOnTheScreen()
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(screen.getByText(history[1].firebaseLink)).toBeOnTheScreen()
   })
 
@@ -73,13 +67,10 @@ describe('<DeeplinksHistory />', () => {
       rehydrateHistory,
     })
 
-    await flushPromises()
-
-    expect(setKeepHistory).toHaveBeenCalledWith(true)
-
-    const persistedHistory = await AsyncStorage.getItem('mac_history')
-
-    expect(rehydrateHistory).toHaveBeenCalledWith(JSON.parse(persistedHistory || '[]'))
+    await waitFor(() => {
+      expect(setKeepHistory).toHaveBeenCalledWith(true)
+      expect(rehydrateHistory).toHaveBeenCalledWith(history)
+    })
   })
 })
 
