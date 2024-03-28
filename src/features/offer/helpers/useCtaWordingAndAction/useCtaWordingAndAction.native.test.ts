@@ -1,8 +1,15 @@
 import mockdate from 'mockdate'
 
-import { OfferResponse, YoungStatusType, SubscriptionStatus, SearchGroupNameEnumv2 } from 'api/gen'
+import {
+  OfferResponse,
+  YoungStatusType,
+  SubscriptionStatus,
+  SearchGroupNameEnumv2,
+  SubcategoryIdEnum,
+} from 'api/gen'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Subcategory } from 'libs/subcategories/types'
 import { OfferModal } from 'shared/offer/enums'
@@ -10,6 +17,25 @@ import { OfferModal } from 'shared/offer/enums'
 import { getCtaWordingAndAction } from './useCtaWordingAndAction'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
+const CineScreeningOffer = {
+  ...baseOffer,
+  subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+}
+
+const defaultParameters = {
+  isLoggedIn: true,
+  userStatus: { statusType: YoungStatusType.non_eligible },
+  isBeneficiary: false,
+  hasEnoughCredit: false,
+  bookedOffers: {},
+  isUnderageBeneficiary: false,
+  bookOffer: () => {},
+  isBookingLoading: false,
+  booking: undefined,
+  isDepositExpired: false,
+}
 
 describe('getCtaWordingAndAction', () => {
   describe('logged out user', () => {
@@ -207,7 +233,7 @@ describe('getCtaWordingAndAction', () => {
 
         const result = getCtaWordingAndAction({
           isLoggedIn: true,
-          userStatus: { statusType: YoungStatusType.beneficiary },
+          userStatus: { statusType: YoungStatusType.ex_beneficiary },
           isBeneficiary: false,
           offer,
           subcategory,
@@ -280,7 +306,7 @@ describe('getCtaWordingAndAction', () => {
         isLoggedIn: true,
         userStatus: { statusType: YoungStatusType.beneficiary },
         isBeneficiary: true,
-        offer: buildOffer(partialOffer),
+        offer: buildOffer({ ...partialOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER }),
         subcategory: buildSubcategory(partialSubcategory || {}),
         hasEnoughCredit: true,
         bookedOffers: {},
@@ -288,6 +314,7 @@ describe('getCtaWordingAndAction', () => {
         bookOffer: () => {},
         isBookingLoading: false,
         booking: undefined,
+        enableNewXpCine: false,
         ...parameters,
       }) || { wording: '' }
 
@@ -393,7 +420,7 @@ describe('getCtaWordingAndAction', () => {
       ${false}        | ${false}  | ${'Crédit insuffisant'}           | ${true}    | ${true}               | ${undefined}
       ${true}         | ${false}  | ${'Réserver l’offre'}             | ${false}   | ${false}              | ${OfferModal.BOOKING}
     `(
-      'check is credit is enough | non event x $isDigital => $wording',
+      'check if credit is enough | non event x $isDigital => $wording',
       ({
         isDisabled,
         wording,
@@ -636,6 +663,136 @@ describe('getCtaWordingAndAction', () => {
       if (onPress) onPress()
 
       expect(analytics.logConsultErrorApplicationModal).toHaveBeenNthCalledWith(1, baseOffer.id)
+    })
+
+    describe('When WIP_ENABLE_NEW_XP_CINE_FROM_OFFER feature flag activated', () => {
+      it('should return bottomBannerText and no wording if user is not eligible', async () => {
+        const result = getCtaWordingAndAction({
+          ...defaultParameters,
+          offer: CineScreeningOffer,
+          subcategory: buildSubcategory({ isEvent: true }),
+          enableNewXpCine: true,
+        })
+
+        expect(result).toEqual({
+          bottomBannerText:
+            'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
+          wording: undefined,
+          isDisabled: true,
+        })
+      })
+
+      it('should return bottomBannerText and no wording if user has expired credit', async () => {
+        const result = getCtaWordingAndAction({
+          ...defaultParameters,
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer: CineScreeningOffer,
+          subcategory: buildSubcategory({ isEvent: true }),
+          enableNewXpCine: true,
+          isDepositExpired: true,
+        })
+
+        expect(result).toEqual({
+          bottomBannerText: 'Tu ne peux pas réserver cette offre car ton crédit a expiré.',
+          wording: undefined,
+        })
+      })
+
+      it('should return bottomBannerText and no wording if user has not enough credit', async () => {
+        const result = getCtaWordingAndAction({
+          ...defaultParameters,
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer: CineScreeningOffer,
+          subcategory: buildSubcategory({ isEvent: true }),
+          enableNewXpCine: true,
+          hasEnoughCredit: false,
+        })
+
+        expect(result).toEqual({
+          bottomBannerText: 'Tu ne peux pas réserver cette offre car ton crédit est insuffisant.',
+          wording: undefined,
+          isDisabled: true,
+        })
+      })
+
+      it('should return bottomBannerText and wording if user has already booked this offer', async () => {
+        const result = getCtaWordingAndAction({
+          ...defaultParameters,
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer: CineScreeningOffer,
+          bookedOffers: { [baseOffer.id]: 116656 },
+          subcategory: buildSubcategory({ isEvent: true }),
+          enableNewXpCine: true,
+          hasEnoughCredit: true,
+        })
+
+        expect(result).toEqual({
+          wording: 'Voir ma réservation',
+          bottomBannerText: 'Tu ne peux réserver ce film qu’une seule fois.',
+          isDisabled: false,
+          navigateTo: {
+            fromRef: true,
+            params: {
+              id: 116656,
+            },
+            screen: 'BookingDetails',
+          },
+        })
+      })
+
+      it('should display "Réserver l’offre" wording and modal "authentication" if user is not logged in', () => {
+        const result = getCtaWordingAndAction({
+          isLoggedIn: false,
+          userStatus: { statusType: YoungStatusType.non_eligible },
+          isBeneficiary: false,
+          offer: buildOffer({}),
+          subcategory: buildSubcategory({ isEvent: true }),
+          hasEnoughCredit: false,
+          bookedOffers: {},
+          isUnderageBeneficiary: false,
+          bookOffer: () => {},
+          isBookingLoading: false,
+          booking: undefined,
+          enableNewXpCine: true,
+        })
+
+        expect(result).toEqual({
+          isDisabled: false,
+          modalToDisplay: OfferModal.AUTHENTICATION,
+          wording: 'Réserver l’offre',
+          ...result,
+        })
+      })
+
+      it('should return application pending modal when user is waiting for his application to complete', () => {
+        const result = getCtaWordingAndAction({
+          isLoggedIn: true,
+          userStatus: {
+            statusType: YoungStatusType.eligible,
+            subscriptionStatus: SubscriptionStatus.has_subscription_pending,
+          },
+          isBeneficiary: false,
+          offer: CineScreeningOffer,
+          subcategory: buildSubcategory({ isEvent: true }),
+          hasEnoughCredit: false,
+          bookedOffers: {},
+          isUnderageBeneficiary: false,
+          bookOffer: () => {},
+          isBookingLoading: false,
+          booking: undefined,
+          enableNewXpCine: true,
+        })
+
+        expect(result).toEqual({
+          isDisabled: false,
+          modalToDisplay: OfferModal.APPLICATION_PROCESSING,
+          wording: 'Réserver l’offre',
+          ...result,
+        })
+      })
     })
   })
 })

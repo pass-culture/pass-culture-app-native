@@ -4,7 +4,7 @@ import { OfferStockResponse, SubscriptionStatus, UserProfileResponse } from 'api
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOngoingOrEndedBooking } from 'features/bookings/api'
 import { formatHour } from 'features/bookOffer/helpers/utils'
-import { EventCardSubtitleEnum } from 'features/offer/components/MovieScreeningCalendar/enum'
+import { EventCardSubtitleEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsBookedOffer } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
@@ -98,6 +98,7 @@ export const useSelectedDateScreening = (
           title: formatHour(beginningDatetime).replace(':', 'h'),
           subtitleLeft,
           subtitleRight,
+          hasBookedScreening,
         }
       }
       return undefined
