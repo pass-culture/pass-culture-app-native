@@ -7,7 +7,9 @@ import {
   OfferStockResponse,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
+  SubscriptionStatus,
   UserProfileResponse,
+  YoungStatusType,
 } from 'api/gen'
 import { IAuthContext } from 'features/auth/context/AuthContext'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
@@ -15,7 +17,7 @@ import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
 import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { beneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Subcategory } from 'libs/subcategories/types'
@@ -202,6 +204,85 @@ describe('Movie screening calendar', () => {
       expect(await screen.findByText('Nombre de places')).toBeOnTheScreen()
     })
 
+    it('should open finishSubscription modal when user has to complete subscription', async () => {
+      mockAuthContext = {
+        ...defaultLoggedInUser,
+        user: {
+          ...nonBeneficiaryUser,
+          status: {
+            statusType: YoungStatusType.eligible,
+            subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
+          },
+        },
+      }
+
+      renderMovieScreeningCalendar({ offer: defaultOfferResponse })
+
+      const eventCard = await screen.findByLabelText('VO')
+      await act(async () => {
+        fireEvent.press(eventCard)
+      })
+
+      expect(
+        await screen.findByText('Débloque ton crédit pour réserver cette offre')
+      ).toBeOnTheScreen()
+    })
+
+    it('should open applicationProcessing modal when user is waiting for his application to complete', async () => {
+      mockServer.getApi('/v1/me/favorites', {
+        page: 1,
+        nbFavorites: 0,
+        favorites: [],
+      })
+
+      mockAuthContext = {
+        ...defaultLoggedInUser,
+        user: {
+          ...nonBeneficiaryUser,
+          status: {
+            statusType: YoungStatusType.eligible,
+            subscriptionStatus: SubscriptionStatus.has_subscription_pending,
+          },
+        },
+      }
+
+      renderMovieScreeningCalendar({ offer: defaultOfferResponse })
+
+      const eventCard = await screen.findByLabelText('VO')
+      await act(async () => {
+        fireEvent.press(eventCard)
+      })
+
+      expect(await screen.findByText('C’est pour bientôt !')).toBeOnTheScreen()
+    })
+
+    it('should open errorApplication modal when user has an issue with his application', async () => {
+      mockServer.getApi('/v1/me/favorites', {
+        page: 1,
+        nbFavorites: 0,
+        favorites: [],
+      })
+      mockAuthContext = {
+        ...defaultLoggedInUser,
+        user: {
+          ...nonBeneficiaryUser,
+          status: {
+            statusType: YoungStatusType.eligible,
+            subscriptionStatus: SubscriptionStatus.has_subscription_issues,
+          },
+        },
+      }
+
+      renderMovieScreeningCalendar({ offer: defaultOfferResponse })
+
+      const eventCard = await screen.findByLabelText('VO')
+      await act(async () => {
+        fireEvent.press(eventCard)
+      })
+
+      expect(await screen.findByText('Tu n’as pas encore obtenu ton crédit')).toBeOnTheScreen()
+    })
+
     it('should display "Déjà réservé" if user has already booked offer in venue', async () => {
       mockAuthContext = {
         ...defaultLoggedInUser,
@@ -231,8 +312,6 @@ describe('Movie screening calendar', () => {
     })
 
     it('should show "Crédit insuffisant" when user is logged in and does not have enough credit', async () => {
-      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
-
       mockAuthContext = {
         ...defaultLoggedInUser,
         user: {
@@ -270,8 +349,6 @@ describe('Movie screening calendar', () => {
     })
 
     it('should not log event BookingProcessStart when user clicks on a disabled eventcard', async () => {
-      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
-
       mockAuthContext = {
         ...defaultLoggedInUser,
         user: {
