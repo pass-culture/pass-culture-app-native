@@ -117,19 +117,21 @@ const BaseContainer: FunctionComponent<BaseContainerProps> = ({ LeftIcon, style,
 )
 
 const CurrentContainer = styled(GenericBanner)(({ theme }) => ({
-  height: getSpacing(23),
+  minHeight: getSpacing(23),
   borderColor: theme.colors.black,
 }))
 
 const RetryContainer = styled(GenericBanner)(({ theme }) => ({
-  height: getSpacing(23),
+  minHeight: getSpacing(23),
   borderColor: theme.colors.black,
 }))
 
 const DisabledContainer = styled(BaseContainer)(({ theme }) => ({
-  height: getSpacing(22),
+  minHeight: getSpacing(22),
   width: '98%',
   borderColor: theme.colors.greyMedium,
+  paddingVertical: getSpacing(4),
+  paddingRight: getSpacing(4),
 }))
 
 const CompletedContainer = styled(DisabledContainer)(({ theme }) => ({
