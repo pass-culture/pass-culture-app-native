@@ -35,9 +35,7 @@ export const VenueMap: FunctionComponent = () => {
       <StyledHeader title="Carte des lieux" onGoBack={goBack} />
       <PlaceHolder headerHeight={headerHeight + withFilterBanner} />
       {enableVenueMapTypeFilter ? (
-        <React.Fragment>
-          <FilterBannerContainer headerHeight={headerHeight}></FilterBannerContainer>
-        </React.Fragment>
+        <FilterBannerContainer headerHeight={headerHeight}></FilterBannerContainer>
       ) : null}
       <MapContainer>
         <VenueMapView height={venueMapHeight} />
