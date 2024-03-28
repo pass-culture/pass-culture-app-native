@@ -12,6 +12,7 @@ import {
   BookOfferResponse,
   BookOfferRequest,
   BookingReponse,
+  SubcategoryIdEnum,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
@@ -22,10 +23,13 @@ import {
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { openUrl } from 'features/navigation/helpers'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
@@ -64,6 +68,8 @@ type Props = {
   booking: BookingReponse | null | undefined
   from?: Referrals
   searchId?: string
+  enableNewXpCine?: boolean
+  isDepositExpired?: boolean
 }
 
 export type ICTAWordingAndAction = {
@@ -93,17 +99,20 @@ export const getCtaWordingAndAction = ({
   booking,
   from,
   searchId,
+  enableNewXpCine,
+  isDepositExpired,
 }: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl, subcategoryId } = offer
 
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
-
   const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
+  const isMovieScreeningOffer = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
+  const isNewXPCine = isMovieScreeningOffer && enableNewXpCine
 
   if (!isLoggedIn) {
     return {
       modalToDisplay: OfferModal.AUTHENTICATION,
-      wording: 'Réserver l’offre',
+      wording: isNewXPCine ? undefined : 'Réserver l’offre',
       isDisabled: false,
       onPress: () => {
         analytics.logConsultAuthenticationModal(offer.id)
@@ -113,9 +122,8 @@ export const getCtaWordingAndAction = ({
 
   if (userStatus?.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
     return {
-      wording: 'Réserver l’offre',
-      bottomBannerText:
-        'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
+      wording: isNewXPCine ? undefined : 'Réserver l’offre',
+      bottomBannerText: BottomBannerTextEnum.NOT_ELIGIBLE,
       isDisabled: true,
     }
   }
@@ -123,15 +131,16 @@ export const getCtaWordingAndAction = ({
   if (isEndedUsedBooking) {
     return {
       modalToDisplay: OfferModal.BOOKING,
-      wording: 'Réserver l’offre',
+      wording: isNewXPCine ? undefined : 'Réserver l’offre',
       isEndedUsedBooking,
       isDisabled: false,
+      bottomBannerText: isNewXPCine ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
     }
   }
 
   if (userStatus?.statusType === YoungStatusType.eligible) {
     const common = {
-      wording: 'Réserver l’offre',
+      wording: isNewXPCine ? undefined : 'Réserver l’offre',
       isDisabled: false,
     }
     switch (userStatus.subscriptionStatus) {
@@ -192,6 +201,7 @@ export const getCtaWordingAndAction = ({
         params: { id: bookedOffers[offer.id] },
         fromRef: true,
       },
+      bottomBannerText: isNewXPCine ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
     }
   }
 
@@ -208,8 +218,14 @@ export const getCtaWordingAndAction = ({
   }
 
   // Beneficiary
+  if (isDepositExpired && isNewXPCine)
+    return {
+      bottomBannerText: BottomBannerTextEnum.CREDIT_HAS_EXPIRED,
+    }
+
   if (!offer.isReleased || offer.isExpired) return { wording: 'Offre expirée', isDisabled: true }
-  if (offer.isSoldOut) return { wording: 'Offre épuisée', isDisabled: true }
+  if (offer.isSoldOut)
+    return { wording: isNewXPCine ? undefined : 'Offre épuisée', isDisabled: true }
 
   if (!subcategory.isEvent) {
     if (!hasEnoughCredit) {
@@ -229,11 +245,16 @@ export const getCtaWordingAndAction = ({
   }
 
   if (subcategory.isEvent) {
-    if (!hasEnoughCredit) return { wording: 'Crédit insuffisant', isDisabled: true }
+    if (!hasEnoughCredit)
+      return {
+        wording: isNewXPCine ? undefined : 'Crédit insuffisant',
+        bottomBannerText: isNewXPCine ? BottomBannerTextEnum.NOT_ENOUGH_CREDIT : undefined,
+        isDisabled: true,
+      }
 
     return {
       modalToDisplay: OfferModal.BOOKING,
-      wording: 'Voir les disponibilités',
+      wording: isNewXPCine ? undefined : 'Voir les disponibilités',
       isDisabled: false,
       onPress: () => {
         analytics.logConsultAvailableDates(offer.id)
@@ -251,6 +272,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
   const { showErrorSnackBar } = useSnackBarContext()
+  const enableNewXpCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER)
   const route = useRoute<UseRouteType<'Offer'>>()
   const apiRecoParams: RecommendationApiParams = route.params.apiRecoParams
     ? JSON.parse(route.params.apiRecoParams)
@@ -258,6 +280,9 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   const playlistType = route.params.playlistType
   const fromOfferId = route.params.fromOfferId
   const fromMultivenueOfferId = route.params.fromMultivenueOfferId
+  const isDepositExpired = user?.depositExpirationDate
+    ? new Date(user?.depositExpirationDate) < new Date()
+    : false
 
   const { refetch: getBookings } = useBookings()
 
@@ -318,5 +343,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     booking,
     from,
     searchId,
+    enableNewXpCine,
+    isDepositExpired,
   })
 }

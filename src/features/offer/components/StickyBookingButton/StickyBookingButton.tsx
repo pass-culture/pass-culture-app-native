@@ -22,31 +22,29 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
   const { wording, onPress, navigateTo, externalNav, isDisabled, bottomBannerText } =
     ctaWordingAndAction
 
-  if (!wording) {
+  if (!wording && !bottomBannerText) {
     return null
   }
 
   return (
     <StickyBottomWrapper>
-      <BlurryWrapper>
-        <CallToActionContainer testID="sticky-booking-button">
-          <CTAButton
-            wording={wording}
-            onPress={onPress}
-            navigateTo={navigateTo}
-            externalNav={externalNav}
-            isDisabled={isDisabled}
-            isFreeDigitalOffer={isFreeDigitalOffer}
-            isLoggedIn={isLoggedIn}
-          />
-        </CallToActionContainer>
+      {wording ? (
+        <BlurryWrapper>
+          <CallToActionContainer testID="sticky-booking-button">
+            <CTAButton
+              wording={wording}
+              onPress={onPress}
+              navigateTo={navigateTo}
+              externalNav={externalNav}
+              isDisabled={isDisabled}
+              isFreeDigitalOffer={isFreeDigitalOffer}
+              isLoggedIn={isLoggedIn}
+            />
+          </CallToActionContainer>
+        </BlurryWrapper>
+      ) : null}
 
-        {bottomBannerText ? (
-          <StyledBottomBanner text={bottomBannerText} />
-        ) : (
-          <Spacer.BottomScreen />
-        )}
-      </BlurryWrapper>
+      {bottomBannerText ? <StyledBottomBanner text={bottomBannerText} /> : <Spacer.BottomScreen />}
     </StickyBottomWrapper>
   )
 }

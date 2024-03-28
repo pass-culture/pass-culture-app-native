@@ -25,6 +25,23 @@ describe('<OfferBookingButton />', () => {
     expect(screen.getByTestId('blurry-wrapper')).toHaveStyle({ backgroundColor: 'transparent' })
   })
 
+  it('should not display the blurry style if no wording', () => {
+    render(
+      <StickyBookingButton
+        ctaWordingAndAction={{
+          onPress: jest.fn(),
+          navigateTo: undefined,
+          externalNav: undefined,
+          isDisabled: false,
+          bottomBannerText: 'Attention !',
+        }}
+      />
+    )
+    const blurryWrapper = screen.queryByTestId('blurry-wrapper')
+
+    expect(blurryWrapper).not.toBeOnTheScreen()
+  })
+
   it('should display the bottom banner text', () => {
     render(<StickyBookingButton ctaWordingAndAction={mockCtaWordingAndAction} />)
 
