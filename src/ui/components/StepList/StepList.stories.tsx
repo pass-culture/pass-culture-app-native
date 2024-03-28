@@ -82,7 +82,7 @@ const Template: ComponentStory<typeof StepList> = ({ currentStepIndex = 0 }) => 
       <Step>
         <StyleStepCard
           title="Active"
-          subtitle="Renseigne ton email"
+          subtitle="Renseigne ton e-mail"
           icon={<BicolorAroundMe />}
           type={getStepButtonState(1)}
         />
