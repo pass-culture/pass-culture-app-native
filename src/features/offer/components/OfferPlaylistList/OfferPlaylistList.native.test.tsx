@@ -13,6 +13,7 @@ import {
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -45,19 +46,8 @@ const offerPlaylistListProps: OfferPlaylistListProps = {
 }
 
 const defaultRemoteConfig: CustomRemoteConfig = {
-  test_param: 'A',
-  homeEntryIdFreeOffers: 'homeEntryIdFreeOffers',
-  homeEntryIdNotConnected: 'homeEntryIdNotConnected',
-  homeEntryIdGeneral: 'homeEntryIdGeneral',
-  homeEntryIdOnboardingGeneral: 'homeEntryIdOnboardingGeneral',
-  homeEntryIdOnboardingUnderage: 'homeEntryIdOnboardingUnderage',
-  homeEntryIdOnboarding_18: 'homeEntryIdOnboarding_18',
-  homeEntryIdWithoutBooking_18: 'homeEntryIdWithoutBooking_18',
-  homeEntryIdWithoutBooking_15_17: 'homeEntryIdWithoutBooking_15_17',
-  homeEntryId_18: 'homeEntryId_18',
-  homeEntryId_15_17: 'homeEntryId_15_17',
+  ...DEFAULT_REMOTE_CONFIG,
   sameAuthorPlaylist: 'sameAuthorPlaylist',
-  shouldDisplayReassuranceMention: true,
 }
 
 describe('<OfferPlaylistList />', () => {

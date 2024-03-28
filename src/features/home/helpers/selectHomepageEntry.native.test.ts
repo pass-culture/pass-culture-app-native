@@ -12,6 +12,7 @@ import { Homepage, HomepageTag } from 'features/home/types'
 import { UserOnboardingRole } from 'features/tutorial/enums'
 import * as OnboardingRoleAPI from 'features/tutorial/helpers/useUserRoleFromOnboarding'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { Credit, getAvailableCredit } from 'shared/user/useAvailableCredit'
 import { renderHook, waitFor } from 'tests/utils'
@@ -135,7 +136,7 @@ const mockGetAvailableCredit = getAvailableCredit as jest.MockedFunction<typeof 
 const mockUseUserRoleFromOnboarding = jest.spyOn(OnboardingRoleAPI, 'useUserRoleFromOnboarding')
 
 const defaultRemoteConfig: CustomRemoteConfig = {
-  test_param: 'A',
+  ...DEFAULT_REMOTE_CONFIG,
   homeEntryIdFreeOffers: 'homeEntryIdFreeOffers',
   homeEntryIdNotConnected: 'homeEntryIdNotConnected',
   homeEntryIdGeneral: 'homeEntryIdGeneral',
@@ -146,8 +147,6 @@ const defaultRemoteConfig: CustomRemoteConfig = {
   homeEntryIdWithoutBooking_15_17: 'homeEntryIdWithoutBooking_15_17',
   homeEntryId_18: 'homeEntryId_18',
   homeEntryId_15_17: 'homeEntryId_15_17',
-  sameAuthorPlaylist: 'sameAuthorPlaylist',
-  shouldDisplayReassuranceMention: false,
 }
 
 describe('useSelectHomepageEntry', () => {
