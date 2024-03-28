@@ -364,10 +364,6 @@
 ./src/features/internal/cheatcodes/hooks/useSomeVenueId.ts:23
 ./src/features/internal/cheatcodes/pages/AppComponents/AppComponents.tsx:716
 ./src/features/internal/cheatcodes/pages/AppComponents/AppComponents.tsx:728
-./src/features/internal/marketingAndCommunication/components/DeeplinksHistory.native.test.tsx:35
-./src/features/internal/marketingAndCommunication/components/DeeplinksHistory.native.test.tsx:37
-./src/features/internal/marketingAndCommunication/components/DeeplinksHistory.native.test.tsx:41
-./src/features/internal/marketingAndCommunication/components/DeeplinksHistory.native.test.tsx:43
 ./src/features/location/components/HomeLocationModal.native.test.tsx:57
 ./src/features/location/components/HomeLocationModal.native.test.tsx:60
 ./src/features/location/components/SearchLocationModal.native.test.tsx:188
