@@ -1,3 +1,5 @@
+import { SubscriptionTheme } from 'features/subscription/types'
+
 export type CustomRemoteConfig = {
   test_param: string
   homeEntryIdFreeOffers: string
@@ -12,6 +14,7 @@ export type CustomRemoteConfig = {
   homeEntryId_15_17: string
   sameAuthorPlaylist: string
   shouldDisplayReassuranceMention: boolean
+  subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
 }
 
 /* The purpose of GenericRemoteConfig is only to resolve type conflicts.
