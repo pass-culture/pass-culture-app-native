@@ -51,7 +51,7 @@ describe('ThematicHighlightModule', () => {
       '5Z1FGtRGbE3d1Q5oqHMfe9',
       'thematicHighlight',
       0,
-      '6DCThxvbPFKAo04SVRZtwY'
+      '6nVZ7vaaOM8qOO7wqduuo1'
     )
   })
 
