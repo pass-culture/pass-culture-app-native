@@ -51,7 +51,6 @@ export interface SearchState {
   timeRange: Range<number> | null
   tags: string[]
   query: string
-  view: SearchView
   minPrice?: string
   maxPrice?: string
   searchId?: string

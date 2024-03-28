@@ -164,7 +164,7 @@ describe('<Venue />', () => {
     })
 
     it('should not log consult venue when URL has "from" param with something other than deeplink', async () => {
-      renderVenue(venueId, 'search')
+      renderVenue(venueId, 'searchresults')
       await act(async () => {})
 
       expect(analytics.logConsultVenue).not.toHaveBeenCalled()

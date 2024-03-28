@@ -14,7 +14,7 @@ const mockOffer = mockedAlgoliaResponse.hits[0]
 // @ts-expect-error: because of noUncheckedIndexedAccess
 const offerId = Number(mockOffer.objectID)
 const mockAnalyticsParams: OfferAnalyticsParams = {
-  from: 'search',
+  from: 'searchresults',
   query: '',
   index: 0,
   searchId: '539b285e',

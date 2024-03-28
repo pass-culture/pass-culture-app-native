@@ -1,0 +1,13 @@
+  [] - créer les deux pages dans la navigation 
+[] - vérifier les deeplinks
+[] - supprimer view du searchState 
+[] - fixer la navigation entre ces deux pages
+[] - utiliser le useSYNC  sur ces deux pages
+[] - fixer 50milliard de test
+
+
+
+Pour les nous de plus tard :
+[] Peut-on se débarasser du from dans BookingOfferModal ?
+[] Page SearchFilter dans le navigateur de la recherche
+[] Quid du changement de nom du paramètre from 'search' => 'searchresults'
