@@ -418,3 +418,111 @@ describe('<SearchLanding />', () => {
     })
   })
 })
+
+/*
+
+// it.only('should setPlace and setLocationMode in location context, when URI params contains a place,', async () => {
+//   useRoute.mockReturnValueOnce({
+//     params: {
+//       locationFilter: {
+//         locationType: LocationMode.AROUND_PLACE,
+//         place: mockedPlace,
+//       },
+//     },
+//   })
+
+//   render(<SearchResults />)
+
+//   await act(async () => {})
+
+//   expect(mockSetPlace).toHaveBeenCalledWith(mockedPlace)
+//   expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_PLACE)
+// })
+
+  // it('should setLocationMode to AROUND-ME in location context,when URI params contains AROUND-ME and hasGeolocPosition is true', async () => {
+  //   mockHasGeolocPosition = true
+  //   useRoute.mockReturnValueOnce({
+  //     params: {
+  //       locationFilter: {
+  //         locationType: LocationMode.AROUND_ME,
+  //       },
+  //     },
+  //   })
+
+  //   render(<Search />)
+
+  //   await act(async () => {})
+
+  //   expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_ME)
+  // })
+
+  // it("shouldn't setLocationMode to AROUND-ME in location context,when URI params contains AROUND-ME and hasGeolocPosition is false", async () => {
+  //   mockHasGeolocPosition = false
+
+  //   useRoute.mockReturnValueOnce({
+  //     params: {
+  //       locationFilter: {
+  //         locationType: LocationMode.AROUND_ME,
+  //       },
+  //     },
+  //   })
+
+  //   render(<Search />)
+
+  //   await act(async () => {})
+
+  //   expect(mockSetSelectedLocationMode).not.toHaveBeenCalledWith(LocationMode.AROUND_ME)
+  // })
+
+  //   it('should handle coming from "See More" correctly', async () => {
+  //   useRoute.mockReturnValueOnce({ params: undefined })
+  //   render(<Search />)
+  //   await act(async () => {})
+
+  //   expect(mockDispatch).not.toHaveBeenCalled()
+  // })
+
+  // it.each([SearchView.Landing, SearchView.Results])(
+  //   'should not display suggestions when search view is not suggestions',
+  //   async (view) => {
+  //     mockSearchState = { ...mockSearchState, view }
+
+  //     render(<Search />)
+  //     await act(async () => {})
+
+  //     expect(screen.queryByTestId('autocompleteOfferItem_1')).not.toBeOnTheScreen()
+  //     expect(screen.queryByTestId('autocompleteOfferItem_2')).not.toBeOnTheScreen()
+  //   }
+  // )
+
+  //   describe('When search not executed', () => {
+  //   beforeEach(() => {
+  //     mockSearchState = { ...mockSearchState, view: SearchView.Landing }
+  //   })
+
+  //   // it('should display categories buttons', async () => {
+  //   //   render(<Search />, { wrapper: SearchWrapper })
+  //   //   await act(async () => {})
+
+  //   //   const categoriesButtons = screen.getByTestId('categoriesButtons')
+
+  //   //   expect(categoriesButtons).toBeOnTheScreen()
+  //   // })
+
+  //   // it('should show results for a category when pressing a category button', async () => {
+  //   //   const mockShowResultsForCategory = jest.fn()
+  //   //   jest
+  //   //     .spyOn(useShowResultsForCategory, 'useShowResultsForCategory')
+  //   //     .mockReturnValueOnce(mockShowResultsForCategory)
+  //   //   render(<Search />)
+  //   //   await act(async () => {})
+
+  //   //   const categoryButton = screen.getByText('Spectacles')
+
+  //   //   fireEvent.press(categoryButton)
+
+  //   //   expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnumv2.SPECTACLES)
+  //   // })
+  // })
+
+*/

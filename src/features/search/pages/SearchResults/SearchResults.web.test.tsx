@@ -3,7 +3,7 @@ import React from 'react'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import { Search } from 'features/search/pages/Search/Search'
+import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { SearchState } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -79,11 +79,11 @@ jest.mock('uuid', () => ({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
-describe('<Search/>', () => {
+describe('<SearchResults/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
-      const { container } = render(reactQueryProviderHOC(<Search />))
+      const { container } = render(reactQueryProviderHOC(<SearchResults />))
 
       await act(async () => {})
 
@@ -96,7 +96,7 @@ describe('<Search/>', () => {
 
     it('should not have basic accessibility issues when offline', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-      const { container } = render(reactQueryProviderHOC(<Search />))
+      const { container } = render(reactQueryProviderHOC(<SearchResults />))
 
       await act(async () => {})
 
