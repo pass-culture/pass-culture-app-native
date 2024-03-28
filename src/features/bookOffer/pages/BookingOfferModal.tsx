@@ -58,7 +58,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const selectedStock = useBookingStock()
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const isFromSearch = route.params?.from === 'search'
+  const isFromSearch = route.params?.from === 'searchresults'
   const fromOfferId = route.params?.fromOfferId
   const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
   const algoliaOfferId = offerId?.toString()
