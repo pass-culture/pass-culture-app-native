@@ -49,7 +49,7 @@ describe('buildVenuesQueryOptions', () => {
   })
 
   it('should filter venue types if provided', () => {
-    const params = { ...defaultParams, venueTypes: ['Librairie', 'Musique - Disquaire'] }
+    const params = { ...defaultParams, venueTypes: ['Librairies', 'Musique - Disquaires'] }
     const options = buildVenuesQueryOptions(params, defaultBuildLocationParameterParams)
 
     expect(options).toEqual({

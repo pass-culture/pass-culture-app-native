@@ -74,7 +74,7 @@ describe('<VenueBody />', () => {
     render(<VenueBody venue={culturalCenterVenue} onScroll={jest.fn()} />)
     await waitUntilRendered()
 
-    expect(screen.getByText('Centre culturel')).toBeOnTheScreen()
+    expect(screen.getByText('Centres culturels')).toBeOnTheScreen()
   })
 
   it('should display distance between user and venue when geolocation is activated', async () => {
