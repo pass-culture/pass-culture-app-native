@@ -77,6 +77,7 @@ import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture as PassCultureIcon } from 'ui/svg/icons/LogoPassCulture'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
+import { Map } from 'ui/svg/icons/Map'
 import { MapPin } from 'ui/svg/icons/MapPin'
 import { More } from 'ui/svg/icons/More'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
@@ -232,6 +233,7 @@ export const TertiaryAndSmallerIcons = {
   LocationPointer,
   LocationPointerWithBorder,
   MagnifyingGlass,
+  Map,
   Lock,
   Parameters,
   PhoneFilled,

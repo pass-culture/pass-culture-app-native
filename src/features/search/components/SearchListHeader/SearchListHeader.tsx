@@ -30,6 +30,7 @@ import { Separator } from 'ui/components/Separator'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Error } from 'ui/svg/icons/Error'
+import { Map } from 'ui/svg/icons/Map'
 import { getSpacing, LENGTH_XS, LENGTH_XXS, Spacer, Typo } from 'ui/theme'
 
 interface SearchListHeaderProps extends ScrollViewProps {
@@ -155,6 +156,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
               <ButtonContainer>
                 <Spacer.Column numberOfSpaces={1} />
                 <ButtonTertiaryBlack
+                  icon={Map}
                   wording={`Voir sur la carte (${venues?.length})`}
                   onPress={handleSeeMapPress}
                 />
