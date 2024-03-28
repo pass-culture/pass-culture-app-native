@@ -21,7 +21,7 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({ colors, progress, he
     useAngle: true,
     angle: 90,
   })({
-    flex: Math.max(progress, 0.01), // When less than 0,01 -> Crash on iOS 17 (we don't know why)
+    flex: Math.max(progress, 0.01), // When less than 0,01 & react-native-linear-gradient: 2.5.6 -> Crash related to "UIGraphicsBeginImageContext" on iOS 17 (we don't know why)
     borderRadius: getSpacing(12),
   })
 
