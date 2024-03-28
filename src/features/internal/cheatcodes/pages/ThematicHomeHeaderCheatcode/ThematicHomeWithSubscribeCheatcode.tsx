@@ -1,14 +1,13 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import { ScrollView } from 'react-native'
-import { PermissionStatus } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { SubscribeButton } from 'features/home/components/SubscribeButton'
-import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
-import { mapSubscriptionThemeToName } from 'features/subscription/mapSubscriptionThemeToName'
+import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
+import { useThematicSubscription } from 'features/subscription/helpers/useThematicSubscription'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -18,31 +17,41 @@ import { getSpacing } from 'ui/theme'
 export const ThematicHomeWithSubscribeCheatcode: FunctionComponent = () => {
   const { headerTransition, onScroll } = useOpacityTransition()
   const { user } = useAuthContext()
-  const [isPushPermissionGranted, setIsPushPermissionGranted] = useState<boolean | undefined>(
-    undefined
-  )
-  usePushPermission((permission: PermissionStatus) =>
-    setIsPushPermissionGranted(permission === 'granted')
-  )
+
+  const theme = SubscriptionTheme.CINEMA
+
+  const {
+    isSubscribeButtonActive,
+    isAtLeastOneNotificationTypeActivated,
+    updateSubscription,
+    updateSettings,
+  } = useThematicSubscription({
+    user,
+    theme,
+  })
+
   const { visible, showModal, hideModal } = useModal(false)
+
   return (
     <Container>
       <ThematicHomeHeader
         headerTransition={headerTransition}
-        title={mapSubscriptionThemeToName[SubscriptionTheme.CINEMA]}
+        title={mapSubscriptionThemeToName[theme]}
       />
       <ScrollView onScroll={onScroll} scrollEventThrottle={16}>
         <CategoryThematicHomeHeader
           imageUrl="https://images.ctfassets.net/2bg01iqy0isv/5PmtxKY77rq0nYpkCFCbrg/4daa8767efa35827f22bb86e5fc65094/photo-lion_noir-et-blanc_laurent-breillat-610x610.jpeg"
           subtitle="Un sous-titre"
-          title={mapSubscriptionThemeToName[SubscriptionTheme.CINEMA]}
+          title={mapSubscriptionThemeToName[theme]}
         />
         <SubscribeButtonContainer>
           <SubscribeButton
-            active={false}
+            active={isSubscribeButtonActive || false}
             onPress={() => {
-              if (!isPushPermissionGranted && !user?.subscriptions.marketingEmail) {
+              if (!isAtLeastOneNotificationTypeActivated) {
                 showModal()
+              } else {
+                updateSubscription()
               }
             }}
           />
@@ -52,9 +61,9 @@ export const ThematicHomeWithSubscribeCheatcode: FunctionComponent = () => {
       <NotificationsSettingsModal
         visible={visible}
         dismissModal={hideModal}
-        theme={SubscriptionTheme.CINEMA}
-        onPressSaveChanges={() => {
-          return
+        theme={theme}
+        onPressSaveChanges={(settings) => {
+          updateSettings(settings)
         }}
       />
     </Container>

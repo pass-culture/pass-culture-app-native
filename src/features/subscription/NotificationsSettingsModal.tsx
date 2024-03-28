@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
-import { mapSubscriptionThemeToName } from 'features/subscription/mapSubscriptionThemeToName'
+import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -18,7 +18,13 @@ interface Props {
   visible: boolean
   dismissModal: () => void
   theme: SubscriptionTheme
-  onPressSaveChanges: () => void
+  onPressSaveChanges: ({
+    allowEmails,
+    allowPush,
+  }: {
+    allowEmails: boolean
+    allowPush: boolean
+  }) => void
 }
 
 export const NotificationsSettingsModal: FunctionComponent<Props> = ({
@@ -53,7 +59,7 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
             icon={StyledBellFilled}
             active={settings.allowPush}
             toggle={() =>
-              setSettings((prevState) => ({ ...prevState, allowPush: !prevState.allowEmails }))
+              setSettings((prevState) => ({ ...prevState, allowPush: !prevState.allowPush }))
             }
           />
         )}
@@ -61,7 +67,7 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
           wording="Valider"
           onPress={() => {
             dismissModal()
-            onPressSaveChanges()
+            onPressSaveChanges(settings)
           }}
         />
         <ButtonTertiaryBlack

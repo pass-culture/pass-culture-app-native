@@ -46,7 +46,33 @@ describe('<NotificationsSettingsModal />', () => {
       fireEvent.press(screen.getByText('Valider'))
     })
 
-    expect(mockOnPressSaveChanges).toHaveBeenCalledTimes(1)
+    expect(mockOnPressSaveChanges).toHaveBeenCalledWith({ allowEmails: false, allowPush: false })
+  })
+
+  it('should call onPressSaveChanges with allowEmails true when saving changes', async () => {
+    renderModal(true)
+
+    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleSwitch)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Valider'))
+    })
+
+    expect(mockOnPressSaveChanges).toHaveBeenCalledWith({ allowEmails: true, allowPush: false })
+  })
+
+  it('should call onPressSaveChanges with allowPush true when saving changes', async () => {
+    renderModal(true)
+
+    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
+    fireEvent.press(toggleSwitch)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Valider'))
+    })
+
+    expect(mockOnPressSaveChanges).toHaveBeenCalledWith({ allowEmails: false, allowPush: true })
   })
 
   it('should see "Cinéma" when theme is set accordingly', async () => {
