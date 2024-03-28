@@ -82,7 +82,7 @@ export const SearchResultsContent: React.FC = () => {
   const previousIsLoading = usePrevious(isLoading)
   useEffect(() => {
     if (previousIsLoading && !isLoading) {
-      analytics.logPerformSearch(searchState, disabilities, nbHits)
+      analytics.logPerformSearch(searchState, disabilities, nbHits, 'SearchResults')
       if (nbHits === 0) {
         analytics.logNoSearchResult(searchState.query, searchState.searchId)
       }

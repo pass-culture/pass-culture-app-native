@@ -626,7 +626,8 @@ describe('SearchResultsContent component', () => {
       1,
       mockSearchState,
       mockAccessibilityFilter,
-      mockNbHits
+      mockNbHits,
+      'SearchResults'
     )
   })
 
@@ -664,7 +665,8 @@ describe('SearchResultsContent component', () => {
       1,
       mockSearchState,
       mockDisabilitesPropertiesTruthy,
-      mockNbHits
+      mockNbHits,
+      'SearchResults'
     )
   })
 
