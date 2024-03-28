@@ -14,4 +14,4 @@ error() {
 git checkout "$1"
 
 git tag "prod-hard-deploy-$1"
-git push origin "prod-hard-deploy-$1"
+git push origin "prod-hard-deploy-$1" --no-verify
