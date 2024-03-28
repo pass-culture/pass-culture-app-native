@@ -31,11 +31,13 @@ describe('[Analytics utils]', () => {
 
   describe('should build parameters for PerformSearch log', () => {
     it('when date filter is null', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        view: SearchView.Results,
-        date: null,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          date: null,
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -44,11 +46,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with date filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        view: SearchView.Results,
-        date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY.toISOString() },
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          date: { option: DATE_FILTER_OPTIONS.TODAY, selectedDate: TODAY.toISOString() },
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -61,10 +65,12 @@ describe('[Analytics utils]', () => {
     })
 
     it('with location filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -73,11 +79,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('when user press an autocomplete suggestion', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        isAutocomplete: true,
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          isAutocomplete: true,
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -87,11 +95,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with max price filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        maxPrice: '30',
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          maxPrice: '30',
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -101,11 +111,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with min price filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        minPrice: '10',
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          minPrice: '10',
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -115,11 +127,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with an empty array of category filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        offerCategories: [],
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          offerCategories: [],
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -128,11 +142,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with a category filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -142,11 +158,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with an empty array of genre/types filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        offerGenreTypes: [],
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          offerGenreTypes: [],
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -155,11 +173,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with a genre/types filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        offerGenreTypes: [{ key: GenreType.MUSIC, name: 'Pop', value: 'Pop' }],
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          offerGenreTypes: [{ key: GenreType.MUSIC, name: 'Pop', value: 'Pop' }],
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -169,11 +189,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with duo offer filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        offerIsDuo: true,
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          offerIsDuo: true,
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -183,11 +205,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with free offer filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        offerIsFree: true,
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          offerIsFree: true,
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -197,11 +221,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with an empty array of native category filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        offerNativeCategories: [],
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          offerNativeCategories: [],
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -210,11 +236,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with a native category filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        offerNativeCategories: [NativeCategoryIdEnumv2.CD],
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          offerNativeCategories: [NativeCategoryIdEnumv2.CD],
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -224,11 +252,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with an empty query', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        query: '',
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          query: '',
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -237,11 +267,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with a query', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        query: 'angele',
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          query: 'angele',
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -251,11 +283,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('when time range is null', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        timeRange: null,
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          timeRange: null,
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -264,11 +298,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('with time range filter', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        timeRange: [18, 22],
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          timeRange: [18, 22],
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
@@ -278,11 +314,13 @@ describe('[Analytics utils]', () => {
     })
 
     it('when user press an history item', () => {
-      const partialSearchState = buildPerformSearchState({
-        ...initialSearchState,
-        isFromHistory: true,
-        view: SearchView.Results,
-      })
+      const partialSearchState = buildPerformSearchState(
+        {
+          ...initialSearchState,
+          isFromHistory: true,
+        },
+        'SearchResults'
+      )
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
