@@ -84,7 +84,7 @@ describe('<IdentificationFork />', () => {
     expect(openUrl).toHaveBeenCalledWith('https://passculture.data-privacy-chart', undefined, true)
   })
 
-  it('should not displau reassuring mention when firebase parameters is false', () => {
+  it('should not display reassuring mention when firebase parameters is false', () => {
     useRemoteConfigContextSpy.mockReturnValueOnce({
       ...DEFAULT_REMOTE_CONFIG,
       shouldDisplayReassuranceMention: false,
