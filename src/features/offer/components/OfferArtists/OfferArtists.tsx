@@ -44,7 +44,7 @@ export const OfferArtists: FunctionComponent<Props> = ({
       <FakeDoorModal
         visible={visible}
         hideModal={hideModal}
-        surveyUrl="https://fr.wikipedia.org/wiki/FIEALD"
+        surveyUrl="https://passculture.qualtrics.com/jfe/form/SV_6xRze4sgvlbHNd4"
       />
     </FakeDoorContainer>
   ) : (
