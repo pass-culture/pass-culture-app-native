@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 
-import { OfferStockResponse, UserProfileResponse } from 'api/gen'
+import { OfferStockResponse, SubscriptionStatus, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOngoingOrEndedBooking } from 'features/bookings/api'
 import { formatHour } from 'features/bookOffer/helpers/utils'
@@ -18,6 +18,10 @@ export const useSelectedDateScreening = (
 ) => {
   const [bookingData, setBookingData] = useState<MovieScreeningBookingData>()
   const { user, isLoggedIn } = useAuthContext()
+  const userHasNotCompletedSubscriptionYet =
+    user?.status.subscriptionStatus === SubscriptionStatus.has_to_complete_subscription ||
+    user?.status.subscriptionStatus === SubscriptionStatus.has_subscription_pending ||
+    user?.status.subscriptionStatus === SubscriptionStatus.has_subscription_issues
 
   const { amount: userCredit, isExpired: isUserCreditExpired } = useMemo(
     () =>
@@ -56,11 +60,12 @@ export const useSelectedDateScreening = (
             subtitleLeft = EventCardSubtitleEnum.FULLY_BOOKED
             isDisabled = true
             break
-          case !hasEnoughCredit:
+          case !hasEnoughCredit && !userHasNotCompletedSubscriptionYet:
             subtitleLeft = EventCardSubtitleEnum.NOT_ENOUGH_CREDIT
             isDisabled = true
             break
-          case isUserCreditExpired || (isSameVenue && hasBookedOffer):
+          case (isUserCreditExpired || (isSameVenue && hasBookedOffer)) &&
+            !userHasNotCompletedSubscriptionYet:
             subtitleLeft = screening.features.join(', ')
             isDisabled = true
             break
@@ -104,6 +109,7 @@ export const useSelectedDateScreening = (
       userBooking?.stock?.beginningDatetime,
       userBooking?.stock?.offer?.venue?.id,
       hasBookedOffer,
+      userHasNotCompletedSubscriptionYet,
     ]
   )
 
