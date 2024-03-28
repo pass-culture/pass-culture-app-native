@@ -1,9 +1,9 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { VenueMapCluster } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
 import { PREVIEW_BOTTOM_MARGIN } from 'features/venueMap/components/VenueMapView/constant'
@@ -29,6 +29,8 @@ const PREVIEW_HEIGHT_ESTIMATION = 114
 
 export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { params } = useRoute<UseRouteType<'VenueMap'>>()
+  const [initialVenues, setInitialVenues] = useState(params?.initialVenues)
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const mapViewRef = useRef<Map>(null)
   const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
@@ -39,7 +41,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultRegion)
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
 
-  const venues = useGetVenuesInRegion(lastRegionSearched, selectedVenue)
+  const venues = useGetVenuesInRegion(lastRegionSearched, selectedVenue, initialVenues)
 
   const distanceToVenue = useDistance({
     lat: selectedVenue?._geoloc.lat,
@@ -61,6 +63,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   }
 
   const handleSearchPress = () => {
+    setInitialVenues(undefined)
     setLastRegionSearched(currentRegion)
     setShowSearchButton(false)
   }

@@ -5,7 +5,7 @@ import { renderHook } from 'tests/utils'
 
 jest.mock('features/venueMap/useGetAllVenues')
 const mockUseGetAllVenues = useGetAllVenues as jest.Mock
-mockUseGetAllVenues.mockReturnValue({ data: venuesFixture })
+mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
 
 const mockRegion = {
   latitude: 48.8566,
@@ -28,7 +28,7 @@ describe('useGetVenuesInRegion', () => {
   })
 
   it('should return venues in region + selected venue when a venue is selected and is out of region', () => {
-    mockUseGetAllVenues.mockReturnValueOnce({ data: venuesFixture.slice(1) })
+    mockUseGetAllVenues.mockReturnValueOnce({ venues: venuesFixture.slice(1) })
     const { result } = renderHook(() => useGetVenuesInRegion(mockRegion, venuesFixture[0]))
 
     expect(result.current).toEqual([...venuesFixture.slice(1), venuesFixture[0]])

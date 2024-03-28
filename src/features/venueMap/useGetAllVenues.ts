@@ -10,12 +10,15 @@ import { QueryKeys } from 'libs/queryKeys'
 type Props = {
   region: Region
   radius: number
+  initialVenues?: Venue[]
 }
 
-export const useGetAllVenues = ({ region, radius }: Props) => {
+export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
   const netInfo = useNetInfoContext()
 
-  return useQuery<Venue[]>(
+  const shouldFetchVenues = !!netInfo.isConnected && !initialVenues?.length
+
+  const { data: fetchedVenues } = useQuery<Venue[]>(
     [QueryKeys.VENUES, region],
     () =>
       fetchVenues({
@@ -31,7 +34,11 @@ export const useGetAllVenues = ({ region, radius }: Props) => {
         },
       }),
     {
-      enabled: !!netInfo.isConnected,
+      enabled: shouldFetchVenues,
     }
   )
+
+  const venues = initialVenues?.length ? initialVenues : fetchedVenues
+
+  return { venues }
 }

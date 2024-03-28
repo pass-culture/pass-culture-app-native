@@ -10,6 +10,7 @@ import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates } from 'libs/location'
@@ -380,7 +381,7 @@ describe('<SearchListHeader />', () => {
       expect(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)).toBeOnTheScreen()
     })
 
-    it('should redirect to venue map when pressing see map button', () => {
+    it('should redirect to venue map when pressing see map button with playlist venues content', () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: {
           ...mockSearchState,
@@ -404,7 +405,9 @@ describe('<SearchListHeader />', () => {
 
       fireEvent.press(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`))
 
-      expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap')
+      expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap', {
+        initialVenues: adaptAlgoliaVenues(mockAlgoliaVenues),
+      })
     })
   })
 })

@@ -1,5 +1,7 @@
 import algoliasearch from 'algoliasearch'
 
+import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
+import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { Region } from 'libs/maps/maps'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -21,8 +23,10 @@ const region: Region = {
   longitudeDelta: 0.04760990854064799,
 }
 
+const initialVenues = adaptAlgoliaVenues(mockAlgoliaVenues)
+
 describe('useGetAllVenues', () => {
-  it('should fetch all venues', async () => {
+  it('should fetch all venues when initial venues not defined', async () => {
     renderHook(() => useGetAllVenues({ region, radius: 10 }), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -35,6 +39,55 @@ describe('useGetAllVenues', () => {
         facetFilters: [['has_at_least_one_bookable_offer:true']],
         hitsPerPage: 1000,
       })
+    })
+  })
+
+  it('should not fetch all venues when initial venues defined', () => {
+    renderHook(
+      () =>
+        useGetAllVenues({
+          region,
+          radius: 10,
+          initialVenues,
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    expect(search).not.toHaveBeenCalled()
+  })
+
+  it('should return initial venues when defined', () => {
+    const { result } = renderHook(
+      () =>
+        useGetAllVenues({
+          region,
+          radius: 10,
+          initialVenues,
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    expect(result.current.venues).toEqual(initialVenues)
+  })
+
+  it('should not return initial venues when not defined', async () => {
+    const { result } = renderHook(
+      () =>
+        useGetAllVenues({
+          region,
+          radius: 10,
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    await waitFor(() => {
+      expect(result.current.venues).toEqual(undefined)
     })
   })
 })
