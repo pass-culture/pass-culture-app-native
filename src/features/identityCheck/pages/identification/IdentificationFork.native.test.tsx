@@ -4,9 +4,18 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentificationFork } from 'features/identityCheck/pages/identification/IdentificationFork'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+
+useRemoteConfigContextSpy.mockReturnValue({
+  ...DEFAULT_REMOTE_CONFIG,
+  shouldDisplayReassuranceMention: true,
+})
 
 describe('<IdentificationFork />', () => {
   it('should render correctly', () => {
@@ -73,5 +82,18 @@ describe('<IdentificationFork />', () => {
     fireEvent.press(externalLink)
 
     expect(openUrl).toHaveBeenCalledWith('https://passculture.data-privacy-chart', undefined, true)
+  })
+
+  it('should not display reassuring mention when firebase parameters is false', () => {
+    useRemoteConfigContextSpy.mockReturnValueOnce({
+      ...DEFAULT_REMOTE_CONFIG,
+      shouldDisplayReassuranceMention: false,
+    })
+
+    render(<IdentificationFork />)
+
+    expect(
+      screen.queryByText('pass Culture collecte tes données personnelles')
+    ).not.toBeOnTheScreen()
   })
 })

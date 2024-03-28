@@ -6,6 +6,7 @@ import { JustifiedLeftTitle } from 'features/identityCheck/components/JustifiedL
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { theme } from 'theme'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
@@ -31,6 +32,7 @@ export const IdentificationFork: FunctionComponent = () => {
 }
 
 const IdentificationForkEduconnectContent: FunctionComponent = () => {
+  const { shouldDisplayReassuranceMention } = useRemoteConfigContext()
   return (
     <Container>
       <JustifiedLeftTitle title="S’identifier en 2 min avec&nbsp;:" />
@@ -63,18 +65,22 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         onBeforeNavigate={analytics.logChooseUbbleMethod}
         key={1}
       />
-      <Spacer.Column numberOfSpaces={2} />
-      <InfoBanner message="pass Culture collecte tes données personnelles pour s’assurer que tu es bien l’auteur de la demande. Tes données sont conservées 6 mois.">
-        <Spacer.Column numberOfSpaces={2} />
-        <ExternalTouchableLink
-          as={ButtonQuaternarySecondary}
-          externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
-          wording="Voir la charte des données personnelles"
-          icon={ExternalSiteFilled}
-          justifyContent="flex-start"
-          inline
-        />
-      </InfoBanner>
+      {shouldDisplayReassuranceMention ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={2} />
+          <InfoBanner message="pass Culture collecte tes données personnelles pour s’assurer que tu es bien l’auteur de la demande. Tes données sont conservées 6 mois.">
+            <Spacer.Column numberOfSpaces={2} />
+            <ExternalTouchableLink
+              as={ButtonQuaternarySecondary}
+              externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
+              wording="Voir la charte des données personnelles"
+              icon={ExternalSiteFilled}
+              justifyContent="flex-start"
+              inline
+            />
+          </InfoBanner>
+        </React.Fragment>
+      ) : null}
       <Spacer.Column numberOfSpaces={10} />
     </Container>
   )

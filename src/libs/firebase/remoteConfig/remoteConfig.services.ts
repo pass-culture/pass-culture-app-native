@@ -43,6 +43,8 @@ export const remoteConfig = {
       homeEntryId_15_17: parameters.homeEntryId_15_17.asString(),
       // @ts-expect-error: because of noUncheckedIndexedAccess
       sameAuthorPlaylist: parameters.sameAuthorPlaylist.asString(),
+      // @ts-expect-error: because of noUncheckedIndexedAccess
+      shouldDisplayReassuranceMention: parameters.shouldDisplayReassuranceMention.asBoolean(),
     }
   },
 }
