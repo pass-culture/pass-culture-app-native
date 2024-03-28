@@ -106,34 +106,8 @@ export const getCtaWordingAndAction = ({
 
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
   const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
-  const userIsNotEligible = userStatus?.statusType === YoungStatusType.non_eligible
   const isMovieScreeningOffer = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
-
-  if (isMovieScreeningOffer && enableNewXpCine) {
-    if (isLoggedIn) {
-      if (userIsNotEligible)
-        return {
-          bottomBannerText: BottomBannerTextEnum.NOT_ELIGIBLE,
-        }
-      if (isAlreadyBookedOffer)
-        return {
-          wording: 'Voir ma réservation',
-          bottomBannerText: BottomBannerTextEnum.ALREADY_BOOKED,
-          navigateTo: {
-            screen: 'BookingDetails',
-            params: { id: bookedOffers[offer.id] },
-            fromRef: true,
-          },
-        }
-
-      if (isDepositExpired)
-        return {
-          bottomBannerText: BottomBannerTextEnum.CREDIT_HAS_EXPIRED,
-        }
-      if (!hasEnoughCredit) return { bottomBannerText: BottomBannerTextEnum.NOT_ENOUGH_CREDIT }
-    }
-    return
-  }
+  const isNewXPCine = isMovieScreeningOffer && enableNewXpCine
 
   if (!isLoggedIn) {
     return {
@@ -148,9 +122,8 @@ export const getCtaWordingAndAction = ({
 
   if (userStatus?.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
     return {
-      wording: 'Réserver l’offre',
-      bottomBannerText:
-        'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
+      wording: isNewXPCine ? undefined : 'Réserver l’offre',
+      bottomBannerText: BottomBannerTextEnum.NOT_ELIGIBLE,
       isDisabled: true,
     }
   }
@@ -158,15 +131,16 @@ export const getCtaWordingAndAction = ({
   if (isEndedUsedBooking) {
     return {
       modalToDisplay: OfferModal.BOOKING,
-      wording: 'Réserver l’offre',
+      wording: isNewXPCine ? undefined : 'Réserver l’offre',
       isEndedUsedBooking,
       isDisabled: false,
+      bottomBannerText: isNewXPCine ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
     }
   }
 
   if (userStatus?.statusType === YoungStatusType.eligible) {
     const common = {
-      wording: 'Réserver l’offre',
+      wording: isNewXPCine ? undefined : 'Réserver l’offre',
       isDisabled: false,
     }
     switch (userStatus.subscriptionStatus) {
@@ -227,6 +201,7 @@ export const getCtaWordingAndAction = ({
         params: { id: bookedOffers[offer.id] },
         fromRef: true,
       },
+      bottomBannerText: isNewXPCine ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
     }
   }
 
@@ -243,8 +218,14 @@ export const getCtaWordingAndAction = ({
   }
 
   // Beneficiary
+  if (isDepositExpired && isNewXPCine)
+    return {
+      bottomBannerText: BottomBannerTextEnum.CREDIT_HAS_EXPIRED,
+    }
+
   if (!offer.isReleased || offer.isExpired) return { wording: 'Offre expirée', isDisabled: true }
-  if (offer.isSoldOut) return { wording: 'Offre épuisée', isDisabled: true }
+  if (offer.isSoldOut)
+    return { wording: isNewXPCine ? undefined : 'Offre épuisée', isDisabled: true }
 
   if (!subcategory.isEvent) {
     if (!hasEnoughCredit) {
@@ -264,11 +245,16 @@ export const getCtaWordingAndAction = ({
   }
 
   if (subcategory.isEvent) {
-    if (!hasEnoughCredit) return { wording: 'Crédit insuffisant', isDisabled: true }
+    if (!hasEnoughCredit)
+      return {
+        wording: isNewXPCine ? undefined : 'Crédit insuffisant',
+        bottomBannerText: isNewXPCine ? BottomBannerTextEnum.NOT_ENOUGH_CREDIT : undefined,
+        isDisabled: true,
+      }
 
     return {
       modalToDisplay: OfferModal.BOOKING,
-      wording: 'Voir les disponibilités',
+      wording: isNewXPCine ? undefined : 'Voir les disponibilités',
       isDisabled: false,
       onPress: () => {
         analytics.logConsultAvailableDates(offer.id)
