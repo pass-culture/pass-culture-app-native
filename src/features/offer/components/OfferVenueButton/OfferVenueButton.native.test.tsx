@@ -4,7 +4,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferVenueResponse } from 'api/gen'
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { fireEvent, render, screen } from 'tests/utils'
+import { analytics } from 'libs/analytics'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 describe('<OfferVenueButton />', () => {
   it('should display public name when informed', () => {
@@ -59,11 +60,24 @@ describe('<OfferVenueButton />', () => {
     expect(screen.queryByTestId('subtitle')).not.toBeOnTheScreen()
   })
 
-  it('should redirect to venue page when pressing button', () => {
+  it('should redirect to venue page when pressing button', async () => {
     render(<OfferVenueButton venue={offerResponseSnap.venue} />)
 
     fireEvent.press(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE'))
 
-    expect(navigate).toHaveBeenCalledWith('Venue', { id: offerResponseSnap.venue.id })
+    await waitFor(() =>
+      expect(navigate).toHaveBeenCalledWith('Venue', { id: offerResponseSnap.venue.id })
+    )
+  })
+
+  it('should track the venue redirection when the pressing button', () => {
+    render(<OfferVenueButton venue={offerResponseSnap.venue} />)
+
+    fireEvent.press(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE'))
+
+    expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+      venueId: offerResponseSnap.venue.id,
+      from: 'offer',
+    })
   })
 })
