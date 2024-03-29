@@ -37,7 +37,7 @@ export const MovieCalendar: React.FC<Props> = ({
   } = useHorizontalFlatListScroll({ ref: flatListRef, isActive: isDesktopViewport })
   const { refs } = useDraggableScroll({ outerRef: flatListRef })
   return (
-    <MovieCalendarContainer onLayout={onContainerLayout} style={{ marginRight: -getSpacing(15) }}>
+    <View onLayout={onContainerLayout}>
       <MovieCalendarBottomBar />
       {isDesktopViewport && !isStart ? (
         <ScrollButtonForNotTouchDevice
@@ -61,8 +61,8 @@ export const MovieCalendar: React.FC<Props> = ({
             <MovieCalendarDay date={date} selectedDate={selectedDate} onTabChange={onTabChange} />
           )}
         />
-        <FadeLeft />
-        <FadeRight />
+        {isDesktopViewport ? <FadeLeft /> : null}
+        {isDesktopViewport ? <FadeRight /> : null}
       </View>
       {isDesktopViewport && !isEnd ? (
         <ScrollButtonForNotTouchDevice
@@ -72,13 +72,9 @@ export const MovieCalendar: React.FC<Props> = ({
           <BicolorArrowRight />
         </ScrollButtonForNotTouchDevice>
       ) : null}
-    </MovieCalendarContainer>
+    </View>
   )
 }
-
-const MovieCalendarContainer = styled(View)({
-  marginRight: -getSpacing(16), // cancels padding of the parent container
-})
 
 const flatListContainer = {
   paddingHorizontal: getSpacing(6),
@@ -93,7 +89,7 @@ const FadeLeft = styled(LinearGradient).attrs({
   top: 0;
   bottom: ${getSpacing(1)}px;
   left: -1px;
-  width: 40px;
+  width: ${getSpacing(20)}px;
 `
 
 const FadeRight = styled(LinearGradient).attrs({
@@ -105,5 +101,5 @@ const FadeRight = styled(LinearGradient).attrs({
   top: 0;
   bottom: ${getSpacing(1)}px;
   right: -1px;
-  width: 40px;
+  width: ${getSpacing(20)}px;
 `
