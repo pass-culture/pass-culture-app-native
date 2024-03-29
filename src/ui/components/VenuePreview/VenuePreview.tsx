@@ -54,6 +54,7 @@ export const VenuePreview: FunctionComponent<Props> = ({
 )
 
 const StyledView = styled.View({
+  flexShrink: 1,
   flexDirection: 'row',
 })
 
