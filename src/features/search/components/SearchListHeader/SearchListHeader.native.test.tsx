@@ -165,7 +165,6 @@ describe('<SearchListHeader />', () => {
 
   it.each`
     locationFilter                                                                          | isLocated | locationType
-    ${undefined}                                                                            | ${false}  | ${undefined}
     ${{ locationType: LocationMode.EVERYWHERE }}                                            | ${false}  | ${LocationMode.EVERYWHERE}
     ${{ locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS }}                   | ${true}   | ${LocationMode.AROUND_ME}
     ${{ locationType: LocationMode.AROUND_PLACE, place: kourou, aroundRadius: MAX_RADIUS }} | ${true}   | ${LocationMode.AROUND_PLACE}
@@ -177,7 +176,7 @@ describe('<SearchListHeader />', () => {
       })
       mockUseLocation.mockReturnValueOnce({
         geolocPosition: mockPosition,
-        selectedLocationMode: locationFilter?.locationType ?? LocationMode.EVERYWHERE,
+        selectedLocationMode: locationFilter.locationType,
       })
 
       render(
@@ -196,6 +195,26 @@ describe('<SearchListHeader />', () => {
       })
     }
   )
+
+  it('should trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is undefined with isLocated param = false', () => {
+    mockUseSearch.mockReturnValueOnce({
+      searchState: { ...mockSearchState, searchId },
+    })
+    mockUseLocation.mockReturnValueOnce({
+      geolocPosition: mockPosition,
+      selectedLocationMode: LocationMode.EVERYWHERE,
+    })
+
+    render(
+      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+    )
+
+    expect(analytics.logVenuePlaylistDisplayedOnSearchResults).toHaveBeenNthCalledWith(1, {
+      isLocated: false,
+      searchId: 'testUuidV4',
+      searchNbResults: 6,
+    })
+  })
 
   it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is VENUE with isLocated param = true', () => {
     mockUseSearch.mockReturnValueOnce({
