@@ -117,12 +117,23 @@ exports[`<Venue /> should match snapshot 1`] = `
                 {
                   "flexDirection": "row",
                   "flexWrap": "wrap",
+                  "gap": 8,
                   "maxHeight": 56,
                   "overflow": "hidden",
                 },
               ]
             }
             testID="tagsContainer"
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
           />
           <Text
             accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"

@@ -257,6 +257,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                 accessible={true}
                 collapsable={false}
                 focusable={true}
+                hitSlop={8}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}

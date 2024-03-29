@@ -66,6 +66,7 @@ export const VenueBody: FunctionComponent<Props> = ({
         <Spacer.Column numberOfSpaces={6} />
         <MarginContainer>
           <InformationTags tags={venueTags} />
+          <Spacer.Column numberOfSpaces={4} />
           <VenueTitle
             accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`}
             adjustsFontSizeToFit
