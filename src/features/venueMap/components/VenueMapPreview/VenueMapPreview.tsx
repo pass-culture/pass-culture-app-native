@@ -17,7 +17,6 @@ type Props = {
 } & ComponentProps<typeof InternalTouchableLink>
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(12)
-const CLOSE_BUTTON_HIT_SLOP = getSpacing(2)
 
 export const VenueMapPreview: FunctionComponent<Props> = ({
   venueName,
@@ -34,7 +33,6 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
         <StyledCloseButton onClose={onClose} />
       </Row>
       <Spacer.Column numberOfSpaces={2} />
-
       <VenuePreview
         venueName={venueName}
         address={address}
@@ -68,7 +66,7 @@ const Row = styled.View({
 })
 
 const StyledCloseButton = styledButton(CloseButton)({
-  top: -CLOSE_BUTTON_HIT_SLOP,
+  justifyContent: 'flex-start',
 })
 
 const StyledInformationTags = styled(InformationTags)({

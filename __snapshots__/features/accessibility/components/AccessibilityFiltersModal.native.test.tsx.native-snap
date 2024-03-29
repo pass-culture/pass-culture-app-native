@@ -316,6 +316,7 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  hitSlop={8}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -1348,6 +1349,7 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  hitSlop={8}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -2380,6 +2382,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  hitSlop={8}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -3412,6 +3415,7 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  hitSlop={8}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -4444,6 +4448,7 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  hitSlop={8}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}

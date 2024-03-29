@@ -52,7 +52,7 @@ export const PageHeaderSecondary: React.FC<Props> = ({
             <Title nativeID={titleID}>{title}</Title>
             <ButtonContainer positionInHeader="right" testID="close-button-container">
               {!!shouldDisplayCloseButton && (
-                <CloseButton onClose={onClose} color={ColorsEnum.WHITE} />
+                <StyledCloseButton onClose={onClose} color={ColorsEnum.WHITE} />
               )}
             </ButtonContainer>
           </Row>
@@ -107,4 +107,9 @@ const Header = styled.View.attrs<{ children: React.ReactNode }>({
   accessibilityRole: AccessibilityRole.HEADER,
 })({
   width: '100%',
+})
+
+const StyledCloseButton = styled(CloseButton)({
+  width: getSpacing(10),
+  height: getSpacing(10),
 })
