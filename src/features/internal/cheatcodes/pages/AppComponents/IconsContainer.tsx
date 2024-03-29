@@ -4,13 +4,13 @@ import React, { useMemo } from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 export const IconsContainer: ComponentStory<
   React.FC<{
     title: string
-    icons: Record<string, React.ComponentType<IconInterface>>
+    icons: Record<string, React.ComponentType<AccessibleIcon>>
     isBicolor?: boolean
     children?: never
   }>

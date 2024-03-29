@@ -2,11 +2,11 @@ import React from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
-import { IconInterface } from '../svg/icons/types'
+import { AccessibleIcon } from '../svg/icons/types'
 import { ColorsEnum } from '../theme/colors'
 
 interface Props {
-  Icon: React.FC<IconInterface>
+  Icon: React.FC<AccessibleIcon>
   transition: Animated.AnimatedInterpolation<string | number>
   size: number
   initialColor: ColorsEnum

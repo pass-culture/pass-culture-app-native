@@ -7,7 +7,7 @@ import { Spinner } from 'ui/components/Spinner'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -18,7 +18,7 @@ interface RadioButtonProps {
   complement?: string
   onSelect: (value: string) => void
   isSelected: boolean
-  icon?: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<AccessibleIcon>
   accessibilityLabel?: string
   marginVertical?: number
   isLoading?: boolean

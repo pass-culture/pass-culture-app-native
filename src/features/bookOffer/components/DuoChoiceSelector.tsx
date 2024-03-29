@@ -8,7 +8,7 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { BicolorProfile as ProfileIcon } from 'ui/svg/icons/BicolorProfile'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 export const DuoChoiceSelector: React.FC = () => {
@@ -40,9 +40,9 @@ export const DuoChoiceSelector: React.FC = () => {
   )
 }
 
-const SoloPerson = (props: IconInterface) => <ProfileIcon {...props} />
+const SoloPerson = (props: AccessibleIcon) => <ProfileIcon {...props} />
 
-const DuoPerson = (props: IconInterface): React.JSX.Element => (
+const DuoPerson = (props: AccessibleIcon): React.JSX.Element => (
   <DuoPersonContainer>
     <ProfileIcon {...props} />
     <ProfileIcon {...props} />

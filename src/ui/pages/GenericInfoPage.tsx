@@ -6,7 +6,7 @@ import LottieView from 'libs/lottie'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { AnimationObject } from 'ui/animations/type'
 import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -14,7 +14,7 @@ type Props = {
   noIndex?: boolean
   flex?: boolean
   animation?: AnimationObject
-  icon?: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<AccessibleIcon>
   title: string
   buttons?: Array<ReactNode>
   children?: React.ReactNode

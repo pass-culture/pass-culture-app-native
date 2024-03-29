@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { GenericColoredBanner } from 'ui/components/banners/GenericColoredBanner'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type ColorMessageProps = {
   withLightColorMessage?: boolean
@@ -11,7 +11,7 @@ type ColorMessageProps = {
 
 type Props = ColorMessageProps & {
   message: string | ReactNode
-  icon?: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<AccessibleIcon>
   testID?: string
   children?: React.ReactNode
 }

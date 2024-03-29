@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 type ColorMessageProps = {
@@ -12,7 +12,7 @@ type Props = ColorMessageProps & {
   message: string | ReactNode
   backgroundColor?: string
   children?: React.ReactNode
-  Icon?: FunctionComponent<IconInterface>
+  Icon?: FunctionComponent<AccessibleIcon>
   testID?: string
 }
 

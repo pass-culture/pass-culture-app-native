@@ -5,14 +5,14 @@ import { v4 as uuidv4 } from 'uuid'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   accessibilityDescribedBy?: string
   title: string
   iconSize?: number
-  icon?: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<AccessibleIcon>
   active?: boolean
   toggle?: () => void
   toggleLabel?: string

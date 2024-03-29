@@ -2,14 +2,14 @@ import { FunctionComponent } from 'react'
 import { AccessibilityRole } from 'react-native'
 
 import { AppButtonEventNative, AppButtonEventWeb } from 'ui/components/buttons/AppButton/types'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export type ButtonInsideTexteProps = {
   wording: string
   typography?: 'ButtonText' | 'Caption'
-  icon?: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<AccessibleIcon>
   buttonColor?: ColorsEnum
   onLongPress?: AppButtonEventWeb | AppButtonEventNative
   onPress?: AppButtonEventWeb | AppButtonEventNative

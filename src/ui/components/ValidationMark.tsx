@@ -2,10 +2,10 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 
-interface Props extends Omit<IconInterface, 'testID'> {
+interface Props extends Omit<AccessibleIcon, 'testID'> {
   isValid: boolean
   validtestID?: string
   invalidTestID?: string

@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const Item: React.FC<{
-  Icon: React.FC<IconInterface>
+  Icon: React.FC<AccessibleIcon>
   message: React.JSX.Element | string
   subtext?: string
   testID?: string

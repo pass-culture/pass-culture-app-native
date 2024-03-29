@@ -3,13 +3,13 @@ import styled from 'styled-components/native'
 
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 
 type ActivationBannerProps = {
   title: string
   subtitle: string
-  icon: FunctionComponent<IconInterface>
+  icon: FunctionComponent<AccessibleIcon>
   from: StepperOrigin
 }
 

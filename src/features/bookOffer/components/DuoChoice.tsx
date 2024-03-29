@@ -2,14 +2,14 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { ChoiceBloc, getTextColor } from 'features/bookOffer/components/ChoiceBloc'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   title: string
   price: string
   selected: boolean
-  icon: FunctionComponent<IconInterface>
+  icon: FunctionComponent<AccessibleIcon>
   onPress: () => void
   hasEnoughCredit: boolean
   testID: string

@@ -2,14 +2,14 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { ImagePlaceholderVenue } from 'ui/svg/ImagePlaceholderVenue'
 import { LENGTH_M } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface ImagePlaceholderProps {
-  Icon: React.FC<IconInterface>
+  Icon: React.FC<AccessibleIcon>
   size: number
   backgroundColors?: ColorsEnum[]
   borderRadius?: number

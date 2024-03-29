@@ -6,7 +6,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckPending() {
@@ -34,7 +34,7 @@ export function IdentityCheckPending() {
   )
 }
 
-const IdCardError: React.FC<IconInterface> = (props) => <BicolorIdCardError {...props} />
+const IdCardError: React.FC<AccessibleIcon> = (props) => <BicolorIdCardError {...props} />
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,

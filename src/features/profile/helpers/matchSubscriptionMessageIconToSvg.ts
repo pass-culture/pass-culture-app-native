@@ -10,11 +10,11 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Info } from 'ui/svg/icons/Info'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export const matchSubscriptionMessageIconToSvg = (
   iconName: PopOverIcon | CallToActionIcon | undefined | null,
-  fallbackIcon?: FunctionComponent<IconInterface>
+  fallbackIcon?: FunctionComponent<AccessibleIcon>
 ) => {
   switch (iconName) {
     case PopOverIcon.CLOCK:

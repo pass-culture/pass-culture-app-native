@@ -2,7 +2,7 @@ import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export enum HandicapCategory {
   'VISUAL',
@@ -13,7 +13,7 @@ export enum HandicapCategory {
 
 export const getIconAndWording = (
   handicap: HandicapCategory
-): { Icon: React.FC<IconInterface>; wording: string } => {
+): { Icon: React.FC<AccessibleIcon>; wording: string } => {
   switch (handicap) {
     case HandicapCategory.VISUAL:
       return { Icon: HandicapVisual, wording: 'Handicap visuel' }

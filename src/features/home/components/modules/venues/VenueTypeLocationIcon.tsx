@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { LocationPointerWithBorder } from 'ui/svg/icons/LocationPointerWithBorder'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -12,7 +12,7 @@ export const VenueTypeLocationIcon = ({
   iconColor,
   backgroundColor,
 }: {
-  VenueTypeIcon: React.FC<IconInterface>
+  VenueTypeIcon: React.FC<AccessibleIcon>
   iconColor?: ColorsEnum
   backgroundColor?: ColorsEnum
 }) => {

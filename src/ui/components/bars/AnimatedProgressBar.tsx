@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { UniqueColors, ColorsEnum } from 'ui/theme/colors'
@@ -11,7 +11,7 @@ import { UniqueColors, ColorsEnum } from 'ui/theme/colors'
 interface ProgressBarProps {
   progress: number
   color: ColorsEnum | UniqueColors
-  icon: FunctionComponent<IconInterface>
+  icon: FunctionComponent<AccessibleIcon>
   isAnimated?: boolean
   children?: never
 }

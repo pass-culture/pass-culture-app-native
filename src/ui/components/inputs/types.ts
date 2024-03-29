@@ -2,7 +2,7 @@ import { ComponentProps, FunctionComponent, RefAttributes } from 'react'
 import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 
 import { AppThemeType } from 'theme'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -21,7 +21,7 @@ type CustomTextInputProps = InputProps & {
   rightLabel?: string
   showSoftInputOnFocus?: boolean
   rightButton?: {
-    icon: FunctionComponent<IconInterface>
+    icon: FunctionComponent<AccessibleIcon>
     onPress: () => void
     accessibilityLabel: string
     testID?: string

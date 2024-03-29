@@ -5,14 +5,14 @@ import styled from 'styled-components/native'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
 
 type CulturalSurveyCheckboxProps = {
   title: string
   subtitle?: string | null
-  icon?: FunctionComponent<IconInterface> | null
+  icon?: FunctionComponent<AccessibleIcon> | null
   onPress: () => void
   selected: boolean
 }

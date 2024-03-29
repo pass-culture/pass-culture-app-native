@@ -6,7 +6,7 @@ import { Instagram } from 'ui/svg/icons/socialNetwork/Instagram'
 import { Snapchat } from 'ui/svg/icons/socialNetwork/Snapchat'
 import { TikTok } from 'ui/svg/icons/socialNetwork/TikTok'
 import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type SocialNetwork = 'facebook' | 'instagram' | 'snapchat' | 'twitter' | 'tiktok'
 
@@ -21,7 +21,7 @@ const FACEBOOK_URL = Platform.select({
 export const SocialNetworkIconsMap: Record<
   SocialNetwork,
   {
-    icon: FC<IconInterface>
+    icon: FC<AccessibleIcon>
     link: string
     fallbackLink?: string
   }

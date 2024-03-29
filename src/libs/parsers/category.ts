@@ -1,9 +1,9 @@
 import { CategoryIdEnum } from 'api/gen'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 const MAP_CATEGORY_ID_TO_ICON: {
-  [k in CategoryIdEnum]: React.FC<IconInterface>
+  [k in CategoryIdEnum]: React.FC<AccessibleIcon>
 } = {
   [CategoryIdEnum.CARTE_JEUNES]: categoriesIcons.Card,
   [CategoryIdEnum.CINEMA]: categoriesIcons.Cinema,
@@ -22,7 +22,7 @@ const MAP_CATEGORY_ID_TO_ICON: {
   [CategoryIdEnum.TECHNIQUE]: categoriesIcons.FineArts,
 }
 
-export const mapCategoryToIcon = (id: CategoryIdEnum | null): React.FC<IconInterface> => {
+export const mapCategoryToIcon = (id: CategoryIdEnum | null): React.FC<AccessibleIcon> => {
   if (id && id in MAP_CATEGORY_ID_TO_ICON) return MAP_CATEGORY_ID_TO_ICON[id]
   return categoriesIcons.FineArts
 }

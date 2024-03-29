@@ -14,7 +14,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 import { useGrid } from 'ui/theme/grid'
 import { TextProps } from 'ui/theme/typography'
@@ -26,7 +26,7 @@ type PropsWithAnimation = {
 }
 
 type PropsWithIcon = {
-  icon: React.FC<IconInterface>
+  icon: React.FC<AccessibleIcon>
 }
 
 type Props = {

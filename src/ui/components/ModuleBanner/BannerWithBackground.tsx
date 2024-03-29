@@ -7,7 +7,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 import { BACKGROUND_IMAGE_SOURCE } from './backgroundImageSource'
 
@@ -21,8 +21,8 @@ type TouchableProps =
     }
 
 type BannerWithBackgroundProps = TouchableProps & {
-  leftIcon?: FunctionComponent<IconInterface>
-  rightIcon?: FunctionComponent<IconInterface>
+  leftIcon?: FunctionComponent<AccessibleIcon>
+  rightIcon?: FunctionComponent<AccessibleIcon>
   backgroundSource?: ImageSourcePropType
   testID?: string
   children: React.ReactNode

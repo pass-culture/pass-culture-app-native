@@ -4,14 +4,14 @@ import styled, { useTheme } from 'styled-components/native'
 import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStatusBarWithoutReactNavigation'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   header?: ReactNode
   noIndex?: boolean
-  icon?: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<AccessibleIcon>
   title: string
   buttons?: Array<ReactNode>
   noBackground?: boolean

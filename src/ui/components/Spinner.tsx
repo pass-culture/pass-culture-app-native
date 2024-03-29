@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 
 import { ANIMATION_USE_NATIVE_DRIVER } from 'ui/components/animationUseNativeDriver'
 import { Logo } from 'ui/svg/icons/Logo'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
-function NotMemoizedSpinner({ size, color, testID }: IconInterface) {
+function NotMemoizedSpinner({ size, color, testID }: AccessibleIcon) {
   const animatedValue = useRef(new Animated.Value(0)).current
   const spin = animatedValue.interpolate({
     inputRange: [0, 1],
