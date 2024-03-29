@@ -7,7 +7,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
-import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -19,7 +19,7 @@ type Props = {
   isSelected: boolean
   disabled?: boolean
   label: string
-  Icon: React.FC<BicolorIconInterface>
+  Icon: React.FC<AccessibleBicolorIcon>
 }
 
 export const LocationChoice: React.FC<Props> = ({

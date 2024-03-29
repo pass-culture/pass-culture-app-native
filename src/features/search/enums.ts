@@ -16,7 +16,7 @@ import { MusicalInstruments } from 'ui/svg/icons/categories/MusicalInstruments'
 import { OnlineEvents } from 'ui/svg/icons/categories/OnlineEvents'
 import { Shows } from 'ui/svg/icons/categories/Shows'
 import { YouthCards } from 'ui/svg/icons/categories/YouthCards'
-import { AccessibleIcon, BicolorIconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon, AccessibleBicolorIcon } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
@@ -55,7 +55,7 @@ export type Gradient = Array<ColorsEnum>
 
 type CategoryCriteria = {
   [category in SearchGroupNameEnumv2]: {
-    icon: React.FC<BicolorIconInterface>
+    icon: React.FC<AccessibleBicolorIcon>
     illustration: category extends SearchGroupNameEnumv2.NONE ? undefined : React.FC<AccessibleIcon>
     facetFilter: SearchGroupNameEnumv2
     baseColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum | string

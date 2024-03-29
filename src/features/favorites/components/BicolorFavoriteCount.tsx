@@ -8,12 +8,12 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFavoriteAuthed } from 'ui/svg/icons/BicolorFavoriteAuthed'
 import { Pastille } from 'ui/svg/icons/Pastille'
-import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 const COUNT_MAX = 100
 
-export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
+export const BicolorFavoriteCount: React.FC<AccessibleBicolorIcon> = ({
   size = 32,
   color,
   color2,

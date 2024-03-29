@@ -5,9 +5,9 @@ import styled from 'styled-components/native'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { AccessibleBicolorIconInterface } from './types'
+import { AccessibleBicolorIcon } from './types'
 
-const NotMemoizedBicolorArrowRight: React.FC<AccessibleBicolorIconInterface> = (props) => {
+const NotMemoizedBicolorArrowRight: React.FC<AccessibleBicolorIcon> = (props) => {
   const { size = 28, color, color2, style, accessibilityLabel, testID } = props
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
   return (

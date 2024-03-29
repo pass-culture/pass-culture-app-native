@@ -9,7 +9,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
-import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { Spacer, getSpacing } from 'ui/theme'
 
 const SELECTOR_WIDTH = '80%'
@@ -17,7 +17,7 @@ const SELECTOR_HEIGHT = getSpacing(1)
 
 interface Props {
   isSelected?: boolean
-  BicolorIcon: React.FC<BicolorIconInterface>
+  BicolorIcon: React.FC<AccessibleBicolorIcon>
   navigateTo: InternalNavigationProps['navigateTo']
   enableNavigate?: boolean
   onPress?: () => void

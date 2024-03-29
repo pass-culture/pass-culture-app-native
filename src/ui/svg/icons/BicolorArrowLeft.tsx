@@ -2,9 +2,9 @@ import * as React from 'react'
 import styled from 'styled-components/native'
 
 import { BicolorArrowRight } from './BicolorArrowRight'
-import { AccessibleBicolorIconInterface } from './types'
+import { AccessibleBicolorIcon } from './types'
 
-export const BicolorArrowLeft: React.FC<AccessibleBicolorIconInterface> = React.memo(
+export const BicolorArrowLeft: React.FC<AccessibleBicolorIcon> = React.memo(
   function NotMemoizedBicolorArrowLeft(props) {
     return <RotatedToLeftBicolorArrowRight {...props} />
   }

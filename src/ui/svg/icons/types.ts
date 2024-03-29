@@ -20,12 +20,12 @@ export interface AccessibleIcon extends IconInterface {
   accessibilityLabel?: string
 }
 
-export interface BicolorIconInterface extends IconInterface {
+interface BicolorIconInterface extends IconInterface {
   color2?: ColorsEnum | UniqueColors
   thin?: boolean
 }
 
-export interface AccessibleBicolorIconInterface extends BicolorIconInterface {
+export interface AccessibleBicolorIcon extends BicolorIconInterface {
   accessibilityLabel?: string
 }
 
