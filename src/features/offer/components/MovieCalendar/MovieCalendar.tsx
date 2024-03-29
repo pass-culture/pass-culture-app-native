@@ -1,6 +1,7 @@
 import React from 'react'
 import { FlatList, View } from 'react-native'
-import { useTheme } from 'styled-components/native'
+import LinearGradient from 'react-native-linear-gradient'
+import styled, { useTheme } from 'styled-components/native'
 
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/components/MovieCalendarDay'
@@ -46,19 +47,23 @@ export const MovieCalendar: React.FC<Props> = ({
           <BicolorArrowLeft />
         </ScrollButtonForNotTouchDevice>
       ) : null}
-      <FlatList
-        ref={refs}
-        data={dates}
-        horizontal
-        contentContainerStyle={flatListContainer}
-        showsHorizontalScrollIndicator={false}
-        onScroll={onScroll}
-        onContentSizeChange={onContentSizeChange}
-        testID="movie-calendar-flat-list"
-        renderItem={({ item: date }) => (
-          <MovieCalendarDay date={date} selectedDate={selectedDate} onTabChange={onTabChange} />
-        )}
-      />
+      <View>
+        <FlatList
+          ref={refs}
+          data={dates}
+          horizontal
+          contentContainerStyle={flatListContainer}
+          showsHorizontalScrollIndicator={false}
+          onScroll={onScroll}
+          onContentSizeChange={onContentSizeChange}
+          testID="movie-calendar-flat-list"
+          renderItem={({ item: date }) => (
+            <MovieCalendarDay date={date} selectedDate={selectedDate} onTabChange={onTabChange} />
+          )}
+        />
+        <FadeLeft />
+        <FadeRight />
+      </View>
       {isDesktopViewport && !isEnd ? (
         <ScrollButtonForNotTouchDevice
           horizontalAlign="right"
@@ -72,3 +77,27 @@ export const MovieCalendar: React.FC<Props> = ({
 }
 
 const flatListContainer = { paddingHorizontal: getSpacing(6) }
+
+const FadeLeft = styled(LinearGradient).attrs({
+  colors: ['white', 'transparent'],
+  start: { x: 0.2, y: 0.5 },
+  end: { x: 1, y: 0.5 },
+})`
+  position: absolute;
+  top: 0;
+  bottom: ${getSpacing(1)}px;
+  left: -1px;
+  width: 40px;
+`
+
+const FadeRight = styled(LinearGradient).attrs({
+  colors: ['transparent', 'white'],
+  start: { x: 0, y: 0.5 },
+  end: { x: 0.8, y: 0.5 },
+})`
+  position: absolute;
+  top: 0;
+  bottom: ${getSpacing(1)}px;
+  right: -1px;
+  width: 40px;
+`
