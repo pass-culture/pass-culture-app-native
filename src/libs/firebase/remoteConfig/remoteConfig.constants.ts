@@ -1,3 +1,5 @@
+import { SubscriptionTheme } from 'features/subscription/types'
+
 import { CustomRemoteConfig } from './remoteConfig.types'
 
 export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
@@ -14,4 +16,12 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   homeEntryId_15_17: '',
   sameAuthorPlaylist: '',
   shouldDisplayReassuranceMention: false,
+  subscriptionHomeEntryIds: {
+    [SubscriptionTheme.CINEMA]: '',
+    [SubscriptionTheme.MUSIQUE]: '',
+    [SubscriptionTheme.LECTURE]: '',
+    [SubscriptionTheme.SPECTACLES]: '',
+    [SubscriptionTheme.VISITES]: '',
+    [SubscriptionTheme.ACTIVITES]: '',
+  },
 }
