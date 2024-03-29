@@ -2,12 +2,12 @@ import React, { FunctionComponent } from 'react'
 import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, getSpacingString, Spacer, Typo } from 'ui/theme'
 
 type TagProps = ViewProps & {
   label: string
-  Icon?: FunctionComponent<IconInterface>
+  Icon?: FunctionComponent<AccessibleIcon>
 }
 
 const PADDING_VERTICAL = getSpacing(1)

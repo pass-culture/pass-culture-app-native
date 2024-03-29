@@ -3,13 +3,13 @@ import styled from 'styled-components/native'
 
 import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface LocationModalButtonProps {
-  icon: FunctionComponent<IconInterface>
+  icon: FunctionComponent<AccessibleIcon>
   color?: ColorsEnum
   title: string
   subtitle?: string

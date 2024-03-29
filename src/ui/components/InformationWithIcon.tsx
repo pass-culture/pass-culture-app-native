@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
 
 export const InformationWithIcon: FunctionComponent<{
-  Icon: React.FC<BicolorIconInterface>
+  Icon: React.FC<AccessibleBicolorIcon>
   text: string
   subtitle?: string
 }> = ({ Icon, text, subtitle }) => {

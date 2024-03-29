@@ -1,10 +1,10 @@
 import { CulturalSurveyAnswerEnum } from 'api/gen'
 import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 // Map the facetFilter (in search backend) to the category Icon
 const MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON: {
-  [k in CulturalSurveyAnswerEnum]: React.FC<IconInterface> | null
+  [k in CulturalSurveyAnswerEnum]: React.FC<AccessibleIcon> | null
 } = {
   [CulturalSurveyAnswerEnum.BIBLIOTHEQUE]: culturalSurveyIcons.Museum,
   [CulturalSurveyAnswerEnum.MUSEE]: culturalSurveyIcons.Museum,
@@ -52,7 +52,7 @@ const MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON: {
 
 export const mapCulturalSurveyTypeToIcon = (
   types: CulturalSurveyAnswerEnum
-): React.FC<IconInterface> | null => {
+): React.FC<AccessibleIcon> | null => {
   if (types && types in MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON)
     return MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON[types]
   return culturalSurveyIcons.Festival

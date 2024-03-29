@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -10,7 +10,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 type Props = {
   wording: string
   typography?: 'ButtonText' | 'Caption'
-  icon?: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<AccessibleIcon>
   color?: ColorsEnum
 }
 

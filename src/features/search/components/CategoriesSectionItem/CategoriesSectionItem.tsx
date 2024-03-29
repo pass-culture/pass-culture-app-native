@@ -13,7 +13,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
-import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { Spacer } from 'ui/theme'
 
 type CategoriesMappingItem = {
@@ -28,7 +28,7 @@ interface CategoriesSectionItemProps<N> {
   item: CategoriesMappingItem
   descriptionContext: DescriptionContext
   handleSelect: (key: N) => void
-  handleGetIcon: (category: SearchGroupNameEnumv2) => React.FC<BicolorIconInterface> | undefined
+  handleGetIcon: (category: SearchGroupNameEnumv2) => React.FC<AccessibleBicolorIcon> | undefined
 }
 
 export const CategoriesSectionItem = <N,>({

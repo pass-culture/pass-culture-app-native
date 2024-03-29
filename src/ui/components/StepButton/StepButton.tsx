@@ -7,7 +7,7 @@ import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
@@ -74,7 +74,7 @@ type ButtonContentProps = {
   stepState: StepButtonState
   label: string
   subtitle?: string
-  Icon: FunctionComponent<IconInterface>
+  Icon: FunctionComponent<AccessibleIcon>
   withRightIcon?: boolean
 }
 

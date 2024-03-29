@@ -4,12 +4,12 @@ import styled from 'styled-components/native'
 
 import { theme } from 'theme'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 type GenericBannerProps = {
   LeftIcon?: ReactElement
-  RightIcon?: FunctionComponent<IconInterface>
+  RightIcon?: FunctionComponent<AccessibleIcon>
   style?: StyleProp<ViewStyle>
   children: React.ReactNode
 }

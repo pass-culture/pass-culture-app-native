@@ -7,13 +7,13 @@ import { SearchView } from 'features/search/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   title: string
   explanations: string
-  icon: FunctionComponent<IconInterface>
+  icon: FunctionComponent<AccessibleIcon>
   offline?: boolean
   trackingExplorerOffersFrom: 'bookings' | 'favorites'
 }

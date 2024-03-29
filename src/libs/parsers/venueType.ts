@@ -1,6 +1,6 @@
 import { VenueTypeCodeKey } from 'api/gen'
 import { venueTypesIcons } from 'ui/svg/icons/bicolor/exports/venueTypesIcons'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export type VenueTypeCode = Exclude<VenueTypeCodeKey, VenueTypeCodeKey.ADMINISTRATIVE>
 
@@ -68,7 +68,7 @@ export const parseTypeHomeLabel = (types: VenueTypeCode | null | undefined): str
 
 // Map the facetFilter (in search backend) to the category Icon
 const MAP_TYPE_TO_ICON: {
-  [k in VenueTypeCode]: React.FC<IconInterface>
+  [k in VenueTypeCode]: React.FC<AccessibleIcon>
 } = {
   [VenueTypeCodeKey.ARTISTIC_COURSE]: venueTypesIcons.Bag,
   [VenueTypeCodeKey.BOOKSTORE]: venueTypesIcons.Bookstore,
@@ -92,7 +92,7 @@ const MAP_TYPE_TO_ICON: {
   [VenueTypeCodeKey.VISUAL_ARTS]: venueTypesIcons.VisualArt,
 }
 
-export const mapVenueTypeToIcon = (types: VenueTypeCode | null): React.FC<IconInterface> => {
+export const mapVenueTypeToIcon = (types: VenueTypeCode | null): React.FC<AccessibleIcon> => {
   if (types && types in MAP_TYPE_TO_ICON) return MAP_TYPE_TO_ICON[types]
   return venueTypesIcons.Other
 }

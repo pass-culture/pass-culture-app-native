@@ -5,11 +5,11 @@ import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorTabBarProfile } from 'ui/svg/icons/BicolorTabBarProfile'
-import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 
 import { TabRouteName } from './types'
 
-export function mapTabRouteToBicolorIcon(route: TabRouteName): React.FC<BicolorIconInterface> {
+export function mapTabRouteToBicolorIcon(route: TabRouteName): React.FC<AccessibleBicolorIcon> {
   switch (route) {
     case 'Home':
       return BicolorLogo

@@ -3,12 +3,12 @@ import styled from 'styled-components/native'
 
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   label: string
-  icon: FunctionComponent<IconInterface>
+  icon: FunctionComponent<AccessibleIcon>
   externalNav: ExternalNavigationProps['externalNav']
 }
 

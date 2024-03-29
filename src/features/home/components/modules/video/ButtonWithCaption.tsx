@@ -5,12 +5,12 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 type ButtonWithCaptionProps = {
   onPress: () => void
-  icon: FunctionComponent<IconInterface>
+  icon: FunctionComponent<AccessibleIcon>
   wording: string
   accessibilityLabel: string
   navigateTo?: InternalNavigationProps['navigateTo']

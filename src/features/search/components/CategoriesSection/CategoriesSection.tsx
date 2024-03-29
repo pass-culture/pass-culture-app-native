@@ -12,7 +12,7 @@ import { DescriptionContext } from 'features/search/types'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
-import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
@@ -26,7 +26,7 @@ export interface CategoriesSectionProps<
   data?: T
   descriptionContext: DescriptionContext
   getIcon?: T extends MappingTree
-    ? (categoryName: SearchGroupNameEnumv2) => FC<BicolorIconInterface> | undefined
+    ? (categoryName: SearchGroupNameEnumv2) => FC<AccessibleBicolorIcon> | undefined
     : undefined
   onSelect: (item: N) => void
   onSubmit?: () => void

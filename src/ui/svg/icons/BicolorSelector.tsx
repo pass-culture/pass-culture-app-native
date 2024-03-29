@@ -6,12 +6,12 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 import { getSpacing } from 'ui/theme'
 
-import { AccessibleRectangleIconInterface } from './types'
+import { AccessibleRectangleIcon } from './types'
 
 // To compensate for some weird blank margin above the "bar"
 const OWN_STYLE = { marginTop: -getSpacing(1 / 4) }
 
-export const BicolorSelector: React.FC<AccessibleRectangleIconInterface> = ({
+export const BicolorSelector: React.FC<AccessibleRectangleIcon> = ({
   color,
   width,
   height,

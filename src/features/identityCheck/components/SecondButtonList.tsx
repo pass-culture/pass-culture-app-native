@@ -2,11 +2,11 @@ import React, { FunctionComponent } from 'react'
 
 import { SectionRow } from 'ui/components/SectionRow'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo } from 'ui/theme'
 
 interface SecondButtonListProps {
-  leftIcon: FunctionComponent<IconInterface>
+  leftIcon: FunctionComponent<AccessibleIcon>
   label: string
   navigateTo: InternalNavigationProps['navigateTo']
   onBeforeNavigate?: () => void

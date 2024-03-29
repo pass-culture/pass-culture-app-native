@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
 import { AccessibilityRole, GestureResponderEvent } from 'react-native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export interface ButtonWithLinearGradientProps {
   children?: never
@@ -11,7 +11,7 @@ export interface ButtonWithLinearGradientProps {
   type?: 'button' | 'reset' | 'submit'
   className?: string
   name?: string
-  icon?: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<AccessibleIcon>
   accessibilityRole?: AccessibilityRole
   href?: string
   target?: string

@@ -16,7 +16,7 @@ import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { LogoDMS } from 'ui/svg/LogoDMS'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -33,7 +33,7 @@ export const DMSIntroduction = (): React.JSX.Element => {
   const selfieLabel = 'Un selfie avec ta pièce d’identité'
   const homeProofLabel = 'Un justificatif de domicile'
 
-  const informationListItem: { icon: FC<BicolorIconInterface>; label: string }[] =
+  const informationListItem: { icon: FC<AccessibleBicolorIcon>; label: string }[] =
     params?.isForeignDMSInformation
       ? [
           { icon: BicolorClock, label: timeLabel },

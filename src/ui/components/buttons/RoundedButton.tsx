@@ -10,7 +10,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Share } from 'ui/svg/icons/BicolorShare'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -32,7 +32,7 @@ interface Props {
   disabled?: boolean
 }
 
-const getIcon = (iconName: Props['iconName']): React.FC<IconInterface> => {
+const getIcon = (iconName: Props['iconName']): React.FC<AccessibleIcon> => {
   if (iconName === 'back') return ArrowPrevious
   if (iconName === 'share') return Share
   if (iconName === 'favorite-filled') return FavoriteFilled

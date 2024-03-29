@@ -5,13 +5,13 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   label: string
   info: string
-  Icon: FunctionComponent<IconInterface>
+  Icon: FunctionComponent<AccessibleIcon>
   onPress: () => void
 }
 

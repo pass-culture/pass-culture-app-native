@@ -3,37 +3,26 @@ import { ViewStyle } from 'react-native'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum, UniqueColors } from 'ui/theme/colors'
 
-interface IconSharedProperties {
+interface AccessibleIconSharedProperties {
   color?: ColorsEnum | UniqueColors
   testID?: string
   style?: ViewStyle
+  accessibilityLabel?: string
 }
 
-export interface IconInterface extends IconSharedProperties {
+export interface AccessibleIcon extends AccessibleIconSharedProperties {
   size?: number | string
   opacity?: number
   color2?: ColorsEnum | UniqueColors
   backgroundColor?: ColorsEnum | UniqueColors
 }
 
-export interface AccessibleIcon extends IconInterface {
-  accessibilityLabel?: string
-}
-
-export interface BicolorIconInterface extends IconInterface {
+export interface AccessibleBicolorIcon extends AccessibleIcon {
   color2?: ColorsEnum | UniqueColors
   thin?: boolean
 }
 
-export interface AccessibleBicolorIconInterface extends BicolorIconInterface {
-  accessibilityLabel?: string
-}
-
-interface RectangleIconInterface extends IconSharedProperties {
+export interface AccessibleRectangleIcon extends AccessibleIconSharedProperties {
   width?: number | string
   height?: number | string
-}
-
-export interface AccessibleRectangleIconInterface extends RectangleIconInterface {
-  accessibilityLabel?: string
 }

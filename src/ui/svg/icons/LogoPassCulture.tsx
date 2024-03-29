@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-import { AccessibleRectangleIconInterface } from './types'
+import { AccessibleRectangleIcon } from './types'
 
 function LogoPassCultureSvg({
   width,
@@ -12,7 +12,7 @@ function LogoPassCultureSvg({
   color,
   accessibilityLabel,
   testID,
-}: AccessibleRectangleIconInterface) {
+}: AccessibleRectangleIcon) {
   return (
     <AccessibleSvg
       width={width}

@@ -4,13 +4,13 @@ import styled from 'styled-components/native'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 type IdentificationForkButtonProps = {
   Title: ReactElement
   Subtitle?: ReactElement
-  icon: FunctionComponent<IconInterface>
+  icon: FunctionComponent<AccessibleIcon>
   navigateTo: InternalNavigationProps['navigateTo']
   accessibilityLabel?: string
   onBeforeNavigate?: () => void

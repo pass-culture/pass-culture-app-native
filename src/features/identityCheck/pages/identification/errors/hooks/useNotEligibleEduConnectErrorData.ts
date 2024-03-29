@@ -8,7 +8,7 @@ import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/
 import { UserErrorWhite } from 'ui/svg/BicolorUserError'
 import { Email } from 'ui/svg/icons/Email'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 export enum EduConnectErrorMessageEnum {
@@ -21,14 +21,14 @@ export enum EduConnectErrorMessageEnum {
 }
 
 export type NotEligibleEduConnectErrorData = {
-  Illustration: FunctionComponent<IconInterface>
+  Illustration: FunctionComponent<AccessibleIcon>
   title: string
   description: string
   titleAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
   descriptionAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
   primaryButton?: {
     text: string
-    icon?: FunctionComponent<IconInterface>
+    icon?: FunctionComponent<AccessibleIcon>
     onPress?: () => void
   } & (
     | { navigateTo?: InternalNavigationProps['navigateTo'] }

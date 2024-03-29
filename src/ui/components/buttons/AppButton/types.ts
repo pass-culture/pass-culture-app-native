@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -27,9 +27,9 @@ export interface TouchableOpacityButtonProps {
 
 export interface AppButtonInnerProps {
   adjustsFontSizeToFit?: boolean
-  icon?: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<AccessibleIcon>
   iconPosition: 'left' | 'right'
-  loadingIndicator?: ComponentType<IconInterface>
+  loadingIndicator?: ComponentType<AccessibleIcon>
   isLoading?: boolean
   wording: string
   title?: ComponentType<TextProps>
@@ -53,12 +53,12 @@ export interface BaseButtonProps {
   fullWidth?: boolean
   hoverUnderlineColor?: ColorsEnum
   href?: string
-  icon?: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<AccessibleIcon>
   iconPosition?: 'left' | 'right'
   inline?: boolean
   isLoading?: boolean
   justifyContent?: 'center' | 'flex-start'
-  loadingIndicator?: ComponentType<IconInterface>
+  loadingIndicator?: ComponentType<AccessibleIcon>
   mediumWidth?: boolean
   name?: string
   numberOfLines?: number

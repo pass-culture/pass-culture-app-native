@@ -3,10 +3,10 @@ import { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
-import { AccessibleBicolorIconInterface, AccessibleIcon } from 'ui/svg/icons/types'
+import { AccessibleBicolorIcon, AccessibleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 
-const UserBlockedSvg: React.FunctionComponent<AccessibleBicolorIconInterface> = ({
+const UserBlockedSvg: React.FunctionComponent<AccessibleBicolorIcon> = ({
   size,
   color,
   color2,

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { theme } from 'theme'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Typo, Spacer } from 'ui/theme'
 
 export type SectionRowContentProps = {
@@ -12,7 +12,7 @@ export type SectionRowContentProps = {
   type: 'navigable' | 'clickable'
   accessibilityLabel?: string
   onPress?: () => void
-  icon?: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<AccessibleIcon>
   iconSize?: number
   style?: StyleProp<ViewStyle>
 } & (
