@@ -22,7 +22,7 @@ export interface AccessibleBicolorIcon extends AccessibleIcon {
   thin?: boolean
 }
 
-export interface AccessibleRectangleIconInterface extends AccessibleIconSharedProperties {
+export interface AccessibleRectangleIcon extends AccessibleIconSharedProperties {
   width?: number | string
   height?: number | string
 }

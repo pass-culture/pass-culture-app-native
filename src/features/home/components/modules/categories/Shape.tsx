@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
 import { Color } from 'features/home/types'
-import { AccessibleRectangleIconInterface } from 'ui/svg/icons/types'
+import { AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { Circles } from 'ui/svg/shapes/Circles'
 import { Ellipses } from 'ui/svg/shapes/Ellipses'
 import { Pills } from 'ui/svg/shapes/Pills'
@@ -9,7 +9,7 @@ import { Rectangles } from 'ui/svg/shapes/Rectangles'
 import { Squares } from 'ui/svg/shapes/Squares'
 import { Triangles } from 'ui/svg/shapes/Triangles'
 
-const colorToShapeMapping: Record<Color, FunctionComponent<AccessibleRectangleIconInterface>> = {
+const colorToShapeMapping: Record<Color, FunctionComponent<AccessibleRectangleIcon>> = {
   [Color.Gold]: Pills,
   [Color.Aquamarine]: Squares,
   [Color.SkyBlue]: Rectangles,
@@ -18,7 +18,7 @@ const colorToShapeMapping: Record<Color, FunctionComponent<AccessibleRectangleIc
   [Color.Lilac]: Triangles,
 }
 
-interface Props extends Omit<AccessibleRectangleIconInterface, 'color'> {
+interface Props extends Omit<AccessibleRectangleIcon, 'color'> {
   color: Color
 }
 

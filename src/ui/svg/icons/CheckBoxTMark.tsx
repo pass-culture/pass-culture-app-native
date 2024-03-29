@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-import { AccessibleRectangleIconInterface } from './types'
+import { AccessibleRectangleIcon } from './types'
 
-const CheckboxMarkSvg: React.FunctionComponent<AccessibleRectangleIconInterface> = ({
+const CheckboxMarkSvg: React.FunctionComponent<AccessibleRectangleIcon> = ({
   width,
   height,
   color,

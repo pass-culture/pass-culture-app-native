@@ -4,9 +4,9 @@ import { Defs, LinearGradient, Rect, Stop } from 'react-native-svg'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { AccessibleRectangleIconInterface } from './types'
+import { AccessibleRectangleIcon } from './types'
 
-export const Pastille: React.FunctionComponent<AccessibleRectangleIconInterface> = ({
+export const Pastille: React.FunctionComponent<AccessibleRectangleIcon> = ({
   height = 15,
   width = 21,
   color,

@@ -2,10 +2,10 @@ import * as React from 'react'
 import { ClipPath, Defs, Ellipse, G, LinearGradient, Path, Stop } from 'react-native-svg'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
-import { AccessibleRectangleIconInterface } from 'ui/svg/icons/types'
+import { AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 
-export const Ellipses: React.FunctionComponent<AccessibleRectangleIconInterface> = ({
+export const Ellipses: React.FunctionComponent<AccessibleRectangleIcon> = ({
   height,
   accessibilityLabel,
   testID,
