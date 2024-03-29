@@ -1,7 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Movie screening calendar should render <MovieScreeningCalendar /> with screening ordered by hours 1`] = `
-[
+<View
+  isDesktopViewport={true}
+  style={
+    [
+      {
+        "marginRight": -64,
+      },
+    ]
+  }
+>
   <View
     onLayout={[Function]}
   >
@@ -10,6 +19,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
         [
           {
             "backgroundColor": "#F1F1F4",
+            "borderRadius": 4,
             "bottom": 0,
             "height": 4,
             "left": 0,
@@ -19,173 +29,239 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
         ]
       }
     />
-    <RCTScrollView
-      contentContainerStyle={
-        {
-          "paddingHorizontal": 24,
-        }
-      }
-      data={
-        [
-          2024-02-27T00:00:00.000Z,
-        ]
-      }
-      getItem={[Function]}
-      getItemCount={[Function]}
-      horizontal={true}
-      keyExtractor={[Function]}
-      onContentSizeChange={[Function]}
-      onLayout={[Function]}
-      onMomentumScrollBegin={[Function]}
-      onMomentumScrollEnd={[Function]}
-      onScroll={[Function]}
-      onScrollBeginDrag={[Function]}
-      onScrollEndDrag={[Function]}
-      removeClippedSubviews={false}
-      renderItem={[Function]}
-      scrollEventThrottle={50}
-      showsHorizontalScrollIndicator={false}
-      stickyHeaderIndices={[]}
-      testID="movie-calendar-flat-list"
-      viewabilityConfigCallbackPairs={[]}
-    >
-      <View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={
-            [
-              {
-                "flexDirection": "row",
-              },
-              null,
-            ]
+    <View>
+      <RCTScrollView
+        contentContainerStyle={
+          {
+            "paddingHorizontal": 24,
           }
-        >
+        }
+        data={
+          [
+            2024-02-27T00:00:00.000Z,
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        horizontal={true}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={50}
+        showsHorizontalScrollIndicator={false}
+        stickyHeaderIndices={[]}
+        testID="movie-calendar-flat-list"
+        viewabilityConfigCallbackPairs={[]}
+      >
+        <View>
           <View
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={false}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexWrap": "wrap",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
             }
           >
             <View
-              accessibilityLabel="Mardi 27 Février"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                [
-                  {
-                    "marginBottom": 8,
-                    "marginHorizontal": 16,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
               }
             >
-              <Text
-                isDesktopViewport={true}
-                numberOfLines={1}
+              <View
+                accessibilityLabel="Mardi 27 Février"
                 style={
                   [
                     {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "textAlign": "center",
-                      "width": 88,
+                      "marginBottom": 8,
+                      "marginHorizontal": 16,
                     },
                   ]
                 }
               >
-                Mardi
-              </Text>
-              <Text
-                isDesktopViewport={true}
-                numberOfLines={1}
+                <Text
+                  isDesktopViewport={true}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 88,
+                      },
+                    ]
+                  }
+                >
+                  Mardi
+                </Text>
+                <Text
+                  isDesktopViewport={true}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 88,
+                      },
+                    ]
+                  }
+                >
+                  27
+                </Text>
+                <Text
+                  isDesktopViewport={true}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 88,
+                      },
+                    ]
+                  }
+                >
+                  Février
+                </Text>
+              </View>
+              <View
                 style={
                   [
                     {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "textAlign": "center",
-                      "width": 88,
+                      "backgroundColor": "#eb0055",
+                      "borderRadius": 4,
+                      "bottom": 0,
+                      "height": 4,
+                      "left": 0,
+                      "position": "absolute",
+                      "width": "100%",
                     },
                   ]
                 }
-              >
-                27
-              </Text>
-              <Text
-                isDesktopViewport={true}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "textAlign": "center",
-                      "width": 88,
-                    },
-                  ]
-                }
-              >
-                Février
-              </Text>
+              />
             </View>
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 4,
-                    "bottom": 0,
-                    "height": 4,
-                    "left": 0,
-                    "position": "absolute",
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
           </View>
         </View>
-      </View>
-    </RCTScrollView>
-  </View>,
+      </RCTScrollView>
+      <BVLinearGradient
+        colors={
+          [
+            4294967295,
+            0,
+          ]
+        }
+        endPoint={
+          {
+            "x": 1,
+            "y": 0.5,
+          }
+        }
+        locations={null}
+        startPoint={
+          {
+            "x": 0.2,
+            "y": 0.5,
+          }
+        }
+        style={
+          [
+            {
+              "bottom": 4,
+              "left": -1,
+              "position": "absolute",
+              "top": 0,
+              "width": 80,
+            },
+          ]
+        }
+      />
+      <BVLinearGradient
+        colors={
+          [
+            0,
+            4294967295,
+          ]
+        }
+        endPoint={
+          {
+            "x": 0.8,
+            "y": 0.5,
+          }
+        }
+        locations={null}
+        startPoint={
+          {
+            "x": 0,
+            "y": 0.5,
+          }
+        }
+        style={
+          [
+            {
+              "bottom": 4,
+              "position": "absolute",
+              "right": -1,
+              "top": 0,
+              "width": 80,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
   <View
     numberOfSpaces={4}
     style={
@@ -195,7 +271,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
         },
       ]
     }
-  />,
+  />
   <View
     onLayout={[Function]}
   >
@@ -1509,7 +1585,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
         </View>
       </View>
     </RCTScrollView>
-  </View>,
+  </View>
   <View
     numberOfSpaces={6}
     style={
@@ -1519,7 +1595,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
         },
       ]
     }
-  />,
+  />
   <Modal
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
@@ -1550,6 +1626,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
     testID="modal"
     transparent={true}
     visible={false}
-  />,
-]
+  />
+</View>
 `;
