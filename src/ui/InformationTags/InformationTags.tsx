@@ -9,17 +9,17 @@ interface Props {
   tagsLines?: number
 }
 
-const MARGIN_BOTTOM_TAGS = getSpacing(2)
+const TAG_GAP = getSpacing(2)
 
 // This component is used to display tags on a number of lines defined as a parameter.
 // If the number of tags to display exceeds this limit, it will not be visible
-export function InformationTags({ tags, tagsLines = 2 }: Readonly<Props>) {
-  const maxContainerHeight = TAG_HEIGHT * tagsLines + MARGIN_BOTTOM_TAGS * (tagsLines - 1)
+export function InformationTags({ tags, tagsLines = 2, ...props }: Readonly<Props>) {
+  const maxContainerHeight = TAG_HEIGHT * tagsLines + TAG_GAP * (tagsLines - 1)
 
   return (
-    <Container maxHeight={maxContainerHeight} testID="tagsContainer">
+    <Container maxHeight={maxContainerHeight} testID="tagsContainer" {...props}>
       {tags.map((tag) => (
-        <StyledTag label={tag} key={tag} />
+        <Tag label={tag} key={tag} />
       ))}
     </Container>
   )
@@ -30,9 +30,5 @@ const Container = styled.View<{ maxHeight: number }>(({ maxHeight }) => ({
   flexWrap: 'wrap',
   overflow: 'hidden',
   maxHeight,
+  gap: TAG_GAP,
 }))
-
-const StyledTag = styled(Tag)({
-  marginRight: getSpacing(2),
-  marginBottom: MARGIN_BOTTOM_TAGS,
-})

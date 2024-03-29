@@ -5,18 +5,23 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
-import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface HeaderIconProps {
+  hitSlop?: number
   onClose?: () => void
   color?: ColorsEnum
 }
 
-export const CloseButton: React.FC<HeaderIconProps> = ({ color, onClose, ...props }) => {
+export const CloseButton: React.FC<HeaderIconProps> = ({
+  color,
+  onClose,
+  hitSlop = 8,
+  ...props
+}) => {
   return (
-    <StyledTouchable onPress={onClose} accessibilityLabel="Fermer" {...props}>
+    <StyledTouchable onPress={onClose} accessibilityLabel="Fermer" hitSlop={hitSlop} {...props}>
       <Close testID="icon-close" color={color} />
       <HiddenAccessibleText>Retour</HiddenAccessibleText>
     </StyledTouchable>
@@ -24,8 +29,6 @@ export const CloseButton: React.FC<HeaderIconProps> = ({ color, onClose, ...prop
 }
 
 const StyledTouchable = styledButton(Touchable)({
-  width: getSpacing(10),
-  height: getSpacing(10),
   justifyContent: 'center',
   alignItems: 'center',
 })

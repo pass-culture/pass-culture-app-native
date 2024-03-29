@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
 import { getSpacing } from 'ui/theme'
@@ -42,7 +43,9 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
         </ButtonContainer>
         <Title nativeID={titleId}>{title}</Title>
         <ButtonContainer positionInHeader="right" testID="close-button-container">
-          {!!shouldDisplayCloseButton && <CloseButton onClose={onClose} color={ColorsEnum.BLACK} />}
+          {!!shouldDisplayCloseButton && (
+            <StyledCloseButton onClose={onClose} color={ColorsEnum.BLACK} />
+          )}
         </ButtonContainer>
       </HeaderContent>
     </Header>
@@ -83,3 +86,8 @@ const Title = styled.Text.attrs(() => ({
   textAlign: 'center',
   color: theme.colors.black,
 }))
+
+const StyledCloseButton = styledButton(CloseButton)({
+  width: getSpacing(10),
+  height: getSpacing(10),
+})

@@ -257,6 +257,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 accessible={true}
                 collapsable={false}
                 focusable={true}
+                hitSlop={8}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
