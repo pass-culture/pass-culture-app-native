@@ -2,9 +2,10 @@ import React from 'react'
 import { FlatList, View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/MovieCalendarBottomBar'
-import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/MovieCalendarDay'
-import { useHorizontalFlatListScroll } from 'features/offer/components/MovieCalendar/useHorizontalFlatListScroll'
+import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
+import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/components/MovieCalendarDay'
+import { useDraggableScroll } from 'features/offer/components/MovieCalendar/hooks/useDraggableScroll'
+import { useHorizontalFlatListScroll } from 'features/offer/components/MovieCalendar/hooks/useHorizontalFlatListScroll'
 import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
 import { BicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
 import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
@@ -33,6 +34,7 @@ export const MovieCalendar: React.FC<Props> = ({
     isEnd,
     isStart,
   } = useHorizontalFlatListScroll({ ref: flatListRef, isActive: isDesktopViewport })
+  const { refs } = useDraggableScroll({ outerRef: flatListRef })
   return (
     <View onLayout={onContainerLayout}>
       <MovieCalendarBottomBar />
@@ -45,7 +47,7 @@ export const MovieCalendar: React.FC<Props> = ({
         </ScrollButtonForNotTouchDevice>
       ) : null}
       <FlatList
-        ref={flatListRef}
+        ref={refs}
         data={dates}
         horizontal
         contentContainerStyle={flatListContainer}
