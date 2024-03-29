@@ -1,5 +1,4 @@
 import { useEffect, useRef, useMemo, ForwardedRef } from 'react'
-import { mergeRefs } from 'react-merge-refs'
 import { Platform, findNodeHandle } from 'react-native'
 import type { FlatList } from 'react-native'
 
@@ -71,5 +70,18 @@ export const useDraggableScroll = <Scrollable extends FlatList = FlatList>({
 
   return {
     refs,
+  }
+}
+
+function mergeRefs<T>(refs: Array<React.Ref<T>>): React.Ref<T> {
+  return (instance) => {
+    for (const ref of refs) {
+      if (typeof ref === 'function') {
+        ref(instance)
+      } else if (ref != null) {
+        // 'current' est la propriété des objets ref créés par `React.createRef` et `React.useRef`
+        ;(ref as React.MutableRefObject<T | null>).current = instance
+      }
+    }
   }
 }
