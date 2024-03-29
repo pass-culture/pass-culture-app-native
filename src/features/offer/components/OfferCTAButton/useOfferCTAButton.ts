@@ -24,6 +24,7 @@ export const useOfferCTAButton = (
     isEndedUsedBooking,
     bottomBannerText,
     isDisabled,
+    movieScreeningUserData,
   } = useCtaWordingAndAction({ offer, from, searchId, subcategory }) ?? {}
 
   const { OfferModal: CTAOfferModal, showModal: showOfferModal } = useBookOfferModal({
@@ -54,5 +55,6 @@ export const useOfferCTAButton = (
     showOfferModal,
     CTAOfferModal,
     openModalOnNavigation,
+    movieScreeningUserData,
   }
 }

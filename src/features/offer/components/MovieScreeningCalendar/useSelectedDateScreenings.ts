@@ -1,72 +1,61 @@
 import { useCallback, useMemo, useState } from 'react'
 
-import { OfferStockResponse, SubscriptionStatus, UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useOngoingOrEndedBooking } from 'features/bookings/api'
+import { OfferStockResponse } from 'api/gen'
 import { formatHour } from 'features/bookOffer/helpers/utils'
 import { EventCardSubtitleEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
-import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
-import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
-import { getIsBookedOffer } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
+import {
+  MovieScreeningBookingData,
+  MovieScreeningUserData,
+} from 'features/offer/components/MovieScreeningCalendar/types'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
-import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 import { EventCardProps } from 'ui/components/eventCard/EventCard'
 
 export const useSelectedDateScreening = (
-  selectedScreeningStock: OfferStockResponse[] | undefined,
-  offerId: number
+  selectedScreeningStock: OfferStockResponse[] | undefined
 ) => {
   const [bookingData, setBookingData] = useState<MovieScreeningBookingData>()
-  const { user, isLoggedIn } = useAuthContext()
-  const userHasNotCompletedSubscriptionYet =
-    user?.status.subscriptionStatus === SubscriptionStatus.has_to_complete_subscription ||
-    user?.status.subscriptionStatus === SubscriptionStatus.has_subscription_pending ||
-    user?.status.subscriptionStatus === SubscriptionStatus.has_subscription_issues
-
-  const { amount: userCredit, isExpired: isUserCreditExpired } = useMemo(
-    () =>
-      isLoggedIn && user
-        ? getAvailableCredit(user as UserProfileResponse)
-        : { amount: 0, isExpired: false },
-    [user, isLoggedIn]
-  )
-
-  const hasBookedOffer = useMemo(
-    () => (offerId && user ? getIsBookedOffer(offerId, user.bookedOffers) : false),
-    [offerId, user]
-  )
-
-  const { data: userBooking } = useOngoingOrEndedBooking(
-    getBookingOfferId(offerId, user?.bookedOffers) ?? 0
-  )
 
   const mapScreeningsToEventCardProps = useCallback(
-    (screening: OfferStockResponse, offerVenueId: number, onPressOfferCTA?: () => void) => {
-      const { beginningDatetime, isSoldOut } = screening
+    (
+      screening: OfferStockResponse,
+      offerVenueId: number,
+      onPressOfferCTA?: () => void,
+      movieScreeningUserData?: MovieScreeningUserData
+    ) => {
+      const { beginningDatetime, isSoldOut: isScreeningSoldOut } = screening
       if (beginningDatetime) {
-        const hasEnoughCredit = isLoggedIn ? screening.price <= userCredit : true
+        const {
+          hasNotCompletedSubscriptionYet,
+          isUserEligible = true,
+          hasEnoughCredit,
+          bookings: userBookings,
+          isUserCreditExpired,
+          hasBookedOffer,
+          isUserLoggedIn,
+        } = (movieScreeningUserData as MovieScreeningUserData) ?? {}
+
         const price = formatToFrenchDecimal(screening.price).replace(' ', '')
-        const hasBookedScreening = userBooking?.stock?.beginningDatetime === beginningDatetime
-        const isSameVenue = offerVenueId === userBooking?.stock?.offer?.venue?.id
+        const hasBookedScreening = userBookings?.stock?.beginningDatetime === beginningDatetime
+        const isSameVenue = offerVenueId === userBookings?.stock?.offer?.venue?.id
 
         let isDisabled: boolean
         let subtitleLeft: EventCardSubtitleEnum | string
+
         switch (true) {
+          case isScreeningSoldOut:
+            subtitleLeft = EventCardSubtitleEnum.FULLY_BOOKED
+            isDisabled = true
+            break
           case hasBookedScreening:
             subtitleLeft = EventCardSubtitleEnum.ALREADY_BOOKED
             isDisabled = true
             break
-          case isSoldOut:
-            subtitleLeft = EventCardSubtitleEnum.FULLY_BOOKED
-            isDisabled = true
-            break
-          case !hasEnoughCredit && !userHasNotCompletedSubscriptionYet:
-            subtitleLeft = EventCardSubtitleEnum.NOT_ENOUGH_CREDIT
-            isDisabled = true
-            break
-          case (isUserCreditExpired || (isSameVenue && hasBookedOffer)) &&
-            !userHasNotCompletedSubscriptionYet:
+          case isUserCreditExpired || (isSameVenue && hasBookedOffer) || !isUserEligible:
             subtitleLeft = screening.features.join(', ')
+            isDisabled = true
+            break
+          case isUserLoggedIn && !hasEnoughCredit && !hasNotCompletedSubscriptionYet:
+            subtitleLeft = EventCardSubtitleEnum.NOT_ENOUGH_CREDIT
             isDisabled = true
             break
           default:
@@ -103,15 +92,7 @@ export const useSelectedDateScreening = (
       }
       return undefined
     },
-    [
-      isLoggedIn,
-      isUserCreditExpired,
-      userCredit,
-      userBooking?.stock?.beginningDatetime,
-      userBooking?.stock?.offer?.venue?.id,
-      hasBookedOffer,
-      userHasNotCompletedSubscriptionYet,
-    ]
+    []
   )
 
   const convertToMinutes = (time: string): number => {
@@ -121,19 +102,31 @@ export const useSelectedDateScreening = (
   }
 
   const selectedDateScreenings = useMemo(
-    () => (offerVenueId: number, onPressOfferCTA?: () => void) => {
-      if (!selectedScreeningStock) {
-        return []
-      }
+    () =>
+      (
+        offerVenueId: number,
+        onPressOfferCTA?: () => void,
+        movieScreeningUserData?: MovieScreeningUserData
+      ) => {
+        if (!selectedScreeningStock) {
+          return []
+        }
 
-      return selectedScreeningStock
-        .map((screening) => mapScreeningsToEventCardProps(screening, offerVenueId, onPressOfferCTA))
-        .filter(Boolean)
-        .sort(
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- filter(Boolean) removes undefined
-          (a, b) => convertToMinutes(a!.title) - convertToMinutes(b!.title)
-        ) as EventCardProps[]
-    },
+        return selectedScreeningStock
+          .map((screening) =>
+            mapScreeningsToEventCardProps(
+              screening,
+              offerVenueId,
+              onPressOfferCTA,
+              movieScreeningUserData
+            )
+          )
+          .filter(Boolean)
+          .sort(
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- filter(Boolean) removes undefined
+            (a, b) => convertToMinutes(a!.title) - convertToMinutes(b!.title)
+          ) as EventCardProps[]
+      },
     [selectedScreeningStock, mapScreeningsToEventCardProps]
   )
 

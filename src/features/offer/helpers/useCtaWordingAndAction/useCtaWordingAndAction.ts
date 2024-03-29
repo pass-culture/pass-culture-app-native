@@ -24,6 +24,7 @@ import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutatio
 import { openUrl } from 'features/navigation/helpers'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
+import { MovieScreeningUserData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
@@ -46,7 +47,7 @@ type UseGetCtaWordingAndActionProps = {
   searchId?: string
 }
 
-export const getIsBookedOffer = (
+const getIsBookedOffer = (
   offerId: FavoriteOfferResponse['id'],
   bookedOffersIds: UserProfileResponse['bookedOffers'] = {}
 ): boolean => bookedOffersIds[offerId] !== undefined
@@ -81,6 +82,7 @@ export type ICTAWordingAndAction = {
   isEndedUsedBooking?: boolean
   bottomBannerText?: string
   isDisabled?: boolean
+  movieScreeningUserData?: MovieScreeningUserData
 }
 
 // Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
@@ -117,6 +119,7 @@ export const getCtaWordingAndAction = ({
       onPress: () => {
         analytics.logConsultAuthenticationModal(offer.id)
       },
+      movieScreeningUserData: { isUserLoggedIn: isLoggedIn },
     }
   }
 
@@ -125,6 +128,7 @@ export const getCtaWordingAndAction = ({
       wording: isNewXPCine ? undefined : 'Réserver l’offre',
       bottomBannerText: BottomBannerTextEnum.NOT_ELIGIBLE,
       isDisabled: true,
+      movieScreeningUserData: { isUserEligible: false },
     }
   }
 
@@ -135,6 +139,7 @@ export const getCtaWordingAndAction = ({
       isEndedUsedBooking,
       isDisabled: false,
       bottomBannerText: isNewXPCine ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
+      movieScreeningUserData: { bookings: booking as BookingReponse },
     }
   }
 
@@ -151,6 +156,7 @@ export const getCtaWordingAndAction = ({
           onPress: () => {
             analytics.logConsultFinishSubscriptionModal(offer.id)
           },
+          movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
         }
 
       case SubscriptionStatus.has_subscription_pending:
@@ -160,6 +166,7 @@ export const getCtaWordingAndAction = ({
           onPress: () => {
             analytics.logConsultApplicationProcessingModal(offer.id)
           },
+          movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
         }
 
       case SubscriptionStatus.has_subscription_issues:
@@ -169,6 +176,7 @@ export const getCtaWordingAndAction = ({
           onPress: () => {
             analytics.logConsultErrorApplicationModal(offer.id)
           },
+          movieScreeningUserData: { hasNotCompletedSubscriptionYet: true },
         }
     }
   }
@@ -202,6 +210,10 @@ export const getCtaWordingAndAction = ({
         fromRef: true,
       },
       bottomBannerText: isNewXPCine ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
+      movieScreeningUserData: {
+        hasBookedOffer: true,
+        bookings: booking as BookingReponse,
+      },
     }
   }
 
@@ -221,6 +233,7 @@ export const getCtaWordingAndAction = ({
   if (isDepositExpired && isNewXPCine)
     return {
       bottomBannerText: BottomBannerTextEnum.CREDIT_HAS_EXPIRED,
+      movieScreeningUserData: { isUserCreditExpired: true },
     }
 
   if (!offer.isReleased || offer.isExpired) return { wording: 'Offre expirée', isDisabled: true }
@@ -249,6 +262,7 @@ export const getCtaWordingAndAction = ({
       return {
         wording: isNewXPCine ? undefined : 'Crédit insuffisant',
         bottomBannerText: isNewXPCine ? BottomBannerTextEnum.NOT_ENOUGH_CREDIT : undefined,
+        movieScreeningUserData: { isUserLoggedIn: isLoggedIn, hasEnoughCredit },
         isDisabled: true,
       }
 
@@ -259,6 +273,7 @@ export const getCtaWordingAndAction = ({
       onPress: () => {
         analytics.logConsultAvailableDates(offer.id)
       },
+      movieScreeningUserData: { hasEnoughCredit },
     }
   }
   return undefined
@@ -318,7 +333,6 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   })
   const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
   const { data: booking } = useOngoingOrEndedBooking(getBookingOfferId(offerId, bookedOffers) ?? 0)
-
   /* check I have all information to calculate wording
    * why: avoid flash on CTA wording
    * The venue.id is not available on Homepage, or wherever we click on an offer

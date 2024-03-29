@@ -405,11 +405,11 @@
 ./src/features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer.test.ts:26
 ./src/features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer.test.ts:37
 ./src/features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer.test.ts:48
-./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:120
-./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:369
-./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:380
-./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:806
-./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts:188
+./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:123
+./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:372
+./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:383
+./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:823
+./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts:196
 ./src/features/profile/components/Buttons/ContactSupportButton/ContactSupportButton.native.test.tsx:18
 ./src/features/profile/components/Buttons/ContactSupportButton/ContactSupportButton.native.test.tsx:20
 ./src/features/profile/components/Buttons/ContactSupportButton/ContactSupportButton.tsx:14
