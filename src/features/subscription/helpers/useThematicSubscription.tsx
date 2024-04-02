@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Platform } from 'react-native'
 
 import { UserProfileResponse } from 'api/gen'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
@@ -37,7 +38,10 @@ export const useThematicSubscription = ({
 
   const isThemeSubscribed = user?.subscriptions?.subscribedThemes?.includes(theme) ?? false
 
-  const isSubscribeButtonActive = isAtLeastOneNotificationTypeActivated && isThemeSubscribed
+  const isSubscribeButtonActive =
+    Platform.OS === 'web'
+      ? user?.subscriptions.marketingEmail && isThemeSubscribed
+      : isAtLeastOneNotificationTypeActivated && isThemeSubscribed
 
   const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
     () => {

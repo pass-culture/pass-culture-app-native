@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { ScrollView } from 'react-native'
+import { Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -48,7 +48,10 @@ export const ThematicHomeWithSubscribeCheatcode: FunctionComponent = () => {
           <SubscribeButton
             active={isSubscribeButtonActive || false}
             onPress={() => {
-              if (!isAtLeastOneNotificationTypeActivated) {
+              if (
+                (Platform.OS === 'web' && !user?.subscriptions.marketingEmail) ||
+                (Platform.OS !== 'web' && !isAtLeastOneNotificationTypeActivated)
+              ) {
                 showModal()
               } else {
                 updateSubscription()
