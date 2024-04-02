@@ -3,8 +3,8 @@ import {
   bookTreeResultFixture,
   treeResultFixture,
 } from 'features/search/helpers/categoriesHelpers/mappingFixture'
-import { FacetData } from 'libs/algolia'
 import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
+import { FacetData } from 'libs/algolia/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
 const mockedSubcateroriesV2Response = placeholderData

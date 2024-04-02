@@ -1,5 +1,5 @@
-import { LocationMode } from 'libs/algolia'
 import { RADIUS_FILTERS } from 'libs/algolia/enums'
+import { LocationMode } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 
 type AlgoliaPositionParams = {

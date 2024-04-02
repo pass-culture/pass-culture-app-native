@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
-import { AlgoliaVenue } from 'libs/algolia'
+import { AlgoliaVenue } from 'libs/algolia/types'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { getSpacing, Typo } from 'ui/theme'
 

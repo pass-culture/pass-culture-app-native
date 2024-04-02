@@ -3,8 +3,8 @@ import { flatten, uniqBy } from 'lodash'
 import { UseQueryResult } from 'react-query'
 
 import { ModuleData, OfferModuleParamsInfo } from 'features/home/types'
-import { AlgoliaHit } from 'libs/algolia'
 import { filterOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { AlgoliaHit } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 
 const isOfferModuleParamsInfo = (module: unknown): module is OfferModuleParamsInfo =>

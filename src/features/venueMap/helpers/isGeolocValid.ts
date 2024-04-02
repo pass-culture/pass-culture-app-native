@@ -1,4 +1,4 @@
-import { Geoloc } from 'libs/algolia'
+import { Geoloc } from 'libs/algolia/types'
 
 export const isGeolocValid = (geoloc: Geoloc | undefined): boolean =>
   // Integer values are suspicious, we avoid them so that we don't display venues with wrong geoloc

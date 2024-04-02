@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { AlgoliaVenue } from 'libs/algolia'
+import { AlgoliaVenue } from 'libs/algolia/types'
 import { LENGTH_XS, LENGTH_XXS } from 'ui/theme'
 
 import { SearchVenueItem } from './SearchVenueItem'

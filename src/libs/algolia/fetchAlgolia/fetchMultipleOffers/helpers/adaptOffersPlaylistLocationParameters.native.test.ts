@@ -1,6 +1,6 @@
 import { OffersModuleParameters } from 'features/home/types'
-import { LocationMode } from 'libs/algolia'
 import { adaptOffersPlaylistLocationParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/adaptOffersPlaylistLocationParameters'
+import { LocationMode } from 'libs/algolia/types'
 
 const mockedUserLocation = { latitude: 30, longitude: 30.1 }
 

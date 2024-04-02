@@ -1,11 +1,11 @@
 import { VenuesModuleParameters } from 'features/home/types'
-import { FiltersArray } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
 import {
   buildLocationParameter,
   BuildLocationParameterParams,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { getVenueTypeFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getVenueTypeFacetFilters'
+import { FiltersArray } from 'libs/algolia/types'
 
 export const buildVenuesQueryOptions = (
   params: VenuesModuleParameters,

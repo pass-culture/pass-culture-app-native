@@ -1,5 +1,5 @@
 import { VenueTypeCodeKey } from 'api/gen'
-import { AlgoliaVenue } from 'libs/algolia'
+import { AlgoliaVenue } from 'libs/algolia/types'
 
 export const mockAlgoliaVenues: AlgoliaVenue[] = [
   {

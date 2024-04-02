@@ -1,11 +1,11 @@
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { Venue } from 'features/venue/types'
-import { LocationMode } from 'libs/algolia'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import {
   buildSearchVenuePosition,
   convertKmToMeters,
 } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
+import { LocationMode } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'

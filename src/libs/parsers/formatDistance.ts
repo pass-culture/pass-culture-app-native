@@ -1,4 +1,4 @@
-import { Geoloc } from 'libs/algolia'
+import { Geoloc } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 
 export const EARTH_RADIUS = 6_378_137

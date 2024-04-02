@@ -1,5 +1,5 @@
-import { LocationMode } from 'libs/algolia'
 import { buildLocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
+import { LocationMode } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 
 describe('buildLocationParameter', () => {

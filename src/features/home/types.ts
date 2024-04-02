@@ -1,8 +1,8 @@
 import { Animated } from 'react-native'
 
 import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
-import { SearchQueryParameters, VenueHit } from 'libs/algolia'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
+import { SearchQueryParameters, VenueHit } from 'libs/algolia/types'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Offer } from 'shared/offer/types'

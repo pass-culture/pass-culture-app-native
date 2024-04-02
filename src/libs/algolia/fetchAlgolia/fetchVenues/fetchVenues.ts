@@ -1,10 +1,10 @@
 import { Venue } from 'features/venue/types'
-import { AlgoliaVenue, FetchVenuesParameters } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { buildFetchVenuesQueryParameters } from 'libs/algolia/fetchAlgolia/fetchVenues/buildFetchVenuesQueryParameters'
 import { adaptGenericAlgoliaTypes } from 'libs/algolia/fetchAlgolia/helpers/adaptGenericAlgoliaTypes'
+import { AlgoliaVenue, FetchVenuesParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 
 export const fetchVenues = async ({

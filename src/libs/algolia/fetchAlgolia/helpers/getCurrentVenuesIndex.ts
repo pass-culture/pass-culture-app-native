@@ -1,4 +1,4 @@
-import { LocationMode } from 'libs/algolia'
+import { LocationMode } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { Position } from 'libs/location'
 
