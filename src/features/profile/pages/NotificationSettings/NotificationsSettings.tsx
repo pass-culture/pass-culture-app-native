@@ -20,7 +20,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
 import { Spacer, Typo } from 'ui/theme'
@@ -61,12 +61,14 @@ export const NotificationsSettings = () => {
     () => {
       showSuccessSnackBar({
         message: 'Tes modifications ont été enregistrées\u00a0!',
+        timeout: SNACK_BAR_TIME_OUT,
       })
       analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
     },
     () => {
       showErrorSnackBar({
         message: 'Une erreur est survenue',
+        timeout: SNACK_BAR_TIME_OUT,
       })
       dispatch({ type: 'reset', initialState })
     }
