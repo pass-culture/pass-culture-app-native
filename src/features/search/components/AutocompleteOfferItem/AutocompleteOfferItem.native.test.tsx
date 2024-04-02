@@ -22,7 +22,6 @@ import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render, screen } from 'tests/utils'
 
-// @ts-expect-error: because of noUncheckedIndexedAccess
 const venue: Venue = mockedSuggestedVenues[0]
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)

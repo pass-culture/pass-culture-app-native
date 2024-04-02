@@ -14,7 +14,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
-// @ts-expect-error: because of noUncheckedIndexedAccess
 const venue: Venue = mockedSuggestedVenues[0]
 
 const mockSearchState: SearchState = {
