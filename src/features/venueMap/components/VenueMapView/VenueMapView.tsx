@@ -27,6 +27,8 @@ type Props = {
 
 const PREVIEW_HEIGHT_ESTIMATION = 114
 
+const PIN_MAX_Z_INDEX = 10_000
+
 export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'VenueMap'>>()
@@ -129,6 +131,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
             image={{
               uri: venue.venueId === selectedVenue?.venueId ? 'map_pin_selected' : 'map_pin',
             }}
+            zIndex={venue.venueId === selectedVenue?.venueId ? PIN_MAX_Z_INDEX : undefined}
           />
         ))}
       </StyledMapView>
