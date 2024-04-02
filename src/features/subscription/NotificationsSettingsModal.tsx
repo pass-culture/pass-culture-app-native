@@ -100,7 +100,11 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
 
         <ButtonPrimary
           wording="Valider"
-          disabled={!settings.allowEmails && !settings.allowPush}
+          disabled={
+            Platform.OS !== 'web'
+              ? !settings.allowEmails && !settings.allowPush
+              : !settings.allowEmails
+          }
           onPress={() => {
             dismissModal()
             onPressSaveChanges(settings)

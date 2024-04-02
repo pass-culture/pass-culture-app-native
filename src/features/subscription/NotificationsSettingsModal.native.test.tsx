@@ -24,7 +24,7 @@ describe('<NotificationsSettingsModal />', () => {
   it('should dismiss modal on press rightIconButton', () => {
     renderModal(true)
 
-    const dismissModalButton = screen.getByTestId('Ne pas s’abonner')
+    const dismissModalButton = screen.getByTestId('rightIcon')
 
     fireEvent.press(dismissModalButton)
 
@@ -44,6 +44,9 @@ describe('<NotificationsSettingsModal />', () => {
   it('should dismiss modal when saving changes', async () => {
     renderModal(true)
 
+    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleSwitch)
+
     await act(async () => {
       fireEvent.press(screen.getByText('Valider'))
     })
@@ -54,11 +57,14 @@ describe('<NotificationsSettingsModal />', () => {
   it('should call onPressSaveChanges when saving changes', async () => {
     renderModal(true)
 
+    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleSwitch)
+
     await act(async () => {
       fireEvent.press(screen.getByText('Valider'))
     })
 
-    expect(mockOnPressSaveChanges).toHaveBeenCalledWith({ allowEmails: false, allowPush: false })
+    expect(mockOnPressSaveChanges).toHaveBeenCalledWith({ allowEmails: true, allowPush: false })
   })
 
   it('should call onPressSaveChanges with allowEmails true when saving changes', async () => {
@@ -91,6 +97,12 @@ describe('<NotificationsSettingsModal />', () => {
     renderModal(true)
 
     expect(screen.getByText(/Cinéma/)).toBeTruthy()
+  })
+
+  it('button "Valider" should be disabled when no switch is toggled', async () => {
+    renderModal(true)
+
+    expect(screen.getByText('Valider')).toBeDisabled()
   })
 })
 

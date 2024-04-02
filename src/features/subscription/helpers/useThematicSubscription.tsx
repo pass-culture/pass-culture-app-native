@@ -23,9 +23,14 @@ export const useThematicSubscription = ({
 } => {
   const { pushPermission } = usePushPermission()
   const isPushPermissionGranted = pushPermission === 'granted'
+
   const isAtLeastOneNotificationTypeActivated =
-    (isPushPermissionGranted && user?.subscriptions.marketingPush) ||
-    user?.subscriptions.marketingEmail
+    (Platform.OS === 'web' && !user?.subscriptions.marketingEmail) ||
+    (Platform.OS !== 'web' &&
+      !(
+        (isPushPermissionGranted && user?.subscriptions.marketingPush) ||
+        user?.subscriptions.marketingEmail
+      ))
 
   const initialState = {
     allowEmails: user?.subscriptions.marketingEmail,
@@ -38,10 +43,7 @@ export const useThematicSubscription = ({
 
   const isThemeSubscribed = user?.subscriptions?.subscribedThemes?.includes(theme) ?? false
 
-  const isSubscribeButtonActive =
-    Platform.OS === 'web'
-      ? user?.subscriptions.marketingEmail && isThemeSubscribed
-      : isAtLeastOneNotificationTypeActivated && isThemeSubscribed
+  const isSubscribeButtonActive = isAtLeastOneNotificationTypeActivated && isThemeSubscribed
 
   const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
     () => {
@@ -58,8 +60,8 @@ export const useThematicSubscription = ({
     } else {
       updateProfile({
         subscriptions: {
-          marketingEmail: user.subscriptions.marketingEmail,
-          marketingPush: user.subscriptions.marketingPush,
+          marketingEmail: user?.subscriptions.marketingEmail || false,
+          marketingPush: user?.subscriptions.marketingPush || false,
           subscribedThemes: isThemeSubscribed
             ? state.themePreferences.filter((t) => t !== theme)
             : [...state.themePreferences, theme],
