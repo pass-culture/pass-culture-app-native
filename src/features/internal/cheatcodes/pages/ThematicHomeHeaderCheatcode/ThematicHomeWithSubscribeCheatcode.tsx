@@ -16,7 +16,7 @@ import { getSpacing } from 'ui/theme'
 
 export const ThematicHomeWithSubscribeCheatcode: FunctionComponent = () => {
   const { headerTransition, onScroll } = useOpacityTransition()
-  const { user } = useAuthContext()
+  const { user, isLoggedIn } = useAuthContext()
 
   const theme = SubscriptionTheme.CINEMA
 
@@ -44,21 +44,23 @@ export const ThematicHomeWithSubscribeCheatcode: FunctionComponent = () => {
           subtitle="Un sous-titre"
           title={mapSubscriptionThemeToName[theme]}
         />
-        <SubscribeButtonContainer>
-          <SubscribeButton
-            active={isSubscribeButtonActive || false}
-            onPress={() => {
-              if (
-                (Platform.OS === 'web' && !user?.subscriptions.marketingEmail) ||
-                (Platform.OS !== 'web' && !isAtLeastOneNotificationTypeActivated)
-              ) {
-                showModal()
-              } else {
-                updateSubscription()
-              }
-            }}
-          />
-        </SubscribeButtonContainer>
+        {isLoggedIn ? (
+          <SubscribeButtonContainer>
+            <SubscribeButton
+              active={isSubscribeButtonActive || false}
+              onPress={() => {
+                if (
+                  (Platform.OS === 'web' && !user?.subscriptions.marketingEmail) ||
+                  (Platform.OS !== 'web' && !isAtLeastOneNotificationTypeActivated)
+                ) {
+                  showModal()
+                } else {
+                  updateSubscription()
+                }
+              }}
+            />
+          </SubscribeButtonContainer>
+        ) : null}
         <BodyPlaceholder />
       </ScrollView>
       <NotificationsSettingsModal
