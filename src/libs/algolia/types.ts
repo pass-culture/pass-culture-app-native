@@ -1,4 +1,5 @@
 import { SearchOptions } from '@algolia/client-search'
+import { Hit } from 'instantsearch.js'
 
 import {
   GenreType,
@@ -8,18 +9,82 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
   VenueResponse,
+  SubcategoryIdEnum,
 } from 'api/gen'
 import { GTLLevel } from 'features/gtlPlaylist/types'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { AlgoliaHit } from 'libs/algolia'
-import { Geoloc as AlgoliaGeoloc, HighlightResult } from 'libs/algolia/algolia.d'
+import { AlgoliaHit as BaseAlgoliaHit } from 'libs/algolia'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Range } from 'libs/typesUtils/typeHelpers'
+
+interface AlgoliaGeoloc {
+  lat?: number | null
+  lng?: number | null
+}
+
+export interface AlgoliaHit {
+  offer: {
+    dates?: number[]
+    isDigital?: boolean
+    isDuo?: boolean
+    isEducational?: boolean
+    name?: string
+    prices?: number[]
+    subcategoryId?: SubcategoryIdEnum
+    thumbUrl?: string
+    searchGroupName?: SearchGroupNameEnumv2
+  }
+  _geoloc: Geoloc
+  objectID: string
+  venue: {
+    departmentCode?: string
+    id?: number
+    name?: string
+    publicName?: string
+    address?: string
+    postalCode?: string
+    city?: string
+  }
+}
+
+interface AlgoliaFacetsAnalyticsKey {
+  attribute: string
+  operator: string
+  count: number
+}
+
+interface AlgoliaFacetsAnalyticsNativeCategory extends AlgoliaFacetsAnalyticsKey {
+  value: NativeCategoryIdEnumv2
+}
+
+interface AlgoliaFacetsAnalyticsCategory extends AlgoliaFacetsAnalyticsKey {
+  value: SearchGroupNameEnumv2
+}
+
+interface AlgoliaFacetsAnalytics {
+  ['offer.nativeCategoryId']: AlgoliaFacetsAnalyticsNativeCategory[]
+  ['offer.searchGroupNamev2']: AlgoliaFacetsAnalyticsCategory[]
+}
+
+interface AlgoliaFacets {
+  analytics: AlgoliaFacetsAnalytics
+}
+
+interface AlgoliaIndexInfos {
+  exact_nb_hits: number
+  facets: AlgoliaFacets
+}
+
+export type AlgoliaSuggestionHit = Hit<{
+  // @ts-expect-error: this error is was hidden in a .d.ts file for a while and didn't cause any problem for years
+  query: string
+  [key: string]: AlgoliaIndexInfos
+}>
 
 interface SelectedDate {
   option: DATE_FILTER_OPTIONS
@@ -73,7 +138,7 @@ export type SearchQueryParameters = {
 export const transformHit = transformOfferHit
 
 // An incomplete search hit may not have a subcategoryId (for retrocompatibility)
-export type IncompleteSearchHit = AlgoliaHit
+export type IncompleteSearchHit = BaseAlgoliaHit
 
 export type Geoloc = AlgoliaGeoloc
 
@@ -118,6 +183,13 @@ export interface OfferModuleQuery {
     facetFilters?: FiltersArray
     hitsPerPage?: number
   }
+}
+
+interface HighlightResult {
+  fullyHighlighted: boolean
+  matchLevel: string
+  matchedWords: string[]
+  value: string
 }
 
 interface AlgoliaVenueHighlightResult {
