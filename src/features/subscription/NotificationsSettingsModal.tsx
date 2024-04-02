@@ -1,13 +1,16 @@
 import React, { FunctionComponent, useState } from 'react'
-import { Platform } from 'react-native'
+import { Linking, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
+import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { useModal } from 'ui/components/modals/useModal'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -34,6 +37,28 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
   onPressSaveChanges,
 }) => {
   const [settings, setSettings] = useState({ allowEmails: false, allowPush: false })
+
+  const {
+    visible: isPushModalVisible,
+    showModal: showPushModal,
+    hideModal: hidePushModal,
+  } = useModal(false)
+
+  const { pushPermission } = usePushPermission()
+  const isPushPermissionGranted = pushPermission === 'granted'
+
+  const togglePush = () => {
+    if (isPushPermissionGranted) {
+      setSettings((prevState) => ({ ...prevState, allowPush: !prevState.allowPush }))
+    } else {
+      showPushModal()
+    }
+  }
+
+  const onRequestNotificationPermissionFromModal = () => {
+    hidePushModal()
+    Linking.openSettings()
+  }
 
   return (
     <AppModal
@@ -63,9 +88,7 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
               title="Autoriser les notifications"
               icon={StyledBellFilled}
               active={settings.allowPush}
-              toggle={() =>
-                setSettings((prevState) => ({ ...prevState, allowPush: !prevState.allowPush }))
-              }
+              toggle={togglePush}
             />
           </React.Fragment>
         )}
@@ -90,6 +113,11 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
           onPress={dismissModal}
         />
       </ModalContent>
+      <PushNotificationsModal
+        visible={isPushModalVisible}
+        onRequestPermission={onRequestNotificationPermissionFromModal}
+        onDismiss={hidePushModal}
+      />
     </AppModal>
   )
 }
