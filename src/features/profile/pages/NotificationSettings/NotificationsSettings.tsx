@@ -50,9 +50,9 @@ export const NotificationsSettings = () => {
   const hasUserChanged = !!user?.subscriptions && hasUserChangedParameters(user, state)
 
   const updatePushPermissionFromSettings = (permission: PermissionStatus) => {
-    if (permission === 'granted' && !state.allowPush) {
-      dispatch({ type: 'push' })
-    } else if (permission !== 'granted' && state.allowPush) dispatch({ type: 'push' })
+    if (permission === 'granted' && user?.subscriptions.marketingPush) {
+      dispatch({ type: 'push', state: true })
+    } else if (permission !== 'granted') dispatch({ type: 'push', state: false })
   }
 
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
@@ -102,7 +102,7 @@ export const NotificationsSettings = () => {
 
   const togglePush = () => {
     if (pushPermission === 'granted') {
-      dispatch({ type: 'push' })
+      dispatch({ type: 'push', state: 'toggle' })
     } else {
       showPushModal()
     }
@@ -234,7 +234,8 @@ const Container = styled.View(({ theme }) => ({
 }))
 
 type ToggleActions =
-  | { type: 'email' | 'push' | 'allTheme' }
+  | { type: 'email' | 'allTheme' }
+  | { type: 'push'; state: 'toggle' | boolean }
   | { type: 'toggleTheme'; theme: SubscriptionTheme }
   | { type: 'reset'; initialState: NotificationsSettingsState }
 
@@ -246,10 +247,12 @@ const settingsReducer = (state: NotificationsSettingsState, action: ToggleAction
         allowEmails: !state.allowEmails,
       }
     case 'push':
-      return {
-        ...state,
-        allowPush: !state.allowPush,
-      }
+      if (action.state === 'toggle') return { ...state, allowPush: !state.allowPush }
+      else
+        return {
+          ...state,
+          allowPush: action.state,
+        }
     case 'allTheme':
       return {
         ...state,
