@@ -74,7 +74,8 @@ export const NotificationsSettings = () => {
     }
   )
 
-  const areNotificationsEnabled = state.allowEmails || state.allowPush
+  const areNotificationsEnabled =
+    Platform.OS === 'web' ? state.allowEmails : state.allowEmails || state.allowPush
 
   const areThemeTogglesDisabled = !areNotificationsEnabled || !isLoggedIn
 
