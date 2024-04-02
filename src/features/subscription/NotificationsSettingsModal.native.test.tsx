@@ -9,6 +9,12 @@ const mockDismissModal = jest.fn()
 const mockOnPressSaveChanges = jest.fn()
 
 describe('<NotificationsSettingsModal />', () => {
+  it('should render correctly', () => {
+    renderModal(true)
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should dismiss modal on press rightIconButton', () => {
     renderModal(true)
 
