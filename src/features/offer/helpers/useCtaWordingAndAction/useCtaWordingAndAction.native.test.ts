@@ -83,6 +83,9 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: true,
         bottomBannerText:
           'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
+        movieScreeningUserData: {
+          isUserEligible: false,
+        },
         wording: 'Réserver l’offre',
       })
     })
@@ -679,6 +682,9 @@ describe('getCtaWordingAndAction', () => {
             'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
           wording: undefined,
           isDisabled: true,
+          movieScreeningUserData: {
+            isUserEligible: false,
+          },
         })
       })
 
@@ -696,6 +702,9 @@ describe('getCtaWordingAndAction', () => {
         expect(result).toEqual({
           bottomBannerText: 'Tu ne peux pas réserver cette offre car ton crédit a expiré.',
           wording: undefined,
+          movieScreeningUserData: {
+            isUserCreditExpired: true,
+          },
         })
       })
 
@@ -712,6 +721,10 @@ describe('getCtaWordingAndAction', () => {
 
         expect(result).toEqual({
           bottomBannerText: 'Tu ne peux pas réserver cette offre car ton crédit est insuffisant.',
+          movieScreeningUserData: {
+            hasEnoughCredit: false,
+            isUserLoggedIn: true,
+          },
           wording: undefined,
           isDisabled: true,
         })
@@ -733,6 +746,10 @@ describe('getCtaWordingAndAction', () => {
           wording: 'Voir ma réservation',
           bottomBannerText: 'Tu ne peux réserver ce film qu’une seule fois.',
           isDisabled: false,
+          movieScreeningUserData: {
+            bookings: undefined,
+            hasBookedOffer: true,
+          },
           navigateTo: {
             fromRef: true,
             params: {

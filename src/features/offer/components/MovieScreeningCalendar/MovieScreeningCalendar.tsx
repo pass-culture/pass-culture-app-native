@@ -21,22 +21,19 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
   const { movieScreeningDates, selectedDate, setSelectedDate, selectedScreeningStock } =
     useMovieScreeningCalendar(stocks)
 
-  const { bookingData, selectedDateScreenings } = useSelectedDateScreening(
-    selectedScreeningStock,
-    offerId
-  )
+  const { bookingData, selectedDateScreenings } = useSelectedDateScreening(selectedScreeningStock)
 
-  const { onPress: onPressOfferCTA, CTAOfferModal } = useOfferCTAButton(
-    offer,
-    subcategory,
-    bookingData
-  )
+  const {
+    onPress: onPressOfferCTA,
+    CTAOfferModal,
+    movieScreeningUserData,
+  } = useOfferCTAButton(offer, subcategory, bookingData)
 
   const flatListRef = useRef<FlatList | null>(null)
 
   const eventCardData = useMemo(
-    () => selectedDateScreenings(offerVenueId, onPressOfferCTA),
-    [offerVenueId, onPressOfferCTA, selectedDateScreenings]
+    () => selectedDateScreenings(offerVenueId, onPressOfferCTA, movieScreeningUserData),
+    [offerVenueId, onPressOfferCTA, selectedDateScreenings, movieScreeningUserData]
   )
 
   // Reset scroll and first selected date when user selects a new offer venue
