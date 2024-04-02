@@ -151,7 +151,7 @@ export const NotificationsSettings = () => {
         <Form.Flex>
           <SectionWithSwitch
             title="Autoriser l’envoi d’e-mails"
-            active={state.allowEmails}
+            active={isLoggedIn && state.allowEmails}
             toggle={() => dispatch({ type: 'email' })}
             disabled={!isLoggedIn}
           />
@@ -164,7 +164,7 @@ export const NotificationsSettings = () => {
           {Platform.OS !== 'web' && (
             <SectionWithSwitch
               title="Autoriser les notifications"
-              active={state.allowPush}
+              active={isLoggedIn && state.allowPush}
               toggle={togglePush}
               disabled={!isLoggedIn}
             />
