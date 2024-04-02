@@ -23,7 +23,7 @@ import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type NotificationsSettingsState = {
@@ -152,12 +152,14 @@ export const NotificationsSettings = () => {
         </Typo.Body>
         <Spacer.Column numberOfSpaces={2} />
         <Form.Flex>
-          <SectionWithSwitch
-            title="Autoriser l’envoi d’e-mails"
-            active={isLoggedIn && state.allowEmails}
-            toggle={() => dispatch({ type: 'email' })}
-            disabled={!isLoggedIn}
-          />
+          <SectionWithSwitchContainer>
+            <SectionWithSwitch
+              title="Autoriser l’envoi d’e-mails"
+              active={isLoggedIn && state.allowEmails}
+              toggle={() => dispatch({ type: 'email' })}
+              disabled={!isLoggedIn}
+            />
+          </SectionWithSwitchContainer>
           {!state.allowEmails && isLoggedIn ? (
             <Typo.Caption>
               Tu continueras à recevoir par e-mail des informations essentielles concernant ton
@@ -165,12 +167,14 @@ export const NotificationsSettings = () => {
             </Typo.Caption>
           ) : null}
           {Platform.OS !== 'web' && (
-            <SectionWithSwitch
-              title="Autoriser les notifications"
-              active={isLoggedIn && state.allowPush}
-              toggle={togglePush}
-              disabled={!isLoggedIn}
-            />
+            <SectionWithSwitchContainer>
+              <SectionWithSwitch
+                title="Autoriser les notifications"
+                active={isLoggedIn && state.allowPush}
+                toggle={togglePush}
+                disabled={!isLoggedIn}
+              />
+            </SectionWithSwitchContainer>
           )}
           <Spacer.Column numberOfSpaces={4} />
           <Separator.Horizontal />
@@ -186,23 +190,26 @@ export const NotificationsSettings = () => {
             </React.Fragment>
           )}
           <Spacer.Column numberOfSpaces={6} />
-          <SectionWithSwitch
-            title="Suivre tous les thèmes"
-            active={
-              areNotificationsEnabled && state.themePreferences.length === TOTAL_NUMBER_OF_THEME
-            }
-            toggle={() => dispatch({ type: 'allTheme' })}
-            disabled={areThemeTogglesDisabled}
-          />
+          <SectionWithSwitchContainer>
+            <SectionWithSwitch
+              title="Suivre tous les thèmes"
+              active={
+                areNotificationsEnabled && state.themePreferences.length === TOTAL_NUMBER_OF_THEME
+              }
+              toggle={() => dispatch({ type: 'allTheme' })}
+              disabled={areThemeTogglesDisabled}
+            />
+          </SectionWithSwitchContainer>
           <Spacer.Column numberOfSpaces={2} />
           {Object.values(SubscriptionTheme).map((theme) => (
-            <SectionWithSwitch
-              key={theme}
-              title={mapSubscriptionThemeToName[theme]}
-              active={isThemeToggled(theme)}
-              disabled={areThemeTogglesDisabled}
-              toggle={() => dispatch({ type: 'toggleTheme', theme })}
-            />
+            <SectionWithSwitchContainer key={theme}>
+              <SectionWithSwitch
+                title={mapSubscriptionThemeToName[theme]}
+                active={isThemeToggled(theme)}
+                disabled={areThemeTogglesDisabled}
+                toggle={() => dispatch({ type: 'toggleTheme', theme })}
+              />
+            </SectionWithSwitchContainer>
           ))}
           <Spacer.Column numberOfSpaces={2} />
           <ButtonPrimary
@@ -226,6 +233,10 @@ export const NotificationsSettings = () => {
     </SecondaryPageWithBlurHeader>
   )
 }
+
+const SectionWithSwitchContainer = styled.View({
+  paddingVertical: getSpacing(4),
+})
 
 const Container = styled.View(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,

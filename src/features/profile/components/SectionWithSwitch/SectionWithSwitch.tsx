@@ -6,7 +6,7 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   accessibilityDescribedBy?: string
@@ -73,7 +73,6 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
 }
 
 const Container = styled.View<{ toggleLabel?: boolean }>(({ theme, toggleLabel }) => ({
-  paddingVertical: getSpacing(4),
   flexDirection: theme.isMobileViewport || toggleLabel ? 'row' : 'row-reverse',
   justifyContent: theme.isMobileViewport || toggleLabel ? 'flex-start' : 'flex-end',
   alignItems: 'center',

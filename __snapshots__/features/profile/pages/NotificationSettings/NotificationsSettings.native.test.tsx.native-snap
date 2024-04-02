@@ -275,78 +275,76 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Autoriser l’envoi d’e-mails
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Autoriser l’envoi d’e-mails
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -357,93 +355,104 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": false,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Autoriser l’envoi d’e-mails"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
-                    <View
-                      collapsable={false}
-                      disabled={false}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "shadowColor": "#161617",
-                          "shadowOffset": {
-                            "height": 2,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 2.5,
-                          "width": 28,
-                        }
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
-                    />
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Autoriser l’envoi d’e-mails"
+                  >
+                    <View
+                      active={false}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        disabled={false}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "shadowColor": "#161617",
+                            "shadowOffset": {
+                              "height": 2,
+                              "width": 0,
+                            },
+                            "shadowOpacity": 0.2,
+                            "shadowRadius": 2.5,
+                            "width": 28,
+                          }
+                        }
+                      />
+                    </View>
                   </View>
                 </View>
               </View>
@@ -467,78 +476,76 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Autoriser les notifications
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Autoriser les notifications
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -549,93 +556,104 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": false,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Autoriser les notifications"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
-                    <View
-                      collapsable={false}
-                      disabled={false}
-                      style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "shadowColor": "#161617",
-                          "shadowOffset": {
-                            "height": 2,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 2.5,
-                          "width": 28,
-                        }
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
                       }
-                    />
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Autoriser les notifications"
+                  >
+                    <View
+                      active={false}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        disabled={false}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "shadowColor": "#161617",
+                            "shadowOffset": {
+                              "height": 2,
+                              "width": 0,
+                            },
+                            "shadowOpacity": 0.2,
+                            "shadowRadius": 2.5,
+                            "width": 28,
+                          }
+                        }
+                      />
+                    </View>
                   </View>
                 </View>
               </View>
@@ -774,78 +792,76 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Suivre tous les thèmes
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Suivre tous les thèmes
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -856,94 +872,105 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Suivre tous les thèmes"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Suivre tous les thèmes"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -965,78 +992,76 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Cinéma
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Cinéma
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -1047,94 +1072,105 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Cinéma"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Cinéma"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -1146,78 +1182,76 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Lecture
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Lecture
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -1228,94 +1262,105 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Lecture"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Lecture"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -1327,78 +1372,76 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Musique
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Musique
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -1409,94 +1452,105 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Musique"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Musique"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -1508,78 +1562,76 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Spectacles
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Spectacles
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -1590,94 +1642,105 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Spectacles"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Spectacles"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -1689,78 +1752,76 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Visites et sorties
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Visites et sorties
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -1771,94 +1832,105 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Visites et sorties"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Visites et sorties"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -1870,78 +1942,76 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Activités créatives
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Activités créatives
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -1952,94 +2022,105 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Activités créatives"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Activités créatives"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -2557,78 +2638,76 @@ exports[`NotificationSettings should render correctly when user is not logged in
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Autoriser l’envoi d’e-mails
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Autoriser l’envoi d’e-mails
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -2639,94 +2718,105 @@ exports[`NotificationSettings should render correctly when user is not logged in
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Autoriser l’envoi d’e-mails"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Autoriser l’envoi d’e-mails"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -2738,78 +2828,76 @@ exports[`NotificationSettings should render correctly when user is not logged in
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Autoriser les notifications
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Autoriser les notifications
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -2820,94 +2908,105 @@ exports[`NotificationSettings should render correctly when user is not logged in
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Autoriser les notifications"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Autoriser les notifications"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -2974,78 +3073,76 @@ exports[`NotificationSettings should render correctly when user is not logged in
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Suivre tous les thèmes
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Suivre tous les thèmes
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -3056,94 +3153,105 @@ exports[`NotificationSettings should render correctly when user is not logged in
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Suivre tous les thèmes"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Suivre tous les thèmes"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -3165,78 +3273,76 @@ exports[`NotificationSettings should render correctly when user is not logged in
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Cinéma
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Cinéma
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -3247,94 +3353,105 @@ exports[`NotificationSettings should render correctly when user is not logged in
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Cinéma"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Cinéma"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -3346,78 +3463,76 @@ exports[`NotificationSettings should render correctly when user is not logged in
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Lecture
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Lecture
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -3428,94 +3543,105 @@ exports[`NotificationSettings should render correctly when user is not logged in
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Lecture"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Lecture"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -3527,78 +3653,76 @@ exports[`NotificationSettings should render correctly when user is not logged in
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Musique
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Musique
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -3609,94 +3733,105 @@ exports[`NotificationSettings should render correctly when user is not logged in
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Musique"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Musique"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -3708,78 +3843,76 @@ exports[`NotificationSettings should render correctly when user is not logged in
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Spectacles
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Spectacles
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -3790,94 +3923,105 @@ exports[`NotificationSettings should render correctly when user is not logged in
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Spectacles"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Spectacles"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -3889,78 +4033,76 @@ exports[`NotificationSettings should render correctly when user is not logged in
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Visites et sorties
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Visites et sorties
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -3971,94 +4113,105 @@ exports[`NotificationSettings should render correctly when user is not logged in
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Visites et sorties"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Visites et sorties"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -4070,78 +4223,76 @@ exports[`NotificationSettings should render correctly when user is not logged in
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
                   "paddingVertical": 16,
                 },
               ]
             }
-            toggleLabel={false}
           >
             <View
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
                   },
                 ]
               }
               toggleLabel={false}
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "center",
+                      "flexBasis": 0,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
+                toggleLabel={false}
               >
                 <Text
+                  htmlFor="testUuidV4"
                   style={
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
+                        "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  Activités créatives
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Activités créatives
+                  </Text>
                 </Text>
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
@@ -4152,94 +4303,105 @@ exports[`NotificationSettings should render correctly when user is not logged in
                   ]
                 }
               >
-                <Text
-                  accessibilityHidden={true}
+                <View
                   style={
                     [
                       {
-                        "display": "none",
+                        "alignItems": "center",
+                        "flexDirection": "row",
                       },
                     ]
                   }
                 >
-                  Case à cocher - 
-                  non cochée
-                </Text>
-                <View
-                  accessibilityRole="checkbox"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": false,
-                      "disabled": true,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  collapsable={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
-                  }
-                  testID="Interrupteur Activités créatives"
-                >
-                  <View
-                    active={false}
+                  <Text
+                    accessibilityHidden={true}
                     style={
                       [
                         {
-                          "backgroundColor": "#90949D",
-                          "borderRadius": 16,
-                          "height": 32,
-                          "justifyContent": "center",
-                          "width": 56,
+                          "display": "none",
                         },
                       ]
                     }
                   >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": true,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur Activités créatives"
+                  >
                     <View
-                      collapsable={false}
-                      disabled={true}
+                      active={false}
                       style={
-                        {
-                          "alignItems": "center",
-                          "aspectRatio": 1,
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 28,
-                          "height": 28,
-                          "justifyContent": "center",
-                          "marginLeft": 2,
-                          "width": 28,
-                        }
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
                       }
                     >
                       <View
-                        accessibilityLabel="Désactivé"
-                        height={16}
-                        width={16}
+                        collapsable={false}
+                        disabled={true}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "width": 28,
+                          }
+                        }
                       >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
+                        <View
+                          accessibilityLabel="Désactivé"
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>

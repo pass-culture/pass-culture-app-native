@@ -12,7 +12,7 @@ import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -38,13 +38,15 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
   return (
     <AppModal
       visible={visible}
-      title={`Suivre le thème ${mapSubscriptionThemeToName[theme]}`}
+      title={`S’abonner au thème “${mapSubscriptionThemeToName[theme]}”`}
       rightIconAccessibilityLabel="Ne pas s’abonner"
       rightIcon={Close}
       onRightIconPress={dismissModal}>
       <ModalContent>
         <Typo.Body>Pour recevoir toute l’actu de ce thème, tu dois, au choix&nbsp;:</Typo.Body>
-        <Typo.Caption>Tu pourras gérer tes alertes depuis ton profil.</Typo.Caption>
+
+        <Spacer.Column numberOfSpaces={6} />
+
         <SectionWithSwitch
           title="Autoriser l’envoi d’e-mails"
           icon={EmailFilled}
@@ -54,15 +56,25 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
           }
         />
         {Platform.OS !== 'web' && (
-          <SectionWithSwitch
-            title="Autoriser les notifications"
-            icon={StyledBellFilled}
-            active={settings.allowPush}
-            toggle={() =>
-              setSettings((prevState) => ({ ...prevState, allowPush: !prevState.allowPush }))
-            }
-          />
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={6} />
+
+            <SectionWithSwitch
+              title="Autoriser les notifications"
+              icon={StyledBellFilled}
+              active={settings.allowPush}
+              toggle={() =>
+                setSettings((prevState) => ({ ...prevState, allowPush: !prevState.allowPush }))
+              }
+            />
+          </React.Fragment>
         )}
+        <Spacer.Column numberOfSpaces={6} />
+
+        <StyledCaption>Tu pourras gérer tes alertes depuis ton profil.</StyledCaption>
+
+        <Spacer.Column numberOfSpaces={6} />
+
         <ButtonPrimary
           wording="Valider"
           onPress={() => {
@@ -70,6 +82,8 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
             onPressSaveChanges(settings)
           }}
         />
+        <Spacer.Column numberOfSpaces={6} />
+
         <ButtonTertiaryBlack
           wording="Tout refuser et ne pas recevoir d’actus"
           icon={Invalidate}
@@ -83,6 +97,10 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
 const ModalContent = styled.View({
   width: '100%',
 })
+
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const StyledBellFilled = styled(BellFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
