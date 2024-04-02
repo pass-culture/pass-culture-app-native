@@ -8,9 +8,6 @@
 ./src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:60
 ./src/api/useSearchVenuesOffer/useSearchVenueOffers.ts:67
 ./src/features/accessibility/components/AccessibilityFiltersModal.tsx:69
-./src/features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.native.test.tsx:46
-./src/features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.native.test.tsx:48
-./src/features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx:37
 ./src/features/auth/pages/signup/SignupForm.tsx:175
 ./src/features/auth/pages/signup/SignupForm.tsx:43
 ./src/features/auth/pages/signup/SignupForm.tsx:48
@@ -325,14 +322,8 @@
 ./src/features/identityCheck/api/useProfileInfo.ts:21
 ./src/features/identityCheck/pages/helpers/parseUrlParams.ts:8
 ./src/features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep.ts:41
-./src/features/identityCheck/pages/identification/errors/eduConnect/helpers/computePrimaryButtonToDisplay.native.test.tsx:41
 ./src/features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web.test.tsx:18
 ./src/features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web.test.tsx:28
-./src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.native.test.tsx:21
-./src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.native.test.tsx:23
-./src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.tsx:27
-./src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.web.test.tsx:22
-./src/features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts.web.test.tsx:24
 ./src/features/identityCheck/pages/profile/SetAddress.native.test.tsx:110
 ./src/features/identityCheck/pages/profile/SetAddress.native.test.tsx:112
 ./src/features/identityCheck/pages/profile/SetAddress.native.test.tsx:120
@@ -401,12 +392,7 @@
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:384
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:868
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts:201
-./src/features/profile/components/Buttons/ContactSupportButton/ContactSupportButton.native.test.tsx:18
-./src/features/profile/components/Buttons/ContactSupportButton/ContactSupportButton.native.test.tsx:20
-./src/features/profile/components/Buttons/ContactSupportButton/ContactSupportButton.tsx:14
 ./src/features/profile/components/CreditInfo/CreditProgressBar.tsx:26
-./src/features/profile/pages/Accessibility/AccessibilityDeclaration.tsx:360
-./src/features/profile/pages/LegalNotices/LegalNotices.tsx:51
 ./src/features/search/api/useSearchResults/useSearchResults.ts:83
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:118
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:121

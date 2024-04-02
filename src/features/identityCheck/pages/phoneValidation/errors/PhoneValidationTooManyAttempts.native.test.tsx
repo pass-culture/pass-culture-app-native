@@ -18,9 +18,7 @@ describe('Contact support button', () => {
 
     await waitFor(() => {
       expect(openUrl).toHaveBeenCalledWith(
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         contactSupport.forPhoneNumberConfirmation.url,
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         contactSupport.forPhoneNumberConfirmation.params,
         true
       )

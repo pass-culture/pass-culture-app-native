@@ -24,7 +24,6 @@ export function PhoneValidationTooManyAttempts() {
           wording="Contacter le support"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
           icon={EmailFilled}
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           externalNav={contactSupport.forPhoneNumberConfirmation}
         />,
         <InternalTouchableLink
