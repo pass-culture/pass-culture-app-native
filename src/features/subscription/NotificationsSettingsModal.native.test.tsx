@@ -5,6 +5,12 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
+jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () => ({
+  usePushPermission: jest.fn(() => ({
+    pushPermission: 'granted',
+  })),
+}))
+
 const mockDismissModal = jest.fn()
 const mockOnPressSaveChanges = jest.fn()
 

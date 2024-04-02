@@ -21,7 +21,7 @@ export const usePushPermission = (
   useAppStateChange(
     async () => {
       const permission = await refreshPermission()
-      updatePushPermissionFromSettings && updatePushPermissionFromSettings(permission)
+      updatePushPermissionFromSettings?.(permission)
     },
     () => undefined
   )
