@@ -49,20 +49,18 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
   }, [flatListRef, offerId, setSelectedDate]) // should be triggered by offerIdChange and not by movieScreeningDates
 
   return (
-    <React.Fragment>
-      <MovieCalendarContainer isDesktopViewport={isDesktopViewport}>
-        <MovieCalendar
-          dates={movieScreeningDates}
-          selectedDate={selectedDate}
-          onTabChange={setSelectedDate}
-          flatListRef={flatListRef}
-        />
-        <Spacer.Column numberOfSpaces={4} />
-        {eventCardData !== undefined && <EventCardList data={eventCardData} />}
-        <Spacer.Column numberOfSpaces={6} />
-        {CTAOfferModal}
-      </MovieCalendarContainer>
-    </React.Fragment>
+    <MovieCalendarContainer isDesktopViewport={isDesktopViewport}>
+      <MovieCalendar
+        dates={movieScreeningDates}
+        selectedDate={selectedDate}
+        onTabChange={setSelectedDate}
+        flatListRef={flatListRef}
+      />
+      <Spacer.Column numberOfSpaces={4} />
+      {eventCardData !== undefined && <EventCardList data={eventCardData} />}
+      <Spacer.Column numberOfSpaces={6} />
+      {CTAOfferModal}
+    </MovieCalendarContainer>
   )
 }
 
