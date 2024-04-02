@@ -228,6 +228,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
           ]
         }
       />
+       
       <BVLinearGradient
         colors={
           [

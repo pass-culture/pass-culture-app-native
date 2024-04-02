@@ -59,8 +59,11 @@ export const MovieCalendar: React.FC<Props> = ({
             <MovieCalendarDay date={date} selectedDate={selectedDate} onTabChange={onTabChange} />
           )}
         />
-        {isDesktopViewport ? <FadeLeft /> : null}
-        {isDesktopViewport ? <FadeRight /> : null}
+        {!!isDesktopViewport && (
+          <React.Fragment>
+            <FadeLeft /> <FadeRight />
+          </React.Fragment>
+        )}
       </View>
       {isDesktopViewport && !isEnd ? (
         <ScrollButtonForNotTouchDevice
@@ -78,26 +81,25 @@ const flatListContainer = {
   paddingHorizontal: getSpacing(6),
 }
 
-const FadeLeft = styled(LinearGradient).attrs({
+const FadeComponent = styled(LinearGradient)`
+  position: absolute;
+  top: 0;
+  bottom: ${getSpacing(1)}px;
+  width: ${getSpacing(20)}px;
+`
+
+const FadeLeft = styled(FadeComponent).attrs({
   colors: ['white', 'transparent'],
   start: { x: 0.2, y: 0.5 },
   end: { x: 1, y: 0.5 },
 })`
-  position: absolute;
-  top: 0;
-  bottom: ${getSpacing(1)}px;
   left: -1px;
-  width: ${getSpacing(20)}px;
 `
 
-const FadeRight = styled(LinearGradient).attrs({
+const FadeRight = styled(FadeComponent).attrs({
   colors: ['transparent', 'white'],
   start: { x: 0, y: 0.5 },
   end: { x: 0.8, y: 0.5 },
 })`
-  position: absolute;
-  top: 0;
-  bottom: ${getSpacing(1)}px;
   right: -1px;
-  width: ${getSpacing(20)}px;
 `
