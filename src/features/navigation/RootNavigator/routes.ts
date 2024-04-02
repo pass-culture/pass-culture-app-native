@@ -471,7 +471,7 @@ export const routes: RootRoute[] = [
     // debug route: in navigation component
     name: 'ThematicHomeWithSubscribeCheatcode',
     component: ThematicHomeWithSubscribeCheatcode,
-    path: 'cheat-category-home-header',
+    path: 'cheat-category-home-header-with-subscribe',
   },
   {
     // debug route: in navigation component
