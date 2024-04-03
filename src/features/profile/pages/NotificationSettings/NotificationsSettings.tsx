@@ -20,7 +20,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
 import { Spacer, Typo } from 'ui/theme'
@@ -50,9 +50,9 @@ export const NotificationsSettings = () => {
   const hasUserChanged = !!user?.subscriptions && hasUserChangedParameters(user, state)
 
   const updatePushPermissionFromSettings = (permission: PermissionStatus) => {
-    if (permission === 'granted' && !state.allowPush) {
-      dispatch({ type: 'push' })
-    } else if (permission !== 'granted' && state.allowPush) dispatch({ type: 'push' })
+    if (permission === 'granted' && user?.subscriptions.marketingPush) {
+      dispatch({ type: 'push', state: true })
+    } else dispatch({ type: 'push', state: false })
   }
 
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
@@ -61,18 +61,21 @@ export const NotificationsSettings = () => {
     () => {
       showSuccessSnackBar({
         message: 'Tes modifications ont été enregistrées\u00a0!',
+        timeout: SNACK_BAR_TIME_OUT,
       })
       analytics.logNotificationToggle(!!state.allowEmails, state.allowPush)
     },
     () => {
       showErrorSnackBar({
         message: 'Une erreur est survenue',
+        timeout: SNACK_BAR_TIME_OUT,
       })
       dispatch({ type: 'reset', initialState })
     }
   )
 
-  const areNotificationsEnabled = state.allowEmails || state.allowPush
+  const areNotificationsEnabled =
+    Platform.OS === 'web' ? state.allowEmails : state.allowEmails || state.allowPush
 
   const areThemeTogglesDisabled = !areNotificationsEnabled || !isLoggedIn
 
@@ -99,7 +102,7 @@ export const NotificationsSettings = () => {
 
   const togglePush = () => {
     if (pushPermission === 'granted') {
-      dispatch({ type: 'push' })
+      dispatch({ type: 'push', state: 'toggle' })
     } else {
       showPushModal()
     }
@@ -151,7 +154,7 @@ export const NotificationsSettings = () => {
         <Form.Flex>
           <SectionWithSwitch
             title="Autoriser l’envoi d’e-mails"
-            active={state.allowEmails}
+            active={isLoggedIn && state.allowEmails}
             toggle={() => dispatch({ type: 'email' })}
             disabled={!isLoggedIn}
           />
@@ -164,7 +167,7 @@ export const NotificationsSettings = () => {
           {Platform.OS !== 'web' && (
             <SectionWithSwitch
               title="Autoriser les notifications"
-              active={state.allowPush}
+              active={isLoggedIn && state.allowPush}
               toggle={togglePush}
               disabled={!isLoggedIn}
             />
@@ -231,7 +234,8 @@ const Container = styled.View(({ theme }) => ({
 }))
 
 type ToggleActions =
-  | { type: 'email' | 'push' | 'allTheme' }
+  | { type: 'email' | 'allTheme' }
+  | { type: 'push'; state: 'toggle' | boolean }
   | { type: 'toggleTheme'; theme: SubscriptionTheme }
   | { type: 'reset'; initialState: NotificationsSettingsState }
 
@@ -243,10 +247,12 @@ const settingsReducer = (state: NotificationsSettingsState, action: ToggleAction
         allowEmails: !state.allowEmails,
       }
     case 'push':
-      return {
-        ...state,
-        allowPush: !state.allowPush,
-      }
+      if (action.state === 'toggle') return { ...state, allowPush: !state.allowPush }
+      else
+        return {
+          ...state,
+          allowPush: action.state,
+        }
     case 'allTheme':
       return {
         ...state,

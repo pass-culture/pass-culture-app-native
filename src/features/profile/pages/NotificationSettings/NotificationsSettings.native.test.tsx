@@ -10,6 +10,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { NotificationsSettings } from './NotificationsSettings'
 
@@ -312,6 +313,7 @@ describe('NotificationSettings', () => {
 
       expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
         message: 'Tes modifications ont été enregistrées\u00a0!',
+        timeout: SNACK_BAR_TIME_OUT,
       })
     })
 
@@ -329,7 +331,10 @@ describe('NotificationSettings', () => {
       const saveButton = screen.getByText('Enregistrer')
       await act(async () => fireEvent.press(saveButton))
 
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue' })
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message: 'Une erreur est survenue',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     })
 
     it('should reset settings on error', async () => {
