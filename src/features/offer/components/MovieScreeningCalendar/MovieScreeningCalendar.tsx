@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useMemo, useRef } from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, View } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
@@ -8,7 +9,7 @@ import { useSelectedDateScreening } from 'features/offer/components/MovieScreeni
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { Subcategory } from 'libs/subcategories/types'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
   offer: OfferResponse
@@ -29,6 +30,8 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
     movieScreeningUserData,
   } = useOfferCTAButton(offer, subcategory, bookingData)
 
+  const { isDesktopViewport } = useTheme()
+
   const flatListRef = useRef<FlatList | null>(null)
 
   const eventCardData = useMemo(
@@ -46,7 +49,7 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
   }, [flatListRef, offerId, setSelectedDate]) // should be triggered by offerIdChange and not by movieScreeningDates
 
   return (
-    <React.Fragment>
+    <MovieCalendarContainer isDesktopViewport={isDesktopViewport}>
       <MovieCalendar
         dates={movieScreeningDates}
         selectedDate={selectedDate}
@@ -54,9 +57,15 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
         flatListRef={flatListRef}
       />
       <Spacer.Column numberOfSpaces={4} />
-      {eventCardData != undefined && <EventCardList data={eventCardData} />}
+      {eventCardData !== undefined && <EventCardList data={eventCardData} />}
       <Spacer.Column numberOfSpaces={6} />
       {CTAOfferModal}
-    </React.Fragment>
+    </MovieCalendarContainer>
   )
 }
+
+const MovieCalendarContainer = styled(View)<{ isDesktopViewport?: boolean }>(
+  ({ isDesktopViewport }) => ({
+    marginRight: isDesktopViewport ? -getSpacing(16) : 0, // cancels padding of the parent container
+  })
+)

@@ -1,10 +1,11 @@
 import React from 'react'
 import { FlatList, View } from 'react-native'
-import { useTheme } from 'styled-components/native'
+import LinearGradient from 'react-native-linear-gradient'
+import styled, { useTheme } from 'styled-components/native'
 
-import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/MovieCalendarBottomBar'
-import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/MovieCalendarDay'
-import { useHorizontalFlatListScroll } from 'features/offer/components/MovieCalendar/useHorizontalFlatListScroll'
+import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
+import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/components/MovieCalendarDay'
+import { useHorizontalFlatListScroll } from 'features/offer/components/MovieCalendar/hooks/useHorizontalFlatListScroll'
 import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
 import { BicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
 import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
@@ -44,19 +45,26 @@ export const MovieCalendar: React.FC<Props> = ({
           <BicolorArrowLeft />
         </ScrollButtonForNotTouchDevice>
       ) : null}
-      <FlatList
-        ref={flatListRef}
-        data={dates}
-        horizontal
-        contentContainerStyle={flatListContainer}
-        showsHorizontalScrollIndicator={false}
-        onScroll={onScroll}
-        onContentSizeChange={onContentSizeChange}
-        testID="movie-calendar-flat-list"
-        renderItem={({ item: date }) => (
-          <MovieCalendarDay date={date} selectedDate={selectedDate} onTabChange={onTabChange} />
+      <View>
+        <FlatList
+          ref={flatListRef}
+          data={dates}
+          horizontal
+          contentContainerStyle={flatListContainer}
+          showsHorizontalScrollIndicator={false}
+          onScroll={onScroll}
+          onContentSizeChange={onContentSizeChange}
+          testID="movie-calendar-flat-list"
+          renderItem={({ item: date }) => (
+            <MovieCalendarDay date={date} selectedDate={selectedDate} onTabChange={onTabChange} />
+          )}
+        />
+        {!!isDesktopViewport && (
+          <React.Fragment>
+            <FadeLeft /> <FadeRight />
+          </React.Fragment>
         )}
-      />
+      </View>
       {isDesktopViewport && !isEnd ? (
         <ScrollButtonForNotTouchDevice
           horizontalAlign="right"
@@ -69,4 +77,29 @@ export const MovieCalendar: React.FC<Props> = ({
   )
 }
 
-const flatListContainer = { paddingHorizontal: getSpacing(6) }
+const flatListContainer = {
+  paddingHorizontal: getSpacing(6),
+}
+
+const FadeComponent = styled(LinearGradient)`
+  position: absolute;
+  top: 0;
+  bottom: ${getSpacing(1)}px;
+  width: ${getSpacing(20)}px;
+`
+
+const FadeLeft = styled(FadeComponent).attrs({
+  colors: ['white', 'transparent'],
+  start: { x: 0.2, y: 0.5 },
+  end: { x: 1, y: 0.5 },
+})`
+  left: -1px;
+`
+
+const FadeRight = styled(FadeComponent).attrs({
+  colors: ['transparent', 'white'],
+  start: { x: 0, y: 0.5 },
+  end: { x: 0.8, y: 0.5 },
+})`
+  right: -1px;
+`

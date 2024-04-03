@@ -2,11 +2,11 @@ import React from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/MovieCalendarBottomBar'
+import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Typo } from 'ui/theme'
 
-import { useMovieCalendarDay } from './useMovieCalendarDay'
+import { useMovieCalendarDay } from '../hooks/useMovieCalendarDay'
 
 type Props = {
   date: Date
