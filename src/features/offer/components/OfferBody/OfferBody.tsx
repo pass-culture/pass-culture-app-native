@@ -56,6 +56,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const isOfferAMovieScreening = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
   const { summaryInfoItems } = useOfferSummaryInfoList({ offer })
+
   return (
     <Container>
       <InfoContainer isDesktopViewport={isDesktopViewport}>
@@ -76,9 +77,9 @@ export const OfferBody: FunctionComponent<Props> = ({
 
         <GroupWithSeparator
           showTopComponent={offer.venue.isPermanent}
-          TopComponent={() => <OfferVenueButton venue={offer.venue} />}
+          TopComponent={<OfferVenueButton venue={offer.venue} />}
           showBottomComponent={summaryInfoItems.length > 0}
-          BottomComponent={() => <OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />}
+          BottomComponent={<OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />}
         />
 
         {isDesktopViewport ? (
@@ -129,24 +130,28 @@ const GroupWithoutGap = View
 
 type GroupWithSeparatorProps = {
   showTopComponent: boolean
-  TopComponent: FunctionComponent
+  TopComponent: React.ReactNode
   showBottomComponent: boolean
-  BottomComponent: FunctionComponent
+  BottomComponent: React.ReactNode
 }
 const GroupWithSeparator = ({
   showTopComponent,
   TopComponent,
   showBottomComponent,
   BottomComponent,
-}: GroupWithSeparatorProps) =>
-  showTopComponent || showBottomComponent ? (
+}: GroupWithSeparatorProps) => {
+  const renderTopComponent = () => (showTopComponent ? TopComponent : null)
+  const renderBottomComponent = () => (showBottomComponent ? BottomComponent : null)
+
+  return showTopComponent || showBottomComponent ? (
     <GroupWithoutGap>
-      {showTopComponent ? <TopComponent /> : null}
+      {renderTopComponent()}
 
       {!showTopComponent && showBottomComponent ? (
         <Separator.Horizontal testID="topSeparator" />
       ) : null}
 
-      {showBottomComponent ? <BottomComponent /> : null}
+      {renderBottomComponent()}
     </GroupWithoutGap>
   ) : null
+}
