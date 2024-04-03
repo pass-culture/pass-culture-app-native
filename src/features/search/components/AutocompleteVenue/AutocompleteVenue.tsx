@@ -3,7 +3,7 @@ import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-core'
 import styled from 'styled-components/native'
 
 import { AutocompleteVenueItem } from 'features/search/components/AutocompleteVenueItem/AutocompleteVenueItem'
-import { AlgoliaVenue } from 'libs/algolia'
+import { AlgoliaVenue } from 'libs/algolia/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Typo } from 'ui/theme'

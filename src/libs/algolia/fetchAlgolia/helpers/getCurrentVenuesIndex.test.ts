@@ -1,5 +1,5 @@
-import { LocationMode } from 'libs/algolia'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
+import { LocationMode } from 'libs/algolia/types'
 
 const venuesIndexSearch = 'algoliaVenuesIndexPlaylistSearch'
 const venuesIndexSearchNewest = 'algoliaVenuesIndexPlaylistSearchNewest'

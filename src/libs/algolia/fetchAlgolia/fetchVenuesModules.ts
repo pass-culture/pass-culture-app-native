@@ -1,10 +1,10 @@
 import { Venue, VenuesModuleParameters } from 'features/home/types'
-import { AlgoliaVenue } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildVenuesModulesQueries } from 'libs/algolia/fetchAlgolia/helpers/buildVenuesModulesQueries'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
+import { AlgoliaVenue } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 
 export const fetchVenuesModules = async (

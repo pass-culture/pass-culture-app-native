@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { AutocompleteOfferItem } from 'features/search/components/AutocompleteOfferItem/AutocompleteOfferItem'
 import { CreateHistoryItem } from 'features/search/types'
-import { AlgoliaSuggestionHit } from 'libs/algolia'
+import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Typo } from 'ui/theme'

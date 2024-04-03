@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { ModuleData } from 'features/home/types'
-import { VenueHit } from 'libs/algolia'
+import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { useLocation } from 'libs/location/LocationWrapper'

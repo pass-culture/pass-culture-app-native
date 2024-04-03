@@ -8,7 +8,7 @@ import {
 } from 'features/search/components/Highlight/Highlight'
 import { mockVenueHits } from 'features/search/fixtures/algolia'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
-import { AlgoliaSuggestionHit } from 'libs/algolia'
+import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { render, screen } from 'tests/utils'
 

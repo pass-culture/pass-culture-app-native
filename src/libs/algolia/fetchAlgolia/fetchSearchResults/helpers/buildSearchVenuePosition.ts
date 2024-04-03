@@ -1,7 +1,7 @@
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { Venue } from 'features/venue/types'
-import { LocationMode } from 'libs/algolia'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
+import { LocationMode } from 'libs/algolia/types'
 
 type SearchVenuePositionType = {
   aroundLatLng?: string

@@ -10,8 +10,8 @@ import {
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { OfferGenreType } from 'features/search/types'
-import { FacetData, NativeCategoryFacetData } from 'libs/algolia'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
+import { FacetData, NativeCategoryFacetData } from 'libs/algolia/types'
 
 type MappedGenreType = {
   label: string

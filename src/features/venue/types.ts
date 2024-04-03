@@ -1,4 +1,4 @@
-import { Geoloc } from 'libs/algolia'
+import { Geoloc } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 
 export interface Venue {

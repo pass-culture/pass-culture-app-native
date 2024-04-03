@@ -1,9 +1,9 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { LocationMode } from 'libs/algolia'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { SearchQueryParametersFixture } from 'libs/algolia/fixtures'
+import { LocationMode } from 'libs/algolia/types'
 
 describe('buildOfferSearchParameters', () => {
   const userLocation = {

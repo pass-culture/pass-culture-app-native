@@ -4,7 +4,7 @@ import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/ge
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
-import { LocationMode } from 'libs/algolia'
+import { LocationMode } from 'libs/algolia/types'
 import { buildLocationFilterParam, buildPerformSearchState, isCloseToBottom } from 'libs/analytics'
 
 const TODAY = new Date(2023, 0, 3)

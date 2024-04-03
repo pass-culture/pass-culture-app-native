@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { IncompleteSearchHit, AlgoliaHit } from 'libs/algolia'
+import { IncompleteSearchHit, AlgoliaHit } from 'libs/algolia/types'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 
 // Go to https://github.com/pass-culture/pass-culture-api/blob/master/src/pcapi/algolia/infrastructure/builder.py

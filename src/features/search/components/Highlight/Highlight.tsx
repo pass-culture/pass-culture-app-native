@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Highlighted, HistoryItem } from 'features/search/types'
-import { AlgoliaSuggestionHit, AlgoliaVenue } from 'libs/algolia'
+import { AlgoliaSuggestionHit, AlgoliaVenue } from 'libs/algolia/types'
 import { Typo } from 'ui/theme'
 
 // Inspired by https://www.algolia.com/doc/guides/building-search-ui/going-further/native/react-hooks/?client=Highlight.js#highlight-matches

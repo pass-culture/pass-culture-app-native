@@ -1,10 +1,10 @@
 import algoliasearch from 'algoliasearch'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { AlgoliaVenue, LocationMode } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
+import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { waitFor } from 'tests/utils'
 

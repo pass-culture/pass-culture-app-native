@@ -2,7 +2,7 @@ import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { SearchState } from 'features/search/types'
-import { LocationMode } from 'libs/algolia'
+import { LocationMode } from 'libs/algolia/types'
 
 type Props = NativeSyntheticEvent<NativeScrollEvent>['nativeEvent'] & { padding?: number }
 

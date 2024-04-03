@@ -1,5 +1,5 @@
 import { VenueTypeCodeKey } from 'api/gen'
-import { VenueHit } from 'libs/algolia'
+import { VenueHit } from 'libs/algolia/types'
 
 interface SearchResponse {
   hits: VenueHit[]

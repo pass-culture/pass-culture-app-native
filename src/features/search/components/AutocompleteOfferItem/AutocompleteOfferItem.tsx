@@ -13,7 +13,7 @@ import {
   isNativeCategoryOfCategory,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
-import { AlgoliaSuggestionHit } from 'libs/algolia'
+import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
