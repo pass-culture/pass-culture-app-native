@@ -3,12 +3,15 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render, act } from 'tests/utils/web'
+import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -52,26 +55,28 @@ jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
 describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
+  beforeEach(() => {
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
+  })
+
   describe('Accessibility', () => {
-    // TODO(PC-26577): fix test flackyness
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues', async () => {
+    it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<Venue />))
 
-      await act(async () => {
-        const results = await checkAccessibilityFor(container)
+      await screen.findAllByText('Le Petit Rintintin 1')
 
-        expect(results).toHaveNoViolations()
-      })
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
     })
 
-    // TODO(PC-26577): fix test flackyness
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should render correctly in web', async () => {
-      render(<Venue />, { theme: { isDesktopViewport: true } })
-      await act(async () => {})
+    it('should render correctly in web', async () => {
+      const { container } = render(reactQueryProviderHOC(<Venue />), {
+        theme: { isDesktopViewport: true },
+      })
+      await screen.findAllByText('Le Petit Rintintin 1')
 
-      expect(screen).toMatchSnapshot()
+      expect(container).toMatchSnapshot()
     })
   })
 })
