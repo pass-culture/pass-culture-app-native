@@ -85,8 +85,8 @@ export const useThematicSubscription = ({
   }
 
   return {
-    isSubscribeButtonActive: isSubscribeButtonActive,
-    isAtLeastOneNotificationTypeActivated: isAtLeastOneNotificationTypeActivated,
+    isSubscribeButtonActive: isSubscribeButtonActive || false,
+    isAtLeastOneNotificationTypeActivated: isAtLeastOneNotificationTypeActivated || false,
     updateSubscription,
     updateSettings,
   }
