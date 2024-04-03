@@ -2,10 +2,13 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
+import { MODAL_TO_HIDE_TIME } from 'tests/constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor, waitForModalToHide } from 'tests/utils'
+import { fireEvent, render, screen, waitFor, act } from 'tests/utils'
 
 import { ApplicationProcessingModal } from './ApplicationProcessingModal'
+
+jest.useFakeTimers()
 
 const hideModal = jest.fn()
 const offerId = 1
@@ -60,7 +63,9 @@ describe('<ApplicationProcessingModal />', () => {
 
     fireEvent.press(screen.getByText('Mettre en favori'))
 
-    await waitForModalToHide()
+    await act(async () => {
+      jest.advanceTimersByTime(MODAL_TO_HIDE_TIME)
+    })
 
     expect(hideModal).toHaveBeenCalledTimes(1)
   })

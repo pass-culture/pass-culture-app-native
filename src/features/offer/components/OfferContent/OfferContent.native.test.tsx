@@ -20,11 +20,14 @@ import { SuggestedPlace } from 'libs/place/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { RecommendationApiParams } from 'shared/offer/types'
+import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, fireEvent, waitForModalToShow } from 'tests/utils'
+import { render, screen, fireEvent } from 'tests/utils'
 
 import { OfferContent } from './OfferContent'
+
+jest.useFakeTimers()
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -420,7 +423,7 @@ describe('<OfferContent />', () => {
 
       fireEvent.press(await screen.findByText('Réserver l’offre'))
 
-      waitForModalToShow()
+      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
       expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(
         1,

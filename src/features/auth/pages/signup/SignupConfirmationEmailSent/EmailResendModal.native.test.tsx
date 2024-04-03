@@ -4,11 +4,14 @@ import { api } from 'api/api'
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
+import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor, waitForModalToShow } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { EmailResendModal } from './EmailResendModal'
+
+jest.useFakeTimers()
 
 jest.mock('libs/monitoring')
 const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidation')
@@ -19,7 +22,7 @@ describe('<EmailResendModal />', () => {
     await waitFor(() => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
-    await waitForModalToShow()
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     expect(screen).toMatchSnapshot()
   })

@@ -1,8 +1,11 @@
 import React from 'react'
 
-import { render, checkAccessibilityFor, waitForModalToShow, act } from 'tests/utils/web'
+import { MODAL_TO_SHOW_TIME } from 'tests/constants'
+import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { VenueModal } from './VenueModal'
+
+jest.useFakeTimers()
 
 const dismissModalMock = jest.fn()
 
@@ -13,7 +16,7 @@ describe('<VenueModal/>', () => {
 
       let results
       await act(async () => {
-        await waitForModalToShow()
+        jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
         results = await checkAccessibilityFor(container)
       })
