@@ -10,7 +10,7 @@ import useVenueModal from './useVenueModal'
 // @ts-expect-error: because of noUncheckedIndexedAccess
 const venue: Venue = mockedSuggestedVenues[0]
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 jest.mock('ui/hooks/useDebounceValue', () => ({
   useDebounceValue: (value: string) => value,
 }))

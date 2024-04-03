@@ -113,7 +113,7 @@ const venue: Venue = mockedSuggestedVenues[0]
 
 const searchId = uuidv4()
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('SearchBox component', () => {
   beforeEach(() => {

@@ -108,7 +108,7 @@ describe('LocationWidgetDesktop', () => {
     afterEach(async () => storageResetDisplayedTooltip())
 
     it('should hide tooltip when pressing close button', async () => {
-      jest.useFakeTimers({ legacyFakeTimers: true })
+      jest.useFakeTimers()
       renderLocationWidgetDesktop()
 
       await act(async () => {
@@ -127,7 +127,7 @@ describe('LocationWidgetDesktop', () => {
     })
 
     it('should show tooltip after 1 second', async () => {
-      jest.useFakeTimers({ legacyFakeTimers: true })
+      jest.useFakeTimers()
       renderLocationWidgetDesktop()
 
       await act(async () => {
@@ -142,7 +142,7 @@ describe('LocationWidgetDesktop', () => {
     })
 
     it('should hide tooltip 8 seconds after it appeared', async () => {
-      jest.useFakeTimers({ legacyFakeTimers: true })
+      jest.useFakeTimers()
       renderLocationWidgetDesktop()
 
       await act(async () => {
@@ -165,7 +165,7 @@ describe('LocationWidgetDesktop', () => {
     })
 
     it('should hide tooltip when taping “Me localiser”', async () => {
-      jest.useFakeTimers({ legacyFakeTimers: true })
+      jest.useFakeTimers()
       renderLocationWidgetDesktop()
 
       await act(async () => {

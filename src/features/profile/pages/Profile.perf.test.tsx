@@ -20,7 +20,7 @@ jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 // Performance measuring is run multiple times so we need to increase the timeout
 const TEST_TIMEOUT_IN_MS = 30_000
 jest.setTimeout(TEST_TIMEOUT_IN_MS)
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('<Profile />', () => {
   it('Performance test for Profile page', async () => {

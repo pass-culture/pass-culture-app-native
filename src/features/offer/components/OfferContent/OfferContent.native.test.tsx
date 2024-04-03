@@ -110,7 +110,7 @@ const nativeEventBottom = {
 }
 const BATCH_TRIGGER_DELAY_IN_MS = 5000
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('<OfferContent />', () => {
   beforeEach(() => {

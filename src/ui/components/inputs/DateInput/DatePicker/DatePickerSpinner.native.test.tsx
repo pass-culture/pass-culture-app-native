@@ -19,7 +19,7 @@ const props = {
   maximumDate: MAXIMUM_DATE,
 }
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('<DatePickerSpinner />', () => {
   beforeEach(() => {

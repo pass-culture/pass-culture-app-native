@@ -31,7 +31,7 @@ jest.mock('features/navigation/navigationRef')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('TrackEmailChangeContentDeprecated', () => {
   it('should display "Envoi de ta demande"', () => {

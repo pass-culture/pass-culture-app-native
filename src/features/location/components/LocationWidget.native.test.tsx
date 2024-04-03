@@ -29,7 +29,7 @@ describe('LocationWidget', () => {
   })
 
   it('should show tooltip after 1 second and hide 8 seconds after it appeared', async () => {
-    jest.useFakeTimers({ legacyFakeTimers: true })
+    jest.useFakeTimers()
     renderLocationWidget()
 
     await act(async () => {
@@ -54,7 +54,7 @@ describe('LocationWidget', () => {
   })
 
   it('should hide tooltip when pressing close button', async () => {
-    jest.useFakeTimers({ legacyFakeTimers: true })
+    jest.useFakeTimers()
     renderLocationWidget()
 
     await act(async () => {

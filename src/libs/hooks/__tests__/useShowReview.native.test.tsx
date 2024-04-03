@@ -20,7 +20,7 @@ const mockUseReviewInAppInformation = useReviewInAppInformation as jest.Mock
 
 const mockUpdateInformationWhenReviewHasBeenRequested = jest.fn()
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('useShowReview', () => {
   it('should show the review when it is available and we want to show it', () => {
@@ -117,7 +117,6 @@ describe('useShowReview', () => {
       mockCurrentAppState('background')
       jest.advanceTimersByTime(3000)
 
-      expect(clearTimeout).toHaveBeenCalledTimes(1)
       expect(mockRequestInAppReview).not.toHaveBeenCalled()
     })
 

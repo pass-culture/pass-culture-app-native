@@ -3,7 +3,7 @@ import React from 'react'
 import { DateChoice } from 'features/internal/marketingAndCommunication/atoms/DateChoice'
 import { render, screen } from 'tests/utils'
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('<DateChoice />', () => {
   it('should render null in native', () => {
