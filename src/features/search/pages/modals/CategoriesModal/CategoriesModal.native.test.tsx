@@ -265,17 +265,13 @@ describe('<CategoriesModal/>', () => {
         mockUseFeatureFlag.mockReturnValue(true)
       })
 
-      // TODO(PC-27948): fix FF conflicts to pass the test
-      // eslint-disable-next-line jest/no-disabled-tests
-      it.skip('should display number of results on each category', () => {
+      it('should display number of results on each category', () => {
         renderCategories()
 
-        // Évènements autour du livre + Livres audio
-        expect(screen.getAllByText('0')).toHaveLength(2)
-        // Livres numériques & audio
-        expect(screen.getByText('23')).toBeOnTheScreen()
-        // Livre Papiers
-        expect(screen.getByText('4494')).toBeOnTheScreen()
+        // Cartes cinéma
+        expect(screen.getByText('7')).toBeOnTheScreen()
+        // DVD, Blu-Ray
+        expect(screen.getByText('54')).toBeOnTheScreen()
       })
     })
 
@@ -287,13 +283,10 @@ describe('<CategoriesModal/>', () => {
       it('should not display number of results on each category', () => {
         renderCategories()
 
-        // Évènements autour du livre + Livres audio
-        expect(screen.queryAllByText('0 résultat')).toHaveLength(0)
-
-        // Livres numériques & audio
-        expect(screen.queryByText('23 résultats')).not.toBeOnTheScreen()
-        // Livre Papiers
-        expect(screen.queryByText('+100 résultats')).not.toBeOnTheScreen()
+        // Cartes cinéma
+        expect(screen.queryByText('7')).not.toBeOnTheScreen()
+        // DVD, Blu-Ray
+        expect(screen.queryByText('54')).not.toBeOnTheScreen()
       })
     })
   })
