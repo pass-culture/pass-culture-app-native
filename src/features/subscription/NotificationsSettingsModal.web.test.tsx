@@ -2,7 +2,7 @@ import React from 'react'
 
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 describe('<NotificationsSettingsModal />', () => {
   describe('Accessibility', () => {
@@ -15,10 +15,11 @@ describe('<NotificationsSettingsModal />', () => {
           onPressSaveChanges={jest.fn()}
         />
       )
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
 
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })
