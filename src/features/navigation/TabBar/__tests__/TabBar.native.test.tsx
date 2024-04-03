@@ -107,9 +107,7 @@ describe('TabBar', () => {
     })
   })
 
-  // TODO(PC-13119): Add native stories for this component
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('render correctly', () => {
+  it('render correctly', () => {
     renderTabBar()
 
     expect(screen).toMatchSnapshot()
