@@ -33,7 +33,7 @@ const defaultProps = {
   onDefaultEmailSignup: jest.fn(),
 }
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 const INCORRECT_EMAIL_MESSAGE =
   'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'

@@ -33,7 +33,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 jest.spyOn(DeviceInfo, 'getModel').mockReturnValue('iPhone 13')
 jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
 const apiValidateEmailSpy = jest.spyOn(api, 'postNativeV1ValidateEmail')
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 const renderPage = () => render(reactQueryProviderHOC(<AfterSignupEmailValidationBuffer />))
 
