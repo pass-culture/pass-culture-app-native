@@ -36,7 +36,8 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
   theme,
   onPressSaveChanges,
 }) => {
-  const [settings, setSettings] = useState({ allowEmails: false, allowPush: false })
+  const initialState = { allowEmails: false, allowPush: false }
+  const [settings, setSettings] = useState(initialState)
 
   const {
     visible: isPushModalVisible,
@@ -115,7 +116,11 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
         <ButtonTertiaryBlack
           wording="Tout refuser et ne pas recevoir d’actus"
           icon={Invalidate}
-          onPress={dismissModal}
+          onPress={() => {
+            setSettings(initialState)
+            dismissModal()
+          }}
+          inline
         />
       </ModalContent>
       <PushNotificationsModal

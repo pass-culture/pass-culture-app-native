@@ -32,6 +32,14 @@ export const ThematicHomeWithSubscribeCheatcode: FunctionComponent = () => {
 
   const { visible, showModal, hideModal } = useModal(false)
 
+  const subscribeButtonOnPress = () => {
+    if (!isAtLeastOneNotificationTypeActivated) {
+      showModal()
+    } else {
+      updateSubscription()
+    }
+  }
+
   return (
     <Container>
       <ThematicHomeHeader
@@ -46,16 +54,7 @@ export const ThematicHomeWithSubscribeCheatcode: FunctionComponent = () => {
         />
         {isLoggedIn ? (
           <SubscribeButtonContainer>
-            <SubscribeButton
-              active={isSubscribeButtonActive || false}
-              onPress={() => {
-                if (!isAtLeastOneNotificationTypeActivated) {
-                  showModal()
-                } else {
-                  updateSubscription()
-                }
-              }}
-            />
+            <SubscribeButton active={isSubscribeButtonActive} onPress={subscribeButtonOnPress} />
           </SubscribeButtonContainer>
         ) : null}
         <BodyPlaceholder />

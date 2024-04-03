@@ -8,7 +8,7 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
 
 export type Props = {
-  user: UserProfileResponse | undefined
+  user?: UserProfileResponse
   theme: SubscriptionTheme
 }
 
@@ -55,19 +55,17 @@ export const useThematicSubscription = ({
   )
 
   const updateSubscription = () => {
-    if (!isAtLeastOneNotificationTypeActivated || isUpdatingProfile) {
-      return
-    } else {
-      updateProfile({
-        subscriptions: {
-          marketingEmail: user?.subscriptions.marketingEmail || false,
-          marketingPush: user?.subscriptions.marketingPush || false,
-          subscribedThemes: isThemeSubscribed
-            ? state.themePreferences.filter((t) => t !== theme)
-            : [...state.themePreferences, theme],
-        },
-      })
-    }
+    if (!isAtLeastOneNotificationTypeActivated || isUpdatingProfile) return
+
+    updateProfile({
+      subscriptions: {
+        marketingEmail: user?.subscriptions.marketingEmail || false,
+        marketingPush: user?.subscriptions.marketingPush || false,
+        subscribedThemes: isThemeSubscribed
+          ? state.themePreferences.filter((t) => t !== theme)
+          : [...state.themePreferences, theme],
+      },
+    })
   }
 
   const updateSettings = ({
@@ -89,8 +87,8 @@ export const useThematicSubscription = ({
   }
 
   return {
-    isSubscribeButtonActive: isSubscribeButtonActive || false,
-    isAtLeastOneNotificationTypeActivated: isAtLeastOneNotificationTypeActivated || false,
+    isSubscribeButtonActive: isSubscribeButtonActive,
+    isAtLeastOneNotificationTypeActivated: isAtLeastOneNotificationTypeActivated,
     updateSubscription,
     updateSettings,
   }
