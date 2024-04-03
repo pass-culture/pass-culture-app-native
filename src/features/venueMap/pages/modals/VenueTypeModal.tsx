@@ -88,23 +88,16 @@ export const VenueTypeModal: FunctionComponent<Props> = ({
               onSelect={() => handleOnSelect(null)}
             />
           </ListItem>
-          <VenueTypeSection
-            venueTypeSelected={venueTypeSelected}
-            venueTypeMapping={venueTypesMapping.trip}
-            onSelect={handleOnSelect}
-          />
-          <Separator.Horizontal />
-          <VenueTypeSection
-            venueTypeSelected={venueTypeSelected}
-            venueTypeMapping={venueTypesMapping.shop}
-            onSelect={handleOnSelect}
-          />
-          <Separator.Horizontal />
-          <VenueTypeSection
-            venueTypeSelected={venueTypeSelected}
-            venueTypeMapping={venueTypesMapping.other}
-            onSelect={handleOnSelect}
-          />
+          {Object.entries(venueTypesMapping).map(([sectionKey, venueTypes], index, array) => (
+            <React.Fragment key={sectionKey}>
+              <VenueTypeSection
+                venueTypeSelected={venueTypeSelected}
+                venueTypeMapping={venueTypes}
+                onSelect={handleOnSelect}
+              />
+              {index < array.length - 1 ? <Separator.Horizontal /> : null}
+            </React.Fragment>
+          ))}
         </VerticalUl>
       </Form.MaxWidth>
     </AppModal>
