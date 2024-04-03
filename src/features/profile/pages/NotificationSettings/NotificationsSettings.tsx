@@ -52,7 +52,7 @@ export const NotificationsSettings = () => {
   const updatePushPermissionFromSettings = (permission: PermissionStatus) => {
     if (permission === 'granted' && user?.subscriptions.marketingPush) {
       dispatch({ type: 'push', state: true })
-    } else if (permission !== 'granted') dispatch({ type: 'push', state: false })
+    } else dispatch({ type: 'push', state: false })
   }
 
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
