@@ -891,18 +891,20 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                   {
                     "alignItems": "center",
                     "backgroundColor": "transparent",
-                    "borderRadius": 24,
+                    "borderRadius": 0,
+                    "borderWidth": 0,
                     "flexDirection": "row",
                     "justifyContent": "center",
+                    "marginTop": 0,
                     "maxWidth": 500,
-                    "minHeight": 40,
+                    "minHeight": 20,
                     "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 2,
-                    "paddingRight": 2,
-                    "paddingTop": 2,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
                     "userSelect": "auto",
-                    "width": "100%",
+                    "width": "auto",
                   }
                 }
                 testID="Tout refuser et ne pas recevoir d’actus"
