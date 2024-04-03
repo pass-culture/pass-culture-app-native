@@ -1,4 +1,4 @@
-## Installation - setup
+# Installation - setup
 
 We advise to **follow [the guidelines](https://reactnative.dev/docs/environment-setup)** to set up your environment by selecting your Development OS and your target OS (Android/iOS).
 

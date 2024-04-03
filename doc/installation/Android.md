@@ -1,4 +1,4 @@
-## Installation - Android
+# Installation - Android
 
 **After setting up your [environment](./setup.md)**, you can follow the steps below to run the **pass Culture** mobile application on Android.
 

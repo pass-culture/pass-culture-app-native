@@ -1,4 +1,4 @@
-## Code structure
+# Code structure
 
 ### Why
 

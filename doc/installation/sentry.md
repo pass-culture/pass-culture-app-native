@@ -1,4 +1,4 @@
-## Error Monitoring with sentry
+# Error Monitoring with sentry
 
 Sentry helps us monitor crash and errors in the application. See our project [here](https://sentry.passculture.team/organizations/sentry/issues/?project=6)
 

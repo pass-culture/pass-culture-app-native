@@ -1,4 +1,4 @@
-## Installation - web
+# Installation - web
 
 To run the **pass Culture** web application on your browser, simply run:
 

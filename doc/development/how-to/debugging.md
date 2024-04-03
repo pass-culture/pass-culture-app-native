@@ -1,4 +1,4 @@
-## Debugging
+# Debugging
 
 ### react-error-overlay
 
@@ -6,7 +6,7 @@ In development, the Web application by default does not show the react error ove
 
 ```bash
 ERROR_OVERLAY=true npm run start:web:testing
-``` 
+```
 
 ### Flipper
 

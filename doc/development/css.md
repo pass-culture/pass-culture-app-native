@@ -1,4 +1,4 @@
-## App css
+# App css
 
 We use css-in-js with `styled-components` to customize our components, in some case, you might want to add extra global css.
 

@@ -1,4 +1,4 @@
-## PR title format 🤖
+# PR title format 🤖
 
 ### Why
 
