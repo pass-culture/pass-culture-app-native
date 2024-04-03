@@ -12,6 +12,8 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
+jest.useFakeTimers()
+
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
 jest.mock('features/auth/helpers/useLoginRoutine')
@@ -24,8 +26,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showInfoSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowInfoSnackBar(props)),
   }),
 }))
-
-jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('useLoginAndRedirect', () => {
   afterEach(jest.runOnlyPendingTimers)

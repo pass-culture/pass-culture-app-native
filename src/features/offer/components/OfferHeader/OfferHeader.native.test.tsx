@@ -45,7 +45,7 @@ mockedUseSnackBarContext.mockReturnValue({
   showErrorSnackBar,
 })
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('<OfferHeader />', () => {
   it('should render all the icons', async () => {

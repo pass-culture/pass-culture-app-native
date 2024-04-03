@@ -19,6 +19,8 @@ import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
+jest.useFakeTimers()
+
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('features/venue/api/useVenue')
@@ -97,8 +99,6 @@ const defaultParams = {
   timeRange: null,
   locationFilter: { locationType: LocationMode.EVERYWHERE },
 }
-
-jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<Venue />', () => {
   it('should match snapshot', async () => {
@@ -193,7 +193,7 @@ describe('<Venue />', () => {
       renderVenue(venueId)
 
       await act(async () => {
-        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 100)
       })
 
       expect(BatchUser.trackEvent).not.toHaveBeenCalled()
