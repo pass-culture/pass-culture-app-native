@@ -40,7 +40,7 @@ const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppRevie
 
 const mockOfferId = 1337
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('<BookingConfirmation />', () => {
   beforeEach(() => {
