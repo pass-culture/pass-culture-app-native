@@ -9,6 +9,7 @@ import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
 import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessionDuration'
+import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import {
@@ -16,6 +17,7 @@ import {
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Li } from 'ui/components/Li'
+import { useModal } from 'ui/components/modals/useModal'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
 
@@ -28,6 +30,12 @@ export const VenueMap: FunctionComponent = () => {
   const headerHeight = useGetHeaderHeight()
   const { height } = useWindowDimensions()
 
+  const {
+    visible: venueTypeModalVisible,
+    showModal: showVenueTypeModal,
+    hideModal: hideVenueTypeModal,
+  } = useModal(false)
+
   const withFilterBanner = enableVenueMapTypeFilter ? FILTER_BANNER_HEIGHT : 0
   const venueMapHeight = height - (headerHeight + withFilterBanner)
 
@@ -35,28 +43,33 @@ export const VenueMap: FunctionComponent = () => {
   useTrackMapSeenDuration()
 
   return (
-    <Container>
-      <StyledHeader title="Carte des lieux" onGoBack={goBack} />
-      <PlaceHolder headerHeight={headerHeight + withFilterBanner} />
-      {enableVenueMapTypeFilter ? (
-        <FilterBannerContainer headerHeight={headerHeight}>
-          <StyledUl>
-            <StyledLi>
-              <SingleFilterButton
-                label="Type de lieu"
-                isSelected={false}
-                onPress={() => {
-                  return undefined
-                }}
-              />
-            </StyledLi>
-          </StyledUl>
-        </FilterBannerContainer>
-      ) : null}
-      <MapContainer>
-        <VenueMapView height={venueMapHeight} />
-      </MapContainer>
-    </Container>
+    <React.Fragment>
+      <Container>
+        <StyledHeader title="Carte des lieux" onGoBack={goBack} />
+        <PlaceHolder headerHeight={headerHeight + withFilterBanner} />
+        {enableVenueMapTypeFilter ? (
+          <FilterBannerContainer headerHeight={headerHeight}>
+            <StyledUl>
+              <StyledLi>
+                <SingleFilterButton
+                  label="Type de lieu"
+                  isSelected={false}
+                  onPress={showVenueTypeModal}
+                />
+              </StyledLi>
+            </StyledUl>
+          </FilterBannerContainer>
+        ) : null}
+        <MapContainer>
+          <VenueMapView height={venueMapHeight} />
+        </MapContainer>
+      </Container>
+      <VenueTypeModal
+        hideModal={hideVenueTypeModal}
+        venueType={null}
+        isVisible={venueTypeModalVisible}
+      />
+    </React.Fragment>
   )
 }
 
