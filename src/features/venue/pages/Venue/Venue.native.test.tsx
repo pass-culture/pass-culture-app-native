@@ -19,7 +19,8 @@ import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
-jest.useFakeTimers()
+// TODO(PC-29000): Use fakeTimers modern instead
+jest.useFakeTimers({ legacyFakeTimers: true })
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
