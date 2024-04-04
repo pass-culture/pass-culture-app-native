@@ -12,17 +12,32 @@ export enum FILTER_TYPES {
 }
 
 export const useAppliedFilters = (searchState: Partial<SearchState>) => {
-  const { offerCategories, minPrice, maxPrice, offerIsDuo, date, timeRange } = searchState
+  const {
+    offerCategories,
+    minPrice,
+    maxPrice,
+    offerIsDuo,
+    date,
+    timeRange,
+    beginningDatetime,
+    endingDatetime,
+    offerIsFree,
+    priceRange,
+  } = searchState
   const { disabilities } = useAccessibilityFiltersContext()
   let filterTypes: FILTER_TYPES[] = [FILTER_TYPES.LOCATION]
 
   const hasCategory = offerCategories ? offerCategories.length > 0 : false
-  const minPriceAsNumber: number | undefined = getPriceAsNumber(minPrice)
-  const maxPriceAsNumber: number | undefined = getPriceAsNumber(maxPrice)
+  const minPriceAsNumber = getPriceAsNumber(minPrice)
+  const maxPriceAsNumber = getPriceAsNumber(maxPrice)
   const hasPrice =
-    (minPriceAsNumber !== undefined && minPriceAsNumber > 0) || maxPriceAsNumber !== undefined
+    (minPriceAsNumber !== undefined && minPriceAsNumber > 0) ||
+    maxPriceAsNumber ||
+    priceRange ||
+    offerIsFree
   const hasDuoOffer = offerIsDuo
-  const hasDatesHours = Boolean(date ?? timeRange)
+  const hasDatesHours = Boolean(date ?? timeRange ?? beginningDatetime ?? endingDatetime)
+
   const hasDisabilitySelected =
     Object.values(disabilities).filter((disability) => disability).length > 0
   if (hasCategory) {

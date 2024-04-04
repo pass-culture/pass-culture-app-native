@@ -882,7 +882,7 @@ exports[`<Search/> should render SearchResults 1`] = `
             }
           >
             <View
-              accessibilityLabel="Prix"
+              accessibilityLabel="Prix : Filtre sélectionné"
               accessibilityRole="button"
               accessibilityState={
                 {
@@ -914,10 +914,10 @@ exports[`<Search/> should render SearchResults 1`] = `
               style={
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#ffffff",
+                  "backgroundColor": "#F1F1F4",
                   "borderColor": "#161617",
                   "borderRadius": 24,
-                  "borderWidth": 1,
+                  "borderWidth": 2,
                   "boxSizing": "border-box",
                   "flexDirection": "row-reverse",
                   "height": 32,
@@ -928,7 +928,7 @@ exports[`<Search/> should render SearchResults 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="Prix"
+              testID="Prix : Filtre sélectionné"
             >
               <Text
                 style={
@@ -945,6 +945,26 @@ exports[`<Search/> should render SearchResults 1`] = `
               >
                 Prix
               </Text>
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Filtre sélectionné"
+                height={16}
+                testID="priceButtonIcon"
+                width={16}
+              >
+                <Text>
+                  priceButtonIcon-SVG-Mock
+                </Text>
+              </View>
             </View>
           </View>
           <View
