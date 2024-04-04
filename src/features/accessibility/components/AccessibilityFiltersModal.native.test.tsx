@@ -3,14 +3,18 @@ import { Button } from 'react-native'
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { FilterBehaviour } from 'features/search/enums'
-import { screen, render, fireEvent, waitForModalToShow } from 'tests/utils'
+import { MODAL_TO_SHOW_TIME } from 'tests/constants'
+import { screen, render, fireEvent } from 'tests/utils'
 
 import { AccessibilityFiltersModal, AccessibilityModalProps } from './AccessibilityFiltersModal'
+
+jest.useFakeTimers()
 
 describe('<AccessibilityFiltersModal />', () => {
   it('should render modal correctly', async () => {
     renderAccessibilityFiltersModal()
-    await waitForModalToShow()
+
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     await screen.findByText(
       'Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps'
     )
@@ -29,8 +33,7 @@ describe('<AccessibilityFiltersModal />', () => {
 
     const openModalButton = await screen.findByText('Show modal')
     fireEvent.press(openModalButton)
-
-    await waitForModalToShow()
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     expect(screen).toMatchSnapshot()
   })
@@ -47,7 +50,7 @@ describe('<AccessibilityFiltersModal />', () => {
     const openModalButton = await screen.findByText('Show modal')
     fireEvent.press(openModalButton)
 
-    await waitForModalToShow()
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     expect(screen).toMatchSnapshot()
   })
@@ -63,8 +66,7 @@ describe('<AccessibilityFiltersModal />', () => {
 
     const openModalButton = await screen.findByText('Show modal')
     fireEvent.press(openModalButton)
-
-    await waitForModalToShow()
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     expect(screen).toMatchSnapshot()
   })
@@ -80,8 +82,7 @@ describe('<AccessibilityFiltersModal />', () => {
 
     const openModalButton = await screen.findByText('Show modal')
     fireEvent.press(openModalButton)
-
-    await waitForModalToShow()
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     expect(screen).toMatchSnapshot()
   })

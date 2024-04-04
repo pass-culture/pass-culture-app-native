@@ -2,8 +2,9 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
+import { MODAL_TO_HIDE_TIME } from 'tests/constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor, waitForModalToHide } from 'tests/utils'
+import { fireEvent, render, screen, waitFor, act } from 'tests/utils'
 
 import { ApplicationProcessingModal } from './ApplicationProcessingModal'
 
@@ -36,7 +37,7 @@ describe('<ApplicationProcessingModal />', () => {
     })
   })
 
-  it('should log analytics when clicking on button "Aller sur mon profil', () => {
+  it('should log analytics when clicking on button "Aller sur mon profil"', () => {
     render(
       reactQueryProviderHOC(
         <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
@@ -51,7 +52,7 @@ describe('<ApplicationProcessingModal />', () => {
     })
   })
 
-  it('should close modal when clicking on button "Mettre en favori', async () => {
+  it('should close modal when clicking on button "Mettre en favori"', async () => {
     render(
       reactQueryProviderHOC(
         <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
@@ -60,12 +61,16 @@ describe('<ApplicationProcessingModal />', () => {
 
     fireEvent.press(screen.getByText('Mettre en favori'))
 
-    await waitForModalToHide()
+    // TODO(PC-29011): Use fakeTimers instead this hack
+    await act(async () => {
+      const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+      await sleep(MODAL_TO_HIDE_TIME)
+    })
 
     expect(hideModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should log analytics when clicking on button "Mettre en favori', async () => {
+  it('should log analytics when clicking on button "Mettre en favori"', async () => {
     render(
       reactQueryProviderHOC(
         <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, checkAccessibilityFor, waitForModalToShow, act } from 'tests/utils/web'
+import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { VenueModal } from './VenueModal'
 
@@ -11,17 +11,9 @@ describe('<VenueModal/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<VenueModal visible dismissModal={dismissModalMock} />)
 
-      let results
-      await act(async () => {
-        await waitForModalToShow()
-
-        results = await checkAccessibilityFor(container)
-      })
-      await act(async () => {})
+      const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
-
-      await act(async () => {})
     })
   })
 })

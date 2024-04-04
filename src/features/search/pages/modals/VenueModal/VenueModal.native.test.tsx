@@ -7,7 +7,10 @@ import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
-import { act, fireEvent, render, screen, waitForModalToShow } from 'tests/utils'
+import { MODAL_TO_SHOW_TIME } from 'tests/constants'
+import { act, fireEvent, render, screen } from 'tests/utils'
+
+jest.useFakeTimers()
 
 const dismissModalMock = jest.fn()
 
@@ -38,14 +41,14 @@ mockedUseSearch.mockReturnValue(mockedSearchWrapper)
 describe('VenueModal', () => {
   it('should render correctly', async () => {
     render(<VenueModal visible dismissModal={dismissModalMock} />)
-    await waitForModalToShow()
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should close when pressing the close button', async () => {
     render(<VenueModal visible dismissModal={dismissModalMock} />)
-    await waitForModalToShow()
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     const closeButton = screen.getByLabelText('Fermer la modale')
     fireEvent.press(closeButton)
@@ -55,7 +58,7 @@ describe('VenueModal', () => {
 
   it('should trigger logEvent "logUserSetVenue" when pressing "Valider le lieu culturel" button', async () => {
     render(<VenueModal visible dismissModal={dismissModalMock} />)
-    await waitForModalToShow()
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     const venueSearchInput = screen.getByTestId('searchInput')
     // @ts-expect-error: because of noUncheckedIndexedAccess
@@ -78,7 +81,7 @@ describe('VenueModal', () => {
       .mockReturnValueOnce(mockedSearchWrapper)
     render(<VenueModal visible dismissModal={dismissModalMock} />)
 
-    await waitForModalToShow()
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     const venueSearchInput = screen.getByTestId('searchInput')
 
@@ -96,7 +99,7 @@ describe('VenueModal', () => {
 
     render(<VenueModal visible dismissModal={dismissModalMock} />)
 
-    await waitForModalToShow()
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     const venueSearchInput = screen.getByTestId('searchInput')
 
     // @ts-expect-error: because of noUncheckedIndexedAccess
@@ -120,7 +123,7 @@ describe('VenueModal', () => {
 
     render(<VenueModal visible dismissModal={dismissModalMock} />)
 
-    await waitForModalToShow()
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     const venueSearchInput = screen.getByTestId('searchInput')
 
