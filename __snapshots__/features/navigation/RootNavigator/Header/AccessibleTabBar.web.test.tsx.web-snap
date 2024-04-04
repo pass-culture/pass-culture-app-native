@@ -1,498 +1,223 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AccessibleTabBar renders correctly 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": .c0 {
-  z-index: 2;
-}
-
-<body>
-    <div>
-      <nav
-        class="c0"
-        id="tabBarID"
-        role="navigation"
-      >
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1yc6c17 r-borderTopColor-1yjfu75 r-borderTopStyle-1efd50x r-borderTopWidth-5kkj8d r-bottom-1p0dtai r-boxShadow-1q9gwvi r-position-u8s1d r-width-13qz1uu"
-        >
-          <div
-            class="css-view-175oi2r r-flexDirection-18u37iz r-width-13qz1uu"
-          >
-            <div
-              class="css-view-175oi2r r-width-1janqcz"
-            />
-            <ul
-              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflow-bztko3 r-paddingLeft-gy4na3"
-              role="list"
-            >
-              <li
-                class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                role="listitem"
-              >
-                <a
-                  aria-current="page"
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
-                  data-testid="Accueil"
-                  href="/TabNavigator/Home"
-                  style="transition-duration: 0s;"
-                >
-                  <div
-                    class="css-view-175oi2r"
-                    data-testid="Accueil sélectionné"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      Accueil sélectionné-SVG-Mock
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  />
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                  <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                    dir="ltr"
-                  >
-                    Accueil
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  />
-                  <div
-                    class="css-view-175oi2r r-height-hdaws3"
-                  />
-                </a>
-              </li>
-              <li
-                class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                role="listitem"
-              >
-                <a
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
-                  data-testid="Rechercher des offres"
-                  href="/TabNavigator/SearchStackNavigator/Search?date&hitsPerPage=20&locationFilter=%5Bobject%20Object%5D&offerIsDuo=false&offerIsFree=false&isDigital=false&priceRange&query=&timeRange&view=Landing&accessibilityFilter=%5Bobject%20Object%5D"
-                  style="transition-duration: 0s;"
-                >
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  />
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                  <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                    dir="ltr"
-                  >
-                    Recherche
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  />
-                </a>
-              </li>
-              <li
-                class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                role="listitem"
-              >
-                <a
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
-                  data-testid="Mes réservations"
-                  href="/TabNavigator/Bookings"
-                  style="transition-duration: 0s;"
-                >
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  />
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                  <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                    dir="ltr"
-                  >
-                    Réservations
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  />
-                </a>
-              </li>
-              <li
-                class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                role="listitem"
-              >
-                <a
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
-                  data-testid="Favoris"
-                  href="/TabNavigator/Favorites"
-                  style="transition-duration: 0s;"
-                >
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  />
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                  <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                    dir="ltr"
-                  >
-                    Favoris
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  />
-                </a>
-              </li>
-              <li
-                class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                role="listitem"
-              >
-                <a
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
-                  data-testid="Mon profil"
-                  href="/TabNavigator/Profile"
-                  style="transition-duration: 0s;"
-                >
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  />
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                  <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                    dir="ltr"
-                  >
-                    Profil
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  />
-                </a>
-              </li>
-            </ul>
-            <div
-              class="css-view-175oi2r r-width-1janqcz"
-            />
-          </div>
-          <div
-            class="css-view-175oi2r r-height-4v7adb"
-          />
-        </div>
-      </nav>
-    </div>
-  </body>,
-  "container": .c0 {
+.c0 {
   z-index: 2;
 }
 
 <div>
-    <nav
-      class="c0"
-      id="tabBarID"
-      role="navigation"
+  <nav
+    class="c0"
+    id="tabBarID"
+    role="navigation"
+  >
+    <div
+      class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1yc6c17 r-borderTopColor-1yjfu75 r-borderTopStyle-1efd50x r-borderTopWidth-5kkj8d r-bottom-1p0dtai r-boxShadow-1q9gwvi r-position-u8s1d r-width-13qz1uu"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-1yc6c17 r-borderTopColor-1yjfu75 r-borderTopStyle-1efd50x r-borderTopWidth-5kkj8d r-bottom-1p0dtai r-boxShadow-1q9gwvi r-position-u8s1d r-width-13qz1uu"
+        class="css-view-175oi2r r-flexDirection-18u37iz r-width-13qz1uu"
       >
         <div
-          class="css-view-175oi2r r-flexDirection-18u37iz r-width-13qz1uu"
+          class="css-view-175oi2r r-width-1janqcz"
+        />
+        <ul
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflow-bztko3 r-paddingLeft-gy4na3"
+          role="list"
         >
-          <div
-            class="css-view-175oi2r r-width-1janqcz"
-          />
-          <ul
-            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflow-bztko3 r-paddingLeft-gy4na3"
-            role="list"
+          <li
+            class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            role="listitem"
           >
-            <li
-              class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-              role="listitem"
+            <a
+              aria-current="page"
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
+              data-testid="Accueil"
+              href="/TabNavigator/Home"
+              style="transition-duration: 0s;"
             >
-              <a
-                aria-current="page"
-                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
-                data-testid="Accueil"
-                href="/TabNavigator/Home"
-                style="transition-duration: 0s;"
+              <div
+                class="css-view-175oi2r"
+                data-testid="Accueil sélectionné"
               >
                 <div
-                  class="css-view-175oi2r"
-                  data-testid="Accueil sélectionné"
-                >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    Accueil sélectionné-SVG-Mock
-                  </div>
-                </div>
-                <div
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                />
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
-                <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                  class="css-text-1rynq56"
                   dir="ltr"
                 >
-                  Accueil
+                  Accueil sélectionné-SVG-Mock
                 </div>
-                <div
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                />
-                <div
-                  class="css-view-175oi2r r-height-hdaws3"
-                />
-              </a>
-            </li>
-            <li
-              class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-              role="listitem"
-            >
-              <a
-                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
-                data-testid="Rechercher des offres"
-                href="/TabNavigator/SearchStackNavigator/Search?date&hitsPerPage=20&locationFilter=%5Bobject%20Object%5D&offerIsDuo=false&offerIsFree=false&isDigital=false&priceRange&query=&timeRange&view=Landing&accessibilityFilter=%5Bobject%20Object%5D"
-                style="transition-duration: 0s;"
+              </div>
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              />
+              <div
+                class="css-view-175oi2r"
               >
                 <div
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                />
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                  class="css-text-1rynq56"
                   dir="ltr"
                 >
-                  Recherche
+                  undefined-SVG-Mock
                 </div>
-                <div
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                />
-              </a>
-            </li>
-            <li
-              class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-              role="listitem"
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                dir="ltr"
+              >
+                Accueil
+              </div>
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              />
+              <div
+                class="css-view-175oi2r r-height-hdaws3"
+              />
+            </a>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            role="listitem"
+          >
+            <a
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
+              data-testid="Rechercher des offres"
+              href="/TabNavigator/SearchStackNavigator/Search?date&hitsPerPage=20&locationFilter=%5Bobject%20Object%5D&offerIsDuo=false&offerIsFree=false&isDigital=false&priceRange&query=&timeRange&view=Landing&accessibilityFilter=%5Bobject%20Object%5D"
+              style="transition-duration: 0s;"
             >
-              <a
-                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
-                data-testid="Mes réservations"
-                href="/TabNavigator/Bookings"
-                style="transition-duration: 0s;"
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              />
+              <div
+                class="css-view-175oi2r"
               >
                 <div
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                />
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                  class="css-text-1rynq56"
                   dir="ltr"
                 >
-                  Réservations
+                  undefined-SVG-Mock
                 </div>
-                <div
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                />
-              </a>
-            </li>
-            <li
-              class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-              role="listitem"
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                dir="ltr"
+              >
+                Recherche
+              </div>
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              />
+            </a>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            role="listitem"
+          >
+            <a
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
+              data-testid="Mes réservations"
+              href="/TabNavigator/Bookings"
+              style="transition-duration: 0s;"
             >
-              <a
-                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
-                data-testid="Favoris"
-                href="/TabNavigator/Favorites"
-                style="transition-duration: 0s;"
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              />
+              <div
+                class="css-view-175oi2r"
               >
                 <div
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                />
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                  class="css-text-1rynq56"
                   dir="ltr"
                 >
-                  Favoris
+                  undefined-SVG-Mock
                 </div>
-                <div
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                />
-              </a>
-            </li>
-            <li
-              class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-              role="listitem"
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                dir="ltr"
+              >
+                Réservations
+              </div>
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              />
+            </a>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            role="listitem"
+          >
+            <a
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
+              data-testid="Favoris"
+              href="/TabNavigator/Favorites"
+              style="transition-duration: 0s;"
             >
-              <a
-                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
-                data-testid="Mon profil"
-                href="/TabNavigator/Profile"
-                style="transition-duration: 0s;"
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              />
+              <div
+                class="css-view-175oi2r"
               >
                 <div
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                />
-                <div
-                  class="css-view-175oi2r"
-                >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
-                  </div>
-                </div>
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                  class="css-text-1rynq56"
                   dir="ltr"
                 >
-                  Profil
+                  undefined-SVG-Mock
                 </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                dir="ltr"
+              >
+                Favoris
+              </div>
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              />
+            </a>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-ixj5dj r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+            role="listitem"
+          >
+            <a
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
+              data-testid="Mon profil"
+              href="/TabNavigator/Profile"
+              style="transition-duration: 0s;"
+            >
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              />
+              <div
+                class="css-view-175oi2r"
+              >
                 <div
-                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                />
-              </a>
-            </li>
-          </ul>
-          <div
-            class="css-view-175oi2r r-width-1janqcz"
-          />
-        </div>
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                dir="ltr"
+              >
+                Profil
+              </div>
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              />
+            </a>
+          </li>
+        </ul>
         <div
-          class="css-view-175oi2r r-height-4v7adb"
+          class="css-view-175oi2r r-width-1janqcz"
         />
       </div>
-    </nav>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+      <div
+        class="css-view-175oi2r r-height-4v7adb"
+      />
+    </div>
+  </nav>
+</div>
 `;

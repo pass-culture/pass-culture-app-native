@@ -11,8 +11,8 @@ const props = {
 
 describe('<ImageTile/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<ImageTile {...props} onlyTopBorderRadius />)
+    const { container } = render(<ImageTile {...props} onlyTopBorderRadius />)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })

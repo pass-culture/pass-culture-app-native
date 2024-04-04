@@ -1,471 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchResultsContent component should render correctly 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": .c3 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  cursor: pointer;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: transparent;
-  padding: 0;
-}
-
-.c3:active {
-  opacity: 0.7;
-  outline: none;
-}
-
-.c3:focus {
-  outline: auto;
-}
-
-.c3:disabled {
-  cursor: initial;
-}
-
-.c3:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c3:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c5 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
-  width: 100%;
-  background-color: #eb0055;
-  max-width: 500px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c5:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c5:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
-  text-decoration-color: #ffffff;
-}
-
-.c5:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c6:disabled {
-  background-color: #F1F1F4;
-}
-
-.c2 {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  line-height: 20px;
-  color: #161617;
-  cursor: pointer;
-}
-
-.c0 {
-  overflow: hidden;
-  margin-left: 24px;
-  margin-right: 24px;
-  width: 1px;
-  height: 1px;
-}
-
-.c0:focus-within {
-  width: auto;
-  height: auto;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.c4 {
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  box-sizing: border-box;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-left: 16px;
-  padding-right: 16px;
-  height: 32px;
-  background-color: #ffffff;
-  border-color: #161617;
-  border-width: 1px;
-  border-radius: 24px;
-}
-
-.c4:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c4:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-<body>
-    <div>
-      <div
-        class="c0"
-      >
-        <div
-          class="c1"
-        >
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-          >
-            <div
-              aria-hidden="true"
-              class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-              dir="ltr"
-            >
-              Case à cocher - 
-              cochée
-            </div>
-            <div
-              aria-checked="true"
-              aria-labelledby="testUuidV4"
-              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-              data-testid="Interrupteur"
-              role="checkbox"
-              style="transition-duration: 0s;"
-              tabindex="0"
-            >
-              <div
-                class="css-view-175oi2r r-backgroundColor-1r1osd2 r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
-              >
-                <div
-                  class="css-view-175oi2r"
-                  style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; box-shadow: 0px 2px 2.5px rgba(22,22,23,0.20); margin-left: 26px;"
-                >
-                  <div
-                    aria-label="Activé"
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <input
-              checked=""
-              hidden=""
-              id="testUuidV4"
-              readonly=""
-              type="checkbox"
-            />
-          </div>
-          <div
-            class="css-view-175oi2r r-width-19wmn03"
-          />
-          <label
-            class="c2"
-            for="testUuidV4"
-            id="testUuidV4"
-          >
-            <div
-              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-              dir="ltr"
-            >
-              Activer le chargement automatique des résultats
-            </div>
-          </label>
-          <div
-            class="css-view-175oi2r r-height-3da1kt"
-          />
-        </div>
-      </div>
-      <div
-        class="css-view-175oi2r"
-      >
-        <div
-          class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-lltvgl r-overflowY-buy8e9 r-transform-1sncvnh r-scrollbarWidth-2eszeu"
-        >
-          <div
-            class="css-view-175oi2r r-flexDirection-18u37iz"
-          >
-            <div
-              class="css-view-175oi2r r-width-19wmn03"
-            />
-            <ul
-              class="css-view-175oi2r r-flexDirection-18u37iz r-overflow-1dqxon3 r-paddingLeft-gy4na3"
-              role="list"
-            >
-              <li
-                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
-                role="listitem"
-              >
-                <div
-                  aria-label="Voir tous les filtres"
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-display-6koalj r-height-mabqd8 r-width-1yvhtrz"
-                  data-testid="Voir tous les filtres"
-                  style="transition-duration: 0s;"
-                  tabindex="0"
-                >
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-borderRadius-1867qdf r-borderWidth-rs99b7 r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                  >
-                    <div
-                      class="css-view-175oi2r"
-                    >
-                      <div
-                        class="css-text-1rynq56"
-                        dir="ltr"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li
-                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
-                role="listitem"
-              >
-                <button
-                  aria-label="Lieu culturel"
-                  class="c3 c4 sc-cwHptR c4"
-                  data-testid="Lieu culturel"
-                  tabindex="0"
-                  title="Lieu culturel"
-                  type="button"
-                >
-                  <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    data-testid="venueButtonLabel"
-                    dir="ltr"
-                  >
-                    Lieu culturel
-                  </div>
-                </button>
-              </li>
-              <li
-                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
-                role="listitem"
-              >
-                <button
-                  aria-label="Catégories"
-                  class="c3 c4 sc-cwHptR c4"
-                  data-testid="Catégories"
-                  tabindex="0"
-                  title="Catégories"
-                  type="button"
-                >
-                  <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    data-testid="categoryButtonLabel"
-                    dir="ltr"
-                  >
-                    Catégories
-                  </div>
-                </button>
-              </li>
-              <li
-                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
-                role="listitem"
-              >
-                <button
-                  aria-label="Prix"
-                  class="c3 c4 sc-cwHptR c4"
-                  data-testid="Prix"
-                  tabindex="0"
-                  title="Prix"
-                  type="button"
-                >
-                  <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    data-testid="priceButtonLabel"
-                    dir="ltr"
-                  >
-                    Prix
-                  </div>
-                </button>
-              </li>
-              <li
-                class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
-                role="listitem"
-              >
-                <button
-                  aria-label="Dates & heures"
-                  class="c3 c4 sc-cwHptR c4"
-                  data-testid="Dates & heures"
-                  tabindex="0"
-                  title="Dates & heures"
-                  type="button"
-                >
-                  <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    data-testid="datesHoursButtonLabel"
-                    dir="ltr"
-                  >
-                    Dates & heures
-                  </div>
-                </button>
-              </li>
-            </ul>
-            <div
-              class="css-view-175oi2r r-width-19wmn03"
-            />
-          </div>
-        </div>
-        <div
-          class="css-view-175oi2r r-height-3da1kt"
-        />
-      </div>
-      <div
-        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-        data-testid="searchResults"
-      >
-        <div
-          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-          data-testid="searchResultsList"
-        >
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
-            role="status"
-          >
-            <div
-              class="css-view-175oi2r r-flexShrink-1q142lx r-marginTop-12scy6p"
-            >
-              <div
-                class="css-view-175oi2r"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  undefined-SVG-Mock
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy"
-            >
-              <h2
-                aria-level="2"
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
-                dir="ltr"
-                role="heading"
-              >
-                Pas de résultat
-              </h2>
-              <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
-                dir="ltr"
-              >
-                <span
-                  aria-live="assertive"
-                  class="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                >
-                  Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
-                </span>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-height-1472mwg"
-            />
-            <div
-              class="css-view-175oi2r"
-            >
-              <button
-                aria-label="Modifier mes filtres"
-                class="c5 c6"
-                data-testid="Modifier mes filtres"
-                tabindex="0"
-                type="button"
-              >
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                >
-                  <div
-                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
-                    dir="ltr"
-                  >
-                    Modifier mes filtres
-                  </div>
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div />
-    <div />
-    <div />
-    <div />
-    <div />
-    <div />
-  </body>,
-  "container": .c3 {
+.c3 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -629,41 +165,112 @@ exports[`SearchResultsContent component should render correctly 1`] = `
 }
 
 <div>
+  <div
+    class="c0"
+  >
     <div
-      class="c0"
+      class="c1"
     >
       <div
-        class="c1"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
       >
         <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+          aria-hidden="true"
+          class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+          dir="ltr"
+        >
+          Case à cocher - 
+          cochée
+        </div>
+        <div
+          aria-checked="true"
+          aria-labelledby="testUuidV4"
+          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+          data-testid="Interrupteur"
+          role="checkbox"
+          style="transition-duration: 0s;"
+          tabindex="0"
         >
           <div
-            aria-hidden="true"
-            class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-            dir="ltr"
-          >
-            Case à cocher - 
-            cochée
-          </div>
-          <div
-            aria-checked="true"
-            aria-labelledby="testUuidV4"
-            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-            data-testid="Interrupteur"
-            role="checkbox"
-            style="transition-duration: 0s;"
-            tabindex="0"
+            class="css-view-175oi2r r-backgroundColor-1r1osd2 r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
           >
             <div
-              class="css-view-175oi2r r-backgroundColor-1r1osd2 r-borderRadius-1867qdf r-height-mabqd8 r-justifyContent-1777fci r-width-18tzken"
+              class="css-view-175oi2r"
+              style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; box-shadow: 0px 2px 2.5px rgba(22,22,23,0.20); margin-left: 26px;"
             >
               <div
+                aria-label="Activé"
                 class="css-view-175oi2r"
-                style="width: 28px; height: 28px; background-color: rgb(255, 255, 255); border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; align-items: center; justify-content: center; box-shadow: 0px 2px 2.5px rgba(22,22,23,0.20); margin-left: 26px;"
               >
                 <div
-                  aria-label="Activé"
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <input
+          checked=""
+          hidden=""
+          id="testUuidV4"
+          readonly=""
+          type="checkbox"
+        />
+      </div>
+      <div
+        class="css-view-175oi2r r-width-19wmn03"
+      />
+      <label
+        class="c2"
+        for="testUuidV4"
+        id="testUuidV4"
+      >
+        <div
+          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+          dir="ltr"
+        >
+          Activer le chargement automatique des résultats
+        </div>
+      </label>
+      <div
+        class="css-view-175oi2r r-height-3da1kt"
+      />
+    </div>
+  </div>
+  <div
+    class="css-view-175oi2r"
+  >
+    <div
+      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-lltvgl r-overflowY-buy8e9 r-transform-1sncvnh r-scrollbarWidth-2eszeu"
+    >
+      <div
+        class="css-view-175oi2r r-flexDirection-18u37iz"
+      >
+        <div
+          class="css-view-175oi2r r-width-19wmn03"
+        />
+        <ul
+          class="css-view-175oi2r r-flexDirection-18u37iz r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+          role="list"
+        >
+          <li
+            class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
+            role="listitem"
+          >
+            <div
+              aria-label="Voir tous les filtres"
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-display-6koalj r-height-mabqd8 r-width-1yvhtrz"
+              data-testid="Voir tous les filtres"
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-borderRadius-1867qdf r-borderWidth-rs99b7 r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
+              >
+                <div
                   class="css-view-175oi2r"
                 >
                   <div
@@ -675,300 +282,177 @@ exports[`SearchResultsContent component should render correctly 1`] = `
                 </div>
               </div>
             </div>
-          </div>
-          <input
-            checked=""
-            hidden=""
-            id="testUuidV4"
-            readonly=""
-            type="checkbox"
-          />
-        </div>
-        <div
-          class="css-view-175oi2r r-width-19wmn03"
-        />
-        <label
-          class="c2"
-          for="testUuidV4"
-          id="testUuidV4"
-        >
-          <div
-            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-            dir="ltr"
-          >
-            Activer le chargement automatique des résultats
-          </div>
-        </label>
-        <div
-          class="css-view-175oi2r r-height-3da1kt"
-        />
-      </div>
-    </div>
-    <div
-      class="css-view-175oi2r"
-    >
-      <div
-        class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-lltvgl r-overflowY-buy8e9 r-transform-1sncvnh r-scrollbarWidth-2eszeu"
-      >
-        <div
-          class="css-view-175oi2r r-flexDirection-18u37iz"
-        >
-          <div
-            class="css-view-175oi2r r-width-19wmn03"
-          />
-          <ul
-            class="css-view-175oi2r r-flexDirection-18u37iz r-overflow-1dqxon3 r-paddingLeft-gy4na3"
-            role="list"
-          >
-            <li
-              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
-              role="listitem"
-            >
-              <div
-                aria-label="Voir tous les filtres"
-                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-display-6koalj r-height-mabqd8 r-width-1yvhtrz"
-                data-testid="Voir tous les filtres"
-                style="transition-duration: 0s;"
-                tabindex="0"
-              >
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-borderRadius-1867qdf r-borderWidth-rs99b7 r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
-                >
-                  <div
-                    class="css-view-175oi2r"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li
-              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
-              role="listitem"
-            >
-              <button
-                aria-label="Lieu culturel"
-                class="c3 c4 sc-cwHptR c4"
-                data-testid="Lieu culturel"
-                tabindex="0"
-                title="Lieu culturel"
-                type="button"
-              >
-                <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                  data-testid="venueButtonLabel"
-                  dir="ltr"
-                >
-                  Lieu culturel
-                </div>
-              </button>
-            </li>
-            <li
-              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
-              role="listitem"
-            >
-              <button
-                aria-label="Catégories"
-                class="c3 c4 sc-cwHptR c4"
-                data-testid="Catégories"
-                tabindex="0"
-                title="Catégories"
-                type="button"
-              >
-                <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                  data-testid="categoryButtonLabel"
-                  dir="ltr"
-                >
-                  Catégories
-                </div>
-              </button>
-            </li>
-            <li
-              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
-              role="listitem"
-            >
-              <button
-                aria-label="Prix"
-                class="c3 c4 sc-cwHptR c4"
-                data-testid="Prix"
-                tabindex="0"
-                title="Prix"
-                type="button"
-              >
-                <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                  data-testid="priceButtonLabel"
-                  dir="ltr"
-                >
-                  Prix
-                </div>
-              </button>
-            </li>
-            <li
-              class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
-              role="listitem"
-            >
-              <button
-                aria-label="Dates & heures"
-                class="c3 c4 sc-cwHptR c4"
-                data-testid="Dates & heures"
-                tabindex="0"
-                title="Dates & heures"
-                type="button"
-              >
-                <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                  data-testid="datesHoursButtonLabel"
-                  dir="ltr"
-                >
-                  Dates & heures
-                </div>
-              </button>
-            </li>
-          </ul>
-          <div
-            class="css-view-175oi2r r-width-19wmn03"
-          />
-        </div>
-      </div>
-      <div
-        class="css-view-175oi2r r-height-3da1kt"
-      />
-    </div>
-    <div
-      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-      data-testid="searchResults"
-    >
-      <div
-        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-        data-testid="searchResultsList"
-      >
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
-          role="status"
-        >
-          <div
-            class="css-view-175oi2r r-flexShrink-1q142lx r-marginTop-12scy6p"
-          >
-            <div
-              class="css-view-175oi2r"
-            >
-              <div
-                class="css-text-1rynq56"
-                dir="ltr"
-              >
-                undefined-SVG-Mock
-              </div>
-            </div>
-          </div>
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy"
-          >
-            <h2
-              aria-level="2"
-              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
-              dir="ltr"
-              role="heading"
-            >
-              Pas de résultat
-            </h2>
-            <div
-              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
-              dir="ltr"
-            >
-              <span
-                aria-live="assertive"
-                class="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-              >
-                Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
-              </span>
-            </div>
-          </div>
-          <div
-            class="css-view-175oi2r r-height-1472mwg"
-          />
-          <div
-            class="css-view-175oi2r"
+          </li>
+          <li
+            class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
+            role="listitem"
           >
             <button
-              aria-label="Modifier mes filtres"
-              class="c5 c6"
-              data-testid="Modifier mes filtres"
+              aria-label="Lieu culturel"
+              class="c3 c4 sc-cwHptR c4"
+              data-testid="Lieu culturel"
               tabindex="0"
+              title="Lieu culturel"
               type="button"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                data-testid="venueButtonLabel"
+                dir="ltr"
               >
-                <div
-                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
-                  dir="ltr"
-                >
-                  Modifier mes filtres
-                </div>
+                Lieu culturel
               </div>
             </button>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
+            role="listitem"
+          >
+            <button
+              aria-label="Catégories"
+              class="c3 c4 sc-cwHptR c4"
+              data-testid="Catégories"
+              tabindex="0"
+              title="Catégories"
+              type="button"
+            >
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                data-testid="categoryButtonLabel"
+                dir="ltr"
+              >
+                Catégories
+              </div>
+            </button>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
+            role="listitem"
+          >
+            <button
+              aria-label="Prix"
+              class="c3 c4 sc-cwHptR c4"
+              data-testid="Prix"
+              tabindex="0"
+              title="Prix"
+              type="button"
+            >
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                data-testid="priceButtonLabel"
+                dir="ltr"
+              >
+                Prix
+              </div>
+            </button>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+            role="listitem"
+          >
+            <button
+              aria-label="Dates & heures"
+              class="c3 c4 sc-cwHptR c4"
+              data-testid="Dates & heures"
+              tabindex="0"
+              title="Dates & heures"
+              type="button"
+            >
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                data-testid="datesHoursButtonLabel"
+                dir="ltr"
+              >
+                Dates & heures
+              </div>
+            </button>
+          </li>
+        </ul>
+        <div
+          class="css-view-175oi2r r-width-19wmn03"
+        />
+      </div>
+    </div>
+    <div
+      class="css-view-175oi2r r-height-3da1kt"
+    />
+  </div>
+  <div
+    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+    data-testid="searchResults"
+  >
+    <div
+      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      data-testid="searchResultsList"
+    >
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
+        role="status"
+      >
+        <div
+          class="css-view-175oi2r r-flexShrink-1q142lx r-marginTop-12scy6p"
+        >
+          <div
+            class="css-view-175oi2r"
+          >
+            <div
+              class="css-text-1rynq56"
+              dir="ltr"
+            >
+              undefined-SVG-Mock
+            </div>
           </div>
+        </div>
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy"
+        >
+          <h2
+            aria-level="2"
+            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
+            dir="ltr"
+            role="heading"
+          >
+            Pas de résultat
+          </h2>
+          <div
+            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
+            dir="ltr"
+          >
+            <span
+              aria-live="assertive"
+              class="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+            >
+              Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
+            </span>
+          </div>
+        </div>
+        <div
+          class="css-view-175oi2r r-height-1472mwg"
+        />
+        <div
+          class="css-view-175oi2r"
+        >
+          <button
+            aria-label="Modifier mes filtres"
+            class="c5 c6"
+            data-testid="Modifier mes filtres"
+            tabindex="0"
+            type="button"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+            >
+              <div
+                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
+                dir="ltr"
+              >
+                Modifier mes filtres
+              </div>
+            </div>
+          </button>
         </div>
       </div>
     </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+  </div>
+</div>
 `;

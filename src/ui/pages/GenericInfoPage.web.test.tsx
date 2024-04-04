@@ -14,8 +14,10 @@ jest.unmock('libs/hooks/useWhiteStatusBar')
 
 describe('<GenericInfoPage />', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<GenericInfoPage title="GenericInfoPage" icon={BicolorPhonePending} />)
+    const { container } = render(
+      <GenericInfoPage title="GenericInfoPage" icon={BicolorPhonePending} />
+    )
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })

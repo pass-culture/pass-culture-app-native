@@ -29,9 +29,9 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 describe('AccessibleTabBar', () => {
   it('renders correctly', () => {
-    const renderAPI = renderTabBar()
+    const { container } = renderTabBar()
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('should display the 5 following tabs', () => {

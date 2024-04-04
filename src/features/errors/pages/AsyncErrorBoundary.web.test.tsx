@@ -23,11 +23,11 @@ describe('AsyncErrorBoundary component', () => {
   })
 
   it('should render correctly', () => {
-    const renderAPI = render(
+    const { container } = render(
       <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={resetErrorBoundary} />
     )
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('should have back arrow if possible', () => {

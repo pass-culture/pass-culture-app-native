@@ -1,317 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SetAddress/> should render correctly 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": .c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  cursor: pointer;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: transparent;
-  padding: 0;
-}
-
-.c0:active {
-  opacity: 0.7;
-  outline: none;
-}
-
-.c0:focus {
-  outline: auto;
-}
-
-.c0:disabled {
-  cursor: initial;
-}
-
-.c0:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c0:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c1 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  max-width: 40px;
-  height: 40px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c5 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
-  width: 100%;
-  background-color: #F1F1F4;
-  max-width: 500px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c5:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c5:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
-  text-decoration-color: #ffffff;
-}
-
-.c5:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c6:disabled {
-  background-color: #F1F1F4;
-}
-
-.c2 {
-  width: 100%;
-  max-width: 500px;
-}
-
-.c3 {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  line-height: 20px;
-  color: #161617;
-  cursor: pointer;
-}
-
-.c4 {
-  width: 100%;
-}
-
-<body>
-    <div>
-      <header
-        class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
-        role="banner"
-      >
-        <div
-          class="css-view-175oi2r r-height-10ptun7"
-        />
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
-        >
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
-          >
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
-              data-testid="back-button-container"
-            >
-              <button
-                aria-label="Revenir en arrière"
-                class="c0 c1 sc-gEvEer c1"
-                data-testid="Revenir en arrière"
-                tabindex="0"
-                title="Revenir en arrière"
-                type="button"
-              >
-                <div
-                  class="css-view-175oi2r"
-                  data-testid="icon-back"
-                >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    icon-back-SVG-Mock
-                  </div>
-                </div>
-                <div
-                  class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                  dir="ltr"
-                >
-                  Retour
-                </div>
-              </button>
-            </div>
-            <h1
-              aria-level="1"
-              class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-              dir="ltr"
-              role="heading"
-            >
-              Profil
-            </h1>
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
-              data-testid="close-button-container"
-            />
-          </div>
-        </div>
-      </header>
-      <div
-        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-      >
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-fd4yh7"
-        >
-          <div
-            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
-          >
-            <div
-              class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
-            >
-              <div
-                class="css-view-175oi2r"
-                style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
-              >
-                <div
-                  class="css-view-175oi2r"
-                  style="height: 65px;"
-                />
-                <form
-                  class="c2"
-                >
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
-                  >
-                    <h2
-                      aria-level="2"
-                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
-                      dir="ltr"
-                      role="heading"
-                    >
-                      Quelle est ton adresse ?
-                    </h2>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-height-z80fyv"
-                  />
-                  <label
-                    class="c3 c4"
-                  >
-                    <div
-                      class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
-                    >
-                      <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                        dir="ltr"
-                      >
-                        Entre ton adresse
-                      </div>
-                    </div>
-                  </label>
-                  <div
-                    class="css-view-175oi2r r-height-3da1kt"
-                  />
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu r-borderRadius-1fuqb1j r-outlineOffset-2fw26j"
-                    data-testid="styled-input-container"
-                  >
-                    <input
-                      autocapitalize="sentences"
-                      autocomplete="on"
-                      autocorrect="off"
-                      class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-color-v2ubm6 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-1twveob r-fontSize-a023e6 r-height-1pi2tsx r-paddingBottom-1mdbw0j r-paddingLeft-gy4na3 r-paddingRight-9aemit r-paddingTop-wk8lta r-width-lnhwgy"
-                      data-testid="Entrée pour l’adresse"
-                      dir="ltr"
-                      enterkeyhint="next"
-                      placeholder="Ex : 34 avenue de l’Opéra"
-                      spellcheck="false"
-                      style="--placeholderTextColor: #696A6F;"
-                      type="search"
-                      value=""
-                    />
-                  </div>
-                  <div
-                    role="alert"
-                  />
-                  <div
-                    class="css-view-175oi2r r-height-3da1kt"
-                  />
-                </form>
-                <div
-                  class="css-view-175oi2r r-boxSizing-1tjplnt r-flexGrow-16y2uox r-overflowY-17y9yhz"
-                  role="radiogroup"
-                />
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
-            >
-              <button
-                aria-label="Continuer vers l’étape suivante"
-                class="c5 c6"
-                data-testid="Continuer vers l’étape suivante"
-                disabled=""
-                type="submit"
-              >
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                >
-                  <div
-                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
-                    dir="ltr"
-                  >
-                    Continuer
-                  </div>
-                </div>
-              </button>
-              <div
-                class="css-view-175oi2r r-height-3da1kt"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
-      />
-    </div>
-  </body>,
-  "container": .c0 {
+.c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -439,234 +129,182 @@ exports[`<SetAddress/> should render correctly 1`] = `
 }
 
 <div>
-    <header
-      class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
-      role="banner"
-    >
-      <div
-        class="css-view-175oi2r r-height-10ptun7"
-      />
-      <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
-      >
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
-        >
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
-            data-testid="back-button-container"
-          >
-            <button
-              aria-label="Revenir en arrière"
-              class="c0 c1 sc-gEvEer c1"
-              data-testid="Revenir en arrière"
-              tabindex="0"
-              title="Revenir en arrière"
-              type="button"
-            >
-              <div
-                class="css-view-175oi2r"
-                data-testid="icon-back"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  icon-back-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                dir="ltr"
-              >
-                Retour
-              </div>
-            </button>
-          </div>
-          <h1
-            aria-level="1"
-            class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-            dir="ltr"
-            role="heading"
-          >
-            Profil
-          </h1>
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
-            data-testid="close-button-container"
-          />
-        </div>
-      </div>
-    </header>
+  <header
+    class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
+    role="banner"
+  >
     <div
-      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      class="css-view-175oi2r r-height-10ptun7"
+    />
+    <div
+      class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-fd4yh7"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
       >
         <div
-          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
+          data-testid="back-button-container"
         >
-          <div
-            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+          <button
+            aria-label="Revenir en arrière"
+            class="c0 c1 sc-gEvEer c1"
+            data-testid="Revenir en arrière"
+            tabindex="0"
+            title="Revenir en arrière"
+            type="button"
           >
             <div
               class="css-view-175oi2r"
-              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+              data-testid="icon-back"
             >
               <div
-                class="css-view-175oi2r"
-                style="height: 65px;"
+                class="css-text-1rynq56"
+                dir="ltr"
+              >
+                icon-back-SVG-Mock
+              </div>
+            </div>
+            <div
+              class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+              dir="ltr"
+            >
+              Retour
+            </div>
+          </button>
+        </div>
+        <h1
+          aria-level="1"
+          class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+          dir="ltr"
+          role="heading"
+        >
+          Profil
+        </h1>
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
+          data-testid="close-button-container"
+        />
+      </div>
+    </div>
+  </header>
+  <div
+    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+  >
+    <div
+      class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-fd4yh7"
+    >
+      <div
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+      >
+        <div
+          class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+        >
+          <div
+            class="css-view-175oi2r"
+            style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+          >
+            <div
+              class="css-view-175oi2r"
+              style="height: 65px;"
+            />
+            <form
+              class="c2"
+            >
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
+              >
+                <h2
+                  aria-level="2"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Quelle est ton adresse ?
+                </h2>
+              </div>
+              <div
+                class="css-view-175oi2r r-height-z80fyv"
               />
-              <form
-                class="c2"
+              <label
+                class="c3 c4"
               >
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
-                >
-                  <h2
-                    aria-level="2"
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
-                    dir="ltr"
-                    role="heading"
-                  >
-                    Quelle est ton adresse ?
-                  </h2>
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-z80fyv"
-                />
-                <label
-                  class="c3 c4"
+                  class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
                 >
                   <div
-                    class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
-                  >
-                    <div
-                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                      dir="ltr"
-                    >
-                      Entre ton adresse
-                    </div>
-                  </div>
-                </label>
-                <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu r-borderRadius-1fuqb1j r-outlineOffset-2fw26j"
-                  data-testid="styled-input-container"
-                >
-                  <input
-                    autocapitalize="sentences"
-                    autocomplete="on"
-                    autocorrect="off"
-                    class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-color-v2ubm6 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-1twveob r-fontSize-a023e6 r-height-1pi2tsx r-paddingBottom-1mdbw0j r-paddingLeft-gy4na3 r-paddingRight-9aemit r-paddingTop-wk8lta r-width-lnhwgy"
-                    data-testid="Entrée pour l’adresse"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
                     dir="ltr"
-                    enterkeyhint="next"
-                    placeholder="Ex : 34 avenue de l’Opéra"
-                    spellcheck="false"
-                    style="--placeholderTextColor: #696A6F;"
-                    type="search"
-                    value=""
-                  />
+                  >
+                    Entre ton adresse
+                  </div>
                 </div>
-                <div
-                  role="alert"
-                />
-                <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-              </form>
+              </label>
               <div
-                class="css-view-175oi2r r-boxSizing-1tjplnt r-flexGrow-16y2uox r-overflowY-17y9yhz"
-                role="radiogroup"
+                class="css-view-175oi2r r-height-3da1kt"
               />
-            </div>
-          </div>
-          <div
-            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
-          >
-            <button
-              aria-label="Continuer vers l’étape suivante"
-              class="c5 c6"
-              data-testid="Continuer vers l’étape suivante"
-              disabled=""
-              type="submit"
-            >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu r-borderRadius-1fuqb1j r-outlineOffset-2fw26j"
+                data-testid="styled-input-container"
               >
-                <div
-                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
+                <input
+                  autocapitalize="sentences"
+                  autocomplete="on"
+                  autocorrect="off"
+                  class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-color-v2ubm6 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-1twveob r-fontSize-a023e6 r-height-1pi2tsx r-paddingBottom-1mdbw0j r-paddingLeft-gy4na3 r-paddingRight-9aemit r-paddingTop-wk8lta r-width-lnhwgy"
+                  data-testid="Entrée pour l’adresse"
                   dir="ltr"
-                >
-                  Continuer
-                </div>
+                  enterkeyhint="next"
+                  placeholder="Ex : 34 avenue de l’Opéra"
+                  spellcheck="false"
+                  style="--placeholderTextColor: #696A6F;"
+                  type="search"
+                  value=""
+                />
               </div>
-            </button>
+              <div
+                role="alert"
+              />
+              <div
+                class="css-view-175oi2r r-height-3da1kt"
+              />
+            </form>
             <div
-              class="css-view-175oi2r r-height-3da1kt"
+              class="css-view-175oi2r r-boxSizing-1tjplnt r-flexGrow-16y2uox r-overflowY-17y9yhz"
+              role="radiogroup"
             />
           </div>
         </div>
+        <div
+          class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
+        >
+          <button
+            aria-label="Continuer vers l’étape suivante"
+            class="c5 c6"
+            data-testid="Continuer vers l’étape suivante"
+            disabled=""
+            type="submit"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+            >
+              <div
+                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
+                dir="ltr"
+              >
+                Continuer
+              </div>
+            </div>
+          </button>
+          <div
+            class="css-view-175oi2r r-height-3da1kt"
+          />
+        </div>
       </div>
     </div>
-    <div
-      class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
-    />
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+  </div>
+  <div
+    class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+  />
+</div>
 `;

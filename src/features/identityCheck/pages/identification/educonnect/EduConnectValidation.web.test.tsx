@@ -9,9 +9,9 @@ jest.mock('features/auth/context/AuthContext')
 
 describe('<EduConnectValidation />', () => {
   it('should render EduConnectValidation component correctly', () => {
-    const renderAPI = render(<EduConnectValidation />)
+    const { container } = render(<EduConnectValidation />)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('should display user infos with props given', () => {

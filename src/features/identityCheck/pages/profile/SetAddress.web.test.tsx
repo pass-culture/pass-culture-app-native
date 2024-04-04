@@ -14,9 +14,9 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 
 describe('<SetAddress/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(reactQueryProviderHOC(<SetAddress />))
+    const { container } = render(reactQueryProviderHOC(<SetAddress />))
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   describe('Accessibility', () => {
