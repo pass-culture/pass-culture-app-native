@@ -2,7 +2,7 @@ import { ANIMATION_DELAY, useShowSkeleton } from 'features/home/api/useShowSkele
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('useShowSkeleton', () => {
   it('should show skeleton when fetching data on load', async () => {

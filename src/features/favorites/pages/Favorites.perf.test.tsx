@@ -16,7 +16,7 @@ import { measurePerformance, screen } from 'tests/utils'
 // Performance measuring is run multiple times so we need to increase the timeout
 const TEST_TIMEOUT_IN_MS = 30000
 jest.setTimeout(TEST_TIMEOUT_IN_MS)
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 const offerIds = paginatedFavoritesResponseSnap.favorites.map((favorite) => favorite.offer.id)
 

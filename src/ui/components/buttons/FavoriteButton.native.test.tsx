@@ -63,7 +63,7 @@ const mockUseRemoveFavorite = () => {
   }))
 }
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('<FavoriteButton />', () => {
   it('should render favorite icon', async () => {

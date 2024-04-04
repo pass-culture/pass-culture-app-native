@@ -15,7 +15,7 @@ import { measurePerformance, screen } from 'tests/utils'
 jest.unmock('libs/jwt')
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('<EndedBookings />', () => {
   beforeEach(() => {

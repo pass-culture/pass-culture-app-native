@@ -9,7 +9,7 @@ const appStateSpy = jest.spyOn(AppState, 'addEventListener')
 
 const currentDate = new Date('2023-10-05T12:00:00Z')
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('useTimer', () => {
   beforeEach(() => {

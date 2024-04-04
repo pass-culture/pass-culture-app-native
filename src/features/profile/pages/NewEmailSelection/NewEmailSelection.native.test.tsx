@@ -9,7 +9,7 @@ import { fireEvent, render, screen, act } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 useRoute.mockReturnValue({ params: { token: 'new_email_selection_token' } })
 

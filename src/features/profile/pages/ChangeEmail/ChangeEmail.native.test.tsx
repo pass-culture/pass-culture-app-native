@@ -15,7 +15,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 import { ChangeEmail } from './ChangeEmail'
 
 jest.mock('features/auth/context/AuthContext')
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()

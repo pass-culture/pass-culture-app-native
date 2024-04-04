@@ -9,7 +9,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/venue/api/useVenue')
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 

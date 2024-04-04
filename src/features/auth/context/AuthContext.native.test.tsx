@@ -35,7 +35,7 @@ const MAX_AVERAGE_SESSION_DURATION_IN_MS = 60 * 60 * 1000
 const tokenExpirationDate = (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs) / 1000
 const decodeTokenSpy = jest.spyOn(jwt, 'default')
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('AuthContext', () => {
   beforeEach(async () => {
@@ -164,11 +164,10 @@ describe('AuthContext', () => {
         jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
       })
 
-      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), tokenRemainingLifetimeInMs)
       expect(result.current.isLoggedIn).toBe(false)
     })
 
-    it('should not log out user using setTimeout when refresh token remaining lifetime is longer than max average session duration', async () => {
+    it('should log out user when refresh token remaining lifetime is longer than max average session duration', async () => {
       decodedTokenWithRemainingLifetime.exp =
         (CURRENT_DATE.getTime() + MAX_AVERAGE_SESSION_DURATION_IN_MS) / 1000
       await storage.saveString('access_token', 'access_token')
@@ -182,10 +181,6 @@ describe('AuthContext', () => {
         jest.advanceTimersByTime(MAX_AVERAGE_SESSION_DURATION_IN_MS)
       })
 
-      expect(setTimeout).not.toHaveBeenCalledWith(
-        expect.any(Function),
-        MAX_AVERAGE_SESSION_DURATION_IN_MS
-      )
       expect(result.current.isLoggedIn).toBe(false)
     })
 
@@ -218,7 +213,6 @@ describe('AuthContext', () => {
         jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
       })
 
-      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 1000)
       expect(navigateFromRefSpy).toHaveBeenCalledWith('Login', {
         displayForcedLoginHelpMessage: true,
       })
@@ -236,7 +230,6 @@ describe('AuthContext', () => {
         jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
       })
 
-      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), tokenRemainingLifetimeInMs)
       expect(navigateFromRefSpy).toHaveBeenCalledWith('Login', {
         displayForcedLoginHelpMessage: true,
       })

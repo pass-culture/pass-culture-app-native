@@ -33,7 +33,7 @@ const mockFetch = jest.spyOn(global, 'fetch')
 const mockGetRefreshToken = jest.spyOn(Keychain, 'getRefreshToken')
 const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('refreshAccessToken', () => {
   afterEach(removeRefreshedAccessToken)

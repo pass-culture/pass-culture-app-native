@@ -9,7 +9,7 @@ const Children = () => <View testID="accordion-child-view" />
 
 const accordionTitle = 'accordion title'
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 describe('AccordionItem', () => {
   it("should be closed by default - we don't see the children", () => {
