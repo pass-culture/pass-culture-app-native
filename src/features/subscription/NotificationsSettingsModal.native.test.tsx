@@ -31,7 +31,19 @@ describe('<NotificationsSettingsModal />', () => {
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should dismiss modal on press "Quitter sans enregistrer"', () => {
+  it('should reset the state and re-initialize the switch when dismissing the modal', () => {
+    renderModal(true)
+
+    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleSwitch)
+
+    const dismissModalButton = screen.getByTestId('rightIcon')
+    fireEvent.press(dismissModalButton)
+
+    expect(toggleSwitch).toHaveAccessibilityState({ checked: false })
+  })
+
+  it('should dismiss modal on press "Tout refuser..."', () => {
     renderModal(true)
 
     const goBackButton = screen.getByText('Tout refuser et ne pas recevoir d’actus')
@@ -39,6 +51,18 @@ describe('<NotificationsSettingsModal />', () => {
     fireEvent.press(goBackButton)
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should reset the state and re-initialize the switch on press "Tout refuser..."', () => {
+    renderModal(true)
+
+    const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+    fireEvent.press(toggleSwitch)
+
+    const goBackButton = screen.getByText('Tout refuser et ne pas recevoir d’actus')
+    fireEvent.press(goBackButton)
+
+    expect(toggleSwitch).toHaveAccessibilityState({ checked: false })
   })
 
   it('should dismiss modal when saving changes', async () => {

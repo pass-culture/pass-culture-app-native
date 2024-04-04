@@ -67,7 +67,10 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
       title={`S’abonner au thème “${mapSubscriptionThemeToName[theme]}”`}
       rightIconAccessibilityLabel="Ne pas s’abonner"
       rightIcon={Close}
-      onRightIconPress={dismissModal}>
+      onRightIconPress={() => {
+        setSettings(initialState)
+        dismissModal()
+      }}>
       <ModalContent>
         <Typo.Body>Pour recevoir toute l’actu de ce thème, tu dois, au choix&nbsp;:</Typo.Body>
 

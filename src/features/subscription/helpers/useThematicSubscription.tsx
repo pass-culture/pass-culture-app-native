@@ -25,10 +25,10 @@ export const useThematicSubscription = ({
   const isPushPermissionGranted = pushPermission === 'granted'
 
   const isAtLeastOneNotificationTypeActivated =
-    (Platform.OS === 'web' && !user?.subscriptions.marketingEmail) ||
-    (Platform.OS !== 'web' &&
-      ((isPushPermissionGranted && user?.subscriptions.marketingPush) ||
-        user?.subscriptions.marketingEmail))
+    Platform.OS === 'web'
+      ? user?.subscriptions.marketingEmail
+      : (isPushPermissionGranted && user?.subscriptions.marketingPush) ||
+        user?.subscriptions.marketingEmail
 
   const initialState = {
     allowEmails: user?.subscriptions.marketingEmail,

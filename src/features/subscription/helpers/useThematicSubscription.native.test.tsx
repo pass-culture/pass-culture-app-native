@@ -53,19 +53,19 @@ const userWithoutNotificationsAndWithoutSubscriptions: UserProfileResponse = {
 
 describe('useThematicSubscription', () => {
   describe('when the user has notifications on', () => {
-    it('should return false', async () => {
+    it('should give us the information that at least one notification is active', async () => {
       const { result } = renderUseThematicSubscription({
-        user: userWithoutNotificationsAndWithoutSubscriptions,
+        user: userWithNotificationsButNoSubscriptions,
         theme: SubscriptionTheme.ACTIVITES,
       })
 
       await waitFor(() => {
-        expect(result.current.isAtLeastOneNotificationTypeActivated).toBeFalsy()
+        expect(result.current.isAtLeastOneNotificationTypeActivated).toBeTruthy()
       })
     })
 
     describe('when the user is already subscribed to the page', () => {
-      it('should return active button', async () => {
+      it('should consider subscribe button active', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsAndSubscribed,
           theme: SubscriptionTheme.ACTIVITES,
@@ -102,7 +102,7 @@ describe('useThematicSubscription', () => {
     })
 
     describe("when the user isn't subscribed to the current page", () => {
-      it('should return inactive button', async () => {
+      it('should consider subscribe button inactive', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsButNoSubscriptions,
           theme: SubscriptionTheme.ACTIVITES,
@@ -139,15 +139,15 @@ describe('useThematicSubscription', () => {
     })
   })
 
-  describe('when the user has notifications off (opens modal when hook is use of thematic home)', () => {
-    it('should return true', async () => {
+  describe('when the user has notifications off', () => {
+    it('should give us the information that notifications are inactive', async () => {
       const { result } = renderUseThematicSubscription({
-        user: userWithNotificationsButNoSubscriptions,
+        user: userWithoutNotificationsAndWithoutSubscriptions,
         theme: SubscriptionTheme.ACTIVITES,
       })
 
       await waitFor(() => {
-        expect(result.current.isAtLeastOneNotificationTypeActivated).toBeTruthy()
+        expect(result.current.isAtLeastOneNotificationTypeActivated).toBeFalsy()
       })
     })
 
