@@ -16,11 +16,18 @@ const FADE_IN_DURATION = 300
 type Props = {
   label: string
   isVisible?: boolean
+  pointerDirection?: 'top' | 'bottom'
   onHide?: () => void
   style?: ComponentProps<typeof AnimatedView>['style']
 }
 
-export const Tooltip: FunctionComponent<Props> = ({ label, isVisible, onHide, style }) => {
+export const Tooltip: FunctionComponent<Props> = ({
+  label,
+  isVisible,
+  pointerDirection = 'top',
+  onHide,
+  style,
+}) => {
   const containerRef: AnimatedRef = useRef(null)
   useEffect(() => {
     if (isVisible) {
@@ -41,19 +48,20 @@ export const Tooltip: FunctionComponent<Props> = ({ label, isVisible, onHide, st
   if (!isVisible) return null
 
   return (
-    <AnimatedView
+    <StyledAnimatedView
       duration={FADE_IN_DURATION}
       style={style}
       ref={containerRef}
-      accessibilityRole={AccessibilityRole.TOOLTIP}>
-      <StyledPointer />
+      accessibilityRole={AccessibilityRole.TOOLTIP}
+      pointerDirection={pointerDirection}>
+      <StyledPointer pointerDirection={pointerDirection} />
       <Background>
         <StyledText>{label}</StyledText>
         <StyledClearContainer onPress={onHide} accessibilityLabel="Fermer le tooltip">
           <StyledClearIcon />
         </StyledClearContainer>
       </Background>
-    </AnimatedView>
+    </StyledAnimatedView>
   )
 }
 
@@ -68,11 +76,19 @@ const Pointer = ({ style }: { style?: ComponentProps<typeof Svg>['style'] }) => 
     </Svg>
   )
 }
-const StyledPointer = styled(Pointer)({
+
+const StyledPointer = styled(Pointer)<Pick<Props, 'pointerDirection'>>(({ pointerDirection }) => ({
   position: 'relative',
   alignSelf: 'flex-end',
   right: getSpacing(3.5),
-})
+  transform: pointerDirection === 'bottom' ? 'rotate(180deg)' : undefined,
+}))
+
+const StyledAnimatedView = styled(AnimatedView)<Pick<Props, 'pointerDirection'>>(
+  ({ pointerDirection }) => ({
+    flexDirection: pointerDirection === 'bottom' ? 'column-reverse' : 'column',
+  })
+)
 
 const Background = styled.View(({ theme }) => ({
   flexDirection: 'row',
