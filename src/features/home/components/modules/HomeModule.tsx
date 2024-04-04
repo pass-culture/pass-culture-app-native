@@ -7,6 +7,7 @@ import { HighlightOfferModule } from 'features/home/components/modules/Highlight
 import { OffersModule } from 'features/home/components/modules/OffersModule'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
+import { VenueMapModule } from 'features/home/components/modules/VenueMapModule'
 import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import {
@@ -24,6 +25,7 @@ const modules = {
   [HomepageModuleType.OffersModule]: OffersModule,
   [HomepageModuleType.RecommendedOffersModule]: RecommendationModule,
   [HomepageModuleType.ThematicHighlightModule]: ThematicHighlightModule,
+  [HomepageModuleType.VenueMapModule]: VenueMapModule,
   [HomepageModuleType.VideoModule]: VideoModule,
   [HomepageModuleType.VenuesModule]: VenuesModule,
 }
