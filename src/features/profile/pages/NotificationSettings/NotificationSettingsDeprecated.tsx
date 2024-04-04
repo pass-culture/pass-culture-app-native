@@ -156,12 +156,15 @@ export function NotificationSettingsDeprecated() {
         Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.
       </Typo.CaptionNeutralInfo>
       <Form.Flex>
+        <Spacer.Column numberOfSpaces={4} />
         <SectionWithSwitch
           title="Autoriser l’envoi d’e-mails"
           active={allowEmails}
           toggle={toggleEmails}
           disabled={!isLoggedIn}
         />
+        <Spacer.Column numberOfSpaces={4} />
+
         {Platform.OS !== 'web' && (
           <React.Fragment>
             <Separator.Horizontal />
@@ -170,12 +173,14 @@ export function NotificationSettingsDeprecated() {
               Je veux être alerté des actualités et des meilleures offres du pass Culture
               directement sur mon appareil.
             </Typo.CaptionNeutralInfo>
+            <Spacer.Column numberOfSpaces={4} />
             <SectionWithSwitch
               title="Autoriser les notifications marketing"
               active={pushSwitchEnabled}
               toggle={togglePush}
               disabled={!isLoggedIn}
             />
+            <Spacer.Column numberOfSpaces={4} />
           </React.Fragment>
         )}
         {!!isLoggedIn && (

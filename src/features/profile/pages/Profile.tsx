@@ -165,6 +165,8 @@ const OnlineProfile: React.FC = () => {
                 />
               </Li>
               <Li>
+                <Spacer.Column numberOfSpaces={4} />
+
                 <SectionWithSwitch
                   icon={LocationPointer}
                   iconSize={SECTION_ROW_ICON_SIZE}
@@ -183,6 +185,7 @@ const OnlineProfile: React.FC = () => {
                   numberOfSpacesTop={1}
                   relatedInputId={locationActivationErrorId}
                 />
+                <Spacer.Column numberOfSpaces={4} />
               </Li>
             </VerticalUl>
           </Section>

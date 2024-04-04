@@ -4,7 +4,7 @@ import { checkNotifications, PermissionStatus } from 'react-native-permissions'
 import { useAppStateChange } from 'libs/appState'
 
 export const usePushPermission = (
-  updatePushPermissionFromSettings: (permission: PermissionStatus) => void
+  updatePushPermissionFromSettings?: (permission: PermissionStatus) => void
 ) => {
   const [pushPermission, setPushPermission] = useState<PermissionStatus | undefined>(undefined)
 
@@ -21,7 +21,7 @@ export const usePushPermission = (
   useAppStateChange(
     async () => {
       const permission = await refreshPermission()
-      updatePushPermissionFromSettings(permission)
+      updatePushPermissionFromSettings?.(permission)
     },
     () => undefined
   )
