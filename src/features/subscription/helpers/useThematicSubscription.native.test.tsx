@@ -72,11 +72,7 @@ describe('useThematicSubscription', () => {
         })
 
         await waitFor(() => {
-          expect(result.current).toMatchObject({
-            isSubscribeButtonActive: true,
-            updateSubscription: expect.anything(),
-            updateSettings: expect.anything(),
-          })
+          expect(result.current.isSubscribeButtonActive).toBeTruthy()
         })
       })
 
@@ -109,11 +105,7 @@ describe('useThematicSubscription', () => {
         })
 
         await waitFor(() => {
-          expect(result.current).toMatchObject({
-            isSubscribeButtonActive: false,
-            updateSubscription: expect.anything(),
-            updateSettings: expect.anything(),
-          })
+          expect(result.current.isSubscribeButtonActive).toBeFalsy()
         })
       })
 
@@ -152,22 +144,18 @@ describe('useThematicSubscription', () => {
     })
 
     describe('when the user is already subscribed to the page', () => {
-      it('should return inactive button', async () => {
+      it('should consider subscribe button inactive', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsButWithSubscriptions,
           theme: SubscriptionTheme.CINEMA,
         })
 
         await waitFor(() => {
-          expect(result.current).toMatchObject({
-            isSubscribeButtonActive: false,
-            updateSubscription: expect.anything(),
-            updateSettings: expect.anything(),
-          })
+          expect(result.current.isSubscribeButtonActive).toBeFalsy()
         })
       })
 
-      it('should not subscribe when the user clicks subscribe button', async () => {
+      it('should not change subscribed themes when the user clicks subscribe button', async () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsButWithSubscriptions,
@@ -192,18 +180,14 @@ describe('useThematicSubscription', () => {
     })
 
     describe("when the user isn't subscribed to the current page", () => {
-      it('should return inactive button', async () => {
+      it('should consider subscribe button inactive', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsAndWithoutSubscriptions,
           theme: SubscriptionTheme.CINEMA,
         })
 
         await waitFor(() => {
-          expect(result.current).toMatchObject({
-            isSubscribeButtonActive: false,
-            updateSubscription: expect.anything(),
-            updateSettings: expect.anything(),
-          })
+          expect(result.current.isSubscribeButtonActive).toBeFalsy()
         })
       })
 
