@@ -26,6 +26,7 @@ export enum ContentTypes {
   MOVIE_GENRES = 'movieGenres',
   MUSIC_TYPES = 'musicTypes',
   SHOW_TYPES = 'showTypes',
+  VENUE_MAP_BLOCK = 'venueMapBlock',
   VIDEO = 'video',
 }
 
@@ -197,6 +198,11 @@ type VideoFields = {
   eanList?: string[]
   additionalAlgoliaParameters?: AlgoliaParameters[]
 }
+
+type VenueMapBlockFields = {
+  title: string
+}
+export type VenueMapBlockContentModel = Entry<VenueMapBlockFields, ContentTypes.VENUE_MAP_BLOCK>
 
 type Cover = Entry<CoverFields, ContentTypes.INFORMATION>
 
@@ -441,6 +447,7 @@ export type HomepageNatifModule =
   | VideoContentModel
   | CategoryListContentModel
   | HighlightOfferContentModel
+  | VenueMapBlockContentModel
 
 export type AlgoliaContentModel = Entry<AlgoliaFields, ContentTypes.ALGOLIA>
 
@@ -516,6 +523,11 @@ export const isClassicThematicHeader = (
   thematicHeader?: ThematicHeader
 ): thematicHeader is ClassicThematicHeader =>
   thematicHeader?.sys.contentType?.sys.id === ContentTypes.CLASSIC_THEMATIC_HEADER
+
+export const isVenueMapBlockContentModel = (
+  module: HomepageNatifModule
+): module is VenueMapBlockContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.VENUE_MAP_BLOCK
 
 export const isVideoContentModel = (module: HomepageNatifModule): module is VideoContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.VIDEO
