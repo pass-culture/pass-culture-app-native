@@ -61,16 +61,18 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
     Linking.openSettings()
   }
 
+  const onDismiss = () => {
+    setSettings(initialState)
+    dismissModal()
+  }
+
   return (
     <AppModal
       visible={visible}
       title={`S’abonner au thème “${mapSubscriptionThemeToName[theme]}”`}
       rightIconAccessibilityLabel="Ne pas s’abonner"
       rightIcon={Close}
-      onRightIconPress={() => {
-        setSettings(initialState)
-        dismissModal()
-      }}>
+      onRightIconPress={onDismiss}>
       <ModalContent>
         <Typo.Body>Pour recevoir toute l’actu de ce thème, tu dois, au choix&nbsp;:</Typo.Body>
 
@@ -119,10 +121,7 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
         <ButtonTertiaryBlack
           wording="Tout refuser et ne pas recevoir d’actus"
           icon={Invalidate}
-          onPress={() => {
-            setSettings(initialState)
-            dismissModal()
-          }}
+          onPress={onDismiss}
           inline
         />
       </ModalContent>

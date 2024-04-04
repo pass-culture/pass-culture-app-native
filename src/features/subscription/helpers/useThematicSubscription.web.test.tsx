@@ -14,8 +14,8 @@ jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () =>
 }))
 
 describe('useThematicSubscription', () => {
-  describe('if the user has email notifications off and push notifications on', () => {
-    it('we get the information that there is not at least one notification type active', async () => {
+  describe('when the user has email notifications off and push notifications on', () => {
+    it('should give the information that there is not at least one notification type active', async () => {
       const { result } = renderUseThematicSubscription({
         user: {
           ...beneficiaryUser,
@@ -33,7 +33,7 @@ describe('useThematicSubscription', () => {
       })
     })
 
-    it('the subscribe button should be inactive', async () => {
+    it('should consider subscribe button inactive', async () => {
       const { result } = renderUseThematicSubscription({
         user: {
           ...beneficiaryUser,
@@ -52,8 +52,8 @@ describe('useThematicSubscription', () => {
     })
   })
 
-  describe('if the user has email notifications on and is subscribed to theme', () => {
-    it('we get the information that there is at least one notification type active', async () => {
+  describe('when the user has email notifications on and is subscribed to theme', () => {
+    it('should give the information that there is at least one notification type active', async () => {
       const { result } = renderUseThematicSubscription({
         user: {
           ...beneficiaryUser,
@@ -71,7 +71,7 @@ describe('useThematicSubscription', () => {
       })
     })
 
-    it('the subscribe button should be active', async () => {
+    it('should consider subscribe button active', async () => {
       const { result } = renderUseThematicSubscription({
         user: {
           ...beneficiaryUser,

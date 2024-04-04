@@ -31,7 +31,7 @@ describe('<NotificationsSettingsModal />', () => {
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should reset the state and re-initialize the switch when dismissing the modal', () => {
+  it('should reset the switch when dismissing the modal', () => {
     renderModal(true)
 
     const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
@@ -46,21 +46,21 @@ describe('<NotificationsSettingsModal />', () => {
   it('should dismiss modal on press "Tout refuser..."', () => {
     renderModal(true)
 
-    const goBackButton = screen.getByText('Tout refuser et ne pas recevoir d’actus')
+    const declineButton = screen.getByText('Tout refuser et ne pas recevoir d’actus')
 
-    fireEvent.press(goBackButton)
+    fireEvent.press(declineButton)
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should reset the state and re-initialize the switch on press "Tout refuser..."', () => {
+  it('should reset the switch on press "Tout refuser..."', () => {
     renderModal(true)
 
     const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleSwitch)
 
-    const goBackButton = screen.getByText('Tout refuser et ne pas recevoir d’actus')
-    fireEvent.press(goBackButton)
+    const declineButton = screen.getByText('Tout refuser et ne pas recevoir d’actus')
+    fireEvent.press(declineButton)
 
     expect(toggleSwitch).toHaveAccessibilityState({ checked: false })
   })
