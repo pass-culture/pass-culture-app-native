@@ -1,11 +1,8 @@
 import React from 'react'
 
-import { MODAL_TO_SHOW_TIME } from 'tests/constants'
-import { render, checkAccessibilityFor, act } from 'tests/utils/web'
+import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { VenueModal } from './VenueModal'
-
-jest.useFakeTimers()
 
 const dismissModalMock = jest.fn()
 
@@ -14,17 +11,9 @@ describe('<VenueModal/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<VenueModal visible dismissModal={dismissModalMock} />)
 
-      let results
-      await act(async () => {
-        jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-
-        results = await checkAccessibilityFor(container)
-      })
-      await act(async () => {})
+      const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
-
-      await act(async () => {})
     })
   })
 })
