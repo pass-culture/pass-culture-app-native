@@ -125,6 +125,32 @@ describe('<OfferPlace />', () => {
     expect(screen.getByText('Changer de cinéma')).toBeOnTheScreen()
   })
 
+  it('should display "Trouve ta séance" above Venue when offer subcategory is "Seance cine"', () => {
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+        extraData: { allocineId: 2765410054 },
+      },
+    })
+
+    expect(screen.getByText('Trouve ta séance')).toBeOnTheScreen()
+  })
+
+  it('should not display "Trouve ta séance" above Venue when offer subcategory is not "Seance cine"', () => {
+    renderOfferPlace({
+      ...offerPlaceProps,
+      offer: {
+        ...mockOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+        extraData: { ean: '2765410054' },
+      },
+    })
+
+    expect(screen.queryByText('Trouve ta séance')).not.toBeOnTheScreen()
+  })
+
   it('should not display change venue button when offer subcategory is "Seance cine", offer has not an allocineId', () => {
     renderOfferPlace({
       ...offerPlaceProps,
