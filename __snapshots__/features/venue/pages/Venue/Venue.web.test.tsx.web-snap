@@ -1,0 +1,1124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Venue /> Accessibility should render correctly in web 1`] = `
+.c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  min-height: 40px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c8 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-height: 40px;
+  width: 100%;
+  background-color: #eb0055;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c8:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c8:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c8:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c5 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 0;
+  padding: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 20px;
+  width: auto;
+  max-width: 500px;
+  border-width: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  outline: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c5:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c5:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c5:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3 {
+  background-color: transparent;
+}
+
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.5;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c6 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c6:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c6:focus {
+  outline: auto;
+}
+
+.c6:disabled {
+  cursor: initial;
+}
+
+.c6:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c6:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c9:disabled {
+  background-color: #F1F1F4;
+}
+
+.c1 {
+  border-radius: 40px;
+}
+
+.c7 {
+  height: 96px;
+  width: 76px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+<div>
+  <div
+    class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+  >
+    <div
+      class="css-view-175oi2r"
+      style="position: absolute; top: 0px; left: 0px; right: 0px; height: 80px; z-index: 1; border-bottom-color: rgba(241,241,244,1.00); border-bottom-width: 0px; background-color: rgba(255, 255, 255, 0);"
+    >
+      <div
+        class="css-view-175oi2r r-height-10ptun7"
+      />
+      <div
+        class="css-view-175oi2r"
+        style="position: absolute; top: 0px; left: 0px; right: 0px; height: 80px; overflow-x: hidden; overflow-y: hidden; opacity: 0;"
+      />
+      <div
+        class="css-view-175oi2r r-height-3da1kt"
+      />
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      >
+        <div
+          class="css-view-175oi2r r-width-lrsllp"
+        />
+        <button
+          aria-label="Revenir en arrière"
+          class="c0 c1 sc-eldPxv c1"
+          data-testid="Revenir en arrière"
+          tabindex="0"
+          title="Revenir en arrière"
+          type="button"
+        >
+          <div
+            class="css-view-175oi2r"
+            data-testid="AnimatedHeaderIconRoundContainer"
+            style="width: 40px; height: 40px; border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; background-color: rgb(255, 255, 255); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; justify-content: center; align-items: center;"
+          >
+            <div
+              class="css-view-175oi2r r-height-1472mwg r-width-lrsllp"
+            >
+              <div
+                class="css-view-175oi2r"
+                data-testid="initial-icon-container"
+                style="position: absolute; opacity: 1;"
+              >
+                <div
+                  class="css-view-175oi2r"
+                  data-testid="animated-icon-back"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    animated-icon-back-SVG-Mock
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r"
+                data-testid="final-icon-container"
+                style="position: absolute; opacity: 0;"
+              >
+                <div
+                  class="css-view-175oi2r"
+                  data-testid="final-animated-icon-back"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    final-animated-icon-back-SVG-Mock
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </button>
+        <div
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+        />
+        <div
+          aria-hidden="true"
+          class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01"
+          data-testid="venueHeaderName"
+          dir="ltr"
+          style="flex-shrink: 1; text-align: center; color: rgb(255, 255, 255); white-space: pre-wrap; opacity: 0;"
+        >
+          <span
+            class="css-textHasAncestor-1qaijid r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+          >
+            Le Petit Rintintin 1
+          </span>
+        </div>
+        <div
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+        />
+        <button
+          aria-label="Partager"
+          class="c0 c1 sc-eldPxv c1"
+          data-testid="Partager"
+          tabindex="0"
+          title="Partager"
+          type="button"
+        >
+          <div
+            class="css-view-175oi2r"
+            data-testid="AnimatedHeaderIconRoundContainer"
+            style="width: 40px; height: 40px; border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; background-color: rgb(255, 255, 255); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; justify-content: center; align-items: center;"
+          >
+            <div
+              class="css-view-175oi2r r-height-1472mwg r-width-lrsllp"
+            >
+              <div
+                class="css-view-175oi2r"
+                data-testid="initial-icon-container"
+                style="position: absolute; opacity: 1;"
+              >
+                <div
+                  class="css-view-175oi2r"
+                  data-testid="animated-icon-share"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    animated-icon-share-SVG-Mock
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r"
+                data-testid="final-icon-container"
+                style="position: absolute; opacity: 0;"
+              >
+                <div
+                  class="css-view-175oi2r"
+                  data-testid="final-animated-icon-share"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    final-animated-icon-share-SVG-Mock
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </button>
+        <div
+          class="css-view-175oi2r r-width-lrsllp"
+        />
+      </div>
+      <div
+        class="css-view-175oi2r r-height-3da1kt"
+      />
+    </div>
+    <div
+      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh r-overflow-bztko3"
+    >
+      <div
+        class="css-view-175oi2r"
+      >
+        <div
+          class="css-view-175oi2r r-height-17lwhjb"
+        />
+        <div
+          class="css-view-175oi2r r-flexDirection-18u37iz r-marginHorizontal-1t0hsmj r-marginTop-1v1z2uz"
+        >
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy"
+          >
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14a9t8x r-justifyContent-1777fci"
+              data-testid="defaultVenueBackground"
+              style="height: 232px; width: 375px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px;"
+            >
+              <div
+                class="css-view-175oi2r r-height-10ptun7"
+              />
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-height-1472mwg"
+          />
+          <div
+            class="css-view-175oi2r r-flexShrink-1wbh5a2 r-marginHorizontal-1hy1u7s"
+          >
+            <div
+              class="css-view-175oi2r r-flexDirection-18u37iz r-flexWrap-1w6e6rj r-gap-1cmwbt1 r-maxHeight-ormnx7 r-overflow-1udh08x"
+              data-testid="tagsContainer"
+            >
+              <div
+                class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-14a9t8x r-borderRadius-kdyh1x r-flexDirection-18u37iz r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg"
+              >
+                <div
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  dir="ltr"
+                >
+                  À 900+ km
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-10ptun7"
+            />
+            <h1
+              aria-label="Nom du lieu : Le Petit Rintintin 1"
+              aria-level="1"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+              dir="ltr"
+              role="heading"
+            >
+              Le Petit Rintintin 1
+            </h1>
+            <div
+              class="css-view-175oi2r r-height-3da1kt"
+            />
+            <div
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+              dir="ltr"
+            >
+              Adresse
+            </div>
+            <div
+              class="css-view-175oi2r r-height-hdaws3"
+            />
+            <div
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+              dir="ltr"
+            >
+              1 boulevard Poissonnière, 75000 Paris
+            </div>
+            <div
+              class="css-view-175oi2r r-height-tbmifm"
+            />
+            <div
+              class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+            />
+            <div
+              class="css-view-175oi2r r-height-tbmifm"
+            />
+            <button
+              aria-label="Copier l’adresse"
+              class="c2 c3 c4"
+              data-testid="Copier l’adresse"
+              tabindex="0"
+              type="button"
+            >
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+              >
+                <div
+                  class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+                >
+                  <div
+                    class="css-view-175oi2r"
+                    data-testid="button-icon-left"
+                  >
+                    <div
+                      class="css-text-1rynq56"
+                      dir="ltr"
+                    >
+                      button-icon-left-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-width-1jg9483"
+                  />
+                </div>
+                <div
+                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
+                  dir="ltr"
+                >
+                  Copier l’adresse
+                </div>
+              </div>
+            </button>
+            <div
+              class="css-view-175oi2r r-height-tbmifm"
+            />
+            <div
+              class="css-view-175oi2r r-alignItems-1habvwh"
+            >
+              <a
+                aria-label="Voir l’itinéraire"
+                class="c5 c3"
+                data-testid="Voir l’itinéraire"
+                href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
+                tabindex="0"
+                target="_blank"
+              >
+                <div
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                >
+                  <div
+                    class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+                  >
+                    <div
+                      aria-label="Nouvelle fenêtre"
+                      class="css-view-175oi2r"
+                      data-testid="button-icon-left"
+                    >
+                      <div
+                        class="css-text-1rynq56"
+                        dir="ltr"
+                      >
+                        button-icon-left-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-width-1jg9483"
+                    />
+                  </div>
+                  <div
+                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
+                    dir="ltr"
+                  >
+                    Voir l’itinéraire
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-175oi2r r-height-1472mwg"
+        />
+        <div
+          class="css-view-175oi2r r-flexShrink-1wbh5a2 r-marginHorizontal-1hy1u7s"
+        >
+          <div
+            class="css-view-175oi2r r-width-13qz1uu"
+          >
+            <div
+              class="css-view-175oi2r r-flexDirection-18u37iz"
+              role="tablist"
+            >
+              <div
+                class="css-view-175oi2r r-backgroundColor-14a9t8x r-bottom-1p0dtai r-height-hdaws3 r-position-u8s1d r-width-13qz1uu"
+              />
+              <div
+                class="css-view-175oi2r r-width-lrsllp"
+              />
+              <div
+                aria-selected="true"
+                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-15yupfm"
+                id="Offres disponibles"
+                role="tab"
+                style="transition-duration: 0s;"
+                tabindex="0"
+              >
+                <div
+                  class="css-view-175oi2r r-height-1472mwg"
+                />
+                <div
+                  class="css-view-175oi2r r-flexGrow-16y2uox r-justifyContent-1777fci"
+                >
+                  <div
+                    class="css-text-1rynq56 r-color-ntw818 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                    dir="ltr"
+                  >
+                    Offres disponibles
+                  </div>
+                </div>
+                <div
+                  class="css-view-175oi2r r-height-3da1kt"
+                />
+                <div
+                  class="css-view-175oi2r r-backgroundColor-bdcx94 r-borderRadius-z2wwpe r-bottom-1p0dtai r-height-hdaws3 r-width-13qz1uu"
+                />
+              </div>
+              <div
+                aria-selected="false"
+                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-15yupfm"
+                id="Infos pratiques"
+                role="tab"
+                style="transition-duration: 0s;"
+                tabindex="-1"
+              >
+                <div
+                  class="css-view-175oi2r r-height-1472mwg"
+                />
+                <div
+                  class="css-view-175oi2r r-flexGrow-16y2uox r-justifyContent-1777fci"
+                >
+                  <div
+                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                    dir="ltr"
+                  >
+                    Infos pratiques
+                  </div>
+                </div>
+                <div
+                  class="css-view-175oi2r r-height-3da1kt"
+                />
+                <div
+                  class="css-view-175oi2r r-backgroundColor-1niwhzg r-borderRadius-z2wwpe r-bottom-1p0dtai r-height-hdaws3 r-width-13qz1uu"
+                />
+              </div>
+              <div
+                class="css-view-175oi2r r-width-lrsllp"
+              />
+            </div>
+            <div
+              class="css-view-175oi2r"
+              role="tabpanel"
+            >
+              <div
+                class="css-view-175oi2r r-height-1472mwg"
+              />
+              <div
+                class="css-view-175oi2r r-flexDirection-18u37iz r-paddingBottom-qn3fzs"
+                data-testid="OfferPlaylistSkeleton"
+              >
+                <div
+                  class="css-view-175oi2r r-width-lrsllp"
+                />
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-view-175oi2r r-height-hdaws3"
+                  />
+                  <div
+                    class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-10ptun7 r-overflow-1udh08x r-width-l0gwng"
+                  >
+                    <div
+                      class="css-view-175oi2r"
+                      style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-250px);"
+                    />
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-height-z80fyv"
+                  />
+                  <div
+                    class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-lltvgl r-overflowY-buy8e9 r-transform-1sncvnh r-scrollbarWidth-2eszeu"
+                  >
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz"
+                    >
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1xfd6ze r-height-k79w25 r-overflow-1udh08x r-width-1sqjfdd"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-180px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-tbmifm"
+                          />
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1oyktkk"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-144px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-3da1kt"
+                          />
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1s9nfm5"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-53.99999999999999px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-tbmifm"
+                          />
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1janqcz"
+                        />
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1xfd6ze r-height-k79w25 r-overflow-1udh08x r-width-1sqjfdd"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-180px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-tbmifm"
+                          />
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1oyktkk"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-144px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-3da1kt"
+                          />
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1s9nfm5"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-53.99999999999999px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-tbmifm"
+                          />
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1janqcz"
+                        />
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1xfd6ze r-height-k79w25 r-overflow-1udh08x r-width-1sqjfdd"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-180px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-tbmifm"
+                          />
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1oyktkk"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-144px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-3da1kt"
+                          />
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1s9nfm5"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-53.99999999999999px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-tbmifm"
+                          />
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1janqcz"
+                        />
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1xfd6ze r-height-k79w25 r-overflow-1udh08x r-width-1sqjfdd"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-180px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-tbmifm"
+                          />
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1oyktkk"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-144px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-3da1kt"
+                          />
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1s9nfm5"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-53.99999999999999px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-tbmifm"
+                          />
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1janqcz"
+                        />
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1xfd6ze r-height-k79w25 r-overflow-1udh08x r-width-1sqjfdd"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-180px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-tbmifm"
+                          />
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1oyktkk"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-144px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-3da1kt"
+                          />
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1s9nfm5"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-53.99999999999999px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-tbmifm"
+                          />
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-width-1janqcz"
+                        />
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1xfd6ze r-height-k79w25 r-overflow-1udh08x r-width-1sqjfdd"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-180px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-tbmifm"
+                          />
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1oyktkk"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-144px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-3da1kt"
+                          />
+                          <div
+                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1s9nfm5"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-53.99999999999999px);"
+                            />
+                          </div>
+                          <div
+                            class="css-view-175oi2r r-height-tbmifm"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-175oi2r r-height-1472mwg"
+        />
+        <div
+          class="css-view-175oi2r"
+        >
+          <div
+            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
+          />
+          <div
+            class="css-view-175oi2r r-flexShrink-1wbh5a2 r-marginHorizontal-1hy1u7s"
+          >
+            <h2
+              aria-level="2"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-paddingBottom-1l7z4oj r-paddingTop-1ygmrgt"
+              dir="ltr"
+              role="heading"
+            >
+              Passe le bon plan !
+            </h2>
+            <div
+              class="css-view-175oi2r r-flexDirection-18u37iz r-maxWidth-1ik5qf4 r-width-13qz1uu"
+            >
+              <ul
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-justifyContent-1h0z5md r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                role="list"
+              >
+                <li
+                  class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
+                  role="listitem"
+                >
+                  <button
+                    class="c6 c7 sc-hCPjZK c7"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <div
+                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                    >
+                      <div
+                        class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-103ggtu r-borderRadius-1fuqb1j r-borderWidth-rs99b7 r-height-h3s6tt r-justifyContent-1777fci r-width-rwqe4o"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                          >
+                            <div
+                              class="css-text-1rynq56"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-height-3da1kt"
+                      />
+                      <div
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                        data-testid="caption-undefined"
+                        dir="ltr"
+                      >
+                        Plus
+d’options
+                      </div>
+                    </div>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-10ptun7"
+            />
+          </div>
+        </div>
+        <div
+          class="css-view-175oi2r"
+        >
+          <div
+            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
+          />
+          <div
+            class="css-view-175oi2r r-height-1iznev0"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-view-175oi2r r-bottom-1p0dtai r-position-u8s1d r-width-13qz1uu"
+    >
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-alignSelf-1kihuf0 r-paddingHorizontal-1guathk r-width-13qz1uu"
+      >
+        <div
+          class="css-view-175oi2r r-height-1472mwg"
+        />
+        <button
+          aria-label="Rechercher une offre"
+          class="c8 c9"
+          data-testid="Rechercher une offre"
+          tabindex="0"
+          type="button"
+        >
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+          >
+            <div
+              class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+            >
+              <div
+                class="css-view-175oi2r"
+                data-testid="button-icon-left"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  button-icon-left-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r r-width-1jg9483"
+              />
+            </div>
+            <div
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
+              dir="ltr"
+            >
+              Rechercher une offre
+            </div>
+          </div>
+        </button>
+        <div
+          class="css-view-175oi2r r-height-1472mwg"
+        />
+      </div>
+      <div
+        class="css-view-175oi2r r-height-3da1kt"
+      />
+    </div>
+  </div>
+</div>
+`;
