@@ -214,6 +214,31 @@ describe('useThematicSubscription', () => {
         })
       })
     })
+
+    describe("when we don't have the user", () => {
+      it('should default to false for marketingEmail and marketingPush', async () => {
+        mockServer.postApi('/v1/profile', {})
+        const { result } = renderUseThematicSubscription({
+          user: undefined,
+          theme: SubscriptionTheme.CINEMA,
+        })
+
+        result.current.updateSettings({
+          allowEmails: false,
+          allowPush: false,
+        })
+
+        await waitFor(() => {
+          expect(postProfileSpy).toHaveBeenCalledWith({
+            subscriptions: {
+              marketingEmail: false,
+              marketingPush: false,
+              subscribedThemes: [SubscriptionTheme.CINEMA],
+            },
+          })
+        })
+      })
+    })
   })
 })
 
