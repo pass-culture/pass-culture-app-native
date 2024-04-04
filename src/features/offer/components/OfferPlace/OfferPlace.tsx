@@ -189,7 +189,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
 
   return (
     <React.Fragment>
-      {isDesktopViewport ? (
+      {!offer.isDigital && isDesktopViewport ? (
         <View testID="place-container-without-divider">{renderOfferVenueBlock()}</View>
       ) : (
         <SectionWithDivider
