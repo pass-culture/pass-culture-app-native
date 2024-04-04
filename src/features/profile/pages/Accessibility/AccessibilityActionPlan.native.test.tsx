@@ -13,19 +13,18 @@ describe('AccessibilityActionPlan', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it.each([
-    'https://pass.culture.fr/',
-    'https://passculture.app/accueil',
-    'https://passculture.pro/',
-  ])('should open $link when clicking help center link', (link) => {
-    render(<AccessibilityActionPlan />)
+  it.each(['https://pass.culture.fr/', 'https://passculture.app/', 'https://passculture.pro/'])(
+    'should open $link when clicking help center link',
+    (link) => {
+      render(<AccessibilityActionPlan />)
 
-    const linkComponents = screen.getAllByText(link)
-    linkComponents.forEach((link) => {
-      fireEvent.press(link)
-    })
+      const linkComponents = screen.getAllByText(link)
+      linkComponents.forEach((link) => {
+        fireEvent.press(link)
+      })
 
-    expect(openURLSpy).toHaveBeenCalledTimes(linkComponents.length)
-    expect(openURLSpy).toHaveBeenCalledWith(link, undefined, true)
-  })
+      expect(openURLSpy).toHaveBeenCalledTimes(linkComponents.length)
+      expect(openURLSpy).toHaveBeenCalledWith(link, undefined, true)
+    }
+  )
 })

@@ -1,13 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import {
-  ActionPlanStatus,
-  ActionPlanTag,
-} from 'features/profile/components/Buttons/ActionPlanTag/ActionPlanTag'
 import { ContactSupportButton } from 'features/profile/components/Buttons/ContactSupportButton/ContactSupportButton'
+import { AccessibilityActionPlan2022 } from 'features/profile/pages/Accessibility/AccessibilityActionPlan2022'
+import { AccessibilityActionPlan2023 } from 'features/profile/pages/Accessibility/AccessibilityActionPlan2023'
+import { AccessibilityActionPlan2024 } from 'features/profile/pages/Accessibility/AccessibilityActionPlan2024'
 import { BulletListItem } from 'ui/components/BulletListItem'
-import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -324,10 +322,10 @@ export function AccessibilityActionPlan() {
       <Typo.Body>Application Utilisateurs&nbsp;:</Typo.Body>
       <ExternalTouchableLink
         as={ButtonQuaternaryPrimary}
-        wording="https://passculture.app/accueil"
+        wording="https://passculture.app/"
         justifyContent="flex-start"
         icon={ExternalSiteFilled}
-        externalNav={{ url: 'https://passculture.app/accueil' }}
+        externalNav={{ url: 'https://passculture.app/' }}
       />
       <Typo.Body>Site acteurs culturels&nbsp;:</Typo.Body>
       <ExternalTouchableLink
@@ -338,92 +336,11 @@ export function AccessibilityActionPlan() {
         externalNav={{ url: 'https://passculture.pro/' }}
       />
       <StyledSeparator />
-      <TitleText>Plan annuel 2022</TitleText>
-      <Spacer.Column numberOfSpaces={6} />
-      <VerticalUl>
-        <BulletListItem text="Constitution du pôle Accessibilité">
-          <ActionPlanTag />
-        </BulletListItem>
-        <BulletListItem text="Nomination de 2 personnes référentes sur l’accessibilité numérique">
-          <ActionPlanTag />
-        </BulletListItem>
-        <BulletListItem text="Formation de l’ensemble des développeurs travaillant sur le présent site">
-          <ActionPlanTag />
-        </BulletListItem>
-        <BulletListItem text="Organisation d’une journée dédiée à l’accessibilité numérique avec les développeurs travaillant sur le présent site">
-          <ActionPlanTag />
-        </BulletListItem>
-        <BulletListItem text="Audit d’accessibilité pour le présent site">
-          <ActionPlanTag />
-        </BulletListItem>
-        <BulletListItem text="Publication de la déclaration de mise en conformité pour le présent site">
-          <ActionPlanTag />
-        </BulletListItem>
-        <BulletListItem text="Rencontre avec des utilisateurs en situation de handicap">
-          <ActionPlanTag />
-        </BulletListItem>
-        <BulletListItem text="Formation du pôle Communication, Marketing, Recherche">
-          <ActionPlanTag />
-        </BulletListItem>
-      </VerticalUl>
+      <AccessibilityActionPlan2024 />
       <StyledSeparator />
-      <TitleText>Plan annuel 2023</TitleText>
-      <Spacer.Column numberOfSpaces={6} />
-      <VerticalUl>
-        <BulletListItem text="Formation des équipes produit aux enjeux de l’accessibilité">
-          <ActionPlanTag />
-        </BulletListItem>
-        <BulletListItem text="Formation des équipes territoires à l’accompagnement direct de jeunes en situation de handicap">
-          <ActionPlanTag />
-        </BulletListItem>
-        <BulletListItem text="Formation des développeurs du site ">
-          <ExternalTouchableLink
-            as={ButtonInsideText}
-            typography="Caption"
-            wording="https://passculture.pro/"
-            icon={ExternalSiteFilled}
-            externalNav={{ url: 'https://passculture.pro/' }}
-          />
-          <ActionPlanTag />
-        </BulletListItem>
-        <BulletListItem text="Réalisation d’un audit d’accessibilité du site ">
-          <ExternalTouchableLink
-            as={ButtonInsideText}
-            typography="Caption"
-            wording="https://passculture.pro/"
-            icon={ExternalSiteFilled}
-            externalNav={{ url: 'https://passculture.pro/' }}
-          />
-          <ActionPlanTag />
-        </BulletListItem>
-        <BulletListItem text="Création d’un partenariat avec les Maisons Départementales des Personnes Handicapées">
-          <ActionPlanTag status={ActionPlanStatus.ONGOING} />
-        </BulletListItem>
-        <BulletListItem text="Création d’un groupe de jeunes utilisateurs porteurs de handicap, pour comprendre leur utilisation et leurs pratiques de l’application et du dispositif sur le long terme">
-          <ActionPlanTag status={ActionPlanStatus.ONGOING} />
-        </BulletListItem>
-        <BulletListItem>
-          <Typo.Body>
-            Maquettage d’un nouveau site{' '}
-            <ExternalTouchableLink
-              as={ButtonInsideText}
-              typography="Caption"
-              wording="https://pass.culture.fr/"
-              icon={ExternalSiteFilled}
-              externalNav={{ url: 'https://pass.culture.fr/' }}
-            />{' '}
-            100% accessible
-            <ActionPlanTag status={ActionPlanStatus.ONGOING} />
-          </Typo.Body>
-        </BulletListItem>
-        <BulletListItem text="Mise en place d’un partenariat avec Acceslibre pour compléter les informations d’accessibilité des partenaires culturels">
-          <ActionPlanTag status={ActionPlanStatus.ONGOING} />
-        </BulletListItem>
-      </VerticalUl>
+      <AccessibilityActionPlan2023 />
       <StyledSeparator />
-      <TitleText>Plan annuel 2024</TitleText>
-      <Spacer.Column numberOfSpaces={6} />
-      <StyledBody>En cours de constitution</StyledBody>
+      <AccessibilityActionPlan2022 />
       <Spacer.BottomScreen />
     </SecondaryPageWithBlurHeader>
   )
