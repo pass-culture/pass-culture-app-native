@@ -119,13 +119,12 @@ export const OfferBody: FunctionComponent<Props> = ({
 
       {isDesktopViewport ? (
         <View testID="messagingApp-container-without-divider">
-          <Spacer.Column numberOfSpaces={2} />
           <OfferMessagingApps offer={offer} />
         </View>
       ) : (
-        <SectionWithDivider visible margin testID="messagingApp-container-with-divider">
-          <Spacer.Column numberOfSpaces={2} />
+        <SectionWithDivider visible margin testID="messagingApp-container-with-divider" gap={8}>
           <OfferMessagingApps offer={offer} />
+          <Spacer.Column numberOfSpaces={4} />
         </SectionWithDivider>
       )}
     </Container>

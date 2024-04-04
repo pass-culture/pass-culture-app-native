@@ -192,11 +192,14 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
       {isDesktopViewport ? (
         <View testID="place-container-without-divider">{renderOfferVenueBlock()}</View>
       ) : (
-        <SectionWithDivider visible={!offer.isDigital} margin testID="place-container-with-divider">
+        <SectionWithDivider
+          visible={!offer.isDigital}
+          margin
+          testID="place-container-with-divider"
+          gap={8}>
           {renderOfferVenueBlock()}
         </SectionWithDivider>
       )}
-      <Spacer.Column numberOfSpaces={8} />
 
       {shouldDisplayChangeVenueButton ? (
         <VenueSelectionModal

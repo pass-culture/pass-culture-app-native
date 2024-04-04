@@ -207,9 +207,8 @@ export function BookingDetails() {
           {!!offer.withdrawalDetails && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
-              <SectionWithDivider visible={!!offer.withdrawalDetails}>
+              <SectionWithDivider visible={!!offer.withdrawalDetails} gap={8}>
                 <InfoContainer>
-                  <Spacer.Column numberOfSpaces={8} />
                   <Typo.Title4 {...getHeadingAttrs(2)}>Modalités de retrait</Typo.Title4>
                   <Spacer.Column numberOfSpaces={4} />
                   <Typo.Body testID="withdrawalDetails">{offer.withdrawalDetails}</Typo.Body>
@@ -221,9 +220,8 @@ export function BookingDetails() {
           {!!bookingContactEmail && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
-              <SectionWithDivider visible={!!bookingContactEmail}>
+              <SectionWithDivider visible={!!bookingContactEmail} gap={6}>
                 <InfoContainer>
-                  <Spacer.Column numberOfSpaces={6} />
                   <Typo.Title4 {...getHeadingAttrs(2)}>Contact organisateur</Typo.Title4>
                   <Spacer.Column numberOfSpaces={4} />
                   <SendEmailContainer>

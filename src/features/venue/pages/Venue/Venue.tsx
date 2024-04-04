@@ -68,6 +68,7 @@ export const Venue: FunctionComponent = () => {
         onScroll={onScroll}
         playlists={gtlPlaylists}
         venueOffers={venueOffers}
+        shouldDisplayCTA={shouldDisplayCTA}
       />
       {/* On native VenueHeader is called after Body to implement the BlurView for iOS */}
       {!isWeb ? (

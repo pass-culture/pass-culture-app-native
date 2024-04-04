@@ -21,7 +21,6 @@ export const InfoTab = ({ tab, selectedTab, onPress }: InfoTabProps) => {
 
   return (
     <StyledTouchableTab id={tab} onPress={onPress} selected={isSelected} {...hoverProps}>
-      <Spacer.Column numberOfSpaces={6} />
       <TabTitleContainer>
         <TabTitle isHover={isHover} isSelected={isSelected}>
           {tab}
