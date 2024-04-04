@@ -1,101 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AppButton Component * inline property should use inline css style when true 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": .c0 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 0;
-  padding: 2px;
-  padding-left: 0;
-  padding-right: 0;
-  min-height: 16px;
-  width: auto;
-  max-width: 500px;
-  border-width: 0;
-  margin-top: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  cursor: pointer;
-  outline: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c0:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c0:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c0:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-<body>
-    <div>
-      <button
-        aria-label="Testing inline"
-        class="c0"
-        data-testid="Testing inline"
-        tabindex="0"
-        type="button"
-      >
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-        >
-          <div
-            class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
-          >
-            <div
-              class="css-view-175oi2r"
-              data-testid="button-icon-left"
-            >
-              <div
-                class="css-text-1rynq56"
-                dir="ltr"
-              >
-                button-icon-left-SVG-Mock
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-width-1jg9483"
-            />
-          </div>
-          <div
-            class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-            dir="ltr"
-          >
-            Testing inline
-          </div>
-        </div>
-      </button>
-    </div>
-  </body>,
-  "container": .c0 {
+.c0 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -148,93 +54,41 @@ exports[`AppButton Component * inline property should use inline css style when 
 }
 
 <div>
-    <button
-      aria-label="Testing inline"
-      class="c0"
-      data-testid="Testing inline"
-      tabindex="0"
-      type="button"
+  <button
+    aria-label="Testing inline"
+    class="c0"
+    data-testid="Testing inline"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+        class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
       >
         <div
-          class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+          class="css-view-175oi2r"
+          data-testid="button-icon-left"
         >
           <div
-            class="css-view-175oi2r"
-            data-testid="button-icon-left"
+            class="css-text-1rynq56"
+            dir="ltr"
           >
-            <div
-              class="css-text-1rynq56"
-              dir="ltr"
-            >
-              button-icon-left-SVG-Mock
-            </div>
+            button-icon-left-SVG-Mock
           </div>
-          <div
-            class="css-view-175oi2r r-width-1jg9483"
-          />
         </div>
         <div
-          class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
-          dir="ltr"
-        >
-          Testing inline
-        </div>
+          class="css-view-175oi2r r-width-1jg9483"
+        />
       </div>
-    </button>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+      <div
+        class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+        dir="ltr"
+      >
+        Testing inline
+      </div>
+    </div>
+  </button>
+</div>
 `;

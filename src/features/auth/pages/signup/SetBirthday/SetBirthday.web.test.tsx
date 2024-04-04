@@ -54,19 +54,19 @@ describe('<SetBirthday />', () => {
       // FIXME(PC-211174): This warning comes from react-native-date-picker (https://passculture.atlassian.net/browse/PC-21174)
       jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
-      const renderAPI = render(<SetBirthday {...props} />, { theme: { isTouch: true } })
+      const { container } = render(<SetBirthday {...props} />, { theme: { isTouch: true } })
       await screen.findByText('Continuer')
 
-      expect(renderAPI).toMatchSnapshot()
+      expect(container).toMatchSnapshot()
     })
   })
 
   describe('no touch device', () => {
     it('should render correctly', async () => {
-      const renderAPI = render(<SetBirthday {...props} />, { theme: { isTouch: false } })
+      const { container } = render(<SetBirthday {...props} />, { theme: { isTouch: false } })
       await screen.findByText('Continuer')
 
-      expect(renderAPI).toMatchSnapshot()
+      expect(container).toMatchSnapshot()
     })
   })
 })

@@ -14,10 +14,10 @@ jest.unmock('libs/hooks/useWhiteStatusBar')
 
 describe('<GenericErrorPage />', () => {
   it('should render correctly', () => {
-    const renderAPI = render(
+    const { container } = render(
       <GenericErrorPage title="GenericErrorPage" icon={BicolorPhonePending} />
     )
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })

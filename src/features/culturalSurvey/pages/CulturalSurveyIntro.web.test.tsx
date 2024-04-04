@@ -11,9 +11,9 @@ jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 
 describe('CulturalSurveyIntro page', () => {
   it('should render the page with correct layout', () => {
-    const renderAPI = render(<CulturalSurveyIntro />)
+    const { container } = render(<CulturalSurveyIntro />)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('should open FAQ url when pressing En savoir plus', () => {

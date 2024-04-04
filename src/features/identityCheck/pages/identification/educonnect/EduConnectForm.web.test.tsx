@@ -13,9 +13,9 @@ jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLogin').mockReturnValue({
 
 describe('<EduConnectForm />', () => {
   it('should render EduConnectForm', () => {
-    const renderAPI = render(<EduConnectForm />)
+    const { container } = render(<EduConnectForm />)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('should open educonnect tab on press "Connexion avec ÉduConnect"', () => {

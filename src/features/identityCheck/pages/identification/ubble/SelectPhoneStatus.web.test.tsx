@@ -6,9 +6,9 @@ import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/we
 
 describe('SelectPhoneStatus', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<SelectPhoneStatus />)
+    const { container } = render(<SelectPhoneStatus />)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('should navigate to SelectIDStatus on press "J’ai un smartphone à proximité" button', () => {

@@ -46,10 +46,10 @@ jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('SearchResultsContent component', () => {
   it('should render correctly', async () => {
-    const renderAPI = render(reactQueryProviderHOC(<SearchResultsContent />))
+    const { container } = render(reactQueryProviderHOC(<SearchResultsContent />))
 
     await screen.findByTestId('searchResultsList')
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })

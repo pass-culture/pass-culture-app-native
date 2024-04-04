@@ -1,308 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<EduConnectValidation /> should render EduConnectValidation component correctly 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": .c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  cursor: pointer;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: transparent;
-  padding: 0;
-}
-
-.c0:active {
-  opacity: 0.7;
-  outline: none;
-}
-
-.c0:focus {
-  outline: auto;
-}
-
-.c0:disabled {
-  cursor: initial;
-}
-
-.c0:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c0:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c1 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  max-width: 40px;
-  height: 40px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
-  width: 100%;
-  background-color: #eb0055;
-  max-width: 500px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c2:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c2:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
-  text-decoration-color: #ffffff;
-}
-
-.c2:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c3:disabled {
-  background-color: #F1F1F4;
-}
-
-<body>
-    <div>
-      <header
-        class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
-        role="banner"
-      >
-        <div
-          class="css-view-175oi2r r-height-10ptun7"
-        />
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
-        >
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
-          >
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
-              data-testid="back-button-container"
-            >
-              <button
-                aria-label="Revenir en arrière"
-                class="c0 c1 sc-gEvEer c1"
-                data-testid="Revenir en arrière"
-                tabindex="0"
-                title="Revenir en arrière"
-                type="button"
-              >
-                <div
-                  class="css-view-175oi2r"
-                  data-testid="icon-back"
-                >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    icon-back-SVG-Mock
-                  </div>
-                </div>
-                <div
-                  class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                  dir="ltr"
-                >
-                  Retour
-                </div>
-              </button>
-            </div>
-            <h1
-              aria-level="1"
-              class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-              dir="ltr"
-              role="heading"
-            >
-              Mon identité
-            </h1>
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
-              data-testid="close-button-container"
-            />
-          </div>
-        </div>
-      </header>
-      <div
-        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-      >
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-fd4yh7"
-        >
-          <div
-            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
-          >
-            <div
-              class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
-            >
-              <div
-                class="css-view-175oi2r"
-                style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
-              >
-                <div
-                  class="css-view-175oi2r"
-                  style="height: 65px;"
-                />
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
-                >
-                  <h2
-                    aria-level="2"
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
-                    dir="ltr"
-                    role="heading"
-                  >
-                    Les informations extraites sont-elles correctes ?
-                  </h2>
-                </div>
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy"
-                >
-                  <div
-                    class="css-view-175oi2r r-height-1472mwg"
-                  />
-                  <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                    dir="ltr"
-                  >
-                    Ton prénom
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-height-3da1kt"
-                  />
-                  <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
-                    data-testid="validation-first-name"
-                    dir="ltr"
-                  >
-                    John
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-height-z80fyv"
-                  />
-                  <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                    dir="ltr"
-                  >
-                    Ton nom de famille
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-height-3da1kt"
-                  />
-                  <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
-                    data-testid="validation-name"
-                    dir="ltr"
-                  >
-                    Doe
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-height-z80fyv"
-                  />
-                  <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                    dir="ltr"
-                  >
-                    Ta date de naissance
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-height-3da1kt"
-                  />
-                  <div
-                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
-                    data-testid="validation-birth-date"
-                    dir="ltr"
-                  >
-                    28/01/1993
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
-            >
-              <button
-                aria-label="Valider mes informations"
-                class="c2 c3"
-                data-testid="Valider mes informations"
-                tabindex="0"
-                type="submit"
-              >
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
-                >
-                  <div
-                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
-                    dir="ltr"
-                  >
-                    Valider mes informations
-                  </div>
-                </div>
-              </button>
-              <div
-                class="css-view-175oi2r r-height-3da1kt"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
-      />
-    </div>
-  </body>,
-  "container": .c0 {
+.c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -413,242 +112,190 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
 }
 
 <div>
-    <header
-      class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
-      role="banner"
-    >
-      <div
-        class="css-view-175oi2r r-height-10ptun7"
-      />
-      <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
-      >
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
-        >
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
-            data-testid="back-button-container"
-          >
-            <button
-              aria-label="Revenir en arrière"
-              class="c0 c1 sc-gEvEer c1"
-              data-testid="Revenir en arrière"
-              tabindex="0"
-              title="Revenir en arrière"
-              type="button"
-            >
-              <div
-                class="css-view-175oi2r"
-                data-testid="icon-back"
-              >
-                <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  icon-back-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                dir="ltr"
-              >
-                Retour
-              </div>
-            </button>
-          </div>
-          <h1
-            aria-level="1"
-            class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-            dir="ltr"
-            role="heading"
-          >
-            Mon identité
-          </h1>
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
-            data-testid="close-button-container"
-          />
-        </div>
-      </div>
-    </header>
+  <header
+    class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
+    role="banner"
+  >
     <div
-      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      class="css-view-175oi2r r-height-10ptun7"
+    />
+    <div
+      class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-fd4yh7"
+        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
       >
         <div
-          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
+          data-testid="back-button-container"
         >
-          <div
-            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+          <button
+            aria-label="Revenir en arrière"
+            class="c0 c1 sc-gEvEer c1"
+            data-testid="Revenir en arrière"
+            tabindex="0"
+            title="Revenir en arrière"
+            type="button"
           >
             <div
               class="css-view-175oi2r"
-              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+              data-testid="icon-back"
             >
               <div
-                class="css-view-175oi2r"
-                style="height: 65px;"
+                class="css-text-1rynq56"
+                dir="ltr"
+              >
+                icon-back-SVG-Mock
+              </div>
+            </div>
+            <div
+              class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+              dir="ltr"
+            >
+              Retour
+            </div>
+          </button>
+        </div>
+        <h1
+          aria-level="1"
+          class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+          dir="ltr"
+          role="heading"
+        >
+          Mon identité
+        </h1>
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
+          data-testid="close-button-container"
+        />
+      </div>
+    </div>
+  </header>
+  <div
+    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+  >
+    <div
+      class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-fd4yh7"
+    >
+      <div
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+      >
+        <div
+          class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+        >
+          <div
+            class="css-view-175oi2r"
+            style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+          >
+            <div
+              class="css-view-175oi2r"
+              style="height: 65px;"
+            />
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
+            >
+              <h2
+                aria-level="2"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
+                dir="ltr"
+                role="heading"
+              >
+                Les informations extraites sont-elles correctes ?
+              </h2>
+            </div>
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy"
+            >
+              <div
+                class="css-view-175oi2r r-height-1472mwg"
               />
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                dir="ltr"
               >
-                <h2
-                  aria-level="2"
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Les informations extraites sont-elles correctes ?
-                </h2>
+                Ton prénom
               </div>
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy"
+                class="css-view-175oi2r r-height-3da1kt"
+              />
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+                data-testid="validation-first-name"
+                dir="ltr"
               >
-                <div
-                  class="css-view-175oi2r r-height-1472mwg"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                  dir="ltr"
-                >
-                  Ton prénom
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
-                  data-testid="validation-first-name"
-                  dir="ltr"
-                >
-                  John
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-z80fyv"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                  dir="ltr"
-                >
-                  Ton nom de famille
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
-                  data-testid="validation-name"
-                  dir="ltr"
-                >
-                  Doe
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-z80fyv"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                  dir="ltr"
-                >
-                  Ta date de naissance
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
-                  data-testid="validation-birth-date"
-                  dir="ltr"
-                >
-                  28/01/1993
-                </div>
+                John
+              </div>
+              <div
+                class="css-view-175oi2r r-height-z80fyv"
+              />
+              <div
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                dir="ltr"
+              >
+                Ton nom de famille
+              </div>
+              <div
+                class="css-view-175oi2r r-height-3da1kt"
+              />
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+                data-testid="validation-name"
+                dir="ltr"
+              >
+                Doe
+              </div>
+              <div
+                class="css-view-175oi2r r-height-z80fyv"
+              />
+              <div
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                dir="ltr"
+              >
+                Ta date de naissance
+              </div>
+              <div
+                class="css-view-175oi2r r-height-3da1kt"
+              />
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+                data-testid="validation-birth-date"
+                dir="ltr"
+              >
+                28/01/1993
               </div>
             </div>
           </div>
-          <div
-            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
+        </div>
+        <div
+          class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
+        >
+          <button
+            aria-label="Valider mes informations"
+            class="c2 c3"
+            data-testid="Valider mes informations"
+            tabindex="0"
+            type="submit"
           >
-            <button
-              aria-label="Valider mes informations"
-              class="c2 c3"
-              data-testid="Valider mes informations"
-              tabindex="0"
-              type="submit"
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
+                dir="ltr"
               >
-                <div
-                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
-                  dir="ltr"
-                >
-                  Valider mes informations
-                </div>
+                Valider mes informations
               </div>
-            </button>
-            <div
-              class="css-view-175oi2r r-height-3da1kt"
-            />
-          </div>
+            </div>
+          </button>
+          <div
+            class="css-view-175oi2r r-height-3da1kt"
+          />
         </div>
       </div>
     </div>
-    <div
-      class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
-    />
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+  </div>
+  <div
+    class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+  />
+</div>
 `;

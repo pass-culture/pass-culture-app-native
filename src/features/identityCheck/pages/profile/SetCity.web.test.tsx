@@ -14,9 +14,9 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 
 describe('<SetCity/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(reactQueryProviderHOC(<SetCity />))
+    const { container } = render(reactQueryProviderHOC(<SetCity />))
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   describe('Accessibility', () => {

@@ -7,7 +7,7 @@ import { render } from 'tests/utils/web'
 
 describe('<PageWithHeader/>', () => {
   it('should render correctly', () => {
-    const renderAPI = render(
+    const { container } = render(
       <PageWithHeader
         title="Page with header title"
         scrollChildren={<Text>scroll children</Text>}
@@ -16,6 +16,6 @@ describe('<PageWithHeader/>', () => {
       />
     )
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })

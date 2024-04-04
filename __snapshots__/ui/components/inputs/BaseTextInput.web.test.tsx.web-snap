@@ -1,92 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BaseTextInput /> should render correctly 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <input
-        autocapitalize="sentences"
-        autocomplete="on"
-        autocorrect="on"
-        class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-color-1rmcaf9 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-yv33h5 r-fontSize-a023e6 r-height-1pi2tsx r-paddingBottom-1mdbw0j r-paddingLeft-gy4na3 r-paddingRight-9aemit r-paddingTop-wk8lta r-width-lnhwgy"
-        data-testid="Champ de texte"
-        dir="ltr"
-        enterkeyhint="next"
-        placeholder="placeholder"
-        spellcheck="true"
-        style="--placeholderTextColor: #696A6F;"
-        type="text"
-        value="value"
-      />
-    </div>
-  </body>,
-  "container": <div>
-    <input
-      autocapitalize="sentences"
-      autocomplete="on"
-      autocorrect="on"
-      class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-color-1rmcaf9 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-yv33h5 r-fontSize-a023e6 r-height-1pi2tsx r-paddingBottom-1mdbw0j r-paddingLeft-gy4na3 r-paddingRight-9aemit r-paddingTop-wk8lta r-width-lnhwgy"
-      data-testid="Champ de texte"
-      dir="ltr"
-      enterkeyhint="next"
-      placeholder="placeholder"
-      spellcheck="true"
-      style="--placeholderTextColor: #696A6F;"
-      type="text"
-      value="value"
-    />
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+<div>
+  <input
+    autocapitalize="sentences"
+    autocomplete="on"
+    autocorrect="on"
+    class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-color-1rmcaf9 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-yv33h5 r-fontSize-a023e6 r-height-1pi2tsx r-paddingBottom-1mdbw0j r-paddingLeft-gy4na3 r-paddingRight-9aemit r-paddingTop-wk8lta r-width-lnhwgy"
+    data-testid="Champ de texte"
+    dir="ltr"
+    enterkeyhint="next"
+    placeholder="placeholder"
+    spellcheck="true"
+    style="--placeholderTextColor: #696A6F;"
+    type="text"
+    value="value"
+  />
+</div>
 `;

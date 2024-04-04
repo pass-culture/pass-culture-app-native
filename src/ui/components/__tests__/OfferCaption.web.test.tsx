@@ -18,9 +18,9 @@ describe('OfferCaption component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly', () => {
-    const renderAPI = render(<OfferCaption {...props} />)
+    const { container } = render(<OfferCaption {...props} />)
 
-    expect(renderAPI).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('should have the isDuo text if user is Beneficiary', () => {
