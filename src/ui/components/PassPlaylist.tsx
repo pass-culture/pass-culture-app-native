@@ -62,7 +62,7 @@ export const PassPlaylist = (props: Props) => {
     ) : null
   }
   return (
-    <Container>
+    <Container {...props}>
       <TitleContainer>
         <Row>
           <StyledTitleComponent testID="playlistTitle">{props.title}</StyledTitleComponent>

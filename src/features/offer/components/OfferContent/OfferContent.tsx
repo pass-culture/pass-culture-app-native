@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent, Platform, View } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, Platform } from 'react-native'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
@@ -25,6 +25,7 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Hero } from 'ui/components/hero/Hero'
 import { HeroBody } from 'ui/components/hero/HeroBody'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
@@ -125,20 +126,19 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
             />
           </BodyDesktopContainer>
         ) : (
-          <View testID="offer-body-mobile">
+          <ViewGap gap={8} testID="offer-body-mobile">
             <Hero
               imageUrl={imageUrl}
               categoryId={subcategory.categoryId}
               shouldDisplayOfferPreview={shouldDisplayOfferPreview}
               onPress={onPress}
             />
-            <Spacer.Column numberOfSpaces={8} />
             <OfferBody
               offer={offer}
               subcategory={subcategory}
               trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
             />
-          </View>
+          </ViewGap>
         )}
 
         <OfferPlaylistList
@@ -173,7 +173,9 @@ const Container = styled.View({
   flex: 1,
 })
 
-const ScrollViewContainer = styled(IntersectionObserverScrollView)({ overflow: 'visible' })
+const ScrollViewContainer = styled(IntersectionObserverScrollView)({
+  overflow: 'visible',
+})
 
 const BodyDesktopContainer = styled.View<{ headerHeight: number }>(({ headerHeight }) => ({
   flexDirection: 'row',
