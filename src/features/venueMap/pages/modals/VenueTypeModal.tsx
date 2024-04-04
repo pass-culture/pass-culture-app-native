@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
+import { useForm } from 'react-hook-form'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -23,8 +24,15 @@ type Props = {
   isVisible?: boolean
 }
 
+type VenueTypeModalFormProps = {
+  venueTypeSelected: string | null
+}
+
 const titleId = uuidv4()
 const MODAL_TITLE = 'Type de lieu'
+
+const getVenueTypeSelected = (venueType: VenueTypeCode | null) =>
+  venueType ? parseType(venueType) : 'Tout'
 
 export const VenueTypeModal: FunctionComponent<Props> = ({
   venueType,
@@ -33,16 +41,17 @@ export const VenueTypeModal: FunctionComponent<Props> = ({
 }) => {
   const { modal } = useTheme()
 
-  const [venueTypeSelected, setVenueTypeSelected] = useState<string | null>(
-    venueType ? parseType(venueType) : 'Tout'
-  )
+  const { reset, setValue, watch } = useForm<VenueTypeModalFormProps>({
+    defaultValues: { venueTypeSelected: getVenueTypeSelected(venueType) },
+  })
+  const { venueTypeSelected } = watch()
 
   const handleOnSelect = (venueTypeCode: VenueTypeCode | null) => {
-    setVenueTypeSelected(venueTypeCode ? parseType(venueTypeCode) : 'Tout')
+    setValue('venueTypeSelected', getVenueTypeSelected(venueTypeCode))
   }
 
   const handleOnReset = () => {
-    setVenueTypeSelected('Tout')
+    reset({ venueTypeSelected: 'Tout' })
   }
 
   const handleCloseModal = () => {
