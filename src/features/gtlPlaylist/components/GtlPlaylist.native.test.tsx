@@ -4,8 +4,7 @@ import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { InViewProps } from 'react-native-intersection-observer'
 
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
-import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
-import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
+import { GtlPlaylist, GtlPlaylistProps } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -23,98 +22,97 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 }))
 
 const venue: VenueResponse = venueResponseSnap
-const playlists: GTLPlaylistResponse = [
-  {
-    title: 'Test',
-    offers: {
-      hits: [
-        {
-          offer: {
-            name: 'Mon abonnement bibliothèque',
-            subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
-          },
-          venue,
-          _geoloc: {
-            lat: 2,
-            lng: 2,
-          },
-          objectID: '12',
+
+const playlist: GtlPlaylistProps['playlist'] = {
+  title: 'Test',
+  offers: {
+    hits: [
+      {
+        offer: {
+          name: 'Mon abonnement bibliothèque',
+          subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
         },
-        {
-          offer: {
-            name: 'Mon abonnement médiathèque',
-            subcategoryId: SubcategoryIdEnum.ABO_MEDIATHEQUE,
-          },
-          venue,
-          _geoloc: {
-            lat: 2,
-            lng: 2,
-          },
-          objectID: '13',
+        venue,
+        _geoloc: {
+          lat: 2,
+          lng: 2,
         },
-        {
-          offer: {
-            name: 'Mon abonnement livres numériques',
-            subcategoryId: SubcategoryIdEnum.ABO_LIVRE_NUMERIQUE,
-          },
-          venue,
-          _geoloc: {
-            lat: 2,
-            lng: 2,
-          },
-          objectID: '14',
+        objectID: '12',
+      },
+      {
+        offer: {
+          name: 'Mon abonnement médiathèque',
+          subcategoryId: SubcategoryIdEnum.ABO_MEDIATHEQUE,
         },
-        {
-          offer: {
-            name: 'Mon abonnement ludothèque',
-            subcategoryId: SubcategoryIdEnum.ABO_LUDOTHEQUE,
-          },
-          venue,
-          _geoloc: {
-            lat: 2,
-            lng: 2,
-          },
-          objectID: '15',
+        venue,
+        _geoloc: {
+          lat: 2,
+          lng: 2,
         },
-        {
-          offer: {
-            name: 'Mon abonnement concert',
-            subcategoryId: SubcategoryIdEnum.ABO_CONCERT,
-          },
-          venue,
-          _geoloc: {
-            lat: 2,
-            lng: 2,
-          },
-          objectID: '16',
+        objectID: '13',
+      },
+      {
+        offer: {
+          name: 'Mon abonnement livres numériques',
+          subcategoryId: SubcategoryIdEnum.ABO_LIVRE_NUMERIQUE,
         },
-        {
-          offer: {
-            name: 'Mon abonnement jeu vidéo',
-            subcategoryId: SubcategoryIdEnum.ABO_JEU_VIDEO,
-          },
-          venue,
-          _geoloc: {
-            lat: 2,
-            lng: 2,
-          },
-          objectID: '17',
+        venue,
+        _geoloc: {
+          lat: 2,
+          lng: 2,
         },
-      ],
-      page: 0,
-      nbPages: 1,
-      nbHits: 1,
-      hitsPerPage: 25,
-      processingTimeMS: 1,
-      exhaustiveNbHits: true,
-      query: '',
-      params: '',
-    } as SearchResponse<Offer>,
-    layout: 'one-item-medium',
-    entryId: '2xUlLBRfxdk6jeYyJszunX',
-    minNumberOfOffers: 1,
-  },
-]
+        objectID: '14',
+      },
+      {
+        offer: {
+          name: 'Mon abonnement ludothèque',
+          subcategoryId: SubcategoryIdEnum.ABO_LUDOTHEQUE,
+        },
+        venue,
+        _geoloc: {
+          lat: 2,
+          lng: 2,
+        },
+        objectID: '15',
+      },
+      {
+        offer: {
+          name: 'Mon abonnement concert',
+          subcategoryId: SubcategoryIdEnum.ABO_CONCERT,
+        },
+        venue,
+        _geoloc: {
+          lat: 2,
+          lng: 2,
+        },
+        objectID: '16',
+      },
+      {
+        offer: {
+          name: 'Mon abonnement jeu vidéo',
+          subcategoryId: SubcategoryIdEnum.ABO_JEU_VIDEO,
+        },
+        venue,
+        _geoloc: {
+          lat: 2,
+          lng: 2,
+        },
+        objectID: '17',
+      },
+    ],
+    page: 0,
+    nbPages: 1,
+    nbHits: 1,
+    hitsPerPage: 25,
+    processingTimeMS: 1,
+    exhaustiveNbHits: true,
+    query: '',
+    params: '',
+  } as SearchResponse<Offer>,
+  layout: 'one-item-medium',
+  entryId: '2xUlLBRfxdk6jeYyJszunX',
+  minNumberOfOffers: 1,
+}
 
 const nativeEventEnd = {
   layoutMeasurement: { width: 1000 },
@@ -141,11 +139,13 @@ jest.mock('react-native-intersection-observer', () => {
 
 describe('GtlPlaylist', () => {
   it('should log ConsultOffer when pressing an item', () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlists[0]} venue={venue} />))
+    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlist} venue={venue} />))
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    fireEvent.press(screen.queryAllByText('Mon abonnement bibliothèque')[0])
+    const result = screen.queryAllByText('Mon abonnement bibliothèque')[0]
+
+    if (result) {
+      fireEvent.press(result)
+    }
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       from: 'venue',
@@ -157,8 +157,7 @@ describe('GtlPlaylist', () => {
   })
 
   it('should log AllTilesSeen only once when scrolling to the end of the playlist', async () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlists[0]} venue={venue} />))
+    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlist} venue={venue} />))
     const scrollView = screen.getByTestId('offersModuleList')
 
     await act(async () => {
@@ -181,8 +180,7 @@ describe('GtlPlaylist', () => {
   })
 
   it('should log ModuleDisplayed when scrolling to the playlist', () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlists[0]} venue={venue} />))
+    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlist} venue={venue} />))
 
     mockInView(true)
 
@@ -194,8 +192,7 @@ describe('GtlPlaylist', () => {
   })
 
   it('should not log ModuleDisplayed when not scrolling to the playlist', () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlists[0]} venue={venue} />))
+    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlist} venue={venue} />))
 
     mockInView(false)
 
