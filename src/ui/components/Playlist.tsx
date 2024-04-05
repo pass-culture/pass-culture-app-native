@@ -1,20 +1,18 @@
 /* We use many `any` on purpose in this module, so we deactivate the following rule : */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FlashList, ListRenderItem, ListRenderItemInfo } from '@shopify/flash-list'
-import range from 'lodash/range'
-import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useMemo, useRef } from 'react'
 import { FlatList, Platform, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { PlaylistType } from 'features/offer/enums'
 import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
+import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { BicolorArrowLeft as DefaultBicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
 import { BicolorArrowRight as DefaultBicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
 import { getSpacing } from 'ui/theme'
 
 export type ItemDimensions = { width: number; height: number }
-
-type Direction = 'previous' | 'next'
 
 type RenderHeaderItem = ((itemDimensions: ItemDimensions) => React.ReactElement<any>) | undefined
 
@@ -70,9 +68,16 @@ export const Playlist: FunctionComponent<Props> = ({
 }) => {
   const { isTouch } = useTheme()
 
-  const [playlistWidth, setPlaylistWidth] = useState(0)
-  const [playlistStepIndex, setPlaylistStepIndex] = useState(0)
   const listRef = useRef<ListType<typeof isWeb>>(null)
+  const {
+    handleScrollPrevious,
+    handleScrollNext,
+    onScroll,
+    onContentSizeChange,
+    onContainerLayout,
+    isEnd,
+    isStart,
+  } = useHorizontalFlatListScroll({ ref: listRef })
 
   // We use FlatLists in web because we don't have performance issues
   const ListComponent = isWeb ? FlatList : FlashList
@@ -89,10 +94,6 @@ export const Playlist: FunctionComponent<Props> = ({
 
   const itemWidthWithOffset = itemWidth + ITEM_SEPARATOR_WIDTH
   const nbOfItems = dataWithHeaderAndFooter.length
-  const { steps, nbOfSteps } = useMemo(
-    () => getItemSteps(nbOfItems, itemWidthWithOffset, playlistWidth),
-    [nbOfItems, itemWidthWithOffset, playlistWidth]
-  )
 
   // It is required to know the exact width of an item width and its offset if we want to use
   // FlatList's scrollToIndex() function.
@@ -107,21 +108,6 @@ export const Playlist: FunctionComponent<Props> = ({
       return keyExtractor(item, index)
     },
     [renderHeader, renderFooter, keyExtractor, nbOfItems]
-  )
-
-  const displayItems = useCallback(
-    (direction: Direction) => {
-      setPlaylistStepIndex((previousStepIndex) => {
-        if (!listRef.current) return previousStepIndex
-        let stepIndex = 0
-        if (direction === 'previous') stepIndex = Math.max(previousStepIndex - 1, 0)
-        if (direction === 'next') stepIndex = Math.min(previousStepIndex + 1, nbOfSteps - 1)
-        const step = steps[stepIndex]
-        if (step) listRef.current.scrollToIndex({ index: step, viewPosition: 0 })
-        return stepIndex
-      })
-    },
-    [nbOfSteps, steps]
   )
 
   const renderItemWithHeaderAndFooter: ListRenderItem<any> = useCallback(
@@ -144,30 +130,27 @@ export const Playlist: FunctionComponent<Props> = ({
     [renderHeader, renderFooter, nbOfItems, renderItem, itemWidth, itemHeight, playlistType]
   )
 
-  const displayLeftScrollButtonForNotTouchDevice = !isTouch && playlistStepIndex > 0
-  const displayRightScrollButtonForNotTouchDevice = !isTouch && playlistStepIndex < nbOfSteps - 1
   return (
-    <FlatListContainer>
-      {displayLeftScrollButtonForNotTouchDevice ? (
+    <FlatListContainer onLayout={onContainerLayout}>
+      {!isStart ? (
         <ScrollButtonForNotTouchDevice
           horizontalAlign="left"
           top={scrollButtonOffsetY}
-          onPress={() => displayItems('previous')}>
+          onPress={handleScrollPrevious}>
           <BicolorArrowLeft />
         </ScrollButtonForNotTouchDevice>
       ) : null}
-      {displayRightScrollButtonForNotTouchDevice ? (
+      {!isEnd ? (
         <ScrollButtonForNotTouchDevice
           horizontalAlign="right"
           top={scrollButtonOffsetY}
-          onPress={() => displayItems('next')}>
+          onPress={handleScrollNext}>
           <BicolorArrowRight />
         </ScrollButtonForNotTouchDevice>
       ) : null}
       <ListComponent
-        onLayout={({ nativeEvent }) => {
-          setPlaylistWidth(nativeEvent.layout.width)
-        }}
+        onScroll={onScroll}
+        onContentSizeChange={onContentSizeChange}
         testID={testID}
         ref={listRef}
         scrollEnabled={isTouch}
@@ -191,15 +174,6 @@ export const Playlist: FunctionComponent<Props> = ({
 }
 
 Playlist.defaultProps = defaultProps
-
-function getItemSteps(nbOfItems: number, itemWidth: number, playlistWidth: number) {
-  if (!nbOfItems || !itemWidth || !playlistWidth) {
-    return { nbOfSteps: 1, steps: [0] }
-  }
-  const nbOfItemsDisplayed = Math.floor(playlistWidth / itemWidth)
-  const steps = range(0, nbOfItems, nbOfItemsDisplayed)
-  return { nbOfSteps: steps.length, steps }
-}
 
 const FlatListContainer = styled.View({
   position: 'relative',
