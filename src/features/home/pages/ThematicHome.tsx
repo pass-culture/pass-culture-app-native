@@ -26,11 +26,13 @@ import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useMapSubscriptionHomeIdsToThematic } from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { useThematicSubscription } from 'features/subscription/helpers/useThematicSubscription'
+import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { startTransaction } from 'shared/performance/transactions'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const MARGIN_TOP_HEADER = 6
@@ -113,13 +115,27 @@ export const ThematicHome: FunctionComponent = () => {
   const isLocated = !!userLocation
   const { user, isLoggedIn } = useAuthContext()
   const thematic = useMapSubscriptionHomeIdsToThematic(params.homeId)
-  const { isSubscribeButtonActive, updateSubscription } = useThematicSubscription({
+  const {
+    visible: isNotificationsModalVisible,
+    showModal: showNotificationsModal,
+    hideModal: hideNotificationsModal,
+  } = useModal(false)
+  const {
+    isSubscribeButtonActive,
+    isAtLeastOneNotificationTypeActivated,
+    updateSubscription,
+    updateSettings,
+  } = useThematicSubscription({
     user,
     thematic,
   })
 
   const onSubscribeButtonPress = () => {
-    updateSubscription()
+    if (!isAtLeastOneNotificationTypeActivated) {
+      showNotificationsModal()
+    } else {
+      updateSubscription()
+    }
   }
 
   const AnimatedHeader = Animated.createAnimatedComponent(AnimatedHeaderContainer)
@@ -200,6 +216,14 @@ export const ThematicHome: FunctionComponent = () => {
           )}
         </React.Fragment>
       )}
+      {thematic ? (
+        <NotificationsSettingsModal
+          visible={isNotificationsModalVisible}
+          dismissModal={hideNotificationsModal}
+          theme={thematic}
+          onPressSaveChanges={updateSettings}
+        />
+      ) : null}
     </Container>
   )
 }

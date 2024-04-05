@@ -16,7 +16,7 @@ import { useLocation } from 'libs/location'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
@@ -206,6 +206,27 @@ describe('ThematicHome', () => {
       await act(async () => {})
 
       expect(screen.getByText('Déjà suivi')).toBeOnTheScreen()
+    })
+
+    it('should show notifications settings modal when user has no notifications activated and click on subscribe button', async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        ...baseAuthContext,
+        isLoggedIn: true,
+        user: {
+          ...beneficiaryUser,
+          subscriptions: {
+            marketingEmail: false,
+            marketingPush: false,
+            subscribedThemes: [],
+          },
+        },
+      })
+
+      renderThematicHome()
+
+      await act(async () => fireEvent.press(screen.getByText('Suivre')))
+
+      expect(screen.getByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
     })
   })
 
