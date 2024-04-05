@@ -593,7 +593,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
           </div>
         </div>
         <div
-          class="css-view-175oi2r r-height-1472mwg"
+          class="css-view-175oi2r r-height-eu3ka"
         />
         <div
           class="css-view-175oi2r r-flexShrink-1wbh5a2 r-marginHorizontal-1hy1u7s"
@@ -620,9 +620,6 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
                 tabindex="0"
               >
                 <div
-                  class="css-view-175oi2r r-height-1472mwg"
-                />
-                <div
                   class="css-view-175oi2r r-flexGrow-16y2uox r-justifyContent-1777fci"
                 >
                   <div
@@ -647,9 +644,6 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
                 style="transition-duration: 0s;"
                 tabindex="-1"
               >
-                <div
-                  class="css-view-175oi2r r-height-1472mwg"
-                />
                 <div
                   class="css-view-175oi2r r-flexGrow-16y2uox r-justifyContent-1777fci"
                 >
@@ -980,74 +974,78 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
           class="css-view-175oi2r r-height-1472mwg"
         />
         <div
-          class="css-view-175oi2r"
+          class="css-view-175oi2r r-gap-1tgfunj"
         >
           <div
             class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
           />
           <div
-            class="css-view-175oi2r r-flexShrink-1wbh5a2 r-marginHorizontal-1hy1u7s"
+            class="css-view-175oi2r r-marginHorizontal-1hy1u7s"
           >
-            <h2
-              aria-level="2"
-              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-paddingBottom-1l7z4oj r-paddingTop-1ygmrgt"
-              dir="ltr"
-              role="heading"
-            >
-              Passe le bon plan !
-            </h2>
             <div
-              class="css-view-175oi2r r-flexDirection-18u37iz r-maxWidth-1ik5qf4 r-width-13qz1uu"
+              class="css-view-175oi2r r-gap-f4gmv6"
             >
-              <ul
-                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-justifyContent-1h0z5md r-overflow-1dqxon3 r-paddingLeft-gy4na3"
-                role="list"
+              <h2
+                aria-level="2"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+                dir="ltr"
+                role="heading"
               >
-                <li
-                  class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
-                  role="listitem"
+                Passe le bon plan !
+              </h2>
+              <div
+                class="css-view-175oi2r r-flexDirection-18u37iz r-maxWidth-1ik5qf4 r-width-13qz1uu"
+              >
+                <ul
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-justifyContent-1h0z5md r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+                  role="list"
                 >
-                  <button
-                    class="c6 c7 sc-hCPjZK c7"
-                    tabindex="0"
-                    type="button"
+                  <li
+                    class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
+                    role="listitem"
                   >
-                    <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                    <button
+                      class="c6 c7 sc-hCPjZK c7"
+                      tabindex="0"
+                      type="button"
                     >
                       <div
-                        class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                       >
                         <div
-                          class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-103ggtu r-borderRadius-1fuqb1j r-borderWidth-rs99b7 r-height-h3s6tt r-justifyContent-1777fci r-width-rwqe4o"
+                          class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
                         >
                           <div
-                            class="css-view-175oi2r"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-103ggtu r-borderRadius-1fuqb1j r-borderWidth-rs99b7 r-height-h3s6tt r-justifyContent-1777fci r-width-rwqe4o"
                           >
                             <div
-                              class="css-text-1rynq56"
-                              dir="ltr"
+                              class="css-view-175oi2r"
                             >
-                              undefined-SVG-Mock
+                              <div
+                                class="css-text-1rynq56"
+                                dir="ltr"
+                              >
+                                undefined-SVG-Mock
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-height-3da1kt"
-                      />
-                      <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                        data-testid="caption-undefined"
-                        dir="ltr"
-                      >
-                        Plus
+                        <div
+                          class="css-view-175oi2r r-height-3da1kt"
+                        />
+                        <div
+                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                          data-testid="caption-undefined"
+                          dir="ltr"
+                        >
+                          Plus
 d’options
+                        </div>
                       </div>
-                    </div>
-                  </button>
-                </li>
-              </ul>
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div
               class="css-view-175oi2r r-height-10ptun7"
@@ -1055,13 +1053,10 @@ d’options
           </div>
         </div>
         <div
-          class="css-view-175oi2r"
+          class="css-view-175oi2r r-gap-ljgj6t"
         >
           <div
             class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
-          />
-          <div
-            class="css-view-175oi2r r-height-1iznev0"
           />
         </div>
       </div>
