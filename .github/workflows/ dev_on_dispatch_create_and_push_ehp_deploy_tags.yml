@@ -1,5 +1,4 @@
-# TODO rename file dev_on_dispatch_create_and_push_ehp_deploy_tags.yml and fix corresponding hook in JIRA with JIRA admin
-name: "1 [on_dispatch] Jira - Create and push staging & testing deploy tags"
+name: "1 [on_dispatch][Jira] Create/Push ehp deploy tags"
 
 on:
   workflow_dispatch:
@@ -19,38 +18,40 @@ env:
 
 jobs:
   create_and_push_staging_tag:
+    name: 'Create and push staging tag'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout commit hash
+      - name: "Checkout commit hash"
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.commitHash }}
           token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
-      - name: get package version
+      - name: "get package version"
         id: package-version
         uses: martinbeentjes/npm-get-version-action@v1.3.1
-      - name: Author
+      - name: "Author"
         run: |
           git config --global user.email "$GIT_CONFIG_EMAIL"
           git config --global user.name "$GIT_CONFIG_NAME"
-      - name: Create and push tag from package version
+      - name: "Create and push tag from package version"
         run: |
           STAGING_VERSION=${{ steps.package-version.outputs.current-version }}
           TAG_NAME=v${STAGING_VERSION}
           git tag --annotate "$TAG_NAME" --message "🚀 $TAG_NAME"
           git push origin "$TAG_NAME"
   create_and_push_testing_tag:
+    name: 'Create and push testing tag'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: master
           token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
-      - name: Author
+      - name: "Author"
         run: |
           git config --global user.email "$GIT_CONFIG_EMAIL"
           git config --global user.name "$GIT_CONFIG_NAME"
-      - name: Bump package version
+      - name: "Bump package version"
         uses: phips28/gh-action-bump-version@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -60,7 +61,7 @@ jobs:
           skip-commit: 'true'
           skip-tag: 'true'
           skip-push: 'true'
-      - name: Bump server package version
+      - name: "Bump server package version"
         uses: phips28/gh-action-bump-version@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -71,10 +72,10 @@ jobs:
           skip-commit: 'true'
           skip-tag: 'true'
           skip-push: 'true'
-      - name: Get package version
+      - name: "Get package version"
         id: package-version
         uses: martinbeentjes/npm-get-version-action@v1.3.1
-      - name: Bump build number
+      - name: "Bump build number"
         id: build-number
         run: |
           # We have to increment the build number because it is used as the versionCode
@@ -102,17 +103,17 @@ jobs:
           PATCH=${SEMVER[2]}
           BUILD_NUMBER=$((10000000 * MAJOR + 1000 * MINOR + PATCH))
           echo build_number=$BUILD_NUMBER >> $GITHUB_OUTPUT
-      - name: Update build number in package.json
+      - name: "Update build number in package.json"
         uses: sergeysova/jq-action@v2
         with:
           cmd: jq '.build = ${{ steps.build-number.outputs.build_number }}' package.json > tmp && mv tmp package.json
-      - name: Commit changes
+      - name: "Commit changes"
         run: |
           TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
           git add package.json server/package.json
           git commit --message "v${TESTING_VERSION}"
           git push origin master
-      - name: Create and push testing tag
+      - name: "Create and push testing tag"
         run: |
           TESTING_VERSION=${{ steps.package-version.outputs.current-version }}
           TAG_NAME=testing/v${TESTING_VERSION}

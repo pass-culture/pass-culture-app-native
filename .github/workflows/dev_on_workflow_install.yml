@@ -1,4 +1,4 @@
-name: "4 [on_workflow] Install runtime environment and dependencies"
+name: "4 [on_workflow] Install dependencies"
 
 on:
   workflow_call:
@@ -14,6 +14,7 @@ on:
 
 jobs:
   yarn-install:
+    name: "Install yarn dependencies"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -60,6 +61,7 @@ jobs:
         run: yarn install
 
   bundle-install:
+    name: "Install runtime environment"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
