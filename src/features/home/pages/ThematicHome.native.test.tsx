@@ -228,6 +228,29 @@ describe('ThematicHome', () => {
 
       expect(screen.getByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
     })
+
+    it('should show unsubscribe modal when user is already subscribed and click on subscribe button', async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        ...baseAuthContext,
+        isLoggedIn: true,
+        user: {
+          ...beneficiaryUser,
+          subscriptions: {
+            marketingEmail: true,
+            marketingPush: true,
+            subscribedThemes: [SubscriptionTheme.CINEMA],
+          },
+        },
+      })
+
+      renderThematicHome()
+
+      await act(async () => fireEvent.press(screen.getByText('Déjà suivi')))
+
+      expect(
+        screen.getByText('Es-tu sûr de ne plus vouloir suivre ce thème\u00a0?')
+      ).toBeOnTheScreen()
+    })
   })
 
   describe('analytics', () => {

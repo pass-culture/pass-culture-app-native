@@ -24,6 +24,7 @@ import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/ho
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UnsubscribingConfirmationModal } from 'features/subscription/components/UnsubscribingConfirmationModal'
 import { useMapSubscriptionHomeIdsToThematic } from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { useThematicSubscription } from 'features/subscription/helpers/useThematicSubscription'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
@@ -121,6 +122,11 @@ export const ThematicHome: FunctionComponent = () => {
     hideModal: hideNotificationsModal,
   } = useModal(false)
   const {
+    visible: isUnsubscribingModalVisible,
+    showModal: showUnsubscribingModal,
+    hideModal: hideUnsubscribingModal,
+  } = useModal(false)
+  const {
     isSubscribeButtonActive,
     isAtLeastOneNotificationTypeActivated,
     updateSubscription,
@@ -133,9 +139,16 @@ export const ThematicHome: FunctionComponent = () => {
   const onSubscribeButtonPress = () => {
     if (!isAtLeastOneNotificationTypeActivated) {
       showNotificationsModal()
-    } else {
+    } else if (!isSubscribeButtonActive) {
       updateSubscription()
+    } else {
+      showUnsubscribingModal()
     }
+  }
+
+  const onUnsubscribeConfirmationPress = () => {
+    updateSubscription()
+    hideUnsubscribingModal()
   }
 
   const AnimatedHeader = Animated.createAnimatedComponent(AnimatedHeaderContainer)
@@ -217,12 +230,20 @@ export const ThematicHome: FunctionComponent = () => {
         </React.Fragment>
       )}
       {thematic ? (
-        <NotificationsSettingsModal
-          visible={isNotificationsModalVisible}
-          dismissModal={hideNotificationsModal}
-          theme={thematic}
-          onPressSaveChanges={updateSettings}
-        />
+        <React.Fragment>
+          <NotificationsSettingsModal
+            visible={isNotificationsModalVisible}
+            dismissModal={hideNotificationsModal}
+            theme={thematic}
+            onPressSaveChanges={updateSettings}
+          />
+          <UnsubscribingConfirmationModal
+            visible={isUnsubscribingModalVisible}
+            dismissModal={hideNotificationsModal}
+            theme={thematic}
+            onUnsubscribePress={onUnsubscribeConfirmationPress}
+          />
+        </React.Fragment>
       ) : null}
     </Container>
   )
