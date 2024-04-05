@@ -3,13 +3,13 @@ import React, { FunctionComponent, useRef, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { VenueTypeCodeKey } from 'api/gen'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { VenueMapCluster } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
 import { PREVIEW_BOTTOM_MARGIN } from 'features/venueMap/components/VenueMapView/constant'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { getVenueTags } from 'features/venueMap/helpers/getVenueTags/getVenueTags'
+import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { useGetDefaultRegion } from 'features/venueMap/hook/useGetDefaultRegion'
 import { useGetVenuesInRegion } from 'features/venueMap/hook/useGetVenuesInRegion'
@@ -18,41 +18,9 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import MapView, { Marker, Region, MarkerPressEvent, Map } from 'libs/maps/maps'
-import { parseType, VenueTypeCode } from 'libs/parsers/venueType'
+import { parseType } from 'libs/parsers/venueType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing } from 'ui/theme'
-
-const VenueTypeIconNameMapping = {
-  [VenueTypeCodeKey.ARTISTIC_COURSE]: 'artclasses',
-  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: 'artmaterial',
-  [VenueTypeCodeKey.CULTURAL_CENTRE]: 'center',
-  [VenueTypeCodeKey.MOVIE]: 'cinema',
-  [VenueTypeCodeKey.TRAVELING_CINEMA]: 'cinema',
-  [VenueTypeCodeKey.DISTRIBUTION_STORE]: 'culturalStore',
-  [VenueTypeCodeKey.GAMES]: 'game',
-  [VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE]: 'instrumentstore',
-  [VenueTypeCodeKey.BOOKSTORE]: 'library',
-  [VenueTypeCodeKey.LIBRARY]: 'library',
-  [VenueTypeCodeKey.MUSEUM]: 'museum',
-  [VenueTypeCodeKey.CONCERT_HALL]: 'music_live',
-  [VenueTypeCodeKey.FESTIVAL]: 'music_live',
-  [VenueTypeCodeKey.RECORD_STORE]: 'musicstore',
-  [VenueTypeCodeKey.SCIENTIFIC_CULTURE]: 'science',
-  [VenueTypeCodeKey.PERFORMING_ARTS]: 'show',
-  [VenueTypeCodeKey.PATRIMONY_TOURISM]: 'tourism',
-  [VenueTypeCodeKey.VISUAL_ARTS]: 'visualart',
-  [VenueTypeCodeKey.DIGITAL]: null,
-  [VenueTypeCodeKey.OTHER]: null,
-}
-
-const getIconName = (selected: boolean, venueType?: VenueTypeCode) => {
-  const suffix = venueType ? VenueTypeIconNameMapping[venueType] : null
-  const iconName = suffix ? `map_pin_${suffix}` : 'map_pin'
-  if (selected) {
-    return `${iconName}_selected`
-  }
-  return iconName
-}
 
 type Props = {
   height: number
@@ -162,7 +130,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
             }}
             onPress={(event) => handleMarkerPress(venue, event)}
             image={{
-              uri: getIconName(venue.venueId === selectedVenue?.venueId, venue.venue_type),
+              uri: getVenueTypeIconName(venue.venueId === selectedVenue?.venueId, venue.venue_type),
             }}
             zIndex={venue.venueId === selectedVenue?.venueId ? PIN_MAX_Z_INDEX : undefined}
           />
