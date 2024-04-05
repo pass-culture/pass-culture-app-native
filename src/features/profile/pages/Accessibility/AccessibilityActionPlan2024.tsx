@@ -17,6 +17,10 @@ export const AccessibilityActionPlan2024 = () => (
     <Typo.Title4 {...getHeadingAttrs(2)}>Plan annuel 2024</Typo.Title4>
     <Spacer.Column numberOfSpaces={6} />
     <VerticalUl>
+      <BulletListItem text="Mise en place d’une solution permettant aux jeunes en situation de handicap de retrouver facilement les offres accessibles">
+        <ActionPlanTag status={ActionPlanStatus.DONE} />
+      </BulletListItem>
+
       <BulletListItem>
         <Typo.Body>
           Publier la déclaration d’accessibilité du site{' '}
@@ -37,10 +41,6 @@ export const AccessibilityActionPlan2024 = () => (
 
       <BulletListItem text="Mener des actions de sensibilisation des partenaires culturels sur l’information d’accessibilité de leurs lieux">
         <ActionPlanTag status={ActionPlanStatus.TODO} />
-      </BulletListItem>
-
-      <BulletListItem text="Mise en place d’une solution permettant aux jeunes en situation de handicap de retrouver facilement les offres accessibles">
-        <ActionPlanTag status={ActionPlanStatus.DONE} />
       </BulletListItem>
 
       <BulletListItem>

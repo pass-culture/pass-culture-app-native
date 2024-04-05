@@ -3100,6 +3100,84 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                 ]
               }
             >
+              Mise en place d’une solution permettant aux jeunes en situation de handicap de retrouver facilement les offres accessibles
+              <Text
+                done={true}
+                style={
+                  [
+                    {
+                      "color": "#15884f",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                 - 
+                Réalisé
+              </Text>
+            </Text>
+          </View>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "height": 20,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
+            >
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
               <Text
                 style={
                   [
@@ -3375,84 +3453,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               >
                  - 
                 Prochainement
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "marginLeft": 12,
-                  "marginTop": 0,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "height": 20,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                borderColor="#161617"
-                fillColor="#161617"
-                height={3}
-                width={3}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "marginLeft": 12,
-                  },
-                ]
-              }
-            >
-              Mise en place d’une solution permettant aux jeunes en situation de handicap de retrouver facilement les offres accessibles
-              <Text
-                done={true}
-                style={
-                  [
-                    {
-                      "color": "#15884f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                 - 
-                Réalisé
               </Text>
             </Text>
           </View>
