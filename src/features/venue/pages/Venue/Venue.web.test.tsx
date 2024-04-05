@@ -11,7 +11,7 @@ import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -65,9 +65,11 @@ describe('<Venue />', () => {
 
       await screen.findAllByText('Le Petit Rintintin 1')
 
-      const results = await checkAccessibilityFor(container)
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
 
-      expect(results).toHaveNoViolations()
+        expect(results).toHaveNoViolations()
+      })
     })
 
     it('should render correctly in web', async () => {
