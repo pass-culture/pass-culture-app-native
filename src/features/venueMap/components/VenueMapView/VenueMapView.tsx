@@ -9,6 +9,7 @@ import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/Ve
 import { PREVIEW_BOTTOM_MARGIN } from 'features/venueMap/components/VenueMapView/constant'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { getVenueTags } from 'features/venueMap/helpers/getVenueTags/getVenueTags'
+import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { useGetDefaultRegion } from 'features/venueMap/hook/useGetDefaultRegion'
 import { useGetVenuesInRegion } from 'features/venueMap/hook/useGetVenuesInRegion'
@@ -129,7 +130,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
             }}
             onPress={(event) => handleMarkerPress(venue, event)}
             image={{
-              uri: venue.venueId === selectedVenue?.venueId ? 'map_pin_selected' : 'map_pin',
+              uri: getVenueTypeIconName(venue.venueId === selectedVenue?.venueId, venue.venue_type),
             }}
             zIndex={venue.venueId === selectedVenue?.venueId ? PIN_MAX_Z_INDEX : undefined}
           />

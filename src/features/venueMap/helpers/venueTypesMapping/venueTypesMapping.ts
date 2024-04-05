@@ -42,3 +42,26 @@ export const venueTypesMapping = {
     },
   },
 }
+
+export const venueTypesIconNameMapping = {
+  [VenueTypeCodeKey.ARTISTIC_COURSE]: 'art_classes',
+  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: 'art_material',
+  [VenueTypeCodeKey.CULTURAL_CENTRE]: 'center',
+  [VenueTypeCodeKey.MOVIE]: 'cinema',
+  [VenueTypeCodeKey.TRAVELING_CINEMA]: 'cinema',
+  [VenueTypeCodeKey.DISTRIBUTION_STORE]: 'cultural_store',
+  [VenueTypeCodeKey.GAMES]: 'game',
+  [VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE]: 'instrument_store',
+  [VenueTypeCodeKey.BOOKSTORE]: 'library',
+  [VenueTypeCodeKey.LIBRARY]: 'library',
+  [VenueTypeCodeKey.MUSEUM]: 'museum',
+  [VenueTypeCodeKey.CONCERT_HALL]: 'music_live',
+  [VenueTypeCodeKey.FESTIVAL]: 'music_live',
+  [VenueTypeCodeKey.RECORD_STORE]: 'music_store',
+  [VenueTypeCodeKey.SCIENTIFIC_CULTURE]: 'science',
+  [VenueTypeCodeKey.PERFORMING_ARTS]: 'show',
+  [VenueTypeCodeKey.PATRIMONY_TOURISM]: 'tourism',
+  [VenueTypeCodeKey.VISUAL_ARTS]: 'visual_art',
+  [VenueTypeCodeKey.DIGITAL]: null,
+  [VenueTypeCodeKey.OTHER]: null,
+}
