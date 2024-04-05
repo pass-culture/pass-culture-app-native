@@ -1,4 +1,4 @@
-name: Update jira issues
+name: "4 [on_workflow] Update jira issues"
 
 on:
   workflow_call:

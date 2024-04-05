@@ -1,4 +1,4 @@
-name: Check proxy version
+name: "4 [on_workflow] Check proxy version"
 
 on:
   workflow_call:

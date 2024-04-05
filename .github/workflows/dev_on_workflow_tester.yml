@@ -1,4 +1,4 @@
-name: Tester yaml
+name: "4 [on_workflow] Tester yaml"
 
 on:
   workflow_call:

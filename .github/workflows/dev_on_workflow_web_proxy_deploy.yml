@@ -1,4 +1,4 @@
-name: Deploy web proxy
+name: "4 [on_workflow] Deploy web proxy"
 
 on:
   workflow_call:

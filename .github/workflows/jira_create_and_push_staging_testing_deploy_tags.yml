@@ -1,4 +1,5 @@
-name: 'Jira - Create and push staging & testing deploy tags'
+# TODO rename file dev_on_dispatch_create_and_push_ehp_deploy_tags.yml and fix corresponding hook in JIRA with JIRA admin
+name: "1 [on_dispatch] Jira - Create and push staging & testing deploy tags"
 
 on:
   workflow_dispatch:
