@@ -31,14 +31,14 @@ describe('useShouldDisplayVenueMap', () => {
     expect(result.current).toBe(true)
   })
 
-  it('should render venue map when feature flag is disabled', () => {
+  it('should not render venue map when feature flag is disabled', () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
     const { result } = renderHook(useShouldDisplayVenueMap)
 
     expect(result.current).toBe(false)
   })
 
-  it('should render venue map when user is not located', () => {
+  it('should not render venue map when user is not located', () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: false,
       selectedLocationMode: mockSelectedLocationMode,
@@ -49,7 +49,7 @@ describe('useShouldDisplayVenueMap', () => {
     expect(result.current).toBe(false)
   })
 
-  it('should render venue map  when user is located everywhere', () => {
+  it('should not render venue map  when user is located everywhere', () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: mockHasGeolocPosition,
       selectedLocationMode: LocationMode.EVERYWHERE,

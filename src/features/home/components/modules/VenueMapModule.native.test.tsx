@@ -33,14 +33,14 @@ describe('VenueMapModule', () => {
     expect(screen.getByText('Carte des lieux culturels')).toBeOnTheScreen()
   })
 
-  it('should render venue map block when feature flag is disabled', () => {
+  it('should not render venue map block when feature flag is disabled', () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
     render(<VenueMapModule />)
 
     expect(screen.queryByText('Carte des lieux culturels')).not.toBeOnTheScreen()
   })
 
-  it('should render venue map block when user is not located', () => {
+  it('should not render venue map block when user is not located', () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: false,
       selectedLocationMode: mockSelectedLocationMode,
@@ -51,7 +51,7 @@ describe('VenueMapModule', () => {
     expect(screen.queryByText('Carte des lieux culturels')).not.toBeOnTheScreen()
   })
 
-  it('should render venue map block when user is located everywhere', () => {
+  it('should not render venue map block when user is located everywhere', () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: mockHasGeolocPosition,
       selectedLocationMode: LocationMode.EVERYWHERE,
