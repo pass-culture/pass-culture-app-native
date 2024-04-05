@@ -17,6 +17,7 @@ export enum HomepageModuleType {
   'CategoryListModule' = 'CategoryListModule',
   'VideoModule' = 'VideoModule',
   'HighlightOfferModule' = 'HighlightOfferModule',
+  'VenueMapModule' = 'VenueMapModule',
 }
 
 export type HomepageTag = 'master' | 'usergrandpublic' | 'userunderage'
@@ -259,6 +260,10 @@ export enum Color {
   DeepPink = 'DeepPink',
   Coral = 'Coral',
   Lilac = 'Lilac',
+}
+
+export type VenueMapModule = {
+  type: HomepageModuleType.VenueMapModule
 }
 
 export type VideoModule = {

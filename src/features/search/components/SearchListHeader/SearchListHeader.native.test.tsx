@@ -354,10 +354,13 @@ describe('<SearchListHeader />', () => {
           locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
         },
       })
-      mockUseLocation.mockReturnValueOnce({
+      const location = {
         geolocPosition: mockPosition,
         selectedLocationMode: LocationMode.AROUND_ME,
-      })
+        hasGeolocPosition: true,
+      }
+      mockUseLocation.mockReturnValueOnce(location)
+      mockUseLocation.mockReturnValueOnce(location)
 
       render(
         <SearchListHeader
@@ -383,10 +386,13 @@ describe('<SearchListHeader />', () => {
           },
         },
       })
-      mockUseLocation.mockReturnValueOnce({
+      const location = {
         geolocPosition: mockPosition,
         selectedLocationMode: LocationMode.AROUND_PLACE,
-      })
+        hasGeolocPosition: true,
+      }
+      mockUseLocation.mockReturnValueOnce(location)
+      mockUseLocation.mockReturnValueOnce(location)
 
       render(
         <SearchListHeader
@@ -408,10 +414,13 @@ describe('<SearchListHeader />', () => {
           locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
         },
       })
-      mockUseLocation.mockReturnValueOnce({
+      const location = {
         geolocPosition: mockPosition,
         selectedLocationMode: LocationMode.AROUND_ME,
-      })
+        hasGeolocPosition: true,
+      }
+      mockUseLocation.mockReturnValueOnce(location)
+      mockUseLocation.mockReturnValueOnce(location)
 
       render(
         <SearchListHeader

@@ -1,7 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useMemo } from 'react'
-import { Platform, ScrollViewProps, View } from 'react-native'
+import { ScrollViewProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -12,11 +12,11 @@ import { NumberOfResults } from 'features/search/components/NumberOfResults/Numb
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { VenuesUserData } from 'features/search/types'
+import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
@@ -57,7 +57,6 @@ const renderVenueItem = (
 const VENUE_ITEM_HEIGHT = LENGTH_XXS
 const VENUE_ITEM_WIDTH = LENGTH_XS
 const keyExtractor = (item: AlgoliaVenue) => item.objectID
-const isWeb = Platform.OS === 'web'
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   nbHits,
@@ -70,9 +69,6 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   const {
     searchState: { searchId, venue, offerCategories },
   } = useSearch()
-  const enableVenueMapSearchResults = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_VENUE_MAP_SEARCH_RESULTS
-  )
   const { navigate } = useNavigation<UseNavigationType>()
 
   const isLocated = useMemo(
@@ -117,8 +113,9 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
 
-  const shouldDisplaySeeOnTheMap =
-    shouldDisplayVenuesPlaylist && isLocated && enableVenueMapSearchResults && !isWeb
+  const shouldDisplaySeeOnTheMap = useShouldDisplayVenueMap(
+    RemoteStoreFeatureFlags.WIP_VENUE_MAP_SEARCH_RESULTS
+  )
 
   const handleSeeMapPress = () => {
     navigate('VenueMap', venues?.length ? { initialVenues: adaptAlgoliaVenues(venues) } : {})

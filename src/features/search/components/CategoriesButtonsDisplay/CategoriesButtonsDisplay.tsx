@@ -7,10 +7,7 @@ import {
   CategoryButtonProps,
 } from 'features/search/components/CategoryButton/CategoryButton'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location'
-import { LocationMode } from 'libs/location/types'
+import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 import { getMediaQueryFromDimensions } from 'libs/react-responsive/useMediaQuery'
 import { theme } from 'theme'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -29,17 +26,8 @@ const CategoryButtonItem: ListRenderItem<CategoryButtonProps> = ({ item }) => (
   </CategoryButtonContainer>
 )
 
-const isWeb = Platform.OS === 'web'
-
 export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCategories }) => {
-  const enabledVenueMap = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
-  const { hasGeolocPosition, selectedLocationMode } = useLocation()
-
-  const isLocated =
-    selectedLocationMode === LocationMode.AROUND_PLACE ||
-    (selectedLocationMode === LocationMode.AROUND_ME && hasGeolocPosition)
-
-  const shouldDisplayVenueMap = enabledVenueMap && isLocated && !isWeb
+  const shouldDisplayVenueMap = useShouldDisplayVenueMap()
 
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? 4 : 2

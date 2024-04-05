@@ -9,11 +9,11 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const VenueMapBlock: FunctionComponent = () => {
+export const VenueMapBlock: FunctionComponent = ({ ...props }) => {
   const focusProps = useHandleFocus()
 
   return (
-    <Container>
+    <Container {...props}>
       <Typo.Title3 {...getHeadingAttrs(2)}>Carte des lieux culturels</Typo.Title3>
       <Spacer.Column numberOfSpaces={4} />
       <TouchableContainer navigateTo={{ screen: 'VenueMap' }} {...focusProps}>
