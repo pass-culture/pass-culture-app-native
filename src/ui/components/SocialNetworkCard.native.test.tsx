@@ -4,7 +4,7 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-import { SocialNetworkCard } from '../SocialNetworkCard'
+import { SocialNetworkCard } from './SocialNetworkCard'
 
 describe('SocialNetworkCard', () => {
   it('should openUrl onClick and track analytics', async () => {

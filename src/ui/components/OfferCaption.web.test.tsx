@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { render, screen } from 'tests/utils'
+import { render, screen } from 'tests/utils/web'
 
-import { OfferCaption } from '../OfferCaption'
+import { OfferCaption } from './OfferCaption'
 
 const props = {
   name: 'Mensch ! Où sont les Hommes ?',
@@ -18,24 +18,24 @@ describe('OfferCaption component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly', () => {
-    const { toJSON } = render(<OfferCaption {...props} />)
+    const { container } = render(<OfferCaption {...props} />)
 
-    expect(toJSON()).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('should have the isDuo text if user is Beneficiary', () => {
-    render(<OfferCaption {...props} />)
+    const { rerender } = render(<OfferCaption {...props} />)
 
-    expect(screen.getByTestId('priceIsDuo').children[0]).toBe('Dès 5€ - Duo')
+    expect(screen.getByTestId('priceIsDuo').textContent).toBe('Dès 5€ - Duo')
 
-    render(<OfferCaption {...props} isDuo={false} />).getByTestId
+    rerender(<OfferCaption {...props} isDuo={false} />)
 
-    expect(screen.getByTestId('priceIsDuo').children[0]).toBe('Dès 5€')
+    expect(screen.getByTestId('priceIsDuo').textContent).toBe('Dès 5€')
   })
 
   it('should not have the isDuo text if user is not Beneficiary', () => {
     render(<OfferCaption {...props} isBeneficiary={false} />)
 
-    expect(screen.getByTestId('priceIsDuo').children[0]).toBe('Dès 5€')
+    expect(screen.getByTestId('priceIsDuo').textContent).toBe('Dès 5€')
   })
 })

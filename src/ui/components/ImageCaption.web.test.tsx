@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { render, screen } from 'tests/utils'
+import { render, screen } from 'tests/utils/web'
 
-import { ImageCaption } from '../ImageCaption'
+import { ImageCaption } from './ImageCaption'
 
 const props = {
   categoryLabel: 'Musique',
@@ -15,15 +15,15 @@ describe('ImageCaption component', () => {
   afterAll(() => jest.resetAllMocks())
 
   it('should render correctly', () => {
-    const { toJSON } = render(<ImageCaption {...props} />)
+    const { container } = render(<ImageCaption {...props} />)
 
-    expect(toJSON()).toMatchSnapshot()
-    expect(screen.getByTestId('distanceImageCaption')).toBeOnTheScreen()
+    expect(container).toMatchSnapshot()
+    expect(screen.getByTestId('distanceImageCaption')).toBeInTheDocument()
   })
 
   it('should not display the distance if not available', () => {
     render(<ImageCaption {...props} distance={undefined} />)
 
-    expect(screen.queryByTestId('distanceImageCaption')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('distanceImageCaption')).not.toBeInTheDocument()
   })
 })

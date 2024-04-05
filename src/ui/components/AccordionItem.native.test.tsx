@@ -3,7 +3,7 @@ import { View } from 'react-native'
 
 import { act, fireEvent, render, screen } from 'tests/utils'
 
-import { AccordionItem } from '../AccordionItem'
+import { AccordionItem } from './AccordionItem'
 
 const Children = () => <View testID="accordion-child-view" />
 

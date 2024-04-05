@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render, screen } from 'tests/utils'
 
-import { ValidationMark } from '../ValidationMark'
+import { ValidationMark } from './ValidationMark'
 
 describe('ValidationMark', () => {
   it('should display the validIcon when isValid is true', () => {
