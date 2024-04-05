@@ -3,10 +3,14 @@ import { Platform } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
+import * as useMapSubscriptionHomeIdsToTheme from 'features/subscription/helpers/useSubscriptionHomeIds'
+import { SubscriptionTheme } from 'features/subscription/types'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/location'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -29,6 +33,27 @@ mockUserLocation.mockReturnValue({
     longitude: 2,
   },
 })
+
+const baseAuthContext = {
+  isLoggedIn: true,
+  setIsLoggedIn: jest.fn(),
+  user: beneficiaryUser,
+  refetchUser: jest.fn(),
+  isUserLoading: false,
+}
+jest.mock('features/auth/context/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+mockUseAuthContext.mockReturnValue(baseAuthContext)
+
+jest
+  .spyOn(useMapSubscriptionHomeIdsToTheme, 'useMapSubscriptionHomeIdsToTheme')
+  .mockReturnValue(SubscriptionTheme.CINEMA)
+
+jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () => ({
+  usePushPermission: jest.fn(() => ({
+    pushPermission: 'granted',
+  })),
+}))
 
 const modules = [formattedVenuesModule]
 
@@ -67,152 +92,194 @@ describe('ThematicHome', () => {
   })
 
   describe('header', () => {
-  it('should show highlight header when provided', async () => {
-    mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
+    it('should show highlight header when provided', async () => {
+      mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
 
-    renderThematicHome()
-    await act(async () => {})
+      renderThematicHome()
+      await act(async () => {})
 
-    expect(screen.getAllByText('Bloc temps fort')).not.toHaveLength(0)
-    expect(screen.getByText('Un sous-titre')).toBeOnTheScreen()
-  })
-
-  it('should show highlight animated header when provided and platform is iOS', async () => {
-    Platform.OS = 'ios'
-
-    mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
-
-    renderThematicHome()
-    await act(async () => {})
-
-    expect(await screen.findAllByText('Bloc temps fort')).not.toHaveLength(0)
-    expect(screen.getByTestId('animated-thematic-header')).toBeOnTheScreen()
-  })
-
-  it('should show highlight thematic introduction when provided and platform is iOS', async () => {
-    Platform.OS = 'ios'
-
-    const mockedHighlightHeaderDataWithIntroduction = {
-      ...mockedHighlightHeaderData,
-      thematicHeader: {
-        ...mockedHighlightHeaderData.thematicHeader,
-        introductionTitle: 'IntroductionTitle',
-        introductionParagraph: 'IntroductionParagraph',
-      },
-    }
-    mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderDataWithIntroduction)
-
-    renderThematicHome()
-    await act(async () => {})
-
-    expect(screen.getByText('IntroductionTitle')).toBeOnTheScreen()
-    expect(screen.getByText('IntroductionParagraph')).toBeOnTheScreen()
-  })
-
-  it('should not show highlight animated header when provided and platform is Android', async () => {
-    Platform.OS = 'android'
-
-    mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
-
-    renderThematicHome()
-    await act(async () => {})
-
-    expect(await screen.findAllByText('Bloc temps fort')).not.toHaveLength(0)
-    expect(screen.queryByTestId('animated-thematic-header')).not.toBeOnTheScreen()
-  })
-
-  it('should show category header when provided', async () => {
-    mockUseHomepageData.mockReturnValueOnce({
-      modules,
-      id: 'fakeEntryId',
-      thematicHeader: {
-        type: ThematicHeaderType.Category,
-        imageUrl:
-          'https://images.ctfassets.net/2bg01iqy0isv/5PmtxKY77rq0nYpkCFCbrg/4daa8767efa35827f22bb86e5fc65094/photo-lion_noir-et-blanc_laurent-breillat-610x610.jpeg',
-        subtitle: 'Un sous-titre',
-        title: 'Catégorie cinéma',
-      },
+      expect(screen.getAllByText('Bloc temps fort')).not.toHaveLength(0)
+      expect(screen.getByText('Un sous-titre')).toBeOnTheScreen()
     })
 
-    renderThematicHome()
-    await act(async () => {})
+    it('should show highlight animated header when provided and platform is iOS', async () => {
+      Platform.OS = 'ios'
 
-    expect(await screen.findAllByText('Catégorie cinéma')).not.toHaveLength(0)
-    expect(screen.getByText('Un sous-titre')).toBeOnTheScreen()
+      mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
+
+      renderThematicHome()
+      await act(async () => {})
+
+      expect(await screen.findAllByText('Bloc temps fort')).not.toHaveLength(0)
+      expect(screen.getByTestId('animated-thematic-header')).toBeOnTheScreen()
+    })
+
+    it('should show highlight thematic introduction when provided and platform is iOS', async () => {
+      Platform.OS = 'ios'
+
+      const mockedHighlightHeaderDataWithIntroduction = {
+        ...mockedHighlightHeaderData,
+        thematicHeader: {
+          ...mockedHighlightHeaderData.thematicHeader,
+          introductionTitle: 'IntroductionTitle',
+          introductionParagraph: 'IntroductionParagraph',
+        },
+      }
+      mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderDataWithIntroduction)
+
+      renderThematicHome()
+      await act(async () => {})
+
+      expect(screen.getByText('IntroductionTitle')).toBeOnTheScreen()
+      expect(screen.getByText('IntroductionParagraph')).toBeOnTheScreen()
+    })
+
+    it('should not show highlight animated header when provided and platform is Android', async () => {
+      Platform.OS = 'android'
+
+      mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
+
+      renderThematicHome()
+      await act(async () => {})
+
+      expect(await screen.findAllByText('Bloc temps fort')).not.toHaveLength(0)
+      expect(screen.queryByTestId('animated-thematic-header')).not.toBeOnTheScreen()
+    })
+
+    it('should show category header when provided', async () => {
+      mockUseHomepageData.mockReturnValueOnce({
+        modules,
+        id: 'fakeEntryId',
+        thematicHeader: {
+          type: ThematicHeaderType.Category,
+          imageUrl:
+            'https://images.ctfassets.net/2bg01iqy0isv/5PmtxKY77rq0nYpkCFCbrg/4daa8767efa35827f22bb86e5fc65094/photo-lion_noir-et-blanc_laurent-breillat-610x610.jpeg',
+          subtitle: 'Un sous-titre',
+          title: 'Catégorie cinéma',
+        },
+      })
+
+      renderThematicHome()
+      await act(async () => {})
+
+      expect(await screen.findAllByText('Catégorie cinéma')).not.toHaveLength(0)
+      expect(screen.getByText('Un sous-titre')).toBeOnTheScreen()
+    })
+  })
+
+  describe('SubscribeButton', () => {
+    it('should not show SubscribeButton when user is not logged in', async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        ...baseAuthContext,
+        isLoggedIn: false,
+        user: undefined,
+      })
+
+      renderThematicHome()
+      await act(async () => {})
+
+      expect(screen.queryByText('Suivre')).not.toBeOnTheScreen()
+    })
+
+    it('should show inactive SubscribeButton when user is logged in and not subscribed yet', async () => {
+      renderThematicHome()
+      await act(async () => {})
+
+      expect(screen.getByText('Suivre')).toBeOnTheScreen()
+    })
+
+    it('should show active SubscribeButton when user is logged in and already subscribed', async () => {
+      mockUseAuthContext.mockReturnValueOnce({
+        ...baseAuthContext,
+        isLoggedIn: true,
+        user: {
+          ...beneficiaryUser,
+          subscriptions: {
+            marketingEmail: true,
+            marketingPush: true,
+            subscribedThemes: [SubscriptionTheme.CINEMA],
+          },
+        },
+      })
+
+      renderThematicHome()
+      await act(async () => {})
+
+      expect(screen.getByText('Déjà suivi')).toBeOnTheScreen()
     })
   })
 
   describe('analytics', () => {
-  it('should log ConsultHome', async () => {
-    renderThematicHome()
-    await act(async () => {})
+    it('should log ConsultHome', async () => {
+      renderThematicHome()
+      await act(async () => {})
 
-    expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
-  })
+      expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
+    })
 
-  it('should log ConsultHome when coming from category block', async () => {
-    useRoute.mockReturnValueOnce({
-      params: {
-        entryId: 'fakeEntryId',
+    it('should log ConsultHome when coming from category block', async () => {
+      useRoute.mockReturnValueOnce({
+        params: {
+          entryId: 'fakeEntryId',
+          from: 'category_block',
+          moduleId: 'moduleId',
+          moduleListId: 'moduleListId',
+        },
+      })
+      renderThematicHome()
+      await act(async () => {})
+
+      expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
+        homeEntryId: 'fakeEntryId',
         from: 'category_block',
         moduleId: 'moduleId',
         moduleListId: 'moduleListId',
-      },
+      })
     })
-    renderThematicHome()
-    await act(async () => {})
 
-    expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
-      homeEntryId: 'fakeEntryId',
-      from: 'category_block',
-      moduleId: 'moduleId',
-      moduleListId: 'moduleListId',
-    })
-  })
+    it('should log ConsultHome when coming from highlight thematic block', async () => {
+      useRoute.mockReturnValueOnce({
+        params: {
+          entryId: 'fakeEntryId',
+          from: 'highlight_thematic_block',
+          moduleId: 'moduleId',
+        },
+      })
+      renderThematicHome()
+      await act(async () => {})
 
-  it('should log ConsultHome when coming from highlight thematic block', async () => {
-    useRoute.mockReturnValueOnce({
-      params: {
-        entryId: 'fakeEntryId',
+      expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
+        homeEntryId: 'fakeEntryId',
         from: 'highlight_thematic_block',
         moduleId: 'moduleId',
-      },
-    })
-    renderThematicHome()
-    await act(async () => {})
-
-    expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
-      homeEntryId: 'fakeEntryId',
-      from: 'highlight_thematic_block',
-      moduleId: 'moduleId',
       })
     })
   })
 
   describe('geolocation banner', () => {
-  it('should show geolocation banner when user is not geolocated or located', async () => {
-    mockUserLocation.mockReturnValueOnce({
-      userLocation: undefined,
+    it('should show geolocation banner when user is not geolocated or located', async () => {
+      mockUserLocation.mockReturnValueOnce({
+        userLocation: undefined,
+      })
+      renderThematicHome()
+
+      await act(async () => {})
+
+      expect(screen.getByText('Géolocalise-toi')).toBeOnTheScreen()
     })
-    renderThematicHome()
 
-    await act(async () => {})
+    it('should not show geolocation banner when user is geolocated or located', async () => {
+      mockUserLocation.mockReturnValueOnce({
+        userLocation: {
+          latitude: 2,
+          longitude: 2,
+        },
+      })
+      renderThematicHome()
 
-    expect(screen.getByText('Géolocalise-toi')).toBeOnTheScreen()
-  })
+      await act(async () => {})
 
-  it('should not show geolocation banner when user is geolocated or located', async () => {
-    mockUserLocation.mockReturnValueOnce({
-      userLocation: {
-        latitude: 2,
-        longitude: 2,
-      },
-    })
-    renderThematicHome()
-
-    await act(async () => {})
-
-    expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
     })
   })
 })

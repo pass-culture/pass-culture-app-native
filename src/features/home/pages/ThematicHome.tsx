@@ -3,6 +3,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import {
@@ -18,10 +19,13 @@ import { DefaultThematicHomeHeader } from 'features/home/components/headers/Defa
 import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
+import { SubscribeButton } from 'features/home/components/SubscribeButton'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useMapSubscriptionHomeIdsToTheme } from 'features/subscription/helpers/useSubscriptionHomeIds'
+import { useThematicSubscription } from 'features/subscription/helpers/useThematicSubscription'
 import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
@@ -107,6 +111,16 @@ export const ThematicHome: FunctionComponent = () => {
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
   const { userLocation } = useLocation()
   const isLocated = !!userLocation
+  const { user, isLoggedIn } = useAuthContext()
+  const theme = useMapSubscriptionHomeIdsToTheme(params.homeId)
+  const { isSubscribeButtonActive, updateSubscription } = useThematicSubscription({
+    user,
+    theme,
+  })
+
+  const onSubscribeButtonPress = () => {
+    updateSubscription()
+  }
 
   const AnimatedHeader = Animated.createAnimatedComponent(AnimatedHeaderContainer)
 
@@ -135,7 +149,17 @@ export const ThematicHome: FunctionComponent = () => {
         modules={modules}
         homeId={id}
         Header={
-          <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
+          <React.Fragment>
+            <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
+            {Platform.OS !== 'ios' && isLoggedIn ? (
+              <SubscribeButtonContainer>
+                <SubscribeButton
+                  active={isSubscribeButtonActive}
+                  onPress={onSubscribeButtonPress}
+                />
+              </SubscribeButtonContainer>
+            ) : null}
+          </React.Fragment>
         }
         shouldDisplayScrollToTop
         onScroll={onScroll}
@@ -156,13 +180,23 @@ export const ThematicHome: FunctionComponent = () => {
             </AnimatedHeader>
           )}
           {thematicHeader?.type === ThematicHeaderType.Category && (
-            <AnimatedHeader style={{ transform: [{ translateY: viewTranslation }] }}>
-              <AnimatedCategoryThematicHomeHeader
-                {...thematicHeader}
-                gradientTranslation={gradientTranslation}
-                imageAnimatedHeight={imageAnimatedHeight}
-              />
-            </AnimatedHeader>
+            <React.Fragment>
+              <AnimatedHeader style={{ transform: [{ translateY: viewTranslation }] }}>
+                <AnimatedCategoryThematicHomeHeader
+                  {...thematicHeader}
+                  gradientTranslation={gradientTranslation}
+                  imageAnimatedHeight={imageAnimatedHeight}
+                />
+                {isLoggedIn && thematic ? (
+                  <SubscribeButtonContainer>
+                    <SubscribeButton
+                      active={isSubscribeButtonActive}
+                      onPress={onSubscribeButtonPress}
+                    />
+                  </SubscribeButtonContainer>
+                ) : null}
+              </AnimatedHeader>
+            </React.Fragment>
           )}
         </React.Fragment>
       )}
@@ -191,3 +225,9 @@ const GeolocationBannerContainer = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
   marginBottom: theme.home.spaceBetweenModules,
 }))
+
+const SubscribeButtonContainer = styled.View({
+  position: 'absolute',
+  right: getSpacing(2.5),
+  top: getSpacing(40),
+})
