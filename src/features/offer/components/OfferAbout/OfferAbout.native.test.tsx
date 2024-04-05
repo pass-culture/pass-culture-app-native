@@ -6,57 +6,50 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { render, screen } from 'tests/utils'
 
 describe('<OfferAbout />', () => {
-  it('should display about section when offer has a description', () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      description: 'Cette offre est super cool cool cool cool cool cool',
-    }
-    render(<OfferAbout offer={offer} />)
+  const metadata = [
+    { label: 'Speaker', value: 'Donald' },
+    { label: 'Author', value: 'Mickey' },
+  ]
+
+  it('should display about section', () => {
+    render(
+      <OfferAbout
+        offer={offerResponseSnap}
+        metadata={metadata}
+        hasMetadata
+        shouldDisplayAccessibilitySection
+      />
+    )
 
     expect(screen.getByText('À propos')).toBeOnTheScreen()
   })
 
-  it('should display about section when there is an accessibility section', () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      accessibility: {
-        audioDisability: true,
-        mentalDisability: true,
-        motorDisability: false,
-        visualDisability: false,
-      },
-    }
-    render(<OfferAbout offer={offer} />)
+  describe('Metadata', () => {
+    it('should display metadata', () => {
+      render(
+        <OfferAbout
+          offer={offerResponseSnap}
+          metadata={metadata}
+          hasMetadata
+          shouldDisplayAccessibilitySection={false}
+        />
+      )
 
-    expect(screen.getByText('À propos')).toBeOnTheScreen()
-  })
+      expect(screen.getByText('Mickey')).toBeOnTheScreen()
+    })
 
-  it('should display about section when there is metadata', () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      description: undefined,
-      accessibility: {},
-      extraData: {
-        speaker: 'Toto',
-      },
-    }
+    it('should not display metadata', () => {
+      render(
+        <OfferAbout
+          offer={offerResponseSnap}
+          metadata={[]}
+          hasMetadata={false}
+          shouldDisplayAccessibilitySection={false}
+        />
+      )
 
-    render(<OfferAbout offer={offer} />)
-
-    expect(screen.getByText('À propos')).toBeOnTheScreen()
-  })
-
-  it('should not display about section when there are not description, accessibility section and metadata', () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      description: undefined,
-      accessibility: {},
-      extraData: {},
-    }
-
-    render(<OfferAbout offer={offer} />)
-
-    expect(screen.queryByText('À propos')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Mickey')).not.toBeOnTheScreen()
+    })
   })
 
   describe('Description', () => {
@@ -66,7 +59,14 @@ describe('<OfferAbout />', () => {
         description: 'Cette offre est super cool cool cool cool cool cool',
       }
 
-      render(<OfferAbout offer={offer} />)
+      render(
+        <OfferAbout
+          offer={offer}
+          metadata={metadata}
+          hasMetadata
+          shouldDisplayAccessibilitySection
+        />
+      )
 
       expect(
         screen.getByText('Cette offre est super cool cool cool cool cool cool')
@@ -78,7 +78,14 @@ describe('<OfferAbout />', () => {
         ...offerResponseSnap,
         description: null,
       }
-      render(<OfferAbout offer={offer} />)
+      render(
+        <OfferAbout
+          offer={offer}
+          metadata={metadata}
+          hasMetadata
+          shouldDisplayAccessibilitySection
+        />
+      )
 
       expect(screen.queryByText('Description :')).not.toBeOnTheScreen()
     })
@@ -86,17 +93,14 @@ describe('<OfferAbout />', () => {
 
   describe('Accessibility section', () => {
     it('should display accessibility when disabilities are defined', () => {
-      const offer: OfferResponse = {
-        ...offerResponseSnap,
-        accessibility: {
-          audioDisability: true,
-          mentalDisability: true,
-          motorDisability: false,
-          visualDisability: false,
-        },
-      }
-
-      render(<OfferAbout offer={offer} />)
+      render(
+        <OfferAbout
+          offer={offerResponseSnap}
+          metadata={[]}
+          hasMetadata={false}
+          shouldDisplayAccessibilitySection
+        />
+      )
 
       expect(screen.getByText('Handicap visuel')).toBeOnTheScreen()
     })
@@ -107,34 +111,17 @@ describe('<OfferAbout />', () => {
         accessibility: {},
       }
 
-      render(<OfferAbout offer={offer} />)
+      render(
+        <OfferAbout
+          offer={offer}
+          metadata={[]}
+          hasMetadata={false}
+          shouldDisplayAccessibilitySection={false}
+        />
+      )
 
       expect(screen.queryByText('Handicap visuel')).not.toBeOnTheScreen()
       expect(screen.queryByText('Accessibilité de l’offre')).not.toBeOnTheScreen()
     })
-  })
-
-  it('should display offer editor when offer has it', () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      extraData: {
-        editeur: 'Gallimard',
-      },
-    }
-
-    render(<OfferAbout offer={offer} />)
-
-    expect(screen.getByText('Éditeur :')).toBeOnTheScreen()
-  })
-
-  it('should not display offer editor when offer has not it', async () => {
-    const offer: OfferResponse = {
-      ...offerResponseSnap,
-      extraData: {},
-    }
-    render(<OfferAbout offer={offer} />)
-
-    expect(screen.queryByText('Éditeur :')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Gallimard')).not.toBeOnTheScreen()
   })
 })
