@@ -24,7 +24,7 @@ import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/ho
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useMapSubscriptionHomeIdsToTheme } from 'features/subscription/helpers/useSubscriptionHomeIds'
+import { useMapSubscriptionHomeIdsToThematic } from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { useThematicSubscription } from 'features/subscription/helpers/useThematicSubscription'
 import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -112,10 +112,10 @@ export const ThematicHome: FunctionComponent = () => {
   const { userLocation } = useLocation()
   const isLocated = !!userLocation
   const { user, isLoggedIn } = useAuthContext()
-  const theme = useMapSubscriptionHomeIdsToTheme(params.homeId)
+  const thematic = useMapSubscriptionHomeIdsToThematic(params.homeId)
   const { isSubscribeButtonActive, updateSubscription } = useThematicSubscription({
     user,
-    theme,
+    thematic,
   })
 
   const onSubscribeButtonPress = () => {

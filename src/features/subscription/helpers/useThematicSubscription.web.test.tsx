@@ -25,7 +25,7 @@ describe('useThematicSubscription', () => {
             subscribedThemes: [],
           },
         },
-        theme: SubscriptionTheme.CINEMA,
+        thematic: SubscriptionTheme.CINEMA,
       })
 
       await waitFor(() => {
@@ -43,7 +43,7 @@ describe('useThematicSubscription', () => {
             subscribedThemes: [],
           },
         },
-        theme: SubscriptionTheme.CINEMA,
+        thematic: SubscriptionTheme.CINEMA,
       })
 
       await waitFor(() => {
@@ -63,7 +63,7 @@ describe('useThematicSubscription', () => {
             subscribedThemes: [],
           },
         },
-        theme: SubscriptionTheme.CINEMA,
+        thematic: SubscriptionTheme.CINEMA,
       })
 
       await waitFor(() => {
@@ -81,7 +81,7 @@ describe('useThematicSubscription', () => {
             subscribedThemes: [SubscriptionTheme.CINEMA],
           },
         },
-        theme: SubscriptionTheme.CINEMA,
+        thematic: SubscriptionTheme.CINEMA,
       })
 
       await waitFor(() => {

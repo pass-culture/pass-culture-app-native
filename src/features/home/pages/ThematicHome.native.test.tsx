@@ -8,7 +8,7 @@ import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
-import * as useMapSubscriptionHomeIdsToTheme from 'features/subscription/helpers/useSubscriptionHomeIds'
+import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
@@ -46,7 +46,7 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 mockUseAuthContext.mockReturnValue(baseAuthContext)
 
 jest
-  .spyOn(useMapSubscriptionHomeIdsToTheme, 'useMapSubscriptionHomeIdsToTheme')
+  .spyOn(useMapSubscriptionHomeIdsToThematic, 'useMapSubscriptionHomeIdsToThematic')
   .mockReturnValue(SubscriptionTheme.CINEMA)
 
 jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () => ({

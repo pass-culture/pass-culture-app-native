@@ -9,12 +9,12 @@ import { analytics } from 'libs/analytics'
 
 export type Props = {
   user?: UserProfileResponse
-  theme: SubscriptionTheme | null
+  thematic: SubscriptionTheme | null
 }
 
 export const useThematicSubscription = ({
   user,
-  theme,
+  thematic,
 }: Props): {
   isSubscribeButtonActive: boolean
   isAtLeastOneNotificationTypeActivated: boolean
@@ -40,7 +40,7 @@ export const useThematicSubscription = ({
   const [state, setState] = useState(initialState)
 
   const isThemeSubscribed =
-    (theme && user?.subscriptions?.subscribedThemes?.includes(theme)) ?? false
+    (thematic && user?.subscriptions?.subscribedThemes?.includes(thematic)) ?? false
 
   const isSubscribeButtonActive = isAtLeastOneNotificationTypeActivated && isThemeSubscribed
 
@@ -53,7 +53,7 @@ export const useThematicSubscription = ({
     }
   )
 
-  if (!theme) {
+  if (!thematic) {
     return {
       isSubscribeButtonActive: false,
       isAtLeastOneNotificationTypeActivated: false,
@@ -70,8 +70,8 @@ export const useThematicSubscription = ({
         marketingEmail: user?.subscriptions.marketingEmail || false,
         marketingPush: user?.subscriptions.marketingPush || false,
         subscribedThemes: isThemeSubscribed
-          ? state.themePreferences.filter((t) => t !== theme)
-          : [...state.themePreferences, theme],
+          ? state.themePreferences.filter((t) => t !== thematic)
+          : [...state.themePreferences, thematic],
       },
     })
   }
@@ -89,7 +89,7 @@ export const useThematicSubscription = ({
         marketingPush: allowPush,
         subscribedThemes: isThemeSubscribed
           ? state.themePreferences
-          : [...state.themePreferences, theme],
+          : [...state.themePreferences, thematic],
       },
     })
   }

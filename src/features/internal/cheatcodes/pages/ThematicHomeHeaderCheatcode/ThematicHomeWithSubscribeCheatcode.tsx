@@ -27,7 +27,7 @@ export const ThematicHomeWithSubscribeCheatcode: FunctionComponent = () => {
     updateSettings,
   } = useThematicSubscription({
     user,
-    theme,
+    thematic: theme,
   })
 
   const { visible, showModal, hideModal } = useModal(false)

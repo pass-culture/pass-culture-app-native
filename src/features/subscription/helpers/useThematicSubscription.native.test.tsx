@@ -56,7 +56,7 @@ describe('useThematicSubscription', () => {
     it('should give us the information that at least one notification is active', async () => {
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsButNoSubscriptions,
-        theme: SubscriptionTheme.ACTIVITES,
+        thematic: SubscriptionTheme.ACTIVITES,
       })
 
       await waitFor(() => {
@@ -68,7 +68,7 @@ describe('useThematicSubscription', () => {
       it('should consider subscribe button active', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsAndSubscribed,
-          theme: SubscriptionTheme.ACTIVITES,
+          thematic: SubscriptionTheme.ACTIVITES,
         })
 
         await waitFor(() => {
@@ -80,7 +80,7 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsAndSubscribed,
-          theme: SubscriptionTheme.CINEMA,
+          thematic: SubscriptionTheme.CINEMA,
         })
 
         result.current.updateSubscription()
@@ -101,7 +101,7 @@ describe('useThematicSubscription', () => {
       it('should consider subscribe button inactive', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsButNoSubscriptions,
-          theme: SubscriptionTheme.ACTIVITES,
+          thematic: SubscriptionTheme.ACTIVITES,
         })
 
         await waitFor(() => {
@@ -113,7 +113,7 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsButNoSubscriptions,
-          theme: SubscriptionTheme.MUSIQUE,
+          thematic: SubscriptionTheme.MUSIQUE,
         })
 
         result.current.updateSubscription()
@@ -135,7 +135,7 @@ describe('useThematicSubscription', () => {
     it('should give us the information that notifications are inactive', async () => {
       const { result } = renderUseThematicSubscription({
         user: userWithoutNotificationsAndWithoutSubscriptions,
-        theme: SubscriptionTheme.ACTIVITES,
+        thematic: SubscriptionTheme.ACTIVITES,
       })
 
       await waitFor(() => {
@@ -147,7 +147,7 @@ describe('useThematicSubscription', () => {
       it('should consider subscribe button inactive', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsButWithSubscriptions,
-          theme: SubscriptionTheme.CINEMA,
+          thematic: SubscriptionTheme.CINEMA,
         })
 
         await waitFor(() => {
@@ -159,7 +159,7 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsButWithSubscriptions,
-          theme: SubscriptionTheme.CINEMA,
+          thematic: SubscriptionTheme.CINEMA,
         })
 
         result.current.updateSettings({
@@ -183,7 +183,7 @@ describe('useThematicSubscription', () => {
       it('should consider subscribe button inactive', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsAndWithoutSubscriptions,
-          theme: SubscriptionTheme.CINEMA,
+          thematic: SubscriptionTheme.CINEMA,
         })
 
         await waitFor(() => {
@@ -195,7 +195,7 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsAndWithoutSubscriptions,
-          theme: SubscriptionTheme.CINEMA,
+          thematic: SubscriptionTheme.CINEMA,
         })
 
         result.current.updateSettings({
@@ -220,7 +220,7 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: undefined,
-          theme: SubscriptionTheme.CINEMA,
+          thematic: SubscriptionTheme.CINEMA,
         })
 
         result.current.updateSettings({
