@@ -115,6 +115,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
         initialRegion={defaultRegion}
         rotateEnabled={false}
         pitchEnabled={false}
+        moveOnMarkerPress={false}
         onRegionChangeComplete={handleRegionChangeComplete}
         renderCluster={(props) => <VenueMapCluster {...props} />}
         onPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
