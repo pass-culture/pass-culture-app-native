@@ -1,4 +1,4 @@
-name: Service Worker Test
+name: "1 [on_dispatch] Service Worker Test"
 
 on:
   workflow_dispatch:
