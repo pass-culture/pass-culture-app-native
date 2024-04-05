@@ -1,4 +1,4 @@
-import { selectArgTypeFromObject } from '../selectArgTypeFromObject'
+import { selectArgTypeFromObject } from './selectArgTypeFromObject'
 
 describe('selectArgTypeFromObject', () => {
   it('returns the select arg type when options object is provided', () => {

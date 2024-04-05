@@ -3,7 +3,7 @@ import { CaptureContext, Extras } from '@sentry/types'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { eventMonitoring } from 'libs/monitoring'
 
-import { MonitoringError, OfferNotFoundError, VenueNotFoundError } from '../errors'
+import { MonitoringError, OfferNotFoundError, VenueNotFoundError } from './errors'
 
 describe('MonitoringError', () => {
   it('should call eventMonitoring.captureException() on new MonitoringError instance', () => {

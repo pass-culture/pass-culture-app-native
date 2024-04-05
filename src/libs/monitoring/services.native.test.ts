@@ -2,7 +2,7 @@ import * as SentryModule from '@sentry/react-native'
 
 import { waitFor } from 'tests/utils'
 
-import { eventMonitoring } from '../services'
+import { eventMonitoring } from './services'
 
 describe('eventMonitoring', () => {
   describe('init()', () => {

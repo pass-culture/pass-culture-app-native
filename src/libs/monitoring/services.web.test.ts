@@ -4,7 +4,7 @@ import { Platform } from 'react-native'
 import { env } from 'libs/environment'
 import { getAppBuildVersion, getAppVersion } from 'libs/packageJson'
 
-import { eventMonitoring } from '../services'
+import { eventMonitoring } from './services'
 
 describe('eventMonitoring', () => {
   describe('init()', () => {
