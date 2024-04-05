@@ -173,7 +173,9 @@ describe('GtlPlaylist', () => {
     })
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
 
-    scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+    await act(async () => {
+      await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+    })
 
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
   })
