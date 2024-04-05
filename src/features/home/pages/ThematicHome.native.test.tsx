@@ -66,6 +66,7 @@ describe('ThematicHome', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  describe('header', () => {
   it('should show highlight header when provided', async () => {
     mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
 
@@ -138,8 +139,10 @@ describe('ThematicHome', () => {
 
     expect(await screen.findAllByText('Catégorie cinéma')).not.toHaveLength(0)
     expect(screen.getByText('Un sous-titre')).toBeOnTheScreen()
+    })
   })
 
+  describe('analytics', () => {
   it('should log ConsultHome', async () => {
     renderThematicHome()
     await act(async () => {})
@@ -182,9 +185,11 @@ describe('ThematicHome', () => {
       homeEntryId: 'fakeEntryId',
       from: 'highlight_thematic_block',
       moduleId: 'moduleId',
+      })
     })
   })
 
+  describe('geolocation banner', () => {
   it('should show geolocation banner when user is not geolocated or located', async () => {
     mockUserLocation.mockReturnValueOnce({
       userLocation: undefined,
@@ -208,6 +213,7 @@ describe('ThematicHome', () => {
     await act(async () => {})
 
     expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
+    })
   })
 })
 
