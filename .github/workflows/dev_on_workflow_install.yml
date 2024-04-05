@@ -1,4 +1,4 @@
-name: Install runtime environment and dependencies
+name: "4 [on_workflow] Install runtime environment and dependencies"
 
 on:
   workflow_call:

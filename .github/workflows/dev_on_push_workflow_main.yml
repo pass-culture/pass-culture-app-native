@@ -1,4 +1,4 @@
-name: Initiate workflow
+name: "2 [pull/pr] Initiate workflow"
 
 on:
   push:

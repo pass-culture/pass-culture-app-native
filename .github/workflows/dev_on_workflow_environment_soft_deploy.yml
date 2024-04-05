@@ -1,4 +1,4 @@
-name: Install runtime environment and dependencies soft deploy
+name: "4 [on_workflow] Install runtime environment and dependencies soft deploy"
 
 on:
   workflow_call:
