@@ -1,7 +1,7 @@
 import { RuleTester } from 'eslint'
 import { config } from './config'
 
-import rule from '../todo-format'
+import rule from './todo-format'
 
 const ruleTester = new RuleTester()
 

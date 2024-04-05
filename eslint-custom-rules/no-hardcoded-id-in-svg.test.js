@@ -1,7 +1,7 @@
 import { RuleTester } from 'eslint'
 import { config } from './config'
 
-import rule from '../no-hardcoded-id-in-svg'
+import rule from './no-hardcoded-id-in-svg'
 
 const ruleTester = new RuleTester()
 

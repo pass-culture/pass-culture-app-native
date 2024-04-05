@@ -1,7 +1,7 @@
 import { RuleTester } from 'eslint'
 import { config } from './config'
 
-import rule from '../independent-mocks'
+import rule from './independent-mocks'
 
 const ruleTester = new RuleTester()
 

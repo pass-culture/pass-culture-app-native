@@ -1,7 +1,7 @@
 import { RuleTester } from 'eslint'
 import { config } from './config'
 
-import rule from '../apostrophe-in-text'
+import rule from './apostrophe-in-text'
 
 const ruleTester = new RuleTester()
 

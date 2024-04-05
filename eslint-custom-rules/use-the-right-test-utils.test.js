@@ -1,7 +1,7 @@
 import { RuleTester } from 'eslint'
 import { config } from './config'
 
-import rule from '../use-the-right-test-utils'
+import rule from './use-the-right-test-utils'
 
 const ruleTester = new RuleTester()
 

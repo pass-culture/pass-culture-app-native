@@ -1,7 +1,7 @@
 import { RuleTester } from 'eslint'
 import { config } from './config'
 
-import rule from '../no-truthy-check-after-queryAll-matchers'
+import rule from './no-truthy-check-after-queryAll-matchers'
 
 const ruleTester = new RuleTester()
 
