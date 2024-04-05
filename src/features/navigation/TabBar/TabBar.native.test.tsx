@@ -12,7 +12,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
-import { TabBar } from '../TabBar'
+import { TabBar } from './TabBar'
 
 jest.mock('features/navigation/TabBar/TabNavigationStateContext', () => {
   const { DEFAULT_TAB_ROUTES } = jest.requireActual(

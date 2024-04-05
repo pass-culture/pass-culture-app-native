@@ -1,4 +1,4 @@
-import { getScreenPath } from '../getScreenPath'
+import { getScreenPath } from './getScreenPath'
 
 describe('getScreenPath()', () => {
   it.each`

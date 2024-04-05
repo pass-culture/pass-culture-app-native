@@ -1,7 +1,8 @@
 import { NavigationResultState, RootNavigateParams } from 'features/navigation/RootNavigator/types'
 
-import { state1, state2, state3 } from '../../fixtures/navigationState'
-import { getNestedNavigationFromState } from '../getNestedNavigationFromState'
+import { state1, state2, state3 } from '../fixtures/navigationState'
+
+import { getNestedNavigationFromState } from './getNestedNavigationFromState'
 
 describe('getNestedNavigationFromState()', () => {
   it.each`

@@ -3,7 +3,7 @@ import React from 'react'
 import { CategoryIdEnum } from 'api/gen'
 import { render, screen } from 'tests/utils'
 
-import { Hero } from '../Hero'
+import { Hero } from './Hero'
 
 describe('HeroImage', () => {
   it('should not display linear gradient when shouldDisplayOfferPreview is not defined and url is defined', () => {

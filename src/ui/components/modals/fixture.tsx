@@ -4,7 +4,7 @@ import { Text } from 'react-native'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 
-import { AppModal } from '../AppModal'
+import { AppModal } from './AppModal'
 
 export type AppModalProps = Parameters<typeof AppModal>[0]
 

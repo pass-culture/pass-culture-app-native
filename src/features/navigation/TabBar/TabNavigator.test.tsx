@@ -1,4 +1,4 @@
-import { getShouldDisplayTab } from '../helpers'
+import { getShouldDisplayTab } from './helpers'
 
 describe('<TabNavigator />', () => {
   describe('getShouldDisplayTab()', () => {

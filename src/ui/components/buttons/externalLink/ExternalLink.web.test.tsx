@@ -3,7 +3,7 @@ import { Linking } from 'react-native'
 
 import { render, fireEvent, screen } from 'tests/utils/web'
 
-import { ExternalLink } from '../ExternalLink.web'
+import { ExternalLink } from './ExternalLink.web'
 
 const openURLSpy = jest.spyOn(Linking, 'openURL')
 const someUrl = 'https://domain-that-does-not-exist.fr'

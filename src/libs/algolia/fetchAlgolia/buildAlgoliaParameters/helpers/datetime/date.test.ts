@@ -1,6 +1,6 @@
 import { Range } from 'libs/typesUtils/typeHelpers'
 
-import { DATE } from '../date'
+import { DATE } from './date'
 
 describe('getDatesFromTimeRangeAndDate', () => {
   describe('utc', () => {

@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
-import { Range } from '../../../../../../typesUtils/typeHelpers'
-import { computeTimeRangeFromHoursToSeconds, TIMESTAMP } from '../time'
+import { Range } from '../../../../../typesUtils/typeHelpers'
+import { computeTimeRangeFromHoursToSeconds, TIMESTAMP } from './time'
 
 describe('Timezones', () => {
   it('should always be UTC', () => {

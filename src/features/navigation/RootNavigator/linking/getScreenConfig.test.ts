@@ -1,7 +1,7 @@
 import { RootStack } from 'features/navigation/RootNavigator/Stack'
 import { RootRoute } from 'features/navigation/RootNavigator/types'
 
-import { getScreensAndConfig } from '../getScreensConfig'
+import { getScreensAndConfig } from './getScreensConfig'
 
 const parse = (value: string) => value
 const DummyComponent = () => null
