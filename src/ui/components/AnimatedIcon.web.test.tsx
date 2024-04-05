@@ -6,6 +6,7 @@ import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 import { Logo } from '../svg/icons/Logo'
+
 import { AnimatedIcon } from './AnimatedIcon'
 
 const DummyComponent: React.FC = () => {
