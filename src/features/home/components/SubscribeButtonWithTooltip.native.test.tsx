@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SubscribeButtonWithTooltip } from 'features/home/components/SubscribeButtonWithTooltip'
+import { storage } from 'libs/storage'
 import { act, render, screen } from 'tests/utils'
 
 const DISPLAY_START_OFFSET_IN_MS = 1000
@@ -9,6 +10,8 @@ const TOOLTIP_TEXT = 'Suis ce thème pour recevoir de l’actualité sur ce suje
 jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<SubscribeButtonWithTooltip />', () => {
+  beforeEach(() => storage.clear('times_subscription_tooltip_has_been_displayed'))
+
   it('should not show tooltip before 1 second has elapsed', () => {
     render(<SubscribeButtonWithTooltip active={false} onPress={jest.fn()} />)
 
@@ -38,6 +41,28 @@ describe('<SubscribeButtonWithTooltip />', () => {
 
     await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
     await act(() => jest.advanceTimersByTime(8000))
+
+    expect(screen.queryByText(TOOLTIP_TEXT)).not.toBeOnTheScreen()
+  })
+
+  it('should not show tooltip more than 3 times', async () => {
+    render(<SubscribeButtonWithTooltip active={false} onPress={jest.fn()} />)
+    await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
+
+    expect(screen.getByText(TOOLTIP_TEXT)).toBeOnTheScreen()
+
+    render(<SubscribeButtonWithTooltip active={false} onPress={jest.fn()} />)
+    await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
+
+    expect(screen.getByText(TOOLTIP_TEXT)).toBeOnTheScreen()
+
+    render(<SubscribeButtonWithTooltip active={false} onPress={jest.fn()} />)
+    await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
+
+    expect(screen.getByText(TOOLTIP_TEXT)).toBeOnTheScreen()
+
+    render(<SubscribeButtonWithTooltip active={false} onPress={jest.fn()} />)
+    await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
 
     expect(screen.queryByText(TOOLTIP_TEXT)).not.toBeOnTheScreen()
   })
