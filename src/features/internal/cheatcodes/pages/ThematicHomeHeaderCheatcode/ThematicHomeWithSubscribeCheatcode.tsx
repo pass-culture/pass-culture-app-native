@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
-import { SubscribeButton } from 'features/home/components/SubscribeButton'
+import { SubscribeButtonWithTooltip } from 'features/home/components/SubscribeButtonWithTooltip'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { useThematicSubscription } from 'features/subscription/helpers/useThematicSubscription'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
@@ -54,7 +54,10 @@ export const ThematicHomeWithSubscribeCheatcode: FunctionComponent = () => {
         />
         {isLoggedIn ? (
           <SubscribeButtonContainer>
-            <SubscribeButton active={isSubscribeButtonActive} onPress={subscribeButtonOnPress} />
+            <SubscribeButtonWithTooltip
+              active={isSubscribeButtonActive}
+              onPress={subscribeButtonOnPress}
+            />
           </SubscribeButtonContainer>
         ) : null}
         <BodyPlaceholder />
