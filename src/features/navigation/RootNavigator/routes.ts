@@ -282,7 +282,7 @@ export const routes: RootRoute[] = [
   },
   {
     name: 'NotificationSettings',
-    component: NotificationSettingsDeprecated,
+    component: NotificationsSettings,
     path: 'profil/notifications',
     options: { title: 'Réglages de notifications' },
   },
