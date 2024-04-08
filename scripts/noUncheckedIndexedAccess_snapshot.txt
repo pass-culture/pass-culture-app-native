@@ -32,10 +32,10 @@
 ./src/features/bookOffer/helpers/useRotatingText.ts:47
 ./src/features/bookOffer/helpers/useRotatingText.ts:54
 ./src/features/bookOffer/helpers/useRotatingText.ts:57
-./src/features/bookOffer/pages/BookingOfferModal.native.test.tsx:203
-./src/features/bookOffer/pages/BookingOfferModal.native.test.tsx:274
-./src/features/bookOffer/pages/BookingOfferModal.native.test.tsx:276
-./src/features/bookOffer/pages/BookingOfferModal.native.test.tsx:297
+./src/features/bookOffer/pages/BookingOfferModal.native.test.tsx:190
+./src/features/bookOffer/pages/BookingOfferModal.native.test.tsx:261
+./src/features/bookOffer/pages/BookingOfferModal.native.test.tsx:263
+./src/features/bookOffer/pages/BookingOfferModal.native.test.tsx:284
 ./src/features/bookOffer/pages/BookingOfferModal.tsx:123
 ./src/features/bookings/api/useEndedBookingFromOfferId.native.test.ts:28
 ./src/features/bookings/api/useEndedBookingFromOfferId.native.test.ts:35
@@ -399,7 +399,7 @@
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:123
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:372
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:383
-./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:823
+./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:847
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts:196
 ./src/features/profile/components/Buttons/ContactSupportButton/ContactSupportButton.native.test.tsx:18
 ./src/features/profile/components/Buttons/ContactSupportButton/ContactSupportButton.native.test.tsx:20
