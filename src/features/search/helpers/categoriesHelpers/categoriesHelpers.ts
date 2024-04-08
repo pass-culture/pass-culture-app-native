@@ -276,7 +276,7 @@ export function isOnlyOnline(
  * Sort comparator for `SearchGroupResponseModelv2` and `NativeCategoryResponseModelv2` objects.
  */
 export function searchGroupOrNativeCategorySortComparator<
-  T extends SearchGroupResponseModelv2 | NativeCategoryResponseModelv2
+  T extends SearchGroupResponseModelv2 | NativeCategoryResponseModelv2,
 >(a: T, b: T) {
   return (a?.value ?? '').localeCompare(b?.value ?? '')
 }

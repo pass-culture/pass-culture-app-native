@@ -93,7 +93,7 @@ const webStyle = ({
     padding: 0,
     ...customFocusOutline({ color: buttonColor ?? theme.colors.primary, noOffset: true }),
     ...getHoverStyle(buttonColor ?? theme.colors.primary),
-  } as CSSObject)
+  }) as CSSObject
 
 const Button = styled.button<
   TouchableOpacityButtonProps & Pick<ButtonInsideTexteProps, 'buttonColor'>

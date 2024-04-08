@@ -15,7 +15,7 @@ type Args<MonthNameType extends 'short' | 'long'> = {
 
 export const useDatePickerOptions = <
   MonthNameType extends 'short' | 'long',
-  MonthNames extends MonthType<MonthNameType>[]
+  MonthNames extends MonthType<MonthNameType>[],
 >({
   date,
   minimumYear,

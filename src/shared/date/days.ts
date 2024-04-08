@@ -13,5 +13,5 @@ export const DAYS = [
 export const SHORT_DAYS = ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'] as const
 export const dayNamesShort = DAYS.map((dayName) => dayName.charAt(0))
 
-export type FullWeekDay = typeof DAYS[number]
-export type ShortWeekDay = typeof SHORT_DAYS[number]
+export type FullWeekDay = (typeof DAYS)[number]
+export type ShortWeekDay = (typeof SHORT_DAYS)[number]

@@ -19,7 +19,7 @@ export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGen
 
 export interface CategoriesSectionProps<
   T extends CategoriesMapping,
-  N = T extends MappingTree ? keyof MappingTree : keyof T | null
+  N = T extends MappingTree ? keyof MappingTree : keyof T | null,
 > {
   allLabel: string
   allValue: N
@@ -35,7 +35,7 @@ export interface CategoriesSectionProps<
 
 export function CategoriesSection<
   T extends CategoriesMapping,
-  N = T extends MappingTree ? keyof MappingTree : keyof T | null
+  N = T extends MappingTree ? keyof MappingTree : keyof T | null,
 >({
   allLabel,
   allValue,

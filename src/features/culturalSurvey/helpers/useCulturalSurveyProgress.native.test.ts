@@ -19,7 +19,7 @@ function mockCulturalSurveyContextProviderWithQuestionsToDisplay(
         ({
           dispatch,
           questionsToDisplay,
-        } as unknown as ICulturalSurveyContext)
+        }) as unknown as ICulturalSurveyContext
     )
 }
 

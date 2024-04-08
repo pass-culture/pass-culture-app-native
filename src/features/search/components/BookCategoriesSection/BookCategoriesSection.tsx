@@ -16,7 +16,7 @@ import { Spacer, Typo } from 'ui/theme'
 
 export function BookCategoriesSection<
   T extends CategoriesMapping,
-  N = T extends MappingTree ? keyof MappingTree : keyof T | null
+  N = T extends MappingTree ? keyof MappingTree : keyof T | null,
 >({
   allLabel,
   allValue,

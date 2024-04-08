@@ -16,7 +16,7 @@ interface Props<TFieldValues extends FieldValues, TName> extends PasswordInputPr
 
 export const PasswordInputController = <
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
   name,
   control,
