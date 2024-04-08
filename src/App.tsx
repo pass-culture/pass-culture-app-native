@@ -23,6 +23,7 @@ import { PushNotificationsWrapper } from 'features/notifications/context/PushNot
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
+import { VenueMapWrapper } from 'features/venueMap/context/VenueMapWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AutoImmediate, NextResume } from 'libs/codepush/options'
@@ -93,29 +94,31 @@ const App: FunctionComponent = function () {
                     <LocationWrapper>
                       <AccessibilityFiltersWrapper>
                         <FavoritesWrapper>
-                          <SearchAnalyticsWrapper>
-                            <SearchWrapper>
-                              <SnackBarProvider>
-                                <CulturalSurveyContextProvider>
-                                  <SubscriptionContextProvider>
-                                    <SplashScreenProvider>
-                                      <PushNotificationsWrapper>
-                                        <ShareAppWrapper>
-                                          <OnboardingWrapper>
-                                            <OfflineModeContainer>
-                                              <ScreenErrorProvider>
-                                                <AppNavigationContainer />
-                                              </ScreenErrorProvider>
-                                            </OfflineModeContainer>
-                                          </OnboardingWrapper>
-                                        </ShareAppWrapper>
-                                      </PushNotificationsWrapper>
-                                    </SplashScreenProvider>
-                                  </SubscriptionContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </SnackBarProvider>
-                            </SearchWrapper>
-                          </SearchAnalyticsWrapper>
+                          <VenueMapWrapper>
+                            <SearchAnalyticsWrapper>
+                              <SearchWrapper>
+                                <SnackBarProvider>
+                                  <CulturalSurveyContextProvider>
+                                    <SubscriptionContextProvider>
+                                      <SplashScreenProvider>
+                                        <PushNotificationsWrapper>
+                                          <ShareAppWrapper>
+                                            <OnboardingWrapper>
+                                              <OfflineModeContainer>
+                                                <ScreenErrorProvider>
+                                                  <AppNavigationContainer />
+                                                </ScreenErrorProvider>
+                                              </OfflineModeContainer>
+                                            </OnboardingWrapper>
+                                          </ShareAppWrapper>
+                                        </PushNotificationsWrapper>
+                                      </SplashScreenProvider>
+                                    </SubscriptionContextProvider>
+                                  </CulturalSurveyContextProvider>
+                                </SnackBarProvider>
+                              </SearchWrapper>
+                            </SearchAnalyticsWrapper>
+                          </VenueMapWrapper>
                         </FavoritesWrapper>
                       </AccessibilityFiltersWrapper>
                     </LocationWrapper>
