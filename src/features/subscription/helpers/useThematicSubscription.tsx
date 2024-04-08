@@ -31,15 +31,15 @@ export const useThematicSubscription = ({
 
   const isAtLeastOneNotificationTypeActivated =
     Platform.OS === 'web'
-      ? user?.subscriptions.marketingEmail
-      : (isPushPermissionGranted && user?.subscriptions.marketingPush) ||
-        user?.subscriptions.marketingEmail
+      ? user?.subscriptions?.marketingEmail
+      : (isPushPermissionGranted && user?.subscriptions?.marketingPush) ||
+        user?.subscriptions?.marketingEmail
 
   const initialState = {
-    allowEmails: user?.subscriptions.marketingEmail,
-    allowPush: user?.subscriptions.marketingPush,
+    allowEmails: user?.subscriptions?.marketingEmail,
+    allowPush: user?.subscriptions?.marketingPush,
     themePreferences:
-      (user?.subscriptions.subscribedThemes as unknown as SubscriptionTheme[]) || [],
+      (user?.subscriptions?.subscribedThemes as unknown as SubscriptionTheme[]) || [],
   }
 
   const [state, setState] = useState(initialState)
