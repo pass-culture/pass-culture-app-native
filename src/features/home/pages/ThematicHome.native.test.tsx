@@ -13,10 +13,12 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/location'
+import { storage } from 'libs/storage'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
@@ -53,6 +55,13 @@ jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () =>
   usePushPermission: jest.fn(() => ({
     pushPermission: 'granted',
   })),
+}))
+
+const mockShowSuccessSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showSuccessSnackBar: mockShowSuccessSnackBar,
+  }),
 }))
 
 const modules = [formattedVenuesModule]
@@ -250,6 +259,32 @@ describe('ThematicHome', () => {
       expect(
         screen.getByText('Es-tu sûr de ne plus vouloir suivre ce thème\u00a0?')
       ).toBeOnTheScreen()
+    })
+
+    it('should show subscription sucess modal when user subscribe to a thematic for the second times', async () => {
+      mockServer.postApi('/v1/profile', {})
+
+      await storage.saveObject('has_subscribed_to_thematic_times', 1)
+      renderThematicHome()
+
+      await act(async () => fireEvent.press(screen.getByText('Suivre')))
+
+      expect(screen.getByText('Tu suis le thème "Cinéma"')).toBeOnTheScreen()
+      expect(screen.getByText('Voir mes préférences')).toBeOnTheScreen()
+    })
+
+    it('should show snackbar when user subscribe to a thematic for more than the third times', async () => {
+      mockServer.postApi('/v1/profile', {})
+
+      await storage.saveObject('has_subscribed_to_thematic_times', 3)
+      renderThematicHome()
+
+      await act(async () => fireEvent.press(screen.getByText('Suivre')))
+
+      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+        message: 'Tu suis le thème “Cinéma”\u00a0! Tu peux gérer tes alertes depuis ton profil.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     })
   })
 
