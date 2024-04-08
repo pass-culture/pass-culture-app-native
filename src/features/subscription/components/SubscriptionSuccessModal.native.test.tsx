@@ -36,7 +36,7 @@ describe('<SubscriptionSuccessModal />', () => {
     fireEvent.press(screen.getByText('Voir mes préférences'))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('NotificationsSettingsWIP', undefined)
+      expect(navigate).toHaveBeenCalledWith('NotificationsSettings', undefined)
     })
   })
 

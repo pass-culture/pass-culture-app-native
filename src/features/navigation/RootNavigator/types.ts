@@ -125,7 +125,6 @@ export type SubscriptionRootStackParamList = {
   NavigationShareApp: undefined
   NavigationSignUp: undefined
   NewIdentificationFlow: undefined
-  NotificationsSettingsWIP: undefined
   // Stepper
   Stepper: { from: StepperOrigin } | undefined
   // PhoneValidation

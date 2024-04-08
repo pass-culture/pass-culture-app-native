@@ -39,7 +39,7 @@ export const SubscriptionSuccessModal: FunctionComponent<Props> = ({
           as={ButtonTertiaryBlack}
           wording="Voir mes préférences"
           icon={Parameters}
-          navigateTo={{ screen: 'NotificationsSettingsWIP' }}
+          navigateTo={{ screen: 'NotificationsSettings' }}
           onBeforeNavigate={dismissModal}
         />
       </StyledButtonContainer>
