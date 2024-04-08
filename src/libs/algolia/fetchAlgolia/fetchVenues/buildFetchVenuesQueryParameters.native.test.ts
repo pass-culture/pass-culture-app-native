@@ -41,7 +41,7 @@ const buildExpected = (
   requestOptions: {
     attributesToHighlight,
     facetFilters: facetFilters
-      ? [...facetFilters, ...[[defaultFacetFilters]]]
+      ? [...[[defaultFacetFilters]], ...facetFilters]
       : [[defaultFacetFilters]],
     ...(aroundLatLng ? { aroundLatLng, aroundRadius: aroundRadius ?? 'all' } : {}),
   },

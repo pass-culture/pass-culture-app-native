@@ -11,7 +11,7 @@ export const buildFetchVenuesQueryParameters = ({
   const defaultFilters = [[`${VenuesFacets.has_at_least_one_bookable_offer}:true`]]
 
   const facetFilters = options?.facetFilters
-    ? [...options.facetFilters, ...defaultFilters]
+    ? [...defaultFilters, ...options.facetFilters]
     : defaultFilters
 
   return {

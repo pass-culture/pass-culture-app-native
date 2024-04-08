@@ -36,12 +36,6 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
   const { modal } = useTheme()
   const { venueMapState, dispatch } = useVenueMapState()
 
-  const initialFormValues = useMemo(() => {
-    return {
-      venueTypeCode: venueMapState.venueTypeCode,
-    }
-  }, [venueMapState.venueTypeCode])
-
   const {
     formState: { isSubmitting },
     handleSubmit,
@@ -49,7 +43,9 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
     setValue,
     watch,
   } = useForm<VenueTypeModalFormProps>({
-    defaultValues: initialFormValues,
+    defaultValues: {
+      venueTypeCode: venueMapState.venueTypeCode,
+    },
   })
   const { venueTypeCode } = watch()
   const venueTypeLabel = useMemo(() => getVenueTypeLabel(venueTypeCode), [venueTypeCode])

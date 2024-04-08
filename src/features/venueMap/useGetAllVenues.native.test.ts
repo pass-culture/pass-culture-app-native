@@ -123,7 +123,7 @@ describe('useGetAllVenues', () => {
           aroundLatLng: '48.866667, 2.333333',
           aroundRadius: 10000,
           attributesToHighlight: [],
-          facetFilters: [['venue_type:MOVIE'], ['has_at_least_one_bookable_offer:true']],
+          facetFilters: [['has_at_least_one_bookable_offer:true'], ['venue_type:MOVIE']],
           hitsPerPage: 1000,
         })
       })
