@@ -14,13 +14,14 @@ import { Stock } from 'ui/svg/icons/Stock'
 
 type Props = {
   offer: OfferResponse
+  isCinemaXpAvailable?: boolean
 }
 
 export type SummaryInfoItem = SummaryInfoProps & {
-  isDisplayed: boolean
+  isDisplayed?: boolean
 }
 
-export const useOfferSummaryInfoList = ({ offer }: Props) => {
+export const useOfferSummaryInfoList = ({ offer, isCinemaXpAvailable }: Props) => {
   const theme = useTheme()
   const { venue, isDigital, isDuo, extraData } = offer
   const dates = extractStockDates(offer)
@@ -32,7 +33,7 @@ export const useOfferSummaryInfoList = ({ offer }: Props) => {
 
   const summaryInfoItems: SummaryInfoItem[] = [
     {
-      isDisplayed: !!formattedDate,
+      isDisplayed: !!formattedDate && !isCinemaXpAvailable,
       Icon: <CalendarS size={theme.icons.sizes.small} />,
       title: 'Dates',
       subtitle: formattedDate,

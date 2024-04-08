@@ -9,7 +9,7 @@ import { computedTheme } from 'tests/computedTheme'
 import { renderHook } from 'tests/utils'
 
 describe('useOfferSummaryInfoList', () => {
-  it('should return summaryInfoItems when offer has atleast one in stock', async () => {
+  it('should return summaryInfoItems when offer has at least one in stock', async () => {
     const { result } = renderHook(
       () =>
         useOfferSummaryInfoList({
@@ -30,7 +30,7 @@ describe('useOfferSummaryInfoList', () => {
     ])
   })
 
-  it('should return summaryInfoItems dates when offer stock has date in future', async () => {
+  it('should return summaryInfoItems dates when offer stock has date in future and cinema experience is not available', async () => {
     mockdate.set('2021-01-02T18:00:00')
     const offer: OfferResponse = {
       ...offerResponseSnap,
@@ -40,6 +40,7 @@ describe('useOfferSummaryInfoList', () => {
       () =>
         useOfferSummaryInfoList({
           offer,
+          isCinemaXpAvailable: false,
         }),
       {
         wrapper: ({ children }) => <ThemeProvider theme={computedTheme}>{children}</ThemeProvider>,
@@ -54,6 +55,28 @@ describe('useOfferSummaryInfoList', () => {
         title: 'Dates',
       },
     ])
+
+    mockdate.reset()
+  })
+
+  it('should not return summaryInfoItems dates when offer stock has date in future and is cinema experience is available', async () => {
+    mockdate.set('2021-01-02T18:00:00')
+    const offer: OfferResponse = {
+      ...offerResponseSnap,
+      isDuo: false,
+    }
+    const { result } = renderHook(
+      () =>
+        useOfferSummaryInfoList({
+          offer,
+          isCinemaXpAvailable: true,
+        }),
+      {
+        wrapper: ({ children }) => <ThemeProvider theme={computedTheme}>{children}</ThemeProvider>,
+      }
+    )
+
+    expect(result.current.summaryInfoItems).toEqual([])
 
     mockdate.reset()
   })
