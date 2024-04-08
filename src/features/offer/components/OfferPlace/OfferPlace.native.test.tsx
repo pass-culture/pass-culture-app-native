@@ -239,7 +239,7 @@ describe('<OfferPlace />', () => {
       offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
     })
 
-    expect(screen.getByText(' Lieu de l’évènement')).toBeOnTheScreen()
+    expect(screen.getByText('Lieu de l’évènement')).toBeOnTheScreen()
   })
 
   it('should navigate to an other offer when user choose an other venue from "Changer le lieu de retrait" button', () => {

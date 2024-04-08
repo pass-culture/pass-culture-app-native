@@ -138,9 +138,8 @@ const Container = styled.View<{ isDesktopViewport?: boolean }>(({ isDesktopViewp
 }))
 
 const MarginContainer = styled(ViewGap)<{ isDesktopViewport?: boolean }>(
-  ({ isDesktopViewport, theme }) => ({
-    ...(!isDesktopViewport ? { marginHorizontal: theme.contentPage.marginHorizontal } : {}),
-  })
+  ({ isDesktopViewport, theme }) =>
+    isDesktopViewport ? {} : { marginHorizontal: theme.contentPage.marginHorizontal }
 )
 
 const GroupWithoutGap = View
