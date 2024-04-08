@@ -8,12 +8,20 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () => ({
   usePushPermission: jest.fn(() => ({
     pushPermission: 'granted',
   })),
+}))
+
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: mockShowErrorSnackBar,
+  }),
 }))
 
 const postProfileSpy = jest.spyOn(API.api, 'postNativeV1Profile')
@@ -238,6 +246,48 @@ describe('useThematicSubscription', () => {
           })
         })
       })
+    })
+  })
+
+  describe('API calls', () => {
+    it('should show a snackbar when updating the user’s profile fails', async () => {
+      mockServer.postApi('/v1/profile', {
+        responseOptions: { statusCode: 400, data: {} },
+      })
+
+      const { result } = renderUseThematicSubscription({
+        user: userWithNotificationsButNoSubscriptions,
+        thematic: SubscriptionTheme.ACTIVITES,
+      })
+
+      await act(async () => {
+        result.current.updateSettings({
+          allowEmails: true,
+          allowPush: true,
+        })
+      })
+
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message: 'Une erreur est survenue, veuillez réessayer',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    })
+
+    it('should calls onSuccess when updating the user’s subscription succeeds', async () => {
+      mockServer.postApi('/v1/profile', {})
+      const onUpdateSubscriptionSuccessMock = jest.fn()
+
+      const { result } = renderUseThematicSubscription({
+        user: userWithNotificationsButNoSubscriptions,
+        thematic: SubscriptionTheme.ACTIVITES,
+        onUpdateSubscriptionSuccess: onUpdateSubscriptionSuccessMock,
+      })
+
+      await act(async () => {
+        result.current.updateSubscription()
+      })
+
+      expect(onUpdateSubscriptionSuccessMock).toHaveBeenCalledTimes(1)
     })
   })
 })

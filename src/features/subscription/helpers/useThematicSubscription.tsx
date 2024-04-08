@@ -6,15 +6,18 @@ import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileM
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export type Props = {
   user?: UserProfileResponse
   thematic: SubscriptionTheme | null
+  onUpdateSubscriptionSuccess?: () => Promise<void>
 }
 
 export const useThematicSubscription = ({
   user,
   thematic,
+  onUpdateSubscriptionSuccess,
 }: Props): {
   isSubscribeButtonActive: boolean
   isAtLeastOneNotificationTypeActivated: boolean
@@ -23,6 +26,8 @@ export const useThematicSubscription = ({
 } => {
   const { pushPermission } = usePushPermission()
   const isPushPermissionGranted = pushPermission === 'granted'
+
+  const { showErrorSnackBar } = useSnackBarContext()
 
   const isAtLeastOneNotificationTypeActivated =
     Platform.OS === 'web'
@@ -45,10 +50,17 @@ export const useThematicSubscription = ({
   const isSubscribeButtonActive = isAtLeastOneNotificationTypeActivated && isThemeSubscribed
 
   const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
-    () => {
+    async () => {
       analytics.logNotificationToggle(!!state.allowEmails, !!state.allowPush)
+      if (!isThemeSubscribed) {
+        await onUpdateSubscriptionSuccess?.()
+      }
     },
     () => {
+      showErrorSnackBar({
+        message: 'Une erreur est survenue, veuillez réessayer',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
       setState(initialState)
     }
   )
