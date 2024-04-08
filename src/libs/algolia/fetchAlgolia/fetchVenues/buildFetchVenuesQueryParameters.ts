@@ -7,12 +7,20 @@ export const buildFetchVenuesQueryParameters = ({
   attributesToHighlight = [],
   buildLocationParameterParams,
   options,
-}: FetchVenuesParameters): AlgoliaQueryParameters => ({
-  query: query || '',
-  requestOptions: {
-    ...options,
-    attributesToHighlight,
-    facetFilters: [[`${VenuesFacets.has_at_least_one_bookable_offer}:true`]],
-    ...buildLocationParameter(buildLocationParameterParams),
-  }, // By default We disable highlighting because we don't need it
-})
+}: FetchVenuesParameters): AlgoliaQueryParameters => {
+  const defaultFilters = [[`${VenuesFacets.has_at_least_one_bookable_offer}:true`]]
+
+  const facetFilters = options?.facetFilters
+    ? [...options.facetFilters, ...defaultFilters]
+    : defaultFilters
+
+  return {
+    query: query || '',
+    requestOptions: {
+      ...options,
+      attributesToHighlight,
+      facetFilters,
+      ...buildLocationParameter(buildLocationParameterParams),
+    }, // By default We disable highlighting because we don't need it
+  }
+}

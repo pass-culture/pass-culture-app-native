@@ -1,5 +1,6 @@
 import algoliasearch from 'algoliasearch'
 
+import { VenueTypeCodeKey } from 'api/gen'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { Region } from 'libs/maps/maps'
@@ -15,6 +16,10 @@ const search = mockInitIndex('').search as jest.Mock
 jest.mock('libs/algolia/fetchAlgolia/AlgoliaError', () => ({
   captureAlgoliaError: jest.fn(),
 }))
+const mockUseVenueMapState = jest.fn()
+jest.mock('features/venueMap/context/VenueMapWrapper', () => ({
+  useVenueMapState: () => mockUseVenueMapState(),
+}))
 
 const region: Region = {
   latitude: 48.866667,
@@ -26,68 +31,102 @@ const region: Region = {
 const initialVenues = adaptAlgoliaVenues(mockAlgoliaVenues)
 
 describe('useGetAllVenues', () => {
-  it('should fetch all venues when initial venues not defined', async () => {
-    renderHook(() => useGetAllVenues({ region, radius: 10 }), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
+  describe('When filter not applied', () => {
+    beforeAll(() => {
+      mockUseVenueMapState.mockReturnValue({
+        venueMapState: { venueTypeCode: null },
+        dispatch: jest.fn(),
+      })
     })
 
-    await waitFor(() => {
-      expect(search).toHaveBeenCalledWith('', {
-        aroundLatLng: '48.866667, 2.333333',
-        aroundRadius: 10000,
-        attributesToHighlight: [],
-        facetFilters: [['has_at_least_one_bookable_offer:true']],
-        hitsPerPage: 1000,
+    it('should fetch all venues when initial venues not defined', async () => {
+      renderHook(() => useGetAllVenues({ region, radius: 10 }), {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      })
+
+      await waitFor(() => {
+        expect(search).toHaveBeenCalledWith('', {
+          aroundLatLng: '48.866667, 2.333333',
+          aroundRadius: 10000,
+          attributesToHighlight: [],
+          facetFilters: [['has_at_least_one_bookable_offer:true']],
+          hitsPerPage: 1000,
+        })
+      })
+    })
+
+    it('should not fetch all venues when initial venues defined', () => {
+      renderHook(
+        () =>
+          useGetAllVenues({
+            region,
+            radius: 10,
+            initialVenues,
+          }),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      expect(search).not.toHaveBeenCalled()
+    })
+
+    it('should return initial venues when defined', () => {
+      const { result } = renderHook(
+        () =>
+          useGetAllVenues({
+            region,
+            radius: 10,
+            initialVenues,
+          }),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      expect(result.current.venues).toEqual(initialVenues)
+    })
+
+    it('should not return initial venues when not defined', async () => {
+      const { result } = renderHook(
+        () =>
+          useGetAllVenues({
+            region,
+            radius: 10,
+          }),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      await waitFor(() => {
+        expect(result.current.venues).toEqual(undefined)
       })
     })
   })
 
-  it('should not fetch all venues when initial venues defined', () => {
-    renderHook(
-      () =>
-        useGetAllVenues({
-          region,
-          radius: 10,
-          initialVenues,
-        }),
-      {
+  describe('When filter applied', () => {
+    beforeAll(() => {
+      mockUseVenueMapState.mockReturnValue({
+        venueMapState: { venueTypeCode: VenueTypeCodeKey.MOVIE },
+        dispatch: jest.fn(),
+      })
+    })
+
+    it('should fetch all venues when initial venues not defined and venue type filter applied', async () => {
+      renderHook(() => useGetAllVenues({ region, radius: 10 }), {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
+      })
 
-    expect(search).not.toHaveBeenCalled()
-  })
-
-  it('should return initial venues when defined', () => {
-    const { result } = renderHook(
-      () =>
-        useGetAllVenues({
-          region,
-          radius: 10,
-          initialVenues,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
-
-    expect(result.current.venues).toEqual(initialVenues)
-  })
-
-  it('should not return initial venues when not defined', async () => {
-    const { result } = renderHook(
-      () =>
-        useGetAllVenues({
-          region,
-          radius: 10,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
-
-    await waitFor(() => {
-      expect(result.current.venues).toEqual(undefined)
+      await waitFor(() => {
+        expect(search).toHaveBeenCalledWith('', {
+          aroundLatLng: '48.866667, 2.333333',
+          aroundRadius: 10000,
+          attributesToHighlight: [],
+          facetFilters: [['venue_type:MOVIE'], ['has_at_least_one_bookable_offer:true']],
+          hitsPerPage: 1000,
+        })
+      })
     })
   })
 })

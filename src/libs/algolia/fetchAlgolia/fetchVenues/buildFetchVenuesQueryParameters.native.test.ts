@@ -1,9 +1,12 @@
+import { SearchOptions } from '@algolia/client-search'
+
+import { VenueTypeCodeKey } from 'api/gen'
 import { VenuesFacets } from 'libs/algolia/enums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildFetchVenuesQueryParameters } from 'libs/algolia/fetchAlgolia/fetchVenues/buildFetchVenuesQueryParameters'
 import { AlgoliaQueryParameters, FetchVenuesParameters, LocationMode } from 'libs/algolia/types'
 
-const facetFilters = [[`${VenuesFacets.has_at_least_one_bookable_offer}:true`]]
+const defaultFacetFilters = `${VenuesFacets.has_at_least_one_bookable_offer}:true`
 
 interface LocationParams extends Omit<BuildLocationParameterParams, 'userLocation'> {
   userLocation?: BuildLocationParameterParams['userLocation']
@@ -18,23 +21,28 @@ const defaultLocationParams: LocationParams = {
 const buildParams = (
   query: string,
   attributesToHighlight: string[] = [],
-  locationParams: LocationParams = defaultLocationParams
+  locationParams: LocationParams = defaultLocationParams,
+  options?: SearchOptions
 ): FetchVenuesParameters => ({
   query,
   buildLocationParameterParams: locationParams as BuildLocationParameterParams,
   attributesToHighlight,
+  options,
 })
 
 const buildExpected = (
   query: string,
   attributesToHighlight: string[] = [],
   aroundLatLng?: string,
-  aroundRadius?: number | 'all'
+  aroundRadius?: number | 'all',
+  facetFilters?: string[][]
 ): AlgoliaQueryParameters => ({
   query,
   requestOptions: {
     attributesToHighlight,
-    facetFilters,
+    facetFilters: facetFilters
+      ? [...facetFilters, ...[[defaultFacetFilters]]]
+      : [[defaultFacetFilters]],
     ...(aroundLatLng ? { aroundLatLng, aroundRadius: aroundRadius ?? 'all' } : {}),
   },
 })
@@ -97,6 +105,15 @@ describe('buildFetchVenuesQueryParameters', () => {
     }
     const params = buildParams('myQuery', [], locationParams)
     const expected = buildExpected('myQuery', [], '48.90374, 2.48171', 'all')
+
+    expect(buildFetchVenuesQueryParameters(params)).toEqual(expected)
+  })
+
+  it('should handle query with more than default facet filters', () => {
+    const params = buildParams('myQuery', [], defaultLocationParams, {
+      facetFilters: [[`venue_type:${VenueTypeCodeKey.CONCERT_HALL}`]],
+    })
+    const expected = buildExpected('myQuery', [], '', 'all', [['venue_type:CONCERT_HALL']])
 
     expect(buildFetchVenuesQueryParameters(params)).toEqual(expected)
   })
