@@ -70,5 +70,5 @@ const StyledCloseButton = styledButton(CloseButton)({
 })
 
 const StyledInformationTags = styled(InformationTags)({
-  flexShrink: 1,
+  flexGrow: 1,
 })
