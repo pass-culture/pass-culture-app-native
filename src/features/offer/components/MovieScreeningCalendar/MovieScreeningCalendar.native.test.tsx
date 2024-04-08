@@ -18,7 +18,6 @@ import { MovieScreeningCalendar } from 'features/offer/components/MovieScreening
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Subcategory } from 'libs/subcategories/types'
 import { mockServer } from 'tests/mswServer'
@@ -329,50 +328,6 @@ describe('Movie screening calendar', () => {
       await screen.findByLabelText('Mardi 27 Février')
 
       expect(await screen.findByText('Crédit insuffisant')).toBeOnTheScreen()
-    })
-
-    it('should log event BookingProcessStart when user is logged in and a cliquable eventcard is pressed', async () => {
-      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
-
-      mockAuthContext = defaultLoggedInUser
-
-      renderMovieScreeningCalendar({ offer: defaultOfferResponse })
-
-      await screen.findByLabelText('Mardi 27 Février')
-
-      const eventCard = await screen.findByLabelText('VO')
-      await act(async () => {
-        fireEvent.press(eventCard)
-      })
-
-      expect(analytics.logBookingProcessStart).toHaveBeenCalledWith(offerResponseSnap.id)
-    })
-
-    it('should not log event BookingProcessStart when user clicks on a disabled eventcard', async () => {
-      mockAuthContext = {
-        ...defaultLoggedInUser,
-        user: {
-          ...beneficiaryUser,
-          domainsCredit: {
-            all: { initial: 0, remaining: 0 },
-            physical: { initial: 0, remaining: 0 },
-            digital: { initial: 0, remaining: 0 },
-          },
-        },
-      }
-
-      renderMovieScreeningCalendar({ offer: defaultOfferResponse })
-
-      await screen.findByLabelText('Mardi 27 Février')
-
-      const eventCard = await screen.findByLabelText('Crédit insuffisant')
-      await act(async () => {
-        fireEvent.press(eventCard)
-      })
-
-      await screen.findByLabelText('Mardi 27 Février')
-
-      expect(analytics.logBookingProcessStart).not.toHaveBeenCalled()
     })
   })
 })

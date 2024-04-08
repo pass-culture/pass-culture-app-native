@@ -13,7 +13,6 @@ export enum AnalyticsEvent {
   BOOKING_ERROR = 'BookingError',
   BOOKING_IMPOSSIBLE_IOS = 'BookingImpossibleiOS',
   BOOKING_OFFER_CONFIRM_DATES = 'BookOfferConfirmDates',
-  BOOKING_PROCESS_START = 'BookingProcessStart',
   BOOKINGS_SCROLLED_TO_BOTTOM = 'BookingsScrolledToBottom',
   BUSINESS_BLOCK_CLICKED = 'BusinessBlockClicked',
   CAMPAIGN_TRACKER_ENABLED = 'CampaignTrackerEnabled',

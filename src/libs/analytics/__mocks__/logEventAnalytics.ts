@@ -14,7 +14,6 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logBookingError: jest.fn(),
   logBookingImpossibleiOS: jest.fn(),
   logBookingOfferConfirmDates: jest.fn(),
-  logBookingProcessStart: jest.fn(),
   logBookingsScrolledToBottom: jest.fn(),
   logBusinessBlockClicked: jest.fn(),
   logCampaignTrackerEnabled: jest.fn(),

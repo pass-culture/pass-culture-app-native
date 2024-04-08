@@ -175,12 +175,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     dispatch({ type: 'SELECT_STOCK', payload: bookingDataMovieScreening.stockId })
   }, [offerId, dispatch, bookingDataMovieScreening])
 
-  useEffect(() => {
-    if (visible) {
-      analytics.logBookingProcessStart(offerId)
-    }
-  }, [visible, offerId])
-
   const shouldAddSpacerBetweenHeaderAndContent = step === Step.CONFIRMATION
 
   const {
