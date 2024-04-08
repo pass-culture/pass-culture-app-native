@@ -1587,16 +1587,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
       </View>
     </RCTScrollView>
   </View>
-  <View
-    numberOfSpaces={6}
-    style={
-      [
-        {
-          "height": 24,
-        },
-      ]
-    }
-  />
   <Modal
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}

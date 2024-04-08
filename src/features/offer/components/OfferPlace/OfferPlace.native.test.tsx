@@ -5,6 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlace/OfferPlace'
+import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { ILocationContext, LocationMode } from 'libs/location/types'
@@ -74,7 +75,7 @@ jest
 
 const offerPlaceProps: OfferPlaceProps = {
   offer: mockOffer,
-  isEvent: false,
+  subcategory: mockSubcategory,
 }
 
 let mockDistance: string | null = null
@@ -232,14 +233,13 @@ describe('<OfferPlace />', () => {
     expect(screen.queryByText('Changer le lieu de retrait')).not.toBeOnTheScreen()
   })
 
-  it('should display venue block With "Lieu de retrait" in title by default', () => {
+  it('should display venue block With "Lieu de l’évènement" in title', () => {
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
     renderOfferPlace({
-      ...offerPlaceProps,
       offer: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
     })
 
-    expect(screen.getByText('Lieu de retrait')).toBeOnTheScreen()
+    expect(screen.getByText('Lieu de l’évènement')).toBeOnTheScreen()
   })
 
   it('should navigate to an other offer when user choose an other venue from "Changer le lieu de retrait" button', () => {
@@ -507,7 +507,7 @@ describe('<OfferPlace />', () => {
           })
         mockDistance = null
         renderOfferPlace({
-          isEvent: false,
+          subcategory: mockSubcategory,
           offer: {
             ...mockOffer,
             subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
@@ -587,9 +587,9 @@ type RenderOfferPlaceType = Partial<ComponentProps<typeof OfferPlace>> & {
 
 const renderOfferPlace = ({
   offer = mockOffer,
-  isEvent = false,
+  subcategory = mockSubcategory,
   isDesktopViewport,
 }: RenderOfferPlaceType) =>
-  render(reactQueryProviderHOC(<OfferPlace offer={offer} isEvent={isEvent} />), {
+  render(reactQueryProviderHOC(<OfferPlace offer={offer} subcategory={subcategory} />), {
     theme: { isDesktopViewport: isDesktopViewport ?? false },
   })

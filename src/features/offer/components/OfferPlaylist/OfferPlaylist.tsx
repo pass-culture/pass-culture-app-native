@@ -1,11 +1,11 @@
 import React from 'react'
 import { View } from 'react-native'
+import styled from 'styled-components/native'
 
 import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { PlaylistType } from 'features/offer/enums'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
-import { Spacer } from 'ui/theme'
 
 interface OfferPlaylistProps {
   items: Offer[] | HitOfferWithArtistAndEan[]
@@ -35,8 +35,7 @@ export function OfferPlaylist({
 }: Readonly<OfferPlaylistProps>) {
   return (
     <View>
-      <Spacer.Column numberOfSpaces={2} />
-      <PassPlaylist
+      <StyledPassPlaylist
         data={items}
         itemWidth={itemWidth}
         itemHeight={itemHeight}
@@ -49,3 +48,7 @@ export function OfferPlaylist({
     </View>
   )
 }
+
+const StyledPassPlaylist = styled(PassPlaylist)({
+  paddingBottom: 0,
+})

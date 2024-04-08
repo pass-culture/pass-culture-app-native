@@ -4,9 +4,10 @@ import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import { useTheme } from 'styled-components/native'
 
-import { OfferResponse, VenueResponse } from 'api/gen'
+import { OfferResponse, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
 import { OfferVenueBlock } from 'features/offer/components/OfferVenueBlock/OfferVenueBlock'
 import { OfferVenueBlockDeprecated } from 'features/offer/components/OfferVenueBlock/OfferVenueBlockDeprecated'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
@@ -19,15 +20,17 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { QueryKeys } from 'libs/queryKeys'
+import { Subcategory } from 'libs/subcategories/types'
+import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
 import { getIsMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/getIsMultiVenueCompatibleOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { Spacer } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export type OfferPlaceProps = {
   offer: OfferResponse
-  isEvent: boolean
+  subcategory: Subcategory
 }
 
 type PartialVenue = Pick<
@@ -50,7 +53,7 @@ const mergeVenueData =
 
 const ANIMATION_DURATION = 500 //ms
 
-export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
+export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const { selectedLocationMode, place, userLocation } = useLocation()
@@ -61,7 +64,7 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const distanceToLocation = useDistance({ lat, lng })
 
-  const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, isEvent)
+  const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
 
   const handleBeforeNavigateToItinerary = useCallback(() => {
     analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
@@ -147,10 +150,11 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
   const venueName = offer.venue.publicName || offer.venue.name
   const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
 
+  const isOfferAMovieScreening = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
+
   const renderOfferVenueBlock = () => {
     return (
-      <React.Fragment>
-        <Spacer.Column numberOfSpaces={8} />
+      <ViewGap gap={8}>
         {hasNewOfferVenueBlock ? (
           <OfferVenueBlock
             title={venueSectionTitle}
@@ -174,20 +178,28 @@ export function OfferPlace({ offer, isEvent }: Readonly<OfferPlaceProps>) {
             }
           />
         )}
-      </React.Fragment>
+        {isOfferAMovieScreening ? (
+          <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER}>
+            <MovieScreeningCalendar offer={offer} subcategory={subcategory} />
+          </FeatureFlag>
+        ) : null}
+      </ViewGap>
     )
   }
 
   return (
     <React.Fragment>
-      {isDesktopViewport ? (
+      {!offer.isDigital && isDesktopViewport ? (
         <View testID="place-container-without-divider">{renderOfferVenueBlock()}</View>
       ) : (
-        <SectionWithDivider visible={!offer.isDigital} margin testID="place-container-with-divider">
+        <SectionWithDivider
+          visible={!offer.isDigital}
+          margin
+          testID="place-container-with-divider"
+          gap={8}>
           {renderOfferVenueBlock()}
         </SectionWithDivider>
       )}
-      <Spacer.Column numberOfSpaces={8} />
 
       {shouldDisplayChangeVenueButton ? (
         <VenueSelectionModal

@@ -47,7 +47,7 @@ export const OfferContentPlaceholder: FunctionComponent = () => {
         <TextPlaceholder height={getSpacing(2)} width={getSpacing(82)} />
         <Spacer.Column numberOfSpaces={8} />
       </BodyContainer>
-      <SectionWithDivider visible margin>
+      <SectionWithDivider visible margin gap={0}>
         <Spacer.Column numberOfSpaces={8} />
         <TextPlaceholder height={getSpacing(5)} width={getSpacing(63)} />
         <Spacer.Column numberOfSpaces={8} />

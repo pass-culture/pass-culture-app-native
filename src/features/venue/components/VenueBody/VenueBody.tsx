@@ -30,6 +30,7 @@ interface Props {
   onScroll: () => void
   venueOffers?: { hits: Offer[]; nbHits: number }
   playlists?: GTLPlaylistResponse
+  shouldDisplayCTA?: boolean
 }
 
 export const VenueBody: FunctionComponent<Props> = ({
@@ -37,6 +38,7 @@ export const VenueBody: FunctionComponent<Props> = ({
   onScroll,
   venueOffers,
   playlists,
+  shouldDisplayCTA,
 }) => {
   const { bannerUrl, publicName, name, address, postalCode, city } = venue
   const { isDesktopViewport, isTabletViewport } = useTheme()
@@ -97,9 +99,9 @@ export const VenueBody: FunctionComponent<Props> = ({
         </MarginContainer>
       </TopContainer>
 
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
 
-      <FirstSectionContainer visible>
+      <FirstSectionContainer visible gap={6}>
         <TabLayout
           tabPanels={{
             'Offres disponibles': (
@@ -122,15 +124,12 @@ export const VenueBody: FunctionComponent<Props> = ({
 
       <Spacer.Column numberOfSpaces={6} />
 
-      <SectionWithDivider visible>
-        <MarginContainer>
-          <VenueMessagingApps venue={venue} />
-        </MarginContainer>
+      <SectionWithDivider visible margin gap={10}>
+        <VenueMessagingApps venue={venue} />
+        <Spacer.Column numberOfSpaces={4} />
       </SectionWithDivider>
 
-      <SectionWithDivider visible>
-        <Spacer.Column numberOfSpaces={VENUE_CTA_HEIGHT_IN_SPACES} />
-      </SectionWithDivider>
+      {shouldDisplayCTA ? <SectionWithDivider visible gap={VENUE_CTA_HEIGHT_IN_SPACES} /> : null}
     </Container>
   )
 }

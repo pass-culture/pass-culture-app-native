@@ -23,7 +23,6 @@ import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer, RecommendationApiParams, SimilarOfferPlaylist } from 'shared/offer/types'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { Spacer } from 'ui/theme'
 
 export type OfferPlaylistListProps = {
   offer: OfferResponse
@@ -179,38 +178,35 @@ export function OfferPlaylistList({
     isArrayNotEmpty(sameArtistPlaylist)
 
   return (
-    <SectionWithDivider visible={shouldDisplayPlaylist}>
-      <React.Fragment>
-        <Spacer.Column numberOfSpaces={6} />
-        {similarOffersPlaylist.map((playlist) => {
-          if (!isArrayNotEmpty(playlist.offers)) {
-            return null
-          }
+    <SectionWithDivider visible={shouldDisplayPlaylist} gap={8}>
+      {similarOffersPlaylist.map((playlist) => {
+        if (!isArrayNotEmpty(playlist.offers)) {
+          return null
+        }
 
-          return (
-            <IntersectionObserver
-              onChange={playlist.handleChangePlaylistDisplay}
-              threshold="50%"
-              key={playlist.type}>
-              <OfferPlaylist
-                items={playlist.offers}
-                itemWidth={itemWidth}
-                itemHeight={itemHeight}
-                renderItem={renderPlaylistItem({
-                  offer,
-                  position,
-                  categoryMapping,
-                  labelMapping,
-                  apiRecoParams: playlist.apiRecoParams,
-                })}
-                title={playlist.title}
-                onEndReached={trackingOnHorizontalScroll}
-                playlistType={playlist.type}
-              />
-            </IntersectionObserver>
-          )
-        })}
-      </React.Fragment>
+        return (
+          <IntersectionObserver
+            onChange={playlist.handleChangePlaylistDisplay}
+            threshold="50%"
+            key={playlist.type}>
+            <OfferPlaylist
+              items={playlist.offers}
+              itemWidth={itemWidth}
+              itemHeight={itemHeight}
+              renderItem={renderPlaylistItem({
+                offer,
+                position,
+                categoryMapping,
+                labelMapping,
+                apiRecoParams: playlist.apiRecoParams,
+              })}
+              title={playlist.title}
+              onEndReached={trackingOnHorizontalScroll}
+              playlistType={playlist.type}
+            />
+          </IntersectionObserver>
+        )
+      })}
     </SectionWithDivider>
   )
 }

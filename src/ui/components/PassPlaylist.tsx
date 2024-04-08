@@ -28,15 +28,29 @@ type Props = Pick<
   titleSeeMoreLink?: InternalNavigationProps['navigateTo']
 }
 
-export const PassPlaylist = (props: Props) => {
-  const TitleComponent = props.TitleComponent || DefaultTitle
-
+export const PassPlaylist = ({
+  title,
+  subtitle,
+  TitleComponent,
+  onPressSeeMore,
+  onEndReached,
+  titleSeeMoreLink,
+  data,
+  itemHeight,
+  itemWidth,
+  renderItem,
+  renderFooter,
+  playlistType,
+  keyExtractor,
+  testID: _testID,
+  ...props
+}: Props) => {
   const { isTouch } = useTheme()
 
-  const showTitleSeeMore = !!props.onPressSeeMore && !isTouch
-  const showFooterSeeMore = !!props.onPressSeeMore && isTouch
+  const showTitleSeeMore = !!onPressSeeMore && !isTouch
+  const showFooterSeeMore = !!onPressSeeMore && isTouch
 
-  const StyledTitleComponent = styled(TitleComponent).attrs({
+  const StyledTitleComponent = styled(TitleComponent || DefaultTitle).attrs({
     numberOfLines: 2,
   })({})
 
@@ -45,48 +59,48 @@ export const PassPlaylist = (props: Props) => {
     height: number
   }
 
-  const renderFooter: RenderFooterItem = useCallback(
+  const defaultRenderFooter: RenderFooterItem = useCallback(
     ({ width, height }: SizeProps) => (
-      <SeeMore width={width} height={height} onPress={props.onPressSeeMore as () => void} />
+      <SeeMore width={width} height={height} onPress={onPressSeeMore as () => void} />
     ),
-    [props.onPressSeeMore]
+    [onPressSeeMore]
   )
 
   function renderTitleSeeMore() {
-    return showTitleSeeMore && !!props.titleSeeMoreLink && !!props.onPressSeeMore ? (
+    return showTitleSeeMore && !!titleSeeMoreLink && !!onPressSeeMore ? (
       <SeeMoreWithEye
-        {...props}
-        titleSeeMoreLink={props.titleSeeMoreLink}
-        onPressSeeMore={props.onPressSeeMore}
+        title={title}
+        titleSeeMoreLink={titleSeeMoreLink}
+        onPressSeeMore={onPressSeeMore}
       />
     ) : null
   }
   return (
-    <Container>
+    <Container {...props}>
       <TitleContainer>
         <Row>
-          <StyledTitleComponent testID="playlistTitle">{props.title}</StyledTitleComponent>
+          <StyledTitleComponent testID="playlistTitle">{title}</StyledTitleComponent>
           {renderTitleSeeMore()}
         </Row>
-        {props.subtitle ? (
+        {subtitle ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={1} />
-            <StyledSubtitle>{props.subtitle}</StyledSubtitle>
+            <StyledSubtitle>{subtitle}</StyledSubtitle>
           </React.Fragment>
         ) : null}
       </TitleContainer>
       <Spacer.Column numberOfSpaces={4} />
       <Playlist
         testID="offersModuleList"
-        data={props.data}
-        itemHeight={props.itemHeight}
-        itemWidth={props.itemWidth}
-        scrollButtonOffsetY={props.itemHeight / 2}
-        renderItem={props.renderItem}
-        renderFooter={showFooterSeeMore ? props.renderFooter || renderFooter : undefined}
-        keyExtractor={props.keyExtractor}
-        onEndReached={props.onEndReached}
-        playlistType={props.playlistType}
+        data={data}
+        itemHeight={itemHeight}
+        itemWidth={itemWidth}
+        scrollButtonOffsetY={itemHeight / 2}
+        renderItem={renderItem}
+        renderFooter={showFooterSeeMore ? renderFooter || defaultRenderFooter : undefined}
+        keyExtractor={keyExtractor}
+        onEndReached={onEndReached}
+        playlistType={playlistType}
       />
     </Container>
   )

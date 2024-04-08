@@ -324,7 +324,7 @@ export const AppComponents: FunctionComponent = () => {
 
         {/* Sections */}
         <AccordionItem title="Sections">
-          <SectionWithDivider visible margin>
+          <SectionWithDivider visible margin gap={2}>
             <View>
               <Typo.Title4>Section with divider</Typo.Title4>
               <Typo.Body>

@@ -1,14 +1,16 @@
 import React from 'react'
-import { LayoutChangeEvent, View } from 'react-native'
+import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
 interface SectionProps {
   visible: boolean
-  children: React.JSX.Element | (React.JSX.Element | null)[]
+  children?: React.JSX.Element | (React.JSX.Element | null)[]
   margin?: boolean
   onLayout?: (event: LayoutChangeEvent) => void
   testID?: string
+  gap: number
 }
 
 export const SectionWithDivider = ({
@@ -17,14 +19,15 @@ export const SectionWithDivider = ({
   margin = false,
   onLayout,
   testID,
+  gap,
 }: SectionProps) => {
   if (!visible) return null
 
   return (
-    <View onLayout={onLayout} testID={testID}>
+    <ViewGap onLayout={onLayout} testID={testID} gap={gap}>
       <Divider />
       {margin ? <MarginContainer>{children}</MarginContainer> : children}
-    </View>
+    </ViewGap>
   )
 }
 

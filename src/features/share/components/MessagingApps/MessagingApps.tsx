@@ -9,7 +9,8 @@ import { ShareContent } from 'libs/share/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 import { Ul } from 'ui/components/Ul'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -34,8 +35,8 @@ export const MessagingApps = ({ shareContent, share, messagingAppAnalytics }: Pr
   if (!shareContent.url) return null
 
   return (
-    <React.Fragment>
-      <StyledTitle3>{'Passe le bon plan\u00a0!'}</StyledTitle3>
+    <ViewGap gap={4}>
+      <Typo.Title3 {...getHeadingAttrs(2)}>{'Passe le bon plan\u00a0!'}</Typo.Title3>
       <IconsWrapper>
         <StyledUl>
           <InstalledMessagingApps
@@ -47,7 +48,7 @@ export const MessagingApps = ({ shareContent, share, messagingAppAnalytics }: Pr
           </MessagingAppContainer>
         </StyledUl>
       </IconsWrapper>
-      <Spacer.Column numberOfSpaces={4} />
+
       {!!shareContent && (
         <WebShareModal
           visible={shareOfferModalVisible}
@@ -56,7 +57,7 @@ export const MessagingApps = ({ shareContent, share, messagingAppAnalytics }: Pr
           dismissModal={hideShareOfferModal}
         />
       )}
-    </React.Fragment>
+    </ViewGap>
   )
 }
 
@@ -70,9 +71,4 @@ const StyledUl = styled(Ul)({
   flex: 1,
   justifyContent: 'flex-start',
   flexWrap: 'wrap',
-})
-
-const StyledTitle3 = styled(Typo.Title3).attrs(getHeadingAttrs(2))({
-  paddingTop: getSpacing(6),
-  paddingBottom: getSpacing(4),
 })

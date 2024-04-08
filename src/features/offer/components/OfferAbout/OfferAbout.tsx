@@ -3,64 +3,48 @@ import { View } from 'react-native'
 
 import { OfferResponse } from 'api/gen'
 import { OfferAccessibility } from 'features/offer/components/OfferAccessibility/OfferAccessibility'
+import { OfferMetadataItemProps } from 'features/offer/components/OfferMetadataItem/OfferMetadataItem'
 import { OfferMetadataList } from 'features/offer/components/OfferMetadataList/OfferMetadataList'
-import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOfferMetadata'
-import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
-import { Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   offer: OfferResponse
+  metadata: OfferMetadataItemProps[]
+  hasMetadata: boolean
+  shouldDisplayAccessibilitySection: boolean
 }
 
 const NUMBER_OF_LINES_OF_DESCRIPTION_SECTION = 5
 
-export const OfferAbout: FunctionComponent<Props> = ({ offer }) => {
-  const extraData = offer.extraData ?? undefined
-  const metadata = getOfferMetadata(extraData)
-  const hasMetadata = metadata.length > 0
-  const shouldDisplayAccessibilitySection = !(
-    isNullOrUndefined(offer.accessibility.visualDisability) &&
-    isNullOrUndefined(offer.accessibility.audioDisability) &&
-    isNullOrUndefined(offer.accessibility.mentalDisability) &&
-    isNullOrUndefined(offer.accessibility.motorDisability)
-  )
-
-  const shouldDisplayAboutSection =
-    shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
-
-  return shouldDisplayAboutSection ? (
-    <View>
-      <Spacer.Column numberOfSpaces={2} />
+export const OfferAbout: FunctionComponent<Props> = ({
+  offer,
+  metadata,
+  hasMetadata,
+  shouldDisplayAccessibilitySection,
+}) => {
+  return (
+    <ViewGap gap={4}>
       <Typo.Title3 {...getHeadingAttrs(2)}>À propos</Typo.Title3>
-      <Spacer.Column numberOfSpaces={4} />
+      <ViewGap gap={2}>
+        {hasMetadata ? <OfferMetadataList metadata={metadata} /> : null}
 
-      {hasMetadata ? (
-        <React.Fragment>
-          <OfferMetadataList metadata={metadata} />
-          <Spacer.Column numberOfSpaces={2} />
-        </React.Fragment>
-      ) : null}
-
-      {offer.description ? (
-        <React.Fragment>
-          <Typo.ButtonText>Description&nbsp;:</Typo.ButtonText>
-          <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
-            {offer.description}
-          </CollapsibleText>
-          <Spacer.Column numberOfSpaces={8} />
-        </React.Fragment>
-      ) : null}
-
-      {shouldDisplayAccessibilitySection ? (
-        <React.Fragment>
-          <OfferAccessibility accessibility={offer.accessibility} />
-          <Spacer.Column numberOfSpaces={8} />
-        </React.Fragment>
-      ) : null}
-    </View>
-  ) : (
-    <Spacer.Column numberOfSpaces={2} />
+        <ViewGap gap={8}>
+          {offer.description ? (
+            <View>
+              <Typo.ButtonText>Description&nbsp;:</Typo.ButtonText>
+              <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
+                {offer.description}
+              </CollapsibleText>
+            </View>
+          ) : null}
+          {shouldDisplayAccessibilitySection ? (
+            <OfferAccessibility accessibility={offer.accessibility} />
+          ) : null}
+        </ViewGap>
+      </ViewGap>
+    </ViewGap>
   )
 }
