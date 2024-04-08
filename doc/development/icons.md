@@ -7,11 +7,11 @@
 
 ## svg VS react-native-svg
 
-:warning: SVG attributes use hyphen (e.g. `fill-rule` and `clip-rule`) while react-native-svg use camelCase props. 
+:warning: SVG attributes use hyphen (e.g. `fill-rule` and `clip-rule`) while react-native-svg use camelCase props.
 
-Since react-native-svg use camelCase props, use `fillRule` and `clipRule`. 
+Since react-native-svg use camelCase props, use `fillRule` and `clipRule`.
 
-> TypeScript will not throw if you use `fill-rule` and `clip-rule`, although it will fail at compilation and throw warnings on the Web. 
+> TypeScript will not throw if you use `fill-rule` and `clip-rule`, although it will fail at compilation and throw warnings on the Web.
 
 ### Illustrations
 
@@ -24,8 +24,7 @@ Pictograms can be linear or filled.
 - Linear pictograms have to be used at size 20px or bigger for Accessibility reasons. Typical use cases include Primary and Secondary buttons.
 - Filled pictograms have to be used at size 20 px or smaller. Typical use cases include Tertiary and Quaternary buttons.
 
-If you don't download icons from the [Fondations file](https://www.figma.com/file/jswn3bl2Sy7hm4XDyOLWE9/Fondations), make sure to use the viewbox values from your import, rather than the default "48 48 0 0" used in Fondations. The Path and the ViewBox are related to maintain a consistent ratio.
-
+If you don't download icons from the [Fondations file](https://www.figma.com/file/jswn3bl2Sy7hm4XDyOLWE9/Fondations), make sure to use the viewbox values included in your exported svg, rather than the default "48 48 0 0" used in Fondations. The Path and the ViewBox are related to maintain a consistent ratio.
 
 # Importing new icons
 
@@ -88,7 +87,12 @@ const MyRegularPictogramSvg: React.FunctionComponent<AccessibleIcon> = ({
   accessibilityLabel,
   testID,
 }) => (
-  <AccessibleSvg width={size} height={size} viewBox="0 0 48 48" accessibilityLabel={accessibilityLabel} testID={testID}>
+  <AccessibleSvg
+    width={size}
+    height={size}
+    viewBox="0 0 48 48"
+    accessibilityLabel={accessibilityLabel}
+    testID={testID}>
     <Path
       fill={color}
       d="M24 5.4059 23 15.4512V27.5488C23 28.0741 23.4477 28.5 28.0741 25 27.5488V15.4512Z"
@@ -98,7 +102,7 @@ const MyRegularPictogramSvg: React.FunctionComponent<AccessibleIcon> = ({
 
 export const MyRegularPictogram = styled(MyRegularPictogramSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
-  size: size ?? theme.icons.sizes.standard
+  size: size ?? theme.icons.sizes.standard,
 }))``
 ```
 
@@ -127,7 +131,12 @@ const MyBicolorPictogramSvg: React.FunctionComponent<IconInterface> = ({
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   return (
-    <AccessibleSvg width={size} height={size} viewBox="0 0 48 48" accessibilityLabel={accessibilityLabel} testID={testID}>
+    <AccessibleSvg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <Defs>
         <LinearGradient id={gradientId} x1="28.841%" x2="71.159%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color} />
@@ -138,18 +147,21 @@ const MyBicolorPictogramSvg: React.FunctionComponent<IconInterface> = ({
         fill={gradientFill}
         clipRule={'evenodd'}
         fillRule={'evenodd'}
-        d="M24 6.5C22.8923 6.5 22 74 38 29.74H34ZM35 35.5V31.74H37V35.5H35Z" />
-      </AccessibleSvg>
+        d="M24 6.5C22.8923 6.5 22 74 38 29.74H34ZM35 35.5V31.74H37V35.5H35Z"
+      />
+    </AccessibleSvg>
   )
 }
 
-export const MyBicolorPictogram = styled(MyBicolorPictogramSvg).attrs(({ color, color2, size, theme }) => ({
-  color: color ?? theme.colors.primary,
-  color2: color2 ?? theme.colors.secondary,
-  size: size ?? theme.icons.sizes.standard
-}))``
-
+export const MyBicolorPictogram = styled(MyBicolorPictogramSvg).attrs(
+  ({ color, color2, size, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? theme.colors.secondary,
+    size: size ?? theme.icons.sizes.standard,
+  })
+)``
 ```
 
 ## Accessibility
+
 By using `AccessibleSvg`, all the accessibility attributes are automatically handled, by hiding the element from screen readers if there is no accessibility label attached, and adding the correct accessibility role when there is one.
