@@ -36,10 +36,11 @@ function getHourChoiceForMultiplePrices(
       filteredAvailableStocksFromHourBookable.length > 0
         ? filteredAvailableStocksFromHourBookable
         : filteredAvailableStocksFromHour
+
     const minPriceStock = stocksToGetMinPrice.reduce((acc, curr) => {
       if (acc.price < curr.price) return acc
       return curr
-    })
+    }, {} as OfferStockResponse)
 
     const isBookable = filteredAvailableStocksFromHourBookable.length > 0
     const hasSeveralPrices = filteredAvailableStocksFromHour.length > 1
