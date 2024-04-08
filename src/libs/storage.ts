@@ -25,6 +25,7 @@ export type StorageKey =
   | 'user_age'
   | 'location_type'
   | 'activation_profile'
+  | 'has_subscribed_to_thematic_times'
 
 export const storage = {
   clear,
