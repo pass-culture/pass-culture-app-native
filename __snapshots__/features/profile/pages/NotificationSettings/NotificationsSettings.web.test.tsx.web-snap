@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotificationSettings should render correctly 1`] = `
+exports[`NotificationsSettings should render correctly 1`] = `
 .c4 {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;

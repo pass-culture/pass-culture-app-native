@@ -19,7 +19,7 @@ jest.spyOn(usePushPermission, 'usePushPermission').mockReturnValue({
   refreshPermission: jest.fn(),
 })
 
-describe('NotificationSettings', () => {
+describe('NotificationsSettings', () => {
   it('should render correctly', () => {
     const { container } = render(reactQueryProviderHOC(<NotificationsSettings />))
 

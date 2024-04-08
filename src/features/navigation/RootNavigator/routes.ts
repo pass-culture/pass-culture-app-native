@@ -59,7 +59,7 @@ import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/Confi
 import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
-import { NotificationSettingsDeprecated } from 'features/profile/pages/NotificationSettings/NotificationSettingsDeprecated'
+import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
@@ -281,7 +281,7 @@ export const routes: RootRoute[] = [
     path: 'cheat-navigation-profile',
   },
   {
-    name: 'NotificationSettings',
+    name: 'NotificationsSettings',
     component: NotificationsSettings,
     path: 'profil/notifications',
     options: { title: 'Réglages de notifications' },

@@ -220,7 +220,7 @@ export type RootStackParamList = {
   NavigationNotScreensPages: undefined
   NavigationProfile: undefined
   NavigationSubscription: undefined
-  NotificationSettings: undefined
+  NotificationsSettings: undefined
   Offer: {
     id: number
     from?: Referrals

@@ -19,7 +19,7 @@ const mockUseAuthContext = Auth.useAuthContext as jest.Mock
 
 useRoute.mockReturnValue({ key: 'ksdqldkmqdmqdq' })
 
-describe('NotificationSettings', () => {
+describe('NotificationsSettings', () => {
   it('should display both switches', async () => {
     renderNotificationSettings('granted', {} as UserProfileResponse)
 

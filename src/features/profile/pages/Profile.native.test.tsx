@@ -193,7 +193,7 @@ describe('Profile component', () => {
       const notificationsButton = screen.getByText('Notifications')
       fireEvent.press(notificationsButton)
 
-      expect(navigate).toHaveBeenCalledWith('NotificationSettings', undefined)
+      expect(navigate).toHaveBeenCalledWith('NotificationsSettings', undefined)
     })
   })
 
