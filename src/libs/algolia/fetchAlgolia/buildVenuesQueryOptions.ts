@@ -37,7 +37,7 @@ export const buildVenuesQueryOptions = (
   }
 }
 
-const buildVenueTypesPredicate = (venueTypes: string[]): string[] =>
+export const buildVenueTypesPredicate = (venueTypes: string[]): string[] =>
   venueTypes.map((venueType) => `${VenuesFacets.venue_type}:${venueType}`)
 
 const buildTagsPredicate = (tags: string[]): string[] =>

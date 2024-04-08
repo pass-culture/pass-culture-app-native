@@ -7,6 +7,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/constant'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
+import { VenueMapWrapper } from 'features/venueMap/context/VenueMapWrapper'
 import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
 import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessionDuration'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal'
@@ -43,33 +44,31 @@ export const VenueMap: FunctionComponent = () => {
   useTrackMapSeenDuration()
 
   return (
-    <React.Fragment>
-      <Container>
-        <StyledHeader title="Carte des lieux" onGoBack={goBack} />
-        <PlaceHolder headerHeight={headerHeight + withFilterBanner} />
-        {enableVenueMapTypeFilter ? (
-          <FilterBannerContainer headerHeight={headerHeight}>
-            <StyledUl>
-              <StyledLi>
-                <SingleFilterButton
-                  label="Type de lieu"
-                  isSelected={false}
-                  onPress={showVenueTypeModal}
-                />
-              </StyledLi>
-            </StyledUl>
-          </FilterBannerContainer>
-        ) : null}
-        <MapContainer>
-          <VenueMapView height={venueMapHeight} />
-        </MapContainer>
-      </Container>
-      <VenueTypeModal
-        hideModal={hideVenueTypeModal}
-        venueType={null}
-        isVisible={venueTypeModalVisible}
-      />
-    </React.Fragment>
+    <VenueMapWrapper>
+      <React.Fragment>
+        <Container>
+          <StyledHeader title="Carte des lieux" onGoBack={goBack} />
+          <PlaceHolder headerHeight={headerHeight + withFilterBanner} />
+          {enableVenueMapTypeFilter ? (
+            <FilterBannerContainer headerHeight={headerHeight}>
+              <StyledUl>
+                <StyledLi>
+                  <SingleFilterButton
+                    label="Type de lieu"
+                    isSelected={false}
+                    onPress={showVenueTypeModal}
+                  />
+                </StyledLi>
+              </StyledUl>
+            </FilterBannerContainer>
+          ) : null}
+          <MapContainer>
+            <VenueMapView height={venueMapHeight} />
+          </MapContainer>
+        </Container>
+        <VenueTypeModal hideModal={hideVenueTypeModal} isVisible={venueTypeModalVisible} />
+      </React.Fragment>
+    </VenueMapWrapper>
   )
 }
 
