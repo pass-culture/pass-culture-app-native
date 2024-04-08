@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -7,8 +7,10 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
 import { VenueTypeSection } from 'features/venueMap/components/VenueTypeSection/VenueTypeSection'
+import { useVenueMapState } from 'features/venueMap/context/VenueMapWrapper'
+import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
 import { venueTypesMapping } from 'features/venueMap/helpers/venueTypesMapping/venueTypesMapping'
-import { parseType, VenueTypeCode } from 'libs/parsers/venueType'
+import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -19,45 +21,64 @@ import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
 
 type Props = {
-  venueType: VenueTypeCode | null
   hideModal: VoidFunction
   isVisible?: boolean
 }
 
 type VenueTypeModalFormProps = {
-  venueTypeSelected: string | null
+  venueTypeCode: VenueTypeCode | null
 }
 
 const titleId = uuidv4()
 const MODAL_TITLE = 'Type de lieu'
 
-const getVenueTypeSelected = (venueType: VenueTypeCode | null) =>
-  venueType ? parseType(venueType) : 'Tout'
-
-export const VenueTypeModal: FunctionComponent<Props> = ({
-  venueType,
-  hideModal,
-  isVisible = false,
-}) => {
+export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible = false }) => {
   const { modal } = useTheme()
+  const { venueMapState, dispatch } = useVenueMapState()
 
-  const { reset, setValue, watch } = useForm<VenueTypeModalFormProps>({
-    defaultValues: { venueTypeSelected: getVenueTypeSelected(venueType) },
+  const initialFormValues = useMemo(() => {
+    return {
+      venueTypeCode: venueMapState.venueTypeCode,
+    }
+  }, [venueMapState.venueTypeCode])
+
+  const {
+    formState: { isSubmitting },
+    handleSubmit,
+    reset,
+    setValue,
+    watch,
+  } = useForm<VenueTypeModalFormProps>({
+    defaultValues: initialFormValues,
   })
-  const { venueTypeSelected } = watch()
+  const { venueTypeCode } = watch()
+  const venueTypeLabel = useMemo(() => getVenueTypeLabel(venueTypeCode), [venueTypeCode])
 
-  const handleOnSelect = (venueTypeCode: VenueTypeCode | null) => {
-    setValue('venueTypeSelected', getVenueTypeSelected(venueTypeCode))
-  }
+  const handleOnSelect = useCallback(
+    (venueTypeCode: VenueTypeCode | null) => {
+      setValue('venueTypeCode', venueTypeCode)
+    },
+    [setValue]
+  )
 
-  const handleOnReset = () => {
-    reset({ venueTypeSelected: 'Tout' })
-  }
+  const handleOnReset = useCallback(() => {
+    reset({ venueTypeCode: null })
+  }, [reset])
 
-  const handleCloseModal = () => {
-    handleOnReset()
+  const handleCloseModal = useCallback(() => {
+    reset({
+      venueTypeCode: venueMapState.venueTypeCode,
+    })
     hideModal()
-  }
+  }, [hideModal, reset, venueMapState.venueTypeCode])
+
+  const handleSearchPress = useCallback(
+    (form: VenueTypeModalFormProps) => {
+      dispatch({ type: 'SET_VENUE_TYPE_CODE', payload: form.venueTypeCode })
+      hideModal()
+    },
+    [dispatch, hideModal]
+  )
 
   return (
     <AppModal
@@ -82,8 +103,8 @@ export const VenueTypeModal: FunctionComponent<Props> = ({
       fixedModalBottom={
         <SearchFixedModalBottom
           onResetPress={handleOnReset}
-          onSearchPress={handleCloseModal}
-          isSearchDisabled={false}
+          onSearchPress={handleSubmit(handleSearchPress)}
+          isSearchDisabled={isSubmitting}
           filterBehaviour={FilterBehaviour.SEARCH}
         />
       }>
@@ -93,14 +114,14 @@ export const VenueTypeModal: FunctionComponent<Props> = ({
           <ListItem>
             <RadioButton
               label="Tout"
-              isSelected={venueTypeSelected === 'Tout'}
+              isSelected={venueTypeLabel === 'Tout'}
               onSelect={() => handleOnSelect(null)}
             />
           </ListItem>
           {Object.entries(venueTypesMapping).map(([sectionKey, venueTypes], index, array) => (
             <React.Fragment key={sectionKey}>
               <VenueTypeSection
-                venueTypeSelected={venueTypeSelected}
+                venueTypeSelected={venueTypeLabel}
                 venueTypeMapping={venueTypes}
                 onSelect={handleOnSelect}
               />

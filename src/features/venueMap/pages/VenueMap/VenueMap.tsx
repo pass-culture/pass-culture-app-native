@@ -64,11 +64,7 @@ export const VenueMap: FunctionComponent = () => {
           <VenueMapView height={venueMapHeight} />
         </MapContainer>
       </Container>
-      <VenueTypeModal
-        hideModal={hideVenueTypeModal}
-        venueType={null}
-        isVisible={venueTypeModalVisible}
-      />
+      <VenueTypeModal hideModal={hideVenueTypeModal} isVisible={venueTypeModalVisible} />
     </React.Fragment>
   )
 }

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<VenueTypeModal /> should render modal correctly 1`] = `
+exports[`<VenueTypeModal /> When venue type is null should render modal correctly 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
