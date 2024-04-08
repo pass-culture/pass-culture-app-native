@@ -14,12 +14,14 @@ interface Props {
   visible: boolean
   theme: SubscriptionTheme
   dismissModal: () => void
+  onUnsubscribePress: () => void
 }
 
 export const UnsubscribingConfirmationModal: FunctionComponent<Props> = ({
   visible,
   theme,
   dismissModal,
+  onUnsubscribePress,
 }) => {
   return (
     <AppModalWithIllustration
@@ -32,7 +34,7 @@ export const UnsubscribingConfirmationModal: FunctionComponent<Props> = ({
       </StyledBody>
       <Spacer.Column numberOfSpaces={6} />
       <StyledButtonContainer>
-        <ButtonPrimary wording="Ne plus suivre ce thème" />
+        <ButtonPrimary wording="Ne plus suivre ce thème" onPress={onUnsubscribePress} />
         <ButtonTertiaryBlack wording="Annuler" icon={Invalidate} onPress={dismissModal} />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />
