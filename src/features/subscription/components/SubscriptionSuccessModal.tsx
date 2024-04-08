@@ -40,6 +40,7 @@ export const SubscriptionSuccessModal: FunctionComponent<Props> = ({
           wording="Voir mes préférences"
           icon={Parameters}
           navigateTo={{ screen: 'NotificationsSettingsWIP' }}
+          onBeforeNavigate={dismissModal}
         />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />
