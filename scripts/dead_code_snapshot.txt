@@ -1,2 +1,1 @@
 src/ui/hooks/useElementWidth.ts:4 - useElementWidth
-src/features/home/components/SubscribeButton.tsx:9 - SubscribeButton
