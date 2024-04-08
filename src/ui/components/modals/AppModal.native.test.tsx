@@ -4,6 +4,7 @@ import { ReactNativeModal } from 'react-native-modal'
 
 import { act, fireEvent, render, screen } from 'tests/utils'
 
+import { AppModal } from './AppModal'
 import {
   AppModalProps,
   defaultProps,
@@ -11,8 +12,7 @@ import {
   rightIconProps,
   leftIconCallbackMock,
   rightIconCallbackMock,
-} from './__tests__/fixture'
-import { AppModal } from './AppModal'
+} from './fixture'
 
 describe('<AppModal />', () => {
   it('with minimal props', () => {
