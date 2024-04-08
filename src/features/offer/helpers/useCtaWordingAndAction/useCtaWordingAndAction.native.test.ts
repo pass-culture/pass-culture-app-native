@@ -564,7 +564,31 @@ describe('getCtaWordingAndAction', () => {
           booking: undefined,
         }) || {}
 
-      if (onPress) onPress()
+      onPress?.()
+
+      expect(analytics.logClickBookOffer).toHaveBeenNthCalledWith(1, { offerId: baseOffer.id })
+    })
+
+    it('logs event ClickBookOffer when CTA "Voir les disponibilités" is clicked', () => {
+      const offer = buildOffer({ externalTicketOfficeUrl: 'https://www.google.com' })
+      const subcategory = buildSubcategory({ isEvent: true })
+
+      const { onPress } =
+        getCtaWordingAndAction({
+          isLoggedIn: true,
+          userStatus: { statusType: YoungStatusType.beneficiary },
+          isBeneficiary: true,
+          offer,
+          subcategory,
+          hasEnoughCredit: true,
+          bookedOffers: {},
+          isUnderageBeneficiary: false,
+          bookOffer: () => {},
+          isBookingLoading: false,
+          booking: undefined,
+        }) || {}
+
+      onPress?.()
 
       expect(analytics.logClickBookOffer).toHaveBeenNthCalledWith(1, { offerId: baseOffer.id })
     })
@@ -588,7 +612,7 @@ describe('getCtaWordingAndAction', () => {
           booking: undefined,
         }) || {}
 
-      if (onPress) onPress()
+      onPress?.()
 
       expect(analytics.logConsultAvailableDates).toHaveBeenNthCalledWith(1, baseOffer.id)
     })
@@ -612,7 +636,7 @@ describe('getCtaWordingAndAction', () => {
           booking: undefined,
         }) || {}
 
-      if (onPress) onPress()
+      onPress?.()
 
       expect(analytics.logConsultFinishSubscriptionModal).toHaveBeenNthCalledWith(1, baseOffer.id)
     })
@@ -636,7 +660,7 @@ describe('getCtaWordingAndAction', () => {
           booking: undefined,
         }) || {}
 
-      if (onPress) onPress()
+      onPress?.()
 
       expect(analytics.logConsultApplicationProcessingModal).toHaveBeenNthCalledWith(
         1,
@@ -663,7 +687,7 @@ describe('getCtaWordingAndAction', () => {
           booking: undefined,
         }) || {}
 
-      if (onPress) onPress()
+      onPress?.()
 
       expect(analytics.logConsultErrorApplicationModal).toHaveBeenNthCalledWith(1, baseOffer.id)
     })
