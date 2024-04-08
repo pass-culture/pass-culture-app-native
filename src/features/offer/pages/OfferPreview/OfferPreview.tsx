@@ -1,12 +1,17 @@
 import { useRoute } from '@react-navigation/native'
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
+import { useWindowDimensions } from 'react-native'
+import { useSharedValue } from 'react-native-reanimated'
+import Carousel from 'react-native-reanimated-carousel'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useOffer } from 'features/offer/api/useOffer'
 import { PinchableBox } from 'features/offer/components/PinchableBox/PinchableBox'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
@@ -19,12 +24,46 @@ export const OfferPreview: FunctionComponent = () => {
   const { data: offer } = useOffer({ offerId: params.id })
   const headerHeight = useGetHeaderHeight()
 
+  const shouldDisplayCarousel = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW_WITH_CAROUSEL
+  )
+  const progressValue = useSharedValue<number>(0)
+  const { height: screenHeight, width: screenWidth } = useWindowDimensions()
+
   if (!offer?.image) return null
+
+  const images = [offer.image.url, offer.image.url, offer.image.url]
 
   return (
     <Container>
       <StyledHeader title="1/1" onGoBack={goBack} />
-      <PinchableBox imageUrl={offer.image.url} />
+
+      {shouldDisplayCarousel ? (
+        <Carousel
+          vertical={false}
+          height={screenHeight}
+          width={screenWidth}
+          style={{
+            width: screenWidth,
+          }}
+          loop={false}
+          scrollAnimationDuration={500}
+          onProgressChange={(_, absoluteProgress) => {
+            progressValue.value = absoluteProgress
+          }}
+          mode="parallax"
+          modeConfig={{
+            parallaxScrollingScale: 1,
+            parallaxScrollingOffset: 0,
+            parallaxAdjacentItemScale: 0.9,
+          }}
+          data={images}
+          renderItem={({ item: image }) => <PinchableBox imageUrl={image} />}
+        />
+      ) : (
+        <PinchableBox imageUrl={offer.image.url} />
+      )}
+
       <BlurHeader height={headerHeight} />
     </Container>
   )
