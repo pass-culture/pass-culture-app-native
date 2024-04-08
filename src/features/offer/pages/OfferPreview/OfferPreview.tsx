@@ -28,6 +28,7 @@ export const OfferPreview: FunctionComponent = () => {
     RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW_WITH_CAROUSEL
   )
   const progressValue = useSharedValue<number>(0)
+  const [index, setIndex] = React.useState(0)
   const { height: screenHeight, width: screenWidth } = useWindowDimensions()
 
   if (!offer?.image) return null
@@ -36,7 +37,10 @@ export const OfferPreview: FunctionComponent = () => {
 
   return (
     <Container>
-      <StyledHeader title="1/1" onGoBack={goBack} />
+      <StyledHeader
+        title={shouldDisplayCarousel ? `${index + 1}/${images.length}` : '1/1'}
+        onGoBack={goBack}
+      />
 
       {shouldDisplayCarousel ? (
         <Carousel
@@ -50,6 +54,7 @@ export const OfferPreview: FunctionComponent = () => {
           scrollAnimationDuration={500}
           onProgressChange={(_, absoluteProgress) => {
             progressValue.value = absoluteProgress
+            setIndex(Math.round(absoluteProgress))
           }}
           mode="parallax"
           modeConfig={{
