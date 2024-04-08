@@ -50,6 +50,7 @@ export const SubscribeButtonWithTooltip = (props: { active: boolean; onPress: ()
         label="Suis ce thème pour recevoir de l’actualité sur ce sujet&nbsp;!"
         pointerDirection="bottom"
         isVisible={isTooltipVisible}
+        onHide={hideTooltip}
       />
     </React.Fragment>
   )

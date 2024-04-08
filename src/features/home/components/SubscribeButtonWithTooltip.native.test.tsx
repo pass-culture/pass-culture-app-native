@@ -1,19 +1,21 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { SubscribeButtonWithTooltip } from 'features/home/components/SubscribeButtonWithTooltip'
 import { storage } from 'libs/storage'
-import { act, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 const DISPLAY_START_OFFSET_IN_MS = 1000
 const TOOLTIP_TEXT = 'Suis ce thème pour recevoir de l’actualité sur ce sujet !'
 
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.unmock('@react-navigation/native')
+jest.useFakeTimers()
 
 describe('<SubscribeButtonWithTooltip />', () => {
   beforeEach(() => storage.clear('times_subscription_tooltip_has_been_displayed'))
 
   it('should not show tooltip before 1 second has elapsed', () => {
-    render(<SubscribeButtonWithTooltip active={false} onPress={jest.fn()} />)
+    renderSubscribeButtonWithTooltip()
 
     jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS - 1)
 
@@ -21,7 +23,7 @@ describe('<SubscribeButtonWithTooltip />', () => {
   })
 
   it('should show tooltip after 1 second when user is not subscribed', async () => {
-    render(<SubscribeButtonWithTooltip active={false} onPress={jest.fn()} />)
+    renderSubscribeButtonWithTooltip()
 
     await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
 
@@ -29,7 +31,7 @@ describe('<SubscribeButtonWithTooltip />', () => {
   })
 
   it('should not show tooltip when user is already subscribed', () => {
-    render(<SubscribeButtonWithTooltip active onPress={jest.fn()} />)
+    renderSubscribeButtonWithTooltip({ active: true })
 
     act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
 
@@ -37,7 +39,7 @@ describe('<SubscribeButtonWithTooltip />', () => {
   })
 
   it('should hide tooltip 8 seconds after display', async () => {
-    render(<SubscribeButtonWithTooltip active={false} onPress={jest.fn()} />)
+    renderSubscribeButtonWithTooltip()
 
     await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
     await act(() => jest.advanceTimersByTime(8000))
@@ -46,24 +48,41 @@ describe('<SubscribeButtonWithTooltip />', () => {
   })
 
   it('should not show tooltip more than 3 times', async () => {
-    render(<SubscribeButtonWithTooltip active={false} onPress={jest.fn()} />)
+    renderSubscribeButtonWithTooltip()
     await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
 
     expect(screen.getByText(TOOLTIP_TEXT)).toBeOnTheScreen()
 
-    render(<SubscribeButtonWithTooltip active={false} onPress={jest.fn()} />)
+    renderSubscribeButtonWithTooltip()
     await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
 
     expect(screen.getByText(TOOLTIP_TEXT)).toBeOnTheScreen()
 
-    render(<SubscribeButtonWithTooltip active={false} onPress={jest.fn()} />)
+    renderSubscribeButtonWithTooltip()
     await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
 
     expect(screen.getByText(TOOLTIP_TEXT)).toBeOnTheScreen()
 
-    render(<SubscribeButtonWithTooltip active={false} onPress={jest.fn()} />)
+    renderSubscribeButtonWithTooltip()
     await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
 
     expect(screen.queryByText(TOOLTIP_TEXT)).not.toBeOnTheScreen()
   })
+
+  it('should hide tooltip when pressing close button', async () => {
+    renderSubscribeButtonWithTooltip()
+
+    await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
+
+    fireEvent.press(screen.getByLabelText('Fermer le tooltip'))
+
+    expect(screen.queryByText(TOOLTIP_TEXT)).not.toBeOnTheScreen()
+  })
 })
+
+const renderSubscribeButtonWithTooltip = ({ active }: { active: boolean } = { active: false }) =>
+  render(
+    <NavigationContainer>
+      <SubscribeButtonWithTooltip active={active} onPress={jest.fn()} />
+    </NavigationContainer>
+  )
