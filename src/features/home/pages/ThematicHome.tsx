@@ -166,10 +166,10 @@ export const ThematicHome: FunctionComponent = () => {
   const onSubscribeButtonPress = () => {
     if (!isAtLeastOneNotificationTypeActivated) {
       showNotificationsModal()
-    } else if (!isSubscribeButtonActive) {
-      updateSubscription()
-    } else {
+    } else if (isSubscribeButtonActive) {
       showUnsubscribingModal()
+    } else {
+      updateSubscription()
     }
   }
 
