@@ -15,6 +15,7 @@ import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessi
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { ellipseString } from 'shared/string/ellipseString'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
@@ -23,6 +24,8 @@ import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
+
+const MAX_VENUE_CHARACTERS = 20
 
 const VenueMapPage: FunctionComponent = () => {
   const { goBack } = useGoBack(
@@ -58,7 +61,7 @@ const VenueMapPage: FunctionComponent = () => {
             <StyledUl>
               <StyledLi>
                 <SingleFilterButton
-                  label={venueTypeLabel}
+                  label={ellipseString(venueTypeLabel, MAX_VENUE_CHARACTERS)}
                   isSelected={isVenueTypeLabelValid(venueTypeLabel)}
                   onPress={showVenueTypeModal}
                 />
