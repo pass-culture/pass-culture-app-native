@@ -331,7 +331,7 @@ describe('Movie screening calendar', () => {
       expect(await screen.findByText('Crédit insuffisant')).toBeOnTheScreen()
     })
 
-    it('should log event BookingProcessStart when user is logged in and a cliquable eventcard is pressed', async () => {
+    it('should log event ClickBookOffer when user is logged in and a cliquable eventcard is pressed', async () => {
       mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
 
       mockAuthContext = defaultLoggedInUser
@@ -345,10 +345,10 @@ describe('Movie screening calendar', () => {
         fireEvent.press(eventCard)
       })
 
-      expect(analytics.logBookingProcessStart).toHaveBeenCalledWith(offerResponseSnap.id)
+      expect(analytics.logClickBookOffer).toHaveBeenCalledWith({ offerId: offerResponseSnap.id })
     })
 
-    it('should not log event BookingProcessStart when user clicks on a disabled eventcard', async () => {
+    it('should not log event ClickBookOffer when user clicks on a disabled eventcard', async () => {
       mockAuthContext = {
         ...defaultLoggedInUser,
         user: {
@@ -372,7 +372,7 @@ describe('Movie screening calendar', () => {
 
       await screen.findByLabelText('Mardi 27 Février')
 
-      expect(analytics.logBookingProcessStart).not.toHaveBeenCalled()
+      expect(analytics.logClickBookOffer).not.toHaveBeenCalled()
     })
   })
 })

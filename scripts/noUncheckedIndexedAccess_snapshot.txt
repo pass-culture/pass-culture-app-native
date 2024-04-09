@@ -399,7 +399,7 @@
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:123
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:372
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:383
-./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:823
+./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:847
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts:196
 ./src/features/profile/components/Buttons/ContactSupportButton/ContactSupportButton.native.test.tsx:18
 ./src/features/profile/components/Buttons/ContactSupportButton/ContactSupportButton.native.test.tsx:20

@@ -150,17 +150,17 @@ describe('<BookingOfferModalComponent />', () => {
     expect(mockDispatch).toHaveBeenNthCalledWith(2, { type: 'SET_OFFER_ID', payload: 20 })
   })
 
-  it('should not log event BookingProcessStart when modal is not visible', () => {
+  it('should not log event ClickBookOffer when modal is not visible', () => {
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible={false} offerId={20} />))
 
-    expect(analytics.logBookingProcessStart).not.toHaveBeenCalled()
+    expect(analytics.logClickBookOffer).not.toHaveBeenCalled()
   })
 
-  it('should log event BookingProcessStart when modal opens', () => {
+  it('should log event ClickBookOffer when modal opens', () => {
     const offerId = 30
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={offerId} />))
 
-    expect(analytics.logBookingProcessStart).toHaveBeenCalledWith(offerId)
+    expect(analytics.logClickBookOffer).toHaveBeenCalledWith({ offerId })
   })
 
   it('should show AlreadyBooked when isEndedUsedBooking is true', () => {

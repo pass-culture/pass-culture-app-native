@@ -177,7 +177,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
 
   useEffect(() => {
     if (visible) {
-      analytics.logBookingProcessStart(offerId)
+      analytics.logClickBookOffer({ offerId })
     }
   }, [visible, offerId])
 

@@ -115,8 +115,6 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_IMPOSSIBLE_IOS }, { offerId }),
   logBookingOfferConfirmDates: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_OFFER_CONFIRM_DATES }, { offerId }),
-  logBookingProcessStart: (offerId: number) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_PROCESS_START }, { offerId }),
   logBookingsScrolledToBottom: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.BOOKINGS_SCROLLED_TO_BOTTOM }),
   logBusinessBlockClicked: (params: {

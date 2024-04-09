@@ -272,6 +272,7 @@ export const getCtaWordingAndAction = ({
       isDisabled: false,
       onPress: () => {
         analytics.logConsultAvailableDates(offer.id)
+        analytics.logClickBookOffer({ offerId: offer.id, from, searchId })
       },
       movieScreeningUserData: { hasEnoughCredit },
     }
