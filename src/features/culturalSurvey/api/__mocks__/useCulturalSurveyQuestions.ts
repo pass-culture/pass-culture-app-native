@@ -6,8 +6,8 @@ import { culturalSurveyQuestionsFixture } from 'features/culturalSurvey/fixtures
 
 export const useCulturalSurveyQuestions: typeof actualUseCulturalSurveyQuestions = jest.fn(
   () =>
-    ({ data: culturalSurveyQuestionsFixture, isLoading: false, isSuccess: true } as UseQueryResult<
+    ({ data: culturalSurveyQuestionsFixture, isLoading: false, isSuccess: true }) as UseQueryResult<
       CulturalSurveyQuestionsResponse,
       unknown
-    >)
+    >
 )

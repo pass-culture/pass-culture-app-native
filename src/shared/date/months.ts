@@ -43,6 +43,6 @@ export const MONTHS = [
   'décembre',
 ] as const
 
-export type FullMonth = typeof MONTHS[number]
-export type CapitalizedMonth = typeof CAPITALIZED_MONTHS[number]
-export type CapitalizedShortMonth = typeof CAPITALIZED_SHORT_MONTHS[number]
+export type FullMonth = (typeof MONTHS)[number]
+export type CapitalizedMonth = (typeof CAPITALIZED_MONTHS)[number]
+export type CapitalizedShortMonth = (typeof CAPITALIZED_SHORT_MONTHS)[number]

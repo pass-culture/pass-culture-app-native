@@ -14,7 +14,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: () => mockUseAuthContext(),
 }))
 
-type UseEmailUpdateStatusMock = ReturnType<typeof useEmailUpdateStatus['useEmailUpdateStatus']>
+type UseEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
 
 const useEmailUpdateStatusSpy = jest
   .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus')

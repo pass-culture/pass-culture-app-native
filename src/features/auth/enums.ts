@@ -11,4 +11,4 @@ enum PostValidationSignupStep {
 }
 
 export const SignupStep = { ...PreValidationSignupStep, ...PostValidationSignupStep }
-export type SignupStep = typeof SignupStep[keyof typeof SignupStep]
+export type SignupStep = (typeof SignupStep)[keyof typeof SignupStep]

@@ -9,7 +9,7 @@ import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccoun
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-type UseEmailUpdateStatusMock = ReturnType<typeof useEmailUpdateStatus['useEmailUpdateStatus']>
+type UseEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
 
 jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
   data: {

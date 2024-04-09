@@ -14,7 +14,7 @@ import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('features/navigation/helpers')
 
-type UseEmailUpdateStatusMock = ReturnType<typeof useEmailUpdateStatus['useEmailUpdateStatus']>
+type UseEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
 
 const useEmailUpdateStatusSpy = jest
   .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus')

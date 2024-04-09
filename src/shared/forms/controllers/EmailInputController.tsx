@@ -17,7 +17,7 @@ interface Props<TFieldValues extends FieldValues, TName>
 
 export const EmailInputController = <
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
   name,
   control,

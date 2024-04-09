@@ -8,7 +8,7 @@ export function getSearchStackConfig<Screen extends SearchStackRouteName>(
   {
     screen: 'SearchStackNavigator'
     params: { screen: Screen; params: SearchStackParamList[Screen] }
-  }
+  },
 ] {
   return ['TabNavigator', { screen: 'SearchStackNavigator', params: { screen, params } }]
 }

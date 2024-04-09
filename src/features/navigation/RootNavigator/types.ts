@@ -319,7 +319,7 @@ export type UseNavigationType = StackNavigationProp<RootStackParamList>
  */
 export type RouteParams<
   StackParamList extends Record<string, unknown>,
-  ScreenName extends keyof StackParamList
+  ScreenName extends keyof StackParamList,
 > = Pick<StackParamList, ScreenName>[ScreenName]
 
 type NavigateParams<RouteName extends keyof ParamListBase> =
@@ -342,7 +342,7 @@ type ExtendedPathConfig<ParamList extends Record<string, unknown>> = Omit<
 }
 export type GenericRoute<
   ParamList extends Record<string, unknown>,
-  NestedParamList extends Record<string, unknown> = ParamListBase
+  NestedParamList extends Record<string, unknown> = ParamListBase,
 > = {
   name: keyof ParamList
   component: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any

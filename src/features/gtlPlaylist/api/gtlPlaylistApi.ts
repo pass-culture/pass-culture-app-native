@@ -51,7 +51,7 @@ export async function fetchOffersFromGTLPlaylist(
         offerGtlLevel: item.fields.algoliaParameters.fields.gtlLevel,
         offerGtlLabel: item.fields.algoliaParameters.fields.gtlLabel,
         hitsPerPage: item.fields.algoliaParameters.fields.hitsPerPage,
-      } as unknown as SearchQueryParameters)
+      }) as unknown as SearchQueryParameters
   )
 
   // Build a query list to send to Algolia

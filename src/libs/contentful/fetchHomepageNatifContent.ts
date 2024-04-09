@@ -13,9 +13,8 @@ const PARAMS = `?include=${DEPTH_LEVEL}&content_type=homepageNatif&access_token=
 
 export const fetchHomepageNatifContent = async (): Promise<Homepage[]> => {
   const url = `${CONTENTFUL_BASE_URL}/entries${PARAMS}`
-  const json = await getExternal<EntryCollection<HomepageNatifEntry, ContentTypes.HOMEPAGE_NATIF>>(
-    url
-  )
+  const json =
+    await getExternal<EntryCollection<HomepageNatifEntry, ContentTypes.HOMEPAGE_NATIF>>(url)
   const resolvedHomepageNatifList = resolveResponse(json) as HomepageNatifEntry[]
   return adaptHomepageEntries(resolvedHomepageNatifList)
 }

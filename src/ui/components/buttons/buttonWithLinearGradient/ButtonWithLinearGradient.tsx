@@ -45,17 +45,18 @@ const Rectangle = styled(InitialRectangle).attrs({
   size: '100%',
 })``
 
-const Container = styled(TouchableOpacity)<{ fitContentWidth: boolean }>(
-  ({ theme, fitContentWidth }) => {
-    return {
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: theme.borderRadius.button,
-      overflow: 'hidden',
-      ...buttonWidthStyle({ fitContentWidth }),
-    }
+const Container = styled(TouchableOpacity)<{ fitContentWidth: boolean }>(({
+  theme,
+  fitContentWidth,
+}) => {
+  return {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: theme.borderRadius.button,
+    overflow: 'hidden',
+    ...buttonWidthStyle({ fitContentWidth }),
   }
-)
+})
 
 const Title = styled(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
   color: isDisabled
