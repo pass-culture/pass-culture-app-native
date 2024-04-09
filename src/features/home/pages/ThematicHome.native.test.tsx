@@ -261,7 +261,7 @@ describe('ThematicHome', () => {
       ).toBeOnTheScreen()
     })
 
-    it('should show subscription sucess modal when user subscribe to a thematic for the second times', async () => {
+    it('should show subscription success modal when user subscribe to a thematic for the second time', async () => {
       mockServer.postApi('/v1/profile', {})
 
       await storage.saveObject('has_subscribed_to_thematic_times', 1)
@@ -273,7 +273,7 @@ describe('ThematicHome', () => {
       expect(screen.getByText('Voir mes préférences')).toBeOnTheScreen()
     })
 
-    it('should show snackbar when user subscribe to a thematic for more than the third times', async () => {
+    it('should show snackbar when user subscribe to a thematic home for more than 3 times', async () => {
       mockServer.postApi('/v1/profile', {})
 
       await storage.saveObject('has_subscribed_to_thematic_times', 3)

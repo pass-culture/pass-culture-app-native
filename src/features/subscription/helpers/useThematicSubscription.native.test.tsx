@@ -250,7 +250,7 @@ describe('useThematicSubscription', () => {
   })
 
   describe('API calls', () => {
-    it('should show a snackbar when updating the user’s profile fails', async () => {
+    it('should show a snackbar when settings update fails', async () => {
       mockServer.postApi('/v1/profile', {
         responseOptions: { statusCode: 400, data: {} },
       })
@@ -273,7 +273,7 @@ describe('useThematicSubscription', () => {
       })
     })
 
-    it('should calls onSuccess when updating the user’s subscription succeeds', async () => {
+    it('should call onSuccess when subscription update succeeds', async () => {
       mockServer.postApi('/v1/profile', {})
       const onUpdateSubscriptionSuccessMock = jest.fn()
 

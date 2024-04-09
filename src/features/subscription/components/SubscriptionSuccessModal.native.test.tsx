@@ -13,7 +13,7 @@ describe('<SubscriptionSuccessModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should dismiss modal when user press "Continuer sur l’app"', () => {
+  it('should dismiss modal when user presses "Continuer sur l’app"', () => {
     const dismissModal = jest.fn()
     render(
       <SubscriptionSuccessModal
@@ -28,7 +28,7 @@ describe('<SubscriptionSuccessModal />', () => {
     expect(dismissModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should navigate to notifications settings when user press "Voir mes paramètres"', async () => {
+  it('should navigate to notifications settings when user presses "Voir mes paramètres"', async () => {
     render(
       <SubscriptionSuccessModal visible theme={SubscriptionTheme.CINEMA} dismissModal={jest.fn()} />
     )
