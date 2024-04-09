@@ -30,7 +30,7 @@ describe('useOfferSummaryInfoList', () => {
     ])
   })
 
-  it('should return summaryInfoItems dates when offer stock has date in future and cinema experience is not available', async () => {
+  it('should return summaryInfoItems dates when offer stock has date in future and is not a cinema offer', async () => {
     mockdate.set('2021-01-02T18:00:00')
     const offer: OfferResponse = {
       ...offerResponseSnap,
@@ -40,7 +40,7 @@ describe('useOfferSummaryInfoList', () => {
       () =>
         useOfferSummaryInfoList({
           offer,
-          isCinemaXpAvailable: false,
+          isCinemaOffer: false,
         }),
       {
         wrapper: ({ children }) => <ThemeProvider theme={computedTheme}>{children}</ThemeProvider>,
@@ -59,7 +59,7 @@ describe('useOfferSummaryInfoList', () => {
     mockdate.reset()
   })
 
-  it('should not return summaryInfoItems dates when offer stock has date in future and is cinema experience is available', async () => {
+  it('should not return summaryInfoItems dates when offer stock has date in future and is a cinema offer', async () => {
     mockdate.set('2021-01-02T18:00:00')
     const offer: OfferResponse = {
       ...offerResponseSnap,
@@ -69,7 +69,7 @@ describe('useOfferSummaryInfoList', () => {
       () =>
         useOfferSummaryInfoList({
           offer,
-          isCinemaXpAvailable: true,
+          isCinemaOffer: true,
         }),
       {
         wrapper: ({ children }) => <ThemeProvider theme={computedTheme}>{children}</ThemeProvider>,

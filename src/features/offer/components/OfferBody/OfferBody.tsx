@@ -61,7 +61,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const { summaryInfoItems } = useOfferSummaryInfoList({
     offer,
-    isCinemaXpAvailable: isCinemaOffer,
+    isCinemaOffer,
   })
 
   const metadata = getOfferMetadata(extraData)
