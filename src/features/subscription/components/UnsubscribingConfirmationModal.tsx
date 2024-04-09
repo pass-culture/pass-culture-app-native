@@ -35,6 +35,7 @@ export const UnsubscribingConfirmationModal: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={6} />
       <StyledButtonContainer>
         <ButtonPrimary wording="Ne plus suivre ce thème" onPress={onUnsubscribePress} />
+        <Spacer.Column numberOfSpaces={2} />
         <ButtonTertiaryBlack wording="Annuler" icon={Invalidate} onPress={dismissModal} />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />

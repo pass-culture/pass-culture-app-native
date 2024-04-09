@@ -264,7 +264,7 @@ export const ThematicHome: FunctionComponent = () => {
           />
           <UnsubscribingConfirmationModal
             visible={isUnsubscribingModalVisible}
-            dismissModal={hideNotificationsModal}
+            dismissModal={hideUnsubscribingModal}
             theme={thematic}
             onUnsubscribePress={onUnsubscribeConfirmationPress}
           />

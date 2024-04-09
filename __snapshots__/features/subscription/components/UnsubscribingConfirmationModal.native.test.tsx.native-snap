@@ -444,6 +444,16 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                   </View>
                 </View>
                 <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "height": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
                   accessibilityLabel="Annuler"
                   accessibilityState={
                     {
