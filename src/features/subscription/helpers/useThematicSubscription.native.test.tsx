@@ -65,6 +65,7 @@ describe('useThematicSubscription', () => {
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsButNoSubscriptions,
         thematic: SubscriptionTheme.ACTIVITES,
+        onUpdateSubscriptionSuccess: jest.fn(),
       })
 
       await waitFor(() => {
@@ -77,6 +78,7 @@ describe('useThematicSubscription', () => {
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsAndSubscribed,
           thematic: SubscriptionTheme.ACTIVITES,
+          onUpdateSubscriptionSuccess: jest.fn(),
         })
 
         await waitFor(() => {
@@ -89,6 +91,7 @@ describe('useThematicSubscription', () => {
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsAndSubscribed,
           thematic: SubscriptionTheme.CINEMA,
+          onUpdateSubscriptionSuccess: jest.fn(),
         })
 
         result.current.updateSubscription()
@@ -110,6 +113,7 @@ describe('useThematicSubscription', () => {
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsButNoSubscriptions,
           thematic: SubscriptionTheme.ACTIVITES,
+          onUpdateSubscriptionSuccess: jest.fn(),
         })
 
         await waitFor(() => {
@@ -122,6 +126,7 @@ describe('useThematicSubscription', () => {
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsButNoSubscriptions,
           thematic: SubscriptionTheme.MUSIQUE,
+          onUpdateSubscriptionSuccess: jest.fn(),
         })
 
         result.current.updateSubscription()
@@ -144,6 +149,7 @@ describe('useThematicSubscription', () => {
       const { result } = renderUseThematicSubscription({
         user: userWithoutNotificationsAndWithoutSubscriptions,
         thematic: SubscriptionTheme.ACTIVITES,
+        onUpdateSubscriptionSuccess: jest.fn(),
       })
 
       await waitFor(() => {
@@ -156,6 +162,7 @@ describe('useThematicSubscription', () => {
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsButWithSubscriptions,
           thematic: SubscriptionTheme.CINEMA,
+          onUpdateSubscriptionSuccess: jest.fn(),
         })
 
         await waitFor(() => {
@@ -168,6 +175,7 @@ describe('useThematicSubscription', () => {
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsButWithSubscriptions,
           thematic: SubscriptionTheme.CINEMA,
+          onUpdateSubscriptionSuccess: jest.fn(),
         })
 
         result.current.updateSettings({
@@ -192,6 +200,7 @@ describe('useThematicSubscription', () => {
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsAndWithoutSubscriptions,
           thematic: SubscriptionTheme.CINEMA,
+          onUpdateSubscriptionSuccess: jest.fn(),
         })
 
         await waitFor(() => {
@@ -204,6 +213,7 @@ describe('useThematicSubscription', () => {
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsAndWithoutSubscriptions,
           thematic: SubscriptionTheme.CINEMA,
+          onUpdateSubscriptionSuccess: jest.fn(),
         })
 
         result.current.updateSettings({
@@ -229,6 +239,7 @@ describe('useThematicSubscription', () => {
         const { result } = renderUseThematicSubscription({
           user: undefined,
           thematic: SubscriptionTheme.CINEMA,
+          onUpdateSubscriptionSuccess: jest.fn(),
         })
 
         result.current.updateSettings({
@@ -258,6 +269,7 @@ describe('useThematicSubscription', () => {
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsButNoSubscriptions,
         thematic: SubscriptionTheme.ACTIVITES,
+        onUpdateSubscriptionSuccess: jest.fn(),
       })
 
       await act(async () => {

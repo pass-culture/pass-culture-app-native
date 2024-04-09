@@ -11,7 +11,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 export type Props = {
   user?: UserProfileResponse
   thematic: SubscriptionTheme | null
-  onUpdateSubscriptionSuccess?: () => Promise<void>
+  onUpdateSubscriptionSuccess: () => Promise<void>
 }
 
 export const useThematicSubscription = ({

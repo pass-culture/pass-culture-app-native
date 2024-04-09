@@ -26,6 +26,7 @@ describe('useThematicSubscription', () => {
           },
         },
         thematic: SubscriptionTheme.CINEMA,
+        onUpdateSubscriptionSuccess: jest.fn(),
       })
 
       await waitFor(() => {
@@ -44,6 +45,7 @@ describe('useThematicSubscription', () => {
           },
         },
         thematic: SubscriptionTheme.CINEMA,
+        onUpdateSubscriptionSuccess: jest.fn(),
       })
 
       await waitFor(() => {
@@ -64,6 +66,7 @@ describe('useThematicSubscription', () => {
           },
         },
         thematic: SubscriptionTheme.CINEMA,
+        onUpdateSubscriptionSuccess: jest.fn(),
       })
 
       await waitFor(() => {
@@ -82,6 +85,7 @@ describe('useThematicSubscription', () => {
           },
         },
         thematic: SubscriptionTheme.CINEMA,
+        onUpdateSubscriptionSuccess: jest.fn(),
       })
 
       await waitFor(() => {
