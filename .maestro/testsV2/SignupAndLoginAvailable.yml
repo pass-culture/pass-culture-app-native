@@ -1,0 +1,20 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow: reusableFlows/LaunchApp.yml
+
+- runFlow: reusableFlows/features/cookies/AcceptCookies.yml
+
+- runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
+
+- runFlow: reusableFlows/GoToProfileFromTabBar.yml
+
+- tapOn: "Se connecter"
+- assertVisible: "Connecte-toi"
+- pressKey: back
+
+- tapOn: "Créer un compte"
+- assertVisible: "Crée-toi un compte"
+- pressKey: back
+
+
+- runFlow: reusableFlows/StopApp.yml 
