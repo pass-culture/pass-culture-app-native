@@ -9,6 +9,7 @@ import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { useVenueMapState, VenueMapWrapper } from 'features/venueMap/context/VenueMapWrapper'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
+import { isVenueTypeLabelValid } from 'features/venueMap/helpers/isVenueTypeLabelValid/isVenueTypeLabelValid'
 import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
 import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessionDuration'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal'
@@ -58,7 +59,7 @@ const VenueMapPage: FunctionComponent = () => {
               <StyledLi>
                 <SingleFilterButton
                   label={venueTypeLabel}
-                  isSelected={false}
+                  isSelected={isVenueTypeLabelValid(venueTypeLabel)}
                   onPress={showVenueTypeModal}
                 />
               </StyledLi>
