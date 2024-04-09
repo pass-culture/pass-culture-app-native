@@ -46,7 +46,7 @@ const VenueMapPage: FunctionComponent = () => {
   useTrackMapSessionDuration()
   useTrackMapSeenDuration()
 
-  const venueTypeLabel = getVenueTypeLabel(venueMapState.venueTypeCode)
+  const venueTypeLabel = getVenueTypeLabel(venueMapState.venueTypeCode) ?? 'Tous les lieux'
 
   return (
     <React.Fragment>

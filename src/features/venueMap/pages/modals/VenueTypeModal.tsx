@@ -48,7 +48,7 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
     },
   })
   const { venueTypeCode } = watch()
-  const venueTypeLabel = useMemo(() => getVenueTypeLabel(venueTypeCode), [venueTypeCode])
+  const venueTypeLabel = useMemo(() => getVenueTypeLabel(venueTypeCode) ?? 'Tout', [venueTypeCode])
 
   const handleOnSelect = useCallback(
     (venueTypeCode: VenueTypeCode | null) => {
@@ -110,7 +110,7 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
           <ListItem>
             <RadioButton
               label="Tout"
-              isSelected={venueTypeLabel === 'Type de lieu'}
+              isSelected={venueTypeLabel === 'Tout'}
               onSelect={() => handleOnSelect(null)}
             />
           </ListItem>
