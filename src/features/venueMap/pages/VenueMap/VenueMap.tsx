@@ -7,12 +7,15 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/constant'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
-import { VenueMapWrapper } from 'features/venueMap/context/VenueMapWrapper'
+import { useVenueMapState, VenueMapWrapper } from 'features/venueMap/context/VenueMapWrapper'
+import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
+import { isVenueTypeLabelValid } from 'features/venueMap/helpers/isVenueTypeLabelValid/isVenueTypeLabelValid'
 import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
 import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessionDuration'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { ellipseString } from 'shared/string/ellipseString'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
@@ -22,10 +25,13 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
 
-export const VenueMap: FunctionComponent = () => {
+const MAX_VENUE_CHARACTERS = 20
+
+const VenueMapPage: FunctionComponent = () => {
   const { goBack } = useGoBack(
     ...getTabNavConfig('SearchStackNavigator', { screen: 'Search', params: undefined })
   )
+  const { venueMapState } = useVenueMapState()
   const enableVenueMapTypeFilter = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER)
 
   const headerHeight = useGetHeaderHeight()
@@ -43,34 +49,40 @@ export const VenueMap: FunctionComponent = () => {
   useTrackMapSessionDuration()
   useTrackMapSeenDuration()
 
+  const venueTypeLabel = getVenueTypeLabel(venueMapState.venueTypeCode) ?? 'Tous les lieux'
+
   return (
-    <VenueMapWrapper>
-      <React.Fragment>
-        <Container>
-          <StyledHeader title="Carte des lieux" onGoBack={goBack} />
-          <PlaceHolder headerHeight={headerHeight + withFilterBanner} />
-          {enableVenueMapTypeFilter ? (
-            <FilterBannerContainer headerHeight={headerHeight}>
-              <StyledUl>
-                <StyledLi>
-                  <SingleFilterButton
-                    label="Type de lieu"
-                    isSelected={false}
-                    onPress={showVenueTypeModal}
-                  />
-                </StyledLi>
-              </StyledUl>
-            </FilterBannerContainer>
-          ) : null}
-          <MapContainer>
-            <VenueMapView height={venueMapHeight} />
-          </MapContainer>
-        </Container>
-        <VenueTypeModal hideModal={hideVenueTypeModal} isVisible={venueTypeModalVisible} />
-      </React.Fragment>
-    </VenueMapWrapper>
+    <React.Fragment>
+      <Container>
+        <StyledHeader title="Carte des lieux" onGoBack={goBack} />
+        <PlaceHolder headerHeight={headerHeight + withFilterBanner} />
+        {enableVenueMapTypeFilter ? (
+          <FilterBannerContainer headerHeight={headerHeight}>
+            <StyledUl>
+              <StyledLi>
+                <SingleFilterButton
+                  label={ellipseString(venueTypeLabel, MAX_VENUE_CHARACTERS)}
+                  isSelected={isVenueTypeLabelValid(venueTypeLabel)}
+                  onPress={showVenueTypeModal}
+                />
+              </StyledLi>
+            </StyledUl>
+          </FilterBannerContainer>
+        ) : null}
+        <MapContainer>
+          <VenueMapView height={venueMapHeight} />
+        </MapContainer>
+      </Container>
+      <VenueTypeModal hideModal={hideVenueTypeModal} isVisible={venueTypeModalVisible} />
+    </React.Fragment>
   )
 }
+
+export const VenueMap = () => (
+  <VenueMapWrapper>
+    <VenueMapPage />
+  </VenueMapWrapper>
+)
 
 const Container = styled.View({
   flex: 1,

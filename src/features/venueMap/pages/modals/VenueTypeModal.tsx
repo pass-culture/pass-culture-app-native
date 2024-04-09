@@ -48,7 +48,7 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
     },
   })
   const { venueTypeCode } = watch()
-  const venueTypeLabel = useMemo(() => getVenueTypeLabel(venueTypeCode), [venueTypeCode])
+  const venueTypeLabel = useMemo(() => getVenueTypeLabel(venueTypeCode) ?? 'Tout', [venueTypeCode])
 
   const handleOnSelect = useCallback(
     (venueTypeCode: VenueTypeCode | null) => {
