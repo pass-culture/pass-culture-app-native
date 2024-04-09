@@ -207,7 +207,7 @@ export const ThematicHome: FunctionComponent = () => {
         Header={
           <React.Fragment>
             <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
-            {Platform.OS !== 'ios' && isLoggedIn ? (
+            {Platform.OS !== 'ios' && isLoggedIn && thematic ? (
               <SubscribeButtonContainer>
                 <SubscribeButton
                   active={isSubscribeButtonActive}
@@ -236,23 +236,21 @@ export const ThematicHome: FunctionComponent = () => {
             </AnimatedHeader>
           )}
           {thematicHeader?.type === ThematicHeaderType.Category && (
-            <React.Fragment>
-              <AnimatedHeader style={{ transform: [{ translateY: viewTranslation }] }}>
-                <AnimatedCategoryThematicHomeHeader
-                  {...thematicHeader}
-                  gradientTranslation={gradientTranslation}
-                  imageAnimatedHeight={imageAnimatedHeight}
-                />
-                {isLoggedIn && thematic ? (
-                  <SubscribeButtonContainer>
-                    <SubscribeButton
-                      active={isSubscribeButtonActive}
-                      onPress={onSubscribeButtonPress}
-                    />
-                  </SubscribeButtonContainer>
-                ) : null}
-              </AnimatedHeader>
-            </React.Fragment>
+            <AnimatedHeader style={{ transform: [{ translateY: viewTranslation }] }}>
+              <AnimatedCategoryThematicHomeHeader
+                {...thematicHeader}
+                gradientTranslation={gradientTranslation}
+                imageAnimatedHeight={imageAnimatedHeight}
+              />
+              {isLoggedIn && thematic ? (
+                <SubscribeButtonContainer>
+                  <SubscribeButton
+                    active={isSubscribeButtonActive}
+                    onPress={onSubscribeButtonPress}
+                  />
+                </SubscribeButtonContainer>
+              ) : null}
+            </AnimatedHeader>
           )}
         </React.Fragment>
       )}
@@ -305,6 +303,6 @@ const GeolocationBannerContainer = styled.View(({ theme }) => ({
 
 const SubscribeButtonContainer = styled.View({
   position: 'absolute',
-  right: getSpacing(2.5),
+  right: getSpacing(4),
   top: getSpacing(40),
 })
