@@ -17,6 +17,7 @@ jest.mock('libs/algolia/fetchAlgolia/AlgoliaError', () => ({
   captureAlgoliaError: jest.fn(),
 }))
 const mockUseVenueMapState = jest.fn()
+const mockDispatch = jest.fn()
 jest.mock('features/venueMap/context/VenueMapWrapper', () => ({
   useVenueMapState: () => mockUseVenueMapState(),
 }))
@@ -35,7 +36,7 @@ describe('useGetAllVenues', () => {
     beforeAll(() => {
       mockUseVenueMapState.mockReturnValue({
         venueMapState: { venueTypeCode: null },
-        dispatch: jest.fn(),
+        dispatch: mockDispatch,
       })
     })
 
@@ -85,6 +86,42 @@ describe('useGetAllVenues', () => {
       )
 
       expect(result.current.venues).toEqual(initialVenues)
+    })
+
+    it('should dispatch in context inital venues when defined', () => {
+      renderHook(
+        () =>
+          useGetAllVenues({
+            region,
+            radius: 10,
+            initialVenues,
+          }),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+        type: 'SET_VENUES',
+        payload: initialVenues,
+      })
+    })
+
+    it('should not dispatch in context when inital venues not defined', async () => {
+      renderHook(
+        () =>
+          useGetAllVenues({
+            region,
+            radius: 10,
+          }),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      await waitFor(() => {
+        expect(mockDispatch).toHaveBeenCalledTimes(0)
+      })
     })
 
     it('should not return initial venues when not defined', async () => {
