@@ -140,10 +140,10 @@ export const ThematicHome: FunctionComponent = () => {
   const onUpdateSubscriptionSuccess = async () => {
     if (!thematic) return
     const hasSubscribedTimes =
-      (await storage.readObject<number>('has_subscribed_to_thematic_times')) ?? 0
+      (await storage.readObject<number>('times_user_subscribed_to_a_theme')) ?? 0
     if (hasSubscribedTimes < 3) {
       showSubscriptionSuccessModal()
-      await storage.saveObject('has_subscribed_to_thematic_times', hasSubscribedTimes + 1)
+      await storage.saveObject('times_user_subscribed_to_a_theme', hasSubscribedTimes + 1)
     } else {
       showSuccessSnackBar({
         message: `Tu suis le thème “${mapSubscriptionThemeToName[thematic]}”\u00a0! Tu peux gérer tes alertes depuis ton profil.`,

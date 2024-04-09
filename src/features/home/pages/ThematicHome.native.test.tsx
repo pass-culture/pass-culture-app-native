@@ -264,7 +264,7 @@ describe('ThematicHome', () => {
     it('should show subscription success modal when user subscribe to a thematic for the second time', async () => {
       mockServer.postApi('/v1/profile', {})
 
-      await storage.saveObject('has_subscribed_to_thematic_times', 1)
+      await storage.saveObject('times_user_subscribed_to_a_theme', 1)
       renderThematicHome()
 
       await act(async () => fireEvent.press(screen.getByText('Suivre')))
@@ -276,7 +276,7 @@ describe('ThematicHome', () => {
     it('should show snackbar when user subscribe to a thematic home for more than 3 times', async () => {
       mockServer.postApi('/v1/profile', {})
 
-      await storage.saveObject('has_subscribed_to_thematic_times', 3)
+      await storage.saveObject('times_user_subscribed_to_a_theme', 3)
       renderThematicHome()
 
       await act(async () => fireEvent.press(screen.getByText('Suivre')))
