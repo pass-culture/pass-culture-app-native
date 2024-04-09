@@ -813,6 +813,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               />
               <View
+                onLayout={[Function]}
                 style={
                   [
                     {
@@ -1290,9 +1291,10 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "horizontal": true,
                           "keyExtractor": [Function],
                           "numColumns": 1,
+                          "onContentSizeChange": [Function],
                           "onEndReached": undefined,
                           "onEndReachedThreshold": 0.2,
-                          "onLayout": [Function],
+                          "onScroll": [Function],
                           "renderItem": [Function],
                           "scrollEnabled": true,
                           "scrollEventThrottle": 16,
@@ -1308,6 +1310,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     }
                     maxRenderAhead={562.5}
                     numColumns={1}
+                    onContentSizeChange={[Function]}
                     onEndReached={[Function]}
                     onEndReachedThreshold={0}
                     onEndReachedThresholdRelative={0.2}

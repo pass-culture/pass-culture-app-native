@@ -19,7 +19,7 @@ import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
-interface GtlPlaylistProps {
+export interface GtlPlaylistProps {
   venue: VenueResponse
   playlist: GTLPlaylistResponse[number]
 }

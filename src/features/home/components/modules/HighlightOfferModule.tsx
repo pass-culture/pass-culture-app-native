@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react'
-import { View } from 'react-native'
+import { LayoutChangeEvent, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
@@ -118,7 +118,9 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
               {!!categoryLabel && <CategoryCaption label={categoryLabel} />}
             </OfferImage>
             <OfferDetails
-              onLayout={(event) => setOfferDetailsHeight(event.nativeEvent.layout.height)}>
+              onLayout={(event: LayoutChangeEvent) =>
+                setOfferDetailsHeight(event.nativeEvent.layout.height)
+              }>
               <StyledOfferTitle>{props.offerTitle}</StyledOfferTitle>
               {!!formattedDate && <AdditionalDetail>{formattedDate}</AdditionalDetail>}
               {!!venueName && <AdditionalDetail>{venueName}</AdditionalDetail>}

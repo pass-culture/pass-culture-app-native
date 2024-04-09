@@ -282,11 +282,6 @@
 ./src/features/favorites/api/useRemoveFavorite.native.test.tsx:59
 ./src/features/favorites/api/useRemoveFavorite.native.test.tsx:62
 ./src/features/favorites/helpers/sorts.test.ts:7
-./src/features/gtlPlaylist/components/GtlPlaylist.native.test.tsx:144
-./src/features/gtlPlaylist/components/GtlPlaylist.native.test.tsx:147
-./src/features/gtlPlaylist/components/GtlPlaylist.native.test.tsx:160
-./src/features/gtlPlaylist/components/GtlPlaylist.native.test.tsx:182
-./src/features/gtlPlaylist/components/GtlPlaylist.native.test.tsx:195
 ./src/features/gtlPlaylist/hooks/useGTLPlaylists.native.test.ts:162
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:13
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:15
