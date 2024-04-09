@@ -7,7 +7,8 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/constant'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
-import { VenueMapWrapper } from 'features/venueMap/context/VenueMapWrapper'
+import { useVenueMapState, VenueMapWrapper } from 'features/venueMap/context/VenueMapWrapper'
+import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
 import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
 import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessionDuration'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal'
@@ -26,6 +27,7 @@ const VenueMapPage: FunctionComponent = () => {
   const { goBack } = useGoBack(
     ...getTabNavConfig('SearchStackNavigator', { screen: 'Search', params: undefined })
   )
+  const { venueMapState } = useVenueMapState()
   const enableVenueMapTypeFilter = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER)
 
   const headerHeight = useGetHeaderHeight()
@@ -43,6 +45,8 @@ const VenueMapPage: FunctionComponent = () => {
   useTrackMapSessionDuration()
   useTrackMapSeenDuration()
 
+  const venueTypeLabel = getVenueTypeLabel(venueMapState.venueTypeCode)
+
   return (
     <React.Fragment>
       <Container>
@@ -53,7 +57,7 @@ const VenueMapPage: FunctionComponent = () => {
             <StyledUl>
               <StyledLi>
                 <SingleFilterButton
-                  label="Type de lieu"
+                  label={venueTypeLabel}
                   isSelected={false}
                   onPress={showVenueTypeModal}
                 />
