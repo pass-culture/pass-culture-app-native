@@ -8,6 +8,7 @@ import { VenueMapCluster } from 'features/venueMap/components/VenueMapCluster/Ve
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
 import { PREVIEW_BOTTOM_MARGIN } from 'features/venueMap/components/VenueMapView/constant'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
+import { useVenueMapState } from 'features/venueMap/context/VenueMapWrapper'
 import { getVenueTags } from 'features/venueMap/helpers/getVenueTags/getVenueTags'
 import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
@@ -39,10 +40,11 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
 
   const defaultRegion = useGetDefaultRegion()
-  const [selectedVenue, setSelectedVenue] = useState<GeolocatedVenue | null>(null)
   const [currentRegion, setCurrentRegion] = useState<Region>(defaultRegion)
   const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultRegion)
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
+  const { venueMapState, dispatch } = useVenueMapState()
+  const { selectedVenue } = venueMapState
 
   const venues = useGetVenuesInRegion(lastRegionSearched, selectedVenue, initialVenues)
 
@@ -74,6 +76,10 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const navigateToVenue = (venueId: number) => {
     onNavigateToVenuePress(venueId)
     navigate('Venue', { id: venueId })
+  }
+
+  const setSelectedVenue = (venue: GeolocatedVenue | null) => {
+    dispatch({ type: 'SET_SELECTED_VENUE', payload: venue })
   }
 
   const handleMarkerPress = (venue: GeolocatedVenue, event: MarkerPressEvent) => {
