@@ -110,7 +110,7 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
           <ListItem>
             <RadioButton
               label="Tout"
-              isSelected={venueTypeLabel === 'Tout'}
+              isSelected={venueTypeLabel === 'Type de lieu'}
               onSelect={() => handleOnSelect(null)}
             />
           </ListItem>
