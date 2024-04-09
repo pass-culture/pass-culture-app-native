@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponse, SearchGroupNameEnumv2 } from 'api/gen'
+import { CategoryIdEnum, OfferResponse, SearchGroupNameEnumv2 } from 'api/gen'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
@@ -46,6 +46,9 @@ export const OfferBody: FunctionComponent<Props> = ({
 }) => {
   const { isDesktopViewport } = useTheme()
   const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
+  const enableNewXpCineFromOffer = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER
+  )
   const shouldDisplayFakeDoorArtist =
     hasFakeDoorArtist && FAKE_DOOR_ARTIST_SEARCH_GROUPS.includes(subcategory.searchGroupName)
 
@@ -54,7 +57,12 @@ export const OfferBody: FunctionComponent<Props> = ({
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
 
-  const { summaryInfoItems } = useOfferSummaryInfoList({ offer })
+  const isCinemaOffer = enableNewXpCineFromOffer && subcategory.categoryId === CategoryIdEnum.CINEMA
+
+  const { summaryInfoItems } = useOfferSummaryInfoList({
+    offer,
+    isCinemaOffer,
+  })
 
   const metadata = getOfferMetadata(extraData)
   const hasMetadata = metadata.length > 0
@@ -90,7 +98,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
         <GroupWithSeparator
           showTopComponent={offer.venue.isPermanent}
-          TopComponent={<OfferVenueButton venue={offer.venue} />}
+          TopComponent={isCinemaOffer ? null : <OfferVenueButton venue={offer.venue} />}
           showBottomComponent={summaryInfoItems.length > 0}
           BottomComponent={<OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />}
         />

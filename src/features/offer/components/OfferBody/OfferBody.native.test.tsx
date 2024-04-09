@@ -127,8 +127,12 @@ describe('<OfferBody />', () => {
   })
 
   describe('Venue button section & Summary info section', () => {
-    it('should display both section', async () => {
-      renderOfferBody({})
+    it('should display both section when this is not a cinema offer', async () => {
+      const subcategory: Subcategory = {
+        ...mockSubcategory,
+        categoryId: CategoryIdEnum.LIVRE,
+      }
+      renderOfferBody({ subcategory })
 
       expect(
         await screen.findByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
@@ -194,20 +198,41 @@ describe('<OfferBody />', () => {
     })
 
     describe('Venue button section', () => {
-      it('should display venue button', async () => {
-        renderOfferBody({})
+      it('should display venue button when this is not a cinema offer', async () => {
+        const subcategory: Subcategory = {
+          ...mockSubcategory,
+          categoryId: CategoryIdEnum.LIVRE,
+        }
+        renderOfferBody({ subcategory })
 
         expect(
           await screen.findByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
         ).toBeOnTheScreen()
       })
 
-      it('should not display venue button', async () => {
+      it('should not display venue button when venue is not permanent', async () => {
         const offer: OfferResponse = {
           ...offerResponseSnap,
           venue: {
             ...offerResponseSnap.venue,
             isPermanent: false,
+          },
+        }
+        renderOfferBody({ offer })
+
+        await screen.findByText(offer.name)
+
+        expect(
+          screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
+        ).not.toBeOnTheScreen()
+      })
+
+      it('should not display venue button when this is a cinema offer', async () => {
+        const offer: OfferResponse = {
+          ...offerResponseSnap,
+          venue: {
+            ...offerResponseSnap.venue,
+            isPermanent: true,
           },
         }
         renderOfferBody({ offer })
@@ -267,6 +292,43 @@ describe('<OfferBody />', () => {
 
         expect(screen.queryByText('à 900+ km')).not.toBeOnTheScreen()
       })
+    })
+  })
+
+  describe('About section', () => {
+    it('should display about section', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        description: 'Cette offre est super cool cool cool cool cool cool',
+        extraData: {
+          speaker: 'Toto',
+        },
+        accessibility: {
+          audioDisability: true,
+          mentalDisability: true,
+          motorDisability: false,
+          visualDisability: false,
+        },
+      }
+      renderOfferBody({ offer })
+
+      await screen.findByText(offerResponseSnap.name)
+
+      expect(screen.getByText('À propos')).toBeOnTheScreen()
+    })
+
+    it('should not display about section', async () => {
+      const offer: OfferResponse = {
+        ...offerResponseSnap,
+        description: undefined,
+        extraData: {},
+        accessibility: {},
+      }
+      renderOfferBody({ offer })
+
+      await screen.findByText(offerResponseSnap.name)
+
+      expect(screen.queryByText('À propos')).not.toBeOnTheScreen()
     })
   })
 
