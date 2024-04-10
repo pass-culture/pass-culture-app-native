@@ -463,7 +463,6 @@ export const AppComponents: FunctionComponent = () => {
                     isSelected={radioButtonChoice === item.label}
                     {...item}
                   />
-                  <Spacer.Column numberOfSpaces={3} />
                 </View>
               )
             })}
