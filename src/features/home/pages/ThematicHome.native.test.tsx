@@ -177,7 +177,7 @@ describe('ThematicHome', () => {
   })
 
   describe('SubscribeButton', () => {
-    it('should not show SubscribeButton when user is not logged in', async () => {
+    it('should open logged out modal when user is not logged in', async () => {
       mockUseAuthContext.mockReturnValueOnce({
         ...baseAuthContext,
         isLoggedIn: false,
@@ -185,9 +185,10 @@ describe('ThematicHome', () => {
       })
 
       renderThematicHome()
-      await act(async () => {})
 
-      expect(screen.queryByText('Suivre')).not.toBeOnTheScreen()
+      await act(async () => fireEvent.press(screen.getByText('Suivre')))
+
+      expect(screen.getByText('Identifie-toi pour t’abonner à un thème')).toBeOnTheScreen()
     })
 
     it('should show inactive SubscribeButton when user is logged in and not subscribed yet', async () => {

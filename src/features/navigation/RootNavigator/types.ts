@@ -116,6 +116,7 @@ export enum StepperOrigin {
   RESET_PASSWORD_EMAIL_SENT = 'resetPasswordEmailSent',
   SIGNUP = 'signup',
   VALIDATE_EMAIL_CHANGE = 'validateEmailChange',
+  THEMATIC_HOME = 'thematicHome',
 }
 
 export type SubscriptionRootStackParamList = {
