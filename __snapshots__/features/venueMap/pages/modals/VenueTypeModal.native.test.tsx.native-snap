@@ -575,24 +575,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Cinémas - Salles de projection
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Cinémas - Salles de projection
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -699,24 +732,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Cinémas itinérants
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Cinémas itinérants
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -823,24 +889,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Musique - Salles de concerts
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Musique - Salles de concerts
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -947,24 +1046,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Spectacles vivants
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Spectacles vivants
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -1071,24 +1203,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Festivals
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Festivals
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -1195,24 +1360,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Musées
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Musées
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -1319,24 +1517,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Bibliothèques / Médiathèques
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Bibliothèques / Médiathèques
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -1443,24 +1674,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Jeux / Jeux vidéos
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Jeux / Jeux vidéos
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -1567,24 +1831,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Arts visuels, arts plastiques et galeries
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Arts visuels, arts plastiques et galeries
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        2
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -1736,24 +2033,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Librairies
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Librairies
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -1860,24 +2190,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Magasins d’arts créatifs
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Magasins d’arts créatifs
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -1984,24 +2347,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Magasins culturels
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Magasins culturels
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -2108,24 +2504,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Musique - Magasins d’instruments
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Musique - Magasins d’instruments
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -2232,24 +2661,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Musique - Disquaires
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Musique - Disquaires
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -2401,24 +2863,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Cours et pratique artistiques
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Cours et pratique artistiques
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -2525,24 +3020,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Centres culturels
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Centres culturels
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -2649,24 +3177,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Patrimoine et tourisme
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Patrimoine et tourisme
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View
@@ -2773,24 +3334,57 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       ]
                     }
                   >
-                    <Text
-                      isSelected={false}
-                      numberOfLines={2}
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 15,
-                            "lineHeight": 20,
+                            "justifyContent": "space-between",
                           },
                         ]
                       }
                     >
-                      Culture scientifique
-                    </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
+                            },
+                          ]
+                        }
+                      >
+                        Culture scientifique
+                      </Text>
+                      <Text
+                        isSelected={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#696A6F",
+                              "flexShrink": 0,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "marginLeft": 8,
+                            },
+                          ]
+                        }
+                      >
+                        0
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View

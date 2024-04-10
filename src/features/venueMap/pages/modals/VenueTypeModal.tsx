@@ -8,6 +8,8 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { FilterBehaviour } from 'features/search/enums'
 import { VenueTypeSection } from 'features/venueMap/components/VenueTypeSection/VenueTypeSection'
 import { useVenueMapState } from 'features/venueMap/context/VenueMapWrapper'
+import { getGeolocatedVenues } from 'features/venueMap/helpers/getGeolocatedVenues/getGeolocatedVenues'
+import { getVenuesNumberByType } from 'features/venueMap/helpers/getVenuesNumberByType/getVenuesNumberByType'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
 import { venueTypesMapping } from 'features/venueMap/helpers/venueTypesMapping/venueTypesMapping'
 import { VenueTypeCode } from 'libs/parsers/venueType'
@@ -49,6 +51,10 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
   })
   const { venueTypeCode } = watch()
   const venueTypeLabel = useMemo(() => getVenueTypeLabel(venueTypeCode) ?? 'Tout', [venueTypeCode])
+
+  const venueCountByTypes = venueMapState.venues.length
+    ? getVenuesNumberByType(getGeolocatedVenues(venueMapState.venues, venueMapState.selectedVenue))
+    : undefined
 
   const handleOnSelect = useCallback(
     (venueTypeCode: VenueTypeCode | null) => {
@@ -120,6 +126,7 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
                 venueTypeSelected={venueTypeLabel}
                 venueTypeMapping={venueTypes}
                 onSelect={handleOnSelect}
+                venueCountByTypes={venueCountByTypes}
               />
               {index < array.length - 1 ? <Separator.Horizontal /> : null}
             </React.Fragment>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { Venue } from 'features/venue/types'
@@ -20,7 +21,7 @@ type Props = {
 
 export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
   const netInfo = useNetInfoContext()
-  const { venueMapState } = useVenueMapState()
+  const { venueMapState, dispatch } = useVenueMapState()
 
   const shouldFetchVenues = !!netInfo.isConnected && !initialVenues?.length
 
@@ -54,6 +55,12 @@ export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
   )
 
   const venues = initialVenues?.length ? initialVenues : fetchedVenues
+
+  useEffect(() => {
+    if (venues) {
+      dispatch({ type: 'SET_VENUES', payload: venues })
+    }
+  }, [venues, dispatch, initialVenues])
 
   return { venues }
 }
