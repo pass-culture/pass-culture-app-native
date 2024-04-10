@@ -345,7 +345,7 @@ export enum BookingCancellationReasons {
   'FRAUD' = 'FRAUD',
   'REFUSED_BY_INSTITUTE' = 'REFUSED_BY_INSTITUTE',
   'FINANCE_INCIDENT' = 'FINANCE_INCIDENT',
-  }
+}
 /**
  * @export
  * @interface BookingDisplayStatusRequest
@@ -1034,6 +1034,11 @@ export interface EmailChangeConfirmationResponse {
    * @memberof EmailChangeConfirmationResponse
    */
   refreshToken: string
+  /**
+   * @type {string}
+   * @memberof EmailChangeConfirmationResponse
+   */
+  resetPasswordToken?: string | null
 }
 /**
  * An enumeration.
@@ -1082,10 +1087,20 @@ export interface EmailUpdateStatusResponse {
    */
   expired: boolean
   /**
+   * @type {boolean}
+   * @memberof EmailUpdateStatusResponse
+   */
+  hasRecentlyResetPassword: boolean
+  /**
    * @type {string}
    * @memberof EmailUpdateStatusResponse
    */
   newEmail?: string | null
+  /**
+   * @type {string}
+   * @memberof EmailUpdateStatusResponse
+   */
+  resetPasswordToken?: string | null
   /**
    * @type {EmailHistoryEventTypeEnum}
    * @memberof EmailUpdateStatusResponse
@@ -2156,7 +2171,6 @@ export interface OfferVenueResponse {
    */
   timezone: string
 }
-
 /**
  * An enumeration.
  * @export
@@ -3189,7 +3203,7 @@ export interface UserReportedOffersResponse {
  */
 export enum UserRole {
   'ADMIN' = 'ADMIN',
-    'BENEFICIARY' = 'BENEFICIARY',
+  'BENEFICIARY' = 'BENEFICIARY',
   'PRO' = 'PRO',
   'NON_ATTACHED_PRO' = 'NON_ATTACHED_PRO',
   'UNDERAGE_BENEFICIARY' = 'UNDERAGE_BENEFICIARY',
@@ -3470,7 +3484,7 @@ export enum VenueTypeCodeKey {
  */
 export enum WithdrawalTypeEnum {
   'by_email' = 'by_email',
-    'no_ticket' = 'no_ticket',
+  'no_ticket' = 'no_ticket',
   'on_site' = 'on_site',
 }
 /**
@@ -4763,6 +4777,26 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary select_new_password <POST>
+     * @param {ResetPasswordRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2ProfileEmailUpdateNewPassword(body?: ResetPasswordRequest, options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v2/profile/email_update/new_password`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"ResetPasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary update_user_email <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -5509,6 +5543,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary select_new_password <POST>
+     * @param {ResetPasswordRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV2ProfileEmailUpdateNewPassword(body?: ResetPasswordRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV2ProfileEmailUpdateNewPassword(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary update_user_email <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -6238,6 +6284,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV2ProfileEmailUpdateNewEmail(body?: NewEmailSelectionRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV2ProfileEmailUpdateNewEmail(body, options)
+  }
+  /**
+    * 
+    * @summary select_new_password <POST>
+    * @param {ResetPasswordRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV2ProfileEmailUpdateNewPassword(body?: ResetPasswordRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV2ProfileEmailUpdateNewPassword(body, options)
   }
   /**
     * 

@@ -17,6 +17,7 @@ const trackEmailChangeContentFixture: EmailUpdateStatusResponse = {
   status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
   expired: false,
   newEmail: undefined,
+  hasRecentlyResetPassword: false,
 }
 
 describe('TrackEmailChangeContent', () => {
