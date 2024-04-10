@@ -29,6 +29,7 @@ describe('getFeatureFlag', () => {
     RemoteStoreFeatureFlags.WIP_SEARCH_ACCESSIBILITY_FILTER,
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER,
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_CHANGE_EMAIL,
+    RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE,
   ])(
     'should call the right firestore collection: featureFlags',
     (featureFlag: RemoteStoreFeatureFlags) => {
