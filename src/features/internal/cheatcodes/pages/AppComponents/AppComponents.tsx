@@ -50,7 +50,6 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SlantTag } from 'ui/components/SlantTag'
@@ -61,7 +60,6 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
-import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Check } from 'ui/svg/icons/Check'
@@ -84,13 +82,6 @@ const THIS_YEAR = new Date().getFullYear()
 const imageUrl =
   'https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg'
 
-const radioButtonItems = [
-  { label: 'Default' },
-  { label: 'With description', description: 'This is a description' },
-  { label: 'With icon', icon: VideoGame },
-  { label: 'With icon and description', icon: Email, description: 'This is a description' },
-]
-
 const startText = 'Lorem ipsum '
 const endText = ' sit amet adipisicing elit.'
 
@@ -104,7 +95,6 @@ export const AppComponents: FunctionComponent = () => {
   const [inputText, setInputText] = useState('')
   const [currentStep, setCurrentStep] = useState(1)
   const [year, setYear] = useState(THIS_YEAR - 18)
-  const [radioButtonChoice, setRadioButtonChoice] = useState('')
   const [popOverIconString, setPopOverIconString] = useState<string>()
   const [callToActionIconString, setCallToActionIconString] = useState<string>()
   const [callToActionTitle, setCallToActionTitle] = useState<string>()
@@ -447,28 +437,6 @@ export const AppComponents: FunctionComponent = () => {
               inline
             />
           </InfoBanner>
-        </AccordionItem>
-
-        <Divider />
-
-        <AccordionItem title="Radio buttons">
-          <StyledTitle4>RadioButton</StyledTitle4>
-          <Spacer.Column numberOfSpaces={1} />
-          <React.Fragment>
-            {radioButtonItems.map((item) => {
-              return (
-                <View key={item.label}>
-                  <RadioButton
-                    onSelect={() => setRadioButtonChoice(item.label)}
-                    isSelected={radioButtonChoice === item.label}
-                    {...item}
-                  />
-                </View>
-              )
-            })}
-          </React.Fragment>
-
-          <Spacer.Column numberOfSpaces={3} />
         </AccordionItem>
 
         <Divider />
