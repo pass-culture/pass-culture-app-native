@@ -203,7 +203,8 @@
     "styled-components": "^5.3.3",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.0",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
