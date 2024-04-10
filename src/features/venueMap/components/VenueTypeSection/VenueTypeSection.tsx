@@ -20,9 +20,9 @@ export const VenueTypeSection: FunctionComponent<Props> = ({
 }) => {
   return (
     <React.Fragment>
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={3} />
       <Typo.Title1>{venueTypeMapping.title}</Typo.Title1>
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={3} />
       {Object.keys(venueTypeMapping.children).map((venueTypeCode) => {
         const label = venueTypeMapping.children[venueTypeCode as VenueTypeCode] ?? ''
         const isSelected = venueTypeSelected === label
@@ -36,7 +36,6 @@ export const VenueTypeSection: FunctionComponent<Props> = ({
               onSelect={() => onSelect(venueTypeCode as VenueTypeCode)}
               complement={String(complement)}
             />
-            <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
         )
       })}

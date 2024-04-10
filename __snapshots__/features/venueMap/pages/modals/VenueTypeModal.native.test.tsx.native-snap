@@ -318,16 +318,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
       >
         <View>
           <View
-            numberOfSpaces={3}
-            style={
-              [
-                {
-                  "height": 12,
-                },
-              ]
-            }
-          />
-          <View
             style={
               [
                 {
@@ -393,9 +383,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -474,11 +464,11 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
+                numberOfSpaces={3}
                 style={
                   [
                     {
-                      "height": 24,
+                      "height": 12,
                     },
                   ]
                 }
@@ -498,11 +488,11 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 Sorties
               </Text>
               <View
-                numberOfSpaces={6}
+                numberOfSpaces={3}
                 style={
                   [
                     {
-                      "height": 24,
+                      "height": 12,
                     },
                   ]
                 }
@@ -542,9 +532,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -655,16 +645,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Cinémas itinérants"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -699,9 +679,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -812,16 +792,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Musique - Salles de concerts"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -856,9 +826,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -969,16 +939,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Spectacles vivants"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -1013,9 +973,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -1126,16 +1086,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Festivals"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -1170,9 +1120,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -1283,16 +1233,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Musées"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -1327,9 +1267,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -1440,16 +1380,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Bibliothèques / Médiathèques"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -1484,9 +1414,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -1597,16 +1527,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Jeux / Jeux vidéos"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -1641,9 +1561,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -1754,16 +1674,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Arts visuels, arts plastiques et galeries"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -1798,9 +1708,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -1911,32 +1821,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "backgroundColor": "#F1F1F4",
                       "height": 1,
+                      "marginVertical": 12,
                       "width": "100%",
                     },
                   ]
                 }
               />
               <View
-                numberOfSpaces={6}
+                numberOfSpaces={3}
                 style={
                   [
                     {
-                      "height": 24,
+                      "height": 12,
                     },
                   ]
                 }
@@ -1956,11 +1857,11 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 Boutiques
               </Text>
               <View
-                numberOfSpaces={6}
+                numberOfSpaces={3}
                 style={
                   [
                     {
-                      "height": 24,
+                      "height": 12,
                     },
                   ]
                 }
@@ -2000,9 +1901,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -2113,16 +2014,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Magasins d’arts créatifs"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -2157,9 +2048,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -2270,16 +2161,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Magasins culturels"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -2314,9 +2195,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -2427,16 +2308,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Musique - Magasins d’instruments"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -2471,9 +2342,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -2584,16 +2455,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Musique - Disquaires"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -2628,9 +2489,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -2741,32 +2602,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "backgroundColor": "#F1F1F4",
                       "height": 1,
+                      "marginVertical": 12,
                       "width": "100%",
                     },
                   ]
                 }
               />
               <View
-                numberOfSpaces={6}
+                numberOfSpaces={3}
                 style={
                   [
                     {
-                      "height": 24,
+                      "height": 12,
                     },
                   ]
                 }
@@ -2786,11 +2638,11 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 Autres
               </Text>
               <View
-                numberOfSpaces={6}
+                numberOfSpaces={3}
                 style={
                   [
                     {
-                      "height": 24,
+                      "height": 12,
                     },
                   ]
                 }
@@ -2830,9 +2682,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -2943,16 +2795,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Centres culturels"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -2987,9 +2829,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -3100,16 +2942,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Patrimoine et tourisme"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -3144,9 +2976,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -3257,16 +3089,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 accessibilityLabel="Culture scientifique"
                 accessibilityRole="radio"
                 accessibilityState={
@@ -3301,9 +3123,9 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 0,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -3413,16 +3235,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   </View>
                 </View>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
             </View>
           </View>
         </View>
