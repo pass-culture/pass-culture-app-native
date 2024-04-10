@@ -81,7 +81,7 @@ describe('<NotificationsConnectionModal />', () => {
     const authButton = screen.getByText('Créer un compte')
     fireEvent.press(authButton)
 
-    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'SubButton' })
+    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'ThematicHome' })
   })
 
   it('should log analytics when clicking on "Se connecter" button', async () => {
@@ -90,7 +90,7 @@ describe('<NotificationsConnectionModal />', () => {
     const authButton = screen.getByText('Se connecter')
     fireEvent.press(authButton)
 
-    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'SubButton' })
+    expect(analytics.logLoginClicked).toHaveBeenNthCalledWith(1, { from: 'ThematicHome' })
   })
 })
 

@@ -36,7 +36,7 @@ export const NotificationsConnectionModal: FunctionComponent<Props> = ({
           wording="Créer un compte"
           navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.HOME } }}
           onBeforeNavigate={() => {
-            analytics.logSignUpClicked({ from: 'SubButton' })
+            analytics.logSignUpClicked({ from: 'ThematicHome' })
             dismissModal()
           }}
           buttonHeight="tall"
@@ -45,7 +45,7 @@ export const NotificationsConnectionModal: FunctionComponent<Props> = ({
         <StyledAuthenticationButton
           type="login"
           onAdditionalPress={() => {
-            analytics.logSignUpClicked({ from: 'SubButton' })
+            analytics.logLoginClicked({ from: 'ThematicHome' })
             dismissModal()
           }}
           params={{ from: StepperOrigin.HOME }}
