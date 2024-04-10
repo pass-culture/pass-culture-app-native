@@ -201,7 +201,7 @@ exports[`<NotificationsConnectionModal /> should render correctly 1`] = `
             }
             testID="modalHeaderTitle"
           >
-            Identifie-toi pour t’abonner à une thématique
+            Identifie-toi pour t’abonner à un thème
           </Text>
         </View>
         <View

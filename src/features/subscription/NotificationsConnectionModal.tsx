@@ -23,7 +23,6 @@ export const NotificationsConnectionModal: FunctionComponent<Props> = ({
     <AppModalWithIllustration
       visible={visible}
       title="Identifie-toi pour t’abonner à un thème"
-      // rightIconAccessibilityLabel="Ne pas s’identifier"
       Illustration={StyledIcon}
       hideModal={dismissModal}>
       <InformationText>
@@ -35,7 +34,7 @@ export const NotificationsConnectionModal: FunctionComponent<Props> = ({
         <InternalTouchableLink
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
-          navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
+          navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.HOME } }}
           onBeforeNavigate={() => {
             analytics.logSignUpClicked({ from: 'SubButton' })
             dismissModal()
@@ -49,7 +48,7 @@ export const NotificationsConnectionModal: FunctionComponent<Props> = ({
             analytics.logSignUpClicked({ from: 'SubButton' })
             dismissModal()
           }}
-          params={{ from: StepperOrigin.FAVORITE }}
+          params={{ from: StepperOrigin.HOME }}
         />
       </ButtonContainer>
     </AppModalWithIllustration>

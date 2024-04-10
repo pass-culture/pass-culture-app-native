@@ -121,7 +121,7 @@ export const ThematicHome: FunctionComponent = () => {
   const isLocated = !!userLocation
   const { user, isLoggedIn } = useAuthContext()
   const thematic = useMapSubscriptionHomeIdsToThematic(params.homeId)
-  console.log('thematic', thematic)
+
   const { showSuccessSnackBar } = useSnackBarContext()
   const {
     visible: isNotificationsModalVisible,
