@@ -2,6 +2,7 @@ import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal'
+import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockHideModal = jest.fn()
@@ -16,7 +17,7 @@ describe('<VenueTypeModal />', () => {
   describe('When venue type is null', () => {
     beforeAll(() => {
       mockUseVenueMapState.mockReturnValue({
-        venueMapState: { venueTypeCode: null },
+        venueMapState: { venueTypeCode: null, venues: venuesFixture },
         dispatch: mockDispatch,
       })
     })
@@ -82,7 +83,7 @@ describe('<VenueTypeModal />', () => {
   describe('When venue type is not null', () => {
     beforeAll(() => {
       mockUseVenueMapState.mockReturnValue({
-        venueMapState: { venueTypeCode: VenueTypeCodeKey.MOVIE },
+        venueMapState: { venueTypeCode: VenueTypeCodeKey.MOVIE, venues: [] },
         dispatch: mockDispatch,
       })
     })
