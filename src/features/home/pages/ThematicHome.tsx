@@ -29,6 +29,7 @@ import { UnsubscribingConfirmationModal } from 'features/subscription/components
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { useMapSubscriptionHomeIdsToThematic } from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { useThematicSubscription } from 'features/subscription/helpers/useThematicSubscription'
+import { NotificationsConnectionModal } from 'features/subscription/NotificationsConnectionModal'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -120,6 +121,7 @@ export const ThematicHome: FunctionComponent = () => {
   const isLocated = !!userLocation
   const { user, isLoggedIn } = useAuthContext()
   const thematic = useMapSubscriptionHomeIdsToThematic(params.homeId)
+  console.log('thematic', thematic)
   const { showSuccessSnackBar } = useSnackBarContext()
   const {
     visible: isNotificationsModalVisible,
@@ -135,6 +137,11 @@ export const ThematicHome: FunctionComponent = () => {
     visible: isSubscriptionSuccessModalVisible,
     showModal: showSubscriptionSuccessModal,
     hideModal: hideSubscriptionSuccessModal,
+  } = useModal(false)
+  const {
+    visible: visibleConnectionModal,
+    showModal: showConnectionModal,
+    hideModal: hideConnectionModal,
   } = useModal(false)
 
   const onUpdateSubscriptionSuccess = async () => {
@@ -164,7 +171,9 @@ export const ThematicHome: FunctionComponent = () => {
   })
 
   const onSubscribeButtonPress = () => {
-    if (!isAtLeastOneNotificationTypeActivated) {
+    if (!isLoggedIn) {
+      showConnectionModal()
+    } else if (!isAtLeastOneNotificationTypeActivated) {
       showNotificationsModal()
     } else if (isSubscribeButtonActive) {
       showUnsubscribingModal()
@@ -207,7 +216,7 @@ export const ThematicHome: FunctionComponent = () => {
         Header={
           <React.Fragment>
             <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
-            {Platform.OS !== 'ios' && isLoggedIn && thematic ? (
+            {Platform.OS !== 'ios' && thematic ? (
               <SubscribeButtonContainer>
                 <SubscribeButtonWithTooltip
                   active={isSubscribeButtonActive}
@@ -242,7 +251,7 @@ export const ThematicHome: FunctionComponent = () => {
                 gradientTranslation={gradientTranslation}
                 imageAnimatedHeight={imageAnimatedHeight}
               />
-              {isLoggedIn && thematic ? (
+              {thematic ? (
                 <SubscribeButtonContainer>
                   <SubscribeButtonWithTooltip
                     active={isSubscribeButtonActive}
@@ -272,6 +281,10 @@ export const ThematicHome: FunctionComponent = () => {
             visible={isSubscriptionSuccessModalVisible}
             dismissModal={hideSubscriptionSuccessModal}
             theme={thematic}
+          />
+          <NotificationsConnectionModal
+            visible={visibleConnectionModal}
+            dismissModal={hideConnectionModal}
           />
         </React.Fragment>
       ) : null}
