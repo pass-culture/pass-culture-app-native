@@ -6,13 +6,13 @@ import { useForm } from 'react-hook-form'
 import { AccountState, ResetPasswordResponse } from 'api/gen'
 import { useResetPasswordMutation } from 'features/auth/api/useResetPasswordMutation'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
-import { reinitializePasswordSchema } from 'features/auth/pages/forgottenPassword/ReinitializePassword/schema/reinitializePasswordSchema'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
 import { isTimestampExpired } from 'libs/dates'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
+import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
@@ -49,7 +49,7 @@ export const ReinitializePassword = () => {
   } = useForm<ReinitializePasswordFormData>({
     mode: 'onChange',
     defaultValues,
-    resolver: yupResolver(reinitializePasswordSchema),
+    resolver: yupResolver(newPasswordSchema),
   })
 
   useFocusEffect(
