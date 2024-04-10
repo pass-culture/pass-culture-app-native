@@ -18,6 +18,7 @@ type Props = {
   isVisible?: boolean
   pointerDirection?: 'top' | 'bottom'
   onHide?: () => void
+  onCloseIconPress?: () => void
   style?: ComponentProps<typeof AnimatedView>['style']
 }
 
@@ -26,6 +27,7 @@ export const Tooltip: FunctionComponent<Props> = ({
   isVisible,
   pointerDirection = 'top',
   onHide,
+  onCloseIconPress,
   style,
 }) => {
   const containerRef: AnimatedRef = useRef(null)
@@ -43,7 +45,7 @@ export const Tooltip: FunctionComponent<Props> = ({
   )
 
   // For a11y reason, hide tooltip when pressing escape key
-  useEscapeKeyAction(isVisible ? onHide : undefined)
+  useEscapeKeyAction(isVisible ? onCloseIconPress || onHide : undefined)
 
   if (!isVisible) return null
 
@@ -57,7 +59,9 @@ export const Tooltip: FunctionComponent<Props> = ({
       <StyledPointer pointerDirection={pointerDirection} />
       <Background>
         <StyledText>{label}</StyledText>
-        <StyledClearContainer onPress={onHide} accessibilityLabel="Fermer le tooltip">
+        <StyledClearContainer
+          onPress={onCloseIconPress || onHide}
+          accessibilityLabel="Fermer le tooltip">
           <StyledClearIcon />
         </StyledClearContainer>
       </Background>
