@@ -269,7 +269,6 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                       <StyledVerticalUl>
                         {DATE_TYPES.map((item) => (
                           <Li key={item.label}>
-                            <Spacer.Column numberOfSpaces={4} />
                             <RadioButton
                               label={item.label}
                               isSelected={value === item.type}
