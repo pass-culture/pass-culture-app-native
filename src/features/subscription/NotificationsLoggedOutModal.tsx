@@ -15,7 +15,7 @@ interface Props {
   dismissModal: () => void
 }
 
-export const NotificationsConnectionModal: FunctionComponent<Props> = ({
+export const NotificationsLoggedOutModal: FunctionComponent<Props> = ({
   visible,
   dismissModal,
 }) => {
@@ -34,7 +34,7 @@ export const NotificationsConnectionModal: FunctionComponent<Props> = ({
         <InternalTouchableLink
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
-          navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.HOME } }}
+          navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.THEMATIC_HOME } }}
           onBeforeNavigate={() => {
             analytics.logSignUpClicked({ from: 'ThematicHome' })
             dismissModal()
@@ -48,7 +48,7 @@ export const NotificationsConnectionModal: FunctionComponent<Props> = ({
             analytics.logLoginClicked({ from: 'ThematicHome' })
             dismissModal()
           }}
-          params={{ from: StepperOrigin.HOME }}
+          params={{ from: StepperOrigin.THEMATIC_HOME }}
         />
       </ButtonContainer>
     </AppModalWithIllustration>

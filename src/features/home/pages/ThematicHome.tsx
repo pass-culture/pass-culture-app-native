@@ -29,7 +29,7 @@ import { UnsubscribingConfirmationModal } from 'features/subscription/components
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { useMapSubscriptionHomeIdsToThematic } from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { useThematicSubscription } from 'features/subscription/helpers/useThematicSubscription'
-import { NotificationsConnectionModal } from 'features/subscription/NotificationsConnectionModal'
+import { NotificationsLoggedOutModal } from 'features/subscription/NotificationsLoggedOutModal'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -139,9 +139,9 @@ export const ThematicHome: FunctionComponent = () => {
     hideModal: hideSubscriptionSuccessModal,
   } = useModal(false)
   const {
-    visible: visibleConnectionModal,
-    showModal: showConnectionModal,
-    hideModal: hideConnectionModal,
+    visible: visibleLoggedOutModal,
+    showModal: showLoggedOutModal,
+    hideModal: hideLoggedOutModal,
   } = useModal(false)
 
   const onUpdateSubscriptionSuccess = async () => {
@@ -172,7 +172,7 @@ export const ThematicHome: FunctionComponent = () => {
 
   const onSubscribeButtonPress = () => {
     if (!isLoggedIn) {
-      showConnectionModal()
+      showLoggedOutModal()
     } else if (!isAtLeastOneNotificationTypeActivated) {
       showNotificationsModal()
     } else if (isSubscribeButtonActive) {
@@ -282,9 +282,9 @@ export const ThematicHome: FunctionComponent = () => {
             dismissModal={hideSubscriptionSuccessModal}
             theme={thematic}
           />
-          <NotificationsConnectionModal
-            visible={visibleConnectionModal}
-            dismissModal={hideConnectionModal}
+          <NotificationsLoggedOutModal
+            visible={visibleLoggedOutModal}
+            dismissModal={hideLoggedOutModal}
           />
         </React.Fragment>
       ) : null}

@@ -177,7 +177,7 @@ describe('ThematicHome', () => {
   })
 
   describe('SubscribeButton', () => {
-    it('should open connection modal when user is not logged in', async () => {
+    it('should open logged out modal when user is not logged in', async () => {
       mockUseAuthContext.mockReturnValueOnce({
         ...baseAuthContext,
         isLoggedIn: false,

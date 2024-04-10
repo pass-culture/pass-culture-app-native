@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { NotificationsConnectionModal } from 'features/subscription/NotificationsConnectionModal'
+import { NotificationsLoggedOutModal } from 'features/subscription/NotificationsLoggedOutModal'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -14,7 +14,7 @@ jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () =>
 
 const mockDismissModal = jest.fn()
 
-describe('<NotificationsConnectionModal />', () => {
+describe('<NotificationsLoggedOutModal />', () => {
   it('should render correctly', () => {
     renderModal(true)
 
@@ -49,7 +49,7 @@ describe('<NotificationsConnectionModal />', () => {
     fireEvent.press(authButton)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('SignupForm', { from: 'home' })
+      expect(navigate).toHaveBeenCalledWith('SignupForm', { from: 'thematicHome' })
     })
   })
 
@@ -71,7 +71,7 @@ describe('<NotificationsConnectionModal />', () => {
     fireEvent.press(authButton)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Login', { from: 'home' })
+      expect(navigate).toHaveBeenCalledWith('Login', { from: 'thematicHome' })
     })
   })
 
@@ -97,7 +97,7 @@ describe('<NotificationsConnectionModal />', () => {
 const renderModal = (visible: boolean) => {
   render(
     reactQueryProviderHOC(
-      <NotificationsConnectionModal visible={visible} dismissModal={mockDismissModal} />
+      <NotificationsLoggedOutModal visible={visible} dismissModal={mockDismissModal} />
     )
   )
 }
