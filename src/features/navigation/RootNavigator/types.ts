@@ -194,6 +194,7 @@ export type RootStackParamList = {
   BannedCountryError: undefined
   ChangePassword: undefined
   ChangeEmail: undefined
+  ChangeEmailSetPassword: undefined
   TrackEmailChange: undefined
   NewEmailSelection: { token: string }
   ChangeEmailExpiredLink: undefined
