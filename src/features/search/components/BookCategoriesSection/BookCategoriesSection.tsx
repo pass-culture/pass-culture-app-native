@@ -60,7 +60,7 @@ export function BookCategoriesSection<
           icon={handleGetIcon(SearchGroupNameEnumv2.NONE)}
         />
       </ListItem>
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={3} />
       <Title>{'Livres papier'}</Title>
       <Spacer.Column numberOfSpaces={3} />
       {bookCategoriesWithGenre.map(([k, item]) => (

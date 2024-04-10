@@ -20,7 +20,6 @@ interface RadioButtonProps {
   isSelected: boolean
   icon?: FunctionComponent<AccessibleIcon>
   accessibilityLabel?: string
-  marginVertical?: number
   isLoading?: boolean
 }
 
@@ -72,7 +71,6 @@ export function RadioButton(props: RadioButtonProps) {
       onPress={onPress}
       onFocus={onFocus}
       onBlur={onBlur}
-      marginVertical={props.marginVertical ?? 0}
       {...props}>
       <LabelContainer ref={containerRef}>
         {!!StyledIcon && (
@@ -125,15 +123,13 @@ const LabelContainerWithMarginRight = styled.View(({ theme }) => ({
   marginRight: theme.isMobileViewport ? 0 : getSpacing(6),
 }))
 
-const StyledTouchableOpacity = styled(TouchableOpacity)<{ marginVertical: number }>(
-  ({ theme, marginVertical }) => ({
-    minHeight: theme.icons.sizes.small,
-    marginVertical: marginVertical,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
-  })
-)
+const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
+  minHeight: theme.icons.sizes.small,
+  paddingVertical: getSpacing(3),
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
+}))
 
 const Label = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected ? theme.colors.primary : theme.colors.black,

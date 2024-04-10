@@ -403,16 +403,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 testID="accordionBodyContainer"
               >
                 <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
                   accessibilityLabel="Offer"
                   accessibilityRole="radio"
                   accessibilityState={
@@ -447,9 +437,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -527,32 +517,12 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
                   style={
                     [
                       {
                         "backgroundColor": "#F1F1F4",
                         "height": 1,
                         "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
                       },
                     ]
                   }
@@ -592,9 +562,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -672,32 +642,12 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
                   style={
                     [
                       {
                         "backgroundColor": "#F1F1F4",
                         "height": 1,
                         "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
                       },
                     ]
                   }
@@ -737,9 +687,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -817,32 +767,12 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
                   style={
                     [
                       {
                         "backgroundColor": "#F1F1F4",
                         "height": 1,
                         "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
                       },
                     ]
                   }
@@ -882,9 +812,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -962,32 +892,12 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
                   style={
                     [
                       {
                         "backgroundColor": "#F1F1F4",
                         "height": 1,
                         "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
                       },
                     ]
                   }
@@ -1027,9 +937,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -1107,32 +1017,12 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
                   style={
                     [
                       {
                         "backgroundColor": "#F1F1F4",
                         "height": 1,
                         "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
                       },
                     ]
                   }
@@ -1172,9 +1062,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -1252,32 +1142,12 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
                   style={
                     [
                       {
                         "backgroundColor": "#F1F1F4",
                         "height": 1,
                         "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
                       },
                     ]
                   }
@@ -1317,9 +1187,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -1397,32 +1267,12 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
                   style={
                     [
                       {
                         "backgroundColor": "#F1F1F4",
                         "height": 1,
                         "width": "100%",
-                      },
-                    ]
-                  }
-                />
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
                       },
                     ]
                   }
@@ -1462,9 +1312,9 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -1541,16 +1391,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
                 <View
                   style={
                     [

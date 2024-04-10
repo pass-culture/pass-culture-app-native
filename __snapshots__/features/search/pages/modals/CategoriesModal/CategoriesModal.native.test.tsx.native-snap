@@ -393,9 +393,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 12,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -1882,16 +1882,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 }
               >
                 <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
-                <View
                   accessibilityLabel="Cartes jeunes"
                   accessibilityRole="radio"
                   accessibilityState={
@@ -1926,9 +1916,9 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -2033,16 +2023,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
               </View>
               <View
                 accessibilityRole="none"
@@ -3028,9 +3008,9 @@ exports[`<CategoriesModal/> new book native categories section should display th
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -3109,11 +3089,11 @@ exports[`<CategoriesModal/> new book native categories section should display th
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
+                numberOfSpaces={3}
                 style={
                   [
                     {
-                      "height": 24,
+                      "height": 12,
                     },
                   ]
                 }
@@ -4522,16 +4502,6 @@ exports[`<CategoriesModal/> new book native categories section should display th
                 }
               >
                 <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
-                <View
                   accessibilityLabel="Abonnements aux médiathèques et bibliothèques"
                   accessibilityRole="radio"
                   accessibilityState={
@@ -4566,9 +4536,9 @@ exports[`<CategoriesModal/> new book native categories section should display th
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -4678,16 +4648,6 @@ exports[`<CategoriesModal/> new book native categories section should display th
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
               </View>
               <View
                 accessibilityRole="none"
@@ -4699,16 +4659,6 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="E-books"
                   accessibilityRole="radio"
@@ -4744,9 +4694,9 @@ exports[`<CategoriesModal/> new book native categories section should display th
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -4856,16 +4806,6 @@ exports[`<CategoriesModal/> new book native categories section should display th
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
               </View>
               <View
                 accessibilityRole="none"
@@ -4877,16 +4817,6 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Évènements autour du livre"
                   accessibilityRole="radio"
@@ -4922,9 +4852,9 @@ exports[`<CategoriesModal/> new book native categories section should display th
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -5034,16 +4964,6 @@ exports[`<CategoriesModal/> new book native categories section should display th
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
               </View>
               <View
                 accessibilityRole="none"
@@ -5055,16 +4975,6 @@ exports[`<CategoriesModal/> new book native categories section should display th
                   ]
                 }
               >
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Livres audio"
                   accessibilityRole="radio"
@@ -5100,9 +5010,9 @@ exports[`<CategoriesModal/> new book native categories section should display th
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
-                      "marginVertical": 0,
                       "minHeight": 24,
                       "opacity": 1,
+                      "paddingVertical": 12,
                       "userSelect": "auto",
                     }
                   }
@@ -5212,16 +5122,6 @@ exports[`<CategoriesModal/> new book native categories section should display th
                     </View>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
           </View>

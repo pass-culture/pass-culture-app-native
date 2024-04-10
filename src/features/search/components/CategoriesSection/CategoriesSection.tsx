@@ -13,7 +13,6 @@ import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { VerticalUl } from 'ui/components/Ul'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
 
 export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
 
@@ -68,7 +67,6 @@ export function CategoriesSection<
           label={allLabel}
           isSelected={value === allValue}
           onSelect={() => onSelect(allValue)}
-          marginVertical={getSpacing(3)}
           icon={handleGetIcon(SearchGroupNameEnumv2.NONE)}
         />
       </ListItem>

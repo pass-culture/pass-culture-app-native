@@ -298,9 +298,9 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 12,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -423,9 +423,9 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 12,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }
@@ -548,9 +548,9 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
-                    "marginVertical": 12,
                     "minHeight": 24,
                     "opacity": 1,
+                    "paddingVertical": 12,
                     "userSelect": "auto",
                   }
                 }

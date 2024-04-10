@@ -20,7 +20,7 @@ import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   hideModal: VoidFunction
@@ -110,7 +110,6 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
           filterBehaviour={FilterBehaviour.SEARCH}
         />
       }>
-      <Spacer.Column numberOfSpaces={3} />
       <Form.MaxWidth>
         <VerticalUl>
           <ListItem>
@@ -128,7 +127,7 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
                 onSelect={handleOnSelect}
                 venueCountByTypes={venueCountByTypes}
               />
-              {index < array.length - 1 ? <Separator.Horizontal /> : null}
+              {index < array.length - 1 ? <StyledSeparator /> : null}
             </React.Fragment>
           ))}
         </VerticalUl>
@@ -139,4 +138,8 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
 
 const ListItem = styled(Li)({
   display: 'flex',
+})
+
+const StyledSeparator = styled(Separator.Horizontal)({
+  marginVertical: getSpacing(3),
 })

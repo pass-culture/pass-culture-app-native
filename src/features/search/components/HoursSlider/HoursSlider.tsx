@@ -30,7 +30,7 @@ export function HoursSlider({ field }: Readonly<{ field: HoursSliderProps }>) {
 
   return (
     <View>
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={3} />
       <LabelHoursContainer nativeID={hoursLabelId}>
         <Typo.Body>Sortir entre</Typo.Body>
         <Typo.ButtonText>{`${minHour}\u00a0h et ${maxHour}\u00a0h`}</Typo.ButtonText>

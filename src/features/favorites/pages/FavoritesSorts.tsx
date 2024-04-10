@@ -83,7 +83,6 @@ export const FavoritesSorts: React.FC = () => {
                     isSelected={stagedSelectedSortBy === sortBy}
                     onSelect={() => onSortBySelection(sortBy)}
                     accessibilityLabel={`Trier par ${label}`}
-                    marginVertical={getSpacing(3)}
                   />
                   <InputError
                     visible={!!(sortBy === 'AROUND_ME' && geolocPositionError)}
