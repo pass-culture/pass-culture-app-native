@@ -26,7 +26,7 @@ export const VenueTypeSection: FunctionComponent<Props> = ({
       {Object.keys(venueTypeMapping.children).map((venueTypeCode) => {
         const label = venueTypeMapping.children[venueTypeCode as VenueTypeCode] ?? ''
         const isSelected = venueTypeSelected === label
-        const complement = venueCountByTypes?.[venueTypeCode as VenueTypeCode] ?? '0'
+        const complement = venueCountByTypes?.[venueTypeCode as VenueTypeCode] ?? 0
 
         return (
           <React.Fragment key={venueTypeCode}>

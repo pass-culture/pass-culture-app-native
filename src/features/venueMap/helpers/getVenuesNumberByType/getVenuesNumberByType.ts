@@ -6,7 +6,7 @@ export function getVenuesNumberByType(venues: GeolocatedVenue[]) {
 
   const venuesCountByType: Partial<VenuesCountByType> = {}
   uniqueVenuesTypes.forEach((type) => {
-    if (type !== null && type !== undefined) {
+    if (type) {
       venuesCountByType[type] = venues.filter((venue) => venue.venue_type === type).length
     }
   })
