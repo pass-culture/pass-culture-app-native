@@ -19,7 +19,7 @@ import { DefaultThematicHomeHeader } from 'features/home/components/headers/Defa
 import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
-import { SubscribeButton } from 'features/home/components/SubscribeButton'
+import { SubscribeButtonWithTooltip } from 'features/home/components/SubscribeButtonWithTooltip'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
@@ -209,7 +209,7 @@ export const ThematicHome: FunctionComponent = () => {
             <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
             {Platform.OS !== 'ios' && isLoggedIn && thematic ? (
               <SubscribeButtonContainer>
-                <SubscribeButton
+                <SubscribeButtonWithTooltip
                   active={isSubscribeButtonActive}
                   onPress={onSubscribeButtonPress}
                 />
@@ -244,7 +244,7 @@ export const ThematicHome: FunctionComponent = () => {
               />
               {isLoggedIn && thematic ? (
                 <SubscribeButtonContainer>
-                  <SubscribeButton
+                  <SubscribeButtonWithTooltip
                     active={isSubscribeButtonActive}
                     onPress={onSubscribeButtonPress}
                   />
