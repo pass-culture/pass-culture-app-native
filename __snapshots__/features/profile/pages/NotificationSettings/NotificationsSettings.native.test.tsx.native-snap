@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotificationSettings should render correctly when user is logged in 1`] = `
+exports[`NotificationsSettings should render correctly when user is logged in 1`] = `
 [
   <View
     accessibilityRole="header"
@@ -2289,7 +2289,7 @@ exports[`NotificationSettings should render correctly when user is logged in 1`]
 ]
 `;
 
-exports[`NotificationSettings should render correctly when user is not logged in 1`] = `
+exports[`NotificationsSettings should render correctly when user is not logged in 1`] = `
 [
   <View
     accessibilityRole="header"

@@ -125,7 +125,6 @@ export type SubscriptionRootStackParamList = {
   NavigationShareApp: undefined
   NavigationSignUp: undefined
   NewIdentificationFlow: undefined
-  NotificationsSettingsWIP: undefined
   // Stepper
   Stepper: { from: StepperOrigin } | undefined
   // PhoneValidation
@@ -220,7 +219,7 @@ export type RootStackParamList = {
   NavigationNotScreensPages: undefined
   NavigationProfile: undefined
   NavigationSubscription: undefined
-  NotificationSettings: undefined
+  NotificationsSettings: undefined
   Offer: {
     id: number
     from?: Referrals
@@ -279,7 +278,6 @@ export type RootStackParamList = {
   DefaultThematicHomeHeaderCheatcode: undefined
   HighlightThematicHomeHeaderCheatcode: undefined
   CategoryThematicHomeHeaderCheatcode: undefined
-  ThematicHomeWithSubscribeCheatcode: undefined
   ThematicHeaders: undefined
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &

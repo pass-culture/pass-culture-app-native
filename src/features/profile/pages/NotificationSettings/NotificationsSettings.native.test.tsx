@@ -50,7 +50,7 @@ const usePushPermissionSpy = jest.spyOn(usePushPermission, 'usePushPermission').
   refreshPermission: jest.fn(),
 })
 
-describe('NotificationSettings', () => {
+describe('NotificationsSettings', () => {
   it('should render correctly when user is logged in', () => {
     mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
     render(reactQueryProviderHOC(<NotificationsSettings />))

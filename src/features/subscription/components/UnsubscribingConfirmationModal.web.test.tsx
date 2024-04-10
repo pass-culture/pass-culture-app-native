@@ -13,6 +13,7 @@ describe('<UnsubscribingConfirmationModal />', () => {
           visible
           theme={SubscriptionTheme.CINEMA}
           dismissModal={jest.fn()}
+          onUnsubscribePress={jest.fn()}
         />
       )
 

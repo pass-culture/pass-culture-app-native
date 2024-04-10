@@ -106,6 +106,7 @@ export function NavigationSubscription(): React.JSX.Element {
             theme={SubscriptionTheme.VISITES}
             visible={unsubscribingModalVisible}
             dismissModal={hideUnsubscribingModal}
+            onUnsubscribePress={hideUnsubscribingModal}
           />
         </Row>
       </StyledContainer>

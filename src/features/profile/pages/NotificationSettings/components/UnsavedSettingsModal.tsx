@@ -21,7 +21,7 @@ export const UnsavedSettingsModal: FunctionComponent<Props> = ({
   dismissModal,
   onPressSaveChanges,
 }) => {
-  const { goBack: goBackAndLeaveNotificationSettings } = useGoBack(...getTabNavConfig('Profile'))
+  const { goBack: goBackAndLeaveNotificationsSettings } = useGoBack(...getTabNavConfig('Profile'))
 
   return (
     <AppModal
@@ -38,14 +38,14 @@ export const UnsavedSettingsModal: FunctionComponent<Props> = ({
           onPress={() => {
             onPressSaveChanges()
             dismissModal()
-            goBackAndLeaveNotificationSettings()
+            goBackAndLeaveNotificationsSettings()
           }}
         />
         <ButtonTertiaryBlack
           wording="Quitter sans enregistrer"
           onPress={() => {
             dismissModal()
-            goBackAndLeaveNotificationSettings()
+            goBackAndLeaveNotificationsSettings()
           }}
           icon={Invalidate}
         />

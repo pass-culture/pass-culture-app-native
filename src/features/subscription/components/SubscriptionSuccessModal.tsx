@@ -35,11 +35,13 @@ export const SubscriptionSuccessModal: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={6} />
       <StyledButtonContainer>
         <ButtonPrimary wording="Continuer sur l’app" onPress={dismissModal} />
+        <Spacer.Column numberOfSpaces={2} />
         <InternalTouchableLink
           as={ButtonTertiaryBlack}
           wording="Voir mes préférences"
           icon={Parameters}
-          navigateTo={{ screen: 'NotificationsSettingsWIP' }}
+          navigateTo={{ screen: 'NotificationsSettings' }}
+          onBeforeNavigate={dismissModal}
         />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />

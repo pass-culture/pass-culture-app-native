@@ -161,7 +161,7 @@ const OnlineProfile: React.FC = () => {
                   type="navigable"
                   title="Notifications"
                   icon={Bell}
-                  navigateTo={{ screen: 'NotificationSettings' }}
+                  navigateTo={{ screen: 'NotificationsSettings' }}
                 />
               </Li>
               <Li>

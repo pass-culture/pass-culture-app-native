@@ -36,7 +36,6 @@ import { CategoryThematicHomeHeaderCheatcode } from 'features/internal/cheatcode
 import { DefaultThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/DefaultThematicHomeHeaderCheatcode'
 import { HighlightThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/HighlightThematicHomeHeaderCheatcode'
 import { ThematicHeaders } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHeaders'
-import { ThematicHomeWithSubscribeCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHomeWithSubscribeCheatcode'
 import { DeeplinksGenerator } from 'features/internal/marketingAndCommunication/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/marketingAndCommunication/pages/UTMParameters'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
@@ -59,7 +58,7 @@ import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/Confi
 import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
-import { NotificationSettingsDeprecated } from 'features/profile/pages/NotificationSettings/NotificationSettingsDeprecated'
+import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
@@ -281,8 +280,8 @@ export const routes: RootRoute[] = [
     path: 'cheat-navigation-profile',
   },
   {
-    name: 'NotificationSettings',
-    component: NotificationSettingsDeprecated,
+    name: 'NotificationsSettings',
+    component: NotificationsSettings,
     path: 'profil/notifications',
     options: { title: 'Réglages de notifications' },
   },
@@ -466,12 +465,6 @@ export const routes: RootRoute[] = [
     name: 'CategoryThematicHomeHeaderCheatcode',
     component: CategoryThematicHomeHeaderCheatcode,
     path: 'cheat-category-home-header',
-  },
-  {
-    // debug route: in navigation component
-    name: 'ThematicHomeWithSubscribeCheatcode',
-    component: ThematicHomeWithSubscribeCheatcode,
-    path: 'cheat-category-home-header-with-subscribe',
   },
   {
     // debug route: in navigation component

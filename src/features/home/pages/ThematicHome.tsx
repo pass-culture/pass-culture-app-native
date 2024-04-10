@@ -3,6 +3,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import {
@@ -18,15 +19,25 @@ import { DefaultThematicHomeHeader } from 'features/home/components/headers/Defa
 import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
+import { SubscribeButtonWithTooltip } from 'features/home/components/SubscribeButtonWithTooltip'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { SubscriptionSuccessModal } from 'features/subscription/components/SubscriptionSuccessModal'
+import { UnsubscribingConfirmationModal } from 'features/subscription/components/UnsubscribingConfirmationModal'
+import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
+import { useMapSubscriptionHomeIdsToThematic } from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
+import { useThematicSubscription } from 'features/subscription/helpers/useThematicSubscription'
+import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
+import { storage } from 'libs/storage'
 import { startTransaction } from 'shared/performance/transactions'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { useModal } from 'ui/components/modals/useModal'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const MARGIN_TOP_HEADER = 6
@@ -107,6 +118,65 @@ export const ThematicHome: FunctionComponent = () => {
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
   const { userLocation } = useLocation()
   const isLocated = !!userLocation
+  const { user, isLoggedIn } = useAuthContext()
+  const thematic = useMapSubscriptionHomeIdsToThematic(params.homeId)
+  const { showSuccessSnackBar } = useSnackBarContext()
+  const {
+    visible: isNotificationsModalVisible,
+    showModal: showNotificationsModal,
+    hideModal: hideNotificationsModal,
+  } = useModal(false)
+  const {
+    visible: isUnsubscribingModalVisible,
+    showModal: showUnsubscribingModal,
+    hideModal: hideUnsubscribingModal,
+  } = useModal(false)
+  const {
+    visible: isSubscriptionSuccessModalVisible,
+    showModal: showSubscriptionSuccessModal,
+    hideModal: hideSubscriptionSuccessModal,
+  } = useModal(false)
+
+  const onUpdateSubscriptionSuccess = async () => {
+    if (!thematic) return
+    const hasSubscribedTimes =
+      (await storage.readObject<number>('times_user_subscribed_to_a_theme')) ?? 0
+    if (hasSubscribedTimes < 3) {
+      showSubscriptionSuccessModal()
+      await storage.saveObject('times_user_subscribed_to_a_theme', hasSubscribedTimes + 1)
+    } else {
+      showSuccessSnackBar({
+        message: `Tu suis le thème “${mapSubscriptionThemeToName[thematic]}”\u00a0! Tu peux gérer tes alertes depuis ton profil.`,
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    }
+  }
+
+  const {
+    isSubscribeButtonActive,
+    isAtLeastOneNotificationTypeActivated,
+    updateSubscription,
+    updateSettings,
+  } = useThematicSubscription({
+    user,
+    thematic,
+    onUpdateSubscriptionSuccess,
+  })
+
+  const onSubscribeButtonPress = () => {
+    if (!isAtLeastOneNotificationTypeActivated) {
+      showNotificationsModal()
+    } else if (isSubscribeButtonActive) {
+      showUnsubscribingModal()
+    } else {
+      updateSubscription()
+    }
+  }
+
+  const onUnsubscribeConfirmationPress = () => {
+    updateSubscription()
+    hideUnsubscribingModal()
+  }
 
   const AnimatedHeader = Animated.createAnimatedComponent(AnimatedHeaderContainer)
 
@@ -135,7 +205,17 @@ export const ThematicHome: FunctionComponent = () => {
         modules={modules}
         homeId={id}
         Header={
-          <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
+          <React.Fragment>
+            <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
+            {Platform.OS !== 'ios' && isLoggedIn && thematic ? (
+              <SubscribeButtonContainer>
+                <SubscribeButtonWithTooltip
+                  active={isSubscribeButtonActive}
+                  onPress={onSubscribeButtonPress}
+                />
+              </SubscribeButtonContainer>
+            ) : null}
+          </React.Fragment>
         }
         shouldDisplayScrollToTop
         onScroll={onScroll}
@@ -162,10 +242,39 @@ export const ThematicHome: FunctionComponent = () => {
                 gradientTranslation={gradientTranslation}
                 imageAnimatedHeight={imageAnimatedHeight}
               />
+              {isLoggedIn && thematic ? (
+                <SubscribeButtonContainer>
+                  <SubscribeButtonWithTooltip
+                    active={isSubscribeButtonActive}
+                    onPress={onSubscribeButtonPress}
+                  />
+                </SubscribeButtonContainer>
+              ) : null}
             </AnimatedHeader>
           )}
         </React.Fragment>
       )}
+      {thematic ? (
+        <React.Fragment>
+          <NotificationsSettingsModal
+            visible={isNotificationsModalVisible}
+            dismissModal={hideNotificationsModal}
+            theme={thematic}
+            onPressSaveChanges={updateSettings}
+          />
+          <UnsubscribingConfirmationModal
+            visible={isUnsubscribingModalVisible}
+            dismissModal={hideUnsubscribingModal}
+            theme={thematic}
+            onUnsubscribePress={onUnsubscribeConfirmationPress}
+          />
+          <SubscriptionSuccessModal
+            visible={isSubscriptionSuccessModalVisible}
+            dismissModal={hideSubscriptionSuccessModal}
+            theme={thematic}
+          />
+        </React.Fragment>
+      ) : null}
     </Container>
   )
 }
@@ -191,3 +300,9 @@ const GeolocationBannerContainer = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
   marginBottom: theme.home.spaceBetweenModules,
 }))
+
+const SubscribeButtonContainer = styled.View({
+  position: 'absolute',
+  right: getSpacing(4),
+  top: getSpacing(40),
+})

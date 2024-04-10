@@ -386,7 +386,7 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                   }
                   accessible={true}
                   collapsable={false}
-                  focusable={false}
+                  focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -443,6 +443,16 @@ exports[`<UnsubscribingConfirmationModal /> should render correctly 1`] = `
                     </Text>
                   </View>
                 </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "height": 8,
+                      },
+                    ]
+                  }
+                />
                 <View
                   accessibilityLabel="Annuler"
                   accessibilityState={
