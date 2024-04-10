@@ -7,7 +7,7 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
 import { VenueTypeSection } from 'features/venueMap/components/VenueTypeSection/VenueTypeSection'
-import { useVenueMapState } from 'features/venueMap/context/VenueMapWrapper'
+import { useVenueMapStore } from 'features/venueMap/context/useVenueMapStore'
 import { getGeolocatedVenues } from 'features/venueMap/helpers/getGeolocatedVenues/getGeolocatedVenues'
 import { getVenuesNumberByType } from 'features/venueMap/helpers/getVenuesNumberByType/getVenuesNumberByType'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
@@ -36,7 +36,12 @@ const MODAL_TITLE = 'Type de lieu'
 
 export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible = false }) => {
   const { modal } = useTheme()
-  const { venueMapState, dispatch } = useVenueMapState()
+  const {
+    venueTypeCode: defaultVenueTypeCode,
+    venues,
+    selectedVenue,
+    setVenueTypeCode,
+  } = useVenueMapStore()
 
   const {
     formState: { isSubmitting },
@@ -46,14 +51,14 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
     watch,
   } = useForm<VenueTypeModalFormProps>({
     defaultValues: {
-      venueTypeCode: venueMapState.venueTypeCode,
+      venueTypeCode: defaultVenueTypeCode,
     },
   })
   const { venueTypeCode } = watch()
   const venueTypeLabel = useMemo(() => getVenueTypeLabel(venueTypeCode) ?? 'Tout', [venueTypeCode])
 
-  const venueCountByTypes = venueMapState.venues.length
-    ? getVenuesNumberByType(getGeolocatedVenues(venueMapState.venues, venueMapState.selectedVenue))
+  const venueCountByTypes = venues.length
+    ? getVenuesNumberByType(getGeolocatedVenues(venues, selectedVenue))
     : undefined
 
   const handleOnSelect = useCallback(
@@ -69,17 +74,17 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
 
   const handleCloseModal = useCallback(() => {
     reset({
-      venueTypeCode: venueMapState.venueTypeCode,
+      venueTypeCode: defaultVenueTypeCode,
     })
     hideModal()
-  }, [hideModal, reset, venueMapState.venueTypeCode])
+  }, [hideModal, reset, defaultVenueTypeCode])
 
   const handleSearchPress = useCallback(
     (form: VenueTypeModalFormProps) => {
-      dispatch({ type: 'SET_VENUE_TYPE_CODE', payload: form.venueTypeCode })
+      setVenueTypeCode(form.venueTypeCode)
       hideModal()
     },
-    [dispatch, hideModal]
+    [setVenueTypeCode, hideModal]
   )
 
   return (

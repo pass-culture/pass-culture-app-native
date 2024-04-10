@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { Venue } from 'features/venue/types'
-import { useVenueMapState } from 'features/venueMap/context/VenueMapWrapper'
+import { useVenueMapStore } from 'features/venueMap/context/useVenueMapStore'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
 import { getVenueTypeFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getVenueTypeFacetFilters'
 import { buildVenueTypesPredicate } from 'libs/algolia/fetchAlgolia/buildVenuesQueryOptions'
@@ -21,20 +21,16 @@ type Props = {
 
 export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
   const netInfo = useNetInfoContext()
-  const { venueMapState, dispatch } = useVenueMapState()
+  const { venueTypeCode, setVenues } = useVenueMapStore()
 
   const shouldFetchVenues = !!netInfo.isConnected && !initialVenues?.length
 
-  const facetFilters: FiltersArray = venueMapState.venueTypeCode
-    ? [
-        buildVenueTypesPredicate([
-          getVenueTypeFacetFilters(getVenueTypeLabel(venueMapState.venueTypeCode)),
-        ]),
-      ]
+  const facetFilters: FiltersArray = venueTypeCode
+    ? [buildVenueTypesPredicate([getVenueTypeFacetFilters(getVenueTypeLabel(venueTypeCode))])]
     : []
 
   const { data: fetchedVenues } = useQuery<Venue[]>(
-    [QueryKeys.VENUES, region, venueMapState.venueTypeCode],
+    [QueryKeys.VENUES, region, venueTypeCode],
     () =>
       fetchVenues({
         query: '',
@@ -58,9 +54,9 @@ export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
 
   useEffect(() => {
     if (venues) {
-      dispatch({ type: 'SET_VENUES', payload: venues })
+      setVenues(venues)
     }
-  }, [venues, dispatch, initialVenues])
+  }, [venues, setVenues, initialVenues])
 
   return { venues }
 }
