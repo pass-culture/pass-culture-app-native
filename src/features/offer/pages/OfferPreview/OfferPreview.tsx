@@ -47,20 +47,11 @@ export const OfferPreview: FunctionComponent = () => {
           vertical={false}
           height={screenHeight}
           width={screenWidth}
-          style={{
-            width: screenWidth,
-          }}
           loop={false}
           scrollAnimationDuration={500}
           onProgressChange={(_, absoluteProgress) => {
             progressValue.value = absoluteProgress
             setIndex(Math.round(absoluteProgress))
-          }}
-          mode="parallax"
-          modeConfig={{
-            parallaxScrollingScale: 1,
-            parallaxScrollingOffset: 0,
-            parallaxAdjacentItemScale: 0.9,
           }}
           data={images}
           renderItem={({ item: image }) => <PinchableBox imageUrl={image} />}
