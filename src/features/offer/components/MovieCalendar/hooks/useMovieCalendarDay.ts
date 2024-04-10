@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import { Timestamp } from 'react-native-reanimated/lib/types/lib/reanimated2/commonTypes'
 import { useTheme } from 'styled-components/native'
 
 import { DAYS, FullWeekDay, SHORT_DAYS, ShortWeekDay } from 'shared/date/days'
@@ -38,7 +37,7 @@ type DayMapping = {
   dayDate: number
   shortMonth: CapitalizedShortMonth
   fullMonth: CapitalizedMonth
-  timestamp: Timestamp
+  timestamp: number
 }
 
 const extractDate = (date: Date): DayMapping => {
