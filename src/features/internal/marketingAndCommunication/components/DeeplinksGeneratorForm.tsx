@@ -74,13 +74,11 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     return (
       <React.Fragment key={screenName}>
-        <Spacer.Column numberOfSpaces={2} />
         <RadioButton
           label={screenName}
           isSelected={selectedScreen === screenName}
           onSelect={onSelectScreenName}
         />
-        <Spacer.Column numberOfSpaces={2} />
         <Separator.Horizontal />
       </React.Fragment>
     )
