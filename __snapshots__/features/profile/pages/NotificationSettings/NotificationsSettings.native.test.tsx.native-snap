@@ -702,7 +702,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
               ]
             }
           >
-            Tes thème suivis
+            Tes thèmes suivis
           </Text>
           <View
             numberOfSpaces={4}
@@ -3057,7 +3057,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
               ]
             }
           >
-            Tes thème suivis
+            Tes thèmes suivis
           </Text>
           <View
             numberOfSpaces={6}

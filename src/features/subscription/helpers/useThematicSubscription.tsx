@@ -52,7 +52,7 @@ export const useThematicSubscription = ({
   const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
     async () => {
       analytics.logNotificationToggle(!!state.allowEmails, !!state.allowPush)
-      if (!isThemeSubscribed) {
+      if (!isSubscribeButtonActive) {
         await onUpdateSubscriptionSuccess?.()
       }
     },

@@ -179,7 +179,7 @@ export const NotificationsSettings = () => {
           <Spacer.Column numberOfSpaces={4} />
           <Separator.Horizontal />
           <Spacer.Column numberOfSpaces={8} />
-          <Typo.Title4 {...getHeadingAttrs(2)}>Tes thème suivis</Typo.Title4>
+          <Typo.Title4 {...getHeadingAttrs(2)}>Tes thèmes suivis</Typo.Title4>
           {!isLoggedIn || areNotificationsEnabled ? null : (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
