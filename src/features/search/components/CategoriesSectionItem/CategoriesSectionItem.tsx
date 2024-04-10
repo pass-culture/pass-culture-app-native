@@ -50,7 +50,6 @@ export const CategoriesSectionItem = <N,>({
 
   return (
     <ListItem>
-      <Spacer.Column numberOfSpaces={3} />
       {shouldHideArrow ? (
         <RadioButton
           label={item.label}
@@ -60,17 +59,20 @@ export const CategoriesSectionItem = <N,>({
           complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
         />
       ) : (
-        <FilterRow
-          icon={handleGetIcon(k as SearchGroupNameEnumv2)}
-          shouldColorIcon
-          title={item.label}
-          description={getDescription(subcategoriesData, descriptionContext, k)}
-          onPress={() => handleSelect(itemKey)}
-          captionId={k}
-          complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
-        />
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={3} />
+          <FilterRow
+            icon={handleGetIcon(k as SearchGroupNameEnumv2)}
+            shouldColorIcon
+            title={item.label}
+            description={getDescription(subcategoriesData, descriptionContext, k)}
+            onPress={() => handleSelect(itemKey)}
+            captionId={k}
+            complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
+          />
+          <Spacer.Column numberOfSpaces={3} />
+        </React.Fragment>
       )}
-      <Spacer.Column numberOfSpaces={3} />
     </ListItem>
   )
 }
