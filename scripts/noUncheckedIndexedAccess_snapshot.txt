@@ -460,6 +460,7 @@
 ./src/features/search/pages/modals/VenueModal/useVenueModal.native.test.tsx:10
 ./src/features/venue/components/TabLayout/useTabArrowNavigation.web.ts:24
 ./src/features/venue/components/VenueOfferTile/VenueOfferTile.native.test.tsx:11
+./src/features/venueMap/context/useVenueMapStore.native.test.ts:31
 ./src/libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters.ts:23
 ./src/libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults.test.ts:23
 ./src/libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition.test.ts:18
