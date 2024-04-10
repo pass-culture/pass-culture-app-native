@@ -78,6 +78,18 @@ describe('<SubscribeButtonWithTooltip />', () => {
 
     expect(screen.queryByText(TOOLTIP_TEXT)).not.toBeOnTheScreen()
   })
+
+  it('should not show tooltip anymore when user presses close button', async () => {
+    renderSubscribeButtonWithTooltip()
+
+    await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
+    fireEvent.press(screen.getByLabelText('Fermer le tooltip'))
+
+    renderSubscribeButtonWithTooltip()
+    await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
+
+    expect(screen.queryByText(TOOLTIP_TEXT)).not.toBeOnTheScreen()
+  })
 })
 
 const renderSubscribeButtonWithTooltip = ({ active }: { active: boolean } = { active: false }) =>

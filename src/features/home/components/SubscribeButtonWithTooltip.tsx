@@ -29,6 +29,13 @@ export const SubscribeButtonWithTooltip = (props: { active: boolean; onPress: ()
   }, [setIsTooltipVisible])
 
   const hideTooltip = useCallback(() => setIsTooltipVisible(false), [setIsTooltipVisible])
+  const onCloseIconPress = useCallback(async () => {
+    setIsTooltipVisible(false)
+    await storage.saveString(
+      'times_subscription_tooltip_has_been_displayed',
+      String(MAX_TOOLTIP_DISPLAYS)
+    )
+  }, [setIsTooltipVisible])
 
   useEffect(() => {
     if (props.active) return
@@ -51,6 +58,7 @@ export const SubscribeButtonWithTooltip = (props: { active: boolean; onPress: ()
         pointerDirection="bottom"
         isVisible={isTooltipVisible}
         onHide={hideTooltip}
+        onCloseIconPress={onCloseIconPress}
       />
     </React.Fragment>
   )
