@@ -353,7 +353,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
             dir="ltr"
             role="heading"
           >
-            Tes thème suivis
+            Tes thèmes suivis
           </h2>
           <div
             class="css-view-175oi2r r-height-1472mwg"
