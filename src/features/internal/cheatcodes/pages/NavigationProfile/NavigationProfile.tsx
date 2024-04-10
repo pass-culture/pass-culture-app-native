@@ -37,6 +37,7 @@ export function NavigationProfile(): React.JSX.Element {
       <StyledContainer>
         <LinkToComponent name="Login" />
         <LinkToComponent name="ChangeEmail" />
+        <LinkToComponent name="ChangeEmailSetPassword" navigationParams={{ token: 'token' }} />
         <LinkToComponent name="ConsentSettings" />
         <LinkToComponent name="NotificationsSettings" />
         <Row half>
