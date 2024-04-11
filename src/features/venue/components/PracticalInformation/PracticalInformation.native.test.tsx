@@ -82,11 +82,19 @@ describe('PracticalInformation', () => {
     expect(screen.queryByText('Contact')).not.toBeOnTheScreen()
   })
 
-  it('should not display contact section when empty contacts fields provided', async () => {
+  it('should not display contact section when unused fields are defined but used fields are empty', async () => {
     render(
       reactQueryProviderHOC(
         <PracticalInformation
-          venue={{ ...venueResponseSnap, contact: { email: '', phoneNumber: '' } }}
+          venue={{
+            ...venueResponseSnap,
+            contact: {
+              email: '',
+              phoneNumber: '',
+              website: '',
+              socialMedias: { facebook: 'https://example.com' },
+            },
+          }}
         />
       )
     )
