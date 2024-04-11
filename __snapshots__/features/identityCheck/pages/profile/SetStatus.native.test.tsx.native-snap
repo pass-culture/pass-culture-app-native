@@ -404,10 +404,10 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         />
                       </View>
                       <View
+                        contentDirection="row"
                         style={
                           [
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             },
@@ -573,10 +573,10 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         />
                       </View>
                       <View
+                        contentDirection="row"
                         style={
                           [
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             },
@@ -742,10 +742,10 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         />
                       </View>
                       <View
+                        contentDirection="row"
                         style={
                           [
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             },
@@ -911,10 +911,10 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         />
                       </View>
                       <View
+                        contentDirection="row"
                         style={
                           [
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             },
@@ -1080,10 +1080,10 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         />
                       </View>
                       <View
+                        contentDirection="row"
                         style={
                           [
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             },
@@ -1249,10 +1249,10 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         />
                       </View>
                       <View
+                        contentDirection="row"
                         style={
                           [
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             },
@@ -1418,10 +1418,10 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         />
                       </View>
                       <View
+                        contentDirection="row"
                         style={
                           [
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             },
@@ -1602,10 +1602,10 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         />
                       </View>
                       <View
+                        contentDirection="row"
                         style={
                           [
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             },
@@ -1786,10 +1786,10 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         />
                       </View>
                       <View
+                        contentDirection="row"
                         style={
                           [
                             {
-                              "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
                             },
