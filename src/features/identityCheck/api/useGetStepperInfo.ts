@@ -1,23 +1,19 @@
-import { useQuery } from 'react-query'
+import { UseQueryResult, useQuery } from 'react-query'
 
 import { api } from 'api/api'
-import { SubscriptionStepperResponse } from 'api/gen'
+import { NextSubscriptionStepResponse, SubscriptionStepperResponse } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useGetStepperInfo = (): {
-  stepToDisplay: SubscriptionStepperResponse['subscriptionStepsToDisplay']
-  title: SubscriptionStepperResponse['title']
-  subtitle?: SubscriptionStepperResponse['subtitle'] | null
-  errorMessage?: SubscriptionStepperResponse['errorMessage'] | null
-  identificationMethods?: SubscriptionStepperResponse['allowedIdentityCheckMethods'] | null
-} => {
-  const { data } = useQuery([QueryKeys.STEPPER_INFO], () => api.getNativeV1SubscriptionStepper())
+export type SubscriptionStepperResponseV2 = SubscriptionStepperResponse & {
+  nextSubscriptionStep?: NextSubscriptionStepResponse['nextSubscriptionStep']
+  subscriptionMessage?: NextSubscriptionStepResponse['subscriptionMessage']
+  hasIdentityCheckPending?: NextSubscriptionStepResponse['hasIdentityCheckPending']
+}
 
-  return {
-    stepToDisplay: data?.subscriptionStepsToDisplay || [],
-    title: data?.title || '',
-    subtitle: data?.subtitle,
-    errorMessage: data?.errorMessage,
-    identificationMethods: data?.allowedIdentityCheckMethods,
-  }
+export const useGetStepperInfo = (): UseQueryResult<SubscriptionStepperResponseV2, unknown> => {
+  const query = useQuery<SubscriptionStepperResponseV2>([QueryKeys.STEPPER_INFO], () =>
+    api.getNativeV1SubscriptionStepper()
+  )
+
+  return query
 }

@@ -28,7 +28,7 @@ type StepsDictionary = Record<PartialIdentityCheckStep, StepConfig>
 // hook as it can be dynamic depending on subscription step
 export const useStepperInfo = (): StepperInfo => {
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
-  const { stepToDisplay, title, subtitle, errorMessage, identificationMethods } =
+  const { subscriptionStepsToDisplay, title, subtitle, errorMessage, allowedIdentityCheckMethods } =
     useGetStepperInfo()
 
   const stepsConfig: StepsDictionary = {
@@ -50,7 +50,7 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
       },
-      firstScreen: computeIdentificationMethod(identificationMethods),
+      firstScreen: computeIdentificationMethod(allowedIdentityCheckMethods),
     },
     [IdentityCheckStep.CONFIRMATION]: {
       name: IdentityCheckStep.CONFIRMATION,
@@ -78,7 +78,7 @@ export const useStepperInfo = (): StepperInfo => {
     },
   }
 
-  const stepDetailsList = stepToDisplay.map((step) => {
+  const stepDetailsList = subscriptionStepsToDisplay.map((step) => {
     if (!isPartialIdentityCheckStep(step.name, stepsConfig)) return null
     const currentStepConfig: StepConfig = stepsConfig[step.name]
     const stepDetails: StepExtendedDetails = {

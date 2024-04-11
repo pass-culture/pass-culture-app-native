@@ -2,9 +2,9 @@ import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
-import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
 import { useHomeBanner } from 'features/home/api/useHomeBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
+import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
@@ -44,7 +44,7 @@ function NonBeneficiaryBanner({
   eligibilityEndDatetime,
 }: Readonly<NonBeneficiaryHeaderProps>) {
   const today = new Date()
-  const { data: subscription } = useNextSubscriptionStep()
+  const { data: subscription } = useGetStepperInfo()
 
   const { permissionState } = useLocation()
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
