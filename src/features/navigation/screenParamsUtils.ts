@@ -86,6 +86,7 @@ export const screenParamsParser: ParamsParsers = {
   BookingConfirmation: {
     offerId: Number,
     bookingId: Number,
+    apiRecoParams: identityFn,
   },
 
   Login: {

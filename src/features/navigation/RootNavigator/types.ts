@@ -201,7 +201,7 @@ export type RootStackParamList = {
   CheatMenu: undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number }
   ConfirmDeleteProfile: undefined
-  BookingConfirmation: { offerId: number; bookingId: number }
+  BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
   BookingDetails: { id: number }
   ConsentSettings: { onGoBack?: () => void } | undefined
   CulturalSurvey: undefined

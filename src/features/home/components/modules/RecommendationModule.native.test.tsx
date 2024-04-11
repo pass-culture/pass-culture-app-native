@@ -3,6 +3,7 @@ import React from 'react'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
 
@@ -14,9 +15,15 @@ const displayParameters: DisplayParametersFields = {
   layout: 'one-item-medium',
 }
 
+const defaultRecommendationApiParams: RecommendationApiParams = {
+  call_id: '1',
+  reco_origin: 'unknown',
+}
+
 jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
   useHomeRecommendedOffers: jest.fn(() => ({
     offers: mockedAlgoliaResponse.hits,
+    recommendationApiParams: defaultRecommendationApiParams,
   })),
 }))
 
@@ -29,7 +36,8 @@ describe('RecommendationModule', () => {
       'abcd',
       ContentTypes.RECOMMENDATION,
       1,
-      'xyz'
+      'xyz',
+      defaultRecommendationApiParams
     )
   })
 

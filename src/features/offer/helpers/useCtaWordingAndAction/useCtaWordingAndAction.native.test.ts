@@ -7,6 +7,7 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnum,
 } from 'api/gen'
+import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -545,6 +546,14 @@ describe('getCtaWordingAndAction', () => {
   })
 
   describe('CTA - Analytics', () => {
+    const defaultApiRecoParams = {
+      call_id: '1',
+      reco_origin: 'unknown',
+      model_origin: 'default',
+    }
+
+    const defaultPlaylistType = PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS
+
     it('logs event ClickBookOffer when we click CTA "Réserver l’offre" (beneficiary user)', () => {
       const offer = buildOffer({ externalTicketOfficeUrl: 'https://www.google.com' })
       const subcategory = buildSubcategory({ isEvent: false })
@@ -562,11 +571,17 @@ describe('getCtaWordingAndAction', () => {
           bookOffer: () => {},
           isBookingLoading: false,
           booking: undefined,
+          apiRecoParams: defaultApiRecoParams,
+          playlistType: defaultPlaylistType,
         }) || {}
 
       onPress?.()
 
-      expect(analytics.logClickBookOffer).toHaveBeenNthCalledWith(1, { offerId: baseOffer.id })
+      expect(analytics.logClickBookOffer).toHaveBeenNthCalledWith(1, {
+        offerId: baseOffer.id,
+        ...defaultApiRecoParams,
+        playlistType: defaultPlaylistType,
+      })
     })
 
     it('logs event ClickBookOffer when CTA "Voir les disponibilités" is clicked', () => {
@@ -586,11 +601,17 @@ describe('getCtaWordingAndAction', () => {
           bookOffer: () => {},
           isBookingLoading: false,
           booking: undefined,
+          apiRecoParams: defaultApiRecoParams,
+          playlistType: defaultPlaylistType,
         }) || {}
 
       onPress?.()
 
-      expect(analytics.logClickBookOffer).toHaveBeenNthCalledWith(1, { offerId: baseOffer.id })
+      expect(analytics.logClickBookOffer).toHaveBeenNthCalledWith(1, {
+        offerId: baseOffer.id,
+        ...defaultApiRecoParams,
+        playlistType: defaultPlaylistType,
+      })
     })
 
     it('logs event ConsultAvailableDates when we click CTA "Voir les disponibilités" (beneficiary user)', () => {

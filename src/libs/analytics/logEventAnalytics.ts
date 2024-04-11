@@ -20,6 +20,7 @@ import { analytics, buildPerformSearchState, urlWithValueMaxLength } from 'libs/
 import { buildAccessibilityFilterParam } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
+import { RecommendationApiParams } from 'shared/offer/types'
 
 type BaseThematicHome = {
   homeEntryId: string
@@ -154,8 +155,13 @@ export const logEventAnalytics = {
       amplitude: AmplitudeEvent.CHOOSE_METHOD_UBBLE,
       firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
     }),
-  logClickBookOffer: (params: { offerId: number; from?: Referrals; searchId?: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, params),
+  logClickBookOffer: (params: {
+    offerId: number
+    from?: Referrals
+    searchId?: string
+    apiRecoParams?: RecommendationApiParams
+    playlistType?: PlaylistType
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, params),
   logClickForceUpdate: (appVersionId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_FORCE_UPDATE }, { appVersionId }),
   logClickSeeMore: (params: { moduleName: string; moduleId: string }) =>
@@ -297,6 +303,8 @@ export const logEventAnalytics = {
     moduleName?: string
     moduleId?: string
     searchId?: string
+    apiRecoParams?: RecommendationApiParams
+    playlistType?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES }, params),
   logHasAppliedFavoritesSorting: ({ sortBy }: { sortBy: FavoriteSortBy }) =>
     analytics.logEvent(
@@ -381,11 +389,13 @@ export const logEventAnalytics = {
     moduleId: string,
     moduleType: ContentTypes,
     index: number,
-    homeEntryId: string | undefined
+    homeEntryId: string | undefined,
+    apiRecoParams?: RecommendationApiParams
   ) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.MODULE_DISPLAYED_ON_HOMEPAGE },
       {
+        ...apiRecoParams,
         homeEntryId,
         index,
         moduleId,
@@ -465,11 +475,17 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.PHONE_NUMBER_CLICKED }),
   logPhoneValidationCodeClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.PHONE_VALIDATION_CODE_CLICKED }),
-  logPlaylistHorizontalScroll: (fromOfferId?: number) =>
+  logPlaylistHorizontalScroll: (
+    fromOfferId?: number,
+    playlistType?: PlaylistType,
+    apiRecoParams?: RecommendationApiParams
+  ) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.PLAYLIST_HORIZONTAL_SCROLL },
       {
+        ...apiRecoParams,
         fromOfferId,
+        playlistType,
       }
     ),
   logPlaylistVerticalScroll: (params: {

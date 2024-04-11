@@ -54,7 +54,8 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         moduleId,
         ContentTypes.RECOMMENDATION,
         index,
-        homeEntryId
+        homeEntryId,
+        recommendationApiParams
       )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

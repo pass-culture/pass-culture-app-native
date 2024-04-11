@@ -9,6 +9,7 @@ import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSi
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { theme } from 'theme'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { useModal } from 'ui/components/modals/useModal'
@@ -38,13 +39,26 @@ export const FavoriteButton: React.FC<Props> = (props) => {
   const { showErrorSnackBar } = useSnackBarContext()
   const { params } = useRoute<UseRouteType<'Offer'>>()
 
+  const apiRecoParams: RecommendationApiParams = params?.apiRecoParams
+    ? JSON.parse(params?.apiRecoParams)
+    : undefined
+
   const scaleFavoriteIconAnimatedValueRef = useRef(new Animated.Value(1))
 
   const { mutate: addFavorite, isLoading: addFavoriteIsLoading } = useAddFavorite({
     onSuccess: () => {
       if (typeof offerId === 'number' && (props.analyticsParams ?? params)) {
-        const { from, moduleName, moduleId, searchId } = props.analyticsParams ?? params
-        analytics.logHasAddedOfferToFavorites({ from, offerId, moduleName, moduleId, searchId })
+        const { from, moduleName, moduleId, searchId, playlistType } =
+          props.analyticsParams ?? params
+        analytics.logHasAddedOfferToFavorites({
+          from,
+          offerId,
+          moduleName,
+          moduleId,
+          searchId,
+          ...apiRecoParams,
+          playlistType,
+        })
       }
     },
   })
