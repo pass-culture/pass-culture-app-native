@@ -31,14 +31,8 @@ export const SearchWrapper = memo(function SearchWrapper({
   children: React.JSX.Element
 }) {
   const maxPrice = useMaxPrice()
-  const priceRange: [number, number] = [0, maxPrice]
 
-  const initialSearchStateWithPriceRange = {
-    ...initialSearchState,
-    priceRange,
-  }
-
-  const [searchState, dispatch] = useReducer(searchReducer, initialSearchStateWithPriceRange)
+  const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
   const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
 
   const [isFocusOnSuggestions, setIsFocusOnSuggestions] = useState(false)
@@ -75,7 +69,8 @@ export const SearchWrapper = memo(function SearchWrapper({
   }, [selectedLocationMode, place, aroundMeRadius, aroundPlaceRadius, dispatch])
 
   useEffect(() => {
-    dispatch({ type: 'SET_STATE', payload: { ...searchState, priceRange } })
+    // dispatch({ type: 'SET_STATE', payload: { ...searchState, priceRange } })
+    dispatch({ type: 'SET_STATE', payload: { ...searchState } })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [maxPrice])
 
