@@ -440,7 +440,7 @@ export function getDefaultFormView(tree: MappingTree, searchState: SearchState) 
 
   if (!offerCategories?.[0]) return CategoriesModalView.CATEGORIES
   const category = tree[offerCategories[0]]
-  const nativeCategories = category.children
+  const nativeCategories = category?.children
   const nativeCategory = offerNativeCategories?.[0]
     ? nativeCategories?.[offerNativeCategories[0]]
     : undefined
