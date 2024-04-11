@@ -1,11 +1,15 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useChangeEmailSetPasswordMutation } from 'features/profile/helpers/useChangeEmailSetPasswordMutation'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
+import { useSnackBarContext, SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -16,6 +20,10 @@ type FormValues = {
 }
 
 export const ChangeEmailSetPassword = () => {
+  const { replace } = useNavigation<UseNavigationType>()
+  const { params } = useRoute<UseRouteType<'ChangeEmailSetPassword'>>()
+  const { showErrorSnackBar, showSuccessSnackBar } = useSnackBarContext()
+
   const {
     control,
     handleSubmit,
@@ -28,6 +36,26 @@ export const ChangeEmailSetPassword = () => {
     resolver: yupResolver(newPasswordSchema),
     mode: 'onChange',
   })
+
+  const { mutate: setPassword, isLoading } = useChangeEmailSetPasswordMutation({
+    onSuccess: () => {
+      showSuccessSnackBar({
+        message: 'Ton mot de passe a bien été créé.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+      replace('TrackEmailChange')
+    },
+    onError: () =>
+      showErrorSnackBar({
+        message:
+          'Une erreur s’est produite lors de la création du mot de passe. Réessaie plus tard.',
+        timeout: SNACK_BAR_TIME_OUT,
+      }),
+  })
+
+  const onSubmit = handleSubmit(({ newPassword }) =>
+    setPassword({ resetPasswordToken: params.token, newPassword })
+  )
 
   return (
     <SecondaryPageWithBlurHeader title="Créer mon mot de passe">
@@ -62,7 +90,8 @@ export const ChangeEmailSetPassword = () => {
         <ButtonPrimary
           wording="Créer mon mot de passe"
           disabled={!isValid}
-          onPress={handleSubmit(() => undefined)}
+          isLoading={isLoading}
+          onPress={onSubmit}
         />
       </Form.MaxWidth>
     </SecondaryPageWithBlurHeader>
