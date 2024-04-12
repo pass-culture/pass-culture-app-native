@@ -5,6 +5,7 @@ export const adaptVenueMapModule = (module: VenueMapBlockContentModel): VenueMap
   if (module.fields === undefined) return null
 
   return {
+    id: module.sys.id,
     type: HomepageModuleType.VenueMapModule,
   }
 }

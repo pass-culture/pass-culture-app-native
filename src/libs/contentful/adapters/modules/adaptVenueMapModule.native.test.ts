@@ -5,6 +5,7 @@ import { venueMapBlockContentModelFixture } from 'libs/contentful/fixtures/venue
 describe('adaptVenueMapModule', () => {
   it('should adapt from Contentful VenueMapBlock data', () => {
     expect(adaptVenueMapModule(venueMapBlockContentModelFixture)).toEqual({
+      id: '5Tzq8bP20RkPQexo7qNb9i',
       type: HomepageModuleType.VenueMapModule,
     })
   })
