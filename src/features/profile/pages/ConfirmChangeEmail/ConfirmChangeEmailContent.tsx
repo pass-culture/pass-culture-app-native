@@ -21,12 +21,22 @@ export const ConfirmChangeEmailContent = () => {
   const loginRoutine = useLoginRoutine()
   const { showErrorSnackBar } = useSnackBarContext()
   const { mutate, isLoading } = useConfirmChangeEmailMutationV2({
-    onSuccess: async ({ accessToken, refreshToken, newEmailSelectionToken: token }) => {
+    onSuccess: async ({
+      accessToken,
+      refreshToken,
+      newEmailSelectionToken,
+      resetPasswordToken,
+    }) => {
       await loginRoutine(
         { accessToken, refreshToken, accountState: AccountState.ACTIVE },
         'fromConfirmChangeEmail'
       )
-      navigate('NewEmailSelection', { token })
+
+      if (resetPasswordToken) {
+        navigate('ChangeEmailSetPassword', { token: resetPasswordToken })
+      } else {
+        navigate('NewEmailSelection', { token: newEmailSelectionToken })
+      }
     },
     onError: (error) => {
       if (error instanceof ApiError && error.statusCode === 401) {
