@@ -45,7 +45,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
 
   const moduleName = displayParameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
-    analytics.logAllTilesSeen({ moduleName, numberOfTiles: nbOffers })
+    analytics.logAllTilesSeen({ moduleName, numberOfTiles: nbOffers, ...recommendationApiParams })
   )
 
   useEffect(() => {

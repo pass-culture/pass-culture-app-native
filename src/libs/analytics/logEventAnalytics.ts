@@ -93,6 +93,7 @@ export const logEventAnalytics = {
     searchId?: string
     moduleId?: string
     venueId?: number
+    apiRecoParams?: RecommendationApiParams
   }) => analytics.logEvent({ firebase: AnalyticsEvent.ALL_TILES_SEEN }, params),
   logBackToHomeFromEduconnectError: (params: { fromError: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.BACK_TO_HOME_FROM_EDUCONNECT_ERROR }, params),
