@@ -9,7 +9,6 @@ import React, {
 } from 'react'
 
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
-import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -30,8 +29,6 @@ export const SearchWrapper = memo(function SearchWrapper({
 }: {
   children: React.JSX.Element
 }) {
-  const maxPrice = useMaxPrice()
-
   const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
   const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
 
@@ -67,11 +64,6 @@ export const SearchWrapper = memo(function SearchWrapper({
         break
     }
   }, [selectedLocationMode, place, aroundMeRadius, aroundPlaceRadius, dispatch])
-
-  useEffect(() => {
-    dispatch({ type: 'SET_STATE', payload: searchState })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [maxPrice])
 
   const resetSearch = useCallback(() => {
     dispatch({ type: 'SET_STATE', payload: initialSearchState })
