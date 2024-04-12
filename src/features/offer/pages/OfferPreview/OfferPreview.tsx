@@ -5,6 +5,7 @@ import { useWindowDimensions } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import Carousel from 'react-native-reanimated-carousel'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -42,6 +43,7 @@ export const OfferPreview: FunctionComponent = () => {
   if (!offer?.image) return null
 
   const images = [offer.image.url, offer.image.url, offer.image.url]
+  const carouselDotId = uuidv4()
 
   return (
     <Container>
@@ -72,7 +74,13 @@ export const OfferPreview: FunctionComponent = () => {
                 <Footer height={footerHeight}>
                   <PaginationContainer gap={2}>
                     {images.map((_, index) => {
-                      return <CarouselDot animValue={progressValue} index={index} key={index} />
+                      return (
+                        <CarouselDot
+                          animValue={progressValue}
+                          index={index}
+                          key={index + carouselDotId}
+                        />
+                      )
                     })}
                   </PaginationContainer>
                 </Footer>
