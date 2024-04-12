@@ -16,13 +16,16 @@ type Props = {
   subcategory: Subcategory
 }
 export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcategory }) => {
-  const { stocks, id: offerId } = offer
+  const { stocks, id: offerId, isExternalBookingsDisabled } = offer
   const offerVenueId = offer.venue.id
 
   const { movieScreeningDates, selectedDate, setSelectedDate, selectedScreeningStock } =
     useMovieScreeningCalendar(stocks)
 
-  const { bookingData, selectedDateScreenings } = useSelectedDateScreening(selectedScreeningStock)
+  const { bookingData, selectedDateScreenings } = useSelectedDateScreening(
+    selectedScreeningStock,
+    isExternalBookingsDisabled
+  )
 
   const {
     onPress: onPressOfferCTA,

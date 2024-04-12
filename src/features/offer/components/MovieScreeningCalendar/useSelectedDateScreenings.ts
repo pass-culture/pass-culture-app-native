@@ -11,7 +11,8 @@ import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { EventCardProps } from 'ui/components/eventCard/EventCard'
 
 export const useSelectedDateScreening = (
-  selectedScreeningStock: OfferStockResponse[] | undefined
+  selectedScreeningStock: OfferStockResponse[] | undefined,
+  isExternalBookingsDisabled: boolean
 ) => {
   const [bookingData, setBookingData] = useState<MovieScreeningBookingData>()
 
@@ -42,6 +43,10 @@ export const useSelectedDateScreening = (
         let subtitleLeft: EventCardSubtitleEnum | string
 
         switch (true) {
+          case isExternalBookingsDisabled:
+            subtitleLeft = EventCardSubtitleEnum.UNAVAILABLE
+            isDisabled = true
+            break
           case isScreeningSoldOut && (!isUserLoggedIn || hasEnoughCredit):
             subtitleLeft = EventCardSubtitleEnum.FULLY_BOOKED
             isDisabled = true
@@ -64,6 +69,7 @@ export const useSelectedDateScreening = (
         }
 
         const shouldNotHaveSubtitleRight =
+          subtitleLeft === EventCardSubtitleEnum.UNAVAILABLE ||
           subtitleLeft === EventCardSubtitleEnum.NOT_ENOUGH_CREDIT ||
           subtitleLeft === EventCardSubtitleEnum.ALREADY_BOOKED ||
           subtitleLeft === EventCardSubtitleEnum.FULLY_BOOKED
@@ -92,7 +98,7 @@ export const useSelectedDateScreening = (
       }
       return undefined
     },
-    []
+    [isExternalBookingsDisabled]
   )
 
   const convertToMinutes = (time: string): number => {
