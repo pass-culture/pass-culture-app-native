@@ -64,7 +64,7 @@ type CategoryCriteria = {
   }
 }
 
-export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
+export const CATEGORY_CRITERIA: CategoryCriteria = {
   [SearchGroupNameEnumv2.NONE]: {
     icon: categoriesIcons.All,
     illustration: undefined,
