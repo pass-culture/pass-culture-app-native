@@ -25,6 +25,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
 import { MovieScreeningUserData } from 'features/offer/components/MovieScreeningCalendar/types'
+import { PlaylistType } from 'features/offer/enums'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
@@ -71,6 +72,8 @@ type Props = {
   searchId?: string
   enableNewXpCine?: boolean
   isDepositExpired?: boolean
+  apiRecoParams?: RecommendationApiParams
+  playlistType?: PlaylistType
 }
 
 export type ICTAWordingAndAction = {
@@ -103,6 +106,8 @@ export const getCtaWordingAndAction = ({
   searchId,
   enableNewXpCine,
   isDepositExpired,
+  apiRecoParams,
+  playlistType,
 }: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl, subcategoryId } = offer
 
@@ -252,7 +257,13 @@ export const getCtaWordingAndAction = ({
       wording: 'Réserver l’offre',
       isDisabled: false,
       onPress: () => {
-        analytics.logClickBookOffer({ offerId: offer.id, from, searchId })
+        analytics.logClickBookOffer({
+          offerId: offer.id,
+          from,
+          searchId,
+          ...apiRecoParams,
+          playlistType,
+        })
       },
     }
   }
@@ -272,7 +283,13 @@ export const getCtaWordingAndAction = ({
       isDisabled: false,
       onPress: () => {
         analytics.logConsultAvailableDates(offer.id)
-        analytics.logClickBookOffer({ offerId: offer.id, from, searchId })
+        analytics.logClickBookOffer({
+          offerId: offer.id,
+          from,
+          searchId,
+          ...apiRecoParams,
+          playlistType,
+        })
       },
       movieScreeningUserData: { hasEnoughCredit },
     }
@@ -360,5 +377,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     searchId,
     enableNewXpCine,
     isDepositExpired,
+    apiRecoParams,
+    playlistType,
   })
 }

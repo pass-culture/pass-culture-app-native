@@ -7,8 +7,10 @@ import * as useAddFavoriteAPI from 'features/favorites/api/useAddFavorite'
 import * as useRemoveFavoriteAPI from 'features/favorites/api/useRemoveFavorite'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
+import { PlaylistType } from 'features/offer/enums'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
@@ -216,6 +218,39 @@ describe('<FavoriteButton />', () => {
           from,
           offerId,
           searchId,
+        })
+      })
+    })
+
+    it('With "apiRecoParams" as argument', async () => {
+      const offerId = favoriteResponseSnap.offer.id
+
+      const apiRecoParams: RecommendationApiParams = {
+        call_id: '1',
+        filtered: true,
+        geo_located: false,
+        model_endpoint: 'default',
+        model_name: 'similar_offers_default_prod',
+        model_version: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
+        reco_origin: 'algo',
+      }
+
+      useRoute.mockImplementationOnce(() => ({
+        params: {
+          apiRecoParams: JSON.stringify(apiRecoParams),
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+        },
+      }))
+      renderFavoriteButton({
+        id: offerId,
+      })
+      fireEvent.press(screen.getByTestId('icon-favorite'))
+
+      await waitFor(() => {
+        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+          offerId,
+          ...apiRecoParams,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         })
       })
     })

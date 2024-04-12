@@ -45,7 +45,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
 
   const moduleName = displayParameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
-    analytics.logAllTilesSeen({ moduleName, numberOfTiles: nbOffers })
+    analytics.logAllTilesSeen({ moduleName, numberOfTiles: nbOffers, ...recommendationApiParams })
   )
 
   useEffect(() => {
@@ -54,7 +54,8 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         moduleId,
         ContentTypes.RECOMMENDATION,
         index,
-        homeEntryId
+        homeEntryId,
+        recommendationApiParams
       )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

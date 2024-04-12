@@ -131,8 +131,11 @@ export function OfferPlaylistList({
   const shouldDisplaySameArtistPlaylist =
     !!isArrayNotEmpty(sameArtistPlaylist) && enableSameArtistPlaylist
 
-  const trackingOnHorizontalScroll = () => {
-    analytics.logPlaylistHorizontalScroll(fromOfferId)
+  const trackingOnHorizontalScroll = (
+    playlistType: PlaylistType,
+    apiRecoParams?: RecommendationApiParams
+  ) => {
+    analytics.logPlaylistHorizontalScroll(fromOfferId, playlistType, apiRecoParams)
   }
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
@@ -201,7 +204,7 @@ export function OfferPlaylistList({
                 apiRecoParams: playlist.apiRecoParams,
               })}
               title={playlist.title}
-              onEndReached={trackingOnHorizontalScroll}
+              onEndReached={() => trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)}
               playlistType={playlist.type}
             />
           </IntersectionObserver>
