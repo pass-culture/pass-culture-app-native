@@ -331,6 +331,36 @@ describe('Movie screening calendar', () => {
       expect(await screen.findByText('Crédit insuffisant')).toBeOnTheScreen()
     })
 
+    it('should show "Crédit insuffisant" instead of "Complet" when user does not have enough credit and screening is sold out', async () => {
+      mockAuthContext = {
+        ...defaultLoggedInUser,
+        user: {
+          ...beneficiaryUser,
+          domainsCredit: {
+            all: { initial: 0, remaining: 0 },
+            physical: { initial: 0, remaining: 0 },
+            digital: { initial: 0, remaining: 0 },
+          },
+        },
+      }
+
+      renderMovieScreeningCalendar({
+        offer: {
+          ...defaultOfferResponse,
+          stocks: [
+            {
+              ...defaultOfferStockResponse,
+              isSoldOut: true,
+            },
+          ],
+        },
+      })
+
+      await screen.findByLabelText('Mardi 27 Février')
+
+      expect(await screen.findByText('Crédit insuffisant')).toBeOnTheScreen()
+    })
+
     it('should log event ClickBookOffer when user is logged in and a cliquable eventcard is pressed', async () => {
       mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
 

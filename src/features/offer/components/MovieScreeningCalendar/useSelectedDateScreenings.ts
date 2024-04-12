@@ -42,7 +42,7 @@ export const useSelectedDateScreening = (
         let subtitleLeft: EventCardSubtitleEnum | string
 
         switch (true) {
-          case isScreeningSoldOut:
+          case isScreeningSoldOut && (!isUserLoggedIn || hasEnoughCredit):
             subtitleLeft = EventCardSubtitleEnum.FULLY_BOOKED
             isDisabled = true
             break
