@@ -1,13 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AccessibleTabBar renders correctly 1`] = `
-.c0 {
-  z-index: 2;
-}
-
 <div>
   <nav
-    class="c0"
+    class="sc-uVWWZ cmJsRX"
     id="tabBarID"
     role="navigation"
   >
