@@ -9,6 +9,7 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useModal } from 'ui/components/modals/useModal'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Spacer } from 'ui/theme'
 
 export function NavigationSubscription(): React.JSX.Element {
@@ -52,6 +53,13 @@ export function NavigationSubscription(): React.JSX.Element {
     <ScrollView>
       <PageHeaderSecondary title="Subscription 🔔" />
       <StyledContainer>
+        <Row half>
+          <InternalTouchableLink
+            as={ButtonPrimary}
+            wording="Ecran de séléction"
+            navigateTo={{ screen: 'OnboardingSubscription' }}
+          />
+        </Row>
         <Row half>
           <ButtonPrimary wording="Modale Cinéma" onPress={showCinemaModal} />
           <SubscriptionSuccessModal

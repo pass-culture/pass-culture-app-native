@@ -65,6 +65,7 @@ import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccoun
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
+import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
@@ -301,6 +302,11 @@ export const routes: RootRoute[] = [
     component: PersonalData,
     path: 'profil/donnees-personnelles',
     options: { title: 'Mes informations personnelles' },
+  },
+  {
+    name: 'OnboardingSubscription',
+    component: OnboardingSubscription,
+    path: 'onboarding-abonnement',
   },
   {
     name: 'ChangeEmail',
