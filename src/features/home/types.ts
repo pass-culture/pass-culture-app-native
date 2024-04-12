@@ -264,6 +264,7 @@ export enum Color {
 
 export type VenueMapModule = {
   type: HomepageModuleType.VenueMapModule
+  id: string
 }
 
 export type VideoModule = {
