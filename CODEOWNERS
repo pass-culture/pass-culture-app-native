@@ -19,7 +19,7 @@ src/features/offer/                                  @pass-culture/jeunes-decouv
 src/features/profile/                                @pass-culture/jeunes-activation
 src/features/search/                                 @pass-culture/jeunes-conversion
 src/features/share/                                  @pass-culture/jeunes-activation
-src/features/subscritption                           @pass-culture/jeunes-activation
+src/features/subscription                            @pass-culture/jeunes-activation
 src/features/trustedDevice/                          @pass-culture/jeunes-activation
 src/features/tutorial/                               @pass-culture/jeunes-activation
 src/features/venue/                                  @pass-culture/jeunes-decouverte
