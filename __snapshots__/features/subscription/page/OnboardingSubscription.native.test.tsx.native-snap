@@ -3,17 +3,22 @@
 exports[`OnboardingSubscription should render correctly 1`] = `
 [
   <View
-    accessibilityRole="header"
     style={
       [
         {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
-          "borderBottomWidth": 1,
-          "left": 0,
+          "height": 64,
+        },
+      ]
+    }
+    top={16}
+  />,
+  <View
+    style={
+      [
+        {
           "position": "absolute",
-          "right": 0,
           "top": 0,
+          "width": "100%",
           "zIndex": 1,
         },
       ]
@@ -34,140 +39,76 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       style={
         [
           {
-            "alignItems": "center",
             "height": 48,
             "justifyContent": "center",
+            "paddingHorizontal": 12,
           },
         ]
       }
     >
       <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
+        accessibilityLabel="Revenir en arrière"
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
         }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexGrow": 1,
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Revenir en arrière"
       >
         <View
-          positionInHeader="left"
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
-          }
-          testID="back-button-container"
+          height={24}
+          testID="icon-back"
+          width={24}
         >
-          <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
-              }
-            >
-              Retour
-            </Text>
-          </View>
+          <Text>
+            icon-back-SVG-Mock
+          </Text>
         </View>
         <Text
-          numberOfLines={1}
           style={
             [
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "textAlign": "center",
+                "display": "none",
               },
             ]
           }
-        />
-        <View
-          positionInHeader="right"
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
-          }
-          testID="close-button-container"
-        />
+        >
+          Retour
+        </Text>
       </View>
     </View>
   </View>,
@@ -262,11 +203,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
     renderItem={[Function]}
     scrollEventThrottle={50}
     stickyHeaderIndices={[]}
-    style={
-      [
-        {},
-      ]
-    }
     viewabilityConfigCallbackPairs={[]}
   >
     <View>

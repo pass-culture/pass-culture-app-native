@@ -12,10 +12,8 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
-import {
-  PageHeaderWithoutPlaceholder,
-  useGetHeaderHeight,
-} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { EmptyHeader } from 'ui/components/headers/EmpyHeader'
+import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -83,7 +81,7 @@ export const OnboardingSubscription = () => {
 
   return (
     <React.Fragment>
-      <PageHeaderWithoutPlaceholder title="" shouldDisplayBackButton />
+      <EmptyHeader />
       <StyledFlatList
         data={Object.values(SubscriptionTheme)}
         // @ts-ignore because of styled-components that doesn't pass the type
