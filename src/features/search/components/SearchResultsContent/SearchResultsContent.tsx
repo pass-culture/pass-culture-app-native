@@ -174,7 +174,7 @@ export const SearchResultsContent: React.FC = () => {
           query: searchState.query,
           index: index,
           searchId: searchState.searchId,
-          from: 'search',
+          from: 'searchresults',
         }}
       />
     ),

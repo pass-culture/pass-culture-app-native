@@ -17,7 +17,7 @@ import { HorizontalOfferTile } from './HorizontalOfferTile'
 const mockOffer = mockedAlgoliaResponse.hits[0]
 const offerId = Number(mockOffer.objectID)
 const mockAnalyticsParams: OfferAnalyticsParams = {
-  from: 'search',
+  from: 'searchresults',
   query: '',
   index: 0,
   searchId: '539b285e',
