@@ -58,7 +58,7 @@ export function OfferVenueBlock({
   const isCinema = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
   return (
-    <View>
+    <Container>
       <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
       <Spacer.Column numberOfSpaces={4} />
 
@@ -123,9 +123,13 @@ export function OfferVenueBlock({
           ) : null}
         </Fragment>
       )}
-    </View>
+    </Container>
   )
 }
+
+const Container = styled(View)<{ isDesktopViewport?: boolean }>(({ isDesktopViewport }) => ({
+  marginHorizontal: !isDesktopViewport ? getSpacing(6) : undefined,
+}))
 
 const TertiaryButtonWrapper = styled.View({
   alignItems: 'flex-start',
