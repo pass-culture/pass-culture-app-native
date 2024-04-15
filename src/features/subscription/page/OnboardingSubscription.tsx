@@ -2,6 +2,7 @@ import React, { useReducer } from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { SubscriptionCategoryButton } from 'features/subscription/components/buttons/SubscriptionCategoryButton'
@@ -21,6 +22,10 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const OnboardingSubscription = () => {
   const { goBack } = useGoBack(...getTabNavConfig('Home'))
   const headerHeight = useGetHeaderHeight()
+  const { user } = useAuthContext()
+
+  const initialSubscribedThemes: SubscriptionTheme[] = (user?.subscriptions?.subscribedThemes ??
+    []) as SubscriptionTheme[]
 
   const [subscribedThemes, toggleSubscribedTheme] = useReducer(
     (state: SubscriptionTheme[], action: SubscriptionTheme) => {
@@ -29,7 +34,7 @@ export const OnboardingSubscription = () => {
       }
       return [...state, action]
     },
-    []
+    initialSubscribedThemes
   )
 
   const isThemeToggled = (theme: SubscriptionTheme) => subscribedThemes.includes(theme)
