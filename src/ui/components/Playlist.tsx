@@ -66,7 +66,7 @@ export const Playlist: FunctionComponent<Props> = ({
   renderFooter,
   onEndReached,
 }) => {
-  const { isTouch, isDesktopViewport } = useTheme()
+  const { isTouch } = useTheme()
 
   const listRef = useRef<ListType<typeof isWeb>>(null)
   const {
@@ -77,7 +77,7 @@ export const Playlist: FunctionComponent<Props> = ({
     onContainerLayout,
     isEnd,
     isStart,
-  } = useHorizontalFlatListScroll({ ref: listRef, isActive: isDesktopViewport })
+  } = useHorizontalFlatListScroll({ ref: listRef, isActive: isWeb })
 
   // We use FlatLists in web because we don't have performance issues
   const ListComponent = isWeb ? FlatList : FlashList
@@ -132,7 +132,7 @@ export const Playlist: FunctionComponent<Props> = ({
 
   return (
     <FlatListContainer onLayout={onContainerLayout}>
-      {!isStart && isDesktopViewport ? (
+      {!isStart && isWeb ? (
         <ScrollButtonForNotTouchDevice
           horizontalAlign="left"
           top={scrollButtonOffsetY}
@@ -140,7 +140,7 @@ export const Playlist: FunctionComponent<Props> = ({
           <BicolorArrowLeft />
         </ScrollButtonForNotTouchDevice>
       ) : null}
-      {!isEnd && isDesktopViewport ? (
+      {!isEnd && isWeb ? (
         <ScrollButtonForNotTouchDevice
           horizontalAlign="right"
           top={scrollButtonOffsetY}
