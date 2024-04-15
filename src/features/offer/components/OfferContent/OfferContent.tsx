@@ -9,8 +9,12 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferResponse, SearchGroupResponseModelv2 } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
+import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
+import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
+import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
+import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
@@ -23,8 +27,6 @@ import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { Hero } from 'ui/components/hero/Hero'
-import { HeroBody } from 'ui/components/hero/HeroBody'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -113,12 +115,17 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         onScroll={onScroll}>
         {isDesktopViewport ? (
           <BodyDesktopContainer headerHeight={headerHeight} testID="offer-body-desktop">
-            <HeroBody
-              categoryId={subcategory.categoryId}
+            <OfferImageWrapper
               imageUrl={imageUrl}
               shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-              isSticky
-            />
+              nbImages={1}
+              isSticky>
+              {imageUrl ? (
+                <OfferBodyImage imageUrl={imageUrl} />
+              ) : (
+                <OfferBodyImagePlaceholder categoryId={subcategory.categoryId} />
+              )}
+            </OfferImageWrapper>
             <OfferBody
               offer={offer}
               subcategory={subcategory}
@@ -127,7 +134,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           </BodyDesktopContainer>
         ) : (
           <ViewGap gap={8} testID="offer-body-mobile">
-            <Hero
+            <OfferImageContainer
               imageUrl={imageUrl}
               categoryId={subcategory.categoryId}
               shouldDisplayOfferPreview={shouldDisplayOfferPreview}
