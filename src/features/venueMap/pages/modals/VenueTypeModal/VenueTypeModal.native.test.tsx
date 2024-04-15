@@ -1,24 +1,24 @@
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
+import { useVenueMapStore } from 'features/venueMap/context/useVenueMapStore'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal/VenueTypeModal'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockHideModal = jest.fn()
 
-const mockDispatch = jest.fn()
-const mockUseVenueMapState = jest.fn()
-jest.mock('features/venueMap/context/VenueMapWrapper', () => ({
-  useVenueMapState: () => mockUseVenueMapState(),
-}))
+const mockSetVenueTypeCode = jest.fn()
+jest.mock('features/venueMap/context/useVenueMapStore')
+const mockUseVenueMapStore = useVenueMapStore as jest.MockedFunction<typeof useVenueMapStore>
 
 describe('<VenueTypeModal />', () => {
   describe('When venue type is null', () => {
     beforeAll(() => {
-      mockUseVenueMapState.mockReturnValue({
-        venueMapState: { venueTypeCode: null, venues: venuesFixture },
-        dispatch: mockDispatch,
+      mockUseVenueMapStore.mockReturnValue({
+        venueTypeCode: null,
+        venues: venuesFixture,
+        setVenueTypeCode: mockSetVenueTypeCode,
       })
     })
 
@@ -72,19 +72,17 @@ describe('<VenueTypeModal />', () => {
       fireEvent.press(screen.getByText('Rechercher'))
 
       await waitFor(() => {
-        expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-          type: 'SET_VENUE_TYPE_CODE',
-          payload: VenueTypeCodeKey.MOVIE,
-        })
+        expect(mockSetVenueTypeCode).toHaveBeenNthCalledWith(1, VenueTypeCodeKey.MOVIE)
       })
     })
   })
 
   describe('When venue type is not null', () => {
     beforeAll(() => {
-      mockUseVenueMapState.mockReturnValue({
-        venueMapState: { venueTypeCode: VenueTypeCodeKey.MOVIE, venues: [] },
-        dispatch: mockDispatch,
+      mockUseVenueMapStore.mockReturnValue({
+        venueTypeCode: VenueTypeCodeKey.MOVIE,
+        venues: [],
+        setVenueTypeCode: mockSetVenueTypeCode,
       })
     })
 
