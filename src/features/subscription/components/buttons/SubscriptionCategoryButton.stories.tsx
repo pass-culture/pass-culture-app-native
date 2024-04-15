@@ -27,12 +27,10 @@ export const Default = Template.bind({})
 Default.args = {
   thematic: SubscriptionTheme.CINEMA,
   checked: false,
-  onPress: () => 0,
 }
 
 export const Checked = Template.bind({})
 Checked.args = {
   thematic: SubscriptionTheme.CINEMA,
   checked: true,
-  onPress: () => 0,
 }
