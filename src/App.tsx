@@ -7,6 +7,9 @@ import CodePush from 'react-native-code-push'
 
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
+if (process.env.NODE_ENV === 'development') {
+  import('react-native-devsettings')
+}
 import 'intl'
 import 'intl/locale-data/jsonp/en'
 

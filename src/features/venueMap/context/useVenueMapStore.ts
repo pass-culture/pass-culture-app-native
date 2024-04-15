@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { devtools } from 'zustand/middleware'
 
 import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
@@ -17,11 +18,16 @@ type Actions = {
 
 export type Store = State & Actions
 
-export const useVenueMapStore = create<Store>((set) => ({
-  venueTypeCode: null,
-  venues: [],
-  selectedVenue: null,
-  setVenueTypeCode: (payload) => set({ venueTypeCode: payload }),
-  setVenues: (payload) => set({ venues: payload }),
-  setSelectedVenue: (payload) => set({ selectedVenue: payload }),
-}))
+export const useVenueMapStore = create<Store>()(
+  devtools(
+    (set) => ({
+      venueTypeCode: null,
+      venues: [],
+      selectedVenue: null,
+      setVenueTypeCode: (payload) => set({ venueTypeCode: payload }),
+      setVenues: (payload) => set({ venues: payload }),
+      setSelectedVenue: (payload) => set({ selectedVenue: payload }),
+    }),
+    { enabled: process.env.NODE_ENV === 'development' }
+  )
+)
