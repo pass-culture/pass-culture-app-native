@@ -32,4 +32,4 @@ export const contactSupport: Record<string, ExternalNavigationProps['externalNav
     onSuccess: () => analytics.logMailTo('forPhoneNumberConfirmation'),
     onError: () => eventMonitoring.logError(new ContactSupportError('PhoneNumberConfirmation')),
   },
-} as const satisfies any
+} as const satisfies Record<string, ExternalNavigationProps['externalNav']>
