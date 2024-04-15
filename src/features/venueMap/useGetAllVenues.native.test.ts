@@ -2,6 +2,7 @@ import algoliasearch from 'algoliasearch'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
+import { useVenueMapStore } from 'features/venueMap/context/useVenueMapStore'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { Region } from 'libs/maps/maps'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -16,11 +17,10 @@ const search = mockInitIndex('').search as jest.Mock
 jest.mock('libs/algolia/fetchAlgolia/AlgoliaError', () => ({
   captureAlgoliaError: jest.fn(),
 }))
-const mockUseVenueMapState = jest.fn()
-const mockDispatch = jest.fn()
-jest.mock('features/venueMap/context/VenueMapWrapper', () => ({
-  useVenueMapState: () => mockUseVenueMapState(),
-}))
+
+const mockSetVenues = jest.fn()
+jest.mock('features/venueMap/context/useVenueMapStore')
+const mockUseVenueMapStore = useVenueMapStore as jest.MockedFunction<typeof useVenueMapStore>
 
 const region: Region = {
   latitude: 48.866667,
@@ -34,9 +34,9 @@ const initialVenues = adaptAlgoliaVenues(mockAlgoliaVenues)
 describe('useGetAllVenues', () => {
   describe('When filter not applied', () => {
     beforeAll(() => {
-      mockUseVenueMapState.mockReturnValue({
-        venueMapState: { venueTypeCode: null },
-        dispatch: mockDispatch,
+      mockUseVenueMapStore.mockReturnValue({
+        venueTypeCode: null,
+        setVenues: mockSetVenues,
       })
     })
 
@@ -48,7 +48,7 @@ describe('useGetAllVenues', () => {
       await waitFor(() => {
         expect(search).toHaveBeenCalledWith('', {
           aroundLatLng: '48.866667, 2.333333',
-          aroundRadius: 10000,
+          aroundRadius: 10_000,
           attributesToHighlight: [],
           facetFilters: [['has_at_least_one_bookable_offer:true']],
           hitsPerPage: 1000,
@@ -88,7 +88,7 @@ describe('useGetAllVenues', () => {
       expect(result.current.venues).toEqual(initialVenues)
     })
 
-    it('should dispatch in context inital venues when defined', () => {
+    it('should dispatch in context initial venues when defined', () => {
       renderHook(
         () =>
           useGetAllVenues({
@@ -101,13 +101,10 @@ describe('useGetAllVenues', () => {
         }
       )
 
-      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-        type: 'SET_VENUES',
-        payload: initialVenues,
-      })
+      expect(mockSetVenues).toHaveBeenNthCalledWith(1, initialVenues)
     })
 
-    it('should not dispatch in context when inital venues not defined', async () => {
+    it('should not dispatch in context when initial venues not defined', async () => {
       renderHook(
         () =>
           useGetAllVenues({
@@ -120,7 +117,7 @@ describe('useGetAllVenues', () => {
       )
 
       await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledTimes(0)
+        expect(mockSetVenues).toHaveBeenCalledTimes(0)
       })
     })
 
@@ -144,9 +141,9 @@ describe('useGetAllVenues', () => {
 
   describe('When filter applied', () => {
     beforeAll(() => {
-      mockUseVenueMapState.mockReturnValue({
-        venueMapState: { venueTypeCode: VenueTypeCodeKey.MOVIE },
-        dispatch: jest.fn(),
+      mockUseVenueMapStore.mockReturnValue({
+        venueTypeCode: VenueTypeCodeKey.MOVIE,
+        setVenues: mockSetVenues,
       })
     })
 
@@ -158,7 +155,7 @@ describe('useGetAllVenues', () => {
       await waitFor(() => {
         expect(search).toHaveBeenCalledWith('', {
           aroundLatLng: '48.866667, 2.333333',
-          aroundRadius: 10000,
+          aroundRadius: 10_000,
           attributesToHighlight: [],
           facetFilters: [['has_at_least_one_bookable_offer:true'], ['venue_type:MOVIE']],
           hitsPerPage: 1000,
