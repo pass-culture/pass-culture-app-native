@@ -16,9 +16,8 @@ interface Props {
 }
 
 export const SubscriptionCategoryButton = ({ thematic, checked, onPress }: Props) => {
-  const illustrationFeatures = mapSubscriptionThemeToIllustration(thematic)
-  const Illustration = illustrationFeatures?.illustration ?? null
-  const gradients = illustrationFeatures?.gradients
+  const { illustration: Illustration, gradients } = mapSubscriptionThemeToIllustration(thematic)
+
   return (
     <IllustratedRadioSelector
       {...accessibleRadioProps({ label: mapSubscriptionThemeToName[thematic], checked })}
@@ -27,17 +26,13 @@ export const SubscriptionCategoryButton = ({ thematic, checked, onPress }: Props
       checked={checked}
       Illustration={() => (
         <React.Fragment>
-          {gradients ? (
-            <IllustrationContainer>
-              <StyledLinearGradient colors={[gradients[0] as string, gradients[1] as string]}>
-                {!!Illustration && (
-                  <IllustrationWrapper>
-                    <Illustration />
-                  </IllustrationWrapper>
-                )}
-              </StyledLinearGradient>
-            </IllustrationContainer>
-          ) : null}
+          <IllustrationContainer>
+            <StyledLinearGradient colors={[gradients[0] as string, gradients[1] as string]}>
+              <IllustrationWrapper>
+                <Illustration />
+              </IllustrationWrapper>
+            </StyledLinearGradient>
+          </IllustrationContainer>
         </React.Fragment>
       )}
     />
