@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { put } from '__mocks__/libs/react-native-batch'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as showSkeletonAPI from 'features/home/api/useShowSkeleton'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
@@ -152,7 +153,13 @@ describe('GenericHome page - Analytics', () => {
 
     await waitFor(() => {
       expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(1)
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage')
+      expect(BatchUser.trackEvent).toHaveBeenCalledWith(
+        'has_seen_all_the_homepage',
+        undefined,
+        // we receive the empty BatchEventData mock
+        expect.anything()
+      )
+      expect(put).toHaveBeenCalledWith('home_id', 'fake-id')
     })
   })
 

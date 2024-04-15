@@ -21,3 +21,13 @@ export const BatchPush = {
 export const BatchMessaging = {
   setFontOverride: jest.fn(),
 }
+
+export const put = jest.fn()
+
+export const BatchEventData = jest.fn().mockImplementation(() => ({
+  addTag: jest.fn().mockReturnThis(),
+  putDate: jest.fn().mockReturnThis(),
+  putURL: jest.fn().mockReturnThis(),
+  put: put.mockReturnThis(),
+  _toInternalRepresentation: jest.fn().mockReturnValue({}),
+}))

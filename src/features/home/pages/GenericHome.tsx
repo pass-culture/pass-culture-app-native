@@ -21,7 +21,7 @@ import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchUser, BatchEventData } from 'libs/react-native-batch'
 import { finishTransaction } from 'shared/performance/transactions'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
@@ -82,9 +82,13 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const logHasSeenAllModules = useFunctionOnce(async () =>
     analytics.logAllModulesSeen(modules.length)
   )
-  const trackEventHasSeenAllModules = useFunctionOnce(() =>
-    BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage)
-  )
+
+  const trackEventHasSeenAllModules = useFunctionOnce(() => {
+    const data = new BatchEventData()
+    data.put('home_id', `${homeId}`)
+    BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage, undefined, data)
+  })
+
   const showSkeleton = useShowSkeleton()
   const initialNumToRender = 10
   const maxToRenderPerBatch = 5
