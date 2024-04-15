@@ -194,7 +194,6 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
       ) : (
         <SectionWithDivider
           visible={!offer.isDigital}
-          margin
           testID="place-container-with-divider"
           gap={8}>
           {renderOfferVenueBlock()}
