@@ -15,6 +15,10 @@ import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirati
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/BookingNotFound'
 import { Booking } from 'features/bookings/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import {
+  blurImageHeight,
+  offerImageContainerMarginTop,
+} from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -28,7 +32,6 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
-import { blurImageHeight, heroMarginTop } from 'ui/components/hero/useHeroDimensions'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -178,7 +181,7 @@ export function BookingDetails() {
         testID="BookingDetailsScrollView"
         bounces={false}>
         <HeaderWithImage imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
-        <Spacer.Column numberOfSpaces={heroMarginTop} />
+        <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
         <TicketSwiper booking={booking} />
         <View>
           <InfoContainer>
