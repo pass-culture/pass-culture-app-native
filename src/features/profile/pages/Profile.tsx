@@ -142,6 +142,7 @@ const OnlineProfile: React.FC = () => {
         scrollEventThrottle={16}
         testID="profile-scrollview">
         <ProfileHeader user={user} />
+        <Typo.Caption>{process.env.NODE_ENV}</Typo.Caption>
         <ProfileContainer>
           <Spacer.Column numberOfSpaces={4} />
           <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
