@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { SubscriptionCategoryButton } from 'features/subscription/components/buttons/SubscriptionCategoryButton'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
@@ -15,6 +16,7 @@ import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -23,6 +25,7 @@ export const OnboardingSubscription = () => {
   const { goBack } = useGoBack(...getTabNavConfig('Home'))
   const headerHeight = useGetHeaderHeight()
   const { user } = useAuthContext()
+  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const initialSubscribedThemes: SubscriptionTheme[] = (user?.subscriptions?.subscribedThemes ??
     []) as SubscriptionTheme[]
@@ -37,11 +40,28 @@ export const OnboardingSubscription = () => {
     initialSubscribedThemes
   )
 
+  const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
+    () => {
+      showSuccessSnackBar({
+        message: 'Tes préférences ont bien été enregistrées',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+    () => {
+      showErrorSnackBar({
+        message: 'Une erreur est survenue, veuillez réessayer',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    }
+  )
+
   const isThemeToggled = (theme: SubscriptionTheme) => subscribedThemes.includes(theme)
+
+  const isValidateButtonDisabled = subscribedThemes.length === 0 || isUpdatingProfile
 
   const renderItem = ({ item }: { item: SubscriptionTheme }) => {
     return (
-      <SubscriptionCategoryButtonContainer>
+      <SubscriptionCategoryButtonContainer key={item}>
         <SubscriptionCategoryButton
           thematic={item}
           checked={isThemeToggled(item)}
@@ -49,6 +69,16 @@ export const OnboardingSubscription = () => {
         />
       </SubscriptionCategoryButtonContainer>
     )
+  }
+
+  const updateSubscription = () => {
+    updateProfile({
+      subscriptions: {
+        marketingEmail: user?.subscriptions?.marketingEmail || false,
+        marketingPush: user?.subscriptions?.marketingPush || false,
+        subscribedThemes,
+      },
+    })
   }
 
   return (
@@ -75,7 +105,11 @@ export const OnboardingSubscription = () => {
         ListFooterComponent={
           <React.Fragment>
             <Spacer.Column numberOfSpaces={10} />
-            <ButtonPrimary wording="Suivre la sélection" />
+            <ButtonPrimary
+              wording="Suivre la sélection"
+              onPress={updateSubscription}
+              disabled={isValidateButtonDisabled}
+            />
             <Spacer.Column numberOfSpaces={6} />
             <ButtonTertiaryBlack
               wording="Non merci"
