@@ -1,12 +1,11 @@
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
-import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 
 import { RootRoute } from '../types'
 
 const MockComponent = () => null
 export const routes: Array<RootRoute> = [
   { name: 'PageNotFound', component: MockComponent, path: '*' },
-  { name: 'TabNavigator', component: MockComponent, pathConfig: tabNavigatorPathConfig },
+  { name: 'TabNavigator', component: MockComponent, path: 'test' },
   {
     name: 'Offer',
     component: MockComponent,

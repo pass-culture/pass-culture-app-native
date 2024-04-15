@@ -29,6 +29,8 @@ jest.mock('react-native-safe-area-context', () => ({
 
 /* See the corresponding mocks in features/navigation/RootNavigator/__mocks__ */
 jest.mock('features/navigation/RootNavigator/routes')
+jest.mock('features/navigation/TabBar/routes')
+
 /* See the corresponding mocks in features/navigation/RootNavigator/linking/__mocks__ */
 jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
 
