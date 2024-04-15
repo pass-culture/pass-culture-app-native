@@ -642,7 +642,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
                     dir="ltr"
                   >
-                    Visites et sorties
+                    Activités créatives
                   </div>
                 </label>
               </div>
@@ -668,7 +668,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     aria-disabled="true"
                     aria-labelledby="12"
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-633pao"
-                    data-testid="Interrupteur Visites et sorties"
+                    data-testid="Interrupteur Activités créatives"
                     role="checkbox"
                     style="transition-duration: 0s;"
                     tabindex="-1"
@@ -721,7 +721,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
                     dir="ltr"
                   >
-                    Activités créatives
+                    Visites et sorties
                   </div>
                 </label>
               </div>
@@ -747,7 +747,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                     aria-disabled="true"
                     aria-labelledby="14"
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-userSelect-bj6uhd r-pointerEvents-633pao"
-                    data-testid="Interrupteur Activités créatives"
+                    data-testid="Interrupteur Visites et sorties"
                     role="checkbox"
                     style="transition-duration: 0s;"
                     tabindex="-1"
