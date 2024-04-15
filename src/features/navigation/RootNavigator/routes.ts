@@ -306,7 +306,9 @@ export const routes: RootRoute[] = [
   {
     name: 'OnboardingSubscription',
     component: OnboardingSubscription,
-    path: 'onboarding-abonnement',
+    path: 'choix-abonnement',
+    options: { title: 'Choix des thèmes à suivre' },
+    secure: true,
   },
   {
     name: 'ChangeEmail',
