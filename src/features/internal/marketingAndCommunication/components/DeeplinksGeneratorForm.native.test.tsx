@@ -123,7 +123,7 @@ describe('<DeeplinksGeneratorForm />', () => {
 
 describe('getDefaultScreenParams', () => {
   it('should return an object with view, locationFilter, from params when screen is Search', () => {
-    const defaultParams = getDefaultScreenParams('Search')
+    const defaultParams = getDefaultScreenParams('SearchResults')
 
     expect(defaultParams).toEqual({
       locationFilter: { locationType: LocationMode.EVERYWHERE },

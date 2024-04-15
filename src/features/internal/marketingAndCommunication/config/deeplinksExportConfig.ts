@@ -4,7 +4,14 @@ import { getAppBuildVersion } from 'libs/packageJson'
 
 export type ScreensUsedByMarketing = Extract<
   ScreenNames,
-  'Offer' | 'Venue' | 'Home' | 'Search' | 'Profile' | 'SignupForm' | 'ThematicHome' | 'Stepper'
+  | 'Offer'
+  | 'Venue'
+  | 'Home'
+  | 'SearchResults'
+  | 'Profile'
+  | 'SignupForm'
+  | 'ThematicHome'
+  | 'Stepper'
 >
 
 type ScreensUsedByMarketingParamsList = Pick<AllNavParamList, ScreensUsedByMarketing>
@@ -68,7 +75,7 @@ export const SCREENS_CONFIG: {
         'L’identifiant du module vidéo dont la modale sera affichée à l’ouverture du lien',
     },
   },
-  Search: {
+  SearchResults: {
     URL: {
       type: 'string',
       required: false,
