@@ -41,13 +41,13 @@ export const OnboardingSubscription = () => {
   const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
     () => {
       showSuccessSnackBar({
-        message: 'Tes préférences ont bien été enregistrées',
+        message: 'Tes préférences ont bien été enregistrées.',
         timeout: SNACK_BAR_TIME_OUT,
       })
     },
     () => {
       showErrorSnackBar({
-        message: 'Une erreur est survenue, veuillez réessayer',
+        message: 'Une erreur est survenue, tu peux réessayer plus tard.',
         timeout: SNACK_BAR_TIME_OUT,
       })
     }
