@@ -100,7 +100,7 @@ export const SearchSuggestions = ({
         <Configure
           hitsPerPage={5}
           clickAnalytics
-          aroundRadius={searchVenuePosition.aroundRadius}
+          aroundRadius="all"
           aroundLatLng={searchVenuePosition.aroundLatLng}
         />
         <AutocompleteVenue onItemPress={onVenuePress} />

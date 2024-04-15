@@ -62,6 +62,7 @@ export const SearchLanding = () => {
       <StatusBar barStyle="dark-content" />
       <Form.Flex>
         <InstantSearch
+          future={{ preserveSharedStateOnUnmount: true }}
           searchClient={searchClient}
           indexName={suggestionsIndex}
           insights={{ insightsClient: AlgoliaSearchInsights }}>
