@@ -77,8 +77,8 @@ export const OfferBody: FunctionComponent<Props> = ({
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
   return (
-    <Container isDesktopViewport={isDesktopViewport}>
-      <MarginContainer isDesktopViewport={isDesktopViewport} gap={6}>
+    <Container>
+      <MarginContainer gap={6}>
         <GroupWithoutGap>
           <ViewGap gap={4}>
             <InformationTags tags={tags} />
@@ -113,7 +113,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       </MarginContainer>
 
       {shouldDisplayAboutSection ? (
-        <MarginContainer isDesktopViewport={isDesktopViewport} gap={0}>
+        <MarginContainer gap={0}>
           <OfferAbout
             offer={offer}
             metadata={metadata}
@@ -139,15 +139,14 @@ export const OfferBody: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled.View<{ isDesktopViewport?: boolean }>(({ isDesktopViewport }) => ({
+const Container = styled.View(({ theme }) => ({
   flexShrink: 1,
   width: '100%',
-  gap: isDesktopViewport ? getSpacing(16) : getSpacing(8),
+  gap: theme.isDesktopViewport ? getSpacing(16) : getSpacing(8),
 }))
 
-const MarginContainer = styled(ViewGap)<{ isDesktopViewport?: boolean }>(
-  ({ isDesktopViewport, theme }) =>
-    isDesktopViewport ? {} : { marginHorizontal: theme.contentPage.marginHorizontal }
+const MarginContainer = styled(ViewGap)(({ theme }) =>
+  theme.isDesktopViewport ? {} : { marginHorizontal: theme.contentPage.marginHorizontal }
 )
 
 const GroupWithoutGap = View

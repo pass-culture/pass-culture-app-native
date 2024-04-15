@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -15,7 +15,6 @@ type Props = {
 }
 
 export const MovieCalendarDay: React.FC<Props> = ({ date, selectedDate, onTabChange }) => {
-  const { isDesktopViewport } = useTheme()
   const { weekDay, dayDate, month, accessibilityLabel, isSelected } = useMovieCalendarDay(
     date,
     selectedDate
@@ -25,15 +24,9 @@ export const MovieCalendarDay: React.FC<Props> = ({ date, selectedDate, onTabCha
   return (
     <CalendarCell onPress={() => onTabChange(date)}>
       <CalendarTextView accessibilityLabel={accessibilityLabel}>
-        <CalendarText numberOfLines={1} isDesktopViewport={isDesktopViewport}>
-          {weekDay}
-        </CalendarText>
-        <CalendarText numberOfLines={1} isDesktopViewport={isDesktopViewport}>
-          {dayDate}
-        </CalendarText>
-        <CalendarText numberOfLines={1} isDesktopViewport={isDesktopViewport}>
-          {month}
-        </CalendarText>
+        <CalendarText numberOfLines={1}>{weekDay}</CalendarText>
+        <CalendarText numberOfLines={1}>{dayDate}</CalendarText>
+        <CalendarText numberOfLines={1}>{month}</CalendarText>
       </CalendarTextView>
       {isSelected ? <SelectedBottomBar /> : null}
     </CalendarCell>
@@ -56,13 +49,11 @@ const CalendarCell = styled(TouchableOpacity)({
   flexWrap: 'wrap',
 })
 
-const DefaultCalendarText = styled(Typo.ButtonText)<{ isDesktopViewport?: boolean }>(
-  ({ theme, isDesktopViewport }) => ({
-    color: theme.colors.greyDark,
-    textAlign: 'center',
-    width: getSpacing(isDesktopViewport ? 22 : 10),
-  })
-)
+const DefaultCalendarText = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.greyDark,
+  textAlign: 'center',
+  width: getSpacing(theme.isDesktopViewport ? 22 : 10),
+}))
 
 const SelectedCalendarText = styled(DefaultCalendarText)(({ theme }) => ({
   color: theme.colors.primary,

@@ -1,0 +1,1505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="643" failures="0" errors="0" time="247.368">
+  <testsuite name="no-hardcoded-id-in-svg" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:34:46" time="15.516" tests="8">
+    <testcase classname="no-hardcoded-id-in-svg valid &lt;View /&gt;" name="no-hardcoded-id-in-svg valid &lt;View /&gt;" time="10.698">
+    </testcase>
+    <testcase classname="no-hardcoded-id-in-svg valid &lt;View id=&quot;viewId&quot; /&gt;" name="no-hardcoded-id-in-svg valid &lt;View id=&quot;viewId&quot; /&gt;" time="0.005">
+    </testcase>
+    <testcase classname="no-hardcoded-id-in-svg valid &lt;ClipPath /&gt;" name="no-hardcoded-id-in-svg valid &lt;ClipPath /&gt;" time="0.007">
+    </testcase>
+    <testcase classname="no-hardcoded-id-in-svg valid &lt;ClipPath id={clipPath} /&gt;" name="no-hardcoded-id-in-svg valid &lt;ClipPath id={clipPath} /&gt;" time="0.004">
+    </testcase>
+    <testcase classname="no-hardcoded-id-in-svg valid &lt;LinearGradient /&gt;" name="no-hardcoded-id-in-svg valid &lt;LinearGradient /&gt;" time="0.007">
+    </testcase>
+    <testcase classname="no-hardcoded-id-in-svg valid &lt;LinearGradient id={linearGradient} /&gt;" name="no-hardcoded-id-in-svg valid &lt;LinearGradient id={linearGradient} /&gt;" time="0.006">
+    </testcase>
+    <testcase classname="no-hardcoded-id-in-svg invalid &lt;ClipPath id=&quot;clip0_3962_10903&quot; /&gt;" name="no-hardcoded-id-in-svg invalid &lt;ClipPath id=&quot;clip0_3962_10903&quot; /&gt;" time="0.006">
+    </testcase>
+    <testcase classname="no-hardcoded-id-in-svg invalid &lt;LinearGradient id=&quot;clip0_3962_10903&quot; /&gt;" name="no-hardcoded-id-in-svg invalid &lt;LinearGradient id=&quot;clip0_3962_10903&quot; /&gt;" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;VenueTypeModal /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:34:46" time="39.605" tests="8">
+    <testcase classname="&lt;VenueTypeModal /&gt; When venue type is null should render modal correctly" name="&lt;VenueTypeModal /&gt; When venue type is null should render modal correctly" time="0.536">
+    </testcase>
+    <testcase classname="&lt;VenueTypeModal /&gt; When venue type is null should select by default &quot;Tout&quot; option" name="&lt;VenueTypeModal /&gt; When venue type is null should select by default &quot;Tout&quot; option" time="0.189">
+    </testcase>
+    <testcase classname="&lt;VenueTypeModal /&gt; When venue type is null should select an option when pressing it" name="&lt;VenueTypeModal /&gt; When venue type is null should select an option when pressing it" time="0.237">
+    </testcase>
+    <testcase classname="&lt;VenueTypeModal /&gt; When venue type is null should close the modal when pressing close button" name="&lt;VenueTypeModal /&gt; When venue type is null should close the modal when pressing close button" time="0.129">
+    </testcase>
+    <testcase classname="&lt;VenueTypeModal /&gt; When venue type is null should filter on venue type code when pressing search button" name="&lt;VenueTypeModal /&gt; When venue type is null should filter on venue type code when pressing search button" time="0.312">
+    </testcase>
+    <testcase classname="&lt;VenueTypeModal /&gt; When venue type is null should close the modal when pressing search button" name="&lt;VenueTypeModal /&gt; When venue type is null should close the modal when pressing search button" time="0.17">
+    </testcase>
+    <testcase classname="&lt;VenueTypeModal /&gt; When venue type is not null should select &quot;Tout&quot; option when pressing reset button" name="&lt;VenueTypeModal /&gt; When venue type is not null should select &quot;Tout&quot; option when pressing reset button" time="0.131">
+    </testcase>
+    <testcase classname="&lt;VenueTypeModal /&gt; When venue type is not null should reset with state value when pressing close button" name="&lt;VenueTypeModal /&gt; When venue type is not null should reset with state value when pressing close button" time="0.22">
+    </testcase>
+  </testsuite>
+  <testsuite name="SetPhoneValidationCode" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:34:46" time="40.466" tests="17">
+    <testcase classname="SetPhoneValidationCode should match snapshot" name="SetPhoneValidationCode should match snapshot" time="0.405">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should reject an ill-formatted code: 111 111" name="SetPhoneValidationCode should reject an ill-formatted code: 111 111" time="0.056">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should reject an ill-formatted code: 11111" name="SetPhoneValidationCode should reject an ill-formatted code: 11111" time="0.001">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should reject an ill-formatted code: BLABLA" name="SetPhoneValidationCode should reject an ill-formatted code: BLABLA" time="0.002">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should reject an ill-formatted code: 0909O9" name="SetPhoneValidationCode should reject an ill-formatted code: 0909O9" time="0.001">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should reject an ill-formatted code: 123456 " name="SetPhoneValidationCode should reject an ill-formatted code: 123456 " time="0.001">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should reject an ill-formatted code:  123456" name="SetPhoneValidationCode should reject an ill-formatted code:  123456" time="0.002">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should accept a well-formatted code: 000000" name="SetPhoneValidationCode should accept a well-formatted code: 000000" time="0.001">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should accept a well-formatted code: 123456" name="SetPhoneValidationCode should accept a well-formatted code: 123456" time="0.002">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should have &apos;Continue&apos; button enabled according to code format" name="SetPhoneValidationCode should have &apos;Continue&apos; button enabled according to code format" time="0.106">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should have modal closed on render, and open modal when clicking on &apos;code non reçu&apos;" name="SetPhoneValidationCode should have modal closed on render, and open modal when clicking on &apos;code non reçu&apos;" time="0.119">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should display input error message if code request fails" name="SetPhoneValidationCode should display input error message if code request fails" time="0.116">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should navigate to TooManyAttempts if too many attempts" name="SetPhoneValidationCode should navigate to TooManyAttempts if too many attempts" time="0.273">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should call navigateToNextScreen if validation succeeds" name="SetPhoneValidationCode should call navigateToNextScreen if validation succeeds" time="0.193">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should log event when pressing &quot;Code non reçu ?&quot; button" name="SetPhoneValidationCode should log event when pressing &quot;Code non reçu ?&quot; button" time="0.075">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should log screen view when the screen is mounted" name="SetPhoneValidationCode should log screen view when the screen is mounted" time="0.089">
+    </testcase>
+    <testcase classname="SetPhoneValidationCode should log analytics on press continue" name="SetPhoneValidationCode should log analytics on press continue" time="0.231">
+    </testcase>
+  </testsuite>
+  <testsuite name="RecommendedPaths" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:35:02" time="65.223" tests="1">
+    <testcase classname="RecommendedPaths should render correctly" name="RecommendedPaths should render correctly" time="0.225">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;BookingNotFound/&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:34:46" time="81.347" tests="1">
+    <testcase classname="&lt;BookingNotFound/&gt; should render correctly" name="&lt;BookingNotFound/&gt; should render correctly" time="0.589">
+    </testcase>
+  </testsuite>
+  <testsuite name="SelectIDStatus" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:34:46" time="82.018" tests="8">
+    <testcase classname="SelectIDStatus should render SelectIDStatus page correctly" name="SelectIDStatus should render SelectIDStatus page correctly" time="0.386">
+    </testcase>
+    <testcase classname="SelectIDStatus should navigate to ubble webview when pressing &quot;J’ai ma pièce d’identité en cours de validité&quot; button" name="SelectIDStatus should navigate to ubble webview when pressing &quot;J’ai ma pièce d’identité en cours de validité&quot; button" time="0.212">
+    </testcase>
+    <testcase classname="SelectIDStatus should navigate to ComeBackLater when pressing &quot;Je n’ai pas ma pièce d’identité originale&quot; button" name="SelectIDStatus should navigate to ComeBackLater when pressing &quot;Je n’ai pas ma pièce d’identité originale&quot; button" time="0.104">
+    </testcase>
+    <testcase classname="SelectIDStatus should navigate to ExpiredOrLostID when pressing &apos;Ma pièce d&apos;identité est expirée ou perdue&apos; button" name="SelectIDStatus should navigate to ExpiredOrLostID when pressing &apos;Ma pièce d&apos;identité est expirée ou perdue&apos; button" time="0.096">
+    </testcase>
+    <testcase classname="SelectIDStatus should log screen view when the screen is mounted" name="SelectIDStatus should log screen view when the screen is mounted" time="0.108">
+    </testcase>
+    <testcase classname="SelectIDStatus should log analytics with id_ok type when pressing &quot;J’ai ma pièce d’identité&quot; button" name="SelectIDStatus should log analytics with id_ok type when pressing &quot;J’ai ma pièce d’identité&quot; button" time="0.047">
+    </testcase>
+    <testcase classname="SelectIDStatus should log analytics with no_id type when pressing &apos;Je n’ai pas ma pièce d’identité originale&apos; button" name="SelectIDStatus should log analytics with no_id type when pressing &apos;Je n’ai pas ma pièce d’identité originale&apos; button" time="0.18">
+    </testcase>
+    <testcase classname="SelectIDStatus should log analytics with expired_or_lost type when pressing &apos;Ma pièce d&apos;identité est expirée ou perdue&apos; button" name="SelectIDStatus should log analytics with expired_or_lost type when pressing &apos;Ma pièce d&apos;identité est expirée ou perdue&apos; button" time="0.045">
+    </testcase>
+  </testsuite>
+  <testsuite name="ThematicHome" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:35:27" time="48.126" tests="11">
+    <testcase classname="ThematicHome should render correctly" name="ThematicHome should render correctly" time="1.582">
+    </testcase>
+    <testcase classname="ThematicHome should show highlight header when provided" name="ThematicHome should show highlight header when provided" time="2.711">
+    </testcase>
+    <testcase classname="ThematicHome should show highlight animated header when provided and platform is iOS" name="ThematicHome should show highlight animated header when provided and platform is iOS" time="0.408">
+    </testcase>
+    <testcase classname="ThematicHome should show highlight thematic introduction when provided and platform is iOS" name="ThematicHome should show highlight thematic introduction when provided and platform is iOS" time="0.231">
+    </testcase>
+    <testcase classname="ThematicHome should not show highlight animated header when provided and platform is Android" name="ThematicHome should not show highlight animated header when provided and platform is Android" time="0.179">
+    </testcase>
+    <testcase classname="ThematicHome should show category header when provided" name="ThematicHome should show category header when provided" time="0.358">
+    </testcase>
+    <testcase classname="ThematicHome should log ConsultHome" name="ThematicHome should log ConsultHome" time="0.148">
+    </testcase>
+    <testcase classname="ThematicHome should log ConsultHome when coming from category block" name="ThematicHome should log ConsultHome when coming from category block" time="0.256">
+    </testcase>
+    <testcase classname="ThematicHome should log ConsultHome when coming from highlight thematic block" name="ThematicHome should log ConsultHome when coming from highlight thematic block" time="0.231">
+    </testcase>
+    <testcase classname="ThematicHome should show geolocation banner when user is not geolocated or located" name="ThematicHome should show geolocation banner when user is not geolocated or located" time="0.322">
+    </testcase>
+    <testcase classname="ThematicHome should not show geolocation banner when user is geolocated or located" name="ThematicHome should not show geolocation banner when user is geolocated or located" time="0.185">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;ConsentSettings/&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:35:28" time="47.791" tests="6">
+    <testcase classname="&lt;ConsentSettings/&gt; should render correctly" name="&lt;ConsentSettings/&gt; should render correctly" time="1.461">
+    </testcase>
+    <testcase classname="&lt;ConsentSettings/&gt; should persist cookies consent information when user partially accepts cookies" name="&lt;ConsentSettings/&gt; should persist cookies consent information when user partially accepts cookies" time="4.158">
+    </testcase>
+    <testcase classname="&lt;ConsentSettings/&gt; should call startTrackingAcceptedCookies with empty array if user refuses all cookies" name="&lt;ConsentSettings/&gt; should call startTrackingAcceptedCookies with empty array if user refuses all cookies" time="0.364">
+    </testcase>
+    <testcase classname="&lt;ConsentSettings/&gt; should call startTrackingAcceptedCookies with cookies performance if user accepts performance cookies" name="&lt;ConsentSettings/&gt; should call startTrackingAcceptedCookies with cookies performance if user accepts performance cookies" time="1.14">
+    </testcase>
+    <testcase classname="&lt;ConsentSettings/&gt; should log analytics if performance cookies are accepted" name="&lt;ConsentSettings/&gt; should log analytics if performance cookies are accepted" time="0.305">
+    </testcase>
+    <testcase classname="&lt;ConsentSettings/&gt; should show snackbar and navigate to home on save" name="&lt;ConsentSettings/&gt; should show snackbar and navigate to home on save" time="0.395">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;OfferNativeCategoryChoices /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:12" time="5.041" tests="2">
+    <testcase classname="&lt;OfferNativeCategoryChoices /&gt; should match snapshot" name="&lt;OfferNativeCategoryChoices /&gt; should match snapshot" time="0.173">
+    </testcase>
+    <testcase classname="&lt;OfferNativeCategoryChoices /&gt; should call onChange with proper subcategory when toggling" name="&lt;OfferNativeCategoryChoices /&gt; should call onChange with proper subcategory when toggling" time="0.07">
+    </testcase>
+  </testsuite>
+  <testsuite name="EndedBookingItem" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:10" time="10.574" tests="10">
+    <testcase classname="EndedBookingItem should display offer title" name="EndedBookingItem should display offer title" time="0.082">
+    </testcase>
+    <testcase classname="EndedBookingItem should display &quot;Réservation utilisée&quot; and dateUsed labels if booking was used" name="EndedBookingItem should display &quot;Réservation utilisée&quot; and dateUsed labels if booking was used" time="0.172">
+    </testcase>
+    <testcase classname="EndedBookingItem should display &quot;Annulée&quot; and cancellationDate labels if booking was cancelled by offerer" name="EndedBookingItem should display &quot;Annulée&quot; and cancellationDate labels if booking was cancelled by offerer" time="0.056">
+    </testcase>
+    <testcase classname="EndedBookingItem should display &quot;Réservation annulée&quot; and cancellationDate labels if booking was cancelled by beneficiary and offer is not digital without expiration date" name="EndedBookingItem should display &quot;Réservation annulée&quot; and cancellationDate labels if booking was cancelled by beneficiary and offer is not digital without expiration date" time="0.284">
+    </testcase>
+    <testcase classname="EndedBookingItem should display &quot;Réservation annulée&quot; and cancellationDate labels if booking was expired and offer is not digital without expiration date" name="EndedBookingItem should display &quot;Réservation annulée&quot; and cancellationDate labels if booking was expired and offer is not digital without expiration date" time="0.085">
+    </testcase>
+    <testcase classname="EndedBookingItem should display &quot;Réservation archivée&quot; when offer is digital without expiration date and not cancelled" name="EndedBookingItem should display &quot;Réservation archivée&quot; when offer is digital without expiration date and not cancelled" time="0.388">
+    </testcase>
+    <testcase classname="EndedBookingItem should navigate to offer page when offer is not digital without expiration date" name="EndedBookingItem should navigate to offer page when offer is not digital without expiration date" time="0.086">
+    </testcase>
+    <testcase classname="EndedBookingItem should navigate to the booking details page when offer is digital without expiration date and not cancelled" name="EndedBookingItem should navigate to the booking details page when offer is digital without expiration date and not cancelled" time="0.139">
+    </testcase>
+    <testcase classname="EndedBookingItem should call share when press share icon" name="EndedBookingItem should call share when press share icon" time="0.035">
+    </testcase>
+    <testcase classname="EndedBookingItem should log analytics when press share icon" name="EndedBookingItem should log analytics when press share icon" time="0.033">
+    </testcase>
+  </testsuite>
+  <testsuite name="SetPhoneNumber" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:11" time="12.623" tests="14">
+    <testcase classname="SetPhoneNumber should match snapshot without modal appearance" name="SetPhoneNumber should match snapshot without modal appearance" time="0.238">
+    </testcase>
+    <testcase classname="SetPhoneNumber should show modal on first render" name="SetPhoneNumber should show modal on first render" time="0.159">
+    </testcase>
+    <testcase classname="SetPhoneNumber should have a different color if 1 attempt is remaining" name="SetPhoneNumber should have a different color if 1 attempt is remaining" time="0.064">
+    </testcase>
+    <testcase classname="SetPhoneNumber should log screen view when the screen is mounted" name="SetPhoneNumber should log screen view when the screen is mounted" time="0.097">
+    </testcase>
+    <testcase classname="SetPhoneNumber continue button should enable the button when the phone number is valid" name="SetPhoneNumber continue button should enable the button when the phone number is valid" time="0.574">
+    </testcase>
+    <testcase classname="SetPhoneNumber continue button should disable the button when the phone number is not valid ()" name="SetPhoneNumber continue button should disable the button when the phone number is not valid ()" time="0.068">
+    </testcase>
+    <testcase classname="SetPhoneNumber continue button should disable the button when the phone number is not valid (03)" name="SetPhoneNumber continue button should disable the button when the phone number is not valid (03)" time="0.123">
+    </testcase>
+    <testcase classname="SetPhoneNumber continue button should disable the button when the phone number is not valid (62435463579)" name="SetPhoneNumber continue button should disable the button when the phone number is not valid (62435463579)" time="0.069">
+    </testcase>
+    <testcase classname="SetPhoneNumber continue button should disable the button when the phone number is not valid (33224354m)" name="SetPhoneNumber continue button should disable the button when the phone number is not valid (33224354m)" time="0.08">
+    </testcase>
+    <testcase classname="SetPhoneNumber continue button should navigate to SetPhoneValidationCode on /send_phone_validation_code request success" name="SetPhoneNumber continue button should navigate to SetPhoneValidationCode on /send_phone_validation_code request success" time="0.479">
+    </testcase>
+    <testcase classname="SetPhoneNumber continue button should display input error message if validate phone number request fails" name="SetPhoneNumber continue button should display input error message if validate phone number request fails" time="0.772">
+    </testcase>
+    <testcase classname="SetPhoneNumber continue button should navigate to SetPhoneNumberTooManySMSSent page if request fails with TOO_MANY_SMS_SENT code" name="SetPhoneNumber continue button should navigate to SetPhoneNumberTooManySMSSent page if request fails with TOO_MANY_SMS_SENT code" time="1.049">
+    </testcase>
+    <testcase classname="SetPhoneNumber continue button should log event HasRequestedCode when pressing &quot;Continuer&quot; button" name="SetPhoneNumber continue button should log event HasRequestedCode when pressing &quot;Continuer&quot; button" time="1.566">
+    </testcase>
+    <testcase classname="SetPhoneNumber continue button should log analytics when pressing &quot;Continuer&quot; button" name="SetPhoneNumber continue button should log analytics when pressing &quot;Continuer&quot; button" time="0.304">
+    </testcase>
+  </testsuite>
+  <testsuite name="VideoEndView" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:17" time="7.302" tests="3">
+    <testcase classname="VideoEndView should replay video when pressing replay button" name="VideoEndView should replay video when pressing replay button" time="0.325">
+    </testcase>
+    <testcase classname="VideoEndView should hide modal page when pressing &quot;Voir l’offre&quot; button" name="VideoEndView should hide modal page when pressing &quot;Voir l’offre&quot; button" time="0.145">
+    </testcase>
+    <testcase classname="VideoEndView should log ConsultOffer when pressing &quot;Voir l’offre&quot; button" name="VideoEndView should log ConsultOffer when pressing &quot;Voir l’offre&quot; button" time="0.033">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;AlreadyBooked /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:16" time="8.899" tests="2">
+    <testcase classname="&lt;AlreadyBooked /&gt; should dismiss modal when clicking on cta" name="&lt;AlreadyBooked /&gt; should dismiss modal when clicking on cta" time="0.086">
+    </testcase>
+    <testcase classname="&lt;AlreadyBooked /&gt; should change booking step from date to confirmation" name="&lt;AlreadyBooked /&gt; should change booking step from date to confirmation" time="0.028">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;EmailResendModal /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:17" time="11.539" tests="10">
+    <testcase classname="&lt;EmailResendModal /&gt; should render correctly" name="&lt;EmailResendModal /&gt; should render correctly" time="1.384">
+    </testcase>
+    <testcase classname="&lt;EmailResendModal /&gt; should dismiss modal when close icon is pressed" name="&lt;EmailResendModal /&gt; should dismiss modal when close icon is pressed" time="0.075">
+    </testcase>
+    <testcase classname="&lt;EmailResendModal /&gt; should log analytics when resend email button is clicked" name="&lt;EmailResendModal /&gt; should log analytics when resend email button is clicked" time="0.497">
+    </testcase>
+    <testcase classname="&lt;EmailResendModal /&gt; should resend email when resend email button is clicked" name="&lt;EmailResendModal /&gt; should resend email when resend email button is clicked" time="0.294">
+    </testcase>
+    <testcase classname="&lt;EmailResendModal /&gt; should display timer when resend email button is clicked" name="&lt;EmailResendModal /&gt; should display timer when resend email button is clicked" time="0.327">
+    </testcase>
+    <testcase classname="&lt;EmailResendModal /&gt; should display error message when email resend fails" name="&lt;EmailResendModal /&gt; should display error message when email resend fails" time="0.346">
+    </testcase>
+    <testcase classname="&lt;EmailResendModal /&gt; should display error message when maximum number of resends is reached" name="&lt;EmailResendModal /&gt; should display error message when maximum number of resends is reached" time="0.162">
+    </testcase>
+    <testcase classname="&lt;EmailResendModal /&gt; should log to Sentry on error" name="&lt;EmailResendModal /&gt; should log to Sentry on error" time="0.262">
+    </testcase>
+    <testcase classname="&lt;EmailResendModal /&gt; should reset error message when another resend attempt is made" name="&lt;EmailResendModal /&gt; should reset error message when another resend attempt is made" time="0.37">
+    </testcase>
+    <testcase classname="&lt;EmailResendModal /&gt; should display alert banner when there is no attempt left" name="&lt;EmailResendModal /&gt; should display alert banner when there is no attempt left" time="0.053">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;SectionRow/&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:24" time="7.381" tests="3">
+    <testcase classname="&lt;SectionRow/&gt; should use TouchableLink when is internal navigate" name="&lt;SectionRow/&gt; should use TouchableLink when is internal navigate" time="0.084">
+    </testcase>
+    <testcase classname="&lt;SectionRow/&gt; should use TouchableLink when is external navigation" name="&lt;SectionRow/&gt; should use TouchableLink when is external navigation" time="0.071">
+    </testcase>
+    <testcase classname="&lt;SectionRow/&gt; should use Touchable when no navigation" name="&lt;SectionRow/&gt; should use Touchable when no navigation" time="0.017">
+    </testcase>
+  </testsuite>
+  <testsuite name="WhereSection" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:25" time="7.128" tests="1">
+    <testcase classname="WhereSection should log ConsultLocationItinerary analytics when clicking on &quot;voir l’itinéraire&quot;" name="WhereSection should log ConsultLocationItinerary analytics when clicking on &quot;voir l’itinéraire&quot;" time="0.188">
+    </testcase>
+  </testsuite>
+  <testsuite name="SelectIDOrigin" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:23" time="9.412" tests="6">
+    <testcase classname="SelectIDOrigin should render correctly" name="SelectIDOrigin should render correctly" time="0.189">
+    </testcase>
+    <testcase classname="SelectIDOrigin should navigate to SelectIDStatus on press french HeroButtonList" name="SelectIDOrigin should navigate to SelectIDStatus on press french HeroButtonList" time="0.102">
+    </testcase>
+    <testcase classname="SelectIDOrigin should navigate to DMSIntroduction with foreign parameter on press foreign HeroButtonList" name="SelectIDOrigin should navigate to DMSIntroduction with foreign parameter on press foreign HeroButtonList" time="0.214">
+    </testcase>
+    <testcase classname="SelectIDOrigin should log screen view when the screen is mounted" name="SelectIDOrigin should log screen view when the screen is mounted" time="0.062">
+    </testcase>
+    <testcase classname="SelectIDOrigin should log analytics with french type on press french HeroButtonList" name="SelectIDOrigin should log analytics with french type on press french HeroButtonList" time="0.255">
+    </testcase>
+    <testcase classname="SelectIDOrigin should log analytics with foregin type on press foreign HeroButtonList" name="SelectIDOrigin should log analytics with foregin type on press foreign HeroButtonList" time="0.503">
+    </testcase>
+  </testsuite>
+  <testsuite name="getStateFromPath()" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:26" time="7.973" tests="6">
+    <testcase classname="getStateFromPath() should return state for path accueil" name="getStateFromPath() should return state for path accueil" time="0.054">
+    </testcase>
+    <testcase classname="getStateFromPath() should return state for path offre/777" name="getStateFromPath() should return state for path offre/777" time="0.075">
+    </testcase>
+    <testcase classname="getStateFromPath() utm params user has accepted customization cookies should save utm parameters in storage if available - offers" name="getStateFromPath() utm params user has accepted customization cookies should save utm parameters in storage if available - offers" time="0.078">
+    </testcase>
+    <testcase classname="getStateFromPath() utm params user has accepted customization cookies should save utm parameters in storage if available - search" name="getStateFromPath() utm params user has accepted customization cookies should save utm parameters in storage if available - search" time="0.054">
+    </testcase>
+    <testcase classname="getStateFromPath() utm params user has accepted customization cookies should not save utm parameters in storage if not available" name="getStateFromPath() utm params user has accepted customization cookies should not save utm parameters in storage if not available" time="0.056">
+    </testcase>
+    <testcase classname="getStateFromPath() utm params user has refused customization cookies should not save utm parameters in storage" name="getStateFromPath() utm params user has refused customization cookies should not save utm parameters in storage" time="0.103">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;OfferPlaylistList /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:29" time="6.222" tests="12">
+    <testcase classname="&lt;OfferPlaylistList /&gt; Similar offers Same category playlist should not display same category playlist when offer has not it" name="&lt;OfferPlaylistList /&gt; Similar offers Same category playlist should not display same category playlist when offer has not it" time="0.052">
+    </testcase>
+    <testcase classname="&lt;OfferPlaylistList /&gt; Similar offers Same category playlist should display same category playlist when offer has it" name="&lt;OfferPlaylistList /&gt; Similar offers Same category playlist should display same category playlist when offer has it" time="0.31">
+    </testcase>
+    <testcase classname="&lt;OfferPlaylistList /&gt; Similar offers Same category playlist should navigate to an offer when pressing on it" name="&lt;OfferPlaylistList /&gt; Similar offers Same category playlist should navigate to an offer when pressing on it" time="0.192">
+    </testcase>
+    <testcase classname="&lt;OfferPlaylistList /&gt; Similar offers Other categories differents from that of the offer should not display other categories playlist when offer has not it" name="&lt;OfferPlaylistList /&gt; Similar offers Other categories differents from that of the offer should not display other categories playlist when offer has not it" time="0.014">
+    </testcase>
+    <testcase classname="&lt;OfferPlaylistList /&gt; Similar offers Other categories differents from that of the offer should display other categories playlist when offer has it" name="&lt;OfferPlaylistList /&gt; Similar offers Other categories differents from that of the offer should display other categories playlist when offer has it" time="0.103">
+    </testcase>
+    <testcase classname="&lt;OfferPlaylistList /&gt; Similar offers Other categories differents from that of the offer should navigate to an offer when pressing on it" name="&lt;OfferPlaylistList /&gt; Similar offers Other categories differents from that of the offer should navigate to an offer when pressing on it" time="0.103">
+    </testcase>
+    <testcase classname="&lt;OfferPlaylistList /&gt; Same artist playlist with &quot;wipSameArtistPlaylist&quot; feature flag activated should display same artist list when offer has some and same author playlist remote config value is withPlaylistAsFirst" name="&lt;OfferPlaylistList /&gt; Same artist playlist with &quot;wipSameArtistPlaylist&quot; feature flag activated should display same artist list when offer has some and same author playlist remote config value is withPlaylistAsFirst" time="0.072">
+    </testcase>
+    <testcase classname="&lt;OfferPlaylistList /&gt; Same artist playlist with &quot;wipSameArtistPlaylist&quot; feature flag activated should display same artist list when offer has some and same author playlist remote config value is withPlaylistAsLast" name="&lt;OfferPlaylistList /&gt; Same artist playlist with &quot;wipSameArtistPlaylist&quot; feature flag activated should display same artist list when offer has some and same author playlist remote config value is withPlaylistAsLast" time="0.074">
+    </testcase>
+    <testcase classname="&lt;OfferPlaylistList /&gt; Same artist playlist with &quot;wipSameArtistPlaylist&quot; feature flag activated should not display same artist list when offer has not it" name="&lt;OfferPlaylistList /&gt; Same artist playlist with &quot;wipSameArtistPlaylist&quot; feature flag activated should not display same artist list when offer has not it" time="0.006">
+    </testcase>
+    <testcase classname="&lt;OfferPlaylistList /&gt; Same artist playlist with &quot;wipSameArtistPlaylist&quot; feature flag activated should not display same artist playlist when same author playlist remote config value is withoutPlaylit" name="&lt;OfferPlaylistList /&gt; Same artist playlist with &quot;wipSameArtistPlaylist&quot; feature flag activated should not display same artist playlist when same author playlist remote config value is withoutPlaylit" time="0.008">
+    </testcase>
+    <testcase classname="&lt;OfferPlaylistList /&gt; Same artist playlist with &quot;wipSameArtistPlaylist&quot; feature flag deactivated should not display same artist list when offer has some" name="&lt;OfferPlaylistList /&gt; Same artist playlist with &quot;wipSameArtistPlaylist&quot; feature flag deactivated should not display same artist list when offer has some" time="0.007">
+    </testcase>
+    <testcase classname="&lt;OfferPlaylistList /&gt; Same artist playlist with &quot;wipSameArtistPlaylist&quot; feature flag deactivated should not display same artist list when offer has not it" name="&lt;OfferPlaylistList /&gt; Same artist playlist with &quot;wipSameArtistPlaylist&quot; feature flag deactivated should not display same artist list when offer has not it" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;OfferContent /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:34:46" time="108.714" tests="45">
+    <testcase classname="&lt;OfferContent /&gt; should display offer header" name="&lt;OfferContent /&gt; should display offer header" time="1.211">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; When WIP_OFFER_PREVIEW feature flag activated should navigate to offer preview screen when clicking on image offer" name="&lt;OfferContent /&gt; When WIP_OFFER_PREVIEW feature flag activated should navigate to offer preview screen when clicking on image offer" time="0.446">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; When WIP_OFFER_PREVIEW feature flag activated should not navigate to offer preview screen when clicking on image offer and there is not an image" name="&lt;OfferContent /&gt; When WIP_OFFER_PREVIEW feature flag activated should not navigate to offer preview screen when clicking on image offer and there is not an image" time="0.267">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; When WIP_OFFER_PREVIEW feature flag deactivated should not display linear gradient on offer image when enableOfferPreview feature flag deactivated" name="&lt;OfferContent /&gt; When WIP_OFFER_PREVIEW feature flag deactivated should not display linear gradient on offer image when enableOfferPreview feature flag deactivated" time="0.101">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; When WIP_OFFER_PREVIEW feature flag deactivated should not display tag on offer image when enableOfferPreview feature flag deactivated" name="&lt;OfferContent /&gt; When WIP_OFFER_PREVIEW feature flag deactivated should not display tag on offer image when enableOfferPreview feature flag deactivated" time="0.129">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; should display linear gradient on offer image when enableOfferPreview feature flag activated" name="&lt;OfferContent /&gt; should display linear gradient on offer image when enableOfferPreview feature flag activated" time="0.258">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; should display tag on offer image when enableOfferPreview feature flag activated" name="&lt;OfferContent /&gt; should display tag on offer image when enableOfferPreview feature flag activated" time="0.252">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; should animate on scroll" name="&lt;OfferContent /&gt; should animate on scroll" time="0.444">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Playlist list section Same artist playlist should display same artist playlist" name="&lt;OfferContent /&gt; Playlist list section Same artist playlist should display same artist playlist" time="0.379">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Playlist list section Same artist playlist should trigger logSameArtistPlaylistVerticalScroll when scrolling to the playlist" name="&lt;OfferContent /&gt; Playlist list section Same artist playlist should trigger logSameArtistPlaylistVerticalScroll when scrolling to the playlist" time="0.179">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Playlist list section Same artist playlist should trigger only once time logSameArtistPlaylistVerticalScroll when scrolling to the playlist" name="&lt;OfferContent /&gt; Playlist list section Same artist playlist should trigger only once time logSameArtistPlaylistVerticalScroll when scrolling to the playlist" time="0.512">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Playlist list section Same artist playlist should not trigger logSameArtistPlaylistVerticalScroll when not scrolling to the playlist" name="&lt;OfferContent /&gt; Playlist list section Same artist playlist should not trigger logSameArtistPlaylistVerticalScroll when not scrolling to the playlist" time="0.532">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Playlist list section Same category similar offers should display same category similar offers" name="&lt;OfferContent /&gt; Playlist list section Same category similar offers should display same category similar offers" time="0.802">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Playlist list section Same category similar offers should trigger logSameCategoryPlaylistVerticalScroll when scrolling to the playlist" name="&lt;OfferContent /&gt; Playlist list section Same category similar offers should trigger logSameCategoryPlaylistVerticalScroll when scrolling to the playlist" time="1.001">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Playlist list section Same category similar offers should trigger only once time logSameCategoryPlaylistVerticalScroll when scrolling to the playlist" name="&lt;OfferContent /&gt; Playlist list section Same category similar offers should trigger only once time logSameCategoryPlaylistVerticalScroll when scrolling to the playlist" time="0.285">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Playlist list section Same category similar offers should not trigger logSameCategoryPlaylistVerticalScroll when not scrolling to the playlist" name="&lt;OfferContent /&gt; Playlist list section Same category similar offers should not trigger logSameCategoryPlaylistVerticalScroll when not scrolling to the playlist" time="0.763">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Playlist list section Other categories similar offers should display other categories similar offer" name="&lt;OfferContent /&gt; Playlist list section Other categories similar offers should display other categories similar offer" time="0.252">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Playlist list section Other categories similar offers should trigger logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist" name="&lt;OfferContent /&gt; Playlist list section Other categories similar offers should trigger logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist" time="0.323">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Playlist list section Other categories similar offers should trigger only once time logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist" name="&lt;OfferContent /&gt; Playlist list section Other categories similar offers should trigger only once time logOtherCategoriesPlaylistVerticalScroll when scrolling to the playlist" time="0.498">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Playlist list section Other categories similar offers should not trigger logOtherCategoriesPlaylistVerticalScroll when not scrolling to the playlist" name="&lt;OfferContent /&gt; Playlist list section Other categories similar offers should not trigger logOtherCategoriesPlaylistVerticalScroll when not scrolling to the playlist" time="0.535">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Offer booking button should display &quot;Réserver l’offre&quot; button" name="&lt;OfferContent /&gt; Offer booking button should display &quot;Réserver l’offre&quot; button" time="0.376">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Offer booking button should log analytics when display authentication modal" name="&lt;OfferContent /&gt; Offer booking button should log analytics when display authentication modal" time="1.65">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Offer booking button should trigger logEvent &quot;ConsultAllOffer&quot; when reaching the end" name="&lt;OfferContent /&gt; Offer booking button should trigger logEvent &quot;ConsultAllOffer&quot; when reaching the end" time="0.383">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Offer booking button should trigger logEvent &quot;ConsultAllOffer&quot; only once" name="&lt;OfferContent /&gt; Offer booking button should trigger logEvent &quot;ConsultAllOffer&quot; only once" time="0.291">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_offer_for_survey event after 5 seconds" name="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_offer_for_survey event after 5 seconds" time="0.858">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should not trigger has_seen_offer_for_survey event before 5 seconds have elapsed" name="&lt;OfferContent /&gt; Batch trigger should not trigger has_seen_offer_for_survey event before 5 seconds have elapsed" time="0.391">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_offer_for_survey event on scroll to bottom" name="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_offer_for_survey event on scroll to bottom" time="0.221">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should not trigger has_seen_offer_for_survey event on scroll to middle" name="&lt;OfferContent /&gt; Batch trigger should not trigger has_seen_offer_for_survey event on scroll to middle" time="0.35">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_offer_for_survey event once on scroll to bottom and after 5 seconds" name="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_offer_for_survey event once on scroll to bottom and after 5 seconds" time="0.168">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should not trigger has_seen_offer_for_survey event for uneligible offer type BIBLIOTHEQUE_MEDIATHEQUE" name="&lt;OfferContent /&gt; Batch trigger should not trigger has_seen_offer_for_survey event for uneligible offer type BIBLIOTHEQUE_MEDIATHEQUE" time="0.145">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should not trigger has_seen_offer_for_survey event for uneligible offer type CONCOURS" name="&lt;OfferContent /&gt; Batch trigger should not trigger has_seen_offer_for_survey event for uneligible offer type CONCOURS" time="0.226">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should not trigger has_seen_offer_for_survey event for uneligible offer type MATERIELS_CREATIFS" name="&lt;OfferContent /&gt; Batch trigger should not trigger has_seen_offer_for_survey event for uneligible offer type MATERIELS_CREATIFS" time="0.204">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should not trigger has_seen_offer_for_survey event for uneligible offer type CARTES_JEUNES" name="&lt;OfferContent /&gt; Batch trigger should not trigger has_seen_offer_for_survey event for uneligible offer type CARTES_JEUNES" time="0.114">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_cinema_for_survey batch event for offer type SEANCES_DE_CINEMA" name="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_cinema_for_survey batch event for offer type SEANCES_DE_CINEMA" time="0.246">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_cultural_for_survey batch event for offer type VISITES_CULTURELLES" name="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_cultural_for_survey batch event for offer type VISITES_CULTURELLES" time="0.208">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_book_offer_for_survey batch event for offer type LIVRES_PAPIER" name="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_book_offer_for_survey batch event for offer type LIVRES_PAPIER" time="0.325">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_concert_for_survey batch event for offer type CONCERTS_EVENEMENTS" name="&lt;OfferContent /&gt; Batch trigger should trigger has_seen_concert_for_survey batch event for offer type CONCERTS_EVENEMENTS" time="0.5">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; should display mobile body on mobile" name="&lt;OfferContent /&gt; should display mobile body on mobile" time="0.244">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; should not display mobile body on desktop" name="&lt;OfferContent /&gt; should not display mobile body on desktop" time="0.772">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; should display desktop body on desktop" name="&lt;OfferContent /&gt; should display desktop body on desktop" time="0.245">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; should not display desktop body on mobile" name="&lt;OfferContent /&gt; should not display desktop body on mobile" time="0.166">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; should display sticky booking button on mobile" name="&lt;OfferContent /&gt; should display sticky booking button on mobile" time="0.309">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; should not display sticky booking button on desktop" name="&lt;OfferContent /&gt; should not display sticky booking button on desktop" time="0.469">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; should display nonadhesive booking button on desktop" name="&lt;OfferContent /&gt; should display nonadhesive booking button on desktop" time="0.239">
+    </testcase>
+    <testcase classname="&lt;OfferContent /&gt; should not display nonadhesive booking button on mobile" name="&lt;OfferContent /&gt; should not display nonadhesive booking button on mobile" time="0.199">
+    </testcase>
+  </testsuite>
+  <testsuite name="useTrackingConsent" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:33" time="4.725" tests="11">
+    <testcase classname="useTrackingConsent should ask for consent when it has not already been asked" name="useTrackingConsent should ask for consent when it has not already been asked" time="0.248">
+    </testcase>
+    <testcase classname="useTrackingConsent should call log open app event when user accepts tracking" name="useTrackingConsent should call log open app event when user accepts tracking" time="0.012">
+    </testcase>
+    <testcase classname="useTrackingConsent should not ask for consent when it has already been asked" name="useTrackingConsent should not ask for consent when it has already been asked" time="0.009">
+    </testcase>
+    <testcase classname="useTrackingConsent should not ask for consent when it is not available" name="useTrackingConsent should not ask for consent when it is not available" time="0.005">
+    </testcase>
+    <testcase classname="useTrackingConsent should return that consent have been asked when it has been asked" name="useTrackingConsent should return that consent have been asked when it has been asked" time="0.011">
+    </testcase>
+    <testcase classname="useTrackingConsent should return that consent have been asked when it is not available" name="useTrackingConsent should return that consent have been asked when it is not available" time="0.012">
+    </testcase>
+    <testcase classname="useTrackingConsent should return that consent have not been asked when it has not been asked" name="useTrackingConsent should return that consent have not been asked when it has not been asked" time="0.013">
+    </testcase>
+    <testcase classname="useTrackingConsent should return that user has consented when he hit confirmation" name="useTrackingConsent should return that user has consented when he hit confirmation" time="0.004">
+    </testcase>
+    <testcase classname="useTrackingConsent should return that user has not consented when he denied" name="useTrackingConsent should return that user has not consented when he denied" time="0.01">
+    </testcase>
+    <testcase classname="useTrackingConsent should return that user has consented when tracking consent is not available" name="useTrackingConsent should return that user has consented when tracking consent is not available" time="0.006">
+    </testcase>
+    <testcase classname="useTrackingConsent should return that user has not consented when the device is restricted" name="useTrackingConsent should return that user has not consented when the device is restricted" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;SearchList /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:34" time="5.551" tests="1">
+    <testcase classname="&lt;SearchList /&gt; should renders correctly" name="&lt;SearchList /&gt; should renders correctly" time="0.129">
+    </testcase>
+  </testsuite>
+  <testsuite name="useOfferModal" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:35" time="5.752" tests="6">
+    <testcase classname="useOfferModal do not display anything when there is no modal to display" name="useOfferModal do not display anything when there is no modal to display" time="0.026">
+    </testcase>
+    <testcase classname="useOfferModal should return application processing modal when asked" name="useOfferModal should return application processing modal when asked" time="0.277">
+    </testcase>
+    <testcase classname="useOfferModal should return authentication modal when asked" name="useOfferModal should return authentication modal when asked" time="0.073">
+    </testcase>
+    <testcase classname="useOfferModal should return booking modal when asked" name="useOfferModal should return booking modal when asked" time="0.003">
+    </testcase>
+    <testcase classname="useOfferModal should return error application modal when asked" name="useOfferModal should return error application modal when asked" time="0.082">
+    </testcase>
+    <testcase classname="useOfferModal should return finish subscription modal when asked" name="useOfferModal should return finish subscription modal when asked" time="0.201">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;OfferVenueButton /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:38" time="6.348" tests="8">
+    <testcase classname="&lt;OfferVenueButton /&gt; should display public name when informed" name="&lt;OfferVenueButton /&gt; should display public name when informed" time="0.152">
+    </testcase>
+    <testcase classname="&lt;OfferVenueButton /&gt; should not display name when public name informed" name="&lt;OfferVenueButton /&gt; should not display name when public name informed" time="0.062">
+    </testcase>
+    <testcase classname="&lt;OfferVenueButton /&gt; should display name when public name not informed" name="&lt;OfferVenueButton /&gt; should display name when public name not informed" time="0.01">
+    </testcase>
+    <testcase classname="&lt;OfferVenueButton /&gt; should display name when public name is empty" name="&lt;OfferVenueButton /&gt; should display name when public name is empty" time="0.01">
+    </testcase>
+    <testcase classname="&lt;OfferVenueButton /&gt; should display subtitle when city informed" name="&lt;OfferVenueButton /&gt; should display subtitle when city informed" time="0.016">
+    </testcase>
+    <testcase classname="&lt;OfferVenueButton /&gt; should not display subtitle when city not informed" name="&lt;OfferVenueButton /&gt; should not display subtitle when city not informed" time="0.006">
+    </testcase>
+    <testcase classname="&lt;OfferVenueButton /&gt; should redirect to venue page when pressing button" name="&lt;OfferVenueButton /&gt; should redirect to venue page when pressing button" time="0.067">
+    </testcase>
+    <testcase classname="&lt;OfferVenueButton /&gt; should track the venue redirection when the pressing button" name="&lt;OfferVenueButton /&gt; should track the venue redirection when the pressing button" time="0.093">
+    </testcase>
+  </testsuite>
+  <testsuite name="ExternalLink" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:35" time="9.41" tests="3">
+    <testcase classname="ExternalLink should open given url when text clicked" name="ExternalLink should open given url when text clicked" time="0.154">
+    </testcase>
+    <testcase classname="ExternalLink should open given url when text clicked and text not matching url" name="ExternalLink should open given url when text clicked and text not matching url" time="0.007">
+    </testcase>
+    <testcase classname="ExternalLink should open given url when icon clicked" name="ExternalLink should open given url when icon clicked" time="0.023">
+    </testcase>
+  </testsuite>
+  <testsuite name="TabBar" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:36" time="9.844" tests="10">
+    <testcase classname="TabBar render correctly" name="TabBar render correctly" time="0.178">
+    </testcase>
+    <testcase classname="TabBar should display the 5 following tabs with Home selected" name="TabBar should display the 5 following tabs with Home selected" time="0.082">
+    </testcase>
+    <testcase classname="TabBar should display the 5 following tabs with Bookings selected" name="TabBar should display the 5 following tabs with Bookings selected" time="0.294">
+    </testcase>
+    <testcase classname="TabBar displays only one selected at a time" name="TabBar displays only one selected at a time" time="0.299">
+    </testcase>
+    <testcase classname="TabBar should navigate again to Profil tab on click Profil tab icon when Profil tab is already selected" name="TabBar should navigate again to Profil tab on click Profil tab icon when Profil tab is already selected" time="0.159">
+    </testcase>
+    <testcase classname="TabBar should navigate again to Home tab on click Home tab icon when Home tab is already selected" name="TabBar should navigate again to Home tab on click Home tab icon when Home tab is already selected" time="0.149">
+    </testcase>
+    <testcase classname="TabBar should reset Search navigation params when clicked on selected Search tab" name="TabBar should reset Search navigation params when clicked on selected Search tab" time="0.065">
+    </testcase>
+    <testcase classname="TabBar should reset Search accessibility navigation params when clicked on selected Search tab" name="TabBar should reset Search accessibility navigation params when clicked on selected Search tab" time="0.129">
+    </testcase>
+    <testcase classname="TabBar navigates to Profile on Profile tab click" name="TabBar navigates to Profile on Profile tab click" time="0.025">
+    </testcase>
+    <testcase classname="TabBar should call navigate with searchState params on press &quot;Recherche&quot;" name="TabBar should call navigate with searchState params on press &quot;Recherche&quot;" time="0.054">
+    </testcase>
+  </testsuite>
+  <testsuite name="VenueTile component" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:42" time="6.271" tests="6">
+    <testcase classname="VenueTile component should render correctly" name="VenueTile component should render correctly" time="0.112">
+    </testcase>
+    <testcase classname="VenueTile component should navigate to the venue when clicking on the venue tile" name="VenueTile component should navigate to the venue when clicking on the venue tile" time="0.096">
+    </testcase>
+    <testcase classname="VenueTile component should log analytics event ConsultVenue when pressing on the venue tile" name="VenueTile component should log analytics event ConsultVenue when pressing on the venue tile" time="0.034">
+    </testcase>
+    <testcase classname="VenueTile component should log analytics event ConsultVenue with homeEntryId when provided" name="VenueTile component should log analytics event ConsultVenue with homeEntryId when provided" time="0.039">
+    </testcase>
+    <testcase classname="VenueTile component should show venue placeholder when no venue does not have image" name="VenueTile component should show venue placeholder when no venue does not have image" time="0.032">
+    </testcase>
+    <testcase classname="VenueTile component should show distance prop when provided" name="VenueTile component should show distance prop when provided" time="0.018">
+    </testcase>
+  </testsuite>
+  <testsuite name="VideoModal" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:41" time="9.202" tests="2">
+    <testcase classname="VideoModal should render correctly if modal visible" name="VideoModal should render correctly if modal visible" time="0.764">
+    </testcase>
+    <testcase classname="VideoModal should log HasDismissedModal when pressing close button" name="VideoModal should log HasDismissedModal when pressing close button" time="0.742">
+    </testcase>
+  </testsuite>
+  <testsuite name="buildOfferSearchParameters" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:45" time="5.206" tests="6">
+    <testcase classname="buildOfferSearchParameters should return expected offer search parameters to build Algolia API call" name="buildOfferSearchParameters should return expected offer search parameters to build Algolia API call" time="0.007">
+    </testcase>
+    <testcase classname="buildOfferSearchParameters should return offer search parameters without location params when the offer is a fully digital category" name="buildOfferSearchParameters should return offer search parameters without location params when the offer is a fully digital category" time="0.002">
+    </testcase>
+    <testcase classname="buildOfferSearchParameters should return parameters with date filter when date is specified" name="buildOfferSearchParameters should return parameters with date filter when date is specified" time="0.009">
+    </testcase>
+    <testcase classname="buildOfferSearchParameters should return parameters with offer category filter when offer category is specified" name="buildOfferSearchParameters should return parameters with offer category filter when offer category is specified" time="0.001">
+    </testcase>
+    <testcase classname="buildOfferSearchParameters should return parameters with minimum price filter when minPrice is specified" name="buildOfferSearchParameters should return parameters with minimum price filter when minPrice is specified" time="0">
+    </testcase>
+    <testcase classname="buildOfferSearchParameters should return parameters with geolocation filter when userLocation is specified" name="buildOfferSearchParameters should return parameters with geolocation filter when userLocation is specified" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="todo-format" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:37" time="18.334" tests="14">
+    <testcase classname="todo-format valid // TODO(PC-12345): test" name="todo-format valid // TODO(PC-12345): test" time="15.128">
+    </testcase>
+    <testcase classname="todo-format valid // TODO(PC-12345)" name="todo-format valid // TODO(PC-12345)" time="0.02">
+    </testcase>
+    <testcase classname="todo-format valid // todo(pc-12345)" name="todo-format valid // todo(pc-12345)" time="0.003">
+    </testcase>
+    <testcase classname="todo-format valid // FIXME(PC-12345)" name="todo-format valid // FIXME(PC-12345)" time="0.006">
+    </testcase>
+    <testcase classname="todo-format valid // mastodo" name="todo-format valid // mastodo" time="0.004">
+    </testcase>
+    <testcase classname="todo-format valid // todon" name="todo-format valid // todon" time="0.005">
+    </testcase>
+    <testcase classname="todo-format valid // afixme" name="todo-format valid // afixme" time="0.003">
+    </testcase>
+    <testcase classname="todo-format valid // fixmeet" name="todo-format valid // fixmeet" time="0.009">
+    </testcase>
+    <testcase classname="todo-format invalid // TODO(foobar)" name="todo-format invalid // TODO(foobar)" time="0.023">
+    </testcase>
+    <testcase classname="todo-format invalid // TODO()" name="todo-format invalid // TODO()" time="0.011">
+    </testcase>
+    <testcase classname="todo-format invalid // TODO" name="todo-format invalid // TODO" time="0.007">
+    </testcase>
+    <testcase classname="todo-format invalid // FIXME(foobar)" name="todo-format invalid // FIXME(foobar)" time="0.01">
+    </testcase>
+    <testcase classname="todo-format invalid // FIXME()" name="todo-format invalid // FIXME()" time="0.005">
+    </testcase>
+    <testcase classname="todo-format invalid // FIXME" name="todo-format invalid // FIXME" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="CheatCodesButton component" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:51" time="4.731" tests="1">
+    <testcase classname="CheatCodesButton component should have a button to go to the cheatcodes section" name="CheatCodesButton component should have a button to go to the cheatcodes section" time="0.076">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;QuitIdentityCheckModal/&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:50" time="6.069" tests="5">
+    <testcase classname="&lt;QuitIdentityCheckModal/&gt; should render correctly" name="&lt;QuitIdentityCheckModal/&gt; should render correctly" time="0.154">
+    </testcase>
+    <testcase classname="&lt;QuitIdentityCheckModal/&gt; should not display the modal when visible is false" name="&lt;QuitIdentityCheckModal/&gt; should not display the modal when visible is false" time="0.01">
+    </testcase>
+    <testcase classname="&lt;QuitIdentityCheckModal/&gt; should display the modal when visible is true" name="&lt;QuitIdentityCheckModal/&gt; should display the modal when visible is true" time="0.038">
+    </testcase>
+    <testcase classname="&lt;QuitIdentityCheckModal/&gt; should call resume function when clicking on &quot;Continuer la vérification&quot;" name="&lt;QuitIdentityCheckModal/&gt; should call resume function when clicking on &quot;Continuer la vérification&quot;" time="0.019">
+    </testcase>
+    <testcase classname="&lt;QuitIdentityCheckModal/&gt; should go back to homepage when clicking on &quot;Abandonner la vérification&quot;" name="&lt;QuitIdentityCheckModal/&gt; should go back to homepage when clicking on &quot;Abandonner la vérification&quot;" time="0.05">
+    </testcase>
+  </testsuite>
+  <testsuite name="SearchWrapper" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:51" time="7.351" tests="3">
+    <testcase classname="SearchWrapper should update locationType with type Around Place when Location Context is switched to a specified place" name="SearchWrapper should update locationType with type Around Place when Location Context is switched to a specified place" time="0.863">
+    </testcase>
+    <testcase classname="SearchWrapper should update locationType with type Around me when Location Context is switched to geolocation" name="SearchWrapper should update locationType with type Around me when Location Context is switched to geolocation" time="0.259">
+    </testcase>
+    <testcase classname="SearchWrapper should update locationType with type Everywhere when Location Context is switched to &quot;Partout&quot;" name="SearchWrapper should update locationType with type Everywhere when Location Context is switched to &quot;Partout&quot;" time="0.146">
+    </testcase>
+  </testsuite>
+  <testsuite name="PersonalData" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:47" time="11.813" tests="10">
+    <testcase classname="PersonalData should render personal data success" name="PersonalData should render personal data success" time="0.476">
+    </testcase>
+    <testcase classname="PersonalData should render for beneficiary profile" name="PersonalData should render for beneficiary profile" time="0.204">
+    </testcase>
+    <testcase classname="PersonalData should render for beneficiary profile without phone number" name="PersonalData should render for beneficiary profile without phone number" time="0.233">
+    </testcase>
+    <testcase classname="PersonalData should render for non beneficiary profile" name="PersonalData should render for non beneficiary profile" time="0.142">
+    </testcase>
+    <testcase classname="PersonalData should redirect to ChangePassword when clicking on modify password button" name="PersonalData should redirect to ChangePassword when clicking on modify password button" time="0.056">
+    </testcase>
+    <testcase classname="PersonalData should log analytics and redirect to ConfirmDeleteProfile page when the account-deletion row is clicked" name="PersonalData should log analytics and redirect to ConfirmDeleteProfile page when the account-deletion row is clicked" time="0.041">
+    </testcase>
+    <testcase classname="PersonalData should open FAQ link when clicking on &quot;Comment gérer tes données personnelles ?&quot; button" name="PersonalData should open FAQ link when clicking on &quot;Comment gérer tes données personnelles ?&quot; button" time="0.198">
+    </testcase>
+    <testcase classname="PersonalData should log modify email when pressing &quot;Modifier&quot;" name="PersonalData should log modify email when pressing &quot;Modifier&quot;" time="0.112">
+    </testcase>
+    <testcase classname="PersonalData should not show password field when user has no password" name="PersonalData should not show password field when user has no password" time="0.029">
+    </testcase>
+    <testcase classname="PersonalData should not show email change button when user has no password" name="PersonalData should not show email change button when user has no password" time="0.107">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;SetEmail /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:46" time="16.034" tests="16">
+    <testcase classname="&lt;SetEmail /&gt; should disable validate button when email input is not filled" name="&lt;SetEmail /&gt; should disable validate button when email input is not filled" time="0.222">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; should display disabled validate button when email input is filled with spaces" name="&lt;SetEmail /&gt; should display disabled validate button when email input is filled with spaces" time="0.19">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; should enable validate button when email input is filled" name="&lt;SetEmail /&gt; should enable validate button when email input is filled" time="0.045">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; should go to next step on valid email with email and newsletter params" name="&lt;SetEmail /&gt; should go to next step on valid email with email and newsletter params" time="0.073">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; should hide email help message when email is valid" name="&lt;SetEmail /&gt; should hide email help message when email is valid" time="0.056">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; should reject invalid email when trying to submit" name="&lt;SetEmail /&gt; should reject invalid email when trying to submit" time="0.243">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; should log analytics when clicking on &quot;Se connecter&quot; button" name="&lt;SetEmail /&gt; should log analytics when clicking on &quot;Se connecter&quot; button" time="0.01">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; should display suggestion with a corrected email when the email is mistyped" name="&lt;SetEmail /&gt; should display suggestion with a corrected email when the email is mistyped" time="0.127">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; should log analytics when user select the suggested email" name="&lt;SetEmail /&gt; should log analytics when user select the suggested email" time="0.299">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; should navigate to Login with provided offerId when clicking on &quot;Se connecter&quot; button" name="&lt;SetEmail /&gt; should navigate to Login with provided offerId when clicking on &quot;Se connecter&quot; button" time="0.02">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; should log screen view when the screen is mounted" name="&lt;SetEmail /&gt; should log screen view when the screen is mounted" time="0.119">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; should set a default email if the user has already added his email" name="&lt;SetEmail /&gt; should set a default email if the user has already added his email" time="0.175">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; SSO should not display SSO button when FF is disabled" name="&lt;SetEmail /&gt; SSO should not display SSO button when FF is disabled" time="0.053">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; SSO should display SSO button when FF is enabled" name="&lt;SetEmail /&gt; SSO should display SSO button when FF is enabled" time="0.162">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; SSO should go to next step when clicking SSO button and account does not already exist" name="&lt;SetEmail /&gt; SSO should go to next step when clicking SSO button and account does not already exist" time="1.683">
+    </testcase>
+    <testcase classname="&lt;SetEmail /&gt; SSO should display snackbar when SSO account is invalid" name="&lt;SetEmail /&gt; SSO should display snackbar when SSO account is invalid" time="0.21">
+    </testcase>
+  </testsuite>
+  <testsuite name="Category component" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:56" time="11.796" tests="1">
+    <testcase classname="Category component should render correctly" name="Category component should render correctly" time="0.208">
+    </testcase>
+  </testsuite>
+  <testsuite name="getUtmParamsConsent" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:57" time="10.753" tests="4">
+    <testcase classname="getUtmParamsConsent should return false for all params when user has not made consent" name="getUtmParamsConsent should return false for all params when user has not made consent" time="0.044">
+    </testcase>
+    <testcase classname="getUtmParamsConsent should return true for all params when cookies are accepted" name="getUtmParamsConsent should return true for all params when cookies are accepted" time="0.568">
+    </testcase>
+    <testcase classname="getUtmParamsConsent should return false for all params when cookies are refused" name="getUtmParamsConsent should return false for all params when cookies are refused" time="0.283">
+    </testcase>
+    <testcase classname="getUtmParamsConsent should return true for all params when customization cookies are accepted" name="getUtmParamsConsent should return true for all params when customization cookies are accepted" time="0.1">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;EighteenBirthday /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:57" time="14.5" tests="4">
+    <testcase classname="&lt;EighteenBirthday /&gt; should render eighteen birthday" name="&lt;EighteenBirthday /&gt; should render eighteen birthday" time="0.414">
+    </testcase>
+    <testcase classname="&lt;EighteenBirthday /&gt; should set `has_seen_eligible_card` to true in storage" name="&lt;EighteenBirthday /&gt; should set `has_seen_eligible_card` to true in storage" time="0.228">
+    </testcase>
+    <testcase classname="&lt;EighteenBirthday /&gt; should navigate to Stepper on button press" name="&lt;EighteenBirthday /&gt; should navigate to Stepper on button press" time="0.206">
+    </testcase>
+    <testcase classname="&lt;EighteenBirthday /&gt; should render right wording when user require IdCheck" name="&lt;EighteenBirthday /&gt; should render right wording when user require IdCheck" time="0.334">
+    </testcase>
+  </testsuite>
+  <testsuite name="SupportedBrowsersGate" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:36:59" time="13.209" tests="19">
+    <testcase classname="SupportedBrowsersGate render correctly" name="SupportedBrowsersGate render correctly" time="0.332">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Chrome v50 should support Chrome for versions 50 and above" name="SupportedBrowsersGate Chrome v50 should support Chrome for versions 50 and above" time="0.058">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Chrome v50 should not support Chrome for versions below 50" name="SupportedBrowsersGate Chrome v50 should not support Chrome for versions below 50" time="0.346">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Mobile Safari v12 should support Mobile Safari for versions 12 and above" name="SupportedBrowsersGate Mobile Safari v12 should support Mobile Safari for versions 12 and above" time="0.23">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Mobile Safari v12 should not support Mobile Safari for versions below 12" name="SupportedBrowsersGate Mobile Safari v12 should not support Mobile Safari for versions below 12" time="0.753">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Safari v10 should support Safari for versions 10 and above" name="SupportedBrowsersGate Safari v10 should support Safari for versions 10 and above" time="0.032">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Safari v10 should not support Safari for versions below 10" name="SupportedBrowsersGate Safari v10 should not support Safari for versions below 10" time="0.103">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Firefox v55 should support Firefox for versions 55 and above" name="SupportedBrowsersGate Firefox v55 should support Firefox for versions 55 and above" time="0.004">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Firefox v55 should not support Firefox for versions below 55" name="SupportedBrowsersGate Firefox v55 should not support Firefox for versions below 55" time="0.079">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Edge v79 should support Edge for versions 79 and above" name="SupportedBrowsersGate Edge v79 should support Edge for versions 79 and above" time="0.012">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Edge v79 should not support Edge for versions below 79" name="SupportedBrowsersGate Edge v79 should not support Edge for versions below 79" time="0.03">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Samsung v5 should support Samsung for versions 5 and above" name="SupportedBrowsersGate Samsung v5 should support Samsung for versions 5 and above" time="0.005">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Samsung v5 should not support Samsung for versions below 5" name="SupportedBrowsersGate Samsung v5 should not support Samsung for versions below 5" time="0.053">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Instagram v200 should support Instagram for versions 200 and above" name="SupportedBrowsersGate Instagram v200 should support Instagram for versions 200 and above" time="0.005">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Instagram v200 should not support Instagram for versions below 200" name="SupportedBrowsersGate Instagram v200 should not support Instagram for versions below 200" time="0.125">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Brave v98 should support Brave for versions 98 and above" name="SupportedBrowsersGate Brave v98 should support Brave for versions 98 and above" time="0.004">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Brave v98 should not support Brave for versions below 98" name="SupportedBrowsersGate Brave v98 should not support Brave for versions below 98" time="0.024">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Chromium v0 should support Chromium for versions 0 and above" name="SupportedBrowsersGate Chromium v0 should support Chromium for versions 0 and above" time="0.003">
+    </testcase>
+    <testcase classname="SupportedBrowsersGate Chromium v0 should not support Chromium for versions below 0" name="SupportedBrowsersGate Chromium v0 should not support Chromium for versions below 0" time="0.11">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;InstalledMessagingApps /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:02" time="13.235" tests="8">
+    <testcase classname="&lt;InstalledMessagingApps /&gt; should display social medium when installed" name="&lt;InstalledMessagingApps /&gt; should display social medium when installed" time="0.25">
+    </testcase>
+    <testcase classname="&lt;InstalledMessagingApps /&gt; should hide social medium when not installed" name="&lt;InstalledMessagingApps /&gt; should hide social medium when not installed" time="0.237">
+    </testcase>
+    <testcase classname="&lt;InstalledMessagingApps /&gt; should not display more than 3 social media apps" name="&lt;InstalledMessagingApps /&gt; should not display more than 3 social media apps" time="0.208">
+    </testcase>
+    <testcase classname="&lt;InstalledMessagingApps /&gt; should open social medium on share button press" name="&lt;InstalledMessagingApps /&gt; should open social medium on share button press" time="0.358">
+    </testcase>
+    <testcase classname="&lt;InstalledMessagingApps /&gt; should open social medium on share button press with offer url even when web url is defined" name="&lt;InstalledMessagingApps /&gt; should open social medium on share button press with offer url even when web url is defined" time="0.362">
+    </testcase>
+    <testcase classname="&lt;InstalledMessagingApps /&gt; should log analytics on social press" name="&lt;InstalledMessagingApps /&gt; should log analytics on social press" time="0.073">
+    </testcase>
+    <testcase classname="&lt;InstalledMessagingApps /&gt; should log to sentry when an error occurs during installed apps check" name="&lt;InstalledMessagingApps /&gt; should log to sentry when an error occurs during installed apps check" time="0.015">
+    </testcase>
+    <testcase classname="&lt;InstalledMessagingApps /&gt; should log to sentry when an error occurs when clicking on messaging app" name="&lt;InstalledMessagingApps /&gt; should log to sentry when an error occurs when clicking on messaging app" time="0.112">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;VenueSelectionList /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:06" time="10.279" tests="5">
+    <testcase classname="&lt;VenueSelectionList /&gt; should show list of items" name="&lt;VenueSelectionList /&gt; should show list of items" time="0.288">
+    </testcase>
+    <testcase classname="&lt;VenueSelectionList /&gt; should select item on press" name="&lt;VenueSelectionList /&gt; should select item on press" time="0.075">
+    </testcase>
+    <testcase classname="&lt;VenueSelectionList /&gt; should mark item as selected" name="&lt;VenueSelectionList /&gt; should mark item as selected" time="0.112">
+    </testcase>
+    <testcase classname="&lt;VenueSelectionList /&gt; should display distance when user share his position" name="&lt;VenueSelectionList /&gt; should display distance when user share his position" time="0.104">
+    </testcase>
+    <testcase classname="&lt;VenueSelectionList /&gt; should not display distance when user not share his position" name="&lt;VenueSelectionList /&gt; should not display distance when user not share his position" time="0.113">
+    </testcase>
+  </testsuite>
+  <testsuite name="HighlightThematicHomeHeader" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:13" time="6.144" tests="3">
+    <testcase classname="HighlightThematicHomeHeader should display introduction when introduction title and paragraph are provided" name="HighlightThematicHomeHeader should display introduction when introduction title and paragraph are provided" time="0.574">
+    </testcase>
+    <testcase classname="HighlightThematicHomeHeader should not display introduction when only introduction title is provided" name="HighlightThematicHomeHeader should not display introduction when only introduction title is provided" time="0.009">
+    </testcase>
+    <testcase classname="HighlightThematicHomeHeader should not display introduction when only introduction paragraph is provided" name="HighlightThematicHomeHeader should not display introduction when only introduction paragraph is provided" time="0.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;AccountReactivationSuccess /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:10" time="8.856" tests="2">
+    <testcase classname="&lt;AccountReactivationSuccess /&gt; should match snapshot" name="&lt;AccountReactivationSuccess /&gt; should match snapshot" time="0.184">
+    </testcase>
+    <testcase classname="&lt;AccountReactivationSuccess /&gt; should go to home page when clicking on go to home button" name="&lt;AccountReactivationSuccess /&gt; should go to home page when clicking on go to home button" time="0.067">
+    </testcase>
+  </testsuite>
+  <testsuite name="useAccountUnsuspend" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:13" time="7.092" tests="2">
+    <testcase classname="useAccountUnsuspend should call success function on success" name="useAccountUnsuspend should call success function on success" time="0.302">
+    </testcase>
+    <testcase classname="useAccountUnsuspend should call error function on error" name="useAccountUnsuspend should call error function on error" time="0.106">
+    </testcase>
+  </testsuite>
+  <testsuite name="useSimilarOffers" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:11" time="10.443" tests="19">
+    <testcase classname="useSimilarOffers should call Algolia hook with category included" name="useSimilarOffers should call Algolia hook with category included" time="0.562">
+    </testcase>
+    <testcase classname="useSimilarOffers should call Algolia hook with category excluded" name="useSimilarOffers should call Algolia hook with category excluded" time="0.223">
+    </testcase>
+    <testcase classname="useSimilarOffers should not call Algolia hook when no offer id provided" name="useSimilarOffers should not call Algolia hook when no offer id provided" time="0.017">
+    </testcase>
+    <testcase classname="useSimilarOffers should not call similar offers API when no offer provided" name="useSimilarOffers should not call similar offers API when no offer provided" time="0.195">
+    </testcase>
+    <testcase classname="useSimilarOffers should call similar offers API when offer id provided and user share his position" name="useSimilarOffers should call similar offers API when offer id provided and user share his position" time="0.079">
+    </testcase>
+    <testcase classname="useSimilarOffers should call similar offers API when offer id provided and user not share his position" name="useSimilarOffers should call similar offers API when offer id provided and user not share his position" time="0.165">
+    </testcase>
+    <testcase classname="getSimilarOffersEndpoint should return endpoint with user id query param when it is provided" name="getSimilarOffersEndpoint should return endpoint with user id query param when it is provided" time="0.007">
+    </testcase>
+    <testcase classname="getSimilarOffersEndpoint should return endpoint with latitude and longitude query params when there are provided" name="getSimilarOffersEndpoint should return endpoint with latitude and longitude query params when there are provided" time="0.005">
+    </testcase>
+    <testcase classname="getSimilarOffersEndpoint should return endpoint without latitude and longitude query params when there are null" name="getSimilarOffersEndpoint should return endpoint without latitude and longitude query params when there are null" time="0.003">
+    </testcase>
+    <testcase classname="getSimilarOffersEndpoint should return endpoint with one value in categories array query param when it is provided" name="getSimilarOffersEndpoint should return endpoint with one value in categories array query param when it is provided" time="0.005">
+    </testcase>
+    <testcase classname="getSimilarOffersEndpoint should return endpoint with several values in categories array query param when it is provided" name="getSimilarOffersEndpoint should return endpoint with several values in categories array query param when it is provided" time="0.005">
+    </testcase>
+    <testcase classname="getSimilarOffersEndpoint should not return endpoint with offer id, user id, latitude, longitude and categories query params when they are not provided" name="getSimilarOffersEndpoint should not return endpoint with offer id, user id, latitude, longitude and categories query params when they are not provided" time="0.011">
+    </testcase>
+    <testcase classname="getSimilarOffersEndpoint should not return endpoint when offer id not passed in parameter" name="getSimilarOffersEndpoint should not return endpoint when offer id not passed in parameter" time="0.009">
+    </testcase>
+    <testcase classname="getApiRecoSimilarOffers should log sentry when reco similar offers API called with an error" name="getApiRecoSimilarOffers should log sentry when reco similar offers API called with an error" time="0.031">
+    </testcase>
+    <testcase classname="getApiRecoSimilarOffers should return recommendations when reco similar offers API called" name="getApiRecoSimilarOffers should return recommendations when reco similar offers API called" time="0.461">
+    </testcase>
+    <testcase classname="getCategories should return an empty array when categoryIncluded and categoryExcluded not defined" name="getCategories should return an empty array when categoryIncluded and categoryExcluded not defined" time="0">
+    </testcase>
+    <testcase classname="getCategories should return an empty array when categoryExcluded defined but not searchGroups" name="getCategories should return an empty array when categoryExcluded defined but not searchGroups" time="0">
+    </testcase>
+    <testcase classname="getCategories should return an array with category of categoryIncluded parameter when defined" name="getCategories should return an array with category of categoryIncluded parameter when defined" time="0">
+    </testcase>
+    <testcase classname="getCategories should return an array with all categories except none category and categoryExcluded parameter when it is defined" name="getCategories should return an array with all categories except none category and categoryExcluded parameter when it is defined" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="analyticsProvider - logEvent" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:16" time="6.961" tests="10">
+    <testcase classname="analyticsProvider - logEvent with firebase should log event when firebase event name is specified" name="analyticsProvider - logEvent with firebase should log event when firebase event name is specified" time="0.029">
+    </testcase>
+    <testcase classname="analyticsProvider - logEvent with firebase should log firebase event with locationType=UserGeolocation" name="analyticsProvider - logEvent with firebase should log firebase event with locationType=UserGeolocation" time="0.001">
+    </testcase>
+    <testcase classname="analyticsProvider - logEvent with firebase should log firebase event with locationType=UserSpecificLocation" name="analyticsProvider - logEvent with firebase should log firebase event with locationType=UserSpecificLocation" time="0.001">
+    </testcase>
+    <testcase classname="analyticsProvider - logEvent with firebase should log firebase event with locationType: undefined when locationType is cleared" name="analyticsProvider - logEvent with firebase should log firebase event with locationType: undefined when locationType is cleared" time="0.001">
+    </testcase>
+    <testcase classname="analyticsProvider - logEvent with firebase should not log event when firebase event name is not specified" name="analyticsProvider - logEvent with firebase should not log event when firebase event name is not specified" time="0.001">
+    </testcase>
+    <testcase classname="analyticsProvider - logEvent with firebase should log screen view when logScreenView is called" name="analyticsProvider - logEvent with firebase should log screen view when logScreenView is called" time="0.005">
+    </testcase>
+    <testcase classname="analyticsProvider - logEvent with firebase should set default event parameters when setEventLocationType is called" name="analyticsProvider - logEvent with firebase should set default event parameters when setEventLocationType is called" time="0.002">
+    </testcase>
+    <testcase classname="analyticsProvider - logEvent with amplitude should log event when amplitude event name is specified" name="analyticsProvider - logEvent with amplitude should log event when amplitude event name is specified" time="0.002">
+    </testcase>
+    <testcase classname="analyticsProvider - logEvent with amplitude should not log event when amplitude event name is not specified" name="analyticsProvider - logEvent with amplitude should not log event when amplitude event name is not specified" time="0.002">
+    </testcase>
+    <testcase classname="analyticsProvider - logEvent with amplitude should not log event when logScreenView is called" name="analyticsProvider - logEvent with amplitude should not log event when logScreenView is called" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="useValidateEmail function" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:18" time="6.42" tests="6">
+    <testcase classname="useValidateEmail function should not return an error message if the new email is valid" name="useValidateEmail function should not return an error message if the new email is valid" time="0.061">
+    </testcase>
+    <testcase classname="useValidateEmail function should return an error message if the new email is invalid" name="useValidateEmail function should return an error message if the new email is invalid" time="0.061">
+    </testcase>
+    <testcase classname="useValidateEmail function should return an error message if the new email is the same than the new one" name="useValidateEmail function should return an error message if the new email is the same than the new one" time="0.007">
+    </testcase>
+    <testcase classname="useValidateEmail function should return a null error message if no email has been entered" name="useValidateEmail function should return a null error message if no email has been entered" time="0.01">
+    </testcase>
+    <testcase classname="useIsCurrentUserEmail function should return true if the current user email is the same than the new one" name="useIsCurrentUserEmail function should return true if the current user email is the same than the new one" time="0.01">
+    </testcase>
+    <testcase classname="useIsCurrentUserEmail function should return false if the current user email is different than the new one" name="useIsCurrentUserEmail function should return false if the current user email is different than the new one" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="Sort component" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:21" time="5.511" tests="1">
+    <testcase classname="Sort component should navigate to Sort page on pressing" name="Sort component should navigate to Sort page on pressing" time="0.068">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;TouchableLink /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:20" time="7.308" tests="3">
+    <testcase classname="&lt;TouchableLink /&gt; Internal Navigation should fire onBeforeNavigate if given, before navigation" name="&lt;TouchableLink /&gt; Internal Navigation should fire onBeforeNavigate if given, before navigation" time="0.207">
+    </testcase>
+    <testcase classname="&lt;TouchableLink /&gt; Internal Navigation should fire onAfterNavigate after navigate" name="&lt;TouchableLink /&gt; Internal Navigation should fire onAfterNavigate after navigate" time="0.014">
+    </testcase>
+    <testcase classname="&lt;TouchableLink /&gt; Internal Navigation should render with correct style if component tag is given" name="&lt;TouchableLink /&gt; Internal Navigation should render with correct style if component tag is given" time="0.079">
+    </testcase>
+  </testsuite>
+  <testsuite name="FilterPageButtons" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:21" time="7.463" tests="3">
+    <testcase classname="FilterPageButtons should call button action when pressing reset button" name="FilterPageButtons should call button action when pressing reset button" time="0.103">
+    </testcase>
+    <testcase classname="FilterPageButtons should call button action when pressing search button" name="FilterPageButtons should call button action when pressing search button" time="0.013">
+    </testcase>
+    <testcase classname="FilterPageButtons should call button action when pressing apply filter button" name="FilterPageButtons should call button action when pressing apply filter button" time="0.018">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;SubscribeButtonWithTooltip /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:22" time="7.337" tests="6">
+    <testcase classname="&lt;SubscribeButtonWithTooltip /&gt; should not show tooltip before 1 second has elapsed" name="&lt;SubscribeButtonWithTooltip /&gt; should not show tooltip before 1 second has elapsed" time="0.379">
+    </testcase>
+    <testcase classname="&lt;SubscribeButtonWithTooltip /&gt; should show tooltip after 1 second when user is not subscribed" name="&lt;SubscribeButtonWithTooltip /&gt; should show tooltip after 1 second when user is not subscribed" time="0.094">
+    </testcase>
+    <testcase classname="&lt;SubscribeButtonWithTooltip /&gt; should not show tooltip when user is already subscribed" name="&lt;SubscribeButtonWithTooltip /&gt; should not show tooltip when user is already subscribed" time="0.01">
+    </testcase>
+    <testcase classname="&lt;SubscribeButtonWithTooltip /&gt; should hide tooltip 8 seconds after display" name="&lt;SubscribeButtonWithTooltip /&gt; should hide tooltip 8 seconds after display" time="0.076">
+    </testcase>
+    <testcase classname="&lt;SubscribeButtonWithTooltip /&gt; should not show tooltip more than 3 times" name="&lt;SubscribeButtonWithTooltip /&gt; should not show tooltip more than 3 times" time="0.211">
+    </testcase>
+    <testcase classname="&lt;SubscribeButtonWithTooltip /&gt; should hide tooltip when pressing close button" name="&lt;SubscribeButtonWithTooltip /&gt; should hide tooltip when pressing close button" time="0.042">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;GenericInfoPageWhite /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:24" time="6.484" tests="2">
+    <testcase classname="&lt;GenericInfoPageWhite /&gt; should render correctly" name="&lt;GenericInfoPageWhite /&gt; should render correctly" time="0.112">
+    </testcase>
+    <testcase classname="&lt;GenericInfoPageWhite /&gt; should call skip when onSkip is provided" name="&lt;GenericInfoPageWhite /&gt; should call skip when onSkip is provided" time="0.082">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;SecondaryPageWithBlurHeader /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:25" time="5.591" tests="1">
+    <testcase classname="&lt;SecondaryPageWithBlurHeader /&gt; should render correctly" name="&lt;SecondaryPageWithBlurHeader /&gt; should render correctly" time="0.095">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;DatePickerSpinner /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:28" time="5.408" tests="2">
+    <testcase classname="&lt;DatePickerSpinner /&gt; - navigation - should keep disabled the button &quot;Continuer&quot; when the date is not selected" name="&lt;DatePickerSpinner /&gt; - navigation - should keep disabled the button &quot;Continuer&quot; when the date is not selected" time="0.591">
+    </testcase>
+    <testcase classname="&lt;DatePickerSpinner /&gt; - navigation - should keep enable the button &quot;Continuer&quot; when the date is selected and is different from the current date" name="&lt;DatePickerSpinner /&gt; - navigation - should keep enable the button &quot;Continuer&quot; when the date is selected and is different from the current date" time="0.053">
+    </testcase>
+  </testsuite>
+  <testsuite name="adaptOffersPlaylistLocationParameters" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:30" time="4.315" tests="2">
+    <testcase classname="adaptOffersPlaylistLocationParameters should return adapted location parameters when module is set to isGeolocated with a given aroundRadius" name="adaptOffersPlaylistLocationParameters should return adapted location parameters when module is set to isGeolocated with a given aroundRadius" time="0.007">
+    </testcase>
+    <testcase classname="adaptOffersPlaylistLocationParameters should return default adapted location parameters when module is not set with isGeolocated and a given aroundRadius" name="adaptOffersPlaylistLocationParameters should return default adapted location parameters when module is not set with isGeolocated and a given aroundRadius" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="availableCategories" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:31" time="5.432" tests="1">
+    <testcase classname="availableCategories should return all searchable categories from CATEGORY_CRITERIA - without NONE" name="availableCategories should return all searchable categories from CATEGORY_CRITERIA - without NONE" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;BookingImpossible /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:27" time="9.972" tests="8">
+    <testcase classname="&lt;BookingImpossible /&gt; When offer is already favorite should render without CTAs" name="&lt;BookingImpossible /&gt; When offer is already favorite should render without CTAs" time="0.831">
+    </testcase>
+    <testcase classname="&lt;BookingImpossible /&gt; When offer is already favorite should log &apos;BookingImpossibleiOS&apos; on mount" name="&lt;BookingImpossible /&gt; When offer is already favorite should log &apos;BookingImpossibleiOS&apos; on mount" time="0.204">
+    </testcase>
+    <testcase classname="&lt;BookingImpossible /&gt; When offer is already favorite should dismiss modal when clicking on &apos;Voir le détail de l’offre&apos;" name="&lt;BookingImpossible /&gt; When offer is already favorite should dismiss modal when clicking on &apos;Voir le détail de l’offre&apos;" time="0.407">
+    </testcase>
+    <testcase classname="&lt;BookingImpossible /&gt; When offer is not yet favorite should render with CTAs" name="&lt;BookingImpossible /&gt; When offer is not yet favorite should render with CTAs" time="0.363">
+    </testcase>
+    <testcase classname="&lt;BookingImpossible /&gt; When offer is not yet favorite should send email/push notification when adding to favorites" name="&lt;BookingImpossible /&gt; When offer is not yet favorite should send email/push notification when adding to favorites" time="0.247">
+    </testcase>
+    <testcase classname="&lt;BookingImpossible /&gt; When offer is not yet favorite should log analytics event when adding to favorites" name="&lt;BookingImpossible /&gt; When offer is not yet favorite should log analytics event when adding to favorites" time="0.285">
+    </testcase>
+    <testcase classname="&lt;BookingImpossible /&gt; When offer is not yet favorite should change booking step from date to confirmation" name="&lt;BookingImpossible /&gt; When offer is not yet favorite should change booking step from date to confirmation" time="0.199">
+    </testcase>
+    <testcase classname="&lt;BookingImpossible /&gt; When offer is not yet favorite should dismiss modal when clicking on &apos;Retourner à l&apos;offre&apos;" name="&lt;BookingImpossible /&gt; When offer is not yet favorite should dismiss modal when clicking on &apos;Retourner à l&apos;offre&apos;" time="0.219">
+    </testcase>
+  </testsuite>
+  <testsuite name="useOngoingOrEndedBooking" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:32" time="6.434" tests="3">
+    <testcase classname="useOngoingOrEndedBooking should return ongoing_bookings when there is one" name="useOngoingOrEndedBooking should return ongoing_bookings when there is one" time="0.301">
+    </testcase>
+    <testcase classname="useOngoingOrEndedBooking should return ended_bookings when there is one" name="useOngoingOrEndedBooking should return ended_bookings when there is one" time="0.011">
+    </testcase>
+    <testcase classname="useOngoingOrEndedBooking should return null if no ongoing nor ended booking can be found" name="useOngoingOrEndedBooking should return null if no ongoing nor ended booking can be found" time="0.101">
+    </testcase>
+  </testsuite>
+  <testsuite name="useRemoveFavorite hook" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:34" time="7.176" tests="2">
+    <testcase classname="useRemoveFavorite hook should remove favorite" name="useRemoveFavorite hook should remove favorite" time="0.41">
+    </testcase>
+    <testcase classname="useRemoveFavorite hook should fail to remove favorite" name="useRemoveFavorite hook should fail to remove favorite" time="0.07">
+    </testcase>
+  </testsuite>
+  <testsuite name="getOfferRules" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:38" time="4.136" tests="10">
+    <testcase classname="getOfferRules should return the correct message when hasActivationCode is true" name="getOfferRules should return the correct message when hasActivationCode is true" time="0.005">
+    </testcase>
+    <testcase classname="getOfferRules should return the correct message if isDigital" name="getOfferRules should return the correct message if isDigital" time="0.103">
+    </testcase>
+    <testcase classname="getOfferRules should return the correct message if isPhysical" name="getOfferRules should return the correct message if isPhysical" time="0">
+    </testcase>
+    <testcase classname="getOfferRules should not return message if isEvent and on_site withdrawal type" name="getOfferRules should not return message if isEvent and on_site withdrawal type" time="0.003">
+    </testcase>
+    <testcase classname="getOfferRules should not return message if isEvent and null withdrawal type" name="getOfferRules should not return message if isEvent and null withdrawal type" time="0.006">
+    </testcase>
+    <testcase classname="getOfferRules should not return message if isEvent and no_ticket withdrawal type" name="getOfferRules should not return message if isEvent and no_ticket withdrawal type" time="0.003">
+    </testcase>
+    <testcase classname="getOfferRules should not return message if isEvent and by_email withdrawal type" name="getOfferRules should not return message if isEvent and by_email withdrawal type" time="0.002">
+    </testcase>
+    <testcase classname="getOfferRules should return the correct message if externalBookingsInfos.length === 1" name="getOfferRules should return the correct message if externalBookingsInfos.length === 1" time="0.002">
+    </testcase>
+    <testcase classname="getOfferRules should return the correct message if externalBookingsInfos.length === 2" name="getOfferRules should return the correct message if externalBookingsInfos.length === 2" time="0.002">
+    </testcase>
+    <testcase classname="getOfferRules should return an empty string if isEvent, isPhysical, isDigital and hasActivationCode are false" name="getOfferRules should return an empty string if isEvent, isPhysical, isDigital and hasActivationCode are false" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="useMediaQuery native" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:39" time="3.692" tests="24">
+    <testcase classname="useMediaQuery native isMobile/isTablet/isDesktop media queries should return isMobile to true when windowWidth &lt; theme.breakpoints.md" name="useMediaQuery native isMobile/isTablet/isDesktop media queries should return isMobile to true when windowWidth &lt; theme.breakpoints.md" time="0.026">
+    </testcase>
+    <testcase classname="useMediaQuery native isMobile/isTablet/isDesktop media queries should return isTablet to true when windowWidth &gt; theme.breakpoints.md and windowWidth &lt; theme.breakpoints.lg" name="useMediaQuery native isMobile/isTablet/isDesktop media queries should return isTablet to true when windowWidth &gt; theme.breakpoints.md and windowWidth &lt; theme.breakpoints.lg" time="0.002">
+    </testcase>
+    <testcase classname="useMediaQuery native isMobile/isTablet/isDesktop media queries should return isDesktop to true when windowWidth &gt; theme.breakpoints.lg" name="useMediaQuery native isMobile/isTablet/isDesktop media queries should return isDesktop to true when windowWidth &gt; theme.breakpoints.lg" time="0.004">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return false when minWidth=0, maxWidth=400, minHeight=undefined and maxHeight=undefined" name="useMediaQuery native useMediaQuery should return false when minWidth=0, maxWidth=400, minHeight=undefined and maxHeight=undefined" time="0.003">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return false when minWidth=0, maxWidth=500, minHeight=undefined and maxHeight=undefined" name="useMediaQuery native useMediaQuery should return false when minWidth=0, maxWidth=500, minHeight=undefined and maxHeight=undefined" time="0.001">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=500, maxWidth=1000, minHeight=undefined and maxHeight=undefined" name="useMediaQuery native useMediaQuery should return true when minWidth=500, maxWidth=1000, minHeight=undefined and maxHeight=undefined" time="0.001">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return false when minWidth=501, maxWidth=1200, minHeight=600 and maxHeight=undefined" name="useMediaQuery native useMediaQuery should return false when minWidth=501, maxWidth=1200, minHeight=600 and maxHeight=undefined" time="0.004">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=501, maxWidth=1200, minHeight=undefined and maxHeight=1000" name="useMediaQuery native useMediaQuery should return true when minWidth=501, maxWidth=1200, minHeight=undefined and maxHeight=1000" time="0.008">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=501, maxWidth=1200, minHeight=undefined and maxHeight=500" name="useMediaQuery native useMediaQuery should return true when minWidth=501, maxWidth=1200, minHeight=undefined and maxHeight=500" time="0.017">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=501, maxWidth=1200, minHeight=500 and maxHeight=undefined" name="useMediaQuery native useMediaQuery should return true when minWidth=501, maxWidth=1200, minHeight=500 and maxHeight=undefined" time="0.003">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=undefined, minHeight=500 and maxHeight=undefined" name="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=undefined, minHeight=500 and maxHeight=undefined" time="0.011">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return false when minWidth=undefined, maxWidth=500, minHeight=undefined and maxHeight=undefined" name="useMediaQuery native useMediaQuery should return false when minWidth=undefined, maxWidth=500, minHeight=undefined and maxHeight=undefined" time="0.035">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return false when minWidth=undefined, maxWidth=500, minHeight=500 and maxHeight=undefined" name="useMediaQuery native useMediaQuery should return false when minWidth=undefined, maxWidth=500, minHeight=500 and maxHeight=undefined" time="0.002">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return false when minWidth=undefined, maxWidth=500, minHeight=499 and maxHeight=undefined" name="useMediaQuery native useMediaQuery should return false when minWidth=undefined, maxWidth=500, minHeight=499 and maxHeight=undefined" time="0.001">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=1000, minHeight=500 and maxHeight=1001" name="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=1000, minHeight=500 and maxHeight=1001" time="0.004">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=1000, minHeight=undefined and maxHeight=1001" name="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=1000, minHeight=undefined and maxHeight=1001" time="0.005">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=1000, minHeight=undefined and maxHeight=1000" name="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=1000, minHeight=undefined and maxHeight=1000" time="0.003">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=undefined, minHeight=500 and maxHeight=500" name="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=undefined, minHeight=500 and maxHeight=500" time="0.003">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=undefined, minHeight=500 and maxHeight=undefined" name="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=undefined, minHeight=500 and maxHeight=undefined" time="0.002">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=undefined, minHeight=499 and maxHeight=undefined" name="useMediaQuery native useMediaQuery should return true when minWidth=undefined, maxWidth=undefined, minHeight=499 and maxHeight=undefined" time="0.001">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return false when minWidth=2000, maxWidth=2000, minHeight=600 and maxHeight=600" name="useMediaQuery native useMediaQuery should return false when minWidth=2000, maxWidth=2000, minHeight=600 and maxHeight=600" time="0">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return false when minWidth=1000, maxWidth=2000, minHeight=600 and maxHeight=600" name="useMediaQuery native useMediaQuery should return false when minWidth=1000, maxWidth=2000, minHeight=600 and maxHeight=600" time="0">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=1000, maxWidth=2000, minHeight=500 and maxHeight=600" name="useMediaQuery native useMediaQuery should return true when minWidth=1000, maxWidth=2000, minHeight=500 and maxHeight=600" time="0.001">
+    </testcase>
+    <testcase classname="useMediaQuery native useMediaQuery should return true when minWidth=1000, maxWidth=2000, minHeight=undefined and maxHeight=500" name="useMediaQuery native useMediaQuery should return true when minWidth=1000, maxWidth=2000, minHeight=undefined and maxHeight=500" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;EmailSent/&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:36" time="8.459" tests="2">
+    <testcase classname="&lt;EmailSent/&gt; should display the button &quot;Consulter mes e-mails&quot;" name="&lt;EmailSent/&gt; should display the button &quot;Consulter mes e-mails&quot;" time="0.153">
+    </testcase>
+    <testcase classname="&lt;EmailSent/&gt; should not show the button to open mail if no mail app is available" name="&lt;EmailSent/&gt; should not show the button to open mail if no mail app is available" time="0.114">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;EligibleFooter /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:38" time="6.975" tests="3">
+    <testcase classname="&lt;EligibleFooter /&gt; should display correct deposit for 15 years old" name="&lt;EligibleFooter /&gt; should display correct deposit for 15 years old" time="0.172">
+    </testcase>
+    <testcase classname="&lt;EligibleFooter /&gt; should display correct deposit for 18 years old" name="&lt;EligibleFooter /&gt; should display correct deposit for 18 years old" time="0.028">
+    </testcase>
+    <testcase classname="&lt;EligibleFooter /&gt; should navigate to Stepper when user press &quot;Activer mon crédit&quot;" name="&lt;EligibleFooter /&gt; should navigate to Stepper when user press &quot;Activer mon crédit&quot;" time="0.07">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;VenueMapView /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:29" time="15.117" tests="4">
+    <testcase classname="&lt;VenueMapView /&gt; should render map" name="&lt;VenueMapView /&gt; should render map" time="0.284">
+    </testcase>
+    <testcase classname="&lt;VenueMapView /&gt; should not display search button after initializing the map" name="&lt;VenueMapView /&gt; should not display search button after initializing the map" time="0.271">
+    </testcase>
+    <testcase classname="&lt;VenueMapView /&gt; should display search button after region change" name="&lt;VenueMapView /&gt; should display search button after region change" time="0.313">
+    </testcase>
+    <testcase classname="&lt;VenueMapView /&gt; should not display search button after search press" name="&lt;VenueMapView /&gt; should not display search button after search press" time="0.283">
+    </testcase>
+  </testsuite>
+  <testsuite name="getIdentityCheckStep" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:43" time="5.038" tests="5">
+    <testcase classname="getIdentityCheckStep should return the phone_validation identityCheckStep when phone-validation is provided" name="getIdentityCheckStep should return the phone_validation identityCheckStep when phone-validation is provided" time="0.002">
+    </testcase>
+    <testcase classname="getIdentityCheckStep should return the profile identityCheckStep when profile-completion is provided" name="getIdentityCheckStep should return the profile identityCheckStep when profile-completion is provided" time="0">
+    </testcase>
+    <testcase classname="getIdentityCheckStep should return the identification identityCheckStep when identity-check is provided" name="getIdentityCheckStep should return the identification identityCheckStep when identity-check is provided" time="0.001">
+    </testcase>
+    <testcase classname="getIdentityCheckStep should return the confirmation identityCheckStep when honor-statement is provided" name="getIdentityCheckStep should return the confirmation identityCheckStep when honor-statement is provided" time="0">
+    </testcase>
+    <testcase classname="getIdentityCheckStep should return the null identityCheckStep when something-else is provided" name="getIdentityCheckStep should return the null identityCheckStep when something-else is provided" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="getBookingLabels" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:44" time="4.561" tests="9">
+    <testcase classname="getBookingLabels should return the correct dateLabel for permanent bookings" name="getBookingLabels should return the correct dateLabel for permanent bookings" time="0.005">
+    </testcase>
+    <testcase classname="getBookingLabels should not return the location for digital bookings" name="getBookingLabels should not return the location for digital bookings" time="0.09">
+    </testcase>
+    <testcase classname="getBookingLabels should return the correct date and location for events" name="getBookingLabels should return the correct date and location for events" time="0.026">
+    </testcase>
+    <testcase classname="getBookingLabels should return the correct withdrawal date and location for events if starting today" name="getBookingLabels should return the correct withdrawal date and location for events if starting today" time="0.002">
+    </testcase>
+    <testcase classname="getBookingLabels should return the correct withdrawal date and location for events if starting tomorrow" name="getBookingLabels should return the correct withdrawal date and location for events if starting tomorrow" time="0.002">
+    </testcase>
+    <testcase classname="getBookingLabels should return the correct withdrawal date if expires today for physical bookings" name="getBookingLabels should return the correct withdrawal date if expires today for physical bookings" time="0.004">
+    </testcase>
+    <testcase classname="getBookingLabels should return the correct withdrawal date if expires tomorrow for physical bookings" name="getBookingLabels should return the correct withdrawal date if expires tomorrow for physical bookings" time="0.009">
+    </testcase>
+    <testcase classname="getBookingLabels should return the correct dateLabel for digital bookings with activation codes but no expiration date" name="getBookingLabels should return the correct dateLabel for digital bookings with activation codes but no expiration date" time="0.001">
+    </testcase>
+    <testcase classname="getBookingLabels should return the correct dateLabel for digital bookings with activation codes with expiration date" name="getBookingLabels should return the correct dateLabel for digital bookings with activation codes with expiration date" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="StepButton" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:42" time="7.47" tests="9">
+    <testcase classname="StepButton should disable the StepButton for COMPLETED state" name="StepButton should disable the StepButton for COMPLETED state" time="0.099">
+    </testcase>
+    <testcase classname="StepButton should enable the StepButton for CURRENT state" name="StepButton should enable the StepButton for CURRENT state" time="0.035">
+    </testcase>
+    <testcase classname="StepButton should disable StepButton for DISABLED state" name="StepButton should disable StepButton for DISABLED state" time="0.009">
+    </testcase>
+    <testcase classname="StepButton should disable the StepButton for CURRENT state when it has no behavior on press" name="StepButton should disable the StepButton for CURRENT state when it has no behavior on press" time="0.007">
+    </testcase>
+    <testcase classname="StepButton should enable StepButton for RETRY state" name="StepButton should enable StepButton for RETRY state" time="0.007">
+    </testcase>
+    <testcase classname="StepButton should show the right StepButton for COMPLETED state" name="StepButton should show the right StepButton for COMPLETED state" time="0.007">
+    </testcase>
+    <testcase classname="StepButton should show the right StepButton for CURRENT state" name="StepButton should show the right StepButton for CURRENT state" time="0.005">
+    </testcase>
+    <testcase classname="StepButton should show the right StepButton for DISABLED state" name="StepButton should show the right StepButton for DISABLED state" time="0.005">
+    </testcase>
+    <testcase classname="StepButton should show the right StepButton for RETRY state" name="StepButton should show the right StepButton for RETRY state" time="0.018">
+    </testcase>
+  </testsuite>
+  <testsuite name="useAvailableCategories" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:45" time="5.147" tests="3">
+    <testcase classname="useAvailableCategories should all availables categories" name="useAvailableCategories should all availables categories" time="0.008">
+    </testcase>
+    <testcase classname="useAvailableCategories should only available catégories from backend" name="useAvailableCategories should only available catégories from backend" time="0.002">
+    </testcase>
+    <testcase classname="useAvailableCategories should return empty array when no categories from backend" name="useAvailableCategories should return empty array when no categories from backend" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="AnimatedIcon" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:46" time="4.202" tests="2">
+    <testcase classname="AnimatedIcon should display only the first color before animation" name="AnimatedIcon should display only the first color before animation" time="0.328">
+    </testcase>
+    <testcase classname="AnimatedIcon should display only the last color after animation" name="AnimatedIcon should display only the last color after animation" time="0.189">
+    </testcase>
+  </testsuite>
+  <testsuite name="GeolocationActivationModal" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:46" time="6.399" tests="3">
+    <testcase classname="GeolocationActivationModal should render properly" name="GeolocationActivationModal should render properly" time="0.197">
+    </testcase>
+    <testcase classname="GeolocationActivationModal should open settings to activate geoloc and log event deeplinkEnableLocation" name="GeolocationActivationModal should open settings to activate geoloc and log event deeplinkEnableLocation" time="0.06">
+    </testcase>
+    <testcase classname="GeolocationActivationModal should open settings to deactivate geoloc and log event deeplinkEnableLocation" name="GeolocationActivationModal should open settings to deactivate geoloc and log event deeplinkEnableLocation" time="0.03">
+    </testcase>
+  </testsuite>
+  <testsuite name="useCenterOnLocation" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:50" time="4.803" tests="4">
+    <testcase classname="useCenterOnLocation should center on location if the pin is too far on the left" name="useCenterOnLocation should center on location if the pin is too far on the left" time="0.095">
+    </testcase>
+    <testcase classname="useCenterOnLocation should center on location if the pin is too far on the right" name="useCenterOnLocation should center on location if the pin is too far on the right" time="0.069">
+    </testcase>
+    <testcase classname="useCenterOnLocation should center on location if the pin is too far on the top" name="useCenterOnLocation should center on location if the pin is too far on the top" time="0.059">
+    </testcase>
+    <testcase classname="useCenterOnLocation should center on location if the pin is too far on the bottom" name="useCenterOnLocation should center on location if the pin is too far on the bottom" time="0.066">
+    </testcase>
+  </testsuite>
+  <testsuite name="useFunctionOnce()" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:51" time="4.302" tests="1">
+    <testcase classname="useFunctionOnce() should only call callback function once" name="useFunctionOnce() should only call callback function once" time="0.052">
+    </testcase>
+  </testsuite>
+  <testsuite name="useShouldDisplayExcluOffer" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:49" time="7.043" tests="7">
+    <testcase classname="useShouldDisplayExcluOffer should display offer if no display parameters available" name="useShouldDisplayExcluOffer should display offer if no display parameters available" time="0.04">
+    </testcase>
+    <testcase classname="useShouldDisplayExcluOffer should not display offer if price is above user max credit" name="useShouldDisplayExcluOffer should not display offer if price is above user max credit" time="0.025">
+    </testcase>
+    <testcase classname="useShouldDisplayExcluOffer user with geolocation activated should display offer if user is within radius" name="useShouldDisplayExcluOffer user with geolocation activated should display offer if user is within radius" time="0.002">
+    </testcase>
+    <testcase classname="useShouldDisplayExcluOffer user with geolocation activated should not display offer if user is too far from offer" name="useShouldDisplayExcluOffer user with geolocation activated should not display offer if user is too far from offer" time="0.002">
+    </testcase>
+    <testcase classname="useShouldDisplayExcluOffer user with geolocation activated should not display offer if offer coodinates are not available" name="useShouldDisplayExcluOffer user with geolocation activated should not display offer if offer coodinates are not available" time="0.002">
+    </testcase>
+    <testcase classname="useShouldDisplayExcluOffer user with geolocation deactivated should display offer if module is not geolocated" name="useShouldDisplayExcluOffer user with geolocation deactivated should display offer if module is not geolocated" time="0.003">
+    </testcase>
+    <testcase classname="useShouldDisplayExcluOffer user with geolocation deactivated should not display offer if module is geolocated" name="useShouldDisplayExcluOffer user with geolocation deactivated should not display offer if module is geolocated" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="SearchVenueItemDetails" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:52" time="5.113" tests="1">
+    <testcase classname="SearchVenueItemDetails should render venue details correctly" name="SearchVenueItemDetails should render venue details correctly" time="0.473">
+    </testcase>
+  </testsuite>
+  <testsuite name="changePasswordSchema" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:53" time="5.979" tests="7">
+    <testcase classname="changePasswordSchema should validate validate a form with all required values" name="changePasswordSchema should validate validate a form with all required values" time="0.007">
+    </testcase>
+    <testcase classname="changePasswordSchema should invalidate should fail due to missing special character { currentPassword: $currentPassword, newPassword: $newPassword, confirmedPassword: $confirmedPassword }" name="changePasswordSchema should invalidate should fail due to missing special character { currentPassword: $currentPassword, newPassword: $newPassword, confirmedPassword: $confirmedPassword }" time="0.096">
+    </testcase>
+    <testcase classname="changePasswordSchema should invalidate should fail due to missing special character { currentPassword: $currentPassword, newPassword: $newPassword, confirmedPassword: $confirmedPassword }" name="changePasswordSchema should invalidate should fail due to missing special character { currentPassword: $currentPassword, newPassword: $newPassword, confirmedPassword: $confirmedPassword }" time="0.002">
+    </testcase>
+    <testcase classname="changePasswordSchema should invalidate should fail due to non identical newPassword and confirmedPassword" name="changePasswordSchema should invalidate should fail due to non identical newPassword and confirmedPassword" time="0.005">
+    </testcase>
+    <testcase classname="changePasswordSchema should invalidate should fail due to not being 12 character length" name="changePasswordSchema should invalidate should fail due to not being 12 character length" time="0.002">
+    </testcase>
+    <testcase classname="changePasswordSchema should invalidate should fail due to not have 1 uppercase character" name="changePasswordSchema should invalidate should fail due to not have 1 uppercase character" time="0.002">
+    </testcase>
+    <testcase classname="changePasswordSchema should invalidate should fail due to not have 1 number character" name="changePasswordSchema should invalidate should fail due to not have 1 number character" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="useAlgoliaSimilarOffers" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:52" time="7.773" tests="7">
+    <testcase classname="useAlgoliaSimilarOffers should fetch algolia when ids are provided" name="useAlgoliaSimilarOffers should fetch algolia when ids are provided" time="0.275">
+    </testcase>
+    <testcase classname="useAlgoliaSimilarOffers should filter algolia hits" name="useAlgoliaSimilarOffers should filter algolia hits" time="0.075">
+    </testcase>
+    <testcase classname="useAlgoliaSimilarOffers should return undefined when algolia does not return any hit" name="useAlgoliaSimilarOffers should return undefined when algolia does not return any hit" time="0.215">
+    </testcase>
+    <testcase classname="useAlgoliaSimilarOffers should return undefined when ids are not provided" name="useAlgoliaSimilarOffers should return undefined when ids are not provided" time="0.004">
+    </testcase>
+    <testcase classname="useAlgoliaSimilarOffers should call function to preserve ids offer order when shouldPreserveIdsOrder is true" name="useAlgoliaSimilarOffers should call function to preserve ids offer order when shouldPreserveIdsOrder is true" time="0.024">
+    </testcase>
+    <testcase classname="useAlgoliaSimilarOffers should not call function to preserve ids offer order when shouldPreserveIdsOrder is undefined" name="useAlgoliaSimilarOffers should not call function to preserve ids offer order when shouldPreserveIdsOrder is undefined" time="0.012">
+    </testcase>
+    <testcase classname="useAlgoliaSimilarOffers should not call function to preserve ids offer order when shouldPreserveIdsOrder is false" name="useAlgoliaSimilarOffers should not call function to preserve ids offer order when shouldPreserveIdsOrder is false" time="0.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="useMapSubscriptionHomeIdsToTheme" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:56" time="5.072" tests="2">
+    <testcase classname="useMapSubscriptionHomeIdsToTheme should return correct theme when homeId is found in remote config" name="useMapSubscriptionHomeIdsToTheme should return correct theme when homeId is found in remote config" time="0.014">
+    </testcase>
+    <testcase classname="useMapSubscriptionHomeIdsToTheme should return null when homeId is not found in remote config" name="useMapSubscriptionHomeIdsToTheme should return null when homeId is not found in remote config" time="0.101">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;ControlledFilterSwitch /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:56" time="8.726" tests="1">
+    <testcase classname="&lt;ControlledFilterSwitch /&gt; should call onChange with new value on toggle" name="&lt;ControlledFilterSwitch /&gt; should call onChange with new value on toggle" time="0.313">
+    </testcase>
+  </testsuite>
+  <testsuite name="AnimatedProgressBar" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:57" time="10.397" tests="3">
+    <testcase classname="AnimatedProgressBar should render properly" name="AnimatedProgressBar should render properly" time="0.794">
+    </testcase>
+    <testcase classname="AnimatedProgressBar should have the right length and color" name="AnimatedProgressBar should have the right length and color" time="0.471">
+    </testcase>
+    <testcase classname="AnimatedProgressBar should have the right length and color when animated" name="AnimatedProgressBar should have the right length and color when animated" time="0.348">
+    </testcase>
+  </testsuite>
+  <testsuite name="culturalSurveyType" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:37:58" time="12.342" tests="2">
+    <testcase classname="culturalSurveyType should have default icon as Festival" name="culturalSurveyType should have default icon as Festival" time="0.025">
+    </testcase>
+    <testcase classname="culturalSurveyType should have icon Book icon for books" name="culturalSurveyType should have icon Book icon for books" time="0.019">
+    </testcase>
+  </testsuite>
+  <testsuite name="shareApp" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:01" time="10.1" tests="3">
+    <testcase classname="shareApp should share with native dialog when default mode on iOS" name="shareApp should share with native dialog when default mode on iOS" time="0.035">
+    </testcase>
+    <testcase classname="shareApp should log hasSharedApp when logAnalytics is true" name="shareApp should log hasSharedApp when logAnalytics is true" time="0.088">
+    </testcase>
+    <testcase classname="shareApp should log hasDismissedAppSharingModal when user closes native modal" name="shareApp should log hasDismissedAppSharingModal when user closes native modal" time="0.15">
+    </testcase>
+  </testsuite>
+  <testsuite name="Loader" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:02" time="10.057" tests="1">
+    <testcase classname="Loader should display the message use in parameter" name="Loader should display the message use in parameter" time="1.322">
+    </testcase>
+  </testsuite>
+  <testsuite name="useGetAllVenues" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:03" time="12.495" tests="5">
+    <testcase classname="useGetAllVenues When filter not applied should fetch all venues when initial venues not defined" name="useGetAllVenues When filter not applied should fetch all venues when initial venues not defined" time="0.223">
+    </testcase>
+    <testcase classname="useGetAllVenues When filter not applied should not fetch all venues when initial venues defined" name="useGetAllVenues When filter not applied should not fetch all venues when initial venues defined" time="0.004">
+    </testcase>
+    <testcase classname="useGetAllVenues When filter not applied should return initial venues when defined" name="useGetAllVenues When filter not applied should return initial venues when defined" time="0.003">
+    </testcase>
+    <testcase classname="useGetAllVenues When filter not applied should not return initial venues when not defined" name="useGetAllVenues When filter not applied should not return initial venues when not defined" time="0.28">
+    </testcase>
+    <testcase classname="useGetAllVenues When filter applied should fetch all venues when initial venues not defined and venue type filter applied" name="useGetAllVenues When filter applied should fetch all venues when initial venues not defined and venue type filter applied" time="0.156">
+    </testcase>
+  </testsuite>
+  <testsuite name="formatShareOffer" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:12" time="5.221" tests="1">
+    <testcase classname="formatShareOffer should format share message with offer name and location name" name="formatShareOffer should format share message with offer name and location name" time="0.016">
+    </testcase>
+  </testsuite>
+  <testsuite name="useSelectHomepageEntry" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:06" time="13.687" tests="39">
+    <testcase classname="useSelectHomepageEntry should not return anything when no homepageEntries retrieved from contentful" name="useSelectHomepageEntry should not return anything when no homepageEntries retrieved from contentful" time="0.078">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry should return home entry corresponding to id provided" name="useSelectHomepageEntry should return home entry corresponding to id provided" time="0.05">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry remote config entry should return remote config homeEntryNotConnected when isLoggedIn=false, user=undefined, onboardingAge=$onboardingAge, hasBookings=false, credit=undefined" name="useSelectHomepageEntry remote config entry should return remote config homeEntryNotConnected when isLoggedIn=false, user=undefined, onboardingAge=$onboardingAge, hasBookings=false, credit=undefined" time="0.101">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry remote config entry should return remote config homeEntryOnboardingUnderage when isLoggedIn=false, user=undefined, onboardingAge=$onboardingAge, hasBookings=false, credit=undefined" name="useSelectHomepageEntry remote config entry should return remote config homeEntryOnboardingUnderage when isLoggedIn=false, user=undefined, onboardingAge=$onboardingAge, hasBookings=false, credit=undefined" time="0.156">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry remote config entry should return remote config homeEntryOnboarding_18 when isLoggedIn=false, user=undefined, onboardingAge=$onboardingAge, hasBookings=false, credit=undefined" name="useSelectHomepageEntry remote config entry should return remote config homeEntryOnboarding_18 when isLoggedIn=false, user=undefined, onboardingAge=$onboardingAge, hasBookings=false, credit=undefined" time="0.057">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry remote config entry should return remote config homeEntryOnboardingGeneral when isLoggedIn=false, user=undefined, onboardingAge=$onboardingAge, hasBookings=false, credit=undefined" name="useSelectHomepageEntry remote config entry should return remote config homeEntryOnboardingGeneral when isLoggedIn=false, user=undefined, onboardingAge=$onboardingAge, hasBookings=false, credit=undefined" time="0.077">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry remote config entry should return remote config homeEntryNotConnected when isLoggedIn=true, user=undefined, onboardingAge=$onboardingAge, hasBookings=false, credit={&quot;isExpired&quot;: false}" name="useSelectHomepageEntry remote config entry should return remote config homeEntryNotConnected when isLoggedIn=true, user=undefined, onboardingAge=$onboardingAge, hasBookings=false, credit={&quot;isExpired&quot;: false}" time="0.051">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry remote config entry should return remote config homeEntry_18 when isLoggedIn=true, user={&quot;roles&quot;: [Array]}, onboardingAge=$onboardingAge, hasBookings=true, credit={&quot;isExpired&quot;: false}" name="useSelectHomepageEntry remote config entry should return remote config homeEntry_18 when isLoggedIn=true, user={&quot;roles&quot;: [Array]}, onboardingAge=$onboardingAge, hasBookings=true, credit={&quot;isExpired&quot;: false}" time="0.043">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry remote config entry should return remote config homeEntryGeneral when isLoggedIn=true, user={&quot;roles&quot;: [Array]}, onboardingAge=$onboardingAge, hasBookings=true, credit={&quot;isExpired&quot;: true}" name="useSelectHomepageEntry remote config entry should return remote config homeEntryGeneral when isLoggedIn=true, user={&quot;roles&quot;: [Array]}, onboardingAge=$onboardingAge, hasBookings=true, credit={&quot;isExpired&quot;: true}" time="0.12">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry remote config entry should return remote config homeEntry_15_17 when isLoggedIn=true, user={&quot;eligibility&quot;: &quot;underage&quot;}, onboardingAge=$onboardingAge, hasBookings=true, credit={&quot;isExpired&quot;: false}" name="useSelectHomepageEntry remote config entry should return remote config homeEntry_15_17 when isLoggedIn=true, user={&quot;eligibility&quot;: &quot;underage&quot;}, onboardingAge=$onboardingAge, hasBookings=true, credit={&quot;isExpired&quot;: false}" time="0.043">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry remote config entry should return remote config homeEntryWithoutBooking_15_17 when isLoggedIn=true, user={&quot;eligibility&quot;: &quot;underage&quot;}, onboardingAge=$onboardingAge, hasBookings=false, credit={&quot;isExpired&quot;: false}" name="useSelectHomepageEntry remote config entry should return remote config homeEntryWithoutBooking_15_17 when isLoggedIn=true, user={&quot;eligibility&quot;: &quot;underage&quot;}, onboardingAge=$onboardingAge, hasBookings=false, credit={&quot;isExpired&quot;: false}" time="0.033">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry remote config entry should return remote config homeEntryGeneral when isLoggedIn=true, user={&quot;eligibility&quot;: undefined}, onboardingAge=$onboardingAge, hasBookings=false, credit={&quot;isExpired&quot;: false}" name="useSelectHomepageEntry remote config entry should return remote config homeEntryGeneral when isLoggedIn=true, user={&quot;eligibility&quot;: undefined}, onboardingAge=$onboardingAge, hasBookings=false, credit={&quot;isExpired&quot;: false}" time="0.046">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry remote config entry should display the homeEntryWithoutBooking_18 home if user has never done booking as an eighteen years old" name="useSelectHomepageEntry remote config entry should display the homeEntryWithoutBooking_18 home if user has never done booking as an eighteen years old" time="0.009">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry remote config entry should display the homeEntryWithoutBooking_18 home if user has never done booking as an eighteen years old" name="useSelectHomepageEntry remote config entry should display the homeEntryWithoutBooking_18 home if user has never done booking as an eighteen years old" time="0.039">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available underage beneficiary users should retrieve the home entry tagged master+userunderage if available" name="useSelectHomepageEntry default home entry when no remote config available underage beneficiary users should retrieve the home entry tagged master+userunderage if available" time="0.509">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available underage beneficiary users should retrieve the playlist tagged master and no usergrandpublic if no tag userunderage available" name="useSelectHomepageEntry default home entry when no remote config available underage beneficiary users should retrieve the playlist tagged master and no usergrandpublic if no tag userunderage available" time="0.047">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available underage beneficiary users should retrieve the only playlist tagged master if no tag userunderage available" name="useSelectHomepageEntry default home entry when no remote config available underage beneficiary users should retrieve the only playlist tagged master if no tag userunderage available" time="0.007">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available underage beneficiary users should retrieve the first userunderage playlist even if no playlist tagged master" name="useSelectHomepageEntry default home entry when no remote config available underage beneficiary users should retrieve the first userunderage playlist even if no playlist tagged master" time="0.012">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available underage beneficiary users should retrieve the first playlist if no playlist tagged master or userunderage" name="useSelectHomepageEntry default home entry when no remote config available underage beneficiary users should retrieve the first playlist if no playlist tagged master or userunderage" time="0.003">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available exbeneficiary users should retrieve the playlist tagged master+usergrandpublic if available" name="useSelectHomepageEntry default home entry when no remote config available exbeneficiary users should retrieve the playlist tagged master+usergrandpublic if available" time="0.013">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available exbeneficiary users should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist" name="useSelectHomepageEntry default home entry when no remote config available exbeneficiary users should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist" time="0.006">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available exbeneficiary users should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master" name="useSelectHomepageEntry default home entry when no remote config available exbeneficiary users should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master" time="0.002">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available exbeneficiary users should retrieve the first playlist if no playlist tagged master or usergrandpublic" name="useSelectHomepageEntry default home entry when no remote config available exbeneficiary users should retrieve the first playlist if no playlist tagged master or usergrandpublic" time="0.005">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available beneficiary users should retrieve the playlist tagged master+usergrandpublic if available" name="useSelectHomepageEntry default home entry when no remote config available beneficiary users should retrieve the playlist tagged master+usergrandpublic if available" time="0.002">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available beneficiary users should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist" name="useSelectHomepageEntry default home entry when no remote config available beneficiary users should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist" time="0.006">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available beneficiary users should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master" name="useSelectHomepageEntry default home entry when no remote config available beneficiary users should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master" time="0.008">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available beneficiary users should retrieve the first playlist if no playlist tagged master or usergrandpublic" name="useSelectHomepageEntry default home entry when no remote config available beneficiary users should retrieve the first playlist if no playlist tagged master or usergrandpublic" time="0.005">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available eligible 18 users should retrieve the playlist tagged master+usergrandpublic if available" name="useSelectHomepageEntry default home entry when no remote config available eligible 18 users should retrieve the playlist tagged master+usergrandpublic if available" time="0.115">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available eligible 18 users should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist" name="useSelectHomepageEntry default home entry when no remote config available eligible 18 users should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist" time="0.058">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available eligible 18 users should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master" name="useSelectHomepageEntry default home entry when no remote config available eligible 18 users should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master" time="0.015">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available eligible 18 users should retrieve the first playlist if no playlist tagged master or usergrandpublic" name="useSelectHomepageEntry default home entry when no remote config available eligible 18 users should retrieve the first playlist if no playlist tagged master or usergrandpublic" time="0.005">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available eligible 15-17 users should retrieve the playlist tagged master+usergrandpublic if available" name="useSelectHomepageEntry default home entry when no remote config available eligible 15-17 users should retrieve the playlist tagged master+usergrandpublic if available" time="0.007">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available eligible 15-17 users should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist" name="useSelectHomepageEntry default home entry when no remote config available eligible 15-17 users should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist" time="0.016">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available eligible 15-17 users should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master" name="useSelectHomepageEntry default home entry when no remote config available eligible 15-17 users should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master" time="0.003">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available eligible 15-17 users should retrieve the first playlist if no playlist tagged master or usergrandpublic" name="useSelectHomepageEntry default home entry when no remote config available eligible 15-17 users should retrieve the first playlist if no playlist tagged master or usergrandpublic" time="0.001">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available general users should retrieve the playlist tagged master+usergrandpublic if available" name="useSelectHomepageEntry default home entry when no remote config available general users should retrieve the playlist tagged master+usergrandpublic if available" time="0.001">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available general users should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist" name="useSelectHomepageEntry default home entry when no remote config available general users should retrieve the playlist tagged only master if playlist tagged usergrandpublic does not exist" time="0.001">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available general users should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master" name="useSelectHomepageEntry default home entry when no remote config available general users should retrieve the playlist tagged usergrandpublic if available and no playlist tagged master" time="0.004">
+    </testcase>
+    <testcase classname="useSelectHomepageEntry default home entry when no remote config available general users should retrieve the first playlist if no playlist tagged master or usergrandpublic" name="useSelectHomepageEntry default home entry when no remote config available general users should retrieve the first playlist if no playlist tagged master or usergrandpublic" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="getYears" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:14" time="5.44" tests="4">
+    <testcase classname="getYears should return an array of years as strings" name="getYears should return an array of years as strings" time="0.007">
+    </testcase>
+    <testcase classname="getYears should return an empty array if numberOfYears is zero" name="getYears should return an empty array if numberOfYears is zero" time="0.003">
+    </testcase>
+    <testcase classname="getYears should not handle negative values of numberOfYears" name="getYears should not handle negative values of numberOfYears" time="0.001">
+    </testcase>
+    <testcase classname="getYears should handle startYear as a negative value" name="getYears should handle startYear as a negative value" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="buildOfferCategoriesPredicate" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:10" time="9.256" tests="20">
+    <testcase classname="buildOfferCategoriesPredicate should return an offer categories predicate formatted for Algolia API" name="buildOfferCategoriesPredicate should return an offer categories predicate formatted for Algolia API" time="0.037">
+    </testcase>
+    <testcase classname="buildOfferSubcategoriesPredicate should return an offer subcategories predicate formatted for Algolia API" name="buildOfferSubcategoriesPredicate should return an offer subcategories predicate formatted for Algolia API" time="0.042">
+    </testcase>
+    <testcase classname="buildOfferNativeCategoriesPredicate should return an offer native categories predicate formatted for Algolia API" name="buildOfferNativeCategoriesPredicate should return an offer native categories predicate formatted for Algolia API" time="0.006">
+    </testcase>
+    <testcase classname="buildOfferGenreTypesPredicate should return an offer genre types predicate with an empty string when no API correspondence" name="buildOfferGenreTypesPredicate should return an offer genre types predicate with an empty string when no API correspondence" time="0.035">
+    </testcase>
+    <testcase classname="buildOfferGenreTypesPredicate should return a movie offer genre types predicate formatted for Algolia API" name="buildOfferGenreTypesPredicate should return a movie offer genre types predicate formatted for Algolia API" time="0.011">
+    </testcase>
+    <testcase classname="buildOfferGenreTypesPredicate should return a book offer genre types predicate formatted for Algolia API" name="buildOfferGenreTypesPredicate should return a book offer genre types predicate formatted for Algolia API" time="0.008">
+    </testcase>
+    <testcase classname="buildOfferGenreTypesPredicate should return a music offer genre types predicate formatted for Algolia API" name="buildOfferGenreTypesPredicate should return a music offer genre types predicate formatted for Algolia API" time="0.096">
+    </testcase>
+    <testcase classname="buildOfferGenreTypesPredicate should return a show offer genre types predicate formatted for Algolia API" name="buildOfferGenreTypesPredicate should return a show offer genre types predicate formatted for Algolia API" time="0.04">
+    </testcase>
+    <testcase classname="buildObjectIdsPredicate should return an object ids predicate formatted for Algolia API" name="buildObjectIdsPredicate should return an object ids predicate formatted for Algolia API" time="0.038">
+    </testcase>
+    <testcase classname="buildObjectIdsPredicate should catch an error Sentry when object ids param not correctly passed and return an empty array" name="buildObjectIdsPredicate should catch an error Sentry when object ids param not correctly passed and return an empty array" time="0.084">
+    </testcase>
+    <testcase classname="buildEanPredicate should return an ean predicate formatted for Algolia API" name="buildEanPredicate should return an ean predicate formatted for Algolia API" time="0.01">
+    </testcase>
+    <testcase classname="buildOfferIsDuoPredicate should return an offer is duo predicate formatted for Algolia API when offerIsDuo param is true" name="buildOfferIsDuoPredicate should return an offer is duo predicate formatted for Algolia API when offerIsDuo param is true" time="0.065">
+    </testcase>
+    <testcase classname="buildOfferIsDuoPredicate should return undefined when offerIsDuo param is false" name="buildOfferIsDuoPredicate should return undefined when offerIsDuo param is false" time="0.002">
+    </testcase>
+    <testcase classname="buildTagsPredicate should return undefined when no tags associated" name="buildTagsPredicate should return undefined when no tags associated" time="0.004">
+    </testcase>
+    <testcase classname="buildTagsPredicate should return a tags predicate formatted for Algolia API" name="buildTagsPredicate should return a tags predicate formatted for Algolia API" time="0.002">
+    </testcase>
+    <testcase classname="buildOfferGtlsPredicate should return empty array when no gtls associated" name="buildOfferGtlsPredicate should return empty array when no gtls associated" time="0.029">
+    </testcase>
+    <testcase classname="buildOfferGtlsPredicate should return a gtls predicate formatted for Algolia API" name="buildOfferGtlsPredicate should return a gtls predicate formatted for Algolia API" time="0.02">
+    </testcase>
+    <testcase classname="buildAccessibiltyFiltersPredicate should return an accessibility filters predicate formatted for Algolia API" name="buildAccessibiltyFiltersPredicate should return an accessibility filters predicate formatted for Algolia API" time="0.012">
+    </testcase>
+    <testcase classname="buildAccessibiltyFiltersPredicate should return an empty array when no accessibility filters associated" name="buildAccessibiltyFiltersPredicate should return an empty array when no accessibility filters associated" time="0.071">
+    </testcase>
+    <testcase classname="buildAccessibiltyFiltersPredicate should return all accessibility filters predicate formatted for Algolia API" name="buildAccessibiltyFiltersPredicate should return all accessibility filters predicate formatted for Algolia API" time="0.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="CrashTestButton component" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:14" time="6.551" tests="1">
+    <testcase classname="CrashTestButton component should throw an error" name="CrashTestButton component should throw an error" time="0.496">
+    </testcase>
+  </testsuite>
+  <testsuite name="useVenueBackgroundStyle" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:16" time="5.483" tests="3">
+    <testcase classname="useVenueBackgroundStyle should return desktop background style" name="useVenueBackgroundStyle should return desktop background style" time="0.043">
+    </testcase>
+    <testcase classname="useVenueBackgroundStyle should return tablet background style" name="useVenueBackgroundStyle should return tablet background style" time="0.002">
+    </testcase>
+    <testcase classname="useVenueBackgroundStyle should return mobile background style" name="useVenueBackgroundStyle should return mobile background style" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="parseUrlParams" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:19" time="5.11" tests="2">
+    <testcase classname="parseUrlParams should parse url params" name="parseUrlParams should parse url params" time="0.024">
+    </testcase>
+    <testcase classname="parseUrlParams should parse empty url" name="parseUrlParams should parse empty url" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="isGeolocValid" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:21" time="4.357" tests="5">
+    <testcase classname="isGeolocValid should validate geoloc when coordinates are decimal" name="isGeolocValid should validate geoloc when coordinates are decimal" time="0.002">
+    </testcase>
+    <testcase classname="isGeolocValid should invalidate geoloc when longitude is undefined" name="isGeolocValid should invalidate geoloc when longitude is undefined" time="0.002">
+    </testcase>
+    <testcase classname="isGeolocValid should invalidate geoloc when longitude is an integer" name="isGeolocValid should invalidate geoloc when longitude is an integer" time="0.001">
+    </testcase>
+    <testcase classname="isGeolocValid should invalidate geoloc when latitude is undefined" name="isGeolocValid should invalidate geoloc when latitude is undefined" time="0.001">
+    </testcase>
+    <testcase classname="isGeolocValid should invalidate geoloc when latitude is an integer" name="isGeolocValid should invalidate geoloc when latitude is an integer" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="checkGeolocPermission()" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:21" time="4.247" tests="4">
+    <testcase classname="checkGeolocPermission() should return granted when ACCESS_FINE_LOCATION=granted and ACCESS_COARSE_LOCATION=granted" name="checkGeolocPermission() should return granted when ACCESS_FINE_LOCATION=granted and ACCESS_COARSE_LOCATION=granted" time="0.005">
+    </testcase>
+    <testcase classname="checkGeolocPermission() should return granted when ACCESS_FINE_LOCATION=granted and ACCESS_COARSE_LOCATION=denied" name="checkGeolocPermission() should return granted when ACCESS_FINE_LOCATION=granted and ACCESS_COARSE_LOCATION=denied" time="0.002">
+    </testcase>
+    <testcase classname="checkGeolocPermission() should return granted when ACCESS_FINE_LOCATION=denied and ACCESS_COARSE_LOCATION=granted" name="checkGeolocPermission() should return granted when ACCESS_FINE_LOCATION=denied and ACCESS_COARSE_LOCATION=granted" time="0.002">
+    </testcase>
+    <testcase classname="checkGeolocPermission() should return never_ask_again when ACCESS_FINE_LOCATION=denied and ACCESS_COARSE_LOCATION=denied" name="checkGeolocPermission() should return never_ask_again when ACCESS_FINE_LOCATION=denied and ACCESS_COARSE_LOCATION=denied" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="&lt;PriceLine /&gt;" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:21" time="5.977" tests="5">
+    <testcase classname="&lt;PriceLine /&gt; should show total price" name="&lt;PriceLine /&gt; should show total price" time="0.781">
+    </testcase>
+    <testcase classname="&lt;PriceLine /&gt; should show price details" name="&lt;PriceLine /&gt; should show price details" time="0.015">
+    </testcase>
+    <testcase classname="&lt;PriceLine /&gt; should show cinema&apos;s attributes when offer has attributes" name="&lt;PriceLine /&gt; should show cinema&apos;s attributes when offer has attributes" time="0.014">
+    </testcase>
+    <testcase classname="&lt;PriceLine /&gt; should not show cinema&apos;s attributes when offer has not attributes" name="&lt;PriceLine /&gt; should not show cinema&apos;s attributes when offer has not attributes" time="0.011">
+    </testcase>
+    <testcase classname="&lt;PriceLine /&gt; should set default quantity to 1" name="&lt;PriceLine /&gt; should set default quantity to 1" time="0.497">
+    </testcase>
+  </testsuite>
+  <testsuite name="useIsMounted()" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:21" time="4.771" tests="1">
+    <testcase classname="useIsMounted() should return true if mounted and false if not" name="useIsMounted() should return true if mounted and false if not" time="0.11">
+    </testcase>
+  </testsuite>
+  <testsuite name="ImageCaption component" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:23" time="8.665" tests="2">
+    <testcase classname="ImageCaption component should render correctly" name="ImageCaption component should render correctly" time="0.469">
+    </testcase>
+    <testcase classname="ImageCaption component should not display the distance if not available" name="ImageCaption component should not display the distance if not available" time="0.012">
+    </testcase>
+  </testsuite>
+  <testsuite name="searchResponsePredicate" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:25" time="7.316" tests="1">
+    <testcase classname="searchResponsePredicate should return only search responses" name="searchResponsePredicate should return only search responses" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="selectArgTypeFromObject" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:30" time="3.289" tests="1">
+    <testcase classname="selectArgTypeFromObject returns the select arg type when options object is provided" name="selectArgTypeFromObject returns the select arg type when options object is provided" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="adaptBusinessModule" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:31" time="3.243" tests="2">
+    <testcase classname="adaptBusinessModule should adapt a business module" name="adaptBusinessModule should adapt a business module" time="0.018">
+    </testcase>
+    <testcase classname="adaptBusinessModule should return null when the module is not provided" name="adaptBusinessModule should return null when the module is not provided" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="sanitizeNavigationState" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:29" time="5.157" tests="2">
+    <testcase classname="sanitizeNavigationState should not mutate original navigation state" name="sanitizeNavigationState should not mutate original navigation state" time="0.006">
+    </testcase>
+    <testcase classname="sanitizeNavigationState should save 1 entry in history with index 0" name="sanitizeNavigationState should save 1 entry in history with index 0" time="0.127">
+    </testcase>
+  </testsuite>
+  <testsuite name="computeBeginningAndEndingDatetime" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:29" time="4.889" tests="11">
+    <testcase classname="computeBeginningAndEndingDatetime should return {&quot;beginningDatetime&quot;: &quot;2022-11-30T00:00+00:00&quot;, &quot;endingDatetime&quot;: undefined} when beginningDatetime: 2022-11-30T00:00:00.000Z and endingDatetime: undefined" name="computeBeginningAndEndingDatetime should return {&quot;beginningDatetime&quot;: &quot;2022-11-30T00:00+00:00&quot;, &quot;endingDatetime&quot;: undefined} when beginningDatetime: 2022-11-30T00:00:00.000Z and endingDatetime: undefined" time="0.009">
+    </testcase>
+    <testcase classname="computeBeginningAndEndingDatetime should return {&quot;beginningDatetime&quot;: &quot;2022-11-30T00:00+00:00&quot;, &quot;endingDatetime&quot;: &quot;2022-12-30T00:00+00:00&quot;} when beginningDatetime: 2022-11-30T00:00:00.000Z and endingDatetime: 2022-12-30T00:00:00.000Z" name="computeBeginningAndEndingDatetime should return {&quot;beginningDatetime&quot;: &quot;2022-11-30T00:00+00:00&quot;, &quot;endingDatetime&quot;: &quot;2022-12-30T00:00+00:00&quot;} when beginningDatetime: 2022-11-30T00:00:00.000Z and endingDatetime: 2022-12-30T00:00:00.000Z" time="0.002">
+    </testcase>
+    <testcase classname="computeBeginningAndEndingDatetime should return {&quot;beginningDatetime&quot;: undefined, &quot;endingDatetime&quot;: &quot;2022-12-30T00:00+00:00&quot;} when beginningDatetime: undefined and endingDatetime: 2022-12-30T00:00:00.000Z" name="computeBeginningAndEndingDatetime should return {&quot;beginningDatetime&quot;: undefined, &quot;endingDatetime&quot;: &quot;2022-12-30T00:00+00:00&quot;} when beginningDatetime: undefined and endingDatetime: 2022-12-30T00:00:00.000Z" time="0.001">
+    </testcase>
+    <testcase classname="computeBeginningAndEndingDatetime should return weekend datetimes when upcomingWeekendEvent is true and we are on a working day" name="computeBeginningAndEndingDatetime should return weekend datetimes when upcomingWeekendEvent is true and we are on a working day" time="0.003">
+    </testcase>
+    <testcase classname="computeBeginningAndEndingDatetime should return now datetime as beginningDatetime when upcomingWeekendEvent is true and we are in weekend" name="computeBeginningAndEndingDatetime should return now datetime as beginningDatetime when upcomingWeekendEvent is true and we are in weekend" time="0.001">
+    </testcase>
+    <testcase classname="computeBeginningAndEndingDatetime should return now and two days later when eventDuringNextXDays is 2" name="computeBeginningAndEndingDatetime should return now and two days later when eventDuringNextXDays is 2" time="0.002">
+    </testcase>
+    <testcase classname="computeBeginningAndEndingDatetime should return now and this Sunday when currentWeekEvent is true" name="computeBeginningAndEndingDatetime should return now and this Sunday when currentWeekEvent is true" time="0.004">
+    </testcase>
+    <testcase classname="computeBeginningAndEndingDatetime should handle filters according to their priority when beginningDatetime: 2022-11-30T00:00:00.000Z, endingDatetime: undefined, upcomingWeekendEvent: true, eventDuringNextXDays: 2, currentWeekEvent: true" name="computeBeginningAndEndingDatetime should handle filters according to their priority when beginningDatetime: 2022-11-30T00:00:00.000Z, endingDatetime: undefined, upcomingWeekendEvent: true, eventDuringNextXDays: 2, currentWeekEvent: true" time="0.003">
+    </testcase>
+    <testcase classname="computeBeginningAndEndingDatetime should handle filters according to their priority when beginningDatetime: undefined, endingDatetime: 2022-12-30T00:00:00.000Z, upcomingWeekendEvent: true, eventDuringNextXDays: 2, currentWeekEvent: true" name="computeBeginningAndEndingDatetime should handle filters according to their priority when beginningDatetime: undefined, endingDatetime: 2022-12-30T00:00:00.000Z, upcomingWeekendEvent: true, eventDuringNextXDays: 2, currentWeekEvent: true" time="0.004">
+    </testcase>
+    <testcase classname="computeBeginningAndEndingDatetime should handle filters according to their priority when beginningDatetime: undefined, endingDatetime: undefined, upcomingWeekendEvent: true, eventDuringNextXDays: 2, currentWeekEvent: true" name="computeBeginningAndEndingDatetime should handle filters according to their priority when beginningDatetime: undefined, endingDatetime: undefined, upcomingWeekendEvent: true, eventDuringNextXDays: 2, currentWeekEvent: true" time="0.004">
+    </testcase>
+    <testcase classname="computeBeginningAndEndingDatetime should handle filters according to their priority when beginningDatetime: undefined, endingDatetime: undefined, upcomingWeekendEvent: false, eventDuringNextXDays: 2, currentWeekEvent: true" name="computeBeginningAndEndingDatetime should handle filters according to their priority when beginningDatetime: undefined, endingDatetime: undefined, upcomingWeekendEvent: false, eventDuringNextXDays: 2, currentWeekEvent: true" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="getOfferMetadata" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:33" time="4.473" tests="6">
+    <testcase classname="getOfferMetadata should return an empty array when extraData is undefined" name="getOfferMetadata should return an empty array when extraData is undefined" time="0.02">
+    </testcase>
+    <testcase classname="getOfferMetadata should return correct metadata with speaker value" name="getOfferMetadata should return correct metadata with speaker value" time="0.002">
+    </testcase>
+    <testcase classname="getOfferMetadata should return correct metadata with releaseDate value" name="getOfferMetadata should return correct metadata with releaseDate value" time="0.032">
+    </testcase>
+    <testcase classname="getOfferMetadata should return correct metadata with cast value" name="getOfferMetadata should return correct metadata with cast value" time="0.003">
+    </testcase>
+    <testcase classname="getOfferMetadata should return correct metadata with editeur value" name="getOfferMetadata should return correct metadata with editeur value" time="0.002">
+    </testcase>
+    <testcase classname="getOfferMetadata should not return items with empty values" name="getOfferMetadata should not return items with empty values" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="getRecommendationEndpoint" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:34" time="4.079" tests="5">
+    <testcase classname="getRecommendationEndpoint should return undefined when no user id is provided" name="getRecommendationEndpoint should return undefined when no user id is provided" time="0.013">
+    </testcase>
+    <testcase classname="getRecommendationEndpoint should return undefined when position is not yet retrived" name="getRecommendationEndpoint should return undefined when position is not yet retrived" time="0.006">
+    </testcase>
+    <testcase classname="getRecommendationEndpoint should return endpoint with position is denied" name="getRecommendationEndpoint should return endpoint with position is denied" time="0.007">
+    </testcase>
+    <testcase classname="getRecommendationEndpoint should return endpoint with latitude and longitude query params when position is provided" name="getRecommendationEndpoint should return endpoint with latitude and longitude query params when position is provided" time="0.002">
+    </testcase>
+    <testcase classname="getRecommendationEndpoint should return endpoint with endpoint query params when a endpoint is provided" name="getRecommendationEndpoint should return endpoint with endpoint query params when a endpoint is provided" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="getHistoryItemLabel" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:35" time="3.159" tests="4">
+    <testcase classname="getHistoryItemLabel should return only query information in accessibility label when item has not category and native category" name="getHistoryItemLabel should return only query information in accessibility label when item has not category and native category" time="0.009">
+    </testcase>
+    <testcase classname="getHistoryItemLabel should return query and category information in accessibility label when item has category and has not native category" name="getHistoryItemLabel should return query and category information in accessibility label when item has category and has not native category" time="0.003">
+    </testcase>
+    <testcase classname="getHistoryItemLabel should return query and native category information in accessibility label when item has native category and has not category" name="getHistoryItemLabel should return query and native category information in accessibility label when item has native category and has not category" time="0.002">
+    </testcase>
+    <testcase classname="getHistoryItemLabel should return query and native category information in accessibility label when item has category and native category" name="getHistoryItemLabel should return query and native category information in accessibility label when item has category and native category" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="getClusterImage" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:35" time="3.654" tests="4">
+    <testcase classname="getClusterImage should show nothing when points are less than 2" name="getClusterImage should show nothing when points are less than 2" time="0.004">
+    </testcase>
+    <testcase classname="getClusterImage should show cluster of 2 when points are 2" name="getClusterImage should show cluster of 2 when points are 2" time="0">
+    </testcase>
+    <testcase classname="getClusterImage should show cluster of 9 when points are 9" name="getClusterImage should show cluster of 9 when points are 9" time="0.001">
+    </testcase>
+    <testcase classname="getClusterImage should show cluster 9+ when points are more than 9" name="getClusterImage should show cluster 9+ when points are more than 9" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="[method] ubbleETAMessage" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:32" time="6.479" tests="2">
+    <testcase classname="[method] ubbleETAMessage should call the right path: ubble &gt; testing" name="[method] ubbleETAMessage should call the right path: ubble &gt; testing" time="0.07">
+    </testcase>
+    <testcase classname="[method] ubbleETAMessage should retrieve the ubbleETAMessage" name="[method] ubbleETAMessage should retrieve the ubbleETAMessage" time="0.59">
+    </testcase>
+  </testsuite>
+  <testsuite name="useNetInfo" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:35" time="6.049" tests="2">
+    <testcase classname="useNetInfo should return is connected when native lib says so" name="useNetInfo should return is connected when native lib says so" time="0.011">
+    </testcase>
+    <testcase classname="useNetInfo should return is not connected when native lib says so" name="useNetInfo should return is not connected when native lib says so" time="0.088">
+    </testcase>
+  </testsuite>
+  <testsuite name="isValueEmpty()" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:39" time="4.689" tests="3">
+    <testcase classname="isValueEmpty() should return true if value is undefined" name="isValueEmpty() should return true if value is undefined" time="0.005">
+    </testcase>
+    <testcase classname="isValueEmpty() should return true if value is empty string" name="isValueEmpty() should return true if value is empty string" time="0.005">
+    </testcase>
+    <testcase classname="isValueEmpty() should return false if value is a non-empty string" name="isValueEmpty() should return false if value is a non-empty string" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="adaptHighlightOfferModule" errors="0" failures="0" skipped="0" timestamp="2024-04-11T13:38:41" time="3.113" tests="2">
+    <testcase classname="adaptHighlightOfferModule should adapt from Contentful data" name="adaptHighlightOfferModule should adapt from Contentful data" time="0.007">
+    </testcase>
+    <testcase classname="adaptHighlightOfferModule should return null when no offer ID, offer tag or offer ean is provided" name="adaptHighlightOfferModule should return null when no offer ID, offer tag or offer ean is provided" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>
