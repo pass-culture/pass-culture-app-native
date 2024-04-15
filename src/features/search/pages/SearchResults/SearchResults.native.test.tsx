@@ -8,7 +8,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -24,7 +24,6 @@ let mockSearchState: SearchState = {
   offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
   venue,
   priceRange: [0, 20],
-  view: SearchView.Results,
 }
 
 const mockDispatch = jest.fn()
@@ -204,7 +203,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-describe('<Search/>', () => {
+describe('<SearchResults/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(() => {
@@ -213,7 +212,6 @@ describe('<Search/>', () => {
       offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
       venue,
       priceRange: [0, 20],
-      view: SearchView.Results,
     }
     mockIsFocusOnSuggestions = false
   })
@@ -329,7 +327,6 @@ describe('<Search/>', () => {
           payload: {
             ...mockSearchState,
             query: 'manga',
-            view: SearchView.Results,
             searchId,
             isFromHistory: true,
             isAutocomplete: undefined,
@@ -352,7 +349,6 @@ describe('<Search/>', () => {
           payload: {
             ...mockSearchState,
             query: 'tolkien',
-            view: SearchView.Results,
             searchId,
             isFromHistory: true,
             isAutocomplete: undefined,
@@ -375,7 +371,6 @@ describe('<Search/>', () => {
           payload: {
             ...mockSearchState,
             query: 'foresti',
-            view: SearchView.Results,
             searchId,
             isFromHistory: true,
             isAutocomplete: undefined,
@@ -402,84 +397,3 @@ describe('<Search/>', () => {
     })
   })
 })
-
-/*
-// it.only('should setPlace and setLocationMode in location context, when URI params contains a place,', async () => {
-//   useRoute.mockReturnValueOnce({
-//     params: {
-//       locationFilter: {
-//         locationType: LocationMode.AROUND_PLACE,
-//         place: mockedPlace,
-//       },
-//     },
-//   })
-
-//   render(<SearchResults />)
-
-//   await act(async () => {})
-
-//   expect(mockSetPlace).toHaveBeenCalledWith(mockedPlace)
-//   expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_PLACE)
-// })
-
-// it('should setLocationMode to AROUND-ME in location context,when URI params contains AROUND-ME and hasGeolocPosition is true', async () => {
-//   mockHasGeolocPosition = true
-//   useRoute.mockReturnValueOnce({
-//     params: {
-//       locationFilter: {
-//         locationType: LocationMode.AROUND_ME,
-//       },
-//     },
-//   })
-
-//   render(<Search />)
-
-//   await act(async () => {})
-
-//   expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_ME)
-// })
-
-// it("shouldn't setLocationMode to AROUND-ME in location context,when URI params contains AROUND-ME and hasGeolocPosition is false", async () => {
-//   mockHasGeolocPosition = false
-
-//   useRoute.mockReturnValueOnce({
-//     params: {
-//       locationFilter: {
-//         locationType: LocationMode.AROUND_ME,
-//       },
-//     },
-//   })
-
-//   render(<Search />)
-
-//   await act(async () => {})
-
-//   expect(mockSetSelectedLocationMode).not.toHaveBeenCalledWith(LocationMode.AROUND_ME)
-// })
-
-// describe('When search executed', () => {
-//   beforeEach(() => {
-//     mockSearchState = { ...mockSearchState, view: SearchView.Results, query: 'la fnac' }
-//   })
-
-//   it('should show search results', async () => {
-//     render(<Search />)
-//     await act(async () => {})
-
-//     expect(screen.getByTestId('searchResults')).toBeOnTheScreen()
-//   })
-
-//   it('should navigate to the search filter page when pressing the search filter button', async () => {
-//     render(<Search />)
-
-//     const searchFilterButton = screen.getByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')
-//     fireEvent.press(searchFilterButton)
-
-//     const navScreen = 'SearchFilter'
-
-//     await waitFor(() => {
-//       expect(navigate).toHaveBeenCalledWith(navScreen, undefined)
-//     })
-//   })
-// })
-*/

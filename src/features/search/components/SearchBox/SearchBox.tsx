@@ -1,3 +1,4 @@
+import { useRoute } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-core'
@@ -11,6 +12,7 @@ import {
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -20,7 +22,8 @@ import { SearchMainInput } from 'features/search/components/SearchMainInput/Sear
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getIsVenuePreviousRoute } from 'features/search/helpers/getIsVenuePreviousRoute/getIsVenuePreviousRoute'
-import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
+import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
+import { CreateHistoryItem, NewSearchView, SearchState } from 'features/search/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { getSpacing } from 'ui/theme'
@@ -50,6 +53,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const { goBack } = useGoBack(...homeNavConfig)
   const [displayedQuery, setDisplayedQuery] = useState<string>(searchState.query)
   const inputRef = useRef<RNTextInput | null>(null)
+  const route = useRoute()
+  const { navigateToSearch: navigateToSearchLanding } = useNavigateToSearch('SearchLanding')
+  const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
+
+  const currentView = route.name
 
   // Autocompletion inspired by https://github.com/algolia/doc-code-samples/tree/master/react-instantsearch-hooks-native/getting-started
   const { query: autocompleteQuery, refine: setAutocompleteQuery, clear } = useSearchBox(props)
@@ -72,19 +80,21 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   )
   const pushWithSearch = useCallback(
     (partialSearchState: Partial<SearchState>, options: { reset?: boolean } = {}) => {
+      const newSearchState = {
+        ...searchState,
+        ...(options.reset ? initialSearchState : {}),
+        ...partialSearchState,
+      }
       dispatch({
         type: 'SET_STATE',
-        payload: {
-          ...searchState,
-          ...(options.reset ? initialSearchState : {}),
-          ...partialSearchState,
-        },
+        payload: newSearchState,
       })
+      navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
     },
-    [dispatch, searchState]
+    [dispatch, searchState, navigateToSearchResults]
   )
 
-  const hasEditableSearchInput = isFocusOnSuggestions || searchState.view === SearchView.Results
+  const hasEditableSearchInput = isFocusOnSuggestions || currentView === NewSearchView.Results
 
   // Track when the InstantSearch query changes to synchronize it with
   // the React state.
@@ -116,7 +126,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     } else {
       hideSuggestions()
     }
-    pushWithSearch({ query: '', view: SearchView.Results })
+    pushWithSearch({ query: '' })
   }, [
     clear,
     setQuery,
@@ -134,32 +144,42 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     const isVenuePreviousRoute = getIsVenuePreviousRoute(navigationRef.getState().routes)
 
     switch (true) {
-      case isFocusOnSuggestions && searchState.view === SearchView.Results:
+      case isFocusOnSuggestions && currentView === NewSearchView.Results:
         setQuery(searchState.query)
         hideSuggestions()
         break
-      case isFocusOnSuggestions && searchState.view === SearchView.Landing:
+      case isFocusOnSuggestions && currentView === NewSearchView.Landing:
         setQuery('')
         hideSuggestions()
         break
       case isVenuePreviousRoute:
         dispatch({
           type: 'SET_STATE',
-          payload: { ...searchState, view: SearchView.Landing, venue: undefined },
+          payload: { ...searchState, venue: undefined },
         })
         goBack()
         break
-      case searchState.view === SearchView.Results:
+      case currentView === NewSearchView.Results:
         setQuery('')
         dispatch({
           type: 'SET_STATE',
           payload: initialSearchState,
         })
+        navigateToSearchLanding(initialSearchState, defaultDisabilitiesProperties)
         break
       default:
         break
     }
-  }, [isFocusOnSuggestions, searchState, setQuery, hideSuggestions, dispatch, goBack])
+  }, [
+    isFocusOnSuggestions,
+    searchState,
+    setQuery,
+    hideSuggestions,
+    dispatch,
+    goBack,
+    currentView,
+    navigateToSearchLanding,
+  ])
 
   const onSubmitQuery = useCallback(
     (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
@@ -178,7 +198,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         venue: searchState.venue,
         offerCategories: searchState.offerCategories,
         priceRange: searchState.priceRange,
-        view: SearchView.Results,
         searchId,
         isAutocomplete: undefined,
         isFromHistory: undefined,
@@ -214,10 +233,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     showSuggestions,
   ])
 
-  const showLocationButton = searchState.view === SearchView.Results && !isFocusOnSuggestions
+  const showLocationButton = currentView === NewSearchView.Results && !isFocusOnSuggestions
 
   const disableInputClearButton =
-    searchState.view === SearchView.Results && !isFocusOnSuggestions && !isDesktopViewport
+    currentView === NewSearchView.Results && !isFocusOnSuggestions && !isDesktopViewport
 
   return (
     <RowContainer>

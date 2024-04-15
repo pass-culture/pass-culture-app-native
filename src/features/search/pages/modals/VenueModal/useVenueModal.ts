@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { VenueModalHook, VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
@@ -54,7 +54,6 @@ const useVenueModal = ({ dismissModal }: VenueModalHookProps): VenueModalHook =>
     const payload: SearchState = {
       ...searchState,
       venue: selectedVenue ?? undefined,
-      view: SearchView.Results,
     }
     dispatch({
       type: 'SET_STATE',

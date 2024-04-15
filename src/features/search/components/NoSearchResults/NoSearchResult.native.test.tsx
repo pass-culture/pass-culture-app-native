@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { NoSearchResult } from './NoSearchResult'
@@ -31,7 +31,7 @@ describe('NoSearchResult component', () => {
   })
 
   it('should show the message with query entered', () => {
-    mockSearchState = { ...initialSearchState, view: SearchView.Landing, query: 'ZZZZZZ' }
+    mockSearchState = { ...initialSearchState, query: 'ZZZZZZ' }
     render(<NoSearchResult />)
 
     const text = screen.getByText('Pas de résultat')
@@ -55,7 +55,7 @@ describe('NoSearchResult component', () => {
   })
 
   it('should redirect to the general filters page when pressing "Modifier mes filtres" button with url params', async () => {
-    mockSearchState = { ...initialSearchState, view: SearchView.Landing, query: 'vinyle' }
+    mockSearchState = { ...initialSearchState, query: 'vinyle' }
     render(<NoSearchResult />)
     const button = screen.getByText('Modifier mes filtres')
 

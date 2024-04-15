@@ -5,7 +5,6 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
-import { SearchView } from 'features/search/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -30,7 +29,7 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 describe('<SearchLanding />', () => {
   describe('Search Landing Page -', () => {
     beforeAll(() => {
-      useRoute.mockReturnValue({ params: { view: SearchView.Landing } })
+      useRoute.mockReturnValue({ params: {} })
     })
 
     beforeEach(() => {

@@ -6,7 +6,6 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
-import { SearchView } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
@@ -33,7 +32,7 @@ describe('<SearchResults />', () => {
   describe('Search Results -', () => {
     beforeAll(() => {
       algoliasearch().initIndex().search.mockResolvedValue(mockedAlgoliaResponse)
-      useRoute.mockReturnValue({ params: { view: SearchView.Results, query: 'test' } })
+      useRoute.mockReturnValue({ params: { query: 'test' } })
     })
 
     beforeEach(() => {

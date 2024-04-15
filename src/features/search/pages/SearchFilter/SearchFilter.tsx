@@ -14,7 +14,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { useSync } from 'features/search/helpers/useSync/useSync'
-import { LocationFilter, SearchView } from 'features/search/types'
+import { LocationFilter } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -37,7 +37,7 @@ export const SearchFilter: React.FC = () => {
   useSync(currentRoute === 'SearchFilter')
 
   const { searchState, dispatch } = useSearch()
-  const { navigateToSearch } = useNavigateToSearch()
+  const { navigateToSearch } = useNavigateToSearch('SearchResults')
   const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters(searchState.searchId)
   })
@@ -51,14 +51,13 @@ export const SearchFilter: React.FC = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const oldSearchState = useMemo(() => searchState, [])
   const onGoBack = useCallback(() => {
-    navigateToSearch({ ...oldSearchState, view: SearchView.Results }, oldAccessibilityFilter)
+    navigateToSearch({ ...oldSearchState }, oldAccessibilityFilter)
   }, [navigateToSearch, oldSearchState, oldAccessibilityFilter])
 
   const onSearchPress = useCallback(() => {
     navigateToSearch(
       {
         ...searchState,
-        view: SearchView.Results,
       },
       disabilities
     )

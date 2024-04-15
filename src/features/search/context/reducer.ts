@@ -1,5 +1,5 @@
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 
@@ -18,7 +18,6 @@ export const initialSearchState: SearchState = {
   query: '',
   tags: [],
   timeRange: null,
-  view: SearchView.Landing,
   venue: undefined,
   gtls: [],
 }

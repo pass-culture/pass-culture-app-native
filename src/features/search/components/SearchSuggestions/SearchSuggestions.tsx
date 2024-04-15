@@ -59,7 +59,6 @@ export const SearchSuggestions = ({
       const newSearchState: SearchState = {
         ...searchState,
         query: item.query,
-        view: SearchView.Results,
         searchId,
         isFromHistory: true,
         isAutocomplete: undefined,

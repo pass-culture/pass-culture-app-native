@@ -1,4 +1,4 @@
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
@@ -30,7 +30,6 @@ const venueSearchParamsMock: SearchState = {
   tags: [],
   date: null,
   timeRange: null,
-  view: SearchView.Landing,
   query: '',
 }
 
@@ -47,10 +46,9 @@ describe('useNavigateToSearchWithVenueOffers', () => {
       params: {
         screen: 'SearchStackNavigator',
         params: {
-          screen: 'Search',
+          screen: 'SearchResults',
           params: {
             ...venueSearchParamsMock,
-            view: SearchView.Results,
           },
         },
       },

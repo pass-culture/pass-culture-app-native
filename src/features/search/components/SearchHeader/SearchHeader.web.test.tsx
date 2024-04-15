@@ -3,7 +3,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { initialSearchState } from 'features/search/context/reducer'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { act, render, screen, waitFor } from 'tests/utils/web'
 
@@ -42,23 +42,19 @@ describe('SearchHeader component', () => {
     mockIsFocusOnSuggestions = false
   })
 
-  it.each([[SearchView.Landing], [SearchView.Results]])(
-    'should contain a button to go to the search suggestions view',
-    async (view) => {
-      mockSearchState = { ...mockSearchState, view }
-      render(
-        <SearchHeader
-          searchInputID={searchInputID}
-          addSearchHistory={jest.fn()}
-          searchInHistory={jest.fn()}
-          shouldDisplaySubtitle
-        />
-      )
-      await act(async () => {})
+  it('should contain a button to go to the search suggestions view', async () => {
+    render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+        shouldDisplaySubtitle
+      />
+    )
+    await act(async () => {})
 
-      expect(await screen.findByText('Recherche par mots-clés')).toBeInTheDocument()
-    }
-  )
+    expect(await screen.findByText('Recherche par mots-clés')).toBeInTheDocument()
+  })
 
   it('should focus on location widget button', async () => {
     render(
@@ -119,27 +115,22 @@ describe('SearchHeader component', () => {
     })
   })
 
-  it.each([[SearchView.Landing], [SearchView.Results]])(
-    'should not have focus on search main input',
-    async (view) => {
-      mockSearchState = { ...mockSearchState, view }
+  it('should not have focus on search main input', async () => {
+    render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
 
-      render(
-        <SearchHeader
-          searchInputID={searchInputID}
-          addSearchHistory={jest.fn()}
-          searchInHistory={jest.fn()}
-        />
-      )
+    await act(async () => {
+      await userEvent.tab()
+      await userEvent.tab()
+    })
 
-      await act(async () => {
-        await userEvent.tab()
-        await userEvent.tab()
-      })
+    const searchMainInput = screen.getByRole('searchbox', { hidden: true })
 
-      const searchMainInput = screen.getByRole('searchbox', { hidden: true })
-
-      expect(searchMainInput).not.toHaveFocus()
-    }
-  )
+    expect(searchMainInput).not.toHaveFocus()
+  })
 })

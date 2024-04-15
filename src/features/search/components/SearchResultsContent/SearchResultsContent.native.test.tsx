@@ -10,7 +10,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { SearchState, SearchView, UserData } from 'features/search/types'
+import { SearchState, UserData } from 'features/search/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
@@ -440,7 +440,6 @@ describe('SearchResultsContent component', () => {
         payload: {
           ...mockSearchState,
           locationFilter: { locationType: LocationMode.EVERYWHERE },
-          view: SearchView.Results,
         },
       })
     })

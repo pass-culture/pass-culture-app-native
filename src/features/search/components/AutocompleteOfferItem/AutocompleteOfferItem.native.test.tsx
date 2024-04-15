@@ -15,7 +15,7 @@ import {
   mockHitWithOnlyCategory,
   mockHitWithoutCategoryAndNativeCategory,
 } from 'features/search/fixtures/autocompleteHits'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -116,7 +116,6 @@ describe('AutocompleteOfferItem component', () => {
           locationFilter: mockSearchState.locationFilter,
           venue: mockSearchState.venue,
           priceRange: mockSearchState.priceRange,
-          view: SearchView.Results,
           searchId,
           isAutocomplete: true,
         },
@@ -161,7 +160,6 @@ describe('AutocompleteOfferItem component', () => {
           locationFilter: mockSearchState.locationFilter,
           venue: mockSearchState.venue,
           priceRange: mockSearchState.priceRange,
-          view: SearchView.Results,
           searchId,
           isAutocomplete: true,
           offerNativeCategories: undefined,
@@ -194,7 +192,6 @@ describe('AutocompleteOfferItem component', () => {
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
-            view: SearchView.Results,
             searchId,
             isAutocomplete: true,
           },
@@ -222,7 +219,6 @@ describe('AutocompleteOfferItem component', () => {
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
-            view: SearchView.Results,
             searchId,
             isAutocomplete: true,
           },
@@ -249,7 +245,6 @@ describe('AutocompleteOfferItem component', () => {
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
-            view: SearchView.Results,
             searchId,
             isAutocomplete: true,
           },
@@ -276,7 +271,6 @@ describe('AutocompleteOfferItem component', () => {
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
-            view: SearchView.Results,
             searchId,
             isAutocomplete: true,
           },
@@ -304,7 +298,6 @@ describe('AutocompleteOfferItem component', () => {
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
-            view: SearchView.Results,
             searchId,
             isAutocomplete: true,
           },
@@ -331,7 +324,6 @@ describe('AutocompleteOfferItem component', () => {
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
-            view: SearchView.Results,
             searchId,
             isAutocomplete: true,
           },
@@ -358,7 +350,6 @@ describe('AutocompleteOfferItem component', () => {
             offerNativeCategories: undefined,
             locationFilter: mockSearchState.locationFilter,
             priceRange: mockSearchState.priceRange,
-            view: SearchView.Results,
             searchId,
             isAutocomplete: true,
             venue: mockSearchState.venue,

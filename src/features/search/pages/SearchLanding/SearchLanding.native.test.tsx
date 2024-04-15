@@ -8,7 +8,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -306,7 +306,7 @@ describe('<SearchLanding />', () => {
       expect(screen.getByText('Historique de recherche')).toBeOnTheScreen()
     })
 
-    it('should not display search history when it has not items', async () => {
+    it('should not display search history when it has no items', async () => {
       mockdate.set(TODAY_DATE)
       mockUseSearchHistory.mockReturnValueOnce({
         filteredHistory: [],
@@ -315,6 +315,7 @@ describe('<SearchLanding />', () => {
         removeFromHistory: jest.fn(),
         search: jest.fn(),
       })
+
       render(<SearchLanding />)
       await act(async () => {})
 
@@ -345,7 +346,6 @@ describe('<SearchLanding />', () => {
           payload: {
             ...mockSearchState,
             query: 'manga',
-            view: SearchView.Results,
             searchId,
             isFromHistory: true,
             isAutocomplete: undefined,
@@ -368,7 +368,6 @@ describe('<SearchLanding />', () => {
           payload: {
             ...mockSearchState,
             query: 'tolkien',
-            view: SearchView.Results,
             searchId,
             isFromHistory: true,
             isAutocomplete: undefined,
@@ -391,7 +390,6 @@ describe('<SearchLanding />', () => {
           payload: {
             ...mockSearchState,
             query: 'foresti',
-            view: SearchView.Results,
             searchId,
             isFromHistory: true,
             isAutocomplete: undefined,
@@ -418,111 +416,3 @@ describe('<SearchLanding />', () => {
     })
   })
 })
-
-/*
-
-// it.only('should setPlace and setLocationMode in location context, when URI params contains a place,', async () => {
-//   useRoute.mockReturnValueOnce({
-//     params: {
-//       locationFilter: {
-//         locationType: LocationMode.AROUND_PLACE,
-//         place: mockedPlace,
-//       },
-//     },
-//   })
-
-//   render(<SearchResults />)
-
-//   await act(async () => {})
-
-//   expect(mockSetPlace).toHaveBeenCalledWith(mockedPlace)
-//   expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_PLACE)
-// })
-
-  // it('should setLocationMode to AROUND-ME in location context,when URI params contains AROUND-ME and hasGeolocPosition is true', async () => {
-  //   mockHasGeolocPosition = true
-  //   useRoute.mockReturnValueOnce({
-  //     params: {
-  //       locationFilter: {
-  //         locationType: LocationMode.AROUND_ME,
-  //       },
-  //     },
-  //   })
-
-  //   render(<Search />)
-
-  //   await act(async () => {})
-
-  //   expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_ME)
-  // })
-
-  // it("shouldn't setLocationMode to AROUND-ME in location context,when URI params contains AROUND-ME and hasGeolocPosition is false", async () => {
-  //   mockHasGeolocPosition = false
-
-  //   useRoute.mockReturnValueOnce({
-  //     params: {
-  //       locationFilter: {
-  //         locationType: LocationMode.AROUND_ME,
-  //       },
-  //     },
-  //   })
-
-  //   render(<Search />)
-
-  //   await act(async () => {})
-
-  //   expect(mockSetSelectedLocationMode).not.toHaveBeenCalledWith(LocationMode.AROUND_ME)
-  // })
-
-  //   it('should handle coming from "See More" correctly', async () => {
-  //   useRoute.mockReturnValueOnce({ params: undefined })
-  //   render(<Search />)
-  //   await act(async () => {})
-
-  //   expect(mockDispatch).not.toHaveBeenCalled()
-  // })
-
-  // it.each([SearchView.Landing, SearchView.Results])(
-  //   'should not display suggestions when search view is not suggestions',
-  //   async (view) => {
-  //     mockSearchState = { ...mockSearchState, view }
-
-  //     render(<Search />)
-  //     await act(async () => {})
-
-  //     expect(screen.queryByTestId('autocompleteOfferItem_1')).not.toBeOnTheScreen()
-  //     expect(screen.queryByTestId('autocompleteOfferItem_2')).not.toBeOnTheScreen()
-  //   }
-  // )
-
-  //   describe('When search not executed', () => {
-  //   beforeEach(() => {
-  //     mockSearchState = { ...mockSearchState, view: SearchView.Landing }
-  //   })
-
-  //   // it('should display categories buttons', async () => {
-  //   //   render(<Search />, { wrapper: SearchWrapper })
-  //   //   await act(async () => {})
-
-  //   //   const categoriesButtons = screen.getByTestId('categoriesButtons')
-
-  //   //   expect(categoriesButtons).toBeOnTheScreen()
-  //   // })
-
-  //   // it('should show results for a category when pressing a category button', async () => {
-  //   //   const mockShowResultsForCategory = jest.fn()
-  //   //   jest
-  //   //     .spyOn(useShowResultsForCategory, 'useShowResultsForCategory')
-  //   //     .mockReturnValueOnce(mockShowResultsForCategory)
-  //   //   render(<Search />)
-  //   //   await act(async () => {})
-
-  //   //   const categoryButton = screen.getByText('Spectacles')
-
-  //   //   fireEvent.press(categoryButton)
-
-  //   //   expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnumv2.SPECTACLES)
-  //   // })
-  // })
-
-*/

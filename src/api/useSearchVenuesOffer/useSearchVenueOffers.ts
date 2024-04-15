@@ -111,7 +111,7 @@ export const useSearchVenueOffers = ({
   const previousPageObjectIds = useRef<string[]>([])
 
   const { data, ...infiniteQuery } = useInfiniteQuery<FetchOffersResponse>(
-    [QueryKeys.SEARCH_RESULTS, { ...initialSearchState, view: undefined, query }],
+    [QueryKeys.SEARCH_RESULTS, { ...initialSearchState, query }],
     async ({ pageParam: page = 0 }) => {
       const response = await fetchOffers({
         parameters: {

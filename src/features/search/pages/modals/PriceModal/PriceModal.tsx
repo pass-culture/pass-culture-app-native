@@ -13,7 +13,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { makeSearchPriceSchema } from 'features/search/helpers/schema/makeSearchPriceSchema/makeSearchPriceSchema'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -90,7 +90,6 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       minPrice: undefined,
       maxPrice: undefined,
       offerIsFree,
-      view: SearchView.Results,
     }
 
     if (values.minPrice) {

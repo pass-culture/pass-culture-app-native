@@ -12,7 +12,7 @@ import {
   getSearchGroupsEnumArrayFromNativeCategoryEnum,
   isNativeCategoryOfCategory,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
+import { CreateHistoryItem, SearchState } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -116,7 +116,6 @@ export function AutocompleteOfferItem({
     const newSearchState: SearchState = {
       ...searchState,
       query,
-      view: SearchView.Results,
       searchId,
       isAutocomplete: true,
       offerGenreTypes: undefined,

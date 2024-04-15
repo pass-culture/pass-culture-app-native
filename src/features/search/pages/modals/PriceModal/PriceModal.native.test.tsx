@@ -5,7 +5,7 @@ import * as Auth from 'features/auth/context/AuthContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { fireEvent, render, act, waitFor, screen } from 'tests/utils'
 
@@ -674,7 +674,6 @@ describe('<PriceModal/>', () => {
       const expectedSearchParams: SearchState = {
         ...searchState,
         maxPrice: '50',
-        view: SearchView.Results,
       }
 
       expect(mockDispatch).toHaveBeenCalledWith({
@@ -702,7 +701,6 @@ describe('<PriceModal/>', () => {
           ...mockSearchState,
           minPrice: '5',
           maxPrice: '20',
-          view: SearchView.Results,
         }
 
         expect(mockDispatch).toHaveBeenCalledWith({
@@ -728,7 +726,6 @@ describe('<PriceModal/>', () => {
           minPrice: '0',
           maxPrice: '0',
           offerIsFree: true,
-          view: SearchView.Results,
         }
 
         expect(mockDispatch).toHaveBeenCalledWith({
@@ -748,7 +745,6 @@ describe('<PriceModal/>', () => {
 
         const expectedSearchParams = {
           ...mockSearchState,
-          view: SearchView.Results,
           offerIsFree: true,
           minPrice: '0',
           maxPrice: '0',
@@ -771,7 +767,6 @@ describe('<PriceModal/>', () => {
 
         const expectedSearchParams = {
           ...mockSearchState,
-          view: SearchView.Results,
           offerIsFree: true,
           maxPrice: '0',
         }
@@ -793,7 +788,6 @@ describe('<PriceModal/>', () => {
 
         const expectedSearchParams = {
           ...mockSearchState,
-          view: SearchView.Results,
           minPrice: '1',
         }
 
