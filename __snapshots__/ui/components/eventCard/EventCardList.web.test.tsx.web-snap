@@ -3,75 +3,7 @@
 exports[`EventCardList should render correctly 1`] = `
 {
   "asFragment": [Function],
-  "baseElement": .c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  cursor: pointer;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: transparent;
-  padding: 0;
-}
-
-.c0:active {
-  opacity: 0.7;
-  outline: none;
-}
-
-.c0:focus {
-  outline: auto;
-}
-
-.c0:disabled {
-  cursor: initial;
-}
-
-.c0:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c0:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c1 {
-  width: 120px;
-  height: 68px;
-  box-sizing: border-box;
-  padding: 12px;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  border-width: 1px;
-  border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: 0px 4px 4px rgba(105,106,111,0.2);
-}
-
-.c2 {
-  width: 120px;
-  height: 68px;
-  box-sizing: border-box;
-  padding: 12px;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  border-width: 0;
-  border-radius: 8px;
-  background-color: #F1F1F4;
-}
-
-<body>
+  "baseElement": <body>
     <div>
       <div
         class="css-view-175oi2r"
@@ -88,7 +20,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="c0 c1 sc-gEvEer c1"
+                    class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
                     tabindex="0"
                     type="button"
                   >
@@ -137,7 +69,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="c0 c1 sc-gEvEer c1"
+                    class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
                     tabindex="0"
                     type="button"
                   >
@@ -186,7 +118,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="c0 c2 sc-gEvEer c2"
+                    class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
                     disabled=""
                     tabindex="0"
                     type="button"
@@ -236,7 +168,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="c0 c2 sc-gEvEer c2"
+                    class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
                     disabled=""
                     tabindex="0"
                     type="button"
@@ -276,7 +208,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="c0 c2 sc-gEvEer c2"
+                    class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
                     disabled=""
                     tabindex="0"
                     type="button"
@@ -316,7 +248,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="c0 c1 sc-gEvEer c1"
+                    class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
                     tabindex="0"
                     type="button"
                   >
@@ -365,7 +297,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="c0 c2 sc-gEvEer c2"
+                    class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
                     disabled=""
                     tabindex="0"
                     type="button"
@@ -405,7 +337,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="c0 c1 sc-gEvEer c1"
+                    class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
                     tabindex="0"
                     type="button"
                   >
@@ -442,75 +374,7 @@ exports[`EventCardList should render correctly 1`] = `
       </div>
     </div>
   </body>,
-  "container": .c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  cursor: pointer;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: transparent;
-  padding: 0;
-}
-
-.c0:active {
-  opacity: 0.7;
-  outline: none;
-}
-
-.c0:focus {
-  outline: auto;
-}
-
-.c0:disabled {
-  cursor: initial;
-}
-
-.c0:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c0:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c1 {
-  width: 120px;
-  height: 68px;
-  box-sizing: border-box;
-  padding: 12px;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  border-width: 1px;
-  border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: 0px 4px 4px rgba(105,106,111,0.2);
-}
-
-.c2 {
-  width: 120px;
-  height: 68px;
-  box-sizing: border-box;
-  padding: 12px;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  border-width: 0;
-  border-radius: 8px;
-  background-color: #F1F1F4;
-}
-
-<div>
+  "container": <div>
     <div
       class="css-view-175oi2r"
     >
@@ -526,7 +390,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="c0 c1 sc-gEvEer c1"
+                  class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
                   tabindex="0"
                   type="button"
                 >
@@ -575,7 +439,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="c0 c1 sc-gEvEer c1"
+                  class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
                   tabindex="0"
                   type="button"
                 >
@@ -624,7 +488,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="c0 c2 sc-gEvEer c2"
+                  class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
                   disabled=""
                   tabindex="0"
                   type="button"
@@ -674,7 +538,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="c0 c2 sc-gEvEer c2"
+                  class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
                   disabled=""
                   tabindex="0"
                   type="button"
@@ -714,7 +578,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="c0 c2 sc-gEvEer c2"
+                  class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
                   disabled=""
                   tabindex="0"
                   type="button"
@@ -754,7 +618,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="c0 c1 sc-gEvEer c1"
+                  class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
                   tabindex="0"
                   type="button"
                 >
@@ -803,7 +667,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="c0 c2 sc-gEvEer c2"
+                  class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
                   disabled=""
                   tabindex="0"
                   type="button"
@@ -843,7 +707,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="c0 c1 sc-gEvEer c1"
+                  class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
                   tabindex="0"
                   type="button"
                 >

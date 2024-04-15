@@ -1,175 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchResultsContent component should render correctly 1`] = `
-.c3 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  cursor: pointer;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: transparent;
-  padding: 0;
-}
-
-.c3:active {
-  opacity: 0.7;
-  outline: none;
-}
-
-.c3:focus {
-  outline: auto;
-}
-
-.c3:disabled {
-  cursor: initial;
-}
-
-.c3:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c3:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c5 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-height: 40px;
-  width: 100%;
-  background-color: #eb0055;
-  max-width: 500px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c5:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c5:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #ffffff;
-  text-decoration-color: #ffffff;
-}
-
-.c5:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c6:disabled {
-  background-color: #F1F1F4;
-}
-
-.c2 {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  line-height: 20px;
-  color: #161617;
-  cursor: pointer;
-}
-
-.c0 {
-  overflow: hidden;
-  margin-left: 24px;
-  margin-right: 24px;
-  width: 1px;
-  height: 1px;
-}
-
-.c0:focus-within {
-  width: auto;
-  height: auto;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.c4 {
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  box-sizing: border-box;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-left: 16px;
-  padding-right: 16px;
-  height: 32px;
-  background-color: #ffffff;
-  border-color: #161617;
-  border-width: 1px;
-  border-radius: 24px;
-}
-
-.c4:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c4:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
 <div>
   <div
-    class="c0"
+    class="sc-dAlyuH chsmNn"
   >
     <div
-      class="c1"
+      class="sc-jlZhew jGBukY"
     >
       <div
         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
@@ -224,7 +61,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
         class="css-view-175oi2r r-width-19wmn03"
       />
       <label
-        class="c2"
+        class="sc-kpDqfm gANNpQ"
         for="testUuidV4"
         id="testUuidV4"
       >
@@ -289,7 +126,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Lieu culturel"
-              class="c3 c4 sc-cwHptR c4"
+              class="sc-aXZVg igdJKW sc-cwHptR kaacHT sc-cwHptR kaacHT"
               data-testid="Lieu culturel"
               tabindex="0"
               title="Lieu culturel"
@@ -310,7 +147,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Catégories"
-              class="c3 c4 sc-cwHptR c4"
+              class="sc-aXZVg igdJKW sc-cwHptR kaacHT sc-cwHptR kaacHT"
               data-testid="Catégories"
               tabindex="0"
               title="Catégories"
@@ -331,7 +168,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Prix"
-              class="c3 c4 sc-cwHptR c4"
+              class="sc-aXZVg igdJKW sc-cwHptR kaacHT sc-cwHptR kaacHT"
               data-testid="Prix"
               tabindex="0"
               title="Prix"
@@ -352,7 +189,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Dates & heures"
-              class="c3 c4 sc-cwHptR c4"
+              class="sc-aXZVg igdJKW sc-cwHptR kaacHT sc-cwHptR kaacHT"
               data-testid="Dates & heures"
               tabindex="0"
               title="Dates & heures"
@@ -434,7 +271,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
         >
           <button
             aria-label="Modifier mes filtres"
-            class="c5 c6"
+            class="sc-dcJsrY kFjQay sc-gsFSXq jrfwxw"
             data-testid="Modifier mes filtres"
             tabindex="0"
             type="button"
