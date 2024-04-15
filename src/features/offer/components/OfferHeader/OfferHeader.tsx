@@ -3,7 +3,7 @@ import { Animated } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
@@ -33,12 +33,8 @@ export function OfferHeader({ headerTransition, title, offer }: Readonly<Props>)
     hideModal: hideShareOfferModal,
   } = useModal(false)
 
-  const { goBack } = useGoBack(
-    ...getTabNavConfig('SearchStackNavigator', {
-      screen: 'Search',
-      params: undefined,
-    })
-  )
+  const { goBack } = useGoBack(...getSearchStackConfig('SearchLanding'))
+
   const { share: shareOffer, shareContent } = getShareOffer({
     offer,
     utmMedium: 'header',

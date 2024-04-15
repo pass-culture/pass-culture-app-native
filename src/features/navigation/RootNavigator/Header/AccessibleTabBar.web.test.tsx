@@ -83,7 +83,7 @@ describe('AccessibleTabBar', () => {
 
     expect(navigateFromRefSpy).toHaveBeenCalledWith(
       ...getTabNavConfig('SearchStackNavigator', {
-        screen: 'Search',
+        screen: 'SearchLanding',
         params: mockSearchState,
       })
     )
@@ -102,7 +102,10 @@ describe('AccessibleTabBar', () => {
     })
 
     expect(navigateFromRefSpy).toHaveBeenCalledWith(
-      ...getTabNavConfig('SearchStackNavigator', { screen: 'Search', params: mockSearchState })
+      ...getTabNavConfig('SearchStackNavigator', {
+        screen: 'SearchLanding',
+        params: mockSearchState,
+      })
     )
   })
 })

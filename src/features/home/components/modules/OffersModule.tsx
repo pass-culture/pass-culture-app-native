@@ -58,7 +58,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     view: SearchView.Results,
   }
   const searchTabConfig = getTabNavConfig('SearchStackNavigator', {
-    screen: 'Search',
+    screen: 'SearchResults',
     params: searchParams,
   })
   // @ts-expect-error: because of noUncheckedIndexedAccess

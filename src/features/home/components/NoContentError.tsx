@@ -17,7 +17,7 @@ export const NoContentError = () => {
   const navigateToSearchTab = () => {
     navigate(
       ...getTabNavConfig('SearchStackNavigator', {
-        screen: 'Search',
+        screen: 'SearchLanding',
         params: undefined,
       })
     )

@@ -1,8 +1,6 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -36,12 +34,11 @@ describe('<NoBookingsView />', () => {
     fireEvent.press(button)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith(
-        ...getTabNavConfig('SearchStackNavigator', {
-          screen: 'Search',
-          params: { view: SearchView.Landing },
-        })
-      )
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { params: undefined, screen: 'SearchLanding' },
+        screen: 'SearchStackNavigator',
+      })
+
       expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('bookings')
     })
   })

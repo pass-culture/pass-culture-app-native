@@ -243,7 +243,7 @@ describe('TabBar', () => {
 
     expect(navigation.navigate).toHaveBeenCalledWith(
       ...getTabNavConfig('SearchStackNavigator', {
-        screen: 'Search',
+        screen: 'SearchLanding',
         params: { ...mockSearchState, accessibilityFilter: mockAccessibilityState },
       })
     )
