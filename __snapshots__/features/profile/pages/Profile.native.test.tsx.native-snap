@@ -176,6 +176,20 @@ exports[`Profile component should render correctly 1`] = `
           />
         </View>
       </View>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        test
+      </Text>
       <View
         style={
           [
