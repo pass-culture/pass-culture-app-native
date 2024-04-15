@@ -29,7 +29,7 @@ export const OnboardingSubscription = () => {
   const initialSubscribedThemes: SubscriptionTheme[] = (user?.subscriptions?.subscribedThemes ??
     []) as SubscriptionTheme[]
 
-  const [subscribedThemes, toggleSubscribedTheme] = useReducer(
+  const [subscribedThemes, checkSubscribedTheme] = useReducer(
     (state: SubscriptionTheme[], action: SubscriptionTheme) => {
       if (state.includes(action)) {
         return state.filter((theme) => theme !== action)
@@ -54,7 +54,7 @@ export const OnboardingSubscription = () => {
     }
   )
 
-  const isThemeToggled = (theme: SubscriptionTheme) => subscribedThemes.includes(theme)
+  const isThemeChecked = (theme: SubscriptionTheme) => subscribedThemes.includes(theme)
 
   const isValidateButtonDisabled = subscribedThemes.length === 0 || isUpdatingProfile
 
@@ -63,8 +63,8 @@ export const OnboardingSubscription = () => {
       <SubscriptionCategoryButtonContainer key={item}>
         <SubscriptionCategoryButton
           thematic={item}
-          checked={isThemeToggled(item)}
-          onPress={() => toggleSubscribedTheme(item)}
+          checked={isThemeChecked(item)}
+          onPress={() => checkSubscribedTheme(item)}
         />
       </SubscriptionCategoryButtonContainer>
     )

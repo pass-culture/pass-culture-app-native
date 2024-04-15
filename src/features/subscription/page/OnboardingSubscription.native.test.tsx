@@ -40,7 +40,7 @@ describe('OnboardingSubscription', () => {
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
-  it('should toggle theme when user presses a category button', () => {
+  it('should check theme when user presses a category button', () => {
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
     fireEvent.press(screen.getByLabelText('Activités créatives'))
@@ -48,7 +48,7 @@ describe('OnboardingSubscription', () => {
     expect(screen.getByLabelText('Activités créatives')).toHaveAccessibilityState({ checked: true })
   })
 
-  it('should pretoggle themes when user has already subscribed to some', () => {
+  it('should precheck themes when user has already subscribed to some', () => {
     mockUseAuthContext.mockReturnValueOnce({
       ...baseAuthContext,
       user: {
