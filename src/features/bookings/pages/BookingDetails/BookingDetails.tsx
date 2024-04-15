@@ -27,7 +27,7 @@ import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { HeroHeader } from 'ui/components/hero/HeroHeader'
+import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { blurImageHeight, heroMarginTop } from 'ui/components/hero/useHeroDimensions'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
@@ -177,7 +177,7 @@ export function BookingDetails() {
         }}
         testID="BookingDetailsScrollView"
         bounces={false}>
-        <HeroHeader imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
+        <HeaderWithImage imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
         <Spacer.Column numberOfSpaces={heroMarginTop} />
         <TicketSwiper booking={booking} />
         <View>
