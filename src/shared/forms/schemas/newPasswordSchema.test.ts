@@ -1,6 +1,6 @@
 import { ValidationError } from 'yup'
 
-import { reinitializePasswordSchema } from './reinitializePasswordSchema'
+import { newPasswordSchema } from './newPasswordSchema'
 
 describe('reinitializePasswordSchema', () => {
   it('should validate a form with all required values', async () => {
@@ -8,13 +8,13 @@ describe('reinitializePasswordSchema', () => {
       newPassword: 'user@AZERTY123',
       confirmedPassword: 'user@AZERTY123',
     }
-    const result = await reinitializePasswordSchema.validate(values)
+    const result = await newPasswordSchema.validate(values)
 
     expect(result).toEqual(values)
   })
 
   it('should invalidate due to invalid new password', async () => {
-    const result = reinitializePasswordSchema.validate({
+    const result = newPasswordSchema.validate({
       newPassword: 'userAZERTY123',
       confirmedPassword: 'userAZERTY123',
     })
@@ -23,7 +23,7 @@ describe('reinitializePasswordSchema', () => {
   })
 
   it('should invalidate due to non identical newPassword and confirmedPassword', async () => {
-    const result = reinitializePasswordSchema.validate({
+    const result = newPasswordSchema.validate({
       newPassword: 'user@AZERTY123',
       confirmedPassword: 'user@AZERTY12',
     })

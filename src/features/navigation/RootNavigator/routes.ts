@@ -51,6 +51,7 @@ import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
+import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
@@ -312,6 +313,13 @@ export const routes: RootRoute[] = [
     component: TrackEmailChange,
     path: 'profil/suivi-modification-email',
     options: { title: 'Suivi de ton changement d’e-mail' },
+    secure: true,
+  },
+  {
+    name: 'ChangeEmailSetPassword',
+    component: ChangeEmailSetPassword,
+    path: 'profil/creation-mot-de-passe',
+    options: { title: 'Création du mot de passe' },
     secure: true,
   },
   {

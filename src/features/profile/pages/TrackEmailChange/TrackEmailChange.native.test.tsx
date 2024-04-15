@@ -50,6 +50,7 @@ describe('TrackEmailChange', () => {
         expired: false,
         newEmail: '',
         status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
+        hasRecentlyResetPassword: false,
       })
       render(reactQueryProviderHOC(<TrackEmailChange />))
 
@@ -64,6 +65,7 @@ describe('TrackEmailChange', () => {
         expired: false,
         newEmail: '',
         status: EmailHistoryEventTypeEnum.CONFIRMATION,
+        hasRecentlyResetPassword: false,
       })
       render(reactQueryProviderHOC(<TrackEmailChange />))
 
@@ -78,6 +80,7 @@ describe('TrackEmailChange', () => {
         expired: false,
         newEmail: 'johndoe@gmail.com',
         status: EmailHistoryEventTypeEnum.NEW_EMAIL_SELECTION,
+        hasRecentlyResetPassword: false,
       })
       render(reactQueryProviderHOC(<TrackEmailChange />))
 

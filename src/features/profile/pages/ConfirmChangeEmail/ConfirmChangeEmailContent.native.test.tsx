@@ -50,6 +50,22 @@ describe('<ConfirmChangeEmail />', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'NewEmailSelection', { token: 'token' })
   })
 
+  it("should navigate to password creation on change email confirmation success when user doesn't have a password", async () => {
+    mockServer.postApi<EmailChangeConfirmationResponse>('/v2/profile/email_update/confirm', {
+      responseOptions: {
+        statusCode: 200,
+        data: { ...confirmationSuccessResponse, resetPasswordToken: 'reset_password_token' },
+      },
+    })
+    render(reactQueryProviderHOC(<ConfirmChangeEmailContent />))
+
+    await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailSetPassword', {
+      token: 'reset_password_token',
+    })
+  })
+
   it('should login user on change email confirmation success', async () => {
     mockServer.postApi<EmailChangeConfirmationResponse>('/v2/profile/email_update/confirm', {
       responseOptions: { statusCode: 200, data: confirmationSuccessResponse },
