@@ -3,6 +3,7 @@ import React, { useCallback, useEffect } from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import { ModuleData, OffersModule as OffersModuleType } from 'features/home/types'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
@@ -54,10 +55,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     locationParams,
     hitsPerPage: 20,
   }
-  const searchTabConfig = getTabNavConfig('SearchStackNavigator', {
-    screen: 'SearchResults',
-    params: searchParams,
-  })
+  const searchTabConfig = getSearchStackConfig('SearchResults', searchParams)
   // @ts-expect-error: because of noUncheckedIndexedAccess
   const moduleName = displayParameters.title ?? parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>

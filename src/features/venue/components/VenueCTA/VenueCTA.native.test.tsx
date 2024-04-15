@@ -41,8 +41,8 @@ jest
     params: {
       screen: 'SearchStackNavigator',
       params: {
-        screen: 'Search',
-        params: { ...defaultParams, view: SearchView.Results },
+        screen: 'SearchResults',
+        params: { ...defaultParams },
       },
     },
     withPush: true,

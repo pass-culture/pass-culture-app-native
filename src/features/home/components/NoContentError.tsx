@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonSecondaryWhite } from 'ui/components/buttons/ButtonSecondaryWhite'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
@@ -15,12 +15,7 @@ export const NoContentError = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToSearchTab = () => {
-    navigate(
-      ...getTabNavConfig('SearchStackNavigator', {
-        screen: 'SearchLanding',
-        params: undefined,
-      })
-    )
+    navigate(...getSearchStackConfig('SearchLanding'))
   }
 
   const helmetTitle =
