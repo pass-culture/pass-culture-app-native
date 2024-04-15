@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useRef, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -11,6 +11,7 @@ import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types
 import { useVenueMapState } from 'features/venueMap/context/VenueMapWrapper'
 import { getVenueTags } from 'features/venueMap/helpers/getVenueTags/getVenueTags'
 import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
+import { zoomOutIfMapEmpty } from 'features/venueMap/helpers/zoomOutIfMapEmpty'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { useGetDefaultRegion } from 'features/venueMap/hook/useGetDefaultRegion'
 import { useGetVenuesInRegion } from 'features/venueMap/hook/useGetVenuesInRegion'
@@ -47,6 +48,11 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const { selectedVenue } = venueMapState
 
   const venues = useGetVenuesInRegion(lastRegionSearched, selectedVenue, initialVenues)
+  useEffect(() => {
+    if (venues.length > 1) {
+      zoomOutIfMapEmpty({ mapViewRef, venues })
+    }
+  }, [venues])
 
   const distanceToVenue = useDistance({
     lat: selectedVenue?._geoloc.lat,
