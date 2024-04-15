@@ -114,6 +114,7 @@ export const mockOffer = toMutable({
       geo: { '@type': 'GeoCoordinates', latitude: 5.15839, longitude: -52.63741 },
     },
   },
+  isExternalBookingsDisabled: false,
 } as const satisfies ReadonlyDeep<OfferResponse>)
 
 export const mockDigitalOffer = toMutable({
@@ -203,4 +204,5 @@ export const mockDigitalOffer = toMutable({
       geo: { '@type': 'GeoCoordinates', latitude: 5.15839, longitude: -52.63741 },
     },
   },
+  isExternalBookingsDisabled: false,
 } as const satisfies ReadonlyDeep<OfferResponse>)

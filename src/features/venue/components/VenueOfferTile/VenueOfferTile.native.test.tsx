@@ -82,6 +82,7 @@ describe('VenueOfferTile component', () => {
       venue: { coordinates: {} },
       isEducational: false,
       metadata: undefined,
+      isExternalBookingsDisabled: false,
     })
   })
 })
