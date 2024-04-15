@@ -73,15 +73,13 @@ export const OfferPreview: FunctionComponent = () => {
               {!!progressValue && (
                 <Footer height={footerHeight}>
                   <PaginationContainer gap={2}>
-                    {images.map((_, index) => {
-                      return (
-                        <CarouselDot
-                          animValue={progressValue}
-                          index={index}
-                          key={index + carouselDotId}
-                        />
-                      )
-                    })}
+                    {images.map((_, index) => (
+                      <CarouselDot
+                        animValue={progressValue}
+                        index={index}
+                        key={index + carouselDotId}
+                      />
+                    ))}
                   </PaginationContainer>
                 </Footer>
               )}

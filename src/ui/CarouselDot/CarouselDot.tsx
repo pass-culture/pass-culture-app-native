@@ -12,18 +12,20 @@ type Props = {
   animValue: Animated.SharedValue<number>
 }
 
+const SMALL_DOT_SIZE = 6
+const BIG_DOT_SIZE = SMALL_DOT_SIZE + 4
+
 export const CarouselDot: React.FunctionComponent<Props> = ({ animValue, index }) => {
-  const width = 6
   const theme = useTheme()
 
   const animStyle = useAnimatedStyle(() => {
     const inputRange = [index - 1, index, index + 1]
     const marginOutputRange = [2, 0, 2]
-    const outputRange = [theme.colors.greyDark, theme.colors.black, theme.colors.greyDark]
-    const widthOutputRange = [width, width + 4, width]
+    const colorOutputRange = [theme.colors.greyDark, theme.colors.black, theme.colors.greyDark]
+    const widthOutputRange = [SMALL_DOT_SIZE, BIG_DOT_SIZE, SMALL_DOT_SIZE]
 
     return {
-      backgroundColor: interpolateColor(animValue?.value, inputRange, outputRange),
+      backgroundColor: interpolateColor(animValue?.value, inputRange, colorOutputRange),
       width: interpolate(animValue?.value, inputRange, widthOutputRange, Extrapolation.CLAMP),
       height: interpolate(animValue?.value, inputRange, widthOutputRange, Extrapolation.CLAMP),
       margin: interpolate(animValue?.value, inputRange, marginOutputRange, Extrapolation.CLAMP),
@@ -34,7 +36,7 @@ export const CarouselDot: React.FunctionComponent<Props> = ({ animValue, index }
 }
 
 const Dot = styled(Animated.View)(({ theme }) => ({
-  borderRadius: 50,
+  borderRadius: BIG_DOT_SIZE,
   backgroundColor: theme.colors.greyDark,
   overflow: 'hidden',
 }))
