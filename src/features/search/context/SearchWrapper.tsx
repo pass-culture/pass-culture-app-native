@@ -9,7 +9,6 @@ import React, {
 } from 'react'
 
 import { Action, initialSearchState, searchReducer } from 'features/search/context/reducer'
-import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { SearchState } from 'features/search/types'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -30,15 +29,7 @@ export const SearchWrapper = memo(function SearchWrapper({
 }: {
   children: React.JSX.Element
 }) {
-  const maxPrice = useMaxPrice()
-  const priceRange: [number, number] = [0, maxPrice]
-
-  const initialSearchStateWithPriceRange = {
-    ...initialSearchState,
-    priceRange,
-  }
-
-  const [searchState, dispatch] = useReducer(searchReducer, initialSearchStateWithPriceRange)
+  const [searchState, dispatch] = useReducer(searchReducer, initialSearchState)
   const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
 
   const [isFocusOnSuggestions, setIsFocusOnSuggestions] = useState(false)
@@ -74,10 +65,10 @@ export const SearchWrapper = memo(function SearchWrapper({
     }
   }, [selectedLocationMode, place, aroundMeRadius, aroundPlaceRadius, dispatch])
 
+  // Temporary fix: this useEffect reduces the amount of re-renders and fixes Search.web.perf test ==> PC-29251
   useEffect(() => {
-    dispatch({ type: 'SET_STATE', payload: { ...searchState, priceRange } })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [maxPrice])
+    dispatch({ type: 'SET_STATE', payload: initialSearchState })
+  }, [])
 
   const resetSearch = useCallback(() => {
     dispatch({ type: 'SET_STATE', payload: initialSearchState })

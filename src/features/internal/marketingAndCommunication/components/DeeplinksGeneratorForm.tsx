@@ -26,6 +26,7 @@ import { LocationFilter, SearchView } from 'features/search/types'
 import { env } from 'libs/environment'
 import { LocationMode } from 'libs/location/types'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { Range } from 'libs/typesUtils/typeHelpers'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Slider } from 'ui/components/inputs/Slider'
@@ -44,6 +45,13 @@ export interface GeneratedDeeplink {
 
 interface Props {
   onCreate: (generatedDeeplink: GeneratedDeeplink) => void
+}
+
+type DeeplinksAppParams = Record<string, unknown> & {
+  priceRange?: Range<number> | null
+  offerIsFree?: boolean
+  minPrice?: string
+  maxPrice?: string
 }
 
 export function getDefaultScreenParams(screenName: ScreensUsedByMarketing) {
@@ -265,15 +273,27 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     if (!areAllParamsValid()) return
 
     const { appParams, marketingParams, fdlParams } = extractParams(screenParams)
+
+    if (appParams.offerIsFree) {
+      appParams.priceRange = null
+      appParams.minPrice = '0'
+      appParams.maxPrice = '0'
+    } else {
+      appParams.minPrice = appParams.priceRange?.[0]?.toString() ?? undefined
+      appParams.maxPrice = appParams.priceRange?.[1]?.toString() ?? undefined
+    }
+
     const appAndMarketingParams = { ...appParams, ...marketingParams }
 
     let screenPath = getScreenPath(selectedScreen, appAndMarketingParams)
     if (isTabScreen(selectedScreen)) {
-      const tabNavConfig = getTabNavConfig(selectedScreen, appAndMarketingParams)
+      const tabNavConfig = getTabNavConfig(
+        selectedScreen,
+        appAndMarketingParams as Record<string, unknown>
+      )
 
       screenPath = getScreenPath(...tabNavConfig)
     }
-
     if (isSearchStackScreen(selectedScreen)) {
       const searchStackConfig = getSearchStackConfig(selectedScreen, appAndMarketingParams)
       screenPath = getScreenPath(...searchStackConfig)
@@ -360,7 +380,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 }
 
 function extractParams(params: Record<string, unknown>) {
-  const appParams: Record<string, unknown> = {}
+  const appParams: DeeplinksAppParams = {}
   const marketingParams: Record<string, unknown> = {}
   const fdlParams: Record<string, unknown> = {}
   for (const [paramName, paramValue] of Object.entries(params)) {
