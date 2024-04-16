@@ -16,7 +16,7 @@ import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholde
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
-import { HomepageModule, isOffersModule, isVenuesModule } from 'features/home/types'
+import { HomepageModule, isOffersModule, isVenuesModule, ThematicHeader } from 'features/home/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -31,6 +31,7 @@ type GenericHomeProps = {
   Header: React.JSX.Element
   modules: HomepageModule[]
   homeId: string
+  thematicHeader?: ThematicHeader
   shouldDisplayScrollToTop?: boolean
   onScroll?: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => void
   videoModuleId?: string
@@ -72,6 +73,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   Header,
   modules,
   homeId,
+  thematicHeader,
   shouldDisplayScrollToTop,
   onScroll: givenOnScroll,
   videoModuleId,
@@ -85,7 +87,9 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 
   const trackEventHasSeenAllModules = useFunctionOnce(() => {
     const data = new BatchEventData()
-    data.put('home_id', `${homeId}`)
+    data.put('home_id', homeId)
+    data.put('home_type', thematicHeader ? thematicHeader.type : 'mainHome')
+    thematicHeader && data.put('home_name', thematicHeader.title)
     BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage, undefined, data)
   })
 

@@ -5,7 +5,10 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomepageData } from 'features/home/api/useHomepageData'
-import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
+import {
+  formattedVenuesModule,
+  highlightHeaderFixture,
+} from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
@@ -66,20 +69,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 const modules = [formattedVenuesModule]
 
-const mockedHighlightHeaderData = {
-  modules,
-  id: 'fakeEntryId',
-  thematicHeader: {
-    type: ThematicHeaderType.Highlight,
-    imageUrl:
-      'https://images.ctfassets.net/2bg01iqy0isv/5PmtxKY77rq0nYpkCFCbrg/4daa8767efa35827f22bb86e5fc65094/photo-lion_noir-et-blanc_laurent-breillat-610x610.jpeg',
-    subtitle: 'Un sous-titre',
-    title: 'Bloc temps fort',
-    beginningDate: new Date('2022-12-21T23:00:00.000Z'),
-    endingDate: new Date('2023-01-14T23:00:00.000Z'),
-  },
-}
-
 describe('ThematicHome', () => {
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })
 
@@ -102,7 +91,7 @@ describe('ThematicHome', () => {
 
   describe('header', () => {
     it('should show highlight header when provided', async () => {
-      mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
+      mockUseHomepageData.mockReturnValueOnce(highlightHeaderFixture)
 
       renderThematicHome()
       await act(async () => {})
@@ -114,7 +103,7 @@ describe('ThematicHome', () => {
     it('should show highlight animated header when provided and platform is iOS', async () => {
       Platform.OS = 'ios'
 
-      mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
+      mockUseHomepageData.mockReturnValueOnce(highlightHeaderFixture)
 
       renderThematicHome()
       await act(async () => {})
@@ -127,9 +116,9 @@ describe('ThematicHome', () => {
       Platform.OS = 'ios'
 
       const mockedHighlightHeaderDataWithIntroduction = {
-        ...mockedHighlightHeaderData,
+        ...highlightHeaderFixture,
         thematicHeader: {
-          ...mockedHighlightHeaderData.thematicHeader,
+          ...highlightHeaderFixture.thematicHeader,
           introductionTitle: 'IntroductionTitle',
           introductionParagraph: 'IntroductionParagraph',
         },
@@ -146,7 +135,7 @@ describe('ThematicHome', () => {
     it('should not show highlight animated header when provided and platform is Android', async () => {
       Platform.OS = 'android'
 
-      mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
+      mockUseHomepageData.mockReturnValueOnce(highlightHeaderFixture)
 
       renderThematicHome()
       await act(async () => {})

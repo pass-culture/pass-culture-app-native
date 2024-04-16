@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { ComponentProps } from 'react'
 
 import { put } from '__mocks__/libs/react-native-batch'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as showSkeletonAPI from 'features/home/api/useShowSkeleton'
-import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
+import {
+  formattedVenuesModule,
+  highlightHeaderFixture,
+} from 'features/home/fixtures/homepage.fixture'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -53,14 +56,14 @@ describe('GenericHome', () => {
   describe('With not displayed skeleton by default', () => {
     it('should display skeleton', async () => {
       useShowSkeletonSpy.mockReturnValueOnce(true)
-      renderGenericHome()
+      renderGenericHome({})
       await act(async () => {})
 
       expect(screen).toMatchSnapshot()
     })
 
     it('should display real content', async () => {
-      renderGenericHome()
+      renderGenericHome({})
       await act(async () => {})
 
       await waitFor(() => {
@@ -70,7 +73,7 @@ describe('GenericHome', () => {
 
     it('should display offline page when not connected', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-      renderGenericHome()
+      renderGenericHome({})
 
       expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
     })
@@ -86,7 +89,7 @@ describe('GenericHome', () => {
     })
 
     it('should finish home component creation performance transaction when component created', async () => {
-      renderGenericHome()
+      renderGenericHome({})
 
       await act(async () => {})
 
@@ -96,7 +99,7 @@ describe('GenericHome', () => {
     })
 
     it('should finish home loading performance transaction when home page loaded', async () => {
-      renderGenericHome()
+      renderGenericHome({})
 
       await act(async () => {})
 
@@ -140,8 +143,8 @@ describe('GenericHome page - Analytics', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
   })
 
-  it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {
-    renderGenericHome()
+  it('should trigger logEvent "AllModulesSeen" when reaching the end on a Home', async () => {
+    renderGenericHome({})
     const scrollView = screen.getByTestId('homeBodyScrollView')
 
     scrollView.props.onScroll(scrollEventMiddle)
@@ -160,11 +163,37 @@ describe('GenericHome page - Analytics', () => {
         expect.anything()
       )
       expect(put).toHaveBeenCalledWith('home_id', 'fake-id')
+      expect(put).toHaveBeenCalledWith('home_type', 'mainHome')
+    })
+  })
+
+  it('should trigger logEvent "AllModulesSeen" when reaching the end on Thematic Home', async () => {
+    renderGenericHome({ thematicHeader: highlightHeaderFixture.thematicHeader })
+    const scrollView = screen.getByTestId('homeBodyScrollView')
+
+    scrollView.props.onScroll(scrollEventMiddle)
+
+    expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
+    expect(BatchUser.trackEvent).not.toHaveBeenCalled()
+
+    scrollView.props.onScroll(scrollEventBottom)
+
+    await waitFor(() => {
+      expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(1)
+      expect(BatchUser.trackEvent).toHaveBeenCalledWith(
+        'has_seen_all_the_homepage',
+        undefined,
+        // we receive the empty BatchEventData mock
+        expect.anything()
+      )
+      expect(put).toHaveBeenCalledWith('home_id', 'fake-id')
+      expect(put).toHaveBeenCalledWith('home_type', 'Highlight')
+      expect(put).toHaveBeenCalledWith('home_name', 'Bloc temps fort')
     })
   })
 
   it('should trigger logEvent "AllModulesSeen"', async () => {
-    renderGenericHome()
+    renderGenericHome({})
     const scrollView = screen.getByTestId('homeBodyScrollView')
 
     fireEvent.scroll(scrollView, scrollEventBottom)
@@ -175,7 +204,7 @@ describe('GenericHome page - Analytics', () => {
   })
 
   it('should trigger logEvent "AllModulesSeen" only once', async () => {
-    renderGenericHome()
+    renderGenericHome({})
     const scrollView = await screen.findByTestId('homeBodyScrollView')
 
     // 1st scroll to bottom => trigger
@@ -208,7 +237,7 @@ describe('GenericHome page - Analytics', () => {
       { ...formattedVenuesModule, id: Math.random().toString() },
       { ...formattedVenuesModule, id: Math.random().toString() },
     ]
-    renderGenericHome(modules)
+    renderGenericHome({ modules })
 
     await act(async () => {})
 
@@ -221,8 +250,18 @@ describe('GenericHome page - Analytics', () => {
   })
 })
 
-function renderGenericHome(modules = defaultModules) {
+function renderGenericHome({
+  modules = defaultModules,
+  thematicHeader,
+}: Partial<ComponentProps<typeof GenericHome>>) {
   return render(
-    reactQueryProviderHOC(<GenericHome modules={modules} Header={Header} homeId={homeId} />)
+    reactQueryProviderHOC(
+      <GenericHome
+        modules={modules}
+        Header={Header}
+        homeId={homeId}
+        thematicHeader={thematicHeader}
+      />
+    )
   )
 }
