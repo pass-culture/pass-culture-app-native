@@ -118,7 +118,6 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
             <OfferImageWrapper
               imageUrl={imageUrl}
               shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-              nbImages={1}
               isSticky>
               {imageUrl ? (
                 <OfferBodyImage imageUrl={imageUrl} />

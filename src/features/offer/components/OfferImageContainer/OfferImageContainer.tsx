@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Platform } from 'react-native'
+import { Platform, View } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import Carousel from 'react-native-reanimated-carousel'
 import styled from 'styled-components/native'
@@ -17,8 +17,10 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
+import { Tag } from 'ui/components/Tag/Tag'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Spacer } from 'ui/theme'
+import { Camera } from 'ui/svg/icons/Camera'
+import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
   categoryId: CategoryIdEnum | null
@@ -44,7 +46,12 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   const hasCarousel = !!(shouldDisplayCarousel && images.length && !isWeb)
   const progressValue = useSharedValue<number>(0)
   const offerBodyImage = imageUrl ? (
-    <OfferBodyImage imageUrl={imageUrl} />
+    <React.Fragment>
+      <OfferBodyImage imageUrl={imageUrl} />
+      {shouldDisplayOfferPreview ? (
+        <StyledTag label="1" Icon={StyledCamera} testID="imageTag" />
+      ) : null}
+    </React.Fragment>
   ) : (
     <OfferBodyImagePlaceholder categoryId={categoryId} />
   )
@@ -56,26 +63,30 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
 
       {hasCarousel ? (
         <React.Fragment>
-          <Carousel
-            testID="offerImageContainerCarousel"
-            vertical={false}
-            height={imageStyle.height}
-            width={imageStyle.width}
-            loop={false}
-            scrollAnimationDuration={500}
-            onProgressChange={(_, absoluteProgress) => {
-              progressValue.value = absoluteProgress
-            }}
-            data={images}
-            renderItem={({ item: image }) => (
-              <OfferImageWrapper
-                imageUrl={imageUrl}
-                shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-                nbImages={images.length}>
-                <OfferBodyImage imageUrl={image} />
-              </OfferImageWrapper>
-            )}
-          />
+          <View>
+            <Carousel
+              testID="offerImageContainerCarousel"
+              vertical={false}
+              height={imageStyle.height}
+              width={imageStyle.width}
+              loop={false}
+              scrollAnimationDuration={500}
+              onProgressChange={(_, absoluteProgress) => {
+                progressValue.value = absoluteProgress
+              }}
+              data={images}
+              renderItem={({ item: image }) => (
+                <OfferImageWrapper
+                  imageUrl={imageUrl}
+                  shouldDisplayOfferPreview={shouldDisplayOfferPreview}>
+                  <OfferBodyImage imageUrl={image} />
+                </OfferImageWrapper>
+              )}
+            />
+            {shouldDisplayOfferPreview ? (
+              <StyledTag label={String(images.length)} Icon={StyledCamera} testID="imageTag" />
+            ) : null}
+          </View>
 
           {!!progressValue && (
             <React.Fragment>
@@ -96,7 +107,6 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
         <OfferImageWrapper
           imageUrl={imageUrl}
           shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-          nbImages={1}
           testID="offerImageWithoutCarousel">
           {offerBodyImage}
         </OfferImageWrapper>
@@ -110,3 +120,14 @@ const PaginationContainer = styled(ViewGap)({
   alignSelf: 'center',
   alignItems: 'center',
 })
+
+const StyledTag = styled(Tag)({
+  position: 'absolute',
+  right: getSpacing(2),
+  bottom: getSpacing(2),
+  zIndex: 3,
+})
+
+const StyledCamera = styled(Camera).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``

@@ -14,15 +14,6 @@ describe('<OfferImageBody />', () => {
     expect(screen.getByTestId('imageGradient')).toBeOnTheScreen()
   })
 
-  it('should display camera tag when offer preview feature flag activated and image url defined', () => {
-    renderOfferImageWrapper({
-      shouldDisplayOfferPreview: true,
-      imageUrl: 'some_url_to_some_resource',
-    })
-
-    expect(screen.getByTestId('imageTag')).toBeOnTheScreen()
-  })
-
   it('should not display image gradient when offer preview feature flag deactivated and image url defined', () => {
     renderOfferImageWrapper({
       shouldDisplayOfferPreview: false,
@@ -32,29 +23,12 @@ describe('<OfferImageBody />', () => {
     expect(screen.queryByTestId('imageGradient')).not.toBeOnTheScreen()
   })
 
-  it('should not display camera tag when offer preview feature flag deactivated and image url defined', () => {
-    renderOfferImageWrapper({
-      shouldDisplayOfferPreview: false,
-      imageUrl: 'some_url_to_some_resource',
-    })
-
-    expect(screen.queryByTestId('imageTag')).not.toBeOnTheScreen()
-  })
-
   it('should not display image gradient when offer preview feature flag activated and image url not defined', () => {
     renderOfferImageWrapper({
       shouldDisplayOfferPreview: true,
     })
 
     expect(screen.queryByTestId('imageGradient')).not.toBeOnTheScreen()
-  })
-
-  it('should not display camera tag when offer preview feature flag activated and image url not defined', () => {
-    renderOfferImageWrapper({
-      shouldDisplayOfferPreview: false,
-    })
-
-    expect(screen.queryByTestId('imageTag')).not.toBeOnTheScreen()
   })
 })
 
@@ -65,10 +39,7 @@ function renderOfferImageWrapper({
   imageUrl,
 }: RenderOfferImageWrapperType) {
   render(
-    <OfferImageWrapper
-      nbImages={1}
-      shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-      imageUrl={imageUrl}>
+    <OfferImageWrapper shouldDisplayOfferPreview={shouldDisplayOfferPreview} imageUrl={imageUrl}>
       <OfferBodyImage imageUrl="some_url_to_some_resource" />
     </OfferImageWrapper>
   )

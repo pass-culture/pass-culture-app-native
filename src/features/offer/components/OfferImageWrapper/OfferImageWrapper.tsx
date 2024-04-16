@@ -7,13 +7,10 @@ import styled from 'styled-components/native'
 
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { Tag } from 'ui/components/Tag/Tag'
-import { Camera } from 'ui/svg/icons/Camera'
 import { getShadow, getSpacing } from 'ui/theme'
 
 type Props = {
   children: React.ReactNode
-  nbImages: number
   imageUrl?: string
   shouldDisplayOfferPreview?: boolean
   isSticky?: boolean
@@ -22,7 +19,6 @@ type Props = {
 
 export const OfferImageWrapper: FunctionComponent<Props> = ({
   children,
-  nbImages,
   imageUrl,
   shouldDisplayOfferPreview,
   isSticky,
@@ -37,7 +33,6 @@ export const OfferImageWrapper: FunctionComponent<Props> = ({
         <React.Fragment>
           <StyledLinearGradient testID="imageGradient" />
           {children}
-          <StyledTag label={String(nbImages)} Icon={StyledCamera} testID="imageTag" />
         </React.Fragment>
       ) : (
         <React.Fragment>{children}</React.Fragment>
@@ -74,14 +69,3 @@ const StyledLinearGradient = styled(LinearGradient).attrs({
   borderRadius: theme.borderRadius.radius,
   zIndex: 2,
 }))
-
-const StyledTag = styled(Tag)({
-  position: 'absolute',
-  right: getSpacing(2),
-  bottom: getSpacing(2),
-  zIndex: 3,
-})
-
-const StyledCamera = styled(Camera).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-}))``
