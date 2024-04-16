@@ -20,7 +20,8 @@
       "not dead",
       "not op_mini all",
       "ie 11",
-      "ie 9"
+      "ie 9",
+      "not op_mob >=1"
     ],
     "development": [
       "last 1 chrome version",
