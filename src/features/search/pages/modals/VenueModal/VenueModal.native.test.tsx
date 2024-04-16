@@ -14,7 +14,9 @@ jest.useFakeTimers()
 
 const dismissModalMock = jest.fn()
 
-const mockVenues: Venue[] = [{ label: 'venueLabel', info: 'info', venueId: 1234 }]
+const mockVenues = [
+  { label: 'venueLabel', info: 'info', venueId: 1234 },
+] as const satisfies readonly Venue[]
 
 jest.mock('libs/place/useVenues', () => ({
   useVenues: () => ({ data: mockVenues, isLoading: false }),
@@ -61,17 +63,15 @@ describe('VenueModal', () => {
     jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     const venueSearchInput = screen.getByTestId('searchInput')
-    // @ts-expect-error: because of noUncheckedIndexedAccess
+
     fireEvent.changeText(venueSearchInput, mockVenues[0].label)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     const suggestedVenue = await screen.findByText(mockVenues[0].label)
     fireEvent.press(suggestedVenue)
 
     const validateButton = screen.getByText('Rechercher')
     fireEvent.press(validateButton)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(analytics.logUserSetVenue).toHaveBeenCalledWith({ venueLabel: mockVenues[0].label })
   })
 
@@ -86,7 +86,7 @@ describe('VenueModal', () => {
     const venueSearchInput = screen.getByTestId('searchInput')
 
     // search input's prop 'value' is not showing in the DOM because of forwardRef
-    // @ts-expect-error: because of noUncheckedIndexedAccess
+
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
   })
 
@@ -102,7 +102,6 @@ describe('VenueModal', () => {
     jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     const venueSearchInput = screen.getByTestId('searchInput')
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label) // because of forwardRef, it's not possible to do a getbytext so we use an expect to be sure that Venue label is there
 
     const clearInput = screen.getByRole('button', { name: 'Réinitialiser la recherche' })
@@ -111,7 +110,6 @@ describe('VenueModal', () => {
     const closeButton = screen.getByRole('button', { name: 'Fermer la modale' })
     fireEvent.press(closeButton)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
   })
 
@@ -127,7 +125,6 @@ describe('VenueModal', () => {
 
     const venueSearchInput = screen.getByTestId('searchInput')
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
   })
 
@@ -137,10 +134,9 @@ describe('VenueModal', () => {
     renderDummyComponent()
 
     const venueSearchInput = screen.getByTestId('searchInput')
-    // @ts-expect-error: because of noUncheckedIndexedAccess
+
     fireEvent.changeText(venueSearchInput, mockVenues[0].label)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     const suggestedVenue = await screen.findByText(mockVenues[0].label)
     fireEvent.press(suggestedVenue)
 
@@ -149,7 +145,6 @@ describe('VenueModal', () => {
       fireEvent.press(validateButton)
     })
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(venueSearchInput.props.value).toEqual(mockVenues[0].label)
 
     const setLocationVenueUndefinedButton = screen.getByText('setLocationVenueUndefined')

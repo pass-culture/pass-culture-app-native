@@ -1,7 +1,7 @@
 import { VenueTypeCodeKey } from 'api/gen'
 import { Venue } from 'features/venue/types'
 
-export const mockedSuggestedVenues: Venue[] = [
+export const mockedSuggestedVenues = [
   {
     label: 'Le Petit Rintintin 1',
     info: 'Musée, Paris',
@@ -32,4 +32,4 @@ export const mockedSuggestedVenues: Venue[] = [
     postalCode: '75014',
     venue_type: VenueTypeCodeKey.MOVIE,
   },
-]
+] as const satisfies readonly Venue[]

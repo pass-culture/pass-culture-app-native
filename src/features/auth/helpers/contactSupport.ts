@@ -1,7 +1,7 @@
+import { ContactSupport } from 'features/auth/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
-import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 
 class ContactSupportError extends Error {
   name = 'ContactSupportError'
@@ -12,7 +12,7 @@ class ContactSupportError extends Error {
 
 const subject = encodeURI('Confirmation de numéro de téléphone')
 
-export const contactSupport: Record<string, ExternalNavigationProps['externalNav']> = {
+export const contactSupport = {
   forGenericQuestion: {
     url: `mailto:${env.SUPPORT_EMAIL_ADDRESS}`,
     params: { shouldLogEvent: false },
@@ -32,4 +32,4 @@ export const contactSupport: Record<string, ExternalNavigationProps['externalNav
     onSuccess: () => analytics.logMailTo('forPhoneNumberConfirmation'),
     onError: () => eventMonitoring.logError(new ContactSupportError('PhoneNumberConfirmation')),
   },
-} as const satisfies Record<string, ExternalNavigationProps['externalNav']>
+} as const satisfies ContactSupport

@@ -1,6 +1,6 @@
-import { contactSupport as actualContactSupport } from '../contactSupport'
+import { ContactSupport } from 'features/auth/types'
 
-export const contactSupport: typeof actualContactSupport = {
+export const contactSupport = {
   forGenericQuestion: {
     url: '',
     params: { shouldLogEvent: false },
@@ -19,4 +19,4 @@ export const contactSupport: typeof actualContactSupport = {
     onSuccess: jest.fn(),
     onError: jest.fn(),
   },
-}
+} as const satisfies ContactSupport
