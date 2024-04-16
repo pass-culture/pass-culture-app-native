@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useMemo, useRef } from 'react'
 import { FlatList, View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
@@ -30,8 +30,6 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
     movieScreeningUserData,
   } = useOfferCTAButton(offer, subcategory, bookingData)
 
-  const { isDesktopViewport } = useTheme()
-
   const flatListRef = useRef<FlatList | null>(null)
 
   const eventCardData = useMemo(
@@ -49,7 +47,7 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
   }, [flatListRef, offerId, setSelectedDate]) // should be triggered by offerIdChange and not by movieScreeningDates
 
   return (
-    <MovieCalendarContainer isDesktopViewport={isDesktopViewport}>
+    <MovieCalendarContainer>
       <MovieCalendar
         dates={movieScreeningDates}
         selectedDate={selectedDate}
@@ -63,8 +61,6 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
   )
 }
 
-const MovieCalendarContainer = styled(View)<{ isDesktopViewport?: boolean }>(
-  ({ isDesktopViewport }) => ({
-    marginRight: isDesktopViewport ? -getSpacing(16) : 0, // cancels padding of the parent container
-  })
-)
+const MovieCalendarContainer = styled(View)(({ theme }) => ({
+  marginRight: theme.isDesktopViewport ? -getSpacing(16) : 0, // cancels padding of the parent container
+}))

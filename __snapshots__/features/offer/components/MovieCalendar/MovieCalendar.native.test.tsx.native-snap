@@ -121,7 +121,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             >
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -139,7 +138,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 Mar.
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -157,7 +155,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 1
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -254,7 +251,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             >
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -272,7 +268,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 Jeu.
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -290,7 +285,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 1
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -372,7 +366,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             >
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -390,7 +383,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 Ven.
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -408,7 +400,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 4
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -490,7 +481,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             >
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -508,7 +498,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 Sam.
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -526,7 +515,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 29
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -608,7 +596,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             >
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -626,7 +613,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 Mer.
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -644,7 +630,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 1
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -726,7 +711,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             >
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -744,7 +728,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 Mer.
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -762,7 +745,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 1
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -844,7 +826,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             >
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -862,7 +843,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 Sam.
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -880,7 +860,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 1
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -962,7 +941,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             >
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -980,7 +958,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 Mar.
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -998,7 +975,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 1
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -1080,7 +1056,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             >
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -1098,7 +1073,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 Mer.
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [
@@ -1116,7 +1090,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 1
               </Text>
               <Text
-                isDesktopViewport={false}
                 numberOfLines={1}
                 style={
                   [

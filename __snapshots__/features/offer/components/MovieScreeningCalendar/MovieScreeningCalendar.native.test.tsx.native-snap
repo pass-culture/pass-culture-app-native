@@ -2,7 +2,6 @@
 
 exports[`Movie screening calendar should render <MovieScreeningCalendar /> with screening ordered by hours 1`] = `
 <View
-  isDesktopViewport={true}
   style={
     [
       {
@@ -123,7 +122,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
                 }
               >
                 <Text
-                  isDesktopViewport={true}
                   numberOfLines={1}
                   style={
                     [
@@ -141,7 +139,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
                   Mardi
                 </Text>
                 <Text
-                  isDesktopViewport={true}
                   numberOfLines={1}
                   style={
                     [
@@ -159,7 +156,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
                   27
                 </Text>
                 <Text
-                  isDesktopViewport={true}
                   numberOfLines={1}
                   style={
                     [
