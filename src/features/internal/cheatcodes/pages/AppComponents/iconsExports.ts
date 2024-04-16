@@ -119,6 +119,7 @@ import { Valid } from 'ui/svg/icons/Valid'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { Venue } from 'ui/svg/icons/Venue'
+import { WorldPosition } from 'ui/svg/icons/WorldPosition'
 import { Wrong } from 'ui/svg/icons/Wrong'
 
 export const SocialNetworkIcons = {
@@ -215,6 +216,7 @@ export const SecondaryAndBiggerIcons = {
   Trash,
   Valid,
   Venue,
+  WorldPosition,
   Wrong,
 }
 
