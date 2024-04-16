@@ -16,14 +16,17 @@ export const useOfferImageContainerDimensions = () => {
   const { appContentWidth, borderRadius } = useTheme()
   const fullWidth = appContentWidth - 2 * MARGIN_DP
 
+  const getImageStyle = (borderRadiusValue: number) => ({
+    height: PORTRAIT_IMAGE_V2_HEIGHT,
+    width: Math.round(PORTRAIT_IMAGE_V2_HEIGHT * RATIO_PORTRAIT),
+    maxWidth: fullWidth,
+    aspectRatio: RATIO_PORTRAIT,
+    borderRadius: borderRadiusValue,
+  })
+
   return {
     backgroundHeight: top + HEADER_HEIGHT,
-    imageStyle: {
-      borderRadius: borderRadius.radius,
-      height: PORTRAIT_IMAGE_V2_HEIGHT,
-      width: Math.round(PORTRAIT_IMAGE_V2_HEIGHT * RATIO_PORTRAIT),
-      maxWidth: fullWidth,
-      aspectRatio: RATIO_PORTRAIT,
-    },
+    imageStyle: getImageStyle(borderRadius.radius),
+    imageStyleWithoutBorderRadius: getImageStyle(0),
   }
 }

@@ -9,14 +9,15 @@ import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/Fas
 
 type Props = {
   imageUrl: string
+  isInCarousel?: boolean
 }
 
-export const OfferBodyImage: FunctionComponent<Props> = ({ imageUrl }) => {
-  const { imageStyle } = useOfferImageContainerDimensions()
+export const OfferBodyImage: FunctionComponent<Props> = ({ imageUrl, isInCarousel }) => {
+  const { imageStyle, imageStyleWithoutBorderRadius } = useOfferImageContainerDimensions()
 
   return (
     <StyledFastImage
-      style={imageStyle}
+      style={isInCarousel ? imageStyleWithoutBorderRadius : imageStyle}
       url={imageUrl}
       resizeMode={FastImage.resizeMode?.cover}
       testID="offerBodyImage"

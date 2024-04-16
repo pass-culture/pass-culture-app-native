@@ -15,6 +15,7 @@ type Props = {
   shouldDisplayOfferPreview?: boolean
   isSticky?: boolean
   testID?: string
+  isInCarousel?: boolean
 }
 
 export const OfferImageWrapper: FunctionComponent<Props> = ({
@@ -23,6 +24,7 @@ export const OfferImageWrapper: FunctionComponent<Props> = ({
   shouldDisplayOfferPreview,
   isSticky,
   testID = 'imageContainer',
+  isInCarousel,
 }) => {
   const { imageStyle } = useOfferImageContainerDimensions()
   const headerHeight = useGetHeaderHeight()
@@ -31,7 +33,7 @@ export const OfferImageWrapper: FunctionComponent<Props> = ({
     <Container style={imageStyle} isSticky={isSticky} headerHeight={headerHeight} testID={testID}>
       {imageUrl && shouldDisplayOfferPreview ? (
         <React.Fragment>
-          <StyledLinearGradient testID="imageGradient" />
+          <StyledLinearGradient testID="imageGradient" isInCarousel={isInCarousel} />
           {children}
         </React.Fragment>
       ) : (
@@ -63,9 +65,9 @@ const StyledLinearGradient = styled(LinearGradient).attrs({
   angle: 180,
   locations: [0.362, 0.6356, 1],
   colors: ['rgba(0, 0, 0, 0.00)', 'rgba(0, 0, 0, 0.12)', 'rgba(0, 0, 0, 0.32)'],
-})(({ theme }) => ({
+})<{ isInCarousel?: boolean }>(({ theme, isInCarousel }) => ({
   height: '100%',
   width: '100%',
-  borderRadius: theme.borderRadius.radius,
   zIndex: 2,
+  ...(!isInCarousel ? { borderRadius: theme.borderRadius.radius } : {}),
 }))

@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Platform, View } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import Carousel from 'react-native-reanimated-carousel'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -15,7 +15,6 @@ import {
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { theme } from 'theme'
 import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { Tag } from 'ui/components/Tag/Tag'
@@ -32,10 +31,6 @@ type Props = {
 
 const isWeb = Platform.OS === 'web'
 
-const carouselStyle = {
-  borderRadius: theme.borderRadius.radius,
-}
-
 export const OfferImageContainer: FunctionComponent<Props> = ({
   categoryId,
   imageUrl,
@@ -46,6 +41,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   const shouldDisplayCarousel = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW_WITH_CAROUSEL
   )
+  const theme = useTheme()
 
   const images = imageUrl ? [imageUrl, imageUrl, imageUrl] : []
   const hasCarousel = !!(shouldDisplayCarousel && images.length && !isWeb)
@@ -61,6 +57,9 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
     <OfferBodyImagePlaceholder categoryId={categoryId} />
   )
   const carouselDotId = uuidv4()
+  const carouselStyle = {
+    borderRadius: theme.borderRadius.radius,
+  }
 
   return (
     <HeaderWithImage imageHeight={backgroundHeight} imageUrl={imageUrl} onPress={onPress}>
@@ -83,8 +82,9 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
               renderItem={({ item: image }) => (
                 <OfferImageWrapper
                   imageUrl={imageUrl}
-                  shouldDisplayOfferPreview={shouldDisplayOfferPreview}>
-                  <OfferBodyImage imageUrl={image} />
+                  shouldDisplayOfferPreview={shouldDisplayOfferPreview}
+                  isInCarousel>
+                  <OfferBodyImage imageUrl={image} isInCarousel />
                 </OfferImageWrapper>
               )}
               style={carouselStyle}
