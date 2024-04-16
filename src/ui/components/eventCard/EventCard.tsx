@@ -26,7 +26,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 }) => {
   const hasSubtitleRight = !!subtitleRight
   return (
-    <StyledTouchableOpacity disabled={isDisabled} onPress={onPress}>
+    <StyledTouchableOpacity testID="event-card" disabled={isDisabled} onPress={onPress}>
       <Title accessibilityLabel={title} numberOfLines={1} disabled={isDisabled}>
         {title}
       </Title>

@@ -109,6 +109,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
                   "userSelect": "auto",
                 }
               }
+              testID="movie-calendar-day"
             >
               <View
                 accessibilityLabel="Mardi 27 Février"
@@ -416,6 +417,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
                 "width": 120,
               }
             }
+            testID="event-card"
           >
             <Text
               accessibilityLabel="0h00"
@@ -592,6 +594,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
                 "width": 120,
               }
             }
+            testID="event-card"
           >
             <Text
               accessibilityLabel="0h10"
@@ -768,6 +771,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
                 "width": 120,
               }
             }
+            testID="event-card"
           >
             <Text
               accessibilityLabel="10h20"
@@ -944,6 +948,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
                 "width": 120,
               }
             }
+            testID="event-card"
           >
             <Text
               accessibilityLabel="11h10"
@@ -1120,6 +1125,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
                 "width": 120,
               }
             }
+            testID="event-card"
           >
             <Text
               accessibilityLabel="12h00"
@@ -1296,6 +1302,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
                 "width": 120,
               }
             }
+            testID="event-card"
           >
             <Text
               accessibilityLabel="12h20"
@@ -1472,6 +1479,7 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
                 "width": 120,
               }
             }
+            testID="event-card"
           >
             <Text
               accessibilityLabel="13h20"

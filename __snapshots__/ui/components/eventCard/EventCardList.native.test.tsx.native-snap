@@ -87,6 +87,7 @@ exports[`EventCardList should render correctly 1`] = `
             "width": 120,
           }
         }
+        testID="event-card"
       >
         <Text
           accessibilityLabel="8h"
@@ -247,6 +248,7 @@ exports[`EventCardList should render correctly 1`] = `
             "width": 120,
           }
         }
+        testID="event-card"
       >
         <Text
           accessibilityLabel="9h30"
@@ -402,6 +404,7 @@ exports[`EventCardList should render correctly 1`] = `
             "width": 120,
           }
         }
+        testID="event-card"
       >
         <Text
           accessibilityLabel="10h55"
@@ -555,6 +558,7 @@ exports[`EventCardList should render correctly 1`] = `
             "width": 120,
           }
         }
+        testID="event-card"
       >
         <Text
           accessibilityLabel="13h12"
@@ -680,6 +684,7 @@ exports[`EventCardList should render correctly 1`] = `
             "width": 120,
           }
         }
+        testID="event-card"
       >
         <Text
           accessibilityLabel="13h12"
