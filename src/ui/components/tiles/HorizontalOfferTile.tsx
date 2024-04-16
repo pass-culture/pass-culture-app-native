@@ -13,7 +13,7 @@ import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { GetNativeCategoryValue } from 'ui/components/tiles/utils'
+import { useNativeCategoryValue } from 'ui/components/tiles/useNativeCategoryValue'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 
 import { HorizontalTile } from './HorizontalTile'
@@ -45,7 +45,7 @@ export const HorizontalOfferTile = ({
 
   const formattedDate = formatDates(timestampsInMillis)
   const formattedPrice = getDisplayPrice(prices)
-  const nativeCategoryValue = GetNativeCategoryValue({ nativeCategoryId })
+  const nativeCategoryValue = useNativeCategoryValue({ nativeCategoryId })
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offerDetails,

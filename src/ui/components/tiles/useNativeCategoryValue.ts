@@ -6,7 +6,7 @@ type NativeCategoryValueProps = {
   nativeCategoryId: NativeCategoryIdEnumv2
 }
 
-export function GetNativeCategoryValue({ nativeCategoryId }: NativeCategoryValueProps) {
+export function useNativeCategoryValue({ nativeCategoryId }: NativeCategoryValueProps) {
   const { data } = useSubcategories()
   const { value } = getNativeCategoryFromEnum(data, nativeCategoryId) ?? {}
   return value
