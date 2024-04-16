@@ -22,7 +22,6 @@ interface Props {
   onPress?: () => void
   analyticsParams: OfferAnalyticsParams
   style?: StyleProp<ViewStyle>
-  showPrice?: boolean
   withRightArrow?: boolean
 }
 
