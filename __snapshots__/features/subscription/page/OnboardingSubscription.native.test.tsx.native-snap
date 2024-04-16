@@ -153,9 +153,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
     }
     ListHeaderComponent={
       <React.Fragment>
-        <Styled(View)
-          height={65}
-        />
         <Styled(Styled(Text))>
           Choisis des thèmes à suivre
         </Styled(Styled(Text))>
@@ -209,16 +206,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       <View
         onLayout={[Function]}
       >
-        <View
-          height={65}
-          style={
-            [
-              {
-                "height": 65,
-              },
-            ]
-          }
-        />
         <Text
           style={
             [
@@ -1771,40 +1758,5 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       </View>
     </View>
   </RCTScrollView>,
-  <View
-    height={65}
-    style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 65,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-      ]
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
-      style={
-        [
-          {
-            "backgroundColor": "transparent",
-          },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
-        ]
-      }
-    />
-  </View>,
 ]
 `;

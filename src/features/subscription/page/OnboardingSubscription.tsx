@@ -11,9 +11,7 @@ import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSub
 import { SubscriptionTheme } from 'features/subscription/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -21,7 +19,6 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const OnboardingSubscription = () => {
   const { goBack } = useGoBack(...getTabNavConfig('Home'))
-  const headerHeight = useGetHeaderHeight()
   const { user } = useAuthContext()
   const theme = useTheme()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
@@ -98,7 +95,6 @@ export const OnboardingSubscription = () => {
         numColumns={2}
         ListHeaderComponent={
           <React.Fragment>
-            <Placeholder height={headerHeight} />
             <StyledTitle3>Choisis des thèmes à suivre</StyledTitle3>
             <Spacer.Column numberOfSpaces={4} />
             <Typo.Body>
@@ -127,17 +123,11 @@ export const OnboardingSubscription = () => {
         }
         contentContainerStyle={contentContainerStyle}
       />
-
-      <BlurHeader height={headerHeight} />
     </React.Fragment>
   )
 }
 
 const StyledTitle3 = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))``
-
-const Placeholder = styled.View<{ height: number }>(({ height }) => ({
-  height,
-}))
 
 const SubscriptionCategoryButtonContainer = styled.View(() => ({
   paddingHorizontal: getSpacing(5),
