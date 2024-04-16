@@ -12,7 +12,7 @@ import { SuggestedPlace } from 'libs/place/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils/web'
+import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 import { OfferContent } from './OfferContent'
 
@@ -62,9 +62,10 @@ describe('<OfferContent />', () => {
         />
       )
     )
-    await act(async () => {})
 
-    expect(screen.queryByTestId('image-gradient')).not.toBeOnTheScreen()
+    await waitFor(async () => {
+      expect(screen.queryByTestId('imageGradient')).not.toBeOnTheScreen()
+    })
   })
 
   it('should not display tag on offer image when enableOfferPreview feature flag activated', async () => {
@@ -77,9 +78,9 @@ describe('<OfferContent />', () => {
         />
       )
     )
-    await act(async () => {})
-
-    expect(screen.queryByTestId('image-tag')).not.toBeOnTheScreen()
+    await waitFor(async () => {
+      expect(screen.queryByTestId('imageTag')).not.toBeOnTheScreen()
+    })
   })
 
   describe('When WIP_OFFER_PREVIEW feature flag activated and we are on a web', () => {
@@ -98,9 +99,11 @@ describe('<OfferContent />', () => {
         )
       )
 
-      fireEvent.click(await screen.findByTestId('image-container'))
+      fireEvent.click(await screen.findByTestId('offerImageWithoutCarousel'))
 
-      expect(navigate).not.toHaveBeenCalled()
+      await waitFor(async () => {
+        expect(navigate).not.toHaveBeenCalled()
+      })
     })
   })
 })

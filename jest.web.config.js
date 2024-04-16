@@ -43,6 +43,7 @@ module.exports = {
       '|react-native-qrcode-svg' +
       '|instantsearch.js' +
       '|react-native-intersection-observer' +
+      '|react-native-reanimated' +
       ')',
   ],
   verbose: true,

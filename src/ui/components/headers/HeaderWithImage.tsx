@@ -17,7 +17,7 @@ const isWeb = Platform.OS === 'web'
 const blurImageRadius = Platform.OS === 'android' ? 5 : 20
 const blurImageTransform = isWeb ? { transform: 'scale(1.1)' } : {}
 
-export const HeroHeader: FunctionComponent<Props> = ({
+export const HeaderWithImage: FunctionComponent<Props> = ({
   imageUrl,
   imageHeight,
   minHeight,
@@ -30,7 +30,7 @@ export const HeroHeader: FunctionComponent<Props> = ({
 
   return (
     <Container minHeight={minHeight}>
-      <HeroContainer>
+      <ImageContainer>
         {imageUrl ? (
           <Image
             style={blurImageStyle}
@@ -43,7 +43,7 @@ export const HeroHeader: FunctionComponent<Props> = ({
         ) : (
           <DefaultImagePlaceholderOfferV2 width={appContentWidth} height={imageHeight} />
         )}
-      </HeroContainer>
+      </ImageContainer>
       {!isWeb ? <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity> : children}
     </Container>
   )
@@ -54,7 +54,7 @@ const Container = styled.View<{ minHeight?: number }>(({ minHeight = 0 }) => ({
   minHeight,
 }))
 
-const HeroContainer = styled.View({
+const ImageContainer = styled.View({
   alignItems: 'center',
   position: 'absolute',
 })

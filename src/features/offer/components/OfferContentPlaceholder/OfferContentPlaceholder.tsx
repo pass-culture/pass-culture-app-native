@@ -2,8 +2,8 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { theme } from 'theme'
-import { heroMarginTop } from 'ui/components/hero/useHeroDimensions'
 import { TextPlaceholder } from 'ui/components/placeholders/Placeholders'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -12,7 +12,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 export const OfferContentPlaceholder: FunctionComponent = () => {
   return (
     <View testID="OfferContentPlaceholder">
-      <Spacer.Column numberOfSpaces={heroMarginTop} />
+      <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
       <ImageContainer>
         <TextPlaceholder height={getSpacing(95)} width={getSpacing(60)} />
       </ImageContainer>

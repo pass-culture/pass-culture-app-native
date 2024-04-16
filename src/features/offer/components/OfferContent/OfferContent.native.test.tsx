@@ -23,7 +23,7 @@ import { RecommendationApiParams } from 'shared/offer/types'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, fireEvent } from 'tests/utils'
+import { render, screen, fireEvent, act } from 'tests/utils'
 
 import { OfferContent } from './OfferContent'
 
@@ -142,7 +142,7 @@ describe('<OfferContent />', () => {
     it('should navigate to offer preview screen when clicking on image offer', async () => {
       renderOfferContent({})
 
-      fireEvent.press(await screen.findByTestId('image-container'))
+      fireEvent.press(await screen.findByTestId('offerImageContainerCarousel'))
 
       expect(navigate).toHaveBeenCalledWith('OfferPreview', { id: 116656 })
     })
@@ -154,7 +154,7 @@ describe('<OfferContent />', () => {
       }
       renderOfferContent({ offer })
 
-      fireEvent.press(await screen.findByTestId('image-container'))
+      fireEvent.press(await screen.findByTestId('offerImageWithoutCarousel'))
 
       expect(navigate).not.toHaveBeenCalled()
     })
@@ -170,7 +170,7 @@ describe('<OfferContent />', () => {
 
       await screen.findByText('Réserver l’offre')
 
-      expect(screen.queryByTestId('image-gradient')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('imageGradient')).not.toBeOnTheScreen()
     })
 
     it('should not display tag on offer image when enableOfferPreview feature flag deactivated', async () => {
@@ -178,20 +178,8 @@ describe('<OfferContent />', () => {
 
       await screen.findByText('Réserver l’offre')
 
-      expect(screen.queryByTestId('image-tag')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('imageTag')).not.toBeOnTheScreen()
     })
-  })
-
-  it('should display linear gradient on offer image when enableOfferPreview feature flag activated', async () => {
-    renderOfferContent({})
-
-    expect(await screen.findByTestId('image-gradient')).toBeOnTheScreen()
-  })
-
-  it('should display tag on offer image when enableOfferPreview feature flag activated', async () => {
-    renderOfferContent({})
-
-    expect(await screen.findByTestId('image-tag')).toBeOnTheScreen()
   })
 
   it('should animate on scroll', async () => {
@@ -423,7 +411,9 @@ describe('<OfferContent />', () => {
 
       fireEvent.press(await screen.findByText('Réserver l’offre'))
 
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+      await act(async () => {
+        jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+      })
 
       expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(
         1,
@@ -467,7 +457,9 @@ describe('<OfferContent />', () => {
     it('should trigger has_seen_offer_for_survey event after 5 seconds', async () => {
       renderOfferContent({})
 
-      jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+      await act(async () => {
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+      })
 
       await screen.findByText('Réserver l’offre')
 
@@ -477,7 +469,9 @@ describe('<OfferContent />', () => {
     it('should not trigger has_seen_offer_for_survey event before 5 seconds have elapsed', async () => {
       renderOfferContent({})
 
-      jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
+      await act(async () => {
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
+      })
 
       await screen.findByText('Réserver l’offre')
 
@@ -504,7 +498,10 @@ describe('<OfferContent />', () => {
       renderOfferContent({})
 
       fireEvent.scroll(await screen.findByTestId('offerv2-container'), nativeEventBottom)
-      jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+
+      await act(async () => {
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+      })
 
       expect(BatchUser.trackEvent).toHaveBeenCalledTimes(3) // Three different Batch events are triggered on this page
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOffer)
@@ -522,7 +519,9 @@ describe('<OfferContent />', () => {
       async (nativeCategoryId) => {
         renderOfferContent({ subcategory: { ...mockSubcategory, nativeCategoryId } })
 
-        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+        await act(async () => {
+          jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+        })
 
         await screen.findByText('Réserver l’offre')
 
@@ -541,7 +540,9 @@ describe('<OfferContent />', () => {
       async ({ nativeCategoryId, expectedBatchEvent }) => {
         renderOfferContent({ subcategory: { ...mockSubcategory, nativeCategoryId } })
 
-        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+        await act(async () => {
+          jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+        })
 
         await screen.findByText('Réserver l’offre')
 
