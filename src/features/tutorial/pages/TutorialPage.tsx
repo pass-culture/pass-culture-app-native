@@ -3,10 +3,9 @@ import styled from 'styled-components/native'
 
 import { customEaseInOut, DURATION_IN_MS } from 'features/tutorial/helpers/animationProps'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
-import { BackButton } from 'ui/components/headers/BackButton'
+import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface Props {
   title?: string
@@ -27,7 +26,6 @@ const buttonsContainerAnimation = {
   },
 }
 
-const HEADER_HEIGHT = getSpacing(12)
 export const TutorialPage: FunctionComponent<Props> = ({
   title,
   subtitle,
@@ -35,17 +33,9 @@ export const TutorialPage: FunctionComponent<Props> = ({
   onGoBack,
   children,
 }) => {
-  const { top } = useCustomSafeInsets()
-
   return (
     <React.Fragment>
-      <TopSpacer height={HEADER_HEIGHT + top} />
-      <HeaderContainer>
-        <Spacer.TopScreen />
-        <GoBackContainer>
-          <BackButton onGoBack={onGoBack} />
-        </GoBackContainer>
-      </HeaderContainer>
+      <EmptyHeader onGoBack={onGoBack} />
       <StyledScrollView>
         <Container>
           {!!title && (
@@ -85,23 +75,6 @@ export const TutorialPage: FunctionComponent<Props> = ({
     </React.Fragment>
   )
 }
-
-const TopSpacer = styled.View<{ height: number }>(({ height }) => ({
-  height,
-}))
-
-const HeaderContainer = styled.View(({ theme }) => ({
-  zIndex: theme.zIndex.header,
-  width: '100%',
-  position: 'absolute',
-  top: 0,
-}))
-
-const GoBackContainer = styled.View({
-  justifyContent: 'center',
-  height: HEADER_HEIGHT,
-  paddingHorizontal: getSpacing(3),
-})
 
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {

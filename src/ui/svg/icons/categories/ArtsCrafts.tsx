@@ -4,19 +4,21 @@ import { Path, G, Defs, LinearGradient, Stop, ClipPath, Rect } from 'react-nativ
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { AccessibleIcon } from '../types'
+import { AccessibleRectangleIcon } from '../types'
 
-export const ArtsCrafts: React.FunctionComponent<AccessibleIcon> = ({
+export const ArtsCrafts: React.FunctionComponent<AccessibleRectangleIcon> = ({
   accessibilityLabel,
   testID,
+  width = 156,
+  height = 92,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
   const { id: clipPathId, fill: clipPath } = svgIdentifier()
 
   return (
     <AccessibleSvg
-      width={156}
-      height={92}
+      width={width}
+      height={height}
       viewBox="0 0 156 92"
       fill="none"
       accessibilityLabel={accessibilityLabel}

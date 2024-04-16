@@ -3,7 +3,6 @@
 exports[`AgeSelectionOther onboarding should render correctly 1`] = `
 [
   <View
-    height={64}
     style={
       [
         {
@@ -11,6 +10,7 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
         },
       ]
     }
+    top={16}
   />,
   <View
     style={
@@ -437,7 +437,6 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
 exports[`AgeSelectionOther profileTutorial should render correctly 1`] = `
 [
   <View
-    height={64}
     style={
       [
         {
@@ -445,6 +444,7 @@ exports[`AgeSelectionOther profileTutorial should render correctly 1`] = `
         },
       ]
     }
+    top={16}
   />,
   <View
     style={

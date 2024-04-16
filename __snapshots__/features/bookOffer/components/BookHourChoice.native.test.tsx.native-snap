@@ -120,10 +120,10 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
           />
         </View>
         <View
+          contentDirection="row"
           style={
             [
               {
-                "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
               },
@@ -284,10 +284,10 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
           />
         </View>
         <View
+          contentDirection="row"
           style={
             [
               {
-                "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
               },

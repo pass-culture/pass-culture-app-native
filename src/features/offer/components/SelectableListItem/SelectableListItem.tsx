@@ -18,12 +18,14 @@ interface SelectableListItemProps extends Omit<TouchableOpacityProps, 'children'
   isSelected?: boolean
   onSelect: VoidFunction
   render: (props: ChildrenProps) => ReactNode
+  contentDirection?: 'row' | 'column'
 }
 
 export function SelectableListItem({
   isSelected,
   onSelect,
   render,
+  contentDirection = 'row',
   ...props
 }: SelectableListItemProps) {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
@@ -37,6 +39,7 @@ export function SelectableListItem({
       onPress={onSelect}
       isFocus={isFocus}
       isSelected={isSelected}
+      contentDirection={contentDirection}
       // @ts-ignore It exists but not recognized by TypeScript
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -45,7 +48,9 @@ export function SelectableListItem({
         <RadioInner isSelected={isSelected} disabled={props.disabled} />
       </RadioWrapper>
 
-      <InnerWrapper>{render({ isHover, isFocus, isSelected: isSelected ?? false })}</InnerWrapper>
+      <InnerWrapper contentDirection={contentDirection}>
+        {render({ isHover, isFocus, isSelected: isSelected ?? false })}
+      </InnerWrapper>
     </Wrapper>
   )
 }
@@ -65,22 +70,27 @@ const unselectedStyles = (theme: DefaultTheme, disabled?: boolean): CSSPropertie
 const Wrapper = styled(TouchableOpacity)<{
   isFocus?: boolean
   isSelected?: boolean
-}>(({ theme, isFocus, isSelected, disabled }) => {
+  contentDirection?: 'row' | 'column'
+}>(({ theme, isFocus, isSelected, disabled, contentDirection }) => {
   return {
     backgroundColor: disabled ? theme.colors.greyLight : theme.colors.white,
     borderRadius: getSpacing(2),
     borderStyle: 'solid',
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: contentDirection,
+    alignItems: contentDirection === 'row' ? 'center' : 'flex-start',
     flexGrow: 1,
     ...(isSelected ? selectedStyles(theme) : unselectedStyles(theme, disabled)),
     ...(!isSelected ? customFocusOutline({ color: theme.colors.black, isFocus }) : {}),
   }
 })
 
-const InnerWrapper = styled.View({
-  flex: 1,
-})
+const InnerWrapper = styled.View<{
+  contentDirection?: 'row' | 'column'
+}>(({ contentDirection }) => ({
+  flexGrow: 1,
+  flexShrink: contentDirection === 'row' ? 1 : undefined,
+  width: contentDirection === 'column' ? '100%' : undefined,
+}))
 
 const RadioWrapper = styled.View<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   width: getSpacing(4),

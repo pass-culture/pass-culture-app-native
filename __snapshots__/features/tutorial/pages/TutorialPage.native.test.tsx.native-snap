@@ -3,7 +3,6 @@
 exports[`TutorialPage should render correctly 1`] = `
 [
   <View
-    height={64}
     style={
       [
         {
@@ -11,6 +10,7 @@ exports[`TutorialPage should render correctly 1`] = `
         },
       ]
     }
+    top={16}
   />,
   <View
     style={

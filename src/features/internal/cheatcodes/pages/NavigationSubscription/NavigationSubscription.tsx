@@ -2,9 +2,10 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/internal/cheatcodes/components/Row'
-import { SubscriptionSuccessModal } from 'features/subscription/components/SubscriptionSuccessModal'
-import { UnsubscribingConfirmationModal } from 'features/subscription/components/UnsubscribingConfirmationModal'
+import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'
+import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
@@ -52,6 +53,7 @@ export function NavigationSubscription(): React.JSX.Element {
     <ScrollView>
       <PageHeaderSecondary title="Subscription 🔔" />
       <StyledContainer>
+        <LinkToComponent name="OnboardingSubscription" />
         <Row half>
           <ButtonPrimary wording="Modale Cinéma" onPress={showCinemaModal} />
           <SubscriptionSuccessModal

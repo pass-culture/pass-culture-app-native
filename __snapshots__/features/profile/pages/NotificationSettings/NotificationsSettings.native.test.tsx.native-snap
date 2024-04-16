@@ -1808,7 +1808,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       ]
                     }
                   >
-                    Visites et sorties
+                    Activités créatives
                   </Text>
                 </Text>
               </View>
@@ -1890,7 +1890,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur Visites et sorties"
+                    testID="Interrupteur Activités créatives"
                   >
                     <View
                       active={false}
@@ -1998,7 +1998,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                       ]
                     }
                   >
-                    Activités créatives
+                    Visites et sorties
                   </Text>
                 </Text>
               </View>
@@ -2080,7 +2080,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur Activités créatives"
+                    testID="Interrupteur Visites et sorties"
                   >
                     <View
                       active={false}
@@ -4089,7 +4089,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       ]
                     }
                   >
-                    Visites et sorties
+                    Activités créatives
                   </Text>
                 </Text>
               </View>
@@ -4171,7 +4171,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur Visites et sorties"
+                    testID="Interrupteur Activités créatives"
                   >
                     <View
                       active={false}
@@ -4279,7 +4279,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                       ]
                     }
                   >
-                    Activités créatives
+                    Visites et sorties
                   </Text>
                 </Text>
               </View>
@@ -4361,7 +4361,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur Activités créatives"
+                    testID="Interrupteur Visites et sorties"
                   >
                     <View
                       active={false}

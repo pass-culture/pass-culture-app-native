@@ -236,6 +236,7 @@ export type RootStackParamList = {
   }
   OfferDescription: { id: number }
   OfferPreview: { id: number }
+  OnboardingSubscription: undefined
   SuspendAccountConfirmation: { token: string }
   SuspensionScreen: undefined
   ReinitializePassword: {

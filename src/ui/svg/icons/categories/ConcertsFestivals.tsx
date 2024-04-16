@@ -13,11 +13,13 @@ import {
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { AccessibleIcon } from '../types'
+import { AccessibleRectangleIcon } from '../types'
 
-export const ConcertsFestivals: React.FunctionComponent<AccessibleIcon> = ({
+export const ConcertsFestivals: React.FunctionComponent<AccessibleRectangleIcon> = ({
   accessibilityLabel,
   testID,
+  width = 156,
+  height = 92,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
   const { id: gradientId1, fill: gradientFill1 } = svgIdentifier()
@@ -27,8 +29,8 @@ export const ConcertsFestivals: React.FunctionComponent<AccessibleIcon> = ({
 
   return (
     <AccessibleSvg
-      width={156}
-      height={92}
+      width={width}
+      height={height}
       viewBox="0 0 156 92"
       fill="none"
       accessibilityLabel={accessibilityLabel}
