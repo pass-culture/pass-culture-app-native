@@ -445,7 +445,7 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                 }
               />
               <View
-                accessibilityLabel="Non merci"
+                accessibilityLabel="Fermer la modale"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -491,7 +491,7 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                     "width": "100%",
                   }
                 }
-                testID="Non merci"
+                testID="Fermer la modale"
               >
                 <View
                   style={

@@ -33,7 +33,12 @@ export const OnboardingSubscriptionModal = ({ visible, dismissModal }: Props) =>
         onBeforeNavigate={dismissModal}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryBlack wording="Non merci" icon={Invalidate} onPress={dismissModal} />
+      <ButtonTertiaryBlack
+        wording="Non merci"
+        icon={Invalidate}
+        onPress={dismissModal}
+        accessibilityLabel="Fermer la modale"
+      />
     </AppModalWithIllustration>
   )
 }
