@@ -2,7 +2,7 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-interface IllustrationFeatures {
+export interface IllustrationFeatures {
   illustration: React.FC<AccessibleIcon>
   gradients: string[]
 }

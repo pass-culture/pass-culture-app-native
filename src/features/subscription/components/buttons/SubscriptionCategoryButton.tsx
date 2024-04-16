@@ -2,7 +2,10 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { mapSubscriptionThemeToIllustration } from 'features/subscription/helpers/mapSubscriptionThemeToIllustration'
+import {
+  IllustrationFeatures,
+  mapSubscriptionThemeToIllustration,
+} from 'features/subscription/helpers/mapSubscriptionThemeToIllustration'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
@@ -16,7 +19,7 @@ interface Props {
 }
 
 export const SubscriptionCategoryButton = ({ thematic, checked, onPress }: Props) => {
-  const { illustration: Illustration, gradients } = mapSubscriptionThemeToIllustration(thematic)
+  const { illustration, gradients } = mapSubscriptionThemeToIllustration(thematic)
 
   return (
     <IllustratedRadioSelector
@@ -25,19 +28,21 @@ export const SubscriptionCategoryButton = ({ thematic, checked, onPress }: Props
       onPress={onPress}
       checked={checked}
       Illustration={() => (
-        <React.Fragment>
-          <IllustrationContainer>
-            <StyledLinearGradient colors={[gradients[0] as string, gradients[1] as string]}>
-              <IllustrationWrapper>
-                <Illustration />
-              </IllustrationWrapper>
-            </StyledLinearGradient>
-          </IllustrationContainer>
-        </React.Fragment>
+        <IllustrationComponent illustration={illustration} gradients={gradients} />
       )}
     />
   )
 }
+
+const IllustrationComponent = ({ illustration: Illustration, gradients }: IllustrationFeatures) => (
+  <IllustrationContainer>
+    <StyledLinearGradient colors={[gradients[0] as string, gradients[1] as string]}>
+      <IllustrationWrapper>
+        <Illustration />
+      </IllustrationWrapper>
+    </StyledLinearGradient>
+  </IllustrationContainer>
+)
 
 const IllustrationContainer = styled.View({
   height: getSpacing(16),
