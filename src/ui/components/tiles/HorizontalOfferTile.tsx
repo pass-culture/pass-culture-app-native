@@ -2,7 +2,6 @@ import React from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { NativeCategoryValue } from 'features/search/components/NativeCategoryValue/NativeCategoryValue'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
@@ -14,20 +13,27 @@ import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { OfferName } from 'ui/components/tiles/OfferName'
+import { useNativeCategoryValue } from 'ui/components/tiles/useNativeCategoryValue'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Spacer, Typo } from 'ui/theme'
+
+import { HorizontalTile } from './HorizontalTile'
 interface Props {
   offer: Offer
   onPress?: () => void
   analyticsParams: OfferAnalyticsParams
   style?: StyleProp<ViewStyle>
+  withRightArrow?: boolean
 }
 
-export const HorizontalOfferTile = ({ offer, analyticsParams, onPress, style }: Props) => {
+export const HorizontalOfferTile = ({
+  offer,
+  analyticsParams,
+  onPress,
+  style,
+  withRightArrow,
+}: Props) => {
   const { offer: offerDetails, objectID, _geoloc } = offer
-  const { subcategoryId, dates, prices } = offerDetails
+  const { subcategoryId, dates, prices, thumbUrl, name } = offerDetails
   const prePopulateOffer = usePrePopulateOffer()
   const distanceToOffer = useDistance(_geoloc)
   const { categoryId, searchGroupName, nativeCategoryId } = useSubcategory(subcategoryId)
@@ -39,6 +45,7 @@ export const HorizontalOfferTile = ({ offer, analyticsParams, onPress, style }: 
 
   const formattedDate = formatDates(timestampsInMillis)
   const formattedPrice = getDisplayPrice(prices)
+  const nativeCategoryValue = useNativeCategoryValue({ nativeCategoryId })
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offerDetails,
@@ -69,6 +76,10 @@ export const HorizontalOfferTile = ({ offer, analyticsParams, onPress, style }: 
       logClickOnOffer({ objectID, position: analyticsParams.index ?? 0 })
   }
 
+  const subtitles = []
+  if (nativeCategoryValue) subtitles.push(nativeCategoryValue)
+  if (formattedDate) subtitles.push(formattedDate)
+
   return (
     <Container
       navigateTo={{
@@ -80,29 +91,15 @@ export const HorizontalOfferTile = ({ offer, analyticsParams, onPress, style }: 
       enableNavigate={!!offerId}
       from={analyticsParams.from}
       style={style}>
-      <OfferImage imageUrl={offerDetails.thumbUrl} categoryId={categoryId} />
-      <Spacer.Row numberOfSpaces={4} />
-      <Column>
-        <Row>
-          {distanceToOffer ? (
-            <React.Fragment>
-              <Spacer.Flex flex={0.7}>
-                <OfferName title={offerDetails.name ?? ''} />
-              </Spacer.Flex>
-              <Spacer.Flex flex={0.3}>
-                <Distance>{distanceToOffer}</Distance>
-              </Spacer.Flex>
-            </React.Fragment>
-          ) : (
-            <OfferName title={offerDetails.name ?? ''} />
-          )}
-        </Row>
-        <Spacer.Column numberOfSpaces={1} />
-        <NativeCategoryValue nativeCategoryId={nativeCategoryId} />
-        {!!formattedDate && <Body>{formattedDate}</Body>}
-        <Spacer.Column numberOfSpaces={1} />
-        <Typo.Caption>{formattedPrice}</Typo.Caption>
-      </Column>
+      <HorizontalTile
+        categoryId={categoryId}
+        title={name as string}
+        imageUrl={thumbUrl}
+        distanceToOffer={distanceToOffer}
+        subtitles={subtitles}
+        price={formattedPrice}
+        withRightArrow={withRightArrow}
+      />
     </Container>
   )
 }
@@ -112,16 +109,3 @@ const Container = styled(InternalTouchableLink)({
   alignItems: 'center',
   outlineOffset: 0,
 })
-
-const Column = styled.View({ flexDirection: 'column', flex: 1 })
-
-const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
-
-const Distance = styled(Typo.Body)(({ theme }) => ({
-  textAlign: 'right',
-  color: theme.colors.greyDark,
-}))
-
-const Body = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
