@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
-import { FlatList } from 'react-native'
-import styled from 'styled-components/native'
+import { FlatList, ViewStyle } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -23,6 +23,7 @@ export const OnboardingSubscription = () => {
   const { goBack } = useGoBack(...getTabNavConfig('Home'))
   const headerHeight = useGetHeaderHeight()
   const { user } = useAuthContext()
+  const theme = useTheme()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const initialSubscribedThemes: SubscriptionTheme[] = (user?.subscriptions?.subscribedThemes ??
@@ -79,14 +80,21 @@ export const OnboardingSubscription = () => {
     })
   }
 
+  const contentContainerStyle: ViewStyle = {
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+    paddingVertical: theme.contentPage.marginVertical,
+    maxWidth: theme.contentPage.maxWidth,
+    width: '100%',
+    alignSelf: 'center',
+  }
+
   return (
     <React.Fragment>
       <EmptyHeader />
-      <StyledFlatList
+      <FlatList
         data={Object.values(SubscriptionTheme)}
-        // @ts-ignore because of styled-components that doesn't pass the type
         renderItem={renderItem}
-        keyExtractor={(item) => mapSubscriptionThemeToName[item as SubscriptionTheme]}
+        keyExtractor={(item) => mapSubscriptionThemeToName[item]}
         numColumns={2}
         ListHeaderComponent={
           <React.Fragment>
@@ -117,6 +125,7 @@ export const OnboardingSubscription = () => {
             />
           </React.Fragment>
         }
+        contentContainerStyle={contentContainerStyle}
       />
 
       <BlurHeader height={headerHeight} />
@@ -129,16 +138,6 @@ const StyledTitle3 = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))``
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
-
-const StyledFlatList = styled(FlatList).attrs(({ theme }) => ({
-  contentContainerStyle: {
-    paddingHorizontal: theme.contentPage.marginHorizontal,
-    paddingVertical: theme.contentPage.marginVertical,
-    maxWidth: theme.contentPage.maxWidth,
-    width: '100%',
-    alignSelf: 'center',
-  },
-}))``
 
 const SubscriptionCategoryButtonContainer = styled.View(() => ({
   paddingHorizontal: getSpacing(5),
