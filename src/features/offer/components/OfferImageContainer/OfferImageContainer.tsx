@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { Platform } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import Carousel from 'react-native-reanimated-carousel'
 import styled from 'styled-components/native'
@@ -26,6 +27,8 @@ type Props = {
   onPress?: VoidFunction
 }
 
+const isWeb = Platform.OS === 'web'
+
 export const OfferImageContainer: FunctionComponent<Props> = ({
   categoryId,
   imageUrl,
@@ -38,7 +41,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   )
 
   const images = imageUrl ? [imageUrl, imageUrl, imageUrl] : []
-  const hasCarousel = !!(shouldDisplayCarousel && images.length)
+  const hasCarousel = !!(shouldDisplayCarousel && images.length && !isWeb)
   const progressValue = useSharedValue<number>(0)
   const offerBodyImage = imageUrl ? (
     <OfferBodyImage imageUrl={imageUrl} />
