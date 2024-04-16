@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/analytics'
