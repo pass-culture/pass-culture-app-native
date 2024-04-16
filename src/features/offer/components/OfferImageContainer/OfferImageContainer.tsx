@@ -15,6 +15,7 @@ import {
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { theme } from 'theme'
 import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { Tag } from 'ui/components/Tag/Tag'
@@ -30,6 +31,10 @@ type Props = {
 }
 
 const isWeb = Platform.OS === 'web'
+
+const carouselStyle = {
+  borderRadius: theme.borderRadius.radius,
+}
 
 export const OfferImageContainer: FunctionComponent<Props> = ({
   categoryId,
@@ -82,6 +87,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
                   <OfferBodyImage imageUrl={image} />
                 </OfferImageWrapper>
               )}
+              style={carouselStyle}
             />
             {shouldDisplayOfferPreview ? (
               <StyledTag label={String(images.length)} Icon={StyledCamera} testID="imageTag" />
