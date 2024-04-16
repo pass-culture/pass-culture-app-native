@@ -5,12 +5,15 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatusResponse } from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers'
 import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContent'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-jest.mock('features/auth/context/AuthContext')
-
+const mockUseAuthContext = jest.fn().mockReturnValue({ user: nonBeneficiaryUser })
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: () => mockUseAuthContext(),
+}))
 jest.mock('features/navigation/helpers')
 
 const trackEmailChangeContentFixture: EmailUpdateStatusResponse = {
@@ -34,7 +37,7 @@ describe('TrackEmailChangeContent', () => {
     expect(openInbox).toHaveBeenCalledTimes(1)
   })
 
-  it('should navigate to TrackEmailChange when pressing second step and second step is active', async () => {
+  it('should navigate to email selection page when pressing second step and second step is active', async () => {
     mockServer.getApi<EmailUpdateStatusResponse>('/v2/profile/email_update/status', {
       ...trackEmailChangeContentFixture,
       status: EmailHistoryEventTypeEnum.CONFIRMATION,
@@ -86,6 +89,31 @@ describe('TrackEmailChangeContent', () => {
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('ChangeEmailExpiredLink')
+    })
+  })
+
+  describe('account without password (sso)', () => {
+    beforeAll(() => {
+      mockUseAuthContext.mockReturnValue({ user: { ...beneficiaryUser, hasPassword: false } })
+    })
+
+    afterAll(() => mockUseAuthContext.mockReturnValue({ user: beneficiaryUser }))
+
+    it('should navigate to password creation page when pressing second step and second step is active and user has no password', async () => {
+      mockServer.getApi<EmailUpdateStatusResponse>('/v2/profile/email_update/status', {
+        ...trackEmailChangeContentFixture,
+        status: EmailHistoryEventTypeEnum.CONFIRMATION,
+        resetPasswordToken: 'reset_password_token',
+        token: 'new_email_selection_token',
+      })
+
+      render(reactQueryProviderHOC(<TrackEmailChangeContent />))
+
+      fireEvent.press(await screen.findByText('Crée ton mot de passe'))
+
+      expect(navigate).toHaveBeenCalledWith('ChangeEmailSetPassword', {
+        token: 'reset_password_token',
+      })
     })
   })
 })
