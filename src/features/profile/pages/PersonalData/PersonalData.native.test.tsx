@@ -227,27 +227,4 @@ describe('PersonalData', () => {
 
     expect(screen.queryByText('Mot de passe')).not.toBeOnTheScreen()
   })
-
-  it('should not show email change button when user has no password', async () => {
-    mockedUseAuthContext
-      .mockReturnValueOnce({
-        ...initialAuthContext,
-        user: {
-          ...mockedUser,
-          hasPassword: false,
-        },
-      })
-      .mockReturnValueOnce({
-        ...initialAuthContext,
-        user: {
-          ...mockedUser,
-          hasPassword: false,
-        },
-      })
-
-    render(reactQueryProviderHOC(<PersonalData />))
-    await screen.findByText('Adresse e-mail')
-
-    expect(screen.queryByLabelText('Modifier e-mail')).not.toBeOnTheScreen()
-  })
 })
