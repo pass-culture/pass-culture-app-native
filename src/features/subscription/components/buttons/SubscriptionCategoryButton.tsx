@@ -38,7 +38,7 @@ const IllustrationComponent = ({ illustration: Illustration, gradients }: Illust
   <IllustrationContainer>
     <StyledLinearGradient colors={[gradients[0] as string, gradients[1] as string]}>
       <IllustrationWrapper>
-        <Illustration />
+        <Illustration width={110} />
       </IllustrationWrapper>
     </StyledLinearGradient>
   </IllustrationContainer>
@@ -53,6 +53,7 @@ const IllustrationContainer = styled.View({
 
 const IllustrationWrapper = styled.View({
   position: 'absolute',
+  top: -getSpacing(3),
 })
 
 const StyledLinearGradient = styled(LinearGradient)({

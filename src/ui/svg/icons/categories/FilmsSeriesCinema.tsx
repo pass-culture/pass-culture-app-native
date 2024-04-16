@@ -5,11 +5,13 @@ import styled from 'styled-components/native'
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { AccessibleIcon } from '../types'
+import { AccessibleRectangleIcon } from '../types'
 
-export const FilmsSeriesCinema: React.FunctionComponent<AccessibleIcon> = ({
+export const FilmsSeriesCinema: React.FunctionComponent<AccessibleRectangleIcon> = ({
   accessibilityLabel,
   testID,
+  width = 156,
+  height = 92,
 }) => {
   const { id: clipPathId, fill: clipPath } = svgIdentifier()
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
@@ -18,8 +20,8 @@ export const FilmsSeriesCinema: React.FunctionComponent<AccessibleIcon> = ({
 
   return (
     <AccessibleSvg
-      width={156}
-      height={92}
+      width={width}
+      height={height}
       viewBox="0 0 156 92"
       fill="none"
       accessibilityLabel={accessibilityLabel}

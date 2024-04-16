@@ -430,6 +430,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           [
                             {
                               "position": "absolute",
+                              "top": -12,
                             },
                           ]
                         }
@@ -437,7 +438,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                         <View
                           fill="none"
                           height={92}
-                          width={156}
+                          width={110}
                         >
                           <Text>
                             undefined-SVG-Mock
@@ -638,6 +639,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           [
                             {
                               "position": "absolute",
+                              "top": -12,
                             },
                           ]
                         }
@@ -645,7 +647,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                         <View
                           fill="none"
                           height={92}
-                          width={156}
+                          width={110}
                         >
                           <Text>
                             undefined-SVG-Mock
@@ -860,6 +862,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           [
                             {
                               "position": "absolute",
+                              "top": -12,
                             },
                           ]
                         }
@@ -867,7 +870,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                         <View
                           fill="none"
                           height={92}
-                          width={156}
+                          width={110}
                         >
                           <Text>
                             undefined-SVG-Mock
@@ -1068,6 +1071,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           [
                             {
                               "position": "absolute",
+                              "top": -12,
                             },
                           ]
                         }
@@ -1075,7 +1079,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                         <View
                           fill="none"
                           height={92}
-                          width={156}
+                          width={110}
                         >
                           <Text>
                             undefined-SVG-Mock
@@ -1290,6 +1294,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           [
                             {
                               "position": "absolute",
+                              "top": -12,
                             },
                           ]
                         }
@@ -1297,7 +1302,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                         <View
                           fill="none"
                           height={92}
-                          width={156}
+                          width={110}
                         >
                           <Text>
                             undefined-SVG-Mock
@@ -1498,6 +1503,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                           [
                             {
                               "position": "absolute",
+                              "top": -12,
                             },
                           ]
                         }
@@ -1505,7 +1511,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                         <View
                           fill="none"
                           height={92}
-                          width={156}
+                          width={110}
                         >
                           <Text>
                             undefined-SVG-Mock

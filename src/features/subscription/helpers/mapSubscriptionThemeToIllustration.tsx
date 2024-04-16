@@ -1,9 +1,9 @@
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { AccessibleIcon } from 'ui/svg/icons/types'
+import { AccessibleRectangleIcon } from 'ui/svg/icons/types'
 
 export interface IllustrationFeatures {
-  illustration: React.FC<AccessibleIcon>
+  illustration: React.FC<AccessibleRectangleIcon>
   gradients: string[]
 }
 
