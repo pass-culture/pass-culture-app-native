@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { customEaseInOut, DURATION_IN_MS } from 'features/tutorial/helpers/animationProps'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
-import { EmptyHeader } from 'ui/components/headers/EmpyHeader'
+import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 

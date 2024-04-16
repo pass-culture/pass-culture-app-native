@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -13,14 +15,17 @@ interface Props {
 
 export const EmptyHeader = ({ onGoBack }: Props) => {
   const { top } = useCustomSafeInsets()
+  const { canGoBack } = useGoBack(...homeNavConfig)
   return (
     <React.Fragment>
       <TopSpacer top={top} />
       <HeaderContainer>
         <Spacer.TopScreen />
-        <GoBackContainer>
-          <BackButton onGoBack={onGoBack} />
-        </GoBackContainer>
+        {canGoBack() ? (
+          <GoBackContainer>
+            <BackButton onGoBack={onGoBack} />
+          </GoBackContainer>
+        ) : undefined}
       </HeaderContainer>
     </React.Fragment>
   )
