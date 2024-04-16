@@ -22,6 +22,7 @@ import { render, screen } from 'tests/utils'
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
+  type: 'street',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 

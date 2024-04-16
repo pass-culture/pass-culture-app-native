@@ -23,6 +23,7 @@ export interface Properties {
 export interface SuggestedPlace {
   label: string
   info: string
+  type: 'locality' | 'municipality' | 'housenumber' | 'street' | undefined
   geolocation: {
     longitude: number
     latitude: number

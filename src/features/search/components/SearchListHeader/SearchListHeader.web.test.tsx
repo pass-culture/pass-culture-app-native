@@ -30,6 +30,7 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 const kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
+  type: 'street',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 

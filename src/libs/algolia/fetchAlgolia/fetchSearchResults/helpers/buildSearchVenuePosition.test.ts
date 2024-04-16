@@ -12,6 +12,7 @@ import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
+  type: 'locality',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 const venue = mockedSuggestedVenue

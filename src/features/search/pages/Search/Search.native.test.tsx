@@ -181,6 +181,7 @@ mockUseSearchHistory.mockReturnValue({
 const mockedPlace: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
+  type: 'street',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 

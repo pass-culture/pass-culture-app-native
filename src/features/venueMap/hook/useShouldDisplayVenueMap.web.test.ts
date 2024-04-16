@@ -9,6 +9,7 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 const mockedPlace: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
+  type: 'street',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 const mockUseLocation = jest.fn(() => ({

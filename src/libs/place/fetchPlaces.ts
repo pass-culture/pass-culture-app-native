@@ -20,6 +20,7 @@ const buildSuggestedPlaces = (collection: Collection): SuggestedPlace[] =>
     return {
       label: placeNameStartsWithNumbers ? shortName : longName,
       info: placeNameStartsWithNumbers ? city : department || '',
+      type: type,
       geolocation: { longitude, latitude },
     }
   })

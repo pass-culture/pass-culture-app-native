@@ -111,6 +111,7 @@ let mockHasGeolocPosition = false
 const mockPlace: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
+  type: 'street',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 const mockShowGeolocPermissionModal = jest.fn()

@@ -17,6 +17,7 @@ const userLocation = { latitude: 42, longitude: 43 }
 const kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
+  type: 'street',
   geolocation: { longitude: -52.669726, latitude: 5.16176 },
 }
 
