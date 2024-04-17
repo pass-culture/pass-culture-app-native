@@ -1,10 +1,13 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -34,6 +37,10 @@ jest.mock('libs/algolia/analytics/SearchAnalyticsWrapper', () => ({
 }))
 
 describe('HorizontalOfferTile component', () => {
+  beforeEach(() => {
+    mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...placeholderData })
+  })
+
   it('should navigate to the offer when pressing an offer', async () => {
     render(
       reactQueryProviderHOC(
@@ -62,13 +69,15 @@ describe('HorizontalOfferTile component', () => {
     )
     fireEvent.press(screen.getByRole('link'))
 
-    expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      offerId,
-      from: 'search',
-      query: '',
-      index: 0,
-      searchId: '539b285e',
+    await waitFor(() => {
+      expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        offerId,
+        from: 'search',
+        query: '',
+        index: 0,
+        searchId: '539b285e',
+      })
     })
   })
 
@@ -83,13 +92,15 @@ describe('HorizontalOfferTile component', () => {
     const hitComponent = screen.getByRole('link')
     fireEvent.press(hitComponent)
 
-    expect(spyLogClickOnOffer).toHaveBeenCalledWith({
-      objectID: '102280',
-      position: 0,
+    await waitFor(() => {
+      expect(spyLogClickOnOffer).toHaveBeenCalledWith({
+        objectID: '102280',
+        position: 0,
+      })
     })
   })
 
-  it('should show distance if geolocation enabled', () => {
+  it('should show distance if geolocation enabled', async () => {
     mockDistance = '10 km'
     render(
       reactQueryProviderHOC(
@@ -97,8 +108,9 @@ describe('HorizontalOfferTile component', () => {
         <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
       )
     )
-
-    expect(screen.getByText('10 km')).toBeOnTheScreen()
+    await waitFor(() => {
+      expect(screen.getByText('10 km')).toBeOnTheScreen()
+    })
   })
 
   describe('When pressing an offer without object id', () => {
@@ -113,7 +125,9 @@ describe('HorizontalOfferTile component', () => {
       )
       fireEvent.press(screen.getByRole('link'))
 
-      expect(navigate).not.toHaveBeenCalled()
+      await waitFor(() => {
+        expect(navigate).not.toHaveBeenCalled()
+      })
     })
 
     it('should not log analytics event', async () => {
@@ -125,7 +139,9 @@ describe('HorizontalOfferTile component', () => {
       )
       fireEvent.press(screen.getByRole('link'))
 
-      expect(analytics.logConsultOffer).not.toHaveBeenCalled()
+      await waitFor(() => {
+        expect(analytics.logConsultOffer).not.toHaveBeenCalled()
+      })
     })
   })
 })
