@@ -1,10 +1,18 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { UserProfileResponse, YoungStatusType } from 'api/gen'
+import {
+  BannerName,
+  BannerResponse,
+  NextSubscriptionStepResponse,
+  UserProfileResponse,
+  YoungStatusType,
+} from 'api/gen'
+import { nextSubscriptionStepFixture } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -57,6 +65,10 @@ jest.mock('features/auth/context/AuthContext', () => ({
 describe('ProfileHeader', () => {
   beforeEach(() => {
     mockdate.set('2021-07-01T00:00:00Z')
+    mockServer.getApi<NextSubscriptionStepResponse>(
+      '/v1/subscription/next_step',
+      nextSubscriptionStepFixture
+    )
   })
 
   it('should display the LoggedOutHeader if no user', () => {
@@ -84,14 +96,27 @@ describe('ProfileHeader', () => {
     expect(screen.getByText('Ton crédit a expiré le')).toBeOnTheScreen()
   })
 
-  it('should display the NonBeneficiaryHeader Header if user is not beneficiary', () => {
+  it('should display the NonBeneficiaryHeader Header if user is not beneficiary', async () => {
+    mockServer.getApi<BannerResponse>('/v1/banner', {
+      banner: {
+        name: BannerName.activation_banner,
+        text: 'à dépenser sur l’application',
+        title: 'Débloque tes 1000\u00a0€',
+      },
+    })
+
     renderProfileHeader({ user: notBeneficiaryUser })
+
+    await screen.findByText('Débloque tes 1000\u00a0€')
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary', () => {
+  it('should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary', async () => {
+    mockServer.getApi<BannerResponse>('/v1/banner', {})
     renderProfileHeader({ user: exUnderageBeneficiaryUser })
+
+    await screen.findByText('Mon profil')
 
     expect(screen).toMatchSnapshot()
   })
