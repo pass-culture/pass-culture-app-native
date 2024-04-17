@@ -1,10 +1,13 @@
 import * as React from 'react'
 
+import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 import { BookingEventChoices } from './BookingEventChoices'
 
@@ -26,6 +29,10 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
 }))
 
 describe('<BookingEventChoices />', () => {
+  beforeEach(() => {
+    mockServer.getApi<OfferResponse>(`/v1/offer/116656`, offerResponseSnap)
+  })
+
   beforeAll(() => {
     const mockUseAuthContext = useAuthContext as jest.Mock
     const { user: globalUserMock } = mockUseAuthContext()
@@ -40,198 +47,139 @@ describe('<BookingEventChoices />', () => {
   })
 
   describe('when step is date', () => {
-    it('should display date selection', () => {
-      mockUseBooking.mockImplementationOnce(() => ({
+    beforeAll(() => {
+      mockUseBooking.mockImplementation(() => ({
         bookingState: {
-          offerId: 1,
+          offerId: 116656,
           step: Step.DATE,
         },
         dispatch: jest.fn(),
       }))
-      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
-
-      expect(screen.getByTestId('DateStep')).toBeOnTheScreen()
     })
 
-    it('should not display hour selection', () => {
-      mockUseBooking.mockImplementationOnce(() => ({
-        bookingState: {
-          offerId: 1,
-          step: Step.DATE,
-        },
-        dispatch: jest.fn(),
-      }))
+    it('should display date selection', async () => {
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
+      expect(await screen.findByTestId('DateStep')).toBeOnTheScreen()
     })
 
-    it('should not display duo selection', () => {
-      mockUseBooking.mockImplementationOnce(() => ({
-        bookingState: {
-          offerId: 1,
-          step: Step.DATE,
-        },
-        dispatch: jest.fn(),
-      }))
+    it('should not display hour selection', async () => {
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
+      })
     })
 
-    it('should not display price selection', () => {
-      mockUseBooking.mockImplementationOnce(() => ({
-        bookingState: {
-          offerId: 1,
-          step: Step.DATE,
-        },
-        dispatch: jest.fn(),
-      }))
+    it('should not display duo selection', async () => {
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
+      })
+    })
+
+    it('should not display price selection', async () => {
+      render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
+
+      await waitFor(() => {
+        expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()
+      })
     })
   })
 
   describe('When step is hour', () => {
-    it('should display hour selection', async () => {
-      mockUseBooking.mockImplementationOnce(() => ({
+    beforeAll(() => {
+      mockUseBooking.mockImplementation(() => ({
         bookingState: {
-          offerId: 1,
+          offerId: 116656,
           step: Step.HOUR,
           date: '01/02/2021',
         },
         dispatch: jest.fn(),
       }))
+    })
+
+    it('should display hour selection', async () => {
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       expect(await screen.findByTestId('HourStep')).toBeOnTheScreen()
     })
 
     it('should not display date selection', async () => {
-      mockUseBooking.mockImplementationOnce(() => ({
-        bookingState: {
-          offerId: 1,
-          step: Step.HOUR,
-          date: '01/02/2021',
-        },
-        dispatch: jest.fn(),
-      }))
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      await act(async () => {})
-
-      expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
+      })
     })
 
     it('should not display price selection', async () => {
-      mockUseBooking.mockImplementationOnce(() => ({
-        bookingState: {
-          offerId: 1,
-          step: Step.HOUR,
-          date: '01/02/2021',
-        },
-        dispatch: jest.fn(),
-      }))
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      await act(async () => {})
-
-      expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()
+      })
     })
 
     it('should not display duo selection', async () => {
-      mockUseBooking.mockImplementationOnce(() => ({
-        bookingState: {
-          offerId: 1,
-          step: Step.HOUR,
-          date: '01/02/2021',
-        },
-        dispatch: jest.fn(),
-      }))
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      await act(async () => {})
-
-      expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
+      })
     })
   })
 
   describe('when step is price', () => {
-    it('should display price selection', async () => {
-      mockUseBooking.mockImplementationOnce(() => ({
+    beforeAll(() => {
+      mockUseBooking.mockImplementation(() => ({
         bookingState: {
-          offerId: 1,
+          offerId: 116656,
           stockId: 1,
           step: Step.PRICE,
           date: '01/02/2021',
         },
         dispatch: jest.fn(),
       }))
+    })
+
+    it('should display price selection', async () => {
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
       expect(await screen.findByTestId('PricesStep')).toBeOnTheScreen()
     })
 
     it('should not display date selection', async () => {
-      mockUseBooking.mockImplementationOnce(() => ({
-        bookingState: {
-          offerId: 1,
-          stockId: 1,
-          step: Step.PRICE,
-          date: '01/02/2021',
-        },
-        dispatch: jest.fn(),
-      }))
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      await act(async () => {})
-
-      expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
+      })
     })
 
     it('should not display hour selection', async () => {
-      mockUseBooking.mockImplementationOnce(() => ({
-        bookingState: {
-          offerId: 1,
-          stockId: 1,
-          step: Step.PRICE,
-          quantity: undefined,
-          date: '01/02/2021',
-        },
-        dispatch: jest.fn(),
-      }))
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      await act(async () => {})
-
-      expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
+      })
     })
 
     it('should not display duo selection', async () => {
-      mockUseBooking.mockImplementationOnce(() => ({
-        bookingState: {
-          offerId: 1,
-          stockId: 1,
-          step: Step.PRICE,
-          quantity: undefined,
-          date: '01/02/2021',
-        },
-        dispatch: jest.fn(),
-      }))
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      await act(async () => {})
-
-      expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
+      })
     })
   })
 
   describe('When step is duo', () => {
-    it('should display duo selection', async () => {
-      mockUseBooking.mockImplementationOnce(() => ({
+    beforeAll(() => {
+      mockUseBooking.mockImplementation(() => ({
         bookingState: {
-          offerId: 1,
+          offerId: 116656,
           stockId: 1,
           step: Step.DUO,
           quantity: 1,
@@ -239,57 +187,36 @@ describe('<BookingEventChoices />', () => {
         },
         dispatch: jest.fn(),
       }))
+    })
+
+    it('should display duo selection', async () => {
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      expect(screen.getByTestId('DuoStep')).toBeOnTheScreen()
+      expect(await screen.findByTestId('DuoStep')).toBeOnTheScreen()
     })
 
     it('should not display date selection', async () => {
-      mockUseBooking.mockImplementationOnce(() => ({
-        bookingState: {
-          offerId: 1,
-          stockId: 1,
-          step: Step.DUO,
-          quantity: 1,
-          date: '01/02/2021',
-        },
-        dispatch: jest.fn(),
-      }))
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.queryByTestId('DateStep')).not.toBeOnTheScreen()
+      })
     })
 
     it('should not display hour selection', async () => {
-      mockUseBooking.mockImplementationOnce(() => ({
-        bookingState: {
-          offerId: 1,
-          stockId: 1,
-          step: Step.DUO,
-          quantity: 1,
-          date: '01/02/2021',
-        },
-        dispatch: jest.fn(),
-      }))
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
+      })
     })
 
     it('should not display price selection', async () => {
-      mockUseBooking.mockImplementationOnce(() => ({
-        bookingState: {
-          offerId: 1,
-          stockId: 1,
-          step: Step.DUO,
-          quantity: 1,
-          date: '01/02/2021',
-        },
-        dispatch: jest.fn(),
-      }))
       render(reactQueryProviderHOC(<BookingEventChoices stocks={[]} />))
 
-      expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.queryByTestId('PricesStep')).not.toBeOnTheScreen()
+      })
     })
   })
 })
