@@ -88,7 +88,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const trackEventHasSeenAllModules = useFunctionOnce(() => {
     const data = new BatchEventData()
     data.put('home_id', homeId)
-    data.put('home_type', thematicHeader ? thematicHeader.type : 'mainHome')
+    data.put('home_type', thematicHeader ? `thematicHome - ${thematicHeader.type}` : 'mainHome')
     thematicHeader && data.put('home_name', thematicHeader.title)
     BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage, undefined, data)
   })

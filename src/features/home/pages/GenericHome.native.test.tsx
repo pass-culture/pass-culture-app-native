@@ -1,6 +1,5 @@
 import React, { ComponentProps } from 'react'
 
-import { put } from '__mocks__/libs/react-native-batch'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as showSkeletonAPI from 'features/home/api/useShowSkeleton'
 import {
@@ -143,7 +142,7 @@ describe('GenericHome page - Analytics', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
   })
 
-  it('should trigger logEvent "AllModulesSeen" when reaching the end on a Home', async () => {
+  it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {
     renderGenericHome({})
     const scrollView = screen.getByTestId('homeBodyScrollView')
 
@@ -156,18 +155,29 @@ describe('GenericHome page - Analytics', () => {
 
     await waitFor(() => {
       expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(1)
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith(
-        'has_seen_all_the_homepage',
-        undefined,
-        // we receive the empty BatchEventData mock
-        expect.anything()
-      )
-      expect(put).toHaveBeenCalledWith('home_id', 'fake-id')
-      expect(put).toHaveBeenCalledWith('home_type', 'mainHome')
     })
   })
 
-  it('should trigger logEvent "AllModulesSeen" when reaching the end on Thematic Home', async () => {
+  it('should trigger batch logEvent "AllModulesSeen" when reaching the end on a Home', async () => {
+    renderGenericHome({})
+    const scrollView = screen.getByTestId('homeBodyScrollView')
+
+    scrollView.props.onScroll(scrollEventMiddle)
+
+    expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
+    expect(BatchUser.trackEvent).not.toHaveBeenCalled()
+
+    scrollView.props.onScroll(scrollEventBottom)
+
+    await waitFor(() => {
+      expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage', undefined, {
+        home_id: 'fake-id',
+        home_type: 'mainHome',
+      })
+    })
+  })
+
+  it('should trigger batch logEvent "AllModulesSeen" when reaching the end on Thematic Home', async () => {
     renderGenericHome({ thematicHeader: highlightHeaderFixture.thematicHeader })
     const scrollView = screen.getByTestId('homeBodyScrollView')
 
@@ -179,16 +189,11 @@ describe('GenericHome page - Analytics', () => {
     scrollView.props.onScroll(scrollEventBottom)
 
     await waitFor(() => {
-      expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(1)
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith(
-        'has_seen_all_the_homepage',
-        undefined,
-        // we receive the empty BatchEventData mock
-        expect.anything()
-      )
-      expect(put).toHaveBeenCalledWith('home_id', 'fake-id')
-      expect(put).toHaveBeenCalledWith('home_type', 'Highlight')
-      expect(put).toHaveBeenCalledWith('home_name', 'Bloc temps fort')
+      expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage', undefined, {
+        home_id: 'fake-id',
+        home_type: 'thematicHome - Highlight',
+        home_name: 'Bloc temps fort',
+      })
     })
   })
 
