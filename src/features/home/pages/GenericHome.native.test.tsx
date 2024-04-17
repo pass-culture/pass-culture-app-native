@@ -13,7 +13,7 @@ import { BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, waitFor, screen, fireEvent, act } from 'tests/utils'
+import { render, waitFor, screen, act } from 'tests/utils'
 import { Typo } from 'ui/theme'
 
 const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton').mockReturnValue(false)
@@ -149,7 +149,6 @@ describe('GenericHome page - Analytics', () => {
     scrollView.props.onScroll(scrollEventMiddle)
 
     expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
-    expect(BatchUser.trackEvent).not.toHaveBeenCalled()
 
     scrollView.props.onScroll(scrollEventBottom)
 
@@ -158,13 +157,12 @@ describe('GenericHome page - Analytics', () => {
     })
   })
 
-  it('should trigger batch logEvent "AllModulesSeen" when reaching the end on a Home', async () => {
+  it('should trigger batch logEvent "has_seen_all_the_homepage" when reaching the end on a Home', async () => {
     renderGenericHome({})
     const scrollView = screen.getByTestId('homeBodyScrollView')
 
     scrollView.props.onScroll(scrollEventMiddle)
 
-    expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
     expect(BatchUser.trackEvent).not.toHaveBeenCalled()
 
     scrollView.props.onScroll(scrollEventBottom)
@@ -177,13 +175,12 @@ describe('GenericHome page - Analytics', () => {
     })
   })
 
-  it('should trigger batch logEvent "AllModulesSeen" when reaching the end on Thematic Home', async () => {
+  it('should trigger batch logEvent "has_seen_all_the_homepage" when reaching the end on Thematic Home', async () => {
     renderGenericHome({ thematicHeader: highlightHeaderFixture.thematicHeader })
     const scrollView = screen.getByTestId('homeBodyScrollView')
 
     scrollView.props.onScroll(scrollEventMiddle)
 
-    expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
     expect(BatchUser.trackEvent).not.toHaveBeenCalled()
 
     scrollView.props.onScroll(scrollEventBottom)
@@ -194,17 +191,6 @@ describe('GenericHome page - Analytics', () => {
         home_type: 'thematicHome - Highlight',
         home_name: 'Bloc temps fort',
       })
-    })
-  })
-
-  it('should trigger logEvent "AllModulesSeen"', async () => {
-    renderGenericHome({})
-    const scrollView = screen.getByTestId('homeBodyScrollView')
-
-    fireEvent.scroll(scrollView, scrollEventBottom)
-
-    await waitFor(() => {
-      expect(analytics.logAllModulesSeen).toHaveBeenCalledWith(1)
     })
   })
 
