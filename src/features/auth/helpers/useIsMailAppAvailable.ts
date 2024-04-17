@@ -18,7 +18,7 @@ export const useIsMailAppAvailable = (): boolean => {
           }
         }
       } catch (error) {
-        eventMonitoring.logError(`Error checking mail app availability: ${error}`)
+        eventMonitoring.captureException(`Error checking mail app availability: ${error}`)
       }
     }
 

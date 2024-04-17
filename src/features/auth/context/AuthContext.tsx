@@ -134,7 +134,7 @@ export const AuthWrapper = memo(function AuthWrapper({
           return
       }
     } catch (err) {
-      eventMonitoring.logError(err)
+      eventMonitoring.captureException(err)
       setIsLoggedIn(false)
     } finally {
       setLoading(false)

@@ -48,7 +48,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
       !shouldCapturedApiErrorAsInfo
 
     if (shouldCaptureError) {
-      eventMonitoring.logError(error)
+      eventMonitoring.captureException(error)
     }
   }, [error])
 

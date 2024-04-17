@@ -100,7 +100,7 @@ describe('<InstalledMessagingApps />', () => {
     render(<InstalledMessagingApps {...props} />)
     await act(async () => {})
 
-    expect(eventMonitoring.logError).toHaveBeenCalledWith(`Installed apps: ${error}`)
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(`Installed apps: ${error}`)
   })
 
   it('should log to sentry when an error occurs when clicking on messaging app', async () => {
@@ -114,6 +114,6 @@ describe('<InstalledMessagingApps />', () => {
       fireEvent.press(socialMediumButton)
     })
 
-    expect(eventMonitoring.logError).toHaveBeenCalledWith(`MessagingApp click: ${error}`)
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(`MessagingApp click: ${error}`)
   })
 })

@@ -126,7 +126,7 @@ describe('buildObjectIdsPredicate', () => {
     const error = new TypeError('objectIds.map is not a function')
     const objectIdsPredicate = buildObjectIdsPredicate('15000' as unknown as string[])
 
-    expect(eventMonitoring.logError).toHaveBeenCalledWith(error, {
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
       level: 'error',
       extra: { objectIds: '15000' },
     })

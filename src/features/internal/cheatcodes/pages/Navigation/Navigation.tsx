@@ -111,7 +111,7 @@ export function Navigation(): React.JSX.Element {
               wording="Sentry"
               onPress={() => {
                 const message = `SENTRY_${env.ENV}_TEST_${uuidv4().slice(0, 5)}`.toUpperCase()
-                eventMonitoring.logError(new Error(message))
+                eventMonitoring.captureException(new Error(message))
                 showInfoSnackBar({
                   message: `L’erreur ${message} a été envoyé sur Sentry`,
                   timeout: SNACK_BAR_TIME_OUT,

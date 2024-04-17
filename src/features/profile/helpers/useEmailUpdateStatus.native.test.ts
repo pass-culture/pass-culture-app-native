@@ -23,7 +23,7 @@ describe('getEmailUpdateStatus', () => {
     simulateEmailUpdateStatusError(422)
     const emailUpdateStatus = await getEmailUpdateStatus()
 
-    expect(eventMonitoring.logError).toHaveBeenCalledTimes(1)
+    expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
     expect(emailUpdateStatus).toEqual(undefined)
   })
 
@@ -40,7 +40,7 @@ describe('getEmailUpdateStatus', () => {
       simulateEmailUpdateStatusError(statusCode)
       const emailUpdateStatus = await getEmailUpdateStatus()
 
-      expect(eventMonitoring.logError).not.toHaveBeenCalled()
+      expect(eventMonitoring.captureException).not.toHaveBeenCalled()
       expect(emailUpdateStatus).toEqual(undefined)
     }
   )

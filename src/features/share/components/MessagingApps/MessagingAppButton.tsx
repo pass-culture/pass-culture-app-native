@@ -25,7 +25,7 @@ export const MessagingAppButton = ({
       onPressAnalytics(mapNetworkToSocial[network].social)
       await share({ content: { ...shareContent, url: shareUrlWithUtmSource }, mode: network })
     } catch (e) {
-      eventMonitoring.logError(`MessagingApp click: ${e}`)
+      eventMonitoring.captureException(`MessagingApp click: ${e}`)
     }
   }
 

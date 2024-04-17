@@ -31,9 +31,12 @@ describe('useHomeRecommendedIdsQuery', () => {
     })
 
     await waitFor(() => {
-      expect(eventMonitoring.logError).toHaveBeenCalledWith('Error with recommendation endpoint', {
-        extra: { url: 'http://passculture.reco', stack: 'some error' },
-      })
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        'Error with recommendation endpoint',
+        {
+          extra: { url: 'http://passculture.reco', stack: 'some error' },
+        }
+      )
     })
   })
 

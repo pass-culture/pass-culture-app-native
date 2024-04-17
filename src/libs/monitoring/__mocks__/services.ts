@@ -2,7 +2,7 @@ import { eventMonitoring as actualErrorMonitoring } from 'libs/monitoring/servic
 
 export const eventMonitoring: typeof actualErrorMonitoring = {
   addBreadcrumb: jest.fn(),
-  logError: jest.fn(),
+  captureException: jest.fn(),
   logInfo: jest.fn(),
   init: jest.fn(),
   configureScope: jest.fn(),

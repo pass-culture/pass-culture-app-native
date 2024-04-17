@@ -35,7 +35,7 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
         }
         return responseBody
       } catch (err) {
-        eventMonitoring.logError('Error with recommendation endpoint', {
+        eventMonitoring.captureException('Error with recommendation endpoint', {
           extra: { url: endpointUrl, stack: err },
         })
 

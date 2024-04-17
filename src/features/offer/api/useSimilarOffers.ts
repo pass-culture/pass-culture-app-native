@@ -57,7 +57,7 @@ export const getApiRecoSimilarOffers = async (
 
     return json
   } catch (e) {
-    eventMonitoring.logError(e)
+    eventMonitoring.captureException(e)
     return undefined
   }
 }
