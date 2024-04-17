@@ -388,8 +388,7 @@
     "react-side-effect": "2.1.2",
     "react-is": "^16.13.1",
     "@sentry/core": "7.62.0",
-    "@babel/runtime": "^7.23",
-    "ts-morph": "^17.0.1"
+    "@babel/runtime": "^7.24.4"
   },
   "exports": {
     ".": "./index.js",
