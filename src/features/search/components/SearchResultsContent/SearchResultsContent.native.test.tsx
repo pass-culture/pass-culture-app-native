@@ -11,7 +11,6 @@ import { SearchResultsContent } from 'features/search/components/SearchResultsCo
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView, UserData } from 'features/search/types'
-import { Venue } from 'features/venue/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
@@ -20,7 +19,7 @@ import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { theme } from 'theme'
@@ -131,7 +130,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-const venue: Venue = mockedSuggestedVenues[0]
+const venue = mockedSuggestedVenue
 
 jest.useFakeTimers()
 

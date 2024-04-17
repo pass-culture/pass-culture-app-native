@@ -9,17 +9,16 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import * as useShowResultsForCategory from 'features/search/helpers/useShowResultsForCategory/useShowResultsForCategory'
 import { Search } from 'features/search/pages/Search/Search'
 import { SearchState, SearchView } from 'features/search/types'
-import { Venue } from 'features/venue/types'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
-const venue: Venue = mockedSuggestedVenues[0]
+const venue = mockedSuggestedVenue
 
 let mockSearchState: SearchState = {
   ...initialSearchState,

@@ -1,1 +1,2 @@
-src/ui/hooks/useElementWidth.ts:4 - useElementWidth
+src/features/auth/helpers/contactSupport.ts:35 - satisfies
+src/features/auth/helpers/contactSupport.ts:35 - ContactSupport (used in module)
