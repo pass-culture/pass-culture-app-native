@@ -24,3 +24,20 @@ export const BatchUser = {
 export const BatchPush = {
   requestNotificationAuthorization() {},
 }
+export class BatchEventData {
+  addTag() {
+    return this
+  }
+
+  putDate() {
+    return this
+  }
+
+  putURL() {
+    return this
+  }
+
+  put() {
+    return this
+  }
+}

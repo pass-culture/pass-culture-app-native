@@ -21,3 +21,18 @@ export const BatchPush = {
 export const BatchMessaging = {
   setFontOverride: jest.fn(),
 }
+
+export class BatchEventData {
+  addTag() {
+    return this
+  }
+  putDate() {
+    return this
+  }
+  putURL() {
+    return this
+  }
+  put(key: string, value: string) {
+    return Object.assign(this, { [key]: value })
+  }
+}

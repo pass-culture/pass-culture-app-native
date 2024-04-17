@@ -213,6 +213,7 @@ export const ThematicHome: FunctionComponent = () => {
       <GenericHome
         modules={modules}
         homeId={id}
+        thematicHeader={thematicHeader}
         Header={
           <React.Fragment>
             <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
