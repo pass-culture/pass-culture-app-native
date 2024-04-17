@@ -5,16 +5,15 @@ import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchState } from 'features/search/types'
-import { Venue } from 'features/venue/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
-const venue: Venue = mockedSuggestedVenues[0]
+const venue = mockedSuggestedVenue
 
 const mockSearchState: SearchState = {
   ...initialSearchState,

@@ -1,13 +1,12 @@
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchView } from 'features/search/types'
-import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, renderHook } from 'tests/utils'
 
 import useVenueModal from './useVenueModal'
 
-const venue: Venue = mockedSuggestedVenues[0]
+const venue = mockedSuggestedVenue
 
 jest.useFakeTimers()
 jest.mock('ui/hooks/useDebounceValue', () => ({

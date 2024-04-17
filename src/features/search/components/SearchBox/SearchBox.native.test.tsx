@@ -7,10 +7,9 @@ import { navigationRef } from 'features/navigation/navigationRef'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchState, SearchView } from 'features/search/types'
-import { Venue } from 'features/venue/types'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SearchBox } from './SearchBox'
@@ -108,7 +107,7 @@ const mockRoutesWithVenue = [
   },
 ]
 
-const venue: Venue = mockedSuggestedVenues[0]
+const venue = mockedSuggestedVenue
 
 const searchId = uuidv4()
 
