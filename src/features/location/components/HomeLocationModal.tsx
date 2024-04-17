@@ -12,10 +12,10 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Separator } from 'ui/components/Separator'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
+import { WorldPosition } from 'ui/svg/icons/WorldPosition'
 import { getSpacing } from 'ui/theme'
 
 interface LocationModalProps {
@@ -192,7 +192,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
         <Spacer.Column numberOfSpaces={6} />
         <LocationModalButton
           onPress={selectLocationMode(LocationMode.EVERYWHERE)}
-          icon={BicolorEverywhere}
+          icon={WorldPosition}
           color={everywhereLocationModeColor}
           title="Partout"
         />

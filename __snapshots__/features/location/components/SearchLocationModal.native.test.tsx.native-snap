@@ -686,6 +686,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="position dans le monde"
                     height={24}
                     width={24}
                   >
