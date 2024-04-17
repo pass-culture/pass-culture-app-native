@@ -1,7 +1,7 @@
 import { GenreType, SearchGroupNameEnumv2, SubcategoryIdEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { buildFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFacetFilters'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
 const defaultBuildFacetFilterParam = {
   isUserUnderage: false,
@@ -125,7 +125,7 @@ describe('buildFacetFilters', () => {
   it('should return default and venue facets when location filter with venue specified', () => {
     const facetFilters = buildFacetFilters({
       ...defaultBuildFacetFilterParam,
-      venue: mockedSuggestedVenues[0],
+      venue: mockedSuggestedVenue,
     })
 
     expect(facetFilters).toEqual({

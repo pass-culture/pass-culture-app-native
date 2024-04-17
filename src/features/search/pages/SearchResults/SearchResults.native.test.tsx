@@ -9,16 +9,15 @@ import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistor
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { SearchState, SearchView } from 'features/search/types'
-import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
-const venue: Venue = mockedSuggestedVenues[0]
+const venue = mockedSuggestedVenue
 
 let mockSearchState: SearchState = {
   ...initialSearchState,

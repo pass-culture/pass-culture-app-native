@@ -16,13 +16,12 @@ import {
   mockHitWithoutCategoryAndNativeCategory,
 } from 'features/search/fixtures/autocompleteHits'
 import { SearchState, SearchView } from 'features/search/types'
-import { Venue } from 'features/venue/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render, screen } from 'tests/utils'
 
-const venue: Venue = mockedSuggestedVenues[0]
+const venue = mockedSuggestedVenue
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 

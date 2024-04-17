@@ -2,12 +2,11 @@ import algoliasearch from 'algoliasearch'
 
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { Venue } from 'features/venue/types'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { LocationMode, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { SuggestedPlace } from 'libs/place/types'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
 jest.mock('algoliasearch')
 
@@ -21,7 +20,7 @@ const kourou: SuggestedPlace = {
   geolocation: { longitude: -52.669726, latitude: 5.16176 },
 }
 
-const venue: Venue = mockedSuggestedVenues[0]
+const venue = mockedSuggestedVenue
 
 describe('fetchSearchResults', () => {
   it('should execute multi query with venues playlist search newest index when there is not location filter', () => {

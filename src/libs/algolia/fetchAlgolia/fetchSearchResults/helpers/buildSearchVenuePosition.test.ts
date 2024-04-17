@@ -1,5 +1,4 @@
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { Venue } from 'features/venue/types'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import {
   buildSearchVenuePosition,
@@ -8,14 +7,14 @@ import {
 import { LocationMode } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
-const venue: Venue = mockedSuggestedVenues[0]
+const venue = mockedSuggestedVenue
 
 const geolocPosition: Position = { latitude: 66, longitude: 66 }
 const buildLocationParameterParamsAroundMe: BuildLocationParameterParams = {
