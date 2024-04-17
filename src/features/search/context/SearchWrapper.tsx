@@ -13,7 +13,7 @@ import { SearchState } from 'features/search/types'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 
-interface ISearchContext {
+export interface ISearchContext {
   searchState: SearchState
   dispatch: React.Dispatch<Action>
   resetSearch: () => void
