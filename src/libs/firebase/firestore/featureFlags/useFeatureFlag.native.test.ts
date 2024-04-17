@@ -181,9 +181,9 @@ describe('useFeatureFlag', () => {
 
       await act(async () => {})
 
-      expect(eventMonitoring.logInfo).toHaveBeenCalledWith(
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
         `Minimal build number is greater than maximal build number for feature flag ${featureFlag}`,
-        { extra: firestoreData }
+        { level: 'info', extra: firestoreData }
       )
     })
   })

@@ -35,12 +35,12 @@ describe('getEmailUpdateStatus', () => {
     503, // Service Unavailable
     504, // Gateway Timeout
   ])(
-    'should capture a Sentry exception when error code is %s and return undefined',
+    'should not capture a Sentry exception when error code is %s and return undefined',
     async (statusCode) => {
       simulateEmailUpdateStatusError(statusCode)
       const emailUpdateStatus = await getEmailUpdateStatus()
 
-      expect(eventMonitoring.captureException).not.toHaveBeenCalled()
+      expect(eventMonitoring.captureException).not.toHaveBeenCalledWith({ level: 'info' })
       expect(emailUpdateStatus).toEqual(undefined)
     }
   )
@@ -57,7 +57,10 @@ describe('getEmailUpdateStatus', () => {
       simulateEmailUpdateStatusError(statusCode)
       const emailUpdateStatus = await getEmailUpdateStatus()
 
-      expect(eventMonitoring.logInfo).toHaveBeenCalledTimes(1)
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        `Échec de la requête https://localhost/native/v1/profile/email_update/status, code: ${statusCode}`,
+        { level: 'info' }
+      )
       expect(emailUpdateStatus).toEqual(undefined)
     }
   )

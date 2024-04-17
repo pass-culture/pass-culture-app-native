@@ -56,9 +56,13 @@ describe('useHomeRecommendedIdsQuery', () => {
 
     await act(async () => {})
 
-    expect(eventMonitoring.logInfo).toHaveBeenCalledWith('Recommendation response was not ok', {
-      extra: { url: 'http://passculture.reco', status: 500 },
-    })
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+      'Recommendation response was not ok',
+      {
+        level: 'info',
+        extra: { url: 'http://passculture.reco', status: 500 },
+      }
+    )
   })
 
   it('should capture a message when recommendation playlist is empty', async () => {
@@ -76,9 +80,10 @@ describe('useHomeRecommendedIdsQuery', () => {
     })
 
     await waitFor(() => {
-      expect(eventMonitoring.logInfo).toHaveBeenCalledWith('Recommended offers playlist is empty', {
-        extra: { url: 'http://passculture.reco', status: 200 },
-      })
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        'Recommended offers playlist is empty',
+        { level: 'info', extra: { url: 'http://passculture.reco', status: 200 } }
+      )
     })
   })
 

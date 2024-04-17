@@ -34,7 +34,9 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
         'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
       )
     }
-    eventMonitoring.logInfo(`Could not resend validation email: ${error.content}`)
+    eventMonitoring.captureException(`Could not resend validation email: ${error.content}`, {
+      level: 'info',
+    })
   }
 
   const { data: remainingResendsResponse, refetch: refetchRemainingResends } =

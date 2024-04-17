@@ -111,7 +111,10 @@ describe('<EmailResendModal />', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
 
-    expect(eventMonitoring.logInfo).toHaveBeenCalledWith('Could not resend validation email: error')
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+      'Could not resend validation email: error',
+      { level: 'info' }
+    )
   })
 
   it('should reset error message when another resend attempt is made', async () => {
