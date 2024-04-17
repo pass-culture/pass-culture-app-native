@@ -1,11 +1,14 @@
 import React from 'react'
 
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import { RecommendationApiParams } from 'shared/offer/types'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils'
+import { render, waitFor, screen } from 'tests/utils'
 
 import { RecommendationModule } from './RecommendationModule'
 
@@ -28,22 +31,32 @@ jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
 }))
 
 describe('RecommendationModule', () => {
-  it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
-    renderRecommendationModule()
-
-    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
-      1,
-      'abcd',
-      ContentTypes.RECOMMENDATION,
-      1,
-      'xyz',
-      defaultRecommendationApiParams
-    )
+  beforeEach(() => {
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
   })
 
-  it('should not trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
+  it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', async () => {
+    renderRecommendationModule()
+
+    await waitFor(() => {
+      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
+        1,
+        'abcd',
+        ContentTypes.RECOMMENDATION,
+        1,
+        'xyz',
+        defaultRecommendationApiParams
+      )
+    })
+  })
+
+  it('should not trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', async () => {
     const minOffers = mockedAlgoliaResponse.hits.length + 1
     renderRecommendationModule({ ...displayParameters, minOffers })
+
+    await waitFor(() => {
+      expect(screen.toJSON()).toBeNull()
+    })
 
     expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
   })
