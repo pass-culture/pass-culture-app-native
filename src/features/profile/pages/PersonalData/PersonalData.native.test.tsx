@@ -1,14 +1,15 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { UserProfileResponse } from 'api/gen'
+import { UpdateEmailTokenExpiration, UserProfileResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment/__mocks__/envFixtures'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, fireEvent, screen, act } from 'tests/utils'
+import { render, fireEvent, screen, waitFor } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
 
@@ -23,21 +24,35 @@ const mockedUser: UserProfileResponse = {
   phoneNumber: '+33685974563',
 }
 
+const initialAuthContext = {
+  isLoggedIn: true,
+  setIsLoggedIn: jest.fn(),
+  user: mockedUser,
+  refetchUser: jest.fn(),
+  isUserLoading: false,
+}
+
+mockedUseAuthContext.mockReturnValue(initialAuthContext)
+
 describe('PersonalData', () => {
-  it('should render personal data success', () => {
-    renderPersonalData({
-      ...mockedUser,
-      isBeneficiary: true,
+  beforeEach(() => {
+    mockServer.getApi<UpdateEmailTokenExpiration>('/v1/profile/token_expiration', {
+      expiration: null,
     })
+  })
+
+  it('should render personal data success', async () => {
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    await screen.findByText('Informations personnelles')
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render for beneficiary profile', () => {
-    renderPersonalData({
-      ...mockedUser,
-      isBeneficiary: true,
-    })
+  it('should render for beneficiary profile', async () => {
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    await screen.findByText('Informations personnelles')
 
     expect(screen.getByText('Prénom et nom')).toBeOnTheScreen()
     expect(screen.getByText('Rosa Bonheur')).toBeOnTheScreen()
@@ -50,12 +65,26 @@ describe('PersonalData', () => {
     expect(screen.getByText('Supprimer mon compte')).toBeOnTheScreen()
   })
 
-  it('should render for beneficiary profile without phone number', () => {
-    renderPersonalData({
-      ...mockedUser,
-      isBeneficiary: true,
-      phoneNumber: null,
-    })
+  it('should render for beneficiary profile without phone number', async () => {
+    mockedUseAuthContext
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          phoneNumber: null,
+        },
+      })
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          phoneNumber: null,
+        },
+      })
+
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    await screen.findByText('Informations personnelles')
 
     expect(screen.getByText('Prénom et nom')).toBeOnTheScreen()
     expect(screen.getByText('Rosa Bonheur')).toBeOnTheScreen()
@@ -67,11 +96,25 @@ describe('PersonalData', () => {
     expect(screen.getByText('Supprimer mon compte')).toBeOnTheScreen()
   })
 
-  it('should render for non beneficiary profile', () => {
-    renderPersonalData({
-      ...mockedUser,
-      isBeneficiary: false,
-    })
+  it('should render for non beneficiary profile', async () => {
+    mockedUseAuthContext
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          isBeneficiary: false,
+        },
+      })
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          isBeneficiary: false,
+        },
+      })
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    await screen.findByText('Informations personnelles')
 
     expect(screen.queryByText('Prénom et nom')).not.toBeOnTheScreen()
     expect(screen.getByText('Adresse e-mail')).toBeOnTheScreen()
@@ -81,80 +124,130 @@ describe('PersonalData', () => {
   })
 
   it('should redirect to ChangePassword when clicking on modify password button', async () => {
-    renderPersonalData({
-      ...mockedUser,
-      isBeneficiary: false,
-    })
+    mockedUseAuthContext
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          isBeneficiary: false,
+        },
+      })
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          isBeneficiary: false,
+        },
+      })
 
-    await act(async () => fireEvent.press(screen.getByTestId('Modifier mot de passe')))
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    fireEvent.press(await screen.findByTestId('Modifier mot de passe'))
 
     expect(navigate).toHaveBeenCalledWith('ChangePassword', undefined)
   })
 
   it('should log analytics and redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
-    renderPersonalData({
-      ...mockedUser,
-      isBeneficiary: false,
+    mockedUseAuthContext.mockReturnValueOnce({
+      ...initialAuthContext,
+      user: {
+        ...mockedUser,
+        isBeneficiary: false,
+      },
     })
 
-    await act(async () => fireEvent.press(screen.getByText('Supprimer mon compte')))
+    render(reactQueryProviderHOC(<PersonalData />))
 
-    expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
-    expect(navigate).toHaveBeenCalledWith('ConfirmDeleteProfile', undefined)
+    fireEvent.press(await screen.findByText('Supprimer mon compte'))
+
+    await waitFor(() => {
+      expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('ConfirmDeleteProfile', undefined)
+    })
   })
 
   it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', async () => {
-    renderPersonalData({
-      ...mockedUser,
-      isBeneficiary: false,
-    })
+    mockedUseAuthContext
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          isBeneficiary: false,
+        },
+      })
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          isBeneficiary: false,
+        },
+      })
 
-    await act(async () =>
-      fireEvent.press(screen.getByText('Comment gérer tes données personnelles ?'))
-    )
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    await screen.findByText('Informations personnelles')
+
+    fireEvent.press(screen.getByText('Comment gérer tes données personnelles ?'))
 
     expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_PERSONAL_DATA, undefined, true)
   })
 
   it('should log modify email when pressing "Modifier"', async () => {
-    renderPersonalData({
-      ...mockedUser,
-      isBeneficiary: false,
-    })
+    mockedUseAuthContext
+      .mockReturnValueOnce(initialAuthContext)
+      .mockReturnValueOnce(initialAuthContext)
 
-    await act(async () => fireEvent.press(screen.getByTestId('Modifier e-mail')))
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    fireEvent.press(await screen.findByTestId('Modifier e-mail'))
 
     expect(screen.getByTestId('Modifier e-mail')).toBeOnTheScreen()
+
     expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)
   })
 
-  it('should not show password field when user has no password', () => {
-    renderPersonalData({
-      ...mockedUser,
-      hasPassword: false,
-    })
+  it('should not show password field when user has no password', async () => {
+    mockedUseAuthContext
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          hasPassword: false,
+        },
+      })
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          hasPassword: false,
+        },
+      })
+    render(reactQueryProviderHOC(<PersonalData />))
+    await screen.findByText('Adresse e-mail')
 
     expect(screen.queryByText('Mot de passe')).not.toBeOnTheScreen()
   })
 
-  it('should not show email change button when user has no password', () => {
-    renderPersonalData({
-      ...mockedUser,
-      hasPassword: false,
-    })
+  it('should not show email change button when user has no password', async () => {
+    mockedUseAuthContext
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          hasPassword: false,
+        },
+      })
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          hasPassword: false,
+        },
+      })
+
+    render(reactQueryProviderHOC(<PersonalData />))
+    await screen.findByText('Adresse e-mail')
 
     expect(screen.queryByLabelText('Modifier e-mail')).not.toBeOnTheScreen()
   })
 })
-
-function renderPersonalData(response: UserProfileResponse) {
-  mockedUseAuthContext.mockReturnValueOnce({
-    setIsLoggedIn: jest.fn(),
-    isLoggedIn: true,
-    user: response,
-    isUserLoading: false,
-    refetchUser: jest.fn(),
-  })
-
-  return render(reactQueryProviderHOC(<PersonalData />))
-}
