@@ -47,7 +47,7 @@ export const NotificationsSettings = () => {
 
   const [state, dispatch] = useReducer(settingsReducer, initialState)
 
-  const hasUserChanged = !!user?.subscriptions && hasUserChangedParameters(user, state)
+  const hasUserChanged = hasUserChangedParameters({ user, state })
 
   const updatePushPermissionFromSettings = (permission: PermissionStatus) => {
     if (permission === 'granted' && user?.subscriptions.marketingPush) {
