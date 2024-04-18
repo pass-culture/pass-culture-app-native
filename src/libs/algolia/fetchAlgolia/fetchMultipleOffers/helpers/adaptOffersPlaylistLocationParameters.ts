@@ -5,12 +5,14 @@ import { Position } from 'libs/location'
 
 export const adaptOffersPlaylistLocationParameters = (
   parameters: OffersModuleParameters,
-  userLocation: Position,
-  selectedLocationMode: LocationMode
+  userLocation: Position
 ): BuildLocationParameterParams => {
   const { isGeolocated, aroundRadius } = parameters
 
   const radius = isGeolocated && !!aroundRadius ? aroundRadius : 'all'
+
+  const selectedLocationMode =
+    aroundRadius && isGeolocated ? LocationMode.AROUND_ME : LocationMode.EVERYWHERE
 
   return {
     selectedLocationMode,

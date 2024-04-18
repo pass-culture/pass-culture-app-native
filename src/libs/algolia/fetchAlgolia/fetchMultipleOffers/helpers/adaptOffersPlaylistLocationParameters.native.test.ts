@@ -11,11 +11,7 @@ describe('adaptOffersPlaylistLocationParameters', () => {
       aroundRadius: 100,
     } as OffersModuleParameters
 
-    const result = adaptOffersPlaylistLocationParameters(
-      parameters,
-      mockedUserLocation,
-      LocationMode.AROUND_ME
-    )
+    const result = adaptOffersPlaylistLocationParameters(parameters, mockedUserLocation)
 
     expect(result).toStrictEqual({
       aroundMeRadius: 100,
@@ -31,16 +27,12 @@ describe('adaptOffersPlaylistLocationParameters', () => {
   it('should return default adapted location parameters when module is not set with isGeolocated and a given aroundRadius', () => {
     const parameters = {} as OffersModuleParameters
 
-    const result = adaptOffersPlaylistLocationParameters(
-      parameters,
-      mockedUserLocation,
-      LocationMode.AROUND_ME
-    )
+    const result = adaptOffersPlaylistLocationParameters(parameters, mockedUserLocation)
 
     expect(result).toStrictEqual({
       aroundMeRadius: 'all',
       aroundPlaceRadius: 'all',
-      selectedLocationMode: LocationMode.AROUND_ME,
+      selectedLocationMode: LocationMode.EVERYWHERE,
       userLocation: {
         latitude: 30,
         longitude: 30.1,
