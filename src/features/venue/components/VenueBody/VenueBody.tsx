@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { View } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -58,7 +59,7 @@ export const VenueBody: FunctionComponent<Props> = ({
   venueTypeLabel && venueTags.push(venueTypeLabel)
   distanceToVenue && venueTags.push(`À ${distanceToVenue}`)
 
-  const FirstSectionContainer = isLargeScreen ? MarginContainer : SectionWithDivider
+  const FirstSectionContainer = isLargeScreen ? View : SectionWithDivider
 
   return (
     <Container onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
