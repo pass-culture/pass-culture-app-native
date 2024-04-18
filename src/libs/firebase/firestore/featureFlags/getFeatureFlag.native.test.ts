@@ -26,6 +26,7 @@ describe('getFeatureFlag', () => {
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER,
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_SEARCH_RESULTS,
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_PREVIEW,
+    RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_POSITION,
     RemoteStoreFeatureFlags.WIP_SEARCH_ACCESSIBILITY_FILTER,
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER,
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_CHANGE_EMAIL,
