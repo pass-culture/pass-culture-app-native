@@ -1,17 +1,21 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { SubcategoryIdEnum, VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { MoviesScreeningCalendar } from 'features/offer/components/MoviesScreeningCalendar/MoviesScreeningCalendar'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { VenueTypeCode } from 'libs/parsers/venueType'
@@ -21,7 +25,7 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
-import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
+import { getSpacing, LENGTH_M, RATIO_HOME_IMAGE, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -33,6 +37,8 @@ interface Props {
 const keyExtractor = (item: Offer) => item.objectID
 
 export function VenueOffers({ venue, venueOffers, playlists }: Readonly<Props>) {
+  const { isDesktopViewport } = useTheme()
+  const enableNewXpCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
   const { isLoading: areVenueOffersLoading } = useVenueOffers(venue)
@@ -93,6 +99,21 @@ export function VenueOffers({ venue, venueOffers, playlists }: Readonly<Props>) 
     return <NoOfferPlaceholder />
   }
 
+  const isOfferAMovieScreening = venueOffers.hits.some(
+    (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
+  )
+
+  if (isOfferAMovieScreening && enableNewXpCine) {
+    return (
+      <React.Fragment>
+        <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
+        <MoviesTitle>{'Les films à l’affiche'}</MoviesTitle>
+        <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
+        <MoviesScreeningCalendar />
+      </React.Fragment>
+    )
+  }
+
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
@@ -121,3 +142,7 @@ export function VenueOffers({ venue, venueOffers, playlists }: Readonly<Props>) 
 }
 
 const PlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
+
+const MoviesTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))({
+  marginLeft: getSpacing(6),
+})
