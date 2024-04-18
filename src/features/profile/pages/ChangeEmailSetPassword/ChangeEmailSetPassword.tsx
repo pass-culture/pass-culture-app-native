@@ -58,7 +58,11 @@ export const ChangeEmailSetPassword = () => {
   )
 
   return (
-    <SecondaryPageWithBlurHeader title="Créer mon mot de passe">
+    <SecondaryPageWithBlurHeader
+      title="Créer mon mot de passe"
+      scrollViewProps={{
+        automaticallyAdjustKeyboardInsets: true,
+      }}>
       <Typo.Title3 {...getHeadingAttrs(2)}>Crée ton mot de passe</Typo.Title3>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>
@@ -74,7 +78,6 @@ export const ChangeEmailSetPassword = () => {
           name="newPassword"
           label="Mot de passe"
           control={control}
-          autoFocus
           isRequiredField
           withSecurityRules
           securityRulesAlwaysVisible
