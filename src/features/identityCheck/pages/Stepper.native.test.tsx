@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { SubscriptionStep, UserProfileResponse } from 'api/gen'
+import { ActivityIdEnum, SubscriptionStep, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
@@ -12,7 +12,7 @@ import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 import { StepButtonState } from 'ui/components/StepButton/types'
@@ -46,6 +46,21 @@ mockedUseSubscriptionContext.mockReturnValue({
   identification: { method: null },
 })
 
+const mockStatus: ActivityIdEnum | null = null
+
+const profile = {
+  name: {
+    firstName: 'Christophe',
+    lastName: 'Dupont',
+  },
+  city: {
+    name: 'Paris',
+    postalCode: '75011',
+  },
+  address: '1 rue du désespoir',
+  status: mockStatus,
+}
+
 jest.mock('features/identityCheck/pages/helpers/useStepperInfo')
 const mockUseStepperInfo = useStepperInfo as jest.Mock
 
@@ -55,10 +70,12 @@ mockUseStepperInfo.mockReturnValue({
   subtitle: 'Débloque ton crédit',
 })
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
-
 describe('Stepper navigation', () => {
-  it('should render correctly', () => {
+  beforeEach(() => {
+    mockServer.getApi('/v1/subscription/profile', profile)
+  })
+
+  it('should render correctly', async () => {
     // the stepper will have the following steps :
     // profile = completed, identification = current, phone_validation = disabled, confirmation = disabled
     mockedUseSubscriptionContext.mockReturnValueOnce({
@@ -68,16 +85,25 @@ describe('Stepper navigation', () => {
     })
     render(reactQueryProviderHOC(<Stepper />))
 
+    await screen.findByText('Vas-y')
+
     expect(screen).toMatchSnapshot()
   })
 
-  it('should display an error message if the identification step failed', () => {
+  it('should display an error message if the identification step failed', async () => {
+    mockUseStepperInfo.mockReturnValueOnce({
+      stepsDetails: stepsDetailsFixture,
+      title: 'Vas-y',
+      errorMessage: 'Le document que tu as présenté est expiré.',
+    })
     mockUseStepperInfo.mockReturnValueOnce({
       stepsDetails: stepsDetailsFixture,
       title: 'Vas-y',
       errorMessage: 'Le document que tu as présenté est expiré.',
     })
     render(reactQueryProviderHOC(<Stepper />))
+
+    await screen.findByText('Vas-y')
 
     expect(screen.getByText('Le document que tu as présenté est expiré.')).toBeOnTheScreen()
   })
@@ -98,9 +124,10 @@ describe('Stepper navigation', () => {
       }),
     })
     render(reactQueryProviderHOC(<Stepper />))
-    await waitFor(() => {
-      expect(navigate).not.toHaveBeenCalled()
-    })
+
+    await screen.findByText('Vas-y')
+
+    expect(navigate).not.toHaveBeenCalled()
   })
 
   it('should navigate to BeneficiaryAccountCreated when next_step is null and initialCredit is available', async () => {
@@ -121,6 +148,7 @@ describe('Stepper navigation', () => {
       nextSubscriptionStep: null,
     }
     render(reactQueryProviderHOC(<Stepper />))
+
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
     })
@@ -134,7 +162,7 @@ describe('Stepper navigation', () => {
     ${IdentityCheckStep.PROFILE}          | ${'Profil'}              | ${IdentityCheckStep.PROFILE}
   `(
     'should trigger analytics with the $eventParam parameter',
-    ({
+    async ({
       subscriptionStep,
       stepperLabel,
       eventParam,
@@ -167,6 +195,8 @@ describe('Stepper navigation', () => {
 
       render(reactQueryProviderHOC(<Stepper />))
 
+      await screen.findByText('Vas-y')
+
       const stepButton = screen.getByText(stepperLabel)
       fireEvent.press(stepButton)
 
@@ -174,7 +204,7 @@ describe('Stepper navigation', () => {
     }
   )
 
-  it('should trigger StepperDisplayed tracker when route contains a from parameter and user has a step to complete', () => {
+  it('should trigger StepperDisplayed tracker when route contains a from parameter and user has a step to complete', async () => {
     useRoute.mockReturnValueOnce({ params: { from: StepperOrigin.HOME } })
 
     mockUseStepperInfo.mockReturnValueOnce({
@@ -185,6 +215,8 @@ describe('Stepper navigation', () => {
 
     render(reactQueryProviderHOC(<Stepper />))
 
+    await screen.findByText('Vas-y')
+
     expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
       1,
       StepperOrigin.HOME,
@@ -192,7 +224,7 @@ describe('Stepper navigation', () => {
     )
   })
 
-  it('should not trigger StepperDisplayed tracker when route does not contain a from parameter', () => {
+  it('should not trigger StepperDisplayed tracker when route does not contain a from parameter', async () => {
     useRoute.mockReturnValueOnce({ params: undefined })
 
     mockUseStepperInfo.mockReturnValueOnce({
@@ -202,6 +234,8 @@ describe('Stepper navigation', () => {
     })
 
     render(reactQueryProviderHOC(<Stepper />))
+
+    await screen.findByText('Vas-y')
 
     expect(analytics.logStepperDisplayed).not.toHaveBeenCalled()
   })

@@ -4,52 +4,46 @@ import { useNavigationState, useRoute } from '__mocks__/@react-navigation/native
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
+import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeoCoordinates, Position } from 'libs/location'
-import { LocationMode } from 'libs/location/types'
+import { GeoCoordinates } from 'libs/location'
+import { ILocationContext, LocationMode } from 'libs/location/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SearchFilter } from './SearchFilter'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-let mockSearchState = initialSearchState
 useNavigationState.mockImplementation(() => [{ name: 'SearchFilter' }])
 
 const mockStateDispatch = jest.fn()
+const initialMockUseSearch = { searchState: initialSearchState, dispatch: mockStateDispatch }
+const mockUseSearch: jest.Mock<Partial<ISearchContext>> = jest.fn(() => initialMockUseSearch)
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockStateDispatch,
-  }),
+  useSearch: () => mockUseSearch(),
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
-let mockPosition: Position = DEFAULT_POSITION
-let mockLocationMode = LocationMode.AROUND_ME
-const mockAroundMeRadius = DEFAULT_RADIUS
-let mockHasGeolocPosition = false
 const mockSetSelectedLocationMode = jest.fn()
-
+const initialMockUseLocation = {
+  geolocPosition: DEFAULT_POSITION,
+  place: null,
+  userLocation: DEFAULT_POSITION,
+  selectedLocationMode: LocationMode.AROUND_ME,
+  aroundMeRadius: DEFAULT_RADIUS,
+  setSelectedLocationMode: mockSetSelectedLocationMode,
+  hasGeolocPosition: false,
+}
+const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => initialMockUseLocation)
 jest.mock('libs/location/LocationWrapper', () => ({
-  useLocation: () => ({
-    geolocPosition: mockPosition,
-    place: null,
-    userLocation: mockPosition,
-    selectedLocationMode: mockLocationMode,
-    aroundMeRadius: mockAroundMeRadius,
-    setSelectedLocationMode: mockSetSelectedLocationMode,
-    hasGeolocPosition: mockHasGeolocPosition,
-  }),
+  useLocation: () => mockUseLocation(),
 }))
 
 const mockData = placeholderData
-const mockHasNextPage = true
-const mockFetchNextPage = jest.fn()
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({
     data: mockData,
@@ -57,38 +51,43 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
     nbHits: 0,
     isFetching: false,
     isLoading: false,
-    hasNextPage: mockHasNextPage,
-    fetchNextPage: mockFetchNextPage,
+    hasNextPage: true,
+    fetchNextPage: jest.fn(),
     isFetchingNextPage: false,
   }),
 }))
 
 describe('<SearchFilter/>', () => {
-  afterEach(() => {
-    mockPosition = DEFAULT_POSITION
-    mockSearchState = initialSearchState
-    mockLocationMode = LocationMode.AROUND_ME
-  })
-
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
   })
 
   it('should render correctly', async () => {
-    mockSearchState = {
-      ...mockSearchState,
-      locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
-    }
+    mockUseSearch.mockReturnValueOnce({
+      ...initialMockUseSearch,
+      searchState: {
+        ...initialSearchState,
+        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+      },
+    })
     renderSearchFilter()
-    await act(() => {})
 
     await screen.findByText('Filtres')
 
-    expect(screen).toMatchSnapshot()
+    await waitFor(() => {
+      expect(screen).toMatchSnapshot()
+    })
   })
 
   it('should setLocationMode to AROUND-ME in location context, when URI params contains AROUND-ME, and user has a geolocposition', async () => {
-    mockHasGeolocPosition = true
+    // we mock globally due to many renders
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseLocation.mockReturnValue({
+      ...initialMockUseLocation,
+      selectedLocationMode: LocationMode.EVERYWHERE,
+      hasGeolocPosition: true,
+    })
+
     useRoute.mockReturnValueOnce({
       params: {
         locationFilter: {
@@ -99,14 +98,23 @@ describe('<SearchFilter/>', () => {
 
     renderSearchFilter()
 
-    await act(async () => {})
+    await screen.findByText('Filtres')
 
-    expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_ME)
+    await waitFor(() => {
+      expect(mockSetSelectedLocationMode).toHaveBeenCalledWith(LocationMode.AROUND_ME)
+    })
+
+    // we reset the mock to its initial state
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseLocation.mockReturnValue(initialMockUseLocation)
   })
 
   it("shouldn't setLocationMode to AROUND-ME in location context, when URI params contains AROUND-ME, and user has no geolocposition", async () => {
-    mockHasGeolocPosition = false
-    mockLocationMode = LocationMode.EVERYWHERE
+    mockUseLocation.mockReturnValueOnce({
+      ...initialMockUseLocation,
+      hasGeolocPosition: false,
+      selectedLocationMode: LocationMode.EVERYWHERE,
+    })
     useRoute.mockReturnValueOnce({
       params: {
         locationFilter: {
@@ -117,7 +125,7 @@ describe('<SearchFilter/>', () => {
 
     renderSearchFilter()
 
-    await act(async () => {})
+    await screen.findByText('Filtres')
 
     expect(mockSetSelectedLocationMode).not.toHaveBeenCalledWith(LocationMode.AROUND_ME)
   })
@@ -126,9 +134,9 @@ describe('<SearchFilter/>', () => {
     it('is not null', async () => {
       renderSearchFilter()
 
-      await act(async () => {
-        fireEvent.press(screen.getByText('Réinitialiser'))
-      })
+      await screen.findByText('Filtres')
+
+      fireEvent.press(screen.getByText('Réinitialiser'))
 
       expect(mockStateDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
@@ -144,13 +152,18 @@ describe('<SearchFilter/>', () => {
     })
 
     it('is null', async () => {
-      mockPosition = undefined
-      mockLocationMode = LocationMode.EVERYWHERE
+      mockUseLocation.mockReturnValueOnce({
+        ...initialMockUseLocation,
+        geolocPosition: undefined,
+        userLocation: undefined,
+        selectedLocationMode: LocationMode.EVERYWHERE,
+      })
+
       renderSearchFilter()
 
-      await act(async () => {
-        fireEvent.press(screen.getByText('Réinitialiser'))
-      })
+      await screen.findByText('Filtres')
+
+      fireEvent.press(screen.getByText('Réinitialiser'))
 
       expect(mockStateDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
@@ -169,18 +182,17 @@ describe('<SearchFilter/>', () => {
   it('should log analytics when clicking on the reset button', async () => {
     renderSearchFilter()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Réinitialiser'))
-    })
+    await screen.findByText('Filtres')
+
+    fireEvent.press(screen.getByText('Réinitialiser'))
 
     expect(analytics.logReinitializeFilters).toHaveBeenCalledTimes(1)
   })
 
   it('should display back button on header', async () => {
     renderSearchFilter()
-    await act(async () => {})
 
-    expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
+    expect(await screen.findByTestId('Revenir en arrière')).toBeOnTheScreen()
   })
 
   describe('Accessibility', () => {
@@ -190,9 +202,8 @@ describe('<SearchFilter/>', () => {
 
     it('should display accessibility section', async () => {
       renderSearchFilter()
-      await act(async () => {})
 
-      expect(screen.getByText('Accessibilité')).toBeOnTheScreen()
+      expect(await screen.findByText('Accessibilité')).toBeOnTheScreen()
     })
   })
 })
