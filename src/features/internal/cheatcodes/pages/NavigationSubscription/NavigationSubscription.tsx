@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/internal/cheatcodes/components/Row'
+import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
 import { SubscriptionTheme } from 'features/subscription/types'
@@ -47,6 +48,11 @@ export function NavigationSubscription(): React.JSX.Element {
     visible: unsubscribingModalVisible,
     showModal: showUnsubscribingModal,
     hideModal: hideUnsubscribingModal,
+  } = useModal(false)
+  const {
+    visible: onboardingSubModalVisible,
+    showModal: showOnboardingSubModal,
+    hideModal: hideOnboardingSubModal,
   } = useModal(false)
 
   return (
@@ -103,12 +109,19 @@ export function NavigationSubscription(): React.JSX.Element {
           />
         </Row>
         <Row half>
-          <ButtonPrimary wording="Modale Désincription" onPress={showUnsubscribingModal} />
+          <ButtonPrimary wording="Modale Désinscription" onPress={showUnsubscribingModal} />
           <UnsubscribingConfirmationModal
             theme={SubscriptionTheme.VISITES}
             visible={unsubscribingModalVisible}
             dismissModal={hideUnsubscribingModal}
             onUnsubscribePress={hideUnsubscribingModal}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary wording="Modale Onboarding" onPress={showOnboardingSubModal} />
+          <OnboardingSubscriptionModal
+            visible={onboardingSubModalVisible}
+            dismissModal={hideOnboardingSubModal}
           />
         </Row>
       </StyledContainer>
