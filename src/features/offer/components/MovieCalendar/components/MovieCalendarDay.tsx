@@ -22,7 +22,7 @@ export const MovieCalendarDay: React.FC<Props> = ({ date, selectedDate, onTabCha
   const { CalendarText } = StatusPattern[isSelected ? 'selected' : 'default']
 
   return (
-    <CalendarCell onPress={() => onTabChange(date)}>
+    <CalendarCell testID="movie-calendar-day" onPress={() => onTabChange(date)}>
       <CalendarTextView accessibilityLabel={accessibilityLabel}>
         <CalendarText numberOfLines={1}>{weekDay}</CalendarText>
         <CalendarText numberOfLines={1}>{dayDate}</CalendarText>

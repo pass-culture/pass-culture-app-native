@@ -108,6 +108,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 "userSelect": "auto",
               }
             }
+            testID="movie-calendar-day"
           >
             <View
               accessibilityLabel="Mardi 1 Février"
@@ -238,6 +239,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 "userSelect": "auto",
               }
             }
+            testID="movie-calendar-day"
           >
             <View
               accessibilityLabel="Jeudi 1 Mars"
@@ -353,6 +355,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 "userSelect": "auto",
               }
             }
+            testID="movie-calendar-day"
           >
             <View
               accessibilityLabel="Vendredi 4 Octobre"
@@ -468,6 +471,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 "userSelect": "auto",
               }
             }
+            testID="movie-calendar-day"
           >
             <View
               accessibilityLabel="Samedi 29 Novembre"
@@ -583,6 +587,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 "userSelect": "auto",
               }
             }
+            testID="movie-calendar-day"
           >
             <View
               accessibilityLabel="Mercredi 1 Juin"
@@ -698,6 +703,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 "userSelect": "auto",
               }
             }
+            testID="movie-calendar-day"
           >
             <View
               accessibilityLabel="Mercredi 1 Novembre"
@@ -813,6 +819,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 "userSelect": "auto",
               }
             }
+            testID="movie-calendar-day"
           >
             <View
               accessibilityLabel="Samedi 1 Juin"
@@ -928,6 +935,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 "userSelect": "auto",
               }
             }
+            testID="movie-calendar-day"
           >
             <View
               accessibilityLabel="Mardi 1 Décembre"
@@ -1043,6 +1051,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                 "userSelect": "auto",
               }
             }
+            testID="movie-calendar-day"
           >
             <View
               accessibilityLabel="Mercredi 1 Juin"
