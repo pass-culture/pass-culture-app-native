@@ -97,28 +97,6 @@ describe('useLoginAndRedirect', () => {
     )
   })
 
-  it('should log event when account creation is completed', async () => {
-    mockServer.getApi<UserProfileResponse>('/v1/me', {
-      ...nonBeneficiaryUser,
-      email: 'email@domain.ext',
-      firstName: 'Jean',
-      isEligibleForBeneficiaryUpgrade: false,
-      eligibilityStartDatetime: '2019-12-01T00:00:00Z',
-    })
-    loginAndRedirect()
-
-    await waitFor(() => {
-      expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(
-        1,
-        CampaignEvents.COMPLETE_REGISTRATION,
-        {
-          af_firebase_pseudo_id: 'firebase_pseudo_id',
-          af_user_id: nonBeneficiaryUser.id,
-        }
-      )
-    })
-  })
-
   it('should redirect to NotYetUnderageEligibility when not isEligibleForBeneficiaryUpgrade and user is future eligible', async () => {
     mockServer.getApi<UserProfileResponse>('/v1/me', {
       ...nonBeneficiaryUser,
@@ -151,6 +129,24 @@ describe('useLoginAndRedirect', () => {
       },
       { timeout: 10_000 }
     )
+  })
+
+  describe('AppsFlyer events', () => {
+    it('should log event when account creation is completed', async () => {
+      mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
+      loginAndRedirect()
+
+      await waitFor(() => {
+        expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(
+          1,
+          CampaignEvents.COMPLETE_REGISTRATION,
+          {
+            af_firebase_pseudo_id: 'firebase_pseudo_id',
+            af_user_id: nonBeneficiaryUser.id,
+          }
+        )
+      })
+    })
   })
 })
 
