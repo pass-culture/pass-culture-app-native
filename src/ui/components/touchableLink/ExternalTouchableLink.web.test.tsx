@@ -14,12 +14,12 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 jest.mock('features/navigation/navigationRef')
 
-const navigateToItineraryMock = jest.fn()
-const useItinerary = () => ({
-  navigateTo: navigateToItineraryMock,
+const mockNavigateToItinerary = jest.fn()
+const mockUseItinerary = () => ({
+  navigateTo: mockNavigateToItinerary,
 })
 jest.mock('libs/itinerary/useItinerary', () => ({
-  useItinerary,
+  useItinerary: jest.fn(() => mockUseItinerary()),
 }))
 
 const linkText = 'linkText'
@@ -62,7 +62,7 @@ describe('<ExternalTouchableLink />', () => {
       fireEvent.click(screen.getByText(linkText))
 
       await waitFor(() => {
-        expect(navigateToItineraryMock).toHaveBeenCalledWith(mockedFullAddress)
+        expect(mockNavigateToItinerary).toHaveBeenCalledWith(mockedFullAddress)
       })
     })
 
