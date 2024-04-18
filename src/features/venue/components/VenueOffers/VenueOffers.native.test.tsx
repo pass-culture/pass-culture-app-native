@@ -10,14 +10,20 @@ import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { SearchView } from 'features/search/types'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
-import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
+import {
+  VenueMoviesOffersResponseSnap,
+  VenueOffersResponseSnap,
+} from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
+
+const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const playlists = gtlPlaylistAlgoliaSnapshot
 const mockVenue = venueResponseSnap
@@ -63,6 +69,7 @@ const defaultParams = {
 }
 
 const venueOffersMock = { hits: VenueOffersResponseSnap, nbHits: 4 }
+const venueMoviesOffersMock = { hits: VenueMoviesOffersResponseSnap, nbHits: 4 }
 
 const distributionStoreVenue = {
   ...mockVenue,
@@ -178,6 +185,21 @@ describe('<VenueOffers />', () => {
       renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock, playlists })
 
       expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('Cinema venue', () => {
+    beforeAll(() => {
+      mockFeatureFlag.mockReturnValue(true)
+    })
+
+    it('should display movie screening calendar if at least one offer is a movie screening', () => {
+      renderVenueOffers({
+        venue: venueResponseSnap,
+        venueOffers: venueMoviesOffersMock,
+      })
+
+      expect(screen.getByText('Les films à l’affiche')).toBeOnTheScreen()
     })
   })
 })
