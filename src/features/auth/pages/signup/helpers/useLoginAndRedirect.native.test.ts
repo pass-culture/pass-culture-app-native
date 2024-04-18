@@ -11,7 +11,7 @@ import { CampaignEvents, campaignTracker } from 'libs/campaign'
 // eslint-disable-next-line no-restricted-imports
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
+import { renderHook } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.useFakeTimers()
@@ -36,7 +36,7 @@ describe('useLoginAndRedirect', () => {
     mockUseLoginRoutine.mockReturnValueOnce(loginRoutine)
     mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
 
-    loginAndRedirect()
+    await loginAndRedirect()
 
     expect(loginRoutine).toHaveBeenCalledTimes(1)
   })
@@ -50,15 +50,12 @@ describe('useLoginAndRedirect', () => {
       isEligibleForBeneficiaryUpgrade: false,
     })
 
-    loginAndRedirect()
+    await loginAndRedirect()
 
-    await waitFor(
-      () => {
-        expect(replace).toHaveBeenCalledTimes(1)
-        expect(replace).toHaveBeenCalledWith('AccountCreated')
-      },
-      { timeout: 10_000 }
-    )
+    jest.advanceTimersByTime(2000)
+
+    expect(replace).toHaveBeenCalledTimes(1)
+    expect(replace).toHaveBeenCalledWith('AccountCreated')
   })
 
   it('should redirect to Verify Eligibility when isEligibleForBeneficiaryUpgrade and user is 18 yo', async () => {
@@ -70,15 +67,12 @@ describe('useLoginAndRedirect', () => {
       isEligibleForBeneficiaryUpgrade: true,
     })
 
-    loginAndRedirect()
+    await loginAndRedirect()
 
-    await waitFor(
-      () => {
-        expect(replace).toHaveBeenCalledTimes(1)
-        expect(replace).toHaveBeenCalledWith('VerifyEligibility')
-      },
-      { timeout: 10_000 }
-    )
+    jest.advanceTimersByTime(2000)
+
+    expect(replace).toHaveBeenCalledTimes(1)
+    expect(replace).toHaveBeenCalledWith('VerifyEligibility')
   })
 
   it('should redirect to AccountCreated when not isEligibleForBeneficiaryUpgrade and user is not future eligible', async () => {
@@ -89,14 +83,11 @@ describe('useLoginAndRedirect', () => {
       isEligibleForBeneficiaryUpgrade: false,
       eligibilityStartDatetime: '2019-12-01T00:00:00Z',
     })
-    loginAndRedirect()
+    await loginAndRedirect()
 
-    await waitFor(
-      () => {
-        expect(replace).toHaveBeenCalledWith('AccountCreated')
-      },
-      { timeout: 10_000 }
-    )
+    jest.advanceTimersByTime(2000)
+
+    expect(replace).toHaveBeenCalledWith('AccountCreated')
   })
 
   it('should redirect to NotYetUnderageEligibility when not isEligibleForBeneficiaryUpgrade and user is future eligible', async () => {
@@ -107,47 +98,39 @@ describe('useLoginAndRedirect', () => {
       isEligibleForBeneficiaryUpgrade: false,
       eligibilityStartDatetime: '2021-12-01T00:00:00Z',
     })
-    loginAndRedirect()
+    await loginAndRedirect()
 
-    await waitFor(
-      () => {
-        expect(replace).toHaveBeenCalledWith('NotYetUnderageEligibility', {
-          eligibilityStartDatetime: '2021-12-01T00:00:00Z',
-        })
-      },
-      { timeout: 10_000 }
-    )
+    jest.advanceTimersByTime(2000)
+
+    expect(replace).toHaveBeenCalledWith('NotYetUnderageEligibility', {
+      eligibilityStartDatetime: '2021-12-01T00:00:00Z',
+    })
   })
 
   it('should redirect to AccountCreated on error', async () => {
     mockServer.getApi<UserProfileResponse>('/v1/me', {
       responseOptions: { statusCode: 404 },
     })
-    loginAndRedirect()
+    await loginAndRedirect()
 
-    await waitFor(
-      () => {
-        expect(replace).toHaveBeenCalledWith('AccountCreated')
-      },
-      { timeout: 10_000 }
-    )
+    jest.advanceTimersByTime(2000)
+
+    expect(replace).toHaveBeenCalledWith('AccountCreated')
   })
 
   describe('AppsFlyer events', () => {
     it('should log event when account creation is completed', async () => {
       mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
-      loginAndRedirect()
+      await loginAndRedirect()
 
-      await waitFor(() => {
-        expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(
-          1,
-          CampaignEvents.COMPLETE_REGISTRATION,
-          {
-            af_firebase_pseudo_id: 'firebase_pseudo_id',
-            af_user_id: nonBeneficiaryUser.id,
-          }
-        )
-      })
+      expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(
+        1,
+        CampaignEvents.COMPLETE_REGISTRATION,
+        {
+          af_firebase_pseudo_id: 'firebase_pseudo_id',
+          af_user_id: nonBeneficiaryUser.id,
+        }
+      )
     })
 
     it('should log af_underage_user event when user is underage', async () => {
