@@ -41,6 +41,17 @@ describe('HorizontalOfferTile component', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...placeholderData })
   })
 
+  it('should render correctly', async () => {
+    render(
+      reactQueryProviderHOC(
+        // @ts-expect-error: because of noUncheckedIndexedAccess
+        <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
+      )
+    )
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should navigate to the offer when pressing an offer', async () => {
     render(
       reactQueryProviderHOC(
