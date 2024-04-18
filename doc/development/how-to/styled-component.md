@@ -2,6 +2,20 @@
 
 ## Exemples simples
 
+On peut décider de modifier directement le style, mais dans certains cas on veut aussi modifier les attributs à l'aide de `.attrs(...)`. Dans certains cas on peut avoir besoin d'utiliser les deux.
+
+Un exemple simple d'utilisation de `.attrs()` est notre façon d'utiliser les icons. Attention à bien fermer la définition du styled component avec \`\` pour que celui-ci fonctionne.
+
+```tsx
+const LocationPointerNotFilled = styled(BicolorLocationPointer).attrs(({ theme }) => ({
+  color: theme.colors.black,
+  color2: theme.colors.black,
+  size: theme.icons.sizes.small,
+}))``
+```
+
+Dans un composant React, les styled composants sont utilisées de cette manière :
+
 ```tsx
 import React from 'react'
 import { CustomFooter } from './CustomFooter'
