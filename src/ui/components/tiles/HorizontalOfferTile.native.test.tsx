@@ -49,7 +49,7 @@ describe('HorizontalOfferTile component', () => {
       )
     )
 
-    expect(screen).toMatchSnapshot()
+    await waitFor(() => expect(screen).toMatchSnapshot())
   })
 
   it('should navigate to the offer when pressing an offer', async () => {
