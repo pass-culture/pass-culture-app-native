@@ -13,6 +13,8 @@ jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () =>
   })),
 }))
 
+const homeId = 'homeId'
+
 describe('useThematicSubscription', () => {
   describe('when the user has email notifications off and push notifications on', () => {
     it('should give the information that there is not at least one notification type active', async () => {
@@ -26,6 +28,7 @@ describe('useThematicSubscription', () => {
           },
         },
         thematic: SubscriptionTheme.CINEMA,
+        homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
 
@@ -45,6 +48,7 @@ describe('useThematicSubscription', () => {
           },
         },
         thematic: SubscriptionTheme.CINEMA,
+        homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
 
@@ -66,6 +70,7 @@ describe('useThematicSubscription', () => {
           },
         },
         thematic: SubscriptionTheme.CINEMA,
+        homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
 
@@ -85,6 +90,7 @@ describe('useThematicSubscription', () => {
           },
         },
         thematic: SubscriptionTheme.CINEMA,
+        homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
 

@@ -167,6 +167,7 @@ export const ThematicHome: FunctionComponent = () => {
   } = useThematicSubscription({
     user,
     thematic,
+    homeId: params.homeId,
     onUpdateSubscriptionSuccess,
   })
 
