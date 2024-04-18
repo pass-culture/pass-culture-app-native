@@ -1,7 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
+import { getSpacing } from 'ui/theme'
 
 import { HorizontalTile } from './HorizontalTile'
 
@@ -11,7 +13,18 @@ const meta: ComponentMeta<typeof HorizontalTile> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof HorizontalTile> = (props) => <HorizontalTile {...props} />
+const Container = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+  outlineOffset: 0,
+  gap: getSpacing(4),
+})
+
+const Template: ComponentStory<typeof HorizontalTile> = (props) => (
+  <Container>
+    <HorizontalTile {...props} />
+  </Container>
+)
 
 export const Default = Template.bind({})
 

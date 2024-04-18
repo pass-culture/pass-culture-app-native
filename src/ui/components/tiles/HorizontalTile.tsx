@@ -27,7 +27,7 @@ export const HorizontalTile = ({
   withRightArrow,
 }: Props) => {
   return (
-    <Container>
+    <React.Fragment>
       <OfferImage imageUrl={imageUrl} categoryId={categoryId} />
       <Column>
         <Row>
@@ -53,19 +53,20 @@ export const HorizontalTile = ({
           )}
         </Row>
         {!!subtitles?.length &&
-          subtitles?.map((subtitle, index) => <Body key={`${subtitle}_${index}`}>{subtitle}</Body>)}
+          subtitles?.map((subtitle, index) => (
+            <Body
+              ellipsizeMode="tail"
+              numberOfLines={1}
+              testID="native-category-value"
+              key={`${subtitle}_${index}`}>
+              {subtitle}
+            </Body>
+          ))}
         {!!price && <Typo.Caption>{price}</Typo.Caption>}
       </Column>
-    </Container>
+    </React.Fragment>
   )
 }
-
-const Container = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-  outlineOffset: 0,
-  gap: getSpacing(4),
-})
 
 const Column = styled.View({
   flexDirection: 'column',
