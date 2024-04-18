@@ -136,9 +136,10 @@ describe('openUrl', () => {
       const link = 'https://www.google.com'
       await openUrl(link)
 
-      expect(eventMonitoring.logInfo).toHaveBeenNthCalledWith(
+      expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
         1,
-        'OpenExternalUrlError: Did not open correctly'
+        'OpenExternalUrlError: Did not open correctly',
+        { level: 'info' }
       )
     })
 
@@ -151,13 +152,15 @@ describe('openUrl', () => {
       await openUrl(link, { fallbackUrl: fallbackLink })
       await act(async () => {})
 
-      expect(eventMonitoring.logInfo).toHaveBeenNthCalledWith(
+      expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
         1,
-        'OpenExternalUrlError: Did not open correctly'
+        'OpenExternalUrlError: Did not open correctly',
+        { level: 'info' }
       )
-      expect(eventMonitoring.logInfo).toHaveBeenNthCalledWith(
+      expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
         2,
-        'OpenExternalUrlError_FallbackUrl: Did not open correctly'
+        'OpenExternalUrlError_FallbackUrl: Did not open correctly',
+        { level: 'info' }
       )
     })
   })

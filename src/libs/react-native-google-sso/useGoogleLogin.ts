@@ -23,7 +23,7 @@ export const useGoogleLogin = ({ onSuccess }: GoogleLoginOptions) => {
         })
       }
     } catch (e) {
-      eventMonitoring.logInfo(`Can’t login via Google: ${e}`)
+      eventMonitoring.captureException(`Can’t login via Google: ${e}`, { level: 'info' })
     }
   }
 }

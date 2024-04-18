@@ -17,19 +17,22 @@ export const contactSupport = {
     url: `mailto:${env.SUPPORT_EMAIL_ADDRESS}`,
     params: { shouldLogEvent: false },
     onSuccess: () => analytics.logMailTo('forGenericQuestion'),
-    onError: () => eventMonitoring.logError(new ContactSupportError('GenericQuestion')),
+    onError: () => eventMonitoring.captureException(new ContactSupportError('GenericQuestion')),
   },
   forSignupConfirmationEmailNotReceived: {
     url: env.FAQ_LINK_SIGNUP_CONFIRMATION_EMAIL_NOT_RECEIVED,
     params: { shouldLogEvent: false },
     onSuccess: () => analytics.logMailTo('forSignupConfirmationEmailNotReceived'),
     onError: () =>
-      eventMonitoring.logError(new ContactSupportError('SignupConfirmationEmailNotReceived')),
+      eventMonitoring.captureException(
+        new ContactSupportError('SignupConfirmationEmailNotReceived')
+      ),
   },
   forPhoneNumberConfirmation: {
     url: `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}`,
     params: { shouldLogEvent: false },
     onSuccess: () => analytics.logMailTo('forPhoneNumberConfirmation'),
-    onError: () => eventMonitoring.logError(new ContactSupportError('PhoneNumberConfirmation')),
+    onError: () =>
+      eventMonitoring.captureException(new ContactSupportError('PhoneNumberConfirmation')),
   },
 } as const satisfies ContactSupport

@@ -101,7 +101,7 @@ describe('useSearchHistory', () => {
       await result.current.addToHistory(item)
     })
 
-    expect(eventMonitoring.logInfo).not.toHaveBeenCalled()
+    expect(eventMonitoring.captureException).not.toHaveBeenCalled()
   })
 
   it('should capture a message in Sentry when adding to history fails', async () => {
@@ -117,9 +117,10 @@ describe('useSearchHistory', () => {
       await result.current.addToHistory(item)
     })
 
-    expect(eventMonitoring.logInfo).toHaveBeenNthCalledWith(
+    expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
       1,
-      'Impossible d’ajouter l’entrée à l’historique'
+      'Impossible d’ajouter l’entrée à l’historique',
+      { level: 'info' }
     )
   })
 

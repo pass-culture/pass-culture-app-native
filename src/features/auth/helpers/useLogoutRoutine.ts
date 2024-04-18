@@ -30,7 +30,7 @@ export function useLogoutRoutine(): () => Promise<void> {
       ])
       eventMonitoring.setUser(null)
     } catch (err) {
-      eventMonitoring.logError(err)
+      eventMonitoring.captureException(err)
     } finally {
       setIsLoggedIn(false)
     }

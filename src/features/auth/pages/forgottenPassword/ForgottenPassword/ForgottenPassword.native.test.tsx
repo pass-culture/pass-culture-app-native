@@ -223,9 +223,10 @@ describe('<ForgottenPassword />', () => {
       simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
       await waitFor(() => {
-        expect(eventMonitoring.logInfo).toHaveBeenNthCalledWith(
+        expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
           1,
-          `Échec de la requête https://localhost/native/v1/request_password_reset, code: ${statusCode}`
+          `Échec de la requête https://localhost/native/v1/request_password_reset, code: ${statusCode}`,
+          { level: 'info' }
         )
       })
     }
@@ -243,7 +244,7 @@ describe('<ForgottenPassword />', () => {
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
-    expect(eventMonitoring.logInfo).not.toHaveBeenCalled()
+    expect(eventMonitoring.captureException).not.toHaveBeenCalled()
   })
 
   describe('email format validation', () => {

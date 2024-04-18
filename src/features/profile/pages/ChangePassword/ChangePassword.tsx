@@ -99,7 +99,7 @@ export function ChangePassword() {
             })
             if (!(error instanceof ApiError)) {
               const err = new Error('ChangePasswordUnknownError')
-              eventMonitoring.logError(err, {
+              eventMonitoring.captureException(err, {
                 extra: {
                   newPassword,
                 },

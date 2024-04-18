@@ -50,7 +50,7 @@ export const useSetSubscriptionStepAndMethod = () => {
           setCurrentIdentityCheckMethod(subscriptionStep)
         })
         .catch(() => {
-          eventMonitoring.logError(new Error('Error fetching subscription'))
+          eventMonitoring.captureException(new Error('Error fetching subscription'))
         })
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

@@ -35,7 +35,7 @@ export function useBookOfferMutation({ onSuccess, onError }: BookOffer) {
           !(error instanceof ApiError) ||
           (error instanceof ApiError && !isAPIExceptionCapturedAsInfo(error.statusCode))
         ) {
-          eventMonitoring.logError(error, {
+          eventMonitoring.captureException(error, {
             extra: {
               bookingId: data.bookingId,
             },
@@ -43,7 +43,7 @@ export function useBookOfferMutation({ onSuccess, onError }: BookOffer) {
         }
 
         if (error instanceof ApiError && isAPIExceptionCapturedAsInfo(error.statusCode)) {
-          eventMonitoring.logInfo(error.message)
+          eventMonitoring.captureException(error.message, { level: 'info' })
         }
       }
 

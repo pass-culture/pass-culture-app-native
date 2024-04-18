@@ -269,7 +269,7 @@ describe('AuthContext', () => {
 
       await act(async () => {})
 
-      expect(eventMonitoring.logError).toHaveBeenCalledWith(error)
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
     })
   })
 })

@@ -113,7 +113,7 @@ export function BookingDetails() {
     if (Platform.OS !== 'web') {
       const bookingNotFoundError = new Error('BookingNotFound')
       bookingNotFoundError.name = 'BookingNotFound'
-      eventMonitoring.logError(bookingNotFoundError, {
+      eventMonitoring.captureException(bookingNotFoundError, {
         extra: {
           status,
           isLoading,

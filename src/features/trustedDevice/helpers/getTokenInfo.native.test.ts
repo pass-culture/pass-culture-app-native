@@ -32,7 +32,7 @@ describe('getTokenInfo', () => {
   it('should be log to sentry when token is invalid', () => {
     getTokenInfo(INVALID_TOKEN)
 
-    expect(eventMonitoring.logError).toHaveBeenCalledWith(
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
       "Failed to get token info from suspicious login email: InvalidTokenError: Invalid token specified: Cannot read properties of undefined (reading 'replace')",
       { extra: { token: INVALID_TOKEN } }
     )

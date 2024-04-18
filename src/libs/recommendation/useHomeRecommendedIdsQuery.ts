@@ -24,18 +24,19 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
           body: JSON.stringify(requestBodyParams),
         })
         const captureContext: Partial<ScopeContext> = {
+          level: 'info',
           extra: { url: endpointUrl, status: response.status },
         }
         if (!response.ok) {
-          eventMonitoring.logInfo('Recommendation response was not ok', captureContext)
+          eventMonitoring.captureException('Recommendation response was not ok', captureContext)
         }
         const responseBody: RecommendedIdsResponse = await response.json()
         if (responseBody?.playlist_recommended_offers?.length === 0) {
-          eventMonitoring.logInfo('Recommended offers playlist is empty', captureContext)
+          eventMonitoring.captureException('Recommended offers playlist is empty', captureContext)
         }
         return responseBody
       } catch (err) {
-        eventMonitoring.logError('Error with recommendation endpoint', {
+        eventMonitoring.captureException('Error with recommendation endpoint', {
           extra: { url: endpointUrl, stack: err },
         })
 

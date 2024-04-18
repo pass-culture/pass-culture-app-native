@@ -253,7 +253,7 @@ describe('getApiRecoSimilarOffers', () => {
 
     const apiReco = await getApiRecoSimilarOffers(endpoint)
 
-    expect(eventMonitoring.logError).toHaveBeenCalledWith(error)
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
     expect(apiReco).toEqual(undefined)
   })
 
