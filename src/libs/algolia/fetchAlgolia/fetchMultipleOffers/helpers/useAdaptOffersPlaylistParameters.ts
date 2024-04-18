@@ -11,7 +11,7 @@ export const useAdaptOffersPlaylistParameters = () => {
   const defaultPriceMax = useMaxPrice()
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
   const genreTypeMapping = useGenreTypeMapping()
-  const { userLocation, selectedLocationMode } = useLocation()
+  const { userLocation } = useLocation()
 
   return useCallback(
     (parameters: OffersModuleParameters): PlaylistOffersParams => {
@@ -23,8 +23,7 @@ export const useAdaptOffersPlaylistParameters = () => {
 
       const offersLocationAdaptedParams = adaptOffersPlaylistLocationParameters(
         parameters,
-        userLocation,
-        selectedLocationMode
+        userLocation
       )
 
       return {
@@ -34,6 +33,6 @@ export const useAdaptOffersPlaylistParameters = () => {
     },
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [defaultPriceMax, subcategoryLabelMapping, userLocation, selectedLocationMode]
+    [defaultPriceMax, subcategoryLabelMapping, userLocation]
   )
 }
