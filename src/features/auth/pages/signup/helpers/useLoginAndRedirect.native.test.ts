@@ -1,7 +1,9 @@
+import { format } from 'date-fns'
 import mockdate from 'mockdate'
 
 import { replace } from '__mocks__/@react-navigation/native'
 import { EligibilityType, UserProfileResponse } from 'api/gen'
+import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { nonBeneficiaryUser } from 'fixtures/user'
@@ -14,7 +16,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.useFakeTimers()
 
-mockdate.set(new Date('2020-12-01T00:00:00Z'))
+mockdate.set(CURRENT_DATE)
 
 jest.mock('features/auth/helpers/useLoginRoutine')
 const loginRoutine = jest.fn()
@@ -146,6 +148,30 @@ describe('useLoginAndRedirect', () => {
           }
         )
       })
+    })
+
+    it('should log af_underage_user event when user is underage', async () => {
+      mockServer.getApi<UserProfileResponse>('/v1/me', {
+        ...nonBeneficiaryUser,
+        birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
+      })
+      await loginAndRedirect()
+
+      expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(2, CampaignEvents.UNDERAGE_USER, {
+        af_firebase_pseudo_id: 'firebase_pseudo_id',
+        af_user_id: nonBeneficiaryUser.id,
+        af_user_age: 16,
+      })
+    })
+
+    it('should not log af_underage_user event when user is not underage', async () => {
+      mockServer.getApi<UserProfileResponse>('/v1/me', {
+        ...nonBeneficiaryUser,
+        birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd'),
+      })
+      await loginAndRedirect()
+
+      expect(campaignTracker.logEvent).not.toHaveBeenCalledWith(CampaignEvents.UNDERAGE_USER)
     })
   })
 })

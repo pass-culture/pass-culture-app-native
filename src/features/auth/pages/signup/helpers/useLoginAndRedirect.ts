@@ -9,6 +9,7 @@ import { SSOType } from 'libs/analytics/logEventAnalytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { getAge } from 'shared/user/getAge'
 
 export const useLoginAndRedirect = () => {
   const { replace } = useNavigation<UseNavigationType>()
@@ -33,11 +34,20 @@ export const useLoginAndRedirect = () => {
 
       try {
         const user = await api.getNativeV1Me()
+        const userAge = getAge(user.birthDate)
         const firebasePseudoId = await firebaseAnalytics.getAppInstanceId()
         await campaignTracker.logEvent(CampaignEvents.COMPLETE_REGISTRATION, {
           af_firebase_pseudo_id: firebasePseudoId,
           af_user_id: user.id,
         })
+
+        if (userAge && userAge < 18) {
+          await campaignTracker.logEvent(CampaignEvents.UNDERAGE_USER, {
+            af_firebase_pseudo_id: firebasePseudoId,
+            af_user_id: user.id,
+            af_user_age: userAge,
+          })
+        }
 
         if (user.isEligibleForBeneficiaryUpgrade) {
           delayedReplace('VerifyEligibility')
