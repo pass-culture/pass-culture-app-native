@@ -32,6 +32,7 @@ describe('getFeatureFlag', () => {
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_CHANGE_EMAIL,
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE,
     RemoteStoreFeatureFlags.ENABLE_MUSIC_LIVE_BOOKING_SURVEY,
+    RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1,
   ])(
     'should call the right firestore collection: featureFlags',
     (featureFlag: RemoteStoreFeatureFlags) => {
