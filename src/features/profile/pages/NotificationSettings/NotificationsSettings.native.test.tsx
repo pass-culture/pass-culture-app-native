@@ -7,6 +7,7 @@ import { IAuthContext, useAuthContext } from 'features/auth/context/AuthContext'
 import * as usePushPermission from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
+import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -414,6 +415,79 @@ describe('NotificationsSettings', () => {
       fireEvent.press(goBackButton)
 
       expect(screen.getByText('Quitter sans enregistrer')).toBeOnTheScreen()
+    })
+  })
+
+  describe('Analytics', () => {
+    it('should log subscription update when user changes their subscription', async () => {
+      mockServer.postApi('/v1/profile', {})
+      mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+      render(reactQueryProviderHOC(<NotificationsSettings />))
+
+      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      await act(async () => fireEvent.press(toggleEmail))
+
+      const toggleSwitch = screen.getByTestId('Interrupteur Cinéma')
+      fireEvent.press(toggleSwitch)
+
+      const saveButton = screen.getByText('Enregistrer')
+
+      fireEvent.press(saveButton)
+      await waitFor(() => {
+        expect(analytics.logSubscriptionUpdate).toHaveBeenCalledWith({
+          type: 'update',
+          from: 'profile',
+        })
+      })
+    })
+
+    it('should log notification toggle update when user changes their settings', async () => {
+      mockServer.postApi('/v1/profile', {})
+      mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+      render(reactQueryProviderHOC(<NotificationsSettings />))
+
+      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      await act(async () => fireEvent.press(toggleEmail))
+
+      const saveButton = screen.getByText('Enregistrer')
+      fireEvent.press(saveButton)
+
+      await waitFor(() => {
+        expect(analytics.logNotificationToggle).toHaveBeenCalledWith(true, false)
+      })
+    })
+
+    it('should log notification toggle update when user changes their settings from save modal', async () => {
+      mockServer.postApi('/v1/profile', {})
+      mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+      render(reactQueryProviderHOC(<NotificationsSettings />))
+
+      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      await act(async () => fireEvent.press(toggleEmail))
+
+      const goBackButton = screen.getByTestId('Revenir en arrière')
+      await act(async () => fireEvent.press(goBackButton))
+
+      const saveButton = screen.getByText('Enregistrer mes modifications')
+      await act(async () => fireEvent.press(saveButton))
+
+      await waitFor(() => {
+        expect(analytics.logNotificationToggle).toHaveBeenCalledWith(true, false)
+      })
+    })
+
+    it('should not log subscription update when user only changes their notifications settings', async () => {
+      mockServer.postApi('/v1/profile', {})
+      mockUseAuthContext.mockReturnValueOnce(baseAuthContext)
+      render(reactQueryProviderHOC(<NotificationsSettings />))
+
+      const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      await act(async () => fireEvent.press(toggleEmail))
+
+      const saveButton = screen.getByText('Enregistrer')
+      await act(async () => fireEvent.press(saveButton))
+
+      expect(analytics.logSubscriptionUpdate).not.toHaveBeenCalled()
     })
   })
 })

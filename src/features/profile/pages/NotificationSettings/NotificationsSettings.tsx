@@ -10,7 +10,10 @@ import { PushNotificationsModal } from 'features/notifications/pages/PushNotific
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { UnsavedSettingsModal } from 'features/profile/pages/NotificationSettings/components/UnsavedSettingsModal'
-import { hasUserChangedParameters } from 'features/profile/pages/NotificationSettings/helpers/hasUserChangedParameters'
+import {
+  hasUserChangedParameters,
+  hasUserChangedSubscriptions,
+} from 'features/profile/pages/NotificationSettings/helpers/hasUserChangedParameters'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme, TOTAL_NUMBER_OF_THEME } from 'features/subscription/types'
@@ -111,6 +114,15 @@ export const NotificationsSettings = () => {
   const isSaveButtonDisabled = !isLoggedIn || !hasUserChanged || isUpdatingProfile
 
   const submitProfile = () => {
+    if (
+      hasUserChanged &&
+      hasUserChangedSubscriptions({
+        currentSubscriptions: user?.subscriptions.subscribedThemes || [],
+        stateSubscriptions: state.themePreferences,
+      })
+    ) {
+      analytics.logSubscriptionUpdate({ type: 'update', from: 'profile' })
+    }
     if (state.allowEmails !== undefined && state.allowPush !== undefined) {
       updateProfile({
         subscriptions: {
