@@ -22,10 +22,9 @@ jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('libs/itinerary/useItinerary')
 
-const mockV4 = jest.fn()
 jest.mock('uuid', () => ({
   v1: jest.fn(),
-  v4: jest.fn(mockV4),
+  v4: jest.fn(),
 }))
 
 const venueId = venueResponseSnap.id

@@ -6,10 +6,9 @@ import { render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
 
 import { SetName } from './SetName'
 
-const mockV4 = jest.fn()
 jest.mock('uuid', () => ({
   v1: jest.fn(),
-  v4: jest.fn(mockV4),
+  v4: jest.fn(),
 }))
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({

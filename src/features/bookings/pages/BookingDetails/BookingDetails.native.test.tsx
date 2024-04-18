@@ -31,8 +31,6 @@ jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))
 
-const mockSnackBarTimeout = SNACK_BAR_TIME_OUT
-
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
@@ -43,11 +41,11 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 const mockShowInfoSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  ...jest.requireActual('ui/components/snackBar/SnackBarContext'),
   useSnackBarContext: jest.fn(() => ({
     showInfoSnackBar: mockShowInfoSnackBar,
     showErrorSnackBar: mockShowErrorSnackBar,
   })),
-  SNACK_BAR_TIME_OUT: mockSnackBarTimeout,
 }))
 
 let mockBookings = { ...bookingsSnap }

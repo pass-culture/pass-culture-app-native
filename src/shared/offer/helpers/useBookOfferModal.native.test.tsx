@@ -13,12 +13,11 @@ jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
   BookingOfferModal: () => mockBookingOfferModal,
 }))
 
-const mockHideModal = jest.fn()
 jest.mock('ui/components/modals/useModal.ts', () => ({
   useModal: jest.fn().mockReturnValue({
     visible: true,
     showModal: jest.fn(),
-    hideModal: mockHideModal,
+    hideModal: jest.fn(),
   }),
 }))
 

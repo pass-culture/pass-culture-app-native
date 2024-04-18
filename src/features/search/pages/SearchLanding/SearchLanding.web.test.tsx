@@ -74,10 +74,9 @@ jest.mock('react-instantsearch-core', () => ({
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 jest.mock('algoliasearch')
 
-const mockV4 = jest.fn()
 jest.mock('uuid', () => ({
   v1: jest.fn(),
-  v4: jest.fn(mockV4),
+  v4: jest.fn(),
 }))
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
