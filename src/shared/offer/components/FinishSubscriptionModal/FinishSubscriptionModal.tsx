@@ -2,8 +2,10 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { DepositType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getAge } from 'shared/user/getAge'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
@@ -38,6 +40,9 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
 
   const buttonLabel = user?.requiresIdCheck ? 'Vérifier mon identité' : 'Confirmer mes informations'
 
+  const userAge = getAge(user?.birthDate)
+  const isUserTransitioningTo18 = userAge === 18 && user?.depositType === DepositType.GRANT_15_17
+
   return (
     <AppModalWithIllustration
       visible={visible}
@@ -55,10 +60,14 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
         </StyledBody>
       )}
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.CaptionNeutralInfo>
-        Ton crédit précédent a été remis à 0&nbsp;€.
-      </Typo.CaptionNeutralInfo>
-      <Spacer.Column numberOfSpaces={6} />
+      {!!isUserTransitioningTo18 && (
+        <React.Fragment>
+          <Typo.CaptionNeutralInfo>
+            Ton crédit précédent a été remis à 0&nbsp;€.
+          </Typo.CaptionNeutralInfo>
+          <Spacer.Column numberOfSpaces={6} />
+        </React.Fragment>
+      )}
       <ButtonPrimary
         wording={buttonLabel}
         accessibilityLabel="Aller vers la section profil"

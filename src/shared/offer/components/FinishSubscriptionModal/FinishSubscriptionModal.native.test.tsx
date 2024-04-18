@@ -1,6 +1,8 @@
+import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { DepositType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser } from 'fixtures/user'
@@ -26,6 +28,9 @@ const modalProps = {
   from: StepperOrigin.FAVORITE,
 }
 
+const TODAY = '2021-10-24'
+mockdate.set(new Date(TODAY))
+
 describe('<FinishSubscriptionModal />', () => {
   it('should render correctly with undefined deposit amount', () => {
     mockDepositAmounts.mockReturnValueOnce(undefined)
@@ -43,6 +48,16 @@ describe('<FinishSubscriptionModal />', () => {
 
   it('should display correct body when user needs to verify his identity to activate his eighteen year old credit', async () => {
     mockUseAuthContext.mockReturnValueOnce({ user: { ...beneficiaryUser, requiresIdCheck: true } })
+
+    render(<FinishSubscriptionModal {...modalProps} />)
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should display correct body when user turned eighteen and their previous deposit has been reset', async () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      user: { ...beneficiaryUser, depositType: DepositType.GRANT_15_17 },
+    })
 
     render(<FinishSubscriptionModal {...modalProps} />)
 
