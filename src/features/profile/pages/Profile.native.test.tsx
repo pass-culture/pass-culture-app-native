@@ -3,10 +3,12 @@ import React, { NamedExoticComponent } from 'react'
 import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { NextSubscriptionStepResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
+import { nextSubscriptionStepFixture } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { domains_exhausted_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { TutorialTypes } from 'features/tutorial/enums'
@@ -16,12 +18,12 @@ import { env } from 'libs/environment'
 import {
   GeolocPositionError,
   GeolocPermissionState,
-  GeolocationError,
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
-  Position,
+  GeolocationError,
 } from 'libs/location'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import {
   render,
@@ -49,21 +51,20 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
-const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
-let mockPermissionState = GeolocPermissionState.GRANTED
-let mockPosition: Position = DEFAULT_POSITION
-let mockPositionError: GeolocationError | null = null
+const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
+const mockPositionError = null as GeolocationError | null
 const mockTriggerPositionUpdate = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
 
+const mockUseLocation = jest.fn(() => ({
+  permissionState: GeolocPermissionState.GRANTED,
+  geolocPosition: DEFAULT_POSITION,
+  geolocPositionError: mockPositionError,
+  triggerPositionUpdate: mockTriggerPositionUpdate,
+  showGeolocPermissionModal: mockShowGeolocPermissionModal,
+}))
 jest.mock('libs/location/LocationWrapper', () => ({
-  useLocation: () => ({
-    permissionState: mockPermissionState,
-    geolocPosition: mockPosition,
-    geolocPositionError: mockPositionError,
-    triggerPositionUpdate: mockTriggerPositionUpdate,
-    showGeolocPermissionModal: mockShowGeolocPermissionModal,
-  }),
+  useLocation: () => mockUseLocation(),
 }))
 
 const mockFavoritesState = initialFavoritesState
@@ -91,15 +92,18 @@ const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sh
 describe('Profile component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
-  afterEach(() => {
-    mockPermissionState = GeolocPermissionState.GRANTED
-    mockPosition = DEFAULT_POSITION
-    mockPositionError = null
+  beforeEach(() => {
+    mockServer.getApi<NextSubscriptionStepResponse>(
+      '/v1/subscription/next_step',
+      nextSubscriptionStepFixture
+    )
+    mockServer.getApi('/v1/banner', {})
   })
 
   it('should render correctly', async () => {
     renderProfile()
-    await act(async () => {})
+
+    await screen.findByText('Centre d’aide')
 
     expect(screen).toMatchSnapshot()
   })
@@ -116,31 +120,37 @@ describe('Profile component', () => {
     useVersionSpy.mockReturnValueOnce(mockVersion)
     renderProfile()
 
-    expect(screen.getByText(mockVersion)).toBeOnTheScreen()
+    expect(await screen.findByText(mockVersion)).toBeOnTheScreen()
   })
 
   it('should not display the Code push version label when it is not available', async () => {
     renderProfile()
 
-    expect(screen.getByText('Version\u00A01.10.5')).toBeOnTheScreen()
+    expect(await screen.findByText('Version\u00A01.10.5')).toBeOnTheScreen()
   })
 
   describe('user settings section', () => {
-    it('should navigate when the personal data row is clicked', () => {
+    it('should navigate when the personal data row is clicked', async () => {
       renderProfile()
 
       const row = screen.getByText('Informations personnelles')
-      fireEvent.press(row)
+      await act(async () => fireEvent.press(row))
 
       expect(navigate).toHaveBeenCalledWith('PersonalData', undefined)
     })
 
     describe('geolocation switch', () => {
-      it('should display switch ON if geoloc permission is granted', () => {
-        mockPermissionState = GeolocPermissionState.GRANTED
+      it('should display switch ON if geoloc permission is granted', async () => {
+        mockUseLocation.mockReturnValueOnce({
+          permissionState: GeolocPermissionState.GRANTED,
+          geolocPosition: null,
+          geolocPositionError: null,
+          triggerPositionUpdate: mockTriggerPositionUpdate,
+          showGeolocPermissionModal: mockShowGeolocPermissionModal,
+        })
         renderProfile()
 
-        const geolocSwitch = screen.getByTestId('Interrupteur Partager ma position')
+        const geolocSwitch = await screen.findByTestId('Interrupteur Partager ma position')
         const positionErrorMessage = screen.queryByText(
           `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
@@ -149,35 +159,58 @@ describe('Profile component', () => {
         expect(geolocSwitch.parent?.props.accessibilityState.checked).toBe(true)
       })
 
-      it('should display position error message if geoloc permission is granted but position is null', () => {
-        mockPermissionState = GeolocPermissionState.GRANTED
-        mockPosition = null
-        mockPositionError = {
-          type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
-          message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
-        }
+      it('should display position error message if geoloc permission is granted but position is null', async () => {
+        mockUseLocation.mockReturnValueOnce({
+          permissionState: GeolocPermissionState.GRANTED,
+          geolocPosition: null,
+          geolocPositionError: {
+            type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
+            message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
+          },
+          triggerPositionUpdate: mockTriggerPositionUpdate,
+          showGeolocPermissionModal: mockShowGeolocPermissionModal,
+        })
+
         renderProfile()
 
-        expect(screen.getByText(mockPositionError.message)).toBeOnTheScreen()
+        expect(
+          await screen.findByText(
+            GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED]
+          )
+        ).toBeOnTheScreen()
       })
 
-      it('should display switch OFF if geoloc permission is denied', () => {
-        mockPermissionState = GeolocPermissionState.DENIED
+      it('should display switch OFF if geoloc permission is denied', async () => {
+        mockUseLocation.mockReturnValueOnce({
+          permissionState: GeolocPermissionState.DENIED,
+          geolocPosition: DEFAULT_POSITION,
+          geolocPositionError: null,
+          triggerPositionUpdate: mockTriggerPositionUpdate,
+          showGeolocPermissionModal: mockShowGeolocPermissionModal,
+        })
         renderProfile()
 
-        const geolocSwitch = screen.getByTestId('Interrupteur Partager ma position')
+        const geolocSwitch = await screen.findByTestId('Interrupteur Partager ma position')
 
         expect(geolocSwitch.parent?.props.accessibilityState.checked).toBe(false)
       })
 
-      it('should open "Deactivate geoloc" modal when clicking on ACTIVE switch and call mockFavoriteDispatch()', () => {
+      it('should open "Deactivate geoloc" modal when clicking on ACTIVE switch and call mockFavoriteDispatch()', async () => {
         // geolocation switch is ON and user wants to switch it OFF
-        mockPermissionState = GeolocPermissionState.GRANTED
+        mockUseLocation.mockReturnValueOnce({
+          permissionState: GeolocPermissionState.GRANTED,
+          geolocPosition: DEFAULT_POSITION,
+          geolocPositionError: null,
+          triggerPositionUpdate: mockTriggerPositionUpdate,
+          showGeolocPermissionModal: mockShowGeolocPermissionModal,
+        })
         renderProfile({
           wrapper: FavoritesWrapper,
         })
 
-        fireEvent.press(screen.getByTestId('Interrupteur Partager ma position'))
+        await act(async () => {
+          fireEvent.press(screen.getByTestId('Interrupteur Partager ma position'))
+        })
 
         expect(mockFavoriteDispatch).toHaveBeenCalledWith({
           type: 'SET_SORT_BY',
@@ -187,11 +220,11 @@ describe('Profile component', () => {
       })
     })
 
-    it('should navigate when the notifications row is clicked', () => {
+    it('should navigate when the notifications row is clicked', async () => {
       renderProfile()
 
       const notificationsButton = screen.getByText('Notifications')
-      fireEvent.press(notificationsButton)
+      await act(async () => fireEvent.press(notificationsButton))
 
       expect(navigate).toHaveBeenCalledWith('NotificationsSettings', undefined)
     })
@@ -224,27 +257,29 @@ describe('Profile component', () => {
       })
     })
 
-    it('should navigate when the faq row is clicked', () => {
+    it('should navigate when the faq row is clicked', async () => {
       const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
       renderProfile()
 
       const faqButton = screen.getByText('Centre d’aide')
-      fireEvent.press(faqButton)
+      await act(async () => {
+        fireEvent.press(faqButton)
+      })
 
       expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK, undefined, true)
     })
 
-    it('should display tutorial row when user is exbeneficiary', () => {
+    it('should display tutorial row when user is exbeneficiary', async () => {
       mockedUseAuthContext.mockImplementationOnce(() => ({
         isLoggedIn: true,
         user: { ...beneficiaryUser, depositExpirationDate: '2022-10-10T00:00:00Z' },
       }))
       renderProfile()
 
-      expect(screen.getByText('Comment ça marche ?')).toBeOnTheScreen()
+      expect(await screen.findByText('Comment ça marche ?')).toBeOnTheScreen()
     })
 
-    it('should display tutorial row when user has no credit and no upcoming credit', () => {
+    it('should display tutorial row when user has no credit and no upcoming credit', async () => {
       mockedUseAuthContext.mockImplementationOnce(() => ({
         isLoggedIn: true,
         user: {
@@ -254,52 +289,58 @@ describe('Profile component', () => {
       }))
       renderProfile()
 
-      expect(screen.getByText('Comment ça marche ?')).toBeOnTheScreen()
+      expect(await screen.findByText('Comment ça marche ?')).toBeOnTheScreen()
     })
   })
 
   describe('other section', () => {
-    it('should navigate when the accessibility row is clicked', () => {
+    it('should navigate when the accessibility row is clicked', async () => {
       renderProfile()
 
       const accessibilityButton = screen.getByText('Accessibilité')
-      fireEvent.press(accessibilityButton)
+      await act(async () => {
+        fireEvent.press(accessibilityButton)
+      })
 
       expect(navigate).toHaveBeenCalledWith('Accessibility', undefined)
     })
 
-    it('should navigate when the legal notices row is clicked', () => {
+    it('should navigate when the legal notices row is clicked', async () => {
       renderProfile()
 
       const legalNoticesButton = screen.getByText('Informations légales')
-      fireEvent.press(legalNoticesButton)
+      await act(async () => {
+        fireEvent.press(legalNoticesButton)
+      })
 
       expect(navigate).toHaveBeenCalledWith('LegalNotices', undefined)
     })
 
-    it('should navigate when the confidentiality row is clicked', () => {
+    it('should navigate when the confidentiality row is clicked', async () => {
       renderProfile()
 
       const confidentialityButton = screen.getByText('Confidentialité')
-      fireEvent.press(confidentialityButton)
+      await act(async () => {
+        fireEvent.press(confidentialityButton)
+      })
 
       expect(navigate).toHaveBeenCalledWith('ConsentSettings', undefined)
     })
   })
 
   describe('share app section', () => {
-    it('should display banner in native', () => {
+    it('should display banner in native', async () => {
       renderProfile()
 
-      const shareButton = screen.queryByText('Partage le pass Culture')
+      const shareButton = await screen.findByText('Partage le pass Culture')
 
       expect(shareButton).toBeOnTheScreen()
     })
 
-    it('should share app on banner press', () => {
+    it('should share app on banner press', async () => {
       renderProfile()
 
-      const shareButton = screen.getByText('Partage le pass Culture')
+      const shareButton = await screen.findByText('Partage le pass Culture')
       fireEvent.press(shareButton)
 
       expect(shareSpy).toHaveBeenCalledTimes(1)
@@ -307,10 +348,10 @@ describe('Profile component', () => {
   })
 
   describe('signout section', () => {
-    it('should display signout row if the user is connected', () => {
+    it('should display signout row if the user is connected', async () => {
       renderProfile()
 
-      const signoutButton = screen.getByText('Déconnexion')
+      const signoutButton = await screen.findByText('Déconnexion')
 
       expect(signoutButton).toBeOnTheScreen()
     })
@@ -325,7 +366,7 @@ describe('Profile component', () => {
       expect(signoutButton).not.toBeOnTheScreen()
     })
 
-    it('should delete the refreshToken, clean user profile and remove user ID from batch when pressed', () => {
+    it('should delete the refreshToken, clean user profile and remove user ID from batch when pressed', async () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockedUseAuthContext.mockImplementation(() => ({
         isLoggedIn: true,
@@ -334,18 +375,21 @@ describe('Profile component', () => {
       renderProfile()
 
       const signoutButton = screen.getByText('Déconnexion')
-      fireEvent.press(signoutButton)
+      await act(async () => {
+        fireEvent.press(signoutButton)
+      })
 
       expect(mockSignOut).toHaveBeenCalledTimes(1)
     })
   })
 
   describe('Analytics', () => {
-    it('should log event ConsultTutorial when user clicks on tutorial section', () => {
+    it('should log event ConsultTutorial when user clicks on tutorial section', async () => {
       renderProfile()
 
-      const consultTutorialButton = screen.getByText('Comment ça marche\u00a0?')
-      fireEvent.press(consultTutorialButton)
+      await act(async () => {
+        fireEvent.press(screen.getByText('Comment ça marche\u00a0?'))
+      })
 
       expect(analytics.logConsultTutorial).toHaveBeenNthCalledWith(1, {
         age: 18,
@@ -362,20 +406,26 @@ describe('Profile component', () => {
       renderProfile()
 
       const scrollContainer = screen.getByTestId('profile-scrollview')
-      fireEvent.scroll(scrollContainer, middleScrollEvent)
+      await act(async () => {
+        fireEvent.scroll(scrollContainer, middleScrollEvent)
+      })
 
       expect(analytics.logProfilScrolledToBottom).toHaveBeenCalledTimes(0)
 
-      fireEvent.scroll(scrollContainer, bottomScrollEvent)
+      await act(async () => {
+        fireEvent.scroll(scrollContainer, bottomScrollEvent)
+      })
 
       expect(analytics.logProfilScrolledToBottom).toHaveBeenCalledTimes(1)
     })
 
-    it('should log event ShareApp on share banner press', () => {
+    it('should log event ShareApp on share banner press', async () => {
       renderProfile()
       const banner = screen.getByText('Partage le pass Culture')
 
-      fireEvent.press(banner)
+      await act(async () => {
+        fireEvent.press(banner)
+      })
 
       expect(analytics.logShareApp).toHaveBeenNthCalledWith(1, { from: 'profile' })
     })

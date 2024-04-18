@@ -1,8 +1,11 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { PaginatedFavoritesResponse } from 'api/gen'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { analytics } from 'libs/analytics'
 import { MODAL_TO_HIDE_TIME } from 'tests/constants'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor, act } from 'tests/utils'
 
@@ -53,6 +56,10 @@ describe('<ApplicationProcessingModal />', () => {
   })
 
   it('should close modal when clicking on button "Mettre en favori"', async () => {
+    mockServer.postApi<PaginatedFavoritesResponse>(
+      '/v1/me/favorites',
+      paginatedFavoritesResponseSnap
+    )
     render(
       reactQueryProviderHOC(
         <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
@@ -71,6 +78,10 @@ describe('<ApplicationProcessingModal />', () => {
   })
 
   it('should log analytics when clicking on button "Mettre en favori"', async () => {
+    mockServer.postApi<PaginatedFavoritesResponse>(
+      '/v1/me/favorites',
+      paginatedFavoritesResponseSnap
+    )
     render(
       reactQueryProviderHOC(
         <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />

@@ -795,5 +795,227 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
       />
     </View>
   </View>,
+  <View
+    style={
+      [
+        {
+          "paddingHorizontal": 24,
+          "position": "relative",
+        },
+      ]
+    }
+    testID="eligibility-banner-container"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Tu es éligible jusqu’au
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        [
+          {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityRole="link"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={false}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+          "userSelect": "auto",
+        }
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "borderRadius": 7,
+              "overflow": "hidden",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityIgnoresInvertColors={true}
+          style={
+            [
+              {
+                "backgroundColor": "#eb0055",
+                "justifyContent": "center",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <Image
+            source={
+              {
+                "testUri": "../../../public/images/BannerRectangle.png",
+              }
+            }
+            style={
+              [
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                {
+                  "height": undefined,
+                  "width": "100%",
+                },
+                undefined,
+              ]
+            }
+            testID="module-background"
+          />
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "borderColor": "#90949D",
+                  "borderRadius": 7,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "padding": 16,
+                  "width": "100%",
+                },
+                undefined,
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignContent": "center",
+                    "marginRight": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                height={32}
+                testID="BicolorUnlock"
+                width={32}
+              >
+                <Text>
+                  BicolorUnlock-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginRight": 16,
+                    "textAlign": "start",
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Débloque tes 1000 €
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                à dépenser sur l’application
+              </Text>
+            </View>
+            <View>
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>,
 ]
 `;
