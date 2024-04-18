@@ -46,6 +46,7 @@ export const Home: FunctionComponent = () => {
         geolocation: { latitude: params.latitude, longitude: params.longitude },
         label: 'Custom',
         info: 'custom',
+        type: undefined,
       })
       setSelectedLocationMode(LocationMode.AROUND_PLACE)
     }

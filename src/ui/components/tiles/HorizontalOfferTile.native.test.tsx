@@ -6,6 +6,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaRespo
 import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { useDistance } from 'libs/location/hooks/useDistance'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -23,10 +24,9 @@ const mockAnalyticsParams: OfferAnalyticsParams = {
   searchId: '539b285e',
 }
 
-let mockDistance: string | null = null
-jest.mock('libs/location/hooks/useDistance', () => ({
-  useDistance: () => mockDistance,
-}))
+jest.mock('libs/location/hooks/useDistance')
+const mockUseDistance = useDistance as jest.Mock
+mockUseDistance.mockReturnValue(null)
 
 const spyLogClickOnOffer = jest.fn()
 const mockUseLogClickOnOffer = jest.spyOn(logClickOnProductAPI, 'useLogClickOnOffer')
@@ -112,7 +112,7 @@ describe('HorizontalOfferTile component', () => {
   })
 
   it('should show distance if geolocation enabled', async () => {
-    mockDistance = '10 km'
+    mockUseDistance.mockReturnValueOnce('10 km')
     render(
       reactQueryProviderHOC(
         // @ts-expect-error: because of noUncheckedIndexedAccess
@@ -122,6 +122,21 @@ describe('HorizontalOfferTile component', () => {
     await waitFor(() => {
       expect(screen.getByText('10 km')).toBeOnTheScreen()
     })
+  })
+
+  it('should not show distance if user has an unprecise location (type municipality or locality)', async () => {
+    mockUseDistance.mockReturnValueOnce(null)
+    render(
+      reactQueryProviderHOC(
+        // @ts-expect-error: because of noUncheckedIndexedAccess
+        <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
+      )
+    )
+    await waitFor(() => {
+      expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
+    })
+
+    expect(screen.queryByText('10 km')).not.toBeOnTheScreen()
   })
 
   describe('When pressing an offer without object id', () => {

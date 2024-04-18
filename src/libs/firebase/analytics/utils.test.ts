@@ -361,6 +361,7 @@ describe('[Analytics utils]', () => {
         place: {
           label: 'Rue de la Paix, Paris',
           info: 'Paris',
+          type: 'street',
           geolocation: { longitude: 2.331196, latitude: 48.869334 },
         },
         aroundRadius: 100,
@@ -382,6 +383,7 @@ describe('[Analytics utils]', () => {
         place: {
           label: 'Rue de la Paix, Reconnaissance, Passion, Envie, Motivation et Intérêt, Paris',
           info: 'Paris',
+          type: 'street',
           geolocation: { longitude: 2.331196, latitude: 48.869334 },
         },
         aroundRadius: 100,
