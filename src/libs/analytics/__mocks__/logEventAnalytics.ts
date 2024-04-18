@@ -171,6 +171,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logSignUpTooYoung: jest.fn(),
   logStartDMSTransmission: jest.fn(),
   logStepperDisplayed: jest.fn(),
+  logSubscriptionUpdate: jest.fn(),
   logTrySelectDeposit: jest.fn(),
   logUserSetLocation: jest.fn(),
   logUserSetVenue: jest.fn(),

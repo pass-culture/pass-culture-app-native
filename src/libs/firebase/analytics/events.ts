@@ -144,6 +144,7 @@ export enum AnalyticsEvent {
   SIGN_UP_TOO_YOUNG = 'SignUpTooYoung',
   START_DMS_TRANSMISSION = 'StartDMSTransmission',
   STEPPER_DISPLAYED = 'StepperDisplayed',
+  SUBSCRIPTION_UPDATE = 'SubscriptionUpdate',
   TRY_SELECT_DEPOSIT = 'TrySelectDeposit',
   USER_SET_LOCATION = 'UserSetLocation',
   USER_SET_VENUE = 'UserSetVenue',
