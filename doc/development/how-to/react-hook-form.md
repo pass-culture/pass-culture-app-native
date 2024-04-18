@@ -46,7 +46,7 @@ it('must have at least 1 special character', async () => {
 
 ### Tester le formulaire dans les composants
 
-:warning: Dans les tests avec react hook form, le comportement demande à ce qu’on wrap tous les fireEvent dans des act, afin de ne pas avoir d’act warning qui font fail les tests.
+⚠️ Dans les tests avec react hook form, le comportement demande à ce qu’on wrap tous les fireEvent dans des act, afin de ne pas avoir d’act warning qui font fail les tests.
 
 Exemple avec un test de ChangeEmail :
 
