@@ -7,7 +7,6 @@ import React from 'react'
 import { CustomFooter } from './CustomFooter'
 import styled from 'styled-components/native'
 
-// React component
 const ReactComponent = () => (
   <Container>
     <Header>

@@ -29,7 +29,6 @@ export const setEmailSchema = object()
 Pour tester un schema yup, il faut passer par la fonction validate du schema, le résultat vaut soit la valeur d'entrée dans le cas ou le schema est valide, soit rejects avec le message d'erreur dans le cas où le schema n'est pas valide.
 
 ```tsx
-// Cas valide
 it('must follow all security rules', async () => {
   const value = 'user@AZERTY123'
   const result = await passwordSchema.validate(value)
@@ -37,7 +36,6 @@ it('must follow all security rules', async () => {
   expect(result).toEqual(value)
 })
 
-// Cas invalide
 it('must have at least 1 special character', async () => {
   const value = 'userAZERTY123'
   const result = passwordSchema.validate(value)
