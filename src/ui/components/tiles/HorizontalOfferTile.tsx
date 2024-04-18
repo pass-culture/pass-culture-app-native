@@ -15,6 +15,7 @@ import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useNativeCategoryValue } from 'ui/components/tiles/useNativeCategoryValue'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { getSpacing } from 'ui/theme'
 
 import { HorizontalTile } from './HorizontalTile'
 interface Props {
@@ -108,4 +109,5 @@ const Container = styled(InternalTouchableLink)({
   flexDirection: 'row',
   alignItems: 'center',
   outlineOffset: 0,
+  gap: getSpacing(4),
 })
