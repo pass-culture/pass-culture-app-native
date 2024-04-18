@@ -36,19 +36,50 @@ interface Props {
 
 const keyExtractor = (item: Offer) => item.objectID
 
-export function VenueOffers({ venue, venueOffers, playlists }: Readonly<Props>) {
+const LoadingState: React.FC = () => (
+  <React.Fragment>
+    <Spacer.Column numberOfSpaces={6} />
+    <OfferPlaylistSkeleton size={TileSize.MEDIUM} numberOfTiles={6} />
+  </React.Fragment>
+)
+
+const MovieScreening: React.FC = () => {
   const { isDesktopViewport } = useTheme()
-  const enableNewXpCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE)
+  return (
+    <React.Fragment>
+      <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
+      <MoviesTitle>{'Les films à l’affiche'}</MoviesTitle>
+      <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
+      <MoviesScreeningCalendar />
+    </React.Fragment>
+  )
+}
+
+const VenueOffersList: React.FC<Props> = ({ venue, venueOffers, playlists }) => {
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
-  const { isLoading: areVenueOffersLoading } = useVenueOffers(venue)
-  const { isLoading: arePlaylistsLoading } = useGTLPlaylists({ venue })
 
   const { hits = [], nbHits = 0 } = venueOffers ?? {}
+
+  const shouldDisplayGtlPlaylist =
+    [VenueTypeCodeKey.DISTRIBUTION_STORE, VenueTypeCodeKey.BOOKSTORE].includes(
+      venue?.venueTypeCode as VenueTypeCode
+    ) && !!playlists?.length
 
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
+  const showSeeMore = nbHits > hits.length && !shouldDisplayGtlPlaylist
+  const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venue.id) : undefined
+
+  const renderFooter: RenderFooterItem = ({ width, height }: { width: number; height: number }) => (
+    <SeeMore
+      width={width}
+      height={height}
+      navigateTo={showSeeMore ? searchNavConfig : undefined}
+      onPress={() => analytics.logVenueSeeMoreClicked(venue.id)}
+    />
+  )
   const renderItem: CustomListRenderItem<Offer> = ({ item, width, height }) => {
     const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
     return (
@@ -67,50 +98,6 @@ export function VenueOffers({ venue, venueOffers, playlists }: Readonly<Props>) 
         height={height}
         searchId={routeParams?.searchId}
       />
-    )
-  }
-
-  const shouldDisplayGtlPlaylist =
-    [VenueTypeCodeKey.DISTRIBUTION_STORE, VenueTypeCodeKey.BOOKSTORE].includes(
-      venue?.venueTypeCode as VenueTypeCode
-    ) && !!playlists?.length
-
-  const showSeeMore = nbHits > hits.length && !shouldDisplayGtlPlaylist
-  const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venue.id) : undefined
-
-  const renderFooter: RenderFooterItem = ({ width, height }: { width: number; height: number }) => (
-    <SeeMore
-      width={width}
-      height={height}
-      navigateTo={showSeeMore ? searchNavConfig : undefined}
-      onPress={() => analytics.logVenueSeeMoreClicked(venue.id)}
-    />
-  )
-
-  if (areVenueOffersLoading || arePlaylistsLoading)
-    return (
-      <React.Fragment>
-        <Spacer.Column numberOfSpaces={6} />
-        <OfferPlaylistSkeleton size={TileSize.MEDIUM} numberOfTiles={6} />
-      </React.Fragment>
-    )
-
-  if (!venue || !venueOffers || venueOffers.hits.length === 0) {
-    return <NoOfferPlaceholder />
-  }
-
-  const isOfferAMovieScreening = venueOffers.hits.some(
-    (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
-  )
-
-  if (isOfferAMovieScreening && enableNewXpCine) {
-    return (
-      <React.Fragment>
-        <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
-        <MoviesTitle>{'Les films à l’affiche'}</MoviesTitle>
-        <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
-        <MoviesScreeningCalendar />
-      </React.Fragment>
     )
   }
 
@@ -139,6 +126,28 @@ export function VenueOffers({ venue, venueOffers, playlists }: Readonly<Props>) 
       ) : null}
     </React.Fragment>
   )
+}
+
+export function VenueOffers({ venue, venueOffers, playlists }: Readonly<Props>) {
+  const { isLoading: areVenueOffersLoading } = useVenueOffers(venue)
+  const { isLoading: arePlaylistsLoading } = useGTLPlaylists({ venue })
+  const isOfferAMovieScreening = venueOffers?.hits.some(
+    (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
+  )
+  const enableNewXpCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE)
+
+  switch (true) {
+    case areVenueOffersLoading || arePlaylistsLoading:
+      return <LoadingState />
+
+    case !venue || !venueOffers || venueOffers.hits.length === 0:
+      return <NoOfferPlaceholder />
+
+    case isOfferAMovieScreening && enableNewXpCine:
+      return <MovieScreening />
+    default:
+      return <VenueOffersList venue={venue} venueOffers={venueOffers} playlists={playlists} />
+  }
 }
 
 const PlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
