@@ -589,7 +589,7 @@ exports[`TrackEmailChange should render correctly when FF is disabled 1`] = `
                         ]
                       }
                     >
-                      Depuis l’email envoyé à example@example.com
+                      Depuis l’email envoyé à email@domain.ext
                     </Text>
                   </View>
                 </View>
@@ -1018,7 +1018,7 @@ exports[`TrackEmailChange should render correctly when FF is disabled 1`] = `
 </RCTScrollView>
 `;
 
-exports[`TrackEmailChange v2 should render correctly when choose new email step is active 1`] = `
+exports[`TrackEmailChange v2 account with password should render correctly when choose new email step is active 1`] = `
 <RCTScrollView
   style={
     [
@@ -1931,7 +1931,7 @@ exports[`TrackEmailChange v2 should render correctly when choose new email step 
 </RCTScrollView>
 `;
 
-exports[`TrackEmailChange v2 should render correctly when confirmation step is active 1`] = `
+exports[`TrackEmailChange v2 account with password should render correctly when confirmation step is active 1`] = `
 <RCTScrollView
   style={
     [
@@ -2363,7 +2363,7 @@ exports[`TrackEmailChange v2 should render correctly when confirmation step is a
                         ]
                       }
                     >
-                      Depuis l’e-mail envoyé à "example@example.com"
+                      Depuis l’e-mail envoyé à "email@domain.ext"
                     </Text>
                   </View>
                   <View>
@@ -2862,7 +2862,7 @@ exports[`TrackEmailChange v2 should render correctly when confirmation step is a
 </RCTScrollView>
 `;
 
-exports[`TrackEmailChange v2 should render correctly when validate new email step is active 1`] = `
+exports[`TrackEmailChange v2 account with password should render correctly when validate new email step is active 1`] = `
 <RCTScrollView
   style={
     [
