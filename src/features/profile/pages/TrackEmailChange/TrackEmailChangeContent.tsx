@@ -79,7 +79,10 @@ export const TrackEmailChangeContent = () => {
       },
       navigateTo: {
         screen: 'ChangeEmailSetPassword',
-        params: { token: requestStatus?.resetPasswordToken },
+        params: {
+          token: requestStatus?.resetPasswordToken,
+          emailSelectionToken: requestStatus?.token,
+        },
       },
     },
     NEW_EMAIL: {

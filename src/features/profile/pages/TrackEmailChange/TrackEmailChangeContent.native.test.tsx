@@ -113,6 +113,7 @@ describe('TrackEmailChangeContent', () => {
 
       expect(navigate).toHaveBeenCalledWith('ChangeEmailSetPassword', {
         token: 'reset_password_token',
+        emailSelectionToken: 'new_email_selection_token',
       })
     })
   })

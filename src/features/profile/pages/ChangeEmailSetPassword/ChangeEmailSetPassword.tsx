@@ -43,7 +43,7 @@ export const ChangeEmailSetPassword = () => {
         message: 'Ton mot de passe a bien été créé.',
         timeout: SNACK_BAR_TIME_OUT,
       })
-      replace('TrackEmailChange')
+      replace('NewEmailSelection', { token: params.emailSelectionToken })
     },
     onError: () =>
       showErrorSnackBar({

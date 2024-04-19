@@ -33,7 +33,10 @@ export const ConfirmChangeEmailContent = () => {
       )
 
       if (resetPasswordToken) {
-        navigate('ChangeEmailSetPassword', { token: resetPasswordToken })
+        navigate('ChangeEmailSetPassword', {
+          token: resetPasswordToken,
+          emailSelectionToken: newEmailSelectionToken,
+        })
       } else {
         navigate('NewEmailSelection', { token: newEmailSelectionToken })
       }

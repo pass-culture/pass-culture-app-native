@@ -63,6 +63,7 @@ describe('<ConfirmChangeEmail />', () => {
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailSetPassword', {
       token: 'reset_password_token',
+      emailSelectionToken: 'token',
     })
   })
 

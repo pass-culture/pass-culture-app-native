@@ -17,7 +17,9 @@ jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
   hideSnackBar: jest.fn(),
 })
 
-useRoute.mockReturnValue({ params: { token: 'reset_password_token' } })
+useRoute.mockReturnValue({
+  params: { token: 'reset_password_token', emailSelectionToken: 'email_selection_token' },
+})
 
 describe('<ChangeEmailSetPassword />', () => {
   it('should match snapshot', async () => {
@@ -76,7 +78,7 @@ describe('<ChangeEmailSetPassword />', () => {
     expect(await screen.findByText('Les mots de passe ne concordent pas')).toBeOnTheScreen()
   })
 
-  it('should navigate to email change stepper on password creation success', async () => {
+  it('should navigate to email selection step on password creation success', async () => {
     mockServer.postApi<EmptyResponse>('/v2/profile/email_update/new_password', {
       responseOptions: {
         statusCode: 204,
@@ -92,7 +94,7 @@ describe('<ChangeEmailSetPassword />', () => {
       fireEvent.press(await screen.findByLabelText('Créer mon mot de passe'))
     })
 
-    expect(replace).toHaveBeenCalledWith('TrackEmailChange')
+    expect(replace).toHaveBeenCalledWith('NewEmailSelection', { token: 'email_selection_token' })
   })
 
   it('should show success snackbar on password creation success', async () => {
