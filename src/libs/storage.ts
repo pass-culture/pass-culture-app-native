@@ -26,6 +26,7 @@ export type StorageKey =
   | 'location_type'
   | 'activation_profile'
   | 'times_user_subscribed_to_a_theme'
+  | 'times_music_live_booking_survey_has_been_displayed'
 
 export const storage = {
   clear,

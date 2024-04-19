@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
+import { SubcategoryIdEnum } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as useBookOfferMutation from 'features/bookOffer/api/useBookOfferMutation'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
@@ -14,16 +15,20 @@ import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { storage } from 'libs/storage'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { RecommendationApiParams } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
+
+const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const mockOffer = baseOffer
 
@@ -127,24 +132,37 @@ const apiRecoParams: RecommendationApiParams = {
 }
 
 describe('<BookingOfferModalComponent />', () => {
-  it('should dismiss modal when click on rightIconButton and reset state', () => {
+  it('should dismiss modal when click on rightIconButton and reset state', async () => {
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={mockOffer.id} />))
 
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
-    fireEvent.press(dismissModalButton)
+    await act(() => {
+      fireEvent.press(dismissModalButton)
+    })
 
-    expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET' })
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SET_OFFER_ID', payload: mockOffer.id })
-    expect(mockDismissModal).toHaveBeenCalledTimes(1)
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET' })
+    })
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+        type: 'SET_OFFER_ID',
+        payload: mockOffer.id,
+      })
+    })
+    await waitFor(() => {
+      expect(mockDismissModal).toHaveBeenCalledTimes(1)
+    })
   })
 
-  it('should set offer consulted when dismiss modal and an other venue has been selected', () => {
+  it('should set offer consulted when dismiss modal and an other venue has been selected', async () => {
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
 
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
-    fireEvent.press(dismissModalButton)
+    await act(() => {
+      fireEvent.press(dismissModalButton)
+    })
 
     expect(mockDispatch).toHaveBeenNthCalledWith(2, { type: 'SET_OFFER_ID', payload: 20 })
   })
@@ -176,11 +194,13 @@ describe('<BookingOfferModalComponent />', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should log booking funnel cancellation event when closing the modal', () => {
+  it('should log booking funnel cancellation event when closing the modal', async () => {
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
-    fireEvent.press(dismissModalButton)
+    await act(() => {
+      fireEvent.press(dismissModalButton)
+    })
 
     expect(analytics.logCancelBookingFunnel).toHaveBeenNthCalledWith(1, Step.DATE, 20)
   })
@@ -388,4 +408,74 @@ describe('<BookingOfferModalComponent />', () => {
       })
     })
   })
+
+  describe('when booking comes from music live', () => {
+    beforeEach(() => {
+      mockUseOffer.mockReturnValue({
+        data: {
+          ...mockOffer,
+          stocks: mockStocks,
+          subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
+        },
+      })
+      mockFeatureFlag.mockReturnValue(true)
+      storageResetDisplayedModal()
+    })
+
+    it('should open SurveyModal if FF surveyMusicLive is on', async () => {
+      render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
+      const dismissModalButton = screen.getByTestId('Fermer la modale')
+
+      await act(() => fireEvent.press(dismissModalButton))
+
+      expect(screen.getByText('Cette offre ne t’intéresse plus ?')).toBeOnTheScreen()
+    })
+
+    it("should'nt open SurveyModal if FF surveyMusicLive is off", async () => {
+      mockFeatureFlag.mockReturnValueOnce(false).mockReturnValueOnce(false)
+      render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
+      const dismissModalButton = screen.getByTestId('Fermer la modale')
+
+      await act(() => {
+        fireEvent.press(dismissModalButton)
+      })
+
+      expect(screen.queryByText('Cette offre ne t’intéresse plus ?')).not.toBeOnTheScreen()
+    })
+
+    it("should'nt open SurveyModal if offer is not music live", async () => {
+      mockUseOffer.mockReturnValueOnce({
+        ...baseOffer,
+        subcategoryId: SubcategoryIdEnum.LIVRE_NUMERIQUE,
+      })
+      render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
+      const dismissModalButton = screen.getByTestId('Fermer la modale')
+
+      await act(() => {
+        fireEvent.press(dismissModalButton)
+      })
+
+      expect(screen.queryByText("Cette offre ne t'intéresse plus ?")).not.toBeOnTheScreen()
+    })
+
+    it("shouldn't show SurveyModal more than once", async () => {
+      storeDisplayedModal()
+      render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
+      const dismissModalButton = screen.getByTestId('Fermer la modale')
+
+      await act(() => {
+        fireEvent.press(dismissModalButton)
+      })
+
+      expect(screen.queryByText("Cette offre ne t'intéresse plus ?")).not.toBeOnTheScreen()
+    })
+  })
 })
+
+const storageResetDisplayedModal = async () => {
+  await storage.saveString('times_music_live_booking_survey_has_been_displayed', '0')
+}
+
+const storeDisplayedModal = async () => {
+  await storage.saveString('times_music_live_booking_survey_has_been_displayed', String('1'))
+}
