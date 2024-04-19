@@ -17,12 +17,12 @@ jest.mock('features/offer/components/OfferVenueBlock/useVenueBlock', () => ({
   })),
 }))
 
-const navigateToItineraryMock = jest.fn()
-const useItinerary = () => ({
-  navigateTo: navigateToItineraryMock,
+const mockNavigateToItinerary = jest.fn()
+const mockUseItinerary = () => ({
+  navigateTo: mockNavigateToItinerary,
 })
 jest.mock('libs/itinerary/useItinerary', () => ({
-  useItinerary,
+  useItinerary: jest.fn(() => mockUseItinerary()),
 }))
 
 const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
@@ -226,7 +226,7 @@ describe('<OfferVenueBlock />', () => {
     fireEvent.press(screen.getByText('Voir l’itinéraire'))
 
     await waitFor(() => {
-      expect(navigateToItineraryMock).toHaveBeenNthCalledWith(1, '75008 PARIS 8, 2 RUE LAMENNAIS')
+      expect(mockNavigateToItinerary).toHaveBeenNthCalledWith(1, '75008 PARIS 8, 2 RUE LAMENNAIS')
     })
   })
 })

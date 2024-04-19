@@ -4,10 +4,9 @@ import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { waitFor, screen, checkAccessibilityFor, render } from 'tests/utils/web'
 
-const mockV4 = jest.fn()
 jest.mock('uuid', () => ({
   v1: jest.fn(),
-  v4: jest.fn(mockV4),
+  v4: jest.fn(),
 }))
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')

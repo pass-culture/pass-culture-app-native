@@ -16,7 +16,7 @@ module.exports = {
      * @returns {boolean} if the comment matches any of the warning regex.
      */
     function commentContainsWarningTerm(comment) {
-      for (regex of warningRegExps) {
+      for (const regex of warningRegExps) {
         if (regex.exec(comment) !== null) {
           return true
         }

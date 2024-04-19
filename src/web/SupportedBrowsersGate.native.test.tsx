@@ -1,19 +1,9 @@
 import React from 'react'
+// eslint-disable-next-line no-restricted-imports
+import * as DeviceDetect from 'react-device-detect'
 
 import { render, screen } from 'tests/utils'
 import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
-
-const defaultDeviceMock: Record<string, unknown> = {
-  __esModule: true,
-  isChrome: false,
-  isMobileSafari: false,
-  isSafari: false,
-  isFirefox: false,
-  isEdge: false,
-  isSamsungBrowser: false,
-  browserName: 'none',
-}
-jest.mock('react-device-detect', () => defaultDeviceMock)
 
 describe('SupportedBrowsersGate', () => {
   it('render correctly', () => {
@@ -37,18 +27,19 @@ describe('SupportedBrowsersGate', () => {
     '$browserName v$minimalSupportedVersion',
     ({ browserProperty, browserName, minimalSupportedVersion }) => {
       beforeAll(() => {
-        defaultDeviceMock[browserProperty] = true
-        defaultDeviceMock.browserName = browserName
+        browserProperty in DeviceDetect && jest.replaceProperty(DeviceDetect, browserProperty, true)
+        jest.replaceProperty(DeviceDetect, 'browserName', browserName)
       })
 
       afterAll(() => {
-        defaultDeviceMock[browserProperty] = false
-        defaultDeviceMock.browserName = 'none'
-        defaultDeviceMock.browserVersion = undefined
+        browserProperty in DeviceDetect &&
+          jest.replaceProperty(DeviceDetect, browserProperty, false)
+        jest.replaceProperty(DeviceDetect, 'browserName', 'none')
+        jest.replaceProperty(DeviceDetect, 'browserVersion', '')
       })
 
       it(`should support ${browserName} for versions ${minimalSupportedVersion} and above`, () => {
-        defaultDeviceMock.browserVersion = minimalSupportedVersion
+        jest.replaceProperty(DeviceDetect, 'browserVersion', minimalSupportedVersion)
 
         render(<SupportedBrowsersGate />)
 
@@ -61,7 +52,7 @@ describe('SupportedBrowsersGate', () => {
 
       it(`should not support ${browserName} for versions below ${minimalSupportedVersion}`, () => {
         const unsupportedVersion = minimalSupportedVersion - 1
-        defaultDeviceMock.browserVersion = unsupportedVersion
+        jest.replaceProperty(DeviceDetect, 'browserVersion', unsupportedVersion.toString())
 
         render(<SupportedBrowsersGate />)
 
