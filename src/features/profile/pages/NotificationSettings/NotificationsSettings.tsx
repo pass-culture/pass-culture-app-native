@@ -115,7 +115,6 @@ export const NotificationsSettings = () => {
 
   const submitProfile = () => {
     if (
-      hasUserChanged &&
       hasUserChangedSubscriptions({
         currentSubscriptions: user?.subscriptions.subscribedThemes || [],
         stateSubscriptions: state.themePreferences,
