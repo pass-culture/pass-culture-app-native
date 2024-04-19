@@ -118,6 +118,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   )
 
   const handleSeeMapPress = () => {
+    analytics.logConsultVenueMap({ from: 'searchPlaylist' })
     navigate('VenueMap', venues?.length ? { initialVenues: adaptAlgoliaVenues(venues) } : {})
   }
 

@@ -1,10 +1,11 @@
 import React from 'react'
 
 import { VenueMapModule } from 'features/home/components/modules/VenueMapModule'
+import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { render, screen } from 'tests/utils'
+import { render, screen, fireEvent } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
@@ -61,5 +62,13 @@ describe('VenueMapModule', () => {
     render(<VenueMapModule />)
 
     expect(screen.queryByText('Carte des lieux culturels')).not.toBeOnTheScreen()
+  })
+
+  it('should log consult venue map from home when pressing venue map block', () => {
+    render(<VenueMapModule />)
+
+    fireEvent.press(screen.getByText('Explorer les lieux'))
+
+    expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'home' })
   })
 })

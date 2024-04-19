@@ -7,7 +7,7 @@ import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDispla
 export const VenueMapModule = () => {
   const { shouldDisplayVenueMap } = useShouldDisplayVenueMap()
 
-  return shouldDisplayVenueMap ? <StyledVenueMapBlock /> : null
+  return shouldDisplayVenueMap ? <StyledVenueMapBlock from="home" /> : null
 }
 
 const StyledVenueMapBlock = styled(VenueMapBlock)(({ theme }) => ({

@@ -63,6 +63,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
               <Spacer.Column numberOfSpaces={4} />
               <VenueMapBlock
                 onPress={isMapWithoutPositionAndNotLocated ? handlePress : undefined}
+                from="searchLanding"
               />
               <Spacer.Column numberOfSpaces={2} />
             </React.Fragment>

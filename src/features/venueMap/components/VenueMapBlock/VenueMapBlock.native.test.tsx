@@ -6,19 +6,19 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 describe('<VenueMapBlock />', () => {
   it('should display title venue map', () => {
-    render(<VenueMapBlock />)
+    render(<VenueMapBlock from="searchLanding" />)
 
     expect(screen.getByText('Carte des lieux culturels')).toBeOnTheScreen()
   })
 
   it('should display card text', () => {
-    render(<VenueMapBlock />)
+    render(<VenueMapBlock from="searchLanding" />)
 
     expect(screen.getByText('Explorer les lieux')).toBeOnTheScreen()
   })
 
   it('should navigate to venue map screen', () => {
-    render(<VenueMapBlock />)
+    render(<VenueMapBlock from="searchLanding" />)
 
     fireEvent.press(screen.getByText('Explorer les lieux'))
 
