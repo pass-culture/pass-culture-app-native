@@ -2,21 +2,16 @@ import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { fireEvent, render, screen } from 'tests/utils'
-import { FakeDoorModal } from 'ui/components/modals/FakeDoorModal'
+import { SurveyModal } from 'ui/components/modals/SurveyModal'
+import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 const hideModalMock = jest.fn()
 
-describe('<FakeDoorModal />', () => {
+describe('<SurveyModal />', () => {
   it('should redirect to survey when pressing "Répondre au questionnaire" button', () => {
-    render(
-      <FakeDoorModal
-        visible
-        hideModal={hideModalMock}
-        surveyUrl="https://fr.wikipedia.org/wiki/FIEALD"
-      />
-    )
+    renderSurveyModal()
 
     fireEvent.press(screen.getByText('Répondre au questionnaire'))
 
@@ -24,16 +19,22 @@ describe('<FakeDoorModal />', () => {
   })
 
   it('should call hideModal function when pressing close icon', () => {
-    render(
-      <FakeDoorModal
-        visible
-        hideModal={hideModalMock}
-        surveyUrl="https://fr.wikipedia.org/wiki/FIEALD"
-      />
-    )
+    renderSurveyModal()
     const rightIcon = screen.getByTestId('Fermer la modale')
     fireEvent.press(rightIcon)
 
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 })
+
+const renderSurveyModal = () => {
+  return render(
+    <SurveyModal
+      visible
+      hideModal={hideModalMock}
+      surveyUrl="https://fr.wikipedia.org/wiki/FIEALD"
+      title="Wikipedia"
+      Icon={BicolorCircledClock}
+    />
+  )
+}
