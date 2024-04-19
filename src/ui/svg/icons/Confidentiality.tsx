@@ -14,6 +14,7 @@ const ConfidentialitySvg: React.FunctionComponent<AccessibleIcon> = ({
   color2,
   accessibilityLabel,
   testID,
+  style,
 }) => {
   const {
     colors: { primary, secondary },
@@ -26,7 +27,8 @@ const ConfidentialitySvg: React.FunctionComponent<AccessibleIcon> = ({
       height={size}
       viewBox="0 0 48 48"
       accessibilityLabel={accessibilityLabel}
-      testID={testID}>
+      testID={testID}
+      style={style}>
       <Defs>
         <LinearGradient
           id={gradientId}

@@ -156,7 +156,7 @@ const DisabledEmailIcon = styled(BicolorEmailIcon).attrs(({ theme }) => ({
 const CompletedEmailIcon = styled(BicolorEmailIcon).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
   color2: theme.colors.greyDark,
-}))``
+}))({ transform: 'rotate(-8deg)' })
 
 const BicolorPencilIcon = styled(PencilTip).attrs(({ theme }) => ({
   color: theme.colors.primary,
@@ -171,7 +171,7 @@ const DisabledPencilIcon = styled(PencilTip).attrs(({ theme }) => ({
 const CompletedPencilIcon = styled(PencilTip).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
   color2: theme.colors.greyDark,
-}))``
+}))({ transform: 'rotate(-8deg)' })
 
 const BicolorConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) => ({
   color: theme.colors.primary,
@@ -186,7 +186,7 @@ const DisabledConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) =>
 const CompletedConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
   color2: theme.colors.greyDark,
-}))``
+}))({ transform: 'rotate(-8deg)' })
 
 const StyledListContainer = styled.View({
   marginHorizontal: 'auto',
