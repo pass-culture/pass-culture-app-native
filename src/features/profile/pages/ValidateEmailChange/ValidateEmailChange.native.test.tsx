@@ -7,8 +7,8 @@ import * as API from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatus } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
-import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -53,7 +53,7 @@ const emailUpdateValidateSpy = jest
   .mockImplementation()
 
 const navigation = {
-  navigate: jest.fn(),
+  reset: jest.fn(),
   replace: jest.fn(),
 } as unknown as NativeStackNavigationProp<RootStackParamList, 'ValidateEmailChange'>
 
@@ -103,8 +103,8 @@ describe('ValidateEmailChange', () => {
       fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
     })
 
-    expect(navigation.replace).toHaveBeenNthCalledWith(1, 'Login', {
-      from: StepperOrigin.VALIDATE_EMAIL_CHANGE,
+    expect(navigation.reset).toHaveBeenNthCalledWith(1, {
+      routes: [{ name: 'Login', params: { from: StepperOrigin.VALIDATE_EMAIL_CHANGE } }],
     })
   })
 
@@ -127,7 +127,7 @@ describe('ValidateEmailChange', () => {
       fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
     })
 
-    expect(navigation.navigate).toHaveBeenCalledWith('ChangeEmailExpiredLink')
+    expect(navigation.replace).toHaveBeenCalledWith('ChangeEmailExpiredLink')
   })
 
   it('should display an error message if submit triggers an error not 401', async () => {
@@ -165,7 +165,7 @@ describe('ValidateEmailChange', () => {
 
     renderValidateEmailChange()
 
-    expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
+    expect(navigation.replace).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
   })
 
   it('should redirect to home when there is no email update', () => {
@@ -175,7 +175,7 @@ describe('ValidateEmailChange', () => {
 
     renderValidateEmailChange()
 
-    expect(navigateToHome).toHaveBeenCalledTimes(1)
+    expect(navigation.replace).toHaveBeenCalledWith(...homeNavConfig)
   })
 })
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
 import { EmailChangeConfirmationResponse } from 'api/gen'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { ConfirmChangeEmailContent } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmailContent'
@@ -47,7 +47,7 @@ describe('<ConfirmChangeEmail />', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'NewEmailSelection', { token: 'token' })
+    expect(replace).toHaveBeenNthCalledWith(1, 'NewEmailSelection', { token: 'token' })
   })
 
   it("should navigate to password creation on change email confirmation success when user doesn't have a password", async () => {
@@ -61,7 +61,7 @@ describe('<ConfirmChangeEmail />', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailSetPassword', {
+    expect(replace).toHaveBeenNthCalledWith(1, 'ChangeEmailSetPassword', {
       token: 'reset_password_token',
       emailSelectionToken: 'token',
     })
@@ -87,7 +87,7 @@ describe('<ConfirmChangeEmail />', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
+    expect(replace).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
   })
 
   it('should display an error snackbar when change email confirmation fails for unknown reason', async () => {
@@ -122,6 +122,6 @@ describe('<ConfirmChangeEmail />', () => {
 
     await screen.findByText('Confirmer la demande')
 
-    expect(navigate).toHaveBeenCalledWith('ChangeEmailExpiredLink')
+    expect(replace).toHaveBeenCalledWith('ChangeEmailExpiredLink')
   })
 })

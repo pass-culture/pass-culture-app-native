@@ -5,8 +5,9 @@ import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
-import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { ValidateEmailChangeSubtitleComponent } from 'features/profile/pages/ValidateEmailChange/SubtitleComponent'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -48,17 +49,19 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
           'Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.',
         timeout: SNACK_BAR_TIME_OUT,
       })
-      navigation.replace('Login', { from: StepperOrigin.VALIDATE_EMAIL_CHANGE })
+      navigation.reset({
+        routes: [{ name: 'Login', params: { from: StepperOrigin.VALIDATE_EMAIL_CHANGE } }],
+      })
     } catch (error) {
       if (error instanceof ApiError && error.statusCode === 401) {
-        navigation.navigate('ChangeEmailExpiredLink')
+        navigation.replace('ChangeEmailExpiredLink')
         return
       }
       showErrorSnackBar({
         message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
         timeout: SNACK_BAR_TIME_OUT,
       })
-      navigateToHome()
+      navigation.replace(...homeNavConfig)
     } finally {
       setIsLoading(false)
     }
@@ -67,10 +70,10 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   useEffect(() => {
     if (!isLoadingEmailUpdateStatus) {
       if (!emailUpdateStatus) {
-        navigateToHome()
+        navigation.replace(...homeNavConfig)
       }
       if (emailUpdateStatus?.expired) {
-        navigation.navigate('ChangeEmailExpiredLink')
+        navigation.replace('ChangeEmailExpiredLink')
       }
     }
   }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])

@@ -5,8 +5,8 @@ import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { getEmailUpdateStepV2 } from 'features/profile/helpers/getEmailUpdateStepV2'
 import { useEmailUpdateStatusV2 } from 'features/profile/helpers/useEmailUpdateStatusV2'
 import { Step } from 'ui/components/Step/Step'
@@ -22,7 +22,7 @@ import { Spacer } from 'ui/theme'
 const isWeb = Platform.OS === 'web'
 
 export const TrackEmailChangeContent = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { replace } = useNavigation<UseNavigationType>()
 
   const { user } = useAuthContext()
   const { data: requestStatus, isLoading: isRequestStatusLoading } = useEmailUpdateStatusV2()
@@ -112,11 +112,11 @@ export const TrackEmailChangeContent = () => {
   }
 
   if (!isRequestStatusLoading && !requestStatus?.status) {
-    navigateToHome()
+    replace(...homeNavConfig)
     return null
   }
   if (!isRequestStatusLoading && requestStatus?.expired) {
-    navigate('ChangeEmailExpiredLink')
+    replace('ChangeEmailExpiredLink')
     return null
   }
 
