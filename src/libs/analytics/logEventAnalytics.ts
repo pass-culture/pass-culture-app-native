@@ -14,6 +14,7 @@ import { Referrals, StepperOrigin } from 'features/navigation/RootNavigator/type
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { AmplitudeEvent } from 'libs/amplitude/events'
 import { analytics, buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
@@ -625,6 +626,8 @@ export const logEventAnalytics = {
     step: IdentityCheckStep | PreValidationSignupStep | 'Login',
     type?: SSOType
   ) => analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step, type }),
+  logSubscriptionUpdate: (params: SubscriptionAnalyticsParams) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.SUBSCRIPTION_UPDATE }, params),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
   logUserSetLocation: (from: 'home' | 'search') =>

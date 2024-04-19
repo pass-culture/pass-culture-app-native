@@ -11,12 +11,14 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 export type Props = {
   user?: UserProfileResponse
   thematic: SubscriptionTheme | null
+  homeId: string
   onUpdateSubscriptionSuccess: () => Promise<void>
 }
 
 export const useThematicSubscription = ({
   user,
   thematic,
+  homeId,
   onUpdateSubscriptionSuccess,
 }: Props): {
   isSubscribeButtonActive: boolean
@@ -53,7 +55,10 @@ export const useThematicSubscription = ({
     async () => {
       analytics.logNotificationToggle(!!state.allowEmails, !!state.allowPush)
       if (!isSubscribeButtonActive) {
+        analytics.logSubscriptionUpdate({ from: 'thematicHome', type: 'in', entryId: homeId })
         await onUpdateSubscriptionSuccess?.()
+      } else {
+        analytics.logSubscriptionUpdate({ from: 'thematicHome', type: 'out', entryId: homeId })
       }
     },
     () => {

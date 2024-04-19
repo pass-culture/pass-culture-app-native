@@ -19,7 +19,7 @@ describe('hasUserChangedParameters', () => {
       themePreferences: [SubscriptionTheme.CINEMA, SubscriptionTheme.MUSIQUE],
     }
 
-    expect(hasUserChangedParameters(user, state)).toBe(false)
+    expect(hasUserChangedParameters({ user, state })).toBe(false)
   })
 
   it('should return true when user changes email opt-in', () => {
@@ -37,7 +37,7 @@ describe('hasUserChangedParameters', () => {
       themePreferences: [SubscriptionTheme.CINEMA, SubscriptionTheme.MUSIQUE],
     }
 
-    expect(hasUserChangedParameters(user, state)).toBe(true)
+    expect(hasUserChangedParameters({ user, state })).toBe(true)
   })
 
   it('should return true when user subscribes to a theme and unsusbcribes from another', () => {
@@ -55,6 +55,23 @@ describe('hasUserChangedParameters', () => {
       themePreferences: [SubscriptionTheme.CINEMA, SubscriptionTheme.MUSIQUE],
     }
 
-    expect(hasUserChangedParameters(user, state)).toBe(true)
+    expect(hasUserChangedParameters({ user, state })).toBe(true)
+  })
+
+  it('should return false when user has no subscribedTheme', () => {
+    const user = {
+      ...beneficiaryUser,
+      subscriptions: {
+        marketingEmail: true,
+        marketingPush: true,
+      },
+    }
+    const state: NotificationsSettingsState = {
+      allowEmails: true,
+      allowPush: true,
+      themePreferences: [SubscriptionTheme.CINEMA, SubscriptionTheme.MUSIQUE],
+    }
+
+    expect(hasUserChangedParameters({ state, user })).toBe(false)
   })
 })
