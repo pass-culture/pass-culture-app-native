@@ -340,7 +340,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
           class="css-view-175oi2r r-height-eu3ka"
         />
         <div
-          class="css-view-175oi2r r-flexShrink-1wbh5a2 r-marginHorizontal-1hy1u7s"
+          class="css-view-175oi2r"
         >
           <div
             class="css-view-175oi2r r-width-13qz1uu"
