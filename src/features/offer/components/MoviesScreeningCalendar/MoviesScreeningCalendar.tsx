@@ -3,21 +3,12 @@ import { View, FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
+import { getDates } from 'shared/date/getDates'
 import { Spacer } from 'ui/theme'
-
-function generateDates(start: Date, count: number): Date[] {
-  const dates: Date[] = [start]
-  for (let i = 1; i < count; i++) {
-    const newDate = new Date(start)
-    newDate.setDate(start.getDate() + i)
-    dates.push(newDate)
-  }
-  return dates
-}
 
 export const MoviesScreeningCalendar: FunctionComponent = () => {
   const flatListRef = useRef<FlatList | null>(null)
-  const calendarDates = useMemo(() => generateDates(new Date(), 15), [])
+  const calendarDates = useMemo(() => getDates(new Date(), 15), [])
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(calendarDates[0])
 
   return (
