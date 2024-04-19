@@ -65,11 +65,6 @@ export const SearchWrapper = memo(function SearchWrapper({
     }
   }, [selectedLocationMode, place, aroundMeRadius, aroundPlaceRadius, dispatch])
 
-  // Temporary fix: this useEffect reduces the amount of re-renders and fixes Search.web.perf test ==> PC-29251
-  useEffect(() => {
-    dispatch({ type: 'SET_STATE', payload: initialSearchState })
-  }, [])
-
   const resetSearch = useCallback(() => {
     dispatch({ type: 'SET_STATE', payload: initialSearchState })
   }, [])
