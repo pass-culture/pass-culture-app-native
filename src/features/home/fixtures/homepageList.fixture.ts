@@ -1,6 +1,9 @@
-import { Homepage, HomepageModuleType, ThematicHeaderType } from 'features/home/types'
+import type { ReadonlyDeep } from 'type-fest'
 
-export const homepageList: Homepage[] = [
+import { Homepage, HomepageModuleType, ThematicHeaderType } from 'features/home/types'
+import { toMutable } from 'shared/types/toMutable'
+
+export const homepageList = toMutable([
   {
     id: '6DCThxvbPFKAo04SVRZtwY',
     modules: [
@@ -201,4 +204,4 @@ export const homepageList: Homepage[] = [
       type: ThematicHeaderType.Category,
     },
   },
-]
+] as const satisfies ReadonlyDeep<Homepage[]>)

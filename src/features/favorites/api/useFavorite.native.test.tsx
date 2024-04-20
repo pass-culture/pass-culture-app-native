@@ -18,7 +18,6 @@ describe('useFavorite hook', () => {
   it('should get favorite from offer id', async () => {
     const favorite = paginatedFavoritesResponseSnap.favorites[0]
     simulateBackend({
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       id: favorite.offer.id,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
@@ -29,7 +28,6 @@ describe('useFavorite hook', () => {
       refetchUser: jest.fn(),
       isUserLoading: false,
     })
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     const { result } = renderHook(() => useFavorite({ offerId: favorite.offer.id }), {
       wrapper: (props) =>
         reactQueryProviderHOC(
@@ -43,9 +41,7 @@ describe('useFavorite hook', () => {
       expect(result.current).toEqual({
         ...favorite,
         offer: {
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           ...favorite.offer,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           date: favorite.offer.date,
         },
       })
@@ -55,7 +51,6 @@ describe('useFavorite hook', () => {
   it('should not get favorite from offer id', async () => {
     const favorite = paginatedFavoritesResponseSnap.favorites[0]
     simulateBackend({
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       id: favorite.offer.id,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,

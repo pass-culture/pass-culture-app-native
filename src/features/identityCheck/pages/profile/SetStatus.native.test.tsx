@@ -86,11 +86,9 @@ describe('<SetStatus/>', () => {
   })
 
   it('should navigate to stepper on press "Continuer"', async () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     mockStatus = ActivityTypesSnap.activities[2].id
     renderSetStatus()
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.press(screen.getByText(ActivityTypesSnap.activities[2].label)) // select student status
     fireEvent.press(screen.getByText('Continuer'))
 
@@ -111,7 +109,6 @@ describe('<SetStatus/>', () => {
   it('should log analytics on press Continuer', async () => {
     renderSetStatus()
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.press(screen.getByText(ActivityTypesSnap.activities[1].label))
     fireEvent.press(screen.getByText('Continuer'))
 

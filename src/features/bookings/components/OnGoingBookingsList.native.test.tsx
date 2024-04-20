@@ -19,7 +19,7 @@ mockUseBookings.mockReturnValue({
   data: mockBookings,
   isLoading: false,
   isFetching: false,
-} as UseQueryResult<BookingsResponse, unknown>)
+} as unknown as UseQueryResult<BookingsResponse, unknown>)
 
 jest.mock('libs/subcategories/useSubcategories')
 const mockUseSubcategories = jest.mocked(useSubcategories)

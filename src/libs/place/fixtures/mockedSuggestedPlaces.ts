@@ -1,8 +1,10 @@
 import { FeatureCollection, Point } from 'geojson'
 
+import { toMutable } from 'shared/types/toMutable'
+
 import { Properties } from '../types'
 
-export const mockedSuggestedPlaces: FeatureCollection<Point, Properties> = {
+export const mockedSuggestedPlaces = toMutable({
   type: 'FeatureCollection',
   features: [
     {
@@ -70,4 +72,4 @@ export const mockedSuggestedPlaces: FeatureCollection<Point, Properties> = {
       },
     },
   ],
-}
+} as const) satisfies FeatureCollection<Point, Properties>

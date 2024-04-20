@@ -1,7 +1,8 @@
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { env } from 'libs/environment'
+import { toMutable } from 'shared/types/toMutable'
 
-export const mockSuggestionHits = [
+export const mockSuggestionHits = toMutable([
   {
     objectID: '1',
     query: 'cinéma',
@@ -72,9 +73,9 @@ export const mockSuggestionHits = [
       },
     },
   },
-]
+] as const)
 
-export const mockVenueHits = [
+export const mockVenueHits = toMutable([
   {
     city: 'Quiberon',
     postalCode: '56270',
@@ -146,4 +147,4 @@ export const mockVenueHits = [
       },
     },
   },
-]
+] as const)

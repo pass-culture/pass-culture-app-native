@@ -1,6 +1,9 @@
-import { ExpenseDomain, OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import type { ReadonlyDeep } from 'type-fest'
 
-export const mockOffer: OfferResponse = {
+import { ExpenseDomain, OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { toMutable } from 'shared/types/toMutable'
+
+export const mockOffer = toMutable({
   id: 146112,
   accessibility: {
     audioDisability: null,
@@ -111,9 +114,9 @@ export const mockOffer: OfferResponse = {
       geo: { '@type': 'GeoCoordinates', latitude: 5.15839, longitude: -52.63741 },
     },
   },
-}
+} as const satisfies ReadonlyDeep<OfferResponse>)
 
-export const mockDigitalOffer: OfferResponse = {
+export const mockDigitalOffer = toMutable({
   id: 146113,
   accessibility: {
     audioDisability: null,
@@ -200,4 +203,4 @@ export const mockDigitalOffer: OfferResponse = {
       geo: { '@type': 'GeoCoordinates', latitude: 5.15839, longitude: -52.63741 },
     },
   },
-}
+} as const satisfies ReadonlyDeep<OfferResponse>)

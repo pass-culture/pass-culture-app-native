@@ -8,7 +8,6 @@ import { analytics } from 'libs/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-// @ts-expect-error: because of noUncheckedIndexedAccess
 const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = 116656
 const venueId = 34

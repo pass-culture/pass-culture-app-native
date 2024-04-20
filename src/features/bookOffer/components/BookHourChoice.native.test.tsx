@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { OfferResponse } from 'api/gen'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
 import { stock1, stock2, stock3, stock4 } from 'features/bookOffer/fixtures/stocks'
@@ -35,7 +36,7 @@ jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   })),
 }))
 
-let mockOffer = mockBaseOffer
+let mockOffer: OfferResponse = mockBaseOffer
 jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))

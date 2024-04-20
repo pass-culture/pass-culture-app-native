@@ -7,7 +7,6 @@ import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
-import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, act } from 'tests/utils'
@@ -29,7 +28,7 @@ const mockFetchMultipleOffers = fetchMultipleOffers as jest.MockedFunction<
   typeof fetchMultipleOffers
 >
 
-const mockOffers: Offer[] = mockedAlgoliaResponse.hits
+const mockOffers = mockedAlgoliaResponse.hits
 
 describe('useVideoOffers', () => {
   beforeEach(() => {
@@ -37,7 +36,6 @@ describe('useVideoOffers', () => {
   })
 
   it('should return offers when asking for specific ids', async () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     mockfetchOffersByIds.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
     const { result } = renderHook(
@@ -53,7 +51,6 @@ describe('useVideoOffers', () => {
   })
 
   it('should return offers when asking for specific EANs', async () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     mockFetchOffersByEan.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
     const { result } = renderHook(

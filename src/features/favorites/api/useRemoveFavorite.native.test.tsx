@@ -26,10 +26,8 @@ describe('useRemoveFavorite hook', () => {
 
   it('should remove favorite', async () => {
     const favorite = paginatedFavoritesResponseSnap.favorites[0]
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     const favoriteId = favorite.id
     simulateBackend({
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       id: favorite.offer.id,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
@@ -56,10 +54,8 @@ describe('useRemoveFavorite hook', () => {
 
   it('should fail to remove favorite', async () => {
     const favorite = paginatedFavoritesResponseSnap.favorites[0]
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     const favoriteId = favorite.id
     simulateBackend({
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       id: favorite.offer.id,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: true,

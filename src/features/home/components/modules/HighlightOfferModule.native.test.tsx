@@ -53,7 +53,6 @@ describe('HighlightOfferModule', () => {
       fireEvent.press(screen.getByText(highlightOfferModuleFixture.offerTitle))
     })
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     expect(navigate).toHaveBeenCalledWith('Offer', { id: offerFixture.objectID })
   })
 
@@ -92,7 +91,6 @@ describe('HighlightOfferModule', () => {
 
     expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       offerId: +offerFixture.objectID,
       from: 'highlightOffer',
       moduleId: 'fH2FmoYeTzZPjhbz4ZHUW',
@@ -115,7 +113,6 @@ describe('HighlightOfferModule', () => {
 
     expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledTimes(1)
     expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       offerId: +offerFixture.objectID,
       from: 'highlightOffer',
       moduleId: 'fH2FmoYeTzZPjhbz4ZHUW',

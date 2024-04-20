@@ -8,7 +8,6 @@ import { fireEvent, render, screen } from 'tests/utils/web'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 
 describe('OnGoingBookingItem', () => {
-  // @ts-expect-error: because of noUncheckedIndexedAccess
   const booking: Booking = bookingsSnap.ongoing_bookings[0]
 
   it('should navigate to the booking details page', () => {

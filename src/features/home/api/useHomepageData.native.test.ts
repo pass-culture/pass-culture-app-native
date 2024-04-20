@@ -1,7 +1,6 @@
 import { BookingsResponse } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { homepageList } from 'features/home/fixtures/homepageList.fixture'
-import { Homepage } from 'features/home/types'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { homepageEntriesAPIResponse } from 'libs/contentful/fixtures/homepageEntriesAPIResponse'
 import { mockServer } from 'tests/mswServer'
@@ -15,9 +14,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 }))
 
 const homepageEntryIds = [
-  // @ts-expect-error: because of noUncheckedIndexedAccess
   homepageEntriesAPIResponse.items[0].sys.id,
-  // @ts-expect-error: because of noUncheckedIndexedAccess
   homepageEntriesAPIResponse.items[1].sys.id,
 ]
 
@@ -32,8 +29,7 @@ describe('useHomepageModules', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    const expectedResult: Homepage = homepageList[0]
+    const expectedResult = homepageList[0]
 
     await waitFor(() => {
       expect(result.current).toEqual(expectedResult)

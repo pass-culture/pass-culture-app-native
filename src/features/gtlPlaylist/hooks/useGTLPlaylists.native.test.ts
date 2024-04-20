@@ -3,6 +3,7 @@ import { SearchResponse } from '@algolia/client-search'
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { LocationMode, Position } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
+import { toMutable } from 'shared/types/toMutable'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
@@ -30,7 +31,7 @@ jest.mock('features/profile/helpers/useIsUserUnderage', () => ({
   useIsUserUnderage: jest.fn().mockReturnValue(false),
 }))
 
-const gtlPlaylistsFixture = [
+const gtlPlaylistsFixture = toMutable([
   {
     title: 'Test',
     offers: {
@@ -56,7 +57,8 @@ const gtlPlaylistsFixture = [
     minNumberOfOffers: 1,
     entryId: '2xUlLBRfxdk6jeYyJszunX',
   },
-]
+] as const)
+
 const mockFetchGTLPlaylists = jest
   .spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists')
   .mockResolvedValue(gtlPlaylistsFixture)
@@ -159,7 +161,6 @@ describe('useGTLPlaylists', () => {
 
   it('should not return playlist when it is shorter than the minimum number of offers', async () => {
     mockFetchGTLPlaylists.mockResolvedValueOnce([
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       { ...gtlPlaylistsFixture[0], minNumberOfOffers: 2 },
     ])
 

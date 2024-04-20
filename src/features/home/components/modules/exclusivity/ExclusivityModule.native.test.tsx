@@ -17,7 +17,7 @@ excluOfferAPISpy.mockImplementation(() => {
   return {
     isLoading: false,
     data: mockOffer,
-  } as UseQueryResult<OfferResponse>
+  } as unknown as UseQueryResult<OfferResponse>
 })
 
 const props: ExclusivityModuleProps = {

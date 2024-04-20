@@ -6,7 +6,6 @@ import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
 import { useLocation } from 'libs/location'
 import { ILocationContext } from 'libs/location/types'
 import { offersFixture } from 'shared/offer/offer.fixture'
-import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -25,14 +24,13 @@ jest.mock('libs/algolia/fetchAlgolia/fetchOffersByEan', () => ({
 }))
 const mockFetchOffersByEan = fetchOffersByEan as jest.MockedFunction<typeof fetchOffersByEan>
 
-const mockOffers: Offer[] = mockedAlgoliaResponse.hits
+const mockOffers = mockedAlgoliaResponse.hits
 
 jest.mock('libs/location')
 const mockUseLocation = jest.mocked(useLocation)
 
 describe('useHighlightOffer', () => {
   it('should return offer when offerId is provided', async () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     mockFetchOffersByIds.mockResolvedValueOnce([mockOffers[0]])
 
     const { result } = renderUseHighlightOfferHook({ offerId: 'offerId1' })
@@ -41,7 +39,6 @@ describe('useHighlightOffer', () => {
   })
 
   it('should return offer when offerTag is provided', async () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     mockFetchOffersByTags.mockResolvedValueOnce([mockOffers[0]])
 
     const { result } = renderUseHighlightOfferHook({ offerTag: 'test-tag' })
@@ -50,7 +47,6 @@ describe('useHighlightOffer', () => {
   })
 
   it('should return offer when offerEan is provided', async () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     mockFetchOffersByEan.mockResolvedValueOnce([mockOffers[0]])
 
     const { result } = renderUseHighlightOfferHook({ offerEan: '1234567891234' })
@@ -69,13 +65,10 @@ describe('useHighlightOffer', () => {
       const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseLocation.mockReturnValue({
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         geolocPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         userLocation: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
       } as ILocationContext)
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
         offerId: '102280',
@@ -93,7 +86,6 @@ describe('useHighlightOffer', () => {
         geolocPosition: { latitude: 1, longitude: 1 },
       } as ILocationContext)
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
         offerId: '102280',
@@ -111,7 +103,6 @@ describe('useHighlightOffer', () => {
         geolocPosition: undefined,
       } as ILocationContext)
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
         offerId: '102280',
@@ -126,11 +117,9 @@ describe('useHighlightOffer', () => {
       const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseLocation.mockReturnValue({
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         geolocPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
       } as ILocationContext)
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
         offerId: '102280',

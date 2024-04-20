@@ -128,7 +128,7 @@ mockUseBookings.mockReturnValue({
   data: bookingsSnap,
   isLoading: false,
   isFetching: false,
-} as UseQueryResult<BookingsResponse, unknown>)
+} as unknown as UseQueryResult<BookingsResponse, unknown>)
 
 jest.mock('shared/user/useAvailableCredit')
 const mockGetAvailableCredit = getAvailableCredit as jest.MockedFunction<typeof getAvailableCredit>
@@ -241,7 +241,7 @@ describe('useSelectHomepageEntry', () => {
           data: { ...bookingsSnap, hasBookingsAfter18: false },
           isLoading: false,
           isFetching: false,
-        } as UseQueryResult<BookingsResponse, unknown>)
+        } as unknown as UseQueryResult<BookingsResponse, unknown>)
 
         const { result } = renderHook(() => useSelectHomepageEntry())
         const Homepage = result.current(shuffle(homepageEntries))
