@@ -27,8 +27,28 @@ describe('useInit', () => {
     })
   })
 
+  it('should set default event parameters to null when there is no campaign date', async () => {
+    useUtmParamsSpy.mockReturnValueOnce({ campaignDate: null })
+    renderHook(useInit)
+
+    expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
+      traffic_campaign: null,
+      traffic_content: null,
+      traffic_gen: null,
+      traffic_medium: null,
+      traffic_source: null,
+    })
+  })
+
   it('should not reset default event parameters if the campaign date started less than 24 hours ago', async () => {
     useUtmParamsSpy.mockReturnValueOnce({ campaignDate: TWENTY_THREE_HOURS_AGO })
+    renderHook(useInit)
+
+    expect(firebaseAnalytics.setDefaultEventParameters).not.toHaveBeenCalled()
+  })
+
+  it('should not reset default event parameters while reading campaign date', async () => {
+    useUtmParamsSpy.mockReturnValueOnce({ campaignDate: undefined })
     renderHook(useInit)
 
     expect(firebaseAnalytics.setDefaultEventParameters).not.toHaveBeenCalled()
