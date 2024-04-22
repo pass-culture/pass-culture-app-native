@@ -4,19 +4,25 @@ import styled from 'styled-components/native'
 
 import { VENUE_MAP_BACKGROUND } from 'features/venueMap/components/VenueMapBlock/VenueMapBackground'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const VenueMapBlock: FunctionComponent = ({ ...props }) => {
+type Props = {
+  onPress?: VoidFunction
+}
+
+export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, ...props }) => {
   const focusProps = useHandleFocus()
+  const TouchableContainer = onPress ? StyledTouchable : StyledInternalTouchableLink
 
   return (
     <Container {...props}>
       <Typo.Title3 {...getHeadingAttrs(2)}>Carte des lieux culturels</Typo.Title3>
       <Spacer.Column numberOfSpaces={4} />
-      <TouchableContainer navigateTo={{ screen: 'VenueMap' }} {...focusProps}>
+      <TouchableContainer onPress={onPress} navigateTo={{ screen: 'VenueMap' }} {...focusProps}>
         <StyledImageBackground source={VENUE_MAP_BACKGROUND}>
           <StyledLinearGradient />
           <CardText>Explorer les lieux</CardText>
@@ -30,7 +36,7 @@ const Container = styled.View({
   marginHorizontal: getSpacing(2),
 })
 
-const TouchableContainer = styled(InternalTouchableLink)<{ isFocus?: boolean }>(
+const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ isFocus?: boolean }>(
   ({ theme, isFocus }) => ({
     overflow: 'hidden',
     borderRadius: theme.borderRadius.radius,
@@ -39,6 +45,14 @@ const TouchableContainer = styled(InternalTouchableLink)<{ isFocus?: boolean }>(
     ...customFocusOutline({ isFocus, color: theme.colors.black }),
   })
 )
+
+const StyledTouchable = styled(Touchable)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
+  overflow: 'hidden',
+  borderRadius: theme.borderRadius.radius,
+  borderColor: theme.colors.greyMedium,
+  borderWidth: 1,
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+}))
 
 const StyledImageBackground = styled.ImageBackground.attrs(({ theme }) => ({
   imageStyle: {

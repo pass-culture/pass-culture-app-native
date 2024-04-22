@@ -44,6 +44,11 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? 4 : 2
 
+  const handlePress = () => {
+    // eslint-disable-next-line no-console
+    console.log('Button pressed')
+  }
+
   return (
     <FlatList
       data={sortedCategories}
@@ -56,7 +61,9 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
           {displayVenueMap ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
-              <VenueMapBlock />
+              <VenueMapBlock
+                onPress={isMapWithoutPositionAndNotLocated ? handlePress : undefined}
+              />
               <Spacer.Column numberOfSpaces={2} />
             </React.Fragment>
           ) : null}
