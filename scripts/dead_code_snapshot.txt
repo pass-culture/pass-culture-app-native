@@ -1,2 +1,4 @@
 src/features/auth/helpers/contactSupport.ts:38 - satisfies
 src/features/auth/helpers/contactSupport.ts:38 - ContactSupport (used in module)
+src/libs/place/fixtures/mockedSuggestedPlaces.ts:75 - satisfies
+src/libs/place/fixtures/mockedSuggestedPlaces.ts:75 - FeatureCollection (used in module)
