@@ -2,7 +2,9 @@ import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { Referrals } from 'features/navigation/RootNavigator/types'
 import { VENUE_MAP_BACKGROUND } from 'features/venueMap/components/VenueMapBlock/VenueMapBackground'
+import { analytics } from 'libs/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -11,13 +13,21 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
+  from: Referrals
   onPress?: VoidFunction
 }
 
-export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, ...props }) => {
+export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...props }) => {
   const focusProps = useHandleFocus()
   const TouchableContainer = onPress ? StyledTouchable : StyledInternalTouchableLink
-  const touchableProps = onPress ? { onPress } : { navigateTo: { screen: 'VenueMap' } }
+
+  const handleOnBeforeNavigate = () => {
+    analytics.logConsultVenueMap({ from })
+  }
+
+  const touchableProps = onPress
+    ? { onPress }
+    : { navigateTo: { screen: 'VenueMap' }, onBeforeNavigate: handleOnBeforeNavigate }
 
   return (
     <Container {...props}>
