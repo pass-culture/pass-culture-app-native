@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { SubcategoryIdEnum } from 'api/gen'
+import { BookingReponse, SubcategoryIdEnum } from 'api/gen'
 import type { BookingsResponse } from 'api/gen'
 import {
   BookingDetailsCancelButton,
@@ -34,7 +34,7 @@ describe('<BookingDetailsCancelButton />', () => {
   })
 
   it('should display button if confirmationDate is null', () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = {
+    const booking: BookingReponse = {
       ...bookingsSnap.ongoing_bookings[0],
     }
     booking.confirmationDate = null

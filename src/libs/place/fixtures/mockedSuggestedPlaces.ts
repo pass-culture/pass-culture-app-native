@@ -1,4 +1,5 @@
 import { FeatureCollection, Point } from 'geojson'
+import type { ReadonlyDeep } from 'type-fest'
 
 import { toMutable } from 'shared/types/toMutable'
 
@@ -72,4 +73,4 @@ export const mockedSuggestedPlaces = toMutable({
       },
     },
   ],
-} as const) satisfies FeatureCollection<Point, Properties>
+} as const satisfies ReadonlyDeep<FeatureCollection<Point, Properties>>)
