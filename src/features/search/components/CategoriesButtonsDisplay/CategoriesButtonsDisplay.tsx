@@ -29,6 +29,8 @@ const CategoryButtonItem: ListRenderItem<CategoryButtonProps> = ({ item }) => (
   </CategoryButtonContainer>
 )
 
+const isWeb = Platform.OS === 'web'
+
 export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCategories }) => {
   const { shouldDisplayVenueMap, hasGeolocPosition, selectedLocationMode } =
     useShouldDisplayVenueMap()
@@ -37,7 +39,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
 
   const isNotLocated = selectedLocationMode === LocationMode.EVERYWHERE && !hasGeolocPosition
 
-  const isMapWithoutPositionAndNotLocated = hasVenueMapWithoutPosition && isNotLocated
+  const isMapWithoutPositionAndNotLocated = hasVenueMapWithoutPosition && isNotLocated && !isWeb
 
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? 4 : 2
