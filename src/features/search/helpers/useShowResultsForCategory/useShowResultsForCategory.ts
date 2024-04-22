@@ -1,15 +1,18 @@
 import { useCallback } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { OnPressCategory } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
-import { SearchView } from 'features/search/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
 export const useShowResultsForCategory = (): OnPressCategory => {
-  const { searchState, dispatch } = useSearch()
+  const { searchState } = useSearch()
   const { data } = useSubcategories()
+  const { navigateToSearch } = useNavigateToSearch('SearchResults')
+  const { disabilities } = useAccessibilityFiltersContext()
 
   return useCallback(
     (pressedCategory) => {
@@ -21,13 +24,12 @@ export const useShowResultsForCategory = (): OnPressCategory => {
         offerSubcategories: [],
         offerNativeCategories: undefined,
         offerGenreTypes: undefined,
-        view: SearchView.Results,
         searchId,
         isFullyDigitalOffersCategory: isOnlyOnline(data, pressedCategory) || undefined,
         isFromHistory: undefined,
       }
-      dispatch({ type: 'SET_STATE', payload: newSearchState })
+      navigateToSearch(newSearchState, disabilities)
     },
-    [data, dispatch, searchState]
+    [data, disabilities, navigateToSearch, searchState]
   )
 }
