@@ -32,14 +32,12 @@ const CategoryButtonItem: ListRenderItem<CategoryButtonProps> = ({ item }) => (
 export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCategories }) => {
   const { shouldDisplayVenueMap, hasGeolocPosition, selectedLocationMode } =
     useShouldDisplayVenueMap()
-  const hasVenueMapWithoutPosition = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_POSITION
-  )
+  const hasVenueMapWithoutPosition =
+    useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_POSITION) || true
 
   const isNotLocated = selectedLocationMode === LocationMode.EVERYWHERE && !hasGeolocPosition
 
   const isMapWithoutPositionAndNotLocated = hasVenueMapWithoutPosition && isNotLocated
-  const displayVenueMap = isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap
 
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? 4 : 2
@@ -58,7 +56,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
       key={numColumns} // update key to avoid the following error: Changing numColumns on the fly is not supported. Change the key prop on FlatList when changing the number of columns to force a fresh render of the component.
       ListHeaderComponent={
         <React.Fragment>
-          {displayVenueMap ? (
+          {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
               <VenueMapBlock

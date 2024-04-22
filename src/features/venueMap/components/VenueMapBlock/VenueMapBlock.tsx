@@ -17,12 +17,13 @@ type Props = {
 export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, ...props }) => {
   const focusProps = useHandleFocus()
   const TouchableContainer = onPress ? StyledTouchable : StyledInternalTouchableLink
+  const touchableProps = onPress ? { onPress } : { navigateTo: { screen: 'VenueMap' } }
 
   return (
     <Container {...props}>
       <Typo.Title3 {...getHeadingAttrs(2)}>Carte des lieux culturels</Typo.Title3>
       <Spacer.Column numberOfSpaces={4} />
-      <TouchableContainer onPress={onPress} navigateTo={{ screen: 'VenueMap' }} {...focusProps}>
+      <TouchableContainer {...touchableProps} {...focusProps}>
         <StyledImageBackground source={VENUE_MAP_BACKGROUND}>
           <StyledLinearGradient />
           <CardText>Explorer les lieux</CardText>
