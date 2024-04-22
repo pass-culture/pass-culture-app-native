@@ -1,5 +1,3 @@
-import { WritableDeep } from 'type-fest'
-
 import { SubcategoryIdEnum } from 'api/gen'
 import {
   filterVenueOfferHit,
@@ -9,6 +7,7 @@ import {
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { Position } from 'libs/location'
+import { toMutable } from 'shared/types/toMutable'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -120,12 +119,6 @@ describe('useSearchVenueOffers', () => {
 
       expect(shouldFilterVenueOfferHit).toEqual(false)
     })
-
-    function toMutable<T>(object: Readonly<T>) {
-      return object as WritableDeep<T>
-    }
-
-    // Fonction pour convertir un tuple readonly en mutable
 
     it('should return false when object id hit = offerId param', () => {
       const shouldFilterVenueOfferHit = filterVenueOfferHit({
