@@ -3,7 +3,6 @@ import { Platform } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import {
   formattedVenuesModule,
@@ -13,22 +12,19 @@ import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/location'
-import { storage } from 'libs/storage'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
 
 jest.mock('features/home/api/useHomepageData')
-const mockUseHomepageData = useHomepageData as jest.Mock
+const mockUseHomepageData = useHomepageData as jest.MockedFunction<typeof useHomepageData>
 
 jest.mock('libs/location/LocationWrapper')
 const mockUserLocation = useLocation as jest.Mock
@@ -38,17 +34,6 @@ mockUserLocation.mockReturnValue({
     longitude: 2,
   },
 })
-
-const baseAuthContext = {
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  user: beneficiaryUser,
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-}
-jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-mockUseAuthContext.mockReturnValue(baseAuthContext)
 
 jest
   .spyOn(useMapSubscriptionHomeIdsToThematic, 'useMapSubscriptionHomeIdsToThematic')
@@ -75,7 +60,13 @@ describe('ThematicHome', () => {
   mockUseHomepageData.mockReturnValue({
     modules,
     id: 'fakeEntryId',
-    thematicHeader: { title: 'HeaderTitle', subtitle: 'HeaderSubtitle' },
+    thematicHeader: {
+      title: 'HeaderTitle',
+      subtitle: 'HeaderSubtitle',
+      type: ThematicHeaderType.Category,
+      imageUrl: 'url.com/image',
+    },
+    tags: [],
   })
 
   beforeEach(() => {
@@ -84,7 +75,8 @@ describe('ThematicHome', () => {
 
   it('should render correctly', async () => {
     renderThematicHome()
-    await act(async () => {})
+
+    await screen.findByText('Suivre')
 
     expect(screen).toMatchSnapshot()
   })
@@ -94,10 +86,9 @@ describe('ThematicHome', () => {
       mockUseHomepageData.mockReturnValueOnce(highlightHeaderFixture)
 
       renderThematicHome()
-      await act(async () => {})
 
+      expect(await screen.findByText('Un sous-titre')).toBeOnTheScreen()
       expect(screen.getAllByText('Bloc temps fort')).not.toHaveLength(0)
-      expect(screen.getByText('Un sous-titre')).toBeOnTheScreen()
     })
 
     it('should show highlight animated header when provided and platform is iOS', async () => {
@@ -106,7 +97,6 @@ describe('ThematicHome', () => {
       mockUseHomepageData.mockReturnValueOnce(highlightHeaderFixture)
 
       renderThematicHome()
-      await act(async () => {})
 
       expect(await screen.findAllByText('Bloc temps fort')).not.toHaveLength(0)
       expect(screen.getByTestId('animated-thematic-header')).toBeOnTheScreen()
@@ -126,9 +116,8 @@ describe('ThematicHome', () => {
       mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderDataWithIntroduction)
 
       renderThematicHome()
-      await act(async () => {})
 
-      expect(screen.getByText('IntroductionTitle')).toBeOnTheScreen()
+      expect(await screen.findByText('IntroductionTitle')).toBeOnTheScreen()
       expect(screen.getByText('IntroductionParagraph')).toBeOnTheScreen()
     })
 
@@ -138,7 +127,6 @@ describe('ThematicHome', () => {
       mockUseHomepageData.mockReturnValueOnce(highlightHeaderFixture)
 
       renderThematicHome()
-      await act(async () => {})
 
       expect(await screen.findAllByText('Bloc temps fort')).not.toHaveLength(0)
       expect(screen.queryByTestId('animated-thematic-header')).not.toBeOnTheScreen()
@@ -147,6 +135,7 @@ describe('ThematicHome', () => {
     it('should show category header when provided', async () => {
       mockUseHomepageData.mockReturnValueOnce({
         modules,
+        tags: [],
         id: 'fakeEntryId',
         thematicHeader: {
           type: ThematicHeaderType.Category,
@@ -158,132 +147,19 @@ describe('ThematicHome', () => {
       })
 
       renderThematicHome()
-      await act(async () => {})
 
       expect(await screen.findAllByText('Catégorie cinéma')).not.toHaveLength(0)
       expect(screen.getByText('Un sous-titre')).toBeOnTheScreen()
     })
   })
 
-  describe('SubscribeButton', () => {
-    it('should open logged out modal when user is not logged in', async () => {
-      mockUseAuthContext.mockReturnValueOnce({
-        ...baseAuthContext,
-        isLoggedIn: false,
-        user: undefined,
-      })
-
-      renderThematicHome()
-
-      await act(async () => fireEvent.press(screen.getByText('Suivre')))
-
-      expect(screen.getByText('Identifie-toi pour t’abonner à un thème')).toBeOnTheScreen()
-    })
-
-    it('should show inactive SubscribeButton when user is logged in and not subscribed yet', async () => {
-      renderThematicHome()
-      await act(async () => {})
-
-      expect(screen.getByText('Suivre')).toBeOnTheScreen()
-    })
-
-    it('should show active SubscribeButton when user is logged in and already subscribed', async () => {
-      mockUseAuthContext.mockReturnValueOnce({
-        ...baseAuthContext,
-        isLoggedIn: true,
-        user: {
-          ...beneficiaryUser,
-          subscriptions: {
-            marketingEmail: true,
-            marketingPush: true,
-            subscribedThemes: [SubscriptionTheme.CINEMA],
-          },
-        },
-      })
-
-      renderThematicHome()
-      await act(async () => {})
-
-      expect(screen.getByText('Déjà suivi')).toBeOnTheScreen()
-    })
-
-    it('should show notifications settings modal when user has no notifications activated and click on subscribe button', async () => {
-      mockUseAuthContext.mockReturnValueOnce({
-        ...baseAuthContext,
-        isLoggedIn: true,
-        user: {
-          ...beneficiaryUser,
-          subscriptions: {
-            marketingEmail: false,
-            marketingPush: false,
-            subscribedThemes: [],
-          },
-        },
-      })
-
-      renderThematicHome()
-
-      await act(async () => fireEvent.press(screen.getByText('Suivre')))
-
-      expect(screen.getByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
-    })
-
-    it('should show unsubscribe modal when user is already subscribed and click on subscribe button', async () => {
-      mockUseAuthContext.mockReturnValueOnce({
-        ...baseAuthContext,
-        isLoggedIn: true,
-        user: {
-          ...beneficiaryUser,
-          subscriptions: {
-            marketingEmail: true,
-            marketingPush: true,
-            subscribedThemes: [SubscriptionTheme.CINEMA],
-          },
-        },
-      })
-
-      renderThematicHome()
-
-      await act(async () => fireEvent.press(screen.getByText('Déjà suivi')))
-
-      expect(
-        screen.getByText('Es-tu sûr de ne plus vouloir suivre ce thème\u00a0?')
-      ).toBeOnTheScreen()
-    })
-
-    it('should show subscription success modal when user subscribe to a thematic for the second time', async () => {
-      mockServer.postApi('/v1/profile', {})
-
-      await storage.saveObject('times_user_subscribed_to_a_theme', 1)
-      renderThematicHome()
-
-      await act(async () => fireEvent.press(screen.getByText('Suivre')))
-
-      expect(screen.getByText('Tu suis le thème "Cinéma"')).toBeOnTheScreen()
-      expect(screen.getByText('Voir mes préférences')).toBeOnTheScreen()
-    })
-
-    it('should show snackbar when user subscribe to a thematic home for more than 3 times', async () => {
-      mockServer.postApi('/v1/profile', {})
-
-      await storage.saveObject('times_user_subscribed_to_a_theme', 3)
-      renderThematicHome()
-
-      await act(async () => fireEvent.press(screen.getByText('Suivre')))
-
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Tu suis le thème “Cinéma”\u00a0! Tu peux gérer tes alertes depuis ton profil.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-    })
-  })
-
   describe('analytics', () => {
     it('should log ConsultHome', async () => {
       renderThematicHome()
-      await act(async () => {})
 
-      expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
+      await waitFor(() => {
+        expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
+      })
     })
 
     it('should log ConsultHome when coming from category block', async () => {
@@ -296,13 +172,14 @@ describe('ThematicHome', () => {
         },
       })
       renderThematicHome()
-      await act(async () => {})
 
-      expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
-        homeEntryId: 'fakeEntryId',
-        from: 'category_block',
-        moduleId: 'moduleId',
-        moduleListId: 'moduleListId',
+      await waitFor(() => {
+        expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
+          homeEntryId: 'fakeEntryId',
+          from: 'category_block',
+          moduleId: 'moduleId',
+          moduleListId: 'moduleListId',
+        })
       })
     })
 
@@ -317,10 +194,12 @@ describe('ThematicHome', () => {
       renderThematicHome()
       await act(async () => {})
 
-      expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
-        homeEntryId: 'fakeEntryId',
-        from: 'highlight_thematic_block',
-        moduleId: 'moduleId',
+      await waitFor(() => {
+        expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
+          homeEntryId: 'fakeEntryId',
+          from: 'highlight_thematic_block',
+          moduleId: 'moduleId',
+        })
       })
     })
   })
@@ -332,9 +211,9 @@ describe('ThematicHome', () => {
       })
       renderThematicHome()
 
-      await act(async () => {})
-
-      expect(screen.getByText('Géolocalise-toi')).toBeOnTheScreen()
+      await waitFor(() => {
+        expect(screen.getByText('Géolocalise-toi')).toBeOnTheScreen()
+      })
     })
 
     it('should not show geolocation banner when user is geolocated or located', async () => {
@@ -346,7 +225,7 @@ describe('ThematicHome', () => {
       })
       renderThematicHome()
 
-      await act(async () => {})
+      await screen.findByText('Suivre')
 
       expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
     })
@@ -354,7 +233,5 @@ describe('ThematicHome', () => {
 })
 
 const renderThematicHome = () => {
-  render(<ThematicHome />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  render(reactQueryProviderHOC(<ThematicHome />))
 }

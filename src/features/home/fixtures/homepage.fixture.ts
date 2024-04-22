@@ -11,6 +11,7 @@ import {
   CategoryListModule,
   ThematicHeaderType,
   Color,
+  HomepageTag,
 } from 'features/home/types'
 
 export const formattedBusinessModule: BusinessModule = {
@@ -167,6 +168,9 @@ export const formattedCategoryListModule: CategoryListModule = {
   ],
 }
 
+const venueModules: VenuesModule[] = [formattedVenuesModule]
+const emptyTags: HomepageTag[] = []
+
 export const adaptedHomepage: Homepage = {
   tags: [],
   id: '6DCThxvbPFKAo04SVRZtwY',
@@ -187,7 +191,7 @@ export const adaptedHomepage: Homepage = {
   ],
 }
 export const highlightHeaderFixture = {
-  modules: [formattedVenuesModule],
+  modules: venueModules,
   id: 'fakeEntryId',
   thematicHeader: {
     type: ThematicHeaderType.Highlight,
@@ -198,5 +202,5 @@ export const highlightHeaderFixture = {
     beginningDate: new Date('2022-12-21T23:00:00.000Z'),
     endingDate: new Date('2023-01-14T23:00:00.000Z'),
   },
-  tags: [],
-} as const
+  tags: emptyTags,
+} as const satisfies Homepage
