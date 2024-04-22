@@ -7,9 +7,15 @@ import { LocationMode } from 'libs/location/types'
 
 const isWeb = Platform.OS === 'web'
 
+type OutputProps = {
+  shouldDisplayVenueMap: boolean
+  hasGeolocPosition: boolean
+  selectedLocationMode: LocationMode
+}
+
 export const useShouldDisplayVenueMap = (
   featureFlag: RemoteStoreFeatureFlags = RemoteStoreFeatureFlags.WIP_VENUE_MAP
-): boolean => {
+): OutputProps => {
   const enabledVenueMap = useFeatureFlag(featureFlag)
 
   const { hasGeolocPosition, selectedLocationMode } = useLocation()
@@ -17,5 +23,9 @@ export const useShouldDisplayVenueMap = (
     selectedLocationMode === LocationMode.AROUND_PLACE ||
     (selectedLocationMode === LocationMode.AROUND_ME && hasGeolocPosition)
 
-  return !!enabledVenueMap && isLocated && !isWeb
+  return {
+    shouldDisplayVenueMap: !!enabledVenueMap && isLocated && !isWeb,
+    hasGeolocPosition,
+    selectedLocationMode,
+  }
 }

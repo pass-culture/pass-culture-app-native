@@ -25,6 +25,10 @@ describe('useShouldDisplayVenueMap', () => {
   it('should not render venue map on web', () => {
     const { result } = renderHook(useShouldDisplayVenueMap)
 
-    expect(result.current).toBe(false)
+    expect(result.current).toEqual({
+      hasGeolocPosition: true,
+      selectedLocationMode: LocationMode.AROUND_ME,
+      shouldDisplayVenueMap: false,
+    })
   })
 })
