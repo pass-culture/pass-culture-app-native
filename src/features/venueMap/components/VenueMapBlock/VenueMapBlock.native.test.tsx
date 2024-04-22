@@ -2,7 +2,8 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
-import { fireEvent, render, screen } from 'tests/utils'
+import { analytics } from 'libs/analytics'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 describe('<VenueMapBlock />', () => {
   it('should display title venue map', () => {
@@ -17,11 +18,23 @@ describe('<VenueMapBlock />', () => {
     expect(screen.getByText('Explorer les lieux')).toBeOnTheScreen()
   })
 
-  it('should navigate to venue map screen', () => {
+  it('should navigate to venue map screen', async () => {
     render(<VenueMapBlock from="searchLanding" />)
 
     fireEvent.press(screen.getByText('Explorer les lieux'))
 
-    expect(navigate).toHaveBeenCalledWith('VenueMap', undefined)
+    await waitFor(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap', undefined)
+    })
+  })
+
+  it('should trigger log ConsultVenueMap', async () => {
+    render(<VenueMapBlock from="searchLanding" />)
+
+    fireEvent.press(screen.getByText('Explorer les lieux'))
+
+    await waitFor(() => {
+      expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'searchLanding' })
+    })
   })
 })

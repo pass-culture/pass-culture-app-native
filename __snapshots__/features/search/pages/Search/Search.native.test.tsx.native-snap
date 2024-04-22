@@ -438,7 +438,9 @@ exports[`<Search/> should render Search 1`] = `
             <Styled(View)
               numberOfSpaces={4}
             />
-            <VenueMapBlock />
+            <VenueMapBlock
+              from="searchLanding"
+            />
             <Styled(View)
               numberOfSpaces={2}
             />
