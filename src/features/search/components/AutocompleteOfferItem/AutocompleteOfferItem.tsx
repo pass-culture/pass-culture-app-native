@@ -40,12 +40,18 @@ export function AutocompleteOfferItem({
   const { ['offer.searchGroupNamev2']: categories, ['offer.nativeCategoryId']: nativeCategories } =
     // @ts-expect-error: because of noUncheckedIndexedAccess
     indexInfos.facets.analytics
+
+  const categoriesWithoutFilmsSeriesCinema = categories.filter(
+    (category) => category.value !== SearchGroupNameEnumv2.FILMS_SERIES_CINEMA
+  )
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const { data } = useSubcategories()
   const enableNewMapping = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS)
   const searchGroupLabel = useSearchGroupLabel(
     // @ts-expect-error: because of noUncheckedIndexedAccess
-    categories.length > 0 ? categories[0].value : SearchGroupNameEnumv2.NONE
+    categoriesWithoutFilmsSeriesCinema.length > 0
+      ? categoriesWithoutFilmsSeriesCinema[0]?.value
+      : SearchGroupNameEnumv2.NONE
   )
   const mostPopularNativeCategoryId =
     // @ts-expect-error: because of noUncheckedIndexedAccess

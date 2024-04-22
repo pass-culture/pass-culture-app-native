@@ -72,6 +72,19 @@ describe('AutocompleteOfferItem component', () => {
     ).toMatchSnapshot()
   })
 
+  it('should not display `FILMS_SERIES_CINEMA` searchGroup', async () => {
+    render(
+      <AutocompleteOfferItem
+        hit={mockHit}
+        sendEvent={mockSendEvent}
+        shouldShowCategory
+        addSearchHistory={jest.fn()}
+      />
+    )
+
+    expect(screen.queryByText('Cinéma, films et séries')).not.toBeOnTheScreen()
+  })
+
   it('should create a suggestion clicked event when pressing a hit', async () => {
     render(
       <AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} addSearchHistory={jest.fn()} />
@@ -232,7 +245,7 @@ describe('AutocompleteOfferItem component', () => {
           payload: {
             ...initialSearchState,
             query: mockHitSeveralCategoriesWithoutAssociationToNativeCategory.query,
-            offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+            offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
@@ -259,7 +272,7 @@ describe('AutocompleteOfferItem component', () => {
           payload: {
             ...initialSearchState,
             query: mockHitWithOnlyCategory.query,
-            offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+            offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,
             priceRange: mockSearchState.priceRange,
@@ -442,14 +455,14 @@ describe('AutocompleteOfferItem component', () => {
       it('when native category associated to only one category', async () => {
         render(
           <AutocompleteOfferItem
-            hit={mockHit}
+            hit={mockHitSeveralCategoriesWithAssociationToNativeCategory}
             sendEvent={mockSendEvent}
             shouldShowCategory
             addSearchHistory={jest.fn()}
           />
         )
 
-        expect(screen.queryByText('Cinéma, films et séries')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       })
 
       it('when native category associated to the most popular category', async () => {
@@ -462,7 +475,7 @@ describe('AutocompleteOfferItem component', () => {
           />
         )
 
-        expect(screen.queryByText('Cinéma, films et séries')).not.toBeOnTheScreen()
+        expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
       })
 
       it('when category is unknown in the app', async () => {
@@ -490,7 +503,7 @@ describe('AutocompleteOfferItem component', () => {
           />
         )
 
-        expect(screen.getByText('Cinéma, films et séries')).toBeOnTheScreen()
+        expect(screen.getByText('Concerts & festivals')).toBeOnTheScreen()
       })
 
       it('has not native category associated to the suggestion', async () => {
@@ -503,7 +516,7 @@ describe('AutocompleteOfferItem component', () => {
           />
         )
 
-        expect(screen.getByText('Cinéma, films et séries')).toBeOnTheScreen()
+        expect(screen.getByText('Concerts & festivals')).toBeOnTheScreen()
       })
 
       it('native category is unknown in the app', async () => {
