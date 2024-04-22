@@ -5,7 +5,7 @@ import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueM
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 
 export const VenueMapModule = () => {
-  const shouldDisplayVenueMap = useShouldDisplayVenueMap()
+  const { shouldDisplayVenueMap } = useShouldDisplayVenueMap()
 
   return shouldDisplayVenueMap ? <StyledVenueMapBlock /> : null
 }

@@ -29,14 +29,22 @@ describe('useShouldDisplayVenueMap', () => {
   it('should render venue map when user is located and feature flag enabled', () => {
     const { result } = renderHook(useShouldDisplayVenueMap)
 
-    expect(result.current).toBe(true)
+    expect(result.current).toEqual({
+      hasGeolocPosition: true,
+      selectedLocationMode: LocationMode.AROUND_ME,
+      shouldDisplayVenueMap: true,
+    })
   })
 
   it('should not render venue map when feature flag is disabled', () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
     const { result } = renderHook(useShouldDisplayVenueMap)
 
-    expect(result.current).toBe(false)
+    expect(result.current).toEqual({
+      hasGeolocPosition: true,
+      selectedLocationMode: LocationMode.AROUND_ME,
+      shouldDisplayVenueMap: false,
+    })
   })
 
   it('should not render venue map when user is not located', () => {
@@ -47,7 +55,11 @@ describe('useShouldDisplayVenueMap', () => {
     })
     const { result } = renderHook(useShouldDisplayVenueMap)
 
-    expect(result.current).toBe(false)
+    expect(result.current).toEqual({
+      hasGeolocPosition: false,
+      selectedLocationMode: LocationMode.AROUND_ME,
+      shouldDisplayVenueMap: false,
+    })
   })
 
   it('should not render venue map  when user is located everywhere', () => {
@@ -58,6 +70,10 @@ describe('useShouldDisplayVenueMap', () => {
     })
     const { result } = renderHook(useShouldDisplayVenueMap)
 
-    expect(result.current).toBe(false)
+    expect(result.current).toEqual({
+      hasGeolocPosition: true,
+      selectedLocationMode: LocationMode.EVERYWHERE,
+      shouldDisplayVenueMap: false,
+    })
   })
 })

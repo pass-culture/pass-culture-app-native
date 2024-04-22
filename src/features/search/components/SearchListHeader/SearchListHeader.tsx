@@ -113,7 +113,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
 
-  const shouldDisplaySeeOnTheMap = useShouldDisplayVenueMap(
+  const { shouldDisplayVenueMap } = useShouldDisplayVenueMap(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_SEARCH_RESULTS
   )
 
@@ -150,7 +150,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           <Spacer.Column numberOfSpaces={4} />
           <View>
             <Title>{venueTitle}</Title>
-            {shouldDisplaySeeOnTheMap ? (
+            {shouldDisplayVenueMap ? (
               <ButtonContainer>
                 <Spacer.Column numberOfSpaces={1} />
                 <ButtonTertiaryBlack
