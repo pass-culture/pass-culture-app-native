@@ -14,7 +14,7 @@ export const useSync = (shouldUpdate?: boolean) => {
   const [isLocked, setIsLocked] = useState(false) // we use a locker to avoid glitches caused by params and state changed simultaneously
   const [canSwitchToAroundMe, setCanSwitchToAroundMe] = useState(false) // we use this flag to authorize the switch to AROUND_ME mode when location type in params is AROUND_ME
 
-  const { params } = useRoute<UseRouteType<'Search' | 'SearchFilter'>>()
+  const { params } = useRoute<UseRouteType<'SearchLanding' | 'SearchResults' | 'SearchFilter'>>()
   const { accessibilityFilter, ...searchStateParams } = params || {}
   const disabilitiesParams: Partial<DisabilitiesProperties> = accessibilityFilter || {}
   const { setParams } = useNavigation<UseNavigationType>()

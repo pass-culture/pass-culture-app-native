@@ -266,7 +266,7 @@ describe('<BookingOfferModalComponent />', () => {
 
       it('should log conversion booking when is from search', () => {
         useRoute.mockReturnValueOnce({
-          params: { from: 'search' },
+          params: { from: 'searchresults' },
         })
         render(<BookingOfferModalComponent visible offerId={20} />)
 

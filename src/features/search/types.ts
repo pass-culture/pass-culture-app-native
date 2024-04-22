@@ -27,9 +27,9 @@ export type LocationFilter =
   | { locationType: LocationMode.AROUND_ME; aroundRadius: number | null }
   | { locationType: LocationMode.AROUND_PLACE; place: SuggestedPlace; aroundRadius: number }
 
-export enum SearchView {
-  Landing = 'Landing',
-  Results = 'Results',
+export enum NewSearchView {
+  Landing = 'SearchLanding',
+  Results = 'SearchResults',
 }
 
 export type OfferGenreType = { key: GenreType } & GenreTypeContentModel

@@ -80,7 +80,7 @@ export const NavigationErrors: FunctionComponent = () => {
         <Row half>
           <ButtonPrimary
             wording="Offre inexistante"
-            onPress={() => navigate('Offer', { id: 0, from: 'search' })}
+            onPress={() => navigate('Offer', { id: 0, from: 'searchresults' })}
           />
         </Row>
         <Row half>

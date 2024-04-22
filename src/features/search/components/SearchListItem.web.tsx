@@ -71,7 +71,7 @@ export function SearchListItem({ index, style, data }: Readonly<RowProps>) {
           query: data.searchState.query,
           index,
           searchId: data.searchState.searchId,
-          from: 'search',
+          from: 'searchresults',
         }}
       />
       <Separator />
