@@ -16,7 +16,7 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer } from 'ui/theme'
 
 export const ConfirmChangeEmailContent = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { replace } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'ConfirmChangeEmail'>>()
   const loginRoutine = useLoginRoutine()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -33,14 +33,17 @@ export const ConfirmChangeEmailContent = () => {
       )
 
       if (resetPasswordToken) {
-        navigate('ChangeEmailSetPassword', { token: resetPasswordToken })
+        replace('ChangeEmailSetPassword', {
+          token: resetPasswordToken,
+          emailSelectionToken: newEmailSelectionToken,
+        })
       } else {
-        navigate('NewEmailSelection', { token: newEmailSelectionToken })
+        replace('NewEmailSelection', { token: newEmailSelectionToken })
       }
     },
     onError: (error) => {
       if (error instanceof ApiError && error.statusCode === 401) {
-        navigate('ChangeEmailExpiredLink')
+        replace('ChangeEmailExpiredLink')
         return
       }
       showErrorSnackBar({
@@ -56,7 +59,7 @@ export const ConfirmChangeEmailContent = () => {
   )
 
   if (isTimestampExpired(params.expiration_timestamp)) {
-    navigate('ChangeEmailExpiredLink')
+    replace('ChangeEmailExpiredLink')
     return null
   }
 

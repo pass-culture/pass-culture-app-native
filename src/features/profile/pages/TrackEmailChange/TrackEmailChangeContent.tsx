@@ -5,8 +5,8 @@ import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { getEmailUpdateStepV2 } from 'features/profile/helpers/getEmailUpdateStepV2'
 import { useEmailUpdateStatusV2 } from 'features/profile/helpers/useEmailUpdateStatusV2'
 import { Step } from 'ui/components/Step/Step'
@@ -16,17 +16,22 @@ import { StepList } from 'ui/components/StepList/StepList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { PencilTip } from 'ui/svg/icons/bicolor/PencilTip'
 import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
+import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { Spacer } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 
 export const TrackEmailChangeContent = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { replace } = useNavigation<UseNavigationType>()
 
   const { user } = useAuthContext()
   const { data: requestStatus, isLoading: isRequestStatusLoading } = useEmailUpdateStatusV2()
 
-  const currentStep = getEmailUpdateStepV2(requestStatus?.status)
+  const hasPasswordStep = !user?.hasPassword || requestStatus?.hasRecentlyResetPassword
+  const currentStep = getEmailUpdateStepV2(
+    !!requestStatus?.hasRecentlyResetPassword,
+    requestStatus?.status
+  )
   const currentEmail = user?.email ?? ''
   const newEmail = requestStatus?.newEmail ?? ''
 
@@ -62,6 +67,24 @@ export const TrackEmailChangeContent = () => {
       },
       onPress: isWeb ? undefined : openInbox,
     },
+    NEW_PASSWORD: {
+      currentTitle: 'Crée ton mot de passe',
+      defaultTitle: 'Création de ton mot de passe',
+      subtitle: 'Pour pouvoir te connecter via ta future adresse e-mail',
+      icon: {
+        current: BicolorConfidentialityIcon,
+        completed: CompletedConfidentialityIcon,
+        disabled: DisabledConfidentialityIcon,
+        retry: DisabledConfidentialityIcon,
+      },
+      navigateTo: {
+        screen: 'ChangeEmailSetPassword',
+        params: {
+          token: requestStatus?.resetPasswordToken,
+          emailSelectionToken: requestStatus?.token,
+        },
+      },
+    },
     NEW_EMAIL: {
       currentTitle: 'Choisis ta nouvelle adresse e-mail',
       defaultTitle: 'Choix de ta nouvelle adresse e-mail',
@@ -89,11 +112,11 @@ export const TrackEmailChangeContent = () => {
   }
 
   if (!isRequestStatusLoading && !requestStatus?.status) {
-    navigateToHome()
+    replace(...homeNavConfig)
     return null
   }
   if (!isRequestStatusLoading && requestStatus?.expired) {
-    navigate('ChangeEmailExpiredLink')
+    replace('ChangeEmailExpiredLink')
     return null
   }
 
@@ -101,26 +124,28 @@ export const TrackEmailChangeContent = () => {
     <StyledListContainer>
       <Spacer.Column numberOfSpaces={10} />
       <StepList currentStepIndex={currentStep}>
-        {Object.entries(stepConfig).map(([key, step], index) => {
-          const stepState = getStepButtonState(index)
-          const isCurrent = stepState === StepButtonState.CURRENT
+        {Object.entries(stepConfig)
+          .filter(([key]) => (key === 'NEW_PASSWORD' ? hasPasswordStep : true))
+          .map(([key, step], index) => {
+            const stepState = getStepButtonState(index)
+            const isCurrent = stepState === StepButtonState.CURRENT
 
-          return (
-            <Step key={key}>
-              {isCurrent ? <Spacer.Column numberOfSpaces={2} /> : null}
-              <StepButton
-                step={{
-                  stepState,
-                  title: isCurrent ? step.currentTitle : step.defaultTitle,
-                  subtitle: isCurrent ? step.subtitle : undefined,
-                  icon: step.icon,
-                }}
-                onPress={step?.onPress}
-                navigateTo={step?.navigateTo}
-              />
-            </Step>
-          )
-        })}
+            return (
+              <Step key={key}>
+                {isCurrent ? <Spacer.Column numberOfSpaces={2} /> : null}
+                <StepButton
+                  step={{
+                    stepState,
+                    title: isCurrent ? step.currentTitle : step.defaultTitle,
+                    subtitle: isCurrent ? step.subtitle : undefined,
+                    icon: step.icon,
+                  }}
+                  onPress={step?.onPress}
+                  navigateTo={step?.navigateTo}
+                />
+              </Step>
+            )
+          })}
       </StepList>
     </StyledListContainer>
   )
@@ -134,7 +159,7 @@ const DisabledEmailIcon = styled(BicolorEmailIcon).attrs(({ theme }) => ({
 const CompletedEmailIcon = styled(BicolorEmailIcon).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
   color2: theme.colors.greyDark,
-}))``
+}))({ transform: 'rotate(-8deg)' })
 
 const BicolorPencilIcon = styled(PencilTip).attrs(({ theme }) => ({
   color: theme.colors.primary,
@@ -149,7 +174,22 @@ const DisabledPencilIcon = styled(PencilTip).attrs(({ theme }) => ({
 const CompletedPencilIcon = styled(PencilTip).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
   color2: theme.colors.greyDark,
+}))({ transform: 'rotate(-8deg)' })
+
+const BicolorConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  color2: theme.colors.secondary,
 }))``
+
+const DisabledConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) => ({
+  color: theme.colors.greyMedium,
+  color2: theme.colors.greyMedium,
+}))``
+
+const CompletedConfidentialityIcon = styled(Confidentiality).attrs(({ theme }) => ({
+  color: theme.colors.greyDark,
+  color2: theme.colors.greyDark,
+}))({ transform: 'rotate(-8deg)' })
 
 const StyledListContainer = styled.View({
   marginHorizontal: 'auto',

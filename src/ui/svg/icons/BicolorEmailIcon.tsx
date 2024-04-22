@@ -13,6 +13,7 @@ const EmailIconSvg: React.FunctionComponent<AccessibleIcon> = ({
   color2,
   accessibilityLabel,
   testID,
+  style,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
   return (
@@ -22,7 +23,8 @@ const EmailIconSvg: React.FunctionComponent<AccessibleIcon> = ({
       viewBox="0 0 32 33"
       fill="none"
       accessibilityLabel={accessibilityLabel}
-      testID={testID}>
+      testID={testID}
+      style={style}>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

@@ -12,6 +12,7 @@ const PencilTipSvg: React.FunctionComponent<AccessibleIcon> = ({
   color2,
   accessibilityLabel,
   testID,
+  style,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
   const {
@@ -23,7 +24,8 @@ const PencilTipSvg: React.FunctionComponent<AccessibleIcon> = ({
       height={size}
       viewBox="0 0 32 32"
       accessibilityLabel={accessibilityLabel}
-      testID={testID}>
+      testID={testID}
+      style={style}>
       <Defs>
         <LinearGradient id={gradientId} x1="28.841%" x2="71.159%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color ?? primary} />
