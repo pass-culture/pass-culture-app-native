@@ -54,7 +54,21 @@ In Android Studio: File > Settings > Experimental > Gradle -> uncheck "Only sync
 En cas de soucis avec le JDK installer via `brew install --cask zulu11` et ajouter le chemin `JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` dans .zshrc
 
 </details>
+<details>
+  <summary>Version conflict</summary>
 
+It happens when you try to install with a build number _lower_ than the one already installed.
+
+- Ensure that there is one
+
+```bash
+$ yarn run-android | grep 'INSTALL_FAILED_VERSION_DOWNGRADE'
+```
+
+- If no line containing `'INSTALL_FAILED_VERSION_DOWNGRADE'` is caught, this is not the problem
+- If a line with `'INSTALL_FAILED_VERSION_DOWNGRADE'` is caught
+→ **Uninstall the app on your emulator before building:**
+</details>
 <details>
   <summary>General error for building the app on Android Studio</summary>
 
@@ -64,10 +78,11 @@ run `cd android && ./gradlew clean` to clear the build directory.
 
 on the root of the repository : `rm -rf node_modules` then `yarn` or `yarn install`, this will delete all the installed modules from the repo then reinstalled it.
 
+Try to invalidate the cache: in Android Studio > open project's android folder > file tab > Invalidate caches/restart > Invalidate and restart
+
 If you're on M1 or M2 Mac and the problem still remains, see the error below.
 
 </details>
-<br/>
 <details>
   <summary>[M1 & M2 processor] Error while building the app on android with Android Studio : `Android Studio-- Cause: error=86, Bad CPU type in executable` or `Task :app:processApptestingDebugResources FAILED`</summary>
 
