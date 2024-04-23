@@ -446,6 +446,10 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             />
           </React.Fragment>
           <Styled(Styled(Text)) />
+          <IncentiveLocationModal
+            handleCloseModal={[Function]}
+            visible={false}
+          />
         </React.Fragment>
       }
       contentContainerStyle={
@@ -1050,6 +1054,37 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
           >
             Explore les catégories
           </Text>
+          <Modal
+            accessibilityLabelledBy="testUuidV4"
+            accessibilityModal={true}
+            accessibilityRole="none"
+            animationType="none"
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
         </View>
         <View
           onFocusCapture={[Function]}
