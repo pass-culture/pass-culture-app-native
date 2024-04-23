@@ -4,16 +4,28 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { FakeDoorModal } from 'ui/components/modals/FakeDoorModal'
+import { SurveyModal } from 'ui/components/modals/SurveyModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
 import { Spacer, Typo } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
   artists: string
   numberOfLines?: number
   shouldDisplayFakeDoor?: boolean
+}
+const TextFakeDoorArtistModal = () => {
+  return (
+    <Typo.Body>
+      Ce contenu n’est pas encore disponible.
+      {LINE_BREAK}
+      {LINE_BREAK}
+      Aide-nous à le mettre en place en répondant au questionnaire.
+    </Typo.Body>
+  )
 }
 
 export const OfferArtists: FunctionComponent<Props> = ({
@@ -41,10 +53,13 @@ export const OfferArtists: FunctionComponent<Props> = ({
         iconPosition="right"
         onPress={handleOnPress}
       />
-      <FakeDoorModal
+      <SurveyModal
+        title="Encore un peu de patience…"
         visible={visible}
         hideModal={hideModal}
         surveyUrl="https://passculture.qualtrics.com/jfe/form/SV_6xRze4sgvlbHNd4"
+        Content={TextFakeDoorArtistModal}
+        Icon={BicolorCircledClock}
       />
     </FakeDoorContainer>
   ) : (

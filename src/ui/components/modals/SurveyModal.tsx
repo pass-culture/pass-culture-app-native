@@ -4,31 +4,29 @@ import styled from 'styled-components/native'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { Spacer, Typo } from 'ui/theme'
-import { LINE_BREAK } from 'ui/theme/constants'
+import { AccessibleIcon } from 'ui/svg/icons/types'
+import { Spacer } from 'ui/theme'
 
 type Props = {
+  title: string
   visible: boolean
   hideModal: () => void
   surveyUrl: string
+  Icon: React.FC<AccessibleIcon>
+  Content?: React.FC
 }
 
-export const FakeDoorModal = ({ visible, hideModal, surveyUrl }: Props) => {
+export const SurveyModal = ({ visible, hideModal, surveyUrl, title, Content, Icon }: Props) => {
   return (
-    <AppInformationModal
-      title="Encore un peu de patience…"
-      visible={visible}
-      onCloseIconPress={hideModal}>
-      <BicolorCircledClock />
+    <AppInformationModal title={title} visible={visible} onCloseIconPress={hideModal}>
+      <Icon />
       <Spacer.Column numberOfSpaces={4} />
-      <CenteredText>
-        Ce contenu n’est pas encore disponible.
-        {LINE_BREAK}
-        {LINE_BREAK}
-        Aide-nous à le mettre en place en répondant au questionnaire.
-      </CenteredText>
+      {!!Content && (
+        <Container>
+          <Content />
+        </Container>
+      )}
       <Spacer.Column numberOfSpaces={8} />
       <ExternalTouchableLink
         as={ButtonPrimary}
@@ -42,6 +40,8 @@ export const FakeDoorModal = ({ visible, hideModal, surveyUrl }: Props) => {
   )
 }
 
-const CenteredText = styled(Typo.Body)({
+const Container = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
   textAlign: 'center',
 })
