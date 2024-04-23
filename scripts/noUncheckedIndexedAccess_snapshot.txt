@@ -81,7 +81,7 @@
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:127
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:133
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:41
-./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:51
+./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:52
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:57
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:66
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:83
