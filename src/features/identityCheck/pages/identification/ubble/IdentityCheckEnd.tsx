@@ -10,8 +10,6 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 
 export const IdentityCheckEnd: FC = () => {
-  const { data: subscription } = useGetStepperInfo()
-
   const { data } = useGetStepperInfo()
 
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
@@ -33,7 +31,7 @@ export const IdentityCheckEnd: FC = () => {
     )
     return () => clearTimeout(timeout)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subscription?.nextSubscriptionStep])
+  }, [data?.nextSubscriptionStep])
 
   return (
     <GenericInfoPage title="Ta pièce d’identité a bien été transmise&nbsp;!" icon={EmailSent} />

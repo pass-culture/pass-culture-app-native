@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { dispatch, navigate } from '__mocks__/@react-navigation/native'
-import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
-import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
+import { SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
+import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
@@ -10,14 +10,14 @@ import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
 
-let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
+let mockStepperResponse: Partial<SubscriptionStepperResponseV2> = {
   ...mockStep,
   nextSubscriptionStep: SubscriptionStep['honor-statement'],
 }
 
-jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
-  useNextSubscriptionStep: jest.fn(() => ({
-    data: mockNextSubscriptionStep,
+jest.mock('features/identityCheck/api/useGetStepperInfo', () => ({
+  useGetStepperInfo: jest.fn(() => ({
+    data: mockStepperResponse,
   })),
 }))
 
@@ -60,7 +60,7 @@ describe('<IdentityCheckEnd/>', () => {
   })
 
   it('should navigate to home after timeout if nextSubscriptionStep is null', () => {
-    mockNextSubscriptionStep = {
+    mockStepperResponse = {
       ...mockStep,
       nextSubscriptionStep: null,
     }

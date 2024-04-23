@@ -1,3 +1,6 @@
+import { UseQueryResult } from 'react-query'
+
+import { SubscriptionStepperResponseV2 } from 'api/gen'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
@@ -20,10 +23,16 @@ jest.mock('features/identityCheck/api/useGetStepperInfo', () => ({
   useGetStepperInfo: jest.fn(() => mockUseGetStepperInfo),
 }))
 
-const mockUseGetStepperInfo = (useGetStepperInfo as jest.Mock).mockReturnValue({
-  stepToDisplay: mockSubscriptionStepper.subscriptionStepsToDisplay,
-  title: 'Title',
-  subtitle: 'Subtitle',
+const mockUseGetStepperInfo = (
+  useGetStepperInfo as jest.Mock<
+    Partial<UseQueryResult<Partial<SubscriptionStepperResponseV2>, unknown>>
+  >
+).mockReturnValue({
+  data: {
+    subscriptionStepsToDisplay: mockSubscriptionStepper.subscriptionStepsToDisplay,
+    title: 'Title',
+    subtitle: 'Subtitle',
+  },
 })
 
 jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts')
@@ -50,7 +59,7 @@ describe('useStepperInfo', () => {
     expect(subtitle).toEqual('Subtitle')
   })
 
-  it('should return 3 steps if there is no phone validation step', () => {
+  it('should return 3 steps if there is no phone validation step', async () => {
     const { stepsDetails } = useStepperInfo()
 
     expect(stepsDetails).toHaveLength(3)
@@ -58,7 +67,10 @@ describe('useStepperInfo', () => {
 
   it('should return 4 steps when useGetStepperInfo returns 4 steps', () => {
     mockUseGetStepperInfo.mockReturnValueOnce({
-      stepToDisplay: mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+      data: {
+        subscriptionStepsToDisplay:
+          mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+      },
     })
     const { stepsDetails } = useStepperInfo()
 
@@ -67,7 +79,10 @@ describe('useStepperInfo', () => {
 
   it('should return PhoneValidationTooManySMSSent if no remaining attempts left', () => {
     mockUseGetStepperInfo.mockReturnValueOnce({
-      stepToDisplay: mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+      data: {
+        subscriptionStepsToDisplay:
+          mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+      },
     })
     mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
       remainingAttempts: 0,
@@ -85,7 +100,10 @@ describe('useStepperInfo', () => {
 
   it('should not include only PhoneValidationTooManySMSSent if remaining attempts left', () => {
     mockUseGetStepperInfo.mockReturnValueOnce({
-      stepToDisplay: mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+      data: {
+        subscriptionStepsToDisplay:
+          mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
+      },
     })
     mockUsePhoneValidationRemainingAttempts.mockReturnValueOnce({
       remainingAttempts: 1,

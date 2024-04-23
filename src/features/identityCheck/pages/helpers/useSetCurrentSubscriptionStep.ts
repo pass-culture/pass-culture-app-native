@@ -1,11 +1,8 @@
 import { useFocusEffect } from '@react-navigation/native'
 import { useCallback, useState } from 'react'
 
-import { SubscriptionStep } from 'api/gen'
-import {
-  SubscriptionStepperResponseV2,
-  useGetStepperInfo,
-} from 'features/identityCheck/api/useGetStepperInfo'
+import { SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
+import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 // import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
 import { eventMonitoring } from 'libs/monitoring'

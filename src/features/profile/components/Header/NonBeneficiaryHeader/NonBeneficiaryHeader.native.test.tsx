@@ -4,11 +4,11 @@ import React from 'react'
 import {
   BannerName,
   BannerResponse,
-  NextSubscriptionStepResponse,
   SubscriptionMessage,
+  SubscriptionStepperResponseV2,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
+import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -19,18 +19,17 @@ const mockUseAuthContext = useAuthContext as jest.Mock
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 
-let mockNextSubscriptionStep: NextSubscriptionStepResponse = mockStep
+let mockStepperResponse: Partial<SubscriptionStepperResponseV2> = mockStep
 
 const mockedSubscriptionMessage = {
-  callToActionMessage: null,
   popOverIcon: 'FILE',
   updatedAt: '2021-10-25T13:24Z',
   userMessage: 'Dossier déposé, nous sommes en train de le traiter',
 } as SubscriptionMessage
 
-jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
-  useNextSubscriptionStep: jest.fn(() => ({
-    data: mockNextSubscriptionStep,
+jest.mock('features/identityCheck/api/useGetStepperInfo', () => ({
+  useGetStepperInfo: jest.fn(() => ({
+    data: mockStepperResponse,
   })),
 }))
 
@@ -48,7 +47,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   afterAll(mockdate.reset)
 
   it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
-    mockNextSubscriptionStep = mockStep
+    mockStepperResponse = mockStep
     mockServer.getApi<BannerResponse>('/v1/banner', {
       banner: {
         name: BannerName.activation_banner,
@@ -70,7 +69,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   it("should render the transition 17 to 18 banner when beneficiary's user is now 18", async () => {
-    mockNextSubscriptionStep = mockStep
+    mockStepperResponse = mockStep
     mockServer.getApi<BannerResponse>('/v1/banner', {
       banner: {
         name: BannerName.transition_17_18_banner,
@@ -93,7 +92,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   it('should display identity check message if user identity check is pending', async () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
-    mockNextSubscriptionStep = {
+    mockStepperResponse = {
       ...mockStep,
       hasIdentityCheckPending: true,
     }
@@ -110,7 +109,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   it('should render the subscription message if there is one', async () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
-    mockNextSubscriptionStep = {
+    mockStepperResponse = {
       ...mockStep,
       subscriptionMessage: mockedSubscriptionMessage,
     }
@@ -138,7 +137,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
   it('should not display banner or badge when user is beneficiary', async () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
-    mockNextSubscriptionStep = {
+    mockStepperResponse = {
       ...mockStep,
       hasIdentityCheckPending: false,
     }
