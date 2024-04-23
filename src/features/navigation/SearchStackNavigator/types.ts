@@ -6,6 +6,7 @@ export type SearchStackRouteName = keyof SearchStackParamList
 
 export type SearchStackParamList = {
   Search?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
+  SearchN1Books?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
 }
 
 export type SearchStackScreenNames = keyof SearchStackParamList
