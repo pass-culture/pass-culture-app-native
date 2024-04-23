@@ -1,7 +1,10 @@
+import type { ReadonlyDeep } from 'type-fest'
+
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { HistoryItem } from 'features/search/types'
+import { toMutable } from 'shared/types/toMutable'
 
-export const mockedSearchHistory: HistoryItem[] = [
+export const mockedSearchHistory = toMutable([
   {
     createdAt: new Date('2023-09-25T09:01:00.000Z').getTime(),
     query: 'manga',
@@ -137,4 +140,4 @@ export const mockedSearchHistory: HistoryItem[] = [
     query: 'pack lastman',
     label: 'pack lastman dans Livres',
   },
-]
+] as const satisfies ReadonlyDeep<HistoryItem[]>)

@@ -13,7 +13,6 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { OfferTile } from './OfferTile'
 
-// @ts-expect-error: because of noUncheckedIndexedAccess
 const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = 116656
 const searchId = uuidv4()

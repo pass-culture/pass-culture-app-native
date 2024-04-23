@@ -14,10 +14,10 @@ import { Bookings } from './Bookings'
 
 const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookings')
 
-useBookingsSpy.mockReturnValue({ data: bookingsSnap, isFetching: false } as QueryObserverResult<
-  BookingsResponse,
-  unknown
->)
+useBookingsSpy.mockReturnValue({
+  data: bookingsSnap,
+  isFetching: false,
+} as unknown as QueryObserverResult<BookingsResponse, unknown>)
 
 describe('Bookings', () => {
   beforeEach(() => {
@@ -51,7 +51,7 @@ describe('Bookings', () => {
     const useBookingsResultMock = {
       data: emptyBookingsSnap,
       isFetching: false,
-    } as QueryObserverResult<BookingsResponse, unknown>
+    } as unknown as QueryObserverResult<BookingsResponse, unknown>
     // Due to multiple renders we need to mock useBookings twice
     useBookingsSpy
       .mockReturnValueOnce(useBookingsResultMock)

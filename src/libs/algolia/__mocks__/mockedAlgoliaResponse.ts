@@ -1,11 +1,13 @@
 import { SearchResponse } from '@algolia/client-search'
+import type { ReadonlyDeep } from 'type-fest'
 
 import { SubcategoryIdEnum, VenueTypeCodeKey } from 'api/gen'
 import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
+import { toMutable } from 'shared/types/toMutable'
 
-export const mockedAlgoliaResponse: SearchResponse<Offer> = {
+export const mockedAlgoliaResponse = toMutable({
   hits: [
     {
       offer: {
@@ -105,9 +107,9 @@ export const mockedAlgoliaResponse: SearchResponse<Offer> = {
   params:
     'page=0&facetFilters=%5B%5B%22offer.category%3AMUSIQUE%22%2C%22offer.category%3AINSTRUMENT%22%5D%5D&numericFilters=%5B%5B%22offer.prices%3A+0+TO+300%22%5D%5D&hitsPerPage=6',
   processingTimeMS: 1,
-}
+} as const satisfies ReadonlyDeep<SearchResponse<Offer>>)
 
-export const moreHitsForSimilarOffersPlaylist = [
+export const moreHitsForSimilarOffersPlaylist = toMutable([
   {
     offer: {
       dates: [],
@@ -168,8 +170,9 @@ export const moreHitsForSimilarOffersPlaylist = [
     objectID: '102311',
     venue: {},
   },
-]
-export const mockedAlgoliaVenueResponse: SearchResponse<AlgoliaVenue> = {
+] as const)
+
+export const mockedAlgoliaVenueResponse = toMutable({
   hits: [
     {
       city: 'CHATEAU-GONTIER-SUR-MAYENNE',
@@ -254,9 +257,9 @@ export const mockedAlgoliaVenueResponse: SearchResponse<AlgoliaVenue> = {
       venue_playlist_title: 'test',
     },
   ],
-}
+} as const satisfies ReadonlyDeep<SearchResponse<AlgoliaVenue>>)
 
-export const mockedAlgoliaOffersWithSameArtistResponse: HitOfferWithArtistAndEan[] = [
+export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
   {
     offer: {
       artist: 'Eiichiro Oda',
@@ -1097,4 +1100,4 @@ export const mockedAlgoliaOffersWithSameArtistResponse: HitOfferWithArtistAndEan
     },
     objectID: '12759',
   },
-]
+] as const satisfies ReadonlyDeep<HitOfferWithArtistAndEan[]>)

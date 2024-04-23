@@ -1,12 +1,15 @@
+import type { ReadonlyDeep } from 'type-fest'
+
 import { VenueTypeCodeKey } from 'api/gen'
 import { VenueHit } from 'libs/algolia/types'
+import { toMutable } from 'shared/types/toMutable'
 
 interface SearchResponse {
   hits: VenueHit[]
   nbHits: number
 }
 
-export const mockVenues: SearchResponse = {
+export const mockVenues = toMutable({
   hits: [
     {
       id: 5543,
@@ -122,4 +125,4 @@ export const mockVenues: SearchResponse = {
     },
   ],
   nbHits: 4,
-}
+} as const satisfies ReadonlyDeep<SearchResponse>)

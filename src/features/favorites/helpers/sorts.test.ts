@@ -4,8 +4,7 @@ import { GeoCoordinates } from 'libs/location'
 
 import { sortByIdDesc, sortByAscendingPrice, sortByDistanceAroundMe } from './sorts'
 
-// @ts-expect-error: because of noUncheckedIndexedAccess
-const baseOffer: FavoriteResponse = paginatedFavoritesResponseSnap.favorites[0]
+const baseOffer = paginatedFavoritesResponseSnap.favorites[0]
 
 const position = { latitude: 48.8584, longitude: 2.2945 } as GeoCoordinates
 const position2 = { latitude: 49.8584, longitude: 3.2945 } as GeoCoordinates

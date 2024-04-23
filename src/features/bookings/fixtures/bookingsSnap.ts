@@ -1,11 +1,14 @@
+import type { ReadonlyDeep } from 'type-fest'
+
 import {
   BookingCancellationReasons,
   BookingsResponse,
   SubcategoryIdEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
+import { toMutable } from 'shared/types/toMutable'
 
-export const bookingsSnap: BookingsResponse = {
+export const bookingsSnap = toMutable({
   ended_bookings: [
     {
       id: 321,
@@ -147,10 +150,10 @@ export const bookingsSnap: BookingsResponse = {
     },
   ],
   hasBookingsAfter18: true,
-}
+} as const satisfies ReadonlyDeep<BookingsResponse>)
 
-export const emptyBookingsSnap: BookingsResponse = {
+export const emptyBookingsSnap = toMutable({
   ended_bookings: [],
   ongoing_bookings: [],
   hasBookingsAfter18: true,
-}
+} as const satisfies ReadonlyDeep<BookingsResponse>)

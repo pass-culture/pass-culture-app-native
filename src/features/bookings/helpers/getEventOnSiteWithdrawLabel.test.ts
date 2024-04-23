@@ -6,15 +6,12 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { getEventOnSiteWithdrawLabel } from 'features/bookings/helpers'
 import { Booking } from 'features/bookings/types'
 
-// @ts-expect-error: because of noUncheckedIndexedAccess
 const initialBooking: Booking = {
   ...bookingsSnap.ongoing_bookings[0],
   stock: {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     ...bookingsSnap.ongoing_bookings[0].stock,
     beginningDatetime: '2022-04-22T20:30:00',
     offer: {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       ...bookingsSnap.ongoing_bookings[0].stock.offer,
       subcategoryId: SubcategoryIdEnum.CONCERT,
       withdrawalType: WithdrawalTypeEnum.on_site,

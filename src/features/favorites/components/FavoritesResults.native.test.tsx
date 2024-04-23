@@ -76,7 +76,7 @@ describe('FavoritesResults component', () => {
     mockUseFavorites.mockReturnValue({
       data: paginatedFavoritesResponseSnap,
       isFetching: false,
-    } as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
+    } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseRemoveFavorites.mockReturnValue({

@@ -33,7 +33,7 @@ describe('ExclusivityModule component', () => {
       return {
         isLoading: false,
         data: mockOffer,
-      } as UseQueryResult<OfferResponse>
+      } as unknown as UseQueryResult<OfferResponse>
     })
   })
 

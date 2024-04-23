@@ -1,4 +1,4 @@
-import { WithdrawalTypeEnum } from 'api/gen'
+import { BookingsResponse, WithdrawalTypeEnum } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { getOfferRules } from 'features/bookings/helpers'
 
@@ -60,13 +60,12 @@ describe('getOfferRules', () => {
         ...booking,
         externalBookings: [],
         stock: {
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           ...booking.stock,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
+
           offer: { ...booking.stock.offer, withdrawalType },
         },
       }
-      // @ts-expect-error: because of noUncheckedIndexedAccess
+
       const offerRules = getOfferRules(properties, newBooking)
 
       expect(offerRules).toEqual(
@@ -88,13 +87,12 @@ describe('getOfferRules', () => {
         ...booking,
         externalBookings: [],
         stock: {
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           ...booking.stock,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
+
           offer: { ...booking.stock.offer, withdrawalType },
         },
       }
-      // @ts-expect-error: because of noUncheckedIndexedAccess
+
       const offerRules = getOfferRules(properties, newBooking)
 
       expect(offerRules).toEqual('')
@@ -102,13 +100,16 @@ describe('getOfferRules', () => {
   )
 
   it('should return the correct message if externalBookingsInfos.length === 1', () => {
+    const booking: BookingsResponse['ongoing_bookings'][number] = {
+      ...bookingsSnap.ongoing_bookings[1],
+    }
     const properties = {
       hasActivationCode: false,
       isDigital: false,
       isPhysical: true,
       isEvent: false,
     }
-    // @ts-expect-error: because of noUncheckedIndexedAccess
+
     booking.externalBookings = [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }]
     const offerRules = getOfferRules(properties, booking)
 
@@ -124,7 +125,7 @@ describe('getOfferRules', () => {
       isPhysical: false,
       isEvent: true,
     }
-    // @ts-expect-error: because of noUncheckedIndexedAccess
+
     booking.externalBookings = [
       { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
       { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },

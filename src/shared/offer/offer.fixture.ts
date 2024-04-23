@@ -1,7 +1,10 @@
+import type { ReadonlyDeep } from 'type-fest'
+
 import { SubcategoryIdEnum } from 'api/gen'
 import { Offer } from 'shared/offer/types'
+import { toMutable } from 'shared/types/toMutable'
 
-export const offersFixture: Offer[] = [
+export const offersFixture = toMutable([
   {
     offer: {
       dates: [],
@@ -90,4 +93,4 @@ export const offersFixture: Offer[] = [
       city: 'Paris',
     },
   },
-]
+] as const satisfies ReadonlyDeep<Offer[]>)

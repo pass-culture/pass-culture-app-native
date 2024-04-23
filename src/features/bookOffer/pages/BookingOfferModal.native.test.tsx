@@ -2,7 +2,6 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
-import { OfferResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as useBookOfferMutation from 'features/bookOffer/api/useBookOfferMutation'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
@@ -26,7 +25,7 @@ import { BookingOfferModalComponent } from './BookingOfferModal'
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 
-const mockOffer: OfferResponse | undefined = baseOffer
+const mockOffer = baseOffer
 
 const mockUseBookingContext: jest.Mock<IBookingContext> = jest.fn(() => ({
   bookingState: { offerId: mockOffer.id, step: Step.DATE } as BookingState,
@@ -200,7 +199,6 @@ describe('<BookingOfferModalComponent />', () => {
           offerId: mockOffer.id,
           step: Step.CONFIRMATION,
           quantity: 1,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           stockId: mockOffer.stocks[0].id,
         } as BookingState,
         dismissModal: mockDismissModal,
@@ -271,9 +269,7 @@ describe('<BookingOfferModalComponent />', () => {
 
         expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
           af_offer_id: mockOffer.id,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           af_booking_id: mockOffer.stocks[0].id,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           af_price: mockOffer.stocks[0].price,
           af_category: mockOffer.subcategoryId,
         })
@@ -294,7 +290,6 @@ describe('<BookingOfferModalComponent />', () => {
             offerId: mockOffer.id,
             step: Step.CONFIRMATION,
             quantity: 1,
-            // @ts-expect-error: because of noUncheckedIndexedAccess
             stockId: mockOffer.stocks[0].id,
           } as BookingState,
           dismissModal: mockDismissModal,

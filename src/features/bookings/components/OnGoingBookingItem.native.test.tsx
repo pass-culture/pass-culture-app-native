@@ -17,7 +17,7 @@ const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: S
 
 describe('OnGoingBookingItem', () => {
   const bookings = bookingsSnap.ongoing_bookings
-  // @ts-expect-error: because of noUncheckedIndexedAccess
+
   const initialBooking: Booking = bookingsSnap.ongoing_bookings[0]
 
   it('should navigate to the booking details page', () => {

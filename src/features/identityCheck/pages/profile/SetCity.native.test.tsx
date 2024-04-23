@@ -56,9 +56,7 @@ describe('<SetCity/>', () => {
     fireEvent.changeText(input, POSTAL_CODE)
 
     await waitFor(() => {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(screen.getByText(mockedSuggestedCities[0].nom)).toBeOnTheScreen()
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(screen.getByText(mockedSuggestedCities[1].nom)).toBeOnTheScreen()
     })
   })
@@ -71,9 +69,7 @@ describe('<SetCity/>', () => {
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
     fireEvent.changeText(input, POSTAL_CODE)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     await screen.findByText(city.nom)
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.press(screen.getByText(city.nom))
     fireEvent.press(screen.getByText('Continuer'))
 
@@ -82,9 +78,7 @@ describe('<SetCity/>', () => {
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_CITY',
         payload: {
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           code: city.code,
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           name: city.nom,
           postalCode: POSTAL_CODE,
         },
@@ -100,16 +94,13 @@ describe('<SetCity/>', () => {
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
     fireEvent.changeText(input, POSTAL_CODE)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     await screen.findByText(city.nom)
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.press(screen.getByText(city.nom))
     fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(async () => {
       expect(await storage.readObject('activation_profile')).toMatchObject({
         name: { firstName: 'John', lastName: 'Doe' },
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         city: { name: city.nom, code: city.code, postalCode: POSTAL_CODE },
       })
     })
@@ -129,7 +120,6 @@ describe('<SetCity/>', () => {
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
     fireEvent.changeText(input, POSTAL_CODE)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     const CityNameButton = await screen.findByText(city.nom)
     fireEvent.press(CityNameButton)
 

@@ -70,11 +70,8 @@ describe('<SetAddress/>', () => {
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await waitFor(() => {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(screen.getByText(mockedSuggestedPlaces.features[0].properties.label)).toBeOnTheScreen()
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(screen.getByText(mockedSuggestedPlaces.features[1].properties.label)).toBeOnTheScreen()
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(screen.getByText(mockedSuggestedPlaces.features[2].properties.label)).toBeOnTheScreen()
     })
   })
@@ -85,16 +82,13 @@ describe('<SetAddress/>', () => {
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     await screen.findByText(mockedSuggestedPlaces.features[1].properties.label)
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.press(screen.getByText(mockedSuggestedPlaces.features[1].properties.label))
     fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_ADDRESS',
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         payload: mockedSuggestedPlaces.features[1].properties.label,
       })
       expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus')
@@ -107,9 +101,7 @@ describe('<SetAddress/>', () => {
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     await screen.findByText(mockedSuggestedPlaces.features[1].properties.label)
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.press(screen.getByText(mockedSuggestedPlaces.features[1].properties.label))
     fireEvent.press(screen.getByText('Continuer'))
 
@@ -117,7 +109,6 @@ describe('<SetAddress/>', () => {
       expect(await storage.readObject('activation_profile')).toMatchObject({
         name: { firstName: 'John', lastName: 'Doe' },
         city: { code: '', name: 'Paris', postalCode: '75001' },
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         address: mockedSuggestedPlaces.features[1].properties.label,
       })
     })

@@ -30,7 +30,7 @@ const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOffer')
 excluOfferAPISpy.mockReturnValue({
   isLoading: false,
   data: mockOffer,
-} as UseQueryResult<OfferResponse>)
+} as unknown as UseQueryResult<OfferResponse>)
 
 describe('useShouldDisplayExcluOffer', () => {
   it('should display offer if no display parameters available', () => {
@@ -68,7 +68,7 @@ describe('useShouldDisplayExcluOffer', () => {
       excluOfferAPISpy.mockReturnValueOnce({
         isLoading: false,
         data: offerWithoutCoordinates,
-      } as UseQueryResult<OfferResponse>)
+      } as unknown as UseQueryResult<OfferResponse>)
 
       const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
 

@@ -1,3 +1,5 @@
+import type { ReadonlyDeep } from 'type-fest'
+
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { AcceptCgu } from 'features/auth/pages/signup/AcceptCgu/AcceptCgu'
 import { SetBirthday } from 'features/auth/pages/signup/SetBirthday/SetBirthday'
@@ -11,6 +13,7 @@ import {
   PreValidationSignupNormalStepProps,
   PreValidationSignupLastStepProps,
 } from 'features/auth/types'
+import { toMutable } from 'shared/types/toMutable'
 
 type SignupStepConfig = {
   name: PreValidationSignupStep
@@ -21,7 +24,7 @@ type SignupStepConfig = {
   accessibilityTitle: string
 }
 
-export const DEFAULT_STEP_CONFIG: SignupStepConfig[] = [
+export const DEFAULT_STEP_CONFIG = toMutable([
   {
     name: PreValidationSignupStep.Email,
     Component: SetEmail,
@@ -47,9 +50,9 @@ export const DEFAULT_STEP_CONFIG: SignupStepConfig[] = [
     accessibilityTitle: 'Confirmation d‘envoi d‘e-mail',
     Component: SignupConfirmationEmailSent,
   },
-]
+] as const satisfies ReadonlyDeep<SignupStepConfig[]>)
 
-export const SSO_STEP_CONFIG: SignupStepConfig[] = [
+export const SSO_STEP_CONFIG = toMutable([
   {
     name: PreValidationSignupStep.Email,
     Component: SetEmail,
@@ -65,4 +68,4 @@ export const SSO_STEP_CONFIG: SignupStepConfig[] = [
     accessibilityTitle: 'CGU & Données',
     Component: AcceptCgu,
   },
-]
+] as const satisfies ReadonlyDeep<SignupStepConfig[]>)

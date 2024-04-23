@@ -7,6 +7,7 @@ import {
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { Position } from 'libs/location'
+import { toMutable } from 'shared/types/toMutable'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -108,10 +109,8 @@ describe('useSearchVenueOffers', () => {
   describe('filterVenueOfferHit', () => {
     it('should return false when subcategory hit is undefined', () => {
       const shouldFilterVenueOfferHit = filterVenueOfferHit({
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         hit: {
           ...mockedAlgoliaResponse.hits[0],
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           offer: { ...mockedAlgoliaResponse.hits[0].offer, subcategoryId: undefined },
         },
         offerId: 102283,
@@ -123,8 +122,7 @@ describe('useSearchVenueOffers', () => {
 
     it('should return false when object id hit = offerId param', () => {
       const shouldFilterVenueOfferHit = filterVenueOfferHit({
-        // @ts-expect-error: because of noUncheckedIndexedAccess
-        hit: mockedAlgoliaResponse.hits[0],
+        hit: toMutable(mockedAlgoliaResponse.hits)[0],
         offerId: 102280,
         venueId: 1,
       })
@@ -134,7 +132,6 @@ describe('useSearchVenueOffers', () => {
 
     it('should return false when id venue hit = venueId param', () => {
       const shouldFilterVenueOfferHit = filterVenueOfferHit({
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         hit: mockedAlgoliaResponse.hits[0],
         offerId: 102281,
         venueId: 1,
@@ -145,7 +142,6 @@ describe('useSearchVenueOffers', () => {
 
     it('should return true when subcategory hit is defined, object id hit not equal to offerId param and id venue hit not equal to venueId param', () => {
       const shouldFilterVenueOfferHit = filterVenueOfferHit({
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         hit: mockedAlgoliaResponse.hits[0],
         offerId: 102281,
         venueId: 2,

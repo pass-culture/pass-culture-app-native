@@ -2,8 +2,9 @@ import { classicThematicHeaderFixture } from 'libs/contentful/fixtures/homepageN
 import { thematicCategoryInfoFixture } from 'libs/contentful/fixtures/thematicCategoryInfo.fixture'
 import { thematicHighlightInfoFixture } from 'libs/contentful/fixtures/thematicHighlightInfo.fixture'
 import { ContentTypes } from 'libs/contentful/types'
+import { toMutable } from 'shared/types/toMutable'
 
-export const homepageEntriesAPIResponse = {
+export const homepageEntriesAPIResponse = toMutable({
   sys: { type: 'Array' },
   total: 2,
   skip: 0,
@@ -813,4 +814,4 @@ export const homepageEntriesAPIResponse = {
       },
     ],
   },
-}
+} as const)

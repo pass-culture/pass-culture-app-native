@@ -30,14 +30,15 @@ const mockCheckGeolocPermission = checkGeolocPermission as jest.MockedFunction<
 >
 mockCheckGeolocPermission.mockResolvedValue(GeolocPermissionState.GRANTED)
 
-const mockPlaces: SuggestedPlace[] = [
+const mockPlaces = [
   {
     label: 'Kourou',
     info: 'Guyane',
     type: 'street',
     geolocation: { longitude: -52.669736, latitude: 5.16186 },
   },
-]
+] as const satisfies readonly SuggestedPlace[]
+
 jest.mock('libs/place/usePlaces', () => ({
   usePlaces: () => ({ data: mockPlaces, isLoading: false }),
 }))
@@ -63,10 +64,8 @@ describe('HomeLocationModal', () => {
     fireEvent.press(openLocationModalButton)
 
     const searchInput = screen.getByTestId('styled-input-container')
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     fireEvent.changeText(searchInput, mockPlaces[0].label)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
     fireEvent.press(suggestedPlace)
 

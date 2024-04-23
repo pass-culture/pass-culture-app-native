@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { OfferResponse } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -7,7 +8,7 @@ import { render, screen } from 'tests/utils'
 
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
-const mockOffer = jest.fn(() => ({
+const mockOffer = jest.fn((): { data: OfferResponse } => ({
   data: offerResponseSnap,
 }))
 

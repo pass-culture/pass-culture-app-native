@@ -13,7 +13,6 @@ const venue = mockVenues.hits[0]
 const props: VenueTileProps = {
   moduleId: 'module-id',
   moduleName: 'le nom du module',
-  // @ts-expect-error: because of noUncheckedIndexedAccess
   venue,
   userLocation: null,
   width: 100,
@@ -33,7 +32,6 @@ describe('VenueTile component', () => {
     fireEvent.press(screen.getByTestId(/Lieu/))
 
     await waitFor(() => {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       expect(navigate).toHaveBeenCalledWith('Venue', { id: venue.id })
     })
   })
@@ -44,7 +42,6 @@ describe('VenueTile component', () => {
     fireEvent.press(screen.getByTestId(/Lieu/))
 
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       venueId: venue.id,
       from: 'home',
       moduleName: 'le nom du module',
@@ -58,7 +55,6 @@ describe('VenueTile component', () => {
     fireEvent.press(screen.getByTestId(/Lieu/))
 
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       venueId: venue.id,
       from: 'home',
       moduleName: 'le nom du module',
@@ -68,7 +64,6 @@ describe('VenueTile component', () => {
   })
 
   it('should show venue placeholder when no venue does not have image', () => {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     renderVenueTile({ venue: { ...venue, bannerUrl: undefined } })
 
     expect(screen.getByTestId('venue-type-tile')).toBeOnTheScreen()

@@ -15,7 +15,6 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { HorizontalOfferTile } from './HorizontalOfferTile'
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
-// @ts-expect-error: because of noUncheckedIndexedAccess
 const offerId = Number(mockOffer.objectID)
 const mockAnalyticsParams: OfferAnalyticsParams = {
   from: 'search',
@@ -44,7 +43,6 @@ describe('HorizontalOfferTile component', () => {
   it('should render correctly', async () => {
     render(
       reactQueryProviderHOC(
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
       )
     )
@@ -55,7 +53,6 @@ describe('HorizontalOfferTile component', () => {
   it('should navigate to the offer when pressing an offer', async () => {
     render(
       reactQueryProviderHOC(
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
       )
     )
@@ -74,7 +71,6 @@ describe('HorizontalOfferTile component', () => {
   it('should log analytics event when pressing an offer', async () => {
     render(
       reactQueryProviderHOC(
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
       )
     )
@@ -95,7 +91,6 @@ describe('HorizontalOfferTile component', () => {
   it('should notify Algolia when pressing an offer', async () => {
     render(
       reactQueryProviderHOC(
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
       )
     )
@@ -115,7 +110,6 @@ describe('HorizontalOfferTile component', () => {
     mockUseDistance.mockReturnValueOnce('10 km')
     render(
       reactQueryProviderHOC(
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
       )
     )
@@ -128,7 +122,6 @@ describe('HorizontalOfferTile component', () => {
     mockUseDistance.mockReturnValueOnce(null)
     render(
       reactQueryProviderHOC(
-        // @ts-expect-error: because of noUncheckedIndexedAccess
         <HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />
       )
     )
@@ -145,7 +138,6 @@ describe('HorizontalOfferTile component', () => {
     it('should not navigate to the offer', async () => {
       render(
         reactQueryProviderHOC(
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           <HorizontalOfferTile offer={offer} analyticsParams={mockAnalyticsParams} />
         )
       )
@@ -159,7 +151,6 @@ describe('HorizontalOfferTile component', () => {
     it('should not log analytics event', async () => {
       render(
         reactQueryProviderHOC(
-          // @ts-expect-error: because of noUncheckedIndexedAccess
           <HorizontalOfferTile offer={offer} analyticsParams={mockAnalyticsParams} />
         )
       )

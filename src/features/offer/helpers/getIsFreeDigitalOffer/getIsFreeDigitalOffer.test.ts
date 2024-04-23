@@ -12,7 +12,6 @@ describe('getIsFreeDigitalOffer', () => {
     const isFreeDigitalOffer = getIsFreeDigitalOffer({
       ...mockOffer,
       isDigital: true,
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       stocks: [{ ...mockOffer.stocks[0], price: 100 }],
     })
 
@@ -23,7 +22,6 @@ describe('getIsFreeDigitalOffer', () => {
     const isFreeDigitalOffer = getIsFreeDigitalOffer({
       ...mockOffer,
       isDigital: false,
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       stocks: [{ ...mockOffer.stocks[0], price: 0 }],
     })
 
@@ -34,7 +32,6 @@ describe('getIsFreeDigitalOffer', () => {
     const isFreeDigitalOffer = getIsFreeDigitalOffer({
       ...mockOffer,
       isDigital: false,
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       stocks: [{ ...mockOffer.stocks[0], price: 100 }],
     })
 
@@ -45,7 +42,6 @@ describe('getIsFreeDigitalOffer', () => {
     const isFreeDigitalOffer = getIsFreeDigitalOffer({
       ...mockOffer,
       isDigital: true,
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       stocks: [{ ...mockOffer.stocks[0], price: 0 }],
     })
 

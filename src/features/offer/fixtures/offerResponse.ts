@@ -1,7 +1,10 @@
+import type { ReadonlyDeep } from 'type-fest'
+
 import { ExpenseDomain, OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { toMutable } from 'shared/types/toMutable'
 
 // humanizedId AHD3A
-export const offerResponseSnap: OfferResponse = {
+export const offerResponseSnap = toMutable({
   id: 116656,
   accessibility: {
     audioDisability: true,
@@ -82,4 +85,4 @@ export const offerResponseSnap: OfferResponse = {
       geo: { '@type': 'GeoCoordinates', latitude: 20, longitude: 2 },
     },
   },
-}
+} as const satisfies ReadonlyDeep<OfferResponse>)

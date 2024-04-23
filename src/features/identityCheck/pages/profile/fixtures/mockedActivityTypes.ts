@@ -1,6 +1,9 @@
-import { ActivityIdEnum, ActivityTypesResponse } from 'api/gen'
+import type { ReadonlyDeep } from 'type-fest'
 
-export const ActivityTypesSnap: ActivityTypesResponse = {
+import { ActivityIdEnum, ActivityTypesResponse } from 'api/gen'
+import { toMutable } from 'shared/types/toMutable'
+
+export const ActivityTypesSnap = toMutable({
   activities: [
     {
       description: null,
@@ -48,4 +51,4 @@ export const ActivityTypesSnap: ActivityTypesResponse = {
       label: 'Chômeur',
     },
   ],
-}
+} as const satisfies ReadonlyDeep<ActivityTypesResponse>)
