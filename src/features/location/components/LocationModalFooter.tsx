@@ -9,11 +9,13 @@ import { getSpacing } from 'ui/theme'
 type Props = {
   onSubmit: () => void
   isSubmitDisabled?: boolean
+  buttonWording?: string
 }
 
 export const LocationModalFooter = memo(function LocationModalFooter({
   onSubmit,
   isSubmitDisabled,
+  buttonWording = 'Valider la localisation',
 }: Props) {
   const { modal } = useTheme()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -23,11 +25,7 @@ export const LocationModalFooter = memo(function LocationModalFooter({
 
   return (
     <Container paddingBottom={keyboardHeight ? keyboardHeight - modalSpacing : 0}>
-      <ButtonPrimary
-        wording="Valider la localisation"
-        disabled={isSubmitDisabled}
-        onPress={onSubmit}
-      />
+      <ButtonPrimary wording={buttonWording} disabled={isSubmitDisabled} onPress={onSubmit} />
     </Container>
   )
 })
