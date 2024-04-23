@@ -6,6 +6,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { fireEvent, render, screen } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
@@ -27,6 +28,9 @@ const mockUseLocation = jest.fn(() => ({
 jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
+
+const mockShowModal = jest.fn()
+const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
 
 describe('CategoriesButtonsDisplay', () => {
   it('should display venue map block when geoloc position is activated and location mode is set to "around me"', () => {
@@ -108,5 +112,25 @@ describe('CategoriesButtonsDisplay', () => {
     fireEvent.press(screen.getByText('Explorer les lieux'))
 
     expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'searchLanding' })
+  })
+
+  it('should open incentive location modal when pressing on venue map block', () => {
+    useModalAPISpy.mockReturnValueOnce({
+      visible: false,
+      showModal: mockShowModal,
+      hideModal: jest.fn(),
+      toggleModal: jest.fn(),
+    })
+    mockUseLocation.mockReturnValueOnce({
+      hasGeolocPosition: false,
+      selectedLocationMode: LocationMode.EVERYWHERE,
+      place: mockedPlace,
+    })
+
+    render(<CategoriesButtonsDisplay sortedCategories={[]} />)
+
+    fireEvent.press(screen.getByText('Explorer les lieux'))
+
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 })

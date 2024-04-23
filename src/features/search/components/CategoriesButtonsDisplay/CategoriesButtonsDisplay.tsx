@@ -6,6 +6,7 @@ import {
   CategoryButton,
   CategoryButtonProps,
 } from 'features/search/components/CategoryButton/CategoryButton'
+import { IncentiveLocationModal } from 'features/search/components/IncentiveLocationModal/IncentiveLocationModal'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -13,6 +14,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { getMediaQueryFromDimensions } from 'libs/react-responsive/useMediaQuery'
 import { theme } from 'theme'
+import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -34,8 +36,10 @@ const isWeb = Platform.OS === 'web'
 export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCategories }) => {
   const { shouldDisplayVenueMap, hasGeolocPosition, selectedLocationMode } =
     useShouldDisplayVenueMap()
-  const hasVenueMapWithoutPosition =
-    useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_POSITION) || true
+  const hasVenueMapWithoutPosition = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_POSITION
+  )
+  const { showModal, visible, hideModal } = useModal()
 
   const isNotLocated = selectedLocationMode === LocationMode.EVERYWHERE && !hasGeolocPosition
 
@@ -43,11 +47,6 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
 
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? 4 : 2
-
-  const handlePress = () => {
-    // eslint-disable-next-line no-console
-    console.log('Button pressed')
-  }
 
   return (
     <FlatList
@@ -62,7 +61,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
               <VenueMapBlock
-                onPress={isMapWithoutPositionAndNotLocated ? handlePress : undefined}
+                onPress={isMapWithoutPositionAndNotLocated ? showModal : undefined}
                 from="searchLanding"
               />
               <Spacer.Column numberOfSpaces={2} />
@@ -70,6 +69,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
           ) : null}
 
           <CategoriesTitle />
+          <IncentiveLocationModal visible={visible} handleCloseModal={hideModal} />
         </React.Fragment>
       }
       contentContainerStyle={contentContainerStyle}
