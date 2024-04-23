@@ -10,9 +10,14 @@ import { Typo } from 'ui/theme'
 type Props = {
   visible: boolean
   handleCloseModal: () => void
+  handleActiveLocationButtonPress: () => void
 }
 
-export const IncentiveLocationModal: FunctionComponent<Props> = ({ visible, handleCloseModal }) => {
+export const IncentiveLocationModal: FunctionComponent<Props> = ({
+  visible,
+  handleCloseModal,
+  handleActiveLocationButtonPress,
+}) => {
   return (
     <AppModal
       title="Où te trouves-tu&nbsp;?"
@@ -25,7 +30,10 @@ export const IncentiveLocationModal: FunctionComponent<Props> = ({ visible, hand
           Renseigne une localisation pour trouver les meilleurs lieux culturels depuis la carte pass
           Culture
         </StyledBody>
-        <ButtonPrimary wording="Activer ma localisation" />
+        <ButtonPrimary
+          wording="Activer ma localisation"
+          onPress={handleActiveLocationButtonPress}
+        />
       </ViewGap>
     </AppModal>
   )

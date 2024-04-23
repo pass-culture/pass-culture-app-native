@@ -24,6 +24,7 @@ const mockUseLocation = jest.fn(() => ({
   hasGeolocPosition: mockHasGeolocPosition,
   selectedLocationMode: mockSelectedLocationMode,
   place: mockedPlace,
+  onModalHideRef: jest.fn(),
 }))
 jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
@@ -33,7 +34,7 @@ const mockShowModal = jest.fn()
 const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
 
 describe('CategoriesButtonsDisplay', () => {
-  it('should display venue map block when geoloc position is activated and location mode is set to "around me"', () => {
+  it('should display venue map block when geoloc position is activated and location mode is set to "around me"', async () => {
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
     expect(screen.getByText('Explorer les lieux')).toBeOnTheScreen()
@@ -44,6 +45,7 @@ describe('CategoriesButtonsDisplay', () => {
       hasGeolocPosition: true,
       selectedLocationMode: LocationMode.AROUND_PLACE,
       place: mockedPlace,
+      onModalHideRef: jest.fn(),
     })
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
@@ -56,6 +58,7 @@ describe('CategoriesButtonsDisplay', () => {
       hasGeolocPosition: false,
       selectedLocationMode: LocationMode.AROUND_PLACE,
       place: mockedPlace,
+      onModalHideRef: jest.fn(),
     })
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
@@ -75,6 +78,7 @@ describe('CategoriesButtonsDisplay', () => {
       hasGeolocPosition: false,
       selectedLocationMode: LocationMode.AROUND_ME,
       place: mockedPlace,
+      onModalHideRef: jest.fn(),
     })
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
@@ -87,6 +91,7 @@ describe('CategoriesButtonsDisplay', () => {
       hasGeolocPosition: true,
       selectedLocationMode: LocationMode.EVERYWHERE,
       place: mockedPlace,
+      onModalHideRef: jest.fn(),
     })
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
@@ -99,6 +104,7 @@ describe('CategoriesButtonsDisplay', () => {
       hasGeolocPosition: false,
       selectedLocationMode: LocationMode.EVERYWHERE,
       place: mockedPlace,
+      onModalHideRef: jest.fn(),
     })
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
@@ -125,6 +131,7 @@ describe('CategoriesButtonsDisplay', () => {
       hasGeolocPosition: false,
       selectedLocationMode: LocationMode.EVERYWHERE,
       place: mockedPlace,
+      onModalHideRef: jest.fn(),
     })
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
