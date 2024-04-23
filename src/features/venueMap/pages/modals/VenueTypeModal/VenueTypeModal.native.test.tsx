@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal'
+import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal/VenueTypeModal'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
