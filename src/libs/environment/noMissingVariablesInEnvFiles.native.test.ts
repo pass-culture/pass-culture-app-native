@@ -1,6 +1,6 @@
 import { config } from 'dotenv'
 
-import { parseBooleanVariables } from 'libs/environment/parseBooleanVariables'
+import { parseEnvironment } from 'libs/environment/parseEnvironment'
 
 function loadEnvVariables(filePath: string) {
   const { parsed, error } = config({ path: filePath })
@@ -56,7 +56,7 @@ describe('.env files', () => {
         throw new Error(`No variables found in ${file}`)
       }
 
-      parseBooleanVariables(env)
+      parseEnvironment(env)
     }
 
     expect(true).toBe(true) // Pass if no error

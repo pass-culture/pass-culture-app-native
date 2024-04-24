@@ -7,7 +7,7 @@ import { eventMonitoring } from 'libs/monitoring'
 const isValidationError = (error: unknown): error is ValidationError =>
   error instanceof ValidationError
 
-export const parseBooleanVariables = (config: NativeConfig): Environment => {
+export const parseBooleanVariables = (config: NativeConfig) => {
   const configWithActualBooleans = { ...config } as Record<keyof Environment, string | boolean>
 
   Object.keys(config).forEach((key) => {
@@ -17,6 +17,12 @@ export const parseBooleanVariables = (config: NativeConfig): Environment => {
       configWithActualBooleans[key as keyof Environment] = false
     }
   })
+
+  return configWithActualBooleans
+}
+
+export const parseEnvironment = (config: NativeConfig): Environment => {
+  const configWithActualBooleans = parseBooleanVariables(config)
 
   try {
     EnvironmentSchema.validateSync(configWithActualBooleans, { strict: true, abortEarly: false })

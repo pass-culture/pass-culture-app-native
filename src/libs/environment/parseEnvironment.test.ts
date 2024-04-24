@@ -1,4 +1,4 @@
-import { parseBooleanVariables } from './parseBooleanVariables'
+import { parseBooleanVariables } from './parseEnvironment'
 
 describe('parseBooleanVariables', () => {
   const mockedConfig = {
