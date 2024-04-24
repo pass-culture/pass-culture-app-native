@@ -498,7 +498,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 }
               />
               <View
-                accessibilityLabel="Cinémas - Salles de projection"
+                accessibilityLabel="Cinéma - Salle de projections"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -538,7 +538,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Cinémas - Salles de projection"
+                testID="Cinéma - Salle de projections"
               >
                 <View
                   flex={0.9}
@@ -595,7 +595,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Cinémas - Salles de projection
+                        Cinéma - Salle de projections
                       </Text>
                       <Text
                         isSelected={false}
@@ -645,7 +645,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                accessibilityLabel="Cinémas itinérants"
+                accessibilityLabel="Cinéma itinérant"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -685,7 +685,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Cinémas itinérants"
+                testID="Cinéma itinérant"
               >
                 <View
                   flex={0.9}
@@ -742,7 +742,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Cinémas itinérants
+                        Cinéma itinérant
                       </Text>
                       <Text
                         isSelected={false}
@@ -792,7 +792,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                accessibilityLabel="Musique - Salles de concerts"
+                accessibilityLabel="Musique - Salle de concerts"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -832,7 +832,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Musique - Salles de concerts"
+                testID="Musique - Salle de concerts"
               >
                 <View
                   flex={0.9}
@@ -889,7 +889,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Musique - Salles de concerts
+                        Musique - Salle de concerts
                       </Text>
                       <Text
                         isSelected={false}
@@ -939,7 +939,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                accessibilityLabel="Spectacles vivants"
+                accessibilityLabel="Spectacle vivant"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -979,7 +979,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Spectacles vivants"
+                testID="Spectacle vivant"
               >
                 <View
                   flex={0.9}
@@ -1036,7 +1036,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Spectacles vivants
+                        Spectacle vivant
                       </Text>
                       <Text
                         isSelected={false}
@@ -1086,7 +1086,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                accessibilityLabel="Festivals"
+                accessibilityLabel="Festival"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1126,7 +1126,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Festivals"
+                testID="Festival"
               >
                 <View
                   flex={0.9}
@@ -1183,7 +1183,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Festivals
+                        Festival
                       </Text>
                       <Text
                         isSelected={false}
@@ -1233,7 +1233,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                accessibilityLabel="Musées"
+                accessibilityLabel="Musée"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1273,7 +1273,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Musées"
+                testID="Musée"
               >
                 <View
                   flex={0.9}
@@ -1330,7 +1330,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Musées
+                        Musée
                       </Text>
                       <Text
                         isSelected={false}
@@ -1380,7 +1380,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                accessibilityLabel="Bibliothèques / Médiathèques"
+                accessibilityLabel="Bibliothèque ou médiathèque"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1420,7 +1420,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Bibliothèques / Médiathèques"
+                testID="Bibliothèque ou médiathèque"
               >
                 <View
                   flex={0.9}
@@ -1477,7 +1477,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Bibliothèques / Médiathèques
+                        Bibliothèque ou médiathèque
                       </Text>
                       <Text
                         isSelected={false}
@@ -1867,7 +1867,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 }
               />
               <View
-                accessibilityLabel="Librairies"
+                accessibilityLabel="Librairie"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -1907,7 +1907,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Librairies"
+                testID="Librairie"
               >
                 <View
                   flex={0.9}
@@ -1964,7 +1964,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Librairies
+                        Librairie
                       </Text>
                       <Text
                         isSelected={false}
@@ -2014,7 +2014,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                accessibilityLabel="Magasins d’arts créatifs"
+                accessibilityLabel="Magasin arts créatifs"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -2054,7 +2054,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Magasins d’arts créatifs"
+                testID="Magasin arts créatifs"
               >
                 <View
                   flex={0.9}
@@ -2111,7 +2111,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Magasins d’arts créatifs
+                        Magasin arts créatifs
                       </Text>
                       <Text
                         isSelected={false}
@@ -2161,7 +2161,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                accessibilityLabel="Magasins culturels"
+                accessibilityLabel="Magasin culturel"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -2201,7 +2201,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Magasins culturels"
+                testID="Magasin culturel"
               >
                 <View
                   flex={0.9}
@@ -2258,7 +2258,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Magasins culturels
+                        Magasin culturel
                       </Text>
                       <Text
                         isSelected={false}
@@ -2308,7 +2308,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                accessibilityLabel="Musique - Magasins d’instruments"
+                accessibilityLabel="Musique - Magasin d’instruments"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -2348,7 +2348,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Musique - Magasins d’instruments"
+                testID="Musique - Magasin d’instruments"
               >
                 <View
                   flex={0.9}
@@ -2405,7 +2405,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Musique - Magasins d’instruments
+                        Musique - Magasin d’instruments
                       </Text>
                       <Text
                         isSelected={false}
@@ -2455,7 +2455,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                accessibilityLabel="Musique - Disquaires"
+                accessibilityLabel="Musique - Disquaire"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -2495,7 +2495,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Musique - Disquaires"
+                testID="Musique - Disquaire"
               >
                 <View
                   flex={0.9}
@@ -2552,7 +2552,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Musique - Disquaires
+                        Musique - Disquaire
                       </Text>
                       <Text
                         isSelected={false}
@@ -2795,7 +2795,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 </View>
               </View>
               <View
-                accessibilityLabel="Centres culturels"
+                accessibilityLabel="Centre culturel"
                 accessibilityRole="radio"
                 accessibilityState={
                   {
@@ -2835,7 +2835,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     "userSelect": "auto",
                   }
                 }
-                testID="Centres culturels"
+                testID="Centre culturel"
               >
                 <View
                   flex={0.9}
@@ -2892,7 +2892,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                           ]
                         }
                       >
-                        Centres culturels
+                        Centre culturel
                       </Text>
                       <Text
                         isSelected={false}

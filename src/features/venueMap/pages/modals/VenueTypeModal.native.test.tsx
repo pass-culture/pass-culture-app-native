@@ -37,11 +37,11 @@ describe('<VenueTypeModal />', () => {
     it('should select an option when pressing it', () => {
       render(<VenueTypeModal hideModal={mockHideModal} isVisible />)
 
-      expect(screen.getByText('Cinémas - Salles de projection')).toHaveProp('isSelected', false)
+      expect(screen.getByText('Cinéma - Salle de projections')).toHaveProp('isSelected', false)
 
-      fireEvent.press(screen.getByText('Cinémas - Salles de projection'))
+      fireEvent.press(screen.getByText('Cinéma - Salle de projections'))
 
-      expect(screen.getByText('Cinémas - Salles de projection')).toHaveProp('isSelected', true)
+      expect(screen.getByText('Cinéma - Salle de projections')).toHaveProp('isSelected', true)
     })
 
     it('should close the modal when pressing close button', async () => {
@@ -55,7 +55,7 @@ describe('<VenueTypeModal />', () => {
     it('should filter on venue type code when pressing search button', async () => {
       render(<VenueTypeModal hideModal={mockHideModal} isVisible />)
 
-      fireEvent.press(screen.getByText('Cinémas - Salles de projection'))
+      fireEvent.press(screen.getByText('Cinéma - Salle de projections'))
 
       fireEvent.press(screen.getByText('Rechercher'))
 
@@ -67,7 +67,7 @@ describe('<VenueTypeModal />', () => {
     it('should close the modal when pressing search button', async () => {
       render(<VenueTypeModal hideModal={mockHideModal} isVisible />)
 
-      fireEvent.press(screen.getByText('Cinémas - Salles de projection'))
+      fireEvent.press(screen.getByText('Cinéma - Salle de projections'))
 
       fireEvent.press(screen.getByText('Rechercher'))
 
@@ -105,7 +105,7 @@ describe('<VenueTypeModal />', () => {
 
       fireEvent.press(screen.getByTestId('Fermer'))
 
-      expect(screen.getByText('Cinémas - Salles de projection')).toHaveProp('isSelected', true)
+      expect(screen.getByText('Cinéma - Salle de projections')).toHaveProp('isSelected', true)
     })
   })
 })
