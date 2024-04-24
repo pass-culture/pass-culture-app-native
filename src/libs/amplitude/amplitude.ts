@@ -4,13 +4,11 @@ import { env } from 'libs/environment'
 
 import { AmplitudeClient } from './types'
 
-if (env.AMPLITUDE_API_KEY) {
-  amplitudeRN.init(env.AMPLITUDE_API_KEY, undefined, {
-    serverZone: amplitudeRN.Types.ServerZone.EU,
-    optOut: true,
-    minIdLength: 1,
-  })
-}
+amplitudeRN.init(env.AMPLITUDE_API_KEY, undefined, {
+  serverZone: amplitudeRN.Types.ServerZone.EU,
+  optOut: true,
+  minIdLength: 1,
+})
 
 export const amplitude: AmplitudeClient = {
   logEvent: (eventType, eventProperties) => {
