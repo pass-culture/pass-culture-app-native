@@ -7,7 +7,7 @@ import {
   VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT,
 } from '../../../tests/constants'
 import { env } from '../../libs/environment/env'
-import { metasResponseInterceptor } from '../webAppProxyMiddleware'
+import { metasResponseInterceptor, fixHTMLFallbackStatusCode } from '../webAppProxyMiddleware'
 import { server } from '../../../tests/server'
 
 const responseBuffer = Buffer.from(TEST_HTML)
@@ -280,5 +280,20 @@ describe('metasResponseInterceptor', () => {
 
       expect(finalResponseBuffer).toMatchSnapshot()
     })
+  })
+
+  describe('fixHTMLFallbackStatusCode', () => {
+    it('should return 200 instead of 404', () => {
+      expect(fixHTMLFallbackStatusCode({headers: {}} as IncomingMessage, {statusCode: 404} as IncomingMessage)).toEqual(200)
+    })
+
+    it('should return 206 when Range header is set and backend responds with 206', () => {
+      expect(fixHTMLFallbackStatusCode({headers: {range: "bytes=0-10"}} as IncomingMessage, {statusCode: 206} as IncomingMessage)).toEqual(206)
+    })
+
+    it('should return 404 when Range header is set and backend responds with 404', () => {
+      expect(fixHTMLFallbackStatusCode({headers: {range: "bytes=0-10"}} as IncomingMessage, {statusCode: 404} as IncomingMessage)).toEqual(404)
+    })
+
   })
 })
