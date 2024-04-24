@@ -1,5 +1,6 @@
 import * as API from 'api/api'
 import { UserProfileResponse } from 'api/gen'
+import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import {
   useThematicSubscription,
   Props as useThematicSubscriptionProps,
@@ -24,6 +25,10 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showErrorSnackBar: mockShowErrorSnackBar,
   }),
 }))
+
+jest
+  .spyOn(useMapSubscriptionHomeIdsToThematic, 'useMapSubscriptionHomeIdsToThematic')
+  .mockReturnValue(SubscriptionTheme.CINEMA)
 
 const postProfileSpy = jest.spyOn(API.api, 'postNativeV1Profile')
 
@@ -66,7 +71,6 @@ describe('useThematicSubscription', () => {
     it('should give us the information that at least one notification is active', async () => {
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsButNoSubscriptions,
-        thematic: SubscriptionTheme.ACTIVITES,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -80,7 +84,6 @@ describe('useThematicSubscription', () => {
       it('should consider subscribe button active', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsAndSubscribed,
-          thematic: SubscriptionTheme.ACTIVITES,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -94,7 +97,6 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsAndSubscribed,
-          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -117,7 +119,6 @@ describe('useThematicSubscription', () => {
       it('should consider subscribe button inactive', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsButNoSubscriptions,
-          thematic: SubscriptionTheme.ACTIVITES,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -131,7 +132,6 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsButNoSubscriptions,
-          thematic: SubscriptionTheme.MUSIQUE,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -143,7 +143,7 @@ describe('useThematicSubscription', () => {
             subscriptions: {
               marketingEmail: true,
               marketingPush: true,
-              subscribedThemes: [SubscriptionTheme.MUSIQUE],
+              subscribedThemes: [SubscriptionTheme.CINEMA],
             },
           })
         })
@@ -155,7 +155,6 @@ describe('useThematicSubscription', () => {
     it('should give us the information that notifications are inactive', async () => {
       const { result } = renderUseThematicSubscription({
         user: userWithoutNotificationsAndWithoutSubscriptions,
-        thematic: SubscriptionTheme.ACTIVITES,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -169,7 +168,6 @@ describe('useThematicSubscription', () => {
       it('should consider subscribe button inactive', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsButWithSubscriptions,
-          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -183,7 +181,6 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsButWithSubscriptions,
-          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -209,7 +206,6 @@ describe('useThematicSubscription', () => {
       it('should consider subscribe button inactive', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsAndWithoutSubscriptions,
-          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -223,7 +219,6 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsAndWithoutSubscriptions,
-          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -250,7 +245,6 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: undefined,
-          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -281,7 +275,6 @@ describe('useThematicSubscription', () => {
 
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsButNoSubscriptions,
-        thematic: SubscriptionTheme.ACTIVITES,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -305,7 +298,6 @@ describe('useThematicSubscription', () => {
 
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsButNoSubscriptions,
-        thematic: SubscriptionTheme.ACTIVITES,
         homeId,
         onUpdateSubscriptionSuccess: onUpdateSubscriptionSuccessMock,
       })
@@ -323,7 +315,6 @@ describe('useThematicSubscription', () => {
       mockServer.postApi('/v1/profile', {})
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsButNoSubscriptions,
-        thematic: SubscriptionTheme.ACTIVITES,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -343,7 +334,6 @@ describe('useThematicSubscription', () => {
       mockServer.postApi('/v1/profile', {})
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsAndSubscribed,
-        thematic: SubscriptionTheme.ACTIVITES,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })

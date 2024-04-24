@@ -1,3 +1,4 @@
+import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import {
   useThematicSubscription,
   Props as useThematicSubscriptionProps,
@@ -15,6 +16,10 @@ jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () =>
 
 const homeId = 'homeId'
 
+jest
+  .spyOn(useMapSubscriptionHomeIdsToThematic, 'useMapSubscriptionHomeIdsToThematic')
+  .mockReturnValue(SubscriptionTheme.CINEMA)
+
 describe('useThematicSubscription', () => {
   describe('when the user has email notifications off and push notifications on', () => {
     it('should give the information that there is not at least one notification type active', async () => {
@@ -27,7 +32,6 @@ describe('useThematicSubscription', () => {
             subscribedThemes: [],
           },
         },
-        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -47,7 +51,6 @@ describe('useThematicSubscription', () => {
             subscribedThemes: [],
           },
         },
-        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -69,7 +72,6 @@ describe('useThematicSubscription', () => {
             subscribedThemes: [],
           },
         },
-        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -89,7 +91,6 @@ describe('useThematicSubscription', () => {
             subscribedThemes: [SubscriptionTheme.CINEMA],
           },
         },
-        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
