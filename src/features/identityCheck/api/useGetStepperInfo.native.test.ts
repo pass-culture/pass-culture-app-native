@@ -1,4 +1,4 @@
-import { SubscriptionStepperResponse } from 'api/gen'
+import { SubscriptionStepperResponseV2 } from 'api/gen'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import {
   SubscriptionStepperErrorResponseFixture,
@@ -10,7 +10,7 @@ import { act, renderHook } from 'tests/utils'
 
 describe('useGetStepperInfo', () => {
   it('should get stepsToDisplay from the back', async () => {
-    mockServer.getApi<SubscriptionStepperResponse>(
+    mockServer.getApi<SubscriptionStepperResponseV2>(
       '/v2/subscription/stepper',
       SubscriptionStepperResponseFixture
     )
@@ -25,7 +25,7 @@ describe('useGetStepperInfo', () => {
   })
 
   it('should return an errorMessage', async () => {
-    mockServer.getApi<SubscriptionStepperResponse>(
+    mockServer.getApi<SubscriptionStepperResponseV2>(
       '/v2/subscription/stepper',
       SubscriptionStepperErrorResponseFixture
     )

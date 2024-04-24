@@ -4,24 +4,8 @@ import { useCallback, useState } from 'react'
 import { SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-// import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
+import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
 import { eventMonitoring } from 'libs/monitoring'
-
-export enum DeprecatedIdentityCheckStep {
-  PHONE_VALIDATION = 'phone_validation',
-  PROFILE = 'profile',
-  IDENTIFICATION = 'identification',
-  CONFIRMATION = 'confirmation',
-  END = 'end',
-}
-
-export enum IdentityCheckStep {
-  PHONE_VALIDATION = 'phone-validation',
-  PROFILE = 'profile-completion',
-  IDENTIFICATION = 'identity-check',
-  CONFIRMATION = 'honor-statement',
-  END = 'end',
-}
 
 export const getIdentityCheckStep = (
   subscriptionStep: SubscriptionStep | null

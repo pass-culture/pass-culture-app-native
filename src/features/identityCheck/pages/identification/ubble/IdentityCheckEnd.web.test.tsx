@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
+import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { IdentityCheckEnd } from './IdentityCheckEnd'
@@ -19,8 +19,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
-jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
-  useNextSubscriptionStep: jest.fn(() => ({
+jest.mock('features/identityCheck/fixtures/subscriptionStepperFixture.ts', () => ({
+  subscriptionStepperFixture: jest.fn(() => ({
     data: mockStep,
   })),
 }))

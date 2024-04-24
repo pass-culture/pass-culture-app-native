@@ -2,7 +2,7 @@ import React from 'react'
 
 import { dispatch, navigate } from '__mocks__/@react-navigation/native'
 import { SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
-import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
+import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'

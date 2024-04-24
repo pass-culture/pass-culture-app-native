@@ -8,7 +8,7 @@ import {
   UserProfileResponse,
   YoungStatusType,
 } from 'api/gen'
-import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
+import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'

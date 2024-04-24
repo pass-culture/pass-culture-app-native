@@ -8,7 +8,7 @@ import {
   SubscriptionStepperResponseV2,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
+import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

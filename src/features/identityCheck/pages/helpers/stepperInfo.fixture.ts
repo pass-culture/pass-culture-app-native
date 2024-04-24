@@ -2,11 +2,11 @@ import {
   IdentityCheckMethod,
   SubscriptionStep,
   SubscriptionStepCompletionState,
-  SubscriptionStepperResponse,
+  SubscriptionStepperResponseV2,
   SubscriptionStepTitle,
 } from 'api/gen'
 
-export const SubscriptionStepperResponseFixture: SubscriptionStepperResponse = {
+export const SubscriptionStepperResponseFixture: SubscriptionStepperResponseV2 = {
   title: 'Titre Stepper',
   subtitle: 'Sous titre Stepper',
   subscriptionStepsToDisplay: [
@@ -36,23 +36,28 @@ export const SubscriptionStepperResponseFixture: SubscriptionStepperResponse = {
     },
   ],
   allowedIdentityCheckMethods: [IdentityCheckMethod.ubble, IdentityCheckMethod.educonnect],
+  hasIdentityCheckPending: false,
 }
 
-export const SubscriptionStepperErrorResponseFixture: SubscriptionStepperResponse = {
+export const SubscriptionStepperErrorResponseFixture: SubscriptionStepperResponseV2 = {
   ...SubscriptionStepperResponseFixture,
   subtitle: null,
-  errorMessage: 'Tu n’as pas fournis les bons documents',
+  subscriptionMessage: {
+    userMessage: '',
+    messageSummary: 'Tu n’as pas fournis les bons documents',
+  },
 }
 
-export const SubscriptionStepperResponseWithPhoneValidationFixture: SubscriptionStepperResponse = {
-  ...SubscriptionStepperResponseFixture,
-  subscriptionStepsToDisplay: [
-    ...SubscriptionStepperResponseFixture.subscriptionStepsToDisplay,
-    {
-      name: SubscriptionStep['phone-validation'],
-      completionState: SubscriptionStepCompletionState.completed,
-      title: SubscriptionStepTitle['Numéro de téléphone'],
-      subtitle: 'Sous-titre Numéro de téléphone',
-    },
-  ],
-}
+export const SubscriptionStepperResponseWithPhoneValidationFixture: SubscriptionStepperResponseV2 =
+  {
+    ...SubscriptionStepperResponseFixture,
+    subscriptionStepsToDisplay: [
+      ...SubscriptionStepperResponseFixture.subscriptionStepsToDisplay,
+      {
+        name: SubscriptionStep['phone-validation'],
+        completionState: SubscriptionStepCompletionState.completed,
+        title: SubscriptionStepTitle['Numéro de téléphone'],
+        subtitle: 'Sous-titre Numéro de téléphone',
+      },
+    ],
+  }
