@@ -33,12 +33,9 @@ describe('useGetStepperInfo', () => {
     const result = renderGetStepperInfo()
     await act(async () => {})
 
-    expect(result.result.current.data).toEqual({
-      ...SubscriptionStepperResponseFixture,
-      title: 'Titre Stepper',
-      subtitle: null,
-      errorMessage: 'Tu n’as pas fournis les bons documents',
-    })
+    expect(result.result.current.data?.subscriptionMessage?.messageSummary).toEqual(
+      'Tu n’as pas fournis les bons documents'
+    )
   })
 })
 

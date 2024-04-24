@@ -1,7 +1,10 @@
 import React from 'react'
 
-import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { SubscriptionStepperResponseV2 } from 'api/gen'
+import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
+import { mockServer } from 'tests/mswServer'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { IdentityCheckEnd } from './IdentityCheckEnd'
 
@@ -19,16 +22,17 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
-jest.mock('features/identityCheck/fixtures/subscriptionStepperFixture.ts', () => ({
-  subscriptionStepperFixture: jest.fn(() => ({
-    data: mockStep,
-  })),
-}))
-
 describe('<IdentityCheckEnd/>', () => {
   describe('Accessibility', () => {
+    mockServer.getApi<SubscriptionStepperResponseV2>(
+      '/v2/subscription/stepper',
+      subscriptionStepperFixture
+    )
+
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<IdentityCheckEnd />)
+      const { container } = render(reactQueryProviderHOC(<IdentityCheckEnd />))
+
+      await act(async () => {})
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
