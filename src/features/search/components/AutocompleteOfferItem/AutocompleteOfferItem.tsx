@@ -40,13 +40,19 @@ export function AutocompleteOfferItem({
   const { ['offer.searchGroupNamev2']: categories, ['offer.nativeCategoryId']: nativeCategories } =
     // @ts-expect-error: because of noUncheckedIndexedAccess
     indexInfos.facets.analytics
+
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const { data } = useSubcategories()
   const enableNewMapping = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS)
+
+  const isfilmsSeriesCinemaSearchGroup =
+    categories.length && categories?.[0]?.value === SearchGroupNameEnumv2.FILMS_SERIES_CINEMA
+
   const searchGroupLabel = useSearchGroupLabel(
     // @ts-expect-error: because of noUncheckedIndexedAccess
-    categories.length > 0 ? categories[0].value : SearchGroupNameEnumv2.NONE
+    categories.length > 0 ? categories[0]?.value : SearchGroupNameEnumv2.NONE
   )
+
   const mostPopularNativeCategoryId =
     // @ts-expect-error: because of noUncheckedIndexedAccess
     nativeCategories[0]?.value in NativeCategoryIdEnumv2 ? nativeCategories[0]?.value : undefined
@@ -153,7 +159,8 @@ export function AutocompleteOfferItem({
           <React.Fragment>
             <Typo.Body> dans </Typo.Body>
             <Typo.ButtonTextPrimary>
-              {shouldDisplayNativeCategory && !shouldUseSearchGroupInsteadOfNativeCategory
+              {(shouldDisplayNativeCategory && !shouldUseSearchGroupInsteadOfNativeCategory) ||
+              isfilmsSeriesCinemaSearchGroup
                 ? mostPopularNativeCategoryValue
                 : searchGroupLabel}
             </Typo.ButtonTextPrimary>

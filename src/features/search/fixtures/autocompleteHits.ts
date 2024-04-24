@@ -103,7 +103,7 @@ export const mockHitSeveralCategoriesWithoutAssociationToNativeCategory = {
           {
             attribute: '',
             operator: '',
-            value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            value: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
             count: 10,
           },
         ],
@@ -143,7 +143,7 @@ export const mockHitWithOnlyCategory = {
           {
             attribute: '',
             operator: '',
-            value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            value: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
             count: 10,
           },
         ],
