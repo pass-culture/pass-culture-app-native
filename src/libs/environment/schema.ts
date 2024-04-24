@@ -54,7 +54,6 @@ export const EnvironmentSchema = yup.object({
   IOS_APP_STORE_ID: yup.string().required(),
   PASSCULTURE_DOWNLOAD_APP_URL: yup.string().required(),
   PRIVACY_POLICY_LINK: yup.string().required(),
-  PUBLIC_URL: yup.string().required(),
   RECOMMENDATION_ENDPOINT: yup.string().required(),
   RECOMMENDATION_TOKEN: yup.string().required(),
   RESIZE_IMAGE_ON_DEMAND_URL: yup.string().required(),
@@ -68,8 +67,9 @@ export const EnvironmentSchema = yup.object({
   URL_PREFIX: yup.string().required(),
   WEBAPP_V2_DOMAIN: yup.string().required(),
   // Below envs are injected by webpack and are defined only on the Webapp
-  COMMIT_HASH: yup.string().required(),
-  BRANCH: yup.string().required(),
-  LAST_COMMIT_DATETIME: yup.string().required(),
+  COMMIT_HASH: yup.string().optional(),
+  BRANCH: yup.string().optional(),
+  LAST_COMMIT_DATETIME: yup.string().optional(),
+  PUBLIC_URL: yup.string().optional(),
 })
 export type Environment = yup.InferType<typeof EnvironmentSchema>

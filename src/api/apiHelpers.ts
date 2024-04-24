@@ -65,7 +65,7 @@ export const safeFetch = async (
       ...options.headers,
       'app-version': getAppVersion(),
       'code-push-id': await getCodePushId(),
-      'commit-hash': env.COMMIT_HASH,
+      ...(env.COMMIT_HASH ? { 'commit-hash': env.COMMIT_HASH } : {}),
       'device-id': await getDeviceId(),
       platform: Platform.OS,
       'request-id': uuidv4(),
