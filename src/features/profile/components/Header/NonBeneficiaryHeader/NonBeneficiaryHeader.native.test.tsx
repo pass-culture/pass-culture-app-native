@@ -19,19 +19,11 @@ const mockUseAuthContext = useAuthContext as jest.Mock
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 
-let mockStepperResponse: Partial<SubscriptionStepperResponseV2> = mockStep
-
 const mockedSubscriptionMessage = {
   popOverIcon: 'FILE',
   updatedAt: '2021-10-25T13:24Z',
   userMessage: 'Dossier déposé, nous sommes en train de le traiter',
 } as SubscriptionMessage
-
-jest.mock('features/identityCheck/api/useGetStepperInfo', () => ({
-  useGetStepperInfo: jest.fn(() => ({
-    data: mockStepperResponse,
-  })),
-}))
 
 mockUseAuthContext.mockReturnValue({
   isLoggedIn: true,
@@ -47,7 +39,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   afterAll(mockdate.reset)
 
   it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
-    mockStepperResponse = mockStep
+    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
     mockServer.getApi<BannerResponse>('/v1/banner', {
       banner: {
         name: BannerName.activation_banner,
@@ -69,7 +61,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   it("should render the transition 17 to 18 banner when beneficiary's user is now 18", async () => {
-    mockStepperResponse = mockStep
+    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
     mockServer.getApi<BannerResponse>('/v1/banner', {
       banner: {
         name: BannerName.transition_17_18_banner,
@@ -91,11 +83,12 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   it('should display identity check message if user identity check is pending', async () => {
-    mockServer.getApi<BannerResponse>('/v1/banner', {})
-    mockStepperResponse = {
+    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
       ...mockStep,
       hasIdentityCheckPending: true,
-    }
+    })
+    mockServer.getApi<BannerResponse>('/v1/banner', {})
+
     renderNonBeneficiaryHeader({
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
@@ -108,11 +101,12 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   it('should render the subscription message if there is one', async () => {
-    mockServer.getApi<BannerResponse>('/v1/banner', {})
-    mockStepperResponse = {
+    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
       ...mockStep,
       subscriptionMessage: mockedSubscriptionMessage,
-    }
+    })
+    mockServer.getApi<BannerResponse>('/v1/banner', {})
+
     renderNonBeneficiaryHeader({
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
@@ -124,6 +118,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   it('should render the younger badge for user whose eligibilty hasn’t started yet (under 15 years old)', async () => {
+    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
     mockServer.getApi<BannerResponse>('/v1/banner', {})
     renderNonBeneficiaryHeader({
       startDatetime: '2021-03-31T00:00Z',
@@ -136,11 +131,11 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   it('should not display banner or badge when user is beneficiary', async () => {
-    mockServer.getApi<BannerResponse>('/v1/banner', {})
-    mockStepperResponse = {
+    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
       ...mockStep,
       hasIdentityCheckPending: false,
-    }
+    })
+    mockServer.getApi<BannerResponse>('/v1/banner', {})
 
     renderNonBeneficiaryHeader({
       startDatetime: '2021-03-30T00:00Z',

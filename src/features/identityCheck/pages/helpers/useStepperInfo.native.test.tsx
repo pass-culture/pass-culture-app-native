@@ -59,7 +59,7 @@ describe('useStepperInfo', () => {
     expect(subtitle).toEqual('Subtitle')
   })
 
-  it('should return 3 steps if there is no phone validation step', async () => {
+  it('should return 3 steps if there is no phone validation step', () => {
     const { stepsDetails } = useStepperInfo()
 
     expect(stepsDetails).toHaveLength(3)

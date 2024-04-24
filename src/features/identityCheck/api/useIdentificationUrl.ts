@@ -11,7 +11,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { MutationKeys } from 'libs/queryKeys'
 
 export function useIdentificationUrl() {
-  const { data } = useGetStepperInfo()
+  const { data: subscription } = useGetStepperInfo()
   const [identificationUrl, setIdentificationUrl] = useState<string | undefined>()
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -26,7 +26,7 @@ export function useIdentificationUrl() {
         if (error === 'IDCHECK_ALREADY_PROCESSED') {
           navigate('IdentityCheckPending')
         } else {
-          const withDMS = data?.maintenancePageType === MaintenancePageType['with-dms']
+          const withDMS = subscription?.maintenancePageType === MaintenancePageType['with-dms']
           navigate('IdentityCheckUnavailable', { withDMS })
         }
       }
