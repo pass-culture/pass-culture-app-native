@@ -11,6 +11,6 @@ describe('getVenueTypeLabel', () => {
   it('should return venue type label when venue type code is not null', () => {
     const venueTypeLabel = getVenueTypeLabel(VenueTypeCodeKey.BOOKSTORE)
 
-    expect(venueTypeLabel).toEqual('Librairies')
+    expect(venueTypeLabel).toEqual('Librairie')
   })
 })
