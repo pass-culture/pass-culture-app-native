@@ -1,6 +1,11 @@
 import { NativeConfig } from '@bam.tech/react-native-config'
+import { ValidationError } from 'yup'
 
-import { Environment } from './types'
+import { Environment, EnvironmentSchema } from 'libs/environment/schema'
+import { eventMonitoring } from 'libs/monitoring'
+
+const isValidationError = (error: unknown): error is ValidationError =>
+  error instanceof ValidationError
 
 export const parseBooleanVariables = (config: NativeConfig): Environment => {
   const configWithActualBooleans = { ...config } as Record<keyof Environment, string | boolean>
@@ -12,6 +17,16 @@ export const parseBooleanVariables = (config: NativeConfig): Environment => {
       configWithActualBooleans[key as keyof Environment] = false
     }
   })
+
+  try {
+    EnvironmentSchema.validateSync(configWithActualBooleans, { strict: true, abortEarly: false })
+  } catch (error) {
+    const errorMessage = isValidationError(error)
+      ? `Error parsing .env file: ${error.errors.join(', ')}`
+      : `Error parsing .env file: ${error}`
+    console.error(errorMessage)
+    eventMonitoring.captureException(errorMessage)
+  }
 
   return configWithActualBooleans as Environment
 }

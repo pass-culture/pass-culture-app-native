@@ -1,4 +1,5 @@
-import { Environment } from 'libs/environment/types'
+import { Environment } from 'libs/environment/schema'
+
 export const env: Environment = {
   ACCESSIBILITY_LINK: 'https://passculture.accessibility',
   ALGOLIA_APPLICATION_ID: 'algoliaAppId',
