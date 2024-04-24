@@ -31,7 +31,6 @@ export const env: Environment = {
   DMS_FRENCH_CITIZEN_URL: 'https://dmsfrenchcitizen',
   DMS_FOREIGN_CITIZEN_URL: 'https://dmsforeigncitizen',
   EDUCONNECT_ALLOWED_DOMAIN: 'https://educoco_alloweddodo',
-  ENABLE_WHY_DID_YOU_RENDER: false,
   ENV: 'testing',
   FAQ_LINK: 'https://passculture.faq',
   FAQ_LINK_CREDIT: 'https://passculture-credit.faq',

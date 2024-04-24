@@ -5,7 +5,6 @@ describe('parseBooleanVariables', () => {
     ENV: 'staging',
     API_BASE_URL: 'your-api.com',
     FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: 'false',
-    ENABLE_WHY_DID_YOU_RENDER: 'true',
     SENTRY_DSN: 'sentry-dsn',
     URL_PREFIX: 'passculture',
   }
@@ -16,7 +15,12 @@ describe('parseBooleanVariables', () => {
   })
 
   it('should generate truthy values for feature flags used with true', () => {
-    expect(convertedConfig.ENABLE_WHY_DID_YOU_RENDER).toBeTruthy()
+    const convertedConfig = parseBooleanVariables({
+      ...mockedConfig,
+      FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: 'true',
+    })
+
+    expect(convertedConfig.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING).toBeTruthy()
   })
 
   it('should not touch strings other than "true" and "false"', () => {

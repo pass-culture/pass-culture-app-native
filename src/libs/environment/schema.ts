@@ -29,7 +29,6 @@ export const EnvironmentSchema = yup.object({
   DMS_FRENCH_CITIZEN_URL: yup.string().required(),
   DMS_FOREIGN_CITIZEN_URL: yup.string().required(),
   EDUCONNECT_ALLOWED_DOMAIN: yup.string().required(),
-  ENABLE_WHY_DID_YOU_RENDER: yup.boolean().required(),
   ENV: yup.string().required(),
   FAQ_LINK: yup.string().required(),
   FAQ_LINK_CREDIT: yup.string().required(),
