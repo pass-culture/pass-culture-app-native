@@ -8,7 +8,7 @@ export const setFirebaseParams = (campaignDate?: Date | null) => {
   ago24Hours.setDate(ago24Hours.getDate() - 1)
 
   // If the user has clicked on marketing link 24h ago, we want to remove the marketing params
-  if (campaignDate && campaignDate < ago24Hours) {
+  if (campaignDate === null || (campaignDate && campaignDate < ago24Hours)) {
     const marketingParams = {
       traffic_campaign: null,
       traffic_content: null,
