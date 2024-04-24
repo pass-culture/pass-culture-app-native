@@ -632,7 +632,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SUBSCRIPTION_UPDATE }, params),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
-  logUserSetLocation: (from: 'home' | 'search') =>
+  logUserSetLocation: (from: 'home' | 'search' | 'venueMap') =>
     analytics.logEvent({ firebase: AnalyticsEvent.USER_SET_LOCATION }, { from }),
   logUserSetVenue: ({ venueLabel }: { venueLabel: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.USER_SET_VENUE }, { venueLabel }),

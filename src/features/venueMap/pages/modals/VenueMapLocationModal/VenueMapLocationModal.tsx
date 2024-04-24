@@ -120,7 +120,7 @@ export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalPr
           setPlaceGlobally(selectedPlace)
           setAroundPlaceRadius(tempAroundPlaceRadius)
           setTempAroundMeRadius(DEFAULT_RADIUS)
-          analytics.logUserSetLocation('search')
+          analytics.logUserSetLocation('venueMap')
         }
         break
 
