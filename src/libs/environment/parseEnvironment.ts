@@ -8,13 +8,13 @@ const isValidationError = (error: unknown): error is ValidationError =>
   error instanceof ValidationError
 
 export const parseBooleanVariables = (config: NativeConfig) => {
-  const configWithActualBooleans = { ...config } as Record<keyof Environment, string | boolean>
+  const configWithActualBooleans: Record<string, string | boolean> = { ...config }
 
   Object.keys(config).forEach((key) => {
     if (config[key] === 'true') {
-      configWithActualBooleans[key as keyof Environment] = true
+      configWithActualBooleans[key] = true
     } else if (config[key] === 'false') {
-      configWithActualBooleans[key as keyof Environment] = false
+      configWithActualBooleans[key] = false
     }
   })
 
@@ -25,7 +25,7 @@ export const parseEnvironment = (config: NativeConfig): Environment => {
   const configWithActualBooleans = parseBooleanVariables(config)
 
   try {
-    EnvironmentSchema.validateSync(configWithActualBooleans, { strict: true, abortEarly: false })
+    EnvironmentSchema.validateSync(configWithActualBooleans, { strict: true })
   } catch (error) {
     const errorMessage = isValidationError(error)
       ? `Error parsing .env file: ${error.errors.join(', ')}`
