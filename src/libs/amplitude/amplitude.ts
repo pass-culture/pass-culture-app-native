@@ -27,9 +27,8 @@ export const amplitude: AmplitudeClient = {
 
     Object.keys(properties).forEach((key) => {
       const value = properties[key]
-      if (value === null) return
+      if (value === null || value === undefined) return
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       identifyProperties.set(key, value)
     })
 
