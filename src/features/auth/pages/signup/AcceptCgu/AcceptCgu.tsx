@@ -112,6 +112,14 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       <Spacer.Column numberOfSpaces={10} />
       <CheckboxController
         control={control}
+        label="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
+        name="marketingEmailSubscription"
+      />
+      <Spacer.Column numberOfSpaces={6} />
+      <Separator.Horizontal />
+      <Spacer.Column numberOfSpaces={6} />
+      <CheckboxController
+        control={control}
         label="J’ai lu et j’accepte les conditions générales d’utilisation"
         name="acceptCgu"
         required
@@ -144,14 +152,6 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
         icon={ExternalSiteFilled}
         justifyContent="flex-start"
         numberOfLines={2}
-      />
-      <Spacer.Column numberOfSpaces={6} />
-      <Separator.Horizontal />
-      <Spacer.Column numberOfSpaces={6} />
-      <CheckboxController
-        control={control}
-        label="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
-        name="marketingEmailSubscription"
       />
       <Spacer.Column numberOfSpaces={10} />
       <ButtonPrimary
