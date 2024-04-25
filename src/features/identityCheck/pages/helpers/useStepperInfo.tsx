@@ -37,7 +37,13 @@ export const useStepperInfo = (): StepperInfo => {
     }
   }
 
-  const { title, subscriptionStepsToDisplay, subtitle, subscriptionMessage } = data
+  const {
+    title,
+    subscriptionStepsToDisplay,
+    subtitle,
+    subscriptionMessage,
+    allowedIdentityCheckMethods,
+  } = data
 
   const stepsConfig: StepsDictionary = {
     [IdentityCheckStep.PROFILE]: {
@@ -58,7 +64,7 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
       },
-      firstScreen: computeIdentificationMethod(data.allowedIdentityCheckMethods),
+      firstScreen: computeIdentificationMethod(allowedIdentityCheckMethods),
     },
     [IdentityCheckStep.CONFIRMATION]: {
       name: IdentityCheckStep.CONFIRMATION,
@@ -86,19 +92,21 @@ export const useStepperInfo = (): StepperInfo => {
     },
   }
 
-  const stepDetailsList = (subscriptionStepsToDisplay || []).map((step) => {
-    if (!isPartialIdentityCheckStep(step.name, stepsConfig)) return null
-    const currentStepConfig: StepConfig = stepsConfig[step.name]
-    const stepDetails: StepExtendedDetails = {
-      name: currentStepConfig.name,
-      title: step.title,
-      subtitle: step.subtitle ?? undefined,
-      icon: currentStepConfig.icon,
-      stepState: mapCompletionState(step.completionState),
-      firstScreen: currentStepConfig.firstScreen,
-    }
-    return stepDetails
-  })
+  const stepDetailsList = subscriptionStepsToDisplay
+    ? subscriptionStepsToDisplay.map((step) => {
+        if (!isPartialIdentityCheckStep(step.name, stepsConfig)) return null
+        const currentStepConfig: StepConfig = stepsConfig[step.name]
+        const stepDetails: StepExtendedDetails = {
+          name: currentStepConfig.name,
+          title: step.title,
+          subtitle: step.subtitle ?? undefined,
+          icon: currentStepConfig.icon,
+          stepState: mapCompletionState(step.completionState),
+          firstScreen: currentStepConfig.firstScreen,
+        }
+        return stepDetails
+      })
+    : []
 
   const stepsDetails = stepDetailsList.filter((step): step is StepExtendedDetails => step != null)
 
