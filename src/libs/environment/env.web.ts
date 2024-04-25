@@ -1,8 +1,7 @@
-import { parseBooleanVariables } from 'libs/environment/parseBooleanVariables'
+import { parseEnvironment } from 'libs/environment/parseEnvironment'
+import { Environment } from 'libs/environment/schema'
 
-import { Environment } from './types'
-
-export const env = parseBooleanVariables({
+export const env: Environment = parseEnvironment({
   ...process.env,
   API_BASE_URL: __DEV__ ? '' : (process.env.API_BASE_URL as string),
-}) as unknown as Environment
+})

@@ -1,5 +1,7 @@
 import { config } from 'dotenv'
 
+import { parseEnvironment } from 'libs/environment/parseEnvironment'
+
 function loadEnvVariables(filePath: string) {
   const { parsed, error } = config({ path: filePath })
   if (error) {
@@ -37,13 +39,30 @@ describe('.env files', () => {
   const envFiles = ['.env.testing', '.env.staging', '.env.integration', '.env.production']
 
   test('all variables should be present in all .env files', () => {
-    const missingVariables = compareEnvFiles(envFiles)
-    for (const [file, variables] of Object.entries(missingVariables)) {
-      if (variables.length > 0) {
-        throw new Error(`Missing variables in ${file}: ${variables.join(', ')}`)
+    const checkEnv = () => {
+      const missingVariables = compareEnvFiles(envFiles)
+      for (const [file, variables] of Object.entries(missingVariables)) {
+        if (variables.length > 0) {
+          throw new Error(`Missing variables in ${file}: ${variables.join(', ')}`)
+        }
       }
     }
 
-    expect(true).toBe(true) // Pass if no error is thrown
+    expect(checkEnv).not.toThrow()
+  })
+
+  test('.env file should match yup schema', () => {
+    const checkEnv = () => {
+      for (const file of envFiles) {
+        const { parsed: env } = config({ path: file })
+        if (!env) {
+          throw new Error(`No variables found in ${file}`)
+        }
+
+        parseEnvironment(env)
+      }
+    }
+
+    expect(checkEnv).not.toThrow()
   })
 })

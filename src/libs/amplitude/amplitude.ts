@@ -4,13 +4,11 @@ import { env } from 'libs/environment'
 
 import { AmplitudeClient } from './types'
 
-if (env.AMPLITUDE_API_KEY) {
-  amplitudeRN.init(env.AMPLITUDE_API_KEY, undefined, {
-    serverZone: amplitudeRN.Types.ServerZone.EU,
-    optOut: true,
-    minIdLength: 1,
-  })
-}
+amplitudeRN.init(env.AMPLITUDE_API_KEY, undefined, {
+  serverZone: amplitudeRN.Types.ServerZone.EU,
+  optOut: true,
+  minIdLength: 1,
+})
 
 export const amplitude: AmplitudeClient = {
   logEvent: (eventType, eventProperties) => {
@@ -29,9 +27,8 @@ export const amplitude: AmplitudeClient = {
 
     Object.keys(properties).forEach((key) => {
       const value = properties[key]
-      if (value === null) return
+      if (value === null || value === undefined) return
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
       identifyProperties.set(key, value)
     })
 

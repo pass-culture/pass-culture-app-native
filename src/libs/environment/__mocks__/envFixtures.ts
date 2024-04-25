@@ -1,4 +1,5 @@
-import { Environment } from 'libs/environment/types'
+import { Environment } from 'libs/environment/schema'
+
 export const env: Environment = {
   ACCESSIBILITY_LINK: 'https://passculture.accessibility',
   ALGOLIA_APPLICATION_ID: 'algoliaAppId',
@@ -30,7 +31,6 @@ export const env: Environment = {
   DMS_FRENCH_CITIZEN_URL: 'https://dmsfrenchcitizen',
   DMS_FOREIGN_CITIZEN_URL: 'https://dmsforeigncitizen',
   EDUCONNECT_ALLOWED_DOMAIN: 'https://educoco_alloweddodo',
-  ENABLE_WHY_DID_YOU_RENDER: false,
   ENV: 'testing',
   FAQ_LINK: 'https://passculture.faq',
   FAQ_LINK_CREDIT: 'https://passculture-credit.faq',
@@ -65,9 +65,6 @@ export const env: Environment = {
   SENTRY_DSN: 'SENTRY_DSN',
   SENTRY_PROFILES_SAMPLE_RATE: '1.0',
   SENTRY_TRACES_SAMPLE_RATE: '1.0',
-  SIGNIN_IDENTIFIER: '',
-  SIGNIN_PASSWORD: '',
-  SIGNUP_POSTAL_CODE: '',
   SITE_KEY: 'SITE_KEY',
   SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
   TUTORIAL_FEEDBACK_LINK: 'https://passculture.qualtrics.com/jfe/form/SV_8rkHZvOvmtdq4V8',

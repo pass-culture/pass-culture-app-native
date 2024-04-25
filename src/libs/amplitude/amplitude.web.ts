@@ -16,29 +16,23 @@ const defaultConfig: Amplitude.Config = {
   storage: 'none',
 }
 
-if (env.AMPLITUDE_API_KEY) {
-  ampInstance.init(env.AMPLITUDE_API_KEY, undefined, defaultConfig)
-}
+ampInstance.init(env.AMPLITUDE_API_KEY, undefined, defaultConfig)
 
 export const amplitude: AmplitudeClient = {
   logEvent: (eventType, eventProperties) => {
     ampInstance.logEvent(eventType, eventProperties)
   },
   enableCollection: () => {
-    if (env.AMPLITUDE_API_KEY) {
-      ampInstance.init(env.AMPLITUDE_API_KEY, undefined, {
-        ...defaultConfig,
-        saveEvents: true,
-        optOut: false,
-        disableCookies: false,
-        storage: 'cookies',
-      })
-    }
+    ampInstance.init(env.AMPLITUDE_API_KEY, undefined, {
+      ...defaultConfig,
+      saveEvents: true,
+      optOut: false,
+      disableCookies: false,
+      storage: 'cookies',
+    })
   },
   disableCollection: () => {
-    if (env.AMPLITUDE_API_KEY) {
-      ampInstance.init(env.AMPLITUDE_API_KEY, undefined, defaultConfig)
-    }
+    ampInstance.init(env.AMPLITUDE_API_KEY, undefined, defaultConfig)
     removeGeneratedStorageKey('amplitude_unsent')
   },
   setUserProperties: (properties) => {
