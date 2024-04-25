@@ -96,6 +96,7 @@ describe('<SetEmail />', () => {
 
     expect(defaultProps.goToNextStep).toHaveBeenCalledWith({
       email: 'john.doe@gmail.com',
+      marketingEmailSubscription: false,
       accountCreationToken: undefined,
     })
   })
@@ -212,6 +213,36 @@ describe('<SetEmail />', () => {
     const emailInput = await screen.findByTestId('Entrée pour l’email')
 
     expect(emailInput.props.value).toBe('john.doe@gmail.com')
+  })
+
+  it('should set default marketing email subscription choice to true if the user has already chosen', async () => {
+    const propsWithPreviousEmail = {
+      ...defaultProps,
+      previousSignupData: {
+        ...defaultProps.previousSignupData,
+        marketingEmailSubscription: true,
+      },
+    }
+    renderSetEmail(propsWithPreviousEmail)
+
+    const marketingEmailSubscriptionCheckbox = await screen.findByRole('checkbox')
+
+    expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(true)
+  })
+
+  it('should set default marketing email subscription choice to false', async () => {
+    const propsWithoutMarketingEmailSubscription = {
+      ...defaultProps,
+      previousSignupData: {
+        ...defaultProps.previousSignupData,
+        marketingEmailSubscription: undefined,
+      },
+    }
+    renderSetEmail(propsWithoutMarketingEmailSubscription)
+
+    const marketingEmailSubscriptionCheckbox = await screen.findByRole('checkbox')
+
+    expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(false)
   })
 
   describe('SSO', () => {

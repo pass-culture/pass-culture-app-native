@@ -14,6 +14,7 @@ import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -25,6 +26,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
   email: string
+  marketingEmailSubscription: boolean
 }
 
 export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = ({
@@ -42,6 +44,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
       email: previousSignupData.email,
+      marketingEmailSubscription: previousSignupData.marketingEmailSubscription ?? false,
     },
     resolver: yupResolver(setEmailSchema),
     mode: 'onSubmit',
@@ -52,9 +55,9 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   }, [])
 
   const goToNextStepCallback = useCallback(
-    ({ email }: FormValues) => {
+    ({ email, marketingEmailSubscription }: FormValues) => {
       onDefaultEmailSignup()
-      goToNextStep({ email })
+      goToNextStep({ email, marketingEmailSubscription })
     },
     [goToNextStep, onDefaultEmailSignup]
   )
@@ -91,6 +94,12 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         control={control}
         name="email"
         onSpellingHelpPress={onLogHasCorrectedEmail}
+      />
+      <Spacer.Column numberOfSpaces={8} />
+      <CheckboxController
+        control={control}
+        label="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
+        name="marketingEmailSubscription"
       />
       <Spacer.Column numberOfSpaces={10} />
       <ButtonPrimary
