@@ -6,7 +6,7 @@ import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   title: string
@@ -14,17 +14,24 @@ type Props = {
   hideModal: () => void
   surveyUrl: string
   Icon: React.FC<AccessibleIcon>
-  Content?: React.FC
+  surveyDescription?: string
 }
 
-export const SurveyModal = ({ visible, hideModal, surveyUrl, title, Content, Icon }: Props) => {
+export const SurveyModal = ({
+  visible,
+  hideModal,
+  surveyUrl,
+  title,
+  surveyDescription,
+  Icon,
+}: Props) => {
   return (
     <AppInformationModal title={title} visible={visible} onCloseIconPress={hideModal}>
       <Icon />
       <Spacer.Column numberOfSpaces={4} />
-      {!!Content && (
+      {!!surveyDescription && (
         <Container>
-          <Content />
+          <Typo.Body>{surveyDescription}</Typo.Body>
         </Container>
       )}
       <Spacer.Column numberOfSpaces={8} />
