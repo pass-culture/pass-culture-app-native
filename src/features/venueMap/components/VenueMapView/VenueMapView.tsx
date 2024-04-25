@@ -138,8 +138,8 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
           <Marker
             key={venue.venueId}
             coordinate={{
-              latitude: venue._geoloc.lat,
-              longitude: venue._geoloc.lng,
+              latitude: venue._geoloc.lat ?? 0,
+              longitude: venue._geoloc.lng ?? 0,
             }}
             onPress={(event) => handleMarkerPress(venue, event)}
             image={{
