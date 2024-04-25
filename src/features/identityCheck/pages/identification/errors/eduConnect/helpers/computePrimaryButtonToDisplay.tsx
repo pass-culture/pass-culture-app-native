@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { NotEligibleEduConnectErrorData } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'

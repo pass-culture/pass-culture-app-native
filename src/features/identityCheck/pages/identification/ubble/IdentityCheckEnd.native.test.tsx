@@ -4,11 +4,11 @@ import { dispatch, navigate } from '__mocks__/@react-navigation/native'
 import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics'
 import { render, screen, waitFor } from 'tests/utils'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 
 let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
   ...mockStep,

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics'
 import { EmptyResponse } from 'libs/fetch'
 import { mockServer } from 'tests/mswServer'
@@ -14,7 +14,7 @@ import { SuspendedAccountUponUserRequest } from './SuspendedAccountUponUserReque
 jest.mock('features/auth/api/useAccountSuspensionDate', () => ({
   useAccountSuspensionDate: jest.fn(() => ({ data: { date: '2022-05-11T10:29:25.332786Z' } })),
 }))
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 
 const mockSignOut = jest.fn()
 jest.mock('features/auth/helpers/useLogoutRoutine', () => ({

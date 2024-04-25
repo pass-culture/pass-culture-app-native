@@ -19,7 +19,8 @@ import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
 import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
@@ -37,7 +38,8 @@ import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { Login } from './Login'
 
 jest.mock('libs/monitoring')
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
+jest.mock('features/navigation/helpers/usePreviousRoute')
 const mockResetSearch = jest.fn()
 const mockIdentityCheckDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({

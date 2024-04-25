@@ -2,7 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/typ
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { formatToReadableFrenchDate } from 'libs/dates'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'

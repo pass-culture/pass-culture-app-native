@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { NonEligibleModal } from 'features/tutorial/pages/NonEligibleModal'

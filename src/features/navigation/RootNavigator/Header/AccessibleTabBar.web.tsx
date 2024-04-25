@@ -6,7 +6,7 @@ import {
   defaultDisabilitiesProperties,
   useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { useCurrentRoute } from 'features/navigation/helpers'
+import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { TabBarComponent } from 'features/navigation/TabBar/TabBarComponent'

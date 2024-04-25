@@ -8,7 +8,7 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 
 let mockIsMailAppAvailable = true
 jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({

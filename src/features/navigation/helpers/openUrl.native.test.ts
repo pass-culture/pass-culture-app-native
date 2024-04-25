@@ -2,13 +2,12 @@ import { Alert, Linking, Platform, NativeModules } from 'react-native'
 
 import * as getScreenFromDeeplinkModule from 'features/deeplinks/helpers/getScreenFromDeeplink'
 import { DeeplinkParts } from 'features/deeplinks/types'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { act } from 'tests/utils'
-
-import { openUrl } from '../helpers'
 
 jest.mock('libs/monitoring')
 jest.mock('features/navigation/navigationRef')

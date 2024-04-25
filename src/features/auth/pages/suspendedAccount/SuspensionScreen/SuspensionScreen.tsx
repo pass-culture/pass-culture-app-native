@@ -6,7 +6,8 @@ import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensi
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
-import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/SuspiciousLoginSuspendedAccount'
 import { LoadingPage } from 'ui/components/LoadingPage'
 

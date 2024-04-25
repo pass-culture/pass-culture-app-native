@@ -4,7 +4,7 @@ import { Text } from 'react-native'
 
 import { useRoute, replace } from '__mocks__/@react-navigation/native'
 import { UpdateEmailTokenExpiration } from 'api/gen'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -13,7 +13,7 @@ import { render, screen, waitFor } from 'tests/utils'
 import { AccountSecurityBuffer } from './AccountSecurityBuffer'
 
 jest.unmock('jwt-decode')
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 
 const consoleError = console.error
 const catchErrorSilently = async (fn: () => Promise<unknown>) => {

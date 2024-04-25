@@ -21,7 +21,7 @@ import {
   useOngoingOrEndedBooking,
 } from 'features/bookings/api'
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
-import { openUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
 import { MovieScreeningUserData } from 'features/offer/components/MovieScreeningCalendar/types'

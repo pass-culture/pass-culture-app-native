@@ -11,12 +11,13 @@ import {
 } from 'features/culturalSurvey/context/__mocks__/CulturalSurveyContextProvider'
 import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
-import { navigateToHome } from 'features/navigation/helpers/__mocks__'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { render, screen, fireEvent, middleScrollEvent, bottomScrollEvent } from 'tests/utils'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
+jest.mock('features/navigation/helpers/isAppUrl')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 
 const mockedUseCulturalSurveyAnswersMutation = jest.mocked(useCulturalSurveyAnswersMutation)
@@ -52,7 +53,7 @@ const mockUseCulturalSurveyAnswersMutation = () => {
   })
 }
 
-describe('CulturalSurveysQuestions page', () => {
+describe('CulturalSurveyQuestions page', () => {
   const { data: questionsFromMockedHook } = mockedUseCulturalSurveyQuestions()
 
   it('should render the page with correct layout', () => {

@@ -3,7 +3,7 @@
 exports[`AccessibleTabBar renders correctly 1`] = `
 <div>
   <nav
-    class="sc-uVWWZ cmJsRX"
+    class="sc-iGgWBj ejNqrU"
     id="tabBarID"
     role="navigation"
   >

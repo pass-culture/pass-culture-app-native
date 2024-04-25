@@ -4,7 +4,7 @@ import * as ReactQueryAPI from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
@@ -16,7 +16,7 @@ import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
 const useQuerySpy = jest.spyOn(ReactQueryAPI, 'useQuery')
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 
 describe('<ResetPasswordExpiredLink/>', () => {

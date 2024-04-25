@@ -6,7 +6,7 @@ import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurve
 import { analytics } from 'libs/analytics'
 import { render, fireEvent, screen, waitFor } from 'tests/utils'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/culturalSurvey/helpers/useGetNextQuestion')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')

@@ -13,7 +13,7 @@ import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixt
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
 import { Icons } from 'features/internal/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/internal/cheatcodes/pages/AppComponents/Illustrations'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'

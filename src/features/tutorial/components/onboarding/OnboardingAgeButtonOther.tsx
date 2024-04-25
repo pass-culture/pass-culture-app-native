@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { AgeButtonProps, TutorialType } from 'features/tutorial/types'
 

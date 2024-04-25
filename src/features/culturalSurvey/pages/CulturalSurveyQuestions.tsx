@@ -18,7 +18,7 @@ import {
 } from 'features/culturalSurvey/helpers/questionsToDisplay'
 import { useCulturalSurveyProgress } from 'features/culturalSurvey/helpers/useCulturalSurveyProgress'
 import { useGetNextQuestion } from 'features/culturalSurvey/helpers/useGetNextQuestion'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import {
   CulturalSurveyRootStackParamList,
   UseNavigationType,

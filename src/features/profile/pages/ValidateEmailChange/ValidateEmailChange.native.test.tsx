@@ -23,7 +23,7 @@ const useEmailUpdateStatusSpy = jest
     },
   } as QueryObserverResult<EmailUpdateStatus>)
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 
 const mockShowSuccessSnackbar = jest.fn()
 const mockShowErrorSnackbar = jest.fn()

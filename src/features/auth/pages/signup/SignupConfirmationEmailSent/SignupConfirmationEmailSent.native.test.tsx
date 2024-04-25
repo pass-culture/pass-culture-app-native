@@ -3,7 +3,8 @@ import { openInbox } from 'react-native-email-link'
 
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
-import { usePreviousRoute, openUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers/openUrl'
+import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
@@ -13,7 +14,9 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
 
 const mockUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/usePreviousRoute')
+jest.mock('features/navigation/helpers/openUrl')
+
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)

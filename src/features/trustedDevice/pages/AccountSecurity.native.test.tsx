@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
@@ -10,7 +10,7 @@ import { fireEvent, render, screen } from 'tests/utils'
 import { AccountSecurity } from './AccountSecurity'
 
 jest.unmock('jwt-decode')
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 const { user: globalMockUser } = mockUseAuthContext()

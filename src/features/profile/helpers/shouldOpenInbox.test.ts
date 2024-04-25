@@ -1,8 +1,8 @@
-import { isAppUrl } from 'features/navigation/helpers'
+import { isAppUrl } from 'features/navigation/helpers/isAppUrl'
 
 import { shouldOpenInbox } from './shouldOpenInbox'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/isAppUrl')
 
 describe('shouldOpenInbox', () => {
   it("should return true if url is appUrl and contains 'openInbox' string", () => {
