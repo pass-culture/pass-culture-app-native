@@ -1,15 +1,15 @@
-import React, { useCallback, useState, useEffect } from 'react'
-import { Keyboard, Linking } from 'react-native'
+import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
 import { LOCATION_PLACEHOLDER } from 'features/location/constants'
-import { DEFAULT_RADIUS } from 'features/search/constants'
-import { analytics } from 'libs/analytics'
-import { GeolocPermissionState, useLocation } from 'libs/location'
+import { useLocationMode } from 'features/location/helpers/useLocationMode'
+import { useLocationState } from 'features/location/helpers/useLocationState'
+import { useLocationSubmit } from 'features/location/helpers/useLocationSubmit'
+import { usePlaceSelection } from 'features/location/helpers/usePlaceSelection'
+import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { LocationMode } from 'libs/location/types'
-import { SuggestedPlace } from 'libs/place/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -27,47 +27,41 @@ interface LocationModalProps {
 }
 
 export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalProps) => {
+  const locationStateProps = useLocationState({
+    visible,
+  })
   const {
     hasGeolocPosition,
     placeQuery,
     setPlaceQuery,
     selectedPlace,
     setSelectedPlace,
-    onSetSelectedPlace,
     onResetPlace,
-    setPlace: setPlaceGlobally,
+    tempLocationMode,
     onModalHideRef,
-    permissionState,
-    requestGeolocPermission,
-    aroundPlaceRadius,
-    setAroundPlaceRadius,
-    aroundMeRadius,
-    setAroundMeRadius,
-    selectedLocationMode,
-    setSelectedLocationMode,
-    place,
-  } = useLocation()
-  const [tempAroundMeRadius, setTempAroundMeRadius] = useState<number>(DEFAULT_RADIUS)
-  const [tempAroundPlaceRadius, setTempAroundPlaceRadius] = useState<number>(DEFAULT_RADIUS)
-  const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
+    tempAroundPlaceRadius,
+    tempAroundMeRadius,
+  } = locationStateProps
+  const locationSubmitProps = useLocationSubmit({
+    dismissModal,
+    from: 'venueMap',
+    ...locationStateProps,
+  })
+  const { onSubmit, onClose } = locationSubmitProps
+  const { onTempAroundRadiusPlaceValueChange, onTempAroundMeRadiusValueChange } = useRadiusChange({
+    visible,
+    ...locationStateProps,
+  })
+  const { onPlaceSelection } = usePlaceSelection({
+    ...locationStateProps,
+  })
+  const { selectLocationMode } = useLocationMode({
+    dismissModal,
+    shouldOpenDirectlySettings: true,
+    ...locationStateProps,
+    ...locationSubmitProps,
+  })
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
-
-  useEffect(() => {
-    if (visible) {
-      setTempLocationMode(selectedLocationMode)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedLocationMode, visible])
-
-  useEffect(() => {
-    if (visible) {
-      onModalHideRef.current = undefined
-      setPlaceQuery(place?.label ?? '')
-      setSelectedPlace(place)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible])
-
   const theme = useTheme()
 
   const geolocationModeColor = isCurrentLocationMode(LocationMode.AROUND_ME)
@@ -77,96 +71,6 @@ export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalPr
   const customLocationModeColor = isCurrentLocationMode(LocationMode.AROUND_PLACE)
     ? theme.colors.primary
     : theme.colors.black
-
-  const runGeolocationDialogs = useCallback(async () => {
-    const selectGeoLocationMode = () => setTempLocationMode(LocationMode.AROUND_ME)
-    const selectEverywhereMode = () => setSelectedLocationMode(LocationMode.EVERYWHERE)
-
-    if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-      setPlaceGlobally(null)
-      selectEverywhereMode()
-      Linking.openSettings()
-    } else {
-      await requestGeolocPermission({
-        onAcceptance: selectGeoLocationMode,
-        onRefusal: selectEverywhereMode,
-      })
-    }
-  }, [permissionState, setSelectedLocationMode, setPlaceGlobally, requestGeolocPermission])
-
-  const selectLocationMode = (mode: LocationMode) => () => {
-    switch (mode) {
-      case LocationMode.AROUND_ME:
-        runGeolocationDialogs()
-        break
-
-      case LocationMode.EVERYWHERE:
-        setTempLocationMode(LocationMode.EVERYWHERE)
-        onSubmit(LocationMode.EVERYWHERE)
-        break
-
-      default:
-        setTempLocationMode(mode)
-        break
-    }
-  }
-
-  const onSubmit = (mode?: LocationMode) => {
-    const chosenLocationMode = mode ?? tempLocationMode
-    setSelectedLocationMode(chosenLocationMode)
-    switch (chosenLocationMode) {
-      case LocationMode.AROUND_PLACE:
-        if (selectedPlace) {
-          setPlaceGlobally(selectedPlace)
-          setAroundPlaceRadius(tempAroundPlaceRadius)
-          setTempAroundMeRadius(DEFAULT_RADIUS)
-          analytics.logUserSetLocation('venueMap')
-        }
-        break
-
-      case LocationMode.AROUND_ME:
-        setPlaceGlobally(null)
-        setAroundMeRadius(tempAroundMeRadius)
-        setTempAroundPlaceRadius(DEFAULT_RADIUS)
-        break
-
-      case LocationMode.EVERYWHERE:
-        setPlaceGlobally(null)
-        break
-    }
-
-    dismissModal()
-  }
-
-  const onClose = () => {
-    setTempAroundMeRadius(aroundMeRadius)
-    setTempAroundPlaceRadius(aroundPlaceRadius)
-    dismissModal()
-  }
-
-  const onTempAroundRadiusPlaceValueChange = useCallback(
-    (newValues: number[]) => {
-      if (visible) {
-        // @ts-expect-error: because of noUncheckedIndexedAccess
-        setTempAroundPlaceRadius(newValues[0])
-      }
-    },
-    [visible, setTempAroundPlaceRadius]
-  )
-  const onTempAroundMeRadiusValueChange = useCallback(
-    (newValues: number[]) => {
-      if (visible) {
-        // @ts-expect-error: because of noUncheckedIndexedAccess
-        setTempAroundMeRadius(newValues[0])
-      }
-    },
-    [visible, setTempAroundMeRadius]
-  )
-
-  const onPlaceSelection = (place: SuggestedPlace) => {
-    onSetSelectedPlace(place)
-    Keyboard.dismiss()
-  }
 
   return (
     <AppModal

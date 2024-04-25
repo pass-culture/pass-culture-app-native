@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Dimensions, FlatList, ListRenderItem, Platform, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import {
   CategoryButton,
   CategoryButtonProps,
@@ -9,7 +10,6 @@ import {
 import { IncentiveLocationModal } from 'features/search/components/IncentiveLocationModal/IncentiveLocationModal'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
-import { VenueMapLocationModal } from 'features/venueMap/pages/modals/VenueMapLocationModal/VenueMapLocationModal'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'

@@ -53,8 +53,8 @@
 ./src/features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web.test.tsx:28
 ./src/features/internal/cheatcodes/hooks/useSomeOfferId.ts:24
 ./src/features/internal/cheatcodes/hooks/useSomeVenueId.ts:23
-./src/features/location/components/SearchLocationModal.tsx:185
-./src/features/location/components/SearchLocationModal.tsx:194
+./src/features/location/helpers/useRadiusChange.ts:15
+./src/features/location/helpers/useRadiusChange.ts:25
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:14
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:16
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:19
@@ -100,8 +100,6 @@
 ./src/features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues.native.test.tsx:37
 ./src/features/search/pages/modals/CategoriesModal/CategoriesModal.tsx:122
 ./src/features/venue/components/TabLayout/useTabArrowNavigation.web.ts:24
-./src/features/venueMap/pages/modals/VenueMapLocationModal/VenueMapLocationModal.tsx:150
-./src/features/venueMap/pages/modals/VenueMapLocationModal/VenueMapLocationModal.tsx:159
 ./src/libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters.ts:23
 ./src/libs/contentful/adapters/modules/adaptVenuesModule.ts:24
 ./src/libs/firebase/remoteConfig/remoteConfig.services.ts:22
