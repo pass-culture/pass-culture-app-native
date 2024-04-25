@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { useAppStateChange } from 'libs/appState'
 import LottieView from 'libs/lottie'

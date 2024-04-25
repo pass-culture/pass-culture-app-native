@@ -1,8 +1,8 @@
-import { openUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 
 import { openGoogleMapsItinerary } from './openGoogleMapsItinerary'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/openUrl')
 const mockOpenUrl = jest.mocked(openUrl)
 
 describe('openGoogleMapsItinerary()', () => {

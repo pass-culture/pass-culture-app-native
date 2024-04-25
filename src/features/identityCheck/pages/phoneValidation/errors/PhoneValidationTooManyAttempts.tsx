@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'

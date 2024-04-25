@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { AccountState } from 'api/gen'
-import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { render, screen } from 'tests/utils'
 
 import { SuspensionScreen } from './SuspensionScreen'
@@ -16,7 +17,7 @@ jest.mock('features/auth/api/useAccountSuspensionDate', () => ({
 jest.mock('features/auth/api/useAccountUnsuspend', () => ({
   useAccountUnsuspend: jest.fn(() => ({ mutate: jest.fn() })),
 }))
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/useCurrentRoute')
 jest.mock('features/auth/context/SettingsContext')
 
 const mockSignOut = jest.fn()
@@ -24,12 +25,12 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 const mockedUseCurrentRoute = useCurrentRoute as jest.MockedFunction<typeof useCurrentRoute>
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 function mockUseCurrentRoute(name: string) {
   mockedUseCurrentRoute.mockReturnValue({ name, key: 'key' })
 }
 
-describe('<SuspensionsScreen />', () => {
+describe('<SuspensionScreen />', () => {
   it('should display SuspendedAccountUponUserRequest component if account is suspended upon user request', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED_UPON_USER_REQUEST
     render(<SuspensionScreen />)

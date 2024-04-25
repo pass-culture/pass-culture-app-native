@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

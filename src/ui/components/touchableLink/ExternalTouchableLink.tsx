@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-import { openUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { useItinerary } from 'libs/itinerary/useItinerary'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalTouchableLinkProps } from 'ui/components/touchableLink/types'

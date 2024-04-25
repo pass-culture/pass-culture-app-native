@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { NavigateHomeButton } from './NavigateHomeButton'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 
 describe('NavigateHomeButton', () => {
   it('calls navigate to Home when pressed', () => {

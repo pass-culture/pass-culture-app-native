@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
-import { useCurrentRoute } from 'features/navigation/helpers'
+import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'

@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import {
   StepperOrigin,
   TutorialRootStackParamList,

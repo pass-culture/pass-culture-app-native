@@ -4,7 +4,7 @@ import { reset } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
 import { render, fireEvent, screen } from 'tests/utils'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 
 describe('CulturalSurveyThanksPage page', () => {
   it('should render the page with correct layout', () => {

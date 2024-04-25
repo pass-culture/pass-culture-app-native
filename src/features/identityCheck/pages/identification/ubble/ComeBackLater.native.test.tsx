@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { ComeBackLater } from 'features/identityCheck/pages/identification/ubble/ComeBackLater'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 
 describe('ComeBackLater', () => {

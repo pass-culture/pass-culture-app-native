@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
@@ -13,7 +13,7 @@ import { render, fireEvent, waitFor, screen } from 'tests/utils'
 import { AccountCreated } from './AccountCreated'
 
 jest.mock('features/profile/api/useResetRecreditAmountToShow')
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock

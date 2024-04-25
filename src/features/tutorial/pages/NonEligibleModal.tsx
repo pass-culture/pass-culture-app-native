@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome, openUrl } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { getModalInfoForNonEligible } from 'features/tutorial/helpers/getModalInfoForNonEligible'
 import { env } from 'libs/environment'

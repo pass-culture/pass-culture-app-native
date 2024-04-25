@@ -3,13 +3,13 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { render, fireEvent, screen } from 'tests/utils'
 
 import { BeneficiaryRequestSent } from './BeneficiaryRequestSent'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 
 const mockedUseAuthContext = useAuthContext as jest.Mock

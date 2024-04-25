@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { timeDiffInHours } from 'libs/dates'
 import { plural } from 'libs/plural'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'

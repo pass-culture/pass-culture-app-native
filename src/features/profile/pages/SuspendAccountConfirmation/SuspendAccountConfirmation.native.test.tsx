@@ -5,7 +5,7 @@ import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 import * as API from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { EmailHistoryEventTypeEnum } from 'api/gen'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
@@ -24,7 +24,7 @@ const useEmailUpdateStatusSpy = jest
     isLoading: false,
   } as UseEmailUpdateStatusMock)
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 
 const emailUpdateCancelSpy = jest
   .spyOn(API.api, 'postNativeV1ProfileEmailUpdateCancel')

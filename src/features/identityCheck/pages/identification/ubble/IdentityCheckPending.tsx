@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'

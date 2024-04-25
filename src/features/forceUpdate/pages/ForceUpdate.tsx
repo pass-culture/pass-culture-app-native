@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { STORE_LINK, TITLE, BUTTON_TEXT, DESCRIPTION } from 'features/forceUpdate/constants'
 import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
-import { openUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { getAppBuildVersion } from 'libs/packageJson'

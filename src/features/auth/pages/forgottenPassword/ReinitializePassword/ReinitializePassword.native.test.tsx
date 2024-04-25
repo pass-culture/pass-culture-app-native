@@ -5,7 +5,7 @@ import { useRoute, replace } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { AccountState } from 'api/gen'
 import * as LoginRoutine from 'features/auth/helpers/useLoginRoutine'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
@@ -29,7 +29,7 @@ const ROUTE_PARAMS: {
   from: undefined,
 }
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()

@@ -6,7 +6,7 @@ import { useAccountSuspensionDate } from 'features/auth/api/useAccountSuspension
 import { useAccountUnsuspend } from 'features/auth/api/useAccountUnsuspend'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { formatToCompleteFrenchDateTime } from 'libs/parsers/formatDates'

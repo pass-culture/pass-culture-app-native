@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { IdentityCheckPending } from 'features/identityCheck/pages/identification/ubble/IdentityCheckPending'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { fireEvent, render, screen } from 'tests/utils'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 
 describe('<IdentityCheckPending/>', () => {

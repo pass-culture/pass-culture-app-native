@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'

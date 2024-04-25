@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { FavoritesCountResponse } from 'api/gen'
-import { useCurrentRoute } from 'features/navigation/helpers'
+import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -26,7 +26,7 @@ jest.mock('features/navigation/TabBar/TabNavigator', () => ({
 jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
   useInitialScreen: () => 'TabNavigator',
 }))
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/useCurrentRoute')
 jest.mock('features/navigation/navigationRef')
 jest.mock('libs/splashscreen')
 

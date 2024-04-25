@@ -1,7 +1,7 @@
 import { ElementType } from 'react'
 import { GestureResponderEvent, TouchableOpacityProps } from 'react-native'
 
-import { UrlParamsProps } from 'features/navigation/helpers'
+import { UrlParamsProps } from 'features/navigation/helpers/openUrl'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'

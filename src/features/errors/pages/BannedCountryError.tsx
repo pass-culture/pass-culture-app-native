@@ -2,7 +2,7 @@ import React from 'react'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { pushFromRef } from 'features/navigation/navigationRef'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'

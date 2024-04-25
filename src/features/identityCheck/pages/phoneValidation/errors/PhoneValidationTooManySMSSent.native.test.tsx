@@ -4,11 +4,11 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { PhoneValidationTooManySMSSent } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { fireEvent, render, screen } from 'tests/utils'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 
 jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () => {

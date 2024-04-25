@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { UpdateAppBanner } from 'features/profile/components/Banners/UpdateAppBanner'
 import { StepCard } from 'features/profile/components/StepCard/StepCard'

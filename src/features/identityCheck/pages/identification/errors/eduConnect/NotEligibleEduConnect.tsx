@@ -3,7 +3,7 @@ import { TextProps, TextStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { computePrimaryButtonToDisplay } from 'features/identityCheck/pages/identification/errors/eduConnect/helpers/computePrimaryButtonToDisplay'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'

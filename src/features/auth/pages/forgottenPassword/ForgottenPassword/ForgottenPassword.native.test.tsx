@@ -13,7 +13,7 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 
 import { ForgottenPassword } from './ForgottenPassword'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/auth/context/SettingsContext')
 jest.mock('libs/monitoring')
 jest.useFakeTimers()

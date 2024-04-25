@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'

@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

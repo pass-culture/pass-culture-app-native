@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { SignupStep } from 'features/auth/enums'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { QuitSignupModal } from './QuitSignupModal'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 
 const resumeMock = jest.fn()
 

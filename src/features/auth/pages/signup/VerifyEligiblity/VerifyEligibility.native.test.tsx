@@ -1,14 +1,14 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { render, fireEvent, screen } from 'tests/utils'
 
 import { VerifyEligibility } from './VerifyEligibility'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 
 describe('<VerifyEligibility />', () => {

@@ -1,4 +1,4 @@
-import { openUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 
 export function getGoogleMapsItineraryUrl(address: string) {
   const encodedAddress = encodeURIComponent(address)

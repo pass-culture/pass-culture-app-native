@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { AccountReactivationSuccess } from './AccountReactivationSuccess'
 
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 
 describe('<AccountReactivationSuccess />', () => {
   it('should match snapshot', () => {

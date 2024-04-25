@@ -2,7 +2,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 
 import { ApiError } from 'api/ApiError'
-import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useConfirmChangeEmailMutationV1 } from 'features/profile/helpers/useConfirmChangeEmailMutationV1'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'

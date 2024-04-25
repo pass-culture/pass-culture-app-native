@@ -24,7 +24,7 @@ jest.mock('features/navigation/TabBar/TabNavigator', () => ({
 jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
   useInitialScreen: () => 'TabNavigator',
 }))
-jest.mock('features/navigation/helpers', () => ({
+jest.mock('features/navigation/helpers/useCurrentRoute', () => ({
   useCurrentRoute: () => ({ name: 'TabNavigator', key: 'key' }),
 }))
 jest.mock('libs/splashscreen')

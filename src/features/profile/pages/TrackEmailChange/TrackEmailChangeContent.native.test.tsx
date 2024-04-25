@@ -14,7 +14,7 @@ const mockUseAuthContext = jest.fn().mockReturnValue({ user: nonBeneficiaryUser 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: () => mockUseAuthContext(),
 }))
-jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/helpers/navigateToHome')
 
 const trackEmailChangeContentFixture: EmailUpdateStatusResponse = {
   status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,

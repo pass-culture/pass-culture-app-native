@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'

@@ -3,7 +3,7 @@ import { Animated } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const animatedValue = new Animated.Value(0)

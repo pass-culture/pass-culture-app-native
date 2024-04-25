@@ -8,7 +8,7 @@ import { AccountState, FavoriteResponse } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { LoginRequest, SignInResponseFailure } from 'features/auth/types'
 import { useAddFavorite } from 'features/favorites/api'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import {
   RootStackParamList,
   StepperOrigin,

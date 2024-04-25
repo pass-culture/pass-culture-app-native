@@ -2,7 +2,7 @@ import React from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
-import { openUrl } from 'features/navigation/helpers'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
 import { ExternalSiteFilled as DefaultExternalSite } from 'ui/svg/icons/ExternalSiteFilled'
