@@ -5,6 +5,7 @@ import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
 import { Search } from 'features/search/pages/Search/Search'
+import { SearchN1Books } from 'features/search/pages/Search/SearchN1Books/SearchN1Books'
 
 import { SearchStackRoute, SearchStackParamList, SearchStackRouteName } from './types'
 
@@ -20,6 +21,16 @@ const routes: SearchStackRoute[] = [
       stringify: screenParamsStringifier['Search'],
     },
     options: { title: 'recherche' },
+  },
+  {
+    name: 'SearchN1Books',
+    component: SearchN1Books,
+    pathConfig: {
+      path: 'rechercheN1Books',
+      parse: screenParamsParser['SearchN1Books'],
+      stringify: screenParamsStringifier['SearchN1Books'],
+    },
+    options: { title: 'recherche dans les livres' },
   },
 ]
 

@@ -10,6 +10,7 @@ import { CheatCodesButton } from 'features/internal/cheatcodes/components/CheatC
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { useSomeVenueId } from 'features/internal/cheatcodes/hooks/useSomeVenueId'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { AskNotificiationsModal } from 'features/notifications/pages/AskNotificationsModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { env } from 'libs/environment'
@@ -200,6 +201,12 @@ export function Navigation(): React.JSX.Element {
           <Row half>
             <ButtonPrimary wording="Filtre lieu culturel" onPress={showVenueModal} />
             <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
+          </Row>
+          <Row half>
+            <ButtonPrimary
+              wording="SearchN1Books"
+              onPress={() => navigate(...getSearchStackConfig('SearchN1Books'))}
+            />
           </Row>
         </StyledContainer>
         <Spacer.BottomScreen />
