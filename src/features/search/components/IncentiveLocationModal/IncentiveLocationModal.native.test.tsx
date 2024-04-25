@@ -7,7 +7,7 @@ const hideModalMock = jest.fn()
 const handleActiveLocationButtonPressMock = jest.fn()
 
 describe('<IncentiveLocationModal />', () => {
-  it('should call hideModal function when pressing close icon', () => {
+  it('should hide the modal when pressing close icon', () => {
     render(
       <IncentiveLocationModal
         visible
@@ -21,7 +21,7 @@ describe('<IncentiveLocationModal />', () => {
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
 
-  it('should call handleActiveLocationButtonPress function when pressing "Activer ma localisation" button', () => {
+  it('should open location modal when pressing "Activer ma localisation" button', () => {
     render(
       <IncentiveLocationModal
         visible
