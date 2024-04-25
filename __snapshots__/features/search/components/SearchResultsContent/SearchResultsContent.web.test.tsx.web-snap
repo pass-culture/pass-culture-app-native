@@ -3,10 +3,10 @@
 exports[`SearchResultsContent component should render correctly 1`] = `
 <div>
   <div
-    class="sc-dAlyuH chsmNn"
+    class="AutoScrollSwitch-web__Container-sc-2ee24adf-0 jRiSDv"
   >
     <div
-      class="sc-jlZhew jGBukY"
+      class="AutoScrollSwitch-web__FlexContainer-sc-2ee24adf-1 fFXKaN"
     >
       <div
         class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
@@ -61,7 +61,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
         class="css-view-175oi2r r-width-19wmn03"
       />
       <label
-        class="sc-kpDqfm gANNpQ"
+        class="InputLabel-web__InputLabel-sc-30b170db-0 nhRRt"
         for="testUuidV4"
         id="testUuidV4"
       >
@@ -126,7 +126,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Lieu culturel"
-              class="sc-aXZVg igdJKW sc-cwHptR kaacHT sc-cwHptR kaacHT"
+              class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-imWYAI jcACiP sc-imWYAI jcACiP"
               data-testid="Lieu culturel"
               tabindex="0"
               title="Lieu culturel"
@@ -147,7 +147,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Catégories"
-              class="sc-aXZVg igdJKW sc-cwHptR kaacHT sc-cwHptR kaacHT"
+              class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-imWYAI jcACiP sc-imWYAI jcACiP"
               data-testid="Catégories"
               tabindex="0"
               title="Catégories"
@@ -168,7 +168,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Prix"
-              class="sc-aXZVg igdJKW sc-cwHptR kaacHT sc-cwHptR kaacHT"
+              class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-imWYAI jcACiP sc-imWYAI jcACiP"
               data-testid="Prix"
               tabindex="0"
               title="Prix"
@@ -189,7 +189,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
           >
             <button
               aria-label="Dates & heures"
-              class="sc-aXZVg igdJKW sc-cwHptR kaacHT sc-cwHptR kaacHT"
+              class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-imWYAI jcACiP sc-imWYAI jcACiP"
               data-testid="Dates & heures"
               tabindex="0"
               title="Dates & heures"
@@ -271,7 +271,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
         >
           <button
             aria-label="Modifier mes filtres"
-            class="sc-dcJsrY kFjQay sc-gsFSXq jrfwxw"
+            class="AppButton-web__Button-sc-6e9d26f-0 jQJRyD sc-fqkvVR iGAJXG"
             data-testid="Modifier mes filtres"
             tabindex="0"
             type="button"
