@@ -34,7 +34,7 @@ type Props = {
 }
 
 const FAKE_DOOR_ARTIST_SEARCH_GROUPS = [
-  SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+  SearchGroupNameEnumv2.CINEMA,
   SearchGroupNameEnumv2.LIVRES,
   SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
 ]

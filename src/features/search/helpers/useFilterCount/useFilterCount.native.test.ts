@@ -15,7 +15,7 @@ const Kourou = { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, lo
 const fourFilters = {
   minPrice: '1', // 1 for minPrice & maxPrice
   maxPrice: String(MAX_PRICE), // 1 for minPrice & maxPrice
-  offerCategories: ['FILMS_SERIES_CINEMA'], // 1
+  offerCategories: ['CINEMA'], // 1
   timeRange, // 1
   venue: { ...Kourou, venueId }, // 1
 }

@@ -65,7 +65,7 @@ describe('useSimilarOffers', () => {
         useSimilarOffers({
           offerId: mockOfferId,
           position,
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -82,7 +82,7 @@ describe('useSimilarOffers', () => {
         useSimilarOffers({
           offerId: mockOfferId,
           position,
-          categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          categoryExcluded: SearchGroupNameEnumv2.CINEMA,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -97,7 +97,7 @@ describe('useSimilarOffers', () => {
     renderHook(
       () =>
         useSimilarOffers({
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -113,7 +113,7 @@ describe('useSimilarOffers', () => {
     renderHook(
       () =>
         useSimilarOffers({
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -130,7 +130,7 @@ describe('useSimilarOffers', () => {
       () =>
         useSimilarOffers({
           offerId: mockOfferId,
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
           position: { latitude: 10, longitude: 15 },
         }),
       {
@@ -141,7 +141,7 @@ describe('useSimilarOffers', () => {
     await waitFor(() => {
       expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
         1,
-        'https://recommmendation-endpoint/similar_offers/1?token=recommmendation-token&userId=1234&longitude=15&latitude=10&categories=FILMS_SERIES_CINEMA'
+        'https://recommmendation-endpoint/similar_offers/1?token=recommmendation-token&userId=1234&longitude=15&latitude=10&categories=CINEMA'
       )
     })
   })
@@ -151,7 +151,7 @@ describe('useSimilarOffers', () => {
       () =>
         useSimilarOffers({
           offerId: mockOfferId,
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
           position: null,
         }),
       {
@@ -162,7 +162,7 @@ describe('useSimilarOffers', () => {
     await waitFor(() => {
       expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
         1,
-        'https://recommmendation-endpoint/similar_offers/1?token=recommmendation-token&userId=1234&categories=FILMS_SERIES_CINEMA'
+        'https://recommmendation-endpoint/similar_offers/1?token=recommmendation-token&userId=1234&categories=CINEMA'
       )
     })
   })
@@ -196,22 +196,22 @@ describe('getSimilarOffersEndpoint', () => {
 
     it('with one value in categories array query param when it is provided', () => {
       const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, undefined, [
-        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnumv2.CINEMA,
       ])
 
       expect(endpoint).toEqual(
-        `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&categories=${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}`
+        `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&categories=${SearchGroupNameEnumv2.CINEMA}`
       )
     })
 
     it('with several values in categories array query param when it is provided', () => {
       const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, undefined, [
-        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnumv2.CINEMA,
         SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
       ])
 
       expect(endpoint).toEqual(
-        `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&categories=${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}&categories=${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}`
+        `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&categories=${SearchGroupNameEnumv2.CINEMA}&categories=${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}`
       )
     })
   })
@@ -298,9 +298,11 @@ describe('getCategories', () => {
     expect(categories).toEqual([
       SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
       SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+      SearchGroupNameEnumv2.CINEMA,
       SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
       SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
       SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
+      SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
       SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       SearchGroupNameEnumv2.INSTRUMENTS,
       SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,

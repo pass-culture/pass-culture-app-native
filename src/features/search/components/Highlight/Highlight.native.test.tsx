@@ -33,7 +33,7 @@ describe('Highlight component for a offer suggestion', () => {
             {
               attribute: '',
               operator: '',
-              value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+              value: SearchGroupNameEnumv2.CINEMA,
               count: 10,
             },
           ],

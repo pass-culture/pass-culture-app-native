@@ -55,7 +55,7 @@ describe('fetchOffersByArtist', () => {
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
       ean: '9782723492607',
-      searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      searchGroupName: SearchGroupNameEnumv2.CINEMA,
       venueLocation: { latitude: 47.65904, longitude: -2.75922 },
     })
 
@@ -66,7 +66,7 @@ describe('fetchOffersByArtist', () => {
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
       ean: '',
-      searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      searchGroupName: SearchGroupNameEnumv2.CINEMA,
       venueLocation: { latitude: 47.65904, longitude: -2.75922 },
     })
 
@@ -77,7 +77,7 @@ describe('fetchOffersByArtist', () => {
     await fetchOffersByArtist({
       artists: 'COLLECTIF',
       ean: '',
-      searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      searchGroupName: SearchGroupNameEnumv2.CINEMA,
       venueLocation: { latitude: 47.65904, longitude: -2.75922 },
     })
 
@@ -88,7 +88,7 @@ describe('fetchOffersByArtist', () => {
     await fetchOffersByArtist({
       artists: 'COLLECTIFS',
       ean: '',
-      searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+      searchGroupName: SearchGroupNameEnumv2.CINEMA,
       venueLocation: { latitude: 47.65904, longitude: -2.75922 },
     })
 

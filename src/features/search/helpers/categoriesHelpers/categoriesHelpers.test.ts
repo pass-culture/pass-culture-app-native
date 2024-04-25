@@ -48,7 +48,7 @@ describe('categoriesHelpers', () => {
         value: 'CD, vinyles, musique en ligne',
       },
       {
-        name: 'FILMS_SERIES_CINEMA',
+        name: 'CINEMA',
         value: 'Cinéma, films et séries',
       },
       {
