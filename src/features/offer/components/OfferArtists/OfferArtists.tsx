@@ -17,16 +17,7 @@ interface Props {
   numberOfLines?: number
   shouldDisplayFakeDoor?: boolean
 }
-const TextFakeDoorArtistModal = () => {
-  return (
-    <Typo.Body>
-      Ce contenu n’est pas encore disponible.
-      {LINE_BREAK}
-      {LINE_BREAK}
-      Aide-nous à le mettre en place en répondant au questionnaire.
-    </Typo.Body>
-  )
-}
+const fakeDoorArtistModalDescription = `Ce contenu n’est pas encore disponible.${LINE_BREAK}${LINE_BREAK}Aide-nous à le mettre en place en répondant au questionnaire.`
 
 export const OfferArtists: FunctionComponent<Props> = ({
   artists,
@@ -58,7 +49,7 @@ export const OfferArtists: FunctionComponent<Props> = ({
         visible={visible}
         hideModal={hideModal}
         surveyUrl="https://passculture.qualtrics.com/jfe/form/SV_6xRze4sgvlbHNd4"
-        Content={TextFakeDoorArtistModal}
+        surveyDescription={fakeDoorArtistModalDescription}
         Icon={BicolorCircledClock}
       />
     </FakeDoorContainer>

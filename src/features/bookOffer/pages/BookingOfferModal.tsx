@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -33,7 +33,6 @@ import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { BicolorNoBookings } from 'ui/svg/icons/BicolorNoBookings'
-import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -43,6 +42,8 @@ interface BookingOfferModalComponentProps {
   isEndedUsedBooking?: boolean
   bookingDataMovieScreening?: MovieScreeningBookingData
 }
+
+const DescriptionMusicLiveBookingSurvey = `Tu peux nous dire pourquoi en répondant au questionnaire.${LINE_BREAK}${LINE_BREAK}Il te prendra 1 petite minute!`
 
 const errorCodeToMessage: Record<string, string> = {
   INSUFFICIENT_CREDIT:
@@ -66,7 +67,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const route = useRoute<UseRouteType<'Offer'>>()
   const selectedStock = useBookingStock()
   const { showErrorSnackBar } = useSnackBarContext()
-  const [isBookingStopped, setIsBookingStopped] = useState(false)
   const isFromSearch = route.params?.from === 'search'
   const fromOfferId = route.params?.fromOfferId
   const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
@@ -202,24 +202,25 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     hideModal: hideBookingCloseInformationModal,
   } = useModal(false)
 
+  const {
+    visible: isSurveyModalVisible,
+    showModal: showSurveyModal,
+    hideModal: hideSurveyModal,
+  } = useModal(false)
+
   const mapping = useSubcategoriesMapping()
   const subcategory = offer && mapping[offer?.subcategoryId]
   const isMusicLiveCategory = subcategory?.categoryId === CategoryIdEnum.MUSIQUE_LIVE
 
-  const shouldDisplaySurveyModal =
-    isMusicLiveCategory && isBookingStopped && enableMusicLiveBookingSurvey
-
   const onClose = useCallback(async () => {
     dismissModal()
-
-    if (isMusicLiveCategory) {
-      const musicLiveSurveyHasBeenDisplayed = await storage.readObject(
-        'times_music_live_booking_survey_has_been_displayed'
-      )
-      if (!musicLiveSurveyHasBeenDisplayed) {
-        setIsBookingStopped(true)
-        await storage.saveString('times_music_live_booking_survey_has_been_displayed', String('1'))
-      }
+    const musicLiveSurveyHasBeenDisplayed = await storage.readObject(
+      'times_music_live_booking_survey_has_been_displayed'
+    )
+    const shouldDisplaySurveyModal =
+      isMusicLiveCategory && enableMusicLiveBookingSurvey && !musicLiveSurveyHasBeenDisplayed
+    if (shouldDisplaySurveyModal) {
+      showSurveyModal()
     }
     if (bookingState.offerId !== offerId) dispatch({ type: 'SET_OFFER_ID', payload: offerId })
     dispatch({ type: 'RESET' })
@@ -230,6 +231,8 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   }, [
     dismissModal,
     isMusicLiveCategory,
+    enableMusicLiveBookingSurvey,
+    showSurveyModal,
     bookingState.offerId,
     offerId,
     dispatch,
@@ -239,43 +242,45 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     showBookingCloseInformationModal,
   ])
 
-  const closeSurveyModal = () => {
-    setIsBookingStopped(false)
+  const closeSurveyModal = async () => {
+    await storage.saveString('times_music_live_booking_survey_has_been_displayed', String('1'))
+    hideSurveyModal()
   }
-  return shouldDisplaySurveyModal ? (
-    <SurveyModal
-      title="Cette offre ne t’intéresse plus&nbsp;?"
-      visible
-      hideModal={closeSurveyModal}
-      surveyUrl="https://passculture.qualtrics.com/jfe/form/SV_9z66yFGnrB65nWC"
-      Content={TextMusicLiveBookingSurvey}
-      Icon={Icon}
-    />
-  ) : (
-    <AppModal
-      testID="modalWithPricesByCategories"
-      noPadding
-      visible={visible}
-      title={title}
-      maxHeight={height - top}
-      modalSpacing={modal.spacing.MD}
-      customModalHeader={
-        <BookingOfferModalHeader
-          onClose={onClose}
-          modalLeftIconProps={modalLeftIconProps}
-          title={title}
+  return (
+    <React.Fragment>
+      <AppModal
+        testID="modalWithPricesByCategories"
+        noPadding
+        visible={visible}
+        title={title}
+        maxHeight={height - top}
+        modalSpacing={modal.spacing.MD}
+        customModalHeader={
+          <BookingOfferModalHeader
+            onClose={onClose}
+            modalLeftIconProps={modalLeftIconProps}
+            title={title}
+          />
+        }
+        fixedModalBottom={
+          <BookingOfferModalFooter hasPricesStep={hasPricesStep} isDuo={offer?.isDuo} />
+        }
+        shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
+        {children}
+        <BookingCloseInformation
+          visible={bookingCloseInformationModalVisible}
+          hideModal={hideBookingCloseInformationModal}
         />
-      }
-      fixedModalBottom={
-        <BookingOfferModalFooter hasPricesStep={hasPricesStep} isDuo={offer?.isDuo} />
-      }
-      shouldAddSpacerBetweenHeaderAndContent={shouldAddSpacerBetweenHeaderAndContent}>
-      {children}
-      <BookingCloseInformation
-        visible={bookingCloseInformationModalVisible}
-        hideModal={hideBookingCloseInformationModal}
+      </AppModal>
+      <SurveyModal
+        title="Cette offre ne t’intéresse plus&nbsp;?"
+        visible={isSurveyModalVisible}
+        hideModal={closeSurveyModal}
+        surveyUrl="https://passculture.qualtrics.com/jfe/form/SV_9z66yFGnrB65nWC"
+        surveyDescription={DescriptionMusicLiveBookingSurvey}
+        Icon={IconMusicLiveBookingSurvey}
       />
-    </AppModal>
+    </React.Fragment>
   )
 }
 
@@ -287,17 +292,6 @@ export const BookingOfferModal: React.FC<
   </BookingWrapper>
 )
 
-const TextMusicLiveBookingSurvey = () => {
-  return (
-    <Typo.Body>
-      Tu peux nous dire pourquoi en répondant au questionnaire.
-      {LINE_BREAK}
-      {LINE_BREAK}
-      Il te prendra 1 petite minute!
-    </Typo.Body>
-  )
-}
-
-const Icon = styled(BicolorNoBookings).attrs(({ theme }) => ({
+const IconMusicLiveBookingSurvey = styled(BicolorNoBookings).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
 }))``
