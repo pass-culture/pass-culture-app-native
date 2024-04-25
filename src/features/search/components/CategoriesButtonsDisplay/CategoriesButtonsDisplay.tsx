@@ -9,6 +9,7 @@ import {
 import { IncentiveLocationModal } from 'features/search/components/IncentiveLocationModal/IncentiveLocationModal'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
+import { VenueMapLocationModal } from 'features/venueMap/pages/modals/VenueMapLocationModal/VenueMapLocationModal'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
@@ -39,7 +40,21 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
   const hasVenueMapWithoutPosition = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_POSITION
   )
-  const { showModal, visible, hideModal } = useModal()
+  const {
+    showModal: showIncentiveLocationModal,
+    visible: incentiveLocationModalVisible,
+    hideModal: hideIncentiveLocationModal,
+  } = useModal()
+  const {
+    showModal: showVenueMapLocationModal,
+    visible: venueMapLocationModalVisible,
+    hideModal: hideVenueMapLocationModal,
+  } = useModal()
+
+  const handleActiveLocationButtonPress = () => {
+    hideIncentiveLocationModal()
+    setTimeout(showVenueMapLocationModal, 400)
+  }
 
   const isNotLocated = selectedLocationMode === LocationMode.EVERYWHERE && !hasGeolocPosition
 
@@ -61,7 +76,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
               <VenueMapBlock
-                onPress={isMapWithoutPositionAndNotLocated ? showModal : undefined}
+                onPress={isMapWithoutPositionAndNotLocated ? showIncentiveLocationModal : undefined}
                 from="searchLanding"
               />
               <Spacer.Column numberOfSpaces={2} />
@@ -69,7 +84,15 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
           ) : null}
 
           <CategoriesTitle />
-          <IncentiveLocationModal visible={visible} handleCloseModal={hideModal} />
+          <IncentiveLocationModal
+            visible={incentiveLocationModalVisible}
+            handleCloseModal={hideIncentiveLocationModal}
+            handleActiveLocationButtonPress={handleActiveLocationButtonPress}
+          />
+          <VenueMapLocationModal
+            visible={venueMapLocationModalVisible}
+            dismissModal={hideVenueMapLocationModal}
+          />
         </React.Fragment>
       }
       contentContainerStyle={contentContainerStyle}
