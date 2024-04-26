@@ -28,8 +28,22 @@ type StepsDictionary = Record<PartialIdentityCheckStep, StepConfig>
 // hook as it can be dynamic depending on subscription step
 export const useStepperInfo = (): StepperInfo => {
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
-  const { stepToDisplay, title, subtitle, errorMessage, identificationMethods } =
-    useGetStepperInfo()
+  const { data } = useGetStepperInfo()
+
+  if (!data) {
+    return {
+      stepsDetails: [],
+      title: '',
+    }
+  }
+
+  const {
+    title,
+    subscriptionStepsToDisplay,
+    subtitle,
+    subscriptionMessage,
+    allowedIdentityCheckMethods,
+  } = data
 
   const stepsConfig: StepsDictionary = {
     [IdentityCheckStep.PROFILE]: {
@@ -50,7 +64,7 @@ export const useStepperInfo = (): StepperInfo => {
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
       },
-      firstScreen: computeIdentificationMethod(identificationMethods),
+      firstScreen: computeIdentificationMethod(allowedIdentityCheckMethods),
     },
     [IdentityCheckStep.CONFIRMATION]: {
       name: IdentityCheckStep.CONFIRMATION,
@@ -78,22 +92,30 @@ export const useStepperInfo = (): StepperInfo => {
     },
   }
 
-  const stepDetailsList = stepToDisplay.map((step) => {
-    if (!isPartialIdentityCheckStep(step.name, stepsConfig)) return null
-    const currentStepConfig: StepConfig = stepsConfig[step.name]
-    const stepDetails: StepExtendedDetails = {
-      name: currentStepConfig.name,
-      title: step.title,
-      subtitle: step.subtitle ?? undefined,
-      icon: currentStepConfig.icon,
-      stepState: mapCompletionState(step.completionState),
-      firstScreen: currentStepConfig.firstScreen,
-    }
-    return stepDetails
-  })
+  const stepDetailsList = subscriptionStepsToDisplay
+    ? subscriptionStepsToDisplay.map((step) => {
+        if (!isPartialIdentityCheckStep(step.name, stepsConfig)) return null
+        const currentStepConfig: StepConfig = stepsConfig[step.name]
+        const stepDetails: StepExtendedDetails = {
+          name: currentStepConfig.name,
+          title: step.title,
+          subtitle: step.subtitle ?? undefined,
+          icon: currentStepConfig.icon,
+          stepState: mapCompletionState(step.completionState),
+          firstScreen: currentStepConfig.firstScreen,
+        }
+        return stepDetails
+      })
+    : []
 
   const stepsDetails = stepDetailsList.filter((step): step is StepExtendedDetails => step != null)
-  return { stepsDetails, title, subtitle, errorMessage }
+
+  return {
+    stepsDetails,
+    title,
+    subtitle,
+    errorMessage: subscriptionMessage?.messageSummary,
+  }
 }
 
 function isPartialIdentityCheckStep(

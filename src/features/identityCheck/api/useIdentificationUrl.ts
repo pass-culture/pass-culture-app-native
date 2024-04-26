@@ -5,13 +5,13 @@ import { useMutation } from 'react-query'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { MaintenancePageType } from 'api/gen'
-import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
+import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { MutationKeys } from 'libs/queryKeys'
 
 export function useIdentificationUrl() {
-  const { data: subscription } = useNextSubscriptionStep()
+  const { data: subscription } = useGetStepperInfo()
   const [identificationUrl, setIdentificationUrl] = useState<string | undefined>()
   const { navigate } = useNavigation<UseNavigationType>()
 

@@ -3,12 +3,12 @@ import React, { NamedExoticComponent } from 'react'
 import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { NextSubscriptionStepResponse } from 'api/gen'
+import { SubscriptionStepperResponseV2 } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
-import { nextSubscriptionStepFixture } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
+import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { domains_exhausted_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { TutorialTypes } from 'features/tutorial/enums'
@@ -93,9 +93,9 @@ describe('Profile component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   beforeEach(() => {
-    mockServer.getApi<NextSubscriptionStepResponse>(
-      '/v1/subscription/next_step',
-      nextSubscriptionStepFixture
+    mockServer.getApi<SubscriptionStepperResponseV2>(
+      '/v2/subscription/stepper',
+      subscriptionStepperFixture
     )
     mockServer.getApi('/v1/banner', {})
   })

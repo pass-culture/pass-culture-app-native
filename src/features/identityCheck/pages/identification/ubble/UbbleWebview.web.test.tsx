@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { IdentificationSessionResponse } from 'api/gen'
+import { IdentificationSessionResponse, SubscriptionStepperResponseV2 } from 'api/gen'
+import { SubscriptionStepperErrorResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
@@ -13,6 +14,11 @@ describe('<UbbleWebview/>', () => {
       mockServer.postApi<IdentificationSessionResponse>('/v1/ubble_identification', {
         identificationUrl: 'http://ubble.webview.com',
       })
+
+      mockServer.getApi<SubscriptionStepperResponseV2>(
+        '/v2/subscription/stepper',
+        SubscriptionStepperErrorResponseFixture
+      )
 
       const { container } = render(reactQueryProviderHOC(<UbbleWebview />))
 

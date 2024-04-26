@@ -1,8 +1,8 @@
 import { useFocusEffect } from '@react-navigation/native'
 import { useCallback, useState } from 'react'
 
-import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
-import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
+import { SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
+import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
 import { eventMonitoring } from 'libs/monitoring'
@@ -23,10 +23,10 @@ export const getIdentityCheckStep = (
 
 export const useSetSubscriptionStepAndMethod = () => {
   const context = useSubscriptionContext()
-  const { refetch } = useNextSubscriptionStep()
-  const [subscription, setSubscription] = useState<NextSubscriptionStepResponse | undefined>()
+  const { refetch } = useGetStepperInfo()
+  const [subscription, setSubscription] = useState<SubscriptionStepperResponseV2 | undefined>()
 
-  const setCurrentStep = (susbcriptionResponse: NextSubscriptionStepResponse | undefined) => {
+  const setCurrentStep = (susbcriptionResponse: SubscriptionStepperResponseV2 | undefined) => {
     setSubscription(susbcriptionResponse)
     const nextStep = susbcriptionResponse?.nextSubscriptionStep
     const step = getIdentityCheckStep(nextStep ?? null)
@@ -34,7 +34,7 @@ export const useSetSubscriptionStepAndMethod = () => {
   }
 
   const setCurrentIdentityCheckMethod = (
-    susbcriptionResponse: NextSubscriptionStepResponse | undefined
+    susbcriptionResponse: SubscriptionStepperResponseV2 | undefined
   ) => {
     const identityCheckMethods = susbcriptionResponse?.allowedIdentityCheckMethods
     const method = identityCheckMethods?.length === 1 ? identityCheckMethods[0] : null

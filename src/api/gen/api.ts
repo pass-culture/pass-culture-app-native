@@ -2878,6 +2878,37 @@ export interface SubscriptionMessage {
   userMessage: string
 }
 /**
+ * @export
+ * @interface SubscriptionMessageV2
+ */
+export interface SubscriptionMessageV2 {
+  /**
+   * @type {CallToActionMessage}
+   * @memberof SubscriptionMessageV2
+   */
+  callToAction?: CallToActionMessage | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionMessageV2
+   */
+  messageSummary?: string | null
+  /**
+   * @type {PopOverIcon}
+   * @memberof SubscriptionMessageV2
+   */
+  popOverIcon?: PopOverIcon | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionMessageV2
+   */
+  updatedAt?: string | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionMessageV2
+   */
+  userMessage: string
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -2981,6 +3012,52 @@ export interface SubscriptionStepperResponse {
   /**
    * @type {string}
    * @memberof SubscriptionStepperResponse
+   */
+  title: string
+}
+/**
+ * @export
+ * @interface SubscriptionStepperResponseV2
+ */
+export interface SubscriptionStepperResponseV2 {
+  /**
+   * @type {Array<IdentityCheckMethod>}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  allowedIdentityCheckMethods: Array<IdentityCheckMethod>
+  /**
+   * @type {boolean}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  hasIdentityCheckPending: boolean
+  /**
+   * @type {MaintenancePageType}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  maintenancePageType?: MaintenancePageType | null
+  /**
+   * @type {SubscriptionStep}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  nextSubscriptionStep?: SubscriptionStep | null
+  /**
+   * @type {SubscriptionMessageV2}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  subscriptionMessage?: SubscriptionMessageV2 | null
+  /**
+   * @type {Array<SubscriptionStepDetailsResponse>}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  subscriptionStepsToDisplay: Array<SubscriptionStepDetailsResponse>
+  /**
+   * @type {string}
+   * @memberof SubscriptionStepperResponseV2
+   */
+  subtitle?: string | null
+  /**
+   * @type {string}
+   * @memberof SubscriptionStepperResponseV2
    */
   title: string
 }
@@ -3935,6 +4012,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary next_subscription_step <GET>
+     * @deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3970,7 +4048,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary get_subscription_stepper <GET>
+     * @summary get_subscription_stepper_deprecated <GET>
+     * @deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -4021,6 +4100,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      */
     async getNativeV2ProfileEmailUpdateStatus(options: any = {}): Promise<FetchArgs> {
       const pathname = `/native/v2/profile/email_update/status`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_subscription_stepper <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2SubscriptionStepper(options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v2/subscription/stepper`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5082,6 +5179,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     /**
      * 
      * @summary next_subscription_step <GET>
+     * @deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -5103,7 +5201,8 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary get_subscription_stepper <GET>
+     * @summary get_subscription_stepper_deprecated <GET>
+     * @deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -5132,6 +5231,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV2ProfileEmailUpdateStatus(options?: any): Promise<EmailUpdateStatusResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2ProfileEmailUpdateStatus(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_subscription_stepper <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2SubscriptionStepper(options?: any): Promise<SubscriptionStepperResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2SubscriptionStepper(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -5826,6 +5936,7 @@ export class DefaultApi extends BaseAPI {
   /**
     * 
     * @summary next_subscription_step <GET>
+    * @deprecated
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
@@ -5847,7 +5958,8 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
-    * @summary get_subscription_stepper <GET>
+    * @summary get_subscription_stepper_deprecated <GET>
+    * @deprecated
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
@@ -5878,6 +5990,17 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV2ProfileEmailUpdateStatus(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV2ProfileEmailUpdateStatus(options)
+  }
+  /**
+    * 
+    * @summary get_subscription_stepper <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2SubscriptionStepper(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2SubscriptionStepper(options)
   }
   /**
     * 

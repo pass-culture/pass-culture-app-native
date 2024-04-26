@@ -1,25 +1,17 @@
 import React from 'react'
+import { act } from 'react-test-renderer'
 
 import { dispatch, navigate } from '__mocks__/@react-navigation/native'
-import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
-import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
+import { SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
+import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics'
+import { mockServer } from 'tests/mswServer'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
-
-let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
-  ...mockStep,
-  nextSubscriptionStep: SubscriptionStep['honor-statement'],
-}
-
-jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
-  useNextSubscriptionStep: jest.fn(() => ({
-    data: mockNextSubscriptionStep,
-  })),
-}))
 
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -38,14 +30,25 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 jest.useFakeTimers()
 
 describe('<IdentityCheckEnd/>', () => {
-  it('should render correctly', () => {
-    render(<IdentityCheckEnd />)
+  beforeEach(() => {
+    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
+  })
+
+  it('should render correctly', async () => {
+    renderGetStepperInfo()
+    await act(async () => {})
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to stepper after timeout if nextSubscriptionStep is not null', async () => {
-    render(<IdentityCheckEnd />)
+    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
+      ...mockStep,
+      nextSubscriptionStep: SubscriptionStep['honor-statement'],
+    })
+
+    renderGetStepperInfo()
+    await act(async () => {})
 
     expect(navigate).not.toHaveBeenCalled()
 
@@ -59,12 +62,13 @@ describe('<IdentityCheckEnd/>', () => {
     })
   })
 
-  it('should navigate to home after timeout if nextSubscriptionStep is null', () => {
-    mockNextSubscriptionStep = {
+  it('should navigate to home after timeout if nextSubscriptionStep is null', async () => {
+    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
       ...mockStep,
       nextSubscriptionStep: null,
-    }
-    render(<IdentityCheckEnd />)
+    })
+    renderGetStepperInfo()
+    await act(async () => {})
 
     expect(navigateToHome).not.toHaveBeenCalled()
 
@@ -74,8 +78,11 @@ describe('<IdentityCheckEnd/>', () => {
   })
 
   it('should log screen view when the screen is mounted', async () => {
-    render(<IdentityCheckEnd />)
+    renderGetStepperInfo()
+    await act(async () => {})
 
     await waitFor(() => expect(analytics.logScreenViewIdentityCheckEnd).toHaveBeenCalledTimes(1))
   })
 })
+
+const renderGetStepperInfo = () => render(reactQueryProviderHOC(<IdentityCheckEnd />))

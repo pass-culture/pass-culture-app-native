@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
 
-import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
+import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
@@ -9,8 +9,9 @@ import { analytics } from 'libs/analytics'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 
-export const IdentityCheckEnd = () => {
-  const { data: subscription } = useNextSubscriptionStep()
+export const IdentityCheckEnd: FC = () => {
+  const { data: subscription } = useGetStepperInfo()
+
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const saveStep = useSaveStep()
 
@@ -25,7 +26,7 @@ export const IdentityCheckEnd = () => {
 
   useEffect(() => {
     const timeout = setTimeout(
-      !subscription?.nextSubscriptionStep ? navigateToHome : navigateToStepper,
+      subscription?.nextSubscriptionStep ? navigateToStepper : navigateToHome,
       3000
     )
     return () => clearTimeout(timeout)
