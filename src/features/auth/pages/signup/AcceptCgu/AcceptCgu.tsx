@@ -30,6 +30,7 @@ type FormValues = {
 }
 
 export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
+  previousSignupData,
   isSSOSubscription,
   signUp,
 }) => {
@@ -59,15 +60,18 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     async (token: string) => {
       setErrorMessage(null)
       try {
+        const marketingEmailSubscription = isSSOSubscription
+          ? getValues('marketingEmailSubscription')
+          : previousSignupData.marketingEmailSubscription ?? false
         setIsFetching(true)
-        await signUp(token, getValues('marketingEmailSubscription'))
+        await signUp(token, marketingEmailSubscription)
       } catch {
         setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
       } finally {
         setIsFetching(false)
       }
     },
-    [signUp, getValues]
+    [isSSOSubscription, previousSignupData.marketingEmailSubscription, signUp, getValues]
   )
 
   const {

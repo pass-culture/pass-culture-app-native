@@ -53,7 +53,7 @@ describe('<AcceptCgu/>', () => {
   })
 
   it('should render correctly for SSO subscription', () => {
-    renderAcceptCGU({ isSSOSubscription: true })
+    renderAcceptCGU({ isSSOSubscription: true, previousMarketingData: false })
 
     expect(screen).toMatchSnapshot()
   })
@@ -136,6 +136,55 @@ describe('<AcceptCgu/>', () => {
     })
   })
 
+  it('should call API with previous marketing data to create classic account', async () => {
+    renderAcceptCGU({ isSSOSubscription: false, previousMarketingData: true })
+
+    await act(() => {
+      fireEvent.press(
+        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      )
+      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    })
+    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+
+    const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+
+    expect(props.signUp).toHaveBeenCalledWith('fakeToken', true)
+  })
+
+  it('should call API with marketing email subscription information to create SSO account', async () => {
+    renderAcceptCGU({ isSSOSubscription: true, previousMarketingData: false })
+
+    await act(() => {
+      fireEvent.press(
+        screen.getByText(
+          'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
+        )
+      )
+      fireEvent.press(
+        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+      )
+      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    })
+    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+
+    const recaptchaWebview = screen.getByTestId('recaptcha-webview')
+    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+
+    expect(props.signUp).toHaveBeenCalledWith('fakeToken', true)
+  })
+
+  it('should not take into account previous marketing data for SSO account in CGU page', async () => {
+    renderAcceptCGU({ isSSOSubscription: true, previousMarketingData: true })
+
+    const marketingCheckbox = await screen.findByLabelText(
+      'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
+    )
+
+    expect(marketingCheckbox.props.accessibilityState.checked).toBe(false)
+  })
+
   it('should display error message when API call to create user account fails', async () => {
     props.signUp.mockImplementationOnce(() => {
       throw new Error()
@@ -206,8 +255,22 @@ describe('<AcceptCgu/>', () => {
   })
 })
 
-function renderAcceptCGU({ isSSOSubscription } = { isSSOSubscription: false }) {
+function renderAcceptCGU(
+  { isSSOSubscription, previousMarketingData } = {
+    isSSOSubscription: false,
+    previousMarketingData: props.previousSignupData.marketingEmailSubscription,
+  }
+) {
   return render(
-    reactQueryProviderHOC(<AcceptCgu {...props} isSSOSubscription={isSSOSubscription} />)
+    reactQueryProviderHOC(
+      <AcceptCgu
+        {...props}
+        isSSOSubscription={isSSOSubscription}
+        previousSignupData={{
+          ...props.previousSignupData,
+          marketingEmailSubscription: previousMarketingData,
+        }}
+      />
+    )
   )
 }
