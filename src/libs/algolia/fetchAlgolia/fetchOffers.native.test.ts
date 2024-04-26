@@ -1546,12 +1546,11 @@ describe('fetchOffer', () => {
 
   describe('allocineId is taken into account', () => {
     it('should fetch with allocineId', () => {
-      const query = ''
       const allocineId = 12345
+      const query = ''
 
       fetchOffers({
-        parameters: { query } as SearchQueryParameters,
-        allocineId,
+        parameters: { allocineId, query } as SearchQueryParameters,
         buildLocationParameterParams,
         isUserUnderage: false,
       })

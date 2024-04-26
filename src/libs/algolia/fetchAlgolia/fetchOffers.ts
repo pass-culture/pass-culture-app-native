@@ -17,8 +17,6 @@ type FetchOfferArgs = {
   storeQueryID?: (queryID?: string) => void
   indexSearch?: string
   isFromOffer?: boolean
-  allocineId?: number
-  eanList?: string[]
 }
 
 export type FetchOffersResponse = Pick<
@@ -33,11 +31,9 @@ export const fetchOffers = async ({
   storeQueryID,
   indexSearch = env.ALGOLIA_OFFERS_INDEX_NAME,
   isFromOffer,
-  allocineId,
-  eanList,
 }: FetchOfferArgs): Promise<FetchOffersResponse> => {
   const searchParameters = buildOfferSearchParameters(
-    { ...parameters, allocineId, eanList },
+    parameters,
     buildLocationParameterParams,
     isUserUnderage
   )

@@ -116,6 +116,8 @@ export const useSearchVenueOffers = ({
       const response = await fetchOffers({
         parameters: {
           ...initialSearchState,
+          allocineId,
+          eanList: ean ? [ean] : undefined,
           query,
           page,
           hitsPerPage: 10,
@@ -129,8 +131,6 @@ export const useSearchVenueOffers = ({
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         isFromOffer: true,
-        eanList: ean ? [ean] : undefined,
-        allocineId,
       })
 
       previousPageObjectIds.current = response.hits.map((hit: Hit<Offer>) => hit.objectID)
