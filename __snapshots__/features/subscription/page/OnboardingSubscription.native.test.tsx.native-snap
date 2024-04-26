@@ -384,6 +384,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   }
                 >
                   <View
+                    size="medium"
                     style={
                       [
                         {
@@ -426,6 +427,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                       }
                     >
                       <View
+                        size="medium"
                         style={
                           [
                             {
@@ -593,6 +595,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   }
                 >
                   <View
+                    size="medium"
                     style={
                       [
                         {
@@ -635,6 +638,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                       }
                     >
                       <View
+                        size="medium"
                         style={
                           [
                             {
@@ -816,6 +820,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   }
                 >
                   <View
+                    size="medium"
                     style={
                       [
                         {
@@ -858,6 +863,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                       }
                     >
                       <View
+                        size="medium"
                         style={
                           [
                             {
@@ -1025,6 +1031,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   }
                 >
                   <View
+                    size="medium"
                     style={
                       [
                         {
@@ -1067,6 +1074,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                       }
                     >
                       <View
+                        size="medium"
                         style={
                           [
                             {
@@ -1248,6 +1256,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   }
                 >
                   <View
+                    size="medium"
                     style={
                       [
                         {
@@ -1290,6 +1299,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                       }
                     >
                       <View
+                        size="medium"
                         style={
                           [
                             {
@@ -1457,6 +1467,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   }
                 >
                   <View
+                    size="medium"
                     style={
                       [
                         {
@@ -1499,6 +1510,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                       }
                     >
                       <View
+                        size="medium"
                         style={
                           [
                             {

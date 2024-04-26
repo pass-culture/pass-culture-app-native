@@ -6,7 +6,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
-import { SubscriptionCategoryButton } from 'features/subscription/components/buttons/SubscriptionCategoryButton'
+import { SubscriptionThematicButton } from 'features/subscription/components/buttons/SubscriptionThematicButton'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -57,13 +57,13 @@ export const OnboardingSubscription = () => {
 
   const renderItem = ({ item }: { item: SubscriptionTheme }) => {
     return (
-      <SubscriptionCategoryButtonContainer key={item}>
-        <SubscriptionCategoryButton
+      <SubscriptionThematicButtonContainer key={item}>
+        <SubscriptionThematicButton
           thematic={item}
           checked={isThemeChecked(item)}
           onPress={() => checkSubscribedTheme(item)}
         />
-      </SubscriptionCategoryButtonContainer>
+      </SubscriptionThematicButtonContainer>
     )
   }
 
@@ -129,7 +129,7 @@ export const OnboardingSubscription = () => {
 
 const StyledTitle3 = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))``
 
-const SubscriptionCategoryButtonContainer = styled.View(() => ({
+const SubscriptionThematicButtonContainer = styled.View(() => ({
   paddingHorizontal: getSpacing(5),
   paddingVertical: getSpacing(3),
   height: 172,

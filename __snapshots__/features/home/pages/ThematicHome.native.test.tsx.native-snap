@@ -750,7 +750,7 @@ exports[`ThematicHome should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Suivre ce thème"
+        accessibilityLabel="Suivre le thème"
         accessibilityState={
           {
             "busy": undefined,
@@ -793,7 +793,7 @@ exports[`ThematicHome should render correctly 1`] = `
             "userSelect": "auto",
           }
         }
-        testID="Suivre ce thème"
+        testID="Suivre le thème"
       >
         <View
           height={24}

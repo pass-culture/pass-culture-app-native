@@ -2,3 +2,4 @@ src/features/auth/helpers/contactSupport.ts:38 - satisfies
 src/features/auth/helpers/contactSupport.ts:38 - ContactSupport (used in module)
 src/features/home/fixtures/homepage.fixture.ts:206 - satisfies
 src/features/home/fixtures/homepage.fixture.ts:206 - Homepage (used in module)
+src/features/subscription/components/ThematicSubscriptionBlock.tsx:16 - ThematicSubscriptionBlock
