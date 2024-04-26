@@ -20,3 +20,15 @@ export const Active = Template.bind({})
 Active.args = {
   active: true,
 }
+
+export const InactiveWithLongTitle = Template.bind({})
+InactiveWithLongTitle.args = {
+  hasLongTitle: true,
+  active: false,
+}
+
+export const ActiveWithLongTitle = Template.bind({})
+ActiveWithLongTitle.args = {
+  hasLongTitle: true,
+  active: true,
+}

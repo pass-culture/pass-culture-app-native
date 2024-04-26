@@ -6,15 +6,23 @@ import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const SubscribeButton = ({ active, onPress }: { active: boolean; onPress: () => void }) => {
+interface Props {
+  active: boolean
+  onPress: () => void
+  hasLongTitle?: boolean
+}
+
+export const SubscribeButton = ({ active, onPress, hasLongTitle: fullTitle = false }: Props) => {
   const Icon = active ? StyledBellFilled : StyledBell
+  const inactiveText = fullTitle ? 'Suivre ce thème' : 'Suivre'
+  const activeText = fullTitle ? 'Thème suivi' : 'Déjà suivi'
   return (
     <StyledTouchableOpacity
-      accessibilityLabel={active ? 'Thème déjà suivi' : 'Suivre ce thème'}
+      accessibilityLabel={active ? 'Thème déjà suivi' : 'Suivre le thème'}
       onPress={onPress}>
       <Icon />
       <Spacer.Row numberOfSpaces={2} />
-      <Typo.Caption>{active ? 'Déjà suivi' : 'Suivre'}</Typo.Caption>
+      <Typo.Caption>{active ? activeText : inactiveText}</Typo.Caption>
     </StyledTouchableOpacity>
   )
 }
