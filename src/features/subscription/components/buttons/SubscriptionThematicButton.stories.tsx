@@ -4,11 +4,11 @@ import React from 'react'
 
 import { SubscriptionTheme } from 'features/subscription/types'
 
-import { SubscriptionCategoryButton } from './SubscriptionCategoryButton'
+import { SubscriptionThematicButton } from './SubscriptionThematicButton'
 
-const meta: ComponentMeta<typeof SubscriptionCategoryButton> = {
-  title: 'Features/subscription/SubscriptionCategoryButton',
-  component: SubscriptionCategoryButton,
+const meta: ComponentMeta<typeof SubscriptionThematicButton> = {
+  title: 'Features/subscription/SubscriptionThematicButton',
+  component: SubscriptionThematicButton,
   decorators: [
     (Story) => (
       <NavigationContainer>
@@ -19,8 +19,8 @@ const meta: ComponentMeta<typeof SubscriptionCategoryButton> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SubscriptionCategoryButton> = (props) => (
-  <SubscriptionCategoryButton {...props} />
+const Template: ComponentStory<typeof SubscriptionThematicButton> = (props) => (
+  <SubscriptionThematicButton {...props} />
 )
 
 export const Default = Template.bind({})

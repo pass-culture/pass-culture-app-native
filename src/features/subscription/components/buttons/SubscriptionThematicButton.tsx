@@ -18,7 +18,7 @@ interface Props {
   onPress: () => void
 }
 
-export const SubscriptionCategoryButton = ({ thematic, checked, onPress }: Props) => {
+export const SubscriptionThematicButton = ({ thematic, checked, onPress }: Props) => {
   const { illustration, gradients } = mapSubscriptionThemeToIllustration(thematic)
 
   return (
