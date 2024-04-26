@@ -21,14 +21,15 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const defaultProps = {
-  goToNextStep: jest.fn(),
-  signUp: jest.fn(),
   previousSignupData: {
     email: '',
     marketingEmailSubscription: false,
     password: '',
     birthdate: '',
   },
+  isSSOSubscription: false,
+  goToNextStep: jest.fn(),
+  signUp: jest.fn(),
   onSSOEmailNotFoundError: jest.fn(),
   onDefaultEmailSignup: jest.fn(),
 }

@@ -201,5 +201,5 @@ describe('<AcceptCgu/>', () => {
 })
 
 function renderAcceptCGU() {
-  return render(reactQueryProviderHOC(<AcceptCgu {...props} />))
+  return render(reactQueryProviderHOC(<AcceptCgu {...props} isSSOSubscription={false} />))
 }

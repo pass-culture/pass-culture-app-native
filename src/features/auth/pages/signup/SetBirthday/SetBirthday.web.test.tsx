@@ -9,6 +9,7 @@ import { SetBirthday } from './SetBirthday'
 const props = {
   goToNextStep: jest.fn(),
   signUp: jest.fn(),
+  isSSOSubscription: false,
   previousSignupData: {
     email: '',
     marketingEmailSubscription: false,

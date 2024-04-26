@@ -160,11 +160,12 @@ export const SignupForm: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={8} />
         {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
         <stepConfig.Component
-          goToNextStep={goToNextStep}
-          signUp={signUp}
           email={signupData.email}
           accessibilityLabelForNextStep={accessibilityLabelForNextStep}
           previousSignupData={signupData}
+          isSSOSubscription={isSSOSubscription}
+          goToNextStep={goToNextStep}
+          signUp={signUp}
           onSSOEmailNotFoundError={onSSOEmailNotFoundError}
           onDefaultEmailSignup={onDefaultEmailSignup}
         />
