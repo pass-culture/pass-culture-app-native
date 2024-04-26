@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native'
+import { useRoute, useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
@@ -10,7 +10,7 @@ import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/Quit
 import { SSO_STEP_CONFIG, DEFAULT_STEP_CONFIG } from 'features/auth/stepConfig'
 import { SignupData } from 'features/auth/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
@@ -31,6 +31,7 @@ export const SignupForm: FunctionComponent = () => {
   const trustedDevice = useDeviceInfo()
 
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
+  const { setParams } = useNavigation<UseNavigationType>()
   const accountCreationToken = params?.accountCreationToken
 
   const [stepIndex, setStepIndex] = React.useState(0)
@@ -39,6 +40,7 @@ export const SignupForm: FunctionComponent = () => {
   const stepConfig = signupStepConfig[stepIndex]
   const numberOfSteps = signupStepConfig.length
   const isFirstStep = stepIndex === 0
+  const isSecondStep = stepIndex === 1
   const isConfirmationEmailSentStep =
     // @ts-expect-error: because of noUncheckedIndexedAccess
     signupStepConfig[stepIndex].name === PreValidationSignupStep.ConfirmationEmailSent
@@ -55,6 +57,7 @@ export const SignupForm: FunctionComponent = () => {
     if (isFirstStep) {
       goBackAndLeaveSignup()
     } else {
+      if (isSecondStep) setParams({ accountCreationToken: undefined, email: undefined })
       setStepIndex((prevStepIndex) => Math.max(0, prevStepIndex - 1))
     }
   }
