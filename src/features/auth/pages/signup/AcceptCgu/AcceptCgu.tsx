@@ -29,7 +29,10 @@ type FormValues = {
   marketingEmailSubscription: boolean
 }
 
-export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({ signUp }) => {
+export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
+  isSSOSubscription,
+  signUp,
+}) => {
   const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
   const networkInfo = useNetInfoContext()
   const checkCGUErrorId = uuidv4()
@@ -110,14 +113,18 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       )}
       <Typo.Title3 {...getHeadingAttrs(2)}>CGU & Données</Typo.Title3>
       <Spacer.Column numberOfSpaces={10} />
-      <CheckboxController
-        control={control}
-        label="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
-        name="marketingEmailSubscription"
-      />
-      <Spacer.Column numberOfSpaces={6} />
-      <Separator.Horizontal />
-      <Spacer.Column numberOfSpaces={6} />
+      {isSSOSubscription ? (
+        <React.Fragment>
+          <CheckboxController
+            control={control}
+            label="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
+            name="marketingEmailSubscription"
+          />
+          <Spacer.Column numberOfSpaces={6} />
+          <Separator.Horizontal />
+          <Spacer.Column numberOfSpaces={6} />
+        </React.Fragment>
+      ) : null}
       <CheckboxController
         control={control}
         label="J’ai lu et j’accepte les conditions générales d’utilisation"

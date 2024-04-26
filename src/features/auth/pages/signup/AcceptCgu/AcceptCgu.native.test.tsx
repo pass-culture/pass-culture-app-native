@@ -52,6 +52,12 @@ describe('<AcceptCgu/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should render correctly for SSO subscription', () => {
+    renderAcceptCGU({ isSSOSubscription: true })
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should redirect to the "CGU" page', () => {
     renderAcceptCGU()
 
@@ -200,6 +206,8 @@ describe('<AcceptCgu/>', () => {
   })
 })
 
-function renderAcceptCGU() {
-  return render(reactQueryProviderHOC(<AcceptCgu {...props} isSSOSubscription={false} />))
+function renderAcceptCGU({ isSSOSubscription } = { isSSOSubscription: false }) {
+  return render(
+    reactQueryProviderHOC(<AcceptCgu {...props} isSSOSubscription={isSSOSubscription} />)
+  )
 }
