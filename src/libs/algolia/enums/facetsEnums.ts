@@ -1,6 +1,7 @@
 // Taken from https://www.algolia.com/apps/E2IKXJ325N/explorer/configuration/PRODUCTION/facets
 export enum FACETS_FILTERS_ENUM {
   OBJECT_ID = 'objectID',
+  OFFER_ALLOCINE_ID = 'offer.allocineId',
   OFFER_BOOK_TYPE = 'offer.bookMacroSection',
   OFFER_EAN = 'offer.ean',
   OFFER_GTL_LEVEL = 'offer.gtl_levelXX',

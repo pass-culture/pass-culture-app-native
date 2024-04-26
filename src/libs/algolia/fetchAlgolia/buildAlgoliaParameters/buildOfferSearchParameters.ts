@@ -15,6 +15,7 @@ type Parameters = SearchQueryParameters & {
   excludedObjectIds?: string[]
   eanList?: string[]
   aroundRadius?: number
+  allocineId?: number
 }
 
 export const buildOfferSearchParameters = (
@@ -22,6 +23,7 @@ export const buildOfferSearchParameters = (
     beginningDatetime = undefined,
     date = null,
     eanList = [],
+    allocineId,
     endingDatetime = undefined,
     excludedObjectIds = [],
     isFullyDigitalOffersCategory = false,
@@ -57,6 +59,7 @@ export const buildOfferSearchParameters = (
   return {
     ...buildFacetFilters({
       eanList,
+      allocineId,
       isUserUnderage,
       venue,
       objectIds,

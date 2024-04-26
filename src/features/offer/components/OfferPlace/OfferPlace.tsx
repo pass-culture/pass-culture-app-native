@@ -100,6 +100,8 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
     query: multiVenueQuery,
+    ean: offer.extraData?.ean ?? undefined,
+    allocineId: offer.extraData?.allocineId ?? undefined,
     queryOptions: { enabled: shouldFetchSearchVenueOffers },
   })
 

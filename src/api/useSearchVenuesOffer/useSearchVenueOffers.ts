@@ -21,6 +21,8 @@ import { Offer } from 'shared/offer/types'
 type Response = Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
 
 type UseSearchVenueOffersOptions = {
+  allocineId?: number
+  ean?: string
   offerId: number
   query: string
   geolocation: Position
@@ -95,6 +97,8 @@ export const filterVenueOfferHit = ({ hit, offerId, venueId }: FilterVenueOfferT
   hit.venue.id !== venueId
 
 export const useSearchVenueOffers = ({
+  allocineId,
+  ean,
   offerId,
   venueId,
   query,
@@ -124,8 +128,9 @@ export const useSearchVenueOffers = ({
         },
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
-        excludedObjectIds: previousPageObjectIds.current,
         isFromOffer: true,
+        eanList: ean ? [ean] : undefined,
+        allocineId,
       })
 
       previousPageObjectIds.current = response.hits.map((hit: Hit<Offer>) => hit.objectID)
