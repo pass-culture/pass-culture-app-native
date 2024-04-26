@@ -1543,4 +1543,26 @@ describe('fetchOffer', () => {
       })
     })
   })
+
+  describe('allocineId is taken into account', () => {
+    it('should fetch with allocineId', () => {
+      const allocineId = 12345
+      const query = ''
+
+      fetchOffers({
+        parameters: { allocineId, query } as SearchQueryParameters,
+        buildLocationParameterParams,
+        isUserUnderage: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false'], ['offer.allocineId:12345']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        clickAnalytics: true,
+      })
+    })
+  })
 })

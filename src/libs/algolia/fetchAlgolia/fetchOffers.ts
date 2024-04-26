@@ -15,7 +15,6 @@ type FetchOfferArgs = {
   buildLocationParameterParams: BuildLocationParameterParams
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void
-  excludedObjectIds?: string[]
   indexSearch?: string
   isFromOffer?: boolean
 }

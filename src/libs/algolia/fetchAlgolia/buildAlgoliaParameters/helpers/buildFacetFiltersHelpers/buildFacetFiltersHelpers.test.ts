@@ -6,6 +6,7 @@ import {
 } from 'api/gen'
 import {
   buildAccessibiltyFiltersPredicate,
+  buildAllocineIdPredicate,
   buildEanPredicate,
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
@@ -136,9 +137,9 @@ describe('buildObjectIdsPredicate', () => {
 
 describe('buildEanPredicate', () => {
   it('should return an ean predicate formatted for Algolia API', () => {
-    const objectIdsPredicate = buildEanPredicate(['9780000000001', '9780000000002'])
+    const eansPredicate = buildEanPredicate(['9780000000001', '9780000000002'])
 
-    expect(objectIdsPredicate).toEqual(['offer.ean:9780000000001', 'offer.ean:9780000000002'])
+    expect(eansPredicate).toEqual(['offer.ean:9780000000001', 'offer.ean:9780000000002'])
   })
 })
 
@@ -233,5 +234,13 @@ describe('buildAccessibiltyFiltersPredicate', () => {
       ['venue.isMotorDisabilityCompliant:true'],
       ['venue.isVisualDisabilityCompliant:true'],
     ])
+  })
+
+  describe('buildAllocineIdPredicate', () => {
+    it('should return an allocine predicate formatted for Algolia API', () => {
+      const allocineIdPredicate = buildAllocineIdPredicate(123456)
+
+      expect(allocineIdPredicate).toEqual(['offer.allocineId:123456'])
+    })
   })
 })

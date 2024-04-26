@@ -66,6 +66,10 @@ export const buildObjectIdsPredicate = (objectIds: string[]) => {
 export const buildEanPredicate = (eanList: string[]) =>
   eanList.map((ean) => `${FACETS_FILTERS_ENUM.OFFER_EAN}:${ean}`)
 
+export const buildAllocineIdPredicate = (allocineId: number) => [
+  `${FACETS_FILTERS_ENUM.OFFER_ALLOCINE_ID}:${allocineId}`,
+]
+
 export const buildOfferIsDuoPredicate = (offerIsDuo: boolean): string[] | undefined =>
   offerIsDuo ? [`${FACETS_FILTERS_ENUM.OFFER_IS_DUO}:${offerIsDuo}`] : undefined
 
