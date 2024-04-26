@@ -25,27 +25,27 @@ const Template: ComponentStory<typeof SubscriptionThematicIllustration> = () => 
   <React.Fragment>
     <ThematicContainer>
       <SubscriptionThematicIllustration thematic={SubscriptionTheme.CINEMA} />
-      <SubscriptionThematicIllustration thematic={SubscriptionTheme.CINEMA} size="M" />
+      <SubscriptionThematicIllustration thematic={SubscriptionTheme.CINEMA} size="small" />
     </ThematicContainer>
     <ThematicContainer>
       <SubscriptionThematicIllustration thematic={SubscriptionTheme.LECTURE} />
-      <SubscriptionThematicIllustration thematic={SubscriptionTheme.LECTURE} size="M" />
+      <SubscriptionThematicIllustration thematic={SubscriptionTheme.LECTURE} size="small" />
     </ThematicContainer>
     <ThematicContainer>
       <SubscriptionThematicIllustration thematic={SubscriptionTheme.MUSIQUE} />
-      <SubscriptionThematicIllustration thematic={SubscriptionTheme.MUSIQUE} size="M" />
+      <SubscriptionThematicIllustration thematic={SubscriptionTheme.MUSIQUE} size="small" />
     </ThematicContainer>
     <ThematicContainer>
       <SubscriptionThematicIllustration thematic={SubscriptionTheme.SPECTACLES} />
-      <SubscriptionThematicIllustration thematic={SubscriptionTheme.SPECTACLES} size="M" />
+      <SubscriptionThematicIllustration thematic={SubscriptionTheme.SPECTACLES} size="small" />
     </ThematicContainer>
     <ThematicContainer>
       <SubscriptionThematicIllustration thematic={SubscriptionTheme.VISITES} />
-      <SubscriptionThematicIllustration thematic={SubscriptionTheme.VISITES} size="M" />
+      <SubscriptionThematicIllustration thematic={SubscriptionTheme.VISITES} size="small" />
     </ThematicContainer>
     <ThematicContainer>
       <SubscriptionThematicIllustration thematic={SubscriptionTheme.ACTIVITES} />
-      <SubscriptionThematicIllustration thematic={SubscriptionTheme.ACTIVITES} size="M" />
+      <SubscriptionThematicIllustration thematic={SubscriptionTheme.ACTIVITES} size="small" />
     </ThematicContainer>
   </React.Fragment>
 )

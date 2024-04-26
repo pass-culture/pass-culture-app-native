@@ -18,7 +18,7 @@ export const SubscribeButton = ({ active, onPress, hasLongTitle: fullTitle = fal
   const activeText = fullTitle ? 'Thème suivi' : 'Déjà suivi'
   return (
     <StyledTouchableOpacity
-      accessibilityLabel={active ? 'Thème déjà suivi' : 'Suivre ce thème'}
+      accessibilityLabel={active ? 'Thème déjà suivi' : 'Suivre le thème'}
       onPress={onPress}>
       <Icon />
       <Spacer.Row numberOfSpaces={2} />

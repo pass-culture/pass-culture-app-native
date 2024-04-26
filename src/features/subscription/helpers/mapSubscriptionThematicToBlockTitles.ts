@@ -27,7 +27,7 @@ export const mapSubscriptionThematicToBlockTitles: Record<
   [SubscriptionTheme.VISITES]: {
     title: 'Fan de sorties culturelles\u00a0?',
     subtitle:
-      'Visites exclusives, expos, événements… reçois les meilleurs plans près de chez toi\u00a0!',
+      'Visites exclusives, expos, événements... reçois les meilleurs plans près de chez toi\u00a0!',
   },
   [SubscriptionTheme.ACTIVITES]: {
     title: 'Fan d’activités créatives\u00a0?',
