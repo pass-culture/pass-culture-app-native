@@ -13,12 +13,12 @@ import { buildNumericFilters } from './buildNumericFilters'
 type Parameters = SearchQueryParameters & {
   objectIds?: string[]
   excludedObjectIds?: string[]
-  eanList?: string[]
   aroundRadius?: number
 }
 
 export const buildOfferSearchParameters = (
   {
+    allocineId = undefined,
     beginningDatetime = undefined,
     date = null,
     eanList = [],
@@ -57,6 +57,7 @@ export const buildOfferSearchParameters = (
   return {
     ...buildFacetFilters({
       eanList,
+      allocineId,
       isUserUnderage,
       venue,
       objectIds,

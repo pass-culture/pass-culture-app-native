@@ -22,7 +22,7 @@ import { useDistance } from 'libs/location/hooks/useDistance'
 import { QueryKeys } from 'libs/queryKeys'
 import { Subcategory } from 'libs/subcategories/types'
 import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
-import { getIsMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/getIsMultiVenueCompatibleOffer'
+import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -76,10 +76,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
     hideModal: hideChangeVenueModal,
   } = useModal(false)
 
-  const { shouldFetchSearchVenueOffers, multiVenueQuery } = getIsMultiVenueCompatibleOffer(
-    offer,
-    hasNewOfferVenueBlock
-  )
+  const shouldFetchSearchVenueOffers = isMultiVenueCompatibleOffer(offer, hasNewOfferVenueBlock)
 
   const {
     hasNextPage,
@@ -99,7 +96,9 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
       latitude: offer.venue.coordinates.latitude ?? 0,
       longitude: offer.venue.coordinates.longitude ?? 0,
     },
-    query: multiVenueQuery,
+    query: '',
+    ean: offer.extraData?.ean ?? undefined,
+    allocineId: offer.extraData?.allocineId ?? undefined,
     queryOptions: { enabled: shouldFetchSearchVenueOffers },
   })
 

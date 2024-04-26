@@ -107,8 +107,10 @@ type OfferGenreType = { key: GenreType } & GenreTypeContentModel
 export type FiltersArray = string[][]
 
 export type SearchQueryParameters = {
+  allocineId?: number
   beginningDatetime?: string
   date: SelectedDate | null
+  eanList?: string[]
   endingDatetime?: string
   hitsPerPage: number | null
   isFullyDigitalOffersCategory?: boolean

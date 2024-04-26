@@ -2,6 +2,7 @@ import { DisabilitiesProperties } from 'features/accessibility/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import {
   buildAccessibiltyFiltersPredicate,
+  buildAllocineIdPredicate,
   buildEanPredicate,
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
@@ -21,6 +22,7 @@ const defaultFilter = [[`${FACETS_FILTERS_ENUM.OFFER_IS_EDUCATIONAL}:false`]]
 export const buildFacetFilters = ({
   venue,
   eanList,
+  allocineId,
   isUserUnderage,
   objectIds,
   offerCategories,
@@ -51,6 +53,7 @@ export const buildFacetFilters = ({
   isUserUnderage: boolean
   objectIds?: string[]
   eanList?: string[]
+  allocineId?: number
   disabilitiesProperties: DisabilitiesProperties
 }): null | {
   facetFilters: FiltersArray
@@ -89,8 +92,13 @@ export const buildFacetFilters = ({
   }
 
   if (eanList && eanList?.length > 0) {
-    const objectIdsPredicate = buildEanPredicate(eanList)
-    facetFilters.push(objectIdsPredicate)
+    const eanIdsPredicate = buildEanPredicate(eanList)
+    facetFilters.push(eanIdsPredicate)
+  }
+
+  if (allocineId) {
+    const allocineIdPredicate = buildAllocineIdPredicate(allocineId)
+    facetFilters.push(allocineIdPredicate)
   }
 
   if (isDigital) {
