@@ -14,11 +14,11 @@ interface Props {
 
 export const SubscribeButton = ({ active, onPress, hasLongTitle: fullTitle = false }: Props) => {
   const Icon = active ? StyledBellFilled : StyledBell
-  const inactiveText = fullTitle ? 'Suivre ce thème' : 'Suivre'
+  const inactiveText = fullTitle ? 'Suivre le thème' : 'Suivre'
   const activeText = fullTitle ? 'Thème suivi' : 'Déjà suivi'
   return (
     <StyledTouchableOpacity
-      accessibilityLabel={active ? 'Thème déjà suivi' : 'Suivre le thème'}
+      accessibilityLabel={active ? 'Thème déjà suivi' : 'Suivre ce thème'}
       onPress={onPress}>
       <Icon />
       <Spacer.Row numberOfSpaces={2} />

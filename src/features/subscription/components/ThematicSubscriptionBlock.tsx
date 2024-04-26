@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { SubscribeButton } from 'features/home/components/SubscribeButton'
+import { SubscribeButton } from 'features/subscription/components/buttons/SubscribeButton'
 import { SubscriptionThematicIllustration } from 'features/subscription/components/SubscriptionThematicIllustration'
 import { mapSubscriptionThematicToBlockTitles } from 'features/subscription/helpers/mapSubscriptionThematicToBlockTitles'
 import { SubscriptionTheme } from 'features/subscription/types'

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { SubscribeButton } from 'features/home/components/SubscribeButton'
+import { SubscribeButton } from 'features/subscription/components/buttons/SubscribeButton'
 import { storage } from 'libs/storage'
 import { Tooltip } from 'ui/components/Tooltip'
 import { getSpacing } from 'ui/theme'

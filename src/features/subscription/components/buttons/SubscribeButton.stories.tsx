@@ -4,7 +4,7 @@ import React from 'react'
 import { SubscribeButton } from './SubscribeButton'
 
 const meta: ComponentMeta<typeof SubscribeButton> = {
-  title: 'ui/buttons/SubscribeButton',
+  title: 'Features/subscription/SubscribeButton',
   component: SubscribeButton,
 }
 export default meta
