@@ -21,10 +21,12 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
+import { ToggleButton } from 'ui/components/buttons/ToggleButton'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
+import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
@@ -49,6 +51,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const enableNewXpCineFromOffer = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER
   )
+  const enableReactionFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FAKE_DOOR)
   const shouldDisplayFakeDoorArtist =
     hasFakeDoorArtist && FAKE_DOOR_ARTIST_SEARCH_GROUPS.includes(subcategory.searchGroupName)
 
@@ -95,6 +98,16 @@ export const OfferBody: FunctionComponent<Props> = ({
         </GroupWithoutGap>
 
         {prices ? <OfferPrice prices={prices} /> : null}
+
+        {enableReactionFakeDoor ? (
+          <ToggleButton
+            active={false}
+            onPress={() => null}
+            label={{ active: 'Réagir', inactive: 'Réagir' }}
+            accessibilityLabel={{ active: 'Réagir', inactive: 'Réagir' }}
+            Icon={{ active: StyledThumbUp, inactive: StyledThumbUp }}
+          />
+        ) : null}
 
         <GroupWithSeparator
           showTopComponent={offer.venue.isPermanent}
@@ -178,3 +191,7 @@ const GroupWithSeparator = ({
     </GroupWithoutGap>
   ) : null
 }
+
+const StyledThumbUp = styled(ThumbUp).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``
