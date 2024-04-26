@@ -24,12 +24,13 @@ type BirthdayForm = {
 }
 
 export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> = ({
+  isSSOSubscription,
   goToNextStep,
   accessibilityLabelForNextStep,
   previousSignupData,
 }) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
-  const isSSOSubscriptionFromLogin = !!params?.accountCreationToken
+  const isSSOSubscriptionFromLogin = isSSOSubscription && !!params?.accountCreationToken
 
   const currentYear = new Date().getFullYear()
   const previousBirthdateProvided = previousSignupData.birthdate

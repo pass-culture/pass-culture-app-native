@@ -50,7 +50,7 @@ describe('<SetBirthday />', () => {
     useRoute.mockReturnValueOnce({
       params: { accountCreationToken: 'accountCreationToken', email: 'user@gmail.com' },
     })
-    render(<SetBirthday {...props} />)
+    render(<SetBirthday {...props} isSSOSubscription />)
 
     expect(screen).toMatchSnapshot()
   })
