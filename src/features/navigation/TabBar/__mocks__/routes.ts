@@ -1,8 +1,44 @@
+import { LinkingOptions } from '@react-navigation/native'
+
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
+import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/__mocks__/routes'
 
-import { TabRoute, TabRouteName } from '../types'
+import { TabParamList, TabRoute, TabRouteName } from '../types'
 
+export const tabNavigatorPathConfig: LinkingOptions<TabParamList>['config'] = {
+  initialRouteName: 'Home',
+  screens: {
+    Home: {
+      path: 'accueil',
+      parse: {},
+    },
+    SearchStackNavigator: {
+      initialRouteName: 'SearchLanding',
+      screens: {
+        SearchLanding: {
+          path: 'recherche/accueil',
+          parse: {},
+          stringify: {},
+        },
+        SearchResults: {
+          path: 'recherche/resultats',
+          parse: {},
+          stringify: {},
+        },
+      },
+    },
+    Bookings: {
+      path: 'reservations',
+    },
+    Favorites: {
+      path: 'favoris',
+    },
+    Profile: {
+      path: 'profil',
+    },
+  },
+}
 const MockComponent = () => null
 export const routes: Array<TabRoute> = [
   {
@@ -10,7 +46,11 @@ export const routes: Array<TabRoute> = [
     component: MockComponent,
     pathConfig: { path: 'accueil', deeplinkPaths: ['home'], parse: screenParamsParser['Home'] },
   },
-  { name: 'SearchStackNavigator', component: MockComponent, path: 'test' },
+  {
+    name: 'SearchStackNavigator',
+    component: MockComponent,
+    pathConfig: searchNavigatorPathConfig,
+  },
   {
     name: 'Bookings',
     component: MockComponent,
