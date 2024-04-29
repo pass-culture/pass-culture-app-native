@@ -57,9 +57,17 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
                 })
                 setDisabilities(defaultDisabilitiesProperties)
                 hideSuggestions()
-              } else {
                 navigateParams.params = {
-                  screen: 'Search',
+                  screen: 'SearchLanding',
+                  params: {
+                    ...initialSearchState,
+                    accessibilityFilter: defaultDisabilitiesProperties,
+                  },
+                }
+              } else {
+                const nbOfRoutes = route.state?.routes?.length ? route.state.routes.length : 0
+                navigateParams.params = {
+                  screen: nbOfRoutes > 1 ? 'SearchResults' : 'SearchLanding',
                   params: { ...searchState, accessibilityFilter: disabilities },
                 }
               }

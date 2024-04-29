@@ -10,7 +10,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
 
-export const useSync = (shouldUpdate?: boolean) => {
+export const useSync = (shouldUpdate?: boolean, routeName?: string) => {
   const [isLocked, setIsLocked] = useState(false) // we use a locker to avoid glitches caused by params and state changed simultaneously
   const [canSwitchToAroundMe, setCanSwitchToAroundMe] = useState(false) // we use this flag to authorize the switch to AROUND_ME mode when location type in params is AROUND_ME
 
@@ -74,7 +74,10 @@ export const useSync = (shouldUpdate?: boolean) => {
   useEffect(() => {
     setIsLocked(true)
     const disabilityAndSearchContext = { ...searchState, accessibilityFilter: disabilities }
-    if (!isEqual(params, disabilityAndSearchContext || shouldUpdate)) {
+    if (
+      (!isEqual(params, disabilityAndSearchContext) || shouldUpdate) &&
+      routeName !== 'SearchLanding'
+    ) {
       setParams(disabilityAndSearchContext)
     }
     const timer = setTimeout(() => setIsLocked(false), 0)

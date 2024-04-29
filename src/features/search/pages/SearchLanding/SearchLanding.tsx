@@ -1,3 +1,4 @@
+import { useNavigationState } from '@react-navigation/native'
 import { SearchClient } from 'algoliasearch'
 import React, { useCallback } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
@@ -44,7 +45,10 @@ const searchClient: SearchClient = {
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export const SearchLanding = () => {
-  useSync()
+  const routes = useNavigationState((state) => state?.routes)
+  const currentRoute = routes?.[routes?.length - 1]?.name
+  useSync(currentRoute === 'SearchLanding')
+
   const netInfo = useNetInfoContext()
   const { isFocusOnSuggestions } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
