@@ -13,7 +13,7 @@ export function BlurryWrapper({ children }: Props) {
   ) : (
     <StyledBlurry
       blurType="light"
-      blurAmount={1}
+      blurAmount={5}
       reducedTransparencyFallbackColor="white"
       testID="blurry-wrapper">
       {children}
