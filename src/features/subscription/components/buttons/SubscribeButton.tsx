@@ -1,43 +1,32 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { ToggleButton } from 'ui/components/buttons/ToggleButton'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-interface Props {
+type Activable<T> = {
+  active: T
+  inactive: T
+}
+
+type Props = {
   active: boolean
   onPress: () => void
-  hasLongTitle?: boolean
+  label: Activable<string>
 }
 
-export const SubscribeButton = ({ active, onPress, hasLongTitle: fullTitle = false }: Props) => {
-  const Icon = active ? StyledBellFilled : StyledBell
-  const inactiveText = fullTitle ? 'Suivre le thème' : 'Suivre'
-  const activeText = fullTitle ? 'Thème suivi' : 'Déjà suivi'
+export const SubscribeButton = ({ active, onPress, label }: Props) => {
   return (
-    <StyledTouchableOpacity
-      accessibilityLabel={active ? 'Thème déjà suivi' : 'Suivre le thème'}
-      onPress={onPress}>
-      <Icon />
-      <Spacer.Row numberOfSpaces={2} />
-      <Typo.Caption>{active ? activeText : inactiveText}</Typo.Caption>
-    </StyledTouchableOpacity>
+    <ToggleButton
+      active={active}
+      onPress={onPress}
+      label={label}
+      accessibilityLabel={{ active: 'Thème déjà suivi', inactive: 'Suivre le thème' }}
+      Icon={{ active: StyledBellFilled, inactive: StyledBell }}
+    />
   )
 }
-
-const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
-  borderColor: theme.colors.greySemiDark,
-  borderWidth: getSpacing(0.25),
-  borderRadius: getSpacing(6),
-  paddingHorizontal: getSpacing(3),
-  paddingVertical: getSpacing(1),
-  flexDirection: 'row',
-  alignItems: 'center',
-  alignSelf: 'flex-start',
-  backgroundColor: theme.colors.white,
-}))
 
 const StyledBell = styled(Bell).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,

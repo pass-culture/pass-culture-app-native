@@ -52,7 +52,7 @@ export const SubscribeButtonWithTooltip = (props: { active: boolean; onPress: ()
 
   return (
     <React.Fragment>
-      <SubscribeButton {...props} />
+      <SubscribeButton label={{ active: 'Déjà suivi', inactive: 'Suivre' }} {...props} />
       <StyledTooltip
         label="Suis ce thème pour recevoir de l’actualité sur ce sujet&nbsp;!"
         pointerDirection="bottom"

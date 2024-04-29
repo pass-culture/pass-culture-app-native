@@ -26,7 +26,11 @@ export const ThematicSubscriptionBlock = ({
       <ContentContainer>
         <Typo.ButtonText>{title}</Typo.ButtonText>
         <Typo.CaptionNeutralInfo>{subtitle}</Typo.CaptionNeutralInfo>
-        <SubscribeButton onPress={onSubscribePress} active={isSubscribeButtonActive} hasLongTitle />
+        <SubscribeButton
+          onPress={onSubscribePress}
+          active={isSubscribeButtonActive}
+          label={{ active: 'Thème suivi', inactive: 'Suivre le thème' }}
+        />
       </ContentContainer>
     </Container>
   )

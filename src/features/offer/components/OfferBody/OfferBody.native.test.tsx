@@ -35,7 +35,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+const mockUseFeatureFlag = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<OfferBody />', () => {
   beforeEach(() => {
@@ -101,6 +101,25 @@ describe('<OfferBody />', () => {
     renderOfferBody({})
 
     expect(await screen.findByText('5,00 €')).toBeOnTheScreen()
+  })
+
+  it('should display reaction button when feature flag is enabled', async () => {
+    renderOfferBody({})
+
+    expect(await screen.findByText('Réagir')).toBeOnTheScreen()
+  })
+
+  it('should not display reaction button when feature flag is disabled', async () => {
+    // eslint-disable-next-line local-rules/independent-mocks -- we have multiple renders
+    mockUseFeatureFlag.mockReturnValue(false)
+
+    renderOfferBody({})
+    await screen.findByText(offerResponseSnap.name)
+
+    expect(screen.queryByText('Réagir')).not.toBeOnTheScreen()
+
+    // eslint-disable-next-line local-rules/independent-mocks -- to reset the mock
+    mockUseFeatureFlag.mockReturnValue(true)
   })
 
   it('should not display prices when the offer is free', async () => {
