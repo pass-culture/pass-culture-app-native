@@ -129,7 +129,7 @@
     "@sentry/react-native": "^5.3.0",
     "@sentry/tracing": "^7.45.0",
     "@sentry/types": "^7.45.0",
-    "@shopify/flash-list": "^1.4.1",
+    "@shopify/flash-list": "^1.6.4",
     "@typeform/embed-react": "^1.20.0",
     "@zootools/email-spell-checker": "^1.11.0",
     "algoliasearch": "^4.23.3",

@@ -26,7 +26,7 @@ function NotMemoizedSpinner({ size, color, testID }: AccessibleIcon) {
 
   return (
     <SpinnerContainer testID={testID}>
-      <Animated.View style={{ width: size, transform: [{ rotate: spin }] }}>
+      <Animated.View style={{ width: Number(size), transform: [{ rotate: spin }] }}>
         <Logo size={size} color={color} />
       </Animated.View>
     </SpinnerContainer>
