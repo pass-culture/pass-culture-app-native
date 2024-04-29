@@ -39,7 +39,7 @@ describe('<SurveyModal />', () => {
   })
 })
 
-type RenderSurveyModalType = Partial<ComponentProps<typeof SurveyModal>>
+type RenderSurveyModalType = Pick<ComponentProps<typeof SurveyModal>, 'surveyUrl'>
 
 const renderSurveyModal = ({ surveyUrl }: RenderSurveyModalType) => {
   return render(
