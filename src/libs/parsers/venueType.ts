@@ -35,37 +35,6 @@ export const parseType = (types: VenueTypeCode | null | undefined): string => {
   return MAP_VENUE_TYPE_TO_LABEL.OTHER
 }
 
-// Map the facetFilter (in search backend) to the label displayed for home page in the front
-const MAP_TYPE_TO_HOME_LABEL: {
-  [k in VenueTypeCode]: string
-} = {
-  [VenueTypeCodeKey.ARTISTIC_COURSE]: 'Pratiques artistiques',
-  [VenueTypeCodeKey.BOOKSTORE]: 'Librairie',
-  [VenueTypeCodeKey.CONCERT_HALL]: 'Salle de concerts',
-  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: 'Magasin d’arts créatifs',
-  [VenueTypeCodeKey.CULTURAL_CENTRE]: 'Centre culturel',
-  [VenueTypeCodeKey.DIGITAL]: 'Offre numérique',
-  [VenueTypeCodeKey.DISTRIBUTION_STORE]: 'Magasin culturel',
-  [VenueTypeCodeKey.FESTIVAL]: 'Festival',
-  [VenueTypeCodeKey.GAMES]: 'Jeux',
-  [VenueTypeCodeKey.LIBRARY]: 'Bibliothèque / médiathèque',
-  [VenueTypeCodeKey.MUSEUM]: 'Musée',
-  [VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE]: 'Magasin d’instruments',
-  [VenueTypeCodeKey.MOVIE]: 'Salle de projections',
-  [VenueTypeCodeKey.TRAVELING_CINEMA]: 'Cinéma itinérant',
-  [VenueTypeCodeKey.OTHER]: 'Autre type de lieu',
-  [VenueTypeCodeKey.PATRIMONY_TOURISM]: 'Patrimoine / tourisme',
-  [VenueTypeCodeKey.PERFORMING_ARTS]: 'Spectacle vivant',
-  [VenueTypeCodeKey.RECORD_STORE]: 'Disquaire',
-  [VenueTypeCodeKey.SCIENTIFIC_CULTURE]: 'Culture scientifique',
-  [VenueTypeCodeKey.VISUAL_ARTS]: 'Galeries d’art',
-}
-
-export const parseTypeHomeLabel = (types: VenueTypeCode | null | undefined): string => {
-  if (types && types in MAP_TYPE_TO_HOME_LABEL) return MAP_TYPE_TO_HOME_LABEL[types]
-  return MAP_TYPE_TO_HOME_LABEL.OTHER
-}
-
 // Map the facetFilter (in search backend) to the category Icon
 const MAP_TYPE_TO_ICON: {
   [k in VenueTypeCode]: React.FC<AccessibleIcon>
