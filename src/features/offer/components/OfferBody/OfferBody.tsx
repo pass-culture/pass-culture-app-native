@@ -2,7 +2,12 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { CategoryIdEnum, OfferResponse, SearchGroupNameEnumv2 } from 'api/gen'
+import {
+  CategoryIdEnum,
+  NativeCategoryIdEnumv2,
+  OfferResponse,
+  SearchGroupNameEnumv2,
+} from 'api/gen'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
@@ -22,10 +27,13 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { ToggleButton } from 'ui/components/buttons/ToggleButton'
+import { SurveyModal } from 'ui/components/modals/SurveyModal'
+import { useModal } from 'ui/components/modals/useModal'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
+import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -47,6 +55,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   trackEventHasSeenOfferOnce,
 }) => {
   const { isDesktopViewport } = useTheme()
+  const { visible, showModal, hideModal } = useModal()
   const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
   const enableNewXpCineFromOffer = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER
@@ -54,6 +63,9 @@ export const OfferBody: FunctionComponent<Props> = ({
   const enableReactionFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FAKE_DOOR)
   const shouldDisplayFakeDoorArtist =
     hasFakeDoorArtist && FAKE_DOOR_ARTIST_SEARCH_GROUPS.includes(subcategory.searchGroupName)
+  const shouldDisplayReactionButton =
+    enableReactionFakeDoor &&
+    subcategory.nativeCategoryId === NativeCategoryIdEnumv2.SEANCES_DE_CINEMA
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
@@ -80,75 +92,84 @@ export const OfferBody: FunctionComponent<Props> = ({
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
   return (
-    <Container>
-      <MarginContainer gap={6}>
-        <GroupWithoutGap>
-          <ViewGap gap={4}>
-            <InformationTags tags={tags} />
-            <ViewGap gap={2}>
-              <OfferTitle offerName={offer.name} />
-              {artists ? (
-                <OfferArtists
-                  artists={artists}
-                  shouldDisplayFakeDoor={shouldDisplayFakeDoorArtist}
-                />
-              ) : null}
+    <React.Fragment>
+      <Container>
+        <MarginContainer gap={6}>
+          <GroupWithoutGap>
+            <ViewGap gap={4}>
+              <InformationTags tags={tags} />
+              <ViewGap gap={2}>
+                <OfferTitle offerName={offer.name} />
+                {artists ? (
+                  <OfferArtists
+                    artists={artists}
+                    shouldDisplayFakeDoor={shouldDisplayFakeDoorArtist}
+                  />
+                ) : null}
+              </ViewGap>
             </ViewGap>
-          </ViewGap>
-        </GroupWithoutGap>
+          </GroupWithoutGap>
 
-        {prices ? <OfferPrice prices={prices} /> : null}
+          {prices ? <OfferPrice prices={prices} /> : null}
 
-        {enableReactionFakeDoor ? (
-          <ToggleButton
-            active={false}
-            onPress={() => null}
-            label={{ active: 'Réagir', inactive: 'Réagir' }}
-            accessibilityLabel={{ active: 'Réagir', inactive: 'Réagir' }}
-            Icon={{ active: StyledThumbUp, inactive: StyledThumbUp }}
+          {shouldDisplayReactionButton ? (
+            <ToggleButton
+              active={false}
+              onPress={showModal}
+              label={{ active: 'Réagir', inactive: 'Réagir' }}
+              accessibilityLabel={{ active: 'Réagir', inactive: 'Réagir' }}
+              Icon={{ active: StyledThumbUp, inactive: StyledThumbUp }}
+            />
+          ) : null}
+
+          <GroupWithSeparator
+            showTopComponent={offer.venue.isPermanent}
+            TopComponent={isCinemaOffer ? null : <OfferVenueButton venue={offer.venue} />}
+            showBottomComponent={summaryInfoItems.length > 0}
+            BottomComponent={<OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />}
           />
+
+          {isDesktopViewport ? (
+            <OfferCTAButton
+              offer={offer}
+              subcategory={subcategory}
+              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+            />
+          ) : null}
+        </MarginContainer>
+
+        {shouldDisplayAboutSection ? (
+          <MarginContainer gap={0}>
+            <OfferAbout
+              offer={offer}
+              metadata={metadata}
+              hasMetadata={hasMetadata}
+              shouldDisplayAccessibilitySection={shouldDisplayAccessibilitySection}
+            />
+          </MarginContainer>
         ) : null}
 
-        <GroupWithSeparator
-          showTopComponent={offer.venue.isPermanent}
-          TopComponent={isCinemaOffer ? null : <OfferVenueButton venue={offer.venue} />}
-          showBottomComponent={summaryInfoItems.length > 0}
-          BottomComponent={<OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />}
-        />
+        <OfferPlace offer={offer} subcategory={subcategory} />
 
         {isDesktopViewport ? (
-          <OfferCTAButton
-            offer={offer}
-            subcategory={subcategory}
-            trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-          />
-        ) : null}
-      </MarginContainer>
-
-      {shouldDisplayAboutSection ? (
-        <MarginContainer gap={0}>
-          <OfferAbout
-            offer={offer}
-            metadata={metadata}
-            hasMetadata={hasMetadata}
-            shouldDisplayAccessibilitySection={shouldDisplayAccessibilitySection}
-          />
-        </MarginContainer>
-      ) : null}
-
-      <OfferPlace offer={offer} subcategory={subcategory} />
-
-      {isDesktopViewport ? (
-        <View testID="messagingApp-container-without-divider">
-          <OfferMessagingApps offer={offer} />
-        </View>
-      ) : (
-        <SectionWithDivider visible margin testID="messagingApp-container-with-divider" gap={8}>
-          <OfferMessagingApps offer={offer} />
-          <Spacer.Column numberOfSpaces={4} />
-        </SectionWithDivider>
-      )}
-    </Container>
+          <View testID="messagingApp-container-without-divider">
+            <OfferMessagingApps offer={offer} />
+          </View>
+        ) : (
+          <SectionWithDivider visible margin testID="messagingApp-container-with-divider" gap={8}>
+            <OfferMessagingApps offer={offer} />
+            <Spacer.Column numberOfSpaces={4} />
+          </SectionWithDivider>
+        )}
+      </Container>
+      <SurveyModal
+        title="Encore un peu de patience…"
+        visible={visible}
+        hideModal={hideModal}
+        surveyDescription="Cette action n’est pas encore disponible, mais elle le sera bientôt&nbsp;!"
+        Icon={BicolorCircledClock}
+      />
+    </React.Fragment>
   )
 }
 

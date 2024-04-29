@@ -17,7 +17,7 @@ import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -103,10 +103,34 @@ describe('<OfferBody />', () => {
     expect(await screen.findByText('5,00 €')).toBeOnTheScreen()
   })
 
-  it('should display reaction button when feature flag is enabled', async () => {
+  it('should display reaction button when feature flag is enabled and native category is "Séances de cinéma"', async () => {
     renderOfferBody({})
 
     expect(await screen.findByText('Réagir')).toBeOnTheScreen()
+  })
+
+  it('should open survey modal when pressing "Réagir" button', async () => {
+    renderOfferBody({})
+
+    fireEvent.press(await screen.findByText('Réagir'))
+
+    expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen()
+  })
+
+  it('should not display reaction button when feature flag is enabled and native category is not "Séances de cinéma"', async () => {
+    renderOfferBody({
+      offer: {
+        ...offerResponseSnap,
+        subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+      },
+      subcategory: {
+        ...mockSubcategory,
+        nativeCategoryId: NativeCategoryIdEnumv2.VINYLES,
+      },
+    })
+    await screen.findByText(offerResponseSnap.name)
+
+    expect(screen.queryByText('Réagir')).not.toBeOnTheScreen()
   })
 
   it('should not display reaction button when feature flag is disabled', async () => {
