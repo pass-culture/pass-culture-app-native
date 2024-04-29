@@ -11,8 +11,7 @@ export const useRadiusChange = ({ visible, ...props }: Props) => {
 
   const onTempAroundRadiusPlaceValueChange = useCallback(
     (newValues: number[]) => {
-      if (visible) {
-        // @ts-expect-error: because of noUncheckedIndexedAccess
+      if (visible && newValues?.[0]) {
         setTempAroundPlaceRadius(newValues[0])
       }
     },
@@ -21,8 +20,7 @@ export const useRadiusChange = ({ visible, ...props }: Props) => {
 
   const onTempAroundMeRadiusValueChange = useCallback(
     (newValues: number[]) => {
-      if (visible) {
-        // @ts-expect-error: because of noUncheckedIndexedAccess
+      if (visible && newValues?.[0]) {
         setTempAroundMeRadius(newValues[0])
       }
     },

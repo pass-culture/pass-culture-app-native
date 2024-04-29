@@ -5,9 +5,7 @@ import { SuggestedPlace } from 'libs/place/types'
 
 type Props = LocationState
 
-export const usePlaceSelection = ({ ...props }: Props) => {
-  const { onSetSelectedPlace } = props
-
+export const usePlaceSelection = ({ onSetSelectedPlace }: Props) => {
   const onPlaceSelection = (place: SuggestedPlace) => {
     onSetSelectedPlace(place)
     Keyboard.dismiss()

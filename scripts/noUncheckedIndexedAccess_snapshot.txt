@@ -53,8 +53,6 @@
 ./src/features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web.test.tsx:28
 ./src/features/internal/cheatcodes/hooks/useSomeOfferId.ts:24
 ./src/features/internal/cheatcodes/hooks/useSomeVenueId.ts:23
-./src/features/location/helpers/useRadiusChange.ts:15
-./src/features/location/helpers/useRadiusChange.ts:25
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:14
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:16
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:19

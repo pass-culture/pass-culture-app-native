@@ -14,23 +14,19 @@ export const useLocationSubmit = ({
   dismissModal,
   from,
   dispatch,
-  ...props
+  tempLocationMode,
+  setSelectedLocationMode,
+  setPlaceGlobally,
+  tempAroundPlaceRadius,
+  tempAroundMeRadius,
+  selectedPlace,
+  setAroundPlaceRadius,
+  setTempAroundMeRadius,
+  setAroundMeRadius,
+  setTempAroundPlaceRadius,
+  aroundMeRadius,
+  aroundPlaceRadius,
 }: Props): LocationSubmit => {
-  const {
-    tempLocationMode,
-    setSelectedLocationMode,
-    setPlaceGlobally,
-    tempAroundPlaceRadius,
-    tempAroundMeRadius,
-    selectedPlace,
-    setAroundPlaceRadius,
-    setTempAroundMeRadius,
-    setAroundMeRadius,
-    setTempAroundPlaceRadius,
-    aroundMeRadius,
-    aroundPlaceRadius,
-  } = props
-
   const onSubmit = (mode?: LocationMode) => {
     const chosenLocationMode = mode ?? tempLocationMode
     setSelectedLocationMode(chosenLocationMode)
