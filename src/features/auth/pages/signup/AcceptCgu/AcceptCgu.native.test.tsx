@@ -150,7 +150,9 @@ describe('<AcceptCgu/>', () => {
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
-    expect(props.signUp).toHaveBeenCalledWith('fakeToken', true)
+    await waitFor(() => {
+      expect(props.signUp).toHaveBeenCalledWith('fakeToken', true)
+    })
   })
 
   it('should call API with marketing email subscription information to create SSO account', async () => {
@@ -172,7 +174,9 @@ describe('<AcceptCgu/>', () => {
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
-    expect(props.signUp).toHaveBeenCalledWith('fakeToken', true)
+    await waitFor(() => {
+      expect(props.signUp).toHaveBeenCalledWith('fakeToken', true)
+    })
   })
 
   it('should not take into account previous marketing data for SSO account in CGU page', async () => {

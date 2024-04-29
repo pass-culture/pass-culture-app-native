@@ -45,7 +45,6 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     control,
     handleSubmit,
     formState: { isValid },
-    getValues,
   } = useForm<FormValues>({
     defaultValues: {
       acceptCgu: false,
@@ -57,21 +56,21 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   })
 
   const handleSignup = useCallback(
-    async (token: string) => {
+    async (token: string, marketingEmailSubscription: boolean) => {
       setErrorMessage(null)
       try {
-        const marketingEmailSubscription = isSSOSubscription
-          ? getValues('marketingEmailSubscription')
+        const emailSubscription = isSSOSubscription
+          ? marketingEmailSubscription
           : previousSignupData.marketingEmailSubscription ?? false
         setIsFetching(true)
-        await signUp(token, marketingEmailSubscription)
+        await signUp(token, emailSubscription)
       } catch {
         setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
       } finally {
         setIsFetching(false)
       }
     },
-    [isSSOSubscription, previousSignupData.marketingEmailSubscription, signUp, getValues]
+    [isSSOSubscription, previousSignupData.marketingEmailSubscription, signUp]
   )
 
   const {
@@ -87,14 +86,17 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     isUserConnected: networkInfo.isConnected,
   })
 
-  const onSubmit = useCallback(() => {
-    analytics.logContinueCGU()
-    if (settings?.isRecaptchaEnabled) {
-      openReCaptchaChallenge()
-    } else {
-      handleSignup('dummyToken')
-    }
-  }, [settings?.isRecaptchaEnabled, openReCaptchaChallenge, handleSignup])
+  const onSubmit = useCallback(
+    ({ marketingEmailSubscription }: FormValues) => {
+      analytics.logContinueCGU()
+      if (settings?.isRecaptchaEnabled) {
+        openReCaptchaChallenge()
+      } else {
+        handleSignup('dummyToken', marketingEmailSubscription)
+      }
+    },
+    [settings?.isRecaptchaEnabled, openReCaptchaChallenge, handleSignup]
+  )
 
   const disabled =
     isDoingReCaptchaChallenge ||
@@ -111,7 +113,11 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
           onClose={onReCaptchaClose}
           onError={onReCaptchaError}
           onExpire={onReCaptchaExpire}
-          onSuccess={onReCaptchaSuccess}
+          onSuccess={(token) => {
+            handleSubmit(({ marketingEmailSubscription }) =>
+              onReCaptchaSuccess(token, marketingEmailSubscription)
+            )()
+          }}
           isVisible={isDoingReCaptchaChallenge}
         />
       )}
