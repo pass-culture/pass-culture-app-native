@@ -12,9 +12,9 @@ type Props = {
   title: string
   visible: boolean
   hideModal: () => void
-  surveyUrl: string
   Icon: React.FC<AccessibleIcon>
   surveyDescription?: string
+  surveyUrl?: string
 }
 
 export const SurveyModal = ({
@@ -35,14 +35,16 @@ export const SurveyModal = ({
         </Container>
       )}
       <Spacer.Column numberOfSpaces={8} />
-      <ExternalTouchableLink
-        as={ButtonPrimary}
-        icon={ExternalSite}
-        wording="Répondre au questionnaire"
-        externalNav={{
-          url: surveyUrl,
-        }}
-      />
+      {surveyUrl ? (
+        <ExternalTouchableLink
+          as={ButtonPrimary}
+          icon={ExternalSite}
+          wording="Répondre au questionnaire"
+          externalNav={{
+            url: surveyUrl,
+          }}
+        />
+      ) : null}
     </AppInformationModal>
   )
 }
