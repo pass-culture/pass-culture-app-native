@@ -22,6 +22,7 @@ import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOff
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
+import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Subcategory } from 'libs/subcategories/types'
@@ -91,6 +92,11 @@ export const OfferBody: FunctionComponent<Props> = ({
   const shouldDisplayAboutSection =
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
+  const onReactButtonPress = () => {
+    analytics.logConsultReactionFakeDoor()
+    showModal()
+  }
+
   return (
     <React.Fragment>
       <Container>
@@ -115,7 +121,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           {shouldDisplayReactionButton ? (
             <ToggleButton
               active={false}
-              onPress={showModal}
+              onPress={onReactButtonPress}
               label={{ active: 'Réagir', inactive: 'Réagir' }}
               accessibilityLabel={{ active: 'Réagir', inactive: 'Réagir' }}
               Icon={{ active: StyledThumbUp, inactive: StyledThumbUp }}

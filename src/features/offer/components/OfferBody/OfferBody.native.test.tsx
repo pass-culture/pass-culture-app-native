@@ -12,6 +12,7 @@ import {
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
@@ -115,6 +116,14 @@ describe('<OfferBody />', () => {
     fireEvent.press(await screen.findByText('Réagir'))
 
     expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen()
+  })
+
+  it('should log reaction fake door consultation when pressing  "Réagir" button', async () => {
+    renderOfferBody({})
+
+    fireEvent.press(await screen.findByText('Réagir'))
+
+    expect(analytics.logConsultReactionFakeDoor).toHaveBeenCalledTimes(1)
   })
 
   it('should not display reaction button when feature flag is enabled and native category is not "Séances de cinéma"', async () => {
