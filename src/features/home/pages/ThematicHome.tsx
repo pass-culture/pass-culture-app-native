@@ -109,8 +109,6 @@ export const ThematicHome: FunctionComponent = () => {
   const { userLocation } = useLocation()
   const isLocated = !!userLocation
 
-  const AnimatedHeader = Animated.createAnimatedComponent(AnimatedHeaderContainer)
-
   const { onScroll, headerTransition, imageAnimatedHeight, gradientTranslation, viewTranslation } =
     useOpacityTransition({
       headerHeight:
@@ -183,6 +181,8 @@ const AnimatedHeaderContainer = styled.View({
   left: 0,
   right: 0,
 })
+
+const AnimatedHeader = Animated.createAnimatedComponent(AnimatedHeaderContainer)
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,
