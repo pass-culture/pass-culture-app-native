@@ -203,6 +203,14 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
+const mockedEmptyHistory = {
+  filteredHistory: [],
+  queryHistory: '',
+  addToHistory: jest.fn(),
+  removeFromHistory: jest.fn(),
+  search: jest.fn(),
+}
+
 describe('<SearchResults/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
@@ -290,13 +298,9 @@ describe('<SearchResults/>', () => {
 
     it('should not display search history when it has not items', async () => {
       mockdate.set(TODAY_DATE)
-      mockUseSearchHistory.mockReturnValueOnce({
-        filteredHistory: [],
-        queryHistory: '',
-        addToHistory: jest.fn(),
-        removeFromHistory: jest.fn(),
-        search: jest.fn(),
-      })
+      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
+      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
+      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
       render(<SearchResults />)
       await act(async () => {})
 

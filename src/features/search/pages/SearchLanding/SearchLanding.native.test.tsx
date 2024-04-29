@@ -210,6 +210,14 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
+const mockedEmptyHistory = {
+  filteredHistory: [],
+  queryHistory: '',
+  addToHistory: jest.fn(),
+  removeFromHistory: jest.fn(),
+  search: jest.fn(),
+}
+
 describe('<SearchLanding />', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
@@ -308,13 +316,9 @@ describe('<SearchLanding />', () => {
 
     it('should not display search history when it has no items', async () => {
       mockdate.set(TODAY_DATE)
-      mockUseSearchHistory.mockReturnValueOnce({
-        filteredHistory: [],
-        queryHistory: '',
-        addToHistory: jest.fn(),
-        removeFromHistory: jest.fn(),
-        search: jest.fn(),
-      })
+      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
+      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
+      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
 
       render(<SearchLanding />)
       await act(async () => {})
