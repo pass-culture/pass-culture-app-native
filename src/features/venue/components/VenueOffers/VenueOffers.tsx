@@ -16,9 +16,10 @@ import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/Offe
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
+type VenueOffers = { hits: Offer[]; nbHits: number }
 export interface VenueOffersProps {
   venue: VenueResponse
-  venueOffers?: { hits: Offer[]; nbHits: number }
+  venueOffers?: VenueOffers
   playlists?: GTLPlaylistResponse
 }
 
@@ -29,14 +30,15 @@ const LoadingState: React.FC = () => (
   </React.Fragment>
 )
 
-const MovieScreening: React.FC = () => {
+const MovieScreening: React.FC<{ venueOffers: VenueOffers }> = ({ venueOffers }) => {
   const { isDesktopViewport } = useTheme()
+  const offerIds = venueOffers.hits.map((offer) => Number(offer.objectID))
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
       <MoviesTitle>{'Les films à l’affiche'}</MoviesTitle>
       <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
-      <MoviesScreeningCalendar />
+      <MoviesScreeningCalendar offerIds={offerIds} />
     </React.Fragment>
   )
 }
@@ -57,7 +59,9 @@ export function VenueOffers({ venue, venueOffers, playlists }: Readonly<VenueOff
       return <NoOfferPlaceholder />
 
     case isOfferAMovieScreening && enableNewXpCine:
-      return <MovieScreening />
+      // we are sure that venueOffers is defined here because of the previous case,
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      return <MovieScreening venueOffers={venueOffers!} />
     default:
       return <VenueOffersList venue={venue} venueOffers={venueOffers} playlists={playlists} />
   }
