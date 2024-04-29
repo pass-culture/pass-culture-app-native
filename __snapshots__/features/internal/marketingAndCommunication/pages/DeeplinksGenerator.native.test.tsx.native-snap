@@ -903,7 +903,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 />
                 <View
+<<<<<<< HEAD
                   accessibilityLabel="Search"
+=======
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "height": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  accessibilityLabel="SearchResults"
+>>>>>>> d7672b1ac (update web snapshots)
                   accessibilityRole="radio"
                   accessibilityState={
                     {
@@ -943,7 +957,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Search"
+                  testID="SearchResults"
                 >
                   <View
                     flex={0.9}
@@ -986,7 +1000,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           ]
                         }
                       >
-                        Search
+                        SearchResults
                       </Text>
                     </View>
                   </View>

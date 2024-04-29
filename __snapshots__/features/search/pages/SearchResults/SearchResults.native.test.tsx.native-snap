@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Search/> should render SearchResults 1`] = `
+exports[`<SearchResults/> should render SearchResults 1`] = `
 <View
   style={
     [
@@ -151,85 +151,6 @@ exports[`<Search/> should render SearchResults 1`] = `
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "height": 40,
-                    "justifyContent": "center",
-                    "width": 40,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Revenir en arrière"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Revenir en arrière"
-              >
-                <View
-                  height={24}
-                  testID="icon-back"
-                  width={24}
-                >
-                  <Text>
-                    icon-back-SVG-Mock
-                  </Text>
-                </View>
-                <Text
-                  style={
-                    [
-                      {
-                        "display": "none",
-                      },
-                    ]
-                  }
-                >
-                  Retour
-                </Text>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
                     "flexBasis": 0,
                     "flexDirection": "row",
                     "flexGrow": 1,
@@ -338,153 +259,6 @@ exports[`<Search/> should render SearchResults 1`] = `
                   testID="searchInput"
                   value=""
                 />
-                <View
-                  style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "height": 32,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "width": 4,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      [
-                        {
-                          "backgroundColor": "#90949D",
-                          "height": "100%",
-                          "width": 1,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "width": 4,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                    testID="Ouvrir la modale de localisation depuis la recherche"
-                  >
-                    <View
-                      height={16}
-                      testID="location pointer filled"
-                      width={16}
-                    >
-                      <Text>
-                        location pointer filled-SVG-Mock
-                      </Text>
-                    </View>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        [
-                          {
-                            "width": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                            "maxWidth": 80,
-                          },
-                        ]
-                      }
-                    >
-                      Me localiser
-                    </Text>
-                  </View>
-                  <Modal
-                    accessibilityLabelledBy="testUuidV4"
-                    accessibilityModal={true}
-                    accessibilityRole="none"
-                    animationType="none"
-                    deviceHeight={1334}
-                    deviceWidth={750}
-                    hardwareAccelerated={false}
-                    hideModalContentWhileAnimating={false}
-                    onBackdropPress={[Function]}
-                    onModalHide={[Function]}
-                    onModalWillHide={[Function]}
-                    onModalWillShow={[Function]}
-                    onRequestClose={[Function]}
-                    panResponderThreshold={4}
-                    scrollHorizontal={false}
-                    scrollOffset={0}
-                    scrollOffsetMax={0}
-                    scrollTo={null}
-                    statusBarTranslucent={true}
-                    supportedOrientations={
-                      [
-                        "portrait",
-                        "landscape",
-                      ]
-                    }
-                    swipeThreshold={100}
-                    testID="modal"
-                    transparent={true}
-                    visible={false}
-                  />
-                </View>
               </View>
             </View>
           </View>
@@ -975,7 +749,6 @@ exports[`<Search/> should render SearchResults 1`] = `
                   "display": "flex",
                   "marginBottom": 4,
                   "marginLeft": 4,
-                  "marginRight": 4,
                   "marginTop": 4,
                 },
               ]
@@ -1044,6 +817,86 @@ exports[`<Search/> should render SearchResults 1`] = `
                 testID="datesHoursButtonLabel"
               >
                 Dates & heures
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "marginBottom": 4,
+                  "marginLeft": 4,
+                  "marginRight": 4,
+                  "marginTop": 4,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Accessibilité"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#161617",
+                  "borderRadius": 24,
+                  "borderWidth": 1,
+                  "boxSizing": "border-box",
+                  "flexDirection": "row-reverse",
+                  "height": 32,
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Accessibilité"
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+                testID="lieuxAccessiblesButtonLabel"
+              >
+                Accessibilité
               </Text>
             </View>
           </View>

@@ -27,7 +27,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
         />
         <button
           aria-label="Revenir en arrière"
-          class="sc-fqkvVR fYXaGU sc-eldPxv iZoBVT sc-eldPxv iZoBVT"
+          class="sc-fqkvVR fYXaGU sc-cwHptR iwkrEi sc-cwHptR iwkrEi"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -99,7 +99,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
         />
         <button
           aria-label="Partager"
-          class="sc-fqkvVR fYXaGU sc-eldPxv iZoBVT sc-eldPxv iZoBVT"
+          class="sc-fqkvVR fYXaGU sc-cwHptR iwkrEi sc-cwHptR iwkrEi"
           data-testid="Partager"
           tabindex="0"
           title="Partager"
@@ -255,7 +255,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
             />
             <button
               aria-label="Copier l’adresse"
-              class="sc-aXZVg blCLeI sc-eqUAAy sc-Nxspf ekaAYh dMfHcu"
+              class="sc-aXZVg blCLeI sc-eqUAAy sc-dAlyuH ekaAYh hLKQvo"
               data-testid="Copier l’adresse"
               tabindex="0"
               type="button"
@@ -749,7 +749,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
                     role="listitem"
                   >
                     <button
-                      class="sc-fqkvVR gugcSC sc-hCPjZK iymgDs sc-hCPjZK iymgDs"
+                      class="sc-fqkvVR gugcSC sc-imWYAI gKNnMS sc-imWYAI gKNnMS"
                       tabindex="0"
                       type="button"
                     >
@@ -816,7 +816,7 @@ d’options
         />
         <button
           aria-label="Rechercher une offre"
-          class="sc-aXZVg icwcxq sc-gsFSXq jrfwxw"
+          class="sc-aXZVg icwcxq sc-kAyceB dOhwHj"
           data-testid="Rechercher une offre"
           tabindex="0"
           type="button"
