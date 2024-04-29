@@ -25,9 +25,9 @@ describe('useSignupRecaptcha', () => {
       useSignupRecaptcha({ handleSignup, setErrorMessage: jest.fn(), isUserConnected: true })
     )
 
-    result.current.onReCaptchaSuccess('token')
+    result.current.onReCaptchaSuccess('token', true)
 
-    expect(handleSignup).toHaveBeenCalledWith('token')
+    expect(handleSignup).toHaveBeenCalledWith('token', true)
   })
 
   it('should log to Sentry when ReCaptcha challenge has failed', async () => {

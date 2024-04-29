@@ -29,7 +29,11 @@ type FormValues = {
   marketingEmailSubscription: boolean
 }
 
-export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({ signUp }) => {
+export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
+  previousSignupData,
+  isSSOSubscription,
+  signUp,
+}) => {
   const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
   const networkInfo = useNetInfoContext()
   const checkCGUErrorId = uuidv4()
@@ -41,7 +45,6 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     control,
     handleSubmit,
     formState: { isValid },
-    getValues,
   } = useForm<FormValues>({
     defaultValues: {
       acceptCgu: false,
@@ -53,18 +56,21 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   })
 
   const handleSignup = useCallback(
-    async (token: string) => {
+    async (token: string, marketingEmailSubscription: boolean) => {
       setErrorMessage(null)
       try {
+        const emailSubscription = isSSOSubscription
+          ? marketingEmailSubscription
+          : previousSignupData.marketingEmailSubscription ?? false
         setIsFetching(true)
-        await signUp(token, getValues('marketingEmailSubscription'))
+        await signUp(token, emailSubscription)
       } catch {
         setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
       } finally {
         setIsFetching(false)
       }
     },
-    [signUp, getValues]
+    [isSSOSubscription, previousSignupData.marketingEmailSubscription, signUp]
   )
 
   const {
@@ -80,14 +86,17 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     isUserConnected: networkInfo.isConnected,
   })
 
-  const onSubmit = useCallback(() => {
-    analytics.logContinueCGU()
-    if (settings?.isRecaptchaEnabled) {
-      openReCaptchaChallenge()
-    } else {
-      handleSignup('dummyToken')
-    }
-  }, [settings?.isRecaptchaEnabled, openReCaptchaChallenge, handleSignup])
+  const onSubmit = useCallback(
+    ({ marketingEmailSubscription }: FormValues) => {
+      analytics.logContinueCGU()
+      if (settings?.isRecaptchaEnabled) {
+        openReCaptchaChallenge()
+      } else {
+        handleSignup('dummyToken', marketingEmailSubscription)
+      }
+    },
+    [settings?.isRecaptchaEnabled, openReCaptchaChallenge, handleSignup]
+  )
 
   const disabled =
     isDoingReCaptchaChallenge ||
@@ -104,20 +113,28 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
           onClose={onReCaptchaClose}
           onError={onReCaptchaError}
           onExpire={onReCaptchaExpire}
-          onSuccess={onReCaptchaSuccess}
+          onSuccess={(token) => {
+            handleSubmit(({ marketingEmailSubscription }) =>
+              onReCaptchaSuccess(token, marketingEmailSubscription)
+            )()
+          }}
           isVisible={isDoingReCaptchaChallenge}
         />
       )}
       <Typo.Title3 {...getHeadingAttrs(2)}>CGU & Données</Typo.Title3>
       <Spacer.Column numberOfSpaces={10} />
-      <CheckboxController
-        control={control}
-        label="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
-        name="marketingEmailSubscription"
-      />
-      <Spacer.Column numberOfSpaces={6} />
-      <Separator.Horizontal />
-      <Spacer.Column numberOfSpaces={6} />
+      {isSSOSubscription ? (
+        <React.Fragment>
+          <CheckboxController
+            control={control}
+            label="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
+            name="marketingEmailSubscription"
+          />
+          <Spacer.Column numberOfSpaces={6} />
+          <Separator.Horizontal />
+          <Spacer.Column numberOfSpaces={6} />
+        </React.Fragment>
+      ) : null}
       <CheckboxController
         control={control}
         label="J’ai lu et j’accepte les conditions générales d’utilisation"

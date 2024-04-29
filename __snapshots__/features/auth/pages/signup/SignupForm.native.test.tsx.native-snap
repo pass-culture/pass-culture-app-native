@@ -349,117 +349,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
           }
         />
         <View
-          accessibilityLabel="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
-          accessibilityRole="checkbox"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": false,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "alignItems": "center",
-              "cursor": "pointer",
-              "display": "flex",
-              "flexDirection": "row",
-              "opacity": 1,
-              "userSelect": "auto",
-            }
-          }
-          testID="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
-        >
-          <View
-            isChecked={false}
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
-                  "borderRadius": 4,
-                  "borderStyle": "solid",
-                  "borderWidth": 2,
-                  "height": 24,
-                  "justifyContent": "center",
-                  "width": 24,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "alignSelf": "center",
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "paddingLeft": 16,
-                },
-              ]
-            }
-          >
-            J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "backgroundColor": "#F1F1F4",
-                "height": 1,
-                "width": "100%",
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
-        <View
           accessibilityLabel="J’ai lu et j’accepte les conditions générales d’utilisation"
           accessibilityRole="checkbox"
           accessibilityState={
@@ -2171,6 +2060,96 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
               value=""
             />
           </View>
+        </View>
+        <View
+          numberOfSpaces={8}
+          style={
+            [
+              {
+                "height": 32,
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityLabel="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
+          accessibilityRole="checkbox"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": false,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "cursor": "pointer",
+              "display": "flex",
+              "flexDirection": "row",
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
+        >
+          <View
+            isChecked={false}
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#696A6F",
+                  "borderRadius": 4,
+                  "borderStyle": "solid",
+                  "borderWidth": 2,
+                  "height": 24,
+                  "justifyContent": "center",
+                  "width": 24,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              [
+                {
+                  "alignSelf": "center",
+                  "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "paddingLeft": 16,
+                },
+              ]
+            }
+          >
+            J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.
+          </Text>
         </View>
         <View
           numberOfSpaces={10}

@@ -17,6 +17,7 @@ import { SetBirthday } from './SetBirthday'
 const props = {
   goToNextStep: jest.fn(),
   signUp: jest.fn(),
+  isSSOSubscription: false,
   previousSignupData: {
     email: '',
     marketingEmailSubscription: false,
@@ -49,7 +50,7 @@ describe('<SetBirthday />', () => {
     useRoute.mockReturnValueOnce({
       params: { accountCreationToken: 'accountCreationToken', email: 'user@gmail.com' },
     })
-    render(<SetBirthday {...props} />)
+    render(<SetBirthday {...props} isSSOSubscription />)
 
     expect(screen).toMatchSnapshot()
   })

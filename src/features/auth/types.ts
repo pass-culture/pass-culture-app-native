@@ -34,6 +34,7 @@ export type SignupData = {
 }
 
 export type PreValidationSignupNormalStepProps = {
+  isSSOSubscription: boolean
   accessibilityLabelForNextStep?: string
   goToNextStep: (signupData: Partial<SignupData>) => void
   previousSignupData: Partial<SignupData>
@@ -42,6 +43,7 @@ export type PreValidationSignupNormalStepProps = {
 }
 
 export type PreValidationSignupLastStepProps = {
+  isSSOSubscription: boolean
   accessibilityLabelForNextStep?: string
   signUp: (token: string, marketingEmailSubscription: boolean) => Promise<void>
   previousSignupData: Partial<SignupData>

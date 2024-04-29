@@ -8,7 +8,7 @@ export const useSignupRecaptcha = ({
   setErrorMessage,
   isUserConnected,
 }: {
-  handleSignup: (token: string) => void
+  handleSignup: (token: string, marketingEmailSubscription: boolean) => void
   setErrorMessage: (error: string | null) => void
   isUserConnected?: boolean | null
 }) => {
@@ -52,9 +52,9 @@ export const useSignupRecaptcha = ({
   }, [setErrorMessage])
 
   const onReCaptchaSuccess = useCallback(
-    (token: string) => {
+    (token: string, marketingEmailSubscription: boolean) => {
       setIsDoingReCaptchaChallenge(false)
-      handleSignup(token)
+      handleSignup(token, marketingEmailSubscription)
     },
     [handleSignup]
   )
