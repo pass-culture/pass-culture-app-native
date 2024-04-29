@@ -13,7 +13,7 @@ async function getStocksByOfferIds(offerIds: number[]) {
     throw new OfferNotFoundError(offerIds, { Screen: OfferNotFound })
   }
   try {
-    return api.postNativeV1OffersStocks({ offer_ids: offerIds })
+    return await api.postNativeV1OffersStocks({ offer_ids: offerIds })
   } catch (error) {
     if (error instanceof ApiError && error.statusCode === 404) {
       // This happens when the offer has been rejected but it is still indexed on Algolia

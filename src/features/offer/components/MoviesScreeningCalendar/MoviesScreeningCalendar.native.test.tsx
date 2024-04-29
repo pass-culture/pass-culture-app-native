@@ -2,8 +2,9 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { MoviesScreeningCalendar } from 'features/offer/components/MoviesScreeningCalendar/MoviesScreeningCalendar'
+import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { screen, render } from 'tests/utils'
+import { screen, render, act } from 'tests/utils'
 
 mockdate.set(new Date('2024-04-18T00:00:00.000Z'))
 
@@ -12,6 +13,7 @@ describe('MoviesScreeningCalendar', () => {
     renderMoviesScreeningCalendar({
       isDesktopViewport: false,
     })
+    await act(async () => {})
 
     await screen.findAllByText('Jeu.')
     await screen.findByText('18')
@@ -33,10 +35,12 @@ describe('MoviesScreeningCalendar', () => {
 
 const renderMoviesScreeningCalendar = ({
   isDesktopViewport = false,
+  offersIds = [offersStocksResponseSnap.offers[0].id],
 }: {
+  offersIds?: number[]
   isDesktopViewport?: boolean
 }) => {
-  render(reactQueryProviderHOC(<MoviesScreeningCalendar />), {
+  render(reactQueryProviderHOC(<MoviesScreeningCalendar offerIds={offersIds} />), {
     theme: { isDesktopViewport: isDesktopViewport },
   })
 }
