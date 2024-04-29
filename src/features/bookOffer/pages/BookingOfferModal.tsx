@@ -33,7 +33,6 @@ import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { BicolorNoBookings } from 'ui/svg/icons/BicolorNoBookings'
-import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -218,7 +217,6 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       )
       if (!musicLiveSurveyHasBeenDisplayed) {
         setIsBookingStopped(true)
-        await storage.saveString('times_music_live_booking_survey_has_been_displayed', String('1'))
       }
     }
     if (bookingState.offerId !== offerId) dispatch({ type: 'SET_OFFER_ID', payload: offerId })
@@ -239,17 +237,19 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     showBookingCloseInformationModal,
   ])
 
-  const closeSurveyModal = () => {
+  const closeSurveyModal = async () => {
+    await storage.saveString('times_music_live_booking_survey_has_been_displayed', String('1'))
     setIsBookingStopped(false)
   }
+
   return shouldDisplaySurveyModal ? (
     <SurveyModal
       title="Cette offre ne t’intéresse plus&nbsp;?"
       visible
       hideModal={closeSurveyModal}
       surveyUrl="https://passculture.qualtrics.com/jfe/form/SV_9z66yFGnrB65nWC"
-      Content={TextMusicLiveBookingSurvey}
-      Icon={Icon}
+      surveyDescription={DescriptionMusicLiveBookingSurvey}
+      Icon={IconMusicLiveBookingSurvey}
     />
   ) : (
     <AppModal
@@ -287,17 +287,8 @@ export const BookingOfferModal: React.FC<
   </BookingWrapper>
 )
 
-const TextMusicLiveBookingSurvey = () => {
-  return (
-    <Typo.Body>
-      Tu peux nous dire pourquoi en répondant au questionnaire.
-      {LINE_BREAK}
-      {LINE_BREAK}
-      Il te prendra 1 petite minute!
-    </Typo.Body>
-  )
-}
+const DescriptionMusicLiveBookingSurvey = `Tu peux nous dire pourquoi en répondant au questionnaire.${LINE_BREAK}${LINE_BREAK}Il te prendra 1 petite minute!`
 
-const Icon = styled(BicolorNoBookings).attrs(({ theme }) => ({
+const IconMusicLiveBookingSurvey = styled(BicolorNoBookings).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
 }))``
