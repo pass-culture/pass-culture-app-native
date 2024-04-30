@@ -1897,6 +1897,47 @@ export interface OfferOffererResponse {
 }
 /**
  * @export
+ * @interface OfferPreviewResponse
+ */
+export interface OfferPreviewResponse {
+  /**
+   * @type {number}
+   * @memberof OfferPreviewResponse
+   */
+  durationMinutes?: number | null
+  /**
+   * @type {OfferExtraData}
+   * @memberof OfferPreviewResponse
+   */
+  extraData?: OfferExtraData | null
+  /**
+   * @type {number}
+   * @memberof OfferPreviewResponse
+   */
+  id: number
+  /**
+   * @type {OfferImageResponse}
+   * @memberof OfferPreviewResponse
+   */
+  image?: OfferImageResponse | null
+  /**
+   * @type {number}
+   * @memberof OfferPreviewResponse
+   */
+  last30DaysBookings?: number | null
+  /**
+   * @type {string}
+   * @memberof OfferPreviewResponse
+   */
+  name: string
+  /**
+   * @type {Array<OfferStockResponse>}
+   * @memberof OfferPreviewResponse
+   */
+  stocks: Array<OfferStockResponse>
+}
+/**
+ * @export
  * @interface OfferReportReasons
  */
 export interface OfferReportReasons {
@@ -2170,6 +2211,28 @@ export interface OfferVenueResponse {
    * @memberof OfferVenueResponse
    */
   timezone: string
+}
+/**
+ * @export
+ * @interface OffersStocksRequest
+ */
+export interface OffersStocksRequest {
+  /**
+   * @type {Array<number>}
+   * @memberof OffersStocksRequest
+   */
+  offer_ids: Array<number>
+}
+/**
+ * @export
+ * @interface OffersStocksResponse
+ */
+export interface OffersStocksResponse {
+  /**
+   * @type {Array<OfferPreviewResponse>}
+   * @memberof OffersStocksResponse
+   */
+  offers: Array<OfferPreviewResponse>
 }
 /**
  * An enumeration.
@@ -4449,6 +4512,26 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary get_offers_showtimes <POST>
+     * @param {OffersStocksRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1OffersStocks(body?: OffersStocksRequest, options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/offers/stocks`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"OffersStocksRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary update_user_profile <POST>
      * @param {UserProfileUpdateRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -5415,6 +5498,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_offers_showtimes <POST>
+     * @param {OffersStocksRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1OffersStocks(body?: OffersStocksRequest, options?: any): Promise<OffersStocksResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1OffersStocks(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary update_user_profile <POST>
      * @param {UserProfileUpdateRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -6169,6 +6264,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1OfferofferIdReport(offer_id: number, body?: OfferReportRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1OfferofferIdReport(offer_id, body, options)
+  }
+  /**
+    * 
+    * @summary get_offers_showtimes <POST>
+    * @param {OffersStocksRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV1OffersStocks(body?: OffersStocksRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV1OffersStocks(body, options)
   }
   /**
     * 

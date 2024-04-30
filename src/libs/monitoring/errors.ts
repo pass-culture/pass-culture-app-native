@@ -90,7 +90,7 @@ ScreenError.prototype.name = 'ScreenError'
 
 export class OfferNotFoundError extends ScreenError {
   constructor(
-    offerId: number | undefined,
+    offerId: number | undefined | number[],
     { Screen, callback, shouldBeCapturedAsInfo = true }: ScreenErrorInfo
   ) {
     const message = offerId ? `Offer ${offerId} could not be retrieved` : 'offerId is undefined'
