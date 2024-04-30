@@ -37,6 +37,7 @@ export const SurveyModal = ({
       <Spacer.Column numberOfSpaces={8} />
       {surveyUrl ? (
         <ExternalTouchableLink
+          onBeforeNavigate={hideModal}
           as={ButtonPrimary}
           icon={ExternalSite}
           wording="Répondre au questionnaire"

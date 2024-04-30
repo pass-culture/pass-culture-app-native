@@ -3,7 +3,7 @@ import React from 'react'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { analytics } from 'libs/analytics'
-import { render, screen, fireEvent } from 'tests/utils'
+import { render, screen, fireEvent, waitFor } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -42,17 +42,18 @@ describe('<OfferArtists />', () => {
     expect(analytics.logConsultArtistFakeDoor).toHaveBeenCalledTimes(1)
   })
 
-  it('should open fake door qualtrics quizz', () => {
+  it('should open fake door qualtrics quizz', async () => {
     render(<OfferArtists artists="Edith Piaf" shouldDisplayFakeDoor />)
 
     fireEvent.press(screen.getByText('Edith Piaf'))
     fireEvent.press(screen.getByText('Répondre au questionnaire'))
-
-    expect(openUrl).toHaveBeenNthCalledWith(
-      1,
-      'https://passculture.qualtrics.com/jfe/form/SV_6xRze4sgvlbHNd4',
-      undefined,
-      true
-    )
+    await waitFor(() => {
+      expect(openUrl).toHaveBeenNthCalledWith(
+        1,
+        'https://passculture.qualtrics.com/jfe/form/SV_6xRze4sgvlbHNd4',
+        undefined,
+        true
+      )
+    })
   })
 })

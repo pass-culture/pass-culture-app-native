@@ -24,7 +24,7 @@
 ./src/features/bookOffer/helpers/useRotatingText.ts:47
 ./src/features/bookOffer/helpers/useRotatingText.ts:54
 ./src/features/bookOffer/helpers/useRotatingText.ts:57
-./src/features/bookOffer/pages/BookingOfferModal.tsx:136
+./src/features/bookOffer/pages/BookingOfferModal.tsx:135
 ./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:242
 ./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:383
 ./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:413

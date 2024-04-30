@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SurveyModal } from 'ui/components/modals/SurveyModal'
 import { BicolorCircledClock } from 'ui/svg/icons/BicolorCircledClock'
 
@@ -10,16 +10,23 @@ const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 const hideModalMock = jest.fn()
 
 describe('<SurveyModal />', () => {
-  it('should redirect to survey when pressing "Répondre au questionnaire" button', () => {
+  it('should redirect to survey when pressing "Répondre au questionnaire" button', async () => {
     renderSurveyModal({ surveyUrl: 'https://fr.wikipedia.org/wiki/FIEALD' })
 
     fireEvent.press(screen.getByText('Répondre au questionnaire'))
 
-    expect(openUrl).toHaveBeenCalledWith('https://fr.wikipedia.org/wiki/FIEALD', undefined, true)
+    await waitFor(() => {
+      expect(openUrl).toHaveBeenNthCalledWith(
+        1,
+        'https://fr.wikipedia.org/wiki/FIEALD',
+        undefined,
+        true
+      )
+    })
   })
 
   it('should call hideModal function when pressing close icon', () => {
-    renderSurveyModal({})
+    renderSurveyModal({ surveyUrl: 'https://fr.wikipedia.org/wiki/FIEALD' })
     const rightIcon = screen.getByTestId('Fermer la modale')
     fireEvent.press(rightIcon)
 
@@ -36,6 +43,16 @@ describe('<SurveyModal />', () => {
     renderSurveyModal({})
 
     expect(screen.queryByText('Répondre au questionnaire')).not.toBeOnTheScreen()
+  })
+
+  it('should call hideModal function  when pressing "Répondre au questionnaire" button', async () => {
+    renderSurveyModal({ surveyUrl: 'https://fr.wikipedia.org/wiki/FIEALD' })
+
+    fireEvent.press(screen.getByText('Répondre au questionnaire'))
+
+    await waitFor(() => {
+      expect(hideModalMock).toHaveBeenCalledTimes(1)
+    })
   })
 })
 
