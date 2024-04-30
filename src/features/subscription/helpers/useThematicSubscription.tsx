@@ -4,31 +4,32 @@ import { Platform } from 'react-native'
 import { UserProfileResponse } from 'api/gen'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
-import { useMapSubscriptionHomeIdsToThematic } from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
-import { SubscriptionTheme } from 'features/subscription/types'
+import { SubscriptionAnalyticsParams, SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
+type AnalyticsInfos = { venueId: string; homeId?: never } | { homeId: string; venueId?: never }
+
 export type Props = {
   user?: UserProfileResponse
-  homeId: string
   onUpdateSubscriptionSuccess: (thematic: SubscriptionTheme) => Promise<void>
-}
+  thematic?: SubscriptionTheme | null
+} & AnalyticsInfos
 
 export const useThematicSubscription = ({
   user,
-  homeId,
   onUpdateSubscriptionSuccess,
+  homeId,
+  thematic,
+  venueId,
 }: Props): {
   isSubscribeButtonActive: boolean
   isAtLeastOneNotificationTypeActivated: boolean
-  thematic: SubscriptionTheme | null
   updateSubscription: () => void
   updateSettings: ({ allowEmails, allowPush }: { allowEmails: boolean; allowPush: boolean }) => void
 } => {
   const { pushPermission } = usePushPermission()
   const isPushPermissionGranted = pushPermission === 'granted'
-  const thematic = useMapSubscriptionHomeIdsToThematic(homeId)
 
   const { showErrorSnackBar } = useSnackBarContext()
 
@@ -55,11 +56,20 @@ export const useThematicSubscription = ({
   const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
     async () => {
       analytics.logNotificationToggle(!!state.allowEmails, !!state.allowPush)
+      const analyticsParams = homeId
+        ? { from: 'thematicHome', entryId: homeId }
+        : { from: 'venue', venueId }
       if (!isSubscribeButtonActive && thematic) {
-        analytics.logSubscriptionUpdate({ from: 'thematicHome', type: 'in', entryId: homeId })
+        analytics.logSubscriptionUpdate({
+          ...analyticsParams,
+          type: 'in',
+        } as SubscriptionAnalyticsParams)
         await onUpdateSubscriptionSuccess?.(thematic)
       } else {
-        analytics.logSubscriptionUpdate({ from: 'thematicHome', type: 'out', entryId: homeId })
+        analytics.logSubscriptionUpdate({
+          ...analyticsParams,
+          type: 'out',
+        } as SubscriptionAnalyticsParams)
       }
     },
     () => {
@@ -75,7 +85,6 @@ export const useThematicSubscription = ({
     return {
       isSubscribeButtonActive: false,
       isAtLeastOneNotificationTypeActivated: false,
-      thematic,
       updateSubscription: () => 0,
       updateSettings: () => 0,
     }
@@ -116,7 +125,6 @@ export const useThematicSubscription = ({
   return {
     isSubscribeButtonActive: !!isSubscribeButtonActive,
     isAtLeastOneNotificationTypeActivated: !!isAtLeastOneNotificationTypeActivated,
-    thematic,
     updateSubscription,
     updateSettings,
   }

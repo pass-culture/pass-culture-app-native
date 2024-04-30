@@ -5,6 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
+import { useMapSubscriptionHomeIdsToThematic } from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { useThematicSubscription } from 'features/subscription/helpers/useThematicSubscription'
 import { NotificationsLoggedOutModal } from 'features/subscription/NotificationsLoggedOutModal'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
@@ -23,6 +24,7 @@ interface Props {
 export const SubscribeButtonWithModals = ({ homeId }: Props) => {
   const { showSuccessSnackBar } = useSnackBarContext()
   const { user, isLoggedIn } = useAuthContext()
+  const thematic = useMapSubscriptionHomeIdsToThematic(homeId)
 
   const {
     visible: isNotificationsModalVisible,
@@ -65,10 +67,10 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
     isAtLeastOneNotificationTypeActivated,
     updateSubscription,
     updateSettings,
-    thematic,
   } = useThematicSubscription({
     user,
     homeId,
+    thematic,
     onUpdateSubscriptionSuccess,
   })
 
