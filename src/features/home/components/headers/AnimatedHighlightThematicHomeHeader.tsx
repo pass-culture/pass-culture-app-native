@@ -29,10 +29,6 @@ export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
 
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
 
-  const AnimatedImage = Animated.createAnimatedComponent(StyledImage)
-  const AnimatedBlackBackground = Animated.createAnimatedComponent(BlackBackground)
-  const AnimatedBlackGradient = Animated.createAnimatedComponent(BlackGradient)
-
   return (
     <Container testID="animated-thematic-header">
       <AnimatedImage source={{ uri: imageUrl }} height={imageAnimatedHeight} />
@@ -101,3 +97,7 @@ const Subtitle = styled(Typo.Title4)(({ theme }) => ({
 const Title = styled(Typo.Title1)(({ theme }) => ({
   color: theme.colors.white,
 }))
+
+const AnimatedImage = Animated.createAnimatedComponent(StyledImage)
+const AnimatedBlackBackground = Animated.createAnimatedComponent(BlackBackground)
+const AnimatedBlackGradient = Animated.createAnimatedComponent(BlackGradient)
