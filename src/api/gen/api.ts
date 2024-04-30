@@ -2027,6 +2027,11 @@ export interface OfferResponse {
    * @type {boolean}
    * @memberof OfferResponse
    */
+  isExternalBookingsDisabled: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
   isForbiddenToUnderage: boolean
   /**
    * @type {boolean}

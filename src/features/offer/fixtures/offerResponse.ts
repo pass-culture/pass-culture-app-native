@@ -85,4 +85,5 @@ export const offerResponseSnap = toMutable({
       geo: { '@type': 'GeoCoordinates', latitude: 20, longitude: 2 },
     },
   },
+  isExternalBookingsDisabled: false,
 } as const satisfies ReadonlyDeep<OfferResponse>)

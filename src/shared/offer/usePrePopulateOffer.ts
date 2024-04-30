@@ -35,6 +35,7 @@ const mergeOfferData =
     subcategoryId: offer.subcategoryId,
     venue: { coordinates: {} } as OfferVenueResponse,
     metadata: prevData?.metadata,
+    isExternalBookingsDisabled: false,
     ...(prevData ?? {}),
   })
 

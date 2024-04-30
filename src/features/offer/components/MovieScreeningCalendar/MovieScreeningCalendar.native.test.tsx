@@ -331,6 +331,16 @@ describe('Movie screening calendar', () => {
       expect(await screen.findByText('Crédit insuffisant')).toBeOnTheScreen()
     })
 
+    it('should show "Indisponible" when provider is down and the offer cannot be booked', async () => {
+      renderMovieScreeningCalendar({
+        offer: { ...defaultOfferResponse, isExternalBookingsDisabled: true },
+      })
+
+      await screen.findByLabelText('Mardi 27 Février')
+
+      expect(await screen.findByText('Indisponible')).toBeOnTheScreen()
+    })
+
     it('should show "Crédit insuffisant" instead of "Complet" when user does not have enough credit and screening is sold out', async () => {
       mockAuthContext = {
         ...defaultLoggedInUser,
