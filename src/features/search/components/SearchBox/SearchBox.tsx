@@ -23,7 +23,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getIsVenuePreviousRoute } from 'features/search/helpers/getIsVenuePreviousRoute/getIsVenuePreviousRoute'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
-import { CreateHistoryItem, NewSearchView, SearchState } from 'features/search/types'
+import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { getSpacing } from 'ui/theme'
@@ -94,7 +94,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     [dispatch, searchState, navigateToSearchResults]
   )
 
-  const hasEditableSearchInput = isFocusOnSuggestions || currentView === NewSearchView.Results
+  const hasEditableSearchInput = isFocusOnSuggestions || currentView === SearchView.Results
 
   // Track when the InstantSearch query changes to synchronize it with
   // the React state.
@@ -144,11 +144,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     const isVenuePreviousRoute = getIsVenuePreviousRoute(navigationRef.getState().routes)
 
     switch (true) {
-      case isFocusOnSuggestions && currentView === NewSearchView.Results:
+      case isFocusOnSuggestions && currentView === SearchView.Results:
         setQuery(searchState.query)
         hideSuggestions()
         break
-      case isFocusOnSuggestions && currentView === NewSearchView.Landing:
+      case isFocusOnSuggestions && currentView === SearchView.Landing:
         setQuery('')
         hideSuggestions()
         break
@@ -159,7 +159,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         })
         goBack()
         break
-      case currentView === NewSearchView.Results:
+      case currentView === SearchView.Results:
         setQuery('')
         dispatch({
           type: 'SET_STATE',
@@ -233,10 +233,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     showSuggestions,
   ])
 
-  const showLocationButton = currentView === NewSearchView.Results && !isFocusOnSuggestions
+  const showLocationButton = currentView === SearchView.Results && !isFocusOnSuggestions
 
   const disableInputClearButton =
-    currentView === NewSearchView.Results && !isFocusOnSuggestions && !isDesktopViewport
+    currentView === SearchView.Results && !isFocusOnSuggestions && !isDesktopViewport
 
   return (
     <RowContainer>

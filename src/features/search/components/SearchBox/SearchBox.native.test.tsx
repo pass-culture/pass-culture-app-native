@@ -7,7 +7,7 @@ import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import { NewSearchView, SearchState } from 'features/search/types'
+import { SearchView, SearchState } from 'features/search/types'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -204,7 +204,7 @@ describe('SearchBox component', () => {
   })
 
   it('should show back button when being on the search results view', async () => {
-    useRoute.mockReturnValueOnce({ name: NewSearchView.Results })
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
 
     renderSearchBox()
 
@@ -256,7 +256,7 @@ describe('SearchBox component', () => {
 
     it('should unfocus from suggestion when being focus on the suggestions and press back button', async () => {
       mockIsFocusOnSuggestions = true
-      useRoute.mockReturnValueOnce({ name: NewSearchView.Landing })
+      useRoute.mockReturnValueOnce({ name: SearchView.Landing })
 
       renderSearchBox()
       const previousButton = screen.getByTestId('Revenir en arrière')
@@ -270,7 +270,7 @@ describe('SearchBox component', () => {
 
     it('should hide suggestions when being focus on suggestions and press back button on landing view', async () => {
       mockIsFocusOnSuggestions = true
-      useRoute.mockReturnValueOnce({ name: NewSearchView.Landing })
+      useRoute.mockReturnValueOnce({ name: SearchView.Landing })
 
       renderSearchBox()
 
@@ -309,7 +309,7 @@ describe('SearchBox component', () => {
     })
 
     it('should stay on the current view when focusing search input and being on the %s view', async () => {
-      useRoute.mockReturnValueOnce({ name: NewSearchView.Results })
+      useRoute.mockReturnValueOnce({ name: SearchView.Results })
 
       renderSearchBox()
 
@@ -351,7 +351,7 @@ describe('SearchBox component', () => {
         ...mockSearchState,
         query: 'Some text',
       }
-      useRoute.mockReturnValueOnce({ name: NewSearchView.Results })
+      useRoute.mockReturnValueOnce({ name: SearchView.Results })
 
       mockQuery = 'Some text'
       renderSearchBox(true)
@@ -377,7 +377,7 @@ describe('SearchBox component', () => {
       ...mockSearchState,
       query: 'Some text',
     }
-    useRoute.mockReturnValueOnce({ name: NewSearchView.Results })
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
 
     mockQuery = 'Some text'
     renderSearchBox(true)
@@ -431,7 +431,7 @@ describe('SearchBox component', () => {
       ...mockSearchState,
       query: 'la fnac',
     }
-    useRoute.mockReturnValueOnce({ name: NewSearchView.Landing })
+    useRoute.mockReturnValueOnce({ name: SearchView.Landing })
 
     renderSearchBox()
 
@@ -446,7 +446,7 @@ describe('SearchBox component', () => {
       ...mockSearchState,
       query: 'la fnac',
     }
-    useRoute.mockReturnValueOnce({ name: NewSearchView.Results })
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
 
     renderSearchBox()
 
@@ -457,7 +457,7 @@ describe('SearchBox component', () => {
 
   it(`should not display Le Petit Rintintin 1 in location search widget when a venue is selected`, async () => {
     mockSearchState = { ...initialSearchState, venue }
-    useRoute.mockReturnValueOnce({ name: NewSearchView.Results })
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
 
     renderSearchBox()
 
@@ -471,7 +471,7 @@ describe('SearchBox component', () => {
       ...initialSearchState,
       locationFilter: { locationType: LocationMode.EVERYWHERE },
     }
-    useRoute.mockReturnValueOnce({ name: NewSearchView.Results })
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
 
     mockPosition = DEFAULT_POSITION
     renderSearchBox()
@@ -492,7 +492,7 @@ describe('SearchBox component with venue previous route on search results', () =
       type: 'tab',
       stale: false,
     })
-    useRoute.mockReturnValue({ name: NewSearchView.Results })
+    useRoute.mockReturnValue({ name: SearchView.Results })
   })
 
   it('should unselect the venue and set the view to Landing when current rout is search and previous route is Venue and the user user press the back button', async () => {
