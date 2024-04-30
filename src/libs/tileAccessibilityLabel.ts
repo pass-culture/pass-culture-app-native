@@ -1,7 +1,7 @@
 import { BookingProperties } from 'features/bookings/types'
 import { OfferTileProps } from 'features/offer/types'
 import { VenueHit } from 'libs/algolia/types'
-import { parseTypeHomeLabel } from 'libs/parsers/venueType'
+import { parseType } from 'libs/parsers/venueType'
 
 type Offer = Pick<
   OfferTileProps,
@@ -37,7 +37,7 @@ function getOfferAccessibilityLabel(offer: Offer) {
 function getVenueAccessibilityLabel(venue: Venue) {
   const { name, venueTypeCode, distance } = venue
   const nameLabel = name ?? ''
-  const venueTypeLabel = parseTypeHomeLabel(venueTypeCode)
+  const venueTypeLabel = parseType(venueTypeCode)
   const typeLabel = `du type ${venueTypeLabel},`
   const distanceLabel = distance ? `à ${distance}` : ''
   return `Lieu ${nameLabel} ${typeLabel} ${distanceLabel}`
