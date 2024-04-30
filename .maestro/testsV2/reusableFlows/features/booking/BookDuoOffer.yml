@@ -8,7 +8,7 @@ appId: ${MAESTRO_APP_ID}
 
 - repeat: #Vérifier que l'offre est bien réservable
     while:
-      notVisible: 'Voir les disponibilités'
+      visible: "Voir ma réservation"
     commands:
       - pressKey: back
       - scroll
@@ -16,22 +16,25 @@ appId: ${MAESTRO_APP_ID}
           text: "Séances de cinéma"
           index: 0
 
-- tapOn: "Voir les disponibilités"
+- swipe:
+   from: 
+     id: "tagsContainer" # From (x, y) center of element
+   direction: UP 
 
-- assertVisible: "Date"
+- scrollUntilVisible:
+    element:
+      text: "Passe le bon plan\_!"
+    visibilityPercentage: 50
+
+- tapOn:
+    id: "movie-calendar-day"
+    index: 1
+
 - tapOn:
     label: "Sélection de la 1ère date disponible"
     enabled: true
     above:
       text: .*€
-- tapOn: "Valider la date"
-
-- assertVisible: "Horaire"
-- tapOn:
-    label: "Sélection du 1er horaire disponible"
-    below:
-      text: "Horaire"
-- tapOn: "Valider lʼhoraire"
 
 - runFlow: #Si différentes gamme de prix pour l'offre
     when:

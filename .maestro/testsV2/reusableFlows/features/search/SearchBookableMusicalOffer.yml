@@ -10,5 +10,3 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "CD"
 
 - tapOn: 'Rechercher'
-- tapOn: 'Ma position'
-- tapOn: 'Partout'
