@@ -34,17 +34,20 @@ export const SurveyModal = ({
           <Typo.Body>{surveyDescription}</Typo.Body>
         </Container>
       )}
-      <Spacer.Column numberOfSpaces={8} />
+
       {surveyUrl ? (
-        <ExternalTouchableLink
-          onBeforeNavigate={hideModal}
-          as={ButtonPrimary}
-          icon={ExternalSite}
-          wording="Répondre au questionnaire"
-          externalNav={{
-            url: surveyUrl,
-          }}
-        />
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={8} />
+          <ExternalTouchableLink
+            onBeforeNavigate={hideModal}
+            as={ButtonPrimary}
+            icon={ExternalSite}
+            wording="Répondre au questionnaire"
+            externalNav={{
+              url: surveyUrl,
+            }}
+          />
+        </React.Fragment>
       ) : null}
     </AppInformationModal>
   )
