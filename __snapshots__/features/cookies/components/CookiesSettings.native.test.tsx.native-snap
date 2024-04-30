@@ -131,7 +131,6 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
             }
           }
           accessible={false}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -141,10 +140,16 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Interrupteur Tout accepter"
         >
@@ -163,26 +168,29 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
             }
           >
             <View
-              collapsable={false}
               disabled={false}
               style={
-                {
-                  "alignItems": "center",
-                  "aspectRatio": 1,
-                  "backgroundColor": "#ffffff",
-                  "borderRadius": 28,
-                  "height": 28,
-                  "justifyContent": "center",
-                  "marginLeft": 2,
-                  "shadowColor": "#161617",
-                  "shadowOffset": {
-                    "height": 2,
-                    "width": 0,
+                [
+                  {
+                    "alignItems": "center",
+                    "aspectRatio": 1,
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 28,
+                    "height": 28,
+                    "justifyContent": "center",
+                    "shadowColor": "#161617",
+                    "shadowOffset": {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 2.5,
+                    "width": 28,
                   },
-                  "shadowOpacity": 0.2,
-                  "shadowRadius": 2.5,
-                  "width": 28,
-                }
+                  {
+                    "marginLeft": 2,
+                  },
+                ]
               }
             />
           </View>
@@ -270,7 +278,6 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
             }
           }
           accessible={false}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -280,10 +287,16 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Interrupteur Personnaliser ta navigation"
         >
@@ -302,26 +315,29 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
             }
           >
             <View
-              collapsable={false}
               disabled={false}
               style={
-                {
-                  "alignItems": "center",
-                  "aspectRatio": 1,
-                  "backgroundColor": "#ffffff",
-                  "borderRadius": 28,
-                  "height": 28,
-                  "justifyContent": "center",
-                  "marginLeft": 2,
-                  "shadowColor": "#161617",
-                  "shadowOffset": {
-                    "height": 2,
-                    "width": 0,
+                [
+                  {
+                    "alignItems": "center",
+                    "aspectRatio": 1,
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 28,
+                    "height": 28,
+                    "justifyContent": "center",
+                    "shadowColor": "#161617",
+                    "shadowOffset": {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 2.5,
+                    "width": 28,
                   },
-                  "shadowOpacity": 0.2,
-                  "shadowRadius": 2.5,
-                  "width": 28,
-                }
+                  {
+                    "marginLeft": 2,
+                  },
+                ]
               }
             />
           </View>
@@ -358,7 +374,6 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
         }
       }
       accessible={false}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -368,13 +383,21 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="accordionTouchable"
     >
@@ -425,16 +448,19 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           </Text>
         </Text>
         <View
-          collapsable={false}
           style={
-            {
-              "marginLeft": 8,
-              "transform": [
-                {
-                  "rotateZ": "1.5707963267948966rad",
-                },
-              ],
-            }
+            [
+              {
+                "marginLeft": 8,
+              },
+              {
+                "transform": [
+                  {
+                    "rotateZ": "1.5707963267948966rad",
+                  },
+                ],
+              },
+            ]
           }
           testID="accordionArrow"
         >
@@ -451,12 +477,15 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
     </View>
   </View>,
   <View
-    collapsable={false}
     style={
-      {
-        "height": 0,
-        "overflow": "hidden",
-      }
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "height": 0,
+        },
+      ]
     }
     testID="accordionBody"
   >
@@ -635,7 +664,6 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
             }
           }
           accessible={false}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -645,10 +673,16 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Interrupteur Enregistrer des statistiques de navigation"
         >
@@ -667,26 +701,29 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
             }
           >
             <View
-              collapsable={false}
               disabled={false}
               style={
-                {
-                  "alignItems": "center",
-                  "aspectRatio": 1,
-                  "backgroundColor": "#ffffff",
-                  "borderRadius": 28,
-                  "height": 28,
-                  "justifyContent": "center",
-                  "marginLeft": 2,
-                  "shadowColor": "#161617",
-                  "shadowOffset": {
-                    "height": 2,
-                    "width": 0,
+                [
+                  {
+                    "alignItems": "center",
+                    "aspectRatio": 1,
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 28,
+                    "height": 28,
+                    "justifyContent": "center",
+                    "shadowColor": "#161617",
+                    "shadowOffset": {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 2.5,
+                    "width": 28,
                   },
-                  "shadowOpacity": 0.2,
-                  "shadowRadius": 2.5,
-                  "width": 28,
-                }
+                  {
+                    "marginLeft": 2,
+                  },
+                ]
               }
             />
           </View>
@@ -723,7 +760,6 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
         }
       }
       accessible={false}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -733,13 +769,21 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="accordionTouchable"
     >
@@ -790,16 +834,19 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           </Text>
         </Text>
         <View
-          collapsable={false}
           style={
-            {
-              "marginLeft": 8,
-              "transform": [
-                {
-                  "rotateZ": "1.5707963267948966rad",
-                },
-              ],
-            }
+            [
+              {
+                "marginLeft": 8,
+              },
+              {
+                "transform": [
+                  {
+                    "rotateZ": "1.5707963267948966rad",
+                  },
+                ],
+              },
+            ]
           }
           testID="accordionArrow"
         >
@@ -816,12 +863,15 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
     </View>
   </View>,
   <View
-    collapsable={false}
     style={
-      {
-        "height": 0,
-        "overflow": "hidden",
-      }
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "height": 0,
+        },
+      ]
     }
     testID="accordionBody"
   >
@@ -1000,7 +1050,6 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
             }
           }
           accessible={false}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -1010,10 +1059,16 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Interrupteur Mesurer l’efficacité de nos publicités"
         >
@@ -1032,26 +1087,29 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
             }
           >
             <View
-              collapsable={false}
               disabled={false}
               style={
-                {
-                  "alignItems": "center",
-                  "aspectRatio": 1,
-                  "backgroundColor": "#ffffff",
-                  "borderRadius": 28,
-                  "height": 28,
-                  "justifyContent": "center",
-                  "marginLeft": 2,
-                  "shadowColor": "#161617",
-                  "shadowOffset": {
-                    "height": 2,
-                    "width": 0,
+                [
+                  {
+                    "alignItems": "center",
+                    "aspectRatio": 1,
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 28,
+                    "height": 28,
+                    "justifyContent": "center",
+                    "shadowColor": "#161617",
+                    "shadowOffset": {
+                      "height": 2,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 2.5,
+                    "width": 28,
                   },
-                  "shadowOpacity": 0.2,
-                  "shadowRadius": 2.5,
-                  "width": 28,
-                }
+                  {
+                    "marginLeft": 2,
+                  },
+                ]
               }
             />
           </View>
@@ -1088,7 +1146,6 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
         }
       }
       accessible={false}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -1098,13 +1155,21 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="accordionTouchable"
     >
@@ -1155,16 +1220,19 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           </Text>
         </Text>
         <View
-          collapsable={false}
           style={
-            {
-              "marginLeft": 8,
-              "transform": [
-                {
-                  "rotateZ": "1.5707963267948966rad",
-                },
-              ],
-            }
+            [
+              {
+                "marginLeft": 8,
+              },
+              {
+                "transform": [
+                  {
+                    "rotateZ": "1.5707963267948966rad",
+                  },
+                ],
+              },
+            ]
           }
           testID="accordionArrow"
         >
@@ -1181,12 +1249,15 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
     </View>
   </View>,
   <View
-    collapsable={false}
     style={
-      {
-        "height": 0,
-        "overflow": "hidden",
-      }
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "height": 0,
+        },
+      ]
     }
     testID="accordionBody"
   >
@@ -1365,7 +1436,6 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
             }
           }
           accessible={false}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -1375,10 +1445,16 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Interrupteur Assurer la sécurité, prévenir la fraude et corriger les bugs"
         >
@@ -1397,19 +1473,22 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
             }
           >
             <View
-              collapsable={false}
               disabled={true}
               style={
-                {
-                  "alignItems": "center",
-                  "aspectRatio": 1,
-                  "backgroundColor": "#ffffff",
-                  "borderRadius": 28,
-                  "height": 28,
-                  "justifyContent": "center",
-                  "marginLeft": 26,
-                  "width": 28,
-                }
+                [
+                  {
+                    "alignItems": "center",
+                    "aspectRatio": 1,
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 28,
+                    "height": 28,
+                    "justifyContent": "center",
+                    "width": 28,
+                  },
+                  {
+                    "marginLeft": 26,
+                  },
+                ]
               }
             >
               <View
@@ -1456,7 +1535,6 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
         }
       }
       accessible={false}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -1466,13 +1544,21 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="accordionTouchable"
     >
@@ -1523,16 +1609,19 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           </Text>
         </Text>
         <View
-          collapsable={false}
           style={
-            {
-              "marginLeft": 8,
-              "transform": [
-                {
-                  "rotateZ": "1.5707963267948966rad",
-                },
-              ],
-            }
+            [
+              {
+                "marginLeft": 8,
+              },
+              {
+                "transform": [
+                  {
+                    "rotateZ": "1.5707963267948966rad",
+                  },
+                ],
+              },
+            ]
           }
           testID="accordionArrow"
         >
@@ -1549,12 +1638,15 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
     </View>
   </View>,
   <View
-    collapsable={false}
     style={
-      {
-        "height": 0,
-        "overflow": "hidden",
-      }
+      [
+        {
+          "overflow": "hidden",
+        },
+        {
+          "height": 0,
+        },
+      ]
     }
     testID="accordionBody"
   >

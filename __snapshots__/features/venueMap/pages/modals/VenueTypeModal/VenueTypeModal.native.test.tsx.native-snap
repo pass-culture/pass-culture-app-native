@@ -43,9 +43,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
-    forwardedRef={[Function]}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -54,27 +52,33 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        {
+          "backgroundColor": "black",
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        [
+          {
+            "backgroundColor": "black",
+            "height": 1334,
+            "width": 750,
+          },
+        ],
+      ]
     }
+    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
     accessibilityRole="none"
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
-    forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[Function]}
     onModalHide={[Function]}
@@ -88,22 +92,36 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "center",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
+      [
+        {},
+        [
           {
-            "translateY": 1334,
+            "margin": 37.5,
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
           },
+          {
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          [
+            {
+              "alignItems": "center",
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": "auto",
+            },
+            {
+              "margin": "auto",
+            },
+          ],
         ],
-      }
+      ]
     }
     supportedOrientations={
       [
@@ -112,6 +130,7 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
       ]
     }
     swipeThreshold={100}
+    useNativeDriver={false}
   >
     <View
       desktopMaxHeight={1000.5}
@@ -255,7 +274,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 hitSlop={8}
                 onClick={[Function]}
@@ -266,14 +284,24 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "height": 40,
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": 40,
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                      },
+                      {
+                        "height": 40,
+                        "width": 40,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Fermer"
               >
@@ -369,7 +397,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -379,15 +406,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "minHeight": 24,
-                      "opacity": 1,
-                      "paddingVertical": 12,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "minHeight": 24,
+                          "paddingVertical": 12,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="Tout"
                 >
@@ -518,7 +553,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -528,15 +562,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Cinéma - Salle de projections"
               >
@@ -665,7 +707,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -675,15 +716,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Cinéma itinérant"
               >
@@ -812,7 +861,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -822,15 +870,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Musique - Salle de concerts"
               >
@@ -959,7 +1015,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -969,15 +1024,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Spectacle vivant"
               >
@@ -1106,7 +1169,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1116,15 +1178,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Festival"
               >
@@ -1253,7 +1323,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1263,15 +1332,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Musée"
               >
@@ -1400,7 +1477,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1410,15 +1486,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Bibliothèque ou médiathèque"
               >
@@ -1547,7 +1631,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1557,15 +1640,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Jeux / Jeux vidéos"
               >
@@ -1694,7 +1785,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1704,15 +1794,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Arts visuels, arts plastiques et galeries"
               >
@@ -1887,7 +1985,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1897,15 +1994,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Librairie"
               >
@@ -2034,7 +2139,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2044,15 +2148,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Magasin arts créatifs"
               >
@@ -2181,7 +2293,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2191,15 +2302,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Magasin culturel"
               >
@@ -2328,7 +2447,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2338,15 +2456,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Musique - Magasin d’instruments"
               >
@@ -2475,7 +2601,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2485,15 +2610,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Musique - Disquaire"
               >
@@ -2668,7 +2801,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2678,15 +2810,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Cours et pratique artistiques"
               >
@@ -2815,7 +2955,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2825,15 +2964,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Centre culturel"
               >
@@ -2962,7 +3109,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2972,15 +3118,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Patrimoine et tourisme"
               >
@@ -3109,7 +3263,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -3119,15 +3272,23 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "minHeight": 24,
-                    "opacity": 1,
-                    "paddingVertical": 12,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "minHeight": 24,
+                        "paddingVertical": 12,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Culture scientifique"
               >
@@ -3437,7 +3598,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -3447,23 +3607,34 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "marginRight": 16,
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 2,
+                      "paddingRight": 2,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                      "marginRight": 16,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Réinitialiser"
             >
@@ -3556,7 +3727,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -3566,23 +3736,34 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#eb0055",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 20,
+                      "paddingRight": 20,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {
+                      "flexGrow": 1,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Rechercher"
             >

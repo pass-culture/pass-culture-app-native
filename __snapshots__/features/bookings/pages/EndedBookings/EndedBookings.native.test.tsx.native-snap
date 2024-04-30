@@ -92,7 +92,6 @@ exports[`EndedBookings should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -102,15 +101,23 @@ exports[`EndedBookings should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -268,6 +275,7 @@ exports[`EndedBookings should render correctly 1`] = `
   >
     <View>
       <View
+        collapsable={false}
         onLayout={[Function]}
       >
         <View
@@ -312,18 +320,282 @@ exports[`EndedBookings should render correctly 1`] = `
         style={null}
       >
         <View
+          accessibilityLabel="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {},
+                {
+                  "flexDirection": "row",
+                  "paddingRight": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
+        >
+          <View
+            size="small"
+            style={
+              [
+                {
+                  "borderRadius": 4,
+                  "height": 96,
+                  "shadowColor": "#696A6F",
+                  "shadowOffset": {
+                    "height": 4,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.2,
+                  "shadowRadius": 4,
+                  "width": 64,
+                },
+              ]
+            }
+          >
+            <BVLinearGradient
+              borderRadius={4}
+              colors={
+                [
+                  4294046196,
+                  4291546578,
+                ]
+              }
+              endPoint={
+                {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#F1F1F4",
+                    "borderRadius": 4,
+                    "height": "100%",
+                    "justifyContent": "center",
+                    "width": "100%",
+                  },
+                  {},
+                ]
+              }
+              testID="imagePlaceholder"
+            >
+              <View
+                height={32}
+                testID="categoryIcon"
+                width={32}
+              >
+                <Text>
+                  categoryIcon-SVG-Mock
+                </Text>
+              </View>
+            </BVLinearGradient>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "paddingRight": 4,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 4,
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={2}
+                shrink={true}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                    },
+                  ]
+                }
+              >
+                Avez-vous déjà vu ?
+              </Text>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                  },
+                ]
+              }
+            >
+              <View
+                noFullWidth={true}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row-reverse",
+                      "justifyContent": "flex-end",
+                      "maxWidth": 500,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  color="#b60025"
+                  noFullWidth={true}
+                  style={
+                    [
+                      {
+                        "color": "#b60025",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "paddingLeft": 4,
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Réservation annulée
+                </Text>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    [
+                      {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={20}
+                    testID="rule-icon-undefined"
+                    width={20}
+                  >
+                    <Text>
+                      rule-icon-undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                le 15/03/2021
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
           style={
             [
               {
-                "flexDirection": "row",
-                "justifyContent": "space-between",
+                "borderRadius": 40,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
               },
             ]
           }
         >
           <View
-            accessibilityLabel="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
-            accessibilityRole="link"
+            accessibilityLabel="Partager l’offre Avez-vous déjà vu ?"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -342,7 +614,6 @@ exports[`EndedBookings should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -352,319 +623,51 @@ exports[`EndedBookings should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "opacity": 1,
-                "paddingRight": 40,
-                "userSelect": "auto",
-              }
-            }
-            testID="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
-          >
-            <View
-              size="small"
-              style={
-                [
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 4,
-                    "height": 96,
-                    "shadowColor": "#696A6F",
-                    "shadowOffset": {
-                      "height": 4,
-                      "width": 0,
-                    },
-                    "shadowOpacity": 0.2,
-                    "shadowRadius": 4,
-                    "width": 64,
-                  },
-                ]
-              }
-            >
-              <BVLinearGradient
-                borderRadius={4}
-                colors={
-                  [
-                    4294046196,
-                    4291546578,
-                  ]
-                }
-                endPoint={
-                  {
-                    "x": 0.5,
-                    "y": 1,
-                  }
-                }
-                locations={null}
-                startPoint={
-                  {
-                    "x": 0.5,
-                    "y": 0,
-                  }
-                }
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#F1F1F4",
-                      "borderRadius": 4,
-                      "height": "100%",
-                      "justifyContent": "center",
-                      "width": "100%",
-                    },
-                    {},
-                  ]
-                }
-                testID="imagePlaceholder"
-              >
-                <View
-                  height={32}
-                  testID="categoryIcon"
-                  width={32}
-                >
-                  <Text>
-                    categoryIcon-SVG-Mock
-                  </Text>
-                </View>
-              </BVLinearGradient>
-            </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "width": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "paddingRight": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "paddingBottom": 4,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={2}
-                  shrink={true}
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                      },
-                    ]
-                  }
-                >
-                  Avez-vous déjà vu ?
-                </Text>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "flexWrap": "wrap",
-                    },
-                  ]
-                }
-              >
-                <View
-                  noFullWidth={true}
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row-reverse",
-                        "justifyContent": "flex-end",
-                        "maxWidth": 500,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    color="#b60025"
-                    noFullWidth={true}
-                    style={
-                      [
-                        {
-                          "color": "#b60025",
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                          "paddingLeft": 4,
-                          "textAlign": "center",
-                        },
-                      ]
-                    }
-                  >
-                    Réservation annulée
-                  </Text>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "width": 4,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      [
-                        {
-                          "flexShrink": 0,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      height={20}
-                      testID="rule-icon-undefined"
-                      width={20}
-                    >
-                      <Text>
-                        rule-icon-undefined-SVG-Mock
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                      },
-                    ]
-                  }
-                >
-                  le 15/03/2021
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            gap={4}
-            style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "borderRadius": 40,
+                  },
+                ],
                 {
-                  "gap": 16,
+                  "opacity": 1,
                 },
               ]
             }
+            testID="Partager l’offre Avez-vous déjà vu ?"
           >
             <View
               style={
                 [
                   {
+                    "alignItems": "center",
+                    "aspectRatio": 1,
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#F1F1F4",
                     "borderRadius": 40,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "width": 40,
+                  },
+                  {
+                    "transform": undefined,
                   },
                 ]
               }
             >
               <View
-                accessibilityLabel="Partager l’offre Avez-vous déjà vu ?"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  {
-                    "borderRadius": 40,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Partager l’offre Avez-vous déjà vu ?"
+                height={24}
+                testID="icon-share"
+                width={24}
               >
-                <View
-                  collapsable={false}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "aspectRatio": 1,
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#F1F1F4",
-                      "borderRadius": 40,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 40,
-                      "justifyContent": "center",
-                      "transform": undefined,
-                      "width": 40,
-                    }
-                  }
-                >
-                  <View
-                    height={24}
-                    testID="icon-share"
-                    width={24}
-                  >
-                    <Text>
-                      icon-share-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
+                <Text>
+                  icon-share-SVG-Mock
+                </Text>
               </View>
             </View>
           </View>

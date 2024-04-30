@@ -125,7 +125,6 @@ exports[`SearchHeader component should render SearchHeader 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onLayout={[Function]}
@@ -136,30 +135,39 @@ exports[`SearchHeader component should render SearchHeader 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "marginLeft": 8,
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "marginLeft": 8,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Ouvrir la modale de localisation depuis le widget"
         >
           <View
-            collapsable={false}
             isActive={false}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#696A6F",
-                "borderRadius": 40,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "width": 40,
-              }
+              [
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#696A6F",
+                  "borderRadius": 40,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "width": 40,
+                },
+              ]
             }
           >
             <View

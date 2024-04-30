@@ -21,7 +21,6 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
     }
   }
   accessible={true}
-  collapsable={false}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -31,24 +30,34 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    {
-      "alignItems": "center",
-      "backgroundColor": "transparent",
-      "borderRadius": 24,
-      "flexDirection": "row",
-      "height": "auto",
-      "justifyContent": "flex-start",
-      "maxWidth": 500,
-      "minHeight": 40,
-      "opacity": 1,
-      "paddingBottom": 2,
-      "paddingLeft": 0,
-      "paddingRight": 0,
-      "paddingTop": 2,
-      "textAlign": "left",
-      "userSelect": "auto",
-      "width": "100%",
-    }
+    [
+      [
+        {
+          "userSelect": "auto",
+        },
+        {
+          "alignItems": "center",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "height": "auto",
+          "justifyContent": "flex-start",
+          "maxWidth": 500,
+          "minHeight": 40,
+          "paddingBottom": 2,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 2,
+          "width": "100%",
+        },
+        {
+          "backgroundColor": "transparent",
+          "textAlign": "left",
+        },
+      ],
+      {
+        "opacity": 1,
+      },
+    ]
   }
   testID="Mon crédit est expiré, que faire ?"
 >
@@ -168,7 +177,6 @@ exports[`<CreditExplanation/> should render correctly for valid credit 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -178,24 +186,34 @@ exports[`<CreditExplanation/> should render correctly for valid credit 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "transparent",
-        "borderRadius": 24,
-        "flexDirection": "row",
-        "height": "auto",
-        "justifyContent": "flex-start",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 2,
-        "textAlign": "left",
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "height": "auto",
+            "justifyContent": "flex-start",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "paddingBottom": 2,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 2,
+            "width": "100%",
+          },
+          {
+            "backgroundColor": "transparent",
+            "textAlign": "left",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="Comment ça marche ?"
   >

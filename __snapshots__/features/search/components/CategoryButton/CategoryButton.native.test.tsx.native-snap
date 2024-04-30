@@ -22,7 +22,6 @@ exports[`CategoryButton should render correctly 1`] = `
     }
   }
   accessible={true}
-  collapsable={false}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -32,13 +31,21 @@ exports[`CategoryButton should render correctly 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    {
-      "borderRadius": 8,
-      "height": 156,
-      "opacity": 1,
-      "overflow": "hidden",
-      "userSelect": "auto",
-    }
+    [
+      [
+        {
+          "userSelect": "auto",
+        },
+        {
+          "borderRadius": 8,
+          "height": 156,
+          "overflow": "hidden",
+        },
+      ],
+      {
+        "opacity": 1,
+      },
+    ]
   }
   testID="Catégorie Bibliothèques & Médiathèques"
 >

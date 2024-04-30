@@ -22,7 +22,6 @@ exports[`<SubcategoryButton/> should render SubcategoryButton 1`] = `
     }
   }
   accessible={true}
-  collapsable={false}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -32,30 +31,38 @@ exports[`<SubcategoryButton/> should render SubcategoryButton 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    {
-      "alignItems": "center",
-      "backgroundColor": "#ffffff",
-      "borderBottomWidth": 1,
-      "borderColor": "#90949D",
-      "borderRadius": 8,
-      "borderRightWidth": 1,
-      "borderTopWidth": 1,
-      "flexDirection": "row",
-      "height": 56,
-      "maxWidth": 182.5,
-      "opacity": 1,
-      "paddingRight": 16,
-      "shadowColor": "#696A6F",
-      "shadowOffset": {
-        "height": 4,
-        "width": 0,
+    [
+      [
+        {
+          "userSelect": "auto",
+        },
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderBottomWidth": 1,
+          "borderColor": "#90949D",
+          "borderRadius": 8,
+          "borderRightWidth": 1,
+          "borderTopWidth": 1,
+          "flexDirection": "row",
+          "height": 56,
+          "maxWidth": 182.5,
+          "paddingRight": 16,
+          "shadowColor": "#696A6F",
+          "shadowOffset": {
+            "height": 4,
+            "width": 0,
+          },
+          "shadowOpacity": 0.2,
+          "shadowRadius": 4,
+          "textAlign": "left",
+          "width": 343,
+        },
+      ],
+      {
+        "opacity": 1,
       },
-      "shadowOpacity": 0.2,
-      "shadowRadius": 4,
-      "textAlign": "left",
-      "userSelect": "auto",
-      "width": 343,
-    }
+    ]
   }
   testID="Mangas"
 >

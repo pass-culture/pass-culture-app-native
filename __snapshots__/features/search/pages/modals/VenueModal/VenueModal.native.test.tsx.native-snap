@@ -43,9 +43,7 @@ exports[`VenueModal should render correctly 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
-    forwardedRef={[Function]}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -54,27 +52,33 @@ exports[`VenueModal should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0.7,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        {
+          "backgroundColor": "black",
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        [
+          {
+            "backgroundColor": "black",
+            "height": 1334,
+            "width": 750,
+          },
+        ],
+      ]
     }
+    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
     accessibilityRole="none"
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
-    forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[Function]}
     onModalHide={[Function]}
@@ -88,22 +92,36 @@ exports[`VenueModal should render correctly 1`] = `
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "center",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
+      [
+        {},
+        [
           {
-            "translateY": 0,
+            "margin": 37.5,
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
           },
+          {
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          [
+            {
+              "alignItems": "center",
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": "auto",
+            },
+            {
+              "margin": "auto",
+            },
+          ],
         ],
-      }
+      ]
     }
     supportedOrientations={
       [
@@ -112,6 +130,7 @@ exports[`VenueModal should render correctly 1`] = `
       ]
     }
     swipeThreshold={100}
+    useNativeDriver={false}
   >
     <View
       desktopMaxHeight={1000.5}
@@ -262,7 +281,6 @@ exports[`VenueModal should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -272,14 +290,22 @@ exports[`VenueModal should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "paddingBottom": 4,
+                        "paddingLeft": 4,
+                        "paddingRight": 4,
+                        "paddingTop": 4,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Fermer la modale"
               >
@@ -499,7 +525,6 @@ exports[`VenueModal should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 hitSlop={
                   {
@@ -517,10 +542,16 @@ exports[`VenueModal should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Réinitialiser la recherche"
               >
@@ -599,7 +630,6 @@ exports[`VenueModal should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -609,23 +639,34 @@ exports[`VenueModal should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "marginRight": 16,
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 2,
+                      "paddingRight": 2,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                      "marginRight": 16,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Réinitialiser"
             >
@@ -718,7 +759,6 @@ exports[`VenueModal should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -728,23 +768,34 @@ exports[`VenueModal should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#eb0055",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 20,
+                      "paddingRight": 20,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {
+                      "flexGrow": 1,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Rechercher"
             >

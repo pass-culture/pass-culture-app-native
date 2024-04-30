@@ -67,7 +67,6 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -77,15 +76,23 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Revenir en arrière"
       >
@@ -322,9 +329,28 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                   }
                 }
                 accessible={true}
-                collapsable={false}
+                animation={
+                  {
+                    "from": {
+                      "transform": [
+                        {
+                          "scale": 0.95,
+                        },
+                      ],
+                    },
+                    "to": {
+                      "transform": [
+                        {
+                          "scale": 1,
+                        },
+                      ],
+                    },
+                  }
+                }
+                delay={200}
+                duration={240}
+                easing={[Function]}
                 focusable={true}
-                forwardedRef={[Function]}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -334,23 +360,20 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 onStartShouldSetResponder={[Function]}
                 status="cette année"
                 style={
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 4,
-                    "borderWidth": 1,
-                    "marginHorizontal": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "transform": [
-                      {
-                        "scale": 0.95,
-                      },
-                    ],
-                  }
+                  [
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949D",
+                      "borderRadius": 4,
+                      "borderWidth": 1,
+                      "marginHorizontal": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    },
+                  ]
                 }
               >
                 <View>
@@ -1377,20 +1400,37 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
     </View>
   </RCTScrollView>,
   <View
-    collapsable={false}
-    forwardedRef={[Function]}
-    style={
+    animation={
       {
-        "backgroundColor": "#ffffff",
-        "marginHorizontal": 24,
-        "opacity": 0,
-        "paddingVertical": 24,
-        "transform": [
-          {
-            "scale": 0.95,
-          },
-        ],
+        "from": {
+          "opacity": 0,
+          "transform": [
+            {
+              "scale": 0.95,
+            },
+          ],
+        },
+        "to": {
+          "opacity": 1,
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
       }
+    }
+    delay={300}
+    duration={240}
+    easing={[Function]}
+    style={
+      [
+        {
+          "backgroundColor": "#ffffff",
+          "marginHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
     }
   >
     <View
@@ -1414,7 +1454,6 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -1424,18 +1463,26 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "borderRadius": 24,
-          "justifyContent": "center",
-          "opacity": 1,
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Créer un compte"
     >
@@ -1511,7 +1558,6 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -1521,21 +1567,31 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "minHeight": 40,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Plus tard"
     >
@@ -1680,7 +1736,6 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -1690,15 +1745,23 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Revenir en arrière"
       >
@@ -2175,9 +2238,28 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                   }
                 }
                 accessible={true}
-                collapsable={false}
+                animation={
+                  {
+                    "from": {
+                      "transform": [
+                        {
+                          "scale": 0.95,
+                        },
+                      ],
+                    },
+                    "to": {
+                      "transform": [
+                        {
+                          "scale": 1,
+                        },
+                      ],
+                    },
+                  }
+                }
+                delay={200}
+                duration={240}
+                easing={[Function]}
                 focusable={true}
-                forwardedRef={[Function]}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -2187,23 +2269,20 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 onStartShouldSetResponder={[Function]}
                 status="cette année"
                 style={
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 4,
-                    "borderWidth": 1,
-                    "marginHorizontal": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "transform": [
-                      {
-                        "scale": 0.95,
-                      },
-                    ],
-                  }
+                  [
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949D",
+                      "borderRadius": 4,
+                      "borderWidth": 1,
+                      "marginHorizontal": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    },
+                  ]
                 }
               >
                 <View>
@@ -2977,20 +3056,37 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
     </View>
   </RCTScrollView>,
   <View
-    collapsable={false}
-    forwardedRef={[Function]}
-    style={
+    animation={
       {
-        "backgroundColor": "#ffffff",
-        "marginHorizontal": 24,
-        "opacity": 0,
-        "paddingVertical": 24,
-        "transform": [
-          {
-            "scale": 0.95,
-          },
-        ],
+        "from": {
+          "opacity": 0,
+          "transform": [
+            {
+              "scale": 0.95,
+            },
+          ],
+        },
+        "to": {
+          "opacity": 1,
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
       }
+    }
+    delay={300}
+    duration={240}
+    easing={[Function]}
+    style={
+      [
+        {
+          "backgroundColor": "#ffffff",
+          "marginHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
     }
   >
     <View
@@ -3014,7 +3110,6 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -3024,18 +3119,26 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "borderRadius": 24,
-          "justifyContent": "center",
-          "opacity": 1,
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Créer un compte"
     >
@@ -3111,7 +3214,6 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -3121,21 +3223,31 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "minHeight": 40,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Plus tard"
     >
@@ -3280,7 +3392,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -3290,15 +3401,23 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Revenir en arrière"
       >
@@ -4015,9 +4134,28 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   }
                 }
                 accessible={true}
-                collapsable={false}
+                animation={
+                  {
+                    "from": {
+                      "transform": [
+                        {
+                          "scale": 0.95,
+                        },
+                      ],
+                    },
+                    "to": {
+                      "transform": [
+                        {
+                          "scale": 1,
+                        },
+                      ],
+                    },
+                  }
+                }
+                delay={200}
+                duration={240}
+                easing={[Function]}
                 focusable={true}
-                forwardedRef={[Function]}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -4027,23 +4165,20 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 onStartShouldSetResponder={[Function]}
                 status="cette année"
                 style={
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 4,
-                    "borderWidth": 1,
-                    "marginHorizontal": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "transform": [
-                      {
-                        "scale": 0.95,
-                      },
-                    ],
-                  }
+                  [
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949D",
+                      "borderRadius": 4,
+                      "borderWidth": 1,
+                      "marginHorizontal": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    },
+                  ]
                 }
               >
                 <View>
@@ -4564,20 +4699,37 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
     </View>
   </RCTScrollView>,
   <View
-    collapsable={false}
-    forwardedRef={[Function]}
-    style={
+    animation={
       {
-        "backgroundColor": "#ffffff",
-        "marginHorizontal": 24,
-        "opacity": 0,
-        "paddingVertical": 24,
-        "transform": [
-          {
-            "scale": 0.95,
-          },
-        ],
+        "from": {
+          "opacity": 0,
+          "transform": [
+            {
+              "scale": 0.95,
+            },
+          ],
+        },
+        "to": {
+          "opacity": 1,
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
       }
+    }
+    delay={300}
+    duration={240}
+    easing={[Function]}
+    style={
+      [
+        {
+          "backgroundColor": "#ffffff",
+          "marginHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
     }
   >
     <View
@@ -4601,7 +4753,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -4611,18 +4762,26 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "borderRadius": 24,
-          "justifyContent": "center",
-          "opacity": 1,
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Créer un compte"
     >
@@ -4698,7 +4857,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -4708,21 +4866,31 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "minHeight": 40,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Plus tard"
     >
@@ -4867,7 +5035,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -4877,15 +5044,23 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Revenir en arrière"
       >
@@ -5833,9 +6008,28 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   }
                 }
                 accessible={true}
-                collapsable={false}
+                animation={
+                  {
+                    "from": {
+                      "transform": [
+                        {
+                          "scale": 0.95,
+                        },
+                      ],
+                    },
+                    "to": {
+                      "transform": [
+                        {
+                          "scale": 1,
+                        },
+                      ],
+                    },
+                  }
+                }
+                delay={200}
+                duration={240}
+                easing={[Function]}
                 focusable={true}
-                forwardedRef={[Function]}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -5845,23 +6039,20 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 onStartShouldSetResponder={[Function]}
                 status="cette année"
                 style={
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 4,
-                    "borderWidth": 1,
-                    "marginHorizontal": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                    "transform": [
-                      {
-                        "scale": 0.95,
-                      },
-                    ],
-                  }
+                  [
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949D",
+                      "borderRadius": 4,
+                      "borderWidth": 1,
+                      "marginHorizontal": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                    },
+                  ]
                 }
               >
                 <View>
@@ -5992,20 +6183,37 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
     </View>
   </RCTScrollView>,
   <View
-    collapsable={false}
-    forwardedRef={[Function]}
-    style={
+    animation={
       {
-        "backgroundColor": "#ffffff",
-        "marginHorizontal": 24,
-        "opacity": 0,
-        "paddingVertical": 24,
-        "transform": [
-          {
-            "scale": 0.95,
-          },
-        ],
+        "from": {
+          "opacity": 0,
+          "transform": [
+            {
+              "scale": 0.95,
+            },
+          ],
+        },
+        "to": {
+          "opacity": 1,
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        },
       }
+    }
+    delay={300}
+    duration={240}
+    easing={[Function]}
+    style={
+      [
+        {
+          "backgroundColor": "#ffffff",
+          "marginHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
     }
   >
     <View
@@ -6029,7 +6237,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -6039,18 +6246,26 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "borderRadius": 24,
-          "justifyContent": "center",
-          "opacity": 1,
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Créer un compte"
     >
@@ -6126,7 +6341,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -6136,21 +6350,31 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "minHeight": 40,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Plus tard"
     >

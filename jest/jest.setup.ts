@@ -71,3 +71,9 @@ jest.mock('@shopify/flash-list', () => {
     FlashList: MockFlashList,
   }
 })
+
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})

@@ -52,7 +52,6 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -62,20 +61,28 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "borderRadius": 7,
-        "flexDirection": "row",
-        "justifyContent": "flex-start",
-        "marginBottom": 1,
-        "marginLeft": 1,
-        "marginRight": 1,
-        "marginTop": 1,
-        "minHeight": 72,
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderRadius": 7,
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "marginBottom": 1,
+            "marginLeft": 1,
+            "marginRight": 1,
+            "marginTop": 1,
+            "minHeight": 72,
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="Visité un musée, un monument, une exposition..."
   >
@@ -194,7 +201,6 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -204,20 +210,28 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "borderRadius": 7,
-        "flexDirection": "row",
-        "justifyContent": "flex-start",
-        "marginBottom": 1,
-        "marginLeft": 1,
-        "marginRight": 1,
-        "marginTop": 1,
-        "minHeight": 72,
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderRadius": 7,
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+            "marginBottom": 1,
+            "marginLeft": 1,
+            "marginRight": 1,
+            "marginTop": 1,
+            "minHeight": 72,
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="Visité un musée, un monument, une exposition..."
   >

@@ -43,9 +43,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
-    forwardedRef={[Function]}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -54,27 +52,33 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        {
+          "backgroundColor": "black",
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        [
+          {
+            "backgroundColor": "black",
+            "height": 1334,
+            "width": 750,
+          },
+        ],
+      ]
     }
+    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
     accessibilityRole="none"
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
-    forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[MockFunction]}
     onModalHide={[Function]}
@@ -88,22 +92,36 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "center",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
+      [
+        {},
+        [
           {
-            "translateY": 1334,
+            "margin": 37.5,
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
           },
+          {
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          [
+            {
+              "alignItems": "center",
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": "auto",
+            },
+            {
+              "margin": "auto",
+            },
+          ],
         ],
-      }
+      ]
     }
     supportedOrientations={
       [
@@ -112,6 +130,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
       ]
     }
     swipeThreshold={100}
+    useNativeDriver={false}
   >
     <View
       height={428}
@@ -240,7 +259,6 @@ pour réserver cette offre
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -250,14 +268,22 @@ pour réserver cette offre
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Fermer la modale"
           >
@@ -410,7 +436,6 @@ pour réserver cette offre
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -420,22 +445,31 @@ pour réserver cette offre
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#eb0055",
+                        "borderRadius": 24,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "maxWidth": 500,
+                        "minHeight": 40,
+                        "paddingBottom": 2,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Aller vers la section profil"
               >
@@ -520,9 +554,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user turne
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
-    forwardedRef={[Function]}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -531,27 +563,33 @@ exports[`<FinishSubscriptionModal /> should display correct body when user turne
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        {
+          "backgroundColor": "black",
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        [
+          {
+            "backgroundColor": "black",
+            "height": 1334,
+            "width": 750,
+          },
+        ],
+      ]
     }
+    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
     accessibilityRole="none"
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
-    forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[MockFunction]}
     onModalHide={[Function]}
@@ -565,22 +603,36 @@ exports[`<FinishSubscriptionModal /> should display correct body when user turne
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "center",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
+      [
+        {},
+        [
           {
-            "translateY": 1334,
+            "margin": 37.5,
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
           },
+          {
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          [
+            {
+              "alignItems": "center",
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": "auto",
+            },
+            {
+              "margin": "auto",
+            },
+          ],
         ],
-      }
+      ]
     }
     supportedOrientations={
       [
@@ -589,6 +641,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user turne
       ]
     }
     swipeThreshold={100}
+    useNativeDriver={false}
   >
     <View
       height={428}
@@ -717,7 +770,6 @@ pour réserver cette offre
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -727,14 +779,22 @@ pour réserver cette offre
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Fermer la modale"
           >
@@ -911,7 +971,6 @@ pour réserver cette offre
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -921,22 +980,31 @@ pour réserver cette offre
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#eb0055",
+                        "borderRadius": 24,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "maxWidth": 500,
+                        "minHeight": 40,
+                        "paddingBottom": 2,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Aller vers la section profil"
               >
@@ -1021,9 +1089,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
-    forwardedRef={[Function]}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -1032,27 +1098,33 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        {
+          "backgroundColor": "black",
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        [
+          {
+            "backgroundColor": "black",
+            "height": 1334,
+            "width": 750,
+          },
+        ],
+      ]
     }
+    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
     accessibilityRole="none"
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
-    forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[MockFunction]}
     onModalHide={[Function]}
@@ -1066,22 +1138,36 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "center",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
+      [
+        {},
+        [
           {
-            "translateY": 1334,
+            "margin": 37.5,
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
           },
+          {
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          [
+            {
+              "alignItems": "center",
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": "auto",
+            },
+            {
+              "margin": "auto",
+            },
+          ],
         ],
-      }
+      ]
     }
     supportedOrientations={
       [
@@ -1090,6 +1176,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
       ]
     }
     swipeThreshold={100}
+    useNativeDriver={false}
   >
     <View
       height={428}
@@ -1218,7 +1305,6 @@ pour réserver cette offre
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1228,14 +1314,22 @@ pour réserver cette offre
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Fermer la modale"
           >
@@ -1388,7 +1482,6 @@ pour réserver cette offre
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1398,22 +1491,31 @@ pour réserver cette offre
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#eb0055",
+                        "borderRadius": 24,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "maxWidth": 500,
+                        "minHeight": 40,
+                        "paddingBottom": 2,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Aller vers la section profil"
               >
@@ -1498,9 +1600,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
-    forwardedRef={[Function]}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -1509,27 +1609,33 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        {
+          "backgroundColor": "black",
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        [
+          {
+            "backgroundColor": "black",
+            "height": 1334,
+            "width": 750,
+          },
+        ],
+      ]
     }
+    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
     accessibilityRole="none"
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
-    forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[MockFunction]}
     onModalHide={[Function]}
@@ -1543,22 +1649,36 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "center",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
+      [
+        {},
+        [
           {
-            "translateY": 1334,
+            "margin": 37.5,
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
           },
+          {
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          [
+            {
+              "alignItems": "center",
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": "auto",
+            },
+            {
+              "margin": "auto",
+            },
+          ],
         ],
-      }
+      ]
     }
     supportedOrientations={
       [
@@ -1567,6 +1687,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
       ]
     }
     swipeThreshold={100}
+    useNativeDriver={false}
   >
     <View
       height={428}
@@ -1695,7 +1816,6 @@ pour réserver cette offre
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1705,14 +1825,22 @@ pour réserver cette offre
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Fermer la modale"
           >
@@ -1835,7 +1963,6 @@ pour réserver cette offre
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1845,22 +1972,31 @@ pour réserver cette offre
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#eb0055",
+                        "borderRadius": 24,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "maxWidth": 500,
+                        "minHeight": 40,
+                        "paddingBottom": 2,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Aller vers la section profil"
               >

@@ -447,7 +447,6 @@ exports[`VenuesModule component should render correctly 1`] = `
         externalScrollView={[Function]}
         finalRenderAheadOffset={187.5}
         forceNonDeterministicRendering={true}
-        getItemLayout={[Function]}
         horizontal={true}
         initialOffset={0}
         initialRenderIndex={0}
@@ -736,7 +735,6 @@ exports[`VenuesModule component should render correctly 1`] = `
               ],
               "drawDistance": 187.5,
               "estimatedItemSize": 252,
-              "getItemLayout": [Function],
               "horizontal": true,
               "keyExtractor": [Function],
               "numColumns": 1,
@@ -910,7 +908,6 @@ exports[`VenuesModule component should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -920,14 +917,23 @@ exports[`VenuesModule component should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "borderRadius": 8,
-                          "marginVertical": 4,
-                          "maxHeight": 240,
-                          "opacity": 1,
-                          "userSelect": "auto",
-                          "width": 252,
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                            {
+                              "borderRadius": 8,
+                              "marginVertical": 4,
+                              "maxHeight": 240,
+                              "width": 252,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Lieu Le Petit Rintintin 1 du type Cinéma - Salle de projections, "
                     >
@@ -1144,7 +1150,6 @@ exports[`VenuesModule component should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -1154,14 +1159,23 @@ exports[`VenuesModule component should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "borderRadius": 8,
-                          "marginVertical": 4,
-                          "maxHeight": 240,
-                          "opacity": 1,
-                          "userSelect": "auto",
-                          "width": 252,
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                            {
+                              "borderRadius": 8,
+                              "marginVertical": 4,
+                              "maxHeight": 240,
+                              "width": 252,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Lieu Le Petit Rintintin 2 du type Cinéma - Salle de projections, "
                     >
@@ -1378,7 +1392,6 @@ exports[`VenuesModule component should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -1388,14 +1401,23 @@ exports[`VenuesModule component should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "borderRadius": 8,
-                          "marginVertical": 4,
-                          "maxHeight": 240,
-                          "opacity": 1,
-                          "userSelect": "auto",
-                          "width": 252,
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                            {
+                              "borderRadius": 8,
+                              "marginVertical": 4,
+                              "maxHeight": 240,
+                              "width": 252,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Lieu Le Petit Rintintin 3 du type Cinéma - Salle de projections, "
                     >
@@ -1612,7 +1634,6 @@ exports[`VenuesModule component should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -1622,14 +1643,23 @@ exports[`VenuesModule component should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "borderRadius": 8,
-                          "marginVertical": 4,
-                          "maxHeight": 240,
-                          "opacity": 1,
-                          "userSelect": "auto",
-                          "width": 252,
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {},
+                            {
+                              "borderRadius": 8,
+                              "marginVertical": 4,
+                              "maxHeight": 240,
+                              "width": 252,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Lieu Le Petit Rintintin 4 du type Cinéma - Salle de projections, "
                     >
@@ -1861,7 +1891,6 @@ exports[`VenuesModule component should render correctly 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -1871,14 +1900,23 @@ exports[`VenuesModule component should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "borderRadius": 8,
-                      "marginVertical": 4,
-                      "maxHeight": 240,
-                      "opacity": 1,
-                      "userSelect": "auto",
-                      "width": 252,
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {
+                          "borderRadius": 8,
+                          "marginVertical": 4,
+                          "maxHeight": 240,
+                          "width": 252,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="Lieu Le Petit Rintintin 2 du type Cinéma - Salle de projections, "
                 >

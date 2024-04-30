@@ -45,9 +45,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
-    forwardedRef={[Function]}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -56,27 +54,33 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0.7,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        {
+          "backgroundColor": "black",
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        [
+          {
+            "backgroundColor": "black",
+            "height": 1334,
+            "width": 750,
+          },
+        ],
+      ]
     }
+    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
     accessibilityRole="none"
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
-    forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[Function]}
     onModalHide={[Function]}
@@ -103,22 +107,39 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "center",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
+      [
+        {
+          "left": 0,
+          "top": 0,
+        },
+        [
           {
-            "translateY": 0,
+            "margin": 37.5,
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
           },
+          {
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          [
+            {
+              "alignItems": "center",
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": "auto",
+            },
+            {
+              "margin": "auto",
+            },
+          ],
         ],
-      }
+      ]
     }
     supportedOrientations={
       [
@@ -128,6 +149,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
     }
     swipeDirection="down"
     swipeThreshold={100}
+    useNativeDriver={false}
   >
     <View
       desktopMaxHeight={1000.5}
@@ -450,7 +472,6 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 }
               }
               accessible={false}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -460,18 +481,27 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "flex-start",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#CBCDD2",
-                  "borderRadius": 8,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "height": 140,
-                  "opacity": 1,
-                  "overflow": "hidden",
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                    {
+                      "alignItems": "flex-start",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 8,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "height": 140,
+                      "overflow": "hidden",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
             >
               <View
@@ -670,7 +700,6 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -680,19 +709,27 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "backgroundColor": "#ffffff",
-              "borderRadius": 40,
-              "opacity": 1,
-              "paddingBottom": 10,
-              "paddingLeft": 10,
-              "paddingRight": 10,
-              "paddingTop": 10,
-              "position": "absolute",
-              "right": 16,
-              "top": 16,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "backgroundColor": "#ffffff",
+                  "borderRadius": 40,
+                  "paddingBottom": 10,
+                  "paddingLeft": 10,
+                  "paddingRight": 10,
+                  "paddingTop": 10,
+                  "position": "absolute",
+                  "right": 16,
+                  "top": 16,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Fermer la modale vidéo"
         >

@@ -92,7 +92,6 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -102,15 +101,23 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -305,7 +312,6 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                   }
                 }
                 accessible={false}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -315,10 +321,17 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="IdentificationForkButton"
               >
@@ -462,7 +475,6 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -472,24 +484,34 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "borderRadius": 0,
-                      "borderWidth": 0,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "marginTop": 0,
-                      "maxWidth": 500,
-                      "minHeight": 20,
-                      "opacity": 1,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "userSelect": "auto",
-                      "width": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "borderRadius": 0,
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "justifyContent": "center",
+                          "marginTop": 0,
+                          "maxWidth": 500,
+                          "minHeight": 20,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "width": "auto",
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="C’est quoi ÉduConnect ?"
                 >
@@ -639,7 +661,6 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                   }
                 }
                 accessible={false}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -649,10 +670,17 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="IdentificationForkButton"
               >
@@ -850,7 +878,6 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -860,24 +887,34 @@ exports[`<IdentificationFork /> should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "transparent",
-                        "borderRadius": 0,
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "marginTop": 0,
-                        "maxWidth": 500,
-                        "minHeight": 20,
-                        "opacity": 1,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                        "userSelect": "auto",
-                        "width": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "alignItems": "center",
+                            "borderRadius": 0,
+                            "borderWidth": 0,
+                            "flexDirection": "row",
+                            "justifyContent": "flex-start",
+                            "marginTop": 0,
+                            "maxWidth": 500,
+                            "minHeight": 20,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "width": "auto",
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Voir la charte des données personnelles"
                   >

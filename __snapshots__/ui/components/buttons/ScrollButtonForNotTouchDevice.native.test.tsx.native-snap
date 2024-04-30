@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ScrollButtonForNotTouchDevice /> should render correctly on left direction 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      [
+        {
+          "userSelect": "auto",
+        },
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderColor": "#CBCDD2",
+          "borderRadius": 20,
+          "borderWidth": 1,
+          "bottom": "auto",
+          "height": 40,
+          "justifyContent": "center",
+          "left": 8,
+          "marginBottom": "auto",
+          "marginLeft": "auto",
+          "marginRight": "auto",
+          "marginTop": "auto",
+          "position": "absolute",
+          "right": "auto",
+          "top": 35,
+          "width": 40,
+          "zIndex": 1,
+        },
+      ],
+      {
+        "opacity": 1,
+      },
+    ]
+  }
+/>
+`;
+
+exports[`<ScrollButtonForNotTouchDevice /> should render correctly on right direction 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      [
+        {
+          "userSelect": "auto",
+        },
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderColor": "#CBCDD2",
+          "borderRadius": 20,
+          "borderWidth": 1,
+          "bottom": "auto",
+          "height": 40,
+          "justifyContent": "center",
+          "left": "auto",
+          "marginBottom": "auto",
+          "marginLeft": "auto",
+          "marginRight": "auto",
+          "marginTop": "auto",
+          "position": "absolute",
+          "right": 8,
+          "top": 35,
+          "width": 40,
+          "zIndex": 1,
+        },
+      ],
+      {
+        "opacity": 1,
+      },
+    ]
+  }
+/>
+`;
+
+exports[`<ScrollButtonForNotTouchDevice /> should render correctly when no top given 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      [
+        {
+          "userSelect": "auto",
+        },
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderColor": "#CBCDD2",
+          "borderRadius": 20,
+          "borderWidth": 1,
+          "bottom": 0,
+          "height": 40,
+          "justifyContent": "center",
+          "left": "auto",
+          "marginBottom": "auto",
+          "marginLeft": "auto",
+          "marginRight": "auto",
+          "marginTop": "auto",
+          "position": "absolute",
+          "right": 8,
+          "top": 0,
+          "width": 40,
+          "zIndex": 1,
+        },
+      ],
+      {
+        "opacity": 1,
+      },
+    ]
+  }
+/>
+`;

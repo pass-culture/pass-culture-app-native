@@ -20,7 +20,6 @@ exports[`AutocompleteVenueItem component should render AutocompleteVenueItem 1`]
     }
   }
   accessible={true}
-  collapsable={false}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -30,12 +29,18 @@ exports[`AutocompleteVenueItem component should render AutocompleteVenueItem 1`]
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    {
-      "alignItems": "center",
-      "flexDirection": "row",
-      "opacity": 1,
-      "paddingBottom": 16,
-    }
+    [
+      [
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingBottom": 16,
+        },
+      ],
+      {
+        "opacity": 1,
+      },
+    ]
   }
   testID="autocompleteVenueItem_9898"
 >

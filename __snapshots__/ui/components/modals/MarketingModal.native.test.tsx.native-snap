@@ -29,7 +29,6 @@ exports[`MarketingModal should render correctly 1`] = `
       }
     }
     accessible={false}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -39,17 +38,25 @@ exports[`MarketingModal should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "#00000080",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "height": "100%",
-        "justifyContent": "flex-end",
-        "opacity": 1,
-        "position": "absolute",
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "backgroundColor": "#00000080",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "justifyContent": "flex-end",
+            "position": "absolute",
+            "width": "100%",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="clickaway-area"
   />

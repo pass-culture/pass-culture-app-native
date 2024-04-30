@@ -182,23 +182,26 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
           <View
             backgroundColor="#870087"
             barWidth={0}
-            collapsable={false}
-            forwardedRef={[Function]}
+            duration={1000}
+            easing="ease-in-out"
             isAnimated={true}
             onLayout={[Function]}
             progress={1}
             style={
-              {
-                "backgroundColor": "#870087",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "left": 0,
-                "opacity": 0,
-                "position": "relative",
-              }
+              [
+                {
+                  "backgroundColor": "#870087",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "left": 0,
+                  "opacity": 0,
+                  "position": "relative",
+                },
+              ]
             }
             testID="animated-progress-bar"
+            useNativeDriver={true}
           />
         </View>
       </View>
@@ -282,7 +285,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -292,22 +294,31 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="C’est parti !"
       >
@@ -548,23 +559,26 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
           <View
             backgroundColor="#870087"
             barWidth={0}
-            collapsable={false}
-            forwardedRef={[Function]}
+            duration={1000}
+            easing="ease-in-out"
             isAnimated={true}
             onLayout={[Function]}
             progress={1}
             style={
-              {
-                "backgroundColor": "#870087",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "left": 0,
-                "opacity": 0,
-                "position": "relative",
-              }
+              [
+                {
+                  "backgroundColor": "#870087",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "left": 0,
+                  "opacity": 0,
+                  "position": "relative",
+                },
+              ]
             }
             testID="animated-progress-bar"
+            useNativeDriver={true}
           />
         </View>
       </View>
@@ -648,7 +662,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -658,22 +671,31 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="C’est parti !"
       >

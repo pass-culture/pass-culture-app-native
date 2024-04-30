@@ -183,15 +183,46 @@ exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render 
               testID="Catégorie Le plein de cinéma, Le plein de cinéma, Le plein de cinéma, Le plein de cinéma"
             >
               <View
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
                   [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "height": 96,
+                      },
+                    ],
                     {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
+                      "opacity": 1,
                     },
                   ]
                 }
@@ -211,8 +242,155 @@ exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render 
                     ]
                   }
                 >
-                  LE PLEIN DE CINÉMA, LE PLEIN DE CINÉMA, LE PLEIN DE CINÉMA, LE PLEIN DE CINÉMA
-                </Text>
+                  <View
+                    height={96}
+                    width={160}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginBottom": 12,
+                          "marginLeft": 12,
+                          "marginRight": 12,
+                          "marginTop": 12,
+                        },
+                      ]
+                    }
+                  >
+                    Le plein de cinéma, Le plein de cinéma, Le plein de cinéma, Le plein de cinéma
+                  </Text>
+                </BVLinearGradient>
+              </View>
+            </View>
+            <View
+              enableAppV2CategoryBlock={false}
+              style={
+                [
+                  {
+                    "flexBasis": "50%",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "height": 96,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+              >
+                <BVLinearGradient
+                  colors={
+                    [
+                      4293670008,
+                      4290777969,
+                    ]
+                  }
+                  endPoint={
+                    {
+                      "x": 0,
+                      "y": 1,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    {
+                      "x": 0,
+                      "y": 0,
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "borderRadius": 8,
+                        "flexBasis": 0,
+                        "flexDirection": "column-reverse",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={96}
+                    width={160}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      [
+                        {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "marginBottom": 12,
+                          "marginLeft": 12,
+                          "marginRight": 12,
+                          "marginTop": 12,
+                        },
+                      ]
+                    }
+                  >
+                    Toto au cinéma
+                  </Text>
+                </BVLinearGradient>
               </View>
             </View>
           </View>
@@ -288,15 +466,46 @@ exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render 
               testID="Catégorie Toto au cinéma"
             >
               <View
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
                   [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "height": 96,
+                      },
+                    ],
                     {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
+                      "opacity": 1,
                     },
                   ]
                 }
@@ -393,15 +602,46 @@ exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render 
               testID="Catégorie Martine au cinéma"
             >
               <View
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
                 style={
                   [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "height": 96,
+                      },
+                    ],
                     {
-                      "alignItems": "flex-start",
-                      "paddingBottom": 8,
-                      "paddingLeft": 8,
-                      "paddingRight": 8,
-                      "paddingTop": 8,
-                      "width": "100%",
+                      "opacity": 1,
                     },
                   ]
                 }

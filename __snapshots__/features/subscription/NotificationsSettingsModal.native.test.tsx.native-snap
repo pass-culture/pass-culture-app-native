@@ -43,9 +43,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
-    forwardedRef={[Function]}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -54,27 +52,33 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        {
+          "backgroundColor": "black",
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        [
+          {
+            "backgroundColor": "black",
+            "height": 1334,
+            "width": 750,
+          },
+        ],
+      ]
     }
+    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
     accessibilityRole="none"
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
-    forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[Function]}
     onModalHide={[Function]}
@@ -88,22 +92,36 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "center",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
+      [
+        {},
+        [
           {
-            "translateY": 1334,
+            "margin": 37.5,
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
           },
+          {
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          [
+            {
+              "alignItems": "center",
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": "auto",
+            },
+            {
+              "margin": "auto",
+            },
+          ],
         ],
-      }
+      ]
     }
     supportedOrientations={
       [
@@ -112,6 +130,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
       ]
     }
     swipeThreshold={100}
+    useNativeDriver={false}
   >
     <View
       height={428}
@@ -239,7 +258,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -249,14 +267,22 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Ne pas s’abonner"
           >
@@ -472,7 +498,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                         }
                       }
                       accessible={false}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -482,10 +507,16 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "opacity": 1,
-                          "userSelect": "auto",
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Interrupteur Autoriser l’envoi d’e-mails"
                     >
@@ -504,26 +535,29 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                         }
                       >
                         <View
-                          collapsable={false}
                           disabled={false}
                           style={
-                            {
-                              "alignItems": "center",
-                              "aspectRatio": 1,
-                              "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
-                              "height": 28,
-                              "justifyContent": "center",
-                              "marginLeft": 2,
-                              "shadowColor": "#161617",
-                              "shadowOffset": {
-                                "height": 2,
-                                "width": 0,
+                            [
+                              {
+                                "alignItems": "center",
+                                "aspectRatio": 1,
+                                "backgroundColor": "#ffffff",
+                                "borderRadius": 28,
+                                "height": 28,
+                                "justifyContent": "center",
+                                "shadowColor": "#161617",
+                                "shadowOffset": {
+                                  "height": 2,
+                                  "width": 0,
+                                },
+                                "shadowOpacity": 0.2,
+                                "shadowRadius": 2.5,
+                                "width": 28,
                               },
-                              "shadowOpacity": 0.2,
-                              "shadowRadius": 2.5,
-                              "width": 28,
-                            }
+                              {
+                                "marginLeft": 2,
+                              },
+                            ]
                           }
                         />
                       </View>
@@ -677,7 +711,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                         }
                       }
                       accessible={false}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -687,10 +720,16 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "opacity": 1,
-                          "userSelect": "auto",
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Interrupteur Autoriser les notifications"
                     >
@@ -709,26 +748,29 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                         }
                       >
                         <View
-                          collapsable={false}
                           disabled={false}
                           style={
-                            {
-                              "alignItems": "center",
-                              "aspectRatio": 1,
-                              "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
-                              "height": 28,
-                              "justifyContent": "center",
-                              "marginLeft": 2,
-                              "shadowColor": "#161617",
-                              "shadowOffset": {
-                                "height": 2,
-                                "width": 0,
+                            [
+                              {
+                                "alignItems": "center",
+                                "aspectRatio": 1,
+                                "backgroundColor": "#ffffff",
+                                "borderRadius": 28,
+                                "height": 28,
+                                "justifyContent": "center",
+                                "shadowColor": "#161617",
+                                "shadowOffset": {
+                                  "height": 2,
+                                  "width": 0,
+                                },
+                                "shadowOpacity": 0.2,
+                                "shadowRadius": 2.5,
+                                "width": 28,
                               },
-                              "shadowOpacity": 0.2,
-                              "shadowRadius": 2.5,
-                              "width": 28,
-                            }
+                              {
+                                "marginLeft": 2,
+                              },
+                            ]
                           }
                         />
                       </View>
@@ -790,7 +832,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -800,22 +841,31 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#F1F1F4",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#F1F1F4",
+                        "borderRadius": 24,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "maxWidth": 500,
+                        "minHeight": 40,
+                        "paddingBottom": 2,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Valider"
               >
@@ -878,7 +928,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -888,24 +937,34 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "transparent",
-                    "borderRadius": 0,
-                    "borderWidth": 0,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "marginTop": 0,
-                    "maxWidth": 500,
-                    "minHeight": 20,
-                    "opacity": 1,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "userSelect": "auto",
-                    "width": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "borderRadius": 0,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "marginTop": 0,
+                        "maxWidth": 500,
+                        "minHeight": 20,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "width": "auto",
+                      },
+                      {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Tout refuser et ne pas recevoir d’actus"
               >

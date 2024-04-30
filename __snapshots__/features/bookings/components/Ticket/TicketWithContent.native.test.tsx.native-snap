@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TicketWithContent/> should render properly 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "flexDirection": "column",
+        "justifyContent": "center",
+        "shadowColor": "#161617",
+        "shadowOffset": {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 3,
+      },
+    ]
+  }
+  testID="three-shapes-ticket"
+>
+  <View
+    height={48.54368932038835}
+    width={300}
+  >
+    <Text>
+      undefined-SVG-Mock
+    </Text>
+  </View>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderColor": "#F1F1F4",
+          "borderLeftWidth": 2,
+          "borderRightWidth": 2,
+          "maxWidth": "100%",
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
+          "width": 295,
+        },
+      ]
+    }
+    width={295}
+  >
+    <View
+      style={
+        [
+          {
+            "justifyContent": "center",
+            "minHeight": 192,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 20,
+              "lineHeight": 24,
+              "maxWidth": "100%",
+              "paddingHorizontal": 8,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Avez-vous déjà vu ?
+      </Text>
+      <View
+        numberOfSpaces={3}
+        style={
+          [
+            {
+              "height": 12,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "paddingHorizontal": 8,
+              "paddingVertical": 12,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": true,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignSelf": "center",
+                  "marginBottom": 16,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 22,
+                  "lineHeight": 26,
+                },
+              ]
+            }
+          >
+            352UW4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+              },
+            ]
+          }
+          testID="qr-code"
+        >
+          <View
+            height={170}
+            width={170}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    height={48.54368932038835}
+    width={300}
+  >
+    <Text>
+      undefined-SVG-Mock
+    </Text>
+  </View>
+</View>
+`;

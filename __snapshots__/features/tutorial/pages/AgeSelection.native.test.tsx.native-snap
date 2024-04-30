@@ -67,7 +67,6 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -77,15 +76,23 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Revenir en arrière"
       >
@@ -238,7 +245,6 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -248,10 +254,17 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="j’ai 15 ans"
             >
@@ -392,7 +405,6 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -402,10 +414,17 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="j’ai 16 ans"
             >
@@ -546,7 +565,6 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -556,10 +574,17 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="j’ai 17 ans"
             >
@@ -700,7 +725,6 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -710,10 +734,17 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="j’ai 18 ans"
             >
@@ -854,7 +885,6 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -864,10 +894,17 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="j’ai moins de 15 ans ou plus de 18 ans"
             >
@@ -1053,7 +1090,6 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -1063,15 +1099,23 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Revenir en arrière"
       >
@@ -1224,7 +1268,6 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -1234,10 +1277,17 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="à 15 ans"
             >
@@ -1378,7 +1428,6 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -1388,10 +1437,17 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="à 16 ans"
             >
@@ -1532,7 +1588,6 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -1542,10 +1597,17 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="à 17 ans"
             >
@@ -1686,7 +1748,6 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -1696,10 +1757,17 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="à 18 ans"
             >
@@ -1840,7 +1908,6 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -1850,10 +1917,17 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="à moins de 15 ans ou plus de 18 ans"
             >

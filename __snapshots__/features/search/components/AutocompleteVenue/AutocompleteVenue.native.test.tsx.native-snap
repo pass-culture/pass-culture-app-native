@@ -57,7 +57,6 @@ exports[`AutocompleteVenue component With venue hits should render AutocompleteV
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -67,12 +66,18 @@ exports[`AutocompleteVenue component With venue hits should render AutocompleteV
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "opacity": 1,
-            "paddingBottom": 16,
-          }
+          [
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "paddingBottom": 16,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="autocompleteVenueItem_9898"
       >
@@ -182,7 +187,6 @@ exports[`AutocompleteVenue component With venue hits should render AutocompleteV
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -192,12 +196,18 @@ exports[`AutocompleteVenue component With venue hits should render AutocompleteV
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "opacity": 1,
-            "paddingBottom": 16,
-          }
+          [
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "paddingBottom": 16,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="autocompleteVenueItem_9495"
       >

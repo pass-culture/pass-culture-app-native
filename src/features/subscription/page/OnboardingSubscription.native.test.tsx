@@ -67,9 +67,17 @@ describe('OnboardingSubscription', () => {
   it('should check theme when user presses a category button', async () => {
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
+<<<<<<< HEAD
     fireEvent.press(await screen.findByLabelText('Activités créatives'))
+=======
+    await act(async () => fireEvent.press(screen.getByLabelText('Activités créatives')))
+>>>>>>> efdc4e4dc (fix: fix tests not related to animations)
 
-    expect(screen.getByLabelText('Activités créatives')).toHaveAccessibilityState({ checked: true })
+    await waitFor(() => {
+      expect(screen.getByLabelText('Activités créatives')).toHaveAccessibilityState({
+        checked: true,
+      })
+    })
   })
 
   it('should precheck themes when user has already subscribed to some', async () => {
@@ -99,7 +107,7 @@ describe('OnboardingSubscription', () => {
 
     await act(async () => fireEvent.press(screen.getByLabelText('Activités créatives')))
 
-    fireEvent.press(screen.getByText('Suivre la sélection'))
+    await act(async () => fireEvent.press(screen.getByText('Suivre la sélection')))
 
     await waitFor(() => {
       expect(postProfileSpy).toHaveBeenCalledWith({

@@ -56,7 +56,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -66,20 +65,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Concerts & festivals"
       >
@@ -153,7 +160,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -163,20 +169,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Cinéma, films et séries"
       >
@@ -250,7 +264,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -260,20 +273,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Livres"
       >
@@ -347,7 +368,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -357,20 +377,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="CD, vinyles, musique en ligne"
       >
@@ -444,7 +472,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -454,20 +481,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Arts & loisirs créatifs"
       >
@@ -541,7 +576,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -551,20 +585,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Spectacles"
       >
@@ -638,7 +680,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -648,20 +689,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Musées & visites culturelles"
       >
@@ -735,7 +784,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -745,20 +793,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Jeux & jeux vidéos"
       >
@@ -832,7 +888,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -842,20 +897,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Instruments de musique"
       >
@@ -929,7 +992,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -939,20 +1001,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Médias & presse"
       >
@@ -1026,7 +1096,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -1036,20 +1105,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Cartes jeunes"
       >
@@ -1123,7 +1200,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -1133,20 +1209,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Conférences & rencontres"
       >
@@ -1220,7 +1304,6 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -1230,20 +1313,28 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Évènements en ligne"
       >

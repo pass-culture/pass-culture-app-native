@@ -57,7 +57,6 @@ exports[`Profile component should render correctly 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -67,22 +66,32 @@ exports[`Profile component should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 32,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 32,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {
+                  "backgroundColor": "transparent",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="CheatMenu"
         >
@@ -286,7 +295,6 @@ exports[`Profile component should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -296,10 +304,17 @@ exports[`Profile component should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Informations personnelles"
               >
@@ -420,7 +435,6 @@ exports[`Profile component should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -430,10 +444,17 @@ exports[`Profile component should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Notifications"
               >
@@ -677,7 +698,6 @@ exports[`Profile component should render correctly 1`] = `
                         }
                       }
                       accessible={false}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -687,10 +707,16 @@ exports[`Profile component should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "opacity": 1,
-                          "userSelect": "auto",
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Interrupteur Activer ma géolocalisation"
                     >
@@ -709,26 +735,29 @@ exports[`Profile component should render correctly 1`] = `
                         }
                       >
                         <View
-                          collapsable={false}
                           disabled={false}
                           style={
-                            {
-                              "alignItems": "center",
-                              "aspectRatio": 1,
-                              "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
-                              "height": 28,
-                              "justifyContent": "center",
-                              "marginLeft": 26,
-                              "shadowColor": "#161617",
-                              "shadowOffset": {
-                                "height": 2,
-                                "width": 0,
+                            [
+                              {
+                                "alignItems": "center",
+                                "aspectRatio": 1,
+                                "backgroundColor": "#ffffff",
+                                "borderRadius": 28,
+                                "height": 28,
+                                "justifyContent": "center",
+                                "shadowColor": "#161617",
+                                "shadowOffset": {
+                                  "height": 2,
+                                  "width": 0,
+                                },
+                                "shadowOpacity": 0.2,
+                                "shadowRadius": 2.5,
+                                "width": 28,
                               },
-                              "shadowOpacity": 0.2,
-                              "shadowRadius": 2.5,
-                              "width": 28,
-                            }
+                              {
+                                "marginLeft": 26,
+                              },
+                            ]
                           }
                         >
                           <View
@@ -845,7 +874,6 @@ exports[`Profile component should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -855,10 +883,17 @@ exports[`Profile component should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Comment ça marche ?"
               >
@@ -977,7 +1012,6 @@ exports[`Profile component should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -987,10 +1021,17 @@ exports[`Profile component should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Nouvelle fenêtre : Centre d’aide"
               >
@@ -1148,7 +1189,6 @@ exports[`Profile component should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1158,10 +1198,17 @@ exports[`Profile component should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Accessibilité"
               >
@@ -1281,7 +1328,6 @@ exports[`Profile component should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1291,10 +1337,17 @@ exports[`Profile component should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Informations légales"
               >
@@ -1413,7 +1466,6 @@ exports[`Profile component should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1423,10 +1475,17 @@ exports[`Profile component should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Confidentialité"
               >
@@ -1589,7 +1648,6 @@ exports[`Profile component should render correctly 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1599,10 +1657,16 @@ exports[`Profile component should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
           >
             <View
@@ -1868,7 +1932,6 @@ exports[`Profile component should render correctly 1`] = `
                       }
                     }
                     accessible={false}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1878,10 +1941,17 @@ exports[`Profile component should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {},
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                   >
                     <View
@@ -1975,7 +2045,6 @@ exports[`Profile component should render correctly 1`] = `
                       }
                     }
                     accessible={false}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -1985,10 +2054,17 @@ exports[`Profile component should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {},
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                   >
                     <View
@@ -2082,7 +2158,6 @@ exports[`Profile component should render correctly 1`] = `
                       }
                     }
                     accessible={false}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -2092,10 +2167,17 @@ exports[`Profile component should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {},
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                   >
                     <View
@@ -2189,7 +2271,6 @@ exports[`Profile component should render correctly 1`] = `
                       }
                     }
                     accessible={false}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -2199,10 +2280,17 @@ exports[`Profile component should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {},
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                   >
                     <View
@@ -2331,7 +2419,6 @@ exports[`Profile component should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -2341,10 +2428,16 @@ exports[`Profile component should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Déconnexion"
           >

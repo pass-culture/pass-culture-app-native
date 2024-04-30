@@ -92,7 +92,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -102,15 +101,23 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -404,7 +411,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   }
                 }
                 accessible={false}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -414,10 +420,17 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="HeroButtonList"
               >
@@ -649,7 +662,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -659,10 +671,17 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {},
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Je n’ai pas ma pièce d’identité originale avec moi"
                   >
@@ -787,7 +806,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -797,10 +815,17 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {},
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Ma pièce d’identité est expirée ou perdue"
                   >

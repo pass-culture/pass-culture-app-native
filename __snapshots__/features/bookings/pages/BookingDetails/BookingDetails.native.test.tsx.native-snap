@@ -60,6 +60,46 @@ exports[`BookingDetails should render correctly 1`] = `
             width={960}
           />
         </View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+        />
       </View>
       <View
         numberOfSpaces={32}
@@ -302,7 +342,6 @@ exports[`BookingDetails should render correctly 1`] = `
                           }
                         }
                         accessible={false}
-                        collapsable={false}
                         focusable={false}
                         onClick={[Function]}
                         onResponderGrant={[Function]}
@@ -312,12 +351,20 @@ exports[`BookingDetails should render correctly 1`] = `
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          {
-                            "alignSelf": "center",
-                            "marginBottom": 16,
-                            "opacity": 1,
-                            "userSelect": "auto",
-                          }
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "alignSelf": "center",
+                                "marginBottom": 16,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
                         }
                       >
                         <Text
@@ -356,7 +403,6 @@ exports[`BookingDetails should render correctly 1`] = `
                           }
                         }
                         accessible={true}
-                        collapsable={false}
                         focusable={true}
                         onClick={[Function]}
                         onResponderGrant={[Function]}
@@ -366,18 +412,26 @@ exports[`BookingDetails should render correctly 1`] = `
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          {
-                            "alignItems": "center",
-                            "borderRadius": 24,
-                            "justifyContent": "center",
-                            "opacity": 1,
-                            "overflow": "hidden",
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "userSelect": "auto",
-                          }
+                          [
+                            [
+                              {
+                                "userSelect": "auto",
+                              },
+                              {
+                                "alignItems": "center",
+                                "borderRadius": 24,
+                                "justifyContent": "center",
+                                "overflow": "hidden",
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                              },
+                            ],
+                            {
+                              "opacity": 1,
+                            },
+                          ]
                         }
                         testID="Accéder à l’offre en ligne"
                       >
@@ -549,7 +603,6 @@ exports[`BookingDetails should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -559,10 +612,16 @@ exports[`BookingDetails should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Date : Le 15 mars 2021 à 21h00"
             >
@@ -666,7 +725,6 @@ exports[`BookingDetails should render correctly 1`] = `
                 }
               }
               accessible={false}
-              collapsable={false}
               focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -676,10 +734,16 @@ exports[`BookingDetails should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
             >
               <View
@@ -868,7 +932,6 @@ exports[`BookingDetails should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -878,24 +941,34 @@ exports[`BookingDetails should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 0,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "marginTop": 0,
-                  "maxWidth": 500,
-                  "minHeight": 20,
-                  "opacity": 1,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "userSelect": "auto",
-                  "width": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 0,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "marginTop": 0,
+                      "maxWidth": 500,
+                      "minHeight": 20,
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                      "width": "auto",
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Voir l’itinéraire"
             >
@@ -960,6 +1033,192 @@ exports[`BookingDetails should render correctly 1`] = `
               </View>
             </View>
           </View>
+          <View
+            numberOfSpaces={6}
+            style={
+              [
+                {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <View
+            backgroundColor="#f3ecff"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#f3ecff",
+                  "borderRadius": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 16,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+                textColor="#161617"
+              >
+                Est-ce qu’il te manque des infos ? Dis-nous ce que tu en penses via notre court questionnaire.
+              </Text>
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Donner mon avis"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "borderRadius": 0,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginTop": 0,
+                        "maxWidth": 500,
+                        "minHeight": 20,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "width": "auto",
+                      },
+                      {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Donner mon avis"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityLabel="Nouvelle fenêtre"
+                      height={16}
+                      testID="button-icon-left"
+                      width={16}
+                    >
+                      <Text>
+                        button-icon-left-SVG-Mock
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        [
+                          {
+                            "width": 8,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Donner mon avis
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
         </View>
         <View
           numberOfSpaces={14}
@@ -1000,7 +1259,6 @@ exports[`BookingDetails should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1010,21 +1268,30 @@ exports[`BookingDetails should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#eb0055",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": "100%",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#eb0055",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {},
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Voir le détail de l’offre"
           >
@@ -1108,21 +1375,25 @@ exports[`BookingDetails should render correctly 1`] = `
     </View>
   </RCTScrollView>
   <View
-    collapsable={false}
     height={80}
     style={
-      {
-        "backdropFilter": "blur(0px)",
-        "backgroundColor": "rgba(255, 255, 255, 0)",
-        "borderBottomColor": "#F1F1F4",
-        "borderBottomWidth": 0,
-        "height": 80,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "zIndex": 1,
-      }
+      [
+        {
+          "borderBottomColor": "#F1F1F4",
+          "borderBottomWidth": 1,
+          "height": 80,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 1,
+        },
+        {
+          "backdropFilter": "blur(0px)",
+          "backgroundColor": "rgba(255, 255, 255, 0)",
+          "borderBottomWidth": 0,
+        },
+      ]
     }
   >
     <View
@@ -1137,18 +1408,21 @@ exports[`BookingDetails should render correctly 1`] = `
       }
     />
     <View
-      collapsable={false}
       height={80}
       style={
-        {
-          "height": 80,
-          "left": 0,
-          "opacity": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
+        [
+          {
+            "height": 80,
+            "left": 0,
+            "overflow": "hidden",
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          {
+            "opacity": 0,
+          },
+        ]
       }
     >
       <BlurView
@@ -1224,7 +1498,6 @@ exports[`BookingDetails should render correctly 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -1234,30 +1507,43 @@ exports[`BookingDetails should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "borderRadius": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "borderRadius": 40,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Revenir en arrière"
       >
         <View
-          collapsable={false}
           style={
-            {
-              "alignItems": "center",
-              "aspectRatio": 1,
-              "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderColor": "rgba(241, 241, 244, 1)",
-              "borderRadius": 40,
-              "borderStyle": "solid",
-              "borderWidth": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "transform": undefined,
-              "width": 40,
-            }
+            [
+              {
+                "alignItems": "center",
+                "aspectRatio": 1,
+                "backgroundColor": "#ffffff",
+                "borderColor": "#F1F1F4",
+                "borderRadius": 40,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "width": 40,
+              },
+              {
+                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "borderColor": "rgba(241, 241, 244, 1)",
+                "transform": undefined,
+              },
+            ]
           }
           testID="AnimatedHeaderIconRoundContainer"
         >
@@ -1273,12 +1559,15 @@ exports[`BookingDetails should render correctly 1`] = `
             }
           >
             <View
-              collapsable={false}
               style={
-                {
-                  "opacity": 1,
-                  "position": "absolute",
-                }
+                [
+                  {
+                    "position": "absolute",
+                  },
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="initial-icon-container"
             >
@@ -1293,12 +1582,15 @@ exports[`BookingDetails should render correctly 1`] = `
               </View>
             </View>
             <View
-              collapsable={false}
               style={
-                {
-                  "opacity": 0,
-                  "position": "absolute",
-                }
+                [
+                  {
+                    "position": "absolute",
+                  },
+                  {
+                    "opacity": 0,
+                  },
+                ]
               }
               testID="final-icon-container"
             >
@@ -1328,15 +1620,18 @@ exports[`BookingDetails should render correctly 1`] = `
       />
       <Text
         accessibilityHidden={true}
-        collapsable={false}
         numberOfLines={2}
         style={
-          {
-            "color": "#ffffff",
-            "flexShrink": 1,
-            "opacity": 0,
-            "textAlign": "center",
-          }
+          [
+            {
+              "color": "#ffffff",
+              "flexShrink": 1,
+              "textAlign": "center",
+            },
+            {
+              "opacity": 0,
+            },
+          ]
         }
       >
         <Text

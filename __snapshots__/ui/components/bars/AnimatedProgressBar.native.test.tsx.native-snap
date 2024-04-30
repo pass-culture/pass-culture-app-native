@@ -63,23 +63,26 @@ exports[`AnimatedProgressBar should render properly 1`] = `
     <View
       backgroundColor="#eb0055"
       barWidth={0}
-      collapsable={false}
-      forwardedRef={[Function]}
+      duration={1000}
+      easing="ease-in-out"
       isAnimated={false}
       onLayout={[Function]}
       progress={0.5}
       style={
-        {
-          "backgroundColor": "#eb0055",
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-          "left": 0,
-          "opacity": 1,
-          "position": "relative",
-        }
+        [
+          {
+            "backgroundColor": "#eb0055",
+            "flexBasis": 0,
+            "flexGrow": 0.5,
+            "flexShrink": 1,
+            "left": 0,
+            "opacity": 1,
+            "position": "relative",
+          },
+        ]
       }
       testID="animated-progress-bar"
+      useNativeDriver={true}
     />
   </View>
 </View>

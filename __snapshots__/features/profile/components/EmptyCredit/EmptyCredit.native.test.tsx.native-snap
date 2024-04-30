@@ -64,7 +64,6 @@ exports[`<EmptyCredit /> should render correctly for 15 yo 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -74,18 +73,26 @@ exports[`<EmptyCredit /> should render correctly for 15 yo 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "borderRadius": 24,
-        "justifyContent": "center",
-        "opacity": 1,
-        "overflow": "hidden",
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "userSelect": "auto",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "borderRadius": 24,
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="Profite d’offres gratuites"
   >
@@ -206,7 +213,6 @@ exports[`<EmptyCredit /> should render correctly for 16 yo 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -216,18 +222,26 @@ exports[`<EmptyCredit /> should render correctly for 16 yo 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "borderRadius": 24,
-        "justifyContent": "center",
-        "opacity": 1,
-        "overflow": "hidden",
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "userSelect": "auto",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "borderRadius": 24,
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="Profite d’offres gratuites"
   >
@@ -348,7 +362,6 @@ exports[`<EmptyCredit /> should render correctly for 17 yo 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -358,18 +371,26 @@ exports[`<EmptyCredit /> should render correctly for 17 yo 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "borderRadius": 24,
-        "justifyContent": "center",
-        "opacity": 1,
-        "overflow": "hidden",
-        "paddingBottom": 0,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "userSelect": "auto",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "borderRadius": 24,
+            "justifyContent": "center",
+            "overflow": "hidden",
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="Profite d’offres gratuites"
   >

@@ -43,9 +43,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
-    forwardedRef={[Function]}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -54,27 +52,33 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        {
+          "backgroundColor": "black",
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        [
+          {
+            "backgroundColor": "black",
+            "height": 1334,
+            "width": 750,
+          },
+        ],
+      ]
     }
+    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
     accessibilityRole="none"
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
-    forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[Function]}
     onModalHide={[Function]}
@@ -88,22 +92,36 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "center",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
+      [
+        {},
+        [
           {
-            "translateY": 1334,
+            "margin": 37.5,
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
           },
+          {
+            "flex": 1,
+            "justifyContent": "center",
+          },
+          [
+            {
+              "alignItems": "center",
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": "auto",
+            },
+            {
+              "margin": "auto",
+            },
+          ],
         ],
-      }
+      ]
     }
     supportedOrientations={
       [
@@ -112,6 +130,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
       ]
     }
     swipeThreshold={100}
+    useNativeDriver={false}
   >
     <View
       desktopMaxHeight={1000.5}
@@ -255,7 +274,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 hitSlop={8}
                 onClick={[Function]}
@@ -266,14 +284,24 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "height": 40,
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": 40,
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                      },
+                      {
+                        "height": 40,
+                        "width": 40,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Fermer"
               >
@@ -526,7 +554,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       }
                     }
                     accessible={false}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -536,10 +563,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Interrupteur onlyFreeOffers"
                   >
@@ -558,26 +591,29 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       }
                     >
                       <View
-                        collapsable={false}
                         disabled={false}
                         style={
-                          {
-                            "alignItems": "center",
-                            "aspectRatio": 1,
-                            "backgroundColor": "#ffffff",
-                            "borderRadius": 28,
-                            "height": 28,
-                            "justifyContent": "center",
-                            "marginLeft": 2,
-                            "shadowColor": "#161617",
-                            "shadowOffset": {
-                              "height": 2,
-                              "width": 0,
+                          [
+                            {
+                              "alignItems": "center",
+                              "aspectRatio": 1,
+                              "backgroundColor": "#ffffff",
+                              "borderRadius": 28,
+                              "height": 28,
+                              "justifyContent": "center",
+                              "shadowColor": "#161617",
+                              "shadowOffset": {
+                                "height": 2,
+                                "width": 0,
+                              },
+                              "shadowOpacity": 0.2,
+                              "shadowRadius": 2.5,
+                              "width": 28,
                             },
-                            "shadowOpacity": 0.2,
-                            "shadowRadius": 2.5,
-                            "width": 28,
-                          }
+                            {
+                              "marginLeft": 2,
+                            },
+                          ]
                         }
                       />
                     </View>
@@ -727,7 +763,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       }
                     }
                     accessible={false}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -737,10 +772,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Interrupteur limitCreditSearch"
                   >
@@ -759,26 +800,29 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       }
                     >
                       <View
-                        collapsable={false}
                         disabled={false}
                         style={
-                          {
-                            "alignItems": "center",
-                            "aspectRatio": 1,
-                            "backgroundColor": "#ffffff",
-                            "borderRadius": 28,
-                            "height": 28,
-                            "justifyContent": "center",
-                            "marginLeft": 2,
-                            "shadowColor": "#161617",
-                            "shadowOffset": {
-                              "height": 2,
-                              "width": 0,
+                          [
+                            {
+                              "alignItems": "center",
+                              "aspectRatio": 1,
+                              "backgroundColor": "#ffffff",
+                              "borderRadius": 28,
+                              "height": 28,
+                              "justifyContent": "center",
+                              "shadowColor": "#161617",
+                              "shadowOffset": {
+                                "height": 2,
+                                "width": 0,
+                              },
+                              "shadowOpacity": 0.2,
+                              "shadowRadius": 2.5,
+                              "width": 28,
                             },
-                            "shadowOpacity": 0.2,
-                            "shadowRadius": 2.5,
-                            "width": 28,
-                          }
+                            {
+                              "marginLeft": 2,
+                            },
+                          ]
                         }
                       />
                     </View>
@@ -1127,7 +1171,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -1137,23 +1180,34 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "marginRight": 16,
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 2,
+                      "paddingRight": 2,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                      "marginRight": 16,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Réinitialiser"
             >
@@ -1246,7 +1300,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -1256,23 +1309,34 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#eb0055",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 20,
+                      "paddingRight": 20,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {
+                      "flexGrow": 1,
+                      "width": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Rechercher"
             >

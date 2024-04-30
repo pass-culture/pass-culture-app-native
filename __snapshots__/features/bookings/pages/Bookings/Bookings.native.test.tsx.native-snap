@@ -231,6 +231,7 @@ exports[`Bookings should render correctly 1`] = `
     >
       <View>
         <View
+          collapsable={false}
           onLayout={[Function]}
         >
           <Text
@@ -276,7 +277,6 @@ exports[`Bookings should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -286,13 +286,22 @@ exports[`Bookings should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "flexDirection": "row",
-                "marginHorizontal": 24,
-                "opacity": 1,
-                "paddingRight": 40,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {},
+                  {
+                    "flexDirection": "row",
+                    "marginHorizontal": 24,
+                    "paddingRight": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 21h00"
           >
@@ -463,7 +472,6 @@ exports[`Bookings should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -473,30 +481,41 @@ exports[`Bookings should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "borderRadius": 40,
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "borderRadius": 40,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Partager l’offre Avez-vous déjà vu ?"
             >
               <View
-                collapsable={false}
                 style={
-                  {
-                    "alignItems": "center",
-                    "aspectRatio": 1,
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#F1F1F4",
-                    "borderRadius": 40,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "transform": undefined,
-                    "width": 40,
-                  }
+                  [
+                    {
+                      "alignItems": "center",
+                      "aspectRatio": 1,
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#F1F1F4",
+                      "borderRadius": 40,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "height": 40,
+                      "justifyContent": "center",
+                      "width": 40,
+                    },
+                    {
+                      "transform": undefined,
+                    },
+                  ]
                 }
               >
                 <View
@@ -560,7 +579,6 @@ exports[`Bookings should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -570,13 +588,22 @@ exports[`Bookings should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "flexDirection": "row",
-                "marginHorizontal": 24,
-                "opacity": 1,
-                "paddingRight": 40,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {},
+                  {
+                    "flexDirection": "row",
+                    "marginHorizontal": 24,
+                    "paddingRight": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 21h00"
           >
@@ -747,7 +774,6 @@ exports[`Bookings should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -757,30 +783,41 @@ exports[`Bookings should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "borderRadius": 40,
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "borderRadius": 40,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Partager l’offre Avez-vous déjà vu ?"
             >
               <View
-                collapsable={false}
                 style={
-                  {
-                    "alignItems": "center",
-                    "aspectRatio": 1,
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#F1F1F4",
-                    "borderRadius": 40,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "transform": undefined,
-                    "width": 40,
-                  }
+                  [
+                    {
+                      "alignItems": "center",
+                      "aspectRatio": 1,
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#F1F1F4",
+                      "borderRadius": 40,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "height": 40,
+                      "justifyContent": "center",
+                      "width": 40,
+                    },
+                    {
+                      "transform": undefined,
+                    },
+                  ]
                 }
               >
                 <View
@@ -863,7 +900,6 @@ exports[`Bookings should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -873,10 +909,17 @@ exports[`Bookings should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Réservation terminée"
               >

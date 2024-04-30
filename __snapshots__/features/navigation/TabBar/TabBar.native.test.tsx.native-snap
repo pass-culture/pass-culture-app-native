@@ -66,7 +66,6 @@ exports[`TabBar render correctly 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -76,15 +75,24 @@ exports[`TabBar render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "height": 64,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {},
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "height": 64,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Accueil"
     >
@@ -174,7 +182,6 @@ exports[`TabBar render correctly 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -184,15 +191,24 @@ exports[`TabBar render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "height": 64,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {},
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "height": 64,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Rechercher des offres"
     >
@@ -264,7 +280,6 @@ exports[`TabBar render correctly 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -274,15 +289,24 @@ exports[`TabBar render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "height": 64,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {},
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "height": 64,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Mes réservations"
     >
@@ -354,7 +378,6 @@ exports[`TabBar render correctly 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -364,15 +387,24 @@ exports[`TabBar render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "height": 64,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {},
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "height": 64,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Mes favoris"
     >
@@ -444,7 +476,6 @@ exports[`TabBar render correctly 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -454,15 +485,24 @@ exports[`TabBar render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "height": 64,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {},
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "height": 64,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Mon profil"
     >
@@ -603,7 +643,6 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -613,15 +652,24 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "height": 82,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {},
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "height": 82,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Accueil"
     >
@@ -743,7 +791,6 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -753,15 +800,24 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "height": 82,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {},
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "height": 82,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Rechercher des offres"
     >
@@ -843,7 +899,6 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -853,15 +908,24 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "height": 82,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {},
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "height": 82,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Mes réservations"
     >
@@ -943,7 +1007,6 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -953,15 +1016,24 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "height": 82,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {},
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "height": 82,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Mes favoris"
     >
@@ -1043,7 +1115,6 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -1053,15 +1124,24 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "height": 82,
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {},
+            {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "height": 82,
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Mon profil"
     >

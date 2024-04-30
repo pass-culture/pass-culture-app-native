@@ -188,7 +188,6 @@ exports[`NoContentError should render correctly 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -198,24 +197,34 @@ exports[`NoContentError should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderColor": "#ffffff",
-            "borderRadius": 24,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 48,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 48,
+                "paddingBottom": 2,
+                "paddingLeft": 24,
+                "paddingRight": 24,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {
+                "borderColor": "#ffffff",
+                "borderWidth": 2,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Rechercher une offre"
       >

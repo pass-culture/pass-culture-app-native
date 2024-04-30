@@ -20,7 +20,6 @@ exports[`Suggestion should display component correctly 1`] = `
     }
   }
   accessible={false}
-  collapsable={false}
   focusable={false}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -30,10 +29,16 @@ exports[`Suggestion should display component correctly 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    {
-      "opacity": 1,
-      "userSelect": "auto",
-    }
+    [
+      [
+        {
+          "userSelect": "auto",
+        },
+      ],
+      {
+        "opacity": 1,
+      },
+    ]
   }
 >
   <View

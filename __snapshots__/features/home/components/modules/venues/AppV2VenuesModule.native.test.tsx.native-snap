@@ -163,6 +163,7 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
   >
     <View>
       <View
+        collapsable={false}
         onLayout={[Function]}
       >
         <View
@@ -185,7 +186,6 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
             }
           }
           accessible={false}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -195,14 +195,22 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "gap": 8,
-              "justifyContent": "space-between",
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "justifyContent": "space-between",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
         >
           <Text
@@ -265,7 +273,6 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
             }
           }
           accessible={false}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -275,10 +282,17 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
         >
           <View
@@ -411,7 +425,6 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
             }
           }
           accessible={false}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -421,10 +434,17 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
         >
           <View
@@ -557,7 +577,6 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
             }
           }
           accessible={false}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -567,10 +586,17 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
         >
           <View
@@ -703,7 +729,6 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
             }
           }
           accessible={false}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -713,10 +738,17 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
         >
           <View

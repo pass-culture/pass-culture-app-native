@@ -92,7 +92,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -102,15 +101,23 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -190,7 +197,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -200,13 +206,21 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "height": 40,
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
           >
             <Text
@@ -253,18 +267,20 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
       }
     >
       <View
-        collapsable={false}
-        forwardedRef={[Function]}
+        duration={800}
         isFull={false}
         style={
-          {
-            "borderBottomRightRadius": 3,
-            "borderTopRightRadius": 3,
-            "height": "100%",
-            "overflow": "hidden",
-            "width": "80%",
-          }
+          [
+            {
+              "borderBottomRightRadius": 3,
+              "borderTopRightRadius": 3,
+              "height": "100%",
+              "overflow": "hidden",
+              "width": "80%",
+            },
+          ]
         }
+        transition="width"
         width={80}
       >
         <View
@@ -369,7 +385,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -379,14 +394,22 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "cursor": "pointer",
-              "display": "flex",
-              "flexDirection": "row",
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "cursor": "pointer",
+                  "display": "flex",
+                  "flexDirection": "row",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="J’ai lu et j’accepte les conditions générales d’utilisation"
         >
@@ -460,7 +483,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -470,14 +492,22 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "cursor": "pointer",
-              "display": "flex",
-              "flexDirection": "row",
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "cursor": "pointer",
+                  "display": "flex",
+                  "flexDirection": "row",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="J’ai lu la charte des données personnelles"
         >
@@ -579,7 +609,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -589,23 +618,33 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "height": "auto",
-              "justifyContent": "flex-start",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "height": "auto",
+                  "justifyContent": "flex-start",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {
+                  "backgroundColor": "transparent",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Nos conditions générales d’utilisation"
         >
@@ -689,7 +728,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -699,23 +737,33 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "height": "auto",
-              "justifyContent": "flex-start",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "height": "auto",
+                  "justifyContent": "flex-start",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {
+                  "backgroundColor": "transparent",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="La charte des données personnelles"
         >
@@ -809,7 +857,6 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={false}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -819,22 +866,31 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "#F1F1F4",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
         >
@@ -1034,7 +1090,6 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1044,15 +1099,23 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -1132,7 +1195,6 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1142,13 +1204,21 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "height": 40,
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
           >
             <Text
@@ -1195,18 +1265,20 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
       }
     >
       <View
-        collapsable={false}
-        forwardedRef={[Function]}
+        duration={800}
         isFull={false}
         style={
-          {
-            "borderBottomRightRadius": 3,
-            "borderTopRightRadius": 3,
-            "height": "100%",
-            "overflow": "hidden",
-            "width": "60%",
-          }
+          [
+            {
+              "borderBottomRightRadius": 3,
+              "borderTopRightRadius": 3,
+              "height": "100%",
+              "overflow": "hidden",
+              "width": "60%",
+            },
+          ]
         }
+        transition="width"
         width={60}
       >
         <View
@@ -1542,7 +1614,6 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={false}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1552,22 +1623,31 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#F1F1F4",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": "100%",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#F1F1F4",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {},
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Continuer vers l’étape CGU & Données"
           >
@@ -1744,7 +1824,6 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1754,15 +1833,23 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -1850,18 +1937,20 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
       }
     >
       <View
-        collapsable={false}
-        forwardedRef={[Function]}
+        duration={800}
         isFull={false}
         style={
-          {
-            "borderBottomRightRadius": 3,
-            "borderTopRightRadius": 3,
-            "height": "100%",
-            "overflow": "hidden",
-            "width": "20%",
-          }
+          [
+            {
+              "borderBottomRightRadius": 3,
+              "borderTopRightRadius": 3,
+              "height": "100%",
+              "overflow": "hidden",
+              "width": "20%",
+            },
+          ]
         }
+        transition="width"
         width={20}
       >
         <View
@@ -2092,7 +2181,6 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -2102,14 +2190,22 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "cursor": "pointer",
-              "display": "flex",
-              "flexDirection": "row",
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "cursor": "pointer",
+                  "display": "flex",
+                  "flexDirection": "row",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
         >
@@ -2181,7 +2277,6 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={false}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -2191,22 +2286,31 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "#F1F1F4",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Continuer vers l’étape Mot de passe"
         >
@@ -2297,7 +2401,6 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -2307,10 +2410,16 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Se connecter"
           >
@@ -2507,7 +2616,6 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -2517,15 +2625,23 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -2605,7 +2721,6 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -2615,13 +2730,21 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "height": 40,
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "height": 40,
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
           >
             <Text
@@ -2668,18 +2791,20 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
       }
     >
       <View
-        collapsable={false}
-        forwardedRef={[Function]}
+        duration={800}
         isFull={false}
         style={
-          {
-            "borderBottomRightRadius": 3,
-            "borderTopRightRadius": 3,
-            "height": "100%",
-            "overflow": "hidden",
-            "width": "40%",
-          }
+          [
+            {
+              "borderBottomRightRadius": 3,
+              "borderTopRightRadius": 3,
+              "height": "100%",
+              "overflow": "hidden",
+              "width": "40%",
+            },
+          ]
         }
+        transition="width"
         width={40}
       >
         <View
@@ -2908,7 +3033,6 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -2918,11 +3042,19 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "maxWidth": 60,
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "maxWidth": 60,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Afficher le mot de passe"
             >
@@ -3342,7 +3474,6 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={false}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -3352,22 +3483,31 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "#F1F1F4",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Continuer vers l’étape Date de naissance"
         >
