@@ -7,7 +7,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/constant'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
-import { useVenueMapStore } from 'features/venueMap/context/useVenueMapStore'
+import { useVenueMapTypeCode } from 'features/venueMap/context/useVenueMapStore'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
 import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
 import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessionDuration'
@@ -29,7 +29,7 @@ const MAX_VENUE_CHARACTERS = 20
 export const VenueMap: FunctionComponent = () => {
   const { goBack } = useGoBack(...getSearchStackConfig('SearchLanding'))
 
-  const { venueTypeCode } = useVenueMapStore()
+  const venueTypeCode = useVenueMapTypeCode()
   const enableVenueMapTypeFilter = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER)
 
   const headerHeight = useGetHeaderHeight()
