@@ -749,6 +749,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   "display": "flex",
                   "marginBottom": 4,
                   "marginLeft": 4,
+                  "marginRight": 4,
                   "marginTop": 4,
                 },
               ]
@@ -817,86 +818,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 testID="datesHoursButtonLabel"
               >
                 Dates & heures
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityRole="none"
-            style={
-              [
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginRight": 4,
-                  "marginTop": 4,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Accessibilité"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#161617",
-                  "borderRadius": 24,
-                  "borderWidth": 1,
-                  "boxSizing": "border-box",
-                  "flexDirection": "row-reverse",
-                  "height": 32,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "userSelect": "auto",
-                }
-              }
-              testID="Accessibilité"
-            >
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-                testID="lieuxAccessiblesButtonLabel"
-              >
-                Accessibilité
               </Text>
             </View>
           </View>

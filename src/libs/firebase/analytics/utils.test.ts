@@ -3,7 +3,7 @@ import { NativeScrollEvent } from 'react-native'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { LocationFilter, SearchState, SearchView } from 'features/search/types'
+import { LocationFilter, NewSearchView, SearchState } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
 import { buildLocationFilterParam, buildPerformSearchState, isCloseToBottom } from 'libs/analytics'
 
@@ -41,7 +41,7 @@ describe('[Analytics utils]', () => {
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -60,7 +60,7 @@ describe('[Analytics utils]', () => {
           option: DATE_FILTER_OPTIONS.TODAY,
           selectedDate: TODAY.toISOString(),
         }),
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -74,7 +74,7 @@ describe('[Analytics utils]', () => {
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -90,7 +90,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchIsAutocomplete: true,
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -106,7 +106,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchMaxPrice: '30',
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -122,7 +122,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchMinPrice: '10',
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -137,7 +137,7 @@ describe('[Analytics utils]', () => {
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -153,7 +153,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchCategories: JSON.stringify([SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]),
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -168,7 +168,7 @@ describe('[Analytics utils]', () => {
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -184,7 +184,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchGenreTypes: JSON.stringify([{ key: GenreType.MUSIC, name: 'Pop', value: 'Pop' }]),
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -200,7 +200,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchOfferIsDuo: true,
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -216,7 +216,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchOfferIsFree: true,
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -231,7 +231,7 @@ describe('[Analytics utils]', () => {
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -247,7 +247,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchNativeCategories: JSON.stringify([NativeCategoryIdEnumv2.CD]),
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -262,7 +262,7 @@ describe('[Analytics utils]', () => {
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -278,7 +278,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchQuery: 'angele',
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -293,7 +293,7 @@ describe('[Analytics utils]', () => {
 
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -309,7 +309,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchTimeRange: JSON.stringify([18, 22]),
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
 
@@ -325,7 +325,7 @@ describe('[Analytics utils]', () => {
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
         searchIsBasedOnHistory: true,
-        searchView: SearchView.Results,
+        searchView: NewSearchView.Results,
       })
     })
   })

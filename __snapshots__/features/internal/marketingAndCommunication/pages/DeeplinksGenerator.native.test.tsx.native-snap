@@ -903,21 +903,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 />
                 <View
-<<<<<<< HEAD
-                  accessibilityLabel="Search"
-=======
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <View
                   accessibilityLabel="SearchResults"
->>>>>>> d7672b1ac (update web snapshots)
                   accessibilityRole="radio"
                   accessibilityState={
                     {
