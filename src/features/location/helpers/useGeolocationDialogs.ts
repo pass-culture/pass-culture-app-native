@@ -8,11 +8,13 @@ import { LocationMode } from 'libs/location/types'
 type Props = {
   dismissModal: () => void
   shouldOpenDirectlySettings?: boolean
+  shouldDirectlyValidate?: boolean
 } & LocationState
 
 export const useGeolocationDialogs = ({
   dismissModal,
   shouldOpenDirectlySettings,
+  shouldDirectlyValidate,
   ...props
 }: Props) => {
   const {
@@ -27,6 +29,7 @@ export const useGeolocationDialogs = ({
 
   const runGeolocationDialogs = useCallback(async () => {
     const selectGeoLocationMode = () => setTempLocationMode(LocationMode.AROUND_ME)
+    const selectAroundMeMode = () => setSelectedLocationMode(LocationMode.AROUND_ME)
     const selectEverywhereMode = () => setSelectedLocationMode(LocationMode.EVERYWHERE)
 
     if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
@@ -35,12 +38,17 @@ export const useGeolocationDialogs = ({
       if (shouldOpenDirectlySettings) {
         Linking.openSettings()
       } else {
-        dismissModal()
+        if (!shouldDirectlyValidate) {
+          dismissModal()
+        }
         onModalHideRef.current = showGeolocPermissionModal
       }
+    } else if (permissionState === GeolocPermissionState.GRANTED && shouldDirectlyValidate) {
+      setPlaceGlobally(null)
+      selectAroundMeMode()
     } else {
       await requestGeolocPermission({
-        onAcceptance: selectGeoLocationMode,
+        onAcceptance: shouldDirectlyValidate ? selectAroundMeMode : selectGeoLocationMode,
         onRefusal: selectEverywhereMode,
       })
     }
@@ -53,6 +61,7 @@ export const useGeolocationDialogs = ({
     dismissModal,
     onModalHideRef,
     showGeolocPermissionModal,
+    shouldDirectlyValidate,
     requestGeolocPermission,
   ])
 

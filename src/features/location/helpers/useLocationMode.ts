@@ -5,14 +5,21 @@ import { LocationMode } from 'libs/location/types'
 type Props = {
   dismissModal: () => void
   shouldOpenDirectlySettings?: boolean
+  shouldDirectlyValidate?: boolean
 } & LocationState &
   LocationSubmit
 
-export const useLocationMode = ({ dismissModal, shouldOpenDirectlySettings, ...props }: Props) => {
-  const { tempLocationMode, setTempLocationMode } = props
+export const useLocationMode = ({
+  dismissModal,
+  shouldOpenDirectlySettings,
+  shouldDirectlyValidate,
+  ...props
+}: Props) => {
+  const { tempLocationMode, setTempLocationMode, setSelectedLocationMode } = props
   const { runGeolocationDialogs } = useGeolocationDialogs({
     dismissModal,
     shouldOpenDirectlySettings,
+    shouldDirectlyValidate,
     ...props,
   })
   const { onSubmit } = props
@@ -21,11 +28,19 @@ export const useLocationMode = ({ dismissModal, shouldOpenDirectlySettings, ...p
     switch (mode) {
       case LocationMode.AROUND_ME:
         runGeolocationDialogs()
+        if (shouldDirectlyValidate) {
+          dismissModal()
+        }
         break
 
       case LocationMode.EVERYWHERE:
         setTempLocationMode(LocationMode.EVERYWHERE)
-        onSubmit(LocationMode.EVERYWHERE)
+        if (shouldDirectlyValidate) {
+          setSelectedLocationMode(LocationMode.EVERYWHERE)
+          dismissModal()
+        } else {
+          onSubmit(LocationMode.EVERYWHERE)
+        }
         break
 
       default:

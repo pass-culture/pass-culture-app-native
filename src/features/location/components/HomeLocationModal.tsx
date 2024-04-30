@@ -1,11 +1,12 @@
-import React, { useCallback, useState, useEffect } from 'react'
+import React from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
+import { useLocationMode } from 'features/location/helpers/useLocationMode'
+import { useLocationState } from 'features/location/helpers/useLocationState'
 import { analytics } from 'libs/analytics'
-import { GeolocPermissionState, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -26,41 +27,43 @@ interface LocationModalProps {
 const LOCATION_PLACEHOLDER = 'Ville, code postal, adresse'
 
 export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps) => {
+  const locationStateProps = useLocationState({
+    visible,
+  })
+
+  const onSubmitPlace = () => {
+    setPlaceGlobally(selectedPlace)
+    setSelectedLocationMode(tempLocationMode)
+    analytics.logUserSetLocation('home')
+    dismissModal()
+  }
+
+  const onClose = () => {
+    dismissModal()
+  }
+
   const {
     hasGeolocPosition,
     placeQuery,
     setPlaceQuery,
-    place,
     selectedPlace,
     setSelectedPlace,
-    onSetSelectedPlace,
     onResetPlace,
-    setPlace: setPlaceGlobally,
+    tempLocationMode,
     onModalHideRef,
-    permissionState,
-    requestGeolocPermission,
-    showGeolocPermissionModal,
-    selectedLocationMode,
+    setPlaceGlobally,
     setSelectedLocationMode,
-  } = useLocation()
+    onSetSelectedPlace,
+  } = locationStateProps
+  const { selectLocationMode } = useLocationMode({
+    dismissModal,
+    ...locationStateProps,
+    onSubmit: onSubmitPlace,
+    onClose,
+    shouldDirectlyValidate: true,
+  })
 
-  const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
-
-  useEffect(() => {
-    if (visible) {
-      setTempLocationMode(selectedLocationMode)
-    }
-  }, [selectedLocationMode, visible, setTempLocationMode])
-
-  useEffect(() => {
-    if (visible) {
-      onModalHideRef.current = undefined
-      setPlaceQuery(place?.label ?? '')
-      setSelectedPlace(place)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible])
 
   const theme = useTheme()
 
@@ -75,66 +78,6 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
   const everywhereLocationModeColor = isCurrentLocationMode(LocationMode.EVERYWHERE)
     ? theme.colors.primary
     : theme.colors.black
-
-  const runGeolocationDialogs = useCallback(async () => {
-    const selectAroundMeMode = () => setSelectedLocationMode(LocationMode.AROUND_ME)
-    const selectEverywhereMode = () => setSelectedLocationMode(LocationMode.EVERYWHERE)
-
-    if (permissionState === GeolocPermissionState.GRANTED) {
-      selectAroundMeMode()
-      setPlaceGlobally(null)
-    } else if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-      setPlaceGlobally(null)
-      selectEverywhereMode()
-      onModalHideRef.current = showGeolocPermissionModal
-    } else {
-      await requestGeolocPermission({
-        onAcceptance: selectAroundMeMode,
-        onRefusal: selectEverywhereMode,
-      })
-    }
-  }, [
-    permissionState,
-    setPlaceGlobally,
-    onModalHideRef,
-    showGeolocPermissionModal,
-    requestGeolocPermission,
-    setSelectedLocationMode,
-  ])
-
-  const selectLocationMode = useCallback(
-    (mode: LocationMode) => () => {
-      switch (mode) {
-        case LocationMode.AROUND_ME:
-          runGeolocationDialogs()
-          dismissModal()
-          break
-        case LocationMode.AROUND_PLACE:
-          setTempLocationMode(LocationMode.AROUND_PLACE)
-          break
-        case LocationMode.EVERYWHERE:
-          setTempLocationMode(LocationMode.EVERYWHERE)
-          setSelectedLocationMode(LocationMode.EVERYWHERE)
-          dismissModal()
-          break
-
-        default:
-          break
-      }
-    },
-    [dismissModal, runGeolocationDialogs, setSelectedLocationMode]
-  )
-
-  const onSubmitPlace = () => {
-    setPlaceGlobally(selectedPlace)
-    setSelectedLocationMode(tempLocationMode)
-    analytics.logUserSetLocation('home')
-    dismissModal()
-  }
-
-  const onClose = () => {
-    dismissModal()
-  }
 
   return (
     <AppModal

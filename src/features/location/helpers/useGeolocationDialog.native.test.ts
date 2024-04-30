@@ -79,9 +79,48 @@ describe('useGeolocationDialogs', () => {
         expect(mockProps.onModalHideRef.current).toEqual(mockProps.showGeolocPermissionModal)
       })
     })
+
+    it('should not call dismiss modal function when shouldDirectlyValidate is true', async () => {
+      const mockPropsNeverAskAgain = {
+        ...mockProps,
+        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
+        shouldDirectlyValidate: true,
+      }
+      const { result } = renderHook(() => useGeolocationDialogs(mockPropsNeverAskAgain))
+
+      await result.current.runGeolocationDialogs()
+
+      expect(mockProps.dismissModal).not.toHaveBeenCalled()
+    })
   })
 
-  it('should call requestGeolocPermission when permission is not NEVER_ASK_AGAIN', async () => {
+  it('should reset place selection when permission state is GRANTED and shouldDirectlyValidate is true', async () => {
+    const mockPropsGranted = {
+      ...mockProps,
+      permissionState: GeolocPermissionState.GRANTED,
+      shouldDirectlyValidate: true,
+    }
+    const { result } = renderHook(() => useGeolocationDialogs(mockPropsGranted))
+
+    await result.current.runGeolocationDialogs()
+
+    expect(mockProps.setPlaceGlobally).toHaveBeenNthCalledWith(1, null)
+  })
+
+  it('should select around me mode when permission state is GRANTED and shouldDirectlyValidate is true', async () => {
+    const mockPropsGranted = {
+      ...mockProps,
+      permissionState: GeolocPermissionState.GRANTED,
+      shouldDirectlyValidate: true,
+    }
+    const { result } = renderHook(() => useGeolocationDialogs(mockPropsGranted))
+
+    await result.current.runGeolocationDialogs()
+
+    expect(mockProps.setSelectedLocationMode).toHaveBeenNthCalledWith(1, LocationMode.AROUND_ME)
+  })
+
+  it('should call requestGeolocPermission when permission is DENIED', async () => {
     const { result } = renderHook(() => useGeolocationDialogs(mockProps))
 
     await result.current.runGeolocationDialogs()
