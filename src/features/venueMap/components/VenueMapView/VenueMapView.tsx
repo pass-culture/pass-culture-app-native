@@ -45,9 +45,13 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultRegion)
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
   const { venueMapState, dispatch } = useVenueMapState()
-  const { selectedVenue } = venueMapState
+  const { selectedVenue, venueTypeCode } = venueMapState
 
   const venues = useGetVenuesInRegion(lastRegionSearched, selectedVenue, initialVenues)
+  const filteredVenues = venueTypeCode
+    ? venues.filter((venue) => venue.venue_type === venueTypeCode)
+    : venues
+
   useEffect(() => {
     if (venues.length > 1) {
       zoomOutIfMapEmpty({ mapViewRef, venues })
@@ -134,7 +138,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
         onPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         onClusterPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         testID="venue-map-view">
-        {venues.map((venue) => (
+        {filteredVenues.map((venue) => (
           <Marker
             key={venue.venueId}
             coordinate={{

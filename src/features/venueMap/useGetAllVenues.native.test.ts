@@ -1,6 +1,5 @@
 import algoliasearch from 'algoliasearch'
 
-import { VenueTypeCodeKey } from 'api/gen'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { Region } from 'libs/maps/maps'
@@ -138,31 +137,6 @@ describe('useGetAllVenues', () => {
 
       await waitFor(() => {
         expect(result.current.venues).toEqual(undefined)
-      })
-    })
-  })
-
-  describe('When filter applied', () => {
-    beforeAll(() => {
-      mockUseVenueMapState.mockReturnValue({
-        venueMapState: { venueTypeCode: VenueTypeCodeKey.MOVIE },
-        dispatch: jest.fn(),
-      })
-    })
-
-    it('should fetch all venues when initial venues not defined and venue type filter applied', async () => {
-      renderHook(() => useGetAllVenues({ region, radius: 10 }), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
-
-      await waitFor(() => {
-        expect(search).toHaveBeenCalledWith('', {
-          aroundLatLng: '48.866667, 2.333333',
-          aroundRadius: 10000,
-          attributesToHighlight: [],
-          facetFilters: [['has_at_least_one_bookable_offer:true'], ['venue_type:MOVIE']],
-          hitsPerPage: 1000,
-        })
       })
     })
   })
