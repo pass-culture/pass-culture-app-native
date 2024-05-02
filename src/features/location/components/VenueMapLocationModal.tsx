@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -9,6 +10,7 @@ import { useLocationState } from 'features/location/helpers/useLocationState'
 import { useLocationSubmit } from 'features/location/helpers/useLocationSubmit'
 import { usePlaceSelection } from 'features/location/helpers/usePlaceSelection'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { LocationMode } from 'libs/location/types'
 import { LocationSearchFilters } from 'shared/location/LocationSearchFilters'
 import { LocationSearchInput } from 'shared/location/LocationSearchInput'
@@ -30,6 +32,7 @@ export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalPr
   const locationStateProps = useLocationState({
     visible,
   })
+  const { navigate } = useNavigation<UseNavigationType>()
   const {
     hasGeolocPosition,
     placeQuery,
@@ -72,6 +75,11 @@ export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalPr
     ? theme.colors.primary
     : theme.colors.black
 
+  const handleSubmit = () => {
+    onSubmit()
+    navigate('VenueMap', {})
+  }
+
   return (
     <AppModal
       visible={visible}
@@ -93,7 +101,7 @@ export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalPr
       }
       fixedModalBottom={
         <LocationModalFooter
-          onSubmit={() => onSubmit()}
+          onSubmit={handleSubmit}
           isSubmitDisabled={!selectedPlace && tempLocationMode !== LocationMode.AROUND_ME}
           buttonWording="Valider et voir sur la carte"
         />
