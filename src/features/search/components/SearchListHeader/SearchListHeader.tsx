@@ -11,6 +11,7 @@ import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchR
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
 import { VenuesUserData } from 'features/search/types'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -88,10 +89,14 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   const shouldDisplayAvailableUserDataMessage = userData?.length > 0
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
-  const shouldDisplayAccessibilityTitle =
+  const shouldDisplayAccessibilityContent =
     Object.values(disabilities).filter((disability) => disability).length > 0
-  const venueTitle = venuesUserData?.[0]?.venue_playlist_title || 'Les lieux culturels'
-  const offerTitle = shouldDisplayAccessibilityTitle
+  const venuePlaylistTitle = getSearchVenuePlaylistTitle(
+    shouldDisplayAccessibilityContent,
+    venuesUserData?.[0]?.venue_playlist_title
+  )
+
+  const offerTitle = shouldDisplayAccessibilityContent
     ? 'Les offres dans des lieux accessibles'
     : 'Les offres'
   const shouldDisplayVenuesPlaylist = !venue && !!venues?.length
@@ -150,7 +155,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <View>
-            <Title>{venueTitle}</Title>
+            <Title>{venuePlaylistTitle}</Title>
             {shouldDisplayVenueMap ? (
               <ButtonContainer>
                 <Spacer.Column numberOfSpaces={1} />
