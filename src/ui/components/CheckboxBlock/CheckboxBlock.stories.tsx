@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { screen, userEvent } from '@storybook/testing-library'
 import React from 'react'
 
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
@@ -46,4 +47,28 @@ WithLeftIcon.args = {
   sublabel: 'Sublabel',
   LeftIcon: BicolorAroundMe,
   checked: false,
+}
+
+export const Focused = Template.bind({})
+Focused.args = {
+  label: 'Label',
+  sublabel: 'Sublabel',
+  LeftIcon: BicolorAroundMe,
+  checked: false,
+}
+Focused.play = async () => {
+  const checkbox = await screen.findByRole('checkbox')
+  checkbox.focus()
+}
+
+export const Hovered = Template.bind({})
+Hovered.args = {
+  label: 'Label',
+  sublabel: 'Sublabel',
+  LeftIcon: BicolorAroundMe,
+  checked: false,
+}
+Hovered.play = async () => {
+  const checkbox = await screen.findByRole('checkbox')
+  userEvent.hover(checkbox)
 }
