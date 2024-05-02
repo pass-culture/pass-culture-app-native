@@ -2,19 +2,10 @@ appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: "Rechercher"
 - tapOn:
-    label: "Sélection de la 1ère offre disponible"
-    below:
-      text: .*résultats
+    text: "Livres papier"
+    index: 0
 
-- repeat: #Vérifier que l'offre est bien réservable
-    while:
-      notVisible: "Réserver l’offre"
-    commands:
-      - pressKey: back
-      - scroll
-      - tapOn:
-          text: "Livres papier"
-          index: 0
+- waitForAnimationToEnd
 
 - tapOn: "Réserver l’offre"
 

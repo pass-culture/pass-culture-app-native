@@ -13,5 +13,3 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Presse en ligne'
 
 - tapOn: 'Rechercher'
-- tapOn: 'Ma position'
-- tapOn: 'Partout'

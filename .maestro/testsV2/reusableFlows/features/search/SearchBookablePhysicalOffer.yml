@@ -1,18 +1,16 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
-- scrollUntilVisible:
-    element:
-      text: "Livres"
 - tapOn: "Livres" 
 
 # TODO(e2e): Attendre que "Catégories soit check"
 - tapOn: 'Catégories'
 
-- assertVisible: 'Livres'
-- tapOn: 'Livres papier'
-
-- assertVisible: 'Livres papier'
+- tapOn: 'Tout'
 - tapOn: 'Rechercher'
-- tapOn: 'Ma position'
-- tapOn: 'Partout'
+
+# TODO(e2e): Faire remonter des offres N-1 dans l'arbo
+- swipe: # Permet d'éviter les offres gratuite en haut de liste
+    from:
+      text: Les offres
+    direction: UP

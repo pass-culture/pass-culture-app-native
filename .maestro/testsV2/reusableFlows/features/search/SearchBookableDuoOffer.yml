@@ -19,7 +19,33 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: "Interrupteur limitDuoOfferSearch"
 - tapOn: "Appliquer le filtre"
+
+
+- tapOn: "Dates & heures"
+
+- assertVisible: "Dates & heures"
+- tapOn:
+    id: "Interrupteur date"
+- tapOn: "Date précise"
+
+- runFlow: # Si fin du mois permet de passer au mois suivant
+    when:
+      visible: "30"
+    commands:
+        - swipe:
+            from:
+                id: "android:id/numberpicker_input"
+                index: 1
+            start: 47%, 73%
+            end: 47%, 65%
+            
+- swipe:
+    from:
+        id: "android:id/numberpicker_input"
+    start: 29%, 73%
+    end: 29%, 60%
+- tapOn: "Valider la date"
+
+- tapOn: "Appliquer le filtre"
 - tapOn: "Rechercher"
 
-- tapOn: 'Ma position'
-- tapOn: 'Partout'
