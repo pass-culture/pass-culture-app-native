@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { DEFAULT_RADIUS } from 'features/search/constants'
@@ -108,7 +109,7 @@ describe('VenueMapLocationModal', () => {
     expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
   })
 
-  it('should hide Géolocalisation désactivée if geolocation is enabled', async () => {
+  it('should hide "Géolocalisation désactivée" if geolocation is enabled', async () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
     renderVenueMapLocationModal()
@@ -117,6 +118,37 @@ describe('VenueMapLocationModal', () => {
     })
 
     expect(screen.queryByText('Géolocalisation désactivée')).toBeNull()
+  })
+
+  it('should navigate to venue map on submit when we choose a location', async () => {
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+    mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+
+    renderVenueMapLocationModal()
+    await act(async () => {
+      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+    })
+    const openLocationModalButton = screen.getByText('Choisir une localisation')
+    fireEvent.press(openLocationModalButton)
+
+    const searchInput = screen.getByTestId('styled-input-container')
+    await act(async () => {
+      fireEvent.changeText(searchInput, mockPlaces[0].label)
+    })
+
+    const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    fireEvent.press(suggestedPlace)
+
+    await act(async () => {
+      const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
+      slider.props.onValuesChange([mockRadiusPlace])
+    })
+
+    const validateButon = screen.getByText('Valider et voir sur la carte')
+    fireEvent.press(validateButon)
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap', {})
   })
 
   it('should request geolocation if geolocation is denied and the geolocation button pressed', async () => {
