@@ -97,7 +97,11 @@ describe('<NotificationsLoggedOutModal />', () => {
 const renderModal = (visible: boolean) => {
   render(
     reactQueryProviderHOC(
-      <NotificationsLoggedOutModal visible={visible} dismissModal={mockDismissModal} />
+      <NotificationsLoggedOutModal
+        visible={visible}
+        dismissModal={mockDismissModal}
+        from="ThematicHome"
+      />
     )
   )
 }

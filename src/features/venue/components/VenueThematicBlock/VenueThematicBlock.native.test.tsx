@@ -6,6 +6,7 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { VenueThematicBlock } from 'features/venue/components/VenueThematicBlock/VenueThematicBlock'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { beneficiaryUser } from 'fixtures/user'
+import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -131,6 +132,18 @@ describe('<VenueThematicBlock/>', () => {
       expect(
         await screen.findByText('Es-tu sûr de ne plus vouloir suivre ce thème ?')
       ).toBeOnTheScreen()
+    })
+  })
+
+  it('should log when user login from logged out modal', async () => {
+    render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} isLoggedIn={false} />))
+
+    fireEvent.press(screen.getByText('Suivre le thème'))
+
+    fireEvent.press(await screen.findByText('Se connecter'))
+
+    await waitFor(() => {
+      expect(analytics.logLoginClicked).toHaveBeenCalledWith({ from: 'venue' })
     })
   })
 })

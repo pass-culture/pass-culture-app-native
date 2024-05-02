@@ -122,6 +122,7 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
       <NotificationsLoggedOutModal
         visible={visibleLoggedOutModal}
         dismissModal={hideLoggedOutModal}
+        from="ThematicHome"
       />
     </React.Fragment>
   )

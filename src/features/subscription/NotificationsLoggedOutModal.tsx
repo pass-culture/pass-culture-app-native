@@ -13,11 +13,13 @@ import { Spacer, Typo } from 'ui/theme'
 interface Props {
   visible: boolean
   dismissModal: () => void
+  from: string
 }
 
 export const NotificationsLoggedOutModal: FunctionComponent<Props> = ({
   visible,
   dismissModal,
+  from,
 }) => {
   return (
     <AppModalWithIllustration
@@ -36,7 +38,7 @@ export const NotificationsLoggedOutModal: FunctionComponent<Props> = ({
           wording="Créer un compte"
           navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.THEMATIC_HOME } }}
           onBeforeNavigate={() => {
-            analytics.logSignUpClicked({ from: 'ThematicHome' })
+            analytics.logSignUpClicked({ from })
             dismissModal()
           }}
           buttonHeight="tall"
@@ -45,7 +47,7 @@ export const NotificationsLoggedOutModal: FunctionComponent<Props> = ({
         <StyledAuthenticationButton
           type="login"
           onAdditionalPress={() => {
-            analytics.logLoginClicked({ from: 'ThematicHome' })
+            analytics.logLoginClicked({ from })
             dismissModal()
           }}
           params={{ from: StepperOrigin.THEMATIC_HOME }}

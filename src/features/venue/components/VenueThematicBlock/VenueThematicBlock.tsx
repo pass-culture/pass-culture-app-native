@@ -86,6 +86,7 @@ export const VenueThematicBlock: FunctionComponent<Props> = ({ venue }: Props) =
       <NotificationsLoggedOutModal
         visible={visibleLoggedOutModal}
         dismissModal={hideLoggedOutModal}
+        from="venue"
       />
       <NotificationsSettingsModal
         visible={visibleNotificationsSettingsModal}
