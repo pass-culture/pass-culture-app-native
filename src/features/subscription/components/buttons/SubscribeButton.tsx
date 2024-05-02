@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
+import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
+import LottieView from 'libs/lottie'
+import NotificationAnimation from 'ui/animations/notif_basic_medium.json'
 import { ToggleButton } from 'ui/components/buttons/ToggleButton'
-import { Bell } from 'ui/svg/icons/Bell'
-import { BellFilled } from 'ui/svg/icons/BellFilled'
 
 type Activable<T> = {
   active: T
@@ -17,22 +18,46 @@ type Props = {
 }
 
 export const SubscribeButton = ({ active, onPress, label }: Props) => {
+  const shouldAnimateIcon = useRef(false)
+  const animationProgress = useRef(new Animated.Value(0))
+
+  useEffect(() => {
+    Animated.timing(animationProgress.current, {
+      toValue: active ? 1 : 0,
+      duration: active && shouldAnimateIcon.current ? 1000 : 0,
+      useNativeDriver: false,
+    }).start()
+  }, [active])
+
+  const onPressWithAnimation = useCallback(() => {
+    // We animate when user interacts with the button, not when the page is first rendered
+    shouldAnimateIcon.current = true
+    onPress()
+  }, [onPress])
+
+  const AnimatedBellIcon = useCallback(
+    () => (
+      <StyledLottieView
+        progress={animationProgress.current}
+        source={NotificationAnimation}
+        loop={false}
+      />
+    ),
+    []
+  )
+
   return (
     <ToggleButton
       active={active}
-      onPress={onPress}
+      onPress={onPressWithAnimation}
       label={label}
       accessibilityLabel={{ active: 'Thème déjà suivi', inactive: 'Suivre le thème' }}
-      Icon={{ active: StyledBellFilled, inactive: StyledBell }}
+      Icon={{ active: AnimatedBellIcon, inactive: AnimatedBellIcon }}
     />
   )
 }
 
-const StyledBell = styled(Bell).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
-
-const StyledBellFilled = styled(BellFilled).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  size: theme.icons.sizes.small,
-}))``
+const StyledLottieView = styled(LottieView)(({ theme }) => ({
+  width: theme.icons.sizes.small,
+  height: theme.icons.sizes.small,
+}))
