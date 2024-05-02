@@ -46,7 +46,7 @@ describe('venueTypesMapping', () => {
   it('should have 5 children for other venues', () => {
     const otherChildren = venueTypesMapping.other.children
 
-    expect(Object.keys(otherChildren)).toHaveLength(4)
+    expect(Object.keys(otherChildren)).toHaveLength(5)
   })
 
   it('should have correct child for other venues', () => {
