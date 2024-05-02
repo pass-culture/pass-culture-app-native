@@ -8,17 +8,17 @@ import { VenueMapCluster } from 'features/venueMap/components/VenueMapCluster/Ve
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
 import { PREVIEW_BOTTOM_MARGIN } from 'features/venueMap/components/VenueMapView/constant'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
-import {
-  useVenueMapActions,
-  useVenueMapSelectedVenue,
-  useVenueMapTypeCode,
-} from 'features/venueMap/context/useVenueMapStore'
 import { getVenueTags } from 'features/venueMap/helpers/getVenueTags/getVenueTags'
 import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
 import { zoomOutIfMapEmpty } from 'features/venueMap/helpers/zoomOutIfMapEmpty'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { useGetDefaultRegion } from 'features/venueMap/hook/useGetDefaultRegion'
 import { useGetVenuesInRegion } from 'features/venueMap/hook/useGetVenuesInRegion'
+import {
+  useSelectedVenue,
+  useSelectedVenueActions,
+} from 'features/venueMap/store/selectedVenueStore'
+import { useVenueTypeCode } from 'features/venueMap/store/venueTypeCodeStore'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -49,9 +49,9 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultRegion)
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
 
-  const selectedVenue = useVenueMapSelectedVenue()
-  const venueTypeCode = useVenueMapTypeCode()
-  const { setSelectedVenue, removeSelectedVenue } = useVenueMapActions()
+  const selectedVenue = useSelectedVenue()
+  const venueTypeCode = useVenueTypeCode()
+  const { setSelectedVenue, removeSelectedVenue } = useSelectedVenueActions()
 
   const venues = useGetVenuesInRegion(lastRegionSearched, selectedVenue, initialVenues)
   const filteredVenues = venueTypeCode

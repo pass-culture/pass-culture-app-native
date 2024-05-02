@@ -1,7 +1,8 @@
 import algoliasearch from 'algoliasearch'
 
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
-import { useVenueMapStore } from 'features/venueMap/context/useVenueMapStore'
+import { useVenuesActions } from 'features/venueMap/store/venuesStore'
+import { useVenueTypeCode } from 'features/venueMap/store/venueTypeCodeStore'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { Region } from 'libs/maps/maps'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -17,9 +18,13 @@ jest.mock('libs/algolia/fetchAlgolia/AlgoliaError', () => ({
   captureAlgoliaError: jest.fn(),
 }))
 
+jest.mock('features/venueMap/store/venueTypeCodeStore')
+const mockUseVenueTypeCode = useVenueTypeCode as jest.MockedFunction<typeof useVenueTypeCode>
+
 const mockSetVenues = jest.fn()
-jest.mock('features/venueMap/context/useVenueMapStore')
-const mockUseVenueMapStore = useVenueMapStore as jest.MockedFunction<typeof useVenueMapStore>
+jest.mock('features/venueMap/store/venuesStore')
+const mockUseVenuesActions = useVenuesActions as jest.MockedFunction<typeof useVenuesActions>
+mockUseVenuesActions.mockReturnValue({ setVenues: mockSetVenues })
 
 const region: Region = {
   latitude: 48.866667,
@@ -33,10 +38,7 @@ const initialVenues = adaptAlgoliaVenues(mockAlgoliaVenues)
 describe('useGetAllVenues', () => {
   describe('When filter not applied', () => {
     beforeAll(() => {
-      mockUseVenueMapStore.mockReturnValue({
-        venueTypeCode: null,
-        setVenues: mockSetVenues,
-      })
+      mockUseVenueTypeCode.mockReturnValue(null)
     })
 
     it('should fetch all venues when initial venues not defined', async () => {

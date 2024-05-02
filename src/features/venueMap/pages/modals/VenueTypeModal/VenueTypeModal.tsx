@@ -7,12 +7,12 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
 import { VenueTypeSection } from 'features/venueMap/components/VenueTypeSection/VenueTypeSection'
+import { useSelectedVenue } from 'features/venueMap/store/selectedVenueStore'
 import {
-  useVenueMapActions,
-  useVenueMapSelectedVenue,
-  useVenueMapTypeCode,
-  useVenueMapVenues,
-} from 'features/venueMap/context/useVenueMapStore'
+  useVenueTypeCode,
+  useVenueTypeCodeActions,
+} from 'features/venueMap/store/venueTypeCodeStore'
+import { useVenues } from 'features/venueMap/store/venuesStore'
 import { getGeolocatedVenues } from 'features/venueMap/helpers/getGeolocatedVenues/getGeolocatedVenues'
 import { getVenuesNumberByType } from 'features/venueMap/helpers/getVenuesNumberByType/getVenuesNumberByType'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
@@ -42,10 +42,10 @@ const MODAL_TITLE = 'Type de lieu'
 export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible = false }) => {
   const { modal } = useTheme()
 
-  const defaultVenueTypeCode = useVenueMapTypeCode()
-  const venues = useVenueMapVenues()
-  const selectedVenue = useVenueMapSelectedVenue()
-  const { setVenueTypeCode } = useVenueMapActions()
+  const venues = useVenues()
+  const selectedVenue = useSelectedVenue()
+  const defaultVenueTypeCode = useVenueTypeCode()
+  const { setVenueTypeCode } = useVenueTypeCodeActions()
 
   const {
     formState: { isSubmitting },

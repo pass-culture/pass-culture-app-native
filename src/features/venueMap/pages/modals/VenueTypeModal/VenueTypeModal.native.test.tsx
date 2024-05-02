@@ -1,25 +1,31 @@
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { useVenueMapStore } from 'features/venueMap/context/useVenueMapStore'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal/VenueTypeModal'
+import { useVenues } from 'features/venueMap/store/venuesStore'
+import {
+  useVenueTypeCode,
+  useVenueTypeCodeActions,
+} from 'features/venueMap/store/venueTypeCodeStore'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockHideModal = jest.fn()
 
+jest.mock('features/venueMap/store/venueTypeCodeStore')
+const mockUseVenueTypeCode = useVenueTypeCode as jest.Mock
 const mockSetVenueTypeCode = jest.fn()
-jest.mock('features/venueMap/context/useVenueMapStore')
-const mockUseVenueMapStore = useVenueMapStore as jest.MockedFunction<typeof useVenueMapStore>
+const mockUseVenueTypeCodeActions = useVenueTypeCodeActions as jest.Mock
+mockUseVenueTypeCodeActions.mockReturnValue({ setVenueTypeCode: mockSetVenueTypeCode })
+
+jest.mock('features/venueMap/store/venuesStore')
+const mockUseVenues = useVenues as jest.Mock
 
 describe('<VenueTypeModal />', () => {
   describe('When venue type is null', () => {
     beforeAll(() => {
-      mockUseVenueMapStore.mockReturnValue({
-        venueTypeCode: null,
-        venues: venuesFixture,
-        setVenueTypeCode: mockSetVenueTypeCode,
-      })
+      mockUseVenueTypeCode.mockReturnValue(null)
+      mockUseVenues.mockReturnValue(venuesFixture)
     })
 
     it('should render modal correctly', () => {
@@ -79,11 +85,8 @@ describe('<VenueTypeModal />', () => {
 
   describe('When venue type is not null', () => {
     beforeAll(() => {
-      mockUseVenueMapStore.mockReturnValue({
-        venueTypeCode: VenueTypeCodeKey.MOVIE,
-        venues: [],
-        setVenueTypeCode: mockSetVenueTypeCode,
-      })
+      mockUseVenueTypeCode.mockReturnValue(VenueTypeCodeKey.MOVIE)
+      mockUseVenues.mockReturnValue([])
     })
 
     it('should select "Tout" option when pressing reset button', () => {
