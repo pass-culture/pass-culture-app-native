@@ -63,5 +63,5 @@ export const venueTypesIconNameMapping = {
   [VenueTypeCodeKey.PATRIMONY_TOURISM]: 'tourism',
   [VenueTypeCodeKey.VISUAL_ARTS]: 'visual_art',
   [VenueTypeCodeKey.DIGITAL]: null,
-  [VenueTypeCodeKey.OTHER]: null,
+  [VenueTypeCodeKey.OTHER]: 'center',
 }
