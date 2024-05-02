@@ -34,7 +34,7 @@ export const SearchFilter: React.FC = () => {
   )
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
-  useSync(currentRoute === 'SearchFilter', currentRoute)
+  useSync(currentRoute === 'SearchFilter')
 
   const { searchState, dispatch } = useSearch()
   const { navigateToSearch } = useNavigateToSearch('SearchResults')
