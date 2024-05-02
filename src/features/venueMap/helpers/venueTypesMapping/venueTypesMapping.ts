@@ -39,6 +39,7 @@ export const venueTypesMapping = {
         MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.PATRIMONY_TOURISM],
       [VenueTypeCodeKey.SCIENTIFIC_CULTURE]:
         MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.SCIENTIFIC_CULTURE],
+      [VenueTypeCodeKey.OTHER]: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.OTHER],
     },
   },
 }
