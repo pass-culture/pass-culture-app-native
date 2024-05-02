@@ -148,8 +148,7 @@ describe('VenueMapLocationModal', () => {
     const validateButon = screen.getByText('Valider et voir sur la carte')
     fireEvent.press(validateButon)
 
-    expect(navigate).toHaveBeenCalledTimes(1)
-    expect(navigate).toHaveBeenCalledWith('VenueMap', {})
+    expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap', {})
   })
 
   it('should request geolocation if geolocation is denied and the geolocation button pressed', async () => {
