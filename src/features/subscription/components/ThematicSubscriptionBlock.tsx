@@ -38,7 +38,8 @@ export const ThematicSubscriptionBlock = ({
 
 const Container = styled.View({
   flexDirection: 'row',
-  margin: getSpacing(6),
+  marginHorizontal: getSpacing(4),
+  marginVertical: getSpacing(6),
   gap: getSpacing(4),
 })
 

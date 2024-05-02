@@ -11,6 +11,7 @@ import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/VenueCTA'
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
+import { VenueThematicBlock } from 'features/venue/components/VenueThematicBlock/VenueThematicBlock'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
@@ -125,7 +126,11 @@ export const VenueBody: FunctionComponent<Props> = ({
 
       <Spacer.Column numberOfSpaces={6} />
 
-      <SectionWithDivider visible margin gap={10}>
+      <SectionWithDivider visible gap={0}>
+        <VenueThematicBlock venue={venue} />
+      </SectionWithDivider>
+
+      <SectionWithDivider visible margin gap={6}>
         <VenueMessagingApps venue={venue} />
         <Spacer.Column numberOfSpaces={4} />
       </SectionWithDivider>

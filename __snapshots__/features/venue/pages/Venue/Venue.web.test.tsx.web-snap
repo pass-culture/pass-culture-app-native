@@ -27,7 +27,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
         />
         <button
           aria-label="Revenir en arrière"
-          class="sc-fqkvVR fYXaGU sc-cwHptR iwkrEi sc-cwHptR iwkrEi"
+          class="sc-fqkvVR fYXaGU sc-fPXMVe cYyk sc-fPXMVe cYyk"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -99,7 +99,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
         />
         <button
           aria-label="Partager"
-          class="sc-fqkvVR fYXaGU sc-cwHptR iwkrEi sc-cwHptR iwkrEi"
+          class="sc-fqkvVR fYXaGU sc-fPXMVe cYyk sc-fPXMVe cYyk"
           data-testid="Partager"
           tabindex="0"
           title="Partager"
@@ -210,6 +210,16 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
                   class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                   dir="ltr"
                 >
+                  Librairie
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-14a9t8x r-borderRadius-kdyh1x r-flexDirection-18u37iz r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg"
+              >
+                <div
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  dir="ltr"
+                >
                   À 900+ km
                 </div>
               </div>
@@ -255,7 +265,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
             />
             <button
               aria-label="Copier l’adresse"
-              class="sc-aXZVg blCLeI sc-eqUAAy sc-dAlyuH ekaAYh hLKQvo"
+              class="sc-aXZVg blCLeI sc-eqUAAy sc-eDPEul ekaAYh loZmLU"
               data-testid="Copier l’adresse"
               tabindex="0"
               type="button"
@@ -417,75 +427,143 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
                 class="css-view-175oi2r r-height-1472mwg"
               />
               <div
-                class="css-view-175oi2r r-flexDirection-18u37iz r-paddingBottom-qn3fzs"
-                data-testid="OfferPlaylistSkeleton"
+                class="css-view-175oi2r r-paddingBottom-qn3fzs"
               >
                 <div
-                  class="css-view-175oi2r r-width-lrsllp"
-                />
-                <div
-                  class="css-view-175oi2r"
+                  class="css-view-175oi2r r-maxHeight-wpvnvn r-overflow-1udh08x"
                 >
                   <div
-                    class="css-view-175oi2r r-height-hdaws3"
-                  />
-                  <div
-                    class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-10ptun7 r-overflow-1udh08x r-width-l0gwng"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-marginHorizontal-1hy1u7s"
                   >
+                    <h2
+                      aria-level="2"
+                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+                      data-testid="playlistTitle"
+                      dir="ltr"
+                      role="heading"
+                    >
+                      Toutes les offres
+                    </h2>
                     <div
-                      class="css-view-175oi2r"
-                      style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-250px);"
+                      class="css-view-175oi2r r-width-1janqcz"
                     />
+                    <div
+                      class="css-view-175oi2r r-backgroundColor-bg9z1y r-height-z80fyv r-width-92ng3h"
+                    />
+                    <div
+                      class="css-view-175oi2r r-width-16eto9q"
+                    />
+                    <div
+                      aria-label="Voir plus d’offres de la sélection Toutes les offres"
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
+                      data-testid="Voir plus d’offres de la sélection Toutes les offres"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r"
+                      >
+                        <div
+                          class="css-text-1rynq56"
+                          dir="ltr"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-width-1jg9483"
+                      />
+                      <div
+                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                        dir="ltr"
+                      >
+                        Voir tout
+                      </div>
+                    </div>
                   </div>
+                </div>
+                <div
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
+                <div
+                  class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
+                >
                   <div
-                    class="css-view-175oi2r r-height-z80fyv"
-                  />
-                  <div
-                    class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-lltvgl r-overflowY-buy8e9 r-transform-1sncvnh r-scrollbarWidth-2eszeu"
+                    class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
+                    data-testid="offersModuleList"
                   >
                     <div
                       class="css-view-175oi2r r-flexDirection-18u37iz"
                     >
                       <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                        class="css-view-175oi2r"
                       >
                         <div
+                          class="css-view-175oi2r r-width-lrsllp"
+                        />
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                      >
+                        <h3
+                          aria-level="3"
                           class="css-view-175oi2r"
+                          role="heading"
                         >
                           <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1xfd6ze r-height-k79w25 r-overflow-1udh08x r-width-1sqjfdd"
+                            aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
+                            data-testid="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            tabindex="0"
                           >
                             <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-180px);"
-                            />
+                              class="css-view-175oi2r r-flexDirection-1d5kdc7"
+                            >
+                              <div
+                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                              >
+                                <div
+                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  Titane - VF
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  Dès le 18 août 2021
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  data-testid="priceIsDuo"
+                                  dir="ltr"
+                                >
+                                  Gratuit
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
+                                >
+                                  <div
+                                    class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
+                                  >
+                                    <div
+                                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                      data-testid="categoryImageCaption"
+                                      dir="ltr"
+                                    >
+                                      Cinéma
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <div
-                            class="css-view-175oi2r r-height-tbmifm"
-                          />
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1oyktkk"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-144px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-3da1kt"
-                          />
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1s9nfm5"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-53.99999999999999px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-tbmifm"
-                          />
-                        </div>
+                        </h3>
                         <div
                           class="css-view-175oi2r r-width-1janqcz"
                         />
@@ -493,43 +571,65 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
                       <div
                         class="css-view-175oi2r r-flexDirection-18u37iz"
                       >
-                        <div
+                        <h3
+                          aria-level="3"
                           class="css-view-175oi2r"
+                          role="heading"
                         >
                           <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1xfd6ze r-height-k79w25 r-overflow-1udh08x r-width-1sqjfdd"
+                            aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
+                            data-testid="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            tabindex="0"
                           >
                             <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-180px);"
-                            />
+                              class="css-view-175oi2r r-flexDirection-1d5kdc7"
+                            >
+                              <div
+                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                              >
+                                <div
+                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  Bac Nord - VF
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  Dès le 18 août 2021
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  data-testid="priceIsDuo"
+                                  dir="ltr"
+                                >
+                                  Gratuit
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
+                                >
+                                  <div
+                                    class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
+                                  >
+                                    <div
+                                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                      data-testid="categoryImageCaption"
+                                      dir="ltr"
+                                    >
+                                      Cinéma
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <div
-                            class="css-view-175oi2r r-height-tbmifm"
-                          />
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1oyktkk"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-144px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-3da1kt"
-                          />
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1s9nfm5"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-53.99999999999999px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-tbmifm"
-                          />
-                        </div>
+                        </h3>
                         <div
                           class="css-view-175oi2r r-width-1janqcz"
                         />
@@ -537,175 +637,72 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
                       <div
                         class="css-view-175oi2r r-flexDirection-18u37iz"
                       >
-                        <div
+                        <h3
+                          aria-level="3"
                           class="css-view-175oi2r"
+                          role="heading"
                         >
                           <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1xfd6ze r-height-k79w25 r-overflow-1udh08x r-width-1sqjfdd"
+                            aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
+                            data-testid="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                            tabindex="0"
                           >
                             <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-180px);"
-                            />
+                              class="css-view-175oi2r r-flexDirection-1d5kdc7"
+                            >
+                              <div
+                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                              >
+                                <div
+                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  Black Widow - VF
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  Dès le 18 août 2021
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  data-testid="priceIsDuo"
+                                  dir="ltr"
+                                >
+                                  Gratuit
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-175oi2r"
+                              >
+                                <div
+                                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
+                                >
+                                  <div
+                                    class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
+                                  >
+                                    <div
+                                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                      data-testid="categoryImageCaption"
+                                      dir="ltr"
+                                    >
+                                      Cinéma
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <div
-                            class="css-view-175oi2r r-height-tbmifm"
-                          />
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1oyktkk"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-144px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-3da1kt"
-                          />
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1s9nfm5"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-53.99999999999999px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-tbmifm"
-                          />
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-width-1janqcz"
-                        />
+                        </h3>
                       </div>
                       <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                        class="css-view-175oi2r"
                       >
                         <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1xfd6ze r-height-k79w25 r-overflow-1udh08x r-width-1sqjfdd"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-180px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-tbmifm"
-                          />
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1oyktkk"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-144px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-3da1kt"
-                          />
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1s9nfm5"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-53.99999999999999px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-tbmifm"
-                          />
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-width-1janqcz"
+                          class="css-view-175oi2r r-width-lrsllp"
                         />
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz"
-                      >
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1xfd6ze r-height-k79w25 r-overflow-1udh08x r-width-1sqjfdd"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-180px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-tbmifm"
-                          />
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1oyktkk"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-144px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-3da1kt"
-                          />
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1s9nfm5"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-53.99999999999999px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-tbmifm"
-                          />
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-width-1janqcz"
-                        />
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz"
-                      >
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1xfd6ze r-height-k79w25 r-overflow-1udh08x r-width-1sqjfdd"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-180px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-tbmifm"
-                          />
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1oyktkk"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-144px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-3da1kt"
-                          />
-                          <div
-                            class="css-view-175oi2r r-backgroundColor-zs9c5m r-borderRadius-1jkafct r-height-tbmifm r-overflow-1udh08x r-width-1s9nfm5"
-                          >
-                            <div
-                              class="css-view-175oi2r"
-                              style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; transform: translateX(-53.99999999999999px);"
-                            />
-                          </div>
-                          <div
-                            class="css-view-175oi2r r-height-tbmifm"
-                          />
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -718,7 +715,83 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
           class="css-view-175oi2r r-height-1472mwg"
         />
         <div
-          class="css-view-175oi2r r-gap-1tgfunj"
+          class="css-view-175oi2r r-gap-1jnkns4"
+        >
+          <div
+            class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
+          />
+          <div
+            class="css-view-175oi2r r-flexDirection-18u37iz r-gap-f4gmv6 r-marginHorizontal-1ydw1k6 r-marginVertical-pw2am6"
+          >
+            <div
+              class="css-view-175oi2r r-borderRadius-1xfd6ze r-height-h3s6tt r-overflow-1udh08x r-width-rwqe4o"
+            >
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+              >
+                <div
+                  class="css-view-175oi2r r-position-u8s1d r-top-1nd9uzx"
+                >
+                  <div
+                    class="css-view-175oi2r"
+                  >
+                    <div
+                      class="css-text-1rynq56"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-flexShrink-1wbh5a2 r-gap-1cmwbt1"
+            >
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                dir="ltr"
+              >
+                Fan de lecture ?
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                dir="ltr"
+              >
+                Reçois nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
+              </div>
+              <div
+                aria-label="Suivre le thème"
+                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-k200y r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-1fuqb1j r-borderWidth-rs99b7 r-flexDirection-18u37iz r-paddingHorizontal-1e081e0 r-paddingVertical-oyd9sg"
+                data-testid="Suivre le thème"
+                style="transition-duration: 0s;"
+                tabindex="0"
+              >
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-view-175oi2r r-width-1jg9483"
+                />
+                <div
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  dir="ltr"
+                >
+                  Suivre le thème
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-175oi2r r-gap-1fdih9r"
         >
           <div
             class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
@@ -744,6 +817,126 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
                   class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-justifyContent-1h0z5md r-overflow-1dqxon3 r-paddingLeft-gy4na3"
                   role="list"
                 >
+                  <li
+                    class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
+                    role="listitem"
+                  >
+                    <button
+                      class="sc-fqkvVR gugcSC sc-imWYAI gKNnMS sc-imWYAI gKNnMS"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                      >
+                        <div
+                          class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                          >
+                            <div
+                              class="css-text-1rynq56"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-height-3da1kt"
+                        />
+                        <div
+                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                          data-testid="caption-undefined"
+                          dir="ltr"
+                        >
+                          Envoyer sur
+WhatsApp
+                        </div>
+                      </div>
+                    </button>
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
+                    role="listitem"
+                  >
+                    <button
+                      class="sc-fqkvVR gugcSC sc-imWYAI gKNnMS sc-imWYAI gKNnMS"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                      >
+                        <div
+                          class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                          >
+                            <div
+                              class="css-text-1rynq56"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-height-3da1kt"
+                        />
+                        <div
+                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                          data-testid="caption-undefined"
+                          dir="ltr"
+                        >
+                          Envoyer sur
+Telegram
+                        </div>
+                      </div>
+                    </button>
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
+                    role="listitem"
+                  >
+                    <button
+                      class="sc-fqkvVR gugcSC sc-imWYAI gKNnMS sc-imWYAI gKNnMS"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+                      >
+                        <div
+                          class="css-view-175oi2r r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                          >
+                            <div
+                              class="css-text-1rynq56"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-height-3da1kt"
+                        />
+                        <div
+                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                          data-testid="caption-undefined"
+                          dir="ltr"
+                        >
+                          Envoyer sur
+Twitter
+                        </div>
+                      </div>
+                    </button>
+                  </li>
                   <li
                     class="css-view-175oi2r r-alignItems-1awozwy r-display-6koalj r-flexBasis-6xy016 r-flexGrow-16y2uox r-flexShrink-1q142lx r-marginBottom-117bsoe r-marginHorizontal-4amgru r-maxWidth-1y8vry9"
                     role="listitem"

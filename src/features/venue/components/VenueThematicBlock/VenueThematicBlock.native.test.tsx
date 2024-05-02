@@ -116,14 +116,6 @@ describe('<VenueThematicBlock/>', () => {
     })
 
     it('should show unsubscribing confirmation modal when user is already subscribed', async () => {
-      const alreadySubscribedUser = {
-        ...beneficiaryUser,
-        subscriptions: {
-          marketingEmail: true,
-          marketingPush: true,
-          subscribedThemes: [SubscriptionTheme.CINEMA],
-        },
-      }
       mockUseAuthContext.mockReturnValueOnce({ ...baseAuthContext, user: alreadySubscribedUser })
       render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} />))
 
@@ -136,7 +128,7 @@ describe('<VenueThematicBlock/>', () => {
   })
 
   it('should log when user login from logged out modal', async () => {
-    render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} isLoggedIn={false} />))
+    render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} />))
 
     fireEvent.press(screen.getByText('Suivre le thème'))
 

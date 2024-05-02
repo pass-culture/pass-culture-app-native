@@ -1,4 +1,4 @@
-import { VenueResponse } from 'api/gen'
+import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 
 export const venueResponseSnap: VenueResponse = {
   id: 5543,
@@ -10,6 +10,7 @@ export const venueResponseSnap: VenueResponse = {
   isVirtual: false,
   isPermanent: true,
   withdrawalDetails: 'How to withdraw, https://test.com',
+  venueTypeCode: VenueTypeCodeKey.BOOKSTORE,
   address: '1 boulevard Poissonnière',
   postalCode: '75000',
   description:

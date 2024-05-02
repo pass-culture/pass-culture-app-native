@@ -4,6 +4,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -21,6 +22,15 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('libs/itinerary/useItinerary')
+
+jest.mock('features/auth/context/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+mockUseAuthContext.mockReturnValue({
+  isLoggedIn: false,
+  setIsLoggedIn: jest.fn(),
+  refetchUser: jest.fn(),
+  isUserLoading: false,
+})
 
 jest.mock('uuid', () => ({
   v1: jest.fn(),
@@ -65,7 +75,7 @@ describe('<Venue />', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<Venue />))
 
-      await screen.findAllByText('Le Petit Rintintin 1')
+      await screen.findAllByText('Gratuit')
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
@@ -78,7 +88,7 @@ describe('<Venue />', () => {
       const { container } = render(reactQueryProviderHOC(<Venue />), {
         theme: { isDesktopViewport: true },
       })
-      await screen.findAllByText('Le Petit Rintintin 1')
+      await screen.findAllByText('Gratuit')
 
       expect(container).toMatchSnapshot()
     })

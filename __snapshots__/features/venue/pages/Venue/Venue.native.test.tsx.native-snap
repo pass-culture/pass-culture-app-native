@@ -124,7 +124,37 @@ exports[`<Venue /> should match snapshot 1`] = `
               ]
             }
             testID="tagsContainer"
-          />
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignSelf": "baseline",
+                    "backgroundColor": "#F1F1F4",
+                    "borderRadius": 6,
+                    "flexDirection": "row",
+                    "paddingHorizontal": 8,
+                    "paddingVertical": 4,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Librairie
+              </Text>
+            </View>
+          </View>
           <View
             numberOfSpaces={4}
             style={
@@ -887,7 +917,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       }
                     }
                     contentHeight={250}
-                    contentWidth={576}
+                    contentWidth={432}
                     data={
                       [
                         {
@@ -964,9 +994,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                           },
                           "venue": {},
-                        },
-                        {
-                          "dataFooter": true,
                         },
                       ]
                     }
@@ -1048,14 +1075,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                             },
                             "venue": {},
                           },
-                          {
-                            "dataFooter": true,
-                          },
                         ],
                         "_firstIndexToProcess": 3,
                         "_hasStableIds": true,
                         "_requiresDataChangeHandling": true,
-                        "_size": 4,
+                        "_size": 3,
                         "getStableId": [Function],
                         "rowHasChanged": [Function],
                       }
@@ -1108,13 +1132,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                               "x": 288,
                               "y": 0,
                             },
-                            {
-                              "height": 250,
-                              "type": 0,
-                              "width": 144,
-                              "x": 432,
-                              "y": 0,
-                            },
                           ],
                           "_maxSpan": 1,
                           "_renderWindowSize": {
@@ -1122,7 +1139,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "width": 800,
                           },
                           "_totalHeight": 250,
-                          "_totalWidth": 576,
+                          "_totalWidth": 432,
                           "_window": {
                             "height": 250,
                             "width": 800,
@@ -1281,9 +1298,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                               },
                               "venue": {},
                             },
-                            {
-                              "dataFooter": true,
-                            },
                           ],
                           "drawDistance": 187.5,
                           "estimatedItemSize": 144,
@@ -1413,7 +1427,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           style={
                             {
                               "height": 250,
-                              "width": 576,
+                              "width": 432,
                             }
                           }
                           windowSize={800}
@@ -1920,47 +1934,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 </View>
                               </View>
                             </View>
-                            <View
-                              leadingItem={
-                                {
-                                  "_geoloc": {
-                                    "lat": 47.8898,
-                                    "lng": -2.83593,
-                                  },
-                                  "objectID": "223339",
-                                  "offer": {
-                                    "dates": [
-                                      1629312300,
-                                      1629485100,
-                                      1629657900,
-                                    ],
-                                    "isDigital": false,
-                                    "isDuo": true,
-                                    "name": "Black Widow - VF",
-                                    "prices": [
-                                      0,
-                                      0,
-                                      0,
-                                    ],
-                                    "subcategoryId": "CINE_PLEIN_AIR",
-                                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                                  },
-                                  "venue": {},
-                                }
-                              }
-                              style={
-                                [
-                                  {
-                                    "width": 16,
-                                  },
-                                ]
-                              }
-                              trailingItem={
-                                {
-                                  "dataFooter": true,
-                                }
-                              }
-                            />
                           </CellContainer>
                           <CellContainer
                             index={0}
@@ -2245,192 +2218,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                               }
                             />
                           </CellContainer>
-                          <CellContainer
-                            index={3}
-                            onLayout={[Function]}
-                            style={
-                              {
-                                "alignItems": "stretch",
-                                "flexDirection": "row",
-                                "height": 250,
-                                "left": 432,
-                                "position": "absolute",
-                                "top": 0,
-                              }
-                            }
-                          >
-                            <View
-                              style={
-                                {
-                                  "flexDirection": "column",
-                                }
-                              }
-                            >
-                              <View
-                                height={216}
-                                style={
-                                  [
-                                    {
-                                      "alignItems": "center",
-                                      "height": 216,
-                                      "justifyContent": "center",
-                                      "width": 144,
-                                    },
-                                  ]
-                                }
-                                width={144}
-                              >
-                                <View
-                                  numberOfSpaces={2}
-                                  style={
-                                    [
-                                      {
-                                        "height": 8,
-                                      },
-                                    ]
-                                  }
-                                />
-                                <View
-                                  accessibilityLabel="En voir plus"
-                                  accessibilityRole="link"
-                                  accessibilityState={
-                                    {
-                                      "busy": undefined,
-                                      "checked": undefined,
-                                      "disabled": undefined,
-                                      "expanded": undefined,
-                                      "selected": undefined,
-                                    }
-                                  }
-                                  accessibilityValue={
-                                    {
-                                      "max": undefined,
-                                      "min": undefined,
-                                      "now": undefined,
-                                      "text": undefined,
-                                    }
-                                  }
-                                  accessible={true}
-                                  collapsable={false}
-                                  focusable={true}
-                                  onClick={[Function]}
-                                  onResponderGrant={[Function]}
-                                  onResponderMove={[Function]}
-                                  onResponderRelease={[Function]}
-                                  onResponderTerminate={[Function]}
-                                  onResponderTerminationRequest={[Function]}
-                                  onStartShouldSetResponder={[Function]}
-                                  style={
-                                    {
-                                      "alignItems": "center",
-                                      "opacity": 1,
-                                      "userSelect": "auto",
-                                    }
-                                  }
-                                  testID="En voir plus"
-                                >
-                                  <View
-                                    style={
-                                      [
-                                        {
-                                          "flexDirection": "row",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                    <View
-                                      numberOfSpaces={16}
-                                      style={
-                                        [
-                                          {
-                                            "width": 64,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                    <View
-                                      style={
-                                        [
-                                          {
-                                            "alignItems": "center",
-                                            "aspectRatio": 1,
-                                            "backgroundColor": "#ffffff",
-                                            "borderColor": "#F1F1F4",
-                                            "borderRadius": 32,
-                                            "borderStyle": "solid",
-                                            "borderWidth": 1,
-                                            "height": 64,
-                                            "justifyContent": "center",
-                                            "shadowColor": "#161617",
-                                            "shadowOffset": {
-                                              "height": 8,
-                                              "width": 0,
-                                            },
-                                            "shadowOpacity": 0.15,
-                                            "shadowRadius": 12,
-                                            "width": 64,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <View
-                                        height={32}
-                                        width={32}
-                                      >
-                                        <Text>
-                                          undefined-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <View
-                                      numberOfSpaces={16}
-                                      style={
-                                        [
-                                          {
-                                            "width": 64,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                  </View>
-                                  <View
-                                    numberOfSpaces={2}
-                                    style={
-                                      [
-                                        {
-                                          "height": 8,
-                                        },
-                                      ]
-                                    }
-                                  />
-                                  <View
-                                    style={
-                                      [
-                                        {
-                                          "flexDirection": "row",
-                                        },
-                                      ]
-                                    }
-                                  >
-                                    <Text
-                                      style={
-                                        [
-                                          {
-                                            "color": "#eb0055",
-                                            "fontFamily": "Montserrat-Bold",
-                                            "fontSize": 15,
-                                            "lineHeight": 20,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      En voir plus
-                                    </Text>
-                                  </View>
-                                </View>
-                              </View>
-                            </View>
-                          </CellContainer>
                         </AutoLayoutView>
                         <CellContainer
                           index={-1}
@@ -2671,6 +2458,956 @@ exports[`<Venue /> should match snapshot 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              style={
+                [
+                  {
+                    "position": "relative",
+                  },
+                ]
+              }
+            >
+              <View
+                onChange={[Function]}
+                onLayout={[Function]}
+                style={
+                  [
+                    {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": "50%",
+                    },
+                  ]
+                }
+                testID="intersectionObserver"
+                threshold="50%"
+                triggerOnce={false}
+              />
+              <View
+                style={
+                  [
+                    {
+                      "paddingBottom": 24,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "maxHeight": 68,
+                        "overflow": "hidden",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "marginHorizontal": 24,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      numberOfLines={2}
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 20,
+                            "lineHeight": 24,
+                          },
+                        ]
+                      }
+                      testID="playlistTitle"
+                    >
+                      Test
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  numberOfSpaces={4}
+                  style={
+                    [
+                      {
+                        "height": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  onLayout={[Function]}
+                  style={
+                    [
+                      {
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={{}}
+                  >
+                    <RCTScrollView
+                      ItemSeparatorComponent={
+                        {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": [],
+                          "inlineStyle": InlineStyle {
+                            "rules": [
+                              "width: 16px;",
+                            ],
+                          },
+                          "render": [Function],
+                          "shouldForwardProp": undefined,
+                          "styledComponentId": "StyledNativeComponent",
+                          "target": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      ListFooterComponent={
+                        {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": [],
+                          "inlineStyle": InlineStyle {
+                            "rules": [
+                              "width: 24px;",
+                            ],
+                          },
+                          "render": [Function],
+                          "shouldForwardProp": undefined,
+                          "styledComponentId": "StyledNativeComponent",
+                          "target": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      ListHeaderComponent={
+                        {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": [],
+                          "inlineStyle": InlineStyle {
+                            "rules": [
+                              "width: 24px;",
+                            ],
+                          },
+                          "render": [Function],
+                          "shouldForwardProp": undefined,
+                          "styledComponentId": "StyledNativeComponent",
+                          "target": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      applyWindowCorrection={[Function]}
+                      canChangeSize={true}
+                      contentContainerStyle={
+                        {
+                          "backgroundColor": undefined,
+                          "minHeight": 1,
+                          "minWidth": 1,
+                          "paddingBottom": 0,
+                          "paddingTop": 0,
+                        }
+                      }
+                      contentHeight={250}
+                      contentWidth={192}
+                      data={
+                        [
+                          {
+                            "_geoloc": {
+                              "lat": 2,
+                              "lng": 2,
+                            },
+                            "objectID": "12",
+                            "offer": {
+                              "name": "Test",
+                              "subcategoryId": "ABO_BIBLIOTHEQUE",
+                            },
+                            "venue": {
+                              "address": "Avenue des Tests",
+                              "city": "Jest",
+                            },
+                          },
+                        ]
+                      }
+                      dataProvider={
+                        DataProvider {
+                          "_data": [
+                            {
+                              "_geoloc": {
+                                "lat": 2,
+                                "lng": 2,
+                              },
+                              "objectID": "12",
+                              "offer": {
+                                "name": "Test",
+                                "subcategoryId": "ABO_BIBLIOTHEQUE",
+                              },
+                              "venue": {
+                                "address": "Avenue des Tests",
+                                "city": "Jest",
+                              },
+                            },
+                          ],
+                          "_firstIndexToProcess": 0,
+                          "_hasStableIds": true,
+                          "_requiresDataChangeHandling": false,
+                          "_size": 1,
+                          "getStableId": [Function],
+                          "rowHasChanged": [Function],
+                        }
+                      }
+                      disableRecycling={false}
+                      estimatedItemSize={192}
+                      extendedState={{}}
+                      externalScrollView={[Function]}
+                      finalRenderAheadOffset={187.5}
+                      forceNonDeterministicRendering={true}
+                      getItemLayout={[Function]}
+                      horizontal={true}
+                      initialOffset={0}
+                      initialRenderIndex={0}
+                      isHorizontal={true}
+                      keyExtractor={[Function]}
+                      layoutProvider={
+                        GridLayoutProviderWithProps {
+                          "_acceptableRelayoutDelta": 1,
+                          "_getHeightOrWidth": [Function],
+                          "_getLayoutTypeForIndex": [Function],
+                          "_getSpan": [Function],
+                          "_hasExpired": false,
+                          "_isHorizontal": true,
+                          "_lastLayoutManager": GridLayoutManager {
+                            "_acceptableRelayoutDelta": 1,
+                            "_getSpan": [Function],
+                            "_isGridHorizontal": true,
+                            "_isHorizontal": true,
+                            "_layoutProvider": [Circular],
+                            "_layouts": [
+                              {
+                                "height": 250,
+                                "type": 0,
+                                "width": 192,
+                                "x": 0,
+                                "y": 0,
+                              },
+                            ],
+                            "_maxSpan": 1,
+                            "_renderWindowSize": {
+                              "height": 250,
+                              "width": 800,
+                            },
+                            "_totalHeight": 250,
+                            "_totalWidth": 192,
+                            "_window": {
+                              "height": 250,
+                              "width": 800,
+                            },
+                          },
+                          "_maxSpan": 1,
+                          "_renderWindowSize": {
+                            "height": 250,
+                            "width": 800,
+                          },
+                          "_setLayoutForType": [Function],
+                          "_tempDim": {
+                            "height": 0,
+                            "width": 0,
+                          },
+                          "averageWindow": AverageWindow {
+                            "currentAverage": 192,
+                            "currentCount": 1,
+                            "inputValues": [
+                              192,
+                              ,
+                              ,
+                              ,
+                              ,
+                              ,
+                              ,
+                              ,
+                            ],
+                            "nextIndex": 1,
+                          },
+                          "defaultEstimatedItemSize": 100,
+                          "layoutObject": {
+                            "size": undefined,
+                            "span": undefined,
+                          },
+                          "props": {
+                            "ItemSeparatorComponent": {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": [],
+                              "inlineStyle": InlineStyle {
+                                "rules": [
+                                  "width: 16px;",
+                                ],
+                              },
+                              "render": [Function],
+                              "shouldForwardProp": undefined,
+                              "styledComponentId": "StyledNativeComponent",
+                              "target": [Function],
+                              "withComponent": [Function],
+                            },
+                            "ListFooterComponent": {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": [],
+                              "inlineStyle": InlineStyle {
+                                "rules": [
+                                  "width: 24px;",
+                                ],
+                              },
+                              "render": [Function],
+                              "shouldForwardProp": undefined,
+                              "styledComponentId": "StyledNativeComponent",
+                              "target": [Function],
+                              "withComponent": [Function],
+                            },
+                            "ListHeaderComponent": {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": [],
+                              "inlineStyle": InlineStyle {
+                                "rules": [
+                                  "width: 24px;",
+                                ],
+                              },
+                              "render": [Function],
+                              "shouldForwardProp": undefined,
+                              "styledComponentId": "StyledNativeComponent",
+                              "target": [Function],
+                              "withComponent": [Function],
+                            },
+                            "data": [
+                              {
+                                "_geoloc": {
+                                  "lat": 2,
+                                  "lng": 2,
+                                },
+                                "objectID": "12",
+                                "offer": {
+                                  "name": "Test",
+                                  "subcategoryId": "ABO_BIBLIOTHEQUE",
+                                },
+                                "venue": {
+                                  "address": "Avenue des Tests",
+                                  "city": "Jest",
+                                },
+                              },
+                            ],
+                            "drawDistance": 187.5,
+                            "estimatedItemSize": 192,
+                            "getItemLayout": [Function],
+                            "horizontal": true,
+                            "keyExtractor": [Function],
+                            "numColumns": 1,
+                            "onContentSizeChange": [Function],
+                            "onEndReached": [Function],
+                            "onEndReachedThreshold": 0.2,
+                            "onScroll": [Function],
+                            "renderItem": [Function],
+                            "scrollEnabled": true,
+                            "scrollEventThrottle": 16,
+                            "showsHorizontalScrollIndicator": false,
+                            "testID": "offersModuleList",
+                          },
+                          "renderWindowInsets": {
+                            "height": 0,
+                            "width": 0,
+                          },
+                          "shouldRefreshWithAnchoring": true,
+                        }
+                      }
+                      maxRenderAhead={562.5}
+                      numColumns={1}
+                      onContentSizeChange={[Function]}
+                      onEndReached={[Function]}
+                      onEndReachedThreshold={0}
+                      onEndReachedThresholdRelative={0.2}
+                      onItemLayout={[Function]}
+                      onLayout={[Function]}
+                      onScroll={[Function]}
+                      onScrollBeginDrag={[Function]}
+                      onSizeChanged={[Function]}
+                      onVisibleIndicesChanged={[Function]}
+                      removeClippedSubviews={false}
+                      renderAheadOffset={0}
+                      renderAheadStep={187.5}
+                      renderContentContainer={[Function]}
+                      renderItem={[Function]}
+                      renderItemContainer={[Function]}
+                      rowRenderer={[Function]}
+                      scrollEnabled={true}
+                      scrollEventThrottle={16}
+                      scrollThrottle={16}
+                      scrollViewProps={
+                        {
+                          "contentContainerStyle": {
+                            "backgroundColor": undefined,
+                            "minHeight": 1,
+                            "minWidth": 1,
+                            "paddingBottom": 0,
+                            "paddingTop": 0,
+                          },
+                          "onLayout": [Function],
+                          "onScrollBeginDrag": [Function],
+                          "refreshControl": undefined,
+                          "style": {
+                            "minHeight": 1,
+                            "minWidth": 1,
+                          },
+                        }
+                      }
+                      showsHorizontalScrollIndicator={false}
+                      style={
+                        {
+                          "minHeight": 1,
+                          "minWidth": 1,
+                        }
+                      }
+                      suppressBoundedSizeException={true}
+                      testID="offersModuleList"
+                      windowCorrectionConfig={
+                        {
+                          "applyToInitialOffset": true,
+                          "applyToItemScroll": true,
+                          "value": {
+                            "endCorrection": 0,
+                            "startCorrection": 0,
+                            "windowShift": -1,
+                          },
+                        }
+                      }
+                    >
+                      <View>
+                        <View
+                          style={
+                            {
+                              "flexDirection": "row",
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              {
+                                "paddingLeft": 0,
+                                "paddingTop": 0,
+                              }
+                            }
+                          />
+                          <View
+                            style={
+                              [
+                                undefined,
+                                undefined,
+                              ]
+                            }
+                          >
+                            <View
+                              style={
+                                [
+                                  {
+                                    "width": 24,
+                                  },
+                                ]
+                              }
+                            />
+                          </View>
+                          <AutoLayoutView
+                            enableInstrumentation={false}
+                            horizontal={true}
+                            onBlankAreaEvent={[Function]}
+                            onLayout={[Function]}
+                            renderAheadOffset={0}
+                            scrollOffset={0}
+                            style={
+                              {
+                                "height": 250,
+                                "width": 192,
+                              }
+                            }
+                            windowSize={800}
+                          >
+                            <CellContainer
+                              index={0}
+                              onLayout={[Function]}
+                              style={
+                                {
+                                  "alignItems": "stretch",
+                                  "flexDirection": "row",
+                                  "height": 250,
+                                  "left": 0,
+                                  "position": "absolute",
+                                  "top": 0,
+                                }
+                              }
+                            >
+                              <View
+                                style={
+                                  {
+                                    "flexDirection": "column",
+                                  }
+                                }
+                              >
+                                <View>
+                                  <View
+                                    accessibilityLabel="Offre Test de la catégorie Livre,   prix . "
+                                    accessibilityRole="link"
+                                    accessibilityValue={
+                                      {
+                                        "max": undefined,
+                                        "min": undefined,
+                                        "now": undefined,
+                                        "text": undefined,
+                                      }
+                                    }
+                                    accessible={true}
+                                    focusable={true}
+                                    onClick={[Function]}
+                                    onResponderGrant={[Function]}
+                                    onResponderMove={[Function]}
+                                    onResponderRelease={[Function]}
+                                    onResponderTerminate={[Function]}
+                                    onResponderTerminationRequest={[Function]}
+                                    onStartShouldSetResponder={[Function]}
+                                    style={
+                                      [
+                                        {
+                                          "textDecorationColor": "black",
+                                          "textDecorationLine": "none",
+                                          "textDecorationStyle": "solid",
+                                        },
+                                        {
+                                          "borderRadius": 8,
+                                          "height": 360,
+                                          "marginVertical": 4,
+                                        },
+                                      ]
+                                    }
+                                    testID="Offre Test de la catégorie Livre,   prix . "
+                                  >
+                                    <View
+                                      style={
+                                        [
+                                          {
+                                            "flexDirection": "column-reverse",
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <View
+                                        imageWidth={192}
+                                        style={
+                                          [
+                                            {
+                                              "marginTop": 8,
+                                              "maxWidth": 192,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <Text
+                                          numberOfLines={2}
+                                          style={
+                                            [
+                                              {
+                                                "color": "#161617",
+                                                "fontFamily": "Montserrat-SemiBold",
+                                                "fontSize": 12,
+                                                "lineHeight": 16,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          Test
+                                        </Text>
+                                        <Text
+                                          style={
+                                            [
+                                              {
+                                                "color": "#696A6F",
+                                                "fontFamily": "Montserrat-SemiBold",
+                                                "fontSize": 12,
+                                                "lineHeight": 16,
+                                              },
+                                            ]
+                                          }
+                                          testID="priceIsDuo"
+                                        />
+                                      </View>
+                                      <View>
+                                        <View
+                                          height={264}
+                                          style={
+                                            [
+                                              {
+                                                "height": 264,
+                                                "width": 192,
+                                              },
+                                            ]
+                                          }
+                                          width={192}
+                                        >
+                                          <BVLinearGradient
+                                            borderRadius={8}
+                                            colors={
+                                              [
+                                                4294046196,
+                                                4291546578,
+                                              ]
+                                            }
+                                            endPoint={
+                                              {
+                                                "x": 0.5,
+                                                "y": 1,
+                                              }
+                                            }
+                                            locations={null}
+                                            startPoint={
+                                              {
+                                                "x": 0.5,
+                                                "y": 0,
+                                              }
+                                            }
+                                            style={
+                                              [
+                                                {
+                                                  "alignItems": "center",
+                                                  "backgroundColor": "#F1F1F4",
+                                                  "borderRadius": 8,
+                                                  "height": "100%",
+                                                  "justifyContent": "center",
+                                                  "width": "100%",
+                                                },
+                                                {
+                                                  "borderRadius": 0,
+                                                  "borderTopLeftRadius": 8,
+                                                  "borderTopRightRadius": 8,
+                                                },
+                                              ]
+                                            }
+                                            testID="imagePlaceholder"
+                                          >
+                                            <View
+                                              height={64}
+                                              testID="categoryIcon"
+                                              width={64}
+                                            >
+                                              <Text>
+                                                categoryIcon-SVG-Mock
+                                              </Text>
+                                            </View>
+                                          </BVLinearGradient>
+                                        </View>
+                                        <View
+                                          height={24}
+                                          style={
+                                            [
+                                              {
+                                                "alignItems": "center",
+                                                "backgroundColor": "#161617",
+                                                "borderBottomLeftRadius": 8,
+                                                "borderBottomRightRadius": 8,
+                                                "flexDirection": "row",
+                                                "height": 24,
+                                                "width": 192,
+                                              },
+                                            ]
+                                          }
+                                          width={192}
+                                        >
+                                          <View
+                                            style={
+                                              [
+                                                {
+                                                  "alignItems": "center",
+                                                  "flexBasis": 0,
+                                                  "flexGrow": 1,
+                                                  "flexShrink": 1,
+                                                  "justifyContent": "center",
+                                                  "paddingHorizontal": 2,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            <Text
+                                              numberOfLines={1}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#ffffff",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 16,
+                                                  },
+                                                ]
+                                              }
+                                              testID="categoryImageCaption"
+                                            >
+                                              Livre
+                                            </Text>
+                                          </View>
+                                        </View>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                            </CellContainer>
+                          </AutoLayoutView>
+                          <CellContainer
+                            index={-1}
+                            style={
+                              [
+                                undefined,
+                                undefined,
+                              ]
+                            }
+                          >
+                            <View
+                              style={
+                                [
+                                  {
+                                    "width": 24,
+                                  },
+                                ]
+                              }
+                            />
+                          </CellContainer>
+                          <View
+                            style={
+                              {
+                                "paddingBottom": 0,
+                                "paddingRight": 0,
+                              }
+                            }
+                          />
+                          <View
+                            pointerEvents="none"
+                            style={
+                              {
+                                "opacity": 0,
+                              }
+                            }
+                          >
+                            <View>
+                              <View
+                                accessibilityLabel="Offre Test de la catégorie Livre,   prix . "
+                                accessibilityRole="link"
+                                accessibilityValue={
+                                  {
+                                    "max": undefined,
+                                    "min": undefined,
+                                    "now": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                                accessible={true}
+                                focusable={true}
+                                onClick={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
+                                style={
+                                  [
+                                    {
+                                      "textDecorationColor": "black",
+                                      "textDecorationLine": "none",
+                                      "textDecorationStyle": "solid",
+                                    },
+                                    {
+                                      "borderRadius": 8,
+                                      "height": 360,
+                                      "marginVertical": 4,
+                                    },
+                                  ]
+                                }
+                                testID="Offre Test de la catégorie Livre,   prix . "
+                              >
+                                <View
+                                  style={
+                                    [
+                                      {
+                                        "flexDirection": "column-reverse",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <View
+                                    imageWidth={192}
+                                    style={
+                                      [
+                                        {
+                                          "marginTop": 8,
+                                          "maxWidth": 192,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <Text
+                                      numberOfLines={2}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 12,
+                                            "lineHeight": 16,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Test
+                                    </Text>
+                                    <Text
+                                      style={
+                                        [
+                                          {
+                                            "color": "#696A6F",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 12,
+                                            "lineHeight": 16,
+                                          },
+                                        ]
+                                      }
+                                      testID="priceIsDuo"
+                                    />
+                                  </View>
+                                  <View>
+                                    <View
+                                      height={264}
+                                      style={
+                                        [
+                                          {
+                                            "height": 264,
+                                            "width": 192,
+                                          },
+                                        ]
+                                      }
+                                      width={192}
+                                    >
+                                      <BVLinearGradient
+                                        borderRadius={8}
+                                        colors={
+                                          [
+                                            4294046196,
+                                            4291546578,
+                                          ]
+                                        }
+                                        endPoint={
+                                          {
+                                            "x": 0.5,
+                                            "y": 1,
+                                          }
+                                        }
+                                        locations={null}
+                                        startPoint={
+                                          {
+                                            "x": 0.5,
+                                            "y": 0,
+                                          }
+                                        }
+                                        style={
+                                          [
+                                            {
+                                              "alignItems": "center",
+                                              "backgroundColor": "#F1F1F4",
+                                              "borderRadius": 8,
+                                              "height": "100%",
+                                              "justifyContent": "center",
+                                              "width": "100%",
+                                            },
+                                            {
+                                              "borderRadius": 0,
+                                              "borderTopLeftRadius": 8,
+                                              "borderTopRightRadius": 8,
+                                            },
+                                          ]
+                                        }
+                                        testID="imagePlaceholder"
+                                      >
+                                        <View
+                                          height={64}
+                                          testID="categoryIcon"
+                                          width={64}
+                                        >
+                                          <Text>
+                                            categoryIcon-SVG-Mock
+                                          </Text>
+                                        </View>
+                                      </BVLinearGradient>
+                                    </View>
+                                    <View
+                                      height={24}
+                                      style={
+                                        [
+                                          {
+                                            "alignItems": "center",
+                                            "backgroundColor": "#161617",
+                                            "borderBottomLeftRadius": 8,
+                                            "borderBottomRightRadius": 8,
+                                            "flexDirection": "row",
+                                            "height": 24,
+                                            "width": 192,
+                                          },
+                                        ]
+                                      }
+                                      width={192}
+                                    >
+                                      <View
+                                        style={
+                                          [
+                                            {
+                                              "alignItems": "center",
+                                              "flexBasis": 0,
+                                              "flexGrow": 1,
+                                              "flexShrink": 1,
+                                              "justifyContent": "center",
+                                              "paddingHorizontal": 2,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <Text
+                                          numberOfLines={1}
+                                          style={
+                                            [
+                                              {
+                                                "color": "#ffffff",
+                                                "fontFamily": "Montserrat-SemiBold",
+                                                "fontSize": 12,
+                                                "lineHeight": 16,
+                                              },
+                                            ]
+                                          }
+                                          testID="categoryImageCaption"
+                                        >
+                                          Livre
+                                        </Text>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </RCTScrollView>
+                  </View>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </View>
@@ -2685,11 +3422,322 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <View
-        gap={10}
+        gap={0}
         style={
           [
             {
-              "gap": 40,
+              "gap": 0,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#F1F1F4",
+                "height": 8,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "flexDirection": "row",
+                "gap": 16,
+                "marginHorizontal": 16,
+                "marginVertical": 24,
+              },
+            ]
+          }
+        >
+          <View
+            size="small"
+            style={
+              [
+                {
+                  "borderRadius": 8,
+                  "height": 48,
+                  "overflow": "hidden",
+                  "width": 48,
+                },
+              ]
+            }
+          >
+            <BVLinearGradient
+              colors={
+                [
+                  4293670008,
+                  4290777969,
+                ]
+              }
+              endPoint={
+                {
+                  "x": 0.5,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                {
+                  "x": 0.5,
+                  "y": 0,
+                }
+              }
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                size="small"
+                style={
+                  [
+                    {
+                      "position": "absolute",
+                      "top": -20,
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="none"
+                  height={92}
+                  width={82}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </BVLinearGradient>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "flexShrink": 1,
+                  "gap": 8,
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Fan de lecture ?
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+            >
+              Reçois nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
+            </Text>
+            <View
+              accessibilityLabel="Suivre le thème"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "alignSelf": "flex-start",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 24,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "opacity": 1,
+                  "paddingHorizontal": 12,
+                  "paddingVertical": 4,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Suivre le thème"
+            >
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Suivre le thème
+              </Text>
+            </View>
+          </View>
+        </View>
+        <Modal
+          accessibilityLabelledBy="testUuidV4"
+          accessibilityModal={true}
+          accessibilityRole="none"
+          animationType="none"
+          deviceHeight={1334}
+          deviceWidth={750}
+          hardwareAccelerated={false}
+          hideModalContentWhileAnimating={false}
+          onBackdropPress={[Function]}
+          onModalHide={[Function]}
+          onModalWillHide={[Function]}
+          onModalWillShow={[Function]}
+          onRequestClose={[Function]}
+          panResponderThreshold={4}
+          scrollHorizontal={false}
+          scrollOffset={0}
+          scrollOffsetMax={0}
+          scrollTo={null}
+          statusBarTranslucent={true}
+          supportedOrientations={
+            [
+              "portrait",
+              "landscape",
+            ]
+          }
+          swipeThreshold={100}
+          testID="modal"
+          transparent={true}
+          visible={false}
+        />
+        <Modal
+          accessibilityLabelledBy="testUuidV4"
+          accessibilityModal={true}
+          accessibilityRole="none"
+          animationType="none"
+          deviceHeight={1334}
+          deviceWidth={750}
+          hardwareAccelerated={false}
+          hideModalContentWhileAnimating={false}
+          onBackdropPress={[Function]}
+          onModalHide={[Function]}
+          onModalWillHide={[Function]}
+          onModalWillShow={[Function]}
+          onRequestClose={[Function]}
+          panResponderThreshold={4}
+          scrollHorizontal={false}
+          scrollOffset={0}
+          scrollOffsetMax={0}
+          scrollTo={null}
+          statusBarTranslucent={true}
+          supportedOrientations={
+            [
+              "portrait",
+              "landscape",
+            ]
+          }
+          swipeThreshold={100}
+          testID="modal"
+          transparent={true}
+          visible={false}
+        />
+        <Modal
+          accessibilityLabelledBy="testUuidV4"
+          accessibilityModal={true}
+          accessibilityRole="none"
+          animationType="none"
+          deviceHeight={1334}
+          deviceWidth={750}
+          hardwareAccelerated={false}
+          hideModalContentWhileAnimating={false}
+          onBackdropPress={[Function]}
+          onModalHide={[Function]}
+          onModalWillHide={[Function]}
+          onModalWillShow={[Function]}
+          onRequestClose={[Function]}
+          panResponderThreshold={4}
+          scrollHorizontal={false}
+          scrollOffset={0}
+          scrollOffsetMax={0}
+          scrollTo={null}
+          statusBarTranslucent={true}
+          supportedOrientations={
+            [
+              "portrait",
+              "landscape",
+            ]
+          }
+          swipeThreshold={100}
+          testID="modal"
+          transparent={true}
+          visible={false}
+        />
+      </View>
+      <View
+        gap={6}
+        style={
+          [
+            {
+              "gap": 24,
             },
           ]
         }
