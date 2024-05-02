@@ -3524,7 +3524,6 @@ exports[`<Venue /> should match snapshot 1`] = `
               [
                 {
                   "flexShrink": 1,
-                  "gap": 8,
                 },
               ]
             }
@@ -3557,6 +3556,16 @@ exports[`<Venue /> should match snapshot 1`] = `
             >
               Reçois nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
             </Text>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
             <View
               accessibilityLabel="Suivre le thème"
               accessibilityState={
@@ -3603,13 +3612,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               }
               testID="Suivre le thème"
             >
-              <View
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+              <View>
+                undefined-Lottie-Mock
               </View>
               <View
                 numberOfSpaces={2}

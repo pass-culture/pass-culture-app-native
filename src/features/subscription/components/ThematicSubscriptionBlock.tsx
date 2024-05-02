@@ -5,7 +5,7 @@ import { SubscribeButton } from 'features/subscription/components/buttons/Subscr
 import { SubscriptionThematicIllustration } from 'features/subscription/components/SubscriptionThematicIllustration'
 import { mapSubscriptionThematicToBlockTitles } from 'features/subscription/helpers/mapSubscriptionThematicToBlockTitles'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   thematic: SubscriptionTheme
@@ -26,6 +26,7 @@ export const ThematicSubscriptionBlock = ({
       <ContentContainer>
         <Typo.ButtonText>{title}</Typo.ButtonText>
         <Typo.CaptionNeutralInfo>{subtitle}</Typo.CaptionNeutralInfo>
+        <Spacer.Column numberOfSpaces={2} />
         <SubscribeButton
           onPress={onSubscribePress}
           active={isSubscribeButtonActive}
@@ -44,6 +45,5 @@ const Container = styled.View({
 })
 
 const ContentContainer = styled.View({
-  gap: getSpacing(2),
   flexShrink: 1,
 })
