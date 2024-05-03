@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
@@ -13,6 +14,7 @@ import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen'
+import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
 
@@ -36,6 +38,7 @@ export const RootNavigator: React.ComponentType = () => {
   const mainId = uuidv4()
   const tabBarId = uuidv4()
   const { showTabBar } = useTheme()
+  const { isLoggedIn } = useAuthContext()
   const { isSplashScreenHidden } = useSplashScreenContext()
 
   const initialScreen = useInitialScreen()
@@ -45,6 +48,18 @@ export const RootNavigator: React.ComponentType = () => {
   const headerWithQuickAccess = showHeaderQuickAccess ? (
     <QuickAccess href={`#${tabBarId}`} title="Accéder au menu de navigation" />
   ) : null
+
+  useEffect(() => {
+    const incrementLoggedInSessionCount = async () => {
+      const loggedInSessionCount =
+        (await storage.readObject<number>('logged_in_session_count')) || 0
+      await storage.saveObject('logged_in_session_count', loggedInSessionCount + 1)
+    }
+
+    if (isLoggedIn) {
+      incrementLoggedInSessionCount()
+    }
+  }, [isLoggedIn])
 
   if (!initialScreen) {
     return <LoadingPage />
