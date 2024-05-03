@@ -13,6 +13,7 @@ import { SubscriptionThematicButton } from 'features/subscription/components/but
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme } from 'features/subscription/types'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
@@ -57,6 +58,7 @@ export const OnboardingSubscription = () => {
 
   const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
     () => {
+      analytics.logSubscriptionUpdate({ type: 'update', from: 'home' })
       showSuccessSnackBar({
         message: 'Tes préférences ont bien été enregistrées.',
         timeout: SNACK_BAR_TIME_OUT,

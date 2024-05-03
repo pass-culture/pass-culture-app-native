@@ -8,6 +8,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
+import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -105,6 +106,19 @@ describe('OnboardingSubscription', () => {
 
     await waitFor(() => {
       expect(replace).toHaveBeenCalledWith(...homeNavConfig)
+    })
+  })
+
+  it('should log analytics on subscription success', async () => {
+    mockServer.postApi('/v1/profile', {})
+
+    render(reactQueryProviderHOC(<OnboardingSubscription />))
+
+    fireEvent.press(await screen.findByLabelText('Activités créatives'))
+    fireEvent.press(screen.getByText('Suivre la sélection'))
+
+    await waitFor(() => {
+      expect(analytics.logSubscriptionUpdate).toHaveBeenCalledWith({ type: 'update', from: 'home' })
     })
   })
 
