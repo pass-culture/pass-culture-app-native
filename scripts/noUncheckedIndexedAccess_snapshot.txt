@@ -77,7 +77,7 @@
 ./src/features/search/api/useSearchResults/useSearchResults.ts:83
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:130
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:133
-./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:139
+./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:140
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:44
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:59
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:64

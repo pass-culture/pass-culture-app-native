@@ -65,6 +65,7 @@ export const SearchSuggestions = ({
         offerGenreTypes: undefined,
         offerNativeCategories: item.nativeCategory ? [item.nativeCategory] : undefined,
         offerCategories: item.category ? [item.category] : [],
+        gtls: [],
       }
 
       dispatch({

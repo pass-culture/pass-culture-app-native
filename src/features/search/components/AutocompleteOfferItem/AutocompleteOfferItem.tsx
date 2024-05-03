@@ -133,6 +133,7 @@ export function AutocompleteOfferItem({
       // @ts-expect-error: because of noUncheckedIndexedAccess
       offerCategories: shouldShowCategory ? mostPopularCategory : [],
       isFromHistory: undefined,
+      gtls: [],
     }
     addSearchHistory({
       query,
