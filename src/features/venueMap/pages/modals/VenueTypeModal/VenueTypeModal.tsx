@@ -7,16 +7,16 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
 import { VenueTypeSection } from 'features/venueMap/components/VenueTypeSection/VenueTypeSection'
-import { useSelectedVenue } from 'features/venueMap/store/selectedVenueStore'
-import {
-  useVenueTypeCode,
-  useVenueTypeCodeActions,
-} from 'features/venueMap/store/venueTypeCodeStore'
-import { useVenues } from 'features/venueMap/store/venuesStore'
 import { getGeolocatedVenues } from 'features/venueMap/helpers/getGeolocatedVenues/getGeolocatedVenues'
 import { getVenuesNumberByType } from 'features/venueMap/helpers/getVenuesNumberByType/getVenuesNumberByType'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
 import { venueTypesMapping } from 'features/venueMap/helpers/venueTypesMapping/venueTypesMapping'
+import { useSelectedVenue } from 'features/venueMap/store/selectedVenueStore'
+import { useVenues } from 'features/venueMap/store/venuesStore'
+import {
+  useVenueTypeCode,
+  useVenueTypeCodeActions,
+} from 'features/venueMap/store/venueTypeCodeStore'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
