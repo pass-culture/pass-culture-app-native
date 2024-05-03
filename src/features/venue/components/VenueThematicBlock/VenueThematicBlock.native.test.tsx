@@ -60,7 +60,7 @@ describe('<VenueThematicBlock/>', () => {
   })
 
   describe('when the user presses SubscribeButton', () => {
-    it('should notifies when subscription successes', async () => {
+    it('should notify when subscription succeeds', async () => {
       mockServer.postApi('/v1/profile', {})
 
       render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} />))
@@ -75,7 +75,7 @@ describe('<VenueThematicBlock/>', () => {
       })
     })
 
-    it('should notifies when subscription fails', async () => {
+    it('should notify when subscription fails', async () => {
       mockServer.postApi('/v1/profile', {
         responseOptions: { statusCode: 400, data: {} },
       })
