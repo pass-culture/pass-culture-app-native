@@ -1,9 +1,11 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useReducer } from 'react'
 import { FlatList, Platform, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
@@ -21,6 +23,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const OnboardingSubscription = () => {
+  const { replace } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...getTabNavConfig('Home'))
   const { user } = useAuthContext()
   const theme = useTheme()
@@ -58,6 +61,7 @@ export const OnboardingSubscription = () => {
         message: 'Tes préférences ont bien été enregistrées.',
         timeout: SNACK_BAR_TIME_OUT,
       })
+      replace(...homeNavConfig)
     },
     () => {
       showErrorSnackBar({
