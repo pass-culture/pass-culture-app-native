@@ -3,7 +3,7 @@ import React from 'react'
 import { VenueTypeCodeKey } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { VenueThematicBlock } from 'features/venue/components/VenueThematicBlock/VenueThematicBlock'
+import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
@@ -43,10 +43,10 @@ const alreadySubscribedUser = {
   },
 }
 
-describe('<VenueThematicBlock/>', () => {
+describe('<VenueThematicSection/>', () => {
   it('should render null if venue has no thematic', async () => {
     const venue = { ...venueFixture, venueTypeCode: VenueTypeCodeKey.ADMINISTRATIVE }
-    render(reactQueryProviderHOC(<VenueThematicBlock venue={venue} />))
+    render(reactQueryProviderHOC(<VenueThematicSection venue={venue} />))
 
     await waitFor(() => {
       expect(screen.toJSON()).toBeNull()
@@ -54,7 +54,7 @@ describe('<VenueThematicBlock/>', () => {
   })
 
   it('should render cinema block when venue is a movie theater', async () => {
-    render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} />))
+    render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
     expect(await screen.findByText('Fan de cinéma ?')).toBeOnTheScreen()
   })
@@ -63,7 +63,7 @@ describe('<VenueThematicBlock/>', () => {
     it('should notify when subscription succeeds', async () => {
       mockServer.postApi('/v1/profile', {})
 
-      render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} />))
+      render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
       fireEvent.press(screen.getByText('Suivre le thème'))
 
@@ -80,7 +80,7 @@ describe('<VenueThematicBlock/>', () => {
         responseOptions: { statusCode: 400, data: {} },
       })
 
-      render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} />))
+      render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
       fireEvent.press(screen.getByText('Suivre le thème'))
 
@@ -95,7 +95,7 @@ describe('<VenueThematicBlock/>', () => {
     it('should show logged out modal when user is not logged in', async () => {
       const loggedOutAuthContext = { ...baseAuthContext, isLoggedIn: false, user: undefined }
       mockUseAuthContext.mockReturnValueOnce(loggedOutAuthContext)
-      render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} />))
+      render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
       fireEvent.press(screen.getByText('Suivre le thème'))
 
@@ -108,7 +108,7 @@ describe('<VenueThematicBlock/>', () => {
         subscriptions: { marketingEmail: false, marketingPush: false, subscribedThemes: [] },
       }
       mockUseAuthContext.mockReturnValueOnce({ ...baseAuthContext, user: userWithNoNotifications })
-      render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} />))
+      render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
       fireEvent.press(screen.getByText('Suivre le thème'))
 
@@ -118,7 +118,7 @@ describe('<VenueThematicBlock/>', () => {
     it('should show unsubscribing confirmation modal when user subscribed and unsubscribe', async () => {
       mockServer.postApi('/v1/profile', {})
 
-      render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} />))
+      render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
       // Due to too many re-renders, we need to mock the auth context globally
       // eslint-disable-next-line local-rules/independent-mocks
@@ -143,7 +143,7 @@ describe('<VenueThematicBlock/>', () => {
       user: undefined,
     })
 
-    render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} />))
+    render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
     fireEvent.press(screen.getByText('Suivre le thème'))
 

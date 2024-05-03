@@ -11,13 +11,14 @@ import { NotificationsSettingsModal } from 'features/subscription/NotificationsS
 import { SubscriptionTheme } from 'features/subscription/types'
 import { mapVenueTypeToCategory } from 'features/venue/helpers/mapVenueTypeToCategory'
 import { useModal } from 'ui/components/modals/useModal'
+import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 interface Props {
   venue: VenueResponse
 }
 
-export const VenueThematicBlock: FunctionComponent<Props> = ({ venue }: Props) => {
+export const VenueThematicSection: FunctionComponent<Props> = ({ venue }: Props) => {
   const thematic = venue.venueTypeCode ? mapVenueTypeToCategory[venue.venueTypeCode] : null
   const [hasUserSubscribed, setHasUserSubscribed] = React.useState(false)
   const { user, isLoggedIn } = useAuthContext()
@@ -79,7 +80,7 @@ export const VenueThematicBlock: FunctionComponent<Props> = ({ venue }: Props) =
   if (!thematic || (isSubscribeButtonActive && !hasUserSubscribed)) return null
 
   return (
-    <React.Fragment>
+    <SectionWithDivider visible gap={0}>
       <ThematicSubscriptionBlock
         thematic={thematic}
         isSubscribeButtonActive={isSubscribeButtonActive}
@@ -102,6 +103,6 @@ export const VenueThematicBlock: FunctionComponent<Props> = ({ venue }: Props) =
         theme={thematic}
         onUnsubscribePress={onUnsubscribeConfirmationPress}
       />
-    </React.Fragment>
+    </SectionWithDivider>
   )
 }
