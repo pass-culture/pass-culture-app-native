@@ -9,6 +9,7 @@ export type StorageKey =
   | 'first_time_review_has_been_requested'
   | 'has_seen_birthday_notification_card'
   | 'has_seen_eligible_card'
+  | 'has_seen_onboarding_subscription'
   | 'has_seen_push_notifications_modal_once'
   | 'has_seen_tutorials'
   | 'logged_in_session_count'

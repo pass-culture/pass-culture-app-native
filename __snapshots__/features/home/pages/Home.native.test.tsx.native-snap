@@ -1,338 +1,196 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home page should render correctly 1`] = `
-<View
-  style={
-    [
-      {
-        "flexBasis": 1,
-        "flexGrow": 1,
-        "flexShrink": 0,
-      },
-    ]
-  }
->
+[
   <View
-    hide={false}
     style={
       [
         {
-          "height": "100%",
-          "overflow": "hidden",
+          "flexBasis": 1,
+          "flexGrow": 1,
+          "flexShrink": 0,
         },
       ]
     }
   >
-    <RCTScrollView
-      ListFooterComponent={
-        <FooterComponent
-          hasShownAll={true}
-        />
-      }
-      ListHeaderComponent={<Header />}
-      ListHeaderComponentStyle={
-        {
-          "zIndex": 1,
-        }
-      }
-      bounces={true}
-      data={
+    <View
+      hide={false}
+      style={
         [
           {
-            "data": undefined,
-            "displayParameters": {
-              "layout": "one-item-medium",
-              "minOffers": 1,
-              "subtitle": "Ceci n’est pas une playlist de lieux",
-              "title": "Exemple de playlist de lieux",
-            },
-            "id": "105MMz59tftcxXJICXt7ja",
-            "type": "VenuesModule",
-            "venuesParameters": {
-              "hitsPerPage": 15,
-              "title": "Exemple de playlist de lieux",
-              "venueTypes": [
-                "Bibliothèque ou médiathèque",
-                "Arts visuels, arts plastiques et galeries",
-                "Centre culturel",
-                "Cinéma - Salle de projections",
-                "Cours et pratique artistiques",
-                "Culture scientifique",
-                "Festival",
-                "Jeux / Jeux vidéos",
-                "Librairie",
-                "Magasin arts créatifs",
-                "Musique - Disquaire",
-                "Musique - Magasin d’instruments",
-                "Musique - Salle de concerts",
-                "Musée",
-                "Offre numérique",
-                "Patrimoine et tourisme",
-                "Spectacle vivant",
-                "Cinéma itinérant",
-                "Autre type de lieu",
-              ],
-            },
+            "height": "100%",
+            "overflow": "hidden",
           },
         ]
       }
-      getItem={[Function]}
-      getItemCount={[Function]}
-      initialNumToRender={10}
-      keyExtractor={[Function]}
-      onContentSizeChange={[Function]}
-      onLayout={[Function]}
-      onMomentumScrollBegin={[Function]}
-      onMomentumScrollEnd={[Function]}
-      onScroll={[Function]}
-      onScrollBeginDrag={[Function]}
-      onScrollEndDrag={[Function]}
-      removeClippedSubviews={false}
-      renderItem={[Function]}
-      scrollEventThrottle={16}
-      stickyHeaderIndices={[]}
-      testID="homeBodyScrollView"
-      viewabilityConfigCallbackPairs={[]}
     >
-      <View>
-        <View
-          onLayout={[Function]}
-          style={
-            {
-              "zIndex": 1,
-            }
+      <RCTScrollView
+        ListFooterComponent={
+          <FooterComponent
+            hasShownAll={true}
+          />
+        }
+        ListHeaderComponent={<Header />}
+        ListHeaderComponentStyle={
+          {
+            "zIndex": 1,
           }
-        >
+        }
+        bounces={true}
+        data={
+          [
+            {
+              "data": undefined,
+              "displayParameters": {
+                "layout": "one-item-medium",
+                "minOffers": 1,
+                "subtitle": "Ceci n’est pas une playlist de lieux",
+                "title": "Exemple de playlist de lieux",
+              },
+              "id": "105MMz59tftcxXJICXt7ja",
+              "type": "VenuesModule",
+              "venuesParameters": {
+                "hitsPerPage": 15,
+                "title": "Exemple de playlist de lieux",
+                "venueTypes": [
+                  "Bibliothèque ou médiathèque",
+                  "Arts visuels, arts plastiques et galeries",
+                  "Centre culturel",
+                  "Cinéma - Salle de projections",
+                  "Cours et pratique artistiques",
+                  "Culture scientifique",
+                  "Festival",
+                  "Jeux / Jeux vidéos",
+                  "Librairie",
+                  "Magasin arts créatifs",
+                  "Musique - Disquaire",
+                  "Musique - Magasin d’instruments",
+                  "Musique - Salle de concerts",
+                  "Musée",
+                  "Offre numérique",
+                  "Patrimoine et tourisme",
+                  "Spectacle vivant",
+                  "Cinéma itinérant",
+                  "Autre type de lieu",
+                ],
+              },
+            },
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        initialNumToRender={10}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={16}
+        stickyHeaderIndices={[]}
+        testID="homeBodyScrollView"
+        viewabilityConfigCallbackPairs={[]}
+      >
+        <View>
           <View
+            onLayout={[Function]}
             style={
-              [
-                {
-                  "flexGrow": 1,
-                  "flexShrink": 0,
-                  "zIndex": 1,
-                },
-              ]
+              {
+                "zIndex": 1,
+              }
             }
           >
             <View
-              customHeight={16}
-              enable={true}
               style={
                 [
                   {
-                    "height": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginHorizontal": 24,
-                    "marginTop": 24,
+                    "flexGrow": 1,
+                    "flexShrink": 0,
                     "zIndex": 1,
                   },
                 ]
               }
             >
               <View
+                customHeight={16}
+                enable={true}
                 style={
                   [
                     {
-                      "flexShrink": 1,
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "marginHorizontal": 24,
+                      "marginTop": 24,
+                      "zIndex": 1,
                     },
                   ]
                 }
               >
-                <Text
-                  numberOfLines={2}
+                <View
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Black",
-                        "fontSize": 26,
-                        "lineHeight": 34,
+                        "flexShrink": 1,
                       },
                     ]
                   }
                 >
-                  Bienvenue !
-                </Text>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                      },
-                    ]
-                  }
-                >
-                  Toute la culture à portée de main
-                </Text>
-              </View>
-              <View
-                accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onLayout={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  {
-                    "alignItems": "center",
-                    "marginLeft": 8,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Ouvrir la modale de localisation depuis le widget"
-              >
-                <View
-                  collapsable={false}
-                  isActive={true}
-                  style={
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#161617",
-                      "borderRadius": 40,
-                      "borderStyle": "solid",
-                      "borderWidth": 2,
-                      "height": 40,
-                      "justifyContent": "center",
-                      "width": 40,
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Black",
+                          "fontSize": 26,
+                          "lineHeight": 34,
+                        },
+                      ]
                     }
-                  }
-                >
-                  <View
-                    height={24}
-                    width={24}
                   >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
+                    Bienvenue !
+                  </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Toute la culture à portée de main
+                  </Text>
                 </View>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "maxWidth": 80,
-                        "paddingTop": 4,
-                      },
-                    ]
-                  }
-                >
-                  Ma position
-                </Text>
-              </View>
-              <Modal
-                accessibilityLabelledBy="testUuidV4"
-                accessibilityModal={true}
-                accessibilityRole="none"
-                animationType="none"
-                deviceHeight={1334}
-                deviceWidth={750}
-                hardwareAccelerated={false}
-                hideModalContentWhileAnimating={false}
-                onBackdropPress={[Function]}
-                onModalHide={[Function]}
-                onModalWillHide={[Function]}
-                onModalWillShow={[Function]}
-                onRequestClose={[Function]}
-                panResponderThreshold={4}
-                scrollHorizontal={false}
-                scrollOffset={0}
-                scrollOffsetMax={0}
-                scrollTo={null}
-                statusBarTranslucent={true}
-                supportedOrientations={
-                  [
-                    "portrait",
-                    "landscape",
-                  ]
-                }
-                swipeThreshold={100}
-                testID="modal"
-                transparent={true}
-                visible={false}
-              />
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "marginHorizontal": 24,
-                  },
-                ]
-              }
-            >
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  [
-                    {
-                      "marginBottom": 32,
-                    },
-                  ]
-                }
-              >
                 <View
-                  accessibilityRole="link"
+                  accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
+                  accessibilityRole="button"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -350,10 +208,11 @@ exports[`Home page should render correctly 1`] = `
                       "text": undefined,
                     }
                   }
-                  accessible={false}
+                  accessible={true}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
+                  onLayout={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
                   onResponderRelease={[Function]}
@@ -362,143 +221,286 @@ exports[`Home page should render correctly 1`] = `
                   onStartShouldSetResponder={[Function]}
                   style={
                     {
+                      "alignItems": "center",
+                      "marginLeft": 8,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
                   }
+                  testID="Ouvrir la modale de localisation depuis le widget"
                 >
                   <View
+                    collapsable={false}
+                    isActive={true}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#161617",
+                        "borderRadius": 40,
+                        "borderStyle": "solid",
+                        "borderWidth": 2,
+                        "height": 40,
+                        "justifyContent": "center",
+                        "width": 40,
+                      }
+                    }
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <Text
+                    numberOfLines={1}
                     style={
                       [
                         {
-                          "borderRadius": 7,
-                          "overflow": "hidden",
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "maxWidth": 80,
+                          "paddingTop": 4,
                         },
                       ]
                     }
                   >
+                    Ma position
+                  </Text>
+                </View>
+                <Modal
+                  accessibilityLabelledBy="testUuidV4"
+                  accessibilityModal={true}
+                  accessibilityRole="none"
+                  animationType="none"
+                  deviceHeight={1334}
+                  deviceWidth={750}
+                  hardwareAccelerated={false}
+                  hideModalContentWhileAnimating={false}
+                  onBackdropPress={[Function]}
+                  onModalHide={[Function]}
+                  onModalWillHide={[Function]}
+                  onModalWillShow={[Function]}
+                  onRequestClose={[Function]}
+                  panResponderThreshold={4}
+                  scrollHorizontal={false}
+                  scrollOffset={0}
+                  scrollOffsetMax={0}
+                  scrollTo={null}
+                  statusBarTranslucent={true}
+                  supportedOrientations={
+                    [
+                      "portrait",
+                      "landscape",
+                    ]
+                  }
+                  swipeThreshold={100}
+                  testID="modal"
+                  transparent={true}
+                  visible={false}
+                />
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "marginHorizontal": 24,
+                    },
+                  ]
+                }
+              >
+                <View
+                  numberOfSpaces={6}
+                  style={
+                    [
+                      {
+                        "height": 24,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "marginBottom": 32,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                  >
                     <View
-                      accessibilityIgnoresInvertColors={true}
                       style={
                         [
                           {
-                            "backgroundColor": "#eb0055",
-                            "justifyContent": "center",
-                            "width": "100%",
+                            "borderRadius": 7,
+                            "overflow": "hidden",
                           },
                         ]
                       }
                     >
-                      <Image
-                        source={
-                          {
-                            "uri": "",
-                          }
-                        }
-                        style={
-                          [
-                            {
-                              "bottom": 0,
-                              "left": 0,
-                              "position": "absolute",
-                              "right": 0,
-                              "top": 0,
-                            },
-                            {
-                              "height": undefined,
-                              "width": "100%",
-                            },
-                            undefined,
-                          ]
-                        }
-                        testID="module-background"
-                      />
                       <View
+                        accessibilityIgnoresInvertColors={true}
                         style={
                           [
                             {
-                              "alignItems": "center",
-                              "borderColor": "#90949D",
-                              "borderRadius": 7,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "padding": 16,
+                              "backgroundColor": "#eb0055",
+                              "justifyContent": "center",
                               "width": "100%",
                             },
-                            undefined,
                           ]
                         }
                       >
+                        <Image
+                          source={
+                            {
+                              "uri": "",
+                            }
+                          }
+                          style={
+                            [
+                              {
+                                "bottom": 0,
+                                "left": 0,
+                                "position": "absolute",
+                                "right": 0,
+                                "top": 0,
+                              },
+                              {
+                                "height": undefined,
+                                "width": "100%",
+                              },
+                              undefined,
+                            ]
+                          }
+                          testID="module-background"
+                        />
                         <View
                           style={
                             [
                               {
-                                "alignContent": "center",
-                                "marginRight": 16,
+                                "alignItems": "center",
+                                "borderColor": "#90949D",
+                                "borderRadius": 7,
+                                "borderStyle": "solid",
+                                "borderWidth": 1,
+                                "flexDirection": "row",
+                                "padding": 16,
+                                "width": "100%",
                               },
+                              undefined,
                             ]
                           }
                         >
                           <View
-                            height={32}
-                            testID="BicolorUnlock"
-                            width={32}
+                            style={
+                              [
+                                {
+                                  "alignContent": "center",
+                                  "marginRight": 16,
+                                },
+                              ]
+                            }
                           >
-                            <Text>
-                              BicolorUnlock-SVG-Mock
+                            <View
+                              height={32}
+                              testID="BicolorUnlock"
+                              width={32}
+                            >
+                              <Text>
+                                BicolorUnlock-SVG-Mock
+                              </Text>
+                            </View>
+                          </View>
+                          <View
+                            style={
+                              [
+                                {
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "marginRight": 16,
+                                  "textAlign": "start",
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#ffffff",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                            >
+                              Débloque ton crédit
+                            </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#ffffff",
+                                    "fontFamily": "Montserrat-Regular",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                            >
+                              Crée ton compte si tu as entre 15 et 18 ans !
                             </Text>
                           </View>
-                        </View>
-                        <View
-                          style={
-                            [
-                              {
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                                "marginRight": 16,
-                                "textAlign": "start",
-                              },
-                            ]
-                          }
-                        >
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#ffffff",
-                                  "fontFamily": "Montserrat-Bold",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                          >
-                            Débloque ton crédit
-                          </Text>
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#ffffff",
-                                  "fontFamily": "Montserrat-Regular",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                          >
-                            Crée ton compte si tu as entre 15 et 18 ans !
-                          </Text>
-                        </View>
-                        <View>
-                          <View
-                            height={24}
-                            width={24}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
+                          <View>
+                            <View
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
                           </View>
                         </View>
                       </View>
@@ -508,73 +510,104 @@ exports[`Home page should render correctly 1`] = `
               </View>
             </View>
           </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        />
-        <View
-          onLayout={[Function]}
-        >
           <View
-            customHeight={72}
-            enable={true}
-            style={
-              [
-                {
-                  "height": 72,
-                },
-              ]
-            }
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
           />
+          <View
+            onLayout={[Function]}
+          >
+            <View
+              customHeight={72}
+              enable={true}
+              style={
+                [
+                  {
+                    "height": 72,
+                  },
+                ]
+              }
+            />
+          </View>
         </View>
-      </View>
-    </RCTScrollView>
-  </View>
-  <View
-    numberOfSpaces={6}
-    style={
-      [
-        {
-          "height": 24,
-        },
-      ]
-    }
-  />
-  <View
-    height={16}
-    style={
-      [
-        {
-          "backdropFilter": "blur(20px)",
-          "height": 16,
-          "left": 0,
-          "overflow": "hidden",
-          "position": "absolute",
-          "right": 0,
-        },
-      ]
-    }
-  >
-    <BlurView
-      blurAmount={8}
-      blurType="light"
+      </RCTScrollView>
+    </View>
+    <View
+      numberOfSpaces={6}
       style={
         [
           {
-            "backgroundColor": "transparent",
+            "height": 24,
           },
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ],
         ]
       }
     />
-  </View>
-</View>
+    <View
+      height={16}
+      style={
+        [
+          {
+            "backdropFilter": "blur(20px)",
+            "height": 16,
+            "left": 0,
+            "overflow": "hidden",
+            "position": "absolute",
+            "right": 0,
+          },
+        ]
+      }
+    >
+      <BlurView
+        blurAmount={8}
+        blurType="light"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+            },
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+          ]
+        }
+      />
+    </View>
+  </View>,
+  <Modal
+    accessibilityLabelledBy="testUuidV4"
+    accessibilityModal={true}
+    accessibilityRole="none"
+    animationType="none"
+    deviceHeight={1334}
+    deviceWidth={750}
+    hardwareAccelerated={false}
+    hideModalContentWhileAnimating={false}
+    onBackdropPress={[Function]}
+    onModalHide={[Function]}
+    onModalWillHide={[Function]}
+    onModalWillShow={[Function]}
+    onRequestClose={[Function]}
+    panResponderThreshold={4}
+    scrollHorizontal={false}
+    scrollOffset={0}
+    scrollOffsetMax={0}
+    scrollTo={null}
+    statusBarTranslucent={true}
+    supportedOrientations={
+      [
+        "portrait",
+        "landscape",
+      ]
+    }
+    swipeThreshold={100}
+    testID="modal"
+    transparent={true}
+    visible={false}
+  />,
+]
 `;
