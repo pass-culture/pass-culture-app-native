@@ -5,16 +5,15 @@ import { useEffect, useState } from 'react'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { LocationMode } from 'libs/location/types'
 
-export const useSync = (shouldUpdate?: boolean) => {
+export const useSync = (shouldUpdate = true) => {
   const [isLocked, setIsLocked] = useState(false) // we use a locker to avoid glitches caused by params and state changed simultaneously
   const [canSwitchToAroundMe, setCanSwitchToAroundMe] = useState(false) // we use this flag to authorize the switch to AROUND_ME mode when location type in params is AROUND_ME
 
-  const { params } = useRoute<UseRouteType<'Search' | 'SearchFilter'>>()
+  const { params } = useRoute<UseRouteType<'SearchLanding' | 'SearchResults' | 'SearchFilter'>>()
   const { accessibilityFilter, ...searchStateParams } = params || {}
   const disabilitiesParams: Partial<DisabilitiesProperties> = accessibilityFilter || {}
   const { setParams } = useNavigation<UseNavigationType>()
@@ -31,7 +30,7 @@ export const useSync = (shouldUpdate?: boolean) => {
 
   // update params -> accessibilityContext
   useEffect(() => {
-    if (isLocked) return
+    if (isLocked || !shouldUpdate) return
     if (!!accessibilityFilter && !isEqual(accessibilityFilter, disabilities)) {
       setDisabilities({ ...disabilities, ...disabilitiesParams })
     }
@@ -40,11 +39,11 @@ export const useSync = (shouldUpdate?: boolean) => {
 
   // update params -> SearchState
   useEffect(() => {
-    if (isLocked) return
+    if (isLocked || !shouldUpdate) return
     if (!!params && !isEqual(searchStateParams, searchState)) {
       dispatch({
         type: 'SET_STATE',
-        payload: { ...initialSearchState, ...searchStateParams },
+        payload: { ...searchState, ...searchStateParams },
       })
 
       switch (params.locationFilter?.locationType) {
@@ -74,7 +73,7 @@ export const useSync = (shouldUpdate?: boolean) => {
   useEffect(() => {
     setIsLocked(true)
     const disabilityAndSearchContext = { ...searchState, accessibilityFilter: disabilities }
-    if (!isEqual(params, disabilityAndSearchContext || shouldUpdate)) {
+    if (!isEqual(params, disabilityAndSearchContext) && shouldUpdate) {
       setParams(disabilityAndSearchContext)
     }
     const timer = setTimeout(() => setIsLocked(false), 0)

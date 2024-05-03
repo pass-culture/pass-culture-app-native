@@ -151,7 +151,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
         >
           <button
             aria-label="Ouvrir un onglet ÉduConnect"
-            class="sc-eqUAAy cpmbaL sc-gsFSXq jrfwxw"
+            class="sc-eqUAAy cpmbaL sc-kAyceB dOhwHj"
             data-testid="Ouvrir un onglet ÉduConnect"
             tabindex="0"
             type="button"

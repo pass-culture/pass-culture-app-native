@@ -7,7 +7,6 @@ import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
-import { SearchView } from 'features/search/types'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import {
@@ -60,7 +59,6 @@ const defaultParams = {
   isDigital: false,
   priceRange: [0, 300],
   query: '',
-  view: SearchView.Landing,
   tags: [],
   timeRange: null,
   locationFilter: {
@@ -128,7 +126,7 @@ describe('<VenueOffers />', () => {
     expect(push).toHaveBeenCalledWith('TabNavigator', {
       screen: 'SearchStackNavigator',
       params: {
-        screen: 'Search',
+        screen: 'SearchResults',
         params: {
           ...defaultParams,
           venue: {
@@ -137,7 +135,6 @@ describe('<VenueOffers />', () => {
             label: 'Le Petit Rintintin 1',
             venueId: 5543,
           },
-          view: SearchView.Results,
         },
       },
     })

@@ -37,7 +37,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
     [
       QueryKeys.SEARCH_RESULTS,
-      { ...searchState, view: undefined },
+      searchState,
       userLocation,
       selectedLocationMode,
       aroundPlaceRadius,

@@ -1,7 +1,5 @@
 import { NavigationState } from '@react-navigation/native'
 
-import { SearchView } from 'features/search/types'
-
 import { sanitizeNavigationState } from './sanitizeNavigationState'
 
 describe('sanitizeNavigationState', () => {
@@ -37,7 +35,7 @@ describe('sanitizeNavigationState', () => {
         key: 'stack-rdubnndFgaqXyYK6noV_e',
         params: {
           screen: 'Search',
-          params: { locationFilter: { locationType: 'EVERYWHERE' }, view: SearchView.Results },
+          params: { locationFilter: { locationType: 'EVERYWHERE' } },
         },
         state: {
           routeNames: ['Home', 'Search'],

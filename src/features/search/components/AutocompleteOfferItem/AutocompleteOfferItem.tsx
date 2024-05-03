@@ -1,3 +1,4 @@
+import { useNavigationState } from '@react-navigation/native'
 import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
 import React, { useMemo } from 'react'
 import { Keyboard, Text } from 'react-native'
@@ -5,6 +6,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import {
@@ -12,7 +14,8 @@ import {
   getSearchGroupsEnumArrayFromNativeCategoryEnum,
   isNativeCategoryOfCategory,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
+import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
+import { CreateHistoryItem, SearchState } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -42,6 +45,10 @@ export function AutocompleteOfferItem({
     indexInfos.facets.analytics
 
   const { searchState, dispatch, hideSuggestions } = useSearch()
+  const routes = useNavigationState((state) => state?.routes)
+  const currentRoute = routes?.[routes?.length - 1]?.name
+  const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
+  const { disabilities } = useAccessibilityFiltersContext()
   const { data } = useSubcategories()
   const enableNewMapping = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS)
 
@@ -116,7 +123,6 @@ export function AutocompleteOfferItem({
     const newSearchState: SearchState = {
       ...searchState,
       query,
-      view: SearchView.Results,
       searchId,
       isAutocomplete: true,
       offerGenreTypes: undefined,
@@ -127,6 +133,7 @@ export function AutocompleteOfferItem({
       // @ts-expect-error: because of noUncheckedIndexedAccess
       offerCategories: shouldShowCategory ? mostPopularCategory : [],
       isFromHistory: undefined,
+      gtls: [],
     }
     addSearchHistory({
       query,
@@ -135,6 +142,9 @@ export function AutocompleteOfferItem({
       category: shouldShowCategory ? mostPopularCategory[0] : undefined,
     })
     dispatch({ type: 'SET_STATE', payload: newSearchState })
+    if (currentRoute === 'SearchLanding') {
+      navigateToSearchResults(newSearchState, disabilities)
+    }
     hideSuggestions()
   }
 

@@ -17,7 +17,7 @@ import {
   Hour,
   hoursSchema,
 } from 'features/search/helpers/schema/datesHoursSchema/datesHoursSchema'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
@@ -153,7 +153,6 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
         timeRange: hasSelectedHours && selectedHours ? selectedHours : null,
         beginningDatetime: undefined,
         endingDatetime: undefined,
-        view: SearchView.Results,
       }
 
       dispatch({ type: 'SET_STATE', payload: additionalSearchState })

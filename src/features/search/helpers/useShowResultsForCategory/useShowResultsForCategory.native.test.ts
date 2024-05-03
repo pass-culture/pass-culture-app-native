@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
-import { SearchView } from 'features/search/types'
 import { LocationMode } from 'libs/location/types'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
@@ -37,125 +37,116 @@ describe('useShowResultsForCategory', () => {
     }
   })
 
-  it('should set search state with staged search state and categories', () => {
+  it('should navigate to search results with search param when a category is selected', async () => {
     const { result: resultCallback } = renderHook(useShowResultsForCategory)
 
     resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
 
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      type: 'SET_STATE',
-      payload: {
-        beginningDatetime: undefined,
-        date: null,
-        endingDatetime: undefined,
-        hitsPerPage: 20,
-        locationFilter: { locationType: 'EVERYWHERE' },
-        offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
-        offerIsDuo: false,
-        offerIsFree: false,
-        offerSubcategories: [],
-        isDigital: false,
-        priceRange: [0, 300],
-        query: 'Big flo et Oli',
-        view: SearchView.Results,
-        tags: [],
-        timeRange: null,
-        searchId,
-        gtls: [],
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: {
+          beginningDatetime: undefined,
+          date: null,
+          endingDatetime: undefined,
+          hitsPerPage: 20,
+          locationFilter: { locationType: 'EVERYWHERE' },
+          offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
+          offerIsDuo: false,
+          offerIsFree: false,
+          offerSubcategories: [],
+          isDigital: false,
+          priceRange: [0, 300],
+          query: 'Big flo et Oli',
+          tags: [],
+          timeRange: null,
+          searchId,
+          gtls: [],
+          accessibilityFilter: {
+            isAudioDisabilityCompliant: undefined,
+            isMentalDisabilityCompliant: undefined,
+            isMotorDisabilityCompliant: undefined,
+            isVisualDisabilityCompliant: undefined,
+          },
+        },
+        screen: 'SearchResults',
       },
+      screen: 'SearchStackNavigator',
     })
   })
 
-  it('should set search state with isFullyDigitalOffersCategory param when category selected is only online platform', () => {
+  it('should navigate to search results with isFullyDigitalOffersCategory param when category selected is only online platform', async () => {
     const { result: resultCallback } = renderHook(useShowResultsForCategory)
 
     resultCallback.current(SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE)
 
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      type: 'SET_STATE',
-      payload: {
-        beginningDatetime: undefined,
-        date: null,
-        endingDatetime: undefined,
-        hitsPerPage: 20,
-        isFullyDigitalOffersCategory: true,
-        locationFilter: { locationType: 'EVERYWHERE' },
-        offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE],
-        offerIsDuo: false,
-        offerIsFree: false,
-        offerSubcategories: [],
-        isDigital: false,
-        priceRange: [0, 300],
-        query: 'Big flo et Oli',
-        view: SearchView.Results,
-        tags: [],
-        timeRange: null,
-        searchId,
-        gtls: [],
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: {
+          ...initialSearchState,
+          beginningDatetime: undefined,
+          date: null,
+          endingDatetime: undefined,
+          hitsPerPage: 20,
+          isFullyDigitalOffersCategory: true,
+          locationFilter: { locationType: 'EVERYWHERE' },
+          offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE],
+          offerIsDuo: false,
+          offerIsFree: false,
+          offerSubcategories: [],
+          isDigital: false,
+          priceRange: [0, 300],
+          query: 'Big flo et Oli',
+          tags: [],
+          timeRange: null,
+          searchId,
+          gtls: [],
+          accessibilityFilter: {
+            isAudioDisabilityCompliant: undefined,
+            isMentalDisabilityCompliant: undefined,
+            isMotorDisabilityCompliant: undefined,
+            isVisualDisabilityCompliant: undefined,
+          },
+        },
+        screen: 'SearchResults',
       },
+      screen: 'SearchStackNavigator',
     })
   })
 
-  it('should dispatch state to avoid useless fetch the time that the url parameters are loaded', () => {
-    const { result: resultCallback } = renderHook(useShowResultsForCategory)
-
-    resultCallback.current(SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE)
-
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      type: 'SET_STATE',
-      payload: {
-        beginningDatetime: undefined,
-        date: null,
-        endingDatetime: undefined,
-        hitsPerPage: 20,
-        isFullyDigitalOffersCategory: true,
-        locationFilter: { locationType: 'EVERYWHERE' },
-        offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE],
-        offerIsDuo: false,
-        offerIsFree: false,
-        offerSubcategories: [],
-        isDigital: false,
-        priceRange: [0, 300],
-        query: 'Big flo et Oli',
-        view: SearchView.Results,
-        tags: [],
-        timeRange: null,
-        searchId,
-        gtls: [],
-      },
-    })
-  })
-
-  it('should set search state without isFromHistory param when category selected and previous search was from history', () => {
-    mockSearchState = {
-      ...mockSearchState,
-      isFromHistory: true,
-    }
+  it('should navigate to search results without isFromHistory param when category selected and previous search was from history', async () => {
     const { result: resultCallback } = renderHook(useShowResultsForCategory)
 
     resultCallback.current(SearchGroupNameEnumv2.SPECTACLES)
 
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      type: 'SET_STATE',
-      payload: {
-        beginningDatetime: undefined,
-        date: null,
-        endingDatetime: undefined,
-        hitsPerPage: 20,
-        locationFilter: { locationType: 'EVERYWHERE' },
-        offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
-        offerIsDuo: false,
-        offerIsFree: false,
-        offerSubcategories: [],
-        isDigital: false,
-        priceRange: [0, 300],
-        query: 'Big flo et Oli',
-        view: SearchView.Results,
-        tags: [],
-        timeRange: null,
-        searchId,
-        gtls: [],
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: {
+          beginningDatetime: undefined,
+          date: null,
+          endingDatetime: undefined,
+          hitsPerPage: 20,
+          locationFilter: { locationType: 'EVERYWHERE' },
+          offerCategories: [SearchGroupNameEnumv2.SPECTACLES],
+          offerIsDuo: false,
+          offerIsFree: false,
+          offerSubcategories: [],
+          isDigital: false,
+          priceRange: [0, 300],
+          query: 'Big flo et Oli',
+          tags: [],
+          timeRange: null,
+          searchId,
+          gtls: [],
+          accessibilityFilter: {
+            isAudioDisabilityCompliant: undefined,
+            isMentalDisabilityCompliant: undefined,
+            isMotorDisabilityCompliant: undefined,
+            isVisualDisabilityCompliant: undefined,
+          },
+        },
+        screen: 'SearchResults',
       },
+      screen: 'SearchStackNavigator',
     })
   })
 })

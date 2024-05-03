@@ -903,7 +903,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 />
                 <View
-                  accessibilityLabel="Search"
+                  accessibilityLabel="SearchResults"
                   accessibilityRole="radio"
                   accessibilityState={
                     {
@@ -943,7 +943,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       "userSelect": "auto",
                     }
                   }
-                  testID="Search"
+                  testID="SearchResults"
                 >
                   <View
                     flex={0.9}
@@ -986,7 +986,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                           ]
                         }
                       >
-                        Search
+                        SearchResults
                       </Text>
                     </View>
                   </View>

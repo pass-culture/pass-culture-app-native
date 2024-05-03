@@ -40,7 +40,7 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
                   }
                 : { ...searchState, accessibilityFilter: disabilities }
               tabNavConfig = getTabNavConfig(route.name, {
-                screen: 'Search',
+                screen: 'SearchLanding',
                 params: searchParams,
               })
             }

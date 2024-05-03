@@ -8,7 +8,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -24,7 +24,6 @@ let mockSearchState: SearchState = {
   offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
   venue,
   priceRange: [0, 20],
-  view: SearchView.Results,
 }
 
 const mockDispatch = jest.fn()
@@ -204,7 +203,15 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-describe('<Search/>', () => {
+const mockedEmptyHistory = {
+  filteredHistory: [],
+  queryHistory: '',
+  addToHistory: jest.fn(),
+  removeFromHistory: jest.fn(),
+  search: jest.fn(),
+}
+
+describe('<SearchResults/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(() => {
@@ -213,7 +220,6 @@ describe('<Search/>', () => {
       offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
       venue,
       priceRange: [0, 20],
-      view: SearchView.Results,
     }
     mockIsFocusOnSuggestions = false
   })
@@ -292,13 +298,9 @@ describe('<Search/>', () => {
 
     it('should not display search history when it has not items', async () => {
       mockdate.set(TODAY_DATE)
-      mockUseSearchHistory.mockReturnValueOnce({
-        filteredHistory: [],
-        queryHistory: '',
-        addToHistory: jest.fn(),
-        removeFromHistory: jest.fn(),
-        search: jest.fn(),
-      })
+      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
+      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
+      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
       render(<SearchResults />)
       await act(async () => {})
 
@@ -329,7 +331,6 @@ describe('<Search/>', () => {
           payload: {
             ...mockSearchState,
             query: 'manga',
-            view: SearchView.Results,
             searchId,
             isFromHistory: true,
             isAutocomplete: undefined,
@@ -352,7 +353,6 @@ describe('<Search/>', () => {
           payload: {
             ...mockSearchState,
             query: 'tolkien',
-            view: SearchView.Results,
             searchId,
             isFromHistory: true,
             isAutocomplete: undefined,
@@ -375,7 +375,6 @@ describe('<Search/>', () => {
           payload: {
             ...mockSearchState,
             query: 'foresti',
-            view: SearchView.Results,
             searchId,
             isFromHistory: true,
             isAutocomplete: undefined,

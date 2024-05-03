@@ -6,7 +6,6 @@ import {
   getDefaultScreenParams,
 } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { ScreensUsedByMarketing } from 'features/internal/marketingAndCommunication/config/deeplinksExportConfig'
-import { SearchView } from 'features/search/types'
 import { LocationMode } from 'libs/location/types'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen } from 'tests/utils'
@@ -70,7 +69,7 @@ describe('<DeeplinksGeneratorForm />', () => {
     const onCreate = jest.fn()
     render(<DeeplinksGeneratorForm onCreate={onCreate} />)
     const generateButton = screen.getByTestId('Générer le lien')
-    const search = screen.getByText('Search')
+    const search = screen.getByText('SearchResults')
 
     fireEvent.press(search)
 
@@ -78,9 +77,9 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26from%3Ddeeplink%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%2Fresultats%3FlocationFilter%3D%255Bobject%2520Object%255D%26from%3Ddeeplink%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
-        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&from=deeplink&utm_gen=marketing',
+        'https://webapp-v2.example.com/recherche/resultats?locationFilter=%5Bobject%20Object%5D&from=deeplink&utm_gen=marketing',
     })
   })
 
@@ -88,7 +87,7 @@ describe('<DeeplinksGeneratorForm />', () => {
     const onCreate = jest.fn()
     render(<DeeplinksGeneratorForm onCreate={onCreate} />)
 
-    const search = screen.getByText('Search')
+    const search = screen.getByText('SearchResults')
     fireEvent.press(search)
 
     let categoryButton = screen.getByText('Arts & loisirs créatifs')
@@ -102,9 +101,9 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26from%3Ddeeplink%26offerCategories%3D%255B%2522ARTS_LOISIRS_CREATIFS%2522%255D%26offerNativeCategories%3D%255B%2522ARTS_VISUELS%2522%255D%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%2Fresultats%3FlocationFilter%3D%255Bobject%2520Object%255D%26from%3Ddeeplink%26offerCategories%3DARTS_LOISIRS_CREATIFS%26offerNativeCategories%3DARTS_VISUELS%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
-        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&from=deeplink&offerCategories=%5B%22ARTS_LOISIRS_CREATIFS%22%5D&offerNativeCategories=%5B%22ARTS_VISUELS%22%5D&utm_gen=marketing',
+        'https://webapp-v2.example.com/recherche/resultats?locationFilter=%5Bobject%20Object%5D&from=deeplink&offerCategories=ARTS_LOISIRS_CREATIFS&offerNativeCategories=ARTS_VISUELS&utm_gen=marketing',
     })
 
     categoryButton = screen.getByText('Concerts & festivals')
@@ -115,19 +114,18 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(2, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26from%3Ddeeplink%26offerCategories%3D%255B%2522CONCERTS_FESTIVALS%2522%255D%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%2Fresultats%3FlocationFilter%3D%255Bobject%2520Object%255D%26from%3Ddeeplink%26offerCategories%3DCONCERTS_FESTIVALS%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
-        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&from=deeplink&offerCategories=%5B%22CONCERTS_FESTIVALS%22%5D&utm_gen=marketing',
+        'https://webapp-v2.example.com/recherche/resultats?locationFilter=%5Bobject%20Object%5D&from=deeplink&offerCategories=CONCERTS_FESTIVALS&utm_gen=marketing',
     })
   })
 })
 
 describe('getDefaultScreenParams', () => {
   it('should return an object with view, locationFilter, from params when screen is Search', () => {
-    const defaultParams = getDefaultScreenParams('Search')
+    const defaultParams = getDefaultScreenParams('SearchResults')
 
     expect(defaultParams).toEqual({
-      view: SearchView.Results,
       locationFilter: { locationType: LocationMode.EVERYWHERE },
       from: 'deeplink',
     })

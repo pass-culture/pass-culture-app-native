@@ -18,7 +18,7 @@ describe('NoContentError', () => {
 
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
       screen: 'SearchStackNavigator',
-      params: { screen: 'Search' },
+      params: { screen: 'SearchLanding' },
     })
   })
 })

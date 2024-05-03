@@ -8,7 +8,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -210,6 +210,14 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
+const mockedEmptyHistory = {
+  filteredHistory: [],
+  queryHistory: '',
+  addToHistory: jest.fn(),
+  removeFromHistory: jest.fn(),
+  search: jest.fn(),
+}
+
 describe('<SearchLanding />', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
@@ -306,15 +314,12 @@ describe('<SearchLanding />', () => {
       expect(screen.getByText('Historique de recherche')).toBeOnTheScreen()
     })
 
-    it('should not display search history when it has not items', async () => {
+    it('should not display search history when it has no items', async () => {
       mockdate.set(TODAY_DATE)
-      mockUseSearchHistory.mockReturnValueOnce({
-        filteredHistory: [],
-        queryHistory: '',
-        addToHistory: jest.fn(),
-        removeFromHistory: jest.fn(),
-        search: jest.fn(),
-      })
+      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
+      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
+      mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
+
       render(<SearchLanding />)
       await act(async () => {})
 
@@ -345,7 +350,6 @@ describe('<SearchLanding />', () => {
           payload: {
             ...mockSearchState,
             query: 'manga',
-            view: SearchView.Results,
             searchId,
             isFromHistory: true,
             isAutocomplete: undefined,
@@ -368,7 +372,6 @@ describe('<SearchLanding />', () => {
           payload: {
             ...mockSearchState,
             query: 'tolkien',
-            view: SearchView.Results,
             searchId,
             isFromHistory: true,
             isAutocomplete: undefined,
@@ -391,7 +394,6 @@ describe('<SearchLanding />', () => {
           payload: {
             ...mockSearchState,
             query: 'foresti',
-            view: SearchView.Results,
             searchId,
             isFromHistory: true,
             isAutocomplete: undefined,

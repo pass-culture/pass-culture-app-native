@@ -1,6 +1,6 @@
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import {
   mockedAlgoliaVenueResponse,
   mockedAlgoliaResponse,
@@ -40,7 +40,7 @@ describe('useSearchResults', () => {
       )
 
       await flushAllPromisesWithAct()
-      rerender({ ...initialSearchState, view: SearchView.Results })
+      rerender({ ...initialSearchState })
 
       expect(fetchAlgoliaOffersAndVenuesSpy).toHaveBeenCalledTimes(1)
     })

@@ -11,7 +11,7 @@ import {
   DATE_TYPES,
   RadioButtonDate,
 } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -379,7 +379,6 @@ describe('<DatesHoursModal/>', () => {
           option: DATE_FILTER_OPTIONS.CURRENT_WEEK,
           selectedDate: '2022-10-28T00:00:00.000Z',
         },
-        view: SearchView.Results,
       }
 
       expect(mockDispatch).toHaveBeenCalledWith({
@@ -394,7 +393,6 @@ describe('<DatesHoursModal/>', () => {
       it('with actual state without change when pressing button', async () => {
         mockSearchState = {
           ...searchState,
-          view: SearchView.Results,
         }
         renderDatesHoursModal()
 
@@ -408,10 +406,7 @@ describe('<DatesHoursModal/>', () => {
 
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',
-          payload: {
-            ...mockSearchState,
-            view: SearchView.Results,
-          },
+          payload: mockSearchState,
         })
       })
 
@@ -443,7 +438,6 @@ describe('<DatesHoursModal/>', () => {
             payload: {
               ...mockSearchState,
               date: { selectedDate: TODAY.toISOString(), option: type },
-              view: SearchView.Results,
             },
           })
         }
@@ -475,7 +469,6 @@ describe('<DatesHoursModal/>', () => {
           payload: {
             ...mockSearchState,
             timeRange: [18, 23],
-            view: SearchView.Results,
           },
         })
       })
@@ -502,7 +495,6 @@ describe('<DatesHoursModal/>', () => {
             ...mockSearchState,
             beginningDatetime: UNDEFINED_DATE,
             endingDatetime: UNDEFINED_DATE,
-            view: SearchView.Results,
           },
         })
       })

@@ -1,5 +1,4 @@
 import { initialSearchState } from 'features/search/context/reducer'
-import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, renderHook } from 'tests/utils'
@@ -150,7 +149,6 @@ describe('useVenueModal', () => {
       payload: {
         ...initialSearchState,
         venue: venue,
-        view: SearchView.Results,
       },
     })
   })

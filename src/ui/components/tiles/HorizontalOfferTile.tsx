@@ -73,7 +73,7 @@ export const HorizontalOfferTile = ({
       ...analyticsParams,
     })
 
-    if (analyticsParams.from === 'search')
+    if (analyticsParams.from === 'searchresults')
       logClickOnOffer({ objectID, position: analyticsParams.index ?? 0 })
   }
 

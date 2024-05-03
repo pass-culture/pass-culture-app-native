@@ -1,5 +1,5 @@
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
-import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
+import { tabNavigatorPathConfig } from 'features/navigation/TabBar/__mocks__/routes'
 
 import { RootRoute } from '../types'
 

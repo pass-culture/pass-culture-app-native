@@ -1,12 +1,13 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigationRef } from 'features/navigation/navigationRef'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchView, SearchState } from 'features/search/types'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -53,7 +54,6 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
 }))
 
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
-
 const mockClear = jest.fn()
 let mockQuery = ''
 jest.mock('react-instantsearch-core', () => ({
@@ -90,7 +90,7 @@ const mockRoutes = [
     name: 'TabNavigator',
     params: {
       screen: 'SearchStackNavigator',
-      params: { screen: 'Search', params: { view: SearchView.Results } },
+      params: { screen: 'SearchResults' },
     },
   },
 ]
@@ -102,7 +102,7 @@ const mockRoutesWithVenue = [
     name: 'TabNavigator',
     params: {
       screen: 'SearchStackNavigator',
-      params: { screen: 'Search', params: { view: SearchView.Results } },
+      params: { screen: 'SearchResults' },
     },
   },
 ]
@@ -156,11 +156,40 @@ describe('SearchBox component', () => {
       payload: {
         ...initialSearchState,
         query: 'jazzaza',
-        view: SearchView.Results,
         offerCategories: mockSearchState.offerCategories,
         priceRange: mockSearchState.priceRange,
         searchId,
       },
+    })
+  })
+
+  it('should navigate to search results on submit', async () => {
+    renderSearchBox()
+
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+
+    await act(async () => {
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
+    })
+
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: {
+          ...initialSearchState,
+          query: 'jazzaza',
+          offerCategories: mockSearchState.offerCategories,
+          priceRange: mockSearchState.priceRange,
+          searchId,
+          accessibilityFilter: {
+            isAudioDisabilityCompliant: undefined,
+            isMentalDisabilityCompliant: undefined,
+            isMotorDisabilityCompliant: undefined,
+            isVisualDisabilityCompliant: undefined,
+          },
+        },
+        screen: 'SearchResults',
+      },
+      screen: 'SearchStackNavigator',
     })
   })
 
@@ -175,7 +204,8 @@ describe('SearchBox component', () => {
   })
 
   it('should show back button when being on the search results view', async () => {
-    mockSearchState = { ...mockSearchState, view: SearchView.Results }
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
     renderSearchBox()
 
     const previousButton = screen.getByTestId('Revenir en arrière')
@@ -226,10 +256,7 @@ describe('SearchBox component', () => {
 
     it('should unfocus from suggestion when being focus on the suggestions and press back button', async () => {
       mockIsFocusOnSuggestions = true
-      mockSearchState = {
-        ...mockSearchState,
-        view: SearchView.Results,
-      }
+      useRoute.mockReturnValueOnce({ name: SearchView.Landing })
 
       renderSearchBox()
       const previousButton = screen.getByTestId('Revenir en arrière')
@@ -243,10 +270,8 @@ describe('SearchBox component', () => {
 
     it('should hide suggestions when being focus on suggestions and press back button on landing view', async () => {
       mockIsFocusOnSuggestions = true
-      mockSearchState = {
-        ...mockSearchState,
-        view: SearchView.Landing,
-      }
+      useRoute.mockReturnValueOnce({ name: SearchView.Landing })
+
       renderSearchBox()
 
       const previousButton = screen.getByTestId('Revenir en arrière')
@@ -284,10 +309,8 @@ describe('SearchBox component', () => {
     })
 
     it('should stay on the current view when focusing search input and being on the %s view', async () => {
-      mockSearchState = {
-        ...mockSearchState,
-        view: SearchView.Results,
-      }
+      useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
       renderSearchBox()
 
       const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
@@ -318,7 +341,6 @@ describe('SearchBox component', () => {
         payload: {
           ...mockSearchState,
           query: '',
-          view: SearchView.Results,
         },
       })
       expect(mockClear).toHaveBeenCalledTimes(1)
@@ -327,9 +349,10 @@ describe('SearchBox component', () => {
     it('should reset input when user click on reset icon when being on the search results view when isDesktopViewport', async () => {
       mockSearchState = {
         ...mockSearchState,
-        view: SearchView.Results,
         query: 'Some text',
       }
+      useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
       mockQuery = 'Some text'
       renderSearchBox(true)
 
@@ -343,7 +366,6 @@ describe('SearchBox component', () => {
         payload: {
           ...mockSearchState,
           query: '',
-          view: SearchView.Results,
         },
       })
       expect(mockClear).toHaveBeenCalledTimes(1)
@@ -353,9 +375,10 @@ describe('SearchBox component', () => {
   it('should reset searchState when user go goBack to Landing', async () => {
     mockSearchState = {
       ...mockSearchState,
-      view: SearchView.Results,
       query: 'Some text',
     }
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
     mockQuery = 'Some text'
     renderSearchBox(true)
 
@@ -384,7 +407,6 @@ describe('SearchBox component', () => {
       payload: {
         ...initialSearchState,
         query: 'jazzaza',
-        view: SearchView.Results,
         offerCategories: mockSearchState.offerCategories,
         priceRange: mockSearchState.priceRange,
         searchId,
@@ -407,9 +429,10 @@ describe('SearchBox component', () => {
   it('should hide the search filter button when being on the search landing view', async () => {
     mockSearchState = {
       ...mockSearchState,
-      view: SearchView.Landing,
       query: 'la fnac',
     }
+    useRoute.mockReturnValueOnce({ name: SearchView.Landing })
+
     renderSearchBox()
 
     await act(async () => {
@@ -421,9 +444,10 @@ describe('SearchBox component', () => {
     mockIsFocusOnSuggestions = true
     mockSearchState = {
       ...mockSearchState,
-      view: SearchView.Results,
       query: 'la fnac',
     }
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
     renderSearchBox()
 
     await act(async () => {
@@ -432,7 +456,9 @@ describe('SearchBox component', () => {
   })
 
   it(`should not display Le Petit Rintintin 1 in location search widget when a venue is selected`, async () => {
-    mockSearchState = { ...initialSearchState, view: SearchView.Results, venue }
+    mockSearchState = { ...initialSearchState, venue }
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
     renderSearchBox()
 
     await act(async () => {})
@@ -443,9 +469,10 @@ describe('SearchBox component', () => {
   it('should not display locationSearchWidget when isDesktopViewport = true', async () => {
     mockSearchState = {
       ...initialSearchState,
-      view: SearchView.Results,
       locationFilter: { locationType: LocationMode.EVERYWHERE },
     }
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
     mockPosition = DEFAULT_POSITION
     renderSearchBox()
 
@@ -455,7 +482,7 @@ describe('SearchBox component', () => {
   })
 })
 
-describe('SearchBox component with venue previous route', () => {
+describe('SearchBox component with venue previous route on search results', () => {
   beforeEach(() => {
     jest.spyOn(navigationRef, 'getState').mockReturnValue({
       key: 'Navigator',
@@ -465,13 +492,10 @@ describe('SearchBox component with venue previous route', () => {
       type: 'tab',
       stale: false,
     })
+    useRoute.mockReturnValue({ name: SearchView.Results })
   })
 
   it('should unselect the venue and set the view to Landing when current rout is search and previous route is Venue and the user user press the back button', async () => {
-    mockSearchState = {
-      ...mockSearchState,
-      view: SearchView.Results,
-    }
     renderSearchBox()
 
     const previousButton = screen.getByTestId('Revenir en arrière')
@@ -482,15 +506,11 @@ describe('SearchBox component with venue previous route', () => {
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_STATE',
-      payload: { ...mockSearchState, view: SearchView.Landing, venue: undefined },
+      payload: { ...mockSearchState, venue: undefined },
     })
   })
 
   it('should execute go back when current route is search and previous route is Venue', async () => {
-    mockSearchState = {
-      ...mockSearchState,
-      view: SearchView.Results,
-    }
     renderSearchBox()
 
     const previousButton = screen.getByTestId('Revenir en arrière')

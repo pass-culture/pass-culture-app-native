@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/constant'
@@ -27,9 +27,8 @@ import { getSpacing } from 'ui/theme'
 const MAX_VENUE_CHARACTERS = 20
 
 const VenueMapPage: FunctionComponent = () => {
-  const { goBack } = useGoBack(
-    ...getTabNavConfig('SearchStackNavigator', { screen: 'Search', params: undefined })
-  )
+  const { goBack } = useGoBack(...getSearchStackConfig('SearchLanding'))
+
   const { venueMapState } = useVenueMapState()
   const enableVenueMapTypeFilter = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER)
 

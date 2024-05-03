@@ -77,7 +77,7 @@ describe('OffersModule', () => {
     expect(push).toHaveBeenCalledWith('TabNavigator', {
       screen: 'SearchStackNavigator',
       params: {
-        screen: 'Search',
+        screen: 'SearchResults',
         params: {
           beginningDatetime: undefined,
           date: null,
@@ -99,7 +99,6 @@ describe('OffersModule', () => {
           query: '',
           tags: [],
           timeRange: null,
-          view: 'Results',
         },
       },
     })

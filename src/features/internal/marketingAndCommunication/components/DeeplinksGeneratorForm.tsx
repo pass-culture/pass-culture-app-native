@@ -22,7 +22,7 @@ import { isSearchStackScreen } from 'features/navigation/SearchStackNavigator/ro
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
-import { LocationFilter, SearchView } from 'features/search/types'
+import { LocationFilter } from 'features/search/types'
 import { env } from 'libs/environment'
 import { LocationMode } from 'libs/location/types'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers/getDisplayPrice'
@@ -55,9 +55,8 @@ type DeeplinksAppParams = Record<string, unknown> & {
 }
 
 export function getDefaultScreenParams(screenName: ScreensUsedByMarketing) {
-  if (screenName === 'Search') {
+  if (screenName === 'SearchResults') {
     return {
-      view: SearchView.Results,
       locationFilter: { locationType: LocationMode.EVERYWHERE },
       from: 'deeplink',
     }
@@ -302,7 +301,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     let universalLink = `https://${env.WEBAPP_V2_DOMAIN}${screenPath}`
     let firebaseLink = generateLongFirebaseDynamicLink(universalLink, fdlParams)
 
-    if (selectedScreen === 'Search' && appParams.URL) {
+    if (selectedScreen === 'SearchResults' && appParams.URL) {
       universalLink = appParams.URL as string
       firebaseLink = generateLongFirebaseDynamicLink(universalLink, fdlParams)
     }

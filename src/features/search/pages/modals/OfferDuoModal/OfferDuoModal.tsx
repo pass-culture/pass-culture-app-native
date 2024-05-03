@@ -9,7 +9,7 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
@@ -113,8 +113,6 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
       const additionalSearchState: SearchState = {
         ...searchState,
         offerIsDuo: values.offerIsDuo,
-
-        view: SearchView.Results,
       }
 
       dispatch({ type: 'SET_STATE', payload: additionalSearchState })

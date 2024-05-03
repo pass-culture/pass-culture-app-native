@@ -4,23 +4,34 @@ import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/g
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
-import { Search } from 'features/search/pages/Search/Search'
 import { SearchN1Books } from 'features/search/pages/Search/SearchN1Books/SearchN1Books'
+import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
+import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 
 import { SearchStackRoute, SearchStackParamList, SearchStackRouteName } from './types'
 
-const initialRouteName = 'Search'
+export const initialSearchStackRouteName: SearchStackRouteName = 'SearchLanding'
 
 const routes: SearchStackRoute[] = [
   {
-    name: 'Search',
-    component: Search,
+    name: 'SearchLanding',
+    component: SearchLanding,
     pathConfig: {
-      path: 'recherche',
-      parse: screenParamsParser['Search'],
-      stringify: screenParamsStringifier['Search'],
+      path: 'recherche/accueil',
+      parse: screenParamsParser['SearchLanding'],
+      stringify: screenParamsStringifier['SearchLanding'],
     },
-    options: { title: 'recherche' },
+    options: { title: 'Rechercher des offres' },
+  },
+  {
+    name: 'SearchResults',
+    component: SearchResults,
+    pathConfig: {
+      path: 'recherche/resultats',
+      parse: screenParamsParser['SearchResults'],
+      stringify: screenParamsStringifier['SearchResults'],
+    },
+    options: { title: 'Résultats de recherche' },
   },
   {
     name: 'SearchN1Books',
@@ -41,7 +52,7 @@ const { screensConfig: searchScreensConfig, Screens: SearchScreens } = getScreen
 export { SearchScreens }
 
 export const searchNavigatorPathConfig: LinkingOptions<SearchStackParamList>['config'] = {
-  initialRouteName,
+  initialRouteName: initialSearchStackRouteName,
   screens: searchScreensConfig,
 }
 

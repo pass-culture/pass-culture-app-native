@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
@@ -39,13 +40,10 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
           let tabNavConfig = getTabNavConfig(route.name)
 
           if (route.isSelected && route.name === 'SearchStackNavigator') {
-            tabNavConfig = getTabNavConfig('SearchStackNavigator', {
-              screen: 'Search',
-              params: {
-                ...initialSearchState,
-                locationFilter,
-                accessibilityFilter: defaultDisabilitiesProperties,
-              },
+            tabNavConfig = getSearchStackConfig('SearchLanding', {
+              ...initialSearchState,
+              locationFilter,
+              accessibilityFilter: defaultDisabilitiesProperties,
             })
           }
           return (

@@ -1,20 +1,17 @@
+import { useNavigationState } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
 import { Configure, Index } from 'react-instantsearch-core'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import {
-  CreateHistoryItem,
-  Highlighted,
-  HistoryItem,
-  SearchState,
-  SearchView,
-} from 'features/search/types'
+import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
+import { CreateHistoryItem, Highlighted, HistoryItem, SearchState } from 'features/search/types'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { analytics } from 'libs/analytics'
@@ -36,6 +33,9 @@ export const SearchSuggestions = ({
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
   const { venue } = searchState
+  const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
+  const routes = useNavigationState((state) => state?.routes)
+  const currentRoute = routes?.[routes?.length - 1]?.name
 
   const searchVenuePosition = buildSearchVenuePosition(
     { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius },
@@ -59,22 +59,25 @@ export const SearchSuggestions = ({
       const newSearchState: SearchState = {
         ...searchState,
         query: item.query,
-        view: SearchView.Results,
         searchId,
         isFromHistory: true,
         isAutocomplete: undefined,
         offerGenreTypes: undefined,
         offerNativeCategories: item.nativeCategory ? [item.nativeCategory] : undefined,
         offerCategories: item.category ? [item.category] : [],
+        gtls: [],
       }
 
       dispatch({
         type: 'SET_STATE',
         payload: newSearchState,
       })
+      if (currentRoute === 'SearchLanding') {
+        navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
+      }
       hideSuggestions()
     },
-    [dispatch, searchState, hideSuggestions]
+    [dispatch, searchState, hideSuggestions, navigateToSearchResults, currentRoute]
   )
 
   const onVenuePress = async (venueId: number) => {

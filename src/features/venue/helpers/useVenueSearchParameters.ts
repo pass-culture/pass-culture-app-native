@@ -1,7 +1,7 @@
 import { VenueResponse } from 'api/gen'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 
 export const useVenueSearchParameters = (dataVenue?: VenueResponse): SearchState => {
   const {
@@ -34,7 +34,6 @@ export const useVenueSearchParameters = (dataVenue?: VenueResponse): SearchState
     tags: [],
     date: null,
     timeRange: null,
-    view: SearchView.Landing,
     query: '',
     venue,
   }

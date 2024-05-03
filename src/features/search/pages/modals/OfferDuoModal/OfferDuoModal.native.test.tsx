@@ -8,7 +8,7 @@ import {
   OfferDuoModal,
   OfferDuoModalProps,
 } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -180,7 +180,6 @@ describe('<OfferDuoModal/>', () => {
       const expectedSearchParams: SearchState = {
         ...searchState,
         offerIsDuo: true,
-        view: SearchView.Results,
       }
 
       await waitFor(() => {
@@ -207,7 +206,6 @@ describe('<OfferDuoModal/>', () => {
           type: 'SET_STATE',
           payload: {
             ...mockSearchState,
-            view: SearchView.Results,
             offerIsDuo: true,
           },
         })
@@ -226,7 +224,6 @@ describe('<OfferDuoModal/>', () => {
           type: 'SET_STATE',
           payload: {
             ...mockSearchState,
-            view: SearchView.Results,
             offerIsDuo: false,
           },
         })

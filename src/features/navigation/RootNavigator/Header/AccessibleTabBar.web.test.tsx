@@ -3,7 +3,7 @@ import React from 'react'
 
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import * as navigationRefAPI from 'features/navigation/navigationRef'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
@@ -82,10 +82,7 @@ describe('AccessibleTabBar', () => {
     })
 
     expect(navigateFromRefSpy).toHaveBeenCalledWith(
-      ...getTabNavConfig('SearchStackNavigator', {
-        screen: 'Search',
-        params: mockSearchState,
-      })
+      ...getSearchStackConfig('SearchLanding', mockSearchState)
     )
   })
 
@@ -102,7 +99,7 @@ describe('AccessibleTabBar', () => {
     })
 
     expect(navigateFromRefSpy).toHaveBeenCalledWith(
-      ...getTabNavConfig('SearchStackNavigator', { screen: 'Search', params: mockSearchState })
+      ...getSearchStackConfig('SearchLanding', mockSearchState)
     )
   })
 })

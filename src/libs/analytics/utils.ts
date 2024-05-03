@@ -1,6 +1,7 @@
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { DisabilitiesProperties } from 'features/accessibility/types'
+import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { SearchState } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
 
@@ -84,11 +85,14 @@ export const buildAccessibilityFilterParam = (disabilities: DisabilitiesProperti
   return JSON.stringify(formattedDisability, null, 2)
 }
 
-export const buildPerformSearchState = (searchState: SearchState) => {
+export const buildPerformSearchState = (
+  searchState: SearchState,
+  currentView: SearchStackRouteName
+) => {
   const state: PerformSearchState = {
     searchLocationFilter: buildLocationFilterParam(searchState),
     searchId: searchState.searchId,
-    searchView: searchState.view,
+    searchView: currentView,
   }
 
   if (searchState.date !== null) {

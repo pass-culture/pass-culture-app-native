@@ -21,7 +21,7 @@ export const SubcategoryButton = ({
   accessibilityLabel,
   colors,
 }: SubcategoryButtonProps) => {
-  const searchStackConfig = getSearchStackConfig('Search')
+  const searchStackConfig = getSearchStackConfig('SearchResults')
   return (
     <StyledTouchable
       navigateTo={{

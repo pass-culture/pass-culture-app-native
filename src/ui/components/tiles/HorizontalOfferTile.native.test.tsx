@@ -17,7 +17,7 @@ import { HorizontalOfferTile } from './HorizontalOfferTile'
 const mockOffer = mockedAlgoliaResponse.hits[0]
 const offerId = Number(mockOffer.objectID)
 const mockAnalyticsParams: OfferAnalyticsParams = {
-  from: 'search',
+  from: 'searchresults',
   query: '',
   index: 0,
   searchId: '539b285e',
@@ -62,7 +62,7 @@ describe('HorizontalOfferTile component', () => {
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('Offer', {
         id: offerId,
-        from: 'search',
+        from: 'searchresults',
         searchId: '539b285e',
       })
     })
@@ -80,7 +80,7 @@ describe('HorizontalOfferTile component', () => {
       expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
       expect(analytics.logConsultOffer).toHaveBeenCalledWith({
         offerId,
-        from: 'search',
+        from: 'searchresults',
         query: '',
         index: 0,
         searchId: '539b285e',

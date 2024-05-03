@@ -7,7 +7,6 @@ import { push, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { SearchView } from 'features/search/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -95,7 +94,6 @@ const defaultParams = {
   isDigital: false,
   priceRange: [0, 300],
   query: '',
-  view: SearchView.Landing,
   tags: [],
   timeRange: null,
   locationFilter: { locationType: LocationMode.EVERYWHERE },
@@ -118,10 +116,9 @@ describe('<Venue />', () => {
       expect(push).toHaveBeenCalledWith('TabNavigator', {
         screen: 'SearchStackNavigator',
         params: {
-          screen: 'Search',
+          screen: 'SearchResults',
           params: {
             ...defaultParams,
-            view: SearchView.Results,
             venue: {
               label: 'Le Petit Rintintin 1',
               info: 'Paris',
@@ -165,7 +162,7 @@ describe('<Venue />', () => {
     })
 
     it('should not log consult venue when URL has "from" param with something other than deeplink', async () => {
-      renderVenue(venueId, 'search')
+      renderVenue(venueId, 'searchresults')
       await act(async () => {})
 
       expect(analytics.logConsultVenue).not.toHaveBeenCalled()

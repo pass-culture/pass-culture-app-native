@@ -1,7 +1,7 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
-import { SearchView } from 'features/search/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -32,26 +32,33 @@ describe('CategoriesButtons', () => {
     })
   })
 
-  it('should update searchContext on press', async () => {
+  it('should navigate to search results with search params on press', async () => {
     render(<CategoriesButtons />)
 
     const categoryButton = screen.getByText('Spectacles')
     fireEvent.press(categoryButton)
-
     await waitFor(async () => {
-      expect(mockDispatch).toHaveBeenCalledWith({
-        payload: {
-          ...mockSearchState,
-          offerSubcategories: [],
-          offerNativeCategories: undefined,
-          offerGenreTypes: undefined,
-          searchId: 'testUuidV4',
-          isFullyDigitalOffersCategory: undefined,
-          isFromHistory: undefined,
-          view: SearchView.Results,
-          offerCategories: ['SPECTACLES'],
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          params: {
+            ...mockSearchState,
+            offerSubcategories: [],
+            offerNativeCategories: undefined,
+            offerGenreTypes: undefined,
+            searchId: 'testUuidV4',
+            isFullyDigitalOffersCategory: undefined,
+            isFromHistory: undefined,
+            offerCategories: ['SPECTACLES'],
+            accessibilityFilter: {
+              isAudioDisabilityCompliant: undefined,
+              isMentalDisabilityCompliant: undefined,
+              isMotorDisabilityCompliant: undefined,
+              isVisualDisabilityCompliant: undefined,
+            },
+          },
+          screen: 'SearchResults',
         },
-        type: 'SET_STATE',
+        screen: 'SearchStackNavigator',
       })
     })
   })

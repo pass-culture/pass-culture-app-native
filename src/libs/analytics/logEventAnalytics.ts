@@ -11,6 +11,7 @@ import { IDOrigin } from 'features/identityCheck/pages/identification/ubble/Sele
 import { IDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals, StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
@@ -467,12 +468,13 @@ export const logEventAnalytics = {
   logPerformSearch: (
     searchState: SearchState,
     disabilities: DisabilitiesProperties,
-    nbHits: number
+    nbHits: number,
+    currentView: SearchStackRouteName
   ) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.PERFORM_SEARCH },
       {
-        ...buildPerformSearchState(searchState),
+        ...buildPerformSearchState(searchState, currentView),
         accessibilityFilter: buildAccessibilityFilterParam(disabilities),
         searchNbResults: nbHits,
       }

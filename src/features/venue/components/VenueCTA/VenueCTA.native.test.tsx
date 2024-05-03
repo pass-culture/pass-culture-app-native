@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { push } from '__mocks__/@react-navigation/native'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import * as useNavigateToSearchWithVenueOffers from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
@@ -21,7 +21,6 @@ const defaultParams: SearchState = {
   isDigital: false,
   priceRange: [0, 300],
   query: '',
-  view: SearchView.Landing,
   tags: [],
   timeRange: null,
   locationFilter: {
@@ -42,8 +41,8 @@ jest
     params: {
       screen: 'SearchStackNavigator',
       params: {
-        screen: 'Search',
-        params: { ...defaultParams, view: SearchView.Results },
+        screen: 'SearchResults',
+        params: defaultParams,
       },
     },
     withPush: true,
@@ -66,9 +65,8 @@ describe('<VenueCTA />', () => {
               label: 'Le Petit Rintintin 1',
               venueId: 5543,
             },
-            view: SearchView.Results,
           },
-          screen: 'Search',
+          screen: 'SearchResults',
         },
         screen: 'SearchStackNavigator',
       })

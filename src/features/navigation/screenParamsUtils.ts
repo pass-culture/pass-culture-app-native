@@ -18,7 +18,8 @@ type ScreensRequiringParsing = Extract<
   | 'SuspensionChoice'
   | 'LocationFilter'
   | 'ThematicHome'
-  | 'Search'
+  | 'SearchLanding'
+  | 'SearchResults'
   | 'SearchN1Books'
 >
 
@@ -129,7 +130,8 @@ export const screenParamsParser: ParamsParsers = {
   VenueMap: {
     initialVenues: JSON.parse,
   },
-  Search: searchParamsParser,
+  SearchResults: searchParamsParser,
+  SearchLanding: searchParamsParser,
   SearchN1Books: searchParamsParser,
   SearchFilter: searchParamsParser,
   LocationFilter: {
@@ -178,7 +180,12 @@ function parseDataWithISODates(data: any) {
 
 type ScreensRequiringStringifying = Extract<
   ScreenNames,
-  'SearchFilter' | 'LocationFilter' | 'Search' | 'SearchN1Books' | 'VenueMap'
+  | 'SearchFilter'
+  | 'LocationFilter'
+  | 'SearchLanding'
+  | 'SearchResults'
+  | 'SearchN1Books'
+  | 'VenueMap'
 >
 type ParamsStringifiers = {
   [Screen in ScreensRequiringStringifying]: {
@@ -222,7 +229,8 @@ const searchParamsStringifier = {
 
 export const screenParamsStringifier: ParamsStringifiers = {
   SearchFilter: searchParamsStringifier,
-  Search: searchParamsStringifier,
+  SearchLanding: searchParamsStringifier,
+  SearchResults: searchParamsStringifier,
   SearchN1Books: searchParamsStringifier,
   LocationFilter: {
     selectedVenue: JSON.stringify,

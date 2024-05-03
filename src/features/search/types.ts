@@ -28,8 +28,8 @@ export type LocationFilter =
   | { locationType: LocationMode.AROUND_PLACE; place: SuggestedPlace; aroundRadius: number }
 
 export enum SearchView {
-  Landing = 'Landing',
-  Results = 'Results',
+  Landing = 'SearchLanding',
+  Results = 'SearchResults',
 }
 
 export type OfferGenreType = { key: GenreType } & GenreTypeContentModel
@@ -51,7 +51,6 @@ export interface SearchState {
   timeRange: Range<number> | null
   tags: string[]
   query: string
-  view: SearchView
   minPrice?: string
   maxPrice?: string
   searchId?: string

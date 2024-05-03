@@ -1,42 +1,24 @@
 import React from 'react'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
+import { ISearchContext } from 'features/search/context/SearchWrapper'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import { Search } from 'features/search/pages/Search/Search'
-import { SearchState } from 'features/search/types'
+import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
-import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { placeholderData } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
-const venue = mockedSuggestedVenue
-
-const mockSearchState: SearchState = {
-  ...initialSearchState,
-  offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
-  venue,
-  priceRange: [0, 20],
-}
-
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
-}))
-
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => ({
-    data: { pages: [{ nbHits: 0, hits: [], page: 0 }] },
-    hits: [],
-    nbHits: 0,
-    isFetching: false,
-    isLoading: false,
-    hasNextPage: true,
-    fetchNextPage: jest.fn(),
-    isFetchingNextPage: false,
-  }),
+const mockStateDispatch = jest.fn()
+const initialMockUseSearchResults = { searchState: initialSearchState, dispatch: mockStateDispatch }
+const mockUseSearch: jest.Mock<Partial<ISearchContext>> = jest.fn(() => initialMockUseSearchResults)
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => mockUseSearch(),
 }))
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
@@ -79,11 +61,15 @@ jest.mock('uuid', () => ({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
-describe('<Search/>', () => {
+describe('<SearchResults/>', () => {
   describe('Accessibility', () => {
+    beforeEach(() => {
+      mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
+    })
+
     it('should not have basic accessibility issues', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
-      const { container } = render(reactQueryProviderHOC(<Search />))
+      const { container } = render(reactQueryProviderHOC(<SearchResults />))
 
       await act(async () => {})
 
@@ -96,7 +82,7 @@ describe('<Search/>', () => {
 
     it('should not have basic accessibility issues when offline', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-      const { container } = render(reactQueryProviderHOC(<Search />))
+      const { container } = render(reactQueryProviderHOC(<SearchResults />))
 
       await act(async () => {})
 

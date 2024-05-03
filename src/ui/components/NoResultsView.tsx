@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { useLogBeforeNavToSearchResults } from 'features/search/helpers/useLogBeforeNavToSearchResults/useLogBeforeNavToSearchResults'
-import { SearchView } from 'features/search/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -26,10 +25,7 @@ export const NoResultsView = ({
   trackingExplorerOffersFrom,
 }: Props) => {
   const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: trackingExplorerOffersFrom })
-  const searchNavConfig = getTabNavConfig('SearchStackNavigator', {
-    screen: 'Search',
-    params: { view: SearchView.Landing },
-  })
+  const searchNavConfig = getSearchStackConfig('SearchLanding')
 
   const Icon =
     !!icon &&
