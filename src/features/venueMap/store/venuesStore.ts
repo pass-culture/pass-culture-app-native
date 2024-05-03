@@ -10,7 +10,7 @@ type Actions = {
   setVenues: (payload: Venue[]) => void
 }
 
-export type Store = State & { actions: Actions }
+type Store = State & { actions: Actions }
 
 const useVenuesStore = create<Store>()(
   devtools(

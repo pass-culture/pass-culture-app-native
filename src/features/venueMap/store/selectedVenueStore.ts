@@ -11,7 +11,7 @@ type Actions = {
   removeSelectedVenue: () => void
 }
 
-export type Store = State & { actions: Actions }
+type Store = State & { actions: Actions }
 
 const useSelectedVenueStore = create<Store>()(
   devtools(
