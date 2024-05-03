@@ -19,6 +19,7 @@ interface Props {
 
 export const VenueThematicBlock: FunctionComponent<Props> = ({ venue }: Props) => {
   const thematic = venue.venueTypeCode ? mapVenueTypeToCategory[venue.venueTypeCode] : null
+  const [hasUserSubscribed, setHasUserSubscribed] = React.useState(false)
   const { user, isLoggedIn } = useAuthContext()
 
   const { showSuccessSnackBar } = useSnackBarContext()
@@ -58,6 +59,7 @@ export const VenueThematicBlock: FunctionComponent<Props> = ({ venue }: Props) =
   })
 
   const onSubscribePress = () => {
+    setHasUserSubscribed(true)
     if (!isLoggedIn) {
       showLoggedOutModal()
     } else if (!isAtLeastOneNotificationTypeActivated) {
@@ -74,7 +76,7 @@ export const VenueThematicBlock: FunctionComponent<Props> = ({ venue }: Props) =
     hideUnsubscribingModal()
   }
 
-  if (!thematic) return null
+  if (!thematic || (isSubscribeButtonActive && !hasUserSubscribed)) return null
 
   return (
     <React.Fragment>

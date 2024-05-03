@@ -9,7 +9,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('features/auth/context/AuthContext')
@@ -115,19 +115,34 @@ describe('<VenueThematicBlock/>', () => {
       expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
     })
 
-    it('should show unsubscribing confirmation modal when user is already subscribed', async () => {
-      mockUseAuthContext.mockReturnValueOnce({ ...baseAuthContext, user: alreadySubscribedUser })
+    it('should show unsubscribing confirmation modal when user subscribed and unsubscribe', async () => {
+      mockServer.postApi('/v1/profile', {})
+
       render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} />))
 
-      fireEvent.press(screen.getByText('Thème suivi'))
+      // Due to too many re-renders, we need to mock the auth context globally
+      // eslint-disable-next-line local-rules/independent-mocks
+      mockUseAuthContext.mockReturnValue({ ...baseAuthContext, user: alreadySubscribedUser })
+      await act(async () => fireEvent.press(screen.getByText('Suivre le thème')))
+      fireEvent.press(await screen.findByText('Thème suivi'))
 
       expect(
         await screen.findByText('Es-tu sûr de ne plus vouloir suivre ce thème ?')
       ).toBeOnTheScreen()
+
+      // We give the authContext its base value back
+      // eslint-disable-next-line local-rules/independent-mocks
+      mockUseAuthContext.mockReturnValue(baseAuthContext)
     })
   })
 
   it('should log when user login from logged out modal', async () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      ...baseAuthContext,
+      isLoggedIn: false,
+      user: undefined,
+    })
+
     render(reactQueryProviderHOC(<VenueThematicBlock venue={venueFixture} />))
 
     fireEvent.press(screen.getByText('Suivre le thème'))
