@@ -124,6 +124,17 @@ describe('Home page', () => {
     expect(await screen.findByText('Suis tes thèmes préférés')).toBeOnTheScreen()
   })
 
+  it('should log analytics when onboarding subscription modal is displayed', async () => {
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
+    await storage.saveObject('logged_in_session_count', 3)
+
+    renderHome()
+
+    await screen.findByText('Suis tes thèmes préférés')
+
+    expect(analytics.logConsultSubscriptionModal).toHaveBeenCalledTimes(1)
+  })
+
   it('should not display onboarding subscription modal on third logged in session when user is not currently logged in', async () => {
     mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
     await storage.saveObject('logged_in_session_count', 3)

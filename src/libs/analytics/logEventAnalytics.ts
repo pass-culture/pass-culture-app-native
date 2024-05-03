@@ -234,6 +234,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_PRACTICAL_INFORMATIONS }, params),
   logConsultReactionFakeDoor: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_REACTION_FAKE_DOOR }),
+  logConsultSubscriptionModal: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_SUBSCRIPTION_MODAL }),
   logConsultTutorial: (params: { from: string; age?: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_TUTORIAL }, params),
   logConsultVenue: (params: {

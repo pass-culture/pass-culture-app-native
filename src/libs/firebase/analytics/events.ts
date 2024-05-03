@@ -44,6 +44,7 @@ export enum AnalyticsEvent {
   CONSULT_OFFER = 'ConsultOffer',
   CONSULT_PRACTICAL_INFORMATIONS = 'ConsultPracticalInformations',
   CONSULT_REACTION_FAKE_DOOR = 'ConsultReactionFakeDoor',
+  CONSULT_SUBSCRIPTION_MODAL = 'ConsultSubscriptionModal',
   CONSULT_TUTORIAL = 'ConsultTutorial',
   CONSULT_VENUE = 'ConsultVenue',
   CONSULT_VENUE_MAP = 'ConsultVenueMap',

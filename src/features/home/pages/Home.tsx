@@ -85,6 +85,7 @@ export const Home: FunctionComponent = () => {
       const loggedInSessionCount = await storage.readObject<number>('logged_in_session_count')
       if (loggedInSessionCount === 3) {
         showOnboardingSubscriptionModal()
+        await analytics.logConsultSubscriptionModal()
         await storage.saveObject('has_seen_onboarding_subscription', true)
       }
     }
