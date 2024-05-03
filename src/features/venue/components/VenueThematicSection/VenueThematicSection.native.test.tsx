@@ -44,6 +44,10 @@ const alreadySubscribedUser = {
 }
 
 describe('<VenueThematicSection/>', () => {
+  beforeEach(() => {
+    mockUseAuthContext.mockReturnValue(baseAuthContext)
+  })
+
   it('should render null if venue has no thematic', async () => {
     const venue = { ...venueFixture, venueTypeCode: VenueTypeCodeKey.ADMINISTRATIVE }
     render(reactQueryProviderHOC(<VenueThematicSection venue={venue} />))
@@ -129,10 +133,6 @@ describe('<VenueThematicSection/>', () => {
       expect(
         await screen.findByText('Es-tu sûr de ne plus vouloir suivre ce thème ?')
       ).toBeOnTheScreen()
-
-      // We give the authContext its base value back
-      // eslint-disable-next-line local-rules/independent-mocks
-      mockUseAuthContext.mockReturnValue(baseAuthContext)
     })
   })
 
