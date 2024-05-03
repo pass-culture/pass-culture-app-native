@@ -11,6 +11,9 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Venue } from 'ui/svg/icons/Venue'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+const GOOGLE_LOGO_HEIGHT = 15
+const GOOGLE_LOGO_WIDTH = 47
+
 type Props = {
   bannerUrl?: string | null
   bannerMeta?: BannerMetaModel | null
@@ -72,12 +75,12 @@ const StyledLinearGradient = styled(LinearGradient).attrs({
   width: '100%',
   position: 'absolute',
   zIndex: 1,
-  ...(theme.isDesktopViewport ? { borderRadius: theme.borderRadius.radius } : {}),
+  borderRadius: theme.isDesktopViewport ? theme.borderRadius.radius : undefined,
 }))
 
 const GoogleLogo = styled.Image({
-  height: 15,
-  width: 47,
+  height: GOOGLE_LOGO_HEIGHT,
+  width: GOOGLE_LOGO_WIDTH,
   position: 'absolute',
   left: getSpacing(4),
   bottom: getSpacing(4),
