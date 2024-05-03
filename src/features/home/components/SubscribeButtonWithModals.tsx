@@ -105,7 +105,8 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
       <NotificationsSettingsModal
         visible={isNotificationsModalVisible}
         dismissModal={hideNotificationsModal}
-        theme={thematic}
+        title={`S’abonner au thème “${mapSubscriptionThemeToName[thematic]}”`}
+        description="Pour recevoir toute l’actu de ce thème, tu dois, au choix&nbsp;:"
         onPressSaveChanges={updateSettings}
       />
       <UnsubscribingConfirmationModal

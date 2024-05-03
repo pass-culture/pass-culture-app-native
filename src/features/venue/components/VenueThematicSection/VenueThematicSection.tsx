@@ -94,7 +94,8 @@ export const VenueThematicSection: FunctionComponent<Props> = ({ venue }: Props)
       <NotificationsSettingsModal
         visible={visibleNotificationsSettingsModal}
         dismissModal={hideNotificationsSettingsModal}
-        theme={thematic}
+        title={`S’abonner au thème “${mapSubscriptionThemeToName[thematic]}”`}
+        description="Pour recevoir toute l’actu de ce thème, tu dois, au choix&nbsp;:"
         onPressSaveChanges={updateSettings}
       />
       <UnsubscribingConfirmationModal
