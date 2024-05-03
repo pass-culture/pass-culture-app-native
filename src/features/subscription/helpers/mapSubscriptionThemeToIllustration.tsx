@@ -12,7 +12,7 @@ export const mapSubscriptionThemeToIllustration = (
 ): IllustrationFeatures => {
   switch (thematic) {
     case SubscriptionTheme.CINEMA:
-      return CATEGORY_CRITERIA.FILMS_SERIES_CINEMA
+      return CATEGORY_CRITERIA.CINEMA
     case SubscriptionTheme.LECTURE:
       return CATEGORY_CRITERIA.LIVRES
     case SubscriptionTheme.MUSIQUE:

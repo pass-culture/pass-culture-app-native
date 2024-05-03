@@ -68,7 +68,7 @@ describe('useAvailableCategories', () => {
       {
         icon: categoriesIcons.Cinema,
         illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
-        facetFilter: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        facetFilter: SearchGroupNameEnumv2.CINEMA,
         baseColor: theme.colors.aquamarine,
         gradients: [theme.colors.aquamarineLight, theme.colors.aquamarine],
         position: 2,

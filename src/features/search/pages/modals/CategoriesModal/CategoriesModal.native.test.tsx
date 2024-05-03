@@ -78,7 +78,7 @@ describe('<CategoriesModal/>', () => {
       mockData = {
         ...mockData,
         searchGroups: [
-          { name: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA, value: 'Cinéma, films et séries' },
+          { name: SearchGroupNameEnumv2.CINEMA, value: 'Cinéma, films et séries' },
         ],
       }
       renderCategories()
@@ -178,7 +178,7 @@ describe('<CategoriesModal/>', () => {
     beforeAll(() => {
       mockSearchState = {
         ...searchState,
-        offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+        offerCategories: [SearchGroupNameEnumv2.CINEMA],
         offerNativeCategories: [],
         offerGenreTypes: [],
       }
@@ -212,7 +212,7 @@ describe('<CategoriesModal/>', () => {
 
       const expectedSearchParams: SearchState = {
         ...searchState,
-        offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+        offerCategories: [SearchGroupNameEnumv2.CINEMA],
         offerNativeCategories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
         offerGenreTypes: [],
       }
@@ -235,7 +235,7 @@ describe('<CategoriesModal/>', () => {
 
       const expectedSearchParams: SearchState = {
         ...searchState,
-        offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+        offerCategories: [SearchGroupNameEnumv2.CINEMA],
         offerNativeCategories: [],
         offerGenreTypes: [],
       }

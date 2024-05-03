@@ -189,7 +189,7 @@ describe('AutocompleteOfferItem component', () => {
           payload: {
             ...initialSearchState,
             query: mockHit.query,
-            offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+            offerCategories: [SearchGroupNameEnumv2.CINEMA],
             offerNativeCategories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
             locationFilter: mockSearchState.locationFilter,
             venue: mockSearchState.venue,

@@ -343,6 +343,25 @@ export const treeResultFixture = {
       },
     },
   },
+  [SearchGroupNameEnumv2.CINEMA]: {
+    label: 'Cinéma',
+    children: {
+      [NativeCategoryIdEnumv2.CARTES_CINEMA]: {
+        label: 'Cartes cinéma',
+        nbResultsFacet: 7,
+      },
+      [NativeCategoryIdEnumv2.EVENEMENTS_CINEMA]: {
+        label: 'Evènements cinéma',
+        nbResultsFacet: 0,
+      },
+      [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA]: {
+        label: 'Séances de cinéma',
+        genreTypeKey: GenreType.MOVIE,
+        children: MOVIES,
+        nbResultsFacet: 0,
+      },
+    },
+  },
   [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
     label: 'Concerts & festivals',
     children: {
@@ -400,32 +419,22 @@ export const treeResultFixture = {
       },
     },
   },
-  [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]: {
-    label: 'Cinéma, films et séries',
+  [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: {
+    label: 'Films, documentaires et séries',
     children: {
-      [NativeCategoryIdEnumv2.CARTES_CINEMA]: {
-        label: 'Cartes cinéma',
-        nbResultsFacet: 7,
-      },
       [NativeCategoryIdEnumv2.DVD_BLU_RAY]: {
         label: 'DVD, Blu-Ray',
         nbResultsFacet: 54,
-      },
-      [NativeCategoryIdEnumv2.EVENEMENTS_CINEMA]: {
-        label: 'Evènements cinéma',
-        nbResultsFacet: 0,
       },
       [NativeCategoryIdEnumv2.FILMS_SERIES_EN_LIGNE]: {
         label: 'Films, séries en ligne',
         nbResultsFacet: 30,
       },
-      [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA]: {
-        label: 'Séances de cinéma',
-        genreTypeKey: GenreType.MOVIE,
-        children: MOVIES,
-        nbResultsFacet: 0,
-      },
     },
+  },
+  [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]: {
+    label: 'Cinéma, films et séries',
+    children: {},
   },
   [SearchGroupNameEnumv2.INSTRUMENTS]: {
     label: 'Instruments de musique',

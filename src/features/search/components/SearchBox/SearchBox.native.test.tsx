@@ -16,7 +16,7 @@ import { SearchBox } from './SearchBox'
 
 let mockSearchState: SearchState = {
   ...initialSearchState,
-  offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+  offerCategories: [SearchGroupNameEnumv2.CINEMA],
   priceRange: [0, 20],
 }
 
@@ -128,7 +128,7 @@ describe('SearchBox component', () => {
   afterEach(() => {
     mockSearchState = {
       ...initialSearchState,
-      offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+      offerCategories: [SearchGroupNameEnumv2.CINEMA],
       priceRange: [0, 20],
     }
     mockQuery = ''

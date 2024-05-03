@@ -79,7 +79,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
     baseColor: theme.colors.lilac,
     gradients: gradientColorsMapping.Lilac,
-    position: 5,
+    position: 6,
   },
   [SearchGroupNameEnumv2.CARTES_JEUNES]: {
     icon: categoriesIcons.Card,
@@ -87,7 +87,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
     baseColor: theme.colors.lilac,
     gradients: gradientColorsMapping.Lilac,
-    position: 11,
+    position: 12,
   },
   [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE]: {
     icon: categoriesIcons.Disk,
@@ -95,7 +95,15 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
     baseColor: theme.colors.skyBlue,
     gradients: gradientColorsMapping.SkyBlue,
-    position: 4,
+    position: 5,
+  },
+  [SearchGroupNameEnumv2.CINEMA]: {
+    icon: categoriesIcons.Cinema,
+    illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
+    facetFilter: SearchGroupNameEnumv2.CINEMA,
+    baseColor: theme.colors.aquamarine,
+    gradients: gradientColorsMapping.Aquamarine,
+    position: 2,
   },
   [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
     icon: categoriesIcons.Conference,
@@ -111,7 +119,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
     baseColor: theme.colors.gold,
     gradients: gradientColorsMapping.Gold,
-    position: 12,
+    position: 13,
   },
   [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
     icon: categoriesIcons.LiveEvent,
@@ -119,7 +127,15 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
     baseColor: theme.colors.aquamarine,
     gradients: gradientColorsMapping.Aquamarine,
-    position: 13,
+    position: 14,
+  },
+  [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: {
+    icon: categoriesIcons.Cinema,
+    illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
+    facetFilter: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
+    baseColor: theme.colors.aquamarine,
+    gradients: gradientColorsMapping.Aquamarine,
+    position: 3,
   },
   [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]: {
     icon: categoriesIcons.Cinema,
@@ -135,7 +151,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnumv2.INSTRUMENTS,
     baseColor: theme.colors.skyBlue,
     gradients: gradientColorsMapping.SkyBlue,
-    position: 9,
+    position: 10,
   },
   [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS]: {
     icon: categoriesIcons.VideoGame,
@@ -143,7 +159,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     baseColor: theme.colors.gold,
     gradients: gradientColorsMapping.Gold,
-    position: 8,
+    position: 9,
   },
   [SearchGroupNameEnumv2.LIVRES]: {
     icon: categoriesIcons.Book,
@@ -151,7 +167,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnumv2.LIVRES,
     baseColor: theme.colors.deepPink,
     gradients: gradientColorsMapping.DeepPink,
-    position: 3,
+    position: 4,
   },
   [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
     icon: categoriesIcons.Press,
@@ -159,7 +175,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
     baseColor: theme.colors.deepPink,
     gradients: gradientColorsMapping.DeepPink,
-    position: 10,
+    position: 11,
   },
   [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES]: {
     icon: categoriesIcons.Museum,
@@ -167,7 +183,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
     baseColor: theme.colors.aquamarine,
     gradients: gradientColorsMapping.Aquamarine,
-    position: 7,
+    position: 8,
   },
   [SearchGroupNameEnumv2.SPECTACLES]: {
     icon: categoriesIcons.Show,
@@ -175,7 +191,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnumv2.SPECTACLES,
     baseColor: theme.colors.coral,
     gradients: gradientColorsMapping.Coral,
-    position: 6,
+    position: 7,
   },
 }
 

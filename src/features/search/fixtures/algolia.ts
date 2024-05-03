@@ -22,7 +22,7 @@ export const mockSuggestionHits = toMutable([
             {
               attribute: '',
               operator: '',
-              value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+              value: SearchGroupNameEnumv2.CINEMA,
               count: 10,
             },
           ],
@@ -57,7 +57,7 @@ export const mockSuggestionHits = toMutable([
             {
               attribute: '',
               operator: '',
-              value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+              value: SearchGroupNameEnumv2.CINEMA,
               count: 10,
             },
           ],

@@ -25,7 +25,7 @@ describe('Search reducer', () => {
     const parameters = {
       geolocation: { latitude: 48.8557, longitude: 2.3469 },
       offerCategories: [
-        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        SearchGroupNameEnumv2.CINEMA,
         SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
         SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
         SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,

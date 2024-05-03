@@ -22,7 +22,7 @@ const venue = mockedSuggestedVenue
 
 let mockSearchState: SearchState = {
   ...initialSearchState,
-  offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+  offerCategories: [SearchGroupNameEnumv2.CINEMA],
   venue,
   priceRange: [0, 20],
 }
@@ -91,7 +91,7 @@ const mockHits = [
             {
               attribute: '',
               operator: '',
-              value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+              value: SearchGroupNameEnumv2.CINEMA,
               count: 10,
             },
           ],
@@ -127,7 +127,7 @@ const mockHits = [
             {
               attribute: '',
               operator: '',
-              value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+              value: SearchGroupNameEnumv2.CINEMA,
               count: 10,
             },
           ],
@@ -210,7 +210,7 @@ describe('<Search/>', () => {
   afterEach(() => {
     mockSearchState = {
       ...initialSearchState,
-      offerCategories: [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA],
+      offerCategories: [SearchGroupNameEnumv2.CINEMA],
       venue,
       priceRange: [0, 20],
     }

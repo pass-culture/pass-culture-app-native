@@ -10,7 +10,7 @@ import { Subcategory } from 'libs/subcategories/types'
 export const mockSubcategory: Subcategory = {
   categoryId: CategoryIdEnum.CINEMA,
   appLabel: 'Cinéma plein air',
-  searchGroupName: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+  searchGroupName: SearchGroupNameEnumv2.CINEMA,
   homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
   isEvent: true,
   onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
