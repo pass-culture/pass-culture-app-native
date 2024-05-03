@@ -45,7 +45,7 @@ const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export const SearchResults = () => {
   const routes = useNavigationState((state) => state?.routes)
-  const currentRoute = routes?.[routes?.length - 1]?.name
+  const currentRoute = routes?.at(-1)?.name
   useSync(currentRoute === 'SearchResults')
 
   const netInfo = useNetInfoContext()

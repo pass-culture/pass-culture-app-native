@@ -51,7 +51,7 @@ export const SearchFilter: React.FC = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const oldSearchState = useMemo(() => searchState, [])
   const onGoBack = useCallback(() => {
-    navigateToSearch({ ...oldSearchState }, oldAccessibilityFilter)
+    navigateToSearch(oldSearchState, oldAccessibilityFilter)
   }, [navigateToSearch, oldSearchState, oldAccessibilityFilter])
 
   const onSearchPress = useCallback(() => {

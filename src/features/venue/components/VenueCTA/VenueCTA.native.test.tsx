@@ -42,7 +42,7 @@ jest
       screen: 'SearchStackNavigator',
       params: {
         screen: 'SearchResults',
-        params: { ...defaultParams },
+        params: defaultParams,
       },
     },
     withPush: true,
