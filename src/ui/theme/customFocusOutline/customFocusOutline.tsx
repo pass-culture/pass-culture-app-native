@@ -15,16 +15,18 @@ const focus = isSafari && Number(browserVersion) < 15.4 ? '&:focus' : '&:focus-v
 
 export function customFocusOutline({
   color,
+  width,
   isFocus,
   noOffset = false,
 }: {
   color?: ColorsEnum
+  width?: number
   isFocus?: boolean
   noOffset?: boolean
 }) {
   const outlineRules = {
     outlineColor: color ?? theme.outline.color,
-    outlineWidth: theme.outline.width,
+    outlineWidth: width ?? theme.outline.width,
     outlineStyle: theme.outline.style,
     outlineOffset: noOffset ? 0 : theme.outline.offSet,
   }

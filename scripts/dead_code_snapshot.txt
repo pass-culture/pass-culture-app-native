@@ -6,3 +6,4 @@ src/features/location/fixtures/mockPlaces.ts:10 - satisfies
 src/features/location/fixtures/mockPlaces.ts:10 - readonly
 src/features/location/fixtures/mockPlaces.ts:10 - SuggestedPlace (used in module)
 src/features/subscription/components/ThematicSubscriptionBlock.tsx:16 - ThematicSubscriptionBlock
+src/ui/components/CheckboxBlock/CheckboxBlock.tsx:22 - CheckboxBlock
