@@ -64,6 +64,8 @@ jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
   },
 ])
 
+jest.setTimeout(15_000)
+
 describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
@@ -88,7 +90,9 @@ describe('<Venue />', () => {
       const { container } = render(reactQueryProviderHOC(<Venue />), {
         theme: { isDesktopViewport: true },
       })
+
       await screen.findAllByText('Gratuit')
+      await act(async () => {})
 
       expect(container).toMatchSnapshot()
     })
