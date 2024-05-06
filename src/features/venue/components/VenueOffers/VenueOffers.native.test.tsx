@@ -179,7 +179,11 @@ describe('<VenueOffers />', () => {
     })
 
     it('When there are gtl playlists associated to the venue and venue type is not distribution or book store', () => {
-      renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock, playlists })
+      renderVenueOffers({
+        venue: { ...venueResponseSnap, venueTypeCode: undefined },
+        venueOffers: venueOffersMock,
+        playlists,
+      })
 
       expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
     })

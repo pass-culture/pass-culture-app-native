@@ -32,6 +32,7 @@ describe('useThematicSubscription', () => {
             subscribedThemes: [],
           },
         },
+        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -51,6 +52,7 @@ describe('useThematicSubscription', () => {
             subscribedThemes: [],
           },
         },
+        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -72,6 +74,7 @@ describe('useThematicSubscription', () => {
             subscribedThemes: [],
           },
         },
+        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -91,6 +94,7 @@ describe('useThematicSubscription', () => {
             subscribedThemes: [SubscriptionTheme.CINEMA],
           },
         },
+        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })

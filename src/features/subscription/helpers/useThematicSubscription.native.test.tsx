@@ -71,6 +71,7 @@ describe('useThematicSubscription', () => {
     it('should give us the information that at least one notification is active', async () => {
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsButNoSubscriptions,
+        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -84,6 +85,7 @@ describe('useThematicSubscription', () => {
       it('should consider subscribe button active', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsAndSubscribed,
+          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -97,6 +99,7 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsAndSubscribed,
+          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -119,6 +122,7 @@ describe('useThematicSubscription', () => {
       it('should consider subscribe button inactive', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsButNoSubscriptions,
+          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -132,6 +136,7 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsButNoSubscriptions,
+          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -155,6 +160,7 @@ describe('useThematicSubscription', () => {
     it('should give us the information that notifications are inactive', async () => {
       const { result } = renderUseThematicSubscription({
         user: userWithoutNotificationsAndWithoutSubscriptions,
+        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -168,6 +174,7 @@ describe('useThematicSubscription', () => {
       it('should consider subscribe button inactive', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsButWithSubscriptions,
+          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -181,6 +188,7 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsButWithSubscriptions,
+          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -206,6 +214,7 @@ describe('useThematicSubscription', () => {
       it('should consider subscribe button inactive', async () => {
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsAndWithoutSubscriptions,
+          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -219,6 +228,7 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsAndWithoutSubscriptions,
+          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -245,6 +255,7 @@ describe('useThematicSubscription', () => {
         mockServer.postApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: undefined,
+          thematic: SubscriptionTheme.CINEMA,
           homeId,
           onUpdateSubscriptionSuccess: jest.fn(),
         })
@@ -275,6 +286,7 @@ describe('useThematicSubscription', () => {
 
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsButNoSubscriptions,
+        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -298,6 +310,7 @@ describe('useThematicSubscription', () => {
 
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsButNoSubscriptions,
+        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: onUpdateSubscriptionSuccessMock,
       })
@@ -315,6 +328,7 @@ describe('useThematicSubscription', () => {
       mockServer.postApi('/v1/profile', {})
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsButNoSubscriptions,
+        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
@@ -334,6 +348,7 @@ describe('useThematicSubscription', () => {
       mockServer.postApi('/v1/profile', {})
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsAndSubscribed,
+        thematic: SubscriptionTheme.CINEMA,
         homeId,
         onUpdateSubscriptionSuccess: jest.fn(),
       })
