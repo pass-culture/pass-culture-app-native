@@ -38,4 +38,8 @@ export enum VenuesFacets {
   tags = 'tags',
   venue_type = 'venue_type',
   has_at_least_one_bookable_offer = 'has_at_least_one_bookable_offer',
+  VENUE_AUDIO_DISABILITY_COMPLIANT = 'audio_disability',
+  VENUE_MENTAL_DISABILITY_COMPLIANT = 'mental_disability',
+  VENUE_MOTOR_DISABILITY_COMPLIANT = 'motor_disability',
+  VENUE_VISUAL_DISABILITY_COMPLIANT = 'visual_disability',
 }

@@ -661,7 +661,13 @@ describe('fetchSearchResults', () => {
       },
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
-        params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+        params: {
+          facetFilters: [['audio_disability:true'], ['mental_disability:true']],
+          aroundRadius: 'all',
+          clickAnalytics: true,
+          hitsPerPage: 35,
+          page: 0,
+        },
         query: 'searched query',
       },
       {
