@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { BookingState, initialBookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as BookingOfferAPI from 'features/bookOffer/helpers/useBookingOffer'
@@ -145,7 +145,7 @@ describe('<BookingDetails />', () => {
   })
 
   beforeEach(() => {
-    mockServer.getApi<OfferResponse>(`/v1/offer/${mockOfferId}`, offerResponseSnap)
+    mockServer.getApi<OfferResponseV2>(`/v2/offer/${mockOfferId}`, offerResponseSnap)
   })
 
   afterEach(() => {

@@ -68,7 +68,7 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
 describe('<BookingOfferModal/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
-      mockServer.getApi(`/v1/offer/${mockOffer.id}`, mockOffer)
+      mockServer.getApi(`/v2/offer/${mockOffer.id}`, mockOffer)
     })
 
     it('should not have basic accessibility issues for step "date"', async () => {
