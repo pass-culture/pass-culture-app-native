@@ -35,8 +35,7 @@ const CategoryButtonItem: ListRenderItem<CategoryButtonProps> = ({ item }) => (
 const isWeb = Platform.OS === 'web'
 
 export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCategories }) => {
-  const { shouldDisplayVenueMap, hasGeolocPosition, selectedLocationMode } =
-    useShouldDisplayVenueMap()
+  const { shouldDisplayVenueMap, selectedLocationMode } = useShouldDisplayVenueMap()
   const hasVenueMapWithoutPosition = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_POSITION
   )
@@ -56,7 +55,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
     setTimeout(showVenueMapLocationModal, 400)
   }
 
-  const isNotLocated = selectedLocationMode === LocationMode.EVERYWHERE && !hasGeolocPosition
+  const isNotLocated = selectedLocationMode === LocationMode.EVERYWHERE
 
   const isMapWithoutPositionAndNotLocated = hasVenueMapWithoutPosition && isNotLocated && !isWeb
 

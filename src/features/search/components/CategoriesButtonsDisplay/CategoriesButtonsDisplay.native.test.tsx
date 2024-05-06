@@ -86,7 +86,7 @@ describe('CategoriesButtonsDisplay', () => {
     expect(screen.queryByText('Explorer les lieux')).not.toBeOnTheScreen()
   })
 
-  it('should not display venue map block when the location is to everywhere position', () => {
+  it('should display venue map block when the location is to everywhere position', () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: true,
       selectedLocationMode: LocationMode.EVERYWHERE,
@@ -96,7 +96,7 @@ describe('CategoriesButtonsDisplay', () => {
 
     render(<CategoriesButtonsDisplay sortedCategories={[]} />)
 
-    expect(screen.queryByText('Explorer les lieux')).not.toBeOnTheScreen()
+    expect(screen.getByText('Explorer les lieux')).toBeOnTheScreen()
   })
 
   it('should display venue map block when the location is to everywhere position and feature flag wipVenueMapWithoutPosition is activated', () => {
