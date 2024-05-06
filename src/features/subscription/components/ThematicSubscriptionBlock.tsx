@@ -22,7 +22,7 @@ export const ThematicSubscriptionBlock = ({
 
   return (
     <Container>
-      <SubscriptionThematicIllustration thematic={thematic} size="small" />
+      <SubscriptionThematicIllustration thematic={thematic} size="medium" />
       <ContentContainer>
         <Typo.ButtonText>{title}</Typo.ButtonText>
         <Typo.CaptionNeutralInfo>{subtitle}</Typo.CaptionNeutralInfo>

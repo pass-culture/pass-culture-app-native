@@ -262,432 +262,175 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       >
         <View
           style={
-            {
-              "flexDirection": "row",
-            }
+            [
+              {
+                "paddingVertical": 8,
+              },
+            ]
           }
         >
           <View
-            style={
-              [
-                {
-                  "flexBasis": "50%",
-                  "height": 172,
-                  "paddingHorizontal": 20,
-                  "paddingVertical": 12,
-                },
-              ]
+            accessibilityLabel="Cinéma"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "minHeight": 72,
+                "opacity": 1,
+                "paddingHorizontal": 16,
+                "userSelect": "auto",
+              }
+            }
+            testID="Cinéma"
           >
             <View
-              accessibilityLabel="Cinéma"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "flex-start",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
-                  "borderRadius": 8,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "column",
-                  "flexGrow": 1,
-                  "opacity": 1,
-                  "paddingBottom": 16,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 16,
-                  "userSelect": "auto",
-                }
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  },
+                ]
               }
-              testID="Cinéma"
             >
               <View
-                isSelected={false}
+                size="small"
                 style={
                   [
                     {
-                      "alignItems": "center",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginRight": 16,
-                      "width": 16,
+                      "borderRadius": 4,
+                      "height": 32,
+                      "overflow": "hidden",
+                      "width": 32,
                     },
                   ]
                 }
               >
-                <View
-                  isSelected={false}
-                  style={
+                <BVLinearGradient
+                  colors={
                     [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 16,
-                        "height": 8,
-                        "width": 8,
-                      },
+                      4280802472,
+                      4279141492,
                     ]
                   }
-                />
-              </View>
-              <View
-                contentDirection="column"
-                style={
-                  [
+                  endPoint={
                     {
-                      "flexGrow": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
+                      "x": 0.5,
+                      "y": 1,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    {
+                      "x": 0.5,
+                      "y": 0,
+                    }
+                  }
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "flexDirection": "column",
-                        "width": "100%",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                       },
                     ]
                   }
                 >
                   <View
-                    size="medium"
+                    size="small"
                     style={
                       [
                         {
-                          "borderRadius": 8,
-                          "height": 64,
-                          "overflow": "hidden",
-                          "width": 64,
+                          "position": "absolute",
+                          "top": -28,
                         },
                       ]
                     }
                   >
-                    <BVLinearGradient
-                      colors={
-                        [
-                          4280802472,
-                          4279141492,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
+                    <View
+                      fill="none"
+                      height={92}
+                      width={54}
                     >
-                      <View
-                        size="medium"
-                        style={
-                          [
-                            {
-                              "position": "absolute",
-                              "top": -12,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="none"
-                          height={92}
-                          width={110}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </BVLinearGradient>
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    isHover={false}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Cinéma
-                  </Text>
-                </View>
+                </BVLinearGradient>
               </View>
-            </View>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "flexBasis": "50%",
-                  "height": 172,
-                  "paddingHorizontal": 20,
-                  "paddingVertical": 12,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Lecture"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "flex-start",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
-                  "borderRadius": 8,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "column",
-                  "flexGrow": 1,
-                  "opacity": 1,
-                  "paddingBottom": 16,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 16,
-                  "userSelect": "auto",
-                }
-              }
-              testID="Lecture"
-            >
-              <View
-                isSelected={false}
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginRight": 16,
-                      "width": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  isSelected={false}
+              <View>
+                <Text
                   style={
                     [
                       {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 16,
-                        "height": 8,
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                contentDirection="column"
-                style={
-                  [
-                    {
-                      "flexGrow": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "column",
-                        "width": "100%",
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  <View
-                    size="medium"
-                    style={
-                      [
-                        {
-                          "borderRadius": 8,
-                          "height": 64,
-                          "overflow": "hidden",
-                          "width": 64,
-                        },
-                      ]
-                    }
-                  >
-                    <BVLinearGradient
-                      colors={
-                        [
-                          4293670008,
-                          4290777969,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        size="medium"
-                        style={
-                          [
-                            {
-                              "position": "absolute",
-                              "top": -12,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="none"
-                          height={92}
-                          width={110}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </BVLinearGradient>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    isHover={false}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Lecture
-                  </Text>
-                </View>
+                  Cinéma
+                </Text>
               </View>
             </View>
+            <View
+              checked={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 2,
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                    "width": 16,
+                  },
+                ]
+              }
+            />
           </View>
         </View>
       </View>
@@ -698,432 +441,175 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       >
         <View
           style={
-            {
-              "flexDirection": "row",
-            }
+            [
+              {
+                "paddingVertical": 8,
+              },
+            ]
           }
         >
           <View
-            style={
-              [
-                {
-                  "flexBasis": "50%",
-                  "height": 172,
-                  "paddingHorizontal": 20,
-                  "paddingVertical": 12,
-                },
-              ]
+            accessibilityLabel="Lecture"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "minHeight": 72,
+                "opacity": 1,
+                "paddingHorizontal": 16,
+                "userSelect": "auto",
+              }
+            }
+            testID="Lecture"
           >
             <View
-              accessibilityLabel="Musique"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "flex-start",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
-                  "borderRadius": 8,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "column",
-                  "flexGrow": 1,
-                  "opacity": 1,
-                  "paddingBottom": 16,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 16,
-                  "userSelect": "auto",
-                }
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  },
+                ]
               }
-              testID="Musique"
             >
               <View
-                isSelected={false}
+                size="small"
                 style={
                   [
                     {
-                      "alignItems": "center",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginRight": 16,
-                      "width": 16,
+                      "borderRadius": 4,
+                      "height": 32,
+                      "overflow": "hidden",
+                      "width": 32,
                     },
                   ]
                 }
               >
-                <View
-                  isSelected={false}
-                  style={
+                <BVLinearGradient
+                  colors={
                     [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 16,
-                        "height": 8,
-                        "width": 8,
-                      },
+                      4293670008,
+                      4290777969,
                     ]
                   }
-                />
-              </View>
-              <View
-                contentDirection="column"
-                style={
-                  [
+                  endPoint={
                     {
-                      "flexGrow": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
+                      "x": 0.5,
+                      "y": 1,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    {
+                      "x": 0.5,
+                      "y": 0,
+                    }
+                  }
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "flexDirection": "column",
-                        "width": "100%",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                       },
                     ]
                   }
                 >
                   <View
-                    size="medium"
+                    size="small"
                     style={
                       [
                         {
-                          "borderRadius": 8,
-                          "height": 64,
-                          "overflow": "hidden",
-                          "width": 64,
+                          "position": "absolute",
+                          "top": -28,
                         },
                       ]
                     }
                   >
-                    <BVLinearGradient
-                      colors={
-                        [
-                          4294614806,
-                          4290271489,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
+                    <View
+                      fill="none"
+                      height={92}
+                      width={54}
                     >
-                      <View
-                        size="medium"
-                        style={
-                          [
-                            {
-                              "position": "absolute",
-                              "top": -12,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="none"
-                          height={92}
-                          width={110}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </BVLinearGradient>
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    isHover={false}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Musique
-                  </Text>
-                </View>
+                </BVLinearGradient>
               </View>
-            </View>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "flexBasis": "50%",
-                  "height": 172,
-                  "paddingHorizontal": 20,
-                  "paddingVertical": 12,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Spectacles"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "flex-start",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
-                  "borderRadius": 8,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "column",
-                  "flexGrow": 1,
-                  "opacity": 1,
-                  "paddingBottom": 16,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 16,
-                  "userSelect": "auto",
-                }
-              }
-              testID="Spectacles"
-            >
-              <View
-                isSelected={false}
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginRight": 16,
-                      "width": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  isSelected={false}
+              <View>
+                <Text
                   style={
                     [
                       {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 16,
-                        "height": 8,
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                contentDirection="column"
-                style={
-                  [
-                    {
-                      "flexGrow": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "column",
-                        "width": "100%",
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  <View
-                    size="medium"
-                    style={
-                      [
-                        {
-                          "borderRadius": 8,
-                          "height": 64,
-                          "overflow": "hidden",
-                          "width": 64,
-                        },
-                      ]
-                    }
-                  >
-                    <BVLinearGradient
-                      colors={
-                        [
-                          4294472509,
-                          4291444499,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        size="medium"
-                        style={
-                          [
-                            {
-                              "position": "absolute",
-                              "top": -12,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="none"
-                          height={92}
-                          width={110}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </BVLinearGradient>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    isHover={false}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Spectacles
-                  </Text>
-                </View>
+                  Lecture
+                </Text>
               </View>
             </View>
+            <View
+              checked={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 2,
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                    "width": 16,
+                  },
+                ]
+              }
+            />
           </View>
         </View>
       </View>
@@ -1134,432 +620,712 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       >
         <View
           style={
-            {
-              "flexDirection": "row",
-            }
+            [
+              {
+                "paddingVertical": 8,
+              },
+            ]
           }
         >
           <View
-            style={
-              [
-                {
-                  "flexBasis": "50%",
-                  "height": 172,
-                  "paddingHorizontal": 20,
-                  "paddingVertical": 12,
-                },
-              ]
+            accessibilityLabel="Musique"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "minHeight": 72,
+                "opacity": 1,
+                "paddingHorizontal": 16,
+                "userSelect": "auto",
+              }
+            }
+            testID="Musique"
           >
             <View
-              accessibilityLabel="Activités créatives"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "flex-start",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
-                  "borderRadius": 8,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "column",
-                  "flexGrow": 1,
-                  "opacity": 1,
-                  "paddingBottom": 16,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 16,
-                  "userSelect": "auto",
-                }
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  },
+                ]
               }
-              testID="Activités créatives"
             >
               <View
-                isSelected={false}
+                size="small"
                 style={
                   [
                     {
-                      "alignItems": "center",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginRight": 16,
-                      "width": 16,
+                      "borderRadius": 4,
+                      "height": 32,
+                      "overflow": "hidden",
+                      "width": 32,
                     },
                   ]
                 }
               >
-                <View
-                  isSelected={false}
-                  style={
+                <BVLinearGradient
+                  colors={
                     [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 16,
-                        "height": 8,
-                        "width": 8,
-                      },
+                      4294614806,
+                      4290271489,
                     ]
                   }
-                />
-              </View>
-              <View
-                contentDirection="column"
-                style={
-                  [
+                  endPoint={
                     {
-                      "flexGrow": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
+                      "x": 0.5,
+                      "y": 1,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    {
+                      "x": 0.5,
+                      "y": 0,
+                    }
+                  }
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "flexDirection": "column",
-                        "width": "100%",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                       },
                     ]
                   }
                 >
                   <View
-                    size="medium"
+                    size="small"
                     style={
                       [
                         {
-                          "borderRadius": 8,
-                          "height": 64,
-                          "overflow": "hidden",
-                          "width": 64,
+                          "position": "absolute",
+                          "top": -28,
                         },
                       ]
                     }
                   >
-                    <BVLinearGradient
-                      colors={
-                        [
-                          4289562623,
-                          4286789609,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
+                    <View
+                      fill="none"
+                      height={92}
+                      width={54}
                     >
-                      <View
-                        size="medium"
-                        style={
-                          [
-                            {
-                              "position": "absolute",
-                              "top": -12,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="none"
-                          height={92}
-                          width={110}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </BVLinearGradient>
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    isHover={false}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Activités créatives
-                  </Text>
-                </View>
+                </BVLinearGradient>
+              </View>
+              <View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Musique
+                </Text>
               </View>
             </View>
+            <View
+              checked={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 2,
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                    "width": 16,
+                  },
+                ]
+              }
+            />
           </View>
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            [
+              {
+                "paddingVertical": 8,
+              },
+            ]
+          }
+        >
           <View
-            style={
-              [
-                {
-                  "flexBasis": "50%",
-                  "height": 172,
-                  "paddingHorizontal": 20,
-                  "paddingVertical": 12,
-                },
-              ]
+            accessibilityLabel="Spectacles"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
             }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "minHeight": 72,
+                "opacity": 1,
+                "paddingHorizontal": 16,
+                "userSelect": "auto",
+              }
+            }
+            testID="Spectacles"
           >
             <View
-              accessibilityLabel="Visites et sorties"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "flex-start",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
-                  "borderRadius": 8,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "column",
-                  "flexGrow": 1,
-                  "opacity": 1,
-                  "paddingBottom": 16,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "paddingTop": 16,
-                  "userSelect": "auto",
-                }
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  },
+                ]
               }
-              testID="Visites et sorties"
             >
               <View
-                isSelected={false}
+                size="small"
                 style={
                   [
                     {
-                      "alignItems": "center",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginRight": 16,
-                      "width": 16,
+                      "borderRadius": 4,
+                      "height": 32,
+                      "overflow": "hidden",
+                      "width": 32,
                     },
                   ]
                 }
               >
-                <View
-                  isSelected={false}
-                  style={
+                <BVLinearGradient
+                  colors={
                     [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 16,
-                        "height": 8,
-                        "width": 8,
-                      },
+                      4294472509,
+                      4291444499,
                     ]
                   }
-                />
-              </View>
-              <View
-                contentDirection="column"
-                style={
-                  [
+                  endPoint={
                     {
-                      "flexGrow": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
+                      "x": 0.5,
+                      "y": 1,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    {
+                      "x": 0.5,
+                      "y": 0,
+                    }
+                  }
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "flexDirection": "column",
-                        "width": "100%",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                       },
                     ]
                   }
                 >
                   <View
-                    size="medium"
+                    size="small"
                     style={
                       [
                         {
-                          "borderRadius": 8,
-                          "height": 64,
-                          "overflow": "hidden",
-                          "width": 64,
+                          "position": "absolute",
+                          "top": -28,
                         },
                       ]
                     }
                   >
-                    <BVLinearGradient
-                      colors={
-                        [
-                          4280802472,
-                          4279141492,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
+                    <View
+                      fill="none"
+                      height={92}
+                      width={54}
                     >
-                      <View
-                        size="medium"
-                        style={
-                          [
-                            {
-                              "position": "absolute",
-                              "top": -12,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="none"
-                          height={92}
-                          width={110}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </BVLinearGradient>
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    isHover={false}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Visites et sorties
-                  </Text>
-                </View>
+                </BVLinearGradient>
+              </View>
+              <View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Spectacles
+                </Text>
               </View>
             </View>
+            <View
+              checked={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 2,
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                    "width": 16,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            [
+              {
+                "paddingVertical": 8,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Activités créatives"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "minHeight": 72,
+                "opacity": 1,
+                "paddingHorizontal": 16,
+                "userSelect": "auto",
+              }
+            }
+            testID="Activités créatives"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                size="small"
+                style={
+                  [
+                    {
+                      "borderRadius": 4,
+                      "height": 32,
+                      "overflow": "hidden",
+                      "width": 32,
+                    },
+                  ]
+                }
+              >
+                <BVLinearGradient
+                  colors={
+                    [
+                      4289562623,
+                      4286789609,
+                    ]
+                  }
+                  endPoint={
+                    {
+                      "x": 0.5,
+                      "y": 1,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    {
+                      "x": 0.5,
+                      "y": 0,
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    size="small"
+                    style={
+                      [
+                        {
+                          "position": "absolute",
+                          "top": -28,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      fill="none"
+                      height={92}
+                      width={54}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </BVLinearGradient>
+              </View>
+              <View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Activités créatives
+                </Text>
+              </View>
+            </View>
+            <View
+              checked={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 2,
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                    "width": 16,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            [
+              {
+                "paddingVertical": 8,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Visites et sorties"
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 8,
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "minHeight": 72,
+                "opacity": 1,
+                "paddingHorizontal": 16,
+                "userSelect": "auto",
+              }
+            }
+            testID="Visites et sorties"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "gap": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                size="small"
+                style={
+                  [
+                    {
+                      "borderRadius": 4,
+                      "height": 32,
+                      "overflow": "hidden",
+                      "width": 32,
+                    },
+                  ]
+                }
+              >
+                <BVLinearGradient
+                  colors={
+                    [
+                      4280802472,
+                      4279141492,
+                    ]
+                  }
+                  endPoint={
+                    {
+                      "x": 0.5,
+                      "y": 1,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    {
+                      "x": 0.5,
+                      "y": 0,
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    size="small"
+                    style={
+                      [
+                        {
+                          "position": "absolute",
+                          "top": -28,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      fill="none"
+                      height={92}
+                      width={54}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </BVLinearGradient>
+              </View>
+              <View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Visites et sorties
+                </Text>
+              </View>
+            </View>
+            <View
+              checked={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 2,
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "paddingBottom": 4,
+                    "paddingLeft": 4,
+                    "paddingRight": 4,
+                    "paddingTop": 4,
+                    "width": 16,
+                  },
+                ]
+              }
+            />
           </View>
         </View>
       </View>

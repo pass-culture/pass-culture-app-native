@@ -18,7 +18,7 @@ export const SubscriptionThematicIllustration = ({ thematic, size = 'medium' }: 
     <IllustrationContainer size={size}>
       <StyledLinearGradient colors={[gradients[0] as string, gradients[1] as string]}>
         <IllustrationWrapper size={size}>
-          <Illustration width={size === 'medium' ? 110 : 82} />
+          <Illustration width={size === 'medium' ? 82 : 54} />
         </IllustrationWrapper>
       </StyledLinearGradient>
     </IllustrationContainer>
@@ -26,15 +26,15 @@ export const SubscriptionThematicIllustration = ({ thematic, size = 'medium' }: 
 }
 
 const IllustrationContainer = styled.View<{ size: 'medium' | 'small' }>(({ size }) => ({
-  height: size === 'medium' ? getSpacing(16) : getSpacing(12),
-  width: size === 'medium' ? getSpacing(16) : getSpacing(12),
-  borderRadius: getSpacing(2),
+  height: size === 'medium' ? getSpacing(12) : getSpacing(8),
+  width: size === 'medium' ? getSpacing(12) : getSpacing(8),
+  borderRadius: size === 'medium' ? getSpacing(2) : getSpacing(1),
   overflow: 'hidden',
 }))
 
 const IllustrationWrapper = styled.View<{ size: 'medium' | 'small' }>(({ size }) => ({
   position: 'absolute',
-  top: size === 'medium' ? -getSpacing(3) : -getSpacing(5),
+  top: size === 'medium' ? -getSpacing(5) : -getSpacing(7),
 }))
 
 const StyledLinearGradient = styled(LinearGradient)({

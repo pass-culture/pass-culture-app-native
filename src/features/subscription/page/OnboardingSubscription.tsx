@@ -134,7 +134,6 @@ export const OnboardingSubscription = () => {
         data={Object.values(SubscriptionTheme)}
         renderItem={renderItem}
         keyExtractor={(item) => mapSubscriptionThemeToName[item]}
-        numColumns={2}
         ListHeaderComponent={
           <React.Fragment>
             <StyledTitle3>Choisis des thèmes à suivre</StyledTitle3>
@@ -179,8 +178,5 @@ export const OnboardingSubscription = () => {
 const StyledTitle3 = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))``
 
 const SubscriptionThematicButtonContainer = styled.View(() => ({
-  paddingHorizontal: getSpacing(5),
-  paddingVertical: getSpacing(3),
-  height: 172,
-  flexBasis: '50%',
+  paddingVertical: getSpacing(2),
 }))
