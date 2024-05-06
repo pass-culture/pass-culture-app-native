@@ -22,5 +22,5 @@ export type SubscriptionAnalyticsParams =
     }
   | {
       type: 'update'
-      from: 'profile'
+      from: 'profile' | 'home'
     }

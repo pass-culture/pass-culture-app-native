@@ -2,16 +2,20 @@ import React from 'react'
 
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 describe('OnboardingSubscription', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-      const results = await checkAccessibilityFor(container)
+      await screen.findByText('Choisis des thèmes à suivre')
 
-      expect(results).toHaveNoViolations()
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })

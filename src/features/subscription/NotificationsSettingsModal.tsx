@@ -5,8 +5,6 @@ import styled from 'styled-components/native'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
-import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
-import { SubscriptionTheme } from 'features/subscription/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -19,8 +17,9 @@ import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
+  title: string
+  description: string
   dismissModal: () => void
-  theme: SubscriptionTheme
   onPressSaveChanges: ({
     allowEmails,
     allowPush,
@@ -32,8 +31,9 @@ interface Props {
 
 export const NotificationsSettingsModal: FunctionComponent<Props> = ({
   visible,
+  title,
+  description,
   dismissModal,
-  theme,
   onPressSaveChanges,
 }) => {
   const initialState = { allowEmails: false, allowPush: false }
@@ -69,12 +69,12 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
   return (
     <AppModal
       visible={visible}
-      title={`S’abonner au thème “${mapSubscriptionThemeToName[theme]}”`}
+      title={title}
       rightIconAccessibilityLabel="Ne pas s’abonner"
       rightIcon={Close}
       onRightIconPress={onDismiss}>
       <ModalContent>
-        <Typo.Body>Pour recevoir toute l’actu de ce thème, tu dois, au choix&nbsp;:</Typo.Body>
+        <Typo.Body>{description}</Typo.Body>
 
         <Spacer.Column numberOfSpaces={6} />
 

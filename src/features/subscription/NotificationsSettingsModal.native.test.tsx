@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
-import { SubscriptionTheme } from 'features/subscription/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
@@ -136,7 +135,8 @@ const renderModal = (visible: boolean) => {
       <NotificationsSettingsModal
         visible={visible}
         dismissModal={mockDismissModal}
-        theme={SubscriptionTheme.CINEMA}
+        title="S’abonner au thème “Cinéma”"
+        description="Pour recevoir toute l’actu de ce thème, tu dois, au choix&nbsp;:"
         onPressSaveChanges={mockOnPressSaveChanges}
       />
     )

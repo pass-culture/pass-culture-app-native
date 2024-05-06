@@ -1,27 +1,47 @@
-import React, { useReducer } from 'react'
-import { FlatList, ViewStyle } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import React, { useCallback, useReducer } from 'react'
+import { FlatList, Platform, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
+import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionThematicButton } from 'features/subscription/components/buttons/SubscriptionThematicButton'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
+import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme } from 'features/subscription/types'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
+import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const OnboardingSubscription = () => {
+  const { replace } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...getTabNavConfig('Home'))
   const { user } = useAuthContext()
   const theme = useTheme()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+  const {
+    visible: isNotificationsModalVisible,
+    showModal: showNotificationsModal,
+    hideModal: hideNotificationsModal,
+  } = useModal(false)
+  const { pushPermission } = usePushPermission()
+  const isPushPermissionGranted = pushPermission === 'granted'
+
+  const isAtLeastOneNotificationTypeActivated =
+    Platform.OS === 'web'
+      ? user?.subscriptions?.marketingEmail
+      : (isPushPermissionGranted && user?.subscriptions?.marketingPush) ||
+        user?.subscriptions?.marketingEmail
 
   const initialSubscribedThemes: SubscriptionTheme[] = (user?.subscriptions?.subscribedThemes ??
     []) as SubscriptionTheme[]
@@ -38,10 +58,12 @@ export const OnboardingSubscription = () => {
 
   const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation(
     () => {
+      analytics.logSubscriptionUpdate({ type: 'update', from: 'home' })
       showSuccessSnackBar({
         message: 'Tes préférences ont bien été enregistrées.',
         timeout: SNACK_BAR_TIME_OUT,
       })
+      replace(...homeNavConfig)
     },
     () => {
       showErrorSnackBar({
@@ -67,15 +89,35 @@ export const OnboardingSubscription = () => {
     )
   }
 
-  const updateSubscription = () => {
-    updateProfile({
-      subscriptions: {
-        marketingEmail: user?.subscriptions?.marketingEmail || false,
-        marketingPush: user?.subscriptions?.marketingPush || false,
-        subscribedThemes,
-      },
-    })
-  }
+  const updateSubscription = useCallback(
+    (notifications: { allowEmails: boolean; allowPush: boolean }) => {
+      updateProfile({
+        subscriptions: {
+          marketingEmail: notifications.allowEmails,
+          marketingPush: notifications.allowPush,
+          subscribedThemes,
+        },
+      })
+    },
+    [subscribedThemes, updateProfile]
+  )
+
+  const onSubmit = useCallback(() => {
+    if (isAtLeastOneNotificationTypeActivated) {
+      updateSubscription({
+        allowEmails: user?.subscriptions?.marketingEmail || false,
+        allowPush: user?.subscriptions?.marketingPush || false,
+      })
+    } else {
+      showNotificationsModal()
+    }
+  }, [
+    isAtLeastOneNotificationTypeActivated,
+    user?.subscriptions?.marketingEmail,
+    user?.subscriptions?.marketingPush,
+    showNotificationsModal,
+    updateSubscription,
+  ])
 
   const contentContainerStyle: ViewStyle = {
     paddingHorizontal: theme.contentPage.marginHorizontal,
@@ -109,7 +151,7 @@ export const OnboardingSubscription = () => {
             <Spacer.Column numberOfSpaces={10} />
             <ButtonPrimary
               wording="Suivre la sélection"
-              onPress={updateSubscription}
+              onPress={onSubmit}
               disabled={isValidateButtonDisabled}
             />
             <Spacer.Column numberOfSpaces={6} />
@@ -122,6 +164,13 @@ export const OnboardingSubscription = () => {
           </React.Fragment>
         }
         contentContainerStyle={contentContainerStyle}
+      />
+      <NotificationsSettingsModal
+        visible={isNotificationsModalVisible}
+        title="Suivre la sélection"
+        description="Pour recevoir toute l’actu de tes thèmes favoris, tu dois, au choix&nbsp;:"
+        dismissModal={hideNotificationsModal}
+        onPressSaveChanges={updateSubscription}
       />
     </React.Fragment>
   )

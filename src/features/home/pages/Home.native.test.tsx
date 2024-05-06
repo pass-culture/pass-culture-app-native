@@ -5,6 +5,7 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { analytics } from 'libs/analytics'
+import { storage } from 'libs/storage'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -19,6 +20,11 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
 }))
 
 jest.mock('ui/components/ModuleBanner/backgroundImageSource')
+
+const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: false })
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: () => mockUseAuthContext(),
+}))
 
 jest.mock('features/home/api/useHomepageData')
 const mockUseHomepageData = useHomepageData as jest.Mock
@@ -51,6 +57,8 @@ describe('Home page', () => {
 
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
+    storage.clear('logged_in_session_count')
+    storage.clear('has_seen_onboarding_subscription')
   })
 
   it('should render correctly', async () => {
@@ -92,6 +100,62 @@ describe('Home page', () => {
 
     expect(mockFinishTransaction).toHaveBeenNthCalledWith(1, 'HOME:CREATION')
     expect(mockFinishTransaction).toHaveBeenNthCalledWith(2, 'HOME:LOADING')
+  })
+
+  it('should display onboarding subscription modal on third logged in session', async () => {
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
+    await storage.saveObject('logged_in_session_count', 1)
+    renderHome()
+    await screen.findByText('Bienvenue !')
+
+    expect(screen.queryByText('Suis tes thèmes préférés')).not.toBeOnTheScreen()
+
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
+    await storage.saveObject('logged_in_session_count', 2)
+    renderHome()
+    await screen.findByText('Bienvenue !')
+
+    expect(screen.queryByText('Suis tes thèmes préférés')).not.toBeOnTheScreen()
+
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
+    await storage.saveObject('logged_in_session_count', 3)
+    renderHome()
+
+    expect(await screen.findByText('Suis tes thèmes préférés')).toBeOnTheScreen()
+  })
+
+  it('should log analytics when onboarding subscription modal is displayed', async () => {
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
+    await storage.saveObject('logged_in_session_count', 3)
+
+    renderHome()
+
+    await screen.findByText('Suis tes thèmes préférés')
+
+    expect(analytics.logConsultSubscriptionModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not display onboarding subscription modal on third logged in session when user is not currently logged in', async () => {
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
+    await storage.saveObject('logged_in_session_count', 3)
+
+    renderHome()
+
+    await screen.findByText('Bienvenue !')
+
+    expect(screen.queryByText('Suis tes thèmes préférés')).not.toBeOnTheScreen()
+  })
+
+  it('should not display onboarding subscription modal when user has already seen it', async () => {
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
+    await storage.saveObject('logged_in_session_count', 3)
+    await storage.saveObject('has_seen_onboarding_subscription', true)
+
+    renderHome()
+
+    await screen.findByText('Bienvenue !')
+
+    expect(screen.queryByText('Suis tes thèmes préférés')).not.toBeOnTheScreen()
   })
 })
 

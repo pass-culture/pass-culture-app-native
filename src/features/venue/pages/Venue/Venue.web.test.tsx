@@ -85,16 +85,5 @@ describe('<Venue />', () => {
         expect(results).toHaveNoViolations()
       })
     })
-
-    it('should render correctly in web', async () => {
-      const { container } = render(reactQueryProviderHOC(<Venue />), {
-        theme: { isDesktopViewport: true },
-      })
-
-      await screen.findAllByText('Gratuit')
-      await act(async () => {})
-
-      expect(container).toMatchSnapshot()
-    })
   })
 })

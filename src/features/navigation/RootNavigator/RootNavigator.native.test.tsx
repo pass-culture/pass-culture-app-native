@@ -3,6 +3,7 @@ import React from 'react'
 
 import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { useSplashScreenContext } from 'libs/splashscreen'
+import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
@@ -14,7 +15,12 @@ const mockedUseMustUpdateApp = jest.mocked(useMustUpdateApp)
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/forceUpdate/helpers/useMustUpdateApp')
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-jest.mock('features/auth/context/AuthContext')
+
+const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: true })
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: () => mockUseAuthContext(),
+}))
+
 jest.mock('react-error-boundary', () => ({
   withErrorBoundary: (component: React.ReactNode, _: unknown) => component,
 }))
@@ -30,7 +36,10 @@ jest.mock('features/navigation/helpers/useCurrentRoute', () => ({
 jest.mock('libs/splashscreen')
 
 describe('<RootNavigator />', () => {
-  beforeEach(() => mockedUseMustUpdateApp.mockReturnValue(true))
+  beforeEach(() => {
+    mockedUseMustUpdateApp.mockReturnValue(true)
+    storage.clear('logged_in_session_count')
+  })
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
     mockedUseMustUpdateApp.mockReturnValueOnce(false)
@@ -65,6 +74,23 @@ describe('<RootNavigator />', () => {
     const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
 
     expect(quickAccessButton).not.toBeOnTheScreen()
+  })
+
+  it('should increment logged in session count when user is logged in', async () => {
+    renderRootNavigator()
+
+    await screen.findByText('Respect de ta vie privée')
+
+    expect(await storage.readObject<number>('logged_in_session_count')).toEqual(1)
+  })
+
+  it('should not increment logged in session count when user is not logged in', async () => {
+    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
+    renderRootNavigator()
+
+    await screen.findByText('Respect de ta vie privée')
+
+    expect(await storage.readObject<number>('logged_in_session_count')).toBeNull()
   })
 })
 
