@@ -1,4 +1,4 @@
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -8,7 +8,7 @@ import { useOffer } from './useOffer'
 
 describe('useOffer', () => {
   beforeEach(() =>
-    mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+    mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
   )
 
   it('should call API otherwise', async () => {

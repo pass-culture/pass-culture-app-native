@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import {
   CategoryIdEnum,
   NativeCategoryIdEnumv2,
-  OfferResponse,
+  OfferResponseV2,
   SearchGroupNameEnumv2,
 } from 'api/gen'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
@@ -39,7 +39,7 @@ import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
-  offer: OfferResponse
+  offer: OfferResponseV2
   subcategory: Subcategory
   trackEventHasSeenOfferOnce: VoidFunction
 }

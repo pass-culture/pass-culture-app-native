@@ -11,7 +11,7 @@ describe('<OfferImageContainer />', () => {
   it('should display camera tag when offer preview feature flag activated and image url defined', () => {
     render(
       <OfferImageContainer
-        imageUrl="some_url_to_some_resource"
+        imageUrls={['some_url_to_some_resource']}
         categoryId={CategoryIdEnum.CINEMA}
         shouldDisplayOfferPreview
       />
@@ -23,7 +23,7 @@ describe('<OfferImageContainer />', () => {
   it('should not display camera tag when offer preview feature flag deactivated and image url defined', () => {
     render(
       <OfferImageContainer
-        imageUrl="some_url_to_some_resource"
+        imageUrls={['some_url_to_some_resource']}
         categoryId={CategoryIdEnum.CINEMA}
       />
     )
@@ -45,7 +45,7 @@ describe('<OfferImageContainer />', () => {
     it('should display image outside carousel when image url defined', () => {
       render(
         <OfferImageContainer
-          imageUrl="some_url_to_some_resource"
+          imageUrls={['some_url_to_some_resource']}
           categoryId={CategoryIdEnum.CINEMA}
         />
       )
@@ -67,10 +67,32 @@ describe('<OfferImageContainer />', () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
     })
 
-    it('should display image inside carousel when image url defined', async () => {
+    it('should not display image inside carousel when offer has only one image', () => {
       render(
         <OfferImageContainer
-          imageUrl="some_url_to_some_resource"
+          imageUrls={['some_url_to_some_resource']}
+          categoryId={CategoryIdEnum.CINEMA}
+        />
+      )
+
+      expect(screen.queryByTestId('offerImageContainerCarousel')).not.toBeOnTheScreen()
+    })
+
+    it('should not display carousel dots when offer has only one', () => {
+      render(
+        <OfferImageContainer
+          imageUrls={['some_url_to_some_resource']}
+          categoryId={CategoryIdEnum.CINEMA}
+        />
+      )
+
+      expect(screen.queryByTestId('offerImageContainerDots')).not.toBeOnTheScreen()
+    })
+
+    it('should display image inside carousel when offer has several images', async () => {
+      render(
+        <OfferImageContainer
+          imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
           categoryId={CategoryIdEnum.CINEMA}
         />
       )
@@ -80,10 +102,10 @@ describe('<OfferImageContainer />', () => {
       })
     })
 
-    it('should display carousel dots when image url defined', async () => {
+    it('should display carousel dots when offer has several images', async () => {
       render(
         <OfferImageContainer
-          imageUrl="some_url_to_some_resource"
+          imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
           categoryId={CategoryIdEnum.CINEMA}
         />
       )
