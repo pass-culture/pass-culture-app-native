@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
@@ -12,7 +12,7 @@ import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
-const mockedOffer: Partial<OfferResponse> | undefined = offerResponseSnap
+const mockedOffer: Partial<OfferResponseV2> | undefined = offerResponseSnap
 jest.mock('features/offer/api/useOffer', () => ({
   useOffer: () => ({
     data: mockedOffer,

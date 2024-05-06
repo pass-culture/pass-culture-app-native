@@ -2,7 +2,7 @@ import React, { ComponentProps } from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { mockedBookingApi } from '__mocks__/fixtures/booking'
-import { BookingsResponse, BookOfferResponse, OfferResponse } from 'api/gen'
+import { BookingsResponse, BookOfferResponse, OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
@@ -80,7 +80,7 @@ describe('<OfferCTAButton />', () => {
 
   it('should open booking modal when login after booking attempt', async () => {
     mockServer.getApi<BookingsResponse>(`/v1/bookings`, {})
-    mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, {
+    mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, {
       requestOptions: { persist: true },
       responseOptions: { data: offerResponseSnap },
     })
@@ -170,7 +170,7 @@ describe('<OfferCTAButton />', () => {
     }
 
     mockServer.getApi<BookingsResponse>(`/v1/bookings`, expectedResponse)
-    mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+    mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
 
     const fromOfferId = 1
     useRoute.mockReturnValueOnce({ params: { fromOfferId } })
@@ -203,7 +203,7 @@ describe('<OfferCTAButton />', () => {
 
     describe('When booking API response is success', () => {
       beforeEach(() => {
-        mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+        mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
         mockServer.getApi<BookingsResponse>('/v1/bookings', {
           requestOptions: { persist: true },
           responseOptions: { data: expectedResponse },
@@ -295,7 +295,7 @@ describe('<OfferCTAButton />', () => {
 
     describe('When booking API response is error', () => {
       beforeEach(() => {
-        mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+        mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
         mockServer.getApi<BookingsResponse>('/v1/bookings', {
           requestOptions: { persist: true },
           responseOptions: { data: expectedResponse },
@@ -361,7 +361,7 @@ describe('<OfferCTAButton />', () => {
     })
 
     it('should display an error message when pressing button to book the offer', async () => {
-      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+      mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
       mockServer.getApi<BookingsResponse>('/v1/bookings', {
         requestOptions: { persist: true },
         responseOptions: { data: expectedResponse },
@@ -420,7 +420,7 @@ describe('<OfferCTAButton />', () => {
 
     it('should directly redirect to the offer when pressing offer access button', async () => {
       mockServer.getApi<BookingsResponse>(`/v1/bookings`, expectedResponse)
-      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+      mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
 
       // Multiple renders force us to mock auth context as loggedIn user in this test
       // eslint-disable-next-line local-rules/independent-mocks

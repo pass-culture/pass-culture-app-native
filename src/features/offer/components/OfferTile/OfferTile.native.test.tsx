@@ -170,7 +170,7 @@ describe('OfferTile component', () => {
       description: '',
       expenseDomains: [],
       id: offerId,
-      image: { url: props.thumbUrl },
+      images: { recto: { url: props.thumbUrl } },
       isDigital: false,
       isDuo: false,
       isReleased: true,

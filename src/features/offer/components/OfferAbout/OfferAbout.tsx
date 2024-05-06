@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { OfferAccessibility } from 'features/offer/components/OfferAccessibility/OfferAccessibility'
 import { OfferMetadataItemProps } from 'features/offer/components/OfferMetadataItem/OfferMetadataItem'
 import { OfferMetadataList } from 'features/offer/components/OfferMetadataList/OfferMetadataList'
@@ -11,7 +11,7 @@ import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
-  offer: OfferResponse
+  offer: OfferResponseV2
   metadata: OfferMetadataItemProps[]
   hasMetadata: boolean
   shouldDisplayAccessibilitySection: boolean

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { Animated } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
@@ -18,7 +18,7 @@ import { Spacer } from 'ui/theme'
 interface Props {
   headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
-  offer: OfferResponse
+  offer: OfferResponseV2
 }
 
 /**

@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { ThemeProvider } from 'styled-components/native'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
 import { computedTheme } from 'tests/computedTheme'
@@ -32,7 +32,7 @@ describe('useOfferSummaryInfoList', () => {
 
   it('should return summaryInfoItems dates when offer stock has date in future and is not a cinema offer', async () => {
     mockdate.set('2021-01-02T18:00:00')
-    const offer: OfferResponse = {
+    const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       isDuo: false,
     }
@@ -61,7 +61,7 @@ describe('useOfferSummaryInfoList', () => {
 
   it('should not return summaryInfoItems dates when offer stock has date in future and is a cinema offer', async () => {
     mockdate.set('2021-01-02T18:00:00')
-    const offer: OfferResponse = {
+    const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       isDuo: false,
     }
@@ -82,7 +82,7 @@ describe('useOfferSummaryInfoList', () => {
   })
 
   it('should return summaryInfoItems online when offer is digital', async () => {
-    const offer: OfferResponse = {
+    const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       isDuo: false,
       isDigital: true,
@@ -108,7 +108,7 @@ describe('useOfferSummaryInfoList', () => {
   })
 
   it('should return summaryInfoItems duration when offer has duration', async () => {
-    const offer: OfferResponse = {
+    const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       isDuo: false,
       extraData: { durationMinutes: 180 },
@@ -134,7 +134,7 @@ describe('useOfferSummaryInfoList', () => {
   })
 
   it('should return many summaryInfoItems when offer has various details like duration, duo offer, digital offer', async () => {
-    const offer: OfferResponse = {
+    const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       isDuo: true,
       isDigital: true,
@@ -173,7 +173,7 @@ describe('useOfferSummaryInfoList', () => {
   })
 
   it('should not return summaryInfoItems when none are in offer stock', () => {
-    const offer: OfferResponse = {
+    const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       isDuo: false,
     }

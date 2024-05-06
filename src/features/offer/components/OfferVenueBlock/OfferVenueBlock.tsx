@@ -2,7 +2,7 @@ import React, { ComponentProps, Fragment, FunctionComponent, useMemo } from 'rea
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
@@ -23,7 +23,7 @@ const VENUE_THUMBNAIL_SIZE = getSpacing(14)
 type Props = {
   distance?: string
   title: string
-  offer: OfferResponse
+  offer: OfferResponseV2
   onChangeVenuePress?: VoidFunction
   onSeeVenuePress?: VoidFunction
   onSeeItineraryPress?: VoidFunction

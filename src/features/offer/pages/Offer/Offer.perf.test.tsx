@@ -2,7 +2,7 @@ import { Hit } from '@algolia/client-search'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { Offer } from 'features/offer/pages/Offer/Offer'
@@ -32,7 +32,7 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 describe('<Offer />', () => {
   beforeEach(() => {
     // We mock server instead of hooks to test the real behavior of the component.
-    mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, {
+    mockServer.getApi<OfferResponseV2>(`/v1/offer/${offerResponseSnap.id}`, {
       requestOptions: { persist: true },
       responseOptions: { data: offerResponseSnap },
     })

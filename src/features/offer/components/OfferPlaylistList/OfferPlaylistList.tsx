@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { OfferPlaylist } from 'features/offer/components/OfferPlaylist/OfferPlaylist'
@@ -25,7 +25,7 @@ import { Offer, RecommendationApiParams, SimilarOfferPlaylist } from 'shared/off
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 
 export type OfferPlaylistListProps = {
-  offer: OfferResponse
+  offer: OfferResponseV2
   position: Position
   sameCategorySimilarOffers?: Offer[]
   apiRecoParamsSameCategory?: RecommendationApiParams
@@ -39,7 +39,7 @@ function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
 }
 
 type PlaylistItemProps = {
-  offer: OfferResponse
+  offer: OfferResponseV2
   position: Position
   categoryMapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping

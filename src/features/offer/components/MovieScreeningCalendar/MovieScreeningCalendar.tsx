@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useMemo, useRef } from 'react'
 import { FlatList, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { useMovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
@@ -12,7 +12,7 @@ import { EventCardList } from 'ui/components/eventCard/EventCardList'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
-  offer: OfferResponse
+  offer: OfferResponseV2
   subcategory: Subcategory
 }
 export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcategory }) => {

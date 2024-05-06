@@ -1,11 +1,11 @@
-import { FavoriteOfferResponse, OfferResponse, UserProfileResponse } from 'api/gen'
+import { FavoriteOfferResponse, OfferResponseV2, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOffer } from 'features/offer/api/useOffer'
 
 import { getOfferPrice } from '../getOfferPrice/getOfferPrice'
 
 export const hasEnoughCredit = (
-  domains: OfferResponse['expenseDomains'] | FavoriteOfferResponse['expenseDomains'],
+  domains: OfferResponseV2['expenseDomains'] | FavoriteOfferResponse['expenseDomains'],
   price: number | FavoriteOfferResponse['price'] | FavoriteOfferResponse['startPrice'],
   domainsCredit: UserProfileResponse['domainsCredit']
 ): boolean => {
@@ -24,7 +24,7 @@ export const hasEnoughCredit = (
   })
 }
 
-export const useHasEnoughCredit = (offer?: OfferResponse): boolean => {
+export const useHasEnoughCredit = (offer?: OfferResponseV2): boolean => {
   const { user } = useAuthContext()
   if (!offer || !user) return false
 

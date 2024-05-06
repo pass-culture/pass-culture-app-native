@@ -2,7 +2,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import { useTheme } from 'styled-components/native'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingButton } from 'features/offer/components/BookingButton/BookingButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
@@ -11,7 +11,7 @@ import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOf
 import { Subcategory } from 'libs/subcategories/types'
 
 type Props = {
-  offer: OfferResponse
+  offer: OfferResponseV2
   subcategory: Subcategory
   trackEventHasSeenOfferOnce: VoidFunction
 }

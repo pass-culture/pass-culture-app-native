@@ -3,7 +3,7 @@ import React from 'react'
 
 import {
   BookingsResponse,
-  OfferResponse,
+  OfferResponseV2,
   OfferStockResponse,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
@@ -67,7 +67,7 @@ const defaultOfferStockResponse: OfferStockResponse = {
   price: 570,
 }
 
-const defaultOfferResponse: OfferResponse = {
+const defaultOfferResponse: OfferResponseV2 = {
   ...offerResponseSnap,
   subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
   stocks: [defaultOfferStockResponse],
@@ -172,7 +172,7 @@ describe('Movie screening calendar', () => {
     beforeEach(() => {
       mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
       mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
-      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+      mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
       mockAuthContext = defaultAuthContext
     })
 
@@ -188,7 +188,7 @@ describe('Movie screening calendar', () => {
     })
 
     it('should open isDuo modal when user is loggedIn and clicks on a bookable eventCard', async () => {
-      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+      mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
 
       mockAuthContext = defaultLoggedInUser
 
@@ -372,7 +372,7 @@ describe('Movie screening calendar', () => {
     })
 
     it('should log event ClickBookOffer when user is logged in and a cliquable eventcard is pressed', async () => {
-      mockServer.getApi<OfferResponse>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
+      mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
 
       mockAuthContext = defaultLoggedInUser
 
@@ -422,7 +422,7 @@ const renderMovieScreeningCalendar = ({
   subcategory = mockSubcategory,
   isDesktopViewport = false,
 }: {
-  offer: OfferResponse
+  offer: OfferResponseV2
   subcategory?: Subcategory
   isDesktopViewport?: boolean
 }) => {
