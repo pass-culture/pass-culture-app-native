@@ -9,7 +9,7 @@ import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 
 type Offer = AlgoliaHit['offer']
 
-// Prices are stored in euros in Algolia, but retrieved as cents in OfferResponse
+// Prices are stored in euros in Algolia, but retrieved as cents in OfferResponseV2
 // To follow good frontend practices (see https://frontstuff.io/how-to-handle-monetary-values-in-javascript)
 // we convert all prices in Algolia to cents, use cents in the frontend code,
 // and when we display the prices to the user, we format the price knowing that there are cents.
