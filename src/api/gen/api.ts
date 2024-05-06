@@ -209,6 +209,16 @@ export interface BannerMetaModel {
    * @memberof BannerMetaModel
    */
   image_credit?: string | null
+  /**
+   * @type {string}
+   * @memberof BannerMetaModel
+   */
+  image_credit_url?: string | null
+  /**
+   * @type {boolean}
+   * @memberof BannerMetaModel
+   */
+  is_from_google?: boolean | null
 }
 /**
  * An enumeration.

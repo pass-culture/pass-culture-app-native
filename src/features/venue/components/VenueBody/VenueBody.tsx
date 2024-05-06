@@ -42,7 +42,7 @@ export const VenueBody: FunctionComponent<Props> = ({
   playlists,
   shouldDisplayCTA,
 }) => {
-  const { bannerUrl, publicName, name, address, postalCode, city } = venue
+  const { bannerUrl, publicName, name, address, postalCode, city, bannerMeta } = venue
   const { isDesktopViewport, isTabletViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
@@ -61,13 +61,14 @@ export const VenueBody: FunctionComponent<Props> = ({
   distanceToVenue && venueTags.push(`À ${distanceToVenue}`)
 
   const FirstSectionContainer = isLargeScreen ? View : SectionWithDivider
+  const hasGoogleCredit = bannerMeta?.is_from_google && bannerMeta?.image_credit
 
   return (
     <Container onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
       {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
       <TopContainer>
-        <VenueBanner bannerUrl={bannerUrl} />
-        <Spacer.Column numberOfSpaces={6} />
+        <VenueBanner bannerUrl={bannerUrl} bannerMeta={bannerMeta} />
+        <Spacer.Column numberOfSpaces={hasGoogleCredit ? 2 : 6} />
         <MarginContainer>
           <InformationTags tags={venueTags} />
           <Spacer.Column numberOfSpaces={4} />
