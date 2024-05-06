@@ -1,7 +1,7 @@
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { render, screen } from 'tests/utils'
@@ -17,7 +17,7 @@ excluOfferAPISpy.mockImplementation(() => {
   return {
     isLoading: false,
     data: mockOffer,
-  } as unknown as UseQueryResult<OfferResponse>
+  } as unknown as UseQueryResult<OfferResponseV2>
 })
 
 const props: ExclusivityModuleProps = {
