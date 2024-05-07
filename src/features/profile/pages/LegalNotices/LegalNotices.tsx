@@ -41,7 +41,7 @@ export function LegalNotices() {
         Directeur de la publication&nbsp;: Sébastien Cavalier
         {LINE_BREAK}
         Hébergeur&nbsp;: Google Cloud Platform
-        {LINE_BREAK}8 Rue de Londres - 75009 Paris - France
+        {LINE_BREAK}89 rue La Boétie – 75008 Paris - France
         {LINE_BREAK}
         Nous contacter&nbsp;:&nbsp;
         <ExternalTouchableLink
