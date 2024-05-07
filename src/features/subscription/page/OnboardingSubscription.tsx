@@ -19,6 +19,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -134,7 +135,6 @@ export const OnboardingSubscription = () => {
         data={Object.values(SubscriptionTheme)}
         renderItem={renderItem}
         keyExtractor={(item) => mapSubscriptionThemeToName[item]}
-        numColumns={2}
         ListHeaderComponent={
           <React.Fragment>
             <StyledTitle3>Choisis des thèmes à suivre</StyledTitle3>
@@ -146,25 +146,24 @@ export const OnboardingSubscription = () => {
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
         }
-        ListFooterComponent={
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={10} />
-            <ButtonPrimary
-              wording="Suivre la sélection"
-              onPress={onSubmit}
-              disabled={isValidateButtonDisabled}
-            />
-            <Spacer.Column numberOfSpaces={6} />
-            <ButtonTertiaryBlack
-              wording="Non merci"
-              accessibilityLabel="Ne pas suivre de thème"
-              icon={Invalidate}
-              onPress={goBack}
-            />
-          </React.Fragment>
-        }
         contentContainerStyle={contentContainerStyle}
+        ListFooterComponent={<Spacer.Column numberOfSpaces={30} />}
       />
+      <StickyBottomWrapper>
+        <StyledView>
+          <ButtonPrimary
+            wording="Suivre la sélection"
+            onPress={onSubmit}
+            disabled={isValidateButtonDisabled}
+          />
+          <ButtonTertiaryBlack
+            wording="Non merci"
+            accessibilityLabel="Ne pas suivre de thème"
+            icon={Invalidate}
+            onPress={goBack}
+          />
+        </StyledView>
+      </StickyBottomWrapper>
       <NotificationsSettingsModal
         visible={isNotificationsModalVisible}
         title="Suivre la sélection"
@@ -176,11 +175,15 @@ export const OnboardingSubscription = () => {
   )
 }
 
-const StyledTitle3 = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))``
+const StyledTitle3 = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
 
-const SubscriptionThematicButtonContainer = styled.View(() => ({
-  paddingHorizontal: getSpacing(5),
-  paddingVertical: getSpacing(3),
-  height: 172,
-  flexBasis: '50%',
+const StyledView = styled.View.attrs({})(({ theme }) => ({
+  backgroundColor: theme.colors.white,
+  alignItems: 'center',
+  padding: getSpacing(4),
+  gap: getSpacing(6),
 }))
+
+const SubscriptionThematicButtonContainer = styled.View({
+  paddingVertical: getSpacing(2),
+})

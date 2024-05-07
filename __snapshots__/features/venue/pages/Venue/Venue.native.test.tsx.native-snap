@@ -3454,7 +3454,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           }
         >
           <View
-            size="small"
+            size="medium"
             style={
               [
                 {
@@ -3497,7 +3497,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               }
             >
               <View
-                size="small"
+                size="medium"
                 style={
                   [
                     {
