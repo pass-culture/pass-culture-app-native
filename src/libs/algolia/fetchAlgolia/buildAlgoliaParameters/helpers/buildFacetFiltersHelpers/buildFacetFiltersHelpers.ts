@@ -6,11 +6,11 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
-import { GTLLevel } from 'features/gtlPlaylist/types'
 import { BooksNativeCategoriesEnum, OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
 import { eventMonitoring } from 'libs/monitoring'
+import { GtlLevel } from 'shared/gtl/types'
 
 export const buildOfferCategoriesPredicate = (searchGroups: SearchGroupNameEnumv2[]): string[] =>
   searchGroups.map((searchGroup) => `${FACETS_FILTERS_ENUM.OFFER_SEARCH_GROUP_NAME}:${searchGroup}`)
@@ -20,7 +20,7 @@ export const buildOfferSubcategoriesPredicate = (subcategoryIds: SubcategoryIdEn
     (subcategoryId) => `${FACETS_FILTERS_ENUM.OFFER_SUB_CATEGORY}:${subcategoryId}`
   )
 
-export const buildOfferGtl = (gtlLevel: GTLLevel, gtlLabel: string) => {
+export const buildOfferGtl = (gtlLevel: GtlLevel, gtlLabel: string) => {
   const filterName = FACETS_FILTERS_ENUM.OFFER_GTL_LEVEL.replace('XX', String(gtlLevel))
   return [`${filterName}:${gtlLabel}`]
 }

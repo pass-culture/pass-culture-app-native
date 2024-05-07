@@ -11,7 +11,6 @@ import {
   VenueResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { GTLLevel } from 'features/gtlPlaylist/types'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { Venue } from 'features/venue/types'
@@ -21,6 +20,7 @@ import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaHit as BaseAlgoliaHit } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Range } from 'libs/typesUtils/typeHelpers'
+import { GtlLevel } from 'shared/gtl/types'
 
 interface AlgoliaGeoloc {
   lat?: number | null
@@ -121,7 +121,7 @@ export type SearchQueryParameters = {
   offerCategories: SearchGroupNameEnumv2[]
   offerGenreTypes?: OfferGenreType[]
   offerGtlLabel?: string
-  offerGtlLevel?: GTLLevel
+  offerGtlLevel?: GtlLevel
   offerIsDuo: boolean
   offerIsFree?: boolean
   offerNativeCategories?: NativeCategoryIdEnumv2[] | BooksNativeCategoriesEnum[]
