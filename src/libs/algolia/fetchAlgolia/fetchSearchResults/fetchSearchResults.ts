@@ -4,8 +4,8 @@ import { DisabilitiesProperties } from 'features/accessibility/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
+import { buildVenueSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildVenueSearchParameters/buildVenueSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
-import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
 import { getSearchVenueQuery } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/getSearchVenueQuery'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
@@ -33,13 +33,6 @@ export const fetchSearchResults = async ({
   offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME,
   disabilitiesProperties,
 }: FetchOfferAndVenuesArgs) => {
-  const searchParameters = buildOfferSearchParameters(
-    parameters,
-    buildLocationParameterParams,
-    isUserUnderage,
-    disabilitiesProperties
-  )
-
   const currentVenuesIndex = getCurrentVenuesIndex({
     selectedLocationMode: buildLocationParameterParams.selectedLocationMode,
     userLocation: buildLocationParameterParams.userLocation,
@@ -53,7 +46,12 @@ export const fetchSearchResults = async ({
       params: {
         page: parameters.page || 0,
         ...buildHitsPerPage(parameters.hitsPerPage),
-        ...searchParameters,
+        ...buildOfferSearchParameters(
+          parameters,
+          buildLocationParameterParams,
+          isUserUnderage,
+          disabilitiesProperties
+        ),
         attributesToRetrieve: offerAttributesToRetrieve,
         attributesToHighlight: [], // We disable highlighting because we don't need it
         /* Is needed to get a queryID, in order to send analytics events
@@ -68,7 +66,11 @@ export const fetchSearchResults = async ({
       params: {
         page: 0,
         ...buildHitsPerPage(35),
-        ...buildSearchVenuePosition(buildLocationParameterParams, parameters.venue),
+        ...buildVenueSearchParameters(
+          buildLocationParameterParams,
+          disabilitiesProperties,
+          parameters.venue
+        ),
         clickAnalytics: true,
       },
     },
