@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator/Stack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
@@ -20,7 +20,7 @@ jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))
 
-let mockedOffer: Partial<OfferResponse> | undefined | null = undefined
+let mockedOffer: Partial<OfferResponseV2> | undefined | null = undefined
 let mockedIsLoading = false
 jest.mock('features/offer/api/useOffer', () => ({
   useOffer: () => ({
@@ -32,14 +32,14 @@ jest.mock('features/offer/api/useOffer', () => ({
 const offerId = 116656
 
 type MockOffer =
-  | (OfferResponse & {
-      extraOffer?: Partial<Omit<OfferResponse, 'id'>>
+  | (OfferResponseV2 & {
+      extraOffer?: Partial<Omit<OfferResponseV2, 'id'>>
     })
   | null
 
 type RenderOfferPage = {
   fromOfferId?: number
-  extraOffer?: Partial<Omit<OfferResponse, 'id'>>
+  extraOffer?: Partial<Omit<OfferResponseV2, 'id'>>
   openModalOnNavigation?: boolean
   mockOffer?: MockOffer
   mockIsLoading?: boolean

@@ -6,7 +6,7 @@ import { NativeScrollEvent, NativeSyntheticEvent, Platform } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponse, SearchGroupResponseModelv2 } from 'api/gen'
+import { OfferResponseV2, SearchGroupResponseModelv2 } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
@@ -17,6 +17,7 @@ import { OfferImageContainer } from 'features/offer/components/OfferImageContain
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
+import { getOfferImageUrls } from 'features/offer/helpers/getOfferImageUrls/getOfferImageUrls'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { analytics, isCloseToBottom } from 'libs/analytics'
@@ -31,7 +32,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
-  offer: OfferResponse
+  offer: OfferResponseV2
   searchGroupList: SearchGroupResponseModelv2[]
   subcategory: Subcategory
 }
@@ -54,6 +55,9 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     otherCategoriesSimilarOffers,
     apiRecoParamsOtherCategories,
   } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
+
+  const offerImages = offer.images ? getOfferImageUrls(offer.images) : []
+  const imageUrl = offerImages.length ? offerImages[0] : ''
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     analytics.logConsultWholeOffer(offer.id)
@@ -94,11 +98,10 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const shouldDisplayOfferPreview = enableOfferPreview && !isWeb
 
   const onPress = () => {
-    if (shouldDisplayOfferPreview && offer.image) {
+    if (shouldDisplayOfferPreview && offerImages.length) {
       navigate('OfferPreview', { id: offer.id })
     }
   }
-  const imageUrl = offer.image?.url
 
   return (
     <Container>
@@ -134,7 +137,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         ) : (
           <ViewGap gap={8} testID="offer-body-mobile">
             <OfferImageContainer
-              imageUrl={imageUrl}
+              imageUrls={offerImages}
               categoryId={subcategory.categoryId}
               shouldDisplayOfferPreview={shouldDisplayOfferPreview}
               onPress={onPress}

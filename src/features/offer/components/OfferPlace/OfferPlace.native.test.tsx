@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React, { ComponentProps } from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlace/OfferPlace'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
@@ -333,7 +333,7 @@ describe('<OfferPlace />', () => {
 
   it('should not display "Voir la page du lieu" button when venue is not permanent', () => {
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-    const offer: OfferResponse = {
+    const offer: OfferResponseV2 = {
       ...mockOffer,
       venue: {
         ...mockOffer.venue,
@@ -346,7 +346,7 @@ describe('<OfferPlace />', () => {
   })
 
   describe('When venue is permanent', () => {
-    const offer: OfferResponse = {
+    const offer: OfferResponseV2 = {
       ...mockOffer,
       venue: {
         ...mockOffer.venue,
@@ -378,7 +378,7 @@ describe('<OfferPlace />', () => {
 
   it('should display "Voir l’itinéraire" button when complete venue address specified', () => {
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-    const offer: OfferResponse = {
+    const offer: OfferResponseV2 = {
       ...mockOffer,
       venue: {
         ...mockOffer.venue,
@@ -396,7 +396,7 @@ describe('<OfferPlace />', () => {
   describe('should not display "Voir l’itinéraire" button', () => {
     it('When address, city and postal code not provided', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...mockOffer,
         venue: {
           ...mockOffer.venue,
@@ -413,7 +413,7 @@ describe('<OfferPlace />', () => {
 
     it('When only address provided', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...mockOffer,
         venue: {
           ...mockOffer.venue,
@@ -430,7 +430,7 @@ describe('<OfferPlace />', () => {
 
     it('When only city provided', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...mockOffer,
         venue: {
           ...mockOffer.venue,
@@ -447,7 +447,7 @@ describe('<OfferPlace />', () => {
 
     it('When only city postalCode', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...mockOffer,
         venue: {
           ...mockOffer.venue,
@@ -465,7 +465,7 @@ describe('<OfferPlace />', () => {
 
   it('should log consult itinerary when pressing "Voir l’itinéraire" button', () => {
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-    const offer: OfferResponse = {
+    const offer: OfferResponseV2 = {
       ...mockOffer,
       id: 146112,
     }

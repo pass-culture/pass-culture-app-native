@@ -2,7 +2,7 @@
 
 import {
   FavoriteResponse,
-  OfferResponse,
+  OfferResponseV2,
   PaginatedFavoritesResponse,
   UserProfileResponse,
   SubcategoriesResponseModelv2,
@@ -37,7 +37,7 @@ export function simulateBackend(options: Options = defaultOptions) {
     ...options,
   }
 
-  mockServer.getApi<OfferResponse>(`/v1/offer/${id}`, offerResponseSnap)
+  mockServer.getApi<OfferResponseV2>(`/v2/offer/${id}`, offerResponseSnap)
   mockServer.getApi<UserProfileResponse>(`/v1/me`, beneficiaryUser)
   mockServer.getApi<PaginatedFavoritesResponse>(`/v1/me/favorites`, paginatedFavoritesResponseSnap)
   mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...placeholderData })

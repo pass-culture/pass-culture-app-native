@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { ExpenseDomain, OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { ExpenseDomain, OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { toMutable } from 'shared/types/toMutable'
 
 // humanizedId AHD3A
@@ -46,9 +46,11 @@ export const offerResponseSnap = toMutable({
       features: [],
     },
   ],
-  image: {
-    url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS',
-    credit: 'Author: photo credit author',
+  images: {
+    image1: {
+      url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS',
+      credit: 'Author: photo credit author',
+    },
   },
   venue: {
     id: 1664,
@@ -86,4 +88,4 @@ export const offerResponseSnap = toMutable({
     },
   },
   isExternalBookingsDisabled: false,
-} as const satisfies ReadonlyDeep<OfferResponse>)
+} as const satisfies ReadonlyDeep<OfferResponseV2>)

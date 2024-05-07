@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import { useTheme } from 'styled-components/native'
 
-import { OfferResponse, SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { OfferResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
@@ -29,7 +29,7 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export type OfferPlaceProps = {
-  offer: OfferResponse
+  offer: OfferResponseV2
   subcategory: Subcategory
 }
 

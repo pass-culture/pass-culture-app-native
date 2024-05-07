@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { initialBookingState, Step } from 'features/bookOffer/context/reducer'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -20,14 +20,14 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
 
 describe('<AlreadyBooked />', () => {
   it('should dismiss modal when clicking on cta', () => {
-    render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponse} />)
+    render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponseV2} />)
     fireEvent.press(screen.getByText('Mes réservations terminées'))
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
   it('should change booking step from date to confirmation', () => {
-    render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponse} />)
+    render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponseV2} />)
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'CHANGE_STEP',

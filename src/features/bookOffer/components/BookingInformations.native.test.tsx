@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { initialBookingState } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
@@ -41,7 +41,7 @@ const carteCineOfferDigital = {
   isDigital: true,
 }
 
-const mockUseBookingOffer = jest.fn((): OfferResponse | undefined => cinePleinAirOffer)
+const mockUseBookingOffer = jest.fn((): OfferResponseV2 | undefined => cinePleinAirOffer)
 jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: () => mockUseBookingOffer(),
 }))

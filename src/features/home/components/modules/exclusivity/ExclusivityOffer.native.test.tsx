@@ -2,7 +2,7 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
 import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/ExclusivityOffer'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
@@ -33,7 +33,7 @@ describe('ExclusivityModule component', () => {
       return {
         isLoading: false,
         data: mockOffer,
-      } as unknown as UseQueryResult<OfferResponse>
+      } as unknown as UseQueryResult<OfferResponseV2>
     })
   })
 
@@ -84,7 +84,7 @@ describe('ExclusivityModule component', () => {
       return {
         isLoading: false,
         data: undefined,
-      } as UseQueryResult<OfferResponse>
+      } as UseQueryResult<OfferResponseV2>
     })
     render(<ExclusivityOffer {...props} />)
 

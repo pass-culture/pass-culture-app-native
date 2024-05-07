@@ -1,7 +1,7 @@
 import React from 'react'
 import { Animated, Share } from 'react-native'
 
-import { OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
+import { OfferResponseV2, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
@@ -121,7 +121,7 @@ const mockOffer = offerResponseSnap
 
 function renderOfferHeader() {
   mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', paginatedFavoritesResponseSnap)
-  mockServer.getApi<OfferResponse>(`/v1/offer/${mockOffer.id}`, offerResponseSnap)
+  mockServer.getApi<OfferResponseV2>(`/v1/offer/${mockOffer.id}`, offerResponseSnap)
 
   const animatedValue = new Animated.Value(0)
   render(

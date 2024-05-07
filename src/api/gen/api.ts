@@ -2086,6 +2086,117 @@ export interface OfferResponse {
 }
 /**
  * @export
+ * @interface OfferResponseV2
+ */
+export interface OfferResponseV2 {
+  /**
+   * @type {OfferAccessibilityResponse}
+   * @memberof OfferResponseV2
+   */
+  accessibility: OfferAccessibilityResponse
+  /**
+   * @type {string}
+   * @memberof OfferResponseV2
+   */
+  description?: string | null
+  /**
+   * @type {Array<ExpenseDomain>}
+   * @memberof OfferResponseV2
+   */
+  expenseDomains: Array<ExpenseDomain>
+  /**
+   * @type {string}
+   * @memberof OfferResponseV2
+   */
+  externalTicketOfficeUrl?: string | null
+  /**
+   * @type {OfferExtraData}
+   * @memberof OfferResponseV2
+   */
+  extraData?: OfferExtraData | null
+  /**
+   * @type {number}
+   * @memberof OfferResponseV2
+   */
+  id: number
+  /**
+   * @type {{ [key: string]: OfferImageResponse; }}
+   * @memberof OfferResponseV2
+   */
+  images?: { [key: string]: OfferImageResponse; } | null
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
+  isDigital: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
+  isDuo: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
+  isEducational: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
+  isExpired: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
+  isExternalBookingsDisabled: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
+  isForbiddenToUnderage: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
+  isReleased: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
+  isSoldOut: boolean
+  /**
+   * @type {any}
+   * @memberof OfferResponseV2
+   */
+  metadata: any
+  /**
+   * @type {string}
+   * @memberof OfferResponseV2
+   */
+  name: string
+  /**
+   * @type {Array<OfferStockResponse>}
+   * @memberof OfferResponseV2
+   */
+  stocks: Array<OfferStockResponse>
+  /**
+   * @type {SubcategoryIdEnum}
+   * @memberof OfferResponseV2
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {OfferVenueResponse}
+   * @memberof OfferResponseV2
+   */
+  venue: OfferVenueResponse
+  /**
+   * @type {string}
+   * @memberof OfferResponseV2
+   */
+  withdrawalDetails?: string | null
+}
+/**
+ * @export
  * @interface OfferStockActivationCodeResponse
  */
 export interface OfferStockActivationCodeResponse {
@@ -3940,6 +4051,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary get_offer <GET>
+     * @deprecated
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4161,6 +4273,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       const pathname = `/native/v1/venue/{venue_id}`.replace(
         `{${'venue_id'}}`,
         encodeURIComponent(String(venue_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_offer_v2 <GET>
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2OfferofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'offer_id' is not null or undefined
+      if (offer_id === null || offer_id === undefined) {
+        throw new RequiredError(
+          'offer_id',
+          'Required parameter offer_id was null or undefined when calling getNativeV2OfferofferId.'
+        )
+      }
+      const pathname = `/native/v2/offer/{offer_id}`.replace(
+        `{${'offer_id'}}`,
+        encodeURIComponent(String(offer_id))
       )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
@@ -5187,6 +5326,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     /**
      * 
      * @summary get_offer <GET>
+     * @deprecated
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -5318,6 +5458,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getNativeV1VenuevenueId(venue_id: number, options?: any): Promise<VenueResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1VenuevenueId(venue_id, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_offer_v2 <GET>
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV2OfferofferId(offer_id: number, options?: any): Promise<OfferResponseV2> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV2OfferofferId(offer_id, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -5956,6 +6108,7 @@ export class DefaultApi extends BaseAPI {
   /**
     * 
     * @summary get_offer <GET>
+    * @deprecated
     * @param {number} offer_id 
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -6089,6 +6242,18 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1VenuevenueId(venue_id: number, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1VenuevenueId(venue_id, options)
+  }
+  /**
+    * 
+    * @summary get_offer_v2 <GET>
+    * @param {number} offer_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV2OfferofferId(offer_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV2OfferofferId(offer_id, options)
   }
   /**
     * 

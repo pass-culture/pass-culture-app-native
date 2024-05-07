@@ -2,7 +2,7 @@ import React, { ComponentProps } from 'react'
 import { InViewProps } from 'react-native-intersection-observer'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { NativeCategoryIdEnumv2, OfferResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2, OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { PlaylistType } from 'features/offer/enums'
@@ -143,15 +143,15 @@ describe('<OfferContent />', () => {
     it('should navigate to offer preview screen when clicking on image offer', async () => {
       renderOfferContent({})
 
-      fireEvent.press(await screen.findByTestId('offerImageContainerCarousel'))
+      fireEvent.press(await screen.findByTestId('offerImageWithoutCarousel'))
 
       expect(navigate).toHaveBeenCalledWith('OfferPreview', { id: 116656 })
     })
 
     it('should not navigate to offer preview screen when clicking on image offer and there is not an image', async () => {
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...offerResponseSnap,
-        image: null,
+        images: null,
       }
       renderOfferContent({ offer })
 

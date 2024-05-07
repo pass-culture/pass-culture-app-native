@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import {
-  OfferResponse,
+  OfferResponseV2,
   YoungStatusType,
   SubscriptionStatus,
   SearchGroupNameEnumv2,
@@ -301,7 +301,7 @@ describe('getCtaWordingAndAction', () => {
 
   describe('Beneficiary', () => {
     const getCta = (
-      partialOffer: Partial<OfferResponse>,
+      partialOffer: Partial<OfferResponseV2>,
       parameters?: Partial<Parameters<typeof getCtaWordingAndAction>[0]>,
       partialSubcategory?: Partial<Subcategory>
     ) =>
@@ -856,7 +856,7 @@ describe('getCtaWordingAndAction', () => {
   })
 })
 
-const buildOffer = (partialOffer: Partial<OfferResponse>): OfferResponse => ({
+const buildOffer = (partialOffer: Partial<OfferResponseV2>): OfferResponseV2 => ({
   ...baseOffer,
   ...partialOffer,
 })

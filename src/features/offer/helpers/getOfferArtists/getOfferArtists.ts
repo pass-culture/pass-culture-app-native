@@ -1,8 +1,8 @@
-import { CategoryIdEnum, OfferResponse } from 'api/gen'
+import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
 
 export function getOfferArtists(
   categoryId: CategoryIdEnum,
-  offer: OfferResponse
+  offer: OfferResponseV2
 ): string | undefined {
   const { extraData } = offer
 

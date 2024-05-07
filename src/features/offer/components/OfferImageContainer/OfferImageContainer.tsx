@@ -24,7 +24,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
   categoryId: CategoryIdEnum | null
-  imageUrl?: string
+  imageUrls?: string[]
   shouldDisplayOfferPreview?: boolean
   onPress?: VoidFunction
 }
@@ -33,7 +33,7 @@ const isWeb = Platform.OS === 'web'
 
 export const OfferImageContainer: FunctionComponent<Props> = ({
   categoryId,
-  imageUrl,
+  imageUrls,
   shouldDisplayOfferPreview,
   onPress,
 }) => {
@@ -43,12 +43,13 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   )
   const theme = useTheme()
 
-  const images = imageUrl ? [imageUrl, imageUrl, imageUrl] : []
-  const hasCarousel = !!(shouldDisplayCarousel && images.length && !isWeb)
+  const offerImages = imageUrls ?? []
+
+  const hasCarousel = !!(shouldDisplayCarousel && offerImages.length > 1 && !isWeb)
   const progressValue = useSharedValue<number>(0)
-  const offerBodyImage = imageUrl ? (
+  const offerBodyImage = offerImages[0] ? (
     <React.Fragment>
-      <OfferBodyImage imageUrl={imageUrl} />
+      <OfferBodyImage imageUrl={offerImages[0]} />
       {shouldDisplayOfferPreview ? (
         <StyledTag label="1" Icon={StyledCamera} testID="imageTag" />
       ) : null}
@@ -62,7 +63,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   }
 
   return (
-    <HeaderWithImage imageHeight={backgroundHeight} imageUrl={imageUrl} onPress={onPress}>
+    <HeaderWithImage imageHeight={backgroundHeight} imageUrl={offerImages[0]} onPress={onPress}>
       <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
 
       {hasCarousel ? (
@@ -78,10 +79,10 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
               onProgressChange={(_, absoluteProgress) => {
                 progressValue.value = absoluteProgress
               }}
-              data={images}
+              data={offerImages}
               renderItem={({ item: image }) => (
                 <OfferImageWrapper
-                  imageUrl={imageUrl}
+                  imageUrl={offerImages[0]}
                   shouldDisplayOfferPreview={shouldDisplayOfferPreview}
                   isInCarousel>
                   <OfferBodyImage imageUrl={image} isInCarousel />
@@ -90,7 +91,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
               style={carouselStyle}
             />
             {shouldDisplayOfferPreview ? (
-              <StyledTag label={String(images.length)} Icon={StyledCamera} testID="imageTag" />
+              <StyledTag label={String(offerImages.length)} Icon={StyledCamera} testID="imageTag" />
             ) : null}
           </View>
 
@@ -98,7 +99,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
               <PaginationContainer gap={2} testID="offerImageContainerDots">
-                {images.map((_, index) => (
+                {offerImages.map((_, index) => (
                   <CarouselDot
                     animValue={progressValue}
                     index={index}
@@ -111,7 +112,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
         </React.Fragment>
       ) : (
         <OfferImageWrapper
-          imageUrl={imageUrl}
+          imageUrl={offerImages[0]}
           shouldDisplayOfferPreview={shouldDisplayOfferPreview}
           testID="offerImageWithoutCarousel">
           {offerBodyImage}

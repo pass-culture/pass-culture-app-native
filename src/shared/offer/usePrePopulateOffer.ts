@@ -1,6 +1,6 @@
 import { useQueryClient } from 'react-query'
 
-import { ExpenseDomain, OfferResponse, OfferStockResponse, OfferVenueResponse } from 'api/gen'
+import { ExpenseDomain, OfferResponseV2, OfferStockResponse, OfferVenueResponse } from 'api/gen'
 import { OfferTileProps } from 'features/offer/types'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -14,9 +14,9 @@ type PartialOffer = Pick<
 // available, released, not sold out...
 const mergeOfferData =
   (offer: PartialOffer) =>
-  (prevData: OfferResponse | undefined): OfferResponse => ({
+  (prevData: OfferResponseV2 | undefined): OfferResponseV2 => ({
     description: '',
-    image: offer.thumbUrl ? { url: offer.thumbUrl } : undefined,
+    images: offer.thumbUrl ? { recto: { url: offer.thumbUrl } } : undefined,
     isDuo: offer.isDuo ?? false,
     name: offer.name ?? '',
     isDigital: false,

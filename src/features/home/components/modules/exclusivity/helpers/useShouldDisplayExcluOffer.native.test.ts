@@ -1,6 +1,6 @@
 import { UseQueryResult } from 'react-query'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
 import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/helpers/useShouldDisplayExcluOffer'
 import { ExclusivityModule } from 'features/home/types'
@@ -30,7 +30,7 @@ const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOffer')
 excluOfferAPISpy.mockReturnValue({
   isLoading: false,
   data: mockOffer,
-} as unknown as UseQueryResult<OfferResponse>)
+} as unknown as UseQueryResult<OfferResponseV2>)
 
 describe('useShouldDisplayExcluOffer', () => {
   it('should display offer if no display parameters available', () => {
@@ -68,7 +68,7 @@ describe('useShouldDisplayExcluOffer', () => {
       excluOfferAPISpy.mockReturnValueOnce({
         isLoading: false,
         data: offerWithoutCoordinates,
-      } as unknown as UseQueryResult<OfferResponse>)
+      } as unknown as UseQueryResult<OfferResponseV2>)
 
       const { result } = renderHook(() => useShouldDisplayExcluOffer(display, offerId))
 

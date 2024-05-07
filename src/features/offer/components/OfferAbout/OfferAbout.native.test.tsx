@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { render, screen } from 'tests/utils'
@@ -54,7 +54,7 @@ describe('<OfferAbout />', () => {
 
   describe('Description', () => {
     it('should display description', () => {
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...offerResponseSnap,
         description: 'Cette offre est super cool cool cool cool cool cool',
       }
@@ -74,7 +74,7 @@ describe('<OfferAbout />', () => {
     })
 
     it('should not display description when no description', () => {
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...offerResponseSnap,
         description: null,
       }
@@ -106,7 +106,7 @@ describe('<OfferAbout />', () => {
     })
 
     it('should not display accessibility when disabilities are not defined', () => {
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...offerResponseSnap,
         accessibility: {},
       }

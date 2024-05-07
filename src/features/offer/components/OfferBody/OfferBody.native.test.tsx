@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react'
 
 import {
-  OfferResponse,
+  OfferResponseV2,
   SubcategoryIdEnum,
   CategoryIdEnum,
   SearchGroupNameEnumv2,
@@ -51,7 +51,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should display vinyl tag', async () => {
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...offerResponseSnap,
         subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
         extraData: { musicType: 'Metal', musicSubType: 'Industrial' },
@@ -86,7 +86,7 @@ describe('<OfferBody />', () => {
   })
 
   it('should display artists', async () => {
-    const offer: OfferResponse = {
+    const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       extraData: { stageDirector: 'Marion Cotillard, Leonardo DiCaprio' },
@@ -156,7 +156,7 @@ describe('<OfferBody />', () => {
   })
 
   it('should not display prices when the offer is free', async () => {
-    const offerFree: OfferResponse = {
+    const offerFree: OfferResponseV2 = {
       ...offerResponseSnap,
       stocks: [
         {
@@ -194,7 +194,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should not display both section', async () => {
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...offerResponseSnap,
         isDuo: false,
         venue: {
@@ -214,7 +214,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should not display top separator between this two section', async () => {
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...offerResponseSnap,
         isDuo: false,
         venue: {
@@ -230,7 +230,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should display top separator above summary info list when venue button is not displayed', async () => {
-      const offerWithoutPermanentVenue: OfferResponse = {
+      const offerWithoutPermanentVenue: OfferResponseV2 = {
         ...offerResponseSnap,
         venue: {
           ...offerResponseSnap.venue,
@@ -264,7 +264,7 @@ describe('<OfferBody />', () => {
       })
 
       it('should not display venue button when venue is not permanent', async () => {
-        const offer: OfferResponse = {
+        const offer: OfferResponseV2 = {
           ...offerResponseSnap,
           venue: {
             ...offerResponseSnap.venue,
@@ -281,7 +281,7 @@ describe('<OfferBody />', () => {
       })
 
       it('should not display venue button when this is a cinema offer', async () => {
-        const offer: OfferResponse = {
+        const offer: OfferResponseV2 = {
           ...offerResponseSnap,
           venue: {
             ...offerResponseSnap.venue,
@@ -300,7 +300,7 @@ describe('<OfferBody />', () => {
 
     describe('Summary info section', () => {
       it('should display duo info', async () => {
-        const offer: OfferResponse = {
+        const offer: OfferResponseV2 = {
           ...offerResponseSnap,
           isDuo: true,
         }
@@ -310,7 +310,7 @@ describe('<OfferBody />', () => {
       })
 
       it('should not display duo info', async () => {
-        const offer: OfferResponse = {
+        const offer: OfferResponseV2 = {
           ...offerResponseSnap,
           isDuo: false,
         }
@@ -350,7 +350,7 @@ describe('<OfferBody />', () => {
 
   describe('About section', () => {
     it('should display about section', async () => {
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...offerResponseSnap,
         description: 'Cette offre est super cool cool cool cool cool cool',
         extraData: {
@@ -371,7 +371,7 @@ describe('<OfferBody />', () => {
     })
 
     it('should not display about section', async () => {
-      const offer: OfferResponse = {
+      const offer: OfferResponseV2 = {
         ...offerResponseSnap,
         description: undefined,
         extraData: {},
@@ -386,7 +386,7 @@ describe('<OfferBody />', () => {
   })
 
   describe('MovieScreeningCalendar', () => {
-    const offer: OfferResponse = {
+    const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
       stocks: [

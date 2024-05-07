@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { ExpenseDomain, OfferResponse, SubcategoryIdEnum } from 'api/gen'
+import { ExpenseDomain, OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { toMutable } from 'shared/types/toMutable'
 
 export const mockOffer = toMutable({
@@ -74,9 +74,11 @@ export const mockOffer = toMutable({
       features: [],
     },
   ],
-  image: {
-    url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
-    credit: null,
+  images: {
+    image1: {
+      url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
+      credit: null,
+    },
   },
   venue: {
     id: 2090,
@@ -115,7 +117,7 @@ export const mockOffer = toMutable({
     },
   },
   isExternalBookingsDisabled: false,
-} as const satisfies ReadonlyDeep<OfferResponse>)
+} as const satisfies ReadonlyDeep<OfferResponseV2>)
 
 export const mockDigitalOffer = toMutable({
   id: 146113,
@@ -164,9 +166,11 @@ export const mockDigitalOffer = toMutable({
       features: [],
     },
   ],
-  image: {
-    url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
-    credit: null,
+  images: {
+    image1: {
+      url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q',
+      credit: null,
+    },
   },
   venue: {
     id: 2090,
@@ -205,4 +209,4 @@ export const mockDigitalOffer = toMutable({
     },
   },
   isExternalBookingsDisabled: false,
-} as const satisfies ReadonlyDeep<OfferResponse>)
+} as const satisfies ReadonlyDeep<OfferResponseV2>)

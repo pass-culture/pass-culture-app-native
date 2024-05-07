@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme } from 'styled-components/native'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { extractStockDates } from 'features/offer/helpers/extractStockDates/extractStockDates'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { capitalizeFirstLetter, getFormattedDates } from 'libs/parsers/formatDates'
@@ -13,7 +13,7 @@ import { Digital } from 'ui/svg/icons/Digital'
 import { Stock } from 'ui/svg/icons/Stock'
 
 type Props = {
-  offer: OfferResponse
+  offer: OfferResponseV2
   isCinemaOffer?: boolean
 }
 

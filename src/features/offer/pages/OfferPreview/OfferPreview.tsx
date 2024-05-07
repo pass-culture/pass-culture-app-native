@@ -11,6 +11,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useOffer } from 'features/offer/api/useOffer'
 import { PinchableBox } from 'features/offer/components/PinchableBox/PinchableBox'
+import { getOfferImageUrls } from 'features/offer/helpers/getOfferImageUrls/getOfferImageUrls'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
@@ -40,9 +41,9 @@ export const OfferPreview: FunctionComponent = () => {
   const [index, setIndex] = React.useState(0)
   const { height: screenHeight, width: screenWidth } = useWindowDimensions()
 
-  if (!offer?.image) return null
+  if (!offer?.images) return null
 
-  const images = [offer.image.url, offer.image.url, offer.image.url]
+  const images = getOfferImageUrls(offer.images)
   const carouselDotId = uuidv4()
 
   return (
@@ -87,7 +88,7 @@ export const OfferPreview: FunctionComponent = () => {
           ) : null}
         </React.Fragment>
       ) : (
-        <PinchableBox imageUrl={offer.image.url} />
+        <PinchableBox imageUrl={images[0] ?? ''} />
       )}
 
       <BlurHeader height={headerHeight} />

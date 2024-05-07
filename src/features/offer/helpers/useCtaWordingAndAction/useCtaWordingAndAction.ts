@@ -3,7 +3,7 @@ import { UseMutateFunction } from 'react-query'
 
 import { ApiError } from 'api/ApiError'
 import {
-  OfferResponse,
+  OfferResponseV2,
   FavoriteOfferResponse,
   UserProfileResponse,
   YoungStatusType,
@@ -42,7 +42,7 @@ import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/
 import { useHasEnoughCredit } from '../useHasEnoughCredit/useHasEnoughCredit'
 
 type UseGetCtaWordingAndActionProps = {
-  offer: OfferResponse
+  offer: OfferResponseV2
   subcategory: Subcategory
   from?: Referrals
   searchId?: string
@@ -57,7 +57,7 @@ type Props = {
   isLoggedIn: boolean
   userStatus: YoungStatusResponse
   isBeneficiary: boolean
-  offer: OfferResponse
+  offer: OfferResponseV2
   subcategory: Subcategory
   hasEnoughCredit: boolean
   bookedOffers: UserProfileResponse['bookedOffers']
