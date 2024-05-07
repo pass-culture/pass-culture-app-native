@@ -114,42 +114,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
   </View>,
   <RCTScrollView
     ListFooterComponent={
-      <React.Fragment>
-        <Styled(View)
-          numberOfSpaces={10}
-        />
-        <Styled(Component)
-          disabled={true}
-          onPress={[Function]}
-          wording="Suivre la sélection"
-        />
-        <Styled(View)
-          numberOfSpaces={6}
-        />
-        <Styled(Component)
-          accessibilityLabel="Ne pas suivre de thème"
-          icon={
-            {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          onPress={[MockFunction]}
-          wording="Non merci"
-        />
-      </React.Fragment>
+      <Styled(View)
+        numberOfSpaces={30}
+      />
     }
     ListHeaderComponent={
       <React.Fragment>
@@ -1333,215 +1300,232 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         onLayout={[Function]}
       >
         <View
-          numberOfSpaces={10}
+          numberOfSpaces={30}
           style={
             [
               {
-                "height": 40,
+                "height": 120,
               },
             ]
           }
         />
+      </View>
+    </View>
+  </RCTScrollView>,
+  <View
+    style={
+      [
+        {
+          "bottom": 0,
+          "position": "absolute",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "gap": 24,
+            "paddingBottom": 12,
+            "paddingHorizontal": 16,
+            "paddingTop": 16,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Suivre la sélection"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": true,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={false}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#F1F1F4",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Suivre la sélection"
+      >
         <View
-          accessibilityLabel="Suivre la sélection"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": true,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={false}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "#F1F1F4",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
           }
-          testID="Suivre la sélection"
         >
-          <View
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "maxWidth": "100%",
                 },
               ]
             }
           >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Suivre la sélection
-            </Text>
-          </View>
+            Suivre la sélection
+          </Text>
         </View>
+      </View>
+      <View
+        accessibilityLabel="Ne pas suivre de thème"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Ne pas suivre de thème"
+      >
         <View
-          numberOfSpaces={6}
           style={
             [
               {
-                "height": 24,
+                "alignItems": "center",
+                "flexDirection": "row",
               },
             ]
           }
-        />
-        <View
-          accessibilityLabel="Ne pas suivre de thème"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
-          }
-          testID="Ne pas suivre de thème"
         >
           <View
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
+                  "flexShrink": 0,
                 },
               ]
             }
           >
             <View
-              style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                  },
-                ]
-              }
+              fill="#161617"
+              height={20}
+              testID="button-icon-left"
+              width={20}
             >
-              <View
-                fill="#161617"
-                height={20}
-                testID="button-icon-left"
-                width={20}
-              >
-                <Text>
-                  button-icon-left-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
             </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
+            <View
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "maxWidth": "100%",
+                    "width": 8,
                   },
                 ]
               }
-            >
-              Non merci
-            </Text>
+            />
           </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Non merci
+          </Text>
         </View>
       </View>
     </View>
-  </RCTScrollView>,
+  </View>,
   <Modal
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
