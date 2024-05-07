@@ -1,12 +1,12 @@
 import { SearchOptions } from '@algolia/client-search'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { VenuesFacets } from 'libs/algolia/enums'
+import { VENUES_FACETS_ENUM } from 'libs/algolia/enums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildFetchVenuesQueryParameters } from 'libs/algolia/fetchAlgolia/fetchVenues/buildFetchVenuesQueryParameters'
 import { AlgoliaQueryParameters, FetchVenuesParameters, LocationMode } from 'libs/algolia/types'
 
-const defaultFacetFilters = `${VenuesFacets.has_at_least_one_bookable_offer}:true`
+const defaultFacetFilters = `${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`
 
 interface LocationParams extends Omit<BuildLocationParameterParams, 'userLocation'> {
   userLocation?: BuildLocationParameterParams['userLocation']

@@ -1,5 +1,5 @@
 import { VenuesModuleParameters } from 'features/home/types'
-import { VenuesFacets } from 'libs/algolia/enums'
+import { VENUES_FACETS_ENUM } from 'libs/algolia/enums'
 import {
   buildLocationParameter,
   BuildLocationParameterParams,
@@ -27,7 +27,7 @@ export const buildVenuesQueryOptions = (
 
   // We want to show on home page only venues that have at least one offer that is searchable in algolia
   const hasAtLeastOneBookableOfferPredicate = [
-    `${VenuesFacets.has_at_least_one_bookable_offer}:true`,
+    `${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`,
   ]
   facetFilters.push(hasAtLeastOneBookableOfferPredicate)
 
@@ -38,7 +38,7 @@ export const buildVenuesQueryOptions = (
 }
 
 const buildVenueTypesPredicate = (venueTypes: string[]): string[] =>
-  venueTypes.map((venueType) => `${VenuesFacets.venue_type}:${venueType}`)
+  venueTypes.map((venueType) => `${VENUES_FACETS_ENUM.VENUE_TYPE}:${venueType}`)
 
 const buildTagsPredicate = (tags: string[]): string[] =>
-  tags.map((tag: string) => `${VenuesFacets.tags}:${tag}`)
+  tags.map((tag: string) => `${VENUES_FACETS_ENUM.TAGS}:${tag}`)

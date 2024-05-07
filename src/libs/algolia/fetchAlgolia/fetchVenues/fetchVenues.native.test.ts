@@ -1,7 +1,7 @@
 import algoliasearch from 'algoliasearch'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { VenuesFacets } from 'libs/algolia/enums'
+import { VENUES_FACETS_ENUM } from 'libs/algolia/enums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'
@@ -16,7 +16,7 @@ jest.mock('libs/algolia/fetchAlgolia/AlgoliaError', () => ({
   captureAlgoliaError: jest.fn(),
 }))
 
-const facetFilters = [[`${VenuesFacets.has_at_least_one_bookable_offer}:true`]]
+const facetFilters = [[`${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`]]
 
 describe('fetchVenues', () => {
   const venueFixture: AlgoliaVenue = {

@@ -1,4 +1,4 @@
-import { VenuesFacets } from 'libs/algolia/enums'
+import { VENUES_FACETS_ENUM } from 'libs/algolia/enums'
 import { buildLocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { AlgoliaQueryParameters, FetchVenuesParameters } from 'libs/algolia/types'
 
@@ -8,7 +8,7 @@ export const buildFetchVenuesQueryParameters = ({
   buildLocationParameterParams,
   options,
 }: FetchVenuesParameters): AlgoliaQueryParameters => {
-  const defaultFilters = [[`${VenuesFacets.has_at_least_one_bookable_offer}:true`]]
+  const defaultFilters = [[`${VENUES_FACETS_ENUM.HAS_AT_LEAST_ONE_BOOKABLE_OFFER}:true`]]
 
   const facetFilters = options?.facetFilters
     ? [...defaultFilters, ...options.facetFilters]
