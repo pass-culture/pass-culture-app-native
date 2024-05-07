@@ -32,6 +32,8 @@ const defaultSearchParameters = omit(
     priceRange: [0, 300],
     minBookingsThreshold: 0,
     offerGenreTypes: [],
+    offerGtlLabel: undefined,
+    offerGtlLevel: undefined,
   },
   ['offerIsFree', 'view', 'venue', 'locationFilter', 'gtls']
 )

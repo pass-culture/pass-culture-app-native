@@ -1,17 +1,19 @@
 import { Color } from 'features/home/types'
+import { GtlLevel } from 'shared/gtl/types'
 
 export enum ContentTypes {
   ALGOLIA = 'algolia',
   ALGOLIA_PARAMETERS = 'algoliaParameters',
   BOOK_TYPES = 'bookTypes',
+  BUSINESS = 'business',
   CLASSIC_THEMATIC_HEADER = 'classicThematicHeader',
   DISPLAY_PARAMETERS = 'displayParameters',
   EXCLUSIVITY = 'exclusivity',
   EXCLUSIVITY_DISPLAY_PARAMETERS = 'exclusivityDisplayParameters',
+  GTL_PLAYLIST = 'gtlPlaylist',
   HIGHLIGHT_OFFER = 'highlightOffer',
   HOMEPAGE_NATIF = 'homepageNatif',
   INFORMATION = 'information',
-  BUSINESS = 'business',
   RECOMMENDATION = 'recommendation',
   RECOMMENDATION_PARAMETERS = 'recommendation_parameters',
   SUBCATEGORIES = 'subcategories',
@@ -259,6 +261,8 @@ export interface SearchParametersFields {
   musicTypes?: MusicTypes
   showTypes?: ShowTypes
   bookTypes?: BookTypes
+  gtlLevel?: GtlLevel
+  gtlLabel?: string
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesSearchParameters/fields
@@ -422,6 +426,12 @@ type TagId = 'master' | 'usergrandpublic' | 'userunderage'
 interface Tag {
   sys: { type: 'Link'; linkType: 'Tag'; id: TagId }
 }
+
+type GtlPlaylistFields = {
+  algoliaParameters: AlgoliaParameters
+  displayParameters: DisplayParameters
+}
+export type GtlPlaylist = Entry<GtlPlaylistFields, ContentTypes.GTL_PLAYLIST>
 
 export interface HomepageNatifEntry {
   metadata: { tags: Tag[] }

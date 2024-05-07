@@ -1,3 +1,5 @@
+import { ContentTypes } from 'libs/contentful/types'
+
 export const contentfulGtlPlaylistSnap = {
   sys: {
     type: 'Array',
@@ -34,7 +36,7 @@ export const contentfulGtlPlaylistSnap = {
           sys: {
             type: 'Link',
             linkType: 'ContentType',
-            id: 'gtlPlaylist',
+            id: ContentTypes.GTL_PLAYLIST,
           },
         },
         locale: 'en-US',
@@ -85,7 +87,7 @@ export const contentfulGtlPlaylistSnap = {
           sys: {
             type: 'Link',
             linkType: 'ContentType',
-            id: 'gtlPlaylist',
+            id: ContentTypes.GTL_PLAYLIST,
           },
         },
         locale: 'en-US',
@@ -139,7 +141,7 @@ export const contentfulGtlPlaylistSnap = {
             sys: {
               type: 'Link',
               linkType: 'ContentType',
-              id: 'algoliaParameters',
+              id: ContentTypes.ALGOLIA_PARAMETERS,
             },
           },
           locale: 'en-US',
@@ -180,7 +182,7 @@ export const contentfulGtlPlaylistSnap = {
             sys: {
               type: 'Link',
               linkType: 'ContentType',
-              id: 'algoliaParameters',
+              id: ContentTypes.ALGOLIA_PARAMETERS,
             },
           },
           locale: 'en-US',
@@ -220,7 +222,7 @@ export const contentfulGtlPlaylistSnap = {
             sys: {
               type: 'Link',
               linkType: 'ContentType',
-              id: 'displayParameters',
+              id: ContentTypes.DISPLAY_PARAMETERS,
             },
           },
           locale: 'en-US',
@@ -259,7 +261,7 @@ export const contentfulGtlPlaylistSnap = {
             sys: {
               type: 'Link',
               linkType: 'ContentType',
-              id: 'displayParameters',
+              id: ContentTypes.DISPLAY_PARAMETERS,
             },
           },
           locale: 'en-US',
@@ -272,4 +274,4 @@ export const contentfulGtlPlaylistSnap = {
       },
     ],
   },
-}
+} as const
