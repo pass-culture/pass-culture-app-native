@@ -19,6 +19,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -145,25 +146,23 @@ export const OnboardingSubscription = () => {
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
         }
-        ListFooterComponent={
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={10} />
-            <ButtonPrimary
-              wording="Suivre la sélection"
-              onPress={onSubmit}
-              disabled={isValidateButtonDisabled}
-            />
-            <Spacer.Column numberOfSpaces={6} />
-            <ButtonTertiaryBlack
-              wording="Non merci"
-              accessibilityLabel="Ne pas suivre de thème"
-              icon={Invalidate}
-              onPress={goBack}
-            />
-          </React.Fragment>
-        }
         contentContainerStyle={contentContainerStyle}
       />
+      <StickyBottomWrapper>
+        <StyledView>
+          <ButtonPrimary
+            wording="Suivre la sélection"
+            onPress={onSubmit}
+            disabled={isValidateButtonDisabled}
+          />
+          <ButtonTertiaryBlack
+            wording="Non merci"
+            accessibilityLabel="Ne pas suivre de thème"
+            icon={Invalidate}
+            onPress={goBack}
+          />
+        </StyledView>
+      </StickyBottomWrapper>
       <NotificationsSettingsModal
         visible={isNotificationsModalVisible}
         title="Suivre la sélection"
@@ -175,8 +174,17 @@ export const OnboardingSubscription = () => {
   )
 }
 
-const StyledTitle3 = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))``
+const StyledTitle3 = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
 
-const SubscriptionThematicButtonContainer = styled.View(() => ({
-  paddingVertical: getSpacing(2),
+const StyledView = styled.View.attrs({})(({ theme }) => ({
+  backgroundColor: theme.colors.white,
+  alignItems: 'center',
+  paddingHorizontal: getSpacing(4),
+  paddingBottom: getSpacing(3),
+  paddingTop: getSpacing(4),
+  gap: getSpacing(6),
 }))
+
+const SubscriptionThematicButtonContainer = styled.View({
+  paddingVertical: getSpacing(2),
+})
