@@ -147,6 +147,7 @@ export const OnboardingSubscription = () => {
           </React.Fragment>
         }
         contentContainerStyle={contentContainerStyle}
+        ListFooterComponent={<Spacer.Column numberOfSpaces={30} />}
       />
       <StickyBottomWrapper>
         <StyledView>
