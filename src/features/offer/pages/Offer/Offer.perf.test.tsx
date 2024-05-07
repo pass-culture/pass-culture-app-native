@@ -32,7 +32,7 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 describe('<Offer />', () => {
   beforeEach(() => {
     // We mock server instead of hooks to test the real behavior of the component.
-    mockServer.getApi<OfferResponseV2>(`/v1/offer/${offerResponseSnap.id}`, {
+    mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, {
       requestOptions: { persist: true },
       responseOptions: { data: offerResponseSnap },
     })
