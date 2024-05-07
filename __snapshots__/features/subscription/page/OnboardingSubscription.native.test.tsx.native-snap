@@ -1330,8 +1330,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "gap": 24,
-            "paddingBottom": 12,
-            "paddingHorizontal": 16,
+            "paddingBottom": 16,
+            "paddingLeft": 16,
+            "paddingRight": 16,
             "paddingTop": 16,
           },
         ]

@@ -180,9 +180,7 @@ const StyledTitle3 = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
 const StyledView = styled.View.attrs({})(({ theme }) => ({
   backgroundColor: theme.colors.white,
   alignItems: 'center',
-  paddingHorizontal: getSpacing(4),
-  paddingBottom: getSpacing(3),
-  paddingTop: getSpacing(4),
+  padding: getSpacing(4),
   gap: getSpacing(6),
 }))
 
