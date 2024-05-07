@@ -4,7 +4,7 @@ import { IOScrollView as IntersectionObserverScrollView } from 'react-native-int
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
-import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
+import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
@@ -31,7 +31,7 @@ interface Props {
   venue: VenueResponse
   onScroll: () => void
   venueOffers?: { hits: Offer[]; nbHits: number }
-  playlists?: GTLPlaylistResponse
+  playlists?: GtlPlaylistData[]
   shouldDisplayCTA?: boolean
 }
 

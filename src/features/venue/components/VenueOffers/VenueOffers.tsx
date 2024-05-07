@@ -3,8 +3,8 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
-import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { MoviesScreeningCalendar } from 'features/offer/components/MoviesScreeningCalendar/MoviesScreeningCalendar'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
@@ -20,7 +20,7 @@ type VenueOffers = { hits: Offer[]; nbHits: number }
 export interface VenueOffersProps {
   venue: VenueResponse
   venueOffers?: VenueOffers
-  playlists?: GTLPlaylistResponse
+  playlists?: GtlPlaylistData[]
 }
 
 const LoadingState: React.FC = () => (
