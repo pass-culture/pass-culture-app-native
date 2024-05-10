@@ -598,6 +598,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SHARE_APP }, { from, type }),
   logShowParentInformationModal: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SHOW_PARENT_INFORMATION_MODAL }),
+  logShowShareAppModal: ({ type }: { type: ShareAppModalType }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.SHOW_SHARE_APP_MODAL }, { type }),
   logSignInFromAuthenticationModal: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.SIGN_IN_FROM_AUTHENTICATION_MODAL },
