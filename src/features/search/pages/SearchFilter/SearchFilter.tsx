@@ -101,6 +101,7 @@ export const SearchFilter: React.FC = () => {
         priceRange: null,
         tags: [],
         timeRange: null,
+        gtls: [],
       },
     })
     setDisabilities(defaultDisabilitiesProperties)
