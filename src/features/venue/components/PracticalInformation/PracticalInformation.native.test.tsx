@@ -121,4 +121,20 @@ describe('PracticalInformation', () => {
 
     expect(screen.queryByText('Accessibilité')).not.toBeOnTheScreen()
   })
+
+  it('should display opening hours section', async () => {
+    render(
+      reactQueryProviderHOC(
+        <PracticalInformation venue={{ ...venueResponseSnap, openingHours: {} }} />
+      )
+    )
+
+    expect(screen.getByText('Horaires d’ouverture')).toBeOnTheScreen()
+  })
+
+  it('should not display opening hours section', async () => {
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueResponseSnap} />))
+
+    expect(screen.queryByText('Horaires d’ouverture')).not.toBeOnTheScreen()
+  })
 })
