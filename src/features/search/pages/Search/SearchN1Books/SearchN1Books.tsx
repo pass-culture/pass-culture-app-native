@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { SafeAreaView } from 'react-native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CATEGORY_CRITERIA, Gradient } from 'features/search/enums'
@@ -20,5 +21,9 @@ export const SearchN1Books = () => {
     [bookColorsGradients, bookNativeCategories]
   )
 
-  return <SubcategoryButtonList subcategoryButtonContent={bookSubcategoriesContent} />
+  return (
+    <SafeAreaView>
+      <SubcategoryButtonList subcategoryButtonContent={bookSubcategoriesContent} />
+    </SafeAreaView>
+  )
 }

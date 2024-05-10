@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
-import { useWindowDimensions } from 'react-native'
+import { useWindowDimensions, Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -81,7 +81,10 @@ const StyledTouchable = styledButton(Touchable)<{
   backgroundColor: theme.colors.white,
   height: SUBCATEGORY_BUTTON_HEIGHT,
   ...(theme.isMobileViewport
-    ? { width: windowWidth / 2 - getSpacing(8), maxWidth: SUBCATEGORY_BUTTON_WIDTH }
+    ? {
+        width: windowWidth / 2 - getSpacing(8),
+        maxWidth: SUBCATEGORY_BUTTON_WIDTH,
+      }
     : { width: SUBCATEGORY_BUTTON_WIDTH }),
   borderColor: theme.colors.greySemiDark,
   borderTopWidth: 1,
@@ -97,7 +100,7 @@ const StyledTouchable = styledButton(Touchable)<{
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
   textAlign: 'left',
   alignItems: 'center',
-  paddingRight: 16,
+  paddingRight: getSpacing(4),
 }))
 
 const Color = styled(LinearGradient)(({ theme }) => ({
@@ -113,6 +116,7 @@ const Color = styled(LinearGradient)(({ theme }) => ({
 const StyledText = styled(Typo.Caption).attrs({
   ellipsizeMode: 'tail',
   numberOfLines: 2,
+  ...(Platform.OS === 'ios' && { paddingRight: getSpacing(4) }),
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({
   ...getHoverStyle(theme.colors.black, isHover),
 }))
