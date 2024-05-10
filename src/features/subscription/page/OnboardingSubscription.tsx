@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import colorAlpha from 'color-alpha'
-import React, { useCallback, useReducer } from 'react'
-import { FlatList, Platform, ViewStyle } from 'react-native'
+import React, { useCallback, useReducer, useRef } from 'react'
+import { FlatList, Platform, ViewStyle, ViewToken } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -16,6 +16,7 @@ import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSub
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
+import { createAnimatableComponent, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
@@ -26,6 +27,8 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const GRADIENT_HEIGHT = getSpacing(30)
+const SUSBCRIPTION_THEMES = Object.values(SubscriptionTheme)
+const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
 
 export const OnboardingSubscription = () => {
   const { replace } = useNavigation<UseNavigationType>()
@@ -40,6 +43,7 @@ export const OnboardingSubscription = () => {
   } = useModal(false)
   const { pushPermission } = usePushPermission()
   const isPushPermissionGranted = pushPermission === 'granted'
+  const containerRef = useRef<AnimatedViewRefType>(null)
 
   const isAtLeastOneNotificationTypeActivated =
     Platform.OS === 'web'
@@ -131,11 +135,30 @@ export const OnboardingSubscription = () => {
     alignSelf: 'center',
   }
 
+  const onViewableItemsChanged = useCallback(
+    ({ viewableItems, changed }: { viewableItems: ViewToken[]; changed: ViewToken[] }) => {
+      if (!containerRef.current) return
+
+      const lastItem = SUSBCRIPTION_THEMES[SUSBCRIPTION_THEMES.length - 1]
+      const lastItemVisibilityChanged = changed.some((view) => view.item === lastItem)
+
+      if (!lastItemVisibilityChanged) return
+
+      const isLastItemVisible = viewableItems.some((view) => view.item === lastItem)
+      containerRef.current.transition(
+        { transform: [{ translateY: isLastItemVisible ? 0 : 100 }] },
+        { transform: [{ translateY: isLastItemVisible ? 100 : 0 }] },
+        500
+      )
+    },
+    []
+  )
+
   return (
     <React.Fragment>
       <EmptyHeader />
       <FlatList
-        data={Object.values(SubscriptionTheme)}
+        data={SUSBCRIPTION_THEMES}
         renderItem={renderItem}
         keyExtractor={(item) => mapSubscriptionThemeToName[item]}
         ListHeaderComponent={
@@ -150,8 +173,10 @@ export const OnboardingSubscription = () => {
           </React.Fragment>
         }
         contentContainerStyle={contentContainerStyle}
+        onViewableItemsChanged={onViewableItemsChanged}
+        viewabilityConfig={VIEWABILITY_CONFIG}
       />
-      <Gradient />
+      <Gradient ref={containerRef} />
       <StyledView>
         <ButtonPrimary
           wording="Suivre la sélection"
@@ -189,7 +214,8 @@ const SubscriptionThematicButtonContainer = styled.View({
   paddingVertical: getSpacing(2),
 })
 
-const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
+const AnimatedGradient = createAnimatableComponent(LinearGradient)
+const Gradient = styled(AnimatedGradient).attrs(({ theme }) => ({
   colors: [colorAlpha(theme.colors.white, 0), theme.colors.white],
   locations: [0, 1],
   pointerEvents: 'none',

@@ -158,11 +158,26 @@ exports[`OnboardingSubscription should render correctly 1`] = `
     onScroll={[Function]}
     onScrollBeginDrag={[Function]}
     onScrollEndDrag={[Function]}
+    onViewableItemsChanged={[Function]}
     removeClippedSubviews={false}
     renderItem={[Function]}
     scrollEventThrottle={50}
     stickyHeaderIndices={[]}
-    viewabilityConfigCallbackPairs={[]}
+    viewabilityConfig={
+      {
+        "itemVisiblePercentThreshold": 100,
+      }
+    }
+    viewabilityConfigCallbackPairs={
+      [
+        {
+          "onViewableItemsChanged": [Function],
+          "viewabilityConfig": {
+            "itemVisiblePercentThreshold": 100,
+          },
+        },
+      ]
+    }
   >
     <View>
       <View
@@ -1294,6 +1309,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
     </View>
   </RCTScrollView>,
   <BVLinearGradient
+    collapsable={false}
     colors={
       [
         16777215,
@@ -1306,6 +1322,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         "y": 1,
       }
     }
+    forwardedRef={[Function]}
     locations={
       [
         0,
@@ -1320,15 +1337,13 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       }
     }
     style={
-      [
-        {
-          "bottom": 136,
-          "height": 120,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-        },
-      ]
+      {
+        "bottom": 136,
+        "height": 120,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+      }
     }
   />,
   <View
