@@ -1,25 +1,267 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SearchN1Books/> should render SearchN1Books 1`] = `
-<RCTScrollView
-  contentContainerStyle={
-    {
-      "maxHeight": 176,
-      "paddingLeft": 24,
-      "paddingRight": 8,
-      "paddingVertical": 24,
+<RCTSafeAreaView>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "maxHeight": 176,
+        "paddingLeft": 24,
+        "paddingRight": 8,
+        "paddingVertical": 24,
+      }
     }
-  }
-  horizontal={true}
-  showsHorizontalScrollIndicator={false}
-  style={
-    [
-      {},
-    ]
-  }
->
-  <View>
+    horizontal={true}
+    showsHorizontalScrollIndicator={false}
+    style={
+      [
+        {},
+      ]
+    }
+  >
     <View>
+      <View>
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "width": 16,
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityLabel="Romans et littérature"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomWidth": 1,
+              "borderColor": "#90949D",
+              "borderRadius": 8,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "flexDirection": "row",
+              "height": 56,
+              "maxWidth": 182.5,
+              "opacity": 1,
+              "paddingRight": 16,
+              "shadowColor": "#696A6F",
+              "shadowOffset": {
+                "height": 4,
+                "width": 0,
+              },
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+              "textAlign": "left",
+              "userSelect": "auto",
+              "width": 343,
+            }
+          }
+          testID="Romans et littérature"
+        >
+          <BVLinearGradient
+            colors={
+              [
+                4293670008,
+                4290777969,
+              ]
+            }
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderBottomLeftRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "height": "100%",
+                  "left": 0,
+                  "marginRight": 8,
+                  "top": 0,
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            ellipsizeMode="tail"
+            numberOfLines={2}
+            paddingRight={16}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Romans et littérature
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityLabel="Mangas"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomWidth": 1,
+              "borderColor": "#90949D",
+              "borderRadius": 8,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "flexDirection": "row",
+              "height": 56,
+              "maxWidth": 182.5,
+              "opacity": 1,
+              "paddingRight": 16,
+              "shadowColor": "#696A6F",
+              "shadowOffset": {
+                "height": 4,
+                "width": 0,
+              },
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+              "textAlign": "left",
+              "userSelect": "auto",
+              "width": 343,
+            }
+          }
+          testID="Mangas"
+        >
+          <BVLinearGradient
+            colors={
+              [
+                4293670008,
+                4290777969,
+              ]
+            }
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderBottomLeftRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "height": "100%",
+                  "left": 0,
+                  "marginRight": 8,
+                  "top": 0,
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            ellipsizeMode="tail"
+            numberOfLines={2}
+            paddingRight={16}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Mangas
+          </Text>
+        </View>
+      </View>
       <View
         numberOfSpaces={4}
         style={
@@ -30,246 +272,248 @@ exports[`<SearchN1Books/> should render SearchN1Books 1`] = `
           ]
         }
       />
-      <View
-        accessibilityLabel="Romans et littérature"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomWidth": 1,
-            "borderColor": "#90949D",
-            "borderRadius": 8,
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flexDirection": "row",
-            "height": 56,
-            "maxWidth": 182.5,
-            "opacity": 1,
-            "paddingRight": 16,
-            "shadowColor": "#696A6F",
-            "shadowOffset": {
-              "height": 4,
-              "width": 0,
-            },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 4,
-            "textAlign": "left",
-            "userSelect": "auto",
-            "width": 343,
-          }
-        }
-        testID="Romans et littérature"
-      >
-        <BVLinearGradient
-          colors={
-            [
-              4293670008,
-              4290777969,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+      <View>
+        <View
+          numberOfSpaces={4}
           style={
             [
               {
-                "borderBottomLeftRadius": 8,
-                "borderTopLeftRadius": 8,
-                "height": "100%",
-                "left": 0,
-                "marginRight": 8,
-                "top": 0,
-                "width": 8,
+                "width": 16,
               },
             ]
           }
         />
-        <Text
-          ellipsizeMode="tail"
-          numberOfLines={2}
+        <View
+          accessibilityLabel="BD & Comics"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomWidth": 1,
+              "borderColor": "#90949D",
+              "borderRadius": 8,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "flexDirection": "row",
+              "height": 56,
+              "maxWidth": 182.5,
+              "opacity": 1,
+              "paddingRight": 16,
+              "shadowColor": "#696A6F",
+              "shadowOffset": {
+                "height": 4,
+                "width": 0,
               },
-            ]
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+              "textAlign": "left",
+              "userSelect": "auto",
+              "width": 343,
+            }
           }
+          testID="BD & Comics"
         >
-          Romans et littérature
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Mangas"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomWidth": 1,
-            "borderColor": "#90949D",
-            "borderRadius": 8,
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flexDirection": "row",
-            "height": 56,
-            "maxWidth": 182.5,
-            "opacity": 1,
-            "paddingRight": 16,
-            "shadowColor": "#696A6F",
-            "shadowOffset": {
-              "height": 4,
-              "width": 0,
-            },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 4,
-            "textAlign": "left",
-            "userSelect": "auto",
-            "width": 343,
-          }
-        }
-        testID="Mangas"
-      >
-        <BVLinearGradient
-          colors={
-            [
-              4293670008,
-              4290777969,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
+          <BVLinearGradient
+            colors={
+              [
+                4293670008,
+                4290777969,
+              ]
             }
-          }
-          locations={null}
-          startPoint={
-            {
-              "x": 0.5,
-              "y": 0,
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
             }
-          }
+            locations={null}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderBottomLeftRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "height": "100%",
+                  "left": 0,
+                  "marginRight": 8,
+                  "top": 0,
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            ellipsizeMode="tail"
+            numberOfLines={2}
+            paddingRight={16}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            BD & Comics
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4}
           style={
             [
               {
-                "borderBottomLeftRadius": 8,
-                "borderTopLeftRadius": 8,
-                "height": "100%",
-                "left": 0,
-                "marginRight": 8,
-                "top": 0,
-                "width": 8,
+                "height": 16,
               },
             ]
           }
         />
-        <Text
-          ellipsizeMode="tail"
-          numberOfLines={2}
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-              },
-            ]
+        <View
+          accessibilityLabel="Loisirs & Bien-être"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
           }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomWidth": 1,
+              "borderColor": "#90949D",
+              "borderRadius": 8,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "flexDirection": "row",
+              "height": 56,
+              "maxWidth": 182.5,
+              "opacity": 1,
+              "paddingRight": 16,
+              "shadowColor": "#696A6F",
+              "shadowOffset": {
+                "height": 4,
+                "width": 0,
+              },
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+              "textAlign": "left",
+              "userSelect": "auto",
+              "width": 343,
+            }
+          }
+          testID="Loisirs & Bien-être"
         >
-          Mangas
-        </Text>
+          <BVLinearGradient
+            colors={
+              [
+                4293670008,
+                4290777969,
+              ]
+            }
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderBottomLeftRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "height": "100%",
+                  "left": 0,
+                  "marginRight": 8,
+                  "top": 0,
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            ellipsizeMode="tail"
+            numberOfLines={2}
+            paddingRight={16}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Loisirs & Bien-être
+          </Text>
+        </View>
       </View>
-    </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "width": 16,
-          },
-        ]
-      }
-    />
-    <View>
       <View
         numberOfSpaces={4}
         style={
@@ -280,246 +524,248 @@ exports[`<SearchN1Books/> should render SearchN1Books 1`] = `
           ]
         }
       />
-      <View
-        accessibilityLabel="BD & Comics"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomWidth": 1,
-            "borderColor": "#90949D",
-            "borderRadius": 8,
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flexDirection": "row",
-            "height": 56,
-            "maxWidth": 182.5,
-            "opacity": 1,
-            "paddingRight": 16,
-            "shadowColor": "#696A6F",
-            "shadowOffset": {
-              "height": 4,
-              "width": 0,
-            },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 4,
-            "textAlign": "left",
-            "userSelect": "auto",
-            "width": 343,
-          }
-        }
-        testID="BD & Comics"
-      >
-        <BVLinearGradient
-          colors={
-            [
-              4293670008,
-              4290777969,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+      <View>
+        <View
+          numberOfSpaces={4}
           style={
             [
               {
-                "borderBottomLeftRadius": 8,
-                "borderTopLeftRadius": 8,
-                "height": "100%",
-                "left": 0,
-                "marginRight": 8,
-                "top": 0,
-                "width": 8,
+                "width": 16,
               },
             ]
           }
         />
-        <Text
-          ellipsizeMode="tail"
-          numberOfLines={2}
+        <View
+          accessibilityLabel="Société & Politique"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomWidth": 1,
+              "borderColor": "#90949D",
+              "borderRadius": 8,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "flexDirection": "row",
+              "height": 56,
+              "maxWidth": 182.5,
+              "opacity": 1,
+              "paddingRight": 16,
+              "shadowColor": "#696A6F",
+              "shadowOffset": {
+                "height": 4,
+                "width": 0,
               },
-            ]
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+              "textAlign": "left",
+              "userSelect": "auto",
+              "width": 343,
+            }
           }
+          testID="Société & Politique"
         >
-          BD & Comics
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Loisirs & Bien-être"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomWidth": 1,
-            "borderColor": "#90949D",
-            "borderRadius": 8,
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flexDirection": "row",
-            "height": 56,
-            "maxWidth": 182.5,
-            "opacity": 1,
-            "paddingRight": 16,
-            "shadowColor": "#696A6F",
-            "shadowOffset": {
-              "height": 4,
-              "width": 0,
-            },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 4,
-            "textAlign": "left",
-            "userSelect": "auto",
-            "width": 343,
-          }
-        }
-        testID="Loisirs & Bien-être"
-      >
-        <BVLinearGradient
-          colors={
-            [
-              4293670008,
-              4290777969,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
+          <BVLinearGradient
+            colors={
+              [
+                4293670008,
+                4290777969,
+              ]
             }
-          }
-          locations={null}
-          startPoint={
-            {
-              "x": 0.5,
-              "y": 0,
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
             }
-          }
+            locations={null}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderBottomLeftRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "height": "100%",
+                  "left": 0,
+                  "marginRight": 8,
+                  "top": 0,
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            ellipsizeMode="tail"
+            numberOfLines={2}
+            paddingRight={16}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Société & Politique
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4}
           style={
             [
               {
-                "borderBottomLeftRadius": 8,
-                "borderTopLeftRadius": 8,
-                "height": "100%",
-                "left": 0,
-                "marginRight": 8,
-                "top": 0,
-                "width": 8,
+                "height": 16,
               },
             ]
           }
         />
-        <Text
-          ellipsizeMode="tail"
-          numberOfLines={2}
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-              },
-            ]
+        <View
+          accessibilityLabel="Théâtre, Poésie & Essais"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
           }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomWidth": 1,
+              "borderColor": "#90949D",
+              "borderRadius": 8,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "flexDirection": "row",
+              "height": 56,
+              "maxWidth": 182.5,
+              "opacity": 1,
+              "paddingRight": 16,
+              "shadowColor": "#696A6F",
+              "shadowOffset": {
+                "height": 4,
+                "width": 0,
+              },
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+              "textAlign": "left",
+              "userSelect": "auto",
+              "width": 343,
+            }
+          }
+          testID="Théâtre, Poésie & Essais"
         >
-          Loisirs & Bien-être
-        </Text>
+          <BVLinearGradient
+            colors={
+              [
+                4293670008,
+                4290777969,
+              ]
+            }
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderBottomLeftRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "height": "100%",
+                  "left": 0,
+                  "marginRight": 8,
+                  "top": 0,
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            ellipsizeMode="tail"
+            numberOfLines={2}
+            paddingRight={16}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Théâtre, Poésie & Essais
+          </Text>
+        </View>
       </View>
-    </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "width": 16,
-          },
-        ]
-      }
-    />
-    <View>
       <View
         numberOfSpaces={4}
         style={
@@ -530,246 +776,248 @@ exports[`<SearchN1Books/> should render SearchN1Books 1`] = `
           ]
         }
       />
-      <View
-        accessibilityLabel="Société & Politique"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomWidth": 1,
-            "borderColor": "#90949D",
-            "borderRadius": 8,
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flexDirection": "row",
-            "height": 56,
-            "maxWidth": 182.5,
-            "opacity": 1,
-            "paddingRight": 16,
-            "shadowColor": "#696A6F",
-            "shadowOffset": {
-              "height": 4,
-              "width": 0,
-            },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 4,
-            "textAlign": "left",
-            "userSelect": "auto",
-            "width": 343,
-          }
-        }
-        testID="Société & Politique"
-      >
-        <BVLinearGradient
-          colors={
-            [
-              4293670008,
-              4290777969,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+      <View>
+        <View
+          numberOfSpaces={4}
           style={
             [
               {
-                "borderBottomLeftRadius": 8,
-                "borderTopLeftRadius": 8,
-                "height": "100%",
-                "left": 0,
-                "marginRight": 8,
-                "top": 0,
-                "width": 8,
+                "width": 16,
               },
             ]
           }
         />
-        <Text
-          ellipsizeMode="tail"
-          numberOfLines={2}
+        <View
+          accessibilityLabel="Compétences générales"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomWidth": 1,
+              "borderColor": "#90949D",
+              "borderRadius": 8,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "flexDirection": "row",
+              "height": 56,
+              "maxWidth": 182.5,
+              "opacity": 1,
+              "paddingRight": 16,
+              "shadowColor": "#696A6F",
+              "shadowOffset": {
+                "height": 4,
+                "width": 0,
               },
-            ]
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+              "textAlign": "left",
+              "userSelect": "auto",
+              "width": 343,
+            }
           }
+          testID="Compétences générales"
         >
-          Société & Politique
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Théâtre, Poésie & Essais"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomWidth": 1,
-            "borderColor": "#90949D",
-            "borderRadius": 8,
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flexDirection": "row",
-            "height": 56,
-            "maxWidth": 182.5,
-            "opacity": 1,
-            "paddingRight": 16,
-            "shadowColor": "#696A6F",
-            "shadowOffset": {
-              "height": 4,
-              "width": 0,
-            },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 4,
-            "textAlign": "left",
-            "userSelect": "auto",
-            "width": 343,
-          }
-        }
-        testID="Théâtre, Poésie & Essais"
-      >
-        <BVLinearGradient
-          colors={
-            [
-              4293670008,
-              4290777969,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
+          <BVLinearGradient
+            colors={
+              [
+                4293670008,
+                4290777969,
+              ]
             }
-          }
-          locations={null}
-          startPoint={
-            {
-              "x": 0.5,
-              "y": 0,
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
             }
-          }
+            locations={null}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderBottomLeftRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "height": "100%",
+                  "left": 0,
+                  "marginRight": 8,
+                  "top": 0,
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            ellipsizeMode="tail"
+            numberOfLines={2}
+            paddingRight={16}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Compétences générales
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4}
           style={
             [
               {
-                "borderBottomLeftRadius": 8,
-                "borderTopLeftRadius": 8,
-                "height": "100%",
-                "left": 0,
-                "marginRight": 8,
-                "top": 0,
-                "width": 8,
+                "height": 16,
               },
             ]
           }
         />
-        <Text
-          ellipsizeMode="tail"
-          numberOfLines={2}
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-              },
-            ]
+        <View
+          accessibilityLabel="Mode et Art"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
           }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomWidth": 1,
+              "borderColor": "#90949D",
+              "borderRadius": 8,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "flexDirection": "row",
+              "height": 56,
+              "maxWidth": 182.5,
+              "opacity": 1,
+              "paddingRight": 16,
+              "shadowColor": "#696A6F",
+              "shadowOffset": {
+                "height": 4,
+                "width": 0,
+              },
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+              "textAlign": "left",
+              "userSelect": "auto",
+              "width": 343,
+            }
+          }
+          testID="Mode et Art"
         >
-          Théâtre, Poésie & Essais
-        </Text>
+          <BVLinearGradient
+            colors={
+              [
+                4293670008,
+                4290777969,
+              ]
+            }
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderBottomLeftRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "height": "100%",
+                  "left": 0,
+                  "marginRight": 8,
+                  "top": 0,
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            ellipsizeMode="tail"
+            numberOfLines={2}
+            paddingRight={16}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Mode et Art
+          </Text>
+        </View>
       </View>
-    </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "width": 16,
-          },
-        ]
-      }
-    />
-    <View>
       <View
         numberOfSpaces={4}
         style={
@@ -780,246 +1028,128 @@ exports[`<SearchN1Books/> should render SearchN1Books 1`] = `
           ]
         }
       />
-      <View
-        accessibilityLabel="Compétences générales"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomWidth": 1,
-            "borderColor": "#90949D",
-            "borderRadius": 8,
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flexDirection": "row",
-            "height": 56,
-            "maxWidth": 182.5,
-            "opacity": 1,
-            "paddingRight": 16,
-            "shadowColor": "#696A6F",
-            "shadowOffset": {
-              "height": 4,
-              "width": 0,
-            },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 4,
-            "textAlign": "left",
-            "userSelect": "auto",
-            "width": 343,
-          }
-        }
-        testID="Compétences générales"
-      >
-        <BVLinearGradient
-          colors={
-            [
-              4293670008,
-              4290777969,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
+      <View>
+        <View
+          numberOfSpaces={4}
           style={
             [
               {
-                "borderBottomLeftRadius": 8,
-                "borderTopLeftRadius": 8,
-                "height": "100%",
-                "left": 0,
-                "marginRight": 8,
-                "top": 0,
-                "width": 8,
+                "width": 16,
               },
             ]
           }
         />
-        <Text
-          ellipsizeMode="tail"
-          numberOfLines={2}
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-              },
-            ]
-          }
-        >
-          Compétences générales
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
+        <View
+          accessibilityLabel="Tourisme & Voyages"
+          accessibilityRole="button"
+          accessibilityState={
             {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Mode et Art"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomWidth": 1,
-            "borderColor": "#90949D",
-            "borderRadius": 8,
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flexDirection": "row",
-            "height": 56,
-            "maxWidth": 182.5,
-            "opacity": 1,
-            "paddingRight": 16,
-            "shadowColor": "#696A6F",
-            "shadowOffset": {
-              "height": 4,
-              "width": 0,
-            },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 4,
-            "textAlign": "left",
-            "userSelect": "auto",
-            "width": 343,
-          }
-        }
-        testID="Mode et Art"
-      >
-        <BVLinearGradient
-          colors={
-            [
-              4293670008,
-              4290777969,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
             }
           }
-          locations={null}
-          startPoint={
+          accessibilityValue={
             {
-              "x": 0.5,
-              "y": 0,
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            [
-              {
-                "borderBottomLeftRadius": 8,
-                "borderTopLeftRadius": 8,
-                "height": "100%",
-                "left": 0,
-                "marginRight": 8,
-                "top": 0,
-                "width": 8,
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderBottomWidth": 1,
+              "borderColor": "#90949D",
+              "borderRadius": 8,
+              "borderRightWidth": 1,
+              "borderTopWidth": 1,
+              "flexDirection": "row",
+              "height": 56,
+              "maxWidth": 182.5,
+              "opacity": 1,
+              "paddingRight": 16,
+              "shadowColor": "#696A6F",
+              "shadowOffset": {
+                "height": 4,
+                "width": 0,
               },
-            ]
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
+              "textAlign": "left",
+              "userSelect": "auto",
+              "width": 343,
+            }
           }
-        />
-        <Text
-          ellipsizeMode="tail"
-          numberOfLines={2}
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-              },
-            ]
-          }
+          testID="Tourisme & Voyages"
         >
-          Mode et Art
-        </Text>
+          <BVLinearGradient
+            colors={
+              [
+                4293670008,
+                4290777969,
+              ]
+            }
+            endPoint={
+              {
+                "x": 0.5,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              {
+                "x": 0.5,
+                "y": 0,
+              }
+            }
+            style={
+              [
+                {
+                  "borderBottomLeftRadius": 8,
+                  "borderTopLeftRadius": 8,
+                  "height": "100%",
+                  "left": 0,
+                  "marginRight": 8,
+                  "top": 0,
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            ellipsizeMode="tail"
+            numberOfLines={2}
+            paddingRight={16}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Tourisme & Voyages
+          </Text>
+        </View>
       </View>
-    </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "width": 16,
-          },
-        ]
-      }
-    />
-    <View>
       <View
         numberOfSpaces={4}
         style={
@@ -1030,126 +1160,7 @@ exports[`<SearchN1Books/> should render SearchN1Books 1`] = `
           ]
         }
       />
-      <View
-        accessibilityLabel="Tourisme & Voyages"
-        accessibilityRole="button"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderBottomWidth": 1,
-            "borderColor": "#90949D",
-            "borderRadius": 8,
-            "borderRightWidth": 1,
-            "borderTopWidth": 1,
-            "flexDirection": "row",
-            "height": 56,
-            "maxWidth": 182.5,
-            "opacity": 1,
-            "paddingRight": 16,
-            "shadowColor": "#696A6F",
-            "shadowOffset": {
-              "height": 4,
-              "width": 0,
-            },
-            "shadowOpacity": 0.2,
-            "shadowRadius": 4,
-            "textAlign": "left",
-            "userSelect": "auto",
-            "width": 343,
-          }
-        }
-        testID="Tourisme & Voyages"
-      >
-        <BVLinearGradient
-          colors={
-            [
-              4293670008,
-              4290777969,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
-          style={
-            [
-              {
-                "borderBottomLeftRadius": 8,
-                "borderTopLeftRadius": 8,
-                "height": "100%",
-                "left": 0,
-                "marginRight": 8,
-                "top": 0,
-                "width": 8,
-              },
-            ]
-          }
-        />
-        <Text
-          ellipsizeMode="tail"
-          numberOfLines={2}
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-              },
-            ]
-          }
-        >
-          Tourisme & Voyages
-        </Text>
-      </View>
     </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "width": 16,
-          },
-        ]
-      }
-    />
-  </View>
-</RCTScrollView>
+  </RCTScrollView>
+</RCTSafeAreaView>
 `;

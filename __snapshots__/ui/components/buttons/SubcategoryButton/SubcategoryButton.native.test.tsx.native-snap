@@ -96,6 +96,7 @@ exports[`<SubcategoryButton/> should render SubcategoryButton 1`] = `
   <Text
     ellipsizeMode="tail"
     numberOfLines={2}
+    paddingRight={16}
     style={
       [
         {

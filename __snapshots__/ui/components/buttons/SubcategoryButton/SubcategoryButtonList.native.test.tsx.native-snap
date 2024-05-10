@@ -125,6 +125,7 @@ exports[`<SubcategoryButtonList/> should render SubcategoryButtonList 1`] = `
         <Text
           ellipsizeMode="tail"
           numberOfLines={2}
+          paddingRight={16}
           style={
             [
               {
@@ -244,6 +245,7 @@ exports[`<SubcategoryButtonList/> should render SubcategoryButtonList 1`] = `
         <Text
           ellipsizeMode="tail"
           numberOfLines={2}
+          paddingRight={16}
           style={
             [
               {
@@ -375,6 +377,7 @@ exports[`<SubcategoryButtonList/> should render SubcategoryButtonList 1`] = `
         <Text
           ellipsizeMode="tail"
           numberOfLines={2}
+          paddingRight={16}
           style={
             [
               {
