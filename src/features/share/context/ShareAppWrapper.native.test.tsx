@@ -1,5 +1,5 @@
 import { ShareAppWrapper, useShareAppContext } from 'features/share/context/ShareAppWrapper'
-import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/share/types'
 import { analytics } from 'libs/analytics'
 import { renderHook, act } from 'tests/utils'
 

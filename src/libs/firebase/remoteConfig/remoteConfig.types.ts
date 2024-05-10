@@ -1,4 +1,4 @@
-import { ShareAppWordingVersion } from 'features/share/helpers/shareAppModalInformations'
+import { ShareAppWordingVersion } from 'features/share/types'
 import { SubscriptionTheme } from 'features/subscription/types'
 
 export type CustomRemoteConfig = {

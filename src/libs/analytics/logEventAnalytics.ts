@@ -14,7 +14,7 @@ import { Referrals, StepperOrigin } from 'features/navigation/RootNavigator/type
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
-import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { AmplitudeEvent } from 'libs/amplitude/events'

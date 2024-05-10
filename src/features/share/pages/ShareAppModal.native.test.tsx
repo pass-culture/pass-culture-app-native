@@ -1,10 +1,7 @@
 import React from 'react'
 
 import * as Share from 'features/share/helpers/shareApp'
-import {
-  ShareAppModalType,
-  ShareAppWordingVersion,
-} from 'features/share/helpers/shareAppModalInformations'
+import { ShareAppModalType, ShareAppWordingVersion } from 'features/share/types'
 import { analytics } from 'libs/analytics'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'

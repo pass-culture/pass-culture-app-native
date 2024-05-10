@@ -1,16 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { ShareAppWordingVersion } from 'features/share/types'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
-
-export enum ShareAppModalType {
-  NOT_ELIGIBLE = 'NOT_ELIGIBLE',
-  BENEFICIARY = 'BENEFICIARY',
-  ON_BOOKING_SUCCESS = 'ON_BOOKING_SUCCESS',
-}
-
-export type ShareAppWordingVersion = 'default' | 'statistics' | 'short'
 
 export const shareAppModalInformations = (wordingVersion: ShareAppWordingVersion) => {
   switch (wordingVersion) {
