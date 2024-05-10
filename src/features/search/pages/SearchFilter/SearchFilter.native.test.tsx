@@ -147,6 +147,7 @@ describe('<SearchFilter/>', () => {
           maxPrice: undefined,
           offerGenreTypes: undefined,
           offerNativeCategories: undefined,
+          gtls: [],
         },
       })
     })
