@@ -13,6 +13,7 @@ export type CustomRemoteConfig = {
   homeEntryId_18: string
   homeEntryId_15_17: string
   sameAuthorPlaylist: string
+  shareAppWordingVersion: string
   shouldDisplayReassuranceMention: boolean
   subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
 }
