@@ -19,7 +19,6 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -147,23 +146,20 @@ export const OnboardingSubscription = () => {
           </React.Fragment>
         }
         contentContainerStyle={contentContainerStyle}
-        ListFooterComponent={<Spacer.Column numberOfSpaces={30} />}
       />
-      <StickyBottomWrapper>
-        <StyledView>
-          <ButtonPrimary
-            wording="Suivre la sélection"
-            onPress={onSubmit}
-            disabled={isValidateButtonDisabled}
-          />
-          <ButtonTertiaryBlack
-            wording="Non merci"
-            accessibilityLabel="Ne pas suivre de thème"
-            icon={Invalidate}
-            onPress={goBack}
-          />
-        </StyledView>
-      </StickyBottomWrapper>
+      <StyledView>
+        <ButtonPrimary
+          wording="Suivre la sélection"
+          onPress={onSubmit}
+          disabled={isValidateButtonDisabled}
+        />
+        <ButtonTertiaryBlack
+          wording="Non merci"
+          accessibilityLabel="Ne pas suivre de thème"
+          icon={Invalidate}
+          onPress={goBack}
+        />
+      </StyledView>
       <NotificationsSettingsModal
         visible={isNotificationsModalVisible}
         title="Suivre la sélection"
