@@ -11,11 +11,10 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { CategoriesModalView, FilterBehaviour } from 'features/search/enums'
 import {
-  buildSearchPayloadValues,
   getCategoriesModalTitle,
   getDefaultFormValues,
   getIcon,
-  isOnlyOnline,
+  handleCategoriesSearchPress,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import {
   createMappingTree,
@@ -168,23 +167,12 @@ export const CategoriesModal = ({
         return
       }
 
-      const payload = buildSearchPayloadValues(data, form, enableNewMapping)
-      if (!payload) return
+      const searchPressData = handleCategoriesSearchPress(form, data, enableNewMapping)
 
-      let additionalSearchState: SearchState = { ...searchState, ...payload }
-      let isFullyDigitalOffersCategory = false
-      if (payload.offerNativeCategories.length > 0) {
-        isFullyDigitalOffersCategory = isOnlyOnline(
-          data,
-          undefined,
-          payload.offerNativeCategories[0]
-        )
-      } else if (payload.offerCategories.length > 0) {
-        isFullyDigitalOffersCategory = isOnlyOnline(data, payload.offerCategories[0])
-      }
+      let additionalSearchState: SearchState = { ...searchState, ...searchPressData?.payload }
       additionalSearchState = {
         ...additionalSearchState,
-        isFullyDigitalOffersCategory: isFullyDigitalOffersCategory || undefined,
+        isFullyDigitalOffersCategory: searchPressData?.isFullyDigitalOffersCategory || undefined,
       }
 
       dispatch({ type: 'SET_STATE', payload: additionalSearchState })

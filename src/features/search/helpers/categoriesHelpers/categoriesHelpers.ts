@@ -9,11 +9,14 @@ import {
   SearchGroupResponseModelv2,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
+import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { CategoriesModalView, CATEGORY_CRITERIA } from 'features/search/enums'
 import {
+  createMappingTree,
   getBooksGenreTypes,
   getBooksNativeCategories,
   getKeyFromStringLabel,
+  MappedNativeCategories,
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
@@ -24,6 +27,7 @@ import {
   NativeCategoryEnum,
 } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
+import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
 type Item = SearchGroupNameEnumv2 | NativeCategoryIdEnumv2 | string | null
 
@@ -338,6 +342,27 @@ export function getNativeCategories(
   return getUniqueBy(nativeCategories, 'name').sort(searchGroupOrNativeCategorySortComparator)
 }
 
+export const useNativeCategories = (nativeCategory?: SearchGroupNameEnumv2) => {
+  const { data: subcategories } = useSubcategories()
+  const { facets } = useSearchResults()
+  const enableNewMapping = true
+  const tree = createMappingTree(subcategories, facets, enableNewMapping)
+
+  const nativeCategories =
+    nativeCategory &&
+    nativeCategory !== SearchGroupNameEnumv2.NONE &&
+    (tree[nativeCategory].children as MappedNativeCategories)
+
+  const nativeCategoriesMap = nativeCategories ? Object.entries(nativeCategories) : []
+
+  if (nativeCategory === SearchGroupNameEnumv2.LIVRES)
+    return nativeCategoriesMap.filter(
+      ([_k, item]) => item.genreTypeKey === GenreType.BOOK && item.label !== 'Livres papier'
+    )
+
+  return nativeCategoriesMap
+}
+
 function getIsCategory(item: Item): item is SearchGroupNameEnumv2 {
   return Object.values(SearchGroupNameEnumv2).includes(item as SearchGroupNameEnumv2)
 }
@@ -493,4 +518,26 @@ export function getNbResultsFacetLabel(nbResultsFacet?: number) {
   } else {
     return `${nbResultsFacet}`
   }
+}
+
+export const handleCategoriesSearchPress = (
+  form: CategoriesModalFormProps,
+  data: SubcategoriesResponseModelv2,
+  enableNewMapping?: boolean
+) => {
+  if (!data) {
+    return
+  }
+
+  const payload = buildSearchPayloadValues(data, form, enableNewMapping)
+  if (!payload) return
+
+  let isFullyDigitalOffersCategory = false
+  if (payload.offerNativeCategories.length > 0) {
+    isFullyDigitalOffersCategory = isOnlyOnline(data, undefined, payload.offerNativeCategories[0])
+  } else if (payload.offerCategories.length > 0) {
+    isFullyDigitalOffersCategory = isOnlyOnline(data, payload.offerCategories[0])
+  }
+
+  return { payload, isFullyDigitalOffersCategory }
 }
