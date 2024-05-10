@@ -1,5 +1,5 @@
 import uniqBy from 'lodash/uniqBy'
-import { useQuery } from 'react-query'
+import { useQuery, UseQueryResult } from 'react-query'
 
 import { VenueResponse } from 'api/gen'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
@@ -14,7 +14,9 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
-export const useVenueOffers = (venue?: VenueResponse) => {
+export type VenueOffers = { hits: Offer[]; nbHits: number }
+
+export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffers> => {
   const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
   const params = useVenueSearchParameters(venue)

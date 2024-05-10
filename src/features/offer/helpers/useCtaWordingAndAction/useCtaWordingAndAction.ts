@@ -42,7 +42,21 @@ import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/
 import { useHasEnoughCredit } from '../useHasEnoughCredit/useHasEnoughCredit'
 
 type UseGetCtaWordingAndActionProps = {
-  offer: OfferResponseV2
+  offer: Pick<
+    OfferResponseV2,
+    | 'id'
+    | 'venue'
+    | 'stocks'
+    | 'expenseDomains'
+    | 'externalTicketOfficeUrl'
+    | 'subcategoryId'
+    | 'isForbiddenToUnderage'
+    | 'isEducational'
+    | 'isReleased'
+    | 'isExpired'
+    | 'isSoldOut'
+    | 'isDigital'
+  >
   subcategory: Subcategory
   from?: Referrals
   searchId?: string
@@ -57,7 +71,19 @@ type Props = {
   isLoggedIn: boolean
   userStatus: YoungStatusResponse
   isBeneficiary: boolean
-  offer: OfferResponseV2
+  offer: Pick<
+    OfferResponseV2,
+    | 'id'
+    | 'externalTicketOfficeUrl'
+    | 'subcategoryId'
+    | 'isForbiddenToUnderage'
+    | 'isEducational'
+    | 'isReleased'
+    | 'isExpired'
+    | 'isSoldOut'
+    | 'isDigital'
+    | 'stocks'
+  >
   subcategory: Subcategory
   hasEnoughCredit: boolean
   bookedOffers: UserProfileResponse['bookedOffers']

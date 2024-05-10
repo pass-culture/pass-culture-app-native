@@ -5,6 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
+import type { VenueOffers as VenueOffersType } from 'features/venue/api/useVenueOffers'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
@@ -21,7 +22,6 @@ import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerar
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
-import { Offer } from 'shared/offer/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
@@ -34,7 +34,7 @@ import { OpeningHoursStatus } from '../OpeningHoursStatus/OpeningHoursStatus'
 interface Props {
   venue: VenueResponse
   onScroll: () => void
-  venueOffers?: { hits: Offer[]; nbHits: number }
+  venueOffers?: VenueOffersType
   playlists?: GtlPlaylistData[]
   shouldDisplayCTA?: boolean
 }

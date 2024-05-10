@@ -19,7 +19,6 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -35,7 +34,7 @@ const useGTLPlaylistsSpy = jest
 jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
   isLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },
-} as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
+} as unknown as UseQueryResult<useVenueOffers.VenueOffers, unknown>)
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -90,7 +89,7 @@ describe('<VenueOffers />', () => {
   it('should display skeleton if offers are fetching', () => {
     jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({
       isLoading: true,
-    } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
+    } as UseQueryResult<useVenueOffers.VenueOffers, unknown>)
     renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock })
 
     expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
@@ -221,7 +220,7 @@ const renderVenueOffers = ({
   playlists,
 }: {
   venue: VenueResponse
-  venueOffers: { hits: Offer[]; nbHits: number }
+  venueOffers: useVenueOffers.VenueOffers
   playlists?: GtlPlaylistData[]
 }) => {
   return render(

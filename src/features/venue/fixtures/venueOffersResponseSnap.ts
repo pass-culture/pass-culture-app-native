@@ -1,7 +1,10 @@
+import type { ReadonlyDeep } from 'type-fest'
+
 import { SubcategoryIdEnum } from 'api/gen'
 import { Offer } from 'shared/offer/types'
+import { toMutable } from 'shared/types/toMutable'
 
-export const VenueOffersResponseSnap: Offer[] = [
+export const VenueOffersResponseSnap = toMutable([
   {
     _geoloc: { lat: 47.8898, lng: -2.83593 },
     objectID: '223342',
@@ -47,7 +50,7 @@ export const VenueOffersResponseSnap: Offer[] = [
     },
     venue: {},
   },
-]
+] as const satisfies ReadonlyDeep<Offer[]>)
 
 export const VenueMoviesOffersResponseSnap: Offer[] = [
   {

@@ -17,13 +17,12 @@ import { useNativeCategoryValue } from 'ui/components/tiles/useNativeCategoryVal
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Typo } from 'ui/theme'
 
-import { HorizontalTile } from './HorizontalTile'
-interface Props {
+import { HorizontalTile, HorizontalTileProps } from './HorizontalTile'
+interface Props extends Partial<HorizontalTileProps> {
   offer: Offer
   onPress?: () => void
   analyticsParams: OfferAnalyticsParams
   style?: StyleProp<ViewStyle>
-  withRightArrow?: boolean
 }
 
 export const HorizontalOfferTile = ({
@@ -31,7 +30,7 @@ export const HorizontalOfferTile = ({
   analyticsParams,
   onPress,
   style,
-  withRightArrow,
+  ...horizontalTileProps
 }: Props) => {
   const { offer: offerDetails, objectID, _geoloc } = offer
   const { subcategoryId, dates, prices, thumbUrl, name } = offerDetails
@@ -93,12 +92,12 @@ export const HorizontalOfferTile = ({
       from={analyticsParams.from}
       style={style}>
       <HorizontalTile
+        {...horizontalTileProps}
         categoryId={categoryId}
-        title={name as string}
+        title={name}
         imageUrl={thumbUrl}
         distanceToOffer={distanceToOffer}
-        price={formattedPrice}
-        withRightArrow={withRightArrow}>
+        price={formattedPrice}>
         {!!subtitles?.length &&
           subtitles?.map((subtitle, index) => (
             <Body

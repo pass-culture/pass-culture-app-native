@@ -1,13 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly 1`] = `
-<View
-  style={
-    [
-      {},
-    ]
-  }
->
+exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly on desktop 1`] = `
+[
   <View
     onLayout={[Function]}
   >
@@ -35,21 +29,21 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
         }
         data={
           [
-            2024-04-18T00:00:00.000Z,
-            2024-04-19T00:00:00.000Z,
-            2024-04-20T00:00:00.000Z,
-            2024-04-21T00:00:00.000Z,
-            2024-04-22T00:00:00.000Z,
-            2024-04-23T00:00:00.000Z,
-            2024-04-24T00:00:00.000Z,
-            2024-04-25T00:00:00.000Z,
-            2024-04-26T00:00:00.000Z,
-            2024-04-27T00:00:00.000Z,
-            2024-04-28T00:00:00.000Z,
-            2024-04-29T00:00:00.000Z,
-            2024-04-30T00:00:00.000Z,
-            2024-05-01T00:00:00.000Z,
-            2024-05-02T00:00:00.000Z,
+            2024-05-08T12:50:00.000Z,
+            2024-05-09T12:50:00.000Z,
+            2024-05-10T12:50:00.000Z,
+            2024-05-11T12:50:00.000Z,
+            2024-05-12T12:50:00.000Z,
+            2024-05-13T12:50:00.000Z,
+            2024-05-14T12:50:00.000Z,
+            2024-05-15T12:50:00.000Z,
+            2024-05-16T12:50:00.000Z,
+            2024-05-17T12:50:00.000Z,
+            2024-05-18T12:50:00.000Z,
+            2024-05-19T12:50:00.000Z,
+            2024-05-20T12:50:00.000Z,
+            2024-05-21T12:50:00.000Z,
+            2024-05-22T12:50:00.000Z,
           ]
         }
         getItem={[Function]}
@@ -124,7 +118,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               testID="movie-calendar-day"
             >
               <View
-                accessibilityLabel="Jeudi 18 Avril"
+                accessibilityLabel="Mercredi 8 Mai"
                 style={
                   [
                     {
@@ -144,12 +138,12 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                         "fontSize": 15,
                         "lineHeight": 20,
                         "textAlign": "center",
-                        "width": 40,
+                        "width": 88,
                       },
                     ]
                   }
                 >
-                  Jeu.
+                  Mercredi
                 </Text>
                 <Text
                   numberOfLines={1}
@@ -161,12 +155,12 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                         "fontSize": 15,
                         "lineHeight": 20,
                         "textAlign": "center",
-                        "width": 40,
+                        "width": 88,
                       },
                     ]
                   }
                 >
-                  18
+                  8
                 </Text>
                 <Text
                   numberOfLines={1}
@@ -178,12 +172,12 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                         "fontSize": 15,
                         "lineHeight": 20,
                         "textAlign": "center",
-                        "width": 40,
+                        "width": 88,
                       },
                     ]
                   }
                 >
-                  Avril
+                  Mai
                 </Text>
               </View>
               <View
@@ -255,7 +249,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               testID="movie-calendar-day"
             >
               <View
-                accessibilityLabel="Vendredi 19 Avril"
+                accessibilityLabel="Jeudi 9 Mai"
                 style={
                   [
                     {
@@ -271,1165 +265,6 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Ven.
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  19
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Avril
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                },
-                null,
-              ]
-            }
-          >
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="movie-calendar-day"
-            >
-              <View
-                accessibilityLabel="Samedi 20 Avril"
-                style={
-                  [
-                    {
-                      "marginBottom": 8,
-                      "marginHorizontal": 16,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Sam.
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  20
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Avril
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                },
-                null,
-              ]
-            }
-          >
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="movie-calendar-day"
-            >
-              <View
-                accessibilityLabel="Dimanche 21 Avril"
-                style={
-                  [
-                    {
-                      "marginBottom": 8,
-                      "marginHorizontal": 16,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Dim.
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  21
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Avril
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                },
-                null,
-              ]
-            }
-          >
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="movie-calendar-day"
-            >
-              <View
-                accessibilityLabel="Lundi 22 Avril"
-                style={
-                  [
-                    {
-                      "marginBottom": 8,
-                      "marginHorizontal": 16,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Lun.
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  22
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Avril
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                },
-                null,
-              ]
-            }
-          >
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="movie-calendar-day"
-            >
-              <View
-                accessibilityLabel="Mardi 23 Avril"
-                style={
-                  [
-                    {
-                      "marginBottom": 8,
-                      "marginHorizontal": 16,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Mar.
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  23
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Avril
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                },
-                null,
-              ]
-            }
-          >
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="movie-calendar-day"
-            >
-              <View
-                accessibilityLabel="Mercredi 24 Avril"
-                style={
-                  [
-                    {
-                      "marginBottom": 8,
-                      "marginHorizontal": 16,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Mer.
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  24
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Avril
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                },
-                null,
-              ]
-            }
-          >
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="movie-calendar-day"
-            >
-              <View
-                accessibilityLabel="Jeudi 25 Avril"
-                style={
-                  [
-                    {
-                      "marginBottom": 8,
-                      "marginHorizontal": 16,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Jeu.
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  25
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Avril
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                },
-                null,
-              ]
-            }
-          >
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="movie-calendar-day"
-            >
-              <View
-                accessibilityLabel="Vendredi 26 Avril"
-                style={
-                  [
-                    {
-                      "marginBottom": 8,
-                      "marginHorizontal": 16,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Ven.
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  26
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Avril
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                },
-                null,
-              ]
-            }
-          >
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="movie-calendar-day"
-            >
-              <View
-                accessibilityLabel="Samedi 27 Avril"
-                style={
-                  [
-                    {
-                      "marginBottom": 8,
-                      "marginHorizontal": 16,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Sam.
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  27
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 40,
-                      },
-                    ]
-                  }
-                >
-                  Avril
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            style={
-              {
-                "width": 0,
-              }
-            }
-          />
-        </View>
-      </RCTScrollView>
-    </View>
-  </View>
-  <View
-    numberOfSpaces={4}
-    style={
-      [
-        {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <RCTScrollView
-    getItem={[Function]}
-    getItemCount={[Function]}
-    keyExtractor={[Function]}
-    onContentSizeChange={[Function]}
-    onLayout={[Function]}
-    onMomentumScrollBegin={[Function]}
-    onMomentumScrollEnd={[Function]}
-    onScroll={[Function]}
-    onScrollBeginDrag={[Function]}
-    onScrollEndDrag={[Function]}
-    removeClippedSubviews={false}
-    renderItem={[Function]}
-    scrollEventThrottle={50}
-    stickyHeaderIndices={[]}
-    viewabilityConfigCallbackPairs={[]}
-  >
-    <View />
-  </RCTScrollView>
-</View>
-`;
-
-exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly on desktop 1`] = `
-<View
-  style={
-    [
-      {},
-    ]
-  }
->
-  <View
-    onLayout={[Function]}
-  >
-    <View
-      style={
-        [
-          {
-            "backgroundColor": "#F1F1F4",
-            "borderRadius": 4,
-            "bottom": 0,
-            "height": 4,
-            "left": 0,
-            "position": "absolute",
-            "width": "100%",
-          },
-        ]
-      }
-    />
-    <View>
-      <RCTScrollView
-        contentContainerStyle={
-          {
-            "paddingHorizontal": 24,
-          }
-        }
-        data={
-          [
-            2024-04-18T00:00:00.000Z,
-            2024-04-19T00:00:00.000Z,
-            2024-04-20T00:00:00.000Z,
-            2024-04-21T00:00:00.000Z,
-            2024-04-22T00:00:00.000Z,
-            2024-04-23T00:00:00.000Z,
-            2024-04-24T00:00:00.000Z,
-            2024-04-25T00:00:00.000Z,
-            2024-04-26T00:00:00.000Z,
-            2024-04-27T00:00:00.000Z,
-            2024-04-28T00:00:00.000Z,
-            2024-04-29T00:00:00.000Z,
-            2024-04-30T00:00:00.000Z,
-            2024-05-01T00:00:00.000Z,
-            2024-05-02T00:00:00.000Z,
-          ]
-        }
-        getItem={[Function]}
-        getItemCount={[Function]}
-        horizontal={true}
-        keyExtractor={[Function]}
-        onContentSizeChange={[Function]}
-        onLayout={[Function]}
-        onMomentumScrollBegin={[Function]}
-        onMomentumScrollEnd={[Function]}
-        onScroll={[Function]}
-        onScrollBeginDrag={[Function]}
-        onScrollEndDrag={[Function]}
-        removeClippedSubviews={false}
-        renderItem={[Function]}
-        scrollEventThrottle={50}
-        showsHorizontalScrollIndicator={false}
-        stickyHeaderIndices={[]}
-        testID="movie-calendar-flat-list"
-        viewabilityConfigCallbackPairs={[]}
-      >
-        <View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                },
-                null,
-              ]
-            }
-          >
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="movie-calendar-day"
-            >
-              <View
-                accessibilityLabel="Jeudi 18 Avril"
-                style={
-                  [
-                    {
-                      "marginBottom": 8,
-                      "marginHorizontal": 16,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#eb0055",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -1446,7 +281,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                   style={
                     [
                       {
-                        "color": "#eb0055",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -1456,14 +291,14 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  18
+                  9
                 </Text>
                 <Text
                   numberOfLines={1}
                   style={
                     [
                       {
-                        "color": "#eb0055",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -1473,24 +308,9 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  Avril
+                  Mai
                 </Text>
               </View>
-              <View
-                style={
-                  [
-                    {
-                      "backgroundColor": "#eb0055",
-                      "borderRadius": 4,
-                      "bottom": 0,
-                      "height": 4,
-                      "left": 0,
-                      "position": "absolute",
-                      "width": "100%",
-                    },
-                  ]
-                }
-              />
             </View>
           </View>
           <View
@@ -1545,7 +365,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               testID="movie-calendar-day"
             >
               <View
-                accessibilityLabel="Vendredi 19 Avril"
+                accessibilityLabel="Vendredi 10 Mai"
                 style={
                   [
                     {
@@ -1587,7 +407,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  19
+                  10
                 </Text>
                 <Text
                   numberOfLines={1}
@@ -1604,7 +424,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  Avril
+                  Mai
                 </Text>
               </View>
             </View>
@@ -1661,7 +481,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               testID="movie-calendar-day"
             >
               <View
-                accessibilityLabel="Samedi 20 Avril"
+                accessibilityLabel="Samedi 11 Mai"
                 style={
                   [
                     {
@@ -1703,7 +523,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  20
+                  11
                 </Text>
                 <Text
                   numberOfLines={1}
@@ -1720,7 +540,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  Avril
+                  Mai
                 </Text>
               </View>
             </View>
@@ -1777,7 +597,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               testID="movie-calendar-day"
             >
               <View
-                accessibilityLabel="Dimanche 21 Avril"
+                accessibilityLabel="Dimanche 12 Mai"
                 style={
                   [
                     {
@@ -1819,7 +639,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  21
+                  12
                 </Text>
                 <Text
                   numberOfLines={1}
@@ -1836,7 +656,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  Avril
+                  Mai
                 </Text>
               </View>
             </View>
@@ -1893,7 +713,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               testID="movie-calendar-day"
             >
               <View
-                accessibilityLabel="Lundi 22 Avril"
+                accessibilityLabel="Lundi 13 Mai"
                 style={
                   [
                     {
@@ -1935,7 +755,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  22
+                  13
                 </Text>
                 <Text
                   numberOfLines={1}
@@ -1952,7 +772,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  Avril
+                  Mai
                 </Text>
               </View>
             </View>
@@ -2009,7 +829,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               testID="movie-calendar-day"
             >
               <View
-                accessibilityLabel="Mardi 23 Avril"
+                accessibilityLabel="Mardi 14 Mai"
                 style={
                   [
                     {
@@ -2051,7 +871,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  23
+                  14
                 </Text>
                 <Text
                   numberOfLines={1}
@@ -2068,7 +888,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  Avril
+                  Mai
                 </Text>
               </View>
             </View>
@@ -2125,7 +945,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               testID="movie-calendar-day"
             >
               <View
-                accessibilityLabel="Mercredi 24 Avril"
+                accessibilityLabel="Mercredi 15 Mai"
                 style={
                   [
                     {
@@ -2167,7 +987,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  24
+                  15
                 </Text>
                 <Text
                   numberOfLines={1}
@@ -2184,7 +1004,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  Avril
+                  Mai
                 </Text>
               </View>
             </View>
@@ -2241,7 +1061,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               testID="movie-calendar-day"
             >
               <View
-                accessibilityLabel="Jeudi 25 Avril"
+                accessibilityLabel="Jeudi 16 Mai"
                 style={
                   [
                     {
@@ -2283,7 +1103,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  25
+                  16
                 </Text>
                 <Text
                   numberOfLines={1}
@@ -2300,7 +1120,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  Avril
+                  Mai
                 </Text>
               </View>
             </View>
@@ -2357,7 +1177,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               testID="movie-calendar-day"
             >
               <View
-                accessibilityLabel="Vendredi 26 Avril"
+                accessibilityLabel="Vendredi 17 Mai"
                 style={
                   [
                     {
@@ -2399,7 +1219,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  26
+                  17
                 </Text>
                 <Text
                   numberOfLines={1}
@@ -2416,123 +1236,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
                     ]
                   }
                 >
-                  Avril
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                },
-                null,
-              ]
-            }
-          >
-            <View
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
-              }
-              testID="movie-calendar-day"
-            >
-              <View
-                accessibilityLabel="Samedi 27 Avril"
-                style={
-                  [
-                    {
-                      "marginBottom": 8,
-                      "marginHorizontal": 16,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 88,
-                      },
-                    ]
-                  }
-                >
-                  Samedi
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 88,
-                      },
-                    ]
-                  }
-                >
-                  27
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "textAlign": "center",
-                        "width": 88,
-                      },
-                    ]
-                  }
-                >
-                  Avril
+                  Mai
                 </Text>
               </View>
             </View>
@@ -2612,7 +1316,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
         }
       />
     </View>
-  </View>
+  </View>,
   <View
     numberOfSpaces={4}
     style={
@@ -2622,8 +1326,9 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
         },
       ]
     }
-  />
+  />,
   <RCTScrollView
+    data={[]}
     getItem={[Function]}
     getItemCount={[Function]}
     keyExtractor={[Function]}
@@ -2641,6 +1346,1291 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
     viewabilityConfigCallbackPairs={[]}
   >
     <View />
-  </RCTScrollView>
-</View>
+  </RCTScrollView>,
+]
+`;
+
+exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly on mobile 1`] = `
+[
+  <View
+    onLayout={[Function]}
+  >
+    <View
+      style={
+        [
+          {
+            "backgroundColor": "#F1F1F4",
+            "borderRadius": 4,
+            "bottom": 0,
+            "height": 4,
+            "left": 0,
+            "position": "absolute",
+            "width": "100%",
+          },
+        ]
+      }
+    />
+    <View>
+      <RCTScrollView
+        contentContainerStyle={
+          {
+            "paddingHorizontal": 24,
+          }
+        }
+        data={
+          [
+            2024-05-08T12:50:00.000Z,
+            2024-05-09T12:50:00.000Z,
+            2024-05-10T12:50:00.000Z,
+            2024-05-11T12:50:00.000Z,
+            2024-05-12T12:50:00.000Z,
+            2024-05-13T12:50:00.000Z,
+            2024-05-14T12:50:00.000Z,
+            2024-05-15T12:50:00.000Z,
+            2024-05-16T12:50:00.000Z,
+            2024-05-17T12:50:00.000Z,
+            2024-05-18T12:50:00.000Z,
+            2024-05-19T12:50:00.000Z,
+            2024-05-20T12:50:00.000Z,
+            2024-05-21T12:50:00.000Z,
+            2024-05-22T12:50:00.000Z,
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        horizontal={true}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={50}
+        showsHorizontalScrollIndicator={false}
+        stickyHeaderIndices={[]}
+        testID="movie-calendar-flat-list"
+        viewabilityConfigCallbackPairs={[]}
+      >
+        <View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="movie-calendar-day"
+            >
+              <View
+                accessibilityLabel="Mercredi 8 Mai"
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                      "marginHorizontal": 16,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mer.
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  8
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#eb0055",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mai
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "#eb0055",
+                      "borderRadius": 4,
+                      "bottom": 0,
+                      "height": 4,
+                      "left": 0,
+                      "position": "absolute",
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="movie-calendar-day"
+            >
+              <View
+                accessibilityLabel="Jeudi 9 Mai"
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                      "marginHorizontal": 16,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Jeu.
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  9
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mai
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="movie-calendar-day"
+            >
+              <View
+                accessibilityLabel="Vendredi 10 Mai"
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                      "marginHorizontal": 16,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Ven.
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  10
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mai
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="movie-calendar-day"
+            >
+              <View
+                accessibilityLabel="Samedi 11 Mai"
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                      "marginHorizontal": 16,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Sam.
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  11
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mai
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="movie-calendar-day"
+            >
+              <View
+                accessibilityLabel="Dimanche 12 Mai"
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                      "marginHorizontal": 16,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Dim.
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  12
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mai
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="movie-calendar-day"
+            >
+              <View
+                accessibilityLabel="Lundi 13 Mai"
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                      "marginHorizontal": 16,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Lun.
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  13
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mai
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="movie-calendar-day"
+            >
+              <View
+                accessibilityLabel="Mardi 14 Mai"
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                      "marginHorizontal": 16,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mar.
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  14
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mai
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="movie-calendar-day"
+            >
+              <View
+                accessibilityLabel="Mercredi 15 Mai"
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                      "marginHorizontal": 16,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mer.
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  15
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mai
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="movie-calendar-day"
+            >
+              <View
+                accessibilityLabel="Jeudi 16 Mai"
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                      "marginHorizontal": 16,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Jeu.
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  16
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mai
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                },
+                null,
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignItems": "center",
+                  "flexWrap": "wrap",
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="movie-calendar-day"
+            >
+              <View
+                accessibilityLabel="Vendredi 17 Mai"
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                      "marginHorizontal": 16,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Ven.
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  17
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "center",
+                        "width": 40,
+                      },
+                    ]
+                  }
+                >
+                  Mai
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "width": 0,
+              }
+            }
+          />
+        </View>
+      </RCTScrollView>
+    </View>
+  </View>,
+  <View
+    numberOfSpaces={4}
+    style={
+      [
+        {
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <RCTScrollView
+    data={[]}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={[]}
+    viewabilityConfigCallbackPairs={[]}
+  >
+    <View />
+  </RCTScrollView>,
+]
 `;

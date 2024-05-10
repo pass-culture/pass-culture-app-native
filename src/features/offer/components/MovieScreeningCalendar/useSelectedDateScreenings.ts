@@ -12,7 +12,7 @@ import { EventCardProps } from 'ui/components/eventCard/EventCard'
 
 export const useSelectedDateScreening = (
   selectedScreeningStock: OfferStockResponse[] | undefined,
-  isExternalBookingsDisabled: boolean
+  isExternalBookingsDisabled = false
 ) => {
   const [bookingData, setBookingData] = useState<MovieScreeningBookingData>()
 

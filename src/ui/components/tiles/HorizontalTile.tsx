@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -7,8 +7,8 @@ import { OfferName } from 'ui/components/tiles/OfferName'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type Props = PropsWithChildren<{
-  title: string
+export type HorizontalTileProps = PropsWithChildren<{
+  title?: string
   categoryId: CategoryIdEnum
   imageUrl?: string
   distanceToOffer?: string
@@ -16,15 +16,15 @@ type Props = PropsWithChildren<{
   withRightArrow?: boolean
 }>
 
-export const HorizontalTile = ({
-  title,
+export const HorizontalTile: FC<HorizontalTileProps> = ({
+  title = '',
   categoryId,
   imageUrl,
   distanceToOffer,
   price,
   withRightArrow,
   children,
-}: Props) => {
+}) => {
   return (
     <React.Fragment>
       <OfferImage imageUrl={imageUrl} categoryId={categoryId} />

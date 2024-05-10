@@ -7,8 +7,27 @@ import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndA
 import { Subcategory } from 'libs/subcategories/types'
 import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 
+export type PartialOffer = Pick<
+  OfferResponseV2,
+  | 'id'
+  | 'venue'
+  | 'stocks'
+  | 'expenseDomains'
+  | 'venue'
+  | 'stocks'
+  | 'expenseDomains'
+  | 'externalTicketOfficeUrl'
+  | 'subcategoryId'
+  | 'isForbiddenToUnderage'
+  | 'isEducational'
+  | 'isReleased'
+  | 'isExpired'
+  | 'isSoldOut'
+  | 'isDigital'
+>
+
 export const useOfferCTAButton = (
-  offer: OfferResponseV2,
+  offer: PartialOffer,
   subcategory: Subcategory,
   bookingData?: MovieScreeningBookingData
 ) => {
