@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { SHARE_APP_IMAGE_SOURCE } from 'features/share/components/shareAppImage'
 import { shareApp } from 'features/share/helpers/shareApp'
-import { shareAppModalInformations } from 'features/share/helpers/shareAppModalInformations'
+import { shareAppModalInformations } from 'features/share/helpers/shareAppModalInformation'
 import { ShareAppModalType } from 'features/share/types'
 import { analytics } from 'libs/analytics'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
