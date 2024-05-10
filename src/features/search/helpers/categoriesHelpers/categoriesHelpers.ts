@@ -113,7 +113,7 @@ export const buildBookSearchPayloadValues = (
   }
 }
 
-export function buildSearchPayloadValues(
+function buildSearchPayloadValues(
   data: SubcategoriesResponseModelv2,
   form: CategoriesModalFormProps,
   enableNewMapping?: boolean
