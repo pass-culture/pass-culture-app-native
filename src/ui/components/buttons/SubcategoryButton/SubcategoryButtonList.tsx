@@ -68,8 +68,7 @@ export const SubcategoryButtonList: React.FC<Props> = ({ subcategoryButtonConten
           <React.Fragment key={JSON.stringify([topContent, bottomContent])}>
             <View>
               <Spacer.Row numberOfSpaces={4} />
-              {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
-              <SubcategoryButton {...topContent} />
+              {topContent ? <SubcategoryButton {...topContent} /> : null}
               {bottomContent ? (
                 <React.Fragment>
                   <Spacer.Column numberOfSpaces={4} />
