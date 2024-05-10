@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 1`] = `
+exports[`ShareAppModal should match snapshot for default wording 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   animationType="fade"
@@ -491,7 +491,7 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
 </Modal>
 `;
 
-exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
+exports[`ShareAppModal should match snapshot for short wording 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   animationType="fade"
@@ -701,7 +701,7 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
               ]
             }
           >
-            Le bon pote, c’est toi !
+            Passe le bon plan !
           </Text>
           <View
             numberOfSpaces={6}
@@ -726,7 +726,7 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
               ]
             }
           >
-            Recommande l’appli à tes proches pour qu’ils profitent eux aussi de tous les bons plans du pass Culture.
+            Recommande l’app à tes amis pour qu’ils profitent du pass Culture !
           </Text>
           <View
             numberOfSpaces={6}
@@ -982,7 +982,7 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
 </Modal>
 `;
 
-exports[`ShareAppModal should match underage modal snapshot when underage 1`] = `
+exports[`ShareAppModal should match snapshot for statistics wording 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   animationType="fade"
@@ -1192,7 +1192,7 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
               ]
             }
           >
-            Passe la culture à ton voisin !
+            Fais tourner le bon plan !
           </Text>
           <View
             numberOfSpaces={6}
@@ -1217,9 +1217,23 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
               ]
             }
           >
-            Pour les 15-18 ans, le pass Culture offre un crédit dédié à la culture. 
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              35 % des jeunes en France n’ont pas encore le pass Culture.
+            </Text>
+            
 
- Fais-en profiter ton entourage !
+            Fais découvrir le pass à tes amis !
           </Text>
           <View
             numberOfSpaces={6}

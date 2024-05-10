@@ -8,12 +8,13 @@ import {
   ShareAppModalType,
 } from 'features/share/helpers/shareAppModalInformations'
 import { analytics } from 'libs/analytics'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { MarketingModal } from 'ui/components/modals/MarketingModal'
 import { Share } from 'ui/svg/icons/BicolorShare'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type Props = {
   visible: boolean
@@ -22,6 +23,8 @@ type Props = {
 }
 
 export const ShareAppModal: FunctionComponent<Props> = ({ visible, hideModal, modalType }) => {
+  const { shareAppWordingVersion } = useRemoteConfigContext()
+
   const openShareAppModal = useCallback(() => {
     analytics.logShareApp({ type: modalType })
     hideModal()
@@ -35,7 +38,7 @@ export const ShareAppModal: FunctionComponent<Props> = ({ visible, hideModal, mo
     hideModal()
   }, [modalType, hideModal])
 
-  const { title, explanation } = shareAppModalInformations(modalType)
+  const { title, subtitle } = shareAppModalInformations(shareAppWordingVersion)
 
   return (
     <MarketingModal
@@ -43,7 +46,7 @@ export const ShareAppModal: FunctionComponent<Props> = ({ visible, hideModal, mo
       title={title}
       imageSource={SHARE_APP_IMAGE_SOURCE}
       onBackdropPress={closeModal}>
-      <StyledBody>{explanation}</StyledBody>
+      {subtitle}
       <Spacer.Column numberOfSpaces={6} />
       <ButtonContainer>
         <ButtonWithLinearGradient
@@ -62,9 +65,5 @@ export const ShareAppModal: FunctionComponent<Props> = ({ visible, hideModal, mo
     </MarketingModal>
   )
 }
-
-const StyledBody = styled(Typo.Body)({
-  textAlign: 'center',
-})
 
 const ButtonContainer = styled.View({ width: '100%' })
