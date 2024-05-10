@@ -1,34 +1,29 @@
-import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import React, { useMemo } from 'react'
+import { SafeAreaView } from 'react-native'
 
-import { theme } from 'theme'
-import { SubcategoryButton } from 'ui/components/buttons/SubcategoryButton/SubcategoryButton'
-import { getSpacing } from 'ui/theme'
+import { SearchGroupNameEnumv2 } from 'api/gen'
+import { CATEGORY_CRITERIA, Gradient } from 'features/search/enums'
+import { useNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { NativeCategoryEnum } from 'features/search/types'
+import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
-export const SearchN1Books: FunctionComponent = () => {
+export const SearchN1Books = () => {
+  const bookNativeCategories = useNativeCategories(SearchGroupNameEnumv2.LIVRES)
+  const bookColorsGradients: Gradient = CATEGORY_CRITERIA[SearchGroupNameEnumv2.LIVRES]?.gradients
+
+  const bookSubcategoriesContent = useMemo(
+    () =>
+      bookNativeCategories.map((bookNativeCategory) => ({
+        label: bookNativeCategory[1].label,
+        colors: bookColorsGradients,
+        nativeCategory: bookNativeCategory[0] as NativeCategoryEnum,
+      })),
+    [bookColorsGradients, bookNativeCategories]
+  )
+
   return (
-    <Container>
-      <SubcategoryButton
-        colors={[theme.colors.aquamarineLight, theme.colors.aquamarine]}
-        label="Mangas"
-      />
-      <SubcategoryButton
-        colors={[theme.colors.aquamarineLight, theme.colors.aquamarine]}
-        label="Société & politique"
-      />
-      <SubcategoryButton
-        colors={[theme.colors.aquamarineLight, theme.colors.aquamarine]}
-        label="Texte sur 2 lignes cela revient au meme"
-      />
-    </Container>
+    <SafeAreaView>
+      <SubcategoryButtonList subcategoryButtonContent={bookSubcategoriesContent} />
+    </SafeAreaView>
   )
 }
-const Container = styled.View({
-  margin: getSpacing(4),
-  width: '100%',
-  height: '100%',
-  flexDirection: 'row',
-  gap: getSpacing(4),
-  justifyContent: 'stretch',
-  justifyItems: 'stretch',
-})
