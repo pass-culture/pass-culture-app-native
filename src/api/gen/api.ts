@@ -3695,6 +3695,11 @@ export interface VenueResponse {
    */
   name: string
   /**
+   * @type {any}
+   * @memberof VenueResponse
+   */
+  openingHours?: any | null
+  /**
    * @type {string}
    * @memberof VenueResponse
    */
