@@ -96,7 +96,7 @@
 ./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:30
 ./src/features/search/helpers/useSortedSearchCategories/useSortedSearchCategories.native.test.ts:37
 ./src/features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues.native.test.tsx:37
-./src/features/search/pages/modals/CategoriesModal/CategoriesModal.tsx:122
+./src/features/search/pages/modals/CategoriesModal/CategoriesModal.tsx:121
 ./src/features/venue/components/TabLayout/useTabArrowNavigation.web.ts:24
 ./src/libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters.ts:23
 ./src/libs/contentful/adapters/modules/adaptVenuesModule.ts:24
