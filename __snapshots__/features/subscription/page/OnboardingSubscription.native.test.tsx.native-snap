@@ -1293,6 +1293,44 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       </View>
     </View>
   </RCTScrollView>,
+  <BVLinearGradient
+    colors={
+      [
+        16777215,
+        4294967295,
+      ]
+    }
+    endPoint={
+      {
+        "x": 0.5,
+        "y": 1,
+      }
+    }
+    locations={
+      [
+        0,
+        1,
+      ]
+    }
+    pointerEvents="none"
+    startPoint={
+      {
+        "x": 0.5,
+        "y": 0,
+      }
+    }
+    style={
+      [
+        {
+          "bottom": 136,
+          "height": 120,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+        },
+      ]
+    }
+  />,
   <View
     style={
       [

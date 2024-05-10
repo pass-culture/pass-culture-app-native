@@ -1,6 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
+import colorAlpha from 'color-alpha'
 import React, { useCallback, useReducer } from 'react'
 import { FlatList, Platform, ViewStyle } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -22,6 +24,8 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+const GRADIENT_HEIGHT = getSpacing(30)
 
 export const OnboardingSubscription = () => {
   const { replace } = useNavigation<UseNavigationType>()
@@ -147,6 +151,7 @@ export const OnboardingSubscription = () => {
         }
         contentContainerStyle={contentContainerStyle}
       />
+      <Gradient />
       <StyledView>
         <ButtonPrimary
           wording="Suivre la sélection"
@@ -182,4 +187,16 @@ const StyledView = styled.View.attrs({})(({ theme }) => ({
 
 const SubscriptionThematicButtonContainer = styled.View({
   paddingVertical: getSpacing(2),
+})
+
+const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [colorAlpha(theme.colors.white, 0), theme.colors.white],
+  locations: [0, 1],
+  pointerEvents: 'none',
+}))({
+  position: 'absolute',
+  bottom: getSpacing(34),
+  height: GRADIENT_HEIGHT,
+  left: 0,
+  right: 0,
 })
