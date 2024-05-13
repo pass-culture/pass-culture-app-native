@@ -1,8 +1,8 @@
-import { useOpeningHoursViewModel } from './getOpeningHours'
+import { getOpeningHours } from './getOpeningHours'
 
 describe('getOpeningHours', () => {
   it('should return all days', () => {
-    const openingHoursViewModel = useOpeningHoursViewModel({})
+    const openingHoursViewModel = getOpeningHours({})
 
     expect(openingHoursViewModel.days).toEqual([
       expect.objectContaining({ label: 'Lundi' }),
@@ -16,7 +16,7 @@ describe('getOpeningHours', () => {
   })
 
   it('should return "Fermer" when day has no information', () => {
-    const openingHoursViewModel = useOpeningHoursViewModel({
+    const openingHoursViewModel = getOpeningHours({
       MONDAY: undefined,
     })
 
@@ -31,7 +31,7 @@ describe('getOpeningHours', () => {
   })
 
   it('should return hours when day has information', () => {
-    const openingHoursViewModel = useOpeningHoursViewModel({
+    const openingHoursViewModel = getOpeningHours({
       MONDAY: [
         {
           open: '08:00',
@@ -51,7 +51,7 @@ describe('getOpeningHours', () => {
   })
 
   it('should concat hours when day has multiple informations', () => {
-    const openingHoursViewModel = useOpeningHoursViewModel({
+    const openingHoursViewModel = getOpeningHours({
       MONDAY: [
         { open: '08:00', close: '12:00' },
         { open: '14:00', close: '18:00' },
@@ -69,7 +69,7 @@ describe('getOpeningHours', () => {
   })
 
   it('should return opening hours for all days', () => {
-    const openingHoursViewModel = useOpeningHoursViewModel({
+    const openingHoursViewModel = getOpeningHours({
       MONDAY: [{ open: '10:00', close: '20:00' }],
       TUESDAY: [
         { open: '10:00', close: '12:00' },
