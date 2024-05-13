@@ -37,6 +37,14 @@ function renderChangePassword() {
 }
 
 describe('ChangePassword', () => {
+  it('should render correclty', async () => {
+    renderChangePassword()
+
+    await screen.findByText('Mot de passe')
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should enable the submit button when passwords are equals and filled and current password is correct', async () => {
     renderChangePassword()
 
