@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer, Typo } from 'ui/theme'
 
 export const TrustedDeviceInfos = () => {
@@ -10,7 +10,7 @@ export const TrustedDeviceInfos = () => {
 
   return (
     <React.Fragment>
-      <PageHeaderSecondary title="Trusted device infos" />
+      <CheatcodesHeader title="Trusted device infos" />
       <Spacer.Column numberOfSpaces={6} />
       <Container>
         <Typo.Title3>Informations du device actuel</Typo.Title3>

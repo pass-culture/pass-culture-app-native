@@ -6,13 +6,13 @@ import styled from 'styled-components/native'
 import { NotEligibleEduConnect } from 'features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
 export function NavigationIdentityCheck(): React.JSX.Element {
@@ -29,7 +29,7 @@ export function NavigationIdentityCheck(): React.JSX.Element {
 
   return (
     <ScrollView>
-      <PageHeaderSecondary title="IdentityCheck 🎨" />
+      <CheatcodesHeader title="IdentityCheck 🎨" />
       <StyledContainer>
         <LinkToComponent name="Stepper" title="Stepper" />
         <LinkToComponent

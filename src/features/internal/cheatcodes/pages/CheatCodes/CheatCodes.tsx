@@ -1,7 +1,6 @@
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Text, Alert, Button, ScrollView } from 'react-native'
-import styled from 'styled-components/native'
+import { Text, Alert, Button } from 'react-native'
 
 import { api } from 'api/api'
 import { CodePushButton } from 'features/internal/cheatcodes/components/CodePushButton'
@@ -14,8 +13,8 @@ import { clearRefreshToken } from 'libs/keychain'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { BatchUser } from 'libs/react-native-batch'
 import { storage } from 'libs/storage'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { Spacer, Typo } from 'ui/theme'
 
 type CheatCodesNavigationProp = StackNavigationProp<RootStackParamList, 'CheatCodes'>
 
@@ -74,31 +73,25 @@ export const CheatCodes: FunctionComponent<Props> = function () {
   }
 
   return (
-    <React.Fragment>
-      <PageHeaderSecondary title="CheatCodes" />
-      <ScrollView>
-        <Container>
-          <CrashTestButton />
-          <NavigateHomeButton />
-          <Spacer.Flex />
-          <Button title="Utiliser un ancien token" onPress={setOldToken} />
-          <Button title="Invalider l’access token" onPress={setOldToken} />
-          <Button title="Invalider les 2 tokens" onPress={invalidateBothTokens} />
-          <Button title="/ME" onPress={fetchMe} />
-          <Text>{userEmail}</Text>
-          <Spacer.Flex />
-          <Text>Batch installation ID: {batchInstallationId}</Text>
-          <Text>User ID: {userId}</Text>
-          <Spacer.Flex />
-          <Typo.Body>{someOfferDescription}</Typo.Body>
-          <Spacer.Flex />
-          <Typo.Body>{ParsedDescription}</Typo.Body>
-          <Spacer.Flex />
-          {env.ENV === 'testing' && <CodePushButton />}
-        </Container>
-        <Spacer.BottomScreen />
-      </ScrollView>
-    </React.Fragment>
+    <SecondaryPageWithBlurHeader title="CheatCodes">
+      <CrashTestButton />
+      <NavigateHomeButton />
+      <Spacer.Flex />
+      <Button title="Utiliser un ancien token" onPress={setOldToken} />
+      <Button title="Invalider l’access token" onPress={setOldToken} />
+      <Button title="Invalider les 2 tokens" onPress={invalidateBothTokens} />
+      <Button title="/ME" onPress={fetchMe} />
+      <Text>{userEmail}</Text>
+      <Spacer.Flex />
+      <Text>Batch installation ID: {batchInstallationId}</Text>
+      <Text>User ID: {userId}</Text>
+      <Spacer.Flex />
+      <Typo.Body>{someOfferDescription}</Typo.Body>
+      <Spacer.Flex />
+      <Typo.Body>{ParsedDescription}</Typo.Body>
+      <Spacer.Flex />
+      {env.ENV === 'testing' && <CodePushButton />}
+    </SecondaryPageWithBlurHeader>
   )
 }
 
@@ -113,10 +106,3 @@ async function getBatchInstallationID() {
     return 'Batch error'
   }
 }
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  alignItems: 'center',
-  marginHorizontal: getSpacing(6),
-  backgroundColor: theme.colors.white,
-}))

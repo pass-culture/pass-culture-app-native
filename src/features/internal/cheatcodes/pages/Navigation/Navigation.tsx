@@ -8,6 +8,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { CheatCodesButton } from 'features/internal/cheatcodes/components/CheatCodesButton'
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { useSomeVenueId } from 'features/internal/cheatcodes/hooks/useSomeVenueId'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -19,7 +20,6 @@ import { useDistance } from 'libs/location/hooks/useDistance'
 import { eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/theme'
@@ -56,7 +56,7 @@ export function Navigation(): React.JSX.Element {
 
   return (
     <React.Fragment>
-      <PageHeaderSecondary title="Navigation" />
+      <CheatcodesHeader title="Navigation" />
       <ScrollView>
         <StyledContainer>
           <Row half>

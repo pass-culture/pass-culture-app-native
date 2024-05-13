@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback, useState } from 'react'
-import { Alert, Button, ScrollView, Text, View } from 'react-native'
+import { Alert, Button, Text, View } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
@@ -40,7 +40,6 @@ import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { Emoji } from 'ui/components/Emoji'
 import FilterSwitch from 'ui/components/FilterSwitch'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
@@ -58,6 +57,7 @@ import { StepDots } from 'ui/components/StepDots'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
@@ -106,606 +106,603 @@ export const AppComponents: FunctionComponent = () => {
   }, [])
 
   return (
-    <React.Fragment>
-      <PageHeaderSecondary title="App components" />
-      <StyledScrollView>
-        <Divider />
+    <SecondaryPageWithBlurHeader title="App components">
+      <Divider />
 
-        {/* Typos */}
-        <AccordionItem title="Typos">
-          <Typo.Hero>Hero</Typo.Hero>
-          <Typo.Title1>Title 1</Typo.Title1>
-          <Typo.Title2>Title 2</Typo.Title2>
-          <Typo.Title3>Title 3</Typo.Title3>
-          <Typo.Title4>Title 4</Typo.Title4>
-          <Typo.Body>This is a body</Typo.Body>
-          <Typo.ButtonText>This is a button text</Typo.ButtonText>
-          <Typo.Caption>This is a caption</Typo.Caption>
-        </AccordionItem>
+      {/* Typos */}
+      <AccordionItem title="Typos">
+        <Typo.Hero>Hero</Typo.Hero>
+        <Typo.Title1>Title 1</Typo.Title1>
+        <Typo.Title2>Title 2</Typo.Title2>
+        <Typo.Title3>Title 3</Typo.Title3>
+        <Typo.Title4>Title 4</Typo.Title4>
+        <Typo.Body>This is a body</Typo.Body>
+        <Typo.ButtonText>This is a button text</Typo.ButtonText>
+        <Typo.Caption>This is a caption</Typo.Caption>
+      </AccordionItem>
 
-        <Divider />
+      <Divider />
 
-        {/* Buttons */}
-        <AccordionItem title="Buttons">
-          {/* Buttons: Primary */}
-          <Typo.Title4>Button - Theme Primary</Typo.Title4>
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonPrimary
-            wording="Longpress to see"
-            onPress={onButtonPress}
-            onLongPress={onTriggerFakeLoading}
-            icon={Email}
-            isLoading={buttonIsLoading}
+      {/* Buttons */}
+      <AccordionItem title="Buttons">
+        {/* Buttons: Primary */}
+        <Typo.Title4>Button - Theme Primary</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonPrimary
+          wording="Longpress to see"
+          onPress={onButtonPress}
+          onLongPress={onTriggerFakeLoading}
+          icon={Email}
+          isLoading={buttonIsLoading}
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonPrimary wording="Disabled" onPress={onButtonPress} icon={Email} disabled />
+        <Spacer.Column numberOfSpaces={2} />
+        {/* Buttons: White Primary */}
+        <Typo.Title4>Button - White Primary Secondary</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonPrimaryWhite
+          wording="White button"
+          onPress={onTriggerFakeLoading}
+          isLoading={buttonIsLoading}
+          icon={Email}
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonPrimaryWhite wording="Disabled" onPress={onButtonPress} icon={Email} disabled />
+        <Spacer.Column numberOfSpaces={2} />
+        {/* Buttons: Secondary */}
+        <Typo.Title4>Button - Theme Secondary</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonSecondary
+          wording="Triggers all active buttons"
+          icon={Email}
+          isLoading={buttonIsLoading}
+          onPress={onTriggerFakeLoading}
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonSecondary wording="Disabled" icon={Email} disabled onPress={onButtonPress} />
+        <Spacer.Column numberOfSpaces={2} />
+        {/* Buttons: Tertiary */}
+        <Typo.Title4>Button - Theme Tertiary</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonTertiaryPrimary
+          wording="Triggers all active buttons"
+          icon={Close}
+          isLoading={buttonIsLoading}
+          onPress={onTriggerFakeLoading}
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonTertiaryPrimary wording="Disabled" onPress={onButtonPress} icon={Close} disabled />
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonTertiaryWhite
+          wording="White tertiary button"
+          icon={Email}
+          isLoading={buttonIsLoading}
+          onPress={onTriggerFakeLoading}
+        />
+        <Spacer.Column numberOfSpaces={2} />
+        {/* Buttons: Quaternary */}
+        <Typo.Title4>Button - Theme Quaternary</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonQuaternaryPrimary
+          wording="Triggers all active buttons"
+          icon={Email}
+          isLoading={buttonIsLoading}
+          onPress={onTriggerFakeLoading}
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonQuaternaryPrimary
+          wording="Se connecter"
+          onPress={onButtonPress}
+          icon={Email}
+          disabled
+        />
+        <ButtonQuaternaryBlack wording="Se connecter" onPress={onButtonPress} icon={Email} />
+        {/* Buttons: With linear gradient */}
+        <Typo.Title4>Button - With linear gradient</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonWithLinearGradient wording="CallToAction" onPress={onButtonPress} />
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonWithLinearGradient
+          wording="CallToAction external"
+          onPress={onButtonPress}
+          icon={ExternalSite}
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <ButtonWithLinearGradient
+          wording="Disabled CallToAction"
+          onPress={onButtonPress}
+          isDisabled
+        />
+        {/* Buttons: ButtonInsideText */}
+        <Typo.Title4>Button - ButtonInsideText</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.Body>
+          {startText}
+          <ButtonInsideText wording="default" />
+          {endText}
+        </Typo.Body>
+        <Spacer.Column numberOfSpaces={2} />
+        <Typo.Body>
+          {startText}
+          <ButtonInsideText wording="default with icon" icon={ExternalSiteFilled} />
+          {endText}
+        </Typo.Body>
+        <Spacer.Column numberOfSpaces={2} />
+        <Typo.Caption>
+          {startText}
+          <ButtonInsideText wording="caption" typography="Caption" />
+          {endText}
+        </Typo.Caption>
+        <Spacer.Column numberOfSpaces={2} />
+        <Typo.Caption>
+          {startText}
+          <ButtonInsideText
+            wording="caption with icon"
+            typography="Caption"
+            icon={ExternalSiteFilled}
           />
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonPrimary wording="Disabled" onPress={onButtonPress} icon={Email} disabled />
-          <Spacer.Column numberOfSpaces={2} />
-          {/* Buttons: White Primary */}
-          <Typo.Title4>Button - White Primary Secondary</Typo.Title4>
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonPrimaryWhite
-            wording="White button"
-            onPress={onTriggerFakeLoading}
-            isLoading={buttonIsLoading}
-            icon={Email}
-          />
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonPrimaryWhite wording="Disabled" onPress={onButtonPress} icon={Email} disabled />
-          <Spacer.Column numberOfSpaces={2} />
-          {/* Buttons: Secondary */}
-          <Typo.Title4>Button - Theme Secondary</Typo.Title4>
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonSecondary
-            wording="Triggers all active buttons"
-            icon={Email}
-            isLoading={buttonIsLoading}
-            onPress={onTriggerFakeLoading}
-          />
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonSecondary wording="Disabled" icon={Email} disabled onPress={onButtonPress} />
-          <Spacer.Column numberOfSpaces={2} />
-          {/* Buttons: Tertiary */}
-          <Typo.Title4>Button - Theme Tertiary</Typo.Title4>
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonTertiaryPrimary
-            wording="Triggers all active buttons"
-            icon={Close}
-            isLoading={buttonIsLoading}
-            onPress={onTriggerFakeLoading}
-          />
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonTertiaryPrimary wording="Disabled" onPress={onButtonPress} icon={Close} disabled />
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonTertiaryWhite
-            wording="White tertiary button"
-            icon={Email}
-            isLoading={buttonIsLoading}
-            onPress={onTriggerFakeLoading}
-          />
-          <Spacer.Column numberOfSpaces={2} />
-          {/* Buttons: Quaternary */}
-          <Typo.Title4>Button - Theme Quaternary</Typo.Title4>
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonQuaternaryPrimary
-            wording="Triggers all active buttons"
-            icon={Email}
-            isLoading={buttonIsLoading}
-            onPress={onTriggerFakeLoading}
-          />
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonQuaternaryPrimary
-            wording="Se connecter"
-            onPress={onButtonPress}
-            icon={Email}
-            disabled
-          />
-          <ButtonQuaternaryBlack wording="Se connecter" onPress={onButtonPress} icon={Email} />
-          {/* Buttons: With linear gradient */}
-          <Typo.Title4>Button - With linear gradient</Typo.Title4>
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonWithLinearGradient wording="CallToAction" onPress={onButtonPress} />
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonWithLinearGradient
-            wording="CallToAction external"
-            onPress={onButtonPress}
-            icon={ExternalSite}
-          />
-          <Spacer.Column numberOfSpaces={1} />
-          <ButtonWithLinearGradient
-            wording="Disabled CallToAction"
-            onPress={onButtonPress}
-            isDisabled
-          />
-          {/* Buttons: ButtonInsideText */}
-          <Typo.Title4>Button - ButtonInsideText</Typo.Title4>
-          <Spacer.Column numberOfSpaces={1} />
-          <Typo.Body>
-            {startText}
-            <ButtonInsideText wording="default" />
-            {endText}
-          </Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
-          <Typo.Body>
-            {startText}
-            <ButtonInsideText wording="default with icon" icon={ExternalSiteFilled} />
-            {endText}
-          </Typo.Body>
-          <Spacer.Column numberOfSpaces={2} />
-          <Typo.Caption>
-            {startText}
-            <ButtonInsideText wording="caption" typography="Caption" />
-            {endText}
-          </Typo.Caption>
-          <Spacer.Column numberOfSpaces={2} />
-          <Typo.Caption>
-            {startText}
-            <ButtonInsideText
-              wording="caption with icon"
-              typography="Caption"
-              icon={ExternalSiteFilled}
-            />
-            {endText}
-          </Typo.Caption>
-        </AccordionItem>
+          {endText}
+        </Typo.Caption>
+      </AccordionItem>
 
-        <Divider />
+      <Divider />
 
-        {/* Tags */}
-        <AccordionItem title="Tags">
-          <Text>
-            The text in SlantTag is always straight. Developers should play on slantAngle to include
-            whole text in tag
-          </Text>
-          <SlantTag text="Tag adapts to container size" slantAngle={-2} />
-          <Spacer.Column numberOfSpaces={getSpacing(2)} />
-          <AlignedText>
-            <SlantTag text="Tag adapts" />
-            <Spacer.Flex flex={0.3} />
-            <SlantTag text="Tag adapts" />
-          </AlignedText>
-          <AlignedText>
-            <SlantTag text="given angle" slantAngle={-10} />
-            <Spacer.Flex flex={0.3} />
-            <SlantTag text="Tag with fixed dimensions" width={getSpacing(10)} />
-          </AlignedText>
-        </AccordionItem>
+      {/* Tags */}
+      <AccordionItem title="Tags">
+        <Text>
+          The text in SlantTag is always straight. Developers should play on slantAngle to include
+          whole text in tag
+        </Text>
+        <SlantTag text="Tag adapts to container size" slantAngle={-2} />
+        <Spacer.Column numberOfSpaces={getSpacing(2)} />
+        <AlignedText>
+          <SlantTag text="Tag adapts" />
+          <Spacer.Flex flex={0.3} />
+          <SlantTag text="Tag adapts" />
+        </AlignedText>
+        <AlignedText>
+          <SlantTag text="given angle" slantAngle={-10} />
+          <Spacer.Flex flex={0.3} />
+          <SlantTag text="Tag with fixed dimensions" width={getSpacing(10)} />
+        </AlignedText>
+      </AccordionItem>
 
-        <Divider />
+      <Divider />
 
-        {/* ImagePlaceholder */}
-        <AccordionItem title="ImagePlaceholder">
-          <StyledImagePlaceholder />
-        </AccordionItem>
+      {/* ImagePlaceholder */}
+      <AccordionItem title="ImagePlaceholder">
+        <StyledImagePlaceholder />
+      </AccordionItem>
 
-        <Divider />
+      <Divider />
 
-        {/* Modals */}
-        <AccordionItem title="Modals">
-          <TouchableOpacity onPress={showBasicModal}>
-            <StyledTitle4>Modal - Basic</StyledTitle4>
-          </TouchableOpacity>
-          <AppModal
-            title="a basic modal"
-            visible={basicModalVisible}
-            leftIconAccessibilityLabel="leftIconButton"
-            leftIcon={ArrowPrevious}
-            onLeftIconPress={hideBasicModal}
-            rightIconAccessibilityLabel="rightIconButton"
-            rightIcon={Close}
-            onRightIconPress={hideBasicModal}>
-            <Text>A simple content</Text>
-          </AppModal>
-          <Spacer.Column numberOfSpaces={1} />
-          <Typo.Title4>Modal - Progressive</Typo.Title4>
-          <Spacer.Column numberOfSpaces={1} />
-          <Typo.Title4>Modal Header</Typo.Title4>
-          <ModalHeader
-            title="My modal header"
-            leftIconAccessibilityLabel="Revenir en arrière"
-            leftIcon={ArrowPrevious}
-            onLeftIconPress={() => null}
-            rightIconAccessibilityLabel="Revenir à l’accueil"
-            rightIcon={Close}
-            onRightIconPress={() => null}
-          />
-        </AccordionItem>
+      {/* Modals */}
+      <AccordionItem title="Modals">
+        <TouchableOpacity onPress={showBasicModal}>
+          <StyledTitle4>Modal - Basic</StyledTitle4>
+        </TouchableOpacity>
+        <AppModal
+          title="a basic modal"
+          visible={basicModalVisible}
+          leftIconAccessibilityLabel="leftIconButton"
+          leftIcon={ArrowPrevious}
+          onLeftIconPress={hideBasicModal}
+          rightIconAccessibilityLabel="rightIconButton"
+          rightIcon={Close}
+          onRightIconPress={hideBasicModal}>
+          <Text>A simple content</Text>
+        </AppModal>
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.Title4>Modal - Progressive</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.Title4>Modal Header</Typo.Title4>
+        <ModalHeader
+          title="My modal header"
+          leftIconAccessibilityLabel="Revenir en arrière"
+          leftIcon={ArrowPrevious}
+          onLeftIconPress={() => null}
+          rightIconAccessibilityLabel="Revenir à l’accueil"
+          rightIcon={Close}
+          onRightIconPress={() => null}
+        />
+      </AccordionItem>
 
-        <Divider />
+      <Divider />
 
-        {/* Sections */}
-        <AccordionItem title="Sections">
-          <SectionWithDivider visible margin gap={2}>
-            <View>
-              <Typo.Title4>Section with divider</Typo.Title4>
-              <Typo.Body>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quas aut
-                laborum, dolor sapiente quos doloribus sequi reprehenderit ullam porro rem corrupti
-                libero repellendus nam vel suscipit consequuntur blanditiis omnis.
-              </Typo.Body>
-            </View>
-          </SectionWithDivider>
-        </AccordionItem>
+      {/* Sections */}
+      <AccordionItem title="Sections">
+        <SectionWithDivider visible margin gap={2}>
+          <View>
+            <Typo.Title4>Section with divider</Typo.Title4>
+            <Typo.Body>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quas aut laborum,
+              dolor sapiente quos doloribus sequi reprehenderit ullam porro rem corrupti libero
+              repellendus nam vel suscipit consequuntur blanditiis omnis.
+            </Typo.Body>
+          </View>
+        </SectionWithDivider>
+      </AccordionItem>
 
-        <Divider />
+      <Divider />
 
-        {/* Icons */}
-        <AccordionItem title="Icons">
-          <Icons />
-        </AccordionItem>
+      {/* Icons */}
+      <AccordionItem title="Icons">
+        <Icons />
+      </AccordionItem>
 
-        <Divider />
+      <Divider />
 
-        {/* Illustrations */}
-        <AccordionItem title="Illustrations">
-          <Illustrations />
-        </AccordionItem>
+      {/* Illustrations */}
+      <AccordionItem title="Illustrations">
+        <Illustrations />
+      </AccordionItem>
 
-        <Divider />
+      <Divider />
 
-        {/* Inputs */}
-        <AccordionItem title="Inputs">
-          <StyledTitle4>Text Input</StyledTitle4>
-          <TextInput value={inputText} onChangeText={setInputText} placeholder="Placeholder" />
-          <Spacer.Column numberOfSpaces={1} />
-          <StyledInputRule
-            title="12 Caractères"
-            icon={inputText.length >= 12 ? Check : Close}
-            type={inputText.length >= 12 ? 'Valid' : 'Error'}
-          />
-          <Spacer.Column numberOfSpaces={1} />
-          <StyledTitle4>Text Input - Email</StyledTitle4>
-          <TextInput
-            autoCapitalize="none"
-            keyboardType="email-address"
-            onChangeText={doNothingFn}
-            placeholder="Placeholder"
-            value=""
-          />
-          <Spacer.Column numberOfSpaces={1} />
-          <StyledTitle4>Text Input - Error</StyledTitle4>
-          <TextInput value="" onChangeText={doNothingFn} placeholder="Placeholder" isError />
-          <Spacer.Column numberOfSpaces={1} />
-          <StyledTitle4>Password Input</StyledTitle4>
-          <PasswordInput value="" onChangeText={doNothingFn} />
-          <Spacer.Column numberOfSpaces={1} />
-        </AccordionItem>
+      {/* Inputs */}
+      <AccordionItem title="Inputs">
+        <StyledTitle4>Text Input</StyledTitle4>
+        <TextInput value={inputText} onChangeText={setInputText} placeholder="Placeholder" />
+        <Spacer.Column numberOfSpaces={1} />
+        <StyledInputRule
+          title="12 Caractères"
+          icon={inputText.length >= 12 ? Check : Close}
+          type={inputText.length >= 12 ? 'Valid' : 'Error'}
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <StyledTitle4>Text Input - Email</StyledTitle4>
+        <TextInput
+          autoCapitalize="none"
+          keyboardType="email-address"
+          onChangeText={doNothingFn}
+          placeholder="Placeholder"
+          value=""
+        />
+        <Spacer.Column numberOfSpaces={1} />
+        <StyledTitle4>Text Input - Error</StyledTitle4>
+        <TextInput value="" onChangeText={doNothingFn} placeholder="Placeholder" isError />
+        <Spacer.Column numberOfSpaces={1} />
+        <StyledTitle4>Password Input</StyledTitle4>
+        <PasswordInput value="" onChangeText={doNothingFn} />
+        <Spacer.Column numberOfSpaces={1} />
+      </AccordionItem>
 
-        <Divider />
+      <Divider />
 
-        {/* SnackBar */}
-        <AccordionItem title="SnackBar">
-          <SnackBars />
-        </AccordionItem>
+      {/* SnackBar */}
+      <AccordionItem title="SnackBar">
+        <SnackBars />
+      </AccordionItem>
 
-        <Divider />
+      <Divider />
 
-        {/* Search components */}
-        <AccordionItem title="Search components">
-          <SearchInput LeftIcon={() => <MagnifyingGlass />} placeholder="with left icon" />
+      {/* Search components */}
+      <AccordionItem title="Search components">
+        <SearchInput LeftIcon={() => <MagnifyingGlass />} placeholder="with left icon" />
+        <Spacer.Column numberOfSpaces={4} />
+        <Center>
+          <Slider values={[0, 75]} max={300} showValues formatValues={(n) => `${n}\u00a0€`} />
+          <Slider values={[50]} showValues formatValues={(n) => `${n} km`} />
           <Spacer.Column numberOfSpaces={4} />
-          <Center>
-            <Slider values={[0, 75]} max={300} showValues formatValues={(n) => `${n}\u00a0€`} />
-            <Slider values={[50]} showValues formatValues={(n) => `${n} km`} />
-            <Spacer.Column numberOfSpaces={4} />
-            <ExampleSwitch />
-            <Spacer.Column numberOfSpaces={4} />
-          </Center>
-          <RowWrap>
-            <Label label="Cinéma" />
-            <Label label="Musique" />
-            <Label label="Exposition" />
-          </RowWrap>
-        </AccordionItem>
+          <ExampleSwitch />
+          <Spacer.Column numberOfSpaces={4} />
+        </Center>
+        <RowWrap>
+          <Label label="Cinéma" />
+          <Label label="Musique" />
+          <Label label="Exposition" />
+        </RowWrap>
+      </AccordionItem>
 
-        <Divider />
+      <Divider />
 
-        {/* Banner components */}
-        <AccordionItem title="Banners">
+      {/* Banner components */}
+      <AccordionItem title="Banners">
+        <Spacer.Column numberOfSpaces={2} />
+
+        <InfoBanner message="Banner with message" />
+
+        <Spacer.Column numberOfSpaces={2} />
+
+        <InfoBanner message="Banner with message and icon" icon={Info} />
+
+        <Spacer.Column numberOfSpaces={2} />
+
+        <InfoBanner message="Banner with ButtonQuaternarySecondary" withLightColorMessage>
           <Spacer.Column numberOfSpaces={2} />
+          <ButtonQuaternarySecondary
+            wording="Call to action title"
+            numberOfLines={2}
+            justifyContent="flex-start"
+            onPress={() => null}
+            icon={EmailFilled}
+            inline
+          />
+        </InfoBanner>
 
-          <InfoBanner message="Banner with message" />
+        <Spacer.Column numberOfSpaces={2} />
 
+        <InfoBanner message="Banner with ExternalTouchableLink" withLightColorMessage>
           <Spacer.Column numberOfSpaces={2} />
+          <ExternalTouchableLink
+            wording="Call to action title"
+            numberOfLines={2}
+            justifyContent="flex-start"
+            as={ButtonQuaternarySecondary}
+            externalNav={{ url: 'callToActionLink' }}
+            icon={ExternalSiteFilled}
+            inline
+          />
+        </InfoBanner>
+      </AccordionItem>
 
-          <InfoBanner message="Banner with message and icon" icon={Info} />
+      <Divider />
 
-          <Spacer.Column numberOfSpaces={2} />
-
-          <InfoBanner message="Banner with ButtonQuaternarySecondary" withLightColorMessage>
+      {/* Profile components */}
+      <AccordionItem title="Profile components">
+        <View>
+          <Text> Hero Button List </Text>
+          <Spacer.Column numberOfSpaces={3} />
+          <HeroButtonList
+            Title={
+              <Text>
+                <Typo.Body>J’ai ma pièce d’identité </Typo.Body>
+                <Typo.ButtonText>en cours de validité avec moi</Typo.ButtonText>
+              </Text>
+            }
+            Subtitle={
+              <Typo.Caption>
+                <Emoji.Warning withSpaceAfter />
+                Les copies ne sont pas acceptées
+              </Typo.Caption>
+            }
+            navigateTo={navigateToHomeConfig}
+            Icon={<BicolorSmartphone />}
+          />
+          <Spacer.Column numberOfSpaces={1} />
+          <HeroButtonList
+            Title={
+              <Text>
+                <Typo.Body>J’ai une carte d’identité, un passeport </Typo.Body>
+                <Typo.ButtonText>étranger</Typo.ButtonText>
+                <Typo.Body> ou un titre séjour français</Typo.Body>
+              </Text>
+            }
+            navigateTo={navigateToHomeConfig}
+            Icon={<BicolorSmartphone />}
+          />
+          <Spacer.Column numberOfSpaces={1} />
+          <SecondButtonList
+            label="J’ai un titre de séjour, une carte d’identité ou un passeport étranger. "
+            navigateTo={{ screen: 'DMSIntroduction' }}
+            leftIcon={BicolorEarth}
+          />
+        </View>
+        <Spacer.Column numberOfSpaces={1} />
+        <GreyView>
+          <Spacer.Column numberOfSpaces={1} />
+          <Text> Progress bars </Text>
+          <Spacer.Column numberOfSpaces={3} />
+          <View>
+            <ValidProgressBar />
+            <PrimaryDarkProgressBar />
+            <SecondaryProgressBar />
+          </View>
+          <Spacer.Column numberOfSpaces={1} />
+          <View>
+            <PrimaryProgressBar />
+            <TertiaryProgressBar />
+          </View>
+        </GreyView>
+        <Spacer.Column numberOfSpaces={4} />
+        <GreyView>
+          <Text> Cultural Survey progress bars </Text>
+          <Spacer.Column numberOfSpaces={3} />
+          <CulturalSurveyProgressBar progress={0.2} />
+          <CulturalSurveyProgressBar progress={0.5} />
+          <CulturalSurveyProgressBar progress={1} />
+        </GreyView>
+        <Spacer.Column numberOfSpaces={4} />
+        <View>
+          <CulturalSurveyCheckbox
+            selected={false}
+            onPress={() => null}
+            title="Aucune de ces activités"
+          />
+          <Spacer.Column numberOfSpaces={1} />
+          <CulturalSurveyCheckbox
+            selected
+            title="Visité un musée,"
+            subtitle="une canne à pêche"
+            onPress={() => null}
+            icon={culturalSurveyIcons.Museum}
+          />
+        </View>
+        <Spacer.Column numberOfSpaces={4} />
+        <View>
+          <Text>Section Row </Text>
+          <SectionRow
+            type="navigable"
+            title="navigable"
+            icon={Email}
+            navigateTo={{ screen: 'CheatCodes' }}
+          />
+          <SectionRow
+            type="clickable"
+            title="just clickable"
+            icon={Email}
+            onPress={() => Alert.alert('clicked')}
+          />
+        </View>
+        <Spacer.Column numberOfSpaces={4} />
+        <View>
+          <NonBeneficiaryHeader
+            eligibilityStartDatetime={`${year + 18}-01-28T00:00Z`}
+            eligibilityEndDatetime={`${year + 19}-01-28T00:00Z`}
+          />
+        </View>
+        <View>
+          <AlignedText>
+            <Text>Date de naissance: {year}-01-28</Text>
+          </AlignedText>
+          <AlignedText>
+            <Button title="-1 an" onPress={() => setYear((y) => y + 1)} />
             <Spacer.Column numberOfSpaces={2} />
-            <ButtonQuaternarySecondary
-              wording="Call to action title"
-              numberOfLines={2}
-              justifyContent="flex-start"
-              onPress={() => null}
-              icon={EmailFilled}
-              inline
-            />
-          </InfoBanner>
-
-          <Spacer.Column numberOfSpaces={2} />
-
-          <InfoBanner message="Banner with ExternalTouchableLink" withLightColorMessage>
+            <Text>{THIS_YEAR - year} ans</Text>
             <Spacer.Column numberOfSpaces={2} />
-            <ExternalTouchableLink
-              wording="Call to action title"
-              numberOfLines={2}
-              justifyContent="flex-start"
-              as={ButtonQuaternarySecondary}
-              externalNav={{ url: 'callToActionLink' }}
-              icon={ExternalSiteFilled}
-              inline
-            />
-          </InfoBanner>
-        </AccordionItem>
-
-        <Divider />
-
-        {/* Profile components */}
-        <AccordionItem title="Profile components">
-          <View>
-            <Text> Hero Button List </Text>
-            <Spacer.Column numberOfSpaces={3} />
-            <HeroButtonList
-              Title={
-                <Text>
-                  <Typo.Body>J’ai ma pièce d’identité </Typo.Body>
-                  <Typo.ButtonText>en cours de validité avec moi</Typo.ButtonText>
-                </Text>
-              }
-              Subtitle={
-                <Typo.Caption>
-                  <Emoji.Warning withSpaceAfter />
-                  Les copies ne sont pas acceptées
-                </Typo.Caption>
-              }
-              navigateTo={navigateToHomeConfig}
-              Icon={<BicolorSmartphone />}
-            />
-            <Spacer.Column numberOfSpaces={1} />
-            <HeroButtonList
-              Title={
-                <Text>
-                  <Typo.Body>J’ai une carte d’identité, un passeport </Typo.Body>
-                  <Typo.ButtonText>étranger</Typo.ButtonText>
-                  <Typo.Body> ou un titre séjour français</Typo.Body>
-                </Text>
-              }
-              navigateTo={navigateToHomeConfig}
-              Icon={<BicolorSmartphone />}
-            />
-            <Spacer.Column numberOfSpaces={1} />
-            <SecondButtonList
-              label="J’ai un titre de séjour, une carte d’identité ou un passeport étranger. "
-              navigateTo={{ screen: 'DMSIntroduction' }}
-              leftIcon={BicolorEarth}
-            />
-          </View>
-          <Spacer.Column numberOfSpaces={1} />
-          <GreyView>
-            <Spacer.Column numberOfSpaces={1} />
-            <Text> Progress bars </Text>
-            <Spacer.Column numberOfSpaces={3} />
-            <View>
-              <ValidProgressBar />
-              <PrimaryDarkProgressBar />
-              <SecondaryProgressBar />
-            </View>
-            <Spacer.Column numberOfSpaces={1} />
-            <View>
-              <PrimaryProgressBar />
-              <TertiaryProgressBar />
-            </View>
-          </GreyView>
-          <Spacer.Column numberOfSpaces={4} />
-          <GreyView>
-            <Text> Cultural Survey progress bars </Text>
-            <Spacer.Column numberOfSpaces={3} />
-            <CulturalSurveyProgressBar progress={0.2} />
-            <CulturalSurveyProgressBar progress={0.5} />
-            <CulturalSurveyProgressBar progress={1} />
-          </GreyView>
-          <Spacer.Column numberOfSpaces={4} />
-          <View>
-            <CulturalSurveyCheckbox
-              selected={false}
-              onPress={() => null}
-              title="Aucune de ces activités"
-            />
-            <Spacer.Column numberOfSpaces={1} />
-            <CulturalSurveyCheckbox
-              selected
-              title="Visité un musée,"
-              subtitle="une canne à pêche"
-              onPress={() => null}
-              icon={culturalSurveyIcons.Museum}
-            />
-          </View>
-          <Spacer.Column numberOfSpaces={4} />
-          <View>
-            <Text>Section Row </Text>
-            <SectionRow
-              type="navigable"
-              title="navigable"
-              icon={Email}
-              navigateTo={{ screen: 'CheatCodes' }}
-            />
-            <SectionRow
-              type="clickable"
-              title="just clickable"
-              icon={Email}
-              onPress={() => Alert.alert('clicked')}
-            />
-          </View>
-          <Spacer.Column numberOfSpaces={4} />
-          <View>
-            <NonBeneficiaryHeader
-              eligibilityStartDatetime={`${year + 18}-01-28T00:00Z`}
-              eligibilityEndDatetime={`${year + 19}-01-28T00:00Z`}
-            />
-          </View>
-          <View>
-            <AlignedText>
-              <Text>Date de naissance: {year}-01-28</Text>
-            </AlignedText>
-            <AlignedText>
-              <Button title="-1 an" onPress={() => setYear((y) => y + 1)} />
-              <Spacer.Column numberOfSpaces={2} />
-              <Text>{THIS_YEAR - year} ans</Text>
-              <Spacer.Column numberOfSpaces={2} />
-              <Button title="+1 an" onPress={() => setYear((y) => y - 1)} />
-            </AlignedText>
-          </View>
-          <StyledTitle4>Communication InApp</StyledTitle4>
-          <Text>Long texte</Text>
-          <View>
-            <SubscriptionMessageBadge
-              subscriptionMessage={{
-                callToAction: {
-                  callToActionIcon: callToActionIconString as CallToActionIcon,
-                  callToActionTitle,
-                  callToActionLink,
-                },
-                popOverIcon: popOverIconString as PopOverIcon,
-                userMessage: `Ceci est un très long message pour montrer que le texte est adaptatif est que ça ne posera aucun problème. Je suis sûr qu’on peut le rendre encore un peu plus long sans difficulté si on se creuse un peu les méninges`,
-                updatedAt: `2021-10-25T13:24Z`,
-              }}
-            />
-          </View>
-          <Text>Affichage icône PopOverIcon</Text>
-          <AlignedText>
-            <Button title="Clock" onPress={() => setPopOverIconString('CLOCK')} />
-            <Button title="Search" onPress={() => setPopOverIconString('MAGNIFYING_GLASS')} />
-            <Button title="Warning" onPress={() => setPopOverIconString('WARNING')} />
-            <Button title="Error" onPress={() => setPopOverIconString('ERROR')} />
+            <Button title="+1 an" onPress={() => setYear((y) => y - 1)} />
           </AlignedText>
-          <AlignedText>
-            <Button title="File" onPress={() => setPopOverIconString('FILE')} />
-            <Button title="No key" onPress={() => setPopOverIconString(undefined)} />
-            <Button title="Unknown key" onPress={() => setPopOverIconString('Blablou')} />
-          </AlignedText>
-          <Text>Toggle CTA message and link</Text>
-          <AlignedText>
-            <Button
-              title="CTA Message"
-              onPress={() => {
-                return callToActionTitle
-                  ? setCallToActionTitle(undefined)
-                  : setCallToActionTitle('Tu peux cliquer ici')
-              }}
-            />
-          </AlignedText>
-          <Text>CTA link</Text>
-          <AlignedText>
-            <Button title="None" onPress={() => setCallToActionLink(undefined)} />
-            <Button title="External" onPress={() => setCallToActionLink('https://google.com')} />
-            <Button title="Home" onPress={() => setCallToActionLink('passculture://home')} />
-            <Button
-              title="open mail"
-              onPress={() => setCallToActionLink('passculture://openInbox')}
-            />
-          </AlignedText>
-          <Text>Affichage icône CTA</Text>
-          <AlignedText>
-            <Button title="Email" onPress={() => setCallToActionIconString('EMAIL')} />
-            <Button title="Retry" onPress={() => setCallToActionIconString('RETRY')} />
-            <Button title="No key" onPress={() => setCallToActionIconString(undefined)} />
-            <Button title="Unknown key" onPress={() => setCallToActionIconString('Blablou')} />
-          </AlignedText>
-          <Spacer.Column numberOfSpaces={2} />
-          <Text>BottomBanner</Text>
-          <Spacer.Column numberOfSpaces={1} />
-          <BottomBanner text="Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture." />
-        </AccordionItem>
-        <Divider />
-        <AccordionItem title="New Beneficiary Header">
-          <CreditHeader
-            firstName="Rosa"
-            lastName="Bonheur"
-            depositExpirationDate="2022-02-16T17:16:04.735235"
-            domainsCredit={domains_credit_v1}
-          />
-        </AccordionItem>
-        <Divider />
-
-        {/* Your components */}
-        <AccordionItem title="Your components">
-          <AlignedText>
-            <Text>
-              <ExternalLink url="https://google.com" />
-              <Text> - ExternalLink </Text>
-            </Text>
-          </AlignedText>
-          <AlignedText>
-            <Rectangle />
-            <Text> - Rectangle </Text>
-          </AlignedText>
-
-          <AlignedText>
-            <StepDots numberOfSteps={NUMBER_OF_STEPS} currentStep={currentStep} />
-            <Text> - Steps </Text>
-          </AlignedText>
-          <AlignedText>
-            <Button
-              title="Back"
-              onPress={() => setCurrentStep((step) => (step === 1 ? step : step - 1))}
-            />
-            <Spacer.Column numberOfSpaces={2} />
-            <Button
-              title="Next"
-              onPress={() => setCurrentStep((step) => (step === NUMBER_OF_STEPS ? step : step + 1))}
-            />
-          </AlignedText>
-          <AlignedText>
-            <OfferImage categoryId={CategoryIdEnum.BEAUX_ARTS} imageUrl={imageUrl} />
-            <Text> - OfferImage small </Text>
-          </AlignedText>
-          <AlignedText>
-            <OfferImage categoryId={CategoryIdEnum.BEAUX_ARTS} imageUrl={imageUrl} size="tall" />
-            <Text> - OfferImage tall </Text>
-          </AlignedText>
-          <AlignedText>
-            <Badge value={1} />
-            <Text> - Badge </Text>
-          </AlignedText>
-          <AlignedText>
-            <ThreeShapesTicket>
-              <QRCode value="passculture" />
-            </ThreeShapesTicket>
-          </AlignedText>
-
-          <VenueTile
-            moduleId="module-id"
-            moduleName="le nom du module"
-            height={LENGTH_S}
-            width={LENGTH_S * (3 / 2)}
-            userLocation={null}
-            venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
-          />
-          <VenueTile
-            moduleId="module-id"
-            moduleName="le nom du module géolocalisé"
-            height={LENGTH_S}
-            width={LENGTH_S * (3 / 2)}
-            userLocation={{
-              latitude: 50,
-              longitude: 51,
+        </View>
+        <StyledTitle4>Communication InApp</StyledTitle4>
+        <Text>Long texte</Text>
+        <View>
+          <SubscriptionMessageBadge
+            subscriptionMessage={{
+              callToAction: {
+                callToActionIcon: callToActionIconString as CallToActionIcon,
+                callToActionTitle,
+                callToActionLink,
+              },
+              popOverIcon: popOverIconString as PopOverIcon,
+              userMessage: `Ceci est un très long message pour montrer que le texte est adaptatif est que ça ne posera aucun problème. Je suis sûr qu’on peut le rendre encore un peu plus long sans difficulté si on se creuse un peu les méninges`,
+              updatedAt: `2021-10-25T13:24Z`,
             }}
-            venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
           />
-          <Spacer.Column numberOfSpaces={4} />
-          <CategoryListModule
-            id="123"
-            title="En ce moment sur le pass"
-            categoryBlockList={categoryBlockList}
-            homeEntryId="homeEntryId"
-            index={1}
+        </View>
+        <Text>Affichage icône PopOverIcon</Text>
+        <AlignedText>
+          <Button title="Clock" onPress={() => setPopOverIconString('CLOCK')} />
+          <Button title="Search" onPress={() => setPopOverIconString('MAGNIFYING_GLASS')} />
+          <Button title="Warning" onPress={() => setPopOverIconString('WARNING')} />
+          <Button title="Error" onPress={() => setPopOverIconString('ERROR')} />
+        </AlignedText>
+        <AlignedText>
+          <Button title="File" onPress={() => setPopOverIconString('FILE')} />
+          <Button title="No key" onPress={() => setPopOverIconString(undefined)} />
+          <Button title="Unknown key" onPress={() => setPopOverIconString('Blablou')} />
+        </AlignedText>
+        <Text>Toggle CTA message and link</Text>
+        <AlignedText>
+          <Button
+            title="CTA Message"
+            onPress={() => {
+              return callToActionTitle
+                ? setCallToActionTitle(undefined)
+                : setCallToActionTitle('Tu peux cliquer ici')
+            }}
           />
-        </AccordionItem>
-        <Spacer.Column numberOfSpaces={5} />
-        <Spacer.BottomScreen />
-      </StyledScrollView>
-    </React.Fragment>
+        </AlignedText>
+        <Text>CTA link</Text>
+        <AlignedText>
+          <Button title="None" onPress={() => setCallToActionLink(undefined)} />
+          <Button title="External" onPress={() => setCallToActionLink('https://google.com')} />
+          <Button title="Home" onPress={() => setCallToActionLink('passculture://home')} />
+          <Button
+            title="open mail"
+            onPress={() => setCallToActionLink('passculture://openInbox')}
+          />
+        </AlignedText>
+        <Text>Affichage icône CTA</Text>
+        <AlignedText>
+          <Button title="Email" onPress={() => setCallToActionIconString('EMAIL')} />
+          <Button title="Retry" onPress={() => setCallToActionIconString('RETRY')} />
+          <Button title="No key" onPress={() => setCallToActionIconString(undefined)} />
+          <Button title="Unknown key" onPress={() => setCallToActionIconString('Blablou')} />
+        </AlignedText>
+        <Spacer.Column numberOfSpaces={2} />
+        <Text>BottomBanner</Text>
+        <Spacer.Column numberOfSpaces={1} />
+        <BottomBanner text="Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture." />
+      </AccordionItem>
+      <Divider />
+      <AccordionItem title="New Beneficiary Header">
+        <CreditHeader
+          firstName="Rosa"
+          lastName="Bonheur"
+          depositExpirationDate="2022-02-16T17:16:04.735235"
+          domainsCredit={domains_credit_v1}
+        />
+      </AccordionItem>
+      <Divider />
+
+      {/* Your components */}
+      <AccordionItem title="Your components">
+        <AlignedText>
+          <Text>
+            <ExternalLink url="https://google.com" />
+            <Text> - ExternalLink </Text>
+          </Text>
+        </AlignedText>
+        <AlignedText>
+          <Rectangle />
+          <Text> - Rectangle </Text>
+        </AlignedText>
+
+        <AlignedText>
+          <StepDots numberOfSteps={NUMBER_OF_STEPS} currentStep={currentStep} />
+          <Text> - Steps </Text>
+        </AlignedText>
+        <AlignedText>
+          <Button
+            title="Back"
+            onPress={() => setCurrentStep((step) => (step === 1 ? step : step - 1))}
+          />
+          <Spacer.Column numberOfSpaces={2} />
+          <Button
+            title="Next"
+            onPress={() => setCurrentStep((step) => (step === NUMBER_OF_STEPS ? step : step + 1))}
+          />
+        </AlignedText>
+        <AlignedText>
+          <OfferImage categoryId={CategoryIdEnum.BEAUX_ARTS} imageUrl={imageUrl} />
+          <Text> - OfferImage small </Text>
+        </AlignedText>
+        <AlignedText>
+          <OfferImage categoryId={CategoryIdEnum.BEAUX_ARTS} imageUrl={imageUrl} size="tall" />
+          <Text> - OfferImage tall </Text>
+        </AlignedText>
+        <AlignedText>
+          <Badge value={1} />
+          <Text> - Badge </Text>
+        </AlignedText>
+        <AlignedText>
+          <ThreeShapesTicket>
+            <QRCode value="passculture" />
+          </ThreeShapesTicket>
+        </AlignedText>
+
+        <VenueTile
+          moduleId="module-id"
+          moduleName="le nom du module"
+          height={LENGTH_S}
+          width={LENGTH_S * (3 / 2)}
+          userLocation={null}
+          venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
+        />
+        <VenueTile
+          moduleId="module-id"
+          moduleName="le nom du module géolocalisé"
+          height={LENGTH_S}
+          width={LENGTH_S * (3 / 2)}
+          userLocation={{
+            latitude: 50,
+            longitude: 51,
+          }}
+          venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
+        />
+        <Spacer.Column numberOfSpaces={4} />
+        <CategoryListModule
+          id="123"
+          title="En ce moment sur le pass"
+          categoryBlockList={categoryBlockList}
+          homeEntryId="homeEntryId"
+          index={1}
+        />
+      </AccordionItem>
+      <Spacer.Column numberOfSpaces={5} />
+      <Spacer.BottomScreen />
+    </SecondaryPageWithBlurHeader>
   )
 }
 
@@ -728,10 +725,6 @@ const RowWrap = styled.View({
   flexWrap: 'wrap',
   flexDirection: 'row',
 })
-
-const StyledScrollView = styled(ScrollView)(({ theme }) => ({
-  backgroundColor: theme.colors.white,
-}))
 
 const PrimaryProgressBar = styled(AnimatedProgressBar).attrs(({ theme }) => ({
   color: theme.colors.primary,

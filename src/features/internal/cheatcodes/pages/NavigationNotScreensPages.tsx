@@ -4,9 +4,9 @@ import * as DeviceDetect from 'react-device-detect'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 import { BrowserNotSupportedPage } from 'web/SupportedBrowsersGate'
 
@@ -56,7 +56,7 @@ export function NavigationNotScreensPages(): React.JSX.Element {
   }
   return (
     <ScrollView>
-      <PageHeaderSecondary title="Pages qui ne sont pas des écrans (tech)" />
+      <CheatcodesHeader title="Pages qui ne sont pas des écrans (tech)" />
       <StyledContainer>
         <Row half>
           <ButtonPrimary

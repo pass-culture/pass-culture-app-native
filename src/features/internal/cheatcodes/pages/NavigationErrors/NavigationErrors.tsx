@@ -5,13 +5,13 @@ import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { NoContentError } from 'features/home/components/NoContentError'
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AsyncError, ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Typo } from 'ui/theme'
 
 const MAX_ASYNC_TEST_REQ_COUNT = 3
@@ -45,7 +45,7 @@ export const NavigationErrors: FunctionComponent = () => {
 
   return (
     <ScrollView>
-      <PageHeaderSecondary title="Errors 👾" />
+      <CheatcodesHeader title="Errors 👾" />
       <StyledContainer>
         <Row half>
           <ButtonPrimary
