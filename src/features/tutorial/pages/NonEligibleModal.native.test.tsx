@@ -4,7 +4,7 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { NonEligibleModal } from 'features/tutorial/pages/NonEligibleModal'
-import { env } from 'libs/environment/__mocks__/envFixtures'
+import { env } from 'libs/environment/fixtures'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
