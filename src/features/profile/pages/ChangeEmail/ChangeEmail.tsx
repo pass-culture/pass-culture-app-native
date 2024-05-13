@@ -8,7 +8,6 @@ import { ChangeEmailContentDeprecated } from 'features/profile/pages/ChangeEmail
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { theme } from 'theme'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 
 import { ChangeEmailContent } from './ChangeEmailContent'
@@ -27,12 +26,13 @@ export function ChangeEmail() {
         </SecondaryPageWithBlurHeader>
       ) : (
         <React.Fragment>
-          <PageHeaderSecondary title="Modifier mon e-mail" />
-          <ChangeEmailContentDeprecated
-            disableOldChangeEmail={disableOldChangeEmail}
-            hasCurrentEmailChange={hasCurrentEmailChange}
-            user={user}
-          />
+          <SecondaryPageWithBlurHeader title="Modifier mon e-mail">
+            <ChangeEmailContentDeprecated
+              disableOldChangeEmail={disableOldChangeEmail}
+              hasCurrentEmailChange={hasCurrentEmailChange}
+              user={user}
+            />
+          </SecondaryPageWithBlurHeader>
         </React.Fragment>
       )}
     </React.Fragment>
