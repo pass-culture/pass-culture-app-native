@@ -1,0 +1,41 @@
+appId: ${MAESTRO_APP_ID}
+---
+- tapOn: "Accessibilité"
+
+- assertVisible: "Accessibilité"
+- tapOn:
+    text: "Les engagements du pass Culture"
+    index: 0
+
+- assertVisible: "Les engagements du pass Culture"
+- assertVisible:
+    id: "AccessibilityEngagement"
+- tapOn:
+    id: "com.android.systemui:id/back"
+
+- tapOn:
+    text: "Parcours recommandés"
+    index: 1
+- assertVisible: "Parcours recommandés"
+- tapOn:
+    id: "com.android.systemui:id/back"
+
+- tapOn:
+    text: "Déclaration d’accessibilité"
+    index: 1
+- assertVisible:
+    id: "AccessibilityDeclaration"
+- tapOn:
+    id: "com.android.systemui:id/back"
+
+- tapOn:
+    text: "Schéma pluriannuel"
+    index: 1
+- assertVisible: "Schéma pluriannuel"
+- assertVisible:
+    id: "AccessibilityActionPlan"
+- tapOn:
+    id: "com.android.systemui:id/back"
+
+- tapOn:
+    id: "com.android.systemui:id/back"
