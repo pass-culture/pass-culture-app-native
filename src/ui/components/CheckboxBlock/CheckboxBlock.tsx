@@ -31,6 +31,7 @@ export const CheckboxBlock = ({
 
   return (
     <StyledContainer
+      onMouseDown={(e) => e.preventDefault()} // Prevent focus on click
       checked={checked}
       onPress={onPress}
       {...focusProps}
@@ -49,6 +50,7 @@ export const CheckboxBlock = ({
 }
 
 const StyledContainer = styled(TouchableOpacity)<{
+  onMouseDown: (e: Event) => void
   checked: boolean
   isFocus: boolean
   isHover: boolean
