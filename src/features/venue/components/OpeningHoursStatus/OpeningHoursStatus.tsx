@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -42,5 +42,5 @@ const Container = styled.View({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  gap: 4,
+  gap: getSpacing(1),
 })
