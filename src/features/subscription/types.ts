@@ -7,7 +7,8 @@ export enum SubscriptionTheme {
   VISITES = 'visites',
 }
 
-export const TOTAL_NUMBER_OF_THEME = Object.values(SubscriptionTheme).length
+export const SUSBCRIPTION_THEMES = Object.values(SubscriptionTheme)
+export const TOTAL_NUMBER_OF_THEME = SUSBCRIPTION_THEMES.length
 
 export type SubscriptionAnalyticsParams =
   | {

@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { SubscriptionTheme } from 'features/subscription/types'
+import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/types'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SubscriptionSuccessModal } from './SubscriptionSuccessModal'
 
 describe('<SubscriptionSuccessModal />', () => {
-  it.each(Object.values(SubscriptionTheme))('should render correctly for %s', (theme) => {
+  it.each(SUSBCRIPTION_THEMES)('should render correctly for %s', (theme) => {
     render(<SubscriptionSuccessModal visible theme={theme} dismissModal={jest.fn()} />)
 
     expect(screen).toMatchSnapshot()

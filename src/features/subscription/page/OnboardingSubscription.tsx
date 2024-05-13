@@ -1,6 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useReducer } from 'react'
-import { FlatList, Platform, ViewStyle } from 'react-native'
+import colorAlpha from 'color-alpha'
+import React, { useCallback, useReducer, useRef } from 'react'
+import { FlatList, Platform, ViewStyle, ViewToken } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -12,17 +14,20 @@ import { usePushPermission } from 'features/profile/pages/NotificationSettings/u
 import { SubscriptionThematicButton } from 'features/subscription/components/buttons/SubscriptionThematicButton'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
-import { SubscriptionTheme } from 'features/subscription/types'
+import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
+import { createAnimatableComponent, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+const GRADIENT_HEIGHT = getSpacing(30)
+const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
 
 export const OnboardingSubscription = () => {
   const { replace } = useNavigation<UseNavigationType>()
@@ -37,6 +42,7 @@ export const OnboardingSubscription = () => {
   } = useModal(false)
   const { pushPermission } = usePushPermission()
   const isPushPermissionGranted = pushPermission === 'granted'
+  const gradientRef = useRef<AnimatedViewRefType>(null)
 
   const isAtLeastOneNotificationTypeActivated =
     Platform.OS === 'web'
@@ -128,11 +134,30 @@ export const OnboardingSubscription = () => {
     alignSelf: 'center',
   }
 
+  const onViewableItemsChanged = useCallback(
+    ({ viewableItems, changed }: { viewableItems: ViewToken[]; changed: ViewToken[] }) => {
+      if (!gradientRef.current) return
+
+      const lastItem = SUSBCRIPTION_THEMES[SUSBCRIPTION_THEMES.length - 1]
+      const lastItemVisibilityChanged = changed.some((view) => view.item === lastItem)
+
+      if (!lastItemVisibilityChanged) return
+
+      const isLastItemVisible = viewableItems.some((view) => view.item === lastItem)
+      gradientRef.current.transition(
+        { transform: [{ translateY: isLastItemVisible ? 0 : 100 }] },
+        { transform: [{ translateY: isLastItemVisible ? 100 : 0 }] },
+        500
+      )
+    },
+    []
+  )
+
   return (
     <React.Fragment>
       <EmptyHeader />
       <FlatList
-        data={Object.values(SubscriptionTheme)}
+        data={SUSBCRIPTION_THEMES}
         renderItem={renderItem}
         keyExtractor={(item) => mapSubscriptionThemeToName[item]}
         ListHeaderComponent={
@@ -147,23 +172,23 @@ export const OnboardingSubscription = () => {
           </React.Fragment>
         }
         contentContainerStyle={contentContainerStyle}
-        ListFooterComponent={<Spacer.Column numberOfSpaces={30} />}
+        onViewableItemsChanged={onViewableItemsChanged}
+        viewabilityConfig={VIEWABILITY_CONFIG}
       />
-      <StickyBottomWrapper>
-        <StyledView>
-          <ButtonPrimary
-            wording="Suivre la sélection"
-            onPress={onSubmit}
-            disabled={isValidateButtonDisabled}
-          />
-          <ButtonTertiaryBlack
-            wording="Non merci"
-            accessibilityLabel="Ne pas suivre de thème"
-            icon={Invalidate}
-            onPress={goBack}
-          />
-        </StyledView>
-      </StickyBottomWrapper>
+      <Gradient ref={gradientRef} />
+      <StyledView>
+        <ButtonPrimary
+          wording="Suivre la sélection"
+          onPress={onSubmit}
+          disabled={isValidateButtonDisabled}
+        />
+        <ButtonTertiaryBlack
+          wording="Non merci"
+          accessibilityLabel="Ne pas suivre de thème"
+          icon={Invalidate}
+          onPress={goBack}
+        />
+      </StyledView>
       <NotificationsSettingsModal
         visible={isNotificationsModalVisible}
         title="Suivre la sélection"
@@ -186,4 +211,17 @@ const StyledView = styled.View.attrs({})(({ theme }) => ({
 
 const SubscriptionThematicButtonContainer = styled.View({
   paddingVertical: getSpacing(2),
+})
+
+const AnimatedGradient = createAnimatableComponent(LinearGradient)
+const Gradient = styled(AnimatedGradient).attrs(({ theme }) => ({
+  colors: [colorAlpha(theme.colors.white, 0), theme.colors.white],
+  locations: [0, 1],
+  pointerEvents: 'none',
+}))({
+  position: 'absolute',
+  bottom: getSpacing(34),
+  height: GRADIENT_HEIGHT,
+  left: 0,
+  right: 0,
 })

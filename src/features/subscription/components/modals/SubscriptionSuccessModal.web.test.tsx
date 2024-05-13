@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { SubscriptionTheme } from 'features/subscription/types'
+import { SUSBCRIPTION_THEMES } from 'features/subscription/types'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { SubscriptionSuccessModal } from './SubscriptionSuccessModal'
 
 describe('<SubscriptionSuccessModal />', () => {
   describe('Accessibility', () => {
-    it.each(Object.values(SubscriptionTheme))(
+    it.each(SUSBCRIPTION_THEMES)(
       'should not have basic accessibility issues for %s',
       async (theme) => {
         const { container } = render(
