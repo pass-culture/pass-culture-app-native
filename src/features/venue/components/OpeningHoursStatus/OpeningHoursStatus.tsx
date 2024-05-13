@@ -1,16 +1,13 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
+import { OpeningHours } from 'features/venue/types'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-import {
-  getOpeningHoursStatus,
-  OpeningHours,
-  OpeningHoursStatusState,
-} from './getOpeningHoursStatus'
+import { getOpeningHoursStatus, OpeningHoursStatusState } from './getOpeningHoursStatus'
 
 type Props = {
   openingHours: OpeningHours
