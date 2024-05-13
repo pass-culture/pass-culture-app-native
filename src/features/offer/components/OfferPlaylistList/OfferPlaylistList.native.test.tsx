@@ -11,7 +11,7 @@ import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
-} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+} from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'

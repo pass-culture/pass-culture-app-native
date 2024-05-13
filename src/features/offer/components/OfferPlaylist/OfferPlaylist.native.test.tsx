@@ -2,7 +2,7 @@ import React from 'react'
 
 import { OfferPlaylist } from 'features/offer/components/OfferPlaylist/OfferPlaylist'
 import { PlaylistType } from 'features/offer/enums'
-import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { render, screen } from 'tests/utils'
 
 const renderItemMock = jest.fn().mockReturnValue(null)

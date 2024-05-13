@@ -1,7 +1,7 @@
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchOffersByIdsAPI from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import * as filterOfferHitAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as getSimilarOrRecoOffersInOrder from 'shared/offer/getSimilarOrRecoOffersInOrder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'

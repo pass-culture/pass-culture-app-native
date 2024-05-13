@@ -1,7 +1,7 @@
 import { VenueResponse } from 'api/gen'
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { LocationMode, Position } from 'libs/location/types'
 import { placeholderData as subcategoriesFixture } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'

@@ -1,5 +1,5 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { getSimilarOrRecoOffersInOrder } from 'shared/offer/getSimilarOrRecoOffersInOrder'
 
 describe('getSimilarOffersInOrder', () => {

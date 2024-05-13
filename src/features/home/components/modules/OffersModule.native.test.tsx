@@ -4,7 +4,7 @@ import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { OffersModuleParameters } from 'features/home/types'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { transformHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { DisplayParametersFields, ContentTypes } from 'libs/contentful/types'

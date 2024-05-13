@@ -3,12 +3,12 @@ import algoliasearch from 'algoliasearch'
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
+import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
+import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import {
   mockedAlgoliaResponse,
   mockedAlgoliaVenueResponse,
-} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
-import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
+} from 'libs/algolia/fixtures/algoliaFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
 

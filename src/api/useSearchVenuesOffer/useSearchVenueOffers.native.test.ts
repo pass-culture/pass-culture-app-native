@@ -4,8 +4,8 @@ import {
   getVenueList,
   useSearchVenueOffers,
 } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position } from 'libs/location'
 import { toMutable } from 'shared/types/toMutable'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
