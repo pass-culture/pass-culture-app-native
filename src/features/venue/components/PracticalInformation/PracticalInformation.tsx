@@ -9,6 +9,8 @@ import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlo
 import { Separator } from 'ui/components/Separator'
 import { Spacer, Typo } from 'ui/theme'
 
+import { OpeningHours } from '../OpeningHours/OpeningHours'
+
 type Props = { venue: VenueResponse }
 type Section = { title: string; body: JSX.Element; isDisplayed: boolean }
 
@@ -37,6 +39,11 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
       isDisplayed:
         !!venue.accessibility &&
         Object.values(venue.accessibility).some((value) => value !== null && value !== undefined),
+    },
+    {
+      title: 'Horaires d’ouverture',
+      body: <OpeningHours openingHours={venue.openingHours} />,
+      isDisplayed: !!venue.openingHours,
     },
   ]
   const sectionsToDisplay = sections.filter((section) => section.isDisplayed)
