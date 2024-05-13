@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
+import { Typo } from 'ui/theme'
+
 import {
   OpeningHours as OpeningHoursType,
   useOpeningHoursViewModel,
@@ -14,8 +16,8 @@ export const OpeningHours: FC<Props> = ({ openingHours }) => {
     <Container>
       {days.map((day) => (
         <DayWrapper key={day.label}>
-          <DayLabel>{day.label}</DayLabel>
-          <Hours>{day.hours}</Hours>
+          <Typo.Body>{day.label}</Typo.Body>
+          <Typo.Body>{day.hours}</Typo.Body>
         </DayWrapper>
       ))}
     </Container>
@@ -30,11 +32,4 @@ const Container = styled.View({
 
 const DayWrapper = styled.View({
   gap: 4,
-})
-
-const DayLabel = styled.Text({
-  fontSize: 15,
-})
-const Hours = styled.Text({
-  fontSize: 15,
 })
