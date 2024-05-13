@@ -20,7 +20,7 @@ import { CreditHeader } from 'features/profile/components/Header/CreditHeader/Cr
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { SelectionLabel } from 'features/search/components/SelectionLabel/SelectionLabel'
-import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
+import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { mapCategoryToIcon } from 'libs/parsers/category'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
@@ -678,7 +678,7 @@ export const AppComponents: FunctionComponent = () => {
           height={LENGTH_S}
           width={LENGTH_S * (3 / 2)}
           userLocation={null}
-          venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
+          venue={{ ...venuesSearchFixture.hits[0], bannerUrl: undefined }}
         />
         <VenueTile
           moduleId="module-id"
@@ -689,7 +689,7 @@ export const AppComponents: FunctionComponent = () => {
             latitude: 50,
             longitude: 51,
           }}
-          venue={{ ...mockVenues.hits[0], bannerUrl: undefined }}
+          venue={{ ...venuesSearchFixture.hits[0], bannerUrl: undefined }}
         />
         <Spacer.Column numberOfSpaces={4} />
         <CategoryListModule

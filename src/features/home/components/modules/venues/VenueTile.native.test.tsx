@@ -1,14 +1,14 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
+import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { VenueTile, VenueTileProps } from './VenueTile'
 
-const venue = mockVenues.hits[0]
+const venue = venuesSearchFixture.hits[0]
 
 const props: VenueTileProps = {
   moduleId: 'module-id',
