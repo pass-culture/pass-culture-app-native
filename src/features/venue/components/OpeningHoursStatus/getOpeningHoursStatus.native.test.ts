@@ -93,11 +93,21 @@ describe('OpeningHoursStatusViewModel', () => {
   })
 
   describe('Venue open soon', () => {
-    it('should be in open-soon state', () => {
-      const openingHours = {
-        MONDAY: [{ open: '09:00', close: '19:00' }],
-      }
-      const currentDate = new Date('2024-05-13T08:00:00')
+    it.each([
+      {
+        openingHours: { MONDAY: [{ open: '09:00', close: '19:00' }] },
+        currentDate: new Date('2024-05-13T08:00:00'),
+      },
+      {
+        openingHours: {
+          MONDAY: [
+            { open: '09:00', close: '12:00' },
+            { open: '14:00', close: '19:00' },
+          ],
+        },
+        currentDate: new Date('2024-05-13T13:00:00'),
+      },
+    ])('should be in open-soon state', ({ openingHours, currentDate }) => {
       const viewModel = getOpeningHoursStatus({ openingHours, currentDate })
 
       expect(viewModel.state).toEqual('open-soon')
