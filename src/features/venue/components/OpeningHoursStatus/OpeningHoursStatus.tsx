@@ -9,7 +9,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 import {
   getOpeningHoursStatus,
   OpeningHours,
-  OpeningHoursStatusViewmodelState,
+  OpeningHoursStatusState,
 } from './getOpeningHoursStatus'
 
 type Props = {
@@ -18,20 +18,20 @@ type Props = {
 }
 
 export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate }) => {
-  const status = getOpeningHoursStatus({
+  const { state, text } = getOpeningHoursStatus({
     openingHours,
     currentDate,
   })
-  const color = colors[status.state]
+  const color = colors[state]
   return (
     <Container>
       <ClockFilled color={color as ColorsEnum} size={16} />
-      <Typo.Caption style={{ color }}>{status.text}</Typo.Caption>
+      <Typo.Caption style={{ color }}>{text}</Typo.Caption>
     </Container>
   )
 }
 
-const colors: Record<OpeningHoursStatusViewmodelState, ColorsEnum | string> = {
+const colors: Record<OpeningHoursStatusState, ColorsEnum | string> = {
   open: ColorsEnum.GREEN_VALID,
   close: ColorsEnum.ERROR,
   'close-soon': '#D77419',

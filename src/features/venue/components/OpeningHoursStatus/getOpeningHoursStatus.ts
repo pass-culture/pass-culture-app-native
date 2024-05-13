@@ -15,21 +15,21 @@ type OpeningHour = {
   close: string
 }[]
 
-type OpeningHoursStatusViewmodelParams = {
+type OpeningHoursStatusParams = {
   openingHours: OpeningHours
   currentDate: Date
 }
 
-export type OpeningHoursStatusViewmodelState = 'open' | 'open-soon' | 'close-soon' | 'close'
-export type OpeningHoursStatusViewmodel = {
-  state: OpeningHoursStatusViewmodelState
+export type OpeningHoursStatusState = 'open' | 'open-soon' | 'close-soon' | 'close'
+export type OpeningHoursStatus = {
+  state: OpeningHoursStatusState
   text: string
 }
 
 export const getOpeningHoursStatus = ({
   openingHours,
   currentDate,
-}: OpeningHoursStatusViewmodelParams): OpeningHoursStatusViewmodel => {
+}: OpeningHoursStatusParams): OpeningHoursStatus => {
   const currentOpeningHours = openingHours[getHoursFromCurrentDate(currentDate)] || []
   const periods = currentOpeningHours.map(({ open, close }) => {
     const openAt = getDateFromOpeningHour(currentDate, open)
@@ -43,13 +43,10 @@ const getStateFromPeriods = (
   periods: Period[],
   currentDate: Date,
   index = 0
-): OpeningHoursStatusViewmodel => {
+): OpeningHoursStatus => {
   const period = periods[index]
   if (!period) {
-    return {
-      state: 'close',
-      text: 'Fermé',
-    }
+    return closeState()
   }
 
   if (period.isPassed(currentDate)) {
@@ -58,22 +55,13 @@ const getStateFromPeriods = (
 
   if (period.isOpen(currentDate)) {
     if (period.isClosingSoon(currentDate)) {
-      return {
-        state: 'close-soon',
-        text: `Ferme bientôt - ${formatDate(period.closeAt)}`,
-      }
+      return closeSoonState(period.closeAt)
     }
-    return {
-      state: 'open',
-      text: `Ouvert jusqu’à ${formatDate(period.closeAt)}`,
-    }
+    return openState(period.closeAt)
   }
 
   if (period.isOpeningSoon(currentDate)) {
-    return {
-      state: 'open-soon',
-      text: `Ouvre bientôt - ${formatDate(period.openAt)}`,
-    }
+    return openSoonState(period.openAt)
   }
 
   return getStateFromPeriods(periods, currentDate, index + 1)
@@ -116,6 +104,26 @@ const getDateFromOpeningHour = (currentDate: Date, openingHour: string): Date =>
     minutes: minute,
   })
 }
+
+const closeState = (): OpeningHoursStatus => ({
+  state: 'close',
+  text: 'Fermé',
+})
+
+const openState = (openDate: Date): OpeningHoursStatus => ({
+  state: 'open',
+  text: `Ouvert jusqu’à ${formatDate(openDate)}`,
+})
+
+const openSoonState = (openDate: Date): OpeningHoursStatus => ({
+  state: 'open-soon',
+  text: `Ouvre bientôt - ${formatDate(openDate)}`,
+})
+
+const closeSoonState = (closeDate: Date): OpeningHoursStatus => ({
+  state: 'close-soon',
+  text: `Ferme bientôt - ${formatDate(closeDate)}`,
+})
 
 const formatDate = (date: Date): string => {
   const hours = date.getHours()
