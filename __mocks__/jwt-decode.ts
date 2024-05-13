@@ -1,6 +1,6 @@
 import { JwtPayload } from 'jwt-decode'
 
-export const FAKE_USER_ID = 1234
+import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 
 export default jest.fn(
   (): JwtPayload | null =>

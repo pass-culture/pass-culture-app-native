@@ -3,7 +3,6 @@ import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import * as API from 'api/api'
 import {
@@ -22,6 +21,7 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
