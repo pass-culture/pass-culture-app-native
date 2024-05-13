@@ -5,7 +5,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
+import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -52,18 +52,22 @@ jest.mock('features/profile/helpers/useIsUserUnderage', () => ({
   useIsUserUnderage: jest.fn().mockReturnValue(false),
 }))
 
-jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
-  {
-    title: 'Test',
-    offers: {
-      hits: [],
-    } as unknown as SearchResponse<Offer>,
-    layout: 'one-item-medium',
-    entryId: '2xUlLBRfxdk6jeYyJszunX',
-    minNumberOfOffers: 1,
-  },
-])
-
+jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists')
+const mockUseGTLPlaylists = useGTLPlaylists as jest.Mock
+mockUseGTLPlaylists.mockReturnValue({
+  gtlPlaylists: [
+    {
+      title: 'Test',
+      offers: {
+        hits: [],
+      } as unknown as SearchResponse<Offer>,
+      layout: 'one-item-medium',
+      entryId: '2xUlLBRfxdk6jeYyJszunX',
+      minNumberOfOffers: 1,
+    },
+  ],
+  isLoading: false,
+})
 jest.setTimeout(15_000)
 
 describe('<Venue />', () => {

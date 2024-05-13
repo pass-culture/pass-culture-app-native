@@ -4,9 +4,9 @@ import { UseQueryResult } from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
-import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import {
@@ -212,7 +212,7 @@ const renderVenueOffers = ({
 }: {
   venue: VenueResponse
   venueOffers: { hits: Offer[]; nbHits: number }
-  playlists?: GTLPlaylistResponse
+  playlists?: GtlPlaylistData[]
 }) => {
   return render(
     reactQueryProviderHOC(

@@ -3,7 +3,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
 import { VenueResponse } from 'api/gen'
-import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
+import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
@@ -21,7 +21,7 @@ import { CustomListRenderItem } from 'ui/components/Playlist'
 
 export interface GtlPlaylistProps {
   venue: VenueResponse
-  playlist: GTLPlaylistResponse[number]
+  playlist: GtlPlaylistData
 }
 
 export function GtlPlaylist({ venue, playlist }: Readonly<GtlPlaylistProps>) {

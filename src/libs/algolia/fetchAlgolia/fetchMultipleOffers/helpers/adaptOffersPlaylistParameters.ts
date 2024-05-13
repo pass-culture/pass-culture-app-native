@@ -55,7 +55,9 @@ export const adaptOffersPlaylistParameters = (
     timeRange: null,
     query: '',
     minBookingsThreshold: parameters.minBookingsThreshold || 0,
-    offerGenreTypes: offerGenreTypes,
+    offerGenreTypes,
+    offerGtlLabel: parameters.gtlLabel,
+    offerGtlLevel: parameters.gtlLevel,
   }
 }
 

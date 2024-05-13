@@ -1,11 +1,11 @@
 import { SearchResponse } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
+import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Offer } from 'shared/offer/types'
 
-export const gtlPlaylistAlgoliaSnapshot: GTLPlaylistResponse = [
+export const gtlPlaylistAlgoliaSnapshot: GtlPlaylistData[] = [
   {
     title: 'GTL playlist',
     offers: {

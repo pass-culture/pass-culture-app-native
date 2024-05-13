@@ -5,6 +5,7 @@ import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlg
 import { SearchQueryParameters, VenueHit } from 'libs/algolia/types'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
+import { GtlLevel } from 'shared/gtl/types'
 import { Offer } from 'shared/offer/types'
 
 export enum HomepageModuleType {
@@ -120,6 +121,8 @@ export type OffersModuleParameters = {
   bookTypes?: string[]
   isGeolocated?: boolean
   aroundRadius?: number
+  gtlLevel?: GtlLevel
+  gtlLabel?: string
 }
 
 export type PlaylistOffersParams = {

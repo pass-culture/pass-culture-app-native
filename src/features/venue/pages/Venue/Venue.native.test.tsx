@@ -5,7 +5,7 @@ import { UseQueryResult } from 'react-query'
 
 import { push, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
-import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
+import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
@@ -54,33 +54,38 @@ jest.mock('features/profile/helpers/useIsUserUnderage', () => ({
   useIsUserUnderage: jest.fn().mockReturnValue(false),
 }))
 
-const gtlPLaylistSpy = jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
-  {
-    title: 'Test',
-    offers: {
-      hits: [
-        {
-          offer: {
-            name: 'Test',
-            subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
+jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists')
+const mockUseGTLPlaylists = useGTLPlaylists as jest.Mock
+mockUseGTLPlaylists.mockReturnValue({
+  gtlPlaylists: [
+    {
+      title: 'Test',
+      offers: {
+        hits: [
+          {
+            offer: {
+              name: 'Test',
+              subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
+            },
+            venue: {
+              address: 'Avenue des Tests',
+              city: 'Jest',
+            },
+            _geoloc: {
+              lat: 2,
+              lng: 2,
+            },
+            objectID: '12',
           },
-          venue: {
-            address: 'Avenue des Tests',
-            city: 'Jest',
-          },
-          _geoloc: {
-            lat: 2,
-            lng: 2,
-          },
-          objectID: '12',
-        },
-      ],
-    } as SearchResponse<Offer>,
-    layout: 'one-item-medium',
-    entryId: '2xUlLBRfxdk6jeYyJszunX',
-    minNumberOfOffers: 1,
-  },
-])
+        ],
+      } as SearchResponse<Offer>,
+      layout: 'one-item-medium',
+      entryId: '2xUlLBRfxdk6jeYyJszunX',
+      minNumberOfOffers: 1,
+    },
+  ],
+  isLoading: false,
+})
 
 const defaultParams = {
   beginningDatetime: undefined,
@@ -140,8 +145,7 @@ describe('<Venue />', () => {
     mockUseVenueOffers.mockReturnValueOnce(emptyVenueOffers)
     mockUseVenueOffers.mockReturnValueOnce(emptyVenueOffers)
 
-    gtlPLaylistSpy.mockResolvedValueOnce([])
-    gtlPLaylistSpy.mockResolvedValueOnce([])
+    mockUseGTLPlaylists.mockResolvedValueOnce([])
 
     renderVenue(venueId)
 
@@ -153,11 +157,12 @@ describe('<Venue />', () => {
   describe('analytics', () => {
     it('should log consult venue when URL has from param with deeplink', async () => {
       renderVenue(venueId, 'deeplink')
-      await act(async () => {})
 
-      expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-        venueId,
-        from: 'deeplink',
+      await waitFor(() => {
+        expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+          venueId,
+          from: 'deeplink',
+        })
       })
     })
 

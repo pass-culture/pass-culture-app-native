@@ -1,27 +1,17 @@
-import { Layout } from 'libs/contentful/types'
+import { OffersModuleParameters } from 'features/home/types'
+import { Layout, DisplayParametersFields } from 'libs/contentful/types'
+import { Offer } from 'shared/offer/types'
 
-export type GTLLevel = 1 | 2 | 3 | 4
+export type GtlPlaylistRequest = {
+  id: string
+  offersModuleParameters: OffersModuleParameters
+  displayParameters: DisplayParametersFields
+}
 
-export type ContentfulGtlPlaylistResponse = [
-  {
-    fields: {
-      algoliaParameters: {
-        fields: {
-          hitsPerPage: number
-          gtlLevel: GTLLevel
-          gtlLabel: string
-        }
-      }
-      displayParameters: {
-        fields: {
-          minOffers: number
-          title: string
-          layout: Layout
-        }
-      }
-    }
-    sys: {
-      id: string
-    }
-  },
-]
+export type GtlPlaylistData = {
+  title: string
+  offers: { hits: Offer[] }
+  layout: Layout
+  minNumberOfOffers: number
+  entryId: string
+}
