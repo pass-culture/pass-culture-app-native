@@ -43,7 +43,7 @@ export const OnboardingSubscription = () => {
   } = useModal(false)
   const { pushPermission } = usePushPermission()
   const isPushPermissionGranted = pushPermission === 'granted'
-  const containerRef = useRef<AnimatedViewRefType>(null)
+  const gradientRef = useRef<AnimatedViewRefType>(null)
 
   const isAtLeastOneNotificationTypeActivated =
     Platform.OS === 'web'
@@ -137,7 +137,7 @@ export const OnboardingSubscription = () => {
 
   const onViewableItemsChanged = useCallback(
     ({ viewableItems, changed }: { viewableItems: ViewToken[]; changed: ViewToken[] }) => {
-      if (!containerRef.current) return
+      if (!gradientRef.current) return
 
       const lastItem = SUSBCRIPTION_THEMES[SUSBCRIPTION_THEMES.length - 1]
       const lastItemVisibilityChanged = changed.some((view) => view.item === lastItem)
@@ -145,7 +145,7 @@ export const OnboardingSubscription = () => {
       if (!lastItemVisibilityChanged) return
 
       const isLastItemVisible = viewableItems.some((view) => view.item === lastItem)
-      containerRef.current.transition(
+      gradientRef.current.transition(
         { transform: [{ translateY: isLastItemVisible ? 0 : 100 }] },
         { transform: [{ translateY: isLastItemVisible ? 100 : 0 }] },
         500
@@ -176,7 +176,7 @@ export const OnboardingSubscription = () => {
         onViewableItemsChanged={onViewableItemsChanged}
         viewabilityConfig={VIEWABILITY_CONFIG}
       />
-      <Gradient ref={containerRef} />
+      <Gradient ref={gradientRef} />
       <StyledView>
         <ButtonPrimary
           wording="Suivre la sélection"
