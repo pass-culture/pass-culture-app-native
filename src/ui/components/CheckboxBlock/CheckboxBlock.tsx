@@ -31,7 +31,7 @@ export const CheckboxBlock = ({
 
   return (
     <StyledContainer
-      onMouseDown={(e: Event) => e.preventDefault()} // Prevent focus on click
+      onMouseDown={(e) => e.preventDefault()} // Prevent focus on click
       checked={checked}
       onPress={onPress}
       {...focusProps}
