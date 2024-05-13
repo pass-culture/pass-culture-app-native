@@ -72,7 +72,7 @@ type Period = ReturnType<typeof createPeriod>
 const createPeriod = (openAt: Date, closeAt: Date) => ({
   closeAt,
   openAt,
-  isOpenningSoon: (currentDate: Date) => addHours(currentDate, 1) >= openAt,
+  isOpeningSoon: (currentDate: Date) => addHours(currentDate, 1) >= openAt,
   isClosingSoon: (currentDate: Date) => addHours(currentDate, 1) >= closeAt,
   isOpen: (currentDate: Date) => isWithinInterval(currentDate, { start: openAt, end: closeAt }),
   isPassed: (currentDate: Date) => currentDate > closeAt,
