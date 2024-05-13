@@ -3,15 +3,12 @@ import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
 
-import {
-  OpeningHours as OpeningHoursType,
-  useOpeningHoursViewModel,
-} from './OpeningHours.viewmodel'
+import { OpeningHours as OpeningHoursType, getOpeningHours } from './getOpeningHours'
 
 type Props = { openingHours: OpeningHoursType }
 
 export const OpeningHours: FC<Props> = ({ openingHours }) => {
-  const { days } = useOpeningHoursViewModel(openingHours)
+  const { days } = getOpeningHours(openingHours)
   return (
     <Container>
       {days.map((day) => (

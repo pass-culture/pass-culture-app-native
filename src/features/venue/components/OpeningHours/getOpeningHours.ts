@@ -13,7 +13,7 @@ type OpeningHour = {
   close: string
 }[]
 
-export const useOpeningHoursViewModel = (openingHours: OpeningHours) => {
+export const getOpeningHours = (openingHours: OpeningHours) => {
   const getHours = (day: keyof OpeningHours) => {
     const hours = openingHours[day]
     if (!hours) return 'Fermé'
