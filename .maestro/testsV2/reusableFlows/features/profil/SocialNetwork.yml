@@ -1,0 +1,41 @@
+appId: ${MAESTRO_APP_ID}
+---
+- scroll
+- tapOn: "Instagram"
+- "waitForAnimationToEnd"
+- assertVisible:
+    id: "com.sec.android.app.sbrowser:id/location_bar_edit_text"
+- tapOn:
+    id: "com.android.systemui:id/back"
+
+- tapOn: "Twitter"
+- waitForAnimationToEnd
+- assertVisible:
+    id: "com.sec.android.app.sbrowser:id/location_bar_edit_text"
+- tapOn:
+    id: "com.android.systemui:id/back"
+
+- tapOn: "Tiktok"
+- waitForAnimationToEnd
+- assertVisible:
+    id: "com.sec.android.app.sbrowser:id/location_bar_edit_text"
+- doubleTapOn:
+    id: "com.android.systemui:id/back"
+
+- runFlow: # Fallback si problème de retour
+    when:
+      visible: "Bonjour Test-e2e"
+    commands:
+    - tapOn:
+        id: "Mon profil"
+        
+- tapOn: "Facebook"
+- waitForAnimationToEnd
+- assertVisible: "Facebook from Meta"
+- tapOn:
+    id: "com.android.systemui:id/back"
+
+- scrollUntilVisible:
+    element:
+      text: "Informations personnelles"
+    direction: UP

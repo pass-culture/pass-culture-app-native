@@ -1,0 +1,12 @@
+appId: ${MAESTRO_APP_ID}
+---
+- tapOn:
+    text: "Confidentialité"
+    index: 1
+
+- assertVisible: "Paramètres de confidentialité"
+- tapOn:
+    id: "Interrupteur Tout accepter"
+- scroll
+- assertVisible: "Politique de gestion des cookies"
+- tapOn: "Enregistrer mes choix"

@@ -14,7 +14,7 @@ appId: ${MAESTRO_APP_ID}
       - scroll
       - tapOn:
           text: "Séances de cinéma"
-          index: 0
+          index: 1
 
 - swipe:
    from: 
@@ -28,7 +28,7 @@ appId: ${MAESTRO_APP_ID}
 
 - tapOn:
     id: "movie-calendar-day"
-    index: 1
+    index: 2
 
 - tapOn:
     label: "Sélection de la 1ère date disponible"

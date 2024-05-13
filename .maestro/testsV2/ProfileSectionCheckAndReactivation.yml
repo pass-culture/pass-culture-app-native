@@ -1,0 +1,21 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow: reusableFlows/LaunchApp.yml
+
+- runFlow: reusableFlows/features/cookies/AcceptCookies.yml
+- runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
+- runFlow: reusableFlows/GoToProfileFromTabBar.yml
+- runFlow: reusableFlows/features/auth/LoginFromProfileForBeneficiaryUser.yml
+- runFlow: reusableFlows/GoToProfileFromTabBar.yml
+
+- runFlow: reusableFlows/features/profil/HelpCenter.yml
+- runFlow: reusableFlows/features/profil/AccessibilitySection.yml
+- runFlow: reusableFlows/features/profil/LegalInfoSection.yml
+- runFlow: reusableFlows/features/profil/ConfidentialitySection.yml
+- runFlow: reusableFlows/features/profil/SocialNetwork.yml
+
+- runFlow: reusableFlows/features/profil/DeletionReactivation.yml
+- runFlow: reusableFlows/GoToProfileFromTabBar.yml
+- runFlow: reusableFlows/features/auth/LoginAndReactivation.yml
+- runFlow: reusableFlows/GoToProfileFromTabBar.yml
+- runFlow: reusableFlows/features/auth/LogoutFromProfile.yml
