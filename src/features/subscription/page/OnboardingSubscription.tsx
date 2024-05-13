@@ -14,7 +14,7 @@ import { usePushPermission } from 'features/profile/pages/NotificationSettings/u
 import { SubscriptionThematicButton } from 'features/subscription/components/buttons/SubscriptionThematicButton'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
-import { SubscriptionTheme } from 'features/subscription/types'
+import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
 import { createAnimatableComponent, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -27,7 +27,6 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const GRADIENT_HEIGHT = getSpacing(30)
-const SUSBCRIPTION_THEMES = Object.values(SubscriptionTheme)
 const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
 
 export const OnboardingSubscription = () => {

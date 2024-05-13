@@ -16,7 +16,11 @@ import {
 } from 'features/profile/pages/NotificationSettings/helpers/hasUserChangedParameters'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
-import { SubscriptionTheme, TOTAL_NUMBER_OF_THEME } from 'features/subscription/types'
+import {
+  SubscriptionTheme,
+  SUSBCRIPTION_THEMES,
+  TOTAL_NUMBER_OF_THEME,
+} from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -212,7 +216,7 @@ export const NotificationsSettings = () => {
             />
           </SectionWithSwitchContainer>
           <Spacer.Column numberOfSpaces={2} />
-          {Object.values(SubscriptionTheme).map((theme) => (
+          {SUSBCRIPTION_THEMES.map((theme) => (
             <SectionWithSwitchContainer key={theme}>
               <SectionWithSwitch
                 title={mapSubscriptionThemeToName[theme]}
@@ -279,9 +283,7 @@ const settingsReducer = (state: NotificationsSettingsState, action: ToggleAction
       return {
         ...state,
         themePreferences:
-          state.themePreferences.length === TOTAL_NUMBER_OF_THEME
-            ? []
-            : Object.values(SubscriptionTheme),
+          state.themePreferences.length === TOTAL_NUMBER_OF_THEME ? [] : SUSBCRIPTION_THEMES,
       }
     case 'toggleTheme':
       return {
