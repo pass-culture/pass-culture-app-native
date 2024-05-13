@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { mockedBookingsResponse } from './fixtures/booking'
+
+import { mockedBookingsResponse } from 'fixtures/booking'
 
 const invalidateQueries = jest.fn()
 const removeQueries = jest.fn()
