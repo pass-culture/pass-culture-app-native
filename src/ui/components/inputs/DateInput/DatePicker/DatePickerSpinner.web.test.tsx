@@ -7,7 +7,7 @@ import {
   DEFAULT_SELECTED_DATE,
   MAXIMUM_DATE,
 } from 'features/auth/fixtures/fixtures'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render, screen } from 'tests/utils/web'
 import { DatePickerSpinner } from 'ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web'
 
 const props = {
@@ -25,21 +25,15 @@ describe('<DatePickerSpinner />', () => {
     // FIXME(PC-211174): This warning comes from react-native-date-picker (https://passculture.atlassian.net/browse/PC-21174)
     jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
-    const { container } = render(<DatePickerSpinner {...props} />)
+    render(<DatePickerSpinner {...props} />)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    const day = container.getElementsByClassName('picker-scroller')[0].childNodes[1] // 02
-    // @ts-expect-error: because of noUncheckedIndexedAccess
+    const day = screen.getByText('2')
     fireEvent.click(day)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    const month = container.getElementsByClassName('picker-scroller')[1].childNodes[6] // 07
-    // @ts-expect-error: because of noUncheckedIndexedAccess
+    const month = screen.getByText('Juil.')
     fireEvent.click(month)
 
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    const year = container.getElementsByClassName('picker-scroller')[2].childNodes[1] // 2005
-    // @ts-expect-error: because of noUncheckedIndexedAccess
+    const year = screen.getByText('2005')
     fireEvent.click(year)
 
     expect(props.onChange).toHaveBeenNthCalledWith(1, DEFAULT_SELECTED_DATE) // first render trigger useEffect
