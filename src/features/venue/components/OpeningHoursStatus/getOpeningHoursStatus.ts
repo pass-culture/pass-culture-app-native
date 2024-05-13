@@ -46,7 +46,10 @@ const getStateFromPeriods = (
 ): OpeningHoursStatusViewmodel => {
   const period = periods[index]
   if (!period) {
-    return closeState()
+    return {
+      state: 'close',
+      text: 'Fermé',
+    }
   }
 
   if (period.isPassed(currentDate)) {
@@ -55,13 +58,22 @@ const getStateFromPeriods = (
 
   if (period.isOpen(currentDate)) {
     if (period.isClosingSoon(currentDate)) {
-      return closeSoonState(period.closeAt)
+      return {
+        state: 'close-soon',
+        text: `Ferme bientôt - ${formatDate(period.closeAt)}`,
+      }
     }
-    return openState(period.closeAt)
+    return {
+      state: 'open',
+      text: `Ouvert jusqu’à ${formatDate(period.closeAt)}`,
+    }
   }
 
-  if (period.isOpenningSoon(currentDate)) {
-    return openSoonState(period.openAt)
+  if (period.isOpeningSoon(currentDate)) {
+    return {
+      state: 'open-soon',
+      text: `Ouvre bientôt - ${formatDate(period.openAt)}`,
+    }
   }
 
   return getStateFromPeriods(periods, currentDate, index + 1)
@@ -104,26 +116,6 @@ const getDateFromOpeningHour = (currentDate: Date, openingHour: string): Date =>
     minutes: minute,
   })
 }
-
-const closeState = (): OpeningHoursStatusViewmodel => ({
-  state: 'close',
-  text: 'Fermé',
-})
-
-const openState = (openDate: Date): OpeningHoursStatusViewmodel => ({
-  state: 'open',
-  text: `Ouvert jusqu’à ${formatDate(openDate)}`,
-})
-
-const openSoonState = (openDate: Date): OpeningHoursStatusViewmodel => ({
-  state: 'open-soon',
-  text: `Ouvre bientôt - ${formatDate(openDate)}`,
-})
-
-const closeSoonState = (closeDate: Date): OpeningHoursStatusViewmodel => ({
-  state: 'close-soon',
-  text: `Ferme bientôt - ${formatDate(closeDate)}`,
-})
 
 const formatDate = (date: Date): string => {
   const hours = date.getHours()
