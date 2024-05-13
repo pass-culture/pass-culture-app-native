@@ -2,7 +2,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
-import { SearchQueryParametersFixture } from 'libs/algolia/fixtures'
+import { searchQueryParametersFixture } from 'libs/algolia/fixtures/searchQueryParametersFixture'
 import { LocationMode } from 'libs/algolia/types'
 
 describe('buildOfferSearchParameters', () => {
@@ -21,7 +21,7 @@ describe('buildOfferSearchParameters', () => {
 
   it('should return expected offer search parameters to build Algolia API call', () => {
     const parameters = {
-      ...SearchQueryParametersFixture,
+      ...searchQueryParametersFixture,
     }
 
     const result = buildOfferSearchParameters(
@@ -40,7 +40,7 @@ describe('buildOfferSearchParameters', () => {
 
   it('should return offer search parameters without location params when the offer is a fully digital category', () => {
     const parameters = {
-      ...SearchQueryParametersFixture,
+      ...searchQueryParametersFixture,
       isFullyDigitalOffersCategory: true,
     }
 
@@ -58,7 +58,7 @@ describe('buildOfferSearchParameters', () => {
 
   it('should return parameters with date filter when date is specified', () => {
     const parameters = {
-      ...SearchQueryParametersFixture,
+      ...searchQueryParametersFixture,
       date: {
         option: DATE_FILTER_OPTIONS.USER_PICK,
         selectedDate: '2023-05-01',
@@ -81,7 +81,7 @@ describe('buildOfferSearchParameters', () => {
 
   it('should return parameters with offer category filter when offer category is specified', () => {
     const parameters = {
-      ...SearchQueryParametersFixture,
+      ...searchQueryParametersFixture,
       offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
     }
 
@@ -104,7 +104,7 @@ describe('buildOfferSearchParameters', () => {
 
   it('should return parameters with minimum price filter when minPrice is specified', () => {
     const parameters = {
-      ...SearchQueryParametersFixture,
+      ...searchQueryParametersFixture,
       minPrice: '50',
     }
 
@@ -134,7 +134,7 @@ describe('buildOfferSearchParameters', () => {
     }
 
     const parameters = {
-      ...SearchQueryParametersFixture,
+      ...searchQueryParametersFixture,
     }
 
     const result = buildOfferSearchParameters(

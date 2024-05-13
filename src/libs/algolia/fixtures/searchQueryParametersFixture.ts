@@ -1,6 +1,6 @@
 import { SearchQueryParameters } from 'libs/algolia/types'
 
-export const SearchQueryParametersFixture: SearchQueryParameters = {
+export const searchQueryParametersFixture: SearchQueryParameters = {
   beginningDatetime: undefined,
   date: null,
   endingDatetime: undefined,
