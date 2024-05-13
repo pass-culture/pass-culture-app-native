@@ -117,12 +117,12 @@ const openState = (openDate: Date): OpeningHoursStatusViewmodel => ({
 
 const openSoonState = (openDate: Date): OpeningHoursStatusViewmodel => ({
   state: 'open-soon',
-  text: `Ouvre bientot - ${formatDate(openDate)}`,
+  text: `Ouvre bientôt - ${formatDate(openDate)}`,
 })
 
 const closeSoonState = (closeDate: Date): OpeningHoursStatusViewmodel => ({
   state: 'close-soon',
-  text: `Ferme bientot - ${formatDate(closeDate)}`,
+  text: `Ferme bientôt - ${formatDate(closeDate)}`,
 })
 
 const formatDate = (date: Date): string => {

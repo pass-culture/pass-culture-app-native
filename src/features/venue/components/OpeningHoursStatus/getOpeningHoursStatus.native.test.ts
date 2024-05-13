@@ -109,21 +109,21 @@ describe('OpeningHoursStatusViewModel', () => {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
         currentDate: new Date('2024-05-13T08:00:00'),
-        expected: 'Ouvre bientot - 9h',
+        expected: 'Ouvre bientôt - 9h',
       },
       {
         openingHours: {
           MONDAY: [{ open: '11:00', close: '19:00' }],
         },
         currentDate: new Date('2024-05-13T10:30:00'),
-        expected: 'Ouvre bientot - 11h',
+        expected: 'Ouvre bientôt - 11h',
       },
       {
         openingHours: {
           MONDAY: [{ open: '11:30', close: '19:00' }],
         },
         currentDate: new Date('2024-05-13T10:30:00'),
-        expected: 'Ouvre bientot - 11h30',
+        expected: 'Ouvre bientôt - 11h30',
       },
     ])('should have correct text $expected', ({ openingHours, currentDate, expected }) => {
       const viewModel = getOpeningHoursStatus({ openingHours, currentDate })
@@ -149,21 +149,21 @@ describe('OpeningHoursStatusViewModel', () => {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
         currentDate: new Date('2024-05-13T18:00:00'),
-        expected: 'Ferme bientot - 19h',
+        expected: 'Ferme bientôt - 19h',
       },
       {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '20:00' }],
         },
         currentDate: new Date('2024-05-13T19:00:00'),
-        expected: 'Ferme bientot - 20h',
+        expected: 'Ferme bientôt - 20h',
       },
       {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '20:30' }],
         },
         currentDate: new Date('2024-05-13T20:00:00'),
-        expected: 'Ferme bientot - 20h30',
+        expected: 'Ferme bientôt - 20h30',
       },
     ])('should have correct text $expected', ({ openingHours, currentDate, expected }) => {
       const viewModel = getOpeningHoursStatus({ openingHours, currentDate })
