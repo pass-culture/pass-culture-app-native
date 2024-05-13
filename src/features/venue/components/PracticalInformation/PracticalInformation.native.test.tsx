@@ -125,7 +125,29 @@ describe('PracticalInformation', () => {
   it('should display opening hours section', async () => {
     render(
       reactQueryProviderHOC(
-        <PracticalInformation venue={{ ...venueResponseSnap, openingHours: {} }} />
+        <PracticalInformation
+          venue={{
+            ...venueResponseSnap,
+            openingHours: {
+              MONDAY: [{ open: '10:00', close: '20:00' }],
+              TUESDAY: [
+                { open: '10:00', close: '12:00' },
+                { open: '14:00', close: '20:00' },
+              ],
+              WEDNESDAY: [
+                { open: '10:00', close: '12:00' },
+                { open: '14:00', close: '20:00' },
+              ],
+              THURSDAY: [
+                { open: '10:00', close: '12:00' },
+                { open: '14:00', close: '20:00' },
+              ],
+              FRIDAY: undefined,
+              SATURDAY: [{ open: '09:00', close: '20:00' }],
+              SUNDAY: undefined,
+            },
+          }}
+        />
       )
     )
 
