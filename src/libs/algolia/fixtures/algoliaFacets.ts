@@ -2,7 +2,7 @@ import { SearchResponse } from '@algolia/client-search'
 
 import { Offer } from 'shared/offer/types'
 
-export const mockedFacets: SearchResponse<Offer> = {
+export const algoliaFacets: SearchResponse<Offer> = {
   hits: [],
   page: 0,
   nbHits: 0,
