@@ -13,7 +13,10 @@ export const OpeningHours: FC<Props> = ({ openingHours }) => {
   return (
     <Container>
       {days.map((day) => (
-        <Day key={day.label} day={day.label} hours={day.hours} />
+        <DayWrapper key={day.label}>
+          <DayLabel>{day.label}</DayLabel>
+          <Hours>{day.hours}</Hours>
+        </DayWrapper>
       ))}
     </Container>
   )
@@ -24,15 +27,6 @@ const Container = styled.View({
   flexDirection: 'column',
   gap: 8,
 })
-
-const Day: FC<{ day: string; hours: string }> = ({ day, hours }) => {
-  return (
-    <DayWrapper>
-      <DayLabel>{day}</DayLabel>
-      <Hours>{hours}</Hours>
-    </DayWrapper>
-  )
-}
 
 const DayWrapper = styled.View({
   gap: 4,
