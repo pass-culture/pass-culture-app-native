@@ -3,8 +3,8 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
-import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { analytics } from 'libs/analytics'
@@ -41,7 +41,7 @@ describe('<SetAddress/>', () => {
       'https://api-adresse.data.gouv.fr/search',
       mockedSuggestedPlaces
     )
-    mockServer.getApi<SettingsResponse>('/v1/settings', mockDefaultSettings)
+    mockServer.getApi<SettingsResponse>('/v1/settings', defaultSettings)
 
     storage.saveObject('activation_profile', {
       name: { firstName: 'John', lastName: 'Doe' },
