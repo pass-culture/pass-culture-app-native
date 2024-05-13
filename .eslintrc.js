@@ -375,7 +375,6 @@ module.exports = {
         'testing-library/prefer-screen-queries': ['error'],
         'testing-library/no-await-sync-events': 'off', // TODO(PC-25292): enable when its issues are fixed
         'jest/no-conditional-in-test': 'off', // TODO(PC-25293): enable when its issues are fixed
-        'testing-library/no-container': 'off', // TODO(PC-25294): enable when its issues are fixed
       },
     },
   ],

@@ -179,12 +179,6 @@
 ./src/ui/components/StepDots.native.test.tsx:81
 ./src/ui/components/StepDots.native.test.tsx:83
 ./src/ui/components/bars/ProgressBar.tsx:19
-./src/ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web.test.tsx:30
-./src/ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web.test.tsx:32
-./src/ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web.test.tsx:35
-./src/ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web.test.tsx:37
-./src/ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web.test.tsx:40
-./src/ui/components/inputs/DateInput/DatePicker/DatePickerSpinner.web.test.tsx:42
 ./src/ui/components/inputs/Slider.tsx:99
 ./src/ui/hooks/useArrowNavigationForRadioButton.web.ts:20
 ./src/ui/hooks/useArrowNavigationForRadioButton.web.ts:32
