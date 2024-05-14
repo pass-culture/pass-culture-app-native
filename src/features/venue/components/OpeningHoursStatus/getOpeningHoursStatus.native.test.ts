@@ -205,6 +205,12 @@ describe('OpeningHoursStatusViewModel', () => {
         },
         currentDate: new Date('2024-05-13T20:00:00'),
       },
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '19:00' }],
+        },
+        currentDate: new Date('2024-05-13T07:00:00'),
+      },
     ])('should be in close state', ({ openingHours, currentDate }) => {
       const viewModel = getOpeningHoursStatus({ openingHours, currentDate })
 
