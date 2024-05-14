@@ -2,8 +2,8 @@ import React from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { useUtmParams } from 'libs/utm'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const UTMParameters = () => {
@@ -11,7 +11,7 @@ export const UTMParameters = () => {
 
   return (
     <React.Fragment>
-      <PageHeaderSecondary title="UTM parameters" />
+      <CheatcodesHeader title="UTM parameters" />
       <Spacer.Column numberOfSpaces={6} />
       <Container>
         <AlignedText>

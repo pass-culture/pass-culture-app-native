@@ -2,6 +2,7 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
@@ -9,7 +10,6 @@ import { SubscriptionSuccessModal } from 'features/subscription/components/modal
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 
@@ -57,7 +57,7 @@ export function NavigationSubscription(): React.JSX.Element {
 
   return (
     <ScrollView>
-      <PageHeaderSecondary title="Subscription 🔔" />
+      <CheatcodesHeader title="Subscription 🔔" />
       <StyledContainer>
         <LinkToComponent name="OnboardingSubscription" />
         <Row half>

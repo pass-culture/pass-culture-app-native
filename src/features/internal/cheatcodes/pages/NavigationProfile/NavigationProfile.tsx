@@ -2,13 +2,13 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { CreditCeilingsModal } from 'features/profile/components/Modals/CreditCeilingsModal'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { domains_credit_v1, domains_credit_v2 } from 'features/profile/fixtures/domainsCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 
@@ -33,7 +33,7 @@ export function NavigationProfile(): React.JSX.Element {
 
   return (
     <ScrollView>
-      <PageHeaderSecondary title="Profile 🎨" />
+      <CheatcodesHeader title="Profile 🎨" />
       <StyledContainer>
         <LinkToComponent name="Login" />
         <LinkToComponent name="ChangeEmail" />

@@ -1,10 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import styled, { useTheme } from 'styled-components/native'
+import { Platform } from 'react-native'
+import styled from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
 import { useChangePasswordMutation } from 'features/auth/api/useChangePasswordMutation'
@@ -16,14 +15,13 @@ import { changePasswordSchema } from 'features/profile/pages/ChangePassword/sche
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
-import { AppThemeType } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { getSpacing, Spacer } from 'ui/theme'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { Spacer } from 'ui/theme'
 
 type ChangePasswordFormData = {
   currentPassword: string
@@ -37,9 +35,6 @@ export function ChangePassword() {
     newPassword: '',
     confirmedPassword: '',
   }
-
-  const theme = useTheme()
-  const { isMobileViewport, isTouch } = theme
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar } = useSnackBarContext()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -48,9 +43,6 @@ export function ChangePassword() {
   useForHeightKeyboardEvents(setKeyboardHeight)
 
   const { mutate: changePassword } = useChangePasswordMutation()
-
-  const scrollRef = useRef<ScrollView | null>(null)
-  const { bottom } = useSafeAreaInsets()
 
   const {
     handleSubmit,
@@ -113,10 +105,6 @@ export function ChangePassword() {
     })
   })
 
-  const onFocusConfirmedPassword = useCallback(() => {
-    setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
-  }, [])
-
   const disabled = !isDirty || !isValid || (!isValidating && isSubmitting)
   const onEnterKeyAction = useCallback(() => {
     if (!disabled) {
@@ -126,23 +114,19 @@ export function ChangePassword() {
 
   useEnterKeyAction(onEnterKeyAction)
 
-  const contentContainerStyle = useMemo(() => {
-    return getScrollViewContentContainerStyle(theme, keyboardHeight)
-  }, [theme, keyboardHeight])
-
   if (!isUserLoading && !user?.hasPassword) {
     navigateToHome()
     return null
   }
 
   return (
-    <Container>
-      <PageHeaderSecondary title="Mot de passe" />
-      <StyledScrollView
-        ref={scrollRef}
-        contentContainerStyle={contentContainerStyle}
-        keyboardShouldPersistTaps="handled">
-        <Spacer.Column numberOfSpaces={8} />
+    <SecondaryPageWithBlurHeader
+      title="Mot de passe"
+      scrollable
+      scrollViewProps={{
+        keyboardShouldPersistTaps: 'handled',
+      }}>
+      <Container paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
         <Form.MaxWidth flex={1}>
           <PasswordInputController
             control={control}
@@ -165,53 +149,22 @@ export function ChangePassword() {
             name="confirmedPassword"
             label="Confirmer le mot de passe"
             placeholder="Confirmer le mot de passe"
-            onFocus={onFocusConfirmedPassword}
           />
-
-          {isMobileViewport && isTouch ? (
-            <Spacer.Flex flex={1} />
-          ) : (
-            <Spacer.Column numberOfSpaces={10} />
-          )}
-
+          <Spacer.Column numberOfSpaces={10} />
           {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
-          <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
-            <ButtonPrimary
-              wording="Enregistrer"
-              accessibilityLabel="Enregistrer les modifications"
-              onPress={onSubmit}
-              disabled={disabled}
-            />
-          </ButtonContainer>
+          <ButtonPrimary
+            wording="Enregistrer"
+            accessibilityLabel="Enregistrer les modifications"
+            onPress={onSubmit}
+            disabled={disabled}
+          />
         </Form.MaxWidth>
         <Spacer.Column numberOfSpaces={6} />
-      </StyledScrollView>
-    </Container>
+      </Container>
+    </SecondaryPageWithBlurHeader>
   )
 }
 
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  backgroundColor: theme.colors.white,
-}))
-
-const getScrollViewContentContainerStyle = (
-  theme: AppThemeType,
-  keyboardHeight: number
-): StyleProp<ViewStyle> => ({
-  flexGrow: 1,
-  flexDirection: 'column',
-  paddingBottom: Platform.OS === 'ios' ? keyboardHeight : 0,
-  backgroundColor: theme.colors.white,
-  alignItems: 'center',
-})
-
-const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
+const Container = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
   paddingBottom,
-  alignItems: 'center',
-  width: '100%',
 }))
-
-const StyledScrollView = styled(ScrollView)({
-  paddingHorizontal: getSpacing(5.5),
-})

@@ -3,9 +3,9 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
 export function NavigationTutorial(): React.JSX.Element {
@@ -13,7 +13,7 @@ export function NavigationTutorial(): React.JSX.Element {
 
   return (
     <ScrollView>
-      <PageHeaderSecondary title="Tutorial ❔" />
+      <CheatcodesHeader title="Tutorial ❔" />
       <StyledContainer>
         <LinkToComponent
           title="Onboarding  🛶"

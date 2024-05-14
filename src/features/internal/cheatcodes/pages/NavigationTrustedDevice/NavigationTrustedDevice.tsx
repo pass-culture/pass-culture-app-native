@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -13,7 +13,7 @@ export function NavigationTrustedDevice(): React.JSX.Element {
 
   return (
     <ScrollView>
-      <PageHeaderSecondary title="Trusted device 📱" />
+      <CheatcodesHeader title="Trusted device 📱" />
       <StyledContainer>
         <LinkToComponent name="TrustedDeviceInfos" />
         <LinkToComponent name="SuspensionChoice" />

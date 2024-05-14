@@ -3,6 +3,7 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { useSomeOfferId } from 'features/internal/cheatcodes/hooks/useSomeOfferId'
@@ -12,7 +13,6 @@ import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { FinishSubscriptionModal } from 'shared/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 
@@ -43,7 +43,7 @@ export function NavigationSignUp(): React.JSX.Element {
 
   return (
     <ScrollView>
-      <PageHeaderSecondary title="SignUp 🎨" />
+      <CheatcodesHeader title="SignUp 🎨" />
       <StyledContainer>
         <LinkToComponent
           title="IdentityCheck 🎨"

@@ -3,9 +3,9 @@ import React from 'react'
 import { ScrollView, StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { TutorialTypes } from 'features/tutorial/enums'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
 export function NavigationOnboarding(): React.JSX.Element {
@@ -18,7 +18,7 @@ export function NavigationOnboarding(): React.JSX.Element {
 
   return (
     <ScrollView>
-      <PageHeaderSecondary title="Onboarding 🛶" />
+      <CheatcodesHeader title="Onboarding 🛶" />
       <StyledContainer>
         <LinkToComponent name="OnboardingWelcome" />
         <LinkToComponent name="OnboardingGeolocation" />

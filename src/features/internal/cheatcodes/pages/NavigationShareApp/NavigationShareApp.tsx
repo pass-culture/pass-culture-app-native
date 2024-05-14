@@ -2,18 +2,18 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 
 export function NavigationShareApp(): React.JSX.Element {
   const { showShareAppModal } = useShareAppContext()
 
   return (
     <ScrollView>
-      <PageHeaderSecondary title="Share app 🔗" />
+      <CheatcodesHeader title="Share app 🔗" />
       <StyledContainer>
         <Row half>
           <ButtonPrimary
