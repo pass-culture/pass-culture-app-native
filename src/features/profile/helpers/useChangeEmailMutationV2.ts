@@ -10,7 +10,7 @@ import {
 } from 'ui/components/snackBar/SnackBarContext'
 
 export const useChangeEmailMutationV2 = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { replace } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const { mutate: changeEmail, isLoading } = useMutation(
@@ -22,7 +22,7 @@ export const useChangeEmailMutationV2 = () => {
             'E-mail envoyé sur ton adresse actuelle\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
           timeout: SNACK_BAR_TIME_OUT_LONG,
         })
-        navigate('TrackEmailChange')
+        replace('TrackEmailChange')
       },
       onError: () => {
         showErrorSnackBar({
