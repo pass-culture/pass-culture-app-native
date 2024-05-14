@@ -93,10 +93,49 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
       }
   {{/required}}
   {{/allParams}}
-      const pathname = `{{{path}}}`{{#queryParams}}.concat(`?{{paramName}}=${ {{paramName}} }`){{/queryParams}}{{#pathParams}}.replace(
+      let pathname = `{{{path}}}`{{#pathParams}}.replace(
         `{${'{{baseName}}'}}`,
         encodeURIComponent(String({{paramName}}))
       ){{/pathParams}}
+  {{#hasQueryParams}}
+      {{! Imported from https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator/src/main/resources/typescript-fetch/apis.mustache }}
+      const queryParameters: any = {};
+
+      {{#queryParams}}
+        {{#isArray}}
+        // IS ARRAY
+        if ({{paramName}} != null) {
+            {{#isCollectionFormatMulti}}
+            queryParameters['{{baseName}}'] = {{paramName}};
+            {{/isCollectionFormatMulti}}
+            {{^isCollectionFormatMulti}}
+            queryParameters['{{baseName}}'] = {{#uniqueItems}}Array.from({{/uniqueItems}}{{paramName}}{{#uniqueItems}}){{/uniqueItems}}!.join(runtime.COLLECTION_FORMATS["{{collectionFormat}}"]);
+            {{/isCollectionFormatMulti}}
+        }
+
+        {{/isArray}}
+        {{^isArray}}
+        if ({{paramName}} != null) {
+            {{#isDateTimeType}}
+            queryParameters['{{baseName}}'] = ({{paramName}} as any).toISOString();
+            {{/isDateTimeType}}
+            {{^isDateTimeType}}
+            {{#isDateType}}
+            queryParameters['{{baseName}}'] = ({{paramName}} as any).toISOString().substring(0,10);
+            {{/isDateType}}
+            {{^isDateType}}
+            queryParameters['{{baseName}}'] = {{paramName}};
+            {{/isDateType}}
+            {{/isDateTimeType}}
+        }
+
+        {{/isArray}}
+      {{/queryParams}}
+      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
+        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+      }).join('&')
+      pathname += encodedQueryParams
+  {{/hasQueryParams}}
       let secureOptions = Object.assign(options, { credentials: 'omit' })
   {{#authMethods}}
       // authentication {{name}} required
