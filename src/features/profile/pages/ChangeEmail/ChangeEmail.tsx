@@ -1,5 +1,4 @@
 import React from 'react'
-import { Platform, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -7,7 +6,6 @@ import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheck
 import { ChangeEmailContentDeprecated } from 'features/profile/pages/ChangeEmail/ChangeEmailContentDeprecated'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { theme } from 'theme'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 
 import { ChangeEmailContent } from './ChangeEmailContent'
@@ -42,16 +40,6 @@ export function ChangeEmail() {
 export const CenteredContainer = styled.View({
   flex: 1,
   alignItems: 'center',
-})
-
-export const getScrollViewContentContainerStyle = (
-  keyboardHeight: number
-): StyleProp<ViewStyle> => ({
-  flexGrow: 1,
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  paddingBottom: Platform.OS === 'ios' ? keyboardHeight : 0,
-  backgroundColor: theme.colors.white,
 })
 
 export const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
