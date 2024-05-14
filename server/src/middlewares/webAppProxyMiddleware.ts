@@ -48,6 +48,9 @@ export function fixHTMLFallbackStatusCode(req: IncomingMessage, proxyRes: Incomi
   if (proxyRes.statusCode === 404 && !req.headers['range']) {
     return 200
   }
+  if (proxyRes.statusCode == null) {
+    return 500
+  }
   return proxyRes.statusCode as number
 }
 
