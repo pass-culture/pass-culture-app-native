@@ -1,11 +1,10 @@
 import React, { FC } from 'react'
-import styled from 'styled-components/native'
+import styled, { DefaultTheme } from 'styled-components/native'
 
 import { OpeningHours } from 'features/venue/types'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { getOpeningHoursStatus, OpeningHoursStatusState } from './getOpeningHoursStatus'
 
@@ -19,21 +18,32 @@ export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate }) => 
     openingHours,
     currentDate,
   })
-  const color = colors[state]
   return (
     <Container>
-      <ClockFilled color={color as ColorsEnum} size={16} />
-      <Typo.Caption style={{ color }}>{text}</Typo.Caption>
+      <StyledClock state={state} />
+      <StyledText state={state}>{text}</StyledText>
     </Container>
   )
 }
 
-const colors: Record<OpeningHoursStatusState, ColorsEnum | string> = {
-  open: ColorsEnum.GREEN_VALID,
-  close: ColorsEnum.ERROR,
-  'close-soon': '#D77419',
-  'open-soon': '#D77419',
+const getColorFromState = (theme: DefaultTheme) => (state: OpeningHoursStatusState) => {
+  return {
+    open: theme.colors.greenValid,
+    close: theme.colors.error,
+    'open-soon': theme.colors.orange,
+    'close-soon': theme.colors.orange,
+  }[state]
 }
+
+const StyledClock = styled(ClockFilled).attrs<{ state: OpeningHoursStatusState }>(
+  ({ theme, state }) => {
+    return { color: getColorFromState(theme)(state), size: 16 }
+  }
+)<{ state: OpeningHoursStatusState }>``
+
+const StyledText = styled(Typo.Caption)<{ state: OpeningHoursStatusState }>(({ state, theme }) => ({
+  color: getColorFromState(theme)(state),
+}))
 
 const Container = styled.View({
   display: 'flex',

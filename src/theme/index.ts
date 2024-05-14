@@ -200,6 +200,7 @@ export const theme = {
     coralLight: ColorsEnum.CORAL_LIGHT,
     lilac: ColorsEnum.LILAC,
     lilacLight: ColorsEnum.LILAC_LIGHT,
+    orange: ColorsEnum.ORANGE,
   },
   uniqueColors: {
     tabBar: UniqueColors.TAB_BAR,
