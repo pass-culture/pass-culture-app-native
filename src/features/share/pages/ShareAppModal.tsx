@@ -36,7 +36,7 @@ export const ShareAppModal: FunctionComponent<Props> = ({ visible, hideModal, mo
     hideModal()
   }, [modalType, hideModal])
 
-  const { title, subtitle } = shareAppModalInformations(shareAppWordingVersion)
+  const { title, subtitleComponent } = shareAppModalInformations(shareAppWordingVersion)
 
   return (
     <MarketingModal
@@ -44,7 +44,7 @@ export const ShareAppModal: FunctionComponent<Props> = ({ visible, hideModal, mo
       title={title}
       imageSource={SHARE_APP_IMAGE_SOURCE}
       onBackdropPress={closeModal}>
-      {subtitle}
+      {subtitleComponent}
       <Spacer.Column numberOfSpaces={6} />
       <ButtonContainer>
         <ButtonWithLinearGradient

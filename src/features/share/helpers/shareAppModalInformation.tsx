@@ -10,7 +10,7 @@ export const shareAppModalInformations = (wordingVersion: ShareAppWordingVersion
     case 'statistics':
       return {
         title: 'Fais tourner le bon plan\u00a0!',
-        subtitle: (
+        subtitleComponent: (
           <StyledBody>
             <Typo.ButtonText>
               35&nbsp;% des jeunes en France n’ont pas encore le pass Culture.
@@ -24,7 +24,7 @@ export const shareAppModalInformations = (wordingVersion: ShareAppWordingVersion
     case 'short':
       return {
         title: 'Passe le bon plan\u00a0!',
-        subtitle: (
+        subtitleComponent: (
           <StyledBody>
             Recommande l’app à tes amis pour qu’ils profitent du pass Culture&nbsp;!
           </StyledBody>
@@ -35,7 +35,7 @@ export const shareAppModalInformations = (wordingVersion: ShareAppWordingVersion
     default:
       return {
         title: 'La culture, ça se partage\u00a0!',
-        subtitle: (
+        subtitleComponent: (
           <StyledBody>
             Recommande l’appli à tes amis pour qu’ils profitent eux aussi de tous les bons plans du
             pass Culture.
