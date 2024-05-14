@@ -35,8 +35,9 @@ export function BeneficiaryAccountCreated() {
 
   const onBeforeNavigate = useCallback(() => {
     BatchUser.trackEvent(BatchEvent.hasValidatedSubscription)
+    if (user?.needsToFillCulturalSurvey) return
     showShareAppModal(ShareAppModalType.BENEFICIARY)
-  }, [showShareAppModal])
+  }, [showShareAppModal, user])
 
   useEnterKeyAction(navigateToHome)
 
