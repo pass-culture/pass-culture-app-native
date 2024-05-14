@@ -9,8 +9,8 @@ const meta: ComponentMeta<typeof OpeningHoursStatus> = {
 }
 export default meta
 
-export const Template: ComponentStory<typeof OpeningHoursStatus> = (props) => (
-  <OpeningHoursStatus {...props} />
+const Template: ComponentStory<typeof OpeningHoursStatus> = (props) => (
+  <OpeningHoursStatus {...props} currentDate={new Date(props.currentDate)} />
 )
 const openingHours = {
   MONDAY: [{ open: '09:00', close: '19:00' }],
