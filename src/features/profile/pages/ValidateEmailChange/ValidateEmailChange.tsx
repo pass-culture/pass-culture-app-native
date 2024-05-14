@@ -54,7 +54,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
       })
     } catch (error) {
       if (error instanceof ApiError && error.statusCode === 401) {
-        navigation.replace('ChangeEmailExpiredLink')
+        navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })
         return
       }
       showErrorSnackBar({
@@ -73,7 +73,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
         navigation.replace(...homeNavConfig)
       }
       if (emailUpdateStatus?.expired) {
-        navigation.replace('ChangeEmailExpiredLink')
+        navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })
       }
     }
   }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])

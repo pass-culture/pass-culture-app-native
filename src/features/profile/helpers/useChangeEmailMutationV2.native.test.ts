@@ -1,4 +1,4 @@
-import { navigate } from '__mocks__/@react-navigation/native'
+import { replace } from '__mocks__/@react-navigation/native'
 import { useChangeEmailMutationV2 } from 'features/profile/helpers/useChangeEmailMutationV2'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -41,7 +41,7 @@ describe('useChangeEmailMutationV2', () => {
 
     await act(async () => changeEmail())
 
-    expect(navigate).toHaveBeenCalledWith('TrackEmailChange')
+    expect(replace).toHaveBeenCalledWith('TrackEmailChange')
   })
 
   it('should show snack bar on error', async () => {

@@ -22,7 +22,7 @@ import { Spacer } from 'ui/theme'
 const isWeb = Platform.OS === 'web'
 
 export const TrackEmailChangeContent = () => {
-  const { replace } = useNavigation<UseNavigationType>()
+  const { replace, reset } = useNavigation<UseNavigationType>()
 
   const { user } = useAuthContext()
   const { data: requestStatus, isLoading: isRequestStatusLoading } = useEmailUpdateStatusV2()
@@ -116,7 +116,7 @@ export const TrackEmailChangeContent = () => {
     return null
   }
   if (!isRequestStatusLoading && requestStatus?.expired) {
-    replace('ChangeEmailExpiredLink')
+    reset({ index: 0, routes: [{ name: 'ChangeEmailExpiredLink' }] })
     return null
   }
 
