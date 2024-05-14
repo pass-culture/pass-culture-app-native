@@ -21,7 +21,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
         >
           <button
             aria-label="Revenir en arrière"
-            class="sc-fqkvVR gugcSC sc-dhKdcB fyWoOd sc-dhKdcB fyWoOd"
+            class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-dcJsrY jcnTQC sc-dcJsrY jcnTQC"
             data-testid="Revenir en arrière"
             tabindex="0"
             title="Revenir en arrière"
@@ -126,7 +126,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
           class="css-view-175oi2r r-height-3da1kt"
         />
         <form
-          class="sc-jXbUNg eDWWms"
+          class="Form-web__Flex-sc-7d462c68-1 gNwJzj"
         >
           <div
             class="css-view-175oi2r r-paddingVertical-1yzf0co"
@@ -138,7 +138,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="InputLabel-web__InputLabel-sc-30b170db-0 nhRRt"
                   for="1"
                 >
                   <div
@@ -237,7 +237,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="InputLabel-web__InputLabel-sc-30b170db-0 nhRRt"
                   for="3"
                 >
                   <div
@@ -319,7 +319,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="InputLabel-web__InputLabel-sc-30b170db-0 nhRRt"
                   for="5"
                 >
                   <div
@@ -398,7 +398,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="InputLabel-web__InputLabel-sc-30b170db-0 nhRRt"
                   for="7"
                 >
                   <div
@@ -477,7 +477,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="InputLabel-web__InputLabel-sc-30b170db-0 nhRRt"
                   for="9"
                 >
                   <div
@@ -556,7 +556,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="InputLabel-web__InputLabel-sc-30b170db-0 nhRRt"
                   for="11"
                 >
                   <div
@@ -635,7 +635,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="InputLabel-web__InputLabel-sc-30b170db-0 nhRRt"
                   for="13"
                 >
                   <div
@@ -714,7 +714,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               >
                 <label
-                  class="sc-iGgWBj hReHDH"
+                  class="InputLabel-web__InputLabel-sc-30b170db-0 nhRRt"
                   for="15"
                 >
                   <div
@@ -788,7 +788,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
           />
           <button
             aria-label="Enregistrer les modifications"
-            class="sc-aXZVg fHvPyA sc-eqUAAy izgGWY"
+            class="AppButton-web__Button-sc-6e9d26f-0 cswlTK sc-aXZVg jbuYPK"
             data-testid="Enregistrer les modifications"
             disabled=""
             type="button"

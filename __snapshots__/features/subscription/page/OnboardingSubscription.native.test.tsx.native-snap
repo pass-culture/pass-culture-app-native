@@ -115,16 +115,16 @@ exports[`OnboardingSubscription should render correctly 1`] = `
   <RCTScrollView
     ListHeaderComponent={
       <React.Fragment>
-        <Styled(Styled(Text))>
+        <OnboardingSubscription__StyledTitle3>
           Choisis des thèmes à suivre
-        </Styled(Styled(Text))>
-        <Styled(View)
+        </OnboardingSubscription__StyledTitle3>
+        <Spacer__ColumnSpacer
           numberOfSpaces={4}
         />
-        <Styled(Text)>
+        <typography__Body>
           Tu recevras des notifs et/ou des mails pour ne rien rater des dernières sorties et actus !
-        </Styled(Text)>
-        <Styled(View)
+        </typography__Body>
+        <Spacer__ColumnSpacer
           numberOfSpaces={6}
         />
       </React.Fragment>

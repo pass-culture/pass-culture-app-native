@@ -435,17 +435,17 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
       ListHeaderComponent={
         <React.Fragment>
           <React.Fragment>
-            <Styled(View)
+            <Spacer__ColumnSpacer
               numberOfSpaces={4}
             />
             <VenueMapBlock
               from="searchLanding"
             />
-            <Styled(View)
+            <Spacer__ColumnSpacer
               numberOfSpaces={2}
             />
           </React.Fragment>
-          <Styled(Styled(Text)) />
+          <CategoriesButtonsDisplay__CategoriesTitle />
           <IncentiveLocationModal
             handleActiveLocationButtonPress={[Function]}
             handleCloseModal={[Function]}

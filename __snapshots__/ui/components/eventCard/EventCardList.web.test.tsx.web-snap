@@ -20,7 +20,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
+                    class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg ZBomM sc-aXZVg ZBomM"
                     data-testid="event-card"
                     tabindex="0"
                     type="button"
@@ -70,7 +70,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
+                    class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg ZBomM sc-aXZVg ZBomM"
                     data-testid="event-card"
                     tabindex="0"
                     type="button"
@@ -120,7 +120,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
+                    class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg jAZXBd sc-aXZVg jAZXBd"
                     data-testid="event-card"
                     disabled=""
                     tabindex="0"
@@ -171,7 +171,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
+                    class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg jAZXBd sc-aXZVg jAZXBd"
                     data-testid="event-card"
                     disabled=""
                     tabindex="0"
@@ -212,7 +212,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
+                    class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg jAZXBd sc-aXZVg jAZXBd"
                     data-testid="event-card"
                     disabled=""
                     tabindex="0"
@@ -253,7 +253,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
+                    class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg ZBomM sc-aXZVg ZBomM"
                     data-testid="event-card"
                     tabindex="0"
                     type="button"
@@ -303,7 +303,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
+                    class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg jAZXBd sc-aXZVg jAZXBd"
                     data-testid="event-card"
                     disabled=""
                     tabindex="0"
@@ -344,7 +344,7 @@ exports[`EventCardList should render correctly 1`] = `
                   class="css-view-175oi2r"
                 >
                   <button
-                    class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
+                    class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg ZBomM sc-aXZVg ZBomM"
                     data-testid="event-card"
                     tabindex="0"
                     type="button"
@@ -398,7 +398,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
+                  class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg ZBomM sc-aXZVg ZBomM"
                   data-testid="event-card"
                   tabindex="0"
                   type="button"
@@ -448,7 +448,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
+                  class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg ZBomM sc-aXZVg ZBomM"
                   data-testid="event-card"
                   tabindex="0"
                   type="button"
@@ -498,7 +498,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
+                  class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg jAZXBd sc-aXZVg jAZXBd"
                   data-testid="event-card"
                   disabled=""
                   tabindex="0"
@@ -549,7 +549,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
+                  class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg jAZXBd sc-aXZVg jAZXBd"
                   data-testid="event-card"
                   disabled=""
                   tabindex="0"
@@ -590,7 +590,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
+                  class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg jAZXBd sc-aXZVg jAZXBd"
                   data-testid="event-card"
                   disabled=""
                   tabindex="0"
@@ -631,7 +631,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
+                  class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg ZBomM sc-aXZVg ZBomM"
                   data-testid="event-card"
                   tabindex="0"
                   type="button"
@@ -681,7 +681,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="sc-aXZVg igdJKW sc-gEvEer hNOmzN sc-gEvEer hNOmzN"
+                  class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg jAZXBd sc-aXZVg jAZXBd"
                   data-testid="event-card"
                   disabled=""
                   tabindex="0"
@@ -722,7 +722,7 @@ exports[`EventCardList should render correctly 1`] = `
                 class="css-view-175oi2r"
               >
                 <button
-                  class="sc-aXZVg igdJKW sc-gEvEer eRLKPU sc-gEvEer eRLKPU"
+                  class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg ZBomM sc-aXZVg ZBomM"
                   data-testid="event-card"
                   tabindex="0"
                   type="button"
