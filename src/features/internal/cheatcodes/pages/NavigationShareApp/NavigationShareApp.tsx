@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
-import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/share/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 export function NavigationShareApp(): React.JSX.Element {

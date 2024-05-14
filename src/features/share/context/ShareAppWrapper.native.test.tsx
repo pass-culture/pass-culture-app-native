@@ -1,5 +1,6 @@
 import { ShareAppWrapper, useShareAppContext } from 'features/share/context/ShareAppWrapper'
-import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/share/types'
+import { analytics } from 'libs/analytics'
 import { renderHook, act } from 'tests/utils'
 
 const mockShowModal = jest.fn()
@@ -35,6 +36,20 @@ describe('useShareAppContext()', () => {
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
     expect(mockShareAppModal).toHaveBeenCalledWith(modalType)
+  })
+
+  it.each([
+    ShareAppModalType.BENEFICIARY,
+    ShareAppModalType.NOT_ELIGIBLE,
+    ShareAppModalType.ON_BOOKING_SUCCESS,
+  ])('should log analytics when displaying modal', async (modalType) => {
+    const { result } = renderShareAppHook()
+
+    await act(async () => {
+      result.current.showShareAppModal(modalType)
+    })
+
+    expect(analytics.logShowShareAppModal).toHaveBeenCalledWith({ type: modalType })
   })
 })
 

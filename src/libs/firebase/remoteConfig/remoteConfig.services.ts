@@ -44,6 +44,8 @@ export const remoteConfig = {
       // @ts-expect-error: because of noUncheckedIndexedAccess
       sameAuthorPlaylist: parameters.sameAuthorPlaylist.asString(),
       // @ts-expect-error: because of noUncheckedIndexedAccess
+      shareAppWordingVersion: parameters.shareAppWordingVersion.asString(),
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       shouldDisplayReassuranceMention: parameters.shouldDisplayReassuranceMention.asBoolean(),
       // @ts-expect-error: because of noUncheckedIndexedAccess
       subscriptionHomeEntryIds: JSON.parse(parameters.subscriptionHomeEntryIds.asString()),

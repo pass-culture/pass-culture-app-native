@@ -164,6 +164,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logShare: jest.fn(),
   logShareApp: jest.fn(),
   logShowParentInformationModal: jest.fn(),
+  logShowShareAppModal: jest.fn(),
   logSignInFromAuthenticationModal: jest.fn(),
   logSignInFromFavorite: jest.fn(),
   logSignInFromOffer: jest.fn(),

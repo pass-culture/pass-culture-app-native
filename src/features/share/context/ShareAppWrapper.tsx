@@ -1,7 +1,8 @@
 import React, { memo, useCallback, useContext, useMemo, useState } from 'react'
 
-import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { ShareAppModal } from 'features/share/pages/ShareAppModal'
+import { ShareAppModalType } from 'features/share/types'
+import { analytics } from 'libs/analytics'
 import { useModal } from 'ui/components/modals/useModal'
 
 interface ShareAppContextValue {
@@ -22,6 +23,7 @@ export const ShareAppWrapper = memo(function ShareAppWrapper({
 
   const showShareAppModal = useCallback(
     (modalType: ShareAppModalType) => {
+      analytics.logShowShareAppModal({ type: modalType })
       setModalType(modalType)
       showModal()
     },

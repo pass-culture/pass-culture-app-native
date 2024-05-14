@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/share/types'
 import { render } from 'tests/utils/web'
 
 import { ShareAppModal } from './ShareAppModal'

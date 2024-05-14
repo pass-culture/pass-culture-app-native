@@ -1,8 +1,10 @@
 import React from 'react'
 
 import * as Share from 'features/share/helpers/shareApp'
-import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { ShareAppModalType, ShareAppWordingVersion } from 'features/share/types'
 import { analytics } from 'libs/analytics'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ShareAppModal } from './ShareAppModal'
@@ -11,42 +13,30 @@ const visible = true
 const hideModal = jest.fn()
 const shareApp = jest.spyOn(Share, 'shareApp').mockResolvedValue()
 
+const useRemoteConfigContextSpy = jest
+  .spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+  .mockReturnValue(DEFAULT_REMOTE_CONFIG)
+
 describe('ShareAppModal', () => {
-  it('should match underage modal snapshot when underage', () => {
-    render(
-      <ShareAppModal
-        visible={visible}
-        hideModal={hideModal}
-        modalType={ShareAppModalType.NOT_ELIGIBLE}
-      />
-    )
+  it.each(['default', 'statistics', 'short'])(
+    'should match snapshot for %s wording',
+    (wordingVersion) => {
+      useRemoteConfigContextSpy.mockReturnValueOnce({
+        ...DEFAULT_REMOTE_CONFIG,
+        shareAppWordingVersion: wordingVersion as ShareAppWordingVersion,
+      })
 
-    expect(screen).toMatchSnapshot()
-  })
+      render(
+        <ShareAppModal
+          visible={visible}
+          hideModal={hideModal}
+          modalType={ShareAppModalType.NOT_ELIGIBLE}
+        />
+      )
 
-  it('should match beneficiary modal snapshot when beneficiary', () => {
-    render(
-      <ShareAppModal
-        visible={visible}
-        hideModal={hideModal}
-        modalType={ShareAppModalType.BENEFICIARY}
-      />
-    )
-
-    expect(screen).toMatchSnapshot()
-  })
-
-  it('should match booking modal snapshot when booking', () => {
-    render(
-      <ShareAppModal
-        visible={visible}
-        hideModal={hideModal}
-        modalType={ShareAppModalType.ON_BOOKING_SUCCESS}
-      />
-    )
-
-    expect(screen).toMatchSnapshot()
-  })
+      expect(screen).toMatchSnapshot()
+    }
+  )
 
   it('should open native share modal when clicking on "Partager l’appli" button', async () => {
     render(

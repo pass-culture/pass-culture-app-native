@@ -14,7 +14,7 @@ import { Referrals, StepperOrigin } from 'features/navigation/RootNavigator/type
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
-import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { AmplitudeEvent } from 'libs/amplitude/events'
@@ -598,6 +598,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SHARE_APP }, { from, type }),
   logShowParentInformationModal: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SHOW_PARENT_INFORMATION_MODAL }),
+  logShowShareAppModal: ({ type }: { type: ShareAppModalType }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.SHOW_SHARE_APP_MODAL }, { type }),
   logSignInFromAuthenticationModal: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.SIGN_IN_FROM_AUTHENTICATION_MODAL },
