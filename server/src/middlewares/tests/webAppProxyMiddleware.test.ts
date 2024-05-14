@@ -295,5 +295,9 @@ describe('metasResponseInterceptor', () => {
       expect(fixHTMLFallbackStatusCode({headers: {range: "bytes=0-10"}} as IncomingMessage, {statusCode: 404} as IncomingMessage)).toEqual(404)
     })
 
+    it('should return 304 when If-Modified-Since is set and backend responds with 304', () => {
+      expect(fixHTMLFallbackStatusCode({headers: {"if-modified-since": "If-Modified-Since: Tue, 14 May 2024 18:28:00 GMT"}} as IncomingMessage, {statusCode: 304} as IncomingMessage)).toEqual(304)
+    })
+
   })
 })
