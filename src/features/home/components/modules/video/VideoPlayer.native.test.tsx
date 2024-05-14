@@ -2,7 +2,7 @@ import React from 'react'
 
 import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { render, screen } from 'tests/utils'
 const mockOffer = mockedAlgoliaResponse.hits[0]
 const hideModalMock = jest.fn()

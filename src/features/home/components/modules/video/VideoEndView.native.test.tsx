@@ -2,7 +2,7 @@ import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'

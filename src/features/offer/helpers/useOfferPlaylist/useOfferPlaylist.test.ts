@@ -6,7 +6,7 @@ import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlay
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   moreHitsForSimilarOffersPlaylist,
-} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+} from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position } from 'libs/location'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { RecommendationApiParams } from 'shared/offer/types'

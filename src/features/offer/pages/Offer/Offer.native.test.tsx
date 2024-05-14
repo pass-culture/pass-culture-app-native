@@ -4,7 +4,7 @@ import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
-import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { screen, waitFor } from 'tests/utils'
 

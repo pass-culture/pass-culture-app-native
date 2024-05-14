@@ -3,6 +3,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
@@ -13,6 +14,11 @@ import { AgeSelection } from './AgeSelection'
 const AGES = [15, 16, 17, 18]
 
 jest.mock('features/navigation/navigationRef')
+
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
+})
 
 describe('AgeSelection', () => {
   beforeEach(async () => {

@@ -9,7 +9,7 @@ import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/analytics/__mocks__/provider'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { fireEvent, render, screen } from 'tests/utils'
 

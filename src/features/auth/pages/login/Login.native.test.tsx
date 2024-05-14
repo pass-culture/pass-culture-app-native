@@ -3,7 +3,6 @@ import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import * as API from 'api/api'
 import {
@@ -13,15 +12,16 @@ import {
   SigninResponse,
   UserProfileResponse,
 } from 'api/gen'
-import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
@@ -558,7 +558,7 @@ describe('<Login/>', () => {
     beforeAll(() => {
       return jest
         .spyOn(SettingsContextAPI, 'useSettingsContext')
-        .mockReturnValue({ data: mockDefaultSettings, isLoading: false })
+        .mockReturnValue({ data: defaultSettings, isLoading: false })
     })
 
     it('should not open reCAPTCHA challenge modal before clicking on login button', async () => {

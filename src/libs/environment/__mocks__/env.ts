@@ -1,3 +1,3 @@
-import { env as envFixtures } from './envFixtures'
+import { env as envFixtures } from '../fixtures'
 
 export const env = envFixtures

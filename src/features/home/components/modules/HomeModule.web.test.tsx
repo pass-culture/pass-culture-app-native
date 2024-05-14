@@ -14,7 +14,7 @@ import {
 } from 'features/home/fixtures/homepage.fixture'
 import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'

@@ -3,7 +3,7 @@ import React from 'react'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { FavoriteSortBy } from 'features/favorites/types'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import {
   GeolocPositionError,
@@ -11,7 +11,6 @@ import {
   GeolocationError,
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
-  Position,
 } from 'libs/location'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
@@ -19,41 +18,37 @@ jest.mock('features/favorites/context/FavoritesWrapper', () =>
   jest.requireActual('features/favorites/context/FavoritesWrapper')
 )
 
-const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
-let mockPermissionState = GeolocPermissionState.GRANTED
-let mockPosition: Position = DEFAULT_POSITION
-let mockPositionError: GeolocationError | null = null
-const mockTriggerPositionUpdate = jest.fn()
-const mockShowGeolocPermissionModal = jest.fn()
-const mockRequestGeolocPermission = jest.fn()
-
+const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
+const mockPositionError = null as GeolocationError | null
+const defaultUseLocation = {
+  permissionState: GeolocPermissionState.GRANTED,
+  geolocPosition: DEFAULT_POSITION,
+  geolocPositionError: mockPositionError,
+  triggerPositionUpdate: jest.fn(),
+  showGeolocPermissionModal: jest.fn(),
+  requestGeolocPermission: jest.fn(),
+}
+const mockUseLocation = jest.fn(() => defaultUseLocation)
 jest.mock('libs/location/LocationWrapper', () => ({
-  useLocation: () => ({
-    permissionState: mockPermissionState,
-    geolocPosition: mockPosition,
-    geolocPositionError: mockPositionError,
-    triggerPositionUpdate: mockTriggerPositionUpdate,
-    showGeolocPermissionModal: mockShowGeolocPermissionModal,
-    requestGeolocPermission: mockRequestGeolocPermission,
-  }),
+  useLocation: () => mockUseLocation(),
 }))
 
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
+
 describe('<FavoritesSorts/>', () => {
-  beforeEach(() => {
-    mockPermissionState = GeolocPermissionState.GRANTED
-    mockPosition = DEFAULT_POSITION
-    mockPositionError = null
-  })
-
-  afterEach(jest.resetAllMocks)
-
   it('should render correctly', () => {
+    mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     renderFavoritesSort()
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should go back on validate', async () => {
+    mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     renderFavoritesSort()
 
     fireEvent.press(screen.getByText('Valider'))
@@ -76,6 +71,7 @@ describe('<FavoritesSorts/>', () => {
       sortByWording: string
       expectedAnalytics: FavoriteSortBy
     }) => {
+      mockUseLocation.mockReturnValueOnce(defaultUseLocation)
       renderFavoritesSort()
 
       fireEvent.press(screen.getByText(sortByWording))
@@ -90,19 +86,26 @@ describe('<FavoritesSorts/>', () => {
   )
 
   it('should display error message when clicking on "Proximité géographique" and position is unavailable', async () => {
-    mockPosition = null
-    mockPositionError = {
-      type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
-      message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
-    }
+    mockUseLocation.mockReturnValueOnce({
+      ...defaultUseLocation,
+      geolocPosition: null,
+      geolocPositionError: {
+        type: GeolocPositionError.SETTINGS_NOT_SATISFIED,
+        message: GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED],
+      },
+    })
+
     renderFavoritesSort()
 
     fireEvent.press(screen.getByText('Proximité géographique'))
 
-    expect(screen.getByText(mockPositionError.message)).toBeOnTheScreen()
+    expect(
+      screen.getByText(GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED])
+    ).toBeOnTheScreen()
   })
 
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {
+    mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     renderFavoritesSort()
 
     fireEvent.press(screen.getByText('Proximité géographique'))
@@ -119,8 +122,12 @@ describe('<FavoritesSorts/>', () => {
   })
 
   it('should NOT trigger analytics=AROUND_ME when clicking on "Proximité géographique" then refusing geoloc then validating', async () => {
-    mockPosition = null
-    mockPermissionState = GeolocPermissionState.DENIED
+    mockUseLocation.mockReturnValueOnce({
+      ...defaultUseLocation,
+      geolocPosition: null,
+      permissionState: GeolocPermissionState.DENIED,
+    })
+
     renderFavoritesSort()
 
     fireEvent.press(screen.getByText('Proximité géographique'))

@@ -3,12 +3,12 @@ import algoliasearch from 'algoliasearch'
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
+import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
+import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
 import {
   mockedAlgoliaResponse,
   mockedAlgoliaVenueResponse,
-} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
-import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
+} from 'libs/algolia/fixtures/algoliaFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
 
@@ -96,7 +96,7 @@ describe('useSearchResults', () => {
       jest.spyOn(fetchSearchResults, 'fetchSearchResults').mockResolvedValueOnce({
         offersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
         venuesResponse: mockedAlgoliaVenueResponse,
-        facetsResponse: mockedFacets,
+        facetsResponse: algoliaFacets,
       })
 
       const { result } = renderHook(

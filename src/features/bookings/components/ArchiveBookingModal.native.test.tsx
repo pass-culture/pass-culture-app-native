@@ -4,7 +4,7 @@ import {
   ArchiveBookingModal,
   ArchiveBookingModalProps,
 } from 'features/bookings/components/ArchiveBookingModal'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
@@ -23,6 +23,12 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,
 }))
+
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
 
 describe('<ArchiveBookingModal />', () => {
   it('should call on onDismiss', () => {

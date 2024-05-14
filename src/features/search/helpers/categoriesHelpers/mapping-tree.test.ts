@@ -3,7 +3,7 @@ import {
   bookTreeResultFixture,
   treeResultFixture,
 } from 'features/search/helpers/categoriesHelpers/mappingFixture'
-import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
+import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
 import { FacetData } from 'libs/algolia/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
@@ -18,7 +18,7 @@ describe('MappingTree', () => {
     expect(
       createMappingTree(
         mockedSubcateroriesV2Response,
-        mockedFacets.facets as FacetData,
+        algoliaFacets.facets as FacetData,
         !mockedNewMappingEnabled
       )
     ).toEqual(expectedResult)

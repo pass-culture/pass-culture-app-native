@@ -9,7 +9,7 @@ interface SearchResponse {
   nbHits: number
 }
 
-export const mockVenues = toMutable({
+export const venuesSearchFixture = toMutable({
   hits: [
     {
       id: 5543,

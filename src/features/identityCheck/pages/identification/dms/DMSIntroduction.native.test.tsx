@@ -3,11 +3,17 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms/DMSIntroduction'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
+})
 
 describe('DMSIntroduction', () => {
   it('should log screen view when the screen is mounted', async () => {

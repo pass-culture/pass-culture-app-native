@@ -17,8 +17,8 @@ import {
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { env } from 'libs/environment'
 import { GeoCoordinates, ILocationContext, Position, useLocation } from 'libs/location'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -91,7 +91,7 @@ const defaultData: ModuleData = {
 }
 
 const defaultDataVenues: ModuleData = {
-  playlistItems: mockVenues.hits,
+  playlistItems: venuesSearchFixture.hits,
   nbPlaylistResults: 4,
   moduleId: 'blablabla',
 }

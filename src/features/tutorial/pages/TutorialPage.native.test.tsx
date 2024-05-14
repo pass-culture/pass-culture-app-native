@@ -1,9 +1,15 @@
 import React from 'react'
 
+import * as useGoBack from 'features/navigation/useGoBack'
 import { fireEvent, render, screen } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 import { TutorialPage } from './TutorialPage'
+
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
+})
 
 describe('TutorialPage', () => {
   it('should render correctly', () => {

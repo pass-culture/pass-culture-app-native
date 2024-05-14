@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'

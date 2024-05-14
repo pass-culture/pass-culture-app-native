@@ -1,3 +1,5 @@
+import { SettingsResponse } from 'api/gen'
+
 export const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
 export const ELIGIBLE_AGE_DATE = new Date('2003-12-01T00:00:00.000Z')
 export const DEFAULT_SELECTED_DATE = new Date('2006-12-01T00:00:00.000Z')
@@ -5,3 +7,17 @@ export const MINIMUM_DATE = new Date('1900-01-01T00:00:00.000Z')
 export const MAXIMUM_DATE = new Date('2006-12-01T00:00:00.000Z')
 export const EIGHTEEN_AGE_DATE = new Date('2002-12-01T00:00:00.000Z')
 export const SIXTEEN_AGE_DATE = new Date('2004-12-01T00:00:00.000Z')
+
+export const defaultSettings: SettingsResponse = {
+  accountCreationMinimumAge: 15,
+  accountUnsuspensionLimit: 60,
+  appEnableAutocomplete: true,
+  displayDmsRedirection: true,
+  enableFrontImageResizing: true,
+  enableNativeCulturalSurvey: false,
+  enableNativeIdCheckVerboseDebugging: false,
+  enablePhoneValidation: true,
+  idCheckAddressAutocompletion: true,
+  isRecaptchaEnabled: true,
+  objectStorageUrl: 'https://localhost-storage',
+}

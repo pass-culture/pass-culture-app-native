@@ -2,6 +2,7 @@ import React from 'react'
 
 import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/ubble/ExpiredOrLostID'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
@@ -9,6 +10,11 @@ import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 jest.mock('features/navigation/navigationRef')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
+})
 
 describe('ExpiredOrLostID', () => {
   it('should render correctly', () => {

@@ -12,7 +12,7 @@ import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlay
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
-} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+} from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Position } from 'libs/location'

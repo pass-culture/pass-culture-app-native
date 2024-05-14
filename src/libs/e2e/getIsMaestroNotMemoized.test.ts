@@ -1,4 +1,4 @@
-import { env } from 'libs/environment/__mocks__/envFixtures'
+import { env } from 'libs/environment/fixtures'
 
 import { getIsMaestroNotMemoized } from './getIsMaestroNotMemoized'
 

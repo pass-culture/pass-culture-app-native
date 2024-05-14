@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { AsyncError } from 'libs/monitoring'
 import { render, fireEvent, checkAccessibilityFor, screen } from 'tests/utils/web'
 
@@ -9,6 +9,12 @@ import { AsyncErrorBoundary } from './AsyncErrorBoundary'
 jest.mock('libs/monitoring/services')
 
 const resetErrorBoundary = jest.fn()
+
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
 
 describe('AsyncErrorBoundary component', () => {
   describe('Accessibility', () => {

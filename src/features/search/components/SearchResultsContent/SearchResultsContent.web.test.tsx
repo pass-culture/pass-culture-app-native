@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { mockedAlgoliaVenueResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaVenueResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

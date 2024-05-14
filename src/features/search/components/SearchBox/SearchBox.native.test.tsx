@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigationRef } from 'features/navigation/navigationRef'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchView, SearchState } from 'features/search/types'
@@ -110,6 +110,12 @@ const mockRoutesWithVenue = [
 const venue = mockedSuggestedVenue
 
 const searchId = uuidv4()
+
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
 
 jest.useFakeTimers()
 

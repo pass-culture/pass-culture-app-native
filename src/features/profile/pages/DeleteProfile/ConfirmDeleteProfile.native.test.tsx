@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { reset } from '__mocks__/@react-navigation/native'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment/env'
 import { mockServer } from 'tests/mswServer'
@@ -22,6 +22,12 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
 
 describe('ConfirmDeleteProfile component', () => {
   it('should render confirm delete profile', () => {

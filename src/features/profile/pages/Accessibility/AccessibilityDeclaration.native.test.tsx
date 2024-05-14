@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { AccessibilityDeclaration } from 'features/profile/pages/Accessibility/AccessibilityDeclaration'
-import { WEBAPP_V2_URL } from 'libs/environment/__mocks__/useWebAppUrl'
+import { WEBAPP_V2_URL } from 'libs/environment'
 import { render, fireEvent, screen } from 'tests/utils'
 
 const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')

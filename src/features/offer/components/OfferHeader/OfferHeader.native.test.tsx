@@ -4,7 +4,7 @@ import { Animated, Share } from 'react-native'
 import { OfferResponseV2, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
@@ -43,6 +43,12 @@ mockedUseSnackBarContext.mockReturnValue({
   showInfoSnackBar,
   showSuccessSnackBar,
   showErrorSnackBar,
+})
+
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
 })
 
 jest.useFakeTimers()

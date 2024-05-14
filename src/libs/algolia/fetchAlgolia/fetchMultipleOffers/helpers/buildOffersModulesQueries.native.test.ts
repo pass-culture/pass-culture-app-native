@@ -2,7 +2,7 @@ import { OffersPlaylistParameters } from 'features/home/types'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { buildOffersModulesQueries } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOffersModulesQueries'
-import { SearchQueryParametersFixture } from 'libs/algolia/fixtures'
+import { searchQueryParametersFixture } from 'libs/algolia/fixtures/searchQueryParametersFixture'
 import { LocationMode } from 'libs/algolia/types'
 
 describe('buildOffersModulesQueries', () => {
@@ -35,7 +35,7 @@ describe('buildOffersModulesQueries', () => {
 
   it('should return a list of offers queries', () => {
     const parameters = {
-      ...SearchQueryParametersFixture,
+      ...searchQueryParametersFixture,
     }
 
     const paramsListElement = {

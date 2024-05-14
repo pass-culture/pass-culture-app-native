@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { env } from 'libs/environment/__mocks__/envFixtures'
+import { env } from 'libs/environment/fixtures'
 import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 
 // @ts-ignore import is unresolved

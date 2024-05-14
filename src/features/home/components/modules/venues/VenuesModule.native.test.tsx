@@ -2,7 +2,7 @@ import React from 'react'
 
 import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
 import { ModuleData } from 'features/home/types'
-import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
+import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { DisplayParametersFields } from 'libs/contentful/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -14,8 +14,8 @@ const props = {
   homeEntryId: 'fakeEntryId',
   index: 1,
   data: {
-    playlistItems: mockVenues.hits,
-    nbPlaylistResults: mockVenues.hits.length,
+    playlistItems: venuesSearchFixture.hits,
+    nbPlaylistResults: venuesSearchFixture.hits.length,
     moduleId: 'fakemoduleid',
   },
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 import { SearchListFooter, SearchListFooterProps } from './SearchListFooter.web'

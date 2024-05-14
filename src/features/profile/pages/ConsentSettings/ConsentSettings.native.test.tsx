@@ -3,6 +3,7 @@ import React from 'react'
 
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import * as Tracking from 'features/cookies/helpers/startTrackingAcceptedCookies'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { analytics } from 'libs/analytics'
 import { EmptyResponse } from 'libs/fetch'
@@ -37,6 +38,11 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
   }),
 }))
+
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
+})
 
 describe('<ConsentSettings/>', () => {
   it('should render correctly', async () => {

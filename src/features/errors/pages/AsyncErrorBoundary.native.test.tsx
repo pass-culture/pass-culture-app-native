@@ -3,13 +3,19 @@ import { ErrorBoundary } from 'react-error-boundary'
 
 import { ApiError } from 'api/ApiError'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { AsyncError, MonitoringError, ScreenError, eventMonitoring } from 'libs/monitoring'
 import { render, fireEvent, screen } from 'tests/utils'
 
 import { AsyncErrorBoundary } from './AsyncErrorBoundary'
 
 jest.mock('libs/monitoring/services')
+
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
 
 describe('AsyncErrorBoundary component', () => {
   it('should render', () => {
