@@ -2,8 +2,14 @@ import React from 'react'
 import { Text } from 'react-native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { render } from 'tests/utils/web'
+
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
 
 describe('<PageWithHeader/>', () => {
   it('should render correctly', () => {

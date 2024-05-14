@@ -4,6 +4,7 @@ import { Keyboard } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
@@ -56,6 +57,11 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
     isFetchingNextPage: false,
   }),
 }))
+
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
+})
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock

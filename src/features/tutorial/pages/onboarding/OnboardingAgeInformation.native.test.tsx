@@ -4,11 +4,17 @@ import React from 'react'
 import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { StepperOrigin, TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { CreditStatus, TutorialTypes } from 'features/tutorial/enums'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
+
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
+})
 
 const AGES = [15, 16, 17, 18]
 

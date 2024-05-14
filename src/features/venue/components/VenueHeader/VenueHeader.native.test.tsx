@@ -1,7 +1,7 @@
 import React from 'react'
 import { Animated, Share } from 'react-native'
 
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
@@ -12,6 +12,12 @@ jest.mock('features/venue/api/useVenue')
 jest.useFakeTimers()
 
 jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
+
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
 
 describe('<VenueHeader />', () => {
   it('should render all icons', () => {

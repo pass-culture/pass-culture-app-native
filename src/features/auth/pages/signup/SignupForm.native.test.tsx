@@ -15,9 +15,9 @@ import { PreValidationSignupStep } from 'features/auth/enums'
 import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { SignInResponseFailure } from 'features/auth/types'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -46,6 +46,12 @@ const apiPostGoogleAuthorize = jest.spyOn(api, 'postNativeV1OauthGoogleAuthorize
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))
+
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
 
 mockdate.set(CURRENT_DATE)
 

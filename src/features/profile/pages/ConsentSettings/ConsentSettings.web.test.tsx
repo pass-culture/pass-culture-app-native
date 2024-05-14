@@ -1,5 +1,6 @@
 import React from 'react'
 
+import * as useGoBack from 'features/navigation/useGoBack'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
@@ -19,6 +20,11 @@ jest.mock('uuid', () => {
     v1: jest.fn(),
     v4: jest.fn(() => value++),
   }
+})
+
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
 })
 
 describe('<ConsentSettings/>', () => {

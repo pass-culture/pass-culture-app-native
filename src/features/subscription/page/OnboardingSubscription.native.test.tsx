@@ -3,8 +3,8 @@ import React from 'react'
 import { replace } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
@@ -25,6 +25,12 @@ const baseAuthContext = {
 }
 
 const postProfileSpy = jest.spyOn(API.api, 'postNativeV1Profile')
+
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
 
 describe('OnboardingSubscription', () => {
   beforeEach(() => mockUseAuthContext.mockReturnValue(baseAuthContext))

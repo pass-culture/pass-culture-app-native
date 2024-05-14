@@ -2,6 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { eventMonitoring, MonitoringError } from 'libs/monitoring'
@@ -20,6 +21,11 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showErrorSnackBar: mockShowErrorSnackBar,
   }),
 }))
+
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
+})
 
 describe('<SuspensionChoice/>', () => {
   it('should match snapshot', () => {

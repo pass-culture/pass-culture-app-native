@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -31,6 +32,11 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 const mockedUsePhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
+
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
+})
 
 describe('SetPhoneNumber', () => {
   it('should match snapshot without modal appearance', async () => {

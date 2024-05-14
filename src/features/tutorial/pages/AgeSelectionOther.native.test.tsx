@@ -4,6 +4,7 @@ import React from 'react'
 import { reset } from '__mocks__/@react-navigation/native'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
@@ -19,6 +20,11 @@ jest.mock('ui/components/modals/useModal', () => ({
     hideModal: jest.fn(),
   }),
 }))
+
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: jest.fn(),
+  canGoBack: jest.fn(() => true),
+})
 
 describe('AgeSelectionOther', () => {
   beforeEach(async () => {

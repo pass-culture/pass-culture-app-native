@@ -2,7 +2,7 @@ import React from 'react'
 import { act } from 'react-test-renderer'
 
 import { EmailHistoryEventTypeEnum, EmailUpdateStatus, EmailUpdateStatusResponse } from 'api/gen'
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import * as useGoBack from 'features/navigation/useGoBack'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -16,6 +16,12 @@ jest.mock('features/auth/context/AuthContext', () => ({
 }))
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
+const mockGoBack = jest.fn()
+jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
+  goBack: mockGoBack,
+  canGoBack: jest.fn(() => true),
+})
 
 describe('TrackEmailChange', () => {
   it('should render correctly when FF is disabled', async () => {
