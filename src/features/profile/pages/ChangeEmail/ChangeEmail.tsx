@@ -23,15 +23,13 @@ export function ChangeEmail() {
           <ChangeEmailContent hasCurrentEmailChange={hasCurrentEmailChange} user={user} />
         </SecondaryPageWithBlurHeader>
       ) : (
-        <React.Fragment>
-          <SecondaryPageWithBlurHeader title="Modifier mon e-mail">
-            <ChangeEmailContentDeprecated
-              disableOldChangeEmail={disableOldChangeEmail}
-              hasCurrentEmailChange={hasCurrentEmailChange}
-              user={user}
-            />
-          </SecondaryPageWithBlurHeader>
-        </React.Fragment>
+        <SecondaryPageWithBlurHeader title="Modifier mon e-mail">
+          <ChangeEmailContentDeprecated
+            disableOldChangeEmail={disableOldChangeEmail}
+            hasCurrentEmailChange={hasCurrentEmailChange}
+            user={user}
+          />
+        </SecondaryPageWithBlurHeader>
       )}
     </React.Fragment>
   )
