@@ -127,7 +127,7 @@ describe('ValidateEmailChange', () => {
       fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
     })
 
-    expect(navigation.replace).toHaveBeenCalledWith('ChangeEmailExpiredLink')
+    expect(navigation.reset).toHaveBeenCalledWith({ routes: [{ name: 'ChangeEmailExpiredLink' }] })
   })
 
   it('should display an error message if submit triggers an error not 401', async () => {
@@ -165,7 +165,9 @@ describe('ValidateEmailChange', () => {
 
     renderValidateEmailChange()
 
-    expect(navigation.replace).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
+    expect(navigation.reset).toHaveBeenNthCalledWith(1, {
+      routes: [{ name: 'ChangeEmailExpiredLink' }],
+    })
   })
 
   it('should redirect to home when there is no email update', () => {

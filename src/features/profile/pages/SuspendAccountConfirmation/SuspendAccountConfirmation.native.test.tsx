@@ -41,6 +41,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 const navigation = {
   navigate: jest.fn(),
+  reset: jest.fn(),
 } as unknown as NativeStackNavigationProp<RootStackParamList, 'SuspendAccountConfirmation'>
 
 const route = {
@@ -148,7 +149,9 @@ describe('<SuspendAccountConfirmation />', () => {
       } as UseEmailUpdateStatusMock)
       renderSuspendAccountConfirmation()
 
-      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
+      expect(navigation.reset).toHaveBeenNthCalledWith(1, {
+        routes: [{ name: 'ChangeEmailExpiredLink' }],
+      })
     })
 
     it('When pressing "Confirmer la demande" button and API response is a 401 error', async () => {
@@ -159,7 +162,9 @@ describe('<SuspendAccountConfirmation />', () => {
         fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
       })
 
-      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
+      expect(navigation.reset).toHaveBeenNthCalledWith(1, {
+        routes: [{ name: 'ChangeEmailExpiredLink' }],
+      })
     })
   })
 })

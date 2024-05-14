@@ -48,7 +48,7 @@ export function SuspendAccountConfirmation({
       navigation.navigate('TrackEmailChange')
     } catch (error) {
       if (error instanceof ApiError && error.statusCode === 401) {
-        navigation.navigate('ChangeEmailExpiredLink')
+        navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })
         return
       }
       showErrorSnackBar({
@@ -67,7 +67,7 @@ export function SuspendAccountConfirmation({
         navigateToHome()
       }
       if (emailUpdateStatus?.expired) {
-        navigation.navigate('ChangeEmailExpiredLink')
+        navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })
       }
     }
   }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])

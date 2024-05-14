@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, replace, reset, useRoute } from '__mocks__/@react-navigation/native'
 import { EmailChangeConfirmationResponse } from 'api/gen'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { ConfirmChangeEmailContent } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmailContent'
@@ -87,7 +87,10 @@ describe('<ConfirmChangeEmail />', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
 
-    expect(replace).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
+    expect(reset).toHaveBeenNthCalledWith(1, {
+      index: 0,
+      routes: [{ name: 'ChangeEmailExpiredLink' }],
+    })
   })
 
   it('should display an error snackbar when change email confirmation fails for unknown reason', async () => {
@@ -122,6 +125,9 @@ describe('<ConfirmChangeEmail />', () => {
 
     await screen.findByText('Confirmer la demande')
 
-    expect(replace).toHaveBeenCalledWith('ChangeEmailExpiredLink')
+    expect(reset).toHaveBeenNthCalledWith(1, {
+      index: 0,
+      routes: [{ name: 'ChangeEmailExpiredLink' }],
+    })
   })
 })
