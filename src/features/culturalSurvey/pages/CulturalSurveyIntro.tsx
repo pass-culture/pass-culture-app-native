@@ -7,7 +7,10 @@ import { FAQ_LINK_USER_DATA } from 'features/culturalSurvey/constants'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
+import { ShareAppModalType } from 'features/share/types'
 import { analytics } from 'libs/analytics'
+import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -25,9 +28,12 @@ const FAQTouchableLinkProps = {
   accessibilityLabel: 'En savoir plus sur ce qu’on fait de tes données',
 }
 
+const SHARE_APP_MODAL_STORAGE_KEY = 'has_seen_share_app_modal'
+
 export const CulturalSurveyIntro = (): React.JSX.Element => {
   const { questionsToDisplay: initialQuestions } = useCulturalSurveyContext()
   const { reset } = useNavigation<UseNavigationType>()
+  const { showShareAppModal } = useShareAppContext()
 
   return (
     <GenericInfoPageWhite
@@ -75,13 +81,16 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
           key={3}
           wording="Plus tard"
           icon={ClockFilled}
-          onPress={() => {
+          onPress={async () => {
             reset({
               index: 0,
               routes: [{ name: navigateToHomeConfig.screen }],
             })
-
             analytics.logHasSkippedCulturalSurvey()
+            const hasSeenShareAppModal = await storage.readObject(SHARE_APP_MODAL_STORAGE_KEY)
+            if (hasSeenShareAppModal) return
+            showShareAppModal(ShareAppModalType.BENEFICIARY)
+            await storage.saveObject(SHARE_APP_MODAL_STORAGE_KEY, true)
           }}
         />
       </View>
