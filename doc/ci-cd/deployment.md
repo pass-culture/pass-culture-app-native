@@ -42,7 +42,9 @@ If you don't see your changes, try to check if the codepush was correctly downlo
 
 ### Hard deploy (manual)
 
-If you modified native code, you need to hard deploy, by running [this workflow](https://github.com/pass-culture/pass-culture-app-native/actions/workflows/dev_on_dispatch_deploy_testing.yml).
+If you modified native code, you need to hard deploy:
+
+- `yarn trigger:testing:deploy`
 
 This will bump the patch number, create a tag `testing/vX.X.X+1` and push it.
 The **CI** will detect the tag and launch the lanes [`hard-deploy-android-testing`](../../.github/workflows/dev_on_push_workflow_main.yml#L133) & [`dhard-eploy-ios-testing`](../../.github/workflows/dev_on_push_workflow_main.yml#L143).
