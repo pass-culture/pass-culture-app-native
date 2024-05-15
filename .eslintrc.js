@@ -50,7 +50,7 @@ module.exports = {
         minimumDescriptionLength: 5,
       },
     ],
-    "import/no-duplicates": ["error", {"considerQueryString": true}],
+    'import/no-duplicates': ['error', { considerQueryString: true }],
     'no-unused-vars': 'off', // not ideal, but programmatically necessary sometimes
 
     '@typescript-eslint/no-unused-vars': [

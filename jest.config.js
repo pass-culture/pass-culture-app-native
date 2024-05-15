@@ -1,6 +1,6 @@
 const { excludeCollectCoverageFrom } = require('./jest.excludeCollectCoverageFrom.config')
-const fs = require("node:fs");
-const swcrc = JSON.parse(fs.readFileSync(".swcrc", "utf8"));
+const fs = require('node:fs')
+const swcrc = JSON.parse(fs.readFileSync('.swcrc', 'utf8'))
 
 module.exports = {
   preset: 'react-native',
@@ -31,7 +31,7 @@ module.exports = {
     '^.+/react-native-maps/.+\\.(js|jsx)$': 'babel-jest',
     '^.+/src/ui/components/touchableLink/ExternalTouchableLink.tsx$': 'babel-jest',
     '^.+src/ui/components/SectionRow.tsx$': 'babel-jest',
-    '^.+\\.(js|ts|jsx|tsx)$': ["@swc/jest", swcrc],
+    '^.+\\.(js|ts|jsx|tsx)$': ['@swc/jest', swcrc],
   },
   transformIgnorePatterns: [
     'node_modules/(?!(jest-)?react-native' +
@@ -59,6 +59,7 @@ module.exports = {
   clearMocks: true,
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
+    'eslint-custom-rules/*.{js,jsx,ts,tsx}',
     '!src/**/*.web.{js,jsx,ts,tsx}',
     ...excludeCollectCoverageFrom,
   ],
