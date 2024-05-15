@@ -7,17 +7,13 @@ permissions:
   contents: read
   id-token: write
 
+env:
+  GIT_CONFIG_EMAIL: PassCulture-SA@users.noreply.github.com
+  GIT_CONFIG_NAME: ${{ github.actor }}
+
 jobs:
-  yarn-install:
-    uses: ./.github/workflows/dev_on_workflow_install.yml
-    with:
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy:
     runs-on: ubuntu-latest
-    needs: yarn-install
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -35,5 +31,9 @@ jobs:
           workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
           bucket: passculture-infra-prod-github-runner-cache
+      - name: "Author"
+        run: |
+          git config --global user.email "$GIT_CONFIG_EMAIL"
+          git config --global user.name "$GIT_CONFIG_NAME"
       - name: Deploy testing patch
         run: ./scripts/deploy_new_version.sh testing/v patch
