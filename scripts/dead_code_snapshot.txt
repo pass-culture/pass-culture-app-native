@@ -1,2 +1,9 @@
 src/features/auth/helpers/contactSupport.ts:38 - satisfies
 src/features/auth/helpers/contactSupport.ts:38 - ContactSupport (used in module)
+src/features/home/fixtures/homepage.fixture.ts:206 - satisfies
+src/features/home/fixtures/homepage.fixture.ts:206 - Homepage (used in module)
+src/features/location/fixtures/mockPlaces.ts:10 - satisfies
+src/features/location/fixtures/mockPlaces.ts:10 - readonly
+src/features/location/fixtures/mockPlaces.ts:10 - SuggestedPlace (used in module)
+src/features/venue/components/OpeningHoursStatus/getOpeningHoursStatus.ts:11 - OpeningHoursStatus (used in module)
+src/features/venue/components/OpeningHoursStatus/OpeningHoursStatus.tsx:16 - OpeningHoursStatus
