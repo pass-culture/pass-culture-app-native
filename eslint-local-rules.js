@@ -1,7 +1,7 @@
 const independentMocks = require('./eslint-custom-rules/independent-mocks')
 const nbspInText = require('./eslint-custom-rules/nbsp-in-text')
 const noRawText = require('./eslint-custom-rules/no-raw-text')
-const noStringCheckBeforeComponent = require('./eslint-custom-rules/no-string-check-before-component')
+const noStringCheckBeforeComponent = require('./eslint-custom-rules/use-ternary-operator-in-jsx')
 const todoFormat = require('./eslint-custom-rules/todo-format')
 const apostropheInText = require('./eslint-custom-rules/apostrophe-in-text')
 const useTheRightTestUtils = require('./eslint-custom-rules/use-the-right-test-utils')
@@ -14,7 +14,7 @@ module.exports = {
   'nbsp-in-text': nbspInText,
   'no-hardcoded-id-in-svg': noHardcodeIdInSvg,
   'no-raw-text': noRawText,
-  'no-string-check-before-component': noStringCheckBeforeComponent,
+  'use-ternary-operator-in-jsx': noStringCheckBeforeComponent,
   'todo-format': todoFormat,
   'apostrophe-in-text': apostropheInText,
   'use-the-right-test-utils': useTheRightTestUtils,
