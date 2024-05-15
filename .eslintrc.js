@@ -42,6 +42,7 @@ module.exports = {
     'local-rules/todo-format': ['error'],
     'local-rules/use-the-right-test-utils': ['error'],
     'local-rules/no-use-of-algolia-multiple-queries': ['error'],
+    'no-negated-condition': 'warn',
     '@typescript-eslint/ban-ts-comment': [
       'error',
       {
