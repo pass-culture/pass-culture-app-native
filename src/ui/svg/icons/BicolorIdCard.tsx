@@ -26,7 +26,7 @@ const BicolorIdCardSvg: React.FunctionComponent<AccessibleIcon & { transform?: s
       viewBox="0 0 48 48"
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
-      {!!(color && color2) && <BicolorGradient id={id} color1={color} color2={color2} />}
+      {color && color2 ? <BicolorGradient id={id} color1={color} color2={color2} /> : null}
       <Path
         fill={fill}
         opacity={opacity}

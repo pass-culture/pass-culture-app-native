@@ -36,11 +36,11 @@ export function GenericOfficialPage({
 
   return (
     <Wrapper>
-      {!!noIndex && (
+      {noIndex ? (
         <Helmet>
           <meta name="robots" content="noindex" />
         </Helmet>
-      )}
+      ) : null}
       <Spacer.TopScreen />
       <HeaderContainer>
         <IllustrationsContainer>
@@ -54,33 +54,33 @@ export function GenericOfficialPage({
         <EmptyContainer />
       </HeaderContainer>
       <Content>
-        {!!isTouch && (
+        {isTouch ? (
           <React.Fragment>
             <Spacer.Flex />
             <Spacer.Column numberOfSpaces={spacingMatrix.top} />
           </React.Fragment>
-        )}
+        ) : null}
         <StyledTitle>{title}</StyledTitle>
         <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
         {children}
-        {!!isTouch && (
+        {isTouch ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={getButtonSpaces()} />
             <Spacer.Flex flex={0.5} />
           </React.Fragment>
-        )}
+        ) : null}
       </Content>
       <BottomContent>
-        {!!buttons && (
+        {buttons ? (
           <BottomContainer>
             {buttons.map((button, index) => (
               <React.Fragment key={index}>
-                {index !== 0 && <Spacer.Column numberOfSpaces={4} />}
+                {index !== 0 ? <Spacer.Column numberOfSpaces={4} /> : null}
                 {button}
               </React.Fragment>
             ))}
           </BottomContainer>
-        )}
+        ) : null}
         <Spacer.BottomScreen />
       </BottomContent>
     </Wrapper>

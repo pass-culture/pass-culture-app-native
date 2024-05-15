@@ -71,7 +71,7 @@ export const OfferPreview: FunctionComponent = () => {
           {images.length > 1 ? (
             <React.Fragment>
               <BlurFooter height={footerHeight} />
-              {!!progressValue && (
+              {progressValue ? (
                 <Footer height={footerHeight}>
                   <PaginationContainer gap={2}>
                     {images.map((_, index) => (
@@ -83,7 +83,7 @@ export const OfferPreview: FunctionComponent = () => {
                     ))}
                   </PaginationContainer>
                 </Footer>
-              )}
+              ) : null}
             </React.Fragment>
           ) : null}
         </React.Fragment>

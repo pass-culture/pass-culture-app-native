@@ -28,7 +28,7 @@ export const AddressOption = ({
         onPress={() => onPressOption(optionKey)}>
         <TextContainer>
           <StyledBody selected={selected}>{label}</StyledBody>
-          <IconContainer>{!!selected && <Validate />}</IconContainer>
+          <IconContainer>{selected ? <Validate /> : null}</IconContainer>
         </TextContainer>
       </StyledTouchableOpacity>
       <Separator.Horizontal />

@@ -35,14 +35,14 @@ export function PersonalData() {
 
   return (
     <SecondaryPageWithBlurHeader title="Informations personnelles">
-      {!!user?.isBeneficiary && (
+      {user?.isBeneficiary ? (
         <React.Fragment>
           <Typo.CaptionNeutralInfo>Prénom et nom</Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Body>{fullname}</Typo.Body>
           <StyledSeparator />
         </React.Fragment>
-      )}
+      ) : null}
 
       <Typo.CaptionNeutralInfo>Adresse e-mail</Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />

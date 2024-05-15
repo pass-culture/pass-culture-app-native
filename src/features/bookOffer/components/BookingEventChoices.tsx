@@ -34,35 +34,35 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
 
   return (
     <Container>
-      {!!shouldDisplayDateSelection && (
+      {shouldDisplayDateSelection ? (
         <BookDateChoice stocks={stocks} userRemainingCredit={creditForOffer} />
-      )}
+      ) : null}
 
-      {!!(step && step >= Step.HOUR) && (
+      {step && step >= Step.HOUR ? (
         <React.Fragment>
-          {!!shouldDisplayHourSelection && (
+          {shouldDisplayHourSelection ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <BookHourChoice />
 
               <Spacer.Column numberOfSpaces={6} />
             </React.Fragment>
-          )}
+          ) : null}
         </React.Fragment>
-      )}
-      {!!(step && step >= Step.PRICE) && (
+      ) : null}
+      {step && step >= Step.PRICE ? (
         <React.Fragment>
-          {!!shouldDisplayPriceSelection && (
+          {shouldDisplayPriceSelection ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <BookPricesChoice stocks={stocksWithCategory} isDuo={offerIsDuo} />
 
               <Spacer.Column numberOfSpaces={6} />
             </React.Fragment>
-          )}
+          ) : null}
         </React.Fragment>
-      )}
-      {!!(step && step >= Step.DUO) && (
+      ) : null}
+      {step && step >= Step.DUO ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={6} />
 
@@ -70,7 +70,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
 
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
-      )}
+      ) : null}
     </Container>
   )
 }

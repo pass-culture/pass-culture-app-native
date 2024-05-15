@@ -48,7 +48,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
           }
           return (
             <StyledLi key={`key-tab-nav-${route.name}`}>
-              {index > 0 && <Spacer.Row numberOfSpaces={1.5} />}
+              {index > 0 ? <Spacer.Row numberOfSpaces={1.5} /> : null}
               <NavItem
                 tabName={route.name}
                 isSelected={route.isSelected}

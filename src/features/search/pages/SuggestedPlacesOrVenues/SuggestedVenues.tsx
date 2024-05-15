@@ -45,7 +45,7 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
       <View accessibilityRole={AccessibilityRole.STATUS}>
         <NoSuggestedVenues show={!hasResults && isQueryProvided} />
       </View>
-      {!!hasResults && (
+      {hasResults ? (
         <VerticalUl>
           {filteredVenues.map((item, index) => {
             const isLast = index === filteredVenues.length - 1
@@ -57,12 +57,12 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
                   Icon={BuildingIcon}
                   onPress={() => setSelectedVenue(item)}
                 />
-                {!isLast && <Spacer.Column numberOfSpaces={4} />}
+                {!isLast ? <Spacer.Column numberOfSpaces={4} /> : null}
               </Li>
             )
           })}
         </VerticalUl>
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

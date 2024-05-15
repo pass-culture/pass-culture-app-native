@@ -95,7 +95,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
             ) : null}
           </View>
 
-          {!!progressValue && (
+          {progressValue ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
               <PaginationContainer gap={2} testID="offerImageContainerDots">
@@ -108,7 +108,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
                 ))}
               </PaginationContainer>
             </React.Fragment>
-          )}
+          ) : null}
         </React.Fragment>
       ) : (
         <OfferImageWrapper

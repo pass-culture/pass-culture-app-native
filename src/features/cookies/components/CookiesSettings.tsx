@@ -102,20 +102,20 @@ export const CookiesSettings = ({
               }}>
               <React.Fragment>
                 <Typo.Body>{info.description}</Typo.Body>
-                {!!info.caption && (
+                {info.caption ? (
                   <React.Fragment>
                     <Spacer.Column numberOfSpaces={4} />
                     <InfoCaption>{info.caption}</InfoCaption>
                   </React.Fragment>
-                )}
+                ) : null}
               </React.Fragment>
             </StyledAccordionItem>
-            {!!info.permanentCaption && (
+            {info.permanentCaption ? (
               <React.Fragment>
                 <InfoCaption>{info.permanentCaption}</InfoCaption>
                 <Spacer.Column numberOfSpaces={4} />
               </React.Fragment>
-            )}
+            ) : null}
             <Separator.Horizontal />
           </React.Fragment>
         )

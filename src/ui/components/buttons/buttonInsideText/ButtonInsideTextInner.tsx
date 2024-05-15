@@ -33,12 +33,12 @@ export function ButtonInsideTextInner({
 
   return (
     <Container paddingForIcon={paddingForIcon}>
-      {!!StyledIcon && (
+      {StyledIcon ? (
         <React.Fragment>
           <StyledIcon testID="button-icon" />
           <Spacer.Row numberOfSpaces={1} />
         </React.Fragment>
-      )}
+      ) : null}
       <StyledText typography={typography} color={color}>
         {wording}
       </StyledText>

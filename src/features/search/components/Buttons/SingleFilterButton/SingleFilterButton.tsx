@@ -35,12 +35,12 @@ export const SingleFilterButton: FunctionComponent<SingleFilterButtonProps> = ({
       onPress={onPress}
       accessibilityLabel={accessibilityLabel}>
       <Label testID={filterButtonLabel}>{label}</Label>
-      {!!isSelected && (
+      {isSelected ? (
         <React.Fragment>
           <Spacer.Row numberOfSpaces={1} />
           <StyledIcon testID={filterButtonIcon} accessibilityLabel="Filtre sélectionné" />
         </React.Fragment>
-      )}
+      ) : null}
     </TouchableContainer>
   )
 }

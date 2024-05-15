@@ -73,14 +73,14 @@ export function RadioButton(props: RadioButtonProps) {
       onBlur={onBlur}
       {...props}>
       <LabelContainer ref={containerRef}>
-        {!!StyledIcon && (
+        {StyledIcon ? (
           <React.Fragment>
             <IconWrapper>
               <StyledIcon />
             </IconWrapper>
             <Spacer.Row numberOfSpaces={2} />
           </React.Fragment>
-        )}
+        ) : null}
         <LabelWrapper>
           {props.complement ? (
             <ContainerWithComplement>
@@ -97,9 +97,9 @@ export function RadioButton(props: RadioButtonProps) {
             </Label>
           )}
 
-          {!!props.description && (
+          {props.description ? (
             <Typo.CaptionNeutralInfo>{props.description}</Typo.CaptionNeutralInfo>
-          )}
+          ) : null}
         </LabelWrapper>
       </LabelContainer>
       <IconContainer>

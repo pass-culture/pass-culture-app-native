@@ -195,7 +195,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
   return (
     <React.Fragment>
-      {!!isRecaptchaEnabled && (
+      {isRecaptchaEnabled ? (
         <ReCaptcha
           onClose={onReCaptchaClose}
           onError={onReCaptchaError}
@@ -203,7 +203,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           onSuccess={onReCaptchaSuccess}
           isVisible={isDoingReCaptchaChallenge}
         />
-      )}
+      ) : null}
       <SecondaryPageWithBlurHeader title="Connexion" shouldDisplayBackButton>
         <Typo.Title3 {...getHeadingAttrs(2)}>Connecte-toi</Typo.Title3>
         <Spacer.Column numberOfSpaces={2} />

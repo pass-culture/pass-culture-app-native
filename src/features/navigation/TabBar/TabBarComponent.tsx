@@ -42,18 +42,18 @@ export const TabBarComponent: React.FC<Props> = ({
     accessibilityLabel={menu[tabName].accessibilityLabel}
     testID={menu[tabName].accessibilityLabel ?? menu[tabName].displayName}
     accessibilityCurrent={isSelected ? 'page' : undefined}>
-    {!!isSelected && (
+    {isSelected ? (
       <BicolorSelector
         width={SELECTOR_WIDTH}
         height={SELECTOR_HEIGHT}
         testID={`${menu[tabName].accessibilityLabel} sélectionné`}
       />
-    )}
+    ) : null}
     <Spacer.Flex />
     <StyledIcon as={BicolorIcon} selected={isSelected} />
     <Title selected={isSelected} displayName={menu[tabName].displayName} />
     <Spacer.Flex />
-    {!!isSelected && <BicolorSelectorPlaceholder />}
+    {isSelected ? <BicolorSelectorPlaceholder /> : null}
   </TabComponentContainer>
 )
 

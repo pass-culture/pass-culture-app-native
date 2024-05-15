@@ -146,7 +146,7 @@ export const SetAddress = () => {
             />
             <Spacer.Column numberOfSpaces={2} />
           </Form.MaxWidth>
-          {!!isLoading && <Spinner />}
+          {isLoading ? <Spinner /> : null}
           <AdressesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
             {addresses.map((address, index) => (
               <AddressOption

@@ -165,7 +165,7 @@ export function AutocompleteOfferItem({
       </MagnifyingGlassIconContainer>
       <StyledText numberOfLines={1} ellipsizeMode="tail">
         <Highlight suggestionHit={hit} attribute="query" />
-        {!!shouldDisplaySuggestion && (
+        {shouldDisplaySuggestion ? (
           <React.Fragment>
             <Typo.Body> dans </Typo.Body>
             <Typo.ButtonTextPrimary>
@@ -175,7 +175,7 @@ export function AutocompleteOfferItem({
                 : searchGroupLabel}
             </Typo.ButtonTextPrimary>
           </React.Fragment>
-        )}
+        ) : null}
       </StyledText>
     </AutocompleteItemTouchable>
   )

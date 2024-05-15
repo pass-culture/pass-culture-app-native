@@ -116,19 +116,19 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   if (showSkeleton) return <FavoritesResultsPlaceHolder />
   return (
     <React.Fragment>
-      {!!offerToBook && (
+      {offerToBook ? (
         <BookingOfferModal
           visible
           dismissModal={() => setOfferToBook(null)}
           offerId={offerToBook.id}
         />
-      )}
-      {!!(sortedFavorites && sortedFavorites.length > 0) && (
+      ) : null}
+      {sortedFavorites && sortedFavorites.length > 0 ? (
         <SortContainer>
           <Sort />
           <Spacer.BottomScreen />
         </SortContainer>
-      )}
+      ) : null}
       <Container>
         <FlatList
           accessibilityRole={AccessibilityRole.LIST}

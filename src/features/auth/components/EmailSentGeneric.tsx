@@ -58,7 +58,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
       />
       {additionalCTA}
       <Spacer.Column numberOfSpaces={additionalCTA ? 6 : 10} />
-      {!!isMailAppAvailable && <OpenInboxButton onAdditionalPress={openInBoxAnalytics} />}
+      {isMailAppAvailable ? <OpenInboxButton onAdditionalPress={openInBoxAnalytics} /> : null}
     </React.Fragment>
   )
 }

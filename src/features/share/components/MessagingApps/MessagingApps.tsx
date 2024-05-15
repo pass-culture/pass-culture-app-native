@@ -49,14 +49,14 @@ export const MessagingApps = ({ shareContent, share, messagingAppAnalytics }: Pr
         </StyledUl>
       </IconsWrapper>
 
-      {!!shareContent && (
+      {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
           headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />
-      )}
+      ) : null}
     </ViewGap>
   )
 }

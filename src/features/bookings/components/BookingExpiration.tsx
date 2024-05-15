@@ -16,7 +16,7 @@ export const BookingExpiration = ({ children, expirationDate }: BookingExpiratio
   return (
     <React.Fragment>
       {children}
-      {!!children && <Spacer.Column numberOfSpaces={4} />}
+      {children ? <Spacer.Column numberOfSpaces={4} /> : null}
       <StyledCaption>{expirationDateMessage}</StyledCaption>
     </React.Fragment>
   )

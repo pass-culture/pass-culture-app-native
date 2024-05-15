@@ -39,13 +39,15 @@ export const SearchCustomModalHeader: React.FC<Props> = ({
     <Header>
       <HeaderContent testID="pageHeader" height={headerHeight}>
         <ButtonContainer positionInHeader="left" testID="back-button-container">
-          {!!shouldDisplayBackButton && <BackButton onGoBack={onGoBack} color={ColorsEnum.BLACK} />}
+          {shouldDisplayBackButton ? (
+            <BackButton onGoBack={onGoBack} color={ColorsEnum.BLACK} />
+          ) : null}
         </ButtonContainer>
         <Title nativeID={titleId}>{title}</Title>
         <ButtonContainer positionInHeader="right" testID="close-button-container">
-          {!!shouldDisplayCloseButton && (
+          {shouldDisplayCloseButton ? (
             <StyledCloseButton onClose={onClose} color={ColorsEnum.BLACK} />
-          )}
+          ) : null}
         </ButtonContainer>
       </HeaderContent>
     </Header>

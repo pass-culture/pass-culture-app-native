@@ -102,7 +102,7 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
           <StyledArrowPrevious />
         </HeaderContainer>
       ) : null}
-      {!!onSkip && (
+      {onSkip ? (
         <SkipButtonContainer top={top + getSpacing(3.5)}>
           <ButtonTertiaryNeutralInfo
             wording="Passer"
@@ -110,7 +110,7 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
             onPress={onSkip}
           />
         </SkipButtonContainer>
-      )}
+      ) : null}
       <ContentContainer>
         <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
         <StyledLottieContainer hasHeight={separateIconFromTitle}>
@@ -126,11 +126,11 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
             <StyledIcon />
           )}
         </StyledLottieContainer>
-        {!!separateIconFromTitle && <Spacer.Flex flex={0.5} />}
+        {separateIconFromTitle ? <Spacer.Flex flex={0.5} /> : null}
         <StyledTitle {...getHeadingAttrs(1)}>{props.title}</StyledTitle>
-        {!!props.subtitle && (
+        {props.subtitle ? (
           <StyledSubtitle {...getHeadingAttrs(2)}>{props.subtitle}</StyledSubtitle>
-        )}
+        ) : null}
         <Spacer.Flex flex={0.5} />
         {props.children}
         <Spacer.Flex

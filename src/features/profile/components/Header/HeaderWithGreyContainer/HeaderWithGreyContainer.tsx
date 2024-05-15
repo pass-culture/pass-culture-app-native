@@ -24,21 +24,21 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
   return (
     <React.Fragment>
       <PageHeader title={title} numberOfLines={2} />
-      {!!subtitle && (
+      {subtitle ? (
         <SubtitleContainer>
           <Spacer.Column numberOfSpaces={1} />
           {typeof subtitle === 'string' ? <Typo.Body>{subtitle}</Typo.Body> : subtitle}
         </SubtitleContainer>
-      )}
-      {!!bannerText && (
+      ) : null}
+      {bannerText ? (
         <BannerContainer>
           <InfoBanner message={bannerText} icon={Info} />
           <Spacer.Column numberOfSpaces={6} />
         </BannerContainer>
-      )}
-      {!!children && (
+      ) : null}
+      {children ? (
         <GreyContainer withGreyContainer={withGreyContainer}>{children}</GreyContainer>
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

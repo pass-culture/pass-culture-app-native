@@ -120,7 +120,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
           title="Choisir une localisation"
           subtitle={LOCATION_PLACEHOLDER}
         />
-        {!!isCurrentLocationMode(LocationMode.AROUND_PLACE) && (
+        {isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
           <LocationSearchInput
             selectedPlace={selectedPlace}
             setSelectedPlace={setSelectedPlace}
@@ -129,7 +129,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
             onResetPlace={onResetPlace}
             onSetSelectedPlace={onSetSelectedPlace}
           />
-        )}
+        ) : null}
         <Spacer.Column numberOfSpaces={6} />
         <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={6} />

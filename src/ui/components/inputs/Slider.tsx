@@ -157,12 +157,12 @@ export function Slider(props: Props) {
 
   return (
     <React.Fragment>
-      {!!props.showValues && (
+      {props.showValues ? (
         <CenteredText width={props.sliderLength}>
           {values.length === 1 && formatValues(values[0])}
           {values.length === 2 && `${formatValues(values[0])} - ${formatValues(values[1])}`}
         </CenteredText>
-      )}
+      ) : null}
       <Spacer.Column numberOfSpaces={4} />
       <SliderWrapper
         ref={setStyledViewRef}
@@ -179,7 +179,7 @@ export function Slider(props: Props) {
           sliderLength={props.sliderLength}
         />
       </SliderWrapper>
-      {!!shouldShowMinMaxValues && (
+      {shouldShowMinMaxValues ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={1} />
           <MinMaxContainer>
@@ -187,7 +187,7 @@ export function Slider(props: Props) {
             <MinMaxValue>{`${max}${minMaxValuesComplement}`}</MinMaxValue>
           </MinMaxContainer>
         </React.Fragment>
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

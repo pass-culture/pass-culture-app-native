@@ -109,14 +109,14 @@ const _SnackBar = (props: SnackBarProps) => {
         easing="ease"
         duration={animationDuration}
         ref={containerRef}>
-        {!!renderContent && (
+        {renderContent ? (
           <View accessibilityRole={AccessibilityRole.STATUS}>
             <SnackBarContainer
               isVisible={isVisible}
               marginTop={top}
               testID="snackbar-container"
               accessibilityHidden={!isVisible}>
-              {!!Icon && <Icon testID="snackbar-icon" color={props.color} />}
+              {Icon ? <Icon testID="snackbar-icon" color={props.color} /> : null}
               <Spacer.Flex flex={1}>
                 <StyledBody testID="snackbar-message" color={props.color}>
                   {props.message}
@@ -129,7 +129,7 @@ const _SnackBar = (props: SnackBarProps) => {
               </Touchable>
             </SnackBarContainer>
           </View>
-        )}
+        ) : null}
         {renderProgressBar()}
       </ColoredAnimatableView>
     </RootContainer>

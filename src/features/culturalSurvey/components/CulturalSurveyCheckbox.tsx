@@ -46,20 +46,22 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
       <AnswerContainer
         {...accessibleCheckboxProps({ checked: isSelected, label: accessibilityLabel })}
         onPress={onPress}>
-        {!!AnswerIcon && (
+        {AnswerIcon ? (
           <ActivityIconContainer>
             <AnswerIcon />
           </ActivityIconContainer>
-        )}
+        ) : null}
         <DescriptionContainer>
           <Typo.ButtonText>{props.title}</Typo.ButtonText>
-          {!!props.subtitle && <Typo.CaptionNeutralInfo>{props.subtitle}</Typo.CaptionNeutralInfo>}
+          {props.subtitle ? (
+            <Typo.CaptionNeutralInfo>{props.subtitle}</Typo.CaptionNeutralInfo>
+          ) : null}
         </DescriptionContainer>
-        {!!isSelected && (
+        {isSelected ? (
           <ValidateIconContainer>
             <RedValidate />
           </ValidateIconContainer>
-        )}
+        ) : null}
       </AnswerContainer>
     </StyledLinearGradient>
   )

@@ -34,7 +34,7 @@ export const IdentificationForkButton: FunctionComponent<IdentificationForkButto
       <GenericBanner LeftIcon={<Icon />}>
         <TextWrapper>
           {props.Title}
-          {!!props.Subtitle && <SubtitleContainer>{props.Subtitle}</SubtitleContainer>}
+          {props.Subtitle ? <SubtitleContainer>{props.Subtitle}</SubtitleContainer> : null}
         </TextWrapper>
       </GenericBanner>
     </InternalTouchableLink>

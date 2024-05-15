@@ -27,12 +27,12 @@ export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThema
           style={{ transform: [{ translateY: gradientTranslation }] }}
         />
         <AnimatedBlackBackground style={{ transform: [{ translateY: gradientTranslation }] }}>
-          {!!subtitle && (
+          {subtitle ? (
             <React.Fragment>
               <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
               <Spacer.Column numberOfSpaces={1} />
             </React.Fragment>
-          )}
+          ) : null}
           <Title numberOfLines={2}>{title}</Title>
         </AnimatedBlackBackground>
       </TextContainer>

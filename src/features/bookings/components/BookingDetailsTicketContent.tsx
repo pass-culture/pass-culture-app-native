@@ -44,9 +44,9 @@ export function BookingDetailsTicketContent({
 
   const buttonWording = getDigitalOfferBookingWording(offerSubcategory)
 
-  const activationCode = !!booking.activationCode && (
+  const activationCode = booking.activationCode ? (
     <TicketCode withdrawalType={withdrawalType ?? undefined} code={booking.activationCode.code} />
-  )
+  ) : null
   const accessExternalOfferButton = completedUrl ? (
     <ExternalTouchableLink
       as={ButtonWithLinearGradient}
@@ -56,9 +56,9 @@ export function BookingDetailsTicketContent({
     />
   ) : null
 
-  const ticketToken = !!booking.token && (
+  const ticketToken = booking.token ? (
     <TicketCode withdrawalType={withdrawalType ?? undefined} code={booking.token} />
-  )
+  ) : null
 
   const ticketContent = properties.isDigital ? (
     accessExternalOfferButton

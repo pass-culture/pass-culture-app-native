@@ -98,14 +98,14 @@ export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
     <AsyncErrorBoundaryWithoutNavigation
       {...props}
       header={
-        !!canGoBack() && (
+        canGoBack() ? (
           <HeaderContainer
             onPress={goBack}
             top={top + getSpacing(3.5)}
             accessibilityLabel="Revenir en arrière">
             <StyledArrowPrevious />
           </HeaderContainer>
-        )
+        ) : null
       }
     />
   )

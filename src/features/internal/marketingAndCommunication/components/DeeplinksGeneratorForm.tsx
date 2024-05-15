@@ -200,25 +200,25 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     return (
       <React.Fragment key={name}>
         <Spacer.Column numberOfSpaces={2} />
-        {config.type === 'string' && (
+        {config.type === 'string' ? (
           <TextInput
             placeholder={placeholder}
             onBlur={onBlurValidate}
             onChangeText={onChangeText}
             defaultValue={screenParams[name] ? String(screenParams[name]) : undefined}
           />
-        )}
-        {config.type === 'stringArray' && (
+        ) : null}
+        {config.type === 'stringArray' ? (
           <TextInput
             placeholder={placeholder}
             onBlur={onBlurValidate}
             onChangeText={onChangeStringArray}
           />
-        )}
-        {config.type === 'boolean' && (
+        ) : null}
+        {config.type === 'boolean' ? (
           <ControlledFilterSwitch onChange={onBooleanChange} name={config.description} />
-        )}
-        {config.type === 'priceRange' && (
+        ) : null}
+        {config.type === 'priceRange' ? (
           <PaddingContainer>
             <Slider
               showValues
@@ -230,29 +230,29 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
               maxLabel="Prix maximum&nbsp;:"
             />
           </PaddingContainer>
-        )}
-        {config.type === 'offerCategories' && (
+        ) : null}
+        {config.type === 'offerCategories' ? (
           <OfferCategoryChoices onChange={onChangeOfferCategories} />
-        )}
-        {!!(config.type === 'offerNativeCategories' && screenParams.offerCategories) && (
+        ) : null}
+        {config.type === 'offerNativeCategories' && screenParams.offerCategories ? (
           <OfferNativeCategoryChoices
             categories={screenParams.offerCategories as SearchGroupNameEnumv2[]}
             onChange={onChangeOfferNativeCategories}
           />
-        )}
-        {config.type === 'date' && (
+        ) : null}
+        {config.type === 'date' ? (
           <PaddingContainer>
             <DateChoice onChange={onChangeDate} />
           </PaddingContainer>
-        )}
-        {config.type === 'locationFilter' && (
+        ) : null}
+        {config.type === 'locationFilter' ? (
           <LocationFilterChoice onChange={onChangeLocationFilterChoice} />
-        )}
-        {!!config.description && (
+        ) : null}
+        {config.description ? (
           <PaddingContainer>
             <StyledCaption>{config.description}</StyledCaption>
           </PaddingContainer>
-        )}
+        ) : null}
         <Separator.Horizontal />
       </React.Fragment>
     )
@@ -330,7 +330,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             renderScreenItem(key as ScreensUsedByMarketing)
           )}
         </AccordionItem>
-        {paramsCount > 0 && (
+        {paramsCount > 0 ? (
           <AccordionItem title={'Paramètres applicatifs' + ` (${paramsCount})`} defaultOpen>
             {Object.entries(SCREENS_CONFIG).map(([page, screenConfig]) => (
               <React.Fragment key={page}>
@@ -342,7 +342,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
               </React.Fragment>
             ))}
           </AccordionItem>
-        )}
+        ) : null}
         <AccordionItem title="Paramètres marketing" defaultOpen>
           {Object.entries(SCREENS_CONFIG).map(([page]) => (
             <React.Fragment key={page}>

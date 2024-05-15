@@ -96,7 +96,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           }}
         />
       </StyledVideoPlayerContainer>
-      {!!hasFinishPlaying && (
+      {hasFinishPlaying ? (
         <VideoEndView
           onPressReplay={replayVideo}
           offer={offer}
@@ -106,8 +106,10 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           moduleName={moduleName}
           homeEntryId={homeEntryId}
         />
-      )}
-      {!!showErrorView && <VideoErrorView style={{ height: playerHeight, width: playerWidth }} />}
+      ) : null}
+      {showErrorView ? (
+        <VideoErrorView style={{ height: playerHeight, width: playerWidth }} />
+      ) : null}
     </React.Fragment>
   )
 }

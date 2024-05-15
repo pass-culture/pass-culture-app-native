@@ -42,7 +42,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
 
   return (
     <ContainerWithMaxWidth>
-      {!!customProps.label && (
+      {customProps.label ? (
         <React.Fragment>
           <FlexInputLabel htmlFor={textInputID}>
             <LabelContainer>
@@ -55,7 +55,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
           </FlexInputLabel>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
-      )}
+      ) : null}
       <InputContainer
         isFocus={isFocus}
         isError={customProps.isError}
@@ -76,7 +76,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
           accessibilityRequired={customProps.isRequiredField}
           accessibilityDescribedBy={customProps.accessibilityDescribedBy}
         />
-        {!!(customProps.rightButton && StyledIcon) && (
+        {customProps.rightButton && StyledIcon ? (
           <React.Fragment>
             <Spacer.Row numberOfSpaces={2} />
             <IconTouchableOpacity
@@ -86,7 +86,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
               <StyledIcon />
             </IconTouchableOpacity>
           </React.Fragment>
-        )}
+        ) : null}
       </InputContainer>
     </ContainerWithMaxWidth>
   )

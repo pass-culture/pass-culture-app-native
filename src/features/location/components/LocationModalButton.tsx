@@ -30,12 +30,12 @@ export const LocationModalButton = ({
         <Spacer.Row numberOfSpaces={2} />
         <StyledButtonText color={color}>{title}</StyledButtonText>
       </TopContainer>
-      {!!subtitle && (
+      {subtitle ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={1} />
           <StyledCaption>{subtitle}</StyledCaption>
         </React.Fragment>
-      )}
+      ) : null}
     </TouchableOpacity>
   )
 }

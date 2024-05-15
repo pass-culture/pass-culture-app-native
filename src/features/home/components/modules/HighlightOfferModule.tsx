@@ -115,16 +115,16 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
           }}>
           <TouchableContent>
             <OfferImage source={{ uri: props.image }}>
-              {!!categoryLabel && <CategoryCaption label={categoryLabel} />}
+              {categoryLabel ? <CategoryCaption label={categoryLabel} /> : null}
             </OfferImage>
             <OfferDetails
               onLayout={(event: LayoutChangeEvent) =>
                 setOfferDetailsHeight(event.nativeEvent.layout.height)
               }>
               <StyledOfferTitle>{props.offerTitle}</StyledOfferTitle>
-              {!!formattedDate && <AdditionalDetail>{formattedDate}</AdditionalDetail>}
-              {!!venueName && <AdditionalDetail>{venueName}</AdditionalDetail>}
-              {!!formattedPrice && <AdditionalDetail>{priceText}</AdditionalDetail>}
+              {formattedDate ? <AdditionalDetail>{formattedDate}</AdditionalDetail> : null}
+              {venueName ? <AdditionalDetail>{venueName}</AdditionalDetail> : null}
+              {formattedPrice ? <AdditionalDetail>{priceText}</AdditionalDetail> : null}
             </OfferDetails>
             <ArrowOffer>
               <PlainArrowNext size={theme.icons.sizes.small} />

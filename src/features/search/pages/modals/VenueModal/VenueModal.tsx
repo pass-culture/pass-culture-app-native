@@ -78,12 +78,12 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
           placeholder="Cinéma, librairie, magasin…"
           value={venueQuery}
         />
-        {!!shouldShowSuggestedVenues && (
+        {shouldShowSuggestedVenues ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
             <SuggestedVenues query={venueQuery} setSelectedVenue={doSetSelectedVenue} />
           </React.Fragment>
-        )}
+        ) : null}
         <Spacer.Column numberOfSpaces={4} />
       </StyledScrollView>
     </AppModal>

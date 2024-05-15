@@ -35,12 +35,12 @@ export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
           ) : (
             <Highlight historyItem={item} />
           )}
-          {!!shouldDisplaySearchGroupOrNativeCategory && (
+          {shouldDisplaySearchGroupOrNativeCategory ? (
             <React.Fragment>
               <ItalicText> dans </ItalicText>
               <BoldItalicText>{item.nativeCategoryLabel ?? item.categoryLabel}</BoldItalicText>
             </React.Fragment>
-          )}
+          ) : null}
         </StyledText>
       </HistoryItemTouchable>
     </StyledLi>

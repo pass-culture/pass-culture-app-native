@@ -63,14 +63,14 @@ export const ForceUpdate = ({ resetErrorBoundary }: ForceUpdateProps) => {
         icon={AgainIllustration}
         buttons={[
           <ButtonPrimaryWhite key={BUTTON_TEXT} wording={BUTTON_TEXT} onPress={onPressStoreLink} />,
-          !isWeb && (
+          !isWeb ? (
             <ExternalTouchableLink
               as={ButtonTertiaryWhite}
               wording="Utiliser la version web"
               externalNav={{ url: WEBAPP_V2_URL }}
               icon={ExternalSiteFilled}
             />
-          ),
+          ) : null,
         ]}>
         <StyledBody>{DESCRIPTION}</StyledBody>
       </GenericInfoPage>

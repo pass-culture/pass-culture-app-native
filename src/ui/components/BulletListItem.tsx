@@ -24,7 +24,7 @@ export const BulletListItem: React.FC<{
           {children}
         </ListText>
       </ItemContainer>
-      {!!nestedListTexts && (
+      {nestedListTexts ? (
         <StyledUl>
           {nestedListTexts.map((itemText, idx) => {
             return (
@@ -39,7 +39,7 @@ export const BulletListItem: React.FC<{
             )
           })}
         </StyledUl>
-      )}
+      ) : null}
     </Li>
   )
 }

@@ -76,8 +76,8 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
         <OfferInformations>
           <CategoryText color={color}>{labelMapping[offer.offer.subcategoryId]}</CategoryText>
           <TitleText numberOfLines={2}>{offer.offer.name}</TitleText>
-          {!!displayDate && <AdditionalInfoText>{displayDate}</AdditionalInfoText>}
-          {!!displayPrice && <AdditionalInfoText>{displayPrice}</AdditionalInfoText>}
+          {displayDate ? <AdditionalInfoText>{displayDate}</AdditionalInfoText> : null}
+          {displayPrice ? <AdditionalInfoText>{displayPrice}</AdditionalInfoText> : null}
         </OfferInformations>
       </Row>
       <ArrowOffer>

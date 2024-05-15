@@ -19,7 +19,7 @@ export const EmailSent: FunctionComponent<Props> = ({ offerDate }) => {
   return (
     <TicketContainer testID="withdrawal-info-email">
       <WithDrawalContainer testID="withdrawal-info-email-msg">{emailMessage}</WithDrawalContainer>
-      {!!isMailAppAvailable && (
+      {isMailAppAvailable ? (
         <ButtonWithLinearGradient
           wording="Consulter mes e-mails"
           onPress={(_event) => {
@@ -27,7 +27,7 @@ export const EmailSent: FunctionComponent<Props> = ({ offerDate }) => {
           }}
           icon={Email}
         />
-      )}
+      ) : null}
     </TicketContainer>
   )
 }

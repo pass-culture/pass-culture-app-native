@@ -21,7 +21,7 @@ const InvalidateSvg: React.FunctionComponent<AccessibleIcon> = ({
       accessibilityLabel={accessibilityLabel}
       testID={testID}
       fill={color}>
-      {!!backgroundColor && <Circle r={10} cx={24} cy={24} fill={backgroundColor} />}
+      {backgroundColor ? <Circle r={10} cx={24} cy={24} fill={backgroundColor} /> : null}
       <Path
         fill={color}
         fillRule="evenodd"

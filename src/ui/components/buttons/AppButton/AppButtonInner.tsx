@@ -22,26 +22,26 @@ export function AppButtonInner({
         <LoadingIndicator {...accessibilityAndTestId('Chargement en cours')} />
       ) : (
         <Container>
-          {!!(iconPosition === 'left' && Icon) && (
+          {iconPosition === 'left' && Icon ? (
             <IconWrapper>
               <Icon testID="button-icon-left" />
               <Spacer.Row numberOfSpaces={2} />
             </IconWrapper>
-          )}
-          {!!Title && (
+          ) : null}
+          {Title ? (
             <Title
               adjustsFontSizeToFit={adjustsFontSizeToFit}
               numberOfLines={numberOfLines}
               ellipsizeMode={ellipsizeMode}>
               {wording}
             </Title>
-          )}
-          {!!(iconPosition === 'right' && Icon) && (
+          ) : null}
+          {iconPosition === 'right' && Icon ? (
             <IconWrapper>
               <Spacer.Row numberOfSpaces={2} />
               <Icon testID="button-icon-right" />
             </IconWrapper>
-          )}
+          ) : null}
         </Container>
       )}
     </Fragment>

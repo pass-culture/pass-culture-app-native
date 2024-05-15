@@ -81,7 +81,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
     <HeaderContainer>
       <QuickAccess href={`#${mainId}`} title="Aller au contenu principal" />
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
-        {!!isBrandVisible && (
+        {isBrandVisible ? (
           <LogoContainer
             navigateTo={{
               screen: homeNavConfig[0],
@@ -95,7 +95,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
               width="100%"
             />
           </LogoContainer>
-        )}
+        ) : null}
         <FlexContainer />
       </LeftContainer>
       <CenterContainer isDesktop={theme.isDesktopViewport}>

@@ -24,7 +24,7 @@ export const IconsContainer: ComponentStory<
   }, [icons])
   return (
     <React.Fragment>
-      {!!title && <Text>{title}</Text>}
+      {title ? <Text>{title}</Text> : null}
       {sortedIcons.map(([name, icon]) => {
         const IconComponent = styled(icon)({})
         const IconComponentBicolor = styled(icon).attrs(({ theme }) => ({
@@ -34,7 +34,7 @@ export const IconsContainer: ComponentStory<
         return (
           <AlignedText key={name}>
             <IconComponent />
-            {!!isBicolor && <IconComponentBicolor />}
+            {isBicolor ? <IconComponentBicolor /> : null}
             <Text> - {name}</Text>
           </AlignedText>
         )

@@ -6,7 +6,7 @@
       "import { RuleTester } from 'eslint'",
       "import { config } from './config'",
       "",
-      "import rule from '../${1:rule-name}'",
+      "import rule from './${1:rule-name}'",
       "",
       "const ruleTester = new RuleTester()",
       "",

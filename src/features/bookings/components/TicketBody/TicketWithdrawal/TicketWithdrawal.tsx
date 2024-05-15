@@ -21,18 +21,18 @@ export const TicketWithdrawal: FunctionComponent<Props> = ({ withdrawalType, wit
 
   return (
     <React.Fragment>
-      {withdrawalType === WithdrawalTypeEnum.by_email && (
+      {withdrawalType === WithdrawalTypeEnum.by_email ? (
         <IconContainer>
           <BicolorEmailSent testID="bicolor-email-sent" />
         </IconContainer>
-      )}
+      ) : null}
       <WithDrawalContainer testID="withdrawal-info">
         {startMessage}
-        {!!delayMessage && (
+        {delayMessage ? (
           <TicketWithdrawalDelay testID="withdrawal-info-delay">
             {delayMessage}
           </TicketWithdrawalDelay>
-        )}
+        ) : null}
         {endMessage}
       </WithDrawalContainer>
     </React.Fragment>

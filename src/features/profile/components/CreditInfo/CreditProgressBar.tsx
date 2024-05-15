@@ -29,12 +29,12 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
   return (
     <Container>
       <ProgressBarContainer height={height}>
-        {height === 'normal' && (
+        {height === 'normal' ? (
           <React.Fragment>
             <GradientShadow colors={shadowColors} />
             <SecondGradientShadow />
           </React.Fragment>
-        )}
+        ) : null}
         <LinearGradientBar progress={progress} colors={colors} testID="progress-bar" />
       </ProgressBarContainer>
     </Container>

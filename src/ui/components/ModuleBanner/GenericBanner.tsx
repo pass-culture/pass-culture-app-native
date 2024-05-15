@@ -22,7 +22,7 @@ export const GenericBanner: FunctionComponent<GenericBannerProps> = ({
 }) => {
   return (
     <View style={[styles.container, style]}>
-      {!!LeftIcon && <IconContainer>{LeftIcon}</IconContainer>}
+      {LeftIcon ? <IconContainer>{LeftIcon}</IconContainer> : null}
       <DescriptionContainer>{children}</DescriptionContainer>
       <View>{RightIcon ? <RightIcon /> : <StyledArrowNextIcon />}</View>
     </View>

@@ -115,7 +115,7 @@ export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalPr
           title="Utiliser ma position actuelle"
           subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
         />
-        {!!isCurrentLocationMode(LocationMode.AROUND_ME) && (
+        {isCurrentLocationMode(LocationMode.AROUND_ME) ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
             <LocationSearchFilters
@@ -123,7 +123,7 @@ export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalPr
               onValuesChange={onTempAroundMeRadiusValueChange}
             />
           </React.Fragment>
-        )}
+        ) : null}
         <Spacer.Column numberOfSpaces={6} />
         <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={6} />
@@ -134,7 +134,7 @@ export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalPr
           title="Choisir une localisation"
           subtitle={LOCATION_PLACEHOLDER}
         />
-        {!!isCurrentLocationMode(LocationMode.AROUND_PLACE) && (
+        {isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
           <React.Fragment>
             <LocationSearchInput
               selectedPlace={selectedPlace}
@@ -145,14 +145,14 @@ export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalPr
               onSetSelectedPlace={onPlaceSelection}
             />
             <Spacer.Column numberOfSpaces={4} />
-            {!!selectedPlace && (
+            {selectedPlace ? (
               <LocationSearchFilters
                 aroundRadius={tempAroundPlaceRadius}
                 onValuesChange={onTempAroundRadiusPlaceValueChange}
               />
-            )}
+            ) : null}
           </React.Fragment>
-        )}
+        ) : null}
       </StyledScrollView>
     </AppModal>
   )

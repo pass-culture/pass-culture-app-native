@@ -19,14 +19,14 @@ export const ImageCaption = ({ categoryLabel, height, width, distance }: ImageCa
           {categoryLabel}
         </CategoryLabel>
       </TextWrapper>
-      {!!distance && (
+      {distance ? (
         <React.Fragment>
           <Separator />
           <TextWrapper>
             <Distance testID="distanceImageCaption">{distance}</Distance>
           </TextWrapper>
         </React.Fragment>
-      )}
+      ) : null}
     </Row>
   )
 }

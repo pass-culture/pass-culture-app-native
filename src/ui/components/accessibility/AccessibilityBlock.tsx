@@ -38,11 +38,11 @@ const renderAccessibilityAtom = (
   handicap: HandicapCategory,
   addSpacer: boolean
 ) =>
-  !!(disability !== null && disability !== undefined) && (
+  disability !== null && disability !== undefined ? (
     <StyledLi rightSpacingValue={addSpacer ? getSpacing(10) : 0}>
       <AccessibilityAtom handicap={handicap} isAccessible={disability} />
     </StyledLi>
-  )
+  ) : null
 
 const StyledUl = styled(Ul)(({ theme }) => ({
   flexDirection: 'row',

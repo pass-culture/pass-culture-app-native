@@ -103,11 +103,11 @@ export class CodePushButton extends Component<unknown, State> {
         <Text style={styles.status} testID="status">
           {wording}
         </Text>
-        {!!this.state.info && (
+        {this.state.info ? (
           <Text style={styles.info} numberOfLines={3}>
             {this.state.info}
           </Text>
-        )}
+        ) : null}
       </TouchableOpacity>
     )
   }

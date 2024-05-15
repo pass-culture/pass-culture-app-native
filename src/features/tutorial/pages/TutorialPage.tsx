@@ -38,14 +38,14 @@ export const TutorialPage: FunctionComponent<Props> = ({
       <EmptyHeader onGoBack={onGoBack} />
       <StyledScrollView>
         <Container>
-          {!!title && (
+          {title ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <Typo.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
                 {title}
               </Typo.Title3>
             </React.Fragment>
-          )}
+          ) : null}
           {subtitle ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={2} />
@@ -55,9 +55,9 @@ export const TutorialPage: FunctionComponent<Props> = ({
           <Spacer.Column numberOfSpaces={4} />
           {children}
         </Container>
-        {!buttons && <Spacer.Column numberOfSpaces={6} />}
+        {!buttons ? <Spacer.Column numberOfSpaces={6} /> : null}
       </StyledScrollView>
-      {!!buttons && (
+      {buttons ? (
         <ButtonsContainer
           animation={buttonsContainerAnimation}
           duration={DURATION_IN_MS}
@@ -65,12 +65,12 @@ export const TutorialPage: FunctionComponent<Props> = ({
           easing={customEaseInOut}>
           {buttons?.map((button, index) => (
             <React.Fragment key={index}>
-              {index !== 0 && <Spacer.Column numberOfSpaces={4} />}
+              {index !== 0 ? <Spacer.Column numberOfSpaces={4} /> : null}
               {button}
             </React.Fragment>
           ))}
         </ButtonsContainer>
-      )}
+      ) : null}
       <Spacer.BottomScreen />
     </React.Fragment>
   )

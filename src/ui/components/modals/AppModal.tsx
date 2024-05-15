@@ -237,9 +237,9 @@ export const AppModal: FunctionComponent<Props> = ({
           fullscreenModalBody
         ) : (
           <React.Fragment>
-            {!!shouldAddSpacerBetweenHeaderAndContent && (
+            {shouldAddSpacerBetweenHeaderAndContent ? (
               <SpacerBetweenHeaderAndContent testID="spacerBetweenHeaderAndContent" />
-            )}
+            ) : null}
             <ScrollViewContainer
               paddingBottom={scrollViewPaddingBottom}
               modalSpacing={modalSpacing}>
@@ -254,14 +254,14 @@ export const AppModal: FunctionComponent<Props> = ({
             </ScrollViewContainer>
           </React.Fragment>
         )}
-        {!!fixedModalBottom && (
+        {fixedModalBottom ? (
           <React.Fragment>
             <FixedModalBottomContainer testID="fixedModalBottom">
               {fixedModalBottom}
             </FixedModalBottomContainer>
             <Spacer.BottomScreen />
           </React.Fragment>
-        )}
+        ) : null}
       </ModalContainer>
     </StyledModal>
   )

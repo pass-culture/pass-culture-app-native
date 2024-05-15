@@ -66,7 +66,7 @@ export const SubscriptionMessageBadge = ({ subscriptionMessage }: Props) => {
 
   return (
     <React.Fragment>
-      {!!updatedAt && (
+      {updatedAt ? (
         <React.Fragment>
           <Subtitle
             startSubtitle="Dossier mis à jour le&nbsp;:"
@@ -74,7 +74,7 @@ export const SubscriptionMessageBadge = ({ subscriptionMessage }: Props) => {
           />
           <Spacer.Column numberOfSpaces={4} />
         </React.Fragment>
-      )}
+      ) : null}
       <Spacer.Column numberOfSpaces={2} />
       <InfoBanner
         icon={icon}

@@ -240,16 +240,16 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 
   return (
     <RowContainer>
-      {!!accessibleHiddenTitle && (
+      {accessibleHiddenTitle ? (
         <HiddenAccessibleText {...getHeadingAttrs(1)}>{accessibleHiddenTitle}</HiddenAccessibleText>
-      )}
+      ) : null}
       <SearchInputContainer {...props}>
         <SearchInputA11yContainer>
-          {!!hasEditableSearchInput && (
+          {hasEditableSearchInput ? (
             <StyledView>
               <BackButton onGoBack={onPressArrowBack} />
             </StyledView>
-          )}
+          ) : null}
           <FlexView>
             <HiddenSuggestionsButton />
             <SearchMainInput

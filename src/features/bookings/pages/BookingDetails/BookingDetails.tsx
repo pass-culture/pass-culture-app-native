@@ -207,7 +207,7 @@ export function BookingDetails() {
             <OfferRules>{offerRules}</OfferRules>
             <Spacer.Column numberOfSpaces={offerRules !== '' ? 8 : 2} />
             <BookingPropertiesSection booking={booking} />
-            {!!shouldDisplayItineraryButton && (
+            {shouldDisplayItineraryButton ? (
               <React.Fragment>
                 <Spacer.Column numberOfSpaces={4} />
                 <Separator.Horizontal />
@@ -222,7 +222,7 @@ export function BookingDetails() {
                   }
                 />
               </React.Fragment>
-            )}
+            ) : null}
             <Spacer.Column numberOfSpaces={6} />
             <InfoBanner message="Est-ce qu’il te manque des infos&nbsp;? Dis-nous ce que tu en penses via notre court questionnaire.">
               <Spacer.Column numberOfSpaces={2} />
@@ -237,7 +237,7 @@ export function BookingDetails() {
             </InfoBanner>
           </InfoContainer>
 
-          {!!offer.withdrawalDetails && (
+          {offer.withdrawalDetails ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <SectionWithDivider visible={!!offer.withdrawalDetails} gap={8}>
@@ -248,9 +248,9 @@ export function BookingDetails() {
                 </InfoContainer>
               </SectionWithDivider>
             </React.Fragment>
-          )}
+          ) : null}
 
-          {!!bookingContactEmail && (
+          {bookingContactEmail ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <SectionWithDivider visible={!!bookingContactEmail} gap={6}>
@@ -270,7 +270,7 @@ export function BookingDetails() {
                 </InfoContainer>
               </SectionWithDivider>
             </React.Fragment>
-          )}
+          ) : null}
 
           <Spacer.Column numberOfSpaces={14} />
 

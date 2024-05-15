@@ -121,11 +121,11 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
                 <ButtonText testID="firstLine">{firstLine}</ButtonText>
                 <StyledBody numberOfLines={2}>{secondLine}</StyledBody>
               </TextContainer>
-              {!isDisabled && (
+              {!isDisabled ? (
                 <IconContainer>
                   <ArrowNextIcon />
                 </IconContainer>
-              )}
+              ) : null}
             </Container>
           </StyledImageBackground>
         </ImageContainer>

@@ -50,12 +50,12 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   return (
     <Container onLayout={onLayout} testID="modalHeader" modalSpacing={modalSpacing}>
       <HeaderActionContainer justifyContent="left">
-        {!!LeftIcon && (
+        {LeftIcon ? (
           <HeaderAction onPress={onLeftIconPress} accessibilityLabel={leftIconAccessibilityLabel}>
             <LeftIcon />
             <HiddenAccessibleText>Retour</HiddenAccessibleText>
           </HeaderAction>
-        )}
+        ) : null}
       </HeaderActionContainer>
       <TitleContainer>
         <TitleComponent numberOfLines={numberOfLines} nativeID={titleID} testID="modalHeaderTitle">
@@ -63,11 +63,11 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         </TitleComponent>
       </TitleContainer>
       <HeaderActionContainer justifyContent="right">
-        {!!RightIcon && (
+        {RightIcon ? (
           <HeaderAction onPress={onRightIconPress} accessibilityLabel={rightIconAccessibilityLabel}>
             <RightIcon testID="rightIcon" />
           </HeaderAction>
-        )}
+        ) : null}
       </HeaderActionContainer>
     </Container>
   )

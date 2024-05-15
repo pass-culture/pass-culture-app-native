@@ -59,7 +59,7 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
         Le mot de passe doit contenir au moins 12 caractères, 1 majuscule, 1 minuscule, 1 chiffre et
         un caractère spécial
       </HiddenAccessibleText>
-      {!!visible && (
+      {visible ? (
         <RulesContainer
           isVisible={visible}
           accessibilityRole={AccessibilityRole.STATUS}
@@ -77,7 +77,7 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
             isValidated={containsSpecialCharacter(password)}
           />
         </RulesContainer>
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

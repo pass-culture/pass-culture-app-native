@@ -38,12 +38,12 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
   return (
     <Container toggleLabel={!!toggleLabel}>
       <TitleContainer toggleLabel={!!toggleLabel}>
-        {!!Icon && (
+        {Icon ? (
           <React.Fragment>
             <Icon size={iconSize} />
             <Spacer.Row numberOfSpaces={2} />
           </React.Fragment>
-        )}
+        ) : null}
         <InputLabel htmlFor={checkboxID}>
           <Typo.ButtonText>{title}</Typo.ButtonText>
         </InputLabel>

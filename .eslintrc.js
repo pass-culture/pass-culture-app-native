@@ -35,7 +35,7 @@ module.exports = {
     'local-rules/independent-mocks': ['error'],
     'local-rules/no-hardcoded-id-in-svg': ['error'],
     'local-rules/no-raw-text': ['error'],
-    'local-rules/no-string-check-before-component': ['error'],
+    'local-rules/use-ternary-operator-in-jsx': ['error'],
     'local-rules/nbsp-in-text': ['error'],
     'local-rules/apostrophe-in-text': ['error'],
     'local-rules/no-truthy-check-after-queryAll-matchers': ['error'],
@@ -50,7 +50,7 @@ module.exports = {
         minimumDescriptionLength: 5,
       },
     ],
-    "import/no-duplicates": ["error", {"considerQueryString": true}],
+    'import/no-duplicates': ['error', { considerQueryString: true }],
     'no-unused-vars': 'off', // not ideal, but programmatically necessary sometimes
 
     '@typescript-eslint/no-unused-vars': [

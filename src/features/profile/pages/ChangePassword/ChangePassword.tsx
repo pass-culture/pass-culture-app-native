@@ -151,7 +151,7 @@ export function ChangePassword() {
             placeholder="Confirmer le mot de passe"
           />
           <Spacer.Column numberOfSpaces={10} />
-          {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
+          {keyboardHeight ? <Spacer.Column numberOfSpaces={2} /> : null}
           <ButtonPrimary
             wording="Enregistrer"
             accessibilityLabel="Enregistrer les modifications"

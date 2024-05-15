@@ -42,11 +42,11 @@ export const ContentHeader = ({
       {
         // There is an issue with the blur on Android: we chose not to render it and use a white background
         // https://github.com/Kureev/react-native-blur/issues/511
-        Platform.OS !== 'android' && (
+        Platform.OS !== 'android' ? (
           <BlurNativeContainer height={headerHeight} style={blurContainerNative}>
             <Blurred blurType="light" blurAmount={8} />
           </BlurNativeContainer>
-        )
+        ) : null
       }
       <Spacer.Column numberOfSpaces={2} />
       <Row>

@@ -114,7 +114,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
           title="Utiliser ma position actuelle"
           subtitle={hasGeolocPosition ? undefined : 'Géolocalisation désactivée'}
         />
-        {!!isCurrentLocationMode(LocationMode.AROUND_ME) && (
+        {isCurrentLocationMode(LocationMode.AROUND_ME) ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
             <LocationSearchFilters
@@ -122,7 +122,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
               onValuesChange={onTempAroundMeRadiusValueChange}
             />
           </React.Fragment>
-        )}
+        ) : null}
         <Spacer.Column numberOfSpaces={6} />
         <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={6} />
@@ -133,7 +133,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
           title="Choisir une localisation"
           subtitle={LOCATION_PLACEHOLDER}
         />
-        {!!isCurrentLocationMode(LocationMode.AROUND_PLACE) && (
+        {isCurrentLocationMode(LocationMode.AROUND_PLACE) ? (
           <React.Fragment>
             <LocationSearchInput
               selectedPlace={selectedPlace}
@@ -144,14 +144,14 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
               onSetSelectedPlace={onPlaceSelection}
             />
             <Spacer.Column numberOfSpaces={4} />
-            {!!selectedPlace && (
+            {selectedPlace ? (
               <LocationSearchFilters
                 aroundRadius={tempAroundPlaceRadius}
                 onValuesChange={onTempAroundRadiusPlaceValueChange}
               />
-            )}
+            ) : null}
           </React.Fragment>
-        )}
+        ) : null}
         <Spacer.Column numberOfSpaces={6} />
         <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={6} />

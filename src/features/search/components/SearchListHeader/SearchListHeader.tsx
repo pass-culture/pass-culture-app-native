@@ -129,7 +129,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 
   return (
     <View testID="searchListHeader">
-      {!!shouldDisplayGeolocationButton && (
+      {shouldDisplayGeolocationButton ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <GeolocationButtonContainer
@@ -142,16 +142,16 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
             </GenericBanner>
           </GeolocationButtonContainer>
         </React.Fragment>
-      )}
-      {!!shouldDisplayAvailableUserDataMessage && (
+      ) : null}
+      {shouldDisplayAvailableUserDataMessage ? (
         <BannerOfferNotPresentContainer
           testID="banner-container"
           accessibilityRole={AccessibilityRole.STATUS}
           nbHits={nbHits}>
           <InfoBanner message={unavailableOfferMessage} icon={Error} />
         </BannerOfferNotPresentContainer>
-      )}
-      {!!shouldDisplayVenuesPlaylist && (
+      ) : null}
+      {shouldDisplayVenuesPlaylist ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <View>
@@ -187,7 +187,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           <Spacer.Column numberOfSpaces={3} />
           <StyledSeparator />
         </React.Fragment>
-      )}
+      ) : null}
       <Spacer.Column numberOfSpaces={4} />
       <Title>{offerTitle}</Title>
       <NumberOfResults nbHits={nbHits} />

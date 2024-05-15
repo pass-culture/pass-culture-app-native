@@ -72,7 +72,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
         testID={testIdFull}>
         <StyledBackgroundColor active={active}>
           <StyledToggle style={{ marginLeft }} disabled={disabled}>
-            {!!disabled && <Lock />}
+            {disabled ? <Lock /> : null}
             {!!active && !disabled ? <Check /> : null}
           </StyledToggle>
         </StyledBackgroundColor>
