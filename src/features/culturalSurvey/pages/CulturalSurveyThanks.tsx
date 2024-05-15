@@ -18,6 +18,17 @@ export const CulturalSurveyThanks: React.FC = () => {
   const { reset } = useNavigation<UseNavigationType>()
   const { showShareAppModal } = useShareAppContext()
 
+  const navigateToHomeAndShowShareAppModal = async () => {
+    reset({
+      index: 0,
+      routes: [{ name: navigateToHomeConfig.screen }],
+    })
+    const hasSeenShareAppModal = await storage.readObject(SHARE_APP_MODAL_STORAGE_KEY)
+    if (hasSeenShareAppModal) return
+    showShareAppModal(ShareAppModalType.BENEFICIARY)
+    await storage.saveObject(SHARE_APP_MODAL_STORAGE_KEY, true)
+  }
+
   return (
     <GenericInfoPageWhite
       mobileBottomFlex={0.1}
@@ -29,16 +40,7 @@ export const CulturalSurveyThanks: React.FC = () => {
       <ButtonContainer>
         <ButtonPrimary
           wording="Découvrir le catalogue"
-          onPress={async () => {
-            reset({
-              index: 0,
-              routes: [{ name: navigateToHomeConfig.screen }],
-            })
-            const hasSeenShareAppModal = await storage.readObject(SHARE_APP_MODAL_STORAGE_KEY)
-            if (hasSeenShareAppModal) return
-            showShareAppModal(ShareAppModalType.BENEFICIARY)
-            await storage.saveObject(SHARE_APP_MODAL_STORAGE_KEY, true)
-          }}
+          onPress={navigateToHomeAndShowShareAppModal}
         />
       </ButtonContainer>
     </GenericInfoPageWhite>

@@ -35,6 +35,18 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
   const { reset } = useNavigation<UseNavigationType>()
   const { showShareAppModal } = useShareAppContext()
 
+  const navigateSendAnalyticsAndShowShareAppModal = async () => {
+    reset({
+      index: 0,
+      routes: [{ name: navigateToHomeConfig.screen }],
+    })
+    analytics.logHasSkippedCulturalSurvey()
+    const hasSeenShareAppModal = await storage.readObject(SHARE_APP_MODAL_STORAGE_KEY)
+    if (hasSeenShareAppModal) return
+    showShareAppModal(ShareAppModalType.BENEFICIARY)
+    await storage.saveObject(SHARE_APP_MODAL_STORAGE_KEY, true)
+  }
+
   return (
     <GenericInfoPageWhite
       icon={StyledBicolorPhonePending}
@@ -81,17 +93,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
           key={3}
           wording="Plus tard"
           icon={ClockFilled}
-          onPress={async () => {
-            reset({
-              index: 0,
-              routes: [{ name: navigateToHomeConfig.screen }],
-            })
-            analytics.logHasSkippedCulturalSurvey()
-            const hasSeenShareAppModal = await storage.readObject(SHARE_APP_MODAL_STORAGE_KEY)
-            if (hasSeenShareAppModal) return
-            showShareAppModal(ShareAppModalType.BENEFICIARY)
-            await storage.saveObject(SHARE_APP_MODAL_STORAGE_KEY, true)
-          }}
+          onPress={navigateSendAnalyticsAndShowShareAppModal}
         />
       </View>
     </GenericInfoPageWhite>
