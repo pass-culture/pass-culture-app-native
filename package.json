@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.290.2",
-  "build": 10290002,
+  "version": "1.290.3",
+  "build": 10290003,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -88,7 +88,8 @@
     "trigger:production:deploy": "./scripts/deploy_new_production_version.sh",
     "trigger:production:deploy:ios": "./scripts/deploy.sh -o ios -t hard -e production",
     "trigger:staging:deploy": "./scripts/release_staging_minor.sh && ./scripts/deploy_new_version.sh testing/v minor",
-    "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh patch/v patch"
+    "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh patch/v patch",
+    "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing/v patch"
   },
   "husky": {
     "hooks": {
