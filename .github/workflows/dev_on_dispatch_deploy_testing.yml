@@ -8,4 +8,5 @@ jobs:
     name: Deploy testing patch
     runs-on: ubuntu-latest
     steps:
-        - run: yarn trigger:testing:deploy
+      - uses: actions/checkout@v4
+      - run: ./scripts/deploy_new_version.sh testing/v patch
