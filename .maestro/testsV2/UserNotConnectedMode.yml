@@ -1,0 +1,19 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow: reusableFlows/LaunchApp.yml
+
+- runFlow: reusableFlows/features/cookies/AcceptCookies.yml
+- runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
+- runFlow: reusableFlows/features/GoToFavouritesFromTabBar.yml
+
+- runFlow: reusableFlows/GoToProfileFromTabBar.yml
+- runFlow: reusableFlows/features/profil/CheckSignupAndLogin.yml
+- runFlow: reusableFlows/features/profil/AccountInfoNotAvailable.yml
+- runFlow: reusableFlows/features/profil/CantSetNotification.yml
+
+- runFlow: reusableFlows/GoToSearchFromTabBar.yml
+- runFlow: reusableFlows/features/search/SearchBookablePhysicalOffer.yml
+- runFlow: reusableFlows/features/auth/LoginFromPhysicalOffer.yml
+- runFlow: reusableFlows/features/auth/LoginFromModal.yml
+
+- runFlow: reusableFlows/StopApp.yml

@@ -3,6 +3,13 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Rechercher'
 - tapOn: "Livres" 
 
+- runFlow:
+    when:
+      visible: "Ma position"
+    commands:
+        - tapOn: "Ma position"
+        - tapOn: "Partout"
+
 # TODO(e2e): Attendre que "Catégories soit check"
 - tapOn: 'Catégories'
 
