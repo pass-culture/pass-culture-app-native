@@ -12843,6 +12843,10 @@ des.js@^1.0.0:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
 
+"design-system@https://github.com/pass-culture/design-system.git#v0.0.7":
+  version "0.0.2"
+  resolved "https://github.com/pass-culture/design-system.git#5fc948d27fc2881fc0e87bc20d64c2ca4f43723a"
+
 destroy@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.2.0.tgz#4803735509ad8be552934c67df614f94e66fa015"
