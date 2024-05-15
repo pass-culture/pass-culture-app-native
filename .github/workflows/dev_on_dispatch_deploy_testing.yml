@@ -1,0 +1,11 @@
+name: "1 [on_dispatch] Deploy testing patch"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy testing patch
+    runs-on: ubuntu-latest
+    steps:
+        - run: yarn trigger:testing:deploy
