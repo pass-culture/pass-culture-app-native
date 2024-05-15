@@ -4,9 +4,16 @@ on:
   workflow_dispatch:
 
 jobs:
+  yarn-install:
+    uses: ./.github/workflows/dev_on_workflow_install.yml
+    with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy:
+    needs: yarn-install
     name: Deploy testing patch
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - run: ./scripts/deploy_new_version.sh testing/v patch
