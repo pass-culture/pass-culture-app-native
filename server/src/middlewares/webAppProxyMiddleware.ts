@@ -51,7 +51,7 @@ export function fixHTMLFallbackStatusCode(req: IncomingMessage, proxyRes: Incomi
   if (proxyRes.statusCode == null) {
     return 500
   }
-  return proxyRes.statusCode as number
+  return proxyRes.statusCode
 }
 
 export async function metasResponseInterceptor(
