@@ -3,6 +3,10 @@ name: "1 [on_dispatch] Deploy testing patch"
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   yarn-install:
     uses: ./.github/workflows/dev_on_workflow_install.yml
