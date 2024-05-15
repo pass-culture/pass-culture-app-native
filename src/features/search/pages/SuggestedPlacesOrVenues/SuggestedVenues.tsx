@@ -57,7 +57,7 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
                   Icon={BuildingIcon}
                   onPress={() => setSelectedVenue(item)}
                 />
-                {!isLast ? <Spacer.Column numberOfSpaces={4} /> : null}
+                {isLast ? null : <Spacer.Column numberOfSpaces={4} />}
               </Li>
             )
           })}

@@ -69,5 +69,5 @@ const StyledLinearGradient = styled(LinearGradient).attrs({
   height: '100%',
   width: '100%',
   zIndex: 2,
-  ...(!isInCarousel ? { borderRadius: theme.borderRadius.radius } : {}),
+  ...(isInCarousel ? {} : { borderRadius: theme.borderRadius.radius }),
 }))

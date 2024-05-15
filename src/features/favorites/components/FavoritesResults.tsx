@@ -83,9 +83,9 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
     if (!data) {
       return
     }
-    return !favoritesState.sortBy
-      ? data.favorites
-      : applySortBy(data.favorites, favoritesState.sortBy, position)
+    return favoritesState.sortBy
+      ? applySortBy(data.favorites, favoritesState.sortBy, position)
+      : data.favorites
   }, [data, favoritesState, position])
 
   const { user } = useAuthContext()

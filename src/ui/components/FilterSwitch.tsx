@@ -105,8 +105,9 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme, disa
   borderRadius: getSpacing(7),
   alignItems: 'center',
   justifyContent: 'center',
-  ...(!disabled
-    ? {
+  ...(disabled
+    ? {}
+    : {
         ...getShadow({
           shadowOffset: {
             width: 0,
@@ -116,8 +117,7 @@ const StyledToggle = styled(Animated.View)<{ disabled: boolean }>(({ theme, disa
           shadowColor: theme.colors.black,
           shadowOpacity: 0.2,
         }),
-      }
-    : {}),
+      }),
 }))
 
 const Lock = styled(LockIcon).attrs(({ theme }) => ({

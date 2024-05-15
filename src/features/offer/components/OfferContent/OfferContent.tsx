@@ -159,19 +159,19 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
           apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
           sameArtistPlaylist={sameArtistPlaylist}
         />
-        {!isDesktopViewport ? <Spacer.Column numberOfSpaces={22} /> : null}
+        {isDesktopViewport ? null : <Spacer.Column numberOfSpaces={22} />}
       </ScrollViewContainer>
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}
-      {!isWeb ? (
+      {isWeb ? null : (
         <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
-      ) : null}
-      {!isDesktopViewport ? (
+      )}
+      {isDesktopViewport ? null : (
         <OfferCTAButton
           offer={offer}
           subcategory={subcategory}
           trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
         />
-      ) : null}
+      )}
     </Container>
   )
 }

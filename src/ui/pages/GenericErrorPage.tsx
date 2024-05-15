@@ -54,7 +54,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
        *
        * BackgroundWithDefaultStatusBar is the same background but don't set the light nor dark theme
        */}
-      {!noBackground ? <BackgroundWithDefaultStatusBar /> : null}
+      {noBackground ? null : <BackgroundWithDefaultStatusBar />}
       {header}
       <Content>
         <Spacer.TopScreen />
@@ -74,7 +74,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
           <BottomContainer>
             {buttons.map((button, index) => (
               <React.Fragment key={index}>
-                {index !== 0 ? <Spacer.Column numberOfSpaces={4} /> : null}
+                {index === 0 ? null : <Spacer.Column numberOfSpaces={4} />}
                 {button}
               </React.Fragment>
             ))}

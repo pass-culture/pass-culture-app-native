@@ -242,7 +242,7 @@ const OnlineProfile: React.FC = () => {
               </Li>
             </VerticalUl>
           </Section>
-          {Platform.OS !== 'web' ? (
+          {Platform.OS === 'web' ? null : (
             <Section title="Partager le pass Culture">
               <Spacer.Column numberOfSpaces={4} />
               <BannerWithBackground
@@ -256,7 +256,7 @@ const OnlineProfile: React.FC = () => {
               </BannerWithBackground>
               <Spacer.Column numberOfSpaces={4} />
             </Section>
-          ) : null}
+          )}
           <Section title="Suivre le pass Culture">
             <SocialNetwork />
           </Section>

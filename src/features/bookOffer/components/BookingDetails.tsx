@@ -218,13 +218,13 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       />
       <Spacer.Column numberOfSpaces={6} />
 
-      {!isFreeOfferToArchive ? (
+      {isFreeOfferToArchive ? null : (
         <React.Fragment>
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
           <CancellationDetails />
         </React.Fragment>
-      ) : null}
+      )}
 
       <Spacer.Column numberOfSpaces={6} />
 

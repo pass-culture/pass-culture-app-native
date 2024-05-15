@@ -58,7 +58,7 @@ const Container = styled.View<{
   backgroundColor: getBackgroundColor(theme, status),
   padding: getSpacing(4),
   overflow: 'hidden',
-  marginHorizontal: status !== CreditStatus.ONGOING ? getSpacing(1) : 0,
+  marginHorizontal: status === CreditStatus.ONGOING ? 0 : getSpacing(1),
 }))
 
 const TagContainer = styled.View({

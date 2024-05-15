@@ -60,9 +60,9 @@ const CallToAction = ({ subscriptionMessage }: Props) => {
 export const SubscriptionMessageBadge = ({ subscriptionMessage }: Props) => {
   const { callToAction, popOverIcon, userMessage, updatedAt } = subscriptionMessage
 
-  const icon = !callToAction?.callToActionIcon
-    ? matchSubscriptionMessageIconToSvg(popOverIcon)
-    : Clock
+  const icon = callToAction?.callToActionIcon
+    ? Clock
+    : matchSubscriptionMessageIconToSvg(popOverIcon)
 
   return (
     <React.Fragment>

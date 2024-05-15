@@ -128,7 +128,7 @@ export function OfferVenueBlock({
 }
 
 const Container = styled(View)(({ theme }) => ({
-  marginHorizontal: !theme.isDesktopViewport ? getSpacing(6) : undefined,
+  marginHorizontal: theme.isDesktopViewport ? undefined : getSpacing(6),
 }))
 
 const TertiaryButtonWrapper = styled.View({

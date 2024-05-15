@@ -72,12 +72,12 @@ const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
 const Container = styled.View<StyleProps>(({ theme, size, borderRadius }) => ({
   borderRadius: borderRadius || theme.tiles.borderRadius,
   ...theme.tiles.sizes[size],
-  ...(Platform.OS !== 'web'
-    ? getShadow({
+  ...(Platform.OS === 'web'
+    ? {}
+    : getShadow({
         shadowOffset: { width: 0, height: getSpacing(1) },
         shadowRadius: getSpacing(1),
         shadowColor: theme.colors.greyDark,
         shadowOpacity: 0.2,
-      })
-    : {}),
+      })),
 }))

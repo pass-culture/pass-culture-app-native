@@ -44,7 +44,7 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
           <DefaultImagePlaceholderOfferV2 width={appContentWidth} height={imageHeight} />
         )}
       </ImageContainer>
-      {!isWeb ? <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity> : children}
+      {isWeb ? children : <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity>}
     </Container>
   )
 }

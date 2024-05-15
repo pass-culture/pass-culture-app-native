@@ -157,8 +157,8 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       trigger(['minPrice', 'maxPrice'])
       return
     }
-    const maxPrice = searchState?.maxPrice !== '0' ? searchState?.maxPrice ?? '' : ''
-    const minPrice = searchState?.minPrice !== '0' ? searchState?.minPrice ?? '' : ''
+    const maxPrice = searchState?.maxPrice === '0' ? '' : searchState?.maxPrice ?? ''
+    const minPrice = searchState?.minPrice === '0' ? '' : searchState?.minPrice ?? ''
     setValue('maxPrice', maxPrice)
     setValue('minPrice', minPrice)
     trigger(['minPrice', 'maxPrice'])

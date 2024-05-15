@@ -107,7 +107,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
           <BottomContainer>
             {buttons.map((button, index) => (
               <React.Fragment key={index}>
-                {index !== 0 ? <Spacer.Column numberOfSpaces={4} /> : null}
+                {index === 0 ? null : <Spacer.Column numberOfSpaces={4} />}
                 {button}
               </React.Fragment>
             ))}

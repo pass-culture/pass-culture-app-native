@@ -15,12 +15,12 @@ export const DeeplinksResult = ({ result }: Props) => {
       <StyledTitle4>Votre lien</StyledTitle4>
       <Container>
         <ResultContainer>
-          {!result ? (
+          {result ? (
+            <DeeplinkItem deeplink={result} />
+          ) : (
             <CenteredContainer>
               <Typo.Body>Vous devez d’abord générer un lien</Typo.Body>
             </CenteredContainer>
-          ) : (
-            <DeeplinkItem deeplink={result} />
           )}
         </ResultContainer>
       </Container>

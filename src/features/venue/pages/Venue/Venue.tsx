@@ -71,13 +71,13 @@ export const Venue: FunctionComponent = () => {
         shouldDisplayCTA={shouldDisplayCTA}
       />
       {/* On native VenueHeader is called after Body to implement the BlurView for iOS */}
-      {!isWeb ? (
+      {isWeb ? null : (
         <VenueHeader
           headerTransition={headerTransition}
           title={venue.publicName || venue.name}
           venue={venue}
         />
-      ) : null}
+      )}
       {shouldDisplayCTA ? <VenueCTA venue={venue} /> : null}
     </Container>
   )

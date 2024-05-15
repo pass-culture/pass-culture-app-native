@@ -85,14 +85,14 @@ const NavItemsContainer = styled.View<{
   maxWidth,
   position: 'absolute',
   zIndex: theme.zIndex.headerNav,
-  ...(!noShadow
-    ? getShadow({
+  ...(noShadow
+    ? {}
+    : getShadow({
         shadowOffset: { width: 0, height: getSpacing(1 / 4) },
         shadowRadius: getSpacing(1),
         shadowColor: theme.colors.black,
         shadowOpacity: 0.2,
-      })
-    : {}),
+      })),
 }))
 
 const StyledLi = styled(Li)({

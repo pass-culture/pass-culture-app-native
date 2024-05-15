@@ -77,7 +77,7 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
             inline
           />
         </InfoBanner>
-        {!isLoggedIn ? (
+        {isLoggedIn ? null : (
           <Container>
             <Spacer.Column numberOfSpaces={10} />
             <StyledBody>Identifie-toi pour bénéficier de ton crédit pass Culture</StyledBody>
@@ -94,7 +94,7 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
             <Spacer.Column numberOfSpaces={4} />
             <StyledLoginButton onAdditionalPress={onLoginPress} />
           </Container>
-        ) : null}
+        )}
         {isEligibleWithoutSubscription && age ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={10} />

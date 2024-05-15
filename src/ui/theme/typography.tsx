@@ -42,7 +42,7 @@ const ButtonText = styled(RNText)<{ shrink?: boolean }>(({ shrink, theme }) => (
   fontFamily: theme.typography.buttonText.fontFamily,
   fontSize: theme.typography.buttonText.fontSize,
   color: theme.typography.buttonText.color,
-  ...(!shrink ? { lineHeight: theme.typography.buttonText.lineHeight } : { flexShrink: 1 }),
+  ...(shrink ? { flexShrink: 1 } : { lineHeight: theme.typography.buttonText.lineHeight }),
 }))
 
 const ButtonTextPrimary = styled(ButtonText)(({ theme }) => ({

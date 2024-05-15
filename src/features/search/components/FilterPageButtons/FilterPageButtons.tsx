@@ -54,7 +54,7 @@ const Container = styled.View<{ isModal: boolean }>(({ isModal, theme }) => ({
   justifyContent: 'center',
   paddingHorizontal: theme.modal.spacing.MD,
   paddingTop: getSpacing(2),
-  ...(!isModal ? { paddingBottom: theme.modal.spacing.MD } : {}),
+  ...(isModal ? {} : { paddingBottom: theme.modal.spacing.MD }),
 }))
 
 const ResetButton = styledButton(ButtonQuaternaryBlack)({

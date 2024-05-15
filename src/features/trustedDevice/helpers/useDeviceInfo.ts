@@ -19,8 +19,8 @@ export const useDeviceInfo = (): DeviceInformation | undefined => {
 
       setDeviceInfo({
         deviceId,
-        os: osNative !== 'unknown' ? osNative : osWeb,
-        source: modelNative !== 'unknown' ? modelNative : browserName,
+        os: osNative === 'unknown' ? osWeb : osNative,
+        source: modelNative === 'unknown' ? browserName : modelNative,
       })
     }
     getDeviceInfo()

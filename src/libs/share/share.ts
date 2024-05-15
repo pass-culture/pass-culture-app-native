@@ -62,12 +62,12 @@ export const share = async ({ content, mode, logAnalyticsEvent }: Arguments) => 
   } else if (mode === 'iMessage') {
     const body = encodeURIComponent(`${content.body}\u00a0:\n${content.url}`)
     await Linking.openURL(`sms://&body=${body}`)
-  } else if (!isNative) {
+  } else if (isNative) {
+    await shareSocial({ content, mode })
+  } else {
     const { webUrl } = mapNetworkToSocial[mode]
     const message = encodeURIComponent(`${content.body}\u00a0:\n${content.url}`)
 
     Linking.openURL(webUrl + message)
-  } else {
-    await shareSocial({ content, mode })
   }
 }

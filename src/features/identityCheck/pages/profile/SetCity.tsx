@@ -110,7 +110,7 @@ export const SetCity = () => {
 
   const disabled = selectedCity === null
 
-  useEnterKeyAction(!disabled ? submitCity : undefined)
+  useEnterKeyAction(disabled ? undefined : submitCity)
 
   return (
     <PageWithHeader

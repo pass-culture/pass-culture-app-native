@@ -128,5 +128,5 @@ const Address = styled(Typo.Caption)(({ theme }) => ({
 }))
 
 const Container = styled(View)(({ theme }) => ({
-  marginHorizontal: !theme.isDesktopViewport ? getSpacing(6) : undefined,
+  marginHorizontal: theme.isDesktopViewport ? undefined : getSpacing(6),
 }))
