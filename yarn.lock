@@ -12843,9 +12843,9 @@ des.js@^1.0.0:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
 
-"design-system@https://github.com/pass-culture/design-system.git#v0.0.7":
+"design-system@https://github.com/pass-culture/design-system.git#v0.0.8":
   version "0.0.2"
-  resolved "https://github.com/pass-culture/design-system.git#5fc948d27fc2881fc0e87bc20d64c2ca4f43723a"
+  resolved "https://github.com/pass-culture/design-system.git#b1740d425f9b28316ab484c6f91a10dc9842e5d2"
 
 destroy@1.2.0:
   version "1.2.0"

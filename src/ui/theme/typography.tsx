@@ -39,10 +39,8 @@ const Title4 = styled(RNText).attrs<{ accessibilityLevel: HeadingLevel }>(
 }))
 
 const ButtonText = styled(RNText)<{ shrink?: boolean }>(({ shrink, theme }) => ({
-  fontFamily: theme.typography.buttonText.fontFamily,
-  fontSize: theme.typography.buttonText.fontSize,
-  color: theme.typography.buttonText.color,
-  ...(shrink ? { flexShrink: 1 } : { lineHeight: theme.typography.buttonText.lineHeight }),
+  ...(shrink ? { flexShrink: 1 } : { lineHeight: theme.typography.button.lineHeight }),
+  ...theme.typography.button,
 }))
 
 const ButtonTextPrimary = styled(ButtonText)(({ theme }) => ({

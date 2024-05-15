@@ -28,7 +28,7 @@ describe('ButtonInsideText Component', () => {
       render(<ButtonInsideText wording={wording} />)
       const buttonFontFamily = screen.getByText(wording).props.style[0].fontFamily
 
-      expect(buttonFontFamily).toBe(theme.typography.buttonText.fontFamily)
+      expect(buttonFontFamily).toBe(theme.typography.button.fontFamily)
     })
 
     it('should display Caption font family when Caption provided', () => {

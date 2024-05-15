@@ -1,3 +1,4 @@
+import { theme as designTokens } from 'design-system/dist/build/ts'
 import { Platform } from 'react-native'
 
 // eslint-disable-next-line no-restricted-imports
@@ -112,42 +113,25 @@ export const theme = {
       lineHeight: getSpacingString(12),
       color: ColorsEnum.BLACK,
     },
-    title1: {
-      fontFamily: 'Montserrat-Black',
-      fontSize: getSpacing(6.5),
-      lineHeight: getSpacingString(8.5),
-      color: ColorsEnum.BLACK,
-    },
-    title2: {
-      fontFamily: 'Montserrat-Medium',
-      fontSize: getSpacing(5.5),
-      lineHeight: getSpacingString(6.5),
-      color: ColorsEnum.BLACK,
-    },
-    title3: {
-      fontFamily: 'Montserrat-Bold',
-      fontSize: getSpacing(5),
-      lineHeight: getSpacingString(6),
-      color: ColorsEnum.BLACK,
-    },
-    title4: {
-      fontFamily: 'Montserrat-Medium',
-      fontSize: getSpacing(4.5),
-      lineHeight: getSpacingString(5.5),
-      color: ColorsEnum.BLACK,
-    },
-    buttonText: {
-      fontFamily: 'Montserrat-Bold',
+    title1: designTokens.typography.title1,
+    title2: designTokens.typography.title2,
+    title3: designTokens.typography.title3,
+    title4: designTokens.typography.title4,
+    body: designTokens.typography.body,
+    bodyS: designTokens.typography.bodyS,
+    bodyXs: designTokens.typography.bodyXs,
+    bodySemiBold: designTokens.typography.bodySemiBold,
+    bodySemiBoldS: designTokens.typography.bodySemiBoldS,
+    bodyItalic: designTokens.typography.bodyItalic,
+    bodyItalicSemiBold: designTokens.typography.bodyItalicSemiBold,
+    bodyItalicBold: {
+      fontFamily: 'Montserrat-BoldItalic',
       fontSize: getSpacing(3.75),
       lineHeight: getSpacingString(5),
       color: ColorsEnum.BLACK,
     },
-    body: {
-      fontFamily: 'Montserrat-Regular',
-      fontSize: getSpacing(3.75),
-      lineHeight: getSpacingString(5),
-      color: ColorsEnum.BLACK,
-    },
+    button: designTokens.typography.button,
+    link: designTokens.typography.link,
     caption: {
       fontFamily: 'Montserrat-SemiBold',
       fontSize: getSpacing(3),
@@ -165,12 +149,6 @@ export const theme = {
       fontSize: getSpacing(3.75),
       lineHeight: getSpacingString(5),
       color: ColorsEnum.GREY_DARK,
-    },
-    bodyBoldItalic: {
-      fontFamily: 'Montserrat-BoldItalic',
-      fontSize: getSpacing(3.75),
-      lineHeight: getSpacingString(5),
-      color: ColorsEnum.BLACK,
     },
   },
   colors: {

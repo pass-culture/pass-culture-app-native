@@ -602,7 +602,7 @@ module.exports = function (webpackEnv) {
         {
           hashEnabled: { 'style-src': false },
           // nonce must be different for each request, we disable this option since we do not handle this: https://content-security-policy.com/nonce/
-          nonceEnabled: { 'script-src': false },
+          nonceEnabled: { 'script-src': false, 'style-src': false },
         }
       ),
       new PreloadWebpackPlugin({
