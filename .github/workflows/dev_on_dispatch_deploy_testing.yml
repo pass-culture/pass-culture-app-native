@@ -20,5 +20,20 @@ jobs:
     needs: yarn-install
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: 'Cache the node_modules'
+        uses: pass-culture-github-actions/cache@v1.0.0
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+          bucket: passculture-infra-prod-github-runner-cache
       - name: Deploy testing patch
         run: ./scripts/deploy_new_version.sh testing/v patch
