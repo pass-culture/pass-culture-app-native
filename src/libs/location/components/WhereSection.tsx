@@ -87,23 +87,23 @@ export const WhereSection: React.FC<Props> = ({
           </VenueNameContainer>
         </React.Fragment>
       ) : null}
-      {!!address && (
+      {address ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <Typo.Caption>Adresse</Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
           <StyledAddress>{address}</StyledAddress>
         </React.Fragment>
-      )}
-      {!!distanceToLocation && (
+      ) : null}
+      {distanceToLocation ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <Typo.Caption>Distance</Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
           <Typo.Body>{distanceToLocation}</Typo.Body>
         </React.Fragment>
-      )}
-      {!!venueFullAddress && (
+      ) : null}
+      {venueFullAddress ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <Separator />
@@ -116,7 +116,7 @@ export const WhereSection: React.FC<Props> = ({
             onPress={beforeNavigateToItinerary}
           />
         </React.Fragment>
-      )}
+      ) : null}
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )

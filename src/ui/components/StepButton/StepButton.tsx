@@ -90,7 +90,7 @@ const ButtonContent: FunctionComponent<ButtonContentProps> = ({
   return (
     <StyleContainer LeftIcon={<Icon />} RightIcon={withRightIcon ? undefined : () => null}>
       <StyledButtonText stepState={stepState}>{label}</StyledButtonText>
-      {!!subtitle && <StepSubtitle stepState={stepState}>{subtitle}</StepSubtitle>}
+      {subtitle ? <StepSubtitle stepState={stepState}>{subtitle}</StepSubtitle> : null}
     </StyleContainer>
   )
 }
@@ -111,7 +111,7 @@ type BaseContainerProps = {
 }
 const BaseContainer: FunctionComponent<BaseContainerProps> = ({ LeftIcon, style, children }) => (
   <BaseStyleComponent style={style}>
-    {!!LeftIcon && <IconContainer>{LeftIcon}</IconContainer>}
+    {LeftIcon ? <IconContainer>{LeftIcon}</IconContainer> : null}
     <ChildrenContainer>{children}</ChildrenContainer>
   </BaseStyleComponent>
 )

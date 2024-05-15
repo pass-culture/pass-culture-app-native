@@ -12,7 +12,7 @@ export const Subtitle = ({ startSubtitle, boldEndSubtitle }: Props) => {
   return (
     <Row>
       <Typo.Body>{startSubtitle}</Typo.Body>
-      {!!boldEndSubtitle && <Typo.ButtonText>&nbsp;{boldEndSubtitle}</Typo.ButtonText>}
+      {boldEndSubtitle ? <Typo.ButtonText>&nbsp;{boldEndSubtitle}</Typo.ButtonText> : null}
     </Row>
   )
 }

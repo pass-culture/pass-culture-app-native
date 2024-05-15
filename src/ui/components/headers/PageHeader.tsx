@@ -18,7 +18,7 @@ export const PageHeader = ({ title, numberOfLines = 1, subtitle, children }: Pro
         <TitleContainer>
           <Typo.Title1 numberOfLines={numberOfLines}>{title}</Typo.Title1>
           <Spacer.Column numberOfSpaces={1} />
-          {!!subtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>}
+          {subtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
         </TitleContainer>
         {children}
       </HeaderContainer>

@@ -64,7 +64,7 @@ export const BookingInformations = () => {
     return (
       <React.Fragment>
         <Item Icon={Booking} message={name} />
-        {!!stock.beginningDatetime && <Item Icon={Calendar} message={message} />}
+        {stock.beginningDatetime ? <Item Icon={Calendar} message={message} /> : null}
         <Item Icon={OrderPrice} message={price} />
       </React.Fragment>
     )

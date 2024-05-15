@@ -196,13 +196,13 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       <Spacer.Column numberOfSpaces={6} />
       <VenueTitleContainer>
         <VenueTitleText>{venueSectionTitle}</VenueTitleText>
-        {!!shouldDisplayOtherVenuesAvailableButton && (
+        {shouldDisplayOtherVenuesAvailableButton ? (
           <EditButton
             wording="Modifier"
             accessibilityLabel={`Modifier ${venueSectionTitle}`}
             onPress={showModal}
           />
-        )}
+        ) : null}
       </VenueTitleContainer>
 
       <Spacer.Column numberOfSpaces={4} />
@@ -218,17 +218,17 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       />
       <Spacer.Column numberOfSpaces={6} />
 
-      {!isFreeOfferToArchive && (
+      {!isFreeOfferToArchive ? (
         <React.Fragment>
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
           <CancellationDetails />
         </React.Fragment>
-      )}
+      ) : null}
 
       <Spacer.Column numberOfSpaces={6} />
 
-      {!!(offer?.isDuo && !isEvent) && (
+      {offer?.isDuo && !isEvent ? (
         <React.Fragment>
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
@@ -237,7 +237,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
-      )}
+      ) : null}
 
       <ButtonContainer>
         <ButtonPrimary
@@ -247,11 +247,11 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           accessibilityDescribedBy={accessibilityDescribedBy}
         />
       </ButtonContainer>
-      {!!formattedPriceWithEuro && (
+      {formattedPriceWithEuro ? (
         <Caption nativeID={accessibilityDescribedBy}>{deductedAmount}</Caption>
-      )}
+      ) : null}
 
-      {!!shouldDisplayOtherVenuesAvailableButton && (
+      {shouldDisplayOtherVenuesAvailableButton ? (
         <VenueSelectionModal
           isVisible={visible}
           items={venueList}
@@ -271,7 +271,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           validateButtonLabel="Choisir ce lieu"
           headerMessage={headerMessage}
         />
-      )}
+      ) : null}
     </Container>
   )
 }

@@ -53,23 +53,23 @@ export function LayoutExpiredLink({
         </React.Fragment>
       ) : null}
 
-      {!!urlFAQ && (
+      {urlFAQ ? (
         <ExternalTouchableLink
           as={ButtonTertiaryWhite}
           wording="Consulter l’article d’aide"
           externalNav={{ url: urlFAQ }}
           icon={ExternalSite}
         />
-      )}
+      ) : null}
 
-      {!!contactSupport && (
+      {contactSupport ? (
         <ButtonTertiaryWhite
           wording="Contacter le support"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
           onPress={contactSupport}
           icon={EmailFilled}
         />
-      )}
+      ) : null}
     </GenericInfoPage>
   )
 }

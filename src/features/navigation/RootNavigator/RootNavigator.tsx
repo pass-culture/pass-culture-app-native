@@ -71,14 +71,14 @@ export const RootNavigator: React.ComponentType = () => {
       <Main nativeID={mainId} accessibilityRole={AccessibilityRole.MAIN}>
         <RootStackNavigator initialRouteName={initialScreen} />
       </Main>
-      {!!showTabBar && (
+      {showTabBar ? (
         <View accessibilityRole={AccessibilityRole.FOOTER}>
           <AccessibleTabBar id={tabBarId} />
         </View>
-      )}
+      ) : null}
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
-      {!!isSplashScreenHidden && <PrivacyPolicy />}
+      {isSplashScreenHidden ? <PrivacyPolicy /> : null}
     </TabNavigationStateProvider>
   )
 }

@@ -36,7 +36,9 @@ export function StepCard({
         </IconContainer>
         <TextContainter>
           <Title type={type}>{title}</Title>
-          {!!shouldDisplaySubtitle && <Typo.CaptionNeutralInfo>{subtitle}</Typo.CaptionNeutralInfo>}
+          {shouldDisplaySubtitle ? (
+            <Typo.CaptionNeutralInfo>{subtitle}</Typo.CaptionNeutralInfo>
+          ) : null}
         </TextContainter>
       </Container>
     </Parent>

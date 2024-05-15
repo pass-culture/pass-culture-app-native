@@ -29,17 +29,17 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
           <StyledTitleMainView {...getHeadingAttrs(1)}>
             <StyledTitleMainText htmlFor={searchInputID}>Rechercher</StyledTitleMainText>
           </StyledTitleMainView>
-          {!!isDesktopViewport && <SearchLocationWidgetDesktopView />}
+          {isDesktopViewport ? <SearchLocationWidgetDesktopView /> : null}
         </TitleMainWrapper>
         {
-          // eslint-disable-next-line local-rules/no-string-check-before-component
+          // eslint-disable-next-line local-rules/use-ternary-operator-in-jsx
           shouldDisplaySubtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>
         }
       </TitleContainer>
       <View testID="InsideLocationWidget">
-        {!!shouldDisplayMobileLocationWidget && (
+        {shouldDisplayMobileLocationWidget ? (
           <LocationWidget screenOrigin={ScreenOrigin.SEARCH} />
-        )}
+        ) : null}
       </View>
     </TitleAndWidgetContainer>
   )

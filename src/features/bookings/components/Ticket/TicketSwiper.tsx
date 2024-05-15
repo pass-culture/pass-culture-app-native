@@ -87,7 +87,7 @@ export function TicketSwiper({ booking }: TicketsProps) {
         renderItem={renderItem}
         scrollEnabled={isTouch}
       />
-      {!!showControls && (
+      {showControls ? (
         <SwiperTicketsControlsContainer>
           <TicketSwiperControls
             numberOfSteps={NUMBER_OF_TICKETS}
@@ -98,7 +98,7 @@ export function TicketSwiper({ booking }: TicketsProps) {
             onPressNext={() => moveTo('next')}
           />
         </SwiperTicketsControlsContainer>
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

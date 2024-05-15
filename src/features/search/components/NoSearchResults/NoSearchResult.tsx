@@ -31,7 +31,9 @@ export function NoSearchResult() {
       </ContainerNoOffer>
       <ContainerText>
         <MainTitle>{mainTitle}</MainTitle>
-        {!!searchState.query && <MainTitleComplement>{mainTitleComplement}</MainTitleComplement>}
+        {searchState.query ? (
+          <MainTitleComplement>{mainTitleComplement}</MainTitleComplement>
+        ) : null}
         <DescriptionErrorTextContainer>
           <DescriptionErrorText accessibilityLiveRegion="assertive">
             {descriptionErrorText}

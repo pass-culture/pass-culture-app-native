@@ -52,7 +52,7 @@ export const ForgottenPassword = () => {
       title="Oubli de mot de passe"
       shouldDisplayBackButton
       onGoBack={onBackNavigation}>
-      {!!settings?.isRecaptchaEnabled && (
+      {settings?.isRecaptchaEnabled ? (
         <ReCaptcha
           onClose={onReCaptchaClose}
           onError={onReCaptchaError}
@@ -60,7 +60,7 @@ export const ForgottenPassword = () => {
           onSuccess={onReCaptchaSuccess}
           isVisible={isDoingReCaptchaChallenge}
         />
-      )}
+      ) : null}
       <Typo.Title3 {...getHeadingAttrs(2)}>Mot de passe oublié&nbsp;?</Typo.Title3>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Body>

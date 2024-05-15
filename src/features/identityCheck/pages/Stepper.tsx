@@ -113,8 +113,8 @@ export const Stepper = () => {
 
         <StyledTitle1>{stepperTitle}</StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
-        {!!stepperSubtitle && <StyledSubtitle subtitle={stepperSubtitle} />}
-        {!!errorMessage && <StyledErrorMessage errorMessage={errorMessage} />}
+        {stepperSubtitle ? <StyledSubtitle subtitle={stepperSubtitle} /> : null}
+        {errorMessage ? <StyledErrorMessage errorMessage={errorMessage} /> : null}
         <Spacer.Column numberOfSpaces={2} />
         {stepList}
         <Spacer.Flex flex={1} />

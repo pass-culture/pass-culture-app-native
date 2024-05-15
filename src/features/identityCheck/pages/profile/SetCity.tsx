@@ -140,7 +140,7 @@ export const SetCity = () => {
             />
             <Spacer.Column numberOfSpaces={2} />
           </Form.MaxWidth>
-          {!!isLoading && <Spinner />}
+          {isLoading ? <Spinner /> : null}
           <CitiesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
             <VerticalUl>
               {cities.map((city, index) => (

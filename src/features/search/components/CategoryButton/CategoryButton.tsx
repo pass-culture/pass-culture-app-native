@@ -39,11 +39,11 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
       <IllustrationContainer>
         {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
         <StyledLinearGradient colors={[gradients[0], gradients[1]]}>
-          {!!Illustration && (
+          {Illustration ? (
             <IllustrationWrapper>
               <Illustration />
             </IllustrationWrapper>
-          )}
+          ) : null}
         </StyledLinearGradient>
       </IllustrationContainer>
       <LabelContainer baseColor={baseColor}>

@@ -21,8 +21,8 @@ export const SeatWithQrCode: FunctionComponent<SeatWithQrCodeProps> = ({
   return (
     <React.Fragment>
       <SeatContainer>
-        {!!seatIndex && <Typo.Caption>{currentSeatWithIndex}</Typo.Caption>}
-        {!!seat && <Seat>{currentSeat}</Seat>}
+        {seatIndex ? <Typo.Caption>{currentSeatWithIndex}</Typo.Caption> : null}
+        {seat ? <Seat>{currentSeat}</Seat> : null}
       </SeatContainer>
       <QrCode qrCode={barcode} />
     </React.Fragment>

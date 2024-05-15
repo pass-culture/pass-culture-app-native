@@ -57,11 +57,11 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
 
   return (
     <Wrapper>
-      {!!noIndex && (
+      {noIndex ? (
         <Helmet>
           <meta name="robots" content="noindex" />
         </Helmet>
-      )}
+      ) : null}
       {/**
        * BackgroundWithWhiteStatusBar set the light theme
        * to do it, it use `useFocusEffect` that is provided by `react-navigation` that is potentialy not mounted at this moment
@@ -71,50 +71,48 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
       <BackgroundWithDefaultStatusBar />
       <Content>
         <Spacer.TopScreen />
-        {!!isTouch && (
+        {isTouch ? (
           <React.Fragment>
             <Spacer.Flex />
             <Spacer.Column numberOfSpaces={spacingMatrix.top} />
           </React.Fragment>
-        )}
+        ) : null}
         {StyledIcon ? (
           <React.Fragment>
             <StyledIcon />
             <Spacer.Column numberOfSpaces={spacingMatrix.afterIcon} />
           </React.Fragment>
-        ) : (
-          !!animation && (
-            <React.Fragment>
-              <StyledLottieView
-                source={animation}
-                autoPlay
-                loop={false}
-                size={ANIMATION_SIZE}
-                progress={1}
-              />
-              <Spacer.Column numberOfSpaces={spacingMatrix.afterLottieAnimation} />
-            </React.Fragment>
-          )
-        )}
+        ) : animation ? (
+          <React.Fragment>
+            <StyledLottieView
+              source={animation}
+              autoPlay
+              loop={false}
+              size={ANIMATION_SIZE}
+              progress={1}
+            />
+            <Spacer.Column numberOfSpaces={spacingMatrix.afterLottieAnimation} />
+          </React.Fragment>
+        ) : null}
         <StyledTitle>{title}</StyledTitle>
         <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
         {children}
-        {!!isTouch && (
+        {isTouch ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={getButtonSpaces()} />
             <Spacer.Flex flex={0.5} />
           </React.Fragment>
-        )}
-        {!!buttons && (
+        ) : null}
+        {buttons ? (
           <BottomContainer>
             {buttons.map((button, index) => (
               <React.Fragment key={index}>
-                {index !== 0 && <Spacer.Column numberOfSpaces={4} />}
+                {index !== 0 ? <Spacer.Column numberOfSpaces={4} /> : null}
                 {button}
               </React.Fragment>
             ))}
           </BottomContainer>
-        )}
+        ) : null}
         <Spacer.BottomScreen />
       </Content>
     </Wrapper>

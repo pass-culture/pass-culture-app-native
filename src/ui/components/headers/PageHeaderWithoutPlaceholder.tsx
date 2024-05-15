@@ -48,9 +48,9 @@ export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
       <Container>
         <Row>
           <ButtonContainer positionInHeader="left" testID="back-button-container">
-            {!!shouldDisplayBackButton && (
+            {shouldDisplayBackButton ? (
               <BackButton onGoBack={onGoBack} color={ColorsEnum.BLACK} />
-            )}
+            ) : null}
           </ButtonContainer>
           <Title nativeID={titleID}>{title}</Title>
           <ButtonContainer positionInHeader="right" testID="close-button-container">

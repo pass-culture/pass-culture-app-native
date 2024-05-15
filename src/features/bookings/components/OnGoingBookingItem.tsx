@@ -68,10 +68,10 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Book
         <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} size="tall" />
         <AttributesView>
           <BookingItemTitle title={stock.offer.name} />
-          {!!dateLabel && <DateLabel>{dateLabel}</DateLabel>}
-          {!!bookingProperties.isDuo && <Duo />}
+          {dateLabel ? <DateLabel>{dateLabel}</DateLabel> : null}
+          {bookingProperties.isDuo ? <Duo /> : null}
           <Spacer.Flex />
-          {!!withdrawLabel && (
+          {withdrawLabel ? (
             <React.Fragment>
               {stock.offer.withdrawalType === WithdrawalTypeEnum.on_site ? (
                 <WithdrawContainer testID="on-site-withdrawal-container">
@@ -89,14 +89,14 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Book
                 </WithdrawContainer>
               )}
             </React.Fragment>
-          )}
-          {!!canDisplayExpirationMessage && (
+          ) : null}
+          {canDisplayExpirationMessage ? (
             <ExpirationBookingContainer testID="expiration-booking-container">
               <Clock />
               <Spacer.Row numberOfSpaces={1} />
               <ExpirationBookingLabel>{correctExpirationMessages}</ExpirationBookingLabel>
             </ExpirationBookingContainer>
-          )}
+          ) : null}
         </AttributesView>
       </ContentContainer>
       <ShareContainer>
@@ -106,14 +106,14 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Book
           accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
         />
       </ShareContainer>
-      {!!shareContent && (
+      {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
           headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

@@ -13,7 +13,7 @@ type SectionProps = PropsWithChildren<{
 export function Section(props: SectionProps) {
   return (
     <Container>
-      {!!props.title && <StyledCaption>{props.title}</StyledCaption>}
+      {props.title ? <StyledCaption>{props.title}</StyledCaption> : null}
       <Spacer.Column numberOfSpaces={2} />
       <Separator.Horizontal />
       {props.children}

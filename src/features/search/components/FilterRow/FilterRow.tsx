@@ -36,22 +36,22 @@ export const FilterRow = ({
 
   return (
     <TouchableRow testID="FilterRow" onPress={onPress} accessibilityDescribedBy={captionId}>
-      {!!StyledIcon && (
+      {StyledIcon ? (
         <React.Fragment>
           <StyledIcon />
           <Spacer.Row numberOfSpaces={2} />
         </React.Fragment>
-      )}
+      ) : null}
       <TextContainer>
         <TitleAndComplement>
           <Title numberOfLines={2}>{title}</Title>
-          {!!complement && (
+          {complement ? (
             <ComplementContainer>
               <ComplementLabel numberOfLines={1}>{complement}</ComplementLabel>
             </ComplementContainer>
-          )}
+          ) : null}
         </TitleAndComplement>
-        {!!description && <Description numberOfLines={1}>{description}</Description>}
+        {description ? <Description numberOfLines={1}>{description}</Description> : null}
       </TextContainer>
       <ArrowNext accessibilityLabel="Affiner la recherche" />
     </TouchableRow>

@@ -29,11 +29,11 @@ export const SurveyModal = ({
     <AppInformationModal title={title} visible={visible} onCloseIconPress={hideModal}>
       <Icon />
       <Spacer.Column numberOfSpaces={4} />
-      {!!surveyDescription && (
+      {surveyDescription ? (
         <Container>
           <Typo.Body>{surveyDescription}</Typo.Body>
         </Container>
-      )}
+      ) : null}
 
       {surveyUrl ? (
         <React.Fragment>

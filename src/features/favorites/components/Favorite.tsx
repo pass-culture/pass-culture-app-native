@@ -189,17 +189,17 @@ export const Favorite: React.FC<Props> = (props) => {
                   <Typo.ButtonText numberOfLines={2}>{offer.name}</Typo.ButtonText>
                   <Spacer.Column numberOfSpaces={1} />
                   <Body>{searchGroupLabel}</Body>
-                  {!!formattedDate && <Body>{formattedDate}</Body>}
-                  {!!displayPrice && (
+                  {formattedDate ? <Body>{formattedDate}</Body> : null}
+                  {displayPrice ? (
                     <React.Fragment>
                       <Spacer.Column numberOfSpaces={1} />
                       <Typo.Caption>{displayPrice}</Typo.Caption>
                     </React.Fragment>
-                  )}
+                  ) : null}
                 </LeftContent>
                 <Spacer.Row numberOfSpaces={2} />
                 <RightContent>
-                  {!!distanceToOffer && <Distance>{distanceToOffer}</Distance>}
+                  {distanceToOffer ? <Distance>{distanceToOffer}</Distance> : null}
                 </RightContent>
               </ContentContainer>
             </Row>
@@ -227,14 +227,14 @@ export const Favorite: React.FC<Props> = (props) => {
         </FavoriteButtonsContainer>
         <Separator />
       </Animated.View>
-      {!!shareContent && (
+      {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
           headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />
-      )}
+      ) : null}
       {BookOfferModal}
     </React.Fragment>
   )

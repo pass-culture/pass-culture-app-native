@@ -56,17 +56,17 @@ export function PriceLine({
     <Typo.Body>
       <MainText>{totalPrice} </MainText>
 
-      {quantity > 1 && (
+      {quantity > 1 ? (
         <SecondaryText testID={getTestID('price-detail')}>
           ({formatToFrenchDecimal(unitPrice)} x {quantity} places)
         </SecondaryText>
-      )}
+      ) : null}
 
-      {!!label && <MainText testID={getTestID('label')}> - {label}</MainText>}
+      {label ? <MainText testID={getTestID('label')}> - {label}</MainText> : null}
 
-      {!!shouldDisplayAttributes && (
+      {shouldDisplayAttributes ? (
         <MainText testID={getTestID('attributes')}> - {attributes.join(' ')}</MainText>
-      )}
+      ) : null}
     </Typo.Body>
   )
 }

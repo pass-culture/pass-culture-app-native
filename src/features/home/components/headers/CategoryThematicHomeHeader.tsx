@@ -23,12 +23,12 @@ export const CategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeade
         <BlackBackground>
           <TitleContainer>
             <Title numberOfLines={2}>{title}</Title>
-            {!!subtitle && (
+            {subtitle ? (
               <React.Fragment>
                 <Subtitle numberOfLines={2}>{subtitle}</Subtitle>
                 <Spacer.Column numberOfSpaces={1} />
               </React.Fragment>
-            )}
+            ) : null}
           </TitleContainer>
         </BlackBackground>
       </TextContainer>

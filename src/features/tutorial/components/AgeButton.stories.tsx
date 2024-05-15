@@ -46,14 +46,14 @@ const TextExample = ({ withSubtitle = false }) => (
     <StyledBody>
       j’ai <Typo.ButtonTextSecondary>17 ans</Typo.ButtonTextSecondary>
     </StyledBody>
-    {!!withSubtitle && (
+    {withSubtitle ? (
       <React.Fragment>
         <Spacer.Column numberOfSpaces={1} />
         <Typo.CaptionNeutralInfo numberOfLines={2}>
           j’ai moins de 15 ans ou plus de 18 ans
         </Typo.CaptionNeutralInfo>
       </React.Fragment>
-    )}
+    ) : null}
   </React.Fragment>
 )
 

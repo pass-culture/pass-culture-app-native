@@ -43,12 +43,12 @@ export function AccountCreated() {
           onBeforeNavigate={onBeforeNavigate}
         />,
       ]}>
-      {!!shouldNavigateToCulturalSurvey && (
+      {shouldNavigateToCulturalSurvey ? (
         <StyledBody>
           Aide-nous à en savoir plus sur tes pratiques culturelles&nbsp;! Ta sélection n’aura pas
           d’impact sur les offres proposées.
         </StyledBody>
-      )}
+      ) : null}
     </GenericInfoPage>
   )
 }

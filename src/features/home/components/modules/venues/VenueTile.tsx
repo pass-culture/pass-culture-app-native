@@ -73,7 +73,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
         isFocus={isFocus}
         accessibilityLabel={accessibilityLabel}>
         <View>
-          {!!distance && <StyledDistanceTag testID="distance-tag" label={`à ${distance}`} />}
+          {distance ? <StyledDistanceTag testID="distance-tag" label={`à ${distance}`} /> : null}
           {venue.bannerUrl ? (
             <ImageTile width={width} height={height} uri={venue.bannerUrl} />
           ) : (

@@ -42,7 +42,7 @@ export const NonEligibleModal = ({ visible, hideModal, userStatus, type }: Props
       <StyledIllustration />
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{firstParagraph}</StyledBody>
-      {!!withFAQLink && (
+      {withFAQLink ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <ButtonTertiaryBlack
@@ -51,7 +51,7 @@ export const NonEligibleModal = ({ visible, hideModal, userStatus, type }: Props
             onPress={onPress}
           />
         </React.Fragment>
-      )}
+      ) : null}
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{secondParagraph}</StyledBody>
       <Spacer.Column numberOfSpaces={8} />

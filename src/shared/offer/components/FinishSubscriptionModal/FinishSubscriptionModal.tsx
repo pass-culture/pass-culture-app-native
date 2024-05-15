@@ -60,14 +60,14 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
         </StyledBody>
       )}
       <Spacer.Column numberOfSpaces={6} />
-      {!!isUserTransitioningTo18 && (
+      {isUserTransitioningTo18 ? (
         <React.Fragment>
           <Typo.CaptionNeutralInfo>
             Ton crédit précédent a été remis à 0&nbsp;€.
           </Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
-      )}
+      ) : null}
       <ButtonPrimary
         wording={buttonLabel}
         accessibilityLabel="Aller vers la section profil"

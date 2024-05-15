@@ -70,14 +70,14 @@ export function OfferHeader({ headerTransition, title, offer }: Readonly<Props>)
           </React.Fragment>
         }
       />
-      {!!shareContent && (
+      {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
           headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

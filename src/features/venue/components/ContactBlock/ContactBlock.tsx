@@ -33,7 +33,7 @@ export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
 
   return (
     <React.Fragment>
-      {!!email && (
+      {email ? (
         <ExternalTouchableLink
           externalNav={{ url: `mailto:${email}`, onError: onOpenUrlError }}
           onBeforeNavigate={() => logAnalytics('email')}
@@ -41,8 +41,8 @@ export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
           wording={email}
           icon={EmailFilled}
         />
-      )}
-      {!!(phoneNumber && isValidFrenchPhoneNumber(phoneNumber)) && (
+      ) : null}
+      {phoneNumber && isValidFrenchPhoneNumber(phoneNumber) ? (
         <ExternalTouchableLink
           externalNav={{ url: `tel:${phoneNumber}`, onError: onOpenUrlError }}
           onBeforeNavigate={() => logAnalytics('phoneNumber')}
@@ -50,8 +50,8 @@ export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
           wording={phoneNumber}
           icon={PhoneFilled}
         />
-      )}
-      {!!website && (
+      ) : null}
+      {website ? (
         <ExternalTouchableLink
           externalNav={{ url: website, onError: onOpenUrlError }}
           onBeforeNavigate={() => logAnalytics('website')}
@@ -59,7 +59,7 @@ export const ContactBlock: React.FC<{ venue: VenueResponse }> = ({ venue }) => {
           wording={website}
           icon={ExternalSiteFilled}
         />
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

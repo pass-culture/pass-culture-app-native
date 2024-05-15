@@ -20,12 +20,12 @@ export const StoryContainer: FunctionComponent<Props> = ({
   withBackground = false,
 }) => (
   <Container>
-    {!!title && <Typo.Body>{title}</Typo.Body>}
+    {title ? <Typo.Body>{title}</Typo.Body> : null}
     <ChildrenContainer withBackground={withBackground}>
-      {!!withBackground && <BackgroundWithDefaultStatusBar />}
+      {withBackground ? <BackgroundWithDefaultStatusBar /> : null}
       {children}
     </ChildrenContainer>
-    {!!withBackground && <StyledCaption>{CaptionInformation}</StyledCaption>}
+    {withBackground ? <StyledCaption>{CaptionInformation}</StyledCaption> : null}
   </Container>
 )
 

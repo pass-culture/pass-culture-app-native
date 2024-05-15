@@ -34,12 +34,12 @@ export function ChangeEmailContent({
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      {!!hasCurrentEmailChange && (
+      {hasCurrentEmailChange ? (
         <React.Fragment>
           <AlreadyChangedEmailDisclaimer />
           <Spacer.Column numberOfSpaces={4} />
         </React.Fragment>
-      )}
+      ) : null}
       <ChangeEmailDisclaimer />
       <Spacer.Column numberOfSpaces={4} />
       <CenteredContainer>

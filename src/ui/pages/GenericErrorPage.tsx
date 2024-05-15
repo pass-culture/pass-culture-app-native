@@ -43,44 +43,44 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
 
   return (
     <Container>
-      {!!noIndex && (
+      {noIndex ? (
         <Helmet>
           <meta name="robots" content="noindex" />
         </Helmet>
-      )}
+      ) : null}
       {/**
        * BackgroundWithWhiteStatusBar set the light theme
        * to do it, it use `useFocusEffect` that is provided by `react-navigation` that is potentialy not mounted at this moment
        *
        * BackgroundWithDefaultStatusBar is the same background but don't set the light nor dark theme
        */}
-      {!noBackground && <BackgroundWithDefaultStatusBar />}
+      {!noBackground ? <BackgroundWithDefaultStatusBar /> : null}
       {header}
       <Content>
         <Spacer.TopScreen />
         <Spacer.Flex />
-        {!!isTouch && <Spacer.Column numberOfSpaces={spacingMatrix.top} />}
-        {!!Icon && (
+        {isTouch ? <Spacer.Column numberOfSpaces={spacingMatrix.top} /> : null}
+        {Icon ? (
           <React.Fragment>
             <Icon />
             <Spacer.Column numberOfSpaces={spacingMatrix.afterIcon} />
           </React.Fragment>
-        )}
+        ) : null}
         <StyledTitle noBackground={noBackground}>{title}</StyledTitle>
         <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
         {children}
         <Spacer.Column numberOfSpaces={spacingMatrix.afterChildren} />
-        {!!buttons && (
+        {buttons ? (
           <BottomContainer>
             {buttons.map((button, index) => (
               <React.Fragment key={index}>
-                {index !== 0 && <Spacer.Column numberOfSpaces={4} />}
+                {index !== 0 ? <Spacer.Column numberOfSpaces={4} /> : null}
                 {button}
               </React.Fragment>
             ))}
           </BottomContainer>
-        )}
-        {!!isTouch && <Spacer.Column numberOfSpaces={spacingMatrix.bottom} />}
+        ) : null}
+        {isTouch ? <Spacer.Column numberOfSpaces={spacingMatrix.bottom} /> : null}
         <Spacer.Flex />
         <Spacer.BottomScreen />
       </Content>

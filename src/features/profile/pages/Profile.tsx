@@ -146,7 +146,7 @@ const OnlineProfile: React.FC = () => {
           <Spacer.Column numberOfSpaces={4} />
           <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
             <VerticalUl>
-              {!!isLoggedIn && (
+              {isLoggedIn ? (
                 <Li>
                   <Row
                     title="Informations personnelles"
@@ -155,7 +155,7 @@ const OnlineProfile: React.FC = () => {
                     icon={BicolorProfile}
                   />
                 </Li>
-              )}
+              ) : null}
               <Li>
                 <Row
                   type="navigable"
@@ -191,7 +191,7 @@ const OnlineProfile: React.FC = () => {
           </Section>
           <Section title="Aides">
             <VerticalUl>
-              {!!shouldDisplayTutorial && (
+              {shouldDisplayTutorial ? (
                 <Li>
                   <Row
                     title="Comment ça marche&nbsp;?"
@@ -203,7 +203,7 @@ const OnlineProfile: React.FC = () => {
                     icon={LifeBuoy}
                   />
                 </Li>
-              )}
+              ) : null}
               <Li>
                 <Row
                   title="Centre d’aide"
@@ -242,7 +242,7 @@ const OnlineProfile: React.FC = () => {
               </Li>
             </VerticalUl>
           </Section>
-          {Platform.OS !== 'web' && (
+          {Platform.OS !== 'web' ? (
             <Section title="Partager le pass Culture">
               <Spacer.Column numberOfSpaces={4} />
               <BannerWithBackground
@@ -256,11 +256,11 @@ const OnlineProfile: React.FC = () => {
               </BannerWithBackground>
               <Spacer.Column numberOfSpaces={4} />
             </Section>
-          )}
+          ) : null}
           <Section title="Suivre le pass Culture">
             <SocialNetwork />
           </Section>
-          {!!isLoggedIn && (
+          {isLoggedIn ? (
             <Section>
               <Spacer.Column numberOfSpaces={4} />
               <SectionRow
@@ -271,7 +271,7 @@ const OnlineProfile: React.FC = () => {
                 iconSize={SECTION_ROW_ICON_SIZE}
               />
             </Section>
-          )}
+          ) : null}
           <Section>
             <Spacer.Column numberOfSpaces={4} />
             <Typo.CaptionNeutralInfo>{version}</Typo.CaptionNeutralInfo>

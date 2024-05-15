@@ -27,9 +27,9 @@ const textExample = ({ withSubtitle = true }) => (
   <React.Fragment>
     <Typo.ButtonText>Géolocalise-toi</Typo.ButtonText>
     <Spacer.Column numberOfSpaces={1} />
-    {!!withSubtitle && (
+    {withSubtitle ? (
       <Typo.Body numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Body>
-    )}
+    ) : null}
   </React.Fragment>
 )
 

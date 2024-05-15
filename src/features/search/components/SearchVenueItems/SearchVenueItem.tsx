@@ -71,7 +71,7 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width, searchId }: SearchVen
         isFocus={isFocus}
         accessibilityLabel={accessibilityLabel}>
         <View>
-          {!!distance && <StyledDistanceTag label={`à ${distance}`} />}
+          {distance ? <StyledDistanceTag label={`à ${distance}`} /> : null}
           {hasVenueImage ? (
             <ImageTile width={width} height={height} uri={imageUri} />
           ) : (

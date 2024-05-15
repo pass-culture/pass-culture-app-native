@@ -58,7 +58,7 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
         <NoSuggestedPlaces show={!hasResults && !isQueryTooShort && isQueryProvided} />
         <NotLongEnough show={isQueryTooShort} />
       </View>
-      {!!hasResults && (
+      {hasResults ? (
         <VerticalUl>
           {filteredPlaces.map((item, index) => (
             <Li key={keyExtractor(item)}>
@@ -68,11 +68,11 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
                 Icon={Icon}
                 onPress={() => setSelectedPlace(item)}
               />
-              {index + 1 < filteredPlaces.length && <Spacer.Column numberOfSpaces={4} />}
+              {index + 1 < filteredPlaces.length ? <Spacer.Column numberOfSpaces={4} /> : null}
             </Li>
           ))}
         </VerticalUl>
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

@@ -59,11 +59,11 @@ export const MovieCalendar: React.FC<Props> = ({
             <MovieCalendarDay date={date} selectedDate={selectedDate} onTabChange={onTabChange} />
           )}
         />
-        {!!isDesktopViewport && (
+        {isDesktopViewport ? (
           <React.Fragment>
             <FadeLeft /> <FadeRight />
           </React.Fragment>
-        )}
+        ) : null}
       </View>
       {isDesktopViewport && !isEnd ? (
         <ScrollButtonForNotTouchDevice

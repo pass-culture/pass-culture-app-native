@@ -33,13 +33,13 @@ export function SearchHistory({ history, queryHistory, removeItem, onPress }: Pr
               queryHistory={queryHistory}
               onPress={onPress}
             />
-            {!!isEmptyQuery && (
+            {isEmptyQuery ? (
               <RemoveButton
                 accessibilityLabel={`Supprimer ${item.label} de l’historique`}
                 onPress={() => removeItem(item)}>
                 <Close />
               </RemoveButton>
-            )}
+            ) : null}
           </Container>
         ))}
       </StyledVerticalUl>

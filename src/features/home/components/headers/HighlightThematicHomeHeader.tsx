@@ -39,12 +39,12 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHea
         <TextContainer>
           <BlackGradient height={HEADER_BLACK_BACKGROUND_HEIGHT} />
           <BlackBackground>
-            {!!subtitle && (
+            {subtitle ? (
               <React.Fragment>
                 <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
                 <Spacer.Column numberOfSpaces={1} />
               </React.Fragment>
-            )}
+            ) : null}
             <Title numberOfLines={2}>{title}</Title>
           </BlackBackground>
         </TextContainer>

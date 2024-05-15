@@ -260,7 +260,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                   subtitle={subtitleToggle}
                   testID="date"
                 />
-                {!!value && (
+                {value ? (
                   <Controller
                     control={control}
                     name="selectedDateChoice"
@@ -285,7 +285,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                       </StyledVerticalUl>
                     )}
                   />
-                )}
+                ) : null}
                 <Spacer.Column numberOfSpaces={6} />
                 <Separator.Horizontal />
                 <Spacer.Column numberOfSpaces={6} />
@@ -304,9 +304,9 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                   subtitle={subtitleToggle}
                   testID="hour"
                 />
-                {!!value && (
+                {value ? (
                   <Controller control={control} name="selectedHours" render={HoursSlider} />
-                )}
+                ) : null}
               </React.Fragment>
             )}
           />

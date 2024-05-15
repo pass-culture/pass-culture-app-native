@@ -268,7 +268,7 @@ export const CategoriesModal = ({
       }>
       <Spacer.Column numberOfSpaces={3} />
       <Form.MaxWidth>
-        {currentView === CategoriesModalView.CATEGORIES && (
+        {currentView === CategoriesModalView.CATEGORIES ? (
           <CategoriesSection
             data={tree}
             onSelect={handleCategorySelect}
@@ -278,9 +278,9 @@ export const CategoriesModal = ({
             descriptionContext={descriptionContext}
             getIcon={getIcon}
           />
-        )}
+        ) : null}
         {currentView === CategoriesModalView.NATIVE_CATEGORIES && getNativeCategoriesSection()}
-        {currentView === CategoriesModalView.GENRES && (
+        {currentView === CategoriesModalView.GENRES ? (
           <CategoriesSection
             data={genreTypes}
             onSelect={handleGenreTypeSelect}
@@ -290,7 +290,7 @@ export const CategoriesModal = ({
             descriptionContext={descriptionContext}
             onSubmit={handleSubmit(handleSearchPress)}
           />
-        )}
+        ) : null}
       </Form.MaxWidth>
     </AppModal>
   )

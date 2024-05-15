@@ -250,7 +250,7 @@ export const SearchResultsContent: React.FC = () => {
               />
             </StyledLi>
 
-            {!!hasDuoOfferToggle && (
+            {hasDuoOfferToggle ? (
               <StyledLi>
                 <SingleFilterButton
                   label="Duo"
@@ -259,7 +259,7 @@ export const SearchResultsContent: React.FC = () => {
                   isSelected={appliedFilters.includes(FILTER_TYPES.OFFER_DUO)}
                 />
               </StyledLi>
-            )}
+            ) : null}
             {enableSearchAccessibility ? (
               <React.Fragment>
                 <StyledLi>

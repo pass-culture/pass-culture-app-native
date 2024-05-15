@@ -77,12 +77,12 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
         <TextContainer>
           <BlackGradient />
           <BlackBackground>
-            {!!subtitle && (
+            {subtitle ? (
               <React.Fragment>
                 <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
                 <Spacer.Column numberOfSpaces={1} />
               </React.Fragment>
-            )}
+            ) : null}
             <TitleContainer>
               <Title numberOfLines={1}>{title}</Title>
               <IconContainer>

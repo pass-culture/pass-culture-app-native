@@ -251,12 +251,12 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       }>
       <Spacer.Column numberOfSpaces={6} />
       <Form.MaxWidth>
-        {!!isLoggedInAndBeneficiary && (
+        {isLoggedInAndBeneficiary ? (
           <View testID="creditBanner">
             <InfoBanner message={bannerTitle} icon={Error} />
             <Spacer.Column numberOfSpaces={6} />
           </View>
-        )}
+        ) : null}
         <Controller
           control={control}
           name="isOnlyFreeOffersSearch"
@@ -272,7 +272,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
         <Spacer.Column numberOfSpaces={6} />
         <Separator.Horizontal />
         <Spacer.Column numberOfSpaces={6} />
-        {!!isLoggedInAndBeneficiary && (
+        {isLoggedInAndBeneficiary ? (
           <Controller
             control={control}
             name="isLimitCreditSearch"
@@ -290,7 +290,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
               </React.Fragment>
             )}
           />
-        )}
+        ) : null}
         <Controller
           control={control}
           name="minPrice"
@@ -355,7 +355,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
           )}
         />
       </Form.MaxWidth>
-      {!!isKeyboardOpen && <Spacer.Column numberOfSpaces={8} />}
+      {isKeyboardOpen ? <Spacer.Column numberOfSpaces={8} /> : null}
     </AppModal>
   )
 }

@@ -31,7 +31,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       accessibilityLabel={wording}>
       {isDisabled ? <DisabledRectangle /> : <Rectangle />}
       <LegendContainer reverse={iconAfterWording}>
-        {!!Icon && <Icon />}
+        {Icon ? <Icon /> : null}
         <Title adjustsFontSizeToFit numberOfLines={1} isDisabled={isDisabled}>
           {wording}
         </Title>

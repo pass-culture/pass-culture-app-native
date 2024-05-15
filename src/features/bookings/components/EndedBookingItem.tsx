@@ -117,14 +117,14 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
           accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
         />
       </ShareContainer>
-      {!!shareContent && (
+      {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
           headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

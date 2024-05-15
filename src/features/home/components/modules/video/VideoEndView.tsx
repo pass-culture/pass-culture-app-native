@@ -34,7 +34,7 @@ export const VideoEndView: React.FC<{
             wording="Revoir"
             icon={StyledReplayIcon}
           />
-          {!!offer && (
+          {offer ? (
             <React.Fragment>
               <Spacer.Row numberOfSpaces={9} />
               <ButtonWithCaption
@@ -62,7 +62,7 @@ export const VideoEndView: React.FC<{
                 icon={StyledOffersIcon}
               />
             </React.Fragment>
-          )}
+          ) : null}
         </ButtonsContainer>
       </BlackView>
     </VideoEndViewContainer>

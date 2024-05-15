@@ -61,7 +61,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
         <Spacer.Column numberOfSpaces={2} />
         <Typo.Caption numberOfLines={1}>{offer.offer.name}</Typo.Caption>
         <AdditionalInfoText>{labelMapping[offer.offer.subcategoryId]}</AdditionalInfoText>
-        {!!displayPrice && <AdditionalInfoText>{displayPrice}</AdditionalInfoText>}
+        {displayPrice ? <AdditionalInfoText>{displayPrice}</AdditionalInfoText> : null}
       </StyledTouchableLink>
     </Container>
   )

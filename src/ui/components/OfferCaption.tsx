@@ -19,7 +19,7 @@ export const OfferCaption = (props: OfferCaptionProps) => {
   return (
     <CaptionContainer imageWidth={imageWidth}>
       <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
-      {!!date && <Typo.CaptionNeutralInfo numberOfLines={1}>{date}</Typo.CaptionNeutralInfo>}
+      {date ? <Typo.CaptionNeutralInfo numberOfLines={1}>{date}</Typo.CaptionNeutralInfo> : null}
       <Typo.CaptionNeutralInfo testID="priceIsDuo">{priceText}</Typo.CaptionNeutralInfo>
     </CaptionContainer>
   )

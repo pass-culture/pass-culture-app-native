@@ -40,12 +40,12 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
           <Spacer.Column
             numberOfSpaces={ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT + MARGIN_TOP_HEADER}
           />
-          {!!(thematicHeader.introductionTitle && thematicHeader.introductionParagraph) && (
+          {thematicHeader.introductionTitle && thematicHeader.introductionParagraph ? (
             <Introduction
               title={thematicHeader.introductionTitle}
               paragraph={thematicHeader.introductionParagraph}
             />
-          )}
+          ) : null}
         </React.Fragment>
       )
     }
@@ -86,14 +86,14 @@ const ThematicHeaderWithGeolocBanner: FunctionComponent<{
 }> = ({ thematicHeader, isLocated }) => (
   <React.Fragment>
     <SubHeader thematicHeader={thematicHeader} />
-    {!isLocated && (
+    {!isLocated ? (
       <GeolocationBannerContainer>
         <GeolocationBanner
           title="Géolocalise-toi"
           subtitle="pour trouver des offres autour de toi"
         />
       </GeolocationBannerContainer>
-    )}
+    ) : null}
   </React.Fragment>
 )
 
@@ -137,7 +137,7 @@ export const ThematicHome: FunctionComponent = () => {
         Header={
           <React.Fragment>
             <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
-            {Platform.OS !== 'ios' && <SubscribeButtonWithModals homeId={params.homeId} />}
+            {Platform.OS !== 'ios' ? <SubscribeButtonWithModals homeId={params.homeId} /> : null}
           </React.Fragment>
         }
         shouldDisplayScrollToTop
@@ -147,9 +147,9 @@ export const ThematicHome: FunctionComponent = () => {
       {/* ThematicHomeHeader is called after Body to implement the BlurView for iOS */}
       <ThematicHomeHeader title={thematicHeader?.title} headerTransition={headerTransition} />
       {/* Animated header is called only for iOS */}
-      {Platform.OS === 'ios' && (
+      {Platform.OS === 'ios' ? (
         <React.Fragment>
-          {thematicHeader?.type === ThematicHeaderType.Highlight && (
+          {thematicHeader?.type === ThematicHeaderType.Highlight ? (
             <AnimatedHeader style={{ transform: [{ translateY: viewTranslation }] }}>
               <AnimatedHighlightThematicHomeHeader
                 {...thematicHeader}
@@ -157,8 +157,8 @@ export const ThematicHome: FunctionComponent = () => {
                 imageAnimatedHeight={imageAnimatedHeight}
               />
             </AnimatedHeader>
-          )}
-          {thematicHeader?.type === ThematicHeaderType.Category && (
+          ) : null}
+          {thematicHeader?.type === ThematicHeaderType.Category ? (
             <AnimatedHeader style={{ transform: [{ translateY: viewTranslation }] }}>
               <AnimatedCategoryThematicHomeHeader
                 {...thematicHeader}
@@ -168,9 +168,9 @@ export const ThematicHome: FunctionComponent = () => {
 
               <SubscribeButtonWithModals homeId={params.homeId} />
             </AnimatedHeader>
-          )}
+          ) : null}
         </React.Fragment>
-      )}
+      ) : null}
     </Container>
   )
 }

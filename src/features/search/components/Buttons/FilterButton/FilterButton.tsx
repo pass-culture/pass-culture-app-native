@@ -29,7 +29,9 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
       <RoundContainer>
         <StyledFilterIcon />
       </RoundContainer>
-      {activeFilters > 0 && <FloatingBadge value={activeFilters} testID="searchFilterBadge" />}
+      {activeFilters > 0 ? (
+        <FloatingBadge value={activeFilters} testID="searchFilterBadge" />
+      ) : null}
     </StyledTouchableLink>
   )
 }

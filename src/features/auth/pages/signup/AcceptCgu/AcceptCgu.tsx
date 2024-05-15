@@ -108,7 +108,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   // ReCaptcha needs previous callbacks
   return (
     <Form.MaxWidth>
-      {!!settings?.isRecaptchaEnabled && (
+      {settings?.isRecaptchaEnabled ? (
         <ReCaptcha
           onClose={onReCaptchaClose}
           onError={onReCaptchaError}
@@ -120,7 +120,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
           }}
           isVisible={isDoingReCaptchaChallenge}
         />
-      )}
+      ) : null}
       <Typo.Title3 {...getHeadingAttrs(2)}>CGU & Données</Typo.Title3>
       <Spacer.Column numberOfSpaces={10} />
       {isSSOSubscription ? (

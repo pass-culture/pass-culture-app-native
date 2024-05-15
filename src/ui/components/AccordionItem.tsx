@@ -94,12 +94,12 @@ export const AccordionItem = ({
   return (
     <React.Fragment>
       <SwitchContainer>
-        {!!switchProps && (
+        {switchProps ? (
           <View style={[styles.titleContainer, titleStyle]}>
             <FilterSwitch {...switchProps} accessibilityLabelledBy={accordionLabelId} />
             <Spacer.Row numberOfSpaces={2} />
           </View>
-        )}
+        ) : null}
         <StyledTouchableOpacity
           accessibilityRole={AccessibilityRole.BUTTON}
           onPress={toggleListItem}

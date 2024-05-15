@@ -26,11 +26,11 @@ export const GenericColoredBanner: FunctionComponent<Props> = ({
 }) => {
   return (
     <Container testID={testID} backgroundColor={backgroundColor}>
-      {!!Icon && (
+      {Icon ? (
         <IconContainer>
           <Icon />
         </IconContainer>
-      )}
+      ) : null}
       <TextContainer>
         <Caption textColor={textColor}>{message}</Caption>
         {children}

@@ -17,7 +17,7 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
   if (isUserUnderageBeneficiary || domainsCredit.all.remaining === 0) return null
   return (
     <React.Fragment>
-      {!!domainsCredit.digital && (
+      {domainsCredit.digital ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={6} />
           <Typo.Body testID="domains-credit-digital">
@@ -28,8 +28,8 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
             en offres numériques.
           </Typo.Body>
         </React.Fragment>
-      )}
-      {!!domainsCredit.physical && (
+      ) : null}
+      {domainsCredit.physical ? (
         <Typo.Body testID="domains-credit-physical">
           dont
           {SPACE}
@@ -37,7 +37,7 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
           {SPACE}
           en offres physiques.
         </Typo.Body>
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

@@ -103,12 +103,12 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
           onPress={onResendPress}
           disabled={isLoading || !hasAttemptsLeft || isResendCooldownActive}
         />
-        {!!errorMessage && (
+        {errorMessage ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={2} />
             <StyledCaption>{errorMessage}</StyledCaption>
           </React.Fragment>
-        )}
+        ) : null}
       </ModalContent>
     </AppModal>
   )

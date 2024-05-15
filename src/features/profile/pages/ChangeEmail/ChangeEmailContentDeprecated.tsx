@@ -78,18 +78,18 @@ export function ChangeEmailContentDeprecated({
     <Container
       keyboardShouldPersistTaps="handled"
       paddingBottom={Platform.OS === 'ios' ? keyboardHeight : 0}>
-      {!!disableOldChangeEmail && (
+      {disableOldChangeEmail ? (
         <React.Fragment>
           <UpdateAppBanner />
           <Spacer.Column numberOfSpaces={4} />
         </React.Fragment>
-      )}
-      {!!hasCurrentEmailChange && (
+      ) : null}
+      {hasCurrentEmailChange ? (
         <React.Fragment>
           <AlreadyChangedEmailDisclaimer />
           <Spacer.Column numberOfSpaces={4} />
         </React.Fragment>
-      )}
+      ) : null}
       <ChangeEmailDisclaimerDeprecated />
       <Spacer.Column numberOfSpaces={4} />
       <Form.MaxWidth flex={1}>
@@ -111,7 +111,7 @@ export function ChangeEmailContentDeprecated({
         />
         <Spacer.Column numberOfSpaces={10} />
 
-        {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
+        {keyboardHeight ? <Spacer.Column numberOfSpaces={2} /> : null}
         <ButtonPrimary
           wording="Valider la demande"
           accessibilityLabel="Valider la demande de modification de mon e-mail"

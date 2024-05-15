@@ -86,7 +86,7 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
             setSettings((prevState) => ({ ...prevState, allowEmails: !prevState.allowEmails }))
           }
         />
-        {Platform.OS !== 'web' && (
+        {Platform.OS !== 'web' ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={6} />
 
@@ -97,7 +97,7 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
               toggle={togglePush}
             />
           </React.Fragment>
-        )}
+        ) : null}
         <Spacer.Column numberOfSpaces={6} />
 
         <StyledCaption>Tu pourras gérer tes alertes depuis ton profil.</StyledCaption>

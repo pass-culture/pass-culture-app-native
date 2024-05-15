@@ -120,7 +120,7 @@ export const HomeHeader: FunctionComponent = function () {
     }
     return (
       <PageHeader title={welcomeTitle} subtitle={getSubtitle()} numberOfLines={2}>
-        {!isDesktopViewport && <LocationWidget screenOrigin={ScreenOrigin.HOME} />}
+        {!isDesktopViewport ? <LocationWidget screenOrigin={ScreenOrigin.HOME} /> : null}
       </PageHeader>
     )
   }, [user, isLoggedIn, isDesktopViewport, availableCredit])

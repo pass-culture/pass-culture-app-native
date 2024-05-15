@@ -53,7 +53,7 @@ export const ChoiceBloc: React.FC<Props> = ({
           <Spacer.Row numberOfSpaces={5} />
         )}
         {children}
-        {!!disabled && <StrikeLine parentWidth={buttonWidth} />}
+        {disabled ? <StrikeLine parentWidth={buttonWidth} /> : null}
       </ChoiceContent>
     </ChoiceContainer>
   )

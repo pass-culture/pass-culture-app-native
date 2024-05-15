@@ -78,7 +78,7 @@ export const Venue: FunctionComponent = () => {
           venue={venue}
         />
       ) : null}
-      {!!shouldDisplayCTA && <VenueCTA venue={venue} />}
+      {shouldDisplayCTA ? <VenueCTA venue={venue} /> : null}
     </Container>
   )
 }

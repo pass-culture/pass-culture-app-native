@@ -34,7 +34,7 @@ export const Checkbox: FunctionComponent<Props> = ({ label, isChecked, required,
       onPress={onToggle}
       onFocus={onFocus}
       onBlur={onBlur}>
-      <Box isChecked={isChecked}>{!!isChecked && <CheckboxMark />}</Box>
+      <Box isChecked={isChecked}>{isChecked ? <CheckboxMark /> : null}</Box>
       <StyledBody>
         {label}
         {required ? '*' : null}

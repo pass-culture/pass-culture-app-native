@@ -50,18 +50,18 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
             <TitleNameContainer>
               <Title>{title}</Title>
               <Spacer.Row numberOfSpaces={2} />
-              {!!properties.isDuo && (
+              {properties.isDuo ? (
                 <IconDuoContainer {...accessibilityAndTestId('DUO&nbsp;: Elle comporte 2 places.')}>
                   <Duo testID="duo-icon" />
                 </IconDuoContainer>
-              )}
+              ) : null}
             </TitleNameContainer>
           )}
           type="clickable"
           icon={Profile}
         />
       ) : null}
-      {propertiesLabels.dateLabel?.length > 0 && (
+      {propertiesLabels.dateLabel?.length > 0 ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={5} />
           <SectionRow
@@ -72,9 +72,9 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
             accessibilityLabel={`Date\u00a0: ${propertiesLabels.dateLabel}`}
           />
         </React.Fragment>
-      )}
+      ) : null}
       <Spacer.Column numberOfSpaces={5} />
-      {!!propertiesLabels.locationLabel && (
+      {propertiesLabels.locationLabel ? (
         <SectionRow
           title={propertiesLabels.locationLabel}
           renderTitle={renderRowTitle}
@@ -82,7 +82,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           icon={LocationBuilding}
           accessibilityLabel={`Se tiendra dans le lieu ${propertiesLabels.locationLabel}`}
         />
-      )}
+      ) : null}
       <Spacer.Column numberOfSpaces={5} />
       <SectionRow
         title=""

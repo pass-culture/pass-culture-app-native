@@ -104,14 +104,14 @@ export function BookingConfirmation() {
           />
         </ButtonContainer>
       </GenericInfoPageWhite>
-      {!!shareContent && (
+      {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
           headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

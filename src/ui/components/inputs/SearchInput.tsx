@@ -52,17 +52,17 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
   return (
     <React.Fragment>
-      {!!label && (
+      {label ? (
         <React.Fragment>
           <FlexInputLabel htmlFor={searchInputID}>
             <LabelContainer>
               <Typo.Body>{label}</Typo.Body>
-              {!!isRequiredField && <RequiredLabel />}
+              {isRequiredField ? <RequiredLabel /> : null}
             </LabelContainer>
           </FlexInputLabel>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
-      )}
+      ) : null}
       <StyledInputContainer
         inputHeight={props.inputHeight}
         isFocus={isFocus}
@@ -94,7 +94,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           textStyle={props.textStyle}
         />
         {children}
-        {!!showClearButton && (
+        {showClearButton ? (
           <Touchable
             hitSlop={hitSlop}
             onPress={onPressRightIcon}
@@ -102,7 +102,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
             type="reset">
             <Invalidate />
           </Touchable>
-        )}
+        ) : null}
       </StyledInputContainer>
     </React.Fragment>
   )

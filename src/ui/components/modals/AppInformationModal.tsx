@@ -29,7 +29,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
   const titleID = uuidv4()
   return (
     <React.Fragment>
-      {!!visible && (
+      {visible ? (
         <Modal
           animationType="fade"
           statusBarTranslucent
@@ -54,7 +54,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
           </Container>
           <FlexSpacer />
         </Modal>
-      )}
+      ) : null}
     </React.Fragment>
   )
 }

@@ -90,7 +90,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
       <Spacer.Flex />
       <Typo.Body>{ParsedDescription}</Typo.Body>
       <Spacer.Flex />
-      {env.ENV === 'testing' && <CodePushButton />}
+      {env.ENV === 'testing' ? <CodePushButton /> : null}
     </SecondaryPageWithBlurHeader>
   )
 }

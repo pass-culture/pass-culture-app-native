@@ -62,7 +62,7 @@ export const HorizontalTile = ({
               {subtitle}
             </Body>
           ))}
-        {!!price && <Typo.Caption>{price}</Typo.Caption>}
+        {price ? <Typo.Caption>{price}</Typo.Caption> : null}
       </Column>
     </React.Fragment>
   )

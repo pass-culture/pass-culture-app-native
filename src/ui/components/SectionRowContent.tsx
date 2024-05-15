@@ -43,18 +43,18 @@ export const SectionRowContent = ({
 
   return (
     <View style={[styles.container, style]}>
-      {!!Icon && (
+      {Icon ? (
         <React.Fragment>
           <Icon size={iconSize} color={theme.colors.black} />
           <Spacer.Row numberOfSpaces={2} />
         </React.Fragment>
-      )}
+      ) : null}
       <TitleContainer>{Title}</TitleContainer>
-      {props.type == 'navigable' && (
+      {props.type == 'navigable' ? (
         <CTAContainer>
           <ArrowNext testID="section-row-navigable-icon" />
         </CTAContainer>
-      )}
+      ) : null}
     </View>
   )
 }

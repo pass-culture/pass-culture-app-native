@@ -85,9 +85,9 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
                     onPress={props.hideVideoModal}
                     analyticsParams={props.analyticsParams}
                   />
-                  {index < nbOfSeparators && (
+                  {index < nbOfSeparators ? (
                     <StyledSeparator hasOnlyTwoOffers={hasOnlyTwoOffers} />
-                  )}
+                  ) : null}
                 </React.Fragment>
               ))}
             </StyledMultiOfferList>

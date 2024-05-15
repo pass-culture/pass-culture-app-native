@@ -32,7 +32,7 @@ export function HeroButtonList({
       <GenericBanner LeftIcon={Icon}>
         <TextWrapper>
           {Title}
-          {!!Subtitle && <SubtitleContainer>{Subtitle}</SubtitleContainer>}
+          {Subtitle ? <SubtitleContainer>{Subtitle}</SubtitleContainer> : null}
         </TextWrapper>
       </GenericBanner>
     </InternalTouchableLink>

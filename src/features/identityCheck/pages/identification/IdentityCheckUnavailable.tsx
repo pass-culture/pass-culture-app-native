@@ -30,14 +30,14 @@ export function IdentityCheckUnavailable() {
       title="Victime de notre succès&nbsp;!"
       icon={HappyFace}
       buttons={[
-        !!params?.withDMS && (
+        params?.withDMS ? (
           <ButtonPrimaryWhite
             key={1}
             wording="Transmettre un dossier"
             onPress={showDMSModal}
             icon={ExternalSite}
           />
-        ),
+        ) : null,
         <InternalTouchableLink
           key={2}
           as={ButtonTertiaryWhite}
@@ -53,12 +53,12 @@ export function IdentityCheckUnavailable() {
       <Spacer.Column numberOfSpaces={5} />
       <StyledBody>Nous reviendrons vers toi dès que le service sera rétabli.</StyledBody>
       <Spacer.Column numberOfSpaces={6} />
-      {!!params?.withDMS && (
+      {params?.withDMS ? (
         <StyledBody>
           Tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées. Nous
           reviendrons vers toi d’ici quelques jours.
         </StyledBody>
-      )}
+      ) : null}
       <DMSModal visible={visible} hideModal={hideModal} />
     </GenericInfoPage>
   )
