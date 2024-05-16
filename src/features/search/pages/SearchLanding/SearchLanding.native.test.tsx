@@ -13,6 +13,7 @@ import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
@@ -214,7 +215,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
 
 const mockedEmptyHistory = {
   filteredHistory: [],
@@ -225,7 +226,18 @@ const mockedEmptyHistory = {
 }
 
 describe('<SearchLanding />', () => {
-  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+  beforeEach(() => {
+    mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+    useFeatureFlagSpy.mockImplementation((ff: RemoteStoreFeatureFlags) => {
+      switch (ff) {
+        case RemoteStoreFeatureFlags.WIP_APP_V2_SEARCH_CATEGORY_BLOCK:
+          return false
+        case RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_POSITION:
+        default:
+          return true
+      }
+    })
+  })
 
   afterEach(() => {
     mockSearchState = {
@@ -238,6 +250,19 @@ describe('<SearchLanding />', () => {
   })
 
   it('should render SearchLanding', async () => {
+    render(<SearchLanding />)
+
+    await screen.findByText('Rechercher')
+
+    await act(() => {})
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should render V2 App Design SearchLanding', async () => {
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockReturnValue(true) // Or else mockReturnValueOnce has to be repeated multiple times
+
     render(<SearchLanding />)
 
     await screen.findByText('Rechercher')
@@ -414,15 +439,11 @@ describe('<SearchLanding />', () => {
 
   describe('When offline', () => {
     it('should display offline page', async () => {
-      mockUseNetInfoContext
-        .mockReturnValueOnce({ isConnected: false })
-        .mockReturnValueOnce({ isConnected: false })
-        .mockReturnValueOnce({ isConnected: false })
+      // eslint-disable-next-line local-rules/independent-mocks
+      mockUseNetInfoContext.mockReturnValue({ isConnected: false })
       render(<SearchLanding />)
-      await act(async () => {})
-      await act(async () => {})
 
-      expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
+      expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
     })
   })
 })

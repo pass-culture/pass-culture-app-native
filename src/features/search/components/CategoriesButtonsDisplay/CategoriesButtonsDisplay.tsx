@@ -7,6 +7,7 @@ import {
   CategoryButton,
   CategoryButtonProps,
 } from 'features/search/components/CategoryButton/CategoryButton'
+import { CategoryButtonV2 } from 'features/search/components/CategoryButton/CategoryButtonV2'
 import { IncentiveLocationModal } from 'features/search/components/IncentiveLocationModal/IncentiveLocationModal'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
@@ -29,6 +30,11 @@ type Props = {
 const CategoryButtonItem: ListRenderItem<CategoryButtonProps> = ({ item }) => (
   <CategoryButtonContainer>
     <CategoryButton {...item} />
+  </CategoryButtonContainer>
+)
+const CategoryButtonItemV2: ListRenderItem<CategoryButtonProps> = ({ item }) => (
+  <CategoryButtonContainer>
+    <CategoryButtonV2 {...item} />
   </CategoryButtonContainer>
 )
 
@@ -69,7 +75,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
   return (
     <FlatList
       data={sortedCategories}
-      renderItem={CategoryButtonItem}
+      renderItem={enableNewCategoryBlock ? CategoryButtonItemV2 : CategoryButtonItem}
       keyExtractor={(item) => item.label}
       numColumns={numColumns}
       key={numColumns} // update key to avoid the following error: Changing numColumns on the fly is not supported. Change the key prop on FlatList when changing the number of columns to force a fresh render of the component.
@@ -86,7 +92,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
             </React.Fragment>
           ) : null}
 
-          <CategoriesTitle />
+          {enableNewCategoryBlock ? <CategoriesTitleV2 /> : <CategoriesTitle />}
           <IncentiveLocationModal
             visible={incentiveLocationModalVisible}
             handleCloseModal={hideIncentiveLocationModal}
@@ -112,6 +118,14 @@ const CategoriesTitle = styled(Typo.Title3).attrs({
   marginBottom: getSpacing(theme.isDesktopViewport ? 1 : 2),
   paddingHorizontal: getSpacing(2),
 }))
+const CategoriesTitleV2 = styled(Typo.Caption).attrs({
+  children: 'PARCOURS LES CATÉGORIES',
+  ...getHeadingAttrs(2),
+})(({ theme }) => ({
+  marginTop: getSpacing(4),
+  marginBottom: getSpacing(theme.isDesktopViewport ? 1 : 2),
+  paddingHorizontal: getSpacing(2),
+}))
 
 const tabletMinWidth = theme.breakpoints.md
 // eslint-disable-next-line no-restricted-properties
@@ -126,7 +140,6 @@ const isMobileViewport = getMediaQueryFromDimensions({
 })
 
 const contentContainerStyle = {
-  // paddingHorizontal: getSpacing(theme.isDesktopViewport ? 3 : 4),
   paddingHorizontal: getSpacing(isMobileViewport ? 4 : 3),
   ...(Platform.OS === 'web'
     ? { paddingBottom: getSpacing(6) }

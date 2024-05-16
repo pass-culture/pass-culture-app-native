@@ -31,6 +31,9 @@ export const useSortedSearchCategories = (
       baseColor: category.baseColor,
       gradients: category.gradients,
       position: category.position,
+      textColor: category.textColor,
+      borderColor: category.borderColor,
+      fillColor: category.fillColor,
     }))
     .sort(categoriesSortPredicate)
 }

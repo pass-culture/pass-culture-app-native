@@ -15,6 +15,9 @@ describe('CategoryButton', () => {
         baseColor="#870087"
         onPress={jest.fn()}
         gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
+        textColor={theme.colors.aquamarine}
+        borderColor={theme.colors.deepPinkLight}
+        fillColor={theme.colors.deepPinkLighter}
       />
     )
 
@@ -31,6 +34,9 @@ describe('CategoryButton', () => {
         baseColor="#870087"
         onPress={handleClick}
         gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
+        textColor={theme.colors.aquamarine}
+        borderColor={theme.colors.deepPinkLight}
+        fillColor={theme.colors.deepPinkLighter}
       />
     )
 
@@ -49,6 +55,9 @@ describe('CategoryButton', () => {
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
         onPress={handleClick}
         gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
+        textColor={theme.colors.aquamarine}
+        borderColor={theme.colors.deepPinkLight}
+        fillColor={theme.colors.deepPinkLighter}
       />
     )
 

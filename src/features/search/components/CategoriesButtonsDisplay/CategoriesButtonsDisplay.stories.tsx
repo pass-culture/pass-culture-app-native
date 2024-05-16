@@ -33,6 +33,9 @@ Default.args = {
       onPress: action('Musique'),
       baseColor: theme.colors.skyBlue,
       gradients: [theme.colors.skyBlueLight, theme.colors.skyBlue],
+      textColor: theme.colors.coral,
+      borderColor: theme.colors.skyBlueLight,
+      fillColor: theme.colors.skyBlueLighter,
     },
     {
       label: 'Cinéma',
@@ -40,6 +43,9 @@ Default.args = {
       onPress: action('Cinéma'),
       baseColor: theme.colors.aquamarine,
       gradients: [theme.colors.aquamarineLight, theme.colors.aquamarine],
+      textColor: theme.colors.skyBlue,
+      borderColor: theme.colors.coralLight,
+      fillColor: theme.colors.coralLighter,
     },
     {
       label: 'Conférences, rencontres',
@@ -47,6 +53,9 @@ Default.args = {
       onPress: action('Livre'),
       baseColor: theme.colors.gold,
       gradients: [theme.colors.goldLight, theme.colors.gold],
+      textColor: theme.colors.aquamarine,
+      borderColor: theme.colors.deepPinkLight,
+      fillColor: theme.colors.deepPinkLighter,
     },
     {
       label: 'Théâtre',
@@ -54,6 +63,9 @@ Default.args = {
       onPress: action('Théâtre'),
       baseColor: theme.colors.coral,
       gradients: [theme.colors.coralLight, theme.colors.coral],
+      textColor: theme.colors.skyBlue,
+      borderColor: theme.colors.coralLight,
+      fillColor: theme.colors.coralLighter,
     },
   ],
 }
