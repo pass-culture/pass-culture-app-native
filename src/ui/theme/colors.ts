@@ -32,7 +32,6 @@ export enum ColorsEnum {
   CORAL_LIGHT = '#F8733D',
   LILAC = '#8337E9',
   LILAC_LIGHT = '#AD87FF',
-  ORANGE = '#D77419',
 }
 export enum UniqueColors {
   BRAND = '#870087',
