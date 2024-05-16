@@ -19,7 +19,7 @@ const openingHours = {
 export const Close = Template.bind({})
 Close.args = {
   openingHours,
-  currentDate: new Date('2024-05-13T18:00:00Z'),
+  currentDate: new Date('2024-05-13T20:00:00Z'),
 }
 
 export const Open = Template.bind({})
@@ -30,11 +30,11 @@ Open.args = {
 export const OpenSoon = Template.bind({})
 OpenSoon.args = {
   openingHours,
-  currentDate: new Date('2024-05-13T06:00:00Z'),
+  currentDate: new Date('2024-05-13T08:00:00Z'),
 }
 
 export const CloseSoon = Template.bind({})
 CloseSoon.args = {
   openingHours,
-  currentDate: new Date('2024-05-13T16:00:00Z'),
+  currentDate: new Date('2024-05-13T18:00:00Z'),
 }
