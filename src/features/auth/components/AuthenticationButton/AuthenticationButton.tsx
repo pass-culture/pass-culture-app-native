@@ -1,5 +1,4 @@
 import React, { FC, FunctionComponent } from 'react'
-import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { RootNavigateParams, RootStackParamList } from 'features/navigation/RootNavigator/types'
@@ -43,24 +42,25 @@ export const AuthenticationButton: FunctionComponent<Props> = ({
   } = { screen: isLogin ? 'Login' : 'SignupForm', params }
 
   const text = isLogin ? 'Déjà un compte\u00a0?' : 'Pas de compte\u00a0?'
-  const buttonWording = isLogin ? 'Se connecter' : 'Créer un compte'
+  const wording = isLogin ? 'Se connecter' : 'Créer un compte'
+  const icon = isLogin ? Connect : Profile
 
   return (
     <AuthenticationContainer>
       <StyledBody>{text}</StyledBody>
       <InternalTouchableLink
-        as={ButtonInsideText}
+        as={Button}
         navigateTo={nextNavigation}
-        wording={buttonWording}
+        wording={wording}
         buttonColor={linkColor}
-        icon={isLogin ? Connect : Profile}
+        icon={icon}
         onBeforeNavigate={onPress}
       />
     </AuthenticationContainer>
   )
 }
 
-const ButtonInsideText: FC<ButtonInsideTexteProps> = ({
+const Button: FC<ButtonInsideTexteProps> = ({
   onPress,
   onLongPress,
   wording,
@@ -81,13 +81,14 @@ const ButtonInsideText: FC<ButtonInsideTexteProps> = ({
         icon={icon}
         color={buttonColor}
         typography={typography}
+        disablePadding
       />
     </TouchableOpacity>
   )
 }
 
 const AuthenticationContainer = styled.View({
-  alignItems: Platform.OS === 'web' ? 'baseline' : 'center',
+  alignItems: 'center',
   flexDirection: 'row',
   justifyContent: 'center',
   gap: getSpacing(1),

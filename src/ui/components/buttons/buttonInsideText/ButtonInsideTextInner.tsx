@@ -12,6 +12,7 @@ type Props = {
   typography?: 'ButtonText' | 'Caption'
   icon?: FunctionComponent<AccessibleIcon>
   color?: ColorsEnum
+  disablePadding?: boolean
 }
 
 export function ButtonInsideTextInner({
@@ -19,6 +20,7 @@ export function ButtonInsideTextInner({
   typography = 'ButtonText',
   icon: Icon,
   color,
+  disablePadding,
 }: Props) {
   const StyledIcon =
     Icon &&
@@ -29,7 +31,8 @@ export function ButtonInsideTextInner({
 
   const hasIcon = !!Icon
   const paddingIcon = typography === 'Caption' ? getSpacing(1) : getSpacing(1.25)
-  const paddingForIcon = hasIcon && Platform.OS === 'web' ? paddingIcon : 0
+  const hasPadding = hasIcon && Platform.OS === 'web' && !disablePadding
+  const paddingForIcon = hasPadding ? paddingIcon : 0
 
   return (
     <Container paddingForIcon={paddingForIcon}>
