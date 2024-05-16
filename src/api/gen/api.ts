@@ -3806,7 +3806,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter favorite_id was null or undefined when calling deleteNativeV1MeFavoritesfavoriteId.'
         )
       }
-      const pathname = `/native/v1/me/favorites/{favorite_id}`.replace(
+      let pathname = `/native/v1/me/favorites/{favorite_id}`.replace(
         `{${'favorite_id'}}`,
         encodeURIComponent(String(favorite_id))
       )
@@ -3835,7 +3835,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter token was null or undefined when calling getNativeV1AccountSuspendTokenValidationtoken.'
         )
       }
-      const pathname = `/native/v1/account/suspend/token_validation/{token}`.replace(
+      let pathname = `/native/v1/account/suspend/token_validation/{token}`.replace(
         `{${'token'}}`,
         encodeURIComponent(String(token))
       )
@@ -3854,7 +3854,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1AccountSuspensionDate(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/account/suspension_date`
+      let pathname = `/native/v1/account/suspension_date`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -3872,7 +3872,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1AccountSuspensionStatus(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/account/suspension_status`
+      let pathname = `/native/v1/account/suspension_status`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -3891,7 +3891,17 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1Banner(isGeolocated?: boolean, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/banner`.concat(`?isGeolocated=${ isGeolocated }`)
+      let pathname = `/native/v1/banner`
+      const queryParameters: any = {};
+
+        if (isGeolocated != null) {
+            queryParameters['isGeolocated'] = isGeolocated;
+        }
+
+      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
+        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+      }).join('&')
+      pathname += encodedQueryParams
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -3909,7 +3919,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1Bookings(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/bookings`
+      let pathname = `/native/v1/bookings`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -3927,7 +3937,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1CulturalSurveyQuestions(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/cultural_survey/questions`
+      let pathname = `/native/v1/cultural_survey/questions`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -3953,7 +3963,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter email was null or undefined when calling getNativeV1EmailValidationRemainingResendsemail.'
         )
       }
-      const pathname = `/native/v1/email_validation_remaining_resends/{email}`.replace(
+      let pathname = `/native/v1/email_validation_remaining_resends/{email}`.replace(
         `{${'email'}}`,
         encodeURIComponent(String(email))
       )
@@ -3972,7 +3982,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1Me(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/me`
+      let pathname = `/native/v1/me`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -3990,7 +4000,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1MeFavorites(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/me/favorites`
+      let pathname = `/native/v1/me/favorites`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4008,7 +4018,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1MeFavoritesCount(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/me/favorites/count`
+      let pathname = `/native/v1/me/favorites/count`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4026,7 +4036,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1OauthState(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/oauth/state`
+      let pathname = `/native/v1/oauth/state`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4042,7 +4052,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1OfferReportReasons(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/offer/report/reasons`
+      let pathname = `/native/v1/offer/report/reasons`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4069,7 +4079,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling getNativeV1OfferofferId.'
         )
       }
-      const pathname = `/native/v1/offer/{offer_id}`.replace(
+      let pathname = `/native/v1/offer/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
@@ -4088,7 +4098,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1OffersReports(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/offers/reports`
+      let pathname = `/native/v1/offers/reports`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4106,7 +4116,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1PhoneValidationRemainingAttempts(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/phone_validation/remaining_attempts`
+      let pathname = `/native/v1/phone_validation/remaining_attempts`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4125,7 +4135,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1ProfileEmailUpdateStatus(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/profile/email_update/status`
+      let pathname = `/native/v1/profile/email_update/status`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4143,7 +4153,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1ProfileTokenExpiration(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/profile/token_expiration`
+      let pathname = `/native/v1/profile/token_expiration`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4161,7 +4171,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1Settings(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/settings`
+      let pathname = `/native/v1/settings`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4177,7 +4187,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1SubcategoriesV2(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/subcategories/v2`
+      let pathname = `/native/v1/subcategories/v2`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4193,7 +4203,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionActivityTypes(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/subscription/activity_types`
+      let pathname = `/native/v1/subscription/activity_types`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4212,7 +4222,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionNextStep(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/subscription/next_step`
+      let pathname = `/native/v1/subscription/next_step`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4230,7 +4240,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionProfile(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/subscription/profile`
+      let pathname = `/native/v1/subscription/profile`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4249,7 +4259,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV1SubscriptionStepper(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/subscription/stepper`
+      let pathname = `/native/v1/subscription/stepper`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4275,7 +4285,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter venue_id was null or undefined when calling getNativeV1VenuevenueId.'
         )
       }
-      const pathname = `/native/v1/venue/{venue_id}`.replace(
+      let pathname = `/native/v1/venue/{venue_id}`.replace(
         `{${'venue_id'}}`,
         encodeURIComponent(String(venue_id))
       )
@@ -4302,7 +4312,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling getNativeV2OfferofferId.'
         )
       }
-      const pathname = `/native/v2/offer/{offer_id}`.replace(
+      let pathname = `/native/v2/offer/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
@@ -4321,7 +4331,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV2ProfileEmailUpdateStatus(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v2/profile/email_update/status`
+      let pathname = `/native/v2/profile/email_update/status`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4339,7 +4349,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getNativeV2SubscriptionStepper(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v2/subscription/stepper`
+      let pathname = `/native/v2/subscription/stepper`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4358,7 +4368,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1Account(body?: AccountRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/account`
+      let pathname = `/native/v1/account`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4377,7 +4387,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1AccountSuspend(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/account/suspend`
+      let pathname = `/native/v1/account/suspend`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4396,7 +4406,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1AccountSuspendForSuspiciousLogin(body?: SuspendAccountForSuspiciousLoginRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/account/suspend_for_suspicious_login`
+      let pathname = `/native/v1/account/suspend_for_suspicious_login`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4415,7 +4425,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1AccountUnsuspend(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/account/unsuspend`
+      let pathname = `/native/v1/account/unsuspend`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4434,7 +4444,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1Bookings(body?: BookOfferRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/bookings`
+      let pathname = `/native/v1/bookings`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4463,7 +4473,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter booking_id was null or undefined when calling postNativeV1BookingsbookingIdCancel.'
         )
       }
-      const pathname = `/native/v1/bookings/{booking_id}/cancel`.replace(
+      let pathname = `/native/v1/bookings/{booking_id}/cancel`.replace(
         `{${'booking_id'}}`,
         encodeURIComponent(String(booking_id))
       )
@@ -4493,7 +4503,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter booking_id was null or undefined when calling postNativeV1BookingsbookingIdToggleDisplay.'
         )
       }
-      const pathname = `/native/v1/bookings/{booking_id}/toggle_display`.replace(
+      let pathname = `/native/v1/bookings/{booking_id}/toggle_display`.replace(
         `{${'booking_id'}}`,
         encodeURIComponent(String(booking_id))
       )
@@ -4518,7 +4528,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1ChangePassword(body?: ChangePasswordRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/change_password`
+      let pathname = `/native/v1/change_password`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4540,7 +4550,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1CookiesConsent(body?: CookieConsentRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/cookies_consent`
+      let pathname = `/native/v1/cookies_consent`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4560,7 +4570,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1CulturalSurveyAnswers(body?: CulturalSurveyAnswersRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/cultural_survey/answers`
+      let pathname = `/native/v1/cultural_survey/answers`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4582,7 +4592,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1MeFavorites(body?: FavoriteRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/me/favorites`
+      let pathname = `/native/v1/me/favorites`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4604,7 +4614,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1OauthGoogleAccount(body?: GoogleAccountRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/oauth/google/account`
+      let pathname = `/native/v1/oauth/google/account`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4624,7 +4634,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1OauthGoogleAuthorize(body?: GoogleSigninRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/oauth/google/authorize`
+      let pathname = `/native/v1/oauth/google/authorize`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4652,7 +4662,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling postNativeV1OfferofferIdReport.'
         )
       }
-      const pathname = `/native/v1/offer/{offer_id}/report`.replace(
+      let pathname = `/native/v1/offer/{offer_id}/report`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
@@ -4677,7 +4687,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1OffersStocks(body?: OffersStocksRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/offers/stocks`
+      let pathname = `/native/v1/offers/stocks`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4697,7 +4707,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1Profile(body?: UserProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/profile`
+      let pathname = `/native/v1/profile`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4719,7 +4729,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1ProfileEmailUpdateCancel(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/profile/email_update/cancel`
+      let pathname = `/native/v1/profile/email_update/cancel`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4739,7 +4749,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1ProfileEmailUpdateConfirm(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/profile/email_update/confirm`
+      let pathname = `/native/v1/profile/email_update/confirm`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4760,7 +4770,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1ProfileUpdateEmail(body?: UserProfileEmailUpdate, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/profile/update_email`
+      let pathname = `/native/v1/profile/update_email`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4781,7 +4791,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1RefreshAccessToken(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/refresh_access_token`
+      let pathname = `/native/v1/refresh_access_token`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4798,7 +4808,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1RequestPasswordReset(body?: RequestPasswordResetRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/request_password_reset`
+      let pathname = `/native/v1/request_password_reset`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4818,7 +4828,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1ResendEmailValidation(body?: ResendEmailValidationRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/resend_email_validation`
+      let pathname = `/native/v1/resend_email_validation`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4838,7 +4848,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1ResetPassword(body?: ResetPasswordRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/reset_password`
+      let pathname = `/native/v1/reset_password`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4857,7 +4867,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1ResetRecreditAmountToShow(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/reset_recredit_amount_to_show`
+      let pathname = `/native/v1/reset_recredit_amount_to_show`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4883,7 +4893,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling postNativeV1SendOfferLinkByPushofferId.'
         )
       }
-      const pathname = `/native/v1/send_offer_link_by_push/{offer_id}`.replace(
+      let pathname = `/native/v1/send_offer_link_by_push/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
@@ -4912,7 +4922,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling postNativeV1SendOfferWebappLinkByEmailofferId.'
         )
       }
-      const pathname = `/native/v1/send_offer_webapp_link_by_email/{offer_id}`.replace(
+      let pathname = `/native/v1/send_offer_webapp_link_by_email/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
@@ -4934,7 +4944,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1SendPhoneValidationCode(body?: SendPhoneValidationRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/send_phone_validation_code`
+      let pathname = `/native/v1/send_phone_validation_code`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4956,7 +4966,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1Signin(body?: SigninRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/signin`
+      let pathname = `/native/v1/signin`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4975,7 +4985,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1SubscriptionHonorStatement(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/subscription/honor_statement`
+      let pathname = `/native/v1/subscription/honor_statement`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4994,7 +5004,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1SubscriptionProfile(body?: ProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/subscription/profile`
+      let pathname = `/native/v1/subscription/profile`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5016,7 +5026,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1UbbleIdentification(body?: IdentificationSessionRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/ubble_identification`
+      let pathname = `/native/v1/ubble_identification`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5038,7 +5048,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1ValidateEmail(body?: ValidateEmailRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/validate_email`
+      let pathname = `/native/v1/validate_email`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -5058,7 +5068,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV1ValidatePhoneNumber(body?: ValidatePhoneNumberRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/validate_phone_number`
+      let pathname = `/native/v1/validate_phone_number`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5080,7 +5090,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV2ProfileEmailUpdateConfirm(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v2/profile/email_update/confirm`
+      let pathname = `/native/v2/profile/email_update/confirm`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -5100,7 +5110,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV2ProfileEmailUpdateNewEmail(body?: NewEmailSelectionRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v2/profile/email_update/new_email`
+      let pathname = `/native/v2/profile/email_update/new_email`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5122,7 +5132,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV2ProfileEmailUpdateNewPassword(body?: ResetPasswordRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v2/profile/email_update/new_password`
+      let pathname = `/native/v2/profile/email_update/new_password`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -5141,7 +5151,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postNativeV2ProfileUpdateEmail(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v2/profile/update_email`
+      let pathname = `/native/v2/profile/update_email`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5160,7 +5170,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async putNativeV1ProfileEmailUpdateValidate(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/profile/email_update/validate`
+      let pathname = `/native/v1/profile/email_update/validate`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'PUT' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
