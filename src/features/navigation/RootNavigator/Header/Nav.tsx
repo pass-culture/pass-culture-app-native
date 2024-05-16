@@ -52,7 +52,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
               <NavItem
                 tabName={route.name}
                 isSelected={route.isSelected}
-                BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
+                BicolorIcon={mapTabRouteToBicolorIcon(route.name, false)}
                 onBeforeNavigate={
                   route.name === 'SearchStackNavigator' ? hideSuggestions : undefined
                 }

@@ -5,6 +5,7 @@ import { defaultDisabilitiesProperties } from 'features/accessibility/context/Ac
 import * as navigationRefAPI from 'features/navigation/navigationRef'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
@@ -27,8 +28,17 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
 }))
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
 describe('AccessibleTabBar', () => {
   it('renders correctly', () => {
+    const { container } = renderTabBar()
+
+    expect(container).toMatchSnapshot()
+  })
+
+  it('renders correctly when FF is enabled', () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
     const { container } = renderTabBar()
 
     expect(container).toMatchSnapshot()

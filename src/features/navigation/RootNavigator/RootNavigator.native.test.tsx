@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -34,6 +35,8 @@ jest.mock('features/navigation/helpers/useCurrentRoute', () => ({
   useCurrentRoute: () => ({ name: 'TabNavigator', key: 'key' }),
 }))
 jest.mock('libs/splashscreen')
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<RootNavigator />', () => {
   beforeEach(() => {

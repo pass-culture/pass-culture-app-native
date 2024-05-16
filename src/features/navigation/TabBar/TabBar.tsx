@@ -11,6 +11,8 @@ import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigatio
 import { useTabBar } from 'features/navigation/TabBar/useTabBar'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 import { TabBarComponent } from './TabBarComponent'
 
@@ -20,6 +22,7 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
   const { tabRoutes } = useTabNavigationContext()
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const { setDisabilities, disabilities } = useAccessibilityFiltersContext()
+  const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
 
   const { locationFilter } = searchState
 
@@ -81,6 +84,7 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
         const tabNavConfig = getTabNavConfig(route.name)
         return (
           <TabBarComponent
+            v2={!!enableTabBarV2}
             navigateTo={{ screen: tabNavConfig[0], params: tabNavConfig[1] }}
             enableNavigate={false}
             key={`key-tab-nav-${route.key}`}
