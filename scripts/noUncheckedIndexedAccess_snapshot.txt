@@ -71,8 +71,8 @@
 ./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:81
 ./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:83
 ./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:85
-./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:865
-./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts:201
+./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:934
+./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts:233
 ./src/features/profile/components/CreditInfo/CreditProgressBar.tsx:26
 ./src/features/search/api/useSearchResults/useSearchResults.ts:83
 ./src/features/search/components/AutocompleteOfferItem/AutocompleteOfferItem.tsx:130
