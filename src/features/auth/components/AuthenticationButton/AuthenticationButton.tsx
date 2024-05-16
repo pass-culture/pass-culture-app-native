@@ -67,11 +67,15 @@ const ButtonInsideText: FC<ButtonInsideTexteProps> = ({
   icon,
   buttonColor,
   typography,
+  accessibilityLabel,
+  accessibilityRole,
 }) => {
   return (
     <TouchableOpacity
       onPress={onPress as AppButtonEventNative}
-      onLongPress={onLongPress as AppButtonEventNative}>
+      onLongPress={onLongPress as AppButtonEventNative}
+      accessibilityRole={accessibilityRole}
+      accessibilityLabel={accessibilityLabel || wording}>
       <ButtonInsideTextInner
         wording={wording}
         icon={icon}
