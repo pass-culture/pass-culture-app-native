@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, superFlushWithAct } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT, SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -315,21 +315,20 @@ const renderChangeEmail = () => render(reactQueryProviderHOC(<ChangeEmail />))
 
 const fillInputs = async ({ email, password }: { email?: string; password?: string }) => {
   const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-  fireEvent.changeText(passwordInput, password ?? 'password>=12')
-
-  const emailInput = screen.getByPlaceholderText('email@exemple.com')
-  fireEvent.changeText(emailInput, email ?? 'email@exemple.com')
-
-  // To avoid CI flakiness
-  await superFlushWithAct()
+  await act(() => {
+    fireEvent.changeText(passwordInput, password ?? 'password>=12')
+  })
+  await act(() => {
+    const emailInput = screen.getByPlaceholderText('email@exemple.com')
+    fireEvent.changeText(emailInput, email ?? 'email@exemple.com')
+  })
 }
 
 const submitForm = async () => {
   const submitButton = screen.getByLabelText('Valider la demande de modification de mon e-mail')
-  fireEvent.press(submitButton)
-
-  // To avoid CI flakiness
-  await superFlushWithAct()
+  await act(() => {
+    fireEvent.press(submitButton)
+  })
 }
 
 function simulateUpdateEmailSuccess() {
