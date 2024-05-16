@@ -10,7 +10,7 @@ import {
   mockedAlgoliaVenueResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('algoliasearch')
 
@@ -24,57 +24,57 @@ describe('useSearchResults', () => {
         initialProps: initialSearchState,
       })
 
-      await flushAllPromisesWithAct()
-
-      expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
-        {
-          indexName: 'algoliaOffersIndexName',
-          params: {
-            attributesToHighlight: [],
-            attributesToRetrieve: [
-              'offer.dates',
-              'offer.isDigital',
-              'offer.isDuo',
-              'offer.isEducational',
-              'offer.name',
-              'offer.prices',
-              'offer.subcategoryId',
-              'offer.thumbUrl',
-              'objectID',
-              '_geoloc',
-              'venue',
+      await waitFor(() => {
+        expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
+          {
+            indexName: 'algoliaOffersIndexName',
+            params: {
+              attributesToHighlight: [],
+              attributesToRetrieve: [
+                'offer.dates',
+                'offer.isDigital',
+                'offer.isDuo',
+                'offer.isEducational',
+                'offer.name',
+                'offer.prices',
+                'offer.subcategoryId',
+                'offer.thumbUrl',
+                'objectID',
+                '_geoloc',
+                'venue',
+              ],
+              clickAnalytics: true,
+              facetFilters: [['offer.isEducational:false']],
+              hitsPerPage: 20,
+              numericFilters: [['offer.prices: 0 TO 300']],
+              page: 0,
+            },
+            query: '',
+          },
+          {
+            indexName: 'algoliaVenuesIndexPlaylistSearchNewest',
+            params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+            query: '',
+          },
+          {
+            facets: [
+              'offer.bookMacroSection',
+              'offer.movieGenres',
+              'offer.musicType',
+              'offer.nativeCategoryId',
+              'offer.showType',
             ],
-            clickAnalytics: true,
-            facetFilters: [['offer.isEducational:false']],
-            hitsPerPage: 20,
-            numericFilters: [['offer.prices: 0 TO 300']],
-            page: 0,
+            indexName: 'algoliaOffersIndexName',
+            params: {
+              facetFilters: [['offer.isEducational:false']],
+              hitsPerPage: 20,
+              numericFilters: [['offer.prices: 0 TO 300']],
+              page: 0,
+            },
+            query: '',
           },
-          query: '',
-        },
-        {
-          indexName: 'algoliaVenuesIndexPlaylistSearchNewest',
-          params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
-          query: '',
-        },
-        {
-          facets: [
-            'offer.bookMacroSection',
-            'offer.movieGenres',
-            'offer.musicType',
-            'offer.nativeCategoryId',
-            'offer.showType',
-          ],
-          indexName: 'algoliaOffersIndexName',
-          params: {
-            facetFilters: [['offer.isEducational:false']],
-            hitsPerPage: 20,
-            numericFilters: [['offer.prices: 0 TO 300']],
-            page: 0,
-          },
-          query: '',
-        },
-      ])
+        ])
+      })
     })
 
     it('should not fetch again when focus on suggestion changes', async () => {
@@ -85,10 +85,10 @@ describe('useSearchResults', () => {
         }
       )
 
-      await flushAllPromisesWithAct()
       rerender({ ...initialSearchState })
-
-      expect(mockMultipleQueries).toHaveBeenCalledTimes(1)
+      await waitFor(() => {
+        expect(mockMultipleQueries).toHaveBeenCalledTimes(1)
+      })
     })
 
     // because of an Algolia issue, sometimes nbHits is at 0 even when there is some hits, cf PC-28287
@@ -105,11 +105,12 @@ describe('useSearchResults', () => {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
         }
       )
-      await flushAllPromisesWithAct()
 
-      const hitNumber = result.current.nbHits
+      await waitFor(() => {
+        const hitNumber = result.current.nbHits
 
-      expect(hitNumber).toEqual(4)
+        expect(hitNumber).toEqual(4)
+      })
     })
   })
 })

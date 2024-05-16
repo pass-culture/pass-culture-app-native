@@ -3,7 +3,7 @@ import { Alert, Platform } from 'react-native'
 import { getAvailableApps, navigate } from '__mocks__/react-native-launch-navigator'
 import { openGoogleMapsItinerary } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useItinerary } from 'libs/itinerary/useItinerary'
-import { renderHook, waitFor, flushAllPromises } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -158,12 +158,12 @@ describe('useItinerary', () => {
     const { onPress: onWazePress } = alertMock.mock.calls[0][2][1]
     onWazePress()
 
-    await flushAllPromises()
-
-    expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-      message:
-        'Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.',
-      timeout: SNACK_BAR_TIME_OUT_LONG,
+    await waitFor(() => {
+      expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
+        message:
+          'Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.',
+        timeout: SNACK_BAR_TIME_OUT_LONG,
+      })
     })
   })
 })
