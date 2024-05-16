@@ -493,6 +493,8 @@ retrouver tes favoris
                   Déjà un compte ?
                 </Text>
                 <View
+                  accessibilityLabel="Se connecter"
+                  accessibilityRole="link"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -510,7 +512,7 @@ retrouver tes favoris
                       "text": undefined,
                     }
                   }
-                  accessible={false}
+                  accessible={true}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -526,6 +528,7 @@ retrouver tes favoris
                       "userSelect": "auto",
                     }
                   }
+                  testID="Se connecter"
                 >
                   <View
                     paddingForIcon={0}

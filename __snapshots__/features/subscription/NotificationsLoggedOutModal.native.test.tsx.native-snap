@@ -491,6 +491,8 @@ exports[`<NotificationsLoggedOutModal /> should render correctly 1`] = `
                     Déjà un compte ?
                   </Text>
                   <View
+                    accessibilityLabel="Se connecter"
+                    accessibilityRole="link"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -508,7 +510,7 @@ exports[`<NotificationsLoggedOutModal /> should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     collapsable={false}
                     focusable={true}
                     onClick={[Function]}
@@ -524,6 +526,7 @@ exports[`<NotificationsLoggedOutModal /> should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
+                    testID="Se connecter"
                   >
                     <View
                       paddingForIcon={0}

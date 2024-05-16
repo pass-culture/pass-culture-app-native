@@ -370,6 +370,8 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
           Déjà un compte ?
         </Text>
         <View
+          accessibilityLabel="Se connecter"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,
@@ -387,7 +389,7 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
               "text": undefined,
             }
           }
-          accessible={false}
+          accessible={true}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -403,6 +405,7 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
               "userSelect": "auto",
             }
           }
+          testID="Se connecter"
         >
           <View
             paddingForIcon={0}

@@ -834,6 +834,8 @@ exports[`<Login/> should render correctly 1`] = `
           Pas de compte ?
         </Text>
         <View
+          accessibilityLabel="Créer un compte"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,
@@ -851,7 +853,7 @@ exports[`<Login/> should render correctly 1`] = `
               "text": undefined,
             }
           }
-          accessible={false}
+          accessible={true}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -867,6 +869,7 @@ exports[`<Login/> should render correctly 1`] = `
               "userSelect": "auto",
             }
           }
+          testID="Créer un compte"
         >
           <View
             paddingForIcon={0}
@@ -1980,6 +1983,8 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           Pas de compte ?
         </Text>
         <View
+          accessibilityLabel="Créer un compte"
+          accessibilityRole="link"
           accessibilityState={
             {
               "busy": undefined,
@@ -1997,7 +2002,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               "text": undefined,
             }
           }
-          accessible={false}
+          accessible={true}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -2013,6 +2018,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               "userSelect": "auto",
             }
           }
+          testID="Créer un compte"
         >
           <View
             paddingForIcon={0}

@@ -517,6 +517,8 @@ pour réserver l’offre
                   Déjà un compte ?
                 </Text>
                 <View
+                  accessibilityLabel="Se connecter"
+                  accessibilityRole="link"
                   accessibilityState={
                     {
                       "busy": undefined,
@@ -534,7 +536,7 @@ pour réserver l’offre
                       "text": undefined,
                     }
                   }
-                  accessible={false}
+                  accessible={true}
                   collapsable={false}
                   focusable={true}
                   onClick={[Function]}
@@ -550,6 +552,7 @@ pour réserver l’offre
                       "userSelect": "auto",
                     }
                   }
+                  testID="Se connecter"
                 >
                   <View
                     paddingForIcon={0}
