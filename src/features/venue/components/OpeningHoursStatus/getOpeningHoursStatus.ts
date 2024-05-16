@@ -89,10 +89,8 @@ const DAY_TO_OPENING_HOURS: Record<number, keyof OpeningHours> = {
 const getHoursFromCurrentDate = (currentDate: Date): keyof OpeningHours => {
   const day = currentDate.getDay()
   const openingHours = DAY_TO_OPENING_HOURS[day]
-  if (!openingHours) {
-    throw new Error('Invalid day')
-  }
-  return openingHours
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  return openingHours!
 }
 
 const getDateFromOpeningHour = (currentDate: Date, openingHour: string): Date => {
