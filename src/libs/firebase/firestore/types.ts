@@ -43,4 +43,5 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_NEW_XP_CINE_FROM_VENUE = 'wipEnableNewXpCineFromVenue',
   ENABLE_MUSIC_LIVE_BOOKING_SURVEY = 'enableMusicLiveBookingSurvey',
   WIP_PAGE_SEARCH_N1 = 'wipPageSearchN1',
+  WIP_APP_V2_VIDEO_9_16 = 'wipAppV2Video9:16',
 }
