@@ -20,6 +20,7 @@ export enum RemoteStoreFeatureFlags {
   FAKE_DOOR_ARTIST = 'fakeDoorArtist',
   WIP_APP_V2_LOCATION_WIDGET = 'wipAppV2LocationWidget',
   WIP_APP_V2_VENUE_LIST = 'wipAppV2VenueList',
+  WIP_APP_V2_VENUE_MAP_BLOCK = 'wipAppV2VenueMapBlock',
   WIP_CINEMA_OFFER_VENUE_BLOCK = 'wipCinemaOfferVenueBlock',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_DISPLAY_SEARCH_NB_FACET_RESULTS = 'wipDisplaySearchNbFacetResults',

@@ -15,6 +15,7 @@ describe('getFeatureFlag', () => {
     RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16,
     RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_LIST,
     RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK,
+    RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK,
     RemoteStoreFeatureFlags.WIP_CINEMA_OFFER_VENUE_BLOCK,
     RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW,
     RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS,
