@@ -36,9 +36,10 @@ const getColorFromState = (theme: DefaultTheme) => (state: OpeningHoursStatusSta
 }
 
 const StyledClock = styled(ClockFilled).attrs<{ state: OpeningHoursStatusState }>(
-  ({ theme, state }) => {
-    return { color: getColorFromState(theme)(state), size: 16 }
-  }
+  ({ theme, state }) => ({
+    color: getColorFromState(theme)(state),
+    size: theme.icons.sizes.extraSmall,
+  })
 )<{ state: OpeningHoursStatusState }>``
 
 const StyledText = styled(Typo.Caption)<{ state: OpeningHoursStatusState }>(({ state, theme }) => ({
