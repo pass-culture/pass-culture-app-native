@@ -34,14 +34,14 @@ export function LegalNotices() {
         {LINE_BREAK}
         Société par action simplifiée au capital de 1&nbsp;000&nbsp;000&nbsp;€
         {LINE_BREAK}
-        Siège social&nbsp;: 12 rue Duhesme 75018 Paris
+        Siège social&nbsp;: 89 rue La Boétie - 75008 Paris - France
         {LINE_BREAK}
         Immatriculée au RCS de Paris sous le numéro&nbsp;: 853&nbsp;318&nbsp;459
         {LINE_BREAK}
         Directeur de la publication&nbsp;: Sébastien Cavalier
         {LINE_BREAK}
         Hébergeur&nbsp;: Google Cloud Platform
-        {LINE_BREAK}89 rue La Boétie – 75008 Paris - France
+        {LINE_BREAK}8 Rue de Londres - 75009 Paris - France
         {LINE_BREAK}
         Nous contacter&nbsp;:&nbsp;
         <ExternalTouchableLink
