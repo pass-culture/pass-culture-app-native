@@ -17,15 +17,17 @@ jest.mock('features/share/context/ShareAppWrapper', () => ({
   useShareAppContext: () => ({ showShareAppModal: mockShowAppModal }),
 }))
 
+const defaultContext = {
+  isLoggedIn: true,
+  setIsLoggedIn: jest.fn(),
+  user: underageBeneficiaryUser,
+  refetchUser: jest.fn(),
+  isUserLoading: false,
+}
+
 describe('<BeneficiaryAccountCreated/>', () => {
   beforeEach(() => {
-    mockUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      user: underageBeneficiaryUser,
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+    mockUseAuthContext.mockReturnValue(defaultContext)
   })
 
   it('should render correctly for underage beneficiaries', () => {
@@ -37,13 +39,7 @@ describe('<BeneficiaryAccountCreated/>', () => {
   it('should render correctly for 18 year-old beneficiaries', () => {
     // Too many rerenders but we reset the values before each tests
     // eslint-disable-next-line local-rules/independent-mocks
-    mockUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      user: beneficiaryUser,
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+    mockUseAuthContext.mockReturnValue({ ...defaultContext, user: beneficiaryUser })
     renderBeneficiaryAccountCreated()
 
     expect(screen).toMatchSnapshot()
@@ -60,11 +56,8 @@ describe('<BeneficiaryAccountCreated/>', () => {
     // Too many rerenders but we reset the values before each tests
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
+      ...defaultContext,
       user: { ...beneficiaryUser, needsToFillCulturalSurvey: false },
-      refetchUser: jest.fn(),
-      isUserLoading: false,
     })
     renderBeneficiaryAccountCreated()
     fireEvent.press(screen.getByText('C’est parti !'))
@@ -72,7 +65,7 @@ describe('<BeneficiaryAccountCreated/>', () => {
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.BENEFICIARY)
   })
 
-  it('should not show share app modal if user sees cultural survey', async () => {
+  it('should not show share app modal when user is supposed to see cultural survey', async () => {
     renderBeneficiaryAccountCreated()
     fireEvent.press(screen.getByText('C’est parti !'))
 
