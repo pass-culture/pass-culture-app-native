@@ -9,15 +9,17 @@ import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { SubscriptionState } from 'features/identityCheck/context/types'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
+import {
+  useAddress,
+  useAddressActions,
+} from 'features/identityCheck/pages/profile/store/addressStore'
+import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { useAddresses } from 'libs/place/useAddresses'
-import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { isAddressValid } from 'ui/components/inputs/addressCheck'
@@ -34,14 +36,16 @@ const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.
 
 export const SetAddress = () => {
   const { data: settings } = useSettingsContext()
-  const { dispatch, profile } = useSubscriptionContext()
+  const storedAddress = useAddress()
+  const storedCity = useCity()
+  const { setAddress: setStoreAddress } = useAddressActions()
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
-  const [query, setQuery] = useState<string>(profile.address ?? '')
+  const [query, setQuery] = useState<string>(storedAddress ?? '')
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
-  const [selectedAddress, setSelectedAddress] = useState<string | null>(profile.address ?? null)
+  const [selectedAddress, setSelectedAddress] = useState<string | null>(storedAddress ?? null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
-  const adressInputErrorId = uuidv4()
+  const addressInputErrorId = uuidv4()
 
   const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
 
@@ -51,8 +55,8 @@ export const SetAddress = () => {
     isError,
   } = useAddresses({
     query: debouncedQuery,
-    cityCode: profile.city?.code ?? '',
-    postalCode: profile.city?.postalCode ?? '',
+    cityCode: storedCity?.code ?? '',
+    postalCode: storedCity?.postalCode ?? '',
     enabled: idCheckAddressAutocompletion && debouncedQuery.length > 0,
     limit: 10,
   })
@@ -104,14 +108,7 @@ export const SetAddress = () => {
 
   const submitAddress = async () => {
     if (!enabled) return
-    dispatch({ type: 'SET_ADDRESS', payload: selectedAddress ?? query })
-    const activationProfile = (await storage.readObject(
-      'activation_profile'
-    )) as SubscriptionState['profile']
-    await storage.saveObject('activation_profile', {
-      ...activationProfile,
-      address: selectedAddress ?? query,
-    })
+    setStoreAddress(selectedAddress ?? query)
     analytics.logSetAddressClicked()
     navigate('SetStatus')
   }
@@ -133,7 +130,7 @@ export const SetAddress = () => {
               label={label}
               placeholder="Ex&nbsp;: 34 avenue de l’Opéra"
               textContentType="addressState"
-              accessibilityDescribedBy={adressInputErrorId}
+              accessibilityDescribedBy={addressInputErrorId}
               onPressRightIcon={resetSearch}
               returnKeyType="next"
               testID="Entrée pour l’adresse"
@@ -142,7 +139,7 @@ export const SetAddress = () => {
               visible={hasError}
               messageId="Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
               numberOfSpacesTop={2}
-              relatedInputId={adressInputErrorId}
+              relatedInputId={addressInputErrorId}
             />
             <Spacer.Column numberOfSpaces={2} />
           </Form.MaxWidth>
