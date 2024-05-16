@@ -12,7 +12,6 @@ import { useTabBar } from 'features/navigation/TabBar/useTabBar'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 
-import { mapTabRouteToBicolorIcon } from './mapTabRouteToBicolorIcon'
 import { TabBarComponent } from './TabBarComponent'
 
 type Props = Pick<BottomTabBarProps, 'navigation' | 'state'>
@@ -87,7 +86,6 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
             key={`key-tab-nav-${route.key}`}
             tabName={route.name}
             isSelected={route.isSelected}
-            BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
             onPress={onPress}
           />
         )

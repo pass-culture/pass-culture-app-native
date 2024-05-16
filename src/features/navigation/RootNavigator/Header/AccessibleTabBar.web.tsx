@@ -8,7 +8,6 @@ import {
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { TabBarComponent } from 'features/navigation/TabBar/TabBarComponent'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
@@ -51,7 +50,6 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
                   onPress={route.name === 'SearchStackNavigator' ? hideSuggestions : undefined}
                   tabName={route.name}
                   isSelected={route.isSelected}
-                  BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
                 />
               </LinkContainer>
             )
