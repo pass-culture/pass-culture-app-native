@@ -111,4 +111,16 @@ describe('CulturalSurveyIntro page', () => {
 
     expect(mockShowAppModal).not.toHaveBeenCalled()
   })
+
+  it('should save that ShareAppModal was shown in storage', async () => {
+    render(<CulturalSurveyIntro />)
+    const laterButton = screen.getByText('Plus tard')
+    await act(() => {
+      fireEvent.press(laterButton)
+    })
+
+    const hasSeenShareAppModal = await storage.readObject(SHARE_APP_MODAL_STORAGE_KEY)
+
+    expect(hasSeenShareAppModal).toBe(true)
+  })
 })
