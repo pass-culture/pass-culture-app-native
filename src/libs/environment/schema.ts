@@ -55,8 +55,6 @@ export const EnvironmentSchema = yup.object({
   IOS_APP_STORE_ID: yup.string().required(),
   PASSCULTURE_DOWNLOAD_APP_URL: yup.string().required(),
   PRIVACY_POLICY_LINK: yup.string().required(),
-  RECOMMENDATION_ENDPOINT: yup.string().required(),
-  RECOMMENDATION_TOKEN: yup.string().required(),
   RESIZE_IMAGE_ON_DEMAND_URL: yup.string().required(),
   SENTRY_DSN: yup.string().required(),
   SENTRY_PROFILES_SAMPLE_RATE: yup.string().required(),
