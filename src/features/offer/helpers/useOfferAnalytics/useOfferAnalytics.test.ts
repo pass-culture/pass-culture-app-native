@@ -1,7 +1,7 @@
+import { RecommendationApiParams } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
 import { useOfferAnalytics } from 'features/offer/helpers/useOfferAnalytics/useOfferAnalytics'
 import { analytics } from 'libs/analytics'
-import { RecommendationApiParams } from 'shared/offer/types'
 import { renderHook } from 'tests/utils'
 
 const apiRecoParams: RecommendationApiParams = {

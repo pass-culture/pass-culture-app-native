@@ -1,7 +1,7 @@
 import { Platform } from 'react-native'
 import { Social } from 'react-native-share'
 
-import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
+import { IdentityCheckMethod, RecommendationApiParams, VenueContactModel } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { Step, STEP_LABEL } from 'features/bookOffer/context/reducer'
@@ -22,7 +22,6 @@ import { analytics, buildPerformSearchState, urlWithValueMaxLength } from 'libs/
 import { buildAccessibilityFilterParam } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
-import { RecommendationApiParams } from 'shared/offer/types'
 
 type BaseThematicHome = {
   homeEntryId: string

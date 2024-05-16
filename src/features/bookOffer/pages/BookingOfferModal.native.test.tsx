@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
-import { SubcategoryIdEnum } from 'api/gen'
+import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import * as useBookOfferMutation from 'features/bookOffer/api/useBookOfferMutation'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
@@ -18,10 +17,10 @@ import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { storage } from 'libs/storage'
 import { PLACEHOLDER_DATA as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
-import { RecommendationApiParams } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 

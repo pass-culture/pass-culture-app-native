@@ -1,7 +1,6 @@
-import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
+import { CategoryIdEnum, RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
-import { RecommendationApiParams } from 'shared/offer/types'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined

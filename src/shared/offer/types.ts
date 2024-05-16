@@ -1,4 +1,4 @@
-import { SubcategoryIdEnum } from 'api/gen'
+import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
 
 export type OfferLocation = {
@@ -30,16 +30,6 @@ export interface Offer {
     postalCode?: string
     city?: string
   }
-}
-
-export interface RecommendationApiParams {
-  call_id?: string
-  filtered?: boolean
-  geo_located?: boolean
-  model_endpoint?: string
-  model_name?: string
-  model_version?: string
-  reco_origin?: string
 }
 
 export type SimilarOfferPlaylist = {

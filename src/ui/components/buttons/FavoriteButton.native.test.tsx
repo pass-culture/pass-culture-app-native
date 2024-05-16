@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
+import { FavoriteResponse, PaginatedFavoritesResponse, RecommendationApiParams } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useAddFavoriteAPI from 'features/favorites/api/useAddFavorite'
 import * as useRemoveFavoriteAPI from 'features/favorites/api/useRemoveFavorite'
@@ -10,15 +10,14 @@ import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { PlaylistType } from 'features/offer/enums'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RecommendationApiParams } from 'shared/offer/types'
-import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
+import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import {
-  showSuccessSnackBar,
-  showErrorSnackBar,
   hideSnackBar,
+  showErrorSnackBar,
   showInfoSnackBar,
+  showSuccessSnackBar,
 } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
