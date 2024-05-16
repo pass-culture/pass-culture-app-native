@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { analytics } from 'libs/analytics'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
@@ -12,20 +11,8 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const POSTAL_CODE = '83570'
-const mockDispatch = jest.fn()
-jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
-  useSubscriptionContext: () => ({ dispatch: mockDispatch, ...mockState }),
-}))
 
 describe('<SetCity/>', () => {
-  beforeEach(async () => {
-    storage.saveObject('activation_profile', { name: { firstName: 'John', lastName: 'Doe' } })
-  })
-
-  afterEach(async () => {
-    storage.clear('activation_profile')
-  })
-
   it('should render correctly', () => {
     renderSetCity()
 
@@ -61,7 +48,7 @@ describe('<SetCity/>', () => {
     })
   })
 
-  it('should save city and navigate to SetAddress when clicking on "Continuer"', async () => {
+  it('should navigate to SetAddress when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     renderSetCity()
@@ -73,16 +60,8 @@ describe('<SetCity/>', () => {
     fireEvent.press(screen.getByText(city.nom))
     fireEvent.press(screen.getByText('Continuer'))
 
-    await waitFor(() => {
+    await waitFor(async () => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress')
-      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-        type: 'SET_CITY',
-        payload: {
-          code: city.code,
-          name: city.nom,
-          postalCode: POSTAL_CODE,
-        },
-      })
     })
   })
 
@@ -99,9 +78,10 @@ describe('<SetCity/>', () => {
     fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(async () => {
-      expect(await storage.readObject('activation_profile')).toMatchObject({
-        name: { firstName: 'John', lastName: 'Doe' },
-        city: { name: city.nom, code: city.code, postalCode: POSTAL_CODE },
+      expect(await storage.readObject('profile-city')).toMatchObject({
+        state: {
+          city: { name: city.nom, code: city.code, postalCode: POSTAL_CODE },
+        },
       })
     })
   })

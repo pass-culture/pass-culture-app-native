@@ -1,6 +1,11 @@
 import * as API from 'api/api'
 import { ActivityIdEnum } from 'api/gen'
-import { storage } from 'libs/storage'
+import {
+  useAddress,
+  useAddressActions,
+} from 'features/identityCheck/pages/profile/store/addressStore'
+import { useCity, useCityActions } from 'features/identityCheck/pages/profile/store/cityStore'
+import { useName, useNameActions } from 'features/identityCheck/pages/profile/store/nameStore'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
@@ -22,21 +27,27 @@ const profile = {
   schoolType: null,
 }
 
+const mockResetName = jest.fn()
+jest.mock('features/identityCheck/pages/profile/store/nameStore')
+;(useName as jest.Mock).mockReturnValue(profile.name)
+;(useNameActions as jest.Mock).mockReturnValue({ resetName: mockResetName })
+
+const mockResetCity = jest.fn()
+jest.mock('features/identityCheck/pages/profile/store/cityStore')
+;(useCity as jest.Mock).mockReturnValue(profile.city)
+;(useCityActions as jest.Mock).mockReturnValue({ resetCity: mockResetCity })
+
+const mockResetAddress = jest.fn()
+jest.mock('features/identityCheck/pages/profile/store/addressStore')
+;(useAddress as jest.Mock).mockReturnValue(profile.address)
+;(useAddressActions as jest.Mock).mockReturnValue({ resetAddress: mockResetAddress })
+
 const postSubscriptionProfileSpy = jest
   .spyOn(API.api, 'postNativeV1SubscriptionProfile')
   .mockImplementation()
 
 describe('usePatchProfile', () => {
-  afterEach(async () => {
-    storage.clear('activation_profile')
-  })
-
   it('should call api when profile is complete', async () => {
-    await storage.saveObject('activation_profile', {
-      name: { firstName: 'John', lastName: 'Doe' },
-      city: { code: '', name: 'Paris', postalCode: '75001' },
-      address: 'address',
-    })
     const { result } = renderHook(() => usePatchProfile(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -59,11 +70,6 @@ describe('usePatchProfile', () => {
   })
 
   it('should clear activation profile from storage when query succeeds', async () => {
-    await storage.saveObject('activation_profile', {
-      name: { firstName: 'John', lastName: 'Doe' },
-      city: { code: '', name: 'Paris', postalCode: '75001' },
-      address: 'address',
-    })
     const { result } = renderHook(() => usePatchProfile(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -75,7 +81,9 @@ describe('usePatchProfile', () => {
     })
 
     await waitFor(async () => {
-      expect(await storage.readObject('activation_profile')).toBeNull()
+      expect(mockResetName).toHaveBeenCalledTimes(1)
+      expect(mockResetCity).toHaveBeenCalledTimes(1)
+      expect(mockResetAddress).toHaveBeenCalledTimes(1)
     })
   })
 })
