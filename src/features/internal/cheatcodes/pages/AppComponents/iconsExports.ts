@@ -71,6 +71,7 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Key } from 'ui/svg/icons/Key'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
+import { Location } from 'ui/svg/icons/Location'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
@@ -240,6 +241,7 @@ export const TertiaryAndSmallerIcons = {
   InfoPlain,
   Invalidate,
   Key,
+  Location,
   LocationPointer,
   LocationPointerWithBorder,
   MagnifyingGlass,
