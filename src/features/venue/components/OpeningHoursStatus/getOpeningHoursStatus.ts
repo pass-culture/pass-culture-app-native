@@ -76,7 +76,7 @@ const createPeriod = (openAt: Date, closeAt: Date) => ({
   isPassed: (currentDate: Date) => currentDate > closeAt,
 })
 
-const dayToOpeningHours: Record<number, keyof OpeningHours> = {
+const DAY_TO_OPENING_HOURS: Record<number, keyof OpeningHours> = {
   0: 'SUNDAY',
   1: 'MONDAY',
   2: 'TUESDAY',
@@ -88,7 +88,7 @@ const dayToOpeningHours: Record<number, keyof OpeningHours> = {
 
 const getHoursFromCurrentDate = (currentDate: Date): keyof OpeningHours => {
   const day = currentDate.getDay()
-  const openingHours = dayToOpeningHours[day]
+  const openingHours = DAY_TO_OPENING_HOURS[day]
   if (!openingHours) {
     throw new Error('Invalid day')
   }
