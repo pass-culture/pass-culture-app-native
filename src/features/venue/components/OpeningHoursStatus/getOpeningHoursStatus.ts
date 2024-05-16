@@ -8,7 +8,7 @@ type OpeningHoursStatusParams = {
 }
 
 export type OpeningHoursStatusState = 'open' | 'open-soon' | 'close-soon' | 'close'
-export type OpeningHoursStatus = {
+type OpeningHoursStatus = {
   state: OpeningHoursStatusState
   text: string
 }
