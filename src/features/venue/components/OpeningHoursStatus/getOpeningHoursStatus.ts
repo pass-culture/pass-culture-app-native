@@ -1,13 +1,12 @@
 import { addHours, set, isWithinInterval } from 'date-fns'
 
-import { OpeningHours } from 'features/venue/types'
+import { OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
 
 type OpeningHoursStatusParams = {
   openingHours: OpeningHours
   currentDate: Date
 }
 
-export type OpeningHoursStatusState = 'open' | 'open-soon' | 'close-soon' | 'close'
 type OpeningHoursStatus = {
   state: OpeningHoursStatusState
   text: string

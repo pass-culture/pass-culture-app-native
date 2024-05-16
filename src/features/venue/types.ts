@@ -37,3 +37,5 @@ type OpeningHour = {
   open: string
   close: string
 }[]
+
+export type OpeningHoursStatusState = 'open' | 'open-soon' | 'close-soon' | 'close'
