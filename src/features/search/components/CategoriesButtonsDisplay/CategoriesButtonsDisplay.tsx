@@ -39,6 +39,10 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
   const hasVenueMapWithoutPosition = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_POSITION
   )
+  const enableNewCategoryBlock = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_APP_V2_SEARCH_CATEGORY_BLOCK
+  )
+
   const {
     showModal: showIncentiveLocationModal,
     visible: incentiveLocationModalVisible,
