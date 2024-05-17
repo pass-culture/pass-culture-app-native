@@ -5,12 +5,15 @@ import styled, { useTheme } from 'styled-components/native'
 import { useLocationForLocationWidgetDesktop } from 'features/location/components/useLocationForLocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -39,6 +42,9 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
   children,
   screenOrigin,
 }) => {
+  const shouldDisplayLocationWidgetAppV2 = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_APP_V2_LOCATION_WIDGET
+  )
   const { icons } = useTheme()
   const {
     title: locationTitle,
@@ -66,6 +72,19 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
     showLocationModal()
   }
 
+  const locationIconAppV2 = isWidgetHighlighted ? (
+    <LocationPointerAppV2Filled />
+  ) : (
+    <LocationPointerAppV2NotFilled />
+  )
+  const locationIcon = isWidgetHighlighted ? (
+    <LocationPointerFilled size={icons.sizes.extraSmall} testID="location pointer filled" />
+  ) : (
+    <SmallLocationPointerNotFilled
+      size={icons.sizes.extraSmall}
+      testID="location pointer not filled"
+    />
+  )
   return (
     <React.Fragment>
       {enableTooltip ? (
@@ -81,16 +100,7 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
         onPress={onPressLocationButton}
         testID={testId}
         accessibilityLabel={testId}>
-        <NotShrunk>
-          {isWidgetHighlighted ? (
-            <LocationPointerFilled size={icons.sizes.extraSmall} testID="location pointer filled" />
-          ) : (
-            <SmallLocationPointerNotFilled
-              size={icons.sizes.extraSmall}
-              testID="location pointer not filled"
-            />
-          )}
-        </NotShrunk>
+        <NotShrunk>{shouldDisplayLocationWidgetAppV2 ? locationIconAppV2 : locationIcon}</NotShrunk>
         <Spacer.Row numberOfSpaces={1} />
         <LocationTitle>{locationTitle}</LocationTitle>
         <Spacer.Row numberOfSpaces={2} />
@@ -131,6 +141,16 @@ const LocationPointerFilled = styled(LocationPointer).attrs(({ theme }) => ({
 const SmallLocationPointerNotFilled = styled(LocationPointerNotFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
+
+const LocationPointerAppV2Filled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icons.sizes.small,
+}))({})
+
+const LocationPointerAppV2NotFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
+  color: theme.colors.greyMedium,
+  size: theme.icons.sizes.small,
+}))({})
 
 const LocationTitle = styled(Typo.ButtonText).attrs({
   numberOfLines: 1,

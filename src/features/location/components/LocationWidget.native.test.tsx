@@ -3,6 +3,7 @@ import React from 'react'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { ScreenOrigin } from 'features/location/enums'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.unmock('@react-navigation/native')
@@ -16,6 +17,8 @@ jest.mock('ui/components/modals/useModal', () => ({
     hideModal: jest.fn(),
   }),
 }))
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 describe('LocationWidget', () => {
   it('should show modal when pressing widget', async () => {

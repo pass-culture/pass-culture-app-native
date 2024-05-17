@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -7,6 +7,8 @@ import { SearchLocationModal } from 'features/location/components/SearchLocation
 import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -15,6 +17,7 @@ import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
 import { getSpacing, Typo } from 'ui/theme'
 
 export const LOCATION_TITLE_MAX_WIDTH = getSpacing(20)
@@ -22,11 +25,15 @@ const WIDGET_HEIGHT = getSpacing(10 + 1 + 4) // roundedButton + padding + captio
 const TOOLTIP_WIDTH = getSpacing(58)
 const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = getSpacing(5)
 
-interface LocationWidgetProps {
+type Props = {
   screenOrigin: ScreenOrigin
 }
 
-export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
+export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
+  const shouldDisplayLocationWidgetAppV2 = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_APP_V2_LOCATION_WIDGET
+  )
+
   const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
 
   const { place, selectedLocationMode } = useLocation()
@@ -49,6 +56,17 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
 
   const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
+  const locationIconAppV2 = isWidgetHighlighted ? (
+    <LocationPointerAppV2Filled />
+  ) : (
+    <LocationPointerAppV2NotFilled />
+  )
+  const locationIcon = isWidgetHighlighted ? (
+    <LocationPointerFilled />
+  ) : (
+    <LocationPointerNotFilled />
+  )
+
   return (
     <React.Fragment>
       {enableTooltip ? (
@@ -65,7 +83,7 @@ export const LocationWidget = ({ screenOrigin }: LocationWidgetProps) => {
         accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
         {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
         <IconContainer isActive={isWidgetHighlighted}>
-          {isWidgetHighlighted ? <LocationPointerFilled /> : <LocationPointerNotFilled />}
+          {shouldDisplayLocationWidgetAppV2 ? locationIconAppV2 : locationIcon}
         </IconContainer>
         <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
       </StyledTouchable>
@@ -116,3 +134,13 @@ const LocationPointerNotFilled = styled(BicolorLocationPointer).attrs(({ theme }
   color2: theme.colors.black,
   size: theme.icons.sizes.small,
 }))``
+
+const LocationPointerAppV2Filled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icons.sizes.small,
+}))({})
+
+const LocationPointerAppV2NotFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
+  color: theme.colors.greyMedium,
+  size: theme.icons.sizes.small,
+}))({})

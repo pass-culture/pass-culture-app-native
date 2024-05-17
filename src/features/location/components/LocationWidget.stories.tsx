@@ -23,4 +23,6 @@ const Template: ComponentStory<typeof LocationWidget> = () => (
   <LocationWidget screenOrigin={ScreenOrigin.HOME} />
 )
 
-export const Default = Template.bind({})
+// Not exported and broken story story du to FF
+const Default = Template.bind({})
+Default.args = {}

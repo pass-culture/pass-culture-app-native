@@ -2,9 +2,11 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 jest.unmock('@react-navigation/native')
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 describe('LocationWidgetDesktop', () => {
   afterEach(async () => {
