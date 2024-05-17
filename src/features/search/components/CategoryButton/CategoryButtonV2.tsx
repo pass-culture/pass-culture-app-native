@@ -7,7 +7,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-export type CategoryButtonV2Props = {
+type CategoryButtonV2Props = {
   label: string
   textColor: string
   fillColor: string
