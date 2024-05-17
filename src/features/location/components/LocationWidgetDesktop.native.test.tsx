@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { storage } from 'libs/storage'
@@ -21,6 +22,8 @@ jest.mock('ui/components/modals/useModal', () => ({
 
 jest.mock('libs/location')
 const mockUseGeolocation = useLocation as jest.Mock
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('LocationWidgetDesktop', () => {
   it('should show modal when pressing widget', async () => {
