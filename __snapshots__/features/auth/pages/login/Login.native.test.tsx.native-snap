@@ -812,6 +812,7 @@ exports[`<Login/> should render correctly 1`] = `
             {
               "alignItems": "center",
               "flexDirection": "row",
+              "gap": 4,
               "justifyContent": "center",
             },
           ]
@@ -831,107 +832,94 @@ exports[`<Login/> should render correctly 1`] = `
           }
         >
           Pas de compte ?
+        </Text>
+        <View
+          accessibilityLabel="Créer un compte"
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="Créer un compte"
+        >
           <View
-            numberOfSpaces={1}
+            paddingForIcon={0}
             style={
               [
                 {
-                  "width": 4,
+                  "flexDirection": "row",
+                  "top": 0,
                 },
               ]
             }
-          />
-          <View>
+          >
             <View
-              accessibilityLabel="Créer un compte"
-              accessibilityRole="link"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "opacity": 1,
-                  "top": 3,
-                  "userSelect": "auto",
-                }
-              }
-              testID="Créer un compte"
+              fill="#320096"
+              height={20}
+              testID="button-icon"
+              width={20}
             >
-              <View
-                paddingForIcon={0}
-                style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "top": 0,
-                    },
-                  ]
-                }
-              >
-                <View
-                  fill="#320096"
-                  height={20}
-                  testID="button-icon"
-                  width={20}
-                >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  color="#320096"
-                  style={
-                    [
-                      {
-                        "color": "#320096",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                  typography="ButtonText"
-                >
-                  Créer un compte
-                </Text>
-              </View>
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
             </View>
+            <View
+              numberOfSpaces={1}
+              style={
+                [
+                  {
+                    "width": 4,
+                  },
+                ]
+              }
+            />
+            <Text
+              color="#320096"
+              style={
+                [
+                  {
+                    "color": "#320096",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+              typography="ButtonText"
+            >
+              Créer un compte
+            </Text>
           </View>
-        </Text>
+        </View>
       </View>
     </View>
   </RCTScrollView>,
@@ -1973,6 +1961,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             {
               "alignItems": "center",
               "flexDirection": "row",
+              "gap": 4,
               "justifyContent": "center",
             },
           ]
@@ -1992,107 +1981,94 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           }
         >
           Pas de compte ?
+        </Text>
+        <View
+          accessibilityLabel="Créer un compte"
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="Créer un compte"
+        >
           <View
-            numberOfSpaces={1}
+            paddingForIcon={0}
             style={
               [
                 {
-                  "width": 4,
+                  "flexDirection": "row",
+                  "top": 0,
                 },
               ]
             }
-          />
-          <View>
+          >
             <View
-              accessibilityLabel="Créer un compte"
-              accessibilityRole="link"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                {
-                  "opacity": 1,
-                  "top": 3,
-                  "userSelect": "auto",
-                }
-              }
-              testID="Créer un compte"
+              fill="#320096"
+              height={20}
+              testID="button-icon"
+              width={20}
             >
-              <View
-                paddingForIcon={0}
-                style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "top": 0,
-                    },
-                  ]
-                }
-              >
-                <View
-                  fill="#320096"
-                  height={20}
-                  testID="button-icon"
-                  width={20}
-                >
-                  <Text>
-                    button-icon-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  color="#320096"
-                  style={
-                    [
-                      {
-                        "color": "#320096",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                  typography="ButtonText"
-                >
-                  Créer un compte
-                </Text>
-              </View>
+              <Text>
+                button-icon-SVG-Mock
+              </Text>
             </View>
+            <View
+              numberOfSpaces={1}
+              style={
+                [
+                  {
+                    "width": 4,
+                  },
+                ]
+              }
+            />
+            <Text
+              color="#320096"
+              style={
+                [
+                  {
+                    "color": "#320096",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+              typography="ButtonText"
+            >
+              Créer un compte
+            </Text>
           </View>
-        </Text>
+        </View>
       </View>
     </View>
   </RCTScrollView>,
