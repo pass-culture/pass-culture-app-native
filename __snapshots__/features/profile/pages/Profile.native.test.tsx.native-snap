@@ -2047,7 +2047,7 @@ exports[`Profile component should render correctly 1`] = `
                           ]
                         }
                       >
-                        Twitter
+                        X
                       </Text>
                     </View>
                   </View>
