@@ -21,7 +21,7 @@ export const VenueSelectionListHeader: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={6} />
       <Typo.Title3 {...getHeadingAttrs(2)}>{subTitle}</Typo.Title3>
       <Spacer.Column numberOfSpaces={6} />
-      {!isSharingLocation ? (
+      {isSharingLocation ? null : (
         <React.Fragment>
           <GeolocationBanner
             title="Active ta géolocalisation"
@@ -29,7 +29,7 @@ export const VenueSelectionListHeader: FunctionComponent<Props> = ({
           />
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
-      ) : null}
+      )}
       <HeaderMessageText>{headerMessage}</HeaderMessageText>
       <Spacer.Column numberOfSpaces={2} />
     </ListHeaderContainer>

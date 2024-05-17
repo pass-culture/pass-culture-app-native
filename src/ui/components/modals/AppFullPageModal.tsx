@@ -41,6 +41,6 @@ const Container = styled.View<{ windowHeight: number }>(({ windowHeight, theme }
     width: '100%',
     height: '100%',
     maxWidth: theme.appContentWidth,
-    maxHeight: !theme.isMobileViewport ? maxHeight : '100%',
+    maxHeight: theme.isMobileViewport ? '100%' : maxHeight,
   }
 })

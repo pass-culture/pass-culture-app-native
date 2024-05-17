@@ -55,7 +55,7 @@ export const TutorialPage: FunctionComponent<Props> = ({
           <Spacer.Column numberOfSpaces={4} />
           {children}
         </Container>
-        {!buttons ? <Spacer.Column numberOfSpaces={6} /> : null}
+        {buttons ? null : <Spacer.Column numberOfSpaces={6} />}
       </StyledScrollView>
       {buttons ? (
         <ButtonsContainer
@@ -65,7 +65,7 @@ export const TutorialPage: FunctionComponent<Props> = ({
           easing={customEaseInOut}>
           {buttons?.map((button, index) => (
             <React.Fragment key={index}>
-              {index !== 0 ? <Spacer.Column numberOfSpaces={4} /> : null}
+              {index === 0 ? null : <Spacer.Column numberOfSpaces={4} />}
               {button}
             </React.Fragment>
           ))}

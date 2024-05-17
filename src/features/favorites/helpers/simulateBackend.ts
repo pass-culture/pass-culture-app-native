@@ -55,13 +55,13 @@ export function simulateBackend(options: Options = defaultOptions) {
     })
   }
 
-  if (!hasRemoveFavoriteError) {
+  if (hasRemoveFavoriteError) {
     mockServer.deleteApi<EmptyResponse>(
       `/v1/me/favorites/${
         paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
       }`,
       {
-        responseOptions: { statusCode: 204 },
+        responseOptions: { statusCode: 422, data: {} },
       }
     )
   } else {
@@ -70,7 +70,7 @@ export function simulateBackend(options: Options = defaultOptions) {
         paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
       }`,
       {
-        responseOptions: { statusCode: 422, data: {} },
+        responseOptions: { statusCode: 204 },
       }
     )
   }

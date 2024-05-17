@@ -55,7 +55,7 @@ export const SetName = () => {
     navigate('SetCity')
   }
 
-  useEnterKeyAction(!disabled ? () => handleSubmit(submitName) : undefined)
+  useEnterKeyAction(disabled ? undefined : () => handleSubmit(submitName))
 
   return (
     <PageWithHeader

@@ -55,12 +55,12 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
 
   return (
     <Container inverseLayout={!!isDesktopViewport}>
-      {!isDesktopViewport ? (
+      {isDesktopViewport ? null : (
         <React.Fragment>
           <TitleWrapper>{TitleWithSubtitle}</TitleWrapper>
           <Spacer.Row numberOfSpaces={2} />
         </React.Fragment>
-      ) : null}
+      )}
       <SwitchWrapper>
         <FilterSwitch
           checkboxID={checkboxID}

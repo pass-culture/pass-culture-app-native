@@ -60,21 +60,21 @@ export function usePersistQuery<
   const query = useQuery(queryKey, queryFn, {
     ...options,
     enabled:
-      options?.enabled !== undefined
-        ? options.enabled && !!netInfo.isConnected
-        : !!netInfo.isConnected,
+      options?.enabled === undefined
+        ? !!netInfo.isConnected
+        : options.enabled && !!netInfo.isConnected,
   })
 
   const persistQuery = useMemo<UsePersistQueryResult<TData, TError>>(
     () =>
-      !persistData
-        ? query
-        : ({
+      persistData
+        ? ({
             ...query,
             // @ts-ignore useQuery select options does not offer to pass typing to useQuery, cast should happen within passed selected
             data: options?.select ? options.select(persistData as any) : persistData, // eslint-disable-line @typescript-eslint/no-explicit-any
             isOfflineData: true,
-          } as UsePersistQueryResult<TData, TError>),
+          } as UsePersistQueryResult<TData, TError>)
+        : query,
     [persistData, query, options]
   )
 

@@ -58,7 +58,7 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
         flatListRef={flatListRef}
       />
       <Spacer.Column numberOfSpaces={4} />
-      {eventCardData !== undefined ? <EventCardList data={eventCardData} /> : null}
+      {eventCardData === undefined ? null : <EventCardList data={eventCardData} />}
       {CTAOfferModal}
     </MovieCalendarContainer>
   )

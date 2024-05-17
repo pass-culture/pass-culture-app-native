@@ -181,7 +181,7 @@ export const NotificationsSettings = () => {
               compte.
             </Typo.Caption>
           ) : null}
-          {Platform.OS !== 'web' ? (
+          {Platform.OS === 'web' ? null : (
             <SectionWithSwitchContainer>
               <SectionWithSwitch
                 title="Autoriser les notifications"
@@ -190,7 +190,7 @@ export const NotificationsSettings = () => {
                 disabled={!isLoggedIn}
               />
             </SectionWithSwitchContainer>
-          ) : null}
+          )}
           <Spacer.Column numberOfSpaces={4} />
           <Separator.Horizontal />
           <Spacer.Column numberOfSpaces={8} />

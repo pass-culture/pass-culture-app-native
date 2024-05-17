@@ -205,7 +205,7 @@ export function BookingDetails() {
           <InfoContainer>
             <Spacer.Column numberOfSpaces={4} />
             <OfferRules>{offerRules}</OfferRules>
-            <Spacer.Column numberOfSpaces={offerRules !== '' ? 8 : 2} />
+            <Spacer.Column numberOfSpaces={offerRules === '' ? 2 : 8} />
             <BookingPropertiesSection booking={booking} />
             {shouldDisplayItineraryButton ? (
               <React.Fragment>

@@ -65,7 +65,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             </Thumbnail>
           </StyledTouchableHighlight>
           <Spacer.Column numberOfSpaces={2} />
-          {!props.isMultiOffer ? (
+          {props.isMultiOffer ? null : (
             <StyledVideoMonoOfferTile
               // @ts-expect-error: because of noUncheckedIndexedAccess
               offer={props.offers[0]}
@@ -73,7 +73,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
               hideModal={props.hideVideoModal}
               analyticsParams={props.analyticsParams}
             />
-          ) : null}
+          )}
         </VideoOfferContainer>
       </View>
       {props.isMultiOffer ? (
@@ -86,7 +86,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           />
         </React.Fragment>
       ) : null}
-      {!props.isMultiOffer ? <Spacer.Column numberOfSpaces={6} /> : null}
+      {props.isMultiOffer ? null : <Spacer.Column numberOfSpaces={6} />}
     </Container>
   )
 }

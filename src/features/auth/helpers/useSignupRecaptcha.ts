@@ -15,11 +15,11 @@ export const useSignupRecaptcha = ({
   const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
 
   useEffect(() => {
-    if (!isUserConnected) {
+    if (isUserConnected) {
+      setErrorMessage(null)
+    } else {
       setErrorMessage('Hors connexion\u00a0: en attente du réseau.')
       setIsDoingReCaptchaChallenge(false)
-    } else {
-      setErrorMessage(null)
     }
   }, [isUserConnected, setErrorMessage])
 

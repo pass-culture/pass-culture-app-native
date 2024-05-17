@@ -43,7 +43,7 @@ export const NoResultsView = ({
         <Spacer.Column numberOfSpaces={4} />
         <StyledBody>{explanations}</StyledBody>
         <Spacer.Column numberOfSpaces={4} />
-        {!offline ? (
+        {offline ? null : (
           <ButtonContainer>
             <InternalTouchableLink
               as={ButtonPrimary}
@@ -54,7 +54,7 @@ export const NoResultsView = ({
               icon={MagnifyingGlass}
             />
           </ButtonContainer>
-        ) : null}
+        )}
         <Spacer.Flex />
       </CenteredContainer>
     </Container>

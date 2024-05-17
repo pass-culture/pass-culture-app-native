@@ -13,7 +13,7 @@ const PADDING_VERTICAL = getSpacing(4)
 
 export const BottomBanner = ({ text, ...props }: Props) => {
   const { bottom } = useSafeAreaInsets()
-  const paddingBottom = bottom !== 0 ? bottom : PADDING_VERTICAL
+  const paddingBottom = bottom === 0 ? PADDING_VERTICAL : bottom
 
   return (
     <Container paddingBottom={paddingBottom} {...props}>

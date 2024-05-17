@@ -18,14 +18,14 @@ export function OfflineModeContainer({ children }: { children: ReactNode }) {
   useEffect(() => {
     isInternetReachable.current = netInfo.isInternetReachable
     let timer: NodeJS.Timeout | undefined
-    if (!isInternetReachable.current) {
+    if (isInternetReachable.current) {
+      setShow(false)
+    } else {
       timer = globalThis.setTimeout(() => {
         if (!isInternetReachable.current) {
           setShow(true)
         }
       }, THIRTY_SECONDS)
-    } else {
-      setShow(false)
     }
     return () => {
       if (timer) {

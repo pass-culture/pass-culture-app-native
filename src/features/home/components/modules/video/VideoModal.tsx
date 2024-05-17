@@ -47,14 +47,14 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
   }
 
   const swipeProperties =
-    Platform.OS !== 'web'
-      ? {
+    Platform.OS === 'web'
+      ? {}
+      : {
           onSwipe: onCloseModal,
           swipeDirection: ModalSwipeDirection.DOWN,
           animationOutTiming: 400,
           propagateSwipe: true,
         }
-      : {}
 
   return (
     <AppModal
@@ -69,7 +69,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       {...swipeProperties}>
       <VideoPlayer
         youtubeVideoId={props.youtubeVideoId}
-        offer={!props.isMultiOffer ? props.offers[0] : undefined}
+        offer={props.isMultiOffer ? undefined : props.offers[0]}
         onPressSeeOffer={props.hideModal}
         moduleId={props.moduleId}
         moduleName={props.title}

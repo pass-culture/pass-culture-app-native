@@ -86,14 +86,14 @@ const ThematicHeaderWithGeolocBanner: FunctionComponent<{
 }> = ({ thematicHeader, isLocated }) => (
   <React.Fragment>
     <SubHeader thematicHeader={thematicHeader} />
-    {!isLocated ? (
+    {isLocated ? null : (
       <GeolocationBannerContainer>
         <GeolocationBanner
           title="Géolocalise-toi"
           subtitle="pour trouver des offres autour de toi"
         />
       </GeolocationBannerContainer>
-    ) : null}
+    )}
   </React.Fragment>
 )
 
@@ -137,7 +137,7 @@ export const ThematicHome: FunctionComponent = () => {
         Header={
           <React.Fragment>
             <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
-            {Platform.OS !== 'ios' ? <SubscribeButtonWithModals homeId={params.homeId} /> : null}
+            {Platform.OS === 'ios' ? null : <SubscribeButtonWithModals homeId={params.homeId} />}
           </React.Fragment>
         }
         shouldDisplayScrollToTop

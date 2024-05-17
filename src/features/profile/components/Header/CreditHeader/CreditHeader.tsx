@@ -98,12 +98,12 @@ export function CreditHeader({
         </InternalTouchableLink>
       ) : (
         <React.Fragment>
-          {!(isDepositExpired || isCreditEmpty) ? (
+          {isDepositExpired || isCreditEmpty ? null : (
             <React.Fragment>
               <CreditInfo totalCredit={domainsCredit.all} />
               <BeneficiaryCeilings domainsCredit={domainsCredit} />
             </React.Fragment>
-          ) : null}
+          )}
           {incomingCreditLabelsMap[age] && !isCreditEmpty ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />

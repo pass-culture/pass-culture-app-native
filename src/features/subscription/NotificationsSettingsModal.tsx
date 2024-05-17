@@ -86,7 +86,7 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
             setSettings((prevState) => ({ ...prevState, allowEmails: !prevState.allowEmails }))
           }
         />
-        {Platform.OS !== 'web' ? (
+        {Platform.OS === 'web' ? null : (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={6} />
 
@@ -97,7 +97,7 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
               toggle={togglePush}
             />
           </React.Fragment>
-        ) : null}
+        )}
         <Spacer.Column numberOfSpaces={6} />
 
         <StyledCaption>Tu pourras gérer tes alertes depuis ton profil.</StyledCaption>
@@ -107,9 +107,9 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
         <ButtonPrimary
           wording="Valider"
           disabled={
-            Platform.OS !== 'web'
-              ? !settings.allowEmails && !settings.allowPush
-              : !settings.allowEmails
+            Platform.OS === 'web'
+              ? !settings.allowEmails
+              : !settings.allowEmails && !settings.allowPush
           }
           onPress={() => {
             dismissModal()

@@ -132,12 +132,12 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     function onBooleanChange(value: boolean) {
       setScreenParams((prevPageParams) =>
-        !value
-          ? omit(prevPageParams, name)
-          : {
+        value
+          ? {
               ...prevPageParams,
               [name]: value,
             }
+          : omit(prevPageParams, name)
       )
     }
 
@@ -156,7 +156,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       setScreenParams((prevPageParams) => {
         return {
           ...prevPageParams,
-          [name]: !categories.length ? undefined : categories,
+          [name]: categories.length ? categories : undefined,
           offerNativeCategories: undefined,
         }
       })
@@ -164,34 +164,34 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     function onChangeOfferNativeCategories(nativeCategories: NativeCategoryIdEnumv2[]) {
       setScreenParams((prevPageParams) =>
-        !nativeCategories.length
-          ? omit(prevPageParams, name)
-          : {
+        nativeCategories.length
+          ? {
               ...prevPageParams,
               [name]: nativeCategories,
             }
+          : omit(prevPageParams, name)
       )
     }
 
     function onChangeDate(date: Date | undefined) {
       setScreenParams((prevPageParams) =>
-        !date
-          ? omit(prevPageParams, name)
-          : {
+        date
+          ? {
               ...prevPageParams,
               [name]: date,
             }
+          : omit(prevPageParams, name)
       )
     }
 
     function onChangeLocationFilterChoice(locationFilter: LocationFilter | null) {
       setScreenParams((prevPageParams) =>
-        !locationFilter
-          ? omit(prevPageParams, name)
-          : {
+        locationFilter
+          ? {
               ...prevPageParams,
               [name]: locationFilter,
             }
+          : omit(prevPageParams, name)
       )
     }
 
@@ -316,7 +316,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
   const disabled = !areAllParamsValid()
 
-  useEnterKeyAction(!disabled ? onPress : undefined)
+  useEnterKeyAction(disabled ? undefined : onPress)
 
   const errorText = 'Seulement les "ids" disposent de validation\u00a0!'
 

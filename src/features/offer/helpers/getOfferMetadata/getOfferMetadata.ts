@@ -12,9 +12,9 @@ function getValue(value?: string | null): string {
 }
 
 function formatDate(dateString: string) {
-  return dateString !== ''
-    ? new Intl.DateTimeFormat('fr-FR', DATE_FORMAT_OPTIONS).format(new Date(dateString))
-    : ''
+  return dateString === ''
+    ? ''
+    : new Intl.DateTimeFormat('fr-FR', DATE_FORMAT_OPTIONS).format(new Date(dateString))
 }
 
 function filterEmptyItems(item: OfferMetadataItemProps): boolean {
