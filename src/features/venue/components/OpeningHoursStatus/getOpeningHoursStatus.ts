@@ -76,7 +76,7 @@ const createPeriod = (openAt: Date, closeAt: Date) => ({
   isPassed: (currentDate: Date) => currentDate > closeAt,
 })
 
-const DAY_TO_OPENING_HOURS: Record<number, keyof OpeningHours> = {
+const DAY_TO_OPENING_HOURS = {
   0: 'SUNDAY',
   1: 'MONDAY',
   2: 'TUESDAY',
@@ -84,13 +84,12 @@ const DAY_TO_OPENING_HOURS: Record<number, keyof OpeningHours> = {
   4: 'THURSDAY',
   5: 'FRIDAY',
   6: 'SATURDAY',
-}
+} as const
 
 const getHoursFromCurrentDate = (currentDate: Date): keyof OpeningHours => {
   const day = currentDate.getDay()
   const openingHours = DAY_TO_OPENING_HOURS[day]
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  return openingHours!
+  return openingHours
 }
 
 const getDateFromOpeningHour = (currentDate: Date, openingHour: string): Date => {
