@@ -37,7 +37,7 @@ describe('<Offer />', () => {
       responseOptions: { data: offerResponseSnap },
     })
     mockServer.universalGet<Hit<OfferTypes>[]>(
-      `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${offerResponseSnap.id}`,
+      `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/${offerResponseSnap.id}`,
       {
         requestOptions: { persist: true },
         responseOptions: { data: mockedAlgoliaResponse.hits },
