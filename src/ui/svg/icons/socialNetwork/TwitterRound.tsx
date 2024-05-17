@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Rect, Path } from 'react-native-svg'
+import { Path, Rect } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -12,11 +12,11 @@ const TwitterRoundSvg = ({ color: _color, size, accessibilityLabel, testID }: Ac
       height={size}
       accessibilityLabel={accessibilityLabel}
       testID={testID}
-      viewBox="0 0 48 48">
-      <Rect width={48} height={48} rx={24} fill="#1D9BF0" />
+      viewBox="0 0 56 56">
+      <Rect width={56} height={56} rx={28} fill="#161617" />
       <Path
-        d="M35.133 18.183c.017.25.017.502.017.756 0 7.731-5.778 16.647-16.345 16.647v-.004A16.048 16.048 0 0 1 10 32.959a11.403 11.403 0 0 0 8.502-2.425c-2.458-.048-4.614-1.68-5.367-4.063.861.169 1.748.134 2.594-.101-2.68-.552-4.608-2.95-4.608-5.735v-.074a5.629 5.629 0 0 0 2.607.732c-2.524-1.718-3.303-5.138-1.778-7.812 2.916 3.655 7.22 5.877 11.839 6.113a5.924 5.924 0 0 1 1.662-5.59 5.678 5.678 0 0 1 8.127.253 11.4 11.4 0 0 0 3.648-1.42 5.856 5.856 0 0 1-2.525 3.236A11.261 11.261 0 0 0 38 15.152a11.793 11.793 0 0 1-2.867 3.03Z"
-        fill="#fff"
+        d="M36.8851 14H41.6379L31.2025 25.8819L43.3943 42H33.8268L26.336 32.2052L17.7604 42H13.0076L24.063 29.2915L12.3877 14H22.1929L28.9604 22.9476L36.8851 14ZM35.2216 39.2103H37.8563L20.8084 16.6863H17.9774L35.2216 39.2103Z"
+        fill="white"
       />
     </AccessibleSvg>
   )
