@@ -11,7 +11,7 @@ describe('SocialNetworkCard', () => {
     const openUrl = jest
       .spyOn(NavigationHelpers, 'openUrl')
       .mockImplementation(jest.fn(() => Promise.resolve()))
-    render(<SocialNetworkCard network="twitter" />)
+    render(<SocialNetworkCard network="x" />)
 
     const button = screen.getByText('X')
     fireEvent.press(button)

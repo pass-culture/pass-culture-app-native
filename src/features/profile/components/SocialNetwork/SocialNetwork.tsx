@@ -15,7 +15,7 @@ export function SocialNetwork() {
             <SocialNetworkCard network="instagram" />
           </Li>
           <Li>
-            <SocialNetworkCard network="twitter" />
+            <SocialNetworkCard network="x" />
           </Li>
           <Li>
             <SocialNetworkCard network="tiktok" />
