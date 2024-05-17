@@ -12,8 +12,8 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
-import { Location } from 'ui/svg/icons/Location'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -72,7 +72,11 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
     showLocationModal()
   }
 
-  const locationIconAppV2 = isWidgetHighlighted ? <LocationFilled /> : <LocationNotFilled />
+  const locationIconAppV2 = isWidgetHighlighted ? (
+    <LocationPointerAppV2Filled />
+  ) : (
+    <LocationPointerAppV2NotFilled />
+  )
   const locationIcon = isWidgetHighlighted ? (
     <LocationPointerFilled size={icons.sizes.extraSmall} testID="location pointer filled" />
   ) : (
@@ -138,12 +142,12 @@ const SmallLocationPointerNotFilled = styled(LocationPointerNotFilled).attrs(({ 
   size: theme.icons.sizes.small,
 }))``
 
-const LocationFilled = styled(Location).attrs(({ theme }) => ({
+const LocationPointerAppV2Filled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
   color: theme.colors.primary,
   size: theme.icons.sizes.small,
 }))({})
 
-const LocationNotFilled = styled(Location).attrs(({ theme }) => ({
+const LocationPointerAppV2NotFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
   color: theme.colors.greyMedium,
   size: theme.icons.sizes.small,
 }))({})

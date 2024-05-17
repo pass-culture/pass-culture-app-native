@@ -16,8 +16,8 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
-import { Location } from 'ui/svg/icons/Location'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
 import { getSpacing, Typo } from 'ui/theme'
 
 export const LOCATION_TITLE_MAX_WIDTH = getSpacing(20)
@@ -56,7 +56,11 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
 
   const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
-  const locationIconAppV2 = isWidgetHighlighted ? <LocationFilled /> : <LocationNotFilled />
+  const locationIconAppV2 = isWidgetHighlighted ? (
+    <LocationPointerAppV2Filled />
+  ) : (
+    <LocationPointerAppV2NotFilled />
+  )
   const locationIcon = isWidgetHighlighted ? (
     <LocationPointerFilled />
   ) : (
@@ -131,12 +135,12 @@ const LocationPointerNotFilled = styled(BicolorLocationPointer).attrs(({ theme }
   size: theme.icons.sizes.small,
 }))``
 
-const LocationFilled = styled(Location).attrs(({ theme }) => ({
+const LocationPointerAppV2Filled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
   color: theme.colors.primary,
   size: theme.icons.sizes.small,
 }))({})
 
-const LocationNotFilled = styled(Location).attrs(({ theme }) => ({
+const LocationPointerAppV2NotFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
   color: theme.colors.greyMedium,
   size: theme.icons.sizes.small,
 }))({})

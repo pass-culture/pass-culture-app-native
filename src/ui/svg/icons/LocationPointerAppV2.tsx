@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from './types'
 
-const LocationSvg: React.FunctionComponent<AccessibleIcon> = ({
+const LocationPointerAppV2Svg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   accessibilityLabel,
@@ -27,7 +27,9 @@ const LocationSvg: React.FunctionComponent<AccessibleIcon> = ({
   </AccessibleSvg>
 )
 
-export const Location = styled(LocationSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
-  size: size ?? theme.icons.sizes.smaller,
-}))``
+export const LocationPointerAppV2 = styled(LocationPointerAppV2Svg).attrs(
+  ({ color, size, theme }) => ({
+    color: color ?? theme.colors.black,
+    size: size ?? theme.icons.sizes.smaller,
+  })
+)``
