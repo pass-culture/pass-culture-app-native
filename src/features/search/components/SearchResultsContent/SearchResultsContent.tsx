@@ -52,7 +52,7 @@ export const SearchResultsContent: React.FC = () => {
     RemoteStoreFeatureFlags.WIP_SEARCH_ACCESSIBILITY_FILTER
   )
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
-  const searchListRef = useRef<FlatList<Offer> | FlashList<Offer> | null>(null)
+  const searchListRef = useRef<FlashList<Offer> | null>(null)
   const {
     hasNextPage,
     fetchNextPage,

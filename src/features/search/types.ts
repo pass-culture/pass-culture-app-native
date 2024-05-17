@@ -1,5 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
-import React from 'react'
+import { FlashList } from '@shopify/flash-list'
+import React, { Ref } from 'react'
 
 import {
   GenreType,
@@ -16,7 +17,6 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
-
 interface SelectedDate {
   option: DATE_FILTER_OPTIONS
   selectedDate: string
@@ -78,6 +78,7 @@ type VenueUserData = VenueUserTitleRule | undefined
 export type VenuesUserData = VenueUserData[] | undefined
 
 export interface SearchListProps {
+  ref?: Ref<FlashList<Offer>>
   nbHits: number
   hits: SearchOfferHits
   venuesUserData: VenuesUserData
