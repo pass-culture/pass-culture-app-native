@@ -3,6 +3,7 @@ import React from 'react'
 
 import { FavoritesCountResponse } from 'api/gen'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -29,6 +30,8 @@ jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
 jest.mock('features/navigation/helpers/useCurrentRoute')
 jest.mock('features/navigation/navigationRef')
 jest.mock('libs/splashscreen')
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<RootNavigator />', () => {
   beforeEach(() => {

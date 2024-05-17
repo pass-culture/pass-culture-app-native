@@ -9,6 +9,7 @@ import {
   useTabNavigationContext,
 } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -96,6 +97,8 @@ jest.mock('features/accessibility/context/AccessibilityFiltersWrapper', () => ({
   }),
 }))
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
 describe('TabBar', () => {
   beforeEach(() => {
     mockedUseTabNavigationContext.mockReturnValue({
@@ -108,6 +111,13 @@ describe('TabBar', () => {
   })
 
   it('render correctly', () => {
+    renderTabBar()
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('render correctly when FF is enabled', () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
     renderTabBar()
 
     expect(screen).toMatchSnapshot()

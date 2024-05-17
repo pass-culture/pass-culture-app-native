@@ -2,22 +2,18 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { menu } from 'features/navigation/TabBar/menu'
-import { TabBarTitle as Title } from 'features/navigation/TabBar/TabBarTitle'
+import { TabBarInnerComponent } from 'features/navigation/TabBar/TabBarInnerComponent'
+import { TabBarInnerComponentV2 } from 'features/navigation/TabBar/TabBarInnerComponentV2'
 import { TabRouteName } from 'features/navigation/TabBar/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
-import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
-import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
-import { Spacer, getSpacing } from 'ui/theme'
-
-const SELECTOR_WIDTH = '80%'
-const SELECTOR_HEIGHT = getSpacing(1)
+import { getSpacing } from 'ui/theme'
 
 interface Props {
+  v2: boolean
   isSelected?: boolean
-  BicolorIcon: React.FC<AccessibleBicolorIcon>
   navigateTo: InternalNavigationProps['navigateTo']
   enableNavigate?: boolean
   onPress?: () => void
@@ -27,51 +23,38 @@ interface Props {
 const isWeb = Platform.OS === 'web'
 
 export const TabBarComponent: React.FC<Props> = ({
+  v2,
   isSelected,
-  BicolorIcon,
   navigateTo,
   enableNavigate = true,
   onPress,
   tabName,
-}) => (
-  <TabComponentContainer
-    navigateTo={navigateTo}
-    enableNavigate={enableNavigate}
-    onBeforeNavigate={onPress}
-    selected={isSelected}
-    accessibilityLabel={menu[tabName].accessibilityLabel}
-    testID={menu[tabName].accessibilityLabel ?? menu[tabName].displayName}
-    accessibilityCurrent={isSelected ? 'page' : undefined}>
-    {isSelected ? (
-      <BicolorSelector
-        width={SELECTOR_WIDTH}
-        height={SELECTOR_HEIGHT}
-        testID={`${menu[tabName].accessibilityLabel} sélectionné`}
-      />
-    ) : null}
-    <Spacer.Flex />
-    <StyledIcon as={BicolorIcon} selected={isSelected} />
-    <Title selected={isSelected} displayName={menu[tabName].displayName} />
-    <Spacer.Flex />
-    {isSelected ? <BicolorSelectorPlaceholder /> : null}
-  </TabComponentContainer>
-)
+}) => {
+  const BicolorIcon = mapTabRouteToBicolorIcon(tabName, v2)
+  const InnerComponent = v2 ? TabBarInnerComponentV2 : TabBarInnerComponent
 
-const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
-  color: selected ? undefined : theme.colors.greyDark,
-  size: theme.tabBar.iconSize,
-  thin: !selected,
-}))<{ selected?: boolean }>``
-
-const BicolorSelectorPlaceholder = styled.View({ height: SELECTOR_HEIGHT })
+  return (
+    <TabComponentContainer
+      navigateTo={navigateTo}
+      enableNavigate={enableNavigate}
+      onBeforeNavigate={onPress}
+      selected={isSelected}
+      accessibilityLabel={menu[tabName].accessibilityLabel}
+      testID={menu[tabName].accessibilityLabel ?? menu[tabName].displayName}
+      accessibilityCurrent={isSelected ? 'page' : undefined}
+      v2={v2}>
+      <InnerComponent tabName={tabName} isSelected={isSelected} BicolorIcon={BicolorIcon} />
+    </TabComponentContainer>
+  )
+}
 
 const TabComponentContainer: typeof InternalTouchableLink = styled(InternalTouchableLink).attrs(
-  ({ theme, accessibilityLabel, selected }) => ({
-    accessibilityLabel: theme.tabBar.showLabels && isWeb ? undefined : accessibilityLabel,
+  ({ theme, accessibilityLabel, selected, v2 }) => ({
+    accessibilityLabel: theme.tabBar.showLabels && isWeb && !v2 ? undefined : accessibilityLabel,
     hoverUnderlineColor: selected ? theme.colors.black : theme.colors.greyDark,
   })
-)(({ theme }) => ({
+)<{ v2: boolean }>(({ theme, v2 }) => ({
   alignItems: 'center',
-  height: theme.tabBar.height,
+  height: v2 ? getSpacing(15) : theme.tabBar.height,
   flex: 1,
 }))
