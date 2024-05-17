@@ -13,11 +13,11 @@ describe('SocialNetworkCard', () => {
       .mockImplementation(jest.fn(() => Promise.resolve()))
     render(<SocialNetworkCard network="twitter" />)
 
-    const button = screen.getByText('Twitter')
+    const button = screen.getByText('X')
     fireEvent.press(button)
 
     await waitFor(() => {
-      expect(analytics.logClickSocialNetwork).toHaveBeenCalledWith('Twitter')
+      expect(analytics.logClickSocialNetwork).toHaveBeenCalledWith('X')
       expect(openUrl).toHaveBeenCalledTimes(1)
     })
   })

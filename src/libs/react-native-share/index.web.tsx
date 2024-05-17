@@ -5,7 +5,7 @@ const Share = {
 }
 
 export enum Social {
-  Twitter = 'twitter',
+  Twitter = 'x',
   Whatsapp = 'whatsapp',
   Instagram = 'instagram',
   Sms = 'sms',
