@@ -1,8 +1,5 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { create } from 'zustand'
-import { createJSONStorage, devtools, persist } from 'zustand/middleware'
-
 import { SuggestedCity } from 'libs/place/types'
+import { createStore } from 'libs/store/createStore'
 
 type State = { city: SuggestedCity | null }
 
@@ -11,26 +8,14 @@ type Actions = {
   resetCity: () => void
 }
 
-type Store = State & { actions: Actions }
-
-const useCityStore = create<Store>()(
-  devtools(
-    persist(
-      (set) => ({
-        city: null,
-        actions: {
-          setCity: (payload) => set({ city: payload }),
-          resetCity: () => set({ city: null }),
-        },
-      }),
-      {
-        name: 'profile-city',
-        storage: createJSONStorage(() => AsyncStorage),
-        partialize: (state) => ({ city: state.city }),
-      }
-    ),
-    { enabled: process.env.NODE_ENV === 'development', name: 'profile-city' }
-  )
+const useCityStore = createStore<State, Actions>(
+  'profile-city',
+  { city: null },
+  (set) => ({
+    setCity: (payload) => set({ city: payload }),
+    resetCity: () => set({ city: null }),
+  }),
+  { persist: true }
 )
 
 export const useCity = () => useCityStore((state) => state.city)

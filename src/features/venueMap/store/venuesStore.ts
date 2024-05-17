@@ -1,7 +1,5 @@
-import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
-
 import { Venue } from 'features/venue/types'
+import { createStore } from 'libs/store/createStore'
 
 type State = {
   venues: Venue[]
@@ -10,19 +8,9 @@ type Actions = {
   setVenues: (payload: Venue[]) => void
 }
 
-type Store = State & { actions: Actions }
-
-const useVenuesStore = create<Store>()(
-  devtools(
-    (set) => ({
-      venues: [],
-      actions: {
-        setVenues: (payload) => set({ venues: payload }),
-      },
-    }),
-    { enabled: process.env.NODE_ENV === 'development' }
-  )
-)
+const useVenuesStore = createStore<State, Actions>('venue-map-venues', { venues: [] }, (set) => ({
+  setVenues: (payload) => set({ venues: payload }),
+}))
 
 export const useVenues = () => useVenuesStore((state) => state.venues)
 export const useVenuesActions = () => useVenuesStore((state) => state.actions)

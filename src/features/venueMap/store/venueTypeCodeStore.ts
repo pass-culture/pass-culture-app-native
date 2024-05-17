@@ -1,7 +1,5 @@
-import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
-
 import { VenueTypeCode } from 'libs/parsers/venueType'
+import { createStore } from 'libs/store/createStore'
 
 type State = {
   venueTypeCode: VenueTypeCode | null
@@ -10,18 +8,12 @@ type Actions = {
   setVenueTypeCode: (payload: VenueTypeCode | null) => void
 }
 
-type Store = State & { actions: Actions }
-
-const useVenueTypeCodeStore = create<Store>()(
-  devtools(
-    (set) => ({
-      venueTypeCode: null,
-      actions: {
-        setVenueTypeCode: (payload) => set({ venueTypeCode: payload }),
-      },
-    }),
-    { enabled: process.env.NODE_ENV === 'development' }
-  )
+const useVenueTypeCodeStore = createStore<State, Actions>(
+  'venue-map-venue-type-code',
+  { venueTypeCode: null },
+  (set) => ({
+    setVenueTypeCode: (payload) => set({ venueTypeCode: payload }),
+  })
 )
 
 export const useVenueTypeCode = () => useVenueTypeCodeStore((state) => state.venueTypeCode)

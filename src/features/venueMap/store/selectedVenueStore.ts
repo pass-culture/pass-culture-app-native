@@ -1,7 +1,5 @@
-import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
-
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
+import { createStore } from 'libs/store/createStore'
 
 type State = {
   selectedVenue: GeolocatedVenue | null
@@ -11,19 +9,13 @@ type Actions = {
   removeSelectedVenue: () => void
 }
 
-type Store = State & { actions: Actions }
-
-const useSelectedVenueStore = create<Store>()(
-  devtools(
-    (set) => ({
-      selectedVenue: null,
-      actions: {
-        setSelectedVenue: (payload) => set({ selectedVenue: payload }),
-        removeSelectedVenue: () => set({ selectedVenue: null }),
-      },
-    }),
-    { enabled: process.env.NODE_ENV === 'development' }
-  )
+const useSelectedVenueStore = createStore<State, Actions>(
+  'venue-map-selected-venue',
+  { selectedVenue: null },
+  (set) => ({
+    setSelectedVenue: (payload) => set({ selectedVenue: payload }),
+    removeSelectedVenue: () => set({ selectedVenue: null }),
+  })
 )
 
 export const useSelectedVenue = () => useSelectedVenueStore((state) => state.selectedVenue)

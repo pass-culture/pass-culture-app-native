@@ -1,6 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { create } from 'zustand'
-import { createJSONStorage, devtools, persist } from 'zustand/middleware'
+import { createStore } from 'libs/store/createStore'
 
 interface Name {
   firstName: string
@@ -14,26 +12,14 @@ type Actions = {
   resetName: () => void
 }
 
-type Store = State & { actions: Actions }
-
-const useNameStore = create<Store>()(
-  devtools(
-    persist(
-      (set) => ({
-        name: null,
-        actions: {
-          setName: (payload) => set({ name: payload }),
-          resetName: () => set({ name: null }),
-        },
-      }),
-      {
-        name: 'profile-name',
-        storage: createJSONStorage(() => AsyncStorage),
-        partialize: (state) => ({ name: state.name }),
-      }
-    ),
-    { enabled: process.env.NODE_ENV === 'development', name: 'profile-name' }
-  )
+const useNameStore = createStore<State, Actions>(
+  'profile-name',
+  { name: null },
+  (set) => ({
+    setName: (payload) => set({ name: payload }),
+    resetName: () => set({ name: null }),
+  }),
+  { persist: true }
 )
 
 export const useName = () => useNameStore((state) => state.name)
