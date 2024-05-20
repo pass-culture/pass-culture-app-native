@@ -4,6 +4,7 @@ import { RecommendationApiParams, SubcategoriesResponseModelv2 } from 'api/gen'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -28,6 +29,8 @@ jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
     recommendationApiParams: defaultRecommendationApiParams,
   })),
 }))
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('RecommendationModule', () => {
   beforeEach(() => {

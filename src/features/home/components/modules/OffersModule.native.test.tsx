@@ -8,6 +8,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { transformHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { DisplayParametersFields, ContentTypes } from 'libs/contentful/types'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -53,9 +54,31 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
 describe('OffersModule', () => {
-  it('should render correctly', () => {
+  it('should render correctly for one-item-medium layout', () => {
     renderOffersModule()
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should render correctly for two-items layout', () => {
+    renderOffersModule({ displayParameters: { ...props.displayParameters, layout: 'two-items' } })
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should render correctly for v2 one-item-medium layout', () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    renderOffersModule()
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should render correctly for v2 three-items layout', () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    renderOffersModule({ displayParameters: { ...props.displayParameters, layout: 'three-items' } })
 
     expect(screen).toMatchSnapshot()
   })

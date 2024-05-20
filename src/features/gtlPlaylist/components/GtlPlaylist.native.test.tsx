@@ -7,6 +7,7 @@ import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { GtlPlaylist, GtlPlaylistProps } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -136,6 +137,8 @@ jest.mock('react-native-intersection-observer', () => {
     InView,
   }
 })
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('GtlPlaylist', () => {
   it('should log ConsultOffer when pressing an item', () => {

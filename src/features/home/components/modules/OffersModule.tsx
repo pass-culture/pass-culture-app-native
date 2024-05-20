@@ -6,7 +6,7 @@ import { ModuleData, OffersModule as OffersModuleType } from 'features/home/type
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics'
-import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
+import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { ContentTypes } from 'libs/contentful/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
@@ -103,7 +103,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     [userLocation, user?.isBeneficiary, labelMapping, mapping]
   )
 
-  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
+  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }: ItemDimensions) => {

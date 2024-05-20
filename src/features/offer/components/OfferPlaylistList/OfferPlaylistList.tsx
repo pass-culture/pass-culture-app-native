@@ -10,7 +10,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics'
-import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
+import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
@@ -138,7 +138,7 @@ export function OfferPlaylistList({
     analytics.logPlaylistHorizontalScroll(fromOfferId, playlistType, apiRecoParams)
   }
 
-  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
+  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout('two-items')
 
   const sameCategorySimilarOffersPlaylist: SimilarOfferPlaylist = {
     type: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
