@@ -14,6 +14,10 @@ export const useSubcategories = () => {
   return useQuery<SubcategoriesResponseModelv2>(
     [QueryKeys.SUBCATEGORIES],
     () => api.getNativeV1SubcategoriesV2(),
-    { staleTime: STALE_TIME_SUBCATEGORIES, placeholderData: PLACEHOLDER_DATA, enabled: !!netInfo.isConnected }
+    {
+      staleTime: STALE_TIME_SUBCATEGORIES,
+      placeholderData: PLACEHOLDER_DATA,
+      enabled: !!netInfo.isConnected,
+    }
   )
 }
