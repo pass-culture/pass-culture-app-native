@@ -57,13 +57,7 @@ export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
       data={venues}
       keyExtractor={keyExtractor}
       renderItem={({ item }) => renderItem({ item }, userLocation)}
-      ItemSeparatorComponent={() => (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <StyledSeparator />
-          <Spacer.Column numberOfSpaces={4} />
-        </React.Fragment>
-      )}
+      ItemSeparatorComponent={HorizontalSeparator}
       ListHeaderComponent={ListHeaderComponent}
     />
   )
@@ -89,6 +83,14 @@ const StyledTag = styled(Tag)(({ theme }) => ({
 const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
+
+const HorizontalSeparator: FunctionComponent = () => (
+  <React.Fragment>
+    <Spacer.Column numberOfSpaces={4} />
+    <StyledSeparator />
+    <Spacer.Column numberOfSpaces={4} />
+  </React.Fragment>
+)
 
 const ArrowRightIcon = styled(ArrowRight).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
