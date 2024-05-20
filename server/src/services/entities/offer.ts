@@ -24,7 +24,7 @@ export const OFFER: EntityType<OfferData> = {
         extraData.musicSubType,
         extraData.showType,
         extraData.showSubType,
-      ].filter((keyword) => !!keyword)
+      ].filter(Boolean)
 
       return keywords.join(', ')
     },

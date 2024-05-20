@@ -63,7 +63,7 @@ export async function metasResponseInterceptor(
 
   // GCP return 404 when returning the index.html if not the base path, this fix it.
   res.statusCode = 200
-
+  console.log('We just set the 200')
   let html = responseBuffer.toString('utf8')
 
   let match
@@ -71,6 +71,8 @@ export async function metasResponseInterceptor(
   /* istanbul ignore next */
   // error with istanbul thinking there is a else path
   if (req.url) {
+
+    console.log('We are in req.url if')
     match = ENTITY_PATH_REGEXP.exec(req.url)
 
     const url = new URL(req.url.startsWith('/') ? env.APP_PUBLIC_URL + req.url : req.url)
@@ -85,11 +87,15 @@ export async function metasResponseInterceptor(
 
   const [endpoint, entityKey, id] = match || []
 
+
+  console.log('Do we have an id?')
   if (!id) {
+    console.log(`Do don't have, return html unedited, html length: ${html.length}`)
     return html
   }
 
   try {
+    console.log(`We have an id: ${id}`)
     return await replaceHtmlMetas(html, endpoint, entityKey as EntityKeys, Number(id))
   } catch (error) {
     // FIXME(kopax): when replaceHtmlMetas can really throw error, restore coverage for following lines and add a throw error unit test
