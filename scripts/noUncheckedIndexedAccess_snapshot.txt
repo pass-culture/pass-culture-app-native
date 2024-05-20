@@ -99,6 +99,7 @@
 ./src/features/search/pages/modals/CategoriesModal/CategoriesModal.tsx:121
 ./src/features/venue/components/TabLayout/useTabArrowNavigation.web.ts:24
 ./src/libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters.ts:23
+./src/libs/contentful/adapters/modules/adaptAppV2VenuesModule.ts:27
 ./src/libs/contentful/adapters/modules/adaptVenuesModule.ts:24
 ./src/libs/firebase/remoteConfig/remoteConfig.services.ts:22
 ./src/libs/firebase/remoteConfig/remoteConfig.services.ts:24
