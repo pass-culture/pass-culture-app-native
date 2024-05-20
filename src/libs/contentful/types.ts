@@ -33,7 +33,7 @@ export enum ContentTypes {
   VIDEO = 'video',
 }
 
-export type Layout = 'two-items' | 'one-item-medium'
+export type Layout = 'three-items' | 'two-items' | 'one-item-medium'
 
 interface Entry<T, ContentType extends ContentTypes> {
   sys: Sys<ContentType>

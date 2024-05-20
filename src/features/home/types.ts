@@ -4,6 +4,7 @@ import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { SearchQueryParameters, VenueHit } from 'libs/algolia/types'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { Layout } from 'libs/contentful/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { GtlLevel } from 'shared/gtl/types'
 import { Offer } from 'shared/offer/types'
@@ -93,7 +94,7 @@ export type OffersModule = {
 
 type DisplayParameters = {
   title: string
-  layout: 'two-items' | 'one-item-medium'
+  layout: Layout
   minOffers: number
   subtitle?: string
 }
