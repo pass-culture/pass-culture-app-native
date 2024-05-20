@@ -145,6 +145,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                 "visualDisability": true,
               },
               "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+              "city": "Paris",
               "contact": {
                 "email": "contact@venue.com",
                 "phoneNumber": "+33102030405",
@@ -161,6 +162,7 @@ exports[`VenuesModule component should render correctly 1`] = `
               "latitude": 48.87004,
               "longitude": 2.3785,
               "name": "Le Petit Rintintin 1",
+              "postalCode": "75000",
               "publicName": "Librairie Quantique",
               "venueTypeCode": "MOVIE",
             },
@@ -172,6 +174,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                 "visualDisability": true,
               },
               "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+              "city": "Paris",
               "contact": {
                 "email": "contact@venue.com",
                 "phoneNumber": "+33102030405",
@@ -188,6 +191,7 @@ exports[`VenuesModule component should render correctly 1`] = `
               "latitude": 48.87004,
               "longitude": 2.3785,
               "name": "Le Petit Rintintin 2",
+              "postalCode": "75000",
               "publicName": "Librairie Quantique",
               "venueTypeCode": "MOVIE",
             },
@@ -199,6 +203,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                 "visualDisability": true,
               },
               "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+              "city": "Paris",
               "contact": {
                 "email": "contact@venue.com",
                 "phoneNumber": "+33102030405",
@@ -215,6 +220,7 @@ exports[`VenuesModule component should render correctly 1`] = `
               "latitude": 48.87004,
               "longitude": 2.3785,
               "name": "Le Petit Rintintin 3",
+              "postalCode": "75000",
               "publicName": "Librairie Quantique",
               "venueTypeCode": "MOVIE",
             },
@@ -226,6 +232,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                 "visualDisability": true,
               },
               "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+              "city": "Paris",
               "contact": {
                 "email": "contact@venue.com",
                 "phoneNumber": "+33102030405",
@@ -242,6 +249,7 @@ exports[`VenuesModule component should render correctly 1`] = `
               "latitude": 48.87004,
               "longitude": 2.3785,
               "name": "Le Petit Rintintin 4",
+              "postalCode": "75000",
               "publicName": "Librairie Quantique",
               "venueTypeCode": "MOVIE",
             },
@@ -258,6 +266,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                   "visualDisability": true,
                 },
                 "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                "city": "Paris",
                 "contact": {
                   "email": "contact@venue.com",
                   "phoneNumber": "+33102030405",
@@ -274,6 +283,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                 "latitude": 48.87004,
                 "longitude": 2.3785,
                 "name": "Le Petit Rintintin 1",
+                "postalCode": "75000",
                 "publicName": "Librairie Quantique",
                 "venueTypeCode": "MOVIE",
               },
@@ -285,6 +295,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                   "visualDisability": true,
                 },
                 "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                "city": "Paris",
                 "contact": {
                   "email": "contact@venue.com",
                   "phoneNumber": "+33102030405",
@@ -301,6 +312,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                 "latitude": 48.87004,
                 "longitude": 2.3785,
                 "name": "Le Petit Rintintin 2",
+                "postalCode": "75000",
                 "publicName": "Librairie Quantique",
                 "venueTypeCode": "MOVIE",
               },
@@ -312,6 +324,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                   "visualDisability": true,
                 },
                 "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                "city": "Paris",
                 "contact": {
                   "email": "contact@venue.com",
                   "phoneNumber": "+33102030405",
@@ -328,6 +341,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                 "latitude": 48.87004,
                 "longitude": 2.3785,
                 "name": "Le Petit Rintintin 3",
+                "postalCode": "75000",
                 "publicName": "Librairie Quantique",
                 "venueTypeCode": "MOVIE",
               },
@@ -339,6 +353,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                   "visualDisability": true,
                 },
                 "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                "city": "Paris",
                 "contact": {
                   "email": "contact@venue.com",
                   "phoneNumber": "+33102030405",
@@ -355,6 +370,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                 "latitude": 48.87004,
                 "longitude": 2.3785,
                 "name": "Le Petit Rintintin 4",
+                "postalCode": "75000",
                 "publicName": "Librairie Quantique",
                 "venueTypeCode": "MOVIE",
               },
@@ -515,6 +531,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                     "visualDisability": true,
                   },
                   "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                  "city": "Paris",
                   "contact": {
                     "email": "contact@venue.com",
                     "phoneNumber": "+33102030405",
@@ -531,6 +548,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                   "latitude": 48.87004,
                   "longitude": 2.3785,
                   "name": "Le Petit Rintintin 1",
+                  "postalCode": "75000",
                   "publicName": "Librairie Quantique",
                   "venueTypeCode": "MOVIE",
                 },
@@ -542,6 +560,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                     "visualDisability": true,
                   },
                   "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                  "city": "Paris",
                   "contact": {
                     "email": "contact@venue.com",
                     "phoneNumber": "+33102030405",
@@ -558,6 +577,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                   "latitude": 48.87004,
                   "longitude": 2.3785,
                   "name": "Le Petit Rintintin 2",
+                  "postalCode": "75000",
                   "publicName": "Librairie Quantique",
                   "venueTypeCode": "MOVIE",
                 },
@@ -569,6 +589,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                     "visualDisability": true,
                   },
                   "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                  "city": "Paris",
                   "contact": {
                     "email": "contact@venue.com",
                     "phoneNumber": "+33102030405",
@@ -585,6 +606,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                   "latitude": 48.87004,
                   "longitude": 2.3785,
                   "name": "Le Petit Rintintin 3",
+                  "postalCode": "75000",
                   "publicName": "Librairie Quantique",
                   "venueTypeCode": "MOVIE",
                 },
@@ -596,6 +618,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                     "visualDisability": true,
                   },
                   "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                  "city": "Paris",
                   "contact": {
                     "email": "contact@venue.com",
                     "phoneNumber": "+33102030405",
@@ -612,6 +635,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                   "latitude": 48.87004,
                   "longitude": 2.3785,
                   "name": "Le Petit Rintintin 4",
+                  "postalCode": "75000",
                   "publicName": "Librairie Quantique",
                   "venueTypeCode": "MOVIE",
                 },
@@ -902,7 +926,9 @@ exports[`VenuesModule component should render correctly 1`] = `
                                   },
                                 ]
                               }
-                            />
+                            >
+                              Paris, 75000
+                            </Text>
                           </View>
                         </View>
                       </View>
@@ -919,6 +945,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                         "visualDisability": true,
                       },
                       "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                      "city": "Paris",
                       "contact": {
                         "email": "contact@venue.com",
                         "phoneNumber": "+33102030405",
@@ -935,6 +962,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                       "latitude": 48.87004,
                       "longitude": 2.3785,
                       "name": "Le Petit Rintintin 1",
+                      "postalCode": "75000",
                       "publicName": "Librairie Quantique",
                       "venueTypeCode": "MOVIE",
                     }
@@ -955,6 +983,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                         "visualDisability": true,
                       },
                       "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                      "city": "Paris",
                       "contact": {
                         "email": "contact@venue.com",
                         "phoneNumber": "+33102030405",
@@ -971,6 +1000,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                       "latitude": 48.87004,
                       "longitude": 2.3785,
                       "name": "Le Petit Rintintin 2",
+                      "postalCode": "75000",
                       "publicName": "Librairie Quantique",
                       "venueTypeCode": "MOVIE",
                     }
@@ -1130,7 +1160,9 @@ exports[`VenuesModule component should render correctly 1`] = `
                                   },
                                 ]
                               }
-                            />
+                            >
+                              Paris, 75000
+                            </Text>
                           </View>
                         </View>
                       </View>
@@ -1147,6 +1179,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                         "visualDisability": true,
                       },
                       "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                      "city": "Paris",
                       "contact": {
                         "email": "contact@venue.com",
                         "phoneNumber": "+33102030405",
@@ -1163,6 +1196,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                       "latitude": 48.87004,
                       "longitude": 2.3785,
                       "name": "Le Petit Rintintin 2",
+                      "postalCode": "75000",
                       "publicName": "Librairie Quantique",
                       "venueTypeCode": "MOVIE",
                     }
@@ -1183,6 +1217,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                         "visualDisability": true,
                       },
                       "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                      "city": "Paris",
                       "contact": {
                         "email": "contact@venue.com",
                         "phoneNumber": "+33102030405",
@@ -1199,6 +1234,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                       "latitude": 48.87004,
                       "longitude": 2.3785,
                       "name": "Le Petit Rintintin 3",
+                      "postalCode": "75000",
                       "publicName": "Librairie Quantique",
                       "venueTypeCode": "MOVIE",
                     }
@@ -1358,7 +1394,9 @@ exports[`VenuesModule component should render correctly 1`] = `
                                   },
                                 ]
                               }
-                            />
+                            >
+                              Paris, 75000
+                            </Text>
                           </View>
                         </View>
                       </View>
@@ -1375,6 +1413,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                         "visualDisability": true,
                       },
                       "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                      "city": "Paris",
                       "contact": {
                         "email": "contact@venue.com",
                         "phoneNumber": "+33102030405",
@@ -1391,6 +1430,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                       "latitude": 48.87004,
                       "longitude": 2.3785,
                       "name": "Le Petit Rintintin 3",
+                      "postalCode": "75000",
                       "publicName": "Librairie Quantique",
                       "venueTypeCode": "MOVIE",
                     }
@@ -1411,6 +1451,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                         "visualDisability": true,
                       },
                       "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                      "city": "Paris",
                       "contact": {
                         "email": "contact@venue.com",
                         "phoneNumber": "+33102030405",
@@ -1427,6 +1468,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                       "latitude": 48.87004,
                       "longitude": 2.3785,
                       "name": "Le Petit Rintintin 4",
+                      "postalCode": "75000",
                       "publicName": "Librairie Quantique",
                       "venueTypeCode": "MOVIE",
                     }
@@ -1586,7 +1628,9 @@ exports[`VenuesModule component should render correctly 1`] = `
                                   },
                                 ]
                               }
-                            />
+                            >
+                              Paris, 75000
+                            </Text>
                           </View>
                         </View>
                       </View>
@@ -1762,7 +1806,9 @@ exports[`VenuesModule component should render correctly 1`] = `
                               },
                             ]
                           }
-                        />
+                        >
+                          Paris, 75000
+                        </Text>
                       </View>
                     </View>
                   </View>
