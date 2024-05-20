@@ -22,6 +22,7 @@ export enum ContentTypes {
   THEMATIC_HIGHLIGHT = 'thematicHighlight',
   THEMATIC_HIGHLIGHT_INFO = 'thematic_highlight_info',
   VENUES_PLAYLIST = 'venuesPlaylist',
+  VENUES_PLAYLIST_APP_V2 = 'venuesPlaylistAppV2',
   VENUES_PARAMETERS = 'venuesParameters',
   CATEGORY_BLOCK = 'categoryBlock',
   CATEGORY_LIST = 'categoryList',
