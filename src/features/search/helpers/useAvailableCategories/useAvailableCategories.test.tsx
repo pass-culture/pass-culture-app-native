@@ -1,11 +1,10 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchCategoriesIllustrations } from 'features/search/enums'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
+import { mockAvailableCategories } from 'libs/subcategories/fixtures/availableCategories'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { theme } from 'theme'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
-import { Micro } from 'ui/svg/icons/bicolor/Micro'
-import { ConcertsFestivals } from 'ui/svg/icons/categories/ConcertsFestivals'
 
 let mockData = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({
@@ -16,7 +15,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 describe('useAvailableCategories', () => {
   it('should all availables categories', () => {
-    const categories = useAvailableCategories()
+    const categories = useAvailableCategories(mockAvailableCategories)
 
     expect(categories).toHaveLength(13)
     expect(categories).toEqual(
@@ -54,27 +53,16 @@ describe('useAvailableCategories', () => {
           borderColor: theme.colors.skyBlueLight,
           fillColor: theme.colors.skyBlueLighter,
         },
-        // {
-        //   icon: categoriesIcons.Conference,
-        //   illustration: SearchCategoriesIllustrations.ConcertsFestivals,
-        //   facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
-        //   baseColor: theme.colors.gold,
-        //   gradients: [theme.colors.goldLight, theme.colors.gold],
-        //   position: 1,
-        //   textColor: theme.colors.deepPink,
-        //   borderColor: theme.colors.goldLighter,
-        //   fillColor: theme.colors.goldLightest,
-        // },
         {
-          icon: Micro,
-          illustration: ConcertsFestivals,
-          facetFilter: 'CONCERTS_FESTIVALS',
-          baseColor: '#B85901',
-          gradients: ['#FA9F16', '#B85901'],
+          icon: categoriesIcons.Conference,
+          illustration: SearchCategoriesIllustrations.ConcertsFestivals,
+          facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
+          baseColor: theme.colors.gold,
+          gradients: [theme.colors.goldLight, theme.colors.gold],
           position: 1,
-          textColor: '#C01371',
-          borderColor: '#FBDBAC',
-          fillColor: '#FFF5D8',
+          textColor: theme.colors.deepPink,
+          borderColor: theme.colors.goldLighter,
+          fillColor: theme.colors.goldLightest,
         },
         {
           icon: categoriesIcons.Microphone,
@@ -187,7 +175,7 @@ describe('useAvailableCategories', () => {
         { name: SearchGroupNameEnumv2.CARTES_JEUNES, value: 'Cartes jeunes' },
       ],
     }
-    const categories = useAvailableCategories()
+    const categories = useAvailableCategories(mockAvailableCategories)
 
     expect(categories).toEqual([
       {
@@ -220,7 +208,7 @@ describe('useAvailableCategories', () => {
       ...mockData,
       searchGroups: [],
     }
-    const categories = useAvailableCategories()
+    const categories = useAvailableCategories(mockAvailableCategories)
 
     expect(categories).toEqual([])
   })
