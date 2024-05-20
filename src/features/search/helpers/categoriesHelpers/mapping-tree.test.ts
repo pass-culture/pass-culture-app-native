@@ -5,9 +5,9 @@ import {
 } from 'features/search/helpers/categoriesHelpers/mappingFixture'
 import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
 import { FacetData } from 'libs/algolia/types'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 
-const mockedSubcateroriesV2Response = placeholderData
+const mockedSubcateroriesV2Response = PLACEHOLDER_DATA
 const mockedUndefinedFacets = undefined
 const mockedNewMappingEnabled = true
 

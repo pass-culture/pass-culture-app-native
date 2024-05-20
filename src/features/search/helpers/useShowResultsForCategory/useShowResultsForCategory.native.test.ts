@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationMode } from 'libs/location/types'
-import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 import { useShowResultsForCategory } from './useShowResultsForCategory'

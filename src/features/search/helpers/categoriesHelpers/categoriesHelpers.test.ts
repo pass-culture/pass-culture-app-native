@@ -16,7 +16,7 @@ import {
 import { createMappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
-import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 
 let mockSearchState: SearchState = {
   ...initialSearchState,

@@ -1,11 +1,13 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchCategoriesIllustrations } from 'features/search/enums'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { theme } from 'theme'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+import { Micro } from 'ui/svg/icons/bicolor/Micro'
+import { ConcertsFestivals } from 'ui/svg/icons/categories/ConcertsFestivals'
 
-let mockData = placeholderData
+let mockData = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: mockData,
@@ -52,16 +54,27 @@ describe('useAvailableCategories', () => {
           borderColor: theme.colors.skyBlueLight,
           fillColor: theme.colors.skyBlueLighter,
         },
+        // {
+        //   icon: categoriesIcons.Conference,
+        //   illustration: SearchCategoriesIllustrations.ConcertsFestivals,
+        //   facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
+        //   baseColor: theme.colors.gold,
+        //   gradients: [theme.colors.goldLight, theme.colors.gold],
+        //   position: 1,
+        //   textColor: theme.colors.deepPink,
+        //   borderColor: theme.colors.goldLighter,
+        //   fillColor: theme.colors.goldLightest,
+        // },
         {
-          icon: categoriesIcons.Conference,
-          illustration: SearchCategoriesIllustrations.ConcertsFestivals,
-          facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
-          baseColor: theme.colors.gold,
-          gradients: [theme.colors.goldLight, theme.colors.gold],
+          icon: Micro,
+          illustration: ConcertsFestivals,
+          facetFilter: 'CONCERTS_FESTIVALS',
+          baseColor: '#B85901',
+          gradients: ['#FA9F16', '#B85901'],
           position: 1,
-          textColor: theme.colors.deepPink,
-          borderColor: theme.colors.goldLighter,
-          fillColor: theme.colors.goldLightest,
+          textColor: '#C01371',
+          borderColor: '#FBDBAC',
+          fillColor: '#FFF5D8',
         },
         {
           icon: categoriesIcons.Microphone,

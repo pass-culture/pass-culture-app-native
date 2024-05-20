@@ -8,7 +8,7 @@ import { OfferGenreType, SearchState } from 'features/search/types'
 import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
 import { FacetData } from 'libs/algolia/types'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { CategoriesModal, CategoriesModalProps } from './CategoriesModal'
@@ -26,7 +26,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-let mockData = placeholderData
+let mockData = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: mockData,
@@ -39,7 +39,7 @@ const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockRetu
 
 describe('<CategoriesModal/>', () => {
   afterEach(() => {
-    mockData = placeholderData
+    mockData = PLACEHOLDER_DATA
   })
 
   describe('With categories view', () => {

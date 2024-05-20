@@ -8,7 +8,7 @@ import {
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position } from 'libs/location'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { RecommendationApiParams } from 'shared/offer/types'
 import { renderHook } from 'tests/utils'
 
@@ -24,7 +24,7 @@ const apiRecoParams: RecommendationApiParams = {
 
 const offer = offerResponseSnap
 const offerSearchGroup = SearchGroupNameEnumv2.FILMS_SERIES_CINEMA
-const searchGroupList = placeholderData.searchGroups
+const searchGroupList = PLACEHOLDER_DATA.searchGroups
 
 const extraData: OfferExtraData = {
   author: 'Eiichiro Oda',

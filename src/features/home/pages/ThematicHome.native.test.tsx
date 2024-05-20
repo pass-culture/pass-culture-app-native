@@ -14,7 +14,7 @@ import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/help
 import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/location'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor } from 'tests/utils'
@@ -70,7 +70,7 @@ describe('ThematicHome', () => {
   })
 
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
   })
 
   it('should render correctly', async () => {

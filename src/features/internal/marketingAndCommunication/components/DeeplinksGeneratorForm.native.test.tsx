@@ -7,7 +7,7 @@ import {
 } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { ScreensUsedByMarketing } from 'features/internal/marketingAndCommunication/config/deeplinksExportConfig'
 import { LocationMode } from 'libs/location/types'
-import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories', () => ({

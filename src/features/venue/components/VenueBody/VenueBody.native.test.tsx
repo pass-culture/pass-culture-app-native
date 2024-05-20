@@ -16,7 +16,7 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { ILocationContext, useLocation } from 'libs/location'
 import { Network } from 'libs/share/types'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -38,8 +38,8 @@ jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
 jest.mock('libs/location')
 const mockUseLocation = jest.mocked(useLocation)
 
-const mockSubcategories = placeholderData.subcategories
-const mockHomepageLabels = placeholderData.homepageLabels
+const mockSubcategories = PLACEHOLDER_DATA.subcategories
+const mockHomepageLabels = PLACEHOLDER_DATA.homepageLabels
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: {

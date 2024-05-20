@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FilterBehaviour } from 'features/search/enums'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { CategoriesModal } from './CategoriesModal'

@@ -9,7 +9,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
@@ -43,7 +43,7 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 
 describe('<OfferContent />', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,
@@ -58,7 +58,7 @@ describe('<OfferContent />', () => {
       reactQueryProviderHOC(
         <OfferContent
           offer={offerResponseSnap}
-          searchGroupList={placeholderData.searchGroups}
+          searchGroupList={PLACEHOLDER_DATA.searchGroups}
           subcategory={mockSubcategory}
         />
       )
@@ -74,7 +74,7 @@ describe('<OfferContent />', () => {
       reactQueryProviderHOC(
         <OfferContent
           offer={offerResponseSnap}
-          searchGroupList={placeholderData.searchGroups}
+          searchGroupList={PLACEHOLDER_DATA.searchGroups}
           subcategory={mockSubcategory}
         />
       )
@@ -94,7 +94,7 @@ describe('<OfferContent />', () => {
         reactQueryProviderHOC(
           <OfferContent
             offer={offerResponseSnap}
-            searchGroupList={placeholderData.searchGroups}
+            searchGroupList={PLACEHOLDER_DATA.searchGroups}
             subcategory={mockSubcategory}
           />
         )

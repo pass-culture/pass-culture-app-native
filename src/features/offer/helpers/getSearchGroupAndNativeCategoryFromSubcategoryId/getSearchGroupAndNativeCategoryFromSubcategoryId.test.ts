@@ -1,12 +1,12 @@
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
 import { eventMonitoring } from 'libs/monitoring'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 
 describe('getSearchGrouAndNativeCategoryFromSubcategoryId', () => {
   it('should return the search group name and native category associated to the subcategory', () => {
     const value = getSearchGroupAndNativeCategoryFromSubcategoryId(
-      placeholderData,
+      PLACEHOLDER_DATA,
       SubcategoryIdEnum.ABO_JEU_VIDEO
     )
 
@@ -19,7 +19,7 @@ describe('getSearchGrouAndNativeCategoryFromSubcategoryId', () => {
   it('should capture and throw an error when subcategory id not found in subcategories list', () => {
     const value = () =>
       getSearchGroupAndNativeCategoryFromSubcategoryId(
-        { ...placeholderData, subcategories: [] },
+        { ...PLACEHOLDER_DATA, subcategories: [] },
         SubcategoryIdEnum.ABO_JEU_VIDEO
       )
 

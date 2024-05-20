@@ -21,7 +21,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { env } from 'libs/environment'
 import { GeoCoordinates, ILocationContext, Position, useLocation } from 'libs/location'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -99,7 +99,7 @@ const defaultDataVenues: ModuleData = {
 describe('<HomeModule />', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', {
-      ...placeholderData,
+      ...PLACEHOLDER_DATA,
     })
   })
 

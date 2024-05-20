@@ -12,13 +12,13 @@ import {
   useSearchGroupLabelMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories/mappings'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
-const mockSubcategories = placeholderData.subcategories
-const mockGenreTypes = placeholderData.genreTypes
-const mockSearchGroups = placeholderData.searchGroups
-const mockHomepageLabels = placeholderData.homepageLabels
+const mockSubcategories = PLACEHOLDER_DATA.subcategories
+const mockGenreTypes = PLACEHOLDER_DATA.genreTypes
+const mockSearchGroups = PLACEHOLDER_DATA.searchGroups
+const mockHomepageLabels = PLACEHOLDER_DATA.homepageLabels
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: {
