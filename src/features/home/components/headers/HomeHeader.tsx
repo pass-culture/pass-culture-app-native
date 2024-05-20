@@ -1,85 +1,24 @@
 import React, { FunctionComponent, useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { BannerName } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useHomeBanner } from 'features/home/api/useHomeBanner'
-import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
-import { SignupBanner } from 'features/home/components/banners/SignupBanner'
+import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { useLocation } from 'libs/location'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
-import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
-import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
-import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
-  const { hasGeolocPosition } = useLocation()
-  const { data } = useHomeBanner(hasGeolocPosition)
-  const homeBanner = data?.banner
   const { isDesktopViewport } = useTheme()
-
-  // we distinguish three different cases:
-  // - not connected OR eligible-to-credit users
-  // - beneficiary users
-  // - ex-beneficiary users
-
-  const Banner = useMemo(() => {
-    if (!isLoggedIn)
-      return (
-        <BannerContainer>
-          <SignupBanner />
-        </BannerContainer>
-      )
-
-    if (homeBanner?.name === BannerName.activation_banner)
-      return (
-        <BannerContainer>
-          <ActivationBanner
-            title={homeBanner.title}
-            subtitle={homeBanner.text}
-            icon={BicolorUnlock}
-            from={StepperOrigin.HOME}
-          />
-        </BannerContainer>
-      )
-
-    if (homeBanner?.name === BannerName.retry_identity_check_banner)
-      return (
-        <BannerContainer>
-          <ActivationBanner
-            title={homeBanner.title}
-            subtitle={homeBanner.text}
-            icon={ArrowAgain}
-            from={StepperOrigin.HOME}
-          />
-        </BannerContainer>
-      )
-
-    if (homeBanner?.name === BannerName.transition_17_18_banner)
-      return (
-        <BannerContainer>
-          <ActivationBanner
-            title={homeBanner.title}
-            subtitle={homeBanner.text}
-            icon={BirthdayCake}
-            from={StepperOrigin.HOME}
-          />
-        </BannerContainer>
-      )
-
-    return null
-  }, [isLoggedIn, homeBanner])
+  const { hasGeolocPosition } = useLocation()
 
   const Header = useMemo(() => {
     const welcomeTitle =
@@ -130,7 +69,7 @@ export const HomeHeader: FunctionComponent = function () {
       {Header}
       <PageContent>
         <Spacer.Column numberOfSpaces={6} />
-        {Banner}
+        <HomeBanner hasGeolocPosition={hasGeolocPosition} isLoggedIn={isLoggedIn} />
       </PageContent>
     </React.Fragment>
   )
@@ -161,8 +100,4 @@ const Title = styled.View({
 
 const PageContent = styled.View({
   marginHorizontal: getSpacing(6),
-})
-
-const BannerContainer = styled.View({
-  marginBottom: getSpacing(8),
 })
