@@ -11,13 +11,28 @@ describe('SocialNetworkCard', () => {
     const openUrl = jest
       .spyOn(NavigationHelpers, 'openUrl')
       .mockImplementation(jest.fn(() => Promise.resolve()))
+    render(<SocialNetworkCard network="facebook" />)
+
+    const button = screen.getByText('Facebook')
+    fireEvent.press(button)
+
+    await waitFor(() => {
+      expect(analytics.logClickSocialNetwork).toHaveBeenCalledWith('Facebook')
+      expect(openUrl).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should use Twitter in analytics when click on X', async () => {
+    const openUrl = jest
+      .spyOn(NavigationHelpers, 'openUrl')
+      .mockImplementation(jest.fn(() => Promise.resolve()))
     render(<SocialNetworkCard network="x" />)
 
     const button = screen.getByText('X')
     fireEvent.press(button)
 
     await waitFor(() => {
-      expect(analytics.logClickSocialNetwork).toHaveBeenCalledWith('X')
+      expect(analytics.logClickSocialNetwork).toHaveBeenCalledWith('Twitter')
       expect(openUrl).toHaveBeenCalledTimes(1)
     })
   })
