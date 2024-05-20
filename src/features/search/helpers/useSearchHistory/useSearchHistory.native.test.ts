@@ -7,7 +7,7 @@ import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistor
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
 import { eventMonitoring } from 'libs/monitoring'
-import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 import { act, renderHook } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'

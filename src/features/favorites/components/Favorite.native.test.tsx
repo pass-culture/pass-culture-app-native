@@ -14,7 +14,7 @@ import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics'
 import { EmptyResponse } from 'libs/fetch'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Credit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -59,7 +59,7 @@ const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sh
 
 describe('<Favorite /> component', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...placeholderData })
+    mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...PLACEHOLDER_DATA })
   })
 
   it('should navigate to the offer when clicking on the favorite', async () => {

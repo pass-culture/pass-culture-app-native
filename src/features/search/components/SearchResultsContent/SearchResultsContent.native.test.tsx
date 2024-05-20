@@ -18,7 +18,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
 import { act, fireEvent, render, screen } from 'tests/utils'

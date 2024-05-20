@@ -18,7 +18,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { RecommendationApiParams } from 'shared/offer/types'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
@@ -118,7 +118,7 @@ jest.useFakeTimers()
 
 describe('<OfferContent />', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,
@@ -623,7 +623,7 @@ function renderOfferContent({
     reactQueryProviderHOC(
       <OfferContent
         offer={offer}
-        searchGroupList={placeholderData.searchGroups}
+        searchGroupList={PLACEHOLDER_DATA.searchGroups}
         subcategory={subcategory}
       />
     ),

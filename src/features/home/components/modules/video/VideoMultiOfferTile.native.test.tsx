@@ -6,7 +6,7 @@ import { VideoMultiOfferTile } from 'features/home/components/modules/video/Vide
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -24,7 +24,7 @@ const hideModalMock = jest.fn()
 
 describe('VideoMultiOfferTile', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', placeholderData)
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
   })
 
   it('should redirect to an offer when pressing it', async () => {

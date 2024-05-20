@@ -17,6 +17,10 @@ export type CategoryButtonProps = {
   gradients: Gradient
   onPress: () => void
   children?: never
+  // v2 App Design
+  textColor: string
+  fillColor: string
+  borderColor: string
 }
 
 export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({

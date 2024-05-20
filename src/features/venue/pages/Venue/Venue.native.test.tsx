@@ -13,7 +13,7 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
 import { LocationMode, Position } from 'libs/location/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -29,8 +29,8 @@ const mockUseVenueOffers = jest.mocked(useVenueOffers)
 
 jest.mock('libs/itinerary/useItinerary')
 
-const mockSubcategories = placeholderData.subcategories
-const mockHomepageLabels = placeholderData.homepageLabels
+const mockSubcategories = PLACEHOLDER_DATA.subcategories
+const mockHomepageLabels = PLACEHOLDER_DATA.homepageLabels
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: {

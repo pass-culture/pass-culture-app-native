@@ -6,13 +6,13 @@ import { OffersModuleParameters } from 'features/home/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 import { adaptOffersPlaylistParameters } from './adaptOffersPlaylistParameters'
 
-const mockSubcategories = placeholderData.subcategories
-const mockGenreTypes = placeholderData.genreTypes
+const mockSubcategories = PLACEHOLDER_DATA.subcategories
+const mockGenreTypes = PLACEHOLDER_DATA.genreTypes
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: {

@@ -2,12 +2,12 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { CategoriesButtons } from './CategoriesButtons'
 
-const mockData = placeholderData
+const mockData = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: mockData,

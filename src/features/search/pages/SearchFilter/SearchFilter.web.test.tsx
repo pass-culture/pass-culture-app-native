@@ -2,13 +2,13 @@ import React from 'react'
 
 import { useNavigationState } from '__mocks__/@react-navigation/native'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
 useNavigationState.mockImplementation(() => [{ name: 'SearchFilter' }])
 
-const mockData = placeholderData
+const mockData = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: mockData,

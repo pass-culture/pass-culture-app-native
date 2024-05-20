@@ -5,7 +5,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { screen, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
@@ -20,7 +20,7 @@ jest.spyOn(useSameArtistPlaylist, 'useSameArtistPlaylist').mockImplementation().
   sameArtistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
 })
 
-let mockData: SubcategoriesResponseModelv2 | undefined = placeholderData
+let mockData: SubcategoriesResponseModelv2 | undefined = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: mockData,
@@ -38,7 +38,7 @@ describe('<Offer />', () => {
   })
 
   afterEach(() => {
-    mockData = placeholderData
+    mockData = PLACEHOLDER_DATA
   })
 
   it('should not display offer container when offer is not found and subcategories loaded', async () => {

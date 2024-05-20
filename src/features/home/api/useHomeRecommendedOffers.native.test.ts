@@ -10,7 +10,7 @@ import { RecommendedOffersModule, RecommendedOffersParameters } from 'features/h
 import { RecommendedIdsResponse } from 'libs/recommendation/types'
 import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 const position = {
@@ -20,7 +20,7 @@ const position = {
 const mockModuleId = 'abcd'
 mockdate.set(new Date('2022-11-25T00:00+00:00'))
 
-const mockSubcategories = placeholderData.subcategories
+const mockSubcategories = PLACEHOLDER_DATA.subcategories
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: {

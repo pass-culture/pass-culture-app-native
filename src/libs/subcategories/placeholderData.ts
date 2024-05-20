@@ -9,7 +9,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 
-export const placeholderData: SubcategoriesResponseModelv2 = {
+export const PLACEHOLDER_DATA: SubcategoriesResponseModelv2 = {
   subcategories: [
     {
       id: SubcategoryIdEnumv2.ABO_BIBLIOTHEQUE,

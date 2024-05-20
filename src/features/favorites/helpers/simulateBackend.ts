@@ -12,7 +12,7 @@ import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/pagi
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { beneficiaryUser } from 'fixtures/user'
 import { EmptyResponse } from 'libs/fetch'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 
 const offerId = 146193
@@ -40,7 +40,7 @@ export function simulateBackend(options: Options = defaultOptions) {
   mockServer.getApi<OfferResponseV2>(`/v2/offer/${id}`, offerResponseSnap)
   mockServer.getApi<UserProfileResponse>(`/v1/me`, beneficiaryUser)
   mockServer.getApi<PaginatedFavoritesResponse>(`/v1/me/favorites`, paginatedFavoritesResponseSnap)
-  mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...placeholderData })
+  mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...PLACEHOLDER_DATA })
   if (hasAddFavoriteError) {
     mockServer.postApi<EmptyResponse>(`/v1/me/favorites`, {
       responseOptions: { statusCode: 422, data: {} },

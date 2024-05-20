@@ -16,12 +16,12 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
-const mockSubcategories = placeholderData.subcategories
-const mockSearchGroups = placeholderData.searchGroups
+const mockSubcategories = PLACEHOLDER_DATA.subcategories
+const mockSearchGroups = PLACEHOLDER_DATA.searchGroups
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: {

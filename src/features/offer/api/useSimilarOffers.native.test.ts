@@ -8,7 +8,7 @@ import {
 } from 'features/offer/api/useSimilarOffers'
 import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -38,7 +38,7 @@ const respondWith = async (
 
 jest.mock('features/auth/context/AuthContext')
 
-const mockSearchGroups = placeholderData.searchGroups
+const mockSearchGroups = PLACEHOLDER_DATA.searchGroups
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: {

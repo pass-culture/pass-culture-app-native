@@ -8,7 +8,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { transformHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { DisplayParametersFields, ContentTypes } from 'libs/contentful/types'
-import { placeholderData } from 'libs/subcategories/placeholderData'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -42,8 +42,8 @@ const nativeEventEnd = {
 
 jest.mock('features/auth/context/AuthContext')
 
-const mockSubcategories = placeholderData.subcategories
-const mockHomepageLabels = placeholderData.homepageLabels
+const mockSubcategories = PLACEHOLDER_DATA.subcategories
+const mockHomepageLabels = PLACEHOLDER_DATA.homepageLabels
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: {
