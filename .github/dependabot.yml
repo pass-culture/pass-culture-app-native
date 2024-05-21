@@ -2,7 +2,7 @@ version: 2
 updates:
   - package-ecosystem: 'npm'
     directory: '/'
-    open-pull-requests-limit: 6
+    open-pull-requests-limit: 2
     schedule:
       interval: 'daily'
     ignore:
@@ -11,35 +11,27 @@ updates:
       - dependency-name: 'react-native-web'
     commit-message:
       prefix: '(BSR) chore(deps):'
-    reviewers:
-      - 'Lucasbeneston'
 
   - package-ecosystem: 'bundler'
     directory: '/'
-    open-pull-requests-limit: 6
+    open-pull-requests-limit: 2
     schedule:
       interval: 'daily'
     commit-message:
       prefix: '(BSR) chore(deps):'
-    reviewers:
-      - 'Lucasbeneston'
 
   - package-ecosystem: 'github-actions'
     directory: '.github/workflows'
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 2
     schedule:
       interval: 'daily'
     commit-message:
       prefix: '(BSR) chore(ci):'
-    reviewers:
-      - 'Lucasbeneston'
 
   - package-ecosystem: 'npm'
     directory: '/server'
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 2
     schedule:
       interval: 'daily'
     commit-message:
       prefix: '(BSR) chore(deps):'
-    reviewers:
-      - 'Lucasbeneston'
