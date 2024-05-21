@@ -15,6 +15,8 @@ type Parameters = {
 export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
   const { playlistRequestBody, playlistRequestQuery, userId } = parameters
   const { modelEndpoint, longitude, latitude } = playlistRequestQuery
+  const stringifyPlaylistRequestBody = JSON.stringify(playlistRequestBody)
+  const stringifyPlaylistRequestQuery = JSON.stringify(playlistRequestQuery)
 
   return useQuery(
     [QueryKeys.RECOMMENDATION_OFFER_IDS, parameters],
@@ -30,8 +32,8 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
         const captureContext: Partial<ScopeContext> = {
           level: 'info',
           extra: {
-            playlistRequestBody: JSON.stringify(playlistRequestBody),
-            playlistRequestQuery: JSON.stringify(playlistRequestQuery),
+            playlistRequestBody: stringifyPlaylistRequestBody,
+            playlistRequestQuery: stringifyPlaylistRequestQuery,
           },
         }
 
@@ -43,8 +45,8 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
       } catch (err) {
         eventMonitoring.captureException('Error with recommendation endpoint', {
           extra: {
-            playlistRequestBody: JSON.stringify(playlistRequestBody),
-            playlistRequestQuery: JSON.stringify(playlistRequestQuery),
+            playlistRequestBody: stringifyPlaylistRequestBody,
+            playlistRequestQuery: stringifyPlaylistRequestQuery,
           },
         })
 
