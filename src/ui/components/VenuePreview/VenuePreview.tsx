@@ -1,21 +1,22 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, PropsWithChildren } from 'react'
 import { ViewProps } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { Image } from 'libs/resizing-image-on-demand/Image'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { Spacer, Typo } from 'ui/theme'
 
-type Props = {
+type Props = PropsWithChildren<{
   venueName: string
   imageHeight: number
   imageWidth: number
   address: string
   withRightArrow?: boolean
   bannerUrl?: string | null
-}
+}>
 
 export const VenuePreview: FunctionComponent<Props> = ({
   address,
@@ -24,6 +25,7 @@ export const VenuePreview: FunctionComponent<Props> = ({
   imageHeight,
   imageWidth,
   venueName,
+  children,
 }) => (
   <StyledView>
     {bannerUrl ? (
@@ -37,7 +39,8 @@ export const VenuePreview: FunctionComponent<Props> = ({
       <ImagePlaceholder height={imageHeight} width={imageWidth} testID="VenuePreviewPlaceholder" />
     )}
     <Spacer.Row numberOfSpaces={2} />
-    <VenueRightContainer>
+    <VenueRightContainer gap={1}>
+      {children}
       <VenueTitleContainer>
         <VenueName>{venueName}</VenueName>
         {withRightArrow ? (
@@ -47,7 +50,6 @@ export const VenuePreview: FunctionComponent<Props> = ({
           </React.Fragment>
         ) : null}
       </VenueTitleContainer>
-      <Spacer.Column numberOfSpaces={1} />
       <Address>{address}</Address>
     </VenueRightContainer>
   </StyledView>
@@ -58,7 +60,7 @@ const StyledView = styled.View({
   flexDirection: 'row',
 })
 
-const VenueRightContainer = styled.View({
+const VenueRightContainer = styled(ViewGap)({
   flexShrink: 1,
   justifyContent: 'center',
 })

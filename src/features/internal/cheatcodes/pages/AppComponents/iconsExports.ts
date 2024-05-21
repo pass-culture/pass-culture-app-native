@@ -4,6 +4,7 @@ import { Again } from 'ui/svg/icons/Again'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
@@ -149,6 +150,7 @@ export const SecondaryAndBiggerIcons = {
   TryAgain,
   ArrowAgain,
   ArrowNext,
+  ArrowRight,
   ArrowPrevious,
   Bell,
   BellFilled,
