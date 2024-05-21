@@ -4321,7 +4321,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie Concerts & festivals"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -4416,7 +4415,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie Cinéma, films et séries"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -4525,7 +4523,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie Livres"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -4620,7 +4617,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie CD, vinyles, musique en ligne"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -4729,7 +4725,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie Arts & loisirs créatifs"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -4824,7 +4819,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie Spectacles"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -4933,7 +4927,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie Musées & visites culturelles"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5028,7 +5021,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie Jeux & jeux vidéos"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5137,7 +5129,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie Instruments de musique"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5232,7 +5223,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie Médias & presse"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5341,7 +5331,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie Cartes jeunes"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5436,7 +5425,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie Conférences & rencontres"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5545,7 +5533,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             >
               <View
                 accessibilityLabel="Catégorie Évènements en ligne"
-                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,

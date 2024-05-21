@@ -12,7 +12,7 @@ describe('CategoryButton', () => {
       <CategoryButton
         label="Bibliothèques & Médiathèques"
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
-        baseColor={theme.colors.deepPinkLighter}
+        baseColor={theme.colors.deepPinkLight}
         onPress={jest.fn()}
         gradients={[theme.colors.deepPink, theme.colors.deepPinkDark]}
         textColor={theme.colors.aquamarineDark}
@@ -31,7 +31,7 @@ describe('CategoryButton', () => {
       <CategoryButton
         label="Bibliothèques & Médiathèques"
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
-        baseColor={theme.colors.deepPinkLighter}
+        baseColor={theme.colors.deepPinkLight}
         onPress={handleClick}
         gradients={[theme.colors.deepPink, theme.colors.deepPinkDark]}
         textColor={theme.colors.aquamarineDark}
