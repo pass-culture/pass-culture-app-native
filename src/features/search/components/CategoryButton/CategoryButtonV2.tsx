@@ -56,19 +56,23 @@ const TouchableContainer = styledButton(Touchable)<{
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
   ...getHoverStyle(textColor),
   backgroundColor: baseColor,
-  borderColor: borderColor,
+  borderColor,
   borderWidth: '1.6px',
   flexDirection: 'column',
   display: 'flex',
   justifyContent: 'flex-end',
+  alignItems: 'flex-end',
 }))
 
 const LabelContainer = styled.View(({ theme }) => ({
   padding: theme.isMobileViewport ? getSpacing(2) : getSpacing(1),
   width: '100%',
+  alignItems: 'flex-start',
 }))
 
-const Label = styled(Typo.ButtonText)<{ baseColor?: string }>(({ baseColor }) => ({
-  textAlign: 'left',
-  color: baseColor,
-}))
+const Label = styled(Typo.ButtonText).attrs({ numberOfLines: 3 })<{ baseColor?: string }>(
+  ({ baseColor }) => ({
+    textAlign: 'left',
+    color: baseColor,
+  })
+)
