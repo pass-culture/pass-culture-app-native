@@ -2,6 +2,7 @@ import React from 'react'
 import { LogBox } from 'react-native'
 
 import { campaignTracker } from 'libs/campaign'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { render, waitFor } from 'tests/utils'
@@ -15,6 +16,8 @@ jest.unmock('libs/network/NetInfoWrapper')
 jest.mock('libs/e2e/getIsMaestro', () => ({
   getIsMaestro: () => Promise.resolve(true),
 }))
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<App /> with mocked RootNavigator', () => {
   it("should override font for Batch's in-app messages", () => {

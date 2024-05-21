@@ -26,6 +26,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
           >
             <a
               aria-current="page"
+              aria-label="Accueil"
               class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
               data-testid="Accueil"
               href="/TabNavigator/Home"
@@ -56,7 +57,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                 </div>
               </div>
               <div
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                 dir="ltr"
               >
                 Accueil
@@ -74,6 +75,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
             role="listitem"
           >
             <a
+              aria-label="Rechercher des offres"
               class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
               data-testid="Rechercher des offres"
               href="/TabNavigator/SearchStackNavigator/SearchLanding?date&hitsPerPage=20&locationFilter=%5Bobject%20Object%5D&offerIsDuo=false&offerIsFree=false&isDigital=false&priceRange&query=&timeRange&accessibilityFilter=%5Bobject%20Object%5D"
@@ -93,7 +95,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                 </div>
               </div>
               <div
-                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                 dir="ltr"
               >
                 Recherche
@@ -108,6 +110,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
             role="listitem"
           >
             <a
+              aria-label="Mes réservations"
               class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
               data-testid="Mes réservations"
               href="/TabNavigator/Bookings"
@@ -127,7 +130,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                 </div>
               </div>
               <div
-                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                 dir="ltr"
               >
                 Réservations
@@ -161,7 +164,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                 </div>
               </div>
               <div
-                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                 dir="ltr"
               >
                 Favoris
@@ -176,6 +179,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
             role="listitem"
           >
             <a
+              aria-label="Mon profil"
               class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-height-sga3zk"
               data-testid="Mon profil"
               href="/TabNavigator/Profile"
@@ -195,7 +199,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
                 </div>
               </div>
               <div
-                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
+                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                 dir="ltr"
               >
                 Profil

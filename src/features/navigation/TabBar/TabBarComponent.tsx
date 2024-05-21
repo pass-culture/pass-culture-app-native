@@ -9,7 +9,6 @@ import { TabBarInnerComponentV2 } from 'features/navigation/TabBar/TabBarInnerCo
 import { TabRouteName } from 'features/navigation/TabBar/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { getSpacing } from 'ui/theme'
 
 interface Props {
   v2: boolean
@@ -53,8 +52,8 @@ const TabComponentContainer: typeof InternalTouchableLink = styled(InternalTouch
     accessibilityLabel: theme.tabBar.showLabels && isWeb && !v2 ? undefined : accessibilityLabel,
     hoverUnderlineColor: selected ? theme.colors.black : theme.colors.greyDark,
   })
-)<{ v2: boolean }>(({ theme, v2 }) => ({
+)(({ theme }) => ({
   alignItems: 'center',
-  height: v2 ? getSpacing(15) : theme.tabBar.height,
+  height: theme.tabBar.height,
   flex: 1,
 }))
