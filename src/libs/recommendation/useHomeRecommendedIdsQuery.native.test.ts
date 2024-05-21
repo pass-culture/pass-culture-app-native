@@ -1,111 +1,92 @@
+import { PlaylistResponse } from 'api/gen'
 import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useHomeRecommendedIdsQuery } from './useHomeRecommendedIdsQuery'
 
 jest.mock('libs/monitoring')
 
 describe('useHomeRecommendedIdsQuery', () => {
-  const mockFetch = jest.spyOn(global, 'fetch')
-
-  beforeEach(() => {
-    mockServer.universalPost('http://passculture.reco', {
-      playlist_recommended_offers: [1234, 5678],
-    })
-  })
-
-  it('should not fetch recommendation api when no endpoint is provided', async () => {
-    renderHook(() => useHomeRecommendedIdsQuery({ endpointUrl: undefined }), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
-    expect(fetch).not.toHaveBeenCalled()
-  })
-
   it('should capture an exception when fetch call fails', async () => {
-    mockFetch.mockRejectedValueOnce('some error')
-    renderHook(() => useHomeRecommendedIdsQuery({ endpointUrl: 'http://passculture.reco' }), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    mockServer.postApi<PlaylistResponse>('/v1/recommendation/playlist', {
+      responseOptions: { statusCode: 400 },
     })
 
-    await waitFor(() => {
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        'Error with recommendation endpoint',
-        {
-          extra: { url: 'http://passculture.reco', stack: 'some error' },
-        }
-      )
-    })
-  })
-
-  it('should capture a message if response.ok is not true', async () => {
-    mockFetch.mockResolvedValueOnce(
-      new Response(undefined, {
-        headers: {
-          'content-type': 'application/json',
-        },
-        status: 500,
-      })
-    )
-
-    renderHook(() => useHomeRecommendedIdsQuery({ endpointUrl: 'http://passculture.reco' }), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
-    await act(async () => {})
-
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-      'Recommendation response was not ok',
-      {
-        level: 'info',
-        extra: { url: 'http://passculture.reco', status: 500 },
-      }
-    )
-  })
-
-  it('should capture a message when recommendation playlist is empty', async () => {
-    const body = { playlist_recommended_offers: [] }
-    mockFetch.mockResolvedValueOnce(
-      new Response(JSON.stringify(body), {
-        headers: {
-          'content-type': 'application/json',
-        },
-        status: 200,
-      })
-    )
-    renderHook(() => useHomeRecommendedIdsQuery({ endpointUrl: 'http://passculture.reco' }), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
-    await waitFor(() => {
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        'Recommended offers playlist is empty',
-        { level: 'info', extra: { url: 'http://passculture.reco', status: 200 } }
-      )
-    })
-  })
-
-  it('should return response body if fetch call succeeds', async () => {
-    const body = { playlist_recommended_offers: ['102280', '102272', '102249', '102310'] }
-    mockFetch.mockResolvedValueOnce(
-      new Response(JSON.stringify(body), {
-        headers: {
-          'content-type': 'application/json',
-        },
-        status: 200,
-      })
-    )
-    const { result } = renderHook(
-      () => useHomeRecommendedIdsQuery({ endpointUrl: 'http://passculture.reco' }),
+    renderHook(
+      () =>
+        useHomeRecommendedIdsQuery({
+          playlistRequestBody: {},
+          playlistRequestQuery: {},
+          userId: 1,
+        }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
     )
 
-    await act(async () => {})
+    await waitFor(() => {
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        'Error with recommendation endpoint',
+        { extra: { playlistRequestBody: '{}', playlistRequestQuery: '{}' } }
+      )
+    })
+  })
 
-    expect(result.current.data).toEqual(body)
+  it('should capture an exception when recommendation playlist is empty', async () => {
+    mockServer.postApi<PlaylistResponse>('/v1/recommendation/playlist', {
+      responseOptions: { statusCode: 200, data: { params: {}, playlistRecommendedOffers: [] } },
+    })
+    renderHook(
+      () =>
+        useHomeRecommendedIdsQuery({
+          playlistRequestBody: {},
+          playlistRequestQuery: {},
+          userId: 1,
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    await waitFor(() => {
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        'Recommended offers playlist is empty',
+        { extra: { playlistRequestBody: '{}', playlistRequestQuery: '{}' }, level: 'info' }
+      )
+    })
+  })
+
+  it('should return playlist offer ids', async () => {
+    mockServer.postApi<PlaylistResponse>('/v1/recommendation/playlist', {
+      responseOptions: {
+        statusCode: 200,
+        data: {
+          params: {},
+          playlistRecommendedOffers: ['102280', '102272', '102249', '102310'],
+        },
+      },
+    })
+    const { result } = renderHook(
+      () =>
+        useHomeRecommendedIdsQuery({
+          playlistRequestBody: {},
+          playlistRequestQuery: {},
+          userId: 1,
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    await waitFor(() => {
+      expect(result.current.data?.playlistRecommendedOffers).toEqual([
+        '102280',
+        '102272',
+        '102249',
+        '102310',
+      ])
+    })
   })
 })

@@ -5,7 +5,7 @@ import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOff
 import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
-  moreHitsForSimilarOffersPlaylist
+  moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position } from 'libs/location'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'

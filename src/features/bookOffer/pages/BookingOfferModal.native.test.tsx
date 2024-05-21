@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
 import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
@@ -20,7 +21,6 @@ import { PLACEHOLDER_DATA as mockSubcategoriesData } from 'libs/subcategories/pl
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 

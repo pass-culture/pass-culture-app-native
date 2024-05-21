@@ -35,10 +35,10 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   const labelMapping = useCategoryHomeLabelMapping()
 
   const { offers, recommendationApiParams } = useHomeRecommendedOffers(
-    profile?.id,
     position,
     moduleId,
-    recommendationParameters
+    recommendationParameters,
+    profile?.id
   )
   const nbOffers = offers?.length ?? 0
   const shouldModuleBeDisplayed = nbOffers > displayParameters.minOffers

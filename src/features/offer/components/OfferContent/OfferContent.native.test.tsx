@@ -1,11 +1,12 @@
 import React, { ComponentProps } from 'react'
 import { InViewProps } from 'react-native-intersection-observer'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import {
   NativeCategoryIdEnumv2,
   OfferResponseV2,
   RecommendationApiParams,
-  SubcategoriesResponseModelv2
+  SubcategoriesResponseModelv2,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
@@ -15,7 +16,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useSameArtistPlaylist from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
-  mockedAlgoliaResponse
+  mockedAlgoliaResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -27,7 +28,6 @@ import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
-import { navigate } from '__mocks__/@react-navigation/native'
 
 import { OfferContent } from './OfferContent'
 

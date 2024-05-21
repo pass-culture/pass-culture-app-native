@@ -8,11 +8,11 @@ import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOff
 import {
   formattedBusinessModule,
   formattedCategoryListModule,
+  formattedExclusivityModule,
+  formattedOffersModule,
   formattedRecommendedOffersModule,
   formattedThematicHighlightModule,
-  formattedOffersModule,
   formattedVenuesModule,
-  formattedExclusivityModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { HomepageModule, ModuleData } from 'features/home/types'
@@ -147,10 +147,7 @@ describe('<HomeModule />', () => {
       results: ['102280', '102272'],
     }
 
-    mockServer.universalPost(
-      env.RECOMMENDATION_ENDPOINT + '/playlist_recommendation/1234',
-      recommendedOffers
-    )
+    mockServer.postApi(env.API_BASE_URL + '/v1/recommendation/playlist', recommendedOffers)
 
     renderHomeModule(formattedRecommendedOffersModule)
     await act(async () => {})

@@ -1,13 +1,13 @@
 import mockdate from 'mockdate'
 import { UseQueryResult } from 'react-query'
 
+import { PlaylistResponse } from 'api/gen'
 import * as algoliaRecommendedOffersAPI from 'features/home/api/useAlgoliaRecommendedOffers'
 import {
   getRecommendationParameters,
   useHomeRecommendedOffers,
 } from 'features/home/api/useHomeRecommendedOffers'
 import { RecommendedOffersModule, RecommendedOffersParameters } from 'features/home/types'
-import { RecommendedIdsResponse } from 'libs/recommendation/types'
 import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -30,19 +30,19 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 }))
 
 describe('useHomeRecommendedOffers', () => {
-  jest
-    .spyOn(recommendedIdsAPI, 'useHomeRecommendedIdsQuery')
-    .mockReturnValue({ data: { playlist_recommended_offers: ['1234'] } } as UseQueryResult<
-      RecommendedIdsResponse,
-      unknown
-    >)
-
-  const algoliaSpy = jest
-    .spyOn(algoliaRecommendedOffersAPI, 'useAlgoliaRecommendedOffers')
-    .mockImplementation(jest.fn())
-
   it('should call algolia hook', () => {
-    renderHook(() => useHomeRecommendedOffers(undefined, position, mockModuleId))
+    jest
+      .spyOn(recommendedIdsAPI, 'useHomeRecommendedIdsQuery')
+      .mockReturnValueOnce({ data: { playlistRecommendedOffers: ['1234'] } } as UseQueryResult<
+        PlaylistResponse,
+        unknown
+      >)
+
+    const algoliaSpy = jest
+      .spyOn(algoliaRecommendedOffersAPI, 'useAlgoliaRecommendedOffers')
+      .mockImplementationOnce(jest.fn())
+
+    renderHook(() => useHomeRecommendedOffers(position, mockModuleId))
 
     expect(algoliaSpy).toHaveBeenCalledWith(['1234'], 'abcd', true)
   })
@@ -80,9 +80,9 @@ describe('getRecommendationParameters', () => {
 
     expect(recommendationParameters).toEqual({
       categories: ['ARTS_LOISIRS_CREATIFS', 'CARTES_JEUNES'],
-      end_date: '2022-05-08T00:00+00:00',
-      start_date: '2022-09-08T00:00+00:00',
-      price_max: 10,
+      endDate: '2022-05-08T00:00+00:00',
+      startDate: '2022-09-08T00:00+00:00',
+      priceMax: 10,
       isEvent: true,
       isDuo: true,
       subcategories: ['ACHAT_INSTRUMENT'],

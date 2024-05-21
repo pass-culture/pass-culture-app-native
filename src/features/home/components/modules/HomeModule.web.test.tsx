@@ -5,12 +5,12 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
-  formattedExclusivityModule,
   formattedBusinessModule,
   formattedCategoryListModule,
+  formattedExclusivityModule,
+  formattedOffersModule,
   formattedRecommendedOffersModule,
   formattedThematicHighlightModule,
-  formattedOffersModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
@@ -132,10 +132,7 @@ describe('<HomeModule />', () => {
         results: ['102280', '102272'],
       }
 
-      mockServer.universalPost(
-        env.RECOMMENDATION_ENDPOINT + '/playlist_recommendation/1234',
-        recommendedOffers
-      )
+      mockServer.postApi(env.API_BASE_URL + '/v1/recommendation/playlist', recommendedOffers)
 
       const { container } = renderHomeModule(formattedRecommendedOffersModule)
       await act(async () => {})
