@@ -229,6 +229,57 @@
           "store_path": "/nix/store/hdq16s6vq9smhmcyl4ipmwfp9f2558rc-nodejs-20.10.0"
         }
       }
+    },
+    "ruby@2.7.5": {
+      "last_modified": "2022-03-21T18:25:50Z",
+      "plugin_version": "0.0.2",
+      "resolved": "github:NixOS/nixpkgs/4c3c80df545ec5cb26b5480979c3e3f93518cbe5#ruby",
+      "source": "devbox-search",
+      "version": "2.7.5",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/inhgi4ksqzqnjk6v9fa49fgdf0zymmpn-ruby-2.7.5",
+              "default": true
+            },
+            {
+              "name": "devdoc",
+              "path": "/nix/store/39nj3bamlk15s2fxgvyz132xa1mzv279-ruby-2.7.5-devdoc"
+            }
+          ],
+          "store_path": "/nix/store/inhgi4ksqzqnjk6v9fa49fgdf0zymmpn-ruby-2.7.5"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/0m1x14n35s91mj33jk0sa4y68i5hdcfk-ruby-2.7.5",
+              "default": true
+            },
+            {
+              "name": "devdoc",
+              "path": "/nix/store/bm1vvw4zmg0lsx0imvnp9qsv5mcvgb8y-ruby-2.7.5-devdoc"
+            }
+          ],
+          "store_path": "/nix/store/0m1x14n35s91mj33jk0sa4y68i5hdcfk-ruby-2.7.5"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/dsnym6kh9jy2wl020jphwlm9kwp3w23p-ruby-2.7.5",
+              "default": true
+            },
+            {
+              "name": "devdoc",
+              "path": "/nix/store/8axhwqn26rnj14mz0i8wrn0kwp3wyf98-ruby-2.7.5-devdoc"
+            }
+          ],
+          "store_path": "/nix/store/dsnym6kh9jy2wl020jphwlm9kwp3w23p-ruby-2.7.5"
+        }
+      }
     }
   }
 }

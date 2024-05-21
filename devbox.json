@@ -4,5 +4,6 @@
     "jq@latest",
     "jdk11@latest",
     "android-tools@latest",
+    "ruby@2.7.5",
   ],
 }
