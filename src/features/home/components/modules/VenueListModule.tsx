@@ -67,6 +67,8 @@ const StyledFlatList = styled(FlatList as typeof FlatList<VenueHit>)(({ theme })
   backgroundColor: theme.colors.goldLight100,
   borderRadius: getSpacing(4),
   padding: getSpacing(4),
+  marginBottom: theme.home.spaceBetweenModules,
+  marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
 const StyledTouchableHeader = styled(InternalTouchableLink)({
