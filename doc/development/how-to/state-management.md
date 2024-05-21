@@ -5,26 +5,33 @@
 ### Simple store
 
 ```ts
-import { create } from 'zustand'
+import { createStore } from 'libs/store/createStore'
 
 type State = {
   bears: number
 }
+
 type Actions = {
   addBear: () => void
   removeBear: () => void
   setBears: (nb: number) => void
 }
 
-export const useCountBears = create<State & Actions>()(
+const useCountBears = createStore<State, Actions>(
+  'count-bears-store',
+  { bears: 0 },
   (set) => ({
-    bears: 0,
     addBear: () => set((state) => ({ bears: state.bears + 1 })),
     removeBear: () => set((state) => ({ bears: state.bears - 1 })),
     setBears: (payload) => set({ bears: payload }),
   }),
 )
+
+export const useBears = () => useCountBears((state) => state.bears)
+export const useBearsActions = () => useCountBears((state) => state.actions)
 ```
+
+The name `count-bears-store` is used to identify in the devtools.
 
 Then, in a component, you can use the store as a simple hook:
 
@@ -46,67 +53,40 @@ const Component = () => {
 ### Persist store
 
 ```ts
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { create } from 'zustand'
-import { persist, createJSONStorage } from 'zustand/middleware'
+import { createStore } from 'libs/store/createStore'
 
 type State = {
   bears: number
 }
+
 type Actions = {
   addBear: () => void
   removeBear: () => void
+  setBears: (nb: number) => void
 }
 
-export const useCountBears = create<State & Actions>()(
-  persist(
-    (set) => ({
-      bears: 0,
-      addBear: () => set((state) => ({ bears: state.bears + 1 })),
-      removeBear: () => set((state) => ({ bears: state.bears - 1 })),
-    }),
-    { name: 'bear-store', storage: createJSONStorage(() => AsyncStorage) }
-  )
+const useCountBears = createStore<State, Actions>(
+  'count-bears-store',
+  { bears: 0 },
+  (set) => ({
+    addBear: () => set((state) => ({ bears: state.bears + 1 })),
+    removeBear: () => set((state) => ({ bears: state.bears - 1 })),
+    setBears: (payload) => set({ bears: payload }),
+  }),
+  { persist: true },
 )
+
+export const useBears = () => useCountBears((state) => state.bears)
+export const useBearsActions = () => useCountBears((state) => state.actions)
 ```
 
-`name: 'bear-store'` is optional, it's used to identify the store in the AsyncStore/LocalStorage.
+The name `count-bears-store` is used to identify the store in the AsyncStore/LocalStorage.
 
 ### Devtools
 
-To debug the store, you can use the `devtools` middleware:
-
-```ts
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { create } from 'zustand'
-import { devtools, persist, createJSONStorage } from 'zustand/middleware'
-
-type State = {
-  bears: number
-}
-type Actions = {
-  addBear: () => void
-  removeBear: () => void
-}
-
-export const useCountBears = create<State & Actions>()(
-  devtools(
-    persist(
-      (set) => ({
-        bears: 0,
-        addBear: () => set((state) => ({ bears: state.bears + 1 })),
-        removeBear: () => set((state) => ({ bears: state.bears - 1 })),
-      }),
-      { name: 'bear-store', storage: createJSONStorage(() => AsyncStorage) }
-    ),
-    { enabled: process.env.NODE_ENV === 'development', name: 'bear-store' }
-  )
-)
-```
-
 #### Native
 
-To use the devtools in a React Native app, you need to import `react-native-devsettings` in your `App.tsx`:
+In order to use the devtools in a React Native app, we import `react-native-devsettings` in your `App.tsx` when in development mode:
 
 ```tsx
 if (process.env.NODE_ENV === 'development') {
