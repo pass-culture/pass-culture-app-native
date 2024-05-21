@@ -134,7 +134,9 @@ export const VenueBody: FunctionComponent<Props> = ({
         <Spacer.Column numberOfSpaces={4} />
       </SectionWithDivider>
 
-      {shouldDisplayCTA ? <SectionWithDivider visible gap={VENUE_CTA_HEIGHT_IN_SPACES} /> : null}
+      <SectionWithDivider visible={!!shouldDisplayCTA} gap={VENUE_CTA_HEIGHT_IN_SPACES}>
+        <Spacer.Column numberOfSpaces={6} />
+      </SectionWithDivider>
     </Container>
   )
 }
