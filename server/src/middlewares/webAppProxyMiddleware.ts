@@ -44,6 +44,16 @@ const addCanonicalLinkToHTML = (html: string, url: URL): string => {
 const addNoIndexToHTML = (html: string): string =>
   html.replace('<head>', `<head><meta name="robots" content="noindex" />`)
 
+export function fixHTMLFallbackStatusCode(req: IncomingMessage, proxyRes: IncomingMessage) {
+  if (proxyRes.statusCode === 404 && !req.headers['range']) {
+    return 200
+  }
+  if (proxyRes.statusCode == null) {
+    return 500
+  }
+  return proxyRes.statusCode
+}
+
 export async function metasResponseInterceptor(
   responseBuffer: Buffer,
   proxyRes: IncomingMessage,
@@ -62,7 +72,7 @@ export async function metasResponseInterceptor(
   }
 
   // GCP return 404 when returning the index.html if not the base path, this fix it.
-  res.statusCode = 200
+  res.statusCode = fixHTMLFallbackStatusCode(req, proxyRes)
 
   let html = responseBuffer.toString('utf8')
 
@@ -92,7 +102,7 @@ export async function metasResponseInterceptor(
   try {
     return await replaceHtmlMetas(html, endpoint, entityKey as EntityKeys, Number(id))
   } catch (error) {
-    // FIXME(kopax): when replaceHtmlMetas can really throw error, restore coverage for following lines and add a throw error unit test
+    // when replaceHtmlMetas can really throw error, restore coverage for following lines and add a throw error unit test
     /* istanbul ignore next */
     // eslint-disable-next-line no-console
     logger.info(`Replacing HTML metas failed: ${(error as Error).message}`)
