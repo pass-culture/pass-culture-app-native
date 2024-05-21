@@ -4,7 +4,10 @@ import styled from 'styled-components/native'
 
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { VENUE_MAP_BACKGROUND } from 'features/venueMap/components/VenueMapBlock/VenueMapBackground'
+import { VENUE_MAP_BACKGROUND_APP_V2 } from 'features/venueMap/components/VenueMapBlock/VenueMapBackgroundAppV2'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -19,6 +22,10 @@ type Props = {
 
 export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...props }) => {
   const focusProps = useHandleFocus()
+  const enableAppV2VenueMapBlock = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK
+  )
+
   const TouchableContainer = onPress ? StyledTouchable : StyledInternalTouchableLink
 
   const handleOnBeforeNavigate = () => {
@@ -31,13 +38,21 @@ export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...prop
 
   return (
     <Container {...props}>
-      <Typo.Title3 {...getHeadingAttrs(2)}>Carte des lieux culturels</Typo.Title3>
-      <Spacer.Column numberOfSpaces={4} />
+      {enableAppV2VenueMapBlock ? null : (
+        <Typo.Title3 {...getHeadingAttrs(2)}>Carte des lieux culturels</Typo.Title3>
+      )}
+      <Spacer.Column numberOfSpaces={enableAppV2VenueMapBlock ? 2 : 4} />
       <TouchableContainer {...touchableProps} {...focusProps}>
-        <StyledImageBackground source={VENUE_MAP_BACKGROUND}>
-          <StyledLinearGradient />
-          <CardText>Explorer les lieux</CardText>
-        </StyledImageBackground>
+        {enableAppV2VenueMapBlock ? (
+          <StyledImageBackground source={VENUE_MAP_BACKGROUND_APP_V2}>
+            <CardText>EXPLORE LA CARTE</CardText>
+          </StyledImageBackground>
+        ) : (
+          <StyledImageBackground source={VENUE_MAP_BACKGROUND}>
+            <StyledLinearGradient />
+            <CardText>Explorer les lieux</CardText>
+          </StyledImageBackground>
+        )}
       </TouchableContainer>
     </Container>
   )

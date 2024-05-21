@@ -912,26 +912,12 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               ]
             }
           >
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 20,
-                    "lineHeight": 24,
-                  },
-                ]
-              }
-            >
-              Carte des lieux culturels
-            </Text>
             <View
-              numberOfSpaces={4}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 16,
+                    "height": 8,
                   },
                 ]
               }
@@ -990,7 +976,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 <Image
                   source={
                     {
-                      "testUri": "../../../public/images/VenueMapBackground.png",
+                      "testUri": "../../../public/images/VenueMapBackgroundAppV2.png",
                     }
                   }
                   style={
@@ -1012,45 +998,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     ]
                   }
                 />
-                <BVLinearGradient
-                  angle={69}
-                  colors={
-                    [
-                      4294967295,
-                      3019898879,
-                      16777215,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0.5,
-                      "y": 1,
-                    }
-                  }
-                  locations={
-                    [
-                      0.11,
-                      0.68,
-                      1,
-                    ]
-                  }
-                  startPoint={
-                    {
-                      "x": 0.5,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    [
-                      {
-                        "borderRadius": 8,
-                        "height": "100%",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                  useAngle={true}
-                />
                 <Text
                   style={
                     [
@@ -1066,7 +1013,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     ]
                   }
                 >
-                  Explorer les lieux
+                  EXPLORE LA CARTE
                 </Text>
               </View>
             </View>

@@ -5,7 +5,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { render, screen, fireEvent } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
@@ -32,7 +32,7 @@ describe('VenueMapModule', () => {
   it('should render venue map block when user is located and feature flag enabled', () => {
     render(<VenueMapModule />)
 
-    expect(screen.getByText('Carte des lieux culturels')).toBeOnTheScreen()
+    expect(screen.getByText('EXPLORE LA CARTE')).toBeOnTheScreen()
   })
 
   it('should not render venue map block when feature flag is disabled', () => {
@@ -67,7 +67,7 @@ describe('VenueMapModule', () => {
   it('should log consult venue map from home when pressing venue map block', () => {
     render(<VenueMapModule />)
 
-    fireEvent.press(screen.getByText('Explorer les lieux'))
+    fireEvent.press(screen.getByText('EXPLORE LA CARTE'))
 
     expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'home' })
   })
