@@ -1,11 +1,6 @@
 import * as API from 'api/api'
 import { ActivityIdEnum } from 'api/gen'
-import {
-  useAddress,
-  useAddressActions,
-} from 'features/identityCheck/pages/profile/store/addressStore'
-import { useCity, useCityActions } from 'features/identityCheck/pages/profile/store/cityStore'
-import { useName, useNameActions } from 'features/identityCheck/pages/profile/store/nameStore'
+import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
@@ -27,20 +22,20 @@ const profile = {
   schoolType: null,
 }
 
-const mockResetName = jest.fn()
-jest.mock('features/identityCheck/pages/profile/store/nameStore')
-;(useName as jest.Mock).mockReturnValue(profile.name)
-;(useNameActions as jest.Mock).mockReturnValue({ resetName: mockResetName })
+// const mockResetName = jest.fn()
+// jest.mock('features/identityCheck/pages/profile/store/nameStore')
+// ;(useName as jest.Mock).mockReturnValue(profile.name)
+// ;(useNameActions as jest.Mock).mockReturnValue({ resetName: mockResetName })
 
-const mockResetCity = jest.fn()
-jest.mock('features/identityCheck/pages/profile/store/cityStore')
-;(useCity as jest.Mock).mockReturnValue(profile.city)
-;(useCityActions as jest.Mock).mockReturnValue({ resetCity: mockResetCity })
+// const mockResetCity = jest.fn()
+// jest.mock('features/identityCheck/pages/profile/store/cityStore')
+// ;(useCity as jest.Mock).mockReturnValue(profile.city)
+// ;(useCityActions as jest.Mock).mockReturnValue({ resetCity: mockResetCity })
 
-const mockResetAddress = jest.fn()
-jest.mock('features/identityCheck/pages/profile/store/addressStore')
-;(useAddress as jest.Mock).mockReturnValue(profile.address)
-;(useAddressActions as jest.Mock).mockReturnValue({ resetAddress: mockResetAddress })
+// const mockResetAddress = jest.fn()
+// jest.mock('features/identityCheck/pages/profile/store/addressStore')
+// ;(useAddress as jest.Mock).mockReturnValue(profile.address)
+// ;(useAddressActions as jest.Mock).mockReturnValue({ resetAddress: mockResetAddress })
 
 const postSubscriptionProfileSpy = jest
   .spyOn(API.api, 'postNativeV1SubscriptionProfile')
@@ -70,6 +65,10 @@ describe('usePatchProfile', () => {
   })
 
   it('should clear activation profile from storage when query succeeds', async () => {
+    storage.saveObject('profile-name', profile.name)
+    storage.saveObject('profile-city', profile.city)
+    storage.saveObject('profile-address', profile.address)
+
     const { result } = renderHook(() => usePatchProfile(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -81,9 +80,11 @@ describe('usePatchProfile', () => {
     })
 
     await waitFor(async () => {
-      expect(mockResetName).toHaveBeenCalledTimes(1)
-      expect(mockResetCity).toHaveBeenCalledTimes(1)
-      expect(mockResetAddress).toHaveBeenCalledTimes(1)
+      expect(await storage.readObject('profile-name')).toMatchObject({ state: { name: null } })
+      expect(await storage.readObject('profile-city')).toMatchObject({ state: { city: null } })
+      expect(await storage.readObject('profile-address')).toMatchObject({
+        state: { address: null },
+      })
     })
   })
 })
