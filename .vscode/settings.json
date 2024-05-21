@@ -32,4 +32,5 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "devbox.autoShellOnTerminal": false,
 }

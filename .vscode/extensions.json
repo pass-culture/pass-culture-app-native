@@ -16,6 +16,8 @@
     "p42ai.refactor",
     "mikestead.dotenv",
     "firsttris.vscode-jest-runner",
-    "shopify.ruby-lsp"
+    "shopify.ruby-lsp",
+    "jetpack-io.devbox",
+    "pinage404.nix-extension-pack",
   ]
 }
