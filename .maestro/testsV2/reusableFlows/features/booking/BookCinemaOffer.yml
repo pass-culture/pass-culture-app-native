@@ -19,7 +19,7 @@ appId: ${MAESTRO_APP_ID}
 
 - swipe:
    from: 
-     id: "tagsContainer" # From (x, y) center of element
+     id: "tagsContainer"
    direction: UP 
     
 - scrollUntilVisible:
