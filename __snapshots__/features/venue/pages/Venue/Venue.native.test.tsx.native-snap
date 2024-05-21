@@ -4347,6 +4347,16 @@ d’options
             ]
           }
         />
+        <View
+          numberOfSpaces={6}
+          style={
+            [
+              {
+                "height": 24,
+              },
+            ]
+          }
+        />
       </View>
     </View>
   </RCTScrollView>
