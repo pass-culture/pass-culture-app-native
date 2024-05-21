@@ -1,0 +1,26 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "nodejs@20.10.0": {
+      "last_modified": "2024-01-14T03:55:27Z",
+      "plugin_version": "0.0.2",
+      "resolved": "github:NixOS/nixpkgs/dd5621df6dcb90122b50da5ec31c411a0de3e538#nodejs_20",
+      "source": "devbox-search",
+      "version": "20.10.0",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/m8s1dj96nbackrk4gk1bsn8hlfcggg4b-nodejs-20.10.0"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/n0i45l9cma3yyv6jqkd450xa7aqlxa2m-nodejs-20.10.0"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/ni7ks4fvk23gz4ik4x0kgpjmiqbzan30-nodejs-20.10.0"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/hdq16s6vq9smhmcyl4ipmwfp9f2558rc-nodejs-20.10.0"
+        }
+      }
+    }
+  }
+}
