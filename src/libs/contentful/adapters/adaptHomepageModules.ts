@@ -1,6 +1,7 @@
 import isEmpty from 'lodash/isEmpty'
 
 import { HomepageModule } from 'features/home/types'
+import { adaptAppV2VenuesModule } from 'libs/contentful/adapters/modules/adaptAppV2VenuesModule'
 import { adaptBusinessModule } from 'libs/contentful/adapters/modules/adaptBusinessModule'
 import { adaptCategoryListModule } from 'libs/contentful/adapters/modules/adaptCategoryListModule'
 import { adaptExclusivityModule } from 'libs/contentful/adapters/modules/adaptExclusivityModule'
@@ -12,17 +13,18 @@ import { adaptVenueMapModule } from 'libs/contentful/adapters/modules/adaptVenue
 import { adaptVenuesModule } from 'libs/contentful/adapters/modules/adaptVenuesModule'
 import { adaptVideoModule } from 'libs/contentful/adapters/modules/adaptVideoModule'
 import {
-  isAlgoliaContentModel,
   HomepageNatifModule,
+  isAlgoliaContentModel,
+  isAppV2VenuesContentModel,
   isBusinessContentModel,
-  isRecommendationContentModel,
-  isVenuesContentModel,
-  isExclusivityContentModel,
-  isThematicHighlightContentModel,
   isCategoryListContentModel,
-  isVideoContentModel,
+  isExclusivityContentModel,
   isHighlightOfferContentModel,
+  isRecommendationContentModel,
+  isThematicHighlightContentModel,
   isVenueMapBlockContentModel,
+  isVenuesContentModel,
+  isVideoContentModel,
 } from 'libs/contentful/types'
 import { eventMonitoring } from 'libs/monitoring'
 
@@ -50,6 +52,10 @@ export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): Homep
 
       if (isVenuesContentModel(module)) {
         return adaptVenuesModule(module)
+      }
+
+      if (isAppV2VenuesContentModel(module)) {
+        return adaptAppV2VenuesModule(module)
       }
 
       if (isExclusivityContentModel(module)) {

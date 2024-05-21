@@ -450,6 +450,7 @@ interface HomepageNatifFields {
 
 export type HomepageNatifModule =
   | AlgoliaContentModel
+  | AppV2VenuesContentModel
   | BusinessContentModel
   | ExclusivityContentModel
   | RecommendationContentModel
@@ -474,6 +475,8 @@ export type ThematicHighlightContentModel = Entry<
 >
 
 export type VenuesContentModel = Entry<VenuesFields, ContentTypes.VENUES_PLAYLIST>
+
+export type AppV2VenuesContentModel = Entry<VenuesFields, ContentTypes.VENUES_PLAYLIST_APP_V2>
 
 export type CategoryListContentModel = Entry<CategoryListFields, ContentTypes.CATEGORY_LIST>
 
@@ -514,6 +517,11 @@ export const isThematicHighlightContentModel = (
 
 export const isVenuesContentModel = (module: HomepageNatifModule): module is VenuesContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST
+
+export const isAppV2VenuesContentModel = (
+  module: HomepageNatifModule
+): module is AppV2VenuesContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST_APP_V2
 
 export const isCategoryListContentModel = (
   module: HomepageNatifModule

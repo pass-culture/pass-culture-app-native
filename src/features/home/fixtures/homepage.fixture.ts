@@ -1,17 +1,18 @@
 import { highlightOfferModuleFixture as formattedHighlightOfferModule } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
+  AppV2VenuesModule,
+  BusinessModule,
+  CategoryListModule,
+  Color,
   ExclusivityModule,
+  Homepage,
   HomepageModuleType,
+  HomepageTag,
   OffersModule,
   RecommendedOffersModule,
-  BusinessModule,
-  Homepage,
-  VenuesModule,
-  ThematicHighlightModule,
-  CategoryListModule,
   ThematicHeaderType,
-  Color,
-  HomepageTag,
+  ThematicHighlightModule,
+  VenuesModule,
 } from 'features/home/types'
 
 export const formattedBusinessModule: BusinessModule = {
@@ -65,6 +66,16 @@ export const formattedVenuesModule: VenuesModule = {
   displayParameters: {
     title: 'Exemple de playlist de lieux',
     subtitle: 'Ceci n’est pas une playlist de lieux',
+    layout: 'one-item-medium',
+    minOffers: 1,
+  },
+}
+
+export const formattedAppV2VenuesModule: AppV2VenuesModule = {
+  ...formattedVenuesModule,
+  type: HomepageModuleType.AppV2VenuesModule,
+  displayParameters: {
+    title: 'Exemple de playlist de lieux',
     layout: 'one-item-medium',
     minOffers: 1,
   },

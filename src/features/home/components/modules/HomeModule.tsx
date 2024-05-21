@@ -8,16 +8,18 @@ import { OffersModule } from 'features/home/components/modules/OffersModule'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import { VenueMapModule } from 'features/home/components/modules/VenueMapModule'
+import { AppV2VenuesModule } from 'features/home/components/modules/venues/AppV2VenuesModule'
 import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import {
-  isExclusivityModule,
   HomepageModule,
   HomepageModuleType,
+  isExclusivityModule,
   ModuleData,
 } from 'features/home/types'
 
 const modules = {
+  [HomepageModuleType.AppV2VenuesModule]: AppV2VenuesModule,
   [HomepageModuleType.BusinessModule]: BusinessModule,
   [HomepageModuleType.CategoryListModule]: CategoryListModule,
   [HomepageModuleType.ExclusivityModule]: ExclusivityModule,
