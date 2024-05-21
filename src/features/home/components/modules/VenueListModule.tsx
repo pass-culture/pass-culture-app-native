@@ -64,7 +64,7 @@ export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
 }
 
 const StyledFlatList = styled(FlatList as typeof FlatList<VenueHit>)(({ theme }) => ({
-  backgroundColor: theme.colors.goldLightest,
+  backgroundColor: theme.colors.goldLight100,
   borderRadius: getSpacing(4),
   padding: getSpacing(4),
 }))

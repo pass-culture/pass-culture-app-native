@@ -1,10 +1,10 @@
 import { theme } from 'theme'
 
 export const gradientColorsMapping = {
-  Gold: [theme.colors.goldLight, theme.colors.gold],
-  Aquamarine: [theme.colors.aquamarineLight, theme.colors.aquamarine],
-  SkyBlue: [theme.colors.skyBlueLight, theme.colors.skyBlue],
-  DeepPink: [theme.colors.deepPinkLight, theme.colors.deepPink],
-  Coral: [theme.colors.coralLight, theme.colors.coral],
-  Lilac: [theme.colors.lilacLight, theme.colors.lilac],
+  Gold: [theme.colors.gold, theme.colors.goldDark],
+  Aquamarine: [theme.colors.aquamarine, theme.colors.aquamarineDark],
+  SkyBlue: [theme.colors.skyBlue, theme.colors.skyBlueDark],
+  DeepPink: [theme.colors.deepPink, theme.colors.deepPinkDark],
+  Coral: [theme.colors.coral, theme.colors.coralDark],
+  Lilac: [theme.colors.lilac, theme.colors.lilacDark],
 }

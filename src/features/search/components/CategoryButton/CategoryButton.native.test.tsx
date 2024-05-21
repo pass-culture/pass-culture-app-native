@@ -14,10 +14,10 @@ describe('CategoryButton', () => {
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
         baseColor="#870087"
         onPress={jest.fn()}
-        gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
-        textColor={theme.colors.aquamarine}
-        borderColor={theme.colors.deepPinkLight}
-        fillColor={theme.colors.deepPinkLighter}
+        gradients={[theme.colors.deepPink, theme.colors.deepPinkDark]}
+        textColor={theme.colors.aquamarineDark}
+        borderColor={theme.colors.deepPink}
+        fillColor={theme.colors.deepPinkLight}
       />
     )
 
@@ -33,10 +33,10 @@ describe('CategoryButton', () => {
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
         baseColor="#870087"
         onPress={handleClick}
-        gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
-        textColor={theme.colors.aquamarine}
-        borderColor={theme.colors.deepPinkLight}
-        fillColor={theme.colors.deepPinkLighter}
+        gradients={[theme.colors.deepPink, theme.colors.deepPinkDark]}
+        textColor={theme.colors.aquamarineDark}
+        borderColor={theme.colors.deepPink}
+        fillColor={theme.colors.deepPinkLight}
       />
     )
 
@@ -54,10 +54,10 @@ describe('CategoryButton', () => {
         label="Bibliothèques & Médiathèques"
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
         onPress={handleClick}
-        gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
-        textColor={theme.colors.aquamarine}
-        borderColor={theme.colors.deepPinkLight}
-        fillColor={theme.colors.deepPinkLighter}
+        gradients={[theme.colors.deepPink, theme.colors.deepPinkDark]}
+        textColor={theme.colors.aquamarineDark}
+        borderColor={theme.colors.deepPink}
+        fillColor={theme.colors.deepPinkLight}
       />
     )
 

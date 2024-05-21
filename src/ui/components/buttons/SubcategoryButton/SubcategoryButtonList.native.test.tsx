@@ -6,7 +6,7 @@ import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
-const bookColorsGradient = [theme.colors.deepPinkLight, theme.colors.deepPink]
+const bookColorsGradient = [theme.colors.deepPink, theme.colors.deepPinkDark]
 const subcategoryButtonContent = [
   {
     label: 'Romans et littérature',

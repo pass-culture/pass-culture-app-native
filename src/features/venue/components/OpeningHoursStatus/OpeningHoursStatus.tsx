@@ -30,8 +30,8 @@ const getColorFromState = (theme: DefaultTheme) => (state: OpeningHoursStatusSta
   return {
     open: theme.colors.greenValid,
     close: theme.colors.error,
-    'open-soon': theme.colors.gold,
-    'close-soon': theme.colors.gold,
+    'open-soon': theme.colors.goldDark,
+    'close-soon': theme.colors.goldDark,
   }[state]
 }
 

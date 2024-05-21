@@ -3,17 +3,17 @@ import { theme } from 'theme'
 export const getTagColor = (color: string) => {
   switch (color) {
     case 'Gold':
-      return theme.colors.gold
+      return theme.colors.goldDark
     case 'Aquamarine':
-      return theme.colors.aquamarine
+      return theme.colors.aquamarineDark
     case 'SkyBlue':
-      return theme.colors.skyBlue
+      return theme.colors.skyBlueDark
     case 'DeepPink':
-      return theme.colors.deepPink
+      return theme.colors.deepPinkDark
     case 'Coral':
-      return theme.colors.coral
+      return theme.colors.coralDark
     case 'Lilac':
-      return theme.colors.lilac
+      return theme.colors.lilacDark
     default:
       return theme.colors.black
   }
