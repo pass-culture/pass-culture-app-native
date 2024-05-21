@@ -6,11 +6,11 @@ import { getShadow, getSpacing, Spacer } from 'ui/theme'
 
 import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
 
-export const TabBarContainer = ({ children }: { children: React.ReactNode }) => {
+export const TabBarContainer = ({ v2, children }: { v2: boolean; children: React.ReactNode }) => {
   const { bottom } = useCustomSafeInsets()
   const netInfo = useNetInfoContext()
   return (
-    <MainContainer>
+    <MainContainer v2={v2}>
       <RowContainer>
         <Spacer.Row numberOfSpaces={4} />
         {children}
@@ -30,11 +30,11 @@ const SafeAreaPlaceholder = styled.View<{ safeHeight: number }>(({ safeHeight })
   height: safeHeight,
 }))
 
-const MainContainer = styled.View(({ theme }) => ({
+const MainContainer = styled.View<{ v2: boolean }>(({ theme, v2 }) => ({
   alignItems: 'center',
   borderTopStyle: 'solid',
   borderTopWidth: getSpacing(1 / 4),
-  borderTopColor: theme.colors.greyLight,
+  borderTopColor: v2 ? theme.colors.greyMedium : theme.colors.greyLight,
   backgroundColor: theme.uniqueColors.tabBar,
   width: '100%',
   position: 'absolute',

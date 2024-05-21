@@ -29,7 +29,7 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
 
   return (
     <AccessibleTabBarContainer id={id}>
-      <TabBarContainer>
+      <TabBarContainer v2={!!enableTabBarV2}>
         <StyledUl>
           {tabRoutes.map((route) => {
             let tabNavConfig = getTabNavConfig(route.name)

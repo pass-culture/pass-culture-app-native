@@ -29,7 +29,7 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
   useTabBar({ state })
 
   return (
-    <TabBarContainer>
+    <TabBarContainer v2={!!enableTabBarV2}>
       {tabRoutes.map((route) => {
         const onPress = () => {
           const navigateParams: { screen: string; params?: unknown } = {
