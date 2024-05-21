@@ -134,7 +134,7 @@ exports[`VenuesModule component should render correctly 1`] = `
           }
         }
         contentHeight={250}
-        contentWidth={1008}
+        contentWidth={1260}
         data={
           [
             {
@@ -249,6 +249,35 @@ exports[`VenuesModule component should render correctly 1`] = `
               "latitude": 48.87004,
               "longitude": 2.3785,
               "name": "Le Petit Rintintin 4",
+              "postalCode": "75000",
+              "publicName": "Librairie Quantique",
+              "venueTypeCode": "MOVIE",
+            },
+            {
+              "accessibility": {
+                "audioDisability": false,
+                "mentalDisability": false,
+                "motorDisability": false,
+                "visualDisability": true,
+              },
+              "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+              "city": "Paris",
+              "contact": {
+                "email": "contact@venue.com",
+                "phoneNumber": "+33102030405",
+                "socialMedias": {
+                  "facebook": "https://facebook.com",
+                  "instagram": "https://instagram.com",
+                  "snapchat": "https://snapchat.com",
+                  "twitter": "https://twitter.com",
+                },
+                "website": "https://my@website.com",
+              },
+              "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+              "id": 5547,
+              "latitude": 48.87004,
+              "longitude": 2.3785,
+              "name": "Le Petit Rintintin 5",
               "postalCode": "75000",
               "publicName": "Librairie Quantique",
               "venueTypeCode": "MOVIE",
@@ -374,11 +403,40 @@ exports[`VenuesModule component should render correctly 1`] = `
                 "publicName": "Librairie Quantique",
                 "venueTypeCode": "MOVIE",
               },
+              {
+                "accessibility": {
+                  "audioDisability": false,
+                  "mentalDisability": false,
+                  "motorDisability": false,
+                  "visualDisability": true,
+                },
+                "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                "city": "Paris",
+                "contact": {
+                  "email": "contact@venue.com",
+                  "phoneNumber": "+33102030405",
+                  "socialMedias": {
+                    "facebook": "https://facebook.com",
+                    "instagram": "https://instagram.com",
+                    "snapchat": "https://snapchat.com",
+                    "twitter": "https://twitter.com",
+                  },
+                  "website": "https://my@website.com",
+                },
+                "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+                "id": 5547,
+                "latitude": 48.87004,
+                "longitude": 2.3785,
+                "name": "Le Petit Rintintin 5",
+                "postalCode": "75000",
+                "publicName": "Librairie Quantique",
+                "venueTypeCode": "MOVIE",
+              },
             ],
             "_firstIndexToProcess": 0,
             "_hasStableIds": true,
             "_requiresDataChangeHandling": false,
-            "_size": 4,
+            "_size": 5,
             "getStableId": [Function],
             "rowHasChanged": [Function],
           }
@@ -438,6 +496,13 @@ exports[`VenuesModule component should render correctly 1`] = `
                   "x": 756,
                   "y": 0,
                 },
+                {
+                  "height": 250,
+                  "type": 0,
+                  "width": 252,
+                  "x": 1008,
+                  "y": 0,
+                },
               ],
               "_maxSpan": 1,
               "_renderWindowSize": {
@@ -445,7 +510,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                 "width": 800,
               },
               "_totalHeight": 250,
-              "_totalWidth": 1008,
+              "_totalWidth": 1260,
               "_window": {
                 "height": 250,
                 "width": 800,
@@ -639,6 +704,35 @@ exports[`VenuesModule component should render correctly 1`] = `
                   "publicName": "Librairie Quantique",
                   "venueTypeCode": "MOVIE",
                 },
+                {
+                  "accessibility": {
+                    "audioDisability": false,
+                    "mentalDisability": false,
+                    "motorDisability": false,
+                    "visualDisability": true,
+                  },
+                  "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                  "city": "Paris",
+                  "contact": {
+                    "email": "contact@venue.com",
+                    "phoneNumber": "+33102030405",
+                    "socialMedias": {
+                      "facebook": "https://facebook.com",
+                      "instagram": "https://instagram.com",
+                      "snapchat": "https://snapchat.com",
+                      "twitter": "https://twitter.com",
+                    },
+                    "website": "https://my@website.com",
+                  },
+                  "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+                  "id": 5547,
+                  "latitude": 48.87004,
+                  "longitude": 2.3785,
+                  "name": "Le Petit Rintintin 5",
+                  "postalCode": "75000",
+                  "publicName": "Librairie Quantique",
+                  "venueTypeCode": "MOVIE",
+                },
               ],
               "drawDistance": 187.5,
               "estimatedItemSize": 252,
@@ -768,7 +862,7 @@ exports[`VenuesModule component should render correctly 1`] = `
               style={
                 {
                   "height": 250,
-                  "width": 1008,
+                  "width": 1260,
                 }
               }
               windowSize={800}
@@ -1637,6 +1731,77 @@ exports[`VenuesModule component should render correctly 1`] = `
                     </View>
                   </View>
                 </View>
+                <View
+                  leadingItem={
+                    {
+                      "accessibility": {
+                        "audioDisability": false,
+                        "mentalDisability": false,
+                        "motorDisability": false,
+                        "visualDisability": true,
+                      },
+                      "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                      "city": "Paris",
+                      "contact": {
+                        "email": "contact@venue.com",
+                        "phoneNumber": "+33102030405",
+                        "socialMedias": {
+                          "facebook": "https://facebook.com",
+                          "instagram": "https://instagram.com",
+                          "snapchat": "https://snapchat.com",
+                          "twitter": "https://twitter.com",
+                        },
+                        "website": "https://my@website.com",
+                      },
+                      "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+                      "id": 5546,
+                      "latitude": 48.87004,
+                      "longitude": 2.3785,
+                      "name": "Le Petit Rintintin 4",
+                      "postalCode": "75000",
+                      "publicName": "Librairie Quantique",
+                      "venueTypeCode": "MOVIE",
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "width": 16,
+                      },
+                    ]
+                  }
+                  trailingItem={
+                    {
+                      "accessibility": {
+                        "audioDisability": false,
+                        "mentalDisability": false,
+                        "motorDisability": false,
+                        "visualDisability": true,
+                      },
+                      "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+                      "city": "Paris",
+                      "contact": {
+                        "email": "contact@venue.com",
+                        "phoneNumber": "+33102030405",
+                        "socialMedias": {
+                          "facebook": "https://facebook.com",
+                          "instagram": "https://instagram.com",
+                          "snapchat": "https://snapchat.com",
+                          "twitter": "https://twitter.com",
+                        },
+                        "website": "https://my@website.com",
+                      },
+                      "description": " https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.",
+                      "id": 5547,
+                      "latitude": 48.87004,
+                      "longitude": 2.3785,
+                      "name": "Le Petit Rintintin 5",
+                      "postalCode": "75000",
+                      "publicName": "Librairie Quantique",
+                      "venueTypeCode": "MOVIE",
+                    }
+                  }
+                />
               </CellContainer>
             </AutoLayoutView>
             <CellContainer
