@@ -12,7 +12,7 @@ describe('<Checkbox />', () => {
       <CategoryButton
         label="Bibliothèques & Médiathèques"
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
-        baseColor="#870087"
+        baseColor={theme.colors.deepPinkLighter}
         onPress={jest.fn()}
         gradients={[theme.colors.deepPink, theme.colors.deepPinkDark]}
         textColor={theme.colors.aquamarineDark}

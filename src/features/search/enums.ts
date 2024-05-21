@@ -58,13 +58,13 @@ export type CategoryCriteria = {
     icon: React.FC<AccessibleBicolorIcon>
     illustration: category extends SearchGroupNameEnumv2.NONE ? undefined : React.FC<AccessibleIcon>
     facetFilter: SearchGroupNameEnumv2
-    baseColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum | string
+    baseColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum
     gradients: category extends SearchGroupNameEnumv2.NONE ? undefined : Gradient
     position: category extends SearchGroupNameEnumv2.NONE ? undefined : number
     // v2 App Design
-    fillColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum | string
-    borderColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum | string
-    textColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum | string
+    fillColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum
+    borderColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum
+    textColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum
   }
 }
 

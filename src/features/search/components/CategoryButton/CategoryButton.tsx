@@ -8,19 +8,21 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 export type CategoryButtonProps = {
   label: string
   Illustration?: FunctionComponent<AccessibleIcon>
-  baseColor?: string
+  baseColor?: ColorsEnum
   gradients: Gradient
   onPress: () => void
   children?: never
   // v2 App Design
-  textColor: string
-  fillColor: string
-  borderColor: string
+  textColor: ColorsEnum
+  fillColor: ColorsEnum
+  borderColor: ColorsEnum
 }
 
 export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({

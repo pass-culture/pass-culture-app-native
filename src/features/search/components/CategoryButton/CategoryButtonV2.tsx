@@ -5,13 +5,16 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
+import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 type CategoryButtonV2Props = {
   label: string
-  textColor: string
-  fillColor: string
-  borderColor: string
+  textColor: ColorsEnum
+  fillColor: ColorsEnum
+  borderColor: ColorsEnum
   onPress: () => void
   children?: never
 }
@@ -32,7 +35,8 @@ export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
       accessibilityLabel={`Catégorie ${label}`}
       hoverUnderlineColor={theme.colors.white}
       baseColor={fillColor}
-      borderColor={borderColor}>
+      borderColor={borderColor}
+      textColor={textColor}>
       <LabelContainer>
         <Label baseColor={textColor}>{label.toUpperCase()}</Label>
       </LabelContainer>
@@ -41,14 +45,16 @@ export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
 }
 
 const TouchableContainer = styledButton(Touchable)<{
-  isFocus?: boolean
-  baseColor?: string
-  borderColor?: string
-}>(({ theme, isFocus, baseColor, borderColor }) => ({
+  isFocus: boolean
+  baseColor: ColorsEnum
+  borderColor: ColorsEnum
+  textColor: ColorsEnum
+}>(({ theme, isFocus, baseColor, borderColor, textColor }) => ({
   height: getSpacing(24.25),
   overflow: 'hidden',
   borderRadius: theme.borderRadius.radius,
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  ...getHoverStyle(textColor),
   backgroundColor: baseColor,
   borderColor: borderColor,
   borderWidth: '1.6px',
