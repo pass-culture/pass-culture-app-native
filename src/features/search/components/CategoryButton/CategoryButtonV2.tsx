@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { useHandleHover } from 'libs/hooks/useHandleHover'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -27,13 +27,15 @@ export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
   onPress,
 }) => {
   const focusProps = useHandleFocus()
-  const theme = useTheme()
+  const hoverProps = useHandleHover()
+
   return (
     <TouchableContainer
       {...focusProps}
+      {...hoverProps}
+      onMouseDown={(e) => e.preventDefault()} // Prevent focus on click
       onPress={onPress}
       accessibilityLabel={`Catégorie ${label}`}
-      hoverUnderlineColor={theme.colors.white}
       baseColor={fillColor}
       borderColor={borderColor}
       textColor={textColor}>
@@ -44,17 +46,19 @@ export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
   )
 }
 
-const TouchableContainer = styledButton(Touchable)<{
+const TouchableContainer = styled(TouchableOpacity)<{
+  onMouseDown: (e: Event) => void
   isFocus: boolean
+  isHover: boolean
   baseColor: ColorsEnum
   borderColor: ColorsEnum
   textColor: ColorsEnum
-}>(({ theme, isFocus, baseColor, borderColor, textColor }) => ({
+}>(({ theme, isFocus, isHover, baseColor, borderColor, textColor }) => ({
   height: getSpacing(24.25),
   overflow: 'hidden',
   borderRadius: theme.borderRadius.radius,
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
-  ...getHoverStyle(textColor),
+  ...getHoverStyle(textColor, isHover),
   backgroundColor: baseColor,
   borderColor,
   borderWidth: '1.6px',

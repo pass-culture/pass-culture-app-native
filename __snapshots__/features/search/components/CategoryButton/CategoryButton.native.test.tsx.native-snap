@@ -107,11 +107,9 @@ exports[`CategoryButton should render correctly 1`] = `
     </BVLinearGradient>
   </View>
   <View
-    baseColor="#870087"
     style={
       [
         {
-          "backgroundColor": "#870087",
           "paddingBottom": 8,
           "paddingLeft": 8,
           "paddingRight": 8,

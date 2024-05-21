@@ -493,7 +493,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             "label": "Concerts & festivals",
             "onPress": [Function],
             "position": 1,
-            "textColor": "#C01371",
+            "textColor": "#8337E9",
           },
           {
             "Icon": {
@@ -634,8 +634,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#CA3F13",
-            "borderColor": "#F8733D",
-            "fillColor": "#FFDECC",
+            "borderColor": "#0E8474",
+            "fillColor": "#DBFFEA",
             "gradients": [
               "#F8733D",
               "#CA3F13",
@@ -643,7 +643,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             "label": "Spectacles",
             "onPress": [Function],
             "position": 6,
-            "textColor": "#0E78B7",
+            "textColor": "#8337E9",
           },
           {
             "Icon": {
@@ -664,8 +664,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#0E8474",
-            "borderColor": "#0E8474",
-            "fillColor": "#DBFFEA",
+            "borderColor": "#FBDBAC",
+            "fillColor": "#FFF5D8",
             "gradients": [
               "#27DCA8",
               "#0E8474",
@@ -694,8 +694,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#B85901",
-            "borderColor": "#FBDBAC",
-            "fillColor": "#FFF5D8",
+            "borderColor": "#F8733D",
+            "fillColor": "#FFDECC",
             "gradients": [
               "#FA9F16",
               "#B85901",
@@ -703,7 +703,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             "label": "Jeux & jeux vidéos",
             "onPress": [Function],
             "position": 8,
-            "textColor": "#C01371",
+            "textColor": "#0E78B7",
           },
           {
             "Icon": {
@@ -724,8 +724,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#0E78B7",
-            "borderColor": "#AD87FF",
-            "fillColor": "#EAE3FF",
+            "borderColor": "#EC3478",
+            "fillColor": "#FFD7E9",
             "gradients": [
               "#20C5E9",
               "#0E78B7",
@@ -733,7 +733,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             "label": "Instruments de musique",
             "onPress": [Function],
             "position": 9,
-            "textColor": "#C01371",
+            "textColor": "#0E8474",
           },
           {
             "Icon": {
@@ -763,7 +763,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             "label": "Médias & presse",
             "onPress": [Function],
             "position": 10,
-            "textColor": "#0E78B7",
+            "textColor": "#CA3F13",
           },
           {
             "Icon": {
@@ -784,8 +784,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#8337E9",
-            "borderColor": "#F8733D",
-            "fillColor": "#FFDECC",
+            "borderColor": "#AD87FF",
+            "fillColor": "#EAE3FF",
             "gradients": [
               "#AD87FF",
               "#8337E9",
@@ -793,7 +793,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             "label": "Cartes jeunes",
             "onPress": [Function],
             "position": 11,
-            "textColor": "#0E78B7",
+            "textColor": "#C01371",
           },
           {
             "Icon": {
@@ -829,8 +829,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               "withComponent": [Function],
             },
             "baseColor": "#B85901",
-            "borderColor": "#EC3478",
-            "fillColor": "#FFD7E9",
+            "borderColor": "#0E8474",
+            "fillColor": "#DBFFEA",
             "gradients": [
               "#FA9F16",
               "#B85901",
@@ -838,7 +838,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             "label": "Conférences & rencontres",
             "onPress": [Function],
             "position": 12,
-            "textColor": "#0E8474",
+            "textColor": "#8337E9",
           },
           {
             "Icon": {
@@ -859,8 +859,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#0E8474",
-            "borderColor": "#0E8474",
-            "fillColor": "#DBFFEA",
+            "borderColor": "#FBDBAC",
+            "fillColor": "#FFF5D8",
             "gradients": [
               "#27DCA8",
               "#0E8474",
@@ -3679,7 +3679,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             "label": "Concerts & festivals",
             "onPress": [Function],
             "position": 1,
-            "textColor": "#C01371",
+            "textColor": "#8337E9",
           },
           {
             "Icon": {
@@ -3820,8 +3820,8 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#CA3F13",
-            "borderColor": "#F8733D",
-            "fillColor": "#FFDECC",
+            "borderColor": "#0E8474",
+            "fillColor": "#DBFFEA",
             "gradients": [
               "#F8733D",
               "#CA3F13",
@@ -3829,7 +3829,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             "label": "Spectacles",
             "onPress": [Function],
             "position": 6,
-            "textColor": "#0E78B7",
+            "textColor": "#8337E9",
           },
           {
             "Icon": {
@@ -3850,8 +3850,8 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#0E8474",
-            "borderColor": "#0E8474",
-            "fillColor": "#DBFFEA",
+            "borderColor": "#FBDBAC",
+            "fillColor": "#FFF5D8",
             "gradients": [
               "#27DCA8",
               "#0E8474",
@@ -3880,8 +3880,8 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#B85901",
-            "borderColor": "#FBDBAC",
-            "fillColor": "#FFF5D8",
+            "borderColor": "#F8733D",
+            "fillColor": "#FFDECC",
             "gradients": [
               "#FA9F16",
               "#B85901",
@@ -3889,7 +3889,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             "label": "Jeux & jeux vidéos",
             "onPress": [Function],
             "position": 8,
-            "textColor": "#C01371",
+            "textColor": "#0E78B7",
           },
           {
             "Icon": {
@@ -3910,8 +3910,8 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#0E78B7",
-            "borderColor": "#AD87FF",
-            "fillColor": "#EAE3FF",
+            "borderColor": "#EC3478",
+            "fillColor": "#FFD7E9",
             "gradients": [
               "#20C5E9",
               "#0E78B7",
@@ -3919,7 +3919,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             "label": "Instruments de musique",
             "onPress": [Function],
             "position": 9,
-            "textColor": "#C01371",
+            "textColor": "#0E8474",
           },
           {
             "Icon": {
@@ -3949,7 +3949,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             "label": "Médias & presse",
             "onPress": [Function],
             "position": 10,
-            "textColor": "#0E78B7",
+            "textColor": "#CA3F13",
           },
           {
             "Icon": {
@@ -3970,8 +3970,8 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#8337E9",
-            "borderColor": "#F8733D",
-            "fillColor": "#FFDECC",
+            "borderColor": "#AD87FF",
+            "fillColor": "#EAE3FF",
             "gradients": [
               "#AD87FF",
               "#8337E9",
@@ -3979,7 +3979,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             "label": "Cartes jeunes",
             "onPress": [Function],
             "position": 11,
-            "textColor": "#0E78B7",
+            "textColor": "#C01371",
           },
           {
             "Icon": {
@@ -4015,8 +4015,8 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
               "withComponent": [Function],
             },
             "baseColor": "#B85901",
-            "borderColor": "#EC3478",
-            "fillColor": "#FFD7E9",
+            "borderColor": "#0E8474",
+            "fillColor": "#DBFFEA",
             "gradients": [
               "#FA9F16",
               "#B85901",
@@ -4024,7 +4024,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             "label": "Conférences & rencontres",
             "onPress": [Function],
             "position": 12,
-            "textColor": "#0E8474",
+            "textColor": "#8337E9",
           },
           {
             "Icon": {
@@ -4045,8 +4045,8 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#0E8474",
-            "borderColor": "#0E8474",
-            "fillColor": "#DBFFEA",
+            "borderColor": "#FBDBAC",
+            "fillColor": "#FFF5D8",
             "gradients": [
               "#27DCA8",
               "#0E8474",
@@ -4351,6 +4351,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
+                    "alignItems": "flex-end",
                     "backgroundColor": "#FFF5D8",
                     "borderColor": "#FBDBAC",
                     "borderRadius": 8,
@@ -4370,6 +4371,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -4380,11 +4382,12 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   }
                 >
                   <Text
-                    baseColor="#C01371"
+                    baseColor="#8337E9"
+                    numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#C01371",
+                          "color": "#8337E9",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -4443,6 +4446,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
+                    "alignItems": "flex-end",
                     "backgroundColor": "#FFDECC",
                     "borderColor": "#F8733D",
                     "borderRadius": 8,
@@ -4462,6 +4466,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -4473,6 +4478,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 >
                   <Text
                     baseColor="#0E78B7"
+                    numberOfLines={3}
                     style={
                       [
                         {
@@ -4549,6 +4555,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
+                    "alignItems": "flex-end",
                     "backgroundColor": "#FFD7E9",
                     "borderColor": "#EC3478",
                     "borderRadius": 8,
@@ -4568,6 +4575,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -4579,6 +4587,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 >
                   <Text
                     baseColor="#0E8474"
+                    numberOfLines={3}
                     style={
                       [
                         {
@@ -4641,6 +4650,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
+                    "alignItems": "flex-end",
                     "backgroundColor": "#D6F8FF",
                     "borderColor": "#20C5E9",
                     "borderRadius": 8,
@@ -4660,6 +4670,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -4671,6 +4682,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 >
                   <Text
                     baseColor="#CA3F13"
+                    numberOfLines={3}
                     style={
                       [
                         {
@@ -4747,6 +4759,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
+                    "alignItems": "flex-end",
                     "backgroundColor": "#EAE3FF",
                     "borderColor": "#AD87FF",
                     "borderRadius": 8,
@@ -4766,6 +4779,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -4777,6 +4791,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 >
                   <Text
                     baseColor="#C01371"
+                    numberOfLines={3}
                     style={
                       [
                         {
@@ -4839,8 +4854,9 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "alignItems": "flex-end",
+                    "backgroundColor": "#DBFFEA",
+                    "borderColor": "#0E8474",
                     "borderRadius": 8,
                     "borderWidth": 1.6,
                     "display": "flex",
@@ -4858,6 +4874,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -4868,11 +4885,12 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   }
                 >
                   <Text
-                    baseColor="#0E78B7"
+                    baseColor="#8337E9"
+                    numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#0E78B7",
+                          "color": "#8337E9",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -4945,8 +4963,9 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "backgroundColor": "#DBFFEA",
-                    "borderColor": "#0E8474",
+                    "alignItems": "flex-end",
+                    "backgroundColor": "#FFF5D8",
+                    "borderColor": "#FBDBAC",
                     "borderRadius": 8,
                     "borderWidth": 1.6,
                     "display": "flex",
@@ -4964,6 +4983,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -4975,6 +4995,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 >
                   <Text
                     baseColor="#8337E9"
+                    numberOfLines={3}
                     style={
                       [
                         {
@@ -5037,8 +5058,9 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "backgroundColor": "#FFF5D8",
-                    "borderColor": "#FBDBAC",
+                    "alignItems": "flex-end",
+                    "backgroundColor": "#FFDECC",
+                    "borderColor": "#F8733D",
                     "borderRadius": 8,
                     "borderWidth": 1.6,
                     "display": "flex",
@@ -5056,6 +5078,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -5066,11 +5089,12 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   }
                 >
                   <Text
-                    baseColor="#C01371"
+                    baseColor="#0E78B7"
+                    numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#C01371",
+                          "color": "#0E78B7",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -5143,8 +5167,9 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "backgroundColor": "#EAE3FF",
-                    "borderColor": "#AD87FF",
+                    "alignItems": "flex-end",
+                    "backgroundColor": "#FFD7E9",
+                    "borderColor": "#EC3478",
                     "borderRadius": 8,
                     "borderWidth": 1.6,
                     "display": "flex",
@@ -5162,6 +5187,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -5172,11 +5198,12 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   }
                 >
                   <Text
-                    baseColor="#C01371"
+                    baseColor="#0E8474"
+                    numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#C01371",
+                          "color": "#0E8474",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -5235,6 +5262,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
+                    "alignItems": "flex-end",
                     "backgroundColor": "#D6F8FF",
                     "borderColor": "#20C5E9",
                     "borderRadius": 8,
@@ -5254,6 +5282,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -5264,11 +5293,12 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   }
                 >
                   <Text
-                    baseColor="#0E78B7"
+                    baseColor="#CA3F13"
+                    numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#0E78B7",
+                          "color": "#CA3F13",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -5341,8 +5371,9 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "alignItems": "flex-end",
+                    "backgroundColor": "#EAE3FF",
+                    "borderColor": "#AD87FF",
                     "borderRadius": 8,
                     "borderWidth": 1.6,
                     "display": "flex",
@@ -5360,6 +5391,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -5370,11 +5402,12 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   }
                 >
                   <Text
-                    baseColor="#0E78B7"
+                    baseColor="#C01371"
+                    numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#0E78B7",
+                          "color": "#C01371",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -5433,8 +5466,9 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "backgroundColor": "#FFD7E9",
-                    "borderColor": "#EC3478",
+                    "alignItems": "flex-end",
+                    "backgroundColor": "#DBFFEA",
+                    "borderColor": "#0E8474",
                     "borderRadius": 8,
                     "borderWidth": 1.6,
                     "display": "flex",
@@ -5452,6 +5486,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -5462,11 +5497,12 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   }
                 >
                   <Text
-                    baseColor="#0E8474"
+                    baseColor="#8337E9"
+                    numberOfLines={3}
                     style={
                       [
                         {
-                          "color": "#0E8474",
+                          "color": "#8337E9",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -5539,8 +5575,9 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "backgroundColor": "#DBFFEA",
-                    "borderColor": "#0E8474",
+                    "alignItems": "flex-end",
+                    "backgroundColor": "#FFF5D8",
+                    "borderColor": "#FBDBAC",
                     "borderRadius": 8,
                     "borderWidth": 1.6,
                     "display": "flex",
@@ -5558,6 +5595,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "alignItems": "flex-start",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -5569,6 +5607,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 >
                   <Text
                     baseColor="#8337E9"
+                    numberOfLines={3}
                     style={
                       [
                         {
