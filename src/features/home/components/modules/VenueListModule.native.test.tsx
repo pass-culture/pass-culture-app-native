@@ -12,7 +12,7 @@ describe('<VenueListModule />', () => {
     expect(screen.getByText('LES LIEUX CULTURELS À PROXIMITÉ')).toBeOnTheScreen()
   })
 
-  it('should redirect to venue map when pressing on playlist title', () => {
+  it('should redirect to venue map when pressing on venue list title', () => {
     render(<VenueListModule venues={venuesSearchFixture.hits} />)
 
     fireEvent.press(screen.getByText('LES LIEUX CULTURELS À PROXIMITÉ'))
