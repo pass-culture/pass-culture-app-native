@@ -3,19 +3,20 @@ import { createStore } from 'libs/store/createStore'
 
 type State = { city: SuggestedCity | null }
 
-type Actions = {
-  setCity: (payload: SuggestedCity) => void
-  resetCity: () => void
-}
+const defaultState: State = { city: null }
 
-const useCityStore = createStore<State, Actions>(
+const setActions = (set: (payload: State) => void) => ({
+  setCity: (payload: SuggestedCity) => set({ city: payload }),
+  resetCity: () => set(defaultState),
+})
+
+const useCityStore = createStore<State, ReturnType<typeof setActions>>(
   'profile-city',
-  { city: null },
-  (set) => ({
-    setCity: (payload) => set({ city: payload }),
-    resetCity: () => set({ city: null }),
-  }),
-  { persist: true }
+  defaultState,
+  setActions,
+  {
+    persist: true,
+  }
 )
 
 export const useCity = () => useCityStore((state) => state.city)

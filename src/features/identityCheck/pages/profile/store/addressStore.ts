@@ -3,18 +3,18 @@ import { createStore } from 'libs/store/createStore'
 type State = {
   address: string | null
 }
-type Actions = {
-  setAddress: (payload: string) => void
-  resetAddress: () => void
-}
 
-const useAddressStore = createStore<State, Actions>(
+const defaultState: State = { address: null }
+
+const setActions = (set: (payload: State) => void) => ({
+  setAddress: (payload: string) => set({ address: payload }),
+  resetAddress: () => set(defaultState),
+})
+
+const useAddressStore = createStore<State, ReturnType<typeof setActions>>(
   'profile-address',
-  { address: null },
-  (set) => ({
-    setAddress: (payload) => set({ address: payload }),
-    resetAddress: () => set({ address: null }),
-  }),
+  defaultState,
+  setActions,
   { persist: true }
 )
 

@@ -11,20 +11,19 @@ type State = {
   bears: number
 }
 
-type Actions = {
-  addBear: () => void
-  removeBear: () => void
-  setBears: (nb: number) => void
-}
+const defaultState: State = { bears: 0 }
 
-const useCountBears = createStore<State, Actions>(
+const setActions = (set: (payload: State) => void) => ({
+  addBear: () => set((state) => ({ bears: state.bears + 1 })),
+  removeBear: () => set((state) => ({ bears: state.bears - 1 })),
+  setBears: (payload: number) => set({ bears: payload }),
+
+})
+
+const useCountBears = createStore<State, ReturnType<typeof setActions>>(
   'count-bears-store',
-  { bears: 0 },
-  (set) => ({
-    addBear: () => set((state) => ({ bears: state.bears + 1 })),
-    removeBear: () => set((state) => ({ bears: state.bears - 1 })),
-    setBears: (payload) => set({ bears: payload }),
-  }),
+  defaultState,
+  setActions
 )
 
 export const useBears = () => useCountBears((state) => state.bears)
@@ -59,20 +58,19 @@ type State = {
   bears: number
 }
 
-type Actions = {
-  addBear: () => void
-  removeBear: () => void
-  setBears: (nb: number) => void
-}
+const defaultState: State = { bears: 0 }
 
-const useCountBears = createStore<State, Actions>(
+const setActions = (set: (payload: State) => void) => ({
+  addBear: () => set((state) => ({ bears: state.bears + 1 })),
+  removeBear: () => set((state) => ({ bears: state.bears - 1 })),
+  setBears: (payload: number) => set({ bears: payload }),
+
+})
+
+const useCountBears = createStore<State, ReturnType<typeof setActions>>(
   'count-bears-store',
-  { bears: 0 },
-  (set) => ({
-    addBear: () => set((state) => ({ bears: state.bears + 1 })),
-    removeBear: () => set((state) => ({ bears: state.bears - 1 })),
-    setBears: (payload) => set({ bears: payload }),
-  }),
+  defaultState,
+  setActions,
   { persist: true },
 )
 

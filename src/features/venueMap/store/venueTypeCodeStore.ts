@@ -4,16 +4,17 @@ import { createStore } from 'libs/store/createStore'
 type State = {
   venueTypeCode: VenueTypeCode | null
 }
-type Actions = {
-  setVenueTypeCode: (payload: VenueTypeCode | null) => void
-}
 
-const useVenueTypeCodeStore = createStore<State, Actions>(
+const defaultState: State = { venueTypeCode: null }
+
+const setActions = (set: (payload: State) => void) => ({
+  setVenueTypeCode: (payload: VenueTypeCode | null) => set({ venueTypeCode: payload }),
+})
+
+const useVenueTypeCodeStore = createStore<State, ReturnType<typeof setActions>>(
   'venue-map-venue-type-code',
-  { venueTypeCode: null },
-  (set) => ({
-    setVenueTypeCode: (payload) => set({ venueTypeCode: payload }),
-  })
+  defaultState,
+  setActions
 )
 
 export const useVenueTypeCode = () => useVenueTypeCodeStore((state) => state.venueTypeCode)

@@ -4,13 +4,18 @@ import { createStore } from 'libs/store/createStore'
 type State = {
   venues: Venue[]
 }
-type Actions = {
-  setVenues: (payload: Venue[]) => void
-}
 
-const useVenuesStore = createStore<State, Actions>('venue-map-venues', { venues: [] }, (set) => ({
-  setVenues: (payload) => set({ venues: payload }),
-}))
+const defaultState: State = { venues: [] }
+
+const setActions = (set: (payload: State) => void) => ({
+  setVenues: (payload: Venue[]) => set({ venues: payload }),
+})
+
+const useVenuesStore = createStore<State, ReturnType<typeof setActions>>(
+  'venue-map-venues',
+  defaultState,
+  setActions
+)
 
 export const useVenues = () => useVenuesStore((state) => state.venues)
 export const useVenuesActions = () => useVenuesStore((state) => state.actions)

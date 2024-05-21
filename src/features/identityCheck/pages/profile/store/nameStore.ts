@@ -7,18 +7,17 @@ interface Name {
 
 type State = { name: Name | null }
 
-type Actions = {
-  setName: (payload: Name) => void
-  resetName: () => void
-}
+const defaultState: State = { name: null }
 
-const useNameStore = createStore<State, Actions>(
+const setActions = (set: (payload: State) => void) => ({
+  setName: (payload: Name) => set({ name: payload }),
+  resetName: () => set(defaultState),
+})
+
+const useNameStore = createStore<State, ReturnType<typeof setActions>>(
   'profile-name',
-  { name: null },
-  (set) => ({
-    setName: (payload) => set({ name: payload }),
-    resetName: () => set({ name: null }),
-  }),
+  defaultState,
+  setActions,
   { persist: true }
 )
 

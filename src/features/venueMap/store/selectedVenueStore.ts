@@ -4,18 +4,18 @@ import { createStore } from 'libs/store/createStore'
 type State = {
   selectedVenue: GeolocatedVenue | null
 }
-type Actions = {
-  setSelectedVenue: (payload: GeolocatedVenue | null) => void
-  removeSelectedVenue: () => void
-}
 
-const useSelectedVenueStore = createStore<State, Actions>(
+const defaultState: State = { selectedVenue: null }
+
+const setActions = (set: (payload: State) => void) => ({
+  setSelectedVenue: (payload: GeolocatedVenue) => set({ selectedVenue: payload }),
+  removeSelectedVenue: () => set(defaultState),
+})
+
+const useSelectedVenueStore = createStore<State, ReturnType<typeof setActions>>(
   'venue-map-selected-venue',
-  { selectedVenue: null },
-  (set) => ({
-    setSelectedVenue: (payload) => set({ selectedVenue: payload }),
-    removeSelectedVenue: () => set({ selectedVenue: null }),
-  })
+  defaultState,
+  setActions
 )
 
 export const useSelectedVenue = () => useSelectedVenueStore((state) => state.selectedVenue)
