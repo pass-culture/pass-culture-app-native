@@ -1,4 +1,4 @@
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { SearchGroupNameEnumv2, SimilarOffersResponse } from 'api/gen'
 import * as useAlgoliaSimilarOffers from 'features/offer/api/useAlgoliaSimilarOffers'
 import { getCategories, useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { env } from 'libs/environment/fixtures'
@@ -34,12 +34,10 @@ jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 
 describe('useSimilarOffers', () => {
   beforeEach(() => {
-    mockServer.universalGet(
-      `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/${mockOfferId}`,
-      {
-        hits: [],
-      }
-    )
+    mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
+      params: {},
+      results: [],
+    })
   })
 
   it('should call Algolia hook with category included', async () => {

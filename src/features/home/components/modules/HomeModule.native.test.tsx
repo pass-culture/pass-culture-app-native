@@ -19,7 +19,6 @@ import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
-import { env } from 'libs/environment'
 import { GeoCoordinates, ILocationContext, Position, useLocation } from 'libs/location'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
@@ -147,7 +146,7 @@ describe('<HomeModule />', () => {
       results: ['102280', '102272'],
     }
 
-    mockServer.postApi(env.API_BASE_URL + '/v1/recommendation/playlist', recommendedOffers)
+    mockServer.postApi('/v1/recommendation/playlist', recommendedOffers)
 
     renderHomeModule(formattedRecommendedOffersModule)
     await act(async () => {})

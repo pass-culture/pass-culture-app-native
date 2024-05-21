@@ -1,10 +1,9 @@
 import React from 'react'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponseV2, SimilarOffersResponse } from 'api/gen'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
-import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
@@ -68,18 +67,14 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
 describe('<Offer/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
-      mockServer.universalGet(
-        `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/116656`,
-        {
-          hits: [],
-        }
-      )
-      mockServer.universalGet(
-        `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/116656`,
-        {
-          hits: [],
-        }
-      )
+      mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/116656`, {
+        params: {},
+        results: [],
+      })
+      mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/116656`, {
+        params: {},
+        results: [],
+      })
     })
 
     it('should not have basic accessibility issues', async () => {

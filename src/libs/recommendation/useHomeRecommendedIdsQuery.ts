@@ -13,28 +13,25 @@ type Parameters = {
 }
 
 export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
+  const { playlistRequestBody, playlistRequestQuery, userId } = parameters
+  const { modelEndpoint, longitude, latitude } = playlistRequestQuery
+
   return useQuery(
     [QueryKeys.RECOMMENDATION_OFFER_IDS, parameters],
     async () => {
       try {
         const response = await api.postNativeV1RecommendationPlaylist(
-          parameters.playlistRequestBody,
-          parameters.playlistRequestQuery.modelEndpoint
-            ? parameters.playlistRequestQuery.modelEndpoint
-            : undefined,
-          parameters.playlistRequestQuery.longitude
-            ? parameters.playlistRequestQuery.longitude
-            : undefined,
-          parameters.playlistRequestQuery.latitude
-            ? parameters.playlistRequestQuery.latitude
-            : undefined
+          playlistRequestBody,
+          modelEndpoint ?? undefined,
+          longitude ?? undefined,
+          latitude ?? undefined
         )
 
         const captureContext: Partial<ScopeContext> = {
           level: 'info',
           extra: {
-            playlistRequestBody: JSON.stringify(parameters.playlistRequestBody),
-            playlistRequestQuery: JSON.stringify(parameters.playlistRequestQuery),
+            playlistRequestBody: JSON.stringify(playlistRequestBody),
+            playlistRequestQuery: JSON.stringify(playlistRequestQuery),
           },
         }
 
@@ -46,14 +43,14 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
       } catch (err) {
         eventMonitoring.captureException('Error with recommendation endpoint', {
           extra: {
-            playlistRequestBody: JSON.stringify(parameters.playlistRequestBody),
-            playlistRequestQuery: JSON.stringify(parameters.playlistRequestQuery),
+            playlistRequestBody: JSON.stringify(playlistRequestBody),
+            playlistRequestQuery: JSON.stringify(playlistRequestQuery),
           },
         })
 
         return { playlistRecommendedOffers: [], params: undefined }
       }
     },
-    { staleTime: 1000 * 60 * 5, enabled: !!parameters?.userId }
+    { staleTime: 1000 * 60 * 5, enabled: !!userId }
   )
 }

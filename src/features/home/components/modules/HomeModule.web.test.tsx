@@ -15,7 +15,6 @@ import {
 import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -132,7 +131,7 @@ describe('<HomeModule />', () => {
         results: ['102280', '102272'],
       }
 
-      mockServer.postApi(env.API_BASE_URL + '/v1/recommendation/playlist', recommendedOffers)
+      mockServer.postApi('/v1/recommendation/playlist', recommendedOffers)
 
       const { container } = renderHomeModule(formattedRecommendedOffersModule)
       await act(async () => {})
