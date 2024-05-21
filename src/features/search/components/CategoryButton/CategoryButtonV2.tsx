@@ -64,11 +64,11 @@ const TouchableContainer = styledButton(Touchable)<{
   alignItems: 'flex-end',
 }))
 
-const LabelContainer = styled.View(({ theme }) => ({
-  padding: theme.isMobileViewport ? getSpacing(2) : getSpacing(1),
+const LabelContainer = styled.View({
+  padding: getSpacing(2),
   width: '100%',
   alignItems: 'flex-start',
-}))
+})
 
 const Label = styled(Typo.ButtonText).attrs({ numberOfLines: 3 })<{ baseColor?: string }>(
   ({ baseColor }) => ({
