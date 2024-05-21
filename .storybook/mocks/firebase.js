@@ -7,6 +7,14 @@ const firebase = {
     setDefaultEventParameters: () => {},
     setUserId: () => {},
   }),
+  firestore: () => ({
+    settings: () => {},
+    collection: () => ({
+      doc: () => ({
+        get: async () => ({}),
+      }),
+    }),
+  }),
 }
 
 export default firebase
