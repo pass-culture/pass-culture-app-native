@@ -8,11 +8,11 @@ import { ContentTypes } from 'libs/contentful/types'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
-const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('CategoryListModule', () => {
   beforeEach(() => {
-    mockFeatureFlag.mockReturnValue(false)
+    useFeatureFlagSpy.mockReturnValue(false)
   })
 
   it('should call analytics when the module is displayed', () => {
@@ -82,8 +82,23 @@ describe('CategoryListModule', () => {
     })
   })
 
+  it('should render properly when enableAppV2CategoryBlock FF is activated', () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    render(
+      <CategoryListModule
+        id="123"
+        title="module"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="homeEntryId"
+      />
+    )
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should display circle nav buttons when feature is enabled', () => {
-    mockFeatureFlag.mockReturnValueOnce(true)
+    useFeatureFlagSpy.mockReturnValueOnce(true)
     render(
       <CategoryListModule
         id="123"

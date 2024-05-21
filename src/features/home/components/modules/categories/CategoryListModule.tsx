@@ -50,11 +50,15 @@ export const CategoryListModule = ({
     analytics.logModuleDisplayedOnHomepage(id, ContentTypes.CATEGORY_LIST, index, homeEntryId)
   }, [id, homeEntryId, index])
 
+  const enableAppV2CategoryBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK)
+
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? DESKTOP_COLUMNS : MOBILE_COLUMNS
 
-  const renderItem = ({ item }: { item: CategoryBlockData; index: number }) => (
-    <CategoryBlockContainer>
+  const renderItem = ({ item, index }: { item: CategoryBlockData; index: number }) => (
+    <CategoryBlockContainer
+      isLast={index === categoryBlockList.length - 1}
+      enableAppV2CategoryBlock={enableAppV2CategoryBlock}>
       <CategoryBlock
         {...item}
         onBeforePress={() => {
@@ -78,6 +82,20 @@ export const CategoryListModule = ({
     </CategoryBlockContainer>
   )
 
+  const newCategoryBlockProps = {
+    key: 'horizontal',
+    horizontal: true,
+    scrollEnabled: true,
+    showsHorizontalScrollIndicator: false,
+  }
+
+  const oldCategoryBlockProps = {
+    key: numColumns,
+    numColumns,
+    horizontal: false,
+    scrollEnabled: false,
+  }
+
   return (
     <React.Fragment>
       <HeaderContainer>
@@ -86,16 +104,13 @@ export const CategoryListModule = ({
           numberOfSpaces={theme.isDesktopViewport ? DESKTOP_TITLE_MARGIN : MOBILE_TITLE_MARGIN}
         />
       </HeaderContainer>
-      <FlatListContainer>
+      <FlatListContainer enableAppV2CategoryBlock={enableAppV2CategoryBlock}>
         <FlatList
-          key={numColumns} // update key to avoid the following error: Changing numColumns on the fly is not supported
           ListFooterComponent={ListFooterComponent}
           data={categoryBlockList}
-          numColumns={numColumns}
-          horizontal={false}
           renderItem={renderItem}
-          scrollEnabled={false}
           keyExtractor={keyExtractor}
+          {...(enableAppV2CategoryBlock ? newCategoryBlockProps : oldCategoryBlockProps)}
         />
       </FlatListContainer>
       {isCircleNavButtonsDisplayed ? <CircleNavButtons /> : null}
@@ -103,24 +118,50 @@ export const CategoryListModule = ({
   )
 }
 
-const FlatListContainer = styled.View(({ theme }) => ({
-  marginHorizontal: getSpacing(
-    theme.isDesktopViewport ? DESKTOP_CATEGORY_LIST_MARGIN : MOBILE_CATEGORY_LIST_MARGIN
-  ),
-}))
+const FlatListContainer = styled.View<{ enableAppV2CategoryBlock: boolean }>(
+  ({ theme, enableAppV2CategoryBlock }) => ({
+    ...(enableAppV2CategoryBlock
+      ? {
+          marginLeft: getSpacing(
+            theme.isDesktopViewport ? DESKTOP_CATEGORY_LIST_MARGIN : MOBILE_CATEGORY_LIST_MARGIN
+          ),
+          marginBottom: theme.isDesktopViewport
+            ? getSpacing(DESKTOP_CATEGORY_LIST_MARGIN)
+            : getSpacing(MOBILE_CATEGORY_LIST_MARGIN),
+        }
+      : {
+          marginHorizontal: getSpacing(
+            theme.isDesktopViewport ? DESKTOP_CATEGORY_LIST_MARGIN : MOBILE_CATEGORY_LIST_MARGIN
+          ),
+        }),
+  })
+)
 
 const HeaderContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const CategoryBlockContainer = styled.View(({ theme }) => ({
-  padding: getSpacing(
-    theme.isDesktopViewport ? DESKTOP_CATEGORY_BLOCK_MARGIN : MOBILE_CATEGORY_BLOCK_MARGIN
-  ),
-  flexBasis: theme.isDesktopViewport
-    ? DESKTOP_CATEGORY_BLOCK_FLEX_BASIS
-    : MOBILE_CATEGORY_BLOCK_FLEX_BASIS,
-}))
+const CategoryBlockContainer = styled.View<{ isLast: boolean; enableAppV2CategoryBlock: boolean }>(
+  ({ theme, isLast, enableAppV2CategoryBlock }) => ({
+    ...(enableAppV2CategoryBlock && isLast
+      ? {
+          marginRight: theme.isDesktopViewport
+            ? getSpacing(DESKTOP_CATEGORY_LIST_MARGIN)
+            : getSpacing(MOBILE_CATEGORY_LIST_MARGIN),
+        }
+      : {}),
+    ...(enableAppV2CategoryBlock
+      ? {}
+      : {
+          flexBasis: theme.isDesktopViewport
+            ? DESKTOP_CATEGORY_BLOCK_FLEX_BASIS
+            : MOBILE_CATEGORY_BLOCK_FLEX_BASIS,
+        }),
+    padding: getSpacing(
+      theme.isDesktopViewport ? DESKTOP_CATEGORY_BLOCK_MARGIN : MOBILE_CATEGORY_BLOCK_MARGIN
+    ),
+  })
+)
 
 const Footer = styled.View(({ theme }) => ({
   height: getSpacing(
