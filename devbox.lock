@@ -278,6 +278,63 @@
         }
       }
     },
+    "python3@latest": {
+      "last_modified": "2024-05-12T16:19:40Z",
+      "plugin_version": "0.0.3",
+      "resolved": "github:NixOS/nixpkgs/3281bec7174f679eabf584591e75979a258d8c40#python3",
+      "source": "devbox-search",
+      "version": "3.11.9",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/nmy6fyvrl4lyvn69nsliigpk0rhi4b4f-python3-3.11.9",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/nmy6fyvrl4lyvn69nsliigpk0rhi4b4f-python3-3.11.9"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/vbfsfi87f7ks3hndbvn72n4334f9xll0-python3-3.11.9",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/xjgm14n81v61p03v2gfw5mvijj1z5k6n-python3-3.11.9-debug"
+            }
+          ],
+          "store_path": "/nix/store/vbfsfi87f7ks3hndbvn72n4334f9xll0-python3-3.11.9"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/nl5nxkans56iir3s1vg1rpp71h8b6703-python3-3.11.9",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/nl5nxkans56iir3s1vg1rpp71h8b6703-python3-3.11.9"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/k3701zl6gmx3la7y4dnflcvf3xfy88kh-python3-3.11.9",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/6wrqkmplhvca233clvg6zgm7k0lj5cmp-python3-3.11.9-debug"
+            }
+          ],
+          "store_path": "/nix/store/k3701zl6gmx3la7y4dnflcvf3xfy88kh-python3-3.11.9"
+        }
+      }
+    },
     "ruby@2.7.5": {
       "last_modified": "2022-03-21T18:25:50Z",
       "plugin_version": "0.0.2",
