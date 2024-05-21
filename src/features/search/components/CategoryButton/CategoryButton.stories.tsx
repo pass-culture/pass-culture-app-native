@@ -18,6 +18,6 @@ export const Default = Template.bind({})
 Default.args = {
   label: 'Bibliothèques & Médiathèques',
   Illustration: SearchCategoriesIllustrations.Books,
-  baseColor: theme.colors.coral,
-  gradients: [theme.colors.coralLight, theme.colors.coral],
+  baseColor: theme.colors.coralDark,
+  gradients: [theme.colors.coral, theme.colors.coralDark],
 }

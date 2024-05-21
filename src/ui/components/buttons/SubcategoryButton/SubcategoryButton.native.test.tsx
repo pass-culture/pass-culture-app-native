@@ -12,7 +12,7 @@ describe('<SubcategoryButton/>', () => {
       reactQueryProviderHOC(
         <SubcategoryButton
           label="Mangas"
-          colors={[theme.colors.deepPinkLight, theme.colors.deepPink]}
+          colors={[theme.colors.deepPink, theme.colors.deepPinkDark]}
           nativeCategory={BooksNativeCategoriesEnum.MANGAS}
         />
       )

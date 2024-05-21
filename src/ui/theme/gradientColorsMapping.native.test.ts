@@ -7,8 +7,8 @@ describe('gradientColorsMapping', () => {
 
     const color = gradientColorsMapping[input]
 
-    expect(color[0]).toEqual(theme.colors.goldLight)
-    expect(color[1]).toEqual(theme.colors.gold)
+    expect(color[0]).toEqual(theme.colors.gold)
+    expect(color[1]).toEqual(theme.colors.goldDark)
   })
 
   it('should return aquamarine color code', () => {
@@ -16,8 +16,8 @@ describe('gradientColorsMapping', () => {
 
     const color = gradientColorsMapping[input]
 
-    expect(color[0]).toEqual(theme.colors.aquamarineLight)
-    expect(color[1]).toEqual(theme.colors.aquamarine)
+    expect(color[0]).toEqual(theme.colors.aquamarine)
+    expect(color[1]).toEqual(theme.colors.aquamarineDark)
   })
 
   it('should return skyBlue color code', () => {
@@ -25,8 +25,8 @@ describe('gradientColorsMapping', () => {
 
     const color = gradientColorsMapping[input]
 
-    expect(color[0]).toEqual(theme.colors.skyBlueLight)
-    expect(color[1]).toEqual(theme.colors.skyBlue)
+    expect(color[0]).toEqual(theme.colors.skyBlue)
+    expect(color[1]).toEqual(theme.colors.skyBlueDark)
   })
 
   it('should return deepPink color code', () => {
@@ -34,8 +34,8 @@ describe('gradientColorsMapping', () => {
 
     const color = gradientColorsMapping[input]
 
-    expect(color[0]).toEqual(theme.colors.deepPinkLight)
-    expect(color[1]).toEqual(theme.colors.deepPink)
+    expect(color[0]).toEqual(theme.colors.deepPink)
+    expect(color[1]).toEqual(theme.colors.deepPinkDark)
   })
 
   it('should return coral color code', () => {
@@ -43,8 +43,8 @@ describe('gradientColorsMapping', () => {
 
     const color = gradientColorsMapping[input]
 
-    expect(color[0]).toEqual(theme.colors.coralLight)
-    expect(color[1]).toEqual(theme.colors.coral)
+    expect(color[0]).toEqual(theme.colors.coral)
+    expect(color[1]).toEqual(theme.colors.coralDark)
   })
 
   it('should return lilac color code', () => {
@@ -52,7 +52,7 @@ describe('gradientColorsMapping', () => {
 
     const color = gradientColorsMapping[input]
 
-    expect(color[0]).toEqual(theme.colors.lilacLight)
-    expect(color[1]).toEqual(theme.colors.lilac)
+    expect(color[0]).toEqual(theme.colors.lilac)
+    expect(color[1]).toEqual(theme.colors.lilacDark)
   })
 })

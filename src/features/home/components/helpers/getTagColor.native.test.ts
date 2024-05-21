@@ -7,7 +7,7 @@ describe('getTagColor', () => {
 
     const color = getTagColor(input)
 
-    expect(color).toEqual(theme.colors.gold)
+    expect(color).toEqual(theme.colors.goldDark)
   })
 
   it('should return aquamarine color code', () => {
@@ -15,7 +15,7 @@ describe('getTagColor', () => {
 
     const color = getTagColor(input)
 
-    expect(color).toEqual(theme.colors.aquamarine)
+    expect(color).toEqual(theme.colors.aquamarineDark)
   })
 
   it('should return skyBlue color code', () => {
@@ -23,7 +23,7 @@ describe('getTagColor', () => {
 
     const color = getTagColor(input)
 
-    expect(color).toEqual(theme.colors.skyBlue)
+    expect(color).toEqual(theme.colors.skyBlueDark)
   })
 
   it('should return deepPink color code', () => {
@@ -31,7 +31,7 @@ describe('getTagColor', () => {
 
     const color = getTagColor(input)
 
-    expect(color).toEqual(theme.colors.deepPink)
+    expect(color).toEqual(theme.colors.deepPinkDark)
   })
 
   it('should return coral color code', () => {
@@ -39,7 +39,7 @@ describe('getTagColor', () => {
 
     const color = getTagColor(input)
 
-    expect(color).toEqual(theme.colors.coral)
+    expect(color).toEqual(theme.colors.coralDark)
   })
 
   it('should return lilac color code', () => {
@@ -47,7 +47,7 @@ describe('getTagColor', () => {
 
     const color = getTagColor(input)
 
-    expect(color).toEqual(theme.colors.lilac)
+    expect(color).toEqual(theme.colors.lilacDark)
   })
 
   it('should return black color code by default', () => {
