@@ -82,9 +82,9 @@ describe('<WebShareModal/>', () => {
     )
   })
 
-  it('should open Twitter when sharing with Twitter', () => {
+  it('should open X when sharing with X', () => {
     render(<WebShareModal {...defaultProps} />)
-    fireEvent.click(screen.getByText('Twitter'))
+    fireEvent.click(screen.getByText('X'))
 
     expect(openUrl).toHaveBeenCalledWith(
       'https://twitter.com/intent/tweet?text=Voici une super offre\u00a0!&url=https%3A%2F%2Furl.com%2Foffer',

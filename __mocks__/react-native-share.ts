@@ -10,5 +10,5 @@ export enum Social {
   Messenger = 'Messenger',
   Telegram = 'Telegram',
   Viber = 'Viber',
-  Twitter = 'Twitter',
+  Twitter = 'X',
 }

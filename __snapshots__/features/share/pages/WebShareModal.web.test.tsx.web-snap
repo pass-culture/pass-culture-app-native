@@ -279,7 +279,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                 class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                                 dir="ltr"
                               >
-                                Twitter
+                                X
                               </div>
                             </a>
                           </li>

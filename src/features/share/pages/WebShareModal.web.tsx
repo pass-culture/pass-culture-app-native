@@ -49,7 +49,7 @@ export const WebShareModal = ({
       },
     },
     {
-      label: 'Twitter',
+      label: 'X',
       icon: Twitter,
       externalNav: {
         url: `https://twitter.com/intent/tweet?text=${body}&url=${encodeURIComponent(url)}`,

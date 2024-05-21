@@ -8,7 +8,7 @@ import { TikTok } from 'ui/svg/icons/socialNetwork/TikTok'
 import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
-export type SocialNetwork = 'facebook' | 'instagram' | 'snapchat' | 'twitter' | 'tiktok'
+export type SocialNetwork = 'facebook' | 'instagram' | 'snapchat' | 'x' | 'tiktok'
 
 const FACEBOOK_ID = '2202916773290436'
 const FACEBOOK_WEB_URL = 'https://www.facebook.com/passCultureofficiel/'
@@ -29,6 +29,6 @@ export const SocialNetworkIconsMap: Record<
   facebook: { icon: Facebook, link: FACEBOOK_URL, fallbackLink: FACEBOOK_WEB_URL },
   instagram: { icon: Instagram, link: 'https://www.instagram.com/passcultureofficiel/?hl=fr' },
   snapchat: { icon: Snapchat, link: 'https://story.snapchat.com/@pass.culture' },
-  twitter: { icon: Twitter, link: 'https://twitter.com/pass_Culture' },
+  x: { icon: Twitter, link: 'https://twitter.com/pass_Culture' },
   tiktok: { icon: TikTok, link: 'https://www.tiktok.com/@passcultureofficiel' },
 }

@@ -21,12 +21,15 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
     size: theme.icons.sizes.small,
   }))``
 
+  const onBeforeNavigate = () => {
+    const network = name === 'X' ? 'Twitter' : name
+    analytics.logClickSocialNetwork(network)
+  }
+
   return (
     <ExternalTouchableLink
       externalNav={{ url: link, params: { shouldLogEvent: false, fallbackUrl: fallbackLink } }}
-      onBeforeNavigate={() => {
-        analytics.logClickSocialNetwork(name)
-      }}
+      onBeforeNavigate={onBeforeNavigate}
       isOnPressThrottled>
       <Container>
         <NetworkIconBox>

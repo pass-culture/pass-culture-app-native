@@ -4,7 +4,7 @@ export enum Network {
   messenger = 'Messenger',
   snapchat = 'Snapchat',
   telegram = 'Telegram',
-  twitter = 'Twitter',
+  twitter = 'X',
   viber = 'Viber',
   whatsapp = 'WhatsApp',
   imessage = 'iMessage',
