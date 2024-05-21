@@ -2,6 +2,21 @@
 
 We advise to **follow [the guidelines](https://reactnative.dev/docs/environment-setup)** to set up your environment by selecting your Development OS and your target OS (Android/iOS).
 
+### Automatic
+
+[Install `nix` package manager](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer)
+
+[Install DirEnv](https://direnv.net/) please make sure to [hook into your shell](https://direnv.net/docs/hook.html)
+
+Load environment
+
+```sh
+cd ./pass-culture-app-native
+direnv allow
+```
+
+### Manual
+
 You'll also need `jq`:
 
 **MacOS**
