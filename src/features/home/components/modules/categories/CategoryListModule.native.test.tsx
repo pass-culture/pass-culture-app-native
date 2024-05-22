@@ -11,6 +11,10 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('CategoryListModule', () => {
+  beforeEach(() => {
+    mockFeatureFlag.mockReturnValue(false)
+  })
+
   it('should call analytics when the module is displayed', () => {
     render(
       <CategoryListModule
@@ -79,8 +83,7 @@ describe('CategoryListModule', () => {
   })
 
   it('should display circle nav buttons when feature is enabled', () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockFeatureFlag.mockReturnValue(true)
+    mockFeatureFlag.mockReturnValueOnce(true)
     render(
       <CategoryListModule
         id="123"
@@ -95,8 +98,6 @@ describe('CategoryListModule', () => {
   })
 
   it('should NOT display circle nav buttons when feature is disabled', () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockFeatureFlag.mockReturnValue(false)
     render(
       <CategoryListModule
         id="123"
