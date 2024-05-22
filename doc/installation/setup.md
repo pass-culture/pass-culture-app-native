@@ -8,6 +8,8 @@ We advise to **follow [the guidelines](https://reactnative.dev/docs/environment-
 
 [Install DirEnv](https://direnv.net/) please make sure to [hook into your shell](https://direnv.net/docs/hook.html)
 
+Start a new terminal to load the new configuration
+
 Load environment
 
 ```sh
