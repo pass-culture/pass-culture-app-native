@@ -22,21 +22,6 @@ const profile = {
   schoolType: null,
 }
 
-// const mockResetName = jest.fn()
-// jest.mock('features/identityCheck/pages/profile/store/nameStore')
-// ;(useName as jest.Mock).mockReturnValue(profile.name)
-// ;(useNameActions as jest.Mock).mockReturnValue({ resetName: mockResetName })
-
-// const mockResetCity = jest.fn()
-// jest.mock('features/identityCheck/pages/profile/store/cityStore')
-// ;(useCity as jest.Mock).mockReturnValue(profile.city)
-// ;(useCityActions as jest.Mock).mockReturnValue({ resetCity: mockResetCity })
-
-// const mockResetAddress = jest.fn()
-// jest.mock('features/identityCheck/pages/profile/store/addressStore')
-// ;(useAddress as jest.Mock).mockReturnValue(profile.address)
-// ;(useAddressActions as jest.Mock).mockReturnValue({ resetAddress: mockResetAddress })
-
 const postSubscriptionProfileSpy = jest
   .spyOn(API.api, 'postNativeV1SubscriptionProfile')
   .mockImplementation()
