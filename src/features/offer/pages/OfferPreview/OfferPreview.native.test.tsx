@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2 } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
@@ -37,6 +38,13 @@ describe('<OfferPreview />', () => {
       render(<OfferPreview />)
 
       expect(screen.getByText('1/2')).toBeOnTheScreen()
+    })
+
+    it('should display the right image in carousel when a default index is provided', () => {
+      useRoute.mockReturnValueOnce({ params: { id: '1', defaultIndex: 1 } })
+      render(<OfferPreview />)
+
+      expect(screen.getByText('2/2')).toBeOnTheScreen()
     })
   })
 
