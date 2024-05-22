@@ -6,7 +6,11 @@ import { CategoryBlock } from 'features/home/components/modules/categories/Categ
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+
+import { CircleNavButtons } from '../../CircleNavButtons/CircleNavButtons'
 
 type CategoryListProps = {
   id: string
@@ -39,6 +43,9 @@ export const CategoryListModule = ({
   index,
   homeEntryId,
 }: CategoryListProps) => {
+  const isCircleNavButtonsDisplayed = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS
+  )
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage(id, ContentTypes.CATEGORY_LIST, index, homeEntryId)
   }, [id, homeEntryId, index])
@@ -91,6 +98,7 @@ export const CategoryListModule = ({
           keyExtractor={keyExtractor}
         />
       </FlatListContainer>
+      {isCircleNavButtonsDisplayed ? <CircleNavButtons /> : null}
     </React.Fragment>
   )
 }

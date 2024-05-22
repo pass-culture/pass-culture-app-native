@@ -49,4 +49,5 @@ export enum RemoteStoreFeatureFlags {
   WIP_APP_V2_CATEGORY_BLOCK = 'wipAppV2CategoryBlock',
   WIP_APP_V2_VIDEO_9_16 = 'wipAppV2Video9:16',
   WIP_APP_V2_SEARCH_CATEGORY_BLOCK = 'wipAppV2SearchCategoryBlock',
+  WIP_APP_V2_CIRCLE_NAV_BUTTONS = 'wipAppV2CircleNavButtons',
 }
