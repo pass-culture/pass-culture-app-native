@@ -6,6 +6,8 @@ import * as navigationRefAPI from 'features/navigation/navigationRef'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { ThemeProvider } from 'libs/styled'
+import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
@@ -38,7 +40,9 @@ describe('AccessibleTabBar', () => {
   })
 
   it('renders correctly when FF is enabled', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+    useFeatureFlagSpy.mockReturnValueOnce(true) // first time for theme provider
+    useFeatureFlagSpy.mockReturnValueOnce(true) // second time for theme provider rerender
+    useFeatureFlagSpy.mockReturnValueOnce(true) // second time for tabbar
     const { container } = renderTabBar()
 
     expect(container).toMatchSnapshot()
@@ -118,7 +122,9 @@ function renderTabBar() {
   return render(
     reactQueryProviderHOC(
       <NavigationContainer>
-        <AccessibleTabBar id="tabBarID" />
+        <ThemeProvider theme={computedTheme}>
+          <AccessibleTabBar id="tabBarID" />
+        </ThemeProvider>
       </NavigationContainer>
     )
   )

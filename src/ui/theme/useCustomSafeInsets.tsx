@@ -1,6 +1,5 @@
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-
-import { TAB_BAR_COMP_HEIGHT } from './constants'
+import { useTheme } from 'styled-components/native'
 
 /**
  * Hook used to adapt useSafeAreaInsets to the applications needs
@@ -9,9 +8,13 @@ import { TAB_BAR_COMP_HEIGHT } from './constants'
  */
 export const useCustomSafeInsets = () => {
   const { bottom, top } = useSafeAreaInsets()
+  const {
+    tabBar: { height },
+  } = useTheme()
+
   return {
     bottom: 0.5 * bottom,
-    tabBarHeight: 0.5 * bottom + TAB_BAR_COMP_HEIGHT,
+    tabBarHeight: 0.5 * bottom + height,
     top,
   }
 }

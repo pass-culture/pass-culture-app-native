@@ -22,7 +22,7 @@ export const TabBarInnerComponentV2: React.FC<Props> = ({ isSelected, BicolorIco
   </React.Fragment>
 )
 
-const GRADIENT_HEIGHT = getSpacing(0.25)
+const GRADIENT_HEIGHT = getSpacing(0.5)
 
 const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
   colors: [
@@ -33,11 +33,10 @@ const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
   ],
   start: { x: 0, y: 0 },
   end: { x: 1, y: 0 },
-}))({ height: GRADIENT_HEIGHT, width: '100%', top: -GRADIENT_HEIGHT })
+}))({ height: GRADIENT_HEIGHT, width: '100%' })
 
 const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
-  color: selected ? undefined : theme.colors.black,
-  opacity: selected ? undefined : 0.5,
+  color: selected ? undefined : theme.colors.greyDark,
   size: theme.icons.sizes.small,
   thin: true,
 }))<{ selected?: boolean }>``

@@ -10,6 +10,8 @@ import {
 } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { ThemeProvider } from 'libs/styled'
+import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -117,7 +119,8 @@ describe('TabBar', () => {
   })
 
   it('render correctly when FF is enabled', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+    useFeatureFlagSpy.mockReturnValueOnce(true) // first time for theme provider
+    useFeatureFlagSpy.mockReturnValueOnce(true) // second time for tabbar
     renderTabBar()
 
     expect(screen).toMatchSnapshot()
@@ -261,5 +264,11 @@ describe('TabBar', () => {
 })
 
 function renderTabBar() {
-  render(reactQueryProviderHOC(<TabBar navigation={navigation} state={mockTabNavigationState} />))
+  render(
+    reactQueryProviderHOC(
+      <ThemeProvider theme={computedTheme}>
+        <TabBar navigation={navigation} state={mockTabNavigationState} />
+      </ThemeProvider>
+    )
+  )
 }

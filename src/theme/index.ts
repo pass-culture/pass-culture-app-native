@@ -15,6 +15,7 @@ import {
   MARGIN_HORIZONTAL,
   MARGIN_VERTICAL,
   TAB_BAR_COMP_HEIGHT,
+  TAB_BAR_COMP_HEIGHT_V2,
 } from 'ui/theme/constants'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
 import { iconSizes } from 'ui/theme/iconSizes'
@@ -64,6 +65,7 @@ export const theme = {
   },
   tabBar: {
     height: TAB_BAR_COMP_HEIGHT,
+    heightV2: TAB_BAR_COMP_HEIGHT_V2,
     iconSize: getSpacing(7),
     fontSize: getSpacing(2.5),
     labelMinScreenWidth: 375,
