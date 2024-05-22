@@ -36,8 +36,7 @@ const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
 }))({ height: GRADIENT_HEIGHT, width: '100%' })
 
 const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
-  color: selected ? undefined : theme.colors.black,
-  opacity: selected ? undefined : 0.5,
+  color: selected ? undefined : theme.colors.greyDark,
   size: theme.icons.sizes.small,
   thin: true,
 }))<{ selected?: boolean }>``
