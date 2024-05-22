@@ -5,7 +5,10 @@ import { CategoryListModule } from 'features/home/components/modules/categories/
 import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { act, fireEvent, render, screen } from 'tests/utils'
+
+const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('CategoryListModule', () => {
   it('should call analytics when the module is displayed', () => {
@@ -73,5 +76,37 @@ describe('CategoryListModule', () => {
       moduleId: '2',
       moduleListId: '123',
     })
+  })
+
+  it('should display circle nav buttons when feature is enabled', () => {
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockFeatureFlag.mockReturnValue(true)
+    render(
+      <CategoryListModule
+        id="123"
+        title="module"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="6DCThxvbPFKAo04SVRZtwY"
+      />
+    )
+
+    expect(screen.getByText('Ce week-end')).toBeOnTheScreen()
+  })
+
+  it('should NOT display circle nav buttons when feature is disabled', () => {
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockFeatureFlag.mockReturnValue(false)
+    render(
+      <CategoryListModule
+        id="123"
+        title="module"
+        categoryBlockList={categoryBlockList}
+        index={1}
+        homeEntryId="6DCThxvbPFKAo04SVRZtwY"
+      />
+    )
+
+    expect(screen.queryByText('Ce week-end')).not.toBeOnTheScreen()
   })
 })
