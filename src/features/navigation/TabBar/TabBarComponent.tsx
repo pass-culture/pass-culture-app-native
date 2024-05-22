@@ -40,16 +40,15 @@ export const TabBarComponent: React.FC<Props> = ({
       selected={isSelected}
       accessibilityLabel={menu[tabName].accessibilityLabel}
       testID={menu[tabName].accessibilityLabel ?? menu[tabName].displayName}
-      accessibilityCurrent={isSelected ? 'page' : undefined}
-      v2={v2}>
+      accessibilityCurrent={isSelected ? 'page' : undefined}>
       <InnerComponent tabName={tabName} isSelected={isSelected} BicolorIcon={BicolorIcon} />
     </TabComponentContainer>
   )
 }
 
 const TabComponentContainer: typeof InternalTouchableLink = styled(InternalTouchableLink).attrs(
-  ({ theme, accessibilityLabel, selected, v2 }) => ({
-    accessibilityLabel: theme.tabBar.showLabels && isWeb && !v2 ? undefined : accessibilityLabel,
+  ({ theme, accessibilityLabel, selected }) => ({
+    accessibilityLabel: theme.tabBar.showLabels && isWeb ? undefined : accessibilityLabel,
     hoverUnderlineColor: selected ? theme.colors.black : theme.colors.greyDark,
   })
 )(({ theme }) => ({

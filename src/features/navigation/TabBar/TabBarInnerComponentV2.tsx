@@ -3,20 +3,26 @@ import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { menu } from 'features/navigation/TabBar/menu'
+import { TabBarTitle } from 'features/navigation/TabBar/TabBarTitle'
+import { TabRouteName } from 'features/navigation/TabBar/types'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
-import { Spacer, getSpacing } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
+  tabName: TabRouteName
   isSelected?: boolean
   BicolorIcon: React.FC<AccessibleBicolorIcon>
 }
 
-export const TabBarInnerComponentV2: React.FC<Props> = ({ isSelected, BicolorIcon }) => (
+export const TabBarInnerComponentV2: React.FC<Props> = ({ tabName, isSelected, BicolorIcon }) => (
   <React.Fragment>
     {isSelected ? <Gradient /> : null}
     <Spacer.Flex />
     <StyledIcon as={BicolorIcon} selected={isSelected} />
+    <Spacer.Column numberOfSpaces={2.5} />
+    <TabBarTitle selected={isSelected} displayName={menu[tabName].displayName} />
     <Spacer.Flex />
     {isSelected ? <BicolorSelectorPlaceholder /> : null}
   </React.Fragment>
