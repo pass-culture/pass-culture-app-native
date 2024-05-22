@@ -17,7 +17,6 @@ const setActions = (set: (payload: State) => void) => ({
   addBear: () => set((state) => ({ bears: state.bears + 1 })),
   removeBear: () => set((state) => ({ bears: state.bears - 1 })),
   setBears: (payload: number) => set({ bears: payload }),
-
 })
 
 const useCountBears = createStore<State, ReturnType<typeof setActions>>(
@@ -64,7 +63,6 @@ const setActions = (set: (payload: State) => void) => ({
   addBear: () => set((state) => ({ bears: state.bears + 1 })),
   removeBear: () => set((state) => ({ bears: state.bears - 1 })),
   setBears: (payload: number) => set({ bears: payload }),
-
 })
 
 const useCountBears = createStore<State, ReturnType<typeof setActions>>(
