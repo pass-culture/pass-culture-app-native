@@ -234,12 +234,8 @@ class MswMockServer
   isMockOptions<TResponse extends DefaultBodyType>(
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): options is MockOptions<string, TResponse, string | RegExp | Buffer> {
-    return (
-      (options as MockOptions<string, TResponse, string | RegExp | Buffer>).responseOptions !==
-        undefined ||
-      (options as MockOptions<string, TResponse, string | RegExp | Buffer>).requestOptions !==
-        undefined
-    )
+    const optionsCasted = options as MockOptions<string, TResponse, string | RegExp | Buffer>
+    return optionsCasted.responseOptions !== undefined || optionsCasted.requestOptions !== undefined
   }
 
   universalGet<TResponse extends DefaultBodyType>(
