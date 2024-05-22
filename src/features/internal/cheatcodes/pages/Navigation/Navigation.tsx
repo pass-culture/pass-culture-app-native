@@ -215,6 +215,12 @@ export function Navigation(): React.JSX.Element {
               }
             />
           </Row>
+          <Row half>
+            <ButtonPrimary
+              wording="Video916Cheatcodes"
+              onPress={() => navigate('Video916Cheatcodes')}
+            />
+          </Row>
         </StyledContainer>
         <Spacer.BottomScreen />
       </ScrollView>
