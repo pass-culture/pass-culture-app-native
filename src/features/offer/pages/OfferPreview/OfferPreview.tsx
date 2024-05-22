@@ -29,7 +29,7 @@ const FOOTER_HEIGHT = getSpacing(16)
 
 export const OfferPreview: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'OfferPreview'>>()
-  const { goBack } = useGoBack('Offer', params)
+  const { goBack } = useGoBack('Offer', { id: params.id })
   const { data: offer } = useOffer({ offerId: params.id })
   const headerHeight = useGetHeaderHeight()
   const footerHeight = useGetFooterHeight(FOOTER_HEIGHT)
