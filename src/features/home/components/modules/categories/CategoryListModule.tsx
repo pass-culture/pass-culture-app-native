@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { FlatList } from 'react-native'
+import React, { useEffect, useRef } from 'react'
+import { ViewStyle, FlatListProps, FlatList, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryBlock } from 'features/home/components/modules/categories/CategoryBlock'
@@ -8,6 +8,10 @@ import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
+import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
+import { BicolorArrowLeft as DefaultBicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
+import { BicolorArrowRight as DefaultBicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { CircleNavButtons } from '../../CircleNavButtons/CircleNavButtons'
@@ -18,6 +22,10 @@ type CategoryListProps = {
   categoryBlockList: CategoryBlockData[]
   index: number
   homeEntryId: string
+}
+
+type StyledFlatListProps = FlatListProps<null> & {
+  contentContainerStyle?: ViewStyle
 }
 
 const DESKTOP_COLUMNS = 4
@@ -35,6 +43,7 @@ const MOBILE_CATEGORY_BLOCK_FLEX_BASIS = `${100 / MOBILE_COLUMNS}%` // 50%
 const keyExtractor = (_item: CategoryBlockData, index: number) => `category_block_#${index}`
 
 const ListFooterComponent = () => <Footer />
+const isWeb = Platform.OS === 'web' ? true : undefined
 
 export const CategoryListModule = ({
   id,
@@ -46,6 +55,18 @@ export const CategoryListModule = ({
   const isCircleNavButtonsDisplayed = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS
   )
+  const flatListRef = useRef<FlatList<null>>(null)
+
+  const {
+    handleScrollPrevious,
+    handleScrollNext,
+    onScroll,
+    onContentSizeChange,
+    onContainerLayout,
+    isEnd,
+    isStart,
+  } = useHorizontalFlatListScroll({ ref: flatListRef, isActive: isWeb })
+
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage(id, ContentTypes.CATEGORY_LIST, index, homeEntryId)
   }, [id, homeEntryId, index])
@@ -55,10 +76,8 @@ export const CategoryListModule = ({
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? DESKTOP_COLUMNS : MOBILE_COLUMNS
 
-  const renderItem = ({ item, index }: { item: CategoryBlockData; index: number }) => (
-    <CategoryBlockContainer
-      isLast={index === categoryBlockList.length - 1}
-      enableAppV2CategoryBlock={enableAppV2CategoryBlock}>
+  const renderItem = ({ item }: { item: CategoryBlockData; index: number }) => (
+    <CategoryBlockContainer enableAppV2CategoryBlock={enableAppV2CategoryBlock}>
       <CategoryBlock
         {...item}
         onBeforePress={() => {
@@ -104,12 +123,27 @@ export const CategoryListModule = ({
           numberOfSpaces={theme.isDesktopViewport ? DESKTOP_TITLE_MARGIN : MOBILE_TITLE_MARGIN}
         />
       </HeaderContainer>
-      <FlatListContainer enableAppV2CategoryBlock={enableAppV2CategoryBlock}>
-        <FlatList
+      <FlatListContainer
+        enableAppV2CategoryBlock={enableAppV2CategoryBlock}
+        onLayout={onContainerLayout}>
+        {!isStart && isWeb ? (
+          <ScrollButtonForNotTouchDevice horizontalAlign="left" onPress={handleScrollPrevious}>
+            <BicolorArrowLeft />
+          </ScrollButtonForNotTouchDevice>
+        ) : null}
+        {!isEnd && isWeb ? (
+          <ScrollButtonForNotTouchDevice horizontalAlign="right" onPress={handleScrollNext}>
+            <BicolorArrowRight />
+          </ScrollButtonForNotTouchDevice>
+        ) : null}
+        <StyledFlatList
           ListFooterComponent={ListFooterComponent}
+          onContentSizeChange={onContentSizeChange}
           data={categoryBlockList}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
+          onScroll={onScroll}
+          ref={flatListRef}
           {...(enableAppV2CategoryBlock ? newCategoryBlockProps : oldCategoryBlockProps)}
         />
       </FlatListContainer>
@@ -118,13 +152,26 @@ export const CategoryListModule = ({
   )
 }
 
+const BicolorArrowLeft = styled(DefaultBicolorArrowLeft).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``
+
+const BicolorArrowRight = styled(DefaultBicolorArrowRight).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``
+
+const StyledFlatList = styled.FlatList.attrs<StyledFlatListProps>(({ theme }) => ({
+  contentContainerStyle: {
+    paddingHorizontal: getSpacing(
+      theme.isDesktopViewport ? DESKTOP_CATEGORY_LIST_MARGIN : MOBILE_CATEGORY_LIST_MARGIN
+    ),
+  },
+}))<StyledFlatListProps>``
+
 const FlatListContainer = styled.View<{ enableAppV2CategoryBlock: boolean }>(
   ({ theme, enableAppV2CategoryBlock }) => ({
     ...(enableAppV2CategoryBlock
       ? {
-          marginLeft: getSpacing(
-            theme.isDesktopViewport ? DESKTOP_CATEGORY_LIST_MARGIN : MOBILE_CATEGORY_LIST_MARGIN
-          ),
           marginBottom: theme.isDesktopViewport
             ? getSpacing(DESKTOP_CATEGORY_LIST_MARGIN)
             : getSpacing(MOBILE_CATEGORY_LIST_MARGIN),
@@ -141,15 +188,8 @@ const HeaderContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const CategoryBlockContainer = styled.View<{ isLast: boolean; enableAppV2CategoryBlock: boolean }>(
-  ({ theme, isLast, enableAppV2CategoryBlock }) => ({
-    ...(enableAppV2CategoryBlock && isLast
-      ? {
-          marginRight: theme.isDesktopViewport
-            ? getSpacing(DESKTOP_CATEGORY_LIST_MARGIN)
-            : getSpacing(MOBILE_CATEGORY_LIST_MARGIN),
-        }
-      : {}),
+const CategoryBlockContainer = styled.View<{ enableAppV2CategoryBlock: boolean }>(
+  ({ theme, enableAppV2CategoryBlock }) => ({
     ...(enableAppV2CategoryBlock
       ? {}
       : {
