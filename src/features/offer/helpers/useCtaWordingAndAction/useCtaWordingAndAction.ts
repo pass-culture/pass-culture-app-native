@@ -187,6 +187,38 @@ export const getCtaWordingAndAction = ({
   }
 
   if (isFreeDigitalOffer && userStatus?.statusType !== YoungStatusType.non_eligible) {
+    if (subcategory.isEvent) {
+      if (!isAlreadyBookedOffer) {
+        return {
+          modalToDisplay: OfferModal.BOOKING,
+          wording: 'Réserver l’offre',
+          isDisabled: false,
+          onPress: () => {
+            analytics.logClickBookOffer({
+              offerId: offer.id,
+              from,
+              searchId,
+              ...apiRecoParams,
+              playlistType,
+            })
+          },
+        }
+      }
+      return {
+        wording: 'Voir ma réservation',
+        isDisabled: false,
+        navigateTo: {
+          screen: 'BookingDetails',
+          params: { id: bookedOffers[offer.id] },
+          fromRef: true,
+        },
+        bottomBannerText: isNewXPCine ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
+        movieScreeningUserData: {
+          hasBookedOffer: true,
+          bookings: booking as BookingReponse,
+        },
+      }
+    }
     return {
       wording: getDigitalOfferBookingWording(subcategoryId),
       isDisabled: isBookingLoading,

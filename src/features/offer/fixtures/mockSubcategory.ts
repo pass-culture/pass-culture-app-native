@@ -16,3 +16,12 @@ export const mockSubcategory: Subcategory = {
   onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
   nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
 }
+export const mockSubcategoryNotEvent: Subcategory = {
+  categoryId: CategoryIdEnum.BEAUX_ARTS,
+  appLabel: 'Beaux Arts',
+  searchGroupName: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
+  homepageLabelName: HomepageLabelNameEnumv2.BEAUX_ARTS,
+  isEvent: false,
+  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+  nativeCategoryId: NativeCategoryIdEnumv2.PRATIQUES_ET_ATELIERS_ARTISTIQUES,
+}

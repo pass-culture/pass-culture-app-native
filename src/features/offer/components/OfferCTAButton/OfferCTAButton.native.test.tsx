@@ -5,7 +5,7 @@ import { BookingsResponse, BookOfferResponse, OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
-import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
+import { mockSubcategory, mockSubcategoryNotEvent } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { mockedBookingApi } from 'fixtures/booking'
 import { beneficiaryUser } from 'fixtures/user'
@@ -62,7 +62,12 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-const offerCTAButtonProps = {
+const offerNotEventCTAButtonProps = {
+  offer: offerResponseSnap,
+  trackEventHasSeenOfferOnce: jest.fn(),
+  subcategory: mockSubcategoryNotEvent,
+}
+const offerEventCTAButtonProps = {
   offer: offerResponseSnap,
   trackEventHasSeenOfferOnce: jest.fn(),
   subcategory: mockSubcategory,
@@ -98,7 +103,7 @@ describe('<OfferCTAButton />', () => {
     const fromOfferId = 1
     const openModalOnNavigation = true
     useRoute.mockReturnValueOnce({ params: { fromOfferId, openModalOnNavigation } })
-    renderOfferCTAButton(offerCTAButtonProps)
+    renderOfferCTAButton(offerNotEventCTAButtonProps)
 
     await act(async () => {})
 
@@ -114,7 +119,7 @@ describe('<OfferCTAButton />', () => {
       user: undefined,
     })
 
-    renderOfferCTAButton(offerCTAButtonProps)
+    renderOfferCTAButton(offerNotEventCTAButtonProps)
 
     const bookingOfferButton = await screen.findByText('Réserver l’offre')
     await act(async () => {
@@ -132,7 +137,7 @@ describe('<OfferCTAButton />', () => {
       isUserLoading: false,
     }))
 
-    renderOfferCTAButton(offerCTAButtonProps)
+    renderOfferCTAButton(offerNotEventCTAButtonProps)
 
     const bookingOfferButton = await screen.findByText('Réserver l’offre')
     await act(async () => {
@@ -175,9 +180,9 @@ describe('<OfferCTAButton />', () => {
     const fromOfferId = 1
     useRoute.mockReturnValueOnce({ params: { fromOfferId } })
 
-    renderOfferCTAButton(offerCTAButtonProps)
+    renderOfferCTAButton(offerNotEventCTAButtonProps)
 
-    fireEvent.press(screen.getByText('Voir les disponibilités'))
+    fireEvent.press(screen.getByText('Réserver l’offre'))
 
     await act(async () => {})
 
@@ -211,7 +216,7 @@ describe('<OfferCTAButton />', () => {
         mockServer.postApi<BookOfferResponse>(`/v1/bookings`, { bookingId: 123 })
       })
 
-      it('should directly book and redirect to the offer when pressing button to book the offer', async () => {
+      it("should directly book and redirect to the offer when pressing button to book the offer if offer isn't Event", async () => {
         // Multiple renders force us to mock auth context as loggedIn user in this test
         // eslint-disable-next-line local-rules/independent-mocks
         const newLocal = {
@@ -226,8 +231,36 @@ describe('<OfferCTAButton />', () => {
         mockUseAuthContext.mockReturnValue(newLocal)
 
         renderOfferCTAButton({
-          ...offerCTAButtonProps,
+          ...offerNotEventCTAButtonProps,
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
+          subcategory: mockSubcategoryNotEvent,
+        })
+
+        await act(async () => {
+          fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
+        })
+
+        expect(mockedOpenUrl).toHaveBeenNthCalledWith(1, 'https://www.google.fr/')
+      })
+
+      it('should  open when pressing button to book the offer if offer is Event', async () => {
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        const newLocal = {
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+          isUserLoading: false,
+          refetchUser: jest.fn(),
+          user: beneficiaryUser,
+        }
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        mockUseAuthContext.mockReturnValue(newLocal)
+
+        renderOfferCTAButton({
+          ...offerNotEventCTAButtonProps,
+          offer: { ...offerResponseSnap, ...offerDigitalAndFree },
+          subcategory: mockSubcategoryNotEvent,
         })
 
         await act(async () => {
@@ -252,7 +285,7 @@ describe('<OfferCTAButton />', () => {
         mockUseAuthContext.mockReturnValue(newLocal)
 
         renderOfferCTAButton({
-          ...offerCTAButtonProps,
+          ...offerNotEventCTAButtonProps,
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
@@ -281,7 +314,7 @@ describe('<OfferCTAButton />', () => {
         mockUseAuthContext.mockReturnValue(newLocal)
 
         renderOfferCTAButton({
-          ...offerCTAButtonProps,
+          ...offerNotEventCTAButtonProps,
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
@@ -322,7 +355,7 @@ describe('<OfferCTAButton />', () => {
         mockUseAuthContext.mockReturnValue(newLocal)
 
         renderOfferCTAButton({
-          ...offerCTAButtonProps,
+          ...offerNotEventCTAButtonProps,
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
@@ -348,7 +381,7 @@ describe('<OfferCTAButton />', () => {
         mockUseAuthContext.mockReturnValue(newLocal)
 
         renderOfferCTAButton({
-          ...offerCTAButtonProps,
+          ...offerNotEventCTAButtonProps,
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
@@ -386,7 +419,7 @@ describe('<OfferCTAButton />', () => {
       mockUseAuthContext.mockReturnValue(newLocal)
 
       renderOfferCTAButton({
-        ...offerCTAButtonProps,
+        ...offerNotEventCTAButtonProps,
         offer: { ...offerResponseSnap, ...offerDigitalAndFree },
       })
 
@@ -436,15 +469,46 @@ describe('<OfferCTAButton />', () => {
       mockUseAuthContext.mockReturnValue(newLocal)
 
       renderOfferCTAButton({
-        ...offerCTAButtonProps,
+        ...offerNotEventCTAButtonProps,
         offer: { ...offerResponseSnap, ...offerDigitalAndFree },
       })
-
+      const bookingOfferButton = screen.getByText('Accéder à l’offre en ligne')
       await act(async () => {
-        fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
+        fireEvent.press(bookingOfferButton)
       })
 
       expect(mockedOpenUrl).toHaveBeenCalledTimes(1)
+    })
+
+    describe('and is Event', () => {
+      it('should not open bookings details modal when pressing offer access button', async () => {
+        mockServer.getApi<BookingsResponse>(`/v1/bookings`, expectedResponse)
+        mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
+
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        const newLocal = {
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+          isUserLoading: false,
+          refetchUser: jest.fn(),
+          user: { ...beneficiaryUser, bookedOffers: { 116656: 123 } },
+        }
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        mockUseAuthContext.mockReturnValue(newLocal)
+
+        renderOfferCTAButton({
+          ...offerEventCTAButtonProps,
+          offer: { ...offerResponseSnap, ...offerDigitalAndFree },
+        })
+        const bookingOfferButton = screen.getByText('Voir ma réservation')
+        await act(async () => {
+          fireEvent.press(bookingOfferButton)
+        })
+
+        expect(screen.queryByText('Valider la date')).not.toBeOnTheScreen()
+      })
     })
   })
 })
@@ -453,6 +517,7 @@ type RenderOfferCTAButtonType = Partial<ComponentProps<typeof OfferCTAButton>>
 
 function renderOfferCTAButton({
   offer = offerResponseSnap,
+  subcategory = mockSubcategoryNotEvent,
   trackEventHasSeenOfferOnce = jest.fn(),
 }: RenderOfferCTAButtonType) {
   render(
@@ -460,7 +525,7 @@ function renderOfferCTAButton({
       <OfferCTAButton
         offer={offer}
         trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-        subcategory={mockSubcategory}
+        subcategory={subcategory}
       />
     )
   )
