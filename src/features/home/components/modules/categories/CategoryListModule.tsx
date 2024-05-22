@@ -56,6 +56,7 @@ export const CategoryListModule = ({
     RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS
   )
   const flatListRef = useRef<FlatList<null>>(null)
+  const enableAppV2CategoryBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK)
 
   const {
     handleScrollPrevious,
@@ -65,13 +66,11 @@ export const CategoryListModule = ({
     onContainerLayout,
     isEnd,
     isStart,
-  } = useHorizontalFlatListScroll({ ref: flatListRef, isActive: isWeb })
+  } = useHorizontalFlatListScroll({ ref: flatListRef, isActive: enableAppV2CategoryBlock && isWeb })
 
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage(id, ContentTypes.CATEGORY_LIST, index, homeEntryId)
   }, [id, homeEntryId, index])
-
-  const enableAppV2CategoryBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK)
 
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? DESKTOP_COLUMNS : MOBILE_COLUMNS
@@ -126,16 +125,12 @@ export const CategoryListModule = ({
       <FlatListContainer
         enableAppV2CategoryBlock={enableAppV2CategoryBlock}
         onLayout={onContainerLayout}>
-        {!isStart && isWeb ? (
+        {enableAppV2CategoryBlock && !isStart && isWeb ? (
           <ScrollButtonForNotTouchDevice horizontalAlign="left" onPress={handleScrollPrevious}>
             <BicolorArrowLeft />
           </ScrollButtonForNotTouchDevice>
         ) : null}
-        {!isEnd && isWeb ? (
-          <ScrollButtonForNotTouchDevice horizontalAlign="right" onPress={handleScrollNext}>
-            <BicolorArrowRight />
-          </ScrollButtonForNotTouchDevice>
-        ) : null}
+
         <StyledFlatList
           ListFooterComponent={ListFooterComponent}
           onContentSizeChange={onContentSizeChange}
@@ -146,6 +141,11 @@ export const CategoryListModule = ({
           ref={flatListRef}
           {...(enableAppV2CategoryBlock ? newCategoryBlockProps : oldCategoryBlockProps)}
         />
+        {enableAppV2CategoryBlock && !isEnd && isWeb ? (
+          <ScrollButtonForNotTouchDevice horizontalAlign="right" onPress={handleScrollNext}>
+            <BicolorArrowRight />
+          </ScrollButtonForNotTouchDevice>
+        ) : null}
       </FlatListContainer>
       {isCircleNavButtonsDisplayed ? <CircleNavButtons /> : null}
     </React.Fragment>
