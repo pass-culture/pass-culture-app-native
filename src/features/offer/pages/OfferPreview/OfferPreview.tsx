@@ -29,7 +29,7 @@ const FOOTER_HEIGHT = getSpacing(16)
 
 export const OfferPreview: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'OfferPreview'>>()
-  const { goBack } = useGoBack('Offer', params)
+  const { goBack } = useGoBack('Offer', { id: params.id })
   const { data: offer } = useOffer({ offerId: params.id })
   const headerHeight = useGetHeaderHeight()
   const footerHeight = useGetFooterHeight(FOOTER_HEIGHT)
@@ -37,8 +37,9 @@ export const OfferPreview: FunctionComponent = () => {
   const shouldDisplayCarousel = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW_WITH_CAROUSEL
   )
-  const progressValue = useSharedValue<number>(0)
-  const [index, setIndex] = React.useState(0)
+  const defaultIndex = params.defaultIndex ?? 0
+  const progressValue = useSharedValue<number>(defaultIndex)
+  const [index, setIndex] = React.useState(defaultIndex)
   const { height: screenHeight, width: screenWidth } = useWindowDimensions()
 
   if (!offer?.images) return null
@@ -65,6 +66,7 @@ export const OfferPreview: FunctionComponent = () => {
               progressValue.value = absoluteProgress
               setIndex(Math.round(absoluteProgress))
             }}
+            defaultIndex={defaultIndex}
             data={images}
             renderItem={({ item: image }) => <PinchableBox imageUrl={image} />}
           />

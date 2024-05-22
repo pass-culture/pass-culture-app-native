@@ -238,7 +238,7 @@ export type RootStackParamList = {
     playlistType?: PlaylistType
   }
   OfferDescription: { id: number }
-  OfferPreview: { id: number }
+  OfferPreview: { id: number; defaultIndex?: number }
   OnboardingSubscription: undefined
   SuspendAccountConfirmation: { token: string }
   SuspensionScreen: undefined

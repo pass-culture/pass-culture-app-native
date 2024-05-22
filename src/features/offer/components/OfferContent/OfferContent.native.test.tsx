@@ -149,7 +149,7 @@ describe('<OfferContent />', () => {
 
       fireEvent.press(await screen.findByTestId('offerImageWithoutCarousel'))
 
-      expect(navigate).toHaveBeenCalledWith('OfferPreview', { id: 116656 })
+      expect(navigate).toHaveBeenCalledWith('OfferPreview', { id: 116656, defaultIndex: 0 })
     })
 
     it('should not navigate to offer preview screen when clicking on image offer and there is not an image', async () => {

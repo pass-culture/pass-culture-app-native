@@ -10,6 +10,7 @@ type ScreensRequiringParsing = Extract<
   | 'Home'
   | 'Login'
   | 'Offer'
+  | 'OfferPreview'
   | 'ReinitializePassword'
   | 'ResetPasswordExpiredLink'
   | 'Venue'
@@ -107,6 +108,10 @@ export const screenParamsParser: ParamsParsers = {
     searchId: identityFn,
     apiRecoParams: identityFn,
     playlistType: identityFn,
+  },
+  OfferPreview: {
+    id: Number,
+    defaultIndex: Number,
   },
   Home: {
     latitude: Number,

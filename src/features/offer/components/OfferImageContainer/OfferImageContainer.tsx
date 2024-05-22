@@ -24,7 +24,7 @@ type Props = {
   categoryId: CategoryIdEnum | null
   imageUrls?: string[]
   shouldDisplayOfferPreview?: boolean
-  onPress?: VoidFunction
+  onPress: (defaultIndex?: number) => void
 }
 
 const isWeb = Platform.OS === 'web'
@@ -45,6 +45,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
 
   const hasCarousel = !!(shouldDisplayCarousel && offerImages.length > 1 && !isWeb)
   const progressValue = useSharedValue<number>(0)
+  const [index, setIndex] = React.useState(0)
   const offerBodyImage = offerImages[0] ? (
     <OfferBodyImage imageUrl={offerImages[0]} />
   ) : (
@@ -56,7 +57,10 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   }
 
   return (
-    <HeaderWithImage imageHeight={backgroundHeight} imageUrl={offerImages[0]} onPress={onPress}>
+    <HeaderWithImage
+      imageHeight={backgroundHeight}
+      imageUrl={offerImages[0]}
+      onPress={() => onPress(index)}>
       <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
 
       {hasCarousel ? (
@@ -71,6 +75,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
               scrollAnimationDuration={500}
               onProgressChange={(_, absoluteProgress) => {
                 progressValue.value = absoluteProgress
+                setIndex(Math.round(absoluteProgress))
               }}
               data={offerImages}
               renderItem={({ item: image }) => (

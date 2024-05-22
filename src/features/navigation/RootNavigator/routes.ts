@@ -92,8 +92,11 @@ export const routes: RootRoute[] = [
   {
     name: 'OfferPreview',
     component: OfferPreview,
-    path: 'offre/:id/apercu',
-    deeplinkPaths: ['offer/:id/apercu', 'offre/apercu', 'offer/apercu'],
+    pathConfig: {
+      path: 'offre/:id/apercu',
+      deeplinkPaths: ['offer/:id/apercu', 'offre/apercu', 'offer/apercu'],
+      parse: screenParamsParser['OfferPreview'],
+    },
     options: { title: 'Aperçu de l’offre' },
   },
   {
