@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFavoritesCount } from 'features/favorites/api'
+import { useScaleFavoritesAnimation } from 'features/favorites/helpers/useScaleFavoritesAnimation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { BicolorFavoriteV2 } from 'ui/svg/icons/BicolorFavoriteV2'
 import { Pastille } from 'ui/svg/icons/Pastille'
@@ -84,26 +85,3 @@ const TextContainer = styled.Text<{ height: number }>(({ height }) => ({
 const Counter = styled(Typo.Hint)(({ theme }) => ({
   color: theme.colors.white,
 }))
-
-const useScaleFavoritesAnimation = (nbFavorites?: number) => {
-  const scaleAnimation = useRef(new Animated.Value(1))
-
-  useEffect(() => {
-    if (typeof nbFavorites === 'number') {
-      Animated.sequence([
-        Animated.timing(scaleAnimation.current, {
-          toValue: 1.2,
-          duration: 200,
-          useNativeDriver: false,
-        }),
-        Animated.timing(scaleAnimation.current, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: false,
-        }),
-      ]).start()
-    }
-  }, [nbFavorites])
-
-  return scaleAnimation.current
-}

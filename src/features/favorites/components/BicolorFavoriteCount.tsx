@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { Animated, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFavoritesCount } from 'features/favorites/api'
+import { useScaleFavoritesAnimation } from 'features/favorites/helpers/useScaleFavoritesAnimation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFavoriteAuthed } from 'ui/svg/icons/BicolorFavoriteAuthed'
@@ -114,26 +115,3 @@ const Count = styled(Typo.Caption)(({ theme }) => ({
   fontSize: theme.showTabBar ? theme.tabBar.fontSize : 9,
   color: theme.colors.white,
 }))
-
-const useScaleFavoritesAnimation = (nbFavorites?: number) => {
-  const scaleAnimation = useRef(new Animated.Value(1))
-
-  useEffect(() => {
-    if (typeof nbFavorites === 'number') {
-      Animated.sequence([
-        Animated.timing(scaleAnimation.current, {
-          toValue: 1.2,
-          duration: 200,
-          useNativeDriver: false,
-        }),
-        Animated.timing(scaleAnimation.current, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: false,
-        }),
-      ]).start()
-    }
-  }, [nbFavorites])
-
-  return scaleAnimation.current
-}
