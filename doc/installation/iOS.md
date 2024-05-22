@@ -218,3 +218,21 @@ brew link openssl@1.1
 ```
 
 </details>
+<details>
+  <summary>Pod and cache</summary>
+
+#### Pods may need to be installed again
+
+```bash
+$ (cd ios && bundle exec pod install)
+```
+
+---
+
+#### Cache may need to be cleared and rebuilt
+
+```bash
+$ cd ios && rm -rf ./build && rm -rf ~/Library/Developer/Xcode/DerivedData/*
+```
+
+</details>
