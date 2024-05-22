@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { BicolorFavoriteCountV2 } from 'features/favorites/components/BicolorFavoriteCountV2'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -14,35 +15,40 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
-describe('BicolorFavoriteCount component', () => {
+describe.each`
+  v2       | component
+  ${false} | ${'BicolorFavoriteCount'}
+  ${true}  | ${'BicolorFavoriteCountV2'}
+`('$component component', ({ v2 }) => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+  const componentTestId = `bicolor-favorite-count${v2 ? '-v2' : ''}`
 
   it('should render non connected icon', async () => {
-    renderBicolorFavoriteCount({ isLoggedIn: false })
+    renderBicolorFavoriteCount({ v2, isLoggedIn: false })
 
     await waitFor(() => {
-      expect(screen.queryByTestId('bicolor-favorite-count')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId(componentTestId)).not.toBeOnTheScreen()
     })
   })
 
   it('should render connected icon', async () => {
-    renderBicolorFavoriteCount({ isLoggedIn: true })
+    renderBicolorFavoriteCount({ v2, isLoggedIn: true })
 
     await waitFor(() => {
-      expect(screen.getByTestId('bicolor-favorite-count')).toBeOnTheScreen()
+      expect(screen.getByTestId(componentTestId)).toBeOnTheScreen()
     })
   })
 
   it('should show 99+ badge when nbFavorites is greater than or equal to 100', async () => {
-    renderBicolorFavoriteCount({ isLoggedIn: true, count: 10000 })
+    renderBicolorFavoriteCount({ v2, isLoggedIn: true, count: 10000 })
 
     await waitFor(() => {
-      expect(screen.getByText('99')).toBeOnTheScreen()
+      expect(screen.getByText('99+')).toBeOnTheScreen()
     })
   })
 
   it('should show nbFavorites within badge', async () => {
-    renderBicolorFavoriteCount({ isLoggedIn: true })
+    renderBicolorFavoriteCount({ v2, isLoggedIn: true })
 
     await waitFor(() => {
       expect(screen.getByText(defaultOptions.count.toString())).toBeOnTheScreen()
@@ -50,7 +56,7 @@ describe('BicolorFavoriteCount component', () => {
   })
 
   it('should show 0 within badge when no favorite', async () => {
-    renderBicolorFavoriteCount({ isLoggedIn: true, count: 0 })
+    renderBicolorFavoriteCount({ v2, isLoggedIn: true, count: 0 })
     await waitFor(() => {
       expect(screen.getByText('0')).toBeOnTheScreen()
     })
@@ -59,7 +65,7 @@ describe('BicolorFavoriteCount component', () => {
   it('should not show nbFavorites within badge when offline', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    renderBicolorFavoriteCount({ isLoggedIn: true, count: 10 })
+    renderBicolorFavoriteCount({ v2, isLoggedIn: true, count: 10 })
     await act(async () => {})
 
     expect(screen.queryByTestId('bicolor-favorite-count')).not.toBeOnTheScreen()
@@ -67,17 +73,19 @@ describe('BicolorFavoriteCount component', () => {
 })
 
 interface Options {
-  isLoggedIn?: boolean
+  v2: boolean
+  isLoggedIn: boolean
   count?: number
 }
 
 const defaultOptions = {
   isLoggedIn: false,
   count: 4,
+  v2: false,
 }
 
 function renderBicolorFavoriteCount(options: Options = defaultOptions) {
-  const { isLoggedIn, count } = { ...defaultOptions, ...options }
+  const { isLoggedIn, count, v2 } = { ...defaultOptions, ...options }
   mockServer.getApi<{ count: number }>(`/v1/me/favorites/count`, { count })
 
   mockUseAuthContext.mockReturnValue({
@@ -86,5 +94,7 @@ function renderBicolorFavoriteCount(options: Options = defaultOptions) {
     refetchUser: jest.fn(),
     isUserLoading: false,
   })
-  return render(reactQueryProviderHOC(<BicolorFavoriteCount />))
+
+  const Component = v2 ? BicolorFavoriteCountV2 : BicolorFavoriteCount
+  return render(reactQueryProviderHOC(<Component />))
 }
