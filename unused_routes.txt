@@ -1,0 +1,5 @@
+/native/v1/offer/report/reasons
+/native/v1/offers/reports
+/native/v1/subscription/next_step
+/native/v1/subscription/stepper
+/native/v1/offer/{offer_id}/report
