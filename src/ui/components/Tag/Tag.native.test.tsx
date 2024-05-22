@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render, screen } from 'tests/utils'
 import { Tag } from 'ui/components/Tag/Tag'
-import { Camera } from 'ui/svg/icons/Camera'
+import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 describe('<Tag />', () => {
   it('should display label tag', () => {
@@ -12,7 +12,7 @@ describe('<Tag />', () => {
   })
 
   it('should display icon tag when it is informed', () => {
-    render(<Tag label="1" Icon={Camera} />)
+    render(<Tag label="1" Icon={ArrowRight} />)
 
     expect(screen.getByTestId('tagIcon')).toBeOnTheScreen()
   })
