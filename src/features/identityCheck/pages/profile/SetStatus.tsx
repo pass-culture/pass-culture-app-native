@@ -8,13 +8,14 @@ import { useActivityTypes } from 'features/identityCheck/api/useActivityTypes'
 import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { SubscriptionState } from 'features/identityCheck/context/types'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
+import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
+import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
+import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
-import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
@@ -29,6 +30,10 @@ type StatusForm = {
 export const SetStatus = () => {
   const { activities } = useActivityTypes()
   const saveStep = useSaveStep()
+  const storedName = useName()
+  const storedCity = useCity()
+  const storedAddress = useAddress()
+
   const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const titleID = uuidv4()
@@ -48,16 +53,21 @@ export const SetStatus = () => {
   const submitStatus = useCallback(
     async (formValues: StatusForm) => {
       if (!formValues.selectedStatus) return
-      const profile = (await storage.readObject(
-        'activation_profile'
-      )) as SubscriptionState['profile']
       analytics.logSetStatusClicked()
 
-      await patchProfile({ ...profile, status: formValues.selectedStatus })
+      const profile = {
+        name: storedName,
+        city: storedCity,
+        address: storedAddress,
+        status: formValues.selectedStatus,
+        hasSchoolTypes: false,
+        schoolType: null,
+      }
+      await patchProfile(profile)
       await saveStep(IdentityCheckStep.PROFILE)
       navigateForwardToStepper()
     },
-    [patchProfile, saveStep, navigateForwardToStepper]
+    [storedName, storedCity, storedAddress, patchProfile, saveStep, navigateForwardToStepper]
   )
 
   return (

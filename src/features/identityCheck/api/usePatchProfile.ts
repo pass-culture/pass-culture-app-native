@@ -3,11 +3,13 @@ import { useMutation } from 'react-query'
 import { api } from 'api/api'
 import { ProfileUpdateRequest } from 'api/gen'
 import { SubscriptionState } from 'features/identityCheck/context/types'
-import { storage } from 'libs/storage'
+import { useResetProfileStores } from 'features/identityCheck/pages/profile/store/useResetProfileStores'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function usePatchProfile() {
   const { showErrorSnackBar } = useSnackBarContext()
+
+  const resetProfileStores = useResetProfileStores()
 
   return useMutation(
     (profile: SubscriptionState['profile']) => {
@@ -20,7 +22,7 @@ export function usePatchProfile() {
     },
     {
       onSuccess: async () => {
-        await storage.clear('activation_profile')
+        resetProfileStores()
       },
       onError: () =>
         showErrorSnackBar({

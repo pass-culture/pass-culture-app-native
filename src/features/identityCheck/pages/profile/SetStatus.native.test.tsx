@@ -5,9 +5,14 @@ import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
+import {
+  useAddress,
+  useAddressActions,
+} from 'features/identityCheck/pages/profile/store/addressStore'
+import { useCity, useCityActions } from 'features/identityCheck/pages/profile/store/cityStore'
+import { useName, useNameActions } from 'features/identityCheck/pages/profile/store/nameStore'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics'
-import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -27,6 +32,18 @@ const profile = {
   address: '1 rue du désespoir',
   status: mockStatus,
 }
+
+jest.mock('features/identityCheck/pages/profile/store/nameStore')
+;(useName as jest.Mock).mockReturnValue(profile.name)
+;(useNameActions as jest.Mock).mockReturnValue({ resetName: jest.fn() })
+
+jest.mock('features/identityCheck/pages/profile/store/cityStore')
+;(useCity as jest.Mock).mockReturnValue(profile.city)
+;(useCityActions as jest.Mock).mockReturnValue({ resetCity: jest.fn() })
+
+jest.mock('features/identityCheck/pages/profile/store/addressStore')
+;(useAddress as jest.Mock).mockReturnValue(profile.address)
+;(useAddressActions as jest.Mock).mockReturnValue({ resetAddress: jest.fn() })
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
@@ -71,11 +88,6 @@ const mockedUseIsUserUnderage = jest.spyOn(UnderageUserAPI, 'useIsUserUnderage')
 describe('<SetStatus/>', () => {
   beforeEach(async () => {
     mockServer.postApi('/v1/subscription/profile', {})
-    await storage.saveObject('activation_profile', profile)
-  })
-
-  afterEach(() => {
-    storage.clear('activation_profile')
   })
 
   it('should render correctly', async () => {

@@ -8,16 +8,14 @@ import { v4 as uuidv4 } from 'uuid'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { SubscriptionState } from 'features/identityCheck/context/types'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
+import { useCity, useCityActions } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { SuggestedCity } from 'libs/place/types'
 import { useCities } from 'libs/place/useCities'
-import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -40,10 +38,11 @@ const noPostalCodeFound =
 export const SetCity = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { dispatch, profile } = useSubscriptionContext()
-  const [query, setQuery] = useState(profile.city?.postalCode ?? '')
+  const storedCity = useCity()
+  const { setCity: setStoredCity } = useCityActions()
+  const [query, setQuery] = useState(storedCity?.postalCode ?? '')
   const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(query)
-  const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(profile.city ?? null)
+  const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(storedCity ?? null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   useEffect(() => {
@@ -56,13 +55,13 @@ export const SetCity = () => {
   const { data: cities = [], isLoading, isError, isSuccess } = useCities(debouncedPostalCode)
 
   useEffect(() => {
-    if (profile.city?.name) {
+    if (storedCity?.name) {
       const city = cities.find(
-        (suggestedCity: SuggestedCity) => suggestedCity.name === profile.city?.name
+        (suggestedCity: SuggestedCity) => suggestedCity.name === storedCity?.name
       )
       setSelectedCity(city ?? null)
     }
-  }, [cities, profile])
+  }, [cities, storedCity?.name])
 
   useEffect(() => {
     if (!isError) return
@@ -99,11 +98,7 @@ export const SetCity = () => {
 
   const submitCity = async () => {
     if (selectedCity === null) return
-    dispatch({ type: 'SET_CITY', payload: selectedCity })
-    const activationProfile = (await storage.readObject(
-      'activation_profile'
-    )) as SubscriptionState['profile']
-    await storage.saveObject('activation_profile', { ...activationProfile, city: selectedCity })
+    setStoredCity(selectedCity)
     analytics.logSetPostalCodeClicked()
     navigate('SetAddress')
   }

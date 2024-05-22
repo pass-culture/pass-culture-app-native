@@ -5,7 +5,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { defaultSettings } from 'features/auth/fixtures/fixtures'
-import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -16,11 +15,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
-
-const mockDispatch = jest.fn()
-jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
-  useSubscriptionContext: () => ({ dispatch: mockDispatch, ...mockState }),
-}))
 
 const QUERY_ADDRESS = '1 rue Poissonnière'
 
@@ -42,15 +36,6 @@ describe('<SetAddress/>', () => {
       mockedSuggestedPlaces
     )
     mockServer.getApi<SettingsResponse>('/v1/settings', defaultSettings)
-
-    storage.saveObject('activation_profile', {
-      name: { firstName: 'John', lastName: 'Doe' },
-      city: { code: '', name: 'Paris', postalCode: '75001' },
-    })
-  })
-
-  afterEach(async () => {
-    storage.clear('activation_profile')
   })
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
@@ -76,7 +61,7 @@ describe('<SetAddress/>', () => {
     })
   })
 
-  it('should save address and navigate to SetStatus when clicking on "Continuer"', async () => {
+  it('should navigate to SetStatus when clicking on "Continuer"', async () => {
     renderSetAddress()
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
@@ -87,10 +72,6 @@ describe('<SetAddress/>', () => {
     fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => {
-      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-        type: 'SET_ADDRESS',
-        payload: mockedSuggestedPlaces.features[1].properties.label,
-      })
       expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus')
     })
   })
@@ -106,10 +87,10 @@ describe('<SetAddress/>', () => {
     fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(async () => {
-      expect(await storage.readObject('activation_profile')).toMatchObject({
-        name: { firstName: 'John', lastName: 'Doe' },
-        city: { code: '', name: 'Paris', postalCode: '75001' },
-        address: mockedSuggestedPlaces.features[1].properties.label,
+      expect(await storage.readObject('profile-address')).toMatchObject({
+        state: {
+          address: mockedSuggestedPlaces.features[1].properties.label,
+        },
       })
     })
   })

@@ -6,11 +6,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
+import { useName, useNameActions } from 'features/identityCheck/pages/profile/store/nameStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { storage } from 'libs/storage'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -25,13 +24,14 @@ type FormValues = {
   lastName: string
 }
 export const SetName = () => {
-  const { dispatch, profile } = useSubscriptionContext()
+  const storedName = useName()
+  const { setName: setStoredName } = useNameActions()
   const { navigate } = useNavigation<UseNavigationType>()
 
   const { control, formState, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
-      firstName: profile.name?.firstName ?? '',
-      lastName: profile.name?.lastName ?? '',
+      firstName: storedName?.firstName ?? '',
+      lastName: storedName?.lastName ?? '',
     },
     resolver: yupResolver(setNameSchema),
     mode: 'all',
@@ -49,8 +49,7 @@ export const SetName = () => {
 
   async function submitName({ firstName, lastName }: FormValues) {
     if (disabled) return
-    dispatch({ type: 'SET_NAME', payload: { firstName, lastName } })
-    await storage.saveObject('activation_profile', { name: { firstName, lastName } })
+    setStoredName({ firstName, lastName })
     analytics.logSetNameClicked()
     navigate('SetCity')
   }

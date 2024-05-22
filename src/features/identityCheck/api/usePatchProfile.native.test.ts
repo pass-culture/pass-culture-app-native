@@ -27,16 +27,7 @@ const postSubscriptionProfileSpy = jest
   .mockImplementation()
 
 describe('usePatchProfile', () => {
-  afterEach(async () => {
-    storage.clear('activation_profile')
-  })
-
   it('should call api when profile is complete', async () => {
-    await storage.saveObject('activation_profile', {
-      name: { firstName: 'John', lastName: 'Doe' },
-      city: { code: '', name: 'Paris', postalCode: '75001' },
-      address: 'address',
-    })
     const { result } = renderHook(() => usePatchProfile(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -59,11 +50,10 @@ describe('usePatchProfile', () => {
   })
 
   it('should clear activation profile from storage when query succeeds', async () => {
-    await storage.saveObject('activation_profile', {
-      name: { firstName: 'John', lastName: 'Doe' },
-      city: { code: '', name: 'Paris', postalCode: '75001' },
-      address: 'address',
-    })
+    storage.saveObject('profile-name', profile.name)
+    storage.saveObject('profile-city', profile.city)
+    storage.saveObject('profile-address', profile.address)
+
     const { result } = renderHook(() => usePatchProfile(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -75,7 +65,11 @@ describe('usePatchProfile', () => {
     })
 
     await waitFor(async () => {
-      expect(await storage.readObject('activation_profile')).toBeNull()
+      expect(await storage.readObject('profile-name')).toMatchObject({ state: { name: null } })
+      expect(await storage.readObject('profile-city')).toMatchObject({ state: { city: null } })
+      expect(await storage.readObject('profile-address')).toMatchObject({
+        state: { address: null },
+      })
     })
   })
 })

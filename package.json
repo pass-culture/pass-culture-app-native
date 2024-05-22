@@ -166,6 +166,7 @@
     "react-native-date-picker": "^4.3.5",
     "react-native-detector": "^0.2.3",
     "react-native-device-info": "^10.3.0",
+    "react-native-devsettings": "^1.0.5",
     "react-native-email-link": "^1.10.0",
     "react-native-fast-image": "^8.6.3",
     "react-native-geolocation-service": "5.3.1",
@@ -203,7 +204,8 @@
     "styled-components": "^5.3.3",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.0",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",

@@ -15,6 +15,9 @@ export type StorageKey =
   | 'has_seen_tutorials'
   | 'logged_in_session_count'
   | 'PASSCULTURE_REFRESH_TOKEN'
+  | 'profile-address'
+  | 'profile-city'
+  | 'profile-name'
   | 'phone_validation_code_asked_at'
   | 'react_navigation_persistence'
   | 'times_location_tooltip_has_been_displayed'
@@ -27,7 +30,6 @@ export type StorageKey =
   | 'traffic_source'
   | 'user_age'
   | 'location_type'
-  | 'activation_profile'
   | 'times_user_subscribed_to_a_theme'
   | 'times_music_live_booking_survey_has_been_displayed'
 

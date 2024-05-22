@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { Venue } from 'features/venue/types'
-import { useVenueMapState } from 'features/venueMap/context/VenueMapWrapper'
+import { useVenuesActions } from 'features/venueMap/store/venuesStore'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { LocationMode } from 'libs/location/types'
 import { Region } from 'libs/maps/maps'
@@ -17,7 +17,7 @@ type Props = {
 
 export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
   const netInfo = useNetInfoContext()
-  const { dispatch } = useVenueMapState()
+  const { setVenues } = useVenuesActions()
 
   const shouldFetchVenues = !!netInfo.isConnected && !initialVenues?.length
 
@@ -45,9 +45,9 @@ export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
 
   useEffect(() => {
     if (venues) {
-      dispatch({ type: 'SET_VENUES', payload: venues })
+      setVenues(venues)
     }
-  }, [venues, dispatch, initialVenues])
+  }, [venues, setVenues, initialVenues])
 
   return { venues }
 }

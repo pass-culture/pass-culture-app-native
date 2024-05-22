@@ -2,24 +2,30 @@ import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal/VenueTypeModal'
+import { useVenues } from 'features/venueMap/store/venuesStore'
+import {
+  useVenueTypeCode,
+  useVenueTypeCodeActions,
+} from 'features/venueMap/store/venueTypeCodeStore'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockHideModal = jest.fn()
 
-const mockDispatch = jest.fn()
-const mockUseVenueMapState = jest.fn()
-jest.mock('features/venueMap/context/VenueMapWrapper', () => ({
-  useVenueMapState: () => mockUseVenueMapState(),
-}))
+jest.mock('features/venueMap/store/venueTypeCodeStore')
+const mockUseVenueTypeCode = useVenueTypeCode as jest.Mock
+const mockSetVenueTypeCode = jest.fn()
+const mockUseVenueTypeCodeActions = useVenueTypeCodeActions as jest.Mock
+mockUseVenueTypeCodeActions.mockReturnValue({ setVenueTypeCode: mockSetVenueTypeCode })
+
+jest.mock('features/venueMap/store/venuesStore')
+const mockUseVenues = useVenues as jest.Mock
 
 describe('<VenueTypeModal />', () => {
   describe('When venue type is null', () => {
     beforeAll(() => {
-      mockUseVenueMapState.mockReturnValue({
-        venueMapState: { venueTypeCode: null, venues: venuesFixture },
-        dispatch: mockDispatch,
-      })
+      mockUseVenueTypeCode.mockReturnValue(null)
+      mockUseVenues.mockReturnValue(venuesFixture)
     })
 
     it('should render modal correctly', () => {
@@ -72,20 +78,15 @@ describe('<VenueTypeModal />', () => {
       fireEvent.press(screen.getByText('Rechercher'))
 
       await waitFor(() => {
-        expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-          type: 'SET_VENUE_TYPE_CODE',
-          payload: VenueTypeCodeKey.MOVIE,
-        })
+        expect(mockSetVenueTypeCode).toHaveBeenNthCalledWith(1, VenueTypeCodeKey.MOVIE)
       })
     })
   })
 
   describe('When venue type is not null', () => {
     beforeAll(() => {
-      mockUseVenueMapState.mockReturnValue({
-        venueMapState: { venueTypeCode: VenueTypeCodeKey.MOVIE, venues: [] },
-        dispatch: mockDispatch,
-      })
+      mockUseVenueTypeCode.mockReturnValue(VenueTypeCodeKey.MOVIE)
+      mockUseVenues.mockReturnValue([])
     })
 
     it('should select "Tout" option when pressing reset button', () => {

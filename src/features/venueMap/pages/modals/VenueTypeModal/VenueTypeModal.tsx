@@ -7,11 +7,16 @@ import { SearchCustomModalHeader } from 'features/search/components/SearchCustom
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
 import { FilterBehaviour } from 'features/search/enums'
 import { VenueTypeSection } from 'features/venueMap/components/VenueTypeSection/VenueTypeSection'
-import { useVenueMapState } from 'features/venueMap/context/VenueMapWrapper'
 import { getGeolocatedVenues } from 'features/venueMap/helpers/getGeolocatedVenues/getGeolocatedVenues'
 import { getVenuesNumberByType } from 'features/venueMap/helpers/getVenuesNumberByType/getVenuesNumberByType'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
 import { venueTypesMapping } from 'features/venueMap/helpers/venueTypesMapping/venueTypesMapping'
+import { useSelectedVenue } from 'features/venueMap/store/selectedVenueStore'
+import { useVenues } from 'features/venueMap/store/venuesStore'
+import {
+  useVenueTypeCode,
+  useVenueTypeCodeActions,
+} from 'features/venueMap/store/venueTypeCodeStore'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
@@ -36,7 +41,11 @@ const MODAL_TITLE = 'Type de lieu'
 
 export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible = false }) => {
   const { modal } = useTheme()
-  const { venueMapState, dispatch } = useVenueMapState()
+
+  const venues = useVenues()
+  const selectedVenue = useSelectedVenue()
+  const defaultVenueTypeCode = useVenueTypeCode()
+  const { setVenueTypeCode } = useVenueTypeCodeActions()
 
   const {
     formState: { isSubmitting },
@@ -46,14 +55,14 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
     watch,
   } = useForm<VenueTypeModalFormProps>({
     defaultValues: {
-      venueTypeCode: venueMapState.venueTypeCode,
+      venueTypeCode: defaultVenueTypeCode,
     },
   })
   const { venueTypeCode } = watch()
   const venueTypeLabel = useMemo(() => getVenueTypeLabel(venueTypeCode) ?? 'Tout', [venueTypeCode])
 
-  const venueCountByTypes = venueMapState.venues.length
-    ? getVenuesNumberByType(getGeolocatedVenues(venueMapState.venues, venueMapState.selectedVenue))
+  const venueCountByTypes = venues.length
+    ? getVenuesNumberByType(getGeolocatedVenues(venues, selectedVenue))
     : undefined
 
   const handleOnSelect = useCallback(
@@ -69,17 +78,17 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
 
   const handleCloseModal = useCallback(() => {
     reset({
-      venueTypeCode: venueMapState.venueTypeCode,
+      venueTypeCode: defaultVenueTypeCode,
     })
     hideModal()
-  }, [hideModal, reset, venueMapState.venueTypeCode])
+  }, [hideModal, reset, defaultVenueTypeCode])
 
   const handleSearchPress = useCallback(
     (form: VenueTypeModalFormProps) => {
-      dispatch({ type: 'SET_VENUE_TYPE_CODE', payload: form.venueTypeCode })
+      setVenueTypeCode(form.venueTypeCode)
       hideModal()
     },
-    [dispatch, hideModal]
+    [setVenueTypeCode, hideModal]
   )
 
   return (
