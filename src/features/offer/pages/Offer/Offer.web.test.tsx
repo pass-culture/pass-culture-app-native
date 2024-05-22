@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponseV2, SimilarOffersResponse } from 'api/gen'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
@@ -67,11 +67,13 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
 describe('<Offer/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
-      mockServer.universalGet(`https://recommmendation-endpoint/similar_offers/${mockedOffer.id}`, {
-        hits: [],
+      mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/116656`, {
+        params: {},
+        results: [],
       })
-      mockServer.universalGet(`https://recommmendation-endpoint/similar_offers/${mockedOffer.id}`, {
-        hits: [],
+      mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/116656`, {
+        params: {},
+        results: [],
       })
     })
 

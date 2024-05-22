@@ -1,16 +1,13 @@
-import { Hit } from '@algolia/client-search'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { OfferResponseV2, SimilarOffersResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { env } from 'libs/environment'
 import { Network } from 'libs/share/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { Offer as OfferTypes } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance, screen } from 'tests/utils'
@@ -36,11 +33,15 @@ describe('<Offer />', () => {
       requestOptions: { persist: true },
       responseOptions: { data: offerResponseSnap },
     })
-    mockServer.universalGet<Hit<OfferTypes>[]>(
-      `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${offerResponseSnap.id}`,
+    mockServer.getApi(`/v1/recommendation/similar_offers/${offerResponseSnap.id}`, {
+      requestOptions: { persist: true },
+      responseOptions: { data: mockedAlgoliaResponse.hits },
+    })
+    mockServer.getApi<SimilarOffersResponse>(
+      `/v1/recommendation/similar_offers/${offerResponseSnap.id}`,
       {
-        requestOptions: { persist: true },
-        responseOptions: { data: mockedAlgoliaResponse.hits },
+        params: {},
+        results: [],
       }
     )
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...PLACEHOLDER_DATA })

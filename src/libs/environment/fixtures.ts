@@ -60,8 +60,6 @@ export const env: Environment = {
   PASSCULTURE_DOWNLOAD_APP_URL: 'https://pass.culture.fr/nosapplications/',
   PRIVACY_POLICY_LINK: 'https://passculture.privacy',
   PUBLIC_URL: 'https://web.example.com',
-  RECOMMENDATION_ENDPOINT: 'https://recommmendation-endpoint',
-  RECOMMENDATION_TOKEN: 'recommmendation-token',
   RESIZE_IMAGE_ON_DEMAND_URL: 'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com',
   SENTRY_DSN: 'SENTRY_DSN',
   SENTRY_PROFILES_SAMPLE_RATE: '1.0',

@@ -1,11 +1,16 @@
 import { useMemo } from 'react'
 
-import { OfferResponseV2, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
+import {
+  OfferResponseV2,
+  RecommendationApiParams,
+  SearchGroupNameEnumv2,
+  SearchGroupResponseModelv2,
+} from 'api/gen'
 import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { useSameArtistPlaylist } from 'features/offer/helpers/useSameArtistPlaylist/useSameArtistPlaylist'
-import { useLocation, Position } from 'libs/location'
-import { Offer, RecommendationApiParams } from 'shared/offer/types'
+import { Position, useLocation } from 'libs/location'
+import { Offer } from 'shared/offer/types'
 
 type Props = {
   offer: OfferResponseV2

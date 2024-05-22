@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { OfferPlaylist } from 'features/offer/components/OfferPlaylist/OfferPlaylist'
@@ -21,7 +21,7 @@ import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
-import { Offer, RecommendationApiParams, SimilarOfferPlaylist } from 'shared/offer/types'
+import { Offer, SimilarOfferPlaylist } from 'shared/offer/types'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 
 export type OfferPlaylistListProps = {

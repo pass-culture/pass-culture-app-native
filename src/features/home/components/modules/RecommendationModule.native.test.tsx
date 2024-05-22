@@ -1,14 +1,13 @@
 import React from 'react'
 
-import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { RecommendationApiParams, SubcategoriesResponseModelv2 } from 'api/gen'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { RecommendationApiParams } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, waitFor, screen } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 import { RecommendationModule } from './RecommendationModule'
 

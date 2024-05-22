@@ -1,9 +1,9 @@
 import { useCallback } from 'react'
 
+import { RecommendationApiParams } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
 import { analytics } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
-import { RecommendationApiParams } from 'shared/offer/types'
 
 type Props = {
   offerId: number

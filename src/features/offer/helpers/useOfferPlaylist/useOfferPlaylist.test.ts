@@ -1,4 +1,4 @@
-import { OfferExtraData, SearchGroupNameEnumv2 } from 'api/gen'
+import { OfferExtraData, RecommendationApiParams, SearchGroupNameEnumv2 } from 'api/gen'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
@@ -9,7 +9,6 @@ import {
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position } from 'libs/location'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { RecommendationApiParams } from 'shared/offer/types'
 import { renderHook } from 'tests/utils'
 
 const apiRecoParams: RecommendationApiParams = {

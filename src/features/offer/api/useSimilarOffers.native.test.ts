@@ -1,39 +1,17 @@
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { SearchGroupNameEnumv2, SimilarOffersResponse } from 'api/gen'
 import * as useAlgoliaSimilarOffers from 'features/offer/api/useAlgoliaSimilarOffers'
-import {
-  getApiRecoSimilarOffers,
-  getCategories,
-  getSimilarOffersEndpoint,
-  useSimilarOffers,
-} from 'features/offer/api/useSimilarOffers'
-import { env } from 'libs/environment'
-import { eventMonitoring } from 'libs/monitoring'
+import { getCategories, useSimilarOffers } from 'features/offer/api/useSimilarOffers'
+import { env } from 'libs/environment/fixtures'
+import * as PackageJson from 'libs/packageJson'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-const mockUserId = 1234
 const mockOfferId = 1
 const position = {
   latitude: 6,
   longitude: 22,
-}
-
-const respondWith = async (
-  body: unknown,
-  status = 200,
-  statusText?: string,
-  headers?: HeadersInit
-): Promise<Response> => {
-  return new Response(JSON.stringify(body), {
-    headers: {
-      'content-type': 'application/json',
-      ...headers,
-    },
-    status,
-    statusText,
-  })
 }
 
 jest.mock('features/auth/context/AuthContext')
@@ -52,10 +30,13 @@ const algoliaSpy = jest
   .mockImplementation()
 const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
 
+jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
+
 describe('useSimilarOffers', () => {
   beforeEach(() => {
-    mockServer.universalGet(`https://recommmendation-endpoint/similar_offers/${mockOfferId}`, {
-      hits: [],
+    mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
+      params: {},
+      results: [],
     })
   })
 
@@ -93,38 +74,6 @@ describe('useSimilarOffers', () => {
     })
   })
 
-  it('should not call Algolia hook when no offer id provided', async () => {
-    renderHook(
-      () =>
-        useSimilarOffers({
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
-
-    await waitFor(() => {
-      expect(algoliaSpy).toHaveBeenCalledWith([], true)
-    })
-  })
-
-  it('should not call similar offers API when no offer provided', async () => {
-    renderHook(
-      () =>
-        useSimilarOffers({
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
-
-    await waitFor(() => {
-      expect(fetchApiRecoSpy).not.toHaveBeenCalled()
-    })
-  })
-
   it('should call similar offers API when offer id provided and user share his position', async () => {
     renderHook(
       () =>
@@ -141,7 +90,19 @@ describe('useSimilarOffers', () => {
     await waitFor(() => {
       expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
         1,
-        'https://recommmendation-endpoint/similar_offers/1?token=recommmendation-token&userId=1234&longitude=15&latitude=10&categories=FILMS_SERIES_CINEMA'
+        `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?longitude=15&latitude=10&categories=FILMS_SERIES_CINEMA`,
+        {
+          credentials: 'omit',
+          headers: {
+            'app-version': '1.10.5',
+            'code-push-id': 'abel',
+            'commit-hash': '13371337',
+            'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+            platform: 'ios',
+            'request-id': 'testUuidV4',
+          },
+          method: 'GET',
+        }
       )
     })
   })
@@ -162,108 +123,21 @@ describe('useSimilarOffers', () => {
     await waitFor(() => {
       expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
         1,
-        'https://recommmendation-endpoint/similar_offers/1?token=recommmendation-token&userId=1234&categories=FILMS_SERIES_CINEMA'
+        `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?categories=FILMS_SERIES_CINEMA`,
+        {
+          credentials: 'omit',
+          headers: {
+            'app-version': '1.10.5',
+            'code-push-id': 'abel',
+            'commit-hash': '13371337',
+            'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+            platform: 'ios',
+            'request-id': 'testUuidV4',
+          },
+          method: 'GET',
+        }
       )
     })
-  })
-})
-
-describe('getSimilarOffersEndpoint', () => {
-  describe('should return endpoint', () => {
-    it('with user id query param when it is provided', () => {
-      const endpoint = getSimilarOffersEndpoint(mockOfferId, mockUserId)
-
-      expect(endpoint).toEqual(
-        `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&userId=${mockUserId}`
-      )
-    })
-
-    it('with latitude and longitude query params when there are provided', () => {
-      const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, position)
-
-      expect(endpoint).toEqual(
-        `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&longitude=${position.longitude}&latitude=${position.latitude}`
-      )
-    })
-
-    it('without latitude and longitude query params when there are null', () => {
-      const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, null)
-
-      expect(endpoint).toEqual(
-        `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}`
-      )
-    })
-
-    it('with one value in categories array query param when it is provided', () => {
-      const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, undefined, [
-        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-      ])
-
-      expect(endpoint).toEqual(
-        `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&categories=${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}`
-      )
-    })
-
-    it('with several values in categories array query param when it is provided', () => {
-      const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, undefined, [
-        SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
-      ])
-
-      expect(endpoint).toEqual(
-        `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&categories=${SearchGroupNameEnumv2.FILMS_SERIES_CINEMA}&categories=${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}`
-      )
-    })
-  })
-
-  describe('should not return endpoint', () => {
-    it('with offer id, user id, latitude, longitude and categories query params when they are not provided', () => {
-      const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, undefined, undefined)
-
-      expect(endpoint).toEqual(
-        `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}`
-      )
-    })
-
-    it('when offer id not passed in parameter', () => {
-      const endpoint = getSimilarOffersEndpoint(undefined, undefined, undefined, undefined)
-
-      expect(endpoint).toEqual(undefined)
-    })
-  })
-})
-
-describe('getApiRecoSimilarOffers', () => {
-  const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
-  const endpoint = getSimilarOffersEndpoint(mockOfferId, mockUserId) || ''
-
-  const params = {
-    call_id: 1,
-    filtered: true,
-    geo_located: false,
-    model_endpoint: 'default',
-    model_name: 'similar_offers_default_prod',
-    model_version: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
-    reco_origin: 'default',
-  }
-
-  it('should log sentry when reco similar offers API called with an error', async () => {
-    const error = new Error('error')
-    fetchApiRecoSpy.mockImplementationOnce(() => Promise.reject(error))
-
-    const apiReco = await getApiRecoSimilarOffers(endpoint)
-
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
-    expect(apiReco).toEqual(undefined)
-  })
-
-  it('should return recommendations when reco similar offers API called', async () => {
-    const expectedResponse = respondWith({ params, results: ['102280', '102281'] })
-    fetchApiRecoSpy.mockReturnValueOnce(Promise.resolve(expectedResponse))
-
-    const apiReco = await getApiRecoSimilarOffers(endpoint)
-
-    expect(apiReco).toEqual({ params, results: ['102280', '102281'] })
   })
 })
 

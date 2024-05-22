@@ -1718,7 +1718,7 @@ export interface NextSubscriptionStepResponse {
    * @memberof NextSubscriptionStepResponse
    */
   nextSubscriptionStep?: SubscriptionStep | null
-/**
+  /**
    * @type {boolean}
    * @memberof NextSubscriptionStepResponse
    */
@@ -2408,6 +2408,99 @@ export interface PhoneValidationRemainingAttemptsRequest {
   remainingAttempts: number
 }
 /**
+ * @export
+ * @interface PlaylistRequestBody
+ */
+export interface PlaylistRequestBody {
+  /**
+   * @type {Array<string>}
+   * @memberof PlaylistRequestBody
+   */
+  categories?: Array<string> | null
+  /**
+   * @type {string}
+   * @memberof PlaylistRequestBody
+   */
+  endDate?: string | null
+  /**
+   * @type {boolean}
+   * @memberof PlaylistRequestBody
+   */
+  isDuo?: boolean | null
+  /**
+   * @type {boolean}
+   * @memberof PlaylistRequestBody
+   */
+  isEvent?: boolean | null
+  /**
+   * @type {boolean}
+   * @memberof PlaylistRequestBody
+   */
+  isRecoShuffled?: boolean | null
+  /**
+   * @type {Array<{ [key: string]: string; }>}
+   * @memberof PlaylistRequestBody
+   */
+  offerTypeList?: Array<{ [key: string]: string; }> | null
+  /**
+   * @type {number}
+   * @memberof PlaylistRequestBody
+   */
+  priceMax?: number | null
+  /**
+   * @type {number}
+   * @memberof PlaylistRequestBody
+   */
+  priceMin?: number | null
+  /**
+   * @type {string}
+   * @memberof PlaylistRequestBody
+   */
+  startDate?: string | null
+  /**
+   * @type {Array<string>}
+   * @memberof PlaylistRequestBody
+   */
+  subcategories?: Array<string> | null
+}
+/**
+ * @export
+ * @interface PlaylistRequestQuery
+ */
+export interface PlaylistRequestQuery {
+  /**
+   * @type {number}
+   * @memberof PlaylistRequestQuery
+   */
+  latitude?: number | null
+  /**
+   * @type {number}
+   * @memberof PlaylistRequestQuery
+   */
+  longitude?: number | null
+  /**
+   * @type {string}
+   * @memberof PlaylistRequestQuery
+   */
+  modelEndpoint?: string | null
+}
+/**
+ * @export
+ * @interface PlaylistResponse
+ */
+export interface PlaylistResponse {
+  /**
+   * @type {RecommendationApiParams}
+   * @memberof PlaylistResponse
+   */
+  params: RecommendationApiParams
+  /**
+   * @type {Array<string>}
+   * @memberof PlaylistResponse
+   */
+  playlistRecommendedOffers: Array<string>
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -2487,6 +2580,52 @@ export interface ReasonMeta {
    * @memberof ReasonMeta
    */
   title: string
+}
+/**
+ * @export
+ * @interface RecommendationApiParams
+ */
+export interface RecommendationApiParams {
+  /**
+   * @type {string}
+   * @memberof RecommendationApiParams
+   */
+  ab_test?: string | null
+  /**
+   * @type {string}
+   * @memberof RecommendationApiParams
+   */
+  call_id?: string | null
+  /**
+   * @type {boolean}
+   * @memberof RecommendationApiParams
+   */
+  filtered?: boolean | null
+  /**
+   * @type {boolean}
+   * @memberof RecommendationApiParams
+   */
+  geo_located?: boolean | null
+  /**
+   * @type {string}
+   * @memberof RecommendationApiParams
+   */
+  model_endpoint?: string | null
+  /**
+   * @type {string}
+   * @memberof RecommendationApiParams
+   */
+  model_name?: string | null
+  /**
+   * @type {string}
+   * @memberof RecommendationApiParams
+   */
+  model_version?: string | null
+  /**
+   * @type {string}
+   * @memberof RecommendationApiParams
+   */
+  reco_origin?: string | null
 }
 /**
  * @export
@@ -2802,6 +2941,48 @@ export interface SigninResponse {
    * @memberof SigninResponse
    */
   refreshToken: string
+}
+/**
+ * @export
+ * @interface SimilarOffersRequestQuery
+ */
+export interface SimilarOffersRequestQuery {
+  /**
+   * @type {Array<string>}
+   * @memberof SimilarOffersRequestQuery
+   */
+  categories?: Array<string> | null
+  /**
+   * @type {number}
+   * @memberof SimilarOffersRequestQuery
+   */
+  latitude?: number | null
+  /**
+   * @type {number}
+   * @memberof SimilarOffersRequestQuery
+   */
+  longitude?: number | null
+  /**
+   * @type {Array<string>}
+   * @memberof SimilarOffersRequestQuery
+   */
+  subcategories?: Array<string> | null
+}
+/**
+ * @export
+ * @interface SimilarOffersResponse
+ */
+export interface SimilarOffersResponse {
+  /**
+   * @type {RecommendationApiParams}
+   * @memberof SimilarOffersResponse
+   */
+  params: RecommendationApiParams
+  /**
+   * @type {Array<string>}
+   * @memberof SimilarOffersResponse
+   */
+  results?: Array<string>
 }
 /**
  * @export
@@ -4166,6 +4347,59 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary similar_offers <GET>
+     * @param {number} offer_id 
+     * @param {number} [longitude] 
+     * @param {number} [latitude] 
+     * @param {Array<string>} [categories] 
+     * @param {Array<string>} [subcategories] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'offer_id' is not null or undefined
+      if (offer_id === null || offer_id === undefined) {
+        throw new RequiredError(
+          'offer_id',
+          'Required parameter offer_id was null or undefined when calling getNativeV1RecommendationSimilarOffersofferId.'
+        )
+      }
+      let pathname = `/native/v1/recommendation/similar_offers/{offer_id}`.replace(
+        `{${'offer_id'}}`,
+        encodeURIComponent(String(offer_id))
+      )
+      const queryParameters: any = {};
+
+        if (longitude != null) {
+            queryParameters['longitude'] = longitude;
+        }
+
+        if (latitude != null) {
+            queryParameters['latitude'] = latitude;
+        }
+
+        if (categories != null) {
+            queryParameters['categories'] = categories;
+        }
+
+        if (subcategories != null) {
+            queryParameters['subcategories'] = subcategories;
+        }
+
+      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
+        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+      }).join('&')
+      pathname += encodedQueryParams
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_settings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4772,13 +5006,54 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     async postNativeV1ProfileUpdateEmail(body?: UserProfileEmailUpdate, options: any = {}): Promise<FetchArgs> {
       let pathname = `/native/v1/profile/update_email`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"UserProfileEmailUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary playlist <POST>
+     * @param {PlaylistRequestBody} [body] 
+     * @param {string} [modelEndpoint] 
+     * @param {number} [longitude] 
+     * @param {number} [latitude] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1RecommendationPlaylist(body?: PlaylistRequestBody, modelEndpoint?: string, longitude?: number, latitude?: number, options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v1/recommendation/playlist`
+      const queryParameters: any = {};
+
+        if (modelEndpoint != null) {
+            queryParameters['modelEndpoint'] = modelEndpoint;
+        }
+
+        if (longitude != null) {
+            queryParameters['longitude'] = longitude;
+        }
+
+        if (latitude != null) {
+            queryParameters['latitude'] = latitude;
+        }
+
+      const encodedQueryParams = '?' + Object.keys(queryParameters).map((key) => {
+        return `${encodeURIComponent(key)}=${encodeURIComponent(queryParameters[key])}`
+      }).join('&')
+      pathname += encodedQueryParams
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"UserProfileEmailUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      const needsSerialization = (<any>"PlaylistRequestBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
@@ -5398,6 +5673,22 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary similar_offers <GET>
+     * @param {number} offer_id 
+     * @param {number} [longitude] 
+     * @param {number} [latitude] 
+     * @param {Array<string>} [categories] 
+     * @param {Array<string>} [subcategories] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, options?: any): Promise<SimilarOffersResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1RecommendationSimilarOffersofferId(offer_id, longitude, latitude, categories, subcategories, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary get_settings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -5736,6 +6027,21 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async postNativeV1ProfileUpdateEmail(body?: UserProfileEmailUpdate, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1ProfileUpdateEmail(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary playlist <POST>
+     * @param {PlaylistRequestBody} [body] 
+     * @param {string} [modelEndpoint] 
+     * @param {number} [longitude] 
+     * @param {number} [latitude] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1RecommendationPlaylist(body?: PlaylistRequestBody, modelEndpoint?: string, longitude?: number, latitude?: number, options?: any): Promise<PlaylistResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1RecommendationPlaylist(body, modelEndpoint, longitude, latitude, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -6180,6 +6486,22 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
+    * @summary similar_offers <GET>
+    * @param {number} offer_id 
+    * @param {number} [longitude] 
+    * @param {number} [latitude] 
+    * @param {Array<string>} [categories] 
+    * @param {Array<string>} [subcategories] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1RecommendationSimilarOffersofferId(offer_id: number, longitude?: number, latitude?: number, categories?: Array<string>, subcategories?: Array<string>, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1RecommendationSimilarOffersofferId(offer_id, longitude, latitude, categories, subcategories, options)
+  }
+  /**
+    * 
     * @summary get_settings <GET>
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -6520,6 +6842,21 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1ProfileUpdateEmail(body?: UserProfileEmailUpdate, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ProfileUpdateEmail(body, options)
+  }
+  /**
+    * 
+    * @summary playlist <POST>
+    * @param {PlaylistRequestBody} [body] 
+    * @param {string} [modelEndpoint] 
+    * @param {number} [longitude] 
+    * @param {number} [latitude] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV1RecommendationPlaylist(body?: PlaylistRequestBody, modelEndpoint?: string, longitude?: number, latitude?: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV1RecommendationPlaylist(body, modelEndpoint, longitude, latitude, options)
   }
   /**
     * 

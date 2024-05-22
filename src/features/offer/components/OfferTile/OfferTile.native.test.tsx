@@ -2,12 +2,11 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { push } from '__mocks__/@react-navigation/native'
-import { CategoryIdEnum, HomepageLabelNameEnumv2 } from 'api/gen'
+import { CategoryIdEnum, HomepageLabelNameEnumv2, RecommendationApiParams } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
-import { RecommendationApiParams } from 'shared/offer/types'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 

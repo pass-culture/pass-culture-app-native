@@ -3,16 +3,17 @@ import { UseMutateFunction } from 'react-query'
 
 import { ApiError } from 'api/ApiError'
 import {
-  OfferResponseV2,
-  FavoriteOfferResponse,
-  UserProfileResponse,
-  YoungStatusType,
-  YoungStatusResponse,
-  SubscriptionStatus,
-  BookOfferResponse,
-  BookOfferRequest,
   BookingReponse,
+  BookOfferRequest,
+  BookOfferResponse,
+  FavoriteOfferResponse,
+  OfferResponseV2,
+  RecommendationApiParams,
   SubcategoryIdEnum,
+  SubscriptionStatus,
+  UserProfileResponse,
+  YoungStatusResponse,
+  YoungStatusType,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
@@ -35,7 +36,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
-import { RecommendationApiParams } from 'shared/offer/types'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 

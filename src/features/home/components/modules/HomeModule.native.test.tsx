@@ -8,18 +8,17 @@ import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOff
 import {
   formattedBusinessModule,
   formattedCategoryListModule,
+  formattedExclusivityModule,
+  formattedOffersModule,
   formattedRecommendedOffersModule,
   formattedThematicHighlightModule,
-  formattedOffersModule,
   formattedVenuesModule,
-  formattedExclusivityModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
-import { env } from 'libs/environment'
 import { GeoCoordinates, ILocationContext, Position, useLocation } from 'libs/location'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
@@ -147,10 +146,7 @@ describe('<HomeModule />', () => {
       results: ['102280', '102272'],
     }
 
-    mockServer.universalPost(
-      env.RECOMMENDATION_ENDPOINT + '/playlist_recommendation/1234',
-      recommendedOffers
-    )
+    mockServer.postApi('/v1/recommendation/playlist', recommendedOffers)
 
     renderHomeModule(formattedRecommendedOffersModule)
     await act(async () => {})

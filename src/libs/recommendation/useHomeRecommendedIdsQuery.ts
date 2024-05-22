@@ -1,48 +1,58 @@
 import { ScopeContext } from '@sentry/types'
 import { useQuery } from 'react-query'
 
+import { api } from 'api/api'
+import { PlaylistRequestBody, PlaylistRequestQuery } from 'api/gen'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
-import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
 
-type Parameters = Omit<RecommendedIdsRequest, 'endpointUrl'> & { endpointUrl?: string }
+type Parameters = {
+  playlistRequestBody: PlaylistRequestBody
+  playlistRequestQuery: PlaylistRequestQuery
+  userId?: number
+}
 
 export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
+  const { playlistRequestBody, playlistRequestQuery, userId } = parameters
+  const { modelEndpoint, longitude, latitude } = playlistRequestQuery
+  const stringifyPlaylistRequestBody = JSON.stringify(playlistRequestBody)
+  const stringifyPlaylistRequestQuery = JSON.stringify(playlistRequestQuery)
+
   return useQuery(
     [QueryKeys.RECOMMENDATION_OFFER_IDS, parameters],
     async () => {
-      const { endpointUrl, ...requestBodyParams } = parameters
-      if (!endpointUrl) return { playlist_recommended_offers: [] }
-
       try {
-        const response = await fetch(endpointUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(requestBodyParams),
-        })
+        const response = await api.postNativeV1RecommendationPlaylist(
+          playlistRequestBody,
+          modelEndpoint ?? undefined,
+          longitude ?? undefined,
+          latitude ?? undefined
+        )
+
         const captureContext: Partial<ScopeContext> = {
           level: 'info',
-          extra: { url: endpointUrl, status: response.status },
+          extra: {
+            playlistRequestBody: stringifyPlaylistRequestBody,
+            playlistRequestQuery: stringifyPlaylistRequestQuery,
+          },
         }
-        if (!response.ok) {
-          eventMonitoring.captureException('Recommendation response was not ok', captureContext)
-        }
-        const responseBody: RecommendedIdsResponse = await response.json()
-        if (responseBody?.playlist_recommended_offers?.length === 0) {
+
+        if (response.playlistRecommendedOffers?.length === 0) {
           eventMonitoring.captureException('Recommended offers playlist is empty', captureContext)
         }
-        return responseBody
+
+        return response
       } catch (err) {
         eventMonitoring.captureException('Error with recommendation endpoint', {
-          extra: { url: endpointUrl, stack: err },
+          extra: {
+            playlistRequestBody: stringifyPlaylistRequestBody,
+            playlistRequestQuery: stringifyPlaylistRequestQuery,
+          },
         })
 
-        return { playlist_recommended_offers: [] }
+        return { playlistRecommendedOffers: [], params: undefined }
       }
     },
-    { staleTime: 1000 * 60 * 5, enabled: !!parameters.endpointUrl }
+    { staleTime: 1000 * 60 * 5, enabled: !!userId }
   )
 }
