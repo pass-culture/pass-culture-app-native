@@ -1,4 +1,3 @@
-import { ScopeContext } from '@sentry/types'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
@@ -28,18 +27,6 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
           longitude ?? undefined,
           latitude ?? undefined
         )
-
-        const captureContext: Partial<ScopeContext> = {
-          level: 'info',
-          extra: {
-            playlistRequestBody: stringifyPlaylistRequestBody,
-            playlistRequestQuery: stringifyPlaylistRequestQuery,
-          },
-        }
-
-        if (response.playlistRecommendedOffers?.length === 0) {
-          eventMonitoring.captureException('Recommended offers playlist is empty', captureContext)
-        }
 
         return response
       } catch (err) {

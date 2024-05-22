@@ -34,30 +34,6 @@ describe('useHomeRecommendedIdsQuery', () => {
     })
   })
 
-  it('should capture an exception when recommendation playlist is empty', async () => {
-    mockServer.postApi<PlaylistResponse>('/v1/recommendation/playlist', {
-      responseOptions: { statusCode: 200, data: { params: {}, playlistRecommendedOffers: [] } },
-    })
-    renderHook(
-      () =>
-        useHomeRecommendedIdsQuery({
-          playlistRequestBody: {},
-          playlistRequestQuery: {},
-          userId: 1,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
-
-    await waitFor(() => {
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        'Recommended offers playlist is empty',
-        { extra: { playlistRequestBody: '{}', playlistRequestQuery: '{}' }, level: 'info' }
-      )
-    })
-  })
-
   it('should return playlist offer ids', async () => {
     mockServer.postApi<PlaylistResponse>('/v1/recommendation/playlist', {
       responseOptions: {
