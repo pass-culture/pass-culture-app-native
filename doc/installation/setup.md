@@ -2,6 +2,8 @@
 
 We advise to **follow [the guidelines](https://reactnative.dev/docs/environment-setup)** to set up your environment by selecting your Development OS and your target OS (Android/iOS).
 
+You can either follow Automatic installation or Manual installation guidelines
+
 ### Automatic
 
 [Install `nix` package manager](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer)
