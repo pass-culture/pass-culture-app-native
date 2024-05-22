@@ -131,6 +131,36 @@ export const venuesSearchFixture = toMutable({
       postalCode: '75000',
       city: 'Paris',
     },
+    {
+      id: 5547,
+      name: 'Le Petit Rintintin 5',
+      venueTypeCode: VenueTypeCodeKey.MOVIE,
+      publicName: 'Librairie Quantique',
+      latitude: 48.87004,
+      longitude: 2.3785,
+      description: ' https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit.',
+      accessibility: {
+        audioDisability: false,
+        mentalDisability: false,
+        motorDisability: false,
+        visualDisability: true,
+      },
+      contact: {
+        email: 'contact@venue.com',
+        phoneNumber: '+33102030405',
+        website: 'https://my@website.com',
+        socialMedias: {
+          facebook: 'https://facebook.com',
+          twitter: 'https://twitter.com',
+          instagram: 'https://instagram.com',
+          snapchat: 'https://snapchat.com',
+        },
+      },
+      bannerUrl:
+        'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA',
+      postalCode: '75000',
+      city: 'Paris',
+    },
   ],
-  nbHits: 4,
+  nbHits: 5,
 } as const satisfies ReadonlyDeep<SearchResponse>)

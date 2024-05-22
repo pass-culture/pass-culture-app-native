@@ -15,7 +15,7 @@ import {
   formattedVenuesModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
-import { HomepageModule, ModuleData } from 'features/home/types'
+import { HomepageModule, HomepageModuleType, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
@@ -149,9 +149,9 @@ describe('<HomeModule />', () => {
     mockServer.postApi('/v1/recommendation/playlist', recommendedOffers)
 
     renderHomeModule(formattedRecommendedOffersModule)
-    await act(async () => {})
-
-    expect(screen.getByText('Tes évènements en ligne')).toBeOnTheScreen()
+    await waitFor(() => {
+      expect(screen.getByText('Tes évènements en ligne')).toBeOnTheScreen()
+    })
   })
 
   it('should display VideoModule', async () => {
@@ -170,25 +170,36 @@ describe('<HomeModule />', () => {
 
     renderHomeModule(formattedThematicHighlightModule)
 
-    await act(async () => {})
-
-    expect(screen.getByText('Temps très fort')).toBeOnTheScreen()
+    await waitFor(() => {
+      expect(screen.getByText('Temps très fort')).toBeOnTheScreen()
+    })
   })
 
   it('should display OffersModule', async () => {
     renderHomeModule(formattedOffersModule, defaultData)
 
-    await act(async () => {})
-
-    expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
+    await waitFor(() => {
+      expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
+    })
   })
 
   it('should display VenuesModule', async () => {
     renderHomeModule(formattedVenuesModule, defaultDataVenues)
 
-    await act(async () => {})
+    await waitFor(() => {
+      expect(screen.getByText('Le Petit Rintintin 1')).toBeOnTheScreen()
+    })
+  })
 
-    expect(screen.getByText('Le Petit Rintintin 1')).toBeOnTheScreen()
+  it('should display AppV2VenuesModule', async () => {
+    renderHomeModule(
+      { ...formattedVenuesModule, type: HomepageModuleType.AppV2VenuesModule },
+      defaultDataVenues
+    )
+
+    await waitFor(() => {
+      expect(screen.getByText('Le Petit Rintintin 1')).toBeOnTheScreen()
+    })
   })
 })
 

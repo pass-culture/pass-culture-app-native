@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { mapVenuesDataAndModules } from 'features/home/api/helpers/mapVenuesDataAndModules'
-import { VenuesModule, VenuesModuleParameters } from 'features/home/types'
+import { AppV2VenuesModule, VenuesModule, VenuesModuleParameters } from 'features/home/types'
 import { fetchVenuesModules } from 'libs/algolia/fetchAlgolia/fetchVenuesModules'
 import { useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useGetVenuesData = (modules: VenuesModule[]) => {
+export const useGetVenuesData = (modules: (VenuesModule | AppV2VenuesModule)[]) => {
   const { userLocation, selectedLocationMode } = useLocation()
 
   const netInfo = useNetInfoContext()

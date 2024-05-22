@@ -16,12 +16,19 @@ import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholde
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
-import { HomepageModule, isOffersModule, isVenuesModule, ThematicHeader } from 'features/home/types'
+import {
+  HomepageModule,
+  isAppV2VenuesModule,
+  isOffersModule,
+  isOneOfVenuesModule,
+  isVenuesModule,
+  ThematicHeader,
+} from 'features/home/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import { BatchEvent, BatchUser, BatchEventData } from 'libs/react-native-batch'
+import { BatchEvent, BatchEventData, BatchUser } from 'libs/react-native-batch'
 import { finishTransaction } from 'shared/performance/transactions'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
@@ -48,7 +55,7 @@ const renderModule = (
     item={item}
     index={index}
     homeEntryId={homeId}
-    data={isOffersModule(item) || isVenuesModule(item) ? item.data : undefined}
+    data={isOffersModule(item) || isOneOfVenuesModule(item) ? item.data : undefined}
     videoModuleId={videoModuleId}
   />
 )
@@ -80,7 +87,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   statusBar,
 }) => {
   const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
-  const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
+  const { venuesModulesData } = useGetVenuesData(modules.filter(isOneOfVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(async () =>
     analytics.logAllModulesSeen(modules.length)
   )
@@ -117,6 +124,9 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       module.data = offersModulesData.find((mod) => mod.moduleId === module.id)
     }
     if (isVenuesModule(module)) {
+      module.data = venuesModulesData.find((mod) => mod.moduleId === module.id)
+    }
+    if (isAppV2VenuesModule(module)) {
       module.data = venuesModulesData.find((mod) => mod.moduleId === module.id)
     }
   })

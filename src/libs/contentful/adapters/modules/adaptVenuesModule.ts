@@ -1,8 +1,8 @@
 import { HomepageModuleType, VenuesModule } from 'features/home/types'
 import {
+  ProvidedVenuesParameters,
   VenuesContentModel,
   VenuesParameters,
-  ProvidedVenuesParameters,
 } from 'libs/contentful/types'
 
 const venuesHaveFields = (parameters: VenuesParameters): parameters is ProvidedVenuesParameters =>
@@ -17,11 +17,11 @@ export const adaptVenuesModule = (modules: VenuesContentModel): VenuesModule | n
     .filter(venuesHaveFields)
     .map(({ fields }) => fields)
 
-  if (venuesParameters.length === 0) return null
+  if (venuesParameters[0] === undefined) return null
+
   return {
     type: HomepageModuleType.VenuesModule,
     id: modules.sys.id,
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     venuesParameters: venuesParameters[0],
     displayParameters: modules.fields.displayParameters.fields,
   }
