@@ -85,6 +85,12 @@ module.exports = {
               'use instead : ui/components/TouchableOpacity for TouchableOpacity. Image (|| ImageBackground) comes from our backend ? libs/resizing-image-on-demand/Image(||ImageBackground) : Image(||ImageBackground) from react-native',
           },
           {
+            name: 'zustand',
+            importNames: ['createStore', 'create'],
+            message:
+              'To create a store, use libs/store/createStore instead',
+          },
+          {
             name: 'react-native-animatable',
             message: 'use libs/react-native-animatable instead',
           },

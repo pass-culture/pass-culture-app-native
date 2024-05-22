@@ -1,4 +1,5 @@
 import { act } from '@testing-library/react'
+// eslint-disable-next-line no-restricted-imports
 import * as zustand from 'zustand'
 
 const { create: actualCreate, createStore: actualCreateStore } =
