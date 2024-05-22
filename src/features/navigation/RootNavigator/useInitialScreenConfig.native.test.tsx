@@ -6,7 +6,7 @@ import { analytics } from 'libs/analytics'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
-import { renderHook, superFlushWithAct } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useInitialScreen } from './useInitialScreenConfig'
 
@@ -53,9 +53,12 @@ describe('useInitialScreen()', () => {
       })
       mockMeApiCall(userProfile as UserProfileResponse)
 
-      const { current: screen } = await renderUseInitialScreen()
+      const result = await renderUseInitialScreen()
 
-      expect(screen).toEqual(expectedScreen)
+      await waitFor(() => {
+        expect(result.current).toEqual(expectedScreen)
+      })
+
       expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
       expect(analytics.logScreenView).toHaveBeenCalledWith(expectedAnalyticsScreen)
     }
@@ -67,7 +70,6 @@ async function renderUseInitialScreen() {
     <SplashScreenProvider>{props.children as React.JSX.Element}</SplashScreenProvider>
   )
   const { result } = renderHook(useInitialScreen, { wrapper })
-  await superFlushWithAct()
   return result
 }
 
