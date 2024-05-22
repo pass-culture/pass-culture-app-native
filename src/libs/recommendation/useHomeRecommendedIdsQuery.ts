@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
+import { ApiError } from 'api/ApiError'
 import { PlaylistRequestBody, PlaylistRequestQuery } from 'api/gen'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
@@ -30,10 +31,12 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
 
         return response
       } catch (err) {
-        eventMonitoring.captureException('Error with recommendation endpoint', {
+        const statusCode = (err as ApiError).statusCode
+        eventMonitoring.captureException(`Error ${statusCode} with recommendation endpoint`, {
           extra: {
             playlistRequestBody: stringifyPlaylistRequestBody,
             playlistRequestQuery: stringifyPlaylistRequestQuery,
+            statusCode: statusCode,
           },
         })
 

@@ -1,4 +1,5 @@
 import { PlaylistResponse } from 'api/gen'
+import { EmptyResponse } from 'libs/fetch'
 import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -10,8 +11,8 @@ jest.mock('libs/monitoring')
 
 describe('useHomeRecommendedIdsQuery', () => {
   it('should capture an exception when fetch call fails', async () => {
-    mockServer.postApi<PlaylistResponse>('/v1/recommendation/playlist', {
-      responseOptions: { statusCode: 400 },
+    mockServer.postApi<EmptyResponse>('/v1/recommendation/playlist', {
+      responseOptions: { statusCode: 502, data: {} },
     })
 
     renderHook(
@@ -28,8 +29,8 @@ describe('useHomeRecommendedIdsQuery', () => {
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        'Error with recommendation endpoint',
-        { extra: { playlistRequestBody: '{}', playlistRequestQuery: '{}' } }
+        'Error 502 with recommendation endpoint',
+        { extra: { playlistRequestBody: '{}', playlistRequestQuery: '{}', statusCode: 502 } }
       )
     })
   })
