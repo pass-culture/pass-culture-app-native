@@ -29,7 +29,7 @@ export const useBears = () => useCountBears((state) => state.bears)
 export const useBearsActions = () => useCountBears((state) => state.actions)
 ```
 
-The name `count-bears-store` is used to identify in the devtools.
+The name `count-bears-store` is used to identify in the DevTools.
 
 Then, in a component, you can use the store as a simple hook:
 
@@ -76,7 +76,7 @@ export const useBears = () => useCountBears((state) => state.bears)
 export const useBearsActions = () => useCountBears((state) => state.actions)
 ```
 
-The name `count-bears-store` is used to identify the store in the AsyncStore/LocalStorage.
+The name `count-bears-store` is used to identify the store in the AsyncStore/LocalStorage and DevTools.
 
 ### Devtools
 
