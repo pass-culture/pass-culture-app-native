@@ -58,13 +58,13 @@ export type CategoryCriteria = {
     icon: React.FC<AccessibleBicolorIcon>
     illustration: category extends SearchGroupNameEnumv2.NONE ? undefined : React.FC<AccessibleIcon>
     facetFilter: SearchGroupNameEnumv2
-    baseColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum | string
+    baseColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum
     gradients: category extends SearchGroupNameEnumv2.NONE ? undefined : Gradient
     position: category extends SearchGroupNameEnumv2.NONE ? undefined : number
     // v2 App Design
-    fillColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum | string
-    borderColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum | string
-    textColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum | string
+    fillColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum
+    borderColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum
+    textColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum
   }
 }
 
@@ -87,7 +87,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
     position: 1,
-    textColor: theme.colors.deepPinkDark,
+    textColor: theme.colors.lilacDark,
     borderColor: theme.colors.goldLight200,
     fillColor: theme.colors.goldLight100,
   },
@@ -142,9 +142,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     baseColor: theme.colors.coralDark,
     gradients: gradientColorsMapping.Coral,
     position: 6,
-    textColor: theme.colors.skyBlueDark,
-    borderColor: theme.colors.coral,
-    fillColor: theme.colors.coralLight,
+    textColor: theme.colors.lilacDark,
+    borderColor: theme.colors.aquamarineDark,
+    fillColor: theme.colors.aquamarineLight,
   },
   [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES]: {
     icon: categoriesIcons.Museum,
@@ -154,8 +154,8 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     gradients: gradientColorsMapping.Aquamarine,
     position: 7,
     textColor: theme.colors.lilacDark,
-    borderColor: theme.colors.aquamarineDark,
-    fillColor: theme.colors.aquamarineLight,
+    borderColor: theme.colors.goldLight200,
+    fillColor: theme.colors.goldLight100,
   },
   [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS]: {
     icon: categoriesIcons.VideoGame,
@@ -164,9 +164,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
     position: 8,
-    textColor: theme.colors.deepPinkDark,
-    borderColor: theme.colors.goldLight200,
-    fillColor: theme.colors.goldLight100,
+    textColor: theme.colors.skyBlueDark,
+    borderColor: theme.colors.coral,
+    fillColor: theme.colors.coralLight,
   },
   [SearchGroupNameEnumv2.INSTRUMENTS]: {
     icon: categoriesIcons.Instrument,
@@ -175,9 +175,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     baseColor: theme.colors.skyBlueDark,
     gradients: gradientColorsMapping.SkyBlue,
     position: 9,
-    textColor: theme.colors.deepPinkDark,
-    borderColor: theme.colors.lilac,
-    fillColor: theme.colors.lilacLight,
+    textColor: theme.colors.aquamarineDark,
+    borderColor: theme.colors.deepPink,
+    fillColor: theme.colors.deepPinkLight,
   },
   [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
     icon: categoriesIcons.Press,
@@ -186,7 +186,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     baseColor: theme.colors.deepPinkDark,
     gradients: gradientColorsMapping.DeepPink,
     position: 10,
-    textColor: theme.colors.skyBlueDark,
+    textColor: theme.colors.coralDark,
     borderColor: theme.colors.skyBlue,
     fillColor: theme.colors.skyBlueLight,
   },
@@ -197,9 +197,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     baseColor: theme.colors.lilacDark,
     gradients: gradientColorsMapping.Lilac,
     position: 11,
-    textColor: theme.colors.skyBlueDark,
-    borderColor: theme.colors.coral,
-    fillColor: theme.colors.coralLight,
+    textColor: theme.colors.deepPinkDark,
+    borderColor: theme.colors.lilac,
+    fillColor: theme.colors.lilacLight,
   },
   [SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]: {
     icon: categoriesIcons.Microphone,
@@ -208,9 +208,9 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     baseColor: theme.colors.goldDark,
     gradients: gradientColorsMapping.Gold,
     position: 12,
-    textColor: theme.colors.aquamarineDark,
-    borderColor: theme.colors.deepPink,
-    fillColor: theme.colors.deepPinkLight,
+    textColor: theme.colors.lilacDark,
+    borderColor: theme.colors.aquamarineDark,
+    fillColor: theme.colors.aquamarineLight,
   },
   [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
     icon: categoriesIcons.LiveEvent,
@@ -220,8 +220,8 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     gradients: gradientColorsMapping.Aquamarine,
     position: 13,
     textColor: theme.colors.lilacDark,
-    borderColor: theme.colors.aquamarineDark,
-    fillColor: theme.colors.aquamarineLight,
+    borderColor: theme.colors.goldLight200,
+    fillColor: theme.colors.goldLight100,
   },
 }
 
