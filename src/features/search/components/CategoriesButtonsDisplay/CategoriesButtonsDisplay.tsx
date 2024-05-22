@@ -8,7 +8,6 @@ import {
   CategoryButtonProps,
 } from 'features/search/components/CategoryButton/CategoryButton'
 import { CategoryButtonV2 } from 'features/search/components/CategoryButton/CategoryButtonV2'
-import { IncentiveLocationModal } from 'features/search/components/IncentiveLocationModal/IncentiveLocationModal'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -50,20 +49,10 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
   )
 
   const {
-    showModal: showIncentiveLocationModal,
-    visible: incentiveLocationModalVisible,
-    hideModal: hideIncentiveLocationModal,
-  } = useModal()
-  const {
     showModal: showVenueMapLocationModal,
     visible: venueMapLocationModalVisible,
     hideModal: hideVenueMapLocationModal,
   } = useModal()
-
-  const handleActiveLocationButtonPress = () => {
-    hideIncentiveLocationModal()
-    setTimeout(showVenueMapLocationModal, 400)
-  }
 
   const isNotLocated = selectedLocationMode === LocationMode.EVERYWHERE
 
@@ -85,7 +74,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
               <VenueMapBlock
-                onPress={isMapWithoutPositionAndNotLocated ? showIncentiveLocationModal : undefined}
+                onPress={isMapWithoutPositionAndNotLocated ? showVenueMapLocationModal : undefined}
                 from="searchLanding"
               />
               <Spacer.Column numberOfSpaces={2} />
@@ -93,11 +82,6 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
           ) : null}
 
           {enableNewCategoryBlock ? <CategoriesTitleV2 /> : <CategoriesTitle />}
-          <IncentiveLocationModal
-            visible={incentiveLocationModalVisible}
-            handleCloseModal={hideIncentiveLocationModal}
-            handleActiveLocationButtonPress={handleActiveLocationButtonPress}
-          />
           <VenueMapLocationModal
             visible={venueMapLocationModalVisible}
             dismissModal={hideVenueMapLocationModal}

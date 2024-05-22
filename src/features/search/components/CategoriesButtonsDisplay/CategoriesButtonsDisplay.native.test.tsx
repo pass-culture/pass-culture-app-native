@@ -120,7 +120,7 @@ describe('CategoriesButtonsDisplay', () => {
     expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'searchLanding' })
   })
 
-  it('should open incentive location modal when pressing on venue map block', () => {
+  it('should open venue map location modal when pressing on venue map block', () => {
     useModalAPISpy.mockReturnValueOnce({
       visible: false,
       showModal: mockShowModal,
