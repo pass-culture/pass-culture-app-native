@@ -13,7 +13,7 @@ import * as PackageJson from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, flushAllPromisesWithAct, renderHook, superFlushWithAct, waitFor } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
@@ -59,24 +59,29 @@ describe('useCookies', () => {
 
     it('should write state', async () => {
       const { result } = renderUseCookies()
-      const { setCookiesConsent } = result.current
 
-      await flushAllPromisesWithAct()
       await act(async () => {
-        await setCookiesConsent({
+        await result.current.setCookiesConsent({
+          mandatory: COOKIES_BY_CATEGORY.essential,
+          accepted: ALL_OPTIONAL_COOKIES,
+          refused: [],
+        })
+        await result.current.setCookiesConsent({
           mandatory: COOKIES_BY_CATEGORY.essential,
           accepted: ALL_OPTIONAL_COOKIES,
           refused: [],
         })
       })
 
-      expect(result.current.cookiesConsent).toEqual({
-        state: ConsentState.HAS_CONSENT,
-        value: {
-          mandatory: COOKIES_BY_CATEGORY.essential,
-          accepted: ALL_OPTIONAL_COOKIES,
-          refused: [],
-        },
+      await waitFor(() => {
+        expect(result.current.cookiesConsent).toEqual({
+          state: ConsentState.HAS_CONSENT,
+          value: {
+            mandatory: COOKIES_BY_CATEGORY.essential,
+            accepted: ALL_OPTIONAL_COOKIES,
+            refused: [],
+          },
+        })
       })
     })
   })
@@ -88,7 +93,7 @@ describe('useCookies', () => {
       })
 
       renderUseCookies()
-      await superFlushWithAct()
+      await act(async () => {})
 
       expect(mockStartTrackingAcceptedCookies).not.toHaveBeenCalled()
     })
@@ -203,13 +208,14 @@ describe('useCookies', () => {
       })
 
       renderUseCookies()
-      await superFlushWithAct()
 
-      const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+      await waitFor(async () => {
+        const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
 
-      expect(cookiesConsent).toEqual({
-        userId: FAKE_USER_ID,
-        deviceId,
+        expect(cookiesConsent).toEqual({
+          userId: FAKE_USER_ID,
+          deviceId,
+        })
       })
     })
 
