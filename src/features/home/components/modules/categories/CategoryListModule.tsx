@@ -43,7 +43,7 @@ export const CategoryListModule = ({
   index,
   homeEntryId,
 }: CategoryListProps) => {
-  const isCircleNavButtonsEnabled = useFeatureFlag(
+  const isCircleNavButtonsDisplayed = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS
   )
   useEffect(() => {
@@ -98,7 +98,7 @@ export const CategoryListModule = ({
           keyExtractor={keyExtractor}
         />
       </FlatListContainer>
-      {isCircleNavButtonsEnabled ? <CircleNavButtons /> : null}
+      {isCircleNavButtonsDisplayed ? <CircleNavButtons /> : null}
     </React.Fragment>
   )
 }
