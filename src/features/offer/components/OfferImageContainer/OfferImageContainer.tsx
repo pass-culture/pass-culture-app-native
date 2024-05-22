@@ -24,7 +24,7 @@ type Props = {
   categoryId: CategoryIdEnum | null
   imageUrls?: string[]
   shouldDisplayOfferPreview?: boolean
-  onPress?: VoidFunction
+  onPress: VoidFunction
 }
 
 const isWeb = Platform.OS === 'web'

@@ -18,6 +18,7 @@ describe('<OfferImageContainer />', () => {
         <OfferImageContainer
           imageUrls={['some_url_to_some_resource']}
           categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
         />
       )
 
@@ -26,7 +27,7 @@ describe('<OfferImageContainer />', () => {
     })
 
     it('should display image placeholder outside carousel when image url defined', () => {
-      render(<OfferImageContainer categoryId={CategoryIdEnum.CINEMA} />)
+      render(<OfferImageContainer categoryId={CategoryIdEnum.CINEMA} onPress={jest.fn()} />)
 
       expect(screen.getByTestId('offerImageWithoutCarousel')).toBeOnTheScreen()
       expect(screen.getByTestId('imagePlaceholder')).toBeOnTheScreen()
@@ -43,6 +44,7 @@ describe('<OfferImageContainer />', () => {
         <OfferImageContainer
           imageUrls={['some_url_to_some_resource']}
           categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
         />
       )
 
@@ -54,6 +56,7 @@ describe('<OfferImageContainer />', () => {
         <OfferImageContainer
           imageUrls={['some_url_to_some_resource']}
           categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
         />
       )
 
@@ -65,6 +68,7 @@ describe('<OfferImageContainer />', () => {
         <OfferImageContainer
           imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
           categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
         />
       )
 
@@ -78,6 +82,7 @@ describe('<OfferImageContainer />', () => {
         <OfferImageContainer
           imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
           categoryId={CategoryIdEnum.CINEMA}
+          onPress={jest.fn()}
         />
       )
 
@@ -87,7 +92,7 @@ describe('<OfferImageContainer />', () => {
     })
 
     it('should display image placeholder outside carousel when image url defined', () => {
-      render(<OfferImageContainer categoryId={CategoryIdEnum.CINEMA} />)
+      render(<OfferImageContainer categoryId={CategoryIdEnum.CINEMA} onPress={jest.fn()} />)
 
       expect(screen.getByTestId('offerImageWithoutCarousel')).toBeOnTheScreen()
       expect(screen.getByTestId('imagePlaceholder')).toBeOnTheScreen()
