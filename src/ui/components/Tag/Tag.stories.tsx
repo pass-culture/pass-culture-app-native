@@ -2,7 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Camera } from 'ui/svg/icons/Camera'
+import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 import { Tag } from './Tag'
 
@@ -18,12 +18,12 @@ Default.args = {
   label: '1,4km',
 }
 
-const StyledCamera = styled(Camera).attrs(({ theme }) => ({
+const StyledArrowRight = styled(ArrowRight).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
 
 export const WithIcon = Template.bind({})
 WithIcon.args = {
   label: '1',
-  Icon: StyledCamera,
+  Icon: StyledArrowRight,
 }

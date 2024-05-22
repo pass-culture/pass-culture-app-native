@@ -17,10 +17,8 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
-import { Tag } from 'ui/components/Tag/Tag'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Camera } from 'ui/svg/icons/Camera'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type Props = {
   categoryId: CategoryIdEnum | null
@@ -48,12 +46,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   const hasCarousel = !!(shouldDisplayCarousel && offerImages.length > 1 && !isWeb)
   const progressValue = useSharedValue<number>(0)
   const offerBodyImage = offerImages[0] ? (
-    <React.Fragment>
-      <OfferBodyImage imageUrl={offerImages[0]} />
-      {shouldDisplayOfferPreview ? (
-        <StyledTag label="1" Icon={StyledCamera} testID="imageTag" />
-      ) : null}
-    </React.Fragment>
+    <OfferBodyImage imageUrl={offerImages[0]} />
   ) : (
     <OfferBodyImagePlaceholder categoryId={categoryId} />
   )
@@ -90,9 +83,6 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
               )}
               style={carouselStyle}
             />
-            {shouldDisplayOfferPreview ? (
-              <StyledTag label={String(offerImages.length)} Icon={StyledCamera} testID="imageTag" />
-            ) : null}
           </View>
 
           {progressValue ? (
@@ -127,14 +117,3 @@ const PaginationContainer = styled(ViewGap)({
   alignSelf: 'center',
   alignItems: 'center',
 })
-
-const StyledTag = styled(Tag)({
-  position: 'absolute',
-  right: getSpacing(2),
-  bottom: getSpacing(2),
-  zIndex: 3,
-})
-
-const StyledCamera = styled(Camera).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-}))``
