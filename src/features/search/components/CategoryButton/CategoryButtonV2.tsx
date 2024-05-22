@@ -65,7 +65,6 @@ const TouchableContainer = styled(TouchableOpacity)<{
   flexDirection: 'column',
   display: 'flex',
   justifyContent: 'flex-end',
-  alignItems: 'flex-end',
 }))
 
 const LabelContainer = styled.View({

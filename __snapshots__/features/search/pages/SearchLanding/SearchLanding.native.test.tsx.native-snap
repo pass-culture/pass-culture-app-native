@@ -4350,7 +4350,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#FFF5D8",
                     "borderColor": "#FBDBAC",
                     "borderRadius": 8,
@@ -4444,7 +4443,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#FFDECC",
                     "borderColor": "#F8733D",
                     "borderRadius": 8,
@@ -4552,7 +4550,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#FFD7E9",
                     "borderColor": "#EC3478",
                     "borderRadius": 8,
@@ -4646,7 +4643,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#D6F8FF",
                     "borderColor": "#20C5E9",
                     "borderRadius": 8,
@@ -4754,7 +4750,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#EAE3FF",
                     "borderColor": "#AD87FF",
                     "borderRadius": 8,
@@ -4848,7 +4843,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#DBFFEA",
                     "borderColor": "#0E8474",
                     "borderRadius": 8,
@@ -4956,7 +4950,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#FFF5D8",
                     "borderColor": "#FBDBAC",
                     "borderRadius": 8,
@@ -5050,7 +5043,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#FFDECC",
                     "borderColor": "#F8733D",
                     "borderRadius": 8,
@@ -5158,7 +5150,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#FFD7E9",
                     "borderColor": "#EC3478",
                     "borderRadius": 8,
@@ -5252,7 +5243,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#D6F8FF",
                     "borderColor": "#20C5E9",
                     "borderRadius": 8,
@@ -5360,7 +5350,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#EAE3FF",
                     "borderColor": "#AD87FF",
                     "borderRadius": 8,
@@ -5454,7 +5443,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#DBFFEA",
                     "borderColor": "#0E8474",
                     "borderRadius": 8,
@@ -5562,7 +5550,6 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   {
-                    "alignItems": "flex-end",
                     "backgroundColor": "#FFF5D8",
                     "borderColor": "#FBDBAC",
                     "borderRadius": 8,
