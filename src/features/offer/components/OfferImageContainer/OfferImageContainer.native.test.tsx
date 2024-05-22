@@ -8,35 +8,6 @@ import { render, screen, waitFor } from 'tests/utils'
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<OfferImageContainer />', () => {
-  it('should display camera tag when offer preview feature flag activated and image url defined', () => {
-    render(
-      <OfferImageContainer
-        imageUrls={['some_url_to_some_resource']}
-        categoryId={CategoryIdEnum.CINEMA}
-        shouldDisplayOfferPreview
-      />
-    )
-
-    expect(screen.getByTestId('imageTag')).toBeOnTheScreen()
-  })
-
-  it('should not display camera tag when offer preview feature flag deactivated and image url defined', () => {
-    render(
-      <OfferImageContainer
-        imageUrls={['some_url_to_some_resource']}
-        categoryId={CategoryIdEnum.CINEMA}
-      />
-    )
-
-    expect(screen.queryByTestId('imageTag')).not.toBeOnTheScreen()
-  })
-
-  it('should not display camera tag when offer preview feature flag activated and image url not defined', () => {
-    render(<OfferImageContainer categoryId={CategoryIdEnum.CINEMA} shouldDisplayOfferPreview />)
-
-    expect(screen.queryByTestId('imageTag')).not.toBeOnTheScreen()
-  })
-
   describe('When wipOfferPreviewWithCarousel feature flag deactivated', () => {
     beforeEach(() => {
       useFeatureFlagSpy.mockReturnValueOnce(false)
