@@ -31,4 +31,10 @@ describe('getVenueTypeIconName', () => {
 
     expect(result).toEqual('map_pin_center')
   })
+
+  it('should display center icon for digital venue type code', () => {
+    const result = getVenueTypeIconName(false, VenueTypeCodeKey.DIGITAL)
+
+    expect(result).toEqual('map_pin_center')
+  })
 })
