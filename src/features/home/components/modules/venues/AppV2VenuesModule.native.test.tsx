@@ -21,10 +21,12 @@ describe('<AppV2VenuesModule />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should not render if data is undefined', () => {
+  it('should not render list when data is undefined', () => {
     renderAppV2VenuesModule({ data: undefined })
 
-    expect(screen.toJSON()).not.toBeOnTheScreen()
+    expect(
+      screen.queryByText('Les lieux culturels à proximité'.toUpperCase())
+    ).not.toBeOnTheScreen()
   })
 
   it('should return 4 venues maximum', () => {

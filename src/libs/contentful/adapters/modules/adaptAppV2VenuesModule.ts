@@ -18,7 +18,8 @@ export const adaptAppV2VenuesModule = (
   const venuesParameters = modules.fields.venuesSearchParameters
     .filter(venuesHaveFields)
     .map(({ fields }) => fields)
-  if (venuesParameters.length === 0) return null
+
+  if (venuesParameters[0] === undefined) return null
 
   //   We doesn't want the subtitle for this venues module
   const { subtitle: _subtitle, ...displayParameters } = modules.fields.displayParameters.fields
@@ -26,7 +27,6 @@ export const adaptAppV2VenuesModule = (
   return {
     type: HomepageModuleType.AppV2VenuesModule,
     id: modules.sys.id,
-    // @ts-expect-error: because of noUncheckedIndexedAccess
     venuesParameters: venuesParameters[0],
     displayParameters,
   }
