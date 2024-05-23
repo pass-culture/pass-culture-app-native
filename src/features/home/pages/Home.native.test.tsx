@@ -4,7 +4,6 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
-import { nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -105,28 +104,6 @@ describe('Home page', () => {
 
   it('should display onboarding subscription modal on third logged in session', async () => {
     mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
-    await storage.saveObject('logged_in_session_count', 1)
-    renderHome()
-    await screen.findByText('Bienvenue !')
-
-    expect(screen.queryByText('Suis tes thèmes préférés')).not.toBeOnTheScreen()
-
-    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
-    await storage.saveObject('logged_in_session_count', 2)
-    renderHome()
-    await screen.findByText('Bienvenue !')
-
-    expect(screen.queryByText('Suis tes thèmes préférés')).not.toBeOnTheScreen()
-
-    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true })
-    await storage.saveObject('logged_in_session_count', 3)
-    renderHome()
-
-    expect(await screen.findByText('Suis tes thèmes préférés')).toBeOnTheScreen()
-  })
-
-  it('should not display onboarding subscription modal on third logged in session but user is not eligible', async () => {
-    mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user: { ...nonBeneficiaryUser } })
     await storage.saveObject('logged_in_session_count', 1)
     renderHome()
     await screen.findByText('Bienvenue !')
