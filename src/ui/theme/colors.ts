@@ -11,6 +11,7 @@ export enum ColorsEnum {
   GREY_SEMI_DARK = '#90949D',
   GREY_MEDIUM = '#CBCDD2',
   GREY_LIGHT = '#F1F1F4',
+  BROWN_LIGHT = '#8c7a74',
   PRIMARY = '#eb0055',
   PRIMARY_DISABLED = '#ff99be',
   PRIMARY_DARK = '#c10046',

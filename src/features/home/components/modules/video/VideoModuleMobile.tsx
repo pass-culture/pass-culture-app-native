@@ -25,6 +25,9 @@ const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + PLAYER_SIZE / 2
 const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER =
   THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(16)
 
+const wipAppV2MultiVideoModuleFF = true
+const NEW_PLAYER_SIZE = getSpacing(21)
+
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
   const videoDuration = `${props.durationInMinutes} min`
 
@@ -138,7 +141,16 @@ const ColorCategoryBackground = styled(LinearGradient)<{
     : colorCategoryBackgroundHeightUniqueOffer,
 }))
 
-const Player = styled(Play).attrs({ size: PLAYER_SIZE })({})
+const Player = styled(Play).attrs(({ theme }) =>
+  wipAppV2MultiVideoModuleFF
+    ? {
+        size: NEW_PLAYER_SIZE,
+        color: theme.colors.brownLight,
+      }
+    : {
+        size: PLAYER_SIZE,
+      }
+)({})
 
 const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
 
