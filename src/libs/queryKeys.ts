@@ -13,6 +13,7 @@ export enum QueryKeys {
   ERROR_ASYNC = 'errorAsync',
   FAVORITES = 'favorites',
   FAVORITES_COUNT = 'favoritesCount',
+  FEATURE_FLAGS = 'featureFlags',
   FIRESTORE_UBBLE_ETA_MESSAGE = 'firestoreUbbleETAMessage',
   HIGHLIGHT_OFFER = 'highlightOffer',
   HOME_BANNER = 'homeBanner',
