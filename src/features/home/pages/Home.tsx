@@ -2,6 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
@@ -36,7 +37,7 @@ export const Home: FunctionComponent = () => {
   const { modules, id } = useHomepageData() || {}
   const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
     useLocation()
-  const { isLoggedIn } = useAuthContext()
+  const { isLoggedIn, user } = useAuthContext()
   const {
     visible: onboardingSubscriptionModalVisible,
     showModal: showOnboardingSubscriptionModal,
@@ -78,7 +79,7 @@ export const Home: FunctionComponent = () => {
 
   useEffect(() => {
     const displaySubscriptionModal = async () => {
-      if (!isLoggedIn) return
+      if (!isLoggedIn || user?.status.statusType === YoungStatusType.non_eligible) return
 
       if (await storage.readObject<boolean>('has_seen_onboarding_subscription')) return
 
