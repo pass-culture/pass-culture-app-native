@@ -67,7 +67,7 @@ export const OnboardingSubscription = () => {
     () => {
       analytics.logSubscriptionUpdate({ type: 'update', from: 'home' })
       showSuccessSnackBar({
-        message: 'Tes préférences ont bien été enregistrées.',
+        message: 'Thèmes suivis\u00a0! Tu peux gérer tes alertes depuis ton profil.',
         timeout: SNACK_BAR_TIME_OUT,
       })
       replace(...homeNavConfig)

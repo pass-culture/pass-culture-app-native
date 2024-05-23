@@ -12,6 +12,8 @@ import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -31,6 +33,13 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,
   canGoBack: jest.fn(() => true),
 })
+
+const mockShowSuccessSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showSuccessSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowSuccessSnackBar(props)),
+  }),
+}))
 
 describe('OnboardingSubscription', () => {
   beforeEach(() => mockUseAuthContext.mockReturnValue(baseAuthContext))
@@ -112,6 +121,22 @@ describe('OnboardingSubscription', () => {
 
     await waitFor(() => {
       expect(replace).toHaveBeenCalledWith(...homeNavConfig)
+    })
+  })
+
+  it('should show success snackbar on subscription success', async () => {
+    mockServer.postApi('/v1/profile', {})
+
+    render(reactQueryProviderHOC(<OnboardingSubscription />))
+
+    fireEvent.press(await screen.findByLabelText('Activités créatives'))
+    fireEvent.press(screen.getByText('Suivre la sélection'))
+
+    await waitFor(() => {
+      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+        message: 'Thèmes suivis\u00a0! Tu peux gérer tes alertes depuis ton profil.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     })
   })
 
