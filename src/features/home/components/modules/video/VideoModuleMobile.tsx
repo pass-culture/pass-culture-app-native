@@ -14,7 +14,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
-import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
+import { gradientColorsMapping, newGradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 const THUMBNAIL_HEIGHT = getSpacing(52.5)
 // We do not center the player icon, because when the title is 2-line long,
@@ -51,7 +51,11 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           colorCategoryBackgroundHeightUniqueOffer={colorCategoryBackgroundHeightUniqueOffer}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
-          colors={gradientColorsMapping[props.color]}
+          colors={
+            enableMultiVideoModule
+              ? newGradientColorsMapping[props.color]
+              : gradientColorsMapping[props.color]
+          }
           isMultiOffer={props.isMultiOffer}
         />
         <VideoOfferContainer enableMultiVideoModule={enableMultiVideoModule}>
