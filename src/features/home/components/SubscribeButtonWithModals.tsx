@@ -92,7 +92,7 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
     }
   }
 
-  if (!thematic || user?.status.statusType === YoungStatusType.non_eligible) return null
+  if (!thematic || user?.status?.statusType === YoungStatusType.non_eligible) return null
 
   return (
     <React.Fragment>

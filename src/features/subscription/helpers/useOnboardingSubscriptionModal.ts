@@ -30,5 +30,5 @@ export const useOnboardingSubscriptionModal = ({
     }
     displaySubscriptionModal()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn])
+  }, [isLoggedIn, userStatus])
 }
