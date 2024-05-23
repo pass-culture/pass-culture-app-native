@@ -10,11 +10,13 @@ import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
-const THUMBNAIL_HEIGHT = getSpacing(45)
+const THUMBNAIL_HEIGHT = getSpacing(52.5)
 // We do not center the player icon, because when the title is 2-line long,
 // the title is to close to the player. So the player is closer to the top.
 const PLAYER_TOP_MARGIN = getSpacing(12.5)
@@ -25,10 +27,13 @@ const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + PLAYER_SIZE / 2
 const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER =
   THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(16)
 
-const wipAppV2MultiVideoModuleFF = true
 const NEW_PLAYER_SIZE = getSpacing(21)
 
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
+  const enableMultiVideoModule = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
+  )
+
   const videoDuration = `${props.durationInMinutes} min`
 
   const colorCategoryBackgroundHeightUniqueOffer =
@@ -49,7 +54,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           colors={gradientColorsMapping[props.color]}
           isMultiOffer={props.isMultiOffer}
         />
-        <VideoOfferContainer>
+        <VideoOfferContainer enableMultiVideoModule={enableMultiVideoModule}>
           <StyledTouchableHighlight
             onPress={props.showVideoModal}
             testID="video-thumbnail"
@@ -63,7 +68,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
                 </BlackBackground>
               </TextContainer>
               <PlayerContainer>
-                <Player />
+                <Player enableMultiVideoModule={!!enableMultiVideoModule} />
               </PlayerContainer>
             </Thumbnail>
           </StyledTouchableHighlight>
@@ -98,9 +103,11 @@ const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
 
-const VideoOfferContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
-}))
+const VideoOfferContainer = styled.View<{ enableMultiVideoModule: boolean }>(
+  ({ theme, enableMultiVideoModule }) => ({
+    marginHorizontal: enableMultiVideoModule ? undefined : theme.contentPage.marginHorizontal,
+  })
+)
 
 const Thumbnail = styled.ImageBackground(({ theme }) => ({
   // the overflow: hidden allow to add border radius to the image
@@ -141,8 +148,9 @@ const ColorCategoryBackground = styled(LinearGradient)<{
     : colorCategoryBackgroundHeightUniqueOffer,
 }))
 
-const Player = styled(Play).attrs(({ theme }) =>
-  wipAppV2MultiVideoModuleFF
+type PlayerProps = { enableMultiVideoModule: boolean }
+const Player = styled(Play).attrs<PlayerProps>(({ theme, enableMultiVideoModule }) =>
+  enableMultiVideoModule
     ? {
         size: NEW_PLAYER_SIZE,
         color: theme.colors.brownLight,
@@ -150,7 +158,7 @@ const Player = styled(Play).attrs(({ theme }) =>
     : {
         size: PLAYER_SIZE,
       }
-)({})
+)<PlayerProps>({})
 
 const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
 
