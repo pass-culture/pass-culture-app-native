@@ -1,22 +1,46 @@
-import React from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
+import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { Typo } from 'ui/theme'
 
 const onBeforeNavigate = () => analytics.logSignUpClicked({ from: 'home' })
 
-export const SignupBanner = () => {
-  return (
+export const SignupBanner: FunctionComponent = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
+  const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
+
+  const title = 'Débloque ton crédit'
+  const subtitle = 'Crée ton compte si tu as entre 15 et 18 ans\u00a0!'
+
+  const onSystemBannerPress = () => {
+    onBeforeNavigate()
+    navigate('SignupForm', { from: StepperOrigin.HOME })
+  }
+
+  return enableSystemBanner ? (
+    <SystemBanner
+      LeftIcon={<StyledSystemBannerBicolorUnlock />}
+      title={title}
+      subtitle={subtitle}
+      onPress={onSystemBannerPress}
+      accessibilityLabel={subtitle}
+    />
+  ) : (
     <BannerWithBackground
       leftIcon={StyledBicolorUnlock}
       navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.HOME } }}
-      onBeforeNavigate={onBeforeNavigate}>
-      <StyledButtonText>Débloque ton crédit</StyledButtonText>
-      <StyledBodyText>Crée ton compte si tu as entre 15 et 18 ans&nbsp;!</StyledBodyText>
+      onBeforeNavigate={onBeforeNavigate}
+      testID="bannerWithBackground">
+      <StyledButtonText>{title}</StyledButtonText>
+      <StyledBodyText>{subtitle}</StyledBodyText>
     </BannerWithBackground>
   )
 }
@@ -24,6 +48,10 @@ export const SignupBanner = () => {
 const StyledBicolorUnlock = styled(BicolorUnlock).attrs(({ theme }) => ({
   color: theme.colors.white,
   color2: theme.colors.white,
+}))``
+
+const StyledSystemBannerBicolorUnlock = styled(BicolorUnlock).attrs(({ theme }) => ({
+  color: theme.colors.secondaryLight200,
 }))``
 
 const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({

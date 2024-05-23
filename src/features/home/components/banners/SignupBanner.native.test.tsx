@@ -1,29 +1,84 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { navigate } from '__mocks__/@react-navigation/native'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('SignupBanner', () => {
-  it('should redirect to signup form on press', async () => {
-    render(<SignupBanner />)
+  describe('When wipAppV2SystemBlock deactivated', () => {
+    it('should display banner with background', () => {
+      render(<SignupBanner />)
 
-    fireEvent.press(screen.getByText('Débloque ton crédit'))
+      expect(screen.getByTestId('bannerWithBackground')).toBeOnTheScreen()
+    })
 
-    await waitFor(() =>
-      expect(navigate).toHaveBeenCalledWith('SignupForm', { from: StepperOrigin.HOME })
-    )
+    it('should not display system banner', () => {
+      render(<SignupBanner />)
+
+      expect(screen.queryByTestId('systemBanner')).not.toBeOnTheScreen()
+    })
+
+    it('should redirect to signup form on press', async () => {
+      render(<SignupBanner />)
+
+      fireEvent.press(screen.getByText('Débloque ton crédit'))
+
+      await waitFor(() =>
+        expect(navigate).toHaveBeenCalledWith('SignupForm', { from: StepperOrigin.HOME })
+      )
+    })
+
+    it('should log analytics on press', async () => {
+      render(<SignupBanner />)
+
+      fireEvent.press(screen.getByText('Débloque ton crédit'))
+
+      await waitFor(() =>
+        expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'home' })
+      )
+    })
   })
 
-  it('should log analytics on press', async () => {
-    render(<SignupBanner />)
+  describe('When wipAppV2SystemBlock activated', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+    })
 
-    fireEvent.press(screen.getByText('Débloque ton crédit'))
+    it('should not display banner with background', () => {
+      render(<SignupBanner />)
 
-    await waitFor(() =>
-      expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'home' })
-    )
+      expect(screen.queryByTestId('bannerWithBackground')).not.toBeOnTheScreen()
+    })
+
+    it('should not  system banner', () => {
+      render(<SignupBanner />)
+
+      expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
+    })
+
+    it('should redirect to signup form on press', async () => {
+      render(<SignupBanner />)
+
+      fireEvent.press(screen.getByText('Débloque ton crédit'))
+
+      await waitFor(() =>
+        expect(navigate).toHaveBeenCalledWith('SignupForm', { from: StepperOrigin.HOME })
+      )
+    })
+
+    it('should log analytics on press', async () => {
+      render(<SignupBanner />)
+
+      fireEvent.press(screen.getByText('Débloque ton crédit'))
+
+      await waitFor(() =>
+        expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'home' })
+      )
+    })
   })
 })
