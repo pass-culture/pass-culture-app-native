@@ -21,7 +21,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
         >
           <button
             aria-label="Revenir en arrière"
-            class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg gVgsKd sc-aXZVg gVgsKd"
+            class="sc-aXZVg igdJKW sc-gEvEer hRfsRR sc-gEvEer hRfsRR"
             data-testid="Revenir en arrière"
             tabindex="0"
             title="Revenir en arrière"
@@ -161,7 +161,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
         >
           <button
             aria-label="Valider mes informations"
-            class="AppButton-web__Button-sc-6e9d26f-0 jQJRyD sc-gEvEer xkiym"
+            class="sc-eqUAAy cpmbaL sc-dcJsrY frYJhJ"
             data-testid="Valider mes informations"
             tabindex="0"
             type="submit"

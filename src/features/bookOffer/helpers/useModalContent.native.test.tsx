@@ -152,7 +152,7 @@ describe('useModalContent', () => {
 
     expect((result.current.children as any).type.name).toBe('BookingDetails')
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    expect(result.current.leftIcon!.displayName).toBe('ArrowPrevious')
+    expect(result.current.leftIcon!.displayName).toBe('Styled(ArrowPreviousSvg)')
     expect(result.current.onLeftIconPress).not.toBeUndefined()
     expect(result.current.title).toBe('Détails de la réservation')
   })
@@ -183,7 +183,7 @@ describe('useModalContent', () => {
 
     expect((result.current.children as any).type.name).toBe('BookingEventChoices')
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    expect(result.current.leftIcon!.displayName).toBe('ArrowPrevious')
+    expect(result.current.leftIcon!.displayName).toBe('Styled(ArrowPreviousSvg)')
     expect(result.current.onLeftIconPress).not.toBeUndefined()
     expect(result.current.title).toBe('Choix des options')
   })

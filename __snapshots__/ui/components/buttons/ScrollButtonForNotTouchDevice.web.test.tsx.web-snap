@@ -4,7 +4,7 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly on left direc
 <div>
   <button
     aria-hidden="true"
-    class="ScrollButtonForNotTouchDevice-web__StyledButton-sc-30395eb5-0 jZnlJT"
+    class="sc-aXZVg hQCfrH"
     tabindex="-1"
     type="button"
   />
@@ -15,7 +15,7 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly on right dire
 <div>
   <button
     aria-hidden="true"
-    class="ScrollButtonForNotTouchDevice-web__StyledButton-sc-30395eb5-0 iAgVND"
+    class="sc-aXZVg fsUejr"
     tabindex="-1"
     type="button"
   />
@@ -26,7 +26,7 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly when no top g
 <div>
   <button
     aria-hidden="true"
-    class="ScrollButtonForNotTouchDevice-web__StyledButton-sc-30395eb5-0 cCQOTu"
+    class="sc-aXZVg krJmUm"
     tabindex="-1"
     type="button"
   />

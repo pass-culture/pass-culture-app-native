@@ -21,7 +21,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
         >
           <button
             aria-label="Revenir en arrière"
-            class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-aXZVg gVgsKd sc-aXZVg gVgsKd"
+            class="sc-aXZVg igdJKW sc-gEvEer hRfsRR sc-gEvEer hRfsRR"
             data-testid="Revenir en arrière"
             tabindex="0"
             title="Revenir en arrière"

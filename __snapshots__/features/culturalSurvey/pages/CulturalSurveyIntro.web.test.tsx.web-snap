@@ -55,7 +55,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
     >
       <a
         aria-label="En savoir plus sur ce qu’on fait de tes données"
-        class="AppButton-web__Link-sc-6e9d26f-1 irjgCx sc-gEvEer gnwGmH"
+        class="sc-gEvEer fpRSjI sc-fqkvVR hCDAkr"
         data-testid="En savoir plus sur ce qu’on fait de tes données"
         href="https://aide.passculture.app/hc/fr/articles/7047585364380--Jeunes-Traitement-des-donn%C3%A9es-utilisateurs"
         tabindex="0"
@@ -99,7 +99,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
     >
       <button
         aria-label="Débuter le questionnaire"
-        class="AppButton-web__Button-sc-6e9d26f-0 jQJRyD sc-aXZVg jbuYPK"
+        class="sc-aXZVg hBSzQh sc-eqUAAy izgGWY"
         data-testid="Débuter le questionnaire"
         tabindex="0"
         type="button"
@@ -120,7 +120,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
       />
       <button
         aria-label="Plus tard"
-        class="AppButton-web__Button-sc-6e9d26f-0 jOiiCa sc-gEvEer gnwGmH"
+        class="sc-aXZVg blCLeI sc-fqkvVR hCDAkr"
         data-testid="Plus tard"
         tabindex="0"
         type="button"

@@ -3,7 +3,7 @@
 exports[`AccessibleTabBar renders correctly 1`] = `
 <div>
   <nav
-    class="sc-eqUAAy clvmby"
+    class="sc-iGgWBj ejNqrU"
     id="tabBarID"
     role="navigation"
   >
@@ -225,7 +225,7 @@ exports[`AccessibleTabBar renders correctly 1`] = `
 exports[`AccessibleTabBar renders correctly when FF is enabled 1`] = `
 <div>
   <nav
-    class="sc-eqUAAy clvmby"
+    class="sc-iGgWBj ejNqrU"
     id="tabBarID"
     role="navigation"
   >

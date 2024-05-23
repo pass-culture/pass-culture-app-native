@@ -4,7 +4,7 @@ exports[`AppButton Component * inline property should use inline css style when 
 <div>
   <button
     aria-label="Testing inline"
-    class="AppButton-web__Button-sc-6e9d26f-0 fkcIqB"
+    class="sc-aXZVg cBatej"
     data-testid="Testing inline"
     tabindex="0"
     type="button"

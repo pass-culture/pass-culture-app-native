@@ -435,17 +435,17 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
       ListHeaderComponent={
         <React.Fragment>
           <React.Fragment>
-            <Spacer__ColumnSpacer
+            <Styled(View)
               numberOfSpaces={4}
             />
             <VenueMapBlock
               from="searchLanding"
             />
-            <Spacer__ColumnSpacer
+            <Styled(View)
               numberOfSpaces={2}
             />
           </React.Fragment>
-          <CategoriesButtonsDisplay__CategoriesTitle />
+          <Styled(Styled(Text)) />
           <VenueMapLocationModal
             dismissModal={[Function]}
             visible={false}
@@ -3585,17 +3585,17 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
       ListHeaderComponent={
         <React.Fragment>
           <React.Fragment>
-            <Spacer__ColumnSpacer
+            <Styled(View)
               numberOfSpaces={4}
             />
             <VenueMapBlock
               from="searchLanding"
             />
-            <Spacer__ColumnSpacer
+            <Styled(View)
               numberOfSpaces={2}
             />
           </React.Fragment>
-          <CategoriesButtonsDisplay__CategoriesTitleV2 />
+          <Styled(Styled(Text)) />
           <VenueMapLocationModal
             dismissModal={[Function]}
             visible={false}
