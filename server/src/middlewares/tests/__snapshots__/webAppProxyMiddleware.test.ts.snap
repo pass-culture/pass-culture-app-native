@@ -26,7 +26,7 @@ exports[`metasResponseInterceptor with real backend should request the real test
     <meta name=\\"twitter:description\\"
           content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
     <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/google_places/9.jpeg\\" />
-    <meta name=\\"twitter:image:alt\\" content=\\"pass Culture\\"/>
+    <meta name=\\"twitter:image:alt\\" content=\\"claus sandy\\" />
     <meta name=\\"twitter:site\\" content=\\"@pass_Culture\\"/>
     <meta name=\\"twitter:app:country\\" content=\\"FR\\"/>
     <meta name=\\"twitter:app:name:iphone\\" content=\\"pass Culture\\"/>
