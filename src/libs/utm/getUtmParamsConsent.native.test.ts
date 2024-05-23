@@ -5,7 +5,7 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { storage } from 'libs/storage'
 import { getUtmParamsConsent } from 'libs/utm/getUtmParamsConsent'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, flushAllPromisesWithAct, renderHook } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 jest.mock('api/api')
@@ -34,16 +34,15 @@ describe('getUtmParamsConsent', () => {
 
   it('should return true for all params when cookies are accepted', async () => {
     const { result } = renderUseCookies()
-    const { setCookiesConsent } = result.current
 
-    act(() => {
-      setCookiesConsent({
+    await act(async () => {
+      result.current.setCookiesConsent({
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: ALL_OPTIONAL_COOKIES,
         refused: [],
       })
     })
-    await flushAllPromisesWithAct()
+
     const paramsConsent = await getUtmParamsConsent()
 
     expect(paramsConsent).toEqual({
@@ -56,16 +55,15 @@ describe('getUtmParamsConsent', () => {
 
   it('should return false for all params when cookies are refused', async () => {
     const { result } = renderUseCookies()
-    const { setCookiesConsent } = result.current
 
-    act(() => {
-      setCookiesConsent({
+    await act(async () => {
+      result.current.setCookiesConsent({
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: [],
         refused: ALL_OPTIONAL_COOKIES,
       })
     })
-    await flushAllPromisesWithAct()
+
     const paramsConsent = await getUtmParamsConsent()
 
     expect(paramsConsent).toEqual({
@@ -78,16 +76,15 @@ describe('getUtmParamsConsent', () => {
 
   it('should return true for all params when customization cookies are accepted', async () => {
     const { result } = renderUseCookies()
-    const { setCookiesConsent } = result.current
 
-    act(() => {
-      setCookiesConsent({
+    await act(async () => {
+      result.current.setCookiesConsent({
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: COOKIES_BY_CATEGORY.customization,
         refused: [...COOKIES_BY_CATEGORY.marketing, ...COOKIES_BY_CATEGORY.performance],
       })
     })
-    await flushAllPromisesWithAct()
+
     const paramsConsent = await getUtmParamsConsent()
 
     expect(paramsConsent).toEqual({

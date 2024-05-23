@@ -2,11 +2,12 @@ import React from 'react'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
-import { renderHook, superFlushWithAct } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useInitialScreen } from './useInitialScreenConfig'
 
@@ -19,47 +20,161 @@ describe('useInitialScreen()', () => {
     await storage.clear('has_seen_eligible_card')
   })
 
-  // prettier-ignore : do not format the following "table" to keep it readable
-  it.each`
-    hasSeenTutorials | hasSeenEligibleCard | isLogged | userProfile                                                                                  | expectedScreen                    | expectedAnalyticsScreen
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, recreditAmountToShow: null }} | ${'TabNavigator'}                 | ${'Home'}
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, recreditAmountToShow: null }}   | ${'CulturalSurveyIntro'}          | ${'CulturalSurveyIntro'}
-    ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, recreditAmountToShow: null }}   | ${'EighteenBirthday'}             | ${'EighteenBirthday'}
-    ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, recreditAmountToShow: 3000 }}   | ${'RecreditBirthdayNotification'} | ${'RecreditBirthdayNotification'}
-    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, recreditAmountToShow: null }}  | ${'TabNavigator'}                 | ${'Home'}
-    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: true, recreditAmountToShow: null }}  | ${'TabNavigator'}                 | ${'Home'}
-    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, recreditAmountToShow: null }} | ${'OnboardingWelcome'}            | ${'OnboardingWelcome'}
-  `(
-    `should return $expectedScreen when 
-      - has_seen_tutorials = $hasSeenTutorials 
-      - has_seen_eligible_card = $hasSeenEligibleCard
-      - isLogged = $isLogged 
-      - user profile = $userProfile`,
-    async ({
-      hasSeenTutorials,
-      hasSeenEligibleCard,
-      isLogged,
-      userProfile,
-      expectedScreen,
-      expectedAnalyticsScreen,
-    }) => {
-      await storage.saveObject('has_seen_tutorials', hasSeenTutorials)
-      await storage.saveObject('has_seen_eligible_card', hasSeenEligibleCard)
-      mockedUseAuthContext.mockReturnValue({
-        isLoggedIn: isLogged,
-        setIsLoggedIn: jest.fn(),
-        refetchUser: jest.fn(),
-        isUserLoading: false,
-      })
-      mockMeApiCall(userProfile as UserProfileResponse)
+  it('should return TabNavigator when logged in user has seen tutorials and eligible card without need to fill cultural survey', async () => {
+    await storage.saveObject('has_seen_tutorials', true)
+    await storage.saveObject('has_seen_eligible_card', true)
+    mockedUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
+    mockMeApiCall({
+      ...beneficiaryUser,
+      needsToFillCulturalSurvey: false,
+      showEligibleCard: false,
+      recreditAmountToShow: null,
+    })
 
-      const { current: screen } = await renderUseInitialScreen()
+    const result = await renderUseInitialScreen()
 
-      expect(screen).toEqual(expectedScreen)
-      expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
-      expect(analytics.logScreenView).toHaveBeenCalledWith(expectedAnalyticsScreen)
-    }
-  )
+    await waitFor(() => {
+      expect(result.current).toEqual('TabNavigator')
+    })
+
+    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('Home')
+  })
+
+  it('should return CulturalSurveyIntro when user should see cultural survey', async () => {
+    await storage.saveObject('has_seen_tutorials', true)
+    await storage.saveObject('has_seen_eligible_card', true)
+    mockedUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
+    mockMeApiCall({
+      ...beneficiaryUser,
+      needsToFillCulturalSurvey: true,
+      showEligibleCard: true,
+      recreditAmountToShow: null,
+    })
+
+    const result = await renderUseInitialScreen()
+
+    await waitFor(() => {
+      expect(result.current).toEqual('CulturalSurveyIntro')
+    })
+
+    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('CulturalSurveyIntro')
+  })
+
+  it('should return EighteenBirthday when user hasn’t seen eligible card', async () => {
+    await storage.saveObject('has_seen_tutorials', true)
+    await storage.saveObject('has_seen_eligible_card', null)
+    mockedUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
+    mockMeApiCall({
+      ...beneficiaryUser,
+      needsToFillCulturalSurvey: true,
+      showEligibleCard: true,
+      recreditAmountToShow: null,
+    })
+
+    const result = await renderUseInitialScreen()
+
+    await waitFor(() => {
+      expect(result.current).toEqual('EighteenBirthday')
+    })
+
+    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('EighteenBirthday')
+  })
+
+  it('should return RecreditBirthdayNotification when user hasn’t seen eligible card and has credit to show', async () => {
+    await storage.saveObject('has_seen_tutorials', true)
+    await storage.saveObject('has_seen_eligible_card', null)
+    mockedUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: true,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
+    mockMeApiCall({
+      ...beneficiaryUser,
+      needsToFillCulturalSurvey: true,
+      showEligibleCard: true,
+      recreditAmountToShow: 3000,
+    })
+
+    const result = await renderUseInitialScreen()
+
+    await waitFor(() => {
+      expect(result.current).toEqual('RecreditBirthdayNotification')
+    })
+
+    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('RecreditBirthdayNotification')
+  })
+
+  it('should return TabNavigator when user is not logged in and has seen tutorial', async () => {
+    await storage.saveObject('has_seen_tutorials', true)
+    await storage.saveObject('has_seen_eligible_card', true)
+    mockedUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
+    mockedUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
+
+    const result = await renderUseInitialScreen()
+
+    await waitFor(() => {
+      expect(result.current).toEqual('TabNavigator')
+    })
+
+    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('Home')
+  })
+
+  it('should return OnboardingWelcome when user is not logged in and hasn’t seen tutorial yet', async () => {
+    await storage.saveObject('has_seen_tutorials', null)
+    await storage.saveObject('has_seen_eligible_card', true)
+    mockedUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
+    mockedUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+      isUserLoading: false,
+    })
+
+    const result = await renderUseInitialScreen()
+
+    await waitFor(() => {
+      expect(result.current).toEqual('OnboardingWelcome')
+    })
+
+    expect(analytics.logScreenView).toHaveBeenCalledTimes(1)
+    expect(analytics.logScreenView).toHaveBeenCalledWith('OnboardingWelcome')
+  })
 })
 
 async function renderUseInitialScreen() {
@@ -67,7 +182,6 @@ async function renderUseInitialScreen() {
     <SplashScreenProvider>{props.children as React.JSX.Element}</SplashScreenProvider>
   )
   const { result } = renderHook(useInitialScreen, { wrapper })
-  await superFlushWithAct()
   return result
 }
 

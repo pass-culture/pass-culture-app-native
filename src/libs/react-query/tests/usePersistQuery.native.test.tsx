@@ -4,7 +4,7 @@ import { QueryFunction } from 'react-query/types/core/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromisesWithAct, renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { usePersistQuery } from '../usePersistQuery'
 
@@ -37,13 +37,12 @@ describe('usePersistQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await flushAllPromisesWithAct()
+      await waitFor(async () => {
+        const persistDataStr = await AsyncStorage.getItem(queryKey)
 
-      const persistDataStr = await AsyncStorage.getItem(queryKey)
-
-      expect(persistDataStr).toBeTruthy()
-
-      expect(JSON.parse(persistDataStr as string)).toEqual(onlineData)
+        expect(persistDataStr).toBeTruthy()
+        expect(JSON.parse(persistDataStr as string)).toEqual(onlineData)
+      })
     })
 
     it('should fail to save distant data locally and log to sentry', async () => {
@@ -53,13 +52,13 @@ describe('usePersistQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await flushAllPromisesWithAct()
+      await waitFor(async () => {
+        const persistDataStr = await AsyncStorage.getItem(queryKey)
 
-      const persistDataStr = await AsyncStorage.getItem(queryKey)
-
-      expect(persistDataStr).toBeFalsy()
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
-        extra: { queryKey, data: onlineData },
+        expect(persistDataStr).toBeFalsy()
+        expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
+          extra: { queryKey, data: onlineData },
+        })
       })
     })
   })
@@ -85,9 +84,9 @@ describe('usePersistQuery', () => {
 
       expect(await AsyncStorage.getItem(queryKey)).toEqual(JSON.stringify(offlineData))
 
-      await flushAllPromisesWithAct()
-
-      expect(await AsyncStorage.getItem(queryKey)).toEqual(JSON.stringify(onlineData))
+      await waitFor(async () => {
+        expect(await AsyncStorage.getItem(queryKey)).toEqual(JSON.stringify(onlineData))
+      })
     })
 
     it('should fail to read local data and log to sentry', async () => {
@@ -101,10 +100,10 @@ describe('usePersistQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await flushAllPromisesWithAct()
-
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
-        extra: { queryKey },
+      await waitFor(() => {
+        expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
+          extra: { queryKey },
+        })
       })
     })
 
