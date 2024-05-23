@@ -110,11 +110,11 @@ If not urgent (but still can't wait until the next MEP), it's better for the use
 - Cherry-pick all the commits of the feature `git cherry-pick <commit-hash>`
 - Check if tests are OK `yarn test`
 - `git tag hotfix-staging-vX.X.X-(Y+1)`
-- `git push origin hotfix-staging-vX.X.X-(Y+1)`: this will deploy it to `staging`
+- `git push origin hotfix-staging-vX.X.X-(Y+1) --no-verify`: this will deploy it to `staging`
 - Validate the fix with the PO on staging app (version X.X.X)
 - If it is OK for the PO, deploy it to production:
 - `git tag hotfix-production-vX.X.X-(Y+1)`
-- `git push origin hotfix-production-vX.X.X-(Y+1)`: this will deploy it to `production`
+- `git push origin hotfix-production-vX.X.X-(Y+1) --no-verify`: this will deploy it to `production`
 - ⚠️ Check your code push targets the actual production version (one code push targets only one version)
 
 ### Troubleshooting
