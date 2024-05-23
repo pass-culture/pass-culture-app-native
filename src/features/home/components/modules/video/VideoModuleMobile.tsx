@@ -60,7 +60,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             testID="video-thumbnail"
             accessibilityRole="button">
             <Thumbnail source={{ uri: props.videoThumbnail }}>
-              <DurationCaption label={videoDuration} />
+              {enableMultiVideoModule ? null : <DurationCaption label={videoDuration} />}
               <TextContainer>
                 <BlackGradient />
                 <BlackBackground>
