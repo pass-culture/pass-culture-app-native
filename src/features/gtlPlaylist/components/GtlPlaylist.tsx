@@ -9,7 +9,7 @@ import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/u
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics'
-import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
+import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import { useFunctionOnce } from 'libs/hooks'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
