@@ -50,10 +50,10 @@ export function App() {
   return (
     <RemoteConfigProvider>
       <ServiceWorkerProvider fileName={`${env.PUBLIC_URL}/service-worker.js`}>
-        <ThemeProvider theme={theme}>
-          <SupportedBrowsersGate>
-            <SafeAreaProvider>
-              <ReactQueryClientProvider>
+        <ReactQueryClientProvider>
+          <ThemeProvider theme={theme}>
+            <SupportedBrowsersGate>
+              <SafeAreaProvider>
                 <SettingsWrapper>
                   <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
                     <AuthWrapper>
@@ -86,10 +86,10 @@ export function App() {
                     </AuthWrapper>
                   </GoogleOAuthProvider>
                 </SettingsWrapper>
-              </ReactQueryClientProvider>
-            </SafeAreaProvider>
-          </SupportedBrowsersGate>
-        </ThemeProvider>
+              </SafeAreaProvider>
+            </SupportedBrowsersGate>
+          </ThemeProvider>
+        </ReactQueryClientProvider>
       </ServiceWorkerProvider>
     </RemoteConfigProvider>
   )

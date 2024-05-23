@@ -85,9 +85,9 @@ const App: FunctionComponent = function () {
 
   return (
     <RemoteConfigProvider>
-      <ThemeProvider theme={theme}>
-        <SafeAreaProvider>
-          <ReactQueryClientProvider>
+      <ReactQueryClientProvider>
+        <ThemeProvider theme={theme}>
+          <SafeAreaProvider>
             <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
               {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
               <NetInfoWrapper>
@@ -126,9 +126,9 @@ const App: FunctionComponent = function () {
                 </SettingsWrapper>
               </NetInfoWrapper>
             </ErrorBoundary>
-          </ReactQueryClientProvider>
-        </SafeAreaProvider>
-      </ThemeProvider>
+          </SafeAreaProvider>
+        </ThemeProvider>
+      </ReactQueryClientProvider>
     </RemoteConfigProvider>
   )
 }
