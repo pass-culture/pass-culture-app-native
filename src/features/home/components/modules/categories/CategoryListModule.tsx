@@ -52,12 +52,11 @@ export const CategoryListModule = ({
   index,
   homeEntryId,
 }: CategoryListProps) => {
+  const enableAppV2CategoryBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK)
   const isCircleNavButtonsDisplayed = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS
   )
   const flatListRef = useRef<FlatList<null>>(null)
-  const enableAppV2CategoryBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK)
-
   const {
     handleScrollPrevious,
     handleScrollNext,
