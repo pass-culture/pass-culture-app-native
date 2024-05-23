@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SubscriptionSuccessModal } from 'features/subscription/components/modals/SubscriptionSuccessModal'
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
@@ -91,7 +92,7 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
     }
   }
 
-  if (!thematic) return null
+  if (!thematic || user?.status.statusType === YoungStatusType.non_eligible) return null
 
   return (
     <React.Fragment>

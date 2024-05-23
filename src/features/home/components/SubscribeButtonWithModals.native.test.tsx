@@ -3,11 +3,11 @@ import React from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
-import { beneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { SubscribeButtonWithModals } from './SubscribeButtonWithModals'
@@ -145,6 +145,20 @@ describe('SubscribeButtonWithModals', () => {
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Tu suis le thème “Cinéma”\u00a0! Tu peux gérer tes alertes depuis ton profil.',
       timeout: SNACK_BAR_TIME_OUT,
+    })
+  })
+
+  it('should not show anything when user is not eligible', async () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      ...baseAuthContext,
+      isLoggedIn: true,
+      user: nonBeneficiaryUser,
+    })
+
+    render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
+
+    await waitFor(() => {
+      expect(screen.queryByText('Suivre')).toBeNull()
     })
   })
 })
