@@ -5,7 +5,7 @@ export const DOUBLE_LINE_BREAK = '\n\n'
 export const SPACE = ' '
 
 export const TAB_BAR_COMP_HEIGHT = getSpacing(16)
-export const TAB_BAR_COMP_HEIGHT_V2 = getSpacing(15)
+export const TAB_BAR_COMP_HEIGHT_V2 = getSpacing(20.5)
 export const BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET = getSpacing(10)
 export const SECTION_ROW_ICON_SIZE = getSpacing(6)
 

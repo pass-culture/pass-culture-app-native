@@ -618,7 +618,7 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
-          "height": 60,
+          "height": 82,
           "opacity": 1,
           "userSelect": "auto",
         }
@@ -676,6 +676,32 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
         </Text>
       </View>
       <View
+        numberOfSpaces={2.5}
+        style={
+          [
+            {
+              "height": 10,
+            },
+          ]
+        }
+      />
+      <Text
+        selected={true}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 10,
+              "lineHeight": 16,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Accueil
+      </Text>
+      <View
         style={
           [
             {
@@ -732,7 +758,7 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
-          "height": 60,
+          "height": 82,
           "opacity": 1,
           "userSelect": "auto",
         }
@@ -758,6 +784,32 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
           undefined-SVG-Mock
         </Text>
       </View>
+      <View
+        numberOfSpaces={2.5}
+        style={
+          [
+            {
+              "height": 10,
+            },
+          ]
+        }
+      />
+      <Text
+        selected={false}
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 10,
+              "lineHeight": 16,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Recherche
+      </Text>
       <View
         style={
           [
@@ -806,7 +858,7 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
-          "height": 60,
+          "height": 82,
           "opacity": 1,
           "userSelect": "auto",
         }
@@ -832,6 +884,32 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
           undefined-SVG-Mock
         </Text>
       </View>
+      <View
+        numberOfSpaces={2.5}
+        style={
+          [
+            {
+              "height": 10,
+            },
+          ]
+        }
+      />
+      <Text
+        selected={false}
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 10,
+              "lineHeight": 16,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Réservations
+      </Text>
       <View
         style={
           [
@@ -880,7 +958,7 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
-          "height": 60,
+          "height": 82,
           "opacity": 1,
           "userSelect": "auto",
         }
@@ -906,6 +984,32 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
           undefined-SVG-Mock
         </Text>
       </View>
+      <View
+        numberOfSpaces={2.5}
+        style={
+          [
+            {
+              "height": 10,
+            },
+          ]
+        }
+      />
+      <Text
+        selected={false}
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 10,
+              "lineHeight": 16,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Favoris
+      </Text>
       <View
         style={
           [
@@ -954,7 +1058,7 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
-          "height": 60,
+          "height": 82,
           "opacity": 1,
           "userSelect": "auto",
         }
@@ -980,6 +1084,32 @@ exports[`TabBar render correctly when FF is enabled 1`] = `
           undefined-SVG-Mock
         </Text>
       </View>
+      <View
+        numberOfSpaces={2.5}
+        style={
+          [
+            {
+              "height": 10,
+            },
+          ]
+        }
+      />
+      <Text
+        selected={false}
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 10,
+              "lineHeight": 16,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Profil
+      </Text>
       <View
         style={
           [
