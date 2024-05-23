@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { ThemeProvider } from 'libs/styled'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { theme } from 'theme'
+import { useQueryDecorator } from './mocks/react-query'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -19,6 +20,8 @@ export const parameters = {
   },
 }
 
+const firestoreResponseMock = { get: () => ({}) }
+
 export const decorators = [
   (Story) => (
     <ThemeProvider theme={theme}>
@@ -29,5 +32,8 @@ export const decorators = [
     <SafeAreaProvider>
       <Story />
     </SafeAreaProvider>
+  ),
+  (Story) => useQueryDecorator(Story,
+    { parameters: { useQuery: { featureFlags: firestoreResponseMock }}}
   ),
 ]
