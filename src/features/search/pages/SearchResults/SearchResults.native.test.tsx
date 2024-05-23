@@ -11,11 +11,14 @@ import { SearchResults } from 'features/search/pages/SearchResults/SearchResults
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const venue = mockedSuggestedVenue
 

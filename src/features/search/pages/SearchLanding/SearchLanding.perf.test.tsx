@@ -5,10 +5,13 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 jest.unmock('features/search/context/SearchWrapper')
 

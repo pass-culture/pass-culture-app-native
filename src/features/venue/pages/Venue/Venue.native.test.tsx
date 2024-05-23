@@ -11,12 +11,15 @@ import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode, Position } from 'libs/location/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 // TODO(PC-29000): Use fakeTimers modern instead
 jest.useFakeTimers({ legacyFakeTimers: true })

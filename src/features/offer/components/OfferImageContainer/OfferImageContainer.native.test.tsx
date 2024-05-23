@@ -86,9 +86,7 @@ describe('<OfferImageContainer />', () => {
         />
       )
 
-      await waitFor(() => {
-        expect(screen.getByTestId('offerImageContainerDots')).toBeOnTheScreen()
-      })
+      expect(await screen.findByTestId('offerImageContainerDots')).toBeOnTheScreen()
     })
 
     it('should display image placeholder outside carousel when image url defined', () => {

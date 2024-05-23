@@ -14,12 +14,15 @@ import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { ILocationContext, useLocation } from 'libs/location'
 import { Network } from 'libs/share/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 

@@ -1,8 +1,11 @@
 import React from 'react'
 
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<VenueMapView />', () => {
   it('should render map', async () => {

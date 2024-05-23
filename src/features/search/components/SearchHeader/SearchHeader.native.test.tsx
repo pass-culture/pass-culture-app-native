@@ -3,7 +3,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen, waitFor, within } from 'tests/utils'
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics')
 
