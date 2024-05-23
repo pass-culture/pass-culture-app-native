@@ -30,9 +30,9 @@ exports[`GenericHome With not displayed skeleton by default should display real 
         />
       }
       ListHeaderComponent={
-        <typography__Title1>
+        <Styled(Text)>
           Header
-        </typography__Title1>
+        </Styled(Text)>
       }
       ListHeaderComponentStyle={
         {
@@ -188,9 +188,9 @@ exports[`GenericHome With not displayed skeleton by default should display skele
         />
       }
       ListHeaderComponent={
-        <typography__Title1>
+        <Styled(Text)>
           Header
-        </typography__Title1>
+        </Styled(Text)>
       }
       ListHeaderComponentStyle={
         {

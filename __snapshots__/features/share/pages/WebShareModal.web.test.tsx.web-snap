@@ -78,7 +78,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   >
                     <button
                       aria-label="Fermer la modale"
-                      class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-dcJsrY iUdIwF sc-dcJsrY iUdIwF"
+                      class="sc-fqkvVR gugcSC sc-kAyceB bMWfNz sc-kAyceB bMWfNz"
                       data-testid="Fermer la modale"
                       tabindex="0"
                       title="Fermer la modale"
@@ -133,7 +133,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                           >
                             <button
                               aria-label="Copier le lien"
-                              class="AppButton-web__Button-sc-6e9d26f-0 jOiiCa sc-fqkvVR hCDAkr"
+                              class="sc-aXZVg blCLeI sc-gsFSXq MhOrR"
                               data-testid="Copier le lien"
                               tabindex="0"
                               type="button"
@@ -173,7 +173,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                           >
                             <a
                               aria-label="Ouvrir le gestionnaire mail"
-                              class="AppButton-web__Link-sc-6e9d26f-1 irjgCx sc-fqkvVR hCDAkr"
+                              class="sc-gEvEer fpRSjI sc-gsFSXq MhOrR"
                               data-testid="Ouvrir le gestionnaire mail"
                               href="mailto:?subject=Je t’invite à découvrir une super offre sur le pass Culture !&body=Voici%20une%20super%20offre%C2%A0!%0Ahttps%3A%2F%2Furl.com%2Foffer"
                               tabindex="0"
@@ -349,7 +349,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                         />
                         <button
                           aria-label="Annuler"
-                          class="AppButton-web__Button-sc-6e9d26f-0 dXqjNT sc-eqUAAy izgGWY"
+                          class="sc-aXZVg dArrwt sc-iGgWBj kxRSZa"
                           data-testid="Annuler"
                           tabindex="0"
                           type="button"

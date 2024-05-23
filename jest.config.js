@@ -1,6 +1,4 @@
 const { excludeCollectCoverageFrom } = require('./jest.excludeCollectCoverageFrom.config')
-const fs = require('node:fs')
-const swcrc = JSON.parse(fs.readFileSync('.swcrc', 'utf8'))
 
 module.exports = {
   preset: 'react-native',
@@ -15,7 +13,6 @@ module.exports = {
     '^types(.*)$': '<rootDir>/src/types$1',
     '^tests(.*)$': '<rootDir>/src/tests$1',
     '^ui(.*)$': '<rootDir>/src/ui$1',
-    '^web/(.*)$': '<rootDir>/src/web/$1',
     '^__mocks__(.*)$': '<rootDir>/__mocks__$1',
   },
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-native.js',
@@ -26,12 +23,7 @@ module.exports = {
   ],
   setupFilesAfterEnv: ['./src/tests/setupTests.js'],
   transform: {
-    '^.+/((@)?react-native)/.+\\.(js|jsx)$': 'babel-jest',
-    '^.+/react-native-linear-gradient/.+\\.(js|jsx)$': 'babel-jest',
-    '^.+/react-native-maps/.+\\.(js|jsx)$': 'babel-jest',
-    '^.+/src/ui/components/touchableLink/ExternalTouchableLink.tsx$': 'babel-jest',
-    '^.+src/ui/components/SectionRow.tsx$': 'babel-jest',
-    '^.+\\.(js|ts|jsx|tsx)$': ['@swc/jest', swcrc],
+    '^.+\\.[jt]sx?$': 'babel-jest',
   },
   transformIgnorePatterns: [
     'node_modules/(?!(jest-)?react-native' +

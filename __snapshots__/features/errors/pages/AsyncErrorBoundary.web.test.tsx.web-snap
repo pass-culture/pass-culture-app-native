@@ -21,7 +21,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
     </div>
     <button
       aria-label="Revenir en arrière"
-      class="Touchable-web__StyledTouchable-sc-7f8ab1f2-0 fCcxUl sc-gEvEer eGoYUt sc-gEvEer eGoYUt"
+      class="sc-fqkvVR gugcSC sc-dcJsrY bjwOmO sc-dcJsrY bjwOmO"
       data-testid="Revenir en arrière"
       tabindex="0"
       title="Revenir en arrière"
@@ -85,7 +85,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
       >
         <button
           aria-label="Réessayer"
-          class="AppButton-web__Button-sc-6e9d26f-0 Epjjb sc-aXZVg jbuYPK"
+          class="sc-aXZVg lbmqAp sc-eqUAAy izgGWY"
           data-testid="Réessayer"
           tabindex="0"
           type="button"
