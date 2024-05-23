@@ -77,7 +77,12 @@ export const VenueThematicSection: FunctionComponent<Props> = ({ venue }: Props)
     hideUnsubscribingModal()
   }
 
-  if (!thematic || (isSubscribeButtonActive && !hasUserSubscribed)) return null
+  if (
+    !thematic ||
+    (isSubscribeButtonActive && !hasUserSubscribed) ||
+    user?.status.statusType === 'non_eligible'
+  )
+    return null
 
   return (
     <SectionWithDivider visible gap={0}>

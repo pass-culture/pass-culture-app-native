@@ -5,7 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { beneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -51,6 +51,15 @@ describe('<VenueThematicSection/>', () => {
   it('should render null if venue has no thematic', async () => {
     const venue = { ...venueFixture, venueTypeCode: VenueTypeCodeKey.ADMINISTRATIVE }
     render(reactQueryProviderHOC(<VenueThematicSection venue={venue} />))
+
+    await waitFor(() => {
+      expect(screen.toJSON()).toBeNull()
+    })
+  })
+
+  it('should render null if user is not eligible', async () => {
+    mockUseAuthContext.mockReturnValueOnce({ ...baseAuthContext, user: nonBeneficiaryUser })
+    render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
     await waitFor(() => {
       expect(screen.toJSON()).toBeNull()
