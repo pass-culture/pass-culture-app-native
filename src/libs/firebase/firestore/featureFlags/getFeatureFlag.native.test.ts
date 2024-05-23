@@ -42,6 +42,7 @@ describe('getFeatureFlag', () => {
     RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1,
     RemoteStoreFeatureFlags.WIP_APP_V2_SEARCH_CATEGORY_BLOCK,
     RemoteStoreFeatureFlags.WIP_APP_V2_BUSINESS_BLOCK,
+    RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE,
   ])(
     'should call the right firestore collection: featureFlags',
     (featureFlag: RemoteStoreFeatureFlags) => {
