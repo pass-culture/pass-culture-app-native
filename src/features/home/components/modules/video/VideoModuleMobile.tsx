@@ -64,7 +64,13 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
               <TextContainer>
                 <BlackGradient />
                 <BlackBackground>
-                  <VideoTitle numberOfLines={2}>{props.videoTitle}</VideoTitle>
+                  {enableMultiVideoModule ? (
+                    <NewVideoTitle numberOfLines={1} ellipsizeMode="tail">
+                      {props.videoTitle}
+                    </NewVideoTitle>
+                  ) : (
+                    <VideoTitle numberOfLines={2}>{props.videoTitle}</VideoTitle>
+                  )}
                 </BlackBackground>
               </TextContainer>
               <PlayerContainer>
@@ -148,17 +154,19 @@ const ColorCategoryBackground = styled(LinearGradient)<{
     : colorCategoryBackgroundHeightUniqueOffer,
 }))
 
-type PlayerProps = { enableMultiVideoModule: boolean }
-const Player = styled(Play).attrs<PlayerProps>(({ theme, enableMultiVideoModule }) =>
-  enableMultiVideoModule
-    ? {
-        size: NEW_PLAYER_SIZE,
-        color: theme.colors.brownLight,
-      }
-    : {
-        size: PLAYER_SIZE,
-      }
-)<PlayerProps>({})
+type EnableMultiVideoModuleFFProps = { enableMultiVideoModule: boolean }
+
+const Player = styled(Play).attrs<EnableMultiVideoModuleFFProps>(
+  ({ theme, enableMultiVideoModule }) =>
+    enableMultiVideoModule
+      ? {
+          size: NEW_PLAYER_SIZE,
+          color: theme.colors.brownLight,
+        }
+      : {
+          size: PLAYER_SIZE,
+        }
+)<EnableMultiVideoModuleFFProps>({})
 
 const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
 
@@ -170,6 +178,13 @@ const BlackBackground = styled.View(({ theme }) => ({
 const VideoTitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'left',
+}))
+
+const NewVideoTitle = styled(Typo.Title3)(({ theme }) => ({
+  color: theme.colors.white,
+  textAlign: 'center',
+  textTransform: 'uppercase',
+  fontSize: getSpacing(6.5),
 }))
 
 const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
