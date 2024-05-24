@@ -1,12 +1,19 @@
 import React, { FunctionComponent } from 'react'
-import { FlatList } from 'react-native'
+import { FlatList, Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { VenueHit } from 'libs/algolia/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Position, useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { formatDistance } from 'libs/parsers/formatDistance'
+import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { Tag } from 'ui/components/Tag/Tag'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
@@ -14,15 +21,38 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const IMAGE_SIZE = 72
 
-const ListHeaderComponent = () => (
-  <React.Fragment>
-    <StyledTouchableHeader navigateTo={{ screen: 'VenueMap' }}>
-      <Typo.Caption>{'Les lieux culturels à proximité'.toUpperCase()}</Typo.Caption>
-      <ArrowRightIcon />
-    </StyledTouchableHeader>
-    <Spacer.Column numberOfSpaces={4} />
-  </React.Fragment>
-)
+const isWeb = Platform.OS === 'web'
+
+type HeaderProps = {
+  onPress?: VoidFunction
+  featureFlag?: boolean
+}
+
+const ListHeaderComponent: FunctionComponent<HeaderProps> = ({ onPress }) => {
+  const focusProps = useHandleFocus()
+
+  const getComponentAndProps = () => {
+    if (isWeb) {
+      return { Component: StyledView, props: {} }
+    } else {
+      const Component = onPress ? StyledTouchable : StyledInternalTouchableLink
+      const touchableProps = onPress ? { onPress } : { navigateTo: { screen: 'VenueMap' } }
+      return { Component, props: touchableProps }
+    }
+  }
+
+  const { Component, props } = getComponentAndProps()
+
+  return (
+    <React.Fragment>
+      <Component {...props} {...focusProps}>
+        <Typo.Caption>{'Les lieux culturels à proximité'.toUpperCase()}</Typo.Caption>
+        {isWeb ? undefined : <ArrowRightIcon testID="arrow-right" />}
+      </Component>
+      <Spacer.Column numberOfSpaces={4} />
+    </React.Fragment>
+  )
+}
 
 const renderItem = ({ item }: { item: VenueHit }, userLocation: Position) => {
   const distance = formatDistance({ lat: item.latitude, lng: item.longitude }, userLocation)
@@ -48,18 +78,39 @@ type Props = {
 }
 
 export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
-  const { userLocation } = useLocation()
+  const { userLocation, selectedLocationMode } = useLocation()
+  const {
+    showModal: showVenueMapLocationModal,
+    visible: venueMapLocationModalVisible,
+    hideModal: hideVenueMapLocationModal,
+  } = useModal()
+
+  const enabledVenueMap = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
+  const isNotLocated = selectedLocationMode === LocationMode.EVERYWHERE
+  const shouldTriggerModal = enabledVenueMap && isNotLocated && !isWeb
+
+  const onPress = shouldTriggerModal ? showVenueMapLocationModal : undefined
 
   return (
-    <StyledFlatList
-      listAs="ul"
-      itemAs="li"
-      data={venues}
-      keyExtractor={keyExtractor}
-      renderItem={({ item }) => renderItem({ item }, userLocation)}
-      ItemSeparatorComponent={HorizontalSeparator}
-      ListHeaderComponent={ListHeaderComponent}
-    />
+    <React.Fragment>
+      <StyledFlatList
+        listAs="ul"
+        itemAs="li"
+        data={venues}
+        keyExtractor={keyExtractor}
+        renderItem={({ item }) => renderItem({ item }, userLocation)}
+        ItemSeparatorComponent={HorizontalSeparator}
+        ListHeaderComponent={() =>
+          ListHeaderComponent({
+            onPress,
+          })
+        }
+      />
+      <VenueMapLocationModal
+        visible={venueMapLocationModalVisible}
+        dismissModal={hideVenueMapLocationModal}
+      />
+    </React.Fragment>
   )
 }
 
@@ -71,7 +122,21 @@ const StyledFlatList = styled(FlatList as typeof FlatList<VenueHit>)(({ theme })
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const StyledTouchableHeader = styled(InternalTouchableLink)({
+const StyledInternalTouchableLink = styled(InternalTouchableLink)({
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: getSpacing(2),
+})
+
+const StyledTouchable = styled(Touchable)({
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: getSpacing(2),
+})
+
+const StyledView = styled(View)({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
