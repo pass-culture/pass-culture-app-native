@@ -31,7 +31,7 @@ function renderChangePassword() {
 }
 
 describe('ChangePassword', () => {
-  it('should render correclty', async () => {
+  it('should render correctly', async () => {
     renderChangePassword()
 
     await screen.findByText('Mot de passe')
