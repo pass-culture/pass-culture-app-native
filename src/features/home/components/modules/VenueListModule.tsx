@@ -86,8 +86,8 @@ export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
   } = useModal()
 
   const enabledVenueMap = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
-  const isNotLocated = selectedLocationMode === LocationMode.EVERYWHERE
-  const shouldTriggerModal = enabledVenueMap && isNotLocated && !isWeb
+  const isLocated = selectedLocationMode !== LocationMode.EVERYWHERE
+  const shouldTriggerModal = enabledVenueMap && isLocated && !isWeb
 
   const onPress = shouldTriggerModal ? showVenueMapLocationModal : undefined
 

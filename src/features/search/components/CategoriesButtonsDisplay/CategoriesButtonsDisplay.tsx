@@ -54,9 +54,9 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
     hideModal: hideVenueMapLocationModal,
   } = useModal()
 
-  const isNotLocated = selectedLocationMode === LocationMode.EVERYWHERE
+  const isLocated = selectedLocationMode !== LocationMode.EVERYWHERE
 
-  const isMapWithoutPositionAndNotLocated = hasVenueMapWithoutPosition && isNotLocated && !isWeb
+  const isMapWithoutPositionAndNotLocated = hasVenueMapWithoutPosition && isLocated && !isWeb
 
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? 4 : 2
