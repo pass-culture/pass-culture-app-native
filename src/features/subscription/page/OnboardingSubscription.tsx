@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import colorAlpha from 'color-alpha'
-import React, { useCallback, useReducer, useRef } from 'react'
+import React, { useCallback, useEffect, useReducer, useRef } from 'react'
 import { FlatList, Platform, ViewStyle, ViewToken } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
@@ -17,6 +17,7 @@ import { NotificationsSettingsModal } from 'features/subscription/NotificationsS
 import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
 import { createAnimatableComponent, AnimatedViewRefType } from 'libs/react-native-animatable'
+import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
@@ -125,6 +126,10 @@ export const OnboardingSubscription = () => {
     showNotificationsModal,
     updateSubscription,
   ])
+
+  useEffect(() => {
+    storage.saveObject('has_seen_onboarding_subscription', true)
+  }, [])
 
   const contentContainerStyle: ViewStyle = {
     paddingHorizontal: theme.contentPage.marginHorizontal,

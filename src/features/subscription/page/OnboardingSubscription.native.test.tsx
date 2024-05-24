@@ -9,6 +9,7 @@ import { OnboardingSubscription } from 'features/subscription/page/OnboardingSub
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
+import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -42,7 +43,10 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 describe('OnboardingSubscription', () => {
-  beforeEach(() => mockUseAuthContext.mockReturnValue(baseAuthContext))
+  beforeEach(() => {
+    mockUseAuthContext.mockReturnValue(baseAuthContext)
+    storage.clear('has_seen_onboarding_subscription')
+  })
 
   it('should render correctly', async () => {
     render(reactQueryProviderHOC(<OnboardingSubscription />))
@@ -50,6 +54,14 @@ describe('OnboardingSubscription', () => {
     await screen.findByText('Choisis des thèmes à suivre')
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should write to local storage that user has seen page', async () => {
+    render(reactQueryProviderHOC(<OnboardingSubscription />))
+
+    await waitFor(async () => {
+      expect(await storage.readObject('has_seen_onboarding_subscription')).toEqual(true)
+    })
   })
 
   it('should go back when user presses "Non merci"', async () => {
