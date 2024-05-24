@@ -9,11 +9,11 @@ import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/ho
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
+import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { analytics } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
-import { storage } from 'libs/storage'
 import { startTransaction } from 'shared/performance/transactions'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
@@ -36,12 +36,17 @@ export const Home: FunctionComponent = () => {
   const { modules, id } = useHomepageData() || {}
   const { setPlace, hasGeolocPosition, selectedLocationMode, setSelectedLocationMode } =
     useLocation()
-  const { isLoggedIn } = useAuthContext()
+  const { isLoggedIn, user } = useAuthContext()
   const {
     visible: onboardingSubscriptionModalVisible,
     showModal: showOnboardingSubscriptionModal,
     hideModal: hideOnboardingSubscriptionModal,
   } = useModal(false)
+  useOnboardingSubscriptionModal({
+    isLoggedIn,
+    userStatus: user?.status?.statusType,
+    showOnboardingSubscriptionModal,
+  })
 
   useEffect(() => {
     if (id) {
@@ -75,23 +80,6 @@ export const Home: FunctionComponent = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition])
-
-  useEffect(() => {
-    const displaySubscriptionModal = async () => {
-      if (!isLoggedIn) return
-
-      if (await storage.readObject<boolean>('has_seen_onboarding_subscription')) return
-
-      const loggedInSessionCount = await storage.readObject<number>('logged_in_session_count')
-      if (loggedInSessionCount === 3) {
-        showOnboardingSubscriptionModal()
-        await analytics.logConsultSubscriptionModal()
-        await storage.saveObject('has_seen_onboarding_subscription', true)
-      }
-    }
-    displaySubscriptionModal()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn])
 
   return (
     <React.Fragment>

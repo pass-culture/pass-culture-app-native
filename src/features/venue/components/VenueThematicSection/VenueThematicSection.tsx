@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 
-import { VenueResponse } from 'api/gen'
+import { VenueResponse, YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UnsubscribingConfirmationModal } from 'features/subscription/components/modals/UnsubscribingConfirmationModal'
 import { ThematicSubscriptionBlock } from 'features/subscription/components/ThematicSubscriptionBlock'
@@ -77,7 +77,12 @@ export const VenueThematicSection: FunctionComponent<Props> = ({ venue }: Props)
     hideUnsubscribingModal()
   }
 
-  if (!thematic || (isSubscribeButtonActive && !hasUserSubscribed)) return null
+  if (
+    !thematic ||
+    (isSubscribeButtonActive && !hasUserSubscribed) ||
+    user?.status?.statusType === YoungStatusType.non_eligible
+  )
+    return null
 
   return (
     <SectionWithDivider visible gap={0}>
