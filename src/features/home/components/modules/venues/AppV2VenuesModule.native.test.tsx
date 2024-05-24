@@ -3,8 +3,11 @@ import React from 'react'
 import { AppV2VenuesModule } from 'features/home/components/modules/venues/AppV2VenuesModule'
 import { ModuleData } from 'features/home/types'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const props = {
   data: {
