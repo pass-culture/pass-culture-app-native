@@ -3,6 +3,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import firestore from 'libs/firebase/shims/firestore'
 import { eventMonitoring } from 'libs/monitoring'
 import { getAppBuildVersion } from 'libs/packageJson'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 const buildVersion = getAppBuildVersion()
@@ -30,7 +31,7 @@ describe('useFeatureFlag', () => {
     const firestoreData = {}
     mockGet.mockReturnValueOnce(firestoreData)
 
-    const { result } = renderHook(() => useFeatureFlag(featureFlag))
+    const { result } = renderUseFeatureFlag(featureFlag)
 
     await act(async () => {})
 
@@ -55,7 +56,7 @@ describe('useFeatureFlag', () => {
         const firestoreData = { minimalBuildNumber }
         mockGet.mockReturnValueOnce(firestoreData)
 
-        const { result } = renderHook(() => useFeatureFlag(featureFlag))
+        const { result } = renderUseFeatureFlag(featureFlag)
 
         await act(async () => {})
 
@@ -69,7 +70,7 @@ describe('useFeatureFlag', () => {
       const firestoreData = { maximalBuildNumber: buildVersion + 1 }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+      const { result } = renderUseFeatureFlag(featureFlag)
 
       await act(async () => {})
 
@@ -80,7 +81,7 @@ describe('useFeatureFlag', () => {
       const firestoreData = { maximalBuildNumber: buildVersion }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+      const { result } = renderUseFeatureFlag(featureFlag)
 
       await act(async () => {})
 
@@ -91,7 +92,7 @@ describe('useFeatureFlag', () => {
       const firestoreData = { maximalBuildNumber: buildVersion - 1 }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+      const { result } = renderUseFeatureFlag(featureFlag)
 
       await act(async () => {})
 
@@ -107,7 +108,7 @@ describe('useFeatureFlag', () => {
       }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+      const { result } = renderUseFeatureFlag(featureFlag)
 
       await act(async () => {})
 
@@ -121,7 +122,7 @@ describe('useFeatureFlag', () => {
       }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+      const { result } = renderUseFeatureFlag(featureFlag)
 
       await act(async () => {})
 
@@ -135,7 +136,7 @@ describe('useFeatureFlag', () => {
       }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+      const { result } = renderUseFeatureFlag(featureFlag)
 
       await act(async () => {})
 
@@ -149,7 +150,7 @@ describe('useFeatureFlag', () => {
       }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+      const { result } = renderUseFeatureFlag(featureFlag)
 
       await act(async () => {})
 
@@ -163,7 +164,7 @@ describe('useFeatureFlag', () => {
       }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderHook(() => useFeatureFlag(featureFlag))
+      const { result } = renderUseFeatureFlag(featureFlag)
 
       await act(async () => {})
 
@@ -177,7 +178,7 @@ describe('useFeatureFlag', () => {
       }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      renderHook(() => useFeatureFlag(featureFlag))
+      renderUseFeatureFlag(featureFlag)
 
       await act(async () => {})
 
@@ -188,3 +189,8 @@ describe('useFeatureFlag', () => {
     })
   })
 })
+
+const renderUseFeatureFlag = (featureFlag: RemoteStoreFeatureFlags) =>
+  renderHook(() => useFeatureFlag(featureFlag), {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })

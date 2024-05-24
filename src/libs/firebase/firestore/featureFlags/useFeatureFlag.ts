@@ -1,42 +1,31 @@
-import { useEffect, useState } from 'react'
+import { useQuery } from 'react-query'
 
-import { getFeatureFlag } from 'libs/firebase/firestore/featureFlags/getFeatureFlag'
+import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
+import { FeatureFlagConfig } from 'libs/firebase/firestore/featureFlags/types'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { getAppBuildVersion } from 'libs/packageJson'
+import { QueryKeys } from 'libs/queryKeys'
 
 const appBuildVersion = getAppBuildVersion()
 
-// firestore feature flag documentation :
+// firestore feature flag documentation:
 // https://www.notion.so/passcultureapp/Feature-Flag-e7b0da7946f64020b8403e3581b4ed42#fff5fb17737240c9996c432117acacd8
-export const useFeatureFlag = (
-  remoteStoreFeatureFlag: RemoteStoreFeatureFlags
-): boolean | undefined => {
-  const [buildNumberConfig, setBuildNumberConfig] = useState<{
-    minimalBuildNumber?: number
-    maximalBuildNumber?: number
-  }>({})
+export const useFeatureFlag = (featureFlag: RemoteStoreFeatureFlags): boolean => {
+  const { data: docSnapshot } = useQuery(QueryKeys.FEATURE_FLAGS, getAllFeatureFlags, {
+    staleTime: 1000 * 30, // 30 seconds
+  })
 
-  useEffect(() => {
-    async function fetchFeatureFlag() {
-      return getFeatureFlag(remoteStoreFeatureFlag)
-    }
+  if (!docSnapshot) return false
 
-    fetchFeatureFlag().then((featureFlag) => {
-      setBuildNumberConfig({
-        minimalBuildNumber: featureFlag?.minimalBuildNumber,
-        maximalBuildNumber: featureFlag?.maximalBuildNumber,
-      })
-    })
-  }, [remoteStoreFeatureFlag])
-
-  const { minimalBuildNumber, maximalBuildNumber } = buildNumberConfig
+  const { minimalBuildNumber, maximalBuildNumber } =
+    docSnapshot.get<FeatureFlagConfig>(featureFlag) ?? {}
 
   if (minimalBuildNumber === undefined && maximalBuildNumber === undefined) return false
 
   if (!!(minimalBuildNumber && maximalBuildNumber) && minimalBuildNumber > maximalBuildNumber) {
     eventMonitoring.captureException(
-      `Minimal build number is greater than maximal build number for feature flag ${remoteStoreFeatureFlag}`,
+      `Minimal build number is greater than maximal build number for feature flag ${featureFlag}`,
       {
         level: 'info',
         extra: {

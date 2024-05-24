@@ -9,11 +9,6 @@ const firebase = {
   }),
   firestore: () => ({
     settings: () => {},
-    collection: () => ({
-      doc: () => ({
-        get: async () => ({}),
-      }),
-    }),
   }),
 }
 
