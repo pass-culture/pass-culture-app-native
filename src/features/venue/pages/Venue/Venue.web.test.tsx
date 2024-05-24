@@ -4,7 +4,6 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
@@ -26,13 +25,6 @@ jest.mock('features/venue/api/useVenueOffers')
 jest.mock('libs/itinerary/useItinerary')
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-mockUseAuthContext.mockReturnValue({
-  isLoggedIn: false,
-  setIsLoggedIn: jest.fn(),
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-})
 
 jest.mock('uuid', () => ({
   v1: jest.fn(),

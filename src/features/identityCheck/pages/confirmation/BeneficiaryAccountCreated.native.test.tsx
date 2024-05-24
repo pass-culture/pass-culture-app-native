@@ -1,33 +1,24 @@
 import React from 'react'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { beneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { BatchUser } from 'libs/react-native-batch'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 const mockShowAppModal = jest.fn()
 jest
   .spyOn(ShareAppWrapperModule, 'useShareAppContext')
   .mockReturnValue({ showShareAppModal: mockShowAppModal })
 
-const defaultContext = {
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  user: underageBeneficiaryUser,
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-}
-
 describe('<BeneficiaryAccountCreated/>', () => {
   beforeEach(() => {
-    mockUseAuthContext.mockReturnValue(defaultContext)
+    mockAuthContextWithUser(underageBeneficiaryUser, { persist: true })
   })
 
   it('should render correctly for underage beneficiaries', async () => {
@@ -39,9 +30,7 @@ describe('<BeneficiaryAccountCreated/>', () => {
   })
 
   it('should render correctly for 18 year-old beneficiaries', async () => {
-    // Too many rerenders but we reset the values before each tests
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseAuthContext.mockReturnValue({ ...defaultContext, user: beneficiaryUser })
+    mockAuthContextWithUser(beneficiaryUser, { persist: true })
     renderBeneficiaryAccountCreated()
 
     await screen.findByLabelText('C’est parti !')
@@ -59,10 +48,11 @@ describe('<BeneficiaryAccountCreated/>', () => {
   it('should show beneficiary share app modal when button is clicked', async () => {
     // Too many rerenders but we reset the values before each tests
     // eslint-disable-next-line local-rules/independent-mocks
-    mockUseAuthContext.mockReturnValue({
-      ...defaultContext,
-      user: { ...beneficiaryUser, needsToFillCulturalSurvey: false },
-    })
+    mockAuthContextWithUser(
+      { ...beneficiaryUser, needsToFillCulturalSurvey: false },
+      { persist: true }
+    )
+
     renderBeneficiaryAccountCreated()
     fireEvent.press(await screen.findByLabelText('C’est parti !'))
 

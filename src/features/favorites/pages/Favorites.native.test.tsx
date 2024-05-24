@@ -1,10 +1,11 @@
 import React from 'react'
 
 import { PaginatedFavoritesResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { beneficiaryUser } from 'fixtures/user'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -22,7 +23,6 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 }))
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -34,7 +34,8 @@ describe('<Favorites/>', () => {
       '/v1/me/favorites',
       paginatedFavoritesResponseSnap
     )
-    renderFavorites({ isLoggedIn: true })
+    mockAuthContextWithUser(beneficiaryUser)
+    render(reactQueryProviderHOC(<Favorites />))
 
     await screen.findByText('Mes favoris')
 
@@ -42,26 +43,17 @@ describe('<Favorites/>', () => {
   })
 
   it('should show non connected page when not logged in', () => {
-    renderFavorites({ isLoggedIn: false })
+    mockAuthContextWithoutUser()
+    render(reactQueryProviderHOC(<Favorites />))
 
     expect(screen.getByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
   })
 
   it('should render offline page when not connected', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    renderFavorites({ isLoggedIn: true })
+    mockAuthContextWithUser(beneficiaryUser)
+    render(reactQueryProviderHOC(<Favorites />))
 
     expect(screen.getByText('Pas de réseau internet')).toBeOnTheScreen()
   })
 })
-
-function renderFavorites({ isLoggedIn }: { isLoggedIn: boolean }) {
-  const setIsLoggedIn = jest.fn()
-  mockUseAuthContext.mockImplementation(() => ({
-    isLoggedIn,
-    setIsLoggedIn,
-    refetchUser: jest.fn(),
-    isUserLoading: false,
-  }))
-  return render(reactQueryProviderHOC(<Favorites />))
-}

@@ -2,7 +2,6 @@ import React from 'react'
 
 import { replace } from '__mocks__/@react-navigation/native'
 import * as API from 'api/api'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
@@ -10,6 +9,7 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -18,15 +18,6 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-
-const baseAuthContext = {
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  user: beneficiaryUser,
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-}
 
 const postProfileSpy = jest.spyOn(API.api, 'postNativeV1Profile')
 
@@ -45,7 +36,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 describe('OnboardingSubscription', () => {
   beforeEach(() => {
-    mockUseAuthContext.mockReturnValue(baseAuthContext)
+    mockAuthContextWithUser(beneficiaryUser, { persist: true })
     storage.clear('has_seen_onboarding_subscription')
   })
 
@@ -82,15 +73,12 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should precheck themes when user has already subscribed to some', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      ...baseAuthContext,
-      user: {
-        ...beneficiaryUser,
-        subscriptions: {
-          marketingEmail: true,
-          marketingPush: true,
-          subscribedThemes: [SubscriptionTheme.MUSIQUE],
-        },
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+      subscriptions: {
+        marketingEmail: true,
+        marketingPush: true,
+        subscribedThemes: [SubscriptionTheme.MUSIQUE],
       },
     })
     render(reactQueryProviderHOC(<OnboardingSubscription />))
@@ -168,10 +156,8 @@ describe('OnboardingSubscription', () => {
 
   it('should show notifications settings modal when user has no notifications activated and click on subscribe button', async () => {
     // eslint-disable-next-line local-rules/independent-mocks
-    mockUseAuthContext.mockReturnValue({
-      ...baseAuthContext,
-      isLoggedIn: true,
-      user: {
+    mockAuthContextWithUser(
+      {
         ...beneficiaryUser,
         subscriptions: {
           marketingEmail: false,
@@ -179,7 +165,8 @@ describe('OnboardingSubscription', () => {
           subscribedThemes: [],
         },
       },
-    })
+      { persist: true }
+    )
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
@@ -191,19 +178,13 @@ describe('OnboardingSubscription', () => {
 
   it('should save subscriptions when user subscribes from notifications settings modal', async () => {
     mockServer.postApi('/v1/profile', {})
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseAuthContext.mockReturnValue({
-      ...baseAuthContext,
-      isLoggedIn: true,
-      user: {
+    mockAuthContextWithUser(
+      {
         ...beneficiaryUser,
-        subscriptions: {
-          marketingEmail: false,
-          marketingPush: false,
-          subscribedThemes: [],
-        },
+        subscriptions: { marketingEmail: false, marketingPush: false, subscribedThemes: [] },
       },
-    })
+      { persist: true }
+    )
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 

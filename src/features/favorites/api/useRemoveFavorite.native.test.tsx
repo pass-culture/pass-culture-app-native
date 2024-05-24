@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { View } from 'react-native'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
@@ -11,17 +10,11 @@ import { act, renderHook, waitFor } from 'tests/utils'
 import { useRemoveFavorite } from './useRemoveFavorite'
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('libs/jwt')
 
-describe('useRemoveFavorite hook', () => {
-  mockUseAuthContext.mockReturnValue({
-    isLoggedIn: true,
-    setIsLoggedIn: jest.fn(),
-    refetchUser: jest.fn(),
-    isUserLoading: false,
-  })
+jest.unmock('react-query')
 
+describe('useRemoveFavorite hook', () => {
   it('should remove favorite', async () => {
     const favorite = paginatedFavoritesResponseSnap.favorites[0]
     const favoriteId = favorite.id

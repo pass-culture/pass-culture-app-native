@@ -2,7 +2,6 @@ import React from 'react'
 import { Animated } from 'react-native'
 
 import { PaginatedFavoritesResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -13,13 +12,6 @@ import { act, fireEvent, render, screen } from 'tests/utils/web'
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-mockUseAuthContext.mockImplementation(() => ({
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-}))
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 

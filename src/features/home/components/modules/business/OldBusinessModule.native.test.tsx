@@ -4,8 +4,10 @@ import { Linking } from 'react-native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BusinessModuleProps } from 'features/home/components/modules/business/BusinessModule'
 import { OldBusinessModule } from 'features/home/components/modules/business/OldBusinessModule'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
@@ -93,7 +95,6 @@ describe('OldBusinessModule component', () => {
   })
 
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
-    mockUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
     renderModule({ ...props, shouldTargetNotConnectedUsers: true })
 
     expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
@@ -132,12 +133,10 @@ describe('OldBusinessModule component', () => {
 
   it('should redirect with filled email when required without the snackbar being displayed when email is already okay', async () => {
     // We don't use mockReturnValueOnce because useAuthContext is called twice : for the first BusinessModule render and when the link is pressed (shouldRedirect goes from false to true)
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseAuthContext.mockReturnValue({
-      user: { email: 'email2@domain.ext', firstName: 'Jean' },
-      isUserLoading: false,
-      isLoggedIn: true,
-    })
+    mockAuthContextWithUser(
+      { ...beneficiaryUser, email: 'email2@domain.ext', firstName: 'Jean' },
+      { persist: true }
+    )
 
     renderModule({
       ...props,

@@ -1,10 +1,11 @@
 import * as React from 'react'
 
 import { OfferResponseV2 } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { beneficiaryUser } from 'fixtures/user'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
@@ -34,15 +35,10 @@ describe('<BookingEventChoices />', () => {
   })
 
   beforeAll(() => {
-    const mockUseAuthContext = useAuthContext as jest.Mock
-    const { user: globalUserMock } = mockUseAuthContext()
-
-    mockUseAuthContext.mockReturnValue({
-      user: {
-        ...globalUserMock,
-        id: 1,
-        domainsCredit: { all: { remaining: 30000, initial: 50000 }, physical: null, digital: null },
-      },
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+      id: 1,
+      domainsCredit: { all: { remaining: 30000, initial: 50000 }, physical: null, digital: null },
     })
   })
 

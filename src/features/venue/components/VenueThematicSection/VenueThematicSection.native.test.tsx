@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -14,15 +14,6 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-const baseAuthContext = {
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  user: beneficiaryUser,
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-}
-mockUseAuthContext.mockReturnValue(baseAuthContext)
 
 const venueFixture = { ...venueResponseSnap, venueTypeCode: VenueTypeCodeKey.MOVIE }
 
@@ -46,7 +37,7 @@ const alreadySubscribedUser = {
 
 describe('<VenueThematicSection/>', () => {
   beforeEach(() => {
-    mockUseAuthContext.mockReturnValue(baseAuthContext)
+    mockAuthContextWithUser(beneficiaryUser, { persist: true })
   })
 
   it('should render null if venue has no thematic', async () => {
@@ -59,7 +50,7 @@ describe('<VenueThematicSection/>', () => {
   })
 
   it('should render null if user is not eligible', async () => {
-    mockUseAuthContext.mockReturnValueOnce({ ...baseAuthContext, user: nonBeneficiaryUser })
+    mockAuthContextWithUser(nonBeneficiaryUser)
     render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
     await waitFor(() => {
@@ -107,8 +98,7 @@ describe('<VenueThematicSection/>', () => {
     })
 
     it('should show logged out modal when user is not logged in', async () => {
-      const loggedOutAuthContext = { ...baseAuthContext, isLoggedIn: false, user: undefined }
-      mockUseAuthContext.mockReturnValueOnce(loggedOutAuthContext)
+      mockAuthContextWithoutUser()
       render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
       fireEvent.press(screen.getByText('Suivre le thème'))
@@ -121,7 +111,7 @@ describe('<VenueThematicSection/>', () => {
         ...beneficiaryUser,
         subscriptions: { marketingEmail: false, marketingPush: false, subscribedThemes: [] },
       }
-      mockUseAuthContext.mockReturnValueOnce({ ...baseAuthContext, user: userWithNoNotifications })
+      mockAuthContextWithUser(userWithNoNotifications)
       render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
       fireEvent.press(screen.getByText('Suivre le thème'))
@@ -136,7 +126,7 @@ describe('<VenueThematicSection/>', () => {
 
       // Due to too many re-renders, we need to mock the auth context globally
       // eslint-disable-next-line local-rules/independent-mocks
-      mockUseAuthContext.mockReturnValue({ ...baseAuthContext, user: alreadySubscribedUser })
+      mockAuthContextWithUser(alreadySubscribedUser, { persist: true })
       await act(async () => fireEvent.press(screen.getByText('Suivre le thème')))
       fireEvent.press(await screen.findByText('Thème suivi'))
 
@@ -147,11 +137,7 @@ describe('<VenueThematicSection/>', () => {
   })
 
   it('should log when user login from logged out modal', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      ...baseAuthContext,
-      isLoggedIn: false,
-      user: undefined,
-    })
+    mockAuthContextWithoutUser()
 
     render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 

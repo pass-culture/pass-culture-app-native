@@ -2,7 +2,6 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { FavoriteResponse, PaginatedFavoritesResponse, RecommendationApiParams } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useAddFavoriteAPI from 'features/favorites/api/useAddFavorite'
 import * as useRemoveFavoriteAPI from 'features/favorites/api/useRemoveFavorite'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -10,6 +9,7 @@ import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { PlaylistType } from 'features/offer/enums'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
@@ -25,13 +25,6 @@ jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-mockUseAuthContext.mockReturnValue({
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-})
 
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: jest.fn(() => ({})),
@@ -78,12 +71,7 @@ describe('<FavoriteButton />', () => {
   })
 
   it('should display SignIn modal when pressing Favorite - not logged in users', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+    mockAuthContextWithoutUser()
     renderFavoriteButton()
 
     await act(async () => {

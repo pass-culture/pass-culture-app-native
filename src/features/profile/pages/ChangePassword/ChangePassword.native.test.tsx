@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -12,23 +12,15 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 
 import { ChangePassword } from './ChangePassword'
 
+jest.mock('features/auth/context/AuthContext')
+mockAuthContextWithUser(beneficiaryUser, { persist: true })
+
 const mockedUseSnackBarContext = useSnackBarContext as jest.Mock
 
-const baseAuthContext = {
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  user: beneficiaryUser,
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-}
-jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-mockUseAuthContext.mockReturnValue(baseAuthContext)
-
-const mockshowSuccessSnackBar = jest.fn()
+const mockShowSuccessSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: jest.fn(() => ({
-    showSuccessSnackBar: mockshowSuccessSnackBar,
+    showSuccessSnackBar: mockShowSuccessSnackBar,
   })),
 }))
 
@@ -68,12 +60,9 @@ describe('ChangePassword', () => {
   })
 
   it('should redirect to Home if user has no password', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      ...baseAuthContext,
-      user: {
-        ...beneficiaryUser,
-        hasPassword: false,
-      },
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+      hasPassword: false,
     })
     render(reactQueryProviderHOC(<ChangePassword />))
 
@@ -125,7 +114,7 @@ describe('ChangePassword', () => {
       fireEvent.press(screen.getByTestId('Enregistrer les modifications'))
     })
 
-    expect(mockshowSuccessSnackBar).toHaveBeenCalledWith({
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Ton mot de passe est modifié',
       timeout: SNACK_BAR_TIME_OUT,
     })

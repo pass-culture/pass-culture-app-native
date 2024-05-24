@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { View } from 'react-native'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
@@ -13,7 +12,6 @@ import { useFavorite } from './useFavorite'
 jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('libs/jwt')
 
 describe('useFavorite hook', () => {
@@ -23,12 +21,6 @@ describe('useFavorite hook', () => {
       id: favorite.offer.id,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
-    })
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
     })
     const { result } = renderHook(() => useFavorite({ offerId: favorite.offer.id }), {
       wrapper: (props) =>
@@ -56,12 +48,6 @@ describe('useFavorite hook', () => {
       id: favorite.offer.id,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
-    })
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
     })
 
     const { result } = renderHook(() => useFavorite({ offerId: 99999 }), {

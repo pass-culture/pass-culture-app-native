@@ -1,28 +1,28 @@
 import React from 'react'
 
 import type { BookingsResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
+import { beneficiaryUser } from 'fixtures/user'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.Mock
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<BookingPropertiesSection />', () => {
   beforeAll(() => {
-    const { user: globalMockUser } = mockUseAuthContext()
-    mockUseAuthContext.mockReturnValue({
-      user: {
-        ...globalMockUser,
+    mockAuthContextWithUser(
+      {
+        ...beneficiaryUser,
         firstName: 'Christophe',
         lastName: 'Dupont',
       },
-    })
+      { persist: true }
+    )
   })
 
   const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[0]

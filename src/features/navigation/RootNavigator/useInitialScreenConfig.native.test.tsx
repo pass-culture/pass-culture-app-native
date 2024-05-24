@@ -1,29 +1,18 @@
 import React from 'react'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useInitialScreen } from './useInitialScreenConfig'
 
-const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt')
 
 describe('useInitialScreen()', () => {
-  beforeEach(() => {
-    mockedUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: true,
-      isUserLoading: false,
-      user: beneficiaryUser,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-    })
-  })
-
   afterAll(async () => {
     await storage.clear('has_seen_tutorials')
     await storage.clear('has_seen_eligible_card')
@@ -32,19 +21,15 @@ describe('useInitialScreen()', () => {
   it('should return TabNavigator when logged in user has seen tutorials and eligible card without need to fill cultural survey', async () => {
     await storage.saveObject('has_seen_tutorials', true)
     await storage.saveObject('has_seen_eligible_card', true)
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockedUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-      user: {
+    mockAuthContextWithUser(
+      {
         ...beneficiaryUser,
         needsToFillCulturalSurvey: false,
         showEligibleCard: false,
         recreditAmountToShow: null,
       },
-    })
+      { persist: true }
+    )
 
     const result = await renderUseInitialScreen()
 
@@ -59,19 +44,15 @@ describe('useInitialScreen()', () => {
   it('should return CulturalSurveyIntro when user should see cultural survey', async () => {
     await storage.saveObject('has_seen_tutorials', true)
     await storage.saveObject('has_seen_eligible_card', true)
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockedUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-      user: {
+    mockAuthContextWithUser(
+      {
         ...beneficiaryUser,
         needsToFillCulturalSurvey: true,
         showEligibleCard: true,
         recreditAmountToShow: null,
       },
-    })
+      { persist: true }
+    )
 
     const result = await renderUseInitialScreen()
 
@@ -86,19 +67,15 @@ describe('useInitialScreen()', () => {
   it('should return EighteenBirthday when user hasn’t seen eligible card', async () => {
     await storage.saveObject('has_seen_tutorials', true)
     await storage.saveObject('has_seen_eligible_card', null)
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockedUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-      user: {
+    mockAuthContextWithUser(
+      {
         ...beneficiaryUser,
         needsToFillCulturalSurvey: true,
         showEligibleCard: true,
         recreditAmountToShow: null,
       },
-    })
+      { persist: true }
+    )
 
     const result = await renderUseInitialScreen()
 
@@ -113,19 +90,15 @@ describe('useInitialScreen()', () => {
   it('should return RecreditBirthdayNotification when user hasn’t seen eligible card and has credit to show', async () => {
     await storage.saveObject('has_seen_tutorials', true)
     await storage.saveObject('has_seen_eligible_card', null)
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockedUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-      user: {
+    mockAuthContextWithUser(
+      {
         ...beneficiaryUser,
         needsToFillCulturalSurvey: true,
         showEligibleCard: true,
         recreditAmountToShow: 3000,
       },
-    })
+      { persist: true }
+    )
 
     const result = await renderUseInitialScreen()
 
@@ -140,13 +113,7 @@ describe('useInitialScreen()', () => {
   it('should return TabNavigator when user is not logged in and has seen tutorial', async () => {
     await storage.saveObject('has_seen_tutorials', true)
     await storage.saveObject('has_seen_eligible_card', true)
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockedUseAuthContext.mockReturnValue({
-      isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+    mockAuthContextWithoutUser({ persist: true })
 
     const result = await renderUseInitialScreen()
 
@@ -161,13 +128,7 @@ describe('useInitialScreen()', () => {
   it('should return OnboardingWelcome when user is not logged in and hasn’t seen tutorial yet', async () => {
     await storage.saveObject('has_seen_tutorials', null)
     await storage.saveObject('has_seen_eligible_card', true)
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockedUseAuthContext.mockReturnValue({
-      isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+    mockAuthContextWithoutUser({ persist: true })
 
     const result = await renderUseInitialScreen()
 

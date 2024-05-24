@@ -4,27 +4,19 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { SubscriptionStatus, UserProfileResponse, YoungStatusType } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
-const defaultAuthContext = {
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  user: beneficiaryUser,
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-}
 const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd') }
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -81,21 +73,15 @@ describe('<ProfileTutorialAgeInformation />', () => {
   })
 
   it('should display that the user has activated credit at 15 when logged in at 16', () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      ...defaultAuthContext,
-      user: { ...sixteenUser, depositActivationDate: '2019-12-01T00:00:00.000Z' },
-    }) // for the component call
-    mockUseAuthContext.mockReturnValueOnce({
-      ...defaultAuthContext,
-      user: { ...sixteenUser, depositActivationDate: '2019-12-01T00:00:00.000Z' },
-    }) // for the useDepositActivationAge hook call
+    mockAuthContextWithUser({ ...sixteenUser, depositActivationDate: '2019-12-01T00:00:00.000Z' }) // for the component call
+    mockAuthContextWithUser({ ...sixteenUser, depositActivationDate: '2019-12-01T00:00:00.000Z' }) // for the useDepositActivationAge hook call
     render(<ProfileTutorialAgeInformation {...navPropsSixteenSelected} />)
 
     expect(screen.getByText('Tu as reçu 20 € à 15 ans')).toBeOnTheScreen()
   })
 
   it('should display that the user couldn‘t have 15 credit if more than 15 years old', () => {
-    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, isLoggedIn: false })
+    mockAuthContextWithoutUser()
     render(<ProfileTutorialAgeInformation {...navPropsSixteenSelected} />)
 
     expect(
@@ -104,7 +90,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
   })
 
   it('should display that the user couldn‘t have 17 credit if more than 17 years old', () => {
-    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, isLoggedIn: false })
+    mockAuthContextWithoutUser()
     render(<ProfileTutorialAgeInformation {...navPropsEighteenSelected} />)
 
     expect(
@@ -113,7 +99,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
   })
 
   it('should display that the user couldn‘t have 15 or 16 credit if more than 16 years old', () => {
-    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, isLoggedIn: false })
+    mockAuthContextWithoutUser()
     render(<ProfileTutorialAgeInformation {...navPropsSeventeenSelected} />)
 
     expect(
@@ -131,7 +117,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
   })
 
   it("should open questionnaire when pressing on 'Donner mon avis'", () => {
-    mockUseAuthContext.mockReturnValueOnce(defaultAuthContext)
+    mockAuthContextWithUser(beneficiaryUser)
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     const link = screen.getByText('Donner mon avis')
@@ -141,23 +127,21 @@ describe('<ProfileTutorialAgeInformation />', () => {
   })
 
   it('should display verify eligibility when user is eligible', () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      ...defaultAuthContext,
-      user: {
-        ...nonBeneficiaryUser,
-        status: {
-          statusType: YoungStatusType.eligible,
-          subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
-        },
+    mockAuthContextWithUser({
+      ...nonBeneficiaryUser,
+      status: {
+        statusType: YoungStatusType.eligible,
+        subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
       },
     })
+
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen.getByText('Activer mon crédit')).toBeOnTheScreen()
   })
 
   it("should log to analytics when pressing 'Se connecter'", () => {
-    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, isLoggedIn: false })
+    mockAuthContextWithoutUser()
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     const link = screen.getByText('Se connecter')
@@ -167,7 +151,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
   })
 
   it("should log to analytics when pressing 'Créer un compte'", () => {
-    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, isLoggedIn: false })
+    mockAuthContextWithoutUser()
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     const link = screen.getByText('Créer un compte')
@@ -178,13 +162,15 @@ describe('<ProfileTutorialAgeInformation />', () => {
 })
 
 const mockAuthContextForAllRenders = (user?: UserProfileResponse) => {
-  const mockedContext = {
-    ...defaultAuthContext,
-    isLoggedIn: !!user,
-    user,
+  if (user) {
+    mockAuthContextWithUser(user) // First call in ProfileTutorialAgeInformation
+    mockAuthContextWithUser(user) // Second call in useDepositActivationAge
+    mockAuthContextWithUser(user) // Third call in UnderageBlockDescription
+    mockAuthContextWithUser(user) // Fourth call in EighteenBlockDescription
+  } else {
+    mockAuthContextWithoutUser() // First call in ProfileTutorialAgeInformation
+    mockAuthContextWithoutUser() // Second call in useDepositActivationAge
+    mockAuthContextWithoutUser() // Third call in UnderageBlockDescription
+    mockAuthContextWithoutUser() // Fourth call in EighteenBlockDescription
   }
-  mockUseAuthContext.mockReturnValueOnce(mockedContext) // First call in ProfileTutorialAgeInformation
-  mockUseAuthContext.mockReturnValueOnce(mockedContext) // Second call in useDepositActivationAge
-  mockUseAuthContext.mockReturnValueOnce(mockedContext) // Third call in UnderageBlockDescription
-  mockUseAuthContext.mockReturnValueOnce(mockedContext) // Fourth call in EighteenBlockDescription
 }

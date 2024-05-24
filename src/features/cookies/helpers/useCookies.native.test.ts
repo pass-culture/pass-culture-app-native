@@ -1,19 +1,20 @@
 import mockdate from 'mockdate'
 
 import { api } from 'api/api'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
 import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
+import { beneficiaryUser } from 'fixtures/user'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring } from 'libs/monitoring'
 import * as PackageJson from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
@@ -25,7 +26,6 @@ jest.mock('libs/monitoring')
 jest.mock('libs/react-native-device-info/getDeviceId')
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.Mock
 const mockGetDeviceId = getDeviceId as jest.Mock
 
 const mockStartTrackingAcceptedCookies = jest.spyOn(
@@ -48,9 +48,7 @@ const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteC
 
 describe('useCookies', () => {
   beforeAll(() => {
-    mockUseAuthContext.mockReturnValue({
-      user: undefined,
-    })
+    mockAuthContextWithoutUser({ persist: true })
   })
 
   beforeEach(() => {
@@ -259,9 +257,7 @@ describe('useCookies', () => {
       })
 
       it('can set user ID before giving cookies consent', async () => {
-        mockUseAuthContext.mockReturnValueOnce({
-          user: { id: FAKE_USER_ID },
-        })
+        mockAuthContextWithUser({ ...beneficiaryUser, id: FAKE_USER_ID })
         const { result } = renderUseCookies()
         const { setCookiesConsent, setUserId } = result.current
         await act(async () => {

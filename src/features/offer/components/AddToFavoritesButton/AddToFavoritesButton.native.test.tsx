@@ -2,7 +2,6 @@ import React from 'react'
 
 import { api } from 'api/api'
 import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
@@ -14,13 +13,6 @@ jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-mockUseAuthContext.mockReturnValue({
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-})
 
 const postFavoritesSpy = jest.spyOn(api, 'postNativeV1MeFavorites')
 

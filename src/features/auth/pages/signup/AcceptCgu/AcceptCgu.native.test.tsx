@@ -2,11 +2,11 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { UnknownErrorFixture } from 'libs/recaptcha/fixtures'
+import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { simulateWebviewMessage, screen, fireEvent, render, waitFor, act } from 'tests/utils'
 
@@ -18,14 +18,7 @@ jest.mock('features/auth/context/SettingsContext')
 jest.mock('libs/monitoring')
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-mockUseAuthContext.mockReturnValue({
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-})
-
+mockAuthContextWithoutUser({ persist: true })
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 mockUseNetInfoContext.mockReturnValueOnce({

@@ -6,6 +6,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -28,7 +29,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 describe('<IdentityCheckHonor/>', () => {
   beforeAll(() => {
-    mockUseAuthContext.mockReturnValue({ user: nonBeneficiaryUser })
+    mockAuthContextWithUser(nonBeneficiaryUser, { persist: true })
   })
 
   beforeEach(() => {

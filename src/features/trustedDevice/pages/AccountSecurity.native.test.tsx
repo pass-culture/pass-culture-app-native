@@ -1,10 +1,11 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { AccountSecurity } from './AccountSecurity'
@@ -12,8 +13,6 @@ import { AccountSecurity } from './AccountSecurity'
 jest.unmock('jwt-decode')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.Mock
-const { user: globalMockUser } = mockUseAuthContext()
 
 describe('<AccountSecurity/>', () => {
   describe('with route params', () => {
@@ -23,10 +22,7 @@ describe('<AccountSecurity/>', () => {
 
     describe('when user is connected and has a password', () => {
       beforeEach(() => {
-        mockUseAuthContext.mockReturnValueOnce({
-          user: { ...globalMockUser, hasPassword: true },
-          isLoggedIn: true,
-        })
+        mockAuthContextWithUser({ ...beneficiaryUser, hasPassword: true })
       })
 
       it('should match snapshot with valid token', () => {
@@ -75,10 +71,7 @@ describe('<AccountSecurity/>', () => {
 
     describe('when user is connected and has no password (sso)', () => {
       beforeEach(() => {
-        mockUseAuthContext.mockReturnValueOnce({
-          user: { ...globalMockUser, hasPassword: false },
-          isLoggedIn: true,
-        })
+        mockAuthContextWithUser({ ...beneficiaryUser, hasPassword: false })
       })
 
       it('should show alternative wording', () => {
@@ -96,9 +89,7 @@ describe('<AccountSecurity/>', () => {
 
     describe('when user is disconnected', () => {
       it('should show button to change the password', () => {
-        mockUseAuthContext.mockReturnValueOnce({
-          isLoggedIn: false,
-        })
+        mockAuthContextWithoutUser()
         render(<AccountSecurity />)
 
         expect(screen.getByText('Modifier mon mot de passe')).toBeTruthy()
@@ -108,9 +99,7 @@ describe('<AccountSecurity/>', () => {
 
   describe('without route params', () => {
     it('should match snapshot when no token', () => {
-      mockUseAuthContext.mockReturnValueOnce({
-        isLoggedIn: false,
-      })
+      mockAuthContextWithoutUser()
 
       render(<AccountSecurity />)
 

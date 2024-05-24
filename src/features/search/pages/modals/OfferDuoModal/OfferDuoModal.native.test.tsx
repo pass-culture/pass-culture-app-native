@@ -1,7 +1,6 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import {
@@ -10,6 +9,7 @@ import {
 } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
@@ -25,15 +25,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('features/auth/context/AuthContext')
 const mockUser = { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 7000 } } }
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-
-mockUseAuthContext.mockReturnValue({
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  user: mockUser,
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-})
+mockAuthContextWithUser(mockUser)
 
 const mockHideModal = jest.fn()
 const mockOnClose = jest.fn()
@@ -84,13 +76,7 @@ describe('<OfferDuoModal/>', () => {
 
   describe('when user is logged in and beneficiary with credit', () => {
     beforeEach(() => {
-      mockUseAuthContext.mockReturnValueOnce({
-        isLoggedIn: false,
-        setIsLoggedIn: jest.fn(),
-        user: beneficiaryUser,
-        refetchUser: jest.fn(),
-        isUserLoading: false,
-      })
+      mockAuthContextWithUser(beneficiaryUser)
     })
 
     it('should toggle offerIsDuo', () => {
