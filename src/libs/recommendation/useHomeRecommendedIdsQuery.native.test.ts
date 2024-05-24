@@ -1,4 +1,5 @@
 import { PlaylistResponse } from 'api/gen'
+import { EmptyResponse } from 'libs/fetch'
 import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -10,8 +11,8 @@ jest.mock('libs/monitoring')
 
 describe('useHomeRecommendedIdsQuery', () => {
   it('should capture an exception when fetch call fails', async () => {
-    mockServer.postApi<PlaylistResponse>('/v1/recommendation/playlist', {
-      responseOptions: { statusCode: 400 },
+    mockServer.postApi<EmptyResponse>('/v1/recommendation/playlist', {
+      responseOptions: { statusCode: 502, data: {} },
     })
 
     renderHook(
@@ -28,32 +29,8 @@ describe('useHomeRecommendedIdsQuery', () => {
 
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        'Error with recommendation endpoint',
-        { extra: { playlistRequestBody: '{}', playlistRequestQuery: '{}' } }
-      )
-    })
-  })
-
-  it('should capture an exception when recommendation playlist is empty', async () => {
-    mockServer.postApi<PlaylistResponse>('/v1/recommendation/playlist', {
-      responseOptions: { statusCode: 200, data: { params: {}, playlistRecommendedOffers: [] } },
-    })
-    renderHook(
-      () =>
-        useHomeRecommendedIdsQuery({
-          playlistRequestBody: {},
-          playlistRequestQuery: {},
-          userId: 1,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
-
-    await waitFor(() => {
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        'Recommended offers playlist is empty',
-        { extra: { playlistRequestBody: '{}', playlistRequestQuery: '{}' }, level: 'info' }
+        'Error 502 with recommendation endpoint',
+        { extra: { playlistRequestBody: '{}', playlistRequestQuery: '{}', statusCode: 502 } }
       )
     })
   })
