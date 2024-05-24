@@ -45,8 +45,6 @@ mockUseAuthContext.mockReturnValue({
   refetchUser: jest.fn(),
 })
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 describe('HomeHeader', () => {
   it.each`
     usertype                     | user                                                                              | isLoggedIn | credit                                | subtitle

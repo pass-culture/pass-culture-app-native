@@ -1,11 +1,11 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
-import { navigate } from '__mocks__/@react-navigation/native'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
