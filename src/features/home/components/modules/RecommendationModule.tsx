@@ -5,8 +5,8 @@ import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOf
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import { RecommendedOffersModule } from 'features/home/types'
 import { analytics } from 'libs/analytics'
-import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
+import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { formatDates } from 'libs/parsers/formatDates'
@@ -97,7 +97,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     ]
   )
 
-  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
+  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   if (!shouldModuleBeDisplayed) return null
   return (
