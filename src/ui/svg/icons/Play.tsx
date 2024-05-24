@@ -30,8 +30,6 @@ const PlaySvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-// const Player = styled(Play).attrs({ size: PLAYER_SIZE })({})
-
 export const Play = styled(PlaySvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.smaller,

@@ -4,6 +4,7 @@ import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { AttachedOfferCard } from 'features/home/components/AttachedOfferCard'
 import { BlackCaption } from 'features/home/components/BlackCaption'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
@@ -12,9 +13,20 @@ import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/
 import { VideoModuleProps } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useCategoryIdMapping } from 'libs/subcategories'
+import { theme } from 'theme'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
-import { gradientColorsMapping, newGradientColorsMapping } from 'ui/theme/gradientColorsMapping'
+import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
+
+const newGradientColorsMapping = {
+  Gold: [theme.colors.goldLight100, theme.colors.goldLight100],
+  Aquamarine: [theme.colors.aquamarineLight, theme.colors.aquamarineLight],
+  SkyBlue: [theme.colors.skyBlueLight, theme.colors.skyBlueLight],
+  DeepPink: [theme.colors.deepPinkLight, theme.colors.deepPinkLight],
+  Coral: [theme.colors.coralLight, theme.colors.coralLight],
+  Lilac: [theme.colors.lilacLight, theme.colors.lilacLight],
+}
 
 const THUMBNAIL_HEIGHT = getSpacing(52.5)
 // We do not center the player icon, because when the title is 2-line long,
@@ -27,7 +39,7 @@ const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + PLAYER_SIZE / 2
 const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER =
   THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(16)
 
-const NEW_PLAYER_SIZE = getSpacing(21)
+const NEW_PLAYER_SIZE = getSpacing(24)
 
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
   const enableMultiVideoModule = useFeatureFlag(
@@ -39,6 +51,11 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
   const colorCategoryBackgroundHeightUniqueOffer =
     THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(43)
 
+  const mapping = useCategoryIdMapping()
+  const categoryId = mapping[props.offers[0].offer.subcategoryId]
+
+  console.log({ offers: props.offers })
+  /// https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/DU_1
   return (
     <Container>
       <StyledTitleContainer>
@@ -56,7 +73,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
               ? newGradientColorsMapping[props.color]
               : gradientColorsMapping[props.color]
           }
-          isMultiOffer={props.isMultiOffer}
+          isMultiOffer={false}
         />
         <VideoOfferContainer enableMultiVideoModule={enableMultiVideoModule}>
           <StyledTouchableHighlight
@@ -83,7 +100,19 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             </Thumbnail>
           </StyledTouchableHighlight>
           <Spacer.Column numberOfSpaces={2} />
-          {props.isMultiOffer ? null : (
+          {false ? null : enableMultiVideoModule ? (
+            <AttachedOfferCard
+              title={props.offers[0]?.offer.name ?? ''}
+              categoryId={categoryId}
+              imageUrl={props.offers[0]?.offer.thumbUrl}
+              showImage
+              tag="string"
+              withRightArrow
+              geoloc={props.offers[0]?._geoloc}
+              date={props.offers[0]?.offer.dates}
+              price={props.offers[0]?.offer.prices[0]}
+            />
+          ) : (
             <StyledVideoMonoOfferTile
               // @ts-expect-error: because of noUncheckedIndexedAccess
               offer={props.offers[0]}
@@ -94,7 +123,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           )}
         </VideoOfferContainer>
       </View>
-      {props.isMultiOffer ? (
+      {false ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
           <VideoMultiOfferPlaylist
@@ -104,7 +133,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           />
         </React.Fragment>
       ) : null}
-      {props.isMultiOffer ? null : <Spacer.Column numberOfSpaces={6} />}
+      {false ? null : <Spacer.Column numberOfSpaces={6} />}
     </Container>
   )
 }

@@ -87,19 +87,19 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   )
 }
 
-const OfferInsert = styled(InternalTouchableLink)<{ offerHeight: number }>(
-  ({ theme, offerHeight }) => ({
-    // the overflow: hidden allow to add border radius to the image
-    // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
-    overflow: 'hidden',
-    borderRadius: theme.borderRadius.radius,
-    backgroundColor: theme.colors.white,
-    height: offerHeight,
-    alignItems: 'flex-start',
-    border: 1,
-    borderColor: theme.colors.greyMedium,
-  })
-)
+const OfferInsert = styled(InternalTouchableLink)<{
+  offerHeight: number
+}>(({ theme, offerHeight }) => ({
+  // the overflow: hidden allow to add border radius to the image
+  // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
+  overflow: 'hidden',
+  borderRadius: theme.borderRadius.radius,
+  backgroundColor: theme.colors.white,
+  height: offerHeight,
+  alignItems: 'flex-start',
+  border: 1,
+  borderColor: theme.colors.greyMedium,
+}))
 
 const Row = styled.View({
   flexDirection: 'row',

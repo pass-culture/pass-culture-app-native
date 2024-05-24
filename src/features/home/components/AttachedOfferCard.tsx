@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
+import { useDistance } from 'libs/location/hooks/useDistance'
+import { OfferLocation } from 'shared/offer/types'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
@@ -14,13 +16,13 @@ const OFFER_CARD_PADDING = getSpacing(4)
 
 export type AttachedOfferCardProps = {
   title: string
-  categoryId?: CategoryIdEnum
+  categoryId: CategoryIdEnum
+  categoryText: string
+  geoloc?: OfferLocation
   imageUrl?: string
   showImage?: boolean
-  distanceToOffer?: string
   price?: string
   withRightArrow?: boolean
-  tag: string
   date?: string
 }
 
@@ -28,13 +30,15 @@ export const AttachedOfferCard = ({
   title,
   categoryId,
   imageUrl,
-  distanceToOffer,
+  geoloc,
   price,
-  tag,
+  categoryText,
   date,
   withRightArrow,
   showImage,
 }: AttachedOfferCardProps) => {
+  const distanceToOffer = useDistance(geoloc || { lat: 0, lng: 0 })
+
   return (
     <Container>
       {showImage ? (
@@ -48,15 +52,15 @@ export const AttachedOfferCard = ({
         </ImageContainer>
       ) : null}
       <CentralColumn>
-        <Typo.Caption>{tag}</Typo.Caption>
+        <Typo.Caption>{categoryText}</Typo.Caption>
         <OfferName title={title} />
         {date ? <CaptionNeutralInfo>{date}</CaptionNeutralInfo> : null}
         {price ? <CaptionNeutralInfo>{price}</CaptionNeutralInfo> : null}
       </CentralColumn>
       <RightColumn>
-        {distanceToOffer ? (
+        {geoloc ? (
           <DistanceWrapper label={`à ${distanceToOffer}`}>
-            <Typo.Hint>{distanceToOffer}</Typo.Hint>
+            <Typo.Hint>à {distanceToOffer}</Typo.Hint>
           </DistanceWrapper>
         ) : null}
         <Spacer.Flex />
