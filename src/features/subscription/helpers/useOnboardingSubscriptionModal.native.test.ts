@@ -22,6 +22,7 @@ describe('useOnboardingSubscriptionModal', () => {
   })
 
   it('should not display modal if user is not eligible', () => {
+    storage.saveObject('logged_in_session_count', 3)
     const showOnboardingSubscriptionModal = jest.fn()
     renderHook(() =>
       useOnboardingSubscriptionModal({
