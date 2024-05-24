@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { CSSProperties, FunctionComponent } from 'react'
 import { FlatList, Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -87,7 +87,7 @@ export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
 
   const enabledVenueMap = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const isLocated = selectedLocationMode !== LocationMode.EVERYWHERE
-  const shouldTriggerModal = enabledVenueMap && isLocated && !isWeb
+  const shouldTriggerModal = enabledVenueMap && !isLocated && !isWeb
 
   const onPress = shouldTriggerModal ? showVenueMapLocationModal : undefined
 
@@ -100,11 +100,7 @@ export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
         keyExtractor={keyExtractor}
         renderItem={({ item }) => renderItem({ item }, userLocation)}
         ItemSeparatorComponent={HorizontalSeparator}
-        ListHeaderComponent={() =>
-          ListHeaderComponent({
-            onPress,
-          })
-        }
+        ListHeaderComponent={() => <ListHeaderComponent onPress={onPress} />}
       />
       <VenueMapLocationModal
         visible={venueMapLocationModalVisible}
@@ -122,26 +118,18 @@ const StyledFlatList = styled(FlatList as typeof FlatList<VenueHit>)(({ theme })
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const StyledInternalTouchableLink = styled(InternalTouchableLink)({
+const commonStyles: CSSProperties = {
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
   gap: getSpacing(2),
-})
+}
 
-const StyledTouchable = styled(Touchable)({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  gap: getSpacing(2),
-})
+const StyledInternalTouchableLink = styled(InternalTouchableLink)({ ...commonStyles })
 
-const StyledView = styled(View)({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  gap: getSpacing(2),
-})
+const StyledTouchable = styled(Touchable)({ ...commonStyles })
+
+const StyledView = styled(View)({ ...commonStyles })
 
 const StyledTag = styled(Tag)(({ theme }) => ({
   backgroundColor: theme.colors.white,
