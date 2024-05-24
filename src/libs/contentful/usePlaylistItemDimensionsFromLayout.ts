@@ -15,9 +15,15 @@ export function usePlaylistItemDimensionsFromLayout(layout: Layout): {
   const enableV2Sizes = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_HOME_MODULE_SIZES)
 
   if (enableV2Sizes) {
-    const defaultHeight = layout === 'two-items' ? LENGTH_M : LENGTH_XL
-    const itemHeight = layout === 'three-items' ? LENGTH_S : defaultHeight
-    return { itemHeight, itemWidth: itemHeight * RATIO_HOME_IMAGE }
+    switch (layout) {
+      case 'three-items':
+        return { itemHeight: LENGTH_S, itemWidth: LENGTH_S * RATIO_HOME_IMAGE }
+      case 'one-item-medium':
+        return { itemHeight: LENGTH_XL, itemWidth: LENGTH_XL * RATIO_HOME_IMAGE }
+      case 'two-items':
+      default:
+        return { itemHeight: LENGTH_M, itemWidth: LENGTH_M * RATIO_HOME_IMAGE }
+    }
   }
 
   const itemHeight = layout === 'two-items' ? LENGTH_M : LENGTH_L
