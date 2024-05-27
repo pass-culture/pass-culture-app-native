@@ -3070,6 +3070,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               }
                                             }
                                             locations={null}
+                                            onlyTopBorderRadius={true}
                                             startPoint={
                                               {
                                                 "x": 0.5,
@@ -3311,6 +3312,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           }
                                         }
                                         locations={null}
+                                        onlyTopBorderRadius={true}
                                         startPoint={
                                           {
                                             "x": 0.5,

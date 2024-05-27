@@ -4150,7 +4150,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
           }
         }
         contentHeight={250}
-        contentWidth={1120}
+        contentWidth={768}
         data={
           [
             {
@@ -4380,7 +4380,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
           }
         }
         disableRecycling={false}
-        estimatedItemSize={280}
+        estimatedItemSize={192}
         extendedState={{}}
         externalScrollView={[Function]}
         finalRenderAheadOffset={187.5}
@@ -4409,29 +4409,29 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                 {
                   "height": 250,
                   "type": 0,
-                  "width": 280,
+                  "width": 192,
                   "x": 0,
                   "y": 0,
                 },
                 {
                   "height": 250,
                   "type": 0,
-                  "width": 280,
-                  "x": 280,
+                  "width": 192,
+                  "x": 192,
                   "y": 0,
                 },
                 {
                   "height": 250,
                   "type": 0,
-                  "width": 280,
-                  "x": 560,
+                  "width": 192,
+                  "x": 384,
                   "y": 0,
                 },
                 {
                   "height": 250,
                   "type": 0,
-                  "width": 280,
-                  "x": 840,
+                  "width": 192,
+                  "x": 576,
                   "y": 0,
                 },
               ],
@@ -4441,7 +4441,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                 "width": 800,
               },
               "_totalHeight": 250,
-              "_totalWidth": 1120,
+              "_totalWidth": 768,
               "_window": {
                 "height": 250,
                 "width": 800,
@@ -4458,10 +4458,12 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
               "width": 0,
             },
             "averageWindow": AverageWindow {
-              "currentAverage": 280,
+              "currentAverage": 192,
               "currentCount": 1,
               "inputValues": [
-                280,
+                192,
+                ,
+                ,
                 ,
                 ,
                 ,
@@ -4627,7 +4629,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                 },
               ],
               "drawDistance": 187.5,
-              "estimatedItemSize": 280,
+              "estimatedItemSize": 192,
               "getItemLayout": [Function],
               "horizontal": true,
               "keyExtractor": [Function],
@@ -4754,7 +4756,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
               style={
                 {
                   "height": 250,
-                  "width": 1120,
+                  "width": 768,
                 }
               }
               windowSize={800}
@@ -4767,7 +4769,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                     "alignItems": "stretch",
                     "flexDirection": "row",
                     "height": 250,
-                    "left": 560,
+                    "left": 384,
                     "position": "absolute",
                     "top": 0,
                   }
@@ -4810,7 +4812,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                           },
                           {
                             "borderRadius": 8,
-                            "height": 492,
+                            "height": 384,
                             "marginVertical": 4,
                           },
                         ]
@@ -4818,42 +4820,27 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                       testID="Offre Un lit sous une rivière de la catégorie Concert,  le 17 novembre 2020, prix 34 €. Possibilité de réserver 2 places."
                     >
                       <View
+                        maxWidth={192}
                         style={
                           [
                             {
                               "flexDirection": "column-reverse",
+                              "gap": 8,
+                              "maxWidth": 192,
                             },
                           ]
                         }
                       >
                         <View
-                          imageWidth={280}
                           style={
                             [
                               {
-                                "marginTop": 8,
-                                "maxWidth": 280,
+                                "gap": 4,
                               },
                             ]
                           }
                         >
                           <Text
-                            numberOfLines={2}
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                          >
-                            Un lit sous une rivière
-                          </Text>
-                          <Text
-                            numberOfLines={1}
                             style={
                               [
                                 {
@@ -4865,25 +4852,63 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                               ]
                             }
                           >
-                            17 novembre 2020
+                            Concert
                           </Text>
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#696A6F",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                            testID="priceIsDuo"
-                          >
-                            34 € - Duo
-                          </Text>
+                          <View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              Un lit sous une rivière
+                            </Text>
+                            <Text
+                              numberOfLines={1}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              17 novembre 2020
+                            </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            >
+                              34 € - Duo
+                            </Text>
+                          </View>
                         </View>
-                        <View>
+                        <View
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
                           <View
                             style={
                               [
@@ -4895,10 +4920,9 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                                     "backgroundColor": "#F1F1F4",
                                   },
                                   {
-                                    "borderTopLeftRadius": 8,
-                                    "borderTopRightRadius": 8,
-                                    "height": 396,
-                                    "width": 280,
+                                    "borderRadius": 8,
+                                    "height": 288,
+                                    "width": 192,
                                   },
                                 ],
                               ]
@@ -4923,55 +4947,6 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                               }
                               testID="tileImage"
                             />
-                          </View>
-                          <View
-                            height={24}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "backgroundColor": "#161617",
-                                  "borderBottomLeftRadius": 8,
-                                  "borderBottomRightRadius": 8,
-                                  "flexDirection": "row",
-                                  "height": 24,
-                                  "width": 280,
-                                },
-                              ]
-                            }
-                            width={280}
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "justifyContent": "center",
-                                    "paddingHorizontal": 2,
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={1}
-                                style={
-                                  [
-                                    {
-                                      "color": "#ffffff",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 16,
-                                    },
-                                  ]
-                                }
-                                testID="categoryImageCaption"
-                              >
-                                Concert
-                              </Text>
-                            </View>
                           </View>
                         </View>
                       </View>
@@ -5054,7 +5029,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                     "alignItems": "stretch",
                     "flexDirection": "row",
                     "height": 250,
-                    "left": 280,
+                    "left": 192,
                     "position": "absolute",
                     "top": 0,
                   }
@@ -5097,7 +5072,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                           },
                           {
                             "borderRadius": 8,
-                            "height": 492,
+                            "height": 384,
                             "marginVertical": 4,
                           },
                         ]
@@ -5105,40 +5080,26 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                       testID="Offre I want something more de la catégorie Concert,   prix 23 €. "
                     >
                       <View
+                        maxWidth={192}
                         style={
                           [
                             {
                               "flexDirection": "column-reverse",
+                              "gap": 8,
+                              "maxWidth": 192,
                             },
                           ]
                         }
                       >
                         <View
-                          imageWidth={280}
                           style={
                             [
                               {
-                                "marginTop": 8,
-                                "maxWidth": 280,
+                                "gap": 4,
                               },
                             ]
                           }
                         >
-                          <Text
-                            numberOfLines={2}
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                          >
-                            I want something more
-                          </Text>
                           <Text
                             style={
                               [
@@ -5150,12 +5111,49 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                                 },
                               ]
                             }
-                            testID="priceIsDuo"
                           >
-                            23 €
+                            Concert
                           </Text>
+                          <View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              I want something more
+                            </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            >
+                              23 €
+                            </Text>
+                          </View>
                         </View>
-                        <View>
+                        <View
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
                           <View
                             style={
                               [
@@ -5167,10 +5165,9 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                                     "backgroundColor": "#F1F1F4",
                                   },
                                   {
-                                    "borderTopLeftRadius": 8,
-                                    "borderTopRightRadius": 8,
-                                    "height": 396,
-                                    "width": 280,
+                                    "borderRadius": 8,
+                                    "height": 288,
+                                    "width": 192,
                                   },
                                 ],
                               ]
@@ -5195,55 +5192,6 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                               }
                               testID="tileImage"
                             />
-                          </View>
-                          <View
-                            height={24}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "backgroundColor": "#161617",
-                                  "borderBottomLeftRadius": 8,
-                                  "borderBottomRightRadius": 8,
-                                  "flexDirection": "row",
-                                  "height": 24,
-                                  "width": 280,
-                                },
-                              ]
-                            }
-                            width={280}
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "justifyContent": "center",
-                                    "paddingHorizontal": 2,
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={1}
-                                style={
-                                  [
-                                    {
-                                      "color": "#ffffff",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 16,
-                                    },
-                                  ]
-                                }
-                                testID="categoryImageCaption"
-                              >
-                                Concert
-                              </Text>
-                            </View>
                           </View>
                         </View>
                       </View>
@@ -5369,7 +5317,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                           },
                           {
                             "borderRadius": 8,
-                            "height": 492,
+                            "height": 384,
                             "marginVertical": 4,
                           },
                         ]
@@ -5377,40 +5325,26 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                       testID="Offre La nuit des temps de la catégorie Livre,   prix 28 €. "
                     >
                       <View
+                        maxWidth={192}
                         style={
                           [
                             {
                               "flexDirection": "column-reverse",
+                              "gap": 8,
+                              "maxWidth": 192,
                             },
                           ]
                         }
                       >
                         <View
-                          imageWidth={280}
                           style={
                             [
                               {
-                                "marginTop": 8,
-                                "maxWidth": 280,
+                                "gap": 4,
                               },
                             ]
                           }
                         >
-                          <Text
-                            numberOfLines={2}
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                          >
-                            La nuit des temps
-                          </Text>
                           <Text
                             style={
                               [
@@ -5422,12 +5356,49 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                                 },
                               ]
                             }
-                            testID="priceIsDuo"
                           >
-                            28 €
+                            Livre
                           </Text>
+                          <View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              La nuit des temps
+                            </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            >
+                              28 €
+                            </Text>
+                          </View>
                         </View>
-                        <View>
+                        <View
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
                           <View
                             style={
                               [
@@ -5439,10 +5410,9 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                                     "backgroundColor": "#F1F1F4",
                                   },
                                   {
-                                    "borderTopLeftRadius": 8,
-                                    "borderTopRightRadius": 8,
-                                    "height": 396,
-                                    "width": 280,
+                                    "borderRadius": 8,
+                                    "height": 288,
+                                    "width": 192,
                                   },
                                 ],
                               ]
@@ -5467,55 +5437,6 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                               }
                               testID="tileImage"
                             />
-                          </View>
-                          <View
-                            height={24}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "backgroundColor": "#161617",
-                                  "borderBottomLeftRadius": 8,
-                                  "borderBottomRightRadius": 8,
-                                  "flexDirection": "row",
-                                  "height": 24,
-                                  "width": 280,
-                                },
-                              ]
-                            }
-                            width={280}
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "justifyContent": "center",
-                                    "paddingHorizontal": 2,
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={1}
-                                style={
-                                  [
-                                    {
-                                      "color": "#ffffff",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 16,
-                                    },
-                                  ]
-                                }
-                                testID="categoryImageCaption"
-                              >
-                                Livre
-                              </Text>
-                            </View>
                           </View>
                         </View>
                       </View>
@@ -5588,6 +5509,184 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                   }
                 />
               </CellContainer>
+              <CellContainer
+                index={3}
+                onLayout={[Function]}
+                style={
+                  {
+                    "alignItems": "stretch",
+                    "flexDirection": "row",
+                    "height": 250,
+                    "left": 576,
+                    "position": "absolute",
+                    "top": 0,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "flexDirection": "column",
+                    }
+                  }
+                >
+                  <View>
+                    <View
+                      accessibilityLabel="Offre I want something more de la catégorie Concert,   prix 28 €. "
+                      accessibilityRole="link"
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          {
+                            "textDecorationColor": "black",
+                            "textDecorationLine": "none",
+                            "textDecorationStyle": "solid",
+                          },
+                          {
+                            "borderRadius": 8,
+                            "height": 384,
+                            "marginVertical": 4,
+                          },
+                        ]
+                      }
+                      testID="Offre I want something more de la catégorie Concert,   prix 28 €. "
+                    >
+                      <View
+                        maxWidth={192}
+                        style={
+                          [
+                            {
+                              "flexDirection": "column-reverse",
+                              "gap": 8,
+                              "maxWidth": 192,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {
+                                "gap": 4,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            style={
+                              [
+                                {
+                                  "color": "#696A6F",
+                                  "fontFamily": "Montserrat-SemiBold",
+                                  "fontSize": 12,
+                                  "lineHeight": 16,
+                                },
+                              ]
+                            }
+                          >
+                            Concert
+                          </Text>
+                          <View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              I want something more
+                            </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            >
+                              28 €
+                            </Text>
+                          </View>
+                        </View>
+                        <View
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
+                          <View
+                            style={
+                              [
+                                {
+                                  "overflow": "hidden",
+                                },
+                                [
+                                  {
+                                    "backgroundColor": "#F1F1F4",
+                                  },
+                                  {
+                                    "borderRadius": 8,
+                                    "height": 288,
+                                    "width": 192,
+                                  },
+                                ],
+                              ]
+                            }
+                          >
+                            <FastImageView
+                              defaultSource={null}
+                              resizeMode="cover"
+                              source={
+                                {
+                                  "uri": "fakeUrlPrefix/thumbs/mediations/CDZQ",
+                                }
+                              }
+                              style={
+                                {
+                                  "bottom": 0,
+                                  "left": 0,
+                                  "position": "absolute",
+                                  "right": 0,
+                                  "top": 0,
+                                }
+                              }
+                              testID="tileImage"
+                            />
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </CellContainer>
             </AutoLayoutView>
             <CellContainer
               index={-1}
@@ -5654,7 +5753,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                       },
                       {
                         "borderRadius": 8,
-                        "height": 492,
+                        "height": 384,
                         "marginVertical": 4,
                       },
                     ]
@@ -5662,40 +5761,26 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                   testID="Offre I want something more de la catégorie Concert,   prix 23 €. "
                 >
                   <View
+                    maxWidth={192}
                     style={
                       [
                         {
                           "flexDirection": "column-reverse",
+                          "gap": 8,
+                          "maxWidth": 192,
                         },
                       ]
                     }
                   >
                     <View
-                      imageWidth={280}
                       style={
                         [
                           {
-                            "marginTop": 8,
-                            "maxWidth": 280,
+                            "gap": 4,
                           },
                         ]
                       }
                     >
-                      <Text
-                        numberOfLines={2}
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
-                        }
-                      >
-                        I want something more
-                      </Text>
                       <Text
                         style={
                           [
@@ -5707,12 +5792,49 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                             },
                           ]
                         }
-                        testID="priceIsDuo"
                       >
-                        23 €
+                        Concert
                       </Text>
+                      <View>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          I want something more
+                        </Text>
+                        <Text
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                              },
+                            ]
+                          }
+                          testID="priceIsDuo"
+                        >
+                          23 €
+                        </Text>
+                      </View>
                     </View>
-                    <View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    >
                       <View
                         style={
                           [
@@ -5724,10 +5846,9 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                                 "backgroundColor": "#F1F1F4",
                               },
                               {
-                                "borderTopLeftRadius": 8,
-                                "borderTopRightRadius": 8,
-                                "height": 396,
-                                "width": 280,
+                                "borderRadius": 8,
+                                "height": 288,
+                                "width": 192,
                               },
                             ],
                           ]
@@ -5752,55 +5873,6 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                           }
                           testID="tileImage"
                         />
-                      </View>
-                      <View
-                        height={24}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "#161617",
-                              "borderBottomLeftRadius": 8,
-                              "borderBottomRightRadius": 8,
-                              "flexDirection": "row",
-                              "height": 24,
-                              "width": 280,
-                            },
-                          ]
-                        }
-                        width={280}
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                                "justifyContent": "center",
-                                "paddingHorizontal": 2,
-                              },
-                            ]
-                          }
-                        >
-                          <Text
-                            numberOfLines={1}
-                            style={
-                              [
-                                {
-                                  "color": "#ffffff",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                            testID="categoryImageCaption"
-                          >
-                            Concert
-                          </Text>
-                        </View>
                       </View>
                     </View>
                   </View>
@@ -5949,7 +6021,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
           }
         }
         contentHeight={250}
-        contentWidth={416}
+        contentWidth={768}
         data={
           [
             {
@@ -6179,7 +6251,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
           }
         }
         disableRecycling={false}
-        estimatedItemSize={104}
+        estimatedItemSize={192}
         extendedState={{}}
         externalScrollView={[Function]}
         finalRenderAheadOffset={187.5}
@@ -6208,29 +6280,29 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                 {
                   "height": 250,
                   "type": 0,
-                  "width": 104,
+                  "width": 192,
                   "x": 0,
                   "y": 0,
                 },
                 {
                   "height": 250,
                   "type": 0,
-                  "width": 104,
-                  "x": 104,
+                  "width": 192,
+                  "x": 192,
                   "y": 0,
                 },
                 {
                   "height": 250,
                   "type": 0,
-                  "width": 104,
-                  "x": 208,
+                  "width": 192,
+                  "x": 384,
                   "y": 0,
                 },
                 {
                   "height": 250,
                   "type": 0,
-                  "width": 104,
-                  "x": 312,
+                  "width": 192,
+                  "x": 576,
                   "y": 0,
                 },
               ],
@@ -6240,7 +6312,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                 "width": 800,
               },
               "_totalHeight": 250,
-              "_totalWidth": 416,
+              "_totalWidth": 768,
               "_window": {
                 "height": 250,
                 "width": 800,
@@ -6257,18 +6329,10 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
               "width": 0,
             },
             "averageWindow": AverageWindow {
-              "currentAverage": 104,
+              "currentAverage": 192,
               "currentCount": 1,
               "inputValues": [
-                104,
-                ,
-                ,
-                ,
-                ,
-                ,
-                ,
-                ,
-                ,
+                192,
                 ,
                 ,
                 ,
@@ -6436,7 +6500,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                 },
               ],
               "drawDistance": 187.5,
-              "estimatedItemSize": 104,
+              "estimatedItemSize": 192,
               "getItemLayout": [Function],
               "horizontal": true,
               "keyExtractor": [Function],
@@ -6563,7 +6627,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
               style={
                 {
                   "height": 250,
-                  "width": 416,
+                  "width": 768,
                 }
               }
               windowSize={800}
@@ -6576,7 +6640,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                     "alignItems": "stretch",
                     "flexDirection": "row",
                     "height": 250,
-                    "left": 208,
+                    "left": 384,
                     "position": "absolute",
                     "top": 0,
                   }
@@ -6619,7 +6683,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                           },
                           {
                             "borderRadius": 8,
-                            "height": 228,
+                            "height": 384,
                             "marginVertical": 4,
                           },
                         ]
@@ -6627,42 +6691,27 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                       testID="Offre Un lit sous une rivière de la catégorie Concert,  le 17 novembre 2020, prix 34 €. Possibilité de réserver 2 places."
                     >
                       <View
+                        maxWidth={192}
                         style={
                           [
                             {
                               "flexDirection": "column-reverse",
+                              "gap": 8,
+                              "maxWidth": 192,
                             },
                           ]
                         }
                       >
                         <View
-                          imageWidth={104}
                           style={
                             [
                               {
-                                "marginTop": 8,
-                                "maxWidth": 104,
+                                "gap": 4,
                               },
                             ]
                           }
                         >
                           <Text
-                            numberOfLines={2}
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                          >
-                            Un lit sous une rivière
-                          </Text>
-                          <Text
-                            numberOfLines={1}
                             style={
                               [
                                 {
@@ -6674,25 +6723,63 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                               ]
                             }
                           >
-                            17 novembre 2020
+                            Concert
                           </Text>
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#696A6F",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                            testID="priceIsDuo"
-                          >
-                            34 € - Duo
-                          </Text>
+                          <View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              Un lit sous une rivière
+                            </Text>
+                            <Text
+                              numberOfLines={1}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              17 novembre 2020
+                            </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            >
+                              34 € - Duo
+                            </Text>
+                          </View>
                         </View>
-                        <View>
+                        <View
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
                           <View
                             style={
                               [
@@ -6704,10 +6791,9 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                                     "backgroundColor": "#F1F1F4",
                                   },
                                   {
-                                    "borderTopLeftRadius": 8,
-                                    "borderTopRightRadius": 8,
-                                    "height": 132,
-                                    "width": 104,
+                                    "borderRadius": 8,
+                                    "height": 288,
+                                    "width": 192,
                                   },
                                 ],
                               ]
@@ -6732,55 +6818,6 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                               }
                               testID="tileImage"
                             />
-                          </View>
-                          <View
-                            height={24}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "backgroundColor": "#161617",
-                                  "borderBottomLeftRadius": 8,
-                                  "borderBottomRightRadius": 8,
-                                  "flexDirection": "row",
-                                  "height": 24,
-                                  "width": 104,
-                                },
-                              ]
-                            }
-                            width={104}
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "justifyContent": "center",
-                                    "paddingHorizontal": 2,
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={1}
-                                style={
-                                  [
-                                    {
-                                      "color": "#ffffff",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 16,
-                                    },
-                                  ]
-                                }
-                                testID="categoryImageCaption"
-                              >
-                                Concert
-                              </Text>
-                            </View>
                           </View>
                         </View>
                       </View>
@@ -6863,7 +6900,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                     "alignItems": "stretch",
                     "flexDirection": "row",
                     "height": 250,
-                    "left": 104,
+                    "left": 192,
                     "position": "absolute",
                     "top": 0,
                   }
@@ -6906,7 +6943,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                           },
                           {
                             "borderRadius": 8,
-                            "height": 228,
+                            "height": 384,
                             "marginVertical": 4,
                           },
                         ]
@@ -6914,40 +6951,26 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                       testID="Offre I want something more de la catégorie Concert,   prix 23 €. "
                     >
                       <View
+                        maxWidth={192}
                         style={
                           [
                             {
                               "flexDirection": "column-reverse",
+                              "gap": 8,
+                              "maxWidth": 192,
                             },
                           ]
                         }
                       >
                         <View
-                          imageWidth={104}
                           style={
                             [
                               {
-                                "marginTop": 8,
-                                "maxWidth": 104,
+                                "gap": 4,
                               },
                             ]
                           }
                         >
-                          <Text
-                            numberOfLines={2}
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                          >
-                            I want something more
-                          </Text>
                           <Text
                             style={
                               [
@@ -6959,12 +6982,49 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                                 },
                               ]
                             }
-                            testID="priceIsDuo"
                           >
-                            23 €
+                            Concert
                           </Text>
+                          <View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              I want something more
+                            </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            >
+                              23 €
+                            </Text>
+                          </View>
                         </View>
-                        <View>
+                        <View
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
                           <View
                             style={
                               [
@@ -6976,10 +7036,9 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                                     "backgroundColor": "#F1F1F4",
                                   },
                                   {
-                                    "borderTopLeftRadius": 8,
-                                    "borderTopRightRadius": 8,
-                                    "height": 132,
-                                    "width": 104,
+                                    "borderRadius": 8,
+                                    "height": 288,
+                                    "width": 192,
                                   },
                                 ],
                               ]
@@ -7004,55 +7063,6 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                               }
                               testID="tileImage"
                             />
-                          </View>
-                          <View
-                            height={24}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "backgroundColor": "#161617",
-                                  "borderBottomLeftRadius": 8,
-                                  "borderBottomRightRadius": 8,
-                                  "flexDirection": "row",
-                                  "height": 24,
-                                  "width": 104,
-                                },
-                              ]
-                            }
-                            width={104}
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "justifyContent": "center",
-                                    "paddingHorizontal": 2,
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={1}
-                                style={
-                                  [
-                                    {
-                                      "color": "#ffffff",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 16,
-                                    },
-                                  ]
-                                }
-                                testID="categoryImageCaption"
-                              >
-                                Concert
-                              </Text>
-                            </View>
                           </View>
                         </View>
                       </View>
@@ -7178,7 +7188,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                           },
                           {
                             "borderRadius": 8,
-                            "height": 228,
+                            "height": 384,
                             "marginVertical": 4,
                           },
                         ]
@@ -7186,40 +7196,26 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                       testID="Offre La nuit des temps de la catégorie Livre,   prix 28 €. "
                     >
                       <View
+                        maxWidth={192}
                         style={
                           [
                             {
                               "flexDirection": "column-reverse",
+                              "gap": 8,
+                              "maxWidth": 192,
                             },
                           ]
                         }
                       >
                         <View
-                          imageWidth={104}
                           style={
                             [
                               {
-                                "marginTop": 8,
-                                "maxWidth": 104,
+                                "gap": 4,
                               },
                             ]
                           }
                         >
-                          <Text
-                            numberOfLines={2}
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                          >
-                            La nuit des temps
-                          </Text>
                           <Text
                             style={
                               [
@@ -7231,12 +7227,49 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                                 },
                               ]
                             }
-                            testID="priceIsDuo"
                           >
-                            28 €
+                            Livre
                           </Text>
+                          <View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              La nuit des temps
+                            </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            >
+                              28 €
+                            </Text>
+                          </View>
                         </View>
-                        <View>
+                        <View
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
                           <View
                             style={
                               [
@@ -7248,10 +7281,9 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                                     "backgroundColor": "#F1F1F4",
                                   },
                                   {
-                                    "borderTopLeftRadius": 8,
-                                    "borderTopRightRadius": 8,
-                                    "height": 132,
-                                    "width": 104,
+                                    "borderRadius": 8,
+                                    "height": 288,
+                                    "width": 192,
                                   },
                                 ],
                               ]
@@ -7276,55 +7308,6 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                               }
                               testID="tileImage"
                             />
-                          </View>
-                          <View
-                            height={24}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "backgroundColor": "#161617",
-                                  "borderBottomLeftRadius": 8,
-                                  "borderBottomRightRadius": 8,
-                                  "flexDirection": "row",
-                                  "height": 24,
-                                  "width": 104,
-                                },
-                              ]
-                            }
-                            width={104}
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "justifyContent": "center",
-                                    "paddingHorizontal": 2,
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={1}
-                                style={
-                                  [
-                                    {
-                                      "color": "#ffffff",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 16,
-                                    },
-                                  ]
-                                }
-                                testID="categoryImageCaption"
-                              >
-                                Livre
-                              </Text>
-                            </View>
                           </View>
                         </View>
                       </View>
@@ -7405,7 +7388,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                     "alignItems": "stretch",
                     "flexDirection": "row",
                     "height": 250,
-                    "left": 312,
+                    "left": 576,
                     "position": "absolute",
                     "top": 0,
                   }
@@ -7448,7 +7431,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                           },
                           {
                             "borderRadius": 8,
-                            "height": 228,
+                            "height": 384,
                             "marginVertical": 4,
                           },
                         ]
@@ -7456,40 +7439,26 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                       testID="Offre I want something more de la catégorie Concert,   prix 28 €. "
                     >
                       <View
+                        maxWidth={192}
                         style={
                           [
                             {
                               "flexDirection": "column-reverse",
+                              "gap": 8,
+                              "maxWidth": 192,
                             },
                           ]
                         }
                       >
                         <View
-                          imageWidth={104}
                           style={
                             [
                               {
-                                "marginTop": 8,
-                                "maxWidth": 104,
+                                "gap": 4,
                               },
                             ]
                           }
                         >
-                          <Text
-                            numberOfLines={2}
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                          >
-                            I want something more
-                          </Text>
                           <Text
                             style={
                               [
@@ -7501,12 +7470,49 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                                 },
                               ]
                             }
-                            testID="priceIsDuo"
                           >
-                            28 €
+                            Concert
                           </Text>
+                          <View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              I want something more
+                            </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            >
+                              28 €
+                            </Text>
+                          </View>
                         </View>
-                        <View>
+                        <View
+                          style={
+                            [
+                              {},
+                            ]
+                          }
+                        >
                           <View
                             style={
                               [
@@ -7518,10 +7524,9 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                                     "backgroundColor": "#F1F1F4",
                                   },
                                   {
-                                    "borderTopLeftRadius": 8,
-                                    "borderTopRightRadius": 8,
-                                    "height": 132,
-                                    "width": 104,
+                                    "borderRadius": 8,
+                                    "height": 288,
+                                    "width": 192,
                                   },
                                 ],
                               ]
@@ -7546,55 +7551,6 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                               }
                               testID="tileImage"
                             />
-                          </View>
-                          <View
-                            height={24}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "backgroundColor": "#161617",
-                                  "borderBottomLeftRadius": 8,
-                                  "borderBottomRightRadius": 8,
-                                  "flexDirection": "row",
-                                  "height": 24,
-                                  "width": 104,
-                                },
-                              ]
-                            }
-                            width={104}
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "alignItems": "center",
-                                    "flexBasis": 0,
-                                    "flexGrow": 1,
-                                    "flexShrink": 1,
-                                    "justifyContent": "center",
-                                    "paddingHorizontal": 2,
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                numberOfLines={1}
-                                style={
-                                  [
-                                    {
-                                      "color": "#ffffff",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 16,
-                                    },
-                                  ]
-                                }
-                                testID="categoryImageCaption"
-                              >
-                                Concert
-                              </Text>
-                            </View>
                           </View>
                         </View>
                       </View>
@@ -7668,7 +7624,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                       },
                       {
                         "borderRadius": 8,
-                        "height": 228,
+                        "height": 384,
                         "marginVertical": 4,
                       },
                     ]
@@ -7676,40 +7632,26 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                   testID="Offre I want something more de la catégorie Concert,   prix 23 €. "
                 >
                   <View
+                    maxWidth={192}
                     style={
                       [
                         {
                           "flexDirection": "column-reverse",
+                          "gap": 8,
+                          "maxWidth": 192,
                         },
                       ]
                     }
                   >
                     <View
-                      imageWidth={104}
                       style={
                         [
                           {
-                            "marginTop": 8,
-                            "maxWidth": 104,
+                            "gap": 4,
                           },
                         ]
                       }
                     >
-                      <Text
-                        numberOfLines={2}
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-SemiBold",
-                              "fontSize": 12,
-                              "lineHeight": 16,
-                            },
-                          ]
-                        }
-                      >
-                        I want something more
-                      </Text>
                       <Text
                         style={
                           [
@@ -7721,12 +7663,49 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                             },
                           ]
                         }
-                        testID="priceIsDuo"
                       >
-                        23 €
+                        Concert
                       </Text>
+                      <View>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                              },
+                            ]
+                          }
+                        >
+                          I want something more
+                        </Text>
+                        <Text
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                              },
+                            ]
+                          }
+                          testID="priceIsDuo"
+                        >
+                          23 €
+                        </Text>
+                      </View>
                     </View>
-                    <View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    >
                       <View
                         style={
                           [
@@ -7738,10 +7717,9 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                                 "backgroundColor": "#F1F1F4",
                               },
                               {
-                                "borderTopLeftRadius": 8,
-                                "borderTopRightRadius": 8,
-                                "height": 132,
-                                "width": 104,
+                                "borderRadius": 8,
+                                "height": 288,
+                                "width": 192,
                               },
                             ],
                           ]
@@ -7766,55 +7744,6 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                           }
                           testID="tileImage"
                         />
-                      </View>
-                      <View
-                        height={24}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "#161617",
-                              "borderBottomLeftRadius": 8,
-                              "borderBottomRightRadius": 8,
-                              "flexDirection": "row",
-                              "height": 24,
-                              "width": 104,
-                            },
-                          ]
-                        }
-                        width={104}
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexBasis": 0,
-                                "flexGrow": 1,
-                                "flexShrink": 1,
-                                "justifyContent": "center",
-                                "paddingHorizontal": 2,
-                              },
-                            ]
-                          }
-                        >
-                          <Text
-                            numberOfLines={1}
-                            style={
-                              [
-                                {
-                                  "color": "#ffffff",
-                                  "fontFamily": "Montserrat-SemiBold",
-                                  "fontSize": 12,
-                                  "lineHeight": 16,
-                                },
-                              ]
-                            }
-                            testID="categoryImageCaption"
-                          >
-                            Concert
-                          </Text>
-                        </View>
                       </View>
                     </View>
                   </View>
