@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FlatList, ScrollView, ScrollViewProps, View, ViewStyle } from 'react-native'
+import { FlatList, ScrollView, ScrollViewProps, StyleSheet, View, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -52,7 +52,7 @@ export const SubcategoryButtonList: React.FC<Props> = ({ subcategoryButtonConten
           keyExtractor={(item) => JSON.stringify(item)}
           ItemSeparatorComponent={FlatListLineSpacer}
           numColumns={numColumns}
-          contentContainerStyle={contentContainerStyle}
+          contentContainerStyle={styles.contentContainerStyle}
         />
       </View>
     )
@@ -88,10 +88,12 @@ const FlatListLineSpacer = () => <Spacer.Column numberOfSpaces={4} />
 const GAP = getSpacing(4)
 const PADDING = getSpacing(6)
 
-const contentContainerStyle = {
-  paddingLeft: PADDING,
-  paddingVertical: PADDING,
-}
+const styles = StyleSheet.create({
+  contentContainerStyle: {
+    paddingLeft: PADDING,
+    paddingVertical: PADDING,
+  },
+})
 
 const StyledScrollView = styled(ScrollView).attrs<StyledScrollViewProps>({
   contentContainerStyle: {
