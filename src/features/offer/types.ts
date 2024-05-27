@@ -27,6 +27,7 @@ export interface OfferTileProps {
   searchId?: string
   apiRecoParams?: RecommendationApiParams
   index?: number
+  variant?: 'default' | 'new'
 }
 
 export interface SimilarOffersResponse {
