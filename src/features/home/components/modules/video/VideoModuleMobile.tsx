@@ -4,7 +4,6 @@ import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { AttachedOfferCard } from 'features/home/components/AttachedOfferCard'
 import { BlackCaption } from 'features/home/components/BlackCaption'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
@@ -13,7 +12,6 @@ import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/
 import { VideoModuleProps } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useCategoryIdMapping } from 'libs/subcategories'
 import { theme } from 'theme'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
@@ -42,6 +40,9 @@ const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER =
 const NEW_PLAYER_SIZE = getSpacing(24)
 
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
+  // PENSER A SUPPRIMER CETTE LIGNE
+  props = { ...props, isMultiOffer: false }
+
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
@@ -51,11 +52,6 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
   const colorCategoryBackgroundHeightUniqueOffer =
     THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(43)
 
-  const mapping = useCategoryIdMapping()
-  const categoryId = mapping[props.offers[0].offer.subcategoryId]
-
-  console.log({ offers: props.offers })
-  /// https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/DU_1
   return (
     <Container>
       <StyledTitleContainer>
@@ -73,7 +69,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
               ? newGradientColorsMapping[props.color]
               : gradientColorsMapping[props.color]
           }
-          isMultiOffer={false}
+          isMultiOffer={props.isMultiOffer}
         />
         <VideoOfferContainer enableMultiVideoModule={enableMultiVideoModule}>
           <StyledTouchableHighlight
@@ -100,19 +96,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             </Thumbnail>
           </StyledTouchableHighlight>
           <Spacer.Column numberOfSpaces={2} />
-          {false ? null : enableMultiVideoModule ? (
-            <AttachedOfferCard
-              title={props.offers[0]?.offer.name ?? ''}
-              categoryId={categoryId}
-              imageUrl={props.offers[0]?.offer.thumbUrl}
-              showImage
-              tag="string"
-              withRightArrow
-              geoloc={props.offers[0]?._geoloc}
-              date={props.offers[0]?.offer.dates}
-              price={props.offers[0]?.offer.prices[0]}
-            />
-          ) : (
+          {props.isMultiOffer ? null : (
             <StyledVideoMonoOfferTile
               // @ts-expect-error: because of noUncheckedIndexedAccess
               offer={props.offers[0]}
@@ -123,7 +107,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           )}
         </VideoOfferContainer>
       </View>
-      {false ? (
+      {props.isMultiOffer ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
           <VideoMultiOfferPlaylist
@@ -133,7 +117,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           />
         </React.Fragment>
       ) : null}
-      {false ? null : <Spacer.Column numberOfSpaces={6} />}
+      {props.isMultiOffer ? null : <Spacer.Column numberOfSpaces={6} />}
     </Container>
   )
 }

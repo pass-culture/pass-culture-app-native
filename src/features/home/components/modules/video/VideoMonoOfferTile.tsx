@@ -3,9 +3,12 @@ import { StyleProp, ViewStyle } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { AttachedOfferCard } from 'features/home/components/AttachedOfferCard'
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -31,6 +34,9 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   analyticsParams,
   style,
 }) => {
+  const enableMultiVideoModule = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
+  )
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const labelMapping = useCategoryHomeLabelMapping()
   const mapping = useCategoryIdMapping()
@@ -45,26 +51,43 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
 
   const categoryId = mapping[offer.offer.subcategoryId]
 
-  return (
-    <OfferInsert
-      offerHeight={offerHeight}
-      style={style}
-      navigateTo={{
-        screen: 'Offer',
-        params: { id: +offer.objectID },
-      }}
-      onBeforeNavigate={() => {
-        hideModal()
-        prePopulateOffer({
-          ...offer.offer,
-          offerId: +offer.objectID,
-          categoryId,
-        })
-        analytics.logConsultOffer({
-          offerId: +offer.objectID,
-          ...analyticsParams,
-        })
-      }}>
+  const containerProps = {
+    offerHeight,
+    style,
+    navigateTo: {
+      screen: 'Offer',
+      params: { id: +offer.objectID },
+    },
+    onBeforeNavigate: () => {
+      hideModal()
+      prePopulateOffer({
+        ...offer.offer,
+        offerId: +offer.objectID,
+        categoryId,
+      })
+      analytics.logConsultOffer({
+        offerId: +offer.objectID,
+        ...analyticsParams,
+      })
+    },
+  }
+
+  return enableMultiVideoModule ? (
+    <Container {...containerProps}>
+      <AttachedOfferCard
+        title={offer.offer.name ?? ''}
+        categoryId={categoryId}
+        subcategoryId={offer.offer.subcategoryId}
+        imageUrl={offer.offer.thumbUrl}
+        showImage
+        withRightArrow
+        geoloc={offer._geoloc}
+        date={displayDate}
+        price={displayPrice}
+      />
+    </Container>
+  ) : (
+    <OfferInsert {...containerProps}>
       <Row>
         <OfferImageContainer>
           <OfferImage
@@ -86,6 +109,8 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
     </OfferInsert>
   )
 }
+
+const Container = styled(InternalTouchableLink)({})
 
 const OfferInsert = styled(InternalTouchableLink)<{
   offerHeight: number
