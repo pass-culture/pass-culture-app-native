@@ -9,7 +9,7 @@ import {
   highlightHeaderFixture,
 } from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
-import { ThematicHeaderType } from 'features/home/types'
+import { Color, ThematicHeaderType } from 'features/home/types'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
@@ -75,6 +75,7 @@ describe('ThematicHome', () => {
       subtitle: 'HeaderSubtitle',
       type: ThematicHeaderType.Category,
       imageUrl: 'url.com/image',
+      color: Color.Lilac,
     },
     tags: [],
   })
@@ -139,7 +140,7 @@ describe('ThematicHome', () => {
       renderThematicHome()
 
       expect(await screen.findAllByText('Bloc temps fort')).not.toHaveLength(0)
-      expect(screen.queryByTestId('animated-thematic-header')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('animated-thematic-header-v1')).not.toBeOnTheScreen()
     })
 
     it('should show category header when provided', async () => {
@@ -153,6 +154,7 @@ describe('ThematicHome', () => {
             'https://images.ctfassets.net/2bg01iqy0isv/5PmtxKY77rq0nYpkCFCbrg/4daa8767efa35827f22bb86e5fc65094/photo-lion_noir-et-blanc_laurent-breillat-610x610.jpeg',
           subtitle: 'Un sous-titre',
           title: 'Catégorie cinéma',
+          color: Color.Lilac,
         },
       })
 

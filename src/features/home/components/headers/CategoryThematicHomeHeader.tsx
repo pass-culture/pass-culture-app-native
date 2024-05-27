@@ -20,7 +20,7 @@ const AppV1Header: FunctionComponent<CategoryThematicHeaderProps> = ({
   imageUrl,
 }) => {
   return (
-    <ImageBackground source={{ uri: imageUrl }}>
+    <ImageBackground source={{ uri: imageUrl }} testID="CategoryThematicHomeHeaderV1">
       <TextContainer>
         <BlackGradient height={HEADER_BLACK_BACKGROUND_HEIGHT} />
         <BlackBackground>
@@ -43,7 +43,10 @@ type AppV2HeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'>
 
 const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({ title, subtitle, color }) => {
   return (
-    <ImageBackground source={color ? gradientImagesMapping[color] : null} resizeMode="stretch">
+    <ImageBackground
+      source={color ? gradientImagesMapping[color] : null}
+      resizeMode="stretch"
+      testID="CategoryThematicHomeHeaderV2">
       <TextContainer>
         <Background>
           <TitleContainer>

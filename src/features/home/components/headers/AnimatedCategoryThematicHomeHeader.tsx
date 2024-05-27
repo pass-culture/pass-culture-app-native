@@ -22,7 +22,7 @@ const AppV1Header: FunctionComponent<CategoryThematicHeaderProps> = ({
   gradientTranslation,
 }) => {
   return (
-    <Container testID="animated-thematic-header">
+    <Container testID="animated-thematic-header-v1">
       <AnimatedImage source={{ uri: imageUrl }} height={imageAnimatedHeight} />
       <TextContainer>
         <AnimatedBlackGradient
@@ -53,7 +53,7 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
   gradientTranslation,
 }) => {
   return (
-    <Container testID="animated-thematic-header">
+    <Container testID="animated-thematic-header-v2">
       <AnimatedImage
         source={color ? gradientImagesMapping[color] : null}
         height={imageAnimatedHeight}
