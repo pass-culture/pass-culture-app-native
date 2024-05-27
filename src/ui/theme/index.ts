@@ -16,4 +16,4 @@ export {
   RATIO_HOME_IMAGE,
   RATIO_EXCLU,
 } from 'ui/theme/grid'
-export { ColorsEnum, ACTIVE_OPACITY, UniqueColors } from './colors'
+export { ColorsEnum, UniqueColors } from './colors'

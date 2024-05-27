@@ -1,4 +1,4 @@
-// eslint-disable-next-line no--imports
+// eslint-disable-next-line no-restricted-imports
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
@@ -76,9 +76,8 @@ describe('<SSOButton />', () => {
     renderSSOButton()
     await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
 
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-      'Can’t login via Google: GoogleSignIn Error',
-      { level: 'info' }
+    expect(eventMonitoring.logInfo).toHaveBeenCalledWith(
+      'Can’t login via Google: GoogleSignIn Error'
     )
   })
 
