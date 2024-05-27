@@ -5,9 +5,7 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { GeoCoordinates, GeolocationError, GeolocPermissionState, Position } from 'libs/location'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-jest.mock('features/favorites/context/FavoritesWrapper', () =>
-  jest.requireActual('features/favorites/context/FavoritesWrapper')
-)
+jest.unmock('features/favorites/context/FavoritesWrapper')
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates
 const mockPermissionState = GeolocPermissionState.GRANTED

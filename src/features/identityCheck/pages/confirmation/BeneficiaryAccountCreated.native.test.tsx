@@ -3,6 +3,7 @@ import React from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
+import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { beneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { BatchUser } from 'libs/react-native-batch'
@@ -12,10 +13,9 @@ jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 const mockShowAppModal = jest.fn()
-jest.mock('features/share/context/ShareAppWrapper', () => ({
-  ...jest.requireActual('features/share/context/ShareAppWrapper'),
-  useShareAppContext: () => ({ showShareAppModal: mockShowAppModal }),
-}))
+jest
+  .spyOn(ShareAppWrapperModule, 'useShareAppContext')
+  .mockReturnValue({ showShareAppModal: mockShowAppModal })
 
 const defaultContext = {
   isLoggedIn: true,

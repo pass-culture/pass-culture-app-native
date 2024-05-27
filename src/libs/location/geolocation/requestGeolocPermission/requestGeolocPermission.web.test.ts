@@ -2,9 +2,7 @@ import { GeolocPermissionState } from '../enums'
 
 import { requestGeolocPermission } from './requestGeolocPermission'
 
-jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission', () =>
-  jest.requireActual('./requestGeolocPermission')
-)
+jest.unmock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 
 let mockQuery = jest.mocked(navigator.permissions.query)
 const mockGetCurrentPosition = jest.mocked(navigator.geolocation.getCurrentPosition)

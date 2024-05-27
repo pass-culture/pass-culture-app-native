@@ -4,6 +4,7 @@ import { act } from 'react-test-renderer'
 import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
+import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
@@ -15,10 +16,9 @@ jest.mock('features/culturalSurvey/helpers/useGetNextQuestion')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 
 const mockShowAppModal = jest.fn()
-jest.mock('features/share/context/ShareAppWrapper', () => ({
-  ...jest.requireActual('features/share/context/ShareAppWrapper'),
-  useShareAppContext: () => ({ showShareAppModal: mockShowAppModal }),
-}))
+jest
+  .spyOn(ShareAppWrapperModule, 'useShareAppContext')
+  .mockReturnValue({ showShareAppModal: mockShowAppModal })
 
 const SHARE_APP_MODAL_STORAGE_KEY = 'has_seen_share_app_modal'
 

@@ -4,9 +4,7 @@ import { GeolocPermissionState } from '../enums'
 
 import { requestGeolocPermission } from './requestGeolocPermission.android'
 
-jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission', () =>
-  jest.requireActual('./requestGeolocPermission')
-)
+jest.unmock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
 
 describe('requestGeolocPermission android', () => {
   beforeAll(() => (Platform.OS = 'android'))

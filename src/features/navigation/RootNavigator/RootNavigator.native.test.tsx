@@ -15,7 +15,7 @@ const mockedUseMustUpdateApp = jest.mocked(useMustUpdateApp)
 
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/forceUpdate/helpers/useMustUpdateApp')
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
+jest.unmock('@react-navigation/native')
 
 const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: true })
 jest.mock('features/auth/context/AuthContext', () => ({
