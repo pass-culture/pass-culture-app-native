@@ -299,6 +299,10 @@ export const theme = {
         iconColor: ColorsEnum.GREY_DARK,
         textColor: ColorsEnum.GREY_DARK,
       },
+      primaryBlack: {
+        iconColor: ColorsEnum.BLACK,
+        textColor: ColorsEnum.BLACK,
+      },
       secondary: {
         borderColor: ColorsEnum.GREY_DARK,
         textColor: ColorsEnum.GREY_DARK,
@@ -374,6 +378,16 @@ export const theme = {
       iconColor: ColorsEnum.PRIMARY,
       iconSize: iconSizes.small,
       textColor: ColorsEnum.PRIMARY,
+      backgroundColor: ColorsEnum.WHITE,
+      outlineColor: ColorsEnum.WHITE,
+    },
+    primaryBlack: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(2),
+      loadingIconColor: ColorsEnum.GREY_LIGHT,
+      iconColor: ColorsEnum.BLACK,
+      iconSize: iconSizes.small,
+      textColor: ColorsEnum.BLACK,
       backgroundColor: ColorsEnum.WHITE,
       outlineColor: ColorsEnum.WHITE,
     },
