@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -54,15 +54,16 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const { setSelectedVenue, removeSelectedVenue } = useSelectedVenueActions()
 
   const venues = useGetVenuesInRegion(lastRegionSearched, selectedVenue, initialVenues)
-  const filteredVenues = venueTypeCode
-    ? venues.filter((venue) => venue.venue_type === venueTypeCode)
-    : venues
+  const filteredVenues = useMemo(
+    () => (venueTypeCode ? venues.filter((venue) => venue.venue_type === venueTypeCode) : venues),
+    [venues, venueTypeCode]
+  )
 
   useEffect(() => {
-    if (venues.length > 1) {
-      zoomOutIfMapEmpty({ mapViewRef, venues })
+    if (filteredVenues.length > 1) {
+      zoomOutIfMapEmpty({ mapViewRef, venues: filteredVenues })
     }
-  }, [venues])
+  }, [filteredVenues])
 
   const distanceToVenue = useDistance({
     lat: selectedVenue?._geoloc.lat,
