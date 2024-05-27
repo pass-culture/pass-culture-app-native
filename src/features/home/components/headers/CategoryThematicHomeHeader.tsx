@@ -5,13 +5,16 @@ import { BlackGradient } from 'features/home/components/BlackGradient'
 import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constants'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
 const HEADER_HEIGHT = getSpacing(52)
 
 type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 
-export const CategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({
+const AppV1Header: FunctionComponent<CategoryThematicHeaderProps> = ({
   title,
   subtitle,
   imageUrl,
@@ -33,6 +36,42 @@ export const CategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeade
         </BlackBackground>
       </TextContainer>
     </ImageBackground>
+  )
+}
+
+type AppV2HeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'>
+
+const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({ title, subtitle, color }) => {
+  return (
+    <ImageBackground source={color ? gradientImagesMapping[color] : null} resizeMode="stretch">
+      <TextContainer>
+        <Background>
+          <TitleContainer>
+            <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
+            {subtitle ? (
+              <React.Fragment>
+                <Subtitle numberOfLines={2}>{subtitle}</Subtitle>
+                <Spacer.Column numberOfSpaces={1} />
+              </React.Fragment>
+            ) : null}
+          </TitleContainer>
+        </Background>
+      </TextContainer>
+    </ImageBackground>
+  )
+}
+
+export const CategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({
+  title,
+  subtitle,
+  imageUrl,
+  color,
+}) => {
+  const enableAppV2Header = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER)
+  return enableAppV2Header ? (
+    <AppV2Header title={title} subtitle={subtitle} color={color} />
+  ) : (
+    <AppV1Header title={title} subtitle={subtitle} imageUrl={imageUrl} color={color} />
   )
 }
 
@@ -64,3 +103,7 @@ const TitleContainer = styled.View(({ theme }) => ({
     parseInt(theme.typography.title4.lineHeight),
   overflow: 'hidden',
 }))
+
+const Background = styled(BlackBackground)({
+  backgroundColor: 'rgba(0, 0, 0, 0)',
+})
