@@ -14,8 +14,6 @@ jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('libs/jwt')
 
-jest.unmock('react-query')
-
 describe('useRemoveFavorite hook', () => {
   mockUseAuthContext.mockReturnValue({
     isLoggedIn: true,
