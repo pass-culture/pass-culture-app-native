@@ -5,7 +5,10 @@ import { useWindowDimensions } from 'react-native'
 import YouTube, { YouTubeProps } from 'react-youtube'
 import styled, { useTheme } from 'styled-components/native'
 
-import { getVideoPlayerDimensions } from 'features/home/components/helpers/getVideoPlayerDimensions'
+import {
+  getVideoPlayerDimensions,
+  RATIO169,
+} from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { YouTubeEvent } from 'features/home/components/modules/video/types'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
@@ -37,7 +40,11 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [showErrorView, setShowErrorView] = React.useState(false)
   const { isDesktopViewport } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
-  const { playerHeight, playerWidth } = getVideoPlayerDimensions(isDesktopViewport, windowWidth)
+  const { playerHeight, playerWidth } = getVideoPlayerDimensions(
+    isDesktopViewport,
+    windowWidth,
+    RATIO169
+  )
 
   const playerRef = useRef<YouTube>(null)
 

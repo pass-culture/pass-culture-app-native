@@ -1,4 +1,7 @@
-import { getVideoPlayerDimensions } from 'features/home/components/helpers/getVideoPlayerDimensions'
+import {
+  getVideoPlayerDimensions,
+  RATIO169,
+} from 'features/home/components/helpers/getVideoPlayerDimensions'
 
 const mobileWidthMock = 390
 const desktopWidthMock = 1512
@@ -8,7 +11,7 @@ describe('getVideoPlayerDimensions', () => {
     const isDesktopViewport = false
     const windowWidth = mobileWidthMock
 
-    const dimensions = getVideoPlayerDimensions(isDesktopViewport, windowWidth)
+    const dimensions = getVideoPlayerDimensions(isDesktopViewport, windowWidth, RATIO169)
 
     expect(dimensions).toEqual({ playerHeight: 219.375, playerWidth: 390 })
   })
@@ -17,7 +20,7 @@ describe('getVideoPlayerDimensions', () => {
     const isDesktopViewport = true
     const windowWidth = desktopWidthMock
 
-    const dimensions = getVideoPlayerDimensions(isDesktopViewport, windowWidth)
+    const dimensions = getVideoPlayerDimensions(isDesktopViewport, windowWidth, RATIO169)
 
     expect(dimensions).toEqual({ playerHeight: 292.5, playerWidth: 520 })
   })
