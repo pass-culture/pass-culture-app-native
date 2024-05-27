@@ -83,7 +83,7 @@ describe('<VenueListModule />', () => {
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should trigger log ConsultVenueMap', async () => {
+  it('should trigger log ConsultVenueMap when pressing on venue list title', async () => {
     render(<VenueListModule venues={venuesSearchFixture.hits} />)
 
     fireEvent.press(screen.getByText('LES LIEUX CULTURELS À PROXIMITÉ'))
@@ -93,7 +93,7 @@ describe('<VenueListModule />', () => {
     })
   })
 
-  it('should trigger log ConsultVenue', async () => {
+  it('should trigger log ConsultVenue when pressing on venue list item', async () => {
     render(<VenueListModule venues={venuesSearchFixture.hits} />)
 
     fireEvent.press(screen.getByText('Le Petit Rintintin 1'))
