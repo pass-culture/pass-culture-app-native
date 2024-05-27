@@ -29,6 +29,7 @@ export type Referrals =
   | 'similar_offer'
   | 'venue'
   | 'venueMap'
+  | 'venueList'
   | 'video'
   | 'videoModal'
 

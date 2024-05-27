@@ -3,10 +3,11 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueListModule } from 'features/home/components/modules/VenueListModule'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
+import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
@@ -41,20 +42,24 @@ describe('<VenueListModule />', () => {
     expect(screen.getByText('LES LIEUX CULTURELS À PROXIMITÉ')).toBeOnTheScreen()
   })
 
-  it('should redirect to venue map when pressing on venue list title', () => {
+  it('should redirect to venue map when pressing on venue list title', async () => {
     render(<VenueListModule venues={venuesSearchFixture.hits} />)
 
     fireEvent.press(screen.getByText('LES LIEUX CULTURELS À PROXIMITÉ'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap', undefined)
+    await waitFor(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap', undefined)
+    })
   })
 
-  it('should redirect to target venue when pressing on it', () => {
+  it('should redirect to target venue when pressing on it', async () => {
     render(<VenueListModule venues={venuesSearchFixture.hits} />)
 
     fireEvent.press(screen.getByText('Le Petit Rintintin 1'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'Venue', { id: 5543 })
+    await waitFor(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'Venue', { id: 5543 })
+    })
   })
 
   it('should open venue map location modal when pressing on venue list module when user is not located', () => {
@@ -76,5 +81,28 @@ describe('<VenueListModule />', () => {
     fireEvent.press(screen.getByText('LES LIEUX CULTURELS À PROXIMITÉ'))
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should trigger log ConsultVenueMap', async () => {
+    render(<VenueListModule venues={venuesSearchFixture.hits} />)
+
+    fireEvent.press(screen.getByText('LES LIEUX CULTURELS À PROXIMITÉ'))
+
+    await waitFor(() => {
+      expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'venueList' })
+    })
+  })
+
+  it('should trigger log ConsultVenue', async () => {
+    render(<VenueListModule venues={venuesSearchFixture.hits} />)
+
+    fireEvent.press(screen.getByText('Le Petit Rintintin 1'))
+
+    await waitFor(() => {
+      expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
+        venueId: 5543,
+        from: 'venueList',
+      })
+    })
   })
 })
