@@ -1,5 +1,4 @@
 import React from 'react'
-// eslint-disable-next-line no-restricted-imports
 
 import { getClusterImage } from 'features/venueMap/components/VenueMapCluster/getClusterImage'
 import { Marker } from 'libs/maps/maps'

@@ -7,9 +7,7 @@ import { useWhiteStatusBar } from 'libs/hooks/useWhiteStatusBar'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { CloseButton } from 'ui/components/headers/CloseButton'
-import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { getSpacing, ColorsEnum } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 interface Props {

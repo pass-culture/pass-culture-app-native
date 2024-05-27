@@ -3,9 +3,7 @@ import styled from 'styled-components/native'
 
 import { LocationPointerWithBorder } from 'ui/svg/icons/LocationPointerWithBorder'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum, getSpacing } from 'ui/theme'
 
 export const VenueTypeLocationIcon = ({
   VenueTypeIcon,

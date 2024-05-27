@@ -4,9 +4,7 @@ import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { ImagePlaceholderVenue } from 'ui/svg/ImagePlaceholderVenue'
-import { LENGTH_M } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { LENGTH_M, ColorsEnum } from 'ui/theme'
 
 interface ImagePlaceholderProps {
   Icon: React.FC<AccessibleIcon>

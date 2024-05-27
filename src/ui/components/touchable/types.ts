@@ -1,7 +1,6 @@
 import { TouchableOpacityProps } from 'react-native'
 
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 export type TouchableProps = {
   type?: string

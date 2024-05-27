@@ -1,7 +1,6 @@
 import styled from 'styled-components/native'
 
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 const Horizontal = styled.View<{ color?: ColorsEnum }>(({ color, theme }) => ({
   width: '100%',

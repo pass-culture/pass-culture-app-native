@@ -3,9 +3,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Typo, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { getSpacing, Typo, Spacer, ColorsEnum } from 'ui/theme'
 
 type InputRuleType = 'Valid' | 'Error' | 'Neutral'
 

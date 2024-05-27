@@ -3,8 +3,7 @@ import { Path } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 const ratio = 309 / 50
 const viewBox = '0 0 309 50'

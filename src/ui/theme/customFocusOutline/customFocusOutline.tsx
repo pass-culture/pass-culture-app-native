@@ -3,8 +3,7 @@ import { isSafari, browserVersion } from 'react-device-detect'
 import { Platform } from 'react-native'
 
 import { theme } from 'theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 /*
  * The ':focus-visible' pseudo-class support starting with Safari 15.4 (https://caniuse.com/css-focus-visible)

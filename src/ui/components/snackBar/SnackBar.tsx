@@ -9,9 +9,7 @@ import { SnackBarProgressBar } from 'ui/components/snackBar/SnackBarProgressBar'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
 
 export type SnackBarProps = {
   visible: boolean

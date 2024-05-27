@@ -1,8 +1,7 @@
 import colorAlpha from 'color-alpha'
 import { Platform } from 'react-native'
 
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 type InputShadow = {
   shadowOffset: {

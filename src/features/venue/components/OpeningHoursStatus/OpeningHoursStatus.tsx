@@ -4,7 +4,6 @@ import styled, { DefaultTheme } from 'styled-components/native'
 import { OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
 
 import { getOpeningHoursStatus } from './getOpeningHoursStatus'
 

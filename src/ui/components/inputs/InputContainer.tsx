@@ -2,9 +2,7 @@ import React from 'react'
 import { ViewStyle, View } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
-import { getSpacing, padding } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { getSpacing, padding, ColorsEnum } from 'ui/theme'
 
 type Props = {
   isError?: boolean

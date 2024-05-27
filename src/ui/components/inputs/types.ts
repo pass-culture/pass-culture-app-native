@@ -3,8 +3,7 @@ import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 
 import { AppThemeType } from 'theme'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 type InputProps = {
   label?: string
