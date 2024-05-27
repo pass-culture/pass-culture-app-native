@@ -176,6 +176,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION }, { offerId }),
   logConnectWithEduconnectClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.CONNECT_WITH_EDUCONNECT_CLICKED }),
+  logConnectionInfo: (params: { type: string; generation?: string | null }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONNECTION_INFO }, params),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES }, params),
   logConsultApplicationProcessingModal: (offerId: number) =>
