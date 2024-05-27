@@ -15,17 +15,15 @@ interface Props {
 
 export const EmptyHeader = ({ onGoBack }: Props) => {
   const { top } = useCustomSafeInsets()
-  const { canGoBack } = useGoBack(...homeNavConfig)
+  const { goBack } = useGoBack(...homeNavConfig)
   return (
     <React.Fragment>
       <TopSpacer top={top} />
       <HeaderContainer>
         <Spacer.TopScreen />
-        {canGoBack() ? (
-          <GoBackContainer>
-            <BackButton onGoBack={onGoBack} />
-          </GoBackContainer>
-        ) : undefined}
+        <GoBackContainer>
+          <BackButton onGoBack={onGoBack ?? goBack} />
+        </GoBackContainer>
       </HeaderContainer>
     </React.Fragment>
   )
