@@ -3,8 +3,7 @@ import { GestureResponderEvent, TouchableOpacityProps } from 'react-native'
 
 import { UrlParamsProps } from 'features/navigation/helpers/openUrl'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 export type InternalNavigationProps = {
   enableNavigate?: boolean // It is used by offline mode to prevent navigation

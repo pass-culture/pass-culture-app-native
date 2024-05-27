@@ -3,9 +3,7 @@ import React, { memo } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { getSpacing, ColorsEnum } from 'ui/theme'
 
 interface CreditProgressBarProps {
   progress: number

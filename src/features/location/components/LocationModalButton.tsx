@@ -4,9 +4,7 @@ import styled from 'styled-components/native'
 import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 interface LocationModalButtonProps {
   icon: FunctionComponent<AccessibleIcon>

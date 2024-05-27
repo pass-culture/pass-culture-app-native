@@ -9,9 +9,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Connect } from 'ui/svg/icons/Connect'
 import { Profile } from 'ui/svg/icons/Profile'
-import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 type LoginProps = {
   type: 'login'

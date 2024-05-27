@@ -2,8 +2,7 @@ import React, { useEffect, memo } from 'react'
 import { Animated, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 import { SnackBarProgressBarProps } from './SnackBarProgressBar.types'
 

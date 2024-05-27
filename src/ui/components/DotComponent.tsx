@@ -3,9 +3,7 @@ import { SwiperProps } from 'react-native-web-swiper'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { Dot as DotIcon } from 'ui/svg/icons/Dot'
-import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { getSpacing, ColorsEnum } from 'ui/theme'
 
 function getDotColors(
   theme: DefaultTheme,

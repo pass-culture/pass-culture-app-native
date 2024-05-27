@@ -8,8 +8,7 @@ import {
 } from 'react-native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 export interface TouchableOpacityButtonProps {
   buttonHeight: 'extraSmall' | 'small' | 'tall'

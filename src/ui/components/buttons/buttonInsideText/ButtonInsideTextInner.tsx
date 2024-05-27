@@ -3,9 +3,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { getSpacing, Spacer, ColorsEnum } from 'ui/theme'
 
 type Props = {
   wording: string

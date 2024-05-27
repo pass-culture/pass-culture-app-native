@@ -17,8 +17,7 @@ import { OnlineEvents } from 'ui/svg/icons/categories/OnlineEvents'
 import { Shows } from 'ui/svg/icons/categories/Shows'
 import { YouthCards } from 'ui/svg/icons/categories/YouthCards'
 import { AccessibleIcon, AccessibleBicolorIcon } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 export enum DATE_FILTER_OPTIONS {

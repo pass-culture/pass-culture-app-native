@@ -2,8 +2,7 @@ import React from 'react'
 
 import { OnboardingCreditBlockTitle } from 'features/tutorial/components/onboarding/OnboardingCreditBlockTitle'
 import { render, screen } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme'
 
 describe('CreditBlockTitle', () => {
   it('should return correct text for expired credit', () => {

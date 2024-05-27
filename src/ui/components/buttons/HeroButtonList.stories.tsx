@@ -7,9 +7,7 @@ import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { Emoji } from 'ui/components/Emoji'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { Typo, ColorsEnum } from 'ui/theme'
 import { iconSizes } from 'ui/theme/iconSizes'
 
 const meta: ComponentMeta<typeof HeroButtonList> = {
