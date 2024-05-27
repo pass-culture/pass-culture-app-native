@@ -4,9 +4,9 @@ import { FeatureFlagDocument, FeatureFlagStore } from 'libs/firebase/firestore/f
 import { RemoteStoreCollections } from 'libs/firebase/firestore/types'
 import { captureMonitoringError } from 'libs/monitoring'
 
-export const getAllFeatureFlags = (): Promise<FeatureFlagDocument> | null => {
+export const getAllFeatureFlags = async (): Promise<FeatureFlagDocument | null> => {
   try {
-    return firestoreRemoteStore
+    return await firestoreRemoteStore
       .collection<FeatureFlagStore>(RemoteStoreCollections.FEATURE_FLAGS)
       .doc(env.ENV)
       .get()
