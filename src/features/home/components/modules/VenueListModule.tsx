@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { VenueHit } from 'libs/algolia/types'
+import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -31,12 +32,18 @@ type HeaderProps = {
 const ListHeaderComponent: FunctionComponent<HeaderProps> = ({ onPress }) => {
   const focusProps = useHandleFocus()
 
+  const handleOnBeforeNavigate = () => {
+    analytics.logConsultVenueMap({ from: 'venueList' })
+  }
+
   const getComponentAndProps = () => {
     if (isWeb) {
       return { Component: StyledView, props: {} }
     } else {
       const Component = onPress ? StyledTouchable : StyledInternalTouchableLink
-      const touchableProps = onPress ? { onPress } : { navigateTo: { screen: 'VenueMap' } }
+      const touchableProps = onPress
+        ? { onPress }
+        : { navigateTo: { screen: 'VenueMap' }, onBeforeNavigate: handleOnBeforeNavigate }
       return { Component, props: touchableProps }
     }
   }
@@ -57,8 +64,18 @@ const ListHeaderComponent: FunctionComponent<HeaderProps> = ({ onPress }) => {
 const renderItem = ({ item }: { item: VenueHit }, userLocation: Position) => {
   const distance = formatDistance({ lat: item.latitude, lng: item.longitude }, userLocation)
   const address = [item.city, item.postalCode].filter(Boolean).join(', ')
+
+  const handlePressVenue = () => {
+    analytics.logConsultVenue({
+      venueId: item.id,
+      from: 'venueList',
+    })
+  }
+
   return (
-    <InternalTouchableLink navigateTo={{ screen: 'Venue', params: { id: item.id } }}>
+    <InternalTouchableLink
+      navigateTo={{ screen: 'Venue', params: { id: item.id } }}
+      onBeforeNavigate={handlePressVenue}>
       <VenuePreview
         address={address}
         venueName={item.name}
