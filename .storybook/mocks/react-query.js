@@ -24,3 +24,9 @@ export function useQueryDecorator(story, { parameters }) {
   }
   return story()
 }
+
+export const useQueryClient = () => {
+    return {
+        setQueryData: () => {}
+    }
+}
