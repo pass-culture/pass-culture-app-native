@@ -57,6 +57,7 @@ export type CategoryThematicHeader = {
   imageUrl: string
   gradientTranslation?: Animated.AnimatedInterpolation<string | number>
   imageAnimatedHeight?: Animated.AnimatedInterpolation<string | number>
+  color: Color
 }
 
 export type ThematicHeader =

@@ -45,6 +45,7 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
       title: thematicHeaderFields.displayedTitle,
       subtitle: thematicHeaderFields.displayedSubtitle,
       imageUrl: buildImageUrl(thematicHeaderFields.image.fields.file.url),
+      color: thematicHeaderFields.color,
     }
     return categoryThematicHeader
   }
