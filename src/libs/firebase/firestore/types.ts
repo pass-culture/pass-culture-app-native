@@ -19,6 +19,7 @@ export enum RemoteStoreFeatureFlags {
   DISABLE_OLD_CHANGE_EMAIL = 'disableOldChangeEmail',
   FAKE_DOOR_ARTIST = 'fakeDoorArtist',
   WIP_APP_V2_LOCATION_WIDGET = 'wipAppV2LocationWidget',
+  WIP_APP_V2_SEARCH_LANDING_HEADER = 'wipAppV2SearchLandingHeader',
   WIP_APP_V2_SYSTEM_BLOCK = 'wipAppV2SystemBlock',
   WIP_APP_V2_TAB_BAR = 'wipAppV2TabBar',
   WIP_APP_V2_VENUE_LIST = 'wipAppV2VenueList',
