@@ -181,7 +181,6 @@ exports[`CategoryListModule should render properly when enableAppV2CategoryBlock
                       4290271489,
                     ]
                   }
-                  enableAppV2CategoryBlock={false}
                   endPoint={
                     {
                       "x": 0,
@@ -295,7 +294,6 @@ exports[`CategoryListModule should render properly when enableAppV2CategoryBlock
                       4290777969,
                     ]
                   }
-                  enableAppV2CategoryBlock={false}
                   endPoint={
                     {
                       "x": 0,
@@ -423,7 +421,6 @@ exports[`CategoryListModule should render properly when enableAppV2CategoryBlock
                       4279141492,
                     ]
                   }
-                  enableAppV2CategoryBlock={false}
                   endPoint={
                     {
                       "x": 0,
@@ -537,7 +534,6 @@ exports[`CategoryListModule should render properly when enableAppV2CategoryBlock
                       4286789609,
                     ]
                   }
-                  enableAppV2CategoryBlock={false}
                   endPoint={
                     {
                       "x": 0,
