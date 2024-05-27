@@ -3,8 +3,9 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Touchable } from 'ui/components/touchable/Touchable'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   LeftIcon: ReactElement
@@ -25,9 +26,8 @@ export const SystemBanner: FunctionComponent<Props> = ({
     <Touchable onPress={onPress} accessibilityLabel={accessibilityLabel}>
       <Container testID="systemBanner">
         {LeftIcon ? <IconContainer>{LeftIcon}</IconContainer> : null}
-        <DescriptionContainer>
+        <DescriptionContainer gap={1}>
           <Typo.ButtonText>{title}</Typo.ButtonText>
-          <Spacer.Column numberOfSpaces={1} />
           <Typo.Body numberOfLines={2}>{subtitle}</Typo.Body>
         </DescriptionContainer>
         <View>
@@ -54,7 +54,7 @@ const IconContainer = styled.View({
   marginRight: getSpacing(4),
 })
 
-const DescriptionContainer = styled.View({
+const DescriptionContainer = styled(ViewGap)({
   flexShrink: 1,
   flexGrow: 1,
   marginRight: getSpacing(4),

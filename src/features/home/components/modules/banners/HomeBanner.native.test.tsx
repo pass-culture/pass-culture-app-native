@@ -11,12 +11,12 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 describe('<HomeBanner/>', () => {
   describe('When wipAppV2SystemBlock feature flag deactivated', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(false)
+    beforeAll(() => {
+      useFeatureFlagSpy.mockReturnValue(false)
     })
 
     it('should display SignupBanner when user is not logged in', async () => {
@@ -95,8 +95,8 @@ describe('<HomeBanner/>', () => {
   })
 
   describe('When wipAppV2SystemBlock feature flag activated', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+    beforeAll(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
     })
 
     it('should display SignupBanner when user is not logged in', async () => {
