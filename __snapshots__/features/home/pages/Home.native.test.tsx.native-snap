@@ -367,6 +367,7 @@ exports[`Home page should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
+                    testID="bannerWithBackground"
                   >
                     <View
                       style={

@@ -37,7 +37,7 @@ export const InfoBanner: FunctionComponent<Props> = ({
     <GenericColoredBanner
       message={message}
       Icon={Icon}
-      backgroundColor={theme.colors.secondaryLight}
+      backgroundColor={theme.colors.secondaryLight100}
       textColor={textColor}
       testID={testID}>
       {children}
