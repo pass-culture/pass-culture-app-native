@@ -8,6 +8,8 @@ import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetc
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { formatDates } from 'libs/parsers/formatDates'
@@ -31,6 +33,7 @@ export type OffersModuleProps = {
 const keyExtractor = (item: Offer) => item.objectID
 
 export const OffersModule = (props: OffersModuleProps) => {
+  const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { displayParameters, offersModuleParameters, index, moduleId, homeEntryId, data } = props
   const { userLocation } = useLocation()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
@@ -96,6 +99,7 @@ export const OffersModule = (props: OffersModuleProps) => {
           homeEntryId={homeEntryId}
           width={width}
           height={height}
+          variant={isNewOfferTileDisplayed ? 'new' : 'default'}
         />
       )
     },
