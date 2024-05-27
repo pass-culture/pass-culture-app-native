@@ -272,6 +272,28 @@ describe('<SearchLanding />', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should render gradient header when wipAppV2SearchLandingHeader feature flag activated', async () => {
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockReturnValue(true) // Or else mockReturnValueOnce has to be repeated multiple times
+
+    render(<SearchLanding />)
+
+    await screen.findByText('Rechercher')
+
+    expect(screen.getByTestId('searchLandingHeader')).toBeOnTheScreen()
+  })
+
+  it('should not render gradient header when wipAppV2SearchLandingHeader feature flag deactivated', async () => {
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockReturnValue(false) // Or else mockReturnValueOnce has to be repeated multiple times
+
+    render(<SearchLanding />)
+
+    await screen.findByText('Rechercher')
+
+    expect(screen.queryByTestId('searchLandingHeader')).not.toBeOnTheScreen()
+  })
+
   describe('When SearchLanding is focus on suggestions', () => {
     beforeEach(() => {
       mockIsFocusOnSuggestions = true
