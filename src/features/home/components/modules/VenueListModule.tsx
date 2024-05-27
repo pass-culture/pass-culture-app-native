@@ -100,7 +100,7 @@ export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
         keyExtractor={keyExtractor}
         renderItem={({ item }) => renderItem({ item }, userLocation)}
         ItemSeparatorComponent={HorizontalSeparator}
-        ListHeaderComponent={() => <ListHeaderComponent onPress={onPress} />}
+        ListHeaderComponent={<ListHeaderComponent onPress={onPress} />}
       />
       <VenueMapLocationModal
         visible={venueMapLocationModalVisible}

@@ -4,7 +4,11 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
 [
   <RCTScrollView
     ItemSeparatorComponent={[Function]}
-    ListHeaderComponent={[Function]}
+    ListHeaderComponent={
+      <ListHeaderComponent
+        onPress={[Function]}
+      />
+    }
     data={
       [
         {
