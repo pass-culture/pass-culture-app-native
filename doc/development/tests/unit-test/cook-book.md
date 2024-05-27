@@ -18,22 +18,33 @@ describe('Favorites reducer', () => {
 
 ## Authentication with `authContext`
 
-To test as an authenticated person, you can mock `useAuthContext` as follows:
+When a component uses AuthContext, you first need to mock it at the top of the file:
 
 ```ts
 import { useAuthContext } from 'features/auth/context/AuthContext'
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+```
 
-// ... and then within each test
-mockUseAuthContext.mockReturnValueOnce({
-  isLoggedIn,
-  setIsLoggedIn: jest.fn(),
-  user: anUserFixtures,
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-})
+Then you can use 2 different utils depending on your need.
+
+If you want a disconnected user:
+
+```ts
+mockAuthContextWithoutUser()
+```
+
+If you want a logged in specific user:
+
+```ts
+mockAuthContextWithUser(anUserFixture)
+```
+
+If you want to persist your mock (using `mockReturnValue` instead of `mockReturnValueOnce`) you can pass the persist option as follows:
+
+```ts
+mockAuthContextWithoutUser({ persist: true })
+mockAuthContextWithUser(anUserFixture, { persist: true })
 ```
 
 ## Mock route params
