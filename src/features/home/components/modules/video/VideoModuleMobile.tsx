@@ -12,19 +12,10 @@ import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/
 import { VideoModuleProps } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { theme } from 'theme'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
-
-const newGradientColorsMapping = {
-  Gold: [theme.colors.goldLight100, theme.colors.goldLight100],
-  Aquamarine: [theme.colors.aquamarineLight, theme.colors.aquamarineLight],
-  SkyBlue: [theme.colors.skyBlueLight, theme.colors.skyBlueLight],
-  DeepPink: [theme.colors.deepPinkLight, theme.colors.deepPinkLight],
-  Coral: [theme.colors.coralLight, theme.colors.coralLight],
-  Lilac: [theme.colors.lilacLight, theme.colors.lilacLight],
-}
+import { videoModuleMobileColorsMapping } from 'ui/theme/videoModuleMobileColorsMapping'
 
 const THUMBNAIL_HEIGHT = getSpacing(52.5)
 // We do not center the player icon, because when the title is 2-line long,
@@ -40,9 +31,6 @@ const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER =
 const NEW_PLAYER_SIZE = getSpacing(24)
 
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
-  // PENSER A SUPPRIMER CETTE LIGNE
-  props = { ...props, isMultiOffer: false }
-
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
@@ -50,7 +38,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
   const videoDuration = `${props.durationInMinutes} min`
 
   const colorCategoryBackgroundHeightUniqueOffer =
-    THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(43)
+    THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(enableMultiVideoModule ? 40 : 43)
 
   return (
     <Container>
@@ -66,7 +54,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           end={{ x: 0, y: 1 }}
           colors={
             enableMultiVideoModule
-              ? newGradientColorsMapping[props.color]
+              ? videoModuleMobileColorsMapping[props.color]
               : gradientColorsMapping[props.color]
           }
           isMultiOffer={props.isMultiOffer}
@@ -95,7 +83,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
               </PlayerContainer>
             </Thumbnail>
           </StyledTouchableHighlight>
-          <Spacer.Column numberOfSpaces={2} />
+          <Spacer.Column numberOfSpaces={enableMultiVideoModule ? 4 : 2} />
           {props.isMultiOffer ? null : (
             <StyledVideoMonoOfferTile
               // @ts-expect-error: because of noUncheckedIndexedAccess
@@ -117,7 +105,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           />
         </React.Fragment>
       ) : null}
-      {props.isMultiOffer ? null : <Spacer.Column numberOfSpaces={6} />}
+      {props.isMultiOffer ? null : <Spacer.Column numberOfSpaces={4} />}
     </Container>
   )
 }
@@ -126,11 +114,9 @@ const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
 
-const VideoOfferContainer = styled.View<{ enableMultiVideoModule: boolean }>(
-  ({ theme, enableMultiVideoModule }) => ({
-    marginHorizontal: enableMultiVideoModule ? undefined : theme.contentPage.marginHorizontal,
-  })
-)
+const VideoOfferContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
 
 const Thumbnail = styled.ImageBackground(({ theme }) => ({
   // the overflow: hidden allow to add border radius to the image
@@ -172,7 +158,6 @@ const ColorCategoryBackground = styled(LinearGradient)<{
 }))
 
 type EnableMultiVideoModuleFFProps = { enableMultiVideoModule: boolean }
-
 const Player = styled(Play).attrs<EnableMultiVideoModuleFFProps>(
   ({ theme, enableMultiVideoModule }) =>
     enableMultiVideoModule
