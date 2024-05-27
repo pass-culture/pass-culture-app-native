@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
+import { CategoryIdEnum } from 'api/gen'
 import { AttachedOfferCard } from 'features/home/components/AttachedOfferCard'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -10,7 +10,7 @@ describe('<AttachedOfferCard>', () => {
     render(
       reactQueryProviderHOC(
         <AttachedOfferCard
-          subcategoryId={SubcategoryIdEnum.CONCERT}
+          categoryText="concert"
           withRightArrow
           imageUrl="https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW"
           price="Gratuit"
@@ -28,7 +28,7 @@ describe('<AttachedOfferCard>', () => {
     render(
       reactQueryProviderHOC(
         <AttachedOfferCard
-          subcategoryId={SubcategoryIdEnum.CONCERT}
+          categoryText="concert"
           imageUrl="https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW"
           price="Gratuit"
           categoryId={CategoryIdEnum.MUSIQUE_LIVE}

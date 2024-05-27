@@ -61,7 +61,7 @@ exports[`<AttachedOfferCard> matches snapshot if all proprieties are defined 1`]
         ]
       }
     >
-      Concert
+      concert
     </Text>
     <Text
       numberOfLines={2}
@@ -203,7 +203,7 @@ exports[`<AttachedOfferCard> matches snapshot if there is no distance and arrow 
         ]
       }
     >
-      Concert
+      concert
     </Text>
     <Text
       numberOfLines={2}

@@ -50,6 +50,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   const offerHeight = theme.isDesktopViewport ? getSpacing(45) : getSpacing(35)
 
   const categoryId = mapping[offer.offer.subcategoryId]
+  const categoryText = labelMapping[offer.offer.subcategoryId]
 
   const containerProps = {
     offerHeight,
@@ -77,7 +78,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
       <AttachedOfferCard
         title={offer.offer.name ?? ''}
         categoryId={categoryId}
-        subcategoryId={offer.offer.subcategoryId}
+        categoryText={categoryText ?? ''}
         imageUrl={offer.offer.thumbUrl}
         showImage
         withRightArrow
