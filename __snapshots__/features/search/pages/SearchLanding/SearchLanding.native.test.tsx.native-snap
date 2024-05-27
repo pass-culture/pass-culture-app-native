@@ -189,6 +189,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               style={
                 {
                   "alignItems": "center",
+                  "backgroundColor": "#ffffff",
                   "borderColor": "#161617",
                   "borderRadius": 40,
                   "borderStyle": "solid",
@@ -3368,6 +3369,7 @@ exports[`<SearchLanding /> should render V2 App Design SearchLanding 1`] = `
               style={
                 {
                   "alignItems": "center",
+                  "backgroundColor": "#ffffff",
                   "borderColor": "#161617",
                   "borderRadius": 40,
                   "borderStyle": "solid",

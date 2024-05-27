@@ -122,6 +122,7 @@ const IconContainer = styled(Animated.View)<{ isActive: boolean }>(({ theme, isA
   justifyContent: 'center',
   alignItems: 'center',
   borderColor: isActive ? theme.colors.black : theme.colors.greyDark,
+  backgroundColor: theme.colors.white,
 }))
 
 const LocationPointerFilled = styled(LocationPointer).attrs(({ theme }) => ({
