@@ -85,7 +85,7 @@ describe('NetInfoWrapper', () => {
       expect(onInternetConnectionLost).toHaveBeenCalledTimes(1)
     })
 
-    it('should log network informations to firebase when wifi is used', async () => {
+    it('should log network information when wifi is used', async () => {
       mockedUseNetInfo.mockReturnValueOnce({
         isConnected: false,
         isInternetReachable: true,
@@ -101,7 +101,7 @@ describe('NetInfoWrapper', () => {
       expect(analytics.logConnectionInfo).toHaveBeenCalledWith({ type: 'wifi' })
     })
 
-    it('should log network informations to firebase when cellular is used', async () => {
+    it('should log network information when cellular is used', async () => {
       mockedUseNetInfo.mockReturnValueOnce({
         isConnected: false,
         isInternetReachable: true,
@@ -123,7 +123,7 @@ describe('NetInfoWrapper', () => {
       })
     })
 
-    it('should not log network informations to firebase when connection is unknown', async () => {
+    it('should not log network information when connection is unknown', async () => {
       mockedUseNetInfo.mockReturnValueOnce({
         isConnected: false,
         isInternetReachable: true,
