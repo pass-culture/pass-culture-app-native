@@ -13,7 +13,6 @@ import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
@@ -228,15 +227,6 @@ const mockedEmptyHistory = {
 describe('<SearchLanding />', () => {
   beforeEach(() => {
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
-    useFeatureFlagSpy.mockImplementation((ff: RemoteStoreFeatureFlags) => {
-      switch (ff) {
-        case RemoteStoreFeatureFlags.WIP_APP_V2_SEARCH_CATEGORY_BLOCK:
-          return false
-        case RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_POSITION:
-        default:
-          return true
-      }
-    })
   })
 
   afterEach(() => {
@@ -249,49 +239,58 @@ describe('<SearchLanding />', () => {
     mockIsFocusOnSuggestions = false
   })
 
-  it('should render SearchLanding', async () => {
-    render(<SearchLanding />)
+  describe('When wipAppV2SearchLandingHeader feature flag deactivated', () => {
+    beforeAll(() => {
+      useFeatureFlagSpy.mockReturnValue(false)
+    })
 
-    await screen.findByText('Rechercher')
+    it('should render SearchLanding', async () => {
+      render(<SearchLanding />)
 
-    await act(() => {})
+      await screen.findByText('Rechercher')
 
-    expect(screen).toMatchSnapshot()
+      await act(() => {})
+
+      expect(screen).toMatchSnapshot()
+    })
+
+    it('should not render gradient header', async () => {
+      render(<SearchLanding />)
+
+      await screen.findByText('Rechercher')
+
+      expect(screen.queryByTestId('searchLandingHeader')).not.toBeOnTheScreen()
+    })
   })
 
-  it('should render V2 App Design SearchLanding', async () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    useFeatureFlagSpy.mockReturnValue(true) // Or else mockReturnValueOnce has to be repeated multiple times
+  describe('When App V2 feature flag activated', () => {
+    beforeAll(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
+    })
 
-    render(<SearchLanding />)
+    it('should render V2 App Design SearchLanding', async () => {
+      render(<SearchLanding />)
 
-    await screen.findByText('Rechercher')
+      await screen.findByText('Rechercher')
 
-    await act(() => {})
+      await act(() => {})
 
-    expect(screen).toMatchSnapshot()
+      expect(screen).toMatchSnapshot()
+    })
   })
 
-  it('should render gradient header when wipAppV2SearchLandingHeader feature flag activated', async () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    useFeatureFlagSpy.mockReturnValue(true) // Or else mockReturnValueOnce has to be repeated multiple times
+  describe('When wipAppV2SearchLandingHeader feature flag activated', () => {
+    beforeAll(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
+    })
 
-    render(<SearchLanding />)
+    it('should render gradient header', async () => {
+      render(<SearchLanding />)
 
-    await screen.findByText('Rechercher')
+      await screen.findByText('Rechercher')
 
-    expect(screen.getByTestId('searchLandingHeader')).toBeOnTheScreen()
-  })
-
-  it('should not render gradient header when wipAppV2SearchLandingHeader feature flag deactivated', async () => {
-    // eslint-disable-next-line local-rules/independent-mocks
-    useFeatureFlagSpy.mockReturnValue(false) // Or else mockReturnValueOnce has to be repeated multiple times
-
-    render(<SearchLanding />)
-
-    await screen.findByText('Rechercher')
-
-    expect(screen.queryByTestId('searchLandingHeader')).not.toBeOnTheScreen()
+      expect(screen.getByTestId('searchLandingHeader')).toBeOnTheScreen()
+    })
   })
 
   describe('When SearchLanding is focus on suggestions', () => {
