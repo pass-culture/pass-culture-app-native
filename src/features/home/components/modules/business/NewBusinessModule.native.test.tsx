@@ -2,14 +2,14 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { NewBusinessModuleProps } from 'features/home/components/modules/business/BusinessModule'
+import { NewBusinessModule } from 'features/home/components/modules/business/NewBusinessModule'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent, waitFor, screen } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
-
-import { BusinessModule, BusinessModuleProps } from './BusinessModule'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
@@ -21,7 +21,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-const props: BusinessModuleProps = {
+const props: NewBusinessModuleProps = {
   analyticsTitle: 'Title of module',
   title: 'firstLine',
   subtitle: 'secondLine',
@@ -34,9 +34,10 @@ const props: BusinessModuleProps = {
   homeEntryId: 'abcd',
   index: 1,
   localizationArea: undefined,
+  wordingCTA: 'Postuler',
 }
 
-describe('BusinessModule component', () => {
+describe('NewBusinessModule component', () => {
   const openURLSpy = jest.spyOn(Linking, 'openURL')
 
   it('should render correctly - with leftIcon = Idea by default', () => {
@@ -174,7 +175,7 @@ describe('BusinessModule component', () => {
   })
 })
 
-const renderModule = (props: BusinessModuleProps, isDesktopViewport?: boolean) =>
-  render(reactQueryProviderHOC(<BusinessModule {...props} />), {
+const renderModule = (props: NewBusinessModuleProps, isDesktopViewport?: boolean) =>
+  render(reactQueryProviderHOC(<NewBusinessModule {...props} />), {
     theme: { isDesktopViewport: isDesktopViewport ?? false },
   })

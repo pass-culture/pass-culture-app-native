@@ -1,0 +1,1020 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewBusinessModule component should disable click when no URL 1`] = `
+<View
+  accessibilityLabel="firstLine secondLine"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "borderRadius": 8,
+      "flexWrap": "wrap",
+      "height": 180,
+      "marginBottom": 24,
+      "marginHorizontal": 24,
+      "opacity": 1,
+      "textDecorationColor": "black",
+      "textDecorationLine": "none",
+      "textDecorationStyle": "solid",
+      "userSelect": "auto",
+    }
+  }
+  testID="firstLine secondLine"
+>
+  <View
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "overflow": "hidden",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        [
+          {
+            "backgroundColor": "#eb0055",
+            "borderRadius": 8,
+            "height": 180,
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <Image
+        source={
+          {
+            "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
+          }
+        }
+        style={
+          [
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "height": 180,
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+        testID="imageBusiness"
+      />
+      <View
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "gap": 8,
+              "height": "100%",
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "height": "100%",
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        >
+          <Text
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="firstLine"
+          >
+            firstLine
+          </Text>
+          <Text
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="secondLine"
+          >
+            secondLine
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "alignContent": "flex-end",
+                "height": "100%",
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="firstLine secondLine"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "userSelect": "auto",
+                "width": 114,
+              }
+            }
+            testID="firstLine secondLine"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Postuler
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`NewBusinessModule component should display mobile image if web image not given from contentful and isDesktopViewport is true 1`] = `
+<View
+  accessibilityLabel="firstLine secondLine"
+  accessibilityRole="link"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "borderRadius": 8,
+      "flexWrap": "wrap",
+      "height": 180,
+      "marginBottom": 24,
+      "marginHorizontal": 24,
+      "opacity": 1,
+      "textDecorationColor": "black",
+      "textDecorationLine": "none",
+      "textDecorationStyle": "solid",
+      "userSelect": "auto",
+    }
+  }
+  testID="firstLine secondLine"
+>
+  <View
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "overflow": "hidden",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        [
+          {
+            "backgroundColor": "#eb0055",
+            "borderRadius": 8,
+            "height": 180,
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <Image
+        source={
+          {
+            "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
+          }
+        }
+        style={
+          [
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "height": 180,
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+        testID="imageBusiness"
+      />
+      <View
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "gap": 8,
+              "height": "100%",
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "height": "100%",
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        >
+          <Text
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="firstLine"
+          >
+            firstLine
+          </Text>
+          <Text
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="secondLine"
+          >
+            secondLine
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "alignContent": "flex-end",
+                "height": "100%",
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="firstLine secondLine"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "userSelect": "auto",
+                "width": 114,
+              }
+            }
+            testID="firstLine secondLine"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Postuler
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`NewBusinessModule component should display web image if given from contentful and isDesktopViewport is true 1`] = `
+<View
+  accessibilityLabel="firstLine secondLine"
+  accessibilityRole="link"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "borderRadius": 8,
+      "flexWrap": "wrap",
+      "height": 180,
+      "marginBottom": 24,
+      "marginHorizontal": 24,
+      "opacity": 1,
+      "textDecorationColor": "black",
+      "textDecorationLine": "none",
+      "textDecorationStyle": "solid",
+      "userSelect": "auto",
+    }
+  }
+  testID="firstLine secondLine"
+>
+  <View
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "overflow": "hidden",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        [
+          {
+            "backgroundColor": "#eb0055",
+            "borderRadius": 8,
+            "height": 180,
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <Image
+        source={
+          {
+            "uri": "https://images.ctfassets.net/2bg01iqy0isv/1jedJLjdDiypJqBtO1sjH0/185ee9e6428229a15d4c047b862a95f8/image_web.jpeg",
+          }
+        }
+        style={
+          [
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "height": 180,
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+        testID="imageBusiness"
+      />
+      <View
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "gap": 8,
+              "height": "100%",
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "height": "100%",
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        >
+          <Text
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="firstLine"
+          >
+            firstLine
+          </Text>
+          <Text
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="secondLine"
+          >
+            secondLine
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "alignContent": "flex-end",
+                "height": "100%",
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="firstLine secondLine"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "userSelect": "auto",
+                "width": 114,
+              }
+            }
+            testID="firstLine secondLine"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Postuler
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`NewBusinessModule component should render correctly - with leftIcon = Idea by default 1`] = `
+<View
+  accessibilityLabel="firstLine secondLine"
+  accessibilityRole="link"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "borderRadius": 8,
+      "flexWrap": "wrap",
+      "height": 180,
+      "marginBottom": 24,
+      "marginHorizontal": 24,
+      "opacity": 1,
+      "textDecorationColor": "black",
+      "textDecorationLine": "none",
+      "textDecorationStyle": "solid",
+      "userSelect": "auto",
+    }
+  }
+  testID="firstLine secondLine"
+>
+  <View
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "overflow": "hidden",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        [
+          {
+            "backgroundColor": "#eb0055",
+            "borderRadius": 8,
+            "height": 180,
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <Image
+        source={
+          {
+            "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
+          }
+        }
+        style={
+          [
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "height": 180,
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+        testID="imageBusiness"
+      />
+      <View
+        style={
+          [
+            {
+              "flexDirection": "row",
+              "gap": 8,
+              "height": "100%",
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexDirection": "column",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "height": "100%",
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        >
+          <Text
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="firstLine"
+          >
+            firstLine
+          </Text>
+          <Text
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="secondLine"
+          >
+            secondLine
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "alignContent": "flex-end",
+                "height": "100%",
+                "justifyContent": "flex-end",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="firstLine secondLine"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "userSelect": "auto",
+                "width": 114,
+              }
+            }
+            testID="firstLine secondLine"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Postuler
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
