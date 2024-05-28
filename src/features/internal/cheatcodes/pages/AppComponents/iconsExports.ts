@@ -118,6 +118,10 @@ import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { WhatsAppRound } from 'ui/svg/icons/socialNetwork/WhatsAppRound'
 import { StepperValidate } from 'ui/svg/icons/StepperValidate'
 import { Stock } from 'ui/svg/icons/Stock'
+import { ThumbDown } from 'ui/svg/icons/ThumbDown'
+import { ThumbDownFilled } from 'ui/svg/icons/ThumbDownFilled'
+import { ThumbUp } from 'ui/svg/icons/ThumbUp'
+import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { Trash } from 'ui/svg/icons/Trash'
 import { TryAgain } from 'ui/svg/icons/TryAgain'
 import { Valid } from 'ui/svg/icons/Valid'
@@ -223,6 +227,10 @@ export const SecondaryAndBiggerIcons = {
   Share,
   SignOut,
   Trash,
+  ThumbDown,
+  ThumbDownFilled,
+  ThumbUp,
+  ThumbUpFilled,
   Valid,
   Venue,
   WorldPosition,
