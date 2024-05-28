@@ -1,6 +1,6 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { Homepage, HomepageModuleType, ThematicHeaderType } from 'features/home/types'
+import { Color, Homepage, HomepageModuleType, ThematicHeaderType } from 'features/home/types'
 import { toMutable } from 'shared/types/toMutable'
 
 export const homepageList = toMutable([
@@ -202,6 +202,7 @@ export const homepageList = toMutable([
       subtitle: 'Sous-titre cinéma',
       title: 'Cinéma',
       type: ThematicHeaderType.Category,
+      color: Color.Lilac,
     },
   },
 ] as const satisfies ReadonlyDeep<Homepage[]>)

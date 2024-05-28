@@ -71,6 +71,7 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
         title={thematicHeader?.title}
         subtitle={thematicHeader?.subtitle}
         imageUrl={thematicHeader?.imageUrl}
+        color={thematicHeader?.color}
       />
     )
   }
