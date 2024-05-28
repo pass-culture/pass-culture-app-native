@@ -37,19 +37,20 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
-  const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const labelMapping = useCategoryHomeLabelMapping()
   const mapping = useCategoryIdMapping()
-  const displayDate = formatDates(timestampsInMillis)
-  const displayPrice = getDisplayPrice(offer?.offer?.prices)
-
   const prePopulateOffer = usePrePopulateOffer()
-
   const theme = useTheme()
+
+  const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+  const displayDate = formatDates(timestampsInMillis)
+
+  const displayPrice = getDisplayPrice(offer?.offer?.prices)
 
   const offerHeight = theme.isDesktopViewport ? getSpacing(45) : getSpacing(35)
 
   const categoryId = mapping[offer.offer.subcategoryId]
+
   const categoryText = labelMapping[offer.offer.subcategoryId]
 
   const containerProps = {

@@ -33,8 +33,8 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
-
   const labelMapping = useCategoryHomeLabelMapping()
+  const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
   const { userLocation } = useLocation()
   const { user } = useAuthContext()
@@ -43,10 +43,11 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
 
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const displayDate = formatDates(timestampsInMillis)
+
   const displayDistance = formatDistance(offer._geoloc, userLocation)
-  const prePopulateOffer = usePrePopulateOffer()
 
   const categoryId = mapping[offer.offer.subcategoryId]
+
   const categoryLabel = labelMapping[offer.offer.subcategoryId]
 
   return (

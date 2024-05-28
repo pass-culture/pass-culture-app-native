@@ -1,6 +1,6 @@
 import colorAlpha from 'color-alpha'
-import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
+import React, { FunctionComponent, useState } from 'react'
+import { LayoutChangeEvent, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -22,26 +22,28 @@ const THUMBNAIL_HEIGHT = getSpacing(52.5)
 // the title is to close to the player. So the player is closer to the top.
 const PLAYER_TOP_MARGIN = getSpacing(12.5)
 const PLAYER_SIZE = getSpacing(14.5)
-
 const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + PLAYER_SIZE / 2
 const COLOR_CATEGORY_BACKGROUND_HEIGHT = getSpacing(37.5)
+const VIDEO_THUMBNAIL_HEIGHT = THUMBNAIL_HEIGHT - GRADIENT_START_POSITION
+const MONO_OFFER_CARD_VERTICAL_SPACING = getSpacing(8)
+const NEW_PLAYER_SIZE = getSpacing(24)
 
 const getColorCategoryBackgroundHeightMultiOffer = (enableMultiVideoModule: boolean) =>
   enableMultiVideoModule
-    ? THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + COLOR_CATEGORY_BACKGROUND_HEIGHT
-    : THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(16)
-
-const NEW_PLAYER_SIZE = getSpacing(24)
+    ? VIDEO_THUMBNAIL_HEIGHT + COLOR_CATEGORY_BACKGROUND_HEIGHT
+    : VIDEO_THUMBNAIL_HEIGHT + getSpacing(16)
 
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
+  const [monoOfferCardHeight, setMonoOfferCardHeight] = useState<number>(0)
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
 
-  const videoDuration = `${props.durationInMinutes} min`
-
+  const MONO_OFFER_CARD_HEIGHT = enableMultiVideoModule ? monoOfferCardHeight : getSpacing(43)
   const colorCategoryBackgroundHeightUniqueOffer =
-    THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(enableMultiVideoModule ? 40 : 43)
+    VIDEO_THUMBNAIL_HEIGHT + MONO_OFFER_CARD_VERTICAL_SPACING + MONO_OFFER_CARD_HEIGHT
+
+  const videoDuration = `${props.durationInMinutes} min`
 
   return (
     <Container>
@@ -89,14 +91,20 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           </StyledTouchableHighlight>
           <Spacer.Column numberOfSpaces={enableMultiVideoModule ? 4 : 2} />
           {props.isMultiOffer ? null : (
-            <StyledVideoMonoOfferTile
-              // @ts-expect-error: because of noUncheckedIndexedAccess
-              offer={props.offers[0]}
-              color={props.color}
-              hideModal={props.hideVideoModal}
-              analyticsParams={props.analyticsParams}
-              enableMultiVideoModule={enableMultiVideoModule}
-            />
+            <View
+              onLayout={(event: LayoutChangeEvent) => {
+                const { height } = event.nativeEvent.layout
+                setMonoOfferCardHeight(height)
+              }}>
+              <StyledVideoMonoOfferTile
+                // @ts-expect-error: because of noUncheckedIndexedAccess
+                offer={props.offers[0]}
+                color={props.color}
+                hideModal={props.hideVideoModal}
+                analyticsParams={props.analyticsParams}
+                enableMultiVideoModule={enableMultiVideoModule}
+              />
+            </View>
           )}
         </VideoOfferContainer>
       </View>
