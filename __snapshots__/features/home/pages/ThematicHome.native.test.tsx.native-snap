@@ -210,6 +210,7 @@ exports[`ThematicHome should render correctly 1`] = `
         }
       >
         <View
+          collapsable={false}
           style={
             {
               "opacity": 0,
@@ -237,6 +238,7 @@ exports[`ThematicHome should render correctly 1`] = `
               }
             }
             accessible={true}
+            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -246,19 +248,11 @@ exports[`ThematicHome should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "overflow": "hidden",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "opacity": 1,
+                "overflow": "hidden",
+                "userSelect": "auto",
+              }
             }
             testID="Revenir en haut"
           >
@@ -333,25 +327,21 @@ exports[`ThematicHome should render correctly 1`] = `
     />
   </View>
   <View
+    collapsable={false}
     height={80}
     style={
-      [
-        {
-          "borderBottomColor": "#F1F1F4",
-          "borderBottomWidth": 1,
-          "height": 80,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-        {
-          "backdropFilter": "blur(0px)",
-          "backgroundColor": "rgba(255, 255, 255, 0)",
-          "borderBottomWidth": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(0px)",
+        "backgroundColor": "rgba(255, 255, 255, 0)",
+        "borderBottomColor": "#F1F1F4",
+        "borderBottomWidth": 0,
+        "height": 80,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
@@ -366,21 +356,18 @@ exports[`ThematicHome should render correctly 1`] = `
       }
     />
     <View
+      collapsable={false}
       height={80}
       style={
-        [
-          {
-            "height": 80,
-            "left": 0,
-            "overflow": "hidden",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
+        {
+          "height": 80,
+          "left": 0,
+          "opacity": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
       }
     >
       <BlurView
@@ -456,6 +443,7 @@ exports[`ThematicHome should render correctly 1`] = `
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -465,43 +453,30 @@ exports[`ThematicHome should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "borderRadius": 40,
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "borderRadius": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
         }
         testID="Revenir en arrière"
       >
         <View
+          collapsable={false}
           style={
-            [
-              {
-                "alignItems": "center",
-                "aspectRatio": 1,
-                "backgroundColor": "#ffffff",
-                "borderColor": "#F1F1F4",
-                "borderRadius": 40,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "width": 40,
-              },
-              {
-                "backgroundColor": "rgba(255, 255, 255, 1)",
-                "borderColor": "rgba(241, 241, 244, 1)",
-                "transform": undefined,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "transform": undefined,
+              "width": 40,
+            }
           }
           testID="AnimatedHeaderIconRoundContainer"
         >
@@ -517,15 +492,12 @@ exports[`ThematicHome should render correctly 1`] = `
             }
           >
             <View
+              collapsable={false}
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "opacity": 1,
+                  "position": "absolute",
+                }
               }
               testID="initial-icon-container"
             >
@@ -540,15 +512,12 @@ exports[`ThematicHome should render correctly 1`] = `
               </View>
             </View>
             <View
+              collapsable={false}
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
+                {
+                  "opacity": 0,
+                  "position": "absolute",
+                }
               }
               testID="final-icon-container"
             >
@@ -578,18 +547,15 @@ exports[`ThematicHome should render correctly 1`] = `
       />
       <Text
         accessibilityHidden={true}
+        collapsable={false}
         numberOfLines={2}
         style={
-          [
-            {
-              "color": "#ffffff",
-              "flexShrink": 1,
-              "textAlign": "center",
-            },
-            {
-              "opacity": 0,
-            },
-          ]
+          {
+            "color": "#ffffff",
+            "flexShrink": 1,
+            "opacity": 0,
+            "textAlign": "center",
+          }
         }
       >
         <Text
@@ -641,6 +607,7 @@ exports[`ThematicHome should render correctly 1`] = `
     />
   </View>
   <View
+    collapsable={false}
     style={
       [
         {
@@ -674,6 +641,7 @@ exports[`ThematicHome should render correctly 1`] = `
       testID="animated-thematic-header-v1"
     >
       <Image
+        collapsable={false}
         height={208}
         source={
           {
@@ -683,12 +651,14 @@ exports[`ThematicHome should render correctly 1`] = `
         style={
           [
             {
+              "height": 208,
               "left": 0,
               "position": "absolute",
               "right": 0,
               "top": 0,
               "width": "100%",
             },
+            {},
           ]
         }
       />
@@ -705,6 +675,7 @@ exports[`ThematicHome should render correctly 1`] = `
         }
       >
         <BVLinearGradient
+          collapsable={false}
           colors={
             [
               1447447,
@@ -741,6 +712,7 @@ exports[`ThematicHome should render correctly 1`] = `
           }
         />
         <View
+          collapsable={false}
           style={
             [
               {
@@ -833,6 +805,7 @@ exports[`ThematicHome should render correctly 1`] = `
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -842,27 +815,19 @@ exports[`ThematicHome should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "alignSelf": "flex-start",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 24,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "paddingHorizontal": 12,
-                "paddingVertical": 4,
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "alignSelf": "flex-start",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#90949D",
+            "borderRadius": 24,
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "opacity": 1,
+            "paddingHorizontal": 12,
+            "paddingVertical": 4,
+            "userSelect": "auto",
+          }
         }
         testID="Suivre le thème"
       >

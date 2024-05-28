@@ -9,6 +9,8 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { screen, waitFor } from 'tests/utils'
 
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('features/auth/context/AuthContext')
@@ -30,6 +32,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.useFakeTimers()
 
 describe('<Offer />', () => {
   beforeEach(() => {

@@ -61,7 +61,7 @@ jest.mock('@shopify/flash-list', () => {
   class MockFlashList extends ActualFlashList {
     componentDidMount() {
       super.componentDidMount()
-      this.rlvRef?._scrollComponent?._scrollViewRef?.props.onLayout({
+      this.rlvRef?._scrollComponent?._scrollViewRef?.props?.onLayout({
         nativeEvent: { layout: { height: 250, width: 800 } },
       })
     }

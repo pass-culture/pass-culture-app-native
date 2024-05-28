@@ -22,6 +22,7 @@ exports[`<ControlComponent /> renders render next when type is next 1`] = `
     }
   }
   accessible={true}
+  collapsable={false}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -31,22 +32,14 @@ exports[`<ControlComponent /> renders render next when type is next 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    [
-      [
-        {
-          "userSelect": "auto",
-        },
-        {
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
-        },
-      ],
-      {
-        "opacity": 1,
-      },
-    ]
+    {
+      "marginBottom": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
+      "marginTop": 0,
+      "opacity": 1,
+      "userSelect": "auto",
+    }
   }
   testID="Next"
 >
@@ -84,6 +77,7 @@ exports[`<ControlComponent /> should render correctly prev by default 1`] = `
     }
   }
   accessible={true}
+  collapsable={false}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -93,22 +87,14 @@ exports[`<ControlComponent /> should render correctly prev by default 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    [
-      [
-        {
-          "userSelect": "auto",
-        },
-        {
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
-        },
-      ],
-      {
-        "opacity": 1,
-      },
-    ]
+    {
+      "marginBottom": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
+      "marginTop": 0,
+      "opacity": 1,
+      "userSelect": "auto",
+    }
   }
   testID="Previous"
 >
@@ -146,6 +132,7 @@ exports[`<ControlComponent /> should render prev when type is prev 1`] = `
     }
   }
   accessible={true}
+  collapsable={false}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -155,22 +142,14 @@ exports[`<ControlComponent /> should render prev when type is prev 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    [
-      [
-        {
-          "userSelect": "auto",
-        },
-        {
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
-        },
-      ],
-      {
-        "opacity": 1,
-      },
-    ]
+    {
+      "marginBottom": 0,
+      "marginLeft": 0,
+      "marginRight": 0,
+      "marginTop": 0,
+      "opacity": 1,
+      "userSelect": "auto",
+    }
   }
   testID="Previous"
 >

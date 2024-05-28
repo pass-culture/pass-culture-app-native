@@ -6,6 +6,8 @@ import { Close } from 'ui/svg/icons/Close'
 
 import { AnimatedProgressBar } from './AnimatedProgressBar'
 
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+
 describe('AnimatedProgressBar', () => {
   it('should render properly', () => {
     const expectedProgress = 0.5

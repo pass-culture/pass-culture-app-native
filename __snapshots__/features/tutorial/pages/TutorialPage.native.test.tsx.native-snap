@@ -206,9 +206,16 @@ exports[`TutorialPage should render correctly 1`] = `
     </View>
   </RCTScrollView>,
   <View
-    animation={
-      {
-        "from": {
+    style={
+      [
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "marginHorizontal": 24,
+            "paddingVertical": 24,
+          },
+        ],
+        {
           "opacity": 0,
           "transform": [
             {
@@ -216,26 +223,7 @@ exports[`TutorialPage should render correctly 1`] = `
             },
           ],
         },
-        "to": {
-          "opacity": 1,
-          "transform": [
-            {
-              "scale": 1,
-            },
-          ],
-        },
-      }
-    }
-    delay={300}
-    duration={240}
-    easing={[Function]}
-    style={
-      [
-        {
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
+        {},
       ]
     }
   >

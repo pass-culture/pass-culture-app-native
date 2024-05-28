@@ -267,20 +267,24 @@ exports[`Signup Form should render correctly for AcceptCgu 1`] = `
       }
     >
       <View
-        duration={800}
         isFull={false}
         style={
           [
+            [
+              {
+                "borderBottomRightRadius": 3,
+                "borderTopRightRadius": 3,
+                "height": "100%",
+                "overflow": "hidden",
+                "width": "80%",
+              },
+            ],
+            {},
             {
-              "borderBottomRightRadius": 3,
-              "borderTopRightRadius": 3,
-              "height": "100%",
-              "overflow": "hidden",
               "width": "80%",
             },
           ]
         }
-        transition="width"
         width={80}
       >
         <View
@@ -1265,20 +1269,24 @@ exports[`Signup Form should render correctly for SetBirthday 1`] = `
       }
     >
       <View
-        duration={800}
         isFull={false}
         style={
           [
+            [
+              {
+                "borderBottomRightRadius": 3,
+                "borderTopRightRadius": 3,
+                "height": "100%",
+                "overflow": "hidden",
+                "width": "60%",
+              },
+            ],
+            {},
             {
-              "borderBottomRightRadius": 3,
-              "borderTopRightRadius": 3,
-              "height": "100%",
-              "overflow": "hidden",
               "width": "60%",
             },
           ]
         }
-        transition="width"
         width={60}
       >
         <View
@@ -1937,20 +1945,24 @@ exports[`Signup Form should render correctly for SetEmail 1`] = `
       }
     >
       <View
-        duration={800}
         isFull={false}
         style={
           [
+            [
+              {
+                "borderBottomRightRadius": 3,
+                "borderTopRightRadius": 3,
+                "height": "100%",
+                "overflow": "hidden",
+                "width": "20%",
+              },
+            ],
+            {},
             {
-              "borderBottomRightRadius": 3,
-              "borderTopRightRadius": 3,
-              "height": "100%",
-              "overflow": "hidden",
               "width": "20%",
             },
           ]
         }
-        transition="width"
         width={20}
       >
         <View
@@ -2791,20 +2803,24 @@ exports[`Signup Form should render correctly for SetPassword 1`] = `
       }
     >
       <View
-        duration={800}
         isFull={false}
         style={
           [
+            [
+              {
+                "borderBottomRightRadius": 3,
+                "borderTopRightRadius": 3,
+                "height": "100%",
+                "overflow": "hidden",
+                "width": "40%",
+              },
+            ],
+            {},
             {
-              "borderBottomRightRadius": 3,
-              "borderTopRightRadius": 3,
-              "height": "100%",
-              "overflow": "hidden",
               "width": "40%",
             },
           ]
         }
-        transition="width"
         width={40}
       >
         <View

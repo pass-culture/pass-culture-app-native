@@ -329,27 +329,6 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                   }
                 }
                 accessible={true}
-                animation={
-                  {
-                    "from": {
-                      "transform": [
-                        {
-                          "scale": 0.95,
-                        },
-                      ],
-                    },
-                    "to": {
-                      "transform": [
-                        {
-                          "scale": 1,
-                        },
-                      ],
-                    },
-                  }
-                }
-                delay={200}
-                duration={240}
-                easing={[Function]}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -361,18 +340,28 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 status="cette année"
                 style={
                   [
+                    [
+                      {
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#90949D",
+                        "borderRadius": 4,
+                        "borderWidth": 1,
+                        "marginHorizontal": 0,
+                        "overflow": "hidden",
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ],
                     {
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 4,
-                      "borderWidth": 1,
-                      "marginHorizontal": 0,
-                      "overflow": "hidden",
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
+                      "transform": [
+                        {
+                          "scale": 0.95,
+                        },
+                      ],
                     },
+                    {},
                   ]
                 }
               >
@@ -1400,9 +1389,16 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
     </View>
   </RCTScrollView>,
   <View
-    animation={
-      {
-        "from": {
+    style={
+      [
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "marginHorizontal": 24,
+            "paddingVertical": 24,
+          },
+        ],
+        {
           "opacity": 0,
           "transform": [
             {
@@ -1410,26 +1406,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
             },
           ],
         },
-        "to": {
-          "opacity": 1,
-          "transform": [
-            {
-              "scale": 1,
-            },
-          ],
-        },
-      }
-    }
-    delay={300}
-    duration={240}
-    easing={[Function]}
-    style={
-      [
-        {
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
+        {},
       ]
     }
   >
@@ -2238,27 +2215,6 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                   }
                 }
                 accessible={true}
-                animation={
-                  {
-                    "from": {
-                      "transform": [
-                        {
-                          "scale": 0.95,
-                        },
-                      ],
-                    },
-                    "to": {
-                      "transform": [
-                        {
-                          "scale": 1,
-                        },
-                      ],
-                    },
-                  }
-                }
-                delay={200}
-                duration={240}
-                easing={[Function]}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2270,18 +2226,28 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 status="cette année"
                 style={
                   [
+                    [
+                      {
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#90949D",
+                        "borderRadius": 4,
+                        "borderWidth": 1,
+                        "marginHorizontal": 0,
+                        "overflow": "hidden",
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ],
                     {
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 4,
-                      "borderWidth": 1,
-                      "marginHorizontal": 0,
-                      "overflow": "hidden",
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
+                      "transform": [
+                        {
+                          "scale": 0.95,
+                        },
+                      ],
                     },
+                    {},
                   ]
                 }
               >
@@ -3056,9 +3022,16 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
     </View>
   </RCTScrollView>,
   <View
-    animation={
-      {
-        "from": {
+    style={
+      [
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "marginHorizontal": 24,
+            "paddingVertical": 24,
+          },
+        ],
+        {
           "opacity": 0,
           "transform": [
             {
@@ -3066,26 +3039,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
             },
           ],
         },
-        "to": {
-          "opacity": 1,
-          "transform": [
-            {
-              "scale": 1,
-            },
-          ],
-        },
-      }
-    }
-    delay={300}
-    duration={240}
-    easing={[Function]}
-    style={
-      [
-        {
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
+        {},
       ]
     }
   >
@@ -4134,27 +4088,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   }
                 }
                 accessible={true}
-                animation={
-                  {
-                    "from": {
-                      "transform": [
-                        {
-                          "scale": 0.95,
-                        },
-                      ],
-                    },
-                    "to": {
-                      "transform": [
-                        {
-                          "scale": 1,
-                        },
-                      ],
-                    },
-                  }
-                }
-                delay={200}
-                duration={240}
-                easing={[Function]}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -4166,18 +4099,28 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 status="cette année"
                 style={
                   [
+                    [
+                      {
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#90949D",
+                        "borderRadius": 4,
+                        "borderWidth": 1,
+                        "marginHorizontal": 0,
+                        "overflow": "hidden",
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ],
                     {
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 4,
-                      "borderWidth": 1,
-                      "marginHorizontal": 0,
-                      "overflow": "hidden",
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
+                      "transform": [
+                        {
+                          "scale": 0.95,
+                        },
+                      ],
                     },
+                    {},
                   ]
                 }
               >
@@ -4699,9 +4642,16 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
     </View>
   </RCTScrollView>,
   <View
-    animation={
-      {
-        "from": {
+    style={
+      [
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "marginHorizontal": 24,
+            "paddingVertical": 24,
+          },
+        ],
+        {
           "opacity": 0,
           "transform": [
             {
@@ -4709,26 +4659,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
             },
           ],
         },
-        "to": {
-          "opacity": 1,
-          "transform": [
-            {
-              "scale": 1,
-            },
-          ],
-        },
-      }
-    }
-    delay={300}
-    duration={240}
-    easing={[Function]}
-    style={
-      [
-        {
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
+        {},
       ]
     }
   >
@@ -6008,27 +5939,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   }
                 }
                 accessible={true}
-                animation={
-                  {
-                    "from": {
-                      "transform": [
-                        {
-                          "scale": 0.95,
-                        },
-                      ],
-                    },
-                    "to": {
-                      "transform": [
-                        {
-                          "scale": 1,
-                        },
-                      ],
-                    },
-                  }
-                }
-                delay={200}
-                duration={240}
-                easing={[Function]}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -6040,18 +5950,28 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 status="cette année"
                 style={
                   [
+                    [
+                      {
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#90949D",
+                        "borderRadius": 4,
+                        "borderWidth": 1,
+                        "marginHorizontal": 0,
+                        "overflow": "hidden",
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ],
                     {
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 4,
-                      "borderWidth": 1,
-                      "marginHorizontal": 0,
-                      "overflow": "hidden",
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
+                      "transform": [
+                        {
+                          "scale": 0.95,
+                        },
+                      ],
                     },
+                    {},
                   ]
                 }
               >
@@ -6183,9 +6103,16 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
     </View>
   </RCTScrollView>,
   <View
-    animation={
-      {
-        "from": {
+    style={
+      [
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "marginHorizontal": 24,
+            "paddingVertical": 24,
+          },
+        ],
+        {
           "opacity": 0,
           "transform": [
             {
@@ -6193,26 +6120,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
             },
           ],
         },
-        "to": {
-          "opacity": 1,
-          "transform": [
-            {
-              "scale": 1,
-            },
-          ],
-        },
-      }
-    }
-    delay={300}
-    duration={240}
-    easing={[Function]}
-    style={
-      [
-        {
-          "backgroundColor": "#ffffff",
-          "marginHorizontal": 24,
-          "paddingVertical": 24,
-        },
+        {},
       ]
     }
   >

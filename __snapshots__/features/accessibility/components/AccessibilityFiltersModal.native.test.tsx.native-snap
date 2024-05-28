@@ -114,25 +114,30 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
       onStartShouldSetResponder={[Function]}
       style={
         [
-          {
-            "backgroundColor": "black",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
           [
             {
               "backgroundColor": "black",
-              "height": 1334,
-              "width": 750,
+              "bottom": 0,
+              "left": 0,
+              "opacity": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
             },
+            [
+              {
+                "backgroundColor": "black",
+                "height": 1334,
+                "width": 750,
+              },
+            ],
           ],
+          {},
+          {
+            "opacity": 0.7,
+          },
         ]
       }
-      useNativeDriver={false}
     />
     <View
       accessibilityLabelledBy="testUuidV4"
@@ -154,34 +159,44 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
       statusBarTranslucent={true}
       style={
         [
-          {},
           [
-            {
-              "margin": 37.5,
-              "transform": [
-                {
-                  "translateY": 0,
-                },
-              ],
-            },
-            {
-              "flex": 1,
-              "justifyContent": "center",
-            },
+            {},
             [
               {
-                "alignItems": "center",
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": "auto",
+                "margin": 37.5,
+                "transform": [
+                  {
+                    "translateY": 0,
+                  },
+                ],
               },
               {
-                "margin": "auto",
+                "flex": 1,
+                "justifyContent": "center",
               },
+              [
+                {
+                  "alignItems": "center",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": "auto",
+                },
+                {
+                  "margin": "auto",
+                },
+              ],
             ],
           ],
+          {
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
+          },
+          {},
         ]
       }
       supportedOrientations={
@@ -191,7 +206,6 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
         ]
       }
       swipeThreshold={100}
-      useNativeDriver={false}
     >
       <View
         desktopMaxHeight={1000.5}
@@ -1225,25 +1239,30 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
       onStartShouldSetResponder={[Function]}
       style={
         [
-          {
-            "backgroundColor": "black",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
           [
             {
               "backgroundColor": "black",
-              "height": 1334,
-              "width": 750,
+              "bottom": 0,
+              "left": 0,
+              "opacity": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
             },
+            [
+              {
+                "backgroundColor": "black",
+                "height": 1334,
+                "width": 750,
+              },
+            ],
           ],
+          {},
+          {
+            "opacity": 0.7,
+          },
         ]
       }
-      useNativeDriver={false}
     />
     <View
       accessibilityLabelledBy="testUuidV4"
@@ -1265,34 +1284,44 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
       statusBarTranslucent={true}
       style={
         [
-          {},
           [
-            {
-              "margin": 37.5,
-              "transform": [
-                {
-                  "translateY": 0,
-                },
-              ],
-            },
-            {
-              "flex": 1,
-              "justifyContent": "center",
-            },
+            {},
             [
               {
-                "alignItems": "center",
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": "auto",
+                "margin": 37.5,
+                "transform": [
+                  {
+                    "translateY": 0,
+                  },
+                ],
               },
               {
-                "margin": "auto",
+                "flex": 1,
+                "justifyContent": "center",
               },
+              [
+                {
+                  "alignItems": "center",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": "auto",
+                },
+                {
+                  "margin": "auto",
+                },
+              ],
             ],
           ],
+          {
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
+          },
+          {},
         ]
       }
       supportedOrientations={
@@ -1302,7 +1331,6 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
         ]
       }
       swipeThreshold={100}
-      useNativeDriver={false}
     >
       <View
         desktopMaxHeight={1000.5}
@@ -2336,25 +2364,30 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
       onStartShouldSetResponder={[Function]}
       style={
         [
-          {
-            "backgroundColor": "black",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
           [
             {
               "backgroundColor": "black",
-              "height": 1334,
-              "width": 750,
+              "bottom": 0,
+              "left": 0,
+              "opacity": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
             },
+            [
+              {
+                "backgroundColor": "black",
+                "height": 1334,
+                "width": 750,
+              },
+            ],
           ],
+          {},
+          {
+            "opacity": 0.7,
+          },
         ]
       }
-      useNativeDriver={false}
     />
     <View
       accessibilityLabelledBy="testUuidV4"
@@ -2376,34 +2409,44 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
       statusBarTranslucent={true}
       style={
         [
-          {},
           [
-            {
-              "margin": 37.5,
-              "transform": [
-                {
-                  "translateY": 0,
-                },
-              ],
-            },
-            {
-              "flex": 1,
-              "justifyContent": "center",
-            },
+            {},
             [
               {
-                "alignItems": "center",
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": "auto",
+                "margin": 37.5,
+                "transform": [
+                  {
+                    "translateY": 0,
+                  },
+                ],
               },
               {
-                "margin": "auto",
+                "flex": 1,
+                "justifyContent": "center",
               },
+              [
+                {
+                  "alignItems": "center",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": "auto",
+                },
+                {
+                  "margin": "auto",
+                },
+              ],
             ],
           ],
+          {
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
+          },
+          {},
         ]
       }
       supportedOrientations={
@@ -2413,7 +2456,6 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
         ]
       }
       swipeThreshold={100}
-      useNativeDriver={false}
     >
       <View
         desktopMaxHeight={1000.5}
@@ -3447,25 +3489,30 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
       onStartShouldSetResponder={[Function]}
       style={
         [
-          {
-            "backgroundColor": "black",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
           [
             {
               "backgroundColor": "black",
-              "height": 1334,
-              "width": 750,
+              "bottom": 0,
+              "left": 0,
+              "opacity": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
             },
+            [
+              {
+                "backgroundColor": "black",
+                "height": 1334,
+                "width": 750,
+              },
+            ],
           ],
+          {},
+          {
+            "opacity": 0.7,
+          },
         ]
       }
-      useNativeDriver={false}
     />
     <View
       accessibilityLabelledBy="testUuidV4"
@@ -3487,34 +3534,44 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
       statusBarTranslucent={true}
       style={
         [
-          {},
           [
-            {
-              "margin": 37.5,
-              "transform": [
-                {
-                  "translateY": 0,
-                },
-              ],
-            },
-            {
-              "flex": 1,
-              "justifyContent": "center",
-            },
+            {},
             [
               {
-                "alignItems": "center",
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": "auto",
+                "margin": 37.5,
+                "transform": [
+                  {
+                    "translateY": 0,
+                  },
+                ],
               },
               {
-                "margin": "auto",
+                "flex": 1,
+                "justifyContent": "center",
               },
+              [
+                {
+                  "alignItems": "center",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": "auto",
+                },
+                {
+                  "margin": "auto",
+                },
+              ],
             ],
           ],
+          {
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
+          },
+          {},
         ]
       }
       supportedOrientations={
@@ -3524,7 +3581,6 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
         ]
       }
       swipeThreshold={100}
-      useNativeDriver={false}
     >
       <View
         desktopMaxHeight={1000.5}
@@ -4558,25 +4614,30 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
       onStartShouldSetResponder={[Function]}
       style={
         [
-          {
-            "backgroundColor": "black",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
           [
             {
               "backgroundColor": "black",
-              "height": 1334,
-              "width": 750,
+              "bottom": 0,
+              "left": 0,
+              "opacity": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
             },
+            [
+              {
+                "backgroundColor": "black",
+                "height": 1334,
+                "width": 750,
+              },
+            ],
           ],
+          {},
+          {
+            "opacity": 0.7,
+          },
         ]
       }
-      useNativeDriver={false}
     />
     <View
       accessibilityLabelledBy="testUuidV4"
@@ -4598,34 +4659,44 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
       statusBarTranslucent={true}
       style={
         [
-          {},
           [
-            {
-              "margin": 37.5,
-              "transform": [
-                {
-                  "translateY": 0,
-                },
-              ],
-            },
-            {
-              "flex": 1,
-              "justifyContent": "center",
-            },
+            {},
             [
               {
-                "alignItems": "center",
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": "auto",
+                "margin": 37.5,
+                "transform": [
+                  {
+                    "translateY": 0,
+                  },
+                ],
               },
               {
-                "margin": "auto",
+                "flex": 1,
+                "justifyContent": "center",
               },
+              [
+                {
+                  "alignItems": "center",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": "auto",
+                },
+                {
+                  "margin": "auto",
+                },
+              ],
             ],
           ],
+          {
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
+          },
+          {},
         ]
       }
       supportedOrientations={
@@ -4635,7 +4706,6 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
         ]
       }
       swipeThreshold={100}
-      useNativeDriver={false}
     >
       <View
         desktopMaxHeight={1000.5}

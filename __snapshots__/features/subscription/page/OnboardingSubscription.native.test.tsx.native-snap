@@ -247,1424 +247,12 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       >
         <View
           style={
-<<<<<<< HEAD
-=======
-            {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexBasis": "50%",
-                  "height": 172,
-                  "paddingHorizontal": 20,
-                  "paddingVertical": 12,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Cinéma"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "flex-start",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "column",
-                      "flexGrow": 1,
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Cinéma"
-            >
-              <View
-                isSelected={false}
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginRight": 16,
-                      "width": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  isSelected={false}
-                  style={
-                    [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 16,
-                        "height": 8,
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                contentDirection="column"
-                style={
-                  [
-                    {
-                      "flexGrow": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "column",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    size="medium"
-                    style={
-                      [
-                        {
-                          "borderRadius": 8,
-                          "height": 64,
-                          "overflow": "hidden",
-                          "width": 64,
-                        },
-                      ]
-                    }
-                  >
-                    <BVLinearGradient
-                      colors={
-                        [
-                          4280802472,
-                          4279141492,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        size="medium"
-                        style={
-                          [
-                            {
-                              "position": "absolute",
-                              "top": -12,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="none"
-                          height={92}
-                          width={110}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </BVLinearGradient>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    isHover={false}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Cinéma
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "flexBasis": "50%",
-                  "height": 172,
-                  "paddingHorizontal": 20,
-                  "paddingVertical": 12,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Lecture"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "flex-start",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "column",
-                      "flexGrow": 1,
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Lecture"
-            >
-              <View
-                isSelected={false}
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginRight": 16,
-                      "width": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  isSelected={false}
-                  style={
-                    [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 16,
-                        "height": 8,
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                contentDirection="column"
-                style={
-                  [
-                    {
-                      "flexGrow": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "column",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    size="medium"
-                    style={
-                      [
-                        {
-                          "borderRadius": 8,
-                          "height": 64,
-                          "overflow": "hidden",
-                          "width": 64,
-                        },
-                      ]
-                    }
-                  >
-                    <BVLinearGradient
-                      colors={
-                        [
-                          4293670008,
-                          4290777969,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        size="medium"
-                        style={
-                          [
-                            {
-                              "position": "absolute",
-                              "top": -12,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="none"
-                          height={92}
-                          width={110}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </BVLinearGradient>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    isHover={false}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Lecture
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={null}
-      >
-        <View
-          style={
-            {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexBasis": "50%",
-                  "height": 172,
-                  "paddingHorizontal": 20,
-                  "paddingVertical": 12,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Musique"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "flex-start",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "column",
-                      "flexGrow": 1,
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Musique"
-            >
-              <View
-                isSelected={false}
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginRight": 16,
-                      "width": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  isSelected={false}
-                  style={
-                    [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 16,
-                        "height": 8,
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                contentDirection="column"
-                style={
-                  [
-                    {
-                      "flexGrow": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "column",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    size="medium"
-                    style={
-                      [
-                        {
-                          "borderRadius": 8,
-                          "height": 64,
-                          "overflow": "hidden",
-                          "width": 64,
-                        },
-                      ]
-                    }
-                  >
-                    <BVLinearGradient
-                      colors={
-                        [
-                          4294614806,
-                          4290271489,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        size="medium"
-                        style={
-                          [
-                            {
-                              "position": "absolute",
-                              "top": -12,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="none"
-                          height={92}
-                          width={110}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </BVLinearGradient>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    isHover={false}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Musique
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "flexBasis": "50%",
-                  "height": 172,
-                  "paddingHorizontal": 20,
-                  "paddingVertical": 12,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Spectacles"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "flex-start",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "column",
-                      "flexGrow": 1,
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Spectacles"
-            >
-              <View
-                isSelected={false}
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginRight": 16,
-                      "width": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  isSelected={false}
-                  style={
-                    [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 16,
-                        "height": 8,
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                contentDirection="column"
-                style={
-                  [
-                    {
-                      "flexGrow": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "column",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    size="medium"
-                    style={
-                      [
-                        {
-                          "borderRadius": 8,
-                          "height": 64,
-                          "overflow": "hidden",
-                          "width": 64,
-                        },
-                      ]
-                    }
-                  >
-                    <BVLinearGradient
-                      colors={
-                        [
-                          4294472509,
-                          4291444499,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        size="medium"
-                        style={
-                          [
-                            {
-                              "position": "absolute",
-                              "top": -12,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="none"
-                          height={92}
-                          width={110}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </BVLinearGradient>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    isHover={false}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Spectacles
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        onFocusCapture={[Function]}
-        onLayout={[Function]}
-        style={null}
-      >
-        <View
-          style={
-            {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexBasis": "50%",
-                  "height": 172,
-                  "paddingHorizontal": 20,
-                  "paddingVertical": 12,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Activités créatives"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "flex-start",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "column",
-                      "flexGrow": 1,
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Activités créatives"
-            >
-              <View
-                isSelected={false}
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginRight": 16,
-                      "width": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  isSelected={false}
-                  style={
-                    [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 16,
-                        "height": 8,
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                contentDirection="column"
-                style={
-                  [
-                    {
-                      "flexGrow": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "column",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    size="medium"
-                    style={
-                      [
-                        {
-                          "borderRadius": 8,
-                          "height": 64,
-                          "overflow": "hidden",
-                          "width": 64,
-                        },
-                      ]
-                    }
-                  >
-                    <BVLinearGradient
-                      colors={
-                        [
-                          4289562623,
-                          4286789609,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        size="medium"
-                        style={
-                          [
-                            {
-                              "position": "absolute",
-                              "top": -12,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="none"
-                          height={92}
-                          width={110}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </BVLinearGradient>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    isHover={false}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Activités créatives
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "flexBasis": "50%",
-                  "height": 172,
-                  "paddingHorizontal": 20,
-                  "paddingVertical": 12,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Visites et sorties"
-              accessibilityRole="radio"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": false,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "flex-start",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "column",
-                      "flexGrow": 1,
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Visites et sorties"
-            >
-              <View
-                isSelected={false}
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#90949D",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 16,
-                      "justifyContent": "center",
-                      "marginRight": 16,
-                      "width": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  isSelected={false}
-                  style={
-                    [
-                      {
-                        "backgroundColor": "transparent",
-                        "borderRadius": 16,
-                        "height": 8,
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                contentDirection="column"
-                style={
-                  [
-                    {
-                      "flexGrow": 1,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "column",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    size="medium"
-                    style={
-                      [
-                        {
-                          "borderRadius": 8,
-                          "height": 64,
-                          "overflow": "hidden",
-                          "width": 64,
-                        },
-                      ]
-                    }
-                  >
-                    <BVLinearGradient
-                      colors={
-                        [
-                          4280802472,
-                          4279141492,
-                        ]
-                      }
-                      endPoint={
-                        {
-                          "x": 0.5,
-                          "y": 1,
-                        }
-                      }
-                      locations={null}
-                      startPoint={
-                        {
-                          "x": 0.5,
-                          "y": 0,
-                        }
-                      }
-                      style={
-                        [
-                          {
-                            "flexBasis": 0,
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        size="medium"
-                        style={
-                          [
-                            {
-                              "position": "absolute",
-                              "top": -12,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          fill="none"
-                          height={92}
-                          width={110}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </BVLinearGradient>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    isHover={false}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Visites et sorties
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        onLayout={[Function]}
-      >
-        <View
-          numberOfSpaces={10}
-          style={
->>>>>>> efdc4e4dc (fix: fix tests not related to animations)
             [
               {
                 "paddingVertical": 8,
               },
             ]
           }
-<<<<<<< HEAD
-=======
-        />
-        <View
-          accessibilityLabel="Suivre la sélection"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": true,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={false}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {},
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Suivre la sélection"
->>>>>>> efdc4e4dc (fix: fix tests not related to animations)
         >
           <View
             accessibilityLabel="Cinéma"
@@ -1686,9 +274,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                 "text": undefined,
               }
             }
-<<<<<<< HEAD
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1697,63 +283,28 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             onResponderTerminate={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-=======
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {
-                  "backgroundColor": "transparent",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Ne pas suivre de thème"
-        >
-          <View
->>>>>>> efdc4e4dc (fix: fix tests not related to animations)
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "minHeight": 72,
-                "opacity": 1,
-                "paddingHorizontal": 16,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "minHeight": 72,
+                    "paddingHorizontal": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Cinéma"
           >
@@ -1910,7 +461,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1920,19 +470,27 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "minHeight": 72,
-                "opacity": 1,
-                "paddingHorizontal": 16,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "minHeight": 72,
+                    "paddingHorizontal": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Lecture"
           >
@@ -2089,7 +647,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -2099,19 +656,27 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "minHeight": 72,
-                "opacity": 1,
-                "paddingHorizontal": 16,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "minHeight": 72,
+                    "paddingHorizontal": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Musique"
           >
@@ -2268,7 +833,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -2278,19 +842,27 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "minHeight": 72,
-                "opacity": 1,
-                "paddingHorizontal": 16,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "minHeight": 72,
+                    "paddingHorizontal": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Spectacles"
           >
@@ -2447,7 +1019,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -2457,19 +1028,27 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "minHeight": 72,
-                "opacity": 1,
-                "paddingHorizontal": 16,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "minHeight": 72,
+                    "paddingHorizontal": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Activités créatives"
           >
@@ -2626,7 +1205,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -2636,19 +1214,27 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "minHeight": 72,
-                "opacity": 1,
-                "paddingHorizontal": 16,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "minHeight": 72,
+                    "paddingHorizontal": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Visites et sorties"
           >
@@ -2773,7 +1359,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
     </View>
   </RCTScrollView>,
   <BVLinearGradient
-    collapsable={false}
     colors={
       [
         16777215,
@@ -2786,7 +1371,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         "y": 1,
       }
     }
-    forwardedRef={[Function]}
     locations={
       [
         0,
@@ -2801,13 +1385,19 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       }
     }
     style={
-      {
-        "bottom": 136,
-        "height": 120,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-      }
+      [
+        [
+          {
+            "bottom": 136,
+            "height": 120,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          },
+        ],
+        {},
+        {},
+      ]
     }
   />,
   <View
@@ -2845,7 +1435,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={false}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -2855,22 +1444,31 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "#F1F1F4",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "backgroundColor": "#F1F1F4",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "paddingBottom": 2,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {},
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Suivre la sélection"
     >
@@ -2923,7 +1521,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -2933,22 +1530,32 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Ne pas suivre de thème"
     >

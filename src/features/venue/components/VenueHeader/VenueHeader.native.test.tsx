@@ -8,6 +8,7 @@ import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('features/venue/api/useVenue')
 jest.useFakeTimers()
 

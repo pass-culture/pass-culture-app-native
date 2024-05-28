@@ -25,6 +25,8 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+
 jest.mock('libs/itinerary/useItinerary')
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/search/context/SearchWrapper')

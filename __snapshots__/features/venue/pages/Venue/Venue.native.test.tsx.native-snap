@@ -45,10 +45,12 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       >
         <View
+          hasGoogleCredit={null}
           style={
             [
               {
                 "alignItems": "center",
+                "marginBottom": 24,
               },
             ]
           }
@@ -90,16 +92,6 @@ exports[`<Venue /> should match snapshot 1`] = `
             </View>
           </View>
         </View>
-        <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
         <View
           style={
             [
@@ -165,275 +157,242 @@ exports[`<Venue /> should match snapshot 1`] = `
               ]
             }
           />
-          <Text
-            accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
-            adjustsFontSizeToFit={true}
-            allowFontScaling={false}
+          <View
+            gap={2}
             style={
               [
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 20,
-                  "lineHeight": 24,
+                  "gap": 8,
                 },
               ]
             }
           >
-            Le Petit Rintintin 1
-          </Text>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
-          >
-            Adresse
-          </Text>
-          <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "height": 4,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-          >
-            1 boulevard Poissonnière, 75000 Paris
-          </Text>
-          <View
-            numberOfSpaces={3}
-            style={
-              [
-                {
-                  "height": 12,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#F1F1F4",
-                  "height": 1,
-                  "width": "100%",
-                },
-              ]
-            }
-          />
-          <View
-            numberOfSpaces={3}
-            style={
-              [
-                {
-                  "height": 12,
-                },
-              ]
-            }
-          />
-          <View
-            accessibilityLabel="Copier l’adresse"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 2,
-                    "paddingRight": 2,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  },
-                  {
-                    "backgroundColor": "transparent",
-                    "justifyContent": "flex-start",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Copier l’adresse"
-          >
-            <View
+            <Text
+              accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
+              adjustsFontSizeToFit={true}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 20,
+                    "lineHeight": 24,
+                  },
+                ]
+              }
+            >
+              Le Petit Rintintin 1
+            </Text>
+            <View
+              gap={3}
+              style={
+                [
+                  {
+                    "gap": 12,
                   },
                 ]
               }
             >
               <View
+                gap={1}
                 style={
                   [
                     {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
+                      "gap": 4,
                     },
                   ]
                 }
               >
-                <View
-                  height={20}
-                  testID="button-icon-left"
-                  width={20}
-                >
-                  <Text>
-                    button-icon-left-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={2}
+                <Text
                   style={
                     [
                       {
-                        "width": 8,
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
-                />
+                >
+                  Adresse
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  1 boulevard Poissonnière, 75000 Paris
+                </Text>
               </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "maxWidth": "100%",
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                accessibilityLabel="Copier l’adresse"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "opacity": 1,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "userSelect": "auto",
+                    "width": "100%",
+                  }
+                }
+                testID="Copier l’adresse"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "flexShrink": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={20}
+                      testID="button-icon-left"
+                      width={20}
+                    >
+                      <Text>
+                        button-icon-left-SVG-Mock
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        [
+                          {
+                            "width": 8,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Copier l’adresse
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
                     },
                   ]
                 }
               >
-                Copier l’adresse
-              </Text>
-            </View>
-          </View>
-          <View
-            numberOfSpaces={3}
-            style={
-              [
-                {
-                  "height": 12,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "alignItems": "flex-start",
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Voir l’itinéraire"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
+                <View
+                  accessibilityLabel="Voir l’itinéraire"
+                  accessibilityState={
                     {
-                      "userSelect": "auto",
-                    },
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
                     {
                       "alignItems": "center",
+                      "backgroundColor": "transparent",
                       "borderRadius": 0,
                       "borderWidth": 0,
                       "flexDirection": "row",
@@ -441,81 +400,77 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "marginTop": 0,
                       "maxWidth": 500,
                       "minHeight": 20,
+                      "opacity": 1,
                       "paddingBottom": 0,
                       "paddingLeft": 0,
                       "paddingRight": 0,
                       "paddingTop": 0,
+                      "userSelect": "auto",
                       "width": "auto",
-                    },
-                    {
-                      "backgroundColor": "transparent",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Voir l’itinéraire"
-            >
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "flexShrink": 0,
-                      },
-                    ]
+                    }
                   }
+                  testID="Voir l’itinéraire"
                 >
                   <View
-                    accessibilityLabel="Nouvelle fenêtre"
-                    height={20}
-                    testID="button-icon-left"
-                    width={20}
-                  >
-                    <Text>
-                      button-icon-left-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       [
                         {
-                          "width": 8,
+                          "alignItems": "center",
+                          "flexDirection": "row",
                         },
                       ]
                     }
-                  />
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexDirection": "row",
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        accessibilityLabel="Nouvelle fenêtre"
+                        height={20}
+                        testID="button-icon-left"
+                        width={20}
+                      >
+                        <Text>
+                          button-icon-left-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "width": 8,
+                            },
+                          ]
+                        }
+                      />
+                    </View>
+                    <Text
+                      adjustsFontSizeToFit={false}
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                            "maxWidth": "100%",
+                          },
+                        ]
+                      }
+                    >
+                      Voir l’itinéraire
+                    </Text>
+                  </View>
                 </View>
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                >
-                  Voir l’itinéraire
-                </Text>
               </View>
             </View>
           </View>
@@ -613,6 +568,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               }
               accessible={false}
+              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -622,22 +578,14 @@ exports[`<Venue /> should match snapshot 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "maxWidth": 180,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "maxWidth": 180,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
               }
             >
               <View
@@ -713,6 +661,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               }
               accessible={false}
+              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -722,22 +671,14 @@ exports[`<Venue /> should match snapshot 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "maxWidth": 180,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "maxWidth": 180,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
               }
             >
               <View
@@ -3617,6 +3558,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               }
               accessible={true}
+              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -3626,27 +3568,19 @@ exports[`<Venue /> should match snapshot 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "alignSelf": "flex-start",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "paddingHorizontal": 12,
-                      "paddingVertical": 4,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "alignSelf": "flex-start",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 24,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "opacity": 1,
+                  "paddingHorizontal": 12,
+                  "paddingVertical": 4,
+                  "userSelect": "auto",
+                }
               }
               testID="Suivre le thème"
             >
@@ -3891,6 +3825,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       }
                     }
                     accessible={false}
+                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3900,21 +3835,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "alignItems": "center",
-                            "height": 96,
-                            "width": 76,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "height": 96,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                        "width": 76,
+                      }
                     }
                   >
                     <View
@@ -4018,6 +3945,7 @@ Instagram
                       }
                     }
                     accessible={false}
+                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4027,21 +3955,13 @@ Instagram
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "alignItems": "center",
-                            "height": 96,
-                            "width": 76,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "height": 96,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                        "width": 76,
+                      }
                     }
                   >
                     <View
@@ -4145,6 +4065,7 @@ WhatsApp
                       }
                     }
                     accessible={false}
+                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4154,21 +4075,13 @@ WhatsApp
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "alignItems": "center",
-                            "height": 96,
-                            "width": 76,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "height": 96,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                        "width": 76,
+                      }
                     }
                   >
                     <View
@@ -4272,6 +4185,7 @@ iMessage
                       }
                     }
                     accessible={false}
+                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4281,21 +4195,13 @@ iMessage
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "alignItems": "center",
-                            "height": 96,
-                            "width": 76,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "alignItems": "center",
+                        "height": 96,
+                        "opacity": 1,
+                        "userSelect": "auto",
+                        "width": 76,
+                      }
                     }
                   >
                     <View
@@ -4427,25 +4333,21 @@ d’options
     </View>
   </RCTScrollView>
   <View
+    collapsable={false}
     height={80}
     style={
-      [
-        {
-          "borderBottomColor": "#F1F1F4",
-          "borderBottomWidth": 1,
-          "height": 80,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-        {
-          "backdropFilter": "blur(0px)",
-          "backgroundColor": "rgba(255, 255, 255, 0)",
-          "borderBottomWidth": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(0px)",
+        "backgroundColor": "rgba(255, 255, 255, 0)",
+        "borderBottomColor": "#F1F1F4",
+        "borderBottomWidth": 0,
+        "height": 80,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
@@ -4460,21 +4362,18 @@ d’options
       }
     />
     <View
+      collapsable={false}
       height={80}
       style={
-        [
-          {
-            "height": 80,
-            "left": 0,
-            "overflow": "hidden",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
+        {
+          "height": 80,
+          "left": 0,
+          "opacity": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
       }
     >
       <BlurView
@@ -4550,6 +4449,7 @@ d’options
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -4559,43 +4459,30 @@ d’options
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "borderRadius": 40,
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "borderRadius": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
         }
         testID="Revenir en arrière"
       >
         <View
+          collapsable={false}
           style={
-            [
-              {
-                "alignItems": "center",
-                "aspectRatio": 1,
-                "backgroundColor": "#ffffff",
-                "borderColor": "#F1F1F4",
-                "borderRadius": 40,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "width": 40,
-              },
-              {
-                "backgroundColor": "rgba(255, 255, 255, 1)",
-                "borderColor": "rgba(241, 241, 244, 1)",
-                "transform": undefined,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "transform": undefined,
+              "width": 40,
+            }
           }
           testID="AnimatedHeaderIconRoundContainer"
         >
@@ -4611,15 +4498,12 @@ d’options
             }
           >
             <View
+              collapsable={false}
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "opacity": 1,
+                  "position": "absolute",
+                }
               }
               testID="initial-icon-container"
             >
@@ -4634,15 +4518,12 @@ d’options
               </View>
             </View>
             <View
+              collapsable={false}
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
+                {
+                  "opacity": 0,
+                  "position": "absolute",
+                }
               }
               testID="final-icon-container"
             >
@@ -4672,18 +4553,15 @@ d’options
       />
       <Text
         accessibilityHidden={true}
+        collapsable={false}
         numberOfLines={2}
         style={
-          [
-            {
-              "color": "#ffffff",
-              "flexShrink": 1,
-              "textAlign": "center",
-            },
-            {
-              "opacity": 0,
-            },
-          ]
+          {
+            "color": "#ffffff",
+            "flexShrink": 1,
+            "opacity": 0,
+            "textAlign": "center",
+          }
         }
         testID="venueHeaderName"
       >
@@ -4734,6 +4612,7 @@ d’options
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -4743,43 +4622,30 @@ d’options
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "borderRadius": 40,
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "borderRadius": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
         }
         testID="Partager"
       >
         <View
+          collapsable={false}
           style={
-            [
-              {
-                "alignItems": "center",
-                "aspectRatio": 1,
-                "backgroundColor": "#ffffff",
-                "borderColor": "#F1F1F4",
-                "borderRadius": 40,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "width": 40,
-              },
-              {
-                "backgroundColor": "rgba(255, 255, 255, 1)",
-                "borderColor": "rgba(241, 241, 244, 1)",
-                "transform": undefined,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "transform": undefined,
+              "width": 40,
+            }
           }
           testID="AnimatedHeaderIconRoundContainer"
         >
@@ -4795,15 +4661,12 @@ d’options
             }
           >
             <View
+              collapsable={false}
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "opacity": 1,
+                  "position": "absolute",
+                }
               }
               testID="initial-icon-container"
             >
@@ -4818,15 +4681,12 @@ d’options
               </View>
             </View>
             <View
+              collapsable={false}
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
+                {
+                  "opacity": 0,
+                  "position": "absolute",
+                }
               }
               testID="final-icon-container"
             >
@@ -4918,6 +4778,7 @@ d’options
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -4927,30 +4788,21 @@ d’options
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#eb0055",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {},
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
         }
         testID="Rechercher une offre"
       >

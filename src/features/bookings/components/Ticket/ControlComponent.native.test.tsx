@@ -4,6 +4,8 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { ControlComponent, ControlComponentProps } from './ControlComponent'
 
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+
 describe('<ControlComponent />', () => {
   const onPress = jest.fn()
 

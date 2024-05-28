@@ -22,6 +22,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
       }
     }
     accessible={true}
+    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -31,12 +32,9 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      [
-        undefined,
-        {
-          "opacity": 1,
-        },
-      ]
+      {
+        "opacity": 1,
+      }
     }
   >
     <View
@@ -104,6 +102,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
         }
       }
       accessible={true}
+      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -113,24 +112,17 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        [
-          {
-            "backgroundColor": "black",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          [
-            {
-              "backgroundColor": "black",
-              "height": 1334,
-              "width": 750,
-            },
-          ],
-        ]
+        {
+          "backgroundColor": "black",
+          "bottom": 0,
+          "height": 1334,
+          "left": 0,
+          "opacity": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": 750,
+        }
       }
       useNativeDriver={false}
     />
@@ -138,6 +130,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
       accessibilityLabelledBy="testUuidV4"
       accessibilityModal={true}
       accessibilityRole="none"
+      collapsable={false}
       deviceHeight={1334}
       deviceWidth={750}
       hideModalContentWhileAnimating={false}
@@ -153,36 +146,22 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
       scrollTo={null}
       statusBarTranslucent={true}
       style={
-        [
-          {},
-          [
+        {
+          "alignItems": "center",
+          "bottom": 0,
+          "flex": 1,
+          "justifyContent": "center",
+          "left": 0,
+          "margin": "auto",
+          "position": "absolute",
+          "right": 0,
+          "top": "auto",
+          "transform": [
             {
-              "margin": 37.5,
-              "transform": [
-                {
-                  "translateY": 0,
-                },
-              ],
+              "translateY": 0,
             },
-            {
-              "flex": 1,
-              "justifyContent": "center",
-            },
-            [
-              {
-                "alignItems": "center",
-                "bottom": 0,
-                "left": 0,
-                "position": "absolute",
-                "right": 0,
-                "top": "auto",
-              },
-              {
-                "margin": "auto",
-              },
-            ],
           ],
-        ]
+        }
       }
       supportedOrientations={
         [
@@ -342,6 +321,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                     }
                   }
                   accessible={true}
+                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -351,22 +331,14 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "paddingBottom": 4,
-                          "paddingLeft": 4,
-                          "paddingRight": 4,
-                          "paddingTop": 4,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
+                    {
+                      "opacity": 1,
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                      "userSelect": "auto",
+                    }
                   }
                   testID="Fermer la modale"
                 >
@@ -437,6 +409,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                   }
                 }
                 accessible={false}
+                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -446,16 +419,10 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
+                  {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
                 }
               >
                 <View
@@ -555,6 +522,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                   }
                 }
                 accessible={false}
+                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -564,16 +532,10 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
+                  {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
                 }
               >
                 <View
@@ -690,6 +652,7 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
                 }
               }
               accessible={true}
+              collapsable={false}
               focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -699,31 +662,22 @@ exports[`VenueMapLocationModal should render correctly if modal visible 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#F1F1F4",
-                      "borderRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "paddingBottom": 2,
-                      "paddingLeft": 20,
-                      "paddingRight": 20,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    },
-                    {},
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "opacity": 1,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "userSelect": "auto",
+                  "width": "100%",
+                }
               }
               testID="Valider et voir sur la carte"
             >

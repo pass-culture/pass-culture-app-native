@@ -193,27 +193,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                 }
               }
               accessible={true}
-              animation={
-                {
-                  "from": {
-                    "transform": [
-                      {
-                        "scale": 0.95,
-                      },
-                    ],
-                  },
-                  "to": {
-                    "transform": [
-                      {
-                        "scale": 1,
-                      },
-                    ],
-                  },
-                }
-              }
-              delay={200}
-              duration={240}
-              easing={[Function]}
+              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -224,20 +204,23 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               onStartShouldSetResponder={[Function]}
               status="cette année"
               style={
-                [
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 4,
-                    "borderWidth": 1,
-                    "marginHorizontal": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                  },
-                ]
+                {
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 4,
+                  "borderWidth": 1,
+                  "marginHorizontal": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 16,
+                  "transform": [
+                    {
+                      "scale": 0.95,
+                    },
+                  ],
+                }
               }
             >
               <View>
@@ -2424,182 +2407,6 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
         }
       />
       <View
-        backgroundColor="#f3ecff"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#f3ecff",
-              "borderRadius": 8,
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "paddingBottom": 16,
-              "paddingLeft": 16,
-              "paddingRight": 16,
-              "paddingTop": 16,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
-            textColor="#161617"
-          >
-            Cette page a-t-elle été utile ? Aide-nous à l’améliorer en répondant à notre questionnaire.
-          </Text>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            accessibilityLabel="Donner mon avis"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "borderRadius": 0,
-                    "borderWidth": 0,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginTop": 0,
-                    "maxWidth": 500,
-                    "minHeight": 20,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "width": "auto",
-                  },
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Donner mon avis"
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Nouvelle fenêtre"
-                  height={16}
-                  testID="button-icon-left"
-                  width={16}
-                >
-                  <Text>
-                    button-icon-left-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#320096",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Donner mon avis
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
         style={
           [
             {
@@ -2664,6 +2471,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             }
           }
           accessible={true}
+          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -2673,26 +2481,18 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "borderRadius": 24,
-                  "justifyContent": "center",
-                  "overflow": "hidden",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "justifyContent": "center",
+              "opacity": 1,
+              "overflow": "hidden",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "userSelect": "auto",
+            }
           }
           testID="Créer un compte"
         >
@@ -2796,6 +2596,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               }
             }
             accessible={true}
+            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -2805,16 +2606,10 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "opacity": 1,
+                "userSelect": "auto",
+              }
             }
             testID="Se connecter"
           >
@@ -2882,25 +2677,21 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
     </View>
   </RCTScrollView>,
   <View
+    collapsable={false}
     height={80}
     style={
-      [
-        {
-          "borderBottomColor": "#F1F1F4",
-          "borderBottomWidth": 1,
-          "height": 80,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-        {
-          "backdropFilter": "blur(0px)",
-          "backgroundColor": "rgba(255, 255, 255, 0)",
-          "borderBottomWidth": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(0px)",
+        "backgroundColor": "rgba(255, 255, 255, 0)",
+        "borderBottomColor": "#F1F1F4",
+        "borderBottomWidth": 0,
+        "height": 80,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
@@ -2915,21 +2706,18 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
       }
     />
     <View
+      collapsable={false}
       height={80}
       style={
-        [
-          {
-            "height": 80,
-            "left": 0,
-            "overflow": "hidden",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
+        {
+          "height": 80,
+          "left": 0,
+          "opacity": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
       }
     >
       <BlurView
@@ -3005,6 +2793,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -3014,43 +2803,30 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "borderRadius": 40,
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "borderRadius": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
         }
         testID="Revenir en arrière"
       >
         <View
+          collapsable={false}
           style={
-            [
-              {
-                "alignItems": "center",
-                "aspectRatio": 1,
-                "backgroundColor": "#ffffff",
-                "borderColor": "#F1F1F4",
-                "borderRadius": 40,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "width": 40,
-              },
-              {
-                "backgroundColor": "rgba(255, 255, 255, 1)",
-                "borderColor": "rgba(241, 241, 244, 1)",
-                "transform": undefined,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "transform": undefined,
+              "width": 40,
+            }
           }
           testID="AnimatedHeaderIconRoundContainer"
         >
@@ -3066,15 +2842,12 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             }
           >
             <View
+              collapsable={false}
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "opacity": 1,
+                  "position": "absolute",
+                }
               }
               testID="initial-icon-container"
             >
@@ -3089,15 +2862,12 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               </View>
             </View>
             <View
+              collapsable={false}
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
+                {
+                  "opacity": 0,
+                  "position": "absolute",
+                }
               }
               testID="final-icon-container"
             >
@@ -3127,18 +2897,15 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
       />
       <Text
         accessibilityHidden={true}
+        collapsable={false}
         numberOfLines={2}
         style={
-          [
-            {
-              "color": "#ffffff",
-              "flexShrink": 1,
-              "textAlign": "center",
-            },
-            {
-              "opacity": 0,
-            },
-          ]
+          {
+            "color": "#ffffff",
+            "flexShrink": 1,
+            "opacity": 0,
+            "textAlign": "center",
+          }
         }
       >
         <Text
@@ -3385,27 +3152,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                 }
               }
               accessible={true}
-              animation={
-                {
-                  "from": {
-                    "transform": [
-                      {
-                        "scale": 0.95,
-                      },
-                    ],
-                  },
-                  "to": {
-                    "transform": [
-                      {
-                        "scale": 1,
-                      },
-                    ],
-                  },
-                }
-              }
-              delay={200}
-              duration={240}
-              easing={[Function]}
+              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -3416,20 +3163,23 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               onStartShouldSetResponder={[Function]}
               status="cette année"
               style={
-                [
-                  {
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#90949D",
-                    "borderRadius": 4,
-                    "borderWidth": 1,
-                    "marginHorizontal": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                  },
-                ]
+                {
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#90949D",
+                  "borderRadius": 4,
+                  "borderWidth": 1,
+                  "marginHorizontal": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "paddingTop": 16,
+                  "transform": [
+                    {
+                      "scale": 0.95,
+                    },
+                  ],
+                }
               }
             >
               <View>
@@ -5548,182 +5298,6 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
         }
       />
       <View
-        backgroundColor="#f3ecff"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#f3ecff",
-              "borderRadius": 8,
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "paddingBottom": 16,
-              "paddingLeft": 16,
-              "paddingRight": 16,
-              "paddingTop": 16,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
-            textColor="#161617"
-          >
-            Cette page a-t-elle été utile ? Aide-nous à l’améliorer en répondant à notre questionnaire.
-          </Text>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            accessibilityLabel="Donner mon avis"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "borderRadius": 0,
-                    "borderWidth": 0,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginTop": 0,
-                    "maxWidth": 500,
-                    "minHeight": 20,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "width": "auto",
-                  },
-                  {
-                    "backgroundColor": "transparent",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Donner mon avis"
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "flexDirection": "row",
-                      "flexShrink": 0,
-                    },
-                  ]
-                }
-              >
-                <View
-                  accessibilityLabel="Nouvelle fenêtre"
-                  height={16}
-                  testID="button-icon-left"
-                  width={16}
-                >
-                  <Text>
-                    button-icon-left-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "width": 8,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#320096",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Donner mon avis
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
         numberOfSpaces={8}
         style={
           [
@@ -5736,25 +5310,21 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
     </View>
   </RCTScrollView>,
   <View
+    collapsable={false}
     height={80}
     style={
-      [
-        {
-          "borderBottomColor": "#F1F1F4",
-          "borderBottomWidth": 1,
-          "height": 80,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-        {
-          "backdropFilter": "blur(0px)",
-          "backgroundColor": "rgba(255, 255, 255, 0)",
-          "borderBottomWidth": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(0px)",
+        "backgroundColor": "rgba(255, 255, 255, 0)",
+        "borderBottomColor": "#F1F1F4",
+        "borderBottomWidth": 0,
+        "height": 80,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
@@ -5769,21 +5339,18 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
       }
     />
     <View
+      collapsable={false}
       height={80}
       style={
-        [
-          {
-            "height": 80,
-            "left": 0,
-            "overflow": "hidden",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
+        {
+          "height": 80,
+          "left": 0,
+          "opacity": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
       }
     >
       <BlurView
@@ -5859,6 +5426,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -5868,43 +5436,30 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "borderRadius": 40,
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "borderRadius": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
         }
         testID="Revenir en arrière"
       >
         <View
+          collapsable={false}
           style={
-            [
-              {
-                "alignItems": "center",
-                "aspectRatio": 1,
-                "backgroundColor": "#ffffff",
-                "borderColor": "#F1F1F4",
-                "borderRadius": 40,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "width": 40,
-              },
-              {
-                "backgroundColor": "rgba(255, 255, 255, 1)",
-                "borderColor": "rgba(241, 241, 244, 1)",
-                "transform": undefined,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "transform": undefined,
+              "width": 40,
+            }
           }
           testID="AnimatedHeaderIconRoundContainer"
         >
@@ -5920,15 +5475,12 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
             }
           >
             <View
+              collapsable={false}
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "opacity": 1,
+                  "position": "absolute",
+                }
               }
               testID="initial-icon-container"
             >
@@ -5943,15 +5495,12 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               </View>
             </View>
             <View
+              collapsable={false}
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
+                {
+                  "opacity": 0,
+                  "position": "absolute",
+                }
               }
               testID="final-icon-container"
             >
@@ -5981,18 +5530,15 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
       />
       <Text
         accessibilityHidden={true}
+        collapsable={false}
         numberOfLines={2}
         style={
-          [
-            {
-              "color": "#ffffff",
-              "flexShrink": 1,
-              "textAlign": "center",
-            },
-            {
-              "opacity": 0,
-            },
-          ]
+          {
+            "color": "#ffffff",
+            "flexShrink": 1,
+            "opacity": 0,
+            "textAlign": "center",
+          }
         }
       >
         <Text

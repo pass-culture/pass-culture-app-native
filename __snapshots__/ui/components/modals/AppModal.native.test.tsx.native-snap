@@ -53,25 +53,30 @@ exports[`<AppModal /> on big screen 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       [
-        {
-          "backgroundColor": "black",
-          "bottom": 0,
-          "left": 0,
-          "opacity": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
         [
           {
             "backgroundColor": "black",
-            "height": 1334,
-            "width": 750,
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
           },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
         ],
+        {},
+        {
+          "opacity": 0,
+        },
       ]
     }
-    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
@@ -93,34 +98,44 @@ exports[`<AppModal /> on big screen 1`] = `
     statusBarTranslucent={true}
     style={
       [
-        {},
         [
-          {
-            "margin": 37.5,
-            "transform": [
-              {
-                "translateY": 0,
-              },
-            ],
-          },
-          {
-            "flex": 1,
-            "justifyContent": "center",
-          },
+          {},
           [
             {
-              "alignItems": "center",
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": 0,
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
             },
             {
-              "margin": "auto",
+              "flex": 1,
+              "justifyContent": "center",
             },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              {
+                "margin": "auto",
+              },
+            ],
           ],
         ],
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
       ]
     }
     supportedOrientations={
@@ -130,7 +145,6 @@ exports[`<AppModal /> on big screen 1`] = `
       ]
     }
     swipeThreshold={100}
-    useNativeDriver={false}
   >
     <View
       height={428}
@@ -332,25 +346,30 @@ exports[`<AppModal /> on small screen 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       [
-        {
-          "backgroundColor": "black",
-          "bottom": 0,
-          "left": 0,
-          "opacity": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
         [
           {
             "backgroundColor": "black",
-            "height": 1334,
-            "width": 750,
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
           },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
         ],
+        {},
+        {
+          "opacity": 0,
+        },
       ]
     }
-    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
@@ -372,34 +391,44 @@ exports[`<AppModal /> on small screen 1`] = `
     statusBarTranslucent={true}
     style={
       [
-        {},
         [
-          {
-            "margin": 37.5,
-            "transform": [
-              {
-                "translateY": 0,
-              },
-            ],
-          },
-          {
-            "flex": 1,
-            "justifyContent": "center",
-          },
+          {},
           [
             {
-              "alignItems": "center",
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": "auto",
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
             },
             {
-              "margin": "auto",
+              "flex": 1,
+              "justifyContent": "center",
             },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "margin": "auto",
+              },
+            ],
           ],
         ],
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
       ]
     }
     supportedOrientations={
@@ -409,7 +438,6 @@ exports[`<AppModal /> on small screen 1`] = `
       ]
     }
     swipeThreshold={100}
-    useNativeDriver={false}
   >
     <View
       height={428}
@@ -611,34 +639,44 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
     statusBarTranslucent={true}
     style={
       [
-        {},
         [
-          {
-            "margin": 37.5,
-            "transform": [
-              {
-                "translateY": 0,
-              },
-            ],
-          },
-          {
-            "flex": 1,
-            "justifyContent": "center",
-          },
+          {},
           [
             {
-              "alignItems": "center",
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": "auto",
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
             },
             {
-              "margin": "auto",
+              "flex": 1,
+              "justifyContent": "center",
             },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "margin": "auto",
+              },
+            ],
           ],
         ],
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
       ]
     }
     supportedOrientations={
@@ -648,7 +686,6 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
       ]
     }
     swipeThreshold={100}
-    useNativeDriver={false}
   >
     <View
       height={428}
@@ -851,25 +888,30 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       [
-        {
-          "backgroundColor": "black",
-          "bottom": 0,
-          "left": 0,
-          "opacity": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
         [
           {
             "backgroundColor": "black",
-            "height": 1334,
-            "width": 750,
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
           },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
         ],
+        {},
+        {
+          "opacity": 0,
+        },
       ]
     }
-    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
@@ -891,34 +933,44 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
     statusBarTranslucent={true}
     style={
       [
-        {},
         [
-          {
-            "margin": 37.5,
-            "transform": [
-              {
-                "translateY": 0,
-              },
-            ],
-          },
-          {
-            "flex": 1,
-            "justifyContent": "center",
-          },
+          {},
           [
             {
-              "alignItems": "center",
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": "auto",
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
             },
             {
-              "margin": "auto",
+              "flex": 1,
+              "justifyContent": "center",
             },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "margin": "auto",
+              },
+            ],
           ],
         ],
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
       ]
     }
     supportedOrientations={
@@ -928,7 +980,6 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
       ]
     }
     swipeThreshold={100}
-    useNativeDriver={false}
   >
     <View
       height={428}
@@ -1131,25 +1182,30 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       [
-        {
-          "backgroundColor": "black",
-          "bottom": 0,
-          "left": 0,
-          "opacity": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
         [
           {
             "backgroundColor": "black",
-            "height": 1334,
-            "width": 750,
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
           },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
         ],
+        {},
+        {
+          "opacity": 0,
+        },
       ]
     }
-    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
@@ -1171,34 +1227,44 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
     statusBarTranslucent={true}
     style={
       [
-        {},
         [
-          {
-            "margin": 37.5,
-            "transform": [
-              {
-                "translateY": 0,
-              },
-            ],
-          },
-          {
-            "flex": 1,
-            "justifyContent": "center",
-          },
+          {},
           [
             {
-              "alignItems": "center",
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": "auto",
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
             },
             {
-              "margin": "auto",
+              "flex": 1,
+              "justifyContent": "center",
             },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "margin": "auto",
+              },
+            ],
           ],
         ],
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
       ]
     }
     supportedOrientations={
@@ -1208,7 +1274,6 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
       ]
     }
     swipeThreshold={100}
-    useNativeDriver={false}
   >
     <View
       height={428}
@@ -1411,25 +1476,30 @@ exports[`<AppModal /> with left icon render 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       [
-        {
-          "backgroundColor": "black",
-          "bottom": 0,
-          "left": 0,
-          "opacity": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
         [
           {
             "backgroundColor": "black",
-            "height": 1334,
-            "width": 750,
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
           },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
         ],
+        {},
+        {
+          "opacity": 0,
+        },
       ]
     }
-    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
@@ -1451,34 +1521,44 @@ exports[`<AppModal /> with left icon render 1`] = `
     statusBarTranslucent={true}
     style={
       [
-        {},
         [
-          {
-            "margin": 37.5,
-            "transform": [
-              {
-                "translateY": 0,
-              },
-            ],
-          },
-          {
-            "flex": 1,
-            "justifyContent": "center",
-          },
+          {},
           [
             {
-              "alignItems": "center",
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": "auto",
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
             },
             {
-              "margin": "auto",
+              "flex": 1,
+              "justifyContent": "center",
             },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "margin": "auto",
+              },
+            ],
           ],
         ],
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
       ]
     }
     supportedOrientations={
@@ -1488,7 +1568,6 @@ exports[`<AppModal /> with left icon render 1`] = `
       ]
     }
     swipeThreshold={100}
-    useNativeDriver={false}
   >
     <View
       height={428}
@@ -1761,25 +1840,30 @@ exports[`<AppModal /> with minimal props 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       [
-        {
-          "backgroundColor": "black",
-          "bottom": 0,
-          "left": 0,
-          "opacity": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
         [
           {
             "backgroundColor": "black",
-            "height": 1334,
-            "width": 750,
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
           },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
         ],
+        {},
+        {
+          "opacity": 0,
+        },
       ]
     }
-    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
@@ -1801,34 +1885,44 @@ exports[`<AppModal /> with minimal props 1`] = `
     statusBarTranslucent={true}
     style={
       [
-        {},
         [
-          {
-            "margin": 37.5,
-            "transform": [
-              {
-                "translateY": 0,
-              },
-            ],
-          },
-          {
-            "flex": 1,
-            "justifyContent": "center",
-          },
+          {},
           [
             {
-              "alignItems": "center",
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": "auto",
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
             },
             {
-              "margin": "auto",
+              "flex": 1,
+              "justifyContent": "center",
             },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "margin": "auto",
+              },
+            ],
           ],
         ],
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
       ]
     }
     supportedOrientations={
@@ -1838,7 +1932,6 @@ exports[`<AppModal /> with minimal props 1`] = `
       ]
     }
     swipeThreshold={100}
-    useNativeDriver={false}
   >
     <View
       height={428}
@@ -2041,25 +2134,30 @@ exports[`<AppModal /> with right icon render 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       [
-        {
-          "backgroundColor": "black",
-          "bottom": 0,
-          "left": 0,
-          "opacity": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
         [
           {
             "backgroundColor": "black",
-            "height": 1334,
-            "width": 750,
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
           },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
         ],
+        {},
+        {
+          "opacity": 0,
+        },
       ]
     }
-    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
@@ -2081,34 +2179,44 @@ exports[`<AppModal /> with right icon render 1`] = `
     statusBarTranslucent={true}
     style={
       [
-        {},
         [
-          {
-            "margin": 37.5,
-            "transform": [
-              {
-                "translateY": 0,
-              },
-            ],
-          },
-          {
-            "flex": 1,
-            "justifyContent": "center",
-          },
+          {},
           [
             {
-              "alignItems": "center",
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": "auto",
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
             },
             {
-              "margin": "auto",
+              "flex": 1,
+              "justifyContent": "center",
             },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "margin": "auto",
+              },
+            ],
           ],
         ],
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
       ]
     }
     supportedOrientations={
@@ -2118,7 +2226,6 @@ exports[`<AppModal /> with right icon render 1`] = `
       ]
     }
     swipeThreshold={100}
-    useNativeDriver={false}
   >
     <View
       height={428}
@@ -2381,25 +2488,30 @@ exports[`<AppModal /> without children 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       [
-        {
-          "backgroundColor": "black",
-          "bottom": 0,
-          "left": 0,
-          "opacity": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
         [
           {
             "backgroundColor": "black",
-            "height": 1334,
-            "width": 750,
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
           },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
         ],
+        {},
+        {
+          "opacity": 0,
+        },
       ]
     }
-    useNativeDriver={false}
   />
   <View
     accessibilityLabelledBy="testUuidV4"
@@ -2421,34 +2533,44 @@ exports[`<AppModal /> without children 1`] = `
     statusBarTranslucent={true}
     style={
       [
-        {},
         [
-          {
-            "margin": 37.5,
-            "transform": [
-              {
-                "translateY": 0,
-              },
-            ],
-          },
-          {
-            "flex": 1,
-            "justifyContent": "center",
-          },
+          {},
           [
             {
-              "alignItems": "center",
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": "auto",
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
             },
             {
-              "margin": "auto",
+              "flex": 1,
+              "justifyContent": "center",
             },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "margin": "auto",
+              },
+            ],
           ],
         ],
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
       ]
     }
     supportedOrientations={
@@ -2458,7 +2580,6 @@ exports[`<AppModal /> without children 1`] = `
       ]
     }
     swipeThreshold={100}
-    useNativeDriver={false}
   >
     <View
       height={428}

@@ -14,6 +14,7 @@ import { fireEvent, render, screen } from 'tests/utils'
 import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 
 jest.mock('features/auth/context/AuthContext')
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd') }
 

@@ -32,6 +32,9 @@ jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))
 
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+jest.useFakeTimers()
+
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>

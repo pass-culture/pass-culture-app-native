@@ -79,6 +79,7 @@ exports[`BookingDetails should render correctly 1`] = `
             }
           }
           accessible={false}
+          collapsable={false}
           focusable={false}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -88,16 +89,10 @@ exports[`BookingDetails should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
+            {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
           }
         />
       </View>
@@ -342,6 +337,7 @@ exports[`BookingDetails should render correctly 1`] = `
                           }
                         }
                         accessible={false}
+                        collapsable={false}
                         focusable={false}
                         onClick={[Function]}
                         onResponderGrant={[Function]}
@@ -351,20 +347,12 @@ exports[`BookingDetails should render correctly 1`] = `
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "alignSelf": "center",
-                                "marginBottom": 16,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
+                          {
+                            "alignSelf": "center",
+                            "marginBottom": 16,
+                            "opacity": 1,
+                            "userSelect": "auto",
+                          }
                         }
                       >
                         <Text
@@ -403,6 +391,7 @@ exports[`BookingDetails should render correctly 1`] = `
                           }
                         }
                         accessible={true}
+                        collapsable={false}
                         focusable={true}
                         onClick={[Function]}
                         onResponderGrant={[Function]}
@@ -412,26 +401,18 @@ exports[`BookingDetails should render correctly 1`] = `
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          [
-                            [
-                              {
-                                "userSelect": "auto",
-                              },
-                              {
-                                "alignItems": "center",
-                                "borderRadius": 24,
-                                "justifyContent": "center",
-                                "overflow": "hidden",
-                                "paddingBottom": 0,
-                                "paddingLeft": 0,
-                                "paddingRight": 0,
-                                "paddingTop": 0,
-                              },
-                            ],
-                            {
-                              "opacity": 1,
-                            },
-                          ]
+                          {
+                            "alignItems": "center",
+                            "borderRadius": 24,
+                            "justifyContent": "center",
+                            "opacity": 1,
+                            "overflow": "hidden",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "userSelect": "auto",
+                          }
                         }
                         testID="Accéder à l’offre en ligne"
                       >
@@ -603,6 +584,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 }
               }
               accessible={true}
+              collapsable={false}
               focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -612,16 +594,10 @@ exports[`BookingDetails should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
               }
               testID="Date : Le 15 mars 2021 à 21h00"
             >
@@ -725,6 +701,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 }
               }
               accessible={false}
+              collapsable={false}
               focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -734,16 +711,10 @@ exports[`BookingDetails should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
               }
             >
               <View
@@ -932,6 +903,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 }
               }
               accessible={true}
+              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -941,34 +913,24 @@ exports[`BookingDetails should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "borderRadius": 0,
-                      "borderWidth": 0,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "marginTop": 0,
-                      "maxWidth": 500,
-                      "minHeight": 20,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "width": "auto",
-                    },
-                    {
-                      "backgroundColor": "transparent",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 0,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "marginTop": 0,
+                  "maxWidth": 500,
+                  "minHeight": 20,
+                  "opacity": 1,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "userSelect": "auto",
+                  "width": "auto",
+                }
               }
               testID="Voir l’itinéraire"
             >
@@ -1117,6 +1079,7 @@ exports[`BookingDetails should render correctly 1`] = `
                   }
                 }
                 accessible={true}
+                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1126,34 +1089,24 @@ exports[`BookingDetails should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "borderRadius": 0,
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "justifyContent": "flex-start",
-                        "marginTop": 0,
-                        "maxWidth": 500,
-                        "minHeight": 20,
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                        "width": "auto",
-                      },
-                      {
-                        "backgroundColor": "transparent",
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 0,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginTop": 0,
+                    "maxWidth": 500,
+                    "minHeight": 20,
+                    "opacity": 1,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "userSelect": "auto",
+                    "width": "auto",
+                  }
                 }
                 testID="Donner mon avis"
               >
@@ -1259,6 +1212,7 @@ exports[`BookingDetails should render correctly 1`] = `
               }
             }
             accessible={true}
+            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1268,30 +1222,21 @@ exports[`BookingDetails should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  },
-                  {},
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
+              {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "minHeight": 40,
+                "opacity": 1,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "userSelect": "auto",
+                "width": "100%",
+              }
             }
             testID="Voir le détail de l’offre"
           >
@@ -1375,25 +1320,21 @@ exports[`BookingDetails should render correctly 1`] = `
     </View>
   </RCTScrollView>
   <View
+    collapsable={false}
     height={80}
     style={
-      [
-        {
-          "borderBottomColor": "#F1F1F4",
-          "borderBottomWidth": 1,
-          "height": 80,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-        {
-          "backdropFilter": "blur(0px)",
-          "backgroundColor": "rgba(255, 255, 255, 0)",
-          "borderBottomWidth": 0,
-        },
-      ]
+      {
+        "backdropFilter": "blur(0px)",
+        "backgroundColor": "rgba(255, 255, 255, 0)",
+        "borderBottomColor": "#F1F1F4",
+        "borderBottomWidth": 0,
+        "height": 80,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
     }
   >
     <View
@@ -1408,21 +1349,18 @@ exports[`BookingDetails should render correctly 1`] = `
       }
     />
     <View
+      collapsable={false}
       height={80}
       style={
-        [
-          {
-            "height": 80,
-            "left": 0,
-            "overflow": "hidden",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
+        {
+          "height": 80,
+          "left": 0,
+          "opacity": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
       }
     >
       <BlurView
@@ -1498,6 +1436,7 @@ exports[`BookingDetails should render correctly 1`] = `
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -1507,43 +1446,30 @@ exports[`BookingDetails should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "borderRadius": 40,
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "borderRadius": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
         }
         testID="Revenir en arrière"
       >
         <View
+          collapsable={false}
           style={
-            [
-              {
-                "alignItems": "center",
-                "aspectRatio": 1,
-                "backgroundColor": "#ffffff",
-                "borderColor": "#F1F1F4",
-                "borderRadius": 40,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "width": 40,
-              },
-              {
-                "backgroundColor": "rgba(255, 255, 255, 1)",
-                "borderColor": "rgba(241, 241, 244, 1)",
-                "transform": undefined,
-              },
-            ]
+            {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "transform": undefined,
+              "width": 40,
+            }
           }
           testID="AnimatedHeaderIconRoundContainer"
         >
@@ -1559,15 +1485,12 @@ exports[`BookingDetails should render correctly 1`] = `
             }
           >
             <View
+              collapsable={false}
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                  {
-                    "opacity": 1,
-                  },
-                ]
+                {
+                  "opacity": 1,
+                  "position": "absolute",
+                }
               }
               testID="initial-icon-container"
             >
@@ -1582,15 +1505,12 @@ exports[`BookingDetails should render correctly 1`] = `
               </View>
             </View>
             <View
+              collapsable={false}
               style={
-                [
-                  {
-                    "position": "absolute",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
+                {
+                  "opacity": 0,
+                  "position": "absolute",
+                }
               }
               testID="final-icon-container"
             >
@@ -1620,18 +1540,15 @@ exports[`BookingDetails should render correctly 1`] = `
       />
       <Text
         accessibilityHidden={true}
+        collapsable={false}
         numberOfLines={2}
         style={
-          [
-            {
-              "color": "#ffffff",
-              "flexShrink": 1,
-              "textAlign": "center",
-            },
-            {
-              "opacity": 0,
-            },
-          ]
+          {
+            "color": "#ffffff",
+            "flexShrink": 1,
+            "opacity": 0,
+            "textAlign": "center",
+          }
         }
       >
         <Text
