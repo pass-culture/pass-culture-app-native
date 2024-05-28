@@ -10,7 +10,6 @@ const props = {
   imageUrl:
     'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
   distanceToOffer: '',
-  subtitles: ['Séances de cinéma', '14 avril 2024'],
   price: '120€',
 }
 

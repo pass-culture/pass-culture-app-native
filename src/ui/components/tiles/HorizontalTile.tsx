@@ -1,30 +1,29 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type Props = {
+type Props = PropsWithChildren<{
   title: string
   categoryId: CategoryIdEnum
   imageUrl?: string
   distanceToOffer?: string
-  subtitles: string[]
   price?: string
   withRightArrow?: boolean
-}
+}>
 
 export const HorizontalTile = ({
   title,
   categoryId,
   imageUrl,
   distanceToOffer,
-  subtitles,
   price,
   withRightArrow,
+  children,
 }: Props) => {
   return (
     <React.Fragment>
@@ -52,16 +51,7 @@ export const HorizontalTile = ({
             </Row>
           )}
         </Row>
-        {!!subtitles?.length &&
-          subtitles?.map((subtitle, index) => (
-            <Body
-              ellipsizeMode="tail"
-              numberOfLines={1}
-              testID="native-category-value"
-              key={`${subtitle}_${index}`}>
-              {subtitle}
-            </Body>
-          ))}
+        {children}
         {price ? <Typo.Caption>{price}</Typo.Caption> : null}
       </Column>
     </React.Fragment>
@@ -81,10 +71,6 @@ const Row = styled.View({
 
 const Distance = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'right',
-  color: theme.colors.greyDark,
-}))
-
-const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
