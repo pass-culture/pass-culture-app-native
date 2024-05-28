@@ -30,6 +30,7 @@ const modules = {
   [HomepageModuleType.VenueMapModule]: VenueMapModule,
   [HomepageModuleType.VideoModule]: VideoModule,
   [HomepageModuleType.VenuesModule]: VenuesModule,
+  [HomepageModuleType.VideoCarouselModule]: null,
 }
 
 const UnmemoizedModule = ({
