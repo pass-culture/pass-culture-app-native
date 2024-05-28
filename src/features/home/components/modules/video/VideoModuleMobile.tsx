@@ -24,9 +24,12 @@ const PLAYER_TOP_MARGIN = getSpacing(12.5)
 const PLAYER_SIZE = getSpacing(14.5)
 
 const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + PLAYER_SIZE / 2
+const COLOR_CATEGORY_BACKGROUND_HEIGHT = getSpacing(37.5)
 
-const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER =
-  THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(16)
+const getColorCategoryBackgroundHeightMultiOffer = (enableMultiVideoModule: boolean) =>
+  enableMultiVideoModule
+    ? THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + COLOR_CATEGORY_BACKGROUND_HEIGHT
+    : THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(16)
 
 const NEW_PLAYER_SIZE = getSpacing(24)
 
@@ -49,6 +52,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
 
       <View testID="mobile-video-module">
         <ColorCategoryBackground
+          enableMultiVideoModule={enableMultiVideoModule}
           colorCategoryBackgroundHeightUniqueOffer={colorCategoryBackgroundHeightUniqueOffer}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
@@ -91,13 +95,14 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
               color={props.color}
               hideModal={props.hideVideoModal}
               analyticsParams={props.analyticsParams}
+              enableMultiVideoModule={enableMultiVideoModule}
             />
           )}
         </VideoOfferContainer>
       </View>
       {props.isMultiOffer ? (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={2} />
+          {enableMultiVideoModule ? null : <Spacer.Column numberOfSpaces={2} />}
           <VideoMultiOfferPlaylist
             offers={props.offers}
             hideModal={props.hideVideoModal}
@@ -114,9 +119,11 @@ const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
 
-const VideoOfferContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
-}))
+const VideoOfferContainer = styled.View<{ enableMultiVideoModule: boolean }>(
+  ({ theme, enableMultiVideoModule }) => ({
+    marginHorizontal: enableMultiVideoModule ? 0 : theme.contentPage.marginHorizontal,
+  })
+)
 
 const Thumbnail = styled.ImageBackground(({ theme }) => ({
   // the overflow: hidden allow to add border radius to the image
@@ -147,13 +154,14 @@ const PlayerContainer = styled.View({
 const ColorCategoryBackground = styled(LinearGradient)<{
   colorCategoryBackgroundHeightUniqueOffer: number
   isMultiOffer: boolean
-}>(({ colorCategoryBackgroundHeightUniqueOffer, isMultiOffer }) => ({
+  enableMultiVideoModule: boolean
+}>(({ colorCategoryBackgroundHeightUniqueOffer, isMultiOffer, enableMultiVideoModule }) => ({
   position: 'absolute',
   top: GRADIENT_START_POSITION,
   right: 0,
   left: 0,
   height: isMultiOffer
-    ? COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER
+    ? getColorCategoryBackgroundHeightMultiOffer(enableMultiVideoModule)
     : colorCategoryBackgroundHeightUniqueOffer,
 }))
 
@@ -203,6 +211,9 @@ const StyledTitleComponent = styled(Typo.Title3).attrs({
   numberOfLines: 2,
 })({})
 
-const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)({
-  flexGrow: 1,
-})
+const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)<{ enableMultiVideoModule: boolean }>(
+  ({ enableMultiVideoModule, theme }) => ({
+    flexGrow: 1,
+    marginHorizontal: enableMultiVideoModule ? theme.contentPage.marginHorizontal : 0,
+  })
+)
