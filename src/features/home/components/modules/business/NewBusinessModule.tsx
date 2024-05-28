@@ -108,7 +108,11 @@ const UnmemoizedNewBusinessModule = (props: NewBusinessModuleProps) => {
               </StyledBody>
             </Column>
             <ButtonContainer>
-              <StyledButton wording={wordingCTA} onPress={onPress} />
+              <StyledButton
+                wording={wordingCTA}
+                onPress={onPress}
+                accessibilityLabel={accessibilityLabel}
+              />
             </ButtonContainer>
           </Row>
         </StyledImageBackground>

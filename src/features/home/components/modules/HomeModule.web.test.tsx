@@ -8,6 +8,7 @@ import {
   formattedBusinessModule,
   formattedCategoryListModule,
   formattedExclusivityModule,
+  formattedNewBusinessModule,
   formattedOffersModule,
   formattedRecommendedOffersModule,
   formattedThematicHighlightModule,
@@ -74,6 +75,32 @@ describe('<HomeModule />', () => {
   // Test a11y rules on each module instead of testing them on the whole page
   // because it's easier to test them one by one
   describe('Accessibility', () => {
+    it('OldBusiness module should not have basic accessibility issues', async () => {
+      mockedUseFeatureFlag.mockReturnValueOnce(false)
+      const { container } = renderHomeModule(formattedBusinessModule)
+
+      expect(screen.getByText('Débloque ton crédit !')).toBeInTheDocument()
+
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
+
+    it('NewBusiness module should not have basic accessibility issues', async () => {
+      mockedUseFeatureFlag.mockReturnValueOnce(true)
+
+      const { container } = renderHomeModule(formattedNewBusinessModule)
+
+      expect(screen.getByText('Postuler')).toBeInTheDocument()
+
+      let results
+      await act(async () => {
+        results = await checkAccessibilityFor(container)
+      })
+
+      expect(results).toHaveNoViolations()
+    })
+
     it('Highlight module should not have basic accessibility issues', async () => {
       mockedUseFeatureFlag.mockReturnValueOnce(true)
       mockUseHighlightOffer.mockReturnValueOnce(highlightOfferFixture)
@@ -97,47 +124,11 @@ describe('<HomeModule />', () => {
       })
     })
 
-    it('Business module should not have basic accessibility issues', async () => {
-      const { container } = renderHomeModule(formattedBusinessModule)
-
-      expect(screen.getByText('Débloque ton crédit !')).toBeInTheDocument()
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
     it('CategoryList module should not have basic accessibility issues', async () => {
       const { container } = renderHomeModule(formattedCategoryListModule)
 
       expect(await screen.findByText('Cette semaine sur le pass')).toBeInTheDocument()
 
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
-    it('Recommendation module should not have basic accessibility issues', async () => {
-      const recommendedOffers: SimilarOffersResponse = {
-        params: {
-          call_id: 'c2b19286-a4e9-4aef-9bab-3dcbbd631f0c',
-          filtered: true,
-          geo_located: true,
-          model_endpoint: 'default',
-          model_name: 'similar_offers_default_prod',
-          model_version: 'similar_offers_clicks_v2_1_prod_v_20230428T220000',
-          reco_origin: 'default',
-        },
-        results: ['102280', '102272'],
-      }
-
-      mockServer.postApi('/v1/recommendation/playlist', recommendedOffers)
-
-      const { container } = renderHomeModule(formattedRecommendedOffersModule)
-      await act(async () => {})
-
-      expect(screen.getByText('Tes évènements en ligne')).toBeInTheDocument()
-
       let results
       await act(async () => {
         results = await checkAccessibilityFor(container)
@@ -145,35 +136,64 @@ describe('<HomeModule />', () => {
 
       expect(results).toHaveNoViolations()
     })
+  })
 
-    it('ThematicHighlight module should not have basic accessibility issues', async () => {
-      mockdate.set(new Date(2024))
+  it('Recommendation module should not have basic accessibility issues', async () => {
+    const recommendedOffers: SimilarOffersResponse = {
+      params: {
+        call_id: 'c2b19286-a4e9-4aef-9bab-3dcbbd631f0c',
+        filtered: true,
+        geo_located: true,
+        model_endpoint: 'default',
+        model_name: 'similar_offers_default_prod',
+        model_version: 'similar_offers_clicks_v2_1_prod_v_20230428T220000',
+        reco_origin: 'default',
+      },
+      results: ['102280', '102272'],
+    }
 
-      const { container } = renderHomeModule(formattedThematicHighlightModule)
+    mockServer.postApi('/v1/recommendation/playlist', recommendedOffers)
 
-      await act(async () => {})
+    const { container } = renderHomeModule(formattedRecommendedOffersModule)
+    await act(async () => {})
 
-      expect(screen.getByText('Temps très fort')).toBeInTheDocument()
+    expect(screen.getByText('Tes évènements en ligne')).toBeInTheDocument()
 
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
+    let results
+    await act(async () => {
+      results = await checkAccessibilityFor(container)
     })
 
-    it('OffersModule should not have basic accessibility issues', async () => {
-      const { container } = renderHomeModule(formattedOffersModule, defaultData)
+    expect(results).toHaveNoViolations()
+  })
 
-      await act(async () => {})
+  it('ThematicHighlight module should not have basic accessibility issues', async () => {
+    mockdate.set(new Date(2024))
 
-      expect(screen.getByText('La nuit des temps')).toBeInTheDocument()
+    const { container } = renderHomeModule(formattedThematicHighlightModule)
 
-      let results
-      await act(async () => {
-        results = await checkAccessibilityFor(container)
-      })
+    await act(async () => {})
 
-      expect(results).toHaveNoViolations()
+    expect(screen.getByText('Temps très fort')).toBeInTheDocument()
+
+    const results = await checkAccessibilityFor(container)
+
+    expect(results).toHaveNoViolations()
+  })
+
+  it('OffersModule should not have basic accessibility issues', async () => {
+    const { container } = renderHomeModule(formattedOffersModule, defaultData)
+
+    await act(async () => {})
+
+    expect(screen.getByText('La nuit des temps')).toBeInTheDocument()
+
+    let results
+    await act(async () => {
+      results = await checkAccessibilityFor(container)
     })
+
+    expect(results).toHaveNoViolations()
   })
 })
 
