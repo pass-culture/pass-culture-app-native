@@ -170,14 +170,14 @@ const OnlineProfile: React.FC = () => {
                 <SectionWithSwitch
                   icon={LocationPointer}
                   iconSize={SECTION_ROW_ICON_SIZE}
-                  title="Partager ma position"
+                  title="Activer ma géolocalisation"
                   active={isGeolocSwitchActive}
                   accessibilityDescribedBy={locationActivationErrorId}
                   toggle={() => {
                     switchGeolocation()
                     debouncedLogLocationToggle(!isGeolocSwitchActive)
                   }}
-                  toggleLabel="Partager ma position"
+                  toggleLabel="Activer ma géolocalisation"
                 />
                 <InputError
                   visible={!!geolocPositionError}

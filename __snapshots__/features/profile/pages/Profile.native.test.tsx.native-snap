@@ -610,7 +610,7 @@ exports[`Profile component should render correctly 1`] = `
                         ]
                       }
                     >
-                      Partager ma position
+                      Activer ma géolocalisation
                     </Text>
                   </Text>
                 </View>
@@ -692,7 +692,7 @@ exports[`Profile component should render correctly 1`] = `
                           "userSelect": "auto",
                         }
                       }
-                      testID="Interrupteur Partager ma position"
+                      testID="Interrupteur Activer ma géolocalisation"
                     >
                       <View
                         active={true}
