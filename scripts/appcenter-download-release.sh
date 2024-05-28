@@ -80,6 +80,8 @@ function help() {
   echo
 }
 
+
+
 function android() {
   releaseId="latest"
   downloadedFile="app-${APPCENTER_ENVIRONMENT}-${APPCENTER_PLATFORM}.apk"
@@ -97,6 +99,11 @@ function android() {
         "${APPCENTER_API_URL}/apps/pass-Culture/${appName}/releases" |
         jq 'map(select(.short_version == "'"${TARGET_VERSION}"'").id)[0]'
     )" || die "Cannot retrieve AppCenter Release ID"
+
+    if [[ "${releaseId}" == null ]]; then
+      releaseId="latest"
+    fi
+
     echo "Fetched ${APPCENTER_PLATFORM} AppCenter Release ID ${releaseId} for application version ${TARGET_VERSION} (${APPCENTER_ENVIRONMENT}) with success"
   else
     echo "No version provided, it will install the latest ${APPCENTER_ENVIRONMENT} version"
@@ -121,7 +128,7 @@ function android() {
     adb install "${downloadedFile}"
   fi
 
-  if [[ "${REMOVE_AFTER_INSTALL}" = "true" ]] && [[ -f "${downloadedFile}" ]]; then
+  if [[ "${REMOVE_APK_AFTER_INSTALL}" = "true" ]] && [[ -f "${downloadedFile}" ]]; then
     echo "Removing ${downloadedFile} from your disk"
     rm "${downloadedFile}"
   fi
