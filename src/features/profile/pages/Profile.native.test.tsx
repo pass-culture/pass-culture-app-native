@@ -37,6 +37,7 @@ import {
 import * as useVersion from 'ui/hooks/useVersion'
 
 import { Profile } from './Profile'
+const GEOLOC_SWITCH = 'Interrupteur Activer ma géolocalisation'
 
 const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
   isLoggedIn: true,
@@ -150,7 +151,7 @@ describe('Profile component', () => {
         })
         renderProfile()
 
-        const geolocSwitch = await screen.findByTestId('Interrupteur Partager ma position')
+        const geolocSwitch = await screen.findByTestId(GEOLOC_SWITCH)
         const positionErrorMessage = screen.queryByText(
           `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
@@ -190,7 +191,7 @@ describe('Profile component', () => {
         })
         renderProfile()
 
-        const geolocSwitch = await screen.findByTestId('Interrupteur Partager ma position')
+        const geolocSwitch = await screen.findByTestId(GEOLOC_SWITCH)
 
         expect(geolocSwitch.parent?.props.accessibilityState.checked).toBe(false)
       })
@@ -209,7 +210,7 @@ describe('Profile component', () => {
         })
 
         await act(async () => {
-          fireEvent.press(screen.getByTestId('Interrupteur Partager ma position'))
+          fireEvent.press(screen.getByTestId(GEOLOC_SWITCH))
         })
 
         expect(mockFavoriteDispatch).toHaveBeenCalledWith({
