@@ -21,6 +21,7 @@ export enum HomepageModuleType {
   'VideoModule' = 'VideoModule',
   'HighlightOfferModule' = 'HighlightOfferModule',
   'VenueMapModule' = 'VenueMapModule',
+  'VideoCarouselModule' = 'VideoCarouselModule',
 }
 
 export type HomepageTag = 'master' | 'usergrandpublic' | 'userunderage'
@@ -82,6 +83,24 @@ export type HomepageModule =
   | CategoryListModule
   | VideoModule
   | HighlightOfferModule
+  | VideoCarouselModule
+
+export type VideoCarouselModule = {
+  type: HomepageModuleType.VideoCarouselModule
+  id: string
+  title: string
+  color: Color
+  items: VideoCarouselItem[]
+}
+
+export type VideoCarouselItem = {
+  id: string
+  title: string
+  youtubeVideoId: string
+  offerId?: string
+  tag?: string
+  homeEntryId?: string
+}
 
 export type OffersModule = {
   type: HomepageModuleType.OffersModule
