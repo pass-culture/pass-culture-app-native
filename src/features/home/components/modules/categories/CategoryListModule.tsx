@@ -129,7 +129,6 @@ export const CategoryListModule = ({
             <BicolorArrowLeft />
           </ScrollButtonForNotTouchDevice>
         ) : null}
-
         <StyledFlatList
           ListFooterComponent={ListFooterComponent}
           onContentSizeChange={onContentSizeChange}
@@ -168,8 +167,8 @@ const StyledFlatList = styled.FlatList.attrs<StyledFlatListProps>(({ theme }) =>
 }))<StyledFlatListProps>``
 
 const FlatListContainer = styled.View<{ enableAppV2CategoryBlock: boolean }>(
-  ({ theme, enableAppV2CategoryBlock }) => ({
-    ...(enableAppV2CategoryBlock
+  ({ theme, enableAppV2CategoryBlock }) =>
+    enableAppV2CategoryBlock
       ? {
           marginBottom: theme.isDesktopViewport
             ? getSpacing(DESKTOP_CATEGORY_LIST_MARGIN)
@@ -179,8 +178,7 @@ const FlatListContainer = styled.View<{ enableAppV2CategoryBlock: boolean }>(
           marginHorizontal: getSpacing(
             theme.isDesktopViewport ? DESKTOP_CATEGORY_LIST_MARGIN : MOBILE_CATEGORY_LIST_MARGIN
           ),
-        }),
-  })
+        }
 )
 
 const HeaderContainer = styled.View(({ theme }) => ({
@@ -188,18 +186,22 @@ const HeaderContainer = styled.View(({ theme }) => ({
 }))
 
 const CategoryBlockContainer = styled.View<{ enableAppV2CategoryBlock: boolean }>(
-  ({ theme, enableAppV2CategoryBlock }) => ({
-    ...(enableAppV2CategoryBlock
-      ? {}
+  ({ theme, enableAppV2CategoryBlock }) =>
+    enableAppV2CategoryBlock
+      ? {
+          paddingVertical: getSpacing(
+            theme.isDesktopViewport ? DESKTOP_CATEGORY_BLOCK_MARGIN : MOBILE_CATEGORY_BLOCK_MARGIN
+          ),
+          paddingHorizontal: getSpacing(MOBILE_CATEGORY_BLOCK_MARGIN),
+        }
       : {
           flexBasis: theme.isDesktopViewport
             ? DESKTOP_CATEGORY_BLOCK_FLEX_BASIS
             : MOBILE_CATEGORY_BLOCK_FLEX_BASIS,
-        }),
-    padding: getSpacing(
-      theme.isDesktopViewport ? DESKTOP_CATEGORY_BLOCK_MARGIN : MOBILE_CATEGORY_BLOCK_MARGIN
-    ),
-  })
+          padding: getSpacing(
+            theme.isDesktopViewport ? DESKTOP_CATEGORY_BLOCK_MARGIN : MOBILE_CATEGORY_BLOCK_MARGIN
+          ),
+        }
 )
 
 const Footer = styled.View(({ theme }) => ({

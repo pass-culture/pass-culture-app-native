@@ -3,12 +3,15 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { Color } from 'features/home/types'
+import { CategoryButtonV2 } from 'features/search/components/CategoryButton/CategoryButtonV2'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { theme } from 'theme'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 import { Shape } from './Shape'
@@ -22,6 +25,42 @@ interface CategoryBlockProps {
   onBeforePress: () => void | Promise<void>
 }
 
+const newColorMapping: Record<
+  keyof typeof Color,
+  { border: ColorsEnum; text: ColorsEnum; fill: ColorsEnum }
+> = {
+  SkyBlue: {
+    border: ColorsEnum.SKY_BLUE_DARK,
+    text: ColorsEnum.DEEP_PINK_DARK,
+    fill: ColorsEnum.SKY_BLUE_LIGHT,
+  },
+  Gold: {
+    border: ColorsEnum.GOLD_DARK,
+    text: ColorsEnum.LILAC_DARK,
+    fill: ColorsEnum.GOLD_LIGHT_200,
+  },
+  Coral: {
+    border: ColorsEnum.CORAL_DARK,
+    text: ColorsEnum.SKY_BLUE_DARK,
+    fill: ColorsEnum.CORAL_LIGHT,
+  },
+  DeepPink: {
+    border: ColorsEnum.DEEP_PINK_DARK,
+    text: ColorsEnum.AQUAMARINE_DARK,
+    fill: ColorsEnum.DEEP_PINK_LIGHT,
+  },
+  Lilac: {
+    border: ColorsEnum.LILAC_DARK,
+    text: ColorsEnum.DEEP_PINK_DARK,
+    fill: ColorsEnum.LILAC_LIGHT,
+  },
+  Aquamarine: {
+    border: ColorsEnum.AQUAMARINE_DARK,
+    text: ColorsEnum.LILAC_DARK,
+    fill: ColorsEnum.AQUAMARINE_LIGHT,
+  },
+}
+
 export function CategoryBlock({
   title,
   navigateTo,
@@ -33,24 +72,35 @@ export function CategoryBlock({
 
   return (
     <StyledInternalTouchableLink onBeforeNavigate={onBeforePress} navigateTo={navigateTo}>
-      <ColoredContainer
-        colors={gradientColorsMapping[color]}
-        enableAppV2CategoryBlock={enableAppV2CategoryBlock}>
-        <StyledShape color={color} height={BLOCK_HEIGHT} />
-        <StyledTitle numberOfLines={2}>{title}</StyledTitle>
-      </ColoredContainer>
+      {enableAppV2CategoryBlock ? (
+        <CategoryButtonV2Container
+          label={title}
+          textColor={newColorMapping[color].text}
+          fillColor={newColorMapping[color].fill}
+          borderColor={newColorMapping[color].border}
+        />
+      ) : (
+        <ColoredContainer colors={gradientColorsMapping[color]}>
+          <StyledShape color={color} height={BLOCK_HEIGHT} />
+          <StyledTitle numberOfLines={2}>{title}</StyledTitle>
+        </ColoredContainer>
+      )}
     </StyledInternalTouchableLink>
   )
 }
 
+const CategoryButtonV2Container = styled(CategoryButtonV2)({
+  flex: 1,
+  width: getSpacing(50),
+})
+
 const ColoredContainer = styled(LinearGradient).attrs({
   start: { x: 0, y: 0 },
   end: { x: 0, y: 1 },
-})<{ enableAppV2CategoryBlock: boolean }>(({ theme, enableAppV2CategoryBlock }) => ({
+})(({ theme }) => ({
   flex: 1,
   flexDirection: 'column-reverse',
   borderRadius: theme.borderRadius.radius,
-  ...(enableAppV2CategoryBlock ? { width: '200px' } : {}),
 }))
 
 const StyledShape = styled(Shape)({ position: 'absolute', right: 0 })

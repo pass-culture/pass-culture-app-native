@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { TouchableOpacityProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -15,7 +16,8 @@ type CategoryButtonV2Props = {
   textColor: ColorsEnum
   fillColor: ColorsEnum
   borderColor: ColorsEnum
-  onPress: () => void
+  style?: TouchableOpacityProps['style']
+  onPress?: () => void
   children?: never
 }
 
@@ -24,6 +26,7 @@ export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
   textColor,
   fillColor,
   borderColor,
+  style,
   onPress,
 }) => {
   const focusProps = useHandleFocus()
@@ -38,7 +41,8 @@ export const CategoryButtonV2: FunctionComponent<CategoryButtonV2Props> = ({
       accessibilityLabel={`Catégorie ${label}`}
       baseColor={fillColor}
       borderColor={borderColor}
-      textColor={textColor}>
+      textColor={textColor}
+      style={style}>
       <LabelContainer>
         <Label baseColor={textColor}>{label.toUpperCase()}</Label>
       </LabelContainer>
