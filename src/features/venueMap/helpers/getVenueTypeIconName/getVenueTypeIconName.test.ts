@@ -26,6 +26,13 @@ describe('getVenueTypeIconName', () => {
     expect(result).toEqual('map_pin')
   })
 
+  it('should display default map pin when venue type code is not known', () => {
+    // @ts-expect-error to test an unknown venue type
+    const result = getVenueTypeIconName(false, 'NEW_VENUE_TYPE')
+
+    expect(result).toEqual('map_pin')
+  })
+
   it('should display center icon for other venue type code', () => {
     const result = getVenueTypeIconName(false, VenueTypeCodeKey.OTHER)
 
