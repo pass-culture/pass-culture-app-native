@@ -5,11 +5,14 @@ import { VideoModal } from 'features/home/components/modules/video/VideoModal'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.useFakeTimers()
 
@@ -45,6 +48,16 @@ describe('VideoModal', () => {
       moduleId: 'abcd',
       modalType: 'video',
     })
+  })
+
+  it('should render properly with FF on', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+
+    renderVideoModal()
+
+    await screen.findByText('La nuit des temps')
+
+    expect(screen).toMatchSnapshot()
   })
 })
 
