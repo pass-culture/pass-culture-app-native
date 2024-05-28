@@ -17,21 +17,29 @@ import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 import { videoModuleMobileColorsMapping } from 'ui/theme/videoModuleMobileColorsMapping'
 
-const THUMBNAIL_HEIGHT = getSpacing(52.5)
+const THUMBNAIL_HEIGHT = getSpacing(45)
+const NEW_THUMBNAIL_HEIGHT = getSpacing(52.5)
 // We do not center the player icon, because when the title is 2-line long,
 // the title is to close to the player. So the player is closer to the top.
 const PLAYER_TOP_MARGIN = getSpacing(12.5)
 const PLAYER_SIZE = getSpacing(14.5)
 const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + PLAYER_SIZE / 2
 const COLOR_CATEGORY_BACKGROUND_HEIGHT = getSpacing(37.5)
-const VIDEO_THUMBNAIL_HEIGHT = THUMBNAIL_HEIGHT - GRADIENT_START_POSITION
 const MONO_OFFER_CARD_VERTICAL_SPACING = getSpacing(8)
 const NEW_PLAYER_SIZE = getSpacing(24)
 
-const getColorCategoryBackgroundHeightMultiOffer = (enableMultiVideoModule: boolean) =>
+const getVideoThumbnailHeight = (enableMultiVideoModule: boolean) =>
   enableMultiVideoModule
+    ? NEW_THUMBNAIL_HEIGHT - GRADIENT_START_POSITION
+    : THUMBNAIL_HEIGHT - GRADIENT_START_POSITION
+
+const getColorCategoryBackgroundHeightMultiOffer = (enableMultiVideoModule: boolean) => {
+  const VIDEO_THUMBNAIL_HEIGHT = getVideoThumbnailHeight(enableMultiVideoModule)
+
+  return enableMultiVideoModule
     ? VIDEO_THUMBNAIL_HEIGHT + COLOR_CATEGORY_BACKGROUND_HEIGHT
     : VIDEO_THUMBNAIL_HEIGHT + getSpacing(16)
+}
 
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
   const [monoOfferCardHeight, setMonoOfferCardHeight] = useState<number>(0)
@@ -41,7 +49,9 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
 
   const MONO_OFFER_CARD_HEIGHT = enableMultiVideoModule ? monoOfferCardHeight : getSpacing(43)
   const colorCategoryBackgroundHeightUniqueOffer =
-    VIDEO_THUMBNAIL_HEIGHT + MONO_OFFER_CARD_VERTICAL_SPACING + MONO_OFFER_CARD_HEIGHT
+    getVideoThumbnailHeight(enableMultiVideoModule) +
+    MONO_OFFER_CARD_VERTICAL_SPACING +
+    MONO_OFFER_CARD_HEIGHT
 
   const videoDuration = `${props.durationInMinutes} min`
 
@@ -70,7 +80,9 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             onPress={props.showVideoModal}
             testID="video-thumbnail"
             accessibilityRole="button">
-            <Thumbnail source={{ uri: props.videoThumbnail }}>
+            <Thumbnail
+              source={{ uri: props.videoThumbnail }}
+              enableMultiVideoModule={enableMultiVideoModule}>
               {enableMultiVideoModule ? null : <DurationCaption label={videoDuration} />}
               <TextContainer>
                 <BlackGradient />
@@ -133,17 +145,19 @@ const VideoOfferContainer = styled.View<{ enableMultiVideoModule: boolean }>(
   })
 )
 
-const Thumbnail = styled.ImageBackground(({ theme }) => ({
-  // the overflow: hidden allow to add border radius to the image
-  // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
-  overflow: 'hidden',
-  borderRadius: theme.borderRadius.radius,
-  height: THUMBNAIL_HEIGHT,
-  width: '100%',
-  border: 1,
-  borderColor: theme.colors.greyMedium,
-  backgroundColor: theme.colors.greyLight,
-}))
+const Thumbnail = styled.ImageBackground<{ enableMultiVideoModule: boolean }>(
+  ({ theme, enableMultiVideoModule }) => ({
+    // the overflow: hidden allow to add border radius to the image
+    // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
+    overflow: 'hidden',
+    borderRadius: theme.borderRadius.radius,
+    height: enableMultiVideoModule ? NEW_THUMBNAIL_HEIGHT : THUMBNAIL_HEIGHT,
+    width: '100%',
+    border: 1,
+    borderColor: theme.colors.greyMedium,
+    backgroundColor: theme.colors.greyLight,
+  })
+)
 
 const DurationCaption = styled(BlackCaption)({
   position: 'absolute',

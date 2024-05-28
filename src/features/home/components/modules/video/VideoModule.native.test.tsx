@@ -5,10 +5,13 @@ import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const mockShowModal = jest.fn()
 jest.mock('ui/components/modals/useModal', () => ({
@@ -95,12 +98,24 @@ describe('VideoModule', () => {
 
     expect(multiOfferList).toBeOnTheScreen()
   })
+
+  it('should render properly with FF on', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
+    renderVideoModule()
+
+    await screen.findByText('La nuit des temps')
+
+    expect(screen).toMatchSnapshot()
+  })
 })
 
 const offerFixture = {
   offer: {
     thumbUrl: 'http://thumbnail',
     subcategoryId: 'CONCERT',
+    name: 'La nuit des temps',
   },
   objectID: 1234,
   venue: {
