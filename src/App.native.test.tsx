@@ -16,6 +16,7 @@ jest.unmock('libs/network/NetInfoWrapper')
 jest.mock('libs/e2e/getIsMaestro', () => ({
   getIsMaestro: () => Promise.resolve(true),
 }))
+jest.mock('react-native/Libraries/LogBox/LogBox')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
