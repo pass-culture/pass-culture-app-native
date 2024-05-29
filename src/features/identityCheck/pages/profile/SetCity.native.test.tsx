@@ -10,6 +10,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
+jest.mock('libs/subcategories/useSubcategory')
+
 const POSTAL_CODE = '83570'
 
 describe('<SetCity/>', () => {

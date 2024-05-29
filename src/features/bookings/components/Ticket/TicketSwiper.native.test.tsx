@@ -6,6 +6,7 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useCategoryId')
+jest.mock('libs/subcategories/useSubcategory')
 
 const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[1]
 

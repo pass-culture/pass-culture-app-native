@@ -20,6 +20,7 @@ jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
+jest.mock('libs/subcategories/useSubcategory')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('libs/itinerary/useItinerary')

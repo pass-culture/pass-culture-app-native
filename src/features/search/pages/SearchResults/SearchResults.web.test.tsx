@@ -54,6 +54,8 @@ jest.mock('react-instantsearch-core', () => ({
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 jest.mock('algoliasearch')
 
+jest.mock('libs/subcategories/useSubcategory')
+
 jest.mock('uuid', () => ({
   v1: jest.fn(),
   v4: jest.fn(),

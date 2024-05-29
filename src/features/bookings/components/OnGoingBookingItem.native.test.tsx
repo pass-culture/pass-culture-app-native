@@ -14,6 +14,7 @@ import { fireEvent, render, screen } from 'tests/utils'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 
 jest.mock('libs/subcategories/useCategoryId')
+jest.mock('libs/subcategories/useSubcategory')
 
 const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
