@@ -4,6 +4,7 @@ import { DeviceInformation, useDeviceInfo } from 'features/trustedDevice/helpers
 import { act, renderHook } from 'tests/utils'
 
 jest.mock('react-native-device-info')
+jest.mock('libs/react-native-device-info/getDeviceId')
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getBaseOsSpy = jest.spyOn(DeviceInfo, 'getBaseOs')

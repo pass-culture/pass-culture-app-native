@@ -38,6 +38,7 @@ import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { Login } from './Login'
 
 jest.mock('libs/monitoring')
+jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/helpers/usePreviousRoute')
 const mockResetSearch = jest.fn()

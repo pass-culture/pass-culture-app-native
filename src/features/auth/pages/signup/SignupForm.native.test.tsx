@@ -28,6 +28,7 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SignupForm } from './SignupForm'
 
+jest.mock('libs/react-native-device-info/getDeviceId')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')

@@ -70,8 +70,6 @@ jest.mock('libs/environment/env')
 /* See the corresponding mock in libs/amplitude/__mocks__ */
 jest.mock('libs/amplitude/amplitude')
 
-jest.mock('libs/react-native-device-info/getDeviceId')
-
 jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 
 /* See the corresponding mock in libs/network/__mocks__ */

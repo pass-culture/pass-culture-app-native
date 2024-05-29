@@ -20,6 +20,7 @@ import { AfterSignupEmailValidationBuffer } from './AfterSignupEmailValidationBu
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
+jest.mock('libs/react-native-device-info/getDeviceId')
 const loginAndRedirectMock = jest.fn()
 jest.spyOn(LoginAndRedirectAPI, 'useLoginAndRedirect').mockReturnValue(loginAndRedirectMock)
 

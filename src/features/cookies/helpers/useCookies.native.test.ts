@@ -19,6 +19,7 @@ const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
 
 jest.mock('libs/monitoring')
+jest.mock('libs/react-native-device-info/getDeviceId')
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
