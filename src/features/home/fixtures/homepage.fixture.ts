@@ -8,6 +8,7 @@ import {
   Homepage,
   HomepageModuleType,
   HomepageTag,
+  NewBusinessModule,
   OffersModule,
   RecommendedOffersModule,
   ThematicHeaderType,
@@ -34,6 +35,27 @@ export const formattedBusinessModule: BusinessModule = {
     longitude: 40,
     radius: 20,
   },
+}
+
+export const formattedNewBusinessModule: NewBusinessModule = {
+  type: HomepageModuleType.BusinessModule,
+  id: '20SId61p6EFTG7kgBTFrOb',
+  analyticsTitle:
+    'Crée un compte\u00a0! 15-18 [A MAINTENIR EN BLOC 2 et paramétré pour être visible seulement pour les non connectés]',
+  title: 'Rencontre d’arles participe à notre concours',
+  subtitle: 'Partage ta passion pour la photo et tente de gagner un super prix',
+  shouldTargetNotConnectedUsers: true,
+  url: 'https://passculture.app/creation-compte',
+  image:
+    'https://images.ctfassets.net/2bg01iqy0isv/1uTePwMo6qxJo7bMM7VLeX/fdea7eb6fd7ab2003a5f1eeaba2565e9/17-insta-1080x1350_560x800.jpg',
+  imageWeb:
+    'https://images.ctfassets.net/2bg01iqy0isv/1jedJLjdDiypJqBtO1sjH0/185ee9e6428229a15d4c047b862a95f8/image_web.jpeg',
+  localizationArea: {
+    latitude: 2,
+    longitude: 40,
+    radius: 20,
+  },
+  wordingCTA: 'Postuler',
 }
 
 export const formattedVenuesModule: VenuesModule = {

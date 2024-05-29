@@ -166,6 +166,8 @@ export type BusinessModule = {
   localizationArea?: LocationCircleArea
 }
 
+export type NewBusinessModule = BusinessModule & { wordingCTA: string }
+
 export type LocationCircleArea = {
   latitude: number
   longitude: number
