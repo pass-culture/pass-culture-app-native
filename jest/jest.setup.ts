@@ -77,8 +77,6 @@ jest.mock('libs/jwt')
 // Global mock customFocusOutline because generate console warn "Node of type rule not supported as an inline style"
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
-jest.mock('ui/hooks/useEnterKeyAction')
-
 jest.mock('react-native/Libraries/LogBox/LogBox')
 
 jest.mock('@batch.com/react-native-plugin', () =>
