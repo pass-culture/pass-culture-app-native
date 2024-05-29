@@ -18,6 +18,7 @@ import { act, renderHook, waitFor } from 'tests/utils'
 const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
 
+jest.mock('libs/campaign')
 jest.mock('libs/monitoring')
 jest.mock('libs/react-native-device-info/getDeviceId')
 

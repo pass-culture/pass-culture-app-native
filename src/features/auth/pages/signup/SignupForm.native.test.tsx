@@ -28,6 +28,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 
 import { SignupForm } from './SignupForm'
 
+jest.mock('libs/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 

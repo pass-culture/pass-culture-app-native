@@ -24,6 +24,8 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 
+jest.mock('libs/campaign')
+
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 

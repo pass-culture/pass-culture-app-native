@@ -9,6 +9,8 @@ import { firebaseAnalytics } from 'libs/firebase/analytics'
 const acceptedTracking: TrackingStatus[] = ['unavailable', 'authorized']
 const refusedTracking: TrackingStatus[] = ['denied', 'restricted', 'not-determined']
 
+jest.mock('libs/campaign')
+
 describe('logOpenApp', () => {
   beforeEach(() => {
     logOpenAppRef.hasLoggedOpenApp = false

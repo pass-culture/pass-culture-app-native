@@ -18,6 +18,7 @@ jest.useFakeTimers()
 
 mockdate.set(CURRENT_DATE)
 
+jest.mock('libs/campaign')
 jest.mock('features/auth/helpers/useLoginRoutine')
 const loginRoutine = jest.fn()
 const mockUseLoginRoutine = Login.useLoginRoutine as jest.Mock

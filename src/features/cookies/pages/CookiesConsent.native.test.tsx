@@ -16,6 +16,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent, act, screen } from 'tests/utils'
 
+jest.mock('libs/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
 const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
