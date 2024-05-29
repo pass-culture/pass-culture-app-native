@@ -11,6 +11,12 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
+
 describe('<ConfirmChangeEmail />', () => {
   it('should render correctly when FF is disabled', () => {
     mockServer.getApi<EmailUpdateStatus>('/v1/profile/email_update/status', {

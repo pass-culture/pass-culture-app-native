@@ -2,10 +2,10 @@ import { SearchResponse } from '@algolia/client-search'
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import { initialSearchState } from 'features/search/context/reducer'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -14,6 +14,7 @@ import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
+import { useRoute } from '__mocks__/@react-navigation/native'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -68,6 +69,14 @@ mockUseGTLPlaylists.mockReturnValue({
   ],
   isLoading: false,
 })
+
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+  }),
+}))
+
 jest.setTimeout(15_000)
 
 describe('<Venue />', () => {

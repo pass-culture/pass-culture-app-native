@@ -3,10 +3,10 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
-import { push, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { initialSearchState } from 'features/search/context/reducer'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -18,6 +18,7 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { push, useRoute } from '__mocks__/@react-navigation/native'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -106,6 +107,13 @@ const defaultParams = {
   timeRange: null,
   locationFilter: { locationType: LocationMode.EVERYWHERE },
 }
+
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+  }),
+}))
 
 describe('<Venue />', () => {
   it('should match snapshot', async () => {

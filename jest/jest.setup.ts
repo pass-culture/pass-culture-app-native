@@ -75,8 +75,6 @@ jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 /* See the corresponding mock in libs/network/__mocks__ */
 jest.mock('libs/network/NetInfoWrapper')
 
-jest.mock('features/search/context/SearchWrapper')
-
 jest.mock('libs/jwt')
 
 // Global mock customFocusOutline because generate console warn "Node of type rule not supported as an inline style"

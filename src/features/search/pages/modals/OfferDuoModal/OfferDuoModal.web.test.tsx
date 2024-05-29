@@ -1,10 +1,19 @@
 import React from 'react'
 
+import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('features/auth/context/AuthContext')
+
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: jest.fn(),
+  }),
+}))
 
 describe('<OfferDuoModal/>', () => {
   describe('Accessibility', () => {

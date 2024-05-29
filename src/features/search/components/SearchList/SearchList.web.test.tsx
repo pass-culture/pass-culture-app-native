@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SearchList } from 'features/search/components/SearchList/SearchList'
+import { initialSearchState } from 'features/search/context/reducer'
 import { SearchListProps } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -16,6 +17,13 @@ jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 jest.mock('features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpacity', () => ({
   useScrollToBottomOpacity: () => ({
     handleScroll: jest.fn(),
+  }),
+}))
+
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
   }),
 }))
 

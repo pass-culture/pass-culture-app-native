@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { navigate, replace, reset, useRoute } from '__mocks__/@react-navigation/native'
 import { EmailChangeConfirmationResponse } from 'api/gen'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { ConfirmChangeEmailContent } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmailContent'
@@ -11,6 +10,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
+import { navigate, replace, reset, useRoute } from '__mocks__/@react-navigation/native'
 
 jest.unmock('libs/keychain')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
@@ -29,6 +29,12 @@ const confirmationSuccessResponse = {
   refreshToken: 'refreshToken',
   newEmailSelectionToken: 'token',
 }
+
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
 
 describe('<ConfirmChangeEmail />', () => {
   it('should navigate to home when pressing cancel button', async () => {

@@ -27,6 +27,12 @@ const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 const onSignInFailureSpy = jest.fn()
 
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
+
 jest.useFakeTimers()
 
 describe('<SSOButton />', () => {

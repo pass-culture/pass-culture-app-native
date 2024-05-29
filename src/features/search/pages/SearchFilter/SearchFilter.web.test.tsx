@@ -1,10 +1,11 @@
 import React from 'react'
 
-import { useNavigationState } from '__mocks__/@react-navigation/native'
+import { initialSearchState } from 'features/search/context/reducer'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
+import { useNavigationState } from '__mocks__/@react-navigation/native'
 
 useNavigationState.mockImplementation(() => [{ name: 'SearchFilter' }])
 
@@ -27,6 +28,14 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
     isFetchingNextPage: false,
+  }),
+}))
+
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: jest.fn(),
   }),
 }))
 

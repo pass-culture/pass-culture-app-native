@@ -6,10 +6,11 @@ import { ThemeProvider } from 'styled-components/native'
 import { FavoritesCountResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { initialSearchState } from 'features/search/context/reducer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { screen, act } from 'tests/utils/web'
+import { act, screen } from 'tests/utils/web'
 import { theme } from 'theme'
 
 import { Header } from './Header'
@@ -35,6 +36,12 @@ jest.mock('features/navigation/RootNavigator/routes', () => ({
 }))
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+  }),
+}))
 
 describe('Header', () => {
   beforeEach(() => {

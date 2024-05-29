@@ -7,9 +7,9 @@ import { bookingsSnap as mockBookings } from 'features/bookings/fixtures/booking
 import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { render, act, screen } from 'tests/utils'
-import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
+import { act, render, screen } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 
 import { OnGoingBookingsList } from './OnGoingBookingsList'
 
@@ -33,6 +33,12 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 jest.mock('ui/components/snackBar/SnackBarContext', () =>
   jest.requireActual('ui/components/snackBar/__mocks__/SnackBarContext')
 )
+
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
 
 describe('<OnGoingBookingsList /> - Analytics', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })

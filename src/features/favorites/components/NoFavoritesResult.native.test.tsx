@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { navigate } from '__mocks__/@react-navigation/native'
 
 const mockFavoritesState = initialFavoritesState
 const mockDispatch = jest.fn()
@@ -13,6 +13,12 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   useFavoritesState: () => ({
     ...mockFavoritesState,
     dispatch: mockDispatch,
+  }),
+}))
+
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
   }),
 }))
 

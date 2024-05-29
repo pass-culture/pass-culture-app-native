@@ -1,11 +1,20 @@
 import React from 'react'
 
+import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
-import { render, act, checkAccessibilityFor, screen } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { PriceModal } from './PriceModal'
 
 jest.mock('features/auth/context/AuthContext')
+
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: jest.fn(),
+  }),
+}))
 
 describe('<PriceModal/>', () => {
   it('should display mobile header modal if mobile viewport', async () => {

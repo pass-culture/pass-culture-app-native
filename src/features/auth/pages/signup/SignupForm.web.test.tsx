@@ -25,6 +25,12 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')
 
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
+
 describe('<SignupForm/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues for SetEmail', async () => {
