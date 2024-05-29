@@ -13,6 +13,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
+jest.mock('libs/network/NetInfoWrapper')
+
 const venue = mockedSuggestedVenue
 
 const mockSearchState: SearchState = {

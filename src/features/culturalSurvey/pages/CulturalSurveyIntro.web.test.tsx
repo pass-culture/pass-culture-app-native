@@ -5,6 +5,7 @@ import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurve
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { render, fireEvent, screen } from 'tests/utils/web'
 
+jest.mock('libs/network/NetInfoWrapper')
 jest.mock('features/culturalSurvey/helpers/useGetNextQuestion')
 jest.mock('features/navigation/helpers/openUrl')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
