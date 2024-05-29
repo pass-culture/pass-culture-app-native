@@ -14,6 +14,8 @@ import { theme } from 'theme'
 
 import { Header } from './Header'
 
+jest.mock('features/favorites/context/FavoritesWrapper')
+
 const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/context/AuthContext')
 
@@ -52,6 +54,7 @@ describe('Header', () => {
     const { container } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
     await screen.findByText('Favoris')
+    await screen.findByText('2')
 
     expect(container).toMatchSnapshot()
   })

@@ -5,6 +5,8 @@ import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { Profile } from './Profile'
 
+jest.mock('features/favorites/context/FavoritesWrapper')
+
 describe('<Profile/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

@@ -80,8 +80,6 @@ jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('features/search/context/SearchWrapper')
 
-jest.mock('features/favorites/context/FavoritesWrapper')
-
 jest.mock('libs/jwt')
 
 // Global mock customFocusOutline because generate console warn "Node of type rule not supported as an inline style"

@@ -14,6 +14,8 @@ import { act, measurePerformance } from 'tests/utils'
 // We mock server instead of hooks to test the real behavior of the component.
 mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 
+jest.mock('features/favorites/context/FavoritesWrapper')
+
 jest.unmock('libs/jwt')
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 
