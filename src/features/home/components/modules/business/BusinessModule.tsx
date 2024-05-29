@@ -21,11 +21,16 @@ export interface BusinessModuleProps {
 }
 export type NewBusinessModuleProps = BusinessModuleProps & { wordingCTA: string }
 
+const isNewBusinessModule = (
+  props: BusinessModuleProps | NewBusinessModuleProps
+): props is NewBusinessModuleProps => {
+  return 'wordingCTA' in props && !!props.wordingCTA
+}
 //TODO(PC-30046): Clean one or the other BusinessModule
 export const BusinessModule = (props: BusinessModuleProps | NewBusinessModuleProps) => {
   const enableNewBusinessModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_BUSINESS_BLOCK)
-  return enableNewBusinessModule ? (
-    <NewBusinessModule {...(props as NewBusinessModuleProps)} />
+  return enableNewBusinessModule && isNewBusinessModule(props) ? (
+    <NewBusinessModule {...props} />
   ) : (
     <OldBusinessModule {...props} />
   )
