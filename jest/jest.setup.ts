@@ -61,9 +61,6 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 /* See the corresponding mock in libs/environment/__mocks__ */
 jest.mock('libs/environment/env')
 
-/* See the corresponding mock in libs/amplitude/__mocks__ */
-jest.mock('libs/amplitude/amplitude')
-
 jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 
 /* See the corresponding mock in libs/network/__mocks__ */

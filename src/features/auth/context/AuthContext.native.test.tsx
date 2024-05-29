@@ -28,6 +28,8 @@ jest.unmock('libs/keychain')
 jest.unmock('libs/network/NetInfoWrapper')
 const mockedUseNetInfo = useNetInfo as jest.Mock
 
+jest.mock('libs/amplitude/amplitude')
+
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 const navigateFromRefSpy = jest.spyOn(NavigationRef, 'navigateFromRef')
 

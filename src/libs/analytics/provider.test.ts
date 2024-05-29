@@ -12,6 +12,7 @@ const EVENT_PARAMS = { param: 1 }
 const SCREEN_NAME = 'Home'
 
 jest.unmock('libs/analytics/provider')
+jest.mock('libs/amplitude/amplitude')
 
 describe('analyticsProvider - logEvent', () => {
   afterEach(() => {

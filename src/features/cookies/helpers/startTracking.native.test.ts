@@ -5,6 +5,8 @@ import { campaignTracker } from 'libs/campaign'
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { Batch } from 'libs/react-native-batch'
 
+jest.mock('libs/amplitude/amplitude')
+
 describe('startTracking', () => {
   it('should disable tracking if enabled = false', () => {
     startTracking(false)
