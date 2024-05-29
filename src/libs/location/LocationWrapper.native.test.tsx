@@ -8,6 +8,10 @@ import { GeolocPermissionState, GeolocPositionError } from './geolocation/enums'
 import { LocationWrapper, useLocation } from './LocationWrapper'
 import { GeolocationError } from './types'
 
+jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
+jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
+jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission')
+
 const getGeolocPositionMock = jest.mocked(getGeolocPosition)
 const mockCheckGeolocPermission = jest.mocked(checkGeolocPermission)
 const mockRequestGeolocPermission = jest.mocked(requestGeolocPermission)
