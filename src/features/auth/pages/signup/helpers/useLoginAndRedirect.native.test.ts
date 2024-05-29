@@ -29,6 +29,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showInfoSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowInfoSnackBar(props)),
   }),
 }))
+jest.mock('libs/jwt')
 
 describe('useLoginAndRedirect', () => {
   afterEach(jest.runOnlyPendingTimers)

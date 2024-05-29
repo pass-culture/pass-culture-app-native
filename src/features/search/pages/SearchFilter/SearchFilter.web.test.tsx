@@ -1,11 +1,11 @@
 import React from 'react'
 
+import { useNavigationState } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
-import { useNavigationState } from '__mocks__/@react-navigation/native'
 
 useNavigationState.mockImplementation(() => [{ name: 'SearchFilter' }])
 

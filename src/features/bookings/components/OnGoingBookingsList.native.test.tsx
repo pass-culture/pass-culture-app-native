@@ -8,8 +8,8 @@ import { analytics } from 'libs/analytics'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { act, render, screen } from 'tests/utils'
-import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { OnGoingBookingsList } from './OnGoingBookingsList'
 

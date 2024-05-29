@@ -15,6 +15,7 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { NotificationsSettings } from './NotificationsSettings'
 
+jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 

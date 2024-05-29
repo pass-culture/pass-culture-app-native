@@ -9,12 +9,13 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment/fixtures'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, fireEvent, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
 
 jest.mock('libs/network/NetInfoWrapper')
 
+jest.mock('libs/jwt')
 const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 

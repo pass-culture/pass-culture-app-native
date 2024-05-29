@@ -9,10 +9,10 @@ import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 import {
-  showSuccessSnackBar,
-  showErrorSnackBar,
   hideSnackBar,
+  showErrorSnackBar,
   showInfoSnackBar,
+  showSuccessSnackBar,
 } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -20,6 +20,7 @@ import { useAddFavorite } from './useAddFavorite'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+jest.mock('libs/jwt')
 
 jest.unmock('react-query')
 const offerId = 116656

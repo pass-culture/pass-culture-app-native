@@ -16,6 +16,7 @@ import { ChangeEmail } from './ChangeEmail'
 
 jest.mock('libs/network/NetInfoWrapper')
 
+jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
 jest.useFakeTimers()
 

@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
+import { push } from '__mocks__/@react-navigation/native'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
@@ -21,7 +22,6 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
-import { push } from '__mocks__/@react-navigation/native'
 
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 

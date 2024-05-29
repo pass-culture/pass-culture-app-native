@@ -14,6 +14,7 @@ jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
   showInfoSnackBar: jest.fn(),
   hideSnackBar: jest.fn(),
 })
+jest.mock('libs/jwt')
 
 describe('useChangeEmailMutationV2', () => {
   it('should show snack bar on success', async () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { OauthStateResponse } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { env } from 'libs/environment/fixtures'
@@ -10,7 +11,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
-import { useRoute } from '__mocks__/@react-navigation/native'
 
 import { Login } from './Login'
 

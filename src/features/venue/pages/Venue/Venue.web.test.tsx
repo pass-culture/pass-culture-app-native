@@ -2,6 +2,7 @@ import { SearchResponse } from '@algolia/client-search'
 import mockdate from 'mockdate'
 import React from 'react'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
@@ -14,7 +15,6 @@ import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
-import { useRoute } from '__mocks__/@react-navigation/native'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 

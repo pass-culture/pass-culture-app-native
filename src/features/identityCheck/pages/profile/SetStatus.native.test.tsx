@@ -33,6 +33,7 @@ const profile = {
   status: mockStatus,
 }
 
+jest.mock('libs/jwt')
 jest.mock('features/identityCheck/pages/profile/store/nameStore')
 ;(useName as jest.Mock).mockReturnValue(profile.name)
 ;(useNameActions as jest.Mock).mockReturnValue({ resetName: jest.fn() })

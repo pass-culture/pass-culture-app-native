@@ -4,7 +4,7 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, act } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,
@@ -17,6 +17,8 @@ mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
+
+jest.mock('libs/jwt')
 
 describe('useOngoingOrEndedBooking', () => {
   beforeEach(() => {

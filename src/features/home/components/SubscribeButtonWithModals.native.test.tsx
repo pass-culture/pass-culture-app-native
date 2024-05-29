@@ -12,6 +12,7 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { SubscribeButtonWithModals } from './SubscribeButtonWithModals'
 
+jest.mock('libs/jwt')
 const baseAuthContext = {
   isLoggedIn: true,
   setIsLoggedIn: jest.fn(),

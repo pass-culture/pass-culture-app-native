@@ -8,6 +8,7 @@ import { render, screen, waitFor } from 'tests/utils/web'
 
 import { BicolorFavoriteCount } from './BicolorFavoriteCount'
 
+jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 

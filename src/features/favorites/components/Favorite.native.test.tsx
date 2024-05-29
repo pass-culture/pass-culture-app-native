@@ -18,7 +18,7 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Credit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor, screen, act } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -54,6 +54,7 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
     favoritesState: mockFavoritesState,
   }),
 }))
+jest.mock('libs/jwt')
 
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 

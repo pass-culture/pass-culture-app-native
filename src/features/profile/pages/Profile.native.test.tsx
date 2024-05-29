@@ -87,6 +87,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
+jest.mock('libs/jwt')
+
 const useVersionSpy = jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
 
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })

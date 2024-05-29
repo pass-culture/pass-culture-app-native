@@ -6,12 +6,13 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor, act } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 import { useRemoveFavorite } from './useRemoveFavorite'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+jest.mock('libs/jwt')
 
 jest.unmock('react-query')
 

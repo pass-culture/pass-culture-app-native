@@ -14,6 +14,7 @@ jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
+jest.mock('libs/jwt')
 
 describe('useFavorite hook', () => {
   it('should get favorite from offer id', async () => {

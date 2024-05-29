@@ -12,6 +12,7 @@ import { render, screen } from 'tests/utils'
 import { Favorites } from './Favorites'
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
+jest.mock('libs/jwt')
 
 jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   useFavoritesState: () => ({

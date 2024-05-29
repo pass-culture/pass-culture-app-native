@@ -7,8 +7,10 @@ import {
 import * as useGoBack from 'features/navigation/useGoBack'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+
+jest.mock('libs/jwt')
 
 const mockShowErrorSnackBar = jest.fn()
 const mockShowSuccessSnackBar = jest.fn()

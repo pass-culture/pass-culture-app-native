@@ -1,10 +1,10 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
-import { navigate } from '__mocks__/@react-navigation/native'
 
 import { NoBookingsView } from './NoBookingsView'
 

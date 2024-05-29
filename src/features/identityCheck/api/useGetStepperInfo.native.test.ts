@@ -8,6 +8,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
+jest.mock('libs/jwt')
+
 describe('useGetStepperInfo', () => {
   it('should get stepsToDisplay from the back', async () => {
     mockServer.getApi<SubscriptionStepperResponseV2>(

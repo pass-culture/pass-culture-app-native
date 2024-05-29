@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { DEFAULT_RADIUS } from 'features/search/constants'
@@ -12,7 +13,6 @@ import { requestGeolocPermission } from 'libs/location/geolocation/requestGeoloc
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
-import { navigate } from '__mocks__/@react-navigation/native'
 
 jest.useFakeTimers()
 

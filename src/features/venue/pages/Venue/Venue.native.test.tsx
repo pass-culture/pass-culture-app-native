@@ -3,6 +3,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
+import { push, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { Referrals } from 'features/navigation/RootNavigator/types'
@@ -18,7 +19,6 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
-import { push, useRoute } from '__mocks__/@react-navigation/native'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 

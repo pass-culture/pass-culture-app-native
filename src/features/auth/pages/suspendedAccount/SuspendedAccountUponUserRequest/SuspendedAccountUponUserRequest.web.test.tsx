@@ -3,9 +3,11 @@ import React from 'react'
 import { UserSuspensionDateResponse } from 'api/gen'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
+import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { SuspendedAccountUponUserRequest } from './SuspendedAccountUponUserRequest'
+
+jest.mock('libs/jwt')
 
 describe('<SuspendedAccountUponUserRequest/>', () => {
   describe('Accessibility', () => {

@@ -12,6 +12,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
+jest.mock('libs/jwt')
 
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({

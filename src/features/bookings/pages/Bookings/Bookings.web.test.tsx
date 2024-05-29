@@ -1,13 +1,13 @@
 import React from 'react'
 import { QueryObserverResult, UseQueryResult } from 'react-query'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests/utils/web'
-import { navigate } from '__mocks__/@react-navigation/native'
 
 import { Bookings } from './Bookings'
 

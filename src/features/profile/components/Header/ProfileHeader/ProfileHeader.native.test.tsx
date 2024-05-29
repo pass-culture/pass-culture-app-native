@@ -57,6 +57,7 @@ const exUnderageBeneficiaryUser: UserProfileResponse = {
   isEligibleForBeneficiaryUpgrade: true,
 }
 
+jest.mock('libs/jwt')
 jest.mock('features/profile/api/useUpdateProfileMutation')
 jest.mock('features/profile/helpers/isUserUnderageBeneficiary')
 const mockedisUserUnderageBeneficiary = jest.mocked(isUserUnderageBeneficiary)

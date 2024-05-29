@@ -8,12 +8,13 @@ import { analytics } from 'libs/analytics'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, act, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const mockDismissModal = jest.fn()
 
+jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 let mockIsCreditExpired = false

@@ -8,12 +8,13 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, waitFor, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 jest.useFakeTimers()
 
+jest.mock('libs/jwt')
 jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () => {
   return {
     usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({

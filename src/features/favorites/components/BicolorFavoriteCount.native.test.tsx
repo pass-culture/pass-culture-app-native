@@ -5,10 +5,11 @@ import { BicolorFavoriteCountV2 } from 'features/favorites/components/BicolorFav
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, waitFor, screen } from 'tests/utils'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 import { BicolorFavoriteCount } from './BicolorFavoriteCount'
 
+jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
