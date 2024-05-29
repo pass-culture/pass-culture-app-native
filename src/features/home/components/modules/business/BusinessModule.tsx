@@ -21,6 +21,7 @@ export interface BusinessModuleProps {
 }
 export type NewBusinessModuleProps = BusinessModuleProps & { wordingCTA: string }
 
+//TODO(PC-30046): Clean one or the other BusinessModule
 export const BusinessModule = (props: BusinessModuleProps | NewBusinessModuleProps) => {
   const enableNewBusinessModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_BUSINESS_BLOCK)
   return enableNewBusinessModule ? (
