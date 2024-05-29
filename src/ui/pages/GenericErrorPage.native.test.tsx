@@ -10,7 +10,6 @@ jest.unmock('@react-navigation/native')
 jest.unmock('@react-navigation/stack')
 jest.unmock('@react-navigation/bottom-tabs')
 jest.unmock('features/navigation/useGoBack')
-jest.unmock('libs/hooks/useWhiteStatusBar')
 
 describe('<GenericErrorPage />', () => {
   it('should render correctly', () => {
