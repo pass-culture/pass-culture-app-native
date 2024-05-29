@@ -23,7 +23,7 @@ import {
   GeolocPermissionState,
   GeolocPositionError,
 } from 'libs/location'
-import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import {
@@ -38,6 +38,7 @@ import {
 import * as useVersion from 'ui/hooks/useVersion'
 
 import { Profile } from './Profile'
+
 const GEOLOC_SWITCH = 'Interrupteur Activer ma géolocalisation'
 
 const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
@@ -84,8 +85,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({ identification: { processing: false } }),
 }))
 
-jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
+const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 const useVersionSpy = jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
 

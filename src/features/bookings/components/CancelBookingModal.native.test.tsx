@@ -5,7 +5,7 @@ import { CancelBookingModal } from 'features/bookings/components/CancelBookingMo
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
-import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act, waitFor } from 'tests/utils'
@@ -30,8 +30,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   SNACK_BAR_TIME_OUT: 5000,
 }))
 
-jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
+const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 describe('<CancelBookingModal />', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })

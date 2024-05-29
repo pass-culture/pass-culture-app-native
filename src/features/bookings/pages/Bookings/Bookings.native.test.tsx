@@ -1,6 +1,7 @@
 import React from 'react'
 import { QueryObserverResult } from 'react-query'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
@@ -8,9 +9,10 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
-import { navigate } from '__mocks__/@react-navigation/native'
 
 import { Bookings } from './Bookings'
+
+jest.mock('libs/network/NetInfoWrapper')
 
 const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookings')
 

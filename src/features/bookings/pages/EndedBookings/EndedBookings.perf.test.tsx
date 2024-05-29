@@ -16,6 +16,7 @@ jest.unmock('libs/jwt')
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 jest.mock('features/favorites/context/FavoritesWrapper')
 jest.mock('libs/subcategories/useCategoryId')
+jest.mock('libs/network/NetInfoWrapper')
 
 jest.useFakeTimers()
 

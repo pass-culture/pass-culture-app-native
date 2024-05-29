@@ -2,14 +2,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { QueryFunction } from 'react-query/types/core/types'
 
 import { eventMonitoring } from 'libs/monitoring'
-import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { usePersistQuery } from '../usePersistQuery'
 
-jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
+const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 type TestData = {
   id: number

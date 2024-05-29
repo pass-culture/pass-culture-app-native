@@ -14,6 +14,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance, screen } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+jest.mock('libs/network/NetInfoWrapper')
 
 useRoute.mockReturnValue({
   params: {

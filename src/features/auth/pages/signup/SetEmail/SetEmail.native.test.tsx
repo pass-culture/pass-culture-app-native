@@ -14,6 +14,8 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 
 import { SetEmail } from './SetEmail'
 
+jest.mock('libs/network/NetInfoWrapper')
+
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))

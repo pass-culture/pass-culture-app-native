@@ -6,7 +6,7 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchState } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { mockServer } from 'tests/mswServer'
@@ -41,8 +41,7 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   }),
 }))
 
-jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
+const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 const mockSettings = jest.fn().mockReturnValue({ data: {} })
 jest.mock('features/auth/context/SettingsContext', () => ({

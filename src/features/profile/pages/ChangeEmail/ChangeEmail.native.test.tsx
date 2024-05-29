@@ -14,6 +14,8 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ChangeEmail } from './ChangeEmail'
 
+jest.mock('libs/network/NetInfoWrapper')
+
 jest.mock('features/auth/context/AuthContext')
 jest.useFakeTimers()
 

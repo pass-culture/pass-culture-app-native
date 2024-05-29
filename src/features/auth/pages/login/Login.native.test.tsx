@@ -36,6 +36,7 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { Login } from './Login'
+jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('libs/monitoring')
 jest.mock('libs/react-native-device-info/getDeviceId')

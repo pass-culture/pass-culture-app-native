@@ -8,7 +8,7 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -22,11 +22,10 @@ jest.mock('features/profile/api/useResetRecreditAmountToShow')
 jest.mock('libs/itinerary/useItinerary')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers/openUrl')
-jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
+jest.mock('libs/network/NetInfoWrapper')
+const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
-const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 describe('BookingDetails', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })

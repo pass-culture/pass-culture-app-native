@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BicolorFavoriteCountV2 } from 'features/favorites/components/BicolorFavoriteCountV2'
-import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, waitFor, screen } from 'tests/utils'
@@ -12,8 +12,7 @@ import { BicolorFavoriteCount } from './BicolorFavoriteCount'
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
-jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
+const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 describe.each`
   v2       | component

@@ -13,6 +13,8 @@ import { render, fireEvent, screen, waitFor } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
 
+jest.mock('libs/network/NetInfoWrapper')
+
 const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 

@@ -10,6 +10,8 @@ import { renderHook, waitFor } from 'tests/utils'
 
 import { useGetAllVenues } from './useGetAllVenues'
 
+jest.mock('libs/network/NetInfoWrapper')
+
 jest.mock('algoliasearch')
 
 const mockInitIndex = algoliasearch('', '').initIndex

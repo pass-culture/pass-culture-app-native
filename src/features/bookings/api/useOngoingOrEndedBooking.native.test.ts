@@ -1,7 +1,7 @@
 import { BookingsResponse } from 'api/gen'
 import { useOngoingOrEndedBooking } from 'features/bookings/api'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, act } from 'tests/utils'
@@ -10,8 +10,8 @@ jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,
 }))
 
-jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
+const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
+
 mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
 jest.mock('features/auth/context/AuthContext', () => ({

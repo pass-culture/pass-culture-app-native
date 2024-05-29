@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import {
   AccountState,
@@ -24,12 +25,13 @@ import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 
 import { SignupForm } from './SignupForm'
 
 jest.mock('libs/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
+jest.mock('libs/network/NetInfoWrapper')
+
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')

@@ -10,9 +10,10 @@ import { renderHook, waitFor } from 'tests/utils'
 
 import { useFavorite } from './useFavorite'
 
+jest.mock('libs/network/NetInfoWrapper')
+
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 
 describe('useFavorite hook', () => {
   it('should get favorite from offer id', async () => {

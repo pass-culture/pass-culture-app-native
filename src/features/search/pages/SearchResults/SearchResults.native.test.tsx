@@ -57,6 +57,7 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   }),
 }))
 
+jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 

@@ -1,15 +1,14 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics'
-import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { navigate } from '__mocks__/@react-navigation/native'
 
 import { NoBookingsView } from './NoBookingsView'
 
-jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
+const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
