@@ -7,6 +7,8 @@ import { fireEvent, render, screen } from 'tests/utils/web'
 
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 
+jest.mock('libs/subcategories/useCategoryId')
+
 describe('OnGoingBookingItem', () => {
   const booking: Booking = bookingsSnap.ongoing_bookings[0]
 

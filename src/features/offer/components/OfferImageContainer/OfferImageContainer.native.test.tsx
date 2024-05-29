@@ -5,6 +5,8 @@ import { OfferImageContainer } from 'features/offer/components/OfferImageContain
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen, waitFor } from 'tests/utils'
 
+jest.mock('libs/subcategories/useCategoryId')
+
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<OfferImageContainer />', () => {

@@ -5,6 +5,8 @@ import { TicketSwiper } from 'features/bookings/components/Ticket/TicketSwiper'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { render, screen } from 'tests/utils'
 
+jest.mock('libs/subcategories/useCategoryId')
+
 const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[1]
 
 describe('<TicketSwiper/>', () => {
