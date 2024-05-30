@@ -2,7 +2,7 @@
 
 We advise to **follow [the guidelines](https://reactnative.dev/docs/environment-setup)** to set up your environment by selecting your Development OS and your target OS (Android/iOS).
 
-You can either follow Automatic installation or Manual installation guidelines
+You can either follow [Automatic installation](#automatic) or [Manual installation](#manual) guidelines
 
 ### Automatic
 
@@ -15,7 +15,7 @@ Start a new terminal to load the new configuration
 Load environment
 
 ```sh
-cd ./pass-culture-app-native
+cd ./pass-culture-app-native # if needed
 direnv allow
 ```
 
