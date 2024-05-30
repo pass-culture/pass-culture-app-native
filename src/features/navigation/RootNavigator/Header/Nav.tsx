@@ -26,8 +26,8 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   const { tabRoutes } = useTabNavigationContext()
   const {
     searchState: { locationFilter },
+    hideSuggestions,
   } = useSearch()
-  const { hideSuggestions } = useSearch()
 
   return (
     <NavItemsContainer
