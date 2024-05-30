@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { AttachedOfferCard } from 'features/home/components/AttachedOfferCard'
+import { AttachedOfferCardButton } from 'features/home/components/AttachedOfferCardButton'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export const Video916Cheatcodes = () => {
   return (
     <CheatcodeView>
       <Spacer.Column numberOfSpaces={10} />
-      <AttachedOfferCard
+      <AttachedOfferCardButton
         distanceToOffer="à 120 m"
         showImage
         withRightArrow
@@ -24,7 +24,7 @@ export const Video916Cheatcodes = () => {
         }}
       />
       <Spacer.Column numberOfSpaces={10} />
-      <AttachedOfferCard
+      <AttachedOfferCardButton
         distanceToOffer="à 120 m"
         withRightArrow
         price="Gratuit"
@@ -38,7 +38,7 @@ export const Video916Cheatcodes = () => {
         }}
       />
       <Spacer.Column numberOfSpaces={10} />
-      <AttachedOfferCard
+      <AttachedOfferCardButton
         withRightArrow
         price="Gratuit"
         tag="Musée"
@@ -49,7 +49,7 @@ export const Video916Cheatcodes = () => {
         }}
       />
       <Spacer.Column numberOfSpaces={10} />
-      <AttachedOfferCard
+      <AttachedOfferCardButton
         tag="Musée"
         categoryId={CategoryIdEnum.MUSIQUE_LIVE}
         title="C’est une tuile sans image mais avec un super long titre!"
