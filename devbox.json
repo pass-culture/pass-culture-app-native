@@ -7,5 +7,6 @@
     "ruby@2.7.5",
     "maestro@latest",
     "python3@latest",
+    "git@latest",
   ],
 }
