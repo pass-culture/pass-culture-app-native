@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components/native'
 import { FavoritesCountResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { screen, act } from 'tests/utils/web'
@@ -31,9 +32,28 @@ jest.mock('features/navigation/RootNavigator/routes', () => ({
   ],
 }))
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
 describe('Header', () => {
   beforeEach(() => {
     mockServer.getApi<FavoritesCountResponse>(`/v1/me/favorites/count`, { count: 2 })
+  })
+
+  it('should render correctly', async () => {
+    const { container } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
+
+    await screen.findByText('Favoris')
+
+    expect(container).toMatchSnapshot()
+  })
+
+  it('should render correctly when FF is enabled', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    const { container } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
+
+    await screen.findByText('Favoris')
+
+    expect(container).toMatchSnapshot()
   })
 
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {
