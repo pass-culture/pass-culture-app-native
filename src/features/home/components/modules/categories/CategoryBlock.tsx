@@ -1,8 +1,11 @@
+// eslint-disable-next-line no-restricted-imports
+import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { Color } from 'features/home/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { CategoryButtonV2 } from 'features/search/components/CategoryButton/CategoryButtonV2'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -69,29 +72,36 @@ export function CategoryBlock({
 }: Readonly<CategoryBlockProps>) {
   const enableAppV2CategoryBlock =
     useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK) || false
+  const { navigate } = useNavigation<UseNavigationType>()
+
+  if (enableAppV2CategoryBlock) {
+    return (
+      <StyledCategoryButtonV2
+        label={title}
+        textColor={newColorMapping[color].text}
+        fillColor={newColorMapping[color].fill}
+        borderColor={newColorMapping[color].border}
+        onPress={() => {
+          onBeforePress()
+          navigate(navigateTo.screen, navigateTo.params)
+        }}
+      />
+    )
+  }
 
   return (
     <StyledInternalTouchableLink onBeforeNavigate={onBeforePress} navigateTo={navigateTo}>
-      {enableAppV2CategoryBlock ? (
-        <CategoryButtonV2Container
-          label={title}
-          textColor={newColorMapping[color].text}
-          fillColor={newColorMapping[color].fill}
-          borderColor={newColorMapping[color].border}
-        />
-      ) : (
-        <ColoredContainer colors={gradientColorsMapping[color]}>
-          <StyledShape color={color} height={BLOCK_HEIGHT} />
-          <StyledTitle numberOfLines={2}>{title}</StyledTitle>
-        </ColoredContainer>
-      )}
+      <ColoredContainer colors={gradientColorsMapping[color]}>
+        <StyledShape color={color} height={BLOCK_HEIGHT} />
+        <StyledTitle numberOfLines={2}>{title}</StyledTitle>
+      </ColoredContainer>
     </StyledInternalTouchableLink>
   )
 }
 
-const CategoryButtonV2Container = styled(CategoryButtonV2)({
-  flex: 1,
-  width: getSpacing(50),
+const StyledCategoryButtonV2 = styled(CategoryButtonV2)({
+  width: getSpacing(44.5),
+  height: getSpacing(41),
 })
 
 const ColoredContainer = styled(LinearGradient).attrs({
