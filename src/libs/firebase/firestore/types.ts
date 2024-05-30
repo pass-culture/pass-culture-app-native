@@ -56,4 +56,5 @@ export enum RemoteStoreFeatureFlags {
   WIP_VENUE_MAP_TYPE_FILTER = 'wipVenueMapTypeFilter',
   WIP_VENUE_MAP_WITHOUT_POSITION = 'wipVenueMapWithoutPosition',
   WIP_VENUE_MAP_WITHOUT_PREVIEW = 'wipVenueMapWithoutPreview',
+  WIP_ENABLE_DYNAMIC_OPENING_HOURS = 'wipEnableDynamicOpeningHours',
 }
