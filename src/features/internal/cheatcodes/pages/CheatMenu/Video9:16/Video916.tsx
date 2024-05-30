@@ -31,9 +31,10 @@ export const Video916Cheatcodes = () => {
         categoryId={CategoryIdEnum.MUSIQUE_LIVE}
         title="Soirée super trop drôle de fou malade&nbsp;!"
         date="Du 12/06 au 24/06"
-        onPress={() => {
+        onBeforeNavigate={() => {
           return
         }}
+        navigateTo={{ screen: 'Offer', params: { id: 328 } }}
       />
       <Spacer.Column numberOfSpaces={2} />
       <PaginationContainer gap={0}>
@@ -54,9 +55,10 @@ export const Video916Cheatcodes = () => {
         categoryId={CategoryIdEnum.MUSIQUE_LIVE}
         title="C’est une tuile sans datas image mais avec un super long titre!"
         date="Du 12/06 au 24/06"
-        onPress={() => {
+        onBeforeNavigate={() => {
           return
         }}
+        navigateTo={{ screen: 'Offer', params: { id: 328 } }}
       />
       <Spacer.Column numberOfSpaces={10} />
       <AttachedOfferCardButton
@@ -65,9 +67,10 @@ export const Video916Cheatcodes = () => {
         categoryText="Musée"
         categoryId={CategoryIdEnum.MUSIQUE_LIVE}
         title="C’est une tuile sans datas image mais avec un super long titre!"
-        onPress={() => {
+        onBeforeNavigate={() => {
           return
         }}
+        navigateTo={{ screen: 'Offer', params: { id: 328 } }}
       />
       <Spacer.Column numberOfSpaces={10} />
       <AttachedOfferCardButton
@@ -75,9 +78,10 @@ export const Video916Cheatcodes = () => {
         categoryId={CategoryIdEnum.MUSIQUE_LIVE}
         title="C’est une tuile sans image mais avec un super long titre!"
         date="Du 12/06 au 24/06"
-        onPress={() => {
+        onBeforeNavigate={() => {
           return
         }}
+        navigateTo={{ screen: 'Offer', params: { id: 328 } }}
       />
     </CheatcodeView>
   )
