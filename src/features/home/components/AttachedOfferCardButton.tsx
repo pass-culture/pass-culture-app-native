@@ -30,7 +30,7 @@ export const AttachedOfferCardButton = ({
   return (
     <Container
       onPress={onPress}
-      accessibilityLabel={`Carte offre ${title}`}
+      accessibilityLabel={`Carte offre "${title}"`}
       onMouseDown={(e) => e.preventDefault()}
       {...focusProps}>
       <AttachedOfferCard
