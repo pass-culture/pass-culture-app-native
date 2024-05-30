@@ -31,6 +31,8 @@ export enum ContentTypes {
   SHOW_TYPES = 'showTypes',
   VENUE_MAP_BLOCK = 'venueMapBlock',
   VIDEO = 'video',
+  VIDEO_CAROUSEL = 'videoCarousel',
+  VIDEO_CAROUSEL_ITEM = 'videoCarouselItem',
 }
 
 export type Layout = 'three-items' | 'two-items' | 'one-item-medium'
@@ -460,6 +462,7 @@ export type HomepageNatifModule =
   | CategoryListContentModel
   | HighlightOfferContentModel
   | VenueMapBlockContentModel
+  | VideoCarouselContentModel
 
 export type AlgoliaContentModel = Entry<AlgoliaFields, ContentTypes.ALGOLIA>
 
@@ -481,6 +484,27 @@ export type AppV2VenuesContentModel = Entry<VenuesFields, ContentTypes.VENUES_PL
 export type CategoryListContentModel = Entry<CategoryListFields, ContentTypes.CATEGORY_LIST>
 
 export type HighlightOfferContentModel = Entry<HighlightOfferFields, ContentTypes.HIGHLIGHT_OFFER>
+
+export type VideoCarouselContentModel = Entry<VideoCarouselFields, ContentTypes.VIDEO_CAROUSEL>
+
+export type VideoCarouselItemContentModel = ProvidedEntry<
+  VideoCarouselItemFields,
+  ContentTypes.VIDEO_CAROUSEL_ITEM
+>
+
+type VideoCarouselItemFields = {
+  title: string
+  youtubeVideoId: string
+  offerId?: string
+  tag?: string
+  homeEntryId?: string
+}
+
+type VideoCarouselFields = {
+  title: string
+  color: Color
+  items: VideoCarouselItemContentModel[]
+}
 
 type HighlightOfferFields = {
   highlightTitle: string
@@ -555,3 +579,8 @@ export const isHighlightOfferContentModel = (
   module: HomepageNatifModule
 ): module is HighlightOfferContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.HIGHLIGHT_OFFER
+
+export const isVideoCarouselContentModel = (
+  module: HomepageNatifModule
+): module is VideoCarouselContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.VIDEO_CAROUSEL

@@ -235,6 +235,7 @@ exports[`Home page should render correctly 1`] = `
                     style={
                       {
                         "alignItems": "center",
+                        "backgroundColor": "#ffffff",
                         "borderColor": "#161617",
                         "borderRadius": 40,
                         "borderStyle": "solid",
@@ -367,6 +368,7 @@ exports[`Home page should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
+                    testID="bannerWithBackground"
                   >
                     <View
                       style={

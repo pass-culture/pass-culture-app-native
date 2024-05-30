@@ -3,6 +3,7 @@ import { NetInfoState, NetInfoStateType } from '@react-native-community/netinfo'
 import React, { createContext, memo, useContext, useEffect } from 'react'
 import { Platform } from 'react-native'
 
+import { analytics } from 'libs/analytics'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -23,6 +24,21 @@ export const NetInfoWrapper = memo(function NetInfoWrapper({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [networkInfo.isConnected])
+
+  useEffect(() => {
+    const connectionType = networkInfo.type
+    if (connectionType === NetInfoStateType.unknown) {
+      return
+    }
+    analytics.logConnectionInfo({
+      type: connectionType,
+      generation:
+        connectionType === NetInfoStateType.cellular
+          ? networkInfo.details?.cellularGeneration
+          : undefined,
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [networkInfo.type])
 
   return <NetInfoContext.Provider value={networkInfo}>{children}</NetInfoContext.Provider>
 })

@@ -40,9 +40,9 @@
 ./src/features/deeplinks/helpers/getScreenFromDeeplink.ts:24
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:13
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:15
-./src/features/home/components/modules/OffersModule.tsx:51
-./src/features/home/components/modules/OffersModule.tsx:59
-./src/features/home/components/modules/OffersModule.tsx:68
+./src/features/home/components/modules/OffersModule.tsx:54
+./src/features/home/components/modules/OffersModule.tsx:62
+./src/features/home/components/modules/OffersModule.tsx:71
 ./src/features/home/components/modules/video/VideoModal.tsx:109
 ./src/features/home/components/modules/video/VideoModuleDesktop.tsx:96
 ./src/features/home/components/modules/video/VideoModuleMobile.tsx:70

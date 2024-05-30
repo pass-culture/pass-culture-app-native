@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { PixelRatio, View } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { determinePlaylistType } from 'features/offer/helpers/determinePlaylistType/determinePlaylistType'
@@ -8,13 +8,13 @@ import { analytics } from 'libs/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { ImageCaption } from 'ui/components/ImageCaption'
-import { ImageTile } from 'ui/components/ImageTile'
-import { OfferCaption } from 'ui/components/OfferCaption'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, MARGIN_DP } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+import { NewOfferTileContent } from './NewOfferTileContent'
+import { OfferTileContent } from './OfferTileContent'
 
 const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const {
@@ -32,16 +32,18 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     searchId,
     apiRecoParams,
     index,
+    variant = 'default',
     ...offer
   } = props
 
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const prePopulateOffer = usePrePopulateOffer()
-  const { offerId, name, distance, date, price, isDuo } = offer
+  const { offerId, name, distance, date, price, isDuo, categoryId, thumbUrl } = offer
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,
     categoryLabel,
   })
+  const MAX_OFFER_CAPTION_HEIGHT = variant == 'new' ? getSpacing(24) : getSpacing(18)
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
@@ -85,42 +87,41 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
         onBlur={onBlur}
         isFocus={isFocus}
         accessibilityLabel={accessibilityLabel}>
-        <Container>
-          <OfferCaption
-            imageWidth={width}
+        {variant == 'new' ? (
+          <NewOfferTileContent
+            categoryId={categoryId}
+            thumbnailUrl={thumbUrl}
+            distance={distance}
             name={name}
             date={date}
-            isDuo={isDuo}
-            isBeneficiary={isBeneficiary}
             price={price}
+            categoryLabel={categoryLabel}
+            width={width}
+            height={height}
+            isBeneficiary={isBeneficiary}
+            isDuo={isDuo}
           />
-          <View>
-            <ImageTile
-              width={width}
-              height={height - IMAGE_CAPTION_HEIGHT}
-              uri={offer.thumbUrl}
-              onlyTopBorderRadius
-              categoryId={offer.categoryId}
-            />
-            <ImageCaption
-              height={IMAGE_CAPTION_HEIGHT}
-              width={width}
-              categoryLabel={categoryLabel}
-              distance={distance}
-            />
-          </View>
-        </Container>
+        ) : (
+          <OfferTileContent
+            name={name}
+            date={date}
+            categoryId={categoryId}
+            distance={distance}
+            isDuo={isDuo}
+            thumbnailUrl={thumbUrl}
+            width={width}
+            height={height}
+            categoryLabel={categoryLabel}
+            price={price}
+            isBeneficiary={isBeneficiary}
+          />
+        )}
       </StyledTouchableLink>
     </View>
   )
 }
 
 export const OfferTile = memo(UnmemoizedOfferTile)
-
-const IMAGE_CAPTION_HEIGHT = PixelRatio.roundToNearestPixel(MARGIN_DP)
-const MAX_OFFER_CAPTION_HEIGHT = getSpacing(18)
-
-const Container = styled.View({ flexDirection: 'column-reverse' })
 
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.colors.white,

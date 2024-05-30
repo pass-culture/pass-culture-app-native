@@ -28,7 +28,4 @@ Default.args = {
   tag: 'Musée',
   title: 'La Joconde',
   date: 'Du 12/06 au 24/06',
-  onPress: () => {
-    return
-  },
 }

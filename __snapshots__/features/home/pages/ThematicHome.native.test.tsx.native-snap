@@ -47,6 +47,7 @@ exports[`ThematicHome should render correctly 1`] = `
               isLocated={true}
               thematicHeader={
                 {
+                  "color": "Lilac",
                   "imageUrl": "url.com/image",
                   "subtitle": "HeaderSubtitle",
                   "title": "HeaderTitle",
@@ -603,7 +604,7 @@ exports[`ThematicHome should render correctly 1`] = `
           },
         ]
       }
-      testID="animated-thematic-header"
+      testID="animated-thematic-header-v1"
     >
       <Image
         collapsable={false}

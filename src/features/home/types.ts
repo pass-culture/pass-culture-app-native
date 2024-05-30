@@ -21,6 +21,7 @@ export enum HomepageModuleType {
   'VideoModule' = 'VideoModule',
   'HighlightOfferModule' = 'HighlightOfferModule',
   'VenueMapModule' = 'VenueMapModule',
+  'VideoCarouselModule' = 'VideoCarouselModule',
 }
 
 export type HomepageTag = 'master' | 'usergrandpublic' | 'userunderage'
@@ -57,6 +58,7 @@ export type CategoryThematicHeader = {
   imageUrl: string
   gradientTranslation?: Animated.AnimatedInterpolation<string | number>
   imageAnimatedHeight?: Animated.AnimatedInterpolation<string | number>
+  color: Color
 }
 
 export type ThematicHeader =
@@ -82,6 +84,24 @@ export type HomepageModule =
   | CategoryListModule
   | VideoModule
   | HighlightOfferModule
+  | VideoCarouselModule
+
+export type VideoCarouselModule = {
+  type: HomepageModuleType.VideoCarouselModule
+  id: string
+  title: string
+  color: Color
+  items: VideoCarouselItem[]
+}
+
+export type VideoCarouselItem = {
+  id: string
+  title: string
+  youtubeVideoId: string
+  offerId?: string
+  tag?: string
+  homeEntryId?: string
+}
 
 export type OffersModule = {
   type: HomepageModuleType.OffersModule
@@ -145,6 +165,8 @@ export type BusinessModule = {
   shouldTargetNotConnectedUsers?: boolean
   localizationArea?: LocationCircleArea
 }
+
+export type NewBusinessModule = BusinessModule & { wordingCTA: string }
 
 export type LocationCircleArea = {
   latitude: number

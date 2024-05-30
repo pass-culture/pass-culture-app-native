@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -24,10 +24,15 @@ import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { GeolocPermissionState } from 'libs/location'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { startTransaction } from 'shared/performance/transactions'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
+import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const MARGIN_TOP_HEADER = 6
@@ -66,6 +71,7 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
         title={thematicHeader?.title}
         subtitle={thematicHeader?.subtitle}
         imageUrl={thematicHeader?.imageUrl}
+        color={thematicHeader?.color}
       />
     )
   }
@@ -87,7 +93,7 @@ const ThematicHeaderWithGeolocBanner: FunctionComponent<{
   <React.Fragment>
     <SubHeader thematicHeader={thematicHeader} />
     {isLocated ? null : (
-      <GeolocationBannerContainer>
+      <GeolocationBannerContainer testID="geolocationBanner">
         <GeolocationBanner
           title="Géolocalise-toi"
           subtitle="pour trouver des offres autour de toi"
@@ -96,6 +102,29 @@ const ThematicHeaderWithGeolocBanner: FunctionComponent<{
     )}
   </React.Fragment>
 )
+
+const ThematicHeaderWithSystemBanner: FunctionComponent<{
+  thematicHeader?: ThematicHeader
+  isLocated: boolean
+  onPress: VoidFunction
+}> = ({ thematicHeader, isLocated, onPress }) => {
+  return (
+    <React.Fragment>
+      <SubHeader thematicHeader={thematicHeader} />
+      {isLocated ? null : (
+        <GeolocationBannerContainer>
+          <SystemBanner
+            LeftIcon={<LocationIcon />}
+            title="Géolocalise-toi"
+            subtitle="pour trouver des offres autour de toi"
+            accessibilityLabel="Active ta géolocalisation"
+            onPress={onPress}
+          />
+        </GeolocationBannerContainer>
+      )}
+    </React.Fragment>
+  )
+}
 
 export const ThematicHome: FunctionComponent = () => {
   const startPerfHomeLoadingOnce = useFunctionOnce(() => startTransaction(PERFORMANCE_HOME_LOADING))
@@ -106,8 +135,10 @@ export const ThematicHome: FunctionComponent = () => {
   startPerfHomeLoadingOnce()
   const { params } = useRoute<UseRouteType<'ThematicHome'>>()
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
-  const { userLocation } = useLocation()
+  const { userLocation, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
+    useLocation()
   const isLocated = !!userLocation
+  const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
 
   const { onScroll, headerTransition, imageAnimatedHeight, gradientTranslation, viewTranslation } =
     useOpacityTransition({
@@ -128,6 +159,14 @@ export const ThematicHome: FunctionComponent = () => {
     }
   }, [id, params.from, params.moduleId, params.moduleListId])
 
+  const onPressSystemBanner = useCallback(async () => {
+    if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+      showGeolocPermissionModal()
+    } else {
+      await requestGeolocPermission()
+    }
+  }, [permissionState, requestGeolocPermission, showGeolocPermissionModal])
+
   return (
     <Container>
       <GenericHome
@@ -136,7 +175,18 @@ export const ThematicHome: FunctionComponent = () => {
         thematicHeader={thematicHeader}
         Header={
           <React.Fragment>
-            <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
+            {enableSystemBanner ? (
+              <ThematicHeaderWithSystemBanner
+                thematicHeader={thematicHeader}
+                isLocated={isLocated}
+                onPress={onPressSystemBanner}
+              />
+            ) : (
+              <ThematicHeaderWithGeolocBanner
+                thematicHeader={thematicHeader}
+                isLocated={isLocated}
+              />
+            )}
             {Platform.OS === 'ios' ? null : <SubscribeButtonWithModals homeId={params.homeId} />}
           </React.Fragment>
         }
@@ -198,3 +248,8 @@ const GeolocationBannerContainer = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
   marginBottom: theme.home.spaceBetweenModules,
 }))
+
+const LocationIcon = styled(Everywhere).attrs(({ theme }) => ({
+  size: theme.icons.sizes.standard,
+  color: theme.colors.secondaryLight200,
+}))``

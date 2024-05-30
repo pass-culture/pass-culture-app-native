@@ -46,6 +46,7 @@ export const ImageTile: React.FC<Props> = (props) => {
   ) : (
     <DefaultImageContainer height={props.height} width={props.width}>
       <StyledDefaultImagePlaceholder
+        onlyTopBorderRadius={props.onlyTopBorderRadius ?? false}
         Icon={mapCategoryToIcon(props.categoryId ?? null)}
         backgroundColors={[theme.colors.greyLight, theme.colors.greyMedium]}
         size={PLACEHOLDER_ICON_SIZE}
@@ -65,8 +66,10 @@ const DefaultImageContainer = styled.View<{ height: number; width: number }>(
   })
 )
 
-const StyledDefaultImagePlaceholder = styled(DefaultImagePlaceholder)(({ theme }) => ({
-  borderRadius: 0,
+const StyledDefaultImagePlaceholder = styled(DefaultImagePlaceholder)<{
+  onlyTopBorderRadius: boolean
+}>(({ theme, onlyTopBorderRadius }) => ({
+  borderRadius: onlyTopBorderRadius ? 0 : theme.borderRadius.radius,
   borderTopLeftRadius: theme.borderRadius.radius,
   borderTopRightRadius: theme.borderRadius.radius,
 }))
