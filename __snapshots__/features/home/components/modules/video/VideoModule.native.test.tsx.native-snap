@@ -137,7 +137,7 @@ exports[`VideoModule should render properly with FF on 1`] = `
                 {
                   "backgroundColor": "#F1F1F4",
                   "borderColor": "#CBCDD2",
-                  "borderRadius": 8,
+                  "borderRadius": "unset",
                   "borderStyle": "solid",
                   "borderWidth": 1,
                   "height": 210,
