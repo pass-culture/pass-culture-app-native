@@ -1,0 +1,555 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render correctly 1`] = `
+<div>
+  <header
+    class="sc-jXbUNg doNftv"
+    role="banner"
+  >
+    <a
+      class="sc-iGgWBj sc-gsFSXq iGywTw fMSzfR"
+      href="#"
+    >
+      Aller au contenu principal
+    </a>
+    <div
+      class="css-view-175oi2r"
+      style="flex-grow: 1; flex-shrink: 1; flex-basis: 0px; flex-direction: row; margin-left: 24px; align-items: center; display: none; opacity: 0;"
+    >
+      <div
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      />
+    </div>
+    <div
+      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-width-13qz1uu"
+    >
+      <div
+        class="css-view-175oi2r"
+        style="flex-grow: 1; flex-shrink: 1; flex-basis: 0px; flex-direction: row; margin-left: 24px; align-items: center; opacity: 1;"
+      >
+        <div
+          aria-label="pass culture"
+          class="css-view-175oi2r"
+        >
+          <div
+            class="css-text-1rynq56"
+            dir="ltr"
+          >
+            undefined-SVG-Mock
+          </div>
+        </div>
+      </div>
+      <nav
+        class="css-view-175oi2r r-alignItems-1awozwy r-boxShadow-1q9gwvi r-display-6koalj r-flexDirection-18u37iz r-height-1ph75f1 r-justifyContent-1777fci r-maxWidth-hvns9x r-position-u8s1d r-width-13qz1uu r-zIndex-136ojw6"
+        role="navigation"
+      >
+        <ul
+          class="css-view-175oi2r r-flexDirection-18u37iz r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+          role="list"
+        >
+          <li
+            class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz"
+            role="listitem"
+          >
+            <div
+              aria-current="page"
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-1kihuf0 r-borderColor-1qewzal r-borderRadius-1udnf30 r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-1ugchlj r-paddingHorizontal-ymttw5"
+              data-testid="Home tab"
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-1hiqmk0 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-19u6a5r"
+                dir="ltr"
+              >
+                Accueil
+              </div>
+            </div>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz"
+            role="listitem"
+          >
+            <div
+              class="css-view-175oi2r r-width-8hc5te"
+            />
+            <div
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-1kihuf0 r-borderColor-42olwf r-borderRadius-1udnf30 r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-1ugchlj r-paddingHorizontal-ymttw5"
+              data-testid="SearchStackNavigator tab"
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-19u6a5r"
+                dir="ltr"
+              >
+                Recherche
+              </div>
+            </div>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz"
+            role="listitem"
+          >
+            <div
+              class="css-view-175oi2r r-width-8hc5te"
+            />
+            <div
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-1kihuf0 r-borderColor-42olwf r-borderRadius-1udnf30 r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-1ugchlj r-paddingHorizontal-ymttw5"
+              data-testid="Bookings tab"
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-19u6a5r"
+                dir="ltr"
+              >
+                Réservations
+              </div>
+            </div>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz"
+            role="listitem"
+          >
+            <div
+              class="css-view-175oi2r r-width-8hc5te"
+            />
+            <div
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-1kihuf0 r-borderColor-42olwf r-borderRadius-1udnf30 r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-1ugchlj r-paddingHorizontal-ymttw5"
+              data-testid="Favorites tab"
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-19u6a5r"
+                dir="ltr"
+              >
+                Favoris
+              </div>
+            </div>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz"
+            role="listitem"
+          >
+            <div
+              class="css-view-175oi2r r-width-8hc5te"
+            />
+            <div
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-1kihuf0 r-borderColor-42olwf r-borderRadius-1udnf30 r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-1ugchlj r-paddingHorizontal-ymttw5"
+              data-testid="Profile tab"
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-19u6a5r"
+                dir="ltr"
+              >
+                Profil
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div
+        class="css-view-175oi2r"
+        style="flex-grow: 1; flex-shrink: 1; flex-basis: 0px; flex-direction: row; margin-right: 24px; align-items: center; opacity: 1;"
+      >
+        <div
+          class="css-view-175oi2r r-alignItems-obd0qt r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+        >
+          <div
+            class="css-view-175oi2r r-height-1ugchlj r-width-gaci75"
+          >
+            <div
+              aria-label="République Française - Liberté Égalité Fraternité"
+              class="css-view-175oi2r"
+            >
+              <div
+                class="css-text-1rynq56"
+                dir="ltr"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      class="css-view-175oi2r"
+      style="flex-grow: 1; flex-shrink: 1; flex-basis: 0px; flex-direction: row; margin-right: 24px; align-items: center; display: none; opacity: 0;"
+    >
+      <div
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      />
+      <div
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      >
+        <div
+          class="css-view-175oi2r r-height-uvuy5l"
+        >
+          <div
+            aria-label="République Française - Liberté Égalité Fraternité"
+            class="css-view-175oi2r"
+          >
+            <div
+              class="css-text-1rynq56"
+              dir="ltr"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+`;
+
+exports[`Header should render correctly when FF is enabled 1`] = `
+<div>
+  <header
+    class="sc-jXbUNg doNftv"
+    role="banner"
+  >
+    <a
+      class="sc-iGgWBj sc-gsFSXq iGywTw fMSzfR"
+      href="#"
+    >
+      Aller au contenu principal
+    </a>
+    <div
+      class="css-view-175oi2r"
+      style="flex-grow: 1; flex-shrink: 1; flex-basis: 0px; flex-direction: row; margin-left: 24px; align-items: center; display: none; opacity: 0;"
+    >
+      <div
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      />
+    </div>
+    <div
+      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-width-13qz1uu"
+    >
+      <div
+        class="css-view-175oi2r"
+        style="flex-grow: 1; flex-shrink: 1; flex-basis: 0px; flex-direction: row; margin-left: 24px; align-items: center; opacity: 1;"
+      >
+        <div
+          aria-label="pass culture"
+          class="css-view-175oi2r"
+        >
+          <div
+            class="css-text-1rynq56"
+            dir="ltr"
+          >
+            undefined-SVG-Mock
+          </div>
+        </div>
+      </div>
+      <nav
+        class="css-view-175oi2r r-alignItems-1awozwy r-boxShadow-1q9gwvi r-display-6koalj r-flexDirection-18u37iz r-height-1ph75f1 r-justifyContent-1777fci r-maxWidth-hvns9x r-position-u8s1d r-width-13qz1uu r-zIndex-136ojw6"
+        role="navigation"
+      >
+        <ul
+          class="css-view-175oi2r r-flexDirection-18u37iz r-overflow-1dqxon3 r-paddingLeft-gy4na3"
+          role="list"
+        >
+          <li
+            class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz"
+            role="listitem"
+          >
+            <div
+              aria-current="page"
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-1kihuf0 r-borderColor-1qewzal r-borderRadius-1udnf30 r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-1ugchlj r-paddingHorizontal-ymttw5"
+              data-testid="Home tab"
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-1hiqmk0 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-19u6a5r"
+                dir="ltr"
+              >
+                Accueil
+              </div>
+            </div>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz"
+            role="listitem"
+          >
+            <div
+              class="css-view-175oi2r r-width-8hc5te"
+            />
+            <div
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-1kihuf0 r-borderColor-42olwf r-borderRadius-1udnf30 r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-1ugchlj r-paddingHorizontal-ymttw5"
+              data-testid="SearchStackNavigator tab"
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-19u6a5r"
+                dir="ltr"
+              >
+                Recherche
+              </div>
+            </div>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz"
+            role="listitem"
+          >
+            <div
+              class="css-view-175oi2r r-width-8hc5te"
+            />
+            <div
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-1kihuf0 r-borderColor-42olwf r-borderRadius-1udnf30 r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-1ugchlj r-paddingHorizontal-ymttw5"
+              data-testid="Bookings tab"
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-19u6a5r"
+                dir="ltr"
+              >
+                Réservations
+              </div>
+            </div>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz"
+            role="listitem"
+          >
+            <div
+              class="css-view-175oi2r r-width-8hc5te"
+            />
+            <div
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-1kihuf0 r-borderColor-42olwf r-borderRadius-1udnf30 r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-1ugchlj r-paddingHorizontal-ymttw5"
+              data-testid="Favorites tab"
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r r-position-bnwqim"
+                data-testid="bicolor-favorite-count-v2"
+              >
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-view-175oi2r"
+                  style="position: absolute; right: -14px; top: -4px; transform: scale(1);"
+                >
+                  <div
+                    class="css-view-175oi2r"
+                  >
+                    <div
+                      class="css-text-1rynq56"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    aria-label="2"
+                    aria-live="polite"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-height-7y230i r-justifyContent-1777fci r-position-u8s1d r-top-3sxh79 r-width-lrsllp r-zIndex-184en5c"
+                  >
+                    <div
+                      class="css-text-1rynq56 r-height-1beio04 r-textAlign-q4m81j"
+                      dir="ltr"
+                    >
+                      <span
+                        class="css-textHasAncestor-1qaijid r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-10x49cs r-lineHeight-56xrmm"
+                      >
+                        2
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-19u6a5r"
+                dir="ltr"
+              >
+                Favoris
+              </div>
+            </div>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-6koalj r-flexDirection-18u37iz"
+            role="listitem"
+          >
+            <div
+              class="css-view-175oi2r r-width-8hc5te"
+            />
+            <div
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-alignSelf-1kihuf0 r-borderColor-42olwf r-borderRadius-1udnf30 r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-1ugchlj r-paddingHorizontal-ymttw5"
+              data-testid="Profile tab"
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-19u6a5r"
+                dir="ltr"
+              >
+                Profil
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div
+        class="css-view-175oi2r"
+        style="flex-grow: 1; flex-shrink: 1; flex-basis: 0px; flex-direction: row; margin-right: 24px; align-items: center; opacity: 1;"
+      >
+        <div
+          class="css-view-175oi2r r-alignItems-obd0qt r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+        >
+          <div
+            class="css-view-175oi2r r-height-1ugchlj r-width-gaci75"
+          >
+            <div
+              aria-label="République Française - Liberté Égalité Fraternité"
+              class="css-view-175oi2r"
+            >
+              <div
+                class="css-text-1rynq56"
+                dir="ltr"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      class="css-view-175oi2r"
+      style="flex-grow: 1; flex-shrink: 1; flex-basis: 0px; flex-direction: row; margin-right: 24px; align-items: center; display: none; opacity: 0;"
+    >
+      <div
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      />
+      <div
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      >
+        <div
+          class="css-view-175oi2r r-height-uvuy5l"
+        >
+          <div
+            aria-label="République Française - Liberté Égalité Fraternité"
+            class="css-view-175oi2r"
+          >
+            <div
+              class="css-text-1rynq56"
+              dir="ltr"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+`;
