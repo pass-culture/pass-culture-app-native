@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
@@ -13,10 +13,27 @@ type Props = {
 }
 
 export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate }) => {
-  const { state, text } = getOpeningHoursStatus({
+  const [date, setDate] = useState(currentDate)
+  const { state, text, nextChange } = getOpeningHoursStatus({
     openingHours,
-    currentDate,
+    currentDate: date,
   })
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout
+    if (nextChange) {
+      const timeUntilNextStateChange = nextChange.getTime() - date.getTime()
+      if (timeUntilNextStateChange <= 30 * 60 * 1000) {
+        timeoutId = setTimeout(() => setDate(new Date()), timeUntilNextStateChange)
+      }
+    }
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <Container>
       <StyledClock state={state} />
