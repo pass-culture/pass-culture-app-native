@@ -150,7 +150,7 @@ const Thumbnail = styled.ImageBackground<{ enableMultiVideoModule: boolean }>(
     // the overflow: hidden allow to add border radius to the image
     // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
     overflow: 'hidden',
-    borderRadius: enableMultiVideoModule ? 'unset' : theme.borderRadius.radius,
+    borderRadius: enableMultiVideoModule ? 0 : theme.borderRadius.radius,
     height: enableMultiVideoModule ? NEW_THUMBNAIL_HEIGHT : THUMBNAIL_HEIGHT,
     width: '100%',
     border: 1,
