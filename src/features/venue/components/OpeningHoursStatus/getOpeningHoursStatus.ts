@@ -97,6 +97,8 @@ const getDateFromOpeningHour = (currentDate: Date, openingHour: string): Date =>
   return set(currentDate, {
     hours: hour,
     minutes: minute,
+    seconds: 0,
+    milliseconds: 0,
   })
 }
 
