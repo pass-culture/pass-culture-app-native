@@ -545,7 +545,7 @@ export type AppThemeType = BaseAppThemeType & {
   isTabletViewport?: boolean
   isDesktopViewport?: boolean
   isSmallScreen?: boolean
-  featureFlags: Record<keyof typeof RemoteStoreFeatureFlags, boolean>
+  featureFlags?: Record<keyof typeof RemoteStoreFeatureFlags, boolean>
   showTabBar: boolean
   appContentWidth: number
   tabBar: BaseAppThemeType['tabBar'] & {

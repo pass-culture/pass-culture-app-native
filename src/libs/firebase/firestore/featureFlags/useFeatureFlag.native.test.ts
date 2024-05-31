@@ -29,7 +29,7 @@ describe('useFeatureFlag', () => {
 
   it('should deactivate FF when no build number is given', async () => {
     const firestoreData = {}
-    mockGet.mockReturnValueOnce(firestoreData)
+    mockGet.mockReturnValue(firestoreData).mockReturnValueOnce(firestoreData)
 
     const { result } = renderUseFeatureFlag(featureFlag)
 
@@ -54,7 +54,7 @@ describe('useFeatureFlag', () => {
         minimalBuildNumber: number
       }) => {
         const firestoreData = { minimalBuildNumber }
-        mockGet.mockReturnValueOnce(firestoreData)
+        mockGet.mockReturnValue(firestoreData).mockReturnValueOnce(firestoreData)
 
         const { result } = renderUseFeatureFlag(featureFlag)
 
@@ -68,7 +68,7 @@ describe('useFeatureFlag', () => {
   describe('maximalBuildNumber', () => {
     it('should activate FF when version is below maximalBuildNumber', async () => {
       const firestoreData = { maximalBuildNumber: buildVersion + 1 }
-      mockGet.mockReturnValueOnce(firestoreData)
+      mockGet.mockReturnValue(firestoreData).mockReturnValueOnce(firestoreData)
 
       const { result } = renderUseFeatureFlag(featureFlag)
 
@@ -79,7 +79,7 @@ describe('useFeatureFlag', () => {
 
     it('should activate FF when version is equal to maximalBuildNumber', async () => {
       const firestoreData = { maximalBuildNumber: buildVersion }
-      mockGet.mockReturnValueOnce(firestoreData)
+      mockGet.mockReturnValue(firestoreData).mockReturnValueOnce(firestoreData)
 
       const { result } = renderUseFeatureFlag(featureFlag)
 
@@ -90,7 +90,7 @@ describe('useFeatureFlag', () => {
 
     it('should deactivate FF when version is greater than maximalBuildNumber', async () => {
       const firestoreData = { maximalBuildNumber: buildVersion - 1 }
-      mockGet.mockReturnValueOnce(firestoreData)
+      mockGet.mockReturnValue(firestoreData).mockReturnValueOnce(firestoreData)
 
       const { result } = renderUseFeatureFlag(featureFlag)
 
@@ -106,7 +106,7 @@ describe('useFeatureFlag', () => {
         minimalBuildNumber: buildVersion - 1,
         maximalBuildNumber: buildVersion + 1,
       }
-      mockGet.mockReturnValueOnce(firestoreData)
+      mockGet.mockReturnValue(firestoreData).mockReturnValueOnce(firestoreData)
 
       const { result } = renderUseFeatureFlag(featureFlag)
 
@@ -120,7 +120,7 @@ describe('useFeatureFlag', () => {
         minimalBuildNumber: buildVersion,
         maximalBuildNumber: buildVersion,
       }
-      mockGet.mockReturnValueOnce(firestoreData)
+      mockGet.mockReturnValue(firestoreData).mockReturnValueOnce(firestoreData)
 
       const { result } = renderUseFeatureFlag(featureFlag)
 
@@ -134,7 +134,7 @@ describe('useFeatureFlag', () => {
         minimalBuildNumber: buildVersion - 1,
         maximalBuildNumber: buildVersion - 1,
       }
-      mockGet.mockReturnValueOnce(firestoreData)
+      mockGet.mockReturnValue(firestoreData).mockReturnValueOnce(firestoreData)
 
       const { result } = renderUseFeatureFlag(featureFlag)
 
@@ -148,7 +148,7 @@ describe('useFeatureFlag', () => {
         minimalBuildNumber: buildVersion + 1,
         maximalBuildNumber: buildVersion + 1,
       }
-      mockGet.mockReturnValueOnce(firestoreData)
+      mockGet.mockReturnValue(firestoreData).mockReturnValueOnce(firestoreData)
 
       const { result } = renderUseFeatureFlag(featureFlag)
 
@@ -162,7 +162,7 @@ describe('useFeatureFlag', () => {
         minimalBuildNumber: buildVersion + 1,
         maximalBuildNumber: buildVersion,
       }
-      mockGet.mockReturnValueOnce(firestoreData)
+      mockGet.mockReturnValue(firestoreData).mockReturnValueOnce(firestoreData)
 
       const { result } = renderUseFeatureFlag(featureFlag)
 
@@ -176,7 +176,7 @@ describe('useFeatureFlag', () => {
         minimalBuildNumber: buildVersion + 1,
         maximalBuildNumber: buildVersion,
       }
-      mockGet.mockReturnValueOnce(firestoreData)
+      mockGet.mockReturnValue(firestoreData).mockReturnValueOnce(firestoreData)
 
       renderUseFeatureFlag(featureFlag)
 

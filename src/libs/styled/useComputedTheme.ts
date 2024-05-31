@@ -1,10 +1,8 @@
 import { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 
-import {
-  useFeatureFlag,
-  useGetAllFeatureFlags,
-} from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { useGetAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/useGetAllFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { BaseAppThemeType, AppThemeType } from 'theme'
