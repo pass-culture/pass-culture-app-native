@@ -181,6 +181,7 @@ export const theme = {
     greySemiDark: ColorsEnum.GREY_SEMI_DARK,
     greyMedium: ColorsEnum.GREY_MEDIUM,
     greyLight: ColorsEnum.GREY_LIGHT,
+    brownLight: ColorsEnum.BROWN_LIGHT,
     primary: ColorsEnum.PRIMARY,
     primaryDisabled: ColorsEnum.PRIMARY_DISABLED,
     primaryDark: ColorsEnum.PRIMARY_DARK,

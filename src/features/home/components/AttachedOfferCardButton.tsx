@@ -20,9 +20,9 @@ export const AttachedOfferCardButton = ({
   title,
   categoryId,
   imageUrl,
-  distanceToOffer,
+  offerLocation,
   price,
-  tag,
+  categoryText,
   date,
   withRightArrow,
   onPress,
@@ -42,9 +42,9 @@ export const AttachedOfferCardButton = ({
         title={title}
         categoryId={categoryId}
         imageUrl={imageUrl}
-        distanceToOffer={distanceToOffer}
+        offerLocation={offerLocation}
         price={price}
-        tag={tag}
+        categoryText={categoryText}
         date={date}
         withRightArrow={withRightArrow}
         showImage={showImage}

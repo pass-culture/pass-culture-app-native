@@ -3,9 +3,12 @@ import { StyleProp, ViewStyle } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { AttachedOfferCard } from 'features/home/components/AttachedOfferCard'
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -31,40 +34,62 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   analyticsParams,
   style,
 }) => {
-  const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+  const enableMultiVideoModule = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
+  )
   const labelMapping = useCategoryHomeLabelMapping()
   const mapping = useCategoryIdMapping()
-  const displayDate = formatDates(timestampsInMillis)
-  const displayPrice = getDisplayPrice(offer?.offer?.prices)
-
   const prePopulateOffer = usePrePopulateOffer()
-
   const theme = useTheme()
+
+  const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+  const displayDate = formatDates(timestampsInMillis)
+
+  const displayPrice = getDisplayPrice(offer?.offer?.prices)
 
   const offerHeight = theme.isDesktopViewport ? getSpacing(45) : getSpacing(35)
 
   const categoryId = mapping[offer.offer.subcategoryId]
 
-  return (
-    <OfferInsert
-      offerHeight={offerHeight}
-      style={style}
-      navigateTo={{
-        screen: 'Offer',
-        params: { id: +offer.objectID },
-      }}
-      onBeforeNavigate={() => {
-        hideModal()
-        prePopulateOffer({
-          ...offer.offer,
-          offerId: +offer.objectID,
-          categoryId,
-        })
-        analytics.logConsultOffer({
-          offerId: +offer.objectID,
-          ...analyticsParams,
-        })
-      }}>
+  const categoryText = labelMapping[offer.offer.subcategoryId]
+
+  const containerProps = {
+    offerHeight,
+    style,
+    navigateTo: {
+      screen: 'Offer',
+      params: { id: +offer.objectID },
+    },
+    onBeforeNavigate: () => {
+      hideModal()
+      prePopulateOffer({
+        ...offer.offer,
+        offerId: +offer.objectID,
+        categoryId,
+      })
+      analytics.logConsultOffer({
+        offerId: +offer.objectID,
+        ...analyticsParams,
+      })
+    },
+  }
+
+  return enableMultiVideoModule ? (
+    <Container {...containerProps}>
+      <AttachedOfferCard
+        title={offer.offer.name ?? ''}
+        categoryId={categoryId}
+        categoryText={categoryText ?? ''}
+        imageUrl={offer.offer.thumbUrl}
+        showImage
+        withRightArrow
+        offerLocation={offer._geoloc}
+        date={displayDate}
+        price={displayPrice}
+      />
+    </Container>
+  ) : (
+    <OfferInsert {...containerProps}>
       <Row>
         <OfferImageContainer>
           <OfferImage
@@ -87,19 +112,21 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   )
 }
 
-const OfferInsert = styled(InternalTouchableLink)<{ offerHeight: number }>(
-  ({ theme, offerHeight }) => ({
-    // the overflow: hidden allow to add border radius to the image
-    // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
-    overflow: 'hidden',
-    borderRadius: theme.borderRadius.radius,
-    backgroundColor: theme.colors.white,
-    height: offerHeight,
-    alignItems: 'flex-start',
-    border: 1,
-    borderColor: theme.colors.greyMedium,
-  })
-)
+const Container = styled(InternalTouchableLink)({})
+
+const OfferInsert = styled(InternalTouchableLink)<{
+  offerHeight: number
+}>(({ theme, offerHeight }) => ({
+  // the overflow: hidden allow to add border radius to the image
+  // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
+  overflow: 'hidden',
+  borderRadius: theme.borderRadius.radius,
+  backgroundColor: theme.colors.white,
+  height: offerHeight,
+  alignItems: 'flex-start',
+  border: 1,
+  borderColor: theme.colors.greyMedium,
+}))
 
 const Row = styled.View({
   flexDirection: 'row',
