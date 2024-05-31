@@ -1,13 +1,17 @@
 import { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import {
+  useFeatureFlag,
+  useGetAllFeatureFlags,
+} from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { BaseAppThemeType, AppThemeType } from 'theme'
 
 export function useComputedTheme(theme: BaseAppThemeType) {
   const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
+  const featureFlags = useGetAllFeatureFlags()
   const { width: windowWidth } = useWindowDimensions()
   const tabletMinWidth = theme.breakpoints.md
   const desktopMinWidth = theme.breakpoints.lg
@@ -31,6 +35,7 @@ export function useComputedTheme(theme: BaseAppThemeType) {
         showLabels,
         height: tabBarHeight,
       },
+      featureFlags,
       isMobileViewport,
       isTabletViewport,
       isDesktopViewport,

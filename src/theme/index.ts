@@ -1,6 +1,8 @@
 import { Platform } from 'react-native'
 
 // eslint-disable-next-line no-restricted-imports
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+// eslint-disable-next-line no-restricted-imports
 import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react-device-detect'
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
@@ -543,6 +545,7 @@ export type AppThemeType = BaseAppThemeType & {
   isTabletViewport?: boolean
   isDesktopViewport?: boolean
   isSmallScreen?: boolean
+  featureFlags: Record<keyof typeof RemoteStoreFeatureFlags, boolean>
   showTabBar: boolean
   appContentWidth: number
   tabBar: BaseAppThemeType['tabBar'] & {
