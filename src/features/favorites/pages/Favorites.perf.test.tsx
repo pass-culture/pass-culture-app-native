@@ -30,7 +30,6 @@ offerIds.forEach((offerId) => {
   })
 })
 
-jest.unmock('libs/jwt')
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 jest.mock('libs/network/NetInfoWrapper')
 

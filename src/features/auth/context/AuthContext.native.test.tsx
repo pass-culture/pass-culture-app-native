@@ -23,9 +23,7 @@ import { act, renderHook } from 'tests/utils'
 
 import { AuthWrapper, useAuthContext } from './AuthContext'
 
-jest.unmock('libs/jwt')
 jest.unmock('libs/keychain')
-jest.unmock('libs/network/NetInfoWrapper')
 const mockedUseNetInfo = useNetInfo as jest.Mock
 
 jest.mock('libs/amplitude/amplitude')

@@ -13,8 +13,6 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
-jest.unmock('features/search/context/SearchWrapper')
-
 jest.unmock('libs/location')
 
 jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')

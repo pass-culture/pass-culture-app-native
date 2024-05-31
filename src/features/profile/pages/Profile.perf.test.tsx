@@ -16,7 +16,6 @@ mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 
 jest.mock('features/favorites/context/FavoritesWrapper')
 
-jest.unmock('libs/jwt')
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 
 // Performance measuring is run multiple times so we need to increase the timeout

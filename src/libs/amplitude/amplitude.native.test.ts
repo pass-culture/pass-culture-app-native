@@ -2,8 +2,6 @@ import { track, setOptOut, identify } from '@amplitude/analytics-react-native'
 
 import { amplitude } from './amplitude'
 
-jest.unmock('./amplitude')
-
 // '@amplitude/analytics-react-native' provides us already a mock
 // but we don't use it, as we need the actual value of Identify
 // in order to test `setUserProperties`: it instantiates an Identify
