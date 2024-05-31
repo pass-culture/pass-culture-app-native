@@ -29,10 +29,10 @@ export type AttachedOfferCardProps = {
 export const AttachedOfferCard = ({
   title,
   categoryId,
-  categoryText,
   imageUrl,
   geoloc,
   price,
+  categoryText,
   date,
   withRightArrow,
   showImage,
