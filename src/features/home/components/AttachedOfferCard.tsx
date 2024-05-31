@@ -18,7 +18,7 @@ export type AttachedOfferCardProps = {
   title: string
   categoryId: CategoryIdEnum
   categoryText: string
-  geoloc?: OfferLocation
+  offerLocation?: OfferLocation
   imageUrl?: string
   showImage?: boolean
   price?: string
@@ -30,14 +30,14 @@ export const AttachedOfferCard = ({
   title,
   categoryId,
   imageUrl,
-  geoloc,
+  offerLocation,
   price,
   categoryText,
   date,
   withRightArrow,
   showImage,
 }: AttachedOfferCardProps) => {
-  const distanceToOffer = useDistance(geoloc || { lat: 0, lng: 0 })
+  const distanceToOffer = useDistance(offerLocation || { lat: 0, lng: 0 })
 
   return (
     <Container>
@@ -58,7 +58,7 @@ export const AttachedOfferCard = ({
         {price ? <CaptionNeutralInfo>{price}</CaptionNeutralInfo> : null}
       </CentralColumn>
       <RightColumn>
-        {geoloc ? (
+        {distanceToOffer ? (
           <DistanceWrapper label={`à ${distanceToOffer}`}>
             <Typo.Hint>à {distanceToOffer}</Typo.Hint>
           </DistanceWrapper>

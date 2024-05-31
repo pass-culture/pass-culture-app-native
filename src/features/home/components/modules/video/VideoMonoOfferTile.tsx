@@ -83,7 +83,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
         imageUrl={offer.offer.thumbUrl}
         showImage
         withRightArrow
-        geoloc={offer._geoloc}
+        offerLocation={offer._geoloc}
         date={displayDate}
         price={displayPrice}
       />

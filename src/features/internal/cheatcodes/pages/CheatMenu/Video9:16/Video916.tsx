@@ -10,7 +10,7 @@ export const Video916Cheatcodes = () => {
     <CheatcodeView>
       <Spacer.Column numberOfSpaces={10} />
       <AttachedOfferCardButton
-        geoloc={{
+        offerLocation={{
           lat: 48.94476,
           lng: 2.25055,
         }}
@@ -28,7 +28,7 @@ export const Video916Cheatcodes = () => {
       />
       <Spacer.Column numberOfSpaces={10} />
       <AttachedOfferCardButton
-        geoloc={{
+        offerLocation={{
           lat: 48.94476,
           lng: 2.25055,
         }}

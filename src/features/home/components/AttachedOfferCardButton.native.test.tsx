@@ -10,7 +10,7 @@ describe('<AttachedOfferCardButton>', () => {
   it('should call onPress when pressing the button', () => {
     render(
       <AttachedOfferCardButton
-        geoloc={{
+        offerLocation={{
           lat: 48.94476,
           lng: 2.25055,
         }}

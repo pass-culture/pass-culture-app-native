@@ -20,7 +20,7 @@ export const AttachedOfferCardButton = ({
   title,
   categoryId,
   imageUrl,
-  geoloc,
+  offerLocation: geoloc,
   price,
   categoryText,
   date,
@@ -42,7 +42,7 @@ export const AttachedOfferCardButton = ({
         title={title}
         categoryId={categoryId}
         imageUrl={imageUrl}
-        geoloc={geoloc}
+        offerLocation={geoloc}
         price={price}
         categoryText={categoryText}
         date={date}
