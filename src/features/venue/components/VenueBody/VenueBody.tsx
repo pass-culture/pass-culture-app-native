@@ -14,6 +14,8 @@ import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useDistance } from 'libs/location/hooks/useDistance'
@@ -26,6 +28,8 @@ import { Separator } from 'ui/components/Separator'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+import { OpeningHoursStatus } from '../OpeningHoursStatus/OpeningHoursStatus'
 
 interface Props {
   venue: VenueResponse
@@ -63,6 +67,13 @@ export const VenueBody: FunctionComponent<Props> = ({
   const FirstSectionContainer = isLargeScreen ? View : SectionWithDivider
   const hasGoogleCredit = bannerMeta?.is_from_google && bannerMeta?.image_credit
 
+  const currentDate = new Date()
+  const isDynamicOpeningHoursEnabled = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ENABLE_DYNAMIC_OPENING_HOURS
+  )
+
+  const isDynamicOpeningHoursDisplayed = isDynamicOpeningHoursEnabled && venue.openingHours
+
   return (
     <Container onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
       {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
@@ -79,6 +90,12 @@ export const VenueBody: FunctionComponent<Props> = ({
             {venueName}
           </VenueTitle>
           <Spacer.Column numberOfSpaces={2} />
+          {isDynamicOpeningHoursDisplayed ? (
+            <React.Fragment>
+              <OpeningHoursStatus currentDate={currentDate} openingHours={venue.openingHours} />
+              <Spacer.Column numberOfSpaces={2} />
+            </React.Fragment>
+          ) : null}
           <Typo.Caption>Adresse</Typo.Caption>
           <Spacer.Column numberOfSpaces={1} />
           <Typo.Body>{venueFullAddress}</Typo.Body>
