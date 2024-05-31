@@ -18,6 +18,9 @@ const BUTTONS = [
   { title: 'Gratuit', image: FreeImage },
 ]
 
+const DESKTOP_BUTTON_SIZE = getSpacing(20)
+const MOBILE_BUTTON_SIZE = getSpacing(14)
+
 export const CircleNavButtons: FC = () => {
   const { width } = useWindowDimensions()
   const isSmallScreen = width < 375
@@ -34,26 +37,29 @@ export const CircleNavButtons: FC = () => {
   )
 }
 
-const Container = styled.View<{ isSmallScreen: boolean }>(({ isSmallScreen }) => ({
-  flexDirection: 'row',
-  gap: isSmallScreen ? getSpacing(1) : getSpacing(2),
-  justifyContent: 'center',
-}))
-
-const Item = styledButton(Touchable)({
-  width: getSpacing(19),
-  gap: getSpacing(2),
-  padding: getSpacing(0.75),
-  alignItems: 'center',
+const Container = styled.View<{ isSmallScreen: boolean }>(({ isSmallScreen, theme }) => {
+  const mobileGap = isSmallScreen ? getSpacing(1) : getSpacing(2)
+  return {
+    flexDirection: 'row',
+    gap: theme.isDesktopViewport ? getSpacing(4) : mobileGap,
+    justifyContent: 'center',
+  }
 })
+
+const Item = styledButton(Touchable)(({ theme }) => ({
+  gap: getSpacing(2),
+  padding: theme.isDesktopViewport ? getSpacing(1.5) : getSpacing(0.75),
+  alignItems: 'center',
+}))
 
 const StyledText = styled(Typo.Caption).attrs({
   numberOfLines: 2,
-})({
+})(({ theme }) => ({
   textAlign: 'center',
-})
+  width: theme.isDesktopViewport ? getSpacing(29) : getSpacing(19),
+}))
 
-const ItemIcon = styled.Image({
-  width: getSpacing(14),
-  height: getSpacing(14),
-})
+const ItemIcon = styled.Image(({ theme }) => ({
+  width: theme.isDesktopViewport ? DESKTOP_BUTTON_SIZE : MOBILE_BUTTON_SIZE,
+  height: theme.isDesktopViewport ? DESKTOP_BUTTON_SIZE : MOBILE_BUTTON_SIZE,
+}))
