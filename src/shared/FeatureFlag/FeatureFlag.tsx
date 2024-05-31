@@ -1,65 +1,74 @@
-import React, { FC, PropsWithChildren, ReactNode } from 'react'
-import { View } from 'react-native'
+import React, { createContext, FC, PropsWithChildren, ReactNode, useContext, useMemo } from 'react'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
-type FeatureFlagProps = {
+type FeatureFlagContextValue = {
+  isEnabled: boolean
+}
+
+const FeatureFlagContext = createContext<FeatureFlagContextValue | undefined>(undefined)
+
+type FeatureFlagProviderProps = {
   featureFlag: keyof typeof RemoteStoreFeatureFlags
   children: ReactNode
 }
 
-type SubComponentProps = PropsWithChildren
-
 /**
- * FeatureFlag component to conditionally render children based on the feature flag state.
+ * FeatureFlagProvider component to provide the feature flag state via context.
  *
  * @param {keyof RemoteStoreFeatureFlags} featureFlag - The name of the feature flag to check.
- * @param {ReactNode} children - The children components, typically `FeatureFlag.On` and `FeatureFlag.Off`.
+ * @param {ReactNode} children - The children components.
  * @example
- * <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK}>
- *   <FeatureFlag.On>
- *     <View>
+ * <FeatureFlagProvider featureFlag={RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK}>
+ *   <View>
+ *     <Text>Feature is ON or OFF</Text>
+ *     <FeatureFlag.On>
  *       <Text>Feature is ON</Text>
- *     </View>
- *   </FeatureFlag.On>
- *   <FeatureFlag.Off>
- *     <View>
+ *     </FeatureFlag.On>
+ *     <FeatureFlag.Off>
  *       <Text>Feature is OFF</Text>
- *     </View>
- *   </FeatureFlag.Off>
- * </FeatureFlag>
+ *     </FeatureFlag.Off>
+ *   </View>
+ * </FeatureFlagProvider>
  */
-const FeatureFlagComponent: FC<FeatureFlagProps> & {
-  On: FC<SubComponentProps>
-  Off: FC<SubComponentProps>
-} = ({ featureFlag, children }) => {
+const FeatureFlagProvider: FC<FeatureFlagProviderProps> = ({ featureFlag, children }) => {
   const isEnabled = useFeatureFlag(RemoteStoreFeatureFlags[featureFlag])
 
-  return (
-    <View>
-      {React.Children.map(children, (child) => {
-        if (!React.isValidElement(child)) {
-          return null
-        }
+  const value = useMemo(() => ({ isEnabled }), [isEnabled])
 
-        if (child.type === FeatureFlagComponent.On && isEnabled) {
-          return child
-        }
-
-        if (child.type === FeatureFlagComponent.Off && !isEnabled) {
-          return child
-        }
-
-        return null
-      })}
-    </View>
-  )
+  return <FeatureFlagContext.Provider value={value}>{children}</FeatureFlagContext.Provider>
 }
 
-const On: FC<SubComponentProps> = ({ children }) => <View>{children}</View>
+const useFeatureFlagContext = () => {
+  const context = useContext(FeatureFlagContext)
+  if (context === undefined) {
+    throw new Error(
+      '<FeatureFlag.On /> and <FeatureFlag.Off /> must be wrapped within a <FeatureFlag /> component'
+    )
+  }
+  return context
+}
 
-const Off: FC<SubComponentProps> = ({ children }) => <View>{children}</View>
+type SubComponentProps = PropsWithChildren
+
+const On: FC<SubComponentProps> = ({ children }) => {
+  const { isEnabled } = useFeatureFlagContext()
+  return isEnabled ? <React.Fragment>{children}</React.Fragment> : null
+}
+
+const Off: FC<SubComponentProps> = ({ children }) => {
+  const { isEnabled } = useFeatureFlagContext()
+  return isEnabled ? null : <React.Fragment>{children}</React.Fragment>
+}
+
+const FeatureFlagComponent: FC<FeatureFlagProviderProps> & {
+  On: FC<SubComponentProps>
+  Off: FC<SubComponentProps>
+} = FeatureFlagProvider as FC<FeatureFlagProviderProps> & {
+  On: FC<SubComponentProps>
+  Off: FC<SubComponentProps>
+}
 
 FeatureFlagComponent.On = On
 FeatureFlagComponent.Off = Off
