@@ -225,5 +225,59 @@ describe('OpeningHoursStatusViewModel', () => {
 
       expect(viewModel.text).toEqual('Fermé')
     })
+
+    it.each([
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '19:00' }],
+        },
+        currentDate: new Date('2024-05-13T18:00:00'),
+        expectedNextChange: new Date('2024-05-13T19:00:00'),
+      },
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '19:00' }],
+        },
+        currentDate: new Date('2024-05-13T07:00:00'),
+        expectedNextChange: new Date('2024-05-13T08:00:00'),
+      },
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '19:00' }],
+        },
+        currentDate: new Date('2024-05-13T12:00:00'),
+        expectedNextChange: new Date('2024-05-13T18:00:00'),
+      },
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '19:00' }],
+        },
+        currentDate: new Date('2024-05-13T08:30:00'),
+        expectedNextChange: new Date('2024-05-13T09:00:00'),
+      },
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '18:00' }],
+          FRIDAY: [{ open: '09:00', close: '18:00' }],
+        },
+        currentDate: new Date('2024-05-13T19:00:00'),
+        expectedNextChange: undefined,
+      },
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '18:00' }],
+          TUESDAY: [{ open: '09:00', close: '18:00' }],
+        },
+        currentDate: new Date('2024-05-13T19:00:00'),
+        expectedNextChange: new Date('2024-05-14T08:00:00'),
+      },
+    ])(
+      'should indicate next state change date $expectedNextChange',
+      ({ openingHours, currentDate, expectedNextChange }) => {
+        const viewModel = getOpeningHoursStatus({ openingHours, currentDate })
+
+        expect(viewModel.nextChange).toEqual(expectedNextChange)
+      }
+    )
   })
 })

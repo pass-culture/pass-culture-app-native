@@ -1,4 +1,4 @@
-import { addHours, set, isWithinInterval } from 'date-fns'
+import { addHours, set, isWithinInterval, subHours } from 'date-fns'
 
 import { OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
 
@@ -10,6 +10,7 @@ type OpeningHoursStatusParams = {
 type OpeningHoursStatus = {
   state: OpeningHoursStatusState
   text: string
+  nextChange?: Date
 }
 
 export const getOpeningHoursStatus = ({
@@ -22,24 +23,41 @@ export const getOpeningHoursStatus = ({
     const closeAt = getDateFromOpeningHour(currentDate, close)
     return createPeriod(openAt, closeAt)
   })
-  return getStateFromPeriods(periods, currentDate)
+
+  const nextDay = addHours(currentDate, 24)
+  const nextDayOpeningHour = openingHours[getHoursFromCurrentDate(nextDay)]?.[0]
+  const nextDayOpenAt =
+    nextDayOpeningHour && getDateFromOpeningHour(nextDay, nextDayOpeningHour.open)
+
+  return getStateFromPeriods(periods, currentDate, nextDayOpenAt)
 }
 
 const getStateFromPeriods = (
   periods: Period[],
   currentDate: Date,
+  nextDayOpenAt?: Date,
   index = 0
 ): OpeningHoursStatus => {
   const period = periods[index]
   if (!period) {
+    const lastPeriod = periods[periods.length - 1]
+    if (lastPeriod && lastPeriod.openAt > currentDate) {
+      return {
+        state: 'close',
+        text: 'Fermé',
+        nextChange: subHours(lastPeriod.openAt, 1),
+      }
+    }
+
     return {
       state: 'close',
       text: 'Fermé',
+      nextChange: nextDayOpenAt && subHours(nextDayOpenAt, 1),
     }
   }
 
   if (period.isPassed(currentDate)) {
-    return getStateFromPeriods(periods, currentDate, index + 1)
+    return getStateFromPeriods(periods, currentDate, nextDayOpenAt, index + 1)
   }
 
   if (period.isOpen(currentDate)) {
@@ -47,11 +65,13 @@ const getStateFromPeriods = (
       return {
         state: 'close-soon',
         text: `Ferme bientôt - ${formatDate(period.closeAt)}`,
+        nextChange: period.closeAt,
       }
     }
     return {
       state: 'open',
       text: `Ouvert jusqu’à ${formatDate(period.closeAt)}`,
+      nextChange: subHours(period.closeAt, 1),
     }
   }
 
@@ -59,10 +79,11 @@ const getStateFromPeriods = (
     return {
       state: 'open-soon',
       text: `Ouvre bientôt - ${formatDate(period.openAt)}`,
+      nextChange: period.openAt,
     }
   }
 
-  return getStateFromPeriods(periods, currentDate, index + 1)
+  return getStateFromPeriods(periods, currentDate, nextDayOpenAt, index + 1)
 }
 
 type Period = ReturnType<typeof createPeriod>
