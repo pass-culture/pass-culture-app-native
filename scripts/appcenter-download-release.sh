@@ -14,7 +14,6 @@ INSTALL="${INSTALL:-"true"}"
 UNINSTALL="${UNINSTALL:-"true"}"
 LAUNCH="${LAUNCH:-"true"}"
 REMOVE_APK_AFTER_INSTALL="${REMOVE_APK_AFTER_INSTALL:-"true"}"
-REMOVE_IPA_AFTER_INSTALL="${REMOVE_IPA_AFTER_INSTALL:-"true"}"
 APPCENTER_API_URL="https://api.appcenter.ms/v0.1"
 APPCENTER_OWNER_NAME="pass-Culture"
 APPCENTER_DISTRIBUTION_GROUP_NAME="Collaborators"
@@ -51,7 +50,7 @@ function help() {
   echo "      | INSTALL                              | Set it to 'false' to skip application installation                                         |"
   echo "      | UNINSTALL                            | Set it to 'false' to skip application uninstallation                                       |"
   echo "      | LAUNCH                               | Set it to 'false' to skip application launch                                               |"
-  echo "      | REMOVE_AFTER_INSTALL                 | Set it to 'false' to keep apk                                                              |"
+  echo "      | REMOVE_APK_AFTER_INSTALL             | Set it to 'false' to keep apk                                                              |"
   echo
   echo "Examples:"
   echo
@@ -80,6 +79,8 @@ function help() {
   echo
 }
 
+
+
 function android() {
   releaseId="latest"
   downloadedFile="app-${APPCENTER_ENVIRONMENT}-${APPCENTER_PLATFORM}.apk"
@@ -97,6 +98,11 @@ function android() {
         "${APPCENTER_API_URL}/apps/pass-Culture/${appName}/releases" |
         jq 'map(select(.short_version == "'"${TARGET_VERSION}"'").id)[0]'
     )" || die "Cannot retrieve AppCenter Release ID"
+
+    if [[ "${releaseId}" == "null" ]]; then
+      releaseId="latest"
+    fi
+
     echo "Fetched ${APPCENTER_PLATFORM} AppCenter Release ID ${releaseId} for application version ${TARGET_VERSION} (${APPCENTER_ENVIRONMENT}) with success"
   else
     echo "No version provided, it will install the latest ${APPCENTER_ENVIRONMENT} version"
@@ -121,7 +127,7 @@ function android() {
     adb install "${downloadedFile}"
   fi
 
-  if [[ "${REMOVE_AFTER_INSTALL}" = "true" ]] && [[ -f "${downloadedFile}" ]]; then
+  if [[ "${REMOVE_APK_AFTER_INSTALL}" = "true" ]] && [[ -f "${downloadedFile}" ]]; then
     echo "Removing ${downloadedFile} from your disk"
     rm "${downloadedFile}"
   fi
