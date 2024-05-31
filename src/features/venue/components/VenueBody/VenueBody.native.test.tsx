@@ -198,6 +198,61 @@ describe('<VenueBody />', () => {
 
     expect(analytics.logConsultVenueOffers).toHaveBeenCalledWith({ venueId: venueResponseSnap.id })
   })
+
+  it('should render dynamics opening hours when feature flag is enabled', async () => {
+    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
+    const venue = {
+      ...venueResponseSnap,
+      openingHours: {
+        monday: [],
+        tuesday: [],
+        wednesday: [],
+        thursday: [],
+        friday: [],
+        saturday: [],
+        sunday: [],
+      },
+    }
+
+    render(reactQueryProviderHOC(<VenueBody venue={venue} onScroll={jest.fn()} />))
+    await waitUntilRendered()
+
+    expect(screen.getByText('Fermé')).toBeOnTheScreen()
+  })
+
+  it('should NOT render dynamics opening hours when feature flag is disabled', async () => {
+    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(false)
+    const venue = {
+      ...venueResponseSnap,
+      openingHours: {
+        monday: [],
+        tuesday: [],
+        wednesday: [],
+        thursday: [],
+        friday: [],
+        saturday: [],
+        sunday: [],
+      },
+    }
+
+    render(reactQueryProviderHOC(<VenueBody venue={venue} onScroll={jest.fn()} />))
+    await waitUntilRendered()
+
+    expect(screen.queryByText('Fermé')).not.toBeOnTheScreen()
+  })
+
+  it('should NOT render dynamics opening hours when venue doesn t have openingHours', async () => {
+    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
+    const venue = {
+      ...venueResponseSnap,
+      openingHours: undefined,
+    }
+
+    render(reactQueryProviderHOC(<VenueBody venue={venue} onScroll={jest.fn()} />))
+    await waitUntilRendered()
+
+    expect(screen.queryByText('Fermé')).not.toBeOnTheScreen()
+  })
 })
 
 const waitUntilRendered = async () => {
