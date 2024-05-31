@@ -2,15 +2,9 @@
 
 exports[`<AttachedOfferCard> matches snapshot if all proprieties are defined 1`] = `
 <View
-  accessibilityLabel="Carte offre Soirée super trop drôle de fou malade !"
-  isFocus={false}
-  onBlur={[Function]}
-  onFocus={[Function]}
-  onMouseDown={[Function]}
   style={
     [
       {
-        "alignItems": "center",
         "backgroundColor": "#ffffff",
         "borderColor": "#CBCDD2",
         "borderRadius": 12,
@@ -43,6 +37,7 @@ exports[`<AttachedOfferCard> matches snapshot if all proprieties are defined 1`]
           "flexGrow": 1,
           "flexShrink": 1,
           "gap": 4,
+          "justifyContent": "center",
           "textAlign": "left",
           "wordWrap": "break-word",
         },
@@ -112,13 +107,22 @@ exports[`<AttachedOfferCard> matches snapshot if all proprieties are defined 1`]
       [
         {
           "alignItems": "flex-end",
-          "flexDirection": "column",
-          "height": "100%",
-          "justifyContent": "space-between",
+          "marginVertical": 1,
         },
       ]
     }
   >
+    <View
+      style={
+        [
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
     <View
       numberOfSpaces={1}
       style={
@@ -131,11 +135,10 @@ exports[`<AttachedOfferCard> matches snapshot if all proprieties are defined 1`]
     />
     <View
       height={16}
-      testID="ArrowRighIcon"
       width={16}
     >
       <Text>
-        ArrowRighIcon-SVG-Mock
+        undefined-SVG-Mock
       </Text>
     </View>
   </View>
@@ -144,15 +147,9 @@ exports[`<AttachedOfferCard> matches snapshot if all proprieties are defined 1`]
 
 exports[`<AttachedOfferCard> matches snapshot if there is no distance and arrow 1`] = `
 <View
-  accessibilityLabel="Carte offre Soirée super trop drôle de fou malade !"
-  isFocus={false}
-  onBlur={[Function]}
-  onFocus={[Function]}
-  onMouseDown={[Function]}
   style={
     [
       {
-        "alignItems": "center",
         "backgroundColor": "#ffffff",
         "borderColor": "#CBCDD2",
         "borderRadius": 12,
@@ -185,6 +182,7 @@ exports[`<AttachedOfferCard> matches snapshot if there is no distance and arrow 
           "flexGrow": 1,
           "flexShrink": 1,
           "gap": 4,
+          "justifyContent": "center",
           "textAlign": "left",
           "wordWrap": "break-word",
         },
@@ -240,12 +238,22 @@ exports[`<AttachedOfferCard> matches snapshot if there is no distance and arrow 
       [
         {
           "alignItems": "flex-end",
-          "flexDirection": "column",
-          "height": "100%",
-          "justifyContent": "space-between",
+          "marginVertical": 1,
         },
       ]
     }
-  />
+  >
+    <View
+      style={
+        [
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+  </View>
 </View>
 `;
