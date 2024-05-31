@@ -8,6 +8,7 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchView, SearchState } from 'features/search/types'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -119,6 +120,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 jest.useFakeTimers()
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
 describe('SearchBox component', () => {
   beforeEach(() => {
     jest.spyOn(navigationRef, 'getState').mockReturnValue({
@@ -143,6 +146,15 @@ describe('SearchBox component', () => {
 
   it('should render SearchBox', async () => {
     renderSearchBox()
+    await act(async () => {})
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should render SearchBox when FF is enabled', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    renderSearchBox()
+
     await act(async () => {})
 
     expect(screen).toMatchSnapshot()
