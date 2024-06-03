@@ -17,11 +17,14 @@ describe('Accessibility', () => {
 const renderAttachedOfferCardButton = () => {
   return render(
     <AttachedOfferCardButton
-      distanceToOffer="à 120 m"
+      offerLocation={{
+        lat: 48.94476,
+        lng: 2.25055,
+      }}
       withRightArrow
       imageUrl="https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW"
       price="Gratuit"
-      tag="Musée"
+      categoryText="Musée"
       categoryId={CategoryIdEnum.MUSIQUE_LIVE}
       title="Soirée super trop drôle de fou malade&nbsp;!"
       date="Du 12/06 au 24/06"
