@@ -1,7 +1,11 @@
 name: Overwrite some file
 
 on:
-  pull_request_review:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
 
 env:
   GIT_CONFIG_EMAIL: PassCulture-SA@users.noreply.github.com
@@ -23,7 +27,7 @@ jobs:
 
       - name: 'find used routes'
         run: |
-          ./scripts/get_used_routes.sh
+          ./scripts/get_used_routes.sh ${{ github.event.inputs.version }}
       - name: 'Commit changes'
         run: |
           git add trace_routes.md

@@ -1,0 +1,40 @@
+name: 'wip fake deploy tags'
+
+on:
+  pull_request_review:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  GIT_CONFIG_EMAIL: PassCulture-SA@users.noreply.github.com
+  GIT_CONFIG_NAME: ${{ github.actor }}
+
+jobs:
+  create_and_push_staging_tag:
+    name: 'Create and push staging tag'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout commit hash'
+        uses: actions/checkout@v4
+        with:
+          ref: 'bsr-script-to-find-routes-used-in-code'
+          token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
+      - name: 'get package version'
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+      - name: 'Author'
+        run: |
+          git config --global user.email "$GIT_CONFIG_EMAIL"
+          git config --global user.name "$GIT_CONFIG_NAME"
+      - name: 'Create and push tag from package version'
+        run: |
+          TAG_NAME=fake_tag1.1
+          git tag --annotate "$TAG_NAME" --message "🚀 $TAG_NAME"
+          git push origin "$TAG_NAME"
+  log_route_used_by_version:
+    needs: create_and_push_staging_tag
+    uses: ./.github/workflows/wip_dev_on_workflow_update_firestore_value.yml
+    with:
+      version: fake_tag1.1
