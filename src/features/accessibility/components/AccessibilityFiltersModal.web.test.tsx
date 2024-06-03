@@ -1,12 +1,9 @@
 import React from 'react'
 
 import { FilterBehaviour } from 'features/search/enums'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { AccessibilityFiltersModal, AccessibilityModalProps } from './AccessibilityFiltersModal'
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<AccessibilityFiltersModal />', () => {
   it('should display mobile header modal if mobile viewport', () => {
