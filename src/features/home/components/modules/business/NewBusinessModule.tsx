@@ -25,6 +25,7 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
   const {
     analyticsTitle: title,
     title: firstLine,
+    date,
     subtitle: secondLine,
     image: imageURL,
     imageWeb: imageWebURL,
@@ -101,17 +102,24 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
           testID="imageBusiness">
           <Row>
             <Column>
-              <StyledBody numberOfLines={1} testID="date">
+              <ButtonText testID="date" numberOfLines={2}>
                 {date}
-              </StyledBody>
+              </ButtonText>
               <ButtonText testID="firstLine" numberOfLines={2}>
                 {firstLine}
               </ButtonText>
-              <StyledBody numberOfLines={2} testID="secondLine">
+              <StyledBody testID="secondLine" numberOfLines={2}>
                 {secondLine}
               </StyledBody>
             </Column>
             <ButtonContainer>
+              {callToAction ? (
+                <StyledButton
+                  wording={callToAction}
+                  onPress={onPress}
+                  accessibilityLabel={accessibilityLabel}
+                />
+              ) : null}
               {callToAction ? (
                 <StyledButton
                   wording={callToAction}
