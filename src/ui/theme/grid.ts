@@ -26,6 +26,7 @@ export const LENGTH_XL = PixelRatio.roundToNearestPixel(15 * MARGIN_DP)
 export const RATIO_BUSINESS = 1 / 3
 export const RATIO_HOME_IMAGE = 2 / 3
 export const RATIO_EXCLU = 5 / 6
+export const RATIO_MARKETING_BLOCK = 5 / 4
 
 /**
  * Breakpoint	Class infix	Dimensions

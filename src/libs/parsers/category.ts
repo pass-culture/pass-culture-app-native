@@ -24,5 +24,5 @@ const MAP_CATEGORY_ID_TO_ICON: {
 
 export const mapCategoryToIcon = (id: CategoryIdEnum | null): React.FC<AccessibleIcon> => {
   if (id && id in MAP_CATEGORY_ID_TO_ICON) return MAP_CATEGORY_ID_TO_ICON[id]
-  return categoriesIcons.FineArts
+  return categoriesIcons.All
 }

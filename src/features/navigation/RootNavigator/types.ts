@@ -101,8 +101,6 @@ export type TrustedDeviceRootStackParamList = {
   SuspensionChoiceExpiredLink: undefined
   SuspiciousLoginSuspendedAccount: undefined
   TrustedDeviceInfos: undefined
-  MovieCalendar: undefined
-  Video916Cheatcodes: undefined
 }
 
 export enum StepperOrigin {
@@ -288,6 +286,8 @@ export type RootStackParamList = {
   CategoryThematicHomeHeaderCheatcode: undefined
   ThematicHeaders: undefined
   Video916Cheatcodes: undefined
+  MarketingBlocks: undefined
+  MovieCalendar: undefined
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
   TutorialRootStackParamList &
