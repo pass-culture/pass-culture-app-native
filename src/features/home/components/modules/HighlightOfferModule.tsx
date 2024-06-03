@@ -8,6 +8,8 @@ import { BlackCaption } from 'features/home/components/BlackCaption'
 import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -18,6 +20,8 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
+
+import { MarketingBlockExclusivity } from './marketing/MarketingBlockExclusivity'
 
 const OFFER_IMAGE_HEIGHT = getSpacing(45)
 const BOTTOM_SPACER = getSpacing(6)
@@ -48,6 +52,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const categoryIdMapping = useCategoryIdMapping()
   const prePopulateOffer = usePrePopulateOffer()
   const { isDesktopViewport } = useTheme()
+  const isNewExclusivityModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_EXCLUSIVITY_MODULE)
 
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage(
@@ -76,73 +81,88 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
 
   return (
     <Container>
-      <StyledTitleContainer>
-        <StyledTitle>{props.highlightTitle}</StyledTitle>
-      </StyledTitleContainer>
-      <Spacer.Column numberOfSpaces={5} />
-      <View>
-        <ColorCategoryBackground
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 1 }}
-          colors={gradientColorsMapping[props.color]}
-          height={
-            isDesktopViewport
-              ? DESKTOP_COLOR_BACKGROUND_HEIGHT
-              : getColorBackgroundHeight(offerDetailsHeight)
-          }
+      {isNewExclusivityModule ? (
+        <MarketingBlockExclusivity
+          offerId={Number(offerId)}
+          title={props.highlightTitle}
+          categoryId={categoryId}
+          backgroundImageUrl={props.image}
+          offerImageUrl={highlightOffer.offer.thumbUrl}
+          offerLocation={highlightOffer._geoloc}
+          price={priceText}
+          categoryText={categoryLabel || ''}
         />
-        <StyledTouchableLink
-          testID="highlight-offer-image"
-          accessibilityRole="button"
-          highlight
-          navigateTo={{
-            screen: 'Offer',
-            params: { id: highlightOfferId },
-          }}
-          onBeforeNavigate={() => {
-            prePopulateOffer({
-              ...offer,
-              offerId: +highlightOfferId,
-              categoryId,
-            })
-            analytics.logConsultOffer({
-              offerId: +highlightOfferId,
-              from: 'highlightOffer',
-              moduleId: props.id,
-              moduleName: props.highlightTitle,
-              homeEntryId: props.homeEntryId,
-            })
-          }}>
-          <TouchableContent>
-            <OfferImage source={{ uri: props.image }}>
-              {categoryLabel ? <CategoryCaption label={categoryLabel} /> : null}
-            </OfferImage>
-            <OfferDetails
-              onLayout={(event: LayoutChangeEvent) =>
-                setOfferDetailsHeight(event.nativeEvent.layout.height)
-              }>
-              <StyledOfferTitle>{props.offerTitle}</StyledOfferTitle>
-              {formattedDate ? <AdditionalDetail>{formattedDate}</AdditionalDetail> : null}
-              {venueName ? <AdditionalDetail>{venueName}</AdditionalDetail> : null}
-              {formattedPrice ? <AdditionalDetail>{priceText}</AdditionalDetail> : null}
-            </OfferDetails>
-            <ArrowOffer>
-              <PlainArrowNext size={theme.icons.sizes.small} />
-            </ArrowOffer>
-          </TouchableContent>
-        </StyledTouchableLink>
-        <FavoriteButtonContainer>
-          <FavoriteButton
-            offerId={parseInt(highlightOfferId)}
-            analyticsParams={{
-              from: 'highlightOffer',
-              moduleId: props.id,
-              moduleName: props.highlightTitle,
-            }}
-          />
-        </FavoriteButtonContainer>
-        <Spacer.Column numberOfSpaces={6} />
-      </View>
+      ) : (
+        <React.Fragment>
+          <StyledTitleContainer>
+            <StyledTitle>{props.highlightTitle}</StyledTitle>
+          </StyledTitleContainer>
+          <Spacer.Column numberOfSpaces={5} />
+          <View>
+            <ColorCategoryBackground
+              start={{ x: 0, y: 0 }}
+              end={{ x: 0, y: 1 }}
+              colors={gradientColorsMapping[props.color]}
+              height={
+                isDesktopViewport
+                  ? DESKTOP_COLOR_BACKGROUND_HEIGHT
+                  : getColorBackgroundHeight(offerDetailsHeight)
+              }
+            />
+            <StyledTouchableLink
+              testID="highlight-offer-image"
+              accessibilityRole="button"
+              highlight
+              navigateTo={{
+                screen: 'Offer',
+                params: { id: highlightOfferId },
+              }}
+              onBeforeNavigate={() => {
+                prePopulateOffer({
+                  ...offer,
+                  offerId: +highlightOfferId,
+                  categoryId,
+                })
+                analytics.logConsultOffer({
+                  offerId: +highlightOfferId,
+                  from: 'highlightOffer',
+                  moduleId: props.id,
+                  moduleName: props.highlightTitle,
+                  homeEntryId: props.homeEntryId,
+                })
+              }}>
+              <TouchableContent>
+                <OfferImage source={{ uri: props.image }}>
+                  {categoryLabel ? <CategoryCaption label={categoryLabel} /> : null}
+                </OfferImage>
+                <OfferDetails
+                  onLayout={(event: LayoutChangeEvent) =>
+                    setOfferDetailsHeight(event.nativeEvent.layout.height)
+                  }>
+                  <StyledOfferTitle>{props.offerTitle}</StyledOfferTitle>
+                  {formattedDate ? <AdditionalDetail>{formattedDate}</AdditionalDetail> : null}
+                  {venueName ? <AdditionalDetail>{venueName}</AdditionalDetail> : null}
+                  {formattedPrice ? <AdditionalDetail>{priceText}</AdditionalDetail> : null}
+                </OfferDetails>
+                <ArrowOffer>
+                  <PlainArrowNext size={theme.icons.sizes.small} />
+                </ArrowOffer>
+              </TouchableContent>
+            </StyledTouchableLink>
+            <FavoriteButtonContainer>
+              <FavoriteButton
+                offerId={parseInt(highlightOfferId)}
+                analyticsParams={{
+                  from: 'highlightOffer',
+                  moduleId: props.id,
+                  moduleName: props.highlightTitle,
+                }}
+              />
+            </FavoriteButtonContainer>
+            <Spacer.Column numberOfSpaces={6} />
+          </View>
+        </React.Fragment>
+      )}
     </Container>
   )
 }
