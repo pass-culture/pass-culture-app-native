@@ -9,6 +9,7 @@ import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
@@ -29,6 +30,8 @@ mockUseAuthContext.mockReturnValue({
   refetchUser: jest.fn(),
   isUserLoading: false,
 })
+
+const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('HighlightOfferModule', () => {
   beforeEach(() => {
