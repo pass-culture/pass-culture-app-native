@@ -1,0 +1,40 @@
+name: Overwrite some file
+
+on:
+  pull_request:
+
+env:
+  GIT_CONFIG_EMAIL: PassCulture-SA@users.noreply.github.com
+  GIT_CONFIG_NAME: ${{ github.actor }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fake-master
+          token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
+
+      - name: Overwrite file
+        uses: 'DamianReeves/write-file-action@master'
+        with:
+          path: test.md
+          write-mode: append
+          contents: |
+            console.log('some contents')
+
+      - name: 'Author'
+        run: |
+          git config --global user.email "$GIT_CONFIG_EMAIL"
+          git config --global user.name "$GIT_CONFIG_NAME"
+
+      - name: 'find used routes'
+        run: |
+          ./scripts/get_used_routes.sh
+      - name: 'Commit changes'
+        run: |
+          git add used_routes.txt
+          git add unused_routes.txt
+          git commit --message "Overwrite test.md file"
+          git push origin fake-master
