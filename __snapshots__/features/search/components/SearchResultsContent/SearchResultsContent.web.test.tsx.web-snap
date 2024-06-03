@@ -184,7 +184,7 @@ exports[`SearchResultsContent component should render correctly 1`] = `
             </button>
           </li>
           <li
-            class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+            class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginTop-14gqq1x"
             role="listitem"
           >
             <button
@@ -201,6 +201,27 @@ exports[`SearchResultsContent component should render correctly 1`] = `
                 dir="ltr"
               >
                 Dates & heures
+              </div>
+            </button>
+          </li>
+          <li
+            class="css-view-175oi2r r-display-ixj5dj r-marginBottom-15zivkp r-marginLeft-13hce6t r-marginRight-1d4mawv r-marginTop-14gqq1x"
+            role="listitem"
+          >
+            <button
+              aria-label="Accessibilité"
+              class="sc-aXZVg igdJKW sc-cwHptR kaacHT sc-cwHptR kaacHT"
+              data-testid="Accessibilité"
+              tabindex="0"
+              title="Accessibilité"
+              type="button"
+            >
+              <div
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                data-testid="lieuxAccessiblesButtonLabel"
+                dir="ltr"
+              >
+                Accessibilité
               </div>
             </button>
           </li>

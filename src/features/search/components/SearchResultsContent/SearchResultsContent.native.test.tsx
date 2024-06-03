@@ -24,7 +24,7 @@ import { Offer } from 'shared/offer/types'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { theme } from 'theme'
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
@@ -534,6 +534,27 @@ describe('SearchResultsContent component', () => {
     )
   })
 
+  describe('Accessibility filter', () => {
+    it('should display accessibility filter button', async () => {
+      render(<SearchResultsContent />)
+      const accessibilityFilterButton = await screen.findByRole('button', { name: 'Accessibilité' })
+
+      expect(accessibilityFilterButton).toBeOnTheScreen()
+    })
+
+    it('should open accessibility filters modal when accessibilityFiltersButton is pressed', async () => {
+      render(<SearchResultsContent />)
+      const accessibilityFilterButton = screen.getByRole('button', { name: 'Accessibilité' })
+
+      fireEvent.press(accessibilityFilterButton)
+      const accessibilityFiltersModal = await screen.findByText(
+        'Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps'
+      )
+
+      expect(accessibilityFiltersModal).toBeOnTheScreen()
+    })
+  })
+
   it('should open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
     mockPosition = null
     mockHits = mockedAlgoliaResponse.hits
@@ -783,31 +804,6 @@ describe('SearchResultsContent component', () => {
 
       expect(filterButton).toBeOnTheScreen()
       expect(filterButton).toHaveTextContent('2')
-    })
-  })
-
-  describe('Accessibility', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
-    })
-
-    it('should display accessibility filter button', async () => {
-      render(<SearchResultsContent />)
-      const accessibilityFilterButton = await screen.findByRole('button', { name: 'Accessibilité' })
-
-      expect(accessibilityFilterButton).toBeOnTheScreen()
-    })
-
-    it('should open accessibility filters modal when accessibilityFiltersButton is pressed', async () => {
-      render(<SearchResultsContent />)
-      const accessibilityFilterButton = screen.getByRole('button', { name: 'Accessibilité' })
-
-      fireEvent.press(accessibilityFilterButton)
-      const accessibilityFiltersModal = await screen.findByText(
-        'Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps'
-      )
-
-      expect(accessibilityFiltersModal).toBeOnTheScreen()
     })
   })
 })
