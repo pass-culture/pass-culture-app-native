@@ -7,13 +7,15 @@ import {
 } from 'features/home/components/AttachedOfferCard'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 type AttachedOfferCardButtonProps = AttachedOfferCardProps & {
-  onPress: () => void
+  onBeforeNavigate?: () => void
+  navigateTo: InternalNavigationProps['navigateTo']
 }
 
 export const AttachedOfferCardButton = ({
@@ -25,7 +27,8 @@ export const AttachedOfferCardButton = ({
   categoryText,
   date,
   withRightArrow,
-  onPress,
+  onBeforeNavigate,
+  navigateTo,
   showImage,
 }: AttachedOfferCardButtonProps) => {
   const focusProps = useHandleFocus()
@@ -33,9 +36,10 @@ export const AttachedOfferCardButton = ({
 
   return (
     <Container
-      onPress={onPress}
+      navigateTo={navigateTo}
+      onBeforeNavigate={onBeforeNavigate}
       accessibilityLabel={`Carte offre "${title}"`}
-      onMouseDown={(e) => e.preventDefault()}
+      onMouseDown={(e: Event) => e.preventDefault()}
       {...focusProps}
       {...hoverProps}>
       <AttachedOfferCard
@@ -53,7 +57,7 @@ export const AttachedOfferCardButton = ({
   )
 }
 
-const Container = styled(TouchableOpacity)<{
+const Container = styled(InternalTouchableLink)<{
   onMouseDown: (e: Event) => void
   isFocus: boolean
   isHover: boolean

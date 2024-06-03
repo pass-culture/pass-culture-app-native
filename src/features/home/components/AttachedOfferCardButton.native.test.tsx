@@ -1,13 +1,12 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum } from 'api/gen'
 import { AttachedOfferCardButton } from 'features/home/components/AttachedOfferCardButton'
-import { render, screen, fireEvent } from 'tests/utils'
-
-const onPress = jest.fn()
+import { render, screen, fireEvent, act } from 'tests/utils'
 
 describe('<AttachedOfferCardButton>', () => {
-  it('should call onPress when pressing the button', () => {
+  it('should call onPress when pressing the button', async () => {
     render(
       <AttachedOfferCardButton
         offerLocation={{
@@ -21,13 +20,16 @@ describe('<AttachedOfferCardButton>', () => {
         categoryId={CategoryIdEnum.MUSIQUE_LIVE}
         title="Soirée super trop drôle de fou malade&nbsp;!"
         date="Du 12/06 au 24/06"
-        onPress={onPress}
+        onBeforeNavigate={() => {
+          return
+        }}
+        navigateTo={{ screen: 'Offer', params: { id: '84f0548f-6603-4276-932d-4fab718d36fc' } }}
       />
     )
 
-    const Button = screen.getByLabelText('Carte offre "Soirée super trop drôle de fou malade !"')
-    fireEvent.press(Button)
+    const button = screen.getByLabelText('Carte offre "Soirée super trop drôle de fou malade !"')
+    await act(async () => fireEvent.press(button))
 
-    expect(onPress).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('Offer', { id: '84f0548f-6603-4276-932d-4fab718d36fc' })
   })
 })
