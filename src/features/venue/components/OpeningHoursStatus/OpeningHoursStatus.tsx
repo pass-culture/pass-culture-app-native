@@ -12,6 +12,8 @@ type Props = {
   currentDate: Date
 }
 
+const THIRTHY_MINUTES_IN_MILLISECONDS = 30 * 60 * 1000
+
 export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate }) => {
   const [date, setDate] = useState(currentDate)
   const { state, text, nextChange } = getOpeningHoursStatus({
@@ -23,7 +25,7 @@ export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate }) => 
     let timeoutId: NodeJS.Timeout
     if (nextChange) {
       const timeUntilNextStateChange = nextChange.getTime() - date.getTime()
-      if (timeUntilNextStateChange <= 30 * 60 * 1000) {
+      if (timeUntilNextStateChange <= THIRTHY_MINUTES_IN_MILLISECONDS) {
         timeoutId = setTimeout(() => setDate(new Date()), timeUntilNextStateChange)
       }
     }
