@@ -16,7 +16,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { CircleNavButtons } from '../../CircleNavButtons/CircleNavButtons'
 
-type CategoryListProps = {
+export type CategoryListProps = {
   id: string
   title: string
   categoryBlockList: CategoryBlockData[]
