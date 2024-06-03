@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
+import { theme } from 'theme'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
@@ -35,6 +36,10 @@ Default.args = {
   price: '10€',
 }
 
+Default.parameters = {
+  chromatic: { viewports: [theme.breakpoints.xs, theme.breakpoints.xl] },
+}
+
 export const WithoutBackgroundImage = Template.bind({})
 WithoutBackgroundImage.args = {
   offerImageUrl:
@@ -44,4 +49,8 @@ WithoutBackgroundImage.args = {
   offerLocation: { lat: 1, lng: 1 },
   price: '10€',
   categoryId: CategoryIdEnum.CINEMA,
+}
+
+WithoutBackgroundImage.parameters = {
+  chromatic: { viewports: [theme.breakpoints.xs, theme.breakpoints.xl] },
 }
