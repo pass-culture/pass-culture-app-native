@@ -25,28 +25,35 @@ export const ToggleButton = ({
   accessibilityLabel,
   Icon,
   isFlex,
-}: ToggleButtonProps) => (
-  <StyledTouchableOpacity
-    accessibilityLabel={active ? accessibilityLabel.active : accessibilityLabel.inactive}
-    onPress={onPress}
-    isFlex={isFlex}>
-    {active ? <Icon.active /> : <Icon.inactive />}
-    <Spacer.Row numberOfSpaces={2} />
-    <Typo.Caption>{active ? label.active : label.inactive}</Typo.Caption>
-  </StyledTouchableOpacity>
-)
+}: ToggleButtonProps) => {
+  const TouchableComponent = isFlex ? FlexTouchableOpacity : StaticTouchableOpacity
 
-const StyledTouchableOpacity = styled(TouchableOpacity)<{ isFlex?: boolean }>(
-  ({ theme, isFlex }) => ({
-    borderColor: theme.colors.greySemiDark,
-    borderWidth: getSpacing(0.25),
-    borderRadius: getSpacing(6),
-    paddingHorizontal: getSpacing(3),
-    paddingVertical: getSpacing(1),
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'flex-start',
-    backgroundColor: theme.colors.white,
-    ...(isFlex ? { flex: 1, justifyContent: 'center' } : {}),
-  })
-)
+  return (
+    <TouchableComponent
+      accessibilityLabel={active ? accessibilityLabel.active : accessibilityLabel.inactive}
+      onPress={onPress}>
+      {active ? <Icon.active /> : <Icon.inactive />}
+      <Spacer.Row numberOfSpaces={2} />
+      <Typo.Caption>{active ? label.active : label.inactive}</Typo.Caption>
+    </TouchableComponent>
+  )
+}
+
+const BaseTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
+  borderColor: theme.colors.greySemiDark,
+  borderWidth: getSpacing(0.25),
+  borderRadius: getSpacing(6),
+  paddingHorizontal: getSpacing(3),
+  paddingVertical: getSpacing(1),
+  flexDirection: 'row',
+  alignItems: 'center',
+  alignSelf: 'flex-start',
+  backgroundColor: theme.colors.white,
+}))
+
+const FlexTouchableOpacity = styled(BaseTouchableOpacity)({
+  flex: 1,
+  justifyContent: 'center',
+})
+
+const StaticTouchableOpacity = styled(BaseTouchableOpacity)({})
