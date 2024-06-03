@@ -11,7 +11,7 @@ import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { getSpacing } from 'ui/theme'
-import { RATION_MARKETING_BLOCK } from 'ui/theme/grid'
+import { RATIO_MARKETING_BLOCK } from 'ui/theme/grid'
 
 type MarketingBlockProps = Omit<AttachedOfferCardProps, 'onPress'> & {
   accessibilityLabel: string
@@ -74,7 +74,7 @@ export const MarketingBlockContent = ({
 
 const BackgroundImageContainer = styled.View(({ theme }) => ({
   maxHeight: getSpacing(118.75),
-  height: PixelRatio.roundToNearestPixel(theme.appContentWidth * RATION_MARKETING_BLOCK),
+  height: PixelRatio.roundToNearestPixel(theme.appContentWidth * RATIO_MARKETING_BLOCK),
   backgroundColor: theme.colors.greyLight,
   overflow: 'hidden',
 }))
