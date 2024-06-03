@@ -15,7 +15,7 @@ import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useNativeCategoryValue } from 'ui/components/tiles/useNativeCategoryValue'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 import { HorizontalTile } from './HorizontalTile'
 interface Props {
@@ -97,10 +97,19 @@ export const HorizontalOfferTile = ({
         title={name as string}
         imageUrl={thumbUrl}
         distanceToOffer={distanceToOffer}
-        subtitles={subtitles}
         price={formattedPrice}
-        withRightArrow={withRightArrow}
-      />
+        withRightArrow={withRightArrow}>
+        {!!subtitles?.length &&
+          subtitles?.map((subtitle, index) => (
+            <Body
+              ellipsizeMode="tail"
+              numberOfLines={1}
+              testID="native-category-value"
+              key={`${subtitle}_${index}`}>
+              {subtitle}
+            </Body>
+          ))}
+      </HorizontalTile>
     </Container>
   )
 }
@@ -111,3 +120,7 @@ const Container = styled(InternalTouchableLink)({
   outlineOffset: 0,
   gap: getSpacing(4),
 })
+
+const Body = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

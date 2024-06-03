@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 import { HorizontalTile } from './HorizontalTile'
 
@@ -20,9 +20,23 @@ const Container = styled.View({
   gap: getSpacing(4),
 })
 
+const Body = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
 const Template: ComponentStory<typeof HorizontalTile> = (props) => (
   <Container>
-    <HorizontalTile {...props} />
+    <HorizontalTile {...props}>
+      {['Séances de cinéma', '14 avril 2024'].map((subtitle, index) => (
+        <Body
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          testID="native-category-value"
+          key={`${subtitle}_${index}`}>
+          {subtitle}
+        </Body>
+      ))}
+    </HorizontalTile>
   </Container>
 )
 
@@ -36,14 +50,5 @@ Default.args = {
   categoryId: CategoryIdEnum.CINEMA,
   imageUrl,
   distanceToOffer: '',
-  subtitles: ['Séances de cinéma', '14 avril 2024'],
   price: '120€',
-}
-
-export const OnVenuePage = Template.bind({})
-OnVenuePage.args = {
-  title: 'Harry Potter et l’ordre du phénix',
-  imageUrl,
-  withRightArrow: true,
-  subtitles: ['Drame', '1h30'],
 }

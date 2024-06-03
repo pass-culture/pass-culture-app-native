@@ -15,6 +15,7 @@ type ToggleButtonProps = {
   label: Activable<string>
   accessibilityLabel: Activable<string>
   Icon: Activable<React.FC>
+  isFlex?: boolean
 }
 
 export const ToggleButton = ({
@@ -23,17 +24,22 @@ export const ToggleButton = ({
   label,
   accessibilityLabel,
   Icon,
-}: ToggleButtonProps) => (
-  <StyledTouchableOpacity
-    accessibilityLabel={active ? accessibilityLabel.active : accessibilityLabel.inactive}
-    onPress={onPress}>
-    {active ? <Icon.active /> : <Icon.inactive />}
-    <Spacer.Row numberOfSpaces={2} />
-    <Typo.Caption>{active ? label.active : label.inactive}</Typo.Caption>
-  </StyledTouchableOpacity>
-)
+  isFlex,
+}: ToggleButtonProps) => {
+  const TouchableComponent = isFlex ? FlexTouchableOpacity : StaticTouchableOpacity
 
-const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
+  return (
+    <TouchableComponent
+      accessibilityLabel={active ? accessibilityLabel.active : accessibilityLabel.inactive}
+      onPress={onPress}>
+      {active ? <Icon.active /> : <Icon.inactive />}
+      <Spacer.Row numberOfSpaces={2} />
+      <Typo.Caption>{active ? label.active : label.inactive}</Typo.Caption>
+    </TouchableComponent>
+  )
+}
+
+const BaseTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
   borderColor: theme.colors.greySemiDark,
   borderWidth: getSpacing(0.25),
   borderRadius: getSpacing(6),
@@ -44,3 +50,10 @@ const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
   alignSelf: 'flex-start',
   backgroundColor: theme.colors.white,
 }))
+
+const FlexTouchableOpacity = styled(BaseTouchableOpacity)({
+  flex: 1,
+  justifyContent: 'center',
+})
+
+const StaticTouchableOpacity = styled(BaseTouchableOpacity)({})

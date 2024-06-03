@@ -110,40 +110,6 @@ exports[`HorizontalTile Component should render correctly 1`] = `
       </View>
     </View>
     <Text
-      ellipsizeMode="tail"
-      numberOfLines={1}
-      style={
-        [
-          {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-      testID="native-category-value"
-    >
-      Séances de cinéma
-    </Text>
-    <Text
-      ellipsizeMode="tail"
-      numberOfLines={1}
-      style={
-        [
-          {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-      testID="native-category-value"
-    >
-      14 avril 2024
-    </Text>
-    <Text
       style={
         [
           {
