@@ -1,7 +1,14 @@
 name: Overwrite some file
 
 on:
-  pull_request_review:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+      token:
+        required: true
+        type: string
 
 env:
   GIT_CONFIG_EMAIL: PassCulture-SA@users.noreply.github.com
@@ -11,11 +18,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout commit hash'
-        uses: actions/checkout@v4
-        with:
-          ref: 'bsr-script-to-find-routes-used-in-code'
-          token: ${{ secrets.PUSH_SERVICE_ACCOUNT }}
+      # - name: 'Checkout commit hash'
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: 'bsr-script-to-find-routes-used-in-code'
+      #     token: ${{ github.event.inputs.token }}
       - name: 'Author'
         run: |
           git config --global user.email "$GIT_CONFIG_EMAIL"
@@ -23,7 +30,7 @@ jobs:
 
       - name: 'find used routes'
         run: |
-          ./scripts/get_used_routes.sh
+          ./scripts/get_used_routes.sh ${{ github.event.inputs.version }}
       - name: 'Commit changes'
         run: |
           git add trace_routes.md
