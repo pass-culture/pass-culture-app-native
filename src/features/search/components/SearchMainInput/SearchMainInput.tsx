@@ -8,7 +8,10 @@ import {
 import styled, { useTheme } from 'styled-components/native'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
+import { BicolorSearchV2 } from 'ui/svg/icons/BicolorSearchV2'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 type QueryProps = {
@@ -48,6 +51,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
   ref
 ) {
   const { isDesktopViewport } = useTheme()
+  const shouldUseV2Icon = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
 
   const renderSearchChildren = () => {
     return !showLocationButton || isDesktopViewport ? null : <LocationSearchWidget />
@@ -63,7 +67,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
       nativeAutoFocus={Platform.OS !== 'web'}
       autoFocus={isFocus}
       onFocus={onFocus}
-      LeftIcon={MagnifyingGlassIcon}
+      LeftIcon={shouldUseV2Icon ? SearchIcon : MagnifyingGlassIcon}
       inputHeight="regular"
       testID="searchInput"
       disableClearButton={disableInputClearButton}
@@ -80,5 +84,10 @@ const StyledSearchInput = styled(SearchInput).attrs({
 })({})
 
 const MagnifyingGlassIcon = styled(MagnifyingGlass).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``
+
+const SearchIcon = styled(BicolorSearchV2).attrs(({ theme }) => ({
+  color: theme.colors.black,
   size: theme.icons.sizes.smaller,
 }))``
