@@ -20,7 +20,7 @@ describe('MarketingBlock', () => {
       theme: { isDesktopViewport: false },
     })
 
-    expect(screen.queryByTestId('MarketingBlockContentDesktop')).toBeFalsy()
+    expect(screen.queryByTestId('MarketingBlockContentDesktop')).not.toBeOnTheScreen()
   })
 
   it('should render MarketingBlockContentDesktop when isDesktopViewport is true', () => {
@@ -28,6 +28,6 @@ describe('MarketingBlock', () => {
       theme: { isDesktopViewport: true },
     })
 
-    expect(screen.getByTestId('MarketingBlockContentDesktop')).toBeTruthy()
+    expect(screen.getByTestId('MarketingBlockContentDesktop')).toBeOnTheScreen()
   })
 })
