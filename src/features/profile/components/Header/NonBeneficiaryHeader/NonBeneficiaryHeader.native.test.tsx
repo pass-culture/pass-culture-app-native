@@ -10,9 +10,10 @@ import {
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils'
+import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
@@ -32,72 +33,148 @@ mockUseAuthContext.mockReturnValue({
   refetchUser: jest.fn(),
 })
 
+jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+
 const today = '2021-03-30T00:00:00Z'
 mockdate.set(new Date(today))
 
 describe('<NonBeneficiaryHeader/>', () => {
   afterAll(mockdate.reset)
 
-  it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
-    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
-    mockServer.getApi<BannerResponse>('/v1/banner', {
-      banner: {
-        name: BannerName.activation_banner,
-        text: 'à dépenser sur l’application',
-        title: 'Débloque tes 1000\u00a0€',
-      },
+  describe('When wipAppV2SystemBlock feature flag activated', () => {
+    beforeAll(() => {
+      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
     })
 
-    renderNonBeneficiaryHeader({
-      startDatetime: '2021-03-30T00:00Z',
-      endDatetime: '2022-02-30T00:00Z',
+    it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
+      mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
+      mockServer.getApi<BannerResponse>('/v1/banner', {
+        banner: {
+          name: BannerName.activation_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 1000\u00a0€',
+        },
+      })
+
+      renderNonBeneficiaryHeader({
+        startDatetime: '2021-03-30T00:00Z',
+        endDatetime: '2022-02-30T00:00Z',
+      })
+
+      expect(await screen.findByTestId('eligibility-system-banner-container')).toBeOnTheScreen()
+
+      expect(screen.getByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
+      expect(screen.getByTestId('BicolorUnlock')).toBeOnTheScreen()
+      expect(screen.getByText('à dépenser sur l’application')).toBeOnTheScreen()
     })
 
-    expect(await screen.findByTestId('eligibility-banner-container')).toBeOnTheScreen()
+    it("should render the transition 17 to 18 banner when beneficiary's user is now 18", async () => {
+      mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
+      mockServer.getApi<BannerResponse>('/v1/banner', {
+        banner: {
+          name: BannerName.transition_17_18_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 400\u00a0€',
+        },
+      })
 
-    expect(screen.getByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
-    expect(screen.getByTestId('BicolorUnlock')).toBeOnTheScreen()
-    expect(screen.getByText('à dépenser sur l’application')).toBeOnTheScreen()
+      renderNonBeneficiaryHeader({
+        startDatetime: '2021-03-30T00:00Z',
+        endDatetime: '2022-02-30T00:00Z',
+      })
+
+      expect(await screen.findByTestId('eligibility-system-banner-container')).toBeOnTheScreen()
+
+      expect(screen.getByText('Débloque tes 400\u00a0€')).toBeOnTheScreen()
+      expect(screen.getByTestId('BirthdayCake')).toBeOnTheScreen()
+      expect(screen.getByText('à dépenser sur l’application')).toBeOnTheScreen()
+    })
+
+    it('should display identity check message if user identity check is pending', async () => {
+      mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
+        ...mockStep,
+        hasIdentityCheckPending: true,
+      })
+      mockServer.getApi<BannerResponse>('/v1/banner', {})
+
+      renderNonBeneficiaryHeader({
+        startDatetime: '2021-03-30T00:00Z',
+        endDatetime: '2022-02-30T00:00Z',
+      })
+
+      await waitFor(() => {
+        expect(screen.queryByTestId('eligibility-system-banner-container')).not.toBeOnTheScreen()
+        expect(screen.getByText('Ton inscription est en cours de traitement.')).toBeOnTheScreen()
+      })
+    })
   })
 
-  it("should render the transition 17 to 18 banner when beneficiary's user is now 18", async () => {
-    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
-    mockServer.getApi<BannerResponse>('/v1/banner', {
-      banner: {
-        name: BannerName.transition_17_18_banner,
-        text: 'à dépenser sur l’application',
-        title: 'Débloque tes 400\u00a0€',
-      },
+  describe('When wipAppV2SystemBlock feature flag deactivated', () => {
+    beforeAll(() => {
+      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
     })
 
-    renderNonBeneficiaryHeader({
-      startDatetime: '2021-03-30T00:00Z',
-      endDatetime: '2022-02-30T00:00Z',
+    it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
+      mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
+      mockServer.getApi<BannerResponse>('/v1/banner', {
+        banner: {
+          name: BannerName.activation_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 1000\u00a0€',
+        },
+      })
+
+      renderNonBeneficiaryHeader({
+        startDatetime: '2021-03-30T00:00Z',
+        endDatetime: '2022-02-30T00:00Z',
+      })
+
+      expect(await screen.findByTestId('eligibility-banner-container')).toBeOnTheScreen()
+
+      expect(screen.getByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
+      expect(screen.getByTestId('BicolorUnlock')).toBeOnTheScreen()
+      expect(screen.getByText('à dépenser sur l’application')).toBeOnTheScreen()
     })
 
-    expect(await screen.findByTestId('eligibility-banner-container')).toBeOnTheScreen()
+    it("should render the transition 17 to 18 banner when beneficiary's user is now 18", async () => {
+      mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
+      mockServer.getApi<BannerResponse>('/v1/banner', {
+        banner: {
+          name: BannerName.transition_17_18_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 400\u00a0€',
+        },
+      })
 
-    expect(screen.getByText('Débloque tes 400\u00a0€')).toBeOnTheScreen()
-    expect(screen.getByTestId('BirthdayCake')).toBeOnTheScreen()
-    expect(screen.getByText('à dépenser sur l’application')).toBeOnTheScreen()
-  })
+      renderNonBeneficiaryHeader({
+        startDatetime: '2021-03-30T00:00Z',
+        endDatetime: '2022-02-30T00:00Z',
+      })
 
-  it('should display identity check message if user identity check is pending', async () => {
-    mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
-      ...mockStep,
-      hasIdentityCheckPending: true,
+      expect(await screen.findByTestId('eligibility-banner-container')).toBeOnTheScreen()
+
+      expect(screen.getByText('Débloque tes 400\u00a0€')).toBeOnTheScreen()
+      expect(screen.getByTestId('BirthdayCake')).toBeOnTheScreen()
+      expect(screen.getByText('à dépenser sur l’application')).toBeOnTheScreen()
     })
-    mockServer.getApi<BannerResponse>('/v1/banner', {})
 
-    renderNonBeneficiaryHeader({
-      startDatetime: '2021-03-30T00:00Z',
-      endDatetime: '2022-02-30T00:00Z',
+    it('should display identity check message if user identity check is pending', async () => {
+      mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
+        ...mockStep,
+        hasIdentityCheckPending: true,
+      })
+      mockServer.getApi<BannerResponse>('/v1/banner', {})
+
+      renderNonBeneficiaryHeader({
+        startDatetime: '2021-03-30T00:00Z',
+        endDatetime: '2022-02-30T00:00Z',
+      })
+
+      await waitFor(() => {
+        expect(screen.queryByTestId('eligibility-banner-container')).not.toBeOnTheScreen()
+        expect(screen.getByText('Ton inscription est en cours de traitement.')).toBeOnTheScreen()
+      })
     })
-
-    await act(async () => {})
-
-    expect(screen.queryByTestId('eligibility-banner-container')).not.toBeOnTheScreen()
-    expect(screen.getByText('Ton inscription est en cours de traitement.')).toBeOnTheScreen()
   })
 
   it('should render the subscription message if there is one', async () => {
@@ -112,9 +189,9 @@ describe('<NonBeneficiaryHeader/>', () => {
       endDatetime: '2022-02-30T00:00Z',
     })
 
-    await act(async () => {})
-
-    expect(screen.getByTestId('subscription-message-badge')).toBeOnTheScreen()
+    await waitFor(() => {
+      expect(screen.getByTestId('subscription-message-badge')).toBeOnTheScreen()
+    })
   })
 
   it('should render the younger badge for user whose eligibilty hasn’t started yet (under 15 years old)', async () => {
@@ -125,9 +202,9 @@ describe('<NonBeneficiaryHeader/>', () => {
       endDatetime: '2022-03-31T00:00Z',
     })
 
-    await act(async () => {})
-
-    expect(screen.getByTestId('younger-badge')).toBeOnTheScreen()
+    await waitFor(() => {
+      expect(screen.getByTestId('younger-badge')).toBeOnTheScreen()
+    })
   })
 
   it('should not display banner or badge when user is beneficiary', async () => {
@@ -142,12 +219,14 @@ describe('<NonBeneficiaryHeader/>', () => {
       endDatetime: '2022-02-30T00:00Z',
     })
 
-    await act(async () => {})
-
-    expect(screen.queryByTestId('subscription-message-badge')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('eligibility-banner-container')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Ton inscription est en cours de traitement.')).not.toBeOnTheScreen()
-    expect(screen.queryByTestId('younger-badge')).not.toBeOnTheScreen()
+    await waitFor(() => {
+      expect(screen.queryByTestId('subscription-message-badge')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('eligibility-banner-container')).not.toBeOnTheScreen()
+      expect(
+        screen.queryByText('Ton inscription est en cours de traitement.')
+      ).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('younger-badge')).not.toBeOnTheScreen()
+    })
   })
 })
 
