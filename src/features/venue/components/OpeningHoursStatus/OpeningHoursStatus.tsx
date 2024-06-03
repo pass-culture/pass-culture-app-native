@@ -1,10 +1,9 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
 
 import { getOpeningHoursStatus } from './getOpeningHoursStatus'
 
@@ -13,11 +12,30 @@ type Props = {
   currentDate: Date
 }
 
+const THIRTHY_MINUTES_IN_MILLISECONDS = 30 * 60 * 1000
+
 export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate }) => {
-  const { state, text } = getOpeningHoursStatus({
+  const [date, setDate] = useState(currentDate)
+  const { state, text, nextChange } = getOpeningHoursStatus({
     openingHours,
-    currentDate,
+    currentDate: date,
   })
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout
+    if (nextChange) {
+      const timeUntilNextStateChange = nextChange.getTime() - date.getTime()
+      if (timeUntilNextStateChange <= THIRTHY_MINUTES_IN_MILLISECONDS) {
+        timeoutId = setTimeout(() => setDate(new Date()), timeUntilNextStateChange)
+      }
+    }
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <Container>
       <StyledClock state={state} />
