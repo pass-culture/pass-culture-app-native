@@ -152,7 +152,7 @@ describe('SearchResultsContent component', () => {
 
   it('should render correctly', async () => {
     jest.advanceTimersByTime(2000)
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
     await act(async () => {})
 
     expect(screen).toMatchSnapshot()
@@ -170,7 +170,7 @@ describe('SearchResultsContent component', () => {
       },
     })
 
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
 
     const flashList = screen.getByTestId('searchResultsFlashlist')
 
@@ -196,14 +196,14 @@ describe('SearchResultsContent component', () => {
 
   describe('Category filter', () => {
     it('should display category filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.getByTestId('Catégories')).toBeOnTheScreen()
     })
 
     it('should open the categories filter modal when pressing the category button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       const categoryButton = screen.getByTestId('Catégories')
 
       await act(async () => {
@@ -220,7 +220,7 @@ describe('SearchResultsContent component', () => {
         ...mockSearchState,
         offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
       }
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       const categoryButtonIcon = screen.getByTestId('categoryButtonIcon')
@@ -238,14 +238,14 @@ describe('SearchResultsContent component', () => {
 
   describe('Price filter', () => {
     it('should display price filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.getByTestId('Prix')).toBeOnTheScreen()
     })
 
     it('should open the prices filter modal when pressing the prices filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       const priceButton = screen.getByTestId('Prix')
 
       await act(async () => {
@@ -262,7 +262,7 @@ describe('SearchResultsContent component', () => {
         ...mockSearchState,
         minPrice: '5',
       }
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       const priceButtonIcon = screen.getByTestId('priceButtonIcon')
@@ -288,14 +288,14 @@ describe('SearchResultsContent component', () => {
       })
 
       it('should display Duo filter button', async () => {
-        render(<SearchResultsContent />)
+        renderSearchResultsContent()
         await act(async () => {})
 
         expect(screen.getByTestId('Duo')).toBeOnTheScreen()
       })
 
       it('should open the duo filter modal when pressing the duo filter button', async () => {
-        render(<SearchResultsContent />)
+        renderSearchResultsContent()
         const duoButton = screen.getByTestId('Duo')
 
         await act(async () => {
@@ -324,7 +324,7 @@ describe('SearchResultsContent component', () => {
       })
 
       it('should not display Duo filter button', async () => {
-        render(<SearchResultsContent />)
+        renderSearchResultsContent()
         await act(async () => {})
 
         expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
@@ -343,7 +343,7 @@ describe('SearchResultsContent component', () => {
       })
 
       it('should not display Duo offer button', async () => {
-        render(<SearchResultsContent />)
+        renderSearchResultsContent()
         await act(async () => {})
 
         expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
@@ -362,7 +362,7 @@ describe('SearchResultsContent component', () => {
       })
 
       it('should not display Duo offer button', async () => {
-        render(<SearchResultsContent />)
+        renderSearchResultsContent()
         await act(async () => {})
 
         expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
@@ -372,7 +372,7 @@ describe('SearchResultsContent component', () => {
 
   describe('should not display geolocation incitation button', () => {
     it('when position is not null', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
@@ -388,7 +388,7 @@ describe('SearchResultsContent component', () => {
         ...params,
       }
 
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
@@ -396,7 +396,7 @@ describe('SearchResultsContent component', () => {
 
     it('when position is null and no results search', async () => {
       mockPosition = null
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
@@ -405,7 +405,7 @@ describe('SearchResultsContent component', () => {
 
   it(`should display ${venue.label} in location filter button label when a venue is selected`, async () => {
     mockSearchState = { ...searchState, venue }
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
     await act(async () => {})
 
     expect(screen.getByText(venue.label)).toBeOnTheScreen()
@@ -413,7 +413,7 @@ describe('SearchResultsContent component', () => {
 
   describe('Venue filter', () => {
     it('should open the venue modal when pressing the venue filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
 
       await act(async () => {
         const venueButton = screen.getByRole('button', { name: 'Lieu culturel' })
@@ -426,7 +426,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should call set search state on press "Rechercher" in venue modal', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
 
       await act(async () => {
         const venueButton = screen.getByRole('button', { name: 'Lieu culturel' })
@@ -445,7 +445,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should display "Lieu culturel" in venue filter if no venue is selected', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
@@ -456,7 +456,7 @@ describe('SearchResultsContent component', () => {
         ...searchState,
         venue,
       }
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent(venue.label)
@@ -467,7 +467,7 @@ describe('SearchResultsContent component', () => {
         ...searchState,
         locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
       }
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
@@ -478,7 +478,7 @@ describe('SearchResultsContent component', () => {
         ...searchState,
         locationFilter: { locationType: LocationMode.EVERYWHERE },
       }
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.getByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
@@ -487,14 +487,14 @@ describe('SearchResultsContent component', () => {
 
   describe('Dates and hours filter', () => {
     it('should display dates and hours filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.getByTestId('Dates & heures')).toBeOnTheScreen()
     })
 
     it('should open the type filter modal when pressing the type filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       const datesHoursButton = screen.getByTestId('Dates & heures')
 
       await act(async () => {
@@ -517,7 +517,7 @@ describe('SearchResultsContent component', () => {
           ...mockSearchState,
           ...params,
         }
-        render(<SearchResultsContent />)
+        renderSearchResultsContent()
         await act(async () => {})
 
         const datesHoursButtonIcon = screen.getByTestId('datesHoursButtonIcon')
@@ -536,14 +536,14 @@ describe('SearchResultsContent component', () => {
 
   describe('Accessibility filter', () => {
     it('should display accessibility filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       const accessibilityFilterButton = await screen.findByRole('button', { name: 'Accessibilité' })
 
       expect(accessibilityFilterButton).toBeOnTheScreen()
     })
 
     it('should open accessibility filters modal when accessibilityFiltersButton is pressed', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       const accessibilityFilterButton = screen.getByRole('button', { name: 'Accessibilité' })
 
       fireEvent.press(accessibilityFilterButton)
@@ -559,7 +559,7 @@ describe('SearchResultsContent component', () => {
     mockPosition = null
     mockHits = mockedAlgoliaResponse.hits
     mockNbHits = mockedAlgoliaResponse.nbHits
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
 
     await act(async () => {
       fireEvent.press(screen.getByText('Géolocalise-toi'))
@@ -570,7 +570,7 @@ describe('SearchResultsContent component', () => {
 
   it('should refetch results when user position received in a second time', async () => {
     mockPosition = null
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
     await act(async () => {})
 
     expect(mockRefetch).not.toHaveBeenCalled()
@@ -583,7 +583,7 @@ describe('SearchResultsContent component', () => {
 
   it('should refetch results when user stop to share his position', async () => {
     mockPosition = DEFAULT_POSITION
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
     await act(async () => {})
 
     // previousGeolocPosition is empty in first rendering
@@ -601,7 +601,7 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should not log PerformSearch when there is not search query execution', async () => {
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
     await act(async () => {})
 
     expect(analytics.logPerformSearch).not.toHaveBeenCalled()
@@ -609,7 +609,7 @@ describe('SearchResultsContent component', () => {
 
   it('should log PerformSearch only one time when there is search query execution and several re-render', async () => {
     mockIsLoading = true
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
     await act(async () => {})
 
     expect(analytics.logPerformSearch).not.toHaveBeenCalled()
@@ -626,7 +626,7 @@ describe('SearchResultsContent component', () => {
 
   it('should log PerformSearch with search result when there is search query execution', async () => {
     mockIsLoading = true
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
     await act(async () => {})
 
     expect(analytics.logPerformSearch).not.toHaveBeenCalled()
@@ -670,7 +670,7 @@ describe('SearchResultsContent component', () => {
       })
 
     mockIsLoading = true
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
     await act(async () => {})
 
     expect(analytics.logPerformSearch).not.toHaveBeenCalled()
@@ -690,7 +690,7 @@ describe('SearchResultsContent component', () => {
   })
 
   it('should not log NoSearchResult when there is not search query execution', async () => {
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
     await act(async () => {})
 
     expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
@@ -698,7 +698,7 @@ describe('SearchResultsContent component', () => {
 
   it('should log NoSearchResult only one time when there is search query execution, nbHits = 0 and several re-render', async () => {
     mockIsLoading = true
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
     await act(async () => {})
 
     expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
@@ -715,7 +715,7 @@ describe('SearchResultsContent component', () => {
 
   it('should log NoSearchResult with search result when there is search query execution and nbHits = 0', async () => {
     mockIsLoading = true
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
     await act(async () => {})
 
     expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
@@ -731,7 +731,7 @@ describe('SearchResultsContent component', () => {
     mockPosition = null
     mockHits = mockedAlgoliaResponse.hits
     mockNbHits = mockedAlgoliaResponse.nbHits
-    render(<SearchResultsContent />)
+    renderSearchResultsContent()
 
     await act(async () => {
       fireEvent.press(screen.getByText('Géolocalise-toi'))
@@ -748,7 +748,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('when position is null', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.getByText('Géolocalise-toi')).toBeOnTheScreen()
@@ -757,7 +757,7 @@ describe('SearchResultsContent component', () => {
     it('when position is null and query is not an offer not present', async () => {
       mockUserData = [{ message: 'n’est pas disponible sur le pass Culture.' }]
       mockSearchState = { ...searchState, query: 'iPhone' }
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
@@ -770,7 +770,7 @@ describe('SearchResultsContent component', () => {
       mockNbHits = mockedAlgoliaResponse.nbHits
       mockUserData = [{ message: 'Offre non disponible sur le pass Culture.' }]
       mockSearchState = { ...searchState, query: 'iPhone' }
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.getByText('Offre non disponible sur le pass Culture.')).toBeOnTheScreen()
@@ -781,7 +781,7 @@ describe('SearchResultsContent component', () => {
       mockNbHits = mockedAlgoliaResponse.nbHits
       mockUserData = []
       mockSearchState = { ...searchState, query: 'Deezer' }
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       await act(async () => {})
 
       expect(screen.queryByText('Offre non disponible sur le pass Culture.')).not.toBeOnTheScreen()
@@ -796,7 +796,7 @@ describe('SearchResultsContent component', () => {
         offerIsDuo: true,
       }
 
-      render(<SearchResultsContent />)
+      renderSearchResultsContent()
       let filterButton
       await act(async () => {
         filterButton = screen.getByLabelText('Voir tous les filtres\u00a0: 2 filtres actifs')
@@ -807,3 +807,7 @@ describe('SearchResultsContent component', () => {
     })
   })
 })
+
+const renderSearchResultsContent = () => {
+  render(<SearchResultsContent />)
+}
