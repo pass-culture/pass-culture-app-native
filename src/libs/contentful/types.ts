@@ -233,7 +233,7 @@ export interface VenuesFields {
   displayParameters: DisplayParameters
 }
 
-export interface AppV2VenuesFields extends VenuesFields {
+interface AppV2VenuesFields extends VenuesFields {
   homeEntryId: string
 }
 
