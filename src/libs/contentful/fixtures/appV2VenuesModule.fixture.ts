@@ -84,5 +84,6 @@ export const appV2VenuesNatifModuleFixture: AppV2VenuesContentModel = {
         minOffers: 1,
       },
     },
+    homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
   },
 }

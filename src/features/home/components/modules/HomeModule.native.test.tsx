@@ -199,7 +199,11 @@ describe('<HomeModule />', () => {
 
   it('should display AppV2VenuesModule', async () => {
     renderHomeModule(
-      { ...formattedVenuesModule, type: HomepageModuleType.AppV2VenuesModule },
+      {
+        ...formattedVenuesModule,
+        type: HomepageModuleType.AppV2VenuesModule,
+        homeVenuesListEntryId: homeEntryId,
+      },
       defaultDataVenues
     )
 

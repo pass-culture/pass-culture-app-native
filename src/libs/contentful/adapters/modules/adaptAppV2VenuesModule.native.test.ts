@@ -35,6 +35,7 @@ describe('adaptAppV2VenuesModule', () => {
           ...(appV2VenuesNatifModuleFixture.fields as VenuesFields).displayParameters,
           fields: undefined,
         },
+        homeEntryId: '70xmxMWxWSq94gnRYh1uDi',
       },
     }
 

@@ -1,28 +1,21 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
-import { FlatList, Platform, View } from 'react-native'
+import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
+import { VenueListModuleItem } from 'features/home/components/modules/VenueListModuleItem'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { Position, useLocation } from 'libs/location'
+import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
-import { formatDistance } from 'libs/parsers/formatDistance'
 import { useModal } from 'ui/components/modals/useModal'
-import { Separator } from 'ui/components/Separator'
-import { Tag } from 'ui/components/Tag/Tag'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-const IMAGE_SIZE = 72
-
-const isWeb = Platform.OS === 'web'
 
 type HeaderProps = {
   onPress?: VoidFunction
@@ -37,15 +30,11 @@ const ListHeaderComponent: FunctionComponent<HeaderProps> = ({ onPress }) => {
   }
 
   const getComponentAndProps = () => {
-    if (isWeb) {
-      return { Component: StyledView, props: {} }
-    } else {
-      const Component = onPress ? StyledTouchable : StyledInternalTouchableLink
-      const touchableProps = onPress
-        ? { onPress }
-        : { navigateTo: { screen: 'VenueMap' }, onBeforeNavigate: handleOnBeforeNavigate }
-      return { Component, props: touchableProps }
-    }
+    const Component = onPress ? StyledTouchable : StyledInternalTouchableLink
+    const touchableProps = onPress
+      ? { onPress }
+      : { navigateTo: { screen: 'VenueMap' }, onBeforeNavigate: handleOnBeforeNavigate }
+    return { Component, props: touchableProps }
   }
 
   const { Component, props } = getComponentAndProps()
@@ -54,37 +43,10 @@ const ListHeaderComponent: FunctionComponent<HeaderProps> = ({ onPress }) => {
     <React.Fragment>
       <Component {...props} {...focusProps}>
         <Typo.Caption>{'Les lieux culturels à proximité'.toUpperCase()}</Typo.Caption>
-        {isWeb ? undefined : <ArrowRightIcon testID="arrow-right" />}
+        <ArrowRightIcon testID="arrow-right" />
       </Component>
       <Spacer.Column numberOfSpaces={4} />
     </React.Fragment>
-  )
-}
-
-const renderItem = ({ item }: { item: VenueHit }, userLocation: Position) => {
-  const distance = formatDistance({ lat: item.latitude, lng: item.longitude }, userLocation)
-  const address = [item.city, item.postalCode].filter(Boolean).join(', ')
-
-  const handlePressVenue = () => {
-    analytics.logConsultVenue({
-      venueId: item.id,
-      from: 'venueList',
-    })
-  }
-
-  return (
-    <InternalTouchableLink
-      navigateTo={{ screen: 'Venue', params: { id: item.id } }}
-      onBeforeNavigate={handlePressVenue}>
-      <VenuePreview
-        address={address}
-        venueName={item.name}
-        imageHeight={IMAGE_SIZE}
-        imageWidth={IMAGE_SIZE}
-        bannerUrl={item.bannerUrl}>
-        {distance ? <StyledTag label={distance} /> : null}
-      </VenuePreview>
-    </InternalTouchableLink>
   )
 }
 
@@ -95,7 +57,7 @@ type Props = {
 }
 
 export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
-  const { userLocation, selectedLocationMode } = useLocation()
+  const { selectedLocationMode } = useLocation()
   const {
     showModal: showVenueMapLocationModal,
     visible: venueMapLocationModalVisible,
@@ -104,7 +66,7 @@ export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
 
   const enabledVenueMap = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const isLocated = selectedLocationMode !== LocationMode.EVERYWHERE
-  const shouldTriggerModal = enabledVenueMap && !isLocated && !isWeb
+  const shouldTriggerModal = enabledVenueMap && !isLocated
 
   const onPress = shouldTriggerModal ? showVenueMapLocationModal : undefined
 
@@ -115,8 +77,8 @@ export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
         itemAs="li"
         data={venues}
         keyExtractor={keyExtractor}
-        renderItem={({ item }) => renderItem({ item }, userLocation)}
-        ItemSeparatorComponent={HorizontalSeparator}
+        renderItem={({ item }) => <VenueListModuleItem item={item} />}
+        ItemSeparatorComponent={SpacerSeparator}
         ListHeaderComponent={<ListHeaderComponent onPress={onPress} />}
       />
       <VenueMapLocationModal
@@ -126,6 +88,8 @@ export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
     </React.Fragment>
   )
 }
+
+const SpacerSeparator = () => <Spacer.Column numberOfSpaces={8} />
 
 const StyledFlatList = styled(FlatList as typeof FlatList<VenueHit>)(({ theme }) => ({
   backgroundColor: theme.colors.goldLight100,
@@ -145,24 +109,6 @@ const commonStyles: CSSProperties = {
 const StyledInternalTouchableLink = styled(InternalTouchableLink)({ ...commonStyles })
 
 const StyledTouchable = styled(Touchable)({ ...commonStyles })
-
-const StyledView = styled(View)({ ...commonStyles })
-
-const StyledTag = styled(Tag)(({ theme }) => ({
-  backgroundColor: theme.colors.white,
-}))
-
-const StyledSeparator = styled(Separator.Horizontal)(({ theme }) => ({
-  backgroundColor: theme.colors.white,
-}))
-
-const HorizontalSeparator: FunctionComponent = () => (
-  <React.Fragment>
-    <Spacer.Column numberOfSpaces={4} />
-    <StyledSeparator />
-    <Spacer.Column numberOfSpaces={4} />
-  </React.Fragment>
-)
 
 const ArrowRightIcon = styled(ArrowRight).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
