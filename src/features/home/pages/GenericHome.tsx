@@ -1,12 +1,15 @@
 import { useScrollToTop } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
-  FlatList,
   NativeScrollEvent,
   NativeSyntheticEvent,
   ScrollView,
   useWindowDimensions,
 } from 'react-native'
+import {
+  IOFlatList as IntersectionObserverFlatlist,
+  IOFlatListController,
+} from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useGetOffersData } from 'features/home/api/useGetOffersData'
@@ -14,14 +17,17 @@ import { useGetVenuesData } from 'features/home/api/useGetVenuesData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
+import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import {
   HomepageModule,
   isAppV2VenuesModule,
+  isNotVideoCarouselModule,
   isOffersModule,
   isOneOfVenuesModule,
   isVenuesModule,
+  isVideoCarouselModule,
   ThematicHeader,
 } from 'features/home/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
@@ -36,6 +42,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 type GenericHomeProps = {
   Header: React.JSX.Element
+  HomeBanner?: React.JSX.Element
   modules: HomepageModule[]
   homeId: string
   thematicHeader?: ThematicHeader
@@ -44,7 +51,8 @@ type GenericHomeProps = {
   videoModuleId?: string
   statusBar?: React.JSX.Element
 }
-const keyExtractor = (item: HomepageModule) => item.id
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const keyExtractor = (item: any) => item.id
 
 const renderModule = (
   { item, index }: { item: HomepageModule; index: number },
@@ -78,6 +86,7 @@ const MODULES_TIMEOUT_VALUE_IN_MS = 3000
 
 const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   Header,
+  HomeBanner,
   modules,
   homeId,
   thematicHeader,
@@ -131,7 +140,10 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     }
   })
 
-  const scrollRef = useRef<FlatList>(null)
+  const videoCarouselModule = modulesToDisplay.filter(isVideoCarouselModule)
+  const modulesToDisplayWithoutCarousel = modulesToDisplay.filter(isNotVideoCarouselModule)
+
+  const scrollRef = useRef<IOFlatListController>(null)
   useScrollToTop(scrollRef)
 
   const scrollListenerToThrottle = useCallback(
@@ -192,9 +204,24 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   }, [modules.length, isLoading, maxIndex])
 
   const renderItem = useCallback(
-    ({ item, index }: { item: HomepageModule; index: number }) =>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ({ item, index }: { item: any; index: number }) =>
       renderModule({ item, index }, homeId, videoModuleId),
     [homeId, videoModuleId]
+  )
+
+  const ListHeader = useMemo(
+    () => (
+      <React.Fragment>
+        {Header}
+        <Spacer.Column numberOfSpaces={6} />
+        {videoCarouselModule[0] ? (
+          <VideoCarouselModule index={0} homeEntryId={homeId} {...videoCarouselModule[0]} />
+        ) : null}
+        <PageContent>{HomeBanner}</PageContent>
+      </React.Fragment>
+    ),
+    [videoCarouselModule, HomeBanner, Header, homeId]
   )
 
   return (
@@ -207,17 +234,17 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
         </ScrollView>
       ) : null}
       <HomeBodyLoadingContainer hide={showSkeleton}>
-        <FlatList
+        <FlatListContainer
           ref={scrollRef}
           testID="homeBodyScrollView"
           onScroll={onScroll}
-          data={modulesToDisplay}
+          data={modulesToDisplayWithoutCarousel}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
           ListFooterComponent={
             <FooterComponent hasShownAll={modulesToDisplay.length >= modules.length} />
           }
-          ListHeaderComponent={Header}
+          ListHeaderComponent={ListHeader}
           ListHeaderComponentStyle={flatListHeaderStyle}
           initialNumToRender={initialNumToRender}
           removeClippedSubviews={false}
@@ -273,3 +300,11 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
   bottom: theme.tabBar.height + getSpacing(6),
   zIndex: theme.zIndex.floatingButton,
 }))
+
+const FlatListContainer = styled(IntersectionObserverFlatlist)({
+  overflow: 'visible',
+})
+
+const PageContent = styled.View({
+  marginHorizontal: getSpacing(6),
+})

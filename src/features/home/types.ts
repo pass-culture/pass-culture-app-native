@@ -360,6 +360,14 @@ export const isAppV2VenuesModule = (module: HomepageModule): module is AppV2Venu
   return module.type === HomepageModuleType.AppV2VenuesModule
 }
 
+export const isVideoCarouselModule = (module: HomepageModule): module is VideoCarouselModule => {
+  return module.type === HomepageModuleType.VideoCarouselModule
+}
+
+export const isNotVideoCarouselModule = (module: HomepageModule): module is HomepageModule => {
+  return module.type !== HomepageModuleType.VideoCarouselModule
+}
+
 export const isOneOfVenuesModule = (
   module: HomepageModule
 ): module is VenuesModule | AppV2VenuesModule => {
