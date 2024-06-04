@@ -81,10 +81,14 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
 
   return (
     <Container>
+      <StyledTitleContainer>
+        <StyledTitle>{props.highlightTitle}</StyledTitle>
+      </StyledTitleContainer>
+      <Spacer.Column numberOfSpaces={5} />
       {isNewExclusivityModule ? (
         <MarketingBlockExclusivity
           offerId={Number(offerId)}
-          title={props.highlightTitle}
+          title={highlightOffer.offer.name || ''}
           categoryId={categoryId}
           backgroundImageUrl={props.image}
           offerImageUrl={highlightOffer.offer.thumbUrl}
@@ -93,75 +97,69 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
           categoryText={categoryLabel || ''}
         />
       ) : (
-        <React.Fragment>
-          <StyledTitleContainer>
-            <StyledTitle>{props.highlightTitle}</StyledTitle>
-          </StyledTitleContainer>
-          <Spacer.Column numberOfSpaces={5} />
-          <View>
-            <ColorCategoryBackground
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              colors={gradientColorsMapping[props.color]}
-              height={
-                isDesktopViewport
-                  ? DESKTOP_COLOR_BACKGROUND_HEIGHT
-                  : getColorBackgroundHeight(offerDetailsHeight)
-              }
-            />
-            <StyledTouchableLink
-              testID="highlight-offer-image"
-              accessibilityRole="button"
-              highlight
-              navigateTo={{
-                screen: 'Offer',
-                params: { id: highlightOfferId },
+        <View>
+          <ColorCategoryBackground
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            colors={gradientColorsMapping[props.color]}
+            height={
+              isDesktopViewport
+                ? DESKTOP_COLOR_BACKGROUND_HEIGHT
+                : getColorBackgroundHeight(offerDetailsHeight)
+            }
+          />
+          <StyledTouchableLink
+            testID="highlight-offer-image"
+            accessibilityRole="button"
+            highlight
+            navigateTo={{
+              screen: 'Offer',
+              params: { id: highlightOfferId },
+            }}
+            onBeforeNavigate={() => {
+              prePopulateOffer({
+                ...offer,
+                offerId: +highlightOfferId,
+                categoryId,
+              })
+              analytics.logConsultOffer({
+                offerId: +highlightOfferId,
+                from: 'highlightOffer',
+                moduleId: props.id,
+                moduleName: props.highlightTitle,
+                homeEntryId: props.homeEntryId,
+              })
+            }}>
+            <TouchableContent>
+              <OfferImage source={{ uri: props.image }}>
+                {categoryLabel ? <CategoryCaption label={categoryLabel} /> : null}
+              </OfferImage>
+              <OfferDetails
+                onLayout={(event: LayoutChangeEvent) =>
+                  setOfferDetailsHeight(event.nativeEvent.layout.height)
+                }>
+                <StyledOfferTitle>{props.offerTitle}</StyledOfferTitle>
+                {formattedDate ? <AdditionalDetail>{formattedDate}</AdditionalDetail> : null}
+                {venueName ? <AdditionalDetail>{venueName}</AdditionalDetail> : null}
+                {formattedPrice ? <AdditionalDetail>{priceText}</AdditionalDetail> : null}
+              </OfferDetails>
+              <ArrowOffer>
+                <PlainArrowNext size={theme.icons.sizes.small} />
+              </ArrowOffer>
+            </TouchableContent>
+          </StyledTouchableLink>
+          <FavoriteButtonContainer>
+            <FavoriteButton
+              offerId={parseInt(highlightOfferId)}
+              analyticsParams={{
+                from: 'highlightOffer',
+                moduleId: props.id,
+                moduleName: props.highlightTitle,
               }}
-              onBeforeNavigate={() => {
-                prePopulateOffer({
-                  ...offer,
-                  offerId: +highlightOfferId,
-                  categoryId,
-                })
-                analytics.logConsultOffer({
-                  offerId: +highlightOfferId,
-                  from: 'highlightOffer',
-                  moduleId: props.id,
-                  moduleName: props.highlightTitle,
-                  homeEntryId: props.homeEntryId,
-                })
-              }}>
-              <TouchableContent>
-                <OfferImage source={{ uri: props.image }}>
-                  {categoryLabel ? <CategoryCaption label={categoryLabel} /> : null}
-                </OfferImage>
-                <OfferDetails
-                  onLayout={(event: LayoutChangeEvent) =>
-                    setOfferDetailsHeight(event.nativeEvent.layout.height)
-                  }>
-                  <StyledOfferTitle>{props.offerTitle}</StyledOfferTitle>
-                  {formattedDate ? <AdditionalDetail>{formattedDate}</AdditionalDetail> : null}
-                  {venueName ? <AdditionalDetail>{venueName}</AdditionalDetail> : null}
-                  {formattedPrice ? <AdditionalDetail>{priceText}</AdditionalDetail> : null}
-                </OfferDetails>
-                <ArrowOffer>
-                  <PlainArrowNext size={theme.icons.sizes.small} />
-                </ArrowOffer>
-              </TouchableContent>
-            </StyledTouchableLink>
-            <FavoriteButtonContainer>
-              <FavoriteButton
-                offerId={parseInt(highlightOfferId)}
-                analyticsParams={{
-                  from: 'highlightOffer',
-                  moduleId: props.id,
-                  moduleName: props.highlightTitle,
-                }}
-              />
-            </FavoriteButtonContainer>
-            <Spacer.Column numberOfSpaces={6} />
-          </View>
-        </React.Fragment>
+            />
+          </FavoriteButtonContainer>
+          <Spacer.Column numberOfSpaces={6} />
+        </View>
       )}
     </Container>
   )
