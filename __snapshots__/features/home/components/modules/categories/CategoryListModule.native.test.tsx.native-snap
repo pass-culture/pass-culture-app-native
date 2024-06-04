@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CategoryListModule should render properly when enableAppV2CategoryBlock FF is activated 1`] = `
+exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render properly when enableAppV2CategoryBlock FF is activated 1`] = `
 [
   <View
     style={
@@ -38,12 +38,12 @@ exports[`CategoryListModule should render properly when enableAppV2CategoryBlock
     />
   </View>,
   <View
-    enableAppV2CategoryBlock={false}
+    enableAppV2CategoryBlock={true}
     onLayout={[Function]}
     style={
       [
         {
-          "marginHorizontal": 20,
+          "marginBottom": 20,
         },
       ]
     }
@@ -89,7 +89,7 @@ exports[`CategoryListModule should render properly when enableAppV2CategoryBlock
       }
       getItem={[Function]}
       getItemCount={[Function]}
-      horizontal={false}
+      horizontal={true}
       keyExtractor={[Function]}
       onContentSizeChange={[Function]}
       onLayout={[Function]}
@@ -100,8 +100,9 @@ exports[`CategoryListModule should render properly when enableAppV2CategoryBlock
       onScrollEndDrag={[Function]}
       removeClippedSubviews={false}
       renderItem={[Function]}
-      scrollEnabled={false}
+      scrollEnabled={true}
       scrollEventThrottle={50}
+      showsHorizontalScrollIndicator={false}
       stickyHeaderIndices={[]}
       style={
         [
@@ -114,239 +115,104 @@ exports[`CategoryListModule should render properly when enableAppV2CategoryBlock
         <View
           onFocusCapture={[Function]}
           onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
+          style={
+            [
               {
                 "flexDirection": "row",
-              }
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            enableAppV2CategoryBlock={true}
+            style={
+              [
+                {
+                  "paddingHorizontal": 4,
+                  "paddingVertical": 4,
+                },
+              ]
             }
           >
             <View
-              enableAppV2CategoryBlock={false}
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
+              accessibilityLabel="Catégorie Le plein de cinéma, Le plein de cinéma, Le plein de cinéma, Le plein de cinéma"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "backgroundColor": "#FBDBAC",
+                  "borderColor": "#B85901",
+                  "borderRadius": 8,
+                  "borderWidth": 1.6,
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "height": 164,
+                  "justifyContent": "flex-end",
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "userSelect": "auto",
+                  "width": 178,
+                }
+              }
+              testID="Catégorie Le plein de cinéma, Le plein de cinéma, Le plein de cinéma, Le plein de cinéma"
             >
               <View
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={false}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "height": 96,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
+                      "width": "100%",
+                    },
+                  ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4294614806,
-                      4290271489,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
+                <Text
+                  baseColor="#8337E9"
+                  numberOfLines={3}
                   style={
                     [
                       {
-                        "borderRadius": 8,
-                        "flexBasis": 0,
-                        "flexDirection": "column-reverse",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "color": "#8337E9",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "left",
                       },
                     ]
                   }
                 >
-                  <View
-                    height={96}
-                    width={160}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <Text
-                    numberOfLines={2}
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "marginBottom": 12,
-                          "marginLeft": 12,
-                          "marginRight": 12,
-                          "marginTop": 12,
-                        },
-                      ]
-                    }
-                  >
-                    Le plein de cinéma, Le plein de cinéma, Le plein de cinéma, Le plein de cinéma
-                  </Text>
-                </BVLinearGradient>
-              </View>
-            </View>
-            <View
-              enableAppV2CategoryBlock={false}
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={false}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  {
-                    "height": 96,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
-                }
-              >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4293670008,
-                      4290777969,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    [
-                      {
-                        "borderRadius": 8,
-                        "flexBasis": 0,
-                        "flexDirection": "column-reverse",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    height={96}
-                    width={160}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <Text
-                    numberOfLines={2}
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "marginBottom": 12,
-                          "marginLeft": 12,
-                          "marginRight": 12,
-                          "marginTop": 12,
-                        },
-                      ]
-                    }
-                  >
-                    Toto au cinéma
-                  </Text>
-                </BVLinearGradient>
+                  LE PLEIN DE CINÉMA, LE PLEIN DE CINÉMA, LE PLEIN DE CINÉMA, LE PLEIN DE CINÉMA
+                </Text>
               </View>
             </View>
           </View>
@@ -354,239 +220,314 @@ exports[`CategoryListModule should render properly when enableAppV2CategoryBlock
         <View
           onFocusCapture={[Function]}
           onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
+          style={
+            [
               {
                 "flexDirection": "row",
-              }
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            enableAppV2CategoryBlock={true}
+            style={
+              [
+                {
+                  "paddingHorizontal": 4,
+                  "paddingVertical": 4,
+                },
+              ]
             }
           >
             <View
-              enableAppV2CategoryBlock={false}
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
+              accessibilityLabel="Catégorie Toto au cinéma"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "backgroundColor": "#FFD7E9",
+                  "borderColor": "#C01371",
+                  "borderRadius": 8,
+                  "borderWidth": 1.6,
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "height": 164,
+                  "justifyContent": "flex-end",
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "userSelect": "auto",
+                  "width": 178,
+                }
+              }
+              testID="Catégorie Toto au cinéma"
             >
               <View
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={false}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "height": 96,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
+                      "width": "100%",
+                    },
+                  ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4280802472,
-                      4279141492,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
+                <Text
+                  baseColor="#0E8474"
+                  numberOfLines={3}
                   style={
                     [
                       {
-                        "borderRadius": 8,
-                        "flexBasis": 0,
-                        "flexDirection": "column-reverse",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "color": "#0E8474",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "left",
                       },
                     ]
                   }
                 >
-                  <View
-                    height={96}
-                    width={160}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <Text
-                    numberOfLines={2}
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "marginBottom": 12,
-                          "marginLeft": 12,
-                          "marginRight": 12,
-                          "marginTop": 12,
-                        },
-                      ]
-                    }
-                  >
-                    Martine au cinéma
-                  </Text>
-                </BVLinearGradient>
+                  TOTO AU CINÉMA
+                </Text>
               </View>
             </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={
+            [
+              {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            enableAppV2CategoryBlock={true}
+            style={
+              [
+                {
+                  "paddingHorizontal": 4,
+                  "paddingVertical": 4,
+                },
+              ]
+            }
+          >
             <View
-              enableAppV2CategoryBlock={false}
-              style={
-                [
-                  {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
+              accessibilityLabel="Catégorie Martine au cinéma"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
               }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "backgroundColor": "#DBFFEA",
+                  "borderColor": "#0E8474",
+                  "borderRadius": 8,
+                  "borderWidth": 1.6,
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "height": 164,
+                  "justifyContent": "flex-end",
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "userSelect": "auto",
+                  "width": 178,
+                }
+              }
+              testID="Catégorie Martine au cinéma"
             >
               <View
-                accessibilityRole="link"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={false}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "height": 96,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
+                      "width": "100%",
+                    },
+                  ]
                 }
               >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4289562623,
-                      4286789609,
-                    ]
-                  }
-                  endPoint={
-                    {
-                      "x": 0,
-                      "y": 1,
-                    }
-                  }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
+                <Text
+                  baseColor="#8337E9"
+                  numberOfLines={3}
                   style={
                     [
                       {
-                        "borderRadius": 8,
-                        "flexBasis": 0,
-                        "flexDirection": "column-reverse",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "color": "#8337E9",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "left",
                       },
                     ]
                   }
                 >
-                  <View
-                    height={96}
-                    width={160}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <Text
-                    numberOfLines={2}
-                    style={
-                      [
-                        {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "marginBottom": 12,
-                          "marginLeft": 12,
-                          "marginRight": 12,
-                          "marginTop": 12,
-                        },
-                      ]
-                    }
-                  >
-                    Babar au cinéma
-                  </Text>
-                </BVLinearGradient>
+                  MARTINE AU CINÉMA
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={
+            [
+              {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            enableAppV2CategoryBlock={true}
+            style={
+              [
+                {
+                  "paddingHorizontal": 4,
+                  "paddingVertical": 4,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Catégorie Babar au cinéma"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "backgroundColor": "#EAE3FF",
+                  "borderColor": "#8337E9",
+                  "borderRadius": 8,
+                  "borderWidth": 1.6,
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "height": 164,
+                  "justifyContent": "flex-end",
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "userSelect": "auto",
+                  "width": 178,
+                }
+              }
+              testID="Catégorie Babar au cinéma"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "paddingBottom": 8,
+                      "paddingLeft": 8,
+                      "paddingRight": 8,
+                      "paddingTop": 8,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  baseColor="#C01371"
+                  numberOfLines={3}
+                  style={
+                    [
+                      {
+                        "color": "#C01371",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  BABAR AU CINÉMA
+                </Text>
               </View>
             </View>
           </View>
@@ -606,6 +547,319 @@ exports[`CategoryListModule should render properly when enableAppV2CategoryBlock
         </View>
       </View>
     </RCTScrollView>
+  </View>,
+  <View
+    isSmallScreen={false}
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "gap": 8,
+          "justifyContent": "center",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={false}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "gap": 8,
+          "opacity": 1,
+          "paddingBottom": 3,
+          "paddingLeft": 3,
+          "paddingRight": 3,
+          "paddingTop": 3,
+          "userSelect": "auto",
+        }
+      }
+    >
+      <Image
+        source={
+          {
+            "testUri": "../../../src/features/home/images/map.png",
+          }
+        }
+        style={
+          [
+            {
+              "height": 56,
+              "width": 56,
+            },
+          ]
+        }
+      />
+      <Text
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+              "textAlign": "center",
+              "width": 76,
+            },
+          ]
+        }
+      >
+        À coté
+      </Text>
+    </View>
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={false}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "gap": 8,
+          "opacity": 1,
+          "paddingBottom": 3,
+          "paddingLeft": 3,
+          "paddingRight": 3,
+          "paddingTop": 3,
+          "userSelect": "auto",
+        }
+      }
+    >
+      <Image
+        source={
+          {
+            "testUri": "../../../src/features/home/images/recos.png",
+          }
+        }
+        style={
+          [
+            {
+              "height": 56,
+              "width": 56,
+            },
+          ]
+        }
+      />
+      <Text
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+              "textAlign": "center",
+              "width": 76,
+            },
+          ]
+        }
+      >
+        Les recos
+      </Text>
+    </View>
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={false}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "gap": 8,
+          "opacity": 1,
+          "paddingBottom": 3,
+          "paddingLeft": 3,
+          "paddingRight": 3,
+          "paddingTop": 3,
+          "userSelect": "auto",
+        }
+      }
+    >
+      <Image
+        source={
+          {
+            "testUri": "../../../src/features/home/images/weekend.png",
+          }
+        }
+        style={
+          [
+            {
+              "height": 56,
+              "width": 56,
+            },
+          ]
+        }
+      />
+      <Text
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+              "textAlign": "center",
+              "width": 76,
+            },
+          ]
+        }
+      >
+        Ce week-end
+      </Text>
+    </View>
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={false}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "gap": 8,
+          "opacity": 1,
+          "paddingBottom": 3,
+          "paddingLeft": 3,
+          "paddingRight": 3,
+          "paddingTop": 3,
+          "userSelect": "auto",
+        }
+      }
+    >
+      <Image
+        source={
+          {
+            "testUri": "../../../src/features/home/images/free.png",
+          }
+        }
+        style={
+          [
+            {
+              "height": 56,
+              "width": 56,
+            },
+          ]
+        }
+      />
+      <Text
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+              "textAlign": "center",
+              "width": 76,
+            },
+          ]
+        }
+      >
+        Gratuit
+      </Text>
+    </View>
   </View>,
 ]
 `;
