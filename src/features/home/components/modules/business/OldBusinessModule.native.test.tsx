@@ -34,6 +34,8 @@ const props: BusinessModuleProps = {
   homeEntryId: 'abcd',
   index: 1,
   localizationArea: undefined,
+  callToAction: undefined,
+  date: undefined,
 }
 
 describe('OldBusinessModule component', () => {

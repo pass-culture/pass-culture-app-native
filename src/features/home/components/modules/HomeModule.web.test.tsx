@@ -91,7 +91,7 @@ describe('<HomeModule />', () => {
 
       const { container } = renderHomeModule(formattedNewBusinessModule)
 
-      expect(screen.getByText('Postuler')).toBeInTheDocument()
+      expect(screen.getByText('Rencontre d’arles participe à notre concours')).toBeInTheDocument()
 
       let results
       await act(async () => {

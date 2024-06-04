@@ -2,13 +2,13 @@ import { highlightOfferModuleFixture as formattedHighlightOfferModule } from 'fe
 import {
   AppV2VenuesModule,
   BusinessModule,
+  BusinessModuleCTAWording,
   CategoryListModule,
   Color,
   ExclusivityModule,
   Homepage,
   HomepageModuleType,
   HomepageTag,
-  NewBusinessModule,
   OffersModule,
   RecommendedOffersModule,
   ThematicHeaderType,
@@ -35,9 +35,11 @@ export const formattedBusinessModule: BusinessModule = {
     longitude: 40,
     radius: 20,
   },
+  callToAction: undefined,
+  date: undefined,
 }
 
-export const formattedNewBusinessModule: NewBusinessModule = {
+export const formattedNewBusinessModule: BusinessModule = {
   type: HomepageModuleType.BusinessModule,
   id: '20SId61p6EFTG7kgBTFrOb',
   analyticsTitle:
@@ -55,7 +57,8 @@ export const formattedNewBusinessModule: NewBusinessModule = {
     longitude: 40,
     radius: 20,
   },
-  wordingCTA: 'Postuler',
+  callToAction: BusinessModuleCTAWording.EN_SAVOIR_PLUS,
+  date: 'Du 2 mai au 4 août',
 }
 
 export const formattedVenuesModule: VenuesModule = {

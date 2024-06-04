@@ -2,7 +2,7 @@ import React from 'react'
 
 import { NewBusinessModule } from 'features/home/components/modules/business/NewBusinessModule'
 import { OldBusinessModule } from 'features/home/components/modules/business/OldBusinessModule'
-import { LocationCircleArea } from 'features/home/types'
+import { BusinessModuleCTAWording, LocationCircleArea } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
@@ -18,18 +18,14 @@ export interface BusinessModuleProps {
   url?: string
   shouldTargetNotConnectedUsers?: boolean
   localizationArea?: LocationCircleArea
+  callToAction?: BusinessModuleCTAWording
+  date?: string
 }
-export type NewBusinessModuleProps = BusinessModuleProps & { wordingCTA: string }
 
-const isNewBusinessModule = (
-  props: BusinessModuleProps | NewBusinessModuleProps
-): props is NewBusinessModuleProps => {
-  return 'wordingCTA' in props && !!props.wordingCTA
-}
 //TODO(PC-30046): Clean one or the other BusinessModule
-export const BusinessModule = (props: BusinessModuleProps | NewBusinessModuleProps) => {
+export const BusinessModule = (props: BusinessModuleProps) => {
   const enableNewBusinessModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_BUSINESS_BLOCK)
-  return enableNewBusinessModule && isNewBusinessModule(props) ? (
+  return enableNewBusinessModule ? (
     <NewBusinessModule {...props} />
   ) : (
     <OldBusinessModule {...props} />
