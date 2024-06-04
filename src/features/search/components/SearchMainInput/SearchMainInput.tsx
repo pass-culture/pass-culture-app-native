@@ -88,6 +88,6 @@ const MagnifyingGlassIcon = styled(MagnifyingGlass).attrs(({ theme }) => ({
 }))``
 
 const SearchIcon = styled(BicolorSearchV2).attrs(({ theme }) => ({
-  color: theme.colors.black,
+  color: theme.colors.greyDark,
   size: theme.icons.sizes.smaller,
 }))``
