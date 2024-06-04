@@ -46,7 +46,7 @@ export const VenueListModuleItem: FunctionComponent<Props> = ({ item }) => {
   )
 }
 const StyledTag = styled(Tag)(({ theme }) => ({
-  backgroundColor: isWeb ? theme.colors.greyLight : theme.colors.white,
+  backgroundColor: theme.colors.white,
 }))
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
