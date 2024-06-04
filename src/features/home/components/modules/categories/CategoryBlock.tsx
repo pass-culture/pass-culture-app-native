@@ -27,7 +27,7 @@ interface CategoryBlockProps {
   onBeforePress: () => void | Promise<void>
 }
 
-const newColorMapping: Record<
+export const newColorMapping: Record<
   keyof typeof Color,
   { border: ColorsEnum; text: ColorsEnum; fill: ColorsEnum }
 > = {
