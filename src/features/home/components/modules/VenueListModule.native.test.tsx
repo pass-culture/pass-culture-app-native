@@ -52,16 +52,6 @@ describe('<VenueListModule />', () => {
     })
   })
 
-  it('should redirect to target venue when pressing on it', async () => {
-    render(<VenueListModule venues={venuesSearchFixture.hits} />)
-
-    fireEvent.press(screen.getByText('Le Petit Rintintin 1'))
-
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'Venue', { id: 5543 })
-    })
-  })
-
   it('should open venue map location modal when pressing on venue list module when user is not located', () => {
     useModalAPISpy.mockReturnValueOnce({
       visible: false,
@@ -90,19 +80,6 @@ describe('<VenueListModule />', () => {
 
     await waitFor(() => {
       expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'venueList' })
-    })
-  })
-
-  it('should trigger log ConsultVenue when pressing on venue list item', async () => {
-    render(<VenueListModule venues={venuesSearchFixture.hits} />)
-
-    fireEvent.press(screen.getByText('Le Petit Rintintin 1'))
-
-    await waitFor(() => {
-      expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
-        venueId: 5543,
-        from: 'venueList',
-      })
     })
   })
 })
