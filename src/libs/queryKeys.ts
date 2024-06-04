@@ -45,6 +45,7 @@ export enum QueryKeys {
   VIDEO_OFFER = 'video_offer',
   SUBSCRIPTION_PROFILE_INFO = 'subscriptionProfileInfo',
   EMAIL_UPDATE_STATUS_V2 = 'emailUpdateStatusV2',
+  VIDEO_CAROUSEL_OFFERS = 'videoCarouselOffers',
 }
 
 export enum MutationKeys {
