@@ -4,6 +4,11 @@ import styled from 'styled-components/native'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
+import {
+  scrollButtonStyles,
+  ScrollButtonForNotTouchDeviceProps,
+} from 'ui/components/buttons/scrollButtonForNotTouchDeviceUtils'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowLeft } from 'ui/svg/icons/ArrowLeft'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { BicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
@@ -21,9 +26,12 @@ const RawPlaylistArrowButton: FC<Props> = ({ direction, top, onPress, ...props }
 
   if (enableAppV2CategoryBlock) {
     return (
-      <ScrollButtonForNotTouchDevice horizontalAlign={direction} top={top} onPress={onPress}>
+      <BorderedScrollButtonForNotTouchDevice
+        horizontalAlign={direction}
+        top={top}
+        onPress={onPress}>
         {direction === 'left' ? <ArrowLeft {...props} /> : <ArrowRight {...props} />}
-      </ScrollButtonForNotTouchDevice>
+      </BorderedScrollButtonForNotTouchDevice>
     )
   }
 
@@ -33,6 +41,18 @@ const RawPlaylistArrowButton: FC<Props> = ({ direction, top, onPress, ...props }
     </ScrollButtonForNotTouchDevice>
   )
 }
+
+export const ScrollButtonForNotTouchDevices =
+  styled(TouchableOpacity)<ScrollButtonForNotTouchDeviceProps>(scrollButtonStyles)
+
+export const BorderedScrollButtonForNotTouchDevice = styled(
+  TouchableOpacity
+)<ScrollButtonForNotTouchDeviceProps>((props) => ({
+  // @ts-ignore this should work since styled(TouchableOpacity)(scrollButtonStyles) works
+  ...scrollButtonStyles(props),
+  borderWidth: 1,
+  borderColor: props.theme.colors.greySemiDark,
+}))
 
 export const PlaylistArrowButton = styled(RawPlaylistArrowButton).attrs(({ theme, size }) => ({
   size: size ?? theme.icons.sizes.small,

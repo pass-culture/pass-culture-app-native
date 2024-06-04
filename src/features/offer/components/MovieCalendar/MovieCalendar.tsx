@@ -5,10 +5,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/components/MovieCalendarDay'
-import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
-import { BicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
-import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
+import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
@@ -38,12 +36,11 @@ export const MovieCalendar: React.FC<Props> = ({
     <View onLayout={onContainerLayout}>
       <MovieCalendarBottomBar />
       {isDesktopViewport && !isStart ? (
-        <ScrollButtonForNotTouchDevice
-          horizontalAlign="left"
+        <PlaylistArrowButton
+          direction="left"
           onPress={handleScrollPrevious}
-          testID="movie-calendar-left-arrow">
-          <BicolorArrowLeft />
-        </ScrollButtonForNotTouchDevice>
+          testID="movie-calendar-left-arrow"
+        />
       ) : null}
       <View>
         <FlatList
@@ -66,12 +63,11 @@ export const MovieCalendar: React.FC<Props> = ({
         ) : null}
       </View>
       {isDesktopViewport && !isEnd ? (
-        <ScrollButtonForNotTouchDevice
-          horizontalAlign="right"
+        <PlaylistArrowButton
+          direction="right"
           onPress={handleScrollNext}
-          testID="movie-calendar-right-arrow">
-          <BicolorArrowRight />
-        </ScrollButtonForNotTouchDevice>
+          testID="movie-calendar-right-arrow"
+        />
       ) : null}
     </View>
   )
