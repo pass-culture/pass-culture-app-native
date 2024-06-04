@@ -17,6 +17,7 @@ src/features/location                                @pass-culture/jeunes-conver
 src/features/notifications/                          @pass-culture/jeunes-activation
 src/features/offer/                                  @pass-culture/jeunes-decouverte
 src/features/profile/                                @pass-culture/jeunes-activation
+src/features/reactions/                              @pass-culture/jeunes-decouverte
 src/features/search/                                 @pass-culture/jeunes-conversion
 src/features/share/                                  @pass-culture/jeunes-activation
 src/features/subscription                            @pass-culture/jeunes-activation
