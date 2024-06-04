@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { GeolocationBanner as GenericGeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
+import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
@@ -19,7 +19,6 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
@@ -27,10 +26,8 @@ import { LocationMode } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
-import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Error } from 'ui/svg/icons/Error'
 import { Map } from 'ui/svg/icons/Map'
 import { getSpacing, LENGTH_XS, LENGTH_XXS, Spacer, Typo } from 'ui/theme'
@@ -59,32 +56,6 @@ const VENUE_ITEM_HEIGHT = LENGTH_XXS
 const VENUE_ITEM_WIDTH = LENGTH_XS
 const keyExtractor = (item: AlgoliaVenue) => item.objectID
 
-type GeolocationBannerProps = {
-  onPress: VoidFunction
-}
-
-const GeolocationBanner = ({ onPress }: GeolocationBannerProps) => (
-  <GeolocationButtonContainer testID="geolocationBanner">
-    <GenericGeolocationBanner
-      title="Géolocalise-toi"
-      subtitle="Pour trouver des offres autour de toi"
-      onPress={onPress}
-    />
-  </GeolocationButtonContainer>
-)
-
-const GeolocationSystemBanner = ({ onPress }: GeolocationBannerProps) => (
-  <SystemBannerContainer testID="geolocationSystemBanner">
-    <SystemBanner
-      LeftIcon={<SystemBannerLocationIcon />}
-      accessibilityLabel="Active ta géolocalisation"
-      onPress={onPress}
-      subtitle="Pour trouver des offres autour de toi."
-      title="Géolocalise-toi"
-    />
-  </SystemBannerContainer>
-)
-
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   nbHits,
   userData,
@@ -97,7 +68,6 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     searchState: { searchId, venue, offerCategories },
   } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
-  const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
 
   const isLocated = useMemo(
     () => selectedLocationMode !== LocationMode.EVERYWHERE,
@@ -159,11 +129,13 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
       {shouldDisplayGeolocationButton ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          {enableSystemBanner ? (
-            <GeolocationSystemBanner onPress={onPress} />
-          ) : (
-            <GeolocationBanner onPress={onPress} />
-          )}
+          <GeolocationButtonContainer>
+            <GeolocationBanner
+              title="Géolocalise-toi"
+              subtitle="Pour trouver des offres autour de toi"
+              onPress={onPress}
+            />
+          </GeolocationButtonContainer>
         </React.Fragment>
       ) : null}
       {shouldDisplayAvailableUserDataMessage ? (
@@ -224,21 +196,10 @@ const GeolocationButtonContainer = styled.View(({ theme }) => ({
   marginBottom: getSpacing(4),
 }))
 
-const SystemBannerContainer = styled.View(({ theme }) => ({
-  marginLeft: theme.contentPage.marginHorizontal,
-  marginRight: theme.contentPage.marginHorizontal,
-  marginBottom: getSpacing(4),
-}))
-
 const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits }) => ({
   paddingHorizontal: getSpacing(6),
   ...(nbHits > 0 && { paddingBottom: getSpacing(4) }),
 }))
-
-const SystemBannerLocationIcon = styled(Everywhere).attrs(({ theme }) => ({
-  size: theme.icons.sizes.standard,
-  color: theme.colors.secondaryLight200,
-}))``
 
 const Title = styled(Typo.Title3)({
   marginHorizontal: getSpacing(6),

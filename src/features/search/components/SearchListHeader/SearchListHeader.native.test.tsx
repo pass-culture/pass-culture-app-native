@@ -387,7 +387,7 @@ describe('<SearchListHeader />', () => {
       expect(screen.getByText('Les offres dans des lieux accessibles')).toBeOnTheScreen()
     })
 
-    it('should display geolocation banner without system banner design', () => {
+    it('should display generic banner for geolocation incitation', () => {
       mockUseLocation.mockReturnValueOnce({
         geolocPosition: null,
         selectedLocationMode: LocationMode.EVERYWHERE,
@@ -401,7 +401,7 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      expect(screen.getByTestId('geolocationBanner')).toBeOnTheScreen()
+      expect(screen.getByTestId('genericBanner')).toBeOnTheScreen()
     })
   })
 
@@ -560,7 +560,7 @@ describe('<SearchListHeader />', () => {
       useFeatureFlagSpy.mockReturnValue(true)
     })
 
-    it('should display geolocation system banner', () => {
+    it('should display system banner for geolocation incitation', () => {
       mockUseLocation.mockReturnValueOnce({
         geolocPosition: null,
         selectedLocationMode: LocationMode.EVERYWHERE,
@@ -574,7 +574,7 @@ describe('<SearchListHeader />', () => {
         />
       )
 
-      expect(screen.getByTestId('geolocationSystemBanner')).toBeOnTheScreen()
+      expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
     })
   })
 })

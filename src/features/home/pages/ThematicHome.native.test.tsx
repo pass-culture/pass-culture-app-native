@@ -18,7 +18,7 @@ import { GeolocPermissionState, ILocationContext } from 'libs/location'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
@@ -27,15 +27,11 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
 jest.mock('features/home/api/useHomepageData')
 const mockUseHomepageData = useHomepageData as jest.MockedFunction<typeof useHomepageData>
 
-const mockRequestGeolocPermission = jest.fn()
-const mockShowGeolocPermissionModal = jest.fn()
 const defaultUseLocation: Partial<ILocationContext> = {
   userLocation: {
     latitude: 2,
     longitude: 2,
   },
-  requestGeolocPermission: mockRequestGeolocPermission,
-  showGeolocPermissionModal: mockShowGeolocPermissionModal,
   permissionState: GeolocPermissionState.GRANTED,
 }
 const mockUseLocation = jest.fn(() => defaultUseLocation)
@@ -217,8 +213,8 @@ describe('ThematicHome', () => {
   })
 
   describe('geolocation banner when wipAppV2SystemBlock disabled', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(false)
+    beforeAll(() => {
+      useFeatureFlagSpy.mockReturnValue(false)
     })
 
     it('should show geolocation banner when user is not geolocated or located', async () => {
@@ -228,7 +224,7 @@ describe('ThematicHome', () => {
       renderThematicHome()
 
       await waitFor(() => {
-        expect(screen.getByTestId('geolocationBanner')).toBeOnTheScreen()
+        expect(screen.getByTestId('genericBanner')).toBeOnTheScreen()
       })
     })
 
@@ -243,8 +239,8 @@ describe('ThematicHome', () => {
   })
 
   describe('system banner when wipAppV2SystemBlock enabled', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+    beforeAll(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
     })
 
     it('should show system banner when user is not geolocated or located', async () => {
@@ -265,38 +261,6 @@ describe('ThematicHome', () => {
       await screen.findByText('Suivre')
 
       expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
-    })
-
-    it('should open "Paramètres de localisation" modal when pressing button and permission is never ask again', async () => {
-      mockUseLocation.mockReturnValueOnce({
-        ...defaultUseLocation,
-        userLocation: undefined,
-        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
-      })
-      renderThematicHome()
-      const button = screen.getByText('Géolocalise-toi')
-
-      fireEvent.press(button)
-
-      await waitFor(() => {
-        expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
-      })
-    })
-
-    it('should ask for permission when pressing button and permission is denied', async () => {
-      mockUseLocation.mockReturnValueOnce({
-        ...defaultUseLocation,
-        userLocation: undefined,
-        permissionState: GeolocPermissionState.DENIED,
-      })
-      renderThematicHome()
-      const button = screen.getByText('Géolocalise-toi')
-
-      fireEvent.press(button)
-
-      await waitFor(() => {
-        expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
-      })
     })
   })
 })
