@@ -83,23 +83,23 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
             </HorizontalTile>
           </HorizontalTileContainer>
           <Separator.Horizontal />
-          <ButtonsContainer gap={4}>
-            <ReactionToggleButton
-              active={isLiked}
-              label="J’aime"
-              Icon={StyledThumbUp}
-              FilledIcon={StyledThumbUpFilled}
-              onPress={() => onPressReactionButton('like')}
-            />
-            <ReactionToggleButton
-              active={isDisliked}
-              label="Je n’aime pas"
-              Icon={StyledThumbDown}
-              FilledIcon={StyledThumbDownFilled}
-              onPress={() => onPressReactionButton('dislike')}
-            />
-          </ButtonsContainer>
         </ViewGap>
+        <ButtonsContainer gap={4}>
+          <ReactionToggleButton
+            active={isLiked}
+            label="J’aime"
+            Icon={StyledThumbUp}
+            FilledIcon={StyledThumbUpFilled}
+            onPress={() => onPressReactionButton('like')}
+          />
+          <ReactionToggleButton
+            active={isDisliked}
+            label="Je n’aime pas"
+            Icon={StyledThumbDown}
+            FilledIcon={StyledThumbDownFilled}
+            onPress={() => onPressReactionButton('dislike')}
+          />
+        </ButtonsContainer>
       </ViewGap>
     </AppModal>
   )
@@ -125,7 +125,7 @@ const DateUsedText = styled(Typo.Caption)(({ theme }) => ({
 
 const ButtonsContainer = styled(ViewGap)({
   flexDirection: 'row',
-  marginBottom: getSpacing(14),
+  marginBottom: getSpacing(12),
 })
 
 const StyledThumbUp = styled(ThumbUp).attrs(({ theme }) => ({
