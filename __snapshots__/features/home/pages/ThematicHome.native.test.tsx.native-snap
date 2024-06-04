@@ -43,18 +43,24 @@ exports[`ThematicHome should render correctly 1`] = `
         }
         ListHeaderComponent={
           <React.Fragment>
-            <ThematicHeaderWithGeolocBanner
-              isLocated={true}
-              thematicHeader={
-                {
-                  "color": "Lilac",
-                  "imageUrl": "url.com/image",
-                  "subtitle": "HeaderSubtitle",
-                  "title": "HeaderTitle",
-                  "type": "Category",
+            <React.Fragment>
+              <ThematicHeaderWithGeolocBanner
+                isLocated={true}
+                thematicHeader={
+                  {
+                    "color": "Lilac",
+                    "imageUrl": "url.com/image",
+                    "subtitle": "HeaderSubtitle",
+                    "title": "HeaderTitle",
+                    "type": "Category",
+                  }
                 }
-              }
+              />
+            </React.Fragment>
+            <Styled(View)
+              numberOfSpaces={6}
             />
+            <Styled(View) />
           </React.Fragment>
         }
         ListHeaderComponentStyle={
@@ -118,6 +124,13 @@ exports[`ThematicHome should render correctly 1`] = `
         renderItem={[Function]}
         scrollEventThrottle={16}
         stickyHeaderIndices={[]}
+        style={
+          [
+            {
+              "overflow": "visible",
+            },
+          ]
+        }
         testID="homeBodyScrollView"
         viewabilityConfigCallbackPairs={[]}
       >
@@ -136,6 +149,25 @@ exports[`ThematicHome should render correctly 1`] = `
                 [
                   {
                     "height": 232,
+                  },
+                ]
+              }
+            />
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "marginHorizontal": 24,
                   },
                 ]
               }

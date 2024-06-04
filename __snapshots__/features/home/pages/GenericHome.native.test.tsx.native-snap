@@ -30,9 +30,15 @@ exports[`GenericHome With not displayed skeleton by default should display real 
         />
       }
       ListHeaderComponent={
-        <Styled(Text)>
-          Header
-        </Styled(Text)>
+        <React.Fragment>
+          <Styled(Text)>
+            Header
+          </Styled(Text)>
+          <Styled(View)
+            numberOfSpaces={6}
+          />
+          <Styled(View) />
+        </React.Fragment>
       }
       ListHeaderComponentStyle={
         {
@@ -95,6 +101,13 @@ exports[`GenericHome With not displayed skeleton by default should display real 
       renderItem={[Function]}
       scrollEventThrottle={16}
       stickyHeaderIndices={[]}
+      style={
+        [
+          {
+            "overflow": "visible",
+          },
+        ]
+      }
       testID="homeBodyScrollView"
       viewabilityConfigCallbackPairs={[]}
     >
@@ -121,6 +134,25 @@ exports[`GenericHome With not displayed skeleton by default should display real 
           >
             Header
           </Text>
+          <View
+            numberOfSpaces={6}
+            style={
+              [
+                {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          />
         </View>
         <View
           onFocusCapture={[Function]}
@@ -188,9 +220,15 @@ exports[`GenericHome With not displayed skeleton by default should display skele
         />
       }
       ListHeaderComponent={
-        <Styled(Text)>
-          Header
-        </Styled(Text)>
+        <React.Fragment>
+          <Styled(Text)>
+            Header
+          </Styled(Text)>
+          <Styled(View)
+            numberOfSpaces={6}
+          />
+          <Styled(View) />
+        </React.Fragment>
       }
       ListHeaderComponentStyle={
         {
@@ -253,6 +291,13 @@ exports[`GenericHome With not displayed skeleton by default should display skele
       renderItem={[Function]}
       scrollEventThrottle={16}
       stickyHeaderIndices={[]}
+      style={
+        [
+          {
+            "overflow": "visible",
+          },
+        ]
+      }
       testID="homeBodyScrollView"
       viewabilityConfigCallbackPairs={[]}
     >
@@ -279,6 +324,25 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           >
             Header
           </Text>
+          <View
+            numberOfSpaces={6}
+            style={
+              [
+                {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "marginHorizontal": 24,
+                },
+              ]
+            }
+          />
         </View>
         <View
           onFocusCapture={[Function]}
