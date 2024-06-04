@@ -2,12 +2,10 @@ import React, { FunctionComponent, useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
-import { useLocation } from 'libs/location'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -18,7 +16,6 @@ export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
   const { isDesktopViewport } = useTheme()
-  const { hasGeolocPosition } = useLocation()
 
   const Header = useMemo(() => {
     const welcomeTitle =
@@ -64,15 +61,7 @@ export const HomeHeader: FunctionComponent = function () {
     )
   }, [user, isLoggedIn, isDesktopViewport, availableCredit])
 
-  return (
-    <React.Fragment>
-      {Header}
-      <PageContent>
-        <Spacer.Column numberOfSpaces={6} />
-        <HomeBanner hasGeolocPosition={hasGeolocPosition} isLoggedIn={isLoggedIn} />
-      </PageContent>
-    </React.Fragment>
-  )
+  return Header
 }
 
 const HeaderContainer = styled.View(({ theme }) => ({
@@ -96,8 +85,4 @@ const TitleLabel = styled(Typo.Title1)({
 const Title = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
-})
-
-const PageContent = styled.View({
-  marginHorizontal: getSpacing(6),
 })

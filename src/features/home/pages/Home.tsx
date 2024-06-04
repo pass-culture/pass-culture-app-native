@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
+import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -87,6 +88,7 @@ export const Home: FunctionComponent = () => {
         modules={modules}
         homeId={id}
         Header={<Header />}
+        HomeBanner={<HomeBanner hasGeolocPosition={hasGeolocPosition} isLoggedIn={isLoggedIn} />}
         videoModuleId={params?.videoModuleId}
         statusBar={<StatusBarBlurredBackground />}
       />

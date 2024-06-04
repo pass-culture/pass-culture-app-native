@@ -30,7 +30,20 @@ exports[`Home page should render correctly 1`] = `
             hasShownAll={true}
           />
         }
-        ListHeaderComponent={<Header />}
+        ListHeaderComponent={
+          <React.Fragment>
+            <Header />
+            <Styled(View)
+              numberOfSpaces={6}
+            />
+            <Styled(View)>
+              <HomeBanner
+                hasGeolocPosition={true}
+                isLoggedIn={false}
+              />
+            </Styled(View)>
+          </React.Fragment>
+        }
         ListHeaderComponentStyle={
           {
             "zIndex": 1,
@@ -92,6 +105,13 @@ exports[`Home page should render correctly 1`] = `
         renderItem={[Function]}
         scrollEventThrottle={16}
         stickyHeaderIndices={[]}
+        style={
+          [
+            {
+              "overflow": "visible",
+            },
+          ]
+        }
         testID="homeBodyScrollView"
         viewabilityConfigCallbackPairs={[]}
       >
@@ -305,204 +325,204 @@ exports[`Home page should render correctly 1`] = `
                   visible={false}
                 />
               </View>
+            </View>
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "marginHorizontal": 24,
+                  },
+                ]
+              }
+            >
               <View
                 style={
                   [
                     {
-                      "marginHorizontal": 24,
+                      "marginBottom": 32,
                     },
                   ]
                 }
               >
                 <View
-                  numberOfSpaces={6}
-                  style={
-                    [
-                      {
-                        "height": 24,
-                      },
-                    ]
+                  accessibilityRole="link"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
                   }
-                />
-                <View
-                  style={
-                    [
-                      {
-                        "marginBottom": 32,
-                      },
-                    ]
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
                   }
+                  accessible={false}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "opacity": 1,
+                      "userSelect": "auto",
+                    }
+                  }
+                  testID="bannerWithBackground"
                 >
                   <View
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      [
+                        {
+                          "borderRadius": 7,
+                          "overflow": "hidden",
+                        },
+                      ]
                     }
-                    testID="bannerWithBackground"
                   >
                     <View
+                      accessibilityIgnoresInvertColors={true}
                       style={
                         [
                           {
-                            "borderRadius": 7,
-                            "overflow": "hidden",
+                            "backgroundColor": "#eb0055",
+                            "justifyContent": "center",
+                            "width": "100%",
                           },
                         ]
                       }
                     >
-                      <View
-                        accessibilityIgnoresInvertColors={true}
+                      <Image
+                        source={
+                          {
+                            "uri": "",
+                          }
+                        }
                         style={
                           [
                             {
-                              "backgroundColor": "#eb0055",
-                              "justifyContent": "center",
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            {
+                              "height": undefined,
                               "width": "100%",
                             },
+                            undefined,
+                          ]
+                        }
+                        testID="module-background"
+                      />
+                      <View
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "borderColor": "#90949D",
+                              "borderRadius": 7,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "padding": 16,
+                              "width": "100%",
+                            },
+                            undefined,
                           ]
                         }
                       >
-                        <Image
-                          source={
-                            {
-                              "uri": "",
-                            }
-                          }
-                          style={
-                            [
-                              {
-                                "bottom": 0,
-                                "left": 0,
-                                "position": "absolute",
-                                "right": 0,
-                                "top": 0,
-                              },
-                              {
-                                "height": undefined,
-                                "width": "100%",
-                              },
-                              undefined,
-                            ]
-                          }
-                          testID="module-background"
-                        />
                         <View
                           style={
                             [
                               {
-                                "alignItems": "center",
-                                "borderColor": "#90949D",
-                                "borderRadius": 7,
-                                "borderStyle": "solid",
-                                "borderWidth": 1,
-                                "flexDirection": "row",
-                                "padding": 16,
-                                "width": "100%",
+                                "alignContent": "center",
+                                "marginRight": 16,
                               },
-                              undefined,
                             ]
                           }
                         >
                           <View
+                            height={32}
+                            testID="BicolorUnlock"
+                            width={32}
+                          >
+                            <Text>
+                              BicolorUnlock-SVG-Mock
+                            </Text>
+                          </View>
+                        </View>
+                        <View
+                          style={
+                            [
+                              {
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "marginRight": 16,
+                                "textAlign": "start",
+                              },
+                            ]
+                          }
+                        >
+                          <Text
                             style={
                               [
                                 {
-                                  "alignContent": "center",
-                                  "marginRight": 16,
+                                  "color": "#ffffff",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
                                 },
                               ]
                             }
                           >
-                            <View
-                              height={32}
-                              testID="BicolorUnlock"
-                              width={32}
-                            >
-                              <Text>
-                                BicolorUnlock-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
+                            Débloque ton crédit
+                          </Text>
+                          <Text
+                            style={
+                              [
+                                {
+                                  "color": "#ffffff",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                          >
+                            Crée ton compte si tu as entre 15 et 18 ans !
+                          </Text>
+                        </View>
+                        <View>
                           <View
-                            style={
-                              [
-                                {
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "marginRight": 16,
-                                  "textAlign": "start",
-                                },
-                              ]
-                            }
+                            height={24}
+                            width={24}
                           >
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#ffffff",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Débloque ton crédit
+                            <Text>
+                              undefined-SVG-Mock
                             </Text>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#ffffff",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Crée ton compte si tu as entre 15 et 18 ans !
-                            </Text>
-                          </View>
-                          <View>
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
                           </View>
                         </View>
                       </View>

@@ -47,7 +47,10 @@ const ButtonWithCaptionContainer = styled.View({
   alignItems: 'center',
 })
 
-const ButtonCaption = styled(Typo.Caption)(({ theme }) => ({ color: theme.colors.white }))
+const ButtonCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.white,
+  textAlign: 'center',
+}))
 
 const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   borderRadius: theme.buttons.roundedButton.size,
