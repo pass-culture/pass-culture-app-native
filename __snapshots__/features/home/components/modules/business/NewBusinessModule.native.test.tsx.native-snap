@@ -125,6 +125,22 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
           }
         >
           <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="date"
+          >
+            Du 3 juillet au 4 novembre
+          </Text>
+          <Text
             numberOfLines={2}
             style={
               [
@@ -243,7 +259,7 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
                   ]
                 }
               >
-                Postuler
+                En savoir plus
               </Text>
             </View>
           </View>
@@ -380,6 +396,22 @@ exports[`NewBusinessModule component should display mobile image if web image no
           }
         >
           <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="date"
+          >
+            Du 3 juillet au 4 novembre
+          </Text>
+          <Text
             numberOfLines={2}
             style={
               [
@@ -498,7 +530,7 @@ exports[`NewBusinessModule component should display mobile image if web image no
                   ]
                 }
               >
-                Postuler
+                En savoir plus
               </Text>
             </View>
           </View>
@@ -635,6 +667,22 @@ exports[`NewBusinessModule component should display web image if given from cont
           }
         >
           <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="date"
+          >
+            Du 3 juillet au 4 novembre
+          </Text>
+          <Text
             numberOfLines={2}
             style={
               [
@@ -753,7 +801,7 @@ exports[`NewBusinessModule component should display web image if given from cont
                   ]
                 }
               >
-                Postuler
+                En savoir plus
               </Text>
             </View>
           </View>
@@ -890,6 +938,22 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
           }
         >
           <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="date"
+          >
+            Du 3 juillet au 4 novembre
+          </Text>
+          <Text
             numberOfLines={2}
             style={
               [
@@ -1008,7 +1072,7 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
                   ]
                 }
               >
-                Postuler
+                En savoir plus
               </Text>
             </View>
           </View>

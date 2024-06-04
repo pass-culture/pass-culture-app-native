@@ -2,8 +2,9 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { NewBusinessModuleProps } from 'features/home/components/modules/business/BusinessModule'
+import { BusinessModuleProps } from 'features/home/components/modules/business/BusinessModule'
 import { NewBusinessModule } from 'features/home/components/modules/business/NewBusinessModule'
+import { BusinessModuleCTAWording } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -21,7 +22,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-const props: NewBusinessModuleProps = {
+const props: BusinessModuleProps = {
   analyticsTitle: 'Title of module',
   title: 'firstLine',
   subtitle: 'secondLine',
@@ -34,7 +35,8 @@ const props: NewBusinessModuleProps = {
   homeEntryId: 'abcd',
   index: 1,
   localizationArea: undefined,
-  wordingCTA: 'Postuler',
+  callToAction: BusinessModuleCTAWording.EN_SAVOIR_PLUS,
+  date: 'Du 3 juillet au 4 novembre',
 }
 
 describe('NewBusinessModule component', () => {
@@ -175,7 +177,7 @@ describe('NewBusinessModule component', () => {
   })
 })
 
-const renderModule = (props: NewBusinessModuleProps, isDesktopViewport?: boolean) =>
+const renderModule = (props: BusinessModuleProps, isDesktopViewport?: boolean) =>
   render(reactQueryProviderHOC(<NewBusinessModule {...props} />), {
     theme: { isDesktopViewport: isDesktopViewport ?? false },
   })

@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { NewBusinessModuleProps } from 'features/home/components/modules/business/BusinessModule'
+import { BusinessModuleProps } from 'features/home/components/modules/business/BusinessModule'
 import { getBusinessUrl } from 'features/home/components/modules/business/helpers/getBusinessUrl'
 import { useShouldDisplayBusinessModule } from 'features/home/components/modules/business/helpers/useShouldDisplayBusinessModule'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -20,7 +20,7 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 
 const HEIGHT = getSpacing(45)
 
-const UnmemoizedNewBusinessModule = (props: NewBusinessModuleProps) => {
+const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
   const focusProps = useHandleFocus()
   const {
     analyticsTitle: title,
@@ -34,7 +34,8 @@ const UnmemoizedNewBusinessModule = (props: NewBusinessModuleProps) => {
     shouldTargetNotConnectedUsers: targetNotConnectedUsersOnly,
     moduleId,
     localizationArea,
-    wordingCTA,
+    callToAction,
+    date,
   } = props
   const isDisabled = !url
   const { appContentWidth, isDesktopViewport } = useTheme()
@@ -100,6 +101,9 @@ const UnmemoizedNewBusinessModule = (props: NewBusinessModuleProps) => {
           testID="imageBusiness">
           <Row>
             <Column>
+              <StyledBody numberOfLines={1} testID="date">
+                {date}
+              </StyledBody>
               <ButtonText testID="firstLine" numberOfLines={2}>
                 {firstLine}
               </ButtonText>
@@ -108,11 +112,13 @@ const UnmemoizedNewBusinessModule = (props: NewBusinessModuleProps) => {
               </StyledBody>
             </Column>
             <ButtonContainer>
-              <StyledButton
-                wording={wordingCTA}
-                onPress={onPress}
-                accessibilityLabel={accessibilityLabel}
-              />
+              {callToAction ? (
+                <StyledButton
+                  wording={callToAction}
+                  onPress={onPress}
+                  accessibilityLabel={accessibilityLabel}
+                />
+              ) : null}
             </ButtonContainer>
           </Row>
         </StyledImageBackground>

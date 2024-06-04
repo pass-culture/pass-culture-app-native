@@ -27,5 +27,7 @@ export const adaptBusinessModule = (module: BusinessContentModel): BusinessModul
     url: module.fields.url,
     shouldTargetNotConnectedUsers: module.fields.targetNotConnectedUsersOnly,
     localizationArea,
+    date: module.fields.date,
+    callToAction: module.fields.callToAction,
   }
 }
