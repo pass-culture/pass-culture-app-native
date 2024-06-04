@@ -39,7 +39,7 @@ const NotMemoizedBicolorArrowRight: React.FC<AccessibleBicolorIcon> = (props) =>
   )
 }
 
-export const BicolorArrowRight = React.memo(
+export const BicolorArrowRight: React.FC<AccessibleBicolorIcon> = React.memo(
   styled(NotMemoizedBicolorArrowRight).attrs(({ color, color2, theme }) => ({
     color: color ?? theme.colors.primary,
     color2: color2 ?? color ?? theme.colors.secondary,

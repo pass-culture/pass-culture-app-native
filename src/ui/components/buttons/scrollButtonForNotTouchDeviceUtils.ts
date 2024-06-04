@@ -8,6 +8,7 @@ import { getSpacing } from 'ui/theme'
 
 type HorizontalAlignPropStyle = {
   horizontalAlign: 'left' | 'right'
+  withBorder?: boolean
 }
 
 type ScrollButtonPropStyle = {
@@ -38,6 +39,7 @@ export const scrollButtonStyles: ScrollButtonForNotTouchDevicePropsStylesNative 
   theme,
   top,
   horizontalAlign,
+  withBorder,
 }: ScrollButtonPropStyle) => ({
   position: 'absolute',
   justifyContent: 'center',
@@ -49,7 +51,7 @@ export const scrollButtonStyles: ScrollButtonForNotTouchDevicePropsStylesNative 
   left: horizontalAlign === 'left' ? getSpacing(2) : 'auto',
   top: top ? top - theme.buttons.scrollButton.size / 2 : 0,
   bottom: top ? 'auto' : 0,
-  borderWidth: theme.buttons.scrollButton.borderWidth,
+  borderWidth: withBorder ? 1 : theme.buttons.scrollButton.borderWidth,
   borderRadius: theme.buttons.scrollButton.size / 2,
   borderColor: theme.buttons.scrollButton.borderColor,
   backgroundColor: theme.buttons.scrollButton.backgroundColor,
@@ -58,12 +60,13 @@ export const scrollButtonStyles: ScrollButtonForNotTouchDevicePropsStylesNative 
 
 export const scrollButtonWebStyles: ScrollButtonForNotTouchDevicePropsStylesWeb = ({
   theme,
+  withBorder,
   ...rest
 }: ScrollButtonPropStyle) => ({
-  ...(scrollButtonStyles({ theme, ...rest }) as Record<string, unknown>),
+  ...(scrollButtonStyles({ theme, withBorder, ...rest }) as Record<string, unknown>),
   cursor: 'pointer',
   outline: 'none',
-  borderWidth: 0,
+  borderWidth: withBorder ? 1 : 0,
   display: 'flex',
   overflow: 'hidden',
   ['&:active']: {
