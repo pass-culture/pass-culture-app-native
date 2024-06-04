@@ -3,11 +3,8 @@ import React, { ComponentProps } from 'react'
 import { AppV2VenuesModule } from 'features/home/components/modules/venues/AppV2VenuesModule.web'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { Layout } from 'libs/contentful/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
-
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const props = {
   data: {
@@ -21,7 +18,7 @@ const props = {
     layout: 'three-items' as Layout,
     minOffers: 5,
   },
-  venuesListhomeEntryId: 'sampleHomeEntryId',
+  homeVenuesListEntryId: '6DCThxvbPFKAo04SVRZtwY',
 }
 
 describe('<AppV2VenuesModule />', () => {

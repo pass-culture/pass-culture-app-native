@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<VenueListModule />', () => {
   it('should redirect to target venue when pressing on it', async () => {

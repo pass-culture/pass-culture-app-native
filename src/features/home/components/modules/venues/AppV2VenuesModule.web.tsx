@@ -10,7 +10,7 @@ type Props = {
   displayParameters: AppV2VenuesModuleType['displayParameters']
   moduleId: string
   data?: ModuleData
-  venuesListhomeEntryId?: string
+  homeVenuesListEntryId?: string
 }
 
 const isWeb = Platform.OS === 'web'
@@ -19,7 +19,7 @@ export const AppV2VenuesModule = ({
   data,
   moduleId,
   displayParameters,
-  venuesListhomeEntryId,
+  homeVenuesListEntryId,
 }: Props) => {
   const { playlistItems = [] } = data ?? { playlistItems: [] }
   const { isDesktopViewport } = useTheme()
@@ -34,7 +34,7 @@ export const AppV2VenuesModule = ({
       venues={playlistItems.slice(0, MAX_ITEMS) as VenueHit[]}
       moduleId={moduleId}
       moduleName={moduleName}
-      venuesListhomeEntryId={venuesListhomeEntryId}
+      homeVenuesListEntryId={homeVenuesListEntryId}
     />
   )
 }

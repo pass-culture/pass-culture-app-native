@@ -202,7 +202,7 @@ describe('<HomeModule />', () => {
       {
         ...formattedVenuesModule,
         type: HomepageModuleType.AppV2VenuesModule,
-        venuesListhomeEntryId: homeEntryId,
+        homeVenuesListEntryId: homeEntryId,
       },
       defaultDataVenues
     )

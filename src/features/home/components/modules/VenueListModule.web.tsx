@@ -12,7 +12,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 type ModuleProps = {
   moduleId: string
   moduleName: string
-  venuesListhomeEntryId?: string
+  homeVenuesListEntryId?: string
 }
 
 type Props = {
@@ -22,7 +22,7 @@ type Props = {
 const ListHeaderComponent: FunctionComponent<ModuleProps> = ({
   moduleId,
   moduleName,
-  venuesListhomeEntryId,
+  homeVenuesListEntryId,
 }) => {
   const focusProps = useHandleFocus()
 
@@ -40,7 +40,7 @@ const ListHeaderComponent: FunctionComponent<ModuleProps> = ({
         titleSeeMoreLink={{
           screen: 'ThematicHome',
           params: {
-            homeId: venuesListhomeEntryId,
+            homeId: homeVenuesListEntryId,
             from: 'venueList',
             moduleId,
           },
@@ -55,7 +55,7 @@ const keyExtractor: (item: VenueHit) => string = (item) => item.id.toString()
 
 export const VenueListModule: FunctionComponent<Props> = ({
   venues,
-  venuesListhomeEntryId,
+  homeVenuesListEntryId,
   moduleId,
   moduleName,
 }) => {
@@ -78,7 +78,7 @@ export const VenueListModule: FunctionComponent<Props> = ({
       renderItem={({ item }) => <VenueListModuleItem item={item} />}
       ListHeaderComponent={
         <ListHeaderComponent
-          venuesListhomeEntryId={venuesListhomeEntryId}
+          homeVenuesListEntryId={homeVenuesListEntryId}
           moduleId={moduleId}
           moduleName={moduleName}
         />

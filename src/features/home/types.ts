@@ -242,7 +242,7 @@ export type AppV2VenuesModule = {
   id: string
   venuesParameters: VenuesModuleParameters
   displayParameters: DisplayParameters
-  venuesListhomeEntryId: string
+  homeVenuesListEntryId: string
   data?: ModuleData
 }
 

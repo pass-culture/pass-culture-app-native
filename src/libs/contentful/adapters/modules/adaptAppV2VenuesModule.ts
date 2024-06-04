@@ -29,6 +29,6 @@ export const adaptAppV2VenuesModule = (
     id: modules.sys.id,
     venuesParameters: venuesParameters[0],
     displayParameters,
-    venuesListhomeEntryId: modules.fields.homeEntryId,
+    homeVenuesListEntryId: modules.fields.homeEntryId,
   }
 }

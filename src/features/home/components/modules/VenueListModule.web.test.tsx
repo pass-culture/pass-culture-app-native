@@ -15,7 +15,7 @@ describe('<VenueListModule />', () => {
       <VenueListModule
         venues={venuesSearchFixture.hits}
         moduleId="toto"
-        venuesListhomeEntryId="123"
+        homeVenuesListEntryId="123"
         moduleName="tata"
       />
     )
@@ -31,12 +31,12 @@ describe('<VenueListModule />', () => {
     })
   })
 
-  it('should trigger log ConsultVenue when pressing on venue list item', async () => {
+  it('should trigger log ClickSeeMore when pressing on "Voir tout" button', async () => {
     render(
       <VenueListModule
         venues={venuesSearchFixture.hits}
         moduleId="toto"
-        venuesListhomeEntryId="123"
+        homeVenuesListEntryId="123"
         moduleName="tata"
       />
     )
