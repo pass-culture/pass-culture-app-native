@@ -102,6 +102,7 @@ export const formattedAppV2VenuesModule: AppV2VenuesModule = {
     layout: 'one-item-medium',
     minOffers: 1,
   },
+  venuesListhomeEntryId: '6DCThxvbPFKAo04SVRZtwY',
 }
 
 export const formattedRecommendedOffersModule: RecommendedOffersModule = {

@@ -233,6 +233,10 @@ export interface VenuesFields {
   displayParameters: DisplayParameters
 }
 
+export interface AppV2VenuesFields extends VenuesFields {
+  homeEntryId: string
+}
+
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/recommendation/fields
 export interface RecommendationFields {
   title: string
@@ -479,7 +483,7 @@ export type ThematicHighlightContentModel = Entry<
 
 export type VenuesContentModel = Entry<VenuesFields, ContentTypes.VENUES_PLAYLIST>
 
-export type AppV2VenuesContentModel = Entry<VenuesFields, ContentTypes.VENUES_PLAYLIST_APP_V2>
+export type AppV2VenuesContentModel = Entry<AppV2VenuesFields, ContentTypes.VENUES_PLAYLIST_APP_V2>
 
 export type CategoryListContentModel = Entry<CategoryListFields, ContentTypes.CATEGORY_LIST>
 
