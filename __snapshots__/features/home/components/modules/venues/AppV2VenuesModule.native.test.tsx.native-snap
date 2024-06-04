@@ -376,32 +376,11 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
           </View>
         </View>
         <View
-          numberOfSpaces={4}
+          numberOfSpaces={8}
           style={
             [
               {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "height": 1,
-                "width": "100%",
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
+                "height": 32,
               },
             ]
           }
@@ -543,32 +522,11 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
           </View>
         </View>
         <View
-          numberOfSpaces={4}
+          numberOfSpaces={8}
           style={
             [
               {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "height": 1,
-                "width": "100%",
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
+                "height": 32,
               },
             ]
           }
@@ -710,32 +668,11 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
           </View>
         </View>
         <View
-          numberOfSpaces={4}
+          numberOfSpaces={8}
           style={
             [
               {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "height": 1,
-                "width": "100%",
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
+                "height": 32,
               },
             ]
           }
