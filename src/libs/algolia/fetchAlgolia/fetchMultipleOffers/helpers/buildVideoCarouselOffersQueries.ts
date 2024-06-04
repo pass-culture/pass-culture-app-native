@@ -2,7 +2,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
-import { OfferModuleQuery } from 'libs/algolia/types'
+import { OfferModuleQuery, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 
 type buildVideoCarouselOffersQueriesArgs = {
@@ -18,33 +18,26 @@ export const buildVideoCarouselOffersQueries = ({
   isUserUnderage,
   locationParams,
 }: buildVideoCarouselOffersQueriesArgs): OfferModuleQuery | undefined => {
-  if (tag)
-    return {
-      indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-      query: '',
-      params: {
-        ...buildOfferSearchParameters(
-          { ...initialSearchState, hitsPerPage: 1, tags: [tag], query: '' },
-          locationParams,
-          isUserUnderage
-        ),
-        attributesToHighlight: [], // We disable highlighting because we don't need it
-        attributesToRetrieve: offerAttributesToRetrieve,
-      },
-    }
-  else if (offerId)
-    return {
-      indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-      query: '',
-      params: {
-        ...buildOfferSearchParameters(
-          { ...initialSearchState, hitsPerPage: 1, objectIds: [offerId], query: '' },
-          locationParams,
-          isUserUnderage
-        ),
-        attributesToHighlight: [], // We disable highlighting because we don't need it
-        attributesToRetrieve: offerAttributesToRetrieve,
-      },
-    }
-  return
+  if (!offerId && !tag) return
+
+  const payload: SearchQueryParameters & { objectIds?: string[] } = {
+    ...initialSearchState,
+    hitsPerPage: 1,
+    query: '',
+  }
+  if (tag) {
+    payload.tags = [tag]
+  } else if (offerId) {
+    payload.objectIds = [offerId]
+  }
+
+  return {
+    indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+    query: '',
+    params: {
+      ...buildOfferSearchParameters(payload, locationParams, isUserUnderage),
+      attributesToHighlight: [], // We disable highlighting because we don't need it
+      attributesToRetrieve: offerAttributesToRetrieve,
+    },
+  }
 }
