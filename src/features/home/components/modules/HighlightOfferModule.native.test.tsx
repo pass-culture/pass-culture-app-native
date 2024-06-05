@@ -184,6 +184,32 @@ describe('HighlightOfferModule', () => {
       expect(screen.getByText('name')).toBeOnTheScreen()
     })
   })
+
+  it('should render new design when feature flag is enabled', async () => {
+    mockUseHighlightOffer.mockReturnValueOnce({
+      ...offerFixture,
+    })
+    mockFeatureFlag.mockReturnValueOnce(true)
+
+    renderHighlightModule()
+
+    await act(async () => {
+      expect(screen.queryByTestId('highlight-offer-image')).not.toBeOnTheScreen()
+    })
+  })
+
+  it('should render old design when feature flag is disabled', async () => {
+    mockUseHighlightOffer.mockReturnValueOnce({
+      ...offerFixture,
+    })
+    mockFeatureFlag.mockReturnValueOnce(false)
+
+    renderHighlightModule()
+
+    await act(async () => {
+      expect(screen.getByTestId('highlight-offer-image')).toBeOnTheScreen()
+    })
+  })
 })
 
 const renderHighlightModule = () => {
