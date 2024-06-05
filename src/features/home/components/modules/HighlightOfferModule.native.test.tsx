@@ -46,7 +46,6 @@ describe('HighlightOfferModule', () => {
       favoritesResponseWithoutOfferIn
     )
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
-    mockFeatureFlag.mockReturnValue(false)
   })
 
   it('should navigate to offer page on press', async () => {

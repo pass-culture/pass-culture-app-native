@@ -1,3 +1,4 @@
+import { parseInt } from 'lodash'
 import React, { memo, useEffect, useState } from 'react'
 import { LayoutChangeEvent, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
@@ -87,7 +88,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
       <Spacer.Column numberOfSpaces={5} />
       {isNewExclusivityModule ? (
         <MarketingBlockExclusivity
-          offerId={Number(offerId)}
+          offerId={parseInt(highlightOfferId)}
           title={highlightOffer.offer.name || ''}
           categoryId={categoryId}
           backgroundImageUrl={props.image}
