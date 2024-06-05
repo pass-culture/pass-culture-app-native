@@ -54,20 +54,20 @@ export const MarketingBlockContent = ({
             <StyledIcon />
           </ImagePlaceholder>
         )}
+        <AttachedOfferCardContainer>
+          <AttachedOfferCard
+            title={title}
+            categoryId={categoryId}
+            imageUrl={imageUrl}
+            offerLocation={offerLocation}
+            price={price}
+            categoryText={categoryText}
+            date={date}
+            withRightArrow={withRightArrow}
+            showImage={showImage}
+          />
+        </AttachedOfferCardContainer>
       </BackgroundImageContainer>
-      <AttachedOfferCardContainer>
-        <AttachedOfferCard
-          title={title}
-          categoryId={categoryId}
-          imageUrl={imageUrl}
-          offerLocation={offerLocation}
-          price={price}
-          categoryText={categoryText}
-          date={date}
-          withRightArrow={withRightArrow}
-          showImage={showImage}
-        />
-      </AttachedOfferCardContainer>
     </InternalTouchableLink>
   )
 }
