@@ -78,7 +78,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   return (
     <React.Fragment>
       {isNewHighlightModule ? (
-        <React.Fragment>
+        <Container>
           <MarketingBlockHighlight
             categoryId={null}
             homeId={toThematicHomeEntryId}
@@ -88,8 +88,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
             title={title}
             date={dateRange}
           />
-          <Spacer.Column numberOfSpaces={4} />
-        </React.Fragment>
+        </Container>
       ) : (
         <StyledInternalTouchableLink
           navigateTo={navigateTo}
@@ -121,6 +120,10 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
     </React.Fragment>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  marginBottom: theme.home.spaceBetweenModules,
+}))
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   hoverUnderlineColor: theme.colors.white,
