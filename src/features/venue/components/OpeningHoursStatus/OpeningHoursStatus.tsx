@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
+import { useAppStateChange } from 'libs/appState'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -35,6 +36,8 @@ export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate }) => 
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useAppStateChange(() => setDate(new Date()), undefined)
 
   return (
     <Container>
