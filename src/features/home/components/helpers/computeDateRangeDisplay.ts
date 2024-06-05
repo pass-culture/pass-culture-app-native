@@ -1,6 +1,6 @@
 import { format, isSameDay } from 'date-fns'
 
-export const computeDateRangeDisplay = (beginningDate: Date, endingDate: Date): string | null => {
+export const computeDateRangeDisplay = (beginningDate: Date, endingDate: Date): string => {
   if (isSameDay(beginningDate, endingDate)) {
     return `le ${formatDate(beginningDate)}`
   } else {
