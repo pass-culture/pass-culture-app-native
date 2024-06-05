@@ -5,11 +5,14 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import { formattedThematicHighlightModule } from 'features/home/fixtures/homepage.fixture'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
 const PASSED_DATE = new Date('2020-11-30T00:00:00.000Z')
 mockDate.set(CURRENT_DATE)
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const baseThematicHighlightModule = {
   ...formattedThematicHighlightModule,
