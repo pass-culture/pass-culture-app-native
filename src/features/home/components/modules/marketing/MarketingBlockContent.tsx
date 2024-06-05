@@ -35,7 +35,7 @@ export const MarketingBlockContent = ({
   withRightArrow,
   showImage,
 }: MarketingBlockProps) => {
-  const Icon = mapCategoryToIcon(categoryId || null)
+  const Icon = mapCategoryToIcon(categoryId)
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     size: theme.illustrations.sizes.small,
     color: theme.colors.greyMedium,

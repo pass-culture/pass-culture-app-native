@@ -7,10 +7,10 @@ type MarketingBlockHighlightProps = {
   title: string
   homeId: string
   moduleId: string
-  backgroundImageUrl: string
+  backgroundImageUrl?: string
   categoryText: string
   date: string
-  categoryId: CategoryIdEnum
+  categoryId: CategoryIdEnum | null
 }
 
 const UnmemoizedMarketingBlockHighlight = ({
