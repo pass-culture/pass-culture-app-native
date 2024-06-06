@@ -505,6 +505,10 @@ describe('<OfferPlace />', () => {
             selectedLocationMode: locationMode,
             place,
           })
+          .mockReturnValueOnce({
+            selectedLocationMode: locationMode,
+            place,
+          })
         mockDistance = null
         renderOfferPlace({
           subcategory: mockSubcategory,

@@ -9,12 +9,14 @@ type Props = {
   subTitle: string
   isSharingLocation: boolean
   headerMessage: string
+  onPressGeolocationBanner?: VoidFunction
 }
 
 export const VenueSelectionListHeader: FunctionComponent<Props> = ({
   subTitle,
   isSharingLocation,
   headerMessage,
+  onPressGeolocationBanner,
 }) => {
   return (
     <ListHeaderContainer>
@@ -26,6 +28,7 @@ export const VenueSelectionListHeader: FunctionComponent<Props> = ({
           <GeolocationBanner
             title="Active ta géolocalisation"
             subtitle="Pour trouver les lieux autour de toi"
+            onPress={onPressGeolocationBanner}
           />
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
