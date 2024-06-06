@@ -1,5 +1,4 @@
 import React, { memo, useCallback, useEffect, useState } from 'react'
-import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -98,22 +97,21 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
         <StyledImageBackground url={imageURL} height={SIZE} width={SIZE} testID="imageBusiness">
           <StyledLinearGradient>
             <Column>
-              <View>
-                <StyledCaption testID="date" numberOfLines={1}>
-                  {date}
-                </StyledCaption>
-                <StyledTitle3 testID="firstLine" numberOfLines={2}>
-                  {firstLine}
-                </StyledTitle3>
-                <StyledCaption testID="secondLine" numberOfLines={2}>
-                  {secondLine}
-                </StyledCaption>
-              </View>
+              <StyledCaptionRegular testID="date" numberOfLines={1}>
+                {date}
+              </StyledCaptionRegular>
+              <StyledTitle3 testID="firstLine" numberOfLines={2}>
+                {firstLine}
+              </StyledTitle3>
+              <StyledCaptionMedium testID="secondLine" numberOfLines={2}>
+                {secondLine}
+              </StyledCaptionMedium>
+
               {callToAction ? (
                 <Row>
-                  <StyledCaption testID="callToAction" numberOfLines={1}>
+                  <StyledCaptionBold testID="callToAction" numberOfLines={1}>
                     {callToAction}
-                  </StyledCaption>
+                  </StyledCaptionBold>
                   <IconContainer>
                     <ArrowRightIcon />
                   </IconContainer>
@@ -185,8 +183,18 @@ const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   zIndex: 10,
 }))
 
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+const StyledCaptionRegular = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.white,
+  fontFamily: theme.fontFamily.regular,
+}))
+const StyledCaptionMedium = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.white,
+  fontFamily: theme.fontFamily.medium,
+}))
+
+const StyledCaptionBold = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.white,
+  fontFamily: theme.fontFamily.bold,
 }))
 
 const ArrowRightIcon = styled(ArrowRight).attrs(({ theme }) => ({
