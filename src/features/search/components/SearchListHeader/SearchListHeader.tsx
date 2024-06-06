@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
@@ -25,12 +26,8 @@ import { LocationMode } from 'libs/location/types'
 import { Offer } from 'shared/offer/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
-import { Touchable } from 'ui/components/touchable/Touchable'
-import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Error } from 'ui/svg/icons/Error'
 import { Map } from 'ui/svg/icons/Map'
 import { getSpacing, LENGTH_XS, LENGTH_XXS, Spacer, Typo } from 'ui/theme'
@@ -132,14 +129,12 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
       {shouldDisplayGeolocationButton ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <GeolocationButtonContainer
-            onPress={onPress}
-            accessibilityLabel="Active ta géolocalisation">
-            <GenericBanner LeftIcon={<LocationIcon />}>
-              <Typo.ButtonText>Géolocalise-toi</Typo.ButtonText>
-              <Spacer.Column numberOfSpaces={1} />
-              <Typo.Caption numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Caption>
-            </GenericBanner>
+          <GeolocationButtonContainer>
+            <GeolocationBanner
+              title="Géolocalise-toi"
+              subtitle="Pour trouver des offres autour de toi"
+              onPress={onPress}
+            />
           </GeolocationButtonContainer>
         </React.Fragment>
       ) : null}
@@ -195,20 +190,16 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   )
 }
 
-const GeolocationButtonContainer = styledButton(Touchable)({
-  marginLeft: getSpacing(6),
-  marginRight: getSpacing(6),
+const GeolocationButtonContainer = styled.View(({ theme }) => ({
+  marginLeft: theme.contentPage.marginHorizontal,
+  marginRight: theme.contentPage.marginHorizontal,
   marginBottom: getSpacing(4),
-})
+}))
 
 const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits }) => ({
   paddingHorizontal: getSpacing(6),
   ...(nbHits > 0 && { paddingBottom: getSpacing(4) }),
 }))
-
-const LocationIcon = styled(Everywhere).attrs(({ theme }) => ({
-  size: theme.icons.sizes.standard,
-}))``
 
 const Title = styled(Typo.Title3)({
   marginHorizontal: getSpacing(6),

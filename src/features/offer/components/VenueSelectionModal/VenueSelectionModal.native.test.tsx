@@ -1,11 +1,14 @@
 import React from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { VenueSelectionModal } from './VenueSelectionModal'
 
 jest.mock('libs/location')
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<VenueSelectionModal />', () => {
   const items: VenueListItem[] = [

@@ -15,24 +15,25 @@ import { TutorialTypes } from 'features/tutorial/enums'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import {
-  GeolocPositionError,
-  GeolocPermissionState,
   GeoCoordinates,
-  GEOLOCATION_USER_ERROR_MESSAGE,
   GeolocationError,
+  GEOLOCATION_USER_ERROR_MESSAGE,
+  GeolocPermissionState,
+  GeolocPositionError,
 } from 'libs/location'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import {
-  render,
-  screen,
+  act,
+  bottomScrollEvent,
   fireEvent,
   middleScrollEvent,
-  bottomScrollEvent,
+  render,
+  screen,
   waitFor,
-  act,
 } from 'tests/utils'
 import * as useVersion from 'ui/hooks/useVersion'
 
@@ -89,6 +90,8 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 const useVersionSpy = jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
 
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('Profile component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })

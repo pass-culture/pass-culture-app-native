@@ -1,5 +1,6 @@
 import React from 'react'
 
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, screen } from 'tests/utils'
 import { theme } from 'theme'
 
@@ -28,6 +29,8 @@ const items: VenueListItem[] = [
 
 const nbLoadedHits = 3
 const nbHits = 40
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<VenueSelectionList />', () => {
   it('should show list of items', () => {
