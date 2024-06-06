@@ -2,11 +2,24 @@ import React from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { GeoCoordinates, GeolocPermissionState } from 'libs/location'
 import { fireEvent, render, screen } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { VenueSelectionModal } from './VenueSelectionModal'
 
-jest.mock('libs/location')
+const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
+const mockRequestGeolocPermission = jest.fn()
+const defaultUseLocation = {
+  geolocPosition: DEFAULT_POSITION,
+  permissionState: GeolocPermissionState.GRANTED,
+  onPressGeolocPermissionModalButton: jest.fn(),
+  requestGeolocPermission: mockRequestGeolocPermission,
+}
+const mockUseLocation = jest.fn(() => defaultUseLocation)
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => mockUseLocation(),
+}))
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -141,6 +154,14 @@ describe('<VenueSelectionModal />', () => {
   })
 
   describe('When user share his position', () => {
+    beforeAll(() => {
+      mockUseLocation.mockReturnValue({
+        ...defaultUseLocation,
+        geolocPosition: DEFAULT_POSITION,
+        permissionState: GeolocPermissionState.GRANTED,
+      })
+    })
+
     it('should not display "Active ta géolocalisation" button', () => {
       render(
         <VenueSelectionModal
@@ -166,6 +187,14 @@ describe('<VenueSelectionModal />', () => {
   })
 
   describe("When user doesn't share his position", () => {
+    beforeAll(() => {
+      mockUseLocation.mockReturnValue({
+        ...defaultUseLocation,
+        geolocPosition: null,
+        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
+      })
+    })
+
     it('should display "Active ta géolocalisation" button', () => {
       render(
         <VenueSelectionModal
@@ -187,6 +216,112 @@ describe('<VenueSelectionModal />', () => {
       )
 
       expect(screen.getByText('Active ta géolocalisation')).toBeOnTheScreen()
+    })
+
+    it('should open "Paramètres de localisation" modal when pressing "Active ta géolocalisation" button and permission is never ask again', () => {
+      const mockShowModal = jest.fn()
+      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+        visible: false,
+        showModal: mockShowModal,
+        hideModal: jest.fn(),
+        toggleModal: jest.fn(),
+      })
+
+      render(
+        <VenueSelectionModal
+          headerMessage=""
+          subTitle=""
+          rightIconAccessibilityLabel=""
+          validateButtonLabel=""
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          onEndReached={jest.fn()}
+        />
+      )
+      const button = screen.getByText('Active ta géolocalisation')
+
+      fireEvent.press(button)
+
+      expect(mockShowModal).toHaveBeenCalledWith()
+    })
+
+    it('should close geolocation modal when pressing "Activer la géolocalisation"', async () => {
+      const mockHideModal = jest.fn()
+      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+        visible: true,
+        showModal: jest.fn(),
+        hideModal: mockHideModal,
+        toggleModal: jest.fn(),
+      })
+
+      render(
+        <VenueSelectionModal
+          headerMessage=""
+          subTitle=""
+          rightIconAccessibilityLabel=""
+          validateButtonLabel=""
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          onEndReached={jest.fn()}
+        />
+      )
+      const button = screen.getByText('Active ta géolocalisation')
+
+      fireEvent.press(button)
+
+      fireEvent.press(screen.getByText('Activer la géolocalisation'))
+
+      expect(mockHideModal).toHaveBeenCalledWith()
+    })
+  })
+
+  describe('When user has forbidden his position', () => {
+    beforeAll(() => {
+      mockUseLocation.mockReturnValue({
+        ...defaultUseLocation,
+        geolocPosition: null,
+        permissionState: GeolocPermissionState.DENIED,
+      })
+    })
+
+    it('should ask for permission when pressing "Active ta géolocalisation" button and permission is denied', () => {
+      render(
+        <VenueSelectionModal
+          headerMessage=""
+          subTitle=""
+          rightIconAccessibilityLabel=""
+          validateButtonLabel=""
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          onEndReached={jest.fn()}
+        />
+      )
+      const button = screen.getByText('Active ta géolocalisation')
+
+      fireEvent.press(button)
+
+      expect(mockRequestGeolocPermission).toHaveBeenCalledWith()
     })
   })
 })

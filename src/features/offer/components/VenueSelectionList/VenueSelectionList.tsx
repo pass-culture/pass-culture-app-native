@@ -28,6 +28,7 @@ export type VenueSelectionListProps = ViewProps &
     subTitle: string
     headerMessage: string
     onEndReached: () => void
+    onPressGeolocationBanner?: VoidFunction
   }
 
 const keyExtractor = (item: VenueListItem) => String(item.offerId)
@@ -50,6 +51,7 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
       isSharingLocation,
       subTitle,
       headerMessage,
+      onPressGeolocationBanner,
       ...props
     },
     ref
@@ -95,6 +97,7 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
             headerMessage={headerMessage}
             isSharingLocation={isSharingLocation}
             subTitle={subTitle}
+            onPressGeolocationBanner={onPressGeolocationBanner}
           />
         }
         ListFooterComponent={
