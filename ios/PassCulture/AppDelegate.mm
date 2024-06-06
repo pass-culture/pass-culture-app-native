@@ -9,6 +9,7 @@
 #import <React/RCTLinkingManager.h>
 #import "BatchFirebaseDispatcher.h"
 #import "ReactNativeConfig.h"
+#import <ReactNativePerformance/ReactNativePerformance.h>
 
 #import <PassCulture-Swift.h>
 
@@ -16,7 +17,8 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{[ReactNativePerformance onAppStarted];
+
   self.moduleName = @"PassCulture";
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.

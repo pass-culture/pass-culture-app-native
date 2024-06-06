@@ -16,6 +16,7 @@ import com.facebook.soloader.SoLoader;
 import com.microsoft.codepush.react.CodePush; // @codepush
 import java.util.List;
 import com.passculture.DefaultBrowserPackage;
+import com.shopify.reactnativeperformance.ReactNativePerformance;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -71,6 +72,7 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onCreate() {
+    ReactNativePerformance.onAppStarted();
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {

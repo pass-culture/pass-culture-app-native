@@ -634,6 +634,8 @@ PODS:
     - React-jsi (= 0.71.17)
     - React-logger (= 0.71.17)
     - React-perflogger (= 0.71.17)
+  - ReactNativePerformance (4.1.2):
+    - React-Core
   - RNBatchPush (1.0.0):
     - Batch (~> 1.19.0)
     - React
@@ -824,6 +826,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "ReactNativePerformance (from `../node_modules/@shopify/react-native-performance`)"
   - "RNBatchPush (from `../node_modules/@batch.com/react-native-plugin`)"
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
@@ -1013,6 +1016,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  ReactNativePerformance:
+    :path: "../node_modules/@shopify/react-native-performance"
   RNBatchPush:
     :path: "../node_modules/@batch.com/react-native-plugin"
   RNCAsyncStorage:
@@ -1161,6 +1166,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 6bdf9ae4d6cada21ab251c5ec4ebbb53b2c442da
   React-runtimeexecutor: 304198fed11471da368cf5d1ce933b84e1288c0b
   ReactCommon: 91850c06577766d9970edec2a6929a6e14865a21
+  ReactNativePerformance: ab7dee4c4862623d72c1530a9fc71b55458edf71
   RNBatchPush: 6f2a3fe76aab9e6fa42cfe058418925ac80fdb84
   RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
   RNCClipboard: d77213bfa269013bf4b857b7a9ca37ee062d8ef1
