@@ -15,6 +15,7 @@ export type CustomRemoteConfig = {
   homeEntryId_15_17: string
   sameAuthorPlaylist: string
   shareAppWordingVersion: ShareAppWordingVersion
+  shouldApplyGraphicRedesign: boolean
   shouldDisplayReassuranceMention: boolean
   subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
 }

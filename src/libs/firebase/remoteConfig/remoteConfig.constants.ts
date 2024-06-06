@@ -16,6 +16,7 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   homeEntryId_15_17: '',
   sameAuthorPlaylist: '',
   shareAppWordingVersion: 'default',
+  shouldApplyGraphicRedesign: false,
   shouldDisplayReassuranceMention: false,
   subscriptionHomeEntryIds: {
     [SubscriptionTheme.CINEMA]: '',
