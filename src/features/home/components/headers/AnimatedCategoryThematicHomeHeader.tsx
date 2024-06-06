@@ -114,6 +114,7 @@ const Container = styled.View({
 const StyledImage = styled.Image<{
   height: number
 }>(({ height }) => ({
+  width: '100%',
   position: 'absolute',
   top: 0,
   left: 0,
