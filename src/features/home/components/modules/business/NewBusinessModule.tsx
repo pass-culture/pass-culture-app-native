@@ -1,5 +1,7 @@
 import React, { memo, useCallback, useEffect, useState } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import { View } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
+import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BusinessModuleProps } from 'features/home/components/modules/business/BusinessModule'
@@ -11,23 +13,21 @@ import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
-import { ButtonPrimaryBlack } from 'ui/components/buttons/ButtonPrimaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Typo, getSpacing, MARGIN_DP } from 'ui/theme'
+import { ArrowRight } from 'ui/svg/icons/ArrowRight'
+import { Typo, getSpacing, Spacer } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-const HEIGHT = getSpacing(45)
-
+const SIZE = getSpacing(81.75)
 const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
   const focusProps = useHandleFocus()
   const {
     analyticsTitle: title,
     title: firstLine,
+    date,
     subtitle: secondLine,
     image: imageURL,
-    imageWeb: imageWebURL,
     url,
     homeEntryId,
     index,
@@ -35,12 +35,9 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
     moduleId,
     localizationArea,
     callToAction,
-    date,
   } = props
   const isDisabled = !url
-  const { appContentWidth, isDesktopViewport } = useTheme()
   const { isLoggedIn, user, isUserLoading } = useAuthContext()
-  const imageWidth = appContentWidth - 2 * MARGIN_DP
 
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
@@ -84,7 +81,6 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
   if (!shouldModuleBeDisplayed) return null
 
   const accessibilityLabel = secondLine ? `${firstLine} ${secondLine}` : firstLine
-  const imageToDisplay = isDesktopViewport && imageWebURL ? imageWebURL : imageURL
 
   return (
     <StyledTouchableOpacity
@@ -94,33 +90,34 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
       accessibilityLabel={accessibilityLabel}
       onMouseDown={(e) => e.preventDefault()}>
       <ImageBackgroundContainer>
-        <StyledImageBackground
-          url={imageToDisplay}
-          height={HEIGHT}
-          width={imageWidth}
-          testID="imageBusiness">
-          <Row>
+        <StyledImageBackground url={imageURL} height={SIZE} width={SIZE} testID="imageBusiness">
+          <StyledLinearGradient>
             <Column>
-              <StyledBody numberOfLines={1} testID="date">
-                {date}
-              </StyledBody>
-              <ButtonText testID="firstLine" numberOfLines={2}>
-                {firstLine}
-              </ButtonText>
-              <StyledBody numberOfLines={2} testID="secondLine">
-                {secondLine}
-              </StyledBody>
-            </Column>
-            <ButtonContainer>
+              <View>
+                <StyledCaption testID="date" numberOfLines={1}>
+                  {date}
+                </StyledCaption>
+                <StyledTitle3 testID="firstLine" numberOfLines={2}>
+                  {firstLine}
+                </StyledTitle3>
+                <StyledCaption testID="secondLine" numberOfLines={2}>
+                  {secondLine}
+                </StyledCaption>
+              </View>
               {callToAction ? (
-                <StyledButton
-                  wording={callToAction}
-                  onPress={onPress}
-                  accessibilityLabel={accessibilityLabel}
-                />
-              ) : null}
-            </ButtonContainer>
-          </Row>
+                <Row>
+                  <StyledCaption testID="callToAction" numberOfLines={1}>
+                    {callToAction}
+                  </StyledCaption>
+                  <IconContainer>
+                    <ArrowRightIcon />
+                  </IconContainer>
+                </Row>
+              ) : (
+                <Spacer.Column numberOfSpaces={4} />
+              )}
+            </Column>
+          </StyledLinearGradient>
         </StyledImageBackground>
       </ImageBackgroundContainer>
     </StyledTouchableOpacity>
@@ -128,23 +125,17 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
 }
 
 export const NewBusinessModule = memo(UnmemoizedNewBusinessModule)
-
 const ImageBackgroundContainer = styled.View(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
   overflow: 'hidden',
   width: '100%',
+  height: '100%',
 }))
 
-const StyledButton = styledButton(ButtonPrimaryBlack)({
-  width: getSpacing(28.5),
-  height: getSpacing(10),
-})
-
-const ButtonContainer = styled.View({
-  height: '100%',
-  justifyContent: 'flex-end',
-  alignContent: 'flex-end',
-})
+const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [theme.colors.transparent, '#2C2C2E'],
+  borderRadius: theme.borderRadius.radius,
+}))({ height: '100%', width: '100%' })
 
 const StyledTouchableOpacity = styled(TouchableOpacity)<{
   onMouseDown: (e: Event) => void
@@ -152,7 +143,8 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
 }>(({ theme, isFocus }) => ({
   textDecoration: 'none',
   borderRadius: theme.borderRadius.radius,
-  height: HEIGHT,
+  height: SIZE,
+  width: SIZE,
   flexWrap: 'wrap',
   marginHorizontal: getSpacing(6),
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
@@ -161,15 +153,17 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
 
 const Row = styled.View({
   flexDirection: 'row',
-  height: '100%',
+  paddingTop: getSpacing(4.5),
   gap: getSpacing(2),
-  padding: getSpacing(4),
+  marginBottom: getSpacing(6),
 })
+
 const Column = styled.View({
   flexDirection: 'column',
   flex: 1,
   height: '100%',
   justifyContent: 'flex-end',
+  paddingHorizontal: getSpacing(4),
 })
 
 const StyledImageBackground = styled(ImageBackground)<{ height: number }>((props) => ({
@@ -180,10 +174,21 @@ const StyledImageBackground = styled(ImageBackground)<{ height: number }>((props
   borderRadius: getSpacing(2),
 }))
 
-const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+  color: theme.colors.white,
+  marginVertical: getSpacing(1),
+  zIndex: 10,
+}))
+
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
+const ArrowRightIcon = styled(ArrowRight).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
   color: theme.colors.white,
-}))
+}))({
+  flexShrink: 0,
+})
+
+const IconContainer = styled.View({ transform: 'rotate(-45deg)' })

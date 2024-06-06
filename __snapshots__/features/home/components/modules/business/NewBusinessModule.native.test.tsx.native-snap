@@ -34,7 +34,7 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
     {
       "borderRadius": 8,
       "flexWrap": "wrap",
-      "height": 180,
+      "height": 327,
       "marginBottom": 24,
       "marginHorizontal": 24,
       "opacity": 1,
@@ -42,6 +42,7 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
       "textDecorationLine": "none",
       "textDecorationStyle": "solid",
       "userSelect": "auto",
+      "width": 327,
     }
   }
   testID="firstLine secondLine"
@@ -51,6 +52,7 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
       [
         {
           "borderRadius": 8,
+          "height": "100%",
           "overflow": "hidden",
           "width": "100%",
         },
@@ -64,7 +66,7 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
           {
             "backgroundColor": "#eb0055",
             "borderRadius": 8,
-            "height": 180,
+            "height": 327,
             "justifyContent": "center",
             "width": "100%",
           },
@@ -87,7 +89,7 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
               "top": 0,
             },
             {
-              "height": 180,
+              "height": 327,
               "width": "100%",
             },
             undefined,
@@ -95,17 +97,32 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
         }
         testID="imageBusiness"
       />
-      <View
+      <BVLinearGradient
+        borderRadius={8}
+        colors={
+          [
+            0,
+            4281084974,
+          ]
+        }
+        endPoint={
+          {
+            "x": 0.5,
+            "y": 1,
+          }
+        }
+        locations={null}
+        startPoint={
+          {
+            "x": 0.5,
+            "y": 0,
+          }
+        }
         style={
           [
             {
-              "flexDirection": "row",
-              "gap": 8,
               "height": "100%",
-              "paddingBottom": 16,
-              "paddingLeft": 16,
-              "paddingRight": 16,
-              "paddingTop": 16,
+              "width": "100%",
             },
           ]
         }
@@ -120,151 +137,116 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
                 "flexShrink": 1,
                 "height": "100%",
                 "justifyContent": "flex-end",
+                "paddingHorizontal": 16,
               },
             ]
           }
         >
-          <Text
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="date"
-          >
-            Du 3 juillet au 4 novembre
-          </Text>
-          <Text
-            numberOfLines={2}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="firstLine"
-          >
-            firstLine
-          </Text>
-          <Text
-            numberOfLines={2}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="secondLine"
-          >
-            secondLine
-          </Text>
-        </View>
-        <View
-          style={
-            [
-              {
-                "alignContent": "flex-end",
-                "height": "100%",
-                "justifyContent": "flex-end",
-              },
-            ]
-          }
-        >
+          <View>
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="date"
+            >
+              Du 3 juillet au 4 novembre
+            </Text>
+            <Text
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 20,
+                    "lineHeight": 24,
+                    "marginVertical": 4,
+                    "zIndex": 10,
+                  },
+                ]
+              }
+              testID="firstLine"
+            >
+              firstLine
+            </Text>
+            <Text
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="secondLine"
+            >
+              secondLine
+            </Text>
+          </View>
           <View
-            accessibilityLabel="firstLine secondLine"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": 114,
-              }
+              [
+                {
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "marginBottom": 24,
+                  "paddingTop": 18,
+                },
+              ]
             }
-            testID="firstLine secondLine"
           >
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="callToAction"
+            >
+              En savoir plus
+            </Text>
             <View
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "transform": [
+                      {
+                        "rotate": "-45deg",
+                      },
+                    ],
                   },
                 ]
               }
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
+              <View
+                height={16}
+                width={16}
               >
-                En savoir plus
-              </Text>
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
             </View>
           </View>
         </View>
-      </View>
+      </BVLinearGradient>
     </View>
   </View>
 </View>
@@ -305,7 +287,7 @@ exports[`NewBusinessModule component should display mobile image if web image no
     {
       "borderRadius": 8,
       "flexWrap": "wrap",
-      "height": 180,
+      "height": 327,
       "marginBottom": 24,
       "marginHorizontal": 24,
       "opacity": 1,
@@ -313,6 +295,7 @@ exports[`NewBusinessModule component should display mobile image if web image no
       "textDecorationLine": "none",
       "textDecorationStyle": "solid",
       "userSelect": "auto",
+      "width": 327,
     }
   }
   testID="firstLine secondLine"
@@ -322,6 +305,7 @@ exports[`NewBusinessModule component should display mobile image if web image no
       [
         {
           "borderRadius": 8,
+          "height": "100%",
           "overflow": "hidden",
           "width": "100%",
         },
@@ -335,7 +319,7 @@ exports[`NewBusinessModule component should display mobile image if web image no
           {
             "backgroundColor": "#eb0055",
             "borderRadius": 8,
-            "height": 180,
+            "height": 327,
             "justifyContent": "center",
             "width": "100%",
           },
@@ -358,7 +342,7 @@ exports[`NewBusinessModule component should display mobile image if web image no
               "top": 0,
             },
             {
-              "height": 180,
+              "height": 327,
               "width": "100%",
             },
             undefined,
@@ -366,17 +350,32 @@ exports[`NewBusinessModule component should display mobile image if web image no
         }
         testID="imageBusiness"
       />
-      <View
+      <BVLinearGradient
+        borderRadius={8}
+        colors={
+          [
+            0,
+            4281084974,
+          ]
+        }
+        endPoint={
+          {
+            "x": 0.5,
+            "y": 1,
+          }
+        }
+        locations={null}
+        startPoint={
+          {
+            "x": 0.5,
+            "y": 0,
+          }
+        }
         style={
           [
             {
-              "flexDirection": "row",
-              "gap": 8,
               "height": "100%",
-              "paddingBottom": 16,
-              "paddingLeft": 16,
-              "paddingRight": 16,
-              "paddingTop": 16,
+              "width": "100%",
             },
           ]
         }
@@ -391,151 +390,116 @@ exports[`NewBusinessModule component should display mobile image if web image no
                 "flexShrink": 1,
                 "height": "100%",
                 "justifyContent": "flex-end",
+                "paddingHorizontal": 16,
               },
             ]
           }
         >
-          <Text
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="date"
-          >
-            Du 3 juillet au 4 novembre
-          </Text>
-          <Text
-            numberOfLines={2}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="firstLine"
-          >
-            firstLine
-          </Text>
-          <Text
-            numberOfLines={2}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="secondLine"
-          >
-            secondLine
-          </Text>
-        </View>
-        <View
-          style={
-            [
-              {
-                "alignContent": "flex-end",
-                "height": "100%",
-                "justifyContent": "flex-end",
-              },
-            ]
-          }
-        >
+          <View>
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="date"
+            >
+              Du 3 juillet au 4 novembre
+            </Text>
+            <Text
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 20,
+                    "lineHeight": 24,
+                    "marginVertical": 4,
+                    "zIndex": 10,
+                  },
+                ]
+              }
+              testID="firstLine"
+            >
+              firstLine
+            </Text>
+            <Text
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="secondLine"
+            >
+              secondLine
+            </Text>
+          </View>
           <View
-            accessibilityLabel="firstLine secondLine"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": 114,
-              }
+              [
+                {
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "marginBottom": 24,
+                  "paddingTop": 18,
+                },
+              ]
             }
-            testID="firstLine secondLine"
           >
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="callToAction"
+            >
+              En savoir plus
+            </Text>
             <View
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "transform": [
+                      {
+                        "rotate": "-45deg",
+                      },
+                    ],
                   },
                 ]
               }
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
+              <View
+                height={16}
+                width={16}
               >
-                En savoir plus
-              </Text>
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
             </View>
           </View>
         </View>
-      </View>
+      </BVLinearGradient>
     </View>
   </View>
 </View>
@@ -576,7 +540,7 @@ exports[`NewBusinessModule component should display web image if given from cont
     {
       "borderRadius": 8,
       "flexWrap": "wrap",
-      "height": 180,
+      "height": 327,
       "marginBottom": 24,
       "marginHorizontal": 24,
       "opacity": 1,
@@ -584,6 +548,7 @@ exports[`NewBusinessModule component should display web image if given from cont
       "textDecorationLine": "none",
       "textDecorationStyle": "solid",
       "userSelect": "auto",
+      "width": 327,
     }
   }
   testID="firstLine secondLine"
@@ -593,6 +558,7 @@ exports[`NewBusinessModule component should display web image if given from cont
       [
         {
           "borderRadius": 8,
+          "height": "100%",
           "overflow": "hidden",
           "width": "100%",
         },
@@ -606,7 +572,7 @@ exports[`NewBusinessModule component should display web image if given from cont
           {
             "backgroundColor": "#eb0055",
             "borderRadius": 8,
-            "height": 180,
+            "height": 327,
             "justifyContent": "center",
             "width": "100%",
           },
@@ -616,7 +582,7 @@ exports[`NewBusinessModule component should display web image if given from cont
       <Image
         source={
           {
-            "uri": "https://images.ctfassets.net/2bg01iqy0isv/1jedJLjdDiypJqBtO1sjH0/185ee9e6428229a15d4c047b862a95f8/image_web.jpeg",
+            "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
           }
         }
         style={
@@ -629,7 +595,7 @@ exports[`NewBusinessModule component should display web image if given from cont
               "top": 0,
             },
             {
-              "height": 180,
+              "height": 327,
               "width": "100%",
             },
             undefined,
@@ -637,17 +603,32 @@ exports[`NewBusinessModule component should display web image if given from cont
         }
         testID="imageBusiness"
       />
-      <View
+      <BVLinearGradient
+        borderRadius={8}
+        colors={
+          [
+            0,
+            4281084974,
+          ]
+        }
+        endPoint={
+          {
+            "x": 0.5,
+            "y": 1,
+          }
+        }
+        locations={null}
+        startPoint={
+          {
+            "x": 0.5,
+            "y": 0,
+          }
+        }
         style={
           [
             {
-              "flexDirection": "row",
-              "gap": 8,
               "height": "100%",
-              "paddingBottom": 16,
-              "paddingLeft": 16,
-              "paddingRight": 16,
-              "paddingTop": 16,
+              "width": "100%",
             },
           ]
         }
@@ -662,151 +643,116 @@ exports[`NewBusinessModule component should display web image if given from cont
                 "flexShrink": 1,
                 "height": "100%",
                 "justifyContent": "flex-end",
+                "paddingHorizontal": 16,
               },
             ]
           }
         >
-          <Text
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="date"
-          >
-            Du 3 juillet au 4 novembre
-          </Text>
-          <Text
-            numberOfLines={2}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="firstLine"
-          >
-            firstLine
-          </Text>
-          <Text
-            numberOfLines={2}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="secondLine"
-          >
-            secondLine
-          </Text>
-        </View>
-        <View
-          style={
-            [
-              {
-                "alignContent": "flex-end",
-                "height": "100%",
-                "justifyContent": "flex-end",
-              },
-            ]
-          }
-        >
+          <View>
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="date"
+            >
+              Du 3 juillet au 4 novembre
+            </Text>
+            <Text
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 20,
+                    "lineHeight": 24,
+                    "marginVertical": 4,
+                    "zIndex": 10,
+                  },
+                ]
+              }
+              testID="firstLine"
+            >
+              firstLine
+            </Text>
+            <Text
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="secondLine"
+            >
+              secondLine
+            </Text>
+          </View>
           <View
-            accessibilityLabel="firstLine secondLine"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": 114,
-              }
+              [
+                {
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "marginBottom": 24,
+                  "paddingTop": 18,
+                },
+              ]
             }
-            testID="firstLine secondLine"
           >
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="callToAction"
+            >
+              En savoir plus
+            </Text>
             <View
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "transform": [
+                      {
+                        "rotate": "-45deg",
+                      },
+                    ],
                   },
                 ]
               }
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
+              <View
+                height={16}
+                width={16}
               >
-                En savoir plus
-              </Text>
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
             </View>
           </View>
         </View>
-      </View>
+      </BVLinearGradient>
     </View>
   </View>
 </View>
@@ -847,7 +793,7 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
     {
       "borderRadius": 8,
       "flexWrap": "wrap",
-      "height": 180,
+      "height": 327,
       "marginBottom": 24,
       "marginHorizontal": 24,
       "opacity": 1,
@@ -855,6 +801,7 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
       "textDecorationLine": "none",
       "textDecorationStyle": "solid",
       "userSelect": "auto",
+      "width": 327,
     }
   }
   testID="firstLine secondLine"
@@ -864,6 +811,7 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
       [
         {
           "borderRadius": 8,
+          "height": "100%",
           "overflow": "hidden",
           "width": "100%",
         },
@@ -877,7 +825,7 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
           {
             "backgroundColor": "#eb0055",
             "borderRadius": 8,
-            "height": 180,
+            "height": 327,
             "justifyContent": "center",
             "width": "100%",
           },
@@ -900,7 +848,7 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
               "top": 0,
             },
             {
-              "height": 180,
+              "height": 327,
               "width": "100%",
             },
             undefined,
@@ -908,17 +856,32 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
         }
         testID="imageBusiness"
       />
-      <View
+      <BVLinearGradient
+        borderRadius={8}
+        colors={
+          [
+            0,
+            4281084974,
+          ]
+        }
+        endPoint={
+          {
+            "x": 0.5,
+            "y": 1,
+          }
+        }
+        locations={null}
+        startPoint={
+          {
+            "x": 0.5,
+            "y": 0,
+          }
+        }
         style={
           [
             {
-              "flexDirection": "row",
-              "gap": 8,
               "height": "100%",
-              "paddingBottom": 16,
-              "paddingLeft": 16,
-              "paddingRight": 16,
-              "paddingTop": 16,
+              "width": "100%",
             },
           ]
         }
@@ -933,151 +896,116 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
                 "flexShrink": 1,
                 "height": "100%",
                 "justifyContent": "flex-end",
+                "paddingHorizontal": 16,
               },
             ]
           }
         >
-          <Text
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="date"
-          >
-            Du 3 juillet au 4 novembre
-          </Text>
-          <Text
-            numberOfLines={2}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="firstLine"
-          >
-            firstLine
-          </Text>
-          <Text
-            numberOfLines={2}
-            style={
-              [
-                {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="secondLine"
-          >
-            secondLine
-          </Text>
-        </View>
-        <View
-          style={
-            [
-              {
-                "alignContent": "flex-end",
-                "height": "100%",
-                "justifyContent": "flex-end",
-              },
-            ]
-          }
-        >
+          <View>
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="date"
+            >
+              Du 3 juillet au 4 novembre
+            </Text>
+            <Text
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 20,
+                    "lineHeight": 24,
+                    "marginVertical": 4,
+                    "zIndex": 10,
+                  },
+                ]
+              }
+              testID="firstLine"
+            >
+              firstLine
+            </Text>
+            <Text
+              numberOfLines={2}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="secondLine"
+            >
+              secondLine
+            </Text>
+          </View>
           <View
-            accessibilityLabel="firstLine secondLine"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": 114,
-              }
+              [
+                {
+                  "flexDirection": "row",
+                  "gap": 8,
+                  "marginBottom": 24,
+                  "paddingTop": 18,
+                },
+              ]
             }
-            testID="firstLine secondLine"
           >
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                  },
+                ]
+              }
+              testID="callToAction"
+            >
+              En savoir plus
+            </Text>
             <View
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "transform": [
+                      {
+                        "rotate": "-45deg",
+                      },
+                    ],
                   },
                 ]
               }
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
+              <View
+                height={16}
+                width={16}
               >
-                En savoir plus
-              </Text>
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
             </View>
           </View>
         </View>
-      </View>
+      </BVLinearGradient>
     </View>
   </View>
 </View>

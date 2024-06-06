@@ -104,7 +104,9 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
             testID="imageBusiness">
             <Container>
               <TextContainer>
-                <ButtonText testID="firstLine">{firstLine}</ButtonText>
+                <ButtonText testID="firstLine" numberOfLines={2}>
+                  {firstLine}
+                </ButtonText>
                 <StyledBody numberOfLines={2}>{secondLine}</StyledBody>
               </TextContainer>
               {isDisabled ? null : (
