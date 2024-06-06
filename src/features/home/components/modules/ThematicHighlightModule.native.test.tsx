@@ -5,11 +5,14 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import { formattedThematicHighlightModule } from 'features/home/fixtures/homepage.fixture'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
 const PASSED_DATE = new Date('2020-11-30T00:00:00.000Z')
 mockDate.set(CURRENT_DATE)
+
+const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const baseThematicHighlightModule = {
   ...formattedThematicHighlightModule,
@@ -94,5 +97,18 @@ describe('ThematicHighlightModule', () => {
       from: 'highlight_thematic_block',
       moduleId: '5Z1FGtRGbE3d1Q5oqHMfe9',
     })
+  })
+
+  it('should display new version when feature flag is active', async () => {
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+    render(<ThematicHighlightModule index={0} {...baseThematicHighlightModule} />)
+
+    expect(screen.getByTestId('new-highlight-module-container')).toBeOnTheScreen()
+  })
+
+  it('should not display new version when feature flag is not active', async () => {
+    render(<ThematicHighlightModule index={0} {...baseThematicHighlightModule} />)
+
+    expect(screen.queryByTestId('new-highlight-module-container')).not.toBeOnTheScreen()
   })
 })

@@ -44,6 +44,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_OFFER_PREVIEW = 'wipOfferPreview',
   WIP_OFFER_PREVIEW_WITH_CAROUSEL = 'wipOfferPreviewWithCarousel',
   WIP_PAGE_SEARCH_N1 = 'wipPageSearchN1',
+  WIP_NEW_HIGHLIGHT_THEMATIC_MODULE = 'wipNewHighlightThematicModule',
   WIP_NEW_HOME_MODULE_SIZES = 'wipNewHomeModuleSizes',
   WIP_NEW_MAPPING_BOOKS = 'wipNewMappingBooks',
   WIP_NEW_OFFER_TILE = 'wipNewOfferTile',

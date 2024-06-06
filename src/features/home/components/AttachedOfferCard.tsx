@@ -16,7 +16,7 @@ const OFFER_CARD_PADDING = getSpacing(4)
 
 export type AttachedOfferCardProps = {
   title: string
-  categoryId: CategoryIdEnum
+  categoryId: CategoryIdEnum | null
   categoryText: string
   offerLocation?: OfferLocation
   imageUrl?: string
