@@ -1,3 +1,4 @@
+import { RenderPassReport, PerformanceProfiler } from '@shopify/react-native-performance'
 import React, { FunctionComponent, useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-gesture-handler' // @react-navigation
@@ -28,6 +29,7 @@ import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
+import { analytics } from 'libs/analytics'
 import { AutoImmediate, NextResume } from 'libs/codepush/options'
 import { getIsMaestro } from 'libs/e2e/getIsMaestro'
 import { env } from 'libs/environment'
@@ -46,6 +48,10 @@ import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+
+const onReportPrepared = (report: RenderPassReport) => {
+  analytics.logPerformance(report.destinationScreen, report?.timeToRenderMillis ?? 0)
+}
 
 LogBox.ignoreLogs([
   'Setting a timer',
@@ -84,52 +90,54 @@ const App: FunctionComponent = function () {
   }, [])
 
   return (
-    <RemoteConfigProvider>
-      <ReactQueryClientProvider>
-        <ThemeProvider theme={theme}>
-          <SafeAreaProvider>
-            <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-              {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
-              <NetInfoWrapper>
-                <SettingsWrapper>
-                  <AuthWrapper>
-                    <LocationWrapper>
-                      <AccessibilityFiltersWrapper>
-                        <FavoritesWrapper>
-                          <SearchAnalyticsWrapper>
-                            <SearchWrapper>
-                              <SnackBarProvider>
-                                <CulturalSurveyContextProvider>
-                                  <SubscriptionContextProvider>
-                                    <SplashScreenProvider>
-                                      <PushNotificationsWrapper>
-                                        <ShareAppWrapper>
-                                          <OnboardingWrapper>
-                                            <OfflineModeContainer>
-                                              <ScreenErrorProvider>
-                                                <AppNavigationContainer />
-                                              </ScreenErrorProvider>
-                                            </OfflineModeContainer>
-                                          </OnboardingWrapper>
-                                        </ShareAppWrapper>
-                                      </PushNotificationsWrapper>
-                                    </SplashScreenProvider>
-                                  </SubscriptionContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </SnackBarProvider>
-                            </SearchWrapper>
-                          </SearchAnalyticsWrapper>
-                        </FavoritesWrapper>
-                      </AccessibilityFiltersWrapper>
-                    </LocationWrapper>
-                  </AuthWrapper>
-                </SettingsWrapper>
-              </NetInfoWrapper>
-            </ErrorBoundary>
-          </SafeAreaProvider>
-        </ThemeProvider>
-      </ReactQueryClientProvider>
-    </RemoteConfigProvider>
+    <PerformanceProfiler onReportPrepared={onReportPrepared}>
+      <RemoteConfigProvider>
+        <ReactQueryClientProvider>
+          <ThemeProvider theme={theme}>
+            <SafeAreaProvider>
+              <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
+                <NetInfoWrapper>
+                  <SettingsWrapper>
+                    <AuthWrapper>
+                      <LocationWrapper>
+                        <AccessibilityFiltersWrapper>
+                          <FavoritesWrapper>
+                            <SearchAnalyticsWrapper>
+                              <SearchWrapper>
+                                <SnackBarProvider>
+                                  <CulturalSurveyContextProvider>
+                                    <SubscriptionContextProvider>
+                                      <SplashScreenProvider>
+                                        <PushNotificationsWrapper>
+                                          <ShareAppWrapper>
+                                            <OnboardingWrapper>
+                                              <OfflineModeContainer>
+                                                <ScreenErrorProvider>
+                                                  <AppNavigationContainer />
+                                                </ScreenErrorProvider>
+                                              </OfflineModeContainer>
+                                            </OnboardingWrapper>
+                                          </ShareAppWrapper>
+                                        </PushNotificationsWrapper>
+                                      </SplashScreenProvider>
+                                    </SubscriptionContextProvider>
+                                  </CulturalSurveyContextProvider>
+                                </SnackBarProvider>
+                              </SearchWrapper>
+                            </SearchAnalyticsWrapper>
+                          </FavoritesWrapper>
+                        </AccessibilityFiltersWrapper>
+                      </LocationWrapper>
+                    </AuthWrapper>
+                  </SettingsWrapper>
+                </NetInfoWrapper>
+              </ErrorBoundary>
+            </SafeAreaProvider>
+          </ThemeProvider>
+        </ReactQueryClientProvider>
+      </RemoteConfigProvider>
+    </PerformanceProfiler>
   )
 }
 

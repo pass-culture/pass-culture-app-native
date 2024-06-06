@@ -119,6 +119,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logOpenExternalUrl: jest.fn(),
   logOpenLocationSettings: jest.fn(),
   logOpenNotificationSettings: jest.fn(),
+  logPerformance: jest.fn(),
   logPerformSearch: jest.fn(),
   logPhoneNumberClicked: jest.fn(),
   logPhoneValidationCodeClicked: jest.fn(),

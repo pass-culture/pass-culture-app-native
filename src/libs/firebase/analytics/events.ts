@@ -115,6 +115,7 @@ export enum AnalyticsEvent {
   OPEN_LOCATION_SETTINGS = 'OpenLocationSettings',
   OPEN_NOTIFICATION_SETTINGS = 'OpenNotificationSettings',
   PERFORM_SEARCH = 'PerformSearch',
+  PERFORMANCE = 'RNPerformance',
   PLAYLIST_HORIZONTAL_SCROLL = 'PlaylistHorizontalScroll',
   PLAYLIST_VERTICAL_SCROLL = 'PlaylistVerticalScroll',
   PROFIL_SCROLLED_TO_BOTTOM = 'ProfilScrolledToBottom',

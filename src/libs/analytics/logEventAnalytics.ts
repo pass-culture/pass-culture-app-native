@@ -482,6 +482,14 @@ export const logEventAnalytics = {
         searchNbResults: nbHits,
       }
     ),
+  logPerformance: (name: string, millis: number) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.PERFORMANCE },
+      {
+        millis: millis,
+        name: name,
+      }
+    ),
   logPhoneNumberClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.PHONE_NUMBER_CLICKED }),
   logPhoneValidationCodeClicked: () =>

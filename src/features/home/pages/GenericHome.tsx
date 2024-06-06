@@ -1,4 +1,5 @@
 import { useScrollToTop } from '@react-navigation/native'
+import { PerformanceMeasureView } from '@shopify/react-native-performance'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   NativeScrollEvent,
@@ -233,37 +234,39 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
           <Spacer.TabBar />
         </ScrollView>
       ) : null}
-      <HomeBodyLoadingContainer hide={showSkeleton}>
-        <FlatListContainer
-          ref={scrollRef}
-          testID="homeBodyScrollView"
-          onScroll={onScroll}
-          data={modulesToDisplayWithoutCarousel}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          ListFooterComponent={
-            <FooterComponent hasShownAll={modulesToDisplay.length >= modules.length} />
-          }
-          ListHeaderComponent={ListHeader}
-          ListHeaderComponentStyle={flatListHeaderStyle}
-          initialNumToRender={initialNumToRender}
-          removeClippedSubviews={false}
-          onContentSizeChange={onContentSizeChange}
-          scrollEventThrottle={16}
-          bounces
-        />
-        {shouldDisplayScrollToTop ? (
-          <ScrollToTopContainer>
-            <ScrollToTopButton
-              transition={scrollButtonTransition}
-              onPress={() => {
-                scrollRef.current?.scrollToOffset({ offset: 0 })
-              }}
-            />
-            <Spacer.BottomScreen />
-          </ScrollToTopContainer>
-        ) : null}
-      </HomeBodyLoadingContainer>
+      <PerformanceMeasureView interactive={showSkeleton} screenName="HomeScreen">
+        <HomeBodyLoadingContainer hide={showSkeleton}>
+          <FlatListContainer
+            ref={scrollRef}
+            testID="homeBodyScrollView"
+            onScroll={onScroll}
+            data={modulesToDisplayWithoutCarousel}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            ListFooterComponent={
+              <FooterComponent hasShownAll={modulesToDisplay.length >= modules.length} />
+            }
+            ListHeaderComponent={ListHeader}
+            ListHeaderComponentStyle={flatListHeaderStyle}
+            initialNumToRender={initialNumToRender}
+            removeClippedSubviews={false}
+            onContentSizeChange={onContentSizeChange}
+            scrollEventThrottle={16}
+            bounces
+          />
+          {shouldDisplayScrollToTop ? (
+            <ScrollToTopContainer>
+              <ScrollToTopButton
+                transition={scrollButtonTransition}
+                onPress={() => {
+                  scrollRef.current?.scrollToOffset({ offset: 0 })
+                }}
+              />
+              <Spacer.BottomScreen />
+            </ScrollToTopContainer>
+          ) : null}
+        </HomeBodyLoadingContainer>
+      </PerformanceMeasureView>
       <Spacer.Column numberOfSpaces={6} />
       {statusBar ?? null}
     </Container>
