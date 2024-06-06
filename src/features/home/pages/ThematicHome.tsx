@@ -24,6 +24,8 @@ import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { startTransaction } from 'shared/performance/transactions'
@@ -32,7 +34,10 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 const MARGIN_TOP_HEADER = 6
 
-const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
+const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader; homeId: string }> = ({
+  thematicHeader,
+  homeId,
+}) => {
   if (thematicHeader?.type === ThematicHeaderType.Highlight) {
     if (Platform.OS === 'ios') {
       return (
@@ -67,6 +72,7 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
         subtitle={thematicHeader?.subtitle}
         imageUrl={thematicHeader?.imageUrl}
         color={thematicHeader?.color}
+        homeId={homeId}
       />
     )
   }
@@ -82,11 +88,12 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
 }
 
 const ThematicHeaderWithGeolocBanner: FunctionComponent<{
-  thematicHeader?: ThematicHeader
   isLocated: boolean
-}> = ({ thematicHeader, isLocated }) => (
+  homeId: string
+  thematicHeader?: ThematicHeader
+}> = ({ thematicHeader, isLocated, homeId }) => (
   <React.Fragment>
-    <SubHeader thematicHeader={thematicHeader} />
+    <SubHeader thematicHeader={thematicHeader} homeId={homeId} />
     {isLocated ? null : (
       <GeolocationBannerContainer>
         <GeolocationBanner
@@ -109,6 +116,7 @@ export const ThematicHome: FunctionComponent = () => {
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
   const { userLocation } = useLocation()
   const isLocated = !!userLocation
+  const enableAppV2Header = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER)
 
   const { onScroll, headerTransition, imageAnimatedHeight, gradientTranslation, viewTranslation } =
     useOpacityTransition({
@@ -129,6 +137,8 @@ export const ThematicHome: FunctionComponent = () => {
     }
   }, [id, params.from, params.moduleId, params.moduleListId])
 
+  const shouldDisplaySubscribeButton = Platform.OS !== 'ios' && !enableAppV2Header
+
   return (
     <Container>
       <GenericHome
@@ -137,8 +147,16 @@ export const ThematicHome: FunctionComponent = () => {
         thematicHeader={thematicHeader}
         Header={
           <React.Fragment>
-            <ThematicHeaderWithGeolocBanner thematicHeader={thematicHeader} isLocated={isLocated} />
-            {Platform.OS === 'ios' ? null : <SubscribeButtonWithModals homeId={params.homeId} />}
+            <ThematicHeaderWithGeolocBanner
+              thematicHeader={thematicHeader}
+              isLocated={isLocated}
+              homeId={id}
+            />
+            {shouldDisplaySubscribeButton ? (
+              <SubscribeButtonContainer>
+                <SubscribeButtonWithModals homeId={params.homeId} />
+              </SubscribeButtonContainer>
+            ) : null}
           </React.Fragment>
         }
         shouldDisplayScrollToTop
@@ -165,9 +183,13 @@ export const ThematicHome: FunctionComponent = () => {
                 {...thematicHeader}
                 gradientTranslation={gradientTranslation}
                 imageAnimatedHeight={imageAnimatedHeight}
+                homeId={id}
               />
-
-              <SubscribeButtonWithModals homeId={params.homeId} />
+              {enableAppV2Header ? null : (
+                <SubscribeButtonContainer>
+                  <SubscribeButtonWithModals homeId={params.homeId} />
+                </SubscribeButtonContainer>
+              )}
             </AnimatedHeader>
           ) : null}
         </React.Fragment>
@@ -199,3 +221,9 @@ const GeolocationBannerContainer = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
   marginBottom: theme.home.spaceBetweenModules,
 }))
+
+const SubscribeButtonContainer = styled.View({
+  position: 'absolute',
+  right: getSpacing(4),
+  top: getSpacing(40),
+})

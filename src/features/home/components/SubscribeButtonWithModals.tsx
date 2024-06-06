@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import { View } from 'react-native'
 
 import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -14,7 +14,6 @@ import { SubscriptionTheme } from 'features/subscription/types'
 import { storage } from 'libs/storage'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { getSpacing } from 'ui/theme'
 
 import { SubscribeButtonWithTooltip } from './SubscribeButtonWithTooltip'
 
@@ -96,12 +95,12 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
 
   return (
     <React.Fragment>
-      <SubscribeButtonContainer>
+      <View>
         <SubscribeButtonWithTooltip
           active={isSubscribeButtonActive}
           onPress={onSubscribeButtonPress}
         />
-      </SubscribeButtonContainer>
+      </View>
 
       <NotificationsSettingsModal
         visible={isNotificationsModalVisible}
@@ -129,9 +128,3 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
     </React.Fragment>
   )
 }
-
-const SubscribeButtonContainer = styled.View({
-  position: 'absolute',
-  right: getSpacing(4),
-  top: getSpacing(40),
-})

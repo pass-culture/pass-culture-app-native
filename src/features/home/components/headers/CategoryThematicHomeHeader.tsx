@@ -1,16 +1,18 @@
 import React, { FunctionComponent } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constants'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
+import { SubscribeButtonWithModals } from 'features/home/components/SubscribeButtonWithModals'
 import { CategoryThematicHeader } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
-const HEADER_HEIGHT = getSpacing(52)
+const HEADER_HEIGHT = getSpacing(37)
 
 type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 
@@ -39,9 +41,11 @@ const AppV1Header: FunctionComponent<CategoryThematicHeaderProps> = ({
   )
 }
 
-type AppV2HeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'>
+type AppV2HeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'> & {
+  homeId: string
+}
 
-const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({ title, subtitle, color }) => {
+const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({ title, subtitle, color, homeId }) => {
   return (
     <ImageBackground
       source={color ? gradientImagesMapping[color] : null}
@@ -60,19 +64,29 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({ title, subtitle, col
           </TitleContainer>
         </Background>
       </TextContainer>
+      {Platform.OS === 'ios' ? null : (
+        <SubscribeButtonContainer>
+          <SubscribeButtonWithModals homeId={homeId} />
+        </SubscribeButtonContainer>
+      )}
     </ImageBackground>
   )
 }
 
-export const CategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({
+type AppV2CategoryThematicHeaderProps = CategoryThematicHeaderProps & {
+  homeId: string
+}
+
+export const CategoryThematicHomeHeader: FunctionComponent<AppV2CategoryThematicHeaderProps> = ({
   title,
   subtitle,
   imageUrl,
   color,
+  homeId,
 }) => {
   const enableAppV2Header = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER)
   return enableAppV2Header ? (
-    <AppV2Header title={title} subtitle={subtitle} color={color} />
+    <AppV2Header title={title} subtitle={subtitle} color={color} homeId={homeId} />
   ) : (
     <AppV1Header title={title} subtitle={subtitle} imageUrl={imageUrl} color={color} />
   )
@@ -88,6 +102,12 @@ const TextContainer = styled.View({
   bottom: 0,
   left: 0,
   right: 0,
+})
+
+const SubscribeButtonContainer = styled.View({
+  position: 'absolute',
+  bottom: 16,
+  right: 24,
 })
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
