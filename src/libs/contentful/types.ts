@@ -21,6 +21,8 @@ export enum ContentTypes {
   THEMATIC_CATEGORY_INFO = 'thematicCategoryInfo',
   THEMATIC_HIGHLIGHT = 'thematicHighlight',
   THEMATIC_HIGHLIGHT_INFO = 'thematic_highlight_info',
+  TREND_BLOCK = 'trendBlock',
+  TRENDS = 'trends',
   VENUES_PLAYLIST = 'venuesPlaylist',
   VENUES_PLAYLIST_APP_V2 = 'venuesPlaylistAppV2',
   VENUES_PARAMETERS = 'venuesParameters',
@@ -206,6 +208,7 @@ type VideoFields = {
 
 type VenueMapBlockFields = {
   title: string
+  homeEntryId?: string
 }
 export type VenueMapBlockContentModel = Entry<VenueMapBlockFields, ContentTypes.VENUE_MAP_BLOCK>
 
@@ -463,6 +466,8 @@ export type HomepageNatifModule =
   | ExclusivityContentModel
   | RecommendationContentModel
   | ThematicHighlightContentModel
+  | TrendBlockContentModel
+  | TrendsContentModel
   | VenuesContentModel
   | VideoContentModel
   | CategoryListContentModel
@@ -524,6 +529,20 @@ type HighlightOfferFields = {
   aroundRadius?: number
 }
 
+export type TrendBlockFields = {
+  title: string
+  image: Image
+  homeEntryId: string
+}
+
+export type TrendBlockContentModel = Entry<TrendBlockFields, ContentTypes.TREND_BLOCK>
+
+type TrendsFields = {
+  items: (TrendBlockContentModel | VenueMapBlockContentModel)[]
+}
+
+export type TrendsContentModel = Entry<TrendsFields, ContentTypes.TRENDS>
+
 export const isAlgoliaContentModel = (module: HomepageNatifModule): module is AlgoliaContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.ALGOLIA
 
@@ -567,6 +586,9 @@ export const isThematicCategoryInfo = (
   thematicHeader?: ThematicHeader
 ): thematicHeader is ThematicCategoryInfo =>
   thematicHeader?.sys.contentType?.sys.id === ContentTypes.THEMATIC_CATEGORY_INFO
+
+export const isTrendsContentModel = (module: HomepageNatifModule): module is TrendsContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.TRENDS
 
 export const isClassicThematicHeader = (
   thematicHeader?: ThematicHeader
