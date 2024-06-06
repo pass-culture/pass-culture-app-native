@@ -78,7 +78,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   return (
     <React.Fragment>
       {isNewHighlightModule ? (
-        <Container>
+        <Container testID="new-highlight-module-container">
           <MarketingBlockHighlight
             categoryId={null}
             homeId={toThematicHomeEntryId}
