@@ -1,4 +1,5 @@
 import React, { memo, useCallback, useEffect, useState } from 'react'
+import { useWindowDimensions } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -18,14 +19,19 @@ import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { Typo, getSpacing, Spacer } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-const SIZE = getSpacing(81.75)
+const FIXED_SIZE = getSpacing(81.75)
+const MAIN_MARGIN = getSpacing(6)
+const SPECIFIC_GREY = '#2C2C2E'
+const FULL_HEIGHT = { height: '100%' }
+const FULL_WIDTH = { width: '100%' }
+
 const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
   const focusProps = useHandleFocus()
   const {
-    analyticsTitle: title,
-    title: firstLine,
+    analyticsTitle,
+    title,
     date,
-    subtitle: secondLine,
+    subtitle,
     image: imageURL,
     url,
     homeEntryId,
@@ -37,9 +43,9 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
   } = props
   const isDisabled = !url
   const { isLoggedIn, user, isUserLoading } = useAuthContext()
-
   const [shouldRedirect, setShouldRedirect] = useState(false)
-
+  const { width } = useWindowDimensions()
+  const isLargeScreen = width > 700
   const onPress = useCallback(() => {
     if (!isDisabled) {
       setShouldRedirect(true)
@@ -50,7 +56,7 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
 
   const logAndOpenUrl = (finalUrl: string) => {
     setShouldRedirect(false)
-    analytics.logBusinessBlockClicked({ moduleName: title, moduleId, homeEntryId })
+    analytics.logBusinessBlockClicked({ moduleName: analyticsTitle, moduleId, homeEntryId })
     openUrl(finalUrl)
   }
 
@@ -84,7 +90,7 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
 
   if (!shouldModuleBeDisplayed) return null
 
-  const accessibilityLabel = secondLine ? `${firstLine} ${secondLine}` : firstLine
+  const accessibilityLabel = subtitle ? `${title} ${subtitle}` : title
 
   return (
     <StyledTouchableOpacity
@@ -93,52 +99,93 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
       accessibilityRole={url ? AccessibilityRole.LINK : undefined}
       accessibilityLabel={accessibilityLabel}
       onMouseDown={(e) => e.preventDefault()}>
-      <ImageBackgroundContainer>
-        <StyledImageBackground url={imageURL} height={SIZE} width={SIZE} testID="imageBusiness">
+      {isLargeScreen ? (
+        <FlexRow>
+          <ColumnLargeScreen>
+            <NewBusinessModuleTextAndCta
+              date={date}
+              title={title}
+              subtitle={subtitle}
+              callToAction={callToAction}
+            />
+          </ColumnLargeScreen>
+          <StyledImageBackgroundLargeScreen
+            url={imageURL}
+            height={FIXED_SIZE}
+            testID="imageBusiness">
+            <StyledLinearGradientLargeScreen />
+          </StyledImageBackgroundLargeScreen>
+        </FlexRow>
+      ) : (
+        <StyledImageBackground url={imageURL} height={FIXED_SIZE} testID="imageBusiness">
           <StyledLinearGradient>
             <Column>
-              <StyledCaptionRegular testID="date" numberOfLines={1}>
-                {date}
-              </StyledCaptionRegular>
-              <StyledTitle3 testID="firstLine" numberOfLines={2}>
-                {firstLine}
-              </StyledTitle3>
-              <StyledCaptionMedium testID="secondLine" numberOfLines={2}>
-                {secondLine}
-              </StyledCaptionMedium>
-
-              {callToAction ? (
-                <Row>
-                  <StyledCaptionBold testID="callToAction" numberOfLines={1}>
-                    {callToAction}
-                  </StyledCaptionBold>
-                  <IconContainer>
-                    <ArrowRightIcon />
-                  </IconContainer>
-                </Row>
-              ) : (
-                <Spacer.Column numberOfSpaces={4} />
-              )}
+              <NewBusinessModuleTextAndCta
+                date={date}
+                title={title}
+                subtitle={subtitle}
+                callToAction={callToAction}
+              />
             </Column>
           </StyledLinearGradient>
         </StyledImageBackground>
-      </ImageBackgroundContainer>
+      )}
     </StyledTouchableOpacity>
   )
 }
 
+const NewBusinessModuleTextAndCta = ({
+  date,
+  title,
+  subtitle,
+  callToAction,
+}: Partial<BusinessModuleProps>) => {
+  return (
+    <React.Fragment>
+      <StyledCaptionRegular testID="date" numberOfLines={1}>
+        {date}
+      </StyledCaptionRegular>
+      <StyledTitle3 testID="firstLine" numberOfLines={2}>
+        {title}
+      </StyledTitle3>
+      <StyledCaptionMedium testID="secondLine" numberOfLines={2}>
+        {subtitle}
+      </StyledCaptionMedium>
+      {callToAction ? (
+        <Row>
+          <StyledCaptionBold testID="callToAction" numberOfLines={1}>
+            {callToAction}
+          </StyledCaptionBold>
+          <IconContainer>
+            <ArrowRightIcon />
+          </IconContainer>
+        </Row>
+      ) : (
+        <Spacer.Column numberOfSpaces={4} />
+      )}
+    </React.Fragment>
+  )
+}
 export const NewBusinessModule = memo(UnmemoizedNewBusinessModule)
-const ImageBackgroundContainer = styled.View(({ theme }) => ({
+
+const FlexRow = styled.View(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
-  overflow: 'hidden',
-  width: '100%',
-  height: '100%',
+  flexDirection: 'row',
+  width: theme.appContentWidth - 2 * MAIN_MARGIN,
+  ...FULL_HEIGHT,
 }))
 
 const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: [theme.colors.transparent, '#2C2C2E'],
-  borderRadius: theme.borderRadius.radius,
-}))({ height: '100%', width: '100%' })
+  angle: 0,
+  colors: [SPECIFIC_GREY, theme.colors.transparent],
+  useAngle: true,
+}))({ ...FULL_HEIGHT, ...FULL_WIDTH })
+
+const StyledLinearGradientLargeScreen = styled(LinearGradient).attrs(({ theme }) => ({
+  angle: 90,
+  colors: [SPECIFIC_GREY, theme.colors.transparent],
+  useAngle: true,
+}))({ ...FULL_HEIGHT, ...FULL_WIDTH })
 
 const StyledTouchableOpacity = styled(TouchableOpacity)<{
   onMouseDown: (e: Event) => void
@@ -146,13 +193,45 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{
 }>(({ theme, isFocus }) => ({
   textDecoration: 'none',
   borderRadius: theme.borderRadius.radius,
-  height: SIZE,
-  width: SIZE,
+  height: FIXED_SIZE,
+  width: theme.appContentWidth - 2 * MAIN_MARGIN,
   flexWrap: 'wrap',
-  marginHorizontal: getSpacing(6),
+  overflow: 'hidden',
+  marginHorizontal: MAIN_MARGIN,
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
   marginBottom: theme.home.spaceBetweenModules,
 }))
+
+const ColumnLargeScreen = styled.View({
+  backgroundColor: SPECIFIC_GREY,
+  width: '50%',
+  flexDirection: 'column',
+  ...FULL_HEIGHT,
+  justifyContent: 'flex-end',
+  paddingHorizontal: getSpacing(4),
+})
+
+const Column = styled.View({
+  ...FULL_WIDTH,
+  flexDirection: 'column',
+  ...FULL_HEIGHT,
+  justifyContent: 'flex-end',
+  paddingHorizontal: getSpacing(4),
+})
+
+const StyledImageBackground = styled(ImageBackground)<{ height: number }>(({ height }) => ({
+  height,
+  ...FULL_WIDTH,
+  borderRadius: getSpacing(2),
+}))
+
+const StyledImageBackgroundLargeScreen = styled(ImageBackground)<{ height: number }>(
+  ({ height, theme }) => ({
+    height,
+    width: (theme.appContentWidth - 2 * MAIN_MARGIN) / 2,
+    borderRadius: getSpacing(2),
+  })
+)
 
 const Row = styled.View({
   flexDirection: 'row',
@@ -161,26 +240,9 @@ const Row = styled.View({
   marginBottom: getSpacing(6),
 })
 
-const Column = styled.View({
-  flexDirection: 'column',
-  flex: 1,
-  height: '100%',
-  justifyContent: 'flex-end',
-  paddingHorizontal: getSpacing(4),
-})
-
-const StyledImageBackground = styled(ImageBackground)<{ height: number }>((props) => ({
-  height: props.height,
-  width: '100%',
-  justifyContent: 'center',
-  backgroundColor: props.theme.colors.primary,
-  borderRadius: getSpacing(2),
-}))
-
 const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   color: theme.colors.white,
   marginVertical: getSpacing(1),
-  zIndex: 10,
 }))
 
 const StyledCaptionRegular = styled(Typo.Caption)(({ theme }) => ({
