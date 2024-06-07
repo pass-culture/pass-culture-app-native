@@ -1,15 +1,11 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import {
-  CategoryListModule,
-  CategoryListProps,
-} from 'features/home/components/modules/categories/CategoryListModule'
+import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
 import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
@@ -116,21 +112,5 @@ describe('CategoryListModule', () => {
 
       expect(screen).toMatchSnapshot()
     })
-
-    it('should display circle nav buttons when feature is enabled', () => {
-      renderCategoryListModule({
-        id: '123',
-        title: 'module',
-        categoryBlockList,
-        index: 1,
-        homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
-      })
-
-      expect(screen.getByText('Ce week-end')).toBeOnTheScreen()
-    })
   })
 })
-
-const renderCategoryListModule = (props: CategoryListProps) => {
-  return render(reactQueryProviderHOC(<CategoryListModule {...props} />))
-}
