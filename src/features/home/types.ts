@@ -17,6 +17,7 @@ export enum HomepageModuleType {
   'RecommendedOffersModule' = 'RecommendedOffersModule',
   'ExclusivityModule' = 'ExclusivityModule',
   'ThematicHighlightModule' = 'ThematicHighlightModule',
+  'TrendsModule' = 'TrendsModule',
   'CategoryListModule' = 'CategoryListModule',
   'VideoModule' = 'VideoModule',
   'HighlightOfferModule' = 'HighlightOfferModule',
@@ -293,6 +294,19 @@ export type CategoryBlock = {
   homeEntryId: string
   image?: string
   color: Color
+}
+
+export type TrendBlock = {
+  id: string
+  title: string
+  image: { uri: string } | { testUri: string }
+  homeEntryId: string
+}
+
+export type TrendsModule = {
+  type: HomepageModuleType.TrendsModule
+  id: string
+  items: TrendBlock[]
 }
 
 export enum Color {
