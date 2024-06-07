@@ -16,7 +16,12 @@ const UnmemoizedExclusivityBanner = ({
   style,
 }: ExclusivityBannerProps) => {
   useEffect(() => {
-    analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.EXCLUSIVITY, index, homeEntryId)
+    analytics.logModuleDisplayedOnHomepage({
+      moduleId,
+      moduleType: ContentTypes.EXCLUSIVITY,
+      index,
+      homeEntryId,
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [moduleId, homeEntryId])
 

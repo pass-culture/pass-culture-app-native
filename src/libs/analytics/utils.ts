@@ -158,7 +158,7 @@ export const buildModuleDisplayedOnHomepage = (
   const moduleDisplayedOnHomepageState: ModuleDisplayedOnHomepageState = {}
 
   const addEntries = (prefix: string, array: string[]) => {
-    if (array && array.length) {
+    if (array?.length) {
       const arrayIntoStrings = splitArrayIntoStrings(array, maxItemsPerString)
       arrayIntoStrings.forEach((value, index) => {
         const startValueIndex = index * maxItemsPerString + 1

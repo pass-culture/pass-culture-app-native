@@ -43,9 +43,15 @@ const UnmemoizedExclusivityOffer = ({
 
   useEffect(() => {
     if (shouldDisplayExcluOffer) {
-      analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.EXCLUSIVITY, index, homeEntryId)
+      analytics.logModuleDisplayedOnHomepage({
+        moduleId,
+        moduleType: ContentTypes.EXCLUSIVITY,
+        index,
+        homeEntryId,
+        offers: [String(offerId)],
+      })
     }
-  }, [homeEntryId, index, moduleId, shouldDisplayExcluOffer])
+  }, [homeEntryId, index, moduleId, offerId, shouldDisplayExcluOffer])
 
   if (!shouldDisplayExcluOffer) return null
 

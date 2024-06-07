@@ -23,13 +23,12 @@ describe('ExclusivityExternalLink component', () => {
   it('should trigger logEvent "ModuleDisplayedOnHomepage" on render', () => {
     render(<ExclusivityExternalLink {...props} />)
 
-    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
-      1,
-      props.moduleId,
-      ContentTypes.EXCLUSIVITY,
-      props.index,
-      props.homeEntryId
-    )
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+      moduleId: props.moduleId,
+      moduleType: ContentTypes.EXCLUSIVITY,
+      index: props.index,
+      homeEntryId: props.homeEntryId,
+    })
   })
 
   it('should open url when clicking on the component', () => {

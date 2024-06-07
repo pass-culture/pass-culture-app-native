@@ -15,7 +15,7 @@ import { useLocation } from 'libs/location/LocationWrapper'
 import { formatDates } from 'libs/parsers/formatDates'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
-import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
+import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, ItemDimensions, RenderFooterItem } from 'ui/components/Playlist'
@@ -128,7 +128,13 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
-      analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.ALGOLIA, index, homeEntryId)
+      analytics.logModuleDisplayedOnHomepage({
+        moduleId,
+        moduleType: ContentTypes.ALGOLIA,
+        index,
+        homeEntryId,
+        offers: (playlistItems as Offer[]).map((item) => item.objectID),
+      })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])

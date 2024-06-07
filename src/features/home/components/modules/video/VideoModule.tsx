@@ -38,12 +38,13 @@ export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
-      analytics.logModuleDisplayedOnHomepage(
-        props.id,
-        ContentTypes.VIDEO,
-        props.index,
-        props.homeEntryId
-      )
+      analytics.logModuleDisplayedOnHomepage({
+        moduleId: props.id,
+        moduleType: ContentTypes.VIDEO,
+        index: props.index,
+        homeEntryId: props.homeEntryId,
+        offers: offers.length ? offers.map((offer) => offer.objectID) : undefined,
+      })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])

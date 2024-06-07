@@ -53,12 +53,13 @@ export const VenuesModule = ({
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
-      analytics.logModuleDisplayedOnHomepage(
+      analytics.logModuleDisplayedOnHomepage({
         moduleId,
-        ContentTypes.VENUES_PLAYLIST,
+        moduleType: ContentTypes.VENUES_PLAYLIST,
         index,
-        homeEntryId
-      )
+        homeEntryId,
+        venues: (playlistItems as VenueHit[]).map((item) => String(item.id)),
+      })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])

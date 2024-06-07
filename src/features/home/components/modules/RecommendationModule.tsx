@@ -12,7 +12,7 @@ import { useLocation } from 'libs/location/LocationWrapper'
 import { formatDates } from 'libs/parsers/formatDates'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
-import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
+import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
@@ -50,13 +50,14 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
-      analytics.logModuleDisplayedOnHomepage(
+      analytics.logModuleDisplayedOnHomepage({
         moduleId,
-        ContentTypes.RECOMMENDATION,
+        moduleType: ContentTypes.RECOMMENDATION,
         index,
         homeEntryId,
-        recommendationApiParams
-      )
+        apiRecoParams: recommendationApiParams,
+        offers: offers?.length ? offers.map((offer) => offer.objectID) : undefined,
+      })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])

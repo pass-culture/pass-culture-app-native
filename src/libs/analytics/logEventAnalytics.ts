@@ -19,7 +19,7 @@ import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { AmplitudeEvent } from 'libs/amplitude/events'
 import { analytics, buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
-import { buildAccessibilityFilterParam } from 'libs/analytics/utils'
+import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
@@ -395,21 +395,24 @@ export const logEventAnalytics = {
   logModifyMail: () => analytics.logEvent({ firebase: AnalyticsEvent.MODIFY_MAIL }),
   logModuleDisplayed: (params: { moduleId: string; displayedOn: Referrals; venueId?: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.MODULE_DISPLAYED }, params),
-  logModuleDisplayedOnHomepage: (
-    moduleId: string,
-    moduleType: ContentTypes,
-    index: number,
-    homeEntryId: string | undefined,
+  logModuleDisplayedOnHomepage: (params: {
+    moduleId: string
+    moduleType: ContentTypes
+    index: number
+    homeEntryId: string | undefined
     apiRecoParams?: RecommendationApiParams
-  ) =>
+    offers?: string[]
+    venues?: string[]
+  }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.MODULE_DISPLAYED_ON_HOMEPAGE },
       {
-        ...apiRecoParams,
-        homeEntryId,
-        index,
-        moduleId,
-        moduleType,
+        apiRecoParams: params.apiRecoParams,
+        homeEntryId: params.homeEntryId,
+        index: params.index,
+        moduleId: params.moduleId,
+        moduleType: params.moduleType,
+        ...buildModuleDisplayedOnHomepage(10, params.offers, params.venues),
       }
     ),
   logMultivenueOptionDisplayed: (offerId: number) =>
