@@ -4,7 +4,7 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: "Aides"
 - tapOn: "Nouvelle fenêtre\_: Centre d’aide"
 
-- assertVisible: # Vérification du lien dans le browser
-    id: "com.sec.android.app.sbrowser:id/location_bar_edit_text"
+- assertVisible: # Vérifie la présence de l'url dans le browser
+    id: "com.android.chrome:id/url_bar"
 - tapOn:
     id: "com.android.systemui:id/back"
