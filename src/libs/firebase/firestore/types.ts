@@ -49,6 +49,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_NEW_MAPPING_BOOKS = 'wipNewMappingBooks',
   WIP_NEW_OFFER_TILE = 'wipNewOfferTile',
   WIP_REACTION_FAKE_DOOR = 'wipReactionFakeDoor',
+  WIP_REACTION_FEATURE = 'wipReactionFeature',
   WIP_SAME_ARTIST_PLAYLIST = 'wipSameArtistPlaylist',
   WIP_SEARCH_ACCESSIBILITY_FILTER = 'wipSearchAccessibilityFilter',
   WIP_STEPPER_RETRY_UBBLE = 'wipStepperRetryUbble',
