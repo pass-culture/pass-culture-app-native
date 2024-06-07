@@ -21,7 +21,7 @@ type Props = {
   thumbnailUrl?: string
   categoryId?: CategoryIdEnum | null
 }
-export const OfferTileContent: FC<Props> = ({
+export const OldPlaylistCardOffer: FC<Props> = ({
   name,
   date,
   isDuo,

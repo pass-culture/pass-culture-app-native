@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { NewOfferTileContent } from 'features/offer/components/OfferTile/NewOfferTileContent'
+import { PlaylistCardOffer } from 'features/offer/components/OfferTile/PlaylistCardOffer'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -71,7 +71,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
         }}
         testId="multi-offer-tile">
         {enableMultiVideoModule ? (
-          <NewOfferTileContent
+          <PlaylistCardOffer
             categoryId={categoryId}
             thumbnailUrl={offer.offer.thumbUrl}
             distance={displayDistance}

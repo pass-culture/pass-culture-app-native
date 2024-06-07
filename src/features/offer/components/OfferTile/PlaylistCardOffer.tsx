@@ -22,7 +22,7 @@ type Props = {
   isBeneficiary?: boolean
 }
 
-export const NewOfferTileContent: FC<Props> = ({
+export const PlaylistCardOffer: FC<Props> = ({
   thumbnailUrl,
   categoryId,
   name,
