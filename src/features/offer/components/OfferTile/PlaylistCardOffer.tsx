@@ -48,7 +48,7 @@ export const PlaylistCardOffer: FC<Props> = ({
         isBeneficiary={isBeneficiary}
       />
       <ImageContainer>
-        {distance ? <DistanceTag label={distanceText}></DistanceTag> : null}
+        {distance ? <DistanceTag label={distanceText} /> : null}
         <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />
       </ImageContainer>
     </Container>
