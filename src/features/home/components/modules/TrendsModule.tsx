@@ -1,33 +1,27 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
+import { TrendBlock } from 'features/home/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
 
-import FreeImage from '../../images/free.png'
-import MapImage from '../../images/map.png'
-import RecosImage from '../../images/recos.png'
-import WeekendImage from '../../images/weekend.png'
-
-const BUTTONS = [
-  { title: 'À coté', image: MapImage },
-  { title: 'Les recos', image: RecosImage },
-  { title: 'Ce week-end', image: WeekendImage },
-  { title: 'Gratuit', image: FreeImage },
-]
+type Trends = {
+  moduleId: string
+  items: TrendBlock[]
+}
 
 const DESKTOP_BUTTON_SIZE = getSpacing(20)
 const MOBILE_BUTTON_SIZE = getSpacing(14)
 
-export const TrendsModule: FC = () => {
+export const TrendsModule = ({ items }: Trends) => {
   const { width } = useWindowDimensions()
   const isSmallScreen = width < 375
 
   return (
     <Container isSmallScreen={isSmallScreen}>
-      {BUTTONS.map(({ image, title }) => (
+      {items.map(({ image, title }) => (
         <Item key={title}>
           <ItemIcon source={image} />
           <StyledText>{title}</StyledText>

@@ -1,4 +1,7 @@
-import { ComponentMeta, StoryObj } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import React from 'react'
+
+import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
 
 import { TrendsModule } from './TrendsModule'
 
@@ -9,6 +12,7 @@ const meta: ComponentMeta<typeof TrendsModule> = {
 
 export default meta
 
-type Story = StoryObj<typeof TrendsModule>
+const Template: ComponentStory<typeof TrendsModule> = (props) => <TrendsModule {...props} />
 
-export const Default: Story = {}
+export const Default = Template.bind({})
+Default.args = formattedTrendsModule
