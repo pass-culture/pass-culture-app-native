@@ -3,7 +3,7 @@ import React from 'react'
 import { HomepageLabelNameEnumv2 } from 'api/gen'
 import { render, screen } from 'tests/utils'
 
-import { NewOfferTileContent } from './NewOfferTileContent'
+import { PlaylistCardOffer } from './PlaylistCardOffer'
 
 const props = {
   categoryLabel: HomepageLabelNameEnumv2.MUSIQUE,
@@ -17,27 +17,27 @@ const props = {
   height: 100,
 }
 
-describe('NewOfferTile component', () => {
+describe('PlaylistCardOffer component', () => {
   it('should render correctly', () => {
-    render(<NewOfferTileContent {...props} />)
+    render(<PlaylistCardOffer {...props} />)
 
     expect(screen.toJSON()).toMatchSnapshot()
   })
 
   it('should render distance tag when distance is provided', () => {
-    render(<NewOfferTileContent {...props} distance="100m" />)
+    render(<PlaylistCardOffer {...props} distance="100m" />)
 
     expect(screen.getByTestId('DistanceId')).toBeOnTheScreen()
   })
 
   it('should NOT render distance tag when no distance provided', () => {
-    render(<NewOfferTileContent {...props} distance={undefined} />)
+    render(<PlaylistCardOffer {...props} distance={undefined} />)
 
     expect(screen.queryByTestId('DistanceId')).toBeNull()
   })
 
   it('should add prefix to distance', () => {
-    render(<NewOfferTileContent {...props} distance="100m" />)
+    render(<PlaylistCardOffer {...props} distance="100m" />)
 
     expect(screen.getByTestId('DistanceId')).toHaveTextContent('à 100m')
   })

@@ -13,8 +13,8 @@ import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-import { NewOfferTileContent } from './NewOfferTileContent'
-import { OfferTileContent } from './OfferTileContent'
+import { OldPlaylistCardOffer } from './OldPlaylistCardOffer'
+import { PlaylistCardOffer } from './PlaylistCardOffer'
 
 const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const {
@@ -88,7 +88,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
         isFocus={isFocus}
         accessibilityLabel={accessibilityLabel}>
         {variant == 'new' ? (
-          <NewOfferTileContent
+          <PlaylistCardOffer
             categoryId={categoryId}
             thumbnailUrl={thumbUrl}
             distance={distance}
@@ -102,7 +102,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
             isDuo={isDuo}
           />
         ) : (
-          <OfferTileContent
+          <OldPlaylistCardOffer
             name={name}
             date={date}
             categoryId={categoryId}

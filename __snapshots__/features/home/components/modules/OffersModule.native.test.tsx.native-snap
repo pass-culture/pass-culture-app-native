@@ -4820,6 +4820,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                       testID="Offre Un lit sous une rivière de la catégorie Concert,  le 17 novembre 2020, prix 34 €. Possibilité de réserver 2 places."
                     >
                       <View
+                        gap={2}
                         maxWidth={192}
                         style={
                           [
@@ -4832,6 +4833,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
@@ -5080,6 +5082,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                       testID="Offre I want something more de la catégorie Concert,   prix 23 €. "
                     >
                       <View
+                        gap={2}
                         maxWidth={192}
                         style={
                           [
@@ -5092,6 +5095,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
@@ -5325,6 +5329,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                       testID="Offre La nuit des temps de la catégorie Livre,   prix 28 €. "
                     >
                       <View
+                        gap={2}
                         maxWidth={192}
                         style={
                           [
@@ -5337,6 +5342,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
@@ -5568,6 +5574,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                       testID="Offre I want something more de la catégorie Concert,   prix 28 €. "
                     >
                       <View
+                        gap={2}
                         maxWidth={192}
                         style={
                           [
@@ -5580,6 +5587,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
@@ -5761,6 +5769,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                   testID="Offre I want something more de la catégorie Concert,   prix 23 €. "
                 >
                   <View
+                    gap={2}
                     maxWidth={192}
                     style={
                       [
@@ -5773,6 +5782,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                     }
                   >
                     <View
+                      gap={1}
                       style={
                         [
                           {
@@ -6691,6 +6701,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                       testID="Offre Un lit sous une rivière de la catégorie Concert,  le 17 novembre 2020, prix 34 €. Possibilité de réserver 2 places."
                     >
                       <View
+                        gap={2}
                         maxWidth={192}
                         style={
                           [
@@ -6703,6 +6714,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
@@ -6951,6 +6963,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                       testID="Offre I want something more de la catégorie Concert,   prix 23 €. "
                     >
                       <View
+                        gap={2}
                         maxWidth={192}
                         style={
                           [
@@ -6963,6 +6976,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
@@ -7196,6 +7210,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                       testID="Offre La nuit des temps de la catégorie Livre,   prix 28 €. "
                     >
                       <View
+                        gap={2}
                         maxWidth={192}
                         style={
                           [
@@ -7208,6 +7223,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
@@ -7439,6 +7455,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                       testID="Offre I want something more de la catégorie Concert,   prix 28 €. "
                     >
                       <View
+                        gap={2}
                         maxWidth={192}
                         style={
                           [
@@ -7451,6 +7468,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
@@ -7632,6 +7650,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                   testID="Offre I want something more de la catégorie Concert,   prix 23 €. "
                 >
                   <View
+                    gap={2}
                     maxWidth={192}
                     style={
                       [
@@ -7644,6 +7663,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                     }
                   >
                     <View
+                      gap={1}
                       style={
                         [
                           {
