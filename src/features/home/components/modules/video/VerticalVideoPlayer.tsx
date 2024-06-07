@@ -1,3 +1,4 @@
+import colorAlpha from 'color-alpha'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useWindowDimensions, AppState } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
@@ -12,8 +13,10 @@ import { ButtonWithCaption } from 'features/home/components/modules/video/Button
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { theme } from 'theme'
-import { Play } from 'ui/svg/icons/Play'
+import { PlayV2 } from 'ui/svg/icons/PlayV2'
 import { getSpacing, Typo } from 'ui/theme'
+
+const PLAYER_CONTROLS_HEIGHT = getSpacing(33)
 
 interface VideoPlayerProps {
   videoSources: string[]
@@ -21,16 +24,20 @@ interface VideoPlayerProps {
   currentIndex: number
   isPlaying: boolean
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
+  hasFinishedPlaying: boolean
+  setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   videoSources,
   currentIndex,
+  playNextVideo,
   isPlaying,
   setIsPlaying,
+  hasFinishedPlaying,
+  setHasFinishedPlaying,
 }) => {
   const [showErrorView, setShowErrorView] = useState(false)
-  const [hasFinishedPlaying, setHasFinishedPlaying] = useState(false)
   const { isDesktopViewport } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
   const { playerHeight, playerWidth } = getVideoPlayerDimensions(
@@ -69,7 +76,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   }
 
   const replayVideo = () => {
-    playerRef.current?.seekTo(0, true)
+    playerRef.current?.seekTo(0, false)
     setHasFinishedPlaying(false)
     setIsPlaying(true)
   }
@@ -88,9 +95,11 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
         setIsPlaying(false)
       } else if (state === 'playing') {
         setIsPlaying(true)
+      } else if (state === 'unstarted') {
+        setIsPlaying(true)
       }
     },
-    [setIsPlaying]
+    [setIsPlaying, setHasFinishedPlaying]
   )
 
   const PlayerCalque = () => {
@@ -99,24 +108,27 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
         <VerticalVideoEndView
           style={{ height: playerHeight, width: windowWidth }}
           onPressReplay={replayVideo}
+          onPressNext={playNextVideo}
         />
       )
     }
     return (
-      <Calque
-        style={{ height: playerHeight - 150 }}
-        start={{ x: 0, y: 0.9 }}
-        end={{ x: 0, y: 1 }}
-        colors={['rgba(0,0,0,0.9)', 'rgba(0,0,0,0)']}>
-        <ButtonsContainer>
-          <ButtonWithCaption
-            onPress={togglePlay}
-            accessibilityLabel="Continuer à regarder"
-            wording="Continuer à regarder"
-            icon={StyledPlayIcon}
-          />
-        </ButtonsContainer>
-      </Calque>
+      <PressListener onPress={togglePlay}>
+        <Calque
+          style={{ height: playerHeight - PLAYER_CONTROLS_HEIGHT }}
+          start={{ x: 0, y: 0.9 }}
+          end={{ x: 0, y: 1 }}
+          colors={[colorAlpha(theme.colors.black, 0.9), colorAlpha(theme.colors.black, 0)]}>
+          <ButtonsContainer>
+            <ButtonWithCaption
+              onPress={togglePlay}
+              accessibilityLabel="Continuer à regarder"
+              wording="Continuer à regarder"
+              icon={StyledPlayIcon}
+            />
+          </ButtonsContainer>
+        </Calque>
+      </PressListener>
     )
   }
 
@@ -127,7 +139,11 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
       <StyledVideoPlayerContainer style={{ height: playerHeight }}>
         <YoutubePlayer
           ref={playerRef}
-          initialPlayerParams={{ modestbranding: true, rel: true }}
+          initialPlayerParams={{
+            modestbranding: true,
+            color: 'white',
+            showClosedCaptions: false,
+          }}
           height={playerHeight}
           width={playerWidth}
           play={isPlaying}
@@ -148,7 +164,10 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
       </StyledVideoPlayerContainer>
 
       {isPlaying ? (
-        <PressListener style={{ height: playerHeight - 150 }} onPress={togglePlay} />
+        <PressListener
+          style={{ height: playerHeight - PLAYER_CONTROLS_HEIGHT }}
+          onPress={togglePlay}
+        />
       ) : (
         <React.Fragment>
           <PlayerCalque />
@@ -192,9 +211,9 @@ const ButtonsContainer = styled.View({
   justifyContent: 'center',
 })
 
-const StyledPlayIcon = styled(Play).attrs(({ theme }) => ({
+const StyledPlayIcon = styled(PlayV2).attrs(({ theme }) => ({
   color: theme.colors.black,
-  size: theme.icons.sizes.smaller,
+  size: theme.icons.sizes.standard,
 }))``
 
 const ErrorView = styled.View({
