@@ -9,6 +9,7 @@ import { adaptHighlightOfferModule } from 'libs/contentful/adapters/modules/adap
 import { adaptOffersModule } from 'libs/contentful/adapters/modules/adaptOffersModule'
 import { adaptRecommendationModule } from 'libs/contentful/adapters/modules/adaptRecommendationModule'
 import { adaptThematicHighlightModule } from 'libs/contentful/adapters/modules/adaptThematicHighlightModule'
+import { adaptTrendsModule } from 'libs/contentful/adapters/modules/adaptTrendsModule'
 import { adaptVenueMapModule } from 'libs/contentful/adapters/modules/adaptVenueMapModule'
 import { adaptVenuesModule } from 'libs/contentful/adapters/modules/adaptVenuesModule'
 import { adaptVideoCarouselModule } from 'libs/contentful/adapters/modules/adaptVideoCarouselModule'
@@ -23,6 +24,7 @@ import {
   isHighlightOfferContentModel,
   isRecommendationContentModel,
   isThematicHighlightContentModel,
+  isTrendsContentModel,
   isVenueMapBlockContentModel,
   isVenuesContentModel,
   isVideoCarouselContentModel,
@@ -82,6 +84,10 @@ export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): Homep
 
       if (isVideoCarouselContentModel(module)) {
         return adaptVideoCarouselModule(module)
+      }
+
+      if (isTrendsContentModel(module)) {
+        return adaptTrendsModule(module)
       }
     } catch (error) {
       console.warn(`Error while computing home modules, with module of ID: ${module.sys.id}`, error)

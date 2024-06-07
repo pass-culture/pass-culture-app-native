@@ -13,6 +13,7 @@ import {
   RecommendedOffersModule,
   ThematicHeaderType,
   ThematicHighlightModule,
+  TrendsModule,
   VenuesModule,
   VideoCarouselModule,
 } from 'features/home/types'
@@ -219,6 +220,43 @@ export const formattedVideoCarouselModule: VideoCarouselModule = {
       offerId: '1116',
       homeEntryId: undefined,
       tag: undefined,
+    },
+  ],
+}
+
+export const formattedTrendsModule: TrendsModule = {
+  id: 'g6VpeYbOosfALeqR55Ah6',
+  type: HomepageModuleType.TrendsModule,
+  items: [
+    {
+      homeEntryId: '7qcfqY5zFesLVO5fMb4cqm',
+      id: '6dn0unOv4tRBNfOebVHOOy',
+      image: { testUri: '../../../src/features/home/images/map.png' },
+      title: 'Accès carte des lieux',
+    },
+    {
+      homeEntryId: '7qcfqY5zFesLVO5fMb4cqm',
+      id: '16ZgVwnOXvVc0N8ko9Kius',
+      image: {
+        uri: 'https://images.ctfassets.net/2bg01iqy0isv/635psakQQwLtNuOFcf1jx2/5d779586de44d247145c8808d48a91ed/recos.png',
+      },
+      title: 'Tendance 1',
+    },
+    {
+      homeEntryId: '7qcfqY5zFesLVO5fMb4cqm',
+      id: '16ZgVwnOXvVc0N8ko9Kius',
+      image: {
+        uri: 'https://images.ctfassets.net/2bg01iqy0isv/635psakQQwLtNuOFcf1jx2/5d779586de44d247145c8808d48a91ed/recos.png',
+      },
+      title: 'Tendance 2',
+    },
+    {
+      homeEntryId: '7qcfqY5zFesLVO5fMb4cqm',
+      id: '16ZgVwnOXvVc0N8ko9Kius',
+      image: {
+        uri: 'https://images.ctfassets.net/2bg01iqy0isv/635psakQQwLtNuOFcf1jx2/5d779586de44d247145c8808d48a91ed/recos.png',
+      },
+      title: 'Tendance 3',
     },
   ],
 }
