@@ -5,7 +5,7 @@ import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewE
 import { EmptyResponse } from 'libs/fetch'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, act } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
@@ -21,6 +21,7 @@ jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
   showInfoSnackBar: jest.fn(),
   hideSnackBar: jest.fn(),
 })
+jest.mock('libs/jwt')
 
 describe('<NewEmailSelection />', () => {
   it('should match snapshot', () => {

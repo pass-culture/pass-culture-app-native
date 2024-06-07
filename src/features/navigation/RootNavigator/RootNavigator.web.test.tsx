@@ -3,6 +3,7 @@ import React from 'react'
 
 import { FavoritesCountResponse } from 'api/gen'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
+import { initialSearchState } from 'features/search/context/reducer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { mockServer } from 'tests/mswServer'
@@ -32,6 +33,14 @@ jest.mock('features/navigation/navigationRef')
 jest.mock('libs/splashscreen')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+    hideSuggestions: jest.fn(),
+  }),
+}))
 
 describe('<RootNavigator />', () => {
   beforeEach(() => {

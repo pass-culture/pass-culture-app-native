@@ -10,6 +10,8 @@ import { analytics } from 'libs/analytics'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
+jest.mock('libs/network/NetInfoWrapper')
+
 jest.useFakeTimers()
 
 const dismissModalMock = jest.fn()
@@ -36,7 +38,7 @@ const mockedSearchWrapper = {
   showSuggestions: jest.fn(),
   isFocusOnSuggestions: false,
 }
-jest.unmock('features/search/context/SearchWrapper')
+
 const mockedUseSearch = jest.spyOn(SearchWrapper, 'useSearch')
 mockedUseSearch.mockReturnValue(mockedSearchWrapper)
 

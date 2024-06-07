@@ -17,6 +17,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
+jest.mock('libs/network/NetInfoWrapper')
+
 const user: UserProfileResponse = {
   bookedOffers: {},
   email: 'email2@domain.ext',
@@ -55,6 +57,7 @@ const exUnderageBeneficiaryUser: UserProfileResponse = {
   isEligibleForBeneficiaryUpgrade: true,
 }
 
+jest.mock('libs/jwt')
 jest.mock('features/profile/api/useUpdateProfileMutation')
 jest.mock('features/profile/helpers/isUserUnderageBeneficiary')
 const mockedisUserUnderageBeneficiary = jest.mocked(isUserUnderageBeneficiary)

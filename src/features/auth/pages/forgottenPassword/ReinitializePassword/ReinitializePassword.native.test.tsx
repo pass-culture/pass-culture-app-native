@@ -17,6 +17,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
+jest.mock('libs/react-native-device-info/getDeviceId')
 const ROUTE_PARAMS: {
   email: string
   token: string

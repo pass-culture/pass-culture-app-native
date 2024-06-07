@@ -4,6 +4,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
+jest.mock('libs/network/NetInfoWrapper')
+
 const expectedResponse = { status: AccountState.SUSPENDED }
 function simulateSuspensionStatus200() {
   mockServer.getApi<UserSuspensionStatusResponse>('/v1/account/suspension_status', expectedResponse)
@@ -14,6 +16,7 @@ function simulateSuspensionStatusError() {
     responseOptions: { statusCode: 400 },
   })
 }
+jest.mock('libs/jwt')
 
 describe('useAccountSuspensionStatus', () => {
   it('should return suspension status if it exists', async () => {

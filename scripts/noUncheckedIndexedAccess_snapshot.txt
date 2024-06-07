@@ -25,10 +25,10 @@
 ./src/features/bookOffer/helpers/useRotatingText.ts:54
 ./src/features/bookOffer/helpers/useRotatingText.ts:57
 ./src/features/bookOffer/pages/BookingOfferModal.tsx:134
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:243
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:397
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:427
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:460
+./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:242
+./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:396
+./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:426
+./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:459
 ./src/features/bookings/pages/BookingDetails/BookingDetails.tsx:101
 ./src/features/culturalSurvey/helpers/useGetNextQuestion.ts:13
 ./src/features/culturalSurvey/pages/CulturalSurveyQuestions.native.test.tsx:139
@@ -161,7 +161,7 @@
 ./src/libs/parsers/snakeCaseToUppercaseFirstLetter.ts:2
 ./src/libs/parsers/tests/highlightLinks.test.tsx:31
 ./src/libs/place/fetchPlaces.ts:8
-./src/libs/react-query/tests/usePersistQuery.native.test.tsx:119
+./src/libs/react-query/tests/usePersistQuery.native.test.tsx:118
 ./src/libs/subcategories/__mocks__/useCategoryId.ts:6
 ./src/libs/subcategories/__mocks__/useSubcategory.ts:7
 ./src/libs/utm/storeUtmParams.test.ts:55

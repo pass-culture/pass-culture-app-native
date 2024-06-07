@@ -6,6 +6,8 @@ import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksRe
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { screen, render, act } from 'tests/utils'
 
+jest.mock('libs/subcategories/useSubcategory')
+
 mockdate.set(new Date('2024-04-18T00:00:00.000Z'))
 
 describe('MoviesScreeningCalendar', () => {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate, dispatch } from '__mocks__/@react-navigation/native'
+import { dispatch, navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
 import {
   hasCodeCorrectFormat,
@@ -10,6 +10,8 @@ import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+
+jest.mock('libs/jwt')
 
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({

@@ -13,6 +13,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { measurePerformance, screen } from 'tests/utils'
 
+jest.mock('features/favorites/context/FavoritesWrapper')
+
 // Performance measuring is run multiple times so we need to increase the timeout
 const TEST_TIMEOUT_IN_MS = 30000
 jest.setTimeout(TEST_TIMEOUT_IN_MS)
@@ -28,8 +30,8 @@ offerIds.forEach((offerId) => {
   })
 })
 
-jest.unmock('libs/jwt')
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
+jest.mock('libs/network/NetInfoWrapper')
 
 describe('<Favorites />', () => {
   beforeEach(() => {

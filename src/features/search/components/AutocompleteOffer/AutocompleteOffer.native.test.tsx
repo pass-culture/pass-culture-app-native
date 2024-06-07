@@ -3,6 +3,7 @@ import { BaseHit } from 'instantsearch.js'
 import React from 'react'
 
 import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
@@ -20,6 +21,15 @@ jest.mock('react-instantsearch-core', () => ({
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
     data: mockData,
+  }),
+}))
+
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: jest.fn(),
+    hideSuggestions: jest.fn(),
   }),
 }))
 

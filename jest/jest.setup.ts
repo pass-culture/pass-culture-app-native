@@ -34,9 +34,6 @@ jest.mock('features/navigation/TabBar/routes')
 /* See the corresponding mocks in features/navigation/RootNavigator/linking/__mocks__ */
 jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
 
-/* See the corresponding mocks in libs/hooks/__mocks__ */
-jest.mock('libs/hooks/useWhiteStatusBar')
-
 /* See the corresponding mocks in libs/firebase/analytics/__mocks__ */
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/analytics/provider')
@@ -47,49 +44,19 @@ jest.mock('libs/analytics/provider')
 
 jest.mock('libs/appState')
 
-/* See the corresponding mocks in libs/location/geolocation/__mocks__ */
-jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
-jest.mock('libs/location/geolocation/requestGeolocPermission/requestGeolocPermission')
-jest.mock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission')
-
-/* See the corresponding mocks in libs/subcategories/__mocks__ */
-jest.mock('libs/subcategories/useCategoryId')
-jest.mock('libs/subcategories/useSubcategory')
-
 /* See the corresponding mocks in libs/campaign/__mocks__ */
 jest.mock('libs/campaign')
 
 /* No need to actually fetch Firebase's remote config in tests */
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-/* Flipper only using during manual debugging */
-jest.mock('react-native-flipper')
-
 /* See the corresponding mock in libs/environment/__mocks__ */
 jest.mock('libs/environment/env')
 
-/* See the corresponding mock in libs/amplitude/__mocks__ */
-jest.mock('libs/amplitude/amplitude')
-
-jest.mock('libs/react-native-device-info/getDeviceId')
-
 jest.mock('react-native-device-info', () => mockRNDeviceInfo)
-
-/* See the corresponding mock in libs/network/__mocks__ */
-jest.mock('libs/network/NetInfoWrapper')
-
-jest.mock('features/search/context/SearchWrapper')
-
-jest.mock('features/favorites/context/FavoritesWrapper')
-
-jest.mock('libs/jwt')
 
 // Global mock customFocusOutline because generate console warn "Node of type rule not supported as an inline style"
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
-
-jest.mock('ui/hooks/useEnterKeyAction')
-
-jest.mock('react-native/Libraries/LogBox/LogBox')
 
 jest.mock('@batch.com/react-native-plugin', () =>
   jest.requireActual('__mocks__/libs/react-native-batch')

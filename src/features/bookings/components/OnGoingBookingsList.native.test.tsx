@@ -5,9 +5,9 @@ import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { bookingsSnap as mockBookings } from 'features/bookings/fixtures/bookingsSnap'
 import { analytics } from 'libs/analytics'
-import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { render, act, screen } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -27,12 +27,17 @@ mockUseSubcategories.mockReturnValue({
   isLoading: false,
 } as UseQueryResult<SubcategoriesResponseModelv2, unknown>)
 
-jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
-const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
+const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 jest.mock('ui/components/snackBar/SnackBarContext', () =>
   jest.requireActual('ui/components/snackBar/__mocks__/SnackBarContext')
 )
+
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
 
 describe('<OnGoingBookingsList /> - Analytics', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })

@@ -7,7 +7,9 @@ import { analytics } from 'libs/analytics'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, fireEvent, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
+
+jest.mock('libs/jwt')
 
 const hideModal = jest.fn()
 const offerId = 1

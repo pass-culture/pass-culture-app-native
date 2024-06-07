@@ -11,10 +11,10 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import {
-  showSuccessSnackBar,
-  showErrorSnackBar,
   hideSnackBar,
+  showErrorSnackBar,
   showInfoSnackBar,
+  showSuccessSnackBar,
 } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -22,6 +22,7 @@ import { OfferHeader } from '../OfferHeader/OfferHeader'
 
 const mockShare = jest.spyOn(Share, 'share').mockImplementation(jest.fn())
 
+jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 mockUseAuthContext.mockReturnValue({

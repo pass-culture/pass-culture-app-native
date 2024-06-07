@@ -8,6 +8,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
+jest.mock('libs/react-native-device-info/getDeviceId')
 const mockOfferId = 1
 const position = {
   latitude: 6,

@@ -12,6 +12,8 @@ const navProps = { route: { params: { age: 15 } } } as StackScreenProps<
   'ProfileTutorialAgeInformation'
 >
 
+jest.mock('features/favorites/context/FavoritesWrapper')
+
 describe('<ProfileTutorialAgeInformation/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

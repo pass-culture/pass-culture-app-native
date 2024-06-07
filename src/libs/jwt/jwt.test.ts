@@ -4,7 +4,6 @@ import mockdate from 'mockdate'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { computeTokenRemainingLifetimeInMs, getTokenStatus } from 'libs/jwt'
 
-jest.unmock('libs/jwt')
 mockdate.set(CURRENT_DATE)
 
 const mockJwtDecode = jest.spyOn(jwtDecode, 'default')

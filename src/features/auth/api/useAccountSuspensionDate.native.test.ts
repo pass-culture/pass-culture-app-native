@@ -4,6 +4,9 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
+jest.mock('libs/network/NetInfoWrapper')
+jest.mock('libs/jwt')
+
 const expectedResponse = { date: '2022-05-11T10:29:25.332786Z' }
 function simulateSuspensionDate200() {
   mockServer.getApi<UserSuspensionDateResponse>('/v1/account/suspension_date', expectedResponse)

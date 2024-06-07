@@ -1,6 +1,8 @@
 import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 import { useCategoryId } from 'libs/subcategories'
 
+jest.mock('libs/subcategories/useCategoryId')
+
 describe('useCategoryId', () => {
   it.each`
     subcategory                                          | category

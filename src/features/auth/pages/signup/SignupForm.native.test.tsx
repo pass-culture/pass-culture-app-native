@@ -28,6 +28,10 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SignupForm } from './SignupForm'
 
+jest.mock('libs/campaign')
+jest.mock('libs/react-native-device-info/getDeviceId')
+jest.mock('libs/network/NetInfoWrapper')
+
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
@@ -52,6 +56,12 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,
   canGoBack: jest.fn(() => true),
 })
+
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
 
 mockdate.set(CURRENT_DATE)
 

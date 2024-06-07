@@ -6,6 +6,8 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 const mockCloseModal = jest.fn()
 
+jest.mock('libs/subcategories/useSubcategory')
+
 describe('ReactionChoiceModal', () => {
   it('should activate J’aime button when pressing it and it is deactivated', () => {
     render(

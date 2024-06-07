@@ -10,6 +10,9 @@ import { campaignTracker } from 'libs/campaign'
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { Batch } from 'libs/react-native-batch'
 
+jest.mock('libs/amplitude/amplitude')
+jest.mock('libs/campaign')
+
 jest.mock('features/cookies/helpers/removeGeneratedStorageKey')
 const mockRemoveGeneratedStorageKey = removeGeneratedStorageKey as jest.Mock
 

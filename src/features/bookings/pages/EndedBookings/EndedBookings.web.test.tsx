@@ -9,6 +9,8 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { EndedBookings } from './EndedBookings'
 
+jest.mock('libs/subcategories/useCategoryId')
+
 describe('EndedBookings', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

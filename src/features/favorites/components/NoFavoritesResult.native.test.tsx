@@ -16,6 +16,12 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   }),
 }))
 
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
+
 describe('NoFavoritesResult component', () => {
   it('should show the message', () => {
     render(<NoFavoritesResult />)

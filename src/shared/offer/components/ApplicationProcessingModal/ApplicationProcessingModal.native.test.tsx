@@ -7,12 +7,14 @@ import { analytics } from 'libs/analytics'
 import { MODAL_TO_HIDE_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor, act } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ApplicationProcessingModal } from './ApplicationProcessingModal'
 
 const hideModal = jest.fn()
 const offerId = 1
+
+jest.mock('libs/jwt')
 
 describe('<ApplicationProcessingModal />', () => {
   it('should match previous snapshot', () => {

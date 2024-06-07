@@ -18,6 +18,12 @@ jest.mock('ui/components/modals/useModal', () => ({
 jest.mock('libs/location')
 const mockUseGeolocation = useLocation as jest.Mock
 
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    dispatch: jest.fn(),
+  }),
+}))
+
 describe('LocationSearchWidget', () => {
   it('should show modal when pressing widget', async () => {
     mockUseGeolocation.mockReturnValueOnce({

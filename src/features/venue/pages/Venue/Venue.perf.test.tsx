@@ -13,6 +13,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
 
+jest.mock('features/search/context/SearchWrapper')
+
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 useRoute.mockImplementation(() => ({ params: { id: venueResponseSnap.id } }))

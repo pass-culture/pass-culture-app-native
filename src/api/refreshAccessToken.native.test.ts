@@ -5,9 +5,10 @@ import * as jwt from 'libs/jwt'
 import * as Keychain from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 
-import { removeRefreshedAccessToken, refreshAccessToken } from './refreshAccessToken'
+import { refreshAccessToken, removeRefreshedAccessToken } from './refreshAccessToken'
 
 jest.mock('libs/keychain')
+jest.mock('libs/jwt')
 
 const respondWith = async (
   body: unknown,

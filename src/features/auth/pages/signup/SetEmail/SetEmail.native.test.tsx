@@ -14,6 +14,8 @@ import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { SetEmail } from './SetEmail'
 
+jest.mock('libs/network/NetInfoWrapper')
+
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))
@@ -33,6 +35,12 @@ const defaultProps = {
   onSSOEmailNotFoundError: jest.fn(),
   onDefaultEmailSignup: jest.fn(),
 }
+
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
 
 jest.useFakeTimers()
 

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { initialSearchState } from 'features/search/context/reducer'
 import { mockedAlgoliaVenueResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
@@ -43,6 +44,13 @@ jest.mock('libs/location/LocationWrapper', () => ({
 }))
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+  }),
+}))
 
 describe('SearchResultsContent component', () => {
   it('should render correctly', async () => {

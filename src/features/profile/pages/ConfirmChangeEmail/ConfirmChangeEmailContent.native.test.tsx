@@ -30,6 +30,12 @@ const confirmationSuccessResponse = {
   newEmailSelectionToken: 'token',
 }
 
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
+
 describe('<ConfirmChangeEmail />', () => {
   it('should navigate to home when pressing cancel button', async () => {
     render(reactQueryProviderHOC(<ConfirmChangeEmailContent />))

@@ -11,6 +11,9 @@ import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { BookingImpossible } from './BookingImpossible'
 
+jest.mock('libs/network/NetInfoWrapper')
+
+jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))

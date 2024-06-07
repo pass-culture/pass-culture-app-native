@@ -4,6 +4,7 @@ import { renderHook, waitFor } from 'tests/utils'
 
 import { useAccountUnsuspend } from './useAccountUnsuspend'
 
+jest.mock('libs/jwt')
 const onSuccess = jest.fn()
 const onError = jest.fn()
 

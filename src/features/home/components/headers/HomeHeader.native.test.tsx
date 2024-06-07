@@ -25,6 +25,7 @@ jest.unmock('@react-navigation/native')
 
 const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 
+jest.mock('libs/jwt')
 jest.mock('shared/user/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 

@@ -7,7 +7,7 @@ import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, fireEvent, render, waitFor, screen, act } from 'tests/utils/web'
+import { act, checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 import { Bookings } from './Bookings'
 
@@ -16,6 +16,12 @@ const mockUseSubcategories = jest.mocked(useSubcategories)
 mockUseSubcategories.mockReturnValue({
   isLoading: false,
 } as UseQueryResult<SubcategoriesResponseModelv2, unknown>)
+
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
 
 describe('Bookings', () => {
   describe('Accessibility', () => {

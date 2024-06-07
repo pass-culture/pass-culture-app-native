@@ -5,6 +5,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
+jest.mock('libs/jwt')
+
 describe('usePhoneValidationRemainingAttempts', () => {
   it('calls the API and returns the data and isLastAttempt', async () => {
     mockServer.getApi<PhoneValidationRemainingAttemptsRequest>(

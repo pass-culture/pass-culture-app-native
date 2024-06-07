@@ -13,6 +13,7 @@ import { useInitialScreen } from './useInitialScreenConfig'
 
 const mockedUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('features/auth/context/AuthContext')
+jest.mock('libs/jwt')
 
 describe('useInitialScreen()', () => {
   afterAll(async () => {

@@ -10,6 +10,9 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
+jest.mock('libs/network/NetInfoWrapper')
+
+jest.mock('libs/jwt')
 const mockUseAuthContext = jest.fn().mockReturnValue({ user: nonBeneficiaryUser })
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: () => mockUseAuthContext(),

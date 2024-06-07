@@ -6,7 +6,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, fireEvent, act, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -31,6 +31,8 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showSuccessSnackBar: mockshowSuccessSnackBar,
   })),
 }))
+
+jest.mock('libs/jwt')
 
 function renderChangePassword() {
   render(reactQueryProviderHOC(<ChangePassword />))

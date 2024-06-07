@@ -15,9 +15,12 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/monitoring')
+jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))
+
+jest.mock('libs/network/NetInfoWrapper')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 const apiGetOAuthState = jest.spyOn(API.api, 'getNativeV1OauthState')
@@ -25,6 +28,12 @@ const apiPostGoogleAuthorize = jest.spyOn(API.api, 'postNativeV1OauthGoogleAutho
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 const onSignInFailureSpy = jest.fn()
+
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
 
 jest.useFakeTimers()
 

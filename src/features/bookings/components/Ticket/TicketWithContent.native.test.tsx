@@ -4,6 +4,9 @@ import { TicketWithContent } from 'features/bookings/components/Ticket/TicketWit
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { render, screen } from 'tests/utils'
 
+jest.mock('libs/subcategories/useCategoryId')
+jest.mock('libs/subcategories/useSubcategory')
+
 const booking = bookingsSnap.ongoing_bookings[1]
 
 describe('<TicketWithContent/>', () => {

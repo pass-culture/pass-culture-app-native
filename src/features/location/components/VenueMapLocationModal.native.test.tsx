@@ -49,6 +49,12 @@ jest.mock('libs/place/usePlaces', () => ({
   usePlaces: () => ({ data: mockPlaces, isLoading: false }),
 }))
 
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    dispatch: jest.fn(),
+  }),
+}))
+
 describe('VenueMapLocationModal', () => {
   it('should render correctly if modal visible', async () => {
     renderVenueMapLocationModal()

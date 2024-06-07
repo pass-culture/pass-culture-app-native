@@ -6,6 +6,8 @@ import { render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
 
 import { SetName } from './SetName'
 
+jest.mock('libs/subcategories/useSubcategory')
+
 jest.mock('uuid', () => ({
   v1: jest.fn(),
   v4: jest.fn(),

@@ -30,6 +30,12 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    resetSearch: jest.fn(),
+  }),
+}))
+
 describe('<Login/>', () => {
   beforeEach(() => {
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {

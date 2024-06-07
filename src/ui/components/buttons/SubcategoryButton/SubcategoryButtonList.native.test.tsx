@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { initialSearchState } from 'features/search/context/reducer'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -24,6 +25,14 @@ const subcategoryButtonContent = [
     nativeCategory: BooksNativeCategoriesEnum.BD_ET_COMICS,
   },
 ]
+
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: jest.fn(),
+  }),
+}))
 
 describe('<SubcategoryButtonList/>', () => {
   it('should render SubcategoryButtonList', async () => {

@@ -12,10 +12,12 @@ import { AppWithoutMonitoring } from './App'
 jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => ({
   AppNavigationContainer: () => 'Placeholder for NavigationContainer',
 }))
-jest.unmock('libs/network/NetInfoWrapper')
+
 jest.mock('libs/e2e/getIsMaestro', () => ({
   getIsMaestro: () => Promise.resolve(true),
 }))
+jest.mock('libs/campaign')
+jest.mock('react-native/Libraries/LogBox/LogBox')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 

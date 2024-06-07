@@ -14,7 +14,7 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { StepButtonState } from 'ui/components/StepButton/types'
 
 let mockNextSubscriptionStep = mockStep
@@ -22,6 +22,7 @@ const mockIdentityCheckDispatch = jest.fn()
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
+jest.mock('libs/jwt')
 jest.mock('features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep', () => ({
   useSetSubscriptionStepAndMethod: jest.fn(() => ({
     subscription: mockNextSubscriptionStep,

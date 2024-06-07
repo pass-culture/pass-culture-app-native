@@ -13,7 +13,7 @@ import { act, measurePerformance } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
-jest.unmock('features/search/context/SearchWrapper')
+jest.mock('features/favorites/context/FavoritesWrapper')
 
 jest.mock('react-instantsearch-core', () => ({
   ...jest.requireActual('react-instantsearch-core'),

@@ -2,6 +2,8 @@ import { SubcategoryIdEnum, CategoryIdEnum, SearchGroupNameEnumv2 } from 'api/ge
 import { useSubcategory } from 'libs/subcategories'
 import { renderHook } from 'tests/utils'
 
+jest.mock('libs/subcategories/useSubcategory')
+
 describe('useSubcategory', () => {
   it.each`
     subcategory                                          | isEvent  | categoryId                            | searchGroupName
