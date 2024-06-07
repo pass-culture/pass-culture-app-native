@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from 'react-native'
 
 import { YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -95,12 +94,10 @@ export const SubscribeButtonWithModals = ({ homeId }: Props) => {
 
   return (
     <React.Fragment>
-      <View>
-        <SubscribeButtonWithTooltip
-          active={isSubscribeButtonActive}
-          onPress={onSubscribeButtonPress}
-        />
-      </View>
+      <SubscribeButtonWithTooltip
+        active={isSubscribeButtonActive}
+        onPress={onSubscribeButtonPress}
+      />
 
       <NotificationsSettingsModal
         visible={isNotificationsModalVisible}

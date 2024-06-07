@@ -106,8 +106,8 @@ const TextContainer = styled.View({
 
 const SubscribeButtonContainer = styled.View({
   position: 'absolute',
-  bottom: 16,
-  right: 24,
+  bottom: getSpacing(4),
+  right: getSpacing(6),
 })
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
