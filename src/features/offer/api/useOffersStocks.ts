@@ -13,7 +13,8 @@ async function getStocksByOfferIds(offerIds: number[]) {
     throw new OfferNotFoundError(offerIds, { Screen: OfferNotFound })
   }
   try {
-    return api.postNativeV2OffersStocks({
+    // eslint-disable-next-line @typescript-eslint/return-await
+    return await api.postNativeV2OffersStocks({
       offer_ids: offerIds,
     })
   } catch (error) {
