@@ -13,7 +13,7 @@ type Trends = {
   items: TrendBlock[]
 }
 
-export const TrendsModule = ({ items }: Trends) => {
+export const TrendsModule = ({ moduleId, items }: Trends) => {
   const enableTrendsModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS)
   const { width } = useWindowDimensions()
   const isSmallScreen = width < 375
@@ -23,7 +23,7 @@ export const TrendsModule = ({ items }: Trends) => {
   return (
     <Container isSmallScreen={isSmallScreen}>
       {items.map((props) => (
-        <Trend key={props.title} {...props} />
+        <Trend key={props.title} moduleId={moduleId} {...props} />
       ))}
     </Container>
   )

@@ -7,14 +7,16 @@ import { ContentTypes } from 'libs/contentful/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Typo } from 'ui/theme'
 
+type TrendProps = TrendBlock & { moduleId: string }
+
 const DESKTOP_BUTTON_SIZE = getSpacing(20)
 const MOBILE_BUTTON_SIZE = getSpacing(14)
 
-export const Trend = ({ image, title, homeEntryId, type }: TrendBlock) => {
+export const Trend = ({ image, title, homeEntryId, type, moduleId }: TrendProps) => {
   const navigateTo =
     type === ContentTypes.VENUE_MAP_BLOCK && Platform.OS !== 'web'
       ? { screen: 'VenueMap' }
-      : { screen: 'ThematicHome', params: { homeId: homeEntryId } }
+      : { screen: 'ThematicHome', params: { homeId: homeEntryId, moduleId, from: 'trend_block' } }
 
   return (
     <Item key={title} navigateTo={navigateTo}>

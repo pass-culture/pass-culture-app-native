@@ -9,7 +9,7 @@ import { fireEvent, render, screen } from 'tests/utils'
 describe('Trend', () => {
   it('should redirect to VenueMap when content type is venue map block', () => {
     const venueMapBlock = formattedTrendsModule.items[0] as TrendBlock
-    render(<Trend {...venueMapBlock} />)
+    render(<Trend moduleId="module-id" {...venueMapBlock} />)
 
     fireEvent.press(screen.getByText('Accès carte des lieux'))
 
@@ -18,10 +18,14 @@ describe('Trend', () => {
 
   it('should redirect to thematic home when content type is trend block', () => {
     const trendBlock = formattedTrendsModule.items[1] as TrendBlock
-    render(<Trend {...trendBlock} />)
+    render(<Trend moduleId="module-id" {...trendBlock} />)
 
     fireEvent.press(screen.getByText('Tendance 1'))
 
-    expect(navigate).toHaveBeenCalledWith('ThematicHome', { homeId: '7qcfqY5zFesLVO5fMb4cqm' })
+    expect(navigate).toHaveBeenCalledWith('ThematicHome', {
+      homeId: '7qcfqY5zFesLVO5fMb4cqm',
+      moduleId: 'module-id',
+      from: 'trend_block',
+    })
   })
 })

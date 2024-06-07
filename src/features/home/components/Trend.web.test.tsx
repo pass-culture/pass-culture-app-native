@@ -9,10 +9,14 @@ import { fireEvent, render, screen } from 'tests/utils/web'
 describe('Trend', () => {
   it('should redirect to thematic home when content type is venue map block', () => {
     const venueMapBlock = formattedTrendsModule.items[0] as TrendBlock
-    render(<Trend {...venueMapBlock} />)
+    render(<Trend moduleId="module-id" {...venueMapBlock} />)
 
     fireEvent.click(screen.getByText('Accès carte des lieux'))
 
-    expect(navigate).toHaveBeenCalledWith('ThematicHome', { homeId: '7qcfqY5zFesLVO5fMb4cqm' })
+    expect(navigate).toHaveBeenCalledWith('ThematicHome', {
+      homeId: '7qcfqY5zFesLVO5fMb4cqm',
+      moduleId: 'module-id',
+      from: 'trend_block',
+    })
   })
 })
