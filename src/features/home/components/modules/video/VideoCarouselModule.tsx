@@ -43,7 +43,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const enableVideoCarousel = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16)
   const shouldModuleBeDisplayed = Platform.OS !== 'web'
 
-  const { homeEntryId, items, color, id, title } = props
+  const { homeEntryId, items, color, id } = props
   const itemsWithRelatedData = useVideoCarouselData(items, homeEntryId)
 
   const hasItems = itemsWithRelatedData.length > 0
@@ -51,6 +51,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
+  const [hasFinishedPlaying, setHasFinishedPlaying] = useState(false)
 
   const playNextVideo = () => {
     let nextIndex
@@ -63,6 +64,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     }
     setCurrentIndex(nextIndex)
     setIsPlaying(true)
+    setHasFinishedPlaying(false)
   }
 
   if (!shouldModuleBeDisplayed || !hasItems || !enableVideoCarousel) return null
@@ -95,7 +97,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         : undefined
 
       return (
-        <InternalLink key={index} {...containerProps}>
+        <StyledInternalTouchableLink key={index} {...containerProps}>
           <AttachedOfferCard
             title={offer.offer.name ?? ''}
             categoryId={CategoryIdEnum.CARTE_JEUNES}
@@ -107,34 +109,35 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
             date={displayDate}
             price={displayPrice}
           />
-        </InternalLink>
-      )
-    } else {
-      const { homeEntryId: homeEntryIdRedirection } = item
-
-      const containerProps = {
-        navigateTo: {
-          screen: 'ThematicHome',
-          params: {
-            homedId: homeEntryIdRedirection,
-            from: 'video_carousel_block',
-            moduleId: id,
-          },
-        },
-      }
-
-      return (
-        <InternalLink key={index} {...containerProps}>
-          <AttachedOfferCard
-            title={title}
-            categoryId={CategoryIdEnum.CARTE_JEUNES}
-            categoryText=""
-            showImage={false}
-            withRightArrow
-          />
-        </InternalLink>
+        </StyledInternalTouchableLink>
       )
     }
+    const { homeEntryId } = item
+
+    const containerProps = {
+      navigateTo: {
+        screen: 'ThematicHome',
+        params: {
+          homeId: homeEntryId,
+          from: 'video_carousel_block',
+          moduleId: id,
+        },
+      },
+    }
+
+    return (
+      <StyledInternalTouchableLink key={index} {...containerProps}>
+        <AttachedOfferCard
+          title="Le meilleur du cinéma en juin pour un été de folie"
+          categoryId={null}
+          categoryText="Lecture"
+          showImage={false}
+          date="Du 16/05 au 14/08"
+          withRightArrow
+          fixedHeight
+        />
+      </StyledInternalTouchableLink>
+    )
   }
 
   return (
@@ -145,6 +148,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         currentIndex={currentIndex}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
+        hasFinishedPlaying={hasFinishedPlaying}
+        setHasFinishedPlaying={setHasFinishedPlaying}
       />
       <ColoredAttachedTileContainer color={color}>
         <Carousel
@@ -182,7 +187,7 @@ const ColoredAttachedTileContainer = styled.View<{
   backgroundColor: newColorMapping[color].fill,
 }))
 
-const InternalLink = styled(InternalTouchableLink)({
+const StyledInternalTouchableLink = styled(InternalTouchableLink)({
   marginHorizontal: getSpacing(4),
   marginVertical: getSpacing(4),
 })
