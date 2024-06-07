@@ -3,7 +3,7 @@ import React from 'react'
 
 import {
   OfferResponseV2,
-  OffersStocksResponse,
+  OffersStocksResponseV2,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
@@ -11,6 +11,7 @@ import { MoviesScreeningCalendar } from 'features/offer/components/MoviesScreeni
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -21,6 +22,8 @@ jest.mock('libs/subcategories/useSubcategory')
 const mockTimeStamp = '2024-05-08T12:50:00Z'
 const mockDate = new Date(mockTimeStamp)
 const mockName = 'Sailor et Lula'
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 const VenueOffersResponseMatchingFixture = [
   {
@@ -46,7 +49,7 @@ const mockedOfferStockResponse = { offers: [offersStocksResponseSnap.offers[0]] 
 describe('MoviesScreeningCalendar', () => {
   beforeEach(() => {
     mockdate.set(mockDate)
-    mockServer.postApi<OffersStocksResponse>(`/v1/offers/stocks`, mockedOfferStockResponse)
+    mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, mockedOfferStockResponse)
     mockServer.getApi<OfferResponseV2>(`/v2/offer/2051`, {
       ...offerResponseSnap,
       id: 2051,
@@ -92,7 +95,9 @@ describe('MoviesScreeningCalendar', () => {
   it('should render MoviesScreeningCalendar correctly on desktop', async () => {
     renderMoviesScreeningCalendar({ isDesktopViewport: true, venueOffers: venueOffersMock })
 
-    await screen.findByLabelText('Mercredi 8 Mai')
+    await screen.findAllByText('Mercredi')
+    await screen.findByText('8')
+    await screen.findAllByText('Mai')
     await act(async () => {})
 
     expect(screen).toMatchSnapshot()
@@ -101,7 +106,7 @@ describe('MoviesScreeningCalendar', () => {
   it('should display a movie title if Venue has stock on date', async () => {
     renderMoviesScreeningCalendar({ isDesktopViewport: true, venueOffers: venueOffersMock })
 
-    await screen.findByLabelText('Mercredi 8 Mai')
+    await screen.findByLabelText('Vendredi 17 Mai')
     await act(async () => {})
 
     expect(screen.getByText(mockName)).toBeOnTheScreen()

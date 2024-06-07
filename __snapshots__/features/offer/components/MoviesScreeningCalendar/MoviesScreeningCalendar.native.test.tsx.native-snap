@@ -1328,7 +1328,134 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
     }
   />,
   <RCTScrollView
+<<<<<<< HEAD
     data={[]}
+=======
+    data={
+      [
+        {
+          "accessibility": {
+            "audioDisability": null,
+            "mentalDisability": null,
+            "motorDisability": null,
+            "visualDisability": null,
+          },
+          "expenseDomains": [
+            "all",
+          ],
+          "extraData": {
+            "allocineId": 5981,
+            "author": null,
+            "cast": [
+              "Nicolas Cage",
+              "Laura Dern",
+              "Willem Dafoe",
+            ],
+            "durationMinutes": null,
+            "ean": null,
+            "editeur": null,
+            "genres": [
+              "Comédie dramatique",
+              "Romance",
+              "Thriller",
+            ],
+            "gtlLabels": null,
+            "musicSubType": null,
+            "musicType": null,
+            "performer": null,
+            "releaseDate": "2011-05-25",
+            "showSubType": null,
+            "showType": null,
+            "speaker": null,
+            "stageDirector": "David Lynch",
+            "visa": "74 823",
+          },
+          "id": 2051,
+          "isDigital": false,
+          "isDuo": true,
+          "isEducational": false,
+          "isExpired": false,
+          "isExternalBookingsDisabled": false,
+          "isForbiddenToUnderage": false,
+          "isReleased": true,
+          "isSoldOut": false,
+          "last30DaysBookings": null,
+          "metadata": {
+            "@context": "https://schema.org",
+            "@type": "Event",
+            "description": "Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.
+Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html",
+            "eventAttendanceMode": "OfflineEventAttendanceMode",
+            "image": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38",
+            "location": {
+              "@type": "Place",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "LE POULIGUEN",
+                "postalCode": "44510",
+                "streetAddress": "5 RUE MARECHAL JOFFRE",
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "47.27618",
+                "longitude": "-2.42970",
+              },
+              "name": "LE PAX",
+            },
+            "name": "Rendez-vous avec Pol Pot",
+            "offers": {
+              "@type": "AggregateOffer",
+              "availability": "https://schema.org/InStock",
+              "lowPrice": "7.00",
+              "priceCurrency": "EUR",
+              "url": "https://app.staging.passculture.team/offre/231032388",
+            },
+            "startDate": "2024-06-06T14:40",
+            "validFrom": "2024-06-05",
+          },
+          "name": "Sailor et Lula",
+          "stocks": [
+            {
+              "activationCode": null,
+              "beginningDatetime": "2024-05-08T12:50:00Z",
+              "bookingLimitDatetime": "2024-05-08T12:50:00Z",
+              "cancellationLimitDatetime": "2024-05-01T08:35:31.652786Z",
+              "features": [
+                "VO",
+              ],
+              "id": 10559,
+              "isBookable": true,
+              "isExpired": false,
+              "isForbiddenToUnderage": false,
+              "isSoldOut": false,
+              "price": 570,
+              "priceCategoryLabel": "Tarif unique",
+              "remainingQuantity": 1000,
+            },
+          ],
+          "subcategoryId": "SEANCE_CINE",
+          "venue": {
+            "address": "5 RUE MARECHAL JOFFRE",
+            "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489",
+            "city": "LE POULIGUEN",
+            "coordinates": {
+              "latitude": 47.27618,
+              "longitude": -2.4297,
+            },
+            "id": 125173,
+            "isPermanent": true,
+            "name": "LE PAX",
+            "offerer": {
+              "name": "LE PAX",
+            },
+            "postalCode": "44510",
+            "publicName": "",
+            "timezone": "Europe/Paris",
+          },
+        },
+      ]
+    }
+>>>>>>> 96b84a28a (fix: fix tests)
     getItem={[Function]}
     getItemCount={[Function]}
     keyExtractor={[Function]}
@@ -1345,7 +1472,527 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
     stickyHeaderIndices={[]}
     viewabilityConfigCallbackPairs={[]}
   >
+<<<<<<< HEAD
     <View />
+=======
+    <View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            [
+              {
+                "marginLeft": 24,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Offre Sailor et Lula de la catégorie Cinéma, films et séries,  le 28 août 56321, prix 5,70 €. Possibilité de réserver 2 places."
+            accessibilityRole="link"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 16,
+                "opacity": 1,
+                "outlineOffset": 0,
+                "userSelect": "auto",
+              }
+            }
+            testID="Offre Sailor et Lula de la catégorie Cinéma, films et séries,  le 28 août 56321, prix 5,70 €. Possibilité de réserver 2 places."
+          >
+            <View
+              size="small"
+              style={
+                [
+                  {
+                    "borderRadius": 4,
+                    "height": 96,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
+                    "width": 64,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    [
+                      {
+                        "backgroundColor": "#F1F1F4",
+                        "borderRadius": 4,
+                        "height": 96,
+                        "width": 64,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <FastImageView
+                  defaultSource={null}
+                  resizeMode="cover"
+                  size="small"
+                  source={
+                    {
+                      "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/AQBA",
+                    }
+                  }
+                  style={
+                    {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                />
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexDirection": "column",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Sailor et Lula
+                  </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "width": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    height={16}
+                    testID="RightFilled"
+                    width={16}
+                  >
+                    <Text>
+                      RightFilled-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+                testID="native-category-value"
+              >
+                Comédie dramatique / Romance / Thriller
+              </Text>
+              <Text
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+                testID="native-category-value"
+              >
+                -
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                5,70 €
+              </Text>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            onLayout={[Function]}
+          >
+            <View
+              ItemSeparatorComponent={[Function]}
+              contentContainerStyle={
+                {
+                  "alignItems": "flex-start",
+                }
+              }
+              data={
+                [
+                  {
+                    "hasBookedScreening": false,
+                    "isDisabled": false,
+                    "onPress": [Function],
+                    "subtitleLeft": "VO",
+                    "subtitleRight": "5,70 €",
+                    "title": "12h50",
+                  },
+                ]
+              }
+              getItem={[Function]}
+              getItemCount={[Function]}
+              itemAs="li"
+              keyExtractor={[Function]}
+              listAs="ul"
+              onContentSizeChange={[Function]}
+              onLayout={[Function]}
+              onMomentumScrollBegin={[Function]}
+              onMomentumScrollEnd={[Function]}
+              onScroll={[Function]}
+              onScrollBeginDrag={[Function]}
+              onScrollEndDrag={[Function]}
+              removeClippedSubviews={false}
+              renderItem={[Function]}
+              scrollEventThrottle={50}
+              stickyHeaderIndices={[]}
+              viewabilityConfigCallbackPairs={[]}
+            >
+              <View
+                onFocusCapture={[Function]}
+                onLayout={[Function]}
+                style={null}
+              >
+                <View
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={false}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 8,
+                      "borderWidth": 1,
+                      "boxSizing": "border-box",
+                      "height": 68,
+                      "justifyContent": "flex-start",
+                      "opacity": 1,
+                      "paddingBottom": 12,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 12,
+                      "shadowColor": "#696A6F",
+                      "shadowOffset": {
+                        "height": 4,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 4,
+                      "userSelect": "auto",
+                      "width": 120,
+                    }
+                  }
+                  testID="event-card"
+                >
+                  <Text
+                    accessibilityLabel="12h50"
+                    disabled={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    12h50
+                  </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "alignSelf": "stretch",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "textOverflow": "ellipsis",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessibilityLabel="VO"
+                      disabled={false}
+                      hasSubtitleRight={true}
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#696A6F",
+                            "flexBasis": "auto",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 20,
+                            "textAlign": "left",
+                          },
+                        ]
+                      }
+                    >
+                      VO
+                    </Text>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        [
+                          {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      accessibilityLabel="5,70 €"
+                      disabled={false}
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 0,
+                            "fontFamily": "Montserrat-Regular",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                            "textAlign": "right",
+                          },
+                        ]
+                      }
+                    >
+                      5,70 €
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  numberOfSpaces={4}
+                  style={
+                    [
+                      {
+                        "width": 16,
+                      },
+                    ]
+                  }
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#CBCDD2",
+                  "height": 1,
+                  "marginRight": 24,
+                },
+              ]
+            }
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <Modal
+            accessibilityLabelledBy="testUuidV4"
+            accessibilityModal={true}
+            accessibilityRole="none"
+            animationType="none"
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+        </View>
+      </View>
+    </View>
+>>>>>>> 96b84a28a (fix: fix tests)
   </RCTScrollView>,
 ]
 `;
@@ -2613,7 +3260,134 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
     }
   />,
   <RCTScrollView
+<<<<<<< HEAD
     data={[]}
+=======
+    data={
+      [
+        {
+          "accessibility": {
+            "audioDisability": null,
+            "mentalDisability": null,
+            "motorDisability": null,
+            "visualDisability": null,
+          },
+          "expenseDomains": [
+            "all",
+          ],
+          "extraData": {
+            "allocineId": 5981,
+            "author": null,
+            "cast": [
+              "Nicolas Cage",
+              "Laura Dern",
+              "Willem Dafoe",
+            ],
+            "durationMinutes": null,
+            "ean": null,
+            "editeur": null,
+            "genres": [
+              "Comédie dramatique",
+              "Romance",
+              "Thriller",
+            ],
+            "gtlLabels": null,
+            "musicSubType": null,
+            "musicType": null,
+            "performer": null,
+            "releaseDate": "2011-05-25",
+            "showSubType": null,
+            "showType": null,
+            "speaker": null,
+            "stageDirector": "David Lynch",
+            "visa": "74 823",
+          },
+          "id": 2051,
+          "isDigital": false,
+          "isDuo": true,
+          "isEducational": false,
+          "isExpired": false,
+          "isExternalBookingsDisabled": false,
+          "isForbiddenToUnderage": false,
+          "isReleased": true,
+          "isSoldOut": false,
+          "last30DaysBookings": null,
+          "metadata": {
+            "@context": "https://schema.org",
+            "@type": "Event",
+            "description": "Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.
+Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html",
+            "eventAttendanceMode": "OfflineEventAttendanceMode",
+            "image": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38",
+            "location": {
+              "@type": "Place",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "LE POULIGUEN",
+                "postalCode": "44510",
+                "streetAddress": "5 RUE MARECHAL JOFFRE",
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "47.27618",
+                "longitude": "-2.42970",
+              },
+              "name": "LE PAX",
+            },
+            "name": "Rendez-vous avec Pol Pot",
+            "offers": {
+              "@type": "AggregateOffer",
+              "availability": "https://schema.org/InStock",
+              "lowPrice": "7.00",
+              "priceCurrency": "EUR",
+              "url": "https://app.staging.passculture.team/offre/231032388",
+            },
+            "startDate": "2024-06-06T14:40",
+            "validFrom": "2024-06-05",
+          },
+          "name": "Sailor et Lula",
+          "stocks": [
+            {
+              "activationCode": null,
+              "beginningDatetime": "2024-05-08T12:50:00Z",
+              "bookingLimitDatetime": "2024-05-08T12:50:00Z",
+              "cancellationLimitDatetime": "2024-05-01T08:35:31.652786Z",
+              "features": [
+                "VO",
+              ],
+              "id": 10559,
+              "isBookable": true,
+              "isExpired": false,
+              "isForbiddenToUnderage": false,
+              "isSoldOut": false,
+              "price": 570,
+              "priceCategoryLabel": "Tarif unique",
+              "remainingQuantity": 1000,
+            },
+          ],
+          "subcategoryId": "SEANCE_CINE",
+          "venue": {
+            "address": "5 RUE MARECHAL JOFFRE",
+            "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489",
+            "city": "LE POULIGUEN",
+            "coordinates": {
+              "latitude": 47.27618,
+              "longitude": -2.4297,
+            },
+            "id": 125173,
+            "isPermanent": true,
+            "name": "LE PAX",
+            "offerer": {
+              "name": "LE PAX",
+            },
+            "postalCode": "44510",
+            "publicName": "",
+            "timezone": "Europe/Paris",
+          },
+        },
+      ]
+    }
+>>>>>>> 96b84a28a (fix: fix tests)
     getItem={[Function]}
     getItemCount={[Function]}
     keyExtractor={[Function]}
@@ -2630,7 +3404,515 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
     stickyHeaderIndices={[]}
     viewabilityConfigCallbackPairs={[]}
   >
+<<<<<<< HEAD
     <View />
+=======
+    <View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            [
+              {
+                "marginLeft": 24,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Offre Sailor et Lula de la catégorie Cinéma, films et séries,  le 28 août 56321, prix 5,70 €. Possibilité de réserver 2 places."
+            accessibilityRole="link"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "gap": 16,
+                "opacity": 1,
+                "outlineOffset": 0,
+                "userSelect": "auto",
+              }
+            }
+            testID="Offre Sailor et Lula de la catégorie Cinéma, films et séries,  le 28 août 56321, prix 5,70 €. Possibilité de réserver 2 places."
+          >
+            <View
+              size="small"
+              style={
+                [
+                  {
+                    "borderRadius": 4,
+                    "height": 96,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
+                    "width": 64,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    [
+                      {
+                        "backgroundColor": "#F1F1F4",
+                        "borderRadius": 4,
+                        "height": 96,
+                        "width": 64,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <FastImageView
+                  defaultSource={null}
+                  resizeMode="cover"
+                  size="small"
+                  source={
+                    {
+                      "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/AQBA",
+                    }
+                  }
+                  style={
+                    {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                />
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexDirection": "column",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "gap": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Sailor et Lula
+                  </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "width": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    height={16}
+                    testID="RightFilled"
+                    width={16}
+                  >
+                    <Text>
+                      RightFilled-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <Text
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+                testID="native-category-value"
+              >
+                Comédie dramatique / Romance / Thriller
+              </Text>
+              <Text
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+                testID="native-category-value"
+              >
+                -
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                5,70 €
+              </Text>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <RCTScrollView
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            style={
+              [
+                {
+                  "paddingVertical": 8,
+                },
+              ]
+            }
+          >
+            <View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
+              <View>
+                <View
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={false}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "backgroundColor": "#ffffff",
+                      "borderRadius": 8,
+                      "borderWidth": 1,
+                      "boxSizing": "border-box",
+                      "height": 68,
+                      "justifyContent": "flex-start",
+                      "opacity": 1,
+                      "paddingBottom": 12,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 12,
+                      "shadowColor": "#696A6F",
+                      "shadowOffset": {
+                        "height": 4,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.2,
+                      "shadowRadius": 4,
+                      "userSelect": "auto",
+                      "width": 120,
+                    }
+                  }
+                  testID="event-card"
+                >
+                  <Text
+                    accessibilityLabel="12h50"
+                    disabled={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    12h50
+                  </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "alignSelf": "stretch",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "textOverflow": "ellipsis",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessibilityLabel="VO"
+                      disabled={false}
+                      hasSubtitleRight={true}
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#696A6F",
+                            "flexBasis": "auto",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 20,
+                            "textAlign": "left",
+                          },
+                        ]
+                      }
+                    >
+                      VO
+                    </Text>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        [
+                          {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      accessibilityLabel="5,70 €"
+                      disabled={false}
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "flexGrow": 1,
+                            "flexShrink": 0,
+                            "fontFamily": "Montserrat-Regular",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                            "textAlign": "right",
+                          },
+                        ]
+                      }
+                    >
+                      5,70 €
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={6}
+                style={
+                  [
+                    {
+                      "width": 24,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </RCTScrollView>
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#CBCDD2",
+                  "height": 1,
+                  "marginRight": 24,
+                },
+              ]
+            }
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <Modal
+            accessibilityLabelledBy="testUuidV4"
+            accessibilityModal={true}
+            accessibilityRole="none"
+            animationType="none"
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+        </View>
+      </View>
+    </View>
+>>>>>>> 96b84a28a (fix: fix tests)
   </RCTScrollView>,
 ]
 `;
