@@ -11,7 +11,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
-export const MOBILE_HEADER_HEIGHT = 37
+export const MOBILE_HEADER_HEIGHT = 45
 
 type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 
@@ -74,9 +74,10 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
           <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
         </AnimatedBackground>
       </TextContainer>
-      <SubscribeButtonContainer>
+      <AnimatedBackgroundSubscribeButton
+        style={{ transform: [{ translateY: gradientTranslation }] }}>
         <SubscribeButtonWithModals homeId={homeId} />
-      </SubscribeButtonContainer>
+      </AnimatedBackgroundSubscribeButton>
     </Container>
   )
 }
@@ -148,6 +149,7 @@ const Title = styled(Typo.Title1)(({ theme }) => ({
 const AnimatedImage = Animated.createAnimatedComponent(StyledImage)
 const AnimatedBlackBackground = Animated.createAnimatedComponent(BlackBackground)
 const AnimatedBlackGradient = Animated.createAnimatedComponent(BlackGradient)
+const AnimatedBackgroundSubscribeButton = Animated.createAnimatedComponent(SubscribeButtonContainer)
 
 const AnimatedBackground = styled(AnimatedBlackBackground)({
   backgroundColor: 'rgba(0, 0, 0, 0)',

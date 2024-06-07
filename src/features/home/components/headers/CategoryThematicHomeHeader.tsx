@@ -12,7 +12,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
-const HEADER_HEIGHT = getSpacing(37)
+const HEADER_HEIGHT = getSpacing(45)
 
 type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 

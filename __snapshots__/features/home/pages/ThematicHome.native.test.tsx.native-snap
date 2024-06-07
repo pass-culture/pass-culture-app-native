@@ -145,11 +145,11 @@ exports[`ThematicHome should render correctly 1`] = `
             }
           >
             <View
-              numberOfSpaces={43}
+              numberOfSpaces={51}
               style={
                 [
                   {
-                    "height": 172,
+                    "height": 204,
                   },
                 ]
               }
@@ -629,7 +629,7 @@ exports[`ThematicHome should render correctly 1`] = `
       style={
         [
           {
-            "height": 148,
+            "height": 180,
             "left": 0,
             "position": "absolute",
             "right": 0,
@@ -641,7 +641,7 @@ exports[`ThematicHome should render correctly 1`] = `
     >
       <Image
         collapsable={false}
-        height={148}
+        height={180}
         source={
           {
             "uri": "url.com/image",
@@ -650,7 +650,7 @@ exports[`ThematicHome should render correctly 1`] = `
         style={
           [
             {
-              "height": 148,
+              "height": 180,
               "left": 0,
               "position": "absolute",
               "right": 0,
@@ -687,7 +687,7 @@ exports[`ThematicHome should render correctly 1`] = `
               "y": 1,
             }
           }
-          height={148}
+          height={180}
           locations={null}
           startPoint={
             {
@@ -698,7 +698,7 @@ exports[`ThematicHome should render correctly 1`] = `
           style={
             [
               {
-                "height": 148,
+                "height": 180,
               },
               {
                 "transform": [
