@@ -2,10 +2,13 @@ import React, { FunctionComponent, ReactElement } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { getSpacing, Typo } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 type Props = {
   LeftIcon: ReactElement
@@ -22,8 +25,9 @@ export const SystemBanner: FunctionComponent<Props> = ({
   onPress,
   accessibilityLabel,
 }) => {
+  const focusProps = useHandleFocus()
   return (
-    <Touchable onPress={onPress} accessibilityLabel={accessibilityLabel}>
+    <StyledTouchable onPress={onPress} accessibilityLabel={accessibilityLabel} {...focusProps}>
       <Container testID="systemBanner">
         {LeftIcon ? <IconContainer>{LeftIcon}</IconContainer> : null}
         <DescriptionContainer gap={1}>
@@ -34,9 +38,13 @@ export const SystemBanner: FunctionComponent<Props> = ({
           <StyledArrowRightIcon />
         </View>
       </Container>
-    </Touchable>
+    </StyledTouchable>
   )
 }
+
+const StyledTouchable = styledButton(Touchable)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+}))
 
 const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
