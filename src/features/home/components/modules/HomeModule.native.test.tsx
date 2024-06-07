@@ -12,6 +12,7 @@ import {
   formattedOffersModule,
   formattedRecommendedOffersModule,
   formattedThematicHighlightModule,
+  formattedTrendsModule,
   formattedVenuesModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
@@ -29,7 +30,7 @@ import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeModule } from './HomeModule'
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+const featureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const index = 1
 const homeEntryId = '7tfixfH64pd5TMZeEKfNQ'
@@ -210,6 +211,19 @@ describe('<HomeModule />', () => {
     await waitFor(() => {
       expect(screen.getByText('Le Petit Rintintin 1')).toBeOnTheScreen()
     })
+  })
+
+  it('should not display trends module when FF is disabled', async () => {
+    renderHomeModule(formattedTrendsModule)
+
+    expect(screen.queryByText('Tendance 1')).not.toBeOnTheScreen()
+  })
+
+  it('should display trends module when FF is enabled', async () => {
+    featureFlagSpy.mockReturnValueOnce(true)
+    renderHomeModule(formattedTrendsModule)
+
+    expect(await screen.findByText('Tendance 1')).toBeOnTheScreen()
   })
 })
 

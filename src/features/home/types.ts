@@ -81,6 +81,7 @@ export type HomepageModule =
   | ExclusivityModule
   | RecommendedOffersModule
   | ThematicHighlightModule
+  | TrendsModule
   | VenuesModule
   | CategoryListModule
   | VideoModule
