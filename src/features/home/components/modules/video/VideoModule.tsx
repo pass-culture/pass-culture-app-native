@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useVideoOffers } from 'features/home/api/useVideoOffers'
+import { OldVideoModuleMobile } from 'features/home/components/modules/video/OldVideoModuleMobile'
 import { VideoModal } from 'features/home/components/modules/video/VideoModal'
 import { VideoModuleDesktop } from 'features/home/components/modules/video/VideoModuleDesktop'
 import { VideoModuleMobile } from 'features/home/components/modules/video/VideoModuleMobile'
@@ -9,6 +10,8 @@ import { VideoModule as VideoModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useModal } from 'ui/components/modals/useModal'
 
 interface VideoModuleBaseProps extends VideoModuleType {
@@ -18,6 +21,10 @@ interface VideoModuleBaseProps extends VideoModuleType {
 }
 
 export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
+  const enableMultiVideoModule = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
+  )
+
   const {
     visible: videoModalVisible,
     showModal: showVideoModal,
@@ -70,8 +77,10 @@ export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
     <Container>
       {theme.isDesktopViewport ? (
         <VideoModuleDesktop {...props} {...videoModuleParams} />
-      ) : (
+      ) : enableMultiVideoModule ? (
         <VideoModuleMobile {...props} {...videoModuleParams} />
+      ) : (
+        <OldVideoModuleMobile {...props} {...videoModuleParams} />
       )}
       <VideoModal
         visible={videoModalVisible}

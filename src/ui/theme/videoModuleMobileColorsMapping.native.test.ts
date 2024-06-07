@@ -7,8 +7,7 @@ describe('videoModuleMobileColorsMapping', () => {
 
     const color = videoModuleMobileColorsMapping[input]
 
-    expect(color[0]).toEqual(theme.colors.goldLight100)
-    expect(color[1]).toEqual(theme.colors.goldLight100)
+    expect(color).toEqual(theme.colors.goldLight100)
   })
 
   it('should return aquamarine color code', () => {
@@ -16,8 +15,7 @@ describe('videoModuleMobileColorsMapping', () => {
 
     const color = videoModuleMobileColorsMapping[input]
 
-    expect(color[0]).toEqual(theme.colors.aquamarineLight)
-    expect(color[1]).toEqual(theme.colors.aquamarineLight)
+    expect(color).toEqual(theme.colors.aquamarineLight)
   })
 
   it('should return skyBlue color code', () => {
@@ -25,8 +23,7 @@ describe('videoModuleMobileColorsMapping', () => {
 
     const color = videoModuleMobileColorsMapping[input]
 
-    expect(color[0]).toEqual(theme.colors.skyBlueLight)
-    expect(color[1]).toEqual(theme.colors.skyBlueLight)
+    expect(color).toEqual(theme.colors.skyBlueLight)
   })
 
   it('should return deepPink color code', () => {
@@ -34,8 +31,7 @@ describe('videoModuleMobileColorsMapping', () => {
 
     const color = videoModuleMobileColorsMapping[input]
 
-    expect(color[0]).toEqual(theme.colors.deepPinkLight)
-    expect(color[1]).toEqual(theme.colors.deepPinkLight)
+    expect(color).toEqual(theme.colors.deepPinkLight)
   })
 
   it('should return coral color code', () => {
@@ -43,8 +39,7 @@ describe('videoModuleMobileColorsMapping', () => {
 
     const color = videoModuleMobileColorsMapping[input]
 
-    expect(color[0]).toEqual(theme.colors.coralLight)
-    expect(color[1]).toEqual(theme.colors.coralLight)
+    expect(color).toEqual(theme.colors.coralLight)
   })
 
   it('should return lilac color code', () => {
@@ -52,7 +47,6 @@ describe('videoModuleMobileColorsMapping', () => {
 
     const color = videoModuleMobileColorsMapping[input]
 
-    expect(color[0]).toEqual(theme.colors.lilacLight)
-    expect(color[1]).toEqual(theme.colors.lilacLight)
+    expect(color).toEqual(theme.colors.lilacLight)
   })
 })
