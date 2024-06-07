@@ -3,6 +3,8 @@ import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { TrendBlock } from 'features/home/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
@@ -16,8 +18,11 @@ const DESKTOP_BUTTON_SIZE = getSpacing(20)
 const MOBILE_BUTTON_SIZE = getSpacing(14)
 
 export const TrendsModule = ({ items }: Trends) => {
+  const enableTrendsModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS)
   const { width } = useWindowDimensions()
   const isSmallScreen = width < 375
+
+  if (!enableTrendsModule) return null
 
   return (
     <Container isSmallScreen={isSmallScreen}>
