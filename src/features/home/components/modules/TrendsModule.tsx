@@ -21,7 +21,7 @@ const BUTTONS = [
 const DESKTOP_BUTTON_SIZE = getSpacing(20)
 const MOBILE_BUTTON_SIZE = getSpacing(14)
 
-export const CircleNavButtons: FC = () => {
+export const TrendsModule: FC = () => {
   const { width } = useWindowDimensions()
   const isSmallScreen = width < 375
 
