@@ -24,6 +24,7 @@ export type AttachedOfferCardProps = {
   price?: string
   withRightArrow?: boolean
   date?: string
+  fixedHeight?: boolean
 }
 
 export const AttachedOfferCard = ({
@@ -36,11 +37,12 @@ export const AttachedOfferCard = ({
   date,
   withRightArrow,
   showImage,
+  fixedHeight,
 }: AttachedOfferCardProps) => {
   const distanceToOffer = useDistance(offerLocation || { lat: 0, lng: 0 })
 
   return (
-    <Container>
+    <Container fixedHeight={fixedHeight}>
       {showImage ? (
         <ImageContainer>
           <OfferImage
@@ -107,7 +109,7 @@ const RightColumn = styled.View({
   marginVertical: getSpacing(0.25),
 })
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled.View<{ fixedHeight: boolean }>(({ theme, fixedHeight }) => ({
   ...getShadow({
     shadowOffset: {
       width: 0,
@@ -126,4 +128,5 @@ const Container = styled.View(({ theme }) => ({
   padding: OFFER_CARD_PADDING,
   maxHeight: OFFER_CARD_HEIGHT + 2 * OFFER_CARD_PADDING,
   flexWrap: 'wrap',
+  ...(fixedHeight ? { height: OFFER_CARD_HEIGHT + 2 * OFFER_CARD_PADDING } : {}),
 }))
