@@ -1,0 +1,49 @@
+import React from 'react'
+
+import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard/AttachedCardDisplay'
+import { useDistance } from 'libs/location/hooks/useDistance'
+import { formatDates } from 'libs/parsers/formatDates'
+import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { Offer } from 'shared/offer/types'
+import { OfferImage } from 'ui/components/tiles/OfferImage'
+
+type Props = {
+  offer: Offer
+}
+
+export const AttachedOfferCard: React.FC<Props> = ({ offer }) => {
+  const { offer: attachedOffer } = offer
+  const mapping = useCategoryIdMapping()
+  const categoryId = mapping[attachedOffer.subcategoryId]
+  const labelMapping = useCategoryHomeLabelMapping()
+  const categoryName = labelMapping[attachedOffer.subcategoryId] ?? ''
+  const details = []
+
+  const timestampsInMillis = attachedOffer.dates?.map((timestampInSec) => timestampInSec * 1000)
+  const date = formatDates(timestampsInMillis)
+  const price = getDisplayPrice(attachedOffer.prices)
+  const distance = useDistance(offer._geoloc)
+  const distanceLabel = distance ? `à ${distance}` : undefined
+
+  if (date) details.push(date)
+  if (price) details.push(price)
+  if (!attachedOffer.name) return null
+
+  return (
+    <AttachedCardDisplay
+      title={attachedOffer.name}
+      subtitle={categoryName}
+      details={details}
+      rightTagLabel={distanceLabel}
+      LeftImageComponent={() => (
+        <OfferImage
+          imageUrl={attachedOffer?.thumbUrl}
+          categoryId={categoryId}
+          borderRadius={5}
+          withStroke
+        />
+      )}
+    />
+  )
+}
