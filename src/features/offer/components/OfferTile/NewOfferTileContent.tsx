@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 import { CategoryIdEnum } from 'api/gen'
 import { ImageTile } from 'ui/components/ImageTile'
 import { NewOfferCaption } from 'ui/components/NewOfferCaption'
-import { getSpacing, Typo } from 'ui/theme'
+import { Tag } from 'ui/components/Tag/Tag'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   categoryId?: CategoryIdEnum | null
@@ -46,11 +47,7 @@ export const NewOfferTileContent: FC<Props> = ({
         isBeneficiary={isBeneficiary}
       />
       <ImageContainer>
-        {distance ? (
-          <Distance>
-            <Typo.Hint>{distanceText}</Typo.Hint>
-          </Distance>
-        ) : null}
+        {distance ? <DistanceTag label={distanceText}></DistanceTag> : null}
         <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />
       </ImageContainer>
     </Container>
@@ -65,15 +62,12 @@ const Container = styled.View<{ maxWidth: number }>(({ maxWidth }) => ({
 
 const ImageContainer = styled.View({})
 
-const Distance = styled.View.attrs(() => ({
+const DistanceTag = styled(Tag).attrs(() => ({
   testID: 'DistanceId',
 }))(({ theme }) => ({
-  paddingVertical: getSpacing(1),
-  paddingHorizontal: getSpacing(2),
   position: 'absolute',
   top: getSpacing(2),
   left: getSpacing(2),
-  borderRadius: getSpacing(1),
   zIndex: 1,
   backgroundColor: theme.colors.white,
 }))
