@@ -37,6 +37,7 @@ const Container = styled.View<{ isSmallScreen: boolean }>(({ isSmallScreen, them
     flexDirection: 'row',
     gap: theme.isDesktopViewport ? getSpacing(4) : mobileGap,
     justifyContent: 'center',
+    paddingBottom: theme.home.spaceBetweenModules,
   }
 })
 
