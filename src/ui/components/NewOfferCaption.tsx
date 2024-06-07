@@ -2,7 +2,9 @@ import React, { FC } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
+
+import { ViewGap } from './ViewGap/ViewGap'
 
 type Props = {
   name?: string
@@ -23,20 +25,16 @@ export const NewOfferCaption: FC<Props> = ({
 }: Props) => {
   const priceText = isDuo && isBeneficiary ? `${price} - Duo` : price
   return (
-    <Container>
+    <ViewGap gap={1}>
       <Typo.CaptionNeutralInfo>{categoryLabel}</Typo.CaptionNeutralInfo>
       <View>
         <OfferText>{name}</OfferText>
         {date ? <DateText>{date}</DateText> : null}
         <Typo.Caption testID="priceIsDuo">{priceText}</Typo.Caption>
       </View>
-    </Container>
+    </ViewGap>
   )
 }
-
-const Container = styled.View({
-  gap: getSpacing(1),
-})
 
 const OfferText = styled(Typo.Caption).attrs({
   numberOfLines: 2,

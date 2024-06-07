@@ -5,6 +5,7 @@ import { CategoryIdEnum } from 'api/gen'
 import { ImageTile } from 'ui/components/ImageTile'
 import { NewOfferCaption } from 'ui/components/NewOfferCaption'
 import { Tag } from 'ui/components/Tag/Tag'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
@@ -54,9 +55,10 @@ export const NewOfferTileContent: FC<Props> = ({
   )
 }
 
-const Container = styled.View<{ maxWidth: number }>(({ maxWidth }) => ({
+const Container = styled(ViewGap).attrs({
+  gap: 2,
+})<{ maxWidth: number }>(({ maxWidth }) => ({
   flexDirection: 'column-reverse',
-  gap: getSpacing(2),
   maxWidth,
 }))
 
