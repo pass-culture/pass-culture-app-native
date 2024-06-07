@@ -2,6 +2,7 @@
 
 exports[`NewOfferCaption component should render correctly 1`] = `
 <View
+  gap={1}
   style={
     [
       {
