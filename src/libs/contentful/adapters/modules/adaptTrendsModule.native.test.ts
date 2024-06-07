@@ -2,6 +2,7 @@ import { HomepageModuleType } from 'features/home/types'
 import { adaptTrendsModule } from 'libs/contentful/adapters/modules/adaptTrendsModule'
 import { trendsModuleFixture } from 'libs/contentful/fixtures/trendsModule.fixture'
 import {
+  ContentTypes,
   TrendBlockContentModel,
   TrendBlockFields,
   VenueMapBlockContentModel,
@@ -20,6 +21,7 @@ describe('adaptTrendsModule', () => {
             testUri: '../../../src/features/home/images/map.png',
           },
           title: 'Accès carte des lieux',
+          type: ContentTypes.VENUE_MAP_BLOCK,
         },
         {
           homeEntryId: '7qcfqY5zFesLVO5fMb4cqm',
@@ -28,6 +30,7 @@ describe('adaptTrendsModule', () => {
             uri: 'https://images.ctfassets.net/2bg01iqy0isv/635psakQQwLtNuOFcf1jx2/5d779586de44d247145c8808d48a91ed/recos.png',
           },
           title: 'Tendance 1',
+          type: ContentTypes.TREND_BLOCK,
         },
         {
           homeEntryId: '7qcfqY5zFesLVO5fMb4cqm',
@@ -36,6 +39,7 @@ describe('adaptTrendsModule', () => {
             uri: 'https://images.ctfassets.net/2bg01iqy0isv/635psakQQwLtNuOFcf1jx2/5d779586de44d247145c8808d48a91ed/recos.png',
           },
           title: 'Tendance 2',
+          type: ContentTypes.TREND_BLOCK,
         },
         {
           homeEntryId: '7qcfqY5zFesLVO5fMb4cqm',
@@ -44,6 +48,7 @@ describe('adaptTrendsModule', () => {
             uri: 'https://images.ctfassets.net/2bg01iqy0isv/635psakQQwLtNuOFcf1jx2/5d779586de44d247145c8808d48a91ed/recos.png',
           },
           title: 'Tendance 3',
+          type: ContentTypes.TREND_BLOCK,
         },
       ],
     })
@@ -77,6 +82,7 @@ describe('adaptTrendsModule', () => {
             uri: 'https://images.ctfassets.net/2bg01iqy0isv/635psakQQwLtNuOFcf1jx2/5d779586de44d247145c8808d48a91ed/recos.png',
           },
           title: 'Tendance 1',
+          type: ContentTypes.TREND_BLOCK,
         },
       ],
     })
@@ -106,6 +112,7 @@ describe('adaptTrendsModule', () => {
             testUri: '../../../src/features/home/images/map.png',
           },
           title: 'Accès carte des lieux',
+          type: ContentTypes.VENUE_MAP_BLOCK,
         },
       ],
     })

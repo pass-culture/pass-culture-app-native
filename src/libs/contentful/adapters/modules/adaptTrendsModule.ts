@@ -2,6 +2,7 @@ import MapImage from 'features/home/images/map.png'
 import { HomepageModuleType, TrendBlock, TrendsModule } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import {
+  ContentTypes,
   isVenueMapBlockContentModel,
   TrendBlockContentModel,
   TrendsContentModel,
@@ -37,6 +38,7 @@ const adaptTrendBlock = (
           title,
           homeEntryId,
           image: MapImage,
+          type: ContentTypes.VENUE_MAP_BLOCK,
         }
       }
 
@@ -50,6 +52,7 @@ const adaptTrendBlock = (
         title,
         homeEntryId,
         image: { uri: imageUrl },
+        type: ContentTypes.TREND_BLOCK,
       }
     })
     .filter(nonNullable)
