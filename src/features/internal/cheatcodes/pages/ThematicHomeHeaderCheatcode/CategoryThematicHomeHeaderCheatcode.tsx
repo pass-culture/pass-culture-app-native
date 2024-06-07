@@ -17,6 +17,7 @@ export const CategoryThematicHomeHeaderCheatcode: FunctionComponent = () => {
         subtitle="Un sous-titre"
         title="Un titre"
         color={Color.SkyBlue}
+        homeId="6DCThxvbPFKAo04SVRZtwY"
       />
     </Container>
   )

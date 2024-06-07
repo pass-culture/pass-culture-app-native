@@ -4,13 +4,14 @@ import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
+import { SubscribeButtonWithModals } from 'features/home/components/SubscribeButtonWithModals'
 import { CategoryThematicHeader } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
-export const MOBILE_HEADER_HEIGHT = 52
+export const MOBILE_HEADER_HEIGHT = 45
 
 type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 
@@ -43,7 +44,9 @@ const AppV1Header: FunctionComponent<CategoryThematicHeaderProps> = ({
   )
 }
 
-type AppV2HeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'>
+type AppV2HeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'> & {
+  homeId: string
+}
 
 const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
   title,
@@ -51,6 +54,7 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
   imageAnimatedHeight,
   color,
   gradientTranslation,
+  homeId,
 }) => {
   return (
     <Container testID="animated-thematic-header-v2">
@@ -70,18 +74,21 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
           <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
         </AnimatedBackground>
       </TextContainer>
+      <AnimatedBackgroundSubscribeButton
+        style={{ transform: [{ translateY: gradientTranslation }] }}>
+        <SubscribeButtonWithModals homeId={homeId} />
+      </AnimatedBackgroundSubscribeButton>
     </Container>
   )
 }
 
-export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({
-  title,
-  subtitle,
-  imageUrl,
-  imageAnimatedHeight,
-  gradientTranslation,
-  color,
-}) => {
+type AppV2CategoryThematicHeaderProps = CategoryThematicHeaderProps & {
+  homeId: string
+}
+
+export const AnimatedCategoryThematicHomeHeader: FunctionComponent<
+  AppV2CategoryThematicHeaderProps
+> = ({ title, subtitle, imageUrl, imageAnimatedHeight, gradientTranslation, color, homeId }) => {
   const enableAppV2Header = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER)
   return enableAppV2Header ? (
     <AppV2Header
@@ -90,6 +97,7 @@ export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThema
       imageAnimatedHeight={imageAnimatedHeight}
       gradientTranslation={gradientTranslation}
       color={color}
+      homeId={homeId}
     />
   ) : (
     <AppV1Header
@@ -114,6 +122,7 @@ const Container = styled.View({
 const StyledImage = styled.Image<{
   height: number
 }>(({ height }) => ({
+  width: '100%',
   position: 'absolute',
   top: 0,
   left: 0,
@@ -122,6 +131,12 @@ const StyledImage = styled.Image<{
 }))
 
 const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
+
+const SubscribeButtonContainer = styled.View({
+  position: 'absolute',
+  bottom: getSpacing(4),
+  right: getSpacing(6),
+})
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
@@ -134,6 +149,7 @@ const Title = styled(Typo.Title1)(({ theme }) => ({
 const AnimatedImage = Animated.createAnimatedComponent(StyledImage)
 const AnimatedBlackBackground = Animated.createAnimatedComponent(BlackBackground)
 const AnimatedBlackGradient = Animated.createAnimatedComponent(BlackGradient)
+const AnimatedBackgroundSubscribeButton = Animated.createAnimatedComponent(SubscribeButtonContainer)
 
 const AnimatedBackground = styled(AnimatedBlackBackground)({
   backgroundColor: 'rgba(0, 0, 0, 0)',

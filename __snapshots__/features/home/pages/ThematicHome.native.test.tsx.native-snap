@@ -45,6 +45,7 @@ exports[`ThematicHome should render correctly 1`] = `
           <React.Fragment>
             <React.Fragment>
               <ThematicHeaderWithGeolocBanner
+                homeId="fakeEntryId"
                 isLocated={true}
                 thematicHeader={
                   {
@@ -144,11 +145,11 @@ exports[`ThematicHome should render correctly 1`] = `
             }
           >
             <View
-              numberOfSpaces={58}
+              numberOfSpaces={51}
               style={
                 [
                   {
-                    "height": 232,
+                    "height": 204,
                   },
                 ]
               }
@@ -628,7 +629,7 @@ exports[`ThematicHome should render correctly 1`] = `
       style={
         [
           {
-            "height": 208,
+            "height": 180,
             "left": 0,
             "position": "absolute",
             "right": 0,
@@ -640,7 +641,7 @@ exports[`ThematicHome should render correctly 1`] = `
     >
       <Image
         collapsable={false}
-        height={208}
+        height={180}
         source={
           {
             "uri": "url.com/image",
@@ -649,11 +650,12 @@ exports[`ThematicHome should render correctly 1`] = `
         style={
           [
             {
-              "height": 208,
+              "height": 180,
               "left": 0,
               "position": "absolute",
               "right": 0,
               "top": 0,
+              "width": "100%",
             },
             {},
           ]
@@ -685,7 +687,7 @@ exports[`ThematicHome should render correctly 1`] = `
               "y": 1,
             }
           }
-          height={208}
+          height={180}
           locations={null}
           startPoint={
             {
@@ -696,7 +698,7 @@ exports[`ThematicHome should render correctly 1`] = `
           style={
             [
               {
-                "height": 208,
+                "height": 180,
               },
               {
                 "transform": [
@@ -856,131 +858,131 @@ exports[`ThematicHome should render correctly 1`] = `
           Suivre
         </Text>
       </View>
+      <Modal
+        accessibilityLabelledBy="testUuidV4"
+        accessibilityModal={true}
+        accessibilityRole="none"
+        animationType="none"
+        deviceHeight={1334}
+        deviceWidth={750}
+        hardwareAccelerated={false}
+        hideModalContentWhileAnimating={false}
+        onBackdropPress={[Function]}
+        onModalHide={[Function]}
+        onModalWillHide={[Function]}
+        onModalWillShow={[Function]}
+        onRequestClose={[Function]}
+        panResponderThreshold={4}
+        scrollHorizontal={false}
+        scrollOffset={0}
+        scrollOffsetMax={0}
+        scrollTo={null}
+        statusBarTranslucent={true}
+        supportedOrientations={
+          [
+            "portrait",
+            "landscape",
+          ]
+        }
+        swipeThreshold={100}
+        testID="modal"
+        transparent={true}
+        visible={false}
+      />
+      <Modal
+        accessibilityLabelledBy="testUuidV4"
+        accessibilityModal={true}
+        accessibilityRole="none"
+        animationType="none"
+        deviceHeight={1334}
+        deviceWidth={750}
+        hardwareAccelerated={false}
+        hideModalContentWhileAnimating={false}
+        onBackdropPress={[Function]}
+        onModalHide={[Function]}
+        onModalWillHide={[Function]}
+        onModalWillShow={[Function]}
+        onRequestClose={[Function]}
+        panResponderThreshold={4}
+        scrollHorizontal={false}
+        scrollOffset={0}
+        scrollOffsetMax={0}
+        scrollTo={null}
+        statusBarTranslucent={true}
+        supportedOrientations={
+          [
+            "portrait",
+            "landscape",
+          ]
+        }
+        swipeThreshold={100}
+        testID="modal"
+        transparent={true}
+        visible={false}
+      />
+      <Modal
+        accessibilityLabelledBy="testUuidV4"
+        accessibilityModal={true}
+        accessibilityRole="none"
+        animationType="none"
+        deviceHeight={1334}
+        deviceWidth={750}
+        hardwareAccelerated={false}
+        hideModalContentWhileAnimating={false}
+        onBackdropPress={[Function]}
+        onModalHide={[Function]}
+        onModalWillHide={[Function]}
+        onModalWillShow={[Function]}
+        onRequestClose={[Function]}
+        panResponderThreshold={4}
+        scrollHorizontal={false}
+        scrollOffset={0}
+        scrollOffsetMax={0}
+        scrollTo={null}
+        statusBarTranslucent={true}
+        supportedOrientations={
+          [
+            "portrait",
+            "landscape",
+          ]
+        }
+        swipeThreshold={100}
+        testID="modal"
+        transparent={true}
+        visible={false}
+      />
+      <Modal
+        accessibilityLabelledBy="testUuidV4"
+        accessibilityModal={true}
+        accessibilityRole="none"
+        animationType="none"
+        deviceHeight={1334}
+        deviceWidth={750}
+        hardwareAccelerated={false}
+        hideModalContentWhileAnimating={false}
+        onBackdropPress={[Function]}
+        onModalHide={[Function]}
+        onModalWillHide={[Function]}
+        onModalWillShow={[Function]}
+        onRequestClose={[Function]}
+        panResponderThreshold={4}
+        scrollHorizontal={false}
+        scrollOffset={0}
+        scrollOffsetMax={0}
+        scrollTo={null}
+        statusBarTranslucent={true}
+        supportedOrientations={
+          [
+            "portrait",
+            "landscape",
+          ]
+        }
+        swipeThreshold={100}
+        testID="modal"
+        transparent={true}
+        visible={false}
+      />
     </View>
-    <Modal
-      accessibilityLabelledBy="testUuidV4"
-      accessibilityModal={true}
-      accessibilityRole="none"
-      animationType="none"
-      deviceHeight={1334}
-      deviceWidth={750}
-      hardwareAccelerated={false}
-      hideModalContentWhileAnimating={false}
-      onBackdropPress={[Function]}
-      onModalHide={[Function]}
-      onModalWillHide={[Function]}
-      onModalWillShow={[Function]}
-      onRequestClose={[Function]}
-      panResponderThreshold={4}
-      scrollHorizontal={false}
-      scrollOffset={0}
-      scrollOffsetMax={0}
-      scrollTo={null}
-      statusBarTranslucent={true}
-      supportedOrientations={
-        [
-          "portrait",
-          "landscape",
-        ]
-      }
-      swipeThreshold={100}
-      testID="modal"
-      transparent={true}
-      visible={false}
-    />
-    <Modal
-      accessibilityLabelledBy="testUuidV4"
-      accessibilityModal={true}
-      accessibilityRole="none"
-      animationType="none"
-      deviceHeight={1334}
-      deviceWidth={750}
-      hardwareAccelerated={false}
-      hideModalContentWhileAnimating={false}
-      onBackdropPress={[Function]}
-      onModalHide={[Function]}
-      onModalWillHide={[Function]}
-      onModalWillShow={[Function]}
-      onRequestClose={[Function]}
-      panResponderThreshold={4}
-      scrollHorizontal={false}
-      scrollOffset={0}
-      scrollOffsetMax={0}
-      scrollTo={null}
-      statusBarTranslucent={true}
-      supportedOrientations={
-        [
-          "portrait",
-          "landscape",
-        ]
-      }
-      swipeThreshold={100}
-      testID="modal"
-      transparent={true}
-      visible={false}
-    />
-    <Modal
-      accessibilityLabelledBy="testUuidV4"
-      accessibilityModal={true}
-      accessibilityRole="none"
-      animationType="none"
-      deviceHeight={1334}
-      deviceWidth={750}
-      hardwareAccelerated={false}
-      hideModalContentWhileAnimating={false}
-      onBackdropPress={[Function]}
-      onModalHide={[Function]}
-      onModalWillHide={[Function]}
-      onModalWillShow={[Function]}
-      onRequestClose={[Function]}
-      panResponderThreshold={4}
-      scrollHorizontal={false}
-      scrollOffset={0}
-      scrollOffsetMax={0}
-      scrollTo={null}
-      statusBarTranslucent={true}
-      supportedOrientations={
-        [
-          "portrait",
-          "landscape",
-        ]
-      }
-      swipeThreshold={100}
-      testID="modal"
-      transparent={true}
-      visible={false}
-    />
-    <Modal
-      accessibilityLabelledBy="testUuidV4"
-      accessibilityModal={true}
-      accessibilityRole="none"
-      animationType="none"
-      deviceHeight={1334}
-      deviceWidth={750}
-      hardwareAccelerated={false}
-      hideModalContentWhileAnimating={false}
-      onBackdropPress={[Function]}
-      onModalHide={[Function]}
-      onModalWillHide={[Function]}
-      onModalWillShow={[Function]}
-      onRequestClose={[Function]}
-      panResponderThreshold={4}
-      scrollHorizontal={false}
-      scrollOffset={0}
-      scrollOffsetMax={0}
-      scrollTo={null}
-      statusBarTranslucent={true}
-      supportedOrientations={
-        [
-          "portrait",
-          "landscape",
-        ]
-      }
-      swipeThreshold={100}
-      testID="modal"
-      transparent={true}
-      visible={false}
-    />
   </View>
 </View>
 `;
