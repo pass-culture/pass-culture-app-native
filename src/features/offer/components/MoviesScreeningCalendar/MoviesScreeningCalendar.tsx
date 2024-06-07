@@ -2,8 +2,8 @@ import React, { FC, FunctionComponent, useMemo, useRef, useState } from 'react'
 import { View, FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
-import type { OfferPreviewResponse, OfferVenueResponse } from 'api/gen'
-import { NewOfferPreviewResponse, useOffersStocks } from 'features/offer/api/useOffersStocks'
+import type { OfferPreviewResponse, OfferResponseV2 } from 'api/gen'
+import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import {
   getDateString,
@@ -11,10 +11,7 @@ import {
 } from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
 import { filterOffersStocksByDate } from 'features/offer/components/MoviesScreeningCalendar/filterOffersStocksByDate'
-import {
-  PartialOffer,
-  useOfferCTAButton,
-} from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
+import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -39,6 +36,7 @@ const useMoviesScreeningsList = (offerIds: number[]) => {
   const dates = getDates(new Date(), 15)
   const [selectedDate, setSelectedDate] = useState<Date>(dates[0])
   const { data: offersWithStocks } = useOffersStocks({ offerIds })
+
   const filteredOffersWithStocks = useMemo(
     () => filterOffersStocksByDate(offersWithStocks, selectedDate),
     [offersWithStocks, selectedDate]
@@ -71,7 +69,7 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item, index }) => (
           <MovieOfferTile
-            offerPreview={item}
+            offer={item}
             venueOffers={venueOffers}
             date={selectedDate}
             isLast={index === (offersWithStocks?.offers.length ?? 0) - 2}
@@ -83,14 +81,14 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
 }
 
 type MovieOfferTileProps = {
-  offerPreview: NewOfferPreviewResponse
+  offer: OfferResponseV2
   venueOffers: VenueOffers
   date: Date
   isLast: boolean
 }
 
-const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, offerPreview, isLast }) => {
-  const movieScreenings = getMovieScreenings(offerPreview.stocks)
+const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, offer, isLast }) => {
+  const movieScreenings = getMovieScreenings(offer.stocks)
 
   const selectedScreeningStock = useMemo(
     () => movieScreenings[getDateString(`${date}`)],
@@ -101,30 +99,8 @@ const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, offerPrevi
 
   const { bookingData, selectedDateScreenings } = useSelectedDateScreening(
     selectedScreeningStock,
-    offerPreview.isExternalBookingsDisabled
+    offer.isExternalBookingsDisabled
   )
-
-  // Rajouter les clés manquantes ?
-  // Les images sont manquantes
-  // S'assurer que on a plus besoin de offer [X]
-  // Faire l'UI
-  // refacto de fichiers
-
-  const offer: PartialOffer = {
-    id: offerPreview.id,
-    stocks: offerPreview.stocks,
-    isExpired: offerPreview.isExpired,
-    expenseDomains: offerPreview.expenseDomains,
-    isDigital: offerPreview.isDigital,
-    isEducational: offerPreview.isEducational,
-    isForbiddenToUnderage: offerPreview.isForbiddenToUnderage,
-    isReleased: offerPreview.isReleased,
-    isSoldOut: offerPreview.isSoldOut,
-    subcategoryId: offerPreview.subcategoryId,
-    externalTicketOfficeUrl: offerPreview.externalTicketOfficeUrl,
-    venue: { id: offerPreview.id } as OfferVenueResponse,
-    offer: { thumbUrl: offerPreview.image.url },
-  }
 
   const {
     onPress: onPressOfferCTA,
@@ -137,10 +113,9 @@ const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, offerPrevi
     [offer.venue.id, onPressOfferCTA, selectedDateScreenings, movieScreeningUserData]
   )
   const offerScreeningOnSelectedDates = useMemo(
-    () => venueOffers.hits.find((item) => Number(item.objectID) === offerPreview.id),
-    [offerPreview.id, venueOffers.hits]
+    () => venueOffers.hits.find((item) => Number(item.objectID) === offer.id),
+    [offer.id, venueOffers.hits]
   )
-  console.log({ offerScreeningOnSelectedDates })
   return (
     <MovieCalendarContainer>
       {offerScreeningOnSelectedDates ? (
@@ -150,12 +125,12 @@ const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, offerPrevi
             from: 'venue',
           }}
           price={undefined}
-          subtitles={getSubtitles(offerPreview)}
+          subtitles={getSubtitles(offer)}
           withRightArrow
         />
       ) : null}
       <Spacer.Column numberOfSpaces={4} />
-      {eventCardData !== undefined && <EventCardList data={eventCardData} />}
+      {eventCardData ? <EventCardList data={eventCardData} /> : null}
       <Spacer.Column numberOfSpaces={4} />
       {isLast ? null : <Divider />}
       <Spacer.Column numberOfSpaces={4} />

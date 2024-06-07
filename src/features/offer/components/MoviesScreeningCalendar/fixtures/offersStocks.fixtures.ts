@@ -1,13 +1,82 @@
 import type { ReadonlyDeep } from 'type-fest'
 
-import { NewOffersStocksResponse } from 'features/offer/api/useOffersStocks'
+import { ExpenseDomain, OffersStocksResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { toMutable } from 'shared/types/toMutable'
 
 export const offersStocksFixtures = toMutable({
   offers: [
     {
       id: 223313468,
-      durationMinutes: null,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+      isExpired: false,
+      isExternalBookingsDisabled: false,
+      isForbiddenToUnderage: false,
+      isReleased: true,
+      isSoldOut: false,
+      isDigital: false,
+      isDuo: true,
+      isEducational: false,
+      last30DaysBookings: null,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      expenseDomains: [ExpenseDomain.all],
+      venue: {
+        id: 125173,
+        address: '5 RUE MARECHAL JOFFRE',
+        city: 'LE POULIGUEN',
+        offerer: {
+          name: 'LE PAX',
+        },
+        name: 'LE PAX',
+        postalCode: '44510',
+        publicName: '',
+        coordinates: {
+          latitude: 47.27618,
+          longitude: -2.4297,
+        },
+        isPermanent: true,
+        timezone: 'Europe/Paris',
+        bannerUrl:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
+      },
+      metadata: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Rendez-vous avec Pol Pot',
+        description:
+          'Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html',
+        image:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: '7.00',
+          url: 'https://app.staging.passculture.team/offre/231032388',
+          availability: 'https://schema.org/InStock',
+        },
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: 'LE PAX',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '5 RUE MARECHAL JOFFRE',
+            postalCode: '44510',
+            addressLocality: 'LE POULIGUEN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '47.27618',
+            longitude: '-2.42970',
+          },
+        },
+        startDate: '2024-06-06T14:40',
+        validFrom: '2024-06-05',
+      },
       extraData: {
         allocineId: 315231,
         author: null,
@@ -27,12 +96,6 @@ export const offersStocksFixtures = toMutable({
         gtlLabels: null,
         genres: ['Policier', 'Drame'],
       },
-      image: {
-        url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/JWLKE',
-        credit: null,
-      },
-      last30DaysBookings: null,
-      isExternalBookingsDisabled: false,
       name: 'Hopeless',
       stocks: [
         {
@@ -114,7 +177,76 @@ export const offersStocksFixtures = toMutable({
     },
     {
       id: 223313470,
-      durationMinutes: null,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+      isExpired: false,
+      isExternalBookingsDisabled: false,
+      isForbiddenToUnderage: false,
+      isReleased: true,
+      isSoldOut: false,
+      isDigital: false,
+      isDuo: true,
+      isEducational: false,
+      last30DaysBookings: null,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      expenseDomains: [ExpenseDomain.all],
+      venue: {
+        id: 125173,
+        address: '5 RUE MARECHAL JOFFRE',
+        city: 'LE POULIGUEN',
+        offerer: {
+          name: 'LE PAX',
+        },
+        name: 'LE PAX',
+        postalCode: '44510',
+        publicName: '',
+        coordinates: {
+          latitude: 47.27618,
+          longitude: -2.4297,
+        },
+        isPermanent: true,
+        timezone: 'Europe/Paris',
+        bannerUrl:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
+      },
+      metadata: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Rendez-vous avec Pol Pot',
+        description:
+          'Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html',
+        image:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: '7.00',
+          url: 'https://app.staging.passculture.team/offre/231032388',
+          availability: 'https://schema.org/InStock',
+        },
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: 'LE PAX',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '5 RUE MARECHAL JOFFRE',
+            postalCode: '44510',
+            addressLocality: 'LE POULIGUEN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '47.27618',
+            longitude: '-2.42970',
+          },
+        },
+        startDate: '2024-06-06T14:40',
+        validFrom: '2024-06-05',
+      },
       extraData: {
         allocineId: 300282,
         author: null,
@@ -134,12 +266,6 @@ export const offersStocksFixtures = toMutable({
         gtlLabels: null,
         genres: ['Action', 'Thriller'],
       },
-      image: {
-        url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/JWLKG',
-        credit: null,
-      },
-      last30DaysBookings: null,
-      isExternalBookingsDisabled: false,
       name: 'Civil War',
       stocks: [
         {
@@ -221,7 +347,76 @@ export const offersStocksFixtures = toMutable({
     },
     {
       id: 223313471,
-      durationMinutes: null,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+      isExpired: false,
+      isExternalBookingsDisabled: false,
+      isForbiddenToUnderage: false,
+      isReleased: true,
+      isSoldOut: false,
+      isDigital: false,
+      isDuo: true,
+      isEducational: false,
+      last30DaysBookings: null,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      expenseDomains: [ExpenseDomain.all],
+      venue: {
+        id: 125173,
+        address: '5 RUE MARECHAL JOFFRE',
+        city: 'LE POULIGUEN',
+        offerer: {
+          name: 'LE PAX',
+        },
+        name: 'LE PAX',
+        postalCode: '44510',
+        publicName: '',
+        coordinates: {
+          latitude: 47.27618,
+          longitude: -2.4297,
+        },
+        isPermanent: true,
+        timezone: 'Europe/Paris',
+        bannerUrl:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
+      },
+      metadata: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Rendez-vous avec Pol Pot',
+        description:
+          'Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html',
+        image:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: '7.00',
+          url: 'https://app.staging.passculture.team/offre/231032388',
+          availability: 'https://schema.org/InStock',
+        },
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: 'LE PAX',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '5 RUE MARECHAL JOFFRE',
+            postalCode: '44510',
+            addressLocality: 'LE POULIGUEN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '47.27618',
+            longitude: '-2.42970',
+          },
+        },
+        startDate: '2024-06-06T14:40',
+        validFrom: '2024-06-05',
+      },
       extraData: {
         allocineId: 318494,
         author: null,
@@ -241,12 +436,6 @@ export const offersStocksFixtures = toMutable({
         gtlLabels: null,
         genres: ['Drame'],
       },
-      image: {
-        url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/JWLK9',
-        credit: null,
-      },
-      last30DaysBookings: null,
-      isExternalBookingsDisabled: false,
       name: 'Notre monde',
       stocks: [
         {
@@ -328,7 +517,76 @@ export const offersStocksFixtures = toMutable({
     },
     {
       id: 223313473,
-      durationMinutes: null,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+      isExpired: false,
+      isExternalBookingsDisabled: false,
+      isForbiddenToUnderage: false,
+      isReleased: true,
+      isSoldOut: false,
+      isDigital: false,
+      isDuo: true,
+      isEducational: false,
+      last30DaysBookings: null,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      expenseDomains: [ExpenseDomain.all],
+      venue: {
+        id: 125173,
+        address: '5 RUE MARECHAL JOFFRE',
+        city: 'LE POULIGUEN',
+        offerer: {
+          name: 'LE PAX',
+        },
+        name: 'LE PAX',
+        postalCode: '44510',
+        publicName: '',
+        coordinates: {
+          latitude: 47.27618,
+          longitude: -2.4297,
+        },
+        isPermanent: true,
+        timezone: 'Europe/Paris',
+        bannerUrl:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
+      },
+      metadata: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Rendez-vous avec Pol Pot',
+        description:
+          'Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html',
+        image:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: '7.00',
+          url: 'https://app.staging.passculture.team/offre/231032388',
+          availability: 'https://schema.org/InStock',
+        },
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: 'LE PAX',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '5 RUE MARECHAL JOFFRE',
+            postalCode: '44510',
+            addressLocality: 'LE POULIGUEN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '47.27618',
+            longitude: '-2.42970',
+          },
+        },
+        startDate: '2024-06-06T14:40',
+        validFrom: '2024-06-05',
+      },
       extraData: {
         allocineId: 308976,
         author: null,
@@ -348,12 +606,6 @@ export const offersStocksFixtures = toMutable({
         gtlLabels: null,
         genres: ['Drame', 'Romance', 'Western'],
       },
-      image: {
-        url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/JWLKM',
-        credit: null,
-      },
-      last30DaysBookings: null,
-      isExternalBookingsDisabled: false,
       name: 'The Dead Don’t Hurt',
       stocks: [
         {
@@ -465,7 +717,76 @@ export const offersStocksFixtures = toMutable({
     },
     {
       id: 223313474,
-      durationMinutes: null,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+      isExpired: false,
+      isExternalBookingsDisabled: false,
+      isForbiddenToUnderage: false,
+      isReleased: true,
+      isSoldOut: false,
+      isDigital: false,
+      isDuo: true,
+      isEducational: false,
+      last30DaysBookings: null,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      expenseDomains: [ExpenseDomain.all],
+      venue: {
+        id: 125173,
+        address: '5 RUE MARECHAL JOFFRE',
+        city: 'LE POULIGUEN',
+        offerer: {
+          name: 'LE PAX',
+        },
+        name: 'LE PAX',
+        postalCode: '44510',
+        publicName: '',
+        coordinates: {
+          latitude: 47.27618,
+          longitude: -2.4297,
+        },
+        isPermanent: true,
+        timezone: 'Europe/Paris',
+        bannerUrl:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
+      },
+      metadata: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Rendez-vous avec Pol Pot',
+        description:
+          'Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html',
+        image:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: '7.00',
+          url: 'https://app.staging.passculture.team/offre/231032388',
+          availability: 'https://schema.org/InStock',
+        },
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: 'LE PAX',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '5 RUE MARECHAL JOFFRE',
+            postalCode: '44510',
+            addressLocality: 'LE POULIGUEN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '47.27618',
+            longitude: '-2.42970',
+          },
+        },
+        startDate: '2024-06-06T14:40',
+        validFrom: '2024-06-05',
+      },
       extraData: {
         allocineId: 299577,
         author: null,
@@ -485,12 +806,6 @@ export const offersStocksFixtures = toMutable({
         gtlLabels: null,
         genres: ['Comédie'],
       },
-      image: {
-        url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/JWLK8',
-        credit: null,
-      },
-      last30DaysBookings: null,
-      isExternalBookingsDisabled: false,
       name: 'L’Esprit Coubertin',
       stocks: [
         {
@@ -572,7 +887,76 @@ export const offersStocksFixtures = toMutable({
     },
     {
       id: 223313475,
-      durationMinutes: null,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+      isExpired: false,
+      isExternalBookingsDisabled: false,
+      isForbiddenToUnderage: false,
+      isReleased: true,
+      isSoldOut: false,
+      isDigital: false,
+      isDuo: true,
+      isEducational: false,
+      last30DaysBookings: null,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      expenseDomains: [ExpenseDomain.all],
+      venue: {
+        id: 125173,
+        address: '5 RUE MARECHAL JOFFRE',
+        city: 'LE POULIGUEN',
+        offerer: {
+          name: 'LE PAX',
+        },
+        name: 'LE PAX',
+        postalCode: '44510',
+        publicName: '',
+        coordinates: {
+          latitude: 47.27618,
+          longitude: -2.4297,
+        },
+        isPermanent: true,
+        timezone: 'Europe/Paris',
+        bannerUrl:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
+      },
+      metadata: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Rendez-vous avec Pol Pot',
+        description:
+          'Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html',
+        image:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: '7.00',
+          url: 'https://app.staging.passculture.team/offre/231032388',
+          availability: 'https://schema.org/InStock',
+        },
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: 'LE PAX',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '5 RUE MARECHAL JOFFRE',
+            postalCode: '44510',
+            addressLocality: 'LE POULIGUEN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '47.27618',
+            longitude: '-2.42970',
+          },
+        },
+        startDate: '2024-06-06T14:40',
+        validFrom: '2024-06-05',
+      },
       extraData: {
         allocineId: 314981,
         author: null,
@@ -592,12 +976,6 @@ export const offersStocksFixtures = toMutable({
         gtlLabels: null,
         genres: ['Comédie'],
       },
-      image: {
-        url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/JWLKS',
-        credit: null,
-      },
-      last30DaysBookings: null,
-      isExternalBookingsDisabled: false,
       name: 'Comme un lundi',
       stocks: [
         {
@@ -679,7 +1057,76 @@ export const offersStocksFixtures = toMutable({
     },
     {
       id: 226321192,
-      durationMinutes: null,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+      isExpired: false,
+      isExternalBookingsDisabled: false,
+      isForbiddenToUnderage: false,
+      isReleased: true,
+      isSoldOut: false,
+      isDigital: false,
+      isDuo: true,
+      isEducational: false,
+      last30DaysBookings: null,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      expenseDomains: [ExpenseDomain.all],
+      venue: {
+        id: 125173,
+        address: '5 RUE MARECHAL JOFFRE',
+        city: 'LE POULIGUEN',
+        offerer: {
+          name: 'LE PAX',
+        },
+        name: 'LE PAX',
+        postalCode: '44510',
+        publicName: '',
+        coordinates: {
+          latitude: 47.27618,
+          longitude: -2.4297,
+        },
+        isPermanent: true,
+        timezone: 'Europe/Paris',
+        bannerUrl:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
+      },
+      metadata: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Rendez-vous avec Pol Pot',
+        description:
+          'Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html',
+        image:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: '7.00',
+          url: 'https://app.staging.passculture.team/offre/231032388',
+          availability: 'https://schema.org/InStock',
+        },
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: 'LE PAX',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '5 RUE MARECHAL JOFFRE',
+            postalCode: '44510',
+            addressLocality: 'LE POULIGUEN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '47.27618',
+            longitude: '-2.42970',
+          },
+        },
+        startDate: '2024-06-06T14:40',
+        validFrom: '2024-06-05',
+      },
       extraData: {
         allocineId: 318057,
         author: null,
@@ -699,12 +1146,6 @@ export const offersStocksFixtures = toMutable({
         gtlLabels: null,
         genres: ['Thriller'],
       },
-      image: {
-        url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/JWLKA',
-        credit: null,
-      },
-      last30DaysBookings: null,
-      isExternalBookingsDisabled: false,
       name: 'Greenhouse',
       stocks: [
         {
@@ -966,7 +1407,76 @@ export const offersStocksFixtures = toMutable({
     },
     {
       id: 226321193,
-      durationMinutes: null,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+      isExpired: false,
+      isExternalBookingsDisabled: false,
+      isForbiddenToUnderage: false,
+      isReleased: true,
+      isSoldOut: false,
+      isDigital: false,
+      isDuo: true,
+      isEducational: false,
+      last30DaysBookings: null,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      expenseDomains: [ExpenseDomain.all],
+      venue: {
+        id: 125173,
+        address: '5 RUE MARECHAL JOFFRE',
+        city: 'LE POULIGUEN',
+        offerer: {
+          name: 'LE PAX',
+        },
+        name: 'LE PAX',
+        postalCode: '44510',
+        publicName: '',
+        coordinates: {
+          latitude: 47.27618,
+          longitude: -2.4297,
+        },
+        isPermanent: true,
+        timezone: 'Europe/Paris',
+        bannerUrl:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
+      },
+      metadata: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Rendez-vous avec Pol Pot',
+        description:
+          'Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html',
+        image:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: '7.00',
+          url: 'https://app.staging.passculture.team/offre/231032388',
+          availability: 'https://schema.org/InStock',
+        },
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: 'LE PAX',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '5 RUE MARECHAL JOFFRE',
+            postalCode: '44510',
+            addressLocality: 'LE POULIGUEN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '47.27618',
+            longitude: '-2.42970',
+          },
+        },
+        startDate: '2024-06-06T14:40',
+        validFrom: '2024-06-05',
+      },
       extraData: {
         allocineId: 324998,
         author: null,
@@ -986,12 +1496,6 @@ export const offersStocksFixtures = toMutable({
         gtlLabels: null,
         genres: ['Animation', 'Familial'],
       },
-      image: {
-        url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/JWLKC',
-        credit: null,
-      },
-      last30DaysBookings: null,
-      isExternalBookingsDisabled: false,
       name: 'Les Fées Sorcières',
       stocks: [
         {
@@ -1073,7 +1577,76 @@ export const offersStocksFixtures = toMutable({
     },
     {
       id: 226321194,
-      durationMinutes: null,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+      isExpired: false,
+      isExternalBookingsDisabled: false,
+      isForbiddenToUnderage: false,
+      isReleased: true,
+      isSoldOut: false,
+      isDigital: false,
+      isDuo: true,
+      isEducational: false,
+      last30DaysBookings: null,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      expenseDomains: [ExpenseDomain.all],
+      venue: {
+        id: 125173,
+        address: '5 RUE MARECHAL JOFFRE',
+        city: 'LE POULIGUEN',
+        offerer: {
+          name: 'LE PAX',
+        },
+        name: 'LE PAX',
+        postalCode: '44510',
+        publicName: '',
+        coordinates: {
+          latitude: 47.27618,
+          longitude: -2.4297,
+        },
+        isPermanent: true,
+        timezone: 'Europe/Paris',
+        bannerUrl:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
+      },
+      metadata: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Rendez-vous avec Pol Pot',
+        description:
+          'Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html',
+        image:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: '7.00',
+          url: 'https://app.staging.passculture.team/offre/231032388',
+          availability: 'https://schema.org/InStock',
+        },
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: 'LE PAX',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '5 RUE MARECHAL JOFFRE',
+            postalCode: '44510',
+            addressLocality: 'LE POULIGUEN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '47.27618',
+            longitude: '-2.42970',
+          },
+        },
+        startDate: '2024-06-06T14:40',
+        validFrom: '2024-06-05',
+      },
       extraData: {
         allocineId: 318031,
         author: null,
@@ -1093,12 +1666,7 @@ export const offersStocksFixtures = toMutable({
         gtlLabels: null,
         genres: ['Comédie'],
       },
-      image: {
-        url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/JWLKK',
-        credit: null,
-      },
-      last30DaysBookings: null,
-      isExternalBookingsDisabled: false,
+
       name: 'Un p’tit truc en plus',
       stocks: [
         {
@@ -1180,7 +1748,76 @@ export const offersStocksFixtures = toMutable({
     },
     {
       id: 226321195,
-      durationMinutes: null,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+      isExpired: false,
+      isExternalBookingsDisabled: false,
+      isForbiddenToUnderage: false,
+      isReleased: true,
+      isSoldOut: false,
+      isDigital: false,
+      isDuo: true,
+      isEducational: false,
+      last30DaysBookings: null,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      expenseDomains: [ExpenseDomain.all],
+      venue: {
+        id: 125173,
+        address: '5 RUE MARECHAL JOFFRE',
+        city: 'LE POULIGUEN',
+        offerer: {
+          name: 'LE PAX',
+        },
+        name: 'LE PAX',
+        postalCode: '44510',
+        publicName: '',
+        coordinates: {
+          latitude: 47.27618,
+          longitude: -2.4297,
+        },
+        isPermanent: true,
+        timezone: 'Europe/Paris',
+        bannerUrl:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
+      },
+      metadata: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Rendez-vous avec Pol Pot',
+        description:
+          'Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html',
+        image:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: '7.00',
+          url: 'https://app.staging.passculture.team/offre/231032388',
+          availability: 'https://schema.org/InStock',
+        },
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: 'LE PAX',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '5 RUE MARECHAL JOFFRE',
+            postalCode: '44510',
+            addressLocality: 'LE POULIGUEN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '47.27618',
+            longitude: '-2.42970',
+          },
+        },
+        startDate: '2024-06-06T14:40',
+        validFrom: '2024-06-05',
+      },
       extraData: {
         allocineId: 278151,
         author: null,
@@ -1200,12 +1837,7 @@ export const offersStocksFixtures = toMutable({
         gtlLabels: null,
         genres: ['Aventure', 'Comédie', 'Familial', 'Fantastique'],
       },
-      image: {
-        url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/JWLKQ',
-        credit: null,
-      },
-      last30DaysBookings: null,
-      isExternalBookingsDisabled: false,
+
       name: 'Blue & Compagnie',
       stocks: [
         {
@@ -1257,7 +1889,76 @@ export const offersStocksFixtures = toMutable({
     },
     {
       id: 226321196,
-      durationMinutes: null,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+      isExpired: false,
+      isExternalBookingsDisabled: false,
+      isForbiddenToUnderage: false,
+      isReleased: true,
+      isSoldOut: false,
+      isDigital: false,
+      isDuo: true,
+      isEducational: false,
+      last30DaysBookings: null,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      expenseDomains: [ExpenseDomain.all],
+      venue: {
+        id: 125173,
+        address: '5 RUE MARECHAL JOFFRE',
+        city: 'LE POULIGUEN',
+        offerer: {
+          name: 'LE PAX',
+        },
+        name: 'LE PAX',
+        postalCode: '44510',
+        publicName: '',
+        coordinates: {
+          latitude: 47.27618,
+          longitude: -2.4297,
+        },
+        isPermanent: true,
+        timezone: 'Europe/Paris',
+        bannerUrl:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
+      },
+      metadata: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Rendez-vous avec Pol Pot',
+        description:
+          'Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html',
+        image:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: '7.00',
+          url: 'https://app.staging.passculture.team/offre/231032388',
+          availability: 'https://schema.org/InStock',
+        },
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: 'LE PAX',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '5 RUE MARECHAL JOFFRE',
+            postalCode: '44510',
+            addressLocality: 'LE POULIGUEN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '47.27618',
+            longitude: '-2.42970',
+          },
+        },
+        startDate: '2024-06-06T14:40',
+        validFrom: '2024-06-05',
+      },
       extraData: {
         allocineId: 302437,
         author: null,
@@ -1277,12 +1978,6 @@ export const offersStocksFixtures = toMutable({
         gtlLabels: null,
         genres: ['Action', 'Thriller'],
       },
-      image: {
-        url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/JWLKU',
-        credit: null,
-      },
-      last30DaysBookings: null,
-      isExternalBookingsDisabled: false,
       name: 'Roqya',
       stocks: [
         {
@@ -1349,7 +2044,76 @@ export const offersStocksFixtures = toMutable({
     },
     {
       id: 226321197,
-      durationMinutes: null,
+      accessibility: {
+        audioDisability: null,
+        mentalDisability: null,
+        motorDisability: null,
+        visualDisability: null,
+      },
+      isExpired: false,
+      isExternalBookingsDisabled: false,
+      isForbiddenToUnderage: false,
+      isReleased: true,
+      isSoldOut: false,
+      isDigital: false,
+      isDuo: true,
+      isEducational: false,
+      last30DaysBookings: null,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+      expenseDomains: [ExpenseDomain.all],
+      venue: {
+        id: 125173,
+        address: '5 RUE MARECHAL JOFFRE',
+        city: 'LE POULIGUEN',
+        offerer: {
+          name: 'LE PAX',
+        },
+        name: 'LE PAX',
+        postalCode: '44510',
+        publicName: '',
+        coordinates: {
+          latitude: 47.27618,
+          longitude: -2.4297,
+        },
+        isPermanent: true,
+        timezone: 'Europe/Paris',
+        bannerUrl:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
+      },
+      metadata: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: 'Rendez-vous avec Pol Pot',
+        description:
+          'Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html',
+        image:
+          'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'EUR',
+          lowPrice: '7.00',
+          url: 'https://app.staging.passculture.team/offre/231032388',
+          availability: 'https://schema.org/InStock',
+        },
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        location: {
+          '@type': 'Place',
+          name: 'LE PAX',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '5 RUE MARECHAL JOFFRE',
+            postalCode: '44510',
+            addressLocality: 'LE POULIGUEN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: '47.27618',
+            longitude: '-2.42970',
+          },
+        },
+        startDate: '2024-06-06T14:40',
+        validFrom: '2024-06-05',
+      },
       extraData: {
         allocineId: 326902,
         author: null,
@@ -1369,12 +2133,6 @@ export const offersStocksFixtures = toMutable({
         gtlLabels: null,
         genres: ['Aventure', 'Animation', 'Comédie', 'Familial'],
       },
-      image: {
-        url: 'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/JWLKW',
-        credit: null,
-      },
-      last30DaysBookings: null,
-      isExternalBookingsDisabled: false,
       name: 'Mystère sur la colline aux gâteaux',
       stocks: [
         {
@@ -1455,4 +2213,4 @@ export const offersStocksFixtures = toMutable({
       ],
     },
   ],
-} as const satisfies ReadonlyDeep<NewOffersStocksResponse>)
+} as const satisfies ReadonlyDeep<OffersStocksResponseV2>)

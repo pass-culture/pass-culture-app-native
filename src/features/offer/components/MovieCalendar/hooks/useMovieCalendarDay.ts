@@ -1,3 +1,4 @@
+import { isSameDay } from 'date-fns'
 import { useMemo } from 'react'
 import { useTheme } from 'styled-components/native'
 
@@ -18,7 +19,7 @@ export const useMovieCalendarDay = (date: Date, selectedDate: Date | undefined) 
   )
 
   const isSelected = useMemo(
-    () => (selectedDate === undefined ? false : selectedDate.getTime() === timestamp),
+    () => (selectedDate ? isSameDay(selectedDate, new Date(timestamp)) : false),
     [selectedDate, timestamp]
   )
 

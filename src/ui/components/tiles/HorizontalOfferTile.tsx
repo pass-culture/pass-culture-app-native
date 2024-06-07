@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -20,6 +20,7 @@ import { getSpacing, Typo } from 'ui/theme'
 import { HorizontalTile, HorizontalTileProps } from './HorizontalTile'
 interface Props extends Partial<HorizontalTileProps> {
   offer: Offer
+  subtitles?: string[]
   onPress?: () => void
   analyticsParams: OfferAnalyticsParams
   style?: StyleProp<ViewStyle>
@@ -30,6 +31,7 @@ export const HorizontalOfferTile = ({
   analyticsParams,
   onPress,
   style,
+  subtitles,
   ...horizontalTileProps
 }: Props) => {
   const { offer: offerDetails, objectID, _geoloc } = offer
@@ -54,6 +56,11 @@ export const HorizontalOfferTile = ({
     date: formattedDate,
     price: formattedPrice,
   })
+
+  const generatedSubtitles = useMemo(() => {
+    return subtitles ?? [nativeCategoryValue, formattedDate].filter((subtitle) => !!subtitle)
+  }, [formattedDate, nativeCategoryValue, subtitles])
+
   function handlePressOffer() {
     if (!offerId) return
     if (onPress) onPress()
@@ -76,10 +83,6 @@ export const HorizontalOfferTile = ({
       logClickOnOffer({ objectID, position: analyticsParams.index ?? 0 })
   }
 
-  const subtitles = []
-  if (nativeCategoryValue) subtitles.push(nativeCategoryValue)
-  if (formattedDate) subtitles.push(formattedDate)
-
   return (
     <Container
       navigateTo={{
@@ -98,8 +101,8 @@ export const HorizontalOfferTile = ({
         imageUrl={thumbUrl}
         distanceToOffer={distanceToOffer}
         price={formattedPrice}>
-        {!!subtitles?.length &&
-          subtitles?.map((subtitle, index) => (
+        {!!generatedSubtitles?.length &&
+          generatedSubtitles?.map((subtitle, index) => (
             <Body
               ellipsizeMode="tail"
               numberOfLines={1}
