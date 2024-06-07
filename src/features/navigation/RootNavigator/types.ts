@@ -27,6 +27,7 @@ export type Referrals =
   | 'searchVenuePlaylist'
   | 'setemail'
   | 'similar_offer'
+  | 'trend_block'
   | 'venue'
   | 'venueMap'
   | 'venueList'
