@@ -9,6 +9,7 @@ import { BlackCaption } from 'features/home/components/BlackCaption'
 import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
+import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
@@ -55,6 +56,10 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const prePopulateOffer = usePrePopulateOffer()
   const { isDesktopViewport } = useTheme()
   const isNewExclusivityModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_EXCLUSIVITY_MODULE)
+  const hasGraphicRedesign = useHasGraphicRedesign({
+    featureFlag: isNewExclusivityModule,
+    homeId: props.homeEntryId ?? '',
+  })
 
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage({
@@ -88,7 +93,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
         <StyledTitle>{props.highlightTitle}</StyledTitle>
       </StyledTitleContainer>
       <Spacer.Column numberOfSpaces={5} />
-      {isNewExclusivityModule ? (
+      {hasGraphicRedesign ? (
         <MarketingBlockExclusivity
           offerId={parseInt(highlightOfferId)}
           title={highlightOffer.offer.name || ''}
