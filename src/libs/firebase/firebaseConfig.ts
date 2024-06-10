@@ -1,7 +1,7 @@
 import { env } from 'libs/environment'
 
 export const FIREBASE_CONFIG = {
-  apiKey: env.FIREBASE_APIKEY,
+  apiKey: env.FIREBASE_API_PUBLIC_KEY,
   authDomain: env.FIREBASE_AUTHDOMAIN,
   projectId: env.FIREBASE_PROJECTID,
   storageBucket: env.FIREBASE_STORAGEBUCKET,

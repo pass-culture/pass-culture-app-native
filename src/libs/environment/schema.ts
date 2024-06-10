@@ -38,7 +38,7 @@ export const EnvironmentSchema = yup.object({
   FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED: yup.string().required(),
   FAQ_LINK_SIGNUP_CONFIRMATION_EMAIL_NOT_RECEIVED: yup.string().required(),
   FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING: yup.boolean().required(),
-  FIREBASE_APIKEY: yup.string().required(),
+  FIREBASE_API_PUBLIC_KEY: yup.string().required(),
   FIREBASE_APPID: yup.string().required(),
   FIREBASE_AUTHDOMAIN: yup.string().required(),
   FIREBASE_DYNAMIC_LINK_DOMAIN: yup.string().required(),
