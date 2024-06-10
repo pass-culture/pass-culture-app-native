@@ -13,6 +13,8 @@ mockdate.set(CURRENT_DATE)
 
 const useUtmParamsSpy = jest.spyOn(UtmAPI, 'useUtmParams')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('useInit', () => {
   it('should set default event parameters to null when the campaign date started more than 24 hours ago', async () => {
     useUtmParamsSpy.mockReturnValueOnce({ campaignDate: TWENTY_FOUR_HOURS_AGO })

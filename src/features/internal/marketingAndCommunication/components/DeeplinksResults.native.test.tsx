@@ -4,6 +4,8 @@ import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/c
 import { DeeplinksResult } from 'features/internal/marketingAndCommunication/components/DeeplinksResult'
 import { render, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<DeeplinksResult />', () => {
   const result: GeneratedDeeplink = {
     firebaseLink: 'https://passculture.app/recherche',

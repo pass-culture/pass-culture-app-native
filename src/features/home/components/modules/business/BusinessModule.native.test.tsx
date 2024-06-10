@@ -28,6 +28,8 @@ const props: BusinessModuleProps = {
 
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('BusinessModule component', () => {
   it('should render NewBusinessModule if FF WIP_APP_V2_BUSINESS_BLOCK is on', () => {
     mockFeatureFlag.mockReturnValueOnce(true)

@@ -8,6 +8,8 @@ import { LegalNotices } from './LegalNotices'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('LegalNotices', () => {
   it('should render correctly', async () => {
     render(<LegalNotices />)

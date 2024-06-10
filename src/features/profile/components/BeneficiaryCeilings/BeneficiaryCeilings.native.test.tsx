@@ -14,6 +14,8 @@ const mockUseIsUserUnderageBeneficiary = jest
   .spyOn(ProfileUtils, 'useIsUserUnderageBeneficiary')
   .mockReturnValue(false)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('BeneficiaryCeilings', () => {
   it('should not return credits if credit is exhausted', () => {
     render(<BeneficiaryCeilings domainsCredit={domains_exhausted_credit_v1} />)

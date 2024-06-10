@@ -12,6 +12,8 @@ jest.mock('shared/user/useAvailableCredit', () => ({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<BookingConfirmation />', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

@@ -50,6 +50,8 @@ const mockSendEvent = jest.fn()
 
 const searchId = uuidv4()
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('AutocompleteOfferItem component', () => {
   beforeEach(() => {
     mockSearchState = {

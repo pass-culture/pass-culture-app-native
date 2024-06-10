@@ -39,6 +39,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<OnGoingBookingsList /> - Analytics', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 

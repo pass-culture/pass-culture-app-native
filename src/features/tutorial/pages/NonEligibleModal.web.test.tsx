@@ -5,6 +5,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { NonEligibleModal } from './NonEligibleModal'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<NonEligibleModal/>', () => {
   describe('Accessibility', () => {
     it('should render correctly for onboarding non-eligible under 15', async () => {

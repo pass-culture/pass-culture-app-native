@@ -4,6 +4,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { IdentityCheckUnavailable } from './IdentityCheckUnavailable'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<IdentityCheckUnavailable/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

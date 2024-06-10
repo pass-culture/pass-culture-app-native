@@ -18,6 +18,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('EndedBookings', () => {
   it('should render correctly', () => {
     renderEndedBookings(bookingsSnap)

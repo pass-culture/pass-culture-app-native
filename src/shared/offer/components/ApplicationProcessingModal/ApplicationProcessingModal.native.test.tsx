@@ -16,6 +16,8 @@ const offerId = 1
 
 jest.mock('libs/jwt')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ApplicationProcessingModal />', () => {
   it('should match previous snapshot', () => {
     render(

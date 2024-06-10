@@ -22,6 +22,8 @@ const TestComponent = () => {
   )
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('useTrackingConsent', () => {
   it('should ask for consent when it has not already been asked', async () => {
     mockGetTrackingStatus.mockResolvedValueOnce('not-determined')

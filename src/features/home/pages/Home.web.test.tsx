@@ -24,6 +24,8 @@ jest.mock('libs/location')
 
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<Home/>', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)

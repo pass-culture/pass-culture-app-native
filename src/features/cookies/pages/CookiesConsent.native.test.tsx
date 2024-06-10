@@ -55,6 +55,8 @@ jest.spyOn(navigationRef, 'getCurrentRoute').mockReturnValue({
 
 const setMarketingParamsSpy = jest.spyOn(SetMarketingParams, 'setMarketingParams')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<CookiesConsent/>', () => {
   beforeEach(() => {
     storage.clear(COOKIES_CONSENT_KEY)

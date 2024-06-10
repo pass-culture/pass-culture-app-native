@@ -13,6 +13,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   })),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<IdentityCheckHonor/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

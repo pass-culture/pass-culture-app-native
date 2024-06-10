@@ -37,6 +37,8 @@ jest
   .spyOn(useVenueSearchParameters, 'useVenueSearchParameters')
   .mockReturnValue(venueSearchParamsMock)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('useNavigateToSearchWithVenueOffers', () => {
   it('should give the config according to the venue', () => {
     const { result } = renderHook(() => useNavigateToSearchWithVenueOffers(venueResponseSnap))

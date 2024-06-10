@@ -52,6 +52,8 @@ jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 
 jest.useFakeTimers()
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('SearchHeader component', () => {
   it('should render SearchHeader', async () => {
     renderSearchHeader({ shouldDisplaySubtitle: true, isDesktopViewport: false })

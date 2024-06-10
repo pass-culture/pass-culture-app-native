@@ -9,6 +9,8 @@ import { checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<PhoneValidationTooManyAttempts/>', () => {
   describe('Contact support button', () => {
     it('should open mail app when clicking on contact support button', async () => {

@@ -36,6 +36,8 @@ const mockOnClose = jest.fn()
 
 jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<PriceModal/>', () => {
   beforeAll(() => {
     mockSearchState = { ...searchState, searchId }

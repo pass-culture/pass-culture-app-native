@@ -18,6 +18,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 mockdate.set(new Date('2022-08-09T00:00:00Z'))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<DeeplinksGeneratorForm />', () => {
   it('should render deeplink generator form with marketing as default utm_gen', () => {
     const onCreate = jest.fn()
@@ -120,6 +122,8 @@ describe('<DeeplinksGeneratorForm />', () => {
     })
   })
 })
+
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('getDefaultScreenParams', () => {
   it('should return an object with view, locationFilter, from params when screen is Search', () => {

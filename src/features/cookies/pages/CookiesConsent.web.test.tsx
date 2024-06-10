@@ -6,6 +6,8 @@ import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 jest.mock('features/navigation/navigationRef')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<CookiesConsent/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

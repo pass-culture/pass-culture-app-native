@@ -24,6 +24,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<CategoriesModal/>', () => {
   it('should display mobile header modal if mobile viewport', () => {
     render(

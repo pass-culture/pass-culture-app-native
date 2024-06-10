@@ -3,6 +3,8 @@ import React from 'react'
 import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/SuspensionChoiceExpiredLink'
 import { render, screen, checkAccessibilityFor } from 'tests/utils/web'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SuspensionChoiceExpiredLink/>', () => {
   it('should match snapshot', () => {
     render(<SuspensionChoiceExpiredLink />)

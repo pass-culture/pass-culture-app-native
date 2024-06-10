@@ -41,6 +41,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SearchFilter/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

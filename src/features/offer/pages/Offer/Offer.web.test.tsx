@@ -66,6 +66,8 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<Offer/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {

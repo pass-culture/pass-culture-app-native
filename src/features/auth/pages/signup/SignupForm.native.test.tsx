@@ -65,6 +65,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 mockdate.set(CURRENT_DATE)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('Signup Form', () => {
   beforeEach(() => {
     mockServer.getApi<EmailValidationRemainingResendsResponse>(

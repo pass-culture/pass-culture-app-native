@@ -10,6 +10,8 @@ const defaultShareContent: ShareContent = {
   url: 'url',
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<MessagingApps />', () => {
   it('should open share modal on other press', async () => {
     const mockShare = jest.fn()

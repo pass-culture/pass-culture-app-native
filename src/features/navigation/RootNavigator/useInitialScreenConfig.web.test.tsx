@@ -11,6 +11,8 @@ const wrapper = (props: { children: unknown }) => (
   <SplashScreenProvider>{props.children as React.JSX.Element}</SplashScreenProvider>
 )
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('useInitialScreen()', () => {
   afterAll(async () => {
     await storage.clear('has_seen_tutorials')

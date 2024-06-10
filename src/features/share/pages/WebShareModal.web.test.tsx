@@ -22,6 +22,8 @@ const defaultProps = {
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<WebShareModal/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

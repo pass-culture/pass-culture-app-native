@@ -11,6 +11,8 @@ import { EndedBookings } from './EndedBookings'
 
 jest.mock('libs/subcategories/useCategoryId')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('EndedBookings', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

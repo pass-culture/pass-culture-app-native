@@ -7,6 +7,8 @@ import { render, screen, fireEvent, waitFor } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<OfferArtists />', () => {
   it('should display artists', () => {
     render(<OfferArtists artists="Edith Piaf" />)

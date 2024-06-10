@@ -50,6 +50,8 @@ const route = {
   },
 } as unknown as RouteProp<RootStackParamList, 'SuspendAccountConfirmation'>
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SuspendAccountConfirmation />', () => {
   describe('should navigate to home', () => {
     it('When there is no email change', () => {

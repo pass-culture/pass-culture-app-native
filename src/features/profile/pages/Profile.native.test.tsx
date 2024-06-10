@@ -95,6 +95,8 @@ const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sh
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('Profile component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 

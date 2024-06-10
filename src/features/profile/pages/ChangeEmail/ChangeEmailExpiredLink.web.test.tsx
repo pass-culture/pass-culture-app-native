@@ -4,6 +4,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { ChangeEmailExpiredLink } from './ChangeEmailExpiredLink'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ChangeEmailExpiredLink/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

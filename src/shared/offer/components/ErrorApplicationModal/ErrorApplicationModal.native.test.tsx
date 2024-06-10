@@ -14,6 +14,8 @@ jest.mock('libs/jwt')
 const hideModal = jest.fn()
 const offerId = 1
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ErrorApplicationModal />', () => {
   it('should match previous snapshot', () => {
     render(

@@ -42,6 +42,8 @@ const mockOfferId = 1337
 
 jest.useFakeTimers()
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<BookingConfirmation />', () => {
   beforeEach(() => {
     useRoute.mockReturnValue({

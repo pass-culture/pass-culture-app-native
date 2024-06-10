@@ -223,6 +223,8 @@ const mockedEmptyHistory = {
   search: jest.fn(),
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SearchLanding />', () => {
   beforeEach(() => {
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })

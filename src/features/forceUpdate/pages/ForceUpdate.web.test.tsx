@@ -6,6 +6,8 @@ import { ForceUpdate } from './ForceUpdate'
 
 jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ForceUpdate/>', () => {
   it('should not display the web app button', () => {
     render(<ForceUpdate resetErrorBoundary={() => null} />)

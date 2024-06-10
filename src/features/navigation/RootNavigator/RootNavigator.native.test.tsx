@@ -38,6 +38,8 @@ jest.mock('libs/splashscreen')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<RootNavigator />', () => {
   beforeEach(() => {
     mockedUseMustUpdateApp.mockReturnValue(true)

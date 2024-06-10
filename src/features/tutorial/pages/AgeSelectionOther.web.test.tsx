@@ -7,6 +7,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { AgeSelectionOther } from './AgeSelectionOther'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<AgeSelectionOther/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues for onboarding tutorial', async () => {

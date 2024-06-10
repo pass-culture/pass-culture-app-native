@@ -30,6 +30,8 @@ function renderSignupConfirmationExpiredLink() {
   )
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SignupConfirmationExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     renderSignupConfirmationExpiredLink()

@@ -6,6 +6,8 @@ import { SuspiciousLoginSuspendedAccount } from './SuspiciousLoginSuspendedAccou
 
 jest.mock('features/auth/helpers/useLogoutRoutine')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SuspiciousLoginSuspendedAccount/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

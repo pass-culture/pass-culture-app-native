@@ -72,6 +72,8 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 
 jest.useFakeTimers()
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<Login/>', () => {
   beforeEach(() => {
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)

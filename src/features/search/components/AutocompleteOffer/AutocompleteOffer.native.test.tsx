@@ -33,6 +33,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('AutocompleteOffer component', () => {
   describe('With suggestion hits', () => {
     beforeEach(() => {

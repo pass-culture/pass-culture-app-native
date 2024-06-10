@@ -7,6 +7,8 @@ import { SuspiciousLoginSuspendedAccount } from './SuspiciousLoginSuspendedAccou
 
 jest.mock('features/auth/helpers/useLogoutRoutine')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SuspiciousLoginSuspendedAccount/>', () => {
   it('should match snapshot', () => {
     render(<SuspiciousLoginSuspendedAccount />)

@@ -4,6 +4,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { LegalNotices } from './LegalNotices'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('LegalNotices', () => {
   it('should not have basic accessibility issues', async () => {
     const { container } = render(<LegalNotices />)

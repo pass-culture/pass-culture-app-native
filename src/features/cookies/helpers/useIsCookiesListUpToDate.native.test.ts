@@ -30,6 +30,8 @@ const mockFirestore = jest
   .spyOn(Firestore, 'getCookiesLastUpdate')
   .mockResolvedValue(defaultMockFirestore)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('isCookiesListUpToDate', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
 

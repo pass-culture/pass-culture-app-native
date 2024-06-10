@@ -36,6 +36,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<Login/>', () => {
   beforeEach(() => {
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {

@@ -12,6 +12,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { measurePerformance, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 jest.mock('features/favorites/context/FavoritesWrapper')
 jest.mock('libs/subcategories/useCategoryId')

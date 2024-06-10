@@ -135,6 +135,8 @@ const venue = mockedSuggestedVenue
 
 jest.useFakeTimers()
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('SearchResultsContent component', () => {
   beforeAll(() => {
     mockHits = []

@@ -38,6 +38,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 const mockUseFeatureFlag = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<OfferBody />', () => {
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }

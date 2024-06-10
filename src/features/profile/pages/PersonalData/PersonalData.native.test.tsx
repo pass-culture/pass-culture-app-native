@@ -37,6 +37,8 @@ const initialAuthContext = {
 
 mockedUseAuthContext.mockReturnValue(initialAuthContext)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('PersonalData', () => {
   beforeEach(() => {
     mockServer.getApi<UpdateEmailTokenExpiration>('/v1/profile/token_expiration', {

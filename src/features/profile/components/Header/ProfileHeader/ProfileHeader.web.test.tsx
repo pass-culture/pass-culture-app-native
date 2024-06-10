@@ -42,6 +42,8 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('ProfileHeader', () => {
   beforeEach(() => {
     mockdate.set('2021-07-01T00:00:00Z')

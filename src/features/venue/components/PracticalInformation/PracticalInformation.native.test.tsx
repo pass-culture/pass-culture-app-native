@@ -5,6 +5,8 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('PracticalInformation', () => {
   it('should display withdrawal information', async () => {
     render(reactQueryProviderHOC(<PracticalInformation venue={venueResponseSnap} />))

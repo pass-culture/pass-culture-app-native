@@ -93,6 +93,8 @@ jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<OfferPlace />', () => {
   beforeEach(() => {
     mockDistance = null

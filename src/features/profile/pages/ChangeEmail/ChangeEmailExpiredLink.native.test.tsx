@@ -22,6 +22,8 @@ const mockUserLoggedOutOnce = () => {
   })
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ChangeEmailExpiredLink />', () => {
   beforeEach(() => {
     mockUseAuthContext.mockReturnValue({

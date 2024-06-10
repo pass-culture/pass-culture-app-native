@@ -20,6 +20,8 @@ some text here as well https://www.google.com/?key=valeu&key2=value2 Lorem ipsum
 
 https://www.google.com/`
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('customFindUrlChunks', () => {
   it('finds url chunk and mark it as highlited', () => {
     const highlightedChunks1 = customFindUrlChunks({
@@ -41,6 +43,8 @@ describe('customFindUrlChunks', () => {
     expect(highlightedChunks2).toHaveLength(5)
   })
 })
+
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('highlightLinks', () => {
   describe('transforms a description into an array of strings or <ExternalLink/>', () => {

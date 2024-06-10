@@ -37,6 +37,8 @@ const mockHideModal = jest.fn()
 
 const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<CategoriesModal/>', () => {
   afterEach(() => {
     mockData = PLACEHOLDER_DATA

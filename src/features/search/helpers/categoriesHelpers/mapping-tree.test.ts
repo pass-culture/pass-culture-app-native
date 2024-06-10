@@ -11,6 +11,8 @@ const mockedSubcateroriesV2Response = PLACEHOLDER_DATA
 const mockedUndefinedFacets = undefined
 const mockedNewMappingEnabled = true
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('MappingTree', () => {
   it('createMappingTree should return correct tree', () => {
     const expectedResult = treeResultFixture

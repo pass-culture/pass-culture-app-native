@@ -11,6 +11,8 @@ jest.mock('features/navigation/helpers/navigateToHome')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 const hideModal = jest.fn()
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('NonEligibleModal', () => {
   it('should render correctly for onboarding non-eligible under 15', () => {
     renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)

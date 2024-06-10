@@ -22,6 +22,8 @@ jest.spyOn(usePushPermission, 'usePushPermission').mockReturnValue({
   refreshPermission: jest.fn(),
 })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('NotificationsSettings', () => {
   it('should render correctly', () => {
     const { container } = render(reactQueryProviderHOC(<NotificationsSettings />))

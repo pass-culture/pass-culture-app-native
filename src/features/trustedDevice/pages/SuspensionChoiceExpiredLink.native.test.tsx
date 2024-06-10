@@ -9,6 +9,8 @@ import { render, screen, fireEvent } from 'tests/utils'
 
 const mockOpenUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SuspensionChoiceExpiredLink/>', () => {
   it('should match snapshot', () => {
     render(<SuspensionChoiceExpiredLink />)

@@ -24,6 +24,8 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<Favorites/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 

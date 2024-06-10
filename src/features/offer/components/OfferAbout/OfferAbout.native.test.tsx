@@ -5,6 +5,8 @@ import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { render, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<OfferAbout />', () => {
   const metadata = [
     { label: 'Speaker', value: 'Donald' },

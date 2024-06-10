@@ -11,6 +11,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 // We mock server instead of hooks to test the real behavior of the component.
 mockServer.getApi<UserProfileResponse>('/v1/me', beneficiaryUser)
 

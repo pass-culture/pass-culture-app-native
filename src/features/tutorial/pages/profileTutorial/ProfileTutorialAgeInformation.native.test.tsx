@@ -48,6 +48,8 @@ const navPropsEighteenSelected = { route: { params: { age: 18 } } } as StackScre
   'ProfileTutorialAgeInformation'
 >
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ProfileTutorialAgeInformation />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)

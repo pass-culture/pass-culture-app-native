@@ -17,6 +17,8 @@ jest.mock('libs/network/NetInfoWrapper')
 
 const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('EndedBookingItem', () => {
   it('should display offer title', () => {
     renderEndedBookingItem(bookingsSnap.ended_bookings[0])

@@ -11,6 +11,8 @@ import { toMutable } from 'shared/types/toMutable'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('useSearchVenueOffers', () => {
   const position: Position = { latitude: 48.90374, longitude: 2.48171 }
 

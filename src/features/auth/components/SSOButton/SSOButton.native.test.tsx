@@ -37,6 +37,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.useFakeTimers()
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SSOButton />', () => {
   beforeEach(() => {
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {

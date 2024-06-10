@@ -46,6 +46,8 @@ mockUseAuthContext.mockReturnValue({
   refetchUser: jest.fn(),
 })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('HomeHeader', () => {
   it.each`
     usertype                     | user                                                                              | isLoggedIn | credit                                | subtitle

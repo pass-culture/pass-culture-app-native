@@ -23,6 +23,8 @@ jest.mock('react-native/Libraries/LogBox/LogBox')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<App /> with mocked RootNavigator', () => {
   it("should override font for Batch's in-app messages", () => {
     renderApp()

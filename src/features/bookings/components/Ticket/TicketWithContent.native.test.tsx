@@ -9,6 +9,8 @@ jest.mock('libs/subcategories/useSubcategory')
 
 const booking = bookingsSnap.ongoing_bookings[1]
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<TicketWithContent/>', () => {
   it('should render properly', () => {
     render(<TicketWithContent booking={booking} />)

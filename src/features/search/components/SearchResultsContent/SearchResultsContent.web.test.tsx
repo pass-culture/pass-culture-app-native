@@ -52,6 +52,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('SearchResultsContent component', () => {
   it('should render correctly', async () => {
     const { container } = render(reactQueryProviderHOC(<SearchResultsContent />))

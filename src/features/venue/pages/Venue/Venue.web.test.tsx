@@ -80,6 +80,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.setTimeout(15_000)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
