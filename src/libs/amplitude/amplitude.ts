@@ -4,7 +4,7 @@ import { env } from 'libs/environment'
 
 import { AmplitudeClient } from './types'
 
-amplitudeRN.init(env.AMPLITUDE_API_KEY, undefined, {
+amplitudeRN.init(env.AMPLITUDE_API_PUBLIC_KEY, undefined, {
   serverZone: amplitudeRN.Types.ServerZone.EU,
   optOut: true,
   minIdLength: 1,
