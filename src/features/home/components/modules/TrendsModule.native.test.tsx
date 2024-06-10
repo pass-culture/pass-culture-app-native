@@ -25,11 +25,11 @@ describe('TrendsModule', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 
-    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenCalledWith(
-      'g6VpeYbOosfALeqR55Ah6',
-      'trends',
-      1,
-      '4Fs4egA8G2z3fHgU2XQj3h'
-    )
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenCalledWith({
+      moduleId: 'g6VpeYbOosfALeqR55Ah6',
+      moduleType: 'trends',
+      index: 1,
+      homeEntryId: '4Fs4egA8G2z3fHgU2XQj3h',
+    })
   })
 })
