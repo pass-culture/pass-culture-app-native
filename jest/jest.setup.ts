@@ -34,9 +34,6 @@ jest.mock('features/navigation/TabBar/routes')
 /* See the corresponding mocks in features/navigation/RootNavigator/linking/__mocks__ */
 jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
 
-// /* See the corresponding mocks in libs/firebase/analytics/__mocks__ */
-jest.mock('libs/firebase/analytics/provider')
-
 /* See the corresponding mocks in libs/analytics/__mocks__ */
 jest.mock('libs/analytics/logEventAnalytics')
 jest.mock('libs/analytics/provider')
