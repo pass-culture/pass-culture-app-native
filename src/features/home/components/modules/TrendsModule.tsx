@@ -24,7 +24,12 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
 
   useEffect(() => {
     if (enableTrendsModule) {
-      analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.TRENDS, index, homeEntryId)
+      analytics.logModuleDisplayedOnHomepage({
+        moduleId,
+        moduleType: ContentTypes.TRENDS,
+        index,
+        homeEntryId,
+      })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enableTrendsModule])
