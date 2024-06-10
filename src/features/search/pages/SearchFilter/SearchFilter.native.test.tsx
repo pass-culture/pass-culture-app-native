@@ -16,7 +16,7 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SearchFilter } from './SearchFilter'
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 useNavigationState.mockImplementation(() => [{ name: 'SearchFilter' }])
 
@@ -196,16 +196,10 @@ describe('<SearchFilter/>', () => {
     expect(await screen.findByTestId('Revenir en arrière')).toBeOnTheScreen()
   })
 
-  describe('Accessibility', () => {
-    beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
-    })
+  it('should display accessibility section', async () => {
+    renderSearchFilter()
 
-    it('should display accessibility section', async () => {
-      renderSearchFilter()
-
-      expect(await screen.findByText('Accessibilité')).toBeOnTheScreen()
-    })
+    expect(await screen.findByText('Accessibilité')).toBeOnTheScreen()
   })
 })
 
