@@ -9,6 +9,8 @@ import { render, waitFor } from 'tests/utils'
 
 import { AppWithoutMonitoring } from './App'
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => ({
   AppNavigationContainer: () => 'Placeholder for NavigationContainer',
 }))

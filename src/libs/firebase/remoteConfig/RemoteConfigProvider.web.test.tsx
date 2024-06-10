@@ -5,6 +5,8 @@ import { render, waitFor } from 'tests/utils/web'
 import { remoteConfig } from './remoteConfig.services'
 import { RemoteConfigProvider } from './RemoteConfigProvider'
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 const mockedRemoteConfigRefresh = remoteConfig.refresh as jest.MockedFunction<
   typeof remoteConfig.refresh
 >

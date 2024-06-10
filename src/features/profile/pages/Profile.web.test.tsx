@@ -5,6 +5,8 @@ import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { Profile } from './Profile'
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('features/favorites/context/FavoritesWrapper')
 
 describe('<Profile/>', () => {

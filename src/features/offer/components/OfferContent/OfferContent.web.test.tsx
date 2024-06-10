@@ -16,6 +16,8 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 import { OfferContent } from './OfferContent'
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',

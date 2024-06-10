@@ -11,6 +11,8 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { EndedBookingItem } from './EndedBookingItem'
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('libs/network/NetInfoWrapper')
 
 const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
