@@ -11,12 +11,15 @@ import {
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
+import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { theme } from 'theme'
 import { PlayV2 } from 'ui/svg/icons/PlayV2'
+import { SoundOff } from 'ui/svg/icons/SoundOff'
+import { SoundOn } from 'ui/svg/icons/SoundOn'
 import { getSpacing, Typo } from 'ui/theme'
 
-const PLAYER_CONTROLS_HEIGHT = getSpacing(33)
+const PLAYER_CONTROLS_HEIGHT = getSpacing(0)
 
 interface VideoPlayerProps {
   videoSources: string[]
@@ -38,6 +41,9 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   setHasFinishedPlaying,
 }) => {
   const [showErrorView, setShowErrorView] = useState(false)
+  const [elapsed, setElapsed] = useState(1)
+  const [isMuted, setIsMuted] = useState(true)
+
   const { isDesktopViewport } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
   const { playerHeight, playerWidth } = getVideoPlayerDimensions(
@@ -62,8 +68,28 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useEffect(() => {
+    const getVideoDuration = async () => {
+      return playerRef.current?.getDuration()
+    }
+
+    const interval = setInterval(async () => {
+      const videoDuration = await getVideoDuration()
+      const elapsed_sec = await playerRef.current?.getCurrentTime()
+      if (elapsed_sec && videoDuration) setElapsed(elapsed_sec / videoDuration)
+    }, 100)
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [])
+
   const togglePlay = () => {
     setIsPlaying(!isPlaying)
+  }
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted)
   }
 
   const playVideo = () => {
@@ -109,6 +135,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           style={{ height: playerHeight, width: windowWidth }}
           onPressReplay={replayVideo}
           onPressNext={playNextVideo}
+          hasMultipleSources={videoSources.length > 1}
         />
       )
     }
@@ -118,7 +145,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           style={{ height: playerHeight - PLAYER_CONTROLS_HEIGHT }}
           start={{ x: 0, y: 0.9 }}
           end={{ x: 0, y: 1 }}
-          colors={[colorAlpha(theme.colors.black, 0.9), colorAlpha(theme.colors.black, 0)]}>
+          colors={[colorAlpha(theme.colors.black, 0.9), colorAlpha(theme.colors.black, 0.9)]}>
           <ButtonsContainer>
             <ButtonWithCaption
               onPress={togglePlay}
@@ -143,14 +170,15 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
             modestbranding: true,
             color: 'white',
             showClosedCaptions: false,
+            controls: false,
           }}
           height={playerHeight}
           width={playerWidth}
           play={isPlaying}
-          onReady={playVideo}
+          onReady={isPlaying ? playVideo : pauseVideo}
           onError={() => setShowErrorView(true)}
           videoId={videoSources[currentIndex]}
-          mute
+          mute={isMuted}
           webViewProps={{
             injectedJavaScript: `
             var element = document.getElementsByClassName("container")[0];
@@ -173,6 +201,26 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           <PlayerCalque />
         </React.Fragment>
       )}
+
+      {isPlaying ? (
+        <StyledProgressContainer>
+          <ControlsContainer>
+            <ButtonWithCaption
+              onPress={togglePlay}
+              icon={StyledSmallPlayIcon}
+              wording=""
+              accessibilityLabel="Jouer ou mettre en pause la vidéo"
+            />
+            <ButtonWithCaption
+              onPress={toggleMute}
+              icon={isMuted ? StyledMutedIcon : StyledUnmutedIcon}
+              wording=""
+              accessibilityLabel="Désactiver le son"
+            />
+          </ControlsContainer>
+          <CreditProgressBar progress={elapsed} height="small" />
+        </StyledProgressContainer>
+      ) : null}
 
       {showErrorView ? (
         <ErrorView style={{ height: playerHeight }}>
@@ -211,9 +259,29 @@ const ButtonsContainer = styled.View({
   justifyContent: 'center',
 })
 
+const ControlsContainer = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
+
 const StyledPlayIcon = styled(PlayV2).attrs(({ theme }) => ({
   color: theme.colors.black,
   size: theme.icons.sizes.standard,
+}))``
+
+const StyledUnmutedIcon = styled(SoundOn).attrs(({ theme }) => ({
+  color: theme.colors.black,
+  size: theme.icons.sizes.small,
+}))``
+
+const StyledSmallPlayIcon = styled(PlayV2).attrs(({ theme }) => ({
+  color: theme.colors.black,
+  size: theme.icons.sizes.small,
+}))``
+
+const StyledMutedIcon = styled(SoundOff).attrs(({ theme }) => ({
+  color: theme.colors.black,
+  size: theme.icons.sizes.small,
 }))``
 
 const ErrorView = styled.View({
@@ -223,4 +291,11 @@ const ErrorView = styled.View({
   top: 0,
   bottom: 0,
   backgroundColor: theme.colors.black,
+})
+
+const StyledProgressContainer = styled.View({
+  position: 'absolute',
+  bottom: getSpacing(2),
+  left: getSpacing(2),
+  right: getSpacing(2),
 })

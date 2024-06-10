@@ -11,6 +11,7 @@ import { TrendsModule } from 'features/home/components/modules/TrendsModule'
 import { VenueMapModule } from 'features/home/components/modules/VenueMapModule'
 import { AppV2VenuesModule } from 'features/home/components/modules/venues/AppV2VenuesModule'
 import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
+import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import {
   HomepageModule,
@@ -32,7 +33,7 @@ const modules = {
   [HomepageModuleType.VenueMapModule]: VenueMapModule,
   [HomepageModuleType.VideoModule]: VideoModule,
   [HomepageModuleType.VenuesModule]: VenuesModule,
-  [HomepageModuleType.VideoCarouselModule]: null,
+  [HomepageModuleType.VideoCarouselModule]: VideoCarouselModule,
 }
 
 const UnmemoizedModule = ({

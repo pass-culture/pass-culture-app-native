@@ -1,4 +1,5 @@
 import { useScrollToTop } from '@react-navigation/native'
+import { without } from 'lodash'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   NativeScrollEvent,
@@ -29,6 +30,7 @@ import {
   isVenuesModule,
   isVideoCarouselModule,
   ThematicHeader,
+  VideoCarouselModule as VideoCarouselModuleType,
 } from 'features/home/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -80,6 +82,16 @@ const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
       <Spacer.TabBar />
     </React.Fragment>
   )
+}
+
+const buildModulesWithVideoCarousel = (
+  modules: HomepageModule[],
+  videoModules: VideoCarouselModuleType[]
+) => {
+  if (videoModules.length > 1) {
+    return without(modules, videoModules[0])
+  }
+  return modules.filter(isNotVideoCarouselModule)
 }
 
 const MODULES_TIMEOUT_VALUE_IN_MS = 3000
@@ -140,8 +152,11 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     }
   })
 
-  const videoCarouselModule = modulesToDisplay.filter(isVideoCarouselModule)
-  const modulesToDisplayWithoutCarousel = modulesToDisplay.filter(isNotVideoCarouselModule)
+  const videoCarouselModules = modulesToDisplay.filter(isVideoCarouselModule)
+  const modulesToDisplayWithoutCarousel = buildModulesWithVideoCarousel(
+    modulesToDisplay,
+    videoCarouselModules
+  )
 
   const scrollRef = useRef<IOFlatListController>(null)
   useScrollToTop(scrollRef)
@@ -215,13 +230,18 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       <React.Fragment>
         {Header}
         <Spacer.Column numberOfSpaces={6} />
-        {videoCarouselModule[0] ? (
-          <VideoCarouselModule index={0} homeEntryId={homeId} {...videoCarouselModule[0]} />
+        {videoCarouselModules[0] ? (
+          <VideoCarouselModule
+            index={0}
+            homeEntryId={homeId}
+            {...videoCarouselModules[0]}
+            autoplay
+          />
         ) : null}
         <PageContent>{HomeBanner}</PageContent>
       </React.Fragment>
     ),
-    [videoCarouselModule, HomeBanner, Header, homeId]
+    [videoCarouselModules, HomeBanner, Header, homeId]
   )
 
   return (

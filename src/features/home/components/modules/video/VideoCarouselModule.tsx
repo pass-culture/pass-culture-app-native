@@ -31,6 +31,7 @@ const CAROUSEL_ANIMATION_DURATION = 500
 interface VideoCarouselModuleBaseProps extends VideoCarouselModuleType {
   index: number
   homeEntryId: string
+  autoplay?: boolean
 }
 
 export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps> = (props) => {
@@ -43,14 +44,14 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const enableVideoCarousel = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16)
   const shouldModuleBeDisplayed = Platform.OS !== 'web'
 
-  const { homeEntryId, items, color, id } = props
+  const { homeEntryId, items, color, id, autoplay } = props
   const itemsWithRelatedData = useVideoCarouselData(items, homeEntryId)
 
   const hasItems = itemsWithRelatedData.length > 0
   const videoSources = videoSourceExtractor(itemsWithRelatedData)
 
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(autoplay ? true : false)
   const [hasFinishedPlaying, setHasFinishedPlaying] = useState(false)
 
   const playNextVideo = () => {
@@ -130,7 +131,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         <AttachedOfferCard
           title="Le meilleur du cinéma en juin pour un été de folie"
           categoryId={null}
-          categoryText="Lecture"
+          categoryText="Cinéma"
           showImage={false}
           date="Du 16/05 au 14/08"
           withRightArrow
@@ -138,6 +139,16 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         />
       </StyledInternalTouchableLink>
     )
+  }
+
+  const SingleElement = () => {
+    if (itemsWithRelatedData[0]) {
+      return (
+        <React.Fragment>{renderItem({ item: itemsWithRelatedData[0], index: 1 })}</React.Fragment>
+      )
+    } else {
+      return null
+    }
   }
 
   return (
@@ -152,26 +163,34 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         setHasFinishedPlaying={setHasFinishedPlaying}
       />
       <ColoredAttachedTileContainer color={color}>
-        <Carousel
-          ref={carouselRef}
-          testID="videoCarousel"
-          vertical={false}
-          height={CAROUSEL_HEIGHT}
-          width={width}
-          loop={false}
-          scrollAnimationDuration={CAROUSEL_ANIMATION_DURATION}
-          onProgressChange={(_, absoluteProgress) => {
-            progressValue.value = absoluteProgress
-            setCurrentIndex(Math.round(absoluteProgress))
-          }}
-          data={itemsWithRelatedData}
-          renderItem={renderItem}
-        />
-        <DotContainer>
-          {itemsWithRelatedData.map((_, index) => (
-            <CarouselBar animValue={progressValue} index={index} key={index + carouselDotId} />
-          ))}
-        </DotContainer>
+        {itemsWithRelatedData.length > 1 ? (
+          <React.Fragment>
+            <Carousel
+              ref={carouselRef}
+              mode="parallax"
+              testID="videoCarousel"
+              vertical={false}
+              height={CAROUSEL_HEIGHT}
+              panGestureHandlerProps={{ activeOffsetX: [-5, 5] }}
+              width={width}
+              loop={false}
+              scrollAnimationDuration={CAROUSEL_ANIMATION_DURATION}
+              onProgressChange={(_, absoluteProgress) => {
+                progressValue.value = absoluteProgress
+                setCurrentIndex(Math.round(absoluteProgress))
+              }}
+              data={itemsWithRelatedData}
+              renderItem={renderItem}
+            />
+            <DotContainer>
+              {itemsWithRelatedData.map((_, index) => (
+                <CarouselBar animValue={progressValue} index={index} key={index + carouselDotId} />
+              ))}
+            </DotContainer>
+          </React.Fragment>
+        ) : (
+          <SingleElement />
+        )}
       </ColoredAttachedTileContainer>
     </Container>
   )
