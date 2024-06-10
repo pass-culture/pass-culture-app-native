@@ -2,14 +2,14 @@ import React from 'react'
 // eslint-disable-next-line no-restricted-imports
 import * as DeviceDetect from 'react-device-detect'
 
-import { render, screen } from 'tests/utils'
+import { render, screen } from 'tests/utils/web'
 import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
 
 describe('SupportedBrowsersGate', () => {
   it('render correctly', () => {
-    render(<SupportedBrowsersGate />)
+    const { container } = render(<SupportedBrowsersGate />)
 
-    expect(screen).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   describe.each`
@@ -47,7 +47,7 @@ describe('SupportedBrowsersGate', () => {
           screen.queryByText(
             `Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (${browserName} v${minimalSupportedVersion}) n’est pas à jour`
           )
-        ).not.toBeOnTheScreen()
+        ).not.toBeInTheDocument()
       })
 
       it(`should not support ${browserName} for versions below ${minimalSupportedVersion}`, () => {
@@ -60,7 +60,7 @@ describe('SupportedBrowsersGate', () => {
           screen.getByText(
             `Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (${browserName} v${unsupportedVersion}) n’est pas à jour`
           )
-        ).toBeOnTheScreen()
+        ).toBeInTheDocument()
       })
     }
   )
