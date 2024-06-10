@@ -17,24 +17,26 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { screen, render, act } from 'tests/utils'
 
-jest.mock('libs/subcategories/useSubcategory')
+jest.mock('libs/network/NetInfoWrapper')
 
-const mockTimeStamp = '2024-05-08T12:50:00Z'
-const mockDate = new Date(mockTimeStamp)
-const mockName = 'Sailor et Lula'
+const MOCK_TIMESTAMP = '2024-05-08T12:50:00Z'
+const MOCK_DATE = new Date(MOCK_TIMESTAMP)
+const MOCK_NAME = 'Sailor et Lula'
+const ID = 2051
+const PRICE = 7
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 const VenueOffersResponseMatchingFixture = [
   {
     _geoloc: { lat: 47.8898, lng: -2.83593 },
-    objectID: '2051',
+    objectID: ID.toString(),
     offer: {
-      dates: [mockDate.getTime(), mockDate.getTime()],
+      dates: [MOCK_DATE.getTime(), MOCK_DATE.getTime()],
       isDigital: false,
       isDuo: true,
-      name: 'Sailor et Lula',
-      prices: [570, 570],
+      name: MOCK_NAME,
+      prices: [PRICE, PRICE],
       subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       thumbUrl:
         'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/AQBA',
@@ -48,17 +50,17 @@ const mockedOfferStockResponse = { offers: [offersStocksResponseSnap.offers[0]] 
 
 describe('MoviesScreeningCalendar', () => {
   beforeEach(() => {
-    mockdate.set(mockDate)
+    mockdate.set(MOCK_DATE)
     mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, mockedOfferStockResponse)
-    mockServer.getApi<OfferResponseV2>(`/v2/offer/2051`, {
+    mockServer.getApi<OfferResponseV2>(`/v2/offer/${ID}`, {
       ...offerResponseSnap,
-      id: 2051,
-      name: mockName,
+      id: ID,
+      name: MOCK_NAME,
       stocks: [
         {
           id: 118929,
-          beginningDatetime: mockTimeStamp,
-          price: 500,
+          beginningDatetime: MOCK_TIMESTAMP,
+          price: PRICE,
           isBookable: true,
           isExpired: false,
           isForbiddenToUnderage: false,
@@ -67,8 +69,8 @@ describe('MoviesScreeningCalendar', () => {
         },
         {
           id: 118928,
-          beginningDatetime: mockTimeStamp,
-          price: 500,
+          beginningDatetime: MOCK_TIMESTAMP,
+          price: PRICE,
           isBookable: true,
           isExpired: false,
           isForbiddenToUnderage: false,
@@ -106,10 +108,10 @@ describe('MoviesScreeningCalendar', () => {
   it('should display a movie title if Venue has stock on date', async () => {
     renderMoviesScreeningCalendar({ isDesktopViewport: true, venueOffers: venueOffersMock })
 
-    await screen.findByLabelText('Vendredi 17 Mai')
+    await screen.findByLabelText('Mercredi 8 Mai')
     await act(async () => {})
 
-    expect(screen.getByText(mockName)).toBeOnTheScreen()
+    expect(screen.getByText(MOCK_NAME)).toBeOnTheScreen()
   })
 
   it('should not display a movie title if movie has no screening on selected date', async () => {
@@ -119,7 +121,7 @@ describe('MoviesScreeningCalendar', () => {
     await screen.findByLabelText('Jeudi 9 Mai')
     await act(async () => {})
 
-    expect(screen.queryByText(mockName)).not.toBeOnTheScreen()
+    expect(screen.queryByText(MOCK_NAME)).not.toBeOnTheScreen()
   })
 })
 

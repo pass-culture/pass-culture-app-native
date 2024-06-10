@@ -3,7 +3,7 @@ import { isSameDay } from 'date-fns'
 import { OfferResponseV2, OffersStocksResponseV2 } from 'api/gen'
 
 export const filterOffersStocksByDate = (
-  offerWithStocks: OffersStocksResponseV2 = { offers: [] },
+  offerWithStocks: OffersStocksResponseV2,
   date: Date
 ): OffersStocksResponseV2 => {
   const offersWithStocksFiltered: OfferResponseV2[] = offerWithStocks.offers.map((offer) => {

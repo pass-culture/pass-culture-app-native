@@ -49,20 +49,19 @@ export function VenueOffers({ venue, venueOffers, playlists }: Readonly<VenueOff
   )
   const enableNewXpCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE)
 
-  switch (true) {
-    case areVenueOffersLoading || arePlaylistsLoading:
-      return <LoadingState />
-
-    case !venue || !venueOffers || venueOffers.hits.length === 0:
-      return <NoOfferPlaceholder />
-
-    case isOfferAMovieScreening && enableNewXpCine:
-      // we are sure that venueOffers is defined here because of the previous case,
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      return <MovieScreening venueOffers={venueOffers!} />
-    default:
-      return <VenueOffersList venue={venue} venueOffers={venueOffers} playlists={playlists} />
+  if (areVenueOffersLoading || arePlaylistsLoading) {
+    return <LoadingState />
   }
+
+  if (!venue || !venueOffers || venueOffers.hits.length === 0) {
+    return <NoOfferPlaceholder />
+  }
+
+  if (isOfferAMovieScreening && enableNewXpCine) {
+    return <MovieScreening venueOffers={venueOffers} />
+  }
+
+  return <VenueOffersList venue={venue} venueOffers={venueOffers} playlists={playlists} />
 }
 
 const MoviesTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))({
