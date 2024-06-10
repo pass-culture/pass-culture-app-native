@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { ViewStyle, FlatListProps, FlatList, Platform } from 'react-native'
+import { FlatList, FlatListProps, Platform, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryBlock } from 'features/home/components/modules/categories/CategoryBlock'
@@ -63,7 +63,12 @@ export const CategoryListModule = ({
   } = useHorizontalFlatListScroll({ ref: flatListRef, isActive: enableAppV2CategoryBlock && isWeb })
 
   useEffect(() => {
-    analytics.logModuleDisplayedOnHomepage(id, ContentTypes.CATEGORY_LIST, index, homeEntryId)
+    analytics.logModuleDisplayedOnHomepage({
+      moduleId: id,
+      moduleType: ContentTypes.CATEGORY_LIST,
+      index,
+      homeEntryId,
+    })
   }, [id, homeEntryId, index])
 
   const theme = useTheme()

@@ -4,6 +4,7 @@ import { DisabilitiesProperties } from 'features/accessibility/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { SearchState } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
+import { splitArrayIntoStrings } from 'shared/splitArrayIntoStrings/splitArrayIntoStrings'
 
 type Props = NativeSyntheticEvent<NativeScrollEvent>['nativeEvent'] & { padding?: number }
 
@@ -23,6 +24,10 @@ type PerformSearchState = {
   searchQuery?: string
   searchTimeRange?: string
   searchIsBasedOnHistory?: boolean
+}
+
+type ModuleDisplayedOnHomepageState = {
+  [key: string]: string
 }
 
 export const isCloseToBottom = ({
@@ -143,4 +148,35 @@ export const buildPerformSearchState = (
     state.searchIsBasedOnHistory = searchState.isFromHistory
   }
   return state
+}
+
+export const buildModuleDisplayedOnHomepage = (
+  maxItemsPerString: number,
+  offers?: string[],
+  venues?: string[]
+) => {
+  const moduleDisplayedOnHomepageState: ModuleDisplayedOnHomepageState = {}
+
+  const addEntries = (prefix: string, array: string[]) => {
+    if (array?.length) {
+      const arrayIntoStrings = splitArrayIntoStrings(array, maxItemsPerString)
+      arrayIntoStrings.forEach((value, index) => {
+        const startValueIndex = index * maxItemsPerString + 1
+        const endValueIndex = (index + 1) * maxItemsPerString
+
+        const key = `${prefix}${startValueIndex}_${endValueIndex}`
+
+        moduleDisplayedOnHomepageState[key] = value
+      })
+    }
+  }
+
+  if (offers?.length) {
+    addEntries('offers', offers)
+  }
+  if (venues?.length) {
+    addEntries('venues', venues)
+  }
+
+  return moduleDisplayedOnHomepageState
 }

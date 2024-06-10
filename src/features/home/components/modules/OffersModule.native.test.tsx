@@ -7,7 +7,7 @@ import { OffersModuleParameters } from 'features/home/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { transformHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
-import { DisplayParametersFields, ContentTypes } from 'libs/contentful/types'
+import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
@@ -153,13 +153,13 @@ describe('OffersModule', () => {
     it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
       renderOffersModule()
 
-      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
-        1,
-        props.moduleId,
-        ContentTypes.ALGOLIA,
-        props.index,
-        props.homeEntryId
-      )
+      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+        moduleId: props.moduleId,
+        moduleType: ContentTypes.ALGOLIA,
+        index: props.index,
+        homeEntryId: props.homeEntryId,
+        offers: ['102280', '102272', '102249', '102310'],
+      })
     })
 
     it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {

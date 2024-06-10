@@ -48,13 +48,13 @@ describe('VideoModule', () => {
 
     await act(async () => {})
 
-    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
-      1,
-      videoModuleFixture.id,
-      'video',
-      1,
-      'abcd'
-    )
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+      moduleId: videoModuleFixture.id,
+      moduleType: 'video',
+      index: 1,
+      homeEntryId: 'abcd',
+      offers: [1234],
+    })
   })
 
   it('should not log ModuleDisplayedOnHomePage event when module is not rendered', async () => {

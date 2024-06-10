@@ -25,12 +25,12 @@ describe('CategoryListModule', () => {
         />
       )
 
-      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenCalledWith(
-        '123',
-        ContentTypes.CATEGORY_LIST,
-        1,
-        'homeEntryId'
-      )
+      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+        moduleId: '123',
+        moduleType: ContentTypes.CATEGORY_LIST,
+        index: 1,
+        homeEntryId: 'homeEntryId',
+      })
     })
 
     it('should call analytics when a categoryBlock is clicked', () => {

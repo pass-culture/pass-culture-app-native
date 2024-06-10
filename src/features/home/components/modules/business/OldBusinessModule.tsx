@@ -14,7 +14,7 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
+import { getSpacing, LENGTH_XS, MARGIN_DP, RATIO_BUSINESS, Spacer, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
@@ -75,7 +75,12 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
-      analytics.logModuleDisplayedOnHomepage(moduleId, ContentTypes.BUSINESS, index, homeEntryId)
+      analytics.logModuleDisplayedOnHomepage({
+        moduleId,
+        moduleType: ContentTypes.BUSINESS,
+        index,
+        homeEntryId,
+      })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])

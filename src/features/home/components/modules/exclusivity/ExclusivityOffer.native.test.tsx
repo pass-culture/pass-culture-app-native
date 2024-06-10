@@ -8,7 +8,7 @@ import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/E
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
-import { render, fireEvent, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
   useMaxPrice: jest.fn(() => 300),
@@ -70,13 +70,13 @@ describe('ExclusivityModule component', () => {
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
     render(<ExclusivityOffer {...props} />)
 
-    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
-      1,
-      props.moduleId,
-      ContentTypes.EXCLUSIVITY,
-      props.index,
-      props.homeEntryId
-    )
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+      moduleId: props.moduleId,
+      moduleType: ContentTypes.EXCLUSIVITY,
+      index: props.index,
+      homeEntryId: props.homeEntryId,
+      offers: ['116656'],
+    })
   })
 
   it('should not trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {

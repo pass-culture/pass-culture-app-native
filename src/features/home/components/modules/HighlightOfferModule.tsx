@@ -19,7 +19,7 @@ import { theme } from 'theme'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 import { MarketingBlockExclusivity } from './marketing/MarketingBlockExclusivity'
@@ -39,7 +39,7 @@ type HighlightOfferModuleProps = HighlightOfferModuleType & {
 }
 
 const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
-  const { id, offerId, offerEan, offerTag, isGeolocated, aroundRadius } = props
+  const { id, offerId, offerEan, offerTag, isGeolocated, aroundRadius, index, homeEntryId } = props
   const highlightOffer = useHighlightOffer({
     id,
     offerId,
@@ -48,6 +48,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
     isGeolocated,
     aroundRadius,
   })
+
   const [offerDetailsHeight, setOfferDetailsHeight] = useState(0)
   const categoryLabelMapping = useCategoryHomeLabelMapping()
   const categoryIdMapping = useCategoryIdMapping()
@@ -56,12 +57,13 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const isNewExclusivityModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_EXCLUSIVITY_MODULE)
 
   useEffect(() => {
-    analytics.logModuleDisplayedOnHomepage(
-      props.id,
-      ContentTypes.HIGHLIGHT_OFFER,
-      props.index,
-      props.homeEntryId
-    )
+    analytics.logModuleDisplayedOnHomepage({
+      moduleId: id,
+      moduleType: ContentTypes.HIGHLIGHT_OFFER,
+      index,
+      homeEntryId,
+      offers: offerId ? [offerId] : undefined,
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

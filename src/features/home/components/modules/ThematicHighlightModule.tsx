@@ -50,12 +50,12 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
 
   useEffect(() => {
     !shouldHideModule &&
-      analytics.logModuleDisplayedOnHomepage(
-        id,
-        ContentTypes.THEMATIC_HIGHLIGHT,
+      analytics.logModuleDisplayedOnHomepage({
+        moduleId: id,
+        moduleType: ContentTypes.THEMATIC_HIGHLIGHT,
         index,
-        homeEntryId
-      )
+        homeEntryId,
+      })
     // should send analytics event only once
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

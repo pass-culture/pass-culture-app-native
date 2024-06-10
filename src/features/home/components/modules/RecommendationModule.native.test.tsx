@@ -41,14 +41,14 @@ describe('RecommendationModule', () => {
     renderRecommendationModule()
 
     await waitFor(() => {
-      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
-        1,
-        'abcd',
-        ContentTypes.RECOMMENDATION,
-        1,
-        'xyz',
-        defaultRecommendationApiParams
-      )
+      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+        moduleId: 'abcd',
+        moduleType: ContentTypes.RECOMMENDATION,
+        index: 1,
+        homeEntryId: 'xyz',
+        apiRecoParams: defaultRecommendationApiParams,
+        offers: ['102280', '102272', '102249', '102310'],
+      })
     })
   })
 

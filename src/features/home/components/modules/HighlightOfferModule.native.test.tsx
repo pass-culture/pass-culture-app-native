@@ -75,13 +75,13 @@ describe('HighlightOfferModule', () => {
 
     await act(async () => {})
 
-    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenCalledTimes(1)
-    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenCalledWith(
-      'fH2FmoYeTzZPjhbz4ZHUW',
-      'highlightOffer',
-      0,
-      'entryId'
-    )
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+      homeEntryId: 'entryId',
+      index: 0,
+      moduleId: 'fH2FmoYeTzZPjhbz4ZHUW',
+      moduleType: 'highlightOffer',
+      offers: ['20859'],
+    })
   })
 
   it('should send analytics event on offer press', async () => {

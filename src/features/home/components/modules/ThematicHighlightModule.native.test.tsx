@@ -49,13 +49,12 @@ describe('ThematicHighlightModule', () => {
   it('should log ModuleDisplayedOnHomePage event when seeing the module', () => {
     render(<ThematicHighlightModule index={0} {...baseThematicHighlightModule} />)
 
-    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
-      1,
-      '5Z1FGtRGbE3d1Q5oqHMfe9',
-      'thematicHighlight',
-      0,
-      '6nVZ7vaaOM8qOO7wqduuo1'
-    )
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+      moduleId: '5Z1FGtRGbE3d1Q5oqHMfe9',
+      moduleType: 'thematicHighlight',
+      index: 0,
+      homeEntryId: '6nVZ7vaaOM8qOO7wqduuo1',
+    })
   })
 
   it('should not log ModuleDisplayedOnHomePage event when the module is passed (so not displayed)', () => {

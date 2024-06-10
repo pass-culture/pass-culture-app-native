@@ -3,9 +3,10 @@ import { NativeScrollEvent } from 'react-native'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { LocationFilter, SearchView, SearchState } from 'features/search/types'
+import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { LocationMode } from 'libs/algolia/types'
 import { buildLocationFilterParam, buildPerformSearchState, isCloseToBottom } from 'libs/analytics'
+import { buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
 
 const TODAY = new Date(2023, 0, 3)
 
@@ -327,6 +328,79 @@ describe('[Analytics utils]', () => {
         searchIsBasedOnHistory: true,
         searchView: SearchView.Results,
       })
+    })
+  })
+
+  describe('should build parameters for ModuleDisplayedOnHomepage log', () => {
+    const ids = [
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+      '6',
+      '7',
+      '8',
+      '9',
+      '10',
+      '11',
+      '12',
+      '13',
+      '14',
+      '15',
+      '16',
+      '17',
+    ]
+
+    it('should return an empty object when no offers or venues are provided', () => {
+      const result = buildModuleDisplayedOnHomepage(10)
+
+      expect(result).toEqual({})
+    })
+
+    it('should build module state for offers when only offers are provided', () => {
+      const offers = ids
+      const result = buildModuleDisplayedOnHomepage(10, offers)
+
+      expect(result).toEqual({
+        offers1_10: '1,2,3,4,5,6,7,8,9,10',
+        offers11_20: '11,12,13,14,15,16,17',
+      })
+    })
+
+    it('should build module state for venues when only venues are provided', () => {
+      const venues = ids
+      const result = buildModuleDisplayedOnHomepage(10, undefined, venues)
+
+      expect(result).toEqual({
+        venues1_10: '1,2,3,4,5,6,7,8,9,10',
+        venues11_20: '11,12,13,14,15,16,17',
+      })
+    })
+
+    it('should build module state for both offers and venues when both are provided', () => {
+      const offers = ids
+      const venues = ids
+      const result = buildModuleDisplayedOnHomepage(10, offers, venues)
+
+      expect(result).toEqual({
+        offers1_10: '1,2,3,4,5,6,7,8,9,10',
+        offers11_20: '11,12,13,14,15,16,17',
+        venues1_10: '1,2,3,4,5,6,7,8,9,10',
+        venues11_20: '11,12,13,14,15,16,17',
+      })
+    })
+
+    it('should handle empty arrays correctly', () => {
+      const result = buildModuleDisplayedOnHomepage(10, [], [])
+
+      expect(result).toEqual({})
+    })
+
+    it('should handle undefined arrays correctly', () => {
+      const result = buildModuleDisplayedOnHomepage(10, undefined, undefined)
+
+      expect(result).toEqual({})
     })
   })
 

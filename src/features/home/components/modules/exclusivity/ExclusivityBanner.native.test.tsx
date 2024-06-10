@@ -19,12 +19,11 @@ describe('ExclusivityBanner component', () => {
   it('should trigger logEvent "ModuleDisplayedOnHomepage" on render', () => {
     render(<ExclusivityBanner {...props} />)
 
-    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
-      1,
-      props.moduleId,
-      ContentTypes.EXCLUSIVITY,
-      props.index,
-      props.homeEntryId
-    )
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
+      moduleId: props.moduleId,
+      moduleType: ContentTypes.EXCLUSIVITY,
+      index: props.index,
+      homeEntryId: props.homeEntryId,
+    })
   })
 })
