@@ -26,7 +26,7 @@ export const VerticalVideoEndView: React.FC<{
               icon={StyledReplayIcon}
             />
           </ButtonsContainer>
-          {hasMultipleSources ?? (
+          {hasMultipleSources ? (
             <ButtonsContainer>
               <ButtonWithCaption
                 onPress={onPressNext}
@@ -35,7 +35,7 @@ export const VerticalVideoEndView: React.FC<{
                 icon={StyledPlayIcon}
               />
             </ButtonsContainer>
-          )}
+          ) : null}
         </ButtonsWrapper>
       </BlackView>
     </Container>
