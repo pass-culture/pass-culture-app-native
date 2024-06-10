@@ -12,7 +12,8 @@ export const VerticalVideoEndView: React.FC<{
   onPressReplay: () => void
   onPressNext: () => void
   style: StyleProp<ViewStyle>
-}> = ({ onPressReplay, onPressNext, style }) => {
+  hasMultipleSources?: boolean
+}> = ({ onPressReplay, onPressNext, style, hasMultipleSources }) => {
   return (
     <Container style={style}>
       <BlackView>
@@ -25,14 +26,16 @@ export const VerticalVideoEndView: React.FC<{
               icon={StyledReplayIcon}
             />
           </ButtonsContainer>
-          <ButtonsContainer>
-            <ButtonWithCaption
-              onPress={onPressNext}
-              accessibilityLabel="Voir la vidéo suivante"
-              wording="Voir la vidéo suivante"
-              icon={StyledPlayIcon}
-            />
-          </ButtonsContainer>
+          {hasMultipleSources ?? (
+            <ButtonsContainer>
+              <ButtonWithCaption
+                onPress={onPressNext}
+                accessibilityLabel="Voir la vidéo suivante"
+                wording="Voir la vidéo suivante"
+                icon={StyledPlayIcon}
+              />
+            </ButtonsContainer>
+          )}
         </ButtonsWrapper>
       </BlackView>
     </Container>
