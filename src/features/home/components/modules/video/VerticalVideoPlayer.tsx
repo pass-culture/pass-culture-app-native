@@ -11,13 +11,14 @@ import {
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
+import { VerticalVideoErrorView } from 'features/home/components/modules/video/VerticalVideoErrorView'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { theme } from 'theme'
 import { PlayV2 } from 'ui/svg/icons/PlayV2'
 import { SoundOff } from 'ui/svg/icons/SoundOff'
 import { SoundOn } from 'ui/svg/icons/SoundOn'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 const PLAYER_CONTROLS_HEIGHT = getSpacing(0)
 
@@ -223,9 +224,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
       ) : null}
 
       {showErrorView ? (
-        <ErrorView style={{ height: playerHeight }}>
-          <Typo.Caption>Erreur player</Typo.Caption>
-        </ErrorView>
+        <VerticalVideoErrorView style={{ height: playerHeight, width: playerWidth }} />
       ) : null}
     </IntersectionObserver>
   )
@@ -283,15 +282,6 @@ const StyledMutedIcon = styled(SoundOff).attrs(({ theme }) => ({
   color: theme.colors.black,
   size: theme.icons.sizes.small,
 }))``
-
-const ErrorView = styled.View({
-  position: 'absolute',
-  left: -getSpacing(6),
-  right: -getSpacing(6),
-  top: 0,
-  bottom: 0,
-  backgroundColor: theme.colors.black,
-})
 
 const StyledProgressContainer = styled.View({
   position: 'absolute',
