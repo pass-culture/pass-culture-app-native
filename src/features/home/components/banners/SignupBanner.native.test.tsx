@@ -12,19 +12,19 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 describe('SignupBanner', () => {
   describe('When wipAppV2SystemBlock deactivated', () => {
     it('should display banner with background', () => {
-      render(<SignupBanner />)
+      render(<SignupBanner hasGraphicRedesign={false} />)
 
       expect(screen.getByTestId('bannerWithBackground')).toBeOnTheScreen()
     })
 
     it('should not display system banner', () => {
-      render(<SignupBanner />)
+      render(<SignupBanner hasGraphicRedesign={false} />)
 
       expect(screen.queryByTestId('systemBanner')).not.toBeOnTheScreen()
     })
 
     it('should redirect to signup form on press', async () => {
-      render(<SignupBanner />)
+      render(<SignupBanner hasGraphicRedesign={false} />)
 
       fireEvent.press(screen.getByText('Débloque ton crédit'))
 
@@ -34,7 +34,7 @@ describe('SignupBanner', () => {
     })
 
     it('should log analytics on press', async () => {
-      render(<SignupBanner />)
+      render(<SignupBanner hasGraphicRedesign={false} />)
 
       fireEvent.press(screen.getByText('Débloque ton crédit'))
 
@@ -50,19 +50,19 @@ describe('SignupBanner', () => {
     })
 
     it('should not display banner with background', () => {
-      render(<SignupBanner />)
+      render(<SignupBanner hasGraphicRedesign />)
 
       expect(screen.queryByTestId('bannerWithBackground')).not.toBeOnTheScreen()
     })
 
     it('should not  system banner', () => {
-      render(<SignupBanner />)
+      render(<SignupBanner hasGraphicRedesign />)
 
       expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
     })
 
     it('should redirect to signup form on press', async () => {
-      render(<SignupBanner />)
+      render(<SignupBanner hasGraphicRedesign />)
 
       fireEvent.press(screen.getByText('Débloque ton crédit'))
 
@@ -72,7 +72,7 @@ describe('SignupBanner', () => {
     })
 
     it('should log analytics on press', async () => {
-      render(<SignupBanner />)
+      render(<SignupBanner hasGraphicRedesign />)
 
       fireEvent.press(screen.getByText('Débloque ton crédit'))
 

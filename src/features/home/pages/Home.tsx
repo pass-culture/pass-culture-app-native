@@ -88,7 +88,9 @@ export const Home: FunctionComponent = () => {
         modules={modules}
         homeId={id}
         Header={<Header />}
-        HomeBanner={<HomeBanner hasGeolocPosition={hasGeolocPosition} isLoggedIn={isLoggedIn} />}
+        HomeBanner={
+          <HomeBanner hasGeolocPosition={hasGeolocPosition} isLoggedIn={isLoggedIn} homeId={id} />
+        }
         videoModuleId={params?.videoModuleId}
         statusBar={<StatusBarBlurredBackground />}
       />
