@@ -124,7 +124,7 @@ See [the docs](./doc/development/how-to/run-local-api.md) to learn how to develo
 The other option, more complex, is to create a specific scheme 'Development' with a `.env.development` file :
 copy the `.env.testing` configuration and update the `API_BASE_URL` setting with you local server address.
 
-Make sure you also overload the `BATCH_API_KEY_ANDROID` and `BATCH_API_KEY_IOS` variables with the _dev_ values of the _testing_ [batch project](https://dashboard.batch.com/).
+Make sure you also overload the `BATCH_API_KEY_ANDROID` and `BATCH_API_PUBLIC_KEY_IOS` variables with the _dev_ values of the _testing_ [batch project](https://dashboard.batch.com/).
 
 Then copy `testing.keystore` into `development.keystore` and `testing.keystore.properties` into `development.keystore.properties`. Replace the `storeFile` value in `development.keystore.properties`.
 

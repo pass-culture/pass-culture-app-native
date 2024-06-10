@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BatchAPIKey</key>
-	<string>$(BATCH_API_KEY_IOS)</string>
+	<string>$(BATCH_API_PUBLIC_KEY_IOS)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>fr</string>
 	<key>CFBundleDisplayName</key>
