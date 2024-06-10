@@ -154,9 +154,11 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
       <ColoredAttachedTileContainer color={color}>
         <Carousel
           ref={carouselRef}
+          mode="parallax"
           testID="videoCarousel"
           vertical={false}
           height={CAROUSEL_HEIGHT}
+          panGestureHandlerProps={{ activeOffsetX: [-5, 5] }}
           width={width}
           loop={false}
           scrollAnimationDuration={CAROUSEL_ANIMATION_DURATION}
