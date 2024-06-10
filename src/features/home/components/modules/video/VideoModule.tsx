@@ -66,21 +66,26 @@ export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
   }
 
   const videoModuleParams = {
-    isMultiOffer: isMultiOffer,
-    analyticsParams: analyticsParams,
-    showVideoModal: showVideoModal,
-    hideVideoModal: hideVideoModal,
-    offers: offers,
+    isMultiOffer,
+    analyticsParams,
+    showVideoModal,
+    hideVideoModal,
+    offers,
   }
+
+  const VideoModule = () =>
+    enableMultiVideoModule ? (
+      <VideoModuleMobile {...props} {...videoModuleParams} />
+    ) : (
+      <OldVideoModuleMobile {...props} {...videoModuleParams} />
+    )
 
   return (
     <Container>
       {theme.isDesktopViewport ? (
         <VideoModuleDesktop {...props} {...videoModuleParams} />
-      ) : enableMultiVideoModule ? (
-        <VideoModuleMobile {...props} {...videoModuleParams} />
       ) : (
-        <OldVideoModuleMobile {...props} {...videoModuleParams} />
+        <VideoModule />
       )}
       <VideoModal
         visible={videoModalVisible}

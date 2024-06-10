@@ -66,6 +66,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
               />
             </VideoOfferContainer>
             <Spacer.TopScreen />
+            <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
         ) : (
           <VideoOfferContainer
