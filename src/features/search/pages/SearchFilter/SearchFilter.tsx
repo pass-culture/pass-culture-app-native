@@ -16,8 +16,6 @@ import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch
 import { useSync } from 'features/search/helpers/useSync/useSync'
 import { LocationFilter } from 'features/search/types'
 import { analytics } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -29,9 +27,6 @@ import { Spacer } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
   const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
-  const enabledAccessibilityFilter = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_SEARCH_ACCESSIBILITY_FILTER
-  )
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
   useSync(currentRoute === 'SearchFilter')
@@ -131,7 +126,7 @@ export const SearchFilter: React.FC = () => {
   sectionItems.push(Section.Venue)
   sectionItems.push(Section.Price)
   sectionItems.push(Section.DateHour)
-  if (enabledAccessibilityFilter) sectionItems.push(Section.Accessibility)
+  sectionItems.push(Section.Accessibility)
 
   return (
     <Container>
