@@ -14,7 +14,7 @@ export const env: Environment = {
   ANDROID_APP_ID: 'app.android',
   API_BASE_URL: 'https://localhost',
   APPLE_STORE_URL: 'https://apps.apple.com/fr/app/pass-culture/id1557887412',
-  APPS_FLYER_DEV_KEY: 'appsFlyerDevKey',
+  APPS_FLYER_DEV_PUBLIC_KEY: 'appsFlyerDevKey',
   BOOKING_FEEDBACK_LINK: 'https://passculture.qualtrics.com/jfe/form/SV_dcmKZrtRwVABcA6',
   BOOKING_LIMIT_EXCEEDED_URL: 'https://aide.passculture.app/hc/fr/articles/4411991975825',
   CGU_LINK: 'https://passculture.cgu',

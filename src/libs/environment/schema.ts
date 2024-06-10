@@ -14,7 +14,7 @@ export const EnvironmentSchema = yup.object({
   ANDROID_APP_ID: yup.string().required(),
   API_BASE_URL: yup.string().required(),
   APPLE_STORE_URL: yup.string().required(),
-  APPS_FLYER_DEV_KEY: yup.string().required(),
+  APPS_FLYER_DEV_PUBLIC_KEY: yup.string().required(),
   BOOKING_FEEDBACK_LINK: yup.string().required(),
   BOOKING_LIMIT_EXCEEDED_URL: yup.string().required(),
   CGU_LINK: yup.string().required(),
