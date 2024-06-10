@@ -3647,26 +3647,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
             }
           >
             <View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
-                }
-              />
               <View>
                 <View
                   accessibilityRole="button"
