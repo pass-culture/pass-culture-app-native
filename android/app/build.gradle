@@ -146,7 +146,7 @@ android {
         buildConfigField "String", "CODEPUSH_KEY", "\"${project.env.get("CODEPUSH_PUBLIC_KEY_ANDROID")}\"" // @codepush
         multiDexEnabled true
         resConfigs "fr" // https://developer.android.com/studio/build/shrink-code#unused-alt-resources
-        manifestPlaceholders = [GOOGLE_MAPS_API_KEY: project.env.get("GOOGLE_MAPS_API_KEY")] // env variable in the Manifest.xml
+        manifestPlaceholders = [GOOGLE_MAPS_API_PUBLIC_KEY: project.env.get("GOOGLE_MAPS_API_PUBLIC_KEY")] // env variable in the Manifest.xml
     }
 
     // When building Android App Bundles, the splits block is ignored.
