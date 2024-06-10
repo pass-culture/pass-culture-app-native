@@ -41,6 +41,3 @@ appId: ${MAESTRO_APP_ID}
 
 - tapOn: "Appliquer le filtre"
 - tapOn: "Rechercher"
-
-- tapOn: "Ma position"
-- tapOn: "Partout"
