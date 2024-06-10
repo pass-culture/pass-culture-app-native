@@ -14,9 +14,9 @@ import { VerticalVideoEndView } from 'features/home/components/modules/video/Ver
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { theme } from 'theme'
-import { Eye } from 'ui/svg/icons/Eye'
-import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { PlayV2 } from 'ui/svg/icons/PlayV2'
+import { SoundOff } from 'ui/svg/icons/SoundOff'
+import { SoundOn } from 'ui/svg/icons/SoundOn'
 import { getSpacing, Typo } from 'ui/theme'
 
 const PLAYER_CONTROLS_HEIGHT = getSpacing(0)
@@ -135,6 +135,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           style={{ height: playerHeight, width: windowWidth }}
           onPressReplay={replayVideo}
           onPressNext={playNextVideo}
+          hasMultipleSources={videoSources.length > 1}
         />
       )
     }
@@ -268,7 +269,7 @@ const StyledPlayIcon = styled(PlayV2).attrs(({ theme }) => ({
   size: theme.icons.sizes.standard,
 }))``
 
-const StyledUnmutedIcon = styled(Eye).attrs(({ theme }) => ({
+const StyledUnmutedIcon = styled(SoundOn).attrs(({ theme }) => ({
   color: theme.colors.black,
   size: theme.icons.sizes.small,
 }))``
@@ -278,7 +279,7 @@ const StyledSmallPlayIcon = styled(PlayV2).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const StyledMutedIcon = styled(EyeSlash).attrs(({ theme }) => ({
+const StyledMutedIcon = styled(SoundOff).attrs(({ theme }) => ({
   color: theme.colors.black,
   size: theme.icons.sizes.small,
 }))``
