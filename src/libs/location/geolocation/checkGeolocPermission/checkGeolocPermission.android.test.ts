@@ -5,8 +5,6 @@ import { checkMultiple, Permission, PERMISSIONS } from 'react-native-permissions
 import { checkGeolocPermission } from 'libs/location/geolocation/checkGeolocPermission/checkGeolocPermission.android'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 
-jest.unmock('libs/location/geolocation/checkGeolocPermission/checkGeolocPermission')
-
 type PermissionValue = 'unavailable' | 'blocked' | 'denied' | 'granted' | 'limited'
 type Permissions = Record<Permission, PermissionValue>
 jest.mock('react-native-permissions', () => ({

@@ -12,7 +12,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
-jest.unmock('libs/keychain')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 useRoute.mockReturnValue({ params: { token: 'token' } })
 
