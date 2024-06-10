@@ -44,9 +44,6 @@ jest.mock('libs/analytics/provider')
 
 jest.mock('libs/appState')
 
-/* See the corresponding mocks in libs/campaign/__mocks__ */
-jest.mock('libs/campaign')
-
 /* No need to actually fetch Firebase's remote config in tests */
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
