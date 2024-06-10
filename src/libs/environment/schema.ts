@@ -18,7 +18,7 @@ export const EnvironmentSchema = yup.object({
   BOOKING_FEEDBACK_LINK: yup.string().required(),
   BOOKING_LIMIT_EXCEEDED_URL: yup.string().required(),
   CGU_LINK: yup.string().required(),
-  CONTENTFUL_ACCESS_TOKEN: yup.string().required(),
+  CONTENTFUL_PUBLIC_ACCESS_TOKEN: yup.string().required(),
   CONTENTFUL_ENVIRONMENT: yup.string().required(),
   CONTENTFUL_SPACE_ID: yup.string().required(),
   COOKIES_POLICY_LINK: yup.string().required(),

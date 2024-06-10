@@ -18,7 +18,7 @@ export const env: Environment = {
   BOOKING_FEEDBACK_LINK: 'https://passculture.qualtrics.com/jfe/form/SV_dcmKZrtRwVABcA6',
   BOOKING_LIMIT_EXCEEDED_URL: 'https://aide.passculture.app/hc/fr/articles/4411991975825',
   CGU_LINK: 'https://passculture.cgu',
-  CONTENTFUL_ACCESS_TOKEN: 'accessToken',
+  CONTENTFUL_PUBLIC_ACCESS_TOKEN: 'accessToken',
   CONTENTFUL_ENVIRONMENT: 'environment',
   CONTENTFUL_SPACE_ID: 'contentfulSpaceId',
   COOKIES_POLICY_LINK: 'https://passculture.cookies',
