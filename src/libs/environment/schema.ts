@@ -4,7 +4,7 @@ export const EnvironmentSchema = yup.object({
   ACCESSIBILITY_LINK: yup.string().required(),
   ALGOLIA_APPLICATION_ID: yup.string().required(),
   ALGOLIA_OFFERS_INDEX_NAME: yup.string().required(),
-  ALGOLIA_SEARCH_API_KEY: yup.string().required(),
+  ALGOLIA_SEARCH_API_PUBLIC_KEY: yup.string().required(),
   ALGOLIA_VENUE_OFFERS_INDEX_NAME: yup.string().required(),
   ALGOLIA_VENUES_INDEX_NAME: yup.string().required(),
   ALGOLIA_SUGGESTIONS_INDEX_NAME: yup.string().required(),

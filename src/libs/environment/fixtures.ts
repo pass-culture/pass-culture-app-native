@@ -4,7 +4,7 @@ export const env: Environment = {
   ACCESSIBILITY_LINK: 'https://passculture.accessibility',
   ALGOLIA_APPLICATION_ID: 'algoliaAppId',
   ALGOLIA_OFFERS_INDEX_NAME: 'algoliaOffersIndexName',
-  ALGOLIA_SEARCH_API_KEY: 'algoliaApiKey',
+  ALGOLIA_SEARCH_API_PUBLIC_KEY: 'algoliaApiKey',
   ALGOLIA_VENUE_OFFERS_INDEX_NAME: 'algoliaVenueOffersIndexName',
   ALGOLIA_VENUES_INDEX_NAME: 'algoliaVenuesIndexName',
   ALGOLIA_SUGGESTIONS_INDEX_NAME: 'algoliaSuggestionsIndexName',
