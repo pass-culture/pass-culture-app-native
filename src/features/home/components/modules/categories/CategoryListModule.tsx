@@ -14,9 +14,7 @@ import { BicolorArrowLeft as DefaultBicolorArrowLeft } from 'ui/svg/icons/Bicolo
 import { BicolorArrowRight as DefaultBicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { CircleNavButtons } from '../../CircleNavButtons/CircleNavButtons'
-
-export type CategoryListProps = {
+type CategoryListProps = {
   id: string
   title: string
   categoryBlockList: CategoryBlockData[]
@@ -53,9 +51,6 @@ export const CategoryListModule = ({
   homeEntryId,
 }: CategoryListProps) => {
   const enableAppV2CategoryBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK)
-  const isCircleNavButtonsDisplayed = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS
-  )
   const flatListRef = useRef<FlatList<null>>(null)
   const {
     handleScrollPrevious,
@@ -145,7 +140,6 @@ export const CategoryListModule = ({
           </ScrollButtonForNotTouchDevice>
         ) : null}
       </FlatListContainer>
-      {isCircleNavButtonsDisplayed ? <CircleNavButtons /> : null}
     </React.Fragment>
   )
 }

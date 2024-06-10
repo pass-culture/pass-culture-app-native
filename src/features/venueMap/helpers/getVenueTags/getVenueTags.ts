@@ -1,4 +1,4 @@
-import { isString } from 'shared/string/isString'
+import { isString } from 'shared/typeguards/isString'
 
 export function getVenueTags({
   distance,

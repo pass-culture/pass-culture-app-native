@@ -4,7 +4,7 @@ import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { SearchQueryParameters, VenueHit } from 'libs/algolia/types'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { Layout } from 'libs/contentful/types'
+import { ContentTypes, Layout } from 'libs/contentful/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { GtlLevel } from 'shared/gtl/types'
 import { Offer } from 'shared/offer/types'
@@ -17,6 +17,7 @@ export enum HomepageModuleType {
   'RecommendedOffersModule' = 'RecommendedOffersModule',
   'ExclusivityModule' = 'ExclusivityModule',
   'ThematicHighlightModule' = 'ThematicHighlightModule',
+  'TrendsModule' = 'TrendsModule',
   'CategoryListModule' = 'CategoryListModule',
   'VideoModule' = 'VideoModule',
   'HighlightOfferModule' = 'HighlightOfferModule',
@@ -80,6 +81,7 @@ export type HomepageModule =
   | ExclusivityModule
   | RecommendedOffersModule
   | ThematicHighlightModule
+  | TrendsModule
   | VenuesModule
   | CategoryListModule
   | VideoModule
@@ -293,6 +295,24 @@ export type CategoryBlock = {
   homeEntryId: string
   image?: string
   color: Color
+}
+
+export type TrendBlock = {
+  id: string
+  title: string
+} & (
+  | { image: { uri: string }; homeEntryId: string; type: ContentTypes.TREND_BLOCK }
+  | {
+      image: { testUri: string }
+      homeEntryId?: string
+      type: ContentTypes.VENUE_MAP_BLOCK
+    }
+)
+
+export type TrendsModule = {
+  type: HomepageModuleType.TrendsModule
+  id: string
+  items: TrendBlock[]
 }
 
 export enum Color {

@@ -1,4 +1,4 @@
-import { isString } from 'shared/string/isString'
+import { isString } from 'shared/typeguards/isString'
 
 describe('isString', () => {
   it('should return true for a string', () => {
