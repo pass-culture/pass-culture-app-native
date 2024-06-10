@@ -7,12 +7,12 @@ import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+const ERROR_TITLE = 'Oups\u00a0!'
+const ERROR_MESSAGE = 'Une erreur s’est produite pendant le chargement de la vidéo'
+
 export const VerticalVideoErrorView: React.FC<{
   style?: StyleProp<ViewStyle>
 }> = ({ style }) => {
-  const errorTitle = 'Oups\u00a0!'
-  const errorMessage = 'Une erreur s’est produite pendant le chargement de la vidéo'
-
   return (
     <Content style={style}>
       <Spacer.TopScreen />
@@ -25,9 +25,9 @@ export const VerticalVideoErrorView: React.FC<{
         />
       </BrokenConnectionContainer>
       <ErrorMessageContainer>
-        <StyledErrorTitle>{errorTitle}</StyledErrorTitle>
+        <StyledErrorTitle>{ERROR_TITLE}</StyledErrorTitle>
         <Spacer.Column numberOfSpaces={4} />
-        <StyledErrorMessage>{errorMessage}</StyledErrorMessage>
+        <StyledErrorMessage>{ERROR_MESSAGE}</StyledErrorMessage>
       </ErrorMessageContainer>
     </Content>
   )
