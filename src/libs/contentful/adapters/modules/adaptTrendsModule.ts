@@ -8,6 +8,7 @@ import {
   TrendsContentModel,
   VenueMapBlockContentModel,
 } from 'libs/contentful/types'
+import { isNonNullable } from 'shared/typeguards/isNonNullable'
 
 export const adaptTrendsModule = (module: TrendsContentModel): TrendsModule | null => {
   if (module.fields === undefined) return null
@@ -17,10 +18,6 @@ export const adaptTrendsModule = (module: TrendsContentModel): TrendsModule | nu
     type: HomepageModuleType.TrendsModule,
     items: adaptTrendBlock(module.fields.items),
   }
-}
-
-const nonNullable = <T>(value: T): value is NonNullable<T> => {
-  return !!value
 }
 
 const adaptTrendBlock = (
@@ -55,4 +52,4 @@ const adaptTrendBlock = (
         type: ContentTypes.TREND_BLOCK,
       }
     })
-    .filter(nonNullable)
+    .filter(isNonNullable)
