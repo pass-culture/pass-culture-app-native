@@ -63,7 +63,7 @@ describe('adaptTrendsModule', () => {
     expect(adaptTrendsModule(unpublishedTrends)).toEqual(null)
   })
 
-  it('should filter out venue map when no homeEntryId is provided', () => {
+  it('should not filter out venue map block when no homeEntryId is provided', () => {
     const venueBlock = trendsModuleFixture.fields?.items[0] as VenueMapBlockContentModel
     const trendBlock = trendsModuleFixture.fields?.items[1] as TrendBlockContentModel
     const unpublishedTrends = {
@@ -83,6 +83,14 @@ describe('adaptTrendsModule', () => {
           },
           title: 'Tendance 1',
           type: ContentTypes.TREND_BLOCK,
+        },
+        {
+          id: '6dn0unOv4tRBNfOebVHOOy',
+          image: {
+            testUri: '../../../src/features/home/images/map.png',
+          },
+          title: 'Bloc carte',
+          type: ContentTypes.VENUE_MAP_BLOCK,
         },
       ],
     })

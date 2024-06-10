@@ -300,10 +300,14 @@ export type CategoryBlock = {
 export type TrendBlock = {
   id: string
   title: string
-  image: { uri: string } | { testUri: string }
-  homeEntryId: string
-  type: ContentTypes
-}
+} & (
+  | { image: { uri: string }; homeEntryId: string; type: ContentTypes.TREND_BLOCK }
+  | {
+      image: { testUri: string }
+      homeEntryId?: string
+      type: ContentTypes.VENUE_MAP_BLOCK
+    }
+)
 
 export type TrendsModule = {
   type: HomepageModuleType.TrendsModule

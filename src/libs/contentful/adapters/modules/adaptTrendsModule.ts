@@ -1,3 +1,5 @@
+import { Platform } from 'react-native'
+
 import MapImage from 'features/home/images/map.png'
 import { HomepageModuleType, TrendBlock, TrendsModule } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
@@ -27,7 +29,7 @@ const adaptTrendBlock = (
 
   if (isVenueMapBlockContentModel(trend)) {
     const { title, homeEntryId } = trend.fields
-    if (!homeEntryId) return null
+    if (!homeEntryId && Platform.OS === 'web') return null
     return {
       id: trend.sys.id,
       title,
