@@ -104,7 +104,7 @@ describe('<HomeModule />', () => {
     })
 
     it('Highlight module should not have basic accessibility issues', async () => {
-      mockedUseFeatureFlag.mockReturnValueOnce(true)
+      mockedUseFeatureFlag.mockReturnValueOnce(false)
       mockUseHighlightOffer.mockReturnValueOnce(highlightOfferFixture)
 
       const { container } = renderHomeModule(highlightOfferModuleFixture)
