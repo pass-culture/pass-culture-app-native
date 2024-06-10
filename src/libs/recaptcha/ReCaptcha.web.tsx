@@ -65,7 +65,7 @@ export function ReCaptcha(props: Readonly<Props>) {
         grecaptcha.ready(() => {
           if (grecaptcha.render) {
             reCaptchaWidgetRef.current = grecaptcha.render(reCaptchaContainer, {
-              sitekey: env.SITE_KEY,
+              sitekey: env.SITE_PUBLIC_KEY,
               callback: onSuccess,
               'expired-callback': props.onExpire,
               'error-callback': onRecaptchaErrorCallback,

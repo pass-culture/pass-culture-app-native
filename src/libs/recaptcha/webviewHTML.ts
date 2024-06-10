@@ -82,7 +82,7 @@ export const reCaptchaWebviewHTML = `
         <body>
             <div class="container">
                 <div class="g-recaptcha"
-                     data-sitekey="${env.SITE_KEY}"
+                     data-sitekey="${env.SITE_PUBLIC_KEY}"
                      data-callback="onSuccess"
                      data-expired-callback="onExpire"
                      data-error-callback="onRecaptchaErrorCallback"
