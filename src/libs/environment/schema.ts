@@ -26,7 +26,6 @@ export const EnvironmentSchema = yup.object({
   DATA_PRIVACY_CHART_LINK: yup.string().required(),
   DOC_CGU_URL: yup.string().required(),
   DOC_PERSONAL_DATA_URL: yup.string().required(),
-  DSM_URL: yup.string().required(),
   DMS_FRENCH_CITIZEN_URL: yup.string().required(),
   DMS_FOREIGN_CITIZEN_URL: yup.string().required(),
   EDUCONNECT_ALLOWED_DOMAIN: yup.string().required(),

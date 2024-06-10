@@ -28,7 +28,6 @@ export const env: Environment = {
     'https//docs.passculture.app/textes-normatifs/mentions-legales-et-conditions-generales-dutilisation-de-lapplication-pass-culture',
   DOC_PERSONAL_DATA_URL:
     'https://docs.passculture.app/textes-normatifs/charte-des-donnees-personnelles',
-  DSM_URL: 'https://www.demarches-simplifiees.fr/commencer/inscription-pass-culture',
   DMS_FRENCH_CITIZEN_URL: 'https://dmsfrenchcitizen',
   DMS_FOREIGN_CITIZEN_URL: 'https://dmsforeigncitizen',
   EDUCONNECT_ALLOWED_DOMAIN: 'https://educoco_alloweddodo',
