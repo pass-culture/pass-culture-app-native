@@ -16,40 +16,37 @@ export const adaptTrendsModule = (module: TrendsContentModel): TrendsModule | nu
   return {
     id: module.sys.id,
     type: HomepageModuleType.TrendsModule,
-    items: adaptTrendBlock(module.fields.items),
+    items: module.fields.items.map(adaptTrendBlock).filter(isNonNullable),
   }
 }
 
 const adaptTrendBlock = (
-  trendBlocks: (TrendBlockContentModel | VenueMapBlockContentModel)[]
-): TrendBlock[] =>
-  trendBlocks
-    .map((trend) => {
-      if (trend.fields === undefined) return null
+  trend: TrendBlockContentModel | VenueMapBlockContentModel
+): TrendBlock | null => {
+  if (trend.fields === undefined) return null
 
-      if (isVenueMapBlockContentModel(trend)) {
-        const { title, homeEntryId } = trend.fields
-        if (!homeEntryId) return null
-        return {
-          id: trend.sys.id,
-          title,
-          homeEntryId,
-          image: MapImage,
-          type: ContentTypes.VENUE_MAP_BLOCK,
-        }
-      }
+  if (isVenueMapBlockContentModel(trend)) {
+    const { title, homeEntryId } = trend.fields
+    if (!homeEntryId) return null
+    return {
+      id: trend.sys.id,
+      title,
+      homeEntryId,
+      image: MapImage,
+      type: ContentTypes.VENUE_MAP_BLOCK,
+    }
+  }
 
-      const { title, image, homeEntryId } = trend.fields
+  const { title, image, homeEntryId } = trend.fields
 
-      const imageUrl = buildImageUrl(image.fields?.file.url)
-      if (!imageUrl) return null
+  const imageUrl = buildImageUrl(image.fields?.file.url)
+  if (!imageUrl) return null
 
-      return {
-        id: trend.sys.id,
-        title,
-        homeEntryId,
-        image: { uri: imageUrl },
-        type: ContentTypes.TREND_BLOCK,
-      }
-    })
-    .filter(isNonNullable)
+  return {
+    id: trend.sys.id,
+    title,
+    homeEntryId,
+    image: { uri: imageUrl },
+    type: ContentTypes.TREND_BLOCK,
+  }
+}
