@@ -7,7 +7,7 @@ import { VideoMonoOfferTile } from 'features/home/components/modules/video/Video
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
 import { Play } from 'ui/svg/icons/Play'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { videoModuleMobileColorsMapping } from 'ui/theme/videoModuleMobileColorsMapping'
@@ -58,6 +58,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
                 offers={props.offers}
                 hideModal={props.hideVideoModal}
                 analyticsParams={props.analyticsParams}
+                homeEntryId={props.homeEntryId}
               />
             </VideoOfferContainer>
           ) : (

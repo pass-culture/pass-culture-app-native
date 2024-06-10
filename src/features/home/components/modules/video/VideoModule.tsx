@@ -10,6 +10,7 @@ import { VideoModule as VideoModuleType, VideoModuleProps } from 'features/home/
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
+import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useModal } from 'ui/components/modals/useModal'
@@ -24,12 +25,12 @@ const VideoModuleMobileFF: FunctionComponent<VideoModuleProps> = (props) => {
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
+  const hasGraphicRedesign = useHasGraphicRedesign({
+    featureFlag: enableMultiVideoModule,
+    homeId: props.homeEntryId,
+  })
 
-  return enableMultiVideoModule ? (
-    <VideoModuleMobile {...props} />
-  ) : (
-    <OldVideoModuleMobile {...props} />
-  )
+  return hasGraphicRedesign ? <VideoModuleMobile {...props} /> : <OldVideoModuleMobile {...props} />
 }
 
 export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {

@@ -15,7 +15,7 @@ import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Play } from 'ui/svg/icons/Play'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 const THUMBNAIL_HEIGHT_MULTI_OFFER = getSpacing(90)
@@ -98,6 +98,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
               color={props.color}
               hideModal={props.hideVideoModal}
               analyticsParams={props.analyticsParams}
+              homeEntryId={props.homeEntryId}
             />
           )}
         </VideoOfferContainer>

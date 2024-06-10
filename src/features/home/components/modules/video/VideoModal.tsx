@@ -18,7 +18,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalSwipeDirection } from 'ui/components/modals/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface VideoModalProps extends VideoModule {
   offers: Offer[]
@@ -111,6 +111,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
               color={props.color}
               hideModal={props.hideModal}
               analyticsParams={analyticsParams}
+              homeEntryId={props.homeEntryId}
             />
             <Spacer.Column numberOfSpaces={8} />
           </React.Fragment>
