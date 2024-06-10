@@ -175,7 +175,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           height={playerHeight}
           width={playerWidth}
           play={isPlaying}
-          onReady={playVideo}
+          onReady={isPlaying ? playVideo : pauseVideo}
           onError={() => setShowErrorView(true)}
           videoId={videoSources[currentIndex]}
           mute={isMuted}

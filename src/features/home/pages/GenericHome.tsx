@@ -231,7 +231,12 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
         {Header}
         <Spacer.Column numberOfSpaces={6} />
         {videoCarouselModules[0] ? (
-          <VideoCarouselModule index={0} homeEntryId={homeId} {...videoCarouselModules[0]} />
+          <VideoCarouselModule
+            index={0}
+            homeEntryId={homeId}
+            {...videoCarouselModules[0]}
+            autoplay
+          />
         ) : null}
         <PageContent>{HomeBanner}</PageContent>
       </React.Fragment>

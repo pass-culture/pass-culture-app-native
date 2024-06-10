@@ -31,6 +31,7 @@ const CAROUSEL_ANIMATION_DURATION = 500
 interface VideoCarouselModuleBaseProps extends VideoCarouselModuleType {
   index: number
   homeEntryId: string
+  autoplay?: boolean
 }
 
 export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps> = (props) => {
@@ -43,14 +44,14 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const enableVideoCarousel = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16)
   const shouldModuleBeDisplayed = Platform.OS !== 'web'
 
-  const { homeEntryId, items, color, id } = props
+  const { homeEntryId, items, color, id, autoplay } = props
   const itemsWithRelatedData = useVideoCarouselData(items, homeEntryId)
 
   const hasItems = itemsWithRelatedData.length > 0
   const videoSources = videoSourceExtractor(itemsWithRelatedData)
 
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(autoplay ? true : false)
   const [hasFinishedPlaying, setHasFinishedPlaying] = useState(false)
 
   const playNextVideo = () => {
