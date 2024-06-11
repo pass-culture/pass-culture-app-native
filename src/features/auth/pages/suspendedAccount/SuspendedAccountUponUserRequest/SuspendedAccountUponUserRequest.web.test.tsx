@@ -9,6 +9,8 @@ import { SuspendedAccountUponUserRequest } from './SuspendedAccountUponUserReque
 
 jest.mock('libs/jwt')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SuspendedAccountUponUserRequest/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

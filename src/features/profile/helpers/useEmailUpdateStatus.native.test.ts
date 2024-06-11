@@ -19,6 +19,8 @@ function simulateEmailUpdateStatusError(code: number) {
   })
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getEmailUpdateStatus', () => {
   it('should capture a Sentry exception when error code is 422 and return undefined', async () => {
     simulateEmailUpdateStatusError(422)

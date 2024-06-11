@@ -18,6 +18,8 @@ jest.mock('uuid', () => {
 
 jest.spyOn(LoginRoutine, 'useLoginRoutine').mockReturnValue(jest.fn())
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ReinitializePassword/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

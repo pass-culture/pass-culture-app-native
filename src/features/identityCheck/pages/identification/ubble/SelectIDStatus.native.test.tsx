@@ -5,6 +5,8 @@ import { SelectIDStatus } from 'features/identityCheck/pages/identification/ubbl
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('SelectIDStatus', () => {
   it('should render SelectIDStatus page correctly', () => {
     render(<SelectIDStatus />)

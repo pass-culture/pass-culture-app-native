@@ -18,6 +18,8 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<AlreadyBooked />', () => {
   it('should dismiss modal when clicking on cta', () => {
     render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponseV2} />)

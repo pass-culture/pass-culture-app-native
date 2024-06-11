@@ -15,6 +15,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('Price component', () => {
   it('should display the search price description when minimum price selected', async () => {
     mockSearchState = { ...initialSearchState, minPrice: '5' }

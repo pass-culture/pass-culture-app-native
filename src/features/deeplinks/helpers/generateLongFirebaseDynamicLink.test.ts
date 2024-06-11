@@ -1,6 +1,8 @@
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks/helpers'
 import { env } from 'libs/environment'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('Formatting deeplink url', () => {
   afterAll(() => jest.resetAllMocks())
 

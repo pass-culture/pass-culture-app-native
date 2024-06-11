@@ -26,6 +26,8 @@ const TestOfferModal: FunctionComponent<OfferModalProps> = (props) => {
   return OfferModal
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('useOfferModal', () => {
   it('do not display anything when there is no modal to display', () => {
     const { result } = renderHook(() =>

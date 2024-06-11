@@ -32,6 +32,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('AccessibleTabBar', () => {
   it('renders correctly', () => {
     const { container } = renderTabBar()

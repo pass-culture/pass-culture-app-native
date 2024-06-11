@@ -58,6 +58,8 @@ jest.mock('libs/jwt')
 
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<Favorite /> component', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...PLACEHOLDER_DATA })

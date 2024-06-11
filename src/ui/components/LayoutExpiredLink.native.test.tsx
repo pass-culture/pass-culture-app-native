@@ -13,6 +13,8 @@ const renderResendEmailButton = () => (
   <ButtonPrimaryWhite wording="Renvoyer l’email" onPress={onResendEmail} disabled={isFetching} />
 )
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<LayoutExpiredLink/>', () => {
   it('should render correctly', () => {
     render(

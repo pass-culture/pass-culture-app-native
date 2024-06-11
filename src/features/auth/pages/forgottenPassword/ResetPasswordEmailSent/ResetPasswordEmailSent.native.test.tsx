@@ -21,6 +21,8 @@ const routeMock: RouteProp<RootStackParamList, 'ResetPasswordEmailSent'> = {
   params: { email: 'john.doe@gmail.com' },
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ResetPasswordEmailSent />', () => {
   beforeEach(() => {
     mockIsMailAppAvailable = true

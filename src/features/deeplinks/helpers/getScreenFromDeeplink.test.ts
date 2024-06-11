@@ -6,6 +6,8 @@ import { WEBAPP_V2_URL } from 'libs/environment'
 // To see the linking config used in the tests, check the file :
 // features/navigation/RootNavigator/__mocks__/routes.ts
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getScreenFromDeeplink()', () => {
   it('should return PageNotFound when route is unknown', () => {
     const url = getFullUrl('unknown-path')

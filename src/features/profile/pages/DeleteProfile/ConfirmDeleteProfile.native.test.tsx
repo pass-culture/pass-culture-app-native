@@ -30,6 +30,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('ConfirmDeleteProfile component', () => {
   it('should render confirm delete profile', () => {
     renderConfirmDeleteProfile()

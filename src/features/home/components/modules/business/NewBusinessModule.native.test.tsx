@@ -39,6 +39,8 @@ const props: BusinessModuleProps = {
   date: 'Du 3 juillet au 4 novembre',
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('NewBusinessModule component', () => {
   const openURLSpy = jest.spyOn(Linking, 'openURL')
 

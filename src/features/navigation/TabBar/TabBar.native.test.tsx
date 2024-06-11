@@ -103,6 +103,8 @@ jest.mock('features/accessibility/context/AccessibilityFiltersWrapper', () => ({
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('TabBar', () => {
   beforeEach(() => {
     mockedUseTabNavigationContext.mockReturnValue({

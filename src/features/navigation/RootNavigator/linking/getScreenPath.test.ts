@@ -1,5 +1,7 @@
 import { getScreenPath } from './getScreenPath'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getScreenPath()', () => {
   it.each`
     screen             | params                        | expectedPath

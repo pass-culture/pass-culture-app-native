@@ -132,6 +132,8 @@ const apiRecoParams: RecommendationApiParams = {
   reco_origin: 'default',
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<BookingOfferModalComponent />', () => {
   it('should dismiss modal when click on rightIconButton and reset state', async () => {
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={mockOffer.id} />))

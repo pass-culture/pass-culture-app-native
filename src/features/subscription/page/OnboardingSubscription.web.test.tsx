@@ -4,6 +4,8 @@ import { OnboardingSubscription } from 'features/subscription/page/OnboardingSub
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('OnboardingSubscription', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

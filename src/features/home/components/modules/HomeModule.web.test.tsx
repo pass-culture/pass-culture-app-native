@@ -65,6 +65,8 @@ const defaultData: ModuleData = {
   moduleId: 'blablabla',
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<HomeModule />', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', {

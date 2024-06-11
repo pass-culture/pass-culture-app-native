@@ -20,6 +20,8 @@ jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
   isLoading: false,
 } as UseEmailUpdateStatusMock)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ConfirmChangeEmail />', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

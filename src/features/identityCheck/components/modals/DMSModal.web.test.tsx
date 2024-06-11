@@ -4,6 +4,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { DMSModal } from './DMSModal'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<DMSModal/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

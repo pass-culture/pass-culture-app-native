@@ -15,6 +15,8 @@ jest.mock('uuid', () => {
   }
 })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<CookiesDetails/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

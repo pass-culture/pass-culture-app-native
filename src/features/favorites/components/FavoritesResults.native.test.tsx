@@ -46,6 +46,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('FavoritesResults component', () => {
   it('should show no result message when list is empty', async () => {
     // eslint-disable-next-line local-rules/independent-mocks

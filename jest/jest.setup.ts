@@ -34,21 +34,11 @@ jest.mock('features/navigation/TabBar/routes')
 /* See the corresponding mocks in features/navigation/RootNavigator/linking/__mocks__ */
 jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
 
-/* See the corresponding mocks in libs/firebase/analytics/__mocks__ */
-jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/analytics/provider')
-
 /* See the corresponding mocks in libs/analytics/__mocks__ */
 jest.mock('libs/analytics/logEventAnalytics')
 jest.mock('libs/analytics/provider')
 
 jest.mock('libs/appState')
-
-/* See the corresponding mocks in libs/campaign/__mocks__ */
-jest.mock('libs/campaign')
-
-/* No need to actually fetch Firebase's remote config in tests */
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 /* See the corresponding mock in libs/environment/__mocks__ */
 jest.mock('libs/environment/env')

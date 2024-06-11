@@ -9,6 +9,8 @@ jest.mock('shared/user/useDepositAmountsByAge')
 const mockUseDepositAmountsByAge = useDepositAmountsByAge as jest.Mock
 mockUseDepositAmountsByAge.mockReturnValue({ eighteenYearsOldDeposit: '300 €' })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<EighteenBirthday/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

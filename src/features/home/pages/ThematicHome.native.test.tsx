@@ -62,6 +62,8 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 
 const modules = [formattedVenuesModule]
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('ThematicHome', () => {
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })
 

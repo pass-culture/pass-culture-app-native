@@ -27,6 +27,8 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 
 const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<OfferVenueBlock />', () => {
   it('should display title', () => {
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} distance="1,1 km" />)

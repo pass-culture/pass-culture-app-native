@@ -23,6 +23,8 @@ mockUseAuthContext.mockImplementation(() => ({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<OfferHeader />', () => {
   beforeEach(() => {
     mockServer.getApi<PaginatedFavoritesResponse>(

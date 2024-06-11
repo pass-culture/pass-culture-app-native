@@ -79,6 +79,8 @@ const defaultOfferResponse: OfferResponseV2 = {
   stocks: [defaultOfferStockResponse],
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('Movie screening calendar', () => {
   it('should render <MovieScreeningCalendar /> with screening ordered by hours', async () => {
     renderMovieScreeningCalendar({

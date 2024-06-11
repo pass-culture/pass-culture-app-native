@@ -25,10 +25,10 @@
 ./src/features/bookOffer/helpers/useRotatingText.ts:54
 ./src/features/bookOffer/helpers/useRotatingText.ts:57
 ./src/features/bookOffer/pages/BookingOfferModal.tsx:134
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:242
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:396
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:426
-./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:459
+./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:244
+./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:398
+./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:428
+./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:461
 ./src/features/bookings/pages/BookingDetails/BookingDetails.tsx:101
 ./src/features/culturalSurvey/helpers/useGetNextQuestion.ts:13
 ./src/features/culturalSurvey/pages/CulturalSurveyQuestions.native.test.tsx:139
@@ -71,7 +71,7 @@
 ./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:81
 ./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:83
 ./src/features/offer/components/VenueSelectionListItem/VenueSelectionListItem.web.tsx:85
-./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:934
+./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.native.test.ts:936
 ./src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts:233
 ./src/features/profile/components/CreditInfo/CreditProgressBar.tsx:26
 ./src/features/search/api/useSearchResults/useSearchResults.ts:83
@@ -159,7 +159,7 @@
 ./src/libs/parsers/highlightLinks.tsx:18
 ./src/libs/parsers/highlightLinks.tsx:22
 ./src/libs/parsers/snakeCaseToUppercaseFirstLetter.ts:2
-./src/libs/parsers/tests/highlightLinks.test.tsx:31
+./src/libs/parsers/tests/highlightLinks.test.tsx:33
 ./src/libs/place/fetchPlaces.ts:8
 ./src/libs/react-query/tests/usePersistQuery.native.test.tsx:118
 ./src/libs/subcategories/__mocks__/useCategoryId.ts:6

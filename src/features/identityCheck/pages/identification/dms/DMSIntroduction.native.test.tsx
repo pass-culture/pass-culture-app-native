@@ -15,6 +15,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('DMSIntroduction', () => {
   it('should log screen view when the screen is mounted', async () => {
     render(<DMSIntroduction />)

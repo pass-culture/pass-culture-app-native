@@ -48,6 +48,8 @@ jest
     withPush: true,
   })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<VenueCTA />', () => {
   it('should navigate to the search page when pressed on', async () => {
     render(<VenueCTA venue={venueResponseSnap} />)

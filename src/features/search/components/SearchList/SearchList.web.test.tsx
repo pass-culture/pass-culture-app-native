@@ -27,6 +27,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SearchList />', () => {
   const renderItem = jest.fn()
 

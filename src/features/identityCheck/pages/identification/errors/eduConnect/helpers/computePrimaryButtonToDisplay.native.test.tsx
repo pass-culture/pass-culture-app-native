@@ -8,6 +8,8 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Email } from 'ui/svg/icons/Email'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('computePrimaryButtonToDisplay', () => {
   const defaultPrimaryButton = (
     <InternalTouchableLink

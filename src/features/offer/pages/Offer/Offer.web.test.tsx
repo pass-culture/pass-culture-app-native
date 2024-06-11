@@ -10,6 +10,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockedOffer: Partial<OfferResponseV2> | undefined = offerResponseSnap
@@ -63,6 +65,8 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
     isFetching: false,
   }),
 }))
+
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('<Offer/>', () => {
   describe('Accessibility', () => {

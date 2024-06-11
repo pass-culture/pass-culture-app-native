@@ -40,6 +40,8 @@ mockdate.set(TODAY)
 
 jest.mock('api/api')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('useCookies', () => {
   beforeAll(() => {
     mockUseAuthContext.mockReturnValue({

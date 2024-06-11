@@ -7,6 +7,8 @@ import { render, fireEvent, screen } from 'tests/utils'
 
 const openURLSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('AccessibilityDeclaration', () => {
   it('should render correctly', () => {
     render(<AccessibilityDeclaration />)

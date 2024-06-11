@@ -38,6 +38,8 @@ const props: BusinessModuleProps = {
   date: undefined,
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('OldBusinessModule component', () => {
   const openURLSpy = jest.spyOn(Linking, 'openURL')
 

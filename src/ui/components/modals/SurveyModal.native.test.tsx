@@ -9,6 +9,8 @@ const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 const hideModalMock = jest.fn()
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SurveyModal />', () => {
   it('should redirect to survey when pressing "Répondre au questionnaire" button', async () => {
     renderSurveyModal({ surveyUrl: 'https://fr.wikipedia.org/wiki/FIEALD' })

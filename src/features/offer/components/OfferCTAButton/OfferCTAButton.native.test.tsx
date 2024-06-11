@@ -76,6 +76,8 @@ const offerEventCTAButtonProps = {
   subcategory: mockSubcategory,
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<OfferCTAButton />', () => {
   beforeEach(() => {
     mockUseAuthContext.mockReturnValue({

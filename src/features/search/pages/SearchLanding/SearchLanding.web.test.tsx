@@ -82,6 +82,8 @@ jest.mock('uuid', () => ({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SearchLanding />', () => {
   describe('Accessibility', () => {
     beforeEach(() => {

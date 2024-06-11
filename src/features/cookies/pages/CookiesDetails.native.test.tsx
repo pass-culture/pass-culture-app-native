@@ -6,6 +6,8 @@ import { screen, render } from 'tests/utils'
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<CookiesDetails/>', () => {
   it('should render correctly', async () => {
     render(

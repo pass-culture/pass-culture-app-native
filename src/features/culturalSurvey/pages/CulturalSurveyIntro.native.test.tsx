@@ -22,6 +22,8 @@ jest.mock('features/share/context/ShareAppWrapper', () => ({
 
 const SHARE_APP_MODAL_STORAGE_KEY = 'has_seen_share_app_modal'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('CulturalSurveyIntro page', () => {
   beforeEach(() => {
     storage.clear(SHARE_APP_MODAL_STORAGE_KEY)

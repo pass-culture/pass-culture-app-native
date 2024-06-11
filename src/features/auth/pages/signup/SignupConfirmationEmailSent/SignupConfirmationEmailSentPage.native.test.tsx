@@ -15,6 +15,8 @@ const navigationProps = {
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SignupConfirmationEmailSentPage />', () => {
   it('should render correctly', async () => {
     mockServer.getApi<EmailValidationRemainingResendsResponse>(

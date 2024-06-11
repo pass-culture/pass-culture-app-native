@@ -27,6 +27,8 @@ const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoCo
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('BookingDetails', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
   useRoute.mockImplementation(() => ({ params: { id: 456 } }))

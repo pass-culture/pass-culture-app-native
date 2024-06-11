@@ -7,6 +7,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ResetPasswordEmailSent/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

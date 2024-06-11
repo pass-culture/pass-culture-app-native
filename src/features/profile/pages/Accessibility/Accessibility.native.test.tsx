@@ -4,6 +4,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { Accessibility } from 'features/profile/pages/Accessibility/Accessibility'
 import { render, fireEvent, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('Accessibility', () => {
   it('should render correctly', () => {
     render(<Accessibility />)

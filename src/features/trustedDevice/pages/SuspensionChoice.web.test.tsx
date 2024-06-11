@@ -5,6 +5,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { SuspensionChoice } from './SuspensionChoice'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SuspensionChoice/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

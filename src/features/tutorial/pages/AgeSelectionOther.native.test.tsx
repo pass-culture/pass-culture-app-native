@@ -26,6 +26,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('AgeSelectionOther', () => {
   beforeEach(async () => {
     await storage.clear('user_age')

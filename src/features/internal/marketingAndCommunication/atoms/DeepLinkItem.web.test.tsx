@@ -21,6 +21,8 @@ Object.assign(navigator, {
   },
 })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<DeeplinkItem />', () => {
   const deeplink: GeneratedDeeplink = {
     firebaseLink: 'https://firebaseLink',

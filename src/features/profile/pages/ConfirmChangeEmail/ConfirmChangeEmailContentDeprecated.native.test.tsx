@@ -37,6 +37,8 @@ jest.spyOn(SnackBarContextModule, 'useSnackBarContext').mockReturnValue({
 
 useRoute.mockReturnValue({ params: { token: 'token' } })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ConfirmChangeEmailDeprecated />', () => {
   it('should navigate to change email expired if last email change expired', () => {
     useEmailUpdateStatusSpy.mockReturnValueOnce({

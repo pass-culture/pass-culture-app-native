@@ -14,6 +14,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   })),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('SelectIDOrigin', () => {
   it('should render correctly', () => {
     render(<SelectIDOrigin />)

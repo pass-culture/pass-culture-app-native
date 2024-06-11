@@ -17,6 +17,8 @@ jest.mock('uuid', () => {
   }
 })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ChangeEmail/> - old version', () => {
   jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 

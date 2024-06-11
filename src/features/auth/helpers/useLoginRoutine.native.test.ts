@@ -46,6 +46,8 @@ const scheduleAccessTokenRemovalSpy = jest.spyOn(
   'scheduleAccessTokenRemoval'
 )
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('useLoginRoutine', () => {
   beforeEach(async () => {
     await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)

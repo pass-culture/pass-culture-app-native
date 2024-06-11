@@ -4,6 +4,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { RecommendedPaths } from './RecommendedPaths'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<RecommendedPaths />', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

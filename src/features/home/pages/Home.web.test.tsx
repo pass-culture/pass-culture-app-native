@@ -10,6 +10,8 @@ import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { Home } from './Home'
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 const mockShouldShowSkeleton = false
 jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => mockShouldShowSkeleton),
@@ -21,6 +23,8 @@ const mockUseHomepageData = useHomepageData as jest.Mock
 jest.mock('libs/location')
 
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
+
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('<Home/>', () => {
   beforeEach(() => {

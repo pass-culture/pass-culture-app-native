@@ -16,6 +16,8 @@ jest.mock('algoliasearch')
 
 const mockMultipleQueries = algoliasearch('', '').multipleQueries
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('useSearchResults', () => {
   describe('useSearchInfiniteQuery', () => {
     it('should fetch offers, venues and all facets', async () => {

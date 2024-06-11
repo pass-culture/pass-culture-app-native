@@ -15,6 +15,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SubcategoryButton/>', () => {
   it('should render SubcategoryButton', async () => {
     render(

@@ -31,6 +31,8 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 jest.mock('libs/jwt')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('useLoginAndRedirect', () => {
   afterEach(jest.runOnlyPendingTimers)
 

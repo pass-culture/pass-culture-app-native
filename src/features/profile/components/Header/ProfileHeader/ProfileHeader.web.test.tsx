@@ -6,6 +6,8 @@ import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { render, screen } from 'tests/utils/web'
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 const user: UserProfileResponse = {
   bookedOffers: {},
   email: 'email2@domain.ext',
@@ -39,6 +41,8 @@ const exBeneficiaryUser: UserProfileResponse = {
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
+
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('ProfileHeader', () => {
   beforeEach(() => {

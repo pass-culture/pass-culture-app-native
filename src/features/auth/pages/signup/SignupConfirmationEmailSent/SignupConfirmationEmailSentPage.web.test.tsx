@@ -16,6 +16,8 @@ const navigationProps = {
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SignupConfirmationEmailSentPage/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

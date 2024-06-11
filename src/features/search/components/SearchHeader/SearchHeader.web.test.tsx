@@ -36,6 +36,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('SearchHeader component', () => {
   afterEach(() => {
     mockSearchState = initialSearchState

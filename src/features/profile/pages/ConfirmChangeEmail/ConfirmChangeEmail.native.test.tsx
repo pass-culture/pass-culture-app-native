@@ -17,6 +17,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ConfirmChangeEmail />', () => {
   it('should render correctly when FF is disabled', () => {
     mockServer.getApi<EmailUpdateStatus>('/v1/profile/email_update/status', {

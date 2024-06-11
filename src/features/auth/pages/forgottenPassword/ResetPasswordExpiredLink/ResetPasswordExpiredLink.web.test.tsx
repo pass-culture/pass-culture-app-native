@@ -11,6 +11,8 @@ const navigationProps = {
   route: { params: { email: 'test@email.com' } },
 } as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ResetPasswordExpiredLink/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

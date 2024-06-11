@@ -30,6 +30,8 @@ const mockUseIsCookiesListUpToDate = jest
 
 jest.mock('features/navigation/navigationRef')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<PrivacyPolicy />', () => {
   it('should not show cookies modal when fetching cookies is loading', async () => {
     mockUseCookies.mockReturnValueOnce({

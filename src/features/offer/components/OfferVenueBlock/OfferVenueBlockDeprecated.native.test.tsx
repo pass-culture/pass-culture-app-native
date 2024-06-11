@@ -24,6 +24,8 @@ jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => mockUseItinerary()),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<OfferVenueBlockDeprecated />', () => {
   it('should display title', () => {
     render(

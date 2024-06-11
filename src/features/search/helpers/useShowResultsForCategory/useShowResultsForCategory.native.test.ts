@@ -26,6 +26,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 const searchId = uuidv4()
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('useShowResultsForCategory', () => {
   beforeEach(() => {
     mockSearchState = {

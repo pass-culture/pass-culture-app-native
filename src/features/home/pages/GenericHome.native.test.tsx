@@ -44,6 +44,8 @@ jest.mock('shared/performance/transactions', () => {
   }
 })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('GenericHome', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
@@ -118,6 +120,8 @@ describe('GenericHome', () => {
     })
   })
 })
+
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('GenericHome page - Analytics', () => {
   const scrollEventMiddle = {

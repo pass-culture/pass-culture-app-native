@@ -49,6 +49,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('useOfferPlaylist', () => {
   describe('When offer is defined', () => {
     it('should return same artist playlist', () => {

@@ -47,6 +47,8 @@ const props = {
   },
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<AcceptCgu/>', () => {
   it('should render correctly', () => {
     renderAcceptCGU()

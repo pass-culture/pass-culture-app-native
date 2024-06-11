@@ -18,6 +18,8 @@ jest.mock('features/cookies/helpers/getAcceptedCookieConsent')
 const mockGetAcceptedCookieConsent = getAcceptedCookieConsent as jest.Mock
 mockGetAcceptedCookieConsent.mockResolvedValue(true)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('logOfferConversion', () => {
   it('should send the corresponding Algolia conversion event when called', async () => {
     await logOfferConversion('abc123')('object123')

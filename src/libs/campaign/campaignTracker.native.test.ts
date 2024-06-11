@@ -4,6 +4,8 @@ import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingCons
 jest.mock('libs/trackingConsent/useTrackingConsent')
 const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('campaignTracker', () => {
   it('should not request ATT when init parameter is false', async () => {
     campaignTracker.init(false)

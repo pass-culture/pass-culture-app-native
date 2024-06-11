@@ -31,6 +31,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<SignupForm/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues for SetEmail', async () => {

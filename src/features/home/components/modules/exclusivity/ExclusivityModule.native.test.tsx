@@ -32,6 +32,8 @@ const props: ExclusivityModuleProps = {
   url: undefined,
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('ExclusivityModule component', () => {
   it('should render ExclusivityOffer component when an offer id is provided', () => {
     render(<ExclusivityModule {...props} />)

@@ -29,6 +29,8 @@ const setUtmParamsSpy = jest.spyOn(StateFromPath, 'setUtmParameters')
 
 jest.useFakeTimers()
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('setMarketingParams', () => {
   it('should not set marketing params when no params are available', async () => {
     await setMarketingParams(undefined, ALL_OPTIONAL_COOKIES)

@@ -115,6 +115,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<Venue />', () => {
   it('should match snapshot', async () => {
     renderVenue(venueId)

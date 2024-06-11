@@ -57,6 +57,8 @@ jest.mock('features/bookings/api/useBookings', () => ({
   })),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('BookingDetails', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 

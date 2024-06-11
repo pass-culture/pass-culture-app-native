@@ -17,6 +17,8 @@ useRemoteConfigContextSpy.mockReturnValue({
   shouldDisplayReassuranceMention: true,
 })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<IdentificationFork />', () => {
   it('should render correctly', () => {
     render(<IdentificationFork />)

@@ -7,6 +7,8 @@ import { render, screen } from 'tests/utils'
 
 const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('CategoryThematicHomeHeader', () => {
   describe('when WIP_APP_V2_THEMATIC_HOME_HEADER is on', () => {
     beforeAll(() => {

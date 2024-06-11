@@ -54,6 +54,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 jest.useFakeTimers()
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<OfferHeader />', () => {
   it('should render all the icons', async () => {
     renderOfferHeader()

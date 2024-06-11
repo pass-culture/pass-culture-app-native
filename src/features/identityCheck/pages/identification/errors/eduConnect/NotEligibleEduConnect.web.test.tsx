@@ -4,6 +4,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { NotEligibleEduConnect } from './NotEligibleEduConnect'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<NotEligibleEduConnect/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

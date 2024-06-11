@@ -9,6 +9,8 @@ import { render, waitFor } from 'tests/utils'
 
 import { AppWithoutMonitoring } from './App'
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => ({
   AppNavigationContainer: () => 'Placeholder for NavigationContainer',
 }))
@@ -20,6 +22,8 @@ jest.mock('libs/campaign')
 jest.mock('react-native/Libraries/LogBox/LogBox')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('<App /> with mocked RootNavigator', () => {
   it("should override font for Batch's in-app messages", () => {

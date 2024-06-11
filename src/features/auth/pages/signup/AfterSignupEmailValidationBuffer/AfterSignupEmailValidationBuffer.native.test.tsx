@@ -38,6 +38,8 @@ jest.useFakeTimers()
 
 const renderPage = () => render(reactQueryProviderHOC(<AfterSignupEmailValidationBuffer />))
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<AfterSignupEmailValidationBuffer />', () => {
   beforeAll(() => {
     useRoute.mockImplementation(() => ({

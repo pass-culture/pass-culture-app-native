@@ -7,6 +7,8 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
+jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
+
 useNavigationState.mockImplementation(() => [{ name: 'SearchFilter' }])
 
 const mockData = PLACEHOLDER_DATA
@@ -38,6 +40,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     dispatch: jest.fn(),
   }),
 }))
+
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('<SearchFilter/>', () => {
   describe('Accessibility', () => {

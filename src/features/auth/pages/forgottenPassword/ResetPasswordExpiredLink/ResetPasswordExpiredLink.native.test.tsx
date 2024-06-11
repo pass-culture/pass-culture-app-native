@@ -19,6 +19,8 @@ const useQuerySpy = jest.spyOn(ReactQueryAPI, 'useQuery')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     mockServer.postApi('/v1/request_password_reset', {})

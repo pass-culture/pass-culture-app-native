@@ -63,6 +63,8 @@ const route = {
   },
 } as unknown as RouteProp<RootStackParamList, 'ValidateEmailChange'>
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('ValidateEmailChange', () => {
   it('should render new email address', () => {
     renderValidateEmailChange()

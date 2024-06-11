@@ -17,6 +17,8 @@ jest.mock('features/auth/context/SettingsContext')
 const signOutMock = jest.fn()
 jest.spyOn(LogoutRoutine, 'useLogoutRoutine').mockReturnValue(signOutMock)
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('DeleteProfileSuccess component', () => {
   it('should render delete profile success', () => {
     render(<DeleteProfileSuccess />)

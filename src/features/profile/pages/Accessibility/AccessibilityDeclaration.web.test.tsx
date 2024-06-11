@@ -4,6 +4,8 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { AccessibilityDeclaration } from './AccessibilityDeclaration'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<AccessibilityDeclaration />', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

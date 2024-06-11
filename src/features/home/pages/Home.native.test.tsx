@@ -52,6 +52,8 @@ jest.mock('shared/performance/transactions', () => {
   }
 })
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('Home page', () => {
   useRoute.mockReturnValue({ params: undefined })
 
