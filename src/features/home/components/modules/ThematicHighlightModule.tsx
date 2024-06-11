@@ -9,6 +9,7 @@ import { computeDateRangeDisplay } from 'features/home/components/helpers/comput
 import { MarketingBlockHighlight } from 'features/home/components/modules/marketing/MarketingBlockHighlight'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
+import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { theme } from 'theme'
@@ -47,6 +48,10 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   const isNewHighlightModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_NEW_HIGHLIGHT_THEMATIC_MODULE
   )
+  const hasGraphicRedesign = useHasGraphicRedesign({
+    featureFlag: isNewHighlightModule,
+    homeId: homeEntryId ?? '',
+  })
 
   useEffect(() => {
     !shouldHideModule &&
@@ -77,7 +82,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
 
   return (
     <React.Fragment>
-      {isNewHighlightModule ? (
+      {hasGraphicRedesign ? (
         <Container testID="new-highlight-module-container">
           <MarketingBlockHighlight
             categoryId={null}
