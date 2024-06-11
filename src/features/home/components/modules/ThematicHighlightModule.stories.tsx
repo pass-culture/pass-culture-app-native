@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import mockDate from 'mockdate'
 import React from 'react'
 
@@ -37,11 +37,11 @@ const defaultArgs = {
   thematicHomeEntryId: '351351',
   index: 0,
 }
-
-export const Default = Template.bind({})
+//TODO(PC-30279): Fix this stories
+const Default = Template.bind({})
 Default.args = defaultArgs
-
-export const OneDayHighlight = Template.bind({})
+//TODO(PC-30279): Fix this stories
+const OneDayHighlight = Template.bind({})
 OneDayHighlight.args = {
   ...defaultArgs,
   beginningDate: new Date('2022-12-21'),
