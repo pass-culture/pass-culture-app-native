@@ -1,6 +1,7 @@
+import { Color } from 'features/home/types'
 import { theme } from 'theme'
 
-export const videoModuleMobileColorsMapping = {
+export const videoModuleMobileColorsMapping: Record<keyof typeof Color, string> = {
   Gold: theme.colors.goldLight100,
   Aquamarine: theme.colors.aquamarineLight,
   SkyBlue: theme.colors.skyBlueLight,

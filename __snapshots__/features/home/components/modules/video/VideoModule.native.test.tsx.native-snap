@@ -190,235 +190,237 @@ exports[`VideoModule should render properly with FF on 1`] = `
           </View>
         </View>
       </View>
-      <View
-        backgroundColor="#DBFFEA"
-        colorCategoryBackgroundHeightUniqueOffer={32}
-        isMultiOffer={false}
-        style={
-          [
-            {
-              "backgroundColor": "#DBFFEA",
-              "height": 32,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        onLayout={[Function]}
-        style={
-          [
-            {
-              "marginBottom": 32,
-              "position": "absolute",
-              "top": 226,
-              "width": "100%",
-            },
-          ]
-        }
-      >
+      <View>
         <View
-          accessibilityRole="link"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={false}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          numberOfSpaces={4}
           style={
-            {
-              "alignItems": "flex-start",
-              "backgroundColor": "#ffffff",
-              "borderColor": "#CBCDD2",
-              "borderRadius": 8,
-              "borderStyle": "solid",
-              "borderWidth": 1,
-              "flexGrow": 1,
-              "height": 140,
-              "marginHorizontal": 24,
-              "opacity": 1,
-              "overflow": "hidden",
-              "userSelect": "auto",
-            }
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          onLayout={[Function]}
+          style={
+            [
+              {
+                "marginBottom": 32,
+              },
+            ]
           }
         >
           <View
+            accessibilityRole="link"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={false}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
+              {
+                "alignItems": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#CBCDD2",
+                "borderRadius": 8,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "flexGrow": 1,
+                "height": 140,
+                "marginHorizontal": 24,
+                "opacity": 1,
+                "overflow": "hidden",
+                "userSelect": "auto",
+              }
             }
           >
             <View
               style={
                 [
                   {
-                    "marginBottom": 16,
-                    "marginLeft": 16,
-                    "marginRight": 16,
-                    "marginTop": 16,
+                    "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 ]
               }
             >
               <View
-                size="medium"
                 style={
                   [
                     {
-                      "borderRadius": 4,
-                      "height": 112,
-                      "shadowColor": "#696A6F",
-                      "shadowOffset": {
-                        "height": 4,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.2,
-                      "shadowRadius": 4,
-                      "width": 80,
+                      "marginBottom": 16,
+                      "marginLeft": 16,
+                      "marginRight": 16,
+                      "marginTop": 16,
                     },
                   ]
                 }
               >
                 <View
+                  size="medium"
                   style={
                     [
                       {
-                        "overflow": "hidden",
-                      },
-                      [
-                        {
-                          "backgroundColor": "#F1F1F4",
-                          "borderRadius": 4,
-                          "height": 112,
-                          "width": 80,
+                        "borderRadius": 4,
+                        "height": 112,
+                        "shadowColor": "#696A6F",
+                        "shadowOffset": {
+                          "height": 4,
+                          "width": 0,
                         },
-                      ],
+                        "shadowOpacity": 0.2,
+                        "shadowRadius": 4,
+                        "width": 80,
+                      },
                     ]
                   }
                 >
-                  <FastImageView
-                    defaultSource={null}
-                    resizeMode="cover"
-                    size="medium"
-                    source={
-                      {
-                        "uri": "http://thumbnail",
-                      }
-                    }
+                  <View
                     style={
-                      {
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                      }
+                      [
+                        {
+                          "overflow": "hidden",
+                        },
+                        [
+                          {
+                            "backgroundColor": "#F1F1F4",
+                            "borderRadius": 4,
+                            "height": 112,
+                            "width": 80,
+                          },
+                        ],
+                      ]
                     }
-                  />
+                  >
+                    <FastImageView
+                      defaultSource={null}
+                      resizeMode="cover"
+                      size="medium"
+                      source={
+                        {
+                          "uri": "http://thumbnail",
+                        }
+                      }
+                      style={
+                        {
+                          "bottom": 0,
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                        }
+                      }
+                    />
+                  </View>
                 </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "marginRight": 16,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  color="Aquamarine"
+                  style={
+                    [
+                      {
+                        "color": "#0E8474",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                        "marginBottom": 4,
+                      },
+                    ]
+                  }
+                >
+                  Concert
+                </Text>
+                <Text
+                  numberOfLines={2}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                        "marginBottom": 4,
+                      },
+                    ]
+                  }
+                >
+                  La nuit des temps
+                </Text>
               </View>
             </View>
             <View
               style={
                 [
                   {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "marginRight": 16,
+                    "bottom": 16,
+                    "position": "absolute",
+                    "right": 16,
                   },
                 ]
               }
             >
-              <Text
-                color="Aquamarine"
-                style={
-                  [
-                    {
-                      "color": "#0E8474",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                      "marginBottom": 4,
-                    },
-                  ]
-                }
+              <View
+                height={24}
+                width={24}
               >
-                Concert
-              </Text>
-              <Text
-                numberOfLines={2}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginBottom": 4,
-                    },
-                  ]
-                }
-              >
-                La nuit des temps
-              </Text>
-            </View>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "bottom": 16,
-                  "position": "absolute",
-                  "right": 16,
-                },
-              ]
-            }
-          >
-            <View
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
             </View>
           </View>
         </View>
+        <View
+          backgroundColor="#DBFFEA"
+          colorCategoryBackgroundHeightUniqueOffer={32}
+          isMultiOffer={false}
+          style={
+            [
+              {
+                "backgroundColor": "#DBFFEA",
+                "height": 32,
+                "position": "absolute",
+                "width": "100%",
+                "zIndex": -1,
+              },
+            ]
+          }
+        />
       </View>
     </View>
   </View>

@@ -50,14 +50,9 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             </PlayerContainer>
           </Thumbnail>
         </StyledTouchableHighlight>
-        <ColorCategoryBackground
-          colorCategoryBackgroundHeightUniqueOffer={COLOR_CATEGORY_BACKGROUND_HEIGHT_MONO_OFFER}
-          backgroundColor={videoModuleMobileColorsMapping[props.color]}
-          isMultiOffer={props.isMultiOffer}
-        />
-        <Spacer.Column numberOfSpaces={4} />
-        {props.isMultiOffer ? (
-          <React.Fragment>
+        <View>
+          <Spacer.Column numberOfSpaces={4} />
+          {props.isMultiOffer ? (
             <VideoOfferContainer>
               <VideoMultiOfferPlaylist
                 offers={props.offers}
@@ -65,24 +60,27 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
                 analyticsParams={props.analyticsParams}
               />
             </VideoOfferContainer>
-            <Spacer.TopScreen />
-            <Spacer.Column numberOfSpaces={6} />
-          </React.Fragment>
-        ) : (
-          <VideoOfferContainer
-            onLayout={(event: LayoutChangeEvent) => {
-              const { height } = event.nativeEvent.layout
-              setMonoOfferCardHeight(height)
-            }}>
-            <StyledVideoMonoOfferTile
-              // @ts-expect-error: because of noUncheckedIndexedAccess
-              offer={props.offers[0]}
-              color={props.color}
-              hideModal={props.hideVideoModal}
-              analyticsParams={props.analyticsParams}
-            />
-          </VideoOfferContainer>
-        )}
+          ) : (
+            <VideoOfferContainer
+              onLayout={(event: LayoutChangeEvent) => {
+                const { height } = event.nativeEvent.layout
+                setMonoOfferCardHeight(height)
+              }}>
+              <StyledVideoMonoOfferTile
+                // @ts-expect-error: because of noUncheckedIndexedAccess
+                offer={props.offers[0]}
+                color={props.color}
+                hideModal={props.hideVideoModal}
+                analyticsParams={props.analyticsParams}
+              />
+            </VideoOfferContainer>
+          )}
+          <ColorCategoryBackground
+            colorCategoryBackgroundHeightUniqueOffer={COLOR_CATEGORY_BACKGROUND_HEIGHT_MONO_OFFER}
+            backgroundColor={videoModuleMobileColorsMapping[props.color]}
+            isMultiOffer={props.isMultiOffer}
+          />
+        </View>
       </View>
     </Container>
   )
@@ -149,17 +147,17 @@ const ColorCategoryBackground = styled.View<{
   colorCategoryBackgroundHeightUniqueOffer: number
   isMultiOffer: boolean
   backgroundColor: ColorsEnum
-}>(({ colorCategoryBackgroundHeightUniqueOffer, isMultiOffer, backgroundColor }) => ({
+}>(({ colorCategoryBackgroundHeightUniqueOffer, isMultiOffer, backgroundColor, theme }) => ({
   height: isMultiOffer
     ? COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER
     : colorCategoryBackgroundHeightUniqueOffer,
   backgroundColor,
+  position: 'absolute',
+  width: '100%',
+  zIndex: theme.zIndex.background,
 }))
 
 const VideoOfferContainer = styled.View({
-  position: 'absolute',
-  top: THUMBNAIL_HEIGHT + getSpacing(4),
-  width: '100%',
   marginBottom: getSpacing(8),
 })
 
