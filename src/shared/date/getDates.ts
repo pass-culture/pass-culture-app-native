@@ -1,4 +1,4 @@
-type BuildTuple<L extends number, T extends any[] = []> = T['length'] extends L
+type BuildTuple<L extends number, T extends unknown[] = []> = T['length'] extends L
   ? T
   : BuildTuple<L, [...T, Date]>
 

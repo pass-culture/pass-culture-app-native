@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo, useRef, useState } from 'react'
+import React, { FunctionComponent, useMemo, useRef, useState, useCallback } from 'react'
 import { FlatList } from 'react-native'
 
 import { useOffersStocks } from 'features/offer/api/useOffersStocks'
@@ -36,6 +36,15 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
     offersWithStocks,
   } = useMoviesScreeningsList(offerIds)
 
+  const getIsLast = useCallback(
+    (index: number) => {
+      const length = offersWithStocks?.offers.length ?? 0
+
+      return index === length - 1
+    },
+    [offersWithStocks?.offers.length]
+  )
+
   return (
     <React.Fragment>
       <MovieCalendar
@@ -53,7 +62,7 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
             offer={item}
             venueOffers={venueOffers}
             date={selectedDate}
-            isLast={index === (offersWithStocks?.offers.length ?? 0) - 2}
+            isLast={getIsLast(index)}
           />
         )}
       />

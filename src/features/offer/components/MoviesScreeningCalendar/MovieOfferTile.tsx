@@ -77,10 +77,9 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, off
 
 const getSubtitles = (offer: OfferPreviewResponse): string[] => {
   const genre = offer.extraData?.genres?.length ? offer.extraData?.genres?.join(' / ') : ''
+  const duration = formatDuration(offer.durationMinutes)
 
-  const duration = offer.durationMinutes ? formatDuration(offer.durationMinutes) : '-'
-
-  return [genre, duration ?? '-']
+  return [genre, duration]
 }
 
 const MovieCalendarContainer = styled(View)(() => ({

@@ -18,6 +18,6 @@ describe('formatDuration', () => {
   })
 
   it('should format duration with zero duration', () => {
-    expect(formatDuration(0)).toEqual(undefined)
+    expect(formatDuration(0)).toEqual('-')
   })
 })
