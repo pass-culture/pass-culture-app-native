@@ -1,8 +1,8 @@
 import colorAlpha from 'color-alpha'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { useWindowDimensions, AppState } from 'react-native'
+import { useWindowDimensions, AppState, Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe'
+import YouTubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -165,7 +165,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
       onChange={(inView) => intersectionObserverListener(inView)}
       key="verticalVideoPlayer">
       <StyledVideoPlayerContainer style={{ height: playerHeight }}>
-        <YoutubePlayer
+        <StyledYoutubePlayer
           ref={playerRef}
           initialPlayerParams={{
             modestbranding: true,
@@ -289,3 +289,8 @@ const StyledProgressContainer = styled.View({
   left: getSpacing(2),
   right: getSpacing(2),
 })
+
+// The app crashed when the youtube player is used with react-navigation. This fixes the issue (source: https://lonelycpp.github.io/react-native-youtube-iframe/navigation-crash/#2-tweak-webview-props)
+const StyledYoutubePlayer = styled(YouTubePlayer).attrs({
+  webViewStyle: Platform.OS === 'android' ? { opacity: 0.99 } : undefined,
+})``
