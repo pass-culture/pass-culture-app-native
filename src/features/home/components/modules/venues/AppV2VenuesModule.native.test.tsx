@@ -4,10 +4,13 @@ import { AppV2VenuesModule } from 'features/home/components/modules/venues/AppV2
 import { ModuleData } from 'features/home/types'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+const mockFeatureFlag = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 const props = {
   data: {
@@ -15,6 +18,7 @@ const props = {
     nbPlaylistResults: venuesSearchFixture.hits.length,
     moduleId: 'fakemoduleid',
   },
+  homeEntryId: 'homeEntryId',
 }
 
 describe('<AppV2VenuesModule />', () => {
@@ -32,12 +36,60 @@ describe('<AppV2VenuesModule />', () => {
     ).not.toBeOnTheScreen()
   })
 
-  it('should return 4 venues maximum', () => {
+  describe('When shouldApplyGraphicRedesign remote config is false', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldApplyGraphicRedesign: false,
+      })
+    })
+
+    it('should return 4 venues maximum when home id not in REDESIGN_AB_TESTING_HOME_MODULES', () => {
+      renderAppV2VenuesModule()
+
+      expect(screen.queryByText('Le Petit Rintintin 5')).not.toBeOnTheScreen()
+    })
+
+    it('should not render list when home id in REDESIGN_AB_TESTING_HOME_MODULES', () => {
+      renderAppV2VenuesModule({ homeEntryId: '4Fs4egA8G2z3fHgU2XQj3h' })
+
+      expect(
+        screen.queryByText('Les lieux culturels à proximité'.toUpperCase())
+      ).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('When shouldApplyGraphicRedesign remote config is true', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldApplyGraphicRedesign: true,
+      })
+    })
+
+    it('should return 4 venues maximum when home id not in REDESIGN_AB_TESTING_HOME_MODULES', () => {
+      renderAppV2VenuesModule()
+
+      expect(screen.queryByText('Le Petit Rintintin 5')).not.toBeOnTheScreen()
+    })
+
+    it('should return 4 venues maximum when home id in REDESIGN_AB_TESTING_HOME_MODULES', () => {
+      renderAppV2VenuesModule({ homeEntryId: '4Fs4egA8G2z3fHgU2XQj3h' })
+
+      expect(screen.queryByText('Le Petit Rintintin 5')).not.toBeOnTheScreen()
+    })
+  })
+
+  it('should not render list when feature flag deactivated', () => {
+    mockFeatureFlag.mockReturnValueOnce(false)
     renderAppV2VenuesModule()
 
-    expect(screen.queryByText('Le Petit Rintintin 5')).not.toBeOnTheScreen()
+    expect(
+      screen.queryByText('Les lieux culturels à proximité'.toUpperCase())
+    ).not.toBeOnTheScreen()
   })
 })
 
-const renderAppV2VenuesModule = (additionalProps: { data?: ModuleData } = {}) =>
-  render(reactQueryProviderHOC(<AppV2VenuesModule {...props} {...additionalProps} />))
+const renderAppV2VenuesModule = (
+  additionalProps: { data?: ModuleData; homeEntryId?: string } = {}
+) => render(reactQueryProviderHOC(<AppV2VenuesModule {...props} {...additionalProps} />))
