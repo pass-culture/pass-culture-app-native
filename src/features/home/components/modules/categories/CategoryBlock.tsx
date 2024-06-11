@@ -6,8 +6,6 @@ import styled from 'styled-components/native'
 import { Color } from 'features/home/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { CategoryButtonV2 } from 'features/search/components/CategoryButton/CategoryButtonV2'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { theme } from 'theme'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -24,6 +22,7 @@ interface CategoryBlockProps {
   title: string
   navigateTo: InternalNavigationProps['navigateTo']
   color: Color
+  hasGraphicRedesign: boolean
   onBeforePress: () => void | Promise<void>
 }
 
@@ -67,13 +66,12 @@ export function CategoryBlock({
   title,
   navigateTo,
   color,
+  hasGraphicRedesign,
   onBeforePress,
 }: Readonly<CategoryBlockProps>) {
-  const enableAppV2CategoryBlock =
-    useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK) || false
   const { navigate } = useNavigation<UseNavigationType>()
 
-  if (enableAppV2CategoryBlock) {
+  if (hasGraphicRedesign) {
     return (
       <StyledCategoryButtonV2
         label={title}
