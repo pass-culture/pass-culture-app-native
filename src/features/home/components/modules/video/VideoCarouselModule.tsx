@@ -16,6 +16,7 @@ import { videoSourceExtractor } from 'features/home/components/helpers/videoSour
 import { newColorMapping } from 'features/home/components/modules/categories/CategoryBlock'
 import { VerticalVideoPlayer } from 'features/home/components/modules/video/VerticalVideoPlayer'
 import { Color, VideoCarouselModule as VideoCarouselModuleType } from 'features/home/types'
+import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
@@ -42,6 +43,10 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const carouselDotId = uuidv4()
 
   const enableVideoCarousel = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16)
+  const hasGraphicRedesign = useHasGraphicRedesign({
+    featureFlag: enableVideoCarousel,
+    homeId: props.homeEntryId,
+  })
   const shouldModuleBeDisplayed = Platform.OS !== 'web'
 
   const { homeEntryId, items, color, id, autoplay } = props
@@ -68,7 +73,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     setHasFinishedPlaying(false)
   }
 
-  if (!shouldModuleBeDisplayed || !hasItems || !enableVideoCarousel) return null
+  if (!shouldModuleBeDisplayed || !hasItems || !hasGraphicRedesign) return null
 
   const renderItem = ({ item, index }: { item: EnrichedVideoCarouselItem; index: number }) => {
     if (item.redirectionMode === RedirectionMode.OFFER && item.offer) {
