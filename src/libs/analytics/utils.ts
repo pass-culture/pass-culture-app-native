@@ -164,7 +164,7 @@ export const buildModuleDisplayedOnHomepage = (
         const startValueIndex = index * maxItemsPerString + 1
         const endValueIndex = (index + 1) * maxItemsPerString
 
-        const key = `${prefix}${startValueIndex}_${endValueIndex}`
+        const key = `${prefix}_${startValueIndex}_${endValueIndex}`
 
         moduleDisplayedOnHomepageState[key] = value
       })

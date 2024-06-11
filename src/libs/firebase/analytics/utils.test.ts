@@ -363,8 +363,8 @@ describe('[Analytics utils]', () => {
       const result = buildModuleDisplayedOnHomepage(10, offers)
 
       expect(result).toEqual({
-        offers1_10: '1,2,3,4,5,6,7,8,9,10',
-        offers11_20: '11,12,13,14,15,16,17',
+        offers_1_10: '1,2,3,4,5,6,7,8,9,10',
+        offers_11_20: '11,12,13,14,15,16,17',
       })
     })
 
@@ -373,8 +373,8 @@ describe('[Analytics utils]', () => {
       const result = buildModuleDisplayedOnHomepage(10, undefined, venues)
 
       expect(result).toEqual({
-        venues1_10: '1,2,3,4,5,6,7,8,9,10',
-        venues11_20: '11,12,13,14,15,16,17',
+        venues_1_10: '1,2,3,4,5,6,7,8,9,10',
+        venues_11_20: '11,12,13,14,15,16,17',
       })
     })
 
@@ -384,10 +384,10 @@ describe('[Analytics utils]', () => {
       const result = buildModuleDisplayedOnHomepage(10, offers, venues)
 
       expect(result).toEqual({
-        offers1_10: '1,2,3,4,5,6,7,8,9,10',
-        offers11_20: '11,12,13,14,15,16,17',
-        venues1_10: '1,2,3,4,5,6,7,8,9,10',
-        venues11_20: '11,12,13,14,15,16,17',
+        offers_1_10: '1,2,3,4,5,6,7,8,9,10',
+        offers_11_20: '11,12,13,14,15,16,17',
+        venues_1_10: '1,2,3,4,5,6,7,8,9,10',
+        venues_11_20: '11,12,13,14,15,16,17',
       })
     })
 
