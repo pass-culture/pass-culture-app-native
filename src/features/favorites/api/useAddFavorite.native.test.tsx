@@ -22,7 +22,6 @@ jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('libs/jwt')
 
-jest.unmock('react-query')
 const offerId = 116656
 
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({

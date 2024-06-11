@@ -2,16 +2,16 @@ import React from 'react'
 
 import { reset } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
+import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { storage } from 'libs/storage'
 import { render, fireEvent, screen, act } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 const mockShowAppModal = jest.fn()
-jest.mock('features/share/context/ShareAppWrapper', () => ({
-  ...jest.requireActual('features/share/context/ShareAppWrapper'),
-  useShareAppContext: () => ({ showShareAppModal: mockShowAppModal }),
-}))
+jest
+  .spyOn(ShareAppWrapperModule, 'useShareAppContext')
+  .mockReturnValue({ showShareAppModal: mockShowAppModal })
 
 const SHARE_APP_MODAL_STORAGE_KEY = 'has_seen_share_app_modal'
 

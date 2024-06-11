@@ -8,11 +8,9 @@ import { act, render } from 'tests/utils/web'
 
 import { onNavigationStateChange } from './services'
 
-jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
-jest.mock('@react-navigation/bottom-tabs', () =>
-  jest.requireActual('@react-navigation/bottom-tabs')
-)
+jest.unmock('@react-navigation/native')
+jest.unmock('@react-navigation/stack')
+jest.unmock('@react-navigation/bottom-tabs')
 
 describe('onNavigationStateChange()', () => {
   it('should log screen view on navigation change', async () => {

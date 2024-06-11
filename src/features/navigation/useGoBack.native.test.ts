@@ -5,8 +5,6 @@ import { useGoBack } from './useGoBack'
 
 let mockCanGoBack = false
 
-jest.unmock('features/navigation/useGoBack')
-
 const mockNavigate = jest.fn()
 const mockGoBack = jest.fn()
 const mockPreviousRoute: { name?: string } = { name: undefined }

@@ -14,8 +14,6 @@ jest.useFakeTimers()
 
 const hideModalMock = jest.fn()
 
-jest.unmock('libs/location')
-
 jest.mock('libs/location/geolocation/getGeolocPosition/getGeolocPosition')
 const getGeolocPositionMock = getGeolocPosition as jest.MockedFunction<typeof getGeolocPosition>
 

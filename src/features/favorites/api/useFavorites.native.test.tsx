@@ -17,8 +17,6 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 jest.mock('libs/jwt')
 
-jest.unmock('react-query')
-
 describe('useFavorites hook', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 

@@ -8,7 +8,7 @@ const onReset = jest.fn()
 
 describe('SearchInput component', () => {
   it('should render SearchInput', () => {
-    expect(render(<SearchInput onFocus={() => {}} />)).toMatchSnapshot()
+    expect(render(<SearchInput onFocus={jest.fn()} />)).toMatchSnapshot()
   })
 
   it('should set value when user input some text', async () => {

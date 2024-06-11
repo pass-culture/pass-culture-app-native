@@ -14,10 +14,6 @@ import {
 } from 'libs/location'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
-jest.mock('features/favorites/context/FavoritesWrapper', () =>
-  jest.requireActual('features/favorites/context/FavoritesWrapper')
-)
-
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
 const mockPositionError = null as GeolocationError | null
 const defaultUseLocation = {
