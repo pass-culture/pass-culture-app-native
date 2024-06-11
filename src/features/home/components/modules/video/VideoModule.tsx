@@ -6,7 +6,7 @@ import { OldVideoModuleMobile } from 'features/home/components/modules/video/Old
 import { VideoModal } from 'features/home/components/modules/video/VideoModal'
 import { VideoModuleDesktop } from 'features/home/components/modules/video/VideoModuleDesktop'
 import { VideoModuleMobile } from 'features/home/components/modules/video/VideoModuleMobile'
-import { VideoModule as VideoModuleType } from 'features/home/types'
+import { VideoModule as VideoModuleType, VideoModuleProps } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
@@ -20,11 +20,19 @@ interface VideoModuleBaseProps extends VideoModuleType {
   shouldShowModal: boolean
 }
 
-export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
+const VideoModuleMobileFF: FunctionComponent<VideoModuleProps> = (props) => {
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
 
+  return enableMultiVideoModule ? (
+    <VideoModuleMobile {...props} />
+  ) : (
+    <OldVideoModuleMobile {...props} />
+  )
+}
+
+export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
   const {
     visible: videoModalVisible,
     showModal: showVideoModal,
@@ -73,19 +81,12 @@ export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
     offers,
   }
 
-  const VideoModule = () =>
-    enableMultiVideoModule ? (
-      <VideoModuleMobile {...props} {...videoModuleParams} />
-    ) : (
-      <OldVideoModuleMobile {...props} {...videoModuleParams} />
-    )
-
   return (
     <Container>
       {theme.isDesktopViewport ? (
         <VideoModuleDesktop {...props} {...videoModuleParams} />
       ) : (
-        <VideoModule />
+        <VideoModuleMobileFF {...props} {...videoModuleParams} />
       )}
       <VideoModal
         visible={videoModalVisible}
