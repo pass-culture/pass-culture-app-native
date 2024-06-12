@@ -18,9 +18,8 @@ export const parameters = {
       order: ['Fondations', 'ui', 'Features'],
     },
   },
+  useQuery:{ featureFlags: { get: () => ({ minimalBuildNumber: 1000000 }) },}
 }
-
-const firestoreResponseMock = { get: () => ({}) }
 
 export const decorators = [
   (Story) => (
@@ -33,7 +32,5 @@ export const decorators = [
       <Story />
     </SafeAreaProvider>
   ),
-  (Story) => useQueryDecorator(Story,
-    { parameters: { useQuery: { featureFlags: firestoreResponseMock }}}
-  ),
+  useQueryDecorator,
 ]

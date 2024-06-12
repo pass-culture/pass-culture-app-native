@@ -8,15 +8,10 @@ import { offersFixture } from 'shared/offer/offer.fixture'
 
 import { VideoModule } from './VideoModule'
 
-// @ts-ignore import is unresolved
-// eslint-disable-next-line import/no-unresolved
-import { useQueryDecorator } from '/.storybook/mocks/react-query'
-
 const meta: ComponentMeta<typeof VideoModule> = {
   title: 'Features/home/VideoModule',
   component: VideoModule,
   decorators: [
-    useQueryDecorator,
     (Story) => (
       <NavigationContainer>
         <Story />
