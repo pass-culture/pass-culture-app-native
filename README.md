@@ -31,7 +31,7 @@ To be able to install and run the mobile apps (iOS and Android) and web app, you
 - Configure Sentry through [this tutorial](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/installation/sentry.md#-configure-sentry-cli)
 - Run `yarn install` to install all the dependencies
 
-- If you have EACCESS issues with your Node installation (when trying to enable corepack for example during yarn installation), consider installing Homebrew to install NVM via Homebrew. Homebrew will be useful for installing Git as well. 
+- If you have EACCESS issues with your Node installation (when trying to enable corepack for example during yarn installation), consider installing Homebrew to install NVM via Homebrew. Homebrew will be useful for installing Git as well.
 
 - When choosing the version of node via nvm, check the file .node-version at the root of the pass-culture-app-native repo to find the version you should use.
 
@@ -124,7 +124,7 @@ See [the docs](./doc/development/how-to/run-local-api.md) to learn how to develo
 The other option, more complex, is to create a specific scheme 'Development' with a `.env.development` file :
 copy the `.env.testing` configuration and update the `API_BASE_URL` setting with you local server address.
 
-Make sure you also overload the `BATCH_API_KEY_ANDROID` and `BATCH_API_KEY_IOS` variables with the _dev_ values of the _testing_ [batch project](https://dashboard.batch.com/).
+Make sure you also overload the `BATCH_API_PUBLIC_KEY_ANDROID` and `BATCH_API_PUBLIC_KEY_IOS` variables with the _dev_ values of the _testing_ [batch project](https://dashboard.batch.com/).
 
 Then copy `testing.keystore` into `development.keystore` and `testing.keystore.properties` into `development.keystore.properties`. Replace the `storeFile` value in `development.keystore.properties`.
 

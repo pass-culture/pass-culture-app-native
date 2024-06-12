@@ -138,15 +138,15 @@ android {
         resValue "string", "url_prefix", project.env.get("URL_PREFIX")
         resValue "string", "app_name", project.env.get("APP_DISPLAY_NAME")
         resValue "string", "build_config_package", "com.passculture" // @react-native-config
-        resValue "string", "BATCH_API_KEY", project.env.get("BATCH_API_KEY_ANDROID")
+        resValue "string", "BATCH_API_KEY", project.env.get("BATCH_API_PUBLIC_KEY_ANDROID")
         resValue "string", "WEBAPP_V2_DOMAIN", project.env.get("WEBAPP_V2_DOMAIN")
         resValue "string", "CODE_PUSH_APK_BUILD_TIME", String.format("\"%d\"", System.currentTimeMillis())
         versionCode (packageJson.build as Integer)
         versionName packageJson.version
-        buildConfigField "String", "CODEPUSH_KEY", "\"${project.env.get("CODEPUSH_KEY_ANDROID")}\"" // @codepush
+        buildConfigField "String", "CODEPUSH_KEY", "\"${project.env.get("CODEPUSH_PUBLIC_KEY_ANDROID")}\"" // @codepush
         multiDexEnabled true
         resConfigs "fr" // https://developer.android.com/studio/build/shrink-code#unused-alt-resources
-        manifestPlaceholders = [GOOGLE_MAPS_API_KEY: project.env.get("GOOGLE_MAPS_API_KEY")] // env variable in the Manifest.xml
+        manifestPlaceholders = [GOOGLE_MAPS_API_PUBLIC_KEY: project.env.get("GOOGLE_MAPS_API_PUBLIC_KEY")] // env variable in the Manifest.xml
     }
 
     // When building Android App Bundles, the splits block is ignored.

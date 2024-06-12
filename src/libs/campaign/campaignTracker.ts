@@ -29,7 +29,7 @@ function init(hasAcceptedMarketingCookie: boolean) {
   // Second we initialize the SDK.
   appsFlyer.initSdk(
     {
-      devKey: env.APPS_FLYER_DEV_KEY,
+      devKey: env.APPS_FLYER_DEV_PUBLIC_KEY,
       isDebug: env.ENV === 'testing',
       appId: env.IOS_APP_STORE_ID,
       onInstallConversionDataListener: false,
