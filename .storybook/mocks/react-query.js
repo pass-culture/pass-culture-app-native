@@ -32,3 +32,7 @@ export const useQueryClient = () => {
         setQueryData: () => ({})
     }
 }
+
+export class QueryCache {}
+
+export class QueryClient {}
