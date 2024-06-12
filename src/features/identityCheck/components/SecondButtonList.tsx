@@ -11,12 +11,13 @@ interface SecondButtonListProps {
   navigateTo: InternalNavigationProps['navigateTo']
   onBeforeNavigate?: () => void
 }
-export const SecondButtonList: FunctionComponent<SecondButtonListProps> = ({
+
+export function SecondButtonList({
   label,
   leftIcon,
   navigateTo,
   onBeforeNavigate,
-}) => {
+}: SecondButtonListProps) {
   const renderTitle = (title: string) => <Typo.Caption>{title}</Typo.Caption>
 
   return (
