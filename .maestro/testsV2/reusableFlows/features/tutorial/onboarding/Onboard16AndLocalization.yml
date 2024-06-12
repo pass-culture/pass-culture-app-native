@@ -1,0 +1,15 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: "Bienvenue sur\_le\_pass\_Culture"
+- tapOn: "C’est parti\_!"
+
+- assertVisible: 'Découvre les offres près de chez toi'
+- tapOn: "Utiliser ma position"
+
+- assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
+- tapOn: 'j’ai 16 ans'
+
+- assertVisible: "À 16 ans, profite de ton pass Culture\_!"
+- tapOn: 'Plus tard'
+
+- assertVisible: "Ma position"
