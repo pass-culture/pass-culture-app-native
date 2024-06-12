@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, RefAttributes } from 'react'
+import { RefAttributes } from 'react'
 import { TouchableOpacityProps } from 'react-native'
 import { InterpolationFunction, ThemedStyledProps } from 'styled-components'
 import { DefaultTheme } from 'styled-components/native'
@@ -26,13 +26,6 @@ type ScrollButtonForNotTouchDevicePropsStylesNative = InterpolationFunction<
     DefaultTheme
   >
 >
-type ScrollButtonForNotTouchDevicePropsStylesWeb = InterpolationFunction<
-  ThemedStyledProps<
-    DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> &
-      HorizontalAlignPropStyle,
-    DefaultTheme
-  >
->
 
 export const scrollButtonStyles: ScrollButtonForNotTouchDevicePropsStylesNative = ({
   theme,
@@ -54,23 +47,4 @@ export const scrollButtonStyles: ScrollButtonForNotTouchDevicePropsStylesNative 
   borderColor: theme.buttons.scrollButton.borderColor,
   backgroundColor: theme.buttons.scrollButton.backgroundColor,
   zIndex: theme.zIndex.playlistsButton,
-})
-
-export const scrollButtonWebStyles: ScrollButtonForNotTouchDevicePropsStylesWeb = ({
-  theme,
-  ...rest
-}: ScrollButtonPropStyle) => ({
-  ...(scrollButtonStyles({ theme, ...rest }) as Record<string, unknown>),
-  cursor: 'pointer',
-  outline: 'none',
-  borderWidth: 0,
-  display: 'flex',
-  overflow: 'hidden',
-  ['&:active']: {
-    opacity: theme.activeOpacity,
-  },
-  ['&:disabled']: {
-    cursor: 'initial',
-    background: 'none',
-  },
 })

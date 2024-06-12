@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import {
   scrollButtonStyles,
   ScrollButtonForNotTouchDeviceProps,
-} from 'ui/components/buttons/scrollButtonForNotTouchDeviceUtils'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+} from 'ui/Playlist/playlistArrowButtonUtils'
 import { ArrowLeft } from 'ui/svg/icons/ArrowLeft'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
