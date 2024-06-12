@@ -3,7 +3,7 @@ import { StyleProp, ViewStyle } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { AttachedOfferCard } from 'features/home/components/AttachedOfferCard'
+import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
@@ -58,8 +58,6 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
 
   const categoryId = mapping[offer.offer.subcategoryId]
 
-  const categoryText = labelMapping[offer.offer.subcategoryId]
-
   const containerProps = {
     offerHeight,
     style,
@@ -83,17 +81,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
 
   return hasGraphicRedesign ? (
     <Container {...containerProps}>
-      <AttachedOfferCard
-        title={offer.offer.name ?? ''}
-        categoryId={categoryId}
-        categoryText={categoryText ?? ''}
-        imageUrl={offer.offer.thumbUrl}
-        showImage
-        withRightArrow
-        offerLocation={offer._geoloc}
-        date={displayDate}
-        price={displayPrice}
-      />
+      <AttachedOfferCard offer={offer} />
     </Container>
   ) : (
     <OfferInsert {...containerProps}>
