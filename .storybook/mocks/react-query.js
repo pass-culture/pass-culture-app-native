@@ -11,9 +11,11 @@
 
 let returnValueDictionary
 export function useQuery(key, _queryFn) {
-  if (returnValueDictionary?.[key]) {
+  const queryKey = key.queryKey ? key.queryKey.join('-') : key
+  if (returnValueDictionary?.[queryKey]) {
     return {
-      data: returnValueDictionary[key],
+      data: returnValueDictionary[queryKey],
+      refetch: async () => {},
     }
   }
 }
