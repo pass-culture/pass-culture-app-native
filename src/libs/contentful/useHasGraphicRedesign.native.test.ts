@@ -14,25 +14,25 @@ describe('useHasGraphicRedesign', () => {
       })
     })
 
-    it('should return false when homeId is in REDESIGN_AB_TESTING_HOME_MODULES and featureFlag is true', () => {
+    it('should return false when homeId is in REDESIGN_AB_TESTING_HOME_MODULES and isFeatureFlagActive is true', () => {
       const { result } = renderHook(() =>
-        useHasGraphicRedesign({ featureFlag: true, homeId: '4XbgmX7fVVgBMoCJiLiY9n' })
+        useHasGraphicRedesign({ isFeatureFlagActive: true, homeId: '4XbgmX7fVVgBMoCJiLiY9n' })
       )
 
       expect(result.current).toEqual(false)
     })
 
-    it('should return false when homeId is in REDESIGN_AB_TESTING_HOME_MODULES and featureFlag is false', () => {
+    it('should return false when homeId is in REDESIGN_AB_TESTING_HOME_MODULES and isFeatureFlagActive is false', () => {
       const { result } = renderHook(() =>
-        useHasGraphicRedesign({ featureFlag: false, homeId: '4XbgmX7fVVgBMoCJiLiY9n' })
+        useHasGraphicRedesign({ isFeatureFlagActive: false, homeId: '4XbgmX7fVVgBMoCJiLiY9n' })
       )
 
       expect(result.current).toEqual(false)
     })
 
-    it('should return true when homeId is not in REDESIGN_AB_TESTING_HOME_MODULES and featureFlag is true', () => {
+    it('should return true when homeId is not in REDESIGN_AB_TESTING_HOME_MODULES and isFeatureFlagActive is true', () => {
       const { result } = renderHook(() =>
-        useHasGraphicRedesign({ featureFlag: true, homeId: 'test' })
+        useHasGraphicRedesign({ isFeatureFlagActive: true, homeId: 'test' })
       )
 
       expect(result.current).toEqual(true)
@@ -47,25 +47,25 @@ describe('useHasGraphicRedesign', () => {
       })
     })
 
-    it('should return true when homeId is in REDESIGN_AB_TESTING_HOME_MODULES and featureFlag is true', () => {
+    it('should return true when homeId is in REDESIGN_AB_TESTING_HOME_MODULES and isFeatureFlagActive is true', () => {
       const { result } = renderHook(() =>
-        useHasGraphicRedesign({ featureFlag: true, homeId: '4XbgmX7fVVgBMoCJiLiY9n' })
+        useHasGraphicRedesign({ isFeatureFlagActive: true, homeId: '4XbgmX7fVVgBMoCJiLiY9n' })
       )
 
       expect(result.current).toEqual(true)
     })
 
-    it('should return false when homeId is in REDESIGN_AB_TESTING_HOME_MODULES and featureFlag is false', () => {
+    it('should return false when homeId is in REDESIGN_AB_TESTING_HOME_MODULES and isFeatureFlagActive is false', () => {
       const { result } = renderHook(() =>
-        useHasGraphicRedesign({ featureFlag: false, homeId: '4XbgmX7fVVgBMoCJiLiY9n' })
+        useHasGraphicRedesign({ isFeatureFlagActive: false, homeId: '4XbgmX7fVVgBMoCJiLiY9n' })
       )
 
       expect(result.current).toEqual(false)
     })
 
-    it('should return true when homeId is not in REDESIGN_AB_TESTING_HOME_MODULES and featureFlag is true', () => {
+    it('should return true when homeId is not in REDESIGN_AB_TESTING_HOME_MODULES and isFeatureFlagActive is true', () => {
       const { result } = renderHook(() =>
-        useHasGraphicRedesign({ featureFlag: true, homeId: 'test' })
+        useHasGraphicRedesign({ isFeatureFlagActive: true, homeId: 'test' })
       )
 
       expect(result.current).toEqual(true)

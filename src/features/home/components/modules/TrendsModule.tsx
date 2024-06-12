@@ -21,7 +21,7 @@ type Trends = {
 export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) => {
   const enableTrendsModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS)
   const hasGraphicRedesign = useHasGraphicRedesign({
-    featureFlag: enableTrendsModule,
+    isFeatureFlagActive: enableTrendsModule,
     homeId: homeEntryId,
   })
   const { width } = useWindowDimensions()

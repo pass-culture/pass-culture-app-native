@@ -27,7 +27,7 @@ export interface BusinessModuleProps {
 export const BusinessModule = (props: BusinessModuleProps) => {
   const enableNewBusinessModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_BUSINESS_BLOCK)
   const hasGraphicRedesign = useHasGraphicRedesign({
-    featureFlag: enableNewBusinessModule,
+    isFeatureFlagActive: enableNewBusinessModule,
     homeId: props.homeEntryId ?? '',
   })
 

@@ -49,7 +49,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
     RemoteStoreFeatureFlags.WIP_NEW_HIGHLIGHT_THEMATIC_MODULE
   )
   const hasGraphicRedesign = useHasGraphicRedesign({
-    featureFlag: isNewHighlightModule,
+    isFeatureFlagActive: isNewHighlightModule,
     homeId: homeEntryId ?? '',
   })
 

@@ -51,7 +51,7 @@ export const CategoryListModule = ({
 }: CategoryListProps) => {
   const enableAppV2CategoryBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK)
   const hasCategoryBlockGraphicRedesign = useHasGraphicRedesign({
-    featureFlag: enableAppV2CategoryBlock,
+    isFeatureFlagActive: enableAppV2CategoryBlock,
     homeId: homeEntryId,
   })
   const flatListRef = useRef<FlatList<null>>(null)

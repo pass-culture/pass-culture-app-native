@@ -57,7 +57,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const { isDesktopViewport } = useTheme()
   const isNewExclusivityModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_EXCLUSIVITY_MODULE)
   const hasGraphicRedesign = useHasGraphicRedesign({
-    featureFlag: isNewExclusivityModule,
+    isFeatureFlagActive: isNewExclusivityModule,
     homeId: props.homeEntryId ?? '',
   })
 

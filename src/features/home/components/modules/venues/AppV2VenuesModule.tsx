@@ -15,7 +15,7 @@ type Props = {
 export const AppV2VenuesModule = ({ data, homeEntryId }: Props) => {
   const enableAppV2VenueList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_LIST)
   const hasGraphicRedesign = useHasGraphicRedesign({
-    featureFlag: enableAppV2VenueList,
+    isFeatureFlagActive: enableAppV2VenueList,
     homeId: homeEntryId,
   })
   const { playlistItems = [] } = data ?? { playlistItems: [] }

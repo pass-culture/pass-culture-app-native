@@ -59,7 +59,10 @@ export const HomeBanner = ({ hasGeolocPosition, isLoggedIn, homeId }: HomeBanner
   const { data } = useHomeBanner(hasGeolocPosition)
   const { navigate } = useNavigation<UseNavigationType>()
   const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
-  const hasGraphicRedesign = useHasGraphicRedesign({ featureFlag: enableSystemBanner, homeId })
+  const hasGraphicRedesign = useHasGraphicRedesign({
+    isFeatureFlagActive: enableSystemBanner,
+    homeId,
+  })
 
   const homeBanner = data?.banner
   const shouldRenderSystemBanner = homeBanner ? bannersToRender.includes(homeBanner.name) : false

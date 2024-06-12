@@ -2,15 +2,15 @@ import { REDESIGN_AB_TESTING_HOME_MODULES } from 'libs/contentful/constants'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 
 type Props = {
-  featureFlag: boolean
+  isFeatureFlagActive: boolean
   homeId: string
 }
 
-export const useHasGraphicRedesign = ({ featureFlag, homeId }: Props) => {
+export const useHasGraphicRedesign = ({ isFeatureFlagActive, homeId }: Props) => {
   const { shouldApplyGraphicRedesign } = useRemoteConfigContext()
   const hasGraphicRedesign = REDESIGN_AB_TESTING_HOME_MODULES.includes(homeId)
-    ? featureFlag && shouldApplyGraphicRedesign
-    : featureFlag
+    ? isFeatureFlagActive && shouldApplyGraphicRedesign
+    : isFeatureFlagActive
 
   return hasGraphicRedesign
 }

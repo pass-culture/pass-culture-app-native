@@ -41,7 +41,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
   const hasGraphicRedesign = useHasGraphicRedesign({
-    featureFlag: enableMultiVideoModule,
+    isFeatureFlagActive: enableMultiVideoModule,
     homeId: homeEntryId,
   })
   const labelMapping = useCategoryHomeLabelMapping()

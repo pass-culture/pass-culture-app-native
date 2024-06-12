@@ -44,7 +44,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
 
   const enableVideoCarousel = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16)
   const hasGraphicRedesign = useHasGraphicRedesign({
-    featureFlag: enableVideoCarousel,
+    isFeatureFlagActive: enableVideoCarousel,
     homeId: props.homeEntryId,
   })
   const shouldModuleBeDisplayed = Platform.OS !== 'web'

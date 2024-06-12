@@ -18,7 +18,7 @@ export function usePlaylistItemDimensionsFromLayout(
 } {
   const enableV2Sizes = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_HOME_MODULE_SIZES)
   const hasGraphicRedesign = useHasGraphicRedesign({
-    featureFlag: enableV2Sizes,
+    isFeatureFlagActive: enableV2Sizes,
     homeId: homeEntryId ?? '',
   })
 
