@@ -1,0 +1,43 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: "Respect de ta vie privée"
+- tapOn: "Choisir les cookies"
+
+- assertVisible: "Réglages des cookies"
+- assertVisible: "Je choisis mes cookies"
+- scroll
+- tapOn: "Politique de gestion des cookies"
+
+- back
+
+- tapOn:
+    id: "Revenir à l’étape précédente"
+
+- assertVisible: "Respect de ta vie privée"
+- tapOn: "Choisir les cookies"
+
+- assertVisible: "Réglages des cookies"
+- assertVisible: "Je choisis mes cookies"
+- tapOn:
+    id: "Interrupteur Personnaliser ta navigation"
+- assertVisible:
+    id: Interrupteur Personnaliser ta navigation
+    enabled: true
+
+- tapOn:
+    id: "Interrupteur Enregistrer des statistiques de navigation"
+- assertVisible:
+    id: "Interrupteur Enregistrer des statistiques de navigation"
+    enabled: true
+
+- tapOn:
+    id: "Interrupteur Mesurer l’efficacité de nos publicités"
+- assertVisible:
+    id: "Interrupteur Mesurer l’efficacité de nos publicités"
+    enabled: true
+
+- assertVisible:
+    id: "Interrupteur Tout accepter"
+    enabled: true
+
+- tapOn: "Enregistrer mes choix"

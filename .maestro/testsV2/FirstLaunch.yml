@@ -1,0 +1,14 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow: reusableFlows/LaunchApp.yml
+- runFlow: reusableFlows/features/cookies/SelectOneCookie.yml
+
+- runFlow: reusableFlows/LaunchApp.yml
+- runFlow: reusableFlows/features/cookies/SelectTwoCookies.yml
+
+- runFlow: reusableFlows/LaunchApp.yml
+- runFlow: reusableFlows/features/cookies/SelectThreeCookies.yml
+
+- runFlow: reusableFlows/features/tutorial/onboarding/Onboard16AndLocalization.yml
+
+- runFlow: reusableFlows/StopApp.yml
