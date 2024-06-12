@@ -31,7 +31,7 @@ const Template: ComponentStory<typeof SubcategoryButton> = (props) => (
 const label = 'Société & Politique'
 
 //TODO(PC-28526): Fix this stories
-export const Default = Template.bind({})
+const Default = Template.bind({})
 Default.args = {
   label,
   colors: [theme.colors.aquamarine, theme.colors.aquamarineDark],
