@@ -15,6 +15,9 @@ import { act, measurePerformance, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+jest.useFakeTimers()
+
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 jest.mock('libs/network/NetInfoWrapper')
 
