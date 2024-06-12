@@ -27,6 +27,6 @@ export function useQueryDecorator(story, { parameters }) {
 
 export const useQueryClient = () => {
     return {
-        setQueryData: () => {}
+        setQueryData: () => ({})
     }
 }
