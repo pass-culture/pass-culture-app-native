@@ -6,10 +6,8 @@ import { FlatList, Platform, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { PlaylistType } from 'features/offer/enums'
-import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
-import { BicolorArrowLeft as DefaultBicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
-import { BicolorArrowRight as DefaultBicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
+import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 import { getSpacing } from 'ui/theme'
 
 export type ItemDimensions = { width: number; height: number }
@@ -133,20 +131,18 @@ export const Playlist: FunctionComponent<Props> = ({
   return (
     <FlatListContainer onLayout={onContainerLayout}>
       {!isStart && isWeb ? (
-        <ScrollButtonForNotTouchDevice
-          horizontalAlign="left"
+        <PlaylistArrowButton
+          direction="left"
           top={scrollButtonOffsetY}
-          onPress={handleScrollPrevious}>
-          <BicolorArrowLeft />
-        </ScrollButtonForNotTouchDevice>
+          onPress={handleScrollPrevious}
+        />
       ) : null}
       {!isEnd && isWeb ? (
-        <ScrollButtonForNotTouchDevice
-          horizontalAlign="right"
+        <PlaylistArrowButton
+          direction="right"
+          onPress={handleScrollNext}
           top={scrollButtonOffsetY}
-          onPress={handleScrollNext}>
-          <BicolorArrowRight />
-        </ScrollButtonForNotTouchDevice>
+        />
       ) : null}
       <ListComponent
         onScroll={onScroll}
@@ -186,11 +182,3 @@ const HorizontalMargin = styled.View({
 
 const ITEM_SEPARATOR_WIDTH = getSpacing(4)
 const ItemSeparatorComponent = styled.View({ width: ITEM_SEPARATOR_WIDTH })
-
-const BicolorArrowLeft = styled(DefaultBicolorArrowLeft).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
-
-const BicolorArrowRight = styled(DefaultBicolorArrowRight).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``

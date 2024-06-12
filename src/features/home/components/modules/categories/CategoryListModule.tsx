@@ -8,10 +8,8 @@ import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
-import { BicolorArrowLeft as DefaultBicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
-import { BicolorArrowRight as DefaultBicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
+import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CategoryListProps = {
@@ -125,9 +123,7 @@ export const CategoryListModule = ({
         enableAppV2CategoryBlock={enableAppV2CategoryBlock}
         onLayout={onContainerLayout}>
         {enableAppV2CategoryBlock && !isStart && isWeb ? (
-          <ScrollButtonForNotTouchDevice horizontalAlign="left" onPress={handleScrollPrevious}>
-            <BicolorArrowLeft />
-          </ScrollButtonForNotTouchDevice>
+          <PlaylistArrowButton direction="left" onPress={handleScrollPrevious} />
         ) : null}
         <StyledFlatList
           ListFooterComponent={ListFooterComponent}
@@ -140,22 +136,12 @@ export const CategoryListModule = ({
           {...(enableAppV2CategoryBlock ? newCategoryBlockProps : oldCategoryBlockProps)}
         />
         {enableAppV2CategoryBlock && !isEnd && isWeb ? (
-          <ScrollButtonForNotTouchDevice horizontalAlign="right" onPress={handleScrollNext}>
-            <BicolorArrowRight />
-          </ScrollButtonForNotTouchDevice>
+          <PlaylistArrowButton direction="right" onPress={handleScrollNext} />
         ) : null}
       </FlatListContainer>
     </React.Fragment>
   )
 }
-
-const BicolorArrowLeft = styled(DefaultBicolorArrowLeft).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
-
-const BicolorArrowRight = styled(DefaultBicolorArrowRight).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
 
 const StyledFlatList = styled.FlatList.attrs<StyledFlatListProps>(({ theme }) => ({
   contentContainerStyle: {

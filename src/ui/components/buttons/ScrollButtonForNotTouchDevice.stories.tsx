@@ -4,8 +4,8 @@ import React from 'react'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { StoryContainer } from 'ui/storybook/StoryContainer'
-import { BicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
-import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
+import { ArrowLeft } from 'ui/svg/icons/ArrowLeft'
+import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 import { ScrollButtonForNotTouchDevice } from './ScrollButtonForNotTouchDevice'
 
@@ -37,7 +37,7 @@ const Template: ComponentStory<typeof ScrollButtonForNotTouchDevice> = (args) =>
 export const WithArrowLeft = Template.bind({})
 WithArrowLeft.args = {
   horizontalAlign: 'left',
-  children: <BicolorArrowLeft />,
+  children: <ArrowLeft />,
 }
 WithArrowLeft.parameters = {
   docs: {
@@ -52,7 +52,7 @@ WithArrowLeft.parameters = {
 export const WithArrowRight = Template.bind({})
 WithArrowRight.args = {
   horizontalAlign: 'right',
-  children: <BicolorArrowRight />,
+  children: <ArrowRight />,
 }
 WithArrowRight.parameters = {
   docs: {
