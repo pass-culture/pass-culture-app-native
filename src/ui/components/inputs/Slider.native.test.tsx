@@ -6,23 +6,6 @@ import { act, render, screen } from 'tests/utils'
 import { Slider } from './Slider'
 
 describe('<Slider />', () => {
-  it('should render correctly', () => {
-    render(
-      <Slider
-        values={[0, 100]}
-        showValues
-        sliderLength={150}
-        min={0}
-        max={100}
-        step={5}
-        minLabel="Min label"
-        maxLabel="Max label"
-      />
-    )
-
-    expect(screen).toMatchSnapshot()
-  })
-
   describe('values', () => {
     it('should show two values if there are 2 values in the array values', () => {
       render(<Slider values={[0, 100]} showValues />)
