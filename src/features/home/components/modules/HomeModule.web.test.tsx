@@ -191,7 +191,7 @@ describe('<HomeModule />', () => {
 
     await act(async () => {})
 
-    expect(screen.getByText('La nuit des temps')).toBeInTheDocument()
+    expect(screen.getByText('I want something more')).toBeInTheDocument()
 
     let results
     await act(async () => {
@@ -206,6 +206,7 @@ function renderHomeModule(item: HomepageModule, data?: ModuleData) {
   return render(
     reactQueryProviderHOC(
       <HomeModule item={item} index={index} homeEntryId={homeEntryId} data={data} />
-    )
+    ),
+    { theme: { isDesktopViewport: true } }
   )
 }
