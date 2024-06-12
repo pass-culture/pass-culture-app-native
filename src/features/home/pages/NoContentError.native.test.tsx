@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { NoContentError } from 'features/home/components/NoContentError'
+import { NoContentError } from 'features/home/pages/NoContentError'
 import { fireEvent, render, screen } from 'tests/utils'
 
 describe('NoContentError', () => {

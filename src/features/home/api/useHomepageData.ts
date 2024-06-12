@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
-import { NoContentError } from 'features/home/components/NoContentError'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
+import { NoContentError } from 'features/home/pages/NoContentError'
 import { Homepage } from 'features/home/types'
 import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifContent'
 import { ScreenError } from 'libs/monitoring'

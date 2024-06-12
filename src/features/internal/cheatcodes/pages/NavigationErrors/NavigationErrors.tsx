@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
-import { NoContentError } from 'features/home/components/NoContentError'
+import { NoContentError } from 'features/home/pages/NoContentError'
 import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
