@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
-import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { LENGTH_S } from 'ui/theme'
 
 import { VenueTile } from './VenueTile'
@@ -13,14 +12,13 @@ const meta: ComponentMeta<typeof VenueTile> = {
   component: VenueTile,
   decorators: [
     (Story) => (
-      <ReactQueryClientProvider>
-        <NavigationContainer>
-          <Story />
-        </NavigationContainer>
-      </ReactQueryClientProvider>
+      <NavigationContainer>
+        <Story />
+      </NavigationContainer>
     ),
   ],
 }
+
 export default meta
 
 const Template: ComponentStory<typeof VenueTile> = (props) => <VenueTile {...props} />
@@ -37,12 +35,10 @@ const props = {
   width: LENGTH_S * (3 / 2),
 }
 
-// TODO(PC-17931): Fix this stories
-const WithoutImage = Template.bind({})
+export const WithoutImage = Template.bind({})
 WithoutImage.args = props
 
-// TODO(PC-17931): Fix this stories
-const WithImage = Template.bind({})
+export const WithImage = Template.bind({})
 WithImage.args = {
   ...props,
   venue: {
@@ -52,8 +48,7 @@ WithImage.args = {
   },
 }
 
-// TODO(PC-17931): Fix this stories
-const WithPosition = Template.bind({})
+export const WithPosition = Template.bind({})
 WithPosition.args = {
   ...props,
   userLocation: {
