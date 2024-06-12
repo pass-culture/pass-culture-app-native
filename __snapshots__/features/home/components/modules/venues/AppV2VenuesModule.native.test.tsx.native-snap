@@ -288,6 +288,7 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
                   "userSelect": "auto",
                 },
                 {},
+                {},
               ],
               {
                 "opacity": 1,
@@ -439,6 +440,7 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
                 {
                   "userSelect": "auto",
                 },
+                {},
                 {},
               ],
               {
@@ -592,6 +594,7 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
                   "userSelect": "auto",
                 },
                 {},
+                {},
               ],
               {
                 "opacity": 1,
@@ -743,6 +746,7 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
                 {
                   "userSelect": "auto",
                 },
+                {},
                 {},
               ],
               {

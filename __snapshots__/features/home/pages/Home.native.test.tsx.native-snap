@@ -384,7 +384,6 @@ exports[`Home page should render correctly 1`] = `
                     }
                   }
                   accessible={false}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -394,52 +393,27 @@ exports[`Home page should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {},
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="bannerWithBackground"
                 >
                   <View
-                    accessibilityRole="link"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {},
-                          {},
-                        ],
                         {
-                          "opacity": 1,
+                          "borderRadius": 7,
+                          "overflow": "hidden",
                         },
                       ]
                     }

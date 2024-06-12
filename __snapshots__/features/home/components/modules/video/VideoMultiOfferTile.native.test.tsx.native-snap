@@ -31,7 +31,6 @@ exports[`VideoMultiOfferTile should render properly with FF on 1`] = `
       }
     }
     accessible={false}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -41,11 +40,20 @@ exports[`VideoMultiOfferTile should render properly with FF on 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "opacity": 1,
-        "userSelect": "auto",
-        "width": 96,
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {},
+          {
+            "width": 96,
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
   >
     <View

@@ -582,7 +582,6 @@ exports[`SearchResultsContent component should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -592,21 +591,29 @@ exports[`SearchResultsContent component should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#161617",
-                  "borderRadius": 24,
-                  "borderWidth": 1,
-                  "boxSizing": "border-box",
-                  "flexDirection": "row-reverse",
-                  "height": 32,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#161617",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "boxSizing": "border-box",
+                      "flexDirection": "row-reverse",
+                      "height": 32,
+                      "justifyContent": "center",
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Accessibilité"
             >

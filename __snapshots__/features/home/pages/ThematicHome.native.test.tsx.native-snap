@@ -642,7 +642,7 @@ exports[`ThematicHome should render correctly 1`] = `
     >
       <Image
         collapsable={false}
-        height={208}
+        height={180}
         source={
           {
             "uri": "url.com/image",
@@ -651,7 +651,7 @@ exports[`ThematicHome should render correctly 1`] = `
         style={
           [
             {
-              "height": 208,
+              "height": 180,
               "left": 0,
               "position": "absolute",
               "right": 0,

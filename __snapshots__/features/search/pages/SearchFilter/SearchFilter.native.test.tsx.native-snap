@@ -1016,7 +1016,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1026,12 +1025,20 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="FilterRow"
           >
