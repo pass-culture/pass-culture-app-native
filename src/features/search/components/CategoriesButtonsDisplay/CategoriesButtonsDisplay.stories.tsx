@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
@@ -12,6 +13,13 @@ import { CategoriesButtonsDisplay } from './CategoriesButtonsDisplay'
 const meta: ComponentMeta<typeof CategoriesButtonsDisplay> = {
   title: 'Features/search/CategoriesButtons',
   component: CategoriesButtonsDisplay,
+  decorators: [
+    (Story) => (
+      <NavigationContainer>
+        <Story />
+      </NavigationContainer>
+    ),
+  ],
 }
 export default meta
 
@@ -19,8 +27,7 @@ const BodyWrapper = styled.View({
   marginHorizontal: -getSpacing(4),
 })
 
-// TODO(PC-20094): Fix this story
-const Default: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
+export const Default: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
   <BodyWrapper>
     <CategoriesButtonsDisplay {...props} />
   </BodyWrapper>
