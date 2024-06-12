@@ -18,14 +18,14 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { screen, render, act } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
+jest.mock('libs/firebase/analytics/analytics')
 
 const MOCK_TIMESTAMP = '2024-05-08T12:50:00Z'
 const MOCK_DATE = new Date(MOCK_TIMESTAMP)
 const MOCK_NAME = 'Sailor et Lula'
 const ID = 2051
 const PRICE = 7
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 const VenueOffersResponseMatchingFixture = [
   {

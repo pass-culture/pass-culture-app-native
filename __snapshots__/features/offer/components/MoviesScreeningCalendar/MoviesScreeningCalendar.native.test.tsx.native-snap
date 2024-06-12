@@ -1931,17 +1931,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
             }
           />
           <View
-            style={
-              [
-                {
-                  "backgroundColor": "#CBCDD2",
-                  "height": 1,
-                  "marginRight": 24,
-                },
-              ]
-            }
-          />
-          <View
             numberOfSpaces={4}
             style={
               [
@@ -3818,17 +3807,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
               [
                 {
                   "height": 16,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#CBCDD2",
-                  "height": 1,
-                  "marginRight": 24,
                 },
               ]
             }
