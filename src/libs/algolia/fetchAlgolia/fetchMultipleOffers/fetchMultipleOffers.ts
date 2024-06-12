@@ -1,6 +1,7 @@
 import flatten from 'lodash/flatten'
 
 import { PlaylistOffersParams } from 'features/home/types'
+import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -18,7 +19,7 @@ type FetchMultipleOffersArgs = {
 export const fetchMultipleOffers = async ({
   paramsList,
   isUserUnderage,
-}: FetchMultipleOffersArgs): Promise<{ hits: Offer[]; nbHits: number }> => {
+}: FetchMultipleOffersArgs): Promise<VenueOffers> => {
   const queries = paramsList.map((params) => ({
     indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
     query: params.offerParams.query,

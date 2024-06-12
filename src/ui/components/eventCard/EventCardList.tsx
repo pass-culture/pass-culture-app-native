@@ -7,9 +7,10 @@ import { Spacer, getSpacing } from 'ui/theme'
 
 type Props = {
   data: EventCardProps[]
+  withMargin?: boolean
 }
 
-export const EventCardList: React.FC<Props> = ({ data }) => {
+export const EventCardList: React.FC<Props> = ({ data, withMargin }) => {
   const [webViewWidth, setWebViewWidth] = useState(0)
   const { isDesktopViewport } = useTheme()
 
@@ -44,14 +45,14 @@ export const EventCardList: React.FC<Props> = ({ data }) => {
 
   return (
     <Container horizontal showsHorizontalScrollIndicator={false}>
-      <Spacer.Row numberOfSpaces={2} />
+      {withMargin ? <Spacer.Row numberOfSpaces={2} /> : null}
       {data.map((event, index) => {
         if (index % 2 === 1) return null
         const topEventCardData = data[index]
         const bottomEventCardData = data[index + 1]
         return (
           <React.Fragment key={JSON.stringify([topEventCardData, bottomEventCardData])}>
-            <Spacer.Row numberOfSpaces={4} />
+            {withMargin ? <Spacer.Row numberOfSpaces={4} /> : null}
             <View>
               {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
               <EventCard {...topEventCardData} />

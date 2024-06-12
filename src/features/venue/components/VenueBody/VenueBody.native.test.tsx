@@ -18,7 +18,6 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { ILocationContext, useLocation } from 'libs/location'
 import { Network } from 'libs/share/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -36,7 +35,7 @@ jest
 jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
   isLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },
-} as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
+} as unknown as UseQueryResult<useVenueOffers.VenueOffers, unknown>)
 
 jest.mock('libs/location')
 const mockUseLocation = jest.mocked(useLocation)

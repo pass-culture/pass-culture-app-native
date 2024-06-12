@@ -1,4 +1,4 @@
-import { OffersStocksResponse } from 'api/gen'
+import { OffersStocksResponseV2 } from 'api/gen'
 import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { mockServer } from 'tests/mswServer'
@@ -9,7 +9,7 @@ jest.mock('libs/network/NetInfoWrapper')
 
 describe('useOffersStocks', () => {
   beforeEach(() => {
-    mockServer.postApi<OffersStocksResponse>(`/v1/offers/stocks`, offersStocksResponseSnap)
+    mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, offersStocksResponseSnap)
   })
 
   it('should call API', async () => {

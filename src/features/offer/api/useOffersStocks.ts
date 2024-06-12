@@ -2,7 +2,7 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
-import { OffersStocksResponse } from 'api/gen'
+import { OffersStocksResponseV2 } from 'api/gen'
 import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
 import { OfferNotFoundError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -13,7 +13,10 @@ async function getStocksByOfferIds(offerIds: number[]) {
     throw new OfferNotFoundError(offerIds, { Screen: OfferNotFound })
   }
   try {
-    return await api.postNativeV1OffersStocks({ offer_ids: offerIds })
+    // eslint-disable-next-line @typescript-eslint/return-await
+    return await api.postNativeV2OffersStocks({
+      offer_ids: offerIds,
+    })
   } catch (error) {
     if (error instanceof ApiError && error.statusCode === 404) {
       // This happens when the offer has been rejected but it is still indexed on Algolia
@@ -30,7 +33,7 @@ async function getStocksByOfferIds(offerIds: number[]) {
 export const useOffersStocks = ({ offerIds }: { offerIds: number[] }) => {
   const netInfo = useNetInfoContext()
 
-  return useQuery<OffersStocksResponse>(
+  return useQuery<OffersStocksResponseV2>(
     [QueryKeys.OFFER, offerIds],
     () => getStocksByOfferIds(offerIds),
     { enabled: !!netInfo.isConnected }

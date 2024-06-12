@@ -13,26 +13,6 @@ exports[`EventCardList should render correctly 1`] = `
   }
 >
   <View>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "width": 16,
-          },
-        ]
-      }
-    />
     <View>
       <View
         accessibilityRole="button"
@@ -347,16 +327,6 @@ exports[`EventCardList should render correctly 1`] = `
         </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "width": 16,
-          },
-        ]
-      }
-    />
     <View>
       <View
         accessibilityRole="button"
@@ -627,16 +597,6 @@ exports[`EventCardList should render correctly 1`] = `
         </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "width": 16,
-          },
-        ]
-      }
-    />
     <View>
       <View
         accessibilityRole="button"
