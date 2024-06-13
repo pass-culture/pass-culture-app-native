@@ -6,19 +6,24 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
-import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
+import { useShouldShowCulturalSurvey } from 'shared/culturalSurvey/useShouldShowCulturalSurvey'
 
 import { homeNavConfig } from '../TabBar/helpers'
 
 import { RootScreenNames } from './types'
 
 export function useInitialScreen(): RootScreenNames | undefined {
-  const { isLoggedIn } = useAuthContext()
+  const { isLoggedIn, user } = useAuthContext()
+  const shouldShowCulturalSurvey = useShouldShowCulturalSurvey()
 
   const [initialScreen, setInitialScreen] = useSafeState<RootScreenNames | undefined>(undefined)
 
   useEffect(() => {
-    getInitialScreen({ isLoggedIn })
+    const showCulturalSurvey = shouldShowCulturalSurvey(user)
+
+    if (showCulturalSurvey === undefined) return
+
+    getInitialScreen({ isLoggedIn, showCulturalSurvey })
       .then((screen) => {
         setInitialScreen(screen)
         triggerInitialScreenNameAnalytics(screen)
@@ -27,12 +32,18 @@ export function useInitialScreen(): RootScreenNames | undefined {
         setInitialScreen('TabNavigator')
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn])
+  }, [isLoggedIn, user, shouldShowCulturalSurvey])
 
   return initialScreen
 }
 
-async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promise<RootScreenNames> {
+async function getInitialScreen({
+  isLoggedIn,
+  showCulturalSurvey,
+}: {
+  isLoggedIn: boolean
+  showCulturalSurvey: boolean
+}): Promise<RootScreenNames> {
   if (isLoggedIn) {
     try {
       const user = await api.getNativeV1Me()
@@ -45,7 +56,7 @@ async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promis
       if (!hasSeenEligibleCard && user.showEligibleCard) {
         return 'EighteenBirthday'
       }
-      if (shouldShowCulturalSurvey(user)) {
+      if (showCulturalSurvey) {
         return 'CulturalSurveyIntro'
       }
     } catch {
