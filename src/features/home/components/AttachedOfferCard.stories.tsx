@@ -12,12 +12,20 @@ const Template: ComponentStory<typeof AttachedOfferCard> = (props) => (
   <AttachedOfferCard {...props} />
 )
 
-export const Default = Template.bind({})
-Default.args = {
+export const AttachedOfferCardExclusivity = Template.bind({})
+AttachedOfferCardExclusivity.args = {
+  showImage: true,
   imageUrl:
     'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
   price: 'Gratuit',
   categoryText: 'Cinéma',
   title: 'La Joconde',
+}
+
+export const AttachedOfferCardHighlight = Template.bind({})
+AttachedOfferCardHighlight.args = {
+  categoryText: 'Cinéma',
+  title: 'La Joconde',
   date: 'Du 12/06 au 24/06',
+  withRightArrow: true,
 }

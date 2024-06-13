@@ -7,34 +7,31 @@ import { ControlComponent, ControlComponentProps } from './ControlComponent'
 describe('<ControlComponent />', () => {
   const onPress = jest.fn()
 
-  it('should render correctly prev by default', () => {
+  it('should display prev arrow by default', () => {
     renderControlComponent()
 
-    expect(screen).toMatchSnapshot()
     expect(screen.getByTestId('arrowPrevious')).toBeOnTheScreen()
     expect(() => screen.getByTestId('arrowNext')).toThrow()
   })
 
-  it('should render prev when type is prev', () => {
+  it('should display prev arrow when type is prev', () => {
     renderControlComponent({
       onPress,
       title: 'Previous',
       type: 'prev',
     })
 
-    expect(screen).toMatchSnapshot()
     expect(screen.getByTestId('arrowPrevious')).toBeOnTheScreen()
     expect(() => screen.getByTestId('arrowNext')).toThrow()
   })
 
-  it('renders render next when type is next', () => {
+  it('renders display next arrow when type is next', () => {
     renderControlComponent({
       onPress,
       title: 'Next',
       type: 'next',
     })
 
-    expect(screen).toMatchSnapshot()
     expect(screen.getByTestId('arrowNext')).toBeOnTheScreen()
     expect(() => screen.getByTestId('arrowPrevious')).toThrow()
   })

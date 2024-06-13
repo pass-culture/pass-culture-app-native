@@ -37,6 +37,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<SubcategoryButtonList/>', () => {
+  // TODO(PC-28526): Remove this snapshot when story fixed
   it('should render SubcategoryButtonList', async () => {
     render(
       reactQueryProviderHOC(
