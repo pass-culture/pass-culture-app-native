@@ -48,7 +48,7 @@ const isOfferQuery = (query: unknown): query is OfferModuleQuery =>
 
 export const useVideoCarouselData = (
   items: VideoCarouselItem[],
-  homeEntryId: string
+  moduleId: string
 ): EnrichedVideoCarouselItem[] => {
   const isUserUnderage = useIsUserUnderage()
   const netInfo = useNetInfoContext()
@@ -80,7 +80,7 @@ export const useVideoCarouselData = (
   }
 
   const offersResultList = useQuery({
-    queryKey: [QueryKeys.VIDEO_CAROUSEL_OFFERS, homeEntryId],
+    queryKey: [QueryKeys.VIDEO_CAROUSEL_OFFERS, moduleId],
     queryFn: offersQuery,
     enabled: !!netInfo.isConnected && queriesWithoutUndefined.length > 0,
   })
