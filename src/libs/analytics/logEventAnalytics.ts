@@ -44,10 +44,18 @@ type HighlightThematicBlockThematicHome = {
   moduleListId?: never
 }
 
+type VideoCarouselBlockThematicHome = {
+  homeEntryId: string
+  from: 'video_carousel_block'
+  moduleId: string
+  moduleItemId: string
+}
+
 type ConsultHomeParams =
   | BaseThematicHome
   | CategoryBlockThematicHome
   | HighlightThematicBlockThematicHome
+  | VideoCarouselBlockThematicHome
 
 type ShareParams = { from: Referrals; social?: Social | 'Other' } & (
   | { type: 'Offer'; offerId: number }

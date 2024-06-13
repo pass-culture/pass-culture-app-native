@@ -15,6 +15,7 @@ import { videoSourceExtractor } from 'features/home/components/helpers/videoSour
 import { newColorMapping } from 'features/home/components/modules/categories/CategoryBlock'
 import { VerticalVideoPlayer } from 'features/home/components/modules/video/VerticalVideoPlayer'
 import { Color, VideoCarouselModule as VideoCarouselModuleType } from 'features/home/types'
+import { analytics } from 'libs/analytics'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -103,6 +104,12 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
                 offerId: +offer.objectID,
                 categoryId,
               })
+              analytics.logConsultOffer({
+                offerId: +offer.objectID,
+                moduleId: item.youtubeVideoId,
+                from: 'video_carousel_block',
+                homeEntryId,
+              })
             },
           }
         : undefined
@@ -132,6 +139,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
           homeId: homeEntryId,
           from: 'video_carousel_block',
           moduleId: id,
+          moduleItemId: item.id,
         },
       },
     }
