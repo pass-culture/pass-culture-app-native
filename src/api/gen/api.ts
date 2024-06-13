@@ -186,6 +186,17 @@ export interface ActivityTypesResponse {
 }
 /**
  * @export
+ * @interface AudioDisabilityModel
+ */
+export interface AudioDisabilityModel {
+  /**
+   * @type {Array<string>}
+   * @memberof AudioDisabilityModel
+   */
+  deafAndHardOfHearing?: Array<string>
+}
+/**
+ * @export
  * @interface Banner
  */
 export interface Banner {
@@ -1156,6 +1167,52 @@ export enum ExpenseDomain {
 }
 /**
  * @export
+ * @interface ExternalAccessibilityDataModel
+ */
+export interface ExternalAccessibilityDataModel {
+  /**
+   * @type {AudioDisabilityModel}
+   * @memberof ExternalAccessibilityDataModel
+   */
+  audioDisability?: AudioDisabilityModel
+  /**
+   * @type {boolean}
+   * @memberof ExternalAccessibilityDataModel
+   */
+  isAccessibleAudioDisability?: boolean
+  /**
+   * @type {boolean}
+   * @memberof ExternalAccessibilityDataModel
+   */
+  isAccessibleMentalDisability?: boolean
+  /**
+   * @type {boolean}
+   * @memberof ExternalAccessibilityDataModel
+   */
+  isAccessibleMotorDisability?: boolean
+  /**
+   * @type {boolean}
+   * @memberof ExternalAccessibilityDataModel
+   */
+  isAccessibleVisualDisability?: boolean
+  /**
+   * @type {MentalDisabilityModel}
+   * @memberof ExternalAccessibilityDataModel
+   */
+  mentalDisability?: MentalDisabilityModel
+  /**
+   * @type {MotorDisabilityModel}
+   * @memberof ExternalAccessibilityDataModel
+   */
+  motorDisability?: MotorDisabilityModel
+  /**
+   * @type {VisualDisabilityModel}
+   * @memberof ExternalAccessibilityDataModel
+   */
+  visualDisability?: VisualDisabilityModel
+}
+/**
+ * @export
  * @interface ExternalBookingResponse
  */
 export interface ExternalBookingResponse {
@@ -1552,6 +1609,43 @@ export enum IdentityCheckMethod {
 export enum MaintenancePageType {
   'with-dms' = 'with-dms',
   'without-dms' = 'without-dms',
+}
+/**
+ * @export
+ * @interface MentalDisabilityModel
+ */
+export interface MentalDisabilityModel {
+  /**
+   * @type {string}
+   * @memberof MentalDisabilityModel
+   */
+  trainedPersonnel?: string
+}
+/**
+ * @export
+ * @interface MotorDisabilityModel
+ */
+export interface MotorDisabilityModel {
+  /**
+   * @type {string}
+   * @memberof MotorDisabilityModel
+   */
+  entrance?: string
+  /**
+   * @type {string}
+   * @memberof MotorDisabilityModel
+   */
+  exterior?: string
+  /**
+   * @type {string}
+   * @memberof MotorDisabilityModel
+   */
+  facilities?: string
+  /**
+   * @type {string}
+   * @memberof MotorDisabilityModel
+   */
+  parking?: string
 }
 /**
  * @export
@@ -3872,6 +3966,21 @@ export interface VenueResponse {
    */
   description?: string | null
   /**
+   * @type {ExternalAccessibilityDataModel}
+   * @memberof VenueResponse
+   */
+  externalAccessibilityData?: ExternalAccessibilityDataModel | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  externalAccessibilityId?: string | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  externalAccessibilityUrl?: string | null
+  /**
    * @type {number}
    * @memberof VenueResponse
    */
@@ -3954,6 +4063,22 @@ export enum VenueTypeCodeKey {
   'SCIENTIFIC_CULTURE' = 'SCIENTIFIC_CULTURE',
   'TRAVELING_CINEMA' = 'TRAVELING_CINEMA',
   'VISUAL_ARTS' = 'VISUAL_ARTS',
+}
+/**
+ * @export
+ * @interface VisualDisabilityModel
+ */
+export interface VisualDisabilityModel {
+  /**
+   * @type {Array<string>}
+   * @memberof VisualDisabilityModel
+   */
+  audioDescription?: Array<string>
+  /**
+   * @type {string}
+   * @memberof VisualDisabilityModel
+   */
+  soundBeacon?: string
 }
 /**
  * An enumeration.
