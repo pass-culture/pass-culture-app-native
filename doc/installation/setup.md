@@ -8,7 +8,7 @@ You can either follow [Automatic installation](#automatic) or [Manual installati
 
 [Install `nix` package manager](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer)
 
-[Install DirEnv](https://direnv.net/) please make sure to [hook into your shell](https://direnv.net/docs/hook.html)
+[Install DirEnv](https://direnv.net/) (`brew install direnv`) please make sure to [hook into your shell](https://direnv.net/docs/hook.html)
 
 Start a new terminal to load the new configuration
 
@@ -17,6 +17,7 @@ Load environment
 ```sh
 cd ./pass-culture-app-native # if needed
 direnv allow
+direnv allow # run twice on error
 ```
 
 ### Manual
