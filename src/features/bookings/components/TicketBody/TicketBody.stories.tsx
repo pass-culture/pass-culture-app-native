@@ -9,6 +9,12 @@ import { TicketBody } from './TicketBody'
 const meta: ComponentMeta<typeof TicketBody> = {
   title: 'features/bookings/TicketBody',
   component: TicketBody,
+  parameters: {
+    axe: {
+      // Disabled this rule because we use SvgIdentifier for all Illustration linearGradient id
+      disabledRules: ['duplicate-id'],
+    },
+  },
 }
 export default meta
 
