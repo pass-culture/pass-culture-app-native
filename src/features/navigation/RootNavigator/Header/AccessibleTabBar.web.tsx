@@ -14,7 +14,6 @@ import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigatio
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 
@@ -23,7 +22,7 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
   const currentRoute = useCurrentRoute()
   const { searchState, hideSuggestions } = useSearch()
   const { disabilities } = useAccessibilityFiltersContext()
-  const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
+  const enableTabBarV2 = useFeatureFlag('WIP_APP_V2_TAB_BAR')
 
   if (currentRoute && currentRoute.name !== 'TabNavigator') return null
 

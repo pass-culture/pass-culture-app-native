@@ -11,7 +11,6 @@ import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -55,7 +54,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const categoryIdMapping = useCategoryIdMapping()
   const prePopulateOffer = usePrePopulateOffer()
   const { isDesktopViewport } = useTheme()
-  const isNewExclusivityModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_EXCLUSIVITY_MODULE)
+  const isNewExclusivityModule = useFeatureFlag('WIP_NEW_EXCLUSIVITY_MODULE')
   const hasGraphicRedesign = useHasGraphicRedesign({
     isFeatureFlagActive: isNewExclusivityModule,
     homeId: props.homeEntryId ?? '',

@@ -7,7 +7,6 @@ import { VenueMapLocationModal } from 'features/location/components/VenueMapLoca
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -64,7 +63,7 @@ export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
     hideModal: hideVenueMapLocationModal,
   } = useModal()
 
-  const enabledVenueMap = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
+  const enabledVenueMap = useFeatureFlag('WIP_VENUE_MAP')
   const isLocated = selectedLocationMode !== LocationMode.EVERYWHERE
   const shouldTriggerModal = enabledVenueMap && !isLocated
 

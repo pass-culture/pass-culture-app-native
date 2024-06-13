@@ -12,7 +12,6 @@ import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/u
 import { analytics } from 'libs/analytics'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { Position } from 'libs/location'
 import { formatDates } from 'libs/parsers/formatDates'
@@ -127,7 +126,7 @@ export function OfferPlaylistList({
     logSameCategoryPlaylistVerticalScroll
   )
 
-  const enableSameArtistPlaylist = useFeatureFlag(RemoteStoreFeatureFlags.WIP_SAME_ARTIST_PLAYLIST)
+  const enableSameArtistPlaylist = useFeatureFlag('WIP_SAME_ARTIST_PLAYLIST')
   const shouldDisplaySameArtistPlaylist =
     !!isArrayNotEmpty(sameArtistPlaylist) && enableSameArtistPlaylist
 

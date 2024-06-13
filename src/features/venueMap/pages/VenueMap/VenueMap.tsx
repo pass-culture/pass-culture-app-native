@@ -13,7 +13,6 @@ import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessi
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal/VenueTypeModal'
 import { useVenueTypeCode } from 'features/venueMap/store/venueTypeCodeStore'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ellipseString } from 'shared/string/ellipseString'
 import {
   PageHeaderWithoutPlaceholder,
@@ -30,7 +29,7 @@ export const VenueMap: FunctionComponent = () => {
   const { goBack } = useGoBack(...getSearchStackConfig('SearchLanding'))
 
   const venueTypeCode = useVenueTypeCode()
-  const enableVenueMapTypeFilter = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER)
+  const enableVenueMapTypeFilter = useFeatureFlag('WIP_VENUE_MAP_TYPE_FILTER')
 
   const headerHeight = useGetHeaderHeight()
   const { height } = useWindowDimensions()

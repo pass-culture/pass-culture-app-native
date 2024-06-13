@@ -17,7 +17,6 @@ import { VerticalVideoPlayer } from 'features/home/components/modules/video/Vert
 import { Color, VideoCarouselModule as VideoCarouselModuleType } from 'features/home/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -45,7 +44,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const progressValue = useSharedValue<number>(0)
   const carouselDotId = uuidv4()
 
-  const enableVideoCarousel = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16)
+  const enableVideoCarousel = useFeatureFlag('WIP_APP_V2_VIDEO_9_16')
   const hasGraphicRedesign = useHasGraphicRedesign({
     isFeatureFlagActive: enableVideoCarousel,
     homeId: props.homeEntryId,

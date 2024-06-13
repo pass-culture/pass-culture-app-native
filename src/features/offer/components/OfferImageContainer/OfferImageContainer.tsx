@@ -14,7 +14,6 @@ import {
   useOfferImageContainerDimensions,
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -36,9 +35,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   onPress,
 }) => {
   const { backgroundHeight, imageStyle } = useOfferImageContainerDimensions()
-  const shouldDisplayCarousel = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW_WITH_CAROUSEL
-  )
+  const shouldDisplayCarousel = useFeatureFlag('WIP_OFFER_PREVIEW_WITH_CAROUSEL')
   const theme = useTheme()
 
   const offerImages = imageUrls ?? []

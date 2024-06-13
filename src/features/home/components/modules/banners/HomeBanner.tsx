@@ -9,7 +9,6 @@ import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
@@ -58,7 +57,7 @@ const bannersToRender = [
 export const HomeBanner = ({ hasGeolocPosition, isLoggedIn, homeId }: HomeBannerProps) => {
   const { data } = useHomeBanner(hasGeolocPosition)
   const { navigate } = useNavigation<UseNavigationType>()
-  const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
+  const enableSystemBanner = useFeatureFlag('WIP_APP_V2_SYSTEM_BLOCK')
   const hasGraphicRedesign = useHasGraphicRedesign({
     isFeatureFlagActive: enableSystemBanner,
     homeId,

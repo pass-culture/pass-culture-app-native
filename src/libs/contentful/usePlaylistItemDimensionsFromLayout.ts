@@ -3,7 +3,6 @@ import { PixelRatio } from 'react-native'
 import { Layout } from 'libs/contentful/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LENGTH_L, LENGTH_M, MARGIN_DP, RATIO_HOME_IMAGE } from 'ui/theme'
 
 const LENGTH_S = PixelRatio.roundToNearestPixel(6.5 * MARGIN_DP)
@@ -16,7 +15,7 @@ export function usePlaylistItemDimensionsFromLayout(
   itemWidth: number
   itemHeight: number
 } {
-  const enableV2Sizes = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_HOME_MODULE_SIZES)
+  const enableV2Sizes = useFeatureFlag('WIP_NEW_HOME_MODULE_SIZES')
   const hasGraphicRedesign = useHasGraphicRedesign({
     isFeatureFlagActive: enableV2Sizes,
     homeId: homeEntryId ?? '',

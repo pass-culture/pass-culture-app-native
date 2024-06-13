@@ -14,7 +14,7 @@ type OutputProps = {
 }
 
 export const useShouldDisplayVenueMap = (
-  featureFlag: RemoteStoreFeatureFlags = RemoteStoreFeatureFlags.WIP_VENUE_MAP
+  featureFlag: keyof typeof RemoteStoreFeatureFlags = 'WIP_VENUE_MAP'
 ): OutputProps => {
   const enabledVenueMap = useFeatureFlag(featureFlag)
 

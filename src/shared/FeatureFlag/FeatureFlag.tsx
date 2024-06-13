@@ -4,7 +4,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 type FeatureFlagProps = {
-  featureFlag: RemoteStoreFeatureFlags
+  featureFlag: keyof typeof RemoteStoreFeatureFlags
   children: React.JSX.Element
 }
 

@@ -2,7 +2,6 @@ import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
@@ -18,7 +17,7 @@ type Props = {
 
 export const GeolocationBanner: FunctionComponent<Props> = ({ title, subtitle, onPress }) => {
   const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useLocation()
-  const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
+  const enableSystemBanner = useFeatureFlag('WIP_APP_V2_SYSTEM_BLOCK')
 
   const onPressGeolocationBanner = useCallback(async () => {
     if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {

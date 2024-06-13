@@ -9,7 +9,6 @@ import {
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { DescriptionContext } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
@@ -40,9 +39,7 @@ export const CategoriesSectionItem = <N,>({
   handleGetIcon,
 }: CategoriesSectionItemProps<N>) => {
   const { data: subcategoriesData } = useSubcategories()
-  const displaySearchNbFacetResults = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS
-  )
+  const displaySearchNbFacetResults = useFeatureFlag('WIP_DISPLAY_SEARCH_NB_FACET_RESULTS')
 
   const shouldHideArrow = !item.children
   const itemKey = k as N

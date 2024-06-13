@@ -11,21 +11,24 @@ const appBuildVersion = getAppBuildVersion()
 
 // firestore feature flag documentation:
 // https://www.notion.so/passcultureapp/Feature-Flag-e7b0da7946f64020b8403e3581b4ed42#fff5fb17737240c9996c432117acacd8
-export const useFeatureFlag = (featureFlag: RemoteStoreFeatureFlags): boolean => {
+
+export const useFeatureFlag = (featureFlag: keyof typeof RemoteStoreFeatureFlags): boolean => {
   const { data: docSnapshot } = useQuery(QueryKeys.FEATURE_FLAGS, getAllFeatureFlags, {
     staleTime: 1000 * 30, // 30 seconds
   })
 
   if (!docSnapshot) return false
 
+  const remoteStoreFeatureFlag = RemoteStoreFeatureFlags[featureFlag]
+
   const { minimalBuildNumber, maximalBuildNumber } =
-    docSnapshot.get<FeatureFlagConfig>(featureFlag) ?? {}
+    docSnapshot.get<FeatureFlagConfig>(remoteStoreFeatureFlag) ?? {}
 
   if (minimalBuildNumber === undefined && maximalBuildNumber === undefined) return false
 
   if (!!(minimalBuildNumber && maximalBuildNumber) && minimalBuildNumber > maximalBuildNumber) {
     eventMonitoring.captureException(
-      `Minimal build number is greater than maximal build number for feature flag ${featureFlag}`,
+      `Minimal build number is greater than maximal build number for feature flag ${remoteStoreFeatureFlag}`,
       {
         level: 'info',
         extra: {

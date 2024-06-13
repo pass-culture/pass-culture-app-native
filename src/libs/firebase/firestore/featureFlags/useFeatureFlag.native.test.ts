@@ -15,7 +15,8 @@ const { collection } = firestore()
 
 const mockGet = jest.fn()
 
-const featureFlag = RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW
+const featureFlagKey = 'WIP_DISABLE_STORE_REVIEW'
+const featureFlag = RemoteStoreFeatureFlags[featureFlagKey]
 
 describe('useFeatureFlag', () => {
   beforeAll(() =>
@@ -31,11 +32,35 @@ describe('useFeatureFlag', () => {
     const firestoreData = {}
     mockGet.mockReturnValueOnce(firestoreData)
 
-    const { result } = renderUseFeatureFlag(featureFlag)
+    const { result } = renderUseFeatureFlag(featureFlagKey)
 
     await act(async () => {})
 
     expect(result.current).toBeFalsy()
+  })
+
+  describe('arguments', () => {
+    it('should activate FF when a FF value is provided', async () => {
+      const firestoreData = { maximalBuildNumber: buildVersion + 1 }
+      mockGet.mockReturnValueOnce(firestoreData)
+
+      const { result } = renderUseFeatureFlag(featureFlagKey)
+
+      await act(async () => {})
+
+      expect(result.current).toBeTruthy()
+    })
+
+    it('should activate FF when a FF key is provided', async () => {
+      const firestoreData = { maximalBuildNumber: buildVersion + 1 }
+      mockGet.mockReturnValueOnce(firestoreData)
+
+      const { result } = renderUseFeatureFlag(featureFlagKey)
+
+      await act(async () => {})
+
+      expect(result.current).toBeTruthy()
+    })
   })
 
   describe('minimalBuildNumber', () => {
@@ -56,7 +81,7 @@ describe('useFeatureFlag', () => {
         const firestoreData = { minimalBuildNumber }
         mockGet.mockReturnValueOnce(firestoreData)
 
-        const { result } = renderUseFeatureFlag(featureFlag)
+        const { result } = renderUseFeatureFlag(featureFlagKey)
 
         await act(async () => {})
 
@@ -70,7 +95,7 @@ describe('useFeatureFlag', () => {
       const firestoreData = { maximalBuildNumber: buildVersion + 1 }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderUseFeatureFlag(featureFlag)
+      const { result } = renderUseFeatureFlag(featureFlagKey)
 
       await act(async () => {})
 
@@ -81,7 +106,7 @@ describe('useFeatureFlag', () => {
       const firestoreData = { maximalBuildNumber: buildVersion }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderUseFeatureFlag(featureFlag)
+      const { result } = renderUseFeatureFlag(featureFlagKey)
 
       await act(async () => {})
 
@@ -92,7 +117,7 @@ describe('useFeatureFlag', () => {
       const firestoreData = { maximalBuildNumber: buildVersion - 1 }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderUseFeatureFlag(featureFlag)
+      const { result } = renderUseFeatureFlag(featureFlagKey)
 
       await act(async () => {})
 
@@ -108,7 +133,7 @@ describe('useFeatureFlag', () => {
       }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderUseFeatureFlag(featureFlag)
+      const { result } = renderUseFeatureFlag(featureFlagKey)
 
       await act(async () => {})
 
@@ -122,7 +147,7 @@ describe('useFeatureFlag', () => {
       }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderUseFeatureFlag(featureFlag)
+      const { result } = renderUseFeatureFlag(featureFlagKey)
 
       await act(async () => {})
 
@@ -136,7 +161,7 @@ describe('useFeatureFlag', () => {
       }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderUseFeatureFlag(featureFlag)
+      const { result } = renderUseFeatureFlag(featureFlagKey)
 
       await act(async () => {})
 
@@ -150,7 +175,7 @@ describe('useFeatureFlag', () => {
       }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderUseFeatureFlag(featureFlag)
+      const { result } = renderUseFeatureFlag(featureFlagKey)
 
       await act(async () => {})
 
@@ -164,7 +189,7 @@ describe('useFeatureFlag', () => {
       }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      const { result } = renderUseFeatureFlag(featureFlag)
+      const { result } = renderUseFeatureFlag(featureFlagKey)
 
       await act(async () => {})
 
@@ -178,7 +203,7 @@ describe('useFeatureFlag', () => {
       }
       mockGet.mockReturnValueOnce(firestoreData)
 
-      renderUseFeatureFlag(featureFlag)
+      renderUseFeatureFlag(featureFlagKey)
 
       await act(async () => {})
 
@@ -190,7 +215,7 @@ describe('useFeatureFlag', () => {
   })
 })
 
-const renderUseFeatureFlag = (featureFlag: RemoteStoreFeatureFlags) =>
-  renderHook(() => useFeatureFlag(featureFlag), {
+const renderUseFeatureFlag = (...featureFlag: Parameters<typeof useFeatureFlag>) =>
+  renderHook(() => useFeatureFlag(...featureFlag), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

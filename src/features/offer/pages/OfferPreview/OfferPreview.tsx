@@ -13,7 +13,6 @@ import { useOffer } from 'features/offer/api/useOffer'
 import { PinchableBox } from 'features/offer/components/PinchableBox/PinchableBox'
 import { getOfferImageUrls } from 'features/offer/helpers/getOfferImageUrls/getOfferImageUrls'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
 import { BlurFooter } from 'ui/components/headers/BlurFooter'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
@@ -34,9 +33,7 @@ export const OfferPreview: FunctionComponent = () => {
   const headerHeight = useGetHeaderHeight()
   const footerHeight = useGetFooterHeight(FOOTER_HEIGHT)
 
-  const shouldDisplayCarousel = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW_WITH_CAROUSEL
-  )
+  const shouldDisplayCarousel = useFeatureFlag('WIP_OFFER_PREVIEW_WITH_CAROUSEL')
   const defaultIndex = params.defaultIndex ?? 0
   const progressValue = useSharedValue<number>(defaultIndex)
   const [index, setIndex] = React.useState(defaultIndex)

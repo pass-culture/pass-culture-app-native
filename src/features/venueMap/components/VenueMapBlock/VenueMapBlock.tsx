@@ -7,7 +7,6 @@ import { VENUE_MAP_BACKGROUND } from 'features/venueMap/components/VenueMapBlock
 import { VENUE_MAP_BACKGROUND_APP_V2 } from 'features/venueMap/components/VenueMapBlock/VenueMapBackgroundAppV2'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -22,9 +21,7 @@ type Props = {
 
 export const VenueMapBlock: FunctionComponent<Props> = ({ onPress, from, ...props }) => {
   const focusProps = useHandleFocus()
-  const enableAppV2VenueMapBlock = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK
-  )
+  const enableAppV2VenueMapBlock = useFeatureFlag('WIP_APP_V2_VENUE_MAP_BLOCK')
 
   const TouchableContainer = onPress ? StyledTouchable : StyledInternalTouchableLink
 
