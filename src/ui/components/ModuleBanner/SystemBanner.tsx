@@ -26,6 +26,7 @@ export const SystemBanner: FunctionComponent<Props> = ({
   accessibilityLabel,
 }) => {
   const focusProps = useHandleFocus()
+
   return (
     <StyledTouchable onPress={onPress} accessibilityLabel={accessibilityLabel} {...focusProps}>
       <Container testID="systemBanner">
@@ -42,9 +43,12 @@ export const SystemBanner: FunctionComponent<Props> = ({
   )
 }
 
-const StyledTouchable = styledButton(Touchable)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
-  ...customFocusOutline({ isFocus, color: theme.colors.black }),
-}))
+const StyledTouchable = styledButton(Touchable)<{ isFocus?: boolean; isHover?: boolean }>(
+  ({ theme, isFocus }) => ({
+    borderRadius: theme.borderRadius.radius,
+    ...customFocusOutline({ isFocus, color: theme.colors.black }),
+  })
+)
 
 const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
