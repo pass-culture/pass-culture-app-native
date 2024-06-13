@@ -13,7 +13,7 @@ export function OfferAccessibility({ accessibility }: Readonly<Props>) {
   return (
     <ViewGap gap={4}>
       <Typo.ButtonText>Accessibilité de l’offre</Typo.ButtonText>
-      <AccessibilityBlock {...accessibility} />
+      <AccessibilityBlock basicAccessibility={accessibility} />
     </ViewGap>
   )
 }
