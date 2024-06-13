@@ -102,12 +102,27 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
       {isLargeScreen ? (
         <FlexRow>
           <ColumnLargeScreen>
-            <NewBusinessModuleTextAndCta
-              date={date}
-              title={title}
-              subtitle={subtitle}
-              callToAction={callToAction}
-            />
+            <StyledBody testID="date" numberOfLines={1}>
+              {date}
+            </StyledBody>
+            <StyledTitle1 testID="firstLine" numberOfLines={2}>
+              {title}
+            </StyledTitle1>
+            <StyledTitle4 testID="secondLine" numberOfLines={2}>
+              {subtitle}
+            </StyledTitle4>
+            {callToAction ? (
+              <Row>
+                <StyledButtonText testID="callToAction" numberOfLines={1}>
+                  {callToAction}
+                </StyledButtonText>
+                <IconContainer>
+                  <ArrowRightIcon />
+                </IconContainer>
+              </Row>
+            ) : (
+              <Spacer.Column numberOfSpaces={4} />
+            )}
           </ColumnLargeScreen>
           <StyledImageBackgroundLargeScreen
             url={imageURL}
@@ -120,12 +135,27 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
         <StyledImageBackground url={imageURL} height={FIXED_SIZE} testID="imageBusiness">
           <StyledLinearGradient>
             <Column>
-              <NewBusinessModuleTextAndCta
-                date={date}
-                title={title}
-                subtitle={subtitle}
-                callToAction={callToAction}
-              />
+              <StyledCaption testID="date" numberOfLines={1}>
+                {date}
+              </StyledCaption>
+              <StyledTitle3 testID="firstLine" numberOfLines={2}>
+                {title}
+              </StyledTitle3>
+              <StyledCaption testID="secondLine" numberOfLines={2}>
+                {subtitle}
+              </StyledCaption>
+              {callToAction ? (
+                <Row>
+                  <StyledCaption testID="callToAction" numberOfLines={1}>
+                    {callToAction}
+                  </StyledCaption>
+                  <IconContainer>
+                    <ArrowRightIcon />
+                  </IconContainer>
+                </Row>
+              ) : (
+                <Spacer.Column numberOfSpaces={4} />
+              )}
             </Column>
           </StyledLinearGradient>
         </StyledImageBackground>
@@ -134,38 +164,6 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
   )
 }
 
-const NewBusinessModuleTextAndCta = ({
-  date,
-  title,
-  subtitle,
-  callToAction,
-}: Partial<BusinessModuleProps>) => {
-  return (
-    <React.Fragment>
-      <StyledCaptionRegular testID="date" numberOfLines={1}>
-        {date}
-      </StyledCaptionRegular>
-      <StyledTitle3 testID="firstLine" numberOfLines={2}>
-        {title}
-      </StyledTitle3>
-      <StyledCaptionMedium testID="secondLine" numberOfLines={2}>
-        {subtitle}
-      </StyledCaptionMedium>
-      {callToAction ? (
-        <Row>
-          <StyledCaptionBold testID="callToAction" numberOfLines={1}>
-            {callToAction}
-          </StyledCaptionBold>
-          <IconContainer>
-            <ArrowRightIcon />
-          </IconContainer>
-        </Row>
-      ) : (
-        <Spacer.Column numberOfSpaces={4} />
-      )}
-    </React.Fragment>
-  )
-}
 export const NewBusinessModule = memo(UnmemoizedNewBusinessModule)
 
 const FlexRow = styled.View(({ theme }) => ({
@@ -240,23 +238,26 @@ const Row = styled.View({
   marginBottom: getSpacing(6),
 })
 
+const StyledTitle1 = styled(Typo.Title1)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
 const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   color: theme.colors.white,
-  marginVertical: getSpacing(1),
+}))
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.white,
 }))
 
-const StyledCaptionRegular = styled(Typo.Caption)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
-  fontFamily: theme.fontFamily.regular,
 }))
-const StyledCaptionMedium = styled(Typo.Caption)(({ theme }) => ({
+const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
-  fontFamily: theme.fontFamily.medium,
 }))
 
-const StyledCaptionBold = styled(Typo.Caption)(({ theme }) => ({
+const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
   color: theme.colors.white,
-  fontFamily: theme.fontFamily.bold,
 }))
 
 const ArrowRightIcon = styled(ArrowRight).attrs(({ theme }) => ({
