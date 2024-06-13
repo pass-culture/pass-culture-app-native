@@ -19,6 +19,7 @@ import { VerticalVideoErrorView } from 'features/home/components/modules/video/V
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { theme } from 'theme'
+import { Pause } from 'ui/svg/icons/Pause'
 import { PlayV2 } from 'ui/svg/icons/PlayV2'
 import { SoundOff } from 'ui/svg/icons/SoundOff'
 import { SoundOn } from 'ui/svg/icons/SoundOn'
@@ -229,7 +230,7 @@ const StyledUnmutedIcon = styled(SoundOn).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const StyledPauseIcon = styled(PlayV2).attrs(({ theme }) => ({
+const StyledPauseIcon = styled(Pause).attrs(({ theme }) => ({
   color: theme.colors.black,
   size: theme.icons.sizes.small,
 }))``
