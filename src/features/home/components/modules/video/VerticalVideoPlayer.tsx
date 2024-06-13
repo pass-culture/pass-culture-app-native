@@ -1,8 +1,8 @@
 import colorAlpha from 'color-alpha'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { useWindowDimensions, AppState, Platform } from 'react-native'
+import React, { useCallback, useState } from 'react'
+import { useWindowDimensions, Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import YouTubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe'
+import YouTubePlayer from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -10,6 +10,7 @@ import {
   RATIO710,
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
+import { useVerticalVideoPlayer } from 'features/home/components/modules/video/useVerticalVideoPlayer'
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
 import { VerticalVideoErrorView } from 'features/home/components/modules/video/VerticalVideoErrorView'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
@@ -18,9 +19,24 @@ import { theme } from 'theme'
 import { PlayV2 } from 'ui/svg/icons/PlayV2'
 import { SoundOff } from 'ui/svg/icons/SoundOff'
 import { SoundOn } from 'ui/svg/icons/SoundOn'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const PLAYER_CONTROLS_HEIGHT = getSpacing(0)
+
+export enum VideoPlayerButtonsWording {
+  CONTINUE_PLAYING = 'Continuer à regarder',
+  START_PLAYING = 'Lire la vidéo',
+  NEXT_VIDEO = 'Voir la vidéo suivante',
+  REPLAY_VIDEO = 'Revoir la vidéo',
+}
+
+enum PlayerState {
+  UNSTARTED = 'unstarted',
+  BUFFERING = 'buffering',
+  PLAYING = 'playing',
+  PAUSED = 'paused',
+  ENDED = 'ended',
+}
 
 interface VideoPlayerProps {
   videoSources: string[]
@@ -42,8 +58,22 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   setHasFinishedPlaying,
 }) => {
   const [showErrorView, setShowErrorView] = useState(false)
-  const [elapsed, setElapsed] = useState(1)
-  const [isMuted, setIsMuted] = useState(true)
+
+  const {
+    isMuted,
+    toggleMute,
+    togglePlay,
+    intersectionObserverListener,
+    pauseVideo,
+    playVideo,
+    replayVideo,
+    playerRef,
+    elapsed,
+  } = useVerticalVideoPlayer({
+    isPlaying,
+    setIsPlaying,
+    setHasFinishedPlaying,
+  })
 
   const { isDesktopViewport } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
@@ -53,76 +83,17 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     RATIO710
   )
 
-  const playerRef = useRef<YoutubeIframeRef>(null)
-
-  // Make sure the video stop playing when app is not in an active state (eg: background/inactive)
-  useEffect(() => {
-    const subscription = AppState.addEventListener('change', (nextAppState) => {
-      if (nextAppState !== 'active') {
-        setIsPlaying(false)
-      }
-    })
-
-    return () => {
-      subscription.remove()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  useEffect(() => {
-    const getVideoDuration = async () => {
-      return playerRef.current?.getDuration()
-    }
-
-    const interval = setInterval(async () => {
-      const videoDuration = await getVideoDuration()
-      const elapsed_sec = await playerRef.current?.getCurrentTime()
-      if (elapsed_sec && videoDuration) setElapsed(elapsed_sec / videoDuration)
-    }, 100)
-
-    return () => {
-      clearInterval(interval)
-    }
-  }, [])
-
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying)
-  }
-
-  const toggleMute = () => {
-    setIsMuted(!isMuted)
-  }
-
-  const playVideo = () => {
-    setIsPlaying(true)
-    setHasFinishedPlaying(false)
-  }
-
-  const pauseVideo = () => {
-    setIsPlaying(false)
-  }
-
-  const replayVideo = () => {
-    playerRef.current?.seekTo(0, false)
-    setHasFinishedPlaying(false)
-    setIsPlaying(true)
-  }
-
-  const intersectionObserverListener = (isInView: boolean) => {
-    if (!isInView) pauseVideo()
-  }
-
   const onChangeState = useCallback(
     (state: string) => {
-      if (state === 'ended') {
+      setShowErrorView(false)
+      if (state === PlayerState.ENDED) {
         setHasFinishedPlaying(true)
         setIsPlaying(false)
+      } else if (state === PlayerState.PAUSED) {
         setIsPlaying(false)
-      } else if (state === 'paused') {
-        setIsPlaying(false)
-      } else if (state === 'playing') {
+      } else if (state === PlayerState.PLAYING) {
         setIsPlaying(true)
-      } else if (state === 'unstarted') {
+      } else if (state === PlayerState.UNSTARTED) {
         setIsPlaying(true)
       }
     },
@@ -148,12 +119,11 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           end={{ x: 0, y: 1 }}
           colors={[colorAlpha(theme.colors.black, 0.9), colorAlpha(theme.colors.black, 0.9)]}>
           <ButtonsContainer>
-            <ButtonWithCaption
-              onPress={togglePlay}
-              accessibilityLabel="Continuer à regarder"
-              wording="Continuer à regarder"
-              icon={StyledPlayIcon}
-            />
+            <IconContainer>
+              <StyledPlayIcon />
+            </IconContainer>
+            <Spacer.Column numberOfSpaces={1.5} />
+            <StyledCaption>{VideoPlayerButtonsWording.CONTINUE_PLAYING}</StyledCaption>
           </ButtonsContainer>
         </Calque>
       </PressListener>
@@ -208,18 +178,18 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           <ControlsContainer>
             <ButtonWithCaption
               onPress={togglePlay}
-              icon={StyledSmallPlayIcon}
+              icon={StyledPauseIcon}
               wording=""
-              accessibilityLabel="Jouer ou mettre en pause la vidéo"
+              accessibilityLabel="Mettre en pause la vidéo"
             />
             <ButtonWithCaption
               onPress={toggleMute}
               icon={isMuted ? StyledMutedIcon : StyledUnmutedIcon}
               wording=""
-              accessibilityLabel="Désactiver le son"
+              accessibilityLabel="Activer ou désactiver le son"
             />
           </ControlsContainer>
-          <CreditProgressBar progress={elapsed} height="small" />
+          <CreditProgressBar progress={elapsed} height="smaller" />
         </StyledProgressContainer>
       ) : null}
 
@@ -254,13 +224,15 @@ const PressListener = styled.Pressable({
 })
 
 const ButtonsContainer = styled.View({
-  flexDirection: 'row',
   justifyContent: 'center',
+  alignItems: 'center',
+  maxWidth: getSpacing(20),
 })
 
 const ControlsContainer = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
+  marginHorizontal: getSpacing(2),
 })
 
 const StyledPlayIcon = styled(PlayV2).attrs(({ theme }) => ({
@@ -273,7 +245,7 @@ const StyledUnmutedIcon = styled(SoundOn).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const StyledSmallPlayIcon = styled(PlayV2).attrs(({ theme }) => ({
+const StyledPauseIcon = styled(PlayV2).attrs(({ theme }) => ({
   color: theme.colors.black,
   size: theme.icons.sizes.small,
 }))``
@@ -285,12 +257,23 @@ const StyledMutedIcon = styled(SoundOff).attrs(({ theme }) => ({
 
 const StyledProgressContainer = styled.View({
   position: 'absolute',
-  bottom: getSpacing(2),
-  left: getSpacing(2),
-  right: getSpacing(2),
+  bottom: 0,
+  left: 0,
+  right: 0,
 })
 
 // The app crashed when the youtube player is used with react-navigation. This fixes the issue (source: https://lonelycpp.github.io/react-native-youtube-iframe/navigation-crash/#2-tweak-webview-props)
 const StyledYoutubePlayer = styled(YouTubePlayer).attrs({
   webViewStyle: Platform.OS === 'android' ? { opacity: 0.99 } : undefined,
 })``
+
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.white,
+  textAlign: 'center',
+}))
+
+const IconContainer = styled.View(({ theme }) => ({
+  borderRadius: theme.buttons.roundedButton.size,
+  padding: getSpacing(2.5),
+  backgroundColor: theme.colors.white,
+}))
