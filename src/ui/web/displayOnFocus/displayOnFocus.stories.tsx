@@ -8,7 +8,7 @@ import { Typo } from 'ui/theme'
 import { displayOnFocus } from './displayOnFocus'
 
 export default {
-  title: 'ui/a11y/displayOnFocus',
+  title: 'ui/accessibility/displayOnFocus',
 }
 
 const body1 = 'a component wrapped with '

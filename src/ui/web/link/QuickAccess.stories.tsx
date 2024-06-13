@@ -7,7 +7,7 @@ import { Typo } from 'ui/theme'
 import { QuickAccess } from './QuickAccess'
 
 const meta: ComponentMeta<typeof QuickAccess> = {
-  title: 'ui/a11y/QuickAccess',
+  title: 'ui/accessibility/QuickAccess',
   component: QuickAccess,
 }
 export default meta
