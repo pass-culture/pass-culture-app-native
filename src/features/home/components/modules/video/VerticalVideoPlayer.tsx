@@ -1,5 +1,5 @@
 import colorAlpha from 'color-alpha'
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 import { useWindowDimensions, Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import YouTubePlayer from 'react-native-youtube-iframe'
@@ -10,7 +10,10 @@ import {
   RATIO710,
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
-import { useVerticalVideoPlayer } from 'features/home/components/modules/video/useVerticalVideoPlayer'
+import {
+  PlayerState,
+  useVerticalVideoPlayer,
+} from 'features/home/components/modules/video/useVerticalVideoPlayer'
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
 import { VerticalVideoErrorView } from 'features/home/components/modules/video/VerticalVideoErrorView'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
@@ -28,14 +31,6 @@ export enum VideoPlayerButtonsWording {
   START_PLAYING = 'Lire la vidéo',
   NEXT_VIDEO = 'Voir la vidéo suivante',
   REPLAY_VIDEO = 'Revoir la vidéo',
-}
-
-enum PlayerState {
-  UNSTARTED = 'unstarted',
-  BUFFERING = 'buffering',
-  PLAYING = 'playing',
-  PAUSED = 'paused',
-  ENDED = 'ended',
 }
 
 interface VideoPlayerProps {
@@ -57,8 +52,6 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   hasFinishedPlaying,
   setHasFinishedPlaying,
 }) => {
-  const [showErrorView, setShowErrorView] = useState(false)
-
   const {
     isMuted,
     toggleMute,
@@ -69,6 +62,10 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     replayVideo,
     playerRef,
     elapsed,
+    onChangeState,
+    showErrorView,
+    toggleErrorView,
+    videoState,
   } = useVerticalVideoPlayer({
     isPlaying,
     setIsPlaying,
@@ -81,23 +78,6 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     isDesktopViewport,
     windowWidth,
     RATIO710
-  )
-
-  const onChangeState = useCallback(
-    (state: string) => {
-      setShowErrorView(false)
-      if (state === PlayerState.ENDED) {
-        setHasFinishedPlaying(true)
-        setIsPlaying(false)
-      } else if (state === PlayerState.PAUSED) {
-        setIsPlaying(false)
-      } else if (state === PlayerState.PLAYING) {
-        setIsPlaying(true)
-      } else if (state === PlayerState.UNSTARTED) {
-        setIsPlaying(true)
-      }
-    },
-    [setIsPlaying, setHasFinishedPlaying]
   )
 
   const PlayerCalque = () => {
@@ -123,7 +103,11 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
               <StyledPlayIcon />
             </IconContainer>
             <Spacer.Column numberOfSpaces={1.5} />
-            <StyledCaption>{VideoPlayerButtonsWording.CONTINUE_PLAYING}</StyledCaption>
+            <StyledCaption>
+              {videoState === PlayerState.UNSTARTED
+                ? VideoPlayerButtonsWording.START_PLAYING
+                : VideoPlayerButtonsWording.CONTINUE_PLAYING}
+            </StyledCaption>
           </ButtonsContainer>
         </Calque>
       </PressListener>
@@ -147,7 +131,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           width={playerWidth}
           play={isPlaying}
           onReady={isPlaying ? playVideo : pauseVideo}
-          onError={() => setShowErrorView(true)}
+          onError={toggleErrorView}
           videoId={videoSources[currentIndex]}
           mute={isMuted}
           webViewProps={{

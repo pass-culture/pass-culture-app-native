@@ -5,7 +5,6 @@ import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { CategoryIdEnum } from 'api/gen'
 import {
   EnrichedVideoCarouselItem,
   RedirectionMode,
@@ -20,6 +19,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { CarouselBar } from 'ui/CarouselBar/CarouselBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -36,6 +36,9 @@ interface VideoCarouselModuleBaseProps extends VideoCarouselModuleType {
 
 export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps> = (props) => {
   const prePopulateOffer = usePrePopulateOffer()
+  const mapping = useCategoryIdMapping()
+  const labelMapping = useCategoryHomeLabelMapping()
+
   const { width: windowWidth } = useWindowDimensions()
   const carouselRef = React.useRef<ICarouselInstance>(null)
   const progressValue = useSharedValue<number>(0)
@@ -44,8 +47,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const enableVideoCarousel = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16)
   const shouldModuleBeDisplayed = Platform.OS !== 'web'
 
-  const { homeEntryId, items, color, id, autoplay } = props
-  const itemsWithRelatedData = useVideoCarouselData(items, homeEntryId)
+  const { items, color, id, autoplay } = props
+  const itemsWithRelatedData = useVideoCarouselData(items, id)
 
   const hasItems = itemsWithRelatedData.length > 0
   const videoSources = videoSourceExtractor(itemsWithRelatedData)
@@ -74,6 +77,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     if (item.redirectionMode === RedirectionMode.OFFER && item.offer) {
       const { offer } = item
 
+      const categoryId = mapping[offer.offer.subcategoryId]
+      const categoryText = labelMapping[offer.offer.subcategoryId] ?? ''
       const timestampsInMillis = offer
         ? offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
         : undefined
@@ -91,7 +96,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
               prePopulateOffer({
                 ...offer.offer,
                 offerId: +offer.objectID,
-                categoryId: CategoryIdEnum.CARTE_JEUNES,
+                categoryId,
               })
             },
           }
@@ -101,8 +106,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         <StyledInternalTouchableLink key={index} {...containerProps}>
           <AttachedOfferCard
             title={offer.offer.name ?? ''}
-            categoryId={CategoryIdEnum.CARTE_JEUNES}
-            categoryText=""
+            categoryId={categoryId}
+            categoryText={categoryText}
             imageUrl={offer.offer.thumbUrl}
             showImage
             withRightArrow

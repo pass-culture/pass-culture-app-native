@@ -1,6 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { AppState } from 'react-native'
 import { YoutubeIframeRef } from 'react-native-youtube-iframe'
+
+export enum PlayerState {
+  UNSTARTED = 'unstarted',
+  BUFFERING = 'buffering',
+  PLAYING = 'playing',
+  PAUSED = 'paused',
+  ENDED = 'ended',
+}
 
 type Props = {
   isPlaying: boolean
@@ -15,7 +23,8 @@ export const useVerticalVideoPlayer = ({
 }: Props) => {
   const [isMuted, setIsMuted] = useState(true)
   const [elapsed, setElapsed] = useState(0)
-
+  const [showErrorView, setShowErrorView] = useState(false)
+  const [videoState, setVideoState] = useState(PlayerState.UNSTARTED)
   const playerRef = useRef<YoutubeIframeRef>(null)
 
   // Make sure the video stop playing when app is not in an active state (eg: background/inactive)
@@ -49,6 +58,24 @@ export const useVerticalVideoPlayer = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const onChangeState = useCallback(
+    (state: string) => {
+      setVideoState(state as PlayerState)
+      setShowErrorView(false)
+      if (state === PlayerState.ENDED) {
+        setHasFinishedPlaying(true)
+        setIsPlaying(false)
+      } else if (state === PlayerState.PAUSED) {
+        setIsPlaying(false)
+      } else if (state === PlayerState.PLAYING) {
+        setIsPlaying(true)
+      } else if (state === PlayerState.UNSTARTED) {
+        setIsPlaying(true)
+      }
+    },
+    [setIsPlaying, setHasFinishedPlaying]
+  )
+
   const intersectionObserverListener = (isInView: boolean) => {
     if (!isInView) pauseVideo()
   }
@@ -76,6 +103,8 @@ export const useVerticalVideoPlayer = ({
     setIsPlaying(true)
   }
 
+  const toggleErrorView = () => setShowErrorView(true)
+
   return {
     isMuted,
     toggleMute,
@@ -86,5 +115,9 @@ export const useVerticalVideoPlayer = ({
     replayVideo,
     playerRef,
     elapsed,
+    showErrorView,
+    onChangeState,
+    toggleErrorView,
+    videoState,
   }
 }
