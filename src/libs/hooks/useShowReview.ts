@@ -4,12 +4,11 @@ import InAppReview from 'react-native-in-app-review'
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import { useAppStateChange } from 'libs/appState'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring'
 
 export const useShowReview = () => {
   const timeoutRef = useRef<NodeJS.Timeout>()
-  const disableStoreReview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW)
+  const disableStoreReview = useFeatureFlag('WIP_DISABLE_STORE_REVIEW')
 
   const { shouldReviewBeRequested, updateInformationWhenReviewHasBeenRequested } =
     useReviewInAppInformation()

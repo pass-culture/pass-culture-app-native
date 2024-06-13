@@ -10,7 +10,6 @@ import { StepCard } from 'features/profile/components/StepCard/StepCard'
 import { getEmailUpdateStep } from 'features/profile/helpers/getEmailUpdateStep'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Step } from 'ui/components/Step/Step'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { StepList } from 'ui/components/StepList/StepList'
@@ -21,7 +20,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 export const TrackEmailChangeContentDeprecated = () => {
   const timeoutRef = useRef<NodeJS.Timeout>()
-  const disableOldChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_OLD_CHANGE_EMAIL)
+  const disableOldChangeEmail = useFeatureFlag('DISABLE_OLD_CHANGE_EMAIL')
   const { data: emailUpdateStatus, isLoading } = useEmailUpdateStatus()
   const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()

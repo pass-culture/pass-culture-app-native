@@ -19,7 +19,6 @@ import { CreateHistoryItem, SearchState } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
@@ -50,7 +49,7 @@ export function AutocompleteOfferItem({
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const { disabilities } = useAccessibilityFiltersContext()
   const { data } = useSubcategories()
-  const enableNewMapping = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS)
+  const enableNewMapping = useFeatureFlag('WIP_NEW_MAPPING_BOOKS')
 
   const isfilmsSeriesCinemaSearchGroup =
     categories.length && categories?.[0]?.value === SearchGroupNameEnumv2.FILMS_SERIES_CINEMA

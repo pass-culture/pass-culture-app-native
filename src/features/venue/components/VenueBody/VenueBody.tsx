@@ -16,7 +16,6 @@ import { VenueThematicSection } from 'features/venue/components/VenueThematicSec
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useDistance } from 'libs/location/hooks/useDistance'
@@ -68,9 +67,7 @@ export const VenueBody: FunctionComponent<Props> = ({
   const hasGoogleCredit = bannerMeta?.is_from_google && bannerMeta?.image_credit
 
   const currentDate = new Date()
-  const isDynamicOpeningHoursEnabled = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_ENABLE_DYNAMIC_OPENING_HOURS
-  )
+  const isDynamicOpeningHoursEnabled = useFeatureFlag('WIP_ENABLE_DYNAMIC_OPENING_HOURS')
 
   const isDynamicOpeningHoursDisplayed = isDynamicOpeningHoursEnabled && venue.openingHours
 

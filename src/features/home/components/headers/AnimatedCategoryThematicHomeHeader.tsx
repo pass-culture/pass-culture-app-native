@@ -7,7 +7,6 @@ import { BlackBackground } from 'features/home/components/headers/BlackBackgroun
 import { SubscribeButtonWithModals } from 'features/home/components/SubscribeButtonWithModals'
 import { CategoryThematicHeader } from 'features/home/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
@@ -89,7 +88,7 @@ type AppV2CategoryThematicHeaderProps = CategoryThematicHeaderProps & {
 export const AnimatedCategoryThematicHomeHeader: FunctionComponent<
   AppV2CategoryThematicHeaderProps
 > = ({ title, subtitle, imageUrl, imageAnimatedHeight, gradientTranslation, color, homeId }) => {
-  const enableAppV2Header = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER)
+  const enableAppV2Header = useFeatureFlag('WIP_APP_V2_THEMATIC_HOME_HEADER')
   return enableAppV2Header ? (
     <AppV2Header
       title={title}

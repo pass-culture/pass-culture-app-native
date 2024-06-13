@@ -9,7 +9,6 @@ import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
@@ -37,9 +36,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   homeEntryId,
   style,
 }) => {
-  const enableMultiVideoModule = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
-  )
+  const enableMultiVideoModule = useFeatureFlag('WIP_APP_V2_MULTI_VIDEO_MODULE')
   const hasGraphicRedesign = useHasGraphicRedesign({
     isFeatureFlagActive: enableMultiVideoModule,
     homeId: homeEntryId,

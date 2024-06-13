@@ -10,7 +10,6 @@ import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOf
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { VenueTypeCode } from 'libs/parsers/venueType'
@@ -25,7 +24,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 const keyExtractor = (item: Offer) => item.objectID
 
 export const VenueOffersList: React.FC<VenueOffersProps> = ({ venue, venueOffers, playlists }) => {
-  const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
+  const isNewOfferTileDisplayed = useFeatureFlag('WIP_NEW_OFFER_TILE')
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
 

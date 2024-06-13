@@ -21,7 +21,6 @@ import {
 import { useVenueTypeCode } from 'features/venueMap/store/venueTypeCodeStore'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import MapView, { Marker, Region, MarkerPressEvent, Map } from 'libs/maps/maps'
 import { parseType } from 'libs/parsers/venueType'
@@ -40,7 +39,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'VenueMap'>>()
   const [initialVenues, setInitialVenues] = useState(params?.initialVenues)
-  const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
+  const isPreviewEnabled = useFeatureFlag('WIP_VENUE_MAP')
   const mapViewRef = useRef<Map>(null)
   const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
 

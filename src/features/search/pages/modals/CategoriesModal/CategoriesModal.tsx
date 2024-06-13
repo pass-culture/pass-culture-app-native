@@ -24,7 +24,6 @@ import {
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -61,7 +60,7 @@ export const CategoriesModal = ({
   const { data } = useSubcategories()
   const { modal } = useTheme()
   const { dispatch, searchState } = useSearch()
-  const enableNewMapping = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS)
+  const enableNewMapping = useFeatureFlag('WIP_NEW_MAPPING_BOOKS')
 
   const tree = useMemo(() => {
     return createMappingTree(data, facets, enableNewMapping)

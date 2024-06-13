@@ -17,7 +17,6 @@ import { useSync } from 'features/search/helpers/useSync/useSync'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { Form } from 'ui/components/Form'
@@ -58,9 +57,7 @@ export const SearchLanding = () => {
   const { isFocusOnSuggestions } = useSearch()
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
     useSearchHistory()
-  const enableSearchLandingHeader = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_APP_V2_SEARCH_LANDING_HEADER
-  )
+  const enableSearchLandingHeader = useFeatureFlag('WIP_APP_V2_SEARCH_LANDING_HEADER')
 
   const setQueryHistoryMemoized = useCallback(
     (query: string) => setQueryHistory(query),

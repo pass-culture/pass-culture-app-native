@@ -8,7 +8,6 @@ import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getSpacing } from 'ui/theme'
 
 type Trends = {
@@ -19,7 +18,7 @@ type Trends = {
 }
 
 export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) => {
-  const enableTrendsModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS)
+  const enableTrendsModule = useFeatureFlag('WIP_APP_V2_CIRCLE_NAV_BUTTONS')
   const hasGraphicRedesign = useHasGraphicRedesign({
     isFeatureFlagActive: enableTrendsModule,
     homeId: homeEntryId,

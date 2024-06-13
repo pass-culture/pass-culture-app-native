@@ -11,7 +11,6 @@ import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { theme } from 'theme'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
@@ -45,9 +44,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
   const isAlreadyEnded = isBefore(endingDate, new Date())
   const shouldHideModule = isAlreadyEnded
 
-  const isNewHighlightModule = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_NEW_HIGHLIGHT_THEMATIC_MODULE
-  )
+  const isNewHighlightModule = useFeatureFlag('WIP_NEW_HIGHLIGHT_THEMATIC_MODULE')
   const hasGraphicRedesign = useHasGraphicRedesign({
     isFeatureFlagActive: isNewHighlightModule,
     homeId: homeEntryId ?? '',

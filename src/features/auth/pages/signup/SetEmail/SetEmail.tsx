@@ -13,7 +13,6 @@ import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/t
 import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -38,7 +37,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 }) => {
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
+  const enableGoogleSSO = useFeatureFlag('WIP_ENABLE_GOOGLE_SSO')
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const theme = useTheme()
   const { control, handleSubmit, watch } = useForm<FormValues>({

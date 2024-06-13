@@ -19,7 +19,6 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -115,9 +114,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
 
-  const { shouldDisplayVenueMap } = useShouldDisplayVenueMap(
-    RemoteStoreFeatureFlags.WIP_VENUE_MAP_SEARCH_RESULTS
-  )
+  const { shouldDisplayVenueMap } = useShouldDisplayVenueMap('WIP_VENUE_MAP_SEARCH_RESULTS')
 
   const handleSeeMapPress = () => {
     analytics.logConsultVenueMap({ from: 'searchPlaylist' })

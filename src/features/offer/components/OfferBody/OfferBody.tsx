@@ -24,7 +24,6 @@ import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { ToggleButton } from 'ui/components/buttons/ToggleButton'
@@ -57,11 +56,9 @@ export const OfferBody: FunctionComponent<Props> = ({
 }) => {
   const { isDesktopViewport } = useTheme()
   const { visible, showModal, hideModal } = useModal()
-  const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
-  const enableNewXpCineFromOffer = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER
-  )
-  const enableReactionFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FAKE_DOOR)
+  const hasFakeDoorArtist = useFeatureFlag('FAKE_DOOR_ARTIST')
+  const enableNewXpCineFromOffer = useFeatureFlag('WIP_ENABLE_NEW_XP_CINE_FROM_OFFER')
+  const enableReactionFakeDoor = useFeatureFlag('WIP_REACTION_FAKE_DOOR')
   const shouldDisplayFakeDoorArtist =
     hasFakeDoorArtist && FAKE_DOOR_ARTIST_SEARCH_GROUPS.includes(subcategory.searchGroupName)
   const shouldDisplayReactionButton =

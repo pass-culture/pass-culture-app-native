@@ -6,7 +6,6 @@ import { useLocationForLocationWidgetDesktop } from 'features/location/component
 import { ScreenOrigin } from 'features/location/enums'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
@@ -42,9 +41,7 @@ export const LocationWidgetWrapperDesktop: React.FC<LocationWidgetWrapperDesktop
   children,
   screenOrigin,
 }) => {
-  const shouldDisplayLocationWidgetAppV2 = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_APP_V2_LOCATION_WIDGET
-  )
+  const shouldDisplayLocationWidgetAppV2 = useFeatureFlag('WIP_APP_V2_LOCATION_WIDGET')
   const { icons } = useTheme()
   const {
     title: locationTitle,

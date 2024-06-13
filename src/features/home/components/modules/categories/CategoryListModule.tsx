@@ -8,7 +8,6 @@ import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -49,7 +48,7 @@ export const CategoryListModule = ({
   index,
   homeEntryId,
 }: CategoryListProps) => {
-  const enableAppV2CategoryBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK)
+  const enableAppV2CategoryBlock = useFeatureFlag('WIP_APP_V2_CATEGORY_BLOCK')
   const hasCategoryBlockGraphicRedesign = useHasGraphicRedesign({
     isFeatureFlagActive: enableAppV2CategoryBlock,
     homeId: homeEntryId,

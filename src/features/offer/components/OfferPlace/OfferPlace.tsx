@@ -15,7 +15,6 @@ import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitl
 import { getVenueSelectionHeaderMessage } from 'features/offer/helpers/getVenueSelectionHeaderMessage'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { useDistance } from 'libs/location/hooks/useDistance'
@@ -59,7 +58,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
   const { selectedLocationMode, place, userLocation } = useLocation()
   const { isDesktopViewport } = useTheme()
 
-  const hasNewOfferVenueBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_CINEMA_OFFER_VENUE_BLOCK)
+  const hasNewOfferVenueBlock = useFeatureFlag('WIP_CINEMA_OFFER_VENUE_BLOCK')
 
   const { latitude: lat, longitude: lng } = offer.venue.coordinates
   const distanceToLocation = useDistance({ lat, lng })
@@ -178,7 +177,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
           />
         )}
         {isOfferAMovieScreening ? (
-          <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER}>
+          <FeatureFlag featureFlag="WIP_ENABLE_NEW_XP_CINE_FROM_OFFER">
             <MovieScreeningCalendar offer={offer} subcategory={subcategory} />
           </FeatureFlag>
         ) : null}

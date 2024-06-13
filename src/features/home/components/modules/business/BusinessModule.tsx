@@ -5,7 +5,6 @@ import { OldBusinessModule } from 'features/home/components/modules/business/Old
 import { BusinessModuleCTAWording, LocationCircleArea } from 'features/home/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 export interface BusinessModuleProps {
   homeEntryId: string | undefined
@@ -25,7 +24,7 @@ export interface BusinessModuleProps {
 
 //TODO(PC-30046): Clean one or the other BusinessModule
 export const BusinessModule = (props: BusinessModuleProps) => {
-  const enableNewBusinessModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_BUSINESS_BLOCK)
+  const enableNewBusinessModule = useFeatureFlag('WIP_APP_V2_BUSINESS_BLOCK')
   const hasGraphicRedesign = useHasGraphicRedesign({
     isFeatureFlagActive: enableNewBusinessModule,
     homeId: props.homeEntryId ?? '',

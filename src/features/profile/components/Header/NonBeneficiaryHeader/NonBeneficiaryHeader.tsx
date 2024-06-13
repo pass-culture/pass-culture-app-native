@@ -13,7 +13,6 @@ import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { EligibilityMessage } from 'features/profile/components/Header/NonBeneficiaryHeader/EligibilityMessage'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
@@ -116,7 +115,7 @@ function NonBeneficiaryBanner({
 }: Readonly<NonBeneficiaryHeaderProps>) {
   const today = new Date()
   const { data: subscription } = useGetStepperInfo()
-  const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
+  const enableSystemBanner = useFeatureFlag('WIP_APP_V2_SYSTEM_BLOCK')
 
   const { permissionState } = useLocation()
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED

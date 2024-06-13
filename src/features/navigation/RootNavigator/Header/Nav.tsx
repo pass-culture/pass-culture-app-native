@@ -10,7 +10,6 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { theme } from 'theme'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
@@ -25,7 +24,7 @@ type Props = {
 }
 
 export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
-  const enableNavBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
+  const enableNavBarV2 = useFeatureFlag('WIP_APP_V2_TAB_BAR')
   const { tabRoutes } = useTabNavigationContext()
   const {
     searchState: { locationFilter },

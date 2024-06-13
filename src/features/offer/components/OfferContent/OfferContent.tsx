@@ -22,7 +22,6 @@ import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTrack
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
@@ -44,7 +43,7 @@ const isWeb = Platform.OS === 'web'
 export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList, subcategory }) => {
   const { userLocation } = useLocation()
   const { navigate } = useNavigation<UseNavigationType>()
-  const enableOfferPreview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW)
+  const enableOfferPreview = useFeatureFlag('WIP_OFFER_PREVIEW')
   const { isDesktopViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
 

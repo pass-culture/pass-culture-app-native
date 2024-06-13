@@ -8,7 +8,6 @@ import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -30,9 +29,7 @@ type Props = {
 }
 
 export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
-  const shouldDisplayLocationWidgetAppV2 = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_APP_V2_LOCATION_WIDGET
-  )
+  const shouldDisplayLocationWidgetAppV2 = useFeatureFlag('WIP_APP_V2_LOCATION_WIDGET')
 
   const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
 

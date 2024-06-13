@@ -25,7 +25,6 @@ import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { startTransaction } from 'shared/performance/transactions'
@@ -116,7 +115,7 @@ export const ThematicHome: FunctionComponent = () => {
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
   const { userLocation } = useLocation()
   const isLocated = !!userLocation
-  const enableAppV2Header = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER)
+  const enableAppV2Header = useFeatureFlag('WIP_APP_V2_THEMATIC_HOME_HEADER')
 
   const { onScroll, headerTransition, imageAnimatedHeight, gradientTranslation, viewTranslation } =
     useOpacityTransition({

@@ -23,7 +23,6 @@ import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -74,9 +73,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
     : undefined
   const playlistType = route.params?.playlistType
 
-  const enableMusicLiveBookingSurvey = useFeatureFlag(
-    RemoteStoreFeatureFlags.ENABLE_MUSIC_LIVE_BOOKING_SURVEY
-  )
+  const enableMusicLiveBookingSurvey = useFeatureFlag('ENABLE_MUSIC_LIVE_BOOKING_SURVEY')
 
   const onBookOfferSuccess = useCallback(
     ({ bookingId }: { bookingId: number }) => {

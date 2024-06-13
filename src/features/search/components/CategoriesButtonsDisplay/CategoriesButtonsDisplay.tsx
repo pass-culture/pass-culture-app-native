@@ -11,7 +11,6 @@ import { CategoryButtonV2 } from 'features/search/components/CategoryButton/Cate
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { getMediaQueryFromDimensions } from 'libs/react-responsive/useMediaQuery'
 import { theme } from 'theme'
@@ -41,12 +40,8 @@ const isWeb = Platform.OS === 'web'
 
 export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCategories }) => {
   const { shouldDisplayVenueMap, selectedLocationMode } = useShouldDisplayVenueMap()
-  const hasVenueMapWithoutPosition = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_POSITION
-  )
-  const enableNewCategoryBlock = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_APP_V2_SEARCH_CATEGORY_BLOCK
-  )
+  const hasVenueMapWithoutPosition = useFeatureFlag('WIP_VENUE_MAP_WITHOUT_POSITION')
+  const enableNewCategoryBlock = useFeatureFlag('WIP_APP_V2_SEARCH_CATEGORY_BLOCK')
 
   const {
     showModal: showVenueMapLocationModal,

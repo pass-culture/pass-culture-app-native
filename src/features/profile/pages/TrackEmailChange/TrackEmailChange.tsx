@@ -7,7 +7,6 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContent'
 import { TrackEmailChangeContentDeprecated } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContentDeprecated'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -15,7 +14,7 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 const HEADER_HEIGHT = getSpacing(8)
 
 export function TrackEmailChange() {
-  const enableNewChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_CHANGE_EMAIL)
+  const enableNewChangeEmail = useFeatureFlag('WIP_ENABLE_NEW_CHANGE_EMAIL')
   const { top } = useCustomSafeInsets()
   const { goBack } = useGoBack(...getTabNavConfig('Profile'))
 
