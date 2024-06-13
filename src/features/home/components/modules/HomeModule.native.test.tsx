@@ -201,6 +201,7 @@ describe('<HomeModule />', () => {
   })
 
   it('should display AppV2VenuesModule', async () => {
+    featureFlagSpy.mockReturnValueOnce(true)
     renderHomeModule(
       {
         ...formattedVenuesModule,

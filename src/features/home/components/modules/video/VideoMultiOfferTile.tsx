@@ -6,6 +6,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PlaylistCardOffer } from 'features/offer/components/OfferTile/PlaylistCardOffer'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
@@ -23,16 +24,22 @@ type Props = {
   offer: Offer
   hideModal: () => void
   analyticsParams: OfferAnalyticsParams
+  homeEntryId: string
 }
 
 export const VideoMultiOfferTile: FunctionComponent<Props> = ({
   offer,
   hideModal,
   analyticsParams,
+  homeEntryId,
 }) => {
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
+  const hasGraphicRedesign = useHasGraphicRedesign({
+    isFeatureFlagActive: enableMultiVideoModule,
+    homeId: homeEntryId,
+  })
   const labelMapping = useCategoryHomeLabelMapping()
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
@@ -70,7 +77,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
           })
         }}
         testId="multi-offer-tile">
-        {enableMultiVideoModule ? (
+        {hasGraphicRedesign ? (
           <PlaylistCardOffer
             categoryId={categoryId}
             thumbnailUrl={offer.offer.thumbUrl}

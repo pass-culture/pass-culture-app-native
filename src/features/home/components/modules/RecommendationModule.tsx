@@ -98,7 +98,10 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     ]
   )
 
-  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)
+  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(
+    displayParameters.layout,
+    homeEntryId
+  )
 
   if (!shouldModuleBeDisplayed) return null
   return (

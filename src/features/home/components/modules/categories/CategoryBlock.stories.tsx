@@ -29,6 +29,7 @@ export const CategoryBlockWithoutImage: ComponentStory<typeof CategoryBlock> = (
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onBeforePress={() => {}}
       navigateTo={{ screen: 'ThematicHome' }}
+      hasGraphicRedesign={false}
     />
     <Spacer.Column numberOfSpaces={10} />
     <CategoryBlock
@@ -37,6 +38,7 @@ export const CategoryBlockWithoutImage: ComponentStory<typeof CategoryBlock> = (
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onBeforePress={() => {}}
       navigateTo={{ screen: 'ThematicHome' }}
+      hasGraphicRedesign={false}
     />
   </Container>
 )

@@ -65,12 +65,13 @@ describe('VideoMultiOfferTile', () => {
   })
 })
 
-function renderMultiOfferTile() {
+function renderMultiOfferTile(homeEntryId = 'test') {
   render(
     <VideoMultiOfferTile
       offer={mockOffer}
       hideModal={hideModalMock}
       analyticsParams={mockAnalyticsParams}
+      homeEntryId={homeEntryId}
     />,
     {
       wrapper: ({ children }) => reactQueryProviderHOC(children),

@@ -11,7 +11,7 @@ import { VideoMonoOfferTile } from 'features/home/components/modules/video/Video
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
 import { Play } from 'ui/svg/icons/Play'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 const THUMBNAIL_HEIGHT = getSpacing(45)
@@ -83,6 +83,7 @@ export const OldVideoModuleMobile: FunctionComponent<VideoModuleProps> = (props)
             offers={props.offers}
             hideModal={props.hideVideoModal}
             analyticsParams={props.analyticsParams}
+            homeEntryId={props.homeEntryId}
           />
         </React.Fragment>
       ) : null}

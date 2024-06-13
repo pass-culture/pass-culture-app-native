@@ -22,8 +22,8 @@ export default componentMeta
 const Template: ComponentStory<typeof CategoryListModule> = (props) => (
   <CategoryListModule {...props} />
 )
-
-export const CategoryListWithThreeBlocks = Template.bind({})
+//TODO(PC-30279): Fix this stories
+const CategoryListWithThreeBlocks = Template.bind({})
 CategoryListWithThreeBlocks.args = {
   id: '123',
   title: 'En ce moment sur le pass',
@@ -31,8 +31,8 @@ CategoryListWithThreeBlocks.args = {
   homeEntryId: 'homeEntryId',
   index: 1,
 }
-
-export const CategoryListWithFourBlocks = Template.bind({})
+//TODO(PC-30279): Fix this stories
+const CategoryListWithFourBlocks = Template.bind({})
 CategoryListWithFourBlocks.args = {
   id: '123',
   title: 'En ce moment sur le pass',

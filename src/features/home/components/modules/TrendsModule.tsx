@@ -6,6 +6,7 @@ import { Trend } from 'features/home/components/Trend'
 import { TrendBlock } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
+import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getSpacing } from 'ui/theme'
@@ -19,11 +20,15 @@ type Trends = {
 
 export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) => {
   const enableTrendsModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS)
+  const hasGraphicRedesign = useHasGraphicRedesign({
+    isFeatureFlagActive: enableTrendsModule,
+    homeId: homeEntryId,
+  })
   const { width } = useWindowDimensions()
   const isSmallScreen = width < 375
 
   useEffect(() => {
-    if (enableTrendsModule) {
+    if (hasGraphicRedesign) {
       analytics.logModuleDisplayedOnHomepage({
         moduleId,
         moduleType: ContentTypes.TRENDS,
@@ -32,9 +37,9 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enableTrendsModule])
+  }, [hasGraphicRedesign])
 
-  if (!enableTrendsModule) return null
+  if (!hasGraphicRedesign) return null
 
   return (
     <Container isSmallScreen={isSmallScreen}>

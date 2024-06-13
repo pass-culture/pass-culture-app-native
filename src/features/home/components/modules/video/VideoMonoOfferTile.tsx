@@ -7,6 +7,7 @@ import { AttachedOfferCard } from 'features/home/components/AttachedOfferCard'
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
+import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
@@ -17,13 +18,14 @@ import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   offer: Offer
   color: string
   hideModal: () => void
   analyticsParams: OfferAnalyticsParams
+  homeEntryId: string
   style?: StyleProp<ViewStyle>
 }
 
@@ -32,11 +34,16 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   color,
   hideModal,
   analyticsParams,
+  homeEntryId,
   style,
 }) => {
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
+  const hasGraphicRedesign = useHasGraphicRedesign({
+    isFeatureFlagActive: enableMultiVideoModule,
+    homeId: homeEntryId,
+  })
   const labelMapping = useCategoryHomeLabelMapping()
   const mapping = useCategoryIdMapping()
   const prePopulateOffer = usePrePopulateOffer()
@@ -74,7 +81,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
     },
   }
 
-  return enableMultiVideoModule ? (
+  return hasGraphicRedesign ? (
     <Container {...containerProps}>
       <AttachedOfferCard
         title={offer.offer.name ?? ''}

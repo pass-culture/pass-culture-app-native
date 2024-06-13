@@ -6,6 +6,7 @@ import { CategoryBlock } from 'features/home/components/modules/categories/Categ
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
+import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
@@ -49,6 +50,10 @@ export const CategoryListModule = ({
   homeEntryId,
 }: CategoryListProps) => {
   const enableAppV2CategoryBlock = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CATEGORY_BLOCK)
+  const hasCategoryBlockGraphicRedesign = useHasGraphicRedesign({
+    isFeatureFlagActive: enableAppV2CategoryBlock,
+    homeId: homeEntryId,
+  })
   const flatListRef = useRef<FlatList<null>>(null)
   const {
     handleScrollPrevious,
@@ -58,7 +63,10 @@ export const CategoryListModule = ({
     onContainerLayout,
     isEnd,
     isStart,
-  } = useHorizontalFlatListScroll({ ref: flatListRef, isActive: enableAppV2CategoryBlock && isWeb })
+  } = useHorizontalFlatListScroll({
+    ref: flatListRef,
+    isActive: hasCategoryBlockGraphicRedesign && isWeb,
+  })
 
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage({
@@ -73,7 +81,7 @@ export const CategoryListModule = ({
   const numColumns = theme.isDesktopViewport ? DESKTOP_COLUMNS : MOBILE_COLUMNS
 
   const renderItem = ({ item }: { item: CategoryBlockData; index: number }) => (
-    <CategoryBlockContainer enableAppV2CategoryBlock={enableAppV2CategoryBlock}>
+    <CategoryBlockContainer enableAppV2CategoryBlock={hasCategoryBlockGraphicRedesign}>
       <CategoryBlock
         {...item}
         onBeforePress={() => {
@@ -93,6 +101,7 @@ export const CategoryListModule = ({
             moduleListId: id,
           },
         }}
+        hasGraphicRedesign={hasCategoryBlockGraphicRedesign}
       />
     </CategoryBlockContainer>
   )
@@ -120,9 +129,9 @@ export const CategoryListModule = ({
         />
       </HeaderContainer>
       <FlatListContainer
-        enableAppV2CategoryBlock={enableAppV2CategoryBlock}
+        enableAppV2CategoryBlock={hasCategoryBlockGraphicRedesign}
         onLayout={onContainerLayout}>
-        {enableAppV2CategoryBlock && !isStart && isWeb ? (
+        {hasCategoryBlockGraphicRedesign && !isStart && isWeb ? (
           <PlaylistArrowButton direction="left" onPress={handleScrollPrevious} />
         ) : null}
         <StyledFlatList
@@ -133,9 +142,9 @@ export const CategoryListModule = ({
           keyExtractor={keyExtractor}
           onScroll={onScroll}
           ref={flatListRef}
-          {...(enableAppV2CategoryBlock ? newCategoryBlockProps : oldCategoryBlockProps)}
+          {...(hasCategoryBlockGraphicRedesign ? newCategoryBlockProps : oldCategoryBlockProps)}
         />
-        {enableAppV2CategoryBlock && !isEnd && isWeb ? (
+        {hasCategoryBlockGraphicRedesign && !isEnd && isWeb ? (
           <PlaylistArrowButton direction="right" onPress={handleScrollNext} />
         ) : null}
       </FlatListContainer>

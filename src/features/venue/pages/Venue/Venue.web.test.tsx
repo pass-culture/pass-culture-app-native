@@ -81,6 +81,9 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 jest.setTimeout(15_000)
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldApplyGraphicRedesign: false }),
+}))
 
 describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
