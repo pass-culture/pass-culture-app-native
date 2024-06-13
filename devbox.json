@@ -1,0 +1,12 @@
+{
+  "packages": [
+    "nodejs@20.10.0",
+    "jq@latest",
+    "jdk11@latest",
+    "android-tools@latest",
+    "ruby@2.7.5",
+    "maestro@latest",
+    "python3@latest",
+    "git@latest",
+  ],
+}

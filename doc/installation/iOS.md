@@ -6,56 +6,13 @@
 
 If you encounter errors during this setup, refer to the Troubleshooting section at the end of this document.
 
-- **install `node`**
-
-  - with NVM to have the right version
-
-  ```sh
-  brew install nvm
-  nvm install
-  nvm use
-  ```
-
-  - then we will use node and put it by default in the project pass-culture-app-native :
-
-  ```sh
-  nvm install
-  nvm use
-  nvm alias default <version in .nvmrc>
-  ```
-
-- **install RVM (Ruby Version Manager) and Ruby**
-
-  To install iOS modules (pods), we use CocoaPods (dependency manager). It is built with Ruby, so make sure it is installed on your computer, otherwise:
-
-  - install RVM with:
-
-  ```sh
-  curl -sSL https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer | bash -s stable
-  ```
-
-  - install a version of Ruby that's 2.7.5 or higher (version of Ruby is indicated in the [Gemfile](/Gemfile) on the root of the repo) with:
-
-  ```sh
-  rvm install "version"
-  rvm use "version"
-  ```
-
-- **install bundler**
-
-  - We use [bundler](https://bundler.io/bundle_install.html) to install our Ruby gems, install it with:
-
-  ```sh
-  gem install bundler
-  ```
+- **install iOS dependencies**
 
   - Now you can install CocoaPods in the project `pass-culture-app-native`, that will install the gems, with:
 
   ```sh
   bundle install
   ```
-
-- **install the pods, and create the Pods folder**
 
   ```sh
   cd ios

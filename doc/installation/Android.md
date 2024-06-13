@@ -12,7 +12,6 @@ Then open the Android Virtual Devices Manager and select (or create) a Virtual D
 
 ### ✍️ Code signing
 
-- If it does not exist, create the `/android/keystores` directory.
 - Download `testing.keystore` and `testing.keystore.properties` files from 1password and place it inside the `/android/keystores` directory.
 
   _If you do not find `testing.keystore`, contact an admin._

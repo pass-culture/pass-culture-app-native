@@ -2,23 +2,19 @@
 
 We advise to **follow [the guidelines](https://reactnative.dev/docs/environment-setup)** to set up your environment by selecting your Development OS and your target OS (Android/iOS).
 
-You'll also need `jq`:
+[Install `nix` package manager](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer)
 
-**MacOS**
+[Install DirEnv](https://direnv.net/) (`brew install direnv`) please make sure to [hook into your shell](https://direnv.net/docs/hook.html)
 
-```sh
-brew install jq
-```
+Start a new terminal to load the new configuration
 
-**Linux with apt as root**
+Load environment
 
 ```sh
-apt update && apt -y install jq
+cd ./pass-culture-app-native # if needed
+direnv allow
+direnv allow # run twice on error
 ```
-
-**Building from source (not recommended)**
-
-Read [jq documentation](https://github.com/stedolan/jq)
 
 ### Android
 
