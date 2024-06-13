@@ -7,10 +7,16 @@ import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
+enum BarHeight {
+  'normal' = 4.5,
+  'small' = 2,
+  'smaller' = 1,
+}
+
 interface CreditProgressBarProps {
   progress: number
   colors: ColorsEnum[]
-  height?: 'normal' | 'small'
+  height?: 'normal' | 'small' | 'smaller'
 }
 
 const MINIMUM_PROGRESS_BAR_SIZE = 0.02
@@ -113,9 +119,9 @@ const ProgressBarContainer = styled.View<Pick<CreditProgressBarProps, 'height'>>
   ({ theme, height }) => ({
     flexDirection: 'row',
     borderRadius: PROGRESS_BAR_BORDER_RADIUS,
-    height: getSpacing(height === 'normal' ? 4.5 : 2),
+    height: getSpacing(height ? BarHeight[height] : BarHeight.normal),
     width: '100%',
     zIndex: theme.zIndex.progressbar,
-    backgroundColor: height === 'normal' ? theme.colors.white : theme.colors.greyMedium,
+    backgroundColor: height === 'small' ? theme.colors.greyMedium : theme.colors.white,
   })
 )
