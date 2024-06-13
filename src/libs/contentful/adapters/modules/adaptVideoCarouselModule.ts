@@ -31,5 +31,8 @@ const adaptVideoCarouselItemModule = (
         tag: item.fields?.tag,
         offerId: item.fields?.offerId,
         homeEntryId: item.fields?.homeEntryId,
+        thematicHomeTag: item.fields?.thematicHomeTag,
+        thematicHomeTitle: item.fields?.thematicHomeTitle,
+        thematicHomeSubtitle: item.fields?.thematicHomeSubtitle,
       }
     })

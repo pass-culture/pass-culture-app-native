@@ -103,6 +103,9 @@ export type VideoCarouselItem = {
   offerId?: string
   tag?: string
   homeEntryId?: string
+  thematicHomeTitle?: string
+  thematicHomeTag?: string
+  thematicHomeSubtitle?: string
 }
 
 export type OffersModule = {
