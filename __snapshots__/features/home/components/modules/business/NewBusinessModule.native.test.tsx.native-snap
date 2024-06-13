@@ -81,8 +81,8 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
             {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Regular",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -96,10 +96,9 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
           [
             {
               "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 20,
-              "lineHeight": 24,
-              "marginVertical": 4,
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
             },
           ]
         }
@@ -114,8 +113,8 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
             {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Medium",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "fontSize": 18,
+              "lineHeight": 22,
             },
           ]
         }
@@ -142,8 +141,8 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
               {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 12,
-                "lineHeight": 16,
+                "fontSize": 15,
+                "lineHeight": 20,
               },
             ]
           }
@@ -329,8 +328,8 @@ exports[`NewBusinessModule component should display mobile image if web image no
             {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Regular",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -344,10 +343,9 @@ exports[`NewBusinessModule component should display mobile image if web image no
           [
             {
               "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 20,
-              "lineHeight": 24,
-              "marginVertical": 4,
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
             },
           ]
         }
@@ -362,8 +360,8 @@ exports[`NewBusinessModule component should display mobile image if web image no
             {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Medium",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "fontSize": 18,
+              "lineHeight": 22,
             },
           ]
         }
@@ -390,8 +388,8 @@ exports[`NewBusinessModule component should display mobile image if web image no
               {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 12,
-                "lineHeight": 16,
+                "fontSize": 15,
+                "lineHeight": 20,
               },
             ]
           }
@@ -577,8 +575,8 @@ exports[`NewBusinessModule component should display web image if given from cont
             {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Regular",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -592,10 +590,9 @@ exports[`NewBusinessModule component should display web image if given from cont
           [
             {
               "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 20,
-              "lineHeight": 24,
-              "marginVertical": 4,
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
             },
           ]
         }
@@ -610,8 +607,8 @@ exports[`NewBusinessModule component should display web image if given from cont
             {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Medium",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "fontSize": 18,
+              "lineHeight": 22,
             },
           ]
         }
@@ -638,8 +635,8 @@ exports[`NewBusinessModule component should display web image if given from cont
               {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 12,
-                "lineHeight": 16,
+                "fontSize": 15,
+                "lineHeight": 20,
               },
             ]
           }
@@ -825,8 +822,8 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
             {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Regular",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -840,10 +837,9 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
           [
             {
               "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 20,
-              "lineHeight": 24,
-              "marginVertical": 4,
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
             },
           ]
         }
@@ -858,8 +854,8 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
             {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Medium",
-              "fontSize": 12,
-              "lineHeight": 16,
+              "fontSize": 18,
+              "lineHeight": 22,
             },
           ]
         }
@@ -886,8 +882,8 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
               {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 12,
-                "lineHeight": 16,
+                "fontSize": 15,
+                "lineHeight": 20,
               },
             ]
           }
