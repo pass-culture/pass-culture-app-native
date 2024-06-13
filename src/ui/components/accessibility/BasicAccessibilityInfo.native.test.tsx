@@ -4,7 +4,7 @@ import { render, screen } from 'tests/utils'
 import { BasicAccessibilityInfo } from 'ui/components/accessibility/BasicAccessibilityInfo'
 
 describe('BasicAccessibilityInfo', () => {
-  it('renders all handicap information', () => {
+  it('should render all handicap information', () => {
     render(
       <BasicAccessibilityInfo
         accessibility={{
@@ -22,7 +22,7 @@ describe('BasicAccessibilityInfo', () => {
     expect(screen.getByText('Handicap auditif')).toBeOnTheScreen()
   })
 
-  it('renders only available handicap information', () => {
+  it('should render only available handicap information', () => {
     render(
       <BasicAccessibilityInfo
         accessibility={{
@@ -40,7 +40,7 @@ describe('BasicAccessibilityInfo', () => {
     expect(screen.queryByText('Handicap auditif')).not.toBeOnTheScreen()
   })
 
-  it('renders all handicap information when nothing is accessible', () => {
+  it('should render all handicap information when nothing is accessible', () => {
     render(
       <BasicAccessibilityInfo
         accessibility={{
@@ -58,7 +58,7 @@ describe('BasicAccessibilityInfo', () => {
     expect(screen.getByText('Handicap auditif')).toBeOnTheScreen()
   })
 
-  it('renders nothing when no available handicap information', () => {
+  it('should render nothing when no available handicap information', () => {
     render(
       <BasicAccessibilityInfo
         accessibility={{
