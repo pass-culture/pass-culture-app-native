@@ -25,21 +25,20 @@ export function BasicAccessibilityInfo({ accessibility }: Readonly<Props>) {
 
   return (
     <StyledUl testID="BasicAccessibilityInfo">
-      {renderAccessibilityAtom(visualDisability, HandicapCategory.VISUAL, true)}
-      {renderAccessibilityAtom(mentalDisability, HandicapCategory.MENTAL, true)}
-      {renderAccessibilityAtom(motorDisability, HandicapCategory.MOTOR, true)}
-      {renderAccessibilityAtom(audioDisability, HandicapCategory.AUDIO, false)}
+      {renderAccessibilityAtom(visualDisability, HandicapCategory.VISUAL)}
+      {renderAccessibilityAtom(mentalDisability, HandicapCategory.MENTAL)}
+      {renderAccessibilityAtom(motorDisability, HandicapCategory.MOTOR)}
+      {renderAccessibilityAtom(audioDisability, HandicapCategory.AUDIO)}
     </StyledUl>
   )
 }
 
 const renderAccessibilityAtom = (
   disability: boolean | undefined | null,
-  handicap: HandicapCategory,
-  addSpacer: boolean
+  handicap: HandicapCategory
 ) =>
   disability !== null && disability !== undefined ? (
-    <StyledLi rightSpacingValue={addSpacer ? getSpacing(10) : 0}>
+    <StyledLi>
       <AccessibilityAtom handicap={handicap} isAccessible={disability} />
     </StyledLi>
   ) : null
@@ -49,6 +48,7 @@ const StyledUl = styled(Ul)(({ theme }) => ({
   overflow: 'visible',
   width: theme.isMobileViewport ? '100%' : undefined,
   justifyContent: theme.isMobileViewport ? 'space-between' : 'flex-start',
+  gap: getSpacing(theme.isMobileViewport ? 0 : 10),
 }))
 
 const StyledLi = styled(Li)<{ rightSpacingValue: number }>(({ theme, rightSpacingValue }) => ({
