@@ -1,7 +1,9 @@
 import { Color } from 'features/home/types'
 import { theme } from 'theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 
-export const videoModuleMobileColorsMapping: Record<keyof typeof Color, string> = {
+export const videoModuleColorsMapping: Record<keyof typeof Color, ColorsEnum> = {
   Gold: theme.colors.goldLight100,
   Aquamarine: theme.colors.aquamarineLight,
   SkyBlue: theme.colors.skyBlueLight,

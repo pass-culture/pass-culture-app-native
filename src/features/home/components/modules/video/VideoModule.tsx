@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useVideoOffers } from 'features/home/api/useVideoOffers'
+import { OldVideoModuleDesktop } from 'features/home/components/modules/video/OldVideoModuleDesktop'
 import { OldVideoModuleMobile } from 'features/home/components/modules/video/OldVideoModuleMobile'
 import { VideoModal } from 'features/home/components/modules/video/VideoModal'
 import { VideoModuleDesktop } from 'features/home/components/modules/video/VideoModuleDesktop'
@@ -21,16 +22,32 @@ interface VideoModuleBaseProps extends VideoModuleType {
   shouldShowModal: boolean
 }
 
-const VideoModuleMobileFF: FunctionComponent<VideoModuleProps> = (props) => {
+const VideoModuleFF: FunctionComponent<VideoModuleProps> = (props) => {
+  const theme = useTheme()
+
   const enableMultiVideoModule = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
   )
+
   const hasGraphicRedesign = useHasGraphicRedesign({
     isFeatureFlagActive: enableMultiVideoModule,
     homeId: props.homeEntryId,
   })
 
-  return hasGraphicRedesign ? <VideoModuleMobile {...props} /> : <OldVideoModuleMobile {...props} />
+  const videoModule = {
+    DESKTOP: hasGraphicRedesign ? (
+      <VideoModuleDesktop {...props} />
+    ) : (
+      <OldVideoModuleDesktop {...props} />
+    ),
+    MOBILE: hasGraphicRedesign ? (
+      <VideoModuleMobile {...props} />
+    ) : (
+      <OldVideoModuleMobile {...props} />
+    ),
+  }
+
+  return theme.isDesktopViewport ? videoModule.DESKTOP : videoModule.MOBILE
 }
 
 export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
@@ -39,8 +56,6 @@ export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
     showModal: showVideoModal,
     hideModal: hideVideoModal,
   } = useModal(props.shouldShowModal)
-
-  const theme = useTheme()
 
   const { offers } = useVideoOffers(
     props.offersModuleParameters,
@@ -84,11 +99,8 @@ export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
 
   return (
     <Container>
-      {theme.isDesktopViewport ? (
-        <VideoModuleDesktop {...props} {...videoModuleParams} />
-      ) : (
-        <VideoModuleMobileFF {...props} {...videoModuleParams} />
-      )}
+      <VideoModuleFF {...props} {...videoModuleParams} />
+
       <VideoModal
         visible={videoModalVisible}
         hideModal={hideVideoModal}
