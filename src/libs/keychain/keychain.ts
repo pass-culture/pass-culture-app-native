@@ -5,7 +5,7 @@ import { env } from 'libs/environment'
 
 const REFRESH_TOKEN_KEY = 'PASSCULTURE_REFRESH_TOKEN'
 
-// firebase sometimes overrides the default keychain credentials on ios, see oblador/react-native-keychain/issues/363
+// firebase sometimes overrides the default keychain credentials on iOS, see https://github.com/oblador/react-native-keychain/issues/363
 const keychainOptions = Platform.OS === 'ios' ? { service: env.IOS_APP_ID } : {}
 
 export async function saveRefreshToken(refreshToken: string | undefined): Promise<void> {

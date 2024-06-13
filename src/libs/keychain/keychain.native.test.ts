@@ -1,4 +1,5 @@
 import * as Keychain from '__mocks__/react-native-keychain'
+import { env } from 'libs/environment/fixtures'
 
 import { getRefreshToken, saveRefreshToken } from './keychain'
 
@@ -11,7 +12,8 @@ describe('saveRefreshToken()', () => {
     expect(Keychain.setGenericPassword).toHaveBeenCalledTimes(1)
     expect(Keychain.setGenericPassword).toHaveBeenCalledWith(
       'PASSCULTURE_REFRESH_TOKEN',
-      'fake_access_token'
+      'fake_access_token',
+      { service: env.IOS_APP_ID }
     )
   })
 
