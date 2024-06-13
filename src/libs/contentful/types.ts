@@ -509,6 +509,9 @@ type VideoCarouselItemFields = {
   offerId?: string
   tag?: string
   homeEntryId?: string
+  thematicHomeTitle?: string
+  thematicHomeTag?: string
+  thematicHomeSubtitle?: string
 }
 
 type VideoCarouselFields = {

@@ -221,6 +221,9 @@ export const formattedVideoCarouselModule: VideoCarouselModule = {
       offerId: '1116',
       homeEntryId: undefined,
       tag: undefined,
+      thematicHomeSubtitle: undefined,
+      thematicHomeTag: undefined,
+      thematicHomeTitle: undefined,
     },
   ],
 }

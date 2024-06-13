@@ -4,6 +4,7 @@ import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
+import { VideoPlayerButtonsWording } from 'features/home/components/modules/video/VerticalVideoPlayer'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { PlayV2 } from 'ui/svg/icons/PlayV2'
 import { getSpacing } from 'ui/theme'
@@ -21,8 +22,8 @@ export const VerticalVideoEndView: React.FC<{
           <ButtonsContainer>
             <ButtonWithCaption
               onPress={onPressReplay}
-              accessibilityLabel="Revoir la vidéo"
-              wording="Revoir la vidéo"
+              accessibilityLabel={VideoPlayerButtonsWording.REPLAY_VIDEO}
+              wording={VideoPlayerButtonsWording.REPLAY_VIDEO}
               icon={StyledReplayIcon}
             />
           </ButtonsContainer>
@@ -30,8 +31,8 @@ export const VerticalVideoEndView: React.FC<{
             <ButtonsContainer>
               <ButtonWithCaption
                 onPress={onPressNext}
-                accessibilityLabel="Voir la vidéo suivante"
-                wording="Voir la vidéo suivante"
+                accessibilityLabel={VideoPlayerButtonsWording.NEXT_VIDEO}
+                wording={VideoPlayerButtonsWording.NEXT_VIDEO}
                 icon={StyledPlayIcon}
               />
             </ButtonsContainer>

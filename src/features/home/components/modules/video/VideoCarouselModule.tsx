@@ -5,7 +5,6 @@ import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { CategoryIdEnum } from 'api/gen'
 import {
   EnrichedVideoCarouselItem,
   RedirectionMode,
@@ -21,12 +20,13 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
+import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { CarouselBar } from 'ui/CarouselBar/CarouselBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing } from 'ui/theme'
 
-const CAROUSEL_HEIGHT = getSpacing(45)
+const CAROUSEL_HEIGHT = getSpacing(35)
 const CAROUSEL_ANIMATION_DURATION = 500
 
 interface VideoCarouselModuleBaseProps extends VideoCarouselModuleType {
@@ -37,7 +37,10 @@ interface VideoCarouselModuleBaseProps extends VideoCarouselModuleType {
 
 export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps> = (props) => {
   const prePopulateOffer = usePrePopulateOffer()
-  const { width } = useWindowDimensions()
+  const mapping = useCategoryIdMapping()
+  const labelMapping = useCategoryHomeLabelMapping()
+
+  const { width: windowWidth } = useWindowDimensions()
   const carouselRef = React.useRef<ICarouselInstance>(null)
   const progressValue = useSharedValue<number>(0)
   const carouselDotId = uuidv4()
@@ -49,8 +52,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   })
   const shouldModuleBeDisplayed = Platform.OS !== 'web'
 
-  const { homeEntryId, items, color, id, autoplay } = props
-  const itemsWithRelatedData = useVideoCarouselData(items, homeEntryId)
+  const { items, color, id, autoplay } = props
+  const itemsWithRelatedData = useVideoCarouselData(items, id)
 
   const hasItems = itemsWithRelatedData.length > 0
   const videoSources = videoSourceExtractor(itemsWithRelatedData)
@@ -66,7 +69,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
       carouselRef.current?.next()
     } else {
       nextIndex = 0
-      carouselRef.current?.scrollTo({ index: 0 })
+      carouselRef.current?.scrollTo({ index: nextIndex })
     }
     setCurrentIndex(nextIndex)
     setIsPlaying(true)
@@ -79,6 +82,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     if (item.redirectionMode === RedirectionMode.OFFER && item.offer) {
       const { offer } = item
 
+      const categoryId = mapping[offer.offer.subcategoryId]
+      const categoryText = labelMapping[offer.offer.subcategoryId] ?? ''
       const timestampsInMillis = offer
         ? offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
         : undefined
@@ -96,7 +101,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
               prePopulateOffer({
                 ...offer.offer,
                 offerId: +offer.objectID,
-                categoryId: CategoryIdEnum.CARTE_JEUNES,
+                categoryId,
               })
             },
           }
@@ -106,8 +111,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         <StyledInternalTouchableLink key={index} {...containerProps}>
           <AttachedOfferCard
             title={offer.offer.name ?? ''}
-            categoryId={CategoryIdEnum.CARTE_JEUNES}
-            categoryText=""
+            categoryId={categoryId}
+            categoryText={categoryText}
             imageUrl={offer.offer.thumbUrl}
             showImage
             withRightArrow
@@ -118,7 +123,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         </StyledInternalTouchableLink>
       )
     }
-    const { homeEntryId } = item
+    const { homeEntryId, thematicHomeSubtitle, thematicHomeTag, thematicHomeTitle } = item
 
     const containerProps = {
       navigateTo: {
@@ -134,11 +139,11 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     return (
       <StyledInternalTouchableLink key={index} {...containerProps}>
         <AttachedOfferCard
-          title="Le meilleur du cinéma en juin pour un été de folie"
+          title={thematicHomeTitle ?? ''}
           categoryId={null}
-          categoryText="Cinéma"
+          categoryText={thematicHomeTag ?? ''}
           showImage={false}
-          date="Du 16/05 au 14/08"
+          date={thematicHomeSubtitle ?? ''}
           withRightArrow
           fixedHeight
         />
@@ -146,14 +151,14 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     )
   }
 
-  const SingleElement = () => {
-    if (itemsWithRelatedData[0]) {
+  const SingleAttachedItem = () => {
+    if (itemsWithRelatedData[0])
       return (
-        <React.Fragment>{renderItem({ item: itemsWithRelatedData[0], index: 1 })}</React.Fragment>
+        <SingleItemContainer>
+          {renderItem({ item: itemsWithRelatedData[0], index: 1 })}
+        </SingleItemContainer>
       )
-    } else {
-      return null
-    }
+    return null
   }
 
   return (
@@ -177,7 +182,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
               vertical={false}
               height={CAROUSEL_HEIGHT}
               panGestureHandlerProps={{ activeOffsetX: [-5, 5] }}
-              width={width}
+              width={windowWidth}
               loop={false}
               scrollAnimationDuration={CAROUSEL_ANIMATION_DURATION}
               onProgressChange={(_, absoluteProgress) => {
@@ -194,7 +199,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
             </DotContainer>
           </React.Fragment>
         ) : (
-          <SingleElement />
+          <SingleAttachedItem />
         )}
       </ColoredAttachedTileContainer>
     </Container>
@@ -212,7 +217,11 @@ const ColoredAttachedTileContainer = styled.View<{
 }))
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink)({
-  marginHorizontal: getSpacing(4),
+  paddingHorizontal: getSpacing(1),
+})
+
+const SingleItemContainer = styled.View({
+  marginHorizontal: getSpacing(5),
   marginVertical: getSpacing(4),
 })
 
@@ -223,5 +232,5 @@ const DotContainer = styled.View({
   right: 0,
   flexDirection: 'row',
   justifyContent: 'center',
-  paddingBottom: getSpacing(2),
+  paddingBottom: getSpacing(1),
 })
