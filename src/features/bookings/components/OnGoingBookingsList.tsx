@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useBookings } from 'features/bookings/api'
 import { EndedBookingsSection } from 'features/bookings/components/EndedBookingsSection'
@@ -33,11 +32,13 @@ const ANIMATION_DURATION = 700
 export function OnGoingBookingsList() {
   const netInfo = useNetInfoContext()
   const { data: bookings, isLoading, isFetching, refetch } = useBookings()
-  const { bottom } = useSafeAreaInsets()
   const { isLoading: subcategoriesIsLoading } = useSubcategories()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()
+  const {
+    tabBar: { height },
+  } = useTheme()
 
   const {
     ongoing_bookings: ongoingBookings = emptyBookings,
@@ -66,7 +67,7 @@ export function OnGoingBookingsList() {
   )
   const ListFooterComponent = useCallback(
     () => (
-      <FooterContainer safeBottom={bottom}>
+      <FooterContainer safeBottom={height}>
         <EndedBookingsSection endedBookings={endedBookings} />
       </FooterContainer>
     ),
