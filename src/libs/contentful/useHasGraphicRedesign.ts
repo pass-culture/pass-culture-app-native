@@ -1,3 +1,4 @@
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { REDESIGN_AB_TESTING_HOME_MODULES } from 'libs/contentful/constants'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 
@@ -7,10 +8,13 @@ type Props = {
 }
 
 export const useHasGraphicRedesign = ({ isFeatureFlagActive, homeId }: Props) => {
+  const { user } = useAuthContext()
+
   const { shouldApplyGraphicRedesign } = useRemoteConfigContext()
-  const hasGraphicRedesign = REDESIGN_AB_TESTING_HOME_MODULES.includes(homeId)
-    ? isFeatureFlagActive && shouldApplyGraphicRedesign
-    : isFeatureFlagActive
+  const hasGraphicRedesign =
+    REDESIGN_AB_TESTING_HOME_MODULES.includes(homeId) && user?.isBeneficiary
+      ? isFeatureFlagActive && shouldApplyGraphicRedesign
+      : isFeatureFlagActive
 
   return hasGraphicRedesign
 }
