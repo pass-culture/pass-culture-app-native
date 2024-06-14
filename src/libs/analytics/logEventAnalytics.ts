@@ -259,8 +259,12 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_MAP }, { from }),
   logConsultVenueOffers: (params: { venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_OFFERS }, params),
-  logConsultVideo: (params: { from: Referrals; moduleId: string; homeEntryId: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VIDEO }, params),
+  logConsultVideo: (params: {
+    from: Referrals
+    moduleId: string
+    homeEntryId: string
+    youtubeId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VIDEO }, params),
   logConsultWholeOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WHOLE_OFFER }, { offerId }),
   logConsultWithdrawal: (params: OfferIdOrVenueId) =>
@@ -358,8 +362,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION }, { type }),
   logHasRefusedCookie: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REFUSED_COOKIE }),
   logHasRequestedCode: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REQUESTED_CODE }),
-  logHasSeenAllVideo: (moduleId: string) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_SEEN_ALL_VIDEO }, { moduleId }),
+  logHasSeenAllVideo: (moduleId: string, youtubeId?: string) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_SEEN_ALL_VIDEO }, { moduleId, youtubeId }),
   logHasSharedApp: (type: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_SHARED_APP }, { type }),
   logHasSkippedCulturalSurvey: () =>

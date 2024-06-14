@@ -53,7 +53,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   })
   const shouldModuleBeDisplayed = Platform.OS !== 'web'
 
-  const { items, color, id, autoplay } = props
+  const { homeEntryId, items, color, id, autoplay } = props
   const itemsWithRelatedData = useVideoCarouselData(items, id)
 
   const hasItems = itemsWithRelatedData.length > 0
@@ -106,7 +106,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
               })
               analytics.logConsultOffer({
                 offerId: +offer.objectID,
-                moduleId: item.youtubeVideoId,
+                moduleId: item.id,
                 from: 'video_carousel_block',
                 homeEntryId,
               })
@@ -179,6 +179,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         setIsPlaying={setIsPlaying}
         hasFinishedPlaying={hasFinishedPlaying}
         setHasFinishedPlaying={setHasFinishedPlaying}
+        homeEntryId={homeEntryId}
+        moduleId={id}
       />
       <ColoredAttachedTileContainer color={color}>
         {itemsWithRelatedData.length > 1 ? (

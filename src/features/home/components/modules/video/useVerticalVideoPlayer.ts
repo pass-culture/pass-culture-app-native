@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { AppState } from 'react-native'
 import { YoutubeIframeRef } from 'react-native-youtube-iframe'
 
+import { analytics } from 'libs/analytics'
+
 export enum PlayerState {
   UNSTARTED = 'unstarted',
   BUFFERING = 'buffering',
@@ -14,12 +16,18 @@ type Props = {
   isPlaying: boolean
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
   setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
+  moduleId: string
+  homeEntryId: string
+  currentVideoId?: string
 }
 
 export const useVerticalVideoPlayer = ({
   isPlaying,
   setIsPlaying,
   setHasFinishedPlaying,
+  moduleId,
+  homeEntryId,
+  currentVideoId,
 }: Props) => {
   const [isMuted, setIsMuted] = useState(true)
   const [elapsed, setElapsed] = useState(0)
@@ -63,6 +71,7 @@ export const useVerticalVideoPlayer = ({
       setVideoState(state as PlayerState)
       setShowErrorView(false)
       if (state === PlayerState.ENDED) {
+        analytics.logHasSeenAllVideo(moduleId, currentVideoId)
         setHasFinishedPlaying(true)
         setIsPlaying(false)
       } else if (state === PlayerState.PAUSED) {
@@ -93,6 +102,14 @@ export const useVerticalVideoPlayer = ({
   }
 
   const playVideo = () => {
+    if (videoState === PlayerState.UNSTARTED) {
+      analytics.logConsultVideo({
+        from: 'video_carousel_block',
+        moduleId,
+        homeEntryId,
+        youtubeId: currentVideoId,
+      })
+    }
     setIsPlaying(true)
     setHasFinishedPlaying(false)
   }
