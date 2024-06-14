@@ -51,6 +51,7 @@ const StyledTitle4 = styled(Typo.Title4)({
 const ButtonContainer = styled.View({
   flex: 1,
   paddingBottom: getSpacing(10),
+  minHeight: getSpacing(31), // To avoid button getting smashed on "square" screens
 })
 
 const CenteredText = styled(Typo.Body)({
