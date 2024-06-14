@@ -10,7 +10,7 @@ import { Play } from 'ui/svg/icons/Play'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
-import { videoModuleMobileColorsMapping } from 'ui/theme/videoModuleMobileColorsMapping'
+import { videoModuleColorsMapping } from 'ui/theme/videoModuleColorsMapping'
 
 const THUMBNAIL_HEIGHT = getSpacing(52.5)
 // We do not center the player icon, because when the title is 2-line long,
@@ -78,7 +78,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           )}
           <ColorCategoryBackground
             colorCategoryBackgroundHeightUniqueOffer={COLOR_CATEGORY_BACKGROUND_HEIGHT_MONO_OFFER}
-            backgroundColor={videoModuleMobileColorsMapping[props.color]}
+            backgroundColor={videoModuleColorsMapping[props.color]}
             isMultiOffer={props.isMultiOffer}
           />
         </View>
