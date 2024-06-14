@@ -1,4 +1,4 @@
-import { addHours, set, isWithinInterval, subHours } from 'date-fns'
+import { addHours, set, isWithinInterval, subHours, isSameDay } from 'date-fns'
 
 import { OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
 
@@ -12,6 +12,16 @@ type OpeningHoursStatus = {
   text: string
   nextChange?: Date
 }
+
+const DAY_NUMBER_TO_DAY_NAME = {
+  0: 'dimanche',
+  1: 'lundi',
+  2: 'mardi',
+  3: 'mercredi',
+  4: 'jeudi',
+  5: 'vendredi',
+  6: 'samedi',
+} as const
 
 export const getOpeningHoursStatus = ({
   openingHours,
@@ -29,7 +39,50 @@ export const getOpeningHoursStatus = ({
   const nextDayOpenAt =
     nextDayOpeningHour && getDateFromOpeningHour(nextDay, nextDayOpeningHour.open)
 
-  return getStateFromPeriods(periods, currentDate, nextDayOpenAt)
+  const actualState = getStateFromPeriods(periods, currentDate, nextDayOpenAt)
+  const hasOpenDay = Object.values(openingHours).some((value) => !!value)
+  const isClosedOrClosingSoon = ['close', 'close-soon'].includes(actualState.state)
+  if (isClosedOrClosingSoon && hasOpenDay) {
+    const nextOpenDay = getNextOpenDay(currentDate, openingHours)
+    const nextDayName = getNextDayName(nextOpenDay, currentDate)
+
+    return {
+      ...actualState,
+      text: `${actualState.text} - Ouvre ${nextDayName} à ${formatDate(nextOpenDay)}`,
+    }
+  }
+  return actualState
+}
+
+const getNextDayName = (nextOpenDay: Date, currentDate: Date): string => {
+  const dayName = DAY_NUMBER_TO_DAY_NAME[nextOpenDay.getDay()]
+
+  const isNextOpenDayToday = isSameDay(nextOpenDay, currentDate)
+  if (isNextOpenDayToday) return 'aujourd’hui'
+
+  const isNextOpenDayTomorrow = nextOpenDay.getDay() == (currentDate.getDay() + 1) % 7
+  if (isNextOpenDayTomorrow) return 'demain'
+
+  const isNextOpenDaySameWeekday = nextOpenDay.getDay() == currentDate.getDay()
+  if (isNextOpenDaySameWeekday) return dayName + ' prochain'
+
+  return dayName
+}
+
+const getNextOpenDay = (currentDate: Date, openingHours: OpeningHours): Date => {
+  const currentDayIndex = getHoursFromCurrentDate(currentDate)
+  const nextOpeningHours = openingHours[currentDayIndex] || []
+  const nextOpenHours = nextOpeningHours.find(
+    ({ open }) => getDateFromOpeningHour(currentDate, open) > currentDate
+  )
+
+  if (nextOpenHours) {
+    return getDateFromOpeningHour(currentDate, nextOpenHours.open)
+  }
+
+  const nextDay = addHours(currentDate, 24)
+  nextDay.setHours(0, 0, 0)
+  return getNextOpenDay(nextDay, openingHours)
 }
 
 const getStateFromPeriods = (
@@ -48,10 +101,9 @@ const getStateFromPeriods = (
         nextChange: subHours(lastPeriod.openAt, 1),
       }
     }
-
     return {
       state: 'close',
-      text: 'Fermé',
+      text: `Fermé`,
       nextChange: nextDayOpenAt && subHours(nextDayOpenAt, 1),
     }
   }

@@ -1,5 +1,10 @@
 import { getOpeningHoursStatus } from './getOpeningHoursStatus'
 
+const dayFactory = {
+  monday: (time: string) => new Date(`2024-05-13T${time}`),
+  saturday: (time: string) => new Date(`2024-05-11T${time}`),
+}
+
 describe('OpeningHoursStatusViewModel', () => {
   it.each([
     {
@@ -158,27 +163,85 @@ describe('OpeningHoursStatusViewModel', () => {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
-        currentDate: new Date('2024-05-13T18:00:00'),
-        expected: 'Ferme bientôt - 19h',
+        currentDate: dayFactory.monday('18:00:00'),
+        expectedText: 'Ferme bientôt - 19h - Ouvre lundi prochain à 9h',
       },
       {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '20:00' }],
         },
-        currentDate: new Date('2024-05-13T19:00:00'),
-        expected: 'Ferme bientôt - 20h',
+        currentDate: dayFactory.monday('19:00:00'),
+        expectedText: 'Ferme bientôt - 20h - Ouvre lundi prochain à 9h',
       },
       {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '20:30' }],
         },
-        currentDate: new Date('2024-05-13T20:00:00'),
-        expected: 'Ferme bientôt - 20h30',
+        currentDate: dayFactory.monday('20:00:00'),
+        expectedText: 'Ferme bientôt - 20h30 - Ouvre lundi prochain à 9h',
       },
-    ])('should have correct text $expected', ({ openingHours, currentDate, expected }) => {
+
+      {
+        openingHours: { MONDAY: [{ open: '09:00', close: '19:00' }] },
+        currentDate: dayFactory.monday('18:00:00'),
+        expectedText: 'Ferme bientôt - 19h - Ouvre lundi prochain à 9h',
+      },
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '19:00' }],
+          WEDNESDAY: [{ open: '09:00', close: '19:00' }],
+        },
+        currentDate: dayFactory.monday('18:00:00'),
+        expectedText: 'Ferme bientôt - 19h - Ouvre mercredi à 9h',
+      },
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '19:00' }],
+          FRIDAY: [{ open: '10:00', close: '19:00' }],
+        },
+        currentDate: dayFactory.monday('18:00:00'),
+        expectedText: 'Ferme bientôt - 19h - Ouvre vendredi à 10h',
+      },
+      {
+        openingHours: {
+          MONDAY: [
+            { open: '09:00', close: '12:00' },
+            { open: '15:00', close: '19:00' },
+          ],
+        },
+        currentDate: dayFactory.monday('11:00:00'),
+        expectedText: `Ferme bientôt - 12h - Ouvre aujourd’hui à 15h`,
+      },
+      {
+        openingHours: {
+          MONDAY: [
+            { open: '09:00', close: '12:00' },
+            { open: '15:30', close: '19:00' },
+          ],
+        },
+        currentDate: dayFactory.monday('11:00:00'),
+        expectedText: `Ferme bientôt - 12h - Ouvre aujourd’hui à 15h30`,
+      },
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '19:00' }],
+          TUESDAY: [{ open: '09:00', close: '19:00' }],
+        },
+        currentDate: dayFactory.monday('18:00:00'),
+        expectedText: `Ferme bientôt - 19h - Ouvre demain à 9h`,
+      },
+      {
+        openingHours: {
+          SATURDAY: [{ open: '09:00', close: '19:00' }],
+          SUNDAY: [{ open: '09:00', close: '19:00' }],
+        },
+        currentDate: dayFactory.saturday('18:00:00'),
+        expectedText: `Ferme bientôt - 19h - Ouvre demain à 9h`,
+      },
+    ])('should have correct text $expectedText', ({ openingHours, currentDate, expectedText }) => {
       const viewModel = getOpeningHoursStatus({ openingHours, currentDate })
 
-      expect(viewModel.text).toEqual(expected)
+      expect(viewModel.text).toEqual(expectedText)
     })
   })
 
@@ -217,13 +280,76 @@ describe('OpeningHoursStatusViewModel', () => {
       expect(viewModel.state).toEqual('close')
     })
 
-    it('should have correct text', () => {
-      const viewModel = getOpeningHoursStatus({
+    it.each([
+      {
         openingHours: { MONDAY: undefined },
-        currentDate: new Date('2024-05-13T20:00:00'),
+        currentDate: dayFactory.monday('20:00:00'),
+        expectText: 'Fermé',
+      },
+      {
+        openingHours: { MONDAY: [{ open: '09:00', close: '19:00' }] },
+        currentDate: dayFactory.monday('20:00:00'),
+        expectText: 'Fermé - Ouvre lundi prochain à 9h',
+      },
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '19:00' }],
+          WEDNESDAY: [{ open: '09:00', close: '19:00' }],
+        },
+        currentDate: dayFactory.monday('20:00:00'),
+        expectText: 'Fermé - Ouvre mercredi à 9h',
+      },
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '19:00' }],
+          FRIDAY: [{ open: '10:00', close: '19:00' }],
+        },
+        currentDate: dayFactory.monday('20:00:00'),
+        expectText: 'Fermé - Ouvre vendredi à 10h',
+      },
+      {
+        openingHours: {
+          MONDAY: [
+            { open: '09:00', close: '12:00' },
+            { open: '15:00', close: '19:00' },
+          ],
+        },
+        currentDate: dayFactory.monday('13:00:00'),
+        expectText: `Fermé - Ouvre aujourd’hui à 15h`,
+      },
+      {
+        openingHours: {
+          MONDAY: [
+            { open: '09:00', close: '12:00' },
+            { open: '15:30', close: '19:00' },
+          ],
+        },
+        currentDate: dayFactory.monday('13:00:00'),
+        expectText: `Fermé - Ouvre aujourd’hui à 15h30`,
+      },
+      {
+        openingHours: {
+          MONDAY: [{ open: '09:00', close: '19:00' }],
+          TUESDAY: [{ open: '09:00', close: '19:00' }],
+        },
+        currentDate: dayFactory.monday('20:00:00'),
+        expectText: `Fermé - Ouvre demain à 9h`,
+      },
+      {
+        openingHours: {
+          SATURDAY: [{ open: '09:00', close: '19:00' }],
+          SUNDAY: [{ open: '09:00', close: '19:00' }],
+        },
+        currentDate: dayFactory.saturday('20:00:00'),
+        expectText: `Fermé - Ouvre demain à 9h`,
+      },
+    ])('should have correct text', ({ openingHours, currentDate, expectText }) => {
+      const viewModel = getOpeningHoursStatus({
+        openingHours,
+        currentDate,
       })
 
-      expect(viewModel.text).toEqual('Fermé')
+      expect(viewModel.text).toEqual(expectText)
     })
 
     it.each([
