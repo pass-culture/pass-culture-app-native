@@ -1,5 +1,5 @@
 import colorAlpha from 'color-alpha'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { ImageBackground, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
@@ -30,7 +30,7 @@ const PLAYER_SIZE = getSpacing(14.5)
 const GRADIENT_HEIGHT = getSpacing(33)
 
 export const OldVideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) => {
-  const videoDuration = `${props.durationInMinutes} min`
+  const videoDuration = useMemo(() => `${props.durationInMinutes} min`, [props.durationInMinutes])
 
   const showSeeMore = props.offers.length > 3
   const hasOnlyTwoOffers = props.offers.length === 2

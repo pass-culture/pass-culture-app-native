@@ -1,5 +1,5 @@
 import colorAlpha from 'color-alpha'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
@@ -26,7 +26,7 @@ const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER =
   THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(16)
 
 export const OldVideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
-  const videoDuration = `${props.durationInMinutes} min`
+  const videoDuration = useMemo(() => `${props.durationInMinutes} min`, [props.durationInMinutes])
 
   const colorCategoryBackgroundHeightUniqueOffer =
     THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(43)
