@@ -7,7 +7,10 @@ import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 
 import { AccessibilityAtom } from './AccessibilityAtom'
-import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service'
+import {
+  getAccessibilityCategoryAndIcon,
+  HandicapCategory,
+} from './getAccessibilityCategoryAndIcon'
 
 describe('getIconAndWording', () => {
   it.each`
@@ -27,7 +30,7 @@ describe('getIconAndWording', () => {
       expectedIcon: React.FC
       expectedWording: string
     }) => {
-      expect(getIconAndWording(handicapCategory)).toEqual({
+      expect(getAccessibilityCategoryAndIcon(handicapCategory)).toEqual({
         Icon: expectedIcon,
         wording: expectedWording,
       })

@@ -11,7 +11,7 @@ export enum HandicapCategory {
   'AUDIO',
 }
 
-export const getIconAndWording = (
+export const getAccessibilityCategoryAndIcon = (
   handicap: HandicapCategory
 ): { Icon: React.FC<AccessibleIcon>; wording: string } => {
   switch (handicap) {

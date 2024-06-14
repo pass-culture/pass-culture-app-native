@@ -5,14 +5,17 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ValidationMark as DefaultValidationMark } from 'ui/components/ValidationMark'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service'
+import {
+  getAccessibilityCategoryAndIcon,
+  HandicapCategory,
+} from './getAccessibilityCategoryAndIcon'
 interface Props {
   handicap: HandicapCategory
   isAccessible: boolean
 }
 
 export const AccessibilityAtom: React.FC<Props> = ({ handicap, isAccessible }) => {
-  const { Icon, wording } = getIconAndWording(handicap)
+  const { Icon, wording } = getAccessibilityCategoryAndIcon(handicap)
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     size: theme.icons.sizes.small,
   }))``
