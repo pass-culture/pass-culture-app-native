@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Platform } from 'react-native'
 
-import { api } from 'api/api'
+import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
@@ -23,7 +23,7 @@ export function useInitialScreen(): RootScreenNames | undefined {
 
     if (showCulturalSurvey === undefined) return
 
-    getInitialScreen({ isLoggedIn, showCulturalSurvey })
+    getInitialScreen({ isLoggedIn, user, showCulturalSurvey })
       .then((screen) => {
         setInitialScreen(screen)
         triggerInitialScreenNameAnalytics(screen)
@@ -39,15 +39,15 @@ export function useInitialScreen(): RootScreenNames | undefined {
 
 async function getInitialScreen({
   isLoggedIn,
+  user,
   showCulturalSurvey,
 }: {
   isLoggedIn: boolean
   showCulturalSurvey: boolean
+  user?: UserProfileResponse
 }): Promise<RootScreenNames> {
-  if (isLoggedIn) {
+  if (isLoggedIn && user) {
     try {
-      const user = await api.getNativeV1Me()
-
       if (user.recreditAmountToShow) {
         return 'RecreditBirthdayNotification'
       }
