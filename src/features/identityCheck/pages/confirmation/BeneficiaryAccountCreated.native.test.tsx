@@ -30,24 +30,28 @@ describe('<BeneficiaryAccountCreated/>', () => {
     mockUseAuthContext.mockReturnValue(defaultContext)
   })
 
-  it('should render correctly for underage beneficiaries', () => {
+  it('should render correctly for underage beneficiaries', async () => {
     renderBeneficiaryAccountCreated()
+
+    await screen.findByLabelText('C’est parti !')
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render correctly for 18 year-old beneficiaries', () => {
+  it('should render correctly for 18 year-old beneficiaries', async () => {
     // Too many rerenders but we reset the values before each tests
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseAuthContext.mockReturnValue({ ...defaultContext, user: beneficiaryUser })
     renderBeneficiaryAccountCreated()
+
+    await screen.findByLabelText('C’est parti !')
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should track Batch event when button is clicked', async () => {
     renderBeneficiaryAccountCreated()
-    fireEvent.press(screen.getByText('C’est parti !'))
+    fireEvent.press(await screen.findByLabelText('C’est parti !'))
 
     expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_validated_subscription')
   })
@@ -60,14 +64,14 @@ describe('<BeneficiaryAccountCreated/>', () => {
       user: { ...beneficiaryUser, needsToFillCulturalSurvey: false },
     })
     renderBeneficiaryAccountCreated()
-    fireEvent.press(screen.getByText('C’est parti !'))
+    fireEvent.press(await screen.findByLabelText('C’est parti !'))
 
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.BENEFICIARY)
   })
 
   it('should not show share app modal when user is supposed to see cultural survey', async () => {
     renderBeneficiaryAccountCreated()
-    fireEvent.press(screen.getByText('C’est parti !'))
+    fireEvent.press(await screen.findByLabelText('C’est parti !'))
 
     expect(mockShowAppModal).not.toHaveBeenCalled()
   })

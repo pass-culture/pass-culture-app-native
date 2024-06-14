@@ -16,30 +16,35 @@ const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/context/AuthContext')
 
 describe('<BeneficiaryRequestSent />', () => {
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     render(<BeneficiaryRequestSent />)
+
+    await screen.findByLabelText('On y va\u00a0!')
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to native cultural survey page WHEN "On y va !" is clicked', () => {
+  it('should redirect to native cultural survey page WHEN "On y va !" is clicked', async () => {
     render(<BeneficiaryRequestSent />)
 
-    fireEvent.press(screen.getByText('On y va\u00a0!'))
+    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(navigateFromRef).not.toHaveBeenCalled()
     expect(navigate).toHaveBeenCalledTimes(1)
     expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro', undefined)
   })
 
-  it('should redirect to home page WHEN "On y va !" button is clicked and user does not need to fill cultural survey', () => {
+  it('should redirect to home page WHEN "On y va !" button is clicked and user does not need to fill cultural survey', async () => {
     mockedUseAuthContext.mockImplementationOnce(() => ({
       user: { needsToFillCulturalSurvey: false },
     }))
+    mockedUseAuthContext.mockImplementationOnce(() => ({
+      user: { needsToFillCulturalSurvey: false },
+    })) // re-render because local storage value has been read and set
 
     render(<BeneficiaryRequestSent />)
 
-    fireEvent.press(screen.getByText('On y va\u00a0!'))
+    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(navigateFromRef).toHaveBeenCalledWith(
       navigateToHomeConfig.screen,
