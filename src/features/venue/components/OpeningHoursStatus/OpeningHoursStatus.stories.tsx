@@ -14,6 +14,7 @@ const Template: ComponentStory<typeof OpeningHoursStatus> = (props) => (
 )
 const openingHours = {
   MONDAY: [{ open: '09:00', close: '19:00' }],
+  TUESDAY: [{ open: '09:00', close: '19:00' }],
 }
 
 export const Close = Template.bind({})
@@ -30,11 +31,11 @@ Open.args = {
 export const OpenSoon = Template.bind({})
 OpenSoon.args = {
   openingHours,
-  currentDate: new Date('2024-05-13T08:00:00Z'),
+  currentDate: new Date('2024-05-13T06:00:00Z'),
 }
 
 export const CloseSoon = Template.bind({})
 CloseSoon.args = {
   openingHours,
-  currentDate: new Date('2024-05-13T18:00:00Z'),
+  currentDate: new Date('2024-05-13T16:00:00Z'),
 }
