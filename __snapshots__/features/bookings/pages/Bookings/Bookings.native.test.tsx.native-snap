@@ -798,11 +798,11 @@ exports[`Bookings should render correctly 1`] = `
           onLayout={[Function]}
         >
           <View
-            safeBottom={16}
+            safeBottom={64}
             style={
               [
                 {
-                  "marginBottom": 8,
+                  "marginBottom": 32,
                   "paddingHorizontal": 24,
                   "paddingVertical": 16,
                 },
