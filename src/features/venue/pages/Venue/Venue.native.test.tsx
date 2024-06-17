@@ -1,24 +1,21 @@
 import { SearchResponse } from '@algolia/client-search'
 import mockdate from 'mockdate'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 
-import { push, useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum } from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { initialSearchState } from 'features/search/context/reducer'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { LocationMode, Position } from 'libs/location/types'
-import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { Position } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -29,7 +26,6 @@ mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
-const mockUseVenueOffers = jest.mocked(useVenueOffers)
 
 jest.mock('libs/itinerary/useItinerary')
 
@@ -44,8 +40,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 const venueId = venueResponseSnap.id
-
-const BATCH_TRIGGER_DELAY_IN_MS = 5000
 
 const mockPosition: Position = undefined
 jest.mock('libs/location/LocationWrapper', () => ({
@@ -91,23 +85,6 @@ mockUseGTLPlaylists.mockReturnValue({
   isLoading: false,
 })
 
-const defaultParams = {
-  beginningDatetime: undefined,
-  date: null,
-  endingDatetime: undefined,
-  hitsPerPage: 30,
-  offerCategories: [],
-  offerSubcategories: [],
-  offerIsDuo: false,
-  offerIsFree: false,
-  isDigital: false,
-  priceRange: [0, 300],
-  query: '',
-  tags: [],
-  timeRange: null,
-  locationFilter: { locationType: LocationMode.EVERYWHERE },
-}
-
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -123,48 +100,6 @@ describe('<Venue />', () => {
     await act(async () => {})
 
     expect(screen).toMatchSnapshot()
-  })
-
-  it('should search the offers associated when pressing "Rechercher une offre"', async () => {
-    renderVenue(venueId)
-
-    fireEvent.press(screen.getByText('Rechercher une offre'))
-
-    await waitFor(() => {
-      expect(push).toHaveBeenCalledWith('TabNavigator', {
-        screen: 'SearchStackNavigator',
-        params: {
-          screen: 'SearchResults',
-          params: {
-            ...defaultParams,
-            venue: {
-              label: 'Le Petit Rintintin 1',
-              info: 'Paris',
-              geolocation: { latitude: 48.87004, longitude: 2.3785 },
-              venueId: 5543,
-            },
-          },
-        },
-      })
-    })
-  })
-
-  it('should not display "Rechercher une offre" button if there is no offer', async () => {
-    const emptyVenueOffers = {
-      data: { hits: [], nbHits: 0 },
-    } as unknown as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>
-    mockUseVenueOffers.mockReturnValueOnce(emptyVenueOffers)
-    mockUseVenueOffers.mockReturnValueOnce(emptyVenueOffers)
-    mockUseVenueOffers.mockReturnValueOnce(emptyVenueOffers)
-    mockUseVenueOffers.mockReturnValueOnce(emptyVenueOffers)
-
-    mockUseGTLPlaylists.mockResolvedValueOnce([])
-
-    renderVenue(venueId)
-
-    await act(async () => {})
-
-    expect(screen.queryByText('Rechercher une offre')).not.toBeOnTheScreen()
   })
 
   describe('analytics', () => {
@@ -191,28 +126,6 @@ describe('<Venue />', () => {
       await act(async () => {})
 
       expect(analytics.logConsultVenue).not.toHaveBeenCalled()
-    })
-  })
-
-  describe('Batch trigger', () => {
-    it('should trigger event after 5 seconds', async () => {
-      renderVenue(venueId)
-
-      await act(async () => {
-        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
-      })
-
-      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenVenueForSurvey)
-    })
-
-    it('should not trigger event before 5 seconds have elapsed', async () => {
-      renderVenue(venueId)
-
-      await act(async () => {
-        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 100)
-      })
-
-      expect(BatchUser.trackEvent).not.toHaveBeenCalled()
     })
   })
 })
