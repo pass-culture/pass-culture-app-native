@@ -62,7 +62,7 @@ describe('<OfferImageContainer />', () => {
         />
       )
 
-      expect(screen.queryByTestId('offerImageContainerDots')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('onlyDotsContainer')).not.toBeOnTheScreen()
     })
 
     it('should display image inside carousel when offer has several images', async () => {
@@ -88,7 +88,7 @@ describe('<OfferImageContainer />', () => {
         />
       )
 
-      expect(await screen.findByTestId('offerImageContainerDots')).toBeOnTheScreen()
+      expect(await screen.findByTestId('onlyDotsContainer')).toBeOnTheScreen()
     })
 
     it('should display image placeholder outside carousel when image url defined', () => {

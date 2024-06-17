@@ -9,12 +9,9 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferResponseV2, SearchGroupResponseModelv2 } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
-import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
-import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { getOfferImageUrls } from 'features/offer/helpers/getOfferImageUrls/getOfferImageUrls'
@@ -57,8 +54,6 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
 
   const offerImages = offer.images ? getOfferImageUrls(offer.images) : []
-  const imageUrl = offerImages.length ? offerImages[0] : ''
-
   const logConsultWholeOffer = useFunctionOnce(() => {
     analytics.logConsultWholeOffer(offer.id)
   })
@@ -95,10 +90,8 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     listener: scrollEventListener,
   })
 
-  const shouldDisplayOfferPreview = enableOfferPreview && !isWeb
-
   const onPress = (defaultIndex?: number) => {
-    if (shouldDisplayOfferPreview && offerImages.length) {
+    if (enableOfferPreview && offerImages.length) {
       navigate('OfferPreview', { id: offer.id, defaultIndex })
     }
   }
@@ -118,16 +111,12 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
         onScroll={onScroll}>
         {isDesktopViewport ? (
           <BodyDesktopContainer headerHeight={headerHeight} testID="offer-body-desktop">
-            <OfferImageWrapper
-              imageUrl={imageUrl}
-              shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-              isSticky>
-              {imageUrl ? (
-                <OfferBodyImage imageUrl={imageUrl} />
-              ) : (
-                <OfferBodyImagePlaceholder categoryId={subcategory.categoryId} />
-              )}
-            </OfferImageWrapper>
+            <OfferImageContainer
+              imageUrls={offerImages}
+              categoryId={subcategory.categoryId}
+              shouldDisplayOfferPreview={enableOfferPreview}
+              onPress={onPress}
+            />
             <OfferBody
               offer={offer}
               subcategory={subcategory}
@@ -139,7 +128,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
             <OfferImageContainer
               imageUrls={offerImages}
               categoryId={subcategory.categoryId}
-              shouldDisplayOfferPreview={shouldDisplayOfferPreview}
+              shouldDisplayOfferPreview={enableOfferPreview}
               onPress={onPress}
             />
             <OfferBody
