@@ -3,7 +3,7 @@ import { FlatList } from 'react-native'
 
 import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
-import { filterOffersStocksByDate } from 'features/offer/components/MoviesScreeningCalendar/filterOffersStocksByDate'
+import { filterOffersStocks } from 'features/offer/components/MoviesScreeningCalendar/filterOffersStocksByDate'
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { getDates } from 'shared/date/getDates'
@@ -19,7 +19,7 @@ const useMoviesScreeningsList = (offerIds: number[]) => {
   const { data: offersWithStocks } = useOffersStocks({ offerIds })
 
   const filteredOffersWithStocks = useMemo(
-    () => filterOffersStocksByDate(offersWithStocks || { offers: [] }, selectedDate),
+    () => filterOffersStocks(offersWithStocks || { offers: [] }, selectedDate),
     [offersWithStocks, selectedDate]
   )
 
