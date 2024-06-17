@@ -53,13 +53,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
     <Container>
       <VenueWebMetaHeader venue={venue} />
       {/* On web VenueHeader is called before Body for accessibility navigate order */}
-      {isWeb ? (
-        <VenueHeader
-          headerTransition={headerTransition}
-          title={venue.publicName || venue.name}
-          venue={venue}
-        />
-      ) : null}
+      {isWeb ? <VenueHeader headerTransition={headerTransition} venue={venue} /> : null}
       <VenueBody
         venue={venue}
         onScroll={onScroll}
@@ -68,13 +62,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
         shouldDisplayCTA={shouldDisplayCTA}
       />
       {/* On native VenueHeader is called after Body to implement the BlurView for iOS */}
-      {isWeb ? null : (
-        <VenueHeader
-          headerTransition={headerTransition}
-          title={venue.publicName || venue.name}
-          venue={venue}
-        />
-      )}
+      {isWeb ? null : <VenueHeader headerTransition={headerTransition} venue={venue} />}
       {shouldDisplayCTA ? <VenueCTA venue={venue} /> : null}
     </Container>
   )

@@ -15,14 +15,13 @@ import { useModal } from 'ui/components/modals/useModal'
 
 interface Props {
   headerTransition: Animated.AnimatedInterpolation<string | number>
-  title: string
   venue: VenueResponse
 }
 
 /**
  * @param props.headerTransition should be between animated between 0 and 1
  */
-export const VenueHeader: React.FC<Props> = ({ headerTransition, title, venue }) => {
+export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
   const theme = useTheme()
   const { goBack } = useGoBack(...getSearchStackConfig('SearchLanding'))
 
@@ -32,6 +31,8 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, title, venue })
     showModal: showShareVenueModal,
     hideModal: hideShareVenueModal,
   } = useModal(false)
+
+  const title = venue.publicName || venue.name
 
   const onSharePress = () => {
     analytics.logShare({ type: 'Venue', from: 'venue', venueId: venue.id })
