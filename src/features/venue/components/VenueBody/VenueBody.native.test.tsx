@@ -59,15 +59,8 @@ describe('<VenueBody />', () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
   })
 
-  it('should display default background image when no banner for venue', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
-    await waitUntilRendered()
-
-    expect(screen.getByTestId('defaultVenueBackground')).toBeOnTheScreen()
-  })
-
   it('should display withdrawal details', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
+    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} />))
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
@@ -76,7 +69,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should share on Instagram', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
+    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} />))
 
     const instagramButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
 
@@ -93,7 +86,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should log event when pressing on Infos pratiques tab', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
+    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} />))
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
@@ -104,7 +97,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should log event when pressing on Offres disponibles tab', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
+    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} />))
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Offres disponibles'))

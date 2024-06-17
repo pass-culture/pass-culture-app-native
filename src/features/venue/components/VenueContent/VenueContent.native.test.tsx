@@ -121,4 +121,10 @@ describe('<VenueContent />', () => {
       expect(BatchUser.trackEvent).not.toHaveBeenCalled()
     })
   })
+
+  it('should display default background image when no banner for venue', async () => {
+    render(reactQueryProviderHOC(<VenueContent venue={venueResponseSnap} />))
+
+    expect(await screen.findByTestId('defaultVenueBackground')).toBeOnTheScreen()
+  })
 })
