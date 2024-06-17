@@ -7,7 +7,7 @@ import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { analytics } from 'libs/analytics'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
+import { useShouldShowCulturalSurvey } from 'shared/culturalSurvey/useShouldShowCulturalSurvey'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -17,6 +17,7 @@ import { Typo } from 'ui/theme'
 export function AccountCreated() {
   const { user } = useAuthContext()
   const { showShareAppModal } = useShareAppContext()
+  const shouldShowCulturalSurvey = useShouldShowCulturalSurvey()
 
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
 

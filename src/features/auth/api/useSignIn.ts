@@ -18,7 +18,7 @@ import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
 import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
 import { storage } from 'libs/storage'
-import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
+import { useShouldShowCulturalSurvey } from 'shared/culturalSurvey/useShouldShowCulturalSurvey'
 
 export const useSignIn = ({
   params,
@@ -73,6 +73,7 @@ const useHandleSigninSuccess = (
   setErrorMessage?: (message: string) => void
 ) => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const shouldShowCulturalSurvey = useShouldShowCulturalSurvey()
 
   const onAddFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
     if (data?.offer?.id) {
@@ -123,6 +124,14 @@ const useHandleSigninSuccess = (
         setErrorMessage?.('Il y a eu un problème. Tu peux réessayer plus tard')
       }
     },
-    [offerId, navigate, doNotNavigateOnSigninSuccess, setErrorMessage, params?.from, addFavorite]
+    [
+      offerId,
+      navigate,
+      doNotNavigateOnSigninSuccess,
+      setErrorMessage,
+      params?.from,
+      addFavorite,
+      shouldShowCulturalSurvey,
+    ]
   )
 }

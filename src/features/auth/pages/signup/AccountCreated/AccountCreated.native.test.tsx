@@ -25,8 +25,10 @@ jest
   .mockReturnValue({ showShareAppModal: mockShowAppModal })
 
 describe('<AccountCreated />', () => {
-  it('should render correctly', () => {
+  it('should render correctly', async () => {
     renderAccountCreated()
+
+    await screen.findByText('Ton compte a été activé !')
 
     expect(screen).toMatchSnapshot()
   })
@@ -34,7 +36,7 @@ describe('<AccountCreated />', () => {
   it('should redirect to native cultural survey page WHEN "On y va !" button is clicked', async () => {
     renderAccountCreated()
 
-    fireEvent.press(screen.getByText('On y va\u00a0!'))
+    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
 
     await waitFor(() => {
       expect(navigateFromRef).not.toHaveBeenCalled()
@@ -48,9 +50,12 @@ describe('<AccountCreated />', () => {
     mockUseAuthContext.mockReturnValueOnce({
       user: { ...globalMockUser, needsToFillCulturalSurvey: false },
     })
+    mockUseAuthContext.mockReturnValueOnce({
+      user: { ...globalMockUser, needsToFillCulturalSurvey: false },
+    }) // re-render because local storage value has been read and set
     renderAccountCreated()
 
-    fireEvent.press(screen.getByText('On y va\u00a0!'))
+    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
 
     await waitFor(() => {
       expect(navigateFromRef).toHaveBeenCalledWith(
@@ -64,7 +69,7 @@ describe('<AccountCreated />', () => {
   it('should track Batch event when "On y va !" button is clicked', async () => {
     renderAccountCreated()
 
-    fireEvent.press(await screen.findByText('On y va\u00a0!'))
+    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(BatchUser.trackEvent).toHaveBeenCalledWith('has_validated_account')
   })
@@ -72,7 +77,7 @@ describe('<AccountCreated />', () => {
   it('should show non eligible share app modal when "On y va !" button is clicked', async () => {
     renderAccountCreated()
 
-    fireEvent.press(await screen.findByText('On y va\u00a0!'))
+    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.NOT_ELIGIBLE)
   })
@@ -80,7 +85,7 @@ describe('<AccountCreated />', () => {
   it('should log analytics when "On y va !" button is clicked', async () => {
     renderAccountCreated()
 
-    fireEvent.press(await screen.findByText('On y va\u00a0!'))
+    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(analytics.logAccountCreatedStartClicked).toHaveBeenCalledTimes(1)
   })

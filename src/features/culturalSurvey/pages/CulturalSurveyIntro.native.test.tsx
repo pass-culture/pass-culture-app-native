@@ -21,12 +21,14 @@ jest
   .mockReturnValue({ showShareAppModal: mockShowAppModal })
 
 const SHARE_APP_MODAL_STORAGE_KEY = 'has_seen_share_app_modal'
+const CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY = 'times_cultural_survey_has_been_requested'
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('CulturalSurveyIntro page', () => {
   beforeEach(() => {
     storage.clear(SHARE_APP_MODAL_STORAGE_KEY)
+    storage.clear(CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY)
   })
 
   it('should render the page with correct layout', () => {
@@ -124,5 +126,19 @@ describe('CulturalSurveyIntro page', () => {
     const hasSeenShareAppModal = await storage.readObject(SHARE_APP_MODAL_STORAGE_KEY)
 
     expect(hasSeenShareAppModal).toBe(true)
+  })
+
+  it('should increment number of times cultural survey has been seen', async () => {
+    render(<CulturalSurveyIntro />)
+    await screen.findByText('Plus tard')
+
+    render(<CulturalSurveyIntro />)
+    await screen.findByText('Plus tard')
+
+    const numberOfCulturalSurveyDisplays = await storage.readObject(
+      CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY
+    )
+
+    expect(numberOfCulturalSurveyDisplays).toEqual(2)
   })
 })

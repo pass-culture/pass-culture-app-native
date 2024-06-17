@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -46,6 +46,20 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
     showShareAppModal(ShareAppModalType.BENEFICIARY)
     await storage.saveObject(SHARE_APP_MODAL_STORAGE_KEY, true)
   }
+
+  useEffect(() => {
+    const incrementTotalCulturalSurveyDisplay = async () => {
+      const totalCulturalSurveyDisplays =
+        (await storage.readObject<number>('times_cultural_survey_has_been_requested')) || 0
+
+      await storage.saveObject(
+        'times_cultural_survey_has_been_requested',
+        totalCulturalSurveyDisplays + 1
+      )
+    }
+
+    incrementTotalCulturalSurveyDisplay()
+  }, [])
 
   return (
     <GenericInfoPageWhite
