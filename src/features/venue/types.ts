@@ -24,18 +24,18 @@ export type TabArrowNavigationProps = {
 }
 
 export type OpeningHours = Partial<{
-  MONDAY: OpeningHour
-  TUESDAY: OpeningHour
-  WEDNESDAY: OpeningHour
-  THURSDAY: OpeningHour
-  FRIDAY: OpeningHour
-  SATURDAY: OpeningHour
-  SUNDAY: OpeningHour
+  MONDAY: OpeningHour[]
+  TUESDAY: OpeningHour[]
+  WEDNESDAY: OpeningHour[]
+  THURSDAY: OpeningHour[]
+  FRIDAY: OpeningHour[]
+  SATURDAY: OpeningHour[]
+  SUNDAY: OpeningHour[]
 }>
 
 type OpeningHour = {
   open: string
   close: string
-}[]
+}
 
 export type OpeningHoursStatusState = 'open' | 'open-soon' | 'close-soon' | 'close'
