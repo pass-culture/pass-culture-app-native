@@ -27,15 +27,19 @@ export const getOpeningHoursStatus = ({
   openingHours,
   currentDate,
 }: OpeningHoursStatusParams): OpeningHoursStatus => {
-  const currentOpeningHours = openingHours[getHoursFromCurrentDate(currentDate)] || []
-  const periods = currentOpeningHours.map(({ open, close }) => {
-    const openAt = getDateFromOpeningHour(currentDate, open)
-    const closeAt = getDateFromOpeningHour(currentDate, close)
-    return createPeriod(openAt, closeAt)
-  })
+  const periods = computePeriods(openingHours, currentDate)
+
+  const currentPeriod = getCurrentPeriod(periods, currentDate)
+  const nextPeriod = getNextPeriod(periods, currentDate)
+
+  // const openingState = computeStatus(currentPeriod, nextPeriod)
+  // const openingLabel = computeLabel(openingState, currentPeriod, nextPeriod)
+  // const timeUntilNextChange = getNextChangeTime(currentPeriod, nextPeriod)
+
+  // return {state: openingState, text: openingLabel, nextChange: timeUntilNextChange}
 
   const nextDay = addHours(currentDate, 24)
-  const nextDayOpeningHour = openingHours[getHoursFromCurrentDate(nextDay)]?.[0]
+  const nextDayOpeningHour = openingHours[getDayNameFromDate(nextDay)]?.[0]
   const nextDayOpenAt =
     nextDayOpeningHour && getDateFromOpeningHour(nextDay, nextDayOpeningHour.open)
 
@@ -52,6 +56,39 @@ export const getOpeningHoursStatus = ({
     }
   }
   return actualState
+}
+
+const computePeriods = (openingHours: OpeningHours, currentDate: Date): Period[] => {
+  const currentDayOfWeek = getHoursFromCurrentDate(currentDate)
+  const currentDayIndex = getDayIndexByName(currentDayOfWeek)
+  const periods: Period[] = []
+  for (const [dayOfWeek, dayOpeningHours] of Object.entries(openingHours)) {
+    const dayIndex = getDayIndexByName(dayOfWeek as keyof OpeningHours)
+    let numberOfDaysUntilNextWeek = dayIndex - currentDayIndex
+    if (numberOfDaysUntilNextWeek < 0) {
+      numberOfDaysUntilNextWeek += 7
+    }
+    const nextDateAtDayOfWeek = set(currentDate, { hours: numberOfDaysUntilNextWeek * 24 })
+    const dayPeriods = dayOpeningHours.map(({ close, open }) =>
+      createPeriod({ open, close }, nextDateAtDayOfWeek)
+    )
+    periods.push(...dayPeriods)
+  }
+  periods.sort((a, b) => a.openAt.getTime() - b.openAt.getTime())
+  return periods
+}
+
+const getCurrentPeriod = (periods: Period[], currentDate: Date): Period | undefined => {
+  return periods.find((period) => period.isOpen(currentDate))
+}
+
+const getNextPeriod = (periods: Period[], currentDate: Date): Period | undefined => {
+  const currentPeriod = getCurrentPeriod(periods, currentDate)
+  if (!currentPeriod) {
+    return undefined
+  }
+  const currentPeriodIndex = periods.indexOf(currentPeriod)
+  return periods[currentPeriodIndex]
 }
 
 const getNextDayName = (nextOpenDay: Date, currentDate: Date): string => {
@@ -140,14 +177,18 @@ const getStateFromPeriods = (
 
 type Period = ReturnType<typeof createPeriod>
 
-const createPeriod = (openAt: Date, closeAt: Date) => ({
-  closeAt,
-  openAt,
-  isOpeningSoon: (currentDate: Date) => addHours(currentDate, 1) >= openAt,
-  isClosingSoon: (currentDate: Date) => addHours(currentDate, 1) >= closeAt,
-  isOpen: (currentDate: Date) => isWithinInterval(currentDate, { start: openAt, end: closeAt }),
-  isPassed: (currentDate: Date) => currentDate > closeAt,
-})
+const createPeriod = ({ open, close }: { open: string; close: string }, date: Date) => {
+  const closeAt = getDateFromOpeningHour(date, close)
+  const openAt = getDateFromOpeningHour(date, open)
+  return {
+    closeAt,
+    openAt,
+    isOpeningSoon: (currentDate: Date) => addHours(currentDate, 1) >= openAt,
+    isClosingSoon: (currentDate: Date) => addHours(currentDate, 1) >= closeAt,
+    isOpen: (currentDate: Date) => isWithinInterval(currentDate, { start: openAt, end: closeAt }),
+    isPassed: (currentDate: Date) => currentDate > closeAt,
+  }
+}
 
 const DAY_TO_OPENING_HOURS = {
   0: 'SUNDAY',
@@ -158,11 +199,23 @@ const DAY_TO_OPENING_HOURS = {
   5: 'FRIDAY',
   6: 'SATURDAY',
 } as const
-
 const getHoursFromCurrentDate = (currentDate: Date): keyof OpeningHours => {
   const day = currentDate.getDay()
   const openingHours = DAY_TO_OPENING_HOURS[day]
   return openingHours
+}
+
+const DAY_NAME_TO_INDEX = {
+  SUNDAY: 0,
+  MONDAY: 1,
+  TUESDAY: 2,
+  WEDNESDAY: 3,
+  THURSDAY: 4,
+  FRIDAY: 5,
+  SATURDAY: 6,
+} as const
+const getDayIndexByName = (dayName: keyof OpeningHours): number => {
+  return DAY_NAME_TO_INDEX[dayName]
 }
 
 const getDateFromOpeningHour = (currentDate: Date, openingHour: string): Date => {
