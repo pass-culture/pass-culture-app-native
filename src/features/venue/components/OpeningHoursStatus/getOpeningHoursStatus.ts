@@ -40,7 +40,7 @@ export const getOpeningHoursStatus = ({
     nextDayOpeningHour && getDateFromOpeningHour(nextDay, nextDayOpeningHour.open)
 
   const actualState = getStateFromPeriods(periods, currentDate, nextDayOpenAt)
-  const hasOpenDay = Object.values(openingHours).some((value) => !!value)
+  const hasOpenDay = Object.values(openingHours).some((value) => !!value && value.length > 0)
   const isClosedOrClosingSoon = ['close', 'close-soon'].includes(actualState.state)
   if (isClosedOrClosingSoon && hasOpenDay) {
     const nextOpenDay = getNextOpenDay(currentDate, openingHours)
