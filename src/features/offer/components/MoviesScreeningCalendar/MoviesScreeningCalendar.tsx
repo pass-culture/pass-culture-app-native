@@ -16,24 +16,29 @@ type Props = {
 
 const useMoviesScreeningsList = (offerIds: number[]) => {
   const dates = getDates(new Date(), 15)
-  const [selectedDate, setSelectedInternalDate] = useState<Date>(dates[0])
+  const [selectedInternalDate, setSelectedInternalDate] = useState<Date>(dates[0])
   const { data: offersWithStocks } = useOffersStocks({ offerIds })
 
   const setSelectedDate = useCallback(
     (date: Date) => {
-      if (!isSameDay(selectedDate, date)) {
+      if (!isSameDay(selectedInternalDate, date)) {
         setSelectedInternalDate(date)
       }
     },
-    [selectedDate]
+    [selectedInternalDate]
   )
 
   const filteredOffersWithStocks = useMemo(
-    () => filterOffersStocks(offersWithStocks || { offers: [] }, selectedDate),
-    [offersWithStocks, selectedDate]
+    () => filterOffersStocks(offersWithStocks || { offers: [] }, selectedInternalDate),
+    [offersWithStocks, selectedInternalDate]
   )
 
-  return { dates, selectedDate, setSelectedDate, offersWithStocks: filteredOffersWithStocks }
+  return {
+    dates,
+    selectedDate: selectedInternalDate,
+    setSelectedDate,
+    offersWithStocks: filteredOffersWithStocks,
+  }
 }
 
 export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers }) => {
