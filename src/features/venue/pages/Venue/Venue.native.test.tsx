@@ -3,17 +3,16 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { SubcategoryIdEnum } from 'api/gen'
+import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { initialSearchState } from 'features/search/context/reducer'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { Position } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor } from 'tests/utils'
 
@@ -24,10 +23,12 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
-jest.mock('features/venue/api/useVenue')
-jest.mock('features/venue/api/useVenueOffers')
-
+jest.mock('libs/network/NetInfoWrapper')
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/itinerary/useItinerary')
+jest.mock('features/venue/api/useVenueOffers')
+jest.mock('features/search/context/SearchWrapper')
+jest.mock('libs/location')
 
 const mockSubcategories = PLACEHOLDER_DATA.subcategories
 const mockHomepageLabels = PLACEHOLDER_DATA.homepageLabels
@@ -40,17 +41,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 const venueId = venueResponseSnap.id
-
-const mockPosition: Position = undefined
-jest.mock('libs/location/LocationWrapper', () => ({
-  useLocation: () => ({
-    userLocation: mockPosition,
-  }),
-}))
-
-jest.mock('features/profile/helpers/useIsUserUnderage', () => ({
-  useIsUserUnderage: jest.fn().mockReturnValue(false),
-}))
 
 jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists')
 const mockUseGTLPlaylists = useGTLPlaylists as jest.Mock
@@ -85,16 +75,11 @@ mockUseGTLPlaylists.mockReturnValue({
   isLoading: false,
 })
 
-const mockSearchState = initialSearchState
-jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-  }),
-}))
-
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('<Venue />', () => {
+  beforeEach(() => {
+    mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, venueResponseSnap)
+  })
+
   it('should match snapshot', async () => {
     renderVenue(venueId)
     await act(async () => {})
