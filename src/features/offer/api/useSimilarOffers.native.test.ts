@@ -34,110 +34,138 @@ const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 
 describe('useSimilarOffers', () => {
-  beforeEach(() => {
-    mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
-      params: {},
-      results: [],
+  describe('When success API response', () => {
+    beforeEach(() => {
+      mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
+        params: {},
+        results: [],
+      })
     })
-  })
 
-  it('should call Algolia hook with category included', async () => {
-    renderHook(
-      () =>
-        useSimilarOffers({
-          offerId: mockOfferId,
-          position,
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
-    await waitFor(() => {
-      expect(algoliaSpy).toHaveBeenCalledTimes(1)
-    })
-  })
-
-  it('should call Algolia hook with category excluded', async () => {
-    renderHook(
-      () =>
-        useSimilarOffers({
-          offerId: mockOfferId,
-          position,
-          categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
-    await waitFor(() => {
-      expect(algoliaSpy).toHaveBeenCalledTimes(1)
-    })
-  })
-
-  it('should call similar offers API when offer id provided and user share his position', async () => {
-    renderHook(
-      () =>
-        useSimilarOffers({
-          offerId: mockOfferId,
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          position: { latitude: 10, longitude: 15 },
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
-
-    await waitFor(() => {
-      expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
-        1,
-        `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?longitude=15&latitude=10&categories=FILMS_SERIES_CINEMA`,
+    it('should call Algolia hook with category included', async () => {
+      renderHook(
+        () =>
+          useSimilarOffers({
+            offerId: mockOfferId,
+            position,
+            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          }),
         {
-          credentials: 'omit',
-          headers: {
-            'app-version': '1.10.5',
-            'code-push-id': 'abel',
-            'commit-hash': '13371337',
-            'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-            platform: 'ios',
-            'request-id': 'testUuidV4',
-          },
-          method: 'GET',
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
         }
       )
+      await waitFor(() => {
+        expect(algoliaSpy).toHaveBeenCalledTimes(1)
+      })
+    })
+
+    it('should call Algolia hook with category excluded', async () => {
+      renderHook(
+        () =>
+          useSimilarOffers({
+            offerId: mockOfferId,
+            position,
+            categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          }),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+      await waitFor(() => {
+        expect(algoliaSpy).toHaveBeenCalledTimes(1)
+      })
+    })
+
+    it('should call similar offers API when offer id provided and user share his position', async () => {
+      renderHook(
+        () =>
+          useSimilarOffers({
+            offerId: mockOfferId,
+            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            position: { latitude: 10, longitude: 15 },
+          }),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      await waitFor(() => {
+        expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
+          1,
+          `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?longitude=15&latitude=10&categories=FILMS_SERIES_CINEMA`,
+          {
+            credentials: 'omit',
+            headers: {
+              'app-version': '1.10.5',
+              'code-push-id': 'abel',
+              'commit-hash': '13371337',
+              'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+              platform: 'ios',
+              'request-id': 'testUuidV4',
+            },
+            method: 'GET',
+          }
+        )
+      })
+    })
+
+    it('should call similar offers API when offer id provided and user not share his position', async () => {
+      renderHook(
+        () =>
+          useSimilarOffers({
+            offerId: mockOfferId,
+            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            position: null,
+          }),
+        {
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+
+      await waitFor(() => {
+        expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
+          1,
+          `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?categories=FILMS_SERIES_CINEMA`,
+          {
+            credentials: 'omit',
+            headers: {
+              'app-version': '1.10.5',
+              'code-push-id': 'abel',
+              'commit-hash': '13371337',
+              'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+              platform: 'ios',
+              'request-id': 'testUuidV4',
+            },
+            method: 'GET',
+          }
+        )
+      })
     })
   })
 
-  it('should call similar offers API when offer id provided and user not share his position', async () => {
-    renderHook(
-      () =>
-        useSimilarOffers({
-          offerId: mockOfferId,
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          position: null,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
+  describe('When error API response', () => {
+    beforeEach(() => {
+      mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
+        responseOptions: { statusCode: 503 },
+      })
+    })
 
-    await waitFor(() => {
-      expect(fetchApiRecoSpy).toHaveBeenNthCalledWith(
-        1,
-        `${env.API_BASE_URL}/native/v1/recommendation/similar_offers/1?categories=FILMS_SERIES_CINEMA`,
+    it('should return empty params and undefined similar offers when fetch similar offers call fails', async () => {
+      const { result } = renderHook(
+        () =>
+          useSimilarOffers({
+            offerId: mockOfferId,
+            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            position: null,
+          }),
         {
-          credentials: 'omit',
-          headers: {
-            'app-version': '1.10.5',
-            'code-push-id': 'abel',
-            'commit-hash': '13371337',
-            'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-            platform: 'ios',
-            'request-id': 'testUuidV4',
-          },
-          method: 'GET',
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
         }
       )
+
+      await waitFor(() => {
+        expect(result.current).toEqual({ apiRecoParams: {}, similarOffers: undefined })
+      })
     })
   })
 })

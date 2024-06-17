@@ -58,14 +58,21 @@ export const useSimilarOffers = ({
 
   const { data: apiRecoResponse } = useQuery(
     [QueryKeys.SIMILAR_OFFERS, offerId, position, categories],
-    () =>
-      api.getNativeV1RecommendationSimilarOffersofferId(
-        offerId,
-        position?.longitude,
-        position?.latitude,
-        categories
-      ),
-    { enabled: !!categories }
+    async () => {
+      try {
+        return await api.getNativeV1RecommendationSimilarOffersofferId(
+          offerId,
+          position?.longitude,
+          position?.latitude,
+          categories
+        )
+      } catch (err) {
+        return { params: {}, results: [] }
+      }
+    },
+    {
+      enabled: !!categories,
+    }
   )
 
   return {
