@@ -82,7 +82,7 @@ export const useVerticalVideoPlayer = ({
         setIsPlaying(true)
       }
     },
-    [setIsPlaying, setHasFinishedPlaying]
+    [setIsPlaying, setHasFinishedPlaying, currentVideoId, moduleId]
   )
 
   const intersectionObserverListener = (isInView: boolean) => {
@@ -98,6 +98,14 @@ export const useVerticalVideoPlayer = ({
   }
 
   const togglePlay = () => {
+    if (videoState === PlayerState.UNSTARTED && !isPlaying) {
+      analytics.logConsultVideo({
+        from: 'video_carousel_block',
+        moduleId,
+        homeEntryId,
+        youtubeId: currentVideoId,
+      })
+    }
     setIsPlaying(!isPlaying)
   }
 

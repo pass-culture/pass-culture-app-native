@@ -75,6 +75,12 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     setCurrentIndex(nextIndex)
     setIsPlaying(true)
     setHasFinishedPlaying(false)
+    analytics.logConsultVideo({
+      from: 'video_carousel_block',
+      moduleId: id,
+      homeEntryId,
+      youtubeId: videoSources[nextIndex],
+    })
   }
 
   if (!shouldModuleBeDisplayed || !hasItems || !hasGraphicRedesign) return null
