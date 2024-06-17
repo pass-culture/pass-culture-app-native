@@ -75,7 +75,7 @@
     "test:lint": "eslint . --ext .js,.ts,.tsx,.mjs --cache",
     "test:perf": "NODE_ENV=performance NODE_OPTIONS='--no-experimental-fetch' TEST_RUNNER_ARGS='--runInBand --testMatch \"<rootDir>/**/*.perf.test.tsx\"' yarn reassure",
     "test:sw": "node scripts/service-worker-test.mjs",
-    "test:storybook:accessibility": "axe-storybook --storybook-address http://localhost:6006",
+    "test:storybook:accessibility": "TZ=UTC axe-storybook --storybook-address http://localhost:6006",
     "test:types": "tsc",
     "test:types:noUncheckedIndexedAccess": "grep --recursive --line-number ./src --regexp '// @ts-expect-error: because of noUncheckedIndexedAccess' | awk -F: '{print $1\":\"$2}' | sort",
     "test:types:noUncheckedIndexedAccess:update": "yarn --silent test:types:noUncheckedIndexedAccess > scripts/noUncheckedIndexedAccess_snapshot.txt",
