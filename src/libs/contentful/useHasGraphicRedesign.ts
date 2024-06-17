@@ -11,10 +11,11 @@ export const useHasGraphicRedesign = ({ isFeatureFlagActive, homeId }: Props) =>
   const { user } = useAuthContext()
 
   const { shouldApplyGraphicRedesign } = useRemoteConfigContext()
-  const hasGraphicRedesign =
+
+  const userShouldSeeGraphicRedesign =
     REDESIGN_AB_TESTING_HOME_MODULES.includes(homeId) && user?.isBeneficiary
       ? isFeatureFlagActive && shouldApplyGraphicRedesign
       : isFeatureFlagActive
 
-  return hasGraphicRedesign
+  return userShouldSeeGraphicRedesign
 }
