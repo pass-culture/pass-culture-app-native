@@ -15,6 +15,7 @@ import { videoSourceExtractor } from 'features/home/components/helpers/videoSour
 import { newColorMapping } from 'features/home/components/modules/categories/CategoryBlock'
 import { VerticalVideoPlayer } from 'features/home/components/modules/video/VerticalVideoPlayer'
 import { Color, VideoCarouselModule as VideoCarouselModuleType } from 'features/home/types'
+import { analytics } from 'libs/analytics'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -52,7 +53,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   })
   const shouldModuleBeDisplayed = Platform.OS !== 'web'
 
-  const { items, color, id, autoplay } = props
+  const { homeEntryId, items, color, id, autoplay } = props
   const itemsWithRelatedData = useVideoCarouselData(items, id)
 
   const hasItems = itemsWithRelatedData.length > 0
@@ -74,6 +75,12 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     setCurrentIndex(nextIndex)
     setIsPlaying(true)
     setHasFinishedPlaying(false)
+    analytics.logConsultVideo({
+      from: 'video_carousel_block',
+      moduleId: id,
+      homeEntryId,
+      youtubeId: videoSources[nextIndex],
+    })
   }
 
   if (!shouldModuleBeDisplayed || !hasItems || !hasGraphicRedesign) return null
@@ -102,6 +109,12 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
                 ...offer.offer,
                 offerId: +offer.objectID,
                 categoryId,
+              })
+              analytics.logConsultOffer({
+                offerId: +offer.objectID,
+                moduleId: item.id,
+                from: 'video_carousel_block',
+                homeEntryId,
               })
             },
           }
@@ -132,6 +145,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
           homeId: homeEntryId,
           from: 'video_carousel_block',
           moduleId: id,
+          moduleItemId: item.id,
         },
       },
     }
@@ -171,6 +185,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         setIsPlaying={setIsPlaying}
         hasFinishedPlaying={hasFinishedPlaying}
         setHasFinishedPlaying={setHasFinishedPlaying}
+        homeEntryId={homeEntryId}
+        moduleId={id}
       />
       <ColoredAttachedTileContainer color={color}>
         {itemsWithRelatedData.length > 1 ? (
