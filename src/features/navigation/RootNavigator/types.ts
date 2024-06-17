@@ -33,6 +33,7 @@ export type Referrals =
   | 'venueList'
   | 'video'
   | 'videoModal'
+  | 'video_carousel_block'
 
 type BaseThematicHome = {
   homeId: string
