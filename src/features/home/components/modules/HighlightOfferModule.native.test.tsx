@@ -8,6 +8,7 @@ import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { REDESIGN_AB_TESTING_HOME_MODULES } from 'libs/contentful/constants'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -33,6 +34,7 @@ mockUseAuthContext.mockReturnValue({
   setIsLoggedIn: jest.fn(),
   refetchUser: jest.fn(),
   isUserLoading: false,
+  user: beneficiaryUser,
 })
 
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
