@@ -63,6 +63,9 @@ export function Navigation(): React.JSX.Element {
             <CheatCodesButton />
           </Row>
           <Row half>
+            <ButtonPrimary wording="AccesLibre 🌈" onPress={() => navigate('AccesLibre')} />
+          </Row>
+          <Row half>
             <ButtonPrimary wording="SignUp 🎨" onPress={() => navigate('NavigationSignUp')} />
           </Row>
           <Row half>
