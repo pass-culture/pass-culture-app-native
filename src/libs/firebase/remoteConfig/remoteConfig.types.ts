@@ -17,6 +17,7 @@ export type CustomRemoteConfig = {
   shareAppWordingVersion: ShareAppWordingVersion
   shouldApplyGraphicRedesign: boolean
   shouldDisplayReassuranceMention: boolean
+  shouldLogInfo: boolean
   subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
 }
 

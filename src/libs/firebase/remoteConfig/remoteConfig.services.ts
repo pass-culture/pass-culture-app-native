@@ -50,6 +50,8 @@ export const remoteConfig = {
       // @ts-expect-error: because of noUncheckedIndexedAccess
       shouldDisplayReassuranceMention: parameters.shouldDisplayReassuranceMention.asBoolean(),
       // @ts-expect-error: because of noUncheckedIndexedAccess
+      shouldLogInfo: parameters.shouldLogInfo.asBoolean(),
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       subscriptionHomeEntryIds: JSON.parse(parameters.subscriptionHomeEntryIds.asString()),
     }
   },
