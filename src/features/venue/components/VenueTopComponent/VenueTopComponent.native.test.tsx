@@ -1,4 +1,5 @@
 import Clipboard from '@react-native-clipboard/clipboard'
+import mockdate from 'mockdate'
 import React from 'react'
 
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
@@ -85,36 +86,38 @@ describe('<VenueTopComponent />', () => {
   })
 
   it('should render dynamics opening hours when feature flag is enabled', async () => {
+    mockdate.set(new Date('2024-05-31T08:31:00'))
     jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
+
     const venue = {
       ...venueResponseSnap,
       openingHours: {
-        monday: [],
-        tuesday: [],
-        wednesday: [],
-        thursday: [],
-        friday: [],
-        saturday: [],
-        sunday: [],
+        MONDAY: [{ open: '09:00', close: '19:00' }],
+        TUESDAY: [{ open: '09:00', close: '19:00' }],
+        WEDNESDAY: [{ open: '09:00', close: '19:00' }],
+        THURSDAY: [{ open: '09:00', close: '19:00' }],
+        FRIDAY: [{ open: '09:00', close: '19:00' }],
+        SATURDAY: [],
+        SUNDAY: [],
       },
     }
 
     render(reactQueryProviderHOC(<VenueTopComponent venue={venue} />))
 
-    expect(screen.getByText('Fermé')).toBeOnTheScreen()
+    expect(screen.getByText('Ouvre bientôt - 9h')).toBeOnTheScreen()
   })
 
   it('should NOT render dynamics opening hours when feature flag is disabled', async () => {
     const venue = {
       ...venueResponseSnap,
       openingHours: {
-        monday: [],
-        tuesday: [],
-        wednesday: [],
-        thursday: [],
-        friday: [],
-        saturday: [],
-        sunday: [],
+        MONDAY: [{ open: '09:00', close: '19:00' }],
+        TUESDAY: [{ open: '09:00', close: '19:00' }],
+        WEDNESDAY: [{ open: '09:00', close: '19:00' }],
+        THURSDAY: [{ open: '09:00', close: '19:00' }],
+        FRIDAY: [{ open: '09:00', close: '19:00' }],
+        SATURDAY: [],
+        SUNDAY: [],
       },
     }
 
