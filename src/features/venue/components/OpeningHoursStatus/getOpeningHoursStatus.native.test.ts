@@ -1,39 +1,45 @@
+import { addWeeks } from 'date-fns'
 import { getOpeningHoursStatus } from './getOpeningHoursStatus'
 
 const dayFactory = {
   monday: (time: string) => new Date(`2024-05-13T${time}`),
+  tuesday: (time: string) => new Date(`2024-05-14T${time}`),
+  wednesday: (time: string) => new Date(`2024-05-15T${time}`),
+  thursday: (time: string) => new Date(`2024-05-16T${time}`),
+  friday: (time: string) => new Date(`2024-05-17T${time}`),
   saturday: (time: string) => new Date(`2024-05-11T${time}`),
+  sunday: (time: string) => new Date(`2024-05-12T${time}`),
 }
 
 describe('OpeningHoursStatusViewModel', () => {
   it.each([
     {
       openingHours: 'MONDAY',
-      currentDate: new Date('2024-05-13T09:00:00'),
+      currentDate: dayFactory.monday('09:00:00'),
     },
     {
       openingHours: 'TUESDAY',
-      currentDate: new Date('2024-05-14T09:00:00'),
+      currentDate: dayFactory.tuesday('09:00:00'),
     },
     {
       openingHours: 'WEDNESDAY',
-      currentDate: new Date('2024-05-15T09:00:00'),
+      currentDate: dayFactory.wednesday('09:00:00'),
     },
     {
       openingHours: 'THURSDAY',
-      currentDate: new Date('2024-05-16T09:00:00'),
+      currentDate: dayFactory.thursday('09:00:00'),
     },
     {
       openingHours: 'FRIDAY',
-      currentDate: new Date('2024-05-17T09:00:00'),
+      currentDate: dayFactory.friday('09:00:00'),
     },
     {
       openingHours: 'SATURDAY',
-      currentDate: new Date('2024-05-18T09:00:00'),
+      currentDate: dayFactory.saturday('09:00:00'),
     },
     {
       openingHours: 'SUNDAY',
-      currentDate: new Date('2024-05-19T09:00:00'),
+      currentDate: dayFactory.sunday('09:00:00'),
     },
   ])('should use current day $openingHours', ({ openingHours, currentDate }) => {
     const viewModel = getOpeningHoursStatus({
@@ -47,14 +53,14 @@ describe('OpeningHoursStatusViewModel', () => {
   })
 
   describe('Venue is open', () => {
-    const currentDate = new Date('2024-05-13T09:00:00')
+    const currentDate = dayFactory.monday('09:00:00')
 
     it.each([
       {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
-        currentDate: new Date('2024-05-13T09:00:00'),
+        currentDate: dayFactory.monday('09:00:00'),
       },
       {
         openingHours: {
@@ -63,7 +69,7 @@ describe('OpeningHoursStatusViewModel', () => {
             { open: '14:00', close: '19:00' },
           ],
         },
-        currentDate: new Date('2024-05-13T16:00:00'),
+        currentDate: dayFactory.monday('16:00:00'),
       },
     ])('should be in open state', ({ openingHours, currentDate }) => {
       const viewModel = getOpeningHoursStatus({ openingHours, currentDate })
@@ -101,7 +107,7 @@ describe('OpeningHoursStatusViewModel', () => {
     it.each([
       {
         openingHours: { MONDAY: [{ open: '09:00', close: '19:00' }] },
-        currentDate: new Date('2024-05-13T08:00:00'),
+        currentDate: dayFactory.monday('08:00:00'),
       },
       {
         openingHours: {
@@ -110,7 +116,7 @@ describe('OpeningHoursStatusViewModel', () => {
             { open: '14:00', close: '19:00' },
           ],
         },
-        currentDate: new Date('2024-05-13T13:00:00'),
+        currentDate: dayFactory.monday('13:00:00'),
       },
     ])('should be in open-soon state', ({ openingHours, currentDate }) => {
       const viewModel = getOpeningHoursStatus({ openingHours, currentDate })
@@ -123,21 +129,21 @@ describe('OpeningHoursStatusViewModel', () => {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
-        currentDate: new Date('2024-05-13T08:00:00'),
+        currentDate: dayFactory.monday('08:00:00'),
         expected: 'Ouvre bientôt - 9h',
       },
       {
         openingHours: {
           MONDAY: [{ open: '11:00', close: '19:00' }],
         },
-        currentDate: new Date('2024-05-13T10:30:00'),
+        currentDate: dayFactory.monday('10:30:00'),
         expected: 'Ouvre bientôt - 11h',
       },
       {
         openingHours: {
           MONDAY: [{ open: '11:30', close: '19:00' }],
         },
-        currentDate: new Date('2024-05-13T10:30:00'),
+        currentDate: dayFactory.monday('10:30:00'),
         expected: 'Ouvre bientôt - 11h30',
       },
     ])('should have correct text $expected', ({ openingHours, currentDate, expected }) => {
@@ -152,7 +158,7 @@ describe('OpeningHoursStatusViewModel', () => {
       const openingHours = {
         MONDAY: [{ open: '09:00', close: '19:00' }],
       }
-      const currentDate = new Date('2024-05-13T18:00:00')
+      const currentDate = dayFactory.monday('18:00:00')
       const viewModel = getOpeningHoursStatus({ openingHours, currentDate })
 
       expect(viewModel.openingState).toEqual('close-soon')
@@ -245,7 +251,7 @@ describe('OpeningHoursStatusViewModel', () => {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
-        currentDate: new Date('2024-05-13T20:00:00'),
+        currentDate: dayFactory.monday('20:00:00'),
       },
       {
         openingHours: {
@@ -254,19 +260,19 @@ describe('OpeningHoursStatusViewModel', () => {
             { open: '14:00', close: '19:00' },
           ],
         },
-        currentDate: new Date('2024-05-13T20:00:00'),
+        currentDate: dayFactory.monday('20:00:00'),
       },
       {
         openingHours: {
           MONDAY: undefined,
         },
-        currentDate: new Date('2024-05-13T20:00:00'),
+        currentDate: dayFactory.monday('20:00:00'),
       },
       {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
-        currentDate: new Date('2024-05-13T07:00:00'),
+        currentDate: dayFactory.monday('07:00:00'),
       },
     ])('should be in close state', ({ openingHours, currentDate }) => {
       const viewModel = getOpeningHoursStatus({ openingHours, currentDate })
@@ -351,43 +357,43 @@ describe('OpeningHoursStatusViewModel', () => {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
-        currentDate: new Date('2024-05-13T18:00:00'),
-        expectedNextChange: new Date('2024-05-13T19:00:00'),
+        currentDate: dayFactory.monday('18:00:00'),
+        expectedNextChange: dayFactory.monday('19:00:00'),
       },
       {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
-        currentDate: new Date('2024-05-13T07:00:00'),
-        expectedNextChange: new Date('2024-05-13T09:00:00'),
+        currentDate: dayFactory.monday('07:00:00'),
+        expectedNextChange: dayFactory.monday('09:00:00'),
       },
       {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
-        currentDate: new Date('2024-05-13T12:00:00'),
-        expectedNextChange: new Date('2024-05-13T19:00:00'),
+        currentDate: dayFactory.monday('12:00:00'),
+        expectedNextChange: dayFactory.monday('19:00:00'),
       },
       {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
-        currentDate: new Date('2024-05-13T08:30:00'),
-        expectedNextChange: new Date('2024-05-13T09:00:00'),
+        currentDate: dayFactory.monday('08:30:00'),
+        expectedNextChange: dayFactory.monday('09:00:00'),
       },
       {
         openingHours: {
           MONDAY: [{ open: '09:00', close: '19:00' }],
         },
-        currentDate: new Date('2024-05-13T19:30:00'),
-        expectedNextChange: new Date('2024-05-20T09:00:00'),
+        currentDate: dayFactory.monday('19:30:00'),
+        expectedNextChange: addWeeks(dayFactory.monday('09:00:00'), 1),
       },
       {
         openingHours: {
           MONDAY: [],
           FRIDAY: undefined,
         },
-        currentDate: new Date('2024-05-13T19:00:00'),
+        currentDate: dayFactory.monday('19:00:00'),
         expectedNextChange: undefined,
       },
       {
@@ -395,8 +401,8 @@ describe('OpeningHoursStatusViewModel', () => {
           MONDAY: [{ open: '09:00', close: '18:00' }],
           TUESDAY: [{ open: '09:00', close: '18:00' }],
         },
-        currentDate: new Date('2024-05-13T19:00:00'),
-        expectedNextChange: new Date('2024-05-14T09:00:00'),
+        currentDate: dayFactory.monday('19:00:00'),
+        expectedNextChange: dayFactory.tuesday('09:00:00'),
       },
     ])(
       'should indicate next state change date $expectedNextChange',
