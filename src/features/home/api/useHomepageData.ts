@@ -11,23 +11,15 @@ import { QueryKeys } from 'libs/queryKeys'
 const STALE_TIME = 5 * 60 * 1000
 export type GetHomeData = () => Promise<Homepage[]>
 
-const getHomepageNatifContent = (getHomeData: GetHomeData) => async () => {
-  try {
-    return await getHomeData()
-  } catch (e) {
-    const error = e as Error
-    throw new ScreenError(error.message, { Screen: NoContentError })
-  }
-}
 const useGetHomepageList = () => {
   const { getHomeData } = useDependencies()
-  const { data: homepages } = useQuery<Homepage[]>(
-    [QueryKeys.HOMEPAGE_MODULES],
-    getHomepageNatifContent(getHomeData),
-    {
-      staleTime: STALE_TIME,
-    }
-  )
+  const { data: homepages } = useQuery<Homepage[]>([QueryKeys.HOMEPAGE_MODULES], getHomeData, {
+    staleTime: STALE_TIME,
+    onError: (e) => {
+      const error = e as Error
+      throw new ScreenError(error.message, { Screen: NoContentError })
+    },
+  })
   return homepages
 }
 
