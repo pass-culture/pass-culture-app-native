@@ -34,13 +34,17 @@ interface Props {
   disabled?: boolean
 }
 
+const iconMapping: { [key in Props['iconName']]: React.FC<AccessibleIcon> } = {
+  back: ArrowPrevious,
+  next: ArrowRightNew,
+  previous: ArrowLeftNew,
+  share: Share,
+  'favorite-filled': FavoriteFilled,
+  favorite: Favorite,
+}
+
 const getIcon = (iconName: Props['iconName']): React.FC<AccessibleIcon> => {
-  if (iconName === 'back') return ArrowPrevious
-  if (iconName === 'next') return ArrowRightNew
-  if (iconName === 'previous') return ArrowLeftNew
-  if (iconName === 'share') return Share
-  if (iconName === 'favorite-filled') return FavoriteFilled
-  return Favorite
+  return iconMapping[iconName]
 }
 
 export const RoundedButton = (props: Props) => {
