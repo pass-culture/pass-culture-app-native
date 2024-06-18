@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useRef } from 'react'
+import { Platform } from 'react-native'
 import { SharedValue } from 'react-native-reanimated'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 import styled, { useTheme } from 'styled-components/native'
@@ -15,25 +16,24 @@ type Props = {
   setIndex: React.Dispatch<React.SetStateAction<number>>
   offerImages: string[]
   shouldDisplayOfferPreview?: boolean
-  hasScrollEnabled?: boolean
-  isSticky?: boolean
 }
+
+const isWeb = Platform.OS === 'web'
 
 export const OfferImageCarousel: FunctionComponent<Props> = ({
   progressValue,
   setIndex,
   offerImages,
   shouldDisplayOfferPreview,
-  hasScrollEnabled,
-  isSticky,
 }) => {
   const { imageStyle } = useOfferImageContainerDimensions()
   const headerHeight = useGetHeaderHeight()
-  const theme = useTheme()
+  const { borderRadius, isDesktopViewport } = useTheme()
   const carouselRef = useRef<ICarouselInstance>(null)
   const carouselStyle = {
-    borderRadius: theme.borderRadius.radius,
+    borderRadius: borderRadius.radius,
   }
+  const isSticky = isWeb && isDesktopViewport
 
   const handlePressPreviousButton = () => {
     const newIndex = Math.max(0, Math.round(progressValue.value) - 1)
@@ -61,7 +61,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
         height={imageStyle.height}
         width={imageStyle.width}
         loop={false}
-        enabled={hasScrollEnabled}
+        enabled={!isWeb}
         scrollAnimationDuration={500}
         onProgressChange={(_, absoluteProgress) => {
           progressValue.value = absoluteProgress
