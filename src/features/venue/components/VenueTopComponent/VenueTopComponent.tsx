@@ -14,6 +14,7 @@ import { useDistance } from 'libs/location/hooks/useDistance'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { Separator } from 'ui/components/Separator'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -50,39 +51,37 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => 
       <MarginContainer>
         <InformationTags tags={venueTags} />
         <Spacer.Column numberOfSpaces={4} />
-        <VenueTitle
-          accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`}
-          adjustsFontSizeToFit
-          allowFontScaling={false}>
-          {venueName}
-        </VenueTitle>
-        <Spacer.Column numberOfSpaces={2} />
-        {isDynamicOpeningHoursDisplayed ? (
-          <React.Fragment>
+        <ViewGap gap={2}>
+          <VenueTitle
+            accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`}
+            adjustsFontSizeToFit
+            allowFontScaling={false}>
+            {venueName}
+          </VenueTitle>
+          {isDynamicOpeningHoursDisplayed ? (
             <OpeningHoursStatus currentDate={currentDate} openingHours={venue.openingHours} />
-            <Spacer.Column numberOfSpaces={2} />
-          </React.Fragment>
-        ) : null}
-        <Typo.Caption>Adresse</Typo.Caption>
-        <Spacer.Column numberOfSpaces={1} />
-        <Typo.Body>{venueFullAddress}</Typo.Body>
-        <Spacer.Column numberOfSpaces={3} />
-        <Separator.Horizontal />
-        <Spacer.Column numberOfSpaces={3} />
-        <CopyToClipboardButton
-          wording="Copier l’adresse"
-          textToCopy={`${venueName}, ${venueFullAddress}`}
-          onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
-          snackBarMessage="L’adresse a bien été copiée."
-        />
-        <Spacer.Column numberOfSpaces={3} />
-        <SeeItineraryButton
-          externalNav={{
-            url: getGoogleMapsItineraryUrl(venueFullAddress),
-            address: venueFullAddress,
-          }}
-          onPress={() => analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })}
-        />
+          ) : null}
+          <ViewGap gap={3}>
+            <ViewGap gap={1}>
+              <Typo.Caption>Adresse</Typo.Caption>
+              <Typo.Body>{venueFullAddress}</Typo.Body>
+            </ViewGap>
+            <Separator.Horizontal />
+            <CopyToClipboardButton
+              wording="Copier l’adresse"
+              textToCopy={`${venueName}, ${venueFullAddress}`}
+              onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
+              snackBarMessage="L’adresse a bien été copiée."
+            />
+            <SeeItineraryButton
+              externalNav={{
+                url: getGoogleMapsItineraryUrl(venueFullAddress),
+                address: venueFullAddress,
+              }}
+              onPress={() => analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })}
+            />
+          </ViewGap>
+        </ViewGap>
       </MarginContainer>
     </TopContainer>
   )
