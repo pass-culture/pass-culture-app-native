@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
 import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
@@ -13,21 +13,24 @@ type Props = {
   children: React.ReactNode
   imageUrl?: string
   shouldDisplayOfferPreview?: boolean
-  isSticky?: boolean
   testID?: string
   isInCarousel?: boolean
 }
+
+const isWeb = Platform.OS === 'web'
 
 export const OfferImageWrapper: FunctionComponent<Props> = ({
   children,
   imageUrl,
   shouldDisplayOfferPreview,
-  isSticky,
   testID = 'imageContainer',
   isInCarousel,
 }) => {
   const { imageStyle } = useOfferImageContainerDimensions()
   const headerHeight = useGetHeaderHeight()
+  const { isDesktopViewport } = useTheme()
+
+  const isSticky = isWeb && isDesktopViewport
 
   return (
     <Container style={imageStyle} isSticky={isSticky} headerHeight={headerHeight} testID={testID}>
