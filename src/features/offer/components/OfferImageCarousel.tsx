@@ -6,7 +6,9 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination'
+import { WebOfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/WebOfferImageCarouselPagination'
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
+import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Spacer } from 'ui/theme'
@@ -35,15 +37,12 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
   }
   const isSticky = isWeb && isDesktopViewport
 
-  const handlePressPreviousButton = () => {
-    const newIndex = Math.max(0, Math.round(progressValue.value) - 1)
-    progressValue.value = newIndex
-    setIndex(newIndex)
-    carouselRef.current?.scrollTo({ index: newIndex, animated: true })
-  }
-
-  const handlePressNextButton = () => {
-    const newIndex = Math.min(offerImages.length - 1, Math.round(progressValue.value) + 1)
+  const handlePressButton = (direction: 1 | -1) => {
+    const newIndex = calculateCarouselIndex({
+      currentIndex: progressValue.value,
+      direction,
+      maxIndex: offerImages.length - 1,
+    })
     progressValue.value = newIndex
     setIndex(newIndex)
     carouselRef.current?.scrollTo({ index: newIndex, animated: true })
@@ -70,7 +69,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
         data={offerImages}
         renderItem={({ item: image }) => (
           <OfferImageWrapper
-            imageUrl={offerImages[0]}
+            imageUrl={image}
             shouldDisplayOfferPreview={shouldDisplayOfferPreview}
             isInCarousel>
             <OfferBodyImage imageUrl={image} isInCarousel />
@@ -80,13 +79,16 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
       />
       {progressValue ? (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={theme.isDesktopViewport ? 6 : 4} />
-          <OfferImageCarouselPagination
-            progressValue={progressValue}
-            offerImages={offerImages}
-            onPressPreviousButton={handlePressPreviousButton}
-            onPressNextButton={handlePressNextButton}
-          />
+          <Spacer.Column numberOfSpaces={isDesktopViewport ? 6 : 4} />
+          {isWeb ? (
+            <WebOfferImageCarouselPagination
+              progressValue={progressValue}
+              offerImages={offerImages}
+              handlePressButton={handlePressButton}
+            />
+          ) : (
+            <OfferImageCarouselPagination progressValue={progressValue} offerImages={offerImages} />
+          )}
         </React.Fragment>
       ) : null}
     </CarouselContainer>
