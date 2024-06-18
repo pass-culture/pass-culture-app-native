@@ -3,6 +3,8 @@ appId: ${MAESTRO_APP_ID}
 - runFlow: reusableFlows/LaunchApp.yml
 - runFlow: reusableFlows/features/cookies/AcceptCookies.yml
 - runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
-- tapOn: "Mon profil"
+
+- runFlow: reusableFlows/GoToProfileFromTabBar.yml
 - assertNotVisible: "Informations personnelles"
+
 - runFlow: reusableFlows/StopApp.yml 

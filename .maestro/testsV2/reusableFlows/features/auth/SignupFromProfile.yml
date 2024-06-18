@@ -7,6 +7,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'tonadresse@email.com'
 - inputText: ${MAESTRO_UNREGISTERED_EMAIL}
 - hideKeyboard
+- tapOn: 'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
 - tapOn: 'Continuer vers l’étape Mot de passe'
 
 - assertVisible: 'Choisis un mot de passe'
@@ -21,14 +22,13 @@ appId: ${MAESTRO_APP_ID}
     end: 47%, 62%
 - swipe: # years
     start: 74%,57%
-    end: 74%,62%
+    end: 74%,51%
 - tapOn: 'Continuer vers l’étape CGU & Données'
 
 - assertVisible: 'CGU & Données'
 - tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
 - tapOn: 'J’ai lu la charte des données personnelles'
-- tapOn: 'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
-- tapOn: 'Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire'
+- tapOn: "Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
 
 - assertVisible: 'Confirme ton adresse e-mail'
 - tapOn: 'Fermer'

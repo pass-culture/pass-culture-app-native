@@ -4,12 +4,16 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow: reusableFlows/features/cookies/AcceptCookies.yml
 - runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
+
 - runFlow: reusableFlows/GoToProfileFromTabBar.yml
 - runFlow: reusableFlows/features/auth/SignupFromProfile.yml
+
 - runFlow: reusableFlows/GoToProfileFromTabBar.yml
-- runFlow: reusableFlows/features/auth/LoginFromProfileForUnregisteredUser.yml
-- runFlow: reusableFlows/features/auth/GoToActivationFromProfile.yml
-- runFlow: reusableFlows/features/auth/ActivationPhoneNumberStep.yml
-- runFlow: reusableFlows/features/auth/ActivationProfileStep.yml
+- runFlow: reusableFlows/features/auth/LoginFromProfileAfterSignup.yml
+
+# - runFlow: reusableFlows/features/auth/GoToActivationFromProfile.yml
+# - runFlow: reusableFlows/features/auth/ActivationPhoneNumberStep.yml
+# - runFlow: reusableFlows/features/auth/ActivationProfileStep.yml
+# TODO: Trouver un moyen d'utiliser le mock ubble, bypass pattern ou récupérer jdd educonnect pour l'activation
 
 - runFlow: reusableFlows/StopApp.yml
