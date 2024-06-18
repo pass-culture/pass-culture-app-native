@@ -25,23 +25,27 @@ export const VenueBanner: React.FC<Props> = ({ bannerUrl, bannerMeta }) => {
     is_from_google: null,
     image_credit: null,
   }
+  const hasGoogleCredit = isFromGoogle && imageCredit
 
   return (
-    <HeaderContainer>
-      {bannerUrl ? (
-        <ViewGap gap={2}>
-          <GoogleWatermarkWrapper withGoogleWatermark={!!isFromGoogle}>
-            <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
-          </GoogleWatermarkWrapper>
-          {isFromGoogle && imageCredit ? <CopyrightText>© {imageCredit}</CopyrightText> : null}
-        </ViewGap>
-      ) : (
-        <EmptyVenueBackground style={backgroundStyle} testID="defaultVenueBackground">
-          <Spacer.TopScreen />
-          <VenueIcon />
-        </EmptyVenueBackground>
-      )}
-    </HeaderContainer>
+    <React.Fragment>
+      <HeaderContainer>
+        {bannerUrl ? (
+          <ViewGap gap={2}>
+            <GoogleWatermarkWrapper withGoogleWatermark={!!isFromGoogle}>
+              <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
+            </GoogleWatermarkWrapper>
+            {isFromGoogle && imageCredit ? <CopyrightText>© {imageCredit}</CopyrightText> : null}
+          </ViewGap>
+        ) : (
+          <EmptyVenueBackground style={backgroundStyle} testID="defaultVenueBackground">
+            <Spacer.TopScreen />
+            <VenueIcon />
+          </EmptyVenueBackground>
+        )}
+      </HeaderContainer>
+      <Spacer.Column numberOfSpaces={hasGoogleCredit ? 2 : 6} />
+    </React.Fragment>
   )
 }
 

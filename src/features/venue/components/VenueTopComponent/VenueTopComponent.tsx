@@ -38,8 +38,6 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => 
   venueTypeLabel && venueTags.push(venueTypeLabel)
   distanceToVenue && venueTags.push(`À ${distanceToVenue}`)
 
-  const hasGoogleCredit = bannerMeta?.is_from_google && bannerMeta?.image_credit
-
   const currentDate = new Date()
   const isDynamicOpeningHoursEnabled = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ENABLE_DYNAMIC_OPENING_HOURS
@@ -49,7 +47,6 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => 
   return (
     <TopContainer>
       <VenueBanner bannerUrl={bannerUrl} bannerMeta={bannerMeta} />
-      <Spacer.Column numberOfSpaces={hasGoogleCredit ? 2 : 6} />
       <MarginContainer>
         <InformationTags tags={venueTags} />
         <Spacer.Column numberOfSpaces={4} />
