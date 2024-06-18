@@ -4,10 +4,7 @@ import { useSharedValue } from 'react-native-reanimated'
 import { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
-import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
-import { OfferImageCarousel } from 'features/offer/components/OfferImageCarousel'
-import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
+import { OfferImageRenderer } from 'features/offer/components/OfferImageRenderer'
 import {
   offerImageContainerMarginTop,
   useOfferImageContainerDimensions,
@@ -39,48 +36,34 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   const { isDesktopViewport } = useTheme()
 
   const offerImages = imageUrls ?? []
-  const imageUrl = offerImages.length ? offerImages[0] : ''
 
   const hasCarousel = !!(shouldDisplayCarousel && offerImages.length > 1)
   const progressValue = useSharedValue<number>(0)
   const [index, setIndex] = React.useState(0)
 
-  const offerBodyImage = offerImages[0] ? (
-    <OfferBodyImage imageUrl={offerImages[0]} />
-  ) : (
-    <OfferBodyImagePlaceholder categoryId={categoryId} />
-  )
-
-  const renderImageContainer = ({ isSticky }: { isSticky?: boolean }) => {
-    return hasCarousel ? (
-      <OfferImageCarousel
-        progressValue={progressValue}
-        setIndex={setIndex}
-        offerImages={offerImages}
-        shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-        hasScrollEnabled={!isWeb}
-        isSticky={isSticky}
-      />
-    ) : (
-      <OfferImageWrapper
-        testID="offerImageWithoutCarousel"
-        imageUrl={imageUrl}
-        shouldDisplayOfferPreview={shouldDisplayOfferPreview && !isWeb}
-        isSticky={isSticky}>
-        {offerBodyImage}
-      </OfferImageWrapper>
-    )
-  }
-
   return isWeb && isDesktopViewport ? (
-    renderImageContainer({ isSticky: true })
+    <OfferImageRenderer
+      categoryId={categoryId}
+      offerImages={offerImages}
+      shouldDisplayOfferPreview={shouldDisplayOfferPreview}
+      hasCarousel={hasCarousel}
+      progressValue={progressValue}
+      setIndex={setIndex}
+    />
   ) : (
     <HeaderWithImage
       imageHeight={backgroundHeight}
       imageUrl={offerImages[0]}
       onPress={isWeb ? undefined : () => onPress(index)}>
       <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
-      {renderImageContainer({})}
+      <OfferImageRenderer
+        categoryId={categoryId}
+        offerImages={offerImages}
+        shouldDisplayOfferPreview={shouldDisplayOfferPreview}
+        hasCarousel={hasCarousel}
+        progressValue={progressValue}
+        setIndex={setIndex}
+      />
     </HeaderWithImage>
   )
 }
