@@ -3,7 +3,11 @@ import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import { buildLocalization } from 'libs/contentful/adapters/modules/helpers/buildLocalization'
 import { BusinessContentModel } from 'libs/contentful/types'
 
-export const adaptBusinessModule = (module: BusinessContentModel): BusinessModule | null => {
+import { ContentfulAdapter } from '../ContentfulAdapterFactory'
+
+export const adaptBusinessModule: ContentfulAdapter<BusinessContentModel, BusinessModule> = (
+  module
+) => {
   // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
   if (module.fields?.image.fields === undefined) return null
 
