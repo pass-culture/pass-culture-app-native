@@ -14,6 +14,7 @@ import {
   createNeedsAuthenticationResponse,
   handleGeneratedApiResponse,
   isAPIExceptionCapturedAsInfo,
+  isAPIExceptionNotCaptured,
   safeFetch,
 } from './apiHelpers'
 import { Configuration, DefaultApi, RefreshResponse } from './gen'
@@ -411,17 +412,32 @@ describe('[api] helpers', () => {
 
   describe('isAPIExceptionCapturedAsInfo', () => {
     it.each([
-      401, // Unauthorized
+      400, // Unauthorized
+      500, // Internal Server Error
+      502, // Bad Gateway
+      503, // Service Unavailable
+      504, // Gateway Timeout
+    ])('should return false when error code is %s', (statusCode) => {
+      expect(isAPIExceptionCapturedAsInfo(statusCode)).toEqual(false)
+    })
+
+    it('should return true when error code is 401', () => {
+      expect(isAPIExceptionCapturedAsInfo(401)).toEqual(true)
+    })
+  })
+
+  describe('isAPIExceptionNotCaptured', () => {
+    it.each([
       500, // Internal Server Error
       502, // Bad Gateway
       503, // Service Unavailable
       504, // Gateway Timeout
     ])('should return true when error code is %s', (statusCode) => {
-      expect(isAPIExceptionCapturedAsInfo(statusCode)).toEqual(true)
+      expect(isAPIExceptionNotCaptured(statusCode)).toEqual(true)
     })
 
-    it('should return false when error code is 400', () => {
-      expect(isAPIExceptionCapturedAsInfo(400)).toEqual(false)
+    it('should return false when error code is 401', () => {
+      expect(isAPIExceptionNotCaptured(401)).toEqual(false)
     })
   })
 })
