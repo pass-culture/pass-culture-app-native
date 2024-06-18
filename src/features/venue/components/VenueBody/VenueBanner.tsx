@@ -28,30 +28,28 @@ export const VenueBanner: React.FC<Props> = ({ bannerUrl, bannerMeta }) => {
   const hasGoogleCredit = isFromGoogle && imageCredit
 
   return (
-    <React.Fragment>
-      <HeaderContainer>
-        {bannerUrl ? (
-          <ViewGap gap={2}>
-            <GoogleWatermarkWrapper withGoogleWatermark={!!isFromGoogle}>
-              <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
-            </GoogleWatermarkWrapper>
-            {isFromGoogle && imageCredit ? <CopyrightText>© {imageCredit}</CopyrightText> : null}
-          </ViewGap>
-        ) : (
-          <EmptyVenueBackground style={backgroundStyle} testID="defaultVenueBackground">
-            <Spacer.TopScreen />
-            <VenueIcon />
-          </EmptyVenueBackground>
-        )}
-      </HeaderContainer>
-      <Spacer.Column numberOfSpaces={hasGoogleCredit ? 2 : 6} />
-    </React.Fragment>
+    <HeaderContainer hasGoogleCredit={hasGoogleCredit}>
+      {bannerUrl ? (
+        <ViewGap gap={2}>
+          <GoogleWatermarkWrapper withGoogleWatermark={!!isFromGoogle}>
+            <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
+          </GoogleWatermarkWrapper>
+          {isFromGoogle && imageCredit ? <CopyrightText>© {imageCredit}</CopyrightText> : null}
+        </ViewGap>
+      ) : (
+        <EmptyVenueBackground style={backgroundStyle} testID="defaultVenueBackground">
+          <Spacer.TopScreen />
+          <VenueIcon />
+        </EmptyVenueBackground>
+      )}
+    </HeaderContainer>
   )
 }
 
-const HeaderContainer = styled.View({
+const HeaderContainer = styled.View<{ hasGoogleCredit: boolean }>(({ hasGoogleCredit }) => ({
   alignItems: 'center',
-})
+  marginBottom: hasGoogleCredit ? getSpacing(2) : getSpacing(6),
+}))
 
 const GoogleWatermarkWrapper = ({
   withGoogleWatermark,

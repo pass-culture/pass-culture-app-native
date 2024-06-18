@@ -168,7 +168,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
           class="css-view-175oi2r r-flexDirection-eqz5dr r-marginHorizontal-mvpalk r-marginTop-1mnahxq"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy"
+            class="css-view-175oi2r r-alignItems-1awozwy r-marginBottom-1peese0"
           >
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14a9t8x r-justifyContent-1777fci"
@@ -190,9 +190,6 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
               </div>
             </div>
           </div>
-          <div
-            class="css-view-175oi2r r-height-1472mwg"
-          />
           <div
             class="css-view-175oi2r r-flexShrink-1wbh5a2 r-marginHorizontal-1hy1u7s"
           >

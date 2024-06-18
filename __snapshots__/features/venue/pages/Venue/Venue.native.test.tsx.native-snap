@@ -45,10 +45,12 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       >
         <View
+          hasGoogleCredit={null}
           style={
             [
               {
                 "alignItems": "center",
+                "marginBottom": 24,
               },
             ]
           }
@@ -90,16 +92,6 @@ exports[`<Venue /> should match snapshot 1`] = `
             </View>
           </View>
         </View>
-        <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
         <View
           style={
             [
