@@ -33,7 +33,7 @@ export type OpeningHours = Partial<{
   SUNDAY: OpeningHour[]
 }>
 
-type OpeningHour = {
+export type OpeningHour = {
   open: string
   close: string
 }

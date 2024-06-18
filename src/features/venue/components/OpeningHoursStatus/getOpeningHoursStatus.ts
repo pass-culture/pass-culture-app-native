@@ -1,6 +1,6 @@
 import { addHours, set, isWithinInterval, isSameDay, addMilliseconds } from 'date-fns'
 
-import { OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
+import { OpeningHour, OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
 
 export const THIRTY_MINUTES_IN_MILLISECONDS = 30 * 60 * 1000
 export const ONE_HOUR_IN_MILLISECONDS = 2 * THIRTY_MINUTES_IN_MILLISECONDS
@@ -81,7 +81,7 @@ const getOpeningPeriods = (openingHours: OpeningHours, date: Date): Period[] => 
 
 type Period = ReturnType<typeof createPeriod>
 
-const createPeriod = ({ open, close }: { open: string; close: string }, date: Date) => {
+const createPeriod = ({ open, close }: OpeningHour, date: Date) => {
   const closeAt = getDateFromHour(date, close)
   const openAt = getDateFromHour(date, open)
   return {
