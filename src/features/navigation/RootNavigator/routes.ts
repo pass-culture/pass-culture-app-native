@@ -23,6 +23,7 @@ import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBound
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
+import { AccesLibre } from 'features/internal/cheatcodes/pages/AccesLibre'
 import { AppComponents } from 'features/internal/cheatcodes/pages/AppComponents/AppComponents'
 import { CheatCodes } from 'features/internal/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/internal/cheatcodes/pages/CheatMenu'
@@ -442,6 +443,11 @@ export const routes: RootRoute[] = [
       stringify: screenParamsStringifier['VenueMap'],
     },
     options: { title: 'Carte des lieux' },
+  },
+  {
+    name: 'AccesLibre',
+    component: AccesLibre,
+    path: 'acces-libre',
   },
   // Internals
   {

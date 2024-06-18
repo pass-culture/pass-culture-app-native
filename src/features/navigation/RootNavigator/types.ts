@@ -283,6 +283,7 @@ export type RootStackParamList = {
   UTMParameters: undefined
   ThematicHome: ThematicHomeParams
   // cheatcodes
+  AccesLibre: undefined
   DefaultThematicHomeHeaderCheatcode: undefined
   HighlightThematicHomeHeaderCheatcode: undefined
   CategoryThematicHomeHeaderCheatcode: undefined
