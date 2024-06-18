@@ -13,6 +13,9 @@ jest.mock('libs/utm', () => ({ storeUtmParams: jest.fn() }))
 const COOKIES_CONSENT_KEY = 'cookies'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('getStateFromPath()', () => {
   it('should return state for path accueil', async () => {

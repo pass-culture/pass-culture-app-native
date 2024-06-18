@@ -21,6 +21,9 @@ jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
 } as UseEmailUpdateStatusMock)
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<ConfirmChangeEmail />', () => {
   describe('Accessibility', () => {

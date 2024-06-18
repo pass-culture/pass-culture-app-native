@@ -2,7 +2,7 @@ import React from 'react'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { IdentityCheckHonor } from './IdentityCheckHonor'
 
@@ -14,6 +14,9 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<IdentityCheckHonor/>', () => {
   describe('Accessibility', () => {

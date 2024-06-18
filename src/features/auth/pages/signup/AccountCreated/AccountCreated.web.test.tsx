@@ -1,10 +1,13 @@
 import React from 'react'
 
-import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
+import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { AccountCreated } from './AccountCreated'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<AccountCreated/>', () => {
   describe('Accessibility', () => {

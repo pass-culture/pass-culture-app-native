@@ -1,9 +1,12 @@
 import React from 'react'
 
 import { SelectIDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('SelectIDStatus', () => {
   describe('Accessibility', () => {

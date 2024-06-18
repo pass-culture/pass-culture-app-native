@@ -28,6 +28,9 @@ const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoCo
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('BookingDetails', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })

@@ -21,6 +21,9 @@ some text here as well https://www.google.com/?key=valeu&key2=value2 Lorem ipsum
 https://www.google.com/`
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('customFindUrlChunks', () => {
   it('finds url chunk and mark it as highlited', () => {

@@ -1,12 +1,15 @@
 import React from 'react'
 
-import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
+import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { ForceUpdate } from './ForceUpdate'
 
 jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber')
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<ForceUpdate/>', () => {
   it('should not display the web app button', () => {

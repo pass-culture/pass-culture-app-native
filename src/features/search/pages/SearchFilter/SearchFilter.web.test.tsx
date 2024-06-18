@@ -42,6 +42,9 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<SearchFilter/>', () => {
   describe('Accessibility', () => {

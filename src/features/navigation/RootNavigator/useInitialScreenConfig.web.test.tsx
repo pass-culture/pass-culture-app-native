@@ -12,6 +12,9 @@ const wrapper = (props: { children: unknown }) => (
 )
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('useInitialScreen()', () => {
   afterAll(async () => {

@@ -11,6 +11,9 @@ const defaultShareContent: ShareContent = {
 }
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<MessagingApps />', () => {
   it('should open share modal on other press', async () => {

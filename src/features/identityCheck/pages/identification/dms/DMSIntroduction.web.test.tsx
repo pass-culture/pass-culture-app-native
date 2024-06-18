@@ -1,10 +1,13 @@
 import React from 'react'
 
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { DMSIntroduction } from './DMSIntroduction'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<DMSIntroduction/>', () => {
   describe('Accessibility', () => {

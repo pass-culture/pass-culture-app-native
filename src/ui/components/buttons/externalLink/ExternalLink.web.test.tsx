@@ -1,7 +1,7 @@
 import React from 'react'
 import { Linking } from 'react-native'
 
-import { render, fireEvent, screen } from 'tests/utils/web'
+import { fireEvent, render, screen } from 'tests/utils/web'
 
 import { ExternalLink } from './ExternalLink.web'
 
@@ -9,6 +9,9 @@ const openURLSpy = jest.spyOn(Linking, 'openURL')
 const someUrl = 'https://domain-that-does-not-exist.fr'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('ExternalLink', () => {
   it('should open given url when text clicked', () => {

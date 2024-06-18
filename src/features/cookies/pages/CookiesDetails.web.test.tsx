@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render, act } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 
@@ -16,6 +16,9 @@ jest.mock('uuid', () => {
 })
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<CookiesDetails/>', () => {
   describe('Accessibility', () => {

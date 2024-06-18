@@ -1,12 +1,15 @@
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { homeNavConfig, getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { WEBAPP_V2_URL } from 'libs/environment'
 
 // To see the linking config used in the tests, check the file :
 // features/navigation/RootNavigator/__mocks__/routes.ts
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('getScreenFromDeeplink()', () => {
   it('should return PageNotFound when route is unknown', () => {

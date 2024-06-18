@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor, act } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { BookingConfirmation } from './BookingConfirmation'
 
@@ -13,6 +13,9 @@ jest.mock('shared/user/useAvailableCredit', () => ({
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<BookingConfirmation />', () => {
   describe('Accessibility', () => {

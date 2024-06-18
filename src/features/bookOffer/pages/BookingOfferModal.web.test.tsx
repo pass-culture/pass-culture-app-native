@@ -66,6 +66,9 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<BookingOfferModal/>', () => {
   describe('Accessibility', () => {

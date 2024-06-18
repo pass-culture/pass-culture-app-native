@@ -23,6 +23,7 @@ const props = {
   index: 1,
 }
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 const mockFeatureFlag = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<AppV2VenuesModule />', () => {

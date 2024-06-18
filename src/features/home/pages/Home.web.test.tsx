@@ -6,7 +6,7 @@ import { formattedBusinessModule } from 'features/home/fixtures/homepage.fixture
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor, act } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Home } from './Home'
 
@@ -25,6 +25,9 @@ jest.mock('libs/location')
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<Home/>', () => {
   beforeEach(() => {

@@ -11,6 +11,9 @@ jest.mock('libs/subcategories/useSubcategory')
 jest.mock('libs/subcategories/useCategoryId')
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('OnGoingBookingItem', () => {
   const booking: Booking = bookingsSnap.ongoing_bookings[0]

@@ -2,6 +2,10 @@ import { getScreenPath } from './getScreenPath'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
+
 describe('getScreenPath()', () => {
   it.each`
     screen             | params                        | expectedPath

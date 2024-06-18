@@ -3,11 +3,14 @@ import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<ResetPasswordEmailSent/>', () => {
   describe('Accessibility', () => {

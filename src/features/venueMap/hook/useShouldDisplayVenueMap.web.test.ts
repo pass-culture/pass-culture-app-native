@@ -21,6 +21,10 @@ jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
+
 describe('useShouldDisplayVenueMap', () => {
   it('should not render venue map on web', () => {
     const { result } = renderHook(useShouldDisplayVenueMap)

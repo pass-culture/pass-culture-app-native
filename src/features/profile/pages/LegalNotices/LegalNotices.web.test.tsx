@@ -1,10 +1,13 @@
 import React from 'react'
 
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { LegalNotices } from './LegalNotices'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('LegalNotices', () => {
   it('should not have basic accessibility issues', async () => {

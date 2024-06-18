@@ -4,6 +4,9 @@ import { WEBAPP_V2_URL } from 'libs/environment'
 import { getOfferUrl } from './getOfferUrl'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('getOfferUrl', () => {
   it('should return the url with the correct path and offer id and utm params', () => {

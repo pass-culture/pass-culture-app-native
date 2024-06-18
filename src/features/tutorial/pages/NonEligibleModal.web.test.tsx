@@ -1,11 +1,14 @@
 import React from 'react'
 
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { NonEligibleModal } from './NonEligibleModal'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<NonEligibleModal/>', () => {
   describe('Accessibility', () => {

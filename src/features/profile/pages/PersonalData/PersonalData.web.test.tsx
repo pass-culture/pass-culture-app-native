@@ -3,13 +3,16 @@ import React from 'react'
 import { UpdateEmailTokenExpiration } from 'api/gen'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, checkAccessibilityFor } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { PersonalData } from './PersonalData'
 
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<PersonalData/>', () => {
   describe('Accessibility', () => {

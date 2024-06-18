@@ -8,6 +8,9 @@ import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 jest.unmock('@react-navigation/native')
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('LocationWidget', () => {
   afterEach(async () => {

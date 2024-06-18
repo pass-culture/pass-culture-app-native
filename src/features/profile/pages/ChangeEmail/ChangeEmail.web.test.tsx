@@ -4,7 +4,7 @@ import { UpdateEmailTokenExpiration } from 'api/gen'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
 import { ChangeEmail } from './ChangeEmail'
 
@@ -18,6 +18,9 @@ jest.mock('uuid', () => {
 })
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<ChangeEmail/> - old version', () => {
   jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)

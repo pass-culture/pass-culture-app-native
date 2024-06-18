@@ -2,7 +2,7 @@ import React from 'react'
 
 import { DeeplinkItem } from 'features/internal/marketingAndCommunication/atoms/DeeplinkItem'
 import { GeneratedDeeplink } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
-import { fireEvent, render, screen, act } from 'tests/utils/web'
+import { act, fireEvent, render, screen } from 'tests/utils/web'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 const writeText = jest.fn()
@@ -22,6 +22,9 @@ Object.assign(navigator, {
 })
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<DeeplinkItem />', () => {
   const deeplink: GeneratedDeeplink = {

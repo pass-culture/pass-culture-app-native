@@ -5,6 +5,9 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[1]
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('getTickets', () => {
   it('should not display any ticket when external bookings is null', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { render, fireEvent, checkAccessibilityFor, screen } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 import { WebShareModal } from './WebShareModal'
 
@@ -23,6 +23,9 @@ const defaultProps = {
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
+}))
 
 describe('<WebShareModal/>', () => {
   describe('Accessibility', () => {
