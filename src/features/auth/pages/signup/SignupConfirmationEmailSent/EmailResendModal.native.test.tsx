@@ -3,6 +3,8 @@ import React from 'react'
 import { api } from 'api/api'
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { analytics } from 'libs/analytics'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring } from 'libs/monitoring'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
@@ -15,6 +17,8 @@ jest.useFakeTimers()
 
 jest.mock('libs/monitoring')
 const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidation')
+
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 describe('<EmailResendModal />', () => {
   it('should render correctly', async () => {
@@ -103,20 +107,6 @@ describe('<EmailResendModal />', () => {
     expect(screen.getByText('Tu as dépassé le nombre de renvois autorisés.')).toBeOnTheScreen()
   })
 
-  it('should log to Sentry on error', async () => {
-    renderEmailResendModal({ emailResendErrorCode: 500 })
-    await waitFor(() => {
-      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
-    })
-
-    await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
-
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-      'Could not resend validation email: error',
-      { level: 'info' }
-    )
-  })
-
   it('should reset error message when another resend attempt is made', async () => {
     mockServer.postApi('/v1/resend_email_validation', {
       responseOptions: { statusCode: 500, data: 'error' },
@@ -150,6 +140,49 @@ describe('<EmailResendModal />', () => {
           'Tu as dépassé le nombre de 3 demandes de lien autorisées. Tu pourras réessayer le 30/09/2023 à 12h58.'
         )
       ).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('When shouldLogInfo remote config is false', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: false,
+      })
+    })
+
+    it('should not log to Sentry on error', async () => {
+      renderEmailResendModal({ emailResendErrorCode: 500 })
+      await waitFor(() => {
+        expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
+      })
+
+      await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
+    })
+  })
+
+  describe('When shouldLogInfo remote config is true', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      })
+    })
+
+    it('should log to Sentry on error', async () => {
+      renderEmailResendModal({ emailResendErrorCode: 500 })
+      await waitFor(() => {
+        expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
+      })
+
+      await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        'Could not resend validation email: error',
+        { level: 'info' }
+      )
     })
   })
 })

@@ -6,6 +6,8 @@ import { HISTORY_KEY, MAX_HISTORY_RESULTS } from 'features/search/constants'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring } from 'libs/monitoring'
 import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 import { act, renderHook } from 'tests/utils'
@@ -30,6 +32,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 describe('useSearchHistory', () => {
   beforeEach(async () => {
@@ -106,24 +110,65 @@ describe('useSearchHistory', () => {
     expect(eventMonitoring.captureException).not.toHaveBeenCalled()
   })
 
-  it('should capture a message in Sentry when adding to history fails', async () => {
-    jest.spyOn(AsyncStorage, 'setItem').mockRejectedValueOnce(new Error('Erreur'))
-    const { result } = renderHook(useSearchHistory)
-
-    const item: CreateHistoryItem = {
-      query: 'one piece',
-      category: SearchGroupNameEnumv2.LIVRES,
-    }
-
-    await act(async () => {
-      await result.current.addToHistory(item)
+  describe('When shouldLogInfo remote config is true', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      })
     })
 
-    expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
-      1,
-      'Impossible d’ajouter l’entrée à l’historique',
-      { level: 'info' }
-    )
+    it('should capture a message in Sentry when adding to history fails', async () => {
+      jest.spyOn(AsyncStorage, 'setItem').mockRejectedValueOnce(new Error('Erreur'))
+      const { result } = renderHook(useSearchHistory)
+
+      const item: CreateHistoryItem = {
+        query: 'one piece',
+        category: SearchGroupNameEnumv2.LIVRES,
+      }
+
+      await act(async () => {
+        await result.current.addToHistory(item)
+      })
+
+      expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
+        1,
+        'Impossible d’ajouter l’entrée à l’historique',
+        {
+          level: 'info',
+          extra: {
+            category: 'LIVRES',
+            nativeCategory: undefined,
+            query: 'one piece',
+          },
+        }
+      )
+    })
+  })
+
+  describe('When shouldLogInfo remote config is false', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: false,
+      })
+    })
+
+    it('should not capture a message in Sentry when adding to history fails', async () => {
+      jest.spyOn(AsyncStorage, 'setItem').mockRejectedValueOnce(new Error('Erreur'))
+      const { result } = renderHook(useSearchHistory)
+
+      const item: CreateHistoryItem = {
+        query: 'one piece',
+        category: SearchGroupNameEnumv2.LIVRES,
+      }
+
+      await act(async () => {
+        await result.current.addToHistory(item)
+      })
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
+    })
   })
 
   it('should replace an item already present to the history', async () => {

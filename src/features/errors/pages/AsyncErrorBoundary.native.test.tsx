@@ -4,8 +4,10 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { ApiError } from 'api/ApiError'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
 import * as useGoBack from 'features/navigation/useGoBack'
-import { AsyncError, MonitoringError, ScreenError, eventMonitoring } from 'libs/monitoring'
-import { render, fireEvent, screen } from 'tests/utils'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { AsyncError, eventMonitoring, MonitoringError, ScreenError } from 'libs/monitoring'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { AsyncErrorBoundary } from './AsyncErrorBoundary'
 
@@ -16,6 +18,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,
   canGoBack: jest.fn(() => true),
 })
+
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 describe('AsyncErrorBoundary component', () => {
   it('should render', () => {
@@ -85,20 +89,44 @@ describe('AsyncErrorBoundary component', () => {
     }
   )
 
-  it.each([
-    401, // Unauthorized
-    500, // Internal Server Error
-    502, // Bad Gateway
-    503, // Service Unavailable
-    504, // Gateway Timeout
-  ])('should capture info when error is ApiError and error code is %s', (statusCode) => {
-    const error = new ApiError(statusCode, {
-      code: 'SOME_CODE',
-      message: 'some message',
+  describe('When shouldLogInfo remote config is true', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      })
     })
-    render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
 
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(error.message, { level: 'info' })
+    it('should capture info when error is ApiError and error code is 401', () => {
+      const error = new ApiError(401, {
+        code: 'SOME_CODE',
+        message: 'some message',
+      })
+      render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error.message, {
+        level: 'info',
+      })
+    })
+  })
+
+  describe('When shouldLogInfo remote config is false', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: false,
+      })
+    })
+
+    it('should not capture info when error is ApiError and error code is 401', () => {
+      const error = new ApiError(401, {
+        code: 'SOME_CODE',
+        message: 'some message',
+      })
+      render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
+    })
   })
 
   describe('should not capture info', () => {

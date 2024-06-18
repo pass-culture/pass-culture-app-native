@@ -1,5 +1,7 @@
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import firestore from 'libs/firebase/shims/firestore'
 import { eventMonitoring } from 'libs/monitoring'
 import { getAppBuildVersion } from 'libs/packageJson'
@@ -16,6 +18,7 @@ const { collection } = firestore()
 const mockGet = jest.fn()
 
 const featureFlag = RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 describe('useFeatureFlag', () => {
   beforeAll(() =>
@@ -171,21 +174,53 @@ describe('useFeatureFlag', () => {
       expect(result.current).toBeFalsy()
     })
 
-    it('should log to sentry when minimalBuildNumber is greater than maximalBuildNumber', async () => {
-      const firestoreData = {
-        minimalBuildNumber: buildVersion + 1,
-        maximalBuildNumber: buildVersion,
-      }
-      mockGet.mockReturnValueOnce(firestoreData)
+    describe('When shouldLogInfo remote config is false', () => {
+      beforeAll(() => {
+        useRemoteConfigContextSpy.mockReturnValue({
+          ...DEFAULT_REMOTE_CONFIG,
+          shouldLogInfo: false,
+        })
+      })
 
-      renderUseFeatureFlag(featureFlag)
+      it('should not log to sentry when minimalBuildNumber is greater than maximalBuildNumber', async () => {
+        const firestoreData = {
+          minimalBuildNumber: buildVersion + 1,
+          maximalBuildNumber: buildVersion,
+        }
+        mockGet.mockReturnValueOnce(firestoreData)
 
-      await act(async () => {})
+        renderUseFeatureFlag(featureFlag)
 
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        `Minimal build number is greater than maximal build number for feature flag ${featureFlag}`,
-        { level: 'info', extra: firestoreData }
-      )
+        await act(async () => {})
+
+        expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
+      })
+    })
+
+    describe('When shouldLogInfo remote config is true', () => {
+      beforeAll(() => {
+        useRemoteConfigContextSpy.mockReturnValue({
+          ...DEFAULT_REMOTE_CONFIG,
+          shouldLogInfo: true,
+        })
+      })
+
+      it('should log to sentry when minimalBuildNumber is greater than maximalBuildNumber', async () => {
+        const firestoreData = {
+          minimalBuildNumber: buildVersion + 1,
+          maximalBuildNumber: buildVersion,
+        }
+        mockGet.mockReturnValueOnce(firestoreData)
+
+        renderUseFeatureFlag(featureFlag)
+
+        await act(async () => {})
+
+        expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+          `Minimal build number is greater than maximal build number for feature flag ${featureFlag}`,
+          { level: 'info', extra: firestoreData }
+        )
+      })
     })
   })
 })

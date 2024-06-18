@@ -8,6 +8,8 @@ import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTracking
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring } from 'libs/monitoring'
 import * as PackageJson from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
@@ -41,6 +43,8 @@ mockdate.set(TODAY)
 jest.mock('api/api')
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 describe('useCookies', () => {
   beforeAll(() => {
@@ -454,22 +458,55 @@ describe('useCookies', () => {
         await expect(promise).resolves.toBeUndefined()
       })
 
-      it('should notify sentry', async () => {
-        const { result } = renderUseCookies()
-        const { setCookiesConsent } = result.current
-
-        await act(async () => {
-          await setCookiesConsent({
-            mandatory: COOKIES_BY_CATEGORY.essential,
-            accepted: ALL_OPTIONAL_COOKIES,
-            refused: [],
+      describe('When shouldLogInfo remote config is false', () => {
+        beforeAll(() => {
+          useRemoteConfigContextSpy.mockReturnValue({
+            ...DEFAULT_REMOTE_CONFIG,
+            shouldLogInfo: false,
           })
         })
 
-        expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-          `can‘t log cookies consent choice ; reason: "unknown network error"`,
-          { level: 'info' }
-        )
+        it('should not notify sentry', async () => {
+          const { result } = renderUseCookies()
+          const { setCookiesConsent } = result.current
+
+          await act(async () => {
+            await setCookiesConsent({
+              mandatory: COOKIES_BY_CATEGORY.essential,
+              accepted: ALL_OPTIONAL_COOKIES,
+              refused: [],
+            })
+          })
+
+          expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
+        })
+      })
+
+      describe('When shouldLogInfo remote config is true', () => {
+        beforeAll(() => {
+          useRemoteConfigContextSpy.mockReturnValue({
+            ...DEFAULT_REMOTE_CONFIG,
+            shouldLogInfo: true,
+          })
+        })
+
+        it('should notify sentry', async () => {
+          const { result } = renderUseCookies()
+          const { setCookiesConsent } = result.current
+
+          await act(async () => {
+            await setCookiesConsent({
+              mandatory: COOKIES_BY_CATEGORY.essential,
+              accepted: ALL_OPTIONAL_COOKIES,
+              refused: [],
+            })
+          })
+
+          expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+            `can‘t log cookies consent choice ; reason: "unknown network error"`,
+            { level: 'info' }
+          )
+        })
       })
     })
   })

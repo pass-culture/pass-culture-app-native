@@ -6,6 +6,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { useSuspendForSuspiciousLoginMutation } from 'features/trustedDevice/helpers/useSuspendForSuspiciousLoginMutation'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { eventMonitoring } from 'libs/monitoring'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -25,6 +26,7 @@ export const SuspensionChoice = () => {
   const { params } = useRoute<UseRouteType<'SuspensionChoice'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
+  const { shouldLogInfo } = useRemoteConfigContext()
 
   const { mutate: suspendAccountForSuspiciousLogin, isLoading } =
     useSuspendForSuspiciousLoginMutation({
@@ -37,12 +39,13 @@ export const SuspensionChoice = () => {
             'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
           timeout: SNACK_BAR_TIME_OUT,
         })
-        eventMonitoring.captureException(
-          `Can’t suspend account for suspicious login ; reason: "${
-            error instanceof Error ? error.message : undefined
-          }"`,
-          { level: 'info' }
-        )
+        if (shouldLogInfo)
+          eventMonitoring.captureException(
+            `Can’t suspend account for suspicious login ; reason: "${
+              error instanceof Error ? error.message : undefined
+            }"`,
+            { level: 'info' }
+          )
       },
     })
 
