@@ -2,7 +2,7 @@ import { formattedAppV2VenuesModule } from 'features/home/fixtures/homepage.fixt
 import { AppV2VenuesModule } from 'features/home/types'
 import { adaptAppV2VenuesModule } from 'libs/contentful/adapters/modules/adaptAppV2VenuesModule'
 import { appV2VenuesNatifModuleFixture } from 'libs/contentful/fixtures/appV2VenuesModule.fixture'
-import { isAppV2VenuesContentModel, VenuesFields } from 'libs/contentful/types'
+import { VenuesFields } from 'libs/contentful/types'
 
 describe('adaptAppV2VenuesModule', () => {
   it('should adapt a venues module app v2', () => {
@@ -16,7 +16,6 @@ describe('adaptAppV2VenuesModule', () => {
       },
     }
 
-    expect(isAppV2VenuesContentModel(rawVenuesModule)).toBe(true)
     expect(adaptAppV2VenuesModule(rawVenuesModule)).toEqual(formattedVenuesModuleWithoutSubtitle)
   })
 
