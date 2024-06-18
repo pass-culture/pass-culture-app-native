@@ -64,8 +64,10 @@ export const Playlist: FunctionComponent<Props> = ({
   renderHeader,
   renderFooter,
   onEndReached,
+  tileType = 'offer',
 }) => {
-  const { isTouch } = useTheme()
+  const { isTouch, tiles } = useTheme()
+  const { width } = useWindowDimensions()
 
   const listRef = useRef<ListType<typeof isWeb>>(null)
   const {
@@ -129,8 +131,16 @@ export const Playlist: FunctionComponent<Props> = ({
     [renderHeader, renderFooter, nbOfItems, renderItem, itemWidth, itemHeight, playlistType]
   )
 
+  const maxCaptionHeight =
+    tileType === 'video-module-offer'
+      ? tiles.maxCaptionHeight.videoModuleOffer
+      : tiles.maxCaptionHeight[tileType]
+
+  // To avoid a bug of cropped display on some home modules with Android, we need to add minHeigth to the FlashList Container
+  const minHeight = Platform.OS === 'android' ? itemHeight + maxCaptionHeight : undefined
+
   return (
-    <FlatListContainer onLayout={onContainerLayout}>
+    <FlatListContainer onLayout={onContainerLayout} minHeight={minHeight}>
       {!isStart && isWeb ? (
         <PlaylistArrowButton
           direction="left"
@@ -151,7 +161,7 @@ export const Playlist: FunctionComponent<Props> = ({
         testID={testID}
         ref={listRef}
         scrollEnabled={isTouch}
-        drawDistance={useWindowDimensions().width / 4}
+        drawDistance={width / 4}
         estimatedItemSize={itemWidth}
         data={dataWithHeaderAndFooter}
         renderItem={renderItemWithHeaderAndFooter}
@@ -172,10 +182,11 @@ export const Playlist: FunctionComponent<Props> = ({
 
 Playlist.defaultProps = defaultProps
 
-const FlatListContainer = styled.View({
+const FlatListContainer = styled.View<{ minHeight?: number }>(({ minHeight }) => ({
   position: 'relative',
   width: '100%',
-})
+  minHeight,
+}))
 
 const HorizontalMargin = styled.View({
   width: getSpacing(6),
