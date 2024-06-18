@@ -9,7 +9,7 @@ import { isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
 import { SettingsResponse } from 'api/gen'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptchaError } from 'libs/recaptcha/errors'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
@@ -137,9 +137,6 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
         setCustomError('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
         if (error instanceof ApiError && !isAPIExceptionCapturedAsInfo(error.statusCode)) {
           captureMonitoringError(error.message, 'ForgottenPasswordRequestResetError')
-        }
-        if (error instanceof ApiError && isAPIExceptionCapturedAsInfo(error.statusCode)) {
-          eventMonitoring.captureException(error.message, { level: 'info' })
         }
       } finally {
         setValue('isFetching', false)
