@@ -1,3 +1,5 @@
+import { SharedValue } from 'react-native-reanimated'
+
 import { CategoryIdEnum, RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
@@ -39,4 +41,10 @@ export interface VenueDetail {
   title: string
   address: string
   distance?: string
+}
+
+export type OfferImageCarouselPaginationProps = {
+  progressValue: SharedValue<number>
+  offerImages: string[]
+  handlePressButton: (direction: 1 | -1) => void
 }

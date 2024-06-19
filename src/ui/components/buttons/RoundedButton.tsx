@@ -6,7 +6,9 @@ import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleChe
 import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
+import { ArrowLeftNew } from 'ui/svg/icons/ArrowLeftNew'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowRightNew } from 'ui/svg/icons/ArrowRightNew'
 import { Share } from 'ui/svg/icons/BicolorShare'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
@@ -16,7 +18,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 interface Props {
-  iconName: 'back' | 'share' | 'favorite' | 'favorite-filled'
+  iconName: 'back' | 'share' | 'favorite' | 'favorite-filled' | 'next' | 'previous'
   initialColor?: ColorsEnum
   finalColor?: ColorsEnum
   onPress: () => void
@@ -32,11 +34,17 @@ interface Props {
   disabled?: boolean
 }
 
+const iconMapping: { [key in Props['iconName']]: React.FC<AccessibleIcon> } = {
+  back: ArrowPrevious,
+  next: ArrowRightNew,
+  previous: ArrowLeftNew,
+  share: Share,
+  'favorite-filled': FavoriteFilled,
+  favorite: Favorite,
+}
+
 const getIcon = (iconName: Props['iconName']): React.FC<AccessibleIcon> => {
-  if (iconName === 'back') return ArrowPrevious
-  if (iconName === 'share') return Share
-  if (iconName === 'favorite-filled') return FavoriteFilled
-  return Favorite
+  return iconMapping[iconName]
 }
 
 export const RoundedButton = (props: Props) => {

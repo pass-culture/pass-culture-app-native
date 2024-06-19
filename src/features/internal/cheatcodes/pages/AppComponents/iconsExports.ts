@@ -2,9 +2,11 @@ import styled from 'styled-components/native'
 
 import { Again } from 'ui/svg/icons/Again'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
+import { ArrowLeftNew } from 'ui/svg/icons/ArrowLeftNew'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
+import { ArrowRightNew } from 'ui/svg/icons/ArrowRightNew'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
@@ -153,7 +155,9 @@ export const SecondaryAndBiggerIcons = {
   TryAgain,
   ArrowAgain,
   ArrowNext,
+  ArrowLeftNew,
   ArrowRight,
+  ArrowRightNew,
   ArrowPrevious,
   Bell,
   BellFilled,
