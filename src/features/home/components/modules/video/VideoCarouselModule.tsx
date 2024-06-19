@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useState, useEffect } from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
@@ -16,6 +16,7 @@ import { newColorMapping } from 'features/home/components/modules/categories/Cat
 import { VerticalVideoPlayer } from 'features/home/components/modules/video/VerticalVideoPlayer'
 import { Color, VideoCarouselModule as VideoCarouselModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
+import { ContentTypes } from 'libs/contentful/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -53,7 +54,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   })
   const shouldModuleBeDisplayed = Platform.OS !== 'web'
 
-  const { homeEntryId, items, color, id, autoplay } = props
+  const { homeEntryId, items, color, id, autoplay, index } = props
   const itemsWithRelatedData = useVideoCarouselData(items, id)
 
   const hasItems = itemsWithRelatedData.length > 0
@@ -62,6 +63,16 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(autoplay ? true : false)
   const [hasFinishedPlaying, setHasFinishedPlaying] = useState(false)
+
+  useEffect(() => {
+    analytics.logModuleDisplayedOnHomepage({
+      moduleId: id,
+      moduleType: ContentTypes.VIDEO_CAROUSEL,
+      index,
+      homeEntryId,
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const playNextVideo = () => {
     let nextIndex
