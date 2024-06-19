@@ -27,7 +27,8 @@ const BodyWrapper = styled.View({
   marginHorizontal: -getSpacing(4),
 })
 
-export const Default: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
+//TODO(PC-30422): Fix this stories - accessibility
+const Default: ComponentStory<typeof CategoriesButtonsDisplay> = (props) => (
   <BodyWrapper>
     <CategoriesButtonsDisplay {...props} />
   </BodyWrapper>
