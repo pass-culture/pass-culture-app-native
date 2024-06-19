@@ -37,6 +37,7 @@ type Props = {
   renderFooter?: RenderFooterItem
   onEndReached?: () => void
   children?: never
+  tileType?: 'offer' | 'venue' | 'video-module-offer'
   playlistType?: PlaylistType
 }
 

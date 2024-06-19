@@ -19,6 +19,7 @@ type Props = Pick<
   | 'renderItem'
   | 'onEndReached'
   | 'playlistType'
+  | 'tileType'
 > & {
   title: string
   subtitle?: string
@@ -41,6 +42,7 @@ export const PassPlaylist = ({
   renderItem,
   renderFooter,
   playlistType,
+  tileType,
   keyExtractor,
   testID: _testID,
   ...props
@@ -101,6 +103,7 @@ export const PassPlaylist = ({
         keyExtractor={keyExtractor}
         onEndReached={onEndReached}
         playlistType={playlistType}
+        tileType={tileType}
       />
     </Container>
   )

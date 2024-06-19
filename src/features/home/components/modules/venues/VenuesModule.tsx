@@ -75,6 +75,7 @@ export const VenuesModule = ({
       itemWidth={ITEM_WIDTH}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
+      tileType="venue"
     />
   )
 }

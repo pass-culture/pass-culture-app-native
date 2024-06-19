@@ -49,6 +49,7 @@ export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({
       renderHeader={undefined}
       renderFooter={undefined}
       keyExtractor={keyExtractor}
+      tileType="video-module-offer"
     />
   )
 }
