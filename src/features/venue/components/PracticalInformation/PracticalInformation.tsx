@@ -35,7 +35,12 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
     },
     {
       title: 'Accessibilité',
-      body: <AccessibilityBlock basicAccessibility={venue.accessibility} />,
+      body: (
+        <AccessibilityBlock
+          basicAccessibility={venue.accessibility}
+          detailedAccessibilityUrl={venue.externalAccessibilityUrl}
+        />
+      ),
       isDisplayed:
         !!venue.accessibility &&
         Object.values(venue.accessibility).some((value) => value !== null && value !== undefined),
