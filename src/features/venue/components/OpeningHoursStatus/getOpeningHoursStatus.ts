@@ -1,4 +1,11 @@
-import { addHours, set, isWithinInterval, isSameDay, addMilliseconds } from 'date-fns'
+import {
+  addHours,
+  set,
+  isWithinInterval,
+  isSameDay,
+  addMilliseconds,
+  differenceInMinutes,
+} from 'date-fns'
 
 import { OpeningHour, OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
 
@@ -47,6 +54,22 @@ const getNextOpeningPeriod = (openingHours: OpeningHours, date: Date): Period | 
   }
 
   return getFirstOpenPeriodAfterDate(openingHours, date)
+}
+
+const computeIfOvernightEvent = (
+  currentOpenPeriod: Period | undefined,
+  nextOpenPeriod: Period | undefined
+) => {
+  if (!currentOpenPeriod || !nextOpenPeriod) return false
+
+  const minutesBetweenCloseAndOpen = differenceInMinutes(
+    nextOpenPeriod.openAt,
+    currentOpenPeriod.closeAt
+  )
+
+  const MAX_ALLOWED_MINUTES = 5
+  if (minutesBetweenCloseAndOpen <= MAX_ALLOWED_MINUTES) return true
+  return false
 }
 
 const getFirstOpenPeriodAfterDate = (openingHours: OpeningHours, date: Date): Period => {
@@ -110,14 +133,18 @@ const computeOpeningState = (
   nextOpenPeriod: Period | undefined,
   date: Date
 ): { openingState: OpeningHoursStatusState; openingLabel: string } => {
+  const isOvernightEvent = computeIfOvernightEvent(currentOpenPeriod, nextOpenPeriod)
+
   let openingState: OpeningHoursStatusState = 'close'
   let openingLabel = 'Fermé'
   if (!nextOpenPeriod) return { openingState, openingLabel }
 
   if (currentOpenPeriod) {
     if (currentOpenPeriod.isClosingSoon(date)) {
-      openingState = 'close-soon'
-      openingLabel = `Ferme bientôt - ${formatHours(currentOpenPeriod.closeAt)}`
+      openingState = isOvernightEvent ? 'open' : 'close-soon'
+      openingLabel = isOvernightEvent
+        ? `Ouvert jusqu’à ${formatHours(nextOpenPeriod.closeAt)}`
+        : `Ferme bientôt - ${formatHours(currentOpenPeriod.closeAt)}`
     } else {
       openingState = 'open'
       openingLabel = `Ouvert jusqu’à ${formatHours(currentOpenPeriod.closeAt)}`

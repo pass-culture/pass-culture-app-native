@@ -246,6 +246,19 @@ describe('OpeningHoursStatusViewModel', () => {
     })
   })
 
+  describe('Venue closes soon, but actually stays open (overnight event)', () => {
+    it('should have "open until" text', () => {
+      const openingHours = {
+        SATURDAY: [{ open: '21:00', close: '23:59' }],
+        SUNDAY: [{ open: '00:01', close: '03:00' }],
+      }
+      const currentDate = dayFactory.saturday('23:30:00')
+      const viewModel = getOpeningHoursStatus({ openingHours, currentDate })
+
+      expect(viewModel.openingLabel).toEqual('Ouvert jusqu’à 3h')
+    })
+  })
+
   describe('Venue is closed', () => {
     it.each([
       {
