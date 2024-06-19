@@ -58,11 +58,11 @@
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:14
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:16
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:19
-./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:100
-./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:76
-./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:82
-./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:88
-./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:94
+./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:74
+./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:80
+./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:86
+./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:92
+./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:98
 ./src/features/navigation/helpers/useCurrentRoute.ts:4
 ./src/features/navigation/helpers/usePreviousRoute.ts:4
 ./src/features/navigation/sanitizeNavigationState.ts:5
@@ -163,7 +163,7 @@
 ./src/libs/parsers/highlightLinks.tsx:18
 ./src/libs/parsers/highlightLinks.tsx:22
 ./src/libs/parsers/snakeCaseToUppercaseFirstLetter.ts:2
-./src/libs/parsers/tests/highlightLinks.test.tsx:36
+./src/libs/parsers/tests/highlightLinks.test.tsx:34
 ./src/libs/place/fetchPlaces.ts:8
 ./src/libs/react-query/tests/usePersistQuery.native.test.tsx:118
 ./src/libs/subcategories/__mocks__/useCategoryId.ts:6
