@@ -74,8 +74,8 @@ const computeIfOvernightEvent = (
 
 const getFirstOpenPeriodAfterDate = (openingHours: OpeningHours, date: Date): Period => {
   const openingPeriods = getOpeningPeriods(openingHours, date)
-  const nextOpenPeriod = openingPeriods.find((period) => period.openAt > date)
 
+  const nextOpenPeriod = openingPeriods.find((period) => period.openAt >= date)
   if (nextOpenPeriod) {
     return nextOpenPeriod
   }

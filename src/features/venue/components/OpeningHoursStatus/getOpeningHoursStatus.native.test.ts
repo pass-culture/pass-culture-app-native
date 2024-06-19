@@ -250,7 +250,7 @@ describe('OpeningHoursStatusViewModel', () => {
     it('should have "open until" text', () => {
       const openingHours = {
         SATURDAY: [{ open: '21:00', close: '23:59' }],
-        SUNDAY: [{ open: '00:01', close: '03:00' }],
+        SUNDAY: [{ open: '00:00', close: '03:00' }],
       }
       const currentDate = dayFactory.saturday('23:30:00')
       const viewModel = getOpeningHoursStatus({ openingHours, currentDate })
@@ -334,7 +334,7 @@ describe('OpeningHoursStatusViewModel', () => {
       {
         openingHours: {
           MONDAY: [
-            { open: '09:00', close: '12:00' },
+            { open: '00:00', close: '12:00' },
             { open: '15:30', close: '19:00' },
           ],
         },
