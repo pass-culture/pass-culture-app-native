@@ -33,7 +33,7 @@ export const useVerticalVideoPlayer = ({
   const [elapsed, setElapsed] = useState(0)
   const [showErrorView, setShowErrorView] = useState(false)
   const [videoState, setVideoState] = useState(PlayerState.UNSTARTED)
-  const playerRef = useRef<YoutubeIframeRef>(null)
+  const verticalPlayerRef = useRef<YoutubeIframeRef>(null)
 
   // Make sure the video stop playing when app is not in an active state (eg: background/inactive)
   useEffect(() => {
@@ -50,13 +50,9 @@ export const useVerticalVideoPlayer = ({
   }, [])
 
   useEffect(() => {
-    const getVideoDuration = async () => {
-      return playerRef.current?.getDuration()
-    }
-
     const interval = setInterval(async () => {
       const videoDuration = await getVideoDuration()
-      const elapsed_sec = await playerRef.current?.getCurrentTime()
+      const elapsed_sec = await verticalPlayerRef.current?.getCurrentTime()
       if (elapsed_sec && videoDuration) setElapsed(elapsed_sec / videoDuration)
     }, 100)
 
@@ -85,6 +81,19 @@ export const useVerticalVideoPlayer = ({
     [setIsPlaying, setHasFinishedPlaying, currentVideoId, moduleId]
   )
 
+  const getVideoDuration = async () => {
+    return verticalPlayerRef.current?.getDuration()
+  }
+
+  const logPausedVideo = async () => {
+    const videoDuration = await getVideoDuration()
+    analytics.logVideoPaused({
+      videoDuration,
+      seenDuration: videoDuration ? elapsed * videoDuration : 0,
+      youtubeId: currentVideoId,
+    })
+  }
+
   const intersectionObserverListener = (isInView: boolean) => {
     if (!isInView) pauseVideo()
   }
@@ -106,7 +115,12 @@ export const useVerticalVideoPlayer = ({
         youtubeId: currentVideoId,
       })
     }
-    setIsPlaying(!isPlaying)
+    if (isPlaying) {
+      pauseVideo()
+      logPausedVideo()
+    } else {
+      setIsPlaying(true)
+    }
   }
 
   const playVideo = () => {
@@ -123,7 +137,7 @@ export const useVerticalVideoPlayer = ({
   }
 
   const replayVideo = () => {
-    playerRef.current?.seekTo(0, false)
+    verticalPlayerRef.current?.seekTo(0, false)
     setHasFinishedPlaying(false)
     setIsPlaying(true)
   }
@@ -138,7 +152,7 @@ export const useVerticalVideoPlayer = ({
     intersectionObserverListener,
     playVideo,
     replayVideo,
-    playerRef,
+    playerRef: verticalPlayerRef,
     elapsed,
     showErrorView,
     onChangeState,

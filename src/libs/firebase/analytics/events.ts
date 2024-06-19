@@ -114,6 +114,7 @@ export enum AnalyticsEvent {
   OPEN_EXTERNAL_URL = 'OpenExternalURL',
   OPEN_LOCATION_SETTINGS = 'OpenLocationSettings',
   OPEN_NOTIFICATION_SETTINGS = 'OpenNotificationSettings',
+  VIDEO_PAUSED = 'VideoPaused',
   PERFORM_SEARCH = 'PerformSearch',
   PLAYLIST_HORIZONTAL_SCROLL = 'PlaylistHorizontalScroll',
   PLAYLIST_VERTICAL_SCROLL = 'PlaylistVerticalScroll',
