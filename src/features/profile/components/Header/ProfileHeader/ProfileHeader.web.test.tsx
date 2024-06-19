@@ -42,9 +42,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('ProfileHeader', () => {
   beforeEach(() => {

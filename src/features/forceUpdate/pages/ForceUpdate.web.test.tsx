@@ -7,9 +7,7 @@ import { ForceUpdate } from './ForceUpdate'
 jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber')
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ForceUpdate/>', () => {
   it('should not display the web app button', () => {

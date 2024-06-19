@@ -15,13 +15,8 @@ jest.mock('uuid', () => {
 })
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
-
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ChangePassword/>', () => {
   describe('Accessibility', () => {

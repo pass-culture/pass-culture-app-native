@@ -7,9 +7,7 @@ import { renderHook } from 'tests/utils'
 import { useGetFooterHeight } from 'ui/hooks/useGetFooterHeight/useGetFooterHeight'
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('useGetFooterHeight', () => {
   it('should return correct footer height', () => {

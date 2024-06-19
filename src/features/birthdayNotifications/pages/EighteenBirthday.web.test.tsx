@@ -10,9 +10,7 @@ const mockUseDepositAmountsByAge = useDepositAmountsByAge as jest.Mock
 mockUseDepositAmountsByAge.mockReturnValue({ eighteenYearsOldDeposit: '300 €' })
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<EighteenBirthday/>', () => {
   describe('Accessibility', () => {

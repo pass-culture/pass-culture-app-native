@@ -22,9 +22,7 @@ Object.assign(navigator, {
 })
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<DeeplinkItem />', () => {
   const deeplink: GeneratedDeeplink = {

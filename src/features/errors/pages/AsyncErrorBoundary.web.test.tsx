@@ -16,9 +16,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('AsyncErrorBoundary component', () => {
   describe('Accessibility', () => {

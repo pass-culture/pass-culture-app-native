@@ -8,9 +8,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<VenueListModule />', () => {
   it('should redirect to thematic home', async () => {

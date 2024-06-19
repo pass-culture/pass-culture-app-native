@@ -9,9 +9,7 @@ const openURLSpy = jest.spyOn(Linking, 'openURL')
 const someUrl = 'https://domain-that-does-not-exist.fr'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('ExternalLink', () => {
   it('should open given url when text clicked', () => {

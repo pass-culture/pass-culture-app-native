@@ -25,9 +25,7 @@ const validRoutes = [
   },
 ] as RootRoute[]
 
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('getScreensAndConfig()', () => {
   it('should throw if a screen without path or pathConfig is encountered', () => {

@@ -18,9 +18,7 @@ jest.mock('uuid', () => {
 })
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ChangeEmail/> - old version', () => {
   jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)

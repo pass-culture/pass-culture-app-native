@@ -5,9 +5,7 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 import { IdentityCheckUnavailable } from './IdentityCheckUnavailable'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<IdentityCheckUnavailable/>', () => {
   describe('Accessibility', () => {

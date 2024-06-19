@@ -7,9 +7,7 @@ import { WEBAPP_V2_URL } from 'libs/environment'
 // features/navigation/RootNavigator/__mocks__/routes.ts
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ shouldLogInfo: false }),
-}))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('getScreenFromDeeplink()', () => {
   it('should return PageNotFound when route is unknown', () => {
