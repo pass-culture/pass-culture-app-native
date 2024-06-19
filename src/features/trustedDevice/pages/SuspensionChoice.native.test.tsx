@@ -96,6 +96,10 @@ describe('<SuspensionChoice/>', () => {
       })
     })
 
+    afterAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+    })
+
     it('should capture an info in Sentry on suspension error', async () => {
       simulateSuspendForSuspiciousLoginError()
       renderSuspensionChoice()

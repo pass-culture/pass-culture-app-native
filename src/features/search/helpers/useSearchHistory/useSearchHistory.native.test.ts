@@ -118,6 +118,10 @@ describe('useSearchHistory', () => {
       })
     })
 
+    afterAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+    })
+
     it('should capture a message in Sentry when adding to history fails', async () => {
       jest.spyOn(AsyncStorage, 'setItem').mockRejectedValueOnce(new Error('Erreur'))
       const { result } = renderHook(useSearchHistory)

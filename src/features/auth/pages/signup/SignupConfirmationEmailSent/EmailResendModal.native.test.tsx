@@ -171,6 +171,10 @@ describe('<EmailResendModal />', () => {
       })
     })
 
+    afterAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+    })
+
     it('should log to Sentry on error', async () => {
       renderEmailResendModal({ emailResendErrorCode: 500 })
       await waitFor(() => {

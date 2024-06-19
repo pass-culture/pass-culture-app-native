@@ -97,6 +97,10 @@ describe('AsyncErrorBoundary component', () => {
       })
     })
 
+    afterAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+    })
+
     it('should capture info when error is ApiError and error code is 401', () => {
       const error = new ApiError(401, {
         code: 'SOME_CODE',

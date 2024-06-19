@@ -205,6 +205,10 @@ describe('useFeatureFlag', () => {
         })
       })
 
+      afterAll(() => {
+        useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      })
+
       it('should log to sentry when minimalBuildNumber is greater than maximalBuildNumber', async () => {
         const firestoreData = {
           minimalBuildNumber: buildVersion + 1,

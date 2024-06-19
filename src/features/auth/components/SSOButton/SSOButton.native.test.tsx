@@ -158,6 +158,10 @@ describe('<SSOButton />', () => {
       })
     })
 
+    afterAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+    })
+
     it('should log to Sentry on SSO login error', async () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
       jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')

@@ -490,6 +490,10 @@ describe('useCookies', () => {
           })
         })
 
+        afterAll(() => {
+          useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+        })
+
         it('should notify sentry', async () => {
           const { result } = renderUseCookies()
           const { setCookiesConsent } = result.current
