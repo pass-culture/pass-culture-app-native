@@ -28,6 +28,8 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
 
   useTabBar({ state })
 
+  console.log('testing-')
+
   return (
     <TabBarContainer v2={!!enableTabBarV2}>
       {tabRoutes.map((route) => {
