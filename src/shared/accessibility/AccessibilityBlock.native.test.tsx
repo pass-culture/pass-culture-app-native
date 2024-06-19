@@ -6,6 +6,7 @@ import { render, screen } from 'tests/utils'
 
 import { AccessibilityBlock } from './AccessibilityBlock'
 
+jest.mock('libs/firebase/analytics/analytics')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('AccessibilityBlock', () => {
@@ -19,7 +20,11 @@ describe('AccessibilityBlock', () => {
       />
     )
 
-    expect(screen.getByTestId('BasicAccessibilityInfo')).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        'Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre.'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should not display AccesLibre banner when url is provided and enableAccesLibre FF deactivated', () => {
@@ -30,7 +35,11 @@ describe('AccessibilityBlock', () => {
       />
     )
 
-    expect(screen.queryByTestId('BasicAccessibilityInfo')).not.toBeOnTheScreen()
+    expect(
+      screen.queryByText(
+        'Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre.'
+      )
+    ).not.toBeOnTheScreen()
   })
 
   it('should display BasicAccessibilityInfo when basicAccessibility is provided', () => {
@@ -45,11 +54,7 @@ describe('AccessibilityBlock', () => {
       />
     )
 
-    expect(
-      screen.getByText(
-        'Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre.'
-      )
-    ).toBeOnTheScreen()
+    expect(screen.getByTestId('BasicAccessibilityInfo')).toBeOnTheScreen()
   })
 
   it('should display nothing when basicAccessibility is not provided', () => {
