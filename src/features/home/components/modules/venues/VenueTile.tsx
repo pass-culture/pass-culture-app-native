@@ -15,10 +15,10 @@ import { formatDistance } from 'libs/parsers/formatDistance'
 import { mapVenueTypeToIcon } from 'libs/parsers/venueType'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { theme } from 'theme'
 import { ImageTile } from 'ui/components/ImageTile'
 import { Tag } from 'ui/components/Tag/Tag'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -99,7 +99,7 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
 
 export const VenueTile = memo(UnmemoizedVenueTile)
 
-const MAX_VENUE_CAPTION_HEIGHT = getSpacing(18)
+const MAX_VENUE_CAPTION_HEIGHT = theme.tiles.maxCaptionHeight.venue
 
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.colors.white,

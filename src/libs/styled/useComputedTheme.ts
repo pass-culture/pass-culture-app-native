@@ -5,9 +5,11 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { BaseAppThemeType, AppThemeType } from 'theme'
+import { getSpacing } from 'ui/theme'
 
 export function useComputedTheme(theme: BaseAppThemeType) {
   const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
+  const enableNewOfferTile = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { width: windowWidth } = useWindowDimensions()
   const tabletMinWidth = theme.breakpoints.md
   const desktopMinWidth = theme.breakpoints.lg
@@ -22,6 +24,9 @@ export function useComputedTheme(theme: BaseAppThemeType) {
   const showTabBar = theme.isTouch || !!isMobileViewport
   const tabBarHeight = enableTabBarV2 ? theme.tabBar.heightV2 : theme.tabBar.height
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
+  const offerMaxCaptionHeight = enableNewOfferTile
+    ? getSpacing(24)
+    : theme.tiles.maxCaptionHeight.offer
 
   return useMemo<AppThemeType>(
     () => ({
@@ -30,6 +35,10 @@ export function useComputedTheme(theme: BaseAppThemeType) {
         ...theme.tabBar,
         showLabels,
         height: tabBarHeight,
+      },
+      tiles: {
+        ...theme.tiles,
+        maxCaptionHeight: { ...theme.tiles.maxCaptionHeight, offer: offerMaxCaptionHeight },
       },
       isMobileViewport,
       isTabletViewport,
@@ -48,6 +57,7 @@ export function useComputedTheme(theme: BaseAppThemeType) {
       showTabBar,
       appContentWidth,
       enableTabBarV2,
+      enableNewOfferTile,
     ]
   )
 }
