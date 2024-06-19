@@ -1,17 +1,12 @@
 import React, { FunctionComponent } from 'react'
-import { SharedValue } from 'react-native-reanimated'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { OfferImageCarouselPaginationProps } from 'features/offer/types'
 import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-type Props = {
-  progressValue: SharedValue<number>
-  offerImages: string[]
-}
-
-export const OfferImageCarouselPagination: FunctionComponent<Props> = ({
+export const OfferImageCarouselPagination: FunctionComponent<OfferImageCarouselPaginationProps> = ({
   progressValue,
   offerImages,
 }) => {

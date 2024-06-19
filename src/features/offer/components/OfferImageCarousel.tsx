@@ -6,7 +6,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination'
-import { WebOfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/WebOfferImageCarouselPagination'
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
@@ -80,15 +79,12 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
       {progressValue ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={isDesktopViewport ? 6 : 4} />
-          {isWeb ? (
-            <WebOfferImageCarouselPagination
-              progressValue={progressValue}
-              offerImages={offerImages}
-              handlePressButton={handlePressButton}
-            />
-          ) : (
-            <OfferImageCarouselPagination progressValue={progressValue} offerImages={offerImages} />
-          )}
+
+          <OfferImageCarouselPagination
+            progressValue={progressValue}
+            offerImages={offerImages}
+            handlePressButton={handlePressButton}
+          />
         </React.Fragment>
       ) : null}
     </CarouselContainer>

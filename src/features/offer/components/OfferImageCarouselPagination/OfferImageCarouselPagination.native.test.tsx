@@ -9,6 +9,7 @@ describe('<OfferImageCarouselPagination />', () => {
       <OfferImageCarouselPagination
         progressValue={{ value: 0 }}
         offerImages={['image1', 'image2']}
+        handlePressButton={jest.fn()}
       />
     )
 
@@ -20,6 +21,7 @@ describe('<OfferImageCarouselPagination />', () => {
       <OfferImageCarouselPagination
         progressValue={{ value: 0 }}
         offerImages={['image1', 'image2']}
+        handlePressButton={jest.fn()}
       />
     )
 
