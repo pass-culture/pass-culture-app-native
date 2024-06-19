@@ -1,5 +1,7 @@
 const firebase = {
-  initializeApp: () => {},
+  initializeApp: () => ({
+    remoteConfig: () => ({ getProvider: () => ({}) }),
+  }),
   analytics: () => ({
     getAppInstanceId: () => {},
     logEvent: () => {},
