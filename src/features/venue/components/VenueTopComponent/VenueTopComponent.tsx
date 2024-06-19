@@ -52,10 +52,7 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => 
         <InformationTags tags={venueTags} />
         <Spacer.Column numberOfSpaces={4} />
         <ViewGap gap={2}>
-          <VenueTitle
-            accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`}
-            adjustsFontSizeToFit
-            allowFontScaling={false}>
+          <VenueTitle accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`} adjustsFontSizeToFit>
             {venueName}
           </VenueTitle>
           {isDynamicOpeningHoursDisplayed ? (
