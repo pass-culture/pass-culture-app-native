@@ -89,13 +89,16 @@ describe('getStateFromPath()', () => {
           expect(storeUtmParams).toHaveBeenCalledWith({
             campaign: 'push_offre',
             gen: 'marketing',
+            content: null,
+            source: null,
+            medium: null,
           })
           expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
             traffic_campaign: 'push_offre',
-            traffic_content: undefined,
+            traffic_content: null,
             traffic_gen: 'marketing',
-            traffic_source: undefined,
-            traffic_medium: undefined,
+            traffic_source: null,
+            traffic_medium: null,
           })
         })
       })
@@ -106,11 +109,11 @@ describe('getStateFromPath()', () => {
         await waitFor(() => {
           expect(storeUtmParams).not.toHaveBeenCalled()
           expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
-            traffic_campaign: undefined,
-            traffic_content: undefined,
-            traffic_gen: undefined,
-            traffic_source: undefined,
-            traffic_medium: undefined,
+            traffic_campaign: null,
+            traffic_content: null,
+            traffic_gen: null,
+            traffic_source: null,
+            traffic_medium: null,
           })
         })
       })
@@ -136,11 +139,11 @@ describe('getStateFromPath()', () => {
         await waitFor(() => {
           expect(storeUtmParams).not.toHaveBeenCalled()
           expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith({
-            traffic_campaign: undefined,
-            traffic_content: undefined,
-            traffic_gen: undefined,
-            traffic_source: undefined,
-            traffic_medium: undefined,
+            traffic_campaign: null,
+            traffic_content: null,
+            traffic_gen: null,
+            traffic_source: null,
+            traffic_medium: null,
           })
         })
       })
