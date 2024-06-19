@@ -219,7 +219,7 @@
     "@babel/preset-react": "^7.24.1",
     "@babel/preset-typescript": "^7.24.1",
     "@bam.tech/eslint-plugin": "^1.0.1",
-    "@chanzuckerberg/axe-storybook-testing": "^7.1.3",
+    "@chanzuckerberg/axe-storybook-testing": "^8.0.2",
     "@google-cloud/local-auth": "^2.1.1",
     "@lhci/cli": "0.11.x",
     "@react-native-community/eslint-config": "^3.2.0",
