@@ -67,17 +67,22 @@ describe('<VenueHeader />', () => {
       venueId: venueResponseSnap.id,
     })
   })
+
+  it('should display venue name if venue has no public name', async () => {
+    const venue = { ...venueResponseSnap, publicName: null, name: 'venueNameWithoutPublicName' }
+    render(
+      reactQueryProviderHOC(<VenueHeader headerTransition={new Animated.Value(0)} venue={venue} />)
+    )
+
+    expect(await screen.findByText('venueNameWithoutPublicName')).toBeOnTheScreen()
+  })
 })
 
 function renderVenueHeader() {
   const animatedValue = new Animated.Value(0)
   render(
     reactQueryProviderHOC(
-      <VenueHeader
-        headerTransition={animatedValue}
-        title={venueResponseSnap.name}
-        venue={venueResponseSnap}
-      />
+      <VenueHeader headerTransition={animatedValue} venue={venueResponseSnap} />
     )
   )
   return { animatedValue }

@@ -104,5 +104,13 @@ describe('<Venue />', () => {
         expect(results).toHaveNoViolations()
       })
     })
+
+    it('should render correctly in web', async () => {
+      const { container } = render(reactQueryProviderHOC(<Venue />))
+
+      await screen.findAllByText('Gratuit')
+
+      expect(container).toMatchSnapshot()
+    })
   })
 })

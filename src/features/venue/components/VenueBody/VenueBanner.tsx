@@ -25,9 +25,10 @@ export const VenueBanner: React.FC<Props> = ({ bannerUrl, bannerMeta }) => {
     is_from_google: null,
     image_credit: null,
   }
+  const hasGoogleCredit = isFromGoogle && imageCredit
 
   return (
-    <HeaderContainer>
+    <HeaderContainer hasGoogleCredit={hasGoogleCredit}>
       {bannerUrl ? (
         <ViewGap gap={2}>
           <GoogleWatermarkWrapper withGoogleWatermark={!!isFromGoogle}>
@@ -45,9 +46,10 @@ export const VenueBanner: React.FC<Props> = ({ bannerUrl, bannerMeta }) => {
   )
 }
 
-const HeaderContainer = styled.View({
+const HeaderContainer = styled.View<{ hasGoogleCredit: boolean }>(({ hasGoogleCredit }) => ({
   alignItems: 'center',
-})
+  marginBottom: hasGoogleCredit ? getSpacing(2) : getSpacing(6),
+}))
 
 const GoogleWatermarkWrapper = ({
   withGoogleWatermark,

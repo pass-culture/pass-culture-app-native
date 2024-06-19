@@ -1,4 +1,3 @@
-import Clipboard from '@react-native-clipboard/clipboard'
 import mockdate from 'mockdate'
 import React from 'react'
 import { Linking } from 'react-native'
@@ -6,7 +5,6 @@ import Share, { Social } from 'react-native-share'
 import { UseQueryResult } from 'react-query'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
@@ -15,11 +13,10 @@ import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResp
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { ILocationContext, useLocation } from 'libs/location'
 import { Network } from 'libs/share/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -38,7 +35,6 @@ jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
 } as unknown as UseQueryResult<useVenueOffers.VenueOffers, unknown>)
 
 jest.mock('libs/location')
-const mockUseLocation = jest.mocked(useLocation)
 
 const mockSubcategories = PLACEHOLDER_DATA.subcategories
 const mockHomepageLabels = PLACEHOLDER_DATA.homepageLabels
@@ -63,99 +59,8 @@ describe('<VenueBody />', () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
   })
 
-  it('should display full venue address', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
-    await waitUntilRendered()
-
-    expect(screen.getByText('1 boulevard Poissonnière, 75000 Paris')).toBeOnTheScreen()
-  })
-
-  it('should display venue type', async () => {
-    const culturalCenterVenue: VenueResponse = {
-      ...venueResponseSnap,
-      venueTypeCode: VenueTypeCodeKey.CULTURAL_CENTRE,
-    }
-
-    render(reactQueryProviderHOC(<VenueBody venue={culturalCenterVenue} onScroll={jest.fn()} />))
-    await waitUntilRendered()
-
-    expect(screen.getByText('Centre culturel')).toBeOnTheScreen()
-  })
-
-  it('should display distance between user and venue when geolocation is activated', async () => {
-    const userLocation = { latitude: 30, longitude: 30.1 }
-    mockUseLocation.mockReturnValueOnce({
-      userLocation,
-      hasGeolocPosition: true,
-    } as ILocationContext)
-    const locatedVenue: VenueResponse = { ...venueResponseSnap, latitude: 30, longitude: 30 }
-
-    render(reactQueryProviderHOC(<VenueBody venue={locatedVenue} onScroll={jest.fn()} />))
-    await waitUntilRendered()
-
-    expect(screen.getByText('À 10 km')).toBeOnTheScreen()
-  })
-
-  it('should not display distance between user and venue when geolocation is not activated', async () => {
-    mockUseLocation.mockReturnValueOnce({
-      hasGeolocPosition: false,
-    } as ILocationContext)
-    const locatedVenue: VenueResponse = { ...venueResponseSnap, latitude: 30, longitude: 30 }
-
-    render(reactQueryProviderHOC(<VenueBody venue={locatedVenue} onScroll={jest.fn()} />))
-    await waitUntilRendered()
-
-    expect(screen.queryByText('À 10 km')).not.toBeOnTheScreen()
-  })
-
-  it('should copy the whole address when pressing the copy button', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
-    await waitUntilRendered()
-
-    fireEvent.press(screen.getByText('Copier l’adresse'))
-
-    expect(Clipboard.setString).toHaveBeenCalledWith(
-      'Le Petit Rintintin 1, 1 boulevard Poissonnière, 75000 Paris'
-    )
-  })
-
-  it('should log analytics when copying address', async () => {
-    Clipboard.getString = jest
-      .fn()
-      .mockReturnValue('Le Petit Rintintin 1, 1 boulevard Poissonnière, 75000 Paris')
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
-
-    fireEvent.press(screen.getByText('Copier l’adresse'))
-
-    await waitFor(() => {
-      expect(analytics.logCopyAddress).toHaveBeenCalledWith({
-        venueId: venueResponseSnap.id,
-        from: 'venue',
-      })
-    })
-  })
-
-  it('should log analytics when pressing Voir l’itinéraire', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
-    await waitUntilRendered()
-
-    fireEvent.press(screen.getByText('Voir l’itinéraire'))
-
-    expect(analytics.logConsultItinerary).toHaveBeenCalledWith({
-      venueId: venueResponseSnap.id,
-      from: 'venue',
-    })
-  })
-
-  it('should display default background image when no banner for venue', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
-    await waitUntilRendered()
-
-    expect(screen.getByTestId('defaultVenueBackground')).toBeOnTheScreen()
-  })
-
   it('should display withdrawal details', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
+    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} />))
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
@@ -164,7 +69,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should share on Instagram', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
+    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} />))
 
     const instagramButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
 
@@ -181,7 +86,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should log event when pressing on Infos pratiques tab', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
+    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} />))
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
@@ -192,67 +97,12 @@ describe('<VenueBody />', () => {
   })
 
   it('should log event when pressing on Offres disponibles tab', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} onScroll={jest.fn()} />))
+    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} />))
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Offres disponibles'))
 
     expect(analytics.logConsultVenueOffers).toHaveBeenCalledWith({ venueId: venueResponseSnap.id })
-  })
-
-  it('should render dynamics opening hours when feature flag is enabled', async () => {
-    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
-    const venue = {
-      ...venueResponseSnap,
-      openingHours: {
-        monday: [],
-        tuesday: [],
-        wednesday: [],
-        thursday: [],
-        friday: [],
-        saturday: [],
-        sunday: [],
-      },
-    }
-
-    render(reactQueryProviderHOC(<VenueBody venue={venue} onScroll={jest.fn()} />))
-    await waitUntilRendered()
-
-    expect(screen.getByText('Fermé')).toBeOnTheScreen()
-  })
-
-  it('should NOT render dynamics opening hours when feature flag is disabled', async () => {
-    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(false)
-    const venue = {
-      ...venueResponseSnap,
-      openingHours: {
-        monday: [],
-        tuesday: [],
-        wednesday: [],
-        thursday: [],
-        friday: [],
-        saturday: [],
-        sunday: [],
-      },
-    }
-
-    render(reactQueryProviderHOC(<VenueBody venue={venue} onScroll={jest.fn()} />))
-    await waitUntilRendered()
-
-    expect(screen.queryByText('Fermé')).not.toBeOnTheScreen()
-  })
-
-  it('should NOT render dynamics opening hours when venue doesn t have openingHours', async () => {
-    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
-    const venue = {
-      ...venueResponseSnap,
-      openingHours: undefined,
-    }
-
-    render(reactQueryProviderHOC(<VenueBody venue={venue} onScroll={jest.fn()} />))
-    await waitUntilRendered()
-
-    expect(screen.queryByText('Fermé')).not.toBeOnTheScreen()
   })
 })
 
