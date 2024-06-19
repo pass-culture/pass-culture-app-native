@@ -1,4 +1,5 @@
 import { addWeeks } from 'date-fns'
+
 import { getOpeningHoursStatus } from './getOpeningHoursStatus'
 
 const dayFactory = {
