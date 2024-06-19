@@ -124,7 +124,8 @@ describe('TabBar', () => {
 
   it('render correctly when FF is enabled', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true) // first time for theme provider
-    useFeatureFlagSpy.mockReturnValueOnce(true) // second time for tabbar
+    useFeatureFlagSpy.mockReturnValueOnce(true) // second time for theme provider
+    useFeatureFlagSpy.mockReturnValueOnce(true) // third time for tabbar
     renderTabBar()
 
     expect(screen).toMatchSnapshot()

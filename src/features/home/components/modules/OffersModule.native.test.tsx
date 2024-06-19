@@ -9,8 +9,10 @@ import { transformHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { ThemeProvider } from 'libs/styled'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
+import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -70,14 +72,18 @@ describe('OffersModule', () => {
   })
 
   it('should render correctly for v2 one-item-medium layout', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+    useFeatureFlagSpy.mockReturnValueOnce(true) // first mock for ThemeProvider
+    useFeatureFlagSpy.mockReturnValueOnce(true) // second mock for ThemeProvider
+    useFeatureFlagSpy.mockReturnValueOnce(true) // third mock for OffersModule
     renderOffersModule()
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should render correctly for v2 three-items layout', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+    useFeatureFlagSpy.mockReturnValueOnce(true) // first mock for ThemeProvider
+    useFeatureFlagSpy.mockReturnValueOnce(true) // second mock for ThemeProvider
+    useFeatureFlagSpy.mockReturnValueOnce(true) // third mock for OffersModule
     renderOffersModule({ displayParameters: { ...props.displayParameters, layout: 'three-items' } })
 
     expect(screen).toMatchSnapshot()
@@ -188,4 +194,10 @@ describe('OffersModule', () => {
 })
 
 const renderOffersModule = (additionalProps: Partial<OffersModuleProps> = {}) =>
-  render(reactQueryProviderHOC(<OffersModule {...props} {...additionalProps} />))
+  render(
+    reactQueryProviderHOC(
+      <ThemeProvider theme={computedTheme}>
+        <OffersModule {...props} {...additionalProps} />
+      </ThemeProvider>
+    )
+  )
