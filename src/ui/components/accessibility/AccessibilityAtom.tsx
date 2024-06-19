@@ -8,7 +8,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import {
   getAccessibilityCategoryAndIcon,
   HandicapCategory,
-} from './getAccessibilityCategoryAndIcon'
+} from '../../../shared/accessibility/getAccessibilityCategoryAndIcon'
 interface Props {
   handicap: HandicapCategory
   isAccessible: boolean
