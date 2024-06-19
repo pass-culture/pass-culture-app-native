@@ -683,4 +683,6 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_SEE_ALL_OFFERS_CLICKED }, { venueId }),
   logVenueSeeMoreClicked: (venueId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_SEE_MORE_CLICKED }, { venueId }),
+  logVideoPaused: (params: { videoDuration?: number; seenDuration: number; youtubeId?: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.VIDEO_PAUSED }, params),
 }
