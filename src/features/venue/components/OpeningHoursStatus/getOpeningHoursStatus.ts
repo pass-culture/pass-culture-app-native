@@ -1,6 +1,16 @@
-import { addHours, set, isWithinInterval, subHours } from 'date-fns'
+import {
+  addHours,
+  set,
+  isWithinInterval,
+  isSameDay,
+  addMilliseconds,
+  differenceInMinutes,
+} from 'date-fns'
 
-import { OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
+import { OpeningHour, OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
+
+export const THIRTY_MINUTES_IN_MILLISECONDS = 30 * 60 * 1000
+export const ONE_HOUR_IN_MILLISECONDS = 2 * THIRTY_MINUTES_IN_MILLISECONDS
 
 type OpeningHoursStatusParams = {
   openingHours: OpeningHours
@@ -8,96 +18,74 @@ type OpeningHoursStatusParams = {
 }
 
 type OpeningHoursStatus = {
-  state: OpeningHoursStatusState
-  text: string
-  nextChange?: Date
+  openingState: OpeningHoursStatusState
+  openingLabel: string
+  nextChangeTime?: Date
 }
 
 export const getOpeningHoursStatus = ({
   openingHours,
   currentDate,
 }: OpeningHoursStatusParams): OpeningHoursStatus => {
-  const currentOpeningHours = openingHours[getHoursFromCurrentDate(currentDate)] || []
-  const periods = currentOpeningHours.map(({ open, close }) => {
-    const openAt = getDateFromOpeningHour(currentDate, open)
-    const closeAt = getDateFromOpeningHour(currentDate, close)
-    return createPeriod(openAt, closeAt)
-  })
+  const currentOpeningPeriod = getCurrentOpeningPeriod(openingHours, currentDate)
+  const nextOpeningPeriod = getNextOpeningPeriod(openingHours, currentDate)
+  const { openingState, openingLabel } = computeOpeningState(
+    currentOpeningPeriod,
+    nextOpeningPeriod,
+    currentDate
+  )
 
-  const nextDay = addHours(currentDate, 24)
-  const nextDayOpeningHour = openingHours[getHoursFromCurrentDate(nextDay)]?.[0]
-  const nextDayOpenAt =
-    nextDayOpeningHour && getDateFromOpeningHour(nextDay, nextDayOpeningHour.open)
-
-  return getStateFromPeriods(periods, currentDate, nextDayOpenAt)
+  const nextChangeTime = getNextChangeTime(currentOpeningPeriod, nextOpeningPeriod)
+  return { openingState, openingLabel, nextChangeTime }
 }
 
-const getStateFromPeriods = (
-  periods: Period[],
-  currentDate: Date,
-  nextDayOpenAt?: Date,
-  index = 0
-): OpeningHoursStatus => {
-  const period = periods[index]
-  if (!period) {
-    const lastPeriod = periods[periods.length - 1]
-    if (lastPeriod && lastPeriod.openAt > currentDate) {
-      return {
-        state: 'close',
-        text: 'Fermé',
-        nextChange: subHours(lastPeriod.openAt, 1),
-      }
-    }
-
-    return {
-      state: 'close',
-      text: 'Fermé',
-      nextChange: nextDayOpenAt && subHours(nextDayOpenAt, 1),
-    }
-  }
-
-  if (period.isPassed(currentDate)) {
-    return getStateFromPeriods(periods, currentDate, nextDayOpenAt, index + 1)
-  }
-
-  if (period.isOpen(currentDate)) {
-    if (period.isClosingSoon(currentDate)) {
-      return {
-        state: 'close-soon',
-        text: `Ferme bientôt - ${formatDate(period.closeAt)}`,
-        nextChange: period.closeAt,
-      }
-    }
-    return {
-      state: 'open',
-      text: `Ouvert jusqu’à ${formatDate(period.closeAt)}`,
-      nextChange: subHours(period.closeAt, 1),
-    }
-  }
-
-  if (period.isOpeningSoon(currentDate)) {
-    return {
-      state: 'open-soon',
-      text: `Ouvre bientôt - ${formatDate(period.openAt)}`,
-      nextChange: period.openAt,
-    }
-  }
-
-  return getStateFromPeriods(periods, currentDate, nextDayOpenAt, index + 1)
+const getCurrentOpeningPeriod = (
+  openingHours: OpeningHours,
+  currentDate: Date
+): Period | undefined => {
+  const currentOpeningPeriods = getOpeningPeriods(openingHours, currentDate)
+  return currentOpeningPeriods.find((period) => period.isOpen(currentDate))
 }
 
-type Period = ReturnType<typeof createPeriod>
+const getNextOpeningPeriod = (openingHours: OpeningHours, date: Date): Period | undefined => {
+  const hasOpenDay = Object.values(openingHours).some((value) => !!value && value.length > 0)
+  if (!hasOpenDay) {
+    return undefined
+  }
 
-const createPeriod = (openAt: Date, closeAt: Date) => ({
-  closeAt,
-  openAt,
-  isOpeningSoon: (currentDate: Date) => addHours(currentDate, 1) >= openAt,
-  isClosingSoon: (currentDate: Date) => addHours(currentDate, 1) >= closeAt,
-  isOpen: (currentDate: Date) => isWithinInterval(currentDate, { start: openAt, end: closeAt }),
-  isPassed: (currentDate: Date) => currentDate > closeAt,
-})
+  return getFirstOpenPeriodAfterDate(openingHours, date)
+}
 
-const DAY_TO_OPENING_HOURS = {
+const computeIfOvernightEvent = (
+  currentOpenPeriod: Period | undefined,
+  nextOpenPeriod: Period | undefined
+) => {
+  if (!currentOpenPeriod || !nextOpenPeriod) return false
+
+  const minutesBetweenCloseAndOpen = differenceInMinutes(
+    nextOpenPeriod.openAt,
+    currentOpenPeriod.closeAt
+  )
+
+  const MAX_ALLOWED_MINUTES = 5
+  if (minutesBetweenCloseAndOpen <= MAX_ALLOWED_MINUTES) return true
+  return false
+}
+
+const getFirstOpenPeriodAfterDate = (openingHours: OpeningHours, date: Date): Period => {
+  const openingPeriods = getOpeningPeriods(openingHours, date)
+
+  const nextOpenPeriod = openingPeriods.find((period) => period.openAt >= date)
+  if (nextOpenPeriod) {
+    return nextOpenPeriod
+  }
+
+  const nextDay = addHours(date, 24)
+  nextDay.setHours(0, 0, 0)
+  return getFirstOpenPeriodAfterDate(openingHours, nextDay)
+}
+
+const DAY_INDEX_TO_OPENING_HOURS_KEYS = {
   0: 'SUNDAY',
   1: 'MONDAY',
   2: 'TUESDAY',
@@ -107,14 +95,31 @@ const DAY_TO_OPENING_HOURS = {
   6: 'SATURDAY',
 } as const
 
-const getHoursFromCurrentDate = (currentDate: Date): keyof OpeningHours => {
-  const day = currentDate.getDay()
-  const openingHours = DAY_TO_OPENING_HOURS[day]
-  return openingHours
+const getOpeningPeriods = (openingHours: OpeningHours, date: Date): Period[] => {
+  const dayIndex = date.getDay()
+  const dayOfWeek = DAY_INDEX_TO_OPENING_HOURS_KEYS[dayIndex]
+  const dayOpeningHours = openingHours[dayOfWeek] || []
+  return dayOpeningHours.map(({ close, open }) => createPeriod({ open, close }, date))
 }
 
-const getDateFromOpeningHour = (currentDate: Date, openingHour: string): Date => {
-  const [hour, minute] = openingHour.split(':').map((value) => parseInt(value))
+type Period = ReturnType<typeof createPeriod>
+
+const createPeriod = ({ open, close }: OpeningHour, date: Date) => {
+  const closeAt = getDateFromHour(date, close)
+  const openAt = getDateFromHour(date, open)
+  return {
+    closeAt,
+    openAt,
+    isOpeningSoon: (currentDate: Date) =>
+      addMilliseconds(currentDate, ONE_HOUR_IN_MILLISECONDS) >= openAt,
+    isClosingSoon: (currentDate: Date) =>
+      addMilliseconds(currentDate, ONE_HOUR_IN_MILLISECONDS) >= closeAt,
+    isOpen: (currentDate: Date) => isWithinInterval(currentDate, { start: openAt, end: closeAt }),
+  }
+}
+
+const getDateFromHour = (currentDate: Date, hourString: string): Date => {
+  const [hour, minute] = hourString.split(':').map((value) => parseInt(value))
   return set(currentDate, {
     hours: hour,
     minutes: minute,
@@ -123,8 +128,78 @@ const getDateFromOpeningHour = (currentDate: Date, openingHour: string): Date =>
   })
 }
 
-const formatDate = (date: Date): string => {
+const computeOpeningState = (
+  currentOpenPeriod: Period | undefined,
+  nextOpenPeriod: Period | undefined,
+  date: Date
+): { openingState: OpeningHoursStatusState; openingLabel: string } => {
+  const isOvernightEvent = computeIfOvernightEvent(currentOpenPeriod, nextOpenPeriod)
+
+  let openingState: OpeningHoursStatusState = 'close'
+  let openingLabel = 'Fermé'
+  if (!nextOpenPeriod) return { openingState, openingLabel }
+
+  if (currentOpenPeriod) {
+    if (currentOpenPeriod.isClosingSoon(date)) {
+      openingState = isOvernightEvent ? 'open' : 'close-soon'
+      openingLabel = isOvernightEvent
+        ? `Ouvert jusqu’à ${formatHours(nextOpenPeriod.closeAt)}`
+        : `Ferme bientôt - ${formatHours(currentOpenPeriod.closeAt)}`
+    } else {
+      openingState = 'open'
+      openingLabel = `Ouvert jusqu’à ${formatHours(currentOpenPeriod.closeAt)}`
+    }
+  } else if (nextOpenPeriod.isOpeningSoon(date)) {
+    openingState = 'open-soon'
+    openingLabel = `Ouvre bientôt - ${formatHours(nextOpenPeriod.openAt)}`
+  }
+
+  if (openingState === 'close' || openingState === 'close-soon') {
+    const nextDayName = getNextDayName(nextOpenPeriod.openAt, date)
+    openingLabel += ` - Ouvre ${nextDayName} à ${formatHours(nextOpenPeriod.openAt)}`
+  }
+  return { openingState, openingLabel }
+}
+
+const formatHours = (date: Date): string => {
   const hours = date.getHours()
   const minutes = date.getMinutes()
   return `${hours}h${minutes || ''}`
+}
+
+const DAY_NUMBER_TO_DAY_NAME = {
+  0: 'dimanche',
+  1: 'lundi',
+  2: 'mardi',
+  3: 'mercredi',
+  4: 'jeudi',
+  5: 'vendredi',
+  6: 'samedi',
+} as const
+
+const getNextDayName = (nextOpenDate: Date, currentDate: Date): string => {
+  const isNextOpenDayToday = isSameDay(nextOpenDate, currentDate)
+  if (isNextOpenDayToday) return 'aujourd’hui'
+
+  const isNextOpenDayTomorrow = nextOpenDate.getDay() === (currentDate.getDay() + 1) % 7
+  if (isNextOpenDayTomorrow) return 'demain'
+
+  const isNextOpenDaySameWeekday = nextOpenDate.getDay() === currentDate.getDay()
+  const dayName = DAY_NUMBER_TO_DAY_NAME[nextOpenDate.getDay()]
+  if (isNextOpenDaySameWeekday) return `${dayName} prochain`
+
+  return dayName
+}
+
+const getNextChangeTime = (
+  currentOpenPeriod: Period | undefined,
+  nextOpenPeriod: Period | undefined
+): Date | undefined => {
+  if (currentOpenPeriod) {
+    return currentOpenPeriod.closeAt
+  }
+  if (nextOpenPeriod) {
+    return nextOpenPeriod.openAt
+  }
+  return undefined
 }

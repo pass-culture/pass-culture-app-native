@@ -6,29 +6,38 @@ import { useAppStateChange } from 'libs/appState'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Typo } from 'ui/theme'
 
-import { getOpeningHoursStatus } from './getOpeningHoursStatus'
+import {
+  getOpeningHoursStatus,
+  ONE_HOUR_IN_MILLISECONDS,
+  THIRTY_MINUTES_IN_MILLISECONDS,
+} from './getOpeningHoursStatus'
 
 type Props = {
   openingHours: OpeningHours
   currentDate: Date
 }
 
-const THIRTHY_MINUTES_IN_MILLISECONDS = 30 * 60 * 1000
-
 export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate }) => {
   const [date, setDate] = useState(currentDate)
-  const { state, text, nextChange } = getOpeningHoursStatus({
+  const {
+    openingState: state,
+    openingLabel: text,
+    nextChangeTime: nextChange,
+  } = getOpeningHoursStatus({
     openingHours,
     currentDate: date,
   })
 
   useEffect(() => {
+    if (!nextChange) return
+
     let timeoutId: NodeJS.Timeout
-    if (nextChange) {
-      const timeUntilNextStateChange = nextChange.getTime() - date.getTime()
-      if (timeUntilNextStateChange <= THIRTHY_MINUTES_IN_MILLISECONDS) {
-        timeoutId = setTimeout(() => setDate(new Date()), timeUntilNextStateChange)
-      }
+    let timeUntilNextStateChange = nextChange.getTime() - date.getTime()
+    if (timeUntilNextStateChange > ONE_HOUR_IN_MILLISECONDS) {
+      timeUntilNextStateChange -= ONE_HOUR_IN_MILLISECONDS
+    }
+    if (timeUntilNextStateChange <= THIRTY_MINUTES_IN_MILLISECONDS) {
+      timeoutId = setTimeout(() => setDate(new Date()), timeUntilNextStateChange)
     }
 
     return () => {
