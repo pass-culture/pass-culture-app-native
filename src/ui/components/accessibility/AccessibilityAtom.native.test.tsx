@@ -2,8 +2,9 @@ import React from 'react'
 
 import { render, screen } from 'tests/utils'
 
-import { AccessibilityAtom } from './AccessibilityAtom'
 import { HandicapCategory } from '../../../shared/accessibility/getAccessibilityCategoryAndIcon'
+
+import { AccessibilityAtom } from './AccessibilityAtom'
 
 describe('AccessibilityAtom', () => {
   it('should display the validIcon when isValid is true', () => {

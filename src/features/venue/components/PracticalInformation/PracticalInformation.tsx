@@ -39,6 +39,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
         <AccessibilityBlock
           basicAccessibility={venue.accessibility}
           detailedAccessibilityUrl={venue.externalAccessibilityUrl}
+          detailedAccessibilityData={venue.externalAccessibilityData}
         />
       ),
       isDisplayed:

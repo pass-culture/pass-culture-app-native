@@ -9,10 +9,7 @@ interface Props {
   Separator: ReactElement
 }
 
-export const AccessibleUnorderedList: FC<Props> = ({
-  items,
-  Separator,
-}) => {
+export const AccessibleUnorderedList: FC<Props> = ({ items, Separator }) => {
   const itemListLength = items.length
   return (
     <StyledVerticalUl>

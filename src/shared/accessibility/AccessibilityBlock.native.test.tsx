@@ -15,6 +15,7 @@ describe('AccessibilityBlock', () => {
     render(
       <AccessibilityBlock
         detailedAccessibilityUrl={venueWithDetailedAccessibilityInfo.externalAccessibilityUrl}
+        detailedAccessibilityData={venueWithDetailedAccessibilityInfo.externalAccessibilityData}
       />
     )
 
@@ -25,6 +26,7 @@ describe('AccessibilityBlock', () => {
     render(
       <AccessibilityBlock
         detailedAccessibilityUrl={venueWithDetailedAccessibilityInfo.externalAccessibilityUrl}
+        detailedAccessibilityData={venueWithDetailedAccessibilityInfo.externalAccessibilityData}
       />
     )
 
