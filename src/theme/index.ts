@@ -81,6 +81,11 @@ export const theme = {
   },
   tiles: {
     borderRadius: getSpacing(1),
+    maxCaptionHeight: {
+      venue: getSpacing(18),
+      offer: getSpacing(18),
+      videoModuleOffer: getSpacing(14),
+    },
     sizes: {
       small: {
         width: getSpacing(16),

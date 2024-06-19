@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { determinePlaylistType } from 'features/offer/helpers/determinePlaylistType/determinePlaylistType'
 import { OfferTileProps } from 'features/offer/types'
@@ -9,7 +9,6 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -36,14 +35,17 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     ...offer
   } = props
 
+  const theme = useTheme()
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const prePopulateOffer = usePrePopulateOffer()
+
   const { offerId, name, distance, date, price, isDuo, categoryId, thumbUrl } = offer
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,
     categoryLabel,
   })
-  const MAX_OFFER_CAPTION_HEIGHT = variant == 'new' ? getSpacing(24) : getSpacing(18)
+
+  const MAX_OFFER_CAPTION_HEIGHT = theme.tiles.maxCaptionHeight.offer
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition

@@ -6,10 +6,10 @@ import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
-import { getSpacing } from 'ui/theme'
 
-const PLAYLIST_ITEM_HEIGHT = theme.tiles.sizes['large'].height + getSpacing(14)
-const PLAYLIST_ITEM_WIDTH = theme.tiles.sizes['large'].width
+const PLAYLIST_ITEM_HEIGHT =
+  theme.tiles.sizes.large.height + theme.tiles.maxCaptionHeight.videoModuleOffer
+const PLAYLIST_ITEM_WIDTH = theme.tiles.sizes.large.width
 
 type Props = {
   offers: Offer[]
@@ -49,6 +49,7 @@ export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({
       renderHeader={undefined}
       renderFooter={undefined}
       keyExtractor={keyExtractor}
+      tileType="video-module-offer"
     />
   )
 }
