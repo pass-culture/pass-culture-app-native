@@ -1544,6 +1544,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                 style={
                   [
                     {
+                      "backgroundColor": "#ffffff",
                       "borderRadius": 4,
                       "height": 96,
                       "shadowColor": "#696A6F",
@@ -3472,6 +3473,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                 style={
                   [
                     {
+                      "backgroundColor": "#ffffff",
                       "borderRadius": 4,
                       "height": 96,
                       "shadowColor": "#696A6F",

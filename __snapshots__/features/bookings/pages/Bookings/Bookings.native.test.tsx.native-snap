@@ -301,6 +301,7 @@ exports[`Bookings should render correctly 1`] = `
               style={
                 [
                   {
+                    "backgroundColor": "#ffffff",
                     "borderRadius": 4,
                     "height": 120,
                     "shadowColor": "#696A6F",
@@ -584,6 +585,7 @@ exports[`Bookings should render correctly 1`] = `
               style={
                 [
                   {
+                    "backgroundColor": "#ffffff",
                     "borderRadius": 4,
                     "height": 120,
                     "shadowColor": "#696A6F",
