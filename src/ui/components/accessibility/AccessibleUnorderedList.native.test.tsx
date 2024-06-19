@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { render, screen } from 'tests/utils'
-import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
+import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { Spacer, Typo } from 'ui/theme'
 
 describe('accessibilityList', () => {
@@ -15,7 +15,7 @@ describe('accessibilityList', () => {
     ({ itemList, numberOfSeparator }) => {
       const Separator = <Spacer.Column numberOfSpaces={6} testID="accessibility-list-separator" />
 
-      render(<AccessibilityList items={itemList} Separator={Separator} />)
+      render(<AccessibleUnorderedList items={itemList} Separator={Separator} />)
 
       const separatorList = screen.queryAllByTestId('accessibility-list-separator')
 

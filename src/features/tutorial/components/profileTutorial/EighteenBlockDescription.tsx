@@ -5,7 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
 import { BlockDescriptionItem } from 'features/tutorial/components/profileTutorial/BlockDescriptionItem'
-import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
+import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { BicolorNumeric } from 'ui/svg/icons/bicolor/Numeric'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
@@ -46,7 +46,7 @@ export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCred
         dont 100&nbsp;€ en offres numériques (streaming, presse en ligne, …)
       </StyledCaption>
       <Spacer.Column numberOfSpaces={4} />
-      <AccessibilityList Separator={<Spacer.Column numberOfSpaces={4} />} items={items} />
+      <AccessibleUnorderedList Separator={<Spacer.Column numberOfSpaces={4} />} items={items} />
     </React.Fragment>
   )
 }

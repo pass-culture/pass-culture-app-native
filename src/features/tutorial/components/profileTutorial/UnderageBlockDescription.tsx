@@ -5,7 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { BlockDescriptionItem } from 'features/tutorial/components/profileTutorial/BlockDescriptionItem'
-import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
+import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { Spacer } from 'ui/theme'
@@ -18,7 +18,7 @@ export const UnderageBlockDescription: () => React.ReactElement = () => {
     <React.Fragment>
       <CreditProgressBar progress={0.5} />
       <Spacer.Column numberOfSpaces={4} />
-      <AccessibilityList Separator={<Spacer.Column numberOfSpaces={4} />} items={items} />
+      <AccessibleUnorderedList Separator={<Spacer.Column numberOfSpaces={4} />} items={items} />
     </React.Fragment>
   )
 }

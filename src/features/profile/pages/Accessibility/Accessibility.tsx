@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
+import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
@@ -43,7 +43,7 @@ const sections = [
 export function Accessibility() {
   return (
     <SecondaryPageWithBlurHeader title="Accessibilité">
-      <AccessibilityList items={sections} Separator={<Separator.Horizontal />} />
+      <AccessibleUnorderedList items={sections} Separator={<Separator.Horizontal />} />
     </SecondaryPageWithBlurHeader>
   )
 }
