@@ -29,6 +29,15 @@ jobs:
         run: yarn install
       - name: Build Storybook 🔧
         run: yarn build-storybook --webpack-stats-json --output-dir $BUILD_DIR
+      - name: Generate trimmed preview stats
+        env:
+          PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        run: npx chromatic trim-stats-file $BUILD_DIR/preview-stats.json --project-token $PROJECT_TOKEN
+      - name: Upload trimmed stats to artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: trimmed-preview-stats
+          path: ${{ env.BUILD_DIR }}/preview-stats.trimmed.json
       - name: Publish to Chromatic 🚀
         uses: chromaui/action@v10
         with:
@@ -36,5 +45,7 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           storybookBuildDir: ${{ env.BUILD_DIR }}
           onlyChanged: true
+          traceChanged: true
+          debug: true
       - name: Run axe storybook accessibility tests 🧪
         run: yarn axe-storybook --build-dir $BUILD_DIR
