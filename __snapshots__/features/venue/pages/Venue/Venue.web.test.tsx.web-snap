@@ -27,7 +27,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
         />
         <button
           aria-label="Revenir en arrière"
-          class="sc-aXZVg eMXVms sc-dAbbOL jzxUcu sc-dAbbOL jzxUcu"
+          class="sc-aXZVg eMXVms sc-feUZmu cFGnZI sc-feUZmu cFGnZI"
           data-testid="Revenir en arrière"
           tabindex="0"
           title="Revenir en arrière"
@@ -99,7 +99,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
         />
         <button
           aria-label="Partager"
-          class="sc-aXZVg eMXVms sc-dAbbOL jzxUcu sc-dAbbOL jzxUcu"
+          class="sc-aXZVg eMXVms sc-feUZmu cFGnZI sc-feUZmu cFGnZI"
           data-testid="Partager"
           tabindex="0"
           title="Partager"
@@ -257,7 +257,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
                 />
                 <button
                   aria-label="Copier l’adresse"
-                  class="sc-gEvEer fpRSjI sc-fqkvVR sc-feUZmu hCDAkr hJnieB"
+                  class="sc-gEvEer fpRSjI sc-fqkvVR sc-fUnMCh hCDAkr bpJlue"
                   data-testid="Copier l’adresse"
                   tabindex="0"
                   type="button"
@@ -1841,7 +1841,7 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
                     role="listitem"
                   >
                     <button
-                      class="sc-aXZVg igdJKW sc-imWYAI gKNnMS sc-imWYAI gKNnMS"
+                      class="sc-aXZVg igdJKW sc-jXbUNg bUicIY sc-jXbUNg bUicIY"
                       tabindex="0"
                       type="button"
                     >
@@ -1881,7 +1881,7 @@ WhatsApp
                     role="listitem"
                   >
                     <button
-                      class="sc-aXZVg igdJKW sc-imWYAI gKNnMS sc-imWYAI gKNnMS"
+                      class="sc-aXZVg igdJKW sc-jXbUNg bUicIY sc-jXbUNg bUicIY"
                       tabindex="0"
                       type="button"
                     >
@@ -1921,7 +1921,7 @@ Telegram
                     role="listitem"
                   >
                     <button
-                      class="sc-aXZVg igdJKW sc-imWYAI gKNnMS sc-imWYAI gKNnMS"
+                      class="sc-aXZVg igdJKW sc-jXbUNg bUicIY sc-jXbUNg bUicIY"
                       tabindex="0"
                       type="button"
                     >
@@ -1961,7 +1961,7 @@ X
                     role="listitem"
                   >
                     <button
-                      class="sc-aXZVg igdJKW sc-imWYAI gKNnMS sc-imWYAI gKNnMS"
+                      class="sc-aXZVg igdJKW sc-jXbUNg bUicIY sc-jXbUNg bUicIY"
                       tabindex="0"
                       type="button"
                     >
@@ -2031,7 +2031,7 @@ d’options
         />
         <button
           aria-label="Rechercher une offre"
-          class="sc-gEvEer jdtKkG sc-kAyceB dOhwHj"
+          class="sc-gEvEer jdtKkG sc-imWYAI lgAUYa"
           data-testid="Rechercher une offre"
           tabindex="0"
           type="button"
