@@ -34,13 +34,19 @@ async function addLinkAnalytics(...navigateParams: RootNavigateParams) {
 export async function setUtmParameters(queryParams: QueryParams) {
   const { acceptedTrafficCampaign, acceptedTrafficMedium, acceptedTrafficSource } =
     await getUtmParamsConsent()
-  const { utm_campaign, utm_content, utm_gen, utm_medium, utm_source } = queryParams
+  const {
+    utm_campaign = null,
+    utm_content = null,
+    utm_gen = null,
+    utm_medium = null,
+    utm_source = null,
+  } = queryParams
 
-  const campaign = acceptedTrafficCampaign ? utm_campaign : undefined
-  const content = acceptedTrafficCampaign ? utm_content : undefined
-  const gen = acceptedTrafficCampaign ? utm_gen : undefined
-  const medium = acceptedTrafficMedium ? utm_medium : undefined
-  const source = acceptedTrafficSource ? utm_source : undefined
+  const campaign = acceptedTrafficCampaign ? utm_campaign : null
+  const content = acceptedTrafficCampaign ? utm_content : null
+  const gen = acceptedTrafficCampaign ? utm_gen : null
+  const medium = acceptedTrafficMedium ? utm_medium : null
+  const source = acceptedTrafficSource ? utm_source : null
   // we want to set the marketing parameters right after the user clicked on marketing link
   if (campaign || content || gen || medium || source) {
     await storeUtmParams({ campaign, content, gen, medium, source })
