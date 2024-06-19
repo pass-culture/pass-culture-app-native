@@ -13,6 +13,8 @@ const mockFeatureFlag = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRetu
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 const props = {
+  moduleId: 'fakemoduleid',
+  index: 1,
   data: {
     playlistItems: venuesSearchFixture.hits,
     nbPlaylistResults: venuesSearchFixture.hits.length,
