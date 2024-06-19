@@ -3,6 +3,7 @@ import React, { ComponentProps } from 'react'
 import { AppV2VenuesModule } from 'features/home/components/modules/venues/AppV2VenuesModule.web'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { Layout } from 'libs/contentful/types'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
@@ -18,8 +19,11 @@ const props = {
     layout: 'three-items' as Layout,
     minOffers: 5,
   },
-  homeVenuesListEntryId: '6DCThxvbPFKAo04SVRZtwY',
+  homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
+  index: 1,
 }
+
+const mockFeatureFlag = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<AppV2VenuesModule />', () => {
   it('should return 6 venues maximum on web desktop', () => {
@@ -32,6 +36,15 @@ describe('<AppV2VenuesModule />', () => {
     renderAppV2VenuesModule({ isDesktopViewport: false })
 
     expect(screen.queryByText('Le Petit Rintintin 5')).not.toBeInTheDocument()
+  })
+
+  it('should not render list when feature flag deactivated', () => {
+    mockFeatureFlag.mockReturnValueOnce(false)
+    renderAppV2VenuesModule()
+
+    expect(
+      screen.queryByText('Les lieux culturels à proximité'.toUpperCase())
+    ).not.toBeOnTheScreen()
   })
 })
 
