@@ -26,6 +26,7 @@ describe('<GeolocationBanner />', () => {
         <GeolocationBanner
           title="Géolocalise-toi"
           subtitle="Pour trouver des offres autour de toi."
+          analyticsFrom="thematicHome"
         />
       )
 
@@ -47,6 +48,7 @@ describe('<GeolocationBanner />', () => {
         <GeolocationBanner
           title="Géolocalise-toi"
           subtitle="Pour trouver des offres autour de toi."
+          analyticsFrom="thematicHome"
         />
       )
 
@@ -63,6 +65,7 @@ describe('<GeolocationBanner />', () => {
       <GeolocationBanner
         title="Géolocalise-toi"
         subtitle="Pour trouver des offres autour de toi."
+        analyticsFrom="thematicHome"
       />
     )
     const button = screen.getByText('Géolocalise-toi')
@@ -81,6 +84,7 @@ describe('<GeolocationBanner />', () => {
       <GeolocationBanner
         title="Géolocalise-toi"
         subtitle="Pour trouver des offres autour de toi."
+        analyticsFrom="thematicHome"
       />
     )
     const button = screen.getByText('Géolocalise-toi')
@@ -96,6 +100,7 @@ describe('<GeolocationBanner />', () => {
       <GeolocationBanner
         title="Géolocalise-toi"
         subtitle="Pour trouver des offres autour de toi."
+        analyticsFrom="thematicHome"
         onPress={mockOnPress}
       />
     )
