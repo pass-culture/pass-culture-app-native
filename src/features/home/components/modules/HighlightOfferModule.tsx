@@ -96,6 +96,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
       {hasGraphicRedesign ? (
         <MarketingBlockExclusivity
           offerId={parseInt(highlightOfferId)}
+          moduleId={props.id}
           title={highlightOffer.offer.name || ''}
           categoryId={categoryId}
           backgroundImageUrl={props.image}
