@@ -25,11 +25,9 @@ import { useLocation } from 'libs/location'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Loader } from 'ui/components/Loader'
 import { useModal } from 'ui/components/modals/useModal'
-import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -180,12 +178,6 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     <Loader message={loadingMessage} />
   ) : (
     <Container>
-      <InfoBanner
-        message="Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
-        icon={Error}
-      />
-      <Spacer.Column numberOfSpaces={6} />
-
       <Typo.Title4 {...getHeadingAttrs(2)}>Informations</Typo.Title4>
       <Spacer.Column numberOfSpaces={6} />
       <BookingInformations />
