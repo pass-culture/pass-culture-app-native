@@ -654,8 +654,10 @@ export const logEventAnalytics = {
   ) => analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step, type }),
   logSubscriptionUpdate: (params: SubscriptionAnalyticsParams) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SUBSCRIPTION_UPDATE }, params),
-  logSystemBlockDisplayed: (params: { type: 'credit' | 'location' }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.SYSTEM_BLOCK_DISPLAYED }, params),
+  logSystemBlockDisplayed: (params: {
+    type: 'credit' | 'location'
+    from: 'home' | 'thematicHome' | 'offer' | 'profile' | 'search'
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.SYSTEM_BLOCK_DISPLAYED }, params),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
   logUserSetLocation: (from: 'home' | 'search' | 'venueMap') =>

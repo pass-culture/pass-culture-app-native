@@ -33,7 +33,7 @@ export const SignupBanner: FunctionComponent<Props> = ({ hasGraphicRedesign }) =
       subtitle={subtitle}
       onPress={onSystemBannerPress}
       accessibilityLabel={subtitle}
-      analyticsParams={{ type: 'credit' }}
+      analyticsParams={{ type: 'credit', from: 'home' }}
     />
   ) : (
     <BannerWithBackground

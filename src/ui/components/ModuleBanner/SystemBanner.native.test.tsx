@@ -11,12 +11,12 @@ describe('SystemBanner', () => {
         title="title"
         subtitle="subtitle"
         accessibilityLabel="label"
-        analyticsParams={{ type: 'credit' }}
+        analyticsParams={{ type: 'credit', from: 'home' }}
         onPress={jest.fn()}
         LeftIcon={<React.Fragment />}
       />
     )
 
-    expect(analytics.logSystemBlockDisplayed).toHaveBeenCalledWith({ type: 'credit' })
+    expect(analytics.logSystemBlockDisplayed).toHaveBeenCalledWith({ type: 'credit', from: 'home' })
   })
 })

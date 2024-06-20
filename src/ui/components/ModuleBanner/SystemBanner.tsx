@@ -17,7 +17,10 @@ type Props = {
   subtitle: string
   onPress: VoidFunction
   accessibilityLabel: string
-  analyticsParams: { type: 'credit' | 'location' }
+  analyticsParams: {
+    type: 'credit' | 'location'
+    from: 'home' | 'thematicHome' | 'offer' | 'profile' | 'search'
+  }
 }
 
 export const SystemBanner: FunctionComponent<Props> = ({

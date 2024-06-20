@@ -17,7 +17,12 @@ type Props = {
   onPress?: VoidFunction
 }
 
-export const GeolocationBanner: FunctionComponent<Props> = ({ title, subtitle, onPress }) => {
+export const GeolocationBanner: FunctionComponent<Props> = ({
+  title,
+  subtitle,
+  analyticsFrom,
+  onPress,
+}) => {
   const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useLocation()
   const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
 
@@ -37,7 +42,7 @@ export const GeolocationBanner: FunctionComponent<Props> = ({ title, subtitle, o
       title={title}
       // Possibility to use the onPress externally to avoid opening problems in modals
       onPress={onPress ?? onPressGeolocationBanner}
-      analyticsParams={{ type: 'location' }}
+      analyticsParams={{ type: 'location', from: analyticsFrom }}
     />
   ) : (
     <Touchable
