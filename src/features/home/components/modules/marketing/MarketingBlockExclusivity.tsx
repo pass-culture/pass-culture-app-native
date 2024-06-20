@@ -7,6 +7,7 @@ import { OfferLocation } from 'shared/offer/types'
 
 type AttachedOfferCardProps = {
   title: string
+  moduleId: string
   categoryId: CategoryIdEnum
   offerId: number
   backgroundImageUrl: string

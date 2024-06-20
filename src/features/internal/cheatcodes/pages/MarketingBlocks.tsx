@@ -18,6 +18,7 @@ export const MarketingBlocks = () => {
       </Container>
       <Spacer.Column numberOfSpaces={6} />
       <MarketingBlockExclusivity
+        moduleId="1"
         categoryId={CategoryIdEnum.FILM}
         offerId={1}
         title="Harry Potter et l’Ordre du Phénix"

@@ -8,6 +8,7 @@ import { render, screen, fireEvent } from 'tests/utils'
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
 const props = {
+  moduleId: '1',
   title: 'Harry Potter et l’Ordre du Phénix',
   categoryId: CategoryIdEnum.FILM,
   offerId: 123,
