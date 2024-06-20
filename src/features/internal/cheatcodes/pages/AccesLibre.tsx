@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
 import { useVenue } from 'features/venue/api/useVenue'
-import { getDetailedAccessibilityInfo } from 'ui/components/accessibility/getDetailedAccessibilityInfo'
+import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAccessibilityInfo'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'

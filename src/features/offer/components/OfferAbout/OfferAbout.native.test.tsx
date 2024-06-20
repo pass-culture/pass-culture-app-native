@@ -3,9 +3,11 @@ import React from 'react'
 import { OfferResponseV2 } from 'api/gen'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<OfferAbout />', () => {
   const metadata = [

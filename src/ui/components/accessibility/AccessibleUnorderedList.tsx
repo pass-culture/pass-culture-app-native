@@ -1,18 +1,15 @@
-import React, { FunctionComponent, ReactElement, ReactNode } from 'react'
+import React, { FC, ReactElement, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 
-interface AccessibilityListProps {
+interface Props {
   items: ReactNode[]
   Separator: ReactElement
 }
 
-export const AccessibilityList: FunctionComponent<AccessibilityListProps> = ({
-  items,
-  Separator,
-}) => {
+export const AccessibleUnorderedList: FC<Props> = ({ items, Separator }) => {
   const itemListLength = items.length
   return (
     <StyledVerticalUl>

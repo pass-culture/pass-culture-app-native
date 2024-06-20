@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { OfferAccessibilityResponse } from 'api/gen'
-import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
+import { AccessibilityBlock } from 'shared/accessibility/AccessibilityBlock'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 

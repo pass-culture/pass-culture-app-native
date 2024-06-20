@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
 import { analytics } from 'libs/analytics'
-import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
+import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -79,7 +79,7 @@ const SelectIDStatusContent: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={7} />
       <SeparatorWithText label="ou" />
       <Spacer.Column numberOfSpaces={7} />
-      <AccessibilityList
+      <AccessibleUnorderedList
         items={[FirstOtherOption, SecondOtherOption]}
         Separator={buttonListSeparator}
       />

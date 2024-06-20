@@ -9,7 +9,7 @@ import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { EligibleAges } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
-import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
+import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
@@ -86,7 +86,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
 
   return (
     <TutorialPage title={title} subtitle={subtitle}>
-      <AccessibilityList
+      <AccessibleUnorderedList
         items={AgeSelectionButtons}
         Separator={<Spacer.Column numberOfSpaces={4} />}
       />

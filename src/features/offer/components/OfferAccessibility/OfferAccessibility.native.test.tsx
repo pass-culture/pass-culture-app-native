@@ -2,7 +2,11 @@ import React from 'react'
 
 import { OfferAccessibility } from 'features/offer/components/OfferAccessibility/OfferAccessibility'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen } from 'tests/utils'
+
+jest.mock('libs/firebase/analytics/analytics')
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const accessibility = offerResponseSnap.accessibility
 

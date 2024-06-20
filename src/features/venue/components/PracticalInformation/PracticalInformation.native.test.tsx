@@ -2,10 +2,12 @@ import React from 'react'
 
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('PracticalInformation', () => {
   it('should display withdrawal information', async () => {
@@ -33,7 +35,7 @@ describe('PracticalInformation', () => {
   it('should display accessibility block', async () => {
     render(reactQueryProviderHOC(<PracticalInformation venue={venueResponseSnap} />))
 
-    expect(await screen.findAllByTestId('accessibilityAtomContainer')).not.toHaveLength(0)
+    expect(await screen.findAllByTestId('accessibilityBadgeContainer')).not.toHaveLength(0)
   })
 
   it('should display placeholder when no practical information provided', async () => {

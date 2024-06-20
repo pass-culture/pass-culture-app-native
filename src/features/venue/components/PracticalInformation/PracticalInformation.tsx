@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { VenueResponse } from 'api/gen'
 import { ContactBlock } from 'features/venue/components/ContactBlock/ContactBlock'
 import { NoInformationPlaceholder } from 'features/venue/components/Placeholders/NoInformationPlaceholder'
-import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
+import { AccessibilityBlock } from 'shared/accessibility/AccessibilityBlock'
 import { Separator } from 'ui/components/Separator'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -35,7 +35,13 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
     },
     {
       title: 'Accessibilité',
-      body: <AccessibilityBlock basicAccessibility={venue.accessibility} />,
+      body: (
+        <AccessibilityBlock
+          basicAccessibility={venue.accessibility}
+          detailedAccessibilityUrl={venue.externalAccessibilityUrl}
+          detailedAccessibilityData={venue.externalAccessibilityData}
+        />
+      ),
       isDisplayed:
         !!venue.accessibility &&
         Object.values(venue.accessibility).some((value) => value !== null && value !== undefined),

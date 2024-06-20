@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
+import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
@@ -43,7 +43,7 @@ const SelectPhoneStatusContent: FunctionComponent = () => {
         le site demarches-simplifiees.fr mais le traitement sera plus long.
       </StyledBody>
       <Spacer.Column numberOfSpaces={8} />
-      <AccessibilityList items={buttonList} Separator={buttonListSeparator} />
+      <AccessibleUnorderedList items={buttonList} Separator={buttonListSeparator} />
     </Container>
   )
 }
