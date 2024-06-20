@@ -1,14 +1,16 @@
 appId: ${MAESTRO_APP_ID}
+tags:
+  - cloud
 ---
-- runFlow: reusableFlows/LaunchApp.yml
-- runFlow: reusableFlows/features/cookies/SelectOneCookie.yml
+- runFlow: subFolder/LaunchApp.yml
+- runFlow: subFolder/cookies/SelectOneCookie.yml
 
-- runFlow: reusableFlows/LaunchApp.yml
-- runFlow: reusableFlows/features/cookies/SelectTwoCookies.yml
+- runFlow: subFolder/LaunchApp.yml
+- runFlow: subFolder/cookies/SelectTwoCookies.yml
 
-- runFlow: reusableFlows/LaunchApp.yml
-- runFlow: reusableFlows/features/cookies/SelectThreeCookies.yml
+- runFlow: subFolder/LaunchApp.yml
+- runFlow: subFolder/cookies/SelectThreeCookies.yml
 
-- runFlow: reusableFlows/features/tutorial/onboarding/Onboard16AndLocalization.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard16AndLocalization.yml
 
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: subFolder/StopApp.yml

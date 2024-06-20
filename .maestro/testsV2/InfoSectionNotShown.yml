@@ -1,10 +1,12 @@
 appId: ${MAESTRO_APP_ID}
+tags:
+  - cloud
 ---
-- runFlow: reusableFlows/LaunchApp.yml
-- runFlow: reusableFlows/features/cookies/AcceptCookies.yml
-- runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
+- runFlow: subFolder/LaunchApp.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
 
-- runFlow: reusableFlows/GoToProfileFromTabBar.yml
-- assertNotVisible: "Informations personnelles"
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- assertNotVisible: 'Informations personnelles'
 
-- runFlow: reusableFlows/StopApp.yml 
+- runFlow: subFolder/StopApp.yml

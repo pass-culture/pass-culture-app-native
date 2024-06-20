@@ -1,0 +1,21 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: 'Rechercher'
+- tapOn:
+    text: 'Livres papier'
+    index: 0
+
+- waitForAnimationToEnd
+
+- tapOn: 'Réserver l’offre'
+
+- assertVisible: 'Détails de la réservation'
+- tapOn: 'Confirmer la réservation'
+
+- assertVisible: "Réservation confirmée\_!"
+- tapOn: 'Voir ma réservation'
+
+- scrollUntilVisible:
+    element: 'Annuler ma réservation'
+- tapOn: 'Annuler ma réservation'
+- tapOn: 'Annuler ma réservation'

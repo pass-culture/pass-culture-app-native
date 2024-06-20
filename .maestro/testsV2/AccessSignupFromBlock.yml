@@ -1,10 +1,12 @@
 appId: ${MAESTRO_APP_ID}
+tags:
+  - cloud
 ---
-- runFlow: reusableFlows/LaunchApp.yml
+- runFlow: subFolder/LaunchApp.yml
 
-- runFlow: reusableFlows/features/cookies/AcceptCookies.yml
-- runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
 
-- runFlow: reusableFlows/features/home/OpenActivationModuleFromHome.yml
+- runFlow: subFolder/home/OpenActivationModuleFromHome.yml
 
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: subFolder/StopApp.yml

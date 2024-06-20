@@ -1,0 +1,15 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: 'Rechercher'
+- scrollUntilVisible:
+    element:
+      text: 'Médias & presse'
+- tapOn: 'Médias & presse'
+
+# TODO(e2e): Attendre que "Catégories soit check"
+- tapOn: 'Catégories'
+
+- assertVisible: 'Médias & presse'
+- tapOn: 'Presse en ligne'
+
+- tapOn: 'Rechercher'

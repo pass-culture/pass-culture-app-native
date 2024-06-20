@@ -1,19 +1,21 @@
 appId: ${MAESTRO_APP_ID}
+tags:
+  - cloud
 ---
-- runFlow: reusableFlows/LaunchApp.yml
+- runFlow: subFolder/LaunchApp.yml
 
-- runFlow: reusableFlows/features/cookies/AcceptCookies.yml
-- runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
-- runFlow: reusableFlows/GoToFavoritesFromTabBar.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
+- runFlow: subFolder/GoToFavoritesFromTabBar.yml
 
-- runFlow: reusableFlows/features/auth/LoginWithWrongEmail.yml
-- runFlow: reusableFlows/features/auth/LoginWithWrongPassword.yml
-- runFlow: reusableFlows/features/auth/LoginFromFavorites.yml
+- runFlow: subFolder/auth/LoginWithWrongEmail.yml
+- runFlow: subFolder/auth/LoginWithWrongPassword.yml
+- runFlow: subFolder/auth/LoginFromFavorites.yml
 
-- runFlow: reusableFlows/GoToProfileFromTabBar.yml
-- runFlow: reusableFlows/features/auth/LogoutFromProfile.yml
-- runFlow: reusableFlows/features/auth/LoginGoogleFromProfil.yml
-- runFlow: reusableFlows/GoToProfileFromTabBar.yml
-- runFlow: reusableFlows/features/auth/LogoutFromProfile.yml
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/LogoutFromProfile.yml
+- runFlow: subFolder/auth/LoginGoogleFromProfil.yml
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/LogoutFromProfile.yml
 
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: subFolder/StopApp.yml

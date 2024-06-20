@@ -1,19 +1,21 @@
 appId: ${MAESTRO_APP_ID}
+tags:
+  - cloud
 ---
-- runFlow: reusableFlows/LaunchApp.yml
+- runFlow: subFolder/LaunchApp.yml
 
-- runFlow: reusableFlows/features/cookies/AcceptCookies.yml
-- runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
 
-- runFlow: reusableFlows/GoToProfileFromTabBar.yml
-- runFlow: reusableFlows/features/auth/SignupFromProfile.yml
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/SignupFromProfile.yml
 
-- runFlow: reusableFlows/GoToProfileFromTabBar.yml
-- runFlow: reusableFlows/features/auth/LoginFromProfileAfterSignup.yml
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/LoginFromProfileAfterSignup.yml
 
-# - runFlow: reusableFlows/features/auth/GoToActivationFromProfile.yml
-# - runFlow: reusableFlows/features/auth/ActivationPhoneNumberStep.yml
-# - runFlow: reusableFlows/features/auth/ActivationProfileStep.yml
+# - runFlow: subFolder/features/auth/GoToActivationFromProfile.yml
+# - runFlow: subFolder/features/auth/ActivationPhoneNumberStep.yml
+# - runFlow: subFolder/features/auth/ActivationProfileStep.yml
 # TODO: Trouver un moyen d'utiliser le mock ubble, bypass pattern ou récupérer jdd educonnect pour l'activation
 
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: subFolder/StopApp.yml

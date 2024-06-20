@@ -1,21 +1,23 @@
 appId: ${MAESTRO_APP_ID}
+tags:
+  - cloud
 ---
-- runFlow: reusableFlows/LaunchApp.yml
+- runFlow: subFolder/LaunchApp.yml
 
-- runFlow: reusableFlows/features/cookies/AcceptCookies.yml
-- runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
-- runFlow: reusableFlows/GoToProfileFromTabBar.yml
-- runFlow: reusableFlows/features/auth/LoginFromProfileForBeneficiaryUser.yml
-- runFlow: reusableFlows/GoToProfileFromTabBar.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
+- runFlow: subFolder/GoToProfileFromTabBar.yml
 
-- runFlow: reusableFlows/features/profil/HelpCenter.yml
-- runFlow: reusableFlows/features/profil/AccessibilitySection.yml
-- runFlow: reusableFlows/features/profil/LegalInfoSection.yml
-- runFlow: reusableFlows/features/profil/ConfidentialitySection.yml
-- runFlow: reusableFlows/features/profil/SocialNetwork.yml
+- runFlow: subFolder/profil/HelpCenter.yml
+- runFlow: subFolder/profil/AccessibilitySection.yml
+- runFlow: subFolder/profil/LegalInfoSection.yml
+- runFlow: subFolder/profil/ConfidentialitySection.yml
+- runFlow: subFolder/profil/SocialNetwork.yml
 
-- runFlow: reusableFlows/features/profil/DeletionReactivation.yml
-- runFlow: reusableFlows/GoToProfileFromTabBar.yml
-- runFlow: reusableFlows/features/auth/LoginAndReactivation.yml
-- runFlow: reusableFlows/GoToProfileFromTabBar.yml
-- runFlow: reusableFlows/features/auth/LogoutFromProfile.yml
+- runFlow: subFolder/profil/DeletionReactivation.yml
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/LoginAndReactivation.yml
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/LogoutFromProfile.yml

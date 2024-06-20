@@ -1,32 +1,32 @@
 appId: ${MAESTRO_APP_ID}
+tags:
+  - cloud
 ---
-- runFlow: reusableFlows/LaunchApp.yml
+- runFlow: subFolder/LaunchApp.yml
 
-- runFlow: reusableFlows/features/cookies/AcceptCookies.yml
-- runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
-- runFlow: reusableFlows/GoToProfileFromTabBar.yml
-- runFlow: reusableFlows/features/auth/LoginFromProfileForBeneficiaryUser.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
 
-- runFlow: reusableFlows/GoToSearchFromTabBar.yml
-- runFlow: reusableFlows/features/search/SearchBookableCinemaOffer.yml
-- runFlow: reusableFlows/features/booking/BookCinemaOffer.yml
+- runFlow: subFolder/GoToSearchFromTabBar.yml
+- runFlow: subFolder/search/SearchBookableCinemaOffer.yml
+- runFlow: subFolder/booking/BookCinemaOffer.yml
 
-- runFlow: reusableFlows/GoToSearchFromBooking.yml
-- runFlow: reusableFlows/features/search/SearchBookableDuoOffer.yml
-- runFlow: reusableFlows/features/booking/BookDuoOffer.yml
+- runFlow: subFolder/GoToSearchFromBooking.yml
+- runFlow: subFolder/search/SearchBookableDuoOffer.yml
+- runFlow: subFolder/booking/BookDuoOffer.yml
 
+- runFlow: subFolder/GoToSearchFromBooking.yml
+- runFlow: subFolder/search/SearchBookableMusicalOffer.yml
+- runFlow: subFolder/booking/BookMusicalOffer.yml
 
-- runFlow: reusableFlows/GoToSearchFromBooking.yml
-- runFlow: reusableFlows/features/search/SearchBookableMusicalOffer.yml
-- runFlow: reusableFlows/features/booking/BookMusicalOffer.yml
+- runFlow: subFolder/GoToSearchFromBooking.yml
+- runFlow: subFolder/search/SearchBookablePhysicalOffer.yml
+- runFlow: subFolder/booking/BookPhysicalOffer.yml
 
+- runFlow: subFolder/GoToSearchFromBooking.yml
+- runFlow: subFolder/search/SearchBookableDigitalOffer.yml
+- runFlow: subFolder/booking/BookDigitalOffer.yml
 
-- runFlow: reusableFlows/GoToSearchFromBooking.yml
-- runFlow: reusableFlows/features/search/SearchBookablePhysicalOffer.yml
-- runFlow: reusableFlows/features/booking/BookPhysicalOffer.yml
-
-- runFlow: reusableFlows/GoToSearchFromBooking.yml
-- runFlow: reusableFlows/features/search/SearchBookableDigitalOffer.yml
-- runFlow: reusableFlows/features/booking/BookDigitalOffer.yml
-
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: subFolder/StopApp.yml

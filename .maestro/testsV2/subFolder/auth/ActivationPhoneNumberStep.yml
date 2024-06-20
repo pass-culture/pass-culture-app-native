@@ -1,0 +1,22 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: "C'est très rapide !"
+- tapOn: 'Numéro de téléphone non complété'
+
+- assertVisible: 'Quelques conseils'
+- tapOn: 'J’ai compris'
+
+- assertVisible: 'Quel est ton numéro de téléphone ?'
+- tapOn:
+    id: 'Entrée pour le numéro de téléphone'
+- inputText: '07' # Phone number prefix
+- inputRandomNumber:
+    length: 8
+- tapOn: 'Continuer'
+
+- assertVisible: 'Valide ton numéro de téléphone'
+- tapOn:
+    id: 'Entrée pour le code reçu par sms'
+- inputRandomNumber:
+    length: 6
+- tapOn: 'Continuer'
