@@ -5,7 +5,6 @@ import React from 'react'
 
 import { SubscriptionStatus, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
-import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
@@ -17,8 +16,6 @@ import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 jest.mock('features/auth/context/AuthContext')
 
 const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd') }
-
-const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 const navProps = { route: { params: { age: 15 } } } as StackScreenProps<
   TutorialRootStackParamList,
