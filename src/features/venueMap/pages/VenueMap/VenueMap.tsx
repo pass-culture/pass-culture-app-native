@@ -11,7 +11,10 @@ import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/g
 import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
 import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessionDuration'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal/VenueTypeModal'
-import { useVenueTypeCode } from 'features/venueMap/store/venueTypeCodeStore'
+import {
+  useVenueTypeCode,
+  useVenueTypeCodeActions,
+} from 'features/venueMap/store/venueTypeCodeStore'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ellipseString } from 'shared/string/ellipseString'
@@ -30,6 +33,7 @@ export const VenueMap: FunctionComponent = () => {
   const { goBack } = useGoBack(...getSearchStackConfig('SearchLanding'))
 
   const venueTypeCode = useVenueTypeCode()
+  const { setVenueTypeCode } = useVenueTypeCodeActions()
   const enableVenueMapTypeFilter = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER)
 
   const headerHeight = useGetHeaderHeight()
@@ -49,10 +53,15 @@ export const VenueMap: FunctionComponent = () => {
 
   const venueTypeLabel = getVenueTypeLabel(venueTypeCode) ?? 'Tous les lieux'
 
+  const handleGoBack = () => {
+    setVenueTypeCode(null)
+    goBack()
+  }
+
   return (
     <React.Fragment>
       <Container>
-        <StyledHeader title="Carte des lieux" onGoBack={goBack} />
+        <StyledHeader title="Carte des lieux" onGoBack={handleGoBack} />
         <PlaceHolder headerHeight={headerHeight + withFilterBanner} />
         {enableVenueMapTypeFilter ? (
           <FilterBannerContainer headerHeight={headerHeight}>
