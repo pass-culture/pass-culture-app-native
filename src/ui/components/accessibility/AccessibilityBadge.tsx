@@ -9,12 +9,13 @@ import {
   getAccessibilityCategoryAndIcon,
   HandicapCategory,
 } from '../../../shared/accessibility/getAccessibilityCategoryAndIcon'
+
 interface Props {
   handicap: HandicapCategory
   isAccessible: boolean
 }
 
-export const AccessibilityAtom: React.FC<Props> = ({ handicap, isAccessible }) => {
+export const AccessibilityBadge: React.FC<Props> = ({ handicap, isAccessible }) => {
   const { Icon, wording } = getAccessibilityCategoryAndIcon(handicap)
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     size: theme.icons.sizes.small,
@@ -24,7 +25,7 @@ export const AccessibilityAtom: React.FC<Props> = ({ handicap, isAccessible }) =
   return (
     <Container
       accessibilityRole={AccessibilityRole.IMAGE}
-      testID="accessibilityAtomContainer"
+      testID="accessibilityBadgeContainer"
       accessibilityLabel={`${wording}\u00a0: ${isAccessibleLabel}`}>
       <Frame testID="accessibilityFrame">
         <Spacer.Flex />

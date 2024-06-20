@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { OfferAccessibilityResponse } from 'api/gen'
 import { HandicapCategory } from 'shared/accessibility/getAccessibilityCategoryAndIcon'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
-import { AccessibilityAtom } from 'ui/components/accessibility/AccessibilityAtom'
+import { AccessibilityBadge } from 'ui/components/accessibility/AccessibilityBadge'
 import { Li } from 'ui/components/Li'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
@@ -25,21 +25,21 @@ export function BasicAccessibilityInfo({ accessibility }: Readonly<Props>) {
 
   return (
     <StyledUl testID="BasicAccessibilityInfo">
-      {renderAccessibilityAtom(visualDisability, HandicapCategory.VISUAL)}
-      {renderAccessibilityAtom(mentalDisability, HandicapCategory.MENTAL)}
-      {renderAccessibilityAtom(motorDisability, HandicapCategory.MOTOR)}
-      {renderAccessibilityAtom(audioDisability, HandicapCategory.AUDIO)}
+      {renderAccessibilityBadge(visualDisability, HandicapCategory.VISUAL)}
+      {renderAccessibilityBadge(mentalDisability, HandicapCategory.MENTAL)}
+      {renderAccessibilityBadge(motorDisability, HandicapCategory.MOTOR)}
+      {renderAccessibilityBadge(audioDisability, HandicapCategory.AUDIO)}
     </StyledUl>
   )
 }
 
-const renderAccessibilityAtom = (
+const renderAccessibilityBadge = (
   disability: boolean | undefined | null,
   handicap: HandicapCategory
 ) =>
   disability !== null && disability !== undefined ? (
     <StyledLi>
-      <AccessibilityAtom handicap={handicap} isAccessible={disability} />
+      <AccessibilityBadge handicap={handicap} isAccessible={disability} />
     </StyledLi>
   ) : null
 

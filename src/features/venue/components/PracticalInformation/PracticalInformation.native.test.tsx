@@ -35,7 +35,7 @@ describe('PracticalInformation', () => {
   it('should display accessibility block', async () => {
     render(reactQueryProviderHOC(<PracticalInformation venue={venueResponseSnap} />))
 
-    expect(await screen.findAllByTestId('accessibilityAtomContainer')).not.toHaveLength(0)
+    expect(await screen.findAllByTestId('accessibilityBadgeContainer')).not.toHaveLength(0)
   })
 
   it('should display placeholder when no practical information provided', async () => {
