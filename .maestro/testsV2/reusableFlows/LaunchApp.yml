@@ -1,6 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-- runScript: ../analytics/clear.js
-- launchApp:
-    appId: ${MAESTRO_APP_ID}
-    clearState: true

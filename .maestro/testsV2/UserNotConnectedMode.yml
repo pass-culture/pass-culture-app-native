@@ -1,19 +1,21 @@
 appId: ${MAESTRO_APP_ID}
+tags:
+  - cloud
 ---
-- runFlow: reusableFlows/LaunchApp.yml
+- runFlow: subFolder/LaunchApp.yml
 
-- runFlow: reusableFlows/features/cookies/AcceptCookies.yml
-- runFlow: reusableFlows/features/tutorial/onboarding/Onboard18.yml
-- runFlow: reusableFlows/features/GoToFavouritesFromTabBar.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
+- runFlow: subFolder/GoToFavouritesFromTabBar.yml
 
-- runFlow: reusableFlows/GoToProfileFromTabBar.yml
-- runFlow: reusableFlows/features/profil/CheckSignupAndLogin.yml
-- runFlow: reusableFlows/features/profil/AccountInfoNotAvailable.yml
-- runFlow: reusableFlows/features/profil/CantSetNotification.yml
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/profil/CheckSignupAndLogin.yml
+- runFlow: subFolder/profil/AccountInfoNotAvailable.yml
+- runFlow: subFolder/profil/CantSetNotification.yml
 
-- runFlow: reusableFlows/GoToSearchFromTabBar.yml
-- runFlow: reusableFlows/features/search/SearchBookablePhysicalOffer.yml
-- runFlow: reusableFlows/features/auth/LoginFromPhysicalOffer.yml
-- runFlow: reusableFlows/features/auth/LoginFromModal.yml
+- runFlow: subFolder/GoToSearchFromTabBar.yml
+- runFlow: subFolder/search/SearchBookablePhysicalOffer.yml
+- runFlow: subFolder/auth/LoginFromPhysicalOffer.yml
+- runFlow: subFolder/auth/LoginFromModal.yml
 
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: subFolder/StopApp.yml

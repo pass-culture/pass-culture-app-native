@@ -1,0 +1,5 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertNotVisible:
+    text: 'Informations personnelles'
+    index: 1

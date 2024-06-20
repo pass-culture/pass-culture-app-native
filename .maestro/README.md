@@ -154,9 +154,11 @@ Il faut avoir soit:
 - Pour le web, les tests se font à partir de https://app.testing.passculture.team ou https://app.staging.passculture.team et ne requirent pas de build local.
 
 ```bash
-# Commandes pour lancer tous les tests sur les différents environnements et plateformes
+# Commandes pour lancer tous les tests sur les différents environnements, plateformes et target
 yarn test:e2e:android:staging
+yarn test:e2e:android:staging:cloud
 yarn test:e2e:ios:staging
+yarn test:e2e:ios:staging:cloud
 yarn test:e2e:web:staging
 yarn test:e2e:android:testing
 yarn test:e2e:ios:testing
@@ -164,6 +166,7 @@ yarn test:e2e:web:testing
 
 # Commande pour lancer un test spécifique
 yarn test:e2e:android:staging .maestro/tests/reusableFlows/LaunchApp.yml
+yarn test:e2e:android:staging:cloud --app-file <Path of your ipa/app or apk> .maestro/testsV2/
 ```
 
 ## Lancer un test simple sur le web

@@ -1,0 +1,12 @@
+flows:
+  - '*'
+  - '**'
+  - 'subFolder/*'
+  - 'subFolder/tutorial/onboarding/*'
+  - 'subFolder/auth/*'
+  - 'subFolder/booking/*'
+  - 'subFolder/cookies/*'
+  - 'subFolder/home/*'
+  - 'subFolder/profil/*'
+  - 'subFolder/search/*'
+  - 'subFolder/home/*'

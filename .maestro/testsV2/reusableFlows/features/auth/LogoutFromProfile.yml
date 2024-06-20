@@ -1,8 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-- scrollUntilVisible:
-    element:
-      text: "République Française - Liberté Égalité Fraternité"
-- tapOn: "Déconnexion"
-
-- assertVisible: "Identifie-toi pour bénéficier de ton crédit pass Culture"
