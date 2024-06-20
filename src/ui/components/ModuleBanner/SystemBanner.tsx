@@ -29,13 +29,13 @@ export const SystemBanner: FunctionComponent<Props> = ({
   subtitle,
   onPress,
   accessibilityLabel,
-  analyticsParams,
+  analyticsParams: { type, from },
 }) => {
   const focusProps = useHandleFocus()
 
   useEffect(() => {
-    analytics.logSystemBlockDisplayed(analyticsParams)
-  }, [analyticsParams])
+    analytics.logSystemBlockDisplayed({ type, from })
+  }, [type, from])
 
   return (
     <StyledTouchable onPress={onPress} accessibilityLabel={accessibilityLabel} {...focusProps}>
