@@ -13,6 +13,7 @@ import { Spacer, Typo } from 'ui/theme'
 type Props = {
   title: string
   subtitle: string
+  analyticsFrom: 'thematicHome' | 'search' | 'offer'
   onPress?: VoidFunction
 }
 

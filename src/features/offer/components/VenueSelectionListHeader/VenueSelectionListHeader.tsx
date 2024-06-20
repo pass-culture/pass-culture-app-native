@@ -28,6 +28,7 @@ export const VenueSelectionListHeader: FunctionComponent<Props> = ({
           <GeolocationBanner
             title="Active ta géolocalisation"
             subtitle="Pour trouver les lieux autour de toi"
+            analyticsFrom="offer"
             onPress={onPressGeolocationBanner}
           />
           <Spacer.Column numberOfSpaces={6} />
