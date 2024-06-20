@@ -65,7 +65,6 @@ export const env: Environment = {
   SENTRY_TRACES_SAMPLE_RATE: '1.0',
   SITE_PUBLIC_KEY: 'SITE_PUBLIC_KEY',
   SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
-  TUTORIAL_FEEDBACK_LINK: 'https://passculture.qualtrics.com/jfe/form/SV_8rkHZvOvmtdq4V8',
   FRAUD_EMAIL_ADDRESS: 'service.fraude@test.passculture.app',
   URL_PREFIX: 'passculture',
   WEBAPP_V2_DOMAIN: 'webapp-v2.example.com',
