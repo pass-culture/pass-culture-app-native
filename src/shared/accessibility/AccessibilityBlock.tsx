@@ -9,7 +9,7 @@ import { DetailedAccessibilityInfo } from 'ui/components/accessibility/DetailedA
 type Props = {
   basicAccessibility?: OfferAccessibilityResponse
   detailedAccessibilityUrl?: string | null
-  detailedAccessibilityData?: ExternalAccessibilityDataModel | null | undefined
+  detailedAccessibilityData?: ExternalAccessibilityDataModel | null
 }
 
 export const AccessibilityBlock: FC<Props> = ({
