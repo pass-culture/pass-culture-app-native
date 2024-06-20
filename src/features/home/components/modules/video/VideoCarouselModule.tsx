@@ -74,8 +74,16 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         homeEntryId,
       })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shouldModuleBeDisplayed])
+  }, [shouldModuleBeDisplayed, homeEntryId, id, index])
+
+  useEffect(() => {
+    analytics.logConsultVideo({
+      from: 'video_carousel_block',
+      moduleId: id,
+      homeEntryId,
+      youtubeId: videoSources[currentIndex],
+    })
+  }, [currentIndex, id, videoSources, homeEntryId])
 
   const playNextVideo = () => {
     let nextIndex
@@ -89,12 +97,6 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     setCurrentIndex(nextIndex)
     setIsPlaying(true)
     setHasFinishedPlaying(false)
-    analytics.logConsultVideo({
-      from: 'video_carousel_block',
-      moduleId: id,
-      homeEntryId,
-      youtubeId: videoSources[nextIndex],
-    })
   }
 
   if (!shouldModuleBeDisplayed) return null
@@ -199,7 +201,6 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         setIsPlaying={setIsPlaying}
         hasFinishedPlaying={hasFinishedPlaying}
         setHasFinishedPlaying={setHasFinishedPlaying}
-        homeEntryId={homeEntryId}
         moduleId={id}
       />
       <ColoredAttachedTileContainer color={color}>
