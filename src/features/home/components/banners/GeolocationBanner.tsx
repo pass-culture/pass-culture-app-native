@@ -36,6 +36,7 @@ export const GeolocationBanner: FunctionComponent<Props> = ({ title, subtitle, o
       title={title}
       // Possibility to use the onPress externally to avoid opening problems in modals
       onPress={onPress ?? onPressGeolocationBanner}
+      analyticsType="location"
     />
   ) : (
     <Touchable
