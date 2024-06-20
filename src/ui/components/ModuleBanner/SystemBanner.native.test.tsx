@@ -11,7 +11,7 @@ describe('SystemBanner', () => {
         title="title"
         subtitle="subtitle"
         accessibilityLabel="label"
-        analyticsType="credit"
+        analyticsParams={{ type: 'credit' }}
         onPress={jest.fn()}
         LeftIcon={<React.Fragment />}
       />

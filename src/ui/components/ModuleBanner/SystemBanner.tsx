@@ -17,7 +17,7 @@ type Props = {
   subtitle: string
   onPress: VoidFunction
   accessibilityLabel: string
-  analyticsType: 'credit' | 'location'
+  analyticsParams: { type: 'credit' | 'location' }
 }
 
 export const SystemBanner: FunctionComponent<Props> = ({
@@ -26,13 +26,13 @@ export const SystemBanner: FunctionComponent<Props> = ({
   subtitle,
   onPress,
   accessibilityLabel,
-  analyticsType,
+  analyticsParams,
 }) => {
   const focusProps = useHandleFocus()
 
   useEffect(() => {
-    analytics.logSystemBlockDisplayed({ type: analyticsType })
-  }, [analyticsType])
+    analytics.logSystemBlockDisplayed(analyticsParams)
+  }, [analyticsParams])
 
   return (
     <StyledTouchable onPress={onPress} accessibilityLabel={accessibilityLabel} {...focusProps}>

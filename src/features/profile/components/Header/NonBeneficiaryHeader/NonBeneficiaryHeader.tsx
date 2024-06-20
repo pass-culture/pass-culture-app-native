@@ -103,7 +103,7 @@ function SystemBanner({ homeBanner, Icon, formattedEligibilityEndDatetime }: Ban
         subtitle={homeBanner.text}
         accessibilityLabel={homeBanner.text}
         onPress={onPress}
-        analyticsType="credit"
+        analyticsParams={{ type: 'credit' }}
       />
     </BannerContainer>
   )
