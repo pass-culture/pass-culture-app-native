@@ -42,7 +42,6 @@ interface VideoPlayerProps {
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
   hasFinishedPlaying: boolean
   setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
-  homeEntryId: string
   moduleId: string
 }
 
@@ -54,7 +53,6 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   setIsPlaying,
   hasFinishedPlaying,
   setHasFinishedPlaying,
-  homeEntryId,
   moduleId,
 }) => {
   const {
@@ -75,7 +73,6 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     isPlaying,
     setIsPlaying,
     setHasFinishedPlaying,
-    homeEntryId,
     moduleId,
     currentVideoId: videoSources[currentIndex],
   })
