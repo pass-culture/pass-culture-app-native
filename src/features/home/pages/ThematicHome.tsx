@@ -99,6 +99,7 @@ const ThematicHeaderWithGeolocBanner: FunctionComponent<{
         <GeolocationBanner
           title="Géolocalise-toi"
           subtitle="pour trouver des offres autour de toi"
+          analyticsFrom="thematicHome"
         />
       </GeolocationBannerContainer>
     )}

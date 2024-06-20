@@ -133,6 +133,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
             <GeolocationBanner
               title="Géolocalise-toi"
               subtitle="Pour trouver des offres autour de toi"
+              analyticsFrom="search"
               onPress={onPress}
             />
           </GeolocationButtonContainer>

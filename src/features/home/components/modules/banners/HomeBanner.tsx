@@ -113,7 +113,7 @@ export const HomeBanner = ({ hasGeolocPosition, isLoggedIn, homeId }: HomeBanner
           subtitle={subtitle}
           onPress={() => onPressSystemBanner(StepperOrigin.HOME)}
           accessibilityLabel={subtitle}
-          analyticsType={systemBannerAnalyticsType}
+          analyticsParams={{ type: systemBannerAnalyticsType, from: 'home' }}
         />
       </BannerContainer>
     ),
