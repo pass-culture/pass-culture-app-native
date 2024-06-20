@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
 import { MarketingBlock } from 'features/home/components/modules/marketing/MarketingBlock'
+import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { OfferLocation } from 'shared/offer/types'
 
@@ -19,6 +20,7 @@ type AttachedOfferCardProps = {
 
 const UnmemoizedMarketingBlockExclusivity = ({
   title,
+  moduleId,
   categoryId,
   offerId,
   backgroundImageUrl,
@@ -29,6 +31,10 @@ const UnmemoizedMarketingBlockExclusivity = ({
 }: AttachedOfferCardProps) => {
   const distanceToOffer = useDistance(offerLocation || { lat: 0, lng: 0 })
   const accessibilityLabel = `Découvre l’offre exclusive "${title}" de la catégorie "${categoryText}" au prix de ${price}. L’offre se trouve à ${distanceToOffer}`
+
+  const logConsultOffer = () => {
+    analytics.logConsultOffer({ offerId, from: 'home', moduleName: title, moduleId })
+  }
 
   return (
     <MarketingBlock
@@ -42,6 +48,7 @@ const UnmemoizedMarketingBlockExclusivity = ({
       price={price}
       categoryText={categoryText}
       showImage
+      onBeforeNavigate={logConsultOffer}
     />
   )
 }
