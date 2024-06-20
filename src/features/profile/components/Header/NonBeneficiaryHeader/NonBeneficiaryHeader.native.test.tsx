@@ -7,7 +7,6 @@ import {
   SubscriptionMessage,
   SubscriptionStepperResponseV2,
 } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -19,7 +18,6 @@ jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.Mock
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 
@@ -28,13 +26,6 @@ const mockedSubscriptionMessage = {
   updatedAt: '2021-10-25T13:24Z',
   userMessage: 'Dossier déposé, nous sommes en train de le traiter',
 } as SubscriptionMessage
-
-mockUseAuthContext.mockReturnValue({
-  isLoggedIn: true,
-  isUserLoading: false,
-  setIsLoggedIn: jest.fn(),
-  refetchUser: jest.fn(),
-})
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 

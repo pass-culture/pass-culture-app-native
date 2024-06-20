@@ -2,7 +2,6 @@ import React, { ComponentProps } from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { BookingsResponse, BookOfferResponse, OfferResponseV2 } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { mockSubcategory, mockSubcategoryNotEvent } from 'features/offer/fixtures/mockSubcategory'
@@ -12,6 +11,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -21,7 +21,6 @@ jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 const mockSubcategories = PLACEHOLDER_DATA.subcategories
 const mockSearchGroups = PLACEHOLDER_DATA.searchGroups
@@ -80,12 +79,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<OfferCTAButton />', () => {
   beforeEach(() => {
-    mockUseAuthContext.mockReturnValue({
-      isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+    mockAuthContextWithoutUser({ persist: true })
   })
 
   it('should open booking modal when login after booking attempt', async () => {
@@ -95,16 +89,7 @@ describe('<OfferCTAButton />', () => {
       responseOptions: { data: offerResponseSnap },
     })
 
-    const newLocal = {
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      isUserLoading: false,
-      refetchUser: jest.fn(),
-      user: beneficiaryUser,
-    }
-    // Multiple renders force us to mock auth context as loggedIn user in this test
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseAuthContext.mockReturnValue(newLocal)
+    mockAuthContextWithUser(beneficiaryUser, { persist: true })
     const fromOfferId = 1
     const openModalOnNavigation = true
     useRoute.mockReturnValueOnce({ params: { fromOfferId, openModalOnNavigation } })
@@ -116,14 +101,6 @@ describe('<OfferCTAButton />', () => {
   })
 
   it('should display authentication modal when clicking on "Réserver l’offre"', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-      isUserLoading: false,
-      refetchUser: jest.fn(),
-      user: undefined,
-    })
-
     renderOfferCTAButton(offerNotEventCTAButtonProps)
 
     const bookingOfferButton = await screen.findByText('Réserver l’offre')
@@ -135,13 +112,6 @@ describe('<OfferCTAButton />', () => {
   })
 
   it('should log analytics when display authentication modal', async () => {
-    mockUseAuthContext.mockImplementationOnce(() => ({
-      isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    }))
-
     renderOfferCTAButton(offerNotEventCTAButtonProps)
 
     const bookingOfferButton = await screen.findByText('Réserver l’offre')
@@ -153,16 +123,7 @@ describe('<OfferCTAButton />', () => {
   })
 
   it('should display reservation impossible when user has already booked the offer', async () => {
-    const newLocal = {
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      isUserLoading: false,
-      refetchUser: jest.fn(),
-      user: beneficiaryUser,
-    }
-    // Multiple renders force us to mock auth context as loggedIn user in this test
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseAuthContext.mockReturnValue(newLocal)
+    mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
     const expectedResponse: BookingsResponse = {
       ended_bookings: [
@@ -222,18 +183,7 @@ describe('<OfferCTAButton />', () => {
       })
 
       it("should directly book and redirect to the offer when pressing button to book the offer if offer isn't Event", async () => {
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        const newLocal = {
-          isLoggedIn: true,
-          setIsLoggedIn: jest.fn(),
-          isUserLoading: false,
-          refetchUser: jest.fn(),
-          user: beneficiaryUser,
-        }
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        mockUseAuthContext.mockReturnValue(newLocal)
+        mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
         renderOfferCTAButton({
           ...offerNotEventCTAButtonProps,
@@ -249,18 +199,7 @@ describe('<OfferCTAButton />', () => {
       })
 
       it('should  open when pressing button to book the offer if offer is Event', async () => {
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        const newLocal = {
-          isLoggedIn: true,
-          setIsLoggedIn: jest.fn(),
-          isUserLoading: false,
-          refetchUser: jest.fn(),
-          user: beneficiaryUser,
-        }
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        mockUseAuthContext.mockReturnValue(newLocal)
+        mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
         renderOfferCTAButton({
           ...offerNotEventCTAButtonProps,
@@ -276,18 +215,7 @@ describe('<OfferCTAButton />', () => {
       })
 
       it('should log BookingConfirmation when pressing button to book the offer', async () => {
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        const newLocal = {
-          isLoggedIn: true,
-          setIsLoggedIn: jest.fn(),
-          isUserLoading: false,
-          refetchUser: jest.fn(),
-          user: beneficiaryUser,
-        }
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        mockUseAuthContext.mockReturnValue(newLocal)
+        mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
         renderOfferCTAButton({
           ...offerNotEventCTAButtonProps,
@@ -305,18 +233,7 @@ describe('<OfferCTAButton />', () => {
       })
 
       it('should not display an error message when pressing button to book the offer', async () => {
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        const newLocal = {
-          isLoggedIn: true,
-          setIsLoggedIn: jest.fn(),
-          isUserLoading: false,
-          refetchUser: jest.fn(),
-          user: beneficiaryUser,
-        }
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        mockUseAuthContext.mockReturnValue(newLocal)
+        mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
         renderOfferCTAButton({
           ...offerNotEventCTAButtonProps,
@@ -346,18 +263,7 @@ describe('<OfferCTAButton />', () => {
       })
 
       it('should not direclty redirect to the offer when pressing button to book the offer', async () => {
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        const newLocal = {
-          isLoggedIn: true,
-          setIsLoggedIn: jest.fn(),
-          isUserLoading: false,
-          refetchUser: jest.fn(),
-          user: beneficiaryUser,
-        }
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        mockUseAuthContext.mockReturnValue(newLocal)
+        mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
         renderOfferCTAButton({
           ...offerNotEventCTAButtonProps,
@@ -372,18 +278,7 @@ describe('<OfferCTAButton />', () => {
       })
 
       it('should not log BookingConfirmation when pressing button to book the offer', async () => {
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        const newLocal = {
-          isLoggedIn: true,
-          setIsLoggedIn: jest.fn(),
-          isUserLoading: false,
-          refetchUser: jest.fn(),
-          user: beneficiaryUser,
-        }
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        mockUseAuthContext.mockReturnValue(newLocal)
+        mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
         renderOfferCTAButton({
           ...offerNotEventCTAButtonProps,
@@ -409,19 +304,7 @@ describe('<OfferCTAButton />', () => {
           statusCode: 400,
         },
       })
-
-      // Multiple renders force us to mock auth context as loggedIn user in this test
-      // eslint-disable-next-line local-rules/independent-mocks
-      const newLocal = {
-        isLoggedIn: true,
-        setIsLoggedIn: jest.fn(),
-        isUserLoading: false,
-        refetchUser: jest.fn(),
-        user: beneficiaryUser,
-      }
-      // Multiple renders force us to mock auth context as loggedIn user in this test
-      // eslint-disable-next-line local-rules/independent-mocks
-      mockUseAuthContext.mockReturnValue(newLocal)
+      mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
       renderOfferCTAButton({
         ...offerNotEventCTAButtonProps,
@@ -459,19 +342,10 @@ describe('<OfferCTAButton />', () => {
     it('should directly redirect to the offer when pressing offer access button', async () => {
       mockServer.getApi<BookingsResponse>(`/v1/bookings`, expectedResponse)
       mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
-
-      // Multiple renders force us to mock auth context as loggedIn user in this test
-      // eslint-disable-next-line local-rules/independent-mocks
-      const newLocal = {
-        isLoggedIn: true,
-        setIsLoggedIn: jest.fn(),
-        isUserLoading: false,
-        refetchUser: jest.fn(),
-        user: { ...beneficiaryUser, bookedOffers: { 116656: 123 } },
-      }
-      // Multiple renders force us to mock auth context as loggedIn user in this test
-      // eslint-disable-next-line local-rules/independent-mocks
-      mockUseAuthContext.mockReturnValue(newLocal)
+      mockAuthContextWithUser(
+        { ...beneficiaryUser, bookedOffers: { 116656: 123 } },
+        { persist: true }
+      )
 
       renderOfferCTAButton({
         ...offerNotEventCTAButtonProps,
@@ -489,19 +363,10 @@ describe('<OfferCTAButton />', () => {
       it('should not open bookings details modal when pressing offer access button', async () => {
         mockServer.getApi<BookingsResponse>(`/v1/bookings`, expectedResponse)
         mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
-
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        const newLocal = {
-          isLoggedIn: true,
-          setIsLoggedIn: jest.fn(),
-          isUserLoading: false,
-          refetchUser: jest.fn(),
-          user: { ...beneficiaryUser, bookedOffers: { 116656: 123 } },
-        }
-        // Multiple renders force us to mock auth context as loggedIn user in this test
-        // eslint-disable-next-line local-rules/independent-mocks
-        mockUseAuthContext.mockReturnValue(newLocal)
+        mockAuthContextWithUser(
+          { ...beneficiaryUser, bookedOffers: { 116656: 123 } },
+          { persist: true }
+        )
 
         renderOfferCTAButton({
           ...offerEventCTAButtonProps,

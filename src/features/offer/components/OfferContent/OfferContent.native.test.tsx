@@ -8,7 +8,6 @@ import {
   RecommendationApiParams,
   SubcategoriesResponseModelv2,
 } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { PlaylistType } from 'features/offer/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
@@ -24,6 +23,7 @@ import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -52,7 +52,6 @@ jest.mock('libs/location/LocationWrapper', () => ({
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 const apiRecoParams: RecommendationApiParams = {
   call_id: '1',
@@ -126,12 +125,8 @@ describe('<OfferContent />', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
-    mockUseAuthContext.mockReturnValue({
-      isLoggedIn: false,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+    mockAuthContextWithoutUser({ persist: true })
+
     jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
   })
 
@@ -407,13 +402,6 @@ describe('<OfferContent />', () => {
     })
 
     it('should log analytics when display authentication modal', async () => {
-      mockUseAuthContext.mockImplementationOnce(() => ({
-        isLoggedIn: false,
-        setIsLoggedIn: jest.fn(),
-        refetchUser: jest.fn(),
-        isUserLoading: false,
-      }))
-
       renderOfferContent({})
 
       fireEvent.press(await screen.findByText('Réserver l’offre'))

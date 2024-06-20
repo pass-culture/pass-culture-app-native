@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { storage } from 'libs/storage'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -13,16 +13,7 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SubscribeButtonWithModals } from './SubscribeButtonWithModals'
 
 jest.mock('libs/jwt')
-const baseAuthContext = {
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  user: beneficiaryUser,
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-}
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-mockUseAuthContext.mockReturnValue(baseAuthContext)
 
 const mockShowSuccessSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -41,11 +32,7 @@ describe('SubscribeButtonWithModals', () => {
   })
 
   it('should open logged out modal when user is not logged in', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      ...baseAuthContext,
-      isLoggedIn: false,
-      user: undefined,
-    })
+    mockAuthContextWithoutUser()
 
     render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
 
@@ -61,16 +48,12 @@ describe('SubscribeButtonWithModals', () => {
   })
 
   it('should show active SubscribeButton when user is logged in and already subscribed', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      ...baseAuthContext,
-      isLoggedIn: true,
-      user: {
-        ...beneficiaryUser,
-        subscriptions: {
-          marketingEmail: true,
-          marketingPush: true,
-          subscribedThemes: [SubscriptionTheme.CINEMA],
-        },
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+      subscriptions: {
+        marketingEmail: true,
+        marketingPush: true,
+        subscribedThemes: [SubscriptionTheme.CINEMA],
       },
     })
 
@@ -80,16 +63,12 @@ describe('SubscribeButtonWithModals', () => {
   })
 
   it('should show notifications settings modal when user has no notifications activated and click on subscribe button', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      ...baseAuthContext,
-      isLoggedIn: true,
-      user: {
-        ...beneficiaryUser,
-        subscriptions: {
-          marketingEmail: false,
-          marketingPush: false,
-          subscribedThemes: [],
-        },
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+      subscriptions: {
+        marketingEmail: false,
+        marketingPush: false,
+        subscribedThemes: [],
       },
     })
 
@@ -101,16 +80,12 @@ describe('SubscribeButtonWithModals', () => {
   })
 
   it('should show unsubscribe modal when user is already subscribed and click on subscribe button', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      ...baseAuthContext,
-      isLoggedIn: true,
-      user: {
-        ...beneficiaryUser,
-        subscriptions: {
-          marketingEmail: true,
-          marketingPush: true,
-          subscribedThemes: [SubscriptionTheme.CINEMA],
-        },
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+      subscriptions: {
+        marketingEmail: true,
+        marketingPush: true,
+        subscribedThemes: [SubscriptionTheme.CINEMA],
       },
     })
 
@@ -150,11 +125,7 @@ describe('SubscribeButtonWithModals', () => {
   })
 
   it('should not show anything when user is not eligible', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      ...baseAuthContext,
-      isLoggedIn: true,
-      user: nonBeneficiaryUser,
-    })
+    mockAuthContextWithUser(nonBeneficiaryUser)
 
     render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
 

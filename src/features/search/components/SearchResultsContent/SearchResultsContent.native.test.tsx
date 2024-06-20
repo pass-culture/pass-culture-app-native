@@ -6,7 +6,6 @@ import {
   defaultDisabilitiesProperties,
   useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
@@ -21,6 +20,7 @@ import { SuggestedPlace } from 'libs/place/types'
 import { PLACEHOLDER_DATA as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { theme } from 'theme'
 
@@ -57,15 +57,7 @@ const mockDisabilitesPropertiesTruthy = {
 
 jest.mock('features/auth/context/AuthContext')
 const mockUser = { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 7000 } } }
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-
-mockUseAuthContext.mockReturnValue({
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  user: mockUser,
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-})
+mockAuthContextWithUser(mockUser)
 
 const mockData = {
   pages: [
@@ -280,13 +272,7 @@ describe('SearchResultsContent component', () => {
   describe('Offer Duo filter', () => {
     describe('When user is logged in and is benificiary with credit', () => {
       beforeEach(() => {
-        mockUseAuthContext.mockReturnValueOnce({
-          isLoggedIn: true,
-          setIsLoggedIn: jest.fn(),
-          user: beneficiaryUser,
-          refetchUser: jest.fn(),
-          isUserLoading: false,
-        })
+        mockAuthContextWithUser(beneficiaryUser)
       })
 
       it('should display Duo filter button', async () => {
@@ -316,12 +302,9 @@ describe('SearchResultsContent component', () => {
 
     describe('when user is logged in and beneficiary with no credit', () => {
       beforeEach(() => {
-        mockUseAuthContext.mockReturnValueOnce({
-          isLoggedIn: false,
-          setIsLoggedIn: jest.fn(),
-          user: { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 0 } } },
-          refetchUser: jest.fn(),
-          isUserLoading: false,
+        mockAuthContextWithUser({
+          ...beneficiaryUser,
+          domainsCredit: { all: { initial: 8000, remaining: 0 } },
         })
       })
 
@@ -335,13 +318,7 @@ describe('SearchResultsContent component', () => {
 
     describe('when user is not logged in', () => {
       beforeEach(() => {
-        mockUseAuthContext.mockReturnValueOnce({
-          isLoggedIn: false,
-          setIsLoggedIn: jest.fn(),
-          user: undefined,
-          refetchUser: jest.fn(),
-          isUserLoading: false,
-        })
+        mockAuthContextWithoutUser()
       })
 
       it('should not display Duo offer button', async () => {
@@ -354,13 +331,7 @@ describe('SearchResultsContent component', () => {
 
     describe('when user is not a beneficiary', () => {
       beforeEach(() => {
-        mockUseAuthContext.mockReturnValueOnce({
-          isLoggedIn: false,
-          setIsLoggedIn: jest.fn(),
-          user: nonBeneficiaryUser,
-          refetchUser: jest.fn(),
-          isUserLoading: false,
-        })
+        mockAuthContextWithUser(nonBeneficiaryUser)
       })
 
       it('should not display Duo offer button', async () => {

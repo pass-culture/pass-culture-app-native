@@ -3,17 +3,15 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DepositType } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { FinishSubscriptionModal } from './FinishSubscriptionModal'
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.Mock
-mockUseAuthContext.mockReturnValue({ user: beneficiaryUser })
 
 jest.mock('shared/user/useGetDepositAmountsByAge')
 const mockDepositAmounts = useGetDepositAmountsByAge as jest.Mock
@@ -47,7 +45,7 @@ describe('<FinishSubscriptionModal />', () => {
   })
 
   it('should display correct body when user needs to verify his identity to activate his eighteen year old credit', async () => {
-    mockUseAuthContext.mockReturnValueOnce({ user: { ...beneficiaryUser, requiresIdCheck: true } })
+    mockAuthContextWithUser({ ...beneficiaryUser, requiresIdCheck: true })
 
     render(<FinishSubscriptionModal {...modalProps} />)
 
@@ -55,9 +53,7 @@ describe('<FinishSubscriptionModal />', () => {
   })
 
   it('should display correct body when user turned eighteen and their previous deposit has been reset', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      user: { ...beneficiaryUser, depositType: DepositType.GRANT_15_17 },
-    })
+    mockAuthContextWithUser({ ...beneficiaryUser, depositType: DepositType.GRANT_15_17 })
 
     render(<FinishSubscriptionModal {...modalProps} />)
 

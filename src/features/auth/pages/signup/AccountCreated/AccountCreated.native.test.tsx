@@ -1,14 +1,15 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { BatchUser } from 'libs/react-native-batch'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, fireEvent, waitFor, screen } from 'tests/utils'
 
 import { AccountCreated } from './AccountCreated'
@@ -17,7 +18,6 @@ jest.mock('features/profile/api/useResetRecreditAmountToShow')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.Mock
 
 const mockShowAppModal = jest.fn()
 jest
@@ -46,13 +46,8 @@ describe('<AccountCreated />', () => {
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked and user needs not to fill cultural survey', async () => {
-    const { user: globalMockUser } = mockUseAuthContext()
-    mockUseAuthContext.mockReturnValueOnce({
-      user: { ...globalMockUser, needsToFillCulturalSurvey: false },
-    })
-    mockUseAuthContext.mockReturnValueOnce({
-      user: { ...globalMockUser, needsToFillCulturalSurvey: false },
-    }) // re-render because local storage value has been read and set
+    mockAuthContextWithUser({ ...beneficiaryUser, needsToFillCulturalSurvey: false })
+    mockAuthContextWithUser({ ...beneficiaryUser, needsToFillCulturalSurvey: false }) // re-render because local storage value has been read and set
     renderAccountCreated()
 
     fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))

@@ -1,21 +1,15 @@
 import React from 'react'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ChangeEmailDisclaimerDeprecated } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimerDeprecated'
 import { nonBeneficiaryUser } from 'fixtures/user'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { render, screen } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 describe('<ChangeEmailDisclaimer />', () => {
   it('should display the disclaimer without the current user email when no email found', () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+    mockAuthContextWithoutUser()
     render(<ChangeEmailDisclaimerDeprecated />)
 
     expect(
@@ -26,13 +20,7 @@ describe('<ChangeEmailDisclaimer />', () => {
   })
 
   it('should display the disclaimer with the current user email when email found', () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      user: nonBeneficiaryUser,
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+    mockAuthContextWithUser(nonBeneficiaryUser)
     render(<ChangeEmailDisclaimerDeprecated />)
 
     expect(

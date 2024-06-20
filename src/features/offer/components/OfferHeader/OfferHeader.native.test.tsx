@@ -2,7 +2,6 @@ import React from 'react'
 import { Animated, Share } from 'react-native'
 
 import { OfferResponseV2, PaginatedFavoritesResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -24,13 +23,6 @@ const mockShare = jest.spyOn(Share, 'share').mockImplementation(jest.fn())
 
 jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-mockUseAuthContext.mockReturnValue({
-  isLoggedIn: true,
-  setIsLoggedIn: jest.fn(),
-  refetchUser: jest.fn(),
-  isUserLoading: false,
-})
 
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: jest.fn(() => ({})),

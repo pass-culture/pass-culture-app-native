@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BicolorFavoriteCountV2 } from 'features/favorites/components/BicolorFavoriteCountV2'
+import { beneficiaryUser } from 'fixtures/user'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor } from 'tests/utils'
@@ -11,7 +12,6 @@ import { BicolorFavoriteCount } from './BicolorFavoriteCount'
 
 jest.mock('libs/jwt')
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
@@ -24,7 +24,8 @@ describe.each`
   const componentTestId = `bicolor-favorite-count${v2 ? '-v2' : ''}`
 
   it('should render non connected icon', async () => {
-    renderBicolorFavoriteCount({ v2, isLoggedIn: false })
+    mockAuthContextWithoutUser()
+    renderBicolorFavoriteCount({ v2 })
 
     await waitFor(() => {
       expect(screen.queryByTestId(componentTestId)).not.toBeOnTheScreen()
@@ -32,7 +33,8 @@ describe.each`
   })
 
   it('should render connected icon', async () => {
-    renderBicolorFavoriteCount({ v2, isLoggedIn: true })
+    mockAuthContextWithUser(beneficiaryUser)
+    renderBicolorFavoriteCount({ v2 })
 
     await waitFor(() => {
       expect(screen.getByTestId(componentTestId)).toBeOnTheScreen()
@@ -40,7 +42,8 @@ describe.each`
   })
 
   it('should show 99+ badge when nbFavorites is greater than or equal to 100', async () => {
-    renderBicolorFavoriteCount({ v2, isLoggedIn: true, count: 10000 })
+    mockAuthContextWithUser(beneficiaryUser)
+    renderBicolorFavoriteCount({ v2, count: 10000 })
 
     await waitFor(() => {
       expect(screen.getByText('99+')).toBeOnTheScreen()
@@ -48,7 +51,8 @@ describe.each`
   })
 
   it('should show nbFavorites within badge', async () => {
-    renderBicolorFavoriteCount({ v2, isLoggedIn: true })
+    mockAuthContextWithUser(beneficiaryUser)
+    renderBicolorFavoriteCount({ v2 })
 
     await waitFor(() => {
       expect(screen.getByText(defaultOptions.count.toString())).toBeOnTheScreen()
@@ -56,7 +60,8 @@ describe.each`
   })
 
   it('should show 0 within badge when no favorite', async () => {
-    renderBicolorFavoriteCount({ v2, isLoggedIn: true, count: 0 })
+    mockAuthContextWithUser(beneficiaryUser)
+    renderBicolorFavoriteCount({ v2, count: 0 })
     await waitFor(() => {
       expect(screen.getByText('0')).toBeOnTheScreen()
     })
@@ -65,7 +70,8 @@ describe.each`
   it('should not show nbFavorites within badge when offline', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    renderBicolorFavoriteCount({ v2, isLoggedIn: true, count: 10 })
+    mockAuthContextWithUser(beneficiaryUser)
+    renderBicolorFavoriteCount({ v2, count: 10 })
     await act(async () => {})
 
     expect(screen.queryByTestId('bicolor-favorite-count')).not.toBeOnTheScreen()
@@ -74,26 +80,17 @@ describe.each`
 
 interface Options {
   v2: boolean
-  isLoggedIn: boolean
   count?: number
 }
 
 const defaultOptions = {
-  isLoggedIn: false,
   count: 4,
   v2: false,
 }
 
 function renderBicolorFavoriteCount(options: Options = defaultOptions) {
-  const { isLoggedIn, count, v2 } = { ...defaultOptions, ...options }
+  const { count, v2 } = { ...defaultOptions, ...options }
   mockServer.getApi<{ count: number }>(`/v1/me/favorites/count`, { count })
-
-  mockUseAuthContext.mockReturnValue({
-    isLoggedIn,
-    setIsLoggedIn: jest.fn(),
-    refetchUser: jest.fn(),
-    isUserLoading: false,
-  })
 
   const Component = v2 ? BicolorFavoriteCountV2 : BicolorFavoriteCount
   return render(reactQueryProviderHOC(<Component />))

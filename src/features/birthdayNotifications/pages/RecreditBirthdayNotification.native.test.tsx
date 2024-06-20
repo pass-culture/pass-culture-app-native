@@ -1,8 +1,8 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { IAuthContext, useAuthContext } from 'features/auth/context/AuthContext'
 import { underageBeneficiaryUser } from 'fixtures/user'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -17,19 +17,17 @@ jest.mock('features/profile/api/useUpdateProfileMutation', () => ({
 
 const birthdate = new Date('2006-10-11')
 
-const UserMock = {
+mockAuthContextWithUser({
   ...underageBeneficiaryUser,
   birthDate: birthdate.toISOString(),
   recreditAmountToShow: 5000,
   domainsCredit: {
     all: {
+      initial: 5000,
       remaining: 5000,
     },
   },
-}
-
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-mockUseAuthContext.mockReturnValue({ isLoggedIn: true, user: UserMock } as IAuthContext)
+})
 
 describe('<RecreditBirthdayNotification />', () => {
   beforeAll(() => {

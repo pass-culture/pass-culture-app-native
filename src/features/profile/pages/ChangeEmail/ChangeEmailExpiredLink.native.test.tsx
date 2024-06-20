@@ -1,37 +1,24 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
+import { nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
-const mockUserLoggedOutOnce = () => {
-  mockUseAuthContext.mockReturnValueOnce({
-    isLoggedIn: false,
-    setIsLoggedIn: jest.fn(),
-    refetchUser: jest.fn(),
-    isUserLoading: false,
-  })
-}
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<ChangeEmailExpiredLink />', () => {
   beforeEach(() => {
-    mockUseAuthContext.mockReturnValue({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+    mockAuthContextWithUser(nonBeneficiaryUser, { persist: true })
   })
 
   it('should render correctly', () => {
@@ -41,7 +28,7 @@ describe('<ChangeEmailExpiredLink />', () => {
   })
 
   it('should render correctly when logged out', () => {
-    mockUserLoggedOutOnce()
+    mockAuthContextWithoutUser()
     render(<ChangeEmailExpiredLink />)
 
     expect(screen).toMatchSnapshot()
@@ -81,7 +68,7 @@ describe('<ChangeEmailExpiredLink />', () => {
   })
 
   it('should navigate when clicking on resend email button when logged out', () => {
-    mockUserLoggedOutOnce()
+    mockAuthContextWithoutUser()
 
     render(<ChangeEmailExpiredLink />)
 

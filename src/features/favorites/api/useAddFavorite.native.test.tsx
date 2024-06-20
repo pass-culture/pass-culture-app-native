@@ -2,7 +2,6 @@ import * as React from 'react'
 import { View } from 'react-native'
 
 import { FavoriteResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
@@ -19,14 +18,11 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { useAddFavorite } from './useAddFavorite'
 
 jest.mock('features/auth/context/AuthContext')
-const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 jest.mock('libs/jwt')
 
 const offerId = 116656
 
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: jest.fn(() => ({})),
-}))
+jest.mock('ui/components/snackBar/SnackBarContext')
 
 const mockedUseSnackBarContext = useSnackBarContext as jest.MockedFunction<
   typeof useSnackBarContext
@@ -46,12 +42,7 @@ describe('useAddFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
+
     const onSuccess = jest.fn()
     const result = renderUseAddFavorite(onSuccess)
 
@@ -76,12 +67,6 @@ describe('useAddFavorite hook', () => {
       hasAddFavoriteError: true,
       hasRemoveFavoriteError: false,
     })
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: true,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-      isUserLoading: false,
-    })
     const result = renderUseAddFavorite()
 
     expect(result.current.isLoading).toBeFalsy()
@@ -103,12 +88,6 @@ it('should show snack bar when too many favorites when trying to add favorite', 
     hasAddFavoriteError: false,
     hasTooManyFavorites: true,
     hasRemoveFavoriteError: false,
-  })
-  mockUseAuthContext.mockReturnValueOnce({
-    isLoggedIn: true,
-    setIsLoggedIn: jest.fn(),
-    refetchUser: jest.fn(),
-    isUserLoading: false,
   })
   const result = renderUseAddFavorite()
 
