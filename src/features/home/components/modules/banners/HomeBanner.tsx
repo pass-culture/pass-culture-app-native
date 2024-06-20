@@ -66,6 +66,8 @@ export const HomeBanner = ({ hasGeolocPosition, isLoggedIn, homeId }: HomeBanner
 
   const homeBanner = data?.banner
   const shouldRenderSystemBanner = homeBanner ? bannersToRender.includes(homeBanner.name) : false
+  const systemBannerAnalyticsType =
+    homeBanner?.name === BannerName.geolocation_banner ? 'location' : 'credit'
 
   const onPressSystemBanner = useCallback(
     (from: StepperOrigin) => {
@@ -111,10 +113,11 @@ export const HomeBanner = ({ hasGeolocPosition, isLoggedIn, homeId }: HomeBanner
           subtitle={subtitle}
           onPress={() => onPressSystemBanner(StepperOrigin.HOME)}
           accessibilityLabel={subtitle}
+          analyticsType={systemBannerAnalyticsType}
         />
       </BannerContainer>
     ),
-    [onPressSystemBanner]
+    [systemBannerAnalyticsType, onPressSystemBanner]
   )
 
   const SystemBanner = useMemo(() => {
