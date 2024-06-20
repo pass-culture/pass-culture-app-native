@@ -17,7 +17,6 @@ type Props = {
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
   setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
   moduleId: string
-  homeEntryId: string
   currentVideoId?: string
 }
 
@@ -26,7 +25,6 @@ export const useVerticalVideoPlayer = ({
   setIsPlaying,
   setHasFinishedPlaying,
   moduleId,
-  homeEntryId,
   currentVideoId,
 }: Props) => {
   const [isMuted, setIsMuted] = useState(true)
@@ -107,14 +105,6 @@ export const useVerticalVideoPlayer = ({
   }
 
   const togglePlay = () => {
-    if (videoState === PlayerState.UNSTARTED && !isPlaying) {
-      analytics.logConsultVideo({
-        from: 'video_carousel_block',
-        moduleId,
-        homeEntryId,
-        youtubeId: currentVideoId,
-      })
-    }
     if (isPlaying) {
       pauseVideo()
       logPausedVideo()
@@ -124,14 +114,6 @@ export const useVerticalVideoPlayer = ({
   }
 
   const playVideo = () => {
-    if (videoState === PlayerState.UNSTARTED) {
-      analytics.logConsultVideo({
-        from: 'video_carousel_block',
-        moduleId,
-        homeEntryId,
-        youtubeId: currentVideoId,
-      })
-    }
     setIsPlaying(true)
     setHasFinishedPlaying(false)
   }

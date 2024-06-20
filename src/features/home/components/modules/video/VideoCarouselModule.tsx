@@ -52,7 +52,6 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     isFeatureFlagActive: enableVideoCarousel,
     homeId: props.homeEntryId,
   })
-  const shouldModuleBeDisplayed = Platform.OS !== 'web'
 
   const { homeEntryId, items, color, id, autoplay, index } = props
   const itemsWithRelatedData = useVideoCarouselData(items, id)
@@ -60,19 +59,31 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const hasItems = itemsWithRelatedData.length > 0
   const videoSources = videoSourceExtractor(itemsWithRelatedData)
 
+  const shouldModuleBeDisplayed = Platform.OS !== 'web' && hasItems && hasGraphicRedesign
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(autoplay ? true : false)
   const [hasFinishedPlaying, setHasFinishedPlaying] = useState(false)
 
   useEffect(() => {
-    analytics.logModuleDisplayedOnHomepage({
+    if (shouldModuleBeDisplayed) {
+      analytics.logModuleDisplayedOnHomepage({
+        moduleId: id,
+        moduleType: ContentTypes.VIDEO_CAROUSEL,
+        index,
+        homeEntryId,
+      })
+    }
+  }, [shouldModuleBeDisplayed, homeEntryId, id, index])
+
+  useEffect(() => {
+    analytics.logConsultVideo({
+      from: 'video_carousel_block',
       moduleId: id,
-      moduleType: ContentTypes.VIDEO_CAROUSEL,
-      index,
       homeEntryId,
+      youtubeId: videoSources[currentIndex],
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [currentIndex, id, videoSources, homeEntryId])
 
   const playNextVideo = () => {
     let nextIndex
@@ -86,15 +97,9 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     setCurrentIndex(nextIndex)
     setIsPlaying(true)
     setHasFinishedPlaying(false)
-    analytics.logConsultVideo({
-      from: 'video_carousel_block',
-      moduleId: id,
-      homeEntryId,
-      youtubeId: videoSources[nextIndex],
-    })
   }
 
-  if (!shouldModuleBeDisplayed || !hasItems || !hasGraphicRedesign) return null
+  if (!shouldModuleBeDisplayed) return null
 
   const renderItem = ({ item, index }: { item: EnrichedVideoCarouselItem; index: number }) => {
     if (item.redirectionMode === RedirectionMode.OFFER && item.offer) {
@@ -196,7 +201,6 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         setIsPlaying={setIsPlaying}
         hasFinishedPlaying={hasFinishedPlaying}
         setHasFinishedPlaying={setHasFinishedPlaying}
-        homeEntryId={homeEntryId}
         moduleId={id}
       />
       <ColoredAttachedTileContainer color={color}>
