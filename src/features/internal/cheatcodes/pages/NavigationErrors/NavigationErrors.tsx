@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useState, createElement } from 'react'
+import React, { createElement, FunctionComponent, useState } from 'react'
 import { ScrollView } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
@@ -9,6 +9,7 @@ import { CheatcodesHeader } from 'features/internal/cheatcodes/components/Cheatc
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { AsyncError, ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -21,6 +22,7 @@ export const NavigationErrors: FunctionComponent = () => {
   const [renderedError, setRenderedError] = useState(undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
+  const { shouldLogInfo } = useRemoteConfigContext()
 
   const { refetch: errorAsyncQuery, isFetching } = useQuery(
     [QueryKeys.ERROR_ASYNC],
@@ -71,7 +73,7 @@ export const NavigationErrors: FunctionComponent = () => {
               setScreenError(
                 new ScreenError(
                   'Échec de la requête https://cdn.contentful.com/spaces/2bg01iqy0isv/environments/testing/entries?include=2&content_type=homepageNatif&access_token=<TOKEN>, code: 400',
-                  { Screen: NoContentError }
+                  { Screen: NoContentError, shouldBeCapturedAsInfo: shouldLogInfo }
                 )
               )
             }
@@ -92,6 +94,7 @@ export const NavigationErrors: FunctionComponent = () => {
                   Screen: () => (
                     <Maintenance message="Some maintenance message that is set in Firestore" />
                   ),
+                  shouldBeCapturedAsInfo: shouldLogInfo,
                 })
               )
             }

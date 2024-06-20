@@ -6,6 +6,8 @@ import { render, screen } from 'tests/utils/web'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 describe('VenueMapModule', () => {
   it('should not display venue map block on web', () => {
     render(<VenueMapModule />)

@@ -6,6 +6,7 @@ import { getNativeCategoryFromEnum } from 'features/search/helpers/categoriesHel
 import { getHistoryItemLabel } from 'features/search/helpers/getHistoryItemLabel/getHistoryItemLabel'
 import { getHistoryLessThan30Days } from 'features/search/helpers/useSearchHistory/helpers/getHistoryLessThan30Days'
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { eventMonitoring } from 'libs/monitoring'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -17,6 +18,7 @@ export function useSearchHistory() {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [queryHistory, setQueryHistory] = useState<string>('')
+  const { shouldLogInfo } = useRemoteConfigContext()
 
   const setHistoryItems = useCallback(async (newItems: HistoryItem[]) => {
     return AsyncStorage.setItem(HISTORY_KEY, JSON.stringify(newItems))
@@ -105,9 +107,15 @@ export function useSearchHistory() {
         await setHistoryItems(newItems)
         setHistory(newItems)
       } catch (error) {
-        eventMonitoring.captureException('Impossible d’ajouter l’entrée à l’historique', {
-          level: 'info',
-        })
+        if (shouldLogInfo)
+          eventMonitoring.captureException('Impossible d’ajouter l’entrée à l’historique', {
+            level: 'info',
+            extra: {
+              query: item.query,
+              nativeCategory: item.nativeCategory,
+              category: item.category,
+            },
+          })
       }
     },
     [
@@ -116,6 +124,7 @@ export function useSearchHistory() {
       subcategoriesData,
       setHistoryItems,
       internalRemoveFromHistory,
+      shouldLogInfo,
     ]
   )
 

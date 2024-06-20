@@ -37,6 +37,7 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.alias['react-query'] = require.resolve('./mocks/react-query.js')
     config.resolve.alias['firebase/compat/app'] = require.resolve('./mocks/firebase.js')
+    config.resolve.alias['firebase/remote-config'] = require.resolve('./mocks/remote-config.js')
     return config
   },
 }

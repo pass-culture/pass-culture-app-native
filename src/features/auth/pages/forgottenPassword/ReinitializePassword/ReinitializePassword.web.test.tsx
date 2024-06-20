@@ -3,7 +3,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import * as LoginRoutine from 'features/auth/helpers/useLoginRoutine'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor, act } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
@@ -19,6 +19,7 @@ jest.mock('uuid', () => {
 jest.spyOn(LoginRoutine, 'useLoginRoutine').mockReturnValue(jest.fn())
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ReinitializePassword/>', () => {
   describe('Accessibility', () => {

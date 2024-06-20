@@ -2,11 +2,13 @@
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
 
 import { useOAuthState } from 'features/auth/api/useOAuthState'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { eventMonitoring } from 'libs/monitoring'
 import { GoogleLoginOptions } from 'libs/react-native-google-sso/types'
 
 export const useGoogleLogin = ({ onSuccess }: GoogleLoginOptions) => {
   const { data } = useOAuthState()
+  const { shouldLogInfo } = useRemoteConfigContext()
 
   if (!data?.oauthStateToken) return
 
@@ -23,7 +25,8 @@ export const useGoogleLogin = ({ onSuccess }: GoogleLoginOptions) => {
         })
       }
     } catch (e) {
-      eventMonitoring.captureException(`Can’t login via Google: ${e}`, { level: 'info' })
+      if (shouldLogInfo)
+        eventMonitoring.captureException(`Can’t login via Google: ${e}`, { level: 'info' })
     }
   }
 }

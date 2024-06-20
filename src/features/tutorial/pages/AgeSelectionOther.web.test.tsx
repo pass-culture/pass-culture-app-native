@@ -3,11 +3,12 @@ import React from 'react'
 
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { TutorialTypes } from 'features/tutorial/enums'
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { AgeSelectionOther } from './AgeSelectionOther'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<AgeSelectionOther/>', () => {
   describe('Accessibility', () => {

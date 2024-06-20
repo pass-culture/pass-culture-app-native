@@ -4,10 +4,11 @@ import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
-import { isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
+import { isAPIExceptionCapturedAsInfo, isAPIExceptionNotCaptured } from 'api/apiHelpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { AsyncError, MonitoringError, eventMonitoring } from 'libs/monitoring'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { AsyncError, eventMonitoring, MonitoringError } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -31,12 +32,16 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   header,
 }: AsyncFallbackProps) => {
   const { reset } = useQueryErrorResetBoundary()
+  const { shouldLogInfo } = useRemoteConfigContext()
 
   useEffect(() => {
     const shouldCapturedApiErrorAsInfo = Boolean(
       error instanceof ApiError && isAPIExceptionCapturedAsInfo(error.statusCode)
     )
-    if (shouldCapturedApiErrorAsInfo) {
+    const shouldApiErrorNotCaptured = Boolean(
+      error instanceof ApiError && isAPIExceptionNotCaptured(error.statusCode)
+    )
+    if (shouldCapturedApiErrorAsInfo && shouldLogInfo) {
       eventMonitoring.captureException(error.message, { level: 'info' })
     }
     // we already captures MonitoringError exceptions (in AsyncError constructor)
@@ -45,12 +50,13 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
     const shouldCaptureError =
       !(error instanceof MonitoringError) &&
       !(error instanceof ScreenError) &&
-      !shouldCapturedApiErrorAsInfo
+      !shouldCapturedApiErrorAsInfo &&
+      !shouldApiErrorNotCaptured
 
     if (shouldCaptureError) {
       eventMonitoring.captureException(error)
     }
-  }, [error])
+  }, [error, shouldLogInfo])
 
   const handleRetry = async () => {
     reset()

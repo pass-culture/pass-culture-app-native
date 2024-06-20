@@ -29,6 +29,7 @@ const mockedNewMappingEnabled = true
 const tree = createMappingTree(mockedSubcateroriesV2Response, mockedFacets, mockedNewMappingEnabled)
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('categoriesHelpers', () => {
   it('should sort categories by alphabetical order', () => {

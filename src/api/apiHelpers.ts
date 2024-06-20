@@ -16,8 +16,8 @@ import { ApiError } from './ApiError'
 import { DefaultApi } from './gen'
 import { refreshAccessToken } from './refreshAccessToken'
 import {
-  REFRESH_TOKEN_IS_EXPIRED_ERROR,
   FAILED_TO_GET_REFRESH_TOKEN_ERROR,
+  REFRESH_TOKEN_IS_EXPIRED_ERROR,
   UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN,
 } from './types'
 
@@ -180,11 +180,11 @@ export function extractApiErrorMessage(error: unknown) {
 }
 
 export function isAPIExceptionCapturedAsInfo(statusCode: number) {
-  return Boolean(
-    statusCode === 401 ||
-      statusCode === 500 ||
-      statusCode === 502 ||
-      statusCode === 503 ||
-      statusCode === 504
-  )
+  return Boolean(statusCode === 401)
+}
+
+export function isAPIExceptionNotCaptured(statusCode: number) {
+  const notCapturedStatusCodes = [500, 502, 503, 504]
+
+  return notCapturedStatusCodes.includes(statusCode)
 }

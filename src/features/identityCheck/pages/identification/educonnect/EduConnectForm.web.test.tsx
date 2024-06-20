@@ -12,6 +12,7 @@ jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLogin').mockReturnValue({
 })
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<EduConnectForm />', () => {
   it('should render EduConnectForm', () => {

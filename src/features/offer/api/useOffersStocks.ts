@@ -4,13 +4,17 @@ import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { OffersStocksResponseV2 } from 'api/gen'
 import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { OfferNotFoundError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
-async function getStocksByOfferIds(offerIds: number[]) {
+async function getStocksByOfferIds(offerIds: number[], shouldLogInfo: boolean) {
   if (offerIds.length === 0) {
-    throw new OfferNotFoundError(offerIds, { Screen: OfferNotFound })
+    throw new OfferNotFoundError(offerIds, {
+      Screen: OfferNotFound,
+      shouldBeCapturedAsInfo: shouldLogInfo,
+    })
   }
   try {
     // eslint-disable-next-line @typescript-eslint/return-await
@@ -23,7 +27,7 @@ async function getStocksByOfferIds(offerIds: number[]) {
       // due to asynchronous reindexing of the back office
       throw new OfferNotFoundError(offerIds, {
         Screen: OfferNotFound,
-        shouldBeCapturedAsInfo: true,
+        shouldBeCapturedAsInfo: shouldLogInfo,
       })
     }
     throw error
@@ -32,10 +36,11 @@ async function getStocksByOfferIds(offerIds: number[]) {
 
 export const useOffersStocks = ({ offerIds }: { offerIds: number[] }) => {
   const netInfo = useNetInfoContext()
+  const { shouldLogInfo } = useRemoteConfigContext()
 
   return useQuery<OffersStocksResponseV2>(
     [QueryKeys.OFFER, offerIds],
-    () => getStocksByOfferIds(offerIds),
+    () => getStocksByOfferIds(offerIds, shouldLogInfo),
     { enabled: !!netInfo.isConnected }
   )
 }

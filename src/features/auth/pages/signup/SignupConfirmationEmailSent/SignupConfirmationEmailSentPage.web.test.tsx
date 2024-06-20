@@ -6,7 +6,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor, act } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { SignupConfirmationEmailSentPage } from './SignupConfirmationEmailSentPage'
 
@@ -17,6 +17,7 @@ const navigationProps = {
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<SignupConfirmationEmailSentPage/>', () => {
   describe('Accessibility', () => {

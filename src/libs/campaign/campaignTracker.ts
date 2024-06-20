@@ -5,7 +5,7 @@ import { analytics } from 'libs/analytics'
 import { isAppsFlyerTrackingEnabled } from 'libs/campaign/isAppsFlyerTrackingEnabled'
 import { logOpenApp } from 'libs/campaign/logOpenApp'
 import { env } from 'libs/environment'
-import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 
 import { CampaignEvents } from './events'
@@ -53,7 +53,7 @@ async function logEvent(event: CampaignEvents, params: Record<string, unknown>):
     try {
       await appsFlyer.logEvent(event, params)
     } catch (error) {
-      eventMonitoring.captureException(`Could not log to AppsFlyer: ${error}`, { level: 'info' })
+      // Intentionally left empty to ignore errors
     }
   }
 }

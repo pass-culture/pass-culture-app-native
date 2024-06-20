@@ -1,5 +1,5 @@
 import omit from 'lodash/omit'
-import { useEffect, useState, Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
@@ -7,7 +7,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ConsentState } from 'features/cookies/enums'
 import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
-import { Consent, CookiesConsent, ConsentStatus } from 'features/cookies/types'
+import { Consent, ConsentStatus, CookiesConsent } from 'features/cookies/types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { eventMonitoring } from 'libs/monitoring'
 import { getAppBuildVersion } from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
@@ -109,6 +110,8 @@ const setConsentAndChoiceDateTime = (
 }
 
 const usePersistCookieConsent = () => {
+  const { shouldLogInfo } = useRemoteConfigContext()
+
   return useMutation(async (cookiesChoice: CookiesConsent): Promise<void> => {
     await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
 
@@ -117,12 +120,13 @@ const usePersistCookieConsent = () => {
         await api.postNativeV1CookiesConsent(omit(cookiesChoice, ['buildVersion']))
       }
     } catch (error) {
-      eventMonitoring.captureException(
-        `can‘t log cookies consent choice ; reason: "${
-          error instanceof Error ? error.message : undefined
-        }"`,
-        { level: 'info' }
-      )
+      if (shouldLogInfo)
+        eventMonitoring.captureException(
+          `can‘t log cookies consent choice ; reason: "${
+            error instanceof Error ? error.message : undefined
+          }"`,
+          { level: 'info' }
+        )
     }
   })
 }

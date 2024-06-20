@@ -29,7 +29,7 @@
 ./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:398
 ./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:428
 ./src/features/bookings/pages/BookingDetails/BookingDetails.native.test.tsx:461
-./src/features/bookings/pages/BookingDetails/BookingDetails.tsx:101
+./src/features/bookings/pages/BookingDetails/BookingDetails.tsx:103
 ./src/features/culturalSurvey/helpers/useGetNextQuestion.ts:13
 ./src/features/culturalSurvey/pages/CulturalSurveyQuestions.native.test.tsx:139
 ./src/features/deeplinks/helpers/getScreenFromDeeplink.ts:13
@@ -58,11 +58,11 @@
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:14
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:16
 ./src/features/navigation/RootNavigator/linking/getNestedNavigationFromState.ts:19
-./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:72
-./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:78
-./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:84
-./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:90
-./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:96
+./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:74
+./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:80
+./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:86
+./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:92
+./src/features/navigation/RootNavigator/linking/getScreenConfig.test.ts:98
 ./src/features/navigation/helpers/useCurrentRoute.ts:4
 ./src/features/navigation/helpers/usePreviousRoute.ts:4
 ./src/features/navigation/sanitizeNavigationState.ts:5
@@ -120,6 +120,7 @@
 ./src/libs/firebase/remoteConfig/remoteConfig.services.ts:48
 ./src/libs/firebase/remoteConfig/remoteConfig.services.ts:50
 ./src/libs/firebase/remoteConfig/remoteConfig.services.ts:52
+./src/libs/firebase/remoteConfig/remoteConfig.services.ts:54
 ./src/libs/firebase/remoteConfig/remoteConfig.services.web.ts:18
 ./src/libs/firebase/remoteConfig/remoteConfig.services.web.ts:20
 ./src/libs/firebase/remoteConfig/remoteConfig.services.web.ts:22
@@ -136,6 +137,7 @@
 ./src/libs/firebase/remoteConfig/remoteConfig.services.web.ts:44
 ./src/libs/firebase/remoteConfig/remoteConfig.services.web.ts:46
 ./src/libs/firebase/remoteConfig/remoteConfig.services.web.ts:48
+./src/libs/firebase/remoteConfig/remoteConfig.services.web.ts:50
 ./src/libs/hooks/useShowReview.native.test.tsx:114
 ./src/libs/hooks/useTimer.native.test.ts:34
 ./src/libs/hooks/useTimer.native.test.ts:53
@@ -161,7 +163,7 @@
 ./src/libs/parsers/highlightLinks.tsx:18
 ./src/libs/parsers/highlightLinks.tsx:22
 ./src/libs/parsers/snakeCaseToUppercaseFirstLetter.ts:2
-./src/libs/parsers/tests/highlightLinks.test.tsx:33
+./src/libs/parsers/tests/highlightLinks.test.tsx:34
 ./src/libs/place/fetchPlaces.ts:8
 ./src/libs/react-query/tests/usePersistQuery.native.test.tsx:118
 ./src/libs/subcategories/__mocks__/useCategoryId.ts:6

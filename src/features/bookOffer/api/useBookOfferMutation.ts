@@ -41,10 +41,6 @@ export function useBookOfferMutation({ onSuccess, onError }: BookOffer) {
             },
           })
         }
-
-        if (error instanceof ApiError && isAPIExceptionCapturedAsInfo(error.statusCode)) {
-          eventMonitoring.captureException(error.message, { level: 'info' })
-        }
       }
 
       onSuccess(data)

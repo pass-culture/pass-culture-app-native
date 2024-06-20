@@ -7,7 +7,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { mockedFullAddress } from 'libs/address/fixtures/mockedFormatFullAddress'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { render, fireEvent, screen, waitFor } from 'tests/utils/web'
+import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 import { SocialNetworkIconsMap } from 'ui/components/socials/types'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 
@@ -33,6 +33,7 @@ const externalNav = {
 }
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ExternalTouchableLink />', () => {
   describe('External Navigation', () => {

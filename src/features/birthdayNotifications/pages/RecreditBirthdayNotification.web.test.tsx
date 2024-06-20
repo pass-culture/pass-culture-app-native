@@ -1,11 +1,12 @@
 import React from 'react'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
+import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<RecreditBirthdayNotification/>', () => {
   describe('Accessibility', () => {

@@ -7,6 +7,7 @@ import { useResendEmailValidation } from 'features/auth/api/useResendEmailValida
 import { EmailAttemptsLeft } from 'features/auth/pages/signup/SignupConfirmationEmailSent/EmailAttemptsLeft'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { useTimer } from 'libs/hooks/useTimer'
 import { eventMonitoring } from 'libs/monitoring'
 import { formatToHour } from 'libs/parsers/formatDates'
@@ -25,6 +26,7 @@ interface Props {
 export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
   const [errorMessage, setErrorMessage] = React.useState<string>()
   const { timeLeft, setTimeLeft } = useTimer(0)
+  const { shouldLogInfo } = useRemoteConfigContext()
 
   const onError = (error: ApiError) => {
     if (error.statusCode === 429) {
@@ -34,9 +36,11 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
         'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
       )
     }
-    eventMonitoring.captureException(`Could not resend validation email: ${error.content}`, {
-      level: 'info',
-    })
+
+    if (shouldLogInfo)
+      eventMonitoring.captureException(`Could not resend validation email: ${error.content}`, {
+        level: 'info',
+      })
   }
 
   const { data: remainingResendsResponse, refetch: refetchRemainingResends } =

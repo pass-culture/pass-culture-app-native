@@ -2,11 +2,12 @@ import React from 'react'
 
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor, act } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('features/navigation/navigationRef')
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<CookiesConsent/>', () => {
   describe('Accessibility', () => {

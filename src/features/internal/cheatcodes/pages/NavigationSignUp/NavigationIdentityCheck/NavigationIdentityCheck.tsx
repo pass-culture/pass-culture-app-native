@@ -11,6 +11,7 @@ import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToC
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer } from 'ui/theme'
@@ -20,9 +21,15 @@ export function NavigationIdentityCheck(): React.JSX.Element {
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [phoneValidationTipsModalVisible, setPhoneValidationTipsModalVisible] = useState(false)
   const { navigate } = useNavigation<UseNavigationType>()
+  const { shouldLogInfo } = useRemoteConfigContext()
 
   const trigger = (message: EduConnectErrorMessageEnum) => {
-    setScreenError(new ScreenError(message, { Screen: NotEligibleEduConnect }))
+    setScreenError(
+      new ScreenError(message, {
+        Screen: NotEligibleEduConnect,
+        shouldBeCapturedAsInfo: shouldLogInfo,
+      })
+    )
   }
 
   if (screenError) throw screenError

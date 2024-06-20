@@ -5,6 +5,7 @@ import { SelectIDOrigin } from 'features/identityCheck/pages/identification/ubbl
 import { checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('selectIDOrigin', () => {
   it('should navigate to SelectPhoneStatus on press "J’ai une carte d’identité ou un passeport" HeroButtonList', async () => {

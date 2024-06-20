@@ -3,7 +3,7 @@ import React from 'react'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
@@ -12,6 +12,7 @@ const navigationProps = {
 } as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ResetPasswordExpiredLink/>', () => {
   describe('Accessibility', () => {

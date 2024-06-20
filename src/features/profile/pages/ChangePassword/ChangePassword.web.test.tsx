@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, act, checkAccessibilityFor } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ChangePassword } from './ChangePassword'
 
@@ -15,6 +15,7 @@ jest.mock('uuid', () => {
 })
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ChangePassword/>', () => {
   describe('Accessibility', () => {

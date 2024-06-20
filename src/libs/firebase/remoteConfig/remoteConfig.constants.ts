@@ -18,6 +18,7 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   shareAppWordingVersion: 'default',
   shouldApplyGraphicRedesign: false,
   shouldDisplayReassuranceMention: false,
+  shouldLogInfo: false,
   subscriptionHomeEntryIds: {
     [SubscriptionTheme.CINEMA]: '',
     [SubscriptionTheme.MUSIQUE]: '',

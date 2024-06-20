@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as useGoBack from 'features/navigation/useGoBack'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor, act } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ConsentSettings } from './ConsentSettings'
 
@@ -28,6 +28,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ConsentSettings/>', () => {
   describe('Accessibility', () => {

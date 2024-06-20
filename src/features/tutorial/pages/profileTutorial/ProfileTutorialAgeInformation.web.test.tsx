@@ -3,7 +3,7 @@ import React from 'react'
 import { act } from 'react-dom/test-utils'
 
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 
@@ -15,6 +15,7 @@ const navProps = { route: { params: { age: 15 } } } as StackScreenProps<
 jest.mock('features/favorites/context/FavoritesWrapper')
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ProfileTutorialAgeInformation/>', () => {
   describe('Accessibility', () => {

@@ -23,6 +23,7 @@ jest.spyOn(usePushPermission, 'usePushPermission').mockReturnValue({
 })
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('NotificationsSettings', () => {
   it('should render correctly', () => {

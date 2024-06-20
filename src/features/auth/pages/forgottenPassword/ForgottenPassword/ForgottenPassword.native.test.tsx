@@ -7,7 +7,7 @@ import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetI
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { simulateWebviewMessage, fireEvent, render, waitFor, screen, act } from 'tests/utils'
+import { act, fireEvent, render, screen, simulateWebviewMessage, waitFor } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
@@ -202,36 +202,6 @@ describe('<ForgottenPassword />', () => {
       expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
-
-  it.each([
-    401, // Unauthorized
-    500, // Internal Server Error
-    502, // Bad Gateway
-    503, // Service Unavailable
-    504, // Gateway Timeout
-  ])(
-    'should capture an info in Sentry when reset password request API call has failed and error code is %s',
-    async (statusCode) => {
-      mockServer.postApi('/v1/request_password_reset', {
-        responseOptions: { statusCode: statusCode, data: {} },
-      })
-      renderForgottenPassword()
-
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-      fireEvent.press(screen.getByText('Valider'))
-      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-      simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
-
-      await waitFor(() => {
-        expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
-          1,
-          `Échec de la requête https://localhost/native/v1/request_password_reset, code: ${statusCode}`,
-          { level: 'info' }
-        )
-      })
-    }
-  )
 
   it('should not capture an in Sentry when reset password request API call has failed and error code is 400', async () => {
     mockServer.postApi('/v1/request_password_reset', {

@@ -50,6 +50,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('useOfferPlaylist', () => {
   describe('When offer is defined', () => {

@@ -1,4 +1,4 @@
-import { Alert, Linking, Platform, NativeModules } from 'react-native'
+import { Alert, Linking, NativeModules, Platform } from 'react-native'
 
 import * as getScreenFromDeeplinkModule from 'features/deeplinks/helpers/getScreenFromDeeplink'
 import { DeeplinkParts } from 'features/deeplinks/types'
@@ -6,7 +6,6 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/analytics'
-import { eventMonitoring } from 'libs/monitoring'
 import { act } from 'tests/utils'
 
 jest.mock('libs/monitoring')
@@ -125,42 +124,6 @@ describe('openUrl', () => {
       await openUrl(link, { shouldLogEvent: false })
 
       expect(analytics.logOpenExternalUrl).not.toHaveBeenCalled()
-    })
-  })
-
-  describe('Sentry', () => {
-    it('should log an info in Sentry when Linking.openURL throws', async () => {
-      openURLSpy.mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
-
-      const link = 'https://www.google.com'
-      await openUrl(link)
-
-      expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
-        1,
-        'OpenExternalUrlError: Did not open correctly',
-        { level: 'info' }
-      )
-    })
-
-    it('should log an info in Sentry when Linking.openURL throws and fallbackUrl throws', async () => {
-      openURLSpy.mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
-      openURLSpy.mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
-
-      const link = 'https://www.google.com'
-      const fallbackLink = 'https://www.googlefallback.com'
-      await openUrl(link, { fallbackUrl: fallbackLink })
-      await act(async () => {})
-
-      expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
-        1,
-        'OpenExternalUrlError: Did not open correctly',
-        { level: 'info' }
-      )
-      expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
-        2,
-        'OpenExternalUrlError_FallbackUrl: Did not open correctly',
-        { level: 'info' }
-      )
     })
   })
 

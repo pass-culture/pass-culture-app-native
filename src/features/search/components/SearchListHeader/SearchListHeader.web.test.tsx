@@ -41,6 +41,7 @@ const mockUseSearch = jest.fn(() => ({
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<SearchListHeader />', () => {
   describe('When wipVenueMapSearchResults feature flag activated', () => {

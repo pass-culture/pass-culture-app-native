@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as useGoBack from 'features/navigation/useGoBack'
 import { AsyncError } from 'libs/monitoring'
-import { render, fireEvent, checkAccessibilityFor, screen } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 import { AsyncErrorBoundary } from './AsyncErrorBoundary'
 
@@ -15,6 +15,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,
   canGoBack: jest.fn(() => true),
 })
+
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('AsyncErrorBoundary component', () => {
   describe('Accessibility', () => {

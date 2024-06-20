@@ -12,6 +12,7 @@ import { EndedBookings } from './EndedBookings'
 jest.mock('libs/subcategories/useCategoryId')
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('EndedBookings', () => {
   describe('Accessibility', () => {

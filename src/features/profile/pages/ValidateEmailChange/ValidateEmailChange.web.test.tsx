@@ -16,6 +16,7 @@ jest.mock('features/profile/helpers/useEmailUpdateStatus', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ValidationChangeEmail />', () => {
   const navigation = {

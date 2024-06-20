@@ -12,6 +12,7 @@ const mockedUndefinedFacets = undefined
 const mockedNewMappingEnabled = true
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('MappingTree', () => {
   it('createMappingTree should return correct tree', () => {

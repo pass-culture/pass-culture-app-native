@@ -1,10 +1,11 @@
 import React from 'react'
 
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Accessibility } from './Accessibility'
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<Accessibility/>', () => {
   describe('Accessibility', () => {

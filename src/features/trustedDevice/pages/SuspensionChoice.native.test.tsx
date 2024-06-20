@@ -5,10 +5,12 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring, MonitoringError } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor, act } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { SuspensionChoice } from './SuspensionChoice'
@@ -28,6 +30,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 describe('<SuspensionChoice/>', () => {
   it('should match snapshot', () => {
@@ -61,6 +65,54 @@ describe('<SuspensionChoice/>', () => {
           'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
         timeout: SNACK_BAR_TIME_OUT,
       })
+    })
+  })
+
+  describe('When shouldLogInfo remote config is false', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: false,
+      })
+    })
+
+    it('should not capture an info in Sentry on suspension error', async () => {
+      simulateSuspendForSuspiciousLoginError()
+      renderSuspensionChoice()
+
+      const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
+
+      await act(async () => fireEvent.press(acceptSuspensionButton))
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
+    })
+  })
+
+  describe('When shouldLogInfo remote config is true', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      })
+    })
+
+    afterAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+    })
+
+    it('should capture an info in Sentry on suspension error', async () => {
+      simulateSuspendForSuspiciousLoginError()
+      renderSuspensionChoice()
+
+      const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
+
+      await act(async () => fireEvent.press(acceptSuspensionButton))
+
+      expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
+        1,
+        'Can’t suspend account for suspicious login ; reason: "invalid json response body at https://localhost/native/v1/account/suspend_for_suspicious_login reason: Unexpected end of JSON input"',
+        { level: 'info' }
+      )
     })
   })
 

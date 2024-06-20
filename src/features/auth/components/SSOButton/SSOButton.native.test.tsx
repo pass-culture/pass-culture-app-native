@@ -9,6 +9,8 @@ import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -38,6 +40,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 describe('<SSOButton />', () => {
   beforeEach(() => {
@@ -78,19 +82,6 @@ describe('<SSOButton />', () => {
         source: 'iPhone 13',
       },
     })
-  })
-
-  it('should log to Sentry on SSO login error', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-    jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
-
-    renderSSOButton()
-    await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
-
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-      'Can’t login via Google: GoogleSignIn Error',
-      { level: 'info' }
-    )
   })
 
   it('should call onSignInFailure when signin fails', async () => {
@@ -138,6 +129,51 @@ describe('<SSOButton />', () => {
     await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
 
     expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'SSO_login' })
+  })
+
+  describe('When shouldLogInfo remote config is false', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: false,
+      })
+    })
+
+    it('should not log to Sentry on SSO login error', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
+
+      renderSSOButton()
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
+    })
+  })
+
+  describe('When shouldLogInfo remote config is true', () => {
+    beforeAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        shouldLogInfo: true,
+      })
+    })
+
+    afterAll(() => {
+      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+    })
+
+    it('should log to Sentry on SSO login error', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
+
+      renderSSOButton()
+      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        'Can’t login via Google: GoogleSignIn Error',
+        { level: 'info' }
+      )
+    })
   })
 })
 
