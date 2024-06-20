@@ -26,6 +26,7 @@ const Template: ComponentStory<typeof MarketingBlockExclusivity> = (props) => (
 
 export const Default = Template.bind({})
 Default.args = {
+  moduleId: '1',
   backgroundImageUrl:
     'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
   offerImageUrl:
@@ -42,6 +43,7 @@ Default.parameters = {
 
 export const WithoutBackgroundImage = Template.bind({})
 WithoutBackgroundImage.args = {
+  moduleId: '1',
   offerImageUrl:
     'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
   categoryText: 'Cinéma',
