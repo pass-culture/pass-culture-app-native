@@ -1,7 +1,8 @@
-import React, { FunctionComponent, ReactElement } from 'react'
+import React, { FunctionComponent, ReactElement, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { analytics } from 'libs/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -16,6 +17,7 @@ type Props = {
   subtitle: string
   onPress: VoidFunction
   accessibilityLabel: string
+  analyticsType: 'credit' | 'location'
 }
 
 export const SystemBanner: FunctionComponent<Props> = ({
@@ -24,8 +26,13 @@ export const SystemBanner: FunctionComponent<Props> = ({
   subtitle,
   onPress,
   accessibilityLabel,
+  analyticsType,
 }) => {
   const focusProps = useHandleFocus()
+
+  useEffect(() => {
+    analytics.logSystemBlockDisplayed({ type: analyticsType })
+  }, [analyticsType])
 
   return (
     <StyledTouchable onPress={onPress} accessibilityLabel={accessibilityLabel} {...focusProps}>
