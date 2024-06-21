@@ -1,5 +1,4 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
@@ -35,27 +34,6 @@ Open.args = {
   title: 'My accordion',
   children: <Typo.Body>{children}</Typo.Body>,
   defaultOpen: true,
-}
-
-export const WithActiveSwitch = Template.bind({})
-WithActiveSwitch.args = {
-  title: 'Accordion with switch',
-  children: <Typo.Body>{children}</Typo.Body>,
-  switchProps: {
-    active: true,
-    toggle: action('toggle'),
-  },
-}
-
-export const WithDisabledActiveSwitch = Template.bind({})
-WithDisabledActiveSwitch.args = {
-  title: 'Accordion with switch',
-  children: <Typo.Body>{children}</Typo.Body>,
-  switchProps: {
-    active: true,
-    disabled: true,
-    toggle: action('toggle'),
-  },
 }
 
 export const WithLeftComponent = Template.bind({})

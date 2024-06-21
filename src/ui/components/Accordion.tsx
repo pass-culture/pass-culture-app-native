@@ -14,7 +14,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useFunctionOnce } from 'libs/hooks'
-import FilterSwitch, { FilterSwitchProps } from 'ui/components/FilterSwitch'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -25,26 +24,26 @@ import { getSpacing, Spacer, Typo } from '../theme'
 interface AccordionProps {
   title: React.JSX.Element | string
   accessibilityTitle?: string
+  labelId?: string
   children: React.JSX.Element | React.JSX.Element[]
   defaultOpen?: boolean
   onOpenOnce?: () => void
   onOpen?: () => void
   titleStyle?: StyleProp<ViewStyle>
   bodyStyle?: StyleProp<ViewStyle>
-  switchProps?: FilterSwitchProps
   leftComponent?: React.ReactElement
 }
 
 const isWeb = Platform.OS === 'web'
 export const Accordion = ({
   title,
+  labelId,
   children,
   defaultOpen = false,
   onOpenOnce,
   onOpen,
   titleStyle,
   bodyStyle,
-  switchProps,
   leftComponent,
 }: AccordionProps) => {
   const [open, setOpen] = useState(defaultOpen)
@@ -86,7 +85,7 @@ export const Accordion = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
-  const accordionLabelId = uuidv4()
+  const accordionLabelId = labelId ?? uuidv4()
   const accordionBodyId = uuidv4()
 
   const accessibilityProps = useMemo(() => {
@@ -99,12 +98,6 @@ export const Accordion = ({
         {leftComponent ? (
           <View style={[styles.titleContainer, titleStyle]}>
             {leftComponent}
-            <Spacer.Row numberOfSpaces={2} />
-          </View>
-        ) : null}
-        {switchProps ? (
-          <View style={[styles.titleContainer, titleStyle]}>
-            <FilterSwitch {...switchProps} accessibilityLabelledBy={accordionLabelId} />
             <Spacer.Row numberOfSpaces={2} />
           </View>
         ) : null}

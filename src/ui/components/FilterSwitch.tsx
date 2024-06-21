@@ -12,7 +12,7 @@ import { Lock as LockIcon } from 'ui/svg/icons/Lock'
 import { getShadow, getSpacing } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
-export interface FilterSwitchProps {
+interface FilterSwitchProps {
   active: boolean
   checkboxID?: string
   accessibilityDescribedBy?: string
