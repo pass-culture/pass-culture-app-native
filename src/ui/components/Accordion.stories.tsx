@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import FilterSwitch from 'ui/components/FilterSwitch'
 import { Typo } from 'ui/theme'
 
 import { Accordion } from './Accordion'
@@ -55,4 +56,11 @@ WithDisabledActiveSwitch.args = {
     disabled: true,
     toggle: action('toggle'),
   },
+}
+
+export const WithLeftComponent = Template.bind({})
+WithLeftComponent.args = {
+  title: 'Accordion with switch',
+  children: <Typo.Body>{children}</Typo.Body>,
+  leftComponent: <FilterSwitch active toggle={() => undefined} />,
 }

@@ -32,6 +32,7 @@ interface AccordionProps {
   titleStyle?: StyleProp<ViewStyle>
   bodyStyle?: StyleProp<ViewStyle>
   switchProps?: FilterSwitchProps
+  leftComponent?: React.ReactElement
 }
 
 const isWeb = Platform.OS === 'web'
@@ -44,6 +45,7 @@ export const Accordion = ({
   titleStyle,
   bodyStyle,
   switchProps,
+  leftComponent,
 }: AccordionProps) => {
   const [open, setOpen] = useState(defaultOpen)
   const [showChildren, setShowChildren] = useState(defaultOpen)
@@ -94,6 +96,12 @@ export const Accordion = ({
   return (
     <React.Fragment>
       <SwitchContainer>
+        {leftComponent ? (
+          <View style={[styles.titleContainer, titleStyle]}>
+            {leftComponent}
+            <Spacer.Row numberOfSpaces={2} />
+          </View>
+        ) : null}
         {switchProps ? (
           <View style={[styles.titleContainer, titleStyle]}>
             <FilterSwitch {...switchProps} accessibilityLabelledBy={accordionLabelId} />
