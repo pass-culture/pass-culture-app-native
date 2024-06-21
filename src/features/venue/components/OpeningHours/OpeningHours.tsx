@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
+import { Li } from 'ui/components/Li'
+import { VerticalUl } from 'ui/components/Ul'
 import { Typo } from 'ui/theme'
 
 import { OpeningHours as OpeningHoursType, getOpeningHours } from './getOpeningHours'
@@ -10,23 +12,26 @@ type Props = { openingHours: OpeningHoursType }
 export const OpeningHours: FC<Props> = ({ openingHours }) => {
   const { days } = getOpeningHours(openingHours)
   return (
-    <Container>
+    <StyledVerticalUl>
       {days.map((day) => (
-        <DayWrapper key={day.label}>
-          <Typo.Body>{day.label}</Typo.Body>
-          <Typo.Body>{day.hours}</Typo.Body>
-        </DayWrapper>
+        <StyledLi
+          key={day.label}
+          accessibilityLabel={`${day.label} ${day.hours.replace('/', ' puis ')}`}>
+          <Typo.Body accessibilityHidden>{day.label}</Typo.Body>
+          <Typo.Body accessibilityHidden>{day.hours}</Typo.Body>
+        </StyledLi>
       ))}
-    </Container>
+    </StyledVerticalUl>
   )
 }
 
-const Container = styled.View({
+const StyledVerticalUl = styled(VerticalUl)({
   display: 'flex',
   flexDirection: 'column',
   gap: 8,
 })
 
-const DayWrapper = styled.View({
+const StyledLi = styled(Li)({
+  display: 'flex',
   gap: 4,
 })

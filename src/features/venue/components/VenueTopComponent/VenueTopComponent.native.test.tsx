@@ -5,6 +5,7 @@ import React from 'react'
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueWithOpeningHours } from 'features/venue/fixtures/venueWithOpeningHours'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { ILocationContext, useLocation } from 'libs/location'
@@ -89,39 +90,13 @@ describe('<VenueTopComponent />', () => {
     mockdate.set(new Date('2024-05-31T08:31:00'))
     jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
 
-    const venue = {
-      ...venueResponseSnap,
-      openingHours: {
-        MONDAY: [{ open: '09:00', close: '19:00' }],
-        TUESDAY: [{ open: '09:00', close: '19:00' }],
-        WEDNESDAY: [{ open: '09:00', close: '19:00' }],
-        THURSDAY: [{ open: '09:00', close: '19:00' }],
-        FRIDAY: [{ open: '09:00', close: '19:00' }],
-        SATURDAY: [],
-        SUNDAY: [],
-      },
-    }
-
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venue} />))
+    render(reactQueryProviderHOC(<VenueTopComponent venue={venueWithOpeningHours} />))
 
     expect(screen.getByText('Ouvre bientôt - 9h')).toBeOnTheScreen()
   })
 
   it('should NOT render dynamics opening hours when feature flag is disabled', async () => {
-    const venue = {
-      ...venueResponseSnap,
-      openingHours: {
-        MONDAY: [{ open: '09:00', close: '19:00' }],
-        TUESDAY: [{ open: '09:00', close: '19:00' }],
-        WEDNESDAY: [{ open: '09:00', close: '19:00' }],
-        THURSDAY: [{ open: '09:00', close: '19:00' }],
-        FRIDAY: [{ open: '09:00', close: '19:00' }],
-        SATURDAY: [],
-        SUNDAY: [],
-      },
-    }
-
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venue} />))
+    render(reactQueryProviderHOC(<VenueTopComponent venue={venueWithOpeningHours} />))
 
     expect(screen.queryByText('Fermé')).not.toBeOnTheScreen()
   })

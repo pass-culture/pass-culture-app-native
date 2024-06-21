@@ -2,6 +2,7 @@ import React from 'react'
 
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueWithOpeningHours } from 'features/venue/fixtures/venueWithOpeningHours'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -127,33 +128,7 @@ describe('PracticalInformation', () => {
   })
 
   it('should display opening hours section', async () => {
-    render(
-      reactQueryProviderHOC(
-        <PracticalInformation
-          venue={{
-            ...venueResponseSnap,
-            openingHours: {
-              MONDAY: [{ open: '10:00', close: '20:00' }],
-              TUESDAY: [
-                { open: '10:00', close: '12:00' },
-                { open: '14:00', close: '20:00' },
-              ],
-              WEDNESDAY: [
-                { open: '10:00', close: '12:00' },
-                { open: '14:00', close: '20:00' },
-              ],
-              THURSDAY: [
-                { open: '10:00', close: '12:00' },
-                { open: '14:00', close: '20:00' },
-              ],
-              FRIDAY: undefined,
-              SATURDAY: [{ open: '09:00', close: '20:00' }],
-              SUNDAY: undefined,
-            },
-          }}
-        />
-      )
-    )
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueWithOpeningHours} />))
 
     expect(screen.getByText('Horaires d’ouverture')).toBeOnTheScreen()
   })
