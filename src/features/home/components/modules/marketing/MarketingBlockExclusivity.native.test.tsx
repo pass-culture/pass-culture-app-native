@@ -47,7 +47,7 @@ describe('MarketingBlockExclusivity', () => {
   })
 
   it('should log consult offer when pressed', () => {
-    render(<MarketingBlockExclusivity {...props} />)
+    render(<MarketingBlockExclusivity {...props} homeEntryId="fakeEntryId" />)
 
     const titlelink = screen.getByText('Harry Potter et l’Ordre du Phénix')
     fireEvent.press(titlelink)
@@ -55,6 +55,7 @@ describe('MarketingBlockExclusivity', () => {
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       from: 'home',
       moduleId: '1',
+      homeEntryId: 'fakeEntryId',
       moduleName: 'Harry Potter et l’Ordre du Phénix',
       offerId: 123,
     })

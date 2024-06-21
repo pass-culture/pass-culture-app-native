@@ -9,6 +9,7 @@ import { OfferLocation } from 'shared/offer/types'
 type AttachedOfferCardProps = {
   title: string
   moduleId: string
+  homeEntryId?: string
   categoryId: CategoryIdEnum
   offerId: number
   backgroundImageUrl: string
@@ -21,6 +22,7 @@ type AttachedOfferCardProps = {
 const UnmemoizedMarketingBlockExclusivity = ({
   title,
   moduleId,
+  homeEntryId,
   categoryId,
   offerId,
   backgroundImageUrl,
@@ -33,7 +35,7 @@ const UnmemoizedMarketingBlockExclusivity = ({
   const accessibilityLabel = `Découvre l’offre exclusive "${title}" de la catégorie "${categoryText}" au prix de ${price}. L’offre se trouve à ${distanceToOffer}`
 
   const logConsultOffer = () => {
-    analytics.logConsultOffer({ offerId, from: 'home', moduleName: title, moduleId })
+    analytics.logConsultOffer({ offerId, from: 'home', moduleName: title, moduleId, homeEntryId })
   }
 
   return (
