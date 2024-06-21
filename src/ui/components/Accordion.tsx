@@ -8,6 +8,7 @@ import {
   View,
   StyleSheet,
   LayoutChangeEvent,
+  TextProps,
 } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -23,34 +24,36 @@ import { getSpacing, Spacer, Typo } from '../theme'
 
 interface AccordionProps {
   title: React.JSX.Element | string
-  accessibilityTitle?: string
+  titleComponent?: React.FC<TextProps>
+  titleStyle?: StyleProp<ViewStyle>
+  bodyStyle?: StyleProp<ViewStyle>
   labelId?: string
+  leftComponent?: React.ReactElement
   children: React.JSX.Element | React.JSX.Element[]
   defaultOpen?: boolean
   onOpenOnce?: () => void
   onOpen?: () => void
-  titleStyle?: StyleProp<ViewStyle>
-  bodyStyle?: StyleProp<ViewStyle>
-  leftComponent?: React.ReactElement
 }
 
 const isWeb = Platform.OS === 'web'
 export const Accordion = ({
   title,
+  titleComponent,
+  titleStyle,
+  bodyStyle,
   labelId,
+  leftComponent,
   children,
   defaultOpen = false,
   onOpenOnce,
   onOpen,
-  titleStyle,
-  bodyStyle,
-  leftComponent,
 }: AccordionProps) => {
   const [open, setOpen] = useState(defaultOpen)
   const [showChildren, setShowChildren] = useState(defaultOpen)
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
   const animatedController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
   const openOnce = useFunctionOnce(onOpenOnce)
+  const Title = titleComponent || StyledTitle
 
   const bodyHeight = animatedController.interpolate({
     inputRange: [0, 1],
@@ -108,7 +111,7 @@ export const Accordion = ({
           testID="accordionTouchable"
           {...accessibilityProps}>
           <View nativeID={accordionLabelId} style={[styles.titleContainer, titleStyle]}>
-            <Title>{title}</Title>
+            <Title {...getHeadingAttrs(2)}>{title}</Title>
             <StyledArrowAnimatedView
               style={{ transform: [{ rotateZ: arrowAngle }] }}
               testID="accordionArrow">
@@ -164,7 +167,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs({ activeOpacity: 1
   isFocus?: boolean
 }>(({ theme, isFocus }) => ({ flex: 1, ...touchableFocusOutline(theme, isFocus) }))
 
-const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(2))({ flexShrink: 1 })
+const StyledTitle = styled(Typo.Title4)({ flexShrink: 1 })
 
 const StyledArrowAnimatedView = styled(Animated.View)({
   marginLeft: getSpacing(2),

@@ -42,3 +42,10 @@ WithLeftComponent.args = {
   children: <Typo.Body>{children}</Typo.Body>,
   leftComponent: <FilterSwitch active toggle={() => undefined} />,
 }
+
+export const withCustomTitleComponent = Template.bind({})
+withCustomTitleComponent.args = {
+  title: 'Accordion with switch',
+  children: <Typo.Body>{children}</Typo.Body>,
+  titleComponent: Typo.ButtonText,
+}
