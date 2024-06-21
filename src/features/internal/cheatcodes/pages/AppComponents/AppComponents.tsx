@@ -22,7 +22,7 @@ import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { SelectionLabel } from 'features/search/components/SelectionLabel/SelectionLabel'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { mapCategoryToIcon } from 'libs/parsers/category'
-import { AccordionItem } from 'ui/components/AccordionItem'
+import { Accordion } from 'ui/components/Accordion'
 import { Badge } from 'ui/components/Badge'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
@@ -110,7 +110,7 @@ export const AppComponents: FunctionComponent = () => {
       <Divider />
 
       {/* Typos */}
-      <AccordionItem title="Typos">
+      <Accordion title="Typos">
         <Typo.Hero>Hero</Typo.Hero>
         <Typo.Title1>Title 1</Typo.Title1>
         <Typo.Title2>Title 2</Typo.Title2>
@@ -119,12 +119,12 @@ export const AppComponents: FunctionComponent = () => {
         <Typo.Body>This is a body</Typo.Body>
         <Typo.ButtonText>This is a button text</Typo.ButtonText>
         <Typo.Caption>This is a caption</Typo.Caption>
-      </AccordionItem>
+      </Accordion>
 
       <Divider />
 
       {/* Buttons */}
-      <AccordionItem title="Buttons">
+      <Accordion title="Buttons">
         {/* Buttons: Primary */}
         <Typo.Title4>Button - Theme Primary</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
@@ -244,12 +244,12 @@ export const AppComponents: FunctionComponent = () => {
           />
           {endText}
         </Typo.Caption>
-      </AccordionItem>
+      </Accordion>
 
       <Divider />
 
       {/* Tags */}
-      <AccordionItem title="Tags">
+      <Accordion title="Tags">
         <Text>
           The text in SlantTag is always straight. Developers should play on slantAngle to include
           whole text in tag
@@ -266,19 +266,19 @@ export const AppComponents: FunctionComponent = () => {
           <Spacer.Flex flex={0.3} />
           <SlantTag text="Tag with fixed dimensions" width={getSpacing(10)} />
         </AlignedText>
-      </AccordionItem>
+      </Accordion>
 
       <Divider />
 
       {/* ImagePlaceholder */}
-      <AccordionItem title="ImagePlaceholder">
+      <Accordion title="ImagePlaceholder">
         <StyledImagePlaceholder />
-      </AccordionItem>
+      </Accordion>
 
       <Divider />
 
       {/* Modals */}
-      <AccordionItem title="Modals">
+      <Accordion title="Modals">
         <TouchableOpacity onPress={showBasicModal}>
           <StyledTitle4>Modal - Basic</StyledTitle4>
         </TouchableOpacity>
@@ -306,12 +306,12 @@ export const AppComponents: FunctionComponent = () => {
           rightIcon={Close}
           onRightIconPress={() => null}
         />
-      </AccordionItem>
+      </Accordion>
 
       <Divider />
 
       {/* Sections */}
-      <AccordionItem title="Sections">
+      <Accordion title="Sections">
         <SectionWithDivider visible margin gap={2}>
           <View>
             <Typo.Title4>Section with divider</Typo.Title4>
@@ -322,26 +322,26 @@ export const AppComponents: FunctionComponent = () => {
             </Typo.Body>
           </View>
         </SectionWithDivider>
-      </AccordionItem>
+      </Accordion>
 
       <Divider />
 
       {/* Icons */}
-      <AccordionItem title="Icons">
+      <Accordion title="Icons">
         <Icons />
-      </AccordionItem>
+      </Accordion>
 
       <Divider />
 
       {/* Illustrations */}
-      <AccordionItem title="Illustrations">
+      <Accordion title="Illustrations">
         <Illustrations />
-      </AccordionItem>
+      </Accordion>
 
       <Divider />
 
       {/* Inputs */}
-      <AccordionItem title="Inputs">
+      <Accordion title="Inputs">
         <StyledTitle4>Text Input</StyledTitle4>
         <TextInput value={inputText} onChangeText={setInputText} placeholder="Placeholder" />
         <Spacer.Column numberOfSpaces={1} />
@@ -366,19 +366,19 @@ export const AppComponents: FunctionComponent = () => {
         <StyledTitle4>Password Input</StyledTitle4>
         <PasswordInput value="" onChangeText={doNothingFn} />
         <Spacer.Column numberOfSpaces={1} />
-      </AccordionItem>
+      </Accordion>
 
       <Divider />
 
       {/* SnackBar */}
-      <AccordionItem title="SnackBar">
+      <Accordion title="SnackBar">
         <SnackBars />
-      </AccordionItem>
+      </Accordion>
 
       <Divider />
 
       {/* Search components */}
-      <AccordionItem title="Search components">
+      <Accordion title="Search components">
         <SearchInput LeftIcon={() => <MagnifyingGlass />} placeholder="with left icon" />
         <Spacer.Column numberOfSpaces={4} />
         <Center>
@@ -393,12 +393,12 @@ export const AppComponents: FunctionComponent = () => {
           <Label label="Musique" />
           <Label label="Exposition" />
         </RowWrap>
-      </AccordionItem>
+      </Accordion>
 
       <Divider />
 
       {/* Banner components */}
-      <AccordionItem title="Banners">
+      <Accordion title="Banners">
         <Spacer.Column numberOfSpaces={2} />
 
         <InfoBanner message="Banner with message" />
@@ -435,12 +435,12 @@ export const AppComponents: FunctionComponent = () => {
             inline
           />
         </InfoBanner>
-      </AccordionItem>
+      </Accordion>
 
       <Divider />
 
       {/* Profile components */}
-      <AccordionItem title="Profile components">
+      <Accordion title="Profile components">
         <View>
           <Text> Hero Button List </Text>
           <Spacer.Column numberOfSpaces={3} />
@@ -614,20 +614,20 @@ export const AppComponents: FunctionComponent = () => {
         <Text>BottomBanner</Text>
         <Spacer.Column numberOfSpaces={1} />
         <BottomBanner text="Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture." />
-      </AccordionItem>
+      </Accordion>
       <Divider />
-      <AccordionItem title="New Beneficiary Header">
+      <Accordion title="New Beneficiary Header">
         <CreditHeader
           firstName="Rosa"
           lastName="Bonheur"
           depositExpirationDate="2022-02-16T17:16:04.735235"
           domainsCredit={domains_credit_v1}
         />
-      </AccordionItem>
+      </Accordion>
       <Divider />
 
       {/* Your components */}
-      <AccordionItem title="Your components">
+      <Accordion title="Your components">
         <AlignedText>
           <Text>
             <ExternalLink url="https://google.com" />
@@ -699,7 +699,7 @@ export const AppComponents: FunctionComponent = () => {
           homeEntryId="homeEntryId"
           index={1}
         />
-      </AccordionItem>
+      </Accordion>
       <Spacer.Column numberOfSpaces={5} />
       <Spacer.BottomScreen />
     </SecondaryPageWithBlurHeader>

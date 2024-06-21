@@ -1,22 +1,18 @@
 import { useFocusEffect } from '@react-navigation/native'
-import React, { PropsWithChildren, useCallback } from 'react'
-import { View } from 'react-native'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { CookiesAccordion } from 'features/cookies/components/CookiesAccordion'
 import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
 import { CookieCategoriesEnum } from 'features/cookies/enums'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { useCookiesChoiceByCategory } from 'features/cookies/helpers/useCookiesChoiceByCategory'
 import { CookiesChoiceSettings } from 'features/cookies/types'
-import { analytics } from 'libs/analytics'
-import { AccordionItem } from 'ui/components/AccordionItem'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { Separator } from 'ui/components/Separator'
-import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const checkboxID = uuidv4()
@@ -79,62 +75,17 @@ export const CookiesSettings = ({
         </AcceptAllContainer>
       </ChoiceContainer>
       <Spacer.Row numberOfSpaces={4} />
-      {Object.entries(cookiesInfo).map((entry) => {
-        const cookie = entry[0] as CookieCategoriesEnum
-        const info = entry[1]
-        const isEssential = cookie === CookieCategoriesEnum.essential
-        return (
-          <React.Fragment key={cookie}>
-            <StyledAccordionItem
-              title={<Typo.Body>{info.title}</Typo.Body>}
-              onOpenOnce={() => analytics.logHasOpenedCookiesAccordion(cookie)}
-              switchProps={{
-                testID: info.title,
-                active: isEssential ? true : settingsCookiesChoice[cookie],
-                disabled: isEssential,
-                toggle: () =>
-                  isEssential
-                    ? null
-                    : setSettingsCookiesChoice((prev) => ({
-                        ...prev,
-                        [cookie]: !settingsCookiesChoice[cookie],
-                      })),
-              }}>
-              <React.Fragment>
-                <Typo.Body>{info.description}</Typo.Body>
-                {info.caption ? (
-                  <React.Fragment>
-                    <Spacer.Column numberOfSpaces={4} />
-                    <InfoCaption>{info.caption}</InfoCaption>
-                  </React.Fragment>
-                ) : null}
-              </React.Fragment>
-            </StyledAccordionItem>
-            {info.permanentCaption ? (
-              <React.Fragment>
-                <InfoCaption>{info.permanentCaption}</InfoCaption>
-                <Spacer.Column numberOfSpaces={4} />
-              </React.Fragment>
-            ) : null}
-            <Separator.Horizontal />
-          </React.Fragment>
-        )
-      })}
+      {Object.keys(cookiesInfo).map((cookie) => (
+        <CookiesAccordion
+          key={cookie}
+          cookie={cookie as CookieCategoriesEnum}
+          settingsCookiesChoice={settingsCookiesChoice}
+          setSettingsCookiesChoice={setSettingsCookiesChoice}
+        />
+      ))}
     </React.Fragment>
   )
 }
-
-const InfoCaption: React.FC<PropsWithChildren> = ({ children }) => (
-  <View>
-    <IconContainer>
-      <StyledInfo />
-    </IconContainer>
-    <Typo.CaptionNeutralInfo>
-      <IconSpacer />
-      {children}
-    </Typo.CaptionNeutralInfo>
-  </View>
-)
 
 const ChoiceContainer = styled.View({
   flexDirection: 'row',
@@ -151,32 +102,7 @@ const AcceptAllContainer = styled.View({
   alignItems: 'center',
 })
 
-const SPACER_BETWEEN_ICON_AND_TEXT = getSpacing(1)
-const IconSpacer = styled.View(({ theme }) => ({
-  width: theme.icons.sizes.extraSmall + SPACER_BETWEEN_ICON_AND_TEXT,
-}))
-
-const IconContainer = styled.View({
-  position: 'absolute',
-})
-
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.typography.caption,
   color: theme.colors.greyDark,
 }))
-
-const StyledInfo = styled(InfoPlain).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-  color: theme.colors.primary,
-}))``
-
-const StyledAccordionItem = styled(AccordionItem).attrs({
-  titleStyle: {
-    paddingVertical: getSpacing(4),
-    paddingHorizontal: 0,
-  },
-  bodyStyle: {
-    paddingBottom: getSpacing(4),
-    paddingHorizontal: 0,
-  },
-})``

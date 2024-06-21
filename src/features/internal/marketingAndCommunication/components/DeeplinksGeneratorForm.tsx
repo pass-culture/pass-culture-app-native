@@ -27,7 +27,7 @@ import { env } from 'libs/environment'
 import { LocationMode } from 'libs/location/types'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { Range } from 'libs/typesUtils/typeHelpers'
-import { AccordionItem } from 'ui/components/AccordionItem'
+import { Accordion } from 'ui/components/Accordion'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Slider } from 'ui/components/inputs/Slider'
 import { TextInput } from 'ui/components/inputs/TextInput'
@@ -325,13 +325,13 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       <Container>
         <StyledTitle4>Besoin d’un lien&nbsp;?</StyledTitle4>
         <Spacer.Column numberOfSpaces={6} />
-        <AccordionItem title="Pages" defaultOpen>
+        <Accordion title="Pages" defaultOpen>
           {Object.keys(SCREENS_CONFIG).map((key) =>
             renderScreenItem(key as ScreensUsedByMarketing)
           )}
-        </AccordionItem>
+        </Accordion>
         {paramsCount > 0 ? (
-          <AccordionItem title={'Paramètres applicatifs' + ` (${paramsCount})`} defaultOpen>
+          <Accordion title={'Paramètres applicatifs' + ` (${paramsCount})`} defaultOpen>
             {Object.entries(SCREENS_CONFIG).map(([page, screenConfig]) => (
               <React.Fragment key={page}>
                 {page === selectedScreen
@@ -341,9 +341,9 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
                   : null}
               </React.Fragment>
             ))}
-          </AccordionItem>
+          </Accordion>
         ) : null}
-        <AccordionItem title="Paramètres marketing" defaultOpen>
+        <Accordion title="Paramètres marketing" defaultOpen>
           {Object.entries(SCREENS_CONFIG).map(([page]) => (
             <React.Fragment key={page}>
               {page === selectedScreen
@@ -353,8 +353,8 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
                 : null}
             </React.Fragment>
           ))}
-        </AccordionItem>
-        <AccordionItem title="Paramètres firebase dynamic link">
+        </Accordion>
+        <Accordion title="Paramètres firebase dynamic link">
           {Object.keys(SCREENS_CONFIG).map((page) => (
             <React.Fragment key={page}>
               {page === selectedScreen
@@ -364,7 +364,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
                 : null}
             </React.Fragment>
           ))}
-        </AccordionItem>
+        </Accordion>
       </Container>
       <BottomContainer>
         <ErrorContainer>
