@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, PropsWithChildren, useCallback } from 'react'
 import { Platform } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import { useTheme } from 'styled-components/native'
@@ -25,7 +25,7 @@ const isWeb = Platform.OS === 'web'
 
 export const OfferImageContainer: FunctionComponent<Props> = ({
   categoryId,
-  imageUrls,
+  imageUrls = [],
   shouldDisplayOfferPreview,
   onPress,
 }) => {
@@ -35,30 +35,32 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   )
   const { isDesktopViewport } = useTheme()
 
-  const offerImages = imageUrls ?? []
-
-  const hasCarousel = !!(shouldDisplayCarousel && offerImages.length > 1)
+  const hasCarousel = !!(shouldDisplayCarousel && imageUrls.length > 1)
   const progressValue = useSharedValue<number>(0)
 
-  return isWeb && isDesktopViewport ? (
-    <OfferImageRenderer
-      categoryId={categoryId}
-      offerImages={offerImages}
-      shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-      hasCarousel={hasCarousel}
-      progressValue={progressValue}
-    />
-  ) : (
-    <HeaderWithImage imageHeight={backgroundHeight} imageUrl={offerImages[0]}>
-      <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
+  const Wrapper = useCallback(
+    ({ children }: PropsWithChildren) =>
+      isWeb && isDesktopViewport ? (
+        <React.Fragment>{children}</React.Fragment>
+      ) : (
+        <HeaderWithImage imageHeight={backgroundHeight} imageUrl={imageUrls[0]}>
+          <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
+          {children}
+        </HeaderWithImage>
+      ),
+    [imageUrls, backgroundHeight, isDesktopViewport]
+  )
+
+  return (
+    <Wrapper>
       <OfferImageRenderer
         categoryId={categoryId}
-        offerImages={offerImages}
+        offerImages={imageUrls}
         shouldDisplayOfferPreview={shouldDisplayOfferPreview}
         hasCarousel={hasCarousel}
         progressValue={progressValue}
         onPress={onPress}
       />
-    </HeaderWithImage>
+    </Wrapper>
   )
 }

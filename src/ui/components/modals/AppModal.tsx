@@ -5,6 +5,7 @@ import {
   ScrollView,
   ScrollViewProps,
   useWindowDimensions,
+  ViewProps,
 } from 'react-native'
 import { ReactNativeModal } from 'react-native-modal'
 import styled, { useTheme } from 'styled-components/native'
@@ -49,7 +50,8 @@ type Props = {
   onSwipe?: () => void
   swipeDirection?: ModalSwipeDirection
   propagateSwipe?: boolean
-} & ModalIconProps
+} & ModalIconProps &
+  Pick<ViewProps, 'onLayout'>
 
 // Without this, the margin is recomputed with arbitrary values
 const modalStyles = { margin: 'auto' }
@@ -87,6 +89,7 @@ export const AppModal: FunctionComponent<Props> = ({
   onSwipe,
   swipeDirection,
   propagateSwipe,
+  onLayout,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -217,6 +220,7 @@ export const AppModal: FunctionComponent<Props> = ({
         testID="modalContainer"
         desktopMaxHeight={desktopMaxHeight}
         maxHeight={maxContainerHeight}
+        onLayout={onLayout}
         noPadding={noPadding}
         noPaddingBottom={noPaddingBottom}>
         {customModalHeader ? (
