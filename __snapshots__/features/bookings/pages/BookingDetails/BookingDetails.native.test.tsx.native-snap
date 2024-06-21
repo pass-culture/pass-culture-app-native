@@ -94,7 +94,7 @@ exports[`BookingDetails should render correctly 1`] = `
               "userSelect": "auto",
             }
           }
-          testID="header.touchable"
+          testID="headerTouchable"
         />
       </View>
       <View

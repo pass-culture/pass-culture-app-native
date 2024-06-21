@@ -47,7 +47,7 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
       {isWeb ? (
         children
       ) : (
-        <TouchableOpacity onPress={onPress} testID="header.touchable">
+        <TouchableOpacity onPress={onPress} testID="headerTouchable">
           {children}
         </TouchableOpacity>
       )}

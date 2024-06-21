@@ -5,17 +5,11 @@ import { OfferImageContainer } from 'features/offer/components/OfferImageContain
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen } from 'tests/utils/web'
 
-jest.mock('libs/subcategories/useCategoryId')
-jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const mockOnPress = jest.fn()
-
-beforeEach(() => {
-  mockOnPress.mockReset()
-})
 
 describe('<OfferImageContainer />', () => {
   it('should not call onPress when viewport is not desktop', () => {
@@ -28,11 +22,11 @@ describe('<OfferImageContainer />', () => {
       { theme: { isDesktopViewport: false } }
     )
 
-    expect(screen.queryByTestId('header.touchable')).toBeNull()
+    expect(screen.queryByTestId('headerTouchable')).toBeNull()
   })
 
-  it('should render correctly without feature flags', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(false)
+  it('should not display carousel with one image', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
     render(
       <OfferImageContainer
         imageUrls={['some_url_to_some_resource']}
@@ -42,21 +36,35 @@ describe('<OfferImageContainer />', () => {
       { theme: { isDesktopViewport: true } }
     )
 
-    expect(screen).toMatchSnapshot()
+    expect(screen.getByTestId('offerImageWithoutCarousel')).toBeVisible()
   })
 
-  it('should render correctly with feature flags', () => {
+  it('should not display carousel with feature flag off', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    render(
+      <OfferImageContainer
+        imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
+        categoryId={CategoryIdEnum.CINEMA}
+        onPress={mockOnPress}
+      />,
+      { theme: { isDesktopViewport: true } }
+    )
+
+    expect(screen.getByTestId('offerImageWithoutCarousel')).toBeVisible()
+  })
+
+  it('should display carousel with several images', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
 
     render(
       <OfferImageContainer
-        imageUrls={['some_url_to_some_resource']}
+        imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={mockOnPress}
       />,
       { theme: { isDesktopViewport: true } }
     )
 
-    expect(screen).toMatchSnapshot()
+    expect(screen.queryByTestId('offerImageWithoutCarousel')).toBeNull()
   })
 })
