@@ -74,16 +74,20 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         homeEntryId,
       })
     }
-  }, [shouldModuleBeDisplayed, homeEntryId, id, index])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shouldModuleBeDisplayed])
 
   useEffect(() => {
-    analytics.logConsultVideo({
-      from: 'video_carousel_block',
-      moduleId: id,
-      homeEntryId,
-      youtubeId: videoSources[currentIndex],
-    })
-  }, [currentIndex, id, videoSources, homeEntryId])
+    if (shouldModuleBeDisplayed) {
+      analytics.logConsultVideo({
+        from: 'video_carousel_block',
+        moduleId: id,
+        homeEntryId,
+        youtubeId: videoSources[currentIndex],
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIndex])
 
   const playNextVideo = () => {
     let nextIndex
