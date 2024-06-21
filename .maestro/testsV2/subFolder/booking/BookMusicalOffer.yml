@@ -14,6 +14,12 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: "Réservation confirmée\_!"
 - tapOn: 'Voir ma réservation'
 
+- runFlow:
+    when:
+      visible: "Réservation confirmée\_!"
+    commands:
+      - tapOn: 'Voir ma réservation'
+
 - scrollUntilVisible:
     element: 'Annuler ma réservation'
 - tapOn: 'Annuler ma réservation'

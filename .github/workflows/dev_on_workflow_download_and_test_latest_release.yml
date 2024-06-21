@@ -1,0 +1,55 @@
+name: Download and Test Latest App Center Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  download-latest-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download latest release from App Center
+        id: download_app
+        run: |
+          APP_CENTER_OWNER_NAME=<your-app-center-owner-name>
+          APP_CENTER_APP_NAME=<your-app-center-app-name>
+          APP_CENTER_API_TOKEN=${{ secrets.APP_CENTER_API_TOKEN }}
+          
+          # Fetch the latest release details
+          response=$(curl -s -X GET "https://api.appcenter.ms/v0.1/apps/$APP_CENTER_OWNER_NAME/$APP_CENTER_APP_NAME/releases/latest" -H "accept: application/json" -H "X-API-Token: $APP_CENTER_API_TOKEN")
+          echo $response > response.json
+          
+          # Extract the download URL and file name
+          DOWNLOAD_URL=$(jq -r '.download_url' response.json)
+          FILE_NAME=$(basename $DOWNLOAD_URL)
+          
+          # Download the APK/IPA file
+          curl -o $FILE_NAME $DOWNLOAD_URL
+          
+          echo "file_name=$FILE_NAME" >> $GITHUB_ENV
+
+  run-e2e-tests:
+    needs: download-latest-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set environment variables
+        run: |
+          echo "MAESTRO_APP_FILE=${{ env.file_name }}" >> $GITHUB_ENV
+
+      - name: Run tests on Maestro Cloud
+        run: |
+          chmod +x run_e2e_test.sh
+          ./scripts/run_e2e_test.sh cloud android staging
+
+      - name: Run tests on Maestro Cloud (Android)
+        run: |
+          chmod +x your-script.sh
+          ./your-script.sh cloud android testing
