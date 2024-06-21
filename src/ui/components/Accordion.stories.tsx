@@ -5,11 +5,11 @@ import React from 'react'
 
 import { Typo } from 'ui/theme'
 
-import { AccordionItem } from './AccordionItem'
+import { Accordion } from './Accordion'
 
-const meta: ComponentMeta<typeof AccordionItem> = {
-  title: 'ui/AccordionItem',
-  component: AccordionItem,
+const meta: ComponentMeta<typeof Accordion> = {
+  title: 'ui/Accordion',
+  component: Accordion,
   decorators: [
     (Story) => (
       <NavigationContainer>
@@ -20,25 +20,25 @@ const meta: ComponentMeta<typeof AccordionItem> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof AccordionItem> = (props) => <AccordionItem {...props} />
+const Template: ComponentStory<typeof Accordion> = (props) => <Accordion {...props} />
 const children = 'children'
 
 export const Close = Template.bind({})
 Close.args = {
-  title: 'My accordion item',
+  title: 'My accordion',
   children: <Typo.Body>{children}</Typo.Body>,
 }
 
 export const Open = Template.bind({})
 Open.args = {
-  title: 'My accordion item',
+  title: 'My accordion',
   children: <Typo.Body>{children}</Typo.Body>,
   defaultOpen: true,
 }
 
 export const WithActiveSwitch = Template.bind({})
 WithActiveSwitch.args = {
-  title: 'Accordion item with switch',
+  title: 'Accordion with switch',
   children: <Typo.Body>{children}</Typo.Body>,
   switchProps: {
     active: true,
@@ -48,7 +48,7 @@ WithActiveSwitch.args = {
 
 export const WithDisabledActiveSwitch = Template.bind({})
 WithDisabledActiveSwitch.args = {
-  title: 'Accordion item with switch',
+  title: 'Accordion with switch',
   children: <Typo.Body>{children}</Typo.Body>,
   switchProps: {
     active: true,

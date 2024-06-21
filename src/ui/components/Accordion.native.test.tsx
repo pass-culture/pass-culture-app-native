@@ -3,7 +3,7 @@ import { View } from 'react-native'
 
 import { act, fireEvent, render, screen } from 'tests/utils'
 
-import { AccordionItem } from './AccordionItem'
+import { Accordion } from './Accordion'
 
 const Children = () => <View testID="accordion-child-view" />
 
@@ -11,7 +11,7 @@ const accordionTitle = 'accordion title'
 
 jest.useFakeTimers()
 
-describe('AccordionItem', () => {
+describe('Accordion', () => {
   it("should be closed by default - we don't see the children", () => {
     renderAccordion()
     const accordionBody = screen.getByTestId('accordionBody')
@@ -64,8 +64,8 @@ describe('AccordionItem', () => {
 
 function renderAccordion() {
   render(
-    <AccordionItem title={accordionTitle}>
+    <Accordion title={accordionTitle}>
       <Children />
-    </AccordionItem>
+    </Accordion>
   )
 }

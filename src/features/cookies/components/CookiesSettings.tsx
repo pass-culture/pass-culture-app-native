@@ -10,7 +10,7 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { useCookiesChoiceByCategory } from 'features/cookies/helpers/useCookiesChoiceByCategory'
 import { CookiesChoiceSettings } from 'features/cookies/types'
 import { analytics } from 'libs/analytics'
-import { AccordionItem } from 'ui/components/AccordionItem'
+import { Accordion } from 'ui/components/Accordion'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
@@ -170,7 +170,7 @@ const StyledInfo = styled(InfoPlain).attrs(({ theme }) => ({
   color: theme.colors.primary,
 }))``
 
-const StyledAccordionItem = styled(AccordionItem).attrs({
+const StyledAccordionItem = styled(Accordion).attrs({
   titleStyle: {
     paddingVertical: getSpacing(4),
     paddingHorizontal: 0,

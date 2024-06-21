@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { CookiesChoiceSettings } from 'features/cookies/types'
 import { env } from 'libs/environment'
-import { AccordionItem } from 'ui/components/AccordionItem'
+import { Accordion } from 'ui/components/Accordion'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -53,7 +53,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
 }
 
 const ACCORDION_BORDER_RADIUS = getSpacing(2)
-const StyledAccordionItem = styled(AccordionItem).attrs(({ theme }) => ({
+const StyledAccordionItem = styled(Accordion).attrs(({ theme }) => ({
   title: <Typo.ButtonText>Qu’est-ce que les cookies&nbsp;?</Typo.ButtonText>,
   titleStyle: {
     backgroundColor: theme.colors.greyLight,

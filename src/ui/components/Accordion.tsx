@@ -22,7 +22,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
 import { getSpacing, Spacer, Typo } from '../theme'
 
-interface AccordionItemProps {
+interface AccordionProps {
   title: React.JSX.Element | string
   accessibilityTitle?: string
   children: React.JSX.Element | React.JSX.Element[]
@@ -35,7 +35,7 @@ interface AccordionItemProps {
 }
 
 const isWeb = Platform.OS === 'web'
-export const AccordionItem = ({
+export const Accordion = ({
   title,
   children,
   defaultOpen = false,
@@ -44,7 +44,7 @@ export const AccordionItem = ({
   titleStyle,
   bodyStyle,
   switchProps,
-}: AccordionItemProps) => {
+}: AccordionProps) => {
   const [open, setOpen] = useState(defaultOpen)
   const [showChildren, setShowChildren] = useState(defaultOpen)
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
