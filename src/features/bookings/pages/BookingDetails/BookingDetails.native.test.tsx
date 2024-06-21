@@ -16,7 +16,6 @@ import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment/fixtures'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -318,19 +317,6 @@ describe('BookingDetails', () => {
       from: 'bookingdetails',
     })
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId, from: 'bookings' })
-  })
-
-  it('should redirect to survey with query params when user presses survey link', async () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[0]
-    renderBookingDetails(booking)
-
-    fireEvent.press(await screen.findByLabelText('Donner mon avis'))
-
-    expect(mockedOpenUrl).toHaveBeenCalledWith(
-      `${env.BOOKING_FEEDBACK_LINK}?BookingType=solo&BookingCategory=EVENEMENT_PATRIMOINE&IsFirstBooking=false`,
-      undefined,
-      true
-    )
   })
 
   it('should not redirect to the Offer and showSnackBarError when not connected', async () => {

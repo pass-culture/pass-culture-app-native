@@ -5,11 +5,9 @@ import React from 'react'
 
 import { SubscriptionStatus, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
-import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -18,8 +16,6 @@ import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 jest.mock('features/auth/context/AuthContext')
 
 const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd') }
-
-const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 const navProps = { route: { params: { age: 15 } } } as StackScreenProps<
   TutorialRootStackParamList,
@@ -114,16 +110,6 @@ describe('<ProfileTutorialAgeInformation />', () => {
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen).toMatchSnapshot()
-  })
-
-  it("should open questionnaire when pressing on 'Donner mon avis'", () => {
-    mockAuthContextWithUser(beneficiaryUser)
-    render(<ProfileTutorialAgeInformation {...navProps} />)
-
-    const link = screen.getByText('Donner mon avis')
-    fireEvent.press(link)
-
-    expect(openUrl).toHaveBeenCalledWith(env.TUTORIAL_FEEDBACK_LINK, undefined, true)
   })
 
   it('should display verify eligibility when user is eligible', () => {

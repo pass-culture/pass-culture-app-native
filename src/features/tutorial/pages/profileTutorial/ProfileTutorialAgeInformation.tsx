@@ -19,16 +19,11 @@ import { TutorialTimelineFifteen } from 'features/tutorial/components/profileTut
 import { TutorialTimelineSeventeen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSeventeen'
 import { TutorialTimelineSixteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSixteen'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -66,17 +61,6 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
         <Spacer.Column numberOfSpaces={6} />
         <Timeline age={age} activationAge={activationAge} />
         <Spacer.Column numberOfSpaces={4} />
-        <InfoBanner message="Cette page a-t-elle été utile&nbsp;? Aide-nous à l’améliorer en répondant à notre questionnaire.">
-          <Spacer.Column numberOfSpaces={2} />
-          <ExternalTouchableLink
-            as={ButtonQuaternarySecondary}
-            justifyContent="flex-start"
-            icon={ExternalSiteFilled}
-            wording="Donner mon avis"
-            externalNav={{ url: env.TUTORIAL_FEEDBACK_LINK }}
-            inline
-          />
-        </InfoBanner>
         {isLoggedIn ? null : (
           <Container>
             <Spacer.Column numberOfSpaces={10} />

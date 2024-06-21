@@ -3,7 +3,6 @@ import React from 'react'
 import { Platform, ScrollView, useWindowDimensions, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBookings, useOngoingOrEndedBooking } from 'features/bookings/api'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
@@ -12,7 +11,6 @@ import { BookingPropertiesSection } from 'features/bookings/components/BookingPr
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { TicketSwiper } from 'features/bookings/components/Ticket/TicketSwiper'
 import { getBookingProperties, getOfferRules } from 'features/bookings/helpers'
-import { buildBookingSurveyUrl } from 'features/bookings/helpers/buildBookingSurveyUrl'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/BookingNotFound'
 import { Booking } from 'features/bookings/types'
@@ -32,9 +30,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -45,7 +41,6 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { Helmet } from 'ui/web/global/Helmet'
@@ -66,7 +61,6 @@ export function BookingDetails() {
     error,
     dataUpdatedAt,
   } = useOngoingOrEndedBooking(params.id)
-  const { user } = useAuthContext()
 
   const prePopulateOffer = usePrePopulateOffer()
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
@@ -83,10 +77,7 @@ export function BookingDetails() {
   const venueFullAddress = address ? formatFullAddress(address, postalCode, city) : undefined
 
   const { data: bookings } = useBookings()
-  const {
-    ended_bookings: endedBookings = emptyBookings,
-    ongoing_bookings: ongoingBookings = emptyBookings,
-  } = bookings ?? {}
+  const { ended_bookings: endedBookings = emptyBookings } = bookings ?? {}
 
   const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()
 
@@ -181,14 +172,6 @@ export function BookingDetails() {
 
   const bookingContactEmail = booking.stock.offer.bookingContact
 
-  const numberOfBookings = endedBookings.length + ongoingBookings.length
-  const surveyUrl = buildBookingSurveyUrl({
-    isDuo: !!properties.isDuo,
-    subcategoryId: offer.subcategoryId,
-    numberOfBookings,
-    user,
-  })
-
   return (
     <Container>
       <Helmet title={helmetTitle} />
@@ -228,18 +211,6 @@ export function BookingDetails() {
                 />
               </React.Fragment>
             ) : null}
-            <Spacer.Column numberOfSpaces={6} />
-            <InfoBanner message="Est-ce qu’il te manque des infos&nbsp;? Dis-nous ce que tu en penses via notre court questionnaire.">
-              <Spacer.Column numberOfSpaces={2} />
-              <ExternalTouchableLink
-                as={ButtonQuaternarySecondary}
-                externalNav={{ url: surveyUrl.href }}
-                wording="Donner mon avis"
-                icon={ExternalSiteFilled}
-                justifyContent="flex-start"
-                inline
-              />
-            </InfoBanner>
           </InfoContainer>
 
           {offer.withdrawalDetails ? (

@@ -60,7 +60,6 @@ export const EnvironmentSchema = yup.object({
   SENTRY_TRACES_SAMPLE_RATE: yup.string().required(),
   SITE_PUBLIC_KEY: yup.string().required(),
   SUPPORT_EMAIL_ADDRESS: yup.string().required(),
-  TUTORIAL_FEEDBACK_LINK: yup.string().required(),
   FRAUD_EMAIL_ADDRESS: yup.string().required(),
   URL_PREFIX: yup.string().required(),
   WEBAPP_V2_DOMAIN: yup.string().required(),
