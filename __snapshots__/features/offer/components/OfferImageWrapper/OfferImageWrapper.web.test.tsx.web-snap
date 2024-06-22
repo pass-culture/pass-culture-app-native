@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<OfferImageBody /> should apply borderRadius when not in carousel 1`] = `
-<div
-  class="css-view-175oi2r r-borderRadius-1xfd6ze r-height-1pi2tsx r-width-13qz1uu r-zIndex-136ojw6"
-  data-testid="imageGradient"
-/>
-`;

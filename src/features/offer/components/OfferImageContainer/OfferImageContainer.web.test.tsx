@@ -12,19 +12,6 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 const mockOnPress = jest.fn()
 
 describe('<OfferImageContainer />', () => {
-  it('should not call onPress when viewport is not desktop', () => {
-    render(
-      <OfferImageContainer
-        imageUrls={['some_url_to_some_resource']}
-        categoryId={CategoryIdEnum.CINEMA}
-        onPress={mockOnPress}
-      />,
-      { theme: { isDesktopViewport: false } }
-    )
-
-    expect(screen.queryByTestId('headerTouchable')).toBeNull()
-  })
-
   it('should not display carousel with one image', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     render(

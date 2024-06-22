@@ -10,21 +10,22 @@ import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/O
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer } from 'ui/theme'
 
 type Props = {
   progressValue: SharedValue<number>
-  setIndex: React.Dispatch<React.SetStateAction<number>>
   offerImages: string[]
   shouldDisplayOfferPreview?: boolean
+  onItemPress?: (index: number) => void
 }
 
 const isWeb = Platform.OS === 'web'
 
 export const OfferImageCarousel: FunctionComponent<Props> = ({
   progressValue,
-  setIndex,
   offerImages,
+  onItemPress,
   shouldDisplayOfferPreview,
 }) => {
   const { imageStyle } = useOfferImageContainerDimensions()
@@ -43,7 +44,6 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
       maxIndex: offerImages.length - 1,
     })
     progressValue.value = newIndex
-    setIndex(newIndex)
     carouselRef.current?.scrollTo({ index: newIndex, animated: true })
   }
 
@@ -63,16 +63,20 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
         scrollAnimationDuration={500}
         onProgressChange={(_, absoluteProgress) => {
           progressValue.value = absoluteProgress
-          setIndex(Math.round(absoluteProgress))
         }}
         data={offerImages}
-        renderItem={({ item: image }) => (
-          <OfferImageWrapper
-            imageUrl={image}
-            shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-            isInCarousel>
-            <OfferBodyImage imageUrl={image} isInCarousel />
-          </OfferImageWrapper>
+        renderItem={({ item: image, index }) => (
+          <TouchableOpacity
+            disabled={!onItemPress}
+            onPress={() => onItemPress?.(index)}
+            delayPressIn={70}>
+            <OfferImageWrapper
+              imageUrl={image}
+              shouldDisplayOfferPreview={shouldDisplayOfferPreview}
+              isInCarousel>
+              <OfferBodyImage imageUrl={image} isInCarousel />
+            </OfferImageWrapper>
+          </TouchableOpacity>
         )}
         style={carouselStyle}
       />

@@ -2,7 +2,7 @@ import React, { ComponentProps } from 'react'
 
 import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
-import { render, screen } from 'tests/utils/web'
+import { render, screen, waitFor } from 'tests/utils/web'
 import { theme } from 'theme'
 
 describe('<OfferImageBody />', () => {
@@ -30,7 +30,7 @@ describe('<OfferImageBody />', () => {
     })
   })
 
-  it('should apply borderRadius when not in carousel', () => {
+  it('should apply borderRadius when not in carousel', async () => {
     renderOfferImageWrapper({
       isDesktopViewport: false,
       isInCarousel: false,
@@ -40,7 +40,14 @@ describe('<OfferImageBody />', () => {
 
     const container = screen.getByTestId('imageGradient')
 
-    expect(container).toMatchSnapshot()
+    await waitFor(() =>
+      expect(container).toHaveStyle({
+        borderTopLeftRadius: theme.borderRadius.radius + 'px',
+        borderTopRightRadius: theme.borderRadius.radius + 'px',
+        borderBottomRightRadius: theme.borderRadius.radius + 'px',
+        borderBottomLeftRadius: theme.borderRadius.radius + 'px',
+      })
+    )
   })
 })
 
