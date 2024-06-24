@@ -41,5 +41,11 @@ export const AppV2VenuesModule = ({ data, homeEntryId, moduleId, index }: Props)
 
   if (!shouldModuleBeDisplayed) return null
 
-  return <VenueListModule venues={playlistItems.slice(0, 4) as VenueHit[]} />
+  return (
+    <VenueListModule
+      venues={playlistItems.slice(0, 4) as VenueHit[]}
+      moduleId={moduleId}
+      homeVenuesListEntryId={homeEntryId}
+    />
+  )
 }

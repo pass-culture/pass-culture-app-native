@@ -37,13 +37,25 @@ jest.mock('libs/location', () => ({
 
 describe('<VenueListModule />', () => {
   it('should display venue list', () => {
-    render(<VenueListModule venues={venuesSearchFixture.hits} />)
+    render(
+      <VenueListModule
+        venues={venuesSearchFixture.hits}
+        moduleId="toto"
+        homeVenuesListEntryId="tata"
+      />
+    )
 
     expect(screen.getByText('LES LIEUX CULTURELS À PROXIMITÉ')).toBeOnTheScreen()
   })
 
   it('should redirect to venue map when pressing on venue list title', async () => {
-    render(<VenueListModule venues={venuesSearchFixture.hits} />)
+    render(
+      <VenueListModule
+        venues={venuesSearchFixture.hits}
+        moduleId="toto"
+        homeVenuesListEntryId="tata"
+      />
+    )
 
     fireEvent.press(screen.getByText('LES LIEUX CULTURELS À PROXIMITÉ'))
 
@@ -66,7 +78,13 @@ describe('<VenueListModule />', () => {
       onModalHideRef: jest.fn(),
     })
 
-    render(<VenueListModule venues={venuesSearchFixture.hits} />)
+    render(
+      <VenueListModule
+        venues={venuesSearchFixture.hits}
+        moduleId="toto"
+        homeVenuesListEntryId="tata"
+      />
+    )
 
     fireEvent.press(screen.getByText('LES LIEUX CULTURELS À PROXIMITÉ'))
 
@@ -74,7 +92,13 @@ describe('<VenueListModule />', () => {
   })
 
   it('should trigger log ConsultVenueMap when pressing on venue list title', async () => {
-    render(<VenueListModule venues={venuesSearchFixture.hits} />)
+    render(
+      <VenueListModule
+        venues={venuesSearchFixture.hits}
+        moduleId="toto"
+        homeVenuesListEntryId="tata"
+      />
+    )
 
     fireEvent.press(screen.getByText('LES LIEUX CULTURELS À PROXIMITÉ'))
 

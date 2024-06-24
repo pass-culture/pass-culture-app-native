@@ -11,7 +11,13 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<VenueListModule />', () => {
   it('should redirect to target venue when pressing on it', async () => {
-    render(<VenueListModule venues={venuesSearchFixture.hits} />)
+    render(
+      <VenueListModule
+        venues={venuesSearchFixture.hits}
+        moduleId="toto"
+        homeVenuesListEntryId="tata"
+      />
+    )
 
     fireEvent.press(screen.getByText('Le Petit Rintintin 1'))
 
@@ -21,7 +27,13 @@ describe('<VenueListModule />', () => {
   })
 
   it('should trigger log ConsultVenue when pressing on venue list item', async () => {
-    render(<VenueListModule venues={venuesSearchFixture.hits} />)
+    render(
+      <VenueListModule
+        venues={venuesSearchFixture.hits}
+        moduleId="toto"
+        homeVenuesListEntryId="tata"
+      />
+    )
 
     fireEvent.press(screen.getByText('Le Petit Rintintin 1'))
 
@@ -29,6 +41,8 @@ describe('<VenueListModule />', () => {
       expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
         venueId: 5543,
         from: 'venueList',
+        moduleId: 'toto',
+        homeEntryId: 'tata',
       })
     })
   })

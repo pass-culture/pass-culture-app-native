@@ -27,7 +27,12 @@ const ListHeaderComponent: FunctionComponent<ModuleProps> = ({
   const focusProps = useHandleFocus()
 
   const onPressSeeMore = () => {
-    analytics.logClickSeeMore({ moduleId, moduleName, from: 'venueList' })
+    analytics.logClickSeeMore({
+      moduleId,
+      moduleName,
+      from: 'venueList',
+      homeEntryId: homeVenuesListEntryId,
+    })
   }
 
   return (
@@ -75,7 +80,13 @@ export const VenueListModule: FunctionComponent<Props> = ({
       data={venues}
       key={`venueList-${numColumns}`}
       keyExtractor={keyExtractor}
-      renderItem={({ item }) => <VenueListModuleItem item={item} />}
+      renderItem={({ item }) => (
+        <VenueListModuleItem
+          item={item}
+          moduleId={moduleId}
+          homeVenuesListEntryId={homeVenuesListEntryId}
+        />
+      )}
       ListHeaderComponent={
         <ListHeaderComponent
           homeVenuesListEntryId={homeVenuesListEntryId}

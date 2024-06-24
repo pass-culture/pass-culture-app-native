@@ -54,9 +54,15 @@ const keyExtractor: (item: VenueHit) => string = (item) => item.id.toString()
 
 type Props = {
   venues: VenueHit[]
+  moduleId: string
+  homeVenuesListEntryId?: string
 }
 
-export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
+export const VenueListModule: FunctionComponent<Props> = ({
+  venues,
+  moduleId,
+  homeVenuesListEntryId,
+}) => {
   const { selectedLocationMode } = useLocation()
   const {
     showModal: showVenueMapLocationModal,
@@ -77,7 +83,13 @@ export const VenueListModule: FunctionComponent<Props> = ({ venues }) => {
         itemAs="li"
         data={venues}
         keyExtractor={keyExtractor}
-        renderItem={({ item }) => <VenueListModuleItem item={item} />}
+        renderItem={({ item }) => (
+          <VenueListModuleItem
+            item={item}
+            moduleId={moduleId}
+            homeVenuesListEntryId={homeVenuesListEntryId}
+          />
+        )}
         ItemSeparatorComponent={SpacerSeparator}
         ListHeaderComponent={<ListHeaderComponent onPress={onPress} />}
       />
