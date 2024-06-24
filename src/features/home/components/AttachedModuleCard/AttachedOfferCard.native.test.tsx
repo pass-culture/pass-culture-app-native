@@ -5,6 +5,7 @@ import { UseQueryResult } from 'react-query'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { ILocationContext, LocationMode, Position } from 'libs/location/types'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { render, screen } from 'tests/utils'
@@ -33,6 +34,7 @@ jest.mock('libs/subcategories/useSubcategories')
 const mockUseSubcategories = jest.mocked(useSubcategories)
 mockUseSubcategories.mockReturnValue({
   isLoading: false,
+  data: PLACEHOLDER_DATA,
 } as UseQueryResult<SubcategoriesResponseModelv2, unknown>)
 
 mockdate.set(new Date('2019-12-01T00:00:00.000Z'))
@@ -61,5 +63,14 @@ describe('AttachedOfferCard', () => {
     const price = screen.getByText('34 €')
 
     expect(price).toBeOnTheScreen()
+  })
+
+  it('should have accessibility label', () => {
+    render(<AttachedOfferCard offer={offer} />)
+    const accessibilityLabel = screen.getByLabelText(
+      'Découvre l’offre exclusive "Un lit sous une rivière" de la catégorie "Concert". Date\u00a0: 17 novembre 2020. Prix\u00a0: 34 €.'
+    )
+
+    expect(accessibilityLabel).toBeOnTheScreen()
   })
 })

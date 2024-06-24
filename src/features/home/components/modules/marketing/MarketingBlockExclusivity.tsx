@@ -18,8 +18,6 @@ const UnmemoizedMarketingBlockExclusivity = ({
   homeEntryId,
   backgroundImageUrl,
 }: AttachedOfferCardProps) => {
-  const accessibilityLabel = `Découvre l’offre exclusive "${offer.offer.name}"`
-
   const logConsultOffer = () => {
     analytics.logConsultOffer({
       offerId: parseInt(offer.objectID),
@@ -32,7 +30,6 @@ const UnmemoizedMarketingBlockExclusivity = ({
 
   return (
     <MarketingBlock
-      accessibilityLabel={accessibilityLabel}
       navigateTo={{ screen: 'Offer', params: { id: offer.objectID } }}
       onBeforeNavigate={logConsultOffer}
       backgroundImageUrl={backgroundImageUrl}

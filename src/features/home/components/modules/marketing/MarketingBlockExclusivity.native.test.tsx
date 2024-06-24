@@ -29,16 +29,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 }))
 
 describe('MarketingBlockExclusivity', () => {
-  it('should display correct accessibility label', () => {
-    render(<MarketingBlockExclusivity {...props} />)
-
-    const accessibilityLabel = screen.getByLabelText(
-      'Découvre l’offre exclusive "La nuit des temps"'
-    )
-
-    expect(accessibilityLabel).toBeTruthy()
-  })
-
   it('navigate to offer when pressing', async () => {
     render(<MarketingBlockExclusivity {...props} />)
 

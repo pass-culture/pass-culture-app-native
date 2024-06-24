@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard/AttachedCardDisplay'
+import { getExclusivityAccessibilityLabel } from 'features/home/helpers/getExclusivityAccessibilityLabel'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
@@ -30,12 +31,21 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer }) => {
   if (price) details.push(price)
   if (!attachedOffer.name) return null
 
+  const accessibilityLabel = getExclusivityAccessibilityLabel({
+    offerName: attachedOffer.name,
+    offerCategory: categoryName,
+    offerDate: date,
+    offerPrice: price,
+    offerDistance: distanceLabel,
+  })
+
   return (
     <AttachedCardDisplay
       title={attachedOffer.name}
       subtitle={categoryName}
       details={details}
       rightTagLabel={distanceLabel}
+      accessibilityLabel={accessibilityLabel}
       LeftImageComponent={() => (
         <OfferImage
           imageUrl={attachedOffer?.thumbUrl}

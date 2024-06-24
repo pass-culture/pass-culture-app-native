@@ -11,6 +11,7 @@ interface AttachedCardDisplayProps {
   LeftImageComponent?: React.FunctionComponent
   rightTagLabel?: string
   bottomRightElement?: React.ReactNode
+  accessibilityLabel?: string
 }
 
 const BORDER_WIDTH = getSpacing(0.25)
@@ -24,9 +25,10 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
   LeftImageComponent,
   rightTagLabel,
   bottomRightElement,
+  accessibilityLabel,
 }: AttachedCardDisplayProps) => {
   return (
-    <Container>
+    <Container accessibilityLabel={accessibilityLabel}>
       {LeftImageComponent ? (
         <ImageContainer>
           <LeftImageComponent />
