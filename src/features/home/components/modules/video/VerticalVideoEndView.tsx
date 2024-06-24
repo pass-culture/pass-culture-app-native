@@ -4,7 +4,7 @@ import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
-import { VideoPlayerButtonsWording } from 'features/home/components/modules/video/VerticalVideoPlayer'
+import { VideoPlayerButtonsWording } from 'features/home/components/modules/video/useVerticalVideoPlayer'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { PlayV2 } from 'ui/svg/icons/PlayV2'
 import { getSpacing } from 'ui/theme'

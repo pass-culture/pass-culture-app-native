@@ -1,5 +1,5 @@
 import colorAlpha from 'color-alpha'
-import React from 'react'
+import React, { useRef } from 'react'
 import { useWindowDimensions, Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import Animated, {
@@ -9,7 +9,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
-import YouTubePlayer from 'react-native-youtube-iframe'
+import YouTubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -17,7 +17,11 @@ import {
   RATIO710,
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
-import { useVerticalVideoPlayer } from 'features/home/components/modules/video/useVerticalVideoPlayer'
+import {
+  useVerticalVideoPlayer,
+  VerticalVideoPlayerProps,
+  VideoPlayerButtonsWording,
+} from 'features/home/components/modules/video/useVerticalVideoPlayer'
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
 import { VerticalVideoErrorView } from 'features/home/components/modules/video/VerticalVideoErrorView'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
@@ -32,26 +36,7 @@ import { PlayerState } from './types'
 
 const PLAYER_CONTROLS_HEIGHT = getSpacing(0)
 
-export enum VideoPlayerButtonsWording {
-  CONTINUE_PLAYING = 'Continuer à regarder',
-  START_PLAYING = 'Lire la vidéo',
-  NEXT_VIDEO = 'Voir la vidéo suivante',
-  REPLAY_VIDEO = 'Revoir la vidéo',
-}
-
-export interface VideoPlayerProps {
-  videoSources: string[]
-  playNextVideo: () => void
-  currentIndex: number
-  isPlaying: boolean
-  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
-  hasFinishedPlaying: boolean
-  setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
-  moduleId: string
-  homeEntryId: string
-}
-
-export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
+export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
   videoSources,
   currentIndex,
   playNextVideo,
@@ -62,6 +47,9 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   moduleId,
   homeEntryId,
 }) => {
+  const playerRef = useRef<YoutubeIframeRef>(null)
+  const playerRefCurrent = playerRef.current
+
   const {
     isMuted,
     toggleMute,
@@ -70,7 +58,6 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     pauseVideo,
     playVideo,
     replayVideo,
-    playerRef,
     onChangeState,
     showErrorView,
     toggleErrorView,
@@ -78,6 +65,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     getVideoDuration,
     getCurrentTime,
   } = useVerticalVideoPlayer({
+    playerRefCurrent,
     isPlaying,
     setIsPlaying,
     setHasFinishedPlaying,
@@ -85,7 +73,6 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     currentVideoId: videoSources[currentIndex],
     homeEntryId,
   })
-
   const { isDesktopViewport } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
   const { playerHeight, playerWidth } = getVideoPlayerDimensions(
@@ -340,3 +327,5 @@ const IconContainer = styled.View(({ theme }) => ({
   padding: getSpacing(2.5),
   backgroundColor: theme.colors.white,
 }))
+
+export { VideoPlayerButtonsWording }
