@@ -49,6 +49,7 @@ describe('<VenueListModule />', () => {
         from: 'venueList',
         moduleId: 'toto',
         moduleName: 'tata',
+        homeEntryId: '123',
       })
     })
   })

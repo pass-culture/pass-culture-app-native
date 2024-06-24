@@ -16,9 +16,15 @@ const isWeb = Platform.OS === 'web'
 
 type Props = {
   item: VenueHit
+  moduleId: string
+  homeVenuesListEntryId?: string
 }
 
-export const VenueListModuleItem: FunctionComponent<Props> = ({ item }) => {
+export const VenueListModuleItem: FunctionComponent<Props> = ({
+  item,
+  moduleId,
+  homeVenuesListEntryId,
+}) => {
   const { userLocation } = useLocation()
   const distance = formatDistance({ lat: item.latitude, lng: item.longitude }, userLocation)
   const address = [item.city, item.postalCode].filter(Boolean).join(', ')
@@ -27,6 +33,8 @@ export const VenueListModuleItem: FunctionComponent<Props> = ({ item }) => {
     analytics.logConsultVenue({
       venueId: item.id,
       from: 'venueList',
+      moduleId,
+      homeEntryId: homeVenuesListEntryId,
     })
   }
 

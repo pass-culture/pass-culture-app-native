@@ -39,7 +39,7 @@ export const AppV2VenuesModule = ({
         moduleId,
         moduleType: ContentTypes.VENUES_PLAYLIST_APP_V2,
         index,
-        homeEntryId: homeEntryId,
+        homeEntryId,
         venues: (playlistItems.slice(0, 4) as VenueHit[]).map((item) => String(item.id)),
       })
     }
