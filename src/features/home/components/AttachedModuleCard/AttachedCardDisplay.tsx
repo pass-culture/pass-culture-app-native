@@ -12,6 +12,7 @@ interface AttachedCardDisplayProps {
   rightTagLabel?: string
   bottomRightElement?: React.ReactNode
   accessibilityLabel?: string
+  shouldFixHeight?: boolean
 }
 
 const BORDER_WIDTH = getSpacing(0.25)
@@ -26,9 +27,10 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
   rightTagLabel,
   bottomRightElement,
   accessibilityLabel,
+  shouldFixHeight = false,
 }: AttachedCardDisplayProps) => {
   return (
-    <Container accessibilityLabel={accessibilityLabel}>
+    <Container accessibilityLabel={accessibilityLabel} shouldFixHeight={shouldFixHeight}>
       {LeftImageComponent ? (
         <ImageContainer>
           <LeftImageComponent />
@@ -87,7 +89,7 @@ const ImageContainer = styled.View({
   justifyContent: 'center',
 })
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled.View<{ shouldFixHeight: boolean }>(({ theme, shouldFixHeight }) => ({
   ...getShadow({
     shadowOffset: {
       width: 0,
@@ -104,6 +106,6 @@ const Container = styled.View(({ theme }) => ({
   gap: getSpacing(2),
   flexDirection: 'row',
   padding: OFFER_CARD_PADDING,
-  maxHeight: OFFER_CARD_HEIGHT + 2 * OFFER_CARD_PADDING,
   flexWrap: 'wrap',
+  height: shouldFixHeight ? OFFER_CARD_HEIGHT + 2 * OFFER_CARD_PADDING : 'auto',
 }))

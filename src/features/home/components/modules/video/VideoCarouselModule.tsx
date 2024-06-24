@@ -133,7 +133,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
 
       return (
         <StyledInternalTouchableLink key={index} {...containerProps}>
-          <AttachedOfferCard offer={offer} />
+          <AttachedOfferCard offer={offer} shouldFixHeight />
         </StyledInternalTouchableLink>
       )
     }
@@ -157,6 +157,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
           title={thematicHomeTitle ?? ''}
           subtitle={thematicHomeSubtitle ?? ''}
           label={thematicHomeTag ?? ''}
+          shouldFixHeight
         />
       </StyledInternalTouchableLink>
     )

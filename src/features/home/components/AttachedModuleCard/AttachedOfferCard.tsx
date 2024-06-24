@@ -11,9 +11,10 @@ import { OfferImage } from 'ui/components/tiles/OfferImage'
 
 type Props = {
   offer: Offer
+  shouldFixHeight?: boolean
 }
 
-export const AttachedOfferCard: React.FC<Props> = ({ offer }) => {
+export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight }) => {
   const { offer: attachedOffer } = offer
   const mapping = useCategoryIdMapping()
   const categoryId = mapping[attachedOffer.subcategoryId]
@@ -54,6 +55,7 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer }) => {
           withStroke
         />
       )}
+      shouldFixHeight={shouldFixHeight}
     />
   )
 }

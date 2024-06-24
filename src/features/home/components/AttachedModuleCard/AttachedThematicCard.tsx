@@ -9,9 +9,10 @@ type Props = {
   title: string
   subtitle?: string
   label?: string
+  shouldFixHeight?: boolean
 }
 
-export const AttachedThematicCard = ({ title, subtitle, label }: Props) => {
+export const AttachedThematicCard = ({ title, subtitle, label, shouldFixHeight }: Props) => {
   const details = subtitle ? [subtitle] : undefined
 
   const accessibilityLabel = getHighlightAccessibilityLabel({
@@ -27,6 +28,7 @@ export const AttachedThematicCard = ({ title, subtitle, label }: Props) => {
       details={details}
       accessibilityLabel={accessibilityLabel}
       bottomRightElement={<ArrowRightIcon />}
+      shouldFixHeight={shouldFixHeight}
     />
   )
 }
