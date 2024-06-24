@@ -15,16 +15,6 @@ const props: MarketingBlockHighlightProps = {
 }
 
 describe('MarketingBlockHighlight', () => {
-  it('should display correct accessibility label', () => {
-    render(<MarketingBlockHighlight {...props} />)
-
-    const accessibilityLabel = screen.getByLabelText(
-      'Découvre le temps fort "Harry Potter et l’Ordre du Phénix" Du 12/06 au 24/06.'
-    )
-
-    expect(accessibilityLabel).toBeTruthy()
-  })
-
   it('navigate to highlight thematic home when pressing', () => {
     render(<MarketingBlockHighlight {...props} />)
 

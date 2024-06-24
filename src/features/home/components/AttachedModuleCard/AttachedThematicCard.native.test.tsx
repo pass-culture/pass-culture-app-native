@@ -11,4 +11,14 @@ describe('AttachedThematicCard', () => {
 
     expect(date).toBeOnTheScreen()
   })
+
+  it('should have accessibilityLabel', () => {
+    render(<AttachedThematicCard title="title" subtitle="du 15/09 au 12/12" label="Cinéma" />)
+
+    const card = screen.getByLabelText(
+      'Découvre le temps fort "title" du 15/09 au 12/12 sur le thème "Cinéma".'
+    )
+
+    expect(card).toBeOnTheScreen()
+  })
 })

@@ -20,8 +20,6 @@ const UnmemoizedMarketingBlockHighlight = ({
   backgroundImageUrl,
   subtitle,
 }: MarketingBlockHighlightProps) => {
-  const accessibilityLabel = `Découvre le temps fort "${title}" ${dateRange}.`
-
   return (
     <MarketingBlock
       navigateTo={{
@@ -29,7 +27,6 @@ const UnmemoizedMarketingBlockHighlight = ({
         params: { homeId, from: 'highlight_thematic_block', moduleId },
       }}
       backgroundImageUrl={backgroundImageUrl}
-      accessibilityLabel={accessibilityLabel}
       AttachedCardComponent={
         <AttachedThematicCard title={title} subtitle={subtitle} label={label} />
       }

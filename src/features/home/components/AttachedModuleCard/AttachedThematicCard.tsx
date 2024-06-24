@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { AttachedCardDisplay } from 'features/home/components/AttachedModuleCard/AttachedCardDisplay'
+import { getHighlightAccessibilityLabel } from 'features/home/helpers/getHighlightAccessibilityLabel'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 type Props = {
@@ -13,11 +14,18 @@ type Props = {
 export const AttachedThematicCard = ({ title, subtitle, label }: Props) => {
   const details = subtitle ? [subtitle] : undefined
 
+  const accessibilityLabel = getHighlightAccessibilityLabel({
+    title,
+    subtitle,
+    label,
+  })
+
   return (
     <AttachedCardDisplay
       title={title}
       subtitle={label}
       details={details}
+      accessibilityLabel={accessibilityLabel}
       bottomRightElement={<ArrowRightIcon />}
     />
   )
