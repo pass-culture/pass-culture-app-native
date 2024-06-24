@@ -1,8 +1,8 @@
 import colorAlpha from 'color-alpha'
-import React from 'react'
+import React, { useRef } from 'react'
 import { useWindowDimensions, Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import YouTubePlayer from 'react-native-youtube-iframe'
+import YouTubePlayer, { PLAYER_STATES, YoutubeIframeRef } from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -13,6 +13,8 @@ import { ButtonWithCaption } from 'features/home/components/modules/video/Button
 import {
   PlayerState,
   useVerticalVideoPlayer,
+  VerticalVideoPlayerProps,
+  VideoPlayerButtonsWording,
 } from 'features/home/components/modules/video/useVerticalVideoPlayer'
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
 import { VerticalVideoErrorView } from 'features/home/components/modules/video/VerticalVideoErrorView'
@@ -27,25 +29,28 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const PLAYER_CONTROLS_HEIGHT = getSpacing(0)
 
-export enum VideoPlayerButtonsWording {
-  CONTINUE_PLAYING = 'Continuer à regarder',
-  START_PLAYING = 'Lire la vidéo',
-  NEXT_VIDEO = 'Voir la vidéo suivante',
-  REPLAY_VIDEO = 'Revoir la vidéo',
+const translatePlateformStateMobile = (newWebPlayerState: string): PlayerState | undefined => {
+  switch (newWebPlayerState) {
+    case PLAYER_STATES.UNSTARTED:
+      return PlayerState.UNSTARTED
+      break
+    case PLAYER_STATES.ENDED:
+      return PlayerState.ENDED
+      break
+    case PLAYER_STATES.PLAYING:
+      return PlayerState.PLAYING
+      break
+    case PLAYER_STATES.PAUSED:
+      return PlayerState.PAUSED
+      break
+    case PLAYER_STATES.BUFFERING:
+    case PLAYER_STATES.VIDEO_CUED:
+    default:
+      return undefined
+  }
 }
 
-interface VideoPlayerProps {
-  videoSources: string[]
-  playNextVideo: () => void
-  currentIndex: number
-  isPlaying: boolean
-  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
-  hasFinishedPlaying: boolean
-  setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
-  moduleId: string
-}
-
-export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
+export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
   videoSources,
   currentIndex,
   playNextVideo,
@@ -55,6 +60,9 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   setHasFinishedPlaying,
   moduleId,
 }) => {
+  const playerRef = useRef<YoutubeIframeRef>(null)
+  const playerRefCurrent = playerRef.current
+
   const {
     isMuted,
     toggleMute,
@@ -63,20 +71,19 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     pauseVideo,
     playVideo,
     replayVideo,
-    playerRef,
     elapsed,
     onChangeState,
     showErrorView,
     toggleErrorView,
     videoState,
   } = useVerticalVideoPlayer({
+    playerRefCurrent,
     isPlaying,
     setIsPlaying,
     setHasFinishedPlaying,
     moduleId,
     currentVideoId: videoSources[currentIndex],
   })
-
   const { isDesktopViewport } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
   const { playerHeight, playerWidth } = getVideoPlayerDimensions(
@@ -147,7 +154,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           `,
             scrollEnabled: false,
           }}
-          onChangeState={onChangeState}
+          onChangeState={(state) => onChangeState(translatePlateformStateMobile(state))}
         />
       </StyledVideoPlayerContainer>
 
@@ -266,3 +273,5 @@ const IconContainer = styled.View(({ theme }) => ({
   padding: getSpacing(2.5),
   backgroundColor: theme.colors.white,
 }))
+
+export { VideoPlayerButtonsWording }

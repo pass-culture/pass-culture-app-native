@@ -1,8 +1,16 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { AppState } from 'react-native'
 import { YoutubeIframeRef } from 'react-native-youtube-iframe'
+import YouTube from 'react-youtube'
 
 import { analytics } from 'libs/analytics'
+
+export enum VideoPlayerButtonsWording {
+  CONTINUE_PLAYING = 'Continuer à regarder',
+  START_PLAYING = 'Lire la vidéo',
+  NEXT_VIDEO = 'Voir la vidéo suivante',
+  REPLAY_VIDEO = 'Revoir la vidéo',
+}
 
 export enum PlayerState {
   UNSTARTED = 'unstarted',
@@ -10,6 +18,18 @@ export enum PlayerState {
   PLAYING = 'playing',
   PAUSED = 'paused',
   ENDED = 'ended',
+  CUED = 'video cued',
+}
+
+export interface VerticalVideoPlayerProps {
+  videoSources: string[]
+  playNextVideo: () => void
+  currentIndex: number
+  isPlaying: boolean
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
+  hasFinishedPlaying: boolean
+  setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
+  moduleId: string
 }
 
 type Props = {
@@ -17,6 +37,7 @@ type Props = {
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
   setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
   moduleId: string
+  playerRefCurrent: YoutubeIframeRef | YouTube['internalPlayer'] | null
   currentVideoId?: string
 }
 
@@ -26,12 +47,12 @@ export const useVerticalVideoPlayer = ({
   setHasFinishedPlaying,
   moduleId,
   currentVideoId,
+  playerRefCurrent,
 }: Props) => {
   const [isMuted, setIsMuted] = useState(true)
   const [elapsed, setElapsed] = useState(0)
   const [showErrorView, setShowErrorView] = useState(false)
   const [videoState, setVideoState] = useState(PlayerState.UNSTARTED)
-  const verticalPlayerRef = useRef<YoutubeIframeRef>(null)
 
   // Make sure the video stop playing when app is not in an active state (eg: background/inactive)
   useEffect(() => {
@@ -44,43 +65,54 @@ export const useVerticalVideoPlayer = ({
     return () => {
       subscription.remove()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     const interval = setInterval(async () => {
-      const videoDuration = await getVideoDuration()
-      const elapsed_sec = await verticalPlayerRef.current?.getCurrentTime()
-      if (elapsed_sec && videoDuration) setElapsed(elapsed_sec / videoDuration)
+      if (playerRefCurrent) {
+        try {
+          const videoDuration = await playerRefCurrent.getDuration()
+          const elapsed_sec = await playerRefCurrent.getCurrentTime()
+          if (elapsed_sec && videoDuration) setElapsed(elapsed_sec / videoDuration)
+        } catch (error) {
+          console.error('Error getting video duration or current time:', error)
+        }
+      }
     }, 100)
 
     return () => {
       clearInterval(interval)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [playerRefCurrent])
 
   const onChangeState = useCallback(
-    (state: string) => {
-      setVideoState(state as PlayerState)
-      setShowErrorView(false)
-      if (state === PlayerState.ENDED) {
-        analytics.logHasSeenAllVideo(moduleId, currentVideoId)
-        setHasFinishedPlaying(true)
-        setIsPlaying(false)
-      } else if (state === PlayerState.PAUSED) {
-        setIsPlaying(false)
-      } else if (state === PlayerState.PLAYING) {
-        setIsPlaying(true)
-      } else if (state === PlayerState.UNSTARTED) {
-        setIsPlaying(true)
+    (state: PlayerState | undefined) => {
+      if (state) {
+        setVideoState(state)
+        setShowErrorView(false)
+      }
+      switch (state) {
+        case undefined:
+          throw new Error(' Buffering or cued needs to be handled\u00a0! ')
+        case PlayerState.ENDED:
+          analytics.logHasSeenAllVideo(moduleId, currentVideoId)
+          setHasFinishedPlaying(true)
+          setIsPlaying(false)
+          break
+        case PlayerState.PAUSED:
+          setIsPlaying(false)
+          break
+        case PlayerState.PLAYING:
+        case PlayerState.UNSTARTED:
+          setIsPlaying(true)
+          break
       }
     },
     [setIsPlaying, setHasFinishedPlaying, currentVideoId, moduleId]
   )
 
   const getVideoDuration = async () => {
-    return verticalPlayerRef.current?.getDuration()
+    return playerRefCurrent?.getDuration()
   }
 
   const logPausedVideo = async () => {
@@ -97,10 +129,17 @@ export const useVerticalVideoPlayer = ({
   }
 
   const toggleMute = () => {
+    if ('mute' in playerRefCurrent) {
+      isMuted ? playerRefCurrent.unMute() : playerRefCurrent.mute()
+    }
+
     setIsMuted(!isMuted)
   }
 
   const pauseVideo = () => {
+    if ('pauseVideo' in playerRefCurrent) {
+      playerRefCurrent.pauseVideo()
+    }
     setIsPlaying(false)
   }
 
@@ -109,19 +148,21 @@ export const useVerticalVideoPlayer = ({
       pauseVideo()
       logPausedVideo()
     } else {
-      setIsPlaying(true)
+      playVideo()
     }
   }
 
   const playVideo = () => {
+    if ('playVideo' in playerRefCurrent) {
+      playerRefCurrent.playVideo()
+    }
     setIsPlaying(true)
     setHasFinishedPlaying(false)
   }
 
   const replayVideo = () => {
-    verticalPlayerRef.current?.seekTo(0, false)
-    setHasFinishedPlaying(false)
-    setIsPlaying(true)
+    playerRefCurrent?.seekTo(0, false)
+    playVideo()
   }
 
   const toggleErrorView = () => setShowErrorView(true)
@@ -134,7 +175,6 @@ export const useVerticalVideoPlayer = ({
     intersectionObserverListener,
     playVideo,
     replayVideo,
-    playerRef: verticalPlayerRef,
     elapsed,
     showErrorView,
     onChangeState,
