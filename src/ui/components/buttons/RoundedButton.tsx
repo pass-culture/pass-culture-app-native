@@ -12,13 +12,14 @@ import { ArrowRightNew } from 'ui/svg/icons/ArrowRightNew'
 import { Share } from 'ui/svg/icons/BicolorShare'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
+import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 interface Props {
-  iconName: 'back' | 'share' | 'favorite' | 'favorite-filled' | 'next' | 'previous'
+  iconName: 'back' | 'share' | 'favorite' | 'favorite-filled' | 'next' | 'previous' | 'reaction'
   initialColor?: ColorsEnum
   finalColor?: ColorsEnum
   onPress: () => void
@@ -41,6 +42,7 @@ const iconMapping: { [key in Props['iconName']]: React.FC<AccessibleIcon> } = {
   share: Share,
   'favorite-filled': FavoriteFilled,
   favorite: Favorite,
+  reaction: ThumbUp,
 }
 
 const getIcon = (iconName: Props['iconName']): React.FC<AccessibleIcon> => {

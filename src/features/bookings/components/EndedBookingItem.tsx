@@ -9,6 +9,8 @@ import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useCategoryId } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -19,6 +21,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Wrong } from 'ui/svg/icons/Wrong'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -29,6 +32,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
+  const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
   const isEligibleBookingsForArchiveValue = isEligibleBookingsForArchive(booking)
 
@@ -89,7 +93,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   }, [stock.offer.id, shareOffer, showShareOfferModal])
 
   return (
-    <React.Fragment>
+    <Container>
       <ContentContainer
         enableNavigate={!!netInfo.isConnected}
         navigateTo={
@@ -110,6 +114,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
           </EndedReasonAndDate>
         </AttributesView>
       </ContentContainer>
+      <ViewGap gap={4}>
       <ShareContainer>
         <RoundedButton
           iconName="share"
@@ -117,6 +122,16 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
           accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
         />
       </ShareContainer>
+        {shouldDisplayReactionFeature ? (
+          <ReactionContainer>
+            <RoundedButton
+              iconName="reaction"
+              onPress={showReactionModal}
+              accessibilityLabel="Réagis à ta réservation"
+            />
+          </ReactionContainer>
+        ) : null}
+      </ViewGap>
       {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
@@ -125,13 +140,19 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
           dismissModal={hideShareOfferModal}
         />
       ) : null}
-    </React.Fragment>
+    </Container>
   )
 }
+
+const Container = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
 
 const ContentContainer = styled(InternalTouchableLink)(({ theme }) => ({
   flexDirection: 'row',
   paddingRight: theme.buttons.roundedButton.size,
+  flex: 1,
 }))
 
 const AttributesView = styled.View({
@@ -176,8 +197,9 @@ const StyledInputRule = styled(InputRule).attrs(({ theme }) => ({
 }))``
 
 const ShareContainer = styled.View(({ theme }) => ({
-  position: 'absolute',
-  top: 0,
-  right: 0,
+  borderRadius: theme.buttons.roundedButton.size,
+}))
+
+const ReactionContainer = styled.View(({ theme }) => ({
   borderRadius: theme.buttons.roundedButton.size,
 }))
