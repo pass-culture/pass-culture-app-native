@@ -95,16 +95,10 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
       <Spacer.Column numberOfSpaces={5} />
       {hasGraphicRedesign ? (
         <MarketingBlockExclusivity
-          offerId={parseInt(highlightOfferId)}
+          offer={highlightOffer}
           homeEntryId={homeEntryId}
-          moduleId={props.id}
-          title={highlightOffer.offer.name || ''}
-          categoryId={categoryId}
           backgroundImageUrl={props.image}
-          offerImageUrl={highlightOffer.offer.thumbUrl}
-          offerLocation={highlightOffer._geoloc}
-          price={priceText}
-          categoryText={categoryLabel || ''}
+          moduleId={props.id}
         />
       ) : (
         <View>

@@ -2,47 +2,22 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  AttachedOfferCard,
-  AttachedOfferCardProps,
-} from 'features/home/components/AttachedOfferCard'
 import { BlackGradient } from 'features/home/components/BlackGradient'
-import { mapCategoryToIcon } from 'libs/parsers/category'
+import { MarketingBlockProps } from 'features/home/components/modules/marketing/MarketingBlock'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { BlurAmount } from 'ui/components/BlurryWrapper/BlurAmount'
 import { BlurryWrapper } from 'ui/components/BlurryWrapper/BlurryWrapper'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { All } from 'ui/svg/icons/bicolor/All'
 import { getSpacing, Spacer } from 'ui/theme'
 
-type MarketingBlockProps = Omit<AttachedOfferCardProps, 'onPress'> & {
-  accessibilityLabel: string
-  navigateTo: InternalNavigationProps['navigateTo']
-  backgroundImageUrl?: string
-  onBeforeNavigate?: () => void
-}
-
 export const MarketingBlockContentDesktop = ({
-  accessibilityLabel,
   navigateTo,
   onBeforeNavigate,
-  title,
-  categoryId,
+  AttachedCardComponent,
   backgroundImageUrl,
-  imageUrl,
-  offerLocation,
-  price,
-  categoryText,
-  date,
-  withRightArrow,
-  showImage,
+  accessibilityLabel,
 }: MarketingBlockProps) => {
-  const Icon = mapCategoryToIcon(categoryId || null)
-  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    size: theme.illustrations.sizes.small,
-    color: theme.colors.greyMedium,
-  }))``
-
   return (
     <View testID="MarketingBlockContentDesktop">
       <Container>
@@ -51,7 +26,7 @@ export const MarketingBlockContentDesktop = ({
             <Image url={backgroundImageUrl} />
           ) : (
             <ImagePlaceholder>
-              <StyledIcon />
+              <StyledAll />
             </ImagePlaceholder>
           )}
         </BackgroundImageContainer>
@@ -60,19 +35,7 @@ export const MarketingBlockContentDesktop = ({
           navigateTo={navigateTo}
           onBeforeNavigate={onBeforeNavigate}
           accessibilityLabel={accessibilityLabel}>
-          <AttachedOfferCardContainer>
-            <AttachedOfferCard
-              title={title}
-              categoryId={categoryId}
-              imageUrl={imageUrl}
-              offerLocation={offerLocation}
-              price={price}
-              categoryText={categoryText}
-              date={date}
-              withRightArrow={withRightArrow}
-              showImage={showImage}
-            />
-          </AttachedOfferCardContainer>
+          <AttachedOfferCardContainer>{AttachedCardComponent}</AttachedOfferCardContainer>
         </StyledTouchableLink>
       </Container>
       <BackgroundContainer>
@@ -149,3 +112,8 @@ const BackgroundContainer = styled.View({
   paddingVertical: getSpacing(10),
   zIndex: -5,
 })
+
+const StyledAll = styled(All).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.small,
+  color: theme.colors.greyMedium,
+}))``

@@ -1,17 +1,15 @@
 import React from 'react'
+import { Text } from 'react-native'
 
-import { CategoryIdEnum } from 'api/gen'
 import { render, screen } from 'tests/utils'
 
-import { MarketingBlock } from './MarketingBlock'
+import { MarketingBlock, MarketingBlockProps } from './MarketingBlock'
 
-const props = {
+const props: MarketingBlockProps = {
   accessibilityLabel: 'Accessibility label',
-  title: 'Harry Potter et l’Ordre du Phénix',
-  categoryId: CategoryIdEnum.FILM,
-  categoryText: 'Cinéma',
   navigateTo: { screen: 'Venue' as const },
   backgroundImageUrl: 'url',
+  AttachedCardComponent: <Text>AttachedCardComponent</Text>,
 }
 
 describe('MarketingBlock', () => {

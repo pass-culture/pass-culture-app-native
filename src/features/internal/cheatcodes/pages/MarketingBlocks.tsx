@@ -2,10 +2,10 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum } from 'api/gen'
 import { MarketingBlockExclusivity } from 'features/home/components/modules/marketing/MarketingBlockExclusivity'
 import { MarketingBlockHighlight } from 'features/home/components/modules/marketing/MarketingBlockHighlight'
 import { CheatcodesHeader } from 'features/internal/cheatcodes/components/CheatcodesHeader'
+import { offersFixture } from 'shared/offer/offer.fixture'
 import { Spacer, Typo } from 'ui/theme'
 
 export const MarketingBlocks = () => {
@@ -19,14 +19,8 @@ export const MarketingBlocks = () => {
       <Spacer.Column numberOfSpaces={6} />
       <MarketingBlockExclusivity
         moduleId="1"
-        categoryId={CategoryIdEnum.FILM}
-        offerId={1}
-        title="Harry Potter et l’Ordre du Phénix"
+        offer={offersFixture[0]}
         backgroundImageUrl="https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW"
-        offerImageUrl="https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW"
-        categoryText="Cinéma"
-        offerLocation={{ lat: 1, lng: 1 }}
-        price="10€"
       />
       <Spacer.Column numberOfSpaces={12} />
       <Container>
@@ -34,11 +28,9 @@ export const MarketingBlocks = () => {
       </Container>
       <Spacer.Column numberOfSpaces={6} />
       <MarketingBlockHighlight
-        categoryId={CategoryIdEnum.FILM}
         title="Marathon Harry Potter dans tous les cinémas de France"
         backgroundImageUrl="https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW"
-        categoryText="Cinéma"
-        date="Du 12/06 au 24/06"
+        subtitle="Du 12/06 au 24/06"
         homeId="homeId"
         moduleId="moduleId"
       />

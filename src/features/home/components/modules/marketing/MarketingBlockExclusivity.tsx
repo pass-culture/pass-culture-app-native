@@ -1,56 +1,42 @@
 import React, { memo } from 'react'
 
-import { CategoryIdEnum } from 'api/gen'
+import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { MarketingBlock } from 'features/home/components/modules/marketing/MarketingBlock'
 import { analytics } from 'libs/analytics'
-import { useDistance } from 'libs/location/hooks/useDistance'
-import { OfferLocation } from 'shared/offer/types'
+import { Offer } from 'shared/offer/types'
 
 type AttachedOfferCardProps = {
-  title: string
+  offer: Offer
   moduleId: string
   homeEntryId?: string
-  categoryId: CategoryIdEnum
-  offerId: number
-  backgroundImageUrl: string
-  offerImageUrl?: string
-  offerLocation: OfferLocation
-  price: string
-  categoryText: string
+  backgroundImageUrl?: string
 }
 
 const UnmemoizedMarketingBlockExclusivity = ({
-  title,
+  offer,
   moduleId,
   homeEntryId,
-  categoryId,
-  offerId,
   backgroundImageUrl,
-  offerImageUrl,
-  offerLocation,
-  price,
-  categoryText,
 }: AttachedOfferCardProps) => {
-  const distanceToOffer = useDistance(offerLocation || { lat: 0, lng: 0 })
-  const accessibilityLabel = `Découvre l’offre exclusive "${title}" de la catégorie "${categoryText}" au prix de ${price}. L’offre se trouve à ${distanceToOffer}`
+  const accessibilityLabel = `Découvre l’offre exclusive "${offer.offer.name}"`
 
   const logConsultOffer = () => {
-    analytics.logConsultOffer({ offerId, from: 'home', moduleName: title, moduleId, homeEntryId })
+    analytics.logConsultOffer({
+      offerId: parseInt(offer.objectID),
+      from: 'home',
+      homeEntryId,
+      moduleName: offer.offer.name,
+      moduleId,
+    })
   }
 
   return (
     <MarketingBlock
       accessibilityLabel={accessibilityLabel}
-      navigateTo={{ screen: 'Offer', params: { id: offerId } }}
-      backgroundImageUrl={backgroundImageUrl}
-      title={title}
-      categoryId={categoryId}
-      imageUrl={offerImageUrl}
-      offerLocation={offerLocation}
-      price={price}
-      categoryText={categoryText}
-      showImage
+      navigateTo={{ screen: 'Offer', params: { id: offer.objectID } }}
       onBeforeNavigate={logConsultOffer}
+      backgroundImageUrl={backgroundImageUrl}
+      AttachedCardComponent={<AttachedOfferCard offer={offer} />}
     />
   )
 }

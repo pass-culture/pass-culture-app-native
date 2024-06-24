@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { CategoryIdEnum } from 'api/gen'
+import { offersFixture } from 'shared/offer/offer.fixture'
 import { theme } from 'theme'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
@@ -29,12 +29,7 @@ Default.args = {
   moduleId: '1',
   backgroundImageUrl:
     'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
-  offerImageUrl:
-    'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
-  categoryText: 'Cinéma',
-  title: 'Harry Potter et l’Ordre du Phénix',
-  offerLocation: { lat: 1, lng: 1 },
-  price: '10€',
+  offer: offersFixture[0],
 }
 
 Default.parameters = {
@@ -44,13 +39,7 @@ Default.parameters = {
 export const WithoutBackgroundImage = Template.bind({})
 WithoutBackgroundImage.args = {
   moduleId: '1',
-  offerImageUrl:
-    'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
-  categoryText: 'Cinéma',
-  title: 'Harry Potter et l’Ordre du Phénix',
-  offerLocation: { lat: 1, lng: 1 },
-  price: '10€',
-  categoryId: CategoryIdEnum.CINEMA,
+  offer: offersFixture[0],
 }
 
 WithoutBackgroundImage.parameters = {
