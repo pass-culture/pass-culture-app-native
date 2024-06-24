@@ -7,9 +7,9 @@ PODS:
   - AppAuth/Core (1.7.3)
   - AppAuth/ExternalUserAgent (1.7.3):
     - AppAuth/Core
-  - AppsFlyerFramework (6.12.2):
-    - AppsFlyerFramework/Main (= 6.12.2)
-  - AppsFlyerFramework/Main (6.12.2)
+  - AppsFlyerFramework (6.14.3):
+    - AppsFlyerFramework/Main (= 6.14.3)
+  - AppsFlyerFramework/Main (6.14.3)
   - Base64 (1.1.2)
   - Batch (1.19.5)
   - BatchFirebaseDispatcher (3.0.0):
@@ -568,8 +568,8 @@ PODS:
   - React-jsinspector (0.72.12)
   - React-logger (0.72.12):
     - glog
-  - react-native-appsflyer (6.12.2):
-    - AppsFlyerFramework (= 6.12.2)
+  - react-native-appsflyer (6.14.3):
+    - AppsFlyerFramework (= 6.14.3)
     - React
   - react-native-blur (4.3.2):
     - React-Core
@@ -1163,7 +1163,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   amplitude-react-native: 77be2d0a6b5a0900f01fa99f4ec198134231255f
   AppAuth: a13994980c1ec792f7e2e665acd4d4aa6be43240
-  AppsFlyerFramework: 6eb4d89d2eb9a6632317f1055b359d9fd85fd5ff
+  AppsFlyerFramework: 0a68f5b72bbbadfa71d4ae3eaf040e82d62e8518
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Batch: 0a7afbf8bcbc2f1a97c7a599760ad998e5ee4ebb
   BatchFirebaseDispatcher: 6758d8dc969b75c667908d922b708ab942690fc0
@@ -1227,7 +1227,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 95bdf0ab46024ca9849e08739b6abd8fe489cd33
   React-jsinspector: 8e291ed0ab371314de269001d6b9b25db6aabf42
   React-logger: d4010de0b0564e63637ad08373bc73b5d919974b
-  react-native-appsflyer: 202a3a36d7fabe9f36198b45f952b1a91f9b27a0
+  react-native-appsflyer: 37a0053df435bb76c330c5c15488dca29a3baa9b
   react-native-blur: cfdad7b3c01d725ab62a8a729f42ea463998afa2
   react-native-config: 5e2fe7217716b5472ed7901477620b1370335d67
   react-native-date-picker: 90d1d60802a20085125657940b944f2bb4e5c113
