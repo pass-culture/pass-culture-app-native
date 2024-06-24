@@ -108,6 +108,12 @@ export type VideoCarouselItem = {
   thematicHomeSubtitle?: string
 }
 
+export interface VideoCarouselModuleBaseProps extends VideoCarouselModule {
+  index: number
+  homeEntryId: string
+  autoplay?: boolean
+}
+
 export type OffersModule = {
   type: HomepageModuleType.OffersModule
   id: string
