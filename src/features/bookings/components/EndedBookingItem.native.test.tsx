@@ -9,6 +9,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { EndedBookingItem } from './EndedBookingItem'
 
@@ -166,7 +167,23 @@ describe('EndedBookingItem', () => {
 
       expect(screen.getByLabelText('Réagis à ta réservation')).toBeOnTheScreen()
     })
+
+    it('should open reaction modal on press', () => {
+      const mockShowModal = jest.fn()
+      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+        visible: false,
+        showModal: mockShowModal,
+        hideModal: jest.fn(),
+        toggleModal: jest.fn(),
+      })
+
+      renderEndedBookingItem(bookingsSnap.ended_bookings[0])
+
+      fireEvent.press(screen.getByLabelText('Réagis à ta réservation'))
+
+      expect(mockShowModal).toHaveBeenCalledWith()
     })
+  })
 })
 
 function renderEndedBookingItem(booking: Booking) {
