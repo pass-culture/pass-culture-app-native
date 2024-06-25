@@ -2,9 +2,11 @@ import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
+import { ApiError } from 'api/ApiError'
 import { SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { Position } from 'libs/location'
+import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
 type WithIncludeCategoryProps = {
@@ -67,6 +69,20 @@ export const useSimilarOffers = ({
           categories
         )
       } catch (err) {
+        const statusCode = (err as ApiError).statusCode
+        eventMonitoring.captureException(
+          `Error ${statusCode} with recommendation endpoint to get similar offers`,
+          {
+            extra: {
+              offerId,
+              longitude: position?.longitude,
+              latitude: position?.latitude,
+              categories: JSON.stringify(categories),
+              statusCode: statusCode,
+            },
+          }
+        )
+
         return { params: {}, results: [] }
       }
     },

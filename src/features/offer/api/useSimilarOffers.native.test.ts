@@ -2,6 +2,8 @@ import { SearchGroupNameEnumv2, SimilarOffersResponse } from 'api/gen'
 import * as useAlgoliaSimilarOffers from 'features/offer/api/useAlgoliaSimilarOffers'
 import { getCategories, useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { env } from 'libs/environment/fixtures'
+import { EmptyResponse } from 'libs/fetch'
+import { eventMonitoring } from 'libs/monitoring'
 import * as PackageJson from 'libs/packageJson'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
@@ -144,13 +146,10 @@ describe('useSimilarOffers', () => {
   })
 
   describe('When error API response', () => {
-    beforeEach(() => {
-      mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
-        responseOptions: { statusCode: 503 },
-      })
-    })
-
     it('should return empty params and undefined similar offers when fetch similar offers call fails', async () => {
+      mockServer.getApi<EmptyResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
+        responseOptions: { statusCode: 503, data: {} },
+      })
       const { result } = renderHook(
         () =>
           useSimilarOffers({
@@ -166,6 +165,38 @@ describe('useSimilarOffers', () => {
       await waitFor(() => {
         expect(result.current).toEqual({ apiRecoParams: {}, similarOffers: undefined })
       })
+    })
+  })
+
+  it('should capture an exception when fetch call fails', async () => {
+    mockServer.getApi<EmptyResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
+      responseOptions: { statusCode: 503, data: {} },
+    })
+    renderHook(
+      () =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          position: null,
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    await waitFor(() => {
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        'Error 503 with recommendation endpoint to get similar offers',
+        {
+          extra: {
+            categories: '["FILMS_SERIES_CINEMA"]',
+            latitude: undefined,
+            longitude: undefined,
+            offerId: 1,
+            statusCode: 503,
+          },
+        }
+      )
     })
   })
 })
