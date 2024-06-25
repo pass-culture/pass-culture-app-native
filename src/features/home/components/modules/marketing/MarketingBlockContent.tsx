@@ -2,45 +2,20 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  AttachedOfferCard,
-  AttachedOfferCardProps,
-} from 'features/home/components/AttachedOfferCard'
-import { mapCategoryToIcon } from 'libs/parsers/category'
+import { MarketingBlockProps } from 'features/home/components/modules/marketing/MarketingBlock'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { All } from 'ui/svg/icons/bicolor/All'
 import { getSpacing } from 'ui/theme'
 import { RATIO_MARKETING_BLOCK } from 'ui/theme/grid'
 
-type MarketingBlockProps = Omit<AttachedOfferCardProps, 'onPress'> & {
-  accessibilityLabel: string
-  navigateTo: InternalNavigationProps['navigateTo']
-  backgroundImageUrl?: string
-  onBeforeNavigate?: () => void
-}
-
 export const MarketingBlockContent = ({
-  accessibilityLabel,
   navigateTo,
   onBeforeNavigate,
-  title,
-  categoryId,
+  AttachedCardComponent,
   backgroundImageUrl,
-  imageUrl,
-  offerLocation,
-  price,
-  categoryText,
-  date,
-  withRightArrow,
-  showImage,
+  accessibilityLabel,
 }: MarketingBlockProps) => {
-  const Icon = mapCategoryToIcon(categoryId)
-  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-    size: theme.illustrations.sizes.small,
-    color: theme.colors.greyMedium,
-  }))``
-
   return (
     <InternalTouchableLink
       navigateTo={navigateTo}
@@ -51,22 +26,10 @@ export const MarketingBlockContent = ({
           <StyledFastImage url={backgroundImageUrl} />
         ) : (
           <ImagePlaceholder>
-            <StyledIcon />
+            <StyledAll />
           </ImagePlaceholder>
         )}
-        <AttachedOfferCardContainer>
-          <AttachedOfferCard
-            title={title}
-            categoryId={categoryId}
-            imageUrl={imageUrl}
-            offerLocation={offerLocation}
-            price={price}
-            categoryText={categoryText}
-            date={date}
-            withRightArrow={withRightArrow}
-            showImage={showImage}
-          />
-        </AttachedOfferCardContainer>
+        <AttachedOfferCardContainer>{AttachedCardComponent}</AttachedOfferCardContainer>
       </BackgroundImageContainer>
     </InternalTouchableLink>
   )
@@ -90,6 +53,11 @@ const ImagePlaceholder = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
 })
+
+const StyledAll = styled(All).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.small,
+  color: theme.colors.greyMedium,
+}))``
 
 const AttachedOfferCardContainer = styled.View({
   padding: getSpacing(5),

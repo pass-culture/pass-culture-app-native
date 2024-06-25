@@ -27,7 +27,6 @@ import { AccesLibre } from 'features/internal/cheatcodes/pages/AccesLibre'
 import { AppComponents } from 'features/internal/cheatcodes/pages/AppComponents/AppComponents'
 import { CheatCodes } from 'features/internal/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/internal/cheatcodes/pages/CheatMenu'
-import { Video916Cheatcodes } from 'features/internal/cheatcodes/pages/CheatMenu/Video9:16/Video916'
 import { MarketingBlocks } from 'features/internal/cheatcodes/pages/MarketingBlocks'
 import { Navigation } from 'features/internal/cheatcodes/pages/Navigation'
 import { NavigationAccountSuspension } from 'features/internal/cheatcodes/pages/NavigationAccountSuspension'
@@ -498,11 +497,6 @@ export const routes: RootRoute[] = [
     name: 'ThematicHeaders',
     component: ThematicHeaders,
     path: 'cheat-thematic-home-header',
-  },
-  {
-    name: 'Video916Cheatcodes',
-    component: Video916Cheatcodes,
-    path: 'cheat-video-9-16',
   },
   {
     name: 'MarketingBlocks',

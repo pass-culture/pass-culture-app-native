@@ -85,13 +85,12 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
       {hasGraphicRedesign ? (
         <Container testID="new-highlight-module-container">
           <MarketingBlockHighlight
-            categoryId={null}
             homeId={toThematicHomeEntryId}
             backgroundImageUrl={imageUrl}
             moduleId={id}
-            categoryText={subtitle || ''}
             title={title}
-            date={dateRange}
+            subtitle={dateRange}
+            label={subtitle}
           />
         </Container>
       ) : (

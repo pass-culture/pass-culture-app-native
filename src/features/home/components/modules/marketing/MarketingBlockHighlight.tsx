@@ -1,43 +1,35 @@
 import React, { memo } from 'react'
 
-import { CategoryIdEnum } from 'api/gen'
+import { AttachedThematicCard } from 'features/home/components/AttachedModuleCard/AttachedThematicCard'
 import { MarketingBlock } from 'features/home/components/modules/marketing/MarketingBlock'
 
-type MarketingBlockHighlightProps = {
+export type MarketingBlockHighlightProps = {
   title: string
+  label?: string
   homeId: string
   moduleId: string
   backgroundImageUrl?: string
-  categoryText: string
-  date: string
-  categoryId: CategoryIdEnum | null
+  subtitle?: string
 }
 
 const UnmemoizedMarketingBlockHighlight = ({
   title,
+  label,
   homeId,
   moduleId,
   backgroundImageUrl,
-  categoryText,
-  date,
-  categoryId,
+  subtitle,
 }: MarketingBlockHighlightProps) => {
-  const accessibilityLabel = `Découvre le temps fort "${title}" de la catégorie "${categoryText}" ${date}.`
-
   return (
     <MarketingBlock
-      accessibilityLabel={accessibilityLabel}
-      categoryId={categoryId}
       navigateTo={{
         screen: 'ThematicHome',
         params: { homeId, from: 'highlight_thematic_block', moduleId },
       }}
       backgroundImageUrl={backgroundImageUrl}
-      title={title}
-      categoryText={categoryText}
-      date={date}
-      withRightArrow
-      showImage={false}
+      AttachedCardComponent={
+        <AttachedThematicCard title={title} subtitle={subtitle} label={label} />
+      }
     />
   )
 }

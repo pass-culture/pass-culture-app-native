@@ -28,8 +28,7 @@ Default.args = {
   title: 'Marathon Harry Potter dans tous les cinémas de France',
   backgroundImageUrl:
     'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/9MPGW',
-  categoryText: 'Cinéma',
-  date: 'Du 12/06 au 24/06',
+  subtitle: 'Du 12/06 au 24/06',
   homeId: 'homeId',
   moduleId: 'moduleId',
 }
@@ -41,8 +40,7 @@ Default.parameters = {
 export const WithoutBackgroundImage = Template.bind({})
 WithoutBackgroundImage.args = {
   title: 'Marathon Harry Potter dans tous les cinémas de France',
-  categoryText: 'Cinéma',
-  date: 'Du 12/06 au 24/06',
+  subtitle: 'Du 12/06 au 24/06',
   homeId: 'homeId',
   moduleId: 'moduleId',
 }

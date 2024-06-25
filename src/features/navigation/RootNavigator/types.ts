@@ -288,7 +288,6 @@ export type RootStackParamList = {
   HighlightThematicHomeHeaderCheatcode: undefined
   CategoryThematicHomeHeaderCheatcode: undefined
   ThematicHeaders: undefined
-  Video916Cheatcodes: undefined
   MarketingBlocks: undefined
   MovieCalendar: undefined
 } & AccessibilityRootStackParamList &
