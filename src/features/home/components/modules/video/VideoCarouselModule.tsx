@@ -155,8 +155,8 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
       <StyledInternalTouchableLink key={index} {...containerProps}>
         <AttachedThematicCard
           title={thematicHomeTitle ?? ''}
-          subtitle={thematicHomeSubtitle ?? ''}
-          label={thematicHomeTag ?? ''}
+          subtitle={thematicHomeSubtitle}
+          label={thematicHomeTag}
           shouldFixHeight
         />
       </StyledInternalTouchableLink>
