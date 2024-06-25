@@ -8,7 +8,7 @@ import { Offer } from 'features/offer/pages/Offer/Offer'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Network } from 'libs/share/types'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance, screen } from 'tests/utils'
@@ -53,7 +53,10 @@ describe('<Offer />', () => {
         results: [],
       }
     )
-    mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...PLACEHOLDER_DATA })
+    mockServer.getApi<SubcategoriesResponseModelv2>(
+      `/v1/subcategories/v2`,
+      subcategoriesResponseFixture
+    )
   })
 
   it('Performance test for Offer page', async () => {

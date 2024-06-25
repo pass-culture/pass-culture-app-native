@@ -19,7 +19,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -68,7 +68,16 @@ describe('BookingDetails', () => {
   let ongoingBookings = mockBookings.ongoing_bookings[0]
   let endedBookings = mockBookings.ended_bookings[0]
 
-  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+  beforeEach(() => {
+    ongoingBookings = mockBookings.ongoing_bookings[0]
+    endedBookings = mockBookings.ended_bookings[0]
+
+    mockServer.getApi<SubcategoriesResponseModelv2>(
+      '/v1/subcategories/v2',
+      subcategoriesResponseFixture
+    )
+    mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+  })
 
   afterEach(() => {
     mockBookings = { ...bookingsSnap }
@@ -80,13 +89,6 @@ describe('BookingDetails', () => {
         id: 456,
       },
     }))
-  })
-
-  beforeEach(() => {
-    ongoingBookings = mockBookings.ongoing_bookings[0]
-    endedBookings = mockBookings.ended_bookings[0]
-
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
   })
 
   it('should call useOngoingOrEndedBooking with the right parameters', async () => {

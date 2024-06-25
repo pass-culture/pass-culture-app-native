@@ -4,11 +4,10 @@ import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { LocationMode, Position } from 'libs/location/types'
 import { QueryKeys } from 'libs/queryKeys'
-import { PLACEHOLDER_DATA as subcategoriesFixture } from 'libs/subcategories/placeholderData'
+import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
-
 jest.mock('libs/network/NetInfoWrapper')
 
 import { useGTLPlaylists } from './useGTLPlaylists'
@@ -43,7 +42,7 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('useGTLPlaylists', () => {
   describe('with venue', () => {
     it('should fetch offers for Contentful GTL playlists', async () => {
-      mockServer.getApi('/v1/subcategories/v2', subcategoriesFixture)
+      mockServer.getApi('/v1/subcategories/v2', subcategoriesResponseFixture)
       mockServer.universalGet(
         'https://cdn.contentful.com/spaces/contentfulSpaceId/environments/environment/entries',
         contentfulGtlPlaylistSnap
@@ -70,7 +69,7 @@ describe('useGTLPlaylists', () => {
     })
 
     it('should return playlists information', async () => {
-      mockServer.getApi('/v1/subcategories/v2', subcategoriesFixture)
+      mockServer.getApi('/v1/subcategories/v2', subcategoriesResponseFixture)
       mockServer.universalGet(
         'https://cdn.contentful.com/spaces/contentfulSpaceId/environments/environment/entries',
         contentfulGtlPlaylistSnap
@@ -97,7 +96,7 @@ describe('useGTLPlaylists', () => {
     })
 
     it('should not return playlist that contains no offer', async () => {
-      mockServer.getApi('/v1/subcategories/v2', subcategoriesFixture)
+      mockServer.getApi('/v1/subcategories/v2', subcategoriesResponseFixture)
       mockServer.universalGet(
         'https://cdn.contentful.com/spaces/contentfulSpaceId/environments/environment/entries',
         contentfulGtlPlaylistSnap
@@ -113,7 +112,7 @@ describe('useGTLPlaylists', () => {
     })
 
     it('should not return playlist when it is shorter than the minimum number of offers', async () => {
-      mockServer.getApi('/v1/subcategories/v2', subcategoriesFixture)
+      mockServer.getApi('/v1/subcategories/v2', subcategoriesResponseFixture)
       mockServer.universalGet(
         'https://cdn.contentful.com/spaces/contentfulSpaceId/environments/environment/entries',
         {
@@ -147,7 +146,7 @@ describe('useGTLPlaylists', () => {
 
   describe('without venue', () => {
     it('should fetch offers for Contentful GTL playlists', async () => {
-      mockServer.getApi('/v1/subcategories/v2', subcategoriesFixture)
+      mockServer.getApi('/v1/subcategories/v2', subcategoriesResponseFixture)
       mockServer.universalGet(
         'https://cdn.contentful.com/spaces/contentfulSpaceId/environments/environment/entries',
         contentfulGtlPlaylistSnap
@@ -173,7 +172,7 @@ describe('useGTLPlaylists', () => {
     })
 
     it('should return empty list if no venue given', async () => {
-      mockServer.getApi('/v1/subcategories/v2', subcategoriesFixture)
+      mockServer.getApi('/v1/subcategories/v2', subcategoriesResponseFixture)
 
       const { result } = renderHookWithParams('VENUE_GTL_PLAYLISTS')
 

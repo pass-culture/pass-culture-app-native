@@ -22,7 +22,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
@@ -139,7 +139,10 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<OfferContent />', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
+    mockServer.getApi<SubcategoriesResponseModelv2>(
+      '/v1/subcategories/v2',
+      subcategoriesResponseFixture
+    )
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
 
@@ -613,7 +616,7 @@ function renderOfferContent({
     reactQueryProviderHOC(
       <OfferContent
         offer={offer}
-        searchGroupList={PLACEHOLDER_DATA.searchGroups}
+        searchGroupList={subcategoriesResponseFixture.searchGroups}
         subcategory={subcategory}
       />
     ),
