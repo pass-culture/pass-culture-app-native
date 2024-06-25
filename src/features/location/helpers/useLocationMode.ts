@@ -15,14 +15,19 @@ export const useLocationMode = ({
   shouldDirectlyValidate,
   ...props
 }: Props) => {
-  const { tempLocationMode, setTempLocationMode, setSelectedLocationMode } = props
   const { runGeolocationDialogs } = useGeolocationDialogs({
     dismissModal,
     shouldOpenDirectlySettings,
     shouldDirectlyValidate,
     ...props,
   })
-  const { onSubmit } = props
+  const {
+    tempLocationMode,
+    setTempLocationMode,
+    setSelectedLocationMode,
+    setPlaceGlobally,
+    onSubmit,
+  } = props
 
   const selectLocationMode = (mode: LocationMode) => () => {
     switch (mode) {
@@ -37,6 +42,7 @@ export const useLocationMode = ({
         setTempLocationMode(LocationMode.EVERYWHERE)
         if (shouldDirectlyValidate) {
           setSelectedLocationMode(LocationMode.EVERYWHERE)
+          setPlaceGlobally(null)
           dismissModal()
         } else {
           onSubmit(LocationMode.EVERYWHERE)

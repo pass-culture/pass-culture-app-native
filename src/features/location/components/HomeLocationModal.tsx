@@ -61,6 +61,7 @@ export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps)
     onSubmit: onSubmitPlace,
     onClose,
     shouldDirectlyValidate: true,
+    setPlaceGlobally,
   })
 
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
