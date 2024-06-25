@@ -48,6 +48,7 @@ export const OfferImageWrapper: FunctionComponent<Props> = ({
 
 const Container = styled(View)<{ headerHeight: number; isSticky?: boolean }>(
   ({ headerHeight, isSticky, theme }) => ({
+    backgroundColor: theme.colors.white,
     bottom: 0,
     ...getShadow({
       shadowOffset: {

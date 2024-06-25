@@ -80,4 +80,5 @@ const Container = styled.View<StyleProps>(({ theme, size, borderRadius }) => ({
         shadowColor: theme.colors.greyDark,
         shadowOpacity: 0.2,
       })),
+  backgroundColor: theme.colors.white,
 }))

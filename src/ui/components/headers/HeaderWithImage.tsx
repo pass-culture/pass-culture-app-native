@@ -3,14 +3,12 @@ import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Image } from 'libs/resizing-image-on-demand/Image'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 interface Props {
   imageUrl?: string
   imageHeight: number
   minHeight?: number
   children?: React.ReactNode
-  onPress?: VoidFunction
 }
 
 const isWeb = Platform.OS === 'web'
@@ -22,7 +20,6 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
   imageHeight,
   minHeight,
   children,
-  onPress,
 }) => {
   const { appContentWidth } = useTheme()
 
@@ -44,7 +41,7 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
           <DefaultImagePlaceholderOfferV2 width={appContentWidth} height={imageHeight} />
         )}
       </ImageContainer>
-      {isWeb ? children : <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity>}
+      {children}
     </Container>
   )
 }

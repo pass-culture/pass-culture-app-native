@@ -7,6 +7,7 @@ exports[`HorizontalTile Component should render correctly 1`] = `
     style={
       [
         {
+          "backgroundColor": "#ffffff",
           "borderRadius": 4,
           "height": 96,
           "shadowColor": "#696A6F",

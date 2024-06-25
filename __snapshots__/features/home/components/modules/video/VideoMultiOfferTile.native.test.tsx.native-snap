@@ -54,6 +54,7 @@ exports[`VideoMultiOfferTile should render properly with FF on 1`] = `
       style={
         [
           {
+            "backgroundColor": "#ffffff",
             "borderRadius": 8,
             "height": 144,
             "shadowColor": "#696A6F",

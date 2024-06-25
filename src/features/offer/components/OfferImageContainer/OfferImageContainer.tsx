@@ -39,7 +39,6 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
 
   const hasCarousel = !!(shouldDisplayCarousel && offerImages.length > 1)
   const progressValue = useSharedValue<number>(0)
-  const [index, setIndex] = React.useState(0)
 
   return isWeb && isDesktopViewport ? (
     <OfferImageRenderer
@@ -48,13 +47,9 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
       shouldDisplayOfferPreview={shouldDisplayOfferPreview}
       hasCarousel={hasCarousel}
       progressValue={progressValue}
-      setIndex={setIndex}
     />
   ) : (
-    <HeaderWithImage
-      imageHeight={backgroundHeight}
-      imageUrl={offerImages[0]}
-      onPress={isWeb ? undefined : () => onPress(index)}>
+    <HeaderWithImage imageHeight={backgroundHeight} imageUrl={offerImages[0]}>
       <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
       <OfferImageRenderer
         categoryId={categoryId}
@@ -62,7 +57,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
         shouldDisplayOfferPreview={shouldDisplayOfferPreview}
         hasCarousel={hasCarousel}
         progressValue={progressValue}
-        setIndex={setIndex}
+        onPress={onPress}
       />
     </HeaderWithImage>
   )

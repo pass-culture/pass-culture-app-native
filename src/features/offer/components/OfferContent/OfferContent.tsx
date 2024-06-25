@@ -91,7 +91,7 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   })
 
   const onPress = (defaultIndex?: number) => {
-    if (enableOfferPreview && offerImages.length) {
+    if (!isWeb && enableOfferPreview && offerImages.length) {
       navigate('OfferPreview', { id: offer.id, defaultIndex })
     }
   }
