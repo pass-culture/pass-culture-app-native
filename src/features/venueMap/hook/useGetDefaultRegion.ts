@@ -22,12 +22,12 @@ export const useGetDefaultRegion = (): Region => {
   const latitudeDelta = distanceToLatitudeDelta(verticalDistanceInMeters)
   const longitudeDelta = distanceToLongitudeDelta(
     horizontalDistanceInMeters,
-    userLocation?.latitude ?? 0
+    userLocation?.latitude ?? 48.866667
   )
 
   return {
-    latitude: userLocation?.latitude ?? 0,
-    longitude: userLocation?.longitude ?? 0,
+    latitude: userLocation?.latitude ?? 48.8666,
+    longitude: userLocation?.longitude ?? 2.3333,
     latitudeDelta,
     longitudeDelta,
   }
