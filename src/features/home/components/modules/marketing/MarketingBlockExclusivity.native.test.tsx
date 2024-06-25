@@ -49,6 +49,7 @@ describe('MarketingBlockExclusivity', () => {
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       from: 'home',
       moduleId: '1',
+      homeEntryId: 'fakeEntryId',
       moduleName: 'La nuit des temps',
       offerId: 102280,
     })
