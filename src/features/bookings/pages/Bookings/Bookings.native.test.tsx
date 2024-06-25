@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -31,7 +31,10 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('Bookings', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
+    mockServer.getApi<SubcategoriesResponseModelv2>(
+      '/v1/subcategories/v2',
+      subcategoriesResponseFixture
+    )
   })
 
   it('should render correctly', async () => {

@@ -7,7 +7,7 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
@@ -70,7 +70,10 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 describe('<SearchResults/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
-      mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
+      mockServer.getApi<SubcategoriesResponseModelv2>(
+        '/v1/subcategories/v2',
+        subcategoriesResponseFixture
+      )
     })
 
     it('should not have basic accessibility issues', async () => {

@@ -12,7 +12,7 @@ import { REDESIGN_AB_TESTING_HOME_MODULES } from 'libs/contentful/constants'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -37,7 +37,10 @@ describe('HighlightOfferModule', () => {
       nbFavorites: 0,
       favorites: [],
     }
-    mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...PLACEHOLDER_DATA })
+    mockServer.getApi<SubcategoriesResponseModelv2>(
+      `/v1/subcategories/v2`,
+      subcategoriesResponseFixture
+    )
     mockServer.getApi<PaginatedFavoritesResponse>(
       '/v1/me/favorites',
       favoritesResponseWithoutOfferIn
