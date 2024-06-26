@@ -447,220 +447,90 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
                   class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
                 >
                   <div
-                    class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
-                    data-testid="offersModuleList"
+                    class="css-view-175oi2r"
                   >
                     <div
-                      class="css-view-175oi2r r-flexDirection-18u37iz"
+                      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
+                      data-testid="offersModuleList"
+                      style="min-height: 1px; min-width: 1px;"
                     >
                       <div
-                        class="css-view-175oi2r"
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                        style="min-height: 1px; min-width: 1px; padding-top: 0px; padding-bottom: 0px;"
                       >
                         <div
-                          class="css-view-175oi2r r-width-lrsllp"
-                        />
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz"
-                      >
-                        <h3
-                          aria-level="3"
                           class="css-view-175oi2r"
-                          role="heading"
+                          style="flex-direction: row;"
                         >
                           <div
-                            aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                            class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
-                            data-testid="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                            tabindex="0"
+                            class="css-view-175oi2r"
+                            style="height: 0px; width: 0px;"
+                          />
+                          <div
+                            class="css-view-175oi2r r-pointerEvents-633pao"
+                            style="opacity: 0;"
                           >
-                            <div
-                              class="css-view-175oi2r r-flexDirection-1d5kdc7"
+                            <h3
+                              aria-level="3"
+                              class="css-view-175oi2r"
+                              role="heading"
                             >
                               <div
-                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                                aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
+                                data-testid="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                tabindex="0"
                               >
                                 <div
-                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                  dir="ltr"
-                                >
-                                  Titane - VF
-                                </div>
-                                <div
-                                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                  dir="ltr"
-                                >
-                                  Dès le 18 août 2021
-                                </div>
-                                <div
-                                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                  data-testid="priceIsDuo"
-                                  dir="ltr"
-                                >
-                                  Gratuit
-                                </div>
-                              </div>
-                              <div
-                                class="css-view-175oi2r"
-                              >
-                                <div
-                                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
+                                  class="css-view-175oi2r r-flexDirection-1d5kdc7"
                                 >
                                   <div
-                                    class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
+                                    class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
                                   >
                                     <div
-                                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                      data-testid="categoryImageCaption"
+                                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                                       dir="ltr"
                                     >
-                                      Cinéma
+                                      Bac Nord - VF
+                                    </div>
+                                    <div
+                                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                      dir="ltr"
+                                    >
+                                      Dès le 18 août 2021
+                                    </div>
+                                    <div
+                                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                      data-testid="priceIsDuo"
+                                      dir="ltr"
+                                    >
+                                      Gratuit
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="css-view-175oi2r"
+                                  >
+                                    <div
+                                      class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
+                                    >
+                                      <div
+                                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
+                                      >
+                                        <div
+                                          class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                          data-testid="categoryImageCaption"
+                                          dir="ltr"
+                                        >
+                                          Cinéma
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
+                            </h3>
                           </div>
-                        </h3>
-                        <div
-                          class="css-view-175oi2r r-width-1janqcz"
-                        />
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz"
-                      >
-                        <h3
-                          aria-level="3"
-                          class="css-view-175oi2r"
-                          role="heading"
-                        >
-                          <div
-                            aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                            class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
-                            data-testid="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                            tabindex="0"
-                          >
-                            <div
-                              class="css-view-175oi2r r-flexDirection-1d5kdc7"
-                            >
-                              <div
-                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
-                              >
-                                <div
-                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                  dir="ltr"
-                                >
-                                  Bac Nord - VF
-                                </div>
-                                <div
-                                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                  dir="ltr"
-                                >
-                                  Dès le 18 août 2021
-                                </div>
-                                <div
-                                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                  data-testid="priceIsDuo"
-                                  dir="ltr"
-                                >
-                                  Gratuit
-                                </div>
-                              </div>
-                              <div
-                                class="css-view-175oi2r"
-                              >
-                                <div
-                                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
-                                >
-                                  <div
-                                    class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
-                                  >
-                                    <div
-                                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                      data-testid="categoryImageCaption"
-                                      dir="ltr"
-                                    >
-                                      Cinéma
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </h3>
-                        <div
-                          class="css-view-175oi2r r-width-1janqcz"
-                        />
-                      </div>
-                      <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz"
-                      >
-                        <h3
-                          aria-level="3"
-                          class="css-view-175oi2r"
-                          role="heading"
-                        >
-                          <div
-                            aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                            class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
-                            data-testid="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                            tabindex="0"
-                          >
-                            <div
-                              class="css-view-175oi2r r-flexDirection-1d5kdc7"
-                            >
-                              <div
-                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
-                              >
-                                <div
-                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                  dir="ltr"
-                                >
-                                  Black Widow - VF
-                                </div>
-                                <div
-                                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                  dir="ltr"
-                                >
-                                  Dès le 18 août 2021
-                                </div>
-                                <div
-                                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                  data-testid="priceIsDuo"
-                                  dir="ltr"
-                                >
-                                  Gratuit
-                                </div>
-                              </div>
-                              <div
-                                class="css-view-175oi2r"
-                              >
-                                <div
-                                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-colhrt r-borderBottomLeftRadius-5qlx7g r-borderBottomRightRadius-nefvgx r-flexDirection-18u37iz r-height-1472mwg r-width-1sqjfdd"
-                                >
-                                  <div
-                                    class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
-                                  >
-                                    <div
-                                      class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                                      data-testid="categoryImageCaption"
-                                      dir="ltr"
-                                    >
-                                      Cinéma
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </h3>
-                      </div>
-                      <div
-                        class="css-view-175oi2r"
-                      >
-                        <div
-                          class="css-view-175oi2r r-width-lrsllp"
-                        />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -700,25 +570,48 @@ exports[`<Venue /> Accessibility should render correctly in web 1`] = `
                     class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
                   >
                     <div
-                      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
-                      data-testid="offersModuleList"
+                      class="css-view-175oi2r"
                     >
                       <div
-                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                        class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
+                        data-testid="offersModuleList"
+                        style="min-height: 1px; min-width: 1px;"
                       >
                         <div
-                          class="css-view-175oi2r"
+                          class="css-view-175oi2r r-flexDirection-18u37iz"
+                          style="min-height: 1px; min-width: 1px; padding-top: 0px; padding-bottom: 0px;"
                         >
                           <div
-                            class="css-view-175oi2r r-width-lrsllp"
-                          />
-                        </div>
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-view-175oi2r r-width-lrsllp"
-                          />
+                            class="css-view-175oi2r"
+                            style="flex-direction: row;"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                              style="padding-top: 0px; padding-left: 0px;"
+                            />
+                            <div
+                              class="css-view-175oi2r"
+                            >
+                              <div
+                                class="css-view-175oi2r r-width-lrsllp"
+                              />
+                            </div>
+                            <div
+                              class="css-view-175oi2r"
+                              style="height: 0px; width: 0px;"
+                            />
+                            <div
+                              class="css-view-175oi2r"
+                            >
+                              <div
+                                class="css-view-175oi2r r-width-lrsllp"
+                              />
+                            </div>
+                            <div
+                              class="css-view-175oi2r"
+                              style="padding-bottom: 0px; padding-right: 0px;"
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
