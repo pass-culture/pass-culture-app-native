@@ -1,5 +1,9 @@
 Link to JIRA ticket: https://passculture.atlassian.net/browse/PC-XXXXX
 
+## Flakiness
+
+If I had to re-run tests in the CI due to flakiness, I add the incident [on Notion][2]
+
 ## Checklist
 
 I have:
@@ -22,3 +26,4 @@ I have:
 | Desktop - Chrome |               |       |
 
 [1]: https://www.notion.so/passcultureapp/R-solution-de-probl-mes-sur-les-bugs-5dd6df8f6a754e6887066cf613467d0a
+[2]: https://www.notion.so/passcultureapp/cb45383351b44723a6f2d9e1481ad6bb?v=10fe47258701423985aa7d25bb04cfee&pvs=4
