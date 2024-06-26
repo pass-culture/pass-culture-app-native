@@ -2,7 +2,7 @@
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
 
 import { useOAuthState } from 'features/auth/api/useOAuthState'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring } from 'libs/monitoring'
 import { GoogleLoginOptions } from 'libs/react-native-google-sso/types'
 

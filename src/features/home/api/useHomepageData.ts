@@ -5,7 +5,7 @@ import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntr
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { Homepage } from 'features/home/types'
 import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifContent'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 

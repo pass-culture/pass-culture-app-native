@@ -16,7 +16,7 @@ import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/h
 import { AskNotificiationsModal } from 'features/notifications/pages/AskNotificationsModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { env } from 'libs/environment'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'

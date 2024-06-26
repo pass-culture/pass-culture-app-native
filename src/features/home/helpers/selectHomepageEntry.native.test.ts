@@ -10,9 +10,9 @@ import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntr
 import { Homepage, HomepageTag } from 'features/home/types'
 import { UserOnboardingRole } from 'features/tutorial/enums'
 import * as OnboardingRoleAPI from 'features/tutorial/helpers/useUserRoleFromOnboarding'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Credit, getAvailableCredit } from 'shared/user/useAvailableCredit'
 import {
   mockAuthContextWithoutUser,

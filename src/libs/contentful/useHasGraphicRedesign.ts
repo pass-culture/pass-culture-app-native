@@ -1,5 +1,5 @@
 import { REDESIGN_AB_TESTING_HOME_MODULES } from 'libs/contentful/constants'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 
 type Props = {
   isFeatureFlagActive: boolean

@@ -7,7 +7,7 @@ import { useResendEmailValidation } from 'features/auth/api/useResendEmailValida
 import { EmailAttemptsLeft } from 'features/auth/pages/signup/SignupConfirmationEmailSent/EmailAttemptsLeft'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useTimer } from 'libs/hooks/useTimer'
 import { eventMonitoring } from 'libs/monitoring'
 import { formatToHour } from 'libs/parsers/formatDates'

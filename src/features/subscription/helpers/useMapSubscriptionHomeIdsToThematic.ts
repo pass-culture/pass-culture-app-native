@@ -1,5 +1,5 @@
 import { SubscriptionTheme } from 'features/subscription/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 
 export const useMapSubscriptionHomeIdsToThematic = (homeId: string): SubscriptionTheme | null => {
   const { subscriptionHomeEntryIds } = useRemoteConfigContext()
