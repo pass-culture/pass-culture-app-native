@@ -6,6 +6,7 @@ import { AuthWrapper } from 'features/auth/context/AuthContext'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
 import { beneficiaryUser } from 'fixtures/user'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
@@ -18,6 +19,7 @@ jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 jest.mock('features/favorites/context/FavoritesWrapper')
 jest.mock('libs/subcategories/useCategoryId')
 jest.mock('libs/network/NetInfoWrapper')
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.useFakeTimers()
 
