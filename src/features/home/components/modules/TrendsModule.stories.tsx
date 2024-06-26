@@ -21,6 +21,6 @@ const meta: ComponentMeta<typeof TrendsModule> = {
 export default meta
 
 const Template: ComponentStory<typeof TrendsModule> = (props) => <TrendsModule {...props} />
-//TODO(PC-30279): Fix this stories
-const Default = Template.bind({})
+
+export const Default = Template.bind({})
 Default.args = formattedTrendsModule

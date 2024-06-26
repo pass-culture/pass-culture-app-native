@@ -10,8 +10,8 @@ const meta: ComponentMeta<typeof TutorialTimelineFifteen> = {
 export default meta
 
 const Template: ComponentStory<typeof TutorialTimelineFifteen> = () => <TutorialTimelineFifteen />
-//TODO(PC-28526): Fix this stories
-const Timeline = Template.bind({})
+
+export const Timeline = Template.bind({})
 Timeline.args = {
   age: 15,
 }
