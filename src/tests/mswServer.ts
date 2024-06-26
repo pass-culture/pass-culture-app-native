@@ -1,12 +1,11 @@
-import type {
+import {
+  delay as delayFunction,
   DefaultBodyType,
-  PathParams,
-  ResponseComposition,
+  passthrough,
   ResponseResolver,
-  RestContext,
-  RestRequest,
+  http,
+  HttpResponse,
 } from 'msw'
-import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
 import { env } from 'libs/environment'
@@ -57,11 +56,13 @@ class MswMockServer
             handler.method
           )
 
+          const once = !handler.options?.requestOptions?.persist
+
           const matching = {
-            GET: () => rest.get(url, generatedHandler),
-            DELETE: () => rest.delete(url, generatedHandler),
-            POST: () => rest.post(url, generatedHandler),
-            PUT: () => rest.put(url, generatedHandler),
+            GET: () => http.get(url, generatedHandler, { once }),
+            DELETE: () => http.delete(url, generatedHandler, { once }),
+            POST: () => http.post(url, generatedHandler, { once }),
+            PUT: () => http.put(url, generatedHandler, { once }),
           }
 
           const mockByMethod = matching[handler.method]
@@ -87,7 +88,7 @@ class MswMockServer
 
     let unhandledRequests: string[] = []
 
-    this.mswServer.events.on('request:unhandled', (request) => {
+    this.mswServer.events.on('request:unhandled', ({ request }) => {
       unhandledRequests.push(request.method + ' ' + request.url.toString())
     })
 
@@ -119,11 +120,11 @@ class MswMockServer
     afterAll(() => this.mswServer.close())
   }
 
-  private areParamsMatching = (url: string, req: RestRequest): boolean => {
+  private areParamsMatching = (url: string, req: Request): boolean => {
     const params = url.split('?')[1]
     if (params) {
       const paramsArray = params.split('&')
-      const reqParams = req.url.searchParams
+      const reqParams = new URL(req.url).searchParams
       for (const param of paramsArray) {
         if (!param) return false
         const [key, value] = param.split('=')
@@ -135,7 +136,7 @@ class MswMockServer
     return true
   }
 
-  private areAllHeadersMatching = (headers: Record<string, string>, req: RestRequest): boolean => {
+  private areAllHeadersMatching = (headers: Record<string, string>, req: Request): boolean => {
     const reqHeaders = req.headers
     for (const [key, value] of Object.entries(headers)) {
       if (reqHeaders.get(key) !== value) {
@@ -145,7 +146,7 @@ class MswMockServer
     return true
   }
 
-  private isOneHeaderMatching = (matchHeader: [string, string], req: RestRequest): boolean => {
+  private isOneHeaderMatching = (matchHeader: [string, string], req: Request): boolean => {
     const [key, value] = matchHeader
     if (req.headers.get(key) !== value) {
       return false
@@ -157,11 +158,7 @@ class MswMockServer
     fullUrl: string,
     options: MockOptions<string, DefaultBodyType, string | RegExp | Buffer>,
     method: SupportedMethod
-  ): ResponseResolver<
-    RestRequest<DefaultBodyType, PathParams<string>>,
-    RestContext,
-    DefaultBodyType
-  > => {
+  ): ResponseResolver<DefaultBodyType, DefaultBodyType> => {
     const {
       persist,
       headers = undefined,
@@ -181,53 +178,54 @@ class MswMockServer
     }
     if (!persist) this.currentRequests.push(debugObject)
 
-    return async (
-      req: RestRequest<DefaultBodyType, PathParams<string>>,
-      res: ResponseComposition<DefaultBodyType>,
-      ctx: RestContext
-    ) => {
-      if (statusCode === 'network-error') return res.networkError('Unable to connect')
+    return async ({ request }: { request: Request }) => {
+      if (statusCode === 'network-error') return HttpResponse.error()
 
-      if (!this.areParamsMatching(fullUrl, req)) {
+      if (!this.areParamsMatching(fullUrl, request)) {
         this.matchingErrors.push(
-          req.url.toString() + '\nRequested header ' + fullUrl + ' got ' + req.params
+          request.url.toString() +
+            '\nRequested header ' +
+            fullUrl +
+            ' got ' +
+            new URL(request.url).searchParams
         )
-        return req.passthrough()
+        return passthrough()
       }
 
-      if (matchHeader && !this.isOneHeaderMatching(matchHeader, req)) {
+      if (matchHeader && !this.isOneHeaderMatching(matchHeader, request)) {
         this.matchingErrors.push(
-          req.url.toString() + '\nRequested header ' + matchHeader + ' got ' + req.headers
+          request.url + '\nRequested header ' + matchHeader + ' got ' + request.headers
         )
-        return req.passthrough()
+        return passthrough()
       }
 
-      if (headers && !this.areAllHeadersMatching(headers, req)) {
+      if (headers && !this.areAllHeadersMatching(headers, request)) {
         this.matchingErrors.push(
-          req.url.toString() + '\nRequested headers ' + headers + ' got ' + req.headers
+          request.url.toString() + '\nRequested headers ' + headers + ' got ' + request.headers
         )
-        return req.passthrough()
+        return passthrough()
       }
 
       if (matchData) {
-        const requestData = await req.json()
+        const requestData = await request.json()
         if (JSON.stringify(requestData) !== JSON.stringify(matchData)) {
           this.matchingErrors.push(
-            req.url.toString() +
+            request.url +
               '\nRequested Data ' +
               JSON.stringify(matchData) +
               ' got ' +
               JSON.stringify(requestData)
           )
-          return req.passthrough()
+          return passthrough()
         }
       }
 
       if (persist) {
-        return res(ctx.status(statusCode), ctx.json(data), ctx.delay(delay))
+        await delayFunction(delay)
+        return HttpResponse.json(data, { status: statusCode })
       }
       this.currentRequests.splice(this.currentRequests.indexOf(debugObject), 1)
-      return res.once(ctx.status(statusCode), ctx.json(data))
+      return HttpResponse.json(data, { status: statusCode })
     }
   }
 
@@ -244,10 +242,10 @@ class MswMockServer
   ): MockReturnType {
     const urlWithoutParams = url.split('?')[0] ?? url
     if (this.isMockOptions(options)) {
-      const handler = rest.get(urlWithoutParams, this.generateMockHandler(url, options, 'GET'))
+      const handler = http.get(urlWithoutParams, this.generateMockHandler(url, options, 'GET'))
       this.mswServer.use(handler)
     } else {
-      const handler = rest.get(
+      const handler = http.get(
         url,
         this.generateMockHandler(
           urlWithoutParams,
@@ -273,10 +271,10 @@ class MswMockServer
   ): MockReturnType {
     const urlWithoutParams = url.split('?')[0] ?? url
     if (this.isMockOptions(options)) {
-      const handler = rest.post(urlWithoutParams, this.generateMockHandler(url, options, 'POST'))
+      const handler = http.post(urlWithoutParams, this.generateMockHandler(url, options, 'POST'))
       this.mswServer.use(handler)
     } else {
-      const handler = rest.post(
+      const handler = http.post(
         url,
         this.generateMockHandler(url, { responseOptions: { data: options as TResponse } }, 'POST')
       )
@@ -298,13 +296,13 @@ class MswMockServer
   ): MockReturnType {
     const urlWithoutParams = url.split('?')[0] ?? url
     if (this.isMockOptions(options)) {
-      const handler = rest.delete(
+      const handler = http.delete(
         urlWithoutParams,
         this.generateMockHandler(url, options, 'DELETE')
       )
       this.mswServer.use(handler)
     } else {
-      const handler = rest.delete(
+      const handler = http.delete(
         url,
         this.generateMockHandler(url, { responseOptions: { data: options as TResponse } }, 'DELETE')
       )
@@ -326,10 +324,10 @@ class MswMockServer
   ): MockReturnType {
     const urlWithoutParams = url.split('?')[0] ?? url
     if (this.isMockOptions(options)) {
-      const handler = rest.put(urlWithoutParams, this.generateMockHandler(url, options, 'PUT'))
+      const handler = http.put(urlWithoutParams, this.generateMockHandler(url, options, 'PUT'))
       this.mswServer.use(handler)
     } else {
-      const handler = rest.put(
+      const handler = http.put(
         url,
         this.generateMockHandler(url, { responseOptions: { data: options as TResponse } }, 'PUT')
       )

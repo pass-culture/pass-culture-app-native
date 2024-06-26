@@ -24,7 +24,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SignupForm } from './SignupForm'
 
@@ -652,7 +652,13 @@ describe('Signup Form', () => {
 
       renderSignupForm()
 
-      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+      const ssoButton = await screen.findByTestId('S’inscrire avec Google')
+
+      await waitFor(async () => {
+        expect(ssoButton.props.focusable).toBeTruthy()
+      })
+
+      await act(async () => fireEvent.press(ssoButton))
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')
       await act(async () =>
@@ -798,6 +804,8 @@ describe('Signup Form', () => {
 
         renderSignupForm()
 
+        const ssoButton = await screen.findByTestId('S’inscrire avec Google')
+
         expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
           1,
           StepperOrigin.HOME,
@@ -805,14 +813,20 @@ describe('Signup Form', () => {
           undefined
         )
 
-        await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+        await waitFor(async () => {
+          expect(ssoButton.props.focusable).toBeTruthy()
+        })
 
-        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
-          2,
-          StepperOrigin.HOME,
-          PreValidationSignupStep.Birthday,
-          'SSO_signup'
-        )
+        await act(async () => fireEvent.press(ssoButton))
+
+        await waitFor(() => {
+          expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+            2,
+            StepperOrigin.HOME,
+            PreValidationSignupStep.Birthday,
+            'SSO_signup'
+          )
+        })
 
         const datePicker = screen.getByTestId('date-picker-spinner-native')
         await act(async () => {
