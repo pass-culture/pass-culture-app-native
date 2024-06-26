@@ -3,6 +3,7 @@ import React from 'react'
 import { BannerName, BannerResponse } from 'api/gen'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -41,6 +42,7 @@ describe('<HomeBanner/>', () => {
         },
         requestOptions: { persist: true },
       })
+      mockAuthContextWithoutUser()
 
       renderHomeBanner({ isLoggedIn: false })
 
@@ -121,6 +123,7 @@ describe('<HomeBanner/>', () => {
         },
         requestOptions: { persist: true },
       })
+      mockAuthContextWithoutUser()
 
       renderHomeBanner({ isLoggedIn: false })
 

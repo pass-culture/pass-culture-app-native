@@ -364,6 +364,9 @@ describe('<Login/>', () => {
   })
 
   it('should show error message and error inputs WHEN signin has failed because of network failure', async () => {
+    // With msw when we make a request that fails because of network error, it raises an error on the console
+    // We want to have this error to test if we catch this error correctly
+    jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
     simulateSigninNetworkFailure()
     renderLogin()
 
