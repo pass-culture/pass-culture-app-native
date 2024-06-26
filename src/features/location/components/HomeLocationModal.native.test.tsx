@@ -10,7 +10,6 @@ import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
-// NO_PASS MODALE
 jest.useFakeTimers()
 
 const hideModalMock = jest.fn()
