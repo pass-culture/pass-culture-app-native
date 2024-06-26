@@ -4,34 +4,44 @@ import { Platform } from 'react-native'
 import { getSentryConfig } from 'libs/monitoring/config'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 
-import * as SentryModule from './sentry'
+import {
+  addBreadcrumb,
+  captureException,
+  configureScope,
+  init,
+  setExtras,
+  setUser,
+  startTransaction,
+  withProfiler,
+  wrap,
+} from './sentry'
 
 type EventMonitoring = {
   addBreadcrumb: (breadcrumb: Breadcrumb) => ReturnType<Hub['addBreadcrumb']>
-  captureException: typeof SentryModule.captureException
-  configureScope: typeof SentryModule.configureScope
+  captureException: typeof captureException
+  configureScope: typeof configureScope
   init: ({ enabled }: { enabled: boolean }) => Promise<void>
   setUser: (user: User | Record<string, unknown> | null) => void
-  setExtras: typeof SentryModule.setExtras
-  startTransaction: typeof SentryModule.startTransaction
-  withProfiler: typeof SentryModule.withProfiler
-  wrap: typeof SentryModule.wrap
+  setExtras: typeof setExtras
+  startTransaction: typeof startTransaction
+  withProfiler: typeof withProfiler
+  wrap: typeof wrap
 }
 
 export const eventMonitoring: EventMonitoring = {
-  addBreadcrumb: SentryModule.addBreadcrumb,
-  captureException: SentryModule.captureException,
-  configureScope: SentryModule.configureScope,
-  setUser: SentryModule.setUser,
-  setExtras: SentryModule.setExtras,
-  startTransaction: SentryModule.startTransaction,
-  withProfiler: SentryModule.withProfiler,
-  wrap: SentryModule.wrap,
+  addBreadcrumb: addBreadcrumb,
+  captureException: captureException,
+  configureScope: configureScope,
+  setUser: setUser,
+  setExtras: setExtras,
+  startTransaction: startTransaction,
+  withProfiler: withProfiler,
+  wrap: wrap,
   async init({ enabled } = { enabled: true }) {
     if (!enabled) return
     const config = await getSentryConfig()
-    SentryModule.init(config)
-    SentryModule.configureScope(async (scope) => {
+    init(config)
+    configureScope(async (scope) => {
       scope.setExtras({ platform: Platform.OS, deviceId: await getDeviceId() })
     })
   },
