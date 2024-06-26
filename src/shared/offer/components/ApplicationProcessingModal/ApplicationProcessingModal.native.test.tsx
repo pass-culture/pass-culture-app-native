@@ -14,7 +14,7 @@ import { ApplicationProcessingModal } from './ApplicationProcessingModal'
 const hideModal = jest.fn()
 const offerId = 1
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 jest.mock('libs/firebase/analytics/analytics')
 

@@ -13,7 +13,7 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 

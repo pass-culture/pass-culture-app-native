@@ -14,7 +14,7 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 
 jest.useFakeTimers()
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () => {
   return {
     usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({

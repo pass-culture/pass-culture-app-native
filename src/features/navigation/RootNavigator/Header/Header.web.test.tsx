@@ -15,7 +15,7 @@ import { theme } from 'theme'
 
 import { Header } from './Header'
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/favorites/context/FavoritesWrapper')
 
 const mockedUseAuthContext = useAuthContext as jest.Mock

@@ -22,7 +22,7 @@ import { OfferHeader } from '../OfferHeader/OfferHeader'
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 const mockShare = jest.spyOn(Share, 'share').mockImplementation(jest.fn())
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({

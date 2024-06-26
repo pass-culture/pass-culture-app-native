@@ -18,7 +18,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { useAddFavorite } from './useAddFavorite'
 
 jest.mock('features/auth/context/AuthContext')
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 const offerId = 116656
 

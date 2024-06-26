@@ -13,7 +13,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () => ({
   usePushPermission: jest.fn(() => ({
     pushPermission: 'granted',

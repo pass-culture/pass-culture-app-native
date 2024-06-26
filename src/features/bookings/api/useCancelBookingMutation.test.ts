@@ -18,7 +18,7 @@ useQueryClientSpy.mockReturnValue({
   invalidateQueries: invalidateQueriesMock,
 } as unknown as ReactQueryAPI.QueryClient)
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 describe('[hook] useCancelBookingMutation', () => {
   it('invalidates me and bookings after successfully cancel a booking', async () => {

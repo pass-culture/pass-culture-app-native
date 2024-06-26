@@ -11,7 +11,7 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 const postFavoritesSpy = jest.spyOn(api, 'postNativeV1MeFavorites')

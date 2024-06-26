@@ -29,7 +29,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showInfoSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowInfoSnackBar(props)),
   }),
 }))
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 jest.mock('libs/firebase/analytics/analytics')
 

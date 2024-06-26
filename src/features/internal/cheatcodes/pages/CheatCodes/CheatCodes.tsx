@@ -1,6 +1,6 @@
 import { StackNavigationProp } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Text, Alert, Button } from 'react-native'
+import { Alert, Button, Text } from 'react-native'
 
 import { api } from 'api/api'
 import { CodePushButton } from 'features/internal/cheatcodes/components/CodePushButton'
@@ -8,7 +8,7 @@ import { CrashTestButton } from 'features/internal/cheatcodes/components/CrashTe
 import { NavigateHomeButton } from 'features/internal/cheatcodes/components/NavigateHomeButton'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
-import { decodeToken } from 'libs/jwt'
+import { decodeToken } from 'libs/jwt/jwt'
 import { clearRefreshToken } from 'libs/keychain'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { BatchUser } from 'libs/react-native-batch'

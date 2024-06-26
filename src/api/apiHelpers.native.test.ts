@@ -3,7 +3,7 @@ import CodePush from 'react-native-code-push'
 
 import * as NavigationRef from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
-import * as jwt from 'libs/jwt'
+import * as jwt from 'libs/jwt/jwt'
 import * as Keychain from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import * as PackageJson from 'libs/packageJson'
@@ -24,7 +24,7 @@ jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 
 jest.mock('libs/keychain')
 jest.mock('libs/react-native-device-info/getDeviceId')
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 const configuration: Configuration = {
   basePath: env.API_BASE_URL,

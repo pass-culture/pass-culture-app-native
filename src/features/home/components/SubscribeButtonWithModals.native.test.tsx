@@ -12,7 +12,7 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { SubscribeButtonWithModals } from './SubscribeButtonWithModals'
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 const mockShowSuccessSnackBar = jest.fn()

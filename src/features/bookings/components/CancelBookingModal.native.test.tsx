@@ -14,7 +14,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const mockDismissModal = jest.fn()
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 let mockIsCreditExpired = false

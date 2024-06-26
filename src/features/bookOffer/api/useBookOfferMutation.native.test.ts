@@ -13,7 +13,7 @@ const setup = (queryClient: QueryClient) => {
     email: 'email@domain.ext',
   })
 }
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 describe('useBookOfferMutation', () => {
   it('invalidates userProfile after successfully booking an offer', async () => {

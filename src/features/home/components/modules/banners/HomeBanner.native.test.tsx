@@ -9,7 +9,7 @@ import { render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))

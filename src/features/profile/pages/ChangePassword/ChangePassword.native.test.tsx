@@ -24,7 +24,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   })),
 }))
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 function renderChangePassword() {
   render(reactQueryProviderHOC(<ChangePassword />))

@@ -8,7 +8,7 @@ import { renderHook, waitFor } from 'tests/utils'
 import { useHomeRecommendedIdsQuery } from './useHomeRecommendedIdsQuery'
 
 jest.mock('libs/monitoring')
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 describe('useHomeRecommendedIdsQuery', () => {
   it('should capture an exception when fetch call fails', async () => {

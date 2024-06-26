@@ -11,12 +11,12 @@ import { amplitude } from 'libs/amplitude'
 import { useAppStateChange } from 'libs/appState'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { getTokenExpirationDate } from 'libs/jwt/getTokenExpirationDate'
 import {
   computeTokenRemainingLifetimeInMs,
   getTokenStatus,
   getUserIdFromAccessToken,
-} from 'libs/jwt'
-import { getTokenExpirationDate } from 'libs/jwt/getTokenExpirationDate'
+} from 'libs/jwt/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'

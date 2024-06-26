@@ -5,7 +5,7 @@ import { mockServer } from 'tests/mswServer'
 import { getEmailUpdateStatus } from './useEmailUpdateStatus'
 
 jest.mock('libs/monitoring')
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 const emailUpdateStatus: EmailUpdateStatus = {
   expired: false,

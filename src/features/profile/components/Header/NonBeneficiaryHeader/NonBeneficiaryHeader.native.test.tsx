@@ -16,7 +16,7 @@ import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('features/profile/api/useUpdateProfileMutation')

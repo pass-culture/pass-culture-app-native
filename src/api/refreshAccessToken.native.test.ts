@@ -1,14 +1,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { api } from 'api/api'
-import * as jwt from 'libs/jwt'
+import * as jwt from 'libs/jwt/jwt'
 import * as Keychain from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 
 import { refreshAccessToken, removeRefreshedAccessToken } from './refreshAccessToken'
 
 jest.mock('libs/keychain')
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 const respondWith = async (
   body: unknown,
