@@ -3,6 +3,7 @@ import React from 'react'
 import { BannerName, BannerResponse } from 'api/gen'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -10,9 +11,7 @@ import { render, screen } from 'tests/utils'
 jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('libs/jwt')
-jest.mock('features/auth/context/AuthContext', () => ({
-  useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
-}))
+jest.mock('features/auth/context/AuthContext')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
@@ -41,6 +40,7 @@ describe('<HomeBanner/>', () => {
         },
         requestOptions: { persist: true },
       })
+      mockAuthContextWithoutUser()
 
       renderHomeBanner({ isLoggedIn: false })
 
@@ -121,6 +121,7 @@ describe('<HomeBanner/>', () => {
         },
         requestOptions: { persist: true },
       })
+      mockAuthContextWithoutUser()
 
       renderHomeBanner({ isLoggedIn: false })
 
