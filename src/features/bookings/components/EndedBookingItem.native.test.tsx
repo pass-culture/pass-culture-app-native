@@ -6,8 +6,10 @@ import { BookingCancellationReasons } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { EndedBookingItem } from './EndedBookingItem'
 
@@ -18,6 +20,8 @@ jest.mock('libs/network/NetInfoWrapper')
 const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('EndedBookingItem', () => {
   it('should display offer title', () => {
@@ -150,6 +154,34 @@ describe('EndedBookingItem', () => {
       from: 'endedbookings',
 
       offerId: bookingsSnap.ended_bookings[0].stock.offer.id,
+    })
+  })
+
+  describe('when reaction feature flag is activated', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+    })
+
+    it('should display reaction button', () => {
+      renderEndedBookingItem(bookingsSnap.ended_bookings[0])
+
+      expect(screen.getByLabelText('Réagis à ta réservation')).toBeOnTheScreen()
+    })
+
+    it('should open reaction modal on press', () => {
+      const mockShowModal = jest.fn()
+      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+        visible: false,
+        showModal: mockShowModal,
+        hideModal: jest.fn(),
+        toggleModal: jest.fn(),
+      })
+
+      renderEndedBookingItem(bookingsSnap.ended_bookings[0])
+
+      fireEvent.press(screen.getByLabelText('Réagis à ta réservation'))
+
+      expect(mockShowModal).toHaveBeenCalledWith()
     })
   })
 })

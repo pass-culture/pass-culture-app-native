@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { OfferResponse } from 'api/gen'
+import { BookingOfferResponse, OfferResponse } from 'api/gen'
 import { ReactionToggleButton } from 'features/reactions/components/ReactionToggleButton/ReactionToggleButton'
 import { useSubcategory } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -20,7 +20,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
-  offer: OfferResponse
+  offer: OfferResponse | BookingOfferResponse
   dateUsed: string
   visible: boolean
   closeModal: () => void
