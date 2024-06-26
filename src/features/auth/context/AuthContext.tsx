@@ -17,7 +17,7 @@ import {
   getTokenStatus,
   getUserIdFromAccessToken,
 } from 'libs/jwt/jwt'
-import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
+import { clearRefreshToken, getRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { getAppVersion } from 'libs/packageJson'

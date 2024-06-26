@@ -1,5 +1,5 @@
 import { computeTokenRemainingLifetimeInMs } from 'libs/jwt/jwt'
-import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
+import { clearRefreshToken, getRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 

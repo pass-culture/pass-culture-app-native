@@ -9,7 +9,7 @@ import { NavigateHomeButton } from 'features/internal/cheatcodes/components/Navi
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment'
 import { decodeToken } from 'libs/jwt/jwt'
-import { clearRefreshToken } from 'libs/keychain'
+import { clearRefreshToken } from 'libs/keychain/keychain'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { BatchUser } from 'libs/react-native-batch'
 import { storage } from 'libs/storage'

@@ -7,7 +7,7 @@ import {
 import { useResetContexts } from 'features/auth/context/useResetContexts'
 import { analytics } from 'libs/analytics'
 import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
-import { saveRefreshToken } from 'libs/keychain'
+import { saveRefreshToken } from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
 
 export function useLoginRoutine() {

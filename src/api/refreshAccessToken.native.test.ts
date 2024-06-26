@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import { api } from 'api/api'
 import * as jwt from 'libs/jwt/jwt'
-import * as Keychain from 'libs/keychain'
+import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 
 import { refreshAccessToken, removeRefreshedAccessToken } from './refreshAccessToken'

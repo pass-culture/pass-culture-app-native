@@ -10,7 +10,7 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
-import { saveRefreshToken, clearRefreshToken, getRefreshToken } from 'libs/keychain'
+import { saveRefreshToken, clearRefreshToken, getRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
