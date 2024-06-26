@@ -22,7 +22,7 @@ import { removeRefreshedAccessToken } from './refreshAccessToken'
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 
-jest.mock('libs/keychain')
+jest.mock('libs/keychain/keychain')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('libs/jwt/jwt')
 

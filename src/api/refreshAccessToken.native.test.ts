@@ -7,7 +7,7 @@ import { eventMonitoring } from 'libs/monitoring'
 
 import { refreshAccessToken, removeRefreshedAccessToken } from './refreshAccessToken'
 
-jest.mock('libs/keychain')
+jest.mock('libs/keychain/keychain')
 jest.mock('libs/jwt/jwt')
 
 const respondWith = async (
