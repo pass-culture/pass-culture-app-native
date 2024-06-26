@@ -21,12 +21,12 @@ import {
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import {
-  DescriptionContext,
   BooksNativeCategoriesEnum,
-  SearchState,
+  DescriptionContext,
   NativeCategoryEnum,
+  SearchState,
 } from 'features/search/types'
-import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
 type Item = SearchGroupNameEnumv2 | NativeCategoryIdEnumv2 | string | null

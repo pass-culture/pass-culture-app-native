@@ -1,5 +1,5 @@
 import { DisabilitiesProperties } from 'features/accessibility/types'
-import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import {
   buildAccessibiltyFiltersPredicate,
   buildAllocineIdPredicate,

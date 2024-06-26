@@ -7,14 +7,14 @@ import {
   GTL,
   NativeCategoryIdEnumv2,
   SearchGroupNameEnumv2,
+  SubcategoryIdEnum,
   SubcategoryIdEnumv2,
   VenueResponse,
-  SubcategoryIdEnum,
 } from 'api/gen'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaHit as BaseAlgoliaHit } from 'libs/algolia/types'

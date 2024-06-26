@@ -1,4 +1,4 @@
-import { RADIUS_FILTERS } from 'libs/algolia/enums'
+import { RADIUS_FILTERS } from 'libs/algolia/enums/radiusFiltersEnums'
 import { LocationMode } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 

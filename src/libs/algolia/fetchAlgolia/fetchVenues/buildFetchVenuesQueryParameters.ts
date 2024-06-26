@@ -1,4 +1,4 @@
-import { VENUES_FACETS_ENUM } from 'libs/algolia/enums'
+import { VENUES_FACETS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { buildLocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { AlgoliaQueryParameters, FetchVenuesParameters } from 'libs/algolia/types'
 

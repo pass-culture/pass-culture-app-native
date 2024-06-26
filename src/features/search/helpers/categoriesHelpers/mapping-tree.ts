@@ -1,16 +1,16 @@
 import {
+  BookType,
   GenreType,
+  GTL,
   NativeCategoryIdEnumv2,
   NativeCategoryResponseModelv2,
   SearchGroupNameEnumv2,
   SubcategoriesResponseModelv2,
-  GTL,
-  BookType,
 } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { OfferGenreType } from 'features/search/types'
-import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { FacetData, NativeCategoryFacetData } from 'libs/algolia/types'
 
 type MappedGenreType = {
