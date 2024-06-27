@@ -115,6 +115,7 @@ export enum AnalyticsEvent {
   OPEN_LOCATION_SETTINGS = 'OpenLocationSettings',
   OPEN_NOTIFICATION_SETTINGS = 'OpenNotificationSettings',
   SYSTEM_BLOCK_DISPLAYED = 'SystemBlockDisplayed',
+  TRENDS_BLOCK_CLICKED = 'TrendsBlockClicked',
   VIDEO_PAUSED = 'VideoPaused',
   PERFORM_SEARCH = 'PerformSearch',
   PLAYLIST_HORIZONTAL_SCROLL = 'PlaylistHorizontalScroll',
