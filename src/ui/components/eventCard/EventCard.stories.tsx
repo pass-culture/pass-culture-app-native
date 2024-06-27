@@ -16,5 +16,5 @@ EventCardDefault.args = {
   title: '17h35',
   subtitleLeft: 'VO,3D max',
   subtitleRight: '7,99€',
-  isDisabled: false,
+  isDisabled: true,
 }
