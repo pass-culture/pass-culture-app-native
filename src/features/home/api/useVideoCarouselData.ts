@@ -74,7 +74,7 @@ export const useVideoCarouselData = (
   })
 
   const queriesWithoutUndefined = queries.filter(isOfferQuery)
-  // console.log({ queriesWithoutUndefined: queriesWithoutUndefined[1]?.params.facetFilters })
+
   const offersQuery = async () => {
     const offersResultList = await fetchCarouselVideoOffers(queriesWithoutUndefined)
     return offersResultList.filter(searchResponsePredicate)
