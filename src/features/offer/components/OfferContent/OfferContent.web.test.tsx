@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ComponentProps } from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
@@ -14,7 +14,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
-import { OfferContent } from './OfferContent'
+import { OfferContent } from './OfferContent.web'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
@@ -45,6 +45,29 @@ jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
+type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>> & {
+  isDesktopViewport?: boolean
+}
+
+function renderOfferContent({
+  offer = offerResponseSnap,
+  subcategory = mockSubcategory,
+  isDesktopViewport = false,
+}: RenderOfferContentType) {
+  render(
+    reactQueryProviderHOC(
+      <OfferContent
+        offer={offer}
+        searchGroupList={PLACEHOLDER_DATA.searchGroups}
+        subcategory={subcategory}
+      />
+    ),
+    {
+      theme: { isDesktopViewport },
+    }
+  )
+}
+
 describe('<OfferContent />', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
@@ -52,34 +75,64 @@ describe('<OfferContent />', () => {
     mockAuthContextWithoutUser({ persist: true })
   })
 
+  it('should not display sticky booking button on desktop', async () => {
+    renderOfferContent({ isDesktopViewport: true })
+
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.queryByTestId('sticky-booking-button')).not.toBeInTheDocument()
+  })
+
+  it('should display sticky booking button on mobile', async () => {
+    renderOfferContent({ isDesktopViewport: false })
+
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.getByTestId('sticky-booking-button')).toBeInTheDocument()
+  })
+
+  it('should not display mobile body on desktop', async () => {
+    renderOfferContent({ isDesktopViewport: true })
+
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.queryByTestId('offer-body-mobile')).not.toBeInTheDocument()
+  })
+
+  it('should display mobile body on mobile', async () => {
+    renderOfferContent({ isDesktopViewport: false })
+
+    await screen.findByText('Réserver l’offre')
+
+    expect(screen.getByTestId('offer-body-mobile')).toBeInTheDocument()
+  })
+
+  it('should display desktop body on desktop', async () => {
+    renderOfferContent({ isDesktopViewport: true })
+    await screen.findByText('Réserver l’offre')
+
+    expect(await screen.findByTestId('offer-body-desktop')).toBeInTheDocument()
+  })
+
+  it('should display nonadhesive booking button on desktop', async () => {
+    renderOfferContent({ isDesktopViewport: true })
+
+    expect(await screen.findByTestId('booking-button')).toBeInTheDocument()
+  })
+
   it('should not display linear gradient on offer image when enableOfferPreview feature flag activated', async () => {
-    render(
-      reactQueryProviderHOC(
-        <OfferContent
-          offer={offerResponseSnap}
-          searchGroupList={PLACEHOLDER_DATA.searchGroups}
-          subcategory={mockSubcategory}
-        />
-      )
-    )
+    renderOfferContent({ isDesktopViewport: false })
 
     await waitFor(async () => {
-      expect(screen.queryByTestId('imageGradient')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('imageGradient')).not.toBeInTheDocument()
     })
   })
 
   it('should not display tag on offer image when enableOfferPreview feature flag activated', async () => {
-    render(
-      reactQueryProviderHOC(
-        <OfferContent
-          offer={offerResponseSnap}
-          searchGroupList={PLACEHOLDER_DATA.searchGroups}
-          subcategory={mockSubcategory}
-        />
-      )
-    )
+    renderOfferContent({ isDesktopViewport: false })
+
     await waitFor(async () => {
-      expect(screen.queryByTestId('imageTag')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('imageTag')).not.toBeInTheDocument()
     })
   })
 
@@ -89,15 +142,7 @@ describe('<OfferContent />', () => {
     })
 
     it('should not navigate to offer preview screen when clicking on image offer', async () => {
-      render(
-        reactQueryProviderHOC(
-          <OfferContent
-            offer={offerResponseSnap}
-            searchGroupList={PLACEHOLDER_DATA.searchGroups}
-            subcategory={mockSubcategory}
-          />
-        )
-      )
+      renderOfferContent({ isDesktopViewport: false })
 
       fireEvent.click(await screen.findByTestId('offerImageWithoutCarousel'))
 

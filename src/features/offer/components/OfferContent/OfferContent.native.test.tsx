@@ -168,6 +168,14 @@ describe('<OfferContent />', () => {
       jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
     })
 
+    it('should not navigate to offer preview screen when clicking on image offer', async () => {
+      renderOfferContent({})
+
+      fireEvent.press(await screen.findByTestId('offerImageWithoutCarousel'))
+
+      expect(navigate).not.toHaveBeenCalled()
+    })
+
     it('should not display linear gradient on offer image when enableOfferPreview feature flag deactivated', async () => {
       renderOfferContent({})
 
@@ -554,20 +562,6 @@ describe('<OfferContent />', () => {
     expect(await screen.findByTestId('offer-body-mobile')).toBeOnTheScreen()
   })
 
-  it('should not display mobile body on desktop', async () => {
-    renderOfferContent({ isDesktopViewport: true })
-
-    await screen.findByText('Réserver l’offre')
-
-    expect(screen.queryByTestId('offer-body-mobile')).not.toBeOnTheScreen()
-  })
-
-  it('should display desktop body on desktop', async () => {
-    renderOfferContent({ isDesktopViewport: true })
-
-    expect(await screen.findByTestId('offer-body-desktop')).toBeOnTheScreen()
-  })
-
   it('should not display desktop body on mobile', async () => {
     renderOfferContent({})
 
@@ -580,20 +574,6 @@ describe('<OfferContent />', () => {
     renderOfferContent({})
 
     expect(await screen.findByTestId('sticky-booking-button')).toBeOnTheScreen()
-  })
-
-  it('should not display sticky booking button on desktop', async () => {
-    renderOfferContent({ isDesktopViewport: true })
-
-    await screen.findByText('Réserver l’offre')
-
-    expect(screen.queryByTestId('sticky-booking-button')).not.toBeOnTheScreen()
-  })
-
-  it('should display nonadhesive booking button on desktop', async () => {
-    renderOfferContent({ isDesktopViewport: true })
-
-    expect(await screen.findByTestId('booking-button')).toBeOnTheScreen()
   })
 
   it('should not display nonadhesive booking button on mobile', async () => {
