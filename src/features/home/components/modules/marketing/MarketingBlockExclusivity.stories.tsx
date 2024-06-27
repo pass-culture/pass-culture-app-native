@@ -1,22 +1,34 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { theme } from 'theme'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
+// @ts-ignore import is unresolved
+// eslint-disable-next-line import/no-unresolved
+import { useQueryDecorator } from '/.storybook/mocks/react-query'
+
 const meta: ComponentMeta<typeof MarketingBlockExclusivity> = {
   title: 'features/home/MarketingBlock/MarketingBlockExclusivity',
   component: MarketingBlockExclusivity,
   decorators: [
+    useQueryDecorator,
     (Story) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
     ),
   ],
+  parameters: {
+    useQuery: {
+      subcategories: PLACEHOLDER_DATA,
+      featureFlags: { get: () => ({ minimalBuildNumber: 1000000 }) },
+    },
+  },
 }
 export default meta
 

@@ -24,4 +24,5 @@ Default.args = {
   subtitle: 'Pour trouver des offres autour de toi.',
   onPress: action('pressed!'),
   accessibilityLabel: 'Active ta géolocalisation',
+  analyticsParams: { type: 'location', from: 'home' },
 }
