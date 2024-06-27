@@ -1,8 +1,8 @@
 /* We use many `any` on purpose in this module, so we deactivate the following rule : */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FlashList, ListRenderItem, ListRenderItemInfo } from '@shopify/flash-list'
+import { FlashList, ListRenderItemInfo, ListRenderItem } from '@shopify/flash-list'
 import React, { FunctionComponent, useCallback, useMemo, useRef } from 'react'
-import { FlatList, Platform, useWindowDimensions } from 'react-native'
+import { Platform, useWindowDimensions } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { PlaylistType } from 'features/offer/enums'
@@ -50,7 +50,6 @@ const defaultProps = {
 }
 
 const isWeb = Platform.OS === 'web' ? true : undefined
-type ListType<T> = T extends boolean ? FlatList : FlashList<any>
 
 export const Playlist: FunctionComponent<Props> = ({
   data,
@@ -69,7 +68,7 @@ export const Playlist: FunctionComponent<Props> = ({
   const { isTouch, tiles } = useTheme()
   const { width } = useWindowDimensions()
 
-  const listRef = useRef<ListType<typeof isWeb>>(null)
+  const listRef = useRef(null)
   const {
     handleScrollPrevious,
     handleScrollNext,
@@ -79,9 +78,6 @@ export const Playlist: FunctionComponent<Props> = ({
     isEnd,
     isStart,
   } = useHorizontalFlatListScroll({ ref: listRef, isActive: isWeb })
-
-  // We use FlatLists in web because we don't have performance issues
-  const ListComponent = isWeb ? FlatList : FlashList
 
   // We have to include these dummy objects for header and footer in the data array
   // in order to have the correct array length available for the scroll functions and renderItem
@@ -93,14 +89,7 @@ export const Playlist: FunctionComponent<Props> = ({
     return data
   }, [data, renderHeader, renderFooter])
 
-  const itemWidthWithOffset = itemWidth + ITEM_SEPARATOR_WIDTH
   const nbOfItems = dataWithHeaderAndFooter.length
-
-  // It is required to know the exact width of an item width and its offset if we want to use
-  // FlatList's scrollToIndex() function.
-  function getItemLayout(_data: any[] | null | undefined, index: number) {
-    return { length: itemWidth, offset: itemWidthWithOffset * index, index }
-  }
 
   const keyExtractorWithHeaderAndFooter = useCallback(
     function (item: any, index: number) {
@@ -155,7 +144,7 @@ export const Playlist: FunctionComponent<Props> = ({
           top={scrollButtonOffsetY}
         />
       ) : null}
-      <ListComponent
+      <FlashList
         onScroll={onScroll}
         onContentSizeChange={onContentSizeChange}
         testID={testID}
@@ -166,7 +155,6 @@ export const Playlist: FunctionComponent<Props> = ({
         data={dataWithHeaderAndFooter}
         renderItem={renderItemWithHeaderAndFooter}
         keyExtractor={keyExtractorWithHeaderAndFooter}
-        getItemLayout={getItemLayout}
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={16}
         horizontal

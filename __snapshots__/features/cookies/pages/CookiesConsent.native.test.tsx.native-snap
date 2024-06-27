@@ -43,9 +43,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
-    forwardedRef={[Function]}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -54,27 +52,38 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "black",
-        "bottom": 0,
-        "height": 1334,
-        "left": 0,
-        "opacity": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-        "width": 750,
-      }
+      [
+        [
+          {
+            "backgroundColor": "black",
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          [
+            {
+              "backgroundColor": "black",
+              "height": 1334,
+              "width": 750,
+            },
+          ],
+        ],
+        {},
+        {
+          "opacity": 0,
+        },
+      ]
     }
   />
   <View
     accessibilityLabelledBy="testUuidV4"
     accessibilityModal={true}
     accessibilityRole="none"
-    collapsable={false}
     deviceHeight={1334}
     deviceWidth={750}
-    forwardedRef={[Function]}
     hideModalContentWhileAnimating={false}
     onBackdropPress={[Function]}
     onModalHide={[Function]}
@@ -88,22 +97,46 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      {
-        "alignItems": "center",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "center",
-        "left": 0,
-        "margin": "auto",
-        "position": "absolute",
-        "right": 0,
-        "top": "auto",
-        "transform": [
-          {
-            "translateY": 1334,
-          },
+      [
+        [
+          {},
+          [
+            {
+              "margin": 37.5,
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
+            },
+            {
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            [
+              {
+                "alignItems": "center",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": "auto",
+              },
+              {
+                "margin": "auto",
+              },
+            ],
+          ],
         ],
-      }
+        {
+          "transform": [
+            {
+              "translateY": 1334,
+            },
+          ],
+        },
+        {},
+      ]
     }
     supportedOrientations={
       [
@@ -393,7 +426,6 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -403,22 +435,31 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#eb0055",
+                        "borderRadius": 24,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "maxWidth": 500,
+                        "minHeight": 40,
+                        "paddingBottom": 2,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Tout refuser"
               >
@@ -493,7 +534,6 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -503,22 +543,31 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#eb0055",
+                        "borderRadius": 24,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "maxWidth": 500,
+                        "minHeight": 40,
+                        "paddingBottom": 2,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Tout accepter"
               >
@@ -583,7 +632,6 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -593,25 +641,35 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "transparent",
-                "borderColor": "#eb0055",
-                "borderRadius": 24,
-                "borderStyle": "solid",
-                "borderWidth": 2,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": "100%",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {
+                    "borderColor": "#eb0055",
+                    "borderStyle": "solid",
+                    "borderWidth": 2,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Choisir les cookies"
           >

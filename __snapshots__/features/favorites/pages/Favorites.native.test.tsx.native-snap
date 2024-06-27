@@ -105,7 +105,6 @@ exports[`<Favorites/> should render correctly 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -115,11 +114,20 @@ exports[`<Favorites/> should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "opacity": 1,
-          "overflow": "hidden",
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {},
+            {
+              "overflow": "hidden",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Trier"
     >
@@ -308,6 +316,7 @@ exports[`<Favorites/> should render correctly 1`] = `
     >
       <View>
         <View
+          collapsable={false}
           onLayout={[Function]}
         >
           <View
@@ -346,7 +355,6 @@ exports[`<Favorites/> should render correctly 1`] = `
               width={80}
             >
               <BVLinearGradient
-                collapsable={false}
                 colors={
                   [
                     4292730333,
@@ -438,7 +446,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -505,7 +512,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -571,7 +577,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -637,7 +642,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -703,7 +707,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -786,7 +789,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -865,7 +867,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -966,7 +967,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -1033,7 +1033,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -1099,7 +1098,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -1165,7 +1163,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -1231,7 +1228,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -1314,7 +1310,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -1393,7 +1388,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -1494,7 +1488,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -1561,7 +1554,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -1627,7 +1619,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -1693,7 +1684,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -1759,7 +1749,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -1842,7 +1831,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -1921,7 +1909,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -2022,7 +2009,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -2089,7 +2075,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -2155,7 +2140,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -2221,7 +2205,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -2287,7 +2270,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -2370,7 +2352,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -2449,7 +2430,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -2550,7 +2530,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -2617,7 +2596,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -2683,7 +2661,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -2749,7 +2726,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -2815,7 +2791,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -2898,7 +2873,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -2977,7 +2951,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -3078,7 +3051,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -3145,7 +3117,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -3211,7 +3182,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -3277,7 +3247,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -3343,7 +3312,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -3426,7 +3394,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -3505,7 +3472,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -3606,7 +3572,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -3673,7 +3638,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -3739,7 +3703,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -3805,7 +3768,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -3871,7 +3833,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -3954,7 +3915,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -4033,7 +3993,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -4134,7 +4093,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -4201,7 +4159,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -4267,7 +4224,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -4333,7 +4289,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -4399,7 +4354,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -4482,7 +4436,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -4561,7 +4514,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -4662,7 +4614,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -4729,7 +4680,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -4795,7 +4745,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -4861,7 +4810,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -4927,7 +4875,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -5010,7 +4957,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -5089,7 +5035,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -5190,7 +5135,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={64}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -5257,7 +5201,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={240}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -5323,7 +5266,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={120}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -5389,7 +5331,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={160}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -5455,7 +5396,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                   width={32}
                 >
                   <BVLinearGradient
-                    collapsable={false}
                     colors={
                       [
                         4292730333,
@@ -5538,7 +5478,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,
@@ -5617,7 +5556,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 width={160}
               >
                 <BVLinearGradient
-                  collapsable={false}
                   colors={
                     [
                       4292730333,

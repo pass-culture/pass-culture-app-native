@@ -8,6 +8,8 @@ import { Logo } from 'ui/svg/icons/Logo'
 
 import { AnimatedIcon } from './AnimatedIcon'
 
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+
 const DummyComponent: React.FC = () => {
   const animatedValue = new Animated.Value(0)
   const onPress = () => {

@@ -7,6 +7,8 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { RoundedButton } from './RoundedButton'
 
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+
 const animatedValue = new Animated.Value(0)
 const DummyComponent: React.FC = () => {
   const iconBackgroundColor = animatedValue.interpolate({

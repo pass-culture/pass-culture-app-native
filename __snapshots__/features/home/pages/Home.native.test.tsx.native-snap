@@ -118,6 +118,7 @@ exports[`Home page should render correctly 1`] = `
       >
         <View>
           <View
+            collapsable={false}
             onLayout={[Function]}
             style={
               {
@@ -230,7 +231,6 @@ exports[`Home page should render correctly 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onLayout={[Function]}
@@ -241,30 +241,39 @@ exports[`Home page should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "alignItems": "center",
-                      "marginLeft": 8,
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "marginLeft": 8,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="Ouvrir la modale de localisation depuis le widget"
                 >
                   <View
-                    collapsable={false}
                     isActive={true}
                     style={
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderColor": "#161617",
-                        "borderRadius": 40,
-                        "borderStyle": "solid",
-                        "borderWidth": 2,
-                        "height": 40,
-                        "justifyContent": "center",
-                        "width": 40,
-                      }
+                      [
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#161617",
+                          "borderRadius": 40,
+                          "borderStyle": "solid",
+                          "borderWidth": 2,
+                          "height": 40,
+                          "justifyContent": "center",
+                          "width": 40,
+                        },
+                      ]
                     }
                   >
                     <View
@@ -375,7 +384,6 @@ exports[`Home page should render correctly 1`] = `
                     }
                   }
                   accessible={false}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -385,10 +393,18 @@ exports[`Home page should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "opacity": 1,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {},
+                        {},
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="bannerWithBackground"
                 >

@@ -45,7 +45,6 @@ exports[`<SeeMore /> renders correctly 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -55,11 +54,19 @@ exports[`<SeeMore /> renders correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="En voir plus"
   >

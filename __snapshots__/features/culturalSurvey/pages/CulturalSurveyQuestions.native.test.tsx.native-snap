@@ -60,7 +60,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -70,12 +69,20 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "left": 12,
-          "opacity": 1,
-          "position": "absolute",
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "left": 12,
+              "position": "absolute",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Revenir en arrière"
     >
@@ -410,7 +417,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -420,20 +426,28 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 7,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginBottom": 1,
-                    "marginLeft": 1,
-                    "marginRight": 1,
-                    "marginTop": 1,
-                    "minHeight": 72,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 7,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginBottom": 1,
+                        "marginLeft": 1,
+                        "marginRight": 1,
+                        "marginTop": 1,
+                        "minHeight": 72,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Participé à un festival, à une avant-première"
               >
@@ -571,7 +585,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -581,20 +594,28 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 7,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginBottom": 1,
-                    "marginLeft": 1,
-                    "marginRight": 1,
-                    "marginTop": 1,
-                    "minHeight": 72,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 7,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginBottom": 1,
+                        "marginLeft": 1,
+                        "marginRight": 1,
+                        "marginTop": 1,
+                        "minHeight": 72,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Assisté à un spectacle Pièce de théâtre, cirque, danse..."
               >
@@ -731,7 +752,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -741,20 +761,28 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 7,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginBottom": 1,
-                    "marginLeft": 1,
-                    "marginRight": 1,
-                    "marginTop": 1,
-                    "minHeight": 72,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 7,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginBottom": 1,
+                        "marginLeft": 1,
+                        "marginRight": 1,
+                        "marginTop": 1,
+                        "minHeight": 72,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Allé à la bibliothèque ou à la médiathèque"
               >
@@ -891,7 +919,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -901,20 +928,28 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 7,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginBottom": 1,
-                    "marginLeft": 1,
-                    "marginRight": 1,
-                    "marginTop": 1,
-                    "minHeight": 72,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 7,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginBottom": 1,
+                        "marginLeft": 1,
+                        "marginRight": 1,
+                        "marginTop": 1,
+                        "minHeight": 72,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Participé à un jeu escape game, jeu concours"
               >
@@ -1051,7 +1086,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1061,20 +1095,28 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 7,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginBottom": 1,
-                    "marginLeft": 1,
-                    "marginRight": 1,
-                    "marginTop": 1,
-                    "minHeight": 72,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 7,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginBottom": 1,
+                        "marginLeft": 1,
+                        "marginRight": 1,
+                        "marginTop": 1,
+                        "minHeight": 72,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Allé à un concert"
               >
@@ -1197,7 +1239,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1207,20 +1248,28 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 7,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginBottom": 1,
-                    "marginLeft": 1,
-                    "marginRight": 1,
-                    "marginTop": 1,
-                    "minHeight": 72,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 7,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginBottom": 1,
+                        "marginLeft": 1,
+                        "marginRight": 1,
+                        "marginTop": 1,
+                        "minHeight": 72,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Allé au cinéma"
               >
@@ -1343,7 +1392,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1353,20 +1401,28 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 7,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginBottom": 1,
-                    "marginLeft": 1,
-                    "marginRight": 1,
-                    "marginTop": 1,
-                    "minHeight": 72,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 7,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginBottom": 1,
+                        "marginLeft": 1,
+                        "marginRight": 1,
+                        "marginTop": 1,
+                        "minHeight": 72,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Visité un musée, un monument, une exposition..."
               >
@@ -1503,7 +1559,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1513,20 +1568,28 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 7,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginBottom": 1,
-                    "marginLeft": 1,
-                    "marginRight": 1,
-                    "marginTop": 1,
-                    "minHeight": 72,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 7,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginBottom": 1,
+                        "marginLeft": 1,
+                        "marginRight": 1,
+                        "marginTop": 1,
+                        "minHeight": 72,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Participé à une conférence, rencontre ou découverte des métiers de la culture"
               >
@@ -1663,7 +1726,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1673,20 +1735,28 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 7,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginBottom": 1,
-                    "marginLeft": 1,
-                    "marginRight": 1,
-                    "marginTop": 1,
-                    "minHeight": 72,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 7,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginBottom": 1,
+                        "marginLeft": 1,
+                        "marginRight": 1,
+                        "marginTop": 1,
+                        "minHeight": 72,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Pris un cours danse, théâtre, musique, dessin"
               >
@@ -1823,7 +1893,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1833,20 +1902,28 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderRadius": 7,
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginBottom": 1,
-                    "marginLeft": 1,
-                    "marginRight": 1,
-                    "marginTop": 1,
-                    "minHeight": 72,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderRadius": 7,
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                        "marginBottom": 1,
+                        "marginLeft": 1,
+                        "marginRight": 1,
+                        "marginTop": 1,
+                        "minHeight": 72,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Aucune de ces sorties culturelles"
               >
@@ -1922,7 +1999,6 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -1932,22 +2008,31 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "#eb0055",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "backgroundColor": "#eb0055",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "paddingBottom": 2,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {},
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Continuer vers l’étape suivante"
     >

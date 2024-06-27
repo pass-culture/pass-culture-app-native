@@ -236,7 +236,6 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -246,22 +245,31 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Ouvrir le gestionnaire mail pour contacter le service fraude"
       >
@@ -354,7 +362,6 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -364,22 +371,32 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 2,
+                "paddingRight": 2,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {
+                "backgroundColor": "transparent",
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Retourner à l’accueil"
       >

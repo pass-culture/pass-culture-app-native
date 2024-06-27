@@ -33,7 +33,7 @@ describe('<DeeplinkItem />', () => {
   it('should copy the universal link to clipboard', async () => {
     render(<DeeplinkItem deeplink={deeplink} />)
 
-    await act(() => fireEvent.click(screen.getByTestId('Copier')))
+    await act(() => fireEvent.click(screen.getByLabelText('Copier')))
 
     expect(writeText).toHaveBeenCalledWith(deeplink.universalLink)
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
@@ -45,7 +45,7 @@ describe('<DeeplinkItem />', () => {
   it('should copy the firebase link to clipboard', async () => {
     render(<DeeplinkItem deeplink={deeplink} />)
 
-    await act(() => fireEvent.click(screen.getByTestId('Copier dans le presse-papier')))
+    await act(() => fireEvent.click(screen.getByLabelText('Copier dans le presse-papier')))
 
     expect(writeText).toHaveBeenCalledWith(deeplink.firebaseLink)
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({

@@ -59,6 +59,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 const modules = [formattedVenuesModule]
 

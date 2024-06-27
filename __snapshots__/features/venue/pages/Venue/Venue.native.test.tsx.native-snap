@@ -1064,7 +1064,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                     externalScrollView={[Function]}
                     finalRenderAheadOffset={187.5}
                     forceNonDeterministicRendering={true}
-                    getItemLayout={[Function]}
                     horizontal={true}
                     initialOffset={0}
                     initialRenderIndex={0}
@@ -1275,7 +1274,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                           ],
                           "drawDistance": 187.5,
                           "estimatedItemSize": 144,
-                          "getItemLayout": [Function],
                           "horizontal": true,
                           "keyExtractor": [Function],
                           "numColumns": 1,
@@ -2645,7 +2643,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       externalScrollView={[Function]}
                       finalRenderAheadOffset={187.5}
                       forceNonDeterministicRendering={true}
-                      getItemLayout={[Function]}
                       horizontal={true}
                       initialOffset={0}
                       initialRenderIndex={0}
@@ -2778,7 +2775,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                             ],
                             "drawDistance": 187.5,
                             "estimatedItemSize": 192,
-                            "getItemLayout": [Function],
                             "horizontal": true,
                             "keyExtractor": [Function],
                             "numColumns": 1,

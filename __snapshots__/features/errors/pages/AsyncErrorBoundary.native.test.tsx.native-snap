@@ -61,7 +61,6 @@ exports[`AsyncErrorBoundary component should render 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -71,14 +70,22 @@ exports[`AsyncErrorBoundary component should render 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "left": 24,
-        "opacity": 1,
-        "position": "absolute",
-        "top": 30,
-        "userSelect": "auto",
-        "zIndex": 1,
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "left": 24,
+            "position": "absolute",
+            "top": 30,
+            "zIndex": 1,
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="Revenir en arrière"
   >
@@ -239,7 +246,6 @@ exports[`AsyncErrorBoundary component should render 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -249,22 +255,31 @@ exports[`AsyncErrorBoundary component should render 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 48,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 48,
+                "paddingBottom": 2,
+                "paddingLeft": 24,
+                "paddingRight": 24,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Réessayer"
       >

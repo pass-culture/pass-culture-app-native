@@ -61,7 +61,7 @@ jest.mock('@shopify/flash-list', () => {
   class MockFlashList extends ActualFlashList {
     componentDidMount() {
       super.componentDidMount()
-      this.rlvRef?._scrollComponent?._scrollViewRef?.props.onLayout({
+      this.rlvRef?._scrollComponent?._scrollViewRef?.props?.onLayout({
         nativeEvent: { layout: { height: 250, width: 800 } },
       })
     }
@@ -69,5 +69,11 @@ jest.mock('@shopify/flash-list', () => {
   return {
     ...jest.requireActual('@shopify/flash-list'),
     FlashList: MockFlashList,
+  }
+})
+
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
   }
 })

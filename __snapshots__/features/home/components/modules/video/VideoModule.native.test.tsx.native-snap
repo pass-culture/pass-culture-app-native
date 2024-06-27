@@ -231,7 +231,6 @@ exports[`VideoModule should render properly with FF on 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -241,20 +240,31 @@ exports[`VideoModule should render properly with FF on 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "flex-start",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#CBCDD2",
-                "borderRadius": 8,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "flexGrow": 1,
-                "height": 140,
-                "marginHorizontal": 24,
-                "opacity": 1,
-                "overflow": "hidden",
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {},
+                  {
+                    "alignItems": "flex-start",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#CBCDD2",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 140,
+                    "overflow": "hidden",
+                  },
+                  {
+                    "flexGrow": 1,
+                    "marginHorizontal": 24,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
           >
             <View

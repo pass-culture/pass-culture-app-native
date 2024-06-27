@@ -29,7 +29,6 @@ exports[`ShareAppModal should match snapshot for default wording 1`] = `
       }
     }
     accessible={false}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -39,17 +38,25 @@ exports[`ShareAppModal should match snapshot for default wording 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "#00000080",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "height": "100%",
-        "justifyContent": "flex-end",
-        "opacity": 1,
-        "position": "absolute",
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "backgroundColor": "#00000080",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "justifyContent": "flex-end",
+            "position": "absolute",
+            "width": "100%",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="clickaway-area"
   />
@@ -277,7 +284,6 @@ exports[`ShareAppModal should match snapshot for default wording 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -287,18 +293,26 @@ exports[`ShareAppModal should match snapshot for default wording 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "borderRadius": 24,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "overflow": "hidden",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 24,
+                      "justifyContent": "center",
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Partager l’appli"
             >
@@ -382,7 +396,6 @@ exports[`ShareAppModal should match snapshot for default wording 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -392,22 +405,32 @@ exports[`ShareAppModal should match snapshot for default wording 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 2,
+                      "paddingRight": 2,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Fermer la modale"
             >
@@ -520,7 +543,6 @@ exports[`ShareAppModal should match snapshot for short wording 1`] = `
       }
     }
     accessible={false}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -530,17 +552,25 @@ exports[`ShareAppModal should match snapshot for short wording 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "#00000080",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "height": "100%",
-        "justifyContent": "flex-end",
-        "opacity": 1,
-        "position": "absolute",
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "backgroundColor": "#00000080",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "justifyContent": "flex-end",
+            "position": "absolute",
+            "width": "100%",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="clickaway-area"
   />
@@ -768,7 +798,6 @@ exports[`ShareAppModal should match snapshot for short wording 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -778,18 +807,26 @@ exports[`ShareAppModal should match snapshot for short wording 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "borderRadius": 24,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "overflow": "hidden",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 24,
+                      "justifyContent": "center",
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Partager l’appli"
             >
@@ -873,7 +910,6 @@ exports[`ShareAppModal should match snapshot for short wording 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -883,22 +919,32 @@ exports[`ShareAppModal should match snapshot for short wording 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 2,
+                      "paddingRight": 2,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Fermer la modale"
             >
@@ -1011,7 +1057,6 @@ exports[`ShareAppModal should match snapshot for statistics wording 1`] = `
       }
     }
     accessible={false}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -1021,17 +1066,25 @@ exports[`ShareAppModal should match snapshot for statistics wording 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "#00000080",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "height": "100%",
-        "justifyContent": "flex-end",
-        "opacity": 1,
-        "position": "absolute",
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "backgroundColor": "#00000080",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "justifyContent": "flex-end",
+            "position": "absolute",
+            "width": "100%",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="clickaway-area"
   />
@@ -1275,7 +1328,6 @@ exports[`ShareAppModal should match snapshot for statistics wording 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -1285,18 +1337,26 @@ exports[`ShareAppModal should match snapshot for statistics wording 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "borderRadius": 24,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "overflow": "hidden",
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 24,
+                      "justifyContent": "center",
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Partager l’appli"
             >
@@ -1380,7 +1440,6 @@ exports[`ShareAppModal should match snapshot for statistics wording 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -1390,22 +1449,32 @@ exports[`ShareAppModal should match snapshot for statistics wording 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 2,
+                      "paddingRight": 2,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Fermer la modale"
             >

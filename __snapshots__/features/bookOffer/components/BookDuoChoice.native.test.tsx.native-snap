@@ -59,7 +59,6 @@ exports[`BookDuoChoice should display two blocs if offer is duo 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -69,15 +68,23 @@ exports[`BookDuoChoice should display two blocs if offer is duo 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "userSelect": "auto",
-          "width": "33%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+              "width": "33%",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Solo 20 € sélectionné"
     >
@@ -199,7 +206,6 @@ exports[`BookDuoChoice should display two blocs if offer is duo 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -209,15 +215,23 @@ exports[`BookDuoChoice should display two blocs if offer is duo 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
-          "userSelect": "auto",
-          "width": "33%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "paddingBottom": 8,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 8,
+              "width": "33%",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Duo 40 €"
     >

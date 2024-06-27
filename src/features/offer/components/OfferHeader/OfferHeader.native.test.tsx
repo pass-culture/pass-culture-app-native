@@ -19,6 +19,7 @@ import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 const mockShare = jest.spyOn(Share, 'share').mockImplementation(jest.fn())
 
 jest.mock('libs/jwt')

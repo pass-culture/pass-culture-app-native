@@ -29,7 +29,6 @@ exports[`<CreditCeilingsModal/> should render correctly 1`] = `
       }
     }
     accessible={false}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -39,17 +38,25 @@ exports[`<CreditCeilingsModal/> should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "#00000080",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "height": "100%",
-        "justifyContent": "flex-end",
-        "opacity": 1,
-        "position": "absolute",
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "backgroundColor": "#00000080",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "justifyContent": "flex-end",
+            "position": "absolute",
+            "width": "100%",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
   />
   <View
@@ -177,7 +184,6 @@ exports[`<CreditCeilingsModal/> should render correctly 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -187,14 +193,22 @@ exports[`<CreditCeilingsModal/> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "paddingBottom": 4,
-              "paddingLeft": 4,
-              "paddingRight": 4,
-              "paddingTop": 4,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Fermer la modale"
         >

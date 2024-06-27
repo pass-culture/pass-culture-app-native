@@ -92,7 +92,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -102,15 +101,23 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -1912,7 +1919,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -1922,22 +1928,32 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "flex-start",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {
+                "backgroundColor": "transparent",
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Ouvrir le gestionnaire mail pour contacter le support"
       >
@@ -2660,7 +2676,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -2670,22 +2685,32 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "flex-start",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {
+                "backgroundColor": "transparent",
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="https://pass.culture.fr/"
       >
@@ -2783,7 +2808,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -2793,22 +2817,32 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "flex-start",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {
+                "backgroundColor": "transparent",
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="https://passculture.app/"
       >
@@ -2906,7 +2940,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -2916,22 +2949,32 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "flex-start",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {
+                "backgroundColor": "transparent",
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="https://passculture.pro/"
       >
@@ -3214,7 +3257,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3224,11 +3266,19 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="https://passculture.pro/"
                   >
@@ -3551,7 +3601,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3561,11 +3610,19 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="https://pass.culture.fr/"
                   >
@@ -3732,7 +3789,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3742,11 +3798,19 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="https://passculture.pro/"
                   >
@@ -3991,7 +4055,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4001,11 +4064,19 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="https://passculture.app/"
                   >
@@ -4521,7 +4592,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -4531,11 +4601,19 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "opacity": 1,
-                      "top": 3,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "top": 3,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="https://passculture.pro/"
                 >
@@ -4688,7 +4766,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -4698,11 +4775,19 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "opacity": 1,
-                      "top": 3,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "top": 3,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="https://passculture.pro/"
                 >
@@ -4946,7 +5031,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4956,11 +5040,19 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="https://pass.culture.fr/"
                   >

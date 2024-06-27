@@ -90,7 +90,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -100,13 +99,21 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexWrap": "wrap",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="movie-calendar-day"
           >
@@ -221,7 +228,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -231,13 +237,21 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexWrap": "wrap",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="movie-calendar-day"
           >
@@ -337,7 +351,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -347,13 +360,21 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexWrap": "wrap",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="movie-calendar-day"
           >
@@ -453,7 +474,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -463,13 +483,21 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexWrap": "wrap",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="movie-calendar-day"
           >
@@ -569,7 +597,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -579,13 +606,21 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexWrap": "wrap",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="movie-calendar-day"
           >
@@ -685,7 +720,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -695,13 +729,21 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexWrap": "wrap",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="movie-calendar-day"
           >
@@ -801,7 +843,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -811,13 +852,21 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexWrap": "wrap",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="movie-calendar-day"
           >
@@ -917,7 +966,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -927,13 +975,21 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexWrap": "wrap",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="movie-calendar-day"
           >
@@ -1033,7 +1089,6 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1043,13 +1098,21 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexWrap": "wrap",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="movie-calendar-day"
           >

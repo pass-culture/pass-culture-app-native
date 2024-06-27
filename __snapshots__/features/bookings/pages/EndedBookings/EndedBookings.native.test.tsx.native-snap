@@ -92,7 +92,6 @@ exports[`EndedBookings should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -102,15 +101,23 @@ exports[`EndedBookings should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -268,6 +275,7 @@ exports[`EndedBookings should render correctly 1`] = `
   >
     <View>
       <View
+        collapsable={false}
         onLayout={[Function]}
       >
         <View
@@ -342,7 +350,6 @@ exports[`EndedBookings should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -352,15 +359,24 @@ exports[`EndedBookings should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "opacity": 1,
-                "paddingRight": 40,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {},
+                  {
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "paddingRight": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Réservation annulée de l’offre Avez-vous déjà vu ?, le 15/03/2021"
           >
@@ -619,7 +635,6 @@ exports[`EndedBookings should render correctly 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -629,30 +644,41 @@ exports[`EndedBookings should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 40,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 40,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Partager l’offre Avez-vous déjà vu ?"
               >
                 <View
-                  collapsable={false}
                   style={
-                    {
-                      "alignItems": "center",
-                      "aspectRatio": 1,
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#F1F1F4",
-                      "borderRadius": 40,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 40,
-                      "justifyContent": "center",
-                      "transform": undefined,
-                      "width": 40,
-                    }
+                    [
+                      {
+                        "alignItems": "center",
+                        "aspectRatio": 1,
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#F1F1F4",
+                        "borderRadius": 40,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "height": 40,
+                        "justifyContent": "center",
+                        "width": 40,
+                      },
+                      {
+                        "transform": undefined,
+                      },
+                    ]
                   }
                 >
                   <View

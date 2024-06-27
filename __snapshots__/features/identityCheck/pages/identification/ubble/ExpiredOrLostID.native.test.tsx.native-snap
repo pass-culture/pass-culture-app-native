@@ -23,7 +23,6 @@ exports[`ExpiredOrLostID should render correctly 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -33,14 +32,22 @@ exports[`ExpiredOrLostID should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "left": 24,
-        "opacity": 1,
-        "position": "absolute",
-        "top": 30,
-        "userSelect": "auto",
-        "zIndex": 1,
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "left": 24,
+            "position": "absolute",
+            "top": 30,
+            "zIndex": 1,
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="Revenir en arrière"
   >
@@ -232,7 +239,6 @@ exports[`ExpiredOrLostID should render correctly 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -242,22 +248,31 @@ exports[`ExpiredOrLostID should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Aller sur demarches-simplifiees.fr"
       >

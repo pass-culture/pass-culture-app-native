@@ -7,7 +7,6 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useAppStateChange } from 'libs/appState'
 import LottieView from 'libs/lottie'
-import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -43,8 +42,6 @@ type Props = {
   children?: React.ReactNode
 } & (PropsWithAnimation | PropsWithIcon)
 
-const SMALL_HEIGHT = 576
-
 export const GenericInfoPageWhite: React.FC<Props> = ({
   separateIconFromTitle = true,
   onSkip,
@@ -53,11 +50,6 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
   const { canGoBack, goBack } = useGoBack(...(props.goBackParams ?? homeNavConfig))
   const animationRef = useRef<LottieView>(null)
   const grid = useGrid()
-  const isSmallHeight = useMediaQuery({ maxHeight: SMALL_HEIGHT })
-  const lottieStyle = useMemo(
-    () => (isSmallHeight ? { height: '100%' } : undefined),
-    [isSmallHeight]
-  )
 
   const { animation } = props as PropsWithAnimation
   const { icon: Icon } = props as PropsWithIcon
@@ -116,7 +108,6 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
         <StyledLottieContainer hasHeight={separateIconFromTitle}>
           {animation ? (
             <StyledLottieView
-              style={lottieStyle}
               key={props?.activeIndex}
               ref={animationRef}
               source={animation}

@@ -155,7 +155,6 @@ exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render 
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -165,20 +164,31 @@ exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render 
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "backgroundColor": "#FBDBAC",
-                  "borderColor": "#B85901",
-                  "borderRadius": 8,
-                  "borderWidth": 1.6,
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "height": 164,
-                  "justifyContent": "flex-end",
-                  "opacity": 1,
-                  "overflow": "hidden",
-                  "userSelect": "auto",
-                  "width": 178,
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#FBDBAC",
+                      "borderColor": "#B85901",
+                      "borderRadius": 8,
+                      "borderWidth": 1.6,
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "height": 97,
+                      "justifyContent": "flex-end",
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 164,
+                      "width": 178,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Catégorie Le plein de cinéma, Le plein de cinéma, Le plein de cinéma, Le plein de cinéma"
             >
@@ -260,7 +270,6 @@ exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render 
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -270,20 +279,31 @@ exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render 
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "backgroundColor": "#FFD7E9",
-                  "borderColor": "#C01371",
-                  "borderRadius": 8,
-                  "borderWidth": 1.6,
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "height": 164,
-                  "justifyContent": "flex-end",
-                  "opacity": 1,
-                  "overflow": "hidden",
-                  "userSelect": "auto",
-                  "width": 178,
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#FFD7E9",
+                      "borderColor": "#C01371",
+                      "borderRadius": 8,
+                      "borderWidth": 1.6,
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "height": 97,
+                      "justifyContent": "flex-end",
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 164,
+                      "width": 178,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Catégorie Toto au cinéma"
             >
@@ -365,7 +385,6 @@ exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render 
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -375,20 +394,31 @@ exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render 
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "backgroundColor": "#DBFFEA",
-                  "borderColor": "#0E8474",
-                  "borderRadius": 8,
-                  "borderWidth": 1.6,
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "height": 164,
-                  "justifyContent": "flex-end",
-                  "opacity": 1,
-                  "overflow": "hidden",
-                  "userSelect": "auto",
-                  "width": 178,
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#DBFFEA",
+                      "borderColor": "#0E8474",
+                      "borderRadius": 8,
+                      "borderWidth": 1.6,
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "height": 97,
+                      "justifyContent": "flex-end",
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 164,
+                      "width": 178,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Catégorie Martine au cinéma"
             >
@@ -470,7 +500,6 @@ exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render 
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -480,20 +509,31 @@ exports[`CategoryListModule with FF enableAppV2CategoryBlock true should render 
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "backgroundColor": "#EAE3FF",
-                  "borderColor": "#8337E9",
-                  "borderRadius": 8,
-                  "borderWidth": 1.6,
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "height": 164,
-                  "justifyContent": "flex-end",
-                  "opacity": 1,
-                  "overflow": "hidden",
-                  "userSelect": "auto",
-                  "width": 178,
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "backgroundColor": "#EAE3FF",
+                      "borderColor": "#8337E9",
+                      "borderRadius": 8,
+                      "borderWidth": 1.6,
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "height": 97,
+                      "justifyContent": "flex-end",
+                      "overflow": "hidden",
+                    },
+                    {
+                      "height": 164,
+                      "width": 178,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Catégorie Babar au cinéma"
             >

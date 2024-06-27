@@ -31,6 +31,7 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { OfferContent } from './OfferContent'
 
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.useFakeTimers()
 
 const Kourou: SuggestedPlace = {

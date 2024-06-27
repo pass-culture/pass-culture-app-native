@@ -92,7 +92,6 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -102,15 +101,23 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -435,7 +442,6 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={false}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -445,22 +451,31 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "#F1F1F4",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Modifier mon adresse e-mail"
         >

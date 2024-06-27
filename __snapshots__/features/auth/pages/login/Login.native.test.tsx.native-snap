@@ -92,7 +92,6 @@ exports[`<Login/> should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -102,15 +101,23 @@ exports[`<Login/> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -545,7 +552,6 @@ exports[`<Login/> should render correctly 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -555,11 +561,19 @@ exports[`<Login/> should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "maxWidth": 60,
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "maxWidth": 60,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Afficher le mot de passe"
             >
@@ -616,7 +630,6 @@ exports[`<Login/> should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -626,24 +639,34 @@ exports[`<Login/> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "transparent",
-                "borderRadius": 0,
-                "borderWidth": 0,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "marginTop": 0,
-                "maxWidth": 500,
-                "minHeight": 20,
-                "opacity": 1,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "userSelect": "auto",
-                "width": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "borderRadius": 0,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginTop": 0,
+                    "maxWidth": 500,
+                    "minHeight": 20,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "width": "auto",
+                  },
+                  {
+                    "backgroundColor": "transparent",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Mot de passe oublié ?"
           >
@@ -737,7 +760,6 @@ exports[`<Login/> should render correctly 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={false}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -747,22 +769,31 @@ exports[`<Login/> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "#F1F1F4",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Se connecter"
         >
@@ -854,7 +885,6 @@ exports[`<Login/> should render correctly 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -864,10 +894,16 @@ exports[`<Login/> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Créer un compte"
         >
@@ -1053,7 +1089,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1063,15 +1098,23 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -1506,7 +1549,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -1516,11 +1558,19 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "maxWidth": 60,
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "maxWidth": 60,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Afficher le mot de passe"
             >
@@ -1577,7 +1627,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1587,24 +1636,34 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "transparent",
-                "borderRadius": 0,
-                "borderWidth": 0,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "marginTop": 0,
-                "maxWidth": 500,
-                "minHeight": 20,
-                "opacity": 1,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "userSelect": "auto",
-                "width": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "borderRadius": 0,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "marginTop": 0,
+                    "maxWidth": 500,
+                    "minHeight": 20,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "width": "auto",
+                  },
+                  {
+                    "backgroundColor": "transparent",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Mot de passe oublié ?"
           >
@@ -1698,7 +1757,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={false}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -1708,22 +1766,31 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "#F1F1F4",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Se connecter"
         >
@@ -1853,7 +1920,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -1863,25 +1929,35 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderColor": "#CBCDD2",
-              "borderRadius": 24,
-              "borderStyle": "solid",
-              "borderWidth": 2,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {
+                  "borderColor": "#CBCDD2",
+                  "borderStyle": "solid",
+                  "borderWidth": 2,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Se connecter avec Google"
         >
@@ -2003,7 +2079,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -2013,10 +2088,16 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Créer un compte"
         >

@@ -195,7 +195,6 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               accessible={true}
               collapsable={false}
               focusable={true}
-              forwardedRef={[Function]}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -3155,7 +3154,6 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               accessible={true}
               collapsable={false}
               focusable={true}
-              forwardedRef={[Function]}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}

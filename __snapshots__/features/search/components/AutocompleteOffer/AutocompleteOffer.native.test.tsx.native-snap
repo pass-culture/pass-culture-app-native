@@ -57,7 +57,6 @@ exports[`AutocompleteOffer component With suggestion hits should render Autocomp
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -67,12 +66,18 @@ exports[`AutocompleteOffer component With suggestion hits should render Autocomp
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "opacity": 1,
-            "paddingBottom": 16,
-          }
+          [
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "paddingBottom": 16,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="autocompleteOfferItem_1"
       >
@@ -181,7 +186,6 @@ exports[`AutocompleteOffer component With suggestion hits should render Autocomp
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -191,12 +195,18 @@ exports[`AutocompleteOffer component With suggestion hits should render Autocomp
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "opacity": 1,
-            "paddingBottom": 16,
-          }
+          [
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "paddingBottom": 16,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="autocompleteOfferItem_2"
       >

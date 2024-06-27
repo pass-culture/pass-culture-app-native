@@ -67,7 +67,6 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -77,15 +76,23 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Revenir en arrière"
       >
@@ -192,7 +199,6 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -202,10 +208,17 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="j’ai moins de 15 ans"
         >
@@ -315,7 +328,6 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -325,10 +337,17 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="j’ai plus de 18 ans"
         >
@@ -501,7 +520,6 @@ exports[`AgeSelectionOther profileTutorial should render correctly 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -511,15 +529,23 @@ exports[`AgeSelectionOther profileTutorial should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Revenir en arrière"
       >
@@ -626,7 +652,6 @@ exports[`AgeSelectionOther profileTutorial should render correctly 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -636,10 +661,16 @@ exports[`AgeSelectionOther profileTutorial should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="à moins de 15 ans"
         >
@@ -749,7 +780,6 @@ exports[`AgeSelectionOther profileTutorial should render correctly 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -759,10 +789,16 @@ exports[`AgeSelectionOther profileTutorial should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="à plus de 18 ans"
         >

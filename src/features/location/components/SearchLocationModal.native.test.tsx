@@ -17,6 +17,7 @@ import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.useFakeTimers()
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 const mockRadiusPlace = 37
 const mockAroundMeRadius = 73

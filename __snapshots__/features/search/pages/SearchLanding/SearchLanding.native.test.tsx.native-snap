@@ -163,7 +163,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onLayout={[Function]}
@@ -174,30 +173,39 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "marginLeft": 8,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "marginLeft": 8,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Ouvrir la modale de localisation depuis le widget"
           >
             <View
-              collapsable={false}
               isActive={true}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#161617",
-                  "borderRadius": 40,
-                  "borderStyle": "solid",
-                  "borderWidth": 2,
-                  "height": 40,
-                  "justifyContent": "center",
-                  "width": 40,
-                }
+                [
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#161617",
+                    "borderRadius": 40,
+                    "borderStyle": "solid",
+                    "borderWidth": 2,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "width": 40,
+                  },
+                ]
               }
             >
               <View
@@ -916,6 +924,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
     >
       <View>
         <View
+          collapsable={false}
           onLayout={[Function]}
         >
           <View
@@ -967,7 +976,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 }
               }
               accessible={false}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -977,14 +985,23 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "borderColor": "#CBCDD2",
-                  "borderRadius": 8,
-                  "borderWidth": 1,
-                  "opacity": 1,
-                  "overflow": "hidden",
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                    {
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 8,
+                      "borderWidth": 1,
+                      "overflow": "hidden",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
             >
               <View
@@ -1147,7 +1164,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1157,19 +1173,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#FFF5D8",
-                    "borderColor": "#FBDBAC",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#FFF5D8",
+                        "borderColor": "#FBDBAC",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Concerts & festivals"
               >
@@ -1240,7 +1264,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1250,19 +1273,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#FFDECC",
+                        "borderColor": "#F8733D",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Cinéma, films et séries"
               >
@@ -1347,7 +1378,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1357,19 +1387,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#FFD7E9",
-                    "borderColor": "#EC3478",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#FFD7E9",
+                        "borderColor": "#EC3478",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Livres"
               >
@@ -1440,7 +1478,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1450,19 +1487,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#D6F8FF",
-                    "borderColor": "#20C5E9",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#D6F8FF",
+                        "borderColor": "#20C5E9",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie CD, vinyles, musique en ligne"
               >
@@ -1547,7 +1592,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1557,19 +1601,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#EAE3FF",
-                    "borderColor": "#AD87FF",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#EAE3FF",
+                        "borderColor": "#AD87FF",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Arts & loisirs créatifs"
               >
@@ -1640,7 +1692,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1650,19 +1701,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#DBFFEA",
-                    "borderColor": "#0E8474",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#DBFFEA",
+                        "borderColor": "#0E8474",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Spectacles"
               >
@@ -1747,7 +1806,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1757,19 +1815,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#FFF5D8",
-                    "borderColor": "#FBDBAC",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#FFF5D8",
+                        "borderColor": "#FBDBAC",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Musées & visites culturelles"
               >
@@ -1840,7 +1906,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1850,19 +1915,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#FFDECC",
+                        "borderColor": "#F8733D",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Jeux & jeux vidéos"
               >
@@ -1947,7 +2020,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1957,19 +2029,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#FFD7E9",
-                    "borderColor": "#EC3478",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#FFD7E9",
+                        "borderColor": "#EC3478",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Instruments de musique"
               >
@@ -2040,7 +2120,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2050,19 +2129,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#D6F8FF",
-                    "borderColor": "#20C5E9",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#D6F8FF",
+                        "borderColor": "#20C5E9",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Médias & presse"
               >
@@ -2147,7 +2234,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2157,19 +2243,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#EAE3FF",
-                    "borderColor": "#AD87FF",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#EAE3FF",
+                        "borderColor": "#AD87FF",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Cartes jeunes"
               >
@@ -2240,7 +2334,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2250,19 +2343,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#DBFFEA",
-                    "borderColor": "#0E8474",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#DBFFEA",
+                        "borderColor": "#0E8474",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Conférences & rencontres"
               >
@@ -2347,7 +2448,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2357,19 +2457,27 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "backgroundColor": "#FFF5D8",
-                    "borderColor": "#FBDBAC",
-                    "borderRadius": 8,
-                    "borderWidth": 1.6,
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "height": 97,
-                    "justifyContent": "flex-end",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "backgroundColor": "#FFF5D8",
+                        "borderColor": "#FBDBAC",
+                        "borderRadius": 8,
+                        "borderWidth": 1.6,
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "height": 97,
+                        "justifyContent": "flex-end",
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Évènements en ligne"
               >
@@ -2561,7 +2669,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onLayout={[Function]}
@@ -2572,30 +2679,39 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "marginLeft": 8,
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "marginLeft": 8,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Ouvrir la modale de localisation depuis le widget"
         >
           <View
-            collapsable={false}
             isActive={true}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#161617",
-                "borderRadius": 40,
-                "borderStyle": "solid",
-                "borderWidth": 2,
-                "height": 40,
-                "justifyContent": "center",
-                "width": 40,
-              }
+              [
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#161617",
+                  "borderRadius": 40,
+                  "borderStyle": "solid",
+                  "borderWidth": 2,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "width": 40,
+                },
+              ]
             }
           >
             <View
@@ -3302,6 +3418,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
     >
       <View>
         <View
+          collapsable={false}
           onLayout={[Function]}
         >
           <Text
@@ -3399,7 +3516,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -3409,13 +3525,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Concerts & festivals"
               >
@@ -3550,7 +3674,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -3560,13 +3683,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Cinéma, films et séries"
               >
@@ -3715,7 +3846,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -3725,13 +3855,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Livres"
               >
@@ -3866,7 +4004,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -3876,13 +4013,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie CD, vinyles, musique en ligne"
               >
@@ -4031,7 +4176,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -4041,13 +4185,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Arts & loisirs créatifs"
               >
@@ -4182,7 +4334,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -4192,13 +4343,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Spectacles"
               >
@@ -4347,7 +4506,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -4357,13 +4515,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Musées & visites culturelles"
               >
@@ -4498,7 +4664,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -4508,13 +4673,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Jeux & jeux vidéos"
               >
@@ -4663,7 +4836,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -4673,13 +4845,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Instruments de musique"
               >
@@ -4814,7 +4994,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -4824,13 +5003,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Médias & presse"
               >
@@ -4979,7 +5166,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -4989,13 +5175,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Cartes jeunes"
               >
@@ -5130,7 +5324,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -5140,13 +5333,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Conférences & rencontres"
               >
@@ -5295,7 +5496,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -5305,13 +5505,21 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "borderRadius": 8,
+                        "height": 156,
+                        "overflow": "hidden",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Catégorie Évènements en ligne"
               >

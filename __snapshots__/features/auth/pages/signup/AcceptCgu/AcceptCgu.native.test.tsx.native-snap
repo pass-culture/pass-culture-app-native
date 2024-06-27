@@ -63,7 +63,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -73,14 +72,22 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "cursor": "pointer",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="J’ai lu et j’accepte les conditions générales d’utilisation"
   >
@@ -154,7 +161,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -164,14 +170,22 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "cursor": "pointer",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="J’ai lu la charte des données personnelles"
   >
@@ -273,7 +287,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -283,23 +296,33 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "transparent",
-        "borderRadius": 24,
-        "flexDirection": "row",
-        "height": "auto",
-        "justifyContent": "flex-start",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 2,
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "height": "auto",
+            "justifyContent": "flex-start",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "paddingBottom": 2,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 2,
+            "width": "100%",
+          },
+          {
+            "backgroundColor": "transparent",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="Nos conditions générales d’utilisation"
   >
@@ -383,7 +406,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -393,23 +415,33 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "transparent",
-        "borderRadius": 24,
-        "flexDirection": "row",
-        "height": "auto",
-        "justifyContent": "flex-start",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 2,
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "height": "auto",
+            "justifyContent": "flex-start",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "paddingBottom": 2,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 2,
+            "width": "100%",
+          },
+          {
+            "backgroundColor": "transparent",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="La charte des données personnelles"
   >
@@ -503,7 +535,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={false}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -513,22 +544,31 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#F1F1F4",
-        "borderRadius": 24,
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 20,
-        "paddingRight": 20,
-        "paddingTop": 2,
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "backgroundColor": "#F1F1F4",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "width": "100%",
+          },
+          {},
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
   >
@@ -661,7 +701,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -671,14 +710,22 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "cursor": "pointer",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
   >
@@ -772,7 +819,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -782,14 +828,22 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "cursor": "pointer",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="J’ai lu et j’accepte les conditions générales d’utilisation"
   >
@@ -863,7 +917,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -873,14 +926,22 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "cursor": "pointer",
-        "display": "flex",
-        "flexDirection": "row",
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "cursor": "pointer",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="J’ai lu la charte des données personnelles"
   >
@@ -982,7 +1043,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -992,23 +1052,33 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "transparent",
-        "borderRadius": 24,
-        "flexDirection": "row",
-        "height": "auto",
-        "justifyContent": "flex-start",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 2,
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "height": "auto",
+            "justifyContent": "flex-start",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "paddingBottom": 2,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 2,
+            "width": "100%",
+          },
+          {
+            "backgroundColor": "transparent",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="Nos conditions générales d’utilisation"
   >
@@ -1092,7 +1162,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -1102,23 +1171,33 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "transparent",
-        "borderRadius": 24,
-        "flexDirection": "row",
-        "height": "auto",
-        "justifyContent": "flex-start",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 2,
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "height": "auto",
+            "justifyContent": "flex-start",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "paddingBottom": 2,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 2,
+            "width": "100%",
+          },
+          {
+            "backgroundColor": "transparent",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="La charte des données personnelles"
   >
@@ -1212,7 +1291,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
       }
     }
     accessible={true}
-    collapsable={false}
     focusable={false}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -1222,22 +1300,31 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#F1F1F4",
-        "borderRadius": 24,
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 20,
-        "paddingRight": 20,
-        "paddingTop": 2,
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "alignItems": "center",
+            "backgroundColor": "#F1F1F4",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "width": "100%",
+          },
+          {},
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
     testID="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
   >

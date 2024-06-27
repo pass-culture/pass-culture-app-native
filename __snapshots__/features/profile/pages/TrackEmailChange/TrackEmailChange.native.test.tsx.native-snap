@@ -82,7 +82,6 @@ exports[`TrackEmailChange should render correctly when FF is disabled 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -92,15 +91,23 @@ exports[`TrackEmailChange should render correctly when FF is disabled 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "flexGrow": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "maxWidth": 40,
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Revenir en arrière"
         >
@@ -1100,7 +1107,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -1110,15 +1116,23 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "flexGrow": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "maxWidth": 40,
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Revenir en arrière"
         >
@@ -1325,7 +1339,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1335,13 +1348,21 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Confirmation de ta demande complété"
               >
@@ -1573,7 +1594,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1583,13 +1603,22 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Choisis ta nouvelle adresse e-mail non complété"
               >
@@ -1828,7 +1857,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1838,13 +1866,21 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Validation de ta nouvelle adresse e-mail non complété"
               >
@@ -2013,7 +2049,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -2023,15 +2058,23 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "flexGrow": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "maxWidth": 40,
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Revenir en arrière"
         >
@@ -2261,7 +2304,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2271,13 +2313,21 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Confirme ta demande non complété"
               >
@@ -2527,7 +2577,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2537,13 +2586,22 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Choix de ta nouvelle adresse e-mail non complété"
               >
@@ -2759,7 +2817,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2769,13 +2826,21 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Validation de ta nouvelle adresse e-mail non complété"
               >
@@ -2944,7 +3009,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -2954,15 +3018,23 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "flexGrow": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "maxWidth": 40,
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Revenir en arrière"
         >
@@ -3169,7 +3241,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -3179,13 +3250,21 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Confirmation de ta demande complété"
               >
@@ -3394,7 +3473,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -3404,13 +3482,22 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Choix de ta nouvelle adresse e-mail complété"
               >
@@ -3631,7 +3718,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -3641,13 +3727,21 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Valide ta nouvelle adresse non complété"
               >
@@ -3839,7 +3933,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -3849,15 +3942,23 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "flexGrow": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "maxWidth": 40,
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Revenir en arrière"
         >
@@ -4064,7 +4165,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -4074,13 +4174,21 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Confirmation de ta demande complété"
               >
@@ -4289,7 +4397,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -4299,13 +4406,22 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Création de ton mot de passe complété"
               >
@@ -4536,7 +4652,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -4546,13 +4661,22 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Choisis ta nouvelle adresse e-mail non complété"
               >
@@ -4791,7 +4915,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -4801,13 +4924,21 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Validation de ta nouvelle adresse e-mail non complété"
               >
@@ -4976,7 +5107,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -4986,15 +5116,23 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "flexGrow": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "maxWidth": 40,
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Revenir en arrière"
         >
@@ -5224,7 +5362,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -5234,13 +5371,21 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Confirme ta demande non complété"
               >
@@ -5490,7 +5635,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -5500,13 +5644,22 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Création de ton mot de passe non complété"
               >
@@ -5732,7 +5885,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -5742,13 +5894,22 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Choix de ta nouvelle adresse e-mail non complété"
               >
@@ -5964,7 +6125,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -5974,13 +6134,21 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Validation de ta nouvelle adresse e-mail non complété"
               >
@@ -6149,7 +6317,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -6159,15 +6326,23 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "flexGrow": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "maxWidth": 40,
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Revenir en arrière"
         >
@@ -6374,7 +6549,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -6384,13 +6558,21 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Confirmation de ta demande complété"
               >
@@ -6622,7 +6804,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -6632,13 +6813,22 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Crée ton mot de passe non complété"
               >
@@ -6887,7 +7077,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -6897,13 +7086,22 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Choix de ta nouvelle adresse e-mail non complété"
               >
@@ -7119,7 +7317,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -7129,13 +7326,21 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Validation de ta nouvelle adresse e-mail non complété"
               >
@@ -7304,7 +7509,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -7314,15 +7518,23 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "alignItems": "center",
-              "flexGrow": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "maxWidth": 40,
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "flexGrow": 1,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "maxWidth": 40,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Revenir en arrière"
         >
@@ -7529,7 +7741,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -7539,13 +7750,21 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Confirmation de ta demande complété"
               >
@@ -7754,7 +7973,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -7764,13 +7982,22 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Création de ton mot de passe complété"
               >
@@ -7978,7 +8205,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -7988,13 +8214,22 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Choix de ta nouvelle adresse e-mail complété"
               >
@@ -8215,7 +8450,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -8225,13 +8459,21 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "width": "100%",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Valide ta nouvelle adresse non complété"
               >

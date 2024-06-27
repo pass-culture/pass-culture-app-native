@@ -6,6 +6,8 @@ import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHom
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { fireEvent, render, screen } from 'tests/utils'
 
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+
 const animatedValue = new Animated.Value(0)
 const HeaderInterpolation = animatedValue.interpolate({
   inputRange: [0, 1],

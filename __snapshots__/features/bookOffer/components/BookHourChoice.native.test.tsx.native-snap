@@ -57,7 +57,6 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -67,22 +66,30 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#F1F1F4",
-            "borderColor": "#F1F1F4",
-            "borderRadius": 8,
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "opacity": 1,
-            "paddingBottom": 16,
-            "paddingLeft": 16,
-            "paddingRight": 16,
-            "paddingTop": 16,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#F1F1F4",
+                "borderColor": "#F1F1F4",
+                "borderRadius": 8,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "paddingBottom": 16,
+                "paddingLeft": 16,
+                "paddingRight": 16,
+                "paddingTop": 16,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="11h00 épuisé"
       >
@@ -221,7 +228,6 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -231,22 +237,30 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 8,
-            "borderStyle": "solid",
-            "borderWidth": 1,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "opacity": 1,
-            "paddingBottom": 16,
-            "paddingLeft": 16,
-            "paddingRight": 16,
-            "paddingTop": 16,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 8,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "paddingBottom": 16,
+                "paddingLeft": 16,
+                "paddingRight": 16,
+                "paddingTop": 16,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="21h00 24 €"
       >
@@ -404,7 +418,6 @@ exports[`BookHourChoice when hour is already selected should change step to Hour
       }
     }
     accessible={false}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -414,10 +427,16 @@ exports[`BookHourChoice when hour is already selected should change step to Hour
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "opacity": 1,
-        "userSelect": "auto",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
   >
     <Text

@@ -92,7 +92,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -102,15 +101,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -296,7 +303,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 }
                 accessible={false}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -306,13 +312,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="accordionTouchable"
               >
@@ -347,16 +361,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     Pages
                   </Text>
                   <View
-                    collapsable={false}
                     style={
-                      {
-                        "marginLeft": 8,
-                        "transform": [
-                          {
-                            "rotateZ": "4.71238898038469rad",
-                          },
-                        ],
-                      }
+                      [
+                        {
+                          "marginLeft": 8,
+                        },
+                        {
+                          "transform": [
+                            {
+                              "rotateZ": "4.71238898038469rad",
+                            },
+                          ],
+                        },
+                      ]
                     }
                     testID="accordionArrow"
                   >
@@ -373,12 +390,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               </View>
             </View>
             <View
-              collapsable={false}
               style={
-                {
-                  "height": 0,
-                  "overflow": "hidden",
-                }
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": 0,
+                  },
+                ]
               }
               testID="accordionBody"
             >
@@ -423,7 +443,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -433,15 +452,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "minHeight": 24,
-                      "opacity": 1,
-                      "paddingVertical": 12,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "minHeight": 24,
+                          "paddingVertical": 12,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="Offer"
                 >
@@ -548,7 +575,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -558,15 +584,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "minHeight": 24,
-                      "opacity": 1,
-                      "paddingVertical": 12,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "minHeight": 24,
+                          "paddingVertical": 12,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="Venue"
                 >
@@ -673,7 +707,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -683,15 +716,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "minHeight": 24,
-                      "opacity": 1,
-                      "paddingVertical": 12,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "minHeight": 24,
+                          "paddingVertical": 12,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="Home"
                 >
@@ -798,7 +839,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -808,15 +848,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "minHeight": 24,
-                      "opacity": 1,
-                      "paddingVertical": 12,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "minHeight": 24,
+                          "paddingVertical": 12,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="ThematicHome"
                 >
@@ -923,7 +971,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -933,15 +980,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "minHeight": 24,
-                      "opacity": 1,
-                      "paddingVertical": 12,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "minHeight": 24,
+                          "paddingVertical": 12,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="SearchResults"
                 >
@@ -1048,7 +1103,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -1058,15 +1112,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "minHeight": 24,
-                      "opacity": 1,
-                      "paddingVertical": 12,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "minHeight": 24,
+                          "paddingVertical": 12,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="Profile"
                 >
@@ -1173,7 +1235,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -1183,15 +1244,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "minHeight": 24,
-                      "opacity": 1,
-                      "paddingVertical": 12,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "minHeight": 24,
+                          "paddingVertical": 12,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="SignupForm"
                 >
@@ -1298,7 +1367,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     }
                   }
                   accessible={true}
-                  collapsable={false}
                   focusable={true}
                   onClick={[Function]}
                   onResponderGrant={[Function]}
@@ -1308,15 +1376,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
-                      "minHeight": 24,
-                      "opacity": 1,
-                      "paddingVertical": 12,
-                      "userSelect": "auto",
-                    }
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "minHeight": 24,
+                          "paddingVertical": 12,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
                   }
                   testID="Stepper"
                 >
@@ -1434,7 +1510,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 }
                 accessible={false}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1444,13 +1519,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="accordionTouchable"
               >
@@ -1485,16 +1568,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     Paramètres applicatifs (1)
                   </Text>
                   <View
-                    collapsable={false}
                     style={
-                      {
-                        "marginLeft": 8,
-                        "transform": [
-                          {
-                            "rotateZ": "4.71238898038469rad",
-                          },
-                        ],
-                      }
+                      [
+                        {
+                          "marginLeft": 8,
+                        },
+                        {
+                          "transform": [
+                            {
+                              "rotateZ": "4.71238898038469rad",
+                            },
+                          ],
+                        },
+                      ]
                     }
                     testID="accordionArrow"
                   >
@@ -1511,12 +1597,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               </View>
             </View>
             <View
-              collapsable={false}
               style={
-                {
-                  "height": 0,
-                  "overflow": "hidden",
-                }
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": 0,
+                  },
+                ]
               }
               testID="accordionBody"
             >
@@ -1690,7 +1779,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 }
                 accessible={false}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -1700,13 +1788,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="accordionTouchable"
               >
@@ -1741,16 +1837,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     Paramètres marketing
                   </Text>
                   <View
-                    collapsable={false}
                     style={
-                      {
-                        "marginLeft": 8,
-                        "transform": [
-                          {
-                            "rotateZ": "4.71238898038469rad",
-                          },
-                        ],
-                      }
+                      [
+                        {
+                          "marginLeft": 8,
+                        },
+                        {
+                          "transform": [
+                            {
+                              "rotateZ": "4.71238898038469rad",
+                            },
+                          ],
+                        },
+                      ]
                     }
                     testID="accordionArrow"
                   >
@@ -1767,12 +1866,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               </View>
             </View>
             <View
-              collapsable={false}
               style={
-                {
-                  "height": 0,
-                  "overflow": "hidden",
-                }
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": 0,
+                  },
+                ]
               }
               testID="accordionBody"
             >
@@ -2419,7 +2521,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 }
                 accessible={false}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -2429,13 +2530,21 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="accordionTouchable"
               >
@@ -2470,16 +2579,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     Paramètres firebase dynamic link
                   </Text>
                   <View
-                    collapsable={false}
                     style={
-                      {
-                        "marginLeft": 8,
-                        "transform": [
-                          {
-                            "rotateZ": "1.5707963267948966rad",
-                          },
-                        ],
-                      }
+                      [
+                        {
+                          "marginLeft": 8,
+                        },
+                        {
+                          "transform": [
+                            {
+                              "rotateZ": "1.5707963267948966rad",
+                            },
+                          ],
+                        },
+                      ]
                     }
                     testID="accordionArrow"
                   >
@@ -2496,12 +2608,15 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               </View>
             </View>
             <View
-              collapsable={false}
               style={
-                {
-                  "height": 0,
-                  "overflow": "hidden",
-                }
+                [
+                  {
+                    "overflow": "hidden",
+                  },
+                  {
+                    "height": 0,
+                  },
+                ]
               }
               testID="accordionBody"
             >
@@ -2722,7 +2837,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -2732,22 +2846,31 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#eb0055",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": "100%",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#eb0055",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {},
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Générer le lien"
           >
@@ -3021,7 +3144,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 }
               }
               accessible={false}
-              collapsable={false}
               focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -3031,14 +3153,22 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "opacity": 1,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "width": "100%",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
             >
               <View
@@ -3062,7 +3192,6 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   }
                 }
                 accessible={true}
-                collapsable={false}
                 focusable={true}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
@@ -3072,14 +3201,22 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  {
-                    "alignItems": "center",
-                    "cursor": "pointer",
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "cursor": "pointer",
+                        "display": "flex",
+                        "flexDirection": "row",
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
                 }
                 testID="Conserver l’historique"
               >

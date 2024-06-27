@@ -21,7 +21,6 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
     }
   }
   accessible={true}
-  collapsable={false}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -31,20 +30,28 @@ exports[`NewBusinessModule component should disable click when no URL 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    {
-      "borderRadius": 8,
-      "flexWrap": "wrap",
-      "height": 327,
-      "marginBottom": 24,
-      "marginHorizontal": 24,
-      "opacity": 1,
-      "overflow": "hidden",
-      "textDecorationColor": "black",
-      "textDecorationLine": "none",
-      "textDecorationStyle": "solid",
-      "userSelect": "auto",
-      "width": 912,
-    }
+    [
+      [
+        {
+          "userSelect": "auto",
+        },
+        {
+          "borderRadius": 8,
+          "flexWrap": "wrap",
+          "height": 327,
+          "marginBottom": 24,
+          "marginHorizontal": 24,
+          "overflow": "hidden",
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": 912,
+        },
+      ],
+      {
+        "opacity": 1,
+      },
+    ]
   }
   testID="firstLine secondLine"
 >
@@ -268,7 +275,6 @@ exports[`NewBusinessModule component should display mobile image if web image no
     }
   }
   accessible={true}
-  collapsable={false}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -278,20 +284,28 @@ exports[`NewBusinessModule component should display mobile image if web image no
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    {
-      "borderRadius": 8,
-      "flexWrap": "wrap",
-      "height": 327,
-      "marginBottom": 24,
-      "marginHorizontal": 24,
-      "opacity": 1,
-      "overflow": "hidden",
-      "textDecorationColor": "black",
-      "textDecorationLine": "none",
-      "textDecorationStyle": "solid",
-      "userSelect": "auto",
-      "width": 912,
-    }
+    [
+      [
+        {
+          "userSelect": "auto",
+        },
+        {
+          "borderRadius": 8,
+          "flexWrap": "wrap",
+          "height": 327,
+          "marginBottom": 24,
+          "marginHorizontal": 24,
+          "overflow": "hidden",
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": 912,
+        },
+      ],
+      {
+        "opacity": 1,
+      },
+    ]
   }
   testID="firstLine secondLine"
 >
@@ -515,7 +529,6 @@ exports[`NewBusinessModule component should display web image if given from cont
     }
   }
   accessible={true}
-  collapsable={false}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -525,20 +538,28 @@ exports[`NewBusinessModule component should display web image if given from cont
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    {
-      "borderRadius": 8,
-      "flexWrap": "wrap",
-      "height": 327,
-      "marginBottom": 24,
-      "marginHorizontal": 24,
-      "opacity": 1,
-      "overflow": "hidden",
-      "textDecorationColor": "black",
-      "textDecorationLine": "none",
-      "textDecorationStyle": "solid",
-      "userSelect": "auto",
-      "width": 912,
-    }
+    [
+      [
+        {
+          "userSelect": "auto",
+        },
+        {
+          "borderRadius": 8,
+          "flexWrap": "wrap",
+          "height": 327,
+          "marginBottom": 24,
+          "marginHorizontal": 24,
+          "overflow": "hidden",
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": 912,
+        },
+      ],
+      {
+        "opacity": 1,
+      },
+    ]
   }
   testID="firstLine secondLine"
 >
@@ -762,7 +783,6 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
     }
   }
   accessible={true}
-  collapsable={false}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
@@ -772,20 +792,28 @@ exports[`NewBusinessModule component should render correctly - with leftIcon = I
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    {
-      "borderRadius": 8,
-      "flexWrap": "wrap",
-      "height": 327,
-      "marginBottom": 24,
-      "marginHorizontal": 24,
-      "opacity": 1,
-      "overflow": "hidden",
-      "textDecorationColor": "black",
-      "textDecorationLine": "none",
-      "textDecorationStyle": "solid",
-      "userSelect": "auto",
-      "width": 912,
-    }
+    [
+      [
+        {
+          "userSelect": "auto",
+        },
+        {
+          "borderRadius": 8,
+          "flexWrap": "wrap",
+          "height": 327,
+          "marginBottom": 24,
+          "marginHorizontal": 24,
+          "overflow": "hidden",
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": 912,
+        },
+      ],
+      {
+        "opacity": 1,
+      },
+    ]
   }
   testID="firstLine secondLine"
 >

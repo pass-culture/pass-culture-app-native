@@ -56,7 +56,6 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -66,20 +65,28 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Arts visuels"
       >
@@ -153,7 +160,6 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -163,20 +169,28 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Matériels créatifs"
       >
@@ -250,7 +264,6 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -260,20 +273,28 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Pratique artistique en ligne"
       >
@@ -347,7 +368,6 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -357,20 +377,28 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "alignSelf": "flex-start",
-            "backgroundColor": "#ffffff",
-            "borderColor": "#90949D",
-            "borderRadius": 40,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "marginBottom": 12,
-            "marginRight": 12,
-            "maxWidth": 500,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "alignSelf": "flex-start",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 40,
+                "borderWidth": 2,
+                "flexDirection": "row",
+                "marginBottom": 12,
+                "marginRight": 12,
+                "maxWidth": 500,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Pratiques & ateliers artistiques"
       >

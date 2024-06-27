@@ -64,7 +64,6 @@ exports[`AnimatedProgressBar should render properly 1`] = `
       backgroundColor="#eb0055"
       barWidth={0}
       collapsable={false}
-      forwardedRef={[Function]}
       isAnimated={false}
       onLayout={[Function]}
       progress={0.5}

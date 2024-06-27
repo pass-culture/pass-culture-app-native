@@ -92,7 +92,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -102,15 +101,23 @@ exports[`<SetStatus/> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -342,7 +349,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -352,22 +358,30 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949D",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "opacity": 1,
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                          "userSelect": "auto",
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "flexGrow": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Collégien"
                     >
@@ -511,7 +525,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -521,22 +534,30 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949D",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "opacity": 1,
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                          "userSelect": "auto",
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "flexGrow": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Lycéen"
                     >
@@ -680,7 +701,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -690,22 +710,30 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949D",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "opacity": 1,
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                          "userSelect": "auto",
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "flexGrow": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Étudiant"
                     >
@@ -849,7 +877,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -859,22 +886,30 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949D",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "opacity": 1,
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                          "userSelect": "auto",
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "flexGrow": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Employé"
                     >
@@ -1018,7 +1053,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -1028,22 +1062,30 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949D",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "opacity": 1,
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                          "userSelect": "auto",
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "flexGrow": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Apprenti"
                     >
@@ -1187,7 +1229,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -1197,22 +1238,30 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949D",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "opacity": 1,
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                          "userSelect": "auto",
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "flexGrow": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Alternant"
                     >
@@ -1356,7 +1405,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -1366,22 +1414,30 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949D",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "opacity": 1,
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                          "userSelect": "auto",
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "flexGrow": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Volontaire"
                     >
@@ -1540,7 +1596,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -1550,22 +1605,30 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949D",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "opacity": 1,
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                          "userSelect": "auto",
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "flexGrow": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Inactif"
                     >
@@ -1724,7 +1787,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         }
                       }
                       accessible={true}
-                      collapsable={false}
                       focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
@@ -1734,22 +1796,30 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        {
-                          "alignItems": "center",
-                          "backgroundColor": "#ffffff",
-                          "borderColor": "#90949D",
-                          "borderRadius": 8,
-                          "borderStyle": "solid",
-                          "borderWidth": 1,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "opacity": 1,
-                          "paddingBottom": 16,
-                          "paddingLeft": 16,
-                          "paddingRight": 16,
-                          "paddingTop": 16,
-                          "userSelect": "auto",
-                        }
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "backgroundColor": "#ffffff",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "flexDirection": "row",
+                              "flexGrow": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
                       }
                       testID="Chômeur"
                     >
@@ -1919,7 +1989,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={false}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1929,22 +1998,31 @@ exports[`<SetStatus/> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#F1F1F4",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": "100%",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#F1F1F4",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {},
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Choisis ton statut"
           >

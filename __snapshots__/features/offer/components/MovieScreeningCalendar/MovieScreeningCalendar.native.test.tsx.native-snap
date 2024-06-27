@@ -91,7 +91,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
                 }
               }
               accessible={false}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -101,13 +100,21 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "flexWrap": "wrap",
+                      "justifyContent": "center",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="movie-calendar-day"
             >
@@ -384,7 +391,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -394,28 +400,36 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "backgroundColor": "#ffffff",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "boxSizing": "border-box",
-                "height": 68,
-                "justifyContent": "flex-start",
-                "opacity": 1,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "shadowColor": "#696A6F",
-                "shadowOffset": {
-                  "height": 4,
-                  "width": 0,
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "boxSizing": "border-box",
+                    "height": 68,
+                    "justifyContent": "flex-start",
+                    "paddingBottom": 12,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 12,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
+                    "width": 120,
+                  },
+                ],
+                {
+                  "opacity": 1,
                 },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
-                "userSelect": "auto",
-                "width": 120,
-              }
+              ]
             }
             testID="event-card"
           >
@@ -561,7 +575,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -571,28 +584,36 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "backgroundColor": "#ffffff",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "boxSizing": "border-box",
-                "height": 68,
-                "justifyContent": "flex-start",
-                "opacity": 1,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "shadowColor": "#696A6F",
-                "shadowOffset": {
-                  "height": 4,
-                  "width": 0,
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "boxSizing": "border-box",
+                    "height": 68,
+                    "justifyContent": "flex-start",
+                    "paddingBottom": 12,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 12,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
+                    "width": 120,
+                  },
+                ],
+                {
+                  "opacity": 1,
                 },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
-                "userSelect": "auto",
-                "width": 120,
-              }
+              ]
             }
             testID="event-card"
           >
@@ -738,7 +759,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -748,28 +768,36 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "backgroundColor": "#ffffff",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "boxSizing": "border-box",
-                "height": 68,
-                "justifyContent": "flex-start",
-                "opacity": 1,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "shadowColor": "#696A6F",
-                "shadowOffset": {
-                  "height": 4,
-                  "width": 0,
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "boxSizing": "border-box",
+                    "height": 68,
+                    "justifyContent": "flex-start",
+                    "paddingBottom": 12,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 12,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
+                    "width": 120,
+                  },
+                ],
+                {
+                  "opacity": 1,
                 },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
-                "userSelect": "auto",
-                "width": 120,
-              }
+              ]
             }
             testID="event-card"
           >
@@ -915,7 +943,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -925,28 +952,36 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "backgroundColor": "#ffffff",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "boxSizing": "border-box",
-                "height": 68,
-                "justifyContent": "flex-start",
-                "opacity": 1,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "shadowColor": "#696A6F",
-                "shadowOffset": {
-                  "height": 4,
-                  "width": 0,
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "boxSizing": "border-box",
+                    "height": 68,
+                    "justifyContent": "flex-start",
+                    "paddingBottom": 12,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 12,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
+                    "width": 120,
+                  },
+                ],
+                {
+                  "opacity": 1,
                 },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
-                "userSelect": "auto",
-                "width": 120,
-              }
+              ]
             }
             testID="event-card"
           >
@@ -1092,7 +1127,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1102,28 +1136,36 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "backgroundColor": "#ffffff",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "boxSizing": "border-box",
-                "height": 68,
-                "justifyContent": "flex-start",
-                "opacity": 1,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "shadowColor": "#696A6F",
-                "shadowOffset": {
-                  "height": 4,
-                  "width": 0,
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "boxSizing": "border-box",
+                    "height": 68,
+                    "justifyContent": "flex-start",
+                    "paddingBottom": 12,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 12,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
+                    "width": 120,
+                  },
+                ],
+                {
+                  "opacity": 1,
                 },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
-                "userSelect": "auto",
-                "width": 120,
-              }
+              ]
             }
             testID="event-card"
           >
@@ -1269,7 +1311,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1279,28 +1320,36 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "backgroundColor": "#ffffff",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "boxSizing": "border-box",
-                "height": 68,
-                "justifyContent": "flex-start",
-                "opacity": 1,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "shadowColor": "#696A6F",
-                "shadowOffset": {
-                  "height": 4,
-                  "width": 0,
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "boxSizing": "border-box",
+                    "height": 68,
+                    "justifyContent": "flex-start",
+                    "paddingBottom": 12,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 12,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
+                    "width": 120,
+                  },
+                ],
+                {
+                  "opacity": 1,
                 },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
-                "userSelect": "auto",
-                "width": 120,
-              }
+              ]
             }
             testID="event-card"
           >
@@ -1446,7 +1495,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
               }
             }
             accessible={false}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1456,28 +1504,36 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "backgroundColor": "#ffffff",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "boxSizing": "border-box",
-                "height": 68,
-                "justifyContent": "flex-start",
-                "opacity": 1,
-                "paddingBottom": 12,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 12,
-                "shadowColor": "#696A6F",
-                "shadowOffset": {
-                  "height": 4,
-                  "width": 0,
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "boxSizing": "border-box",
+                    "height": 68,
+                    "justifyContent": "flex-start",
+                    "paddingBottom": 12,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 12,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
+                    "width": 120,
+                  },
+                ],
+                {
+                  "opacity": 1,
                 },
-                "shadowOpacity": 0.2,
-                "shadowRadius": 4,
-                "userSelect": "auto",
-                "width": 120,
-              }
+              ]
             }
             testID="event-card"
           >

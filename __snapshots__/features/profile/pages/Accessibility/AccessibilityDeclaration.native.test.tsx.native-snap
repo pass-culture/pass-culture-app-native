@@ -92,7 +92,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -102,15 +101,23 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "flexGrow": 1,
-                "height": 40,
-                "justifyContent": "center",
-                "maxWidth": 40,
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Revenir en arrière"
           >
@@ -328,7 +335,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -338,11 +344,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Schéma pluriannuel d’accessibilité 2022 - 2024"
                   >
@@ -490,7 +504,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -500,11 +513,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Actions réalisées en 2022 et 2023"
                   >
@@ -652,7 +673,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -662,11 +682,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Plan d’actions 2024"
                   >
@@ -769,7 +797,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -779,11 +806,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "opacity": 1,
-                "top": 3,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "top": 3,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="https://passculture.app/"
           >
@@ -3118,7 +3153,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3128,11 +3162,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Accueil"
                   >
@@ -3281,7 +3323,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3291,11 +3332,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Connexion"
                   >
@@ -3444,7 +3493,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3454,11 +3502,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Inscription - Date de naissance"
                   >
@@ -3607,7 +3663,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3617,11 +3672,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Vérification d’identité"
                   >
@@ -3770,7 +3833,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3780,11 +3842,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Profil"
                   >
@@ -3933,7 +4003,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -3943,11 +4012,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Modification de mot de passe"
                   >
@@ -4096,7 +4173,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4106,11 +4182,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Recherche"
                   >
@@ -4259,7 +4343,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4269,11 +4352,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Filtres"
                   >
@@ -4422,7 +4513,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4432,11 +4522,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Résultats de recherche"
                   >
@@ -4585,7 +4683,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4595,11 +4692,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Favoris"
                   >
@@ -4748,7 +4853,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4758,11 +4862,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Détails d’une offre"
                   >
@@ -4911,7 +5023,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -4921,11 +5032,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Déclaration d’accessibilité"
                   >
@@ -5138,7 +5257,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -5148,11 +5266,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Ouvrir le gestionnaire mail pour contacter le support"
                   >
@@ -5378,7 +5504,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -5388,11 +5513,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Défenseur des droits"
                   >
@@ -5543,7 +5676,6 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                       }
                     }
                     accessible={true}
-                    collapsable={false}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -5553,11 +5685,19 @@ exports[`AccessibilityDeclaration should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      {
-                        "opacity": 1,
-                        "top": 3,
-                        "userSelect": "auto",
-                      }
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
                     }
                     testID="Défenseur des droits dans votre région"
                   >

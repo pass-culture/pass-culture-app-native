@@ -67,7 +67,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -77,15 +76,23 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Revenir en arrière"
       >
@@ -181,6 +188,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
   >
     <View>
       <View
+        collapsable={false}
         onLayout={[Function]}
       >
         <Text
@@ -267,7 +275,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -277,19 +284,27 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "minHeight": 72,
-                "opacity": 1,
-                "paddingHorizontal": 16,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "minHeight": 72,
+                    "paddingHorizontal": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Cinéma"
           >
@@ -446,7 +461,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -456,19 +470,27 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "minHeight": 72,
-                "opacity": 1,
-                "paddingHorizontal": 16,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "minHeight": 72,
+                    "paddingHorizontal": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Lecture"
           >
@@ -625,7 +647,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -635,19 +656,27 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "minHeight": 72,
-                "opacity": 1,
-                "paddingHorizontal": 16,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "minHeight": 72,
+                    "paddingHorizontal": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Musique"
           >
@@ -804,7 +833,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -814,19 +842,27 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "minHeight": 72,
-                "opacity": 1,
-                "paddingHorizontal": 16,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "minHeight": 72,
+                    "paddingHorizontal": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Spectacles"
           >
@@ -983,7 +1019,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -993,19 +1028,27 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "minHeight": 72,
-                "opacity": 1,
-                "paddingHorizontal": 16,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "minHeight": 72,
+                    "paddingHorizontal": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Activités créatives"
           >
@@ -1162,7 +1205,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1172,19 +1214,27 @@ exports[`OnboardingSubscription should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderColor": "#90949D",
-                "borderRadius": 8,
-                "borderWidth": 1,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "minHeight": 72,
-                "opacity": 1,
-                "paddingHorizontal": 16,
-                "userSelect": "auto",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "minHeight": 72,
+                    "paddingHorizontal": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Visites et sorties"
           >
@@ -1309,7 +1359,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
     </View>
   </RCTScrollView>,
   <BVLinearGradient
-    collapsable={false}
     colors={
       [
         16777215,
@@ -1322,7 +1371,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         "y": 1,
       }
     }
-    forwardedRef={[Function]}
     locations={
       [
         0,
@@ -1337,13 +1385,19 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       }
     }
     style={
-      {
-        "bottom": 136,
-        "height": 120,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-      }
+      [
+        [
+          {
+            "bottom": 136,
+            "height": 120,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          },
+        ],
+        {},
+        {},
+      ]
     }
   />,
   <View
@@ -1381,7 +1435,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={false}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -1391,22 +1444,31 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "#F1F1F4",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "backgroundColor": "#F1F1F4",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "paddingBottom": 2,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {},
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Suivre la sélection"
     >
@@ -1459,7 +1521,6 @@ exports[`OnboardingSubscription should render correctly 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -1469,22 +1530,32 @@ exports[`OnboardingSubscription should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="Ne pas suivre de thème"
     >

@@ -349,7 +349,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -359,13 +358,22 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "display": "flex",
-                  "height": 32,
-                  "opacity": 1,
-                  "userSelect": "auto",
-                  "width": 32,
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {},
+                    {
+                      "display": "flex",
+                      "height": 32,
+                      "width": 32,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Voir tous les filtres : 3 filtres actifs"
             >
@@ -478,7 +486,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -488,21 +495,29 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
-                  "borderColor": "#161617",
-                  "borderRadius": 24,
-                  "borderWidth": 2,
-                  "boxSizing": "border-box",
-                  "flexDirection": "row-reverse",
-                  "height": 32,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#F1F1F4",
+                      "borderColor": "#161617",
+                      "borderRadius": 24,
+                      "borderWidth": 2,
+                      "boxSizing": "border-box",
+                      "flexDirection": "row-reverse",
+                      "height": 32,
+                      "justifyContent": "center",
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Le Petit Rintintin 1 : Filtre sélectionné"
             >
@@ -577,7 +592,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -587,21 +601,29 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
-                  "borderColor": "#161617",
-                  "borderRadius": 24,
-                  "borderWidth": 2,
-                  "boxSizing": "border-box",
-                  "flexDirection": "row-reverse",
-                  "height": 32,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#F1F1F4",
+                      "borderColor": "#161617",
+                      "borderRadius": 24,
+                      "borderWidth": 2,
+                      "boxSizing": "border-box",
+                      "flexDirection": "row-reverse",
+                      "height": 32,
+                      "justifyContent": "center",
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Catégories : Filtre sélectionné"
             >
@@ -676,7 +698,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -686,21 +707,29 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
-                  "borderColor": "#161617",
-                  "borderRadius": 24,
-                  "borderWidth": 2,
-                  "boxSizing": "border-box",
-                  "flexDirection": "row-reverse",
-                  "height": 32,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#F1F1F4",
+                      "borderColor": "#161617",
+                      "borderRadius": 24,
+                      "borderWidth": 2,
+                      "boxSizing": "border-box",
+                      "flexDirection": "row-reverse",
+                      "height": 32,
+                      "justifyContent": "center",
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Prix : Filtre sélectionné"
             >
@@ -775,7 +804,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -785,21 +813,29 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#161617",
-                  "borderRadius": 24,
-                  "borderWidth": 1,
-                  "boxSizing": "border-box",
-                  "flexDirection": "row-reverse",
-                  "height": 32,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#161617",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "boxSizing": "border-box",
+                      "flexDirection": "row-reverse",
+                      "height": 32,
+                      "justifyContent": "center",
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Dates & heures"
             >
@@ -855,7 +891,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               }
               accessible={true}
-              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -865,21 +900,29 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#161617",
-                  "borderRadius": 24,
-                  "borderWidth": 1,
-                  "boxSizing": "border-box",
-                  "flexDirection": "row-reverse",
-                  "height": 32,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "paddingLeft": 16,
-                  "paddingRight": 16,
-                  "userSelect": "auto",
-                }
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#161617",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "boxSizing": "border-box",
+                      "flexDirection": "row-reverse",
+                      "height": 32,
+                      "justifyContent": "center",
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
               }
               testID="Accessibilité"
             >
@@ -1068,7 +1111,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               }
             }
             accessible={true}
-            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -1078,22 +1120,31 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              {
-                "alignItems": "center",
-                "backgroundColor": "#eb0055",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "opacity": 1,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "userSelect": "auto",
-                "width": "100%",
-              }
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#eb0055",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {},
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
             }
             testID="Modifier mes filtres"
           >

@@ -29,7 +29,6 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible ov
       }
     }
     accessible={false}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -39,17 +38,25 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible ov
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "#00000080",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "height": "100%",
-        "justifyContent": "flex-end",
-        "opacity": 1,
-        "position": "absolute",
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "backgroundColor": "#00000080",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "justifyContent": "flex-end",
+            "position": "absolute",
+            "width": "100%",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
   />
   <View
@@ -177,7 +184,6 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible ov
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -187,14 +193,22 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible ov
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "paddingBottom": 4,
-              "paddingLeft": 4,
-              "paddingRight": 4,
-              "paddingTop": 4,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Fermer la modale"
         >
@@ -330,7 +344,6 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible ov
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -340,22 +353,31 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible ov
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Explorer le catalogue"
       >
@@ -434,7 +456,6 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
       }
     }
     accessible={false}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -444,17 +465,25 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "#00000080",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "height": "100%",
-        "justifyContent": "flex-end",
-        "opacity": 1,
-        "position": "absolute",
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "backgroundColor": "#00000080",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "justifyContent": "flex-end",
+            "position": "absolute",
+            "width": "100%",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
   />
   <View
@@ -582,7 +611,6 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -592,14 +620,22 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "paddingBottom": 4,
-              "paddingLeft": 4,
-              "paddingRight": 4,
-              "paddingTop": 4,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Fermer la modale"
         >
@@ -709,7 +745,6 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -719,22 +754,32 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 2,
+                "paddingRight": 2,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {
+                "backgroundColor": "transparent",
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="comment ça marche ?"
       >
@@ -853,7 +898,6 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -863,22 +907,31 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Explorer le catalogue"
       >
@@ -957,7 +1010,6 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
       }
     }
     accessible={false}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -967,17 +1019,25 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "#00000080",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "height": "100%",
-        "justifyContent": "flex-end",
-        "opacity": 1,
-        "position": "absolute",
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "backgroundColor": "#00000080",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "justifyContent": "flex-end",
+            "position": "absolute",
+            "width": "100%",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
   />
   <View
@@ -1105,7 +1165,6 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -1115,14 +1174,22 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "paddingBottom": 4,
-              "paddingLeft": 4,
-              "paddingRight": 4,
-              "paddingTop": 4,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Fermer la modale"
         >
@@ -1258,7 +1325,6 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -1268,22 +1334,31 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Explorer le catalogue"
       >
@@ -1362,7 +1437,6 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
       }
     }
     accessible={false}
-    collapsable={false}
     focusable={true}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -1372,17 +1446,25 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "backgroundColor": "#00000080",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "height": "100%",
-        "justifyContent": "flex-end",
-        "opacity": 1,
-        "position": "absolute",
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      [
+        [
+          {
+            "userSelect": "auto",
+          },
+          {
+            "backgroundColor": "#00000080",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "height": "100%",
+            "justifyContent": "flex-end",
+            "position": "absolute",
+            "width": "100%",
+          },
+        ],
+        {
+          "opacity": 1,
+        },
+      ]
     }
   />
   <View
@@ -1510,7 +1592,6 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -1520,14 +1601,22 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "paddingBottom": 4,
-              "paddingLeft": 4,
-              "paddingRight": 4,
-              "paddingTop": 4,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Fermer la modale"
         >
@@ -1662,7 +1751,6 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -1672,22 +1760,31 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "userSelect": "auto",
-            "width": "100%",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Explorer le catalogue"
       >

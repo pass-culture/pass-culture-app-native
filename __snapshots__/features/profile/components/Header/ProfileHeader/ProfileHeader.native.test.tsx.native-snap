@@ -40,7 +40,6 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -50,22 +49,32 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 32,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 32,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="CheatMenu"
     >
@@ -265,7 +274,6 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
           }
         }
         accessible={true}
-        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -275,18 +283,26 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "borderRadius": 24,
-            "justifyContent": "center",
-            "opacity": 1,
-            "overflow": "hidden",
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
-            "userSelect": "auto",
-          }
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 24,
+                "justifyContent": "center",
+                "overflow": "hidden",
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
         }
         testID="Créer un compte"
       >
@@ -390,7 +406,6 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
             }
           }
           accessible={true}
-          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -400,10 +415,16 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
           }
           testID="Se connecter"
         >
@@ -502,7 +523,6 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -512,22 +532,32 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 32,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 32,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="CheatMenu"
     >
@@ -664,7 +694,6 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
         }
       }
       accessible={true}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -674,22 +703,32 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 32,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 32,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {
+              "backgroundColor": "transparent",
+            },
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
       testID="CheatMenu"
     >
@@ -850,7 +889,6 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
         }
       }
       accessible={false}
-      collapsable={false}
       focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
@@ -860,10 +898,18 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        {
-          "opacity": 1,
-          "userSelect": "auto",
-        }
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {},
+            {},
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
       }
     >
       <View

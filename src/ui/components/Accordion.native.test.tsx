@@ -9,6 +9,7 @@ const Children = () => <View testID="accordion-child-view" />
 
 const accordionTitle = 'accordion title'
 
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.useFakeTimers()
 
 describe('Accordion', () => {
