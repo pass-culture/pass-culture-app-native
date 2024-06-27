@@ -6,6 +6,7 @@ import { storage } from 'libs/storage'
 
 export const eduConnectClient = {
   getLoginUrl() {
+    if (!env.API_BASE_URL) throw new Error('API_BASE_URL is undefined, check your config')
     return `${env.API_BASE_URL}/saml/educonnect/login`
   },
   async getAccessToken() {

@@ -41,6 +41,18 @@ export default ({ mode }) => {
       jsxFactory: 'React.createElement',
       jsxFragment: 'React.Fragment',
     },
+    server: {
+      proxy: {
+        '/native': {
+          target: env.API_BASE_URL,
+          changeOrigin: true,
+        },
+        '/saml': {
+          target: env.API_BASE_URL,
+          changeOrigin: true,
+        },
+      },
+    },
     optimizeDeps: {
       include: ['react-native', 'react-native-web'],
       esbuildOptions: {

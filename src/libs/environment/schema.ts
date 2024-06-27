@@ -13,7 +13,7 @@ export const EnvironmentSchema = yup.object({
   ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH: yup.string().required(),
   AMPLITUDE_API_PUBLIC_KEY: yup.string().required(),
   ANDROID_APP_ID: yup.string().required(),
-  API_BASE_URL: yup.string().required(),
+  API_BASE_URL: yup.string().optional(), // Set to empty string in __DEV__ (see src/libs/environment/env.web.ts)
   APPLE_STORE_URL: yup.string().required(),
   APPS_FLYER_DEV_PUBLIC_KEY: yup.string().required(),
   BOOKING_FEEDBACK_LINK: yup.string().required(),
