@@ -5,7 +5,7 @@ import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { useMaintenance } from 'features/maintenance/helpers/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
 import { MAINTENANCE } from 'libs/firebase/firestore/maintenance'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { ScreenError } from 'libs/monitoring/errors'
 
 export const ScreenErrorProvider = ({

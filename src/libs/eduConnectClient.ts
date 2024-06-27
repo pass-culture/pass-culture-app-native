@@ -1,7 +1,7 @@
 import { api } from 'api/api'
 import { refreshAccessToken } from 'api/refreshAccessToken'
 import { env } from 'libs/environment'
-import { getTokenStatus } from 'libs/jwt'
+import { getTokenStatus } from 'libs/jwt/jwt'
 import { storage } from 'libs/storage'
 
 export const eduConnectClient = {

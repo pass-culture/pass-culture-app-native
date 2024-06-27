@@ -3,7 +3,7 @@ import * as ReactQueryAPI from 'react-query'
 
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { analytics } from 'libs/analytics'
-import * as Keychain from 'libs/keychain'
+import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -11,7 +11,7 @@ import { renderHook } from 'tests/utils'
 
 import { LoggedInQueryKeys, useLogoutRoutine } from './useLogoutRoutine'
 
-jest.mock('libs/keychain')
+jest.mock('libs/keychain/keychain')
 
 const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
 

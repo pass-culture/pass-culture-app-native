@@ -10,7 +10,7 @@ import { act, renderHook, waitFor } from 'tests/utils'
 import { useRemoveFavorite } from './useRemoveFavorite'
 
 jest.mock('features/auth/context/AuthContext')
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 jest.unmock('react-query')
 

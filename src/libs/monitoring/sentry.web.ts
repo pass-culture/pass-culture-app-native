@@ -1,1 +1,12 @@
-export * from '@sentry/react'
+export {
+  addBreadcrumb,
+  captureException,
+  configureScope,
+  init,
+  setUser,
+  setExtras,
+  startTransaction,
+  withProfiler,
+  wrap,
+  getCurrentHub,
+} from '@sentry/react'

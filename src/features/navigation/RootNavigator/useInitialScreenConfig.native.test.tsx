@@ -10,7 +10,7 @@ import { renderHook, waitFor } from 'tests/utils'
 import { useInitialScreen } from './useInitialScreenConfig'
 
 jest.mock('features/auth/context/AuthContext')
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 describe('useInitialScreen()', () => {
   afterAll(async () => {

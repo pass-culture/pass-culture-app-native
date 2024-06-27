@@ -4,7 +4,7 @@ import { useQueryClient } from 'react-query'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { analytics } from 'libs/analytics'
-import { clearRefreshToken } from 'libs/keychain'
+import { clearRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { BatchUser } from 'libs/react-native-batch'

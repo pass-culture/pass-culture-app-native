@@ -28,7 +28,7 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 mockdate.set(new Date('2024-01-01T00:00:00.000Z'))

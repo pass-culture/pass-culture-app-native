@@ -1,15 +1,15 @@
-import { computeTokenRemainingLifetimeInMs } from 'libs/jwt'
-import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
+import { computeTokenRemainingLifetimeInMs } from 'libs/jwt/jwt'
+import { clearRefreshToken, getRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 
 import { ApiError } from './ApiError'
 import { DefaultApi } from './gen'
 import {
-  REFRESH_TOKEN_IS_EXPIRED_ERROR,
   FAILED_TO_GET_REFRESH_TOKEN_ERROR,
-  UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN,
+  REFRESH_TOKEN_IS_EXPIRED_ERROR,
   Result,
+  UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN,
 } from './types'
 
 let refreshedAccessToken: Promise<Result> | null = null

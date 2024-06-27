@@ -54,7 +54,7 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
     favoritesState: mockFavoritesState,
   }),
 }))
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 

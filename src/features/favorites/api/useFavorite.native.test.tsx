@@ -12,7 +12,7 @@ import { useFavorite } from './useFavorite'
 jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('features/auth/context/AuthContext')
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 describe('useFavorite hook', () => {
   it('should get favorite from offer id', async () => {

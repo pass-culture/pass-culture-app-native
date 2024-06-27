@@ -9,7 +9,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 const hideModal = jest.fn()
 const offerId = 1

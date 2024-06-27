@@ -2,7 +2,7 @@ import * as jwtDecode from 'jwt-decode'
 import mockdate from 'mockdate'
 
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { computeTokenRemainingLifetimeInMs, getTokenStatus } from 'libs/jwt'
+import { computeTokenRemainingLifetimeInMs, getTokenStatus } from 'libs/jwt/jwt'
 
 mockdate.set(CURRENT_DATE)
 

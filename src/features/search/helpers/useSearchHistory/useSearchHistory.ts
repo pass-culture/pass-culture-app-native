@@ -6,7 +6,7 @@ import { getNativeCategoryFromEnum } from 'features/search/helpers/categoriesHel
 import { getHistoryItemLabel } from 'features/search/helpers/getHistoryItemLabel/getHistoryItemLabel'
 import { getHistoryLessThan30Days } from 'features/search/helpers/useSearchHistory/helpers/getHistoryLessThan30Days'
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring } from 'libs/monitoring'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'

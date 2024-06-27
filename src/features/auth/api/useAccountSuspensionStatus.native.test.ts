@@ -16,7 +16,7 @@ function simulateSuspensionStatusError() {
     responseOptions: { statusCode: 400 },
   })
 }
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 describe('useAccountSuspensionStatus', () => {
   it('should return suspension status if it exists', async () => {

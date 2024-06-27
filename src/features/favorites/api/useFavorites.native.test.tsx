@@ -13,7 +13,7 @@ import { useFavorites } from './useFavorites'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 describe('useFavorites hook', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })

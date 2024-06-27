@@ -11,7 +11,7 @@ import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
 import { SuspendedAccountUponUserRequest } from './SuspendedAccountUponUserRequest'
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/api/useAccountSuspensionDate', () => ({
   useAccountSuspensionDate: jest.fn(() => ({ data: { date: '2022-05-11T10:29:25.332786Z' } })),
 }))

@@ -1,5 +1,5 @@
 import { VenuesModuleParameters } from 'features/home/types'
-import { VENUES_FACETS_ENUM } from 'libs/algolia/enums'
+import { VENUES_FACETS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import {
   buildLocationParameter,
   BuildLocationParameterParams,

@@ -1,7 +1,7 @@
 import algoliasearch from 'algoliasearch'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { VENUES_FACETS_ENUM } from 'libs/algolia/enums'
+import { VENUES_FACETS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'

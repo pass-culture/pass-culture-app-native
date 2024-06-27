@@ -9,7 +9,7 @@ import { render, screen, waitFor } from 'tests/utils/web'
 
 import { BicolorFavoriteCount } from './BicolorFavoriteCount'
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock

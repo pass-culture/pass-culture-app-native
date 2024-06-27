@@ -21,7 +21,7 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 const offerFixture = offersFixture[0]
 const duoOfferFixture = offersFixture[2]
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/home/api/useHighlightOffer')
 const mockUseHighlightOffer = useHighlightOffer as jest.Mock
 

@@ -22,7 +22,7 @@ const mockIdentityCheckDispatch = jest.fn()
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 jest.mock('features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep', () => ({
   useSetSubscriptionStepAndMethod: jest.fn(() => ({
     subscription: mockNextSubscriptionStep,

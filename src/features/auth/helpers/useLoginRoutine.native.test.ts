@@ -9,7 +9,7 @@ import { analytics } from 'libs/analytics'
 import { SSOType } from 'libs/analytics/logEventAnalytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
-import * as Keychain from 'libs/keychain'
+import * as Keychain from 'libs/keychain/keychain'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
@@ -33,7 +33,7 @@ const mockIdentityCheckDispatch = jest.fn()
 
 jest.mock('api/api')
 jest.mock('libs/campaign')
-jest.mock('libs/keychain')
+jest.mock('libs/keychain/keychain')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))

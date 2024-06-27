@@ -6,7 +6,7 @@ import { JustifiedLeftTitle } from 'features/identityCheck/components/JustifiedL
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { theme } from 'theme'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'

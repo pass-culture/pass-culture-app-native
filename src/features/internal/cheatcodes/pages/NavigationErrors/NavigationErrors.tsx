@@ -9,7 +9,7 @@ import { CheatcodesHeader } from 'features/internal/cheatcodes/components/Cheatc
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { AsyncError, ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

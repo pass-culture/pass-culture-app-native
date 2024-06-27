@@ -18,7 +18,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-jest.mock('libs/jwt')
+jest.mock('libs/jwt/jwt')
 
 describe('useOngoingOrEndedBooking', () => {
   beforeEach(() => {

@@ -7,7 +7,7 @@ import {
 } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BooksNativeCategoriesEnum, OfferGenreType } from 'features/search/types'
-import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { GtlLevel } from 'shared/gtl/types'
