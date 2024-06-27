@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react'
-import { useWindowDimensions } from 'react-native'
+import { Platform, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Trend } from 'features/home/components/Trend'
-import { TrendBlock } from 'features/home/types'
+import { TrendBlock, TrendNavigationProps } from 'features/home/types'
+import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { LocationMode } from 'libs/location/types'
+import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
 
 type Trends = {
@@ -18,6 +22,8 @@ type Trends = {
   items: TrendBlock[]
 }
 
+const isWeb = Platform.OS === 'web'
+
 export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) => {
   const enableTrendsModule = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_CIRCLE_NAV_BUTTONS)
   const hasGraphicRedesign = useHasGraphicRedesign({
@@ -25,7 +31,15 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
     homeId: homeEntryId,
   })
   const { width } = useWindowDimensions()
+  const { selectedLocationMode } = useShouldDisplayVenueMap()
+  const {
+    showModal: showVenueMapLocationModal,
+    visible: venueMapLocationModalVisible,
+    hideModal: hideVenueMapLocationModal,
+  } = useModal()
+
   const isSmallScreen = width < 375
+  const shouldOpenMapDirectly = selectedLocationMode !== LocationMode.EVERYWHERE && !isWeb
 
   useEffect(() => {
     if (hasGraphicRedesign) {
@@ -39,30 +53,40 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGraphicRedesign])
 
+  const getNavigationProps = (props: TrendBlock): TrendNavigationProps => {
+    if (props.type === ContentTypes.VENUE_MAP_BLOCK && !isWeb) {
+      return {
+        navigateTo: shouldOpenMapDirectly ? { screen: 'VenueMap' } : undefined,
+        enableNavigate: shouldOpenMapDirectly,
+        onBeforeNavigate: () => {
+          analytics.logConsultVenueMap({ from: 'trend_block' })
+          if (!shouldOpenMapDirectly) showVenueMapLocationModal()
+        },
+      }
+    }
+
+    return {
+      navigateTo: {
+        screen: 'ThematicHome',
+        params: { homeId: homeEntryId, moduleId, from: 'trend_block' },
+      },
+    }
+  }
+
   if (!hasGraphicRedesign) return null
 
   return (
-    <Container isSmallScreen={isSmallScreen}>
-      {items.map((props) => {
-        const logTrendsBlockClicked = () => {
-          analytics.logTrendsBlockClicked({
-            moduleListID: moduleId,
-            entryId: homeEntryId,
-            moduleId: props.id,
-            toEntryId: props.homeEntryId ?? '',
-          })
-        }
-
-        return (
-          <Trend
-            key={props.title}
-            moduleId={moduleId}
-            onBeforeNavigate={logTrendsBlockClicked}
-            {...props}
-          />
-        )
-      })}
-    </Container>
+    <React.Fragment>
+      <Container isSmallScreen={isSmallScreen}>
+        {items.map((props) => (
+          <Trend key={props.title} moduleId={moduleId} {...props} {...getNavigationProps(props)} />
+        ))}
+      </Container>
+      <VenueMapLocationModal
+        visible={venueMapLocationModalVisible}
+        dismissModal={hideVenueMapLocationModal}
+      />
+    </React.Fragment>
   )
 }
 
