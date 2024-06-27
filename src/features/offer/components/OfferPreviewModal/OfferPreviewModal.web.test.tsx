@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { render, screen, waitFor, fireEvent, act } from 'tests/utils/web'
+import { render, screen, waitFor, fireEvent } from 'tests/utils/web'
 
 import { OfferPreviewModal } from './OfferPreviewModal'
+jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 describe('<OfferPreviewModal />', () => {
   beforeEach(() => {
@@ -18,7 +19,7 @@ describe('<OfferPreviewModal />', () => {
       />
     )
 
-    await waitFor(() => expect(screen.getByTestId('fullscreenModalView')).toBeInTheDocument())
+    await screen.findByTestId('fullscreenModalView')
 
     expect(screen.getByRole('button', { name: 'Image précédente' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Image suivante' })).toBeInTheDocument()
@@ -58,7 +59,8 @@ describe('<OfferPreviewModal />', () => {
       />
     )
 
-    act(() => fireEvent.click(screen.getByRole('button', { name: 'Image suivante' })))
+    const nextButton = await screen.findByTestId('Image suivante')
+    fireEvent.click(nextButton)
 
     await waitFor(() => expect(screen.getByText('2/3')).toBeInTheDocument())
   })
@@ -73,7 +75,8 @@ describe('<OfferPreviewModal />', () => {
       />
     )
 
-    act(() => fireEvent.click(screen.getByRole('button', { name: 'Image précédente' })))
+    const previousButton = await screen.findByTestId('Image précédente')
+    fireEvent.click(previousButton)
 
     await waitFor(() => expect(screen.getByText('2/3')).toBeInTheDocument())
   })
@@ -89,10 +92,8 @@ describe('<OfferPreviewModal />', () => {
       />
     )
 
-    await waitFor(() =>
-      expect(screen.getByRole('button', { name: 'Fermer la fenêtre' })).toBeInTheDocument()
-    )
-    act(() => fireEvent.click(screen.getByRole('button', { name: 'Fermer la fenêtre' })))
+    const closeButton = await screen.findByTestId('Fermer la fenêtre')
+    fireEvent.click(closeButton)
 
     expect(mockOnClose).toHaveBeenCalledWith()
   })
