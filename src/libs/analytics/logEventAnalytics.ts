@@ -662,6 +662,12 @@ export const logEventAnalytics = {
     type: 'credit' | 'location'
     from: 'home' | 'thematicHome' | 'offer' | 'profile' | 'search'
   }) => analytics.logEvent({ firebase: AnalyticsEvent.SYSTEM_BLOCK_DISPLAYED }, params),
+  logTrendsBlockClicked: (params: {
+    moduleId: string
+    moduleListID: string
+    entryId: string
+    toEntryId: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.TRENDS_BLOCK_CLICKED }, params),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
   logUserSetLocation: (from: 'home' | 'search' | 'venueMap') =>

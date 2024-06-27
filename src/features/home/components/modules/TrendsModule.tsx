@@ -43,9 +43,25 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
 
   return (
     <Container isSmallScreen={isSmallScreen}>
-      {items.map((props) => (
-        <Trend key={props.title} moduleId={moduleId} {...props} />
-      ))}
+      {items.map((props) => {
+        const logTrendsBlockClicked = () => {
+          analytics.logTrendsBlockClicked({
+            moduleListID: moduleId,
+            entryId: homeEntryId,
+            moduleId: props.id,
+            toEntryId: props.homeEntryId ?? '',
+          })
+        }
+
+        return (
+          <Trend
+            key={props.title}
+            moduleId={moduleId}
+            onBeforeNavigate={logTrendsBlockClicked}
+            {...props}
+          />
+        )
+      })}
     </Container>
   )
 }

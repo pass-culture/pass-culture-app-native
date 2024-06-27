@@ -6,7 +6,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const trackingProps = {
   index: 1,
@@ -89,6 +89,20 @@ describe('TrendsModule', () => {
         moduleType: 'trends',
         index: 1,
         homeEntryId: '4Fs4egA8G2z3fHgU2XQj3h',
+      })
+    })
+
+    it('should log analytics on click on a trend', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+
+      fireEvent.press(screen.getByText('Tendance 1'))
+
+      expect(analytics.logTrendsBlockClicked).toHaveBeenCalledWith({
+        moduleListID: 'g6VpeYbOosfALeqR55Ah6',
+        entryId: '4Fs4egA8G2z3fHgU2XQj3h',
+        moduleId: '16ZgVwnOXvVc0N8ko9Kius',
+        toEntryId: '7qcfqY5zFesLVO5fMb4cqm',
       })
     })
   })
