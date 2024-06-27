@@ -70,6 +70,14 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
         screen: 'ThematicHome',
         params: { homeId: homeEntryId, moduleId, from: 'trend_block' },
       },
+      onBeforeNavigate: () => {
+        analytics.logTrendsBlockClicked({
+          moduleListID: moduleId,
+          entryId: homeEntryId,
+          moduleId: props.id,
+          toEntryId: props.homeEntryId ?? '',
+        })
+      },
     }
   }
 

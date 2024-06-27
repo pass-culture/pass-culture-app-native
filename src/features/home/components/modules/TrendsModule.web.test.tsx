@@ -6,7 +6,7 @@ import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { fireEvent, render, screen } from 'tests/utils/web'
+import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 const trackingProps = {
   index: 1,
@@ -28,16 +28,18 @@ describe('TrendsModule', () => {
       })
     })
 
-    it('should redirect to thematic home when content type is venue map block', () => {
+    it('should redirect to thematic home when content type is venue map block', async () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
       render(<TrendsModule {...trackingProps} {...formattedTrendsModule} />)
 
       fireEvent.click(screen.getByText('Accès carte des lieux'))
 
-      expect(navigate).toHaveBeenCalledWith('ThematicHome', {
-        homeId: '4Fs4egA8G2z3fHgU2XQj3h',
-        moduleId: 'g6VpeYbOosfALeqR55Ah6',
-        from: 'trend_block',
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith('ThematicHome', {
+          homeId: '4Fs4egA8G2z3fHgU2XQj3h',
+          moduleId: 'g6VpeYbOosfALeqR55Ah6',
+          from: 'trend_block',
+        })
       })
     })
   })

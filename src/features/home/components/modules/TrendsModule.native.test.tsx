@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { TrendsModule } from 'features/home/components/modules/TrendsModule'
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
 import { analytics } from 'libs/analytics'
@@ -10,7 +11,6 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
-import { navigate } from '__mocks__/@react-navigation/native'
 
 const trackingProps = {
   index: 1,
@@ -148,26 +148,42 @@ describe('TrendsModule', () => {
       expect(mockShowModal).toHaveBeenCalledTimes(1)
     })
 
-    it('should redirect to thematic home when pressing trend block content type', () => {
+    it('should redirect to thematic home when pressing trend block content type', async () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
       render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 
       fireEvent.press(screen.getByText('Tendance 1'))
 
-      expect(navigate).toHaveBeenCalledWith('ThematicHome', {
-        homeId: '4Fs4egA8G2z3fHgU2XQj3h',
-        moduleId: 'g6VpeYbOosfALeqR55Ah6',
-        from: 'trend_block',
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith('ThematicHome', {
+          homeId: '4Fs4egA8G2z3fHgU2XQj3h',
+          moduleId: 'g6VpeYbOosfALeqR55Ah6',
+          from: 'trend_block',
+        })
       })
     })
 
-    it('should log analytics when when venue map block content type', () => {
+    it('should log analytics when pressing venue map block content type', () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
       render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 
       fireEvent.press(screen.getByText('Accès carte des lieux'))
 
       expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'trend_block' })
+    })
+
+    it('should log analytics on click on a trend', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+
+      fireEvent.press(screen.getByText('Tendance 1'))
+
+      expect(analytics.logTrendsBlockClicked).toHaveBeenCalledWith({
+        moduleListID: 'g6VpeYbOosfALeqR55Ah6',
+        entryId: '4Fs4egA8G2z3fHgU2XQj3h',
+        moduleId: '16ZgVwnOXvVc0N8ko9Kius',
+        toEntryId: '7qcfqY5zFesLVO5fMb4cqm',
+      })
     })
   })
 })
