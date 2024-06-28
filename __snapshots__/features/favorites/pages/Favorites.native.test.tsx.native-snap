@@ -316,7 +316,6 @@ exports[`<Favorites/> should render correctly 1`] = `
     >
       <View>
         <View
-          collapsable={false}
           onLayout={[Function]}
         >
           <View

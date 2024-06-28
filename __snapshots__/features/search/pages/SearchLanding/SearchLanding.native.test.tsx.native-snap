@@ -924,7 +924,6 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
     >
       <View>
         <View
-          collapsable={false}
           onLayout={[Function]}
         >
           <View
@@ -3418,7 +3417,6 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
     >
       <View>
         <View
-          collapsable={false}
           onLayout={[Function]}
         >
           <Text

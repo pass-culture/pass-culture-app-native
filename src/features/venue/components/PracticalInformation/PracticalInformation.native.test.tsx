@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { venueWithOpeningHours } from 'features/venue/fixtures/venueWithOpeningHours'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -12,13 +11,13 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('PracticalInformation', () => {
   it('should display withdrawal information', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueResponseSnap} />))
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueDataTest} />))
 
     expect(await screen.findByText('How to withdraw, https://test.com')).toBeOnTheScreen()
   })
 
   it('should display description information', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueResponseSnap} />))
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueDataTest} />))
 
     expect(
       await screen.findByText(
@@ -28,23 +27,26 @@ describe('PracticalInformation', () => {
   })
 
   it('should display contact block', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueResponseSnap} />))
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueDataTest} />))
 
     expect(await screen.findByText('contact@venue.com')).toBeOnTheScreen()
   })
 
   it('should display accessibility block', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueResponseSnap} />))
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueDataTest} />))
 
     expect(await screen.findAllByTestId('accessibilityBadgeContainer')).not.toHaveLength(0)
   })
 
   it('should display placeholder when no practical information provided', async () => {
     const venueWithoutPracticalInformation = {
-      ...venueResponseSnap,
+      ...venueDataTest,
       withdrawalDetails: undefined,
       description: undefined,
       contact: undefined,
+      externalAccessibilityUrl: undefined,
+      externalAccessibilityData: undefined,
+      openingHours: undefined,
       accessibility: {
         audioDisability: null,
         mentalDisability: null,
@@ -62,7 +64,7 @@ describe('PracticalInformation', () => {
   it('should not display withdrawal section when no withdrawal info provided', async () => {
     render(
       reactQueryProviderHOC(
-        <PracticalInformation venue={{ ...venueResponseSnap, withdrawalDetails: undefined }} />
+        <PracticalInformation venue={{ ...venueDataTest, withdrawalDetails: undefined }} />
       )
     )
 
@@ -72,7 +74,7 @@ describe('PracticalInformation', () => {
   it('should not display description section when no description provided', async () => {
     render(
       reactQueryProviderHOC(
-        <PracticalInformation venue={{ ...venueResponseSnap, description: undefined }} />
+        <PracticalInformation venue={{ ...venueDataTest, description: undefined }} />
       )
     )
 
@@ -81,7 +83,7 @@ describe('PracticalInformation', () => {
 
   it('should not display contact section when no contacts provided', async () => {
     render(
-      reactQueryProviderHOC(<PracticalInformation venue={{ ...venueResponseSnap, contact: {} }} />)
+      reactQueryProviderHOC(<PracticalInformation venue={{ ...venueDataTest, contact: {} }} />)
     )
 
     expect(screen.queryByText('Contact')).not.toBeOnTheScreen()
@@ -92,7 +94,7 @@ describe('PracticalInformation', () => {
       reactQueryProviderHOC(
         <PracticalInformation
           venue={{
-            ...venueResponseSnap,
+            ...venueDataTest,
             contact: {
               email: '',
               phoneNumber: '',
@@ -112,7 +114,9 @@ describe('PracticalInformation', () => {
       reactQueryProviderHOC(
         <PracticalInformation
           venue={{
-            ...venueResponseSnap,
+            ...venueDataTest,
+            externalAccessibilityUrl: undefined,
+            externalAccessibilityData: undefined,
             accessibility: {
               audioDisability: null,
               mentalDisability: null,
@@ -128,13 +132,17 @@ describe('PracticalInformation', () => {
   })
 
   it('should display opening hours section', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueWithOpeningHours} />))
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueDataTest} />))
 
     expect(screen.getByText('Horaires d’ouverture')).toBeOnTheScreen()
   })
 
   it('should not display opening hours section', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueResponseSnap} />))
+    render(
+      reactQueryProviderHOC(
+        <PracticalInformation venue={{ ...venueDataTest, openingHours: undefined }} />
+      )
+    )
 
     expect(screen.queryByText('Horaires d’ouverture')).not.toBeOnTheScreen()
   })

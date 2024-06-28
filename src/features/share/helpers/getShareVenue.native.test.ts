@@ -1,6 +1,6 @@
 import { Platform, Share } from 'react-native'
 
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { WEBAPP_V2_URL } from 'libs/environment'
 
 import { getShareVenue } from './getShareVenue'
@@ -9,7 +9,7 @@ const mockShare = jest
   .spyOn(Share, 'share')
   .mockResolvedValue({ action: Share.sharedAction, activityType: 'copy' })
 
-const venue = venueResponseSnap
+const venue = venueDataTest
 
 jest.mock('libs/firebase/analytics/analytics')
 

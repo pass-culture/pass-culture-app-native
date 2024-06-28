@@ -3,7 +3,7 @@ import { Animated, Share } from 'react-native'
 
 import * as useGoBack from 'features/navigation/useGoBack'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -65,12 +65,12 @@ describe('<VenueHeader />', () => {
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Venue',
       from: 'venue',
-      venueId: venueResponseSnap.id,
+      venueId: venueDataTest.id,
     })
   })
 
   it('should display venue name if venue has no public name', async () => {
-    const venue = { ...venueResponseSnap, publicName: null, name: 'venueNameWithoutPublicName' }
+    const venue = { ...venueDataTest, publicName: null, name: 'venueNameWithoutPublicName' }
     render(
       reactQueryProviderHOC(<VenueHeader headerTransition={new Animated.Value(0)} venue={venue} />)
     )
@@ -82,9 +82,7 @@ describe('<VenueHeader />', () => {
 function renderVenueHeader() {
   const animatedValue = new Animated.Value(0)
   render(
-    reactQueryProviderHOC(
-      <VenueHeader headerTransition={animatedValue} venue={venueResponseSnap} />
-    )
+    reactQueryProviderHOC(<VenueHeader headerTransition={animatedValue} venue={venueDataTest} />)
   )
   return { animatedValue }
 }

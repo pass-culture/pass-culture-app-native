@@ -3,7 +3,7 @@ import React from 'react'
 import { push } from '__mocks__/@react-navigation/native'
 import { SearchState } from 'features/search/types'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import * as useNavigateToSearchWithVenueOffers from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
 import { LocationMode } from 'libs/location/types'
@@ -52,7 +52,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<VenueCTA />', () => {
   it('should navigate to the search page when pressed on', async () => {
-    render(<VenueCTA venue={venueResponseSnap} />)
+    render(<VenueCTA venue={venueDataTest} />)
 
     fireEvent.press(screen.getByText('Rechercher une offre'))
 
@@ -76,10 +76,10 @@ describe('<VenueCTA />', () => {
   })
 
   it('should log event when pressed on', async () => {
-    render(<VenueCTA venue={venueResponseSnap} />)
+    render(<VenueCTA venue={venueDataTest} />)
 
     fireEvent.press(screen.getByText('Rechercher une offre'))
 
-    expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenCalledWith(venueResponseSnap.id)
+    expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenCalledWith(venueDataTest.id)
   })
 })

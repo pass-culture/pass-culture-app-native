@@ -1,6 +1,6 @@
 import { VenueResponse } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
-import { venueResponseSnap as venue } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import { LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
@@ -10,7 +10,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: jest.fn() }),
 }))
 
-const mockVenue: VenueResponse = venue
+const mockVenue: VenueResponse = venueDataTest
+
 jest.mock('features/venue/api/useVenue', () => ({
   useVenue: jest.fn((venueId) => ({ data: venueId === mockVenue.id ? mockVenue : undefined })),
 }))
@@ -45,12 +46,12 @@ describe('useVenueSearchParameters', () => {
   })
 
   it('should retrieve the the venue if available', () => {
-    const { result } = renderHook(() => useVenueSearchParameters(venue))
+    const { result } = renderHook(() => useVenueSearchParameters(venueDataTest))
 
     expect(result.current.venue).toEqual({
       info: 'Paris',
       label: 'Le Petit Rintintin 1',
-      geolocation: { latitude: venue.latitude, longitude: venue.longitude },
+      geolocation: { latitude: venueDataTest.latitude, longitude: venueDataTest.longitude },
       venueId: 5543,
     })
   })

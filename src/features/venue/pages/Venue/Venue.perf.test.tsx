@@ -4,7 +4,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2, VenueResponse, SubcategoryIdEnum } from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -19,7 +19,7 @@ jest.mock('features/search/context/SearchWrapper')
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
-useRoute.mockImplementation(() => ({ params: { id: venueResponseSnap.id } }))
+useRoute.mockImplementation(() => ({ params: { id: venueDataTest.id } }))
 
 jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists')
 const mockUseGTLPlaylists = useGTLPlaylists as jest.Mock
@@ -61,8 +61,8 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 describe('<Venue />', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
-    mockServer.getApi<VenueResponse>(`/v1/venue/${venueResponseSnap.id}`, {
-      responseOptions: { data: venueResponseSnap },
+    mockServer.getApi<VenueResponse>(`/v1/venue/${venueDataTest.id}`, {
+      responseOptions: { data: venueDataTest },
       requestOptions: { persist: true },
     })
   })

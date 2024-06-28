@@ -1,7 +1,7 @@
 import React from 'react'
 import { Linking } from 'react-native'
 
-import { venueWithDetailedAccessibilityInfo } from 'features/venue/fixtures/venueWithDetailedAccessibilityInfo'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { render, screen, fireEvent } from 'tests/utils'
 
 import { DetailedAccessibilityInfo } from './DetailedAccessibilityInfo'
@@ -15,7 +15,7 @@ describe('DetailedAccessibilityInfo', () => {
     render(
       <DetailedAccessibilityInfo
         url={fakeAccesLibreUrl}
-        data={venueWithDetailedAccessibilityInfo.externalAccessibilityData}
+        data={venueDataTest.externalAccessibilityData}
       />
     )
 
@@ -29,7 +29,7 @@ describe('DetailedAccessibilityInfo', () => {
     render(
       <DetailedAccessibilityInfo
         url={fakeAccesLibreUrl}
-        data={venueWithDetailedAccessibilityInfo.externalAccessibilityData}
+        data={venueDataTest.externalAccessibilityData}
       />
     )
 
@@ -43,7 +43,7 @@ describe('DetailedAccessibilityInfo', () => {
     render(
       <DetailedAccessibilityInfo
         url={fakeAccesLibreUrl}
-        data={venueWithDetailedAccessibilityInfo.externalAccessibilityData}
+        data={venueDataTest.externalAccessibilityData}
       />
     )
 

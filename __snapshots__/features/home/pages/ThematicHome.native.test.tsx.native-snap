@@ -137,7 +137,6 @@ exports[`ThematicHome should render correctly 1`] = `
       >
         <View>
           <View
-            collapsable={false}
             onLayout={[Function]}
             style={
               {

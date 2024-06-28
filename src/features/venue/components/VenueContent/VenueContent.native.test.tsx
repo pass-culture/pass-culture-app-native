@@ -3,8 +3,8 @@ import React from 'react'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { VenueContent } from 'features/venue/components/VenueContent/VenueContent'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
@@ -67,7 +67,7 @@ describe('<VenueContent />', () => {
     render(
       reactQueryProviderHOC(
         <VenueContent
-          venue={venueResponseSnap}
+          venue={venueDataTest}
           venueOffers={{ hits: VenueOffersResponseSnap, nbHits: 4 }}
         />
       )
@@ -95,7 +95,7 @@ describe('<VenueContent />', () => {
   })
 
   it('should not display "Rechercher une offre" button if there is no offer', async () => {
-    render(reactQueryProviderHOC(<VenueContent venue={venueResponseSnap} />))
+    render(reactQueryProviderHOC(<VenueContent venue={venueDataTest} />))
     await screen.findAllByText('Le Petit Rintintin 1')
 
     expect(screen.queryByText('Rechercher une offre')).not.toBeOnTheScreen()
@@ -103,7 +103,7 @@ describe('<VenueContent />', () => {
 
   describe('Batch trigger', () => {
     it('should trigger event after 5 seconds', async () => {
-      render(reactQueryProviderHOC(<VenueContent venue={venueResponseSnap} />))
+      render(reactQueryProviderHOC(<VenueContent venue={venueDataTest} />))
 
       await act(async () => {
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
@@ -113,7 +113,7 @@ describe('<VenueContent />', () => {
     })
 
     it('should not trigger event before 5 seconds have elapsed', async () => {
-      render(reactQueryProviderHOC(<VenueContent venue={venueResponseSnap} />))
+      render(reactQueryProviderHOC(<VenueContent venue={venueDataTest} />))
 
       await act(async () => {
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 100)
@@ -124,7 +124,7 @@ describe('<VenueContent />', () => {
   })
 
   it('should display default background image when no banner for venue', async () => {
-    render(reactQueryProviderHOC(<VenueContent venue={venueResponseSnap} />))
+    render(reactQueryProviderHOC(<VenueContent venue={venueDataTest} />))
 
     expect(await screen.findByTestId('defaultVenueBackground')).toBeOnTheScreen()
   })

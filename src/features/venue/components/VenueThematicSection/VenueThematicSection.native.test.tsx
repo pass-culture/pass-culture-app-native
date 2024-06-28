@@ -3,7 +3,7 @@ import React from 'react'
 import { VenueTypeCodeKey } from 'api/gen'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -15,7 +15,7 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
-const venueFixture = { ...venueResponseSnap, venueTypeCode: VenueTypeCodeKey.MOVIE }
+const venueFixture = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }
 
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()

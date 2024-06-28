@@ -6,7 +6,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -31,7 +31,7 @@ jest.mock('uuid', () => ({
   v4: jest.fn(),
 }))
 
-const venueId = venueResponseSnap.id
+const venueId = venueDataTest.id
 
 jest.mock('libs/location', () => ({
   useLocation: jest.fn().mockReturnValue({

@@ -6,7 +6,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -14,7 +14,7 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, waitFor, fireEvent } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -42,7 +42,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     },
   }),
 }))
-const venueId = venueResponseSnap.id
+const venueId = venueDataTest.id
 
 jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists')
 const mockUseGTLPlaylists = useGTLPlaylists as jest.Mock
@@ -79,12 +79,21 @@ mockUseGTLPlaylists.mockReturnValue({
 
 describe('<Venue />', () => {
   beforeEach(() => {
-    mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, venueResponseSnap)
+    mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, venueDataTest)
   })
 
   it('should match snapshot', async () => {
     renderVenue(venueId)
     await act(async () => {})
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should match snapshot with practical information', async () => {
+    renderVenue(venueId)
+    await act(async () => {})
+
+    fireEvent.press(screen.getByText('Infos pratiques'))
 
     expect(screen).toMatchSnapshot()
   })

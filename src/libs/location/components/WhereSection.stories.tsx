@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { offerVenueResponseSnap } from 'features/offer/fixtures/offerVenueReponse'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { mockedFullAddress } from 'libs/address/fixtures/mockedFormatFullAddress'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 
@@ -26,7 +26,7 @@ const Template: ComponentStory<typeof WhereSection> = (props) => <WhereSection {
 // TODO(PC-17931): Fix this stories
 const WithVenueBanner = Template.bind({})
 WithVenueBanner.args = {
-  venue: venueResponseSnap,
+  venue: venueDataTest,
   locationCoordinates: { latitude: 2, longitude: 4 },
   address: mockedFullAddress,
   showVenueBanner: true,

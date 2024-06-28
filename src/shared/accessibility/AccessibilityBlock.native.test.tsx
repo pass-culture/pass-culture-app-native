@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { venueWithDetailedAccessibilityInfo } from 'features/venue/fixtures/venueWithDetailedAccessibilityInfo'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen } from 'tests/utils'
 
@@ -15,8 +15,8 @@ describe('AccessibilityBlock', () => {
 
     render(
       <AccessibilityBlock
-        detailedAccessibilityUrl={venueWithDetailedAccessibilityInfo.externalAccessibilityUrl}
-        detailedAccessibilityData={venueWithDetailedAccessibilityInfo.externalAccessibilityData}
+        detailedAccessibilityUrl={venueDataTest.externalAccessibilityUrl}
+        detailedAccessibilityData={venueDataTest.externalAccessibilityData}
       />
     )
 
@@ -30,8 +30,8 @@ describe('AccessibilityBlock', () => {
   it('should not display AccesLibre banner when url is provided and enableAccesLibre FF deactivated', () => {
     render(
       <AccessibilityBlock
-        detailedAccessibilityUrl={venueWithDetailedAccessibilityInfo.externalAccessibilityUrl}
-        detailedAccessibilityData={venueWithDetailedAccessibilityInfo.externalAccessibilityData}
+        detailedAccessibilityUrl={venueDataTest.externalAccessibilityUrl}
+        detailedAccessibilityData={venueDataTest.externalAccessibilityData}
       />
     )
 

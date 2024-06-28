@@ -9,8 +9,8 @@ import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPla
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Network } from 'libs/share/types'
@@ -47,7 +47,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-const venueId = venueResponseSnap.id
+const venueId = venueDataTest.id
 useRoute.mockImplementation(() => ({ params: { id: venueId } }))
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -60,7 +60,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should display withdrawal details', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} />))
+    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
@@ -69,7 +69,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should share on Instagram', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} />))
+    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
 
     const instagramButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
 
@@ -78,7 +78,7 @@ describe('<VenueBody />', () => {
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Instagram,
       message: encodeURIComponent(
-        `Retrouve "${venueResponseSnap.name}" sur le pass Culture\u00a0:\nhttps://webapp-v2.example.com/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=social_media&utm_source=Instagram`
+        `Retrouve "${venueDataTest.name}" sur le pass Culture\u00a0:\nhttps://webapp-v2.example.com/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=social_media&utm_source=Instagram`
       ),
       type: 'text',
       url: undefined,
@@ -86,23 +86,23 @@ describe('<VenueBody />', () => {
   })
 
   it('should log event when pressing on Infos pratiques tab', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} />))
+    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
 
     expect(analytics.logConsultPracticalInformations).toHaveBeenCalledWith({
-      venueId: venueResponseSnap.id,
+      venueId: venueDataTest.id,
     })
   })
 
   it('should log event when pressing on Offres disponibles tab', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueResponseSnap} />))
+    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Offres disponibles'))
 
-    expect(analytics.logConsultVenueOffers).toHaveBeenCalledWith({ venueId: venueResponseSnap.id })
+    expect(analytics.logConsultVenueOffers).toHaveBeenCalledWith({ venueId: venueDataTest.id })
   })
 })
 

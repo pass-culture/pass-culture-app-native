@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { venueWithDetailedAccessibilityInfo } from 'features/venue/fixtures/venueWithDetailedAccessibilityInfo'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 
 import { DetailedAccessibilityInfo } from './DetailedAccessibilityInfo'
 
@@ -18,5 +18,5 @@ const Template: ComponentStory<typeof DetailedAccessibilityInfo> = (props) => (
 export const Default = Template.bind({})
 Default.args = {
   url: 'fakeUrl',
-  data: venueWithDetailedAccessibilityInfo.externalAccessibilityData,
+  data: venueDataTest.externalAccessibilityData,
 }
