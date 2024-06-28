@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import {
   TrackingStatus,
   getTrackingStatus,
@@ -19,16 +18,3 @@ export const requestIDFATrackingConsent = async (callback?: (status: TrackingSta
       callback?.(status)
     }
   })
-
-export const useTrackingConsent = () => {
-  const [trackingStatus, setTrackingStatus] = useState<TrackingStatus>('not-determined')
-
-  useEffect(() => {
-    requestIDFATrackingConsent(setTrackingStatus)
-  }, [])
-
-  return {
-    consentTracking: trackingStatus === 'unavailable' || trackingStatus === 'authorized',
-    consentAsked: trackingStatus !== 'not-determined',
-  }
-}
