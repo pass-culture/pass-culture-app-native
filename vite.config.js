@@ -18,6 +18,18 @@ const libsThatHaveJSFilesContainingJSX = [
 
 export default ({ mode }) => {
   const env = loadEnv(mode === 'development' ? 'testing' : mode, process.cwd(), '')
+  const proxyConfig = {
+    proxy: {
+      '/native': {
+        target: env.API_BASE_URL,
+        changeOrigin: true,
+      },
+      '/saml': {
+        target: env.API_BASE_URL,
+        changeOrigin: true,
+      },
+    },
+  }
   return defineConfig({
     define: {
       global: 'window',
@@ -63,18 +75,8 @@ export default ({ mode }) => {
       jsxFactory: 'React.createElement',
       jsxFragment: 'React.Fragment',
     },
-    server: {
-      proxy: {
-        '/native': {
-          target: env.API_BASE_URL,
-          changeOrigin: true,
-        },
-        '/saml': {
-          target: env.API_BASE_URL,
-          changeOrigin: true,
-        },
-      },
-    },
+    server: proxyConfig,
+    preview: proxyConfig,
     optimizeDeps: {
       include: ['react-native', 'react-native-web'],
       esbuildOptions: {
