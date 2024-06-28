@@ -24,4 +24,29 @@ describe('DetailedAccessibilityInfo', () => {
 
     expect(Linking.openURL).toHaveBeenCalledWith(fakeAccesLibreUrl)
   })
+
+  it('should display multiple description info on separate lines', () => {
+    render(
+      <DetailedAccessibilityInfo
+        url={fakeAccesLibreUrl}
+        data={venueWithDetailedAccessibilityInfo.externalAccessibilityData}
+      />
+    )
+
+    fireEvent.press(screen.getByText('Handicap auditif'))
+
+    expect(screen.getByText('Boucle à induction magnétique portative')).toBeOnTheScreen()
+    expect(screen.getByText('Autre système non renseigné')).toBeOnTheScreen()
+  })
+
+  it('should display horizontal separators correctly', () => {
+    render(
+      <DetailedAccessibilityInfo
+        url={fakeAccesLibreUrl}
+        data={venueWithDetailedAccessibilityInfo.externalAccessibilityData}
+      />
+    )
+
+    expect(screen.queryAllByTestId('horizontal-separator')).toHaveLength(3)
+  })
 })
