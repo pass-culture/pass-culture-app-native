@@ -9,15 +9,14 @@ import { logOpenApp } from 'libs/campaign/logOpenApp'
 
 export const requestIDFATrackingConsent = async (callback?: (status: TrackingStatus) => void) =>
   getTrackingStatus().then((status) => {
-    if (status === 'unavailable') {
-      // android and iOS < 14
-      callback?.(status)
-    } else if (status === 'not-determined') {
+    if (status === 'not-determined') {
       // iOS >= 14
       requestTrackingPermission().then(async (status) => {
         callback?.(status)
         logOpenApp(status)
       })
+    } else {
+      callback?.(status)
     }
   })
 
