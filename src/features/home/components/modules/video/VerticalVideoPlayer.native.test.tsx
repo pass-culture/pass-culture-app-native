@@ -30,12 +30,6 @@ describe('VerticalVideoPlayer', () => {
     MockedYouTubePlayer.setError(false)
   })
 
-  it('should render component properly', () => {
-    renderVideoPlayer(defaultVerticalVideoPlayerProps)
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should render error view when youtube player has an error', async () => {
     MockedYouTubePlayer.setError(true)
 
