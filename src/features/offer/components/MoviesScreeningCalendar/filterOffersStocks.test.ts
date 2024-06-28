@@ -11,11 +11,11 @@ const DATE_WITH_NO_STOCK = '2024-05-10T12:50:00Z'
 const AVAILABLE_STOCK_ID = 11
 
 const STOCKS = [
-  stockBuilder.withId(AVAILABLE_STOCK_ID).withBeginningDatetime(DATE_WITH_STOCK).build(),
+  stockBuilder().withId(AVAILABLE_STOCK_ID).withBeginningDatetime(DATE_WITH_STOCK).build(),
 ]
 
 const offerStocksResponse: OffersStocksResponseV2 = {
-  offers: [offerResponseBuilder.withId(1).withStocks(STOCKS).build()],
+  offers: [offerResponseBuilder().withId(1).withStocks(STOCKS).build()],
 }
 
 describe('filterOffersStocks', () => {
@@ -40,10 +40,10 @@ describe('filterOffersStocks', () => {
   it('should filter the stocks by descending last30DaysBookings order', () => {
     const offerStocksResponse: OffersStocksResponseV2 = {
       offers: [
-        offerResponseBuilder.withId(1).withLast30DaysBookings(100).withStocks(STOCKS).build(),
-        offerResponseBuilder.withId(3).withLast30DaysBookings(300).withStocks(STOCKS).build(),
-        offerResponseBuilder.withId(2).withLast30DaysBookings(200).withStocks(STOCKS).build(),
-        offerResponseBuilder.withId(4).withLast30DaysBookings(400).withStocks(STOCKS).build(),
+        offerResponseBuilder().withId(1).withLast30DaysBookings(100).withStocks(STOCKS).build(),
+        offerResponseBuilder().withId(3).withLast30DaysBookings(300).withStocks(STOCKS).build(),
+        offerResponseBuilder().withId(2).withLast30DaysBookings(200).withStocks(STOCKS).build(),
+        offerResponseBuilder().withId(4).withLast30DaysBookings(400).withStocks(STOCKS).build(),
       ],
     }
 

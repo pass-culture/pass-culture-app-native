@@ -34,7 +34,7 @@ export enum VideoPlayerButtonsWording {
   REPLAY_VIDEO = 'Revoir la vidéo',
 }
 
-interface VideoPlayerProps {
+export interface VideoPlayerProps {
   videoSources: string[]
   playNextVideo: () => void
   currentIndex: number
@@ -96,6 +96,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
         />
       )
     }
+
     return (
       <PressListener onPress={togglePlay}>
         <Calque
