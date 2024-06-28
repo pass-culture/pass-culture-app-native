@@ -178,8 +178,10 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
           />
         )}
         {isOfferAMovieScreening ? (
-          <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER}>
-            <MovieScreeningCalendar offer={offer} subcategory={subcategory} />
+          <FeatureFlag featureFlag="WIP_ENABLE_NEW_XP_CINE_FROM_OFFER">
+            <FeatureFlag.On>
+              <MovieScreeningCalendar offer={offer} subcategory={subcategory} />
+            </FeatureFlag.On>
           </FeatureFlag>
         ) : null}
       </ViewGap>
