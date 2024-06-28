@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useEffect } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent, Platform } from 'react-native'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
@@ -13,6 +13,7 @@ import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCT
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
+import { OfferPreviewModal } from 'features/offer/components/OfferPreviewModal/OfferPreviewModal'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { getOfferImageUrls } from 'features/offer/helpers/getOfferImageUrls/getOfferImageUrls'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
@@ -25,6 +26,7 @@ import { useLocation } from 'libs/location'
 import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -44,6 +46,8 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
   const enableOfferPreview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW)
   const { isDesktopViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
+  const { visible, showModal, hideModal } = useModal(false)
+  const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
 
   const {
     sameArtistPlaylist,
@@ -53,7 +57,10 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     apiRecoParamsOtherCategories,
   } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
 
-  const offerImages = offer.images ? getOfferImageUrls(offer.images) : []
+  const offerImages = useMemo(
+    () => (offer.images ? getOfferImageUrls(offer.images) : []),
+    [offer.images]
+  )
   const logConsultWholeOffer = useFunctionOnce(() => {
     analytics.logConsultWholeOffer(offer.id)
   })
@@ -90,8 +97,11 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
     listener: scrollEventListener,
   })
 
-  const onPress = (defaultIndex?: number) => {
-    if (!isWeb && enableOfferPreview && offerImages.length) {
+  const onPress = (defaultIndex = 0) => {
+    if (isWeb) {
+      setCarouselDefaultIndex(defaultIndex)
+      showModal()
+    } else if (enableOfferPreview && offerImages.length) {
       navigate('OfferPreview', { id: offer.id, defaultIndex })
     }
   }
@@ -101,6 +111,15 @@ export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList,
       <OfferWebMetaHeader offer={offer} />
       {isWeb ? (
         <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
+      ) : null}
+
+      {isWeb ? (
+        <OfferPreviewModal
+          hideModal={hideModal}
+          isVisible={visible}
+          offerImages={offerImages}
+          defaultIndex={carouselDefaultIndex}
+        />
       ) : null}
 
       <ScrollViewContainer
