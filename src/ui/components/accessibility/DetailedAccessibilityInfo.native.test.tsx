@@ -25,6 +25,20 @@ describe('DetailedAccessibilityInfo', () => {
     expect(Linking.openURL).toHaveBeenCalledWith(fakeAccesLibreUrl)
   })
 
+  it('should return the correct accessibility label', () => {
+    render(
+      <DetailedAccessibilityInfo
+        url={fakeAccesLibreUrl}
+        data={venueDataTest.externalAccessibilityData}
+      />
+    )
+
+    expect(screen.getByLabelText('Handicap auditif: Non accessible')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Handicap psychique ou cognitif: Accessible')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Handicap moteur: Non accessible')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Handicap visuel: Non accessible')).toBeOnTheScreen()
+  })
+
   it('should display multiple description info on separate lines', () => {
     render(
       <DetailedAccessibilityInfo

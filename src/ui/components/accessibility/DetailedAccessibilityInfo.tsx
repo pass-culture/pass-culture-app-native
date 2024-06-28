@@ -29,6 +29,7 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, data }) => {
           details.map((detail, index) => (
             <React.Fragment key={detail.category}>
               <StyledAccordionItem
+                accessibilityLabel={`${detail.category}: ${detail.isAccessible ? 'Accessible' : 'Non accessible'}`}
                 title={detail.category}
                 titleComponent={Typo.Caption}
                 leftComponent={
@@ -36,13 +37,19 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, data }) => {
                 }>
                 <ViewGap gap={3}>
                   {Object.entries(detail.description).map(([descriptionTitle, descriptionInfo]) => (
-                    <View key={descriptionTitle}>
-                      <Typo.Caption>{descriptionTitle}</Typo.Caption>
+                    <View
+                      key={descriptionTitle}
+                      accessibilityLabel={`${descriptionTitle}: ${descriptionInfo}`}>
+                      <Typo.Caption accessibilityHidden>{descriptionTitle}</Typo.Caption>
                       <Spacer.Column numberOfSpaces={2} />
                       {Array.isArray(descriptionInfo) ? (
-                        descriptionInfo.map((info) => <Typo.Body key={info}>{info}</Typo.Body>)
+                        descriptionInfo.map((info) => (
+                          <Typo.Body key={info} accessibilityHidden>
+                            {info}
+                          </Typo.Body>
+                        ))
                       ) : (
-                        <Typo.Body>{descriptionInfo}</Typo.Body>
+                        <Typo.Body accessibilityHidden>{descriptionInfo}</Typo.Body>
                       )}
                     </View>
                   ))}

@@ -2620,6 +2620,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                             role="img"
                           >
                             <div
+                              aria-hidden="true"
                               class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-103ggtu r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-height-h3s6tt r-width-rwqe4o"
                             >
                               <div
@@ -2677,6 +2678,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                             role="img"
                           >
                             <div
+                              aria-hidden="true"
                               class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-103ggtu r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-height-h3s6tt r-width-rwqe4o"
                             >
                               <div
@@ -2734,6 +2736,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                             role="img"
                           >
                             <div
+                              aria-hidden="true"
                               class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-103ggtu r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-height-h3s6tt r-width-rwqe4o"
                             >
                               <div
@@ -2791,6 +2794,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                             role="img"
                           >
                             <div
+                              aria-hidden="true"
                               class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-103ggtu r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-height-h3s6tt r-width-rwqe4o"
                             >
                               <div

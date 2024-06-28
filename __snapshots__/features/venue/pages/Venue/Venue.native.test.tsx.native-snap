@@ -6660,6 +6660,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           testID="accessibilityBadgeContainer"
                         >
                           <View
+                            accessibilityHidden={true}
                             style={
                               [
                                 {
@@ -6778,6 +6779,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           testID="accessibilityBadgeContainer"
                         >
                           <View
+                            accessibilityHidden={true}
                             style={
                               [
                                 {
@@ -6897,6 +6899,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           testID="accessibilityBadgeContainer"
                         >
                           <View
+                            accessibilityHidden={true}
                             style={
                               [
                                 {
@@ -7016,6 +7019,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           testID="accessibilityBadgeContainer"
                         >
                           <View
+                            accessibilityHidden={true}
                             style={
                               [
                                 {

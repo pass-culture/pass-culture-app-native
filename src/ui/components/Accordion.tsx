@@ -33,6 +33,7 @@ interface AccordionProps {
   defaultOpen?: boolean
   onOpenOnce?: () => void
   onOpen?: () => void
+  accessibilityLabel?: string
 }
 
 const isWeb = Platform.OS === 'web'
@@ -47,6 +48,7 @@ export const Accordion = ({
   defaultOpen = false,
   onOpenOnce,
   onOpen,
+  accessibilityLabel,
 }: AccordionProps) => {
   const [open, setOpen] = useState(defaultOpen)
   const [showChildren, setShowChildren] = useState(defaultOpen)
@@ -105,6 +107,7 @@ export const Accordion = ({
           </View>
         ) : null}
         <StyledTouchableOpacity
+          accessibilityLabel={accessibilityLabel}
           accessibilityRole={AccessibilityRole.BUTTON}
           onPress={toggleListItem}
           accessibilityControls={accordionBodyId}

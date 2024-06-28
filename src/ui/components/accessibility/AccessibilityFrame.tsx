@@ -17,7 +17,7 @@ export const AccessibilityFrame: React.FC<Props> = ({ Icon, isAccessible }) => {
   }))``
 
   return (
-    <Frame>
+    <Frame accessibilityHidden>
       <Spacer.Flex />
       <StyledIcon />
       <Spacer.Flex />
