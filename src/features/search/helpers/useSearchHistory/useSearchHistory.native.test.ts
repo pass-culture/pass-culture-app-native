@@ -9,7 +9,6 @@ import { CreateHistoryItem, HistoryItem } from 'features/search/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring } from 'libs/monitoring'
-import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 import { act, renderHook } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -25,11 +24,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: mockData,
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('libs/firebase/analytics/analytics')
 

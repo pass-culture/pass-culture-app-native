@@ -1,16 +1,8 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useSearchGroupLabel } from 'libs/subcategories'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
-const mockSearchGroups = PLACEHOLDER_DATA.searchGroups
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      searchGroups: mockSearchGroups,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 describe('useCategoryId', () => {
   it.each`

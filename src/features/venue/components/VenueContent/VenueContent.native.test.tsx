@@ -8,7 +8,6 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -27,17 +26,7 @@ jest.mock('features/venue/api/useVenueOffers', () => ({
   useVenueOffers: () => ({ isLoading: false }),
 }))
 
-const mockSubcategories = PLACEHOLDER_DATA.subcategories
-const mockHomepageLabels = PLACEHOLDER_DATA.homepageLabels
-
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      subcategories: mockSubcategories,
-      homepageLabels: mockHomepageLabels,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('libs/location')
 jest.mock('features/search/context/SearchWrapper')
