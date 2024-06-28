@@ -7,18 +7,16 @@ import { Validate } from 'ui/svg/icons/Validate'
 
 interface Props extends Omit<AccessibleIcon, 'testID'> {
   isValid: boolean
-  validtestID?: string
-  invalidTestID?: string
 }
 
-export const ValidationMark: React.FC<Props> = ({ isValid, size, validtestID, invalidTestID }) => {
+export const ValidationMark: React.FC<Props> = ({ isValid, size }) => {
   const {
     colors: { white },
   } = useTheme()
   return isValid ? (
-    <ValidateGreenValid size={size} testID={validtestID} />
+    <ValidateGreenValid size={size} testID="valid-icon" />
   ) : (
-    <InvalidateGreyDark size={size} testID={invalidTestID} backgroundColor={white} />
+    <InvalidateGreyDark size={size} testID="invalid-icon" backgroundColor={white} />
   )
 }
 

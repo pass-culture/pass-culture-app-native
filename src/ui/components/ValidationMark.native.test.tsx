@@ -6,18 +6,16 @@ import { ValidationMark } from './ValidationMark'
 
 describe('ValidationMark', () => {
   it('should display the validIcon when isValid is true', () => {
-    render(<ValidationMark invalidTestID="invalidTestId" validtestID="validTestId" isValid />)
+    render(<ValidationMark isValid />)
 
-    expect(screen.queryByTestId('invalidTestId')).not.toBeOnTheScreen()
-    expect(screen.getByTestId('validTestId')).toBeOnTheScreen()
+    expect(screen.queryByTestId('invalid-icon')).not.toBeOnTheScreen()
+    expect(screen.getByTestId('valid-icon')).toBeOnTheScreen()
   })
 
   it('should displat the invalidIcon when isValid is false', () => {
-    render(
-      <ValidationMark invalidTestID="invalidTestId" validtestID="validTestId" isValid={false} />
-    )
+    render(<ValidationMark isValid={false} />)
 
-    expect(screen.getByTestId('invalidTestId')).toBeOnTheScreen()
-    expect(screen.queryByTestId('validTestId')).not.toBeOnTheScreen()
+    expect(screen.getByTestId('invalid-icon')).toBeOnTheScreen()
+    expect(screen.queryByTestId('valid-icon')).not.toBeOnTheScreen()
   })
 })
