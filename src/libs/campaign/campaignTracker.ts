@@ -1,12 +1,12 @@
-import appsFlyer from 'react-native-appsflyer'
-import { getTrackingStatus } from 'react-native-tracking-transparency'
+import appsFlyer, { AppsFlyerConsent } from 'react-native-appsflyer'
+import { getTrackingStatus, TrackingStatus } from 'react-native-tracking-transparency'
 
 import { analytics } from 'libs/analytics'
 import { isAppsFlyerTrackingEnabled } from 'libs/campaign/isAppsFlyerTrackingEnabled'
 import { logOpenApp } from 'libs/campaign/logOpenApp'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
-import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
+import { requestIDFATrackingConsent } from 'libs/trackingConsent/requestIdfaTrackingConsent'
 
 import { CampaignEvents } from './events'
 import { CampaignTracker } from './types'
@@ -22,11 +22,16 @@ function init(hasAcceptedMarketingCookie: boolean) {
   if (!hasAcceptedMarketingCookie) return
 
   // First we ask for the user's consent to access their IDFA information
-  requestIDFATrackingConsent()
+  requestIDFATrackingConsent(storeConsentAndInitSdk)
+}
+
+function storeConsentAndInitSdk(trackingStatus: TrackingStatus) {
+  const consentData = AppsFlyerConsent.forGDPRUser(true, trackingStatus === 'authorized')
+  appsFlyer.setConsentData(consentData)
 
   if (__DEV__) return
 
-  // Second we initialize the SDK.
+  // Finally, we initialize the SDK.
   appsFlyer.initSdk(
     {
       devKey: env.APPS_FLYER_DEV_PUBLIC_KEY,
