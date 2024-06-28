@@ -119,20 +119,25 @@ describe('<CancellationDetails /> when isDigital = true', () => {
   })
 })
 
+const NOT_CANCELLABLE_MESSAGE =
+  'En confirmant la réservation, j’accepte son exécution immédiate et renonce à mon droit de rétractation. Une confirmation de cet accord me sera envoyée par email.'
+const CANCELLABLE_MESSAGE = /Cette réservation est annulable/
+const CANCELLABLE_BEFORE_LIMIT_DATE_MESSAGE = /Cette réservation peut être annulée jusqu’au/
+
 const expectNotCancellable = () => {
-  expect(screen.getByText('Cette réservation n’est pas annulable')).toBeOnTheScreen()
-  expect(screen.queryByText(/Cette réservation est annulable/)).not.toBeOnTheScreen()
-  expect(screen.queryByText(/Cette réservation peut être annulée jusqu’au/)).not.toBeOnTheScreen()
+  expect(screen.getByText(NOT_CANCELLABLE_MESSAGE)).toBeOnTheScreen()
+  expect(screen.queryByText(CANCELLABLE_MESSAGE)).not.toBeOnTheScreen()
+  expect(screen.queryByText(CANCELLABLE_BEFORE_LIMIT_DATE_MESSAGE)).not.toBeOnTheScreen()
 }
 
 const expectCancellable = () => {
-  expect(screen.queryByText('Cette réservation n’est pas annulable')).not.toBeOnTheScreen()
-  expect(screen.getByText(/Cette réservation est annulable/)).toBeOnTheScreen()
-  expect(screen.queryByText(/Cette réservation peut être annulée jusqu’au/)).not.toBeOnTheScreen()
+  expect(screen.queryByText(NOT_CANCELLABLE_MESSAGE)).not.toBeOnTheScreen()
+  expect(screen.getByText(CANCELLABLE_MESSAGE)).toBeOnTheScreen()
+  expect(screen.queryByText(CANCELLABLE_BEFORE_LIMIT_DATE_MESSAGE)).not.toBeOnTheScreen()
 }
 
 const expectCancellableBefore = () => {
-  expect(screen.queryByText('Cette réservation n’est pas annulable')).not.toBeOnTheScreen()
-  expect(screen.queryByText(/Cette réservation est annulable/)).not.toBeOnTheScreen()
-  expect(screen.getByText(/Cette réservation peut être annulée jusqu’au/)).toBeOnTheScreen()
+  expect(screen.queryByText(NOT_CANCELLABLE_MESSAGE)).not.toBeOnTheScreen()
+  expect(screen.queryByText(CANCELLABLE_MESSAGE)).not.toBeOnTheScreen()
+  expect(screen.getByText(CANCELLABLE_BEFORE_LIMIT_DATE_MESSAGE)).toBeOnTheScreen()
 }
