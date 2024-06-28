@@ -6,7 +6,8 @@ import { formatDateTimezone } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-const notCancellableMessage = 'Cette réservation n’est pas annulable'
+const notCancellableMessage =
+  'En confirmant la réservation, j’accepte son exécution immédiate et renonce à mon droit de rétractation. Une confirmation de cet accord me sera envoyée par email.'
 
 export const CancellationDetails: React.FC = () => {
   const stock = useBookingStock()
