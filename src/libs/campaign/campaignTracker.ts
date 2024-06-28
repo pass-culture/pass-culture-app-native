@@ -6,7 +6,7 @@ import { isAppsFlyerTrackingEnabled } from 'libs/campaign/isAppsFlyerTrackingEna
 import { logOpenApp } from 'libs/campaign/logOpenApp'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
-import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
+import { requestIDFATrackingConsent } from 'libs/trackingConsent/requestIdfaTrackingConsent'
 
 import { CampaignEvents } from './events'
 import { CampaignTracker } from './types'

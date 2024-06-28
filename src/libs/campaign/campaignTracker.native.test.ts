@@ -1,7 +1,7 @@
 import { campaignTracker } from 'libs/campaign/campaignTracker'
-import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
+import { requestIDFATrackingConsent } from 'libs/trackingConsent/requestIdfaTrackingConsent'
 
-jest.mock('libs/trackingConsent/useTrackingConsent')
+jest.mock('libs/trackingConsent/requestIdfaTrackingConsent')
 const mockrequestIDFATrackingConsent = requestIDFATrackingConsent as jest.Mock
 
 jest.mock('libs/firebase/analytics/analytics')
