@@ -1,4 +1,4 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig, loadEnv, transformWithEsbuild } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 
@@ -6,6 +6,14 @@ const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json'
 const allExtensions = [
   ...defaultExtensions.map((ext) => ext.replace(/^\./, '.web.')),
   ...defaultExtensions,
+]
+
+const libsThatHaveJSFilesContainingJSX = [
+  'node_modules/react-native-animatable',
+  'node_modules/react-native-qrcode-svg',
+  'node_modules/@ptomasroos/react-native-multi-slider',
+  'node_modules/react-native-calendars',
+  'node_modules/react-native-swipe-gestures',
 ]
 
 export default ({ mode }) => {
@@ -16,7 +24,21 @@ export default ({ mode }) => {
       'process.env': env,
       __DEV__: process.env.NODE_ENV !== 'production',
     },
-    plugins: [react()],
+    plugins: [
+      react(),
+      {
+        apply: 'build', // This plugin runs only when building (not serve)
+        name: 'treat-js-files-as-jsx',
+        async transform(code, id) {
+          if (!libsThatHaveJSFilesContainingJSX.some((lib) => id.includes(lib))) return null
+          // Use the exposed transform from vite, instead of directly transforming with esbuild
+          return transformWithEsbuild(code, id, {
+            loader: 'jsx',
+            jsx: 'automatic',
+          })
+        },
+      },
+    ],
     resolve: {
       extensions: allExtensions,
       alias: [
