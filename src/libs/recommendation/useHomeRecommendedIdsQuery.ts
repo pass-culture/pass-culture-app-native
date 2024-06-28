@@ -3,6 +3,7 @@ import { useQuery } from 'react-query'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { PlaylistRequestBody, PlaylistRequestQuery } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -17,6 +18,7 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
   const { modelEndpoint, longitude, latitude } = playlistRequestQuery
   const stringifyPlaylistRequestBody = JSON.stringify(playlistRequestBody)
   const stringifyPlaylistRequestQuery = JSON.stringify(playlistRequestQuery)
+  const { isLoggedIn } = useAuthContext()
 
   return useQuery(
     [QueryKeys.RECOMMENDATION_OFFER_IDS, parameters],
@@ -43,6 +45,6 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
         return { playlistRecommendedOffers: [], params: undefined }
       }
     },
-    { staleTime: 1000 * 60 * 5, enabled: !!userId }
+    { staleTime: 1000 * 60 * 5, enabled: isLoggedIn && !!userId }
   )
 }
