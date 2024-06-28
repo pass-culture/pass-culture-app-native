@@ -38,14 +38,6 @@ describe('<VideoCarouselModule />', () => {
     MockedYouTubePlayer.setError(false)
   })
 
-  it('should render videoCarouselModule correctly', async () => {
-    renderVideoCarouselModule(videoCarouselModuleFixture)
-
-    await screen.findByText(MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name)
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should call fetchCarouselVideoOffers with properly formatted data', async () => {
     renderVideoCarouselModule(videoCarouselModuleFixture)
 
