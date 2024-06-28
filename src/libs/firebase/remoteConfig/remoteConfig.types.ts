@@ -1,4 +1,3 @@
-import { ShareAppWordingVersion } from 'features/share/types'
 import { SubscriptionTheme } from 'features/subscription/types'
 
 export type CustomRemoteConfig = {
@@ -14,7 +13,6 @@ export type CustomRemoteConfig = {
   homeEntryId_18: string
   homeEntryId_15_17: string
   sameAuthorPlaylist: string
-  shareAppWordingVersion: ShareAppWordingVersion
   shouldApplyGraphicRedesign: boolean
   shouldDisplayReassuranceMention: boolean
   shouldLogInfo: boolean

@@ -12,5 +12,3 @@ export enum ShareAppModalType {
   BENEFICIARY = 'BENEFICIARY',
   ON_BOOKING_SUCCESS = 'ON_BOOKING_SUCCESS',
 }
-
-export type ShareAppWordingVersion = 'default' | 'statistics' | 'short'
