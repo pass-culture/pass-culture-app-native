@@ -5,7 +5,6 @@ import { VenueListItem } from 'features/offer/components/VenueSelectionList/Venu
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
@@ -31,16 +30,7 @@ jest.mock('uuid', () => {
   }
 })
 
-const mockSubcategories = PLACEHOLDER_DATA.subcategories
-const mockSearchGroups = PLACEHOLDER_DATA.searchGroups
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      subcategories: mockSubcategories,
-      searchGroups: mockSearchGroups,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()

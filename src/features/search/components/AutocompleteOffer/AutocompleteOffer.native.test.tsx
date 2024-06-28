@@ -6,7 +6,6 @@ import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 import { render, screen } from 'tests/utils'
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
@@ -18,11 +17,7 @@ jest.mock('react-instantsearch-core', () => ({
   }),
 }))
 
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: mockData,
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({

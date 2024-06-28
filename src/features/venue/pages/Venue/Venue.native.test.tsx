@@ -10,7 +10,6 @@ import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -31,16 +30,7 @@ jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/search/context/SearchWrapper')
 jest.mock('libs/location')
 
-const mockSubcategories = PLACEHOLDER_DATA.subcategories
-const mockHomepageLabels = PLACEHOLDER_DATA.homepageLabels
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      subcategories: mockSubcategories,
-      homepageLabels: mockHomepageLabels,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 const venueId = venueDataTest.id
 
 jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists')

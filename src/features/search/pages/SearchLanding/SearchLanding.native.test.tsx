@@ -16,7 +16,6 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { LocationMode } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -166,12 +165,7 @@ jest.mock('react-instantsearch-core', () => ({
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 jest.mock('algoliasearch')
 
-const mockSubcategoriesData = PLACEHOLDER_DATA
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: mockSubcategoriesData,
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 const TODAY_DATE = new Date('2023-09-25T00:00:00.000Z')
 

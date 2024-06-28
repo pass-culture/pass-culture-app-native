@@ -18,7 +18,6 @@ import {
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -38,16 +37,7 @@ jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
-const mockSubcategories = PLACEHOLDER_DATA.subcategories
-const mockHomepageLabels = PLACEHOLDER_DATA.homepageLabels
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      subcategories: mockSubcategories,
-      homepageLabels: mockHomepageLabels,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 const defaultParams = {
   date: null,

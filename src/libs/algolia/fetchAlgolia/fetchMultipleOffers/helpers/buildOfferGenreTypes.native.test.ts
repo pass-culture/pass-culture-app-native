@@ -1,15 +1,9 @@
 import { GenreType } from 'api/gen'
 import { buildOfferGenreTypes } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOfferGenreTypes'
 import { useGenreTypeMapping } from 'libs/subcategories/mappings'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
-const mockGenreTypes = PLACEHOLDER_DATA.genreTypes
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: { genreTypes: mockGenreTypes },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 describe('buildOfferGenreTypes', () => {
   const {

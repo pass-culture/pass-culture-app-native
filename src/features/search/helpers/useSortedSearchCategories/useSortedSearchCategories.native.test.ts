@@ -1,5 +1,4 @@
 import { SearchCategoriesIllustrations } from 'features/search/enums'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 import {
@@ -8,12 +7,7 @@ import {
   useSortedSearchCategories,
 } from './useSortedSearchCategories'
 
-const mockData = PLACEHOLDER_DATA
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: mockData,
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 describe('useSortedSearchCategories', () => {
   const options = { initialProps: jest.fn() }
