@@ -124,6 +124,10 @@ describe('<OfferCTAButton />', () => {
 
   it('should display reservation impossible when user has already booked the offer', async () => {
     mockAuthContextWithUser(beneficiaryUser, { persist: true })
+    mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, {
+      requestOptions: { persist: true },
+      responseOptions: { data: offerResponseSnap },
+    })
 
     const expectedResponse: BookingsResponse = {
       ended_bookings: [
