@@ -35,6 +35,7 @@ const mapDataAndItem = (
   transformOfferHits: (hit: AlgoliaHit) => AlgoliaHit
 ) => {
   const { data } = offersResultList
+
   if (data) {
     return data
       .map((hits) => hits.hits.filter(filterOfferHit).map(transformOfferHits))
@@ -56,8 +57,8 @@ export const useVideoCarouselData = (
   const { userLocation, selectedLocationMode } = useLocation()
 
   const locationParams: BuildLocationParameterParams = {
-    selectedLocationMode: selectedLocationMode,
-    userLocation: userLocation,
+    selectedLocationMode,
+    userLocation,
     aroundMeRadius: 'all',
     aroundPlaceRadius: 'all',
   }
@@ -104,6 +105,7 @@ export const useVideoCarouselData = (
       redirectionMode: getRedirectionMode(item),
       offer: hasOfferRedirection ? offers[dataIterator] : undefined,
     }
+
     if (hasOfferRedirection) dataIterator++
     return enrichedItem
   })
