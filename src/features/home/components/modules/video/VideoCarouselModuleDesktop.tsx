@@ -9,7 +9,8 @@ import {
   RedirectionMode,
   useVideoCarouselData,
 } from 'features/home/api/useVideoCarouselData'
-import { AttachedOfferCard } from 'features/home/components/AttachedOfferCard'
+import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
+import { AttachedThematicCard } from 'features/home/components/AttachedModuleCard/AttachedThematicCard'
 import { videoSourceExtractor } from 'features/home/components/helpers/videoSourceExtractor'
 import { newColorMapping } from 'features/home/components/modules/categories/CategoryBlock'
 import { VerticalVideoPlayer } from 'features/home/components/modules/video/VerticalVideoPlayer.web'
@@ -19,9 +20,7 @@ import { ContentTypes } from 'libs/contentful/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { formatDates } from 'libs/parsers/formatDates'
-import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
-import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { CarouselBar } from 'ui/CarouselBar/CarouselBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -36,7 +35,6 @@ export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBa
 ) => {
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
-  const labelMapping = useCategoryHomeLabelMapping()
 
   const carouselRef = React.useRef<ICarouselInstance>(null)
   const progressValue = useSharedValue<number>(0)
@@ -89,20 +87,10 @@ export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBa
   if (!hasItems || !hasGraphicRedesign) return null
 
   const renderItem = ({ item, index }: { item: EnrichedVideoCarouselItem; index: number }) => {
-    if (!item) {
-      return null
-    }
     if (item.redirectionMode === RedirectionMode.OFFER && item.offer) {
       const { offer } = item
 
       const categoryId = mapping[offer.offer.subcategoryId]
-      const categoryText = labelMapping[offer.offer.subcategoryId] ?? ''
-      const timestampsInMillis = offer
-        ? offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
-        : undefined
-      const displayDate = formatDates(timestampsInMillis)
-
-      const displayPrice = getDisplayPrice(offer?.offer?.prices)
 
       const containerProps = offer
         ? {
@@ -128,17 +116,7 @@ export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBa
 
       return (
         <StyledInternalTouchableLink key={index} {...containerProps}>
-          <AttachedOfferCard
-            title={offer.offer.name ?? ''}
-            categoryId={categoryId}
-            categoryText={categoryText}
-            imageUrl={offer.offer.thumbUrl}
-            showImage
-            withRightArrow
-            offerLocation={offer._geoloc}
-            date={displayDate}
-            price={displayPrice}
-          />
+          <AttachedOfferCard offer={offer} shouldFixHeight />
         </StyledInternalTouchableLink>
       )
     }
@@ -158,18 +136,16 @@ export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBa
 
     return (
       <StyledInternalTouchableLink key={index} {...containerProps}>
-        <AttachedOfferCard
+        <AttachedThematicCard
           title={thematicHomeTitle ?? ''}
-          categoryId={null}
-          categoryText={thematicHomeTag ?? ''}
-          showImage={false}
-          date={thematicHomeSubtitle ?? ''}
-          withRightArrow
-          fixedHeight
+          subtitle={thematicHomeSubtitle}
+          label={thematicHomeTag}
+          shouldFixHeight
         />
       </StyledInternalTouchableLink>
     )
   }
+
   const SingleAttachedItem = () => {
     if (itemsWithRelatedData[0])
       return (
@@ -197,6 +173,7 @@ export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBa
           hasFinishedPlaying={hasFinishedPlaying}
           setHasFinishedPlaying={setHasFinishedPlaying}
           moduleId={id}
+          homeEntryId={homeEntryId}
         />
         <ContainerAttachedOfferCardWithBar>
           {itemsWithRelatedData[0] && itemsWithRelatedData.length > 1 ? (

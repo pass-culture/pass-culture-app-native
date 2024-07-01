@@ -83,6 +83,7 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
     setHasFinishedPlaying,
     moduleId,
     currentVideoId: videoSources[currentIndex],
+    homeEntryId,
   })
 
   // remove the fullscreen video for Chrome - mobile as
