@@ -4,7 +4,6 @@ import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { CheatCodesButton } from 'features/internal/cheatcodes/components/CheatCodesButton'
@@ -12,7 +11,6 @@ import { CheatcodesHeader } from 'features/internal/cheatcodes/components/Cheatc
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { useSomeVenueId } from 'features/internal/cheatcodes/hooks/useSomeVenueId'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { AskNotificiationsModal } from 'features/notifications/pages/AskNotificationsModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { env } from 'libs/environment'
@@ -214,16 +212,7 @@ export function Navigation(): React.JSX.Element {
             <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
           </Row>
           <Row half>
-            <ButtonPrimary
-              wording="SearchN1Books"
-              onPress={() =>
-                navigate(
-                  ...getSearchStackConfig('SearchN1Books', {
-                    offerCategories: [SearchGroupNameEnumv2.LIVRES],
-                  })
-                )
-              }
-            />
+            <ButtonPrimary wording="SearchN1Books" onPress={() => navigate('SearchN1Books')} />
           </Row>
 
           <Row half>
