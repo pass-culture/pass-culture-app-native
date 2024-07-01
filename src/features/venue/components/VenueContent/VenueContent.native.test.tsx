@@ -14,8 +14,7 @@ import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
-// TODO(PC-29000): Use fakeTimers modern instead
-jest.useFakeTimers({ legacyFakeTimers: true })
+jest.useFakeTimers()
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
