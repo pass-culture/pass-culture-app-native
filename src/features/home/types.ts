@@ -318,6 +318,19 @@ export type TrendsModule = {
   items: TrendBlock[]
 }
 
+export type TrendNavigationProps = {
+  enableNavigate?: boolean // It is used by offline mode to prevent navigation
+  navigateTo?: {
+    screen?: 'VenueMap' | 'ThematicHome'
+    params?: {
+      homeId?: string
+      moduleId?: string
+      from?: string
+    }
+  }
+  onBeforeNavigate?: VoidFunction
+}
+
 export enum Color {
   Gold = 'Gold',
   Aquamarine = 'Aquamarine',
