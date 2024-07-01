@@ -6,6 +6,7 @@ import {
   NativeSyntheticEvent,
   ScrollView,
   useWindowDimensions,
+  View,
 } from 'react-native'
 import {
   IOFlatList as IntersectionObserverFlatlist,
@@ -32,15 +33,18 @@ import {
   ThematicHeader,
   VideoCarouselModule as VideoCarouselModuleType,
 } from 'features/home/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchEventData, BatchUser } from 'libs/react-native-batch'
+import AccessibilityFooter from 'shared/AccessibilityFooter'
 import { finishTransaction } from 'shared/performance/transactions'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
+import { FOOTER_ID } from 'ui/theme/constants'
 
 type GenericHomeProps = {
   Header: React.JSX.Element
@@ -80,6 +84,9 @@ const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
         </FooterContainer>
       )}
       <Spacer.TabBar />
+      <View accessibilityRole={AccessibilityRole.FOOTER} id={FOOTER_ID}>
+        <AccessibilityFooter />
+      </View>
     </React.Fragment>
   )
 }

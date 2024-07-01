@@ -1,6 +1,6 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { NativeScrollEvent, Platform, ScrollView } from 'react-native'
+import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -13,12 +13,14 @@ import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialN
 import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
 import { shareApp } from 'features/share/helpers/shareApp'
 import { TutorialTypes } from 'features/tutorial/enums'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import AccessibilityFooter from 'shared/AccessibilityFooter'
 import { getAge } from 'shared/user/getAge'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
@@ -41,7 +43,7 @@ import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
+import { FOOTER_ID, SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
@@ -143,145 +145,150 @@ const OnlineProfile: React.FC = () => {
         testID="profile-scrollview">
         <ProfileHeader user={user} />
         <ProfileContainer>
-          <Spacer.Column numberOfSpaces={4} />
-          <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
-            <VerticalUl>
-              {isLoggedIn ? (
+          <View accessibilityRole={AccessibilityRole.MAIN}>
+            <Spacer.Column numberOfSpaces={4} />
+            <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
+              <VerticalUl>
+                {isLoggedIn ? (
+                  <Li>
+                    <Row
+                      title="Informations personnelles"
+                      type="navigable"
+                      navigateTo={{ screen: 'PersonalData' }}
+                      icon={BicolorProfile}
+                    />
+                  </Li>
+                ) : null}
                 <Li>
                   <Row
-                    title="Informations personnelles"
                     type="navigable"
-                    navigateTo={{ screen: 'PersonalData' }}
-                    icon={BicolorProfile}
+                    title="Notifications"
+                    icon={Bell}
+                    navigateTo={{ screen: 'NotificationsSettings' }}
                   />
                 </Li>
-              ) : null}
-              <Li>
-                <Row
-                  type="navigable"
-                  title="Notifications"
-                  icon={Bell}
-                  navigateTo={{ screen: 'NotificationsSettings' }}
-                />
-              </Li>
-              <Li>
-                <Spacer.Column numberOfSpaces={4} />
+                <Li>
+                  <Spacer.Column numberOfSpaces={4} />
 
-                <SectionWithSwitch
-                  icon={LocationPointer}
-                  iconSize={SECTION_ROW_ICON_SIZE}
-                  title="Activer ma géolocalisation"
-                  active={isGeolocSwitchActive}
-                  accessibilityDescribedBy={locationActivationErrorId}
-                  toggle={() => {
-                    switchGeolocation()
-                    debouncedLogLocationToggle(!isGeolocSwitchActive)
-                  }}
-                  toggleLabel="Activer ma géolocalisation"
-                />
-                <InputError
-                  visible={!!geolocPositionError}
-                  messageId={geolocPositionError?.message}
-                  numberOfSpacesTop={1}
-                  relatedInputId={locationActivationErrorId}
-                />
-                <Spacer.Column numberOfSpaces={4} />
-              </Li>
-            </VerticalUl>
-          </Section>
-          <Section title="Aides">
-            <VerticalUl>
-              {shouldDisplayTutorial ? (
+                  <SectionWithSwitch
+                    icon={LocationPointer}
+                    iconSize={SECTION_ROW_ICON_SIZE}
+                    title="Activer ma géolocalisation"
+                    active={isGeolocSwitchActive}
+                    accessibilityDescribedBy={locationActivationErrorId}
+                    toggle={() => {
+                      switchGeolocation()
+                      debouncedLogLocationToggle(!isGeolocSwitchActive)
+                    }}
+                    toggleLabel="Activer ma géolocalisation"
+                  />
+                  <InputError
+                    visible={!!geolocPositionError}
+                    messageId={geolocPositionError?.message}
+                    numberOfSpacesTop={1}
+                    relatedInputId={locationActivationErrorId}
+                  />
+                  <Spacer.Column numberOfSpaces={4} />
+                </Li>
+              </VerticalUl>
+            </Section>
+            <Section title="Aides">
+              <VerticalUl>
+                {shouldDisplayTutorial ? (
+                  <Li>
+                    <Row
+                      title="Comment ça marche&nbsp;?"
+                      type="navigable"
+                      navigateTo={tutorialNavigateTo}
+                      onPress={() =>
+                        analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
+                      }
+                      icon={LifeBuoy}
+                    />
+                  </Li>
+                ) : null}
                 <Li>
                   <Row
-                    title="Comment ça marche&nbsp;?"
-                    type="navigable"
-                    navigateTo={tutorialNavigateTo}
-                    onPress={() =>
-                      analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
-                    }
-                    icon={LifeBuoy}
+                    title="Centre d’aide"
+                    type="clickable"
+                    externalNav={{ url: env.FAQ_LINK }}
+                    icon={ExternalSite}
                   />
                 </Li>
-              ) : null}
-              <Li>
-                <Row
-                  title="Centre d’aide"
-                  type="clickable"
-                  externalNav={{ url: env.FAQ_LINK }}
-                  icon={ExternalSite}
-                />
-              </Li>
-            </VerticalUl>
-          </Section>
-          <Section title="Autres">
-            <VerticalUl>
-              <Li>
-                <Row
-                  title="Accessibilité"
-                  type="navigable"
-                  navigateTo={{ screen: 'Accessibility' }}
-                  icon={HandicapMental}
-                />
-              </Li>
-              <Li>
-                <Row
-                  title="Informations légales"
-                  type="navigable"
-                  navigateTo={{ screen: 'LegalNotices' }}
-                  icon={LegalNotices}
-                />
-              </Li>
-              <Li>
-                <Row
-                  title="Confidentialité"
-                  type="navigable"
-                  navigateTo={{ screen: 'ConsentSettings' }}
-                  icon={Confidentiality}
-                />
-              </Li>
-            </VerticalUl>
-          </Section>
-          {Platform.OS === 'web' ? null : (
-            <Section title="Partager le pass Culture">
-              <Spacer.Column numberOfSpaces={4} />
-              <BannerWithBackground
-                backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
-                onPress={onShareBannerPress}>
-                <ShareAppContainer>
-                  <StyledButtonText>Partage le pass Culture</StyledButtonText>
-                  <Spacer.Column numberOfSpaces={1} />
-                  <StyledBody>Recommande le bon plan à&nbsp;tes&nbsp;amis&nbsp;!</StyledBody>
-                </ShareAppContainer>
-              </BannerWithBackground>
-              <Spacer.Column numberOfSpaces={4} />
+              </VerticalUl>
             </Section>
-          )}
-          <Section title="Suivre le pass Culture">
-            <SocialNetwork />
-          </Section>
-          {isLoggedIn ? (
+            <Section title="Autres">
+              <VerticalUl>
+                <Li>
+                  <Row
+                    title="Accessibilité"
+                    type="navigable"
+                    navigateTo={{ screen: 'Accessibility' }}
+                    icon={HandicapMental}
+                  />
+                </Li>
+                <Li>
+                  <Row
+                    title="Informations légales"
+                    type="navigable"
+                    navigateTo={{ screen: 'LegalNotices' }}
+                    icon={LegalNotices}
+                  />
+                </Li>
+                <Li>
+                  <Row
+                    title="Confidentialité"
+                    type="navigable"
+                    navigateTo={{ screen: 'ConsentSettings' }}
+                    icon={Confidentiality}
+                  />
+                </Li>
+              </VerticalUl>
+            </Section>
+            {Platform.OS === 'web' ? null : (
+              <Section title="Partager le pass Culture">
+                <Spacer.Column numberOfSpaces={4} />
+                <BannerWithBackground
+                  backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
+                  onPress={onShareBannerPress}>
+                  <ShareAppContainer>
+                    <StyledButtonText>Partage le pass Culture</StyledButtonText>
+                    <Spacer.Column numberOfSpaces={1} />
+                    <StyledBody>Recommande le bon plan à&nbsp;tes&nbsp;amis&nbsp;!</StyledBody>
+                  </ShareAppContainer>
+                </BannerWithBackground>
+                <Spacer.Column numberOfSpaces={4} />
+              </Section>
+            )}
+            <Section title="Suivre le pass Culture">
+              <SocialNetwork />
+            </Section>
+            {isLoggedIn ? (
+              <Section>
+                <Spacer.Column numberOfSpaces={4} />
+                <SectionRow
+                  title="Déconnexion"
+                  onPress={signOut}
+                  type="clickable"
+                  icon={SignOut}
+                  iconSize={SECTION_ROW_ICON_SIZE}
+                />
+              </Section>
+            ) : null}
             <Section>
               <Spacer.Column numberOfSpaces={4} />
-              <SectionRow
-                title="Déconnexion"
-                onPress={signOut}
-                type="clickable"
-                icon={SignOut}
-                iconSize={SECTION_ROW_ICON_SIZE}
-              />
+              <Typo.CaptionNeutralInfo>{version}</Typo.CaptionNeutralInfo>
+              <Spacer.Column numberOfSpaces={4} />
+              <LogoMinistereContainer>
+                <LogoMinistere />
+              </LogoMinistereContainer>
+              <Spacer.Column numberOfSpaces={4} />
             </Section>
-          ) : null}
-          <Section>
-            <Spacer.Column numberOfSpaces={4} />
-            <Typo.CaptionNeutralInfo>{version}</Typo.CaptionNeutralInfo>
-            <Spacer.Column numberOfSpaces={4} />
-            <LogoMinistereContainer>
-              <LogoMinistere />
-            </LogoMinistereContainer>
-            <Spacer.Column numberOfSpaces={4} />
-          </Section>
-          <Spacer.TabBar />
+            <Spacer.TabBar />
+          </View>
+          <View accessibilityRole={AccessibilityRole.FOOTER} id={FOOTER_ID}>
+            <AccessibilityFooter />
+          </View>
         </ProfileContainer>
       </ScrollView>
       <StatusBarBlurredBackground />

@@ -9,6 +9,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getShadow, getSpacing } from 'ui/theme'
+import { FOOTER_ID } from 'ui/theme/constants'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
 
 import { Nav } from './Nav'
@@ -80,6 +81,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
   return (
     <HeaderContainer>
       <QuickAccess href={`#${mainId}`} title="Aller au contenu principal" />
+      <QuickAccess href={`#${FOOTER_ID}`} title="Aller au footer" />
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         {isBrandVisible ? (
           <LogoContainer

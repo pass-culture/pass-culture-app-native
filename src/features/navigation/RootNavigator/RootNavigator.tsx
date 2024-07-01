@@ -8,7 +8,7 @@ import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
-import { RootScreenNames } from 'features/navigation/RootNavigator/types'
+import { RootScreenNames, ScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
@@ -68,10 +68,25 @@ export const RootNavigator: React.ComponentType = () => {
     return <LoadingPage />
   }
 
+  const currentRouteParams = currentRoute?.params
+  const pageWithFooter: ScreenNames[] = ['Home', 'Profile']
+
+  let mainAccessibilityRole: AccessibilityRole | undefined = AccessibilityRole.MAIN
+  if (
+    typeof currentRouteParams === 'object' &&
+    'screen' in currentRouteParams &&
+    (pageWithFooter.includes(currentRouteParams?.screen as ScreenNames) ||
+      (currentRouteParams?.screen as ScreenNames) === undefined)
+    // when arriving on the app for the first time, 'screen' is undefined
+  ) {
+    console.log('SETTING TO UNDEFINED')
+    mainAccessibilityRole = undefined
+  }
+
   return (
     <TabNavigationStateProvider>
       {showTabBar ? headerWithQuickAccess : <Header mainId={mainId} />}
-      <Main nativeID={mainId} accessibilityRole={AccessibilityRole.MAIN}>
+      <Main nativeID={mainId} accessibilityRole={mainAccessibilityRole}>
         <RootStackNavigator initialRouteName={initialScreen} />
       </Main>
       {showTabBar ? (
