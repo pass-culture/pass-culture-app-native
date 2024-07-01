@@ -18,6 +18,7 @@ type Props = {
   setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
   moduleId: string
   currentVideoId?: string
+  homeEntryId: string
 }
 
 export const useVerticalVideoPlayer = ({
@@ -26,6 +27,7 @@ export const useVerticalVideoPlayer = ({
   setHasFinishedPlaying,
   moduleId,
   currentVideoId,
+  homeEntryId,
 }: Props) => {
   const [isMuted, setIsMuted] = useState(true)
   const [elapsed, setElapsed] = useState(0)
@@ -89,6 +91,8 @@ export const useVerticalVideoPlayer = ({
       videoDuration,
       seenDuration: videoDuration ? elapsed * videoDuration : 0,
       youtubeId: currentVideoId,
+      homeEntryId,
+      moduleId,
     })
   }
 
