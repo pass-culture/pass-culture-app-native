@@ -144,11 +144,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     const isSearchN1BooksPreviousRoute = getIsPreviousRouteFromSearch('SearchN1Books')
 
     switch (true) {
-      case isFocusOnSuggestions && currentView === SearchView.Results:
-        setQuery(searchState.query)
-        hideSuggestions()
-        break
-      case isFocusOnSuggestions && currentView === SearchView.Books:
+      case isFocusOnSuggestions &&
+        (currentView === SearchView.Results || currentView === SearchView.Books):
         setQuery(searchState.query)
         hideSuggestions()
         break
@@ -164,10 +161,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         goBack()
         break
       case isSearchN1BooksPreviousRoute:
-        dispatch({
-          type: 'SET_STATE',
-          payload: { ...searchState, venue: undefined },
-        })
         goBack()
         break
       case currentView === SearchView.Results:
