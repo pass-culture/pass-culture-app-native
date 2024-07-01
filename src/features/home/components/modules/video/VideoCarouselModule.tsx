@@ -184,6 +184,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         hasFinishedPlaying={hasFinishedPlaying}
         setHasFinishedPlaying={setHasFinishedPlaying}
         moduleId={id}
+        homeEntryId={homeEntryId}
       />
       <ColoredAttachedTileContainer color={color}>
         {itemsWithRelatedData.length > 1 ? (

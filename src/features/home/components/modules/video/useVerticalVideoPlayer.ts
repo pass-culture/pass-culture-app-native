@@ -18,6 +18,7 @@ type Props = {
   setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
   moduleId: string
   currentVideoId?: string
+  homeEntryId: string
 }
 
 export const useVerticalVideoPlayer = ({
@@ -26,6 +27,7 @@ export const useVerticalVideoPlayer = ({
   setHasFinishedPlaying,
   moduleId,
   currentVideoId,
+  homeEntryId,
 }: Props) => {
   const [isMuted, setIsMuted] = useState(true)
   const [elapsed, setElapsed] = useState(0)
@@ -86,9 +88,11 @@ export const useVerticalVideoPlayer = ({
   const logPausedVideo = async () => {
     const videoDuration = await getVideoDuration()
     analytics.logVideoPaused({
-      videoDuration,
-      seenDuration: videoDuration ? elapsed * videoDuration : 0,
+      videoDuration: videoDuration ? Math.round(videoDuration) : 0,
+      seenDuration: videoDuration ? Math.round(elapsed * videoDuration) : 0,
       youtubeId: currentVideoId,
+      homeEntryId,
+      moduleId,
     })
   }
 
