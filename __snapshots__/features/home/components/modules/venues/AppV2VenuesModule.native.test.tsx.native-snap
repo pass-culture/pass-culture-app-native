@@ -163,6 +163,7 @@ exports[`<AppV2VenuesModule /> should render correctly 1`] = `
   >
     <View>
       <View
+        collapsable={false}
         onLayout={[Function]}
       >
         <View

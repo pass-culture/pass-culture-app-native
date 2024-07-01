@@ -113,6 +113,7 @@ exports[`GenericHome With not displayed skeleton by default should display real 
     >
       <View>
         <View
+          collapsable={false}
           onLayout={[Function]}
           style={
             {
@@ -303,6 +304,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
     >
       <View>
         <View
+          collapsable={false}
           onLayout={[Function]}
           style={
             {
