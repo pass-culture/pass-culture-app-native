@@ -37,11 +37,11 @@ const defaultArgs = {
   thematicHomeEntryId: '351351',
   index: 0,
 }
-//TODO(PC-30279): Fix this stories
-const Default = Template.bind({})
+
+export const Default = Template.bind({})
 Default.args = defaultArgs
-//TODO(PC-30279): Fix this stories
-const OneDayHighlight = Template.bind({})
+
+export const OneDayHighlight = Template.bind({})
 OneDayHighlight.args = {
   ...defaultArgs,
   beginningDate: new Date('2022-12-21'),

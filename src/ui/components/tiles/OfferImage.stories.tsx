@@ -6,17 +6,12 @@ import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 
 import { OfferImage } from './OfferImage'
 
-// @ts-ignore import is unresolved, this commit is temporary
-// eslint-disable-next-line import/no-unresolved
-import { useQueryDecorator } from '/.storybook/mocks/react-query'
-
 const meta: ComponentMeta<typeof OfferImage> = {
   title: 'ui/tiles/OfferImage',
   component: OfferImage,
   argTypes: {
     categoryId: selectArgTypeFromObject(CategoryIdEnum),
   },
-  decorators: [useQueryDecorator],
   parameters: {
     axe: {
       // Our images do not need alt because they are illustrative

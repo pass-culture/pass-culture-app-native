@@ -1,21 +1,21 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { offerVenueResponseSnap } from 'features/offer/fixtures/offerVenueReponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { mockedFullAddress } from 'libs/address/fixtures/mockedFormatFullAddress'
-import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 
 import { WhereSection } from './WhereSection'
 
 const meta: ComponentMeta<typeof WhereSection> = {
-  title: 'ui/tutu',
+  title: 'ui/WhereSection',
   component: WhereSection,
   decorators: [
     (Story) => (
-      <ReactQueryClientProvider>
+      <NavigationContainer>
         <Story />
-      </ReactQueryClientProvider>
+      </NavigationContainer>
     ),
   ],
 }
@@ -23,8 +23,7 @@ export default meta
 
 const Template: ComponentStory<typeof WhereSection> = (props) => <WhereSection {...props} />
 
-// TODO(PC-17931): Fix this stories
-const WithVenueBanner = Template.bind({})
+export const WithVenueBanner = Template.bind({})
 WithVenueBanner.args = {
   venue: venueResponseSnap,
   locationCoordinates: { latitude: 2, longitude: 4 },
@@ -32,8 +31,7 @@ WithVenueBanner.args = {
   showVenueBanner: true,
 }
 
-// TODO(PC-17931): Fix this stories
-const WithoutVenueBanner = Template.bind({})
+export const WithoutVenueBanner = Template.bind({})
 WithoutVenueBanner.args = {
   venue: offerVenueResponseSnap,
   locationCoordinates: { latitude: 2, longitude: 4 },

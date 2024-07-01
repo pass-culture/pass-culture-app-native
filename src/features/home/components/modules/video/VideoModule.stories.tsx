@@ -3,7 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
-import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { offersFixture } from 'shared/offer/offer.fixture'
 
 import { VideoModule } from './VideoModule'
 
@@ -12,13 +13,18 @@ const meta: ComponentMeta<typeof VideoModule> = {
   component: VideoModule,
   decorators: [
     (Story) => (
-      <ReactQueryClientProvider>
-        <NavigationContainer>
-          <Story />
-        </NavigationContainer>
-      </ReactQueryClientProvider>
+      <NavigationContainer>
+        <Story />
+      </NavigationContainer>
     ),
   ],
+  parameters: {
+    useQuery: {
+      subcategories: PLACEHOLDER_DATA.subcategories,
+      [`video_offer-${videoModuleFixture.id}`]: offersFixture,
+      featureFlags: { get: () => ({ minimalBuildNumber: 1000000 }) },
+    },
+  },
 }
 export default meta
 
@@ -26,12 +32,10 @@ const Template: ComponentStory<typeof VideoModule> = (props) => <VideoModule {..
 
 const defaultArgs = videoModuleFixture
 
-// TODO(PC-17931): Fix this stories
-const Default = Template.bind({})
+export const Default = Template.bind({})
 Default.args = defaultArgs
 
-// TODO(PC-17931): Fix this stories
-const WithLongVideoTitle = Template.bind({})
+export const WithLongVideoTitle = Template.bind({})
 WithLongVideoTitle.args = {
   ...defaultArgs,
   videoTitle:
