@@ -41,9 +41,6 @@ const isWeb = Platform.OS === 'web'
 
 export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCategories }) => {
   const { shouldDisplayVenueMap, selectedLocationMode } = useShouldDisplayVenueMap()
-  const hasVenueMapWithoutPosition = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_VENUE_MAP_WITHOUT_POSITION
-  )
   const enableNewCategoryBlock = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_APP_V2_SEARCH_CATEGORY_BLOCK
   )
@@ -56,7 +53,7 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
 
   const isLocated = selectedLocationMode !== LocationMode.EVERYWHERE
 
-  const isMapWithoutPositionAndNotLocated = hasVenueMapWithoutPosition && !isLocated && !isWeb
+  const isMapWithoutPositionAndNotLocated = !isLocated && !isWeb
 
   const theme = useTheme()
   const numColumns = theme.isDesktopViewport ? 4 : 2

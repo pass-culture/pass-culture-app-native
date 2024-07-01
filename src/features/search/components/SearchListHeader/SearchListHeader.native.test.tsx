@@ -405,7 +405,7 @@ describe('<SearchListHeader />', () => {
     })
   })
 
-  describe('When wipVenueMapSearchResults feature flag activated', () => {
+  describe('When wipVenueMap feature flag activated', () => {
     beforeEach(() => {
       useFeatureFlagSpy.mockReturnValue(true)
     })
