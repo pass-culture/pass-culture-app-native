@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react'
+// eslint-disable-next-line no-restricted-imports
+import { Image } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 import styled from 'styled-components/native'
 
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
-import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
@@ -74,10 +75,8 @@ export const OfferPreviewModal = ({
           setTitle(getTitleLabel(absoluteProgress))
         }}
         data={offerImages}
-        renderItem={({ item: image }) => (
-          <CarouselItemContainer>
-            <FullHeightImage url={image} />
-          </CarouselItemContainer>
+        renderItem={({ item: image, index }) => (
+          <CarouselImage source={{ uri: image }} accessibilityLabel={`Image ${index + 1}`} />
         )}
       />
 
@@ -97,7 +96,7 @@ export const OfferPreviewModal = ({
     if (offerImages.length > 1) {
       return displayCarousel()
     }
-    return <FullHeightImage url={String(offerImages[0])} />
+    return <CarouselImage source={{ uri: String(offerImages[0]) }} accessibilityLabel="Image 1" />
   }
 
   return (
@@ -120,14 +119,11 @@ export const OfferPreviewModal = ({
   )
 }
 
-const CarouselItemContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flex: 1,
-})
-
-const FullHeightImage = styled(FastImage)({
+/**
+ * We use RN Image component because it renders better with resizeMode in web mode than FastImage
+ */
+const CarouselImage = styled(Image).attrs({ resizeMode: 'contain' })({
+  width: '100%',
   height: '100%',
 })
 
