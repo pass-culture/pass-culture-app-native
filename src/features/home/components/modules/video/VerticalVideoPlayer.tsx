@@ -43,6 +43,7 @@ interface VideoPlayerProps {
   hasFinishedPlaying: boolean
   setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
   moduleId: string
+  homeEntryId: string
 }
 
 export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
@@ -54,6 +55,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   hasFinishedPlaying,
   setHasFinishedPlaying,
   moduleId,
+  homeEntryId,
 }) => {
   const {
     isMuted,
@@ -75,6 +77,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     setHasFinishedPlaying,
     moduleId,
     currentVideoId: videoSources[currentIndex],
+    homeEntryId,
   })
 
   const { isDesktopViewport } = useTheme()
