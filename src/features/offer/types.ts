@@ -1,8 +1,15 @@
 import { SharedValue } from 'react-native-reanimated'
 
-import { CategoryIdEnum, RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
+import {
+  CategoryIdEnum,
+  OfferResponseV2,
+  RecommendationApiParams,
+  SearchGroupResponseModelv2,
+  SubcategoryIdEnum,
+} from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
+import { Subcategory } from 'libs/subcategories/types'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
@@ -47,4 +54,10 @@ export type OfferImageCarouselPaginationProps = {
   progressValue: SharedValue<number>
   offerImages: string[]
   handlePressButton: (direction: 1 | -1) => void
+}
+
+export type OfferContentProps = {
+  offer: OfferResponseV2
+  searchGroupList: SearchGroupResponseModelv2[]
+  subcategory: Subcategory
 }

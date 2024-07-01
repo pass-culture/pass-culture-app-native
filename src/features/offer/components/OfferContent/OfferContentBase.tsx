@@ -1,22 +1,17 @@
 import React, { FunctionComponent, ReactElement, useCallback, useEffect, useMemo } from 'react'
-import {
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-  ViewStyle,
-  StyleProp,
-  Animated,
-} from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, ViewStyle, StyleProp } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { OfferContentProps } from 'features/offer/components/OfferContent/types'
+import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { getOfferImageUrls } from 'features/offer/helpers/getOfferImageUrls/getOfferImageUrls'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
+import { OfferContentProps } from 'features/offer/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
@@ -24,10 +19,9 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 
 type OfferContentBaseProps = OfferContentProps & {
   showOfferPreview: boolean
-  children: (body: ReactElement) => ReactElement
+  BodyWrapper: FunctionComponent
   onOfferPreviewPress: (index?: number) => void
-  header?: (interpolation: Animated.AnimatedInterpolation<string | number>) => ReactElement
-  footer?: (interpolation: Animated.AnimatedInterpolation<string | number>) => ReactElement
+  footer?: ReactElement | null
   contentContainerStyle?: StyleProp<ViewStyle>
 }
 
@@ -38,11 +32,10 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   searchGroupList,
   subcategory,
   showOfferPreview,
-  header,
   footer,
-  children,
   onOfferPreviewPress,
   contentContainerStyle,
+  BodyWrapper = React.Fragment,
 }) => {
   const { userLocation } = useLocation()
   const {
@@ -97,7 +90,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   return (
     <Container>
       <OfferWebMetaHeader offer={offer} />
-      {header?.(headerTransition)}
+      <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
       <ScrollViewContainer
         testID="offerv2-container"
         scrollEventThrottle={16}
@@ -105,21 +98,19 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
         bounces={false}
         contentContainerStyle={contentContainerStyle}
         onScroll={onScroll}>
-        {children(
-          <React.Fragment>
-            <OfferImageContainer
-              imageUrls={offerImages}
-              categoryId={subcategory.categoryId}
-              shouldDisplayOfferPreview={showOfferPreview}
-              onPress={offerImages.length > 0 ? onOfferPreviewPress : undefined}
-            />
-            <OfferBody
-              offer={offer}
-              subcategory={subcategory}
-              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-            />
-          </React.Fragment>
-        )}
+        <BodyWrapper>
+          <OfferImageContainer
+            imageUrls={offerImages}
+            categoryId={subcategory.categoryId}
+            shouldDisplayOfferPreview={showOfferPreview}
+            onPress={offerImages.length > 0 ? onOfferPreviewPress : undefined}
+          />
+          <OfferBody
+            offer={offer}
+            subcategory={subcategory}
+            trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+          />
+        </BodyWrapper>
         <OfferPlaylistList
           offer={offer}
           position={userLocation}
@@ -130,7 +121,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           sameArtistPlaylist={sameArtistPlaylist}
         />
       </ScrollViewContainer>
-      {footer?.(headerTransition)}
+      {footer}
     </Container>
   )
 }

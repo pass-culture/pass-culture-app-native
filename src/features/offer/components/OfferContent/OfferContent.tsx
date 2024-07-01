@@ -1,13 +1,12 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
-import { Animated } from 'react-native'
+import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
-import { OfferContentProps } from 'features/offer/components/OfferContent/types'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
-import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
+import { OfferContentProps } from 'features/offer/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -32,18 +31,12 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
     }
   }
 
-  const footer = useCallback(
-    (headerTransition: Animated.AnimatedInterpolation<string | number>) => (
-      <React.Fragment>
-        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
-        <OfferCTAButton
-          offer={offer}
-          subcategory={subcategory}
-          trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-        />
-      </React.Fragment>
-    ),
-    [offer, subcategory, trackEventHasSeenOfferOnce]
+  const footer = (
+    <OfferCTAButton
+      offer={offer}
+      subcategory={subcategory}
+      trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+    />
   )
 
   return (
@@ -54,12 +47,10 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
       contentContainerStyle={CONTENT_CONTAINER_STYLE}
       onOfferPreviewPress={handlePress}
       footer={footer}
-      subcategory={subcategory}>
-      {(body) => (
-        <ViewGap gap={8} testID="offer-body-mobile">
-          {body}
-        </ViewGap>
-      )}
-    </OfferContentBase>
+      BodyWrapper={BodyWrapper}
+      subcategory={subcategory}
+    />
   )
 }
+
+const BodyWrapper = styled(ViewGap).attrs(() => ({ gap: 8, testID: 'offer-body-mobile' }))``
