@@ -15,7 +15,7 @@ describe('DetailedAccessibilityInfo', () => {
     render(
       <DetailedAccessibilityInfo
         url={fakeAccesLibreUrl}
-        data={venueDataTest.externalAccessibilityData}
+        accessibilities={venueDataTest.externalAccessibilityData}
       />
     )
 
@@ -29,7 +29,7 @@ describe('DetailedAccessibilityInfo', () => {
     render(
       <DetailedAccessibilityInfo
         url={fakeAccesLibreUrl}
-        data={venueDataTest.externalAccessibilityData}
+        accessibilities={venueDataTest.externalAccessibilityData}
       />
     )
 
@@ -43,7 +43,7 @@ describe('DetailedAccessibilityInfo', () => {
     render(
       <DetailedAccessibilityInfo
         url={fakeAccesLibreUrl}
-        data={venueDataTest.externalAccessibilityData}
+        accessibilities={venueDataTest.externalAccessibilityData}
       />
     )
 
@@ -57,7 +57,7 @@ describe('DetailedAccessibilityInfo', () => {
     render(
       <DetailedAccessibilityInfo
         url={fakeAccesLibreUrl}
-        data={venueDataTest.externalAccessibilityData}
+        accessibilities={venueDataTest.externalAccessibilityData}
       />
     )
 

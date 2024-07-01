@@ -16,11 +16,11 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   url: string
-  data: ExternalAccessibilityDataModel | null | undefined
+  accessibilities: ExternalAccessibilityDataModel | null | undefined
 }
 
-export const DetailedAccessibilityInfo: FC<Props> = ({ url, data }) => {
-  const details = getDetailedAccessibilityInfo(data)
+export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities }) => {
+  const details = getDetailedAccessibilityInfo(accessibilities)
 
   return (
     <Container>

@@ -18,5 +18,5 @@ const Template: ComponentStory<typeof DetailedAccessibilityInfo> = (props) => (
 export const Default = Template.bind({})
 Default.args = {
   url: 'fakeUrl',
-  data: venueDataTest.externalAccessibilityData,
+  accessibilities: venueDataTest.externalAccessibilityData,
 }

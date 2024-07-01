@@ -21,7 +21,10 @@ export const AccessibilityBlock: FC<Props> = ({
 
   if (enableAccesLibre && detailedAccessibilityUrl && detailedAccessibilityData) {
     return (
-      <DetailedAccessibilityInfo url={detailedAccessibilityUrl} data={detailedAccessibilityData} />
+      <DetailedAccessibilityInfo
+        url={detailedAccessibilityUrl}
+        accessibilities={detailedAccessibilityData}
+      />
     )
   }
   if (basicAccessibility) {
