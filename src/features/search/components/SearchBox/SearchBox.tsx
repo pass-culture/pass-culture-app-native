@@ -14,14 +14,13 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { navigationRef } from 'features/navigation/navigationRef'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { HiddenSuggestionsButton } from 'features/search/components/Buttons/HiddenSuggestionsButton'
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { getIsVenuePreviousRoute } from 'features/search/helpers/getIsVenuePreviousRoute/getIsVenuePreviousRoute'
+import { getIsPreviousRouteFromSearch } from 'features/search/helpers/getIsPreviousRouteFromSearch/getIsPreviousRouteFromSearch'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
 import { BackButton } from 'ui/components/headers/BackButton'
@@ -141,10 +140,15 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     // To force remove focus on search input
     Keyboard.dismiss()
 
-    const isVenuePreviousRoute = getIsVenuePreviousRoute(navigationRef.getState().routes)
+    const isVenuePreviousRoute = getIsPreviousRouteFromSearch('Venue')
+    const isSearchN1BooksPreviousRoute = getIsPreviousRouteFromSearch('SearchN1Books')
 
     switch (true) {
       case isFocusOnSuggestions && currentView === SearchView.Results:
+        setQuery(searchState.query)
+        hideSuggestions()
+        break
+      case isFocusOnSuggestions && currentView === SearchView.Books:
         setQuery(searchState.query)
         hideSuggestions()
         break
@@ -152,11 +156,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         setQuery('')
         hideSuggestions()
         break
-      case isVenuePreviousRoute:
-        dispatch({
-          type: 'SET_STATE',
-          payload: { ...searchState, venue: undefined },
-        })
+      case isVenuePreviousRoute || isSearchN1BooksPreviousRoute:
         goBack()
         break
       case currentView === SearchView.Results:
@@ -233,7 +233,9 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     showSuggestions,
   ])
 
-  const showLocationButton = currentView === SearchView.Results && !isFocusOnSuggestions
+  const showLocationButton =
+    currentView === SearchView.Results ||
+    (currentView === SearchView.Books && !isFocusOnSuggestions)
 
   const disableInputClearButton =
     currentView === SearchView.Results && !isFocusOnSuggestions && !isDesktopViewport

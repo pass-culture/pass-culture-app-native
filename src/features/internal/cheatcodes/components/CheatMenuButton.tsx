@@ -13,7 +13,7 @@ export const CheatMenuButton: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { top } = useCustomSafeInsets()
 
-  return !env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING ? (
+  return env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING ? (
     <CheatMenuButtonContainer topSafeInsets={top}>
       <ButtonTertiaryNeutralInfo
         buttonHeight="extraSmall"
