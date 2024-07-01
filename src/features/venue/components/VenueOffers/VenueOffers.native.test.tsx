@@ -10,11 +10,11 @@ import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import {
   VenueMoviesOffersResponseSnap,
   VenueOffersResponseSnap,
 } from 'features/venue/fixtures/venueOffersResponseSnap'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
@@ -25,8 +25,8 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const playlists = gtlPlaylistAlgoliaSnapshot
-const mockVenue = venueResponseSnap
-const venueId = venueResponseSnap.id
+const mockVenue = venueDataTest
+const venueId = venueDataTest.id
 
 const useGTLPlaylistsSpy = jest
   .spyOn(useGTLPlaylists, 'useGTLPlaylists')
@@ -90,20 +90,20 @@ describe('<VenueOffers />', () => {
     jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({
       isLoading: true,
     } as UseQueryResult<useVenueOffers.VenueOffers, unknown>)
-    renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock })
+    renderVenueOffers({ venue: venueDataTest, venueOffers: venueOffersMock })
 
     expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
   })
 
   it('should display skeleton if playlists are fetching', () => {
     useGTLPlaylistsSpy.mockReturnValueOnce({ isLoading: true, gtlPlaylists: [] })
-    renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock })
+    renderVenueOffers({ venue: venueDataTest, venueOffers: venueOffersMock })
 
     expect(screen.getByTestId('OfferPlaylistSkeleton')).toBeOnTheScreen()
   })
 
   it('should display placeholder when no offers', () => {
-    renderVenueOffers({ venue: venueResponseSnap, venueOffers: { hits: [], nbHits: 0 } })
+    renderVenueOffers({ venue: venueDataTest, venueOffers: { hits: [], nbHits: 0 } })
 
     expect(
       screen.getByText('Il n’y a pas encore d’offre disponible dans ce lieu')
@@ -111,14 +111,14 @@ describe('<VenueOffers />', () => {
   })
 
   it('should display "En voir plus" button if they are more hits to see than the one displayed', () => {
-    renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock })
+    renderVenueOffers({ venue: venueDataTest, venueOffers: venueOffersMock })
 
     expect(screen.getByText('En voir plus')).toBeOnTheScreen()
   })
 
   it(`should not display "En voir plus" button if they are no more hits to see than the one displayed`, () => {
     renderVenueOffers({
-      venue: venueResponseSnap,
+      venue: venueDataTest,
       venueOffers: { hits: VenueOffersResponseSnap, nbHits: VenueOffersResponseSnap.length },
     })
 
@@ -126,7 +126,7 @@ describe('<VenueOffers />', () => {
   })
 
   it(`should go to search page with venue infos when clicking "En voir plus" button`, async () => {
-    renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock })
+    renderVenueOffers({ venue: venueDataTest, venueOffers: venueOffersMock })
 
     fireEvent.press(screen.getByText('En voir plus'))
 
@@ -150,7 +150,7 @@ describe('<VenueOffers />', () => {
   })
 
   it(`should log analytics event when clicking "En voir plus" button`, () => {
-    renderVenueOffers({ venue: venueResponseSnap, venueOffers: venueOffersMock })
+    renderVenueOffers({ venue: venueDataTest, venueOffers: venueOffersMock })
     fireEvent.press(screen.getByText('En voir plus'))
 
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
@@ -189,7 +189,7 @@ describe('<VenueOffers />', () => {
 
     it('When there are gtl playlists associated to the venue and venue type is not distribution or book store', () => {
       renderVenueOffers({
-        venue: { ...venueResponseSnap, venueTypeCode: undefined },
+        venue: { ...venueDataTest, venueTypeCode: undefined },
         venueOffers: venueOffersMock,
         playlists,
       })
@@ -205,7 +205,7 @@ describe('<VenueOffers />', () => {
 
     it('should display movie screening calendar if at least one offer is a movie screening', () => {
       renderVenueOffers({
-        venue: venueResponseSnap,
+        venue: venueDataTest,
         venueOffers: venueMoviesOffersMock,
       })
 

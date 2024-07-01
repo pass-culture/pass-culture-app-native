@@ -1,3 +1,3 @@
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 
-export const useVenue = jest.fn().mockReturnValue({ data: venueResponseSnap })
+export const useVenue = jest.fn().mockReturnValue({ data: venueDataTest })

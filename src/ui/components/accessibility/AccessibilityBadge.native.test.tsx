@@ -10,14 +10,14 @@ describe('AccessibilityBadge', () => {
   it('should display the validIcon when isValid is true', () => {
     render(<AccessibilityBadge handicap={HandicapCategory.MENTAL} isAccessible />)
 
-    expect(screen.queryByTestId('invalidTestId')).not.toBeOnTheScreen()
-    expect(screen.getByTestId('validTestId')).toBeOnTheScreen()
+    expect(screen.queryByTestId('invalid-icon')).not.toBeOnTheScreen()
+    expect(screen.getByTestId('valid-icon')).toBeOnTheScreen()
   })
 
   it('should displat the invalidIcon when isValid is false', () => {
     render(<AccessibilityBadge handicap={HandicapCategory.MENTAL} isAccessible={false} />)
 
-    expect(screen.getByTestId('invalidTestId')).toBeOnTheScreen()
-    expect(screen.queryByTestId('validTestId')).not.toBeOnTheScreen()
+    expect(screen.getByTestId('invalid-icon')).toBeOnTheScreen()
+    expect(screen.queryByTestId('valid-icon')).not.toBeOnTheScreen()
   })
 })

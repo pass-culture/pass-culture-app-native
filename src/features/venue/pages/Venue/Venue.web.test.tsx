@@ -6,14 +6,14 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen, fireEvent } from 'tests/utils/web'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -31,7 +31,7 @@ jest.mock('uuid', () => ({
   v4: jest.fn(),
 }))
 
-const venueId = venueResponseSnap.id
+const venueId = venueDataTest.id
 
 jest.mock('libs/location', () => ({
   useLocation: jest.fn().mockReturnValue({
@@ -97,10 +97,20 @@ describe('<Venue />', () => {
       })
     })
 
-    it('should render correctly in web', async () => {
+    it('should render correctly', async () => {
       const { container } = render(reactQueryProviderHOC(<Venue />))
 
       await screen.findAllByText('Gratuit')
+
+      expect(container).toMatchSnapshot()
+    })
+
+    it('should render correctly with practical information', async () => {
+      const { container } = render(reactQueryProviderHOC(<Venue />))
+
+      await screen.findAllByText('Gratuit')
+
+      fireEvent.click(screen.getByText('Infos pratiques'))
 
       expect(container).toMatchSnapshot()
     })

@@ -40,33 +40,33 @@ const translateDescriptions = (descriptions?: DisabilityModel) => {
 }
 
 export const getDetailedAccessibilityInfo = (
-  data: ExternalAccessibilityDataModel | null | undefined
+  accessibilities: ExternalAccessibilityDataModel | null | undefined
 ) => {
-  if (data)
+  if (accessibilities)
     return [
       {
-        isAccessible: data.isAccessibleAudioDisability,
+        isAccessible: accessibilities.isAccessibleAudioDisability,
         category: getAccessibilityCategoryAndIcon(HandicapCategory.AUDIO).wording,
         icon: getAccessibilityCategoryAndIcon(HandicapCategory.AUDIO).Icon,
-        description: translateDescriptions(data.audioDisability),
+        description: translateDescriptions(accessibilities.audioDisability),
       },
       {
-        isAccessible: data.isAccessibleMentalDisability,
+        isAccessible: accessibilities.isAccessibleMentalDisability,
         category: getAccessibilityCategoryAndIcon(HandicapCategory.MENTAL).wording,
         icon: getAccessibilityCategoryAndIcon(HandicapCategory.MENTAL).Icon,
-        description: translateDescriptions(data.mentalDisability),
+        description: translateDescriptions(accessibilities.mentalDisability),
       },
       {
-        isAccessible: data.isAccessibleMotorDisability,
+        isAccessible: accessibilities.isAccessibleMotorDisability,
         category: getAccessibilityCategoryAndIcon(HandicapCategory.MOTOR).wording,
         icon: getAccessibilityCategoryAndIcon(HandicapCategory.MOTOR).Icon,
-        description: translateDescriptions(data.motorDisability),
+        description: translateDescriptions(accessibilities.motorDisability),
       },
       {
-        isAccessible: data.isAccessibleVisualDisability,
+        isAccessible: accessibilities.isAccessibleVisualDisability,
         category: getAccessibilityCategoryAndIcon(HandicapCategory.VISUAL).wording,
         icon: getAccessibilityCategoryAndIcon(HandicapCategory.VISUAL).Icon,
-        description: translateDescriptions(data.visualDisability),
+        description: translateDescriptions(accessibilities.visualDisability),
       },
     ]
   return []

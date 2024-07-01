@@ -1,7 +1,7 @@
 import React from 'react'
 import { Linking } from 'react-native'
 
-import { venueWithDetailedAccessibilityInfo } from 'features/venue/fixtures/venueWithDetailedAccessibilityInfo'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { render, screen, fireEvent } from 'tests/utils'
 
 import { DetailedAccessibilityInfo } from './DetailedAccessibilityInfo'
@@ -15,7 +15,7 @@ describe('DetailedAccessibilityInfo', () => {
     render(
       <DetailedAccessibilityInfo
         url={fakeAccesLibreUrl}
-        data={venueWithDetailedAccessibilityInfo.externalAccessibilityData}
+        accessibilities={venueDataTest.externalAccessibilityData}
       />
     )
 
@@ -23,5 +23,44 @@ describe('DetailedAccessibilityInfo', () => {
     fireEvent.press(accesLibreLink)
 
     expect(Linking.openURL).toHaveBeenCalledWith(fakeAccesLibreUrl)
+  })
+
+  it('should return the correct accessibility label', () => {
+    render(
+      <DetailedAccessibilityInfo
+        url={fakeAccesLibreUrl}
+        accessibilities={venueDataTest.externalAccessibilityData}
+      />
+    )
+
+    expect(screen.getByLabelText('Handicap auditif: Non accessible')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Handicap psychique ou cognitif: Accessible')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Handicap moteur: Non accessible')).toBeOnTheScreen()
+    expect(screen.getByLabelText('Handicap visuel: Non accessible')).toBeOnTheScreen()
+  })
+
+  it('should display multiple description info on separate lines', () => {
+    render(
+      <DetailedAccessibilityInfo
+        url={fakeAccesLibreUrl}
+        accessibilities={venueDataTest.externalAccessibilityData}
+      />
+    )
+
+    fireEvent.press(screen.getByText('Handicap auditif'))
+
+    expect(screen.getByText('Boucle à induction magnétique portative')).toBeOnTheScreen()
+    expect(screen.getByText('Autre système non renseigné')).toBeOnTheScreen()
+  })
+
+  it('should display horizontal separators correctly', () => {
+    render(
+      <DetailedAccessibilityInfo
+        url={fakeAccesLibreUrl}
+        accessibilities={venueDataTest.externalAccessibilityData}
+      />
+    )
+
+    expect(screen.queryAllByTestId('horizontal-separator')).toHaveLength(3)
   })
 })

@@ -5,7 +5,7 @@ import { InViewProps } from 'react-native-intersection-observer'
 
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { GtlPlaylist, GtlPlaylistProps } from 'features/gtlPlaylist/components/GtlPlaylist'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -22,7 +22,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-const venue: VenueResponse = venueResponseSnap
+const venue: VenueResponse = venueDataTest
 
 const playlist: GtlPlaylistProps['playlist'] = {
   title: 'Test',

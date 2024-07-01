@@ -1,5 +1,5 @@
 import { SearchState } from 'features/search/types'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import { LocationMode } from 'libs/location/types'
@@ -13,13 +13,13 @@ const venueSearchParamsMock: SearchState = {
     locationType: LocationMode.EVERYWHERE,
   },
   venue: {
-    label: venueResponseSnap.publicName || '',
-    info: venueResponseSnap.city || '',
+    label: venueDataTest.publicName || '',
+    info: venueDataTest.city || '',
     _geoloc: {
-      lat: venueResponseSnap.latitude,
-      lng: venueResponseSnap.longitude,
+      lat: venueDataTest.latitude,
+      lng: venueDataTest.longitude,
     },
-    venueId: venueResponseSnap.id,
+    venueId: venueDataTest.id,
   },
   offerCategories: [],
   offerSubcategories: [],
@@ -41,7 +41,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('useNavigateToSearchWithVenueOffers', () => {
   it('should give the config according to the venue', () => {
-    const { result } = renderHook(() => useNavigateToSearchWithVenueOffers(venueResponseSnap))
+    const { result } = renderHook(() => useNavigateToSearchWithVenueOffers(venueDataTest))
 
     expect(result.current).toEqual({
       screen: 'TabNavigator',

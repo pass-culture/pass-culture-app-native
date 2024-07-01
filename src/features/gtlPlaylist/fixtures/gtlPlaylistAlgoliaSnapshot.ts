@@ -2,7 +2,7 @@ import { SearchResponse } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Offer } from 'shared/offer/types'
 
 export const gtlPlaylistAlgoliaSnapshot: GtlPlaylistData[] = [
@@ -15,7 +15,7 @@ export const gtlPlaylistAlgoliaSnapshot: GtlPlaylistData[] = [
             name: 'Mon abonnement bibliothèque',
             subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
           },
-          venue: venueResponseSnap,
+          venue: venueDataTest,
           _geoloc: {
             lat: 2,
             lng: 2,
@@ -27,7 +27,7 @@ export const gtlPlaylistAlgoliaSnapshot: GtlPlaylistData[] = [
             name: 'Mon abonnement médiathèque',
             subcategoryId: SubcategoryIdEnum.ABO_MEDIATHEQUE,
           },
-          venue: venueResponseSnap,
+          venue: venueDataTest,
           _geoloc: {
             lat: 2,
             lng: 2,
@@ -39,7 +39,7 @@ export const gtlPlaylistAlgoliaSnapshot: GtlPlaylistData[] = [
             name: 'Mon abonnement livres numériques',
             subcategoryId: SubcategoryIdEnum.ABO_LIVRE_NUMERIQUE,
           },
-          venue: venueResponseSnap,
+          venue: venueDataTest,
           _geoloc: {
             lat: 2,
             lng: 2,
@@ -51,7 +51,7 @@ export const gtlPlaylistAlgoliaSnapshot: GtlPlaylistData[] = [
             name: 'Mon abonnement ludothèque',
             subcategoryId: SubcategoryIdEnum.ABO_LUDOTHEQUE,
           },
-          venue: venueResponseSnap,
+          venue: venueDataTest,
           _geoloc: {
             lat: 2,
             lng: 2,
@@ -63,7 +63,7 @@ export const gtlPlaylistAlgoliaSnapshot: GtlPlaylistData[] = [
             name: 'Mon abonnement concert',
             subcategoryId: SubcategoryIdEnum.ABO_CONCERT,
           },
-          venue: venueResponseSnap,
+          venue: venueDataTest,
           _geoloc: {
             lat: 2,
             lng: 2,
@@ -75,7 +75,7 @@ export const gtlPlaylistAlgoliaSnapshot: GtlPlaylistData[] = [
             name: 'Mon abonnement jeu vidéo',
             subcategoryId: SubcategoryIdEnum.ABO_JEU_VIDEO,
           },
-          venue: venueResponseSnap,
+          venue: venueDataTest,
           _geoloc: {
             lat: 2,
             lng: 2,

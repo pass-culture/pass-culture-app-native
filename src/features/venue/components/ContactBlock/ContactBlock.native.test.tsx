@@ -1,13 +1,13 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ContactBlock } from './ContactBlock'
 
-const venueId = venueResponseSnap.id
+const venueId = venueDataTest.id
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -22,7 +22,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<ContactBlock/>', () => {
   it('should navigate to mail when pressing on email', async () => {
-    render(<ContactBlock venue={venueResponseSnap} />)
+    render(<ContactBlock venue={venueDataTest} />)
 
     fireEvent.press(screen.getByText('contact@venue.com'))
 
@@ -32,7 +32,7 @@ describe('<ContactBlock/>', () => {
   })
 
   it('should navigate to tel when pressing on phoneNumber', async () => {
-    render(<ContactBlock venue={venueResponseSnap} />)
+    render(<ContactBlock venue={venueDataTest} />)
 
     fireEvent.press(screen.getByText('+33102030405'))
 
@@ -42,7 +42,7 @@ describe('<ContactBlock/>', () => {
   })
 
   it('should navigate to website when pressing on website adress', async () => {
-    render(<ContactBlock venue={venueResponseSnap} />)
+    render(<ContactBlock venue={venueDataTest} />)
 
     fireEvent.press(screen.getByText('https://my@website.com'))
 
@@ -52,7 +52,7 @@ describe('<ContactBlock/>', () => {
   })
 
   it('should display the email, phoneNumber and website', () => {
-    render(<ContactBlock venue={venueResponseSnap} />)
+    render(<ContactBlock venue={venueDataTest} />)
 
     expect(screen.getByText('contact@venue.com')).toBeOnTheScreen()
     expect(screen.getByText('+33102030405')).toBeOnTheScreen()
@@ -60,7 +60,7 @@ describe('<ContactBlock/>', () => {
   })
 
   it('should log event VenueContact when opening email', () => {
-    render(<ContactBlock venue={venueResponseSnap} />)
+    render(<ContactBlock venue={venueDataTest} />)
     fireEvent.press(screen.getByText('contact@venue.com'))
 
     expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {
@@ -70,7 +70,7 @@ describe('<ContactBlock/>', () => {
   })
 
   it('should log event VenueContact when opening phone number', () => {
-    render(<ContactBlock venue={venueResponseSnap} />)
+    render(<ContactBlock venue={venueDataTest} />)
     fireEvent.press(screen.getByText('+33102030405'))
 
     expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {
@@ -80,7 +80,7 @@ describe('<ContactBlock/>', () => {
   })
 
   it('should log event VenueContact when opening website', () => {
-    render(<ContactBlock venue={venueResponseSnap} />)
+    render(<ContactBlock venue={venueDataTest} />)
     fireEvent.press(screen.getByText('https://my@website.com'))
 
     expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {
@@ -91,7 +91,7 @@ describe('<ContactBlock/>', () => {
 
   it('should show snackbar when error', async () => {
     openUrlSpy.mockRejectedValueOnce(new Error('error'))
-    render(<ContactBlock venue={venueResponseSnap} />)
+    render(<ContactBlock venue={venueDataTest} />)
 
     fireEvent.press(screen.getByText('https://my@website.com'))
 
@@ -101,7 +101,7 @@ describe('<ContactBlock/>', () => {
   })
 
   it('should display nothing when contact section is empty', () => {
-    render(<ContactBlock venue={{ ...venueResponseSnap, contact: {} }} />)
+    render(<ContactBlock venue={{ ...venueDataTest, contact: {} }} />)
 
     expect(screen.queryByText('contact@venue.com')).not.toBeOnTheScreen()
     expect(screen.queryByText('+33102030405')).not.toBeOnTheScreen()

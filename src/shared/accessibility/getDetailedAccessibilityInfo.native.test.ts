@@ -1,4 +1,4 @@
-import { venueWithDetailedAccessibilityInfo } from 'features/venue/fixtures/venueWithDetailedAccessibilityInfo'
+import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
@@ -8,9 +8,7 @@ import { getDetailedAccessibilityInfo } from './getDetailedAccessibilityInfo'
 
 describe('getDetailedAccessibilityInfo', () => {
   it('should return detailed info for audio disability', () => {
-    const result = getDetailedAccessibilityInfo(
-      venueWithDetailedAccessibilityInfo.externalAccessibilityData
-    )
+    const result = getDetailedAccessibilityInfo(venueDataTest.externalAccessibilityData)
 
     const audioDisabilityInfo = result[0]
 
@@ -28,9 +26,7 @@ describe('getDetailedAccessibilityInfo', () => {
   })
 
   it('should return detailed info for mental disability', () => {
-    const result = getDetailedAccessibilityInfo(
-      venueWithDetailedAccessibilityInfo.externalAccessibilityData
-    )
+    const result = getDetailedAccessibilityInfo(venueDataTest.externalAccessibilityData)
 
     const mentalDisabilityInfo = result[1]
 
@@ -43,9 +39,7 @@ describe('getDetailedAccessibilityInfo', () => {
   })
 
   it('should return detailed info for motor disability', () => {
-    const result = getDetailedAccessibilityInfo(
-      venueWithDetailedAccessibilityInfo.externalAccessibilityData
-    )
+    const result = getDetailedAccessibilityInfo(venueDataTest.externalAccessibilityData)
 
     const motorDisabilityInfo = result[2]
 
@@ -63,9 +57,7 @@ describe('getDetailedAccessibilityInfo', () => {
   })
 
   it('should return detailed info for visual disability', () => {
-    const result = getDetailedAccessibilityInfo(
-      venueWithDetailedAccessibilityInfo.externalAccessibilityData
-    )
+    const result = getDetailedAccessibilityInfo(venueDataTest.externalAccessibilityData)
 
     const visualDisabilityInfo = result[3]
 
