@@ -5,10 +5,11 @@ import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchN1Books } from 'features/search/pages/Search/SearchN1Books/SearchN1Books'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
@@ -20,6 +21,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<SearchN1Books/>', () => {
   beforeEach(() => {
@@ -40,7 +42,7 @@ describe('<SearchN1Books/>', () => {
   it('should update SearchState with correct data', async () => {
     render(reactQueryProviderHOC(<SearchN1Books />))
     const subcategoryButton = await screen.findByText('Romans et littérature')
-    await act(() => fireEvent.press(subcategoryButton))
+    fireEvent.press(subcategoryButton)
     await screen.findByText('Romans et littérature')
 
     expect(mockDispatch).toHaveBeenCalledWith({
@@ -59,7 +61,7 @@ describe('<SearchN1Books/>', () => {
     render(reactQueryProviderHOC(<SearchN1Books />))
     const subcategoryButton = await screen.findByText('Romans et littérature')
 
-    await act(() => fireEvent.press(subcategoryButton))
+    fireEvent.press(subcategoryButton)
     await screen.findByText('Romans et littérature')
 
     const expectedResult = {

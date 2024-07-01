@@ -28,8 +28,8 @@ exports[`SearchHeader component should render SearchHeader 1`] = `
       style={
         [
           {
+            "alignItems": "center",
             "flexDirection": "row",
-            "justifyContent": "space-between",
           },
         ]
       }
@@ -38,197 +38,208 @@ exports[`SearchHeader component should render SearchHeader 1`] = `
         style={
           [
             {
-              "flexShrink": 1,
-              "width": "100%",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
             },
           ]
         }
-        testID="SearchHeaderTitleContainer"
       >
         <View
           style={
             [
               {
-                "alignItems": "flex-start",
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
+                "flexShrink": 1,
+                "width": "100%",
               },
             ]
           }
+          testID="SearchHeaderTitleContainer"
         >
           <View
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexWrap": "wrap",
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
                   "justifyContent": "flex-start",
-                  "maxWidth": "75%",
-                },
-              ]
-            }
-          >
-            <Text
-              htmlFor="testUuidV4"
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Black",
-                    "fontSize": 26,
-                    "lineHeight": 34,
-                  },
-                ]
-              }
-            >
-              Rechercher
-            </Text>
-          </View>
-        </View>
-        <Text
-          style={
-            [
-              {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-                "marginTop": 4,
-              },
-            ]
-          }
-        >
-          Toutes les offres à portée de main
-        </Text>
-      </View>
-      <View
-        testID="InsideLocationWidget"
-      >
-        <View
-          accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
-          accessibilityRole="button"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onLayout={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "marginLeft": 8,
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Ouvrir la modale de localisation depuis le widget"
-        >
-          <View
-            isActive={false}
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
-                  "borderRadius": 40,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "height": 40,
-                  "justifyContent": "center",
-                  "width": 40,
                 },
               ]
             }
           >
             <View
-              height={24}
-              testID="BicolorLocationPointer"
-              width={24}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "flex-start",
+                    "maxWidth": "75%",
+                  },
+                ]
+              }
             >
-              <Text>
-                BicolorLocationPointer-SVG-Mock
+              <Text
+                htmlFor="testUuidV4"
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Black",
+                      "fontSize": 26,
+                      "lineHeight": 34,
+                    },
+                  ]
+                }
+              >
+                Rechercher
               </Text>
             </View>
           </View>
           <Text
-            numberOfLines={1}
             style={
               [
                 {
-                  "color": "#161617",
+                  "color": "#696A6F",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 16,
-                  "maxWidth": 80,
-                  "paddingTop": 4,
+                  "marginTop": 4,
                 },
               ]
             }
           >
-            Me localiser
+            Toutes les offres à portée de main
           </Text>
         </View>
-        <Modal
-          accessibilityLabelledBy="testUuidV4"
-          accessibilityModal={true}
-          accessibilityRole="none"
-          animationType="none"
-          deviceHeight={1334}
-          deviceWidth={750}
-          hardwareAccelerated={false}
-          hideModalContentWhileAnimating={false}
-          onBackdropPress={[Function]}
-          onModalHide={[Function]}
-          onModalWillHide={[Function]}
-          onModalWillShow={[Function]}
-          onRequestClose={[Function]}
-          panResponderThreshold={4}
-          scrollHorizontal={false}
-          scrollOffset={0}
-          scrollOffsetMax={0}
-          scrollTo={null}
-          statusBarTranslucent={true}
-          supportedOrientations={
-            [
-              "portrait",
-              "landscape",
-            ]
-          }
-          swipeThreshold={100}
-          testID="modal"
-          transparent={true}
-          visible={false}
-        />
+        <View
+          testID="InsideLocationWidget"
+        >
+          <View
+            accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onLayout={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "marginLeft": 8,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Ouvrir la modale de localisation depuis le widget"
+          >
+            <View
+              isActive={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#696A6F",
+                    "borderRadius": 40,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "width": 40,
+                  },
+                ]
+              }
+            >
+              <View
+                height={24}
+                testID="BicolorLocationPointer"
+                width={24}
+              >
+                <Text>
+                  BicolorLocationPointer-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                    "maxWidth": 80,
+                    "paddingTop": 4,
+                  },
+                ]
+              }
+            >
+              Me localiser
+            </Text>
+          </View>
+          <Modal
+            accessibilityLabelledBy="testUuidV4"
+            accessibilityModal={true}
+            accessibilityRole="none"
+            animationType="none"
+            deviceHeight={1334}
+            deviceWidth={750}
+            hardwareAccelerated={false}
+            hideModalContentWhileAnimating={false}
+            onBackdropPress={[Function]}
+            onModalHide={[Function]}
+            onModalWillHide={[Function]}
+            onModalWillShow={[Function]}
+            onRequestClose={[Function]}
+            panResponderThreshold={4}
+            scrollHorizontal={false}
+            scrollOffset={0}
+            scrollOffsetMax={0}
+            scrollTo={null}
+            statusBarTranslucent={true}
+            supportedOrientations={
+              [
+                "portrait",
+                "landscape",
+              ]
+            }
+            swipeThreshold={100}
+            testID="modal"
+            transparent={true}
+            visible={false}
+          />
+        </View>
       </View>
     </View>
     <View
