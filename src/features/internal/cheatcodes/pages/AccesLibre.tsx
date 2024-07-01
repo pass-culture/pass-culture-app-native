@@ -43,8 +43,7 @@ export const AccesLibre = () => {
 
         {venue ? (
           venue.externalAccessibilityData ? (
-            details &&
-            details.map((detail, index) => (
+            details?.map((detail, index) => (
               <View key={index}>
                 <ViewGap gap={5}>
                   <StyledView>
