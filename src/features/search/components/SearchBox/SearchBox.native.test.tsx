@@ -219,9 +219,7 @@ describe('SearchBox component', () => {
 
     const previousButton = screen.queryByTestId('Revenir en arrière')
 
-    await act(async () => {
-      expect(previousButton).not.toBeOnTheScreen()
-    })
+    expect(previousButton).not.toBeOnTheScreen()
   })
 
   it('should show back button when being on the search results view', async () => {
@@ -231,9 +229,7 @@ describe('SearchBox component', () => {
 
     const previousButton = screen.getByTestId('Revenir en arrière')
 
-    await act(async () => {
-      expect(previousButton).toBeOnTheScreen()
-    })
+    expect(previousButton).toBeOnTheScreen()
   })
 
   it('should show back button when being focus on suggestions', async () => {
@@ -242,18 +238,14 @@ describe('SearchBox component', () => {
 
     const previousButton = screen.getByTestId('Revenir en arrière')
 
-    await act(async () => {
-      expect(previousButton).toBeOnTheScreen()
-    })
+    expect(previousButton).toBeOnTheScreen()
   })
 
   it('should show the text typed by the user', async () => {
     renderSearchBox()
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
-    await act(async () => {
-      fireEvent(searchInput, 'onChangeText', 'Some text')
-    })
+    fireEvent(searchInput, 'onChangeText', 'Some text')
 
     expect(searchInput.props.value).toBe('Some text')
   })
@@ -263,9 +255,7 @@ describe('SearchBox component', () => {
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-    await act(async () => {
-      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
-    })
+    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
 
     expect(mockDispatch).not.toHaveBeenCalled()
   })
@@ -282,9 +272,7 @@ describe('SearchBox component', () => {
       renderSearchBox()
       const previousButton = screen.getByTestId('Revenir en arrière')
 
-      await act(async () => {
-        fireEvent.press(previousButton)
-      })
+      fireEvent.press(previousButton)
 
       expect(mockHideSuggestions).toHaveBeenNthCalledWith(1)
     })
@@ -297,9 +285,7 @@ describe('SearchBox component', () => {
 
       const previousButton = screen.getByTestId('Revenir en arrière')
 
-      await act(async () => {
-        fireEvent.press(previousButton)
-      })
+      fireEvent.press(previousButton)
 
       expect(mockHideSuggestions).toHaveBeenNthCalledWith(1)
     })
@@ -314,9 +300,7 @@ describe('SearchBox component', () => {
       renderSearchBox()
 
       const resetIcon = await screen.findByTestId('Réinitialiser la recherche')
-      await act(async () => {
-        fireEvent.press(resetIcon)
-      })
+      fireEvent.press(resetIcon)
 
       expect(screen.queryByText('Some text')).not.toBeOnTheScreen()
 
@@ -336,9 +320,7 @@ describe('SearchBox component', () => {
 
       const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-      await act(async () => {
-        fireEvent(searchInput, 'onFocus')
-      })
+      fireEvent(searchInput, 'onFocus')
 
       expect(mockDispatch).not.toHaveBeenCalled()
     })
@@ -353,9 +335,7 @@ describe('SearchBox component', () => {
       renderSearchBox()
 
       const resetIcon = screen.getByTestId('Réinitialiser la recherche')
-      await act(async () => {
-        fireEvent.press(resetIcon)
-      })
+      fireEvent.press(resetIcon)
 
       expect(mockDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
@@ -378,9 +358,7 @@ describe('SearchBox component', () => {
       renderSearchBox(true)
 
       const resetIcon = screen.getByTestId('Réinitialiser la recherche')
-      await act(async () => {
-        fireEvent.press(resetIcon)
-      })
+      fireEvent.press(resetIcon)
 
       expect(mockDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
@@ -404,9 +382,7 @@ describe('SearchBox component', () => {
     renderSearchBox(true)
 
     const goBackIcon = screen.getByTestId('icon-back')
-    await act(async () => {
-      fireEvent.press(goBackIcon)
-    })
+    fireEvent.press(goBackIcon)
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
@@ -419,9 +395,7 @@ describe('SearchBox component', () => {
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-    await act(async () => {
-      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
-    })
+    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
@@ -440,9 +414,7 @@ describe('SearchBox component', () => {
 
     const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-    await act(async () => {
-      fireEvent(searchInput, 'onFocus')
-    })
+    fireEvent(searchInput, 'onFocus')
 
     expect(mockShowSuggestions).toHaveBeenNthCalledWith(1)
   })
@@ -481,8 +453,6 @@ describe('SearchBox component', () => {
     useRoute.mockReturnValueOnce({ name: SearchView.Results })
 
     renderSearchBox()
-
-    await act(async () => {})
 
     expect(screen.queryByText(venue.label)).not.toBeOnTheScreen()
   })
@@ -531,9 +501,7 @@ describe('<SearchBox /> with SearchN1Books as previous route on search results',
 
     const previousButton = screen.getByTestId('Revenir en arrière')
 
-    await act(async () => {
-      fireEvent.press(previousButton)
-    })
+    fireEvent.press(previousButton)
 
     expectCurrentRouteToBe(previousRouteName)
   })
@@ -557,9 +525,7 @@ describe('SearchBox component with venue previous route on search results', () =
 
     const previousButton = screen.getByTestId('Revenir en arrière')
 
-    await act(async () => {
-      fireEvent.press(previousButton)
-    })
+    fireEvent.press(previousButton)
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_STATE',
@@ -572,9 +538,7 @@ describe('SearchBox component with venue previous route on search results', () =
 
     const previousButton = screen.getByTestId('Revenir en arrière')
 
-    await act(async () => {
-      fireEvent.press(previousButton)
-    })
+    fireEvent.press(previousButton)
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
