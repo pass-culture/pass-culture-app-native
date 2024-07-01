@@ -9,6 +9,7 @@ import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
+import { OfferTileProps } from 'features/offer/types'
 import { analytics } from 'libs/analytics'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -44,6 +45,7 @@ type PlaylistItemProps = {
   categoryMapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping
   apiRecoParams?: RecommendationApiParams
+  variant: OfferTileProps['variant']
 }
 
 type RenderPlaylistItemProps = {
@@ -59,6 +61,7 @@ const renderPlaylistItem = ({
   categoryMapping,
   labelMapping,
   apiRecoParams,
+  variant,
 }: PlaylistItemProps) => {
   return function RenderItem({ item, width, height, playlistType }: RenderPlaylistItemProps) {
     const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
@@ -81,6 +84,7 @@ const renderPlaylistItem = ({
         fromOfferId={offer.id}
         playlistType={playlistType}
         apiRecoParams={apiRecoParams}
+        variant={variant}
       />
     )
   }
@@ -100,6 +104,7 @@ export function OfferPlaylistList({
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const { sameAuthorPlaylist: sameAuthorPlaylistConfig } = useRemoteConfigContext()
+  const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
 
   const {
     logSameCategoryPlaylistVerticalScroll,
@@ -202,6 +207,7 @@ export function OfferPlaylistList({
                 categoryMapping,
                 labelMapping,
                 apiRecoParams: playlist.apiRecoParams,
+                variant: isNewOfferTileDisplayed ? 'new' : 'default',
               })}
               title={playlist.title}
               onEndReached={() => trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)}

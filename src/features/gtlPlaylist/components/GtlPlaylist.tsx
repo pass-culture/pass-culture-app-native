@@ -10,6 +10,8 @@ import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOf
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { formatDates } from 'libs/parsers/formatDates'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
@@ -25,6 +27,7 @@ export interface GtlPlaylistProps {
 }
 
 export function GtlPlaylist({ venue, playlist }: Readonly<GtlPlaylistProps>) {
+  const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const transformOfferHits = useTransformOfferHits()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
@@ -67,10 +70,19 @@ export function GtlPlaylist({ venue, playlist }: Readonly<GtlPlaylistProps>) {
           searchId={route.params?.searchId}
           moduleId={entryId}
           index={index}
+          variant={isNewOfferTileDisplayed ? 'new' : 'default'}
         />
       )
     },
-    [entryId, labelMapping, mapping, route.params?.searchId, transformOfferHits, venue?.id]
+    [
+      entryId,
+      labelMapping,
+      mapping,
+      route.params?.searchId,
+      transformOfferHits,
+      venue?.id,
+      isNewOfferTileDisplayed,
+    ]
   )
 
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(playlist.layout)
