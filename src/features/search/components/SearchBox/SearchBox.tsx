@@ -156,7 +156,18 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         setQuery('')
         hideSuggestions()
         break
-      case isVenuePreviousRoute || isSearchN1BooksPreviousRoute:
+      case isVenuePreviousRoute:
+        dispatch({
+          type: 'SET_STATE',
+          payload: { ...searchState, venue: undefined },
+        })
+        goBack()
+        break
+      case isSearchN1BooksPreviousRoute:
+        dispatch({
+          type: 'SET_STATE',
+          payload: { ...searchState, venue: undefined },
+        })
         goBack()
         break
       case currentView === SearchView.Results:

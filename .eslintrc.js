@@ -87,8 +87,7 @@ module.exports = {
           {
             name: 'zustand',
             importNames: ['createStore', 'create'],
-            message:
-              'To create a store, use libs/store/createStore instead',
+            message: 'To create a store, use libs/store/createStore instead',
           },
           {
             name: 'react-native-animatable',
@@ -373,7 +372,7 @@ module.exports = {
         'jest/no-identical-title': 'error',
         'jest/no-mocks-import': 'off',
         'jest/valid-expect': 'error',
-        'jest/expect-expect': ['error', { assertFunctionNames: ['expect', 'measurePerformance'] }],
+        'jest/expect-expect': ['error', { assertFunctionNames: ['expect*', 'measurePerformance'] }],
         'jest/valid-title': ['error', { disallowedWords: [] }],
         'testing-library/no-unnecessary-act': 'off',
         'testing-library/no-wait-for-multiple-assertions': 'off',
