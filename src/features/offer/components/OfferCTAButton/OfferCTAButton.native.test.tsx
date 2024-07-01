@@ -10,7 +10,6 @@ import { mockedBookingApi } from 'fixtures/booking'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -22,16 +21,7 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
-const mockSubcategories = PLACEHOLDER_DATA.subcategories
-const mockSearchGroups = PLACEHOLDER_DATA.searchGroups
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      subcategories: mockSubcategories,
-      searchGroups: mockSearchGroups,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 // feature flag wipPricesByCategories
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)

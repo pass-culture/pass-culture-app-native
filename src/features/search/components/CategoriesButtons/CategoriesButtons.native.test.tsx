@@ -3,19 +3,13 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { CategoriesButtons } from './CategoriesButtons'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
-const mockData = PLACEHOLDER_DATA
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: mockData,
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 const mockSearchState = initialSearchState
 const mockDispatch = jest.fn()

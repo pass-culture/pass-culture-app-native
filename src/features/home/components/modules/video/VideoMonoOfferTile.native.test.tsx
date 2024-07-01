@@ -8,7 +8,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -30,7 +30,10 @@ const hideModalMock = jest.fn()
 
 describe('VideoMonoOfferTile', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
+    mockServer.getApi<SubcategoriesResponseModelv2>(
+      '/v1/subcategories/v2',
+      subcategoriesResponseFixture
+    )
   })
 
   it('should redirect to an offer when pressing it', async () => {

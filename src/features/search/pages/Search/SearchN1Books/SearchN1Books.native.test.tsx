@@ -5,7 +5,7 @@ import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchN1Books } from 'features/search/pages/Search/SearchN1Books/SearchN1Books'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -23,7 +23,10 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<SearchN1Books/>', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
+    mockServer.getApi<SubcategoriesResponseModelv2>(
+      '/v1/subcategories/v2',
+      subcategoriesResponseFixture
+    )
     useRoute.mockImplementation(() => ({
       params: { offerCategories: SearchGroupNameEnumv2.LIVRES },
     }))

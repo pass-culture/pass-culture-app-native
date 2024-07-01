@@ -7,7 +7,6 @@ import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { formatDateTimezone } from 'libs/parsers/formatDates'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { render, screen } from 'tests/utils'
 
 import { BookingInformations } from './BookingInformations'
@@ -20,14 +19,7 @@ jest.mock('libs/address/useFormatFullAddress')
 const mockedUseBooking = jest.mocked(useBookingContext)
 const mockedUseBookingStock = jest.mocked(useBookingStock)
 
-const mockSubcategories = PLACEHOLDER_DATA.subcategories
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      subcategories: mockSubcategories,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 const cinePleinAirOffer = {
   ...baseOffer,

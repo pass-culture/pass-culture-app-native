@@ -10,7 +10,6 @@ import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { ThemeProvider } from 'libs/styled'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -45,16 +44,7 @@ const nativeEventEnd = {
 
 jest.mock('features/auth/context/AuthContext')
 
-const mockSubcategories = PLACEHOLDER_DATA.subcategories
-const mockHomepageLabels = PLACEHOLDER_DATA.homepageLabels
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      subcategories: mockSubcategories,
-      homepageLabels: mockHomepageLabels,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 

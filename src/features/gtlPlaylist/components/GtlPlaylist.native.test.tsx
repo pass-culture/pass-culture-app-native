@@ -8,19 +8,11 @@ import { GtlPlaylist, GtlPlaylistProps } from 'features/gtlPlaylist/components/G
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
-const mockSubcategories = PLACEHOLDER_DATA.subcategories
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      subcategories: mockSubcategories,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 const venue: VenueResponse = venueResponseSnap
 

@@ -2,14 +2,9 @@ import React from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { OfferNativeCategoryChoices } from 'features/internal/marketingAndCommunication/atoms/OfferNativeCategoryChoices'
-import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 import { render, fireEvent, screen } from 'tests/utils'
 
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: mockData,
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('libs/firebase/analytics/analytics')
 

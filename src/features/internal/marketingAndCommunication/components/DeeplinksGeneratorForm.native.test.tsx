@@ -7,14 +7,9 @@ import {
 } from 'features/internal/marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { ScreensUsedByMarketing } from 'features/internal/marketingAndCommunication/config/deeplinksExportConfig'
 import { LocationMode } from 'libs/location/types'
-import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen } from 'tests/utils'
 
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: mockData,
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 mockdate.set(new Date('2022-08-09T00:00:00Z'))
 

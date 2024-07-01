@@ -14,7 +14,7 @@ import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics'
 import { EmptyResponse } from 'libs/fetch'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Credit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -62,7 +62,10 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<Favorite /> component', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, { ...PLACEHOLDER_DATA })
+    mockServer.getApi<SubcategoriesResponseModelv2>(
+      `/v1/subcategories/v2`,
+      subcategoriesResponseFixture
+    )
   })
 
   it('should navigate to the offer when clicking on the favorite', async () => {

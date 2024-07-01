@@ -17,7 +17,6 @@ import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { storage } from 'libs/storage'
-import { PLACEHOLDER_DATA as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -54,11 +53,7 @@ jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: jest.fn(() => mockOffer),
 }))
 
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: mockSubcategoriesData,
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
   isLoggedIn: true,
