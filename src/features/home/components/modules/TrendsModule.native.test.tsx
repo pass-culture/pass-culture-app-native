@@ -156,8 +156,8 @@ describe('TrendsModule', () => {
 
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('ThematicHome', {
-          homeId: '4Fs4egA8G2z3fHgU2XQj3h',
-          moduleId: 'g6VpeYbOosfALeqR55Ah6',
+          homeId: '7qcfqY5zFesLVO5fMb4cqm',
+          moduleId: '16ZgVwnOXvVc0N8ko9Kius',
           from: 'trend_block',
         })
       })
@@ -172,7 +172,7 @@ describe('TrendsModule', () => {
       expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'trend_block' })
     })
 
-    it('should log analytics on click on a trend', async () => {
+    it('should log trends block clicked when pressing a trend', async () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
       render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
 
@@ -182,6 +182,20 @@ describe('TrendsModule', () => {
         moduleListID: 'g6VpeYbOosfALeqR55Ah6',
         entryId: '4Fs4egA8G2z3fHgU2XQj3h',
         moduleId: '16ZgVwnOXvVc0N8ko9Kius',
+        toEntryId: '7qcfqY5zFesLVO5fMb4cqm',
+      })
+    })
+
+    it('should log trends block clicked when pressing venue map block content type', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      render(<TrendsModule {...formattedTrendsModule} {...trackingProps} />)
+
+      fireEvent.press(screen.getByText('Accès carte des lieux'))
+
+      expect(analytics.logTrendsBlockClicked).toHaveBeenCalledWith({
+        moduleListID: 'g6VpeYbOosfALeqR55Ah6',
+        entryId: '4Fs4egA8G2z3fHgU2XQj3h',
+        moduleId: '6dn0unOv4tRBNfOebVHOOy',
         toEntryId: '7qcfqY5zFesLVO5fMb4cqm',
       })
     })

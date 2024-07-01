@@ -36,8 +36,8 @@ describe('TrendsModule', () => {
 
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('ThematicHome', {
-          homeId: '4Fs4egA8G2z3fHgU2XQj3h',
-          moduleId: 'g6VpeYbOosfALeqR55Ah6',
+          homeId: '7qcfqY5zFesLVO5fMb4cqm',
+          moduleId: '6dn0unOv4tRBNfOebVHOOy',
           from: 'trend_block',
         })
       })

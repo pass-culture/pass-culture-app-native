@@ -53,12 +53,21 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGraphicRedesign])
 
+  const handleLogTrendsBlockClicked = (props: TrendBlock) =>
+    analytics.logTrendsBlockClicked({
+      moduleListID: moduleId,
+      entryId: homeEntryId,
+      moduleId: props.id,
+      toEntryId: props.homeEntryId ?? '',
+    })
+
   const getNavigationProps = (props: TrendBlock): TrendNavigationProps => {
     if (props.type === ContentTypes.VENUE_MAP_BLOCK && !isWeb) {
       return {
         navigateTo: shouldOpenMapDirectly ? { screen: 'VenueMap' } : undefined,
         enableNavigate: shouldOpenMapDirectly,
         onBeforeNavigate: () => {
+          handleLogTrendsBlockClicked(props)
           analytics.logConsultVenueMap({ from: 'trend_block' })
           if (!shouldOpenMapDirectly) showVenueMapLocationModal()
         },
@@ -68,15 +77,10 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
     return {
       navigateTo: {
         screen: 'ThematicHome',
-        params: { homeId: homeEntryId, moduleId, from: 'trend_block' },
+        params: { homeId: props.homeEntryId, moduleId: props.id, from: 'trend_block' },
       },
       onBeforeNavigate: () => {
-        analytics.logTrendsBlockClicked({
-          moduleListID: moduleId,
-          entryId: homeEntryId,
-          moduleId: props.id,
-          toEntryId: props.homeEntryId ?? '',
-        })
+        handleLogTrendsBlockClicked(props)
       },
     }
   }
