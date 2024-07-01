@@ -88,8 +88,8 @@ export const useVerticalVideoPlayer = ({
   const logPausedVideo = async () => {
     const videoDuration = await getVideoDuration()
     analytics.logVideoPaused({
-      videoDuration,
-      seenDuration: videoDuration ? elapsed * videoDuration : 0,
+      videoDuration: videoDuration ? Math.round(videoDuration) : 0,
+      seenDuration: videoDuration ? Math.round(elapsed * videoDuration) : 0,
       youtubeId: currentVideoId,
       homeEntryId,
       moduleId,
