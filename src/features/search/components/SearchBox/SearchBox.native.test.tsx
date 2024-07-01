@@ -13,6 +13,7 @@ import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'
+import { expectCurrentRouteToBe } from 'tests/utils/navigation'
 
 import { SearchBox } from './SearchBox'
 
@@ -504,6 +505,40 @@ describe('SearchBox component', () => {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+describe('<SearchBox /> with SearchN1Books as previous route on search results', () => {
+  const previousRouteName = 'TabNavigator'
+  const currentRouteName = 'SearchN1Books'
+
+  const mockRoutesWithSearchN1Books = [
+    { key: currentRouteName, name: currentRouteName },
+    { key: previousRouteName, name: previousRouteName },
+  ]
+
+  beforeEach(() => {
+    jest.spyOn(navigationRef, 'getState').mockReturnValue({
+      key: 'Navigator',
+      index: 1,
+      routeNames: ['TabNavigator'],
+      routes: mockRoutesWithSearchN1Books,
+      type: 'tab',
+      stale: false,
+    })
+    useRoute.mockReturnValue({ name: SearchView.Results })
+  })
+
+  it('should set the view to Landing when the user press the back button', async () => {
+    renderSearchBox()
+
+    const previousButton = screen.getByTestId('Revenir en arrière')
+
+    await act(async () => {
+      fireEvent.press(previousButton)
+    })
+
+    expectCurrentRouteToBe(previousRouteName)
+  })
+})
+
 describe('SearchBox component with venue previous route on search results', () => {
   beforeEach(() => {
     jest.spyOn(navigationRef, 'getState').mockReturnValue({
@@ -517,7 +552,7 @@ describe('SearchBox component with venue previous route on search results', () =
     useRoute.mockReturnValue({ name: SearchView.Results })
   })
 
-  it('should unselect the venue and set the view to Landing when current rout is search and previous route is Venue and the user user press the back button', async () => {
+  it('should unselect the venue and set the view to Landing when current route is search and previous route is Venue when the user press the back button', async () => {
     renderSearchBox()
 
     const previousButton = screen.getByTestId('Revenir en arrière')
