@@ -96,5 +96,5 @@ const SwitchWrapper = styled.View({
 })
 
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
-  ...theme.typography.buttonText,
+  ...theme.typography.button,
 }))

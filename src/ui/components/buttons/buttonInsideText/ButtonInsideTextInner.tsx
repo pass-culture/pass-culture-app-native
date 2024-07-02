@@ -60,6 +60,6 @@ const StyledText = styled.Text<{
   typography?: string
   color?: ColorsEnum
 }>(({ theme, typography, color }) => ({
-  ...(typography === 'Caption' ? theme.typography.caption : theme.typography.buttonText),
+  ...(typography === 'Caption' ? theme.typography.caption : theme.typography.button),
   color: color ?? theme.colors.primary,
 }))

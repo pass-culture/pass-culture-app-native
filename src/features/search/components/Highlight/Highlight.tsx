@@ -96,4 +96,4 @@ const ItalicText = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.black,
 }))
 
-const BoldItalicText = styled(Typo.Body)(({ theme }) => theme.typography.bodyBoldItalic)
+const BoldItalicText = styled(Typo.Body)(({ theme }) => theme.typography.bodyItalicBold)
