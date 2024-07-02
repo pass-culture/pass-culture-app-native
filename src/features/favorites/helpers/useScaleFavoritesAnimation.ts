@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { Animated } from 'react-native'
 
-export const useScaleFavoritesAnimation = (nbFavorites?: number) => {
+export const useScaleAnimation = (nbFavorites?: number) => {
   const scaleAnimation = useRef(new Animated.Value(1))
 
   useEffect(() => {
