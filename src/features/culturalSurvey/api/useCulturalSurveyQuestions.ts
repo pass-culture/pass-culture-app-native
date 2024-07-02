@@ -10,7 +10,7 @@ import { useShouldShowCulturalSurvey } from 'shared/culturalSurvey/useShouldShow
 const STALE_TIME_CULTURAL_SURVEY_QUESTIONS = 5 * 60 * 1000
 
 export function useCulturalSurveyQuestions() {
-  const { user } = useAuthContext()
+  const { user, isLoggedIn } = useAuthContext()
   const netInfo = useNetInfoContext()
   const shouldShowCulturalSurvey = useShouldShowCulturalSurvey()
   const shouldRequestCulturalSurveyQuestions = shouldShowCulturalSurvey(user)
@@ -20,7 +20,7 @@ export function useCulturalSurveyQuestions() {
     () => api.getNativeV1CulturalSurveyQuestions(),
     {
       staleTime: STALE_TIME_CULTURAL_SURVEY_QUESTIONS,
-      enabled: !!netInfo.isConnected && shouldRequestCulturalSurveyQuestions,
+      enabled: !!netInfo.isConnected && isLoggedIn && shouldRequestCulturalSurveyQuestions,
     }
   )
 }
