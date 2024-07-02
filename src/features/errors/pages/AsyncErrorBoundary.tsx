@@ -7,9 +7,9 @@ import { ApiError } from 'api/ApiError'
 import { isAPIExceptionCapturedAsInfo, isAPIExceptionNotCaptured } from 'api/apiHelpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { AsyncError, eventMonitoring, MonitoringError } from 'libs/monitoring'
-import { ScreenError } from 'libs/monitoring/errors'
+import { LogTypeEnum, ScreenError } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -32,7 +32,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   header,
 }: AsyncFallbackProps) => {
   const { reset } = useQueryErrorResetBoundary()
-  const { shouldLogInfo } = useRemoteConfigContext()
+  const { logType } = useLogTypeFromRemoteConfig()
 
   useEffect(() => {
     const shouldCapturedApiErrorAsInfo = Boolean(
@@ -41,8 +41,8 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
     const shouldApiErrorNotCaptured = Boolean(
       error instanceof ApiError && isAPIExceptionNotCaptured(error.statusCode)
     )
-    if (shouldCapturedApiErrorAsInfo && shouldLogInfo) {
-      eventMonitoring.captureException(error.message, { level: 'info' })
+    if (shouldCapturedApiErrorAsInfo && logType === LogTypeEnum.INFO) {
+      eventMonitoring.captureException(error.message, { level: logType })
     }
     // we already captures MonitoringError exceptions (in AsyncError constructor)
     // we don't need to capture those errors
@@ -56,7 +56,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
     if (shouldCaptureError) {
       eventMonitoring.captureException(error)
     }
-  }, [error, shouldLogInfo])
+  }, [error, logType])
 
   const handleRetry = async () => {
     reset()

@@ -6,8 +6,9 @@ import { getNativeCategoryFromEnum } from 'features/search/helpers/categoriesHel
 import { getHistoryItemLabel } from 'features/search/helpers/getHistoryItemLabel/getHistoryItemLabel'
 import { getHistoryLessThan30Days } from 'features/search/helpers/useSearchHistory/helpers/getHistoryLessThan30Days'
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { eventMonitoring } from 'libs/monitoring'
+import { LogTypeEnum } from 'libs/monitoring/errors'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -18,7 +19,7 @@ export function useSearchHistory() {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [queryHistory, setQueryHistory] = useState<string>('')
-  const { shouldLogInfo } = useRemoteConfigContext()
+  const { logType } = useLogTypeFromRemoteConfig()
 
   const setHistoryItems = useCallback(async (newItems: HistoryItem[]) => {
     return AsyncStorage.setItem(HISTORY_KEY, JSON.stringify(newItems))
@@ -107,9 +108,9 @@ export function useSearchHistory() {
         await setHistoryItems(newItems)
         setHistory(newItems)
       } catch (error) {
-        if (shouldLogInfo)
+        if (logType === LogTypeEnum.INFO)
           eventMonitoring.captureException('Impossible d’ajouter l’entrée à l’historique', {
-            level: 'info',
+            level: logType,
             extra: {
               query: item.query,
               nativeCategory: item.nativeCategory,
@@ -124,7 +125,7 @@ export function useSearchHistory() {
       subcategoriesData,
       setHistoryItems,
       internalRemoveFromHistory,
-      shouldLogInfo,
+      logType,
     ]
   )
 

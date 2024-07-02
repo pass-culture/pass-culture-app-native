@@ -21,8 +21,8 @@ import {
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics, isCloseToBottom } from 'libs/analytics'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { eventMonitoring, ScreenError } from 'libs/monitoring'
@@ -51,7 +51,7 @@ const emptyBookings: Booking[] = []
 export function BookingDetails() {
   const windowHeight = useWindowDimensions().height - blurImageHeight
   const netInfo = useNetInfoContext()
-  const { shouldLogInfo } = useRemoteConfigContext()
+  const { logType } = useLogTypeFromRemoteConfig()
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const {
     status,
@@ -127,7 +127,7 @@ export function BookingDetails() {
     }
     throw new ScreenError(`Booking #${params.id} not found`, {
       Screen: BookingNotFound,
-      shouldBeCapturedAsInfo: shouldLogInfo,
+      logType,
     })
   } else if (isError) {
     throw error

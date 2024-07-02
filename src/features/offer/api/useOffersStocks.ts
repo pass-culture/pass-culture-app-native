@@ -4,16 +4,17 @@ import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { OffersStocksResponseV2 } from 'api/gen'
 import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { OfferNotFoundError } from 'libs/monitoring'
+import { LogTypeEnum } from 'libs/monitoring/errors'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
-async function getStocksByOfferIds(offerIds: number[], shouldLogInfo: boolean) {
+async function getStocksByOfferIds(offerIds: number[], logType: LogTypeEnum) {
   if (offerIds.length === 0) {
     throw new OfferNotFoundError(offerIds, {
       Screen: OfferNotFound,
-      shouldBeCapturedAsInfo: shouldLogInfo,
+      logType,
     })
   }
   try {
@@ -27,7 +28,7 @@ async function getStocksByOfferIds(offerIds: number[], shouldLogInfo: boolean) {
       // due to asynchronous reindexing of the back office
       throw new OfferNotFoundError(offerIds, {
         Screen: OfferNotFound,
-        shouldBeCapturedAsInfo: shouldLogInfo,
+        logType,
       })
     }
     throw error
@@ -36,11 +37,11 @@ async function getStocksByOfferIds(offerIds: number[], shouldLogInfo: boolean) {
 
 export const useOffersStocks = ({ offerIds }: { offerIds: number[] }) => {
   const netInfo = useNetInfoContext()
-  const { shouldLogInfo } = useRemoteConfigContext()
+  const { logType } = useLogTypeFromRemoteConfig()
 
   return useQuery<OffersStocksResponseV2>(
     [QueryKeys.OFFER, offerIds],
-    () => getStocksByOfferIds(offerIds, shouldLogInfo),
+    () => getStocksByOfferIds(offerIds, logType),
     { enabled: !!netInfo.isConnected }
   )
 }

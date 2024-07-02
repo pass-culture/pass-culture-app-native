@@ -9,8 +9,9 @@ import { CheatcodesHeader } from 'features/internal/cheatcodes/components/Cheatc
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { AsyncError, ScreenError } from 'libs/monitoring'
+import { LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Typo } from 'ui/theme'
@@ -22,7 +23,7 @@ export const NavigationErrors: FunctionComponent = () => {
   const [renderedError, setRenderedError] = useState(undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
-  const { shouldLogInfo } = useRemoteConfigContext()
+  const { logType } = useLogTypeFromRemoteConfig()
 
   const { refetch: errorAsyncQuery, isFetching } = useQuery(
     [QueryKeys.ERROR_ASYNC],
@@ -36,7 +37,10 @@ export const NavigationErrors: FunctionComponent = () => {
   async function errorAsync() {
     setAsyncTestReqCount((v) => ++v)
     if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', { retry: errorAsyncQuery })
+      throw new AsyncError('NETWORK_REQUEST_FAILED', {
+        retry: errorAsyncQuery,
+        logType: LogTypeEnum.ERROR,
+      })
     }
     return null
   }
@@ -73,7 +77,7 @@ export const NavigationErrors: FunctionComponent = () => {
               setScreenError(
                 new ScreenError(
                   'Échec de la requête https://cdn.contentful.com/spaces/2bg01iqy0isv/environments/testing/entries?include=2&content_type=homepageNatif&access_token=<TOKEN>, code: 400',
-                  { Screen: NoContentError, shouldBeCapturedAsInfo: shouldLogInfo }
+                  { Screen: NoContentError, logType }
                 )
               )
             }
@@ -94,7 +98,7 @@ export const NavigationErrors: FunctionComponent = () => {
                   Screen: () => (
                     <Maintenance message="Some maintenance message that is set in Firestore" />
                   ),
-                  shouldBeCapturedAsInfo: shouldLogInfo,
+                  logType,
                 })
               )
             }

@@ -7,9 +7,10 @@ import { useResendEmailValidation } from 'features/auth/api/useResendEmailValida
 import { EmailAttemptsLeft } from 'features/auth/pages/signup/SignupConfirmationEmailSent/EmailAttemptsLeft'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { useTimer } from 'libs/hooks/useTimer'
 import { eventMonitoring } from 'libs/monitoring'
+import { LogTypeEnum } from 'libs/monitoring/errors'
 import { formatToHour } from 'libs/parsers/formatDates'
 import { AlertBanner } from 'ui/components/banners/AlertBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -26,7 +27,7 @@ interface Props {
 export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
   const [errorMessage, setErrorMessage] = React.useState<string>()
   const { timeLeft, setTimeLeft } = useTimer(0)
-  const { shouldLogInfo } = useRemoteConfigContext()
+  const { logType } = useLogTypeFromRemoteConfig()
 
   const onError = (error: ApiError) => {
     if (error.statusCode === 429) {
@@ -37,9 +38,9 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
       )
     }
 
-    if (shouldLogInfo)
+    if (logType === LogTypeEnum.INFO)
       eventMonitoring.captureException(`Could not resend validation email: ${error.content}`, {
-        level: 'info',
+        level: logType,
       })
   }
 

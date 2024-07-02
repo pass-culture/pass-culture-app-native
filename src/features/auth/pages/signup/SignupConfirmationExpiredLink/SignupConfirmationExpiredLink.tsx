@@ -8,6 +8,7 @@ import { RootStackParamList, UseNavigationType } from 'features/navigation/RootN
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { AsyncError } from 'libs/monitoring'
+import { LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
@@ -33,7 +34,10 @@ export function SignupConfirmationExpiredLink(props: Props) {
       navigate('SignupConfirmationEmailSent', { email })
       return result
     } catch (err) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', { retry: signupConfirmationExpiredLinkQuery })
+      throw new AsyncError('NETWORK_REQUEST_FAILED', {
+        retry: signupConfirmationExpiredLinkQuery,
+        logType: LogTypeEnum.ERROR,
+      })
     }
   }
 
