@@ -29,13 +29,13 @@ export const BicolorBookingsCountV2: React.FC<AccessibleBicolorIcon> = ({
     return <BicolorBookingsV2 size={size} color={color} color2={color2} testID={testID} />
   }
 
-  const { accessibilityLabel, fullCountLabel } = handleTooManyCount(bookingsCount)
+  const fullCountLabel = handleTooManyCount(bookingsCount)
 
   return (
     <Container>
       <BicolorBookingsV2 size={size} color={color} color2={color2} />
       <StyledAnimatedView style={{ transform: [{ scale }] }}>
-        <PastilleContainer accessibilityLabel={accessibilityLabel}>
+        <PastilleContainer accessibilityLabel={fullCountLabel}>
           <StyledLinearGradient colors={[theme.colors.primary, theme.colors.secondary]}>
             <Counter>{fullCountLabel}</Counter>
           </StyledLinearGradient>
