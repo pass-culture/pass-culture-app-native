@@ -10,13 +10,13 @@ import { StickyBookingButton } from 'features/offer/components/StickyBookingButt
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { Subcategory } from 'libs/subcategories/types'
 
-type Props = {
+type OfferCTAButtonProps = {
   offer: OfferResponseV2
   subcategory: Subcategory
   trackEventHasSeenOfferOnce: VoidFunction
 }
 
-export const OfferCTAButton: FunctionComponent<Props> = ({
+export const OfferCTAButton: FunctionComponent<OfferCTAButtonProps> = ({
   offer,
   subcategory,
   trackEventHasSeenOfferOnce,

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, screen, waitFor, fireEvent } from 'tests/utils/web'
+import { render, screen, waitFor, fireEvent, act } from 'tests/utils/web'
 
 import { OfferPreviewModal } from './OfferPreviewModal'
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
@@ -19,7 +19,7 @@ describe('<OfferPreviewModal />', () => {
       />
     )
 
-    await screen.findByTestId('fullscreenModalView')
+    await screen.findByAltText('Image 1')
 
     expect(screen.getByRole('button', { name: 'Image précédente' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Image suivante' })).toBeInTheDocument()
@@ -93,7 +93,7 @@ describe('<OfferPreviewModal />', () => {
     )
 
     const closeButton = await screen.findByTestId('Fermer la fenêtre')
-    fireEvent.click(closeButton)
+    await act(() => fireEvent.click(closeButton))
 
     expect(mockOnClose).toHaveBeenCalledWith()
   })

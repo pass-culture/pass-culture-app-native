@@ -18,7 +18,7 @@ type Props = {
   categoryId: CategoryIdEnum | null
   imageUrls?: string[]
   shouldDisplayOfferPreview?: boolean
-  onPress: (defaultIndex?: number) => void
+  onPress?: (defaultIndex?: number) => void
 }
 
 const isWeb = Platform.OS === 'web'

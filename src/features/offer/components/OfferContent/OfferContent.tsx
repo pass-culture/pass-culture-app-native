@@ -1,203 +1,56 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent, Platform } from 'react-native'
-// we import FastImage to get the resizeMode, not to use it as a component
-// eslint-disable-next-line no-restricted-imports
-import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
-import styled, { useTheme } from 'styled-components/native'
+import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
-import { OfferResponseV2, SearchGroupResponseModelv2 } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
+import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
-import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
-import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
-import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
-import { OfferPreviewModal } from 'features/offer/components/OfferPreviewModal/OfferPreviewModal'
-import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
-import { getOfferImageUrls } from 'features/offer/helpers/getOfferImageUrls/getOfferImageUrls'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
-import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
-import { analytics, isCloseToBottom } from 'libs/analytics'
+import { OfferContentProps } from 'features/offer/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useFunctionOnce } from 'libs/hooks'
-import { useLocation } from 'libs/location'
-import { Subcategory } from 'libs/subcategories/types'
-import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
-type Props = {
-  offer: OfferResponseV2
-  searchGroupList: SearchGroupResponseModelv2[]
-  subcategory: Subcategory
-}
+const CONTENT_CONTAINER_STYLE = { paddingBottom: getSpacing(22) }
 
-const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
-
-const isWeb = Platform.OS === 'web'
-
-export const OfferContent: FunctionComponent<Props> = ({ offer, searchGroupList, subcategory }) => {
-  const { userLocation } = useLocation()
+export const OfferContent: FunctionComponent<OfferContentProps> = ({
+  offer,
+  searchGroupList,
+  subcategory,
+}) => {
+  const showOfferPreview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW)
   const { navigate } = useNavigation<UseNavigationType>()
-  const enableOfferPreview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW)
-  const { isDesktopViewport } = useTheme()
-  const headerHeight = useGetHeaderHeight()
-  const { visible, showModal, hideModal } = useModal(false)
-  const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
-
-  const {
-    sameArtistPlaylist,
-    sameCategorySimilarOffers,
-    apiRecoParamsSameCategory,
-    otherCategoriesSimilarOffers,
-    apiRecoParamsOtherCategories,
-  } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
-
-  const offerImages = useMemo(
-    () => (offer.images ? getOfferImageUrls(offer.images) : []),
-    [offer.images]
-  )
-  const logConsultWholeOffer = useFunctionOnce(() => {
-    analytics.logConsultWholeOffer(offer.id)
+  const { trackEventHasSeenOfferOnce } = useOfferBatchTracking({
+    offerNativeCategory: subcategory.nativeCategoryId,
   })
 
-  const { trackEventHasSeenOfferOnce, shouldTriggerBatchSurveyEvent, trackBatchEvent } =
-    useOfferBatchTracking({
-      offerNativeCategory: subcategory.nativeCategoryId,
-    })
-
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout
-    if (shouldTriggerBatchSurveyEvent) {
-      timeoutId = setTimeout(() => {
-        trackBatchEvent()
-      }, DELAY_BEFORE_CONSIDERING_PAGE_SEEN)
-    }
-
-    return () => clearTimeout(timeoutId)
-  }, [shouldTriggerBatchSurveyEvent, trackBatchEvent])
-
-  const scrollEventListener = useCallback(
-    ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
-      if (isCloseToBottom(nativeEvent)) {
-        logConsultWholeOffer()
-        if (shouldTriggerBatchSurveyEvent) {
-          trackBatchEvent()
-        }
-      }
-    },
-    [logConsultWholeOffer, shouldTriggerBatchSurveyEvent, trackBatchEvent]
-  )
-
-  const { headerTransition, onScroll } = useOpacityTransition({
-    listener: scrollEventListener,
-  })
-
-  const onPress = (defaultIndex = 0) => {
-    if (isWeb) {
-      setCarouselDefaultIndex(defaultIndex)
-      showModal()
-    } else if (enableOfferPreview && offerImages.length) {
+  const handlePress = (defaultIndex = 0) => {
+    if (showOfferPreview) {
       navigate('OfferPreview', { id: offer.id, defaultIndex })
     }
   }
 
+  const footer = (
+    <OfferCTAButton
+      offer={offer}
+      subcategory={subcategory}
+      trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+    />
+  )
+
   return (
-    <Container>
-      <OfferWebMetaHeader offer={offer} />
-      {isWeb ? (
-        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
-      ) : null}
-
-      {isWeb ? (
-        <OfferPreviewModal
-          hideModal={hideModal}
-          isVisible={visible}
-          offerImages={offerImages}
-          defaultIndex={carouselDefaultIndex}
-        />
-      ) : null}
-
-      <ScrollViewContainer
-        testID="offerv2-container"
-        scrollEventThrottle={16}
-        scrollIndicatorInsets={scrollIndicatorInsets}
-        bounces={false}
-        onScroll={onScroll}>
-        {isDesktopViewport ? (
-          <BodyDesktopContainer headerHeight={headerHeight} testID="offer-body-desktop">
-            <OfferImageContainer
-              imageUrls={offerImages}
-              categoryId={subcategory.categoryId}
-              shouldDisplayOfferPreview={enableOfferPreview}
-              onPress={onPress}
-            />
-            <OfferBody
-              offer={offer}
-              subcategory={subcategory}
-              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-            />
-          </BodyDesktopContainer>
-        ) : (
-          <ViewGap gap={8} testID="offer-body-mobile">
-            <OfferImageContainer
-              imageUrls={offerImages}
-              categoryId={subcategory.categoryId}
-              shouldDisplayOfferPreview={enableOfferPreview}
-              onPress={onPress}
-            />
-            <OfferBody
-              offer={offer}
-              subcategory={subcategory}
-              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-            />
-          </ViewGap>
-        )}
-
-        <OfferPlaylistList
-          offer={offer}
-          position={userLocation}
-          sameCategorySimilarOffers={sameCategorySimilarOffers}
-          apiRecoParamsSameCategory={apiRecoParamsSameCategory}
-          otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
-          apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
-          sameArtistPlaylist={sameArtistPlaylist}
-        />
-        {isDesktopViewport ? null : <Spacer.Column numberOfSpaces={22} />}
-      </ScrollViewContainer>
-      {/* OfferHeader is called after Body to implement the BlurView for iOS */}
-      {isWeb ? null : (
-        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
-      )}
-      {isDesktopViewport ? null : (
-        <OfferCTAButton
-          offer={offer}
-          subcategory={subcategory}
-          trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-        />
-      )}
-    </Container>
+    <OfferContentBase
+      offer={offer}
+      searchGroupList={searchGroupList}
+      showOfferPreview={showOfferPreview}
+      contentContainerStyle={CONTENT_CONTAINER_STYLE}
+      onOfferPreviewPress={handlePress}
+      footer={footer}
+      BodyWrapper={BodyWrapper}
+      subcategory={subcategory}
+    />
   )
 }
 
-const scrollIndicatorInsets = { right: 1 }
-
-const Container = styled.View({
-  flex: 1,
-})
-
-const ScrollViewContainer = styled(IntersectionObserverScrollView)({
-  overflow: 'visible',
-})
-
-const BodyDesktopContainer = styled.View<{ headerHeight: number }>(({ headerHeight }) => ({
-  flexDirection: 'row',
-  paddingHorizontal: getSpacing(16),
-  paddingTop: getSpacing(12) + headerHeight,
-  paddingBottom: getSpacing(12),
-  gap: getSpacing(16),
-}))
+const BodyWrapper = styled(ViewGap).attrs(() => ({ gap: 8, testID: 'offer-body-mobile' }))``
