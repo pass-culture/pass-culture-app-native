@@ -11,27 +11,26 @@ export enum LogTypeEnum {
 }
 
 type ErrorInfo = {
+  logType: LogTypeEnum
   name?: string
   captureContext?: Partial<ScopeContext>
-  skipLogging?: boolean
-  shouldBeCapturedAsInfo?: boolean
 }
 
 export class MonitoringError extends Error {
   constructor(
     message: string,
-    { name, captureContext, skipLogging = false, shouldBeCapturedAsInfo = false }: ErrorInfo = {}
+    { logType, name, captureContext }: ErrorInfo = { logType: LogTypeEnum.ERROR }
   ) {
     super(message)
     if (name) {
       this.name = name
     }
 
-    if (shouldBeCapturedAsInfo) {
-      eventMonitoring.captureException(this.message, { level: 'info' })
+    if (logType === LogTypeEnum.INFO) {
+      eventMonitoring.captureException(this.message, { level: logType })
     }
 
-    if (!skipLogging && !shouldBeCapturedAsInfo) {
+    if (logType === LogTypeEnum.ERROR) {
       eventMonitoring.captureException(this, captureContext)
     }
   }
@@ -53,15 +52,11 @@ export class AsyncError extends MonitoringError {
   retry?: () => Promise<unknown> | void
   constructor(
     message: string,
-    {
-      name = 'AsyncError',
-      captureContext,
-      retry,
-      skipLogging,
-      shouldBeCapturedAsInfo,
-    }: AsyncErrorInfo = {}
+    { name = 'AsyncError', captureContext, retry, logType }: AsyncErrorInfo = {
+      logType: LogTypeEnum.IGNORED,
+    }
   ) {
-    super(message, { name, captureContext, skipLogging, shouldBeCapturedAsInfo })
+    super(message, { name, captureContext, logType })
     this.retry = retry
   }
 }
@@ -80,14 +75,9 @@ export class ScreenError extends AsyncError {
   Screen: ComponentType<ScreenErrorProps>
   constructor(
     message: string,
-    {
-      name = 'ScreenError',
-      Screen,
-      skipLogging = true,
-      shouldBeCapturedAsInfo = true,
-    }: ScreenErrorInfo
+    { name = 'ScreenError', Screen, logType = LogTypeEnum.INFO }: ScreenErrorInfo
   ) {
-    super(message, { name, skipLogging, shouldBeCapturedAsInfo })
+    super(message, { name, logType })
     this.Screen = Screen
   }
 }
@@ -97,19 +87,19 @@ ScreenError.prototype.name = 'ScreenError'
 export class OfferNotFoundError extends ScreenError {
   constructor(
     offerId: number | undefined | number[],
-    { Screen, callback, shouldBeCapturedAsInfo = true }: ScreenErrorInfo
+    { Screen, callback, logType = LogTypeEnum.INFO }: ScreenErrorInfo
   ) {
     const message = offerId ? `Offer ${offerId} could not be retrieved` : 'offerId is undefined'
-    super(message, { Screen, callback, shouldBeCapturedAsInfo })
+    super(message, { Screen, callback, logType })
   }
 }
 
 export class VenueNotFoundError extends ScreenError {
   constructor(
     venueId: number | undefined,
-    { Screen, callback, shouldBeCapturedAsInfo = true }: ScreenErrorInfo
+    { Screen, callback, logType = LogTypeEnum.INFO }: ScreenErrorInfo
   ) {
     const message = venueId ? `Venue ${venueId} could not be retrieved` : 'venueId is undefined'
-    super(message, { Screen, callback, shouldBeCapturedAsInfo })
+    super(message, { Screen, callback, logType })
   }
 }
