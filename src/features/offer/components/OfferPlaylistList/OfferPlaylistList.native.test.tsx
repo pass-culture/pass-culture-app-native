@@ -125,7 +125,7 @@ describe('<OfferPlaylistList />', () => {
     beforeEach(() => {
       useFeatureFlagSpy
         // this value corresponds to WIP_SAME_ARTIST_PLAYLIST feature flag
-        .mockReturnValueOnce(true)
+        .mockReturnValue(true)
     })
 
     it('should display same artist list when offer has some and same author playlist remote config value is withPlaylistAsFirst', () => {
