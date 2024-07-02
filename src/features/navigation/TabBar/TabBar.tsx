@@ -64,6 +64,7 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
                   params: {
                     ...initialSearchState,
                     accessibilityFilter: defaultDisabilitiesProperties,
+                    locationFilter,
                   },
                 }
               } else {

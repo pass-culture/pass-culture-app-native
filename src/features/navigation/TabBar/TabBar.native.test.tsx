@@ -9,7 +9,9 @@ import {
   useTabNavigationContext,
 } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
+import { LocationFilter } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { LocationMode } from 'libs/location/types'
 import { ThemeProvider } from 'libs/styled'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -75,7 +77,16 @@ const navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap> 
   setParams: jest.fn(),
 }
 
-const mockSearchState = initialSearchState
+const mockDefaultLocationFilter: LocationFilter = {
+  locationType: LocationMode.EVERYWHERE,
+}
+
+const mockAroundMeLocationFilter: LocationFilter = {
+  locationType: LocationMode.AROUND_ME,
+  aroundRadius: 50,
+}
+
+let mockSearchState = initialSearchState
 const mockDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -114,6 +125,10 @@ describe('TabBar', () => {
         isSelected: route.name === 'Home',
       })),
     })
+    mockSearchState = {
+      ...initialSearchState,
+      locationFilter: mockDefaultLocationFilter,
+    }
   })
 
   it('render correctly', () => {
@@ -262,7 +277,28 @@ describe('TabBar', () => {
     expect(navigation.navigate).toHaveBeenCalledWith(
       ...getTabNavConfig('SearchStackNavigator', {
         screen: 'SearchLanding',
-        params: { ...mockSearchState, accessibilityFilter: mockAccessibilityState },
+        params: { ...initialSearchState, accessibilityFilter: mockAccessibilityState },
+      })
+    )
+  })
+
+  it('should not reset locationFilter on press "Recherche"', async () => {
+    mockSearchState = {
+      ...initialSearchState,
+      locationFilter: mockAroundMeLocationFilter,
+    }
+    renderTabBar()
+    const searchButton = screen.getByText('Recherche')
+    fireEvent.press(searchButton)
+
+    expect(navigation.navigate).toHaveBeenCalledWith(
+      ...getTabNavConfig('SearchStackNavigator', {
+        screen: 'SearchLanding',
+        params: {
+          ...initialSearchState,
+          accessibilityFilter: mockAccessibilityState,
+          locationFilter: mockAroundMeLocationFilter,
+        },
       })
     )
   })
