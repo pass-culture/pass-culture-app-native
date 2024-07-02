@@ -15,8 +15,6 @@ import {
   useVenueTypeCode,
   useVenueTypeCodeActions,
 } from 'features/venueMap/store/venueTypeCodeStore'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ellipseString } from 'shared/string/ellipseString'
 import {
   PageHeaderWithoutPlaceholder,
@@ -34,7 +32,6 @@ export const VenueMap: FunctionComponent = () => {
 
   const venueTypeCode = useVenueTypeCode()
   const { setVenueTypeCode } = useVenueTypeCodeActions()
-  const enableVenueMapTypeFilter = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER)
 
   const headerHeight = useGetHeaderHeight()
   const { height } = useWindowDimensions()
@@ -45,8 +42,7 @@ export const VenueMap: FunctionComponent = () => {
     hideModal: hideVenueTypeModal,
   } = useModal(false)
 
-  const withFilterBanner = enableVenueMapTypeFilter ? FILTER_BANNER_HEIGHT : 0
-  const venueMapHeight = height - (headerHeight + withFilterBanner)
+  const venueMapHeight = height - (headerHeight + FILTER_BANNER_HEIGHT)
 
   useTrackMapSessionDuration()
   useTrackMapSeenDuration()
@@ -62,20 +58,20 @@ export const VenueMap: FunctionComponent = () => {
     <React.Fragment>
       <Container>
         <StyledHeader title="Carte des lieux" onGoBack={handleGoBack} />
-        <PlaceHolder headerHeight={headerHeight + withFilterBanner} />
-        {enableVenueMapTypeFilter ? (
-          <FilterBannerContainer headerHeight={headerHeight}>
-            <StyledUl>
-              <StyledLi>
-                <SingleFilterButton
-                  label={ellipseString(venueTypeLabel, MAX_VENUE_CHARACTERS)}
-                  isSelected={venueTypeCode !== null}
-                  onPress={showVenueTypeModal}
-                />
-              </StyledLi>
-            </StyledUl>
-          </FilterBannerContainer>
-        ) : null}
+        <PlaceHolder headerHeight={headerHeight + FILTER_BANNER_HEIGHT} />
+
+        <FilterBannerContainer headerHeight={headerHeight}>
+          <StyledUl>
+            <StyledLi>
+              <SingleFilterButton
+                label={ellipseString(venueTypeLabel, MAX_VENUE_CHARACTERS)}
+                isSelected={venueTypeCode !== null}
+                onPress={showVenueTypeModal}
+              />
+            </StyledLi>
+          </StyledUl>
+        </FilterBannerContainer>
+
         <MapContainer>
           <VenueMapView height={venueMapHeight} />
         </MapContainer>

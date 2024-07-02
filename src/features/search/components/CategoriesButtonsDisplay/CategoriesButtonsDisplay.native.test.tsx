@@ -99,7 +99,7 @@ describe('CategoriesButtonsDisplay', () => {
     expect(screen.getByText('EXPLORE LA CARTE')).toBeOnTheScreen()
   })
 
-  it('should display venue map block when the location is to everywhere position and feature flag wipVenueMapWithoutPosition is activated', () => {
+  it('should display venue map block when the location is to everywhere position and feature flag wipVenueMap is activated', () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: false,
       selectedLocationMode: LocationMode.EVERYWHERE,
