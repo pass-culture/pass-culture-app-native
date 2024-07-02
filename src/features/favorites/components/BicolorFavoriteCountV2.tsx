@@ -28,7 +28,7 @@ export const BicolorFavoriteCountV2: React.FC<AccessibleBicolorIcon> = ({
   }
 
   const height = 0.55 * Number(size)
-  const { accessibilityLabel, fullCountLabel } = handleTooManyCount(favoritesCount)
+  const fullCountLabel = handleTooManyCount(favoritesCount)
 
   return (
     <Container testID="bicolor-favorite-count-v2">
@@ -38,7 +38,7 @@ export const BicolorFavoriteCountV2: React.FC<AccessibleBicolorIcon> = ({
         <PastilleContent
           width={size}
           height={height}
-          accessibilityLabel={accessibilityLabel}
+          accessibilityLabel={fullCountLabel}
           accessibilityLiveRegion="polite">
           <TextContainer height={height}>
             <Counter>{fullCountLabel}</Counter>
