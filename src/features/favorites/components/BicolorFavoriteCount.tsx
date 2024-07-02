@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFavoritesCount } from 'features/favorites/api'
-import { useScaleFavoritesAnimation } from 'features/favorites/helpers/useScaleFavoritesAnimation'
+import { useScaleAnimation } from 'features/favorites/helpers/useScaleFavoritesAnimation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFavoriteAuthed } from 'ui/svg/icons/BicolorFavoriteAuthed'
@@ -25,7 +25,7 @@ export const BicolorFavoriteCount: React.FC<AccessibleBicolorIcon> = ({
   const netInfo = useNetInfoContext()
   const { isLoggedIn } = useAuthContext()
   const { data: favoritesCount } = useFavoritesCount()
-  const scale = useScaleFavoritesAnimation(favoritesCount)
+  const scale = useScaleAnimation(favoritesCount)
 
   if (!netInfo.isConnected || !isLoggedIn || typeof favoritesCount === 'undefined') {
     return <BicolorFavorite size={size} color={color} color2={color2} thin={thin} testID={testID} />
