@@ -8,6 +8,7 @@ import { RootStackParamList, UseNavigationType } from 'features/navigation/RootN
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { AsyncError } from 'libs/monitoring'
+import { LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
@@ -29,7 +30,10 @@ export function ResetPasswordExpiredLink(props: Props) {
         navigate('ResetPasswordEmailSent', { email })
       },
       onError: () => {
-        throw new AsyncError('NETWORK_REQUEST_FAILED', { retry: resetPasswordEmailQuery })
+        throw new AsyncError('NETWORK_REQUEST_FAILED', {
+          retry: resetPasswordEmailQuery,
+          logType: LogTypeEnum.ERROR,
+        })
       },
       cacheTime: 0,
       enabled: false,

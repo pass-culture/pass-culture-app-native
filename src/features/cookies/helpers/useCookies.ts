@@ -8,8 +8,9 @@ import { ConsentState } from 'features/cookies/enums'
 import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { Consent, ConsentStatus, CookiesConsent } from 'features/cookies/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { eventMonitoring } from 'libs/monitoring'
+import { LogTypeEnum } from 'libs/monitoring/errors'
 import { getAppBuildVersion } from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
@@ -110,7 +111,7 @@ const setConsentAndChoiceDateTime = (
 }
 
 const usePersistCookieConsent = () => {
-  const { shouldLogInfo } = useRemoteConfigContext()
+  const { logType } = useLogTypeFromRemoteConfig()
 
   return useMutation(async (cookiesChoice: CookiesConsent): Promise<void> => {
     await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
@@ -120,12 +121,12 @@ const usePersistCookieConsent = () => {
         await api.postNativeV1CookiesConsent(omit(cookiesChoice, ['buildVersion']))
       }
     } catch (error) {
-      if (shouldLogInfo)
+      if (logType === LogTypeEnum.INFO)
         eventMonitoring.captureException(
           `can‘t log cookies consent choice ; reason: "${
             error instanceof Error ? error.message : undefined
           }"`,
-          { level: 'info' }
+          { level: logType }
         )
     }
   })

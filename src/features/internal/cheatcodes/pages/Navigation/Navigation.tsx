@@ -16,7 +16,7 @@ import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/h
 import { AskNotificiationsModal } from 'features/notifications/pages/AskNotificationsModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { env } from 'libs/environment'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
@@ -33,7 +33,7 @@ export function Navigation(): React.JSX.Element {
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
   const venueId = useSomeVenueId()
   const { showInfoSnackBar } = useSnackBarContext()
-  const { shouldLogInfo } = useRemoteConfigContext()
+  const { logType } = useLogTypeFromRemoteConfig()
 
   const {
     visible: cookiesConsentModalVisible,
@@ -170,7 +170,7 @@ export function Navigation(): React.JSX.Element {
                 setScreenError(
                   new ScreenError('Test force update page', {
                     Screen: ForceUpdate,
-                    shouldBeCapturedAsInfo: shouldLogInfo,
+                    logType,
                   })
                 )
               }

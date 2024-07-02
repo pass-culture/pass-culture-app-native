@@ -2,6 +2,7 @@ import React from 'react'
 
 import * as useGoBack from 'features/navigation/useGoBack'
 import { AsyncError } from 'libs/monitoring'
+import { LogTypeEnum } from 'libs/monitoring/errors'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 import { AsyncErrorBoundary } from './AsyncErrorBoundary'
@@ -54,7 +55,7 @@ describe('AsyncErrorBoundary component', () => {
     const retry = jest.fn()
     render(
       <AsyncErrorBoundary
-        error={new AsyncError('error', { retry })}
+        error={new AsyncError('error', { retry, logType: LogTypeEnum.ERROR })}
         resetErrorBoundary={resetErrorBoundary}
       />
     )

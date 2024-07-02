@@ -3,8 +3,9 @@ import { useQuery } from 'react-query'
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FeatureFlagConfig } from 'libs/firebase/firestore/featureFlags/types'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { eventMonitoring } from 'libs/monitoring'
+import { LogTypeEnum } from 'libs/monitoring/errors'
 import { getAppBuildVersion } from 'libs/packageJson'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -16,7 +17,7 @@ export const useFeatureFlag = (featureFlag: RemoteStoreFeatureFlags): boolean =>
   const { data: docSnapshot } = useQuery(QueryKeys.FEATURE_FLAGS, getAllFeatureFlags, {
     staleTime: 1000 * 30, // 30 seconds
   })
-  const { shouldLogInfo } = useRemoteConfigContext()
+  const { logType } = useLogTypeFromRemoteConfig()
 
   if (!docSnapshot) return false
 
@@ -28,12 +29,12 @@ export const useFeatureFlag = (featureFlag: RemoteStoreFeatureFlags): boolean =>
   if (
     !!(minimalBuildNumber && maximalBuildNumber) &&
     minimalBuildNumber > maximalBuildNumber &&
-    shouldLogInfo
+    logType === LogTypeEnum.INFO
   ) {
     eventMonitoring.captureException(
       `Minimal build number is greater than maximal build number for feature flag ${featureFlag}`,
       {
-        level: 'info',
+        level: logType,
         extra: {
           minimalBuildNumber,
           maximalBuildNumber,
