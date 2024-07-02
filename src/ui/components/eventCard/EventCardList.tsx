@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, FlatList, StyleSheet } from 'react-native'
+import { View, FlatList } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { EventCard, EventCardProps, EVENT_CARD_WIDTH } from 'ui/components/eventCard/EventCard'
@@ -23,7 +23,7 @@ export const EventCardList: React.FC<Props> = ({ data, withMargin }) => {
           const { width } = event.nativeEvent.layout
           setWebViewWidth(width)
         }}>
-        <FlatList<EventCardProps>
+        <StyledFlatList
           listAs="ul"
           itemAs="li"
           key={numColumns}
@@ -37,7 +37,6 @@ export const EventCardList: React.FC<Props> = ({ data, withMargin }) => {
           keyExtractor={(item) => JSON.stringify(item)}
           ItemSeparatorComponent={FlatListLineSpacer}
           numColumns={numColumns}
-          contentContainerStyle={styles.contentContainerStyle}
         />
       </View>
     )
@@ -45,20 +44,21 @@ export const EventCardList: React.FC<Props> = ({ data, withMargin }) => {
 
   return (
     <Container horizontal showsHorizontalScrollIndicator={false}>
-      {withMargin ? <Spacer.Row numberOfSpaces={2} /> : null}
+      {withMargin ? <Spacer.Row numberOfSpaces={3} /> : null}
+
       {data.map((event, index) => {
         if (index % 2 === 1) return null
         const topEventCardData = data[index]
         const bottomEventCardData = data[index + 1]
         return (
           <React.Fragment key={JSON.stringify([topEventCardData, bottomEventCardData])}>
-            {withMargin ? <Spacer.Row numberOfSpaces={4} /> : null}
+            {withMargin ? <Spacer.Row numberOfSpaces={3} /> : null}
             <View>
               {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
               <EventCard {...topEventCardData} />
               {bottomEventCardData ? (
                 <React.Fragment>
-                  <Spacer.Column numberOfSpaces={4} />
+                  <Spacer.Column numberOfSpaces={3} />
                   <EventCard {...bottomEventCardData} />
                 </React.Fragment>
               ) : null}
@@ -74,10 +74,9 @@ export const EventCardList: React.FC<Props> = ({ data, withMargin }) => {
 const Container = styled.ScrollView({
   paddingVertical: getSpacing(2),
 })
-const styles = StyleSheet.create({
-  contentContainerStyle: {
-    alignItems: 'flex-start',
-  },
-})
 
 const FlatListLineSpacer = () => <Spacer.Column numberOfSpaces={4} />
+
+const StyledFlatList = styled(FlatList as typeof FlatList<EventCardProps>)(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))

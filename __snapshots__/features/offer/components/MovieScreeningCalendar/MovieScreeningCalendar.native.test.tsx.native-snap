@@ -282,11 +282,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
   >
     <RCTScrollView
       ItemSeparatorComponent={[Function]}
-      contentContainerStyle={
-        {
-          "alignItems": "flex-start",
-        }
-      }
       data={
         [
           {
@@ -363,6 +358,13 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
       renderItem={[Function]}
       scrollEventThrottle={50}
       stickyHeaderIndices={[]}
+      style={
+        [
+          {
+            "marginHorizontal": 24,
+          },
+        ]
+      }
       viewabilityConfigCallbackPairs={[]}
     >
       <View>

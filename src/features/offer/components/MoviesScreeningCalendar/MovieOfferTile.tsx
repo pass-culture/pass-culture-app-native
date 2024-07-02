@@ -1,5 +1,4 @@
 import React, { FC, useMemo } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import type { OfferPreviewResponse, OfferResponseV2 } from 'api/gen'
@@ -53,25 +52,28 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, off
     [offer.id, venueOffers.hits]
   )
   return (
-    <MovieCalendarContainer>
-      {offerScreeningOnSelectedDates ? (
-        <HorizontalOfferTile
-          offer={offerScreeningOnSelectedDates}
-          analyticsParams={{
-            from: 'venue',
-          }}
-          price={undefined}
-          subtitles={getSubtitles(offer)}
-          withRightArrow
-        />
-      ) : null}
+    <React.Fragment>
+      <HorizontalOfferTileContainer>
+        {offerScreeningOnSelectedDates ? (
+          <HorizontalOfferTile
+            offer={offerScreeningOnSelectedDates}
+            analyticsParams={{
+              from: 'venue',
+            }}
+            price={undefined}
+            subtitles={getSubtitles(offer)}
+            withRightArrow
+          />
+        ) : null}
+      </HorizontalOfferTileContainer>
+
       <Spacer.Column numberOfSpaces={4} />
-      {eventCardData ? <EventCardList data={eventCardData} /> : null}
+      {eventCardData ? <EventCardList data={eventCardData} withMargin /> : null}
       <Spacer.Column numberOfSpaces={4} />
       {isLast ? null : <Divider />}
       <Spacer.Column numberOfSpaces={4} />
       {CTAOfferModal}
-    </MovieCalendarContainer>
+    </React.Fragment>
   )
 }
 
@@ -82,12 +84,12 @@ const getSubtitles = (offer: OfferPreviewResponse): string[] => {
   return [genre, duration]
 }
 
-const MovieCalendarContainer = styled(View)(() => ({
-  marginLeft: getSpacing(6),
-}))
-
 const Divider = styled.View(({ theme }) => ({
   height: 1,
   backgroundColor: theme.colors.greyMedium,
-  marginRight: getSpacing(6),
+  marginHorizontal: getSpacing(6),
 }))
+
+const HorizontalOfferTileContainer = styled.View({
+  marginHorizontal: getSpacing(6),
+})
