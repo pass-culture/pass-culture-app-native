@@ -1,6 +1,6 @@
-import { getIsVenuePreviousRoute } from 'features/search/helpers/getIsVenuePreviousRoute/getIsVenuePreviousRoute'
+import { getIsPreviousRouteFromSearch } from 'features/search/helpers/getIsPreviousRouteFromSearch/getIsPreviousRouteFromSearch'
 
-describe('getIsVenuePreviousRoute', () => {
+describe('getIsPreviousRouteFromSearch', () => {
   it('should return true when previous route is venue and current route TabNavigator and screen is Search', () => {
     const routes = [
       {
@@ -9,7 +9,7 @@ describe('getIsVenuePreviousRoute', () => {
       },
       { key: 'TabNavigator', name: 'TabNavigator', params: { screen: 'SearchStackNavigator' } },
     ]
-    const isSearchPreviousRoute = getIsVenuePreviousRoute(routes)
+    const isSearchPreviousRoute = getIsPreviousRouteFromSearch('Venue', routes)
 
     expect(isSearchPreviousRoute).toBeTruthy()
   })
@@ -19,7 +19,7 @@ describe('getIsVenuePreviousRoute', () => {
       { key: 'TabNavigator1', name: 'TabNavigator', params: { screen: 'SearchStackNavigator' } },
       { key: 'TabNavigator2', name: 'TabNavigator', params: { screen: 'SearchStackNavigator' } },
     ]
-    const isSearchPreviousRoute = getIsVenuePreviousRoute(routes)
+    const isSearchPreviousRoute = getIsPreviousRouteFromSearch('Venue', routes)
 
     expect(isSearchPreviousRoute).toBeFalsy()
   })
@@ -33,7 +33,7 @@ describe('getIsVenuePreviousRoute', () => {
         params: { screen: 'NotSearchStackNavigator' },
       },
     ]
-    const isSearchPreviousRoute = getIsVenuePreviousRoute(routes)
+    const isSearchPreviousRoute = getIsPreviousRouteFromSearch('Venue', routes)
 
     expect(isSearchPreviousRoute).toBeFalsy()
   })
@@ -43,7 +43,7 @@ describe('getIsVenuePreviousRoute', () => {
       { key: 'TabNavigator1', name: 'TabNavigator', params: { screen: 'Bookings' } },
       { key: 'TabNavigator2', name: 'TabNavigator', params: { screen: 'SearchStackNavigator' } },
     ]
-    const isSearchPreviousRoute = getIsVenuePreviousRoute(routes)
+    const isSearchPreviousRoute = getIsPreviousRouteFromSearch('Venue', routes)
 
     expect(isSearchPreviousRoute).toBeFalsy()
   })

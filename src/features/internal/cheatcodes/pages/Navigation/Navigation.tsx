@@ -12,7 +12,6 @@ import { CheatcodesHeader } from 'features/internal/cheatcodes/components/Cheatc
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { useSomeVenueId } from 'features/internal/cheatcodes/hooks/useSomeVenueId'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { AskNotificiationsModal } from 'features/notifications/pages/AskNotificationsModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { env } from 'libs/environment'
@@ -217,15 +216,10 @@ export function Navigation(): React.JSX.Element {
             <ButtonPrimary
               wording="SearchN1Books"
               onPress={() =>
-                navigate(
-                  ...getSearchStackConfig('SearchN1Books', {
-                    offerCategories: [SearchGroupNameEnumv2.LIVRES],
-                  })
-                )
+                navigate('SearchN1Books', { offerCategories: [SearchGroupNameEnumv2.LIVRES] })
               }
             />
           </Row>
-
           <Row half>
             <ButtonPrimary wording="MarketingBlocks" onPress={() => navigate('MarketingBlocks')} />
           </Row>

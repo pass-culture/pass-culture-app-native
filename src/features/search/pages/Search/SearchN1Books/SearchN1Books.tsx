@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react'
-import { SafeAreaView } from 'react-native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CATEGORY_CRITERIA, Gradient } from 'features/search/enums'
 import { useNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { SearchN1Bar } from 'features/search/pages/Search/SearchN1Books/SearchN1Bar'
 import { NativeCategoryEnum } from 'features/search/types'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
@@ -22,8 +22,8 @@ export const SearchN1Books = () => {
   )
 
   return (
-    <SafeAreaView>
+    <SearchN1Bar>
       <SubcategoryButtonList subcategoryButtonContent={bookSubcategoriesContent} />
-    </SafeAreaView>
+    </SearchN1Bar>
   )
 }
