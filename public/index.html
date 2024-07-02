@@ -2,8 +2,8 @@
 <html lang="fr-FR">
   <head>
     <meta charset="utf-8" />
-    <title>%TITLE%</title>
-    <link rel="icon" type="image/png" href="%PUBLIC_URL%/images/app-icon-iphone.png" />
+    <title><%- TITLE %></title>
+    <link rel="icon" type="image/png" href="<%- PUBLIC_URL %>/images/app-icon-iphone.png" />
     <meta
       name="viewport"
       content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, viewport-fit=cover, shrink-to-fit=no" />
@@ -11,19 +11,19 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="theme-color" content="#eb0055" />
-    <meta name="version" content="%VERSION%" />
-    <meta name="commit-hash" content="%COMMIT_HASH%" />
-    %META_NO_INDEX%
+    <meta name="version" content="<%- VERSION %>" />
+    <meta name="commit-hash" content="<%- COMMIT_HASH %>" />
+    <%- META_NO_INDEX %>
 
     <!-- Smart banner -->
-    <meta name="apple-itunes-app" content="app-id=%IOS_APP_STORE_ID%" />
-    <meta name="google-play-app" content="app-id=%ANDROID_APP_ID%" />
-    <link rel="android-touch-icon" href="%PUBLIC_URL%/images/app-icon-iphone.png" />
+    <meta name="apple-itunes-app" content="app-id=<%- IOS_APP_STORE_ID %>" />
+    <meta name="google-play-app" content="app-id=<%- ANDROID_APP_ID %>" />
+    <link rel="android-touch-icon" href="<%- PUBLIC_URL %>/images/app-icon-iphone.png" />
 
     <!-- Primary Meta Tags -->
-    <meta name="title" content="%TITLE%" />
-    <meta name="description" content="%DESCRIPTION%" />
-    <meta name="author" content="%AUTHOR%" />
+    <meta name="title" content="<%- TITLE %>" />
+    <meta name="description" content="<%- DESCRIPTION %>" />
+    <meta name="author" content="<%- AUTHOR %>" />
     <meta name="language" content="fr-FR" />
     <meta name="keywords" content="pass Culture" />
     <meta name="robots" content="index, follow, noarchive" />
@@ -32,85 +32,86 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="%PUBLIC_URL%" />
-    <meta property="og:title" content="%TITLE%" />
-    <meta property="og:description" content="%DESCRIPTION%" />
-    <meta property="og:image" content="%PUBLIC_URL%/images/app-icon-512px.png" />
-    <meta property="og:image:alt" content="%TITLE%" />
+    <meta property="og:url" content="<%- PUBLIC_URL %>" />
+    <meta property="og:title" content="<%- TITLE %>" />
+    <meta property="og:description" content="<%- DESCRIPTION %>" />
+    <meta property="og:image" content="<%- PUBLIC_URL %>/images/app-icon-512px.png" />
+    <meta property="og:image:alt" content="<%- TITLE %>" />
     <meta property="og:locale" content="fr_FR" />
-    <meta property="og:site_name" content="%AUTHOR%" />
+    <meta property="og:site_name" content="<%- AUTHOR %>" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="app" />
-    <meta name="twitter:url" content="%PUBLIC_URL%" />
-    <meta name="twitter:title" content="%TITLE%" />
-    <meta name="twitter:description" content="%DESCRIPTION%" />
-    <meta name="twitter:image" content="%PUBLIC_URL%/images/app-icon-512px.png" />
-    <meta name="twitter:image:alt" content="%TITLE%" />
-    <meta name="twitter:site" content="%TWITTER_SITE%" />
+    <meta name="twitter:url" content="<%- PUBLIC_URL %>" />
+    <meta name="twitter:title" content="<%- TITLE %>" />
+    <meta name="twitter:description" content="<%- DESCRIPTION %>" />
+    <meta name="twitter:image" content="<%- PUBLIC_URL %>/images/app-icon-512px.png" />
+    <meta name="twitter:image:alt" content="<%- TITLE %>" />
+    <meta name="twitter:site" content="<%- TWITTER_SITE %>" />
     <meta name="twitter:app:country" content="FR" />
-    <meta name="twitter:app:name:iphone" content="%AUTHOR%" />
-    <meta name="twitter:app:id:iphone" content="%IOS_APP_STORE_ID%" />
-    <meta name="twitter:app:url:iphone" content="passculture://%PUBLIC_URL%" />
-    <meta name="twitter:app:name:ipad" content="%AUTHOR%" />
-    <meta name="twitter:app:id:ipad" content="%IOS_APP_STORE_ID%" />
-    <meta name="twitter:app:url:ipad" content="passculture://%PUBLIC_URL%" />
-    <meta name="twitter:app:name:googleplay" content="%AUTHOR%" />
-    <meta name="twitter:app:id:googleplay" content="%ANDROID_APP_ID%" />
-    <meta name="twitter:app:url:googleplay" content="passculture://%PUBLIC_URL%" />
+    <meta name="twitter:app:name:iphone" content="<%- AUTHOR %>" />
+    <meta name="twitter:app:id:iphone" content="<%- IOS_APP_STORE_ID %>" />
+    <meta name="twitter:app:url:iphone" content="passculture://<%- PUBLIC_URL %>" />
+    <meta name="twitter:app:name:ipad" content="<%- AUTHOR %>" />
+    <meta name="twitter:app:id:ipad" content="<%- IOS_APP_STORE_ID %>" />
+    <meta name="twitter:app:url:ipad" content="passculture://<%- PUBLIC_URL %>" />
+    <meta name="twitter:app:name:googleplay" content="<%- AUTHOR %>" />
+    <meta name="twitter:app:id:googleplay" content="<%- ANDROID_APP_ID %>" />
+    <meta name="twitter:app:url:googleplay" content="passculture://<%- PUBLIC_URL %>" />
 
     <!-- App Links -->
-    <meta property="al:ios:app_name" content="%AUTHOR%" />
-    <meta property="al:ios:app_store_id" content="%IOS_APP_STORE_ID%" />
-    <meta property="al:ios:url" content="passculture://%PUBLIC_URL%" />
-    <meta property="al:android:url" content="passculture://%PUBLIC_URL%" />
-    <meta property="al:android:app_name" content="%AUTHOR%" />
-    <meta property="al:android:package" content="%ANDROID_APP_ID%" />
+    <meta property="al:ios:app_name" content="<%- AUTHOR %>" />
+    <meta property="al:ios:app_store_id" content="<%- IOS_APP_STORE_ID %>" />
+    <meta property="al:ios:url" content="passculture://<%- PUBLIC_URL %>" />
+    <meta property="al:android:url" content="passculture://<%- PUBLIC_URL %>" />
+    <meta property="al:android:app_name" content="<%- AUTHOR %>" />
+    <meta property="al:android:package" content="<%- ANDROID_APP_ID %>" />
 
     <!-- iPhone -->
-    <link rel="shortcut icon" href="%PUBLIC_URL%/images/app-icon-iphone.png" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/images/app-icon-iphone@3x.png" />
+    <link rel="shortcut icon" href="<%- PUBLIC_URL %>/images/app-icon-iphone.png" />
+    <link rel="apple-touch-icon" href="<%- PUBLIC_URL %>/images/app-icon-iphone@3x.png" />
     <link
-      href="%PUBLIC_URL%/iosSplashscreens/iphone5_splash.png"
+      href="<%- PUBLIC_URL %>/iosSplashscreens/iphone5_splash.png"
       media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
       rel="apple-touch-startup-image" />
     <link
-      href="%PUBLIC_URL%/iosSplashscreens/iphone6_splash.png"
+      href="<%- PUBLIC_URL %>/iosSplashscreens/iphone6_splash.png"
       media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
       rel="apple-touch-startup-image" />
     <link
-      href="%PUBLIC_URL%/iosSplashscreens/iphoneplus_splash.png"
+      href="<%- PUBLIC_URL %>/iosSplashscreens/iphoneplus_splash.png"
       media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
       rel="apple-touch-startup-image" />
     <link
-      href="%PUBLIC_URL%/iosSplashscreens/iphonex_splash.png"
+      href="<%- PUBLIC_URL %>/iosSplashscreens/iphonex_splash.png"
       media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
       rel="apple-touch-startup-image" />
     <link
-      href="%PUBLIC_URL%/iosSplashscreens/iphonexr_splash.png"
+      href="<%- PUBLIC_URL %>/iosSplashscreens/iphonexr_splash.png"
       media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
       rel="apple-touch-startup-image" />
     <link
-      href="%PUBLIC_URL%/iosSplashscreens/iphonexsmax_splash.png"
+      href="<%- PUBLIC_URL %>/iosSplashscreens/iphonexsmax_splash.png"
       media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
       rel="apple-touch-startup-image" />
     <link
-      href="%PUBLIC_URL%/iosSplashscreens/ipad_splash.png"
+      href="<%- PUBLIC_URL %>/iosSplashscreens/ipad_splash.png"
       media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
       rel="apple-touch-startup-image" />
     <link
-      href="%PUBLIC_URL%/iosSplashscreens/ipadpro1_splash.png"
+      href="<%- PUBLIC_URL %>/iosSplashscreens/ipadpro1_splash.png"
       media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
       rel="apple-touch-startup-image" />
     <link
-      href="%PUBLIC_URL%/iosSplashscreens/ipadpro3_splash.png"
+      href="<%- PUBLIC_URL %>/iosSplashscreens/ipadpro3_splash.png"
       media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
       rel="apple-touch-startup-image" />
     <link
-      href="%PUBLIC_URL%/iosSplashscreens/ipadpro2_splash.png"
+      href="<%- PUBLIC_URL %>/iosSplashscreens/ipadpro2_splash.png"
       media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
-      rel="apple-touch-startup-image" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+      rel="apple-touch-startup-image"
+    />
+    <link rel="manifest" href="<%- PUBLIC_URL %>/manifest.json" />
     <style>
       @import url('%PUBLIC_URL%/font-faces.css');
       @font-face {
@@ -283,7 +284,9 @@
 
     <meta name="google-site-verification" content="FF0qt-GvRe185Ku4ukrwyQLfV6oNjwAkWQt9dwS3INc" />
 
-    %PROD_CSS% %DEV_CSS%
+    <%- PROD_CSS %>
+
+    <%- DEV_CSS %>
   </head>
   <body>
     <noscript class="no-script">
@@ -297,13 +300,13 @@
         </g>
       </svg>
       <h3>Oups !</h3>
-      Vous devez activer JavaScript pour utiliser %TITLE%.
+      Vous devez activer JavaScript pour utiliser <%- TITLE %>.
     </noscript>
     <div id="smartBannerContainer"></div>
     <div id="root">
       <!-- root will be overridden when react app initialize -->
       <script>
-        %CHUNK_PROTECTION_SCRIPT%
+        <%- CHUNK_PROTECTION_SCRIPT %>
       </script>
       <svg
         id="loading-svg"
@@ -374,7 +377,7 @@
             (i.length > 0 ? 'af_id=' + i : '')),
           p.parentNode.insertBefore(o, p)
       })(window, document, 'script', 0, 'AF', 'banners', {
-        banners: { key: '%APPS_FLYER_WEB_PUBLIC_KEY%' },
+        banners: { key: '<%- APPS_FLYER_WEB_PUBLIC_KEY %>' },
       })
       AF('banners', 'showBanner', { bannerContainerQuery: '#smartBannerContainer' })
     </script>

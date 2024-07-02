@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv, transformWithEsbuild } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
+import { createHtmlPlugin } from 'vite-plugin-html'
 
 const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
 const allExtensions = [
@@ -16,8 +17,13 @@ const libsThatHaveJSFilesContainingJSX = [
   'node_modules/react-native-swipe-gestures',
 ]
 
+const packageJson = require('./package.json')
+
 export default ({ mode }) => {
-  const env = loadEnv(mode === 'development' ? 'testing' : mode, process.cwd(), '')
+  // mode === 'production' =/= env.ENV === 'production'
+  const isDevMode = mode === 'development'
+  const isProdMode = mode === 'production'
+  const env = loadEnv(isDevMode ? 'testing' : mode, process.cwd(), '')
   const proxyConfig = {
     proxy: {
       '/native': {
@@ -34,7 +40,7 @@ export default ({ mode }) => {
     define: {
       global: 'window',
       'process.env': env,
-      __DEV__: process.env.NODE_ENV !== 'production',
+      __DEV__: env.NODE_ENV !== 'production',
     },
     plugins: [
       react(),
@@ -50,6 +56,39 @@ export default ({ mode }) => {
           })
         },
       },
+      createHtmlPlugin({
+        minify: true,
+        entry: '/src/index.tsx',
+        template: 'public/index.html',
+        inject: {
+          data: {
+            TITLE: packageJson.author.name,
+            DESCRIPTION: packageJson.description,
+            AUTHOR: packageJson.author.name,
+            TWITTER_SITE: packageJson.author.twitter,
+            META_NO_INDEX:
+              env.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
+            PROD_CSS: '',
+            DEV_CSS: '',
+            CHUNK_PROTECTION_SCRIPT: '',
+            PUBLIC_URL: env.PUBLIC_URL,
+            IOS_APP_STORE_ID: env.IOS_APP_STORE_ID,
+            ANDROID_APP_ID: env.ANDROID_APP_ID,
+            APPS_FLYER_WEB_PUBLIC_KEY: env.APPS_FLYER_WEB_PUBLIC_KEY,
+            COMMIT_HASH: env.COMMIT_HASH,
+            VERSION: env.VERSION,
+          },
+          tags: [
+            {
+              injectTo: 'body-prepend',
+              tag: 'div',
+              attrs: {
+                id: 'tag',
+              },
+            },
+          ],
+        },
+      }),
     ],
     resolve: {
       extensions: allExtensions,
