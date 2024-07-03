@@ -11,9 +11,7 @@ import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylist
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
-import { useLocation } from 'libs/location/LocationWrapper'
 import { formatDates } from 'libs/parsers/formatDates'
-import { formatDistance } from 'libs/parsers/formatDistance'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -35,7 +33,6 @@ const keyExtractor = (item: Offer) => item.objectID
 export const OffersModule = (props: OffersModuleProps) => {
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { displayParameters, offersModuleParameters, index, moduleId, homeEntryId, data } = props
-  const { userLocation } = useLocation()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
@@ -83,11 +80,11 @@ export const OffersModule = (props: OffersModuleProps) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <HomeOfferTile
+          offerLocation={item._geoloc}
           categoryLabel={labelMapping[item.offer.subcategoryId]}
           categoryId={mapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}
           offerId={+item.objectID}
-          distance={formatDistance(item._geoloc, userLocation)}
           name={item.offer.name}
           date={formatDates(timestampsInMillis)}
           isDuo={item.offer.isDuo}
@@ -104,7 +101,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [userLocation, user?.isBeneficiary, labelMapping, mapping]
+    [user?.isBeneficiary, labelMapping, mapping]
   )
 
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(

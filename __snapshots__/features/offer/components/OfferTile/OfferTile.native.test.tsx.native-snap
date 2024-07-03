@@ -3,7 +3,7 @@
 exports[`OfferTile component should render correctly 1`] = `
 <View>
   <View
-    accessibilityLabel="Offre La nuit des temps de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €. "
+    accessibilityLabel="Offre La nuit des temps de la catégorie MUSIQUE,   Dès le 12 mars 2020, prix 28 €. "
     accessibilityRole="link"
     accessibilityValue={
       {
@@ -36,7 +36,7 @@ exports[`OfferTile component should render correctly 1`] = `
         },
       ]
     }
-    testID="Offre La nuit des temps de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €. "
+    testID="Offre La nuit des temps de la catégorie MUSIQUE,   Dès le 12 mars 2020, prix 28 €. "
   >
     <View
       style={
@@ -191,47 +191,6 @@ exports[`OfferTile component should render correctly 1`] = `
               testID="categoryImageCaption"
             >
               MUSIQUE
-            </Text>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#ffffff",
-                  "height": 16,
-                  "width": 1,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "center",
-                  "paddingHorizontal": 2,
-                },
-              ]
-            }
-          >
-            <Text
-              style={
-                [
-                  {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-              testID="distanceImageCaption"
-            >
-              1,2km
             </Text>
           </View>
         </View>

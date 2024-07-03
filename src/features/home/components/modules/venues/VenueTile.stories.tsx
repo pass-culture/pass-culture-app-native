@@ -32,7 +32,6 @@ const props = {
     ...venuesSearchFixture.hits[0],
     bannerUrl: undefined,
   },
-  userLocation: null,
   height: LENGTH_S,
   width: LENGTH_S * (3 / 2),
 }
@@ -56,8 +55,4 @@ WithImage.args = {
 const WithPosition = Template.bind({})
 WithPosition.args = {
   ...props,
-  userLocation: {
-    latitude: 50,
-    longitude: 51,
-  },
 }

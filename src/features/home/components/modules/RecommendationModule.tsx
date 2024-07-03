@@ -10,7 +10,6 @@ import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylist
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { formatDates } from 'libs/parsers/formatDates'
-import { formatDistance } from 'libs/parsers/formatDistance'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -65,13 +64,14 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+
       return (
         <HomeOfferTile
           categoryLabel={labelMapping[item.offer.subcategoryId]}
           categoryId={mapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}
           offerId={+item.objectID}
-          distance={formatDistance(item._geoloc, position)}
+          offerLocation={item._geoloc}
           name={item.offer.name}
           date={formatDates(timestampsInMillis)}
           isDuo={item.offer.isDuo}

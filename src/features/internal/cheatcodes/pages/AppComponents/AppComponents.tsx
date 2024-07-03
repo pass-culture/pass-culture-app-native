@@ -677,7 +677,6 @@ export const AppComponents: FunctionComponent = () => {
           moduleName="le nom du module"
           height={LENGTH_S}
           width={LENGTH_S * (3 / 2)}
-          userLocation={null}
           venue={{ ...venuesSearchFixture.hits[0], bannerUrl: undefined }}
         />
         <VenueTile
@@ -685,10 +684,6 @@ export const AppComponents: FunctionComponent = () => {
           moduleName="le nom du module géolocalisé"
           height={LENGTH_S}
           width={LENGTH_S * (3 / 2)}
-          userLocation={{
-            latitude: 50,
-            longitude: 51,
-          }}
           venue={{ ...venuesSearchFixture.hits[0], bannerUrl: undefined }}
         />
         <Spacer.Column numberOfSpaces={4} />

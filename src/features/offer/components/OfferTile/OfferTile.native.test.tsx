@@ -12,8 +12,9 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { OfferTile } from './OfferTile'
 
-const offer = mockedAlgoliaResponse.hits[0].offer
-const offerId = 116656
+const OFFER = mockedAlgoliaResponse.hits[0].offer
+const OFFER_LOCATION = mockedAlgoliaResponse.hits[0]._geoloc
+const OFFER_ID = 116656
 const searchId = uuidv4()
 
 const apiRecoParams: RecommendationApiParams = {
@@ -30,15 +31,15 @@ const props = {
   analyticsFrom: 'home' as Referrals,
   categoryLabel: HomepageLabelNameEnumv2.MUSIQUE,
   categoryId: CategoryIdEnum.MUSIQUE_LIVE,
-  subcategoryId: offer.subcategoryId,
+  subcategoryId: OFFER.subcategoryId,
   expenseDomains: [],
-  distance: '1,2km',
+  offerLocation: OFFER_LOCATION,
   date: 'Dès le 12 mars 2020',
-  name: offer.name,
-  isDuo: offer.isDuo,
-  offerId,
+  name: OFFER.name,
+  isDuo: OFFER.isDuo,
+  offerId: OFFER_ID,
   price: '28 €',
-  thumbUrl: offer.thumbUrl,
+  thumbUrl: OFFER.thumbUrl,
   moduleName: 'Module Name',
   width: 100,
   height: 100,
@@ -58,7 +59,7 @@ describe('OfferTile component', () => {
     await fireEvent.press(screen.getByTestId('tileImage'))
 
     expect(push).toHaveBeenCalledWith('Offer', {
-      id: offerId,
+      id: OFFER_ID,
       from: 'home',
       moduleName: 'Module Name',
     })
@@ -69,7 +70,7 @@ describe('OfferTile component', () => {
     await fireEvent.press(screen.getByTestId('tileImage'))
 
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      offerId,
+      offerId: OFFER_ID,
       from: 'home',
       moduleName: props.moduleName,
     })
@@ -83,12 +84,16 @@ describe('OfferTile component', () => {
       apiRecoParams,
     }
 
-    render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
+    render(
+      reactQueryProviderHOC(
+        <OfferTile {...propsFromSimilarOffers} offerLocation={OFFER_LOCATION} />
+      )
+    )
     await fireEvent.press(screen.getByTestId('tileImage'))
 
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       ...apiRecoParams,
-      offerId,
+      offerId: OFFER_ID,
       from: 'similar_offer',
       moduleName: props.moduleName,
       fromOfferId: 1,
@@ -98,10 +103,10 @@ describe('OfferTile component', () => {
 
   it('Analytics - should log ConsultOffer with homeEntryId if provide', async () => {
     render(reactQueryProviderHOC(<OfferTile {...props} homeEntryId="abcd" />))
-    await fireEvent.press(screen.getByTestId('tileImage'))
+    fireEvent.press(screen.getByTestId('tileImage'))
 
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      offerId,
+      offerId: OFFER_ID,
       from: 'home',
       moduleName: props.moduleName,
       homeEntryId: 'abcd',
@@ -110,24 +115,28 @@ describe('OfferTile component', () => {
 
   it('Analytics - should log ConsultOffer from venue offers playlist and from search venues playlist', async () => {
     const propsFromSearchVenuesPlaylist = {
-      offerId,
+      offerId: OFFER_ID,
       analyticsFrom: 'venue' as Referrals,
       venueId: 1,
       searchId,
       categoryLabel: HomepageLabelNameEnumv2.MUSIQUE,
       categoryId: CategoryIdEnum.MUSIQUE_LIVE,
-      subcategoryId: offer.subcategoryId,
+      subcategoryId: OFFER.subcategoryId,
       price: '28 €',
       width: 100,
       height: 100,
-      thumbUrl: offer.thumbUrl,
+      thumbUrl: OFFER.thumbUrl,
     }
 
-    render(reactQueryProviderHOC(<OfferTile {...propsFromSearchVenuesPlaylist} />))
+    render(
+      reactQueryProviderHOC(
+        <OfferTile {...propsFromSearchVenuesPlaylist} offerLocation={OFFER_LOCATION} />
+      )
+    )
     await fireEvent.press(screen.getByTestId('tileImage'))
 
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      offerId,
+      offerId: OFFER_ID,
       from: 'venue',
       venueId: 1,
       searchId,
@@ -147,7 +156,7 @@ describe('OfferTile component', () => {
 
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       ...apiRecoParams,
-      offerId,
+      offerId: OFFER_ID,
       fromOfferId: 1,
       from: 'same_artist_playlist',
       moduleName: props.moduleName,
@@ -159,7 +168,7 @@ describe('OfferTile component', () => {
     render(reactQueryProviderHOC(<OfferTile {...props} />))
     await fireEvent.press(screen.getByTestId('tileImage'))
 
-    const queryHash = JSON.stringify(['offer', offerId])
+    const queryHash = JSON.stringify(['offer', OFFER_ID])
     const query = queryCache.get(queryHash)
 
     expect(query).not.toBeUndefined()
@@ -168,7 +177,7 @@ describe('OfferTile component', () => {
       accessibility: {},
       description: '',
       expenseDomains: [],
-      id: offerId,
+      id: OFFER_ID,
       images: { recto: { url: props.thumbUrl } },
       isDigital: false,
       isDuo: false,
@@ -176,9 +185,9 @@ describe('OfferTile component', () => {
       isExpired: false,
       isForbiddenToUnderage: false,
       isSoldOut: false,
-      name: offer.name,
+      name: OFFER.name,
       stocks: [],
-      subcategoryId: offer.subcategoryId,
+      subcategoryId: OFFER.subcategoryId,
       venue: { coordinates: {} },
       isEducational: false,
       metadata: undefined,

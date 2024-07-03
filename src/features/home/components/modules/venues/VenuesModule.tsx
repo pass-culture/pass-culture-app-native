@@ -5,7 +5,6 @@ import { ModuleData } from 'features/home/types'
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
-import { useLocation } from 'libs/location/LocationWrapper'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 import { LENGTH_S } from 'ui/theme'
@@ -30,7 +29,6 @@ export const VenuesModule = ({
   homeEntryId,
   data,
 }: VenuesModuleProps) => {
-  const { userLocation } = useLocation()
   const moduleName = displayParameters.title
   const { playlistItems = [] } = data ?? { playlistItems: [] }
 
@@ -43,10 +41,9 @@ export const VenuesModule = ({
         venue={item}
         width={width}
         height={height}
-        userLocation={userLocation}
       />
     ),
-    [userLocation, moduleName, moduleId, homeEntryId]
+    [moduleName, moduleId, homeEntryId]
   )
 
   const shouldModuleBeDisplayed = playlistItems.length > displayParameters.minOffers

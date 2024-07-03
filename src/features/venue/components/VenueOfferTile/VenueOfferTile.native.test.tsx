@@ -8,22 +8,24 @@ import { analytics } from 'libs/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-const offer = mockedAlgoliaResponse.hits[0].offer
-const offerId = 116656
-const venueId = 34
+const OFFER = mockedAlgoliaResponse.hits[0].offer
+const OFFER_LOCATION = mockedAlgoliaResponse.hits[0]._geoloc
+const OFFER_ID = 116656
+const VENUE_ID = 34
 
 const props = {
   categoryLabel: HomepageLabelNameEnumv2.MUSIQUE,
   categoryId: CategoryIdEnum.MUSIQUE_LIVE,
-  subcategoryId: offer.subcategoryId,
+  subcategoryId: OFFER.subcategoryId,
   expenseDomains: [],
   date: 'Dès le 12 mars 2020',
-  name: offer.name,
-  isDuo: offer.isDuo,
-  offerId,
+  name: OFFER.name,
+  isDuo: OFFER.isDuo,
+  offerId: OFFER_ID,
+  offerLocation: OFFER_LOCATION,
   price: '28 €',
-  thumbUrl: offer.thumbUrl,
-  venueId,
+  thumbUrl: OFFER.thumbUrl,
+  venueId: VENUE_ID,
   width: 100,
   height: 100,
 }
@@ -38,7 +40,7 @@ describe('VenueOfferTile component', () => {
 
     await waitFor(() => {
       expect(push).toHaveBeenCalledWith('Offer', {
-        id: offerId,
+        id: OFFER_ID,
         from: 'venue',
       })
     })
@@ -49,9 +51,9 @@ describe('VenueOfferTile component', () => {
     fireEvent.press(screen.getByTestId('tileImage'))
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-      offerId,
+      offerId: OFFER_ID,
       from: 'venue',
-      venueId,
+      venueId: VENUE_ID,
     })
   })
 
@@ -59,7 +61,7 @@ describe('VenueOfferTile component', () => {
     render(reactQueryProviderHOC(<VenueOfferTile {...props} />))
     fireEvent.press(screen.getByTestId('tileImage'))
 
-    const queryHash = JSON.stringify(['offer', offerId])
+    const queryHash = JSON.stringify(['offer', OFFER_ID])
     const query = queryCache.get(queryHash)
 
     expect(query).not.toBeUndefined()
@@ -68,7 +70,7 @@ describe('VenueOfferTile component', () => {
       accessibility: {},
       description: '',
       expenseDomains: [],
-      id: offerId,
+      id: OFFER_ID,
       images: { recto: { url: props.thumbUrl } },
       isDigital: false,
       isDuo: false,
@@ -76,9 +78,9 @@ describe('VenueOfferTile component', () => {
       isExpired: false,
       isForbiddenToUnderage: false,
       isSoldOut: false,
-      name: offer.name,
+      name: OFFER.name,
       stocks: [],
-      subcategoryId: offer.subcategoryId,
+      subcategoryId: OFFER.subcategoryId,
       venue: { coordinates: {} },
       isEducational: false,
       metadata: undefined,

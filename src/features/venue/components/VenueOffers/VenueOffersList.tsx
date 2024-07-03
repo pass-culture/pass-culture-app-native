@@ -54,6 +54,7 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({ venue, venueOffers
     const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
     return (
       <VenueOfferTile
+        offerLocation={item._geoloc}
         categoryLabel={labelMapping[item.offer.subcategoryId]}
         categoryId={mapping[item.offer.subcategoryId]}
         subcategoryId={item.offer.subcategoryId}

@@ -31,6 +31,11 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+const mockDistance: string | null = null
+jest.mock('libs/location/hooks/useDistance', () => ({
+  useDistance: () => mockDistance,
+}))
+
 const useFeatureFlagSpy = jest
   .spyOn(useFeatureFlag, 'useFeatureFlag')
   // this value corresponds to WIP_SAME_ARTIST_PLAYLIST feature flag
@@ -42,7 +47,6 @@ const mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffe
 
 const offerPlaylistListProps: OfferPlaylistListProps = {
   offer: mockOffer,
-  position: null,
 }
 
 const defaultRemoteConfig: CustomRemoteConfig = {
@@ -205,7 +209,6 @@ describe('<OfferPlaylistList />', () => {
 
 const renderOfferPlaylistList = ({
   offer = mockOffer,
-  position = null,
   sameCategorySimilarOffers,
   otherCategoriesSimilarOffers,
   sameArtistPlaylist,
@@ -214,7 +217,6 @@ const renderOfferPlaylistList = ({
     reactQueryProviderHOC(
       <OfferPlaylistList
         offer={offer}
-        position={position}
         sameCategorySimilarOffers={sameCategorySimilarOffers}
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
         sameArtistPlaylist={sameArtistPlaylist}
