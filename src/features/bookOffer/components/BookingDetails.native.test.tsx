@@ -326,7 +326,7 @@ describe('<BookingDetails />', () => {
       })
 
       renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
-      await act(async () => {})
+      await screen.findByText('Informations')
 
       expect(await screen.findByTestId('DuoChoiceSelector')).toBeOnTheScreen()
     })
@@ -340,7 +340,7 @@ describe('<BookingDetails />', () => {
     })
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-    await act(async () => {})
+    await screen.findByText('Informations')
 
     expect(screen.queryByTestId('address')).not.toBeOnTheScreen()
   })
@@ -357,7 +357,7 @@ describe('<BookingDetails />', () => {
     })
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-    await act(async () => {})
+    await screen.findByText('Informations')
 
     expect(await screen.findByText('Lieu de retrait')).toBeOnTheScreen()
   })
@@ -374,7 +374,7 @@ describe('<BookingDetails />', () => {
     })
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-    await act(async () => {})
+    await screen.findByText('Informations')
 
     expect(await screen.findByTestId('venueName')).toBeOnTheScreen()
   })
@@ -391,7 +391,7 @@ describe('<BookingDetails />', () => {
     })
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-    await act(async () => {})
+    await screen.findByText('Informations')
 
     expect(await screen.findByTestId('venueAddress')).toBeOnTheScreen()
   })
@@ -411,7 +411,7 @@ describe('<BookingDetails />', () => {
     mockVenueList = offerVenues
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-    await act(async () => {})
+    await screen.findByText('Informations')
 
     expect(await screen.findByText('Modifier')).toBeOnTheScreen()
   })
@@ -431,7 +431,7 @@ describe('<BookingDetails />', () => {
     mockVenueList = []
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-    await act(async () => {})
+    await screen.findByText('Informations')
 
     expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
   })
@@ -451,7 +451,7 @@ describe('<BookingDetails />', () => {
     mockVenueList = offerVenues
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-    await act(async () => {})
+    await screen.findByText('Informations')
 
     expect(await screen.findByText('Modifier')).toBeOnTheScreen()
   })
@@ -471,7 +471,7 @@ describe('<BookingDetails />', () => {
     mockVenueList = []
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-    await act(async () => {})
+    await screen.findByText('Informations')
 
     expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
   })
@@ -488,7 +488,7 @@ describe('<BookingDetails />', () => {
     })
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-    await act(async () => {})
+    await screen.findByText('Informations')
 
     expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
   })
@@ -505,7 +505,7 @@ describe('<BookingDetails />', () => {
     })
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-    await act(async () => {})
+    await screen.findByText('Informations')
 
     expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
   })

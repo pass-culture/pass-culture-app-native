@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Price } from 'features/search/components/sections/Price/Price'
 import { initialSearchState } from 'features/search/context/reducer'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 let mockSearchState = initialSearchState
 
@@ -22,7 +22,7 @@ describe('Price component', () => {
     mockSearchState = { ...initialSearchState, minPrice: '5' }
     render(<Price />)
 
-    await act(async () => {})
+    await screen.findByText('Prix')
 
     expect(await screen.findByText('5\u00a0€ et plus')).toBeOnTheScreen()
   })
@@ -31,7 +31,7 @@ describe('Price component', () => {
     mockSearchState = { ...initialSearchState, maxPrice: '10' }
     render(<Price />)
 
-    await act(async () => {})
+    await screen.findByText('Prix')
 
     expect(await screen.findByText('10\u00a0€ et moins')).toBeOnTheScreen()
   })
@@ -40,7 +40,7 @@ describe('Price component', () => {
     mockSearchState = { ...initialSearchState, minPrice: '5', maxPrice: '10' }
     render(<Price />)
 
-    await act(async () => {})
+    await screen.findByText('Prix')
 
     expect(await screen.findByText('de 5\u00a0€ à 10\u00a0€')).toBeOnTheScreen()
   })
@@ -49,7 +49,7 @@ describe('Price component', () => {
     mockSearchState = { ...initialSearchState, minPrice: '0', maxPrice: '0' }
     render(<Price />)
 
-    await act(async () => {})
+    await screen.findByText('Prix')
 
     expect(await screen.findByText('Gratuit')).toBeOnTheScreen()
   })
@@ -58,11 +58,9 @@ describe('Price component', () => {
     render(<Price />, {
       theme: { isDesktopViewport: false, isMobileViewport: true },
     })
-    const searchPriceButton = screen.getByTestId('FilterRow')
+    const searchPriceButton = await screen.findByTestId('FilterRow')
 
-    await act(async () => {
-      fireEvent.press(searchPriceButton)
-    })
+    fireEvent.press(searchPriceButton)
 
     const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 

@@ -65,7 +65,8 @@ jest.useFakeTimers()
 describe('<FavoriteButton />', () => {
   it('should render favorite icon', async () => {
     renderFavoriteButton()
-    await act(async () => {})
+
+    await screen.findByLabelText('Mettre en favoris')
 
     expect(screen.getByTestId('icon-favorite')).toBeOnTheScreen()
   })
@@ -248,7 +249,8 @@ describe('<FavoriteButton />', () => {
 
   it('should enable the favorites button when is not loading', async () => {
     renderFavoriteButton()
-    await act(async () => {})
+
+    await screen.findByLabelText('Mettre en favoris')
 
     expect(screen.getByLabelText('Mettre en favoris')).not.toBeDisabled()
   })
@@ -257,7 +259,8 @@ describe('<FavoriteButton />', () => {
     mockUseAddFavoriteLoading()
     mockUseRemoveFavorite()
     renderFavoriteButton()
-    await act(async () => {})
+
+    await screen.findByLabelText('Mettre en favoris')
 
     expect(screen.getByLabelText('Mettre en favoris')).toBeDisabled()
   })

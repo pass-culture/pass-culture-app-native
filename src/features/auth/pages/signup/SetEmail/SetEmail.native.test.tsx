@@ -57,10 +57,9 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<SetEmail />', () => {
-  it('should disable validate button when email input is not filled', async () => {
+  it('should disable validate button when email input is not filled', () => {
     renderSetEmail()
 
-    await act(async () => {})
     const button = screen.getByText('Continuer')
 
     expect(button).toBeDisabled()
@@ -203,10 +202,8 @@ describe('<SetEmail />', () => {
     })
   })
 
-  it('should log screen view when the screen is mounted', async () => {
+  it('should log screen view when the screen is mounted', () => {
     renderSetEmail()
-
-    await act(async () => {})
 
     expect(analytics.logScreenViewSetEmail).toHaveBeenCalledTimes(1)
   })
@@ -261,10 +258,8 @@ describe('<SetEmail />', () => {
       useFeatureFlagSpy.mockReturnValue(false)
     })
 
-    it('should not display SSO button when FF is disabled', async () => {
+    it('should not display SSO button when FF is disabled', () => {
       renderSetEmail()
-
-      await act(async () => {})
 
       expect(screen.queryByTestId('S’inscrire avec Google')).not.toBeOnTheScreen()
     })
@@ -327,10 +322,9 @@ describe('<SetEmail />', () => {
 
       renderSetEmail()
 
-      await act(() => {})
+      await screen.findByText('Crée-toi un compte')
 
       const signupButton = screen.getByText('S’inscrire avec Google')
-
       await act(async () => fireEvent.press(signupButton))
 
       expect(mockShowErrorSnackBar).toHaveBeenCalledWith({

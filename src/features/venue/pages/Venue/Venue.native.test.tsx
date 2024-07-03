@@ -14,7 +14,7 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, waitFor, fireEvent } from 'tests/utils'
+import { render, screen, waitFor, fireEvent } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -83,16 +83,16 @@ describe('<Venue />', () => {
 
   it('should match snapshot', async () => {
     renderVenue(venueId)
-    await act(async () => {})
+
+    await screen.findByText('Infos pratiques')
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should match snapshot with practical information', async () => {
     renderVenue(venueId)
-    await act(async () => {})
 
-    fireEvent.press(screen.getByText('Infos pratiques'))
+    fireEvent.press(await screen.findByText('Infos pratiques'))
 
     expect(screen).toMatchSnapshot()
   })
@@ -111,14 +111,16 @@ describe('<Venue />', () => {
 
     it('should not log consult venue when URL has "from" param with something other than deeplink', async () => {
       renderVenue(venueId, 'searchresults')
-      await act(async () => {})
+
+      await screen.findByText('Infos pratiques')
 
       expect(analytics.logConsultVenue).not.toHaveBeenCalled()
     })
 
     it('should not log consult venue when URL has not "from" param', async () => {
       renderVenue(venueId)
-      await act(async () => {})
+
+      await screen.findByText('Infos pratiques')
 
       expect(analytics.logConsultVenue).not.toHaveBeenCalled()
     })
