@@ -29,7 +29,6 @@ Ces workflows sont utilisés pour déployer le web sur les buckets GCP, et le pr
 | dev_on_push_workflow_main.yml              | Workflow | Automatically | [runs](https://github.com/pass-culture/pass-culture-app-native/actions/workflows/dev_on_push_workflow_main.yml)          |
 | dev_on_pull_request_reassure.yml           | Workflow | Automatically | [runs](https://github.com/pass-culture/pass-culture-app-native/actions/workflows/dev_on_pull_request_reassure.yml)       |
 | dev_on_pull_request_title_checker.yml      | Helper   | Automatically |                                                                                                                          |
-| dev_on_schedule_lighthouse.yml             | Workflow | Automatically | [runs](https://github.com/pass-culture/pass-culture-app-native/actions/workflows/dev_on_schedule_lighthouse.yml)         |
 | dev_on_workflow_check_folder_change.yml    | Helper   | Automatically |                                                                                                                          |
 | dev_on_workflow_chromatic.yml              | Helper   | Automatically | [runs](https://github.com/pass-culture/pass-culture-app-native/actions/workflows/dev_on_push_workflow_chromatic.yml)     |
 | dev_on_workflow_environment_deploy.yml     | Helper   | Automatically |                                                                                                                          |
