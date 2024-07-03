@@ -29,7 +29,7 @@ const Template: ComponentStory<typeof BannerWithBackground> = (props) => (
   <BannerWithBackground {...props} />
 )
 
-const TextComponent = () => <StyledBody>Banner text - test</StyledBody>
+const TextComponent = () => <StyledBody>Banner text</StyledBody>
 
 export const Default = Template.bind({})
 Default.args = {
