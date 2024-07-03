@@ -88,5 +88,5 @@ const LabelContainer = styled.View<{ baseColor?: string }>(({ baseColor, theme }
 
 const Label = styled(Typo.ButtonText)(({ theme }) => ({
   textAlign: 'left',
-  color: theme.colors.white,
+  color: theme.colors.black,
 }))
