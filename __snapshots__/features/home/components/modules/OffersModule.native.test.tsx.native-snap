@@ -10,45 +10,23 @@ exports[`OffersModule should render correctly for one-item-medium layout 1`] = `
     ]
   }
 >
-  <View
+  <Text
+    numberOfLines={2}
     style={
       [
         {
-          "maxHeight": 68,
-          "overflow": "hidden",
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 20,
+          "lineHeight": 24,
+          "marginHorizontal": 24,
         },
       ]
     }
+    testID="playlistTitle"
   >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "marginHorizontal": 24,
-          },
-        ]
-      }
-    >
-      <Text
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 20,
-              "lineHeight": 24,
-            },
-          ]
-        }
-        testID="playlistTitle"
-      >
-        Module title
-      </Text>
-    </View>
-  </View>
+    Module title
+  </Text>
   <View
     numberOfSpaces={4}
     style={
@@ -2014,45 +1992,23 @@ exports[`OffersModule should render correctly for two-items layout 1`] = `
     ]
   }
 >
-  <View
+  <Text
+    numberOfLines={2}
     style={
       [
         {
-          "maxHeight": 68,
-          "overflow": "hidden",
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 20,
+          "lineHeight": 24,
+          "marginHorizontal": 24,
         },
       ]
     }
+    testID="playlistTitle"
   >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "marginHorizontal": 24,
-          },
-        ]
-      }
-    >
-      <Text
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 20,
-              "lineHeight": 24,
-            },
-          ]
-        }
-        testID="playlistTitle"
-      >
-        Module title
-      </Text>
-    </View>
-  </View>
+    Module title
+  </Text>
   <View
     numberOfSpaces={4}
     style={
@@ -4022,45 +3978,23 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
     ]
   }
 >
-  <View
+  <Text
+    numberOfLines={2}
     style={
       [
         {
-          "maxHeight": 68,
-          "overflow": "hidden",
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 20,
+          "lineHeight": 24,
+          "marginHorizontal": 24,
         },
       ]
     }
+    testID="playlistTitle"
   >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "marginHorizontal": 24,
-          },
-        ]
-      }
-    >
-      <Text
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 20,
-              "lineHeight": 24,
-            },
-          ]
-        }
-        testID="playlistTitle"
-      >
-        Module title
-      </Text>
-    </View>
-  </View>
+    Module title
+  </Text>
   <View
     numberOfSpaces={4}
     style={
@@ -5901,45 +5835,23 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
     ]
   }
 >
-  <View
+  <Text
+    numberOfLines={2}
     style={
       [
         {
-          "maxHeight": 68,
-          "overflow": "hidden",
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 20,
+          "lineHeight": 24,
+          "marginHorizontal": 24,
         },
       ]
     }
+    testID="playlistTitle"
   >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "marginHorizontal": 24,
-          },
-        ]
-      }
-    >
-      <Text
-        numberOfLines={2}
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 20,
-              "lineHeight": 24,
-            },
-          ]
-        }
-        testID="playlistTitle"
-      >
-        Module title
-      </Text>
-    </View>
-  </View>
+    Module title
+  </Text>
   <View
     numberOfSpaces={4}
     style={
