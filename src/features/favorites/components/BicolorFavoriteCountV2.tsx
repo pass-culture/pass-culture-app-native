@@ -6,7 +6,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useFavoritesCount } from 'features/favorites/api'
 import { useScaleAnimation } from 'features/favorites/helpers/useScaleFavoritesAnimation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { handleTooManyCount } from 'shared/handleTooManyCount/handleTooManyCount'
+import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { BicolorFavoriteV2 } from 'ui/svg/icons/BicolorFavoriteV2'
 import { Pastille } from 'ui/svg/icons/Pastille'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
@@ -28,7 +28,7 @@ export const BicolorFavoriteCountV2: React.FC<AccessibleBicolorIcon> = ({
   }
 
   const height = 0.55 * Number(size)
-  const fullCountLabel = handleTooManyCount(favoritesCount)
+  const { fullCountLabel, accessibilityLabel } = createLabels(favoritesCount, 'favoris')
 
   return (
     <Container testID="bicolor-favorite-count-v2">
@@ -38,7 +38,7 @@ export const BicolorFavoriteCountV2: React.FC<AccessibleBicolorIcon> = ({
         <PastilleContent
           width={size}
           height={height}
-          accessibilityLabel={fullCountLabel}
+          accessibilityLabel={accessibilityLabel}
           accessibilityLiveRegion="polite">
           <TextContainer height={height}>
             <Counter>{fullCountLabel}</Counter>

@@ -5,7 +5,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { useScaleAnimation } from 'features/favorites/helpers/useScaleFavoritesAnimation'
-import { handleTooManyCount } from 'shared/handleTooManyCount/handleTooManyCount'
+import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { BicolorBookingsV2 } from 'ui/svg/icons/BicolorBookingsV2'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
@@ -29,13 +29,13 @@ export const BicolorBookingsCountV2: React.FC<AccessibleBicolorIcon> = ({
     return <BicolorBookingsV2 size={size} color={color} color2={color2} testID={testID} />
   }
 
-  const fullCountLabel = handleTooManyCount(bookingsCount)
+  const { fullCountLabel, accessibilityLabel } = createLabels(bookingsCount, 'réservations')
 
   return (
     <Container>
       <BicolorBookingsV2 size={size} color={color} color2={color2} />
       <StyledAnimatedView style={{ transform: [{ scale }] }}>
-        <PastilleContainer accessibilityLabel={fullCountLabel}>
+        <PastilleContainer accessibilityLabel={accessibilityLabel}>
           <StyledLinearGradient colors={[theme.colors.primary, theme.colors.secondary]}>
             <Counter>{fullCountLabel}</Counter>
           </StyledLinearGradient>
