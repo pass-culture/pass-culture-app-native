@@ -33,11 +33,6 @@ const DEFAULT_ITEM_WITH_HOME_ENTRY_ID = videoCarouselModuleFixture.items[2]
 const MOCKED_ALGOLIA_RESPONSE_OFFER = mockedAlgoliaResponse.hits[0]
 
 describe('<VideoCarouselModule />', () => {
-  beforeEach(() => {
-    MockedYouTubePlayer.setPlayerState(PlayerState.UNSTARTED)
-    MockedYouTubePlayer.setError(false)
-  })
-
   it('should call fetchCarouselVideoOffers with properly formatted data', async () => {
     renderVideoCarouselModule(videoCarouselModuleFixture)
 
@@ -158,6 +153,19 @@ describe('<VideoCarouselModule />', () => {
   })
 
   describe('tracking', () => {
+    it('should send logConsultVideo when video starts autoplay', async () => {
+      renderVideoCarouselModule(videoCarouselModuleFixture)
+
+      await screen.findByText(MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name)
+
+      expect(analytics.logConsultVideo).toHaveBeenNthCalledWith(1, {
+        from: 'video_carousel_block',
+        moduleId: videoCarouselModuleFixture.id,
+        homeEntryId: videoCarouselModuleFixture.homeEntryId,
+        youtubeId: videoCarouselModuleFixture.items[2].youtubeVideoId,
+      })
+    })
+
     it('should send logConsultVideo event when user presses `next video button`', async () => {
       MockedYouTubePlayer.setPlayerState(PlayerState.ENDED)
 
@@ -176,7 +184,7 @@ describe('<VideoCarouselModule />', () => {
       })
     })
 
-    it('should send logConsultVideo event when user presses on offer', async () => {
+    it('should send logConsultOffer event when user presses on offer', async () => {
       const OFFER_NAME = MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name
       const OFFER_ID = MOCKED_ALGOLIA_RESPONSE_OFFER.objectID
 
