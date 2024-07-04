@@ -12,8 +12,8 @@ import { FetchOffersResponse, fetchOffers } from 'libs/algolia/fetchAlgolia/fetc
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaHit, Geoloc } from 'libs/algolia/types'
 import { Position } from 'libs/location'
+import { useDistance } from 'libs/location/hooks/useDistance'
 import { LocationMode } from 'libs/location/types'
-import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'
@@ -45,7 +45,7 @@ type FilterVenueOfferType = {
 // Radius in meters
 const AROUND_RADIUS = 50 * 1000
 
-export function getVenueList(hits: Offer[], geolocation: Position) {
+export function getVenueList(hits: Offer[]) {
   const offerVenues: OfferVenueType[] = []
 
   hits.forEach((hit) => {
@@ -84,7 +84,7 @@ export function getVenueList(hits: Offer[], geolocation: Position) {
       offerId: offerVenue.offerId,
       title: offerVenue.title,
       address: offerVenue.address,
-      distance: formatDistance(offerVenue.coordinates, geolocation),
+      distance: useDistance(offerVenue.coordinates),
     }
   })
 
@@ -150,8 +150,8 @@ export const useSearchVenueOffers = ({
       filterVenueOfferHit({ hit, offerId, venueId })
     ) as Offer[]
 
-    return getVenueList(filteredHits, geolocation)
-  }, [data?.pages, geolocation, offerId, transformHits, venueId])
+    return getVenueList(filteredHits)
+  }, [data?.pages, offerId, transformHits, venueId])
 
   const nbVenueItems = venueList.length
 

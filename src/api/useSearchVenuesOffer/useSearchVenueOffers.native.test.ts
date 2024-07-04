@@ -7,18 +7,26 @@ import {
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { toMutable } from 'shared/types/toMutable'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('useSearchVenueOffers', () => {
-  const position: Position = { latitude: 48.90374, longitude: 2.48171 }
+const mockLocationMode = LocationMode.AROUND_ME
+const mockUserLocation: Position = { latitude: 48.90374, longitude: 2.48171 }
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => ({
+    userLocation: mockUserLocation,
+    selectedLocationMode: mockLocationMode,
+  }),
+}))
 
+describe('useSearchVenueOffers', () => {
   describe('getVenueList', () => {
     it('should return an offer venues list', () => {
-      const offerVenues = getVenueList(mockedAlgoliaResponse.hits, position)
+      const offerVenues = getVenueList(mockedAlgoliaResponse.hits)
 
       expect(offerVenues).toEqual([
         {
@@ -95,7 +103,7 @@ describe('useSearchVenueOffers', () => {
           },
         },
       ]
-      const offerVenues = getVenueList(hits, position)
+      const offerVenues = getVenueList(hits)
 
       expect(offerVenues).toEqual([
         {
