@@ -3,10 +3,9 @@ import { OfferTileProps } from 'features/offer/types'
 import { VenueHit } from 'libs/algolia/types'
 import { parseType } from 'libs/parsers/venueType'
 
-type Offer = Pick<
-  OfferTileProps,
-  'name' | 'categoryLabel' | 'price' | 'date' | 'distance' | 'isDuo'
->
+type Offer = Pick<OfferTileProps, 'name' | 'categoryLabel' | 'price' | 'date' | 'isDuo'> & {
+  distance?: string
+}
 type Venue = Pick<VenueHit, 'name' | 'venueTypeCode'> & { distance?: string }
 type Booking = {
   name: string

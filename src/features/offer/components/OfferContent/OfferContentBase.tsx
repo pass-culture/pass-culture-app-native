@@ -14,7 +14,6 @@ import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOff
 import { OfferContentProps } from 'features/offer/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useFunctionOnce } from 'libs/hooks'
-import { useLocation } from 'libs/location'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 
 type OfferContentBaseProps = OfferContentProps & {
@@ -37,7 +36,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   contentContainerStyle,
   BodyWrapper = React.Fragment,
 }) => {
-  const { userLocation } = useLocation()
   const {
     sameArtistPlaylist,
     sameCategorySimilarOffers,
@@ -113,7 +111,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
         </BodyWrapper>
         <OfferPlaylistList
           offer={offer}
-          position={userLocation}
           sameCategorySimilarOffers={sameCategorySimilarOffers}
           apiRecoParamsSameCategory={apiRecoParamsSameCategory}
           otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}

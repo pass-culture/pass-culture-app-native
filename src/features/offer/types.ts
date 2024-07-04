@@ -10,12 +10,13 @@ import {
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { Subcategory } from 'libs/subcategories/types'
+import { OfferLocation } from 'shared/offer/types'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
   categoryLabel: string | null
   subcategoryId: SubcategoryIdEnum
-  distance?: string
+  offerLocation: OfferLocation
   date?: string
   name?: string
   isDuo?: boolean

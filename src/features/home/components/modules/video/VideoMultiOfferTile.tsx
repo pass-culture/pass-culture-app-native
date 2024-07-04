@@ -9,9 +9,8 @@ import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useLocation } from 'libs/location'
+import { useDistance } from 'libs/location/hooks/useDistance'
 import { formatDates } from 'libs/parsers/formatDates'
-import { formatDistance } from 'libs/parsers/formatDistance'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -43,7 +42,6 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
   const labelMapping = useCategoryHomeLabelMapping()
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
-  const { userLocation } = useLocation()
   const { user } = useAuthContext()
 
   const displayPrice = getDisplayPrice(offer?.offer?.prices)
@@ -51,7 +49,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const displayDate = formatDates(timestampsInMillis)
 
-  const displayDistance = formatDistance(offer._geoloc, userLocation)
+  const displayDistance = useDistance(offer._geoloc)
 
   const categoryId = mapping[offer.offer.subcategoryId]
 

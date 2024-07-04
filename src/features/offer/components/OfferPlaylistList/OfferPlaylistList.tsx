@@ -15,9 +15,7 @@ import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylist
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { Position } from 'libs/location'
 import { formatDates } from 'libs/parsers/formatDates'
-import { formatDistance } from 'libs/parsers/formatDistance'
 import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
@@ -27,7 +25,6 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 
 export type OfferPlaylistListProps = {
   offer: OfferResponseV2
-  position: Position
   sameCategorySimilarOffers?: Offer[]
   apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
@@ -41,7 +38,6 @@ function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
 
 type PlaylistItemProps = {
   offer: OfferResponseV2
-  position: Position
   categoryMapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping
   apiRecoParams?: RecommendationApiParams
@@ -57,7 +53,6 @@ type RenderPlaylistItemProps = {
 
 const renderPlaylistItem = ({
   offer,
-  position,
   categoryMapping,
   labelMapping,
   apiRecoParams,
@@ -68,11 +63,11 @@ const renderPlaylistItem = ({
 
     return (
       <OfferTile
+        offerLocation={item._geoloc}
         categoryLabel={labelMapping[item.offer.subcategoryId]}
         categoryId={categoryMapping[item.offer.subcategoryId]}
         subcategoryId={item.offer.subcategoryId}
         offerId={+item.objectID}
-        distance={formatDistance(item._geoloc, position)}
         name={item.offer.name}
         date={formatDates(timestampsInMillis)}
         isDuo={item.offer.isDuo}
@@ -92,7 +87,6 @@ const renderPlaylistItem = ({
 
 export function OfferPlaylistList({
   offer,
-  position,
   sameCategorySimilarOffers,
   apiRecoParamsSameCategory,
   otherCategoriesSimilarOffers,
@@ -203,7 +197,6 @@ export function OfferPlaylistList({
               itemHeight={itemHeight}
               renderItem={renderPlaylistItem({
                 offer,
-                position,
                 categoryMapping,
                 labelMapping,
                 apiRecoParams: playlist.apiRecoParams,

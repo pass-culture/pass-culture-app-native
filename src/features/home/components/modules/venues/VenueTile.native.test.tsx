@@ -14,10 +14,14 @@ const props: VenueTileProps = {
   moduleId: 'module-id',
   moduleName: 'le nom du module',
   venue,
-  userLocation: null,
   width: 100,
   height: 100,
 }
+
+let mockDistance: string | null = null
+jest.mock('libs/location/hooks/useDistance', () => ({
+  useDistance: () => mockDistance,
+}))
 
 describe('VenueTile component', () => {
   it('should render correctly', () => {
@@ -70,7 +74,9 @@ describe('VenueTile component', () => {
   })
 
   it('should show distance prop when provided', () => {
-    renderVenueTile({ userLocation: { latitude: 2, longitude: 1 } })
+    mockDistance = '10km'
+
+    renderVenueTile()
 
     expect(screen.getByTestId('distance-tag')).toBeTruthy()
   })

@@ -4,8 +4,7 @@ import styled from 'styled-components/native'
 
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
-import { useLocation } from 'libs/location'
-import { formatDistance } from 'libs/parsers/formatDistance'
+import { useDistance } from 'libs/location/hooks/useDistance'
 import { Tag } from 'ui/components/Tag/Tag'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
@@ -25,8 +24,7 @@ export const VenueListModuleItem: FunctionComponent<Props> = ({
   moduleId,
   homeVenuesListEntryId,
 }) => {
-  const { userLocation } = useLocation()
-  const distance = formatDistance({ lat: item.latitude, lng: item.longitude }, userLocation)
+  const distanceFromOffer = useDistance({ lat: item.latitude, lng: item.longitude })
   const address = [item.city, item.postalCode].filter(Boolean).join(', ')
 
   const handlePressVenue = () => {
@@ -48,7 +46,7 @@ export const VenueListModuleItem: FunctionComponent<Props> = ({
         imageHeight={IMAGE_SIZE}
         imageWidth={IMAGE_SIZE}
         bannerUrl={item.bannerUrl}>
-        {distance ? <StyledTag label={distance} /> : null}
+        {distanceFromOffer ? <StyledTag label={distanceFromOffer} /> : null}
       </VenuePreview>
     </StyledInternalTouchableLink>
   )

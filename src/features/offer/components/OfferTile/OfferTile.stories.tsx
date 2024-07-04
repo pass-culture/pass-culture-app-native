@@ -24,13 +24,13 @@ export default meta
 type Story = StoryObj<OfferTileProps>
 
 const props: Partial<OfferTileProps> = {
-  distance: '100m',
   date: 'le 18 juin 2024',
   name: 'The Fall Guy',
   price: 'dès 15,60\u00a0€',
   categoryLabel: 'Cinéma',
   width: 200,
   height: 300,
+  offerLocation: { lat: 48.94374, lng: 2.48171 },
 }
 
 export const Default: Story = {
@@ -39,6 +39,7 @@ export const Default: Story = {
     variant: 'default',
   },
 }
+
 export const New: Story = {
   args: {
     ...props,

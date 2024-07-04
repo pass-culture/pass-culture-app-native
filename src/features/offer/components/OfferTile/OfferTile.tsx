@@ -6,6 +6,7 @@ import { determinePlaylistType } from 'features/offer/helpers/determinePlaylistT
 import { OfferTileProps } from 'features/offer/types'
 import { analytics } from 'libs/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { useDistance } from 'libs/location/hooks/useDistance'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -39,10 +40,14 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const prePopulateOffer = usePrePopulateOffer()
 
-  const { offerId, name, distance, date, price, isDuo, categoryId, thumbUrl } = offer
+  const distanceFromOffer = useDistance(props.offerLocation)
+
+  const { offerId, name, date, price, isDuo, categoryId, thumbUrl } = offer
+
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,
     categoryLabel,
+    distance: distanceFromOffer,
   })
 
   const MAX_OFFER_CAPTION_HEIGHT = theme.tiles.maxCaptionHeight.offer
@@ -93,7 +98,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
           <PlaylistCardOffer
             categoryId={categoryId}
             thumbnailUrl={thumbUrl}
-            distance={distance}
+            distance={distanceFromOffer}
             name={name}
             date={date}
             price={price}
@@ -108,7 +113,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
             name={name}
             date={date}
             categoryId={categoryId}
-            distance={distance}
+            distance={distanceFromOffer}
             isDuo={isDuo}
             thumbnailUrl={thumbUrl}
             width={width}

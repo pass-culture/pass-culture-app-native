@@ -468,9 +468,9 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                               role="heading"
                             >
                               <div
-                                aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                aria-label="Offre Bac Nord - VF de la catégorie Cinéma, à 900+ km,  Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                                 class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
-                                data-testid="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                data-testid="Offre Bac Nord - VF de la catégorie Cinéma, à 900+ km,  Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                                 tabindex="0"
                               >
                                 <div
@@ -514,6 +514,20 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                                           dir="ltr"
                                         >
                                           Cinéma
+                                        </div>
+                                      </div>
+                                      <div
+                                        class="css-view-175oi2r r-backgroundColor-14lw9ot r-height-10ptun7 r-width-92ng3h"
+                                      />
+                                      <div
+                                        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-paddingHorizontal-1p4rafz"
+                                      >
+                                        <div
+                                          class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                          data-testid="distanceImageCaption"
+                                          dir="ltr"
+                                        >
+                                          900+ km
                                         </div>
                                       </div>
                                     </div>

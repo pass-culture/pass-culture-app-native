@@ -55,6 +55,7 @@ export function GtlPlaylist({ venue, playlist }: Readonly<GtlPlaylistProps>) {
 
       return (
         <VenueOfferTile
+          offerLocation={item._geoloc}
           categoryLabel={labelMapping[item.offer.subcategoryId]}
           categoryId={mapping[item.offer.subcategoryId]}
           subcategoryId={item.offer.subcategoryId}
