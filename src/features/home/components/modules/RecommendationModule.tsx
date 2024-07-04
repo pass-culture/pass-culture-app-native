@@ -51,11 +51,11 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
       analytics.logModuleDisplayedOnHomepage({
+        ...recommendationApiParams,
         moduleId,
         moduleType: ContentTypes.RECOMMENDATION,
         index,
         homeEntryId,
-        apiRecoParams: recommendationApiParams,
         offers: offers?.length ? offers.map((offer) => offer.objectID) : undefined,
       })
     }
