@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { SearchHistoryItem } from 'features/search/components/SearchHistoryItem/SearchHistoryItem'
 import { addHighlightedAttribute } from 'features/search/helpers/addHighlightedAttribute/addHighlightedAttribute'
 import { Highlighted, HistoryItem } from 'features/search/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { VerticalUl } from 'ui/components/Ul'
@@ -24,10 +25,13 @@ export function SearchHistory({ history, queryHistory, removeItem, onPress }: Pr
   return history.length > 0 ? (
     <React.Fragment>
       <SearchHistoryTitleText>Historique de recherche</SearchHistoryTitleText>
-
       <StyledVerticalUl>
         {history.map((item) => (
-          <Container key={item.createdAt} testID="searchHistoryItem" isEmptyQuery={isEmptyQuery}>
+          <Container
+            key={item.createdAt}
+            testID="searchHistoryItem"
+            isEmptyQuery={isEmptyQuery}
+            accessibilityRole={AccessibilityRole.LISTITEM}>
             <SearchHistoryItem
               item={addHighlightedAttribute({ item, query: queryHistory })}
               queryHistory={queryHistory}

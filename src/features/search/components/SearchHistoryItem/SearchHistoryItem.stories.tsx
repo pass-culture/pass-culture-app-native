@@ -5,7 +5,6 @@ import React from 'react'
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchHistoryItem } from 'features/search/components/SearchHistoryItem/SearchHistoryItem'
 import { Highlighted, HistoryItem } from 'features/search/types'
-import { Ul } from 'ui/components/Ul'
 
 const meta: ComponentMeta<typeof SearchHistoryItem> = {
   title: 'features/search/SearchHistoryItem',
@@ -22,9 +21,7 @@ const historyItem: Highlighted<HistoryItem> = {
 }
 
 const Template: ComponentStory<typeof SearchHistoryItem> = (props) => (
-  <Ul>
-    <SearchHistoryItem {...props} />
-  </Ul>
+  <SearchHistoryItem {...props} />
 )
 
 export const Default = Template.bind({})
