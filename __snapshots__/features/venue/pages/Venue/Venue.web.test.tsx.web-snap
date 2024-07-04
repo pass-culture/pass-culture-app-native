@@ -476,9 +476,9 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                               role="heading"
                             >
                               <div
-                                aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                aria-label="Offre Bac Nord - VF de la catégorie Cinéma, à 900+ km,  Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                                 class="css-view-175oi2r r-userSelect-lrvibr r-textDecorationColor-p76n7o r-textDecorationLine-13wfysu r-textDecorationStyle-1a2p6p6 r-borderRadius-1xfd6ze r-height-14ciuzs r-marginVertical-1p6iasa r-cursor-1loqt21 r-touchAction-1otgn73"
-                                data-testid="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                data-testid="Offre Bac Nord - VF de la catégorie Cinéma, à 900+ km,  Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                                 tabindex="0"
                               >
                                 <div

@@ -32,7 +32,6 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     searchId,
     apiRecoParams,
     index,
-    distance,
     variant = 'default',
     ...offer
   } = props
@@ -48,6 +47,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,
     categoryLabel,
+    distance: distanceFromOffer,
   })
 
   const MAX_OFFER_CAPTION_HEIGHT = theme.tiles.maxCaptionHeight.offer
@@ -98,7 +98,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
           <PlaylistCardOffer
             categoryId={categoryId}
             thumbnailUrl={thumbUrl}
-            distance={distance ?? distanceFromOffer}
+            distance={distanceFromOffer}
             name={name}
             date={date}
             price={price}
@@ -113,7 +113,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
             name={name}
             date={date}
             categoryId={categoryId}
-            distance={distance ?? distanceFromOffer}
+            distance={distanceFromOffer}
             isDuo={isDuo}
             thumbnailUrl={thumbUrl}
             width={width}

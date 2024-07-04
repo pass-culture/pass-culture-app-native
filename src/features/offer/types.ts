@@ -16,7 +16,6 @@ export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
   categoryLabel: string | null
   subcategoryId: SubcategoryIdEnum
-  distance?: string
   offerLocation: OfferLocation
   date?: string
   name?: string
