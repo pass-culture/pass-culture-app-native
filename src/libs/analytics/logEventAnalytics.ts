@@ -87,6 +87,8 @@ export type SSOType = 'SSO_login' | 'SSO_signup'
 export const logEventAnalytics = {
   logAcceptNotifications: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.ACCEPT_NOTIFICATIONS }),
+  logAccessibilityBannerClicked: (acceslibreId?: string | null) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.ACCESSIBILITY_BANNER_CLICKED }, { acceslibreId }),
   logAccountCreatedStartClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.ACCOUNT_CREATED_START_CLICKED }),
   logAccountDeletion: () => analytics.logEvent({ firebase: AnalyticsEvent.ACCOUNT_DELETION }),

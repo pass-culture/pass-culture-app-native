@@ -5838,6 +5838,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             },
                           }
                         }
+                        detailedAccessibilityId="slug-d-accessibilite-1"
                         detailedAccessibilityUrl="https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/"
                       />,
                       "isDisplayed": true,
@@ -7168,6 +7169,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 },
                               }
                             }
+                            detailedAccessibilityId="slug-d-accessibilite-1"
                             detailedAccessibilityUrl="https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/"
                           />,
                           "isDisplayed": true,

@@ -2,6 +2,7 @@
 export enum AnalyticsEvent {
   ACCEPT_NOTIFICATIONS = 'AcceptNotifications',
   ACCESS_EXTERNAL_OFFER = 'AccessExternalOffer',
+  ACCESSIBILITY_BANNER_CLICKED = 'AccessibilityBannerClicked',
   ACCOUNT_DELETION = 'AccountDeletion',
   ACCOUNT_REACTIVATION = 'AccountReactivation',
   ACTIVATE_GEOLOC_FROM_SEARCH_RESULTS = 'ActivateGeolocfromSearchResults',
@@ -115,9 +116,6 @@ export enum AnalyticsEvent {
   OPEN_EXTERNAL_URL = 'OpenExternalURL',
   OPEN_LOCATION_SETTINGS = 'OpenLocationSettings',
   OPEN_NOTIFICATION_SETTINGS = 'OpenNotificationSettings',
-  SYSTEM_BLOCK_DISPLAYED = 'SystemBlockDisplayed',
-  TRENDS_BLOCK_CLICKED = 'TrendsBlockClicked',
-  VIDEO_PAUSED = 'VideoPaused',
   PERFORM_SEARCH = 'PerformSearch',
   PLAYLIST_HORIZONTAL_SCROLL = 'PlaylistHorizontalScroll',
   PLAYLIST_VERTICAL_SCROLL = 'PlaylistVerticalScroll',
@@ -154,16 +152,19 @@ export enum AnalyticsEvent {
   START_DMS_TRANSMISSION = 'StartDMSTransmission',
   STEPPER_DISPLAYED = 'StepperDisplayed',
   SUBSCRIPTION_UPDATE = 'SubscriptionUpdate',
+  SYSTEM_BLOCK_DISPLAYED = 'SystemBlockDisplayed',
+  TRENDS_BLOCK_CLICKED = 'TrendsBlockClicked',
   TRY_SELECT_DEPOSIT = 'TrySelectDeposit',
+  USE_FILTER = 'UseFilter',
   USER_SET_LOCATION = 'UserSetLocation',
   USER_SET_VENUE = 'UserSetVenue',
-  USE_FILTER = 'UseFilter',
   VENUE_CONTACT = 'VenueContact',
   VENUE_MAP_SEEN_DURATION = 'VenueMapSeenDuration',
   VENUE_MAP_SESSION_DURATION = 'VenueMapSessionDuration',
   VENUE_PLAYLIST_DISPLAYED_ON_SEARCH_RESULTS = 'VenuePlaylistDisplayedOnSearchResults',
   VENUE_SEE_ALL_OFFERS_CLICKED = 'VenueSeeAllOffersClicked',
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
+  VIDEO_PAUSED = 'VideoPaused',
 }
 
 const RESERVED_PREFIXES = ['firebase_', 'google_', 'ga_']

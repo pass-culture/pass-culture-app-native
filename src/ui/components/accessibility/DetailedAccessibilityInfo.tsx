@@ -17,10 +17,11 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   url: string
-  accessibilities: ExternalAccessibilityDataModel | null | undefined
+  accessibilities?: ExternalAccessibilityDataModel | null
+  acceslibreId?: string | null
 }
 
-export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities }) => {
+export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acceslibreId }) => {
   const details = getDetailedAccessibilityInfo(accessibilities)
 
   return (
@@ -70,6 +71,7 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities }) =
           <ExternalTouchableLink
             as={ButtonQuaternarySecondary}
             externalNav={{ url }}
+            onBeforeNavigate={() => analytics.logAccessibilityBannerClicked(acceslibreId)}
             wording="Voir plus d’infos sur l’accessibilité du lieu"
             icon={ExternalSiteFilled}
             justifyContent="flex-start"

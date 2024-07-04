@@ -2,6 +2,7 @@ import { logEventAnalytics as actualLogEventAnalytics } from '../logEventAnalyti
 
 export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logAcceptNotifications: jest.fn(),
+  logAccessibilityBannerClicked: jest.fn(),
   logAccountCreatedStartClicked: jest.fn(),
   logAccountDeletion: jest.fn(),
   logAccountReactivation: jest.fn(),
@@ -30,8 +31,8 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logClickSocialNetwork: jest.fn(),
   logComeBackLaterClicked: jest.fn(),
   logConfirmBookingCancellation: jest.fn(),
-  logConnectWithEduconnectClicked: jest.fn(),
   logConnectionInfo: jest.fn(),
+  logConnectWithEduconnectClicked: jest.fn(),
   logConsultAccessibility: jest.fn(),
   logConsultApplicationProcessingModal: jest.fn(),
   logConsultArticleAccountDeletion: jest.fn(),
@@ -120,9 +121,6 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logOpenExternalUrl: jest.fn(),
   logOpenLocationSettings: jest.fn(),
   logOpenNotificationSettings: jest.fn(),
-  logSystemBlockDisplayed: jest.fn(),
-  logTrendsBlockClicked: jest.fn(),
-  logVideoPaused: jest.fn(),
   logPerformSearch: jest.fn(),
   logPhoneNumberClicked: jest.fn(),
   logPhoneValidationCodeClicked: jest.fn(),
@@ -181,6 +179,8 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logStartDMSTransmission: jest.fn(),
   logStepperDisplayed: jest.fn(),
   logSubscriptionUpdate: jest.fn(),
+  logSystemBlockDisplayed: jest.fn(),
+  logTrendsBlockClicked: jest.fn(),
   logTrySelectDeposit: jest.fn(),
   logUserSetLocation: jest.fn(),
   logUserSetVenue: jest.fn(),
@@ -190,4 +190,5 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logVenuePlaylistDisplayedOnSearchResults: jest.fn(),
   logVenueSeeAllOffersClicked: jest.fn(),
   logVenueSeeMoreClicked: jest.fn(),
+  logVideoPaused: jest.fn(),
 }

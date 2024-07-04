@@ -40,6 +40,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
           basicAccessibility={venue.accessibility}
           detailedAccessibilityUrl={venue.externalAccessibilityUrl}
           detailedAccessibilityData={venue.externalAccessibilityData}
+          detailedAccessibilityId={venue.externalAccessibilityId}
         />
       ),
       isDisplayed:

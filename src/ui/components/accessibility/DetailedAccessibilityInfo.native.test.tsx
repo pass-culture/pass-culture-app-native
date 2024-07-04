@@ -12,7 +12,41 @@ jest.mock('libs/firebase/analytics/analytics')
 const fakeAccesLibreUrl = 'fake_acceslibre_url'
 
 describe('DetailedAccessibilityInfo', () => {
-  it('should redirect to acceslibre when clicking on the banner link', () => {
+  it('should redirect to acceslibre when clicking on the banner link', async () => {
+    render(
+      <DetailedAccessibilityInfo
+        url={fakeAccesLibreUrl}
+        accessibilities={venueDataTest.externalAccessibilityData}
+        acceslibreId={venueDataTest.externalAccessibilityId}
+      />
+    )
+
+    const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
+    fireEvent.press(accesLibreLink)
+
+    await waitFor(() => expect(Linking.openURL).toHaveBeenCalledWith(fakeAccesLibreUrl))
+  })
+
+  it('should log analytics with ID when clicking on the banner link and ID is provided', async () => {
+    render(
+      <DetailedAccessibilityInfo
+        url={fakeAccesLibreUrl}
+        accessibilities={venueDataTest.externalAccessibilityData}
+        acceslibreId={venueDataTest.externalAccessibilityId}
+      />
+    )
+
+    const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
+    fireEvent.press(accesLibreLink)
+
+    await waitFor(() =>
+      expect(analytics.logAccessibilityBannerClicked).toHaveBeenCalledWith(
+        venueDataTest.externalAccessibilityId
+      )
+    )
+  })
+
+  it('should log analytics without ID when clicking on the banner link and ID is not provided', async () => {
     render(
       <DetailedAccessibilityInfo
         url={fakeAccesLibreUrl}
@@ -23,7 +57,9 @@ describe('DetailedAccessibilityInfo', () => {
     const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
     fireEvent.press(accesLibreLink)
 
-    expect(Linking.openURL).toHaveBeenCalledWith(fakeAccesLibreUrl)
+    await waitFor(() =>
+      expect(analytics.logAccessibilityBannerClicked).toHaveBeenCalledWith(undefined)
+    )
   })
 
   it('should return the correct accessibility label', () => {
