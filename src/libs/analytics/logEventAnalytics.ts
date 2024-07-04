@@ -362,6 +362,11 @@ export const logEventAnalytics = {
         type: JSON.stringify(type),
       }
     ),
+  logHasOpenedAccessibilityAccordion: (handicap: string) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.HAS_OPENED_ACCESSIBILITY_ACCORDION },
+      { handicap }
+    ),
   logHasOpenedCookiesAccordion: (type: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION }, { type }),
   logHasRefusedCookie: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REFUSED_COOKIE }),

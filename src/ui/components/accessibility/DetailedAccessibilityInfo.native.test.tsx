@@ -2,7 +2,8 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
-import { render, screen, fireEvent } from 'tests/utils'
+import { analytics } from 'libs/analytics'
+import { render, screen, fireEvent, waitFor } from 'tests/utils'
 
 import { DetailedAccessibilityInfo } from './DetailedAccessibilityInfo'
 
@@ -62,5 +63,20 @@ describe('DetailedAccessibilityInfo', () => {
     )
 
     expect(screen.queryAllByTestId('horizontal-separator')).toHaveLength(3)
+  })
+
+  it('should log analytics when accordion toggle', async () => {
+    render(
+      <DetailedAccessibilityInfo
+        url={fakeAccesLibreUrl}
+        accessibilities={venueDataTest.externalAccessibilityData}
+      />
+    )
+
+    fireEvent.press(screen.getByText('Handicap auditif'))
+
+    await waitFor(() =>
+      expect(analytics.logHasOpenedAccessibilityAccordion).toHaveBeenCalledWith('Handicap auditif')
+    )
   })
 })

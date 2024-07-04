@@ -81,6 +81,7 @@ export enum AnalyticsEvent {
   HAS_DISMISSED_APP_SHARING_MODAL = 'HasDismissedAppSharingModal',
   HAS_DISMISSED_MODAL = 'HasDismissedModal',
   HAS_MADE_A_CHOICE_FOR_COOKIES = 'HasMadeAChoiceForCookies',
+  HAS_OPENED_ACCESSIBILITY_ACCORDION = 'HasOpenedAccessibilityAccordion',
   HAS_OPENED_COOKIES_ACCORDION = 'HasOpenedCookiesAccordion',
   HAS_REFUSED_COOKIE = 'HasRefusedCookie',
   HAS_REQUESTED_CODE = 'HasRequestedCode',
