@@ -1,5 +1,6 @@
 import { EmailHistoryEventTypeEnum, EmailUpdateStatus } from 'api/gen'
 import { eventMonitoring } from 'libs/monitoring'
+import { LogTypeEnum } from 'libs/monitoring/errors'
 import { mockServer } from 'tests/mswServer'
 
 import { getEmailUpdateStatus } from './useEmailUpdateStatus'
@@ -24,7 +25,7 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('getEmailUpdateStatus', () => {
   it('should capture a Sentry exception when error code is 422 and return undefined', async () => {
     simulateEmailUpdateStatusError(422)
-    const emailUpdateStatus = await getEmailUpdateStatus({ shouldLogInfo: false })
+    const emailUpdateStatus = await getEmailUpdateStatus({ logType: LogTypeEnum.IGNORED })
 
     expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
     expect(emailUpdateStatus).toEqual(undefined)
@@ -38,19 +39,19 @@ describe('getEmailUpdateStatus', () => {
     503, // Service Unavailable
     504, // Gateway Timeout
   ])(
-    'should not capture a Sentry exception when error code is %s and return undefined',
+    'should not capture a Sentry exception when error code is %s and log type is ignored and return undefined',
     async (statusCode) => {
       simulateEmailUpdateStatusError(statusCode)
-      const emailUpdateStatus = await getEmailUpdateStatus({ shouldLogInfo: false })
+      const emailUpdateStatus = await getEmailUpdateStatus({ logType: LogTypeEnum.IGNORED })
 
-      expect(eventMonitoring.captureException).not.toHaveBeenCalledWith({ level: 'info' })
+      expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
       expect(emailUpdateStatus).toEqual(undefined)
     }
   )
 
-  it('should capture a Sentry info and return undefined when error code is 401 and shouldLogEvent is true', async () => {
+  it('should capture a Sentry info and return undefined when error code is 401 and log type from remote config is info', async () => {
     simulateEmailUpdateStatusError(401)
-    const emailUpdateStatus = await getEmailUpdateStatus({ shouldLogInfo: true })
+    const emailUpdateStatus = await getEmailUpdateStatus({ logType: LogTypeEnum.INFO })
 
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(
       `Échec de la requête https://localhost/native/v1/profile/email_update/status, code: 401`,
@@ -59,9 +60,9 @@ describe('getEmailUpdateStatus', () => {
     expect(emailUpdateStatus).toEqual(undefined)
   })
 
-  it('should not capture a Sentry info and return undefined when error code is 401 and shouldLogEvent is false', async () => {
+  it('should not capture a Sentry info and return undefined when error code is 401 and log type from remote config is ignored', async () => {
     simulateEmailUpdateStatusError(401)
-    const emailUpdateStatus = await getEmailUpdateStatus({ shouldLogInfo: false })
+    const emailUpdateStatus = await getEmailUpdateStatus({ logType: LogTypeEnum.IGNORED })
 
     expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
     expect(emailUpdateStatus).toEqual(undefined)
@@ -73,10 +74,10 @@ describe('getEmailUpdateStatus', () => {
     503, // Service Unavailable
     504, // Gateway Timeout
   ])(
-    'should not capture a Sentry info when error code is %s and return undefined',
+    'should not capture a Sentry info when error code is %s and log type is ignored and return undefined',
     async (statusCode) => {
       simulateEmailUpdateStatusError(statusCode)
-      const emailUpdateStatus = await getEmailUpdateStatus({ shouldLogInfo: false })
+      const emailUpdateStatus = await getEmailUpdateStatus({ logType: LogTypeEnum.IGNORED })
 
       expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
       expect(emailUpdateStatus).toEqual(undefined)

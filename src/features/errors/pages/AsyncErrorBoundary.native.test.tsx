@@ -7,6 +7,7 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { AsyncError, eventMonitoring, MonitoringError, ScreenError } from 'libs/monitoring'
+import { LogTypeEnum } from 'libs/monitoring/errors'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { AsyncErrorBoundary } from './AsyncErrorBoundary'
@@ -39,7 +40,7 @@ describe('AsyncErrorBoundary component', () => {
     const retry = jest.fn()
     render(
       <AsyncErrorBoundary
-        error={new AsyncError('error', { retry })}
+        error={new AsyncError('error', { retry, logType: LogTypeEnum.ERROR })}
         resetErrorBoundary={jest.fn()}
       />
     )
@@ -165,17 +166,23 @@ describe('AsyncErrorBoundary component', () => {
       expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
     })
 
-    it('when error is ScreenError', () => {
-      const error = new ScreenError('error', { Screen: MaintenanceErrorPage })
+    it('when error is ScreenError and log type is ignored', () => {
+      const error = new ScreenError('error', {
+        Screen: MaintenanceErrorPage,
+        logType: LogTypeEnum.IGNORED,
+      })
       render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
 
-      expect(eventMonitoring.captureException).not.toHaveBeenCalledWith(error)
+      expect(eventMonitoring.captureException).not.toHaveBeenCalled()
     })
   })
 
   describe('should capture message', () => {
-    it('when error is ScreenError', () => {
-      const error = new ScreenError('error-1', { Screen: MaintenanceErrorPage })
+    it('when error is ScreenError and log type is info', () => {
+      const error = new ScreenError('error-1', {
+        Screen: MaintenanceErrorPage,
+        logType: LogTypeEnum.INFO,
+      })
       render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
 
       expect(eventMonitoring.captureException).toHaveBeenCalledWith('error-1', { level: 'info' })

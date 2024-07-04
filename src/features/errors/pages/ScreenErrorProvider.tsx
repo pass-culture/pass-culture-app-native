@@ -5,7 +5,7 @@ import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { useMaintenance } from 'features/maintenance/helpers/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
 import { MAINTENANCE } from 'libs/firebase/firestore/maintenance'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
 
 export const ScreenErrorProvider = ({
@@ -15,19 +15,19 @@ export const ScreenErrorProvider = ({
 }) => {
   const { status } = useMaintenance()
   const mustUpdateApp = useMustUpdateApp()
-  const { shouldLogInfo } = useRemoteConfigContext()
+  const { logType } = useLogTypeFromRemoteConfig()
 
   if (mustUpdateApp) {
     throw new ScreenError('Must update app', {
       Screen: ForceUpdate,
-      shouldBeCapturedAsInfo: shouldLogInfo,
+      logType,
     })
   }
 
   if (status === MAINTENANCE.ON) {
     throw new ScreenError('Under maintenance', {
       Screen: MaintenanceErrorPage,
-      shouldBeCapturedAsInfo: shouldLogInfo,
+      logType,
     })
   }
 

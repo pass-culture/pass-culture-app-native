@@ -5,28 +5,29 @@ import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntr
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { Homepage } from 'features/home/types'
 import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifContent'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring'
+import { LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_CONTENTFUL = 5 * 60 * 1000
 
-const getHomepageNatifContent = async (shouldLogInfo: boolean) => {
+const getHomepageNatifContent = async (logType: LogTypeEnum) => {
   try {
     return await fetchHomepageNatifContent()
   } catch (e) {
     const error = e as Error
     throw new ScreenError(error.message, {
       Screen: NoContentError,
-      shouldBeCapturedAsInfo: shouldLogInfo,
+      logType,
     })
   }
 }
 const useGetHomepageList = () => {
-  const { shouldLogInfo } = useRemoteConfigContext()
+  const { logType } = useLogTypeFromRemoteConfig()
   const { data: homepages } = useQuery<Homepage[]>(
     [QueryKeys.HOMEPAGE_MODULES],
-    () => getHomepageNatifContent(shouldLogInfo),
+    () => getHomepageNatifContent(logType),
     {
       staleTime: STALE_TIME_CONTENTFUL,
     }
