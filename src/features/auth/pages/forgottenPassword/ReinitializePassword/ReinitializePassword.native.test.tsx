@@ -11,7 +11,7 @@ import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -278,11 +278,12 @@ describe('ReinitializePassword Page', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     jest.spyOn(datesLib, 'isTimestampExpired').mockImplementation(() => true)
     renderReinitializePassword()
-    await act(async () => {})
 
-    expect(replace).toHaveBeenNthCalledWith(1, 'ResetPasswordExpiredLink', {
-      email: ROUTE_PARAMS.email,
-    })
+    await waitFor(() =>
+      expect(replace).toHaveBeenNthCalledWith(1, 'ResetPasswordExpiredLink', {
+        email: ROUTE_PARAMS.email,
+      })
+    )
   })
 })
 

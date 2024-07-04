@@ -21,8 +21,6 @@ describe('Venue component', () => {
     }
     render(<Venue />)
 
-    await act(async () => {})
-
     expect(await screen.findByText('Venue label')).toBeOnTheScreen()
   })
 

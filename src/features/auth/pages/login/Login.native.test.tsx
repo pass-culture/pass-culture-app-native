@@ -96,7 +96,8 @@ describe('<Login/>', () => {
     mockUsePreviousRoute.mockReturnValueOnce(null)
 
     renderLogin()
-    await act(() => {})
+
+    await screen.findByText('Connecte-toi')
 
     expect(screen).toMatchSnapshot()
   })
@@ -107,7 +108,8 @@ describe('<Login/>', () => {
     useFeatureFlagSpy.mockReturnValue(true)
 
     renderLogin()
-    await act(() => {})
+
+    await screen.findByText('Connecte-toi')
 
     expect(screen).toMatchSnapshot()
   })
@@ -407,7 +409,7 @@ describe('<Login/>', () => {
     useRoute.mockReturnValueOnce({ params: { from: StepperOrigin.PROFILE } })
     renderLogin()
 
-    await act(() => {})
+    await screen.findByText('Connecte-toi')
 
     expect(analytics.logStepperDisplayed).toHaveBeenCalledTimes(1)
     expect(analytics.logStepperDisplayed).toHaveBeenCalledWith(StepperOrigin.PROFILE, 'Login')
@@ -452,7 +454,7 @@ describe('<Login/>', () => {
     useRoute.mockReturnValueOnce({ params: { displayForcedLoginHelpMessage: true } })
     renderLogin()
 
-    await act(() => {})
+    await screen.findByText('Connecte-toi')
 
     expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
       message: 'Pour sécuriser ton pass Culture, tu dois régulièrement confirmer tes identifiants.',
@@ -464,7 +466,7 @@ describe('<Login/>', () => {
     useRoute.mockReturnValueOnce({ params: { displayForcedLoginHelpMessage: true } })
     renderLogin()
 
-    await act(() => {})
+    await screen.findByText('Connecte-toi')
 
     expect(analytics.logDisplayForcedLoginHelpMessage).toHaveBeenCalledTimes(1)
   })
@@ -472,7 +474,7 @@ describe('<Login/>', () => {
   it('should not display the login help message when the query param is not given', async () => {
     renderLogin()
 
-    await act(async () => {})
+    await screen.findByText('Connecte-toi')
 
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
   })

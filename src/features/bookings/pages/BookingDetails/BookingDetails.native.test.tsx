@@ -21,7 +21,7 @@ import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
@@ -62,6 +62,9 @@ jest.mock('features/bookings/api/useBookings', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('BookingDetails', () => {
+  let ongoingBookings = mockBookings.ongoing_bookings[0]
+  let endedBookings = mockBookings.ended_bookings[0]
+
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(() => {
@@ -77,6 +80,9 @@ describe('BookingDetails', () => {
   })
 
   beforeEach(() => {
+    ongoingBookings = mockBookings.ongoing_bookings[0]
+    endedBookings = mockBookings.ended_bookings[0]
+
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
   })
 
@@ -86,18 +92,15 @@ describe('BookingDetails', () => {
       'useOngoingOrEndedBooking'
     )
 
-    const booking = bookingsSnap.ongoing_bookings[0]
-    renderBookingDetails(booking)
+    renderBookingDetails(ongoingBookings)
 
-    await act(async () => {})
+    await screen.findByText('Ma réservation')
 
     expect(useOngoingOrEndedBooking).toHaveBeenCalledWith(456)
   })
 
   it('should render correctly', async () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(
-      bookingsSnap.ongoing_bookings[0]
-    )
+    const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(ongoingBookings)
     booking.completedUrl = 'https://example.com'
     renderBookingDetails(booking)
 
@@ -108,17 +111,15 @@ describe('BookingDetails', () => {
 
   describe('<DetailedBookingTicket />', () => {
     it('should display booking token', async () => {
-      const booking = bookingsSnap.ongoing_bookings[0]
-      renderBookingDetails(booking)
-      await act(async () => {})
+      renderBookingDetails(ongoingBookings)
+
+      await screen.findByText('Ma réservation')
 
       expect(await screen.findByText('352UW4')).toBeOnTheScreen()
     })
 
     it('should display offer link button if offer is digital and open url on press', async () => {
-      const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(
-        bookingsSnap.ongoing_bookings[0]
-      )
+      const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(ongoingBookings)
       booking.stock.offer.isDigital = true
       booking.completedUrl = 'https://example.com'
 
@@ -141,34 +142,29 @@ describe('BookingDetails', () => {
     })
 
     it('should not display offer link button if no url', async () => {
-      const booking = bookingsSnap.ongoing_bookings[0]
-      renderBookingDetails(booking)
+      renderBookingDetails(ongoingBookings)
 
-      await act(async () => {})
+      await screen.findByText('Ma réservation')
 
       expect(screen.queryByText('Accéder à l’offre')).not.toBeOnTheScreen()
     })
 
     it('should display booking qr code if offer is physical', async () => {
-      const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(
-        bookingsSnap.ongoing_bookings[0]
-      )
+      const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(ongoingBookings)
       booking.stock.offer.isDigital = false
       renderBookingDetails(booking)
 
-      await act(async () => {})
+      await screen.findByText('Ma réservation')
 
       expect(await screen.findByTestId('qr-code')).toBeOnTheScreen()
     })
 
     it('should display EAN code if offer is a book (digital or physical)', async () => {
-      const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(
-        bookingsSnap.ongoing_bookings[0]
-      )
+      const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(ongoingBookings)
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.LIVRE_PAPIER
       renderBookingDetails(booking)
 
-      await act(async () => {})
+      await screen.findByText('Ma réservation')
 
       expect(await screen.findByText('123456789')).toBeOnTheScreen()
     })
@@ -176,12 +172,12 @@ describe('BookingDetails', () => {
 
   describe('Offer rules', () => {
     it('should display rules for a digital offer', async () => {
-      const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
+      const booking = structuredClone(ongoingBookings)
       booking.stock.offer.isDigital = true
 
       renderBookingDetails(booking)
 
-      await act(async () => {})
+      await screen.findByText('Ma réservation')
 
       expect(
         await screen.findByText(
@@ -191,9 +187,7 @@ describe('BookingDetails', () => {
     })
 
     it('should display rules for a digital offer with activation code', async () => {
-      const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(
-        bookingsSnap.ongoing_bookings[0]
-      )
+      const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(ongoingBookings)
       booking.stock.offer.isDigital = true
       booking.activationCode = {
         code: 'fdfdfsds',
@@ -201,7 +195,7 @@ describe('BookingDetails', () => {
 
       renderBookingDetails(booking)
 
-      await act(async () => {})
+      await screen.findByText('Ma réservation')
 
       expect(
         await screen.findByText(
@@ -216,9 +210,8 @@ describe('BookingDetails', () => {
     ])(
       'should display rules for a %s & non-digital offer',
       async (type, isEvent, withdrawalType) => {
-        let booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(
-          bookingsSnap.ongoing_bookings[0]
-        )
+        let booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(ongoingBookings)
+
         booking = {
           ...booking,
           stock: { ...booking.stock, offer: { ...booking.stock.offer, withdrawalType } },
@@ -229,7 +222,7 @@ describe('BookingDetails', () => {
 
         renderBookingDetails(booking)
 
-        await act(async () => {})
+        await screen.findByText('Ma réservation')
 
         expect(
           await screen.findByText(
@@ -242,23 +235,22 @@ describe('BookingDetails', () => {
 
   describe('withdrawalDetails', () => {
     it('should display withdrawal details', async () => {
-      const booking = bookingsSnap.ongoing_bookings[0]
       // @ts-expect-error: because of noUncheckedIndexedAccess
-      booking.stock.offer.withdrawalDetails = 'Voici comment récupérer ton bien'
-      renderBookingDetails(booking)
+      ongoingBookings.stock.offer.withdrawalDetails = 'Voici comment récupérer ton bien'
 
-      await act(async () => {})
+      renderBookingDetails(ongoingBookings)
 
-      expect(screen.getByText('Modalités de retrait')).toBeOnTheScreen()
+      await screen.findByText('Modalités de retrait')
+
       expect(screen.getByText('Voici comment récupérer ton bien')).toBeOnTheScreen()
     })
 
     it('should not display withdrawal details', async () => {
-      const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[0]
+      const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
 
       booking.stock.offer.withdrawalDetails = undefined
       renderBookingDetails(booking)
-      await act(async () => {})
+      await screen.findByText('Ma réservation')
 
       const title = screen.queryByText('Modalités de retrait')
       const withdrawalText = screen.queryByTestId('withdrawalDetails')
@@ -270,30 +262,30 @@ describe('BookingDetails', () => {
 
   describe('booking email contact', () => {
     it('should display booking email contact when there is a booking contact email', async () => {
-      const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[0]
+      const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
       booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
       renderBookingDetails(booking)
-      await act(async () => {})
+      await screen.findByText('Ma réservation')
 
       expect(screen.getByText('Contact organisateur')).toBeOnTheScreen()
       expect(screen.getByText('Envoyer un e-mail')).toBeOnTheScreen()
     })
 
     it('should not display booking email contact when there is no booking contact email', async () => {
-      const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[0]
+      const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
       booking.stock.offer.bookingContact = undefined
       renderBookingDetails(booking)
-      await act(async () => {})
+      await screen.findByText('Ma réservation')
 
       expect(screen.queryByText('Contact Organisateur')).not.toBeOnTheScreen()
       expect(screen.queryByText('Envoyer un e-mail')).not.toBeOnTheScreen()
     })
 
     it('should open mail app when clicking on "Envoyer un e-mail"', async () => {
-      const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[0]
+      const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
       booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
       renderBookingDetails(booking)
-      await act(async () => {})
+      await screen.findByText('Ma réservation')
       fireEvent.press(screen.getByText('Envoyer un e-mail'))
 
       expect(mockedOpenUrl).toHaveBeenCalledWith(
@@ -305,7 +297,7 @@ describe('BookingDetails', () => {
   })
 
   it('should redirect to the Offer page and log event', async () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[0]
+    const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
     renderBookingDetails(booking)
 
     const text = screen.getByText('Voir le détail de l’offre')
@@ -324,15 +316,15 @@ describe('BookingDetails', () => {
 
   it('should not redirect to the Offer and showSnackBarError when not connected', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    const booking = bookingsSnap.ongoing_bookings[0]
-    renderBookingDetails(booking)
+
+    renderBookingDetails(ongoingBookings)
 
     const text = screen.getByText('Voir le détail de l’offre')
     await act(async () => {
       fireEvent.press(text)
     })
 
-    const offerId = booking.stock.offer.id
+    const offerId = ongoingBookings.stock.offer.id
 
     expect(navigate).not.toHaveBeenCalledWith('Offer', {
       id: offerId,
@@ -347,9 +339,7 @@ describe('BookingDetails', () => {
 
   describe('cancellation button', () => {
     it('should log event "CancelBooking" when cancelling booking', async () => {
-      const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(
-        bookingsSnap.ongoing_bookings[0]
-      )
+      const booking: BookingsResponse['ongoing_bookings'][number] = structuredClone(ongoingBookings)
       const date = new Date()
       date.setDate(date.getDate() + 1)
       booking.confirmationDate = date.toISOString()
@@ -378,7 +368,7 @@ describe('BookingDetails', () => {
 
       it('when booking is digital with expiration date', async () => {
         const booking: BookingsResponse['ongoing_bookings'][number] = {
-          ...mockBookings.ended_bookings[0],
+          ...endedBookings,
           expirationDate: '2021-03-17T23:01:37.925926',
         }
 
@@ -391,7 +381,7 @@ describe('BookingDetails', () => {
         const nameCanceledBooking = booking.stock.offer.name
         renderBookingDetails(booking)
 
-        await act(async () => {})
+        await screen.findByText('Ma réservation')
 
         expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
           message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
@@ -401,14 +391,12 @@ describe('BookingDetails', () => {
       })
 
       it('when booking is not digital with expiration date', async () => {
-        const mockedBooking = mockBookings.ended_bookings[0]
-
         const booking: BookingsResponse['ongoing_bookings'][number] = {
-          ...mockedBooking,
+          ...endedBookings,
           expirationDate: '2021-03-17T23:01:37.925926',
           stock: {
-            ...mockedBooking.stock,
-            offer: { ...mockedBooking.stock.offer, isDigital: false },
+            ...endedBookings.stock,
+            offer: { ...endedBookings.stock.offer, isDigital: false },
           },
         }
 
@@ -421,7 +409,7 @@ describe('BookingDetails', () => {
         const nameCanceledBooking = booking.stock.offer.name
         renderBookingDetails(booking)
 
-        await act(async () => {})
+        await screen.findByText('Ma réservation')
 
         expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
           message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
@@ -431,14 +419,12 @@ describe('BookingDetails', () => {
       })
 
       it('when booking is not digital without expiration date', async () => {
-        const mockedBooking = mockBookings.ended_bookings[0]
-
         const booking = {
-          ...mockedBooking,
+          ...endedBookings,
           expirationDate: null,
           stock: {
-            ...mockedBooking.stock.offer,
-            offer: { ...mockedBooking.stock.offer, isDigital: false },
+            ...endedBookings.stock.offer,
+            offer: { ...endedBookings.stock.offer, isDigital: false },
             price: 400,
             priceCategoryLabel: 'Cat 4',
             features: ['VOSTFR', '3D', 'IMAX'],
@@ -452,8 +438,10 @@ describe('BookingDetails', () => {
         }
 
         const nameCanceledBooking = booking.stock.offer.name
+
         renderBookingDetails(booking)
-        await act(async () => {})
+
+        await screen.findByText('Ma réservation')
 
         expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
           message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
@@ -464,9 +452,8 @@ describe('BookingDetails', () => {
     })
 
     it('should not display it and not navigate when booking is digital without expiration date', async () => {
-      const booking = { ...mockBookings.ended_bookings[0] }
-      renderBookingDetails(booking)
-      await act(async () => {})
+      renderBookingDetails(endedBookings)
+      await screen.findByText('Ma réservation')
 
       expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
       expect(navigate).not.toHaveBeenCalled()
@@ -479,9 +466,9 @@ describe('BookingDetails', () => {
       jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
 
       renderBookingDetails(undefined, { dataUpdatedAt: new Date().getTime() })
-      await act(async () => {})
 
-      expect(screen.getByText('Réservation introuvable !')).toBeOnTheScreen()
+      await screen.findByText('Réservation introuvable !')
+
       expect(
         screen.getByText(
           `Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N’hésite pas à retrouver la liste de tes réservations terminées et annulées pour t’en assurer.`
@@ -491,9 +478,10 @@ describe('BookingDetails', () => {
 
     it('should not render ScreenError BookingNotFound when booking is not found and no data exists', async () => {
       renderBookingDetails(undefined, { dataUpdatedAt: 0 })
-      await act(async () => {})
 
-      expect(screen.queryByText('Réservation introuvable\u00a0!')).not.toBeOnTheScreen()
+      await waitFor(() =>
+        expect(screen.queryByText('Réservation introuvable\u00a0!')).not.toBeOnTheScreen()
+      )
     })
   })
 
@@ -510,9 +498,9 @@ describe('BookingDetails', () => {
         .spyOn(bookingPropertiesAPI, 'getBookingProperties')
         .mockReturnValue(dataProvider)
 
-      const booking = bookingsSnap.ongoing_bookings[0]
-      renderBookingDetails(booking)
-      await act(async () => {})
+      renderBookingDetails(ongoingBookings)
+
+      await screen.findByText('Ma réservation')
 
       const itineraryButton = await screen.findByText('Voir l’itinéraire')
 
@@ -545,9 +533,9 @@ describe('BookingDetails', () => {
           .spyOn(bookingPropertiesAPI, 'getBookingProperties')
           .mockReturnValue(dataProvider)
 
-        const booking = bookingsSnap.ongoing_bookings[0]
-        renderBookingDetails(booking)
-        await act(async () => {})
+        renderBookingDetails(ongoingBookings)
+
+        await screen.findByText('Ma réservation')
 
         const itineraryButton = screen.queryByText('Voir l’itinéraire')
 
@@ -572,8 +560,7 @@ describe('BookingDetails', () => {
         contentSize: { height: 1600 },
       }
 
-      const booking = bookingsSnap.ongoing_bookings[0]
-      renderBookingDetails(booking)
+      renderBookingDetails(ongoingBookings)
 
       const scrollView = screen.getByTestId('BookingDetailsScrollView')
 

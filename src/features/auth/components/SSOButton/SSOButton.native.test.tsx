@@ -53,7 +53,7 @@ describe('<SSOButton />', () => {
   it('should not query auth state when FF is disabled', async () => {
     renderSSOButton()
 
-    await act(async () => {})
+    await screen.findByText('S’inscrire avec Google')
 
     expect(apiGetOAuthState).not.toHaveBeenCalled()
   })

@@ -3,7 +3,7 @@ import React from 'react'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
-import { act, render, screen } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { DateHour } from './DateHour'
 
@@ -30,7 +30,6 @@ describe('DateHour component', () => {
     })
 
     render(<DateHour />)
-    await act(async () => {})
 
     expect(await screen.findByText('le Jeudi 3 mars 2022')).toBeOnTheScreen()
   })
@@ -44,7 +43,6 @@ describe('DateHour component', () => {
     })
 
     render(<DateHour />)
-    await act(async () => {})
 
     expect(await screen.findByText('entre 9h et 20h')).toBeOnTheScreen()
   })
@@ -61,7 +59,6 @@ describe('DateHour component', () => {
     })
 
     render(<DateHour />)
-    await act(async () => {})
 
     expect(await screen.findByText('cette semaine')).toBeOnTheScreen()
   })
@@ -78,7 +75,6 @@ describe('DateHour component', () => {
     })
 
     render(<DateHour />)
-    await act(async () => {})
 
     expect(await screen.findByText('ce week-end')).toBeOnTheScreen()
   })
