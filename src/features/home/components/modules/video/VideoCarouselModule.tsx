@@ -85,7 +85,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex])
+  }, [currentIndex, shouldModuleBeDisplayed])
 
   const playNextVideo = () => {
     let nextIndex
