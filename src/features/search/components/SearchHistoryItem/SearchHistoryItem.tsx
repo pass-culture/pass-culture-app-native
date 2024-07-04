@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { Highlighted, HistoryItem } from 'features/search/types'
-import { Li } from 'ui/components/Li'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo, getSpacing } from 'ui/theme'
 
@@ -24,7 +23,7 @@ export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
   }, [item, onPress])
 
   return (
-    <StyledLi>
+    <Container>
       <HistoryItemTouchable onPress={handlePress}>
         <ClockIconContainer>
           <ClockFilledIcon />
@@ -43,11 +42,11 @@ export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
           ) : null}
         </StyledText>
       </HistoryItemTouchable>
-    </StyledLi>
+    </Container>
   )
 }
 
-const StyledLi = styled(Li)({
+const Container = styled.View({
   flex: 1,
 })
 

@@ -34,12 +34,14 @@ const Template: ComponentStory<typeof RadioButton> = (args) => <RadioButton {...
 export const Default = Template.bind({})
 Default.args = {
   label: 'label 1',
+  isSelected: false,
 }
 
 export const WithDescription = Template.bind({})
 WithDescription.args = {
   label: 'label 1',
   description: 'description label 1',
+  isSelected: false,
 }
 
 export const WithSelectedValue = Template.bind({})
@@ -52,6 +54,7 @@ export const WithSelectedValueAndDescription = Template.bind({})
 WithSelectedValueAndDescription.args = {
   label: 'label 1',
   description: 'description item 1',
+  isSelected: false,
 }
 
 export const WithIcon = Template.bind({})
@@ -59,6 +62,7 @@ WithIcon.args = {
   label: 'label 1',
   description: 'description item 1',
   icon: VideoGame,
+  isSelected: false,
 }
 
 const items = [{ label: 'label 1' }, { label: 'label 2' }, { label: 'label 3' }]

@@ -19,4 +19,5 @@ Default.args = {
   title: 'Visité un musée,',
   subtitle: 'une piscine gonflable',
   icon: culturalSurveyIcons.Museum,
+  selected: false,
 }
