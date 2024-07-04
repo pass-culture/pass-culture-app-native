@@ -423,23 +423,15 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
               <div
                 class="css-view-175oi2r r-paddingBottom-qn3fzs"
               >
-                <div
-                  class="css-view-175oi2r r-maxHeight-wpvnvn r-overflow-1udh08x"
+                <h2
+                  aria-level="2"
+                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
+                  data-testid="playlistTitle"
+                  dir="ltr"
+                  role="heading"
                 >
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-marginHorizontal-1hy1u7s"
-                  >
-                    <h2
-                      aria-level="2"
-                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
-                      data-testid="playlistTitle"
-                      dir="ltr"
-                      role="heading"
-                    >
-                      Toutes les offres
-                    </h2>
-                  </div>
-                </div>
+                  Toutes les offres
+                </h2>
                 <div
                   class="css-view-175oi2r r-height-10ptun7"
                 />
@@ -546,23 +538,15 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                 <div
                   class="css-view-175oi2r r-paddingBottom-qn3fzs"
                 >
-                  <div
-                    class="css-view-175oi2r r-maxHeight-wpvnvn r-overflow-1udh08x"
+                  <h2
+                    aria-level="2"
+                    class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
+                    data-testid="playlistTitle"
+                    dir="ltr"
+                    role="heading"
                   >
-                    <div
-                      class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-marginHorizontal-1hy1u7s"
-                    >
-                      <h2
-                        aria-level="2"
-                        class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
-                        data-testid="playlistTitle"
-                        dir="ltr"
-                        role="heading"
-                      >
-                        Test
-                      </h2>
-                    </div>
-                  </div>
+                    Test
+                  </h2>
                   <div
                     class="css-view-175oi2r r-height-10ptun7"
                   />

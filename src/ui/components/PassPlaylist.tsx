@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { Playlist, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { SeeMoreWithEye } from './SeeMoreWithEye'
@@ -54,7 +54,9 @@ export const PassPlaylist = ({
 
   const StyledTitleComponent = styled(TitleComponent || DefaultTitle).attrs({
     numberOfLines: 2,
-  })({})
+  })(({ theme }) => ({
+    marginHorizontal: theme.contentPage.marginHorizontal,
+  }))
 
   type SizeProps = {
     width: number
@@ -79,18 +81,14 @@ export const PassPlaylist = ({
   }
   return (
     <Container {...props}>
-      <TitleContainer>
-        <Row>
-          <StyledTitleComponent testID="playlistTitle">{title}</StyledTitleComponent>
-          {renderTitleSeeMore()}
-        </Row>
-        {subtitle ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={1} />
-            <StyledSubtitle>{subtitle}</StyledSubtitle>
-          </React.Fragment>
-        ) : null}
-      </TitleContainer>
+      <StyledTitleComponent testID="playlistTitle">{title}</StyledTitleComponent>
+      {renderTitleSeeMore()}
+      {subtitle ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={1} />
+          <StyledSubtitle>{subtitle}</StyledSubtitle>
+        </React.Fragment>
+      ) : null}
       <Spacer.Column numberOfSpaces={4} />
       <Playlist
         testID="offersModuleList"
@@ -113,23 +111,10 @@ const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
 
-const Row = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-  marginHorizontal: getSpacing(6),
-})
-
 const DefaultTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
 
-const StyledSubtitle = styled(Typo.CaptionNeutralInfo).attrs({ numberOfLines: 2 })({
-  marginHorizontal: getSpacing(6),
-})
-
-const TitleContainer = styled.View(({ theme }) => ({
-  // The size of the title block should not exceed two lines of title and one of subtitle
-  maxHeight:
-    parseInt(theme.typography.title3.lineHeight) * 2 +
-    getSpacing(1) +
-    parseInt(theme.typography.caption.lineHeight),
-  overflow: 'hidden',
+const StyledSubtitle = styled(Typo.CaptionNeutralInfo).attrs({
+  numberOfLines: 2,
+})(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
 }))

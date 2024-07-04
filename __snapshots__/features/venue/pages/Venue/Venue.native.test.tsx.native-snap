@@ -767,45 +767,23 @@ exports[`<Venue /> should match snapshot 1`] = `
                 ]
               }
             >
-              <View
+              <Text
+                numberOfLines={2}
                 style={
                   [
                     {
-                      "maxHeight": 68,
-                      "overflow": "hidden",
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 20,
+                      "lineHeight": 24,
+                      "marginHorizontal": 24,
                     },
                   ]
                 }
+                testID="playlistTitle"
               >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "marginHorizontal": 24,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={2}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 20,
-                          "lineHeight": 24,
-                        },
-                      ]
-                    }
-                    testID="playlistTitle"
-                  >
-                    Toutes les offres
-                  </Text>
-                </View>
-              </View>
+                Toutes les offres
+              </Text>
               <View
                 numberOfSpaces={4}
                 style={
@@ -2466,45 +2444,23 @@ exports[`<Venue /> should match snapshot 1`] = `
                   ]
                 }
               >
-                <View
+                <Text
+                  numberOfLines={2}
                   style={
                     [
                       {
-                        "maxHeight": 68,
-                        "overflow": "hidden",
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
+                        "marginHorizontal": 24,
                       },
                     ]
                   }
+                  testID="playlistTitle"
                 >
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "marginHorizontal": 24,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={2}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 20,
-                            "lineHeight": 24,
-                          },
-                        ]
-                      }
-                      testID="playlistTitle"
-                    >
-                      Test
-                    </Text>
-                  </View>
-                </View>
+                  Test
+                </Text>
                 <View
                   numberOfSpaces={4}
                   style={
