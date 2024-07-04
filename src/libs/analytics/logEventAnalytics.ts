@@ -423,7 +423,7 @@ export const logEventAnalytics = {
     analytics.logEvent(
       { firebase: AnalyticsEvent.MODULE_DISPLAYED_ON_HOMEPAGE },
       {
-        apiRecoParams: params.apiRecoParams,
+        ...params.apiRecoParams,
         homeEntryId: params.homeEntryId,
         index: params.index,
         moduleId: params.moduleId,
