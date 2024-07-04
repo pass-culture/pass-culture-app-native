@@ -34,7 +34,7 @@ ensure_nix_use_certificate() {
 		exit 1
 	fi
 
-	echo 'Adding certificate for Nix in your system configuration require the root password'
+	echo 'Adding certificate for Nix in your system configuration requires the root password'
 
 	add_certificate
 
