@@ -12,6 +12,12 @@ exports[`Header should render correctly 1`] = `
     >
       Aller au contenu principal
     </a>
+    <a
+      class="sc-iGgWBj sc-gsFSXq iGywTw fMSzfR"
+      href="#footer_id_for_quick_access"
+    >
+      Aller au footer
+    </a>
     <div
       class="css-view-175oi2r"
       style="flex-grow: 1; flex-shrink: 1; flex-basis: 0px; flex-direction: row; margin-left: 24px; align-items: center; display: none; opacity: 0;"
@@ -270,6 +276,12 @@ exports[`Header should render correctly when FF is enabled 1`] = `
       href="#"
     >
       Aller au contenu principal
+    </a>
+    <a
+      class="sc-iGgWBj sc-gsFSXq iGywTw fMSzfR"
+      href="#footer_id_for_quick_access"
+    >
+      Aller au footer
     </a>
     <div
       class="css-view-175oi2r"

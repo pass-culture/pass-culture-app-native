@@ -568,6 +568,15 @@ exports[`Home page should render correctly 1`] = `
                 ]
               }
             />
+            <View
+              style={
+                [
+                  {
+                    "marginHorizontal": 24,
+                  },
+                ]
+              }
+            />
           </View>
         </View>
       </RCTScrollView>

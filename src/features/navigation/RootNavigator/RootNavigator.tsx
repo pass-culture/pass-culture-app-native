@@ -1,3 +1,4 @@
+import { Route } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -68,20 +69,8 @@ export const RootNavigator: React.ComponentType = () => {
     return <LoadingPage />
   }
 
-  const currentRouteParams = currentRoute?.params
-  const pageWithFooter: ScreenNames[] = ['Home', 'Profile']
-
-  let mainAccessibilityRole: AccessibilityRole | undefined = AccessibilityRole.MAIN
-  if (
-    typeof currentRouteParams === 'object' &&
-    'screen' in currentRouteParams &&
-    (pageWithFooter.includes(currentRouteParams?.screen as ScreenNames) ||
-      (currentRouteParams?.screen as ScreenNames) === undefined)
-    // when arriving on the app for the first time, 'screen' is undefined
-  ) {
-    console.log('SETTING TO UNDEFINED')
-    mainAccessibilityRole = undefined
-  }
+  const mainAccessibilityRole: AccessibilityRole | undefined =
+    determineAccessibilityRole(currentRoute)
 
   return (
     <TabNavigationStateProvider>
@@ -106,3 +95,21 @@ const Main = styled.View({
   flexDirection: 'column',
   flexGrow: 1,
 })
+
+function determineAccessibilityRole(currentRoute: Route<string> | null) {
+  const currentRouteParams = currentRoute?.params
+  const pageWithFooter: ScreenNames[] = ['Home', 'Profile']
+
+  let mainAccessibilityRole: AccessibilityRole | undefined = AccessibilityRole.MAIN
+  if (
+    typeof currentRouteParams === 'object' &&
+    'screen' in currentRouteParams &&
+    (pageWithFooter.includes(currentRouteParams?.screen as ScreenNames) ||
+      (currentRouteParams?.screen as ScreenNames) === undefined)
+    // when arriving on the app for the first time, 'screen' is undefined
+    // this might create issues when entering the app from other places then home
+  ) {
+    mainAccessibilityRole = undefined // we set it to undefined to let the pages handle were the main should be
+  }
+  return mainAccessibilityRole
+}

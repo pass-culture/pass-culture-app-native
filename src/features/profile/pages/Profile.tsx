@@ -20,7 +20,7 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
-import AccessibilityFooter from 'shared/AccessibilityFooter'
+import AccessibilityFooter from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { getAge } from 'shared/user/getAge'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
@@ -291,6 +291,7 @@ const OnlineProfile: React.FC = () => {
               )}
             </Section>
           </View>
+          {isWeb ? null : <Spacer.TabBar />}
           <AccessibilityFooter />
         </ProfileContainer>
       </ScrollView>
