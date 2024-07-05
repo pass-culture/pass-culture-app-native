@@ -44,7 +44,7 @@ describe('RecommendationModule', () => {
 
     await waitFor(() => {
       expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
-        ...defaultRecommendationApiParams,
+        call_id: '1',
         moduleId: 'abcd',
         moduleType: ContentTypes.RECOMMENDATION,
         index: 1,
