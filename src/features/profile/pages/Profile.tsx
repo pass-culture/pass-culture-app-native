@@ -43,7 +43,7 @@ import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { FOOTER_ID, SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
+import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
@@ -284,11 +284,9 @@ const OnlineProfile: React.FC = () => {
               </LogoMinistereContainer>
               <Spacer.Column numberOfSpaces={4} />
             </Section>
-            <Spacer.TabBar />
           </View>
-          <View accessibilityRole={AccessibilityRole.FOOTER} id={FOOTER_ID}>
-            <AccessibilityFooter />
-          </View>
+          <AccessibilityFooter />
+          <Spacer.TabBar />
         </ProfileContainer>
       </ScrollView>
       <StatusBarBlurredBackground />

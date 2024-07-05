@@ -1,7 +1,8 @@
 import React from 'react'
-import { Platform } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -9,13 +10,14 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer } from 'ui/theme'
+import { FOOTER_ID } from 'ui/theme/constants'
 import { CaptionNeutralInfo } from 'ui/theme/typography'
 
 const isWeb = Platform.OS === 'web'
 
 const AccessibilityFooter = () => {
   return (
-    <React.Fragment>
+    <View accessibilityRole={AccessibilityRole.FOOTER} id={FOOTER_ID}>
       <Separator.Horizontal />
       <Container>
         <LogoPassCultureContainer>
@@ -45,14 +47,13 @@ const AccessibilityFooter = () => {
         </LogoMinistereContainer>
         <Spacer.TabBar />
       </Container>
-    </React.Fragment>
+    </View>
   )
 }
 
 const Container = styled.View(({ theme }) => ({
   alignItems: theme.isDesktopViewport ? 'center' : undefined,
   gap: getSpacing(8),
-  paddingHorizontal: getSpacing(8),
   paddingTop: theme.isDesktopViewport ? getSpacing(8) : getSpacing(6),
   paddingBottom: getSpacing(8),
   flexDirection: theme.isDesktopViewport ? 'row' : 'column',
