@@ -17,6 +17,7 @@ describe('AccessibilityBlock', () => {
       <AccessibilityBlock
         detailedAccessibilityUrl={venueDataTest.externalAccessibilityUrl}
         detailedAccessibilityData={venueDataTest.externalAccessibilityData}
+        detailedAccessibilityId={venueDataTest.externalAccessibilityId}
       />
     )
 
@@ -32,6 +33,7 @@ describe('AccessibilityBlock', () => {
       <AccessibilityBlock
         detailedAccessibilityUrl={venueDataTest.externalAccessibilityUrl}
         detailedAccessibilityData={venueDataTest.externalAccessibilityData}
+        detailedAccessibilityId={venueDataTest.externalAccessibilityId}
       />
     )
 

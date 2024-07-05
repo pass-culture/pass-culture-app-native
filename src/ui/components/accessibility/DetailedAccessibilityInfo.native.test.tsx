@@ -2,7 +2,8 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
-import { render, screen, fireEvent } from 'tests/utils'
+import { analytics } from 'libs/analytics'
+import { render, screen, fireEvent, waitFor } from 'tests/utils'
 
 import { DetailedAccessibilityInfo } from './DetailedAccessibilityInfo'
 
@@ -11,7 +12,41 @@ jest.mock('libs/firebase/analytics/analytics')
 const fakeAccesLibreUrl = 'fake_acceslibre_url'
 
 describe('DetailedAccessibilityInfo', () => {
-  it('should redirect to acceslibre when clicking on the banner link', () => {
+  it('should redirect to acceslibre when clicking on the banner link', async () => {
+    render(
+      <DetailedAccessibilityInfo
+        url={fakeAccesLibreUrl}
+        accessibilities={venueDataTest.externalAccessibilityData}
+        acceslibreId={venueDataTest.externalAccessibilityId}
+      />
+    )
+
+    const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
+    fireEvent.press(accesLibreLink)
+
+    await waitFor(() => expect(Linking.openURL).toHaveBeenCalledWith(fakeAccesLibreUrl))
+  })
+
+  it('should log analytics with ID when clicking on the banner link and ID is provided', async () => {
+    render(
+      <DetailedAccessibilityInfo
+        url={fakeAccesLibreUrl}
+        accessibilities={venueDataTest.externalAccessibilityData}
+        acceslibreId={venueDataTest.externalAccessibilityId}
+      />
+    )
+
+    const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
+    fireEvent.press(accesLibreLink)
+
+    await waitFor(() =>
+      expect(analytics.logAccessibilityBannerClicked).toHaveBeenCalledWith(
+        venueDataTest.externalAccessibilityId
+      )
+    )
+  })
+
+  it('should log analytics without ID when clicking on the banner link and ID is not provided', async () => {
     render(
       <DetailedAccessibilityInfo
         url={fakeAccesLibreUrl}
@@ -22,7 +57,9 @@ describe('DetailedAccessibilityInfo', () => {
     const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
     fireEvent.press(accesLibreLink)
 
-    expect(Linking.openURL).toHaveBeenCalledWith(fakeAccesLibreUrl)
+    await waitFor(() =>
+      expect(analytics.logAccessibilityBannerClicked).toHaveBeenCalledWith(undefined)
+    )
   })
 
   it('should return the correct accessibility label', () => {
@@ -62,5 +99,20 @@ describe('DetailedAccessibilityInfo', () => {
     )
 
     expect(screen.queryAllByTestId('horizontal-separator')).toHaveLength(3)
+  })
+
+  it('should log analytics when accordion toggle', async () => {
+    render(
+      <DetailedAccessibilityInfo
+        url={fakeAccesLibreUrl}
+        accessibilities={venueDataTest.externalAccessibilityData}
+      />
+    )
+
+    fireEvent.press(screen.getByText('Handicap auditif'))
+
+    await waitFor(() =>
+      expect(analytics.logHasOpenedAccessibilityAccordion).toHaveBeenCalledWith('Handicap auditif')
+    )
   })
 })

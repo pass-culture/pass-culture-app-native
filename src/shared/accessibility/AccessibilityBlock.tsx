@@ -10,20 +10,28 @@ type Props = {
   basicAccessibility?: OfferAccessibilityResponse
   detailedAccessibilityUrl?: string | null
   detailedAccessibilityData?: ExternalAccessibilityDataModel | null
+  detailedAccessibilityId?: string | null
 }
 
 export const AccessibilityBlock: FC<Props> = ({
   basicAccessibility,
   detailedAccessibilityUrl,
   detailedAccessibilityData,
+  detailedAccessibilityId,
 }) => {
   const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
 
-  if (enableAccesLibre && detailedAccessibilityUrl && detailedAccessibilityData) {
+  if (
+    enableAccesLibre &&
+    detailedAccessibilityUrl &&
+    detailedAccessibilityData &&
+    detailedAccessibilityId
+  ) {
     return (
       <DetailedAccessibilityInfo
         url={detailedAccessibilityUrl}
         accessibilities={detailedAccessibilityData}
+        acceslibreId={detailedAccessibilityId}
       />
     )
   }

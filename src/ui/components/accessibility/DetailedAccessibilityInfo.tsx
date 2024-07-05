@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ExternalAccessibilityDataModel } from 'api/gen'
+import { analytics } from 'libs/analytics'
 import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAccessibilityInfo'
 import { AccessibilityFrame } from 'ui/components/accessibility/AccessibilityFrame'
 import { Accordion } from 'ui/components/Accordion'
@@ -16,10 +17,11 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   url: string
-  accessibilities: ExternalAccessibilityDataModel | null | undefined
+  accessibilities?: ExternalAccessibilityDataModel | null
+  acceslibreId?: string | null
 }
 
-export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities }) => {
+export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acceslibreId }) => {
   const details = getDetailedAccessibilityInfo(accessibilities)
 
   return (
@@ -31,6 +33,7 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities }) =
               accessibilityLabel={`${detail.category}: ${detail.isAccessible ? 'Accessible' : 'Non accessible'}`}
               title={detail.category}
               titleComponent={Typo.Caption}
+              onOpen={() => analytics.logHasOpenedAccessibilityAccordion(detail.category)}
               leftComponent={
                 <AccessibilityFrame Icon={detail.icon} isAccessible={!!detail.isAccessible} />
               }>
@@ -68,6 +71,7 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities }) =
           <ExternalTouchableLink
             as={ButtonQuaternarySecondary}
             externalNav={{ url }}
+            onBeforeNavigate={() => analytics.logAccessibilityBannerClicked(acceslibreId)}
             wording="Voir plus d’infos sur l’accessibilité du lieu"
             icon={ExternalSiteFilled}
             justifyContent="flex-start"
