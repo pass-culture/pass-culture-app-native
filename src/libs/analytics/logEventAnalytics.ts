@@ -416,14 +416,14 @@ export const logEventAnalytics = {
     moduleType: ContentTypes
     index: number
     homeEntryId: string | undefined
-    apiRecoParams?: RecommendationApiParams
+    call_id?: string | null
     offers?: string[]
     venues?: string[]
   }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.MODULE_DISPLAYED_ON_HOMEPAGE },
       {
-        ...params.apiRecoParams,
+        call_id: params.call_id,
         homeEntryId: params.homeEntryId,
         index: params.index,
         moduleId: params.moduleId,

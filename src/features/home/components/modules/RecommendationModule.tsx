@@ -51,7 +51,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
       analytics.logModuleDisplayedOnHomepage({
-        ...recommendationApiParams,
+        call_id: recommendationApiParams?.call_id,
         moduleId,
         moduleType: ContentTypes.RECOMMENDATION,
         index,
