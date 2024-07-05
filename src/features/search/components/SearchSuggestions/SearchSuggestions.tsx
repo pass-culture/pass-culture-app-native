@@ -72,7 +72,7 @@ export const SearchSuggestions = ({
         type: 'SET_STATE',
         payload: newSearchState,
       })
-      if (currentRoute === 'SearchLanding') {
+      if (currentRoute === 'SearchLanding' || currentRoute === 'SearchN1Books') {
         navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
       }
       hideSuggestions()

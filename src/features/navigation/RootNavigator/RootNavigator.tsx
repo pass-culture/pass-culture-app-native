@@ -24,6 +24,7 @@ import { RootStack } from './Stack'
 
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
+    // console.log({ navigation: navigationRef.getState().routes })
     return (
       <RootStack.Navigator
         initialRouteName={initialRouteName}

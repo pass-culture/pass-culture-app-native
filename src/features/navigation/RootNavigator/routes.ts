@@ -66,7 +66,6 @@ import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
-import { SearchN1Books } from 'features/search/pages/Search/SearchN1Books/SearchN1Books'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
@@ -399,12 +398,12 @@ export const routes: RootRoute[] = [
     path: 'email-confirmation-creation-compte/envoye',
     options: { title: 'Email création de compte envoyé' },
   },
-  {
-    name: 'SearchN1Books',
-    component: SearchN1Books,
-    path: 'recherche/livres',
-    options: { title: 'Recherche de livres' },
-  },
+  // {
+  //   name: 'SearchN1Books',
+  //   component: SearchN1Books,
+  //   path: 'rechercheN1Books',
+  //   options: { title: 'Recherche de livres' },
+  // },
   {
     name: 'SignupConfirmationExpiredLink',
     component: SignupConfirmationExpiredLink,

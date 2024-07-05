@@ -11,6 +11,8 @@ export const SearchN1Books = () => {
   const bookNativeCategories = useNativeCategories(SearchGroupNameEnumv2.LIVRES)
   const bookColorsGradients: Gradient = CATEGORY_CRITERIA[SearchGroupNameEnumv2.LIVRES]?.gradients
 
+  // console.log({ stack: navigationRef.getState().routes })
+
   const bookSubcategoriesContent = useMemo(
     () =>
       bookNativeCategories.map((bookNativeCategory) => ({

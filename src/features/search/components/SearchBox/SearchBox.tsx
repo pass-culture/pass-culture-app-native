@@ -142,6 +142,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 
     const isVenuePreviousRoute = getIsPreviousRouteFromSearch('Venue')
     const isSearchN1BooksPreviousRoute = getIsPreviousRouteFromSearch('SearchN1Books')
+    console.log({ isSearchN1BooksPreviousRoute })
 
     switch (true) {
       case isFocusOnSuggestions &&

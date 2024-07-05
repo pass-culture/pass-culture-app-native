@@ -2,7 +2,7 @@ import { getStateFromPath, ParamListBase, PathConfig, RouteProp } from '@react-n
 import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
 
-import { CulturalSurveyQuestionEnum, SearchGroupNameEnumv2 } from 'api/gen/api'
+import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
@@ -290,7 +290,6 @@ export type RootStackParamList = {
   CategoryThematicHomeHeaderCheatcode: undefined
   ThematicHeaders: undefined
   MarketingBlocks: undefined
-  SearchN1Books: { offerCategories: SearchGroupNameEnumv2[] } | undefined
   MovieCalendar: undefined
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &

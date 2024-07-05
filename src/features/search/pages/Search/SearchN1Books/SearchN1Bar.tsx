@@ -12,6 +12,18 @@ import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 import { Spacer } from 'ui/theme'
 
+// Ajouter depuis la route
+// changer la route en SearchN1
+// Ajouter les paramètres de livre
+// Envoyer le titre dynamiquement
+// Paramètre de livre dynamiquement
+
+// Feature flag = WIP_PAGE_SEARCH_N1
+
+// go back non fonctionnel sur les sous-catégories
+// go back non fonctionnel sur les sous recherches
+// recherche => manque la catégorie livre sélectionnée
+
 const searchInputID = uuidv4()
 
 const searchClient: SearchClient = {
@@ -35,6 +47,7 @@ const searchClient: SearchClient = {
     return client.search(requests)
   },
 }
+
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export const SearchN1Bar: FC<PropsWithChildren> = ({ children }) => {
@@ -55,7 +68,11 @@ export const SearchN1Bar: FC<PropsWithChildren> = ({ children }) => {
       future={{ preserveSharedStateOnUnmount: true }}
       insights={{ insightsClient: AlgoliaSearchInsights }}>
       <Configure
-        facetFilters={[['PRODUCTION.facets.analytics.offer.searchGroupNamev2.value:LIVRES']]}
+        facetFilters={[
+          [
+            `${env.ALGOLIA_OFFERS_INDEX_NAME}.facets.analytics.offer.searchGroupNamev2.value:LIVRES`,
+          ],
+        ]}
         clickAnalytics
         hitsPerPage={5}
       />
