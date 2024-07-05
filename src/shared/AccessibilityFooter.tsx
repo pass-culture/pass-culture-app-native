@@ -51,11 +51,13 @@ const AccessibilityFooter = () => {
   )
 }
 
+const CUSTOM_PADDING_BOTTOM = 7.5
+
 const Container = styled.View(({ theme }) => ({
   alignItems: theme.isDesktopViewport ? 'center' : undefined,
   gap: getSpacing(8),
   paddingTop: theme.isDesktopViewport ? getSpacing(8) : getSpacing(6),
-  paddingBottom: getSpacing(8),
+  paddingBottom: getSpacing(8 + CUSTOM_PADDING_BOTTOM),
   flexDirection: theme.isDesktopViewport ? 'row' : 'column',
 }))
 
@@ -71,13 +73,12 @@ const LogoPassCultureContainer = styled.View({
 
 const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({
   color: theme.uniqueColors.brand,
-  // width: getSpacing(40),
-  height: getSpacing(10),
+  width: getSpacing(25),
 }))``
 
 const LogoMinistereContainer = styled.View({
-  width: getSpacing(13.5),
-  height: getSpacing(12),
+  width: getSpacing(25),
+  marginBottom: -getSpacing(CUSTOM_PADDING_BOTTOM),
 })
 
 export default AccessibilityFooter

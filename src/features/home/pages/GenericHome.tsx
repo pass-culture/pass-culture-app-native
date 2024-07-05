@@ -81,7 +81,9 @@ const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
         </FooterContainer>
       )}
       <Spacer.TabBar />
-      <AccessibilityFooter />
+      <AccessibilityFooterContainer>
+        <AccessibilityFooter />
+      </AccessibilityFooterContainer>
     </React.Fragment>
   )
 }
@@ -330,3 +332,7 @@ const FlatListContainer = styled(IntersectionObserverFlatlist)({
 const PageContent = styled.View({
   marginHorizontal: getSpacing(6),
 })
+
+const AccessibilityFooterContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))

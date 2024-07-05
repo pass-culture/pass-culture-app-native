@@ -45,6 +45,8 @@ import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
+const isWeb = Platform.OS === 'web'
+
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 const OnlineProfile: React.FC = () => {
@@ -245,7 +247,7 @@ const OnlineProfile: React.FC = () => {
                 </Li>
               </VerticalUl>
             </Section>
-            {Platform.OS === 'web' ? null : (
+            {isWeb ? null : (
               <Section title="Partager le pass Culture">
                 <Spacer.Column numberOfSpaces={4} />
                 <BannerWithBackground
@@ -279,14 +281,17 @@ const OnlineProfile: React.FC = () => {
               <Spacer.Column numberOfSpaces={4} />
               <Typo.CaptionNeutralInfo>{version}</Typo.CaptionNeutralInfo>
               <Spacer.Column numberOfSpaces={4} />
-              <LogoMinistereContainer>
-                <LogoMinistere />
-              </LogoMinistereContainer>
-              <Spacer.Column numberOfSpaces={4} />
+              {isWeb ? null : (
+                <React.Fragment>
+                  <LogoMinistereContainer>
+                    <LogoMinistere />
+                  </LogoMinistereContainer>
+                  <Spacer.Column numberOfSpaces={4} />
+                </React.Fragment>
+              )}
             </Section>
           </View>
           <AccessibilityFooter />
-          <Spacer.TabBar />
         </ProfileContainer>
       </ScrollView>
       <StatusBarBlurredBackground />
