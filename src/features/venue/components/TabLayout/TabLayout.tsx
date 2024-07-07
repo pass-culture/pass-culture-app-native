@@ -1,31 +1,48 @@
-import React, { FunctionComponent, useRef, useState } from 'react'
-import { View } from 'react-native'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useTabArrowNavigation } from 'features/venue/components/TabLayout/useTabArrowNavigation'
-import { Tab } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getSpacing, Spacer } from 'ui/theme'
 
 import { InfoTab } from './InfoTab'
 
-const tabs = Object.values(Tab)
+export type TabKey = string
 
-type Props = {
-  tabPanels: Record<Tab, JSX.Element>
-  onTabChange?: Record<Tab, () => void>
+export type TabProps<T extends TabKey> = {
+  tabListRef: React.MutableRefObject<null>
+  selectedTab: T
+  setSelectedTab: (tab: T) => void
+  tabs: T[]
 }
 
-export const TabLayout: FunctionComponent<Props> = ({ tabPanels, onTabChange }) => {
-  const tabListRef = useRef(null)
-  const [selectedTab, setSelectedTab] = useState<Tab>(Tab.OFFERS)
+type TabLayoutProps<T extends TabKey> = {
+  tabPanels: Record<T, JSX.Element>
+  onTabChange?: Record<T, () => void>
+  tabs: { key: T }[]
+  defaultTab: T
+}
 
-  const onTabPress = (tab: Tab) => {
+export const TabLayout = <T extends TabKey>({
+  tabPanels,
+  onTabChange,
+  tabs,
+  defaultTab,
+}: TabLayoutProps<T>) => {
+  const tabListRef = useRef(null)
+  const [selectedTab, setSelectedTab] = useState<T>(defaultTab)
+
+  const onTabPress = (tab: T) => {
     setSelectedTab(tab)
     onTabChange?.[tab]?.()
   }
 
-  useTabArrowNavigation({ tabListRef, selectedTab, setSelectedTab: onTabPress, tabs })
+  useTabArrowNavigation<T>({
+    tabListRef,
+    selectedTab,
+    setSelectedTab: onTabPress,
+    tabs: tabs.map((tab) => tab.key),
+  })
 
   return (
     <Container>
@@ -33,16 +50,24 @@ export const TabLayout: FunctionComponent<Props> = ({ tabPanels, onTabChange }) 
         <GreyBar />
         <Spacer.Row numberOfSpaces={6} />
         {tabs.map((tab) => (
-          <InfoTab key={tab} tab={tab} selectedTab={selectedTab} onPress={() => onTabPress(tab)} />
+          <InfoTab
+            key={tab.key}
+            tab={tab.key}
+            selectedTab={selectedTab}
+            onPress={() => onTabPress(tab.key)}
+          />
         ))}
         <Spacer.Row numberOfSpaces={6} />
       </TabContainer>
-      <View accessibilityRole={AccessibilityRole.TABPANEL}>{tabPanels[selectedTab]}</View>
+      <ContentContainer accessibilityRole={AccessibilityRole.TABPANEL}>
+        {tabPanels[selectedTab]}
+      </ContentContainer>
     </Container>
   )
 }
 
 const Container = styled.View({
+  flexGrow: 1,
   width: '100%',
 })
 
@@ -57,3 +82,7 @@ const GreyBar = styled.View(({ theme }) => ({
   width: '100%',
   backgroundColor: theme.colors.greyLight,
 }))
+
+const ContentContainer = styled.View({
+  flexGrow: 1,
+})

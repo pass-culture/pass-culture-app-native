@@ -2,19 +2,19 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Tab } from 'features/venue/types'
+import { TabKey } from 'features/venue/components/TabLayout/TabLayout'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { TouchableTab } from './TouchableTab'
 
-type InfoTabProps = {
-  tab: Tab
-  selectedTab: Tab
+type InfoTabProps<T extends TabKey> = {
+  tab: T
+  selectedTab: T
   onPress: () => void
 }
 
-export const InfoTab = ({ tab, selectedTab, onPress }: InfoTabProps) => {
+export const InfoTab = <T extends TabKey>({ tab, selectedTab, onPress }: InfoTabProps<T>) => {
   const isSelected = selectedTab === tab
   const { isHover, ...webHoverProps } = useHandleHover()
   const hoverProps = Platform.OS === 'web' ? webHoverProps : {}
