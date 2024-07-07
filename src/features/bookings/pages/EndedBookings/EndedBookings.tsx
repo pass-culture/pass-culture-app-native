@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -20,7 +20,11 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 const renderItem: ListRenderItem<Booking> = ({ item }) => <EndedBookingItem booking={item} />
 const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 
-export const EndedBookings: React.FC = () => {
+type Props = {
+  enableBookingImprove: boolean
+}
+
+export const EndedBookings: FunctionComponent<Props> = ({ enableBookingImprove }) => {
   const { data: bookings } = useBookings()
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
   const headerHeight = useGetHeaderHeight()
@@ -45,19 +49,35 @@ export const EndedBookings: React.FC = () => {
 
   return (
     <React.Fragment>
-      <PageHeaderWithoutPlaceholder title="Réservations terminées" onGoBack={goBack} />
-      <FlatList
-        listAs="ul"
-        itemAs="li"
-        contentContainerStyle={contentContainerStyle}
-        data={bookings?.ended_bookings ?? []}
-        keyExtractor={keyExtractor}
-        renderItem={renderItem}
-        ItemSeparatorComponent={StyledSeparator}
-        ListHeaderComponent={ListHeaderComponent}
-        ListFooterComponent={ListFooterComponent}
-      />
-      <BlurHeader height={headerHeight} />
+      {enableBookingImprove ? (
+        <FlatList
+          listAs="ul"
+          itemAs="li"
+          contentContainerStyle={contentContainerStyle}
+          data={bookings?.ended_bookings ?? []}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+          ItemSeparatorComponent={StyledSeparator}
+          ListHeaderComponent={<Spacer.Column numberOfSpaces={6} />}
+          ListFooterComponent={ListFooterComponent}
+        />
+      ) : (
+        <React.Fragment>
+          <PageHeaderWithoutPlaceholder title="Réservations terminées" onGoBack={goBack} />
+          <FlatList
+            listAs="ul"
+            itemAs="li"
+            contentContainerStyle={contentContainerStyle}
+            data={bookings?.ended_bookings ?? []}
+            keyExtractor={keyExtractor}
+            renderItem={renderItem}
+            ItemSeparatorComponent={StyledSeparator}
+            ListHeaderComponent={ListHeaderComponent}
+            ListFooterComponent={ListFooterComponent}
+          />
+          <BlurHeader height={headerHeight} />
+        </React.Fragment>
+      )}
     </React.Fragment>
   )
 }

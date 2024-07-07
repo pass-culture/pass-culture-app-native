@@ -5,6 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -28,6 +29,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('Bookings', () => {
   beforeEach(() => {
@@ -84,12 +87,37 @@ describe('Bookings', () => {
   it('should navigate to ended bookings page on press ended bookings CTA', async () => {
     renderBookings()
 
-    const cta = screen.getByText('Réservation terminée')
-    await act(async () => {
-      fireEvent.press(cta)
-    })
+    const cta = await screen.findByText('Réservation terminée')
+    fireEvent.press(cta)
 
     expect(navigate).toHaveBeenCalledWith('EndedBookings', undefined)
+  })
+
+  describe('when feature flag is activated', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+    })
+
+    it('should display the 2 tabs "Terminées" and "En cours"', async () => {
+      renderBookings()
+
+      expect(await screen.findByText('En cours')).toBeOnTheScreen()
+      expect(await screen.findByText('Terminées')).toBeOnTheScreen()
+    })
+
+    it('should display list of bookings by default', async () => {
+      renderBookings()
+
+      expect(await screen.findAllByText('Avez-vous déjà vu\u00a0?')).toHaveLength(2)
+    })
+
+    it('should change on "Terminées" tab and have one ended booking', async () => {
+      renderBookings()
+
+      fireEvent.press(await screen.findByText('Terminées'))
+
+      expect(await screen.findAllByText('Avez-vous déjà vu\u00a0?')).toHaveLength(1)
+    })
   })
 })
 

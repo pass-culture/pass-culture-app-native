@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -18,7 +18,7 @@ import {
 } from 'ui/components/placeholders/Placeholders'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -29,7 +29,11 @@ const emptyBookings: Booking[] = []
 
 const ANIMATION_DURATION = 700
 
-export function OnGoingBookingsList() {
+type Props = {
+  enableBookingImprove: boolean
+}
+
+export const OnGoingBookingsList: FunctionComponent<Props> = ({ enableBookingImprove }) => {
   const netInfo = useNetInfoContext()
   const { data: bookings, isLoading, isFetching, refetch } = useBookings()
   const { isLoading: subcategoriesIsLoading } = useSubcategories()
@@ -96,27 +100,50 @@ export function OnGoingBookingsList() {
   )
 
   if (showSkeleton) return <BookingsPlaceholder />
+
   return (
-    <Container flex={hasBookings || hasEndedBookings ? 1 : undefined}>
-      <FlatList
-        listAs="ul"
-        itemAs="li"
-        testID="OnGoingBookingsList"
-        keyExtractor={keyExtractor}
-        data={ongoingBookings}
-        renderItem={renderItem}
-        refreshing={isRefreshing}
-        onRefresh={onRefetch}
-        contentContainerStyle={contentContainerStyle}
-        ListHeaderComponent={ListHeaderComponent}
-        ListEmptyComponent={<NoBookingsView />}
-        ListFooterComponent={ListFooterComponent}
-        ItemSeparatorComponent={ItemSeparatorComponent}
-        scrollEnabled={hasBookings}
-        onScroll={onScroll}
-        scrollEventThrottle={16}
-      />
-    </Container>
+    <React.Fragment>
+      {enableBookingImprove ? (
+        <FlatList
+          listAs="ul"
+          itemAs="li"
+          testID="OnGoingBookingsList"
+          keyExtractor={keyExtractor}
+          data={ongoingBookings}
+          renderItem={renderItem}
+          refreshing={isRefreshing}
+          onRefresh={onRefetch}
+          contentContainerStyle={contentContainerStyle}
+          ListHeaderComponent={<Spacer.Column numberOfSpaces={6} />}
+          ListEmptyComponent={<NoBookingsView />}
+          ItemSeparatorComponent={ItemSeparatorComponent}
+          scrollEnabled={hasBookings}
+          onScroll={onScroll}
+          scrollEventThrottle={16}
+        />
+      ) : (
+        <Container flex={hasBookings || hasEndedBookings ? 1 : undefined}>
+          <FlatList
+            listAs="ul"
+            itemAs="li"
+            testID="OnGoingBookingsList"
+            keyExtractor={keyExtractor}
+            data={ongoingBookings}
+            renderItem={renderItem}
+            refreshing={isRefreshing}
+            onRefresh={onRefetch}
+            contentContainerStyle={contentContainerStyle}
+            ListHeaderComponent={ListHeaderComponent}
+            ListEmptyComponent={<StyledNoBookingsView />}
+            ListFooterComponent={ListFooterComponent}
+            ItemSeparatorComponent={ItemSeparatorComponent}
+            scrollEnabled={hasBookings}
+            onScroll={onScroll}
+            scrollEventThrottle={16}
+          />
+        </Container>
+      )}
+    </React.Fragment>
   )
 }
 
@@ -137,6 +164,10 @@ const BookingsCount = styled(Typo.Caption).attrs(() => getHeadingAttrs(2))(({ th
   paddingBottom: getSpacing(4),
   color: theme.colors.greyDark,
 }))
+
+const StyledNoBookingsView = styled(NoBookingsView)({
+  flex: 1,
+})
 
 const FooterContainer = styled.View<{ safeBottom: number }>(({ safeBottom }) => ({
   marginBottom: safeBottom ? safeBottom / 2 : 0,

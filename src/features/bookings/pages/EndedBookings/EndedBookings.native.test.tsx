@@ -55,5 +55,5 @@ const renderEndedBookings = (bookings: BookingsResponse) => {
     .spyOn(bookingsAPI, 'useBookings')
     .mockReturnValue({ data: bookings } as QueryObserverResult<BookingsResponse, unknown>)
 
-  return render(reactQueryProviderHOC(<EndedBookings />))
+  return render(reactQueryProviderHOC(<EndedBookings enableBookingImprove={false} />))
 }
