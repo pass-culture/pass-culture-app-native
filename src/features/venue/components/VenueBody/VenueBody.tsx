@@ -22,6 +22,11 @@ interface Props {
   shouldDisplayCTA?: boolean
 }
 
+enum Tab {
+  OFFERS = 'Offres disponibles',
+  INFOS = 'Infos pratiques',
+}
+
 export const VenueBody: FunctionComponent<Props> = ({
   venue,
   venueOffers,
@@ -33,16 +38,18 @@ export const VenueBody: FunctionComponent<Props> = ({
 
   const FirstSectionContainer = isLargeScreen ? View : SectionWithDivider
 
+  const tabPanels = {
+    [Tab.OFFERS]: <VenueOffers venue={venue} venueOffers={venueOffers} playlists={playlists} />,
+    [Tab.INFOS]: <PracticalInformation venue={venue} />,
+  }
+
   return (
     <React.Fragment>
       <FirstSectionContainer visible gap={6}>
         <TabLayout
-          tabPanels={{
-            'Offres disponibles': (
-              <VenueOffers venue={venue} venueOffers={venueOffers} playlists={playlists} />
-            ),
-            'Infos pratiques': <PracticalInformation venue={venue} />,
-          }}
+          tabPanels={tabPanels}
+          tabs={[{ key: Tab.OFFERS }, { key: Tab.INFOS }]}
+          defaultTab={Tab.OFFERS}
           onTabChange={{
             'Offres disponibles': () =>
               analytics.logConsultVenueOffers({
