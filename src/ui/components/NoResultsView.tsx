@@ -10,11 +10,11 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  title: string
   explanations: string
   icon: FunctionComponent<AccessibleIcon>
-  offline?: boolean
   trackingExplorerOffersFrom: 'bookings' | 'favorites'
+  title?: string
+  offline?: boolean
 }
 
 export const NoResultsView = ({
@@ -23,6 +23,7 @@ export const NoResultsView = ({
   icon,
   offline = false,
   trackingExplorerOffersFrom,
+  ...props
 }: Props) => {
   const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: trackingExplorerOffersFrom })
   const searchNavConfig = getSearchStackConfig('SearchLanding')
@@ -35,10 +36,13 @@ export const NoResultsView = ({
     }))``
 
   return (
-    <Container>
-      <CaptionTitle>{title}</CaptionTitle>
-      <CenteredContainer>
-        <Spacer.Flex />
+    <React.Fragment>
+      {title ? (
+        <Container>
+          <CaptionTitle>{title}</CaptionTitle>
+        </Container>
+      ) : null}
+      <ContentContainer {...props}>
         {Icon ? <Icon /> : null}
         <Spacer.Column numberOfSpaces={4} />
         <StyledBody>{explanations}</StyledBody>
@@ -55,14 +59,19 @@ export const NoResultsView = ({
             />
           </ButtonContainer>
         )}
-        <Spacer.Flex />
-      </CenteredContainer>
-    </Container>
+      </ContentContainer>
+    </React.Fragment>
   )
 }
 
 const Container = styled.View(({ theme }) => ({
-  flex: 1,
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
+
+const ContentContainer = styled.View(({ theme }) => ({
+  height: '100%',
+  justifyContent: 'center',
+  alignItems: 'center',
   marginBottom: theme.tabBar.height,
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
@@ -70,12 +79,6 @@ const Container = styled.View(({ theme }) => ({
 const CaptionTitle = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
-
-const CenteredContainer = styled.View({
-  flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-})
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
