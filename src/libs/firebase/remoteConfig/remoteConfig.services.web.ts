@@ -38,6 +38,8 @@ export const remoteConfig = {
       // @ts-expect-error: because of noUncheckedIndexedAccess
       homeEntryId_15_17: parameters.homeEntryId_15_17.asString(),
       // @ts-expect-error: because of noUncheckedIndexedAccess
+      reactionFakeDoorCategories: JSON.parse(parameters.reactionFakeDoorCategories.asString()),
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       sameAuthorPlaylist: parameters.sameAuthorPlaylist.asString(),
       // @ts-expect-error: because of noUncheckedIndexedAccess
       shareAppWordingVersion: parameters.shareAppWordingVersion.asString(),
