@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment'
-import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
+import { ButtonQuaternaryGrey } from 'ui/components/buttons/ButtonQuaternaryGrey'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -24,7 +24,9 @@ export const AccessibilityFooter = () => {
       <View accessibilityRole={AccessibilityRole.FOOTER} nativeID={FOOTER_ID}>
         <Separator.Horizontal />
         <Container>
-          <ColoredPassCultureLogo />
+          <LogoContainer>
+            <ColoredPassCultureLogo />
+          </LogoContainer>
           <LinksContainer>
             <InternalTouchableLink navigateTo={{ screen: 'Accessibility' }}>
               <CaptionNeutralInfo>Accessibilité&nbsp;: partiellement conforme</CaptionNeutralInfo>
@@ -33,23 +35,25 @@ export const AccessibilityFooter = () => {
               <CaptionNeutralInfo>Mentions légales</CaptionNeutralInfo>
             </InternalTouchableLink>
             <ExternalTouchableLink
-              as={StyledButtonQuaternarySecondary}
+              as={ButtonQuaternaryGrey}
               wording="CGU utilisateurs"
               externalNav={{ url: env.CGU_LINK }}
               icon={ExternalSiteFilled}
+              justifyContent="flex-start"
               inline
             />
             <ExternalTouchableLink
-              as={StyledButtonQuaternarySecondary}
+              as={ButtonQuaternaryGrey}
               wording="Charte des données personnelles"
               externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
               icon={ExternalSiteFilled}
+              justifyContent="flex-start"
               inline
             />
           </LinksContainer>
-          <LogoMinistereContainer>
+          <LogoContainer>
             <LogoMinistere />
-          </LogoMinistereContainer>
+          </LogoContainer>
           <Spacer.TabBar />
         </Container>
       </View>
@@ -74,13 +78,9 @@ const LinksContainer = styled.View(({ theme }) => ({
 
 const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({
   color: theme.uniqueColors.brand,
-  width: getSpacing(20),
+  width: '100%',
 }))``
 
-const LogoMinistereContainer = styled.View({
+const LogoContainer = styled.View({
   width: getSpacing(20),
 })
-
-const StyledButtonQuaternarySecondary = styled(ButtonQuaternarySecondary)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))

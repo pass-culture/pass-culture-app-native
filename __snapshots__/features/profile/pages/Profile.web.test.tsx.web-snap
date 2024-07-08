@@ -852,14 +852,18 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-e6ktq0 r-paddingBottom-11rk87y r-paddingTop-fd4yh7"
             >
               <div
-                aria-label="pass culture"
-                class="css-view-175oi2r"
+                class="css-view-175oi2r r-width-1glkqn6"
               >
                 <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
+                  aria-label="pass culture"
+                  class="css-view-175oi2r"
                 >
-                  undefined-SVG-Mock
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
                 </div>
               </div>
               <div
@@ -890,32 +894,84 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </div>
                 </div>
                 <a
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                  aria-label="CGU utilisateurs"
+                  class="sc-eqUAAy ckyNmz sc-cPiKLX eDHETU"
+                  data-testid="CGU utilisateurs"
                   href="https://passculture.cgu"
-                  style="transition-duration: 0s;"
+                  tabindex="0"
+                  target="_blank"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    dir="ltr"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
-                    CGU utilisateurs
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+                    >
+                      <div
+                        aria-label="Nouvelle fenêtre"
+                        class="css-view-175oi2r"
+                        data-testid="button-icon-left"
+                      >
+                        <div
+                          class="css-text-1rynq56"
+                          dir="ltr"
+                        >
+                          button-icon-left-SVG-Mock
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-width-1jg9483"
+                      />
+                    </div>
+                    <div
+                      class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-maxWidth-dnmrzs"
+                      dir="ltr"
+                    >
+                      CGU utilisateurs
+                    </div>
                   </div>
                 </a>
                 <a
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                  aria-label="Charte des données personnelles"
+                  class="sc-eqUAAy ckyNmz sc-cPiKLX eDHETU"
+                  data-testid="Charte des données personnelles"
                   href="https://passculture.data-privacy-chart"
-                  style="transition-duration: 0s;"
+                  tabindex="0"
+                  target="_blank"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    dir="ltr"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
-                    Charte des données personnelles
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+                    >
+                      <div
+                        aria-label="Nouvelle fenêtre"
+                        class="css-view-175oi2r"
+                        data-testid="button-icon-left"
+                      >
+                        <div
+                          class="css-text-1rynq56"
+                          dir="ltr"
+                        >
+                          button-icon-left-SVG-Mock
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-width-1jg9483"
+                      />
+                    </div>
+                    <div
+                      class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-maxWidth-dnmrzs"
+                      dir="ltr"
+                    >
+                      Charte des données personnelles
+                    </div>
                   </div>
                 </a>
               </div>
               <div
-                class="css-view-175oi2r r-width-b8lwoo"
+                class="css-view-175oi2r r-width-1glkqn6"
               >
                 <div
                   aria-label="République Française - Liberté Égalité Fraternité"
@@ -1796,14 +1852,18 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-e6ktq0 r-paddingBottom-11rk87y r-paddingTop-1ygmrgt"
             >
               <div
-                aria-label="pass culture"
-                class="css-view-175oi2r"
+                class="css-view-175oi2r r-width-1glkqn6"
               >
                 <div
-                  class="css-text-1rynq56"
-                  dir="ltr"
+                  aria-label="pass culture"
+                  class="css-view-175oi2r"
                 >
-                  undefined-SVG-Mock
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
                 </div>
               </div>
               <div
@@ -1834,32 +1894,84 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </div>
                 </div>
                 <a
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                  aria-label="CGU utilisateurs"
+                  class="sc-eqUAAy ckyNmz sc-cPiKLX eDHETU"
+                  data-testid="CGU utilisateurs"
                   href="https://passculture.cgu"
-                  style="transition-duration: 0s;"
+                  tabindex="0"
+                  target="_blank"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    dir="ltr"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
-                    CGU utilisateurs
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+                    >
+                      <div
+                        aria-label="Nouvelle fenêtre"
+                        class="css-view-175oi2r"
+                        data-testid="button-icon-left"
+                      >
+                        <div
+                          class="css-text-1rynq56"
+                          dir="ltr"
+                        >
+                          button-icon-left-SVG-Mock
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-width-1jg9483"
+                      />
+                    </div>
+                    <div
+                      class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-maxWidth-dnmrzs"
+                      dir="ltr"
+                    >
+                      CGU utilisateurs
+                    </div>
                   </div>
                 </a>
                 <a
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                  aria-label="Charte des données personnelles"
+                  class="sc-eqUAAy ckyNmz sc-cPiKLX eDHETU"
+                  data-testid="Charte des données personnelles"
                   href="https://passculture.data-privacy-chart"
-                  style="transition-duration: 0s;"
+                  tabindex="0"
+                  target="_blank"
                 >
                   <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    dir="ltr"
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
                   >
-                    Charte des données personnelles
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz r-flexShrink-1q142lx"
+                    >
+                      <div
+                        aria-label="Nouvelle fenêtre"
+                        class="css-view-175oi2r"
+                        data-testid="button-icon-left"
+                      >
+                        <div
+                          class="css-text-1rynq56"
+                          dir="ltr"
+                        >
+                          button-icon-left-SVG-Mock
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-width-1jg9483"
+                      />
+                    </div>
+                    <div
+                      class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-maxWidth-dnmrzs"
+                      dir="ltr"
+                    >
+                      Charte des données personnelles
+                    </div>
                   </div>
                 </a>
               </div>
               <div
-                class="css-view-175oi2r r-width-b8lwoo"
+                class="css-view-175oi2r r-width-1glkqn6"
               >
                 <div
                   aria-label="République Française - Liberté Égalité Fraternité"

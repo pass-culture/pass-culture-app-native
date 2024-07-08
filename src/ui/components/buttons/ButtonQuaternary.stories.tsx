@@ -4,6 +4,7 @@ import React from 'react'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { ButtonQuaternaryGrey } from 'ui/components/buttons/ButtonQuaternaryGrey'
 import { ButtonQuaternaryPrimary } from 'ui/components/buttons/ButtonQuaternaryPrimary'
 import { StoryContainer } from 'ui/storybook/StoryContainer'
 import { EditPen } from 'ui/svg/icons/EditPen'
@@ -25,6 +26,9 @@ const Template: ComponentStory<typeof ButtonQuaternaryPrimary> = (props) => (
   <React.Fragment>
     <StoryContainer title="ButtonQuaternaryBlack">
       <ButtonQuaternaryBlack {...props} />
+    </StoryContainer>
+    <StoryContainer title="ButtonQuaternaryGrey">
+      <ButtonQuaternaryGrey {...props} />
     </StoryContainer>
     <StoryContainer title="ButtonQuaternaryPrimary">
       <ButtonQuaternaryPrimary {...props} />

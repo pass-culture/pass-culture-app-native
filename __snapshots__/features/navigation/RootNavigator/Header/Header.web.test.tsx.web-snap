@@ -3,17 +3,17 @@
 exports[`Header should render correctly 1`] = `
 <div>
   <header
-    class="sc-kAyceB jfECAs"
+    class="sc-imWYAI cJGpWF"
     role="banner"
   >
     <a
-      class="sc-iGgWBj sc-gsFSXq iGywTw fMSzfR"
+      class="sc-gsFSXq sc-kAyceB jcbCDa iVFAMO"
       href="#"
     >
       Aller au contenu principal
     </a>
     <a
-      class="sc-iGgWBj sc-gsFSXq iGywTw fMSzfR"
+      class="sc-gsFSXq sc-kAyceB jcbCDa iVFAMO"
       href="#footer_id_for_quick_access"
     >
       Aller au pied de page
@@ -268,17 +268,17 @@ exports[`Header should render correctly 1`] = `
 exports[`Header should render correctly when FF is enabled 1`] = `
 <div>
   <header
-    class="sc-kAyceB jfECAs"
+    class="sc-imWYAI cJGpWF"
     role="banner"
   >
     <a
-      class="sc-iGgWBj sc-gsFSXq iGywTw fMSzfR"
+      class="sc-gsFSXq sc-kAyceB jcbCDa iVFAMO"
       href="#"
     >
       Aller au contenu principal
     </a>
     <a
-      class="sc-iGgWBj sc-gsFSXq iGywTw fMSzfR"
+      class="sc-gsFSXq sc-kAyceB jcbCDa iVFAMO"
       href="#footer_id_for_quick_access"
     >
       Aller au pied de page
