@@ -41,7 +41,7 @@ type DayMapping = {
   timestamp: number
 }
 
-const extractDate = (date: Date): DayMapping => {
+export const extractDate = (date: Date): DayMapping => {
   const dayIndex = date.getDay()
   const monthIndex = date.getMonth()
   const dayDate = date.getDate()
