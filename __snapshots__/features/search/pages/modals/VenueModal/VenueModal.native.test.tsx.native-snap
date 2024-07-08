@@ -147,7 +147,6 @@ exports[`VenueModal should render correctly 1`] = `
     swipeThreshold={100}
   >
     <View
-      desktopMaxHeight={1000.5}
       height={1318}
       maxHeight={1334}
       noPadding={true}

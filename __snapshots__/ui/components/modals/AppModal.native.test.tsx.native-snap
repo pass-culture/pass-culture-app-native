@@ -147,6 +147,12 @@ exports[`<AppModal /> on big screen 1`] = `
     swipeThreshold={100}
   >
     <View
+      desktopConstraints={
+        {
+          "maxHeight": undefined,
+          "maxWidth": 520,
+        }
+      }
       height={428}
       style={
         [

@@ -147,7 +147,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
     swipeThreshold={100}
   >
     <View
-      desktopMaxHeight={1000.5}
       height={1318}
       maxHeight={1334}
       noPadding={true}
@@ -2857,7 +2856,6 @@ exports[`<CategoriesModal/> new book native categories section should display th
     swipeThreshold={100}
   >
     <View
-      desktopMaxHeight={1000.5}
       height={1318}
       maxHeight={1334}
       noPadding={true}

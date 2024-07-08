@@ -147,7 +147,6 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
     swipeThreshold={100}
   >
     <View
-      desktopMaxHeight={988.5}
       maxHeight={1318}
       noPadding={true}
       style={

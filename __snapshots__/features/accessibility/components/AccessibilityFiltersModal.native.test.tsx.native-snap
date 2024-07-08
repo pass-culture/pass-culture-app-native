@@ -208,7 +208,6 @@ exports[`<AccessibilityFiltersModal /> should not reset filter when reset button
       swipeThreshold={100}
     >
       <View
-        desktopMaxHeight={1000.5}
         height={1318}
         maxHeight={1334}
         noPadding={true}
@@ -1333,7 +1332,6 @@ exports[`<AccessibilityFiltersModal /> should not save modified disabilities whe
       swipeThreshold={100}
     >
       <View
-        desktopMaxHeight={1000.5}
         height={1318}
         maxHeight={1334}
         noPadding={true}
@@ -2458,7 +2456,6 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
       swipeThreshold={100}
     >
       <View
-        desktopMaxHeight={1000.5}
         height={1318}
         maxHeight={1334}
         noPadding={true}
@@ -3583,7 +3580,6 @@ exports[`<AccessibilityFiltersModal /> should reset filter when reset button and
       swipeThreshold={100}
     >
       <View
-        desktopMaxHeight={1000.5}
         height={1318}
         maxHeight={1334}
         noPadding={true}
@@ -4708,7 +4704,6 @@ exports[`<AccessibilityFiltersModal /> should save selected disabilities when se
       swipeThreshold={100}
     >
       <View
-        desktopMaxHeight={1000.5}
         height={1318}
         maxHeight={1334}
         noPadding={true}
