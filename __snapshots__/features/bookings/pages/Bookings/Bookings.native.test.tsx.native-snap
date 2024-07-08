@@ -93,7 +93,7 @@ exports[`Bookings should render correctly 1`] = `
       contentContainerStyle={
         {
           "flexGrow": 1,
-          "paddingBottom": 72,
+          "paddingBottom": 98,
         }
       }
       data={

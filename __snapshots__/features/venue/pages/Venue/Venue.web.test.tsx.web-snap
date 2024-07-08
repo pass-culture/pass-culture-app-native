@@ -347,7 +347,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
             class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
           />
           <div
-            class="css-view-175oi2r r-flexGrow-16y2uox r-width-13qz1uu"
+            class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-width-13qz1uu"
           >
             <div
               class="css-view-175oi2r r-flexDirection-18u37iz"
@@ -414,7 +414,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
               />
             </div>
             <div
-              class="css-view-175oi2r r-flexGrow-16y2uox"
+              class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               role="tabpanel"
             >
               <div
@@ -2315,7 +2315,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
             class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-3da1kt"
           />
           <div
-            class="css-view-175oi2r r-flexGrow-16y2uox r-width-13qz1uu"
+            class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-width-13qz1uu"
           >
             <div
               class="css-view-175oi2r r-flexDirection-18u37iz"
@@ -2382,7 +2382,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
               />
             </div>
             <div
-              class="css-view-175oi2r r-flexGrow-16y2uox"
+              class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
               role="tabpanel"
             >
               <div

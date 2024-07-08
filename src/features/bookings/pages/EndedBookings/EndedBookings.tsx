@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { useBookings } from 'features/bookings/api'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
+import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
 import { Booking } from 'features/bookings/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -15,6 +16,7 @@ import {
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const renderItem: ListRenderItem<Booking> = ({ item }) => <EndedBookingItem booking={item} />
@@ -58,8 +60,8 @@ export const EndedBookings: FunctionComponent<Props> = ({ enableBookingImprove }
           keyExtractor={keyExtractor}
           renderItem={renderItem}
           ItemSeparatorComponent={StyledSeparator}
-          ListHeaderComponent={<Spacer.Column numberOfSpaces={6} />}
-          ListFooterComponent={ListFooterComponent}
+          ListHeaderComponent={endedBookingsCount ? <Spacer.Column numberOfSpaces={6} /> : null}
+          ListEmptyComponent={<NoBookingsView />}
         />
       ) : (
         <React.Fragment>
@@ -73,7 +75,6 @@ export const EndedBookings: FunctionComponent<Props> = ({ enableBookingImprove }
             renderItem={renderItem}
             ItemSeparatorComponent={StyledSeparator}
             ListHeaderComponent={ListHeaderComponent}
-            ListFooterComponent={ListFooterComponent}
           />
           <BlurHeader height={headerHeight} />
         </React.Fragment>
@@ -91,6 +92,10 @@ const EndedBookingsCount = styled(Typo.Body).attrs(getHeadingAttrs(2))(({ theme 
   paddingBottom: getSpacing(5.5),
 }))
 
-const contentContainerStyle = { paddingHorizontal: getSpacing(5) }
-const ListFooterComponent = () => <Spacer.Column numberOfSpaces={12} />
+const contentContainerStyle = {
+  flexGrow: 1,
+  paddingHorizontal: getSpacing(5),
+  paddingBottom: TAB_BAR_COMP_HEIGHT_V2 + getSpacing(8),
+}
+
 const StyledSeparator = styled(Separator.Horizontal)({ marginVertical: getSpacing(4) })

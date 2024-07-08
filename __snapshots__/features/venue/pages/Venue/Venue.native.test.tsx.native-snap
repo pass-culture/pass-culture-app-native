@@ -511,6 +511,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             [
               {
                 "flexGrow": 1,
+                "flexShrink": 1,
                 "width": "100%",
               },
             ]
@@ -752,6 +753,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               [
                 {
                   "flexGrow": 1,
+                  "flexShrink": 1,
                 },
               ]
             }
@@ -5367,6 +5369,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             [
               {
                 "flexGrow": 1,
+                "flexShrink": 1,
                 "width": "100%",
               },
             ]
@@ -5608,6 +5611,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               [
                 {
                   "flexGrow": 1,
+                  "flexShrink": 1,
                 },
               ]
             }

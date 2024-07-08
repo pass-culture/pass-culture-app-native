@@ -59,6 +59,7 @@ export const TabLayout = <TabKeyType extends string>({
 
 const Container = styled.View({
   flexGrow: 1,
+  flexShrink: 1,
   width: '100%',
 })
 
@@ -76,4 +77,5 @@ const GreyBar = styled.View(({ theme }) => ({
 
 const ContentContainer = styled.View({
   flexGrow: 1,
+  flexShrink: 1,
 })
