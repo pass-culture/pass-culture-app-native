@@ -5,10 +5,8 @@ import { NoResultsView } from 'ui/components/NoResultsView'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
-export function NoBookingsView() {
+export function NoBookingsView({ ...props }) {
   const netInfo = useNetInfoContext()
-
-  const title = 'Retrouve tes réservations en un clin d’oeil'
 
   const explanationsOffline =
     'Aucune réservations en cours.' +
@@ -17,18 +15,18 @@ export function NoBookingsView() {
 
   return netInfo.isConnected ? (
     <NoResultsView
-      title={title}
       explanations="Tu n’as pas de réservation en cours. Explore le catalogue pour trouver ton bonheur&nbsp;!"
       icon={NoBookings}
       trackingExplorerOffersFrom="bookings"
+      {...props}
     />
   ) : (
     <NoResultsView
-      title={title}
       offline
       explanations={explanationsOffline}
       icon={NoBookings}
       trackingExplorerOffersFrom="bookings"
+      {...props}
     />
   )
 }

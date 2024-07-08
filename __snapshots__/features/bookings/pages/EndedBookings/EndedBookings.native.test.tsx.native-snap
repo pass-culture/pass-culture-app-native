@@ -198,10 +198,11 @@ exports[`EndedBookings should render correctly 1`] = `
         "withComponent": [Function],
       }
     }
-    ListFooterComponent={[Function]}
     ListHeaderComponent={[Function]}
     contentContainerStyle={
       {
+        "flexGrow": 1,
+        "paddingBottom": 98,
         "paddingHorizontal": 20,
       }
     }
@@ -695,20 +696,6 @@ exports[`EndedBookings should render correctly 1`] = `
             </View>
           </View>
         </View>
-      </View>
-      <View
-        onLayout={[Function]}
-      >
-        <View
-          numberOfSpaces={12}
-          style={
-            [
-              {
-                "height": 48,
-              },
-            ]
-          }
-        />
       </View>
     </View>
   </RCTScrollView>,

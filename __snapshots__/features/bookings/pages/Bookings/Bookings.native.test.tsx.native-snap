@@ -87,13 +87,13 @@ exports[`Bookings should render correctly 1`] = `
   >
     <RCTScrollView
       ItemSeparatorComponent={[Function]}
-      ListEmptyComponent={<NoBookingsView />}
+      ListEmptyComponent={<Styled(NoBookingsView) />}
       ListFooterComponent={[Function]}
       ListHeaderComponent={[Function]}
       contentContainerStyle={
         {
           "flexGrow": 1,
-          "paddingBottom": 72,
+          "paddingBottom": 98,
         }
       }
       data={

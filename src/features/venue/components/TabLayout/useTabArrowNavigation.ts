@@ -1,5 +1,5 @@
-import { TabArrowNavigationProps } from 'features/venue/types'
+import { TabProps } from 'features/venue/types'
 
-export const useTabArrowNavigation = (_: TabArrowNavigationProps): void => {
+export const useTabArrowNavigation = <TabKeyType extends string>(_: TabProps<TabKeyType>): void => {
   return
 }

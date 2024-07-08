@@ -33,6 +33,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_APP_V2_VENUE_MAP_BLOCK = 'wipAppV2VenueMapBlock',
   WIP_APP_V2_VIDEO_9_16 = 'wipAppV2Video9:16',
   WIP_APP_V2_VIDEO_710_WEB = 'wipAppV2Video710Web',
+  WIP_BOOKING_IMPROVE = 'wipBookingImprove',
   WIP_CINEMA_OFFER_VENUE_BLOCK = 'wipCinemaOfferVenueBlock',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_DISPLAY_SEARCH_NB_FACET_RESULTS = 'wipDisplaySearchNbFacetResults',

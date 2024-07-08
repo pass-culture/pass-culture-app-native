@@ -510,6 +510,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           style={
             [
               {
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "width": "100%",
               },
             ]
@@ -747,6 +749,14 @@ exports[`<Venue /> should match snapshot 1`] = `
           </View>
           <View
             accessibilityRole="none"
+            style={
+              [
+                {
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
           >
             <View
               numberOfSpaces={6}
@@ -5358,6 +5368,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
           style={
             [
               {
+                "flexGrow": 1,
+                "flexShrink": 1,
                 "width": "100%",
               },
             ]
@@ -5595,6 +5607,14 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
           </View>
           <View
             accessibilityRole="none"
+            style={
+              [
+                {
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
           >
             <View
               style={

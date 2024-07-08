@@ -16,11 +16,11 @@ export enum Tab {
   INFOS = 'Infos pratiques',
 }
 
-export type TabArrowNavigationProps = {
+export type TabProps<TabKeyType extends string> = {
   tabListRef: React.MutableRefObject<null>
-  selectedTab: Tab
-  setSelectedTab: (tab: Tab) => void
-  tabs: Tab[]
+  selectedTab: TabKeyType
+  setSelectedTab: (tab: TabKeyType) => void
+  tabs: TabKeyType[]
 }
 
 export type OpeningHours = Partial<{
