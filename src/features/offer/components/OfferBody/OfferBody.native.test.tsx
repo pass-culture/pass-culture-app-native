@@ -125,7 +125,9 @@ describe('<OfferBody />', () => {
 
     fireEvent.press(await screen.findByText('Réagir'))
 
-    expect(analytics.logConsultReactionFakeDoor).toHaveBeenCalledTimes(1)
+    expect(analytics.logConsultReactionFakeDoor).toHaveBeenNthCalledWith(1, {
+      from: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+    })
   })
 
   it('should not display reaction button when feature flag is enabled and native category is not "Séances de cinéma"', async () => {

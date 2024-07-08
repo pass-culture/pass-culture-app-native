@@ -93,7 +93,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
   const onReactButtonPress = () => {
-    analytics.logConsultReactionFakeDoor()
+    analytics.logConsultReactionFakeDoor({ from: subcategory.nativeCategoryId })
     showModal()
   }
 
