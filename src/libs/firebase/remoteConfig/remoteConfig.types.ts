@@ -1,3 +1,4 @@
+import { NativeCategoryIdEnumv2 } from 'api/gen'
 import { SubscriptionTheme } from 'features/subscription/types'
 
 export type CustomRemoteConfig = {
@@ -12,6 +13,7 @@ export type CustomRemoteConfig = {
   homeEntryIdWithoutBooking_15_17: string
   homeEntryId_18: string
   homeEntryId_15_17: string
+  reactionFakeDoorCategories: Record<'categories', NativeCategoryIdEnumv2[]>
   sameAuthorPlaylist: string
   shouldApplyGraphicRedesign: boolean
   shouldDisplayReassuranceMention: boolean

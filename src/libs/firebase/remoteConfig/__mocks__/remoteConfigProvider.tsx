@@ -7,6 +7,19 @@ export const useRemoteConfigContext = jest.fn().mockReturnValue({
   homeEntryIdWithoutBooking_15_17: 'homeEntryIdWithoutBooking_15_17',
   homeEntryId_18: 'homeEntryId_18',
   homeEntryId_15_17: 'homeEntryId_15_17',
+  reactionFakeDoorCategories: {
+    categories: [
+      'SEANCES_DE_CINEMA',
+      'CD',
+      'MUSIQUE_EN_LIGNE',
+      'VINYLES',
+      'LIVRES_AUDIO_PHYSIQUES',
+      'LIVRES_NUMERIQUE_ET_AUDIO',
+      'LIVRES_PAPIER',
+      'DVD_BLU_RAY',
+      'FILMS_SERIES_EN_LIGNE',
+    ],
+  },
   sameAuthorPlaylist: 'sameAuthorPlaylist',
   shouldLogInfo: false,
 })

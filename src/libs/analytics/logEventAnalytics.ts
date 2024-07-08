@@ -1,7 +1,12 @@
 import { Platform } from 'react-native'
 import { Social } from 'react-native-share'
 
-import { IdentityCheckMethod, RecommendationApiParams, VenueContactModel } from 'api/gen'
+import {
+  IdentityCheckMethod,
+  NativeCategoryIdEnumv2,
+  RecommendationApiParams,
+  VenueContactModel,
+} from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { Step, STEP_LABEL } from 'features/bookOffer/context/reducer'
@@ -247,8 +252,8 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, params),
   logConsultPracticalInformations: (params: { venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_PRACTICAL_INFORMATIONS }, params),
-  logConsultReactionFakeDoor: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_REACTION_FAKE_DOOR }),
+  logConsultReactionFakeDoor: (params: { from: NativeCategoryIdEnumv2 }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_REACTION_FAKE_DOOR }, params),
   logConsultSubscriptionModal: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_SUBSCRIPTION_MODAL }),
   logConsultTutorial: (params: { from: string; age?: number }) =>

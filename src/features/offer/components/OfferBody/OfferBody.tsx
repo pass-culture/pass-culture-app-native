@@ -2,12 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import {
-  CategoryIdEnum,
-  NativeCategoryIdEnumv2,
-  OfferResponseV2,
-  SearchGroupNameEnumv2,
-} from 'api/gen'
+import { CategoryIdEnum, OfferResponseV2, SearchGroupNameEnumv2 } from 'api/gen'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
@@ -25,6 +20,7 @@ import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryI
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Subcategory } from 'libs/subcategories/types'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { ToggleButton } from 'ui/components/buttons/ToggleButton'
@@ -55,6 +51,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   subcategory,
   trackEventHasSeenOfferOnce,
 }) => {
+  const { reactionFakeDoorCategories } = useRemoteConfigContext()
   const { isDesktopViewport } = useTheme()
   const { visible, showModal, hideModal } = useModal()
   const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
@@ -66,7 +63,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     hasFakeDoorArtist && FAKE_DOOR_ARTIST_SEARCH_GROUPS.includes(subcategory.searchGroupName)
   const shouldDisplayReactionButton =
     enableReactionFakeDoor &&
-    subcategory.nativeCategoryId === NativeCategoryIdEnumv2.SEANCES_DE_CINEMA
+    reactionFakeDoorCategories.categories.includes(subcategory.nativeCategoryId)
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
@@ -93,7 +90,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
   const onReactButtonPress = () => {
-    analytics.logConsultReactionFakeDoor()
+    analytics.logConsultReactionFakeDoor({ from: subcategory.nativeCategoryId })
     showModal()
   }
 
