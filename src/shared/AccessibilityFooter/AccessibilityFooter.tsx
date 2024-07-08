@@ -4,15 +4,19 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer } from 'ui/theme'
 import { CaptionNeutralInfo } from 'ui/theme/typography'
 
 const isWeb = Platform.OS === 'web'
+
+export const FOOTER_ID = 'footer_id_for_quick_access'
 
 export const AccessibilityFooter = () => {
   if (isWeb) {
@@ -28,12 +32,20 @@ export const AccessibilityFooter = () => {
             <InternalTouchableLink navigateTo={{ screen: 'LegalNotices' }}>
               <CaptionNeutralInfo>Mentions légales</CaptionNeutralInfo>
             </InternalTouchableLink>
-            <ExternalTouchableLink externalNav={{ url: env.CGU_LINK }}>
-              <CaptionNeutralInfo>CGU utilisateurs</CaptionNeutralInfo>
-            </ExternalTouchableLink>
-            <ExternalTouchableLink externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}>
-              <CaptionNeutralInfo>Charte des données personnelles</CaptionNeutralInfo>
-            </ExternalTouchableLink>
+            <ExternalTouchableLink
+              as={StyledButtonQuaternarySecondary}
+              wording="CGU utilisateurs"
+              externalNav={{ url: env.CGU_LINK }}
+              icon={ExternalSiteFilled}
+              inline
+            />
+            <ExternalTouchableLink
+              as={StyledButtonQuaternarySecondary}
+              wording="Charte des données personnelles"
+              externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
+              icon={ExternalSiteFilled}
+              inline
+            />
           </LinksContainer>
           <LogoMinistereContainer>
             <LogoMinistere />
@@ -62,11 +74,13 @@ const LinksContainer = styled.View(({ theme }) => ({
 
 const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({
   color: theme.uniqueColors.brand,
-  width: getSpacing(25),
+  width: getSpacing(20),
 }))``
 
 const LogoMinistereContainer = styled.View({
-  width: getSpacing(25),
+  width: getSpacing(20),
 })
 
-export const FOOTER_ID = 'footer_id_for_quick_access'
+const StyledButtonQuaternarySecondary = styled(ButtonQuaternarySecondary)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
