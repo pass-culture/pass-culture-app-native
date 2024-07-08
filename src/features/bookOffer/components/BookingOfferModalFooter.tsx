@@ -7,6 +7,7 @@ import {
   getButtonState,
   getButtonWording,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing } from 'ui/theme'
 
@@ -27,13 +28,19 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
       dispatch({ type: 'RESET_HOUR' })
       return dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
     }
+
     if (step === Step.HOUR && hasPricesStep) {
       dispatch({ type: 'RESET_STOCK' })
       return dispatch({ type: 'CHANGE_STEP', payload: Step.PRICE })
     }
+
+    if (step === Step.PRICE) analytics.logHasChosenPrice()
+
     if (isDuo && ((step === Step.HOUR && !hasPricesStep) || step === Step.PRICE)) {
       return dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
     }
+
+    if (step === Step.DUO) analytics.logHasClickedDuoStep()
 
     return dispatch({ type: 'VALIDATE_OPTIONS' })
   }, [dispatch, hasPricesStep, isDuo, step])

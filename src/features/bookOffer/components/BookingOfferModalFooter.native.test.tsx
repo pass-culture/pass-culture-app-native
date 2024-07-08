@@ -3,6 +3,7 @@ import React from 'react'
 import { BookingOfferModalFooter } from 'features/bookOffer/components/BookingOfferModalFooter'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { IBookingContext } from 'features/bookOffer/types'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockDispatch = jest.fn()
@@ -14,6 +15,8 @@ const mockUseBookingContext: jest.Mock<IBookingContext> = jest.fn(() => ({
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: () => mockUseBookingContext(),
 }))
+
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('BookingOfferModalFooter', () => {
   describe('when current step is date selection', () => {
@@ -306,6 +309,52 @@ describe('BookingOfferModalFooter', () => {
       render(<BookingOfferModalFooter hasPricesStep />)
 
       expect(screen.queryByTestId('bookingOfferModalFooter')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('tracking', () => {
+    it('should log hasChosenPrice event when user submits a price', async () => {
+      mockUseBookingContext.mockReturnValueOnce({
+        bookingState: {
+          stockId: 1,
+          offerId: 1,
+          step: Step.PRICE,
+          quantity: 1,
+          date: new Date('01/02/2021'),
+          hour: '2023-04-01T18:00:00Z',
+        },
+        dispatch: mockDispatch,
+        dismissModal: jest.fn(),
+      })
+
+      render(<BookingOfferModalFooter hasPricesStep />)
+
+      const submitButton = await screen.findByText('Valider le prix')
+      fireEvent.press(submitButton)
+
+      expect(analytics.logHasChosenPrice).toHaveBeenCalledTimes(1)
+    })
+
+    it('should log hasClickedDuoStep event when user submits solo or duo option', async () => {
+      mockUseBookingContext.mockReturnValueOnce({
+        bookingState: {
+          stockId: 1,
+          offerId: 1,
+          step: Step.DUO,
+          quantity: 2,
+          date: new Date('01/02/2021'),
+          hour: '2023-04-01T18:00:00Z',
+        },
+        dispatch: mockDispatch,
+        dismissModal: jest.fn(),
+      })
+
+      render(<BookingOfferModalFooter isDuo />)
+
+      const submitButton = await screen.findByText('Finaliser ma réservation')
+      fireEvent.press(submitButton)
+
+      expect(analytics.logHasClickedDuoStep).toHaveBeenCalledTimes(1)
     })
   })
 })
