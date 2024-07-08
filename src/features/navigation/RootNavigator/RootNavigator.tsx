@@ -1,4 +1,3 @@
-import { Route } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -9,7 +8,7 @@ import { PrivacyPolicy } from 'features/cookies/pages/PrivacyPolicy'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
-import { RootScreenNames, ScreenNames } from 'features/navigation/RootNavigator/types'
+import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
@@ -20,6 +19,7 @@ import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
 
+import { determineAccessibilityRole } from './determineAccessibilityRole'
 import { Header } from './Header/Header'
 import { RootScreens } from './screens'
 import { RootStack } from './Stack'
@@ -95,21 +95,3 @@ const Main = styled.View({
   flexDirection: 'column',
   flexGrow: 1,
 })
-
-function determineAccessibilityRole(currentRoute: Route<string> | null) {
-  const currentRouteParams = currentRoute?.params
-  const pageWithFooter: ScreenNames[] = ['Home', 'Profile']
-
-  let mainAccessibilityRole: AccessibilityRole | undefined = AccessibilityRole.MAIN
-  if (
-    typeof currentRouteParams === 'object' &&
-    'screen' in currentRouteParams &&
-    (pageWithFooter.includes(currentRouteParams?.screen as ScreenNames) ||
-      (currentRouteParams?.screen as ScreenNames) === undefined)
-    // when arriving on the app for the first time, 'screen' is undefined
-    // this might create issues when entering the app from other places then home
-  ) {
-    mainAccessibilityRole = undefined // we set it to undefined to let the pages handle were the main should be
-  }
-  return mainAccessibilityRole
-}

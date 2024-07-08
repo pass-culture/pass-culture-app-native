@@ -16,7 +16,7 @@ exports[`Header should render correctly 1`] = `
       class="sc-iGgWBj sc-gsFSXq iGywTw fMSzfR"
       href="#footer_id_for_quick_access"
     >
-      Aller au footer
+      Aller au pied de page
     </a>
     <div
       class="css-view-175oi2r"
@@ -281,7 +281,7 @@ exports[`Header should render correctly when FF is enabled 1`] = `
       class="sc-iGgWBj sc-gsFSXq iGywTw fMSzfR"
       href="#footer_id_for_quick_access"
     >
-      Aller au footer
+      Aller au pied de page
     </a>
     <div
       class="css-view-175oi2r"

@@ -852,18 +852,14 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-e6ktq0 r-paddingBottom-11rk87y r-paddingTop-fd4yh7"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1habvwh"
+                aria-label="pass culture"
+                class="css-view-175oi2r"
               >
                 <div
-                  aria-label="pass culture"
-                  class="css-view-175oi2r"
+                  class="css-text-1rynq56"
+                  dir="ltr"
                 >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
-                  </div>
+                  undefined-SVG-Mock
                 </div>
               </div>
               <div
@@ -1800,35 +1796,19 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-e6ktq0 r-paddingBottom-11rk87y r-paddingTop-1ygmrgt"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1habvwh"
+                aria-label="pass culture"
+                class="css-view-175oi2r"
               >
                 <div
-                  aria-label="pass culture"
-                  class="css-view-175oi2r"
+                  class="css-text-1rynq56"
+                  dir="ltr"
                 >
-                  <div
-                    class="css-text-1rynq56"
-                    dir="ltr"
-                  >
-                    undefined-SVG-Mock
-                  </div>
+                  undefined-SVG-Mock
                 </div>
               </div>
               <div
                 class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-e6ktq0"
               >
-                <a
-                  class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                  href="https://passculture.app/accueil"
-                  style="transition-duration: 0s;"
-                >
-                  <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                    dir="ltr"
-                  >
-                    pass Culture
-                  </div>
-                </a>
                 <div
                   class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                   style="transition-duration: 0s;"

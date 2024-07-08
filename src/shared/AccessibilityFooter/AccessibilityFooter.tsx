@@ -1,6 +1,6 @@
 import React from 'react'
 import { Platform, View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment'
@@ -10,27 +10,18 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer } from 'ui/theme'
-import { FOOTER_ID } from 'ui/theme/constants'
 import { CaptionNeutralInfo } from 'ui/theme/typography'
 
 const isWeb = Platform.OS === 'web'
 
-const AccessibilityFooter = () => {
-  const { isDesktopViewport } = useTheme()
+export const AccessibilityFooter = () => {
   if (isWeb) {
     return (
       <View accessibilityRole={AccessibilityRole.FOOTER} nativeID={FOOTER_ID}>
         <Separator.Horizontal />
         <Container>
-          <LogoPassCultureContainer>
-            <ColoredPassCultureLogo />
-          </LogoPassCultureContainer>
+          <ColoredPassCultureLogo />
           <LinksContainer>
-            {isDesktopViewport ? null : (
-              <ExternalTouchableLink externalNav={{ url: 'https://passculture.app/accueil' }}>
-                <CaptionNeutralInfo>pass Culture</CaptionNeutralInfo>
-              </ExternalTouchableLink>
-            )}
             <InternalTouchableLink navigateTo={{ screen: 'Accessibility' }}>
               <CaptionNeutralInfo>Accessibilité&nbsp;: partiellement conforme</CaptionNeutralInfo>
             </InternalTouchableLink>
@@ -69,10 +60,6 @@ const LinksContainer = styled.View(({ theme }) => ({
   flexDirection: theme.isDesktopViewport ? 'row' : 'column',
 }))
 
-const LogoPassCultureContainer = styled.View({
-  alignItems: 'flex-start', // doesn't changed anything, should I keep?
-})
-
 const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({
   color: theme.uniqueColors.brand,
   width: getSpacing(25),
@@ -82,4 +69,4 @@ const LogoMinistereContainer = styled.View({
   width: getSpacing(25),
 })
 
-export default AccessibilityFooter
+export const FOOTER_ID = 'footer_id_for_quick_access'
