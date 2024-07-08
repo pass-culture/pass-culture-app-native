@@ -101,49 +101,45 @@ export const OnGoingBookingsList: FunctionComponent<Props> = ({ enableBookingImp
 
   if (showSkeleton) return <BookingsPlaceholder />
 
-  return (
-    <React.Fragment>
-      {enableBookingImprove ? (
-        <FlatList
-          listAs="ul"
-          itemAs="li"
-          testID="OnGoingBookingsList"
-          keyExtractor={keyExtractor}
-          data={ongoingBookings}
-          renderItem={renderItem}
-          refreshing={isRefreshing}
-          onRefresh={onRefetch}
-          contentContainerStyle={contentContainerStyle}
-          ListHeaderComponent={onGoingBookingsCount ? <Spacer.Column numberOfSpaces={6} /> : null}
-          ListEmptyComponent={<NoBookingsView />}
-          ItemSeparatorComponent={ItemSeparatorComponent}
-          scrollEnabled={hasBookings}
-          onScroll={onScroll}
-          scrollEventThrottle={16}
-        />
-      ) : (
-        <Container flex={hasBookings || hasEndedBookings ? 1 : undefined}>
-          <FlatList
-            listAs="ul"
-            itemAs="li"
-            testID="OnGoingBookingsList"
-            keyExtractor={keyExtractor}
-            data={ongoingBookings}
-            renderItem={renderItem}
-            refreshing={isRefreshing}
-            onRefresh={onRefetch}
-            contentContainerStyle={contentContainerStyle}
-            ListHeaderComponent={ListHeaderComponent}
-            ListEmptyComponent={<StyledNoBookingsView />}
-            ListFooterComponent={ListFooterComponent}
-            ItemSeparatorComponent={ItemSeparatorComponent}
-            scrollEnabled={hasBookings}
-            onScroll={onScroll}
-            scrollEventThrottle={16}
-          />
-        </Container>
-      )}
-    </React.Fragment>
+  return enableBookingImprove ? (
+    <FlatList
+      listAs="ul"
+      itemAs="li"
+      testID="OnGoingBookingsList"
+      keyExtractor={keyExtractor}
+      data={ongoingBookings}
+      renderItem={renderItem}
+      refreshing={isRefreshing}
+      onRefresh={onRefetch}
+      contentContainerStyle={contentContainerStyle}
+      ListHeaderComponent={onGoingBookingsCount ? <Spacer.Column numberOfSpaces={6} /> : null}
+      ListEmptyComponent={<NoBookingsView />}
+      ItemSeparatorComponent={ItemSeparatorComponent}
+      scrollEnabled={hasBookings}
+      onScroll={onScroll}
+      scrollEventThrottle={16}
+    />
+  ) : (
+    <Container flex={hasBookings || hasEndedBookings ? 1 : undefined}>
+      <FlatList
+        listAs="ul"
+        itemAs="li"
+        testID="OnGoingBookingsList"
+        keyExtractor={keyExtractor}
+        data={ongoingBookings}
+        renderItem={renderItem}
+        refreshing={isRefreshing}
+        onRefresh={onRefetch}
+        contentContainerStyle={contentContainerStyle}
+        ListHeaderComponent={ListHeaderComponent}
+        ListEmptyComponent={<StyledNoBookingsView />}
+        ListFooterComponent={ListFooterComponent}
+        ItemSeparatorComponent={ItemSeparatorComponent}
+        scrollEnabled={hasBookings}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
+      />
+    </Container>
   )
 }
 

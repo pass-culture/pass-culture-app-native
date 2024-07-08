@@ -6,6 +6,7 @@ import { AuthWrapper } from 'features/auth/context/AuthContext'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { beneficiaryUser } from 'fixtures/user'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -22,6 +23,8 @@ jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 const TEST_TIMEOUT_IN_MS = 30000
 jest.setTimeout(TEST_TIMEOUT_IN_MS)
 jest.useFakeTimers()
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<Bookings />', () => {
   beforeEach(() => {
