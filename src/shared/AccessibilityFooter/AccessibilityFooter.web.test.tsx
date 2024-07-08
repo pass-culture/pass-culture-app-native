@@ -5,7 +5,6 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
-// This mock should not be necessary (test should not make any requests)
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
