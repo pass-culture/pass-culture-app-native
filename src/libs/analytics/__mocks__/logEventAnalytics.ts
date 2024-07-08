@@ -81,6 +81,8 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logHasAddedOfferToFavorites: jest.fn(),
   logHasAppliedFavoritesSorting: jest.fn(),
   logHasChangedPassword: jest.fn(),
+  logHasChosenPrice: jest.fn(),
+  logHasClickedDuoStep: jest.fn(),
   logHasClickedMissingCode: jest.fn(),
   logHasCorrectedEmail: jest.fn(),
   logHasDismissedAppSharingModal: jest.fn(),
