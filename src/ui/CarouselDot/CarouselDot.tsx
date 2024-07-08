@@ -13,7 +13,7 @@ type Props = {
 }
 
 const SMALL_DOT_SIZE = 6
-const BIG_DOT_SIZE = SMALL_DOT_SIZE + 4
+const BIG_DOT_SIZE = SMALL_DOT_SIZE + 2
 
 export const CarouselDot: React.FunctionComponent<Props> = ({ animValue, index }) => {
   const theme = useTheme()
