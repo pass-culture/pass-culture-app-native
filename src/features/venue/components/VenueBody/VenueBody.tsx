@@ -11,6 +11,7 @@ import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/V
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
+import { Tab } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Spacer } from 'ui/theme'
@@ -20,11 +21,6 @@ interface Props {
   venueOffers?: VenueOffersType
   playlists?: GtlPlaylistData[]
   shouldDisplayCTA?: boolean
-}
-
-enum Tab {
-  OFFERS = 'Offres disponibles',
-  INFOS = 'Infos pratiques',
 }
 
 export const VenueBody: FunctionComponent<Props> = ({

@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from 'react'
 
-import { TabKey, TabProps } from 'features/venue/components/TabLayout/TabLayout'
+import { TabKey, TabProps } from 'features/venue/types'
 
 export const useTabArrowNavigation = <T extends TabKey>({
   tabListRef,

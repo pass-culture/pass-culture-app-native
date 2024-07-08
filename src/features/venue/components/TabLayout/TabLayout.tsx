@@ -2,19 +2,11 @@ import React, { useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useTabArrowNavigation } from 'features/venue/components/TabLayout/useTabArrowNavigation'
+import { TabKey } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getSpacing, Spacer } from 'ui/theme'
 
 import { InfoTab } from './InfoTab'
-
-export type TabKey = string
-
-export type TabProps<T extends TabKey> = {
-  tabListRef: React.MutableRefObject<null>
-  selectedTab: T
-  setSelectedTab: (tab: T) => void
-  tabs: T[]
-}
 
 type TabLayoutProps<T extends TabKey> = {
   tabPanels: Record<T, JSX.Element>

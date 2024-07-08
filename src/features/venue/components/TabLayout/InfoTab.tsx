@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { TabKey } from 'features/venue/components/TabLayout/TabLayout'
+import { TabKey } from 'features/venue/types'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 

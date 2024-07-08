@@ -5,6 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests/utils/web'
@@ -25,6 +26,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('Bookings', () => {
   describe('Accessibility', () => {

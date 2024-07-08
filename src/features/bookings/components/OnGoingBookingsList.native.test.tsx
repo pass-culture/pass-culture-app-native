@@ -5,6 +5,7 @@ import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { bookingsSnap as mockBookings } from 'features/bookings/fixtures/bookingsSnap'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { act, render, screen } from 'tests/utils'
@@ -41,6 +42,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
 describe('<OnGoingBookingsList /> - Analytics', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
@@ -69,7 +72,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         refetch: refetch as unknown,
       } as UseQueryResult<BookingsResponse, unknown>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
-      render(<OnGoingBookingsList />)
+      renderOnGoingBookingsList()
 
       const flatList = screen.getByTestId('OnGoingBookingsList')
 
@@ -94,7 +97,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         refetch: refetch as unknown,
       } as UseQueryResult<BookingsResponse, unknown>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
-      render(<OnGoingBookingsList />)
+      renderOnGoingBookingsList()
 
       const flatList = screen.getByTestId('OnGoingBookingsList')
 
@@ -119,7 +122,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         isFetching: false,
       } as UseQueryResult<BookingsResponse, unknown>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
-      render(<OnGoingBookingsList />)
+      renderOnGoingBookingsList()
 
       const placeholder = screen.queryByTestId('BookingsPlaceholder')
 
@@ -131,7 +134,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         isLoading: true,
       } as UseQueryResult<SubcategoriesResponseModelv2, unknown>
       mockUseSubcategories.mockReturnValueOnce(loadingSubcategories)
-      render(<OnGoingBookingsList />)
+      renderOnGoingBookingsList()
 
       const placeholder = screen.queryByTestId('BookingsPlaceholder')
 
@@ -140,7 +143,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
   })
 
   it('should trigger logEvent "BookingsScrolledToBottom" when reaching the end', () => {
-    render(<OnGoingBookingsList />)
+    renderOnGoingBookingsList()
     const flatList = screen.getByTestId('OnGoingBookingsList')
 
     flatList.props.onScroll({ nativeEvent: nativeEventMiddle })
@@ -153,7 +156,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
   })
 
   it('should trigger logEvent "BookingsScrolledToBottom" only once', () => {
-    render(<OnGoingBookingsList />)
+    renderOnGoingBookingsList()
     const flatList = screen.getByTestId('OnGoingBookingsList')
 
     // 1st scroll to bottom => trigger
@@ -168,3 +171,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
     expect(analytics.logBookingsScrolledToBottom).toHaveBeenCalledTimes(1)
   })
 })
+
+function renderOnGoingBookingsList() {
+  render(<OnGoingBookingsList enableBookingImprove={false} />)
+}

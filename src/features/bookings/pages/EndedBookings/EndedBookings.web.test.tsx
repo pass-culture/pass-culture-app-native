@@ -4,6 +4,7 @@ import { QueryObserverResult } from 'react-query'
 import { BookingsResponse } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
@@ -13,6 +14,8 @@ jest.mock('libs/subcategories/useCategoryId')
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('EndedBookings', () => {
   describe('Accessibility', () => {
@@ -31,5 +34,5 @@ const renderEndedBookings = (bookings: BookingsResponse) => {
     .spyOn(bookingsAPI, 'useBookings')
     .mockReturnValue({ data: bookings } as QueryObserverResult<BookingsResponse, unknown>)
 
-  return render(reactQueryProviderHOC(<EndedBookings />))
+  return render(reactQueryProviderHOC(<EndedBookings enableBookingImprove={false} />))
 }
