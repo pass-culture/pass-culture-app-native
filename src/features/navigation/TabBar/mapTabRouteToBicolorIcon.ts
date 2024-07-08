@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { BicolorBookingsCountV2 } from 'features/bookings/components/BicolorBookingsCountV2'
 import { BicolorFavoriteCount } from 'features/favorites/components/BicolorFavoriteCount'
 import { BicolorFavoriteCountV2 } from 'features/favorites/components/BicolorFavoriteCountV2'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
@@ -13,17 +14,25 @@ import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 
 import { TabRouteName } from './types'
 
-export function mapTabRouteToBicolorIcon(
-  route: TabRouteName,
+type Props = {
+  route: TabRouteName
   v2: boolean
-): React.FC<AccessibleBicolorIcon> {
+  enableReactionFeature: boolean
+}
+
+export function mapTabRouteToBicolorIcon({
+  route,
+  v2,
+  enableReactionFeature,
+}: Props): React.FC<AccessibleBicolorIcon> {
+  const BicolorBookingsIcon = enableReactionFeature ? BicolorBookingsCountV2 : BicolorBookingsV2
   switch (route) {
     case 'Home':
       return BicolorLogo
     case 'SearchStackNavigator':
       return v2 ? BicolorSearchV2 : BicolorSearch
     case 'Bookings':
-      return v2 ? BicolorBookingsV2 : BicolorBookings
+      return v2 ? BicolorBookingsIcon : BicolorBookings
     case 'Favorites':
       return v2 ? BicolorFavoriteCountV2 : BicolorFavoriteCount
     case 'Profile':
