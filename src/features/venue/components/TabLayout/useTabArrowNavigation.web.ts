@@ -1,13 +1,13 @@
 import { useCallback, useEffect } from 'react'
 
-import { TabKey, TabProps } from 'features/venue/types'
+import { TabProps } from 'features/venue/types'
 
-export const useTabArrowNavigation = <T extends TabKey>({
+export const useTabArrowNavigation = <TabKeyType extends string>({
   tabListRef,
   selectedTab,
   setSelectedTab,
   tabs,
-}: TabProps<T>) => {
+}: TabProps<TabKeyType>) => {
   const eventListener = useCallback(
     // Keyboard navigation with the arrow keys though the tabs
     // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role#keyboard_interaction

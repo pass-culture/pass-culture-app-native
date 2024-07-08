@@ -2,34 +2,33 @@ import React, { useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useTabArrowNavigation } from 'features/venue/components/TabLayout/useTabArrowNavigation'
-import { TabKey } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { getSpacing, Spacer } from 'ui/theme'
 
 import { InfoTab } from './InfoTab'
 
-type TabLayoutProps<T extends TabKey> = {
-  tabPanels: Record<T, JSX.Element>
-  onTabChange?: Record<T, () => void>
-  tabs: { key: T }[]
-  defaultTab: T
+type TabLayoutProps<TabKeyType extends string> = {
+  tabPanels: Record<TabKeyType, JSX.Element>
+  onTabChange?: Record<TabKeyType, () => void>
+  tabs: { key: TabKeyType }[]
+  defaultTab: TabKeyType
 }
 
-export const TabLayout = <T extends TabKey>({
+export const TabLayout = <TabKeyType extends string>({
   tabPanels,
   onTabChange,
   tabs,
   defaultTab,
-}: TabLayoutProps<T>) => {
+}: TabLayoutProps<TabKeyType>) => {
   const tabListRef = useRef(null)
-  const [selectedTab, setSelectedTab] = useState<T>(defaultTab)
+  const [selectedTab, setSelectedTab] = useState<TabKeyType>(defaultTab)
 
-  const onTabPress = (tab: T) => {
+  const onTabPress = (tab: TabKeyType) => {
     setSelectedTab(tab)
     onTabChange?.[tab]?.()
   }
 
-  useTabArrowNavigation<T>({
+  useTabArrowNavigation<TabKeyType>({
     tabListRef,
     selectedTab,
     setSelectedTab: onTabPress,
