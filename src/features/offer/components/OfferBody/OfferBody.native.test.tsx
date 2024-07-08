@@ -1,13 +1,13 @@
 import React, { ComponentProps } from 'react'
 
 import {
-  OfferResponseV2,
-  SubcategoryIdEnum,
   CategoryIdEnum,
-  SearchGroupNameEnumv2,
   HomepageLabelNameEnumv2,
-  OnlineOfflinePlatformChoicesEnumv2,
   NativeCategoryIdEnumv2,
+  OfferResponseV2,
+  OnlineOfflinePlatformChoicesEnumv2,
+  SearchGroupNameEnumv2,
+  SubcategoryIdEnum,
 } from 'api/gen'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
@@ -37,6 +37,23 @@ jest.mock('libs/location/LocationWrapper', () => ({
 }))
 
 const mockUseFeatureFlag = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
+  useRemoteConfigContext: jest.fn().mockReturnValue({
+    reactionFakeDoorCategories: {
+      categories: [
+        'SEANCES_DE_CINEMA',
+        'CD',
+        'MUSIQUE_EN_LIGNE',
+        'VINYLES',
+        'LIVRES_AUDIO_PHYSIQUES',
+        'LIVRES_NUMERIQUE_ET_AUDIO',
+        'LIVRES_PAPIER',
+        'DVD_BLU_RAY',
+        'FILMS_SERIES_EN_LIGNE',
+      ],
+    },
+  }),
+}))
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -106,7 +123,7 @@ describe('<OfferBody />', () => {
     expect(await screen.findByText('5,00 €')).toBeOnTheScreen()
   })
 
-  it('should display reaction button when feature flag is enabled and native category is "Séances de cinéma"', async () => {
+  it('should display reaction button when feature flag is enabled and native category included in reactionFakeDoorCategories remote config', async () => {
     renderOfferBody({})
 
     expect(await screen.findByText('Réagir')).toBeOnTheScreen()
@@ -120,7 +137,7 @@ describe('<OfferBody />', () => {
     expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen()
   })
 
-  it('should log reaction fake door consultation when pressing  "Réagir" button', async () => {
+  it('should log reaction fake door consultation when pressing "Réagir" button', async () => {
     renderOfferBody({})
 
     fireEvent.press(await screen.findByText('Réagir'))
@@ -130,15 +147,15 @@ describe('<OfferBody />', () => {
     })
   })
 
-  it('should not display reaction button when feature flag is enabled and native category is not "Séances de cinéma"', async () => {
+  it('should not display reaction button when feature flag is enabled and native category not included in reactionFakeDoorCategories remote config', async () => {
     renderOfferBody({
       offer: {
         ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+        subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
       },
       subcategory: {
         ...mockSubcategory,
-        nativeCategoryId: NativeCategoryIdEnumv2.VINYLES,
+        nativeCategoryId: NativeCategoryIdEnumv2.FESTIVALS,
       },
     })
     await screen.findByText(offerResponseSnap.name)

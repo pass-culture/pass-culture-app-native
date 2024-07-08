@@ -90,7 +90,22 @@ jest.mock('react-native-intersection-observer', () => {
 })
 
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
-  useRemoteConfigContext: jest.fn().mockReturnValue({ sameAuthorPlaylist: 'withPlaylistAsFirst' }),
+  useRemoteConfigContext: jest.fn().mockReturnValue({
+    sameAuthorPlaylist: 'withPlaylistAsFirst',
+    reactionFakeDoorCategories: {
+      categories: [
+        'SEANCES_DE_CINEMA',
+        'CD',
+        'MUSIQUE_EN_LIGNE',
+        'VINYLES',
+        'LIVRES_AUDIO_PHYSIQUES',
+        'LIVRES_NUMERIQUE_ET_AUDIO',
+        'LIVRES_PAPIER',
+        'DVD_BLU_RAY',
+        'FILMS_SERIES_EN_LIGNE',
+      ],
+    },
+  }),
 }))
 
 const scrollEvent = {
