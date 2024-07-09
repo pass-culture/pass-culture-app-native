@@ -1,11 +1,10 @@
 import React, { memo } from 'react'
-import styled from 'styled-components/native'
 
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { MarketingBlock } from 'features/home/components/modules/marketing/MarketingBlock'
 import { analytics } from 'libs/analytics'
 import { Offer } from 'shared/offer/types'
-import { getShadow, getSpacing } from 'ui/theme'
+import { ShadowWrapper } from 'ui/components/ShadowWrapper'
 
 type AttachedOfferCardProps = {
   offer: Offer
@@ -46,16 +45,3 @@ const UnmemoizedMarketingBlockExclusivity = ({
 
 // Old version: HighlightOfferModule.tsx
 export const MarketingBlockExclusivity = memo(UnmemoizedMarketingBlockExclusivity)
-
-const ShadowWrapper = styled.View(({ theme }) => ({
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(3),
-    },
-    shadowRadius: getSpacing(12),
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.15,
-  }),
-}))
-// expliquer bugg android en comm
