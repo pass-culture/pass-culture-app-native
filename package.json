@@ -92,7 +92,8 @@
     "trigger:production:deploy:ios": "./scripts/deploy.sh -o ios -t hard -e production",
     "trigger:staging:deploy": "./scripts/release_staging_minor.sh && ./scripts/deploy_new_version.sh testing/v minor",
     "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh patch/v patch",
-    "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing/v patch"
+    "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing/v patch",
+    "update:tools": "nix flake update && direnv exec . devbox update && git commit --only flake.lock devbox.lock --message '(BSR) chore: update tools'"
   },
   "husky": {
     "hooks": {
