@@ -9,7 +9,7 @@ import { NextScreeningButton } from './NextScreeningButton'
 describe('NextScreeningButton', () => {
   it('should display date properly', async () => {
     const dateToDisplay = new Date()
-    render(<NextScreeningButton date={dateToDisplay} />)
+    render(<NextScreeningButton date={dateToDisplay} onPress={jest.fn()} />)
 
     const weekDay = DAYS[dateToDisplay.getDay()]
     const dayDate = dateToDisplay.getDate()

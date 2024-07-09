@@ -9,7 +9,7 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 const INFO_BANNER_MESSAGE = 'Prochaine séance'
 
-export const NextScreeningButton = ({ onPress, date }: { onPress?: () => void; date: Date }) => {
+export const NextScreeningButton = ({ onPress, date }: { onPress: () => void; date: Date }) => {
   const { dayDate, fullWeekDay, fullMonth } = extractDate(date)
 
   return (
