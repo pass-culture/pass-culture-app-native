@@ -25,7 +25,7 @@ import { useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { CarouselBar } from 'ui/CarouselBar/CarouselBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing } from 'ui/theme'
+import { getShadow, getSpacing } from 'ui/theme'
 
 const CAROUSEL_HEIGHT = getSpacing(35)
 const CAROUSEL_ANIMATION_DURATION = 500
@@ -230,9 +230,18 @@ const ColoredAttachedTileContainer = styled.View<{
   backgroundColor: newColorMapping[color].fill,
 }))
 
-const StyledInternalTouchableLink = styled(InternalTouchableLink)({
+const StyledInternalTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
+  ...getShadow({
+    shadowOffset: {
+      width: 0,
+      height: getSpacing(3),
+    },
+    shadowRadius: getSpacing(12),
+    shadowColor: theme.colors.black,
+    shadowOpacity: 0.15,
+  }),
   paddingHorizontal: getSpacing(1),
-})
+}))
 
 const SingleItemContainer = styled.View({
   marginHorizontal: getSpacing(5),

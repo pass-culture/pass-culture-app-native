@@ -18,7 +18,7 @@ import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { getSpacing, Typo } from 'ui/theme'
+import { getShadow, getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   offer: Offer
@@ -80,9 +80,9 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   }
 
   return hasGraphicRedesign ? (
-    <Container {...containerProps}>
+    <StyledInternalTouchableLink {...containerProps}>
       <AttachedOfferCard offer={offer} />
-    </Container>
+    </StyledInternalTouchableLink>
   ) : (
     <OfferInsert {...containerProps}>
       <Row>
@@ -107,7 +107,17 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled(InternalTouchableLink)({})
+const StyledInternalTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
+  ...getShadow({
+    shadowOffset: {
+      width: 0,
+      height: getSpacing(3),
+    },
+    shadowRadius: getSpacing(12),
+    shadowColor: theme.colors.black,
+    shadowOpacity: 0.15,
+  }),
+}))
 
 const OfferInsert = styled(InternalTouchableLink)<{
   offerHeight: number
