@@ -1,0 +1,59 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertVisible: "Nom du lieu.*"
+
+- assertVisible:
+    id: "tagsContainer"
+
+- assertVisible: "Adresse"
+- assertVisible: "Copier l’adresse"
+- tapOn: "Copier l’adresse"
+
+- clearState: com.google.android.apps.maps
+- assertVisible: "Voir l’itinéraire"
+- tapOn: "Voir l’itinéraire"
+- tapOn: "Lorsque vous utilisez l'appli"
+
+# Permet a gmaps de s'initialiser
+- waitForAnimationToEnd
+- extendedWaitUntil:
+    visible: 
+      id: "com.google.android.apps.maps:id/home_bottom_sheet_container"
+    timeout: 10000 
+- back
+- back
+
+- assertVisible: "Nom du lieu.*"
+
+- tapOn: "Infos pratiques"
+
+# Si les infos d'accessibilitées ne sont pas présentes
+- runFlow:
+    when:
+      visible: "Les infos pratiques ne sont pas encore renseignées pour ce lieu"
+    commands:
+      - scrollUntilVisible:
+          element:
+            text: "Passe le bon plan\_!"
+          visibilityPercentage: 50
+      - scroll
+      - assertVisible: "Envoyer par\nSMS"
+      - assertVisible: "Plus\nd’options"
+
+# Si infos d'accessibilitées sont présentes
+- runFlow:
+    when:
+      visible: "Contact"
+    commands:
+      - assertVisible: "Accessibilité"
+      - scrollUntilVisible:
+          element:
+            text: "Passe le bon plan\_!"
+          visibilityPercentage: 50
+      - scroll
+      - assertVisible:
+          id: "BasicAccessibilityInfo"
+          containsDescendants:
+            - id: "accessibilityBadgeContainer"
+      - assertVisible: "Envoyer par\nSMS"
+      - assertVisible: "Plus\nd’options"

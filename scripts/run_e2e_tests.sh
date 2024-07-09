@@ -104,6 +104,7 @@ maestro "$target" \
   --env MAESTRO_VALID_EMAIL="dev-tests-e2e@passculture.team" \
   --env MAESTRO_INVALID_EMAIL="dev-tests-e2e-invalid@passculture.team" \
   --env MAESTRO_UNREGISTERED_EMAIL="dev-tests-unregistered+e2e@passculture.team" \
+  --env MAESTRO_MOCK_ANALYTICS_SERVER="http://localhost:$MOCK_ANALYTICS_SERVER_PORT" \
   --env MAESTRO_NUMBER_PHONE="0607080910" \
   --env MAESTRO_PASSWORD="$password" \
   $TAGS \

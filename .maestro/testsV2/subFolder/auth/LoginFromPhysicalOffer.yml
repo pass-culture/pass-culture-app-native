@@ -31,7 +31,10 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.'
 - tapOn: 'Fermer la modale'
 
+- waitForAnimationToEnd
+
 - tapOn:
     id: 'AnimatedHeaderIconRoundContainer'
     index: 2
+
 # Faire connexion après

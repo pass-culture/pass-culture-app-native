@@ -1,0 +1,9 @@
+appId: ${MAESTRO_APP_ID}
+---
+- tapOn:
+    text: "Livres papier"
+    index: 0
+
+- scroll
+- tapOn:
+    id: "Accéder à la page du lieu.*"

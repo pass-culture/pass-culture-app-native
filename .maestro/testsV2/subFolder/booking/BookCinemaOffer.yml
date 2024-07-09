@@ -18,7 +18,25 @@ appId: ${MAESTRO_APP_ID}
       text: "Passe le bon plan\_!"
     visibilityPercentage: 50
 
-- repeat: #Vérifier que l'offre est bien réservable
+- runFlow: # Vérifier que l'offre n'est pas déjà réservée
+    when:
+      visible: 'Voir ma réservation'
+    commands:
+      - pressKey: back
+      - scroll
+      - tapOn:
+          text: 'Séances de cinéma'
+          index: 1
+      - swipe:
+          from:
+            id: 'tagsContainer'
+          direction: UP
+      - scrollUntilVisible:
+          element:
+            text: "Passe le bon plan\_!"
+          visibilityPercentage: 50
+
+- repeat: # Vérifier que l'offre a bien une date disponible dans 2 jours
     while:
       notVisible:
         id: 'movie-calendar-day'
