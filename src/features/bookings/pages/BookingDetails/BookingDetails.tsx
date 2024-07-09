@@ -21,6 +21,8 @@ import {
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
@@ -49,6 +51,7 @@ const scrollIndicatorInsets = { right: 1 }
 const emptyBookings: Booking[] = []
 
 export function BookingDetails() {
+  const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
   const windowHeight = useWindowDimensions().height - blurImageHeight
   const netInfo = useNetInfoContext()
   const { logType } = useLogTypeFromRemoteConfig()
@@ -97,7 +100,11 @@ export function BookingDetails() {
       message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
       timeout: SNACK_BAR_TIME_OUT,
     })
-    navigate('EndedBookings')
+    if (enableBookingImprove) {
+      navigate('Bookings')
+    } else {
+      navigate('EndedBookings')
+    }
   }
 
   const logConsultWholeBooking = useFunctionOnce(

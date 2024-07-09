@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Booking } from 'features/bookings/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -10,6 +12,7 @@ import { Spacer } from 'ui/theme'
 
 export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (props) => {
   const { endedBookings } = props
+  const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
 
   if (!endedBookings || endedBookings.length === 0) {
     return null
@@ -31,7 +34,7 @@ export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (pr
           type="navigable"
           title={endedBookingsLabel}
           icon={renderBadge}
-          navigateTo={{ screen: 'EndedBookings' }}
+          navigateTo={{ screen: enableBookingImprove ? 'Bookings' : 'EndedBookings' }}
         />
       </EndedBookingsSectionWrapper>
     </React.Fragment>

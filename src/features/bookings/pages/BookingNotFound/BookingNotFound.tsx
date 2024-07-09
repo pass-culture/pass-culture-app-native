@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -13,6 +15,7 @@ import { Typo } from 'ui/theme'
 
 export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const timer = useRef<NodeJS.Timeout>()
+  const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
 
   useEffect(
     () => () => {
@@ -45,7 +48,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
             key={1}
             as={ButtonPrimaryWhite}
             wording="Mes réservations terminées"
-            navigateTo={{ screen: 'EndedBookings' }}
+            navigateTo={{ screen: enableBookingImprove ? 'Bookings' : 'EndedBookings' }}
             onAfterNavigate={onPress}
           />,
           <InternalTouchableLink
