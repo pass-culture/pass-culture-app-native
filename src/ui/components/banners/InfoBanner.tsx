@@ -4,6 +4,8 @@ import styled from 'styled-components/native'
 
 import { GenericColoredBanner } from 'ui/components/banners/GenericColoredBanner'
 import { AccessibleIcon } from 'ui/svg/icons/types'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 
 type ColorMessageProps = {
   withLightColorMessage?: boolean
@@ -13,6 +15,7 @@ type Props = ColorMessageProps & {
   message: string | ReactNode
   icon?: FunctionComponent<AccessibleIcon>
   testID?: string
+  backgroundColor?: ColorsEnum
   children?: React.ReactNode
 }
 
@@ -21,6 +24,7 @@ export const InfoBanner: FunctionComponent<Props> = ({
   withLightColorMessage,
   icon,
   testID,
+  backgroundColor,
   children,
 }) => {
   const theme = useTheme()
@@ -37,7 +41,7 @@ export const InfoBanner: FunctionComponent<Props> = ({
     <GenericColoredBanner
       message={message}
       Icon={Icon}
-      backgroundColor={theme.colors.secondaryLight100}
+      backgroundColor={backgroundColor ?? theme.colors.secondaryLight100}
       textColor={textColor}
       testID={testID}>
       {children}
