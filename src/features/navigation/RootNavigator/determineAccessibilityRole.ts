@@ -7,16 +7,15 @@ export function determineAccessibilityRole(currentRoute: Route<string> | null) {
   const currentRouteParams = currentRoute?.params
   const pageWithFooter: ScreenNames[] = ['Home', 'Profile']
 
-  let mainAccessibilityRole: AccessibilityRole | undefined = AccessibilityRole.MAIN
-  if (
-    typeof currentRouteParams === 'object' &&
+  const doesCurrentRouteHaveFooter =
+    currentRouteParams &&
     'screen' in currentRouteParams &&
-    (pageWithFooter.includes(currentRouteParams?.screen as ScreenNames) ||
-      (currentRouteParams?.screen as ScreenNames) === undefined)
-    // when arriving on the app for the first time, 'screen' is undefined
-    // this might create issues when entering the app from other places then home
-  ) {
-    mainAccessibilityRole = undefined // we set it to undefined to let the pages handle were the main should be
-  }
+    pageWithFooter.includes(currentRouteParams?.screen as ScreenNames)
+
+  // when arriving on the app, currentRouteParams is undefined
+  // this might create issues when entering the app from other places then home
+  const mainAccessibilityRole: AccessibilityRole | undefined =
+    !currentRouteParams || doesCurrentRouteHaveFooter ? undefined : AccessibilityRole.MAIN
+
   return mainAccessibilityRole
 }

@@ -69,6 +69,7 @@ exports[`ThematicHome should render correctly 1`] = `
             "zIndex": 1,
           }
         }
+        accessibilityRole="none"
         bounces={true}
         data={
           [
@@ -190,15 +191,6 @@ exports[`ThematicHome should render correctly 1`] = `
                 [
                   {
                     "height": 72,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "marginHorizontal": 24,
                   },
                 ]
               }

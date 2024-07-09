@@ -32,6 +32,7 @@ import {
   ThematicHeader,
   VideoCarouselModule as VideoCarouselModuleType,
 } from 'features/home/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -76,14 +77,17 @@ const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
     <React.Fragment>
       {/* As long as all modules are not shown, we keep the spinner */}
       {hasShownAll ? null : (
-        <FooterContainer>
-          <Spinner testID="spinner" />
-        </FooterContainer>
+        <React.Fragment>
+          <FooterContainer>
+            <Spinner testID="spinner" />
+          </FooterContainer>
+          <Spacer.TabBar />
+          <AccessibilityFooterContainer>
+            <AccessibilityFooter />
+          </AccessibilityFooterContainer>
+        </React.Fragment>
       )}
       <Spacer.TabBar />
-      <AccessibilityFooterContainer>
-        <AccessibilityFooter />
-      </AccessibilityFooterContainer>
     </React.Fragment>
   )
 }
@@ -259,6 +263,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       ) : null}
       <HomeBodyLoadingContainer hide={showSkeleton}>
         <FlatListContainer
+          accessibilityRole={AccessibilityRole.MAIN}
           ref={scrollRef}
           testID="homeBodyScrollView"
           onScroll={onScroll}

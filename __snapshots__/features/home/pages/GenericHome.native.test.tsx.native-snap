@@ -45,6 +45,7 @@ exports[`GenericHome With not displayed skeleton by default should display real 
           "zIndex": 1,
         }
       }
+      accessibilityRole="none"
       bounces={true}
       data={
         [
@@ -170,15 +171,6 @@ exports[`GenericHome With not displayed skeleton by default should display real 
               [
                 {
                   "height": 72,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "marginHorizontal": 24,
                 },
               ]
             }
@@ -245,6 +237,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           "zIndex": 1,
         }
       }
+      accessibilityRole="none"
       bounces={true}
       data={
         [
@@ -370,15 +363,6 @@ exports[`GenericHome With not displayed skeleton by default should display skele
               [
                 {
                   "height": 72,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "marginHorizontal": 24,
                 },
               ]
             }
