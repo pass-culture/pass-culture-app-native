@@ -68,7 +68,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, off
       </HorizontalOfferTileContainer>
 
       <Spacer.Column numberOfSpaces={4} />
-      {eventCardData ? <EventCardList data={eventCardData} withMargin /> : null}
+      {eventCardData ? <EventCardList data={eventCardData} /> : null}
       <Spacer.Column numberOfSpaces={4} />
       {isLast ? null : <Divider />}
       <Spacer.Column numberOfSpaces={4} />
