@@ -23,7 +23,7 @@ import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDistance } from 'libs/location/hooks/useDistance'
-import MapView, { Marker, Region, MarkerPressEvent, Map } from 'libs/maps/maps'
+import MapView, { Map, Marker, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { parseType } from 'libs/parsers/venueType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing } from 'ui/theme'
@@ -139,6 +139,8 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
         renderCluster={(props) => <VenueMapCluster {...props} />}
         onPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         onClusterPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
+        radius={50}
+        animationEnabled={false}
         testID="venue-map-view">
         {filteredVenues.map((venue) => (
           <Marker
