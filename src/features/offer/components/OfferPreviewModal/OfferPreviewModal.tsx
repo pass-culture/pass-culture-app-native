@@ -1,17 +1,22 @@
-import React, { useRef, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 // eslint-disable-next-line no-restricted-imports
-import { Image } from 'react-native'
+import { Image, useWindowDimensions } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { AppModal } from 'ui/components/modals/AppModal'
+// eslint-disable-next-line no-restricted-imports
+import { ModalSpacing } from 'ui/components/modals/enum'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing } from 'ui/theme'
+import { Breakpoints } from 'ui/theme/grid'
 
-const CAROUSEL_ITEM_PADDING = getSpacing(12)
+const MODAL_MAX_WIDTH = Breakpoints.LG
+const MODAL_PADDING = { x: getSpacing(10), y: getSpacing(10) }
+const MODAL_HEADER_HEIGHT = getSpacing(7)
 
 type OfferPreviewModalProps = {
   offerImages: string[]
@@ -31,11 +36,15 @@ export const OfferPreviewModal = ({
   const [carouselSize, setCarouselSize] = useState({ width: 100, height: 100 })
   const carouselRef = useRef<ICarouselInstance>(null)
   const progressValue = useSharedValue<number>(0)
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions()
+  const { isDesktopViewport } = useTheme()
 
   const getTitleLabel = (progressValue: number) =>
     `${Math.round(progressValue) + 1}/${offerImages.length}`
 
   const [title, setTitle] = useState(getTitleLabel(progressValue.value))
+
+  const CAROUSEL_ITEM_PADDING = isDesktopViewport ? getSpacing(20) : getSpacing(12)
 
   const handleCloseModal = () => {
     hideModal()
@@ -99,16 +108,26 @@ export const OfferPreviewModal = ({
     return <CarouselImage source={{ uri: String(offerImages[0]) }} accessibilityLabel="Image 1" />
   }
 
+  const desktopConstraints = useMemo(
+    () => ({
+      maxWidth: Math.min(windowWidth, MODAL_MAX_WIDTH) - 2 * MODAL_PADDING.x,
+      maxHeight: windowHeight - 2 * MODAL_PADDING.y,
+    }),
+    [windowWidth, windowHeight]
+  )
+
   return (
     <AppModal
       title={offerImages.length > 1 ? title : ''}
       visible={isVisible}
       isFullscreen
       rightIcon={Close}
+      desktopConstraints={desktopConstraints}
       onLayout={({ nativeEvent }) => {
         setCarouselSize({
           width: nativeEvent.layout.width - CAROUSEL_ITEM_PADDING * 2,
-          height: nativeEvent.layout.height - CAROUSEL_ITEM_PADDING * 2,
+          height:
+            nativeEvent.layout.height - ModalSpacing.MD - ModalSpacing.LG - MODAL_HEADER_HEIGHT,
         })
       }}
       rightIconAccessibilityLabel="Fermer la fenêtre"

@@ -8,20 +8,20 @@ const BORDER_VERTICAL_RADIUS = getSpacing(4)
 
 type Props = {
   theme: DefaultTheme
-  desktopMaxHeight?: number
   height?: number
   maxHeight: number
   noPadding?: boolean
   noPaddingBottom?: boolean
+  desktopConstraints?: Pick<CSSObject, 'maxWidth' | 'maxHeight'>
 }
 
 export const appModalContainerStyle = ({
   theme,
   height,
-  desktopMaxHeight,
   maxHeight,
   noPadding,
   noPaddingBottom,
+  desktopConstraints,
 }: Props): CSSObject => ({
   alignItems: 'center',
   backgroundColor: theme.colors.white,
@@ -41,8 +41,8 @@ export const appModalContainerStyle = ({
         borderBottomEndRadius: BORDER_VERTICAL_RADIUS,
         borderBottomRightRadius: BORDER_HORIZTONAL_RADIUS,
         borderBottomLeftRadius: BORDER_HORIZTONAL_RADIUS,
-        maxHeight: desktopMaxHeight,
-        maxWidth: theme.modal.desktopMaxWidth,
+        maxHeight: desktopConstraints?.maxHeight,
+        maxWidth: desktopConstraints?.maxWidth,
       }
     : {
         borderBottomStartRadius: 0,

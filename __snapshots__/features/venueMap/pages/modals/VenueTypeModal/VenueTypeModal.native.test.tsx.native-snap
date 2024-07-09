@@ -147,7 +147,6 @@ exports[`<VenueTypeModal /> When venue type is null should render modal correctl
     swipeThreshold={100}
   >
     <View
-      desktopMaxHeight={1000.5}
       height={1318}
       maxHeight={1334}
       noPadding={true}

@@ -8,6 +8,7 @@ import {
   ViewProps,
 } from 'react-native'
 import { ReactNativeModal } from 'react-native-modal'
+import { CSSObject } from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -50,6 +51,7 @@ type Props = {
   onSwipe?: () => void
   swipeDirection?: ModalSwipeDirection
   propagateSwipe?: boolean
+  desktopConstraints?: CSSObject
 } & ModalIconProps &
   Pick<ViewProps, 'onLayout'>
 
@@ -90,6 +92,7 @@ export const AppModal: FunctionComponent<Props> = ({
   swipeDirection,
   propagateSwipe,
   onLayout,
+  desktopConstraints,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -102,13 +105,30 @@ export const AppModal: FunctionComponent<Props> = ({
 
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
   const { bottom, top } = useCustomSafeInsets()
-  const { isSmallScreen } = useTheme()
+  const { isSmallScreen, modal, isDesktopViewport } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const [scrollViewContentHeight, setScrollViewContentHeight] = useState(300)
   const [headerHeight, setHeaderHeight] = useState(50)
   const scrollViewRef = useRef<ScrollView | null>(null)
   const fullscreenScrollViewRef = useRef<ScrollView | null>(null)
+
+  const getDesktopMaxHeight = useCallback(() => {
+    if (isFullscreen || isUpToStatusBar) {
+      return windowHeight * DESKTOP_FULLSCREEN_RATIO
+    }
+    return maxHeight ? maxHeight * DESKTOP_FULLSCREEN_RATIO : undefined
+  }, [isFullscreen, isUpToStatusBar, windowHeight, maxHeight])
+
+  const containerDesktopConstraints = useMemo(() => {
+    if (isDesktopViewport) {
+      return {
+        maxWidth: desktopConstraints?.maxWidth ?? modal.desktopMaxWidth,
+        maxHeight: desktopConstraints?.maxHeight ?? getDesktopMaxHeight(),
+      }
+    }
+    return undefined
+  }, [isDesktopViewport, desktopConstraints, modal.desktopMaxWidth, getDesktopMaxHeight])
 
   useKeyboardEvents({
     onBeforeShow(data) {
@@ -161,12 +181,10 @@ export const AppModal: FunctionComponent<Props> = ({
   useEscapeKeyAction(visible ? onRightIconPress : undefined)
 
   let maxContainerHeight = maxHeight
-  let desktopMaxHeight = maxHeight ? maxHeight * DESKTOP_FULLSCREEN_RATIO : undefined
   let modalContainerHeight = isSmallScreen ? windowHeight : modalHeight
 
   // no fullscreen in desktop view
   if (isFullscreen || isUpToStatusBar) {
-    desktopMaxHeight = windowHeight * DESKTOP_FULLSCREEN_RATIO
     maxContainerHeight = windowHeight
     modalContainerHeight = isUpToStatusBar ? windowHeight - top : windowHeight
   }
@@ -218,8 +236,8 @@ export const AppModal: FunctionComponent<Props> = ({
       <ModalContainer
         height={maxHeight ? undefined : modalContainerHeight}
         testID="modalContainer"
-        desktopMaxHeight={desktopMaxHeight}
         maxHeight={maxContainerHeight}
+        desktopConstraints={containerDesktopConstraints}
         onLayout={onLayout}
         noPadding={noPadding}
         noPaddingBottom={noPaddingBottom}>
@@ -314,15 +332,15 @@ const StyledModal = styled(ReactNativeModal)<{ height: number }>(({ theme }) => 
 const MAX_HEIGHT = 650
 const ModalContainer = styled.View<{
   height?: number
-  desktopMaxHeight?: number
+  desktopConstraints?: CSSObject
   maxHeight?: number
   noPadding?: boolean
   noPaddingBottom?: boolean
-}>(({ height, desktopMaxHeight, maxHeight, noPadding, theme, noPaddingBottom }) => {
+}>(({ height, desktopConstraints, maxHeight, noPadding, theme, noPaddingBottom }) => {
   return appModalContainerStyle({
     theme,
     height,
-    desktopMaxHeight,
+    desktopConstraints,
     maxHeight: maxHeight ?? MAX_HEIGHT,
     noPadding,
     noPaddingBottom,

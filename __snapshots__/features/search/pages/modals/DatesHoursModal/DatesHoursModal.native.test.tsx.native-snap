@@ -147,7 +147,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
     swipeThreshold={100}
   >
     <View
-      desktopMaxHeight={1000.5}
       height={1318}
       maxHeight={1334}
       noPadding={true}
