@@ -109,6 +109,17 @@ const mockRoutesWithVenue = [
   },
 ]
 
+const mockRoutesWithSearchN1 = [
+  {
+    key: 'TabNavigator',
+    name: 'TabNavigator',
+    params: { screen: 'SearchStackNavigator' },
+    state: {
+      routes: [{ name: 'SearchStackNavigator', state: { routes: [{ name: 'SearchN1' }] } }],
+    },
+  },
+]
+
 const venue = mockedSuggestedVenue
 
 const searchId = uuidv4()
@@ -534,6 +545,30 @@ describe('SearchBox component with venue previous route on search results', () =
   })
 
   it('should execute go back when current route is search and previous route is Venue', async () => {
+    renderSearchBox()
+
+    const previousButton = screen.getByTestId('Revenir en arrière')
+
+    fireEvent.press(previousButton)
+
+    expect(mockGoBack).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('SearchBox component with SearchN1 previous route on search results', () => {
+  beforeEach(() => {
+    jest.spyOn(navigationRef, 'getState').mockReturnValue({
+      key: 'Navigator',
+      index: 1,
+      routeNames: ['TabNavigator'],
+      routes: mockRoutesWithSearchN1,
+      type: 'tab',
+      stale: false,
+    })
+    useRoute.mockReturnValue({ name: SearchView.Results })
+  })
+
+  it('should execute go back when current route is search and previous route is SearchN1', async () => {
     renderSearchBox()
 
     const previousButton = screen.getByTestId('Revenir en arrière')

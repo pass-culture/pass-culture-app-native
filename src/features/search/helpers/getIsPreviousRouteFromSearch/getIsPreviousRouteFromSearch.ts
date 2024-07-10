@@ -20,6 +20,8 @@ export function getIsPreviousRouteFromSearch(
   return isSearchCurrentPage && previousRoute?.name === route
 }
 
+// react-navigation doesn't expose this type
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getPreviousRouteFromSearchStack = (route: keyof AllNavParamList, routes: any) => {
   return routes[0]?.state?.routes
     .find((currentRoute: { name: string }) => currentRoute.name === 'SearchStackNavigator')

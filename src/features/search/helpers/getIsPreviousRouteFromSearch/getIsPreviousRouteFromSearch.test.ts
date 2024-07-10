@@ -14,6 +14,22 @@ describe('getIsPreviousRouteFromSearch', () => {
     expect(isSearchPreviousRoute).toBeTruthy()
   })
 
+  it('should return true when the navigation contains a specified route in the SearchStackNavigator', () => {
+    const routes = [
+      {
+        key: 'TabNavigator',
+        name: 'TabNavigator',
+        params: { screen: 'SearchStackNavigator' },
+        state: {
+          routes: [{ name: 'SearchStackNavigator', state: { routes: [{ name: 'SearchN1' }] } }],
+        },
+      },
+    ]
+    const isSearchPreviousRoute = getIsPreviousRouteFromSearch('SearchN1', routes)
+
+    expect(isSearchPreviousRoute).toBeTruthy()
+  })
+
   it('should return false when previous route is not Venue', () => {
     const routes = [
       { key: 'TabNavigator1', name: 'TabNavigator', params: { screen: 'SearchStackNavigator' } },
