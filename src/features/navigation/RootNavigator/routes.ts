@@ -399,8 +399,8 @@ export const routes: RootRoute[] = [
     options: { title: 'Email création de compte envoyé' },
   },
   // {
-  //   name: 'SearchN1Books',
-  //   component: SearchN1Books,
+  //   name: 'SearchN1',
+  //   component: SearchN1,
   //   path: 'rechercheN1Books',
   //   options: { title: 'Recherche de livres' },
   // },

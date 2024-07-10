@@ -145,7 +145,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     Keyboard.dismiss()
 
     const isVenuePreviousRoute = getIsPreviousRouteFromSearch('Venue')
-    const isSearchN1BooksPreviousRoute = getIsPreviousRouteFromSearch('SearchN1Books')
+    const isSearchN1PreviousRoute = getIsPreviousRouteFromSearch('SearchN1')
 
     switch (true) {
       case isFocusOnSuggestions &&
@@ -164,7 +164,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         })
         goBack()
         break
-      case isSearchN1BooksPreviousRoute:
+      case isSearchN1PreviousRoute:
         goBack()
         break
       case currentView === SearchView.Results:

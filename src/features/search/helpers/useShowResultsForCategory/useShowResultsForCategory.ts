@@ -17,7 +17,7 @@ export const useShowResultsForCategory = (): OnPressCategory => {
   const { searchState } = useSearch()
   const { data } = useSubcategories()
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
-  const { navigateToSearch: navigateToSearchN1Books } = useNavigateToSearch('SearchN1Books')
+  const { navigateToSearch: navigateToSearchN1 } = useNavigateToSearch('SearchN1')
   const { disabilities } = useAccessibilityFiltersContext()
   const enableWipPageSearchN1 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1)
 
@@ -36,7 +36,7 @@ export const useShowResultsForCategory = (): OnPressCategory => {
         isFromHistory: undefined,
       }
       if (enableWipPageSearchN1 && SEARCH_N1_CATEGORIES.includes(pressedCategory)) {
-        navigateToSearchN1Books(newSearchState, disabilities)
+        navigateToSearchN1(newSearchState, disabilities)
       } else {
         navigateToSearchResults(newSearchState, disabilities)
       }
@@ -45,7 +45,7 @@ export const useShowResultsForCategory = (): OnPressCategory => {
       data,
       disabilities,
       enableWipPageSearchN1,
-      navigateToSearchN1Books,
+      navigateToSearchN1,
       navigateToSearchResults,
       searchState,
     ]

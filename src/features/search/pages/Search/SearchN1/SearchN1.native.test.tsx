@@ -4,7 +4,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { initialSearchState } from 'features/search/context/reducer'
-import { SearchN1Books } from 'features/search/pages/Search/SearchN1Books/SearchN1Books'
+import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
@@ -23,7 +23,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-describe('<SearchN1Books/>', () => {
+describe('<SearchN1/>', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
     useRoute.mockImplementation(() => ({
@@ -31,8 +31,8 @@ describe('<SearchN1Books/>', () => {
     }))
   })
 
-  it('should render SearchN1Books', async () => {
-    render(reactQueryProviderHOC(<SearchN1Books />))
+  it('should render SearchN1', async () => {
+    render(reactQueryProviderHOC(<SearchN1 />))
 
     await screen.findByText('Romans et littérature')
 
@@ -40,7 +40,7 @@ describe('<SearchN1Books/>', () => {
   })
 
   it('should update SearchState with correct data', async () => {
-    render(reactQueryProviderHOC(<SearchN1Books />))
+    render(reactQueryProviderHOC(<SearchN1 />))
     const subcategoryButton = await screen.findByText('Romans et littérature')
     fireEvent.press(subcategoryButton)
     await screen.findByText('Romans et littérature')
@@ -58,7 +58,7 @@ describe('<SearchN1Books/>', () => {
   })
 
   it('should navigate properly', async () => {
-    render(reactQueryProviderHOC(<SearchN1Books />))
+    render(reactQueryProviderHOC(<SearchN1 />))
     const subcategoryButton = await screen.findByText('Romans et littérature')
 
     fireEvent.press(subcategoryButton)

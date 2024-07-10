@@ -6,11 +6,11 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { CATEGORY_CRITERIA, Gradient } from 'features/search/enums'
 import { useNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { SearchN1Bar } from 'features/search/pages/Search/SearchN1Books/SearchN1Bar'
+import { SearchN1Bar } from 'features/search/pages/Search/SearchN1/SearchN1Bar'
 import { NativeCategoryEnum } from 'features/search/types'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
-export const SearchN1Books = () => {
+export const SearchN1 = () => {
   const { params } = useRoute<UseRouteType<SearchStackRouteName>>()
 
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
