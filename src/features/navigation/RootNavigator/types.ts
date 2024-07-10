@@ -212,6 +212,7 @@ export type RootStackParamList = {
   ConsentSettings: { onGoBack?: () => void } | undefined
   CulturalSurvey: undefined
   DeleteProfileSuccess: undefined
+  Bookings: undefined
   EndedBookings: undefined
   FavoritesSorts: undefined
   ForgottenPassword: undefined

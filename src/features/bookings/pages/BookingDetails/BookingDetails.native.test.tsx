@@ -16,6 +16,7 @@ import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -60,6 +61,8 @@ jest.mock('features/bookings/api/useBookings', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('BookingDetails', () => {
   let ongoingBookings = mockBookings.ongoing_bookings[0]
@@ -356,8 +359,8 @@ describe('BookingDetails', () => {
     })
   })
 
-  describe('cancellation message and navigation to ended booking', () => {
-    describe('should display it and navigate', () => {
+  describe('cancellation message', () => {
+    describe('should display it and navigate to ended bookings', () => {
       beforeEach(() => {
         useRoute.mockImplementation(() => ({
           params: {
@@ -457,6 +460,101 @@ describe('BookingDetails', () => {
 
       expect(mockShowInfoSnackBar).not.toHaveBeenCalled()
       expect(navigate).not.toHaveBeenCalled()
+    })
+
+    describe('when booking improve feature flag is activated should display it and navigate to bookings', () => {
+      beforeEach(() => {
+        useFeatureFlagSpy.mockReturnValue(true)
+        useRoute.mockImplementation(() => ({
+          params: {
+            id: 321,
+          },
+        }))
+      })
+
+      it('when booking is digital with expiration date', async () => {
+        const booking: BookingsResponse['ongoing_bookings'][number] = {
+          ...endedBookings,
+          expirationDate: '2021-03-17T23:01:37.925926',
+        }
+
+        mockBookings = {
+          ...mockBookings,
+          // @ts-expect-error: because of noUncheckedIndexedAccess
+          ended_bookings: [booking],
+        }
+
+        const nameCanceledBooking = booking.stock.offer.name
+        renderBookingDetails(booking)
+
+        await screen.findByText('Ma réservation')
+
+        expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
+          message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+        expect(navigate).toHaveBeenCalledWith('Bookings')
+      })
+
+      it('when booking is not digital with expiration date', async () => {
+        const booking: BookingsResponse['ongoing_bookings'][number] = {
+          ...endedBookings,
+          expirationDate: '2021-03-17T23:01:37.925926',
+          stock: {
+            ...endedBookings.stock,
+            offer: { ...endedBookings.stock.offer, isDigital: false },
+          },
+        }
+
+        mockBookings = {
+          ...mockBookings,
+          // @ts-expect-error: because of noUncheckedIndexedAccess
+          ended_bookings: [booking],
+        }
+
+        const nameCanceledBooking = booking.stock.offer.name
+        renderBookingDetails(booking)
+
+        await screen.findByText('Ma réservation')
+
+        expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
+          message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+        expect(navigate).toHaveBeenCalledWith('Bookings')
+      })
+
+      it('when booking is not digital without expiration date', async () => {
+        const booking = {
+          ...endedBookings,
+          expirationDate: null,
+          stock: {
+            ...endedBookings.stock.offer,
+            offer: { ...endedBookings.stock.offer, isDigital: false },
+            price: 400,
+            priceCategoryLabel: 'Cat 4',
+            features: ['VOSTFR', '3D', 'IMAX'],
+          },
+        }
+
+        mockBookings = {
+          ...mockBookings,
+          // @ts-expect-error: because of noUncheckedIndexedAccess
+          ended_bookings: [booking],
+        }
+
+        const nameCanceledBooking = booking.stock.offer.name
+
+        renderBookingDetails(booking)
+
+        await screen.findByText('Ma réservation')
+
+        expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
+          message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+        expect(navigate).toHaveBeenCalledWith('Bookings')
+      })
     })
   })
 
