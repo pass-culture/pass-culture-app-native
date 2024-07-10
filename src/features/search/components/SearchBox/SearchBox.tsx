@@ -149,7 +149,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 
     switch (true) {
       case isFocusOnSuggestions &&
-        (currentView === SearchView.Results || currentView === SearchView.Books):
+        (currentView === SearchView.Results || currentView === SearchView.N1):
         setQuery(searchState.query)
         hideSuggestions()
         break
@@ -242,8 +242,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   ])
 
   const showLocationButton =
-    currentView === SearchView.Results ||
-    (currentView === SearchView.Books && !isFocusOnSuggestions)
+    currentView === SearchView.Results || (currentView === SearchView.N1 && !isFocusOnSuggestions)
 
   const disableInputClearButton =
     currentView === SearchView.Results && !isFocusOnSuggestions && !isDesktopViewport

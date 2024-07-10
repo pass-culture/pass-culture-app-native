@@ -142,10 +142,7 @@ export function AutocompleteOfferItem({
       category: shouldShowCategory ? mostPopularCategory[0] : undefined,
     })
     dispatch({ type: 'SET_STATE', payload: newSearchState })
-    if (
-      currentRoute &&
-      [SearchView.Landing, SearchView.Books].includes(currentRoute as SearchView)
-    ) {
+    if (currentRoute && [SearchView.Landing, SearchView.N1].includes(currentRoute as SearchView)) {
       navigateToSearchResults(newSearchState, disabilities)
     }
     hideSuggestions()

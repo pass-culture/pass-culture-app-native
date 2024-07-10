@@ -1,3 +1,4 @@
+import * as ReactQueryAPI from 'react-query'
 import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -27,6 +28,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 const searchId = uuidv4()
 
 jest.mock('libs/firebase/analytics/analytics')
+const useQueryClientSpy = jest.spyOn(ReactQueryAPI, 'useQueryClient')
 
 describe('useShowResultsForCategory', () => {
   beforeEach(() => {
