@@ -1,4 +1,3 @@
-import { useNavigationState } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
 import { Configure, Index } from 'react-instantsearch-core'
 import { Keyboard } from 'react-native'
@@ -39,8 +38,6 @@ export const SearchSuggestions = ({
   const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
   const { venue } = searchState
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
-  const routes = useNavigationState((state) => state?.routes)
-  const currentRoute = routes?.[routes?.length - 1]?.name
 
   const searchVenuePosition = buildSearchVenuePosition(
     { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius },
@@ -82,7 +79,14 @@ export const SearchSuggestions = ({
       }
       hideSuggestions()
     },
-    [dispatch, searchState, hideSuggestions, navigateToSearchResults, currentRoute]
+    [
+      searchState,
+      offerCategories,
+      dispatch,
+      shouldNavigateToSearchResults,
+      hideSuggestions,
+      navigateToSearchResults,
+    ]
   )
 
   const onVenuePress = async (venueId: number) => {

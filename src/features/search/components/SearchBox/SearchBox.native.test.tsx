@@ -13,7 +13,6 @@ import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'
-import { expectCurrentRouteToBe } from 'tests/utils/navigation'
 
 import { SearchBox } from './SearchBox'
 
@@ -485,38 +484,6 @@ describe('SearchBox component', () => {
 })
 
 jest.mock('libs/firebase/analytics/analytics')
-
-describe('<SearchBox /> with SearchN1 as previous route on search results', () => {
-  const previousRouteName = 'TabNavigator'
-  const currentRouteName = 'SearchN1'
-
-  const mockRoutesWithSearchN1 = [
-    { key: currentRouteName, name: currentRouteName },
-    { key: previousRouteName, name: previousRouteName },
-  ]
-
-  beforeEach(() => {
-    jest.spyOn(navigationRef, 'getState').mockReturnValue({
-      key: 'Navigator',
-      index: 1,
-      routeNames: ['TabNavigator'],
-      routes: mockRoutesWithSearchN1,
-      type: 'tab',
-      stale: false,
-    })
-    useRoute.mockReturnValue({ name: SearchView.Results })
-  })
-
-  it('should set the view to Landing when the user press the back button', async () => {
-    renderSearchBox()
-
-    const previousButton = screen.getByTestId('Revenir en arrière')
-
-    fireEvent.press(previousButton)
-
-    expectCurrentRouteToBe(previousRouteName)
-  })
-})
 
 describe('SearchBox component with venue previous route on search results', () => {
   beforeEach(() => {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchN1/> should render SearchN1 1`] = `
+exports[`<SearchN1/> should render <SearchN1 /> 1`] = `
 [
   <View
     customHeight={16}
@@ -321,7 +321,7 @@ exports[`<SearchN1/> should render SearchN1 1`] = `
                   onChangeText={[Function]}
                   onFocus={[Function]}
                   onSubmitEditing={[Function]}
-                  placeholder="Offre, artiste, lieu culturel..."
+                  placeholder="Rechercher un livre"
                   placeholderTextColor="#696A6F"
                   returnKeyType="search"
                   selectionColor="#696A6F"

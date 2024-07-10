@@ -10,6 +10,10 @@ import { SearchN1Bar } from 'features/search/pages/Search/SearchN1/SearchN1Bar'
 import { NativeCategoryEnum } from 'features/search/types'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
+export const searchN1Placeholders: Partial<Record<SearchGroupNameEnumv2, string>> = {
+  LIVRES: 'Rechercher un livre',
+}
+
 export const SearchN1 = () => {
   const { params } = useRoute<UseRouteType<SearchStackRouteName>>()
 
@@ -30,7 +34,9 @@ export const SearchN1 = () => {
   )
 
   return (
-    <SearchN1Bar offerCategories={offerCategories}>
+    <SearchN1Bar
+      offerCategories={offerCategories}
+      placeholder={searchN1Placeholders[offerCategory]}>
       <SubcategoryButtonList subcategoryButtonContent={subCategoriesContent} />
     </SearchN1Bar>
   )

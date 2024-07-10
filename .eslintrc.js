@@ -374,7 +374,7 @@ module.exports = {
         'jest/no-identical-title': 'error',
         'jest/no-mocks-import': 'off',
         'jest/valid-expect': 'error',
-        'jest/expect-expect': ['error', { assertFunctionNames: ['expect*', 'measurePerformance'] }],
+        'jest/expect-expect': ['error', { assertFunctionNames: ['expect', 'measurePerformance'] }],
         'jest/valid-title': ['error', { disallowedWords: [] }],
         'testing-library/no-unnecessary-act': 'off',
         'testing-library/no-wait-for-multiple-assertions': 'off',

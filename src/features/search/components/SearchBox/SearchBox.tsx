@@ -37,6 +37,7 @@ type Props = UseSearchBoxProps & {
   searchInHistory: (search: string) => void
   accessibleHiddenTitle?: string
   offerCategories?: SearchGroupNameEnumv2[]
+  placeholder?: string
 }
 
 const accessibilityDescribedBy = uuidv4()
@@ -47,6 +48,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   addSearchHistory,
   searchInHistory,
   offerCategories,
+  placeholder,
   ...props
 }) => {
   const { isDesktopViewport } = useTheme()
@@ -273,6 +275,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               showLocationButton={showLocationButton}
               accessibilityDescribedBy={accessibilityDescribedBy}
               disableInputClearButton={disableInputClearButton}
+              placeholder={placeholder}
             />
           </FlexView>
         </SearchInputA11yContainer>

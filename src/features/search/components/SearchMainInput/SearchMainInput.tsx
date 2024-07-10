@@ -34,6 +34,7 @@ type Props = QueryProps &
     accessibilityDescribedBy?: string
     children?: never
     showLocationButton?: boolean
+    placeholder?: string
   }
 
 export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMainInput(
@@ -46,6 +47,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
     onFocus,
     showLocationButton = false,
     disableInputClearButton,
+    placeholder = 'Offre, artiste, lieu culturel...',
     ...props
   }: Props,
   ref
@@ -59,7 +61,7 @@ export const SearchMainInput = forwardRef<RNTextInput, Props>(function SearchMai
   return (
     <StyledSearchInput
       ref={ref}
-      placeholder="Offre, artiste, lieu culturel..."
+      placeholder={placeholder}
       value={query}
       onChangeText={setQuery}
       onSubmitEditing={onSubmitQuery}
