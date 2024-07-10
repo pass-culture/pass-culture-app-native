@@ -4026,6 +4026,11 @@ export interface VenueResponse {
    */
   publicName?: string | null
   /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  timezone: string
+  /**
    * @type {VenueTypeCodeKey}
    * @memberof VenueResponse
    */

@@ -39,6 +39,7 @@ const mergeVenueData =
     description: venue.description,
     accessibility: {},
     contact: {},
+    timezone: '',
     ...(prevData || {}),
   })
 

@@ -35,6 +35,7 @@ const mergeVenueData =
   (prevData: VenueResponse | undefined): VenueResponse => ({
     ...venueHit,
     isVirtual: false,
+    timezone: '',
     ...(prevData ?? {}),
   })
 

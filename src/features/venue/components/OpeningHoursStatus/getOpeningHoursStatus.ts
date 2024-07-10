@@ -1,11 +1,12 @@
 import {
   addHours,
-  set,
   isWithinInterval,
   isSameDay,
   addMilliseconds,
   differenceInMinutes,
+  format,
 } from 'date-fns'
+import { zonedTimeToUtc, utcToZonedTime } from 'date-fns-tz'
 
 import { OpeningHour, OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
 
@@ -15,6 +16,7 @@ export const ONE_HOUR_IN_MILLISECONDS = 2 * THIRTY_MINUTES_IN_MILLISECONDS
 type OpeningHoursStatusParams = {
   openingHours: OpeningHours
   currentDate: Date
+  timezone: string
 }
 
 type OpeningHoursStatus = {
@@ -26,16 +28,18 @@ type OpeningHoursStatus = {
 export const getOpeningHoursStatus = ({
   openingHours,
   currentDate,
+  timezone,
 }: OpeningHoursStatusParams): OpeningHoursStatus => {
-  const currentOpeningPeriod = getCurrentOpeningPeriod(openingHours, currentDate)
-  const nextOpeningPeriod = getNextOpeningPeriod(openingHours, currentDate)
+  const currentDateAtVenueTimezone = utcToZonedTime(currentDate, timezone)
+  const currentOpeningPeriod = getCurrentOpeningPeriod(openingHours, currentDateAtVenueTimezone)
+  const nextOpeningPeriod = getNextOpeningPeriod(openingHours, currentDateAtVenueTimezone)
   const { openingState, openingLabel } = computeOpeningState(
     currentOpeningPeriod,
     nextOpeningPeriod,
-    currentDate
+    currentDateAtVenueTimezone
   )
 
-  const nextChangeTime = getNextChangeTime(currentOpeningPeriod, nextOpeningPeriod)
+  const nextChangeTime = getNextChangeTime(currentOpeningPeriod, nextOpeningPeriod, timezone)
   return { openingState, openingLabel, nextChangeTime }
 }
 
@@ -54,22 +58,6 @@ const getNextOpeningPeriod = (openingHours: OpeningHours, date: Date): Period | 
   }
 
   return getFirstOpenPeriodAfterDate(openingHours, date)
-}
-
-const computeIfOvernightEvent = (
-  currentOpenPeriod: Period | undefined,
-  nextOpenPeriod: Period | undefined
-) => {
-  if (!currentOpenPeriod || !nextOpenPeriod) return false
-
-  const minutesBetweenCloseAndOpen = differenceInMinutes(
-    nextOpenPeriod.openAt,
-    currentOpenPeriod.closeAt
-  )
-
-  const MAX_ALLOWED_MINUTES = 5
-  if (minutesBetweenCloseAndOpen <= MAX_ALLOWED_MINUTES) return true
-  return false
 }
 
 const getFirstOpenPeriodAfterDate = (openingHours: OpeningHours, date: Date): Period => {
@@ -120,12 +108,9 @@ const createPeriod = ({ open, close }: OpeningHour, date: Date) => {
 
 const getDateFromHour = (currentDate: Date, hourString: string): Date => {
   const [hour, minute] = hourString.split(':').map((value) => parseInt(value))
-  return set(currentDate, {
-    hours: hour,
-    minutes: minute,
-    seconds: 0,
-    milliseconds: 0,
-  })
+  const date = new Date(currentDate)
+  date.setHours(hour || 0, minute, 0, 0)
+  return date
 }
 
 const computeOpeningState = (
@@ -161,10 +146,26 @@ const computeOpeningState = (
   return { openingState, openingLabel }
 }
 
+const computeIfOvernightEvent = (
+  currentOpenPeriod: Period | undefined,
+  nextOpenPeriod: Period | undefined
+) => {
+  if (!currentOpenPeriod || !nextOpenPeriod) return false
+
+  const minutesBetweenCloseAndOpen = differenceInMinutes(
+    nextOpenPeriod.openAt,
+    currentOpenPeriod.closeAt
+  )
+
+  const MAX_ALLOWED_MINUTES = 5
+  if (minutesBetweenCloseAndOpen <= MAX_ALLOWED_MINUTES) return true
+  return false
+}
+
 const formatHours = (date: Date): string => {
-  const hours = date.getHours()
-  const minutes = date.getMinutes()
-  return `${hours}h${minutes || ''}`
+  const hours = format(date, 'H')
+  const minutes = format(date, 'mm')
+  return `${hours}h${minutes == '00' ? '' : minutes}`
 }
 
 const DAY_NUMBER_TO_DAY_NAME = {
@@ -193,13 +194,14 @@ const getNextDayName = (nextOpenDate: Date, currentDate: Date): string => {
 
 const getNextChangeTime = (
   currentOpenPeriod: Period | undefined,
-  nextOpenPeriod: Period | undefined
+  nextOpenPeriod: Period | undefined,
+  timezone: string
 ): Date | undefined => {
   if (currentOpenPeriod) {
-    return currentOpenPeriod.closeAt
+    return zonedTimeToUtc(currentOpenPeriod.closeAt, timezone)
   }
   if (nextOpenPeriod) {
-    return nextOpenPeriod.openAt
+    return zonedTimeToUtc(nextOpenPeriod.openAt, timezone)
   }
   return undefined
 }

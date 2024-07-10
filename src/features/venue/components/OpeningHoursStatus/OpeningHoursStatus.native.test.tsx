@@ -8,6 +8,8 @@ jest.unmock('libs/appState')
 const appStateSpy = jest.spyOn(AppState, 'addEventListener')
 
 const CURRENT_DATE = new Date('2024-05-31T08:30:00')
+const TIMEZONE = 'UTC'
+
 jest.useFakeTimers().setSystemTime(CURRENT_DATE)
 
 describe('<OpeningHoursStatus />', () => {
@@ -15,7 +17,13 @@ describe('<OpeningHoursStatus />', () => {
     const openingHours = {
       FRIDAY: [{ open: '09:00', close: '19:00' }],
     }
-    render(<OpeningHoursStatus openingHours={openingHours} currentDate={CURRENT_DATE} />)
+    render(
+      <OpeningHoursStatus
+        openingHours={openingHours}
+        currentDate={CURRENT_DATE}
+        timezone={TIMEZONE}
+      />
+    )
 
     expect(screen.getByText('Ouvre bientôt - 9h')).toBeOnTheScreen()
 
@@ -28,22 +36,34 @@ describe('<OpeningHoursStatus />', () => {
     const openingHours = {
       FRIDAY: [{ open: '09:01', close: '19:00' }],
     }
-    render(<OpeningHoursStatus openingHours={openingHours} currentDate={CURRENT_DATE} />)
+    render(
+      <OpeningHoursStatus
+        openingHours={openingHours}
+        currentDate={CURRENT_DATE}
+        timezone={TIMEZONE}
+      />
+    )
 
-    expect(screen.getByText('Ouvre bientôt - 9h1')).toBeOnTheScreen()
+    expect(screen.getByText('Ouvre bientôt - 9h01')).toBeOnTheScreen()
 
     await act(async () => jest.advanceTimersByTime(31 * 60 * 1000))
 
-    expect(await screen.findByText('Ouvre bientôt - 9h1')).toBeOnTheScreen()
+    expect(await screen.findByText('Ouvre bientôt - 9h01')).toBeOnTheScreen()
   })
 
   it('should set timer to 0 when app is in background for longer than remaining time', async () => {
     const openingHours = {
       FRIDAY: [{ open: '09:01', close: '19:00' }],
     }
-    render(<OpeningHoursStatus openingHours={openingHours} currentDate={CURRENT_DATE} />)
+    render(
+      <OpeningHoursStatus
+        openingHours={openingHours}
+        currentDate={CURRENT_DATE}
+        timezone={TIMEZONE}
+      />
+    )
 
-    expect(screen.getByText('Ouvre bientôt - 9h1')).toBeOnTheScreen()
+    expect(screen.getByText('Ouvre bientôt - 9h01')).toBeOnTheScreen()
 
     // @ts-expect-error: because of noUncheckedIndexedAccess
     const mockCurrentAppState = appStateSpy.mock.calls[0][1]

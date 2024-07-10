@@ -18,6 +18,7 @@ const venue: VenueResponse = {
   id: 123,
   isVirtual: false,
   accessibility: {},
+  timezone: 'Europe/Paris',
 }
 const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
