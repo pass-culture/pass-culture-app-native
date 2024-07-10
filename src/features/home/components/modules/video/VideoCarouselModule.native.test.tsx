@@ -33,6 +33,11 @@ const DEFAULT_ITEM_WITH_HOME_ENTRY_ID = videoCarouselModuleFixture.items[2]
 const MOCKED_ALGOLIA_RESPONSE_OFFER = mockedAlgoliaResponse.hits[0]
 
 describe('<VideoCarouselModule />', () => {
+  beforeEach(() => {
+    MockedYouTubePlayer.setPlayerState(PlayerState.UNSTARTED)
+    MockedYouTubePlayer.setError(false)
+  })
+
   it('should call fetchCarouselVideoOffers with properly formatted data', async () => {
     renderVideoCarouselModule(videoCarouselModuleFixture)
 
