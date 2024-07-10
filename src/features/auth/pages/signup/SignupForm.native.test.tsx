@@ -486,6 +486,8 @@ describe('Signup Form', () => {
 
       renderSignupForm()
 
+      await act(async () => {})
+
       await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
 
       expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
@@ -508,6 +510,8 @@ describe('Signup Form', () => {
       })
 
       renderSignupForm()
+
+      await act(async () => {})
 
       await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
 
@@ -541,6 +545,7 @@ describe('Signup Form', () => {
 
       renderSignupForm()
 
+      await act(async () => {})
       await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')
@@ -598,6 +603,7 @@ describe('Signup Form', () => {
 
       renderSignupForm()
 
+      await act(async () => {})
       await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')

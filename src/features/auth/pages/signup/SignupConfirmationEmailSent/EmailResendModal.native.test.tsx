@@ -68,17 +68,20 @@ describe('<EmailResendModal />', () => {
 
   it('should display timer when resend email button is clicked', async () => {
     renderEmailResendModal({})
+
     await waitFor(() => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+    fireEvent.press(screen.getByText('Demander un nouveau lien'))
 
-    expect(
-      screen.getByText(
-        'Nous t’avons envoyé un nouveau lien. Une autre demande sera possible dans 60s.'
-      )
-    ).toBeOnTheScreen()
+    await waitFor(() => {
+      expect(
+        screen.getByText(
+          'Nous t’avons envoyé un nouveau lien. Une autre demande sera possible dans 60s.'
+        )
+      ).toBeOnTheScreen()
+    })
   })
 
   it('should display error message when email resend fails', async () => {
@@ -87,13 +90,15 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+    fireEvent.press(screen.getByText('Demander un nouveau lien'))
 
-    expect(
-      screen.getByText(
-        'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
-      )
-    ).toBeOnTheScreen()
+    await waitFor(() => {
+      expect(
+        screen.getByText(
+          'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
+        )
+      ).toBeOnTheScreen()
+    })
   })
 
   it('should display error message when maximum number of resends is reached', async () => {
@@ -102,9 +107,11 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+    fireEvent.press(screen.getByText('Demander un nouveau lien'))
 
-    expect(screen.getByText('Tu as dépassé le nombre de renvois autorisés.')).toBeOnTheScreen()
+    await waitFor(() => {
+      expect(screen.getByText('Tu as dépassé le nombre de renvois autorisés.')).toBeOnTheScreen()
+    })
   })
 
   it('should reset error message when another resend attempt is made', async () => {
@@ -183,10 +190,12 @@ describe('<EmailResendModal />', () => {
 
       await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
 
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        'Could not resend validation email: error',
-        { level: 'info' }
-      )
+      await waitFor(() => {
+        expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+          'Could not resend validation email: error',
+          { level: 'info' }
+        )
+      })
     })
   })
 })
