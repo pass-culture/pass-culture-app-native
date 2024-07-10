@@ -5,7 +5,9 @@ import {
   HttpResponse,
   passthrough,
   ResponseResolver,
+  type PathParams,
 } from 'msw'
+import { type HttpRequestResolverExtras } from 'msw/lib/core/handlers/HttpHandler'
 import { setupServer } from 'msw/node'
 
 import { env } from 'libs/environment'
@@ -158,7 +160,7 @@ class MswMockServer
     fullUrl: string,
     options: MockOptions<string, DefaultBodyType, string | RegExp | Buffer>,
     method: SupportedMethod
-  ): ResponseResolver<Record<string, unknown>, DefaultBodyType> => {
+  ): ResponseResolver<HttpRequestResolverExtras<PathParams>, Record<string, unknown>> => {
     const {
       persist,
       headers = undefined,
