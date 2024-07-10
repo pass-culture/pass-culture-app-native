@@ -4,7 +4,7 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,
@@ -38,10 +38,11 @@ describe('useOngoingOrEndedBooking', () => {
     const { result } = renderHook(() => useOngoingOrEndedBooking(booking.id), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await act(async () => {})
 
-    expect(result.current?.data?.id).toEqual(booking.id)
-    expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
+    await waitFor(() => {
+      expect(result.current?.data?.id).toEqual(booking.id)
+      expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
+    })
   })
 
   it('should return ended_bookings when there is one', async () => {
@@ -49,10 +50,11 @@ describe('useOngoingOrEndedBooking', () => {
     const { result } = renderHook(() => useOngoingOrEndedBooking(booking.id), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await act(async () => {})
 
-    expect(result.current?.data?.id).toEqual(booking.id)
-    expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
+    await waitFor(() => {
+      expect(result.current?.data?.id).toEqual(booking.id)
+      expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
+    })
   })
 
   it('should return null if no ongoing nor ended booking can be found', async () => {
@@ -61,8 +63,8 @@ describe('useOngoingOrEndedBooking', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
-
-    expect(result.current.data).toBeNull()
+    await waitFor(() => {
+      expect(result.current.data).toBeNull()
+    })
   })
 })

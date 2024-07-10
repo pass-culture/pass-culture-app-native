@@ -13,7 +13,7 @@ import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeat
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -87,7 +87,9 @@ describe('<OfferCTAButton />', () => {
 
     await act(async () => {})
 
-    expect(await screen.findByText('Valider la date')).toBeOnTheScreen()
+    await waitFor(() => {
+      expect(screen.getByText('Valider la date')).toBeOnTheScreen()
+    })
   })
 
   it('should display authentication modal when clicking on "Réserver l’offre"', async () => {
@@ -185,14 +187,14 @@ describe('<OfferCTAButton />', () => {
           subcategory: mockSubcategoryNotEvent,
         })
 
-        await act(async () => {
-          fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
-        })
+        fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
 
-        expect(mockedOpenUrl).toHaveBeenNthCalledWith(1, 'https://www.google.fr/')
+        await waitFor(() => {
+          expect(mockedOpenUrl).toHaveBeenNthCalledWith(1, 'https://www.google.fr/')
+        })
       })
 
-      it('should  open when pressing button to book the offer if offer is Event', async () => {
+      it('should open when pressing button to book the offer if offer is Event', async () => {
         mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
         renderOfferCTAButton({
@@ -201,11 +203,11 @@ describe('<OfferCTAButton />', () => {
           subcategory: mockSubcategoryNotEvent,
         })
 
-        await act(async () => {
-          fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
-        })
+        fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
 
-        expect(mockedOpenUrl).toHaveBeenNthCalledWith(1, 'https://www.google.fr/')
+        await waitFor(() => {
+          expect(mockedOpenUrl).toHaveBeenNthCalledWith(1, 'https://www.google.fr/')
+        })
       })
 
       it('should log BookingConfirmation when pressing button to book the offer', async () => {
@@ -216,13 +218,13 @@ describe('<OfferCTAButton />', () => {
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
-        await act(async () => {
-          fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
-        })
+        fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
 
-        expect(analytics.logBookingConfirmation).toHaveBeenNthCalledWith(1, {
-          bookingId: 123,
-          offerId: 116656,
+        await waitFor(() => {
+          expect(analytics.logBookingConfirmation).toHaveBeenNthCalledWith(1, {
+            bookingId: 123,
+            offerId: 116656,
+          })
         })
       })
 

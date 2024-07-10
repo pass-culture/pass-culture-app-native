@@ -114,14 +114,16 @@ describe('ChangePassword', () => {
       fireEvent.press(screen.getByTestId('Enregistrer les modifications'))
     })
 
-    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-      message: 'Ton mot de passe est modifié',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
-    expect(analytics.logHasChangedPassword).toHaveBeenCalledWith({
-      from: 'personaldata',
-      reason: 'changePassword',
+    await waitFor(() => {
+      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+        message: 'Ton mot de passe est modifié',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
+      expect(analytics.logHasChangedPassword).toHaveBeenCalledWith({
+        from: 'personaldata',
+        reason: 'changePassword',
+      })
     })
   })
 
@@ -149,6 +151,8 @@ describe('ChangePassword', () => {
       fireEvent.press(continueButton)
     })
 
-    expect(screen.getByText('Mot de passe incorrect')).toBeOnTheScreen()
+    await waitFor(() => {
+      expect(screen.getByText('Mot de passe incorrect')).toBeOnTheScreen()
+    })
   })
 })

@@ -31,7 +31,7 @@ import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixture
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, act, screen, simulateWebviewMessage } from 'tests/utils'
+import { act, fireEvent, render, screen, simulateWebviewMessage } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
@@ -804,8 +804,10 @@ function simulateSigninEmailNotValidated() {
 function simulateSigninNetworkFailure() {
   mockServer.postApi('/v1/signin', {
     responseOptions: {
-      statusCode: 'network-error',
-      data: 'Network request failed',
+      data: {
+        code: 'NETWORK_REQUEST_FAILED',
+        general: ['Erreur réseau. Tu peux réessayer une fois la connexion réétablie'],
+      },
     },
   })
 }
