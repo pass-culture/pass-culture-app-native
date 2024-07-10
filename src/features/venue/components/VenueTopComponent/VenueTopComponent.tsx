@@ -56,7 +56,11 @@ export const VenueTopComponent: React.FunctionComponent<Props> = ({ venue }) => 
             {venueName}
           </VenueTitle>
           {isDynamicOpeningHoursDisplayed ? (
-            <OpeningHoursStatus currentDate={currentDate} openingHours={venue.openingHours} />
+            <OpeningHoursStatus
+              currentDate={currentDate}
+              openingHours={venue.openingHours}
+              timezone={venue.timezone}
+            />
           ) : null}
           <ViewGap gap={3}>
             <ViewGap gap={1}>

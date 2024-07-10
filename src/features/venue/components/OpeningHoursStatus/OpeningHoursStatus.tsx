@@ -14,10 +14,11 @@ import {
 
 type Props = {
   openingHours: OpeningHours
+  timezone: string
   currentDate: Date
 }
 
-export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate }) => {
+export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate, timezone }) => {
   const [date, setDate] = useState(currentDate)
   const {
     openingState: state,
@@ -26,6 +27,7 @@ export const OpeningHoursStatus: FC<Props> = ({ openingHours, currentDate }) => 
   } = getOpeningHoursStatus({
     openingHours,
     currentDate: date,
+    timezone,
   })
 
   useEffect(() => {
