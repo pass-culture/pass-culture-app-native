@@ -1,0 +1,4 @@
+appId: ${MAESTRO_APP_ID}
+---
+- assertNotVisible:
+    id: "Mes réservations"

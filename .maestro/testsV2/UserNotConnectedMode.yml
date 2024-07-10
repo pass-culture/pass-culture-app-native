@@ -10,6 +10,7 @@ tags:
 
 - runFlow: subFolder/GoToProfileFromTabBar.yml
 - runFlow: subFolder/profil/CheckSignupAndLogin.yml
+- runFlow: subFolder/booking/BookingSectionNotAvailable.yml
 - runFlow: subFolder/profil/AccountInfoNotAvailable.yml
 - runFlow: subFolder/profil/CantSetNotification.yml
 

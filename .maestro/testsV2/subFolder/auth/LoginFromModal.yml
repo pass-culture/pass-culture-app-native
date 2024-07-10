@@ -9,4 +9,11 @@ appId: ${MAESTRO_APP_ID}
 - inputText: ${MAESTRO_PASSWORD}
 - hideKeyboard
 - tapOn: 'Se connecter' # Android
-- tapOn: 'Plus tard'
+
+- waitForAnimationToEnd
+
+- runFlow: # Si apparition du QPI
+    when:
+      visible: 'Prends 1 minute'
+    commands:
+      - tapOn: 'Plus tard'

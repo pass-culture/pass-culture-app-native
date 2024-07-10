@@ -10,3 +10,4 @@ flows:
   - 'subFolder/profil/*'
   - 'subFolder/search/*'
   - 'subFolder/home/*'
+  - 'subFolder/venue/*'

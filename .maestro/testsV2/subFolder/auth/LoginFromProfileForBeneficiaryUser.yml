@@ -17,8 +17,11 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - tapOn: 'Non merci'
 
-- assertVisible: 'Prends 1 minute'
-- tapOn: 'Plus tard'
+- runFlow: # Si apparition du QPI
+    when:
+      visible: 'Prends 1 minute'
+    commands:
+      - tapOn: 'Plus tard'
 
 - runFlow: # Si apparition de la modale de partage
     when:

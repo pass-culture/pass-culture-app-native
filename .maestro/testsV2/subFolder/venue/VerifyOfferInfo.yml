@@ -1,0 +1,36 @@
+appId: ${MAESTRO_APP_ID}
+---
+- tapOn:
+    text: "Livres papier"
+    index: 0
+
+- scroll
+- assertVisible: À propos
+- assertVisible:
+    id: Étendre le texte
+- scroll
+- assertVisible: Lieu de retrait
+
+- runFlow:
+    when:
+      visible: "Changer le lieu de retrait"
+    commands:
+      - tapOn: 
+            id: "Changer le lieu de retrait"
+
+- assertVisible: Lieu de retrait
+- assertVisible: Sélectionner un lieu
+- assertVisible:
+    id: offerVenuesList
+- tapOn:
+    id: Ne pas sélectionner un autre lieu
+
+- assertVisible: "Copier l’adresse"
+- assertVisible: "Voir l’itinéraire"
+- assertVisible: "Passe le bon plan\_!"
+- assertVisible: "Envoyer par\nSMS"
+- assertVisible: "Plus\nd’options"
+
+- back
+
+

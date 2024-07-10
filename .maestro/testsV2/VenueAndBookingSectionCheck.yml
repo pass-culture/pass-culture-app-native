@@ -1,0 +1,22 @@
+appId: ${MAESTRO_APP_ID}
+tags:
+  - cloud
+---
+- runFlow: subFolder/LaunchApp.yml
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/tutorial/onboarding/Onboard18.yml
+
+- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
+- runFlow: subFolder/GoToSearchFromTabBar.yml
+
+- runFlow: subFolder/search/SearchBookablePhysicalOffer.yml
+- runFlow: subFolder/venue/VerifyOfferInfo.yml
+- runFlow: subFolder/venue/AccessVenueFromOffer.yml
+- runFlow: subFolder/venue/VerifyVenueInfo.yml
+
+# Retourner sur la Search ou la Home + go dans les bookings
+- runFlow: subFolder/GoToBookingFromVenue.yml
+- runFlow: subFolder/booking/CheckBookingSection.yml
+
+- runFlow: subFolder/StopApp.yml

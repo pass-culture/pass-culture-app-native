@@ -1,0 +1,15 @@
+appId: ${MAESTRO_APP_ID}
+---
+# Quitte la venue pour retourner vers l'offre afin de la réserver
+- back
+
+- waitForAnimationToEnd
+
+- tapOn: 'Réserver l’offre'
+
+- assertVisible: 'Détails de la réservation'
+- tapOn: 'Confirmer la réservation'
+
+- tapOn: "Retourner à l’accueil"
+
+- tapOn: "Mes réservations"
