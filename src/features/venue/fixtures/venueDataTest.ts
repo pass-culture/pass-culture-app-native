@@ -71,4 +71,5 @@ export const venueDataTest: VenueResponse = {
   publicName: 'Le Petit Rintintin 1',
   venueTypeCode: VenueTypeCodeKey.BOOKSTORE,
   withdrawalDetails: 'How to withdraw, https://test.com',
+  timezone: 'UTC',
 }

@@ -5767,6 +5767,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             },
                             "postalCode": "75000",
                             "publicName": "Le Petit Rintintin 1",
+                            "timezone": "UTC",
                             "venueTypeCode": "BOOKSTORE",
                             "withdrawalDetails": "How to withdraw, https://test.com",
                           }
@@ -6538,6 +6539,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 },
                                 "postalCode": "75000",
                                 "publicName": "Le Petit Rintintin 1",
+                                "timezone": "UTC",
                                 "venueTypeCode": "BOOKSTORE",
                                 "withdrawalDetails": "How to withdraw, https://test.com",
                               }
