@@ -1,10 +1,10 @@
 import {
-  delay as delayFunction,
   DefaultBodyType,
-  passthrough,
-  ResponseResolver,
+  delay as delayFunction,
   http,
   HttpResponse,
+  passthrough,
+  ResponseResolver,
 } from 'msw'
 import { setupServer } from 'msw/node'
 
@@ -158,7 +158,7 @@ class MswMockServer
     fullUrl: string,
     options: MockOptions<string, DefaultBodyType, string | RegExp | Buffer>,
     method: SupportedMethod
-  ): ResponseResolver<DefaultBodyType, DefaultBodyType> => {
+  ): ResponseResolver<Record<string, unknown>, DefaultBodyType> => {
     const {
       persist,
       headers = undefined,
