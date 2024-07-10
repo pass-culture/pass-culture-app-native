@@ -132,7 +132,8 @@ const App: FunctionComponent = function () {
   )
 }
 
-const config = env.ENV === 'production' ? NextResume : AutoImmediate
+const config = env.ENV === 'testing' ? AutoImmediate : NextResume
+
 const AppWithoutMonitoring = App
 const AppWithMonitoring = eventMonitoring.wrap(AppWithoutMonitoring) as React.ComponentType<{
   tab?: string
