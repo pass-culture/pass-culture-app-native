@@ -33,6 +33,7 @@ module.exports = {
     'react/no-unused-prop-types': 'off', // has false positives
     'react/no-unstable-nested-components': 'off', // TODO(PC-25291): enable when its issues are fixed
     'local-rules/independent-mocks': ['error'],
+    'local-rules/no-empty-arrow-function': 'off',
     'local-rules/no-hardcoded-id-in-svg': ['error'],
     'local-rules/no-raw-text': ['error'],
     'local-rules/use-ternary-operator-in-jsx': ['error'],
@@ -87,8 +88,7 @@ module.exports = {
           {
             name: 'zustand',
             importNames: ['createStore', 'create'],
-            message:
-              'To create a store, use libs/store/createStore instead',
+            message: 'To create a store, use libs/store/createStore instead',
           },
           {
             name: 'react-native-animatable',
@@ -366,6 +366,7 @@ module.exports = {
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
         'local-rules/nbsp-in-text': 'off',
+        'local-rules/no-empty-arrow-function': 'error',
         'react/jsx-no-constructed-context-values': 'off',
         'jest/prefer-called-with': 'warn',
         'jest/no-disabled-tests': 'warn',

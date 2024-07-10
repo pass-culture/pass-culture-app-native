@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { render, screen, waitFor, fireEvent, act } from 'tests/utils/web'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 import { OfferPreviewModal } from './OfferPreviewModal'
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 describe('<OfferPreviewModal />', () => {
   beforeEach(() => {
-    jest.spyOn(console, 'warn').mockImplementationOnce(() => {})
+    jest.spyOn(console, 'warn').mockImplementation()
   })
 
   it('should display offer preview modal correctly with several images', async () => {

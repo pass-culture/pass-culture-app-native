@@ -81,7 +81,7 @@ describe('<OfferVenueBlock />', () => {
       <OfferVenueBlock
         title="Lieu de retrait"
         offer={offerResponseSnap}
-        onChangeVenuePress={() => {}}
+        onChangeVenuePress={jest.fn()}
       />
     )
 
@@ -90,7 +90,7 @@ describe('<OfferVenueBlock />', () => {
 
   it("should render 'Changer de cinéma' button when venue is a cinema and onChangeVenuePress is defined", () => {
     render(
-      <OfferVenueBlock title="Lieu de retrait" offer={cinemaOffer} onChangeVenuePress={() => {}} />
+      <OfferVenueBlock title="Lieu de retrait" offer={cinemaOffer} onChangeVenuePress={jest.fn()} />
     )
 
     expect(screen.getByText('Changer de cinéma')).toBeOnTheScreen()

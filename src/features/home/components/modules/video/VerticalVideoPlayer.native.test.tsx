@@ -14,12 +14,12 @@ jest.mock('libs/firebase/analytics/analytics')
 
 const defaultVerticalVideoPlayerProps = {
   videoSources: [''],
-  playNextVideo: () => {},
+  playNextVideo: jest.fn(),
   currentIndex: 0,
   isPlaying: false,
-  setIsPlaying: () => {},
+  setIsPlaying: jest.fn(),
   hasFinishedPlaying: false,
-  setHasFinishedPlaying: () => {},
+  setHasFinishedPlaying: jest.fn(),
   homeEntryId: '',
   moduleId: '',
 }
