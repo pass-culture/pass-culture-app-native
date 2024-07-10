@@ -5,6 +5,7 @@ import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
@@ -23,12 +24,16 @@ type SearchSuggestionsParams = {
   addToHistory: (item: CreateHistoryItem) => Promise<void>
   removeFromHistory: (item: HistoryItem) => Promise<void>
   filteredHistory: HistoryItem[]
+  shouldNavigateToSearchResults?: boolean
+  offerCategories?: SearchGroupNameEnumv2[]
 }
 export const SearchSuggestions = ({
   queryHistory,
   addToHistory,
   removeFromHistory,
   filteredHistory,
+  shouldNavigateToSearchResults,
+  offerCategories,
 }: SearchSuggestionsParams) => {
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
@@ -64,7 +69,7 @@ export const SearchSuggestions = ({
         isAutocomplete: undefined,
         offerGenreTypes: undefined,
         offerNativeCategories: item.nativeCategory ? [item.nativeCategory] : undefined,
-        offerCategories: item.category ? [item.category] : [],
+        offerCategories: offerCategories ?? (item.category ? [item.category] : []),
         gtls: [],
       }
 
@@ -72,7 +77,7 @@ export const SearchSuggestions = ({
         type: 'SET_STATE',
         payload: newSearchState,
       })
-      if (currentRoute === 'SearchLanding' || currentRoute === 'SearchN1Books') {
+      if (shouldNavigateToSearchResults) {
         navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
       }
       hideSuggestions()

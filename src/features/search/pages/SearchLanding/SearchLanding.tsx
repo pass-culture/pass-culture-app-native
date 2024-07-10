@@ -111,6 +111,7 @@ export const SearchLanding = () => {
               addToHistory={addToHistory}
               removeFromHistory={removeFromHistory}
               filteredHistory={filteredHistory}
+              shouldNavigateToSearchResults
             />
           ) : (
             <CategoriesButtonsContainer>

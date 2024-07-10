@@ -1,4 +1,4 @@
-import { NavigatorScreenParams, ParamListBase, RouteProp } from '@react-navigation/native'
+import { NavigatorScreenParams } from '@react-navigation/native'
 
 import { navigationRef } from 'features/navigation/navigationRef'
 import { AllNavParamList } from 'features/navigation/RootNavigator/types'
@@ -7,20 +7,23 @@ import { getRouteFromIndex } from 'shared/getRouteFromIndex/getRouteFromIndex'
 
 export function getIsPreviousRouteFromSearch(
   route: keyof AllNavParamList,
-  routes: RouteProp<ParamListBase>[] = navigationRef.getState().routes
+  routes = navigationRef.getState().routes
 ) {
-  const previousRoute = getRouteFromIndex(routes, 2)
+  const previousRoute =
+    getRouteFromIndex(routes, 2) || getPreviousRouteFromSearchStack(route, routes)
   const currentRoute = getRouteFromIndex(routes, 1)
   const currentRouteParams = currentRoute?.params as unknown as NavigatorScreenParams<TabParamList>
 
-  console.log({ previousRoute, currentRoute })
   const isSearchCurrentPage =
     currentRoute?.name === 'TabNavigator' && currentRouteParams?.screen === 'SearchStackNavigator'
-  const isVenuePreviousPage = previousRoute?.name === route
 
-  if (isSearchCurrentPage && isVenuePreviousPage) {
-    return true
-  }
+  return isSearchCurrentPage && previousRoute?.name === route
+}
 
-  return false
+const getPreviousRouteFromSearchStack = (route: keyof AllNavParamList, routes: any) => {
+  return routes[0]?.state?.routes
+    .find((currentRoute: { name: string }) => currentRoute.name === 'SearchStackNavigator')
+    .state.routes.find((currentRoute: { name: string }) => {
+      return currentRoute.name === route
+    })
 }

@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { navigationRef } from 'features/navigation/navigationRef'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
@@ -37,9 +36,7 @@ export const useShowResultsForCategory = (): OnPressCategory => {
         isFromHistory: undefined,
       }
       if (enableWipPageSearchN1 && SEARCH_N1_CATEGORIES.includes(pressedCategory)) {
-        console.log({ before: navigationRef.getState().routes })
         navigateToSearchN1Books(newSearchState, disabilities)
-        console.log({ after: navigationRef.getState().routes })
       } else {
         navigateToSearchResults(newSearchState, disabilities)
       }

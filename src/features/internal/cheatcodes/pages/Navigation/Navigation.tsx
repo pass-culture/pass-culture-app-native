@@ -4,7 +4,6 @@ import { Alert } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { CheatCodesButton } from 'features/internal/cheatcodes/components/CheatCodesButton'
@@ -211,14 +210,6 @@ export function Navigation(): React.JSX.Element {
           <Row half>
             <ButtonPrimary wording="Filtre lieu culturel" onPress={showVenueModal} />
             <VenueModal visible={venueModalVisible} dismissModal={hideVenueModal} />
-          </Row>
-          <Row half>
-            <ButtonPrimary
-              wording="SearchN1Books"
-              onPress={() =>
-                navigate('SearchN1Books', { offerCategories: [SearchGroupNameEnumv2.LIVRES] })
-              }
-            />
           </Row>
           <Row half>
             <ButtonPrimary wording="MarketingBlocks" onPress={() => navigate('MarketingBlocks')} />

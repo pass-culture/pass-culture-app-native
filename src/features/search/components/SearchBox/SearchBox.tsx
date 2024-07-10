@@ -12,6 +12,7 @@ import {
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -35,6 +36,7 @@ type Props = UseSearchBoxProps & {
   addSearchHistory: (item: CreateHistoryItem) => void
   searchInHistory: (search: string) => void
   accessibleHiddenTitle?: string
+  offerCategories?: SearchGroupNameEnumv2[]
 }
 
 const accessibilityDescribedBy = uuidv4()
@@ -44,6 +46,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   accessibleHiddenTitle,
   addSearchHistory,
   searchInHistory,
+  offerCategories,
   ...props
 }) => {
   const { isDesktopViewport } = useTheme()
@@ -83,6 +86,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         ...searchState,
         ...(options.reset ? initialSearchState : {}),
         ...partialSearchState,
+        offerCategories: offerCategories ?? searchState.offerCategories,
       }
       dispatch({
         type: 'SET_STATE',
@@ -90,7 +94,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       })
       navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
     },
-    [dispatch, searchState, navigateToSearchResults]
+    [dispatch, navigateToSearchResults, offerCategories, searchState]
   )
 
   const hasEditableSearchInput = isFocusOnSuggestions || currentView === SearchView.Results
@@ -142,7 +146,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
 
     const isVenuePreviousRoute = getIsPreviousRouteFromSearch('Venue')
     const isSearchN1BooksPreviousRoute = getIsPreviousRouteFromSearch('SearchN1Books')
-    console.log({ isSearchN1BooksPreviousRoute })
 
     switch (true) {
       case isFocusOnSuggestions &&

@@ -3,6 +3,7 @@ import React, { memo } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
 import { SearchTitleAndWidget } from 'features/search/components/SearchTitleAndWidget/SearchTitleAndWidget'
 import { CreateHistoryItem } from 'features/search/types'
@@ -13,6 +14,7 @@ type Props = {
   searchInputID: string
   addSearchHistory: (item: CreateHistoryItem) => void
   searchInHistory: (search: string) => void
+  offerCategories?: SearchGroupNameEnumv2[]
   title?: string
   shouldDisplaySubtitle?: boolean
   withArrow?: boolean
@@ -25,6 +27,7 @@ export const SearchHeader = memo(function SearchHeader({
   shouldDisplaySubtitle = false,
   withArrow = false,
   title = 'Rechercher',
+  offerCategories,
 }: Props) {
   const { goBack } = useNavigation()
 
@@ -50,6 +53,7 @@ export const SearchHeader = memo(function SearchHeader({
             searchInputID={searchInputID}
             addSearchHistory={addSearchHistory}
             searchInHistory={searchInHistory}
+            offerCategories={offerCategories}
           />
         </View>
       </HeaderContainer>

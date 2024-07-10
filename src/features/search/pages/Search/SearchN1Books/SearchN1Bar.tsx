@@ -1,9 +1,11 @@
 import { SearchClient } from 'algoliasearch'
+import { capitalize } from 'lodash'
 import React, { FC, PropsWithChildren, useCallback } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import AlgoliaSearchInsights from 'search-insights'
 import { v4 as uuidv4 } from 'uuid'
 
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -11,18 +13,6 @@ import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSe
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 import { Spacer } from 'ui/theme'
-
-// Ajouter depuis la route
-// changer la route en SearchN1
-// Ajouter les paramètres de livre
-// Envoyer le titre dynamiquement
-// Paramètre de livre dynamiquement
-
-// Feature flag = WIP_PAGE_SEARCH_N1
-
-// go back non fonctionnel sur les sous-catégories
-// go back non fonctionnel sur les sous recherches
-// recherche => manque la catégorie livre sélectionnée
 
 const searchInputID = uuidv4()
 
@@ -50,7 +40,10 @@ const searchClient: SearchClient = {
 
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
-export const SearchN1Bar: FC<PropsWithChildren> = ({ children }) => {
+type Props = {
+  offerCategories: SearchGroupNameEnumv2[]
+}
+export const SearchN1Bar: FC<PropsWithChildren<Props>> = ({ children, offerCategories }) => {
   const { isFocusOnSuggestions } = useSearch()
 
   const { setQueryHistory, queryHistory, addToHistory, removeFromHistory, filteredHistory } =
@@ -70,7 +63,7 @@ export const SearchN1Bar: FC<PropsWithChildren> = ({ children }) => {
       <Configure
         facetFilters={[
           [
-            `${env.ALGOLIA_OFFERS_INDEX_NAME}.facets.analytics.offer.searchGroupNamev2.value:LIVRES`,
+            `${env.ALGOLIA_OFFERS_INDEX_NAME}.facets.analytics.offer.searchGroupNamev2.value:${offerCategories[0]}`,
           ],
         ]}
         clickAnalytics
@@ -78,10 +71,11 @@ export const SearchN1Bar: FC<PropsWithChildren> = ({ children }) => {
       />
       <SearchHeader
         withArrow
-        title="Livres"
+        title={capitalize(offerCategories[0])}
         searchInputID={searchInputID}
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}
+        offerCategories={offerCategories}
       />
       <Spacer.Column numberOfSpaces={2} />
       {isFocusOnSuggestions ? (
@@ -90,6 +84,8 @@ export const SearchN1Bar: FC<PropsWithChildren> = ({ children }) => {
           addToHistory={addToHistory}
           removeFromHistory={removeFromHistory}
           filteredHistory={filteredHistory}
+          shouldNavigateToSearchResults
+          offerCategories={offerCategories}
         />
       ) : (
         <React.Fragment>{children}</React.Fragment>

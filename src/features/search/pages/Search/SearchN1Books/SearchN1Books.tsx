@@ -1,6 +1,9 @@
+import { useRoute } from '@react-navigation/native'
 import React, { useMemo } from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { CATEGORY_CRITERIA, Gradient } from 'features/search/enums'
 import { useNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { SearchN1Bar } from 'features/search/pages/Search/SearchN1Books/SearchN1Bar'
@@ -8,24 +11,27 @@ import { NativeCategoryEnum } from 'features/search/types'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
 export const SearchN1Books = () => {
-  const bookNativeCategories = useNativeCategories(SearchGroupNameEnumv2.LIVRES)
-  const bookColorsGradients: Gradient = CATEGORY_CRITERIA[SearchGroupNameEnumv2.LIVRES]?.gradients
+  const { params } = useRoute<UseRouteType<SearchStackRouteName>>()
 
-  // console.log({ stack: navigationRef.getState().routes })
+  const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
+  const offerCategory = offerCategories[0] || SearchGroupNameEnumv2.LIVRES
 
-  const bookSubcategoriesContent = useMemo(
+  const nativeCategories = useNativeCategories(offerCategory)
+  const colorsGradients = CATEGORY_CRITERIA[offerCategory]?.gradients as Gradient
+
+  const subCategoriesContent = useMemo(
     () =>
-      bookNativeCategories.map((bookNativeCategory) => ({
-        label: bookNativeCategory[1].label,
-        colors: bookColorsGradients,
-        nativeCategory: bookNativeCategory[0] as NativeCategoryEnum,
+      nativeCategories.map((nativeCategory) => ({
+        label: nativeCategory[1].label,
+        colors: colorsGradients,
+        nativeCategory: nativeCategory[0] as NativeCategoryEnum,
       })),
-    [bookColorsGradients, bookNativeCategories]
+    [colorsGradients, nativeCategories]
   )
 
   return (
-    <SearchN1Bar>
-      <SubcategoryButtonList subcategoryButtonContent={bookSubcategoriesContent} />
+    <SearchN1Bar offerCategories={offerCategories}>
+      <SubcategoryButtonList subcategoryButtonContent={subCategoriesContent} />
     </SearchN1Bar>
   )
 }
