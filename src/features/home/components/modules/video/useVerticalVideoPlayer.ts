@@ -170,6 +170,12 @@ export const useVerticalVideoPlayer = ({
 
   const toggleErrorView = () => setShowErrorView(true)
 
+  useEffect(() => {
+    if (!isPlaying) {
+      pauseVideo()
+    }
+  }, [isPlaying, pauseVideo])
+
   return {
     isMuted,
     toggleMute,
