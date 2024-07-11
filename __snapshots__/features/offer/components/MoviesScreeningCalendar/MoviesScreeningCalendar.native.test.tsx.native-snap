@@ -1812,7 +1812,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
               data={
                 [
                   {
-                    "hasBookedScreening": false,
                     "isDisabled": false,
                     "onPress": [Function],
                     "subtitleLeft": "VO",
