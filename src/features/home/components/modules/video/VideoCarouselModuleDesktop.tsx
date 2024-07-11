@@ -48,6 +48,7 @@ export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBa
   const itemsWithRelatedData = useVideoCarouselData(items, id)
 
   const hasItems = itemsWithRelatedData.length > 0
+  const hasMultipleItems = itemsWithRelatedData.length > 1
   const videoSources = videoSourceExtractor(itemsWithRelatedData)
 
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -99,6 +100,7 @@ export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBa
               params: { id: +offer.objectID },
             },
             onBeforeNavigate: () => {
+              setIsPlaying(false)
               prePopulateOffer({
                 ...offer.offer,
                 offerId: +offer.objectID,
@@ -158,12 +160,14 @@ export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBa
   return (
     <View testID="MarketingBlockContentDesktop">
       <Container>
-        <PlaylistArrowButton
-          direction="right"
-          onPress={() => {
-            setCurrentIndex(currentIndex - 1)
-          }}
-        />
+        {hasMultipleItems ?? (
+          <PlaylistArrowButton
+            direction="right"
+            onPress={() => {
+              setCurrentIndex(currentIndex - 1)
+            }}
+          />
+        )}
         <VerticalVideoPlayer
           videoSources={videoSources}
           playNextVideo={playNextVideo}
@@ -176,18 +180,18 @@ export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBa
           homeEntryId={homeEntryId}
         />
         <ContainerAttachedOfferCardWithBar>
-          {itemsWithRelatedData[0] && itemsWithRelatedData.length > 1 ? (
-            renderItem({ item: itemsWithRelatedData[0], index: 1 })
-          ) : (
-            <SingleAttachedItem />
+          <SingleAttachedItem />
+          {hasMultipleItems ?? (
+            <BarContainer>
+              {itemsWithRelatedData.map((_, index) => (
+                <CarouselBar animValue={progressValue} index={index} key={index} />
+              ))}
+            </BarContainer>
           )}
-          <BarContainer>
-            {itemsWithRelatedData.map((_, index) => (
-              <CarouselBar animValue={progressValue} index={index} key={index} />
-            ))}
-          </BarContainer>
         </ContainerAttachedOfferCardWithBar>
-        <PlaylistArrowButton direction="left" onPress={() => playNextVideo()} />
+        {hasMultipleItems ?? (
+          <PlaylistArrowButton direction="left" onPress={() => playNextVideo()} />
+        )}
       </Container>
       <ColoredAttachedTileContainer color={color} />
     </View>
