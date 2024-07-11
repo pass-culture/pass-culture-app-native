@@ -1,5 +1,7 @@
 import '@testing-library/jest-native/extend-expect'
 
+import { TextEncoder } from 'util'
+
 import * as consoleFailTestModule from 'console-fail-test'
 import { toHaveNoViolations } from 'jest-axe'
 import { configure } from 'reassure'
@@ -15,6 +17,7 @@ jest.mock('@gorhom/bottom-sheet', () => ({
 }))
 
 global.expect.extend(toHaveNoViolations)
+global.TextEncoder = TextEncoder
 
 consoleFailTestModule.cft({
   testFramework: 'jest',
