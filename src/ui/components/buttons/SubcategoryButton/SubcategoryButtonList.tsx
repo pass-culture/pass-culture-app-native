@@ -20,7 +20,7 @@ type Props = {
 }
 
 export const SubcategoryButtonList: React.FC<Props> = ({ subcategoryButtonContent }) => {
-  const [webViewWidth, setWebViewWidth] = useState(0)
+  const [webViewWidth, setWebViewWidth] = useState<number>(0)
 
   const { isDesktopViewport } = useTheme()
   const numColumns = Math.max(Math.floor(webViewWidth / SUBCATEGORY_BUTTON_WIDTH), 1)

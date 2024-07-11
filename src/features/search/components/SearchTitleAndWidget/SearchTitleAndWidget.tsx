@@ -13,11 +13,13 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 type Props = {
   shouldDisplaySubtitle?: boolean
   searchInputID: string
+  title: string
 }
 
 export const SearchTitleAndWidget: FunctionComponent<Props> = ({
   shouldDisplaySubtitle = false,
   searchInputID,
+  title,
 }) => {
   const subtitle = 'Toutes les offres à portée de main'
   const { isDesktopViewport } = useTheme()
@@ -27,7 +29,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
       <TitleContainer testID="SearchHeaderTitleContainer">
         <TitleMainWrapper>
           <StyledTitleMainView {...getHeadingAttrs(1)}>
-            <StyledTitleMainText htmlFor={searchInputID}>Rechercher</StyledTitleMainText>
+            <StyledTitleMainText htmlFor={searchInputID}>{title}</StyledTitleMainText>
           </StyledTitleMainView>
           {isDesktopViewport ? <SearchLocationWidgetDesktopView /> : null}
         </TitleMainWrapper>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchN1Books/> should render SearchN1Books 1`] = `
+exports[`<SearchN1/> should render <SearchN1 /> 1`] = `
 [
   <View
     customHeight={16}
@@ -309,19 +309,19 @@ exports[`<SearchN1Books/> should render SearchN1Books 1`] = `
                 />
                 <TextInput
                   accessibilityDescribedBy="testUuidV4"
-                  accessibilityHidden={false}
+                  accessibilityHidden={true}
                   autoCorrect={false}
                   autoFocus={false}
                   editable={true}
                   enablesReturnKeyAutomatically={true}
-                  focusable={true}
+                  focusable={false}
                   isEmpty={true}
                   nativeID="testUuidV4"
                   onBlur={[Function]}
                   onChangeText={[Function]}
                   onFocus={[Function]}
                   onSubmitEditing={[Function]}
-                  placeholder="Offre, artiste, lieu culturel..."
+                  placeholder="Rechercher parmi les livres"
                   placeholderTextColor="#696A6F"
                   returnKeyType="search"
                   selectionColor="#696A6F"

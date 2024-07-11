@@ -4,7 +4,7 @@ import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/g
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
-import { SearchN1Books } from 'features/search/pages/Search/SearchN1Books/SearchN1Books'
+import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 
@@ -34,14 +34,14 @@ const routes: SearchStackRoute[] = [
     options: { title: 'Résultats de recherche' },
   },
   {
-    name: 'SearchN1Books',
-    component: SearchN1Books,
+    name: 'SearchN1',
+    component: SearchN1,
     pathConfig: {
-      path: 'rechercheN1Books',
-      parse: screenParamsParser['SearchN1Books'],
-      stringify: screenParamsStringifier['SearchN1Books'],
+      path: 'rechercheN1',
+      parse: screenParamsParser['SearchN1'],
+      stringify: screenParamsStringifier['SearchN1'],
     },
-    options: { title: 'recherche dans les livres' },
+    options: { title: 'recherche dans les sous-catégories' },
   },
 ]
 

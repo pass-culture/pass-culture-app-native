@@ -30,6 +30,7 @@ export type LocationFilter =
 export enum SearchView {
   Landing = 'SearchLanding',
   Results = 'SearchResults',
+  N1 = 'SearchN1',
 }
 
 export type OfferGenreType = { key: GenreType } & GenreTypeContentModel

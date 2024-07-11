@@ -15,7 +15,7 @@ import {
   isNativeCategoryOfCategory,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
-import { CreateHistoryItem, SearchState } from 'features/search/types'
+import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -142,7 +142,7 @@ export function AutocompleteOfferItem({
       category: shouldShowCategory ? mostPopularCategory[0] : undefined,
     })
     dispatch({ type: 'SET_STATE', payload: newSearchState })
-    if (currentRoute === 'SearchLanding') {
+    if (currentRoute && [SearchView.Landing, SearchView.N1].includes(currentRoute as SearchView)) {
       navigateToSearchResults(newSearchState, disabilities)
     }
     hideSuggestions()
