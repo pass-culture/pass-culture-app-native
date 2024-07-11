@@ -4,6 +4,6 @@ import { IconFactory } from 'ui/components/icons/iconFactory'
 
 export const IconFactoryContext = createContext<IconFactory>({
   getIcon: () => {
-    throw 'No <IconFactoryProvider> detected'
+    throw new Error('No <IconFactoryProvider> detected')
   },
 } as IconFactory)

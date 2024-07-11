@@ -396,9 +396,20 @@ export interface BookingOfferExtraData {
   ean?: string | null
 }
 /**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum ReactionTypeEnum {
+  'LIKE' = 'LIKE',
+  'DISLIKE' = 'DISLIKE',
+  'NO_REACTION' = 'NO_REACTION',
+}
+/**
  * @export
  * @interface BookingOfferResponse
  */
+
 export interface BookingOfferResponse {
   /**
    * @type {string}
@@ -546,6 +557,11 @@ export interface BookingReponse {
    * @memberof BookingReponse
    */
   totalAmount: number
+  /**
+   * @type {ReactionTypeEnum}
+   * @memberof BookingReponse
+   */
+  userReaction?: ReactionTypeEnum | null
 }
 /**
  * @export

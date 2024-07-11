@@ -11,6 +11,8 @@ import { measurePerformance } from 'reassure'
 import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
+import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
+
 import { computedTheme } from './computedTheme'
 
 export async function simulateWebviewMessage(webview: ReactTestInstance, message: string) {
@@ -30,7 +32,9 @@ const DefaultWrapper = ({ theme, children }: PropsWithTheme) => {
   return (
     // ThemeProviderWeb is useful to recycle .test.tsx for both native and web
     <ThemeProviderWeb theme={deepmerge(computedTheme, theme || {})}>
-      <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>{children}</ThemeProvider>
+      <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>
+        <IconFactoryProvider>{children}</IconFactoryProvider>
+      </ThemeProvider>
     </ThemeProviderWeb>
   )
 }
