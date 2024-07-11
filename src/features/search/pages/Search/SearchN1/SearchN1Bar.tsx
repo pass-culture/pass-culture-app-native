@@ -1,5 +1,4 @@
 import { SearchClient } from 'algoliasearch'
-import { capitalize } from 'lodash'
 import React, { FC, PropsWithChildren, useCallback } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import AlgoliaSearchInsights from 'search-insights'
@@ -42,11 +41,13 @@ const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 type Props = {
   offerCategories: SearchGroupNameEnumv2[]
+  title: string
   placeholder?: string
 }
 export const SearchN1Bar: FC<PropsWithChildren<Props>> = ({
   children,
   offerCategories,
+  title,
   placeholder = 'Rechercher',
 }) => {
   const { isFocusOnSuggestions } = useSearch()
@@ -76,7 +77,7 @@ export const SearchN1Bar: FC<PropsWithChildren<Props>> = ({
       />
       <SearchHeader
         withArrow
-        title={capitalize(offerCategories[0])}
+        title={title}
         searchInputID={searchInputID}
         addSearchHistory={addToHistory}
         searchInHistory={setQueryHistoryMemoized}

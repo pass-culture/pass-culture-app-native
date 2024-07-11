@@ -8,11 +8,12 @@ import { CATEGORY_CRITERIA, Gradient } from 'features/search/enums'
 import { useNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { SearchN1Bar } from 'features/search/pages/Search/SearchN1/SearchN1Bar'
 import { NativeCategoryEnum } from 'features/search/types'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
-export const searchN1Placeholders: Partial<Record<SearchGroupNameEnumv2, string>> = {
-  LIVRES: 'Rechercher un livre',
-}
+const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue) => {
+  return { ...previousValue, [currentValue.name]: currentValue.value }
+}, {}) as Record<SearchGroupNameEnumv2, string>
 
 export const SearchN1 = () => {
   const { params } = useRoute<UseRouteType<SearchStackRouteName>>()
@@ -36,7 +37,8 @@ export const SearchN1 = () => {
   return (
     <SearchN1Bar
       offerCategories={offerCategories}
-      placeholder={searchN1Placeholders[offerCategory]}>
+      placeholder={`Rechercher parmi les ${titles[offerCategory].toLowerCase()}`}
+      title={titles[offerCategory]}>
       <SubcategoryButtonList subcategoryButtonContent={subCategoriesContent} />
     </SearchN1Bar>
   )

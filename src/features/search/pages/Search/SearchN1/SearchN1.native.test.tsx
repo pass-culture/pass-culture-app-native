@@ -4,7 +4,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
-import { SearchN1, searchN1Placeholders } from 'features/search/pages/Search/SearchN1/SearchN1'
+import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
@@ -46,7 +46,7 @@ describe('<SearchN1/>', () => {
     it('should navigate to search results with the corresponding parameters', async () => {
       const QUERY = 'Harry'
       render(reactQueryProviderHOC(<SearchN1 />))
-      const searchInput = screen.getByPlaceholderText(searchN1Placeholders.LIVRES as string)
+      const searchInput = screen.getByPlaceholderText('Rechercher parmi les livres')
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: QUERY } })
 
       await act(async () => {})

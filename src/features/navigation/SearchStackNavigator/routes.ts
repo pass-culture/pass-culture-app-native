@@ -37,11 +37,11 @@ const routes: SearchStackRoute[] = [
     name: 'SearchN1',
     component: SearchN1,
     pathConfig: {
-      path: 'rechercheN1Books',
+      path: 'rechercheN1',
       parse: screenParamsParser['SearchN1'],
       stringify: screenParamsStringifier['SearchN1'],
     },
-    options: { title: 'recherche dans les livres' },
+    options: { title: 'recherche dans les sous-catégories' },
   },
 ]
 
