@@ -166,7 +166,7 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
   return (
     <IntersectionObserver
       onChange={(inView) => intersectionObserverListener(inView)}
-      key="verticalVideoPlayer">
+      key={`verticalVideoPlayer${moduleId}`}>
       <StyledVideoPlayerContainer style={{ height: playerHeight }}>
         <StyledYoutubePlayer
           ref={playerRef}
