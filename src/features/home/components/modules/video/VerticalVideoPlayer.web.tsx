@@ -2,11 +2,15 @@ import colorAlpha from 'color-alpha'
 import React, { useRef } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { isChrome } from 'react-device-detect'
-import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import YouTube, { YouTubeProps } from 'react-youtube'
+import YouTube, { YouTubeEvent, YouTubeProps } from 'react-youtube'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import {
+  getVideoPlayerDimensions,
+  RATIO710,
+} from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
 import {
   PlayerState,
@@ -15,7 +19,7 @@ import {
   VideoPlayerButtonsWording,
 } from 'features/home/components/modules/video/useVerticalVideoPlayer'
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
-import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
+import { VerticalVideoErrorView } from 'features/home/components/modules/video/VerticalVideoErrorView'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 // eslint-disable-next-line no-restricted-imports
 import { isMobileDeviceDetectOnWeb } from 'libs/react-device-detect'
@@ -27,11 +31,9 @@ import { SoundOff } from 'ui/svg/icons/SoundOff'
 import { SoundOn } from 'ui/svg/icons/SoundOn'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-const RATIO = 7 / 10
 const PLAYER_FIXED_WIDTH = 375
-const PLAYER_FIXED_HEIGHT = PLAYER_FIXED_WIDTH / RATIO
 
-const translatePlateformState = (
+const translatePlatformState = (
   newWebPlayerState: (typeof YouTube.PlayerState)[keyof typeof YouTube.PlayerState]
 ): PlayerState | undefined => {
   switch (newWebPlayerState) {
@@ -44,7 +46,9 @@ const translatePlateformState = (
     case YouTube.PlayerState.PAUSED:
       return PlayerState.PAUSED
     case YouTube.PlayerState.BUFFERING:
+      return PlayerState.BUFFERING
     case YouTube.PlayerState.CUED:
+      return PlayerState.CUED
     default:
       return undefined
   }
@@ -59,6 +63,7 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
   hasFinishedPlaying,
   setHasFinishedPlaying,
   moduleId,
+  homeEntryId,
 }) => {
   const playerRef = useRef<YouTube>(null)
   const playerRefCurrent = playerRef.current?.internalPlayer
@@ -68,8 +73,6 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
     toggleMute,
     togglePlay,
     intersectionObserverListener,
-    pauseVideo,
-    playVideo,
     replayVideo,
     videoState,
     elapsed,
@@ -86,13 +89,16 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
     homeEntryId,
   })
 
+  const { isDesktopViewport } = useTheme()
+  const { playerHeight } = getVideoPlayerDimensions(isDesktopViewport, PLAYER_FIXED_WIDTH, RATIO710)
+
   // remove the fullscreen video for Chrome - mobile as
   // the dimensions are not appropriated and not working
   const isFullscreenEnabled = !(isChrome && isMobileDeviceDetectOnWeb)
 
   const opts: YouTubeProps['opts'] = {
     width: PLAYER_FIXED_WIDTH,
-    height: PLAYER_FIXED_HEIGHT,
+    height: playerHeight,
     playerVars: {
       autoplay: 1,
       controls: 0,
@@ -108,7 +114,7 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
     if (hasFinishedPlaying) {
       return (
         <VerticalVideoEndView
-          style={{ height: PLAYER_FIXED_HEIGHT, width: PLAYER_FIXED_WIDTH }}
+          style={{ height: playerHeight, width: PLAYER_FIXED_WIDTH }}
           onPressReplay={replayVideo}
           onPressNext={playNextVideo}
           hasMultipleSources={videoSources.length > 1}
@@ -118,7 +124,7 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
     return (
       <PressListener onPress={togglePlay}>
         <Calque
-          style={{ height: PLAYER_FIXED_HEIGHT, width: PLAYER_FIXED_WIDTH }}
+          style={{ height: playerHeight, width: PLAYER_FIXED_WIDTH }}
           colors={[colorAlpha(theme.colors.black, 0.9), colorAlpha(theme.colors.black, 0.9)]}>
           <ButtonsContainer>
             <IconContainer>
@@ -136,63 +142,66 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
     )
   }
 
+  const playVideo = (event: YouTubeEvent) => {
+    event.target.mute()
+    event.target.playVideo()
+  }
+
   return (
-    <View>
-      <IntersectionObserver
-        onChange={(inView) => intersectionObserverListener(inView)}
-        key="verticalVideoPlayerWeb">
-        <StyledVideoPlayerContainer
-          style={{ height: PLAYER_FIXED_HEIGHT, width: PLAYER_FIXED_WIDTH }}>
-          <YouTube
-            ref={playerRef}
-            videoId={videoSources[currentIndex]}
-            opts={opts}
-            onReady={isPlaying ? playVideo : pauseVideo}
-            onStateChange={(state) => onChangeState(translatePlateformState(state.data))}
-            onError={toggleErrorView}
-          />
-        </StyledVideoPlayerContainer>
+    <IntersectionObserver
+      onChange={(inView) => intersectionObserverListener(inView)}
+      key={`verticalVideoPlayerWeb-${moduleId}`}>
+      <StyledVideoPlayerContainer style={{ height: playerHeight, width: PLAYER_FIXED_WIDTH }}>
+        <YouTube
+          ref={playerRef}
+          videoId={videoSources[currentIndex]}
+          opts={opts}
+          onReady={playVideo}
+          onStateChange={(state) => onChangeState(translatePlatformState(state.data))}
+          onError={toggleErrorView}
+        />
+      </StyledVideoPlayerContainer>
 
-        {isPlaying ? (
-          <PressListener style={{ height: PLAYER_FIXED_HEIGHT }} onPress={togglePlay} />
-        ) : (
-          <React.Fragment>
-            <PlayerCalque />
-          </React.Fragment>
-        )}
+      {isPlaying ? (
+        <PressListener style={{ height: playerHeight }} onPress={togglePlay} />
+      ) : (
+        <React.Fragment>
+          <PlayerCalque />
+        </React.Fragment>
+      )}
 
-        {isPlaying ? (
-          <StyledProgressContainer>
-            <ControlsContainer>
-              <ButtonWithCaption
-                onPress={togglePlay}
-                icon={StyledPauseIcon}
-                wording=""
-                accessibilityLabel="Mettre en pause la vidéo"
-              />
-              <ButtonWithCaption
-                onPress={toggleMute}
-                icon={isMuted ? StyledMutedIcon : StyledUnmutedIcon}
-                wording=""
-                accessibilityLabel="Activer ou désactiver le son"
-              />
-            </ControlsContainer>
-            <CreditProgressBar progress={elapsed} height="smaller" />
-          </StyledProgressContainer>
-        ) : null}
+      {isPlaying ? (
+        <StyledProgressContainer>
+          <ControlsContainer>
+            <ButtonWithCaption
+              onPress={togglePlay}
+              icon={StyledPauseIcon}
+              wording=""
+              accessibilityLabel="Mettre en pause la vidéo"
+            />
+            <ButtonWithCaption
+              onPress={toggleMute}
+              icon={isMuted ? StyledMutedIcon : StyledUnmutedIcon}
+              wording=""
+              accessibilityLabel="Activer ou désactiver le son"
+            />
+          </ControlsContainer>
+          <CreditProgressBar progress={elapsed} height="smaller" />
+        </StyledProgressContainer>
+      ) : null}
 
-        {showErrorView ? (
-          <VideoErrorView style={{ height: PLAYER_FIXED_HEIGHT, width: PLAYER_FIXED_WIDTH }} />
-        ) : null}
-      </IntersectionObserver>
-    </View>
+      {showErrorView ? (
+        <VerticalVideoErrorView style={{ height: playerHeight, width: PLAYER_FIXED_WIDTH }} />
+      ) : null}
+    </IntersectionObserver>
   )
 }
 
-const StyledVideoPlayerContainer = styled.View({
+const StyledVideoPlayerContainer = styled.View(({ theme }) => ({
   borderRadius: getSpacing(1),
   overflow: 'hidden',
-})
+  backgroundColor: theme.colors.black,
+}))
 
 const Calque = styled(LinearGradient)({
   position: 'absolute',

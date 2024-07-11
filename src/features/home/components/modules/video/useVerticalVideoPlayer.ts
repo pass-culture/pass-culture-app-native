@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { AppState } from 'react-native'
+import { AppState, Platform } from 'react-native'
 import { YoutubeIframeRef } from 'react-native-youtube-iframe'
 import YouTube from 'react-youtube'
 
@@ -110,20 +110,40 @@ export const useVerticalVideoPlayer = ({
   }
 
   const toggleMute = () => {
-    if ('mute' in playerRefCurrent) {
-      isMuted ? playerRefCurrent.unMute() : playerRefCurrent.mute()
+    switch (true) {
+      case Platform.OS === 'web':
+        if (playerRefCurrent ?? 'mute' in playerRefCurrent) {
+          if (isMuted) {
+            playerRefCurrent.unMute()
+          } else {
+            playerRefCurrent.mute()
+          }
+        }
+        setIsMuted(!isMuted)
+        break
+      case Platform.OS !== 'web':
+        setIsMuted(!isMuted)
+        break
+      default:
+        break
     }
-
-    setIsMuted(!isMuted)
   }
 
   const pauseVideo = () => {
-    if (isPlaying) {
-      if ('pauseVideo' in playerRefCurrent) {
-        playerRefCurrent.pauseVideo()
-      }      
-      setIsPlaying(false)
-      logPausedVideo()
+    switch (true) {
+      case Platform.OS === 'web':
+        if (playerRefCurrent ?? 'pauseVideo' in playerRefCurrent) {
+          playerRefCurrent.pauseVideo()
+          setIsPlaying(false)
+          logPausedVideo()
+        }
+        break
+      case Platform.OS !== 'web':
+        setIsPlaying(false)
+        logPausedVideo()
+        break
+      default:
+        break
     }
   }
 
