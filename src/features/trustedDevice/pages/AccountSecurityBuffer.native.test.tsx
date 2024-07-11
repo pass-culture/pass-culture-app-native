@@ -2,7 +2,7 @@ import React from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
 import { Text } from 'react-native'
 
-import { useRoute, replace } from '__mocks__/@react-navigation/native'
+import { replace, useRoute } from '__mocks__/@react-navigation/native'
 import { UpdateEmailTokenExpiration } from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
@@ -18,7 +18,7 @@ jest.mock('features/navigation/helpers/navigateToHome')
 const consoleError = console.error
 const catchErrorSilently = async (fn: () => Promise<unknown>) => {
   try {
-    console.error = () => {}
+    console.error = jest.fn()
     return await fn()
   } catch (error) {
     return error

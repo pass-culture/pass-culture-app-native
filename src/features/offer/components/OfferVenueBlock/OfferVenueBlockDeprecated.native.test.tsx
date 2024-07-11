@@ -74,7 +74,7 @@ describe('<OfferVenueBlockDeprecated />', () => {
       <OfferVenueBlockDeprecated
         title="Lieu de retrait"
         venue={offerResponseSnap.venue}
-        onChangeVenuePress={() => {}}
+        onChangeVenuePress={jest.fn()}
       />
     )
 
@@ -121,7 +121,7 @@ describe('<OfferVenueBlockDeprecated />', () => {
       <OfferVenueBlockDeprecated
         title="Lieu de retrait"
         venue={offerResponseSnap.venue}
-        onSeeItineraryPress={() => {}}
+        onSeeItineraryPress={jest.fn()}
       />
     )
 
@@ -154,7 +154,7 @@ describe('<OfferVenueBlockDeprecated />', () => {
       <OfferVenueBlockDeprecated
         title="Lieu de retrait"
         venue={offerResponseSnap.venue}
-        onSeeVenuePress={() => {}}
+        onSeeVenuePress={jest.fn()}
       />
     )
 
