@@ -4,6 +4,7 @@ import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/A
 import { MarketingBlock } from 'features/home/components/modules/marketing/MarketingBlock'
 import { analytics } from 'libs/analytics'
 import { Offer } from 'shared/offer/types'
+import { ShadowWrapper } from 'ui/components/ShadowWrapper'
 
 type AttachedOfferCardProps = {
   offer: Offer
@@ -33,7 +34,11 @@ const UnmemoizedMarketingBlockExclusivity = ({
       navigateTo={{ screen: 'Offer', params: { id: offer.objectID } }}
       onBeforeNavigate={logConsultOffer}
       backgroundImageUrl={backgroundImageUrl}
-      AttachedCardComponent={<AttachedOfferCard offer={offer} />}
+      AttachedCardComponent={
+        <ShadowWrapper>
+          <AttachedOfferCard offer={offer} />
+        </ShadowWrapper>
+      }
     />
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { OfferName } from 'ui/components/tiles/OfferName'
-import { getShadow, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface AttachedCardDisplayProps {
   title: string
@@ -90,15 +90,6 @@ const ImageContainer = styled.View({
 })
 
 const Container = styled.View<{ shouldFixHeight: boolean }>(({ theme, shouldFixHeight }) => ({
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(3),
-    },
-    shadowRadius: getSpacing(12),
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.15,
-  }),
   backgroundColor: theme.colors.white,
   borderRadius: getSpacing(3),
   borderWidth: BORDER_WIDTH,

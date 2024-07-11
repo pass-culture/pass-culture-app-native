@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 
 import { AttachedThematicCard } from 'features/home/components/AttachedModuleCard/AttachedThematicCard'
 import { MarketingBlock } from 'features/home/components/modules/marketing/MarketingBlock'
+import { ShadowWrapper } from 'ui/components/ShadowWrapper'
 
 export type MarketingBlockHighlightProps = {
   title: string
@@ -28,7 +29,9 @@ const UnmemoizedMarketingBlockHighlight = ({
       }}
       backgroundImageUrl={backgroundImageUrl}
       AttachedCardComponent={
-        <AttachedThematicCard title={title} subtitle={subtitle} label={label} />
+        <ShadowWrapper>
+          <AttachedThematicCard title={title} subtitle={subtitle} label={label} />
+        </ShadowWrapper>
       }
     />
   )
