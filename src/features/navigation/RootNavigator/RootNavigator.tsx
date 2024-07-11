@@ -15,6 +15,7 @@ import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNaviga
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
+import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
 
@@ -25,11 +26,13 @@ import { RootStack } from './Stack'
 const RootStackNavigator = withWebWrapper(
   ({ initialRouteName }: { initialRouteName: RootScreenNames }) => {
     return (
-      <RootStack.Navigator
-        initialRouteName={initialRouteName}
-        screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-        {RootScreens}
-      </RootStack.Navigator>
+      <IconFactoryProvider>
+        <RootStack.Navigator
+          initialRouteName={initialRouteName}
+          screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
+          {RootScreens}
+        </RootStack.Navigator>
+      </IconFactoryProvider>
     )
   }
 )
