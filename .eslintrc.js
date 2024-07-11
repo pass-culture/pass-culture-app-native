@@ -88,7 +88,8 @@ module.exports = {
           {
             name: 'zustand',
             importNames: ['createStore', 'create'],
-            message: 'To create a store, use libs/store/createStore instead',
+            message:
+              'To create a store, use libs/store/createStore instead',
           },
           {
             name: 'react-native-animatable',

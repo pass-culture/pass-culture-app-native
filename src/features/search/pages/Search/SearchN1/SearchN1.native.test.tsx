@@ -43,7 +43,7 @@ describe('<SearchN1/>', () => {
   })
 
   describe('Search bar', () => {
-    it.only('should navigate to search results with the corresponding parameters', async () => {
+    it('should navigate to search results with the corresponding parameters', async () => {
       const QUERY = 'Harry'
       render(reactQueryProviderHOC(<SearchN1 />))
       const searchInput = screen.getByPlaceholderText(searchN1Placeholders.LIVRES as string)
