@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { useWindowDimensions } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
@@ -35,6 +36,7 @@ export const VenueMap: FunctionComponent = () => {
 
   const headerHeight = useGetHeaderHeight()
   const { height } = useWindowDimensions()
+  const insets = useSafeAreaInsets()
 
   const {
     visible: venueTypeModalVisible,
@@ -56,7 +58,7 @@ export const VenueMap: FunctionComponent = () => {
 
   return (
     <React.Fragment>
-      <Container>
+      <Container style={{ paddingBottom: insets.bottom }}>
         <StyledHeader title="Carte des lieux" onGoBack={handleGoBack} />
         <PlaceHolder headerHeight={headerHeight + FILTER_BANNER_HEIGHT} />
 

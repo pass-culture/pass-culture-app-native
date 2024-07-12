@@ -1,12 +1,12 @@
+import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { VenueMapCluster } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
-import { PREVIEW_BOTTOM_MARGIN } from 'features/venueMap/components/VenueMapView/constant'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { getVenueTags } from 'features/venueMap/helpers/getVenueTags/getVenueTags'
 import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
@@ -89,29 +89,28 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
     setShowSearchButton(false)
   }
 
-  const navigateToVenue = (venueId: number) => {
+  /*  const navigateToVenue = (venueId: number) => {
     onNavigateToVenuePress(venueId)
     navigate('Venue', { id: venueId })
-  }
+  } */
 
   const handleMarkerPress = (venue: GeolocatedVenue, event: MarkerPressEvent) => {
     // Prevents the onPress of the MapView from being triggered
     event.stopPropagation()
     setShowSearchButton(false)
-    if (isPreviewEnabled) {
-      setSelectedVenue(venue)
-      centerOnLocation(
-        event.nativeEvent.coordinate.latitude,
-        event.nativeEvent.coordinate.longitude
-      )
-    } else {
+    sheetRef.current?.snapToIndex(0)
+    // if (isPreviewEnabled) {
+    setSelectedVenue(venue)
+    centerOnLocation(event.nativeEvent.coordinate.latitude, event.nativeEvent.coordinate.longitude)
+    /* } else {
       navigateToVenue(venue.venueId)
-    }
+    } */
   }
 
   const handlePressOutOfVenuePin = () => {
     if (selectedVenue) {
       removeSelectedVenue()
+      sheetRef.current?.close()
     }
   }
 
@@ -126,8 +125,38 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   // use formatFullAddressStartsWithPostalCode when we have the param address from Algolia
   const address = `${selectedVenue?.info}, ${selectedVenue?.postalCode}`
 
+  const sheetRef = useRef<BottomSheet>(null)
+
+  // variables
+  const snapPoints = useRef(['25%', '50%']).current
+  const [currentSnapIndex, setCurrentSnapIndex] = useState(-1)
+  const handleSheetChange = useCallback((index: number) => {
+    setCurrentSnapIndex(index)
+  }, [])
+
   return (
     <React.Fragment>
+      <BottomSheet
+        ref={sheetRef}
+        snapPoints={snapPoints}
+        onChange={handleSheetChange}
+        index={-1}
+        enablePanDownToClose>
+        <BottomSheetView>
+          <VenueMapPreview
+            venueName={selectedVenue?.label ?? ''}
+            address={address}
+            bannerUrl={selectedVenue?.banner_url ?? ''}
+            tags={tags}
+            navigateTo={{ screen: 'Venue', params: { id: selectedVenue?.venueId } }}
+            onClose={handlePreviewClose}
+            onBeforeNavigate={() => onNavigateToVenuePress(selectedVenue?.venueId || 0)}
+            onLayout={({ nativeEvent }: LayoutChangeEvent) => {
+              previewHeight.current = nativeEvent.layout.height
+            }}
+          />
+        </BottomSheetView>
+      </BottomSheet>
       <StyledMapView
         ref={mapViewRef}
         showsUserLocation
@@ -135,6 +164,11 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
         rotateEnabled={false}
         pitchEnabled={false}
         moveOnMarkerPress={false}
+        onPanDrag={() => {
+          if (selectedVenue && currentSnapIndex !== -1) {
+            sheetRef.current?.snapToIndex(0)
+          }
+        }}
         onRegionChangeComplete={handleRegionChangeComplete}
         renderCluster={(props) => <VenueMapCluster {...props} />}
         onPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
@@ -162,25 +196,11 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
           <ButtonPrimary wording="Rechercher dans cette zone" onPress={handleSearchPress} />
         </ButtonContainer>
       ) : null}
-      {selectedVenue ? (
-        <StyledVenueMapPreview
-          venueName={selectedVenue?.label}
-          address={address}
-          bannerUrl={selectedVenue?.banner_url ?? ''}
-          tags={tags}
-          navigateTo={{ screen: 'Venue', params: { id: selectedVenue.venueId } }}
-          onClose={handlePreviewClose}
-          onBeforeNavigate={() => onNavigateToVenuePress(selectedVenue.venueId)}
-          onLayout={({ nativeEvent }: LayoutChangeEvent) => {
-            previewHeight.current = nativeEvent.layout.height
-          }}
-        />
-      ) : null}
     </React.Fragment>
   )
 }
 
-const StyledMapView = styled(MapView)({ height: '100%', width: '100%' })
+const StyledMapView = styled(MapView)({ height: '100%', width: '100%', zIndex: -1 })
 
 const ButtonContainer = styled.View({
   position: 'absolute',
@@ -189,11 +209,3 @@ const ButtonContainer = styled.View({
   right: getSpacing(13.5),
   alignItems: 'center',
 })
-
-const StyledVenueMapPreview = styled(VenueMapPreview)(({ theme }) => ({
-  position: 'absolute',
-  bottom: PREVIEW_BOTTOM_MARGIN,
-  left: getSpacing(4),
-  right: getSpacing(4),
-  backgroundColor: theme.colors.white,
-}))
