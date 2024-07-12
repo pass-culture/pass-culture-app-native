@@ -29,6 +29,8 @@ import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { plural } from 'libs/plural'
@@ -79,6 +81,9 @@ export const SearchResultsContent: React.FC = () => {
   const { user } = useAuthContext()
   const { geolocPosition } = useLocation()
   const previousGeolocPosition = usePrevious(geolocPosition)
+  const shouldDisplayVenueMapInSearch = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
+  )
 
   const isVenue = !!searchState.venue
 
@@ -306,6 +311,7 @@ export const SearchResultsContent: React.FC = () => {
         <Spacer.Column numberOfSpaces={2} />
       </View>
       <Container testID="searchResults">
+        {shouldDisplayVenueMapInSearch ? (
           <TabLayout
             tabPanels={tabPanels}
             defaultTab={Tab.SEARCHLIST}
@@ -314,6 +320,9 @@ export const SearchResultsContent: React.FC = () => {
               { key: Tab.MAP, Icon: Map },
             ]}
           />
+        ) : (
+          tabPanels[Tab.SEARCHLIST]
+        )}
       </Container>
       {shouldRenderScrollToTopButton ? (
         <ScrollToTopContainer>

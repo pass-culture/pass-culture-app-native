@@ -19,6 +19,8 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -115,6 +117,9 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     !shouldDisplayAvailableUserDataMessage
 
   const { shouldDisplayVenueMap } = useShouldDisplayVenueMap()
+  const shouldDisplayVenueMapInSearch = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
+  )
 
   const handleSeeMapPress = () => {
     analytics.logConsultVenueMap({ from: 'searchPlaylist' })
@@ -149,7 +154,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           <Spacer.Column numberOfSpaces={4} />
           <View>
             <Title>{venuePlaylistTitle}</Title>
-            {shouldDisplayVenueMap ? (
+            {shouldDisplayVenueMap && !shouldDisplayVenueMapInSearch ? (
               <ButtonContainer>
                 <Spacer.Column numberOfSpaces={1} />
                 <ButtonTertiaryBlack
