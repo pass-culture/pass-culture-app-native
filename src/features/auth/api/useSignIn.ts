@@ -113,9 +113,12 @@ const useHandleSigninSuccess = (
               return
 
             case StepperOrigin.FAVORITE:
+            case StepperOrigin.OFFER:
               addFavorite({ offerId })
               navigate('Offer', { id: offerId })
               return
+            default:
+              navigateToHome()
           }
         } else {
           navigateToHome()
