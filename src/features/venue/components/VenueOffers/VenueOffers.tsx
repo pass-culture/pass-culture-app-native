@@ -43,7 +43,10 @@ const MovieScreening: React.FC<{ venueOffers: VenueOffers }> = ({ venueOffers })
 
 export function VenueOffers({ venue, venueOffers, playlists }: Readonly<VenueOffersProps>) {
   const { isLoading: areVenueOffersLoading } = useVenueOffers(venue)
-  const { isLoading: arePlaylistsLoading } = useGTLPlaylists({ venue })
+  const { isLoading: arePlaylistsLoading } = useGTLPlaylists({
+    venue,
+    queryKey: 'VENUE_GTL_PLAYLISTS',
+  })
   const isOfferAMovieScreening = venueOffers?.hits.some(
     (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
   )

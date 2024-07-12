@@ -11,35 +11,37 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 type UseGTLPlaylistsProps = {
-  venue: VenueResponse | undefined
+  queryKey: keyof typeof QueryKeys
+  venue?: VenueResponse
 }
 
-export function useGTLPlaylists({ venue }: UseGTLPlaylistsProps) {
+export function useGTLPlaylists({ queryKey: gtlPlaylistsQueryKey, venue }: UseGTLPlaylistsProps) {
   const netInfo = useNetInfoContext()
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
 
   const { data: gtlPlaylists, isLoading } = useQuery({
-    queryKey: [QueryKeys.VENUE_GTL_PLAYLISTS, venue?.id, userLocation, selectedLocationMode],
+    queryKey: [gtlPlaylistsQueryKey, venue?.id, userLocation, selectedLocationMode],
     queryFn: async (): Promise<GtlPlaylistData[]> => {
-      if (!venue) return Promise.resolve([])
+      if (gtlPlaylistsQueryKey === 'VENUE_GTL_PLAYLISTS' && !venue) return Promise.resolve([])
       const gtlPlaylistsConfig = await fetchGTLPlaylistConfig()
-
       const offers = await fetchOffersByGTL(
         gtlPlaylistsConfig.map((request) => {
           const params = adaptPlaylistParameters(request.offersModuleParameters)
-          return {
-            ...params,
-            offerParams: {
-              ...params.offerParams,
-              venue: {
-                venueId: venue.id,
-                info: venue.city ?? '',
-                label: venue.name,
-              },
-            },
-          }
+          return venue
+            ? {
+                ...params,
+                offerParams: {
+                  ...params.offerParams,
+                  venue: {
+                    venueId: venue.id,
+                    info: venue.city ?? '',
+                    label: venue.name,
+                  },
+                },
+              }
+            : params
         }),
         {
           userLocation,
@@ -58,7 +60,7 @@ export function useGTLPlaylists({ venue }: UseGTLPlaylistsProps) {
         entryId: item.id,
       }))
     },
-    enabled: !!netInfo.isConnected && !!venue?.id,
+    enabled: !!netInfo.isConnected,
     staleTime: 5 * 60 * 1000, // 5 minutes, as the GTL playlists are not often updated
   })
 
