@@ -6,15 +6,14 @@ export const filterOffersStocks = (
   offersWithStocks: OffersStocksResponseV2,
   date: Date
 ): OffersStocksResponseV2 => {
-  const offersWithStocksFiltered: OfferResponseV2[] = offersWithStocks.offers
-    .map((offer) => {
-      return {
-        ...offer,
-        stocks: offer.stocks.filter((stock) => {
-          return !!stock.beginningDatetime && isSameDay(new Date(stock.beginningDatetime), date)
-        }),
-      }
-    })
+  const specifiedDayOffers = getOffersByDate(offersWithStocks, date)
+  const offersSortedByLast30DaysBooking = sortByLast30DaysBooking(specifiedDayOffers)
+
+  return { offers: offersSortedByLast30DaysBooking }
+}
+
+const sortByLast30DaysBooking = (offersWithStocks: OfferResponseV2[]) => {
+  return offersWithStocks
     .sort((a, b) => {
       const aValue = a.last30DaysBookings
       const bValue = b.last30DaysBookings
@@ -24,7 +23,19 @@ export const filterOffersStocks = (
 
       return bValue - aValue
     })
+    .filter((offer) => !!offer.stocks.length)
+}
 
-  const offersWithMoviesFiltered = offersWithStocksFiltered.filter((offer) => !!offer.stocks.length)
-  return { offers: offersWithMoviesFiltered }
+const getOffersByDate = (
+  offersWithStocks: OffersStocksResponseV2,
+  date: Date
+): OfferResponseV2[] => {
+  return offersWithStocks.offers.map((offer) => {
+    return {
+      ...offer,
+      stocks: offer.stocks.filter((stock) => {
+        return !!stock.beginningDatetime && isSameDay(new Date(stock.beginningDatetime), date)
+      }),
+    }
+  })
 }
