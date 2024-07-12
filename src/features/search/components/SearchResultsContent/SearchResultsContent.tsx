@@ -26,6 +26,8 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
+import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
+import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
@@ -39,11 +41,18 @@ import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeh
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Ul } from 'ui/components/Ul'
+import { Map } from 'ui/svg/icons/Map'
+import { Sort } from 'ui/svg/icons/Sort'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
 const MAX_VENUE_CHARACTERS = 20
+
+enum Tab {
+  SEARCHLIST = 'Liste',
+  MAP = 'Carte',
+}
 
 export const SearchResultsContent: React.FC = () => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
@@ -198,7 +207,27 @@ export const SearchResultsContent: React.FC = () => {
   // We don't want to render it on the web, even if it's not plugged in, since it avoids the user
   // to press on a working button
   const shouldRenderScrollToTopButton = nbHits > 0 && Platform.OS !== 'web'
-
+  const tabPanels = {
+    [Tab.SEARCHLIST]: (
+      <SearchList
+        ref={searchListRef}
+        isFetchingNextPage={isFetchingNextPage}
+        hits={hits}
+        nbHits={nbHits}
+        renderItem={renderItem}
+        autoScrollEnabled={autoScrollEnabled}
+        onEndReached={onEndReached}
+        onScroll={onScroll}
+        refreshing={isRefreshing}
+        onRefresh={refetch}
+        onPress={onEndReached}
+        userData={userData}
+        venuesUserData={venuesUserData}
+      />
+    ),
+    // TODO(PC-30764) Calcul de la height dynamique
+    [Tab.MAP]: <VenueMapView height={600} />,
+  }
   return (
     <React.Fragment>
       {isFocused ? <Helmet title={helmetTitle} /> : null}
@@ -277,21 +306,14 @@ export const SearchResultsContent: React.FC = () => {
         <Spacer.Column numberOfSpaces={2} />
       </View>
       <Container testID="searchResults">
-        <SearchList
-          ref={searchListRef}
-          isFetchingNextPage={isFetchingNextPage}
-          hits={hits}
-          nbHits={nbHits}
-          renderItem={renderItem}
-          autoScrollEnabled={autoScrollEnabled}
-          onEndReached={onEndReached}
-          onScroll={onScroll}
-          refreshing={isRefreshing}
-          onRefresh={refetch}
-          onPress={onEndReached}
-          userData={userData}
-          venuesUserData={venuesUserData}
-        />
+          <TabLayout
+            tabPanels={tabPanels}
+            defaultTab={Tab.SEARCHLIST}
+            tabs={[
+              { key: Tab.SEARCHLIST, Icon: Sort },
+              { key: Tab.MAP, Icon: Map },
+            ]}
+          />
       </Container>
       {shouldRenderScrollToTopButton ? (
         <ScrollToTopContainer>
