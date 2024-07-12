@@ -38,7 +38,7 @@ export const InfoTab = <TabKeyType extends string>({
   return (
     <StyledTouchableTab id={tab} onPress={onPress} selected={isSelected} {...hoverProps}>
       <TabTitleContainer gap={2}>
-        {StyledIcon ? <StyledIcon /> : null}
+        {StyledIcon ? <StyledIcon testID="tabIcon" /> : null}
         <TabTitle isHover={isHover} isSelected={isSelected}>
           {tab}
         </TabTitle>

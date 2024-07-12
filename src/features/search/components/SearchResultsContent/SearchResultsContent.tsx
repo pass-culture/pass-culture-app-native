@@ -56,6 +56,8 @@ enum Tab {
   MAP = 'Carte',
 }
 
+const isWeb = Platform.OS === 'web'
+
 export const SearchResultsContent: React.FC = () => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const searchListRef = useRef<FlashList<Offer> | null>(null)
@@ -311,7 +313,7 @@ export const SearchResultsContent: React.FC = () => {
         <Spacer.Column numberOfSpaces={2} />
       </View>
       <Container testID="searchResults">
-        {shouldDisplayVenueMapInSearch ? (
+        {shouldDisplayVenueMapInSearch && !isWeb ? (
           <TabLayout
             tabPanels={tabPanels}
             defaultTab={Tab.SEARCHLIST}

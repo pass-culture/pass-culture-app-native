@@ -43,7 +43,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
@@ -62,5 +62,17 @@ describe('SearchResultsContent component', () => {
     await screen.findByTestId('searchResultsList')
 
     expect(container).toMatchSnapshot()
+  })
+
+  describe('when feature flag map in search activated', () => {
+    it('should not render tabs on web', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      render(reactQueryProviderHOC(<SearchResultsContent />))
+
+      await screen.findByTestId('searchResultsList')
+
+      expect(screen.queryByText('Liste')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Carte')).not.toBeOnTheScreen()
+    })
   })
 })

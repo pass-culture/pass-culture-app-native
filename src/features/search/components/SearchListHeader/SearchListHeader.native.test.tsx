@@ -33,7 +33,12 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+const useFeatureFlagSpy = jest
+  .spyOn(useFeatureFlagAPI, 'useFeatureFlag')
+  // venue map FF
+  .mockReturnValue(false)
+  // venue map in search FF
+  .mockReturnValue(false)
 
 const mockDisabilities = {
   [DisplayedDisabilitiesEnum.AUDIO]: false,
@@ -407,7 +412,7 @@ describe('<SearchListHeader />', () => {
 
   describe('When wipVenueMap feature flag activated', () => {
     beforeEach(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
+      useFeatureFlagSpy.mockReturnValueOnce(true).mockReturnValue(false)
     })
 
     it('should not display see map button when user is not located and there is a venues playlist', () => {
@@ -552,6 +557,27 @@ describe('<SearchListHeader />', () => {
       fireEvent.press(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`))
 
       expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'searchPlaylist' })
+    })
+  })
+
+  describe('When wipVenueMapInSearch feature flag activated', () => {
+    beforeAll(() => {
+      useFeatureFlagSpy.mockReturnValue(true).mockReturnValue(true)
+    })
+
+    it('should not displayed the button "Voir sur la carte"', () => {
+      render(
+        <SearchListHeader
+          nbHits={10}
+          userData={[]}
+          venuesUserData={[]}
+          venues={mockAlgoliaVenues}
+        />
+      )
+
+      expect(
+        screen.queryByText(`Voir sur la carte (${mockAlgoliaVenues.length})`)
+      ).not.toBeOnTheScreen()
     })
   })
 
