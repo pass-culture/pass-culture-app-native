@@ -1,5 +1,3 @@
-import { Fragment } from 'react'
-
 import { ArrowLeftNew } from 'ui/svg/icons/ArrowLeftNew'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ArrowRightNew } from 'ui/svg/icons/ArrowRightNew'
@@ -41,6 +39,6 @@ const iconMapping: Record<IconNames, React.FC<AccessibleIcon>> = {
 
 export const iconFactory: IconFactory = {
   getIcon(name: IconNames) {
-    return iconMapping[name] ?? Fragment
+    return iconMapping[name]
   },
 }
