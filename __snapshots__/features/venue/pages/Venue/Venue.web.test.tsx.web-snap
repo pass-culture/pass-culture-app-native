@@ -368,7 +368,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                 tabindex="0"
               >
                 <div
-                  class="css-view-175oi2r r-flexGrow-16y2uox r-justifyContent-1777fci"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexGrow-16y2uox r-gap-1cmwbt1 r-justifyContent-1777fci"
                 >
                   <div
                     class="css-text-1rynq56 r-color-ntw818 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
@@ -393,7 +393,7 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                 tabindex="-1"
               >
                 <div
-                  class="css-view-175oi2r r-flexGrow-16y2uox r-justifyContent-1777fci"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexGrow-16y2uox r-gap-1cmwbt1 r-justifyContent-1777fci"
                 >
                   <div
                     class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
@@ -2336,7 +2336,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                 tabindex="-1"
               >
                 <div
-                  class="css-view-175oi2r r-flexGrow-16y2uox r-justifyContent-1777fci"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexGrow-16y2uox r-gap-1cmwbt1 r-justifyContent-1777fci"
                 >
                   <div
                     class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
@@ -2361,7 +2361,7 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                 tabindex="0"
               >
                 <div
-                  class="css-view-175oi2r r-flexGrow-16y2uox r-justifyContent-1777fci"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-flexGrow-16y2uox r-gap-1cmwbt1 r-justifyContent-1777fci"
                 >
                   <div
                     class="css-text-1rynq56 r-color-ntw818 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"

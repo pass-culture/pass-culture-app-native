@@ -24,7 +24,7 @@ import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthC
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
@@ -758,6 +758,16 @@ describe('SearchResultsContent component', () => {
 
       expect(filterButton).toBeOnTheScreen()
       expect(filterButton).toHaveTextContent('2')
+    })
+  })
+
+  describe('when feature flag map in seach activated', () => {
+    it('should display tabs', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      renderSearchResultsContent()
+
+      expect(await screen.findByText('Carte')).toBeOnTheScreen()
+      expect(await screen.findByText('Liste')).toBeOnTheScreen()
     })
   })
 })

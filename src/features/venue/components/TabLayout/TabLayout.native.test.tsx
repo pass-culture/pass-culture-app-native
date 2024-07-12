@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Tab } from 'features/venue/types'
 import { fireEvent, render, screen } from 'tests/utils'
+import { Map } from 'ui/svg/icons/Map'
 import { Typo } from 'ui/theme'
 
 const ExampleText = styled(Typo.Body)``
@@ -38,5 +39,17 @@ describe('TabLayout', () => {
 
     expect(screen.queryByText('Offres disponibles content')).not.toBeOnTheScreen()
     expect(screen.getByText('Infos pratiques content')).toBeOnTheScreen()
+  })
+
+  it('should render an Icon on tab when is precised', () => {
+    render(
+      <TabLayout
+        tabPanels={tabPanels}
+        tabs={[{ key: Tab.OFFERS, Icon: Map }, { key: Tab.INFOS }]}
+        defaultTab={Tab.OFFERS}
+      />
+    )
+
+    expect(screen.getByTestId('tabIcon')).toBeOnTheScreen()
   })
 })

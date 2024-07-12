@@ -57,6 +57,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_SEARCH_ACCESSIBILITY_FILTER = 'wipSearchAccessibilityFilter',
   WIP_STEPPER_RETRY_UBBLE = 'wipStepperRetryUbble',
   WIP_VENUE_MAP = 'wipVenueMap',
+  WIP_VENUE_MAP_IN_SEARCH = 'wipVenueMapInSearch',
   WIP_ENABLE_DYNAMIC_OPENING_HOURS = 'wipEnableDynamicOpeningHours',
   WIP_NEW_EXCLUSIVITY_MODULE = 'wipNewExclusivityModule',
 }

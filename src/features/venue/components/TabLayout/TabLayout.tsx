@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { useTabArrowNavigation } from 'features/venue/components/TabLayout/useTabArrowNavigation'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer } from 'ui/theme'
 
 import { InfoTab } from './InfoTab'
@@ -10,7 +11,7 @@ import { InfoTab } from './InfoTab'
 type TabLayoutProps<TabKeyType extends string> = {
   tabPanels: Record<TabKeyType, JSX.Element>
   onTabChange?: Record<TabKeyType, () => void>
-  tabs: { key: TabKeyType }[]
+  tabs: { key: TabKeyType; Icon?: React.FC<AccessibleIcon> }[]
   defaultTab: TabKeyType
 }
 
@@ -46,6 +47,7 @@ export const TabLayout = <TabKeyType extends string>({
             tab={tab.key}
             selectedTab={selectedTab}
             onPress={() => onTabPress(tab.key)}
+            Icon={tab.Icon}
           />
         ))}
         <Spacer.Row numberOfSpaces={6} />

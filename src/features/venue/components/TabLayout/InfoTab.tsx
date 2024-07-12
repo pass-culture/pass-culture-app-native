@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHandleHover } from 'libs/hooks/useHandleHover'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { TouchableTab } from './TouchableTab'
@@ -10,21 +12,33 @@ import { TouchableTab } from './TouchableTab'
 type InfoTabProps<TabKeyType extends string> = {
   tab: TabKeyType
   selectedTab: TabKeyType
+  Icon?: React.FC<AccessibleIcon>
   onPress: () => void
 }
 
 export const InfoTab = <TabKeyType extends string>({
   tab,
   selectedTab,
+  Icon,
   onPress,
 }: InfoTabProps<TabKeyType>) => {
   const isSelected = selectedTab === tab
   const { isHover, ...webHoverProps } = useHandleHover()
   const hoverProps = Platform.OS === 'web' ? webHoverProps : {}
 
+  const StyledIcon = useMemo(() => {
+    return Icon
+      ? styled(Icon).attrs(({ theme }) => ({
+          color: isSelected ? theme.colors.primary : theme.colors.greyDark,
+          size: theme.icons.sizes.extraSmall,
+        }))``
+      : null
+  }, [Icon, isSelected])
+
   return (
     <StyledTouchableTab id={tab} onPress={onPress} selected={isSelected} {...hoverProps}>
-      <TabTitleContainer>
+      <TabTitleContainer gap={2}>
+        {StyledIcon ? <StyledIcon testID="tabIcon" /> : null}
         <TabTitle isHover={isHover} isSelected={isSelected}>
           {tab}
         </TabTitle>
@@ -40,7 +54,12 @@ const StyledTouchableTab = styled(TouchableTab)({
   maxWidth: getSpacing(45),
 })
 
-const TabTitleContainer = styled.View({ flexGrow: 1, justifyContent: 'center' })
+const TabTitleContainer = styled(ViewGap)({
+  flexGrow: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'row',
+})
 
 const TabTitle = styled(Typo.ButtonText)<{ isSelected: boolean; isHover: boolean }>(
   ({ isSelected, isHover, theme }) => ({
