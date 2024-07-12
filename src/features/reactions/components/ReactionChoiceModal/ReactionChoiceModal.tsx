@@ -1,21 +1,20 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingOfferResponse, OfferResponse } from 'api/gen'
+import { BookingOfferResponse, OfferResponse, ReactionTypeEnum } from 'api/gen'
 import { ReactionToggleButton } from 'features/reactions/components/ReactionToggleButton/ReactionToggleButton'
 import { useSubcategory } from 'libs/subcategories'
+import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { IconNames } from 'ui/components/icons/iconFactory'
+import { useIconFactory } from 'ui/components/icons/useIconFactory'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
 import { ValidationMark } from 'ui/components/ValidationMark'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Close } from 'ui/svg/icons/Close'
-import { ThumbDown } from 'ui/svg/icons/ThumbDown'
-import { ThumbDownFilled } from 'ui/svg/icons/ThumbDownFilled'
-import { ThumbUp } from 'ui/svg/icons/ThumbUp'
-import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -23,6 +22,7 @@ type Props = {
   offer: OfferResponse | BookingOfferResponse
   dateUsed: string
   visible: boolean
+  defaultReaction?: ReactionTypeEnum | null
   closeModal: () => void
 }
 
@@ -30,25 +30,61 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   offer,
   dateUsed,
   visible,
+  defaultReaction,
   closeModal,
 }) => {
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
+  const iconFactory = useIconFactory()
   const { categoryId } = useSubcategory(offer.subcategoryId)
 
-  const [isLiked, setIsLiked] = useState<boolean>(false)
-  const [isDisliked, setIsDisliked] = useState<boolean>(false)
+  const [reactionStatus, setReactionStatus] = useState(defaultReaction)
 
-  const onPressReactionButton = (reaction: 'like' | 'dislike') => {
-    setIsLiked(reaction === 'like' ? !isLiked : false)
-    setIsDisliked(reaction === 'dislike' ? !isDisliked : false)
+  const onPressReactionButton = (reaction: ReactionTypeEnum) => {
+    setReactionStatus((oldValue) =>
+      oldValue === reaction ? ReactionTypeEnum.NO_REACTION : reaction
+    )
   }
 
   const handleCloseModal = () => {
-    setIsLiked(false)
-    setIsDisliked(false)
     closeModal()
   }
+
+  useEffect(() => {
+    if (visible) {
+      setReactionStatus(defaultReaction)
+    }
+  }, [visible, defaultReaction])
+
+  const getStyledIcon = useCallback(
+    (name: IconNames, props?: object) =>
+      styled(iconFactory.getIcon(name)).attrs(({ theme }) => ({
+        size: theme.icons.sizes.small,
+        ...props,
+      }))``,
+    [iconFactory]
+  )
+
+  const ThumbUpIcon = useMemo(
+    () => ({
+      default: getStyledIcon('like', { testID: 'thumbUp' }),
+      pressed: getStyledIcon('like-filled', {
+        testID: 'thumbUpFilled',
+        color: theme.colors.primary,
+      }),
+    }),
+    [getStyledIcon]
+  )
+
+  const ThumbDownIcon = useMemo(
+    () => ({
+      default: getStyledIcon('dislike', { testID: 'thumbDown' }),
+      pressed: getStyledIcon('dislike-filled', {
+        testID: 'thumbDownFilled',
+      }),
+    }),
+    [getStyledIcon]
+  )
 
   return (
     <AppModal
@@ -65,7 +101,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
           onPress={() => {
             return
           }}
-          disabled={!isLiked && !isDisliked}
+          disabled={!reactionStatus || reactionStatus === ReactionTypeEnum.NO_REACTION}
         />
       }>
       <Spacer.Column numberOfSpaces={6} />
@@ -86,18 +122,18 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
         </ViewGap>
         <ButtonsContainer gap={4}>
           <ReactionToggleButton
-            active={isLiked}
+            active={reactionStatus === ReactionTypeEnum.LIKE}
             label="J’aime"
-            Icon={StyledThumbUp}
-            FilledIcon={StyledThumbUpFilled}
-            onPress={() => onPressReactionButton('like')}
+            Icon={ThumbUpIcon.default}
+            FilledIcon={ThumbUpIcon.pressed}
+            onPress={() => onPressReactionButton(ReactionTypeEnum.LIKE)}
           />
           <ReactionToggleButton
-            active={isDisliked}
+            active={reactionStatus === ReactionTypeEnum.DISLIKE}
             label="Je n’aime pas"
-            Icon={StyledThumbDown}
-            FilledIcon={StyledThumbDownFilled}
-            onPress={() => onPressReactionButton('dislike')}
+            Icon={ThumbDownIcon.default}
+            FilledIcon={ThumbDownIcon.pressed}
+            onPress={() => onPressReactionButton(ReactionTypeEnum.DISLIKE)}
           />
         </ButtonsContainer>
       </ViewGap>
@@ -127,24 +163,3 @@ const ButtonsContainer = styled(ViewGap)({
   flexDirection: 'row',
   marginBottom: getSpacing(12),
 })
-
-const StyledThumbUp = styled(ThumbUp).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-  testID: 'thumbUp',
-}))``
-
-const StyledThumbUpFilled = styled(ThumbUpFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-  color: theme.colors.primary,
-  testID: 'thumbUpFilled',
-}))``
-
-const StyledThumbDown = styled(ThumbDown).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-  testID: 'thumbDown',
-}))``
-
-const StyledThumbDownFilled = styled(ThumbDownFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-  testID: 'thumbDownFilled',
-}))``

@@ -5,21 +5,17 @@ import styled, { useTheme } from 'styled-components/native'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { styledButton } from 'ui/components/buttons/styledButton'
+import { IconNames } from 'ui/components/icons/iconFactory'
+import { useIconFactory } from 'ui/components/icons/useIconFactory'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { ArrowLeftNew } from 'ui/svg/icons/ArrowLeftNew'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { ArrowRightNew } from 'ui/svg/icons/ArrowRightNew'
-import { Share } from 'ui/svg/icons/BicolorShare'
-import { Favorite } from 'ui/svg/icons/Favorite'
-import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
-import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 interface Props {
-  iconName: 'back' | 'share' | 'favorite' | 'favorite-filled' | 'next' | 'previous' | 'reaction'
+  iconName?: IconNames
+  Icon?: React.FC<AccessibleIcon>
   initialColor?: ColorsEnum
   finalColor?: ColorsEnum
   onPress: () => void
@@ -35,22 +31,9 @@ interface Props {
   disabled?: boolean
 }
 
-const iconMapping: { [key in Props['iconName']]: React.FC<AccessibleIcon> } = {
-  back: ArrowPrevious,
-  next: ArrowRightNew,
-  previous: ArrowLeftNew,
-  share: Share,
-  'favorite-filled': FavoriteFilled,
-  favorite: Favorite,
-  reaction: ThumbUp,
-}
-
-const getIcon = (iconName: Props['iconName']): React.FC<AccessibleIcon> => {
-  return iconMapping[iconName]
-}
-
 export const RoundedButton = (props: Props) => {
-  const Icon = getIcon(props.iconName)
+  const iconFactory = useIconFactory()
+  const Icon = props.Icon ?? iconFactory.getIcon(props.iconName)
   const { colors, icons } = useTheme()
 
   const accessibilityProps = useMemo(() => {

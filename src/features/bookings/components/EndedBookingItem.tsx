@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingCancellationReasons } from 'api/gen'
+import { BookingCancellationReasons, ReactionTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
@@ -17,12 +17,14 @@ import { useCategoryId } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
+import { useIconFactory } from 'ui/components/icons/useIconFactory'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Wrong } from 'ui/svg/icons/Wrong'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -33,6 +35,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
+  const iconFactory = useIconFactory()
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
   const isEligibleBookingsForArchiveValue = isEligibleBookingsForArchive(booking)
@@ -51,6 +54,36 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     dateUsed: dateUsed ? formatToSlashedFrenchDate(dateUsed) : undefined,
     cancellationDate: cancellationDate ? formatToSlashedFrenchDate(cancellationDate) : undefined,
   })
+
+  const ReactionLikeIcon = useMemo(
+    () =>
+      styled(iconFactory.getIcon('like-filled')).attrs(({ theme }) => ({
+        color: theme.colors.primary,
+      }))``,
+    [iconFactory]
+  )
+
+  const ReactionDislikeIcon = useMemo(
+    () =>
+      styled(iconFactory.getIcon('dislike-filled')).attrs(({ theme }) => ({
+        color: theme.colors.black,
+      }))``,
+    [iconFactory]
+  )
+
+  const getCustomReactionIcon = useCallback(
+    (reaction?: ReactionTypeEnum | null): React.FC<AccessibleIcon> => {
+      switch (reaction) {
+        case ReactionTypeEnum.LIKE:
+          return ReactionLikeIcon
+        case ReactionTypeEnum.DISLIKE:
+          return ReactionDislikeIcon
+        default:
+          return iconFactory.getIcon('like')
+      }
+    },
+    [iconFactory, ReactionLikeIcon, ReactionDislikeIcon]
+  )
 
   function handlePressOffer() {
     const { offer } = stock
@@ -99,6 +132,18 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     showShareOfferModal()
   }, [stock.offer.id, shareOffer, showShareOfferModal])
 
+  const getReactionButtonAccessibilityLabel = (reaction?: ReactionTypeEnum | null) => {
+    const additionalInfoMap: Record<ReactionTypeEnum, string> = {
+      LIKE: '(tu as liké)',
+      DISLIKE: '(tu as disliké)',
+      NO_REACTION: '(tu n’as pas souhaité réagir)',
+    }
+
+    return ['Réagis à ta réservation']
+      .concat(reaction ? [additionalInfoMap[reaction]] : [])
+      .join(' ')
+  }
+
   return (
     <Container>
       <ContentContainer
@@ -132,9 +177,10 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
         {shouldDisplayReactionFeature ? (
           <ReactionContainer>
             <RoundedButton
-              iconName="reaction"
+              iconName="like"
+              Icon={getCustomReactionIcon(booking.userReaction)}
               onPress={showReactionModal}
-              accessibilityLabel="Réagis à ta réservation"
+              accessibilityLabel={getReactionButtonAccessibilityLabel(booking.userReaction)}
             />
           </ReactionContainer>
         ) : null}
@@ -153,6 +199,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
           dateUsed={endedBookingDateLabel ?? ''}
           closeModal={hideReactionModal}
           visible={reactionModalVisible}
+          defaultReaction={booking.userReaction}
         />
       ) : null}
     </Container>

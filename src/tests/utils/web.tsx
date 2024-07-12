@@ -11,6 +11,7 @@ import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-componen
 import { ThemeProvider } from 'styled-components/native'
 
 import { computedTheme } from 'tests/computedTheme'
+import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 
 export function simulateWebviewMessage(webview: ReactTestInstance, message: string) {
   act(() => {
@@ -28,7 +29,9 @@ type PropsWithTheme = {
 const DefaultWrapper = ({ children, theme }: PropsWithTheme) => {
   return (
     <ThemeProviderWeb theme={deepmerge(computedTheme, theme || {})}>
-      <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>{children}</ThemeProvider>
+      <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>
+        <IconFactoryProvider>{children}</IconFactoryProvider>
+      </ThemeProvider>
     </ThemeProviderWeb>
   )
 }

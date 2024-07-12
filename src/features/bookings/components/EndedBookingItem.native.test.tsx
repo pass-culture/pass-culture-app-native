@@ -2,7 +2,7 @@ import React from 'react'
 import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { BookingCancellationReasons } from 'api/gen'
+import { BookingCancellationReasons, ReactionTypeEnum } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { analytics } from 'libs/analytics'
@@ -167,6 +167,22 @@ describe('EndedBookingItem', () => {
 
       expect(screen.getByLabelText('Réagis à ta réservation')).toBeOnTheScreen()
     })
+
+    it.each([
+      [ReactionTypeEnum.LIKE, /tu as liké/],
+      [ReactionTypeEnum.DISLIKE, /tu as disliké/],
+      [ReactionTypeEnum.NO_REACTION, /tu n’as pas souhaité réagir/],
+    ])(
+      'should display correct icon and correct a11y label when data has reaction %s',
+      async (userReaction, labelRegex) => {
+        renderEndedBookingItem({
+          ...bookingsSnap.ended_bookings[0],
+          userReaction,
+        })
+
+        expect(screen.getByLabelText(labelRegex)).toBeOnTheScreen()
+      }
+    )
 
     it('should open reaction modal on press', () => {
       const mockShowModal = jest.fn()
