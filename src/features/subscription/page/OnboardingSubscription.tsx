@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import colorAlpha from 'color-alpha'
 import React, { useCallback, useEffect, useReducer, useRef } from 'react'
-import { FlatList, Platform, ViewStyle, ViewToken } from 'react-native'
+import { FlatList, Platform, ViewStyle } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -13,6 +13,7 @@ import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileM
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionThematicButton } from 'features/subscription/components/buttons/SubscriptionThematicButton'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
+import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/types'
 import { analytics } from 'libs/analytics'
@@ -139,24 +140,7 @@ export const OnboardingSubscription = () => {
     alignSelf: 'center',
   }
 
-  const onViewableItemsChanged = useCallback(
-    ({ viewableItems, changed }: { viewableItems: ViewToken[]; changed: ViewToken[] }) => {
-      if (!gradientRef.current) return
-
-      const lastItem = SUSBCRIPTION_THEMES[SUSBCRIPTION_THEMES.length - 1]
-      const lastItemVisibilityChanged = changed.some((view) => view.item === lastItem)
-
-      if (!lastItemVisibilityChanged) return
-
-      const isLastItemVisible = viewableItems.some((view) => view.item === lastItem)
-      gradientRef.current.transition(
-        { transform: [{ translateY: isLastItemVisible ? 0 : 100 }] },
-        { transform: [{ translateY: isLastItemVisible ? 100 : 0 }] },
-        500
-      )
-    },
-    []
-  )
+  const { onViewableItemsChanged } = useOnViewableItemsChanged(gradientRef, SUSBCRIPTION_THEMES)
 
   return (
     <React.Fragment>
