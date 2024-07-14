@@ -1,7 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import colorAlpha from 'color-alpha'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { LayoutChangeEvent, View, ListRenderItem, FlatList } from 'react-native'
-import styled from 'styled-components'
+import { LayoutChangeEvent, View, ListRenderItem, FlatList, ViewStyle } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ActivityIdEnum, ActivityResponseModel } from 'api/gen'
@@ -14,9 +16,11 @@ import { useAddress } from 'features/identityCheck/pages/profile/store/addressSt
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { IdentityCheckStep } from 'features/identityCheck/types'
+import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { analytics } from 'libs/analytics'
+import { createAnimatableComponent, AnimatedViewRefType } from 'libs/react-native-animatable'
+import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { Form } from 'ui/components/Form'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
@@ -29,6 +33,9 @@ import { getSpacing, Spacer } from 'ui/theme'
 type StatusForm = {
   selectedStatus: ActivityIdEnum | null
 }
+
+const GRADIENT_HEIGHT = getSpacing(30)
+const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
 
 export const SetStatus = () => {
   const { activities } = useActivityTypes()
@@ -73,13 +80,17 @@ export const SetStatus = () => {
     [storedName, storedCity, storedAddress, patchProfile, saveStep, navigateForwardToStepper]
   )
 
-  const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
+  const gradientRef = useRef<AnimatedViewRefType>(null)
+
+  const { onViewableItemsChanged } = useOnViewableItemsChanged(gradientRef, activities ?? [])
+
+  const [bottomViewHeight, setBottomViewHeight] = useState(0)
 
   const headerHeight = useGetHeaderHeight()
 
-  function onFixedBottomChildrenViewLayout(event: LayoutChangeEvent) {
+  function onBottomViewLayout(event: LayoutChangeEvent) {
     const { height } = event.nativeEvent.layout
-    setBottomChildrenViewHeight(height)
+    setBottomViewHeight(height)
   }
 
   const renderItem: ListRenderItem<ActivityResponseModel> = ({ item }) => (
@@ -99,31 +110,32 @@ export const SetStatus = () => {
       <Spacer.Column numberOfSpaces={3} />
     </Li>
   )
-  const flatListContainer = {
-    flexGrow: 1,
-    paddingBottom: bottomChildrenViewHeight,
-    paddingHorizontal: getSpacing(5),
-  }
 
   return (
     <React.Fragment>
       <PageHeaderWithoutPlaceholder title="Profil" />
-      <FlatList
-        contentContainerStyle={flatListContainer}
-        data={activities}
-        keyExtractor={(item) => item.label}
-        ListHeaderComponent={
-          <React.Fragment>
-            <View style={{ height: headerHeight }} />
-            <Form.MaxWidth>
-              <CenteredTitle titleID={titleID} title="Sélectionne ton statut" />
-              <Spacer.Column numberOfSpaces={5} />
-            </Form.MaxWidth>
-          </React.Fragment>
-        }
-        renderItem={renderItem}
-      />
-      <FixedBottomView onLayout={onFixedBottomChildrenViewLayout}>
+      {activities ? (
+        <FlatListContainer>
+          <FlatList
+            scrollIndicatorInsets={{ right: 1 }} // Corrects scrollbar in the middle
+            contentContainerStyle={flatListStyles}
+            onViewableItemsChanged={onViewableItemsChanged}
+            viewabilityConfig={VIEWABILITY_CONFIG}
+            data={activities}
+            keyExtractor={(item) => item.label}
+            ListHeaderComponent={
+              <React.Fragment>
+                <View style={{ height: headerHeight }} />
+                <CenteredTitle titleID={titleID} title="Sélectionne ton statut" />
+                <Spacer.Column numberOfSpaces={5} />
+              </React.Fragment>
+            }
+            renderItem={renderItem}
+          />
+        </FlatListContainer>
+      ) : null}
+      <Gradient ref={gradientRef} bottomViewHeight={bottomViewHeight} />
+      <BottomView onLayout={onBottomViewLayout}>
         <ButtonPrimary
           type="submit"
           onPress={handleSubmit(submitStatus)}
@@ -135,19 +147,41 @@ export const SetStatus = () => {
           disabled={!selectedStatus}
         />
         <Spacer.BottomScreen />
-      </FixedBottomView>
+      </BottomView>
       <BlurHeader height={headerHeight} />
     </React.Fragment>
   )
 }
 
-const FixedBottomView = styled(View)(({ theme }) => ({
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  right: 0,
+const flatListStyles: ViewStyle = {
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+  paddingVertical: theme.contentPage.marginVertical,
+  maxWidth: theme.contentPage.maxWidth,
+  width: '100%',
+  alignSelf: 'center',
+}
+
+const FlatListContainer = styled(View)({
+  flex: 1,
+})
+
+const BottomView = styled(View)(({ theme }) => ({
+  alignItems: 'center',
   paddingBottom: getSpacing(5),
   paddingTop: getSpacing(3),
   backgroundColor: theme.colors.white,
   paddingHorizontal: getSpacing(5),
+}))
+
+const AnimatedGradient = createAnimatableComponent(LinearGradient)
+const Gradient = styled(AnimatedGradient).attrs<{ bottomViewHeight: number }>(({ theme }) => ({
+  colors: [colorAlpha(theme.colors.white, 0), theme.colors.white],
+  locations: [0, 1],
+  pointerEvents: 'none',
+}))<{ bottomViewHeight: number }>(({ bottomViewHeight }) => ({
+  position: 'absolute',
+  height: GRADIENT_HEIGHT,
+  left: 0,
+  right: 0,
+  bottom: bottomViewHeight,
 }))
