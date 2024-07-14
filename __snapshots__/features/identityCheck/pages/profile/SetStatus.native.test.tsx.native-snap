@@ -180,1802 +180,183 @@ exports[`<SetStatus/> should render correctly 1`] = `
       </View>
     </View>
   </View>,
-  <View
-    style={
+  <RCTScrollView
+    ListHeaderComponent={
+      <React.Fragment>
+        <View
+          style={
+            {
+              "height": 65,
+            }
+          }
+        />
+        <Styled(View)>
+          <CenteredTitle
+            title="Sélectionne ton statut"
+            titleID="testUuidV4"
+          />
+          <Styled(View)
+            numberOfSpaces={5}
+          />
+        </Styled(View)>
+      </React.Fragment>
+    }
+    contentContainerStyle={
+      {
+        "flexGrow": 1,
+        "paddingBottom": 0,
+        "paddingHorizontal": 20,
+      }
+    }
+    data={
       [
         {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
+          "description": null,
+          "id": "MIDDLE_SCHOOL_STUDENT",
+          "label": "Collégien",
+        },
+        {
+          "description": null,
+          "id": "HIGH_SCHOOL_STUDENT",
+          "label": "Lycéen",
+        },
+        {
+          "description": null,
+          "id": "STUDENT",
+          "label": "Étudiant",
+        },
+        {
+          "description": null,
+          "id": "EMPLOYEE",
+          "label": "Employé",
+        },
+        {
+          "description": null,
+          "id": "APPRENTICE",
+          "label": "Apprenti",
+        },
+        {
+          "description": null,
+          "id": "APPRENTICE_STUDENT",
+          "label": "Alternant",
+        },
+        {
+          "description": "En service civique",
+          "id": "VOLUNTEER",
+          "label": "Volontaire",
+        },
+        {
+          "description": "En incapacité de travailler",
+          "id": "INACTIVE",
+          "label": "Inactif",
+        },
+        {
+          "description": "En recherche d’emploi",
+          "id": "UNEMPLOYED",
+          "label": "Chômeur",
         },
       ]
     }
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={[]}
+    viewabilityConfigCallbackPairs={[]}
   >
-    <View
-      onLayout={[Function]}
-      style={
-        [
-          [
-            {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderTopLeftRadius": 22,
-              "borderTopRightRadius": 22,
-              "display": "flex",
-              "flexBasis": 0,
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "height": "100%",
-              "overflow": "scroll",
-              "paddingTop": 32,
-            },
-          ],
-          {
-            "paddingBottom": 0,
-          },
-        ]
-      }
-    >
+    <View>
       <View
-        style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "maxWidth": 500,
-              "width": "100%",
-            },
-          ]
-        }
+        collapsable={false}
+        onLayout={[Function]}
       >
-        <RCTScrollView
-          bottomChildrenViewHeight={0}
-          contentContainerStyle={
+        <View
+          style={
             {
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "paddingBottom": 0,
-              "paddingHorizontal": 20,
+              "height": 65,
             }
           }
-          keyboardShouldPersistTaps="handled"
-          onContentSizeChange={[Function]}
-          onLayout={[Function]}
-          style={
-            [
-              {},
-            ]
-          }
-        >
-          <View>
-            <View
-              style={
-                {
-                  "height": 65,
-                }
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  nativeID="testUuidV4"
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Sélectionne ton statut
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={5}
-                style={
-                  [
-                    {
-                      "height": 20,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabelledBy="testUuidV4"
-                accessibilityRole="radiogroup"
-              >
-                <View
-                  accessibilityRole="list"
-                  style={
-                    [
-                      {
-                        "flexDirection": "column",
-                        "paddingLeft": 0,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Collégien"
-                      accessibilityRole="radio"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": false,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "#ffffff",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "flexGrow": 1,
-                              "paddingBottom": 16,
-                              "paddingLeft": 16,
-                              "paddingRight": 16,
-                              "paddingTop": 16,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Collégien"
-                    >
-                      <View
-                        isSelected={false}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "height": 16,
-                              "justifyContent": "center",
-                              "marginRight": 16,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          isSelected={false}
-                          style={
-                            [
-                              {
-                                "backgroundColor": "transparent",
-                                "borderRadius": 16,
-                                "height": 8,
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        contentDirection="row"
-                        style={
-                          [
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "marginVertical": 16,
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              isHover={false}
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                              testID="undefined-label"
-                            >
-                              Collégien
-                            </Text>
-                          </View>
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Regular",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                            testID="undefined-right-text"
-                          />
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={3}
-                      style={
-                        [
-                          {
-                            "height": 12,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Lycéen"
-                      accessibilityRole="radio"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": false,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "#ffffff",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "flexGrow": 1,
-                              "paddingBottom": 16,
-                              "paddingLeft": 16,
-                              "paddingRight": 16,
-                              "paddingTop": 16,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Lycéen"
-                    >
-                      <View
-                        isSelected={false}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "height": 16,
-                              "justifyContent": "center",
-                              "marginRight": 16,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          isSelected={false}
-                          style={
-                            [
-                              {
-                                "backgroundColor": "transparent",
-                                "borderRadius": 16,
-                                "height": 8,
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        contentDirection="row"
-                        style={
-                          [
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "marginVertical": 16,
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              isHover={false}
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                              testID="undefined-label"
-                            >
-                              Lycéen
-                            </Text>
-                          </View>
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Regular",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                            testID="undefined-right-text"
-                          />
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={3}
-                      style={
-                        [
-                          {
-                            "height": 12,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Étudiant"
-                      accessibilityRole="radio"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": false,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "#ffffff",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "flexGrow": 1,
-                              "paddingBottom": 16,
-                              "paddingLeft": 16,
-                              "paddingRight": 16,
-                              "paddingTop": 16,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Étudiant"
-                    >
-                      <View
-                        isSelected={false}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "height": 16,
-                              "justifyContent": "center",
-                              "marginRight": 16,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          isSelected={false}
-                          style={
-                            [
-                              {
-                                "backgroundColor": "transparent",
-                                "borderRadius": 16,
-                                "height": 8,
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        contentDirection="row"
-                        style={
-                          [
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "marginVertical": 16,
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              isHover={false}
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                              testID="undefined-label"
-                            >
-                              Étudiant
-                            </Text>
-                          </View>
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Regular",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                            testID="undefined-right-text"
-                          />
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={3}
-                      style={
-                        [
-                          {
-                            "height": 12,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Employé"
-                      accessibilityRole="radio"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": false,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "#ffffff",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "flexGrow": 1,
-                              "paddingBottom": 16,
-                              "paddingLeft": 16,
-                              "paddingRight": 16,
-                              "paddingTop": 16,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Employé"
-                    >
-                      <View
-                        isSelected={false}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "height": 16,
-                              "justifyContent": "center",
-                              "marginRight": 16,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          isSelected={false}
-                          style={
-                            [
-                              {
-                                "backgroundColor": "transparent",
-                                "borderRadius": 16,
-                                "height": 8,
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        contentDirection="row"
-                        style={
-                          [
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "marginVertical": 16,
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              isHover={false}
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                              testID="undefined-label"
-                            >
-                              Employé
-                            </Text>
-                          </View>
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Regular",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                            testID="undefined-right-text"
-                          />
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={3}
-                      style={
-                        [
-                          {
-                            "height": 12,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Apprenti"
-                      accessibilityRole="radio"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": false,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "#ffffff",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "flexGrow": 1,
-                              "paddingBottom": 16,
-                              "paddingLeft": 16,
-                              "paddingRight": 16,
-                              "paddingTop": 16,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Apprenti"
-                    >
-                      <View
-                        isSelected={false}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "height": 16,
-                              "justifyContent": "center",
-                              "marginRight": 16,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          isSelected={false}
-                          style={
-                            [
-                              {
-                                "backgroundColor": "transparent",
-                                "borderRadius": 16,
-                                "height": 8,
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        contentDirection="row"
-                        style={
-                          [
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "marginVertical": 16,
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              isHover={false}
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                              testID="undefined-label"
-                            >
-                              Apprenti
-                            </Text>
-                          </View>
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Regular",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                            testID="undefined-right-text"
-                          />
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={3}
-                      style={
-                        [
-                          {
-                            "height": 12,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Alternant"
-                      accessibilityRole="radio"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": false,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "#ffffff",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "flexGrow": 1,
-                              "paddingBottom": 16,
-                              "paddingLeft": 16,
-                              "paddingRight": 16,
-                              "paddingTop": 16,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Alternant"
-                    >
-                      <View
-                        isSelected={false}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "height": 16,
-                              "justifyContent": "center",
-                              "marginRight": 16,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          isSelected={false}
-                          style={
-                            [
-                              {
-                                "backgroundColor": "transparent",
-                                "borderRadius": 16,
-                                "height": 8,
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        contentDirection="row"
-                        style={
-                          [
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "marginVertical": 16,
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              isHover={false}
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                              testID="undefined-label"
-                            >
-                              Alternant
-                            </Text>
-                          </View>
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Regular",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                            testID="undefined-right-text"
-                          />
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={3}
-                      style={
-                        [
-                          {
-                            "height": 12,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Volontaire"
-                      accessibilityRole="radio"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": false,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "#ffffff",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "flexGrow": 1,
-                              "paddingBottom": 16,
-                              "paddingLeft": 16,
-                              "paddingRight": 16,
-                              "paddingTop": 16,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Volontaire"
-                    >
-                      <View
-                        isSelected={false}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "height": 16,
-                              "justifyContent": "center",
-                              "marginRight": 16,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          isSelected={false}
-                          style={
-                            [
-                              {
-                                "backgroundColor": "transparent",
-                                "borderRadius": 16,
-                                "height": 8,
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        contentDirection="row"
-                        style={
-                          [
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "marginVertical": 16,
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              isHover={false}
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                              testID="undefined-label"
-                            >
-                              Volontaire
-                            </Text>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                    "marginTop": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              En service civique
-                            </Text>
-                          </View>
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Regular",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                            testID="undefined-right-text"
-                          />
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={3}
-                      style={
-                        [
-                          {
-                            "height": 12,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Inactif"
-                      accessibilityRole="radio"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": false,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "#ffffff",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "flexGrow": 1,
-                              "paddingBottom": 16,
-                              "paddingLeft": 16,
-                              "paddingRight": 16,
-                              "paddingTop": 16,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Inactif"
-                    >
-                      <View
-                        isSelected={false}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "height": 16,
-                              "justifyContent": "center",
-                              "marginRight": 16,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          isSelected={false}
-                          style={
-                            [
-                              {
-                                "backgroundColor": "transparent",
-                                "borderRadius": 16,
-                                "height": 8,
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        contentDirection="row"
-                        style={
-                          [
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "marginVertical": 16,
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              isHover={false}
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                              testID="undefined-label"
-                            >
-                              Inactif
-                            </Text>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                    "marginTop": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              En incapacité de travailler
-                            </Text>
-                          </View>
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Regular",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                            testID="undefined-right-text"
-                          />
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={3}
-                      style={
-                        [
-                          {
-                            "height": 12,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                  <View
-                    accessibilityRole="none"
-                    style={
-                      [
-                        {
-                          "display": "flex",
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityLabel="Chômeur"
-                      accessibilityRole="radio"
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": false,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
-                      }
-                      accessibilityValue={
-                        {
-                          "max": undefined,
-                          "min": undefined,
-                          "now": undefined,
-                          "text": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      style={
-                        [
-                          [
-                            {
-                              "userSelect": "auto",
-                            },
-                            {
-                              "alignItems": "center",
-                              "backgroundColor": "#ffffff",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "flexGrow": 1,
-                              "paddingBottom": 16,
-                              "paddingLeft": 16,
-                              "paddingRight": 16,
-                              "paddingTop": 16,
-                            },
-                          ],
-                          {
-                            "opacity": 1,
-                          },
-                        ]
-                      }
-                      testID="Chômeur"
-                    >
-                      <View
-                        isSelected={false}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "borderColor": "#90949D",
-                              "borderRadius": 8,
-                              "borderStyle": "solid",
-                              "borderWidth": 1,
-                              "height": 16,
-                              "justifyContent": "center",
-                              "marginRight": 16,
-                              "width": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          isSelected={false}
-                          style={
-                            [
-                              {
-                                "backgroundColor": "transparent",
-                                "borderRadius": 16,
-                                "height": 8,
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        contentDirection="row"
-                        style={
-                          [
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          style={
-                            [
-                              {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            style={
-                              [
-                                {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "marginVertical": 16,
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              isHover={false}
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                              testID="undefined-label"
-                            >
-                              Chômeur
-                            </Text>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                    "marginTop": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              En recherche d’emploi
-                            </Text>
-                          </View>
-                          <Text
-                            style={
-                              [
-                                {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Regular",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
-                            testID="undefined-right-text"
-                          />
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      numberOfSpaces={3}
-                      style={
-                        [
-                          {
-                            "height": 12,
-                          },
-                        ]
-                      }
-                    />
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </RCTScrollView>
+        />
         <View
-          onLayout={[Function]}
           style={
             [
               {
-                "backgroundColor": "#ffffff",
-                "bottom": 0,
-                "left": 0,
-                "paddingBottom": 20,
-                "paddingHorizontal": 20,
-                "paddingTop": 12,
-                "position": "absolute",
-                "right": 0,
+                "maxWidth": 500,
+                "width": "100%",
               },
             ]
           }
         >
           <View
-            accessibilityLabel="Choisis ton statut"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <Text
+              nativeID="testUuidV4"
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                    "textAlign": "center",
+                  },
+                ]
+              }
+            >
+              Sélectionne ton statut
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={5}
+            style={
+              [
+                {
+                  "height": 20,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Collégien"
+            accessibilityRole="radio"
             accessibilityState={
               {
                 "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
+                "checked": false,
+                "disabled": undefined,
                 "expanded": undefined,
                 "selected": undefined,
               }
@@ -1989,7 +370,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
               }
             }
             accessible={true}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -2005,63 +386,1631 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#F1F1F4",
-                    "borderRadius": 24,
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
                     "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "width": "100%",
+                    "flexGrow": 1,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
                   },
-                  {},
                 ],
                 {
                   "opacity": 1,
                 },
               ]
             }
-            testID="Choisis ton statut"
+            testID="Collégien"
           >
             <View
+              isSelected={false}
               style={
                 [
                   {
                     "alignItems": "center",
-                    "flexDirection": "row",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginRight": 16,
+                    "width": 16,
                   },
                 ]
               }
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
+                isSelected={false}
                 style={
                   [
                     {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "maxWidth": "100%",
+                      "backgroundColor": "transparent",
+                      "borderRadius": 16,
+                      "height": 8,
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              contentDirection="row"
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
                     },
                   ]
                 }
               >
-                Choisis ton statut
-              </Text>
+                <View
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    isHover={false}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                    testID="undefined-label"
+                  >
+                    Collégien
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                  testID="undefined-right-text"
+                />
+              </View>
             </View>
           </View>
           <View
-            customHeight={8}
-            enable={true}
+            numberOfSpaces={3}
             style={
               [
                 {
-                  "height": 8,
+                  "height": 12,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Lycéen"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Lycéen"
+          >
+            <View
+              isSelected={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginRight": 16,
+                    "width": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                isSelected={false}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderRadius": 16,
+                      "height": 8,
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              contentDirection="row"
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    isHover={false}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                    testID="undefined-label"
+                  >
+                    Lycéen
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                  testID="undefined-right-text"
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={3}
+            style={
+              [
+                {
+                  "height": 12,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Étudiant"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Étudiant"
+          >
+            <View
+              isSelected={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginRight": 16,
+                    "width": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                isSelected={false}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderRadius": 16,
+                      "height": 8,
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              contentDirection="row"
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    isHover={false}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                    testID="undefined-label"
+                  >
+                    Étudiant
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                  testID="undefined-right-text"
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={3}
+            style={
+              [
+                {
+                  "height": 12,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Employé"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Employé"
+          >
+            <View
+              isSelected={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginRight": 16,
+                    "width": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                isSelected={false}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderRadius": 16,
+                      "height": 8,
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              contentDirection="row"
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    isHover={false}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                    testID="undefined-label"
+                  >
+                    Employé
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                  testID="undefined-right-text"
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={3}
+            style={
+              [
+                {
+                  "height": 12,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Apprenti"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Apprenti"
+          >
+            <View
+              isSelected={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginRight": 16,
+                    "width": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                isSelected={false}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderRadius": 16,
+                      "height": 8,
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              contentDirection="row"
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    isHover={false}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                    testID="undefined-label"
+                  >
+                    Apprenti
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                  testID="undefined-right-text"
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={3}
+            style={
+              [
+                {
+                  "height": 12,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Alternant"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Alternant"
+          >
+            <View
+              isSelected={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginRight": 16,
+                    "width": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                isSelected={false}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderRadius": 16,
+                      "height": 8,
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              contentDirection="row"
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    isHover={false}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                    testID="undefined-label"
+                  >
+                    Alternant
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                  testID="undefined-right-text"
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={3}
+            style={
+              [
+                {
+                  "height": 12,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Volontaire"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Volontaire"
+          >
+            <View
+              isSelected={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginRight": 16,
+                    "width": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                isSelected={false}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderRadius": 16,
+                      "height": 8,
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              contentDirection="row"
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    isHover={false}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                    testID="undefined-label"
+                  >
+                    Volontaire
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginTop": 4,
+                        },
+                      ]
+                    }
+                  >
+                    En service civique
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                  testID="undefined-right-text"
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={3}
+            style={
+              [
+                {
+                  "height": 12,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Inactif"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Inactif"
+          >
+            <View
+              isSelected={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginRight": 16,
+                    "width": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                isSelected={false}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderRadius": 16,
+                      "height": 8,
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              contentDirection="row"
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    isHover={false}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                    testID="undefined-label"
+                  >
+                    Inactif
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginTop": 4,
+                        },
+                      ]
+                    }
+                  >
+                    En incapacité de travailler
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                  testID="undefined-right-text"
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={3}
+            style={
+              [
+                {
+                  "height": 12,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Chômeur"
+            accessibilityRole="radio"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "paddingBottom": 16,
+                    "paddingLeft": 16,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Chômeur"
+          >
+            <View
+              isSelected={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "borderColor": "#90949D",
+                    "borderRadius": 8,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 16,
+                    "justifyContent": "center",
+                    "marginRight": 16,
+                    "width": 16,
+                  },
+                ]
+              }
+            >
+              <View
+                isSelected={false}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "borderRadius": 16,
+                      "height": 8,
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              contentDirection="row"
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginVertical": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    isHover={false}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                    testID="undefined-label"
+                  >
+                    Chômeur
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginTop": 4,
+                        },
+                      ]
+                    }
+                  >
+                    En recherche d’emploi
+                  </Text>
+                </View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                  testID="undefined-right-text"
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={3}
+            style={
+              [
+                {
+                  "height": 12,
                 },
               ]
             }
@@ -2069,6 +2018,108 @@ exports[`<SetStatus/> should render correctly 1`] = `
         </View>
       </View>
     </View>
+  </RCTScrollView>,
+  <View
+    className="sc-aXZVg jJUodk"
+    onLayout={[Function]}
+  >
+    <View
+      accessibilityLabel="Choisis ton statut"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": true,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          [
+            {
+              "userSelect": "auto",
+            },
+            {
+              "alignItems": "center",
+              "backgroundColor": "#F1F1F4",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "paddingBottom": 2,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 2,
+              "width": "100%",
+            },
+            {},
+          ],
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+      testID="Choisis ton statut"
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Choisis ton statut
+        </Text>
+      </View>
+    </View>
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        [
+          {
+            "height": 8,
+          },
+        ]
+      }
+    />
   </View>,
   <View
     height={65}
