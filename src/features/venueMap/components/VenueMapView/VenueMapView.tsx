@@ -33,6 +33,7 @@ import MapView, { Map, Marker, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { parseType } from 'libs/parsers/venueType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
   height: number
@@ -45,6 +46,7 @@ const PIN_MAX_Z_INDEX = 10_000
 
 export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { tabBarHeight } = useCustomSafeInsets()
   const initialVenues = useInitialVenues()
   const { setInitialVenues } = useInitialVenuesActions()
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
@@ -187,6 +189,8 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
           onLayout={({ nativeEvent }: LayoutChangeEvent) => {
             previewHeight.current = nativeEvent.layout.height
           }}
+          from={from}
+          tabBarHeight={tabBarHeight}
         />
       ) : null}
     </React.Fragment>
@@ -206,9 +210,12 @@ const ButtonContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledVenueMapPreview = styled(VenueMapPreview)(({ theme }) => ({
+const StyledVenueMapPreview = styled(VenueMapPreview)<{
+  from: 'venueMap' | 'searchResults'
+  tabBarHeight: number
+}>(({ theme, from, tabBarHeight }) => ({
   position: 'absolute',
-  bottom: PREVIEW_BOTTOM_MARGIN,
+  bottom: from === 'venueMap' ? PREVIEW_BOTTOM_MARGIN : PREVIEW_BOTTOM_MARGIN + tabBarHeight,
   left: getSpacing(4),
   right: getSpacing(4),
   backgroundColor: theme.colors.white,
