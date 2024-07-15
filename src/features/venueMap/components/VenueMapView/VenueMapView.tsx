@@ -103,6 +103,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
     // Prevents the onPress of the MapView from being triggered
     event.stopPropagation()
     setShowSearchButton(false)
+    analytics.logPinMapPressed({ venueType: venue.venue_type, venueId: venue.venueId })
     if (isPreviewEnabled) {
       setSelectedVenue(venue)
       centerOnLocation(

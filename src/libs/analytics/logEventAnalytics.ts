@@ -519,6 +519,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.PHONE_NUMBER_CLICKED }),
   logPhoneValidationCodeClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.PHONE_VALIDATION_CODE_CLICKED }),
+  logPinMapPressed: ({ venueType, venueId }: { venueType?: string | null; venueId: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.PIN_MAP_PRESSED }, { venueId, venueType }),
   logPlaylistHorizontalScroll: (
     fromOfferId?: number,
     playlistType?: PlaylistType,
