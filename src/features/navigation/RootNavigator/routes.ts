@@ -436,11 +436,7 @@ export const routes: RootRoute[] = [
   {
     name: 'VenueMap',
     component: VenueMap,
-    pathConfig: {
-      path: 'carte-des-lieux',
-      parse: screenParamsParser['VenueMap'],
-      stringify: screenParamsStringifier['VenueMap'],
-    },
+    path: 'carte-des-lieux',
     options: { title: 'Carte des lieux' },
   },
   {

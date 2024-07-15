@@ -5,6 +5,12 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
+const mockSetInitialVenues = jest.fn()
+jest.mock('features/venueMap/store/initialVenuesStore', () => ({
+  useInitialVenuesActions: () => ({ setInitialVenues: mockSetInitialVenues }),
+  useInitialVenues: jest.fn(),
+}))
+
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<VenueMapView />', () => {
@@ -50,6 +56,25 @@ describe('<VenueMapView />', () => {
     fireEvent.press(await screen.findByText('Rechercher dans cette zone'))
 
     expect(screen.queryByText('Rechercher dans cette zone')).not.toBeOnTheScreen()
+  })
+
+  it('should reset initial venues store when pressing search button', async () => {
+    renderVenueMapView()
+    const mapView = screen.getByTestId('venue-map-view')
+
+    await act(() => {})
+
+    // Simulate region change
+    fireEvent(mapView, 'onRegionChangeComplete', {
+      latitude: 1,
+      longitude: 1,
+      latitudeDelta: 1,
+      longitudeDelta: 1,
+    })
+
+    await act(async () => fireEvent.press(await screen.findByText('Rechercher dans cette zone')))
+
+    expect(mockSetInitialVenues).toHaveBeenNthCalledWith(1, [])
   })
 })
 

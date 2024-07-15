@@ -1,9 +1,9 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueMapCluster } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
 import { PREVIEW_BOTTOM_MARGIN } from 'features/venueMap/components/VenueMapView/constant'
@@ -16,6 +16,10 @@ import { useGetDefaultRegion } from 'features/venueMap/hook/useGetDefaultRegion'
 import { useGetVenuesInRegion } from 'features/venueMap/hook/useGetVenuesInRegion'
 import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
 import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessionDuration'
+import {
+  useInitialVenues,
+  useInitialVenuesActions,
+} from 'features/venueMap/store/initialVenuesStore'
 import {
   useSelectedVenue,
   useSelectedVenueActions,
@@ -41,8 +45,8 @@ const PIN_MAX_Z_INDEX = 10_000
 
 export const VenueMapView: FunctionComponent<Props> = ({ height, shouldDisplaySearchButton }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { params } = useRoute<UseRouteType<'VenueMap'>>()
-  const [initialVenues, setInitialVenues] = useState(params?.initialVenues)
+  const initialVenues = useInitialVenues()
+  const { setInitialVenues } = useInitialVenuesActions()
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const mapViewRef = useRef<Map>(null)
   const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
@@ -91,7 +95,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, shouldDisplaySe
   }
 
   const handleSearchPress = () => {
-    setInitialVenues(undefined)
+    setInitialVenues([])
     setLastRegionSearched(currentRegion)
     setShowSearchButton(false)
   }
