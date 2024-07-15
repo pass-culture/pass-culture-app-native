@@ -8,8 +8,6 @@ import { SingleFilterButton } from 'features/search/components/Buttons/SingleFil
 import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/constant'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
-import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
-import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessionDuration'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal/VenueTypeModal'
 import {
   useVenueTypeCode,
@@ -43,9 +41,6 @@ export const VenueMap: FunctionComponent = () => {
   } = useModal(false)
 
   const venueMapHeight = height - (headerHeight + FILTER_BANNER_HEIGHT)
-
-  useTrackMapSessionDuration()
-  useTrackMapSeenDuration()
 
   const venueTypeLabel = getVenueTypeLabel(venueTypeCode) ?? 'Tous les lieux'
 

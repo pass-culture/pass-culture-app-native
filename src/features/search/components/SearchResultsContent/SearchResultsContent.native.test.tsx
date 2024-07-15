@@ -21,6 +21,7 @@ import { PLACEHOLDER_DATA as mockSubcategoriesData } from 'libs/subcategories/pl
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 
@@ -768,6 +769,18 @@ describe('SearchResultsContent component', () => {
 
       expect(await screen.findByText('Carte')).toBeOnTheScreen()
       expect(await screen.findByText('Liste')).toBeOnTheScreen()
+    })
+
+    it('should log consult venue map when pressing carte tab', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      render(reactQueryProviderHOC(<SearchResultsContent />))
+
+      fireEvent.press(await screen.findByText('Carte'))
+
+      expect(analytics.logConsultVenueMap).toHaveBeenCalledWith({
+        from: 'search',
+        searchId: 'testUuidV4',
+      })
     })
   })
 })

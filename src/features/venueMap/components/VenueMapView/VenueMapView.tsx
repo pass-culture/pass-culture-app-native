@@ -14,6 +14,8 @@ import { zoomOutIfMapEmpty } from 'features/venueMap/helpers/zoomOutIfMapEmpty'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { useGetDefaultRegion } from 'features/venueMap/hook/useGetDefaultRegion'
 import { useGetVenuesInRegion } from 'features/venueMap/hook/useGetVenuesInRegion'
+import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
+import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessionDuration'
 import {
   useSelectedVenue,
   useSelectedVenueActions,
@@ -57,6 +59,9 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const filteredVenues = venueTypeCode
     ? venues.filter((venue) => venue.venue_type === venueTypeCode)
     : venues
+
+  useTrackMapSessionDuration()
+  useTrackMapSeenDuration()
 
   useEffect(() => {
     if (venues.length > 1) {

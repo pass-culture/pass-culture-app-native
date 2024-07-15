@@ -321,6 +321,13 @@ export const SearchResultsContent: React.FC = () => {
               { key: Tab.SEARCHLIST, Icon: Sort },
               { key: Tab.MAP, Icon: Map },
             ]}
+            onTabChange={{
+              Carte: () =>
+                analytics.logConsultVenueMap({
+                  from: 'search',
+                  searchId: searchState.searchId,
+                }),
+            }}
           />
         ) : (
           tabPanels[Tab.SEARCHLIST]

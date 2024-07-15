@@ -266,8 +266,8 @@ export const logEventAnalytics = {
     homeEntryId?: string
     searchId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
-  logConsultVenueMap: ({ from }: { from: Referrals }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_MAP }, { from }),
+  logConsultVenueMap: ({ from, searchId }: { from: Referrals; searchId?: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_MAP }, { from, searchId }),
   logConsultVenueOffers: (params: { venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE_OFFERS }, params),
   logConsultVideo: (params: {
