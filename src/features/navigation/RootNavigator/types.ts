@@ -21,6 +21,7 @@ export type Referrals =
   | 'highlightOffer'
   | 'home'
   | 'same_artist_playlist'
+  | 'search'
   | 'searchAutoComplete'
   | 'searchLanding'
   | 'searchPlaylist'
