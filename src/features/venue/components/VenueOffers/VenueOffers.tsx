@@ -10,8 +10,6 @@ import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import type { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
 import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffersList'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -47,7 +45,8 @@ export function VenueOffers({ venue, venueOffers, playlists }: Readonly<VenueOff
   const isOfferAMovieScreening = venueOffers?.hits.some(
     (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
   )
-  const enableNewXpCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE)
+  const enableNewXpCine = true
+  // const enableNewXpCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE)
 
   if (areVenueOffersLoading || arePlaylistsLoading) {
     return <LoadingState />

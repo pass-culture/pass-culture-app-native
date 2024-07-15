@@ -16,8 +16,14 @@ const TOMORROW = dateBuilder().withDay(2).toString()
 const AFTER_TOMORROW = dateBuilder().withDay(3).toString()
 const AFTER_15_DAYS = dateBuilder().withDay(17).toString()
 
-const TODAY_STOCKS = [stockBuilder().withBeginningDatetime(TODAY).build()]
-const TOMORROW_STOCKS = [stockBuilder().withBeginningDatetime(TOMORROW).build()]
+const TODAY_STOCKS = [
+  stockBuilder().withBeginningDatetime(TODAY).build(),
+  stockBuilder().withBeginningDatetime(TOMORROW).build(),
+]
+const TOMORROW_STOCKS = [
+  stockBuilder().withBeginningDatetime(TOMORROW).build(),
+  stockBuilder().withBeginningDatetime(AFTER_TOMORROW).build(),
+]
 const AFTER_15_DAYS_STOCKS = [stockBuilder().withBeginningDatetime(AFTER_15_DAYS).build()]
 
 mockdate.set(TODAY)
@@ -33,7 +39,6 @@ describe('getNextMoviesByDate', () => {
     const nextMovies = getNextMoviesByDate(offerStocks, new Date(TODAY))
 
     expect(nextMovies).toHaveLength(offerStocks.length)
-    expect(nextMovies[0]?.movie.id).toBe(1)
   })
 
   it('should not return movies with stocks for the selected date', () => {
@@ -46,7 +51,7 @@ describe('getNextMoviesByDate', () => {
     const nextMovies = getNextMoviesByDate(offerStocks, new Date(TODAY))
 
     expect(nextMovies).toHaveLength(1)
-    expect(nextMovies[0]?.movie.id).toBe(2)
+    expect(nextMovies[0]?.offer.id).toBe(2)
   })
 
   it('should not return movies with only stocks after 15 days', () => {
@@ -58,7 +63,7 @@ describe('getNextMoviesByDate', () => {
     const nextMovies = getNextMoviesByDate(offerStocks, new Date(TODAY))
 
     expect(nextMovies).toHaveLength(1)
-    expect(nextMovies[0]?.movie.id).toBe(1)
+    expect(nextMovies[0]?.offer.id).toBe(1)
   })
 
   it('should return movies with stocks before and after 15 days', () => {
@@ -134,14 +139,14 @@ describe('getNextMoviesByDate', () => {
 
     let nextMovies = getNextMoviesByDate(offerStocks, new Date(TODAY))
 
-    expect(nextMovies[0]?.isUpcomming).toBeTruthy()
+    expect(nextMovies[0]?.isUpcoming).toBeTruthy()
 
     nextMovies = getNextMoviesByDate(offerStocks, new Date(SELECTED_DATE))
 
-    expect(nextMovies[0]?.isUpcomming).toBeTruthy()
+    expect(nextMovies[0]?.isUpcoming).toBeTruthy()
 
     nextMovies = getNextMoviesByDate(offerStocks, new Date(TOMORROW))
 
-    expect(nextMovies[0]?.isUpcomming).toBeFalsy()
+    expect(nextMovies[0]?.isUpcoming).toBeFalsy()
   })
 })

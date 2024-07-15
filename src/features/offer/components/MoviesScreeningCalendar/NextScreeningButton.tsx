@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
 import { extractDate } from 'features/offer/components/MovieCalendar/hooks/useMovieCalendarDay'
@@ -7,15 +7,17 @@ import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
-const INFO_BANNER_MESSAGE = 'Prochaine séance'
+type Props = { onPress: () => void; date: Date; isUpcoming?: boolean }
 
-export const NextScreeningButton = ({ onPress, date }: { onPress: () => void; date: Date }) => {
+export const NextScreeningButton: FC<Props> = ({ onPress, date, isUpcoming = true }) => {
   const { dayDate, fullWeekDay, fullMonth } = extractDate(date)
 
   return (
     <Container onPress={onPress}>
       <InfoBanner
-        message={<StyledMessage>{INFO_BANNER_MESSAGE}</StyledMessage>}
+        message={
+          <StyledMessage>{isUpcoming ? 'Prochaine séance' : 'Séance suivante'}</StyledMessage>
+        }
         backgroundColor={theme.colors.greyLight}>
         <ButtonQuaternarySecondary
           numberOfLines={1}

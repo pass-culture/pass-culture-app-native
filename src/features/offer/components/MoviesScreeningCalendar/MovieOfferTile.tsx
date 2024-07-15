@@ -1,12 +1,14 @@
 import React, { FC, useMemo } from 'react'
 import styled from 'styled-components/native'
 
-import type { OfferPreviewResponse, OfferResponseV2 } from 'api/gen'
+import type { OfferPreviewResponse } from 'api/gen'
 import {
   getDateString,
   getMovieScreenings,
 } from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
+import { MoviesOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
+import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
@@ -16,14 +18,25 @@ import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type MovieOfferTileProps = {
-  offer: OfferResponseV2
+  moviesOffer: MoviesOffer
   venueOffers: VenueOffers
   date: Date
   isLast: boolean
+  isUpcoming?: boolean
+  nextScreeningDate?: Date
+  setSelectedDate: (date: Date) => void
 }
 
-export const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, offer, isLast }) => {
-  const movieScreenings = getMovieScreenings(offer.stocks)
+export const MovieOfferTile: FC<MovieOfferTileProps> = ({
+  venueOffers,
+  date,
+  moviesOffer,
+  isLast,
+  isUpcoming,
+  nextScreeningDate,
+  setSelectedDate,
+}) => {
+  const movieScreenings = getMovieScreenings(moviesOffer.offer.stocks)
 
   const selectedScreeningStock = useMemo(
     () => movieScreenings[getDateString(`${date}`)],
@@ -34,22 +47,27 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, off
 
   const { bookingData, selectedDateScreenings } = useSelectedDateScreening(
     selectedScreeningStock,
-    offer.isExternalBookingsDisabled
+    moviesOffer.offer.isExternalBookingsDisabled
   )
 
   const {
     onPress: onPressOfferCTA,
     CTAOfferModal,
     movieScreeningUserData,
-  } = useOfferCTAButton(offer, subcategoriesMapping[offer.subcategoryId], bookingData)
+  } = useOfferCTAButton(
+    moviesOffer.offer,
+    subcategoriesMapping[moviesOffer.offer.subcategoryId],
+    bookingData
+  )
 
   const eventCardData = useMemo(
-    () => selectedDateScreenings(offer.venue.id, onPressOfferCTA, movieScreeningUserData),
-    [offer.venue.id, onPressOfferCTA, selectedDateScreenings, movieScreeningUserData]
+    () =>
+      selectedDateScreenings(moviesOffer.offer.venue.id, onPressOfferCTA, movieScreeningUserData),
+    [movieScreeningUserData, moviesOffer.offer.venue.id, onPressOfferCTA, selectedDateScreenings]
   )
   const offerScreeningOnSelectedDates = useMemo(
-    () => venueOffers.hits.find((item) => Number(item.objectID) === offer.id),
-    [offer.id, venueOffers.hits]
+    () => venueOffers.hits.find((item) => Number(item.objectID) === moviesOffer.offer.id),
+    [moviesOffer.offer.id, venueOffers.hits]
   )
   return (
     <React.Fragment>
@@ -61,14 +79,22 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, off
               from: 'venue',
             }}
             price={undefined}
-            subtitles={getSubtitles(offer)}
+            subtitles={getSubtitles(moviesOffer.offer)}
             withRightArrow
           />
         ) : null}
       </HorizontalOfferTileContainer>
 
       <Spacer.Column numberOfSpaces={4} />
-      {eventCardData ? <EventCardList data={eventCardData} /> : null}
+      {nextScreeningDate ? (
+        <NextScreeningButton
+          date={nextScreeningDate}
+          isUpcoming={isUpcoming}
+          onPress={() => setSelectedDate(nextScreeningDate)}
+        />
+      ) : (
+        <EventCardList data={eventCardData} />
+      )}
       <Spacer.Column numberOfSpaces={4} />
       {isLast ? null : <Divider />}
       <Spacer.Column numberOfSpaces={4} />

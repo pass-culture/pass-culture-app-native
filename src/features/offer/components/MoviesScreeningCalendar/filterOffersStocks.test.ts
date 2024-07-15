@@ -1,4 +1,5 @@
-import { OffersStocksResponseV2, OfferStockResponse } from 'api/gen'
+import { OfferResponseV2, OffersStocksResponseV2, OfferStockResponse } from 'api/gen'
+import { MoviesOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
 import {
   offerResponseBuilder,
   stockBuilder,
@@ -14,23 +15,18 @@ const STOCKS = [
   stockBuilder().withId(AVAILABLE_STOCK_ID).withBeginningDatetime(DATE_WITH_STOCK).build(),
 ]
 
-const offerStocksResponse: OffersStocksResponseV2 = {
-  offers: [offerResponseBuilder().withId(1).withStocks(STOCKS).build()],
-}
+const offers: OfferResponseV2[] = [offerResponseBuilder().withId(1).withStocks(STOCKS).build()]
 
 describe('filterOffersStocks', () => {
   it('should return all movies with a stock available at a specific date', () => {
-    const filteredOffersStocks = filterOffersStocks(offerStocksResponse, new Date(DATE_WITH_STOCK))
+    const filteredOffersStocks = filterOffersStocks(offers, new Date(DATE_WITH_STOCK))
     const expectedStock = getStockById(filteredOffersStocks, AVAILABLE_STOCK_ID)
 
     expect(expectedStock).toBeDefined()
   })
 
   it('should not return movies if a stock is unavailable at a specific date', () => {
-    const filteredOffersStocks = filterOffersStocks(
-      offerStocksResponse,
-      new Date(DATE_WITH_NO_STOCK)
-    )
+    const filteredOffersStocks = filterOffersStocks(offers, new Date(DATE_WITH_NO_STOCK))
 
     const expectedStock = getStockById(filteredOffersStocks, AVAILABLE_STOCK_ID)
 
@@ -47,15 +43,20 @@ describe('filterOffersStocks', () => {
       ],
     }
 
-    const filteredOffersStocks = filterOffersStocks(offerStocksResponse, new Date(DATE_WITH_STOCK))
+    const filteredOffersStocks = filterOffersStocks(
+      offerStocksResponse.offers,
+      new Date(DATE_WITH_STOCK)
+    )
 
-    expect(filteredOffersStocks.offers[0]?.last30DaysBookings).toBe(400)
-    expect(filteredOffersStocks.offers[1]?.last30DaysBookings).toBe(300)
-    expect(filteredOffersStocks.offers[2]?.last30DaysBookings).toBe(200)
-    expect(filteredOffersStocks.offers[3]?.last30DaysBookings).toBe(100)
+    expect(filteredOffersStocks[0]?.offer?.last30DaysBookings).toBe(400)
+    expect(filteredOffersStocks[1]?.offer?.last30DaysBookings).toBe(300)
+    expect(filteredOffersStocks[2]?.offer.last30DaysBookings).toBe(200)
+    expect(filteredOffersStocks[3]?.offer.last30DaysBookings).toBe(100)
   })
 })
 
-const getStockById = (offerStockResponse: OffersStocksResponseV2, id: number) => {
-  return offerStockResponse.offers[0]?.stocks.find((stock: OfferStockResponse) => stock.id === id)
+const getStockById = (moviesOffer: MoviesOffer[], id: number) => {
+  return moviesOffer.find(({ offer }) =>
+    offer?.stocks.find((stock: OfferStockResponse) => stock.id === id)
+  )
 }
