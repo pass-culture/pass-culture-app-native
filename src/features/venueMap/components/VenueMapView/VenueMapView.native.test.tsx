@@ -62,8 +62,6 @@ describe('<VenueMapView />', () => {
     renderVenueMapView()
     const mapView = screen.getByTestId('venue-map-view')
 
-    await act(() => {})
-
     // Simulate region change
     fireEvent(mapView, 'onRegionChangeComplete', {
       latitude: 1,
@@ -72,7 +70,7 @@ describe('<VenueMapView />', () => {
       longitudeDelta: 1,
     })
 
-    await act(async () => fireEvent.press(await screen.findByText('Rechercher dans cette zone')))
+    fireEvent.press(await screen.findByText('Rechercher dans cette zone'))
 
     expect(mockSetInitialVenues).toHaveBeenNthCalledWith(1, [])
   })
