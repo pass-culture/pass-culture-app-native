@@ -10,6 +10,19 @@ const hideModalMock = jest.fn()
 const showErrorUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')
 
+const mockRef = {
+  current: {
+    getCurrentTime: jest.fn(),
+    getDuration: jest.fn(),
+    getVideoUrl: jest.fn(),
+    isMuted: jest.fn(),
+    getVolume: jest.fn(),
+    getPlaybackRate: jest.fn(),
+    getAvailablePlaybackRates: jest.fn(),
+    seekTo: jest.fn(),
+  },
+}
+
 const showError: unknown = true
 const hideError: unknown = false
 
@@ -50,6 +63,7 @@ function renderVideoPlayer() {
       moduleId="abcd"
       moduleName="lujipeka"
       homeEntryId="xyz"
+      playerRef={mockRef}
     />
   )
 }

@@ -1,12 +1,12 @@
 import React, { useRef } from 'react'
 import { Platform, View } from 'react-native'
-import { YoutubeIframeRef } from 'react-native-youtube-iframe'
+import YouTube from 'react-youtube'
 import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferList } from 'features/home/components/modules/video/VideoMultiOfferList'
-import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
+import { VideoPlayerWeb } from 'features/home/components/modules/video/VideoPlayerWeb.web'
 import { VideoModule } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
@@ -35,7 +35,8 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
     size: theme.icons.sizes.smaller,
   }))``
 
-  const playerRef = useRef<YoutubeIframeRef>(null)
+  const playerRef = useRef<YouTube>(null)
+  const playerCurrentRef = playerRef?.current?.internalPlayer
 
   const analyticsParams: OfferAnalyticsParams = {
     moduleId: props.id,
@@ -45,7 +46,6 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
   }
 
   const onCloseModal = async () => {
-    const playerCurrentRef = playerRef.current
     if (playerCurrentRef) {
       const [videoDuration, elapsed] = await Promise.all([
         playerCurrentRef.getDuration(),
@@ -84,7 +84,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       customModalHeader={<React.Fragment />}
       onBackdropPress={onCloseModal}
       {...swipeProperties}>
-      <VideoPlayer
+      <VideoPlayerWeb
         youtubeVideoId={props.youtubeVideoId}
         offer={props.isMultiOffer ? undefined : props.offers[0]}
         onPressSeeOffer={props.hideModal}

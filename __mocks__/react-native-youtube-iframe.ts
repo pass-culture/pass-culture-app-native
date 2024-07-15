@@ -1,7 +1,9 @@
 import React, { ForwardedRef } from 'react'
-import YouTubePlayer, { PLAYER_STATES, YoutubeIframeRef } from 'react-native-youtube-iframe'
+import YouTubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe'
 
-let mockState = PLAYER_STATES.UNSTARTED
+import { PlayerState } from 'features/home/components/modules/video/types'
+
+let mockState = PlayerState.UNSTARTED
 let mockError = false
 
 const YouTubePlayerMock = React.forwardRef(function Component(
@@ -10,7 +12,7 @@ const YouTubePlayerMock = React.forwardRef(function Component(
     onChangeState?: (state: string) => void
     onError?: () => void
   },
-  ref: ForwardedRef<Partial<YoutubeIframeRef>>
+  ref: ForwardedRef<YoutubeIframeRef>
 ) {
   React.useEffect(() => {
     if (props.onReady) props.onReady()
@@ -18,11 +20,24 @@ const YouTubePlayerMock = React.forwardRef(function Component(
     if (props.onError && mockError) props.onError()
   }, [props])
 
+  if (typeof ref === 'object' && ref !== null) {
+    ref.current = {
+      getCurrentTime: jest.fn().mockReturnValue(134.9),
+      getDuration: jest.fn().mockReturnValue(267.4),
+      getVideoUrl: jest.fn(),
+      isMuted: jest.fn(),
+      getVolume: jest.fn(),
+      getPlaybackRate: jest.fn(),
+      getAvailablePlaybackRates: jest.fn(),
+      seekTo: jest.fn(),
+    }
+  }
+
   // @ts-ignore avoid internal typing complexity
-  return React.createElement(YouTubePlayer, { ref, ...props })
+  return React.createElement(YouTubePlayer, props)
 })
 
-const setPlayerState = (playerState: PLAYER_STATES) => {
+const setPlayerState = (playerState: PlayerState) => {
   mockState = playerState
 }
 
@@ -31,7 +46,7 @@ const setError = (error: boolean) => {
 }
 
 const MockedYoutubePlayer = YouTubePlayerMock as typeof YouTubePlayerMock & {
-  setPlayerState: (playerState: PLAYER_STATES) => void
+  setPlayerState: (playerState: PlayerState) => void
   setError: (error: boolean) => void
 }
 
@@ -39,4 +54,3 @@ MockedYoutubePlayer.setPlayerState = setPlayerState
 MockedYoutubePlayer.setError = setError
 
 export default MockedYoutubePlayer
-export { PLAYER_STATES }
