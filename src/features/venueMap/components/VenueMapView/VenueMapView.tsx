@@ -153,6 +153,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, shouldDisplaySe
         onClusterPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         radius={50}
         animationEnabled={false}
+        height={height}
         testID="venue-map-view">
         {filteredVenues.map((venue) => (
           <Marker
@@ -192,7 +193,10 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, shouldDisplaySe
   )
 }
 
-const StyledMapView = styled(MapView)({ height: '100%', width: '100%' })
+const StyledMapView = styled(MapView)<{ height?: number }>(({ height }) => ({
+  height: height ?? '100%',
+  width: '100%',
+}))
 
 const ButtonContainer = styled.View({
   position: 'absolute',

@@ -2,7 +2,7 @@ import { useIsFocused } from '@react-navigation/native'
 import { FlashList } from '@shopify/flash-list'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, Platform, ScrollView, View } from 'react-native'
+import { FlatList, Platform, ScrollView, useWindowDimensions, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
@@ -13,6 +13,7 @@ import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/Au
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
+import { HEADER_SEARCH_VENUE_MAP } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import {
@@ -46,6 +47,7 @@ import { Ul } from 'ui/components/Ul'
 import { Map } from 'ui/svg/icons/Map'
 import { Sort } from 'ui/svg/icons/Sort'
 import { getSpacing, Spacer } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
@@ -86,6 +88,9 @@ export const SearchResultsContent: React.FC = () => {
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
+  const { height } = useWindowDimensions()
+  const { top, tabBarHeight } = useCustomSafeInsets()
+  const venueMapHeight = height - top - tabBarHeight - HEADER_SEARCH_VENUE_MAP
 
   const isVenue = !!searchState.venue
 
@@ -232,8 +237,7 @@ export const SearchResultsContent: React.FC = () => {
         venuesUserData={venuesUserData}
       />
     ),
-    // TODO(PC-30764) Calcul de la height dynamique
-    [Tab.MAP]: <VenueMapView height={600} shouldDisplaySearchButton={false} />,
+    [Tab.MAP]: <VenueMapView height={venueMapHeight} shouldDisplaySearchButton={false} />,
   }
   return (
     <React.Fragment>
