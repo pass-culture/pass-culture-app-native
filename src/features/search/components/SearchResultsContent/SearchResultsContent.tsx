@@ -233,7 +233,7 @@ export const SearchResultsContent: React.FC = () => {
       />
     ),
     // TODO(PC-30764) Calcul de la height dynamique
-    [Tab.MAP]: <VenueMapView height={600} />,
+    [Tab.MAP]: <VenueMapView height={600} shouldDisplaySearchButton={false} />,
   }
   return (
     <React.Fragment>

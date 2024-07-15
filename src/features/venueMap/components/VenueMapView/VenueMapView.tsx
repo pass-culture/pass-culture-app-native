@@ -32,13 +32,14 @@ import { getSpacing } from 'ui/theme'
 
 type Props = {
   height: number
+  shouldDisplaySearchButton?: boolean
 }
 
 const PREVIEW_HEIGHT_ESTIMATION = 114
 
 const PIN_MAX_Z_INDEX = 10_000
 
-export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
+export const VenueMapView: FunctionComponent<Props> = ({ height, shouldDisplaySearchButton }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'VenueMap'>>()
   const [initialVenues, setInitialVenues] = useState(params?.initialVenues)
@@ -50,6 +51,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const [currentRegion, setCurrentRegion] = useState<Region>(defaultRegion)
   const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultRegion)
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
+  const hasSearchButton = shouldDisplaySearchButton ?? showSearchButton
 
   const selectedVenue = useSelectedVenue()
   const venueTypeCode = useVenueTypeCode()
@@ -163,7 +165,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
           />
         ))}
       </StyledMapView>
-      {showSearchButton ? (
+      {hasSearchButton ? (
         <ButtonContainer>
           <ButtonPrimary wording="Rechercher dans cette zone" onPress={handleSearchPress} />
         </ButtonContainer>
