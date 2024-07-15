@@ -91,6 +91,7 @@ export const SearchResultsContent: React.FC = () => {
   const { height } = useWindowDimensions()
   const { top, tabBarHeight } = useCustomSafeInsets()
   const venueMapHeight = height - top - tabBarHeight - HEADER_SEARCH_VENUE_MAP
+  const [isSearchListTab, setIsSearchListTab] = useState(true)
 
   const isVenue = !!searchState.venue
 
@@ -218,7 +219,10 @@ export const SearchResultsContent: React.FC = () => {
 
   // We don't want to render it on the web, even if it's not plugged in, since it avoids the user
   // to press on a working button
-  const shouldRenderScrollToTopButton = nbHits > 0 && Platform.OS !== 'web'
+  const shouldRenderScrollToTopButton =
+    nbHits > 0 &&
+    Platform.OS !== 'web' &&
+    (!shouldDisplayVenueMapInSearch || (shouldDisplayVenueMapInSearch && isSearchListTab))
   const tabPanels = {
     [Tab.SEARCHLIST]: (
       <SearchList
@@ -326,11 +330,14 @@ export const SearchResultsContent: React.FC = () => {
               { key: Tab.MAP, Icon: Map },
             ]}
             onTabChange={{
-              Carte: () =>
+              Carte: () => {
                 analytics.logConsultVenueMap({
                   from: 'search',
                   searchId: searchState.searchId,
-                }),
+                })
+                setIsSearchListTab(false)
+              },
+              Liste: () => setIsSearchListTab(true),
             }}
           />
         ) : (
