@@ -4,7 +4,7 @@ import { fetchAndActivate, getAll } from 'firebase/remote-config'
 // See https://github.com/invertase/react-native-firebase/discussions/6562
 import firebaseRemoteConfig from 'libs/firebase/shims/remote-config/index.web'
 
-import { CustomRemoteConfig } from './remoteConfig.types'
+import { CustomRemoteConfig, ShareAppTrigger } from './remoteConfig.types'
 
 export const remoteConfig = {
   async refresh() {
@@ -49,6 +49,8 @@ export const remoteConfig = {
       shouldLogInfo: parameters.shouldLogInfo.asBoolean(),
       // @ts-expect-error: because of noUncheckedIndexedAccess
       subscriptionHomeEntryIds: JSON.parse(parameters.subscriptionHomeEntryIds.asString()),
+      shareAppTrigger:
+        (parameters.shareAppTrigger?.asString() as ShareAppTrigger | undefined) ?? 'default',
     }
   },
 }
