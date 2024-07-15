@@ -90,7 +90,9 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
         <NextScreeningButton
           date={nextScreeningDate}
           isUpcoming={isUpcoming}
-          onPress={() => setSelectedDate(nextScreeningDate)}
+          onPress={() => {
+            setSelectedDate(nextScreeningDate)
+          }}
         />
       ) : (
         <EventCardList data={eventCardData} />

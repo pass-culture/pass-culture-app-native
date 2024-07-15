@@ -5,6 +5,7 @@ import { extractDate } from 'features/offer/components/MovieCalendar/hooks/useMo
 import { theme } from 'theme'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 type Props = { onPress: () => void; date: Date; isUpcoming?: boolean }
@@ -13,21 +14,23 @@ export const NextScreeningButton: FC<Props> = ({ onPress, date, isUpcoming = tru
   const { dayDate, fullWeekDay, fullMonth } = extractDate(date)
 
   return (
-    <Container onPress={onPress}>
-      <InfoBanner
-        message={
-          <StyledMessage>{isUpcoming ? 'Prochaine séance' : 'Séance suivante'}</StyledMessage>
-        }
-        backgroundColor={theme.colors.greyLight}>
-        <ButtonQuaternarySecondary
-          numberOfLines={1}
-          icon={PlainArrowNext}
-          wording={`${fullWeekDay} ${dayDate} ${fullMonth.toLocaleLowerCase()}`}
-          inline
-          fullWidth
-        />
-      </InfoBanner>
-    </Container>
+    <TouchableOpacity onPress={onPress}>
+      <Container>
+        <InfoBanner
+          message={
+            <StyledMessage>{isUpcoming ? 'Prochaine séance' : 'Séance suivante'}</StyledMessage>
+          }
+          backgroundColor={theme.colors.greyLight}>
+          <ButtonQuaternarySecondary
+            numberOfLines={1}
+            icon={PlainArrowNext}
+            wording={`${fullWeekDay} ${dayDate} ${fullMonth.toLocaleLowerCase()}`}
+            inline
+            fullWidth
+          />
+        </InfoBanner>
+      </Container>
+    </TouchableOpacity>
   )
 }
 
