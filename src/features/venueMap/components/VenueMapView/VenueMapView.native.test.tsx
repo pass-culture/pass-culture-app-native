@@ -79,5 +79,5 @@ describe('<VenueMapView />', () => {
 })
 
 function renderVenueMapView() {
-  render(reactQueryProviderHOC(<VenueMapView height={700} />))
+  render(reactQueryProviderHOC(<VenueMapView height={700} from="venueMap" />))
 }

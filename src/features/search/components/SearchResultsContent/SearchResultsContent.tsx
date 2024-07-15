@@ -237,7 +237,7 @@ export const SearchResultsContent: React.FC = () => {
         venuesUserData={venuesUserData}
       />
     ),
-    [Tab.MAP]: <VenueMapView height={venueMapHeight} shouldDisplaySearchButton={false} />,
+    [Tab.MAP]: <VenueMapView height={venueMapHeight} from="searchResults" />,
   }
   return (
     <React.Fragment>

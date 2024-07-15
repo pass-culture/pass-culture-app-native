@@ -36,14 +36,14 @@ import { getSpacing } from 'ui/theme'
 
 type Props = {
   height: number
-  shouldDisplaySearchButton?: boolean
+  from: 'venueMap' | 'searchResults'
 }
 
 const PREVIEW_HEIGHT_ESTIMATION = 114
 
 const PIN_MAX_Z_INDEX = 10_000
 
-export const VenueMapView: FunctionComponent<Props> = ({ height, shouldDisplaySearchButton }) => {
+export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const initialVenues = useInitialVenues()
   const { setInitialVenues } = useInitialVenuesActions()
@@ -55,7 +55,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, shouldDisplaySe
   const [currentRegion, setCurrentRegion] = useState<Region>(defaultRegion)
   const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultRegion)
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
-  const hasSearchButton = shouldDisplaySearchButton ?? showSearchButton
+  const hasSearchButton = from === 'venueMap' ? showSearchButton : false
 
   const selectedVenue = useSelectedVenue()
   const venueTypeCode = useVenueTypeCode()
