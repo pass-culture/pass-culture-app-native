@@ -1,14 +1,18 @@
+import { Hit } from '@algolia/client-search'
 import algoliasearch from 'algoliasearch'
 
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
 import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
+import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
 import {
   mockedAlgoliaResponse,
   mockedAlgoliaVenueResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
+import { AlgoliaVenue } from 'libs/algolia/types'
+import { GeoCoordinates, GeolocationError, GeolocPermissionState } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -17,6 +21,29 @@ jest.mock('algoliasearch')
 const mockMultipleQueries = algoliasearch('', '').multipleQueries
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
+const mockPositionError = null as GeolocationError | null
+const mockUserLocation = null as GeoCoordinates | null
+const defaultUseLocation = {
+  permissionState: GeolocPermissionState.GRANTED,
+  geolocPosition: DEFAULT_POSITION,
+  geolocPositionError: mockPositionError,
+  triggerPositionUpdate: jest.fn(),
+  showGeolocPermissionModal: jest.fn(),
+  requestGeolocPermission: jest.fn(),
+  userLocation: mockUserLocation,
+}
+const mockUseLocation = jest.fn(() => defaultUseLocation)
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => mockUseLocation(),
+}))
+
+const mockSetInitialVenues = jest.fn()
+jest.mock('features/venueMap/store/initialVenuesStore', () => ({
+  useInitialVenuesActions: () => ({ setInitialVenues: mockSetInitialVenues }),
+  useInitialVenues: jest.fn(),
+}))
 
 describe('useSearchResults', () => {
   describe('useSearchInfiniteQuery', () => {
@@ -54,7 +81,7 @@ describe('useSearchResults', () => {
             query: '',
           },
           {
-            indexName: 'algoliaVenuesIndexPlaylistSearchNewest',
+            indexName: 'algoliaVenuesIndexPlaylistSearch',
             params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
             query: '',
           },
@@ -112,6 +139,86 @@ describe('useSearchResults', () => {
         const hitNumber = result.current.nbHits
 
         expect(hitNumber).toEqual(4)
+      })
+    })
+
+    describe('When user share his location and received venues from Algolia', () => {
+      beforeAll(() => {
+        jest.spyOn(fetchSearchResults, 'fetchSearchResults').mockResolvedValue({
+          offersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
+          venuesResponse: mockedAlgoliaVenueResponse,
+          facetsResponse: algoliaFacets,
+        })
+        mockUseLocation.mockReturnValue({ ...defaultUseLocation, userLocation: DEFAULT_POSITION })
+      })
+
+      it('should set initial venues', async () => {
+        renderHook(
+          (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
+        )
+
+        await waitFor(() => {
+          expect(mockSetInitialVenues).toHaveBeenCalledWith(
+            adaptAlgoliaVenues(mockedAlgoliaVenueResponse.hits)
+          )
+        })
+      })
+    })
+
+    describe('When user share his location and not received venues from Algolia', () => {
+      beforeAll(() => {
+        jest.spyOn(fetchSearchResults, 'fetchSearchResults').mockResolvedValue({
+          offersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
+          venuesResponse: {
+            hits: [] as Hit<AlgoliaVenue>[],
+            nbHits: 0,
+            page: 0,
+            nbPages: 0,
+            userData: null,
+          },
+          facetsResponse: algoliaFacets,
+        })
+        mockUseLocation.mockReturnValue({ ...defaultUseLocation, userLocation: DEFAULT_POSITION })
+      })
+
+      it('should set initial venues as empty array', async () => {
+        renderHook(
+          (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
+        )
+
+        await waitFor(() => {
+          expect(mockSetInitialVenues).toHaveBeenCalledWith([])
+        })
+      })
+    })
+
+    describe('When user not share his location and received venues from Algolia', () => {
+      beforeAll(() => {
+        jest.spyOn(fetchSearchResults, 'fetchSearchResults').mockResolvedValue({
+          offersResponse: { ...mockedAlgoliaResponse, nbHits: 0 },
+          venuesResponse: mockedAlgoliaVenueResponse,
+          facetsResponse: algoliaFacets,
+        })
+        mockUseLocation.mockReturnValue({ ...defaultUseLocation })
+      })
+
+      it('should set initial venues as empty array', async () => {
+        renderHook(
+          (searchState: SearchState = initialSearchState) => useSearchInfiniteQuery(searchState),
+          {
+            wrapper: ({ children }) => reactQueryProviderHOC(children),
+          }
+        )
+
+        await waitFor(() => {
+          expect(mockSetInitialVenues).toHaveBeenCalledWith([])
+        })
       })
     })
   })

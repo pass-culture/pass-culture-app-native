@@ -15,6 +15,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
 import { VenuesUserData } from 'features/search/types'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
+import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { AlgoliaVenue } from 'libs/algolia/types'
@@ -69,6 +70,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     searchState: { searchId, venue, offerCategories },
   } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { setInitialVenues } = useInitialVenuesActions()
 
   const isLocated = useMemo(
     () => selectedLocationMode !== LocationMode.EVERYWHERE,
@@ -122,8 +124,9 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   )
 
   const handleSeeMapPress = () => {
+    setInitialVenues(venues?.length ? adaptAlgoliaVenues(venues) : [])
     analytics.logConsultVenueMap({ from: 'searchPlaylist' })
-    navigate('VenueMap', venues?.length ? { initialVenues: adaptAlgoliaVenues(venues) } : {})
+    navigate('VenueMap')
   }
 
   return (

@@ -1,9 +1,9 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { VenueMapCluster } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
 import { PREVIEW_BOTTOM_MARGIN } from 'features/venueMap/components/VenueMapView/constant'
@@ -17,6 +17,10 @@ import { useGetVenuesInRegion } from 'features/venueMap/hook/useGetVenuesInRegio
 import { useTrackMapSeenDuration } from 'features/venueMap/hook/useTrackMapSeenDuration'
 import { useTrackMapSessionDuration } from 'features/venueMap/hook/useTrackSessionDuration'
 import {
+  useInitialVenues,
+  useInitialVenuesActions,
+} from 'features/venueMap/store/initialVenuesStore'
+import {
   useSelectedVenue,
   useSelectedVenueActions,
 } from 'features/venueMap/store/selectedVenueStore'
@@ -29,19 +33,22 @@ import MapView, { Map, Marker, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { parseType } from 'libs/parsers/venueType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
   height: number
+  from: 'venueMap' | 'searchResults'
 }
 
 const PREVIEW_HEIGHT_ESTIMATION = 114
 
 const PIN_MAX_Z_INDEX = 10_000
 
-export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
+export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { params } = useRoute<UseRouteType<'VenueMap'>>()
-  const [initialVenues, setInitialVenues] = useState(params?.initialVenues)
+  const { tabBarHeight } = useCustomSafeInsets()
+  const initialVenues = useInitialVenues()
+  const { setInitialVenues } = useInitialVenuesActions()
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const mapViewRef = useRef<Map>(null)
   const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
@@ -50,6 +57,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   const [currentRegion, setCurrentRegion] = useState<Region>(defaultRegion)
   const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultRegion)
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
+  const hasSearchButton = from === 'venueMap' ? showSearchButton : false
 
   const selectedVenue = useSelectedVenue()
   const venueTypeCode = useVenueTypeCode()
@@ -89,7 +97,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
   }
 
   const handleSearchPress = () => {
-    setInitialVenues(undefined)
+    setInitialVenues([])
     setLastRegionSearched(currentRegion)
     setShowSearchButton(false)
   }
@@ -147,6 +155,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
         onClusterPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         radius={50}
         animationEnabled={false}
+        height={height}
         testID="venue-map-view">
         {filteredVenues.map((venue) => (
           <Marker
@@ -163,7 +172,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
           />
         ))}
       </StyledMapView>
-      {showSearchButton ? (
+      {hasSearchButton ? (
         <ButtonContainer>
           <ButtonPrimary wording="Rechercher dans cette zone" onPress={handleSearchPress} />
         </ButtonContainer>
@@ -180,13 +189,18 @@ export const VenueMapView: FunctionComponent<Props> = ({ height }) => {
           onLayout={({ nativeEvent }: LayoutChangeEvent) => {
             previewHeight.current = nativeEvent.layout.height
           }}
+          from={from}
+          tabBarHeight={tabBarHeight}
         />
       ) : null}
     </React.Fragment>
   )
 }
 
-const StyledMapView = styled(MapView)({ height: '100%', width: '100%' })
+const StyledMapView = styled(MapView)<{ height?: number }>(({ height }) => ({
+  height: height ?? '100%',
+  width: '100%',
+}))
 
 const ButtonContainer = styled.View({
   position: 'absolute',
@@ -196,9 +210,12 @@ const ButtonContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledVenueMapPreview = styled(VenueMapPreview)(({ theme }) => ({
+const StyledVenueMapPreview = styled(VenueMapPreview)<{
+  from: 'venueMap' | 'searchResults'
+  tabBarHeight: number
+}>(({ theme, from, tabBarHeight }) => ({
   position: 'absolute',
-  bottom: PREVIEW_BOTTOM_MARGIN,
+  bottom: from === 'venueMap' ? PREVIEW_BOTTOM_MARGIN : PREVIEW_BOTTOM_MARGIN + tabBarHeight,
   left: getSpacing(4),
   right: getSpacing(4),
   backgroundColor: theme.colors.white,

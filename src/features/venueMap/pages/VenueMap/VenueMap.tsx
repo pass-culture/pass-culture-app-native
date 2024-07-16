@@ -68,7 +68,7 @@ export const VenueMap: FunctionComponent = () => {
         </FilterBannerContainer>
 
         <MapContainer>
-          <VenueMapView height={venueMapHeight} />
+          <VenueMapView height={venueMapHeight} from="venueMap" />
         </MapContainer>
       </Container>
       <VenueTypeModal hideModal={hideVenueTypeModal} isVisible={venueTypeModalVisible} />

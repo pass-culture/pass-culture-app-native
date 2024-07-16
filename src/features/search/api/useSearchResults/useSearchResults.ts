@@ -7,8 +7,10 @@ import { useAccessibilityFiltersContext } from 'features/accessibility/context/A
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
+import { useInitialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
+import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaVenue, FacetData } from 'libs/algolia/types'
 import { useLocation } from 'libs/location'
@@ -33,6 +35,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
+  const { setInitialVenues } = useInitialVenuesActions()
 
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
     [
@@ -70,15 +73,20 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     }
   )
 
-  const hits = useMemo<SearchOfferHits>(
-    () => ({
+  const hits = useMemo<SearchOfferHits>(() => {
+    const venues = flatten(data?.pages?.[0]?.venues.hits)
+    if (userLocation && venues.length) {
+      setInitialVenues(adaptAlgoliaVenues(venues))
+    } else {
+      setInitialVenues([])
+    }
+    return {
       offers: flatten(data?.pages.map((page) => page.offers.hits.map(transformHits))).filter(
         (hit) => typeof hit.offer.subcategoryId !== 'undefined'
       ) as Offer[],
-      venues: flatten(data?.pages?.[0]?.venues.hits),
-    }),
-    [data?.pages, transformHits]
-  )
+      venues,
+    }
+  }, [data?.pages, setInitialVenues, transformHits, userLocation])
 
   // @ts-expect-error: because of noUncheckedIndexedAccess
   const { nbHits, userData } = data?.pages[0].offers ?? { nbHits: 0, userData: [] }

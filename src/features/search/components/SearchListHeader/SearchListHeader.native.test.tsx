@@ -75,6 +75,12 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
 
+const mockSetInitialVenues = jest.fn()
+jest.mock('features/venueMap/store/initialVenuesStore', () => ({
+  useInitialVenuesActions: () => ({ setInitialVenues: mockSetInitialVenues }),
+  useInitialVenues: jest.fn(),
+}))
+
 describe('<SearchListHeader />', () => {
   beforeEach(() => {
     mockUseAccessibilityFiltersContext.mockReturnValue(defaultValuesAccessibilityContext)
@@ -524,9 +530,37 @@ describe('<SearchListHeader />', () => {
 
       fireEvent.press(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`))
 
-      expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap', {
-        initialVenues: adaptAlgoliaVenues(mockAlgoliaVenues),
+      expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap')
+    })
+
+    it('should update initial venues store when pressing see map button with playlist venues content', () => {
+      mockUseSearch.mockReturnValueOnce({
+        searchState: {
+          ...mockSearchState,
+          searchId,
+          locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: MAX_RADIUS },
+        },
       })
+      const location = {
+        geolocPosition: mockPosition,
+        selectedLocationMode: LocationMode.AROUND_ME,
+        hasGeolocPosition: true,
+      }
+      mockUseLocation.mockReturnValueOnce(location)
+      mockUseLocation.mockReturnValueOnce(location)
+
+      render(
+        <SearchListHeader
+          nbHits={10}
+          userData={[]}
+          venuesUserData={[]}
+          venues={mockAlgoliaVenues}
+        />
+      )
+
+      fireEvent.press(screen.getByText(`Voir sur la carte (${mockAlgoliaVenues.length})`))
+
+      expect(mockSetInitialVenues).toHaveBeenNthCalledWith(1, adaptAlgoliaVenues(mockAlgoliaVenues))
     })
 
     it('should log consult venue map from search playlist when pressing see map button', () => {

@@ -77,7 +77,7 @@ export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalPr
 
   const handleSubmit = () => {
     onSubmit()
-    navigate('VenueMap', {})
+    navigate('VenueMap')
   }
 
   return (
