@@ -1650,12 +1650,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
             style={
               [
                 {
-<<<<<<< HEAD
                   "marginHorizontal": 24,
-=======
-                  "paddingLeft": 24,
-                  "paddingRight": 24,
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                 },
               ]
             }
@@ -1900,18 +1895,10 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
             }
           />
           <View
-<<<<<<< HEAD
-            onLayout={[Function]}
-          >
-            <View
-              ItemSeparatorComponent={[Function]}
-              data={
-=======
             style={
               [
                 {
-                  "paddingLeft": 24,
-                  "paddingRight": 24,
+                  "marginHorizontal": 24,
                 },
               ]
             }
@@ -1944,7 +1931,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                 [
                   [
                     {
@@ -1952,146 +1938,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                     },
                   ],
                   {
-<<<<<<< HEAD
-                    "isDisabled": false,
-                    "onPress": [Function],
-                    "subtitleLeft": "VO",
-                    "subtitleRight": "5,70 €",
-                    "title": "12h50",
-                  },
-                ]
-              }
-              getItem={[Function]}
-              getItemCount={[Function]}
-              itemAs="li"
-              keyExtractor={[Function]}
-              listAs="ul"
-              onContentSizeChange={[Function]}
-              onLayout={[Function]}
-              onMomentumScrollBegin={[Function]}
-              onMomentumScrollEnd={[Function]}
-              onScroll={[Function]}
-              onScrollBeginDrag={[Function]}
-              onScrollEndDrag={[Function]}
-              removeClippedSubviews={false}
-              renderItem={[Function]}
-              scrollEventThrottle={50}
-              stickyHeaderIndices={[]}
-              style={
-                [
-                  {
-                    "marginHorizontal": 24,
-                  },
-                ]
-              }
-              viewabilityConfigCallbackPairs={[]}
-            >
-              <View
-                onFocusCapture={[Function]}
-                onLayout={[Function]}
-                style={null}
-              >
-                <View
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": false,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
-                          "boxSizing": "border-box",
-                          "height": 68,
-                          "justifyContent": "flex-start",
-                          "paddingBottom": 12,
-                          "paddingLeft": 12,
-                          "paddingRight": 12,
-                          "paddingTop": 12,
-                          "shadowColor": "#696A6F",
-                          "shadowOffset": {
-                            "height": 4,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 4,
-                          "width": 120,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="event-card"
-                >
-                  <Text
-                    accessibilityLabel="12h50"
-                    disabled={false}
-                    numberOfLines={1}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    12h50
-                  </Text>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "height": 4,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "alignSelf": "stretch",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "textOverflow": "ellipsis",
-                          "width": "100%",
-=======
                     "opacity": 1,
                   },
                 ]
@@ -2132,29 +1978,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                         },
                       ]
                     }
                   >
                     <Text
-<<<<<<< HEAD
-                      accessibilityLabel="VO"
-                      disabled={false}
-                      hasSubtitleRight={true}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#696A6F",
-                            "flexBasis": "auto",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 20,
-                            "textAlign": "left",
-=======
                       style={
                         [
                           {
@@ -2162,15 +1990,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                           },
                         ]
                       }
                       textColor="#161617"
                     >
-<<<<<<< HEAD
-                      VO
-=======
                       <Text
                         style={
                           [
@@ -2182,7 +2006,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                       >
                         Prochaine séance
                       </Text>
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                     </Text>
                     <View
                       accessibilityLabel="Samedi 11 mai"
@@ -2238,38 +2061,12 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             },
                           ],
                           {
-<<<<<<< HEAD
-                            "width": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      accessibilityLabel="5,70 €"
-                      disabled={false}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexGrow": 1,
-                            "flexShrink": 0,
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "textAlign": "right",
-=======
                             "opacity": 1,
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                           },
                         ]
                       }
                       testID="Samedi 11 mai"
                     >
-<<<<<<< HEAD
-                      5,70 €
-                    </Text>
-=======
                       <View
                         style={
                           [
@@ -2329,19 +2126,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                         </Text>
                       </View>
                     </View>
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    [
-                      {
-                        "width": 16,
-                      },
-                    ]
-                  }
-                />
               </View>
             </View>
           </View>
@@ -3988,12 +3774,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
             style={
               [
                 {
-<<<<<<< HEAD
                   "marginHorizontal": 24,
-=======
-                  "paddingLeft": 24,
-                  "paddingRight": 24,
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                 },
               ]
             }
@@ -4237,150 +4018,15 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
               ]
             }
           />
-<<<<<<< HEAD
-          <RCTScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            style={
-              [
-                {
-                  "paddingVertical": 8,
-=======
           <View
             style={
               [
                 {
-                  "paddingLeft": 24,
-                  "paddingRight": 24,
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
+                  "marginHorizontal": 24,
                 },
               ]
             }
           >
-<<<<<<< HEAD
-            <View>
-              <View
-                numberOfSpaces={3}
-                style={
-                  [
-                    {
-                      "width": 12,
-                    },
-                  ]
-                }
-              />
-              <View
-                numberOfSpaces={3}
-                style={
-                  [
-                    {
-                      "width": 12,
-                    },
-                  ]
-                }
-              />
-              <View>
-                <View
-                  accessibilityRole="button"
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": false,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={false}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "backgroundColor": "#ffffff",
-                          "borderRadius": 8,
-                          "borderWidth": 1,
-                          "boxSizing": "border-box",
-                          "height": 68,
-                          "justifyContent": "flex-start",
-                          "paddingBottom": 12,
-                          "paddingLeft": 12,
-                          "paddingRight": 12,
-                          "paddingTop": 12,
-                          "shadowColor": "#696A6F",
-                          "shadowOffset": {
-                            "height": 4,
-                            "width": 0,
-                          },
-                          "shadowOpacity": 0.2,
-                          "shadowRadius": 4,
-                          "width": 120,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="event-card"
-                >
-                  <Text
-                    accessibilityLabel="12h50"
-                    disabled={false}
-                    numberOfLines={1}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    12h50
-                  </Text>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "height": 4,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "alignSelf": "stretch",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "textOverflow": "ellipsis",
-                          "width": "100%",
-=======
             <View
               accessibilityState={
                 {
@@ -4456,29 +4102,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                         },
                       ]
                     }
                   >
                     <Text
-<<<<<<< HEAD
-                      accessibilityLabel="VO"
-                      disabled={false}
-                      hasSubtitleRight={true}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#696A6F",
-                            "flexBasis": "auto",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 20,
-                            "textAlign": "left",
-=======
                       style={
                         [
                           {
@@ -4486,15 +4114,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                           },
                         ]
                       }
                       textColor="#161617"
                     >
-<<<<<<< HEAD
-                      VO
-=======
                       <Text
                         style={
                           [
@@ -4506,7 +4130,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                       >
                         Prochaine séance
                       </Text>
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                     </Text>
                     <View
                       accessibilityLabel="Samedi 11 mai"
@@ -4562,53 +4185,12 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             },
                           ],
                           {
-<<<<<<< HEAD
-                            "width": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      accessibilityLabel="5,70 €"
-                      disabled={false}
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "flexGrow": 1,
-                            "flexShrink": 0,
-                            "fontFamily": "Montserrat-Regular",
-                            "fontSize": 15,
-                            "lineHeight": 20,
-                            "textAlign": "right",
-=======
                             "opacity": 1,
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                           },
                         ]
                       }
                       testID="Samedi 11 mai"
                     >
-<<<<<<< HEAD
-                      5,70 €
-                    </Text>
-                  </View>
-                </View>
-              </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "width": 24,
-                    },
-                  ]
-                }
-              />
-            </View>
-          </RCTScrollView>
-=======
                       <View
                         style={
                           [
@@ -4673,7 +4255,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
               </View>
             </View>
           </View>
->>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
           <View
             numberOfSpaces={4}
             style={

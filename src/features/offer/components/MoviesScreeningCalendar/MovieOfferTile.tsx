@@ -84,16 +84,17 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
           />
         ) : null}
       </HorizontalOfferTileContainer>
-
       <Spacer.Column numberOfSpaces={4} />
       {nextScreeningDate ? (
-        <NextScreeningButton
-          date={nextScreeningDate}
-          isUpcoming={isUpcoming}
-          onPress={() => {
-            setSelectedDate(nextScreeningDate)
-          }}
-        />
+        <HorizontalOfferTileContainer>
+          <NextScreeningButton
+            date={nextScreeningDate}
+            isUpcoming={isUpcoming}
+            onPress={() => {
+              setSelectedDate(nextScreeningDate)
+            }}
+          />
+        </HorizontalOfferTileContainer>
       ) : (
         <EventCardList data={eventCardData} />
       )}
