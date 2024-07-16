@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetStatus/> should render correctly 1`] = `
+exports[`<ChangeStatus/> should render correctly 1`] = `
 [
   <View
     accessibilityRole="header"
@@ -157,7 +157,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             ]
           }
         >
-          Profil
+          Modifier mon statut
         </Text>
         <View
           positionInHeader="right"
