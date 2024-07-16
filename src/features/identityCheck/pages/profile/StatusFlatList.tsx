@@ -103,9 +103,9 @@ export function StatusFlatList({
         <ButtonPrimary
           type="submit"
           onPress={handleSubmit(submitStatus)}
-          wording={selectedStatus ? 'Continuer' : 'Choisis ton statut'}
+          wording={selectedStatus ? 'Continuer' : 'Valider mon statut'}
           accessibilityLabel={
-            selectedStatus ? 'Continuer vers l’étape suivante' : 'Choisis ton statut'
+            selectedStatus ? 'Continuer vers l’étape suivante' : 'Valider mon statut'
           }
           isLoading={isLoading}
           disabled={!selectedStatus}
