@@ -1,14 +1,13 @@
+import BottomSheet from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheet/BottomSheet'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import { LayoutChangeEvent } from 'react-native'
+import React, { FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
+import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { VenueMapBottomSheet } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapBottomSheet'
 import { VenueMapCluster } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
-import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
-import { PREVIEW_BOTTOM_MARGIN } from 'features/venueMap/components/VenueMapView/constant'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
-import { getVenueTags } from 'features/venueMap/helpers/getVenueTags/getVenueTags'
 import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
 import { zoomOutIfMapEmpty } from 'features/venueMap/helpers/zoomOutIfMapEmpty'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
@@ -28,9 +27,7 @@ import { useVenueTypeCode } from 'features/venueMap/store/venueTypeCodeStore'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useDistance } from 'libs/location/hooks/useDistance'
 import MapView, { Map, Marker, MarkerPressEvent, Region } from 'libs/maps/maps'
-import { parseType } from 'libs/parsers/venueType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -52,6 +49,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const mapViewRef = useRef<Map>(null)
   const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
+  const { height: windowHeight } = useWindowDimensions()
 
   const defaultRegion = useGetDefaultRegion()
   const [currentRegion, setCurrentRegion] = useState<Region>(defaultRegion)
@@ -61,6 +59,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
 
   const selectedVenue = useSelectedVenue()
   const venueTypeCode = useVenueTypeCode()
+  const bottomSheetRef = useRef<BottomSheet>(null)
   const { setSelectedVenue, removeSelectedVenue } = useSelectedVenueActions()
 
   const venues = useGetVenuesInRegion(lastRegionSearched, selectedVenue, initialVenues)
@@ -76,13 +75,6 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
       zoomOutIfMapEmpty({ mapViewRef, venues })
     }
   }, [venues])
-
-  const distanceToVenue = useDistance({
-    lat: selectedVenue?._geoloc.lat,
-    lng: selectedVenue?._geoloc.lng,
-  })
-  const venueTypeLabel = parseType(selectedVenue?.venue_type)
-  const tags = getVenueTags({ distance: distanceToVenue, venue_type: venueTypeLabel })
 
   const centerOnLocation = useCenterOnLocation({
     currentRegion,
@@ -129,19 +121,29 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     }
   }
 
-  const handlePreviewClose = () => {
-    removeSelectedVenue()
-  }
-
   const onNavigateToVenuePress = (venueId: number) => {
     analytics.logConsultVenue({ venueId, from: 'venueMap' })
   }
 
-  // use formatFullAddressStartsWithPostalCode when we have the param address from Algolia
-  const address = `${selectedVenue?.info}, ${selectedVenue?.postalCode}`
+  const snapPoints = useMemo(
+    () =>
+      from === 'searchResults'
+        ? [windowHeight / 3 - tabBarHeight, windowHeight / 2 - tabBarHeight]
+        : ['25%', '50%'],
+    [from, tabBarHeight, windowHeight]
+  )
+
+  useEffect(() => {
+    if (selectedVenue && selectedVenue !== null) {
+      bottomSheetRef.current?.snapToIndex(0)
+    } else {
+      bottomSheetRef.current?.close()
+    }
+  }, [selectedVenue])
 
   return (
     <React.Fragment>
+      <VenueMapBottomSheet snapPoints={snapPoints} index={-1} ref={bottomSheetRef} />
       <StyledMapView
         ref={mapViewRef}
         showsUserLocation
@@ -177,22 +179,6 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
           <ButtonPrimary wording="Rechercher dans cette zone" onPress={handleSearchPress} />
         </ButtonContainer>
       ) : null}
-      {selectedVenue ? (
-        <StyledVenueMapPreview
-          venueName={selectedVenue?.label}
-          address={address}
-          bannerUrl={selectedVenue?.banner_url ?? ''}
-          tags={tags}
-          navigateTo={{ screen: 'Venue', params: { id: selectedVenue.venueId } }}
-          onClose={handlePreviewClose}
-          onBeforeNavigate={() => onNavigateToVenuePress(selectedVenue.venueId)}
-          onLayout={({ nativeEvent }: LayoutChangeEvent) => {
-            previewHeight.current = nativeEvent.layout.height
-          }}
-          from={from}
-          tabBarHeight={tabBarHeight}
-        />
-      ) : null}
     </React.Fragment>
   )
 }
@@ -209,14 +195,3 @@ const ButtonContainer = styled.View({
   right: getSpacing(13.5),
   alignItems: 'center',
 })
-
-const StyledVenueMapPreview = styled(VenueMapPreview)<{
-  from: 'venueMap' | 'searchResults'
-  tabBarHeight: number
-}>(({ theme, from, tabBarHeight }) => ({
-  position: 'absolute',
-  bottom: from === 'venueMap' ? PREVIEW_BOTTOM_MARGIN : PREVIEW_BOTTOM_MARGIN + tabBarHeight,
-  left: getSpacing(4),
-  right: getSpacing(4),
-  backgroundColor: theme.colors.white,
-}))
