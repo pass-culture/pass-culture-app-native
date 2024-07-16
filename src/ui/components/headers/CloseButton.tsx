@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import { useTheme } from 'styled-components'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
@@ -12,17 +12,20 @@ interface HeaderIconProps {
   hitSlop?: number
   onClose?: () => void
   color?: ColorsEnum
+  size?: number | string
 }
 
 export const CloseButton: React.FC<HeaderIconProps> = ({
   color,
   onClose,
   hitSlop = 8,
+  size,
   ...props
 }) => {
+  const theme = useTheme()
   return (
     <StyledTouchable onPress={onClose} accessibilityLabel="Fermer" hitSlop={hitSlop} {...props}>
-      <Close testID="icon-close" color={color} />
+      <DefaultClose testID="icon-close" color={color} size={size ?? theme.icons.sizes.small} />
       <HiddenAccessibleText>Retour</HiddenAccessibleText>
     </StyledTouchable>
   )
@@ -32,8 +35,3 @@ const StyledTouchable = styledButton(Touchable)({
   justifyContent: 'center',
   alignItems: 'center',
 })
-
-const Close = styled(DefaultClose).attrs<{ color: ColorsEnum }>(({ theme, color }) => ({
-  color: color ?? theme.colors.white,
-  size: theme.icons.sizes.small,
-}))``

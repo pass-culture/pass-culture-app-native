@@ -128,7 +128,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   const snapPoints = useMemo(
     () =>
       from === 'searchResults'
-        ? [windowHeight / 3 - tabBarHeight, windowHeight / 2 - tabBarHeight]
+        ? [tabBarHeight + 140, windowHeight / 2 - tabBarHeight]
         : ['25%', '50%'],
     [from, tabBarHeight, windowHeight]
   )
@@ -143,7 +143,13 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
 
   return (
     <React.Fragment>
-      <VenueMapBottomSheet snapPoints={snapPoints} index={-1} ref={bottomSheetRef} />
+      <VenueMapBottomSheet
+        snapPoints={snapPoints}
+        index={-1}
+        ref={bottomSheetRef}
+        onClose={removeSelectedVenue}
+        venue={selectedVenue}
+      />
       <StyledMapView
         ref={mapViewRef}
         showsUserLocation
