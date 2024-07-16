@@ -1414,123 +1414,212 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
       data={
         [
           {
-            "accessibility": {
-              "audioDisability": null,
-              "mentalDisability": null,
-              "motorDisability": null,
-              "visualDisability": null,
-            },
-            "expenseDomains": [
-              "all",
-            ],
-            "extraData": {
-              "allocineId": 5981,
-              "author": null,
-              "cast": [
-                "Nicolas Cage",
-                "Laura Dern",
-                "Willem Dafoe",
-              ],
-              "durationMinutes": null,
-              "ean": null,
-              "editeur": null,
-              "genres": [
-                "Comédie dramatique",
-                "Romance",
-                "Thriller",
-              ],
-              "gtlLabels": null,
-              "musicSubType": null,
-              "musicType": null,
-              "performer": null,
-              "releaseDate": "2011-05-25",
-              "showSubType": null,
-              "showType": null,
-              "speaker": null,
-              "stageDirector": "David Lynch",
-              "visa": "74 823",
-            },
-            "id": 2051,
-            "isDigital": false,
-            "isDuo": true,
-            "isEducational": false,
-            "isExpired": false,
-            "isExternalBookingsDisabled": false,
-            "isForbiddenToUnderage": false,
-            "isReleased": true,
-            "isSoldOut": false,
-            "last30DaysBookings": null,
-            "metadata": {
-              "@context": "https://schema.org",
-              "@type": "Event",
-              "description": "Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.
-Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html",
-              "eventAttendanceMode": "OfflineEventAttendanceMode",
-              "image": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38",
-              "location": {
-                "@type": "Place",
-                "address": {
-                  "@type": "PostalAddress",
-                  "addressLocality": "LE POULIGUEN",
-                  "postalCode": "44510",
-                  "streetAddress": "5 RUE MARECHAL JOFFRE",
-                },
-                "geo": {
-                  "@type": "GeoCoordinates",
-                  "latitude": "47.27618",
-                  "longitude": "-2.42970",
-                },
-                "name": "LE PAX",
+            "isUpcoming": true,
+            "nextDate": 2024-05-11T08:30:00.000Z,
+            "offer": {
+              "accessibility": {
+                "audioDisability": null,
+                "mentalDisability": null,
+                "motorDisability": null,
+                "visualDisability": null,
               },
-              "name": "Rendez-vous avec Pol Pot",
-              "offers": {
-                "@type": "AggregateOffer",
-                "availability": "https://schema.org/InStock",
-                "lowPrice": "7.00",
-                "priceCurrency": "EUR",
-                "url": "https://app.staging.passculture.team/offre/231032388",
-              },
-              "startDate": "2024-06-06T14:40",
-              "validFrom": "2024-06-05",
-            },
-            "name": "Sailor et Lula",
-            "stocks": [
-              {
-                "activationCode": null,
-                "beginningDatetime": "2024-05-08T12:50:00Z",
-                "bookingLimitDatetime": "2024-05-08T12:50:00Z",
-                "cancellationLimitDatetime": "2024-05-01T08:35:31.652786Z",
-                "features": [
-                  "VO",
+              "expenseDomains": [
+                "all",
+              ],
+              "extraData": {
+                "allocineId": 5981,
+                "author": null,
+                "cast": [
+                  "Nicolas Cage",
+                  "Laura Dern",
+                  "Willem Dafoe",
                 ],
-                "id": 10559,
-                "isBookable": true,
-                "isExpired": false,
-                "isForbiddenToUnderage": false,
-                "isSoldOut": false,
-                "price": 570,
-                "priceCategoryLabel": "Tarif unique",
-                "remainingQuantity": 1000,
+                "durationMinutes": null,
+                "ean": null,
+                "editeur": null,
+                "genres": [
+                  "Comédie dramatique",
+                  "Romance",
+                  "Thriller",
+                ],
+                "gtlLabels": null,
+                "musicSubType": null,
+                "musicType": null,
+                "performer": null,
+                "releaseDate": "2011-05-25",
+                "showSubType": null,
+                "showType": null,
+                "speaker": null,
+                "stageDirector": "David Lynch",
+                "visa": "74 823",
               },
-            ],
-            "subcategoryId": "SEANCE_CINE",
-            "venue": {
-              "address": "5 RUE MARECHAL JOFFRE",
-              "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489",
-              "city": "LE POULIGUEN",
-              "coordinates": {
-                "latitude": 47.27618,
-                "longitude": -2.4297,
+              "id": 2051,
+              "isDigital": false,
+              "isDuo": true,
+              "isEducational": false,
+              "isExpired": false,
+              "isExternalBookingsDisabled": false,
+              "isForbiddenToUnderage": false,
+              "isReleased": true,
+              "isSoldOut": false,
+              "last30DaysBookings": null,
+              "metadata": {
+                "@context": "https://schema.org",
+                "@type": "Event",
+                "description": "Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.
+Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html",
+                "eventAttendanceMode": "OfflineEventAttendanceMode",
+                "image": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38",
+                "location": {
+                  "@type": "Place",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "LE POULIGUEN",
+                    "postalCode": "44510",
+                    "streetAddress": "5 RUE MARECHAL JOFFRE",
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "47.27618",
+                    "longitude": "-2.42970",
+                  },
+                  "name": "LE PAX",
+                },
+                "name": "Rendez-vous avec Pol Pot",
+                "offers": {
+                  "@type": "AggregateOffer",
+                  "availability": "https://schema.org/InStock",
+                  "lowPrice": "7.00",
+                  "priceCurrency": "EUR",
+                  "url": "https://app.staging.passculture.team/offre/231032388",
+                },
+                "startDate": "2024-06-06T14:40",
+                "validFrom": "2024-06-05",
               },
-              "id": 125173,
-              "isPermanent": true,
-              "name": "LE PAX",
-              "offerer": {
+              "name": "Sailor et Lula",
+              "stocks": [
+                {
+                  "activationCode": null,
+                  "beginningDatetime": "2024-05-08T12:50:00Z",
+                  "bookingLimitDatetime": "2024-05-08T12:50:00Z",
+                  "cancellationLimitDatetime": "2024-05-01T08:35:31.652786Z",
+                  "features": [
+                    "VO",
+                  ],
+                  "id": 10559,
+                  "isBookable": true,
+                  "isExpired": false,
+                  "isForbiddenToUnderage": false,
+                  "isSoldOut": false,
+                  "price": 570,
+                  "priceCategoryLabel": "Tarif unique",
+                  "remainingQuantity": 1000,
+                },
+                {
+                  "activationCode": null,
+                  "beginningDatetime": "2024-05-11T08:30:00Z",
+                  "bookingLimitDatetime": "2024-05-11T08:30:00Z",
+                  "cancellationLimitDatetime": "2024-05-01T08:35:31.652862Z",
+                  "features": [
+                    "VO",
+                  ],
+                  "id": 10560,
+                  "isBookable": true,
+                  "isExpired": false,
+                  "isForbiddenToUnderage": false,
+                  "isSoldOut": false,
+                  "price": 570,
+                  "priceCategoryLabel": "Tarif unique",
+                  "remainingQuantity": 1000,
+                },
+                {
+                  "activationCode": null,
+                  "beginningDatetime": "2024-05-12T16:45:00Z",
+                  "bookingLimitDatetime": "2024-05-12T16:45:00Z",
+                  "cancellationLimitDatetime": "2024-05-01T08:35:31.652935Z",
+                  "features": [
+                    "VO",
+                  ],
+                  "id": 10561,
+                  "isBookable": true,
+                  "isExpired": false,
+                  "isForbiddenToUnderage": false,
+                  "isSoldOut": false,
+                  "price": 570,
+                  "priceCategoryLabel": "Tarif unique",
+                  "remainingQuantity": 1000,
+                },
+                {
+                  "activationCode": null,
+                  "beginningDatetime": "2024-05-16T19:40:00Z",
+                  "bookingLimitDatetime": "2024-05-16T19:40:00Z",
+                  "cancellationLimitDatetime": "2024-05-01T08:35:31.653007Z",
+                  "features": [
+                    "VO",
+                  ],
+                  "id": 10562,
+                  "isBookable": true,
+                  "isExpired": false,
+                  "isForbiddenToUnderage": false,
+                  "isSoldOut": false,
+                  "price": 570,
+                  "priceCategoryLabel": "Tarif unique",
+                  "remainingQuantity": 1000,
+                },
+                {
+                  "activationCode": null,
+                  "beginningDatetime": "2024-05-18T16:10:00Z",
+                  "bookingLimitDatetime": "2024-05-18T16:10:00Z",
+                  "cancellationLimitDatetime": "2024-05-01T08:35:31.653077Z",
+                  "features": [
+                    "VO",
+                  ],
+                  "id": 10563,
+                  "isBookable": true,
+                  "isExpired": false,
+                  "isForbiddenToUnderage": false,
+                  "isSoldOut": false,
+                  "price": 570,
+                  "priceCategoryLabel": "Tarif unique",
+                  "remainingQuantity": 1000,
+                },
+                {
+                  "activationCode": null,
+                  "beginningDatetime": "2024-05-21T11:40:00Z",
+                  "bookingLimitDatetime": "2024-05-21T11:40:00Z",
+                  "cancellationLimitDatetime": "2024-05-01T08:35:31.653148Z",
+                  "features": [
+                    "VO",
+                  ],
+                  "id": 10564,
+                  "isBookable": true,
+                  "isExpired": false,
+                  "isForbiddenToUnderage": false,
+                  "isSoldOut": false,
+                  "price": 570,
+                  "priceCategoryLabel": "Tarif unique",
+                  "remainingQuantity": 1000,
+                },
+              ],
+              "subcategoryId": "SEANCE_CINE",
+              "venue": {
+                "address": "5 RUE MARECHAL JOFFRE",
+                "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489",
+                "city": "LE POULIGUEN",
+                "coordinates": {
+                  "latitude": 47.27618,
+                  "longitude": -2.4297,
+                },
+                "id": 125173,
+                "isPermanent": true,
                 "name": "LE PAX",
+                "offerer": {
+                  "name": "LE PAX",
+                },
+                "postalCode": "44510",
+                "publicName": "",
+                "timezone": "Europe/Paris",
               },
-              "postalCode": "44510",
-              "publicName": "",
-              "timezone": "Europe/Paris",
             },
           },
         ]
@@ -1561,7 +1650,12 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
             style={
               [
                 {
+<<<<<<< HEAD
                   "marginHorizontal": 24,
+=======
+                  "paddingLeft": 24,
+                  "paddingRight": 24,
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                 },
               ]
             }
@@ -1708,6 +1802,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                     }
                   >
                     <Text
+                      ellipsizeMode="tail"
                       numberOfLines={2}
                       style={
                         [
@@ -1805,13 +1900,59 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
             }
           />
           <View
+<<<<<<< HEAD
             onLayout={[Function]}
           >
             <View
               ItemSeparatorComponent={[Function]}
               data={
+=======
+            style={
+              [
+                {
+                  "paddingLeft": 24,
+                  "paddingRight": 24,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                 [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                  ],
                   {
+<<<<<<< HEAD
                     "isDisabled": false,
                     "onPress": [Function],
                     "subtitleLeft": "VO",
@@ -1950,11 +2091,54 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                           "justifyContent": "space-between",
                           "textOverflow": "ellipsis",
                           "width": "100%",
+=======
+                    "opacity": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "textAlign": "center",
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  backgroundColor="#F1F1F4"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#F1F1F4",
+                        "borderRadius": 8,
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                         },
                       ]
                     }
                   >
                     <Text
+<<<<<<< HEAD
                       accessibilityLabel="VO"
                       disabled={false}
                       hasSubtitleRight={true}
@@ -1970,17 +2154,91 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             "fontSize": 12,
                             "lineHeight": 20,
                             "textAlign": "left",
-                          },
-                        ]
-                      }
-                    >
-                      VO
-                    </Text>
-                    <View
-                      numberOfSpaces={1}
+=======
                       style={
                         [
                           {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
+                          },
+                        ]
+                      }
+                      textColor="#161617"
+                    >
+<<<<<<< HEAD
+                      VO
+=======
+                      <Text
+                        style={
+                          [
+                            {
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Prochaine séance
+                      </Text>
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
+                    </Text>
+                    <View
+                      accessibilityLabel="Samedi 11 mai"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={false}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "borderRadius": 0,
+                              "borderWidth": 0,
+                              "flexDirection": "row",
+                              "height": "auto",
+                              "justifyContent": "center",
+                              "marginTop": 0,
+                              "minHeight": 20,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "width": "auto",
+                            },
+                            {
+                              "backgroundColor": "transparent",
+                            },
+                          ],
+                          {
+<<<<<<< HEAD
                             "width": 4,
                           },
                         ]
@@ -2000,12 +2258,78 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             "fontSize": 15,
                             "lineHeight": 20,
                             "textAlign": "right",
+=======
+                            "opacity": 1,
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                           },
                         ]
                       }
+                      testID="Samedi 11 mai"
                     >
+<<<<<<< HEAD
                       5,70 €
                     </Text>
+=======
+                      <View
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {
+                                "flexDirection": "row",
+                                "flexShrink": 0,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            height={16}
+                            testID="button-icon-left"
+                            width={16}
+                          >
+                            <Text>
+                              button-icon-left-SVG-Mock
+                            </Text>
+                          </View>
+                          <View
+                            numberOfSpaces={2}
+                            style={
+                              [
+                                {
+                                  "width": 8,
+                                },
+                              ]
+                            }
+                          />
+                        </View>
+                        <Text
+                          adjustsFontSizeToFit={false}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "#320096",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                                "maxWidth": "100%",
+                              },
+                            ]
+                          }
+                        >
+                          Samedi 11 mai
+                        </Text>
+                      </View>
+                    </View>
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                   </View>
                 </View>
                 <View
@@ -3428,123 +3752,212 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
       data={
         [
           {
-            "accessibility": {
-              "audioDisability": null,
-              "mentalDisability": null,
-              "motorDisability": null,
-              "visualDisability": null,
-            },
-            "expenseDomains": [
-              "all",
-            ],
-            "extraData": {
-              "allocineId": 5981,
-              "author": null,
-              "cast": [
-                "Nicolas Cage",
-                "Laura Dern",
-                "Willem Dafoe",
-              ],
-              "durationMinutes": null,
-              "ean": null,
-              "editeur": null,
-              "genres": [
-                "Comédie dramatique",
-                "Romance",
-                "Thriller",
-              ],
-              "gtlLabels": null,
-              "musicSubType": null,
-              "musicType": null,
-              "performer": null,
-              "releaseDate": "2011-05-25",
-              "showSubType": null,
-              "showType": null,
-              "speaker": null,
-              "stageDirector": "David Lynch",
-              "visa": "74 823",
-            },
-            "id": 2051,
-            "isDigital": false,
-            "isDuo": true,
-            "isEducational": false,
-            "isExpired": false,
-            "isExternalBookingsDisabled": false,
-            "isForbiddenToUnderage": false,
-            "isReleased": true,
-            "isSoldOut": false,
-            "last30DaysBookings": null,
-            "metadata": {
-              "@context": "https://schema.org",
-              "@type": "Event",
-              "description": "Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.
-Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html",
-              "eventAttendanceMode": "OfflineEventAttendanceMode",
-              "image": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38",
-              "location": {
-                "@type": "Place",
-                "address": {
-                  "@type": "PostalAddress",
-                  "addressLocality": "LE POULIGUEN",
-                  "postalCode": "44510",
-                  "streetAddress": "5 RUE MARECHAL JOFFRE",
-                },
-                "geo": {
-                  "@type": "GeoCoordinates",
-                  "latitude": "47.27618",
-                  "longitude": "-2.42970",
-                },
-                "name": "LE PAX",
+            "isUpcoming": true,
+            "nextDate": 2024-05-11T08:30:00.000Z,
+            "offer": {
+              "accessibility": {
+                "audioDisability": null,
+                "mentalDisability": null,
+                "motorDisability": null,
+                "visualDisability": null,
               },
-              "name": "Rendez-vous avec Pol Pot",
-              "offers": {
-                "@type": "AggregateOffer",
-                "availability": "https://schema.org/InStock",
-                "lowPrice": "7.00",
-                "priceCurrency": "EUR",
-                "url": "https://app.staging.passculture.team/offre/231032388",
-              },
-              "startDate": "2024-06-06T14:40",
-              "validFrom": "2024-06-05",
-            },
-            "name": "Sailor et Lula",
-            "stocks": [
-              {
-                "activationCode": null,
-                "beginningDatetime": "2024-05-08T12:50:00Z",
-                "bookingLimitDatetime": "2024-05-08T12:50:00Z",
-                "cancellationLimitDatetime": "2024-05-01T08:35:31.652786Z",
-                "features": [
-                  "VO",
+              "expenseDomains": [
+                "all",
+              ],
+              "extraData": {
+                "allocineId": 5981,
+                "author": null,
+                "cast": [
+                  "Nicolas Cage",
+                  "Laura Dern",
+                  "Willem Dafoe",
                 ],
-                "id": 10559,
-                "isBookable": true,
-                "isExpired": false,
-                "isForbiddenToUnderage": false,
-                "isSoldOut": false,
-                "price": 570,
-                "priceCategoryLabel": "Tarif unique",
-                "remainingQuantity": 1000,
+                "durationMinutes": null,
+                "ean": null,
+                "editeur": null,
+                "genres": [
+                  "Comédie dramatique",
+                  "Romance",
+                  "Thriller",
+                ],
+                "gtlLabels": null,
+                "musicSubType": null,
+                "musicType": null,
+                "performer": null,
+                "releaseDate": "2011-05-25",
+                "showSubType": null,
+                "showType": null,
+                "speaker": null,
+                "stageDirector": "David Lynch",
+                "visa": "74 823",
               },
-            ],
-            "subcategoryId": "SEANCE_CINE",
-            "venue": {
-              "address": "5 RUE MARECHAL JOFFRE",
-              "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489",
-              "city": "LE POULIGUEN",
-              "coordinates": {
-                "latitude": 47.27618,
-                "longitude": -2.4297,
+              "id": 2051,
+              "isDigital": false,
+              "isDuo": true,
+              "isEducational": false,
+              "isExpired": false,
+              "isExternalBookingsDisabled": false,
+              "isForbiddenToUnderage": false,
+              "isReleased": true,
+              "isSoldOut": false,
+              "last30DaysBookings": null,
+              "metadata": {
+                "@context": "https://schema.org",
+                "@type": "Event",
+                "description": "Cambodge en 1978, trois journalistes français sont invités par les Khmers rouges à réaliser une interview exclusive du chef du régime, Pol Pot. Le pays semble idéal. Mais derrière le village Potemkine, le régime des Khmers rouges décline et la guerre avec le Vietnam menace d’envahir le pays. Le régime cherche des coupables, menant en secret un génocide à grande échelle. Sous les yeux des journalistes, la belle image se fissure, révélant l’horreur. Leur voyage se transforme progressivement en cauchemar.
+Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=326729.html",
+                "eventAttendanceMode": "OfflineEventAttendanceMode",
+                "image": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/K8B38",
+                "location": {
+                  "@type": "Place",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "LE POULIGUEN",
+                    "postalCode": "44510",
+                    "streetAddress": "5 RUE MARECHAL JOFFRE",
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "47.27618",
+                    "longitude": "-2.42970",
+                  },
+                  "name": "LE PAX",
+                },
+                "name": "Rendez-vous avec Pol Pot",
+                "offers": {
+                  "@type": "AggregateOffer",
+                  "availability": "https://schema.org/InStock",
+                  "lowPrice": "7.00",
+                  "priceCurrency": "EUR",
+                  "url": "https://app.staging.passculture.team/offre/231032388",
+                },
+                "startDate": "2024-06-06T14:40",
+                "validFrom": "2024-06-05",
               },
-              "id": 125173,
-              "isPermanent": true,
-              "name": "LE PAX",
-              "offerer": {
+              "name": "Sailor et Lula",
+              "stocks": [
+                {
+                  "activationCode": null,
+                  "beginningDatetime": "2024-05-08T12:50:00Z",
+                  "bookingLimitDatetime": "2024-05-08T12:50:00Z",
+                  "cancellationLimitDatetime": "2024-05-01T08:35:31.652786Z",
+                  "features": [
+                    "VO",
+                  ],
+                  "id": 10559,
+                  "isBookable": true,
+                  "isExpired": false,
+                  "isForbiddenToUnderage": false,
+                  "isSoldOut": false,
+                  "price": 570,
+                  "priceCategoryLabel": "Tarif unique",
+                  "remainingQuantity": 1000,
+                },
+                {
+                  "activationCode": null,
+                  "beginningDatetime": "2024-05-11T08:30:00Z",
+                  "bookingLimitDatetime": "2024-05-11T08:30:00Z",
+                  "cancellationLimitDatetime": "2024-05-01T08:35:31.652862Z",
+                  "features": [
+                    "VO",
+                  ],
+                  "id": 10560,
+                  "isBookable": true,
+                  "isExpired": false,
+                  "isForbiddenToUnderage": false,
+                  "isSoldOut": false,
+                  "price": 570,
+                  "priceCategoryLabel": "Tarif unique",
+                  "remainingQuantity": 1000,
+                },
+                {
+                  "activationCode": null,
+                  "beginningDatetime": "2024-05-12T16:45:00Z",
+                  "bookingLimitDatetime": "2024-05-12T16:45:00Z",
+                  "cancellationLimitDatetime": "2024-05-01T08:35:31.652935Z",
+                  "features": [
+                    "VO",
+                  ],
+                  "id": 10561,
+                  "isBookable": true,
+                  "isExpired": false,
+                  "isForbiddenToUnderage": false,
+                  "isSoldOut": false,
+                  "price": 570,
+                  "priceCategoryLabel": "Tarif unique",
+                  "remainingQuantity": 1000,
+                },
+                {
+                  "activationCode": null,
+                  "beginningDatetime": "2024-05-16T19:40:00Z",
+                  "bookingLimitDatetime": "2024-05-16T19:40:00Z",
+                  "cancellationLimitDatetime": "2024-05-01T08:35:31.653007Z",
+                  "features": [
+                    "VO",
+                  ],
+                  "id": 10562,
+                  "isBookable": true,
+                  "isExpired": false,
+                  "isForbiddenToUnderage": false,
+                  "isSoldOut": false,
+                  "price": 570,
+                  "priceCategoryLabel": "Tarif unique",
+                  "remainingQuantity": 1000,
+                },
+                {
+                  "activationCode": null,
+                  "beginningDatetime": "2024-05-18T16:10:00Z",
+                  "bookingLimitDatetime": "2024-05-18T16:10:00Z",
+                  "cancellationLimitDatetime": "2024-05-01T08:35:31.653077Z",
+                  "features": [
+                    "VO",
+                  ],
+                  "id": 10563,
+                  "isBookable": true,
+                  "isExpired": false,
+                  "isForbiddenToUnderage": false,
+                  "isSoldOut": false,
+                  "price": 570,
+                  "priceCategoryLabel": "Tarif unique",
+                  "remainingQuantity": 1000,
+                },
+                {
+                  "activationCode": null,
+                  "beginningDatetime": "2024-05-21T11:40:00Z",
+                  "bookingLimitDatetime": "2024-05-21T11:40:00Z",
+                  "cancellationLimitDatetime": "2024-05-01T08:35:31.653148Z",
+                  "features": [
+                    "VO",
+                  ],
+                  "id": 10564,
+                  "isBookable": true,
+                  "isExpired": false,
+                  "isForbiddenToUnderage": false,
+                  "isSoldOut": false,
+                  "price": 570,
+                  "priceCategoryLabel": "Tarif unique",
+                  "remainingQuantity": 1000,
+                },
+              ],
+              "subcategoryId": "SEANCE_CINE",
+              "venue": {
+                "address": "5 RUE MARECHAL JOFFRE",
+                "bannerUrl": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489",
+                "city": "LE POULIGUEN",
+                "coordinates": {
+                  "latitude": 47.27618,
+                  "longitude": -2.4297,
+                },
+                "id": 125173,
+                "isPermanent": true,
                 "name": "LE PAX",
+                "offerer": {
+                  "name": "LE PAX",
+                },
+                "postalCode": "44510",
+                "publicName": "",
+                "timezone": "Europe/Paris",
               },
-              "postalCode": "44510",
-              "publicName": "",
-              "timezone": "Europe/Paris",
             },
           },
         ]
@@ -3575,7 +3988,12 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
             style={
               [
                 {
+<<<<<<< HEAD
                   "marginHorizontal": 24,
+=======
+                  "paddingLeft": 24,
+                  "paddingRight": 24,
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                 },
               ]
             }
@@ -3722,6 +4140,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                     }
                   >
                     <Text
+                      ellipsizeMode="tail"
                       numberOfLines={2}
                       style={
                         [
@@ -3818,6 +4237,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
               ]
             }
           />
+<<<<<<< HEAD
           <RCTScrollView
             horizontal={true}
             showsHorizontalScrollIndicator={false}
@@ -3825,10 +4245,19 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
               [
                 {
                   "paddingVertical": 8,
+=======
+          <View
+            style={
+              [
+                {
+                  "paddingLeft": 24,
+                  "paddingRight": 24,
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                 },
               ]
             }
           >
+<<<<<<< HEAD
             <View>
               <View
                 numberOfSpaces={3}
@@ -3951,11 +4380,89 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                           "justifyContent": "space-between",
                           "textOverflow": "ellipsis",
                           "width": "100%",
+=======
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "textAlign": "center",
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  backgroundColor="#F1F1F4"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#F1F1F4",
+                        "borderRadius": 8,
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                         },
                       ]
                     }
                   >
                     <Text
+<<<<<<< HEAD
                       accessibilityLabel="VO"
                       disabled={false}
                       hasSubtitleRight={true}
@@ -3971,17 +4478,91 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             "fontSize": 12,
                             "lineHeight": 20,
                             "textAlign": "left",
-                          },
-                        ]
-                      }
-                    >
-                      VO
-                    </Text>
-                    <View
-                      numberOfSpaces={1}
+=======
                       style={
                         [
                           {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
+                          },
+                        ]
+                      }
+                      textColor="#161617"
+                    >
+<<<<<<< HEAD
+                      VO
+=======
+                      <Text
+                        style={
+                          [
+                            {
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        Prochaine séance
+                      </Text>
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
+                    </Text>
+                    <View
+                      accessibilityLabel="Samedi 11 mai"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={false}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                            {
+                              "alignItems": "center",
+                              "borderRadius": 0,
+                              "borderWidth": 0,
+                              "flexDirection": "row",
+                              "height": "auto",
+                              "justifyContent": "center",
+                              "marginTop": 0,
+                              "minHeight": 20,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "width": "auto",
+                            },
+                            {
+                              "backgroundColor": "transparent",
+                            },
+                          ],
+                          {
+<<<<<<< HEAD
                             "width": 4,
                           },
                         ]
@@ -4001,10 +4582,15 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             "fontSize": 15,
                             "lineHeight": 20,
                             "textAlign": "right",
+=======
+                            "opacity": 1,
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
                           },
                         ]
                       }
+                      testID="Samedi 11 mai"
                     >
+<<<<<<< HEAD
                       5,70 €
                     </Text>
                   </View>
@@ -4022,6 +4608,72 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
               />
             </View>
           </RCTScrollView>
+=======
+                      <View
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {
+                                "flexDirection": "row",
+                                "flexShrink": 0,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            height={16}
+                            testID="button-icon-left"
+                            width={16}
+                          >
+                            <Text>
+                              button-icon-left-SVG-Mock
+                            </Text>
+                          </View>
+                          <View
+                            numberOfSpaces={2}
+                            style={
+                              [
+                                {
+                                  "width": 8,
+                                },
+                              ]
+                            }
+                          />
+                        </View>
+                        <Text
+                          adjustsFontSizeToFit={false}
+                          numberOfLines={1}
+                          style={
+                            [
+                              {
+                                "color": "#320096",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 16,
+                                "maxWidth": "100%",
+                              },
+                            ]
+                          }
+                        >
+                          Samedi 11 mai
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+>>>>>>> 4a0d3fa97 (feat: add time granularity to display movies)
           <View
             numberOfSpaces={4}
             style={

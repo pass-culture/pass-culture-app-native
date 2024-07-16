@@ -46,7 +46,12 @@ export const createDateBuilder = (defaultDate = '2024-01-01T00:00:00Z') => {
         date.setFullYear(year)
         return builderObject
       },
+      withHours: (...args: Parameters<typeof date.setHours>) => {
+        date.setHours(...args)
+        return builderObject
+      },
       toString: () => date.toISOString(),
+      toDate: () => date,
     }
 
     return builderObject

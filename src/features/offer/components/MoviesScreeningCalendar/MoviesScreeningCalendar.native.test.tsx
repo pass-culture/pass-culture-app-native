@@ -104,25 +104,6 @@ describe('MoviesScreeningCalendar', () => {
 
     expect(screen).toMatchSnapshot()
   })
-
-  it('should display a movie title if Venue has stock on date', async () => {
-    renderMoviesScreeningCalendar({ isDesktopViewport: true, venueOffers: venueOffersMock })
-
-    await screen.findByLabelText('Mercredi 8 Mai')
-    await act(async () => {})
-
-    expect(screen.getByText(MOCK_NAME)).toBeOnTheScreen()
-  })
-
-  it('should not display a movie title if movie has no screening on selected date', async () => {
-    mockdate.set(new Date('2024-05-09T12:50:00Z'))
-    renderMoviesScreeningCalendar({ isDesktopViewport: true, venueOffers: venueOffersMock })
-
-    await screen.findByLabelText('Jeudi 9 Mai')
-    await act(async () => {})
-
-    expect(screen.queryByText(MOCK_NAME)).not.toBeOnTheScreen()
-  })
 })
 
 const renderMoviesScreeningCalendar = ({

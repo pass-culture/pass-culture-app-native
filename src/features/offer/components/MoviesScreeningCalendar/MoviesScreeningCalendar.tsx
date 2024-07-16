@@ -1,4 +1,4 @@
-import { isSameDay } from 'date-fns'
+import { isSameDay, startOfDay } from 'date-fns'
 import React, { FunctionComponent, useMemo, useRef, useState, useCallback, useEffect } from 'react'
 import { FlatList, Animated, Easing } from 'react-native'
 
@@ -26,7 +26,7 @@ const useMoviesScreeningsList = (offerIds: number[]) => {
   const setSelectedDate = useCallback(
     (date: Date) => {
       if (!isSameDay(selectedInternalDate, date)) {
-        setSelectedInternalDate(date)
+        setSelectedInternalDate(startOfDay(date))
       }
     },
     [selectedInternalDate]

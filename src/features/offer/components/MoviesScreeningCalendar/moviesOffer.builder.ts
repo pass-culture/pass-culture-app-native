@@ -2,6 +2,7 @@ import { addDays, differenceInMilliseconds, isAfter, isSameDay } from 'date-fns'
 
 import { OfferResponseV2 } from 'api/gen'
 import { MoviesOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
+import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 
 export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => {
   let moviesOffers: MoviesOffer[] = offersWithStocks.map((offer) => ({
@@ -18,7 +19,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
               return true
             }
             if (isSameDay(new Date(stock.beginningDatetime), selectedDate)) {
-              return true
+              return isAfter(new Date(stock.beginningDatetime), selectedDate)
             }
             return false
           })
@@ -32,11 +33,20 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
           ...rest,
           offer: {
             ...offer,
-            stocks: offer.stocks.filter(
-              (stock) =>
-                stock.beginningDatetime &&
-                isSameDay(new Date(stock.beginningDatetime), selectedDate)
-            ),
+            stocks: offer.stocks.filter((stock) => {
+              if (!stock.beginningDatetime) {
+                return useIsFalseWithDelay
+              }
+              const now = new Date()
+              const isSameDate = isSameDay(new Date(stock.beginningDatetime), selectedDate)
+              const isAfterNow = isAfter(new Date(stock.beginningDatetime), now)
+
+              if (isSameDay(now, selectedDate)) {
+                return isSameDate && isAfterNow
+              }
+
+              return isSameDate
+            }),
           },
         }))
         .filter(({ offer }) => offer.stocks.length > 0)
@@ -74,16 +84,18 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
     },
 
     withNextScreeningFromDate: (selectedDate: Date) => {
-      moviesOffers = moviesOffers.map(({ offer }) => {
-        const nextDate = getNextDate(offer, selectedDate) ?? getUpcomingDate(offer)
-        const upcomingDate = getUpcomingDate(offer)
+      moviesOffers = moviesOffers
+        .map(({ offer }) => {
+          const nextDate = getNextDate(offer, selectedDate) ?? getUpcomingDate(offer)
+          const upcomingDate = getUpcomingDate(offer)
 
-        return {
-          isUpcoming: nextDate === undefined || isSameDay(nextDate, upcomingDate as Date),
-          offer,
-          nextDate: nextDate ?? upcomingDate,
-        }
-      })
+          return {
+            isUpcoming: nextDate === undefined || isSameDay(nextDate, upcomingDate as Date),
+            offer,
+            nextDate: nextDate ?? upcomingDate,
+          }
+        })
+        .filter(({ nextDate }) => !!nextDate)
 
       return builderObject
     },
