@@ -763,8 +763,13 @@ describe('SearchResultsContent component', () => {
   })
 
   describe('when feature flag map in seach activated', () => {
-    it('should display tabs', async () => {
+    beforeEach(() => {
+      mockHits = mockedAlgoliaResponse.hits
+      mockNbHits = mockedAlgoliaResponse.nbHits
       useFeatureFlagSpy.mockReturnValueOnce(true)
+    })
+
+    it('should display tabs', async () => {
       renderSearchResultsContent()
 
       expect(await screen.findByText('Carte')).toBeOnTheScreen()
@@ -772,7 +777,6 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should log consult venue map when pressing carte tab', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
       render(reactQueryProviderHOC(<SearchResultsContent />))
 
       fireEvent.press(await screen.findByText('Carte'))
@@ -781,6 +785,14 @@ describe('SearchResultsContent component', () => {
         from: 'search',
         searchId: 'testUuidV4',
       })
+    })
+
+    it('should display empty state view when there is no search result', async () => {
+      mockHits = []
+      mockNbHits = 0
+      renderSearchResultsContent()
+
+      expect(await screen.findByText('Pas de résultat')).toBeOnTheScreen()
     })
   })
 })
