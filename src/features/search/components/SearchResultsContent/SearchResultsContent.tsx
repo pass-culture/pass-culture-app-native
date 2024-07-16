@@ -270,19 +270,14 @@ export const SearchResultsContent: React.FC = () => {
   )
 
   const renderSearchList = () => {
-    if (nbHits > 0) {
-      return (
-        <React.Fragment>
-          {shouldDisplayTabLayout ? renderTabLayout() : tabPanels[Tab.SEARCHLIST]}
-        </React.Fragment>
-      )
-    } else {
+    if (nbHits === 0) {
       return (
         <NoSearchResultsWrapper>
           <NoSearchResult />
         </NoSearchResultsWrapper>
       )
     }
+    return shouldDisplayTabLayout ? renderTabLayout() : tabPanels[Tab.SEARCHLIST]
   }
 
   return (
