@@ -83,7 +83,7 @@ export const VenueMapLocationModal = ({
     : theme.colors.black
 
   const handleSubmit = () => {
-    setTempLocationMode && setTempLocationMode(tempLocationMode)
+    setTempLocationMode?.(tempLocationMode)
     onSubmit()
     if (!shouldOpenMapInTab) {
       navigate('VenueMap')

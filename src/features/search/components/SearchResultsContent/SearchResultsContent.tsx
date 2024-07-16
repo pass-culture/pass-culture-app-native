@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
@@ -35,6 +36,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
 import { ellipseString } from 'shared/string/ellipseString'
@@ -84,7 +86,7 @@ export const SearchResultsContent: React.FC = () => {
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { user } = useAuthContext()
-  const { geolocPosition } = useLocation()
+  const { geolocPosition, selectedLocationMode } = useLocation()
   const previousGeolocPosition = usePrevious(geolocPosition)
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
@@ -93,6 +95,8 @@ export const SearchResultsContent: React.FC = () => {
   const { top, tabBarHeight } = useCustomSafeInsets()
   const venueMapHeight = height - top - tabBarHeight - HEADER_SEARCH_VENUE_MAP
   const [isSearchListTab, setIsSearchListTab] = useState(true)
+  const [defaultTab, setDefaultTab] = useState(Tab.SEARCHLIST)
+  const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
 
   const isVenue = !!searchState.venue
 
@@ -140,6 +144,11 @@ export const SearchResultsContent: React.FC = () => {
     showModal: showAccessibilityModal,
     hideModal: hideAccessibilityModal,
   } = useModal(false)
+  const {
+    visible: venueMapLocationModalVisible,
+    showModal: showVenueMapLocationModal,
+    hideModal: hideVenueMapLocationModal,
+  } = useModal(false)
 
   const activeFiltersCount = useFilterCount(searchState)
 
@@ -167,6 +176,12 @@ export const SearchResultsContent: React.FC = () => {
       refetch()
     }
   }, [refetch, shouldRefetchResults])
+
+  useEffect(() => {
+    if (selectedLocationMode === LocationMode.EVERYWHERE && defaultTab === Tab.MAP) {
+      setDefaultTab(Tab.SEARCHLIST)
+    }
+  }, [defaultTab, selectedLocationMode])
 
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
@@ -205,6 +220,31 @@ export const SearchResultsContent: React.FC = () => {
 
     return isBeneficiary && hasRemainingCredit
   }, [user?.isBeneficiary, user?.domainsCredit?.all?.remaining])
+
+  const triggerMapTab = () => {
+    setDefaultTab(Tab.MAP)
+    if (selectedLocationMode === LocationMode.EVERYWHERE) {
+      showVenueMapLocationModal()
+      return
+    }
+
+    analytics.logConsultVenueMap({
+      from: 'search',
+      searchId: searchState.searchId,
+    })
+    setIsSearchListTab(false)
+  }
+
+  const dismissVenueMapLocationModal = () => {
+    if (
+      selectedLocationMode === LocationMode.EVERYWHERE &&
+      tempLocationMode === LocationMode.EVERYWHERE
+    ) {
+      setDefaultTab(Tab.SEARCHLIST)
+    }
+
+    hideVenueMapLocationModal()
+  }
 
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
@@ -257,13 +297,7 @@ export const SearchResultsContent: React.FC = () => {
         { key: Tab.MAP, Icon: Map },
       ]}
       onTabChange={{
-        Carte: () => {
-          analytics.logConsultVenueMap({
-            from: 'search',
-            searchId: searchState.searchId,
-          })
-          setIsSearchListTab(false)
-        },
+        Carte: triggerMapTab,
         Liste: () => setIsSearchListTab(true),
       }}
     />
@@ -404,6 +438,12 @@ export const SearchResultsContent: React.FC = () => {
         isVisible={accesibilityFiltersModalVisible}
         hideModal={hideAccessibilityModal}
         filterBehaviour={FilterBehaviour.SEARCH}
+      />
+      <VenueMapLocationModal
+        visible={venueMapLocationModalVisible}
+        dismissModal={dismissVenueMapLocationModal}
+        setTempLocationMode={setTempLocationMode}
+        shouldOpenMapInTab
       />
     </React.Fragment>
   )
