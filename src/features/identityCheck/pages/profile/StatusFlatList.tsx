@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 
 import { ActivityIdEnum, ActivityResponseModel } from 'api/gen'
 import { useActivityTypes } from 'features/identityCheck/api/useActivityTypes'
-import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
@@ -15,7 +14,7 @@ import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Li } from 'ui/components/Li'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const GRADIENT_HEIGHT = getSpacing(30)
 const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
@@ -90,8 +89,9 @@ export function StatusFlatList({
             ListHeaderComponent={
               <React.Fragment>
                 <View style={{ height: headerHeight }} />
-                <CenteredTitle titleID={titleID} title="Sélectionne ton statut" />
-                <Spacer.Column numberOfSpaces={5} />
+                <Spacer.Column numberOfSpaces={2} />
+                <Typo.Title3>{'Sélectionne ton statut'}</Typo.Title3>
+                <Spacer.Column numberOfSpaces={8} />
               </React.Fragment>
             }
             renderItem={renderItem}
