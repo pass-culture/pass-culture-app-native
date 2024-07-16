@@ -201,6 +201,7 @@ export type RootStackParamList = {
   ChangePassword: undefined
   ChangeEmail: undefined
   ChangeEmailSetPassword: { token: string; emailSelectionToken: string }
+  ChangeStatus: undefined
   TrackEmailChange: undefined
   NewEmailSelection: { token: string }
   ChangeEmailExpiredLink: undefined
