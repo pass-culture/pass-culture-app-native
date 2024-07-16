@@ -282,15 +282,9 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
   >
     <RCTScrollView
       ItemSeparatorComponent={[Function]}
-      contentContainerStyle={
-        {
-          "alignItems": "flex-start",
-        }
-      }
       data={
         [
           {
-            "hasBookedScreening": false,
             "isDisabled": false,
             "onPress": [Function],
             "subtitleLeft": "VO",
@@ -298,7 +292,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             "title": "0h00",
           },
           {
-            "hasBookedScreening": false,
             "isDisabled": false,
             "onPress": [Function],
             "subtitleLeft": "VO",
@@ -306,7 +299,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             "title": "0h10",
           },
           {
-            "hasBookedScreening": false,
             "isDisabled": false,
             "onPress": [Function],
             "subtitleLeft": "VO",
@@ -314,7 +306,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             "title": "10h20",
           },
           {
-            "hasBookedScreening": false,
             "isDisabled": false,
             "onPress": [Function],
             "subtitleLeft": "VO",
@@ -322,7 +313,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             "title": "11h10",
           },
           {
-            "hasBookedScreening": false,
             "isDisabled": false,
             "onPress": [Function],
             "subtitleLeft": "VO",
@@ -330,7 +320,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             "title": "12h00",
           },
           {
-            "hasBookedScreening": false,
             "isDisabled": false,
             "onPress": [Function],
             "subtitleLeft": "VO",
@@ -338,7 +327,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
             "title": "12h20",
           },
           {
-            "hasBookedScreening": false,
             "isDisabled": false,
             "onPress": [Function],
             "subtitleLeft": "VO",
@@ -363,6 +351,13 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
       renderItem={[Function]}
       scrollEventThrottle={50}
       stickyHeaderIndices={[]}
+      style={
+        [
+          {
+            "marginHorizontal": 24,
+          },
+        ]
+      }
       viewabilityConfigCallbackPairs={[]}
     >
       <View>

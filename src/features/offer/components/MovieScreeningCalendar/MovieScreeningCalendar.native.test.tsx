@@ -104,6 +104,26 @@ describe('Movie screening calendar', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should not show eventCard if there is no beginningDateTime for screening', async () => {
+    renderMovieScreeningCalendar({
+      offer: {
+        ...defaultOfferResponse,
+        stocks: [
+          {
+            ...defaultOfferStockResponse,
+            beginningDatetime: '2024-02-27T19:20:00Z',
+            price: 192,
+          },
+          { ...defaultOfferStockResponse, beginningDatetime: undefined, price: 177 },
+        ],
+      },
+    })
+
+    await screen.findByText('1,92 €')
+
+    expect(screen.queryByText('1,77 €')).not.toBeOnTheScreen()
+  })
+
   it('should render <MovieScreeningCalendar /> without duplicated screening dates', async () => {
     renderMovieScreeningCalendar({
       offer: {
@@ -377,6 +397,88 @@ describe('Movie screening calendar', () => {
       await screen.findByLabelText('Mardi 27 Février')
 
       expect(await screen.findByText('Crédit insuffisant')).toBeOnTheScreen()
+    })
+
+    it('should show disabled eventCard when user has expired credit', async () => {
+      mockAuthContext = {
+        ...defaultLoggedInUser,
+        user: {
+          ...nonBeneficiaryUser,
+          depositExpirationDate: '2021-11-01T00:00:00.000Z',
+        },
+      }
+
+      renderMovieScreeningCalendar({ offer: defaultOfferResponse })
+
+      await screen.findByLabelText('Mardi 27 Février')
+
+      expect(screen.getByTestId('event-card')).toBeDisabled()
+    })
+
+    it('should show features informations, separated with coma, on eventCard when user has expired credit', async () => {
+      mockAuthContext = {
+        ...defaultLoggedInUser,
+        user: {
+          ...nonBeneficiaryUser,
+          depositExpirationDate: '2021-11-01T00:00:00.000Z',
+        },
+      }
+
+      renderMovieScreeningCalendar({
+        offer: {
+          ...defaultOfferResponse,
+          stocks: [
+            {
+              ...defaultOfferStockResponse,
+              features: ['VO', '3D'],
+            },
+          ],
+        },
+      })
+
+      await screen.findByLabelText('Mardi 27 Février')
+
+      expect(screen.getByTestId('event-card')).toHaveTextContent('VO, 3D')
+    })
+
+    it('should show disabled eventCard when user is not eligible', async () => {
+      mockAuthContext = {
+        ...defaultLoggedInUser,
+        user: {
+          ...nonBeneficiaryUser,
+        },
+      }
+
+      renderMovieScreeningCalendar({ offer: defaultOfferResponse })
+
+      await screen.findByLabelText('Mardi 27 Février')
+
+      expect(screen.getByTestId('event-card')).toBeDisabled()
+    })
+
+    it('should show features informations, separated with coma, on eventCard when user is not eligible', async () => {
+      mockAuthContext = {
+        ...defaultLoggedInUser,
+        user: {
+          ...nonBeneficiaryUser,
+        },
+      }
+
+      renderMovieScreeningCalendar({
+        offer: {
+          ...defaultOfferResponse,
+          stocks: [
+            {
+              ...defaultOfferStockResponse,
+              features: ['VO', '3D'],
+            },
+          ],
+        },
+      })
+
+      await screen.findByLabelText('Mardi 27 Février')
+
+      expect(screen.getByTestId('event-card')).toHaveTextContent('VO, 3D')
     })
 
     it('should log event ClickBookOffer when user is logged in and a cliquable eventcard is pressed', async () => {
