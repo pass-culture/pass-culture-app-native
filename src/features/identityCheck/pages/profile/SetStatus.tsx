@@ -17,6 +17,7 @@ import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { createAnimatableComponent, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { theme } from 'theme'
@@ -94,21 +95,23 @@ export const SetStatus = () => {
   }
 
   const renderItem: ListRenderItem<ActivityResponseModel> = ({ item }) => (
-    <Li key={item.label}>
-      <Controller
-        control={control}
-        name="selectedStatus"
-        render={({ field: { value, onChange } }) => (
-          <RadioSelector
-            checked={item.id === value}
-            label={item.label}
-            description={item.description}
-            onPress={() => onChange(item.id)}
-          />
-        )}
-      />
-      <Spacer.Column numberOfSpaces={3} />
-    </Li>
+    <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
+      <Li key={item.label}>
+        <Controller
+          control={control}
+          name="selectedStatus"
+          render={({ field: { value, onChange } }) => (
+            <RadioSelector
+              checked={item.id === value}
+              label={item.label}
+              description={item.description}
+              onPress={() => onChange(item.id)}
+            />
+          )}
+        />
+        <Spacer.Column numberOfSpaces={3} />
+      </Li>
+    </View>
   )
 
   return (
