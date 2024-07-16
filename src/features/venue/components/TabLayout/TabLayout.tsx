@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useTabArrowNavigation } from 'features/venue/components/TabLayout/useTabArrowNavigation'
@@ -24,10 +24,17 @@ export const TabLayout = <TabKeyType extends string>({
   const tabListRef = useRef(null)
   const [selectedTab, setSelectedTab] = useState<TabKeyType>(defaultTab)
 
-  const onTabPress = (tab: TabKeyType) => {
-    setSelectedTab(tab)
-    onTabChange?.[tab]?.()
-  }
+  const onTabPress = useCallback(
+    (tab: TabKeyType) => {
+      setSelectedTab(tab)
+      onTabChange?.[tab]?.()
+    },
+    [onTabChange]
+  )
+
+  useEffect(() => {
+    onTabPress(defaultTab)
+  }, [defaultTab, onTabPress])
 
   useTabArrowNavigation<TabKeyType>({
     tabListRef,

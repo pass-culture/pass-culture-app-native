@@ -52,4 +52,28 @@ describe('TabLayout', () => {
 
     expect(screen.getByTestId('tabIcon')).toBeOnTheScreen()
   })
+
+  it('should update tab when default tab changed', () => {
+    let mockDefaultTab = Tab.OFFERS
+    render(
+      <TabLayout
+        tabPanels={tabPanels}
+        tabs={[{ key: Tab.OFFERS }, { key: Tab.INFOS }]}
+        defaultTab={mockDefaultTab}
+      />
+    )
+
+    expect(screen.getByText('Offres disponibles content')).toBeOnTheScreen()
+
+    mockDefaultTab = Tab.INFOS
+    screen.rerender(
+      <TabLayout
+        tabPanels={tabPanels}
+        tabs={[{ key: Tab.OFFERS }, { key: Tab.INFOS }]}
+        defaultTab={mockDefaultTab}
+      />
+    )
+
+    expect(screen.getByText('Infos pratiques content')).toBeOnTheScreen()
+  })
 })
