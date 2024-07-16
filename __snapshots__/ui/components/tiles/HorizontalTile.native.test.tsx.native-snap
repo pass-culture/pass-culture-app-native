@@ -94,6 +94,7 @@ exports[`HorizontalTile Component should render correctly 1`] = `
         }
       >
         <Text
+          ellipsizeMode="tail"
           numberOfLines={2}
           style={
             [
