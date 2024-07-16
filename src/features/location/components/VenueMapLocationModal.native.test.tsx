@@ -10,6 +10,7 @@ import { analytics } from 'libs/analytics'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
+import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -57,7 +58,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 describe('VenueMapLocationModal', () => {
   it('should render correctly if modal visible', async () => {
-    renderVenueMapLocationModal()
+    renderVenueMapLocationModal({})
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -66,7 +67,7 @@ describe('VenueMapLocationModal', () => {
   })
 
   it('should trigger logEvent "logUserSetLocation" on onSubmit', async () => {
-    renderVenueMapLocationModal()
+    renderVenueMapLocationModal({})
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -86,7 +87,7 @@ describe('VenueMapLocationModal', () => {
   })
 
   it('should hide modal on close modal button press', async () => {
-    renderVenueMapLocationModal()
+    renderVenueMapLocationModal({})
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -102,7 +103,7 @@ describe('VenueMapLocationModal', () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
     mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
-    renderVenueMapLocationModal()
+    renderVenueMapLocationModal({})
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -118,7 +119,7 @@ describe('VenueMapLocationModal', () => {
   it('should hide "Géolocalisation désactivée" if geolocation is enabled', async () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
 
-    renderVenueMapLocationModal()
+    renderVenueMapLocationModal({})
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -126,12 +127,12 @@ describe('VenueMapLocationModal', () => {
     expect(screen.queryByText('Géolocalisation désactivée')).toBeNull()
   })
 
-  it('should navigate to venue map on submit when we choose a location', async () => {
+  it('should navigate to venue map on submit when we choose a location and shouldOpenMapInTab is not true', async () => {
     getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
     mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
-    renderVenueMapLocationModal()
+    renderVenueMapLocationModal({})
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -157,10 +158,73 @@ describe('VenueMapLocationModal', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap')
   })
 
+  it('should not navigate to venue map on submit when we choose a location and shouldOpenMapInTab is true', async () => {
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+    mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+
+    renderVenueMapLocationModal({ shouldOpenMapInTab: true })
+    await act(async () => {
+      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+    })
+    const openLocationModalButton = screen.getByText('Choisir une localisation')
+    fireEvent.press(openLocationModalButton)
+
+    const searchInput = screen.getByTestId('styled-input-container')
+    await act(async () => {
+      fireEvent.changeText(searchInput, mockPlaces[0].label)
+    })
+
+    const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    fireEvent.press(suggestedPlace)
+
+    await act(async () => {
+      const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
+      slider.props.onValuesChange([mockRadiusPlace])
+    })
+
+    const validateButon = screen.getByText('Valider et voir sur la carte')
+    fireEvent.press(validateButon)
+
+    expect(navigate).not.toHaveBeenCalled()
+  })
+
+  it('should set temp location mode when submit if setTempLocationMode defined', async () => {
+    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
+    mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+    mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
+
+    const mockSetLocationMode = jest.fn()
+    renderVenueMapLocationModal({ setTempLocationMode: mockSetLocationMode })
+    await act(async () => {
+      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+    })
+    const openLocationModalButton = screen.getByText('Choisir une localisation')
+    fireEvent.press(openLocationModalButton)
+
+    const searchInput = screen.getByTestId('styled-input-container')
+    await act(async () => {
+      fireEvent.changeText(searchInput, mockPlaces[0].label)
+    })
+
+    const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    fireEvent.press(suggestedPlace)
+
+    await act(async () => {
+      const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
+      slider.props.onValuesChange([mockRadiusPlace])
+    })
+
+    const validateButon = screen.getByText('Valider et voir sur la carte')
+    fireEvent.press(validateButon)
+
+    expect(mockSetLocationMode).toHaveBeenNthCalledWith(1, LocationMode.AROUND_PLACE)
+  })
+
   it('should request geolocation if geolocation is denied and the geolocation button pressed', async () => {
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.DENIED)
 
-    renderVenueMapLocationModal()
+    renderVenueMapLocationModal({})
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
@@ -205,7 +269,7 @@ describe('VenueMapLocationModal', () => {
 
   describe('PlaceRadius', () => {
     it("should display default radius if it wasn't set previously", async () => {
-      renderVenueMapLocationModal()
+      renderVenueMapLocationModal({})
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
@@ -227,7 +291,7 @@ describe('VenueMapLocationModal', () => {
 
     it('should display default radius even if an AroundMeRadius was set previously', async () => {
       mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
-      renderVenueMapLocationModal()
+      renderVenueMapLocationModal({})
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
@@ -256,7 +320,7 @@ describe('VenueMapLocationModal', () => {
   describe('AroundMeRadius', () => {
     it("should display default radius if it wasn't set previously", async () => {
       mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
-      renderVenueMapLocationModal()
+      renderVenueMapLocationModal({})
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
@@ -275,7 +339,7 @@ describe('VenueMapLocationModal', () => {
       mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
       mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
 
-      renderVenueMapLocationModal()
+      renderVenueMapLocationModal({})
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
@@ -311,21 +375,41 @@ describe('VenueMapLocationModal', () => {
   })
 })
 
-function renderVenueMapLocationModal() {
+function renderVenueMapLocationModal({
+  shouldOpenMapInTab,
+  setTempLocationMode,
+}: {
+  shouldOpenMapInTab?: boolean
+  setTempLocationMode?: React.Dispatch<React.SetStateAction<LocationMode>>
+}) {
   render(
     <LocationWrapper>
-      <VenueMapLocationModalWithMockButton />
+      <VenueMapLocationModalWithMockButton
+        shouldOpenMapInTab={shouldOpenMapInTab}
+        setTempLocationMode={setTempLocationMode}
+      />
     </LocationWrapper>
   )
 }
 
-const VenueMapLocationModalWithMockButton = () => {
+const VenueMapLocationModalWithMockButton = ({
+  shouldOpenMapInTab,
+  setTempLocationMode,
+}: {
+  shouldOpenMapInTab?: boolean
+  setTempLocationMode?: React.Dispatch<React.SetStateAction<LocationMode>>
+}) => {
   const [visible, setVisible] = useState<boolean>(true)
 
   return (
     <React.Fragment>
       <Button title="Open modal" onPress={() => setVisible(true)} />
-      <VenueMapLocationModal visible={visible} dismissModal={() => setVisible(false)} />
+      <VenueMapLocationModal
+        visible={visible}
+        dismissModal={() => setVisible(false)}
+        shouldOpenMapInTab={shouldOpenMapInTab}
+        setTempLocationMode={setTempLocationMode}
+      />
     </React.Fragment>
   )
 }

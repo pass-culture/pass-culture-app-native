@@ -26,9 +26,16 @@ import { getSpacing } from 'ui/theme'
 interface LocationModalProps {
   visible: boolean
   dismissModal: () => void
+  shouldOpenMapInTab?: boolean
+  setTempLocationMode?: React.Dispatch<React.SetStateAction<LocationMode>>
 }
 
-export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalProps) => {
+export const VenueMapLocationModal = ({
+  visible,
+  dismissModal,
+  shouldOpenMapInTab,
+  setTempLocationMode,
+}: LocationModalProps) => {
   const locationStateProps = useLocationState({
     visible,
   })
@@ -76,8 +83,11 @@ export const VenueMapLocationModal = ({ visible, dismissModal }: LocationModalPr
     : theme.colors.black
 
   const handleSubmit = () => {
+    setTempLocationMode && setTempLocationMode(tempLocationMode)
     onSubmit()
-    navigate('VenueMap')
+    if (!shouldOpenMapInTab) {
+      navigate('VenueMap')
+    }
   }
 
   return (
