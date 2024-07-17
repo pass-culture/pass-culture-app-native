@@ -8,7 +8,7 @@ export type MoviesOffer = {
 }
 
 export const getNextMoviesByDate = (
-  offersWithStocks: OfferResponseV2[] = [],
+  offersWithStocks: OfferResponseV2[],
   date: Date
 ): MoviesOffer[] => {
   const filteredOffers = moviesOfferBuilder(offersWithStocks)

@@ -34,10 +34,13 @@ const useMoviesScreeningsList = (offerIds: number[]) => {
 
   const moviesOffers: MoviesOffer[] = useMemo(() => {
     const filteredOffersWithStocks = filterOffersStocks(
-      offersWithStocks?.offers,
+      offersWithStocks?.offers || [],
       selectedInternalDate
     )
-    const nextScreeningOffers = getNextMoviesByDate(offersWithStocks?.offers, selectedInternalDate)
+    const nextScreeningOffers = getNextMoviesByDate(
+      offersWithStocks?.offers || [],
+      selectedInternalDate
+    )
 
     return [...filteredOffersWithStocks, ...nextScreeningOffers]
   }, [offersWithStocks?.offers, selectedInternalDate])

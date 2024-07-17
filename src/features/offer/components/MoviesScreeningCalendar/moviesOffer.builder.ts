@@ -130,11 +130,15 @@ const findClosestFutureDate = (datesArray: Date[], referenceDate: Date) => {
   }
 
   return futureDates.reduce((closestDate, currentDate) => {
+    if (!closestDate) {
+      return currentDate
+    }
+
     const closestDifference = Math.abs(differenceInMilliseconds(referenceDate, closestDate))
     const currentDifference = Math.abs(differenceInMilliseconds(referenceDate, currentDate))
 
     return currentDifference < closestDifference ? currentDate : closestDate
-  })
+  }, futureDates[0])
 }
 
 const getUpcomingDate = (offer: OfferResponseV2) => {
