@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useCreditStore } from 'features/identityCheck/api/useCreditActivation'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
@@ -28,6 +29,7 @@ export function BeneficiaryAccountCreated() {
   const shouldShowCulturalSurvey = useShouldShowCulturalSurvey()
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
   const { showShareAppModal } = useShareAppContext()
+  const { actions } = useCreditStore()
 
   const subtitle = `${maxPrice}\u00a0€ viennent d’être crédités sur ton compte pass Culture`
   const text = isUnderageBeneficiary
@@ -37,7 +39,8 @@ export function BeneficiaryAccountCreated() {
   const onBeforeNavigate = useCallback(() => {
     BatchUser.trackEvent(BatchEvent.hasValidatedSubscription)
     if (!user?.needsToFillCulturalSurvey) showShareAppModal(ShareAppModalType.BENEFICIARY)
-  }, [showShareAppModal, user?.needsToFillCulturalSurvey])
+    actions.setActivationDate(new Date())
+  }, [showShareAppModal, user?.needsToFillCulturalSurvey, actions])
 
   useEnterKeyAction(navigateToHome)
 
