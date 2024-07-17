@@ -4,9 +4,9 @@ import React, { useCallback } from 'react'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { Referrals, UseRouteType, ScreenNames } from 'features/navigation/RootNavigator/types'
+import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
-import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
@@ -22,28 +22,34 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
 export interface GtlPlaylistProps {
-  venue: VenueResponse
+  venue?: VenueResponse
   playlist: GtlPlaylistData
+  analyticsFrom: Referrals
+  route: Extract<ScreenNames, 'Venue' | 'SearchN1'>
 }
 
-export function GtlPlaylist({ venue, playlist }: Readonly<GtlPlaylistProps>) {
+export function GtlPlaylist({ venue, playlist, analyticsFrom, route }: Readonly<GtlPlaylistProps>) {
   const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const transformOfferHits = useTransformOfferHits()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const route = useRoute<UseRouteType<'Venue'>>()
+  const currentRoute = useRoute<UseRouteType<typeof route>>()
   const entryId = playlist.entryId
 
   const logHasSeenAllTilesOnce = useFunctionOnce(() => {
     analytics.logAllTilesSeen({
       moduleId: entryId,
       numberOfTiles: playlist.offers.hits.length,
-      venueId: venue.id,
+      venueId: venue?.id,
     })
   })
 
   const logModuleDisplayedOnce = useFunctionOnce(() => {
-    analytics.logModuleDisplayed({ moduleId: entryId, displayedOn: 'venue', venueId: venue.id })
+    analytics.logModuleDisplayed({
+      moduleId: entryId,
+      displayedOn: analyticsFrom,
+      venueId: venue?.id,
+    })
   })
 
   const handleLogModuleDisplayedScrolling = useLogScrollHandler(logModuleDisplayedOnce)
@@ -54,7 +60,8 @@ export function GtlPlaylist({ venue, playlist }: Readonly<GtlPlaylistProps>) {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
 
       return (
-        <VenueOfferTile
+        <OfferTile
+          analyticsFrom={analyticsFrom}
           offerLocation={item._geoloc}
           categoryLabel={labelMapping[item.offer.subcategoryId]}
           categoryId={mapping[item.offer.subcategoryId]}
@@ -68,7 +75,7 @@ export function GtlPlaylist({ venue, playlist }: Readonly<GtlPlaylistProps>) {
           venueId={venue?.id}
           width={width}
           height={height}
-          searchId={route.params?.searchId}
+          searchId={currentRoute.params?.searchId}
           moduleId={entryId}
           index={index}
           variant={isNewOfferTileDisplayed ? 'new' : 'default'}
@@ -79,10 +86,11 @@ export function GtlPlaylist({ venue, playlist }: Readonly<GtlPlaylistProps>) {
       entryId,
       labelMapping,
       mapping,
-      route.params?.searchId,
+      currentRoute.params?.searchId,
       transformOfferHits,
       venue?.id,
       isNewOfferTileDisplayed,
+      analyticsFrom,
     ]
   )
 
