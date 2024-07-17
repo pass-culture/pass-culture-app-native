@@ -244,71 +244,269 @@ exports[`SearchResultsContent component should render correctly 1`] = `
       data-testid="searchResultsList"
     >
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
-        role="status"
+        style="position: relative; height: 0px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
       >
-        <div
-          class="css-view-175oi2r r-flexShrink-1q142lx r-marginTop-12scy6p"
+        <ul
+          style="height: 869px; width: 100%;"
         >
-          <div
-            class="css-view-175oi2r"
+          <li
+            style="position: absolute; left: 0px; top: 0px; height: 459px; width: 100%;"
           >
             <div
-              class="css-text-1rynq56"
-              dir="ltr"
-            >
-              undefined-SVG-Mock
-            </div>
-          </div>
-        </div>
-        <div
-          class="css-view-175oi2r r-alignItems-1awozwy"
-        >
-          <h2
-            aria-level="2"
-            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-marginTop-1wzrnnt"
-            dir="ltr"
-            role="heading"
-          >
-            Pas de résultat
-          </h2>
-          <div
-            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginTop-11c0sde r-textAlign-q4m81j"
-            dir="ltr"
-          >
-            <span
-              aria-live="assertive"
-              class="css-textHasAncestor-1qaijid r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-            >
-              Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
-            </span>
-          </div>
-        </div>
-        <div
-          class="css-view-175oi2r r-height-1472mwg"
-        />
-        <div
-          class="css-view-175oi2r"
-        >
-          <button
-            aria-label="Modifier mes filtres"
-            class="sc-dcJsrY kFjQay sc-gsFSXq jrfwxw"
-            data-testid="Modifier mes filtres"
-            tabindex="0"
-            type="button"
-          >
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+              class="css-view-175oi2r"
+              data-testid="searchListHeader"
             >
               <div
-                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
-                dir="ltr"
+                class="css-view-175oi2r r-height-10ptun7"
+              />
+              <div
+                class="css-view-175oi2r"
               >
-                Modifier mes filtres
+                <h3
+                  aria-level="3"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
+                  dir="ltr"
+                  role="heading"
+                >
+                  test
+                </h3>
+                <div
+                  class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
+                  role="status"
+                >
+                  <h2
+                    aria-level="2"
+                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    dir="ltr"
+                    role="heading"
+                  >
+                    2 résultats
+                  </h2>
+                </div>
+                <div
+                  class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
+                >
+                  <div
+                    class="css-view-175oi2r"
+                  >
+                    <div
+                      class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
+                      data-testid="search-venue-list"
+                      style="min-height: 1px; min-width: 1px;"
+                    >
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                        style="min-height: 1px; min-width: 1px; padding-top: 0px; padding-bottom: 0px;"
+                      >
+                        <div
+                          class="css-view-175oi2r"
+                          style="flex-direction: row;"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            style="height: 0px; width: 0px;"
+                          />
+                          <div
+                            class="css-view-175oi2r r-pointerEvents-633pao"
+                            style="opacity: 0;"
+                          >
+                            <h3
+                              aria-level="3"
+                              class="css-view-175oi2r"
+                              role="heading"
+                            >
+                              <div
+                                aria-label="Lieu CAC - Concarneau Scènes du type Autre type de lieu, "
+                                class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-1ykvnaz r-width-1sqjfdd"
+                                data-testid="Lieu CAC - Concarneau Scènes du type Autre type de lieu, "
+                                style="transition-duration: 0s;"
+                                tabindex="0"
+                              >
+                                <div
+                                  class="css-view-175oi2r"
+                                >
+                                  <div
+                                    class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6 r-minHeight-1d5ogoq"
+                                  >
+                                    <div
+                                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                                      dir="ltr"
+                                    >
+                                      CAC - Concarneau Scènes
+                                    </div>
+                                    <div
+                                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                      dir="ltr"
+                                    >
+                                      CONCARNEAU, 29900
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r r-height-tbmifm"
+              />
+              <div
+                class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginLeft-6uxfom r-marginRight-mbgqwd r-width-iyfy8q"
+              />
+              <div
+                class="css-view-175oi2r r-height-10ptun7"
+              />
+              <h3
+                aria-level="3"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
+                dir="ltr"
+                role="heading"
+              >
+                Les offres
+              </h3>
+              <div
+                class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
+                role="status"
+              >
+                <h2
+                  aria-level="2"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                  dir="ltr"
+                  role="heading"
+                >
+                  4 résultats
+                </h2>
               </div>
             </div>
-          </button>
-        </div>
+          </li>
+          <li
+            style="position: absolute; left: 0px; top: 459px; height: 130px; width: 100%;"
+          >
+            <div
+              aria-label="Offre La nuit des temps de la catégorie Livres,   prix 0,28 €. "
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
+              data-testid="Offre La nuit des temps de la catégorie Livres,   prix 0,28 €. "
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
+              />
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+              >
+                <div
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                      dir="ltr"
+                    >
+                      La nuit des temps
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                  data-testid="native-category-value"
+                  dir="ltr"
+                >
+                  Livres papier
+                </div>
+                <div
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  dir="ltr"
+                >
+                  0,28 €
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o"
+            />
+          </li>
+          <li
+            style="position: absolute; left: 0px; top: 589px; height: 130px; width: 100%;"
+          >
+            <div
+              aria-label="Offre I want something more de la catégorie Concerts & festivals,   prix 0,23 €. "
+              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-f4gmv6 r-outlineOffset-2fw26j r-marginHorizontal-1hy1u7s"
+              data-testid="Offre I want something more de la catégorie Concerts & festivals,   prix 0,23 €. "
+              style="transition-duration: 0s;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-175oi2r r-backgroundColor-14lw9ot r-borderRadius-z2wwpe r-height-1njcn02 r-width-7a29px"
+              />
+              <div
+                class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+              >
+                <div
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                >
+                  <div
+                    class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                      dir="ltr"
+                    >
+                      I want something more
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                  data-testid="native-category-value"
+                  dir="ltr"
+                >
+                  Concerts, évènements
+                </div>
+                <div
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                  dir="ltr"
+                >
+                  0,23 €
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-epq5cr r-marginHorizontal-1hy1u7s r-marginVertical-1r5su4o"
+            />
+          </li>
+        </ul>
+      </div>
+      <div
+        class="css-view-175oi2r"
+        style="align-self: center; position: absolute; right: 28px; bottom: 88px; z-index: 1; overflow-x: hidden; overflow-y: hidden; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-color: rgba(0,0,0,1.00); border-right-color: rgba(0,0,0,1.00); border-bottom-color: rgba(0,0,0,1.00); border-left-color: rgba(0,0,0,1.00); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid;"
+      >
+        <button
+          class="sc-aXZVg igdJKW sc-eDPEul iMyEnW sc-eDPEul iMyEnW"
+          tabindex="0"
+          type="button"
+        >
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-bdcx94 r-borderRadius-1fuqb1j r-height-eu3ka r-justifyContent-1777fci r-overflow-1udh08x r-width-1aockid"
+          >
+            <div
+              class="css-view-175oi2r"
+            >
+              <div
+                class="css-text-1rynq56"
+                dir="ltr"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+          </div>
+        </button>
       </div>
     </div>
   </div>

@@ -12,6 +12,7 @@ import { useSearchResults } from 'features/search/api/useSearchResults/useSearch
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
+import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { HEADER_SEARCH_VENUE_MAP } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -223,6 +224,7 @@ export const SearchResultsContent: React.FC = () => {
     nbHits > 0 &&
     Platform.OS !== 'web' &&
     (!shouldDisplayVenueMapInSearch || (shouldDisplayVenueMapInSearch && isSearchListTab))
+
   const tabPanels = {
     [Tab.SEARCHLIST]: (
       <SearchList
@@ -243,6 +245,41 @@ export const SearchResultsContent: React.FC = () => {
     ),
     [Tab.MAP]: <VenueMapView height={venueMapHeight} from="searchResults" />,
   }
+
+  const shouldDisplayTabLayout = shouldDisplayVenueMapInSearch && !isWeb
+
+  const renderTabLayout = () => (
+    <TabLayout
+      tabPanels={tabPanels}
+      defaultTab={Tab.SEARCHLIST}
+      tabs={[
+        { key: Tab.SEARCHLIST, Icon: Sort },
+        { key: Tab.MAP, Icon: Map },
+      ]}
+      onTabChange={{
+        Carte: () => {
+          analytics.logConsultVenueMap({
+            from: 'search',
+            searchId: searchState.searchId,
+          })
+          setIsSearchListTab(false)
+        },
+        Liste: () => setIsSearchListTab(true),
+      }}
+    />
+  )
+
+  const renderSearchList = () => {
+    if (nbHits === 0) {
+      return (
+        <NoSearchResultsWrapper>
+          <NoSearchResult />
+        </NoSearchResultsWrapper>
+      )
+    }
+    return shouldDisplayTabLayout ? renderTabLayout() : tabPanels[Tab.SEARCHLIST]
+  }
+
   return (
     <React.Fragment>
       {isFocused ? <Helmet title={helmetTitle} /> : null}
@@ -320,30 +357,7 @@ export const SearchResultsContent: React.FC = () => {
         </ScrollView>
         <Spacer.Column numberOfSpaces={2} />
       </View>
-      <Container testID="searchResults">
-        {shouldDisplayVenueMapInSearch && !isWeb ? (
-          <TabLayout
-            tabPanels={tabPanels}
-            defaultTab={Tab.SEARCHLIST}
-            tabs={[
-              { key: Tab.SEARCHLIST, Icon: Sort },
-              { key: Tab.MAP, Icon: Map },
-            ]}
-            onTabChange={{
-              Carte: () => {
-                analytics.logConsultVenueMap({
-                  from: 'search',
-                  searchId: searchState.searchId,
-                })
-                setIsSearchListTab(false)
-              },
-              Liste: () => setIsSearchListTab(true),
-            }}
-          />
-        ) : (
-          tabPanels[Tab.SEARCHLIST]
-        )}
-      </Container>
+      <Container testID="searchResults">{renderSearchList()}</Container>
       {shouldRenderScrollToTopButton ? (
         <ScrollToTopContainer>
           <ScrollToTopButton
@@ -460,3 +474,8 @@ function SearchResultsPlaceHolder() {
     </Container>
   )
 }
+
+const NoSearchResultsWrapper = styled.View({
+  flex: 1,
+  flexDirection: 'row',
+})
