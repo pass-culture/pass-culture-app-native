@@ -8,18 +8,16 @@ import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarterna
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
-type Props = { onPress: () => void; date: Date; isUpcoming?: boolean }
+type Props = { onPress: () => void; date: Date }
 
-export const NextScreeningButton: FC<Props> = ({ onPress, date, isUpcoming = true }) => {
+export const NextScreeningButton: FC<Props> = ({ onPress, date }) => {
   const { dayDate, fullWeekDay, fullMonth } = extractDate(date)
 
   return (
     <TouchableOpacity onPress={onPress}>
       <Container>
         <InfoBanner
-          message={
-            <StyledMessage>{isUpcoming ? 'Prochaine séance' : 'Séance suivante'}</StyledMessage>
-          }
+          message={<StyledMessage>{'Prochaine séance\u00a0:'}</StyledMessage>}
           backgroundColor={theme.colors.greyLight}>
           <ButtonQuaternarySecondary
             numberOfLines={1}

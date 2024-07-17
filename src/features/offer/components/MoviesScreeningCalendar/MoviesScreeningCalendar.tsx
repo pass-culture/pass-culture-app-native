@@ -4,10 +4,10 @@ import { FlatList, Animated, Easing } from 'react-native'
 
 import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
-import { filterOffersStocks } from 'features/offer/components/MoviesScreeningCalendar/filterOffersStocksByDate'
+import { filterOffersStocksByDate } from 'features/offer/components/MoviesScreeningCalendar/filterOffersStocksByDate'
 import {
   getNextMoviesByDate,
-  MoviesOffer,
+  MovieOffer,
 } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
@@ -32,8 +32,8 @@ const useMoviesScreeningsList = (offerIds: number[]) => {
     [selectedInternalDate]
   )
 
-  const moviesOffers: MoviesOffer[] = useMemo(() => {
-    const filteredOffersWithStocks = filterOffersStocks(
+  const moviesOffers: MovieOffer[] = useMemo(() => {
+    const filteredOffersWithStocks = filterOffersStocksByDate(
       offersWithStocks?.offers || [],
       selectedInternalDate
     )
@@ -117,12 +117,11 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
           keyExtractor={(item) => item.offer.id.toString()}
           renderItem={({ item, index }) => (
             <MovieOfferTile
-              moviesOffer={item}
+              movieOffer={item}
               venueOffers={venueOffers}
               date={selectedDate}
               isLast={getIsLast(index)}
               setSelectedDate={setSelectedDate}
-              isUpcoming={item.isUpcoming}
               nextScreeningDate={item.nextDate}
             />
           )}

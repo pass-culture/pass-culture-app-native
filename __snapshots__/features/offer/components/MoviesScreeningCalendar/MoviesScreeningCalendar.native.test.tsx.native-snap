@@ -1798,7 +1798,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                   >
                     <Text
                       ellipsizeMode="tail"
-                      numberOfLines={2}
+                      numberOfLines={1}
                       style={
                         [
                           {
@@ -2004,7 +2004,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                           ]
                         }
                       >
-                        Prochaine séance
+                        Prochaine séance :
                       </Text>
                     </Text>
                     <View
@@ -3922,7 +3922,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                   >
                     <Text
                       ellipsizeMode="tail"
-                      numberOfLines={2}
+                      numberOfLines={1}
                       style={
                         [
                           {
@@ -4128,7 +4128,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                           ]
                         }
                       >
-                        Prochaine séance
+                        Prochaine séance :
                       </Text>
                     </Text>
                     <View

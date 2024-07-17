@@ -1,18 +1,18 @@
 import { addDays, differenceInMilliseconds, isAfter, isSameDay } from 'date-fns'
 
 import { OfferResponseV2 } from 'api/gen'
-import { MoviesOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
+import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 
 export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => {
-  let moviesOffers: MoviesOffer[] = offersWithStocks.map((offer) => ({
+  let movieOffers: MovieOffer[] = offersWithStocks.map((offer) => ({
     offer,
     isUpcoming: false,
   }))
 
   const builderObject = {
     withoutMoviesOnDay: (selectedDate: Date) => {
-      moviesOffers = moviesOffers.filter(
+      movieOffers = movieOffers.filter(
         ({ offer }) =>
           !offer.stocks.some((stock) => {
             if (!stock.beginningDatetime) {
@@ -28,7 +28,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
     },
 
     withMoviesOnDay: (selectedDate: Date) => {
-      moviesOffers = moviesOffers
+      movieOffers = movieOffers
         .map(({ offer, ...rest }) => ({
           ...rest,
           offer: {
@@ -55,7 +55,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
     },
 
     sortedByLast30DaysBooking: () => {
-      moviesOffers = moviesOffers.sort((a, b) => {
+      movieOffers = movieOffers.sort((a, b) => {
         const aValue = a.offer.last30DaysBookings
         const bValue = b.offer.last30DaysBookings
 
@@ -69,7 +69,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
     },
 
     withoutMoviesAfter15Days: () => {
-      moviesOffers = moviesOffers.filter(({ offer }) =>
+      movieOffers = movieOffers.filter(({ offer }) =>
         offer.stocks.some((stock) => {
           if (!stock.beginningDatetime) {
             return false
@@ -84,7 +84,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
     },
 
     withNextScreeningFromDate: (selectedDate: Date) => {
-      moviesOffers = moviesOffers
+      movieOffers = movieOffers
         .map(({ offer }) => {
           const nextDate = getNextDate(offer, selectedDate) ?? getUpcomingDate(offer)
           const upcomingDate = getUpcomingDate(offer)
@@ -101,7 +101,7 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
     },
 
     build: () => {
-      return moviesOffers
+      return movieOffers
     },
   }
 

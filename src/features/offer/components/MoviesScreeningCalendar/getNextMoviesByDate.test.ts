@@ -49,7 +49,7 @@ describe('getNextMoviesByDate', () => {
     expect(nextMovies[0]?.offer.id).toBe(1)
   })
 
-  it('should return movies with stocks before and after 15 days', () => {
+  it('should return movies with stocks after 15 days only if they have also stocks in the next 15 days', () => {
     const offerStocks: OfferResponseV2[] = [
       offerResponseBuilder()
         .withStocks([
@@ -153,28 +153,5 @@ describe('getNextMoviesByDate', () => {
     )
 
     expect(offersContainingNoOfferAfterNow).toHaveLength(0)
-  })
-
-  it('should return the movies with upcoming to true if the next movie is the first', () => {
-    const offerStocks: OfferResponseV2[] = [
-      offerResponseBuilder()
-        .withStocks([
-          stockBuilder().withId(1).withBeginningDatetime(TOMORROW).build(),
-          stockBuilder().withId(2).withBeginningDatetime(AFTER_TOMORROW).build(),
-        ])
-        .build(),
-    ]
-
-    let nextMovies = getNextMoviesByDate(offerStocks, new Date(TODAY))
-
-    expect(nextMovies[0]?.isUpcoming).toBeTruthy()
-
-    nextMovies = getNextMoviesByDate(offerStocks, new Date(SELECTED_DATE))
-
-    expect(nextMovies[0]?.isUpcoming).toBeTruthy()
-
-    nextMovies = getNextMoviesByDate(offerStocks, new Date(TOMORROW))
-
-    expect(nextMovies[0]?.isUpcoming).toBeFalsy()
   })
 })

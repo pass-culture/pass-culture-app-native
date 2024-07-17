@@ -7,7 +7,7 @@ import {
   getMovieScreenings,
 } from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
-import { MoviesOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
+import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
 import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
@@ -18,11 +18,10 @@ import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type MovieOfferTileProps = {
-  moviesOffer: MoviesOffer
+  movieOffer: MovieOffer
   venueOffers: VenueOffers
   date: Date
   isLast: boolean
-  isUpcoming?: boolean
   nextScreeningDate?: Date
   setSelectedDate: (date: Date) => void
 }
@@ -30,13 +29,12 @@ type MovieOfferTileProps = {
 export const MovieOfferTile: FC<MovieOfferTileProps> = ({
   venueOffers,
   date,
-  moviesOffer,
+  movieOffer: { offer },
   isLast,
-  isUpcoming,
   nextScreeningDate,
   setSelectedDate,
 }) => {
-  const movieScreenings = getMovieScreenings(moviesOffer.offer.stocks)
+  const movieScreenings = getMovieScreenings(offer.stocks)
 
   const selectedScreeningStock = useMemo(
     () => movieScreenings[getDateString(`${date}`)],
@@ -47,31 +45,26 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
 
   const { bookingData, selectedDateScreenings } = useSelectedDateScreening(
     selectedScreeningStock,
-    moviesOffer.offer.isExternalBookingsDisabled
+    offer.isExternalBookingsDisabled
   )
 
   const {
     onPress: onPressOfferCTA,
     CTAOfferModal,
     movieScreeningUserData,
-  } = useOfferCTAButton(
-    moviesOffer.offer,
-    subcategoriesMapping[moviesOffer.offer.subcategoryId],
-    bookingData
-  )
+  } = useOfferCTAButton(offer, subcategoriesMapping[offer.subcategoryId], bookingData)
 
   const eventCardData = useMemo(
-    () =>
-      selectedDateScreenings(moviesOffer.offer.venue.id, onPressOfferCTA, movieScreeningUserData),
-    [movieScreeningUserData, moviesOffer.offer.venue.id, onPressOfferCTA, selectedDateScreenings]
+    () => selectedDateScreenings(offer.venue.id, onPressOfferCTA, movieScreeningUserData),
+    [movieScreeningUserData, offer.venue.id, onPressOfferCTA, selectedDateScreenings]
   )
   const offerScreeningOnSelectedDates = useMemo(
-    () => venueOffers.hits.find((item) => Number(item.objectID) === moviesOffer.offer.id),
-    [moviesOffer.offer.id, venueOffers.hits]
+    () => venueOffers.hits.find((item) => Number(item.objectID) === offer.id),
+    [offer.id, venueOffers.hits]
   )
   return (
     <React.Fragment>
-      <HorizontalOfferTileContainer>
+      <ContainerWithMargin>
         {offerScreeningOnSelectedDates ? (
           <HorizontalOfferTile
             offer={offerScreeningOnSelectedDates}
@@ -79,22 +72,21 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
               from: 'venue',
             }}
             price={undefined}
-            subtitles={getSubtitles(moviesOffer.offer)}
+            subtitles={getSubtitles(offer)}
             withRightArrow
           />
         ) : null}
-      </HorizontalOfferTileContainer>
+      </ContainerWithMargin>
       <Spacer.Column numberOfSpaces={4} />
       {nextScreeningDate ? (
-        <HorizontalOfferTileContainer>
+        <ContainerWithMargin>
           <NextScreeningButton
             date={nextScreeningDate}
-            isUpcoming={isUpcoming}
             onPress={() => {
               setSelectedDate(nextScreeningDate)
             }}
           />
-        </HorizontalOfferTileContainer>
+        </ContainerWithMargin>
       ) : (
         <EventCardList data={eventCardData} />
       )}
@@ -119,6 +111,6 @@ const Divider = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
 }))
 
-const HorizontalOfferTileContainer = styled.View({
+const ContainerWithMargin = styled.View({
   marginHorizontal: getSpacing(6),
 })
