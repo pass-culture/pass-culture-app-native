@@ -88,8 +88,3 @@ jobs:
           app-file: android/app/build/outputs/apk/staging/debug/app-staging-debug.apk
           workspace: .maestro/testsV2/
           include-tags: cloud
-       run: |
-    echo "appID: ${{ steps.upload.outputs.MAESTRO_APP_ID }}"
-    echo "Analytics: ${{ steps.upload.outputs.MAESTRO_MOCK_ANALYTICS_SERVER }}"
-
-     
