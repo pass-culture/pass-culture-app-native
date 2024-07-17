@@ -64,6 +64,11 @@ jest.mock('features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpa
     handleScroll: jest.fn(),
   }),
 }))
+jest.mock('features/location/helpers/useLocationState', () => ({
+  useLocationState: () => ({
+    onModalHideRef: { current: jest.fn() },
+  }),
+}))
 
 describe('SearchResultsContent component', () => {
   it('should render correctly', async () => {

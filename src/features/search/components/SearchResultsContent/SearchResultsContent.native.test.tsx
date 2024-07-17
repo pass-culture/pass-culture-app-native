@@ -21,7 +21,6 @@ import { PLACEHOLDER_DATA as mockSubcategoriesData } from 'libs/subcategories/pl
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 
@@ -59,6 +58,18 @@ const mockDisabilitesPropertiesTruthy = {
 jest.mock('features/auth/context/AuthContext')
 const mockUser = { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 7000 } } }
 mockAuthContextWithUser(mockUser)
+
+jest.mock('features/location/helpers/useLocationState', () => ({
+  useLocationState: () => ({
+    onModalHideRef: { current: jest.fn() },
+  }),
+}))
+
+jest.mock('features/location/helpers/useLocationSubmit', () => ({
+  useLocationSubmit: () => ({
+    setTempAroundMeRadius: jest.fn(),
+  }),
+}))
 
 const mockData = {
   pages: [
@@ -108,6 +119,7 @@ const mockPlace: SuggestedPlace = {
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 const mockShowGeolocPermissionModal = jest.fn()
+let mockSelectedLocationMode = LocationMode.AROUND_ME
 
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
@@ -115,6 +127,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
     hasGeolocPosition: mockHasGeolocPosition,
     place: mockPlace,
+    selectedLocationMode: mockSelectedLocationMode,
   }),
 }))
 
@@ -762,11 +775,15 @@ describe('SearchResultsContent component', () => {
     })
   })
 
-  describe('when feature flag map in seach activated', () => {
+  describe('when feature flag map in search activated', () => {
     beforeEach(() => {
       mockHits = mockedAlgoliaResponse.hits
       mockNbHits = mockedAlgoliaResponse.nbHits
       useFeatureFlagSpy.mockReturnValueOnce(true)
+    })
+
+    afterEach(() => {
+      mockSelectedLocationMode = LocationMode.AROUND_ME
     })
 
     it('should display tabs', async () => {
@@ -776,8 +793,8 @@ describe('SearchResultsContent component', () => {
       expect(await screen.findByText('Liste')).toBeOnTheScreen()
     })
 
-    it('should log consult venue map when pressing carte tab', async () => {
-      render(reactQueryProviderHOC(<SearchResultsContent />))
+    it('should log consult venue map when pressing map tab', async () => {
+      renderSearchResultsContent()
 
       fireEvent.press(await screen.findByText('Carte'))
 
@@ -793,6 +810,34 @@ describe('SearchResultsContent component', () => {
       renderSearchResultsContent()
 
       expect(await screen.findByText('Pas de résultat')).toBeOnTheScreen()
+    })
+
+    it('should open venue map location modal when pressing map tab and user location selected is everywhere', async () => {
+      mockSelectedLocationMode = LocationMode.EVERYWHERE
+      renderSearchResultsContent()
+
+      fireEvent.press(await screen.findByText('Carte'))
+
+      expect(await screen.findByText('Localisation')).toBeOnTheScreen()
+    })
+
+    it('should not open venue map location modal when pressing map tab and user location selected is not everywhere', async () => {
+      renderSearchResultsContent()
+
+      fireEvent.press(await screen.findByText('Carte'))
+
+      expect(screen.queryByText('Localisation')).not.toBeOnTheScreen()
+    })
+
+    it('should redirect to search list results when pressing map tab and closing venue map location modal', async () => {
+      mockSelectedLocationMode = LocationMode.EVERYWHERE
+      renderSearchResultsContent()
+
+      fireEvent.press(await screen.findByText('Carte'))
+
+      fireEvent.press(await screen.findByLabelText('Fermer la modale'))
+
+      expect(screen.getByText('Les offres')).toBeOnTheScreen()
     })
   })
 })
