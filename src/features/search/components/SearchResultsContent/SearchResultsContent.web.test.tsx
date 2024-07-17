@@ -1,7 +1,10 @@
 import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
-import { mockedAlgoliaVenueResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import {
+  mockedAlgoliaResponse,
+  mockedAlgoliaVenueResponse,
+} from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -12,19 +15,20 @@ import { SearchResultsContent } from './SearchResultsContent'
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
+const mockUseSearchResult = jest.fn(() => ({
+  data: mockData,
+  hits: { offers: mockedAlgoliaResponse.hits, venues: mockedAlgoliaVenueResponse.hits },
+  nbHits: mockedAlgoliaResponse.nbHits,
+  isFetching: false,
+  isLoading: false,
+  hasNextPage: mockHasNextPage,
+  fetchNextPage: mockFetchNextPage,
+  isFetchingNextPage: true,
+  refetch: jest.fn(),
+  venuesUserData: [{ venue_playlist_title: 'test' }],
+}))
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => ({
-    data: mockData,
-    hits: { offers: [], venues: mockedAlgoliaVenueResponse.hits },
-    nbHits: 0,
-    isFetching: false,
-    isLoading: false,
-    hasNextPage: mockHasNextPage,
-    fetchNextPage: mockFetchNextPage,
-    isFetchingNextPage: false,
-    refetch: jest.fn(),
-    venuesUserData: [{ venue_playlist_title: 'test' }],
-  }),
+  useSearchResults: () => mockUseSearchResult(),
 }))
 
 const mockSettings = jest.fn().mockReturnValue({ data: {} })
@@ -54,6 +58,12 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
+jest.mock('features/search/helpers/useScrollToBottomOpacity/useScrollToBottomOpacity', () => ({
+  useScrollToBottomOpacity: () => ({
+    handleScroll: jest.fn(),
+  }),
+}))
 
 describe('SearchResultsContent component', () => {
   it('should render correctly', async () => {
