@@ -18,5 +18,6 @@ export const getNextMoviesByDate = (
     .withoutMoviesAfter15Days()
     .withoutMoviesOnDay(date)
     .withNextScreeningFromDate(date)
+    .sortedByLast30DaysBooking()
     .build()
 }
