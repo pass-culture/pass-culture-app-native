@@ -22,7 +22,7 @@ export interface VenueOffersProps {
   playlists?: GtlPlaylistData[]
 }
 
-const LoadingState: React.FC = () => (
+export const LoadingState: React.FC = () => (
   <React.Fragment>
     <Spacer.Column numberOfSpaces={6} />
     <OfferPlaylistSkeleton size={TileSize.MEDIUM} numberOfTiles={6} />

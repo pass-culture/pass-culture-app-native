@@ -2,6 +2,8 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
+import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
@@ -17,6 +19,10 @@ const mockDispatch = jest.fn()
 jest.mock('libs/firebase/analytics/analytics')
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest
+  .spyOn(useGTLPlaylists, 'useGTLPlaylists')
+  .mockReturnValue({ isLoading: false, gtlPlaylists: gtlPlaylistAlgoliaSnapshot })
+
 jest.spyOn(useSearch, 'useSearch').mockReturnValue({
   searchState: mockSearchState,
   dispatch: mockDispatch,
@@ -26,11 +32,13 @@ jest.spyOn(useSearch, 'useSearch').mockReturnValue({
   hideSuggestions: jest.fn(),
 })
 
+let mockOfferCategories = { offerCategories: [SearchGroupNameEnumv2.LIVRES] }
+
 describe('<SearchN1/>', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
     useRoute.mockImplementation(() => ({
-      params: { offerCategories: [SearchGroupNameEnumv2.LIVRES] },
+      params: mockOfferCategories,
     }))
   })
 
@@ -104,5 +112,21 @@ describe('Subcategory buttons', () => {
         }),
       })
     )
+  })
+
+  it('should render gtl playlists when offerCategory is `LIVRES`', async () => {
+    render(reactQueryProviderHOC(<SearchN1 />))
+    await screen.findByText('Romans et littérature')
+
+    expect(await screen.findByText('GTL playlist')).toBeOnTheScreen()
+  })
+
+  it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
+    mockOfferCategories = { offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] }
+
+    render(reactQueryProviderHOC(<SearchN1 />))
+    await screen.findByText('Festivals')
+
+    expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
   })
 })
