@@ -1,30 +1,11 @@
-import { isSameDay } from 'date-fns'
+import { OfferResponseV2 } from 'api/gen'
+import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
+import { moviesOfferBuilder } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
 
-import { OfferResponseV2, OffersStocksResponseV2 } from 'api/gen'
+export const filterOffersStocksByDate = (offers: OfferResponseV2[], date: Date): MovieOffer[] => {
+  if (!offers.length) {
+    return []
+  }
 
-export const filterOffersStocks = (
-  offersWithStocks: OffersStocksResponseV2,
-  date: Date
-): OffersStocksResponseV2 => {
-  const offersWithStocksFiltered: OfferResponseV2[] = offersWithStocks.offers
-    .map((offer) => {
-      return {
-        ...offer,
-        stocks: offer.stocks.filter((stock) => {
-          return !!stock.beginningDatetime && isSameDay(new Date(stock.beginningDatetime), date)
-        }),
-      }
-    })
-    .sort((a, b) => {
-      const aValue = a.last30DaysBookings
-      const bValue = b.last30DaysBookings
-
-      if (aValue === null || aValue === undefined) return 1
-      if (bValue === null || bValue === undefined) return -1
-
-      return bValue - aValue
-    })
-
-  const offersWithMoviesFiltered = offersWithStocksFiltered.filter((offer) => !!offer.stocks.length)
-  return { offers: offersWithMoviesFiltered }
+  return moviesOfferBuilder(offers).withMoviesOnDay(date).sortedByLast30DaysBooking().build()
 }

@@ -1,10 +1,14 @@
-import { isSameDay } from 'date-fns'
+import { isSameDay, startOfDay } from 'date-fns'
 import React, { FunctionComponent, useMemo, useRef, useState, useCallback, useEffect } from 'react'
 import { FlatList, Animated, Easing } from 'react-native'
 
 import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
-import { filterOffersStocks } from 'features/offer/components/MoviesScreeningCalendar/filterOffersStocksByDate'
+import { filterOffersStocksByDate } from 'features/offer/components/MoviesScreeningCalendar/filterOffersStocksByDate'
+import {
+  getNextMoviesByDate,
+  MovieOffer,
+} from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { getDates } from 'shared/date/getDates'
@@ -22,22 +26,30 @@ const useMoviesScreeningsList = (offerIds: number[]) => {
   const setSelectedDate = useCallback(
     (date: Date) => {
       if (!isSameDay(selectedInternalDate, date)) {
-        setSelectedInternalDate(date)
+        setSelectedInternalDate(startOfDay(date))
       }
     },
     [selectedInternalDate]
   )
 
-  const filteredOffersWithStocks = useMemo(
-    () => filterOffersStocks(offersWithStocks || { offers: [] }, selectedInternalDate),
-    [offersWithStocks, selectedInternalDate]
-  )
+  const moviesOffers: MovieOffer[] = useMemo(() => {
+    const filteredOffersWithStocks = filterOffersStocksByDate(
+      offersWithStocks?.offers || [],
+      selectedInternalDate
+    )
+    const nextScreeningOffers = getNextMoviesByDate(
+      offersWithStocks?.offers || [],
+      selectedInternalDate
+    )
+
+    return [...filteredOffersWithStocks, ...nextScreeningOffers]
+  }, [offersWithStocks?.offers, selectedInternalDate])
 
   return {
     dates,
     selectedDate: selectedInternalDate,
     setSelectedDate,
-    offersWithStocks: filteredOffersWithStocks,
+    moviesOffers,
   }
 }
 
@@ -52,7 +64,7 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
     dates: nextFifteenDates,
     selectedDate,
     setSelectedDate,
-    offersWithStocks,
+    moviesOffers,
   } = useMoviesScreeningsList(offerIds)
 
   useEffect(() => {
@@ -74,11 +86,11 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
 
   const getIsLast = useCallback(
     (index: number) => {
-      const length = offersWithStocks?.offers.length ?? 0
+      const length = moviesOffers.length ?? 0
 
       return index === length - 1
     },
-    [offersWithStocks?.offers.length]
+    [moviesOffers.length]
   )
 
   return (
@@ -101,14 +113,16 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
           ],
         }}>
         <FlatList
-          data={offersWithStocks?.offers}
-          keyExtractor={(item) => item.id.toString()}
+          data={moviesOffers}
+          keyExtractor={(item) => item.offer.id.toString()}
           renderItem={({ item, index }) => (
             <MovieOfferTile
-              offer={item}
+              movieOffer={item}
               venueOffers={venueOffers}
               date={selectedDate}
               isLast={getIsLast(index)}
+              setSelectedDate={setSelectedDate}
+              nextScreeningDate={item.nextDate}
             />
           )}
         />

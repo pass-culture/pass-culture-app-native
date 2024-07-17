@@ -1,12 +1,14 @@
 import React, { FC, useMemo } from 'react'
 import styled from 'styled-components/native'
 
-import type { OfferPreviewResponse, OfferResponseV2 } from 'api/gen'
+import type { OfferPreviewResponse } from 'api/gen'
 import {
   getDateString,
   getMovieScreenings,
 } from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
+import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
+import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
@@ -16,13 +18,22 @@ import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type MovieOfferTileProps = {
-  offer: OfferResponseV2
+  movieOffer: MovieOffer
   venueOffers: VenueOffers
   date: Date
   isLast: boolean
+  nextScreeningDate?: Date
+  setSelectedDate: (date: Date) => void
 }
 
-export const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, offer, isLast }) => {
+export const MovieOfferTile: FC<MovieOfferTileProps> = ({
+  venueOffers,
+  date,
+  movieOffer: { offer },
+  isLast,
+  nextScreeningDate,
+  setSelectedDate,
+}) => {
   const movieScreenings = getMovieScreenings(offer.stocks)
 
   const selectedScreeningStock = useMemo(
@@ -45,7 +56,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, off
 
   const eventCardData = useMemo(
     () => selectedDateScreenings(offer.venue.id, onPressOfferCTA, movieScreeningUserData),
-    [offer.venue.id, onPressOfferCTA, selectedDateScreenings, movieScreeningUserData]
+    [movieScreeningUserData, offer.venue.id, onPressOfferCTA, selectedDateScreenings]
   )
   const offerScreeningOnSelectedDates = useMemo(
     () => venueOffers.hits.find((item) => Number(item.objectID) === offer.id),
@@ -53,7 +64,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, off
   )
   return (
     <React.Fragment>
-      <HorizontalOfferTileContainer>
+      <ContainerWithMargin>
         {offerScreeningOnSelectedDates ? (
           <HorizontalOfferTile
             offer={offerScreeningOnSelectedDates}
@@ -65,10 +76,20 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({ venueOffers, date, off
             withRightArrow
           />
         ) : null}
-      </HorizontalOfferTileContainer>
-
+      </ContainerWithMargin>
       <Spacer.Column numberOfSpaces={4} />
-      {eventCardData ? <EventCardList data={eventCardData} /> : null}
+      {nextScreeningDate ? (
+        <ContainerWithMargin>
+          <NextScreeningButton
+            date={nextScreeningDate}
+            onPress={() => {
+              setSelectedDate(nextScreeningDate)
+            }}
+          />
+        </ContainerWithMargin>
+      ) : (
+        <EventCardList data={eventCardData} />
+      )}
       <Spacer.Column numberOfSpaces={4} />
       {isLast ? null : <Divider />}
       <Spacer.Column numberOfSpaces={4} />
@@ -90,6 +111,6 @@ const Divider = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
 }))
 
-const HorizontalOfferTileContainer = styled.View({
+const ContainerWithMargin = styled.View({
   marginHorizontal: getSpacing(6),
 })
