@@ -65,6 +65,12 @@ jest.mock('features/location/helpers/useLocationState', () => ({
   }),
 }))
 
+jest.mock('features/location/helpers/useLocationSubmit', () => ({
+  useLocationSubmit: () => ({
+    setTempAroundMeRadius: jest.fn(),
+  }),
+}))
+
 const mockData = {
   pages: [
     {
@@ -821,6 +827,17 @@ describe('SearchResultsContent component', () => {
       fireEvent.press(await screen.findByText('Carte'))
 
       expect(screen.queryByText('Localisation')).not.toBeOnTheScreen()
+    })
+
+    it('should redirect to search list results when pressing map tab and closing venue map location modal', async () => {
+      mockSelectedLocationMode = LocationMode.EVERYWHERE
+      renderSearchResultsContent()
+
+      fireEvent.press(await screen.findByText('Carte'))
+
+      fireEvent.press(await screen.findByLabelText('Fermer la modale'))
+
+      expect(screen.getByText('Les offres')).toBeOnTheScreen()
     })
   })
 })

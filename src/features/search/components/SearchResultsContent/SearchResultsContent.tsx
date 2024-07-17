@@ -178,10 +178,16 @@ export const SearchResultsContent: React.FC = () => {
   }, [refetch, shouldRefetchResults])
 
   useEffect(() => {
-    if (selectedLocationMode === LocationMode.EVERYWHERE && defaultTab === Tab.MAP) {
+    if (selectedLocationMode === LocationMode.EVERYWHERE) {
       setDefaultTab(Tab.SEARCHLIST)
     }
-  }, [defaultTab, selectedLocationMode])
+  }, [selectedLocationMode])
+
+  useEffect(() => {
+    if (selectedLocationMode === LocationMode.EVERYWHERE && !venueMapLocationModalVisible) {
+      setDefaultTab(Tab.SEARCHLIST)
+    }
+  }, [selectedLocationMode, venueMapLocationModalVisible])
 
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
@@ -291,7 +297,7 @@ export const SearchResultsContent: React.FC = () => {
   const renderTabLayout = () => (
     <TabLayout
       tabPanels={tabPanels}
-      defaultTab={Tab.SEARCHLIST}
+      defaultTab={defaultTab}
       tabs={[
         { key: Tab.SEARCHLIST, Icon: Sort },
         { key: Tab.MAP, Icon: Map },
