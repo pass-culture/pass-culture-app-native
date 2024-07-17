@@ -40,7 +40,7 @@ appId: ${MAESTRO_APP_ID}
     while:
       notVisible:
         id: 'movie-calendar-day'
-        index: 2
+        index: 3
     commands:
       - pressKey: back
       - scroll
@@ -60,11 +60,11 @@ appId: ${MAESTRO_APP_ID}
     when:
       visible:
         id: 'movie-calendar-day'
-        index: 2
+        index: 3
     commands:
       - tapOn:
           id: 'movie-calendar-day'
-          index: 2
+          index: 3
 
 - tapOn:
     label: 'Sélection de la 1ère date disponible'
@@ -90,9 +90,29 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Confirmer la réservation'
 
 - assertVisible: "Réservation confirmée\_!"
-- tapOn: 'Voir ma réservation'
+- waitForAnimationToEnd:
+    timeout: 10000
+- tapOn: 
+    text: "Voir ma réservation"
+    retryTapIfNoChange: true
 
-- scrollUntilVisible:
-    element: 'Annuler ma réservation'
-- tapOn: 'Annuler ma réservation'
-- tapOn: 'Annuler ma réservation'
+- scroll
+- scroll
+- runFlow: # Si la réservation peut être annulée
+    when:
+      visible: 'Annuler ma réservation'
+    commands:
+      - tapOn: 'Annuler ma réservation'
+      - tapOn: 'Annuler ma réservation'
+
+- waitForAnimationToEnd
+
+- runFlow: # Si la réservation ne peut pas être annulée
+    when:
+      visible: "Voir le détail de l’offre"
+    commands:
+      - tapOn:
+            text: "Voir le détail de l’offre"
+      - pressKey: back
+      - pressKey: back
+

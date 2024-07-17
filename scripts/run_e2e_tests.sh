@@ -75,7 +75,7 @@ elif [ "$platform" = "web" ]; then
 fi
 
 start_mock_analytics_server() {
-  pushd .maestro/mock_analytics_server
+  pushd .maestro/testsV2/mock_analytics_server
   yarn install
   PORT="$MOCK_ANALYTICS_SERVER_PORT" yarn start
 }
@@ -94,6 +94,7 @@ stop_mock_analytics_server() {
 password=$(parse_env_variable PASSWORD .maestro/.env.secret)
 
 if [ "$target" == "test" ]; then
+  tracking_tests_value=true
   stop_mock_analytics_server
   start_mock_analytics_server_silently_in_the_background
 fi
@@ -107,9 +108,11 @@ maestro "$target" \
   --env MAESTRO_MOCK_ANALYTICS_SERVER="http://localhost:$MOCK_ANALYTICS_SERVER_PORT" \
   --env MAESTRO_NUMBER_PHONE="0607080910" \
   --env MAESTRO_PASSWORD="$password" \
+  --env MAESTRO_RUN_TRACKING_TESTS="$tracking_tests_value" \
   $TAGS \
   $rest_of_arguments
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" true
 if [ "$target" == "test" ]; then
   stop_mock_analytics_server
+  tracking_tests_value=false
 fi
