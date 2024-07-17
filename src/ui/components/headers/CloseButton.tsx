@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTheme } from 'styled-components'
+import { useTheme } from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'

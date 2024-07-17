@@ -1,10 +1,12 @@
 import BottomSheet from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheet/BottomSheet'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
-import { useWindowDimensions } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
+import { VenueResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueMapBottomSheet } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapBottomSheet'
 import { VenueMapCluster } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
@@ -29,7 +31,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import MapView, { Map, Marker, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, LENGTH_L } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
@@ -41,15 +43,30 @@ const PREVIEW_HEIGHT_ESTIMATION = 114
 
 const PIN_MAX_Z_INDEX = 10_000
 
+const geoLocatedVenueToVenueResponse = (
+  data?: GeolocatedVenue | null
+): VenueResponse | undefined =>
+  data && data !== null
+    ? ({
+        id: data.venueId,
+        name: data.label,
+        longitude: data._geoloc.lng,
+        latitude: data._geoloc.lat,
+        accessibility: {},
+        timezone: '',
+        isVirtual: false,
+      } satisfies VenueResponse)
+    : undefined
+
 export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { tabBarHeight } = useCustomSafeInsets()
+  const { bottom } = useSafeAreaInsets()
   const initialVenues = useInitialVenues()
   const { setInitialVenues } = useInitialVenuesActions()
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const mapViewRef = useRef<Map>(null)
   const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
-  const { height: windowHeight } = useWindowDimensions()
 
   const defaultRegion = useGetDefaultRegion()
   const [currentRegion, setCurrentRegion] = useState<Region>(defaultRegion)
@@ -69,6 +86,10 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
 
   useTrackMapSessionDuration()
   useTrackMapSeenDuration()
+
+  const { data: selectedVenueOffers } = useVenueOffers(
+    geoLocatedVenueToVenueResponse(selectedVenue)
+  )
 
   useEffect(() => {
     if (venues.length > 1) {
@@ -99,19 +120,26 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     navigate('Venue', { id: venueId })
   }
 
-  const handleMarkerPress = (venue: GeolocatedVenue, event: MarkerPressEvent) => {
+  const handleMarkerPress = (event: MarkerPressEvent) => {
     // Prevents the onPress of the MapView from being triggered
     event.stopPropagation()
+    const foundVenue = filteredVenues.find(
+      (venue) => venue.venueId.toString() === event.nativeEvent.id
+    )
+    if (!foundVenue) {
+      return
+    }
+
     setShowSearchButton(false)
-    analytics.logPinMapPressed({ venueType: venue.venue_type, venueId: venue.venueId })
+    analytics.logPinMapPressed({ venueType: foundVenue.venue_type, venueId: foundVenue.venueId })
     if (isPreviewEnabled) {
-      setSelectedVenue(venue)
+      setSelectedVenue(foundVenue)
       centerOnLocation(
         event.nativeEvent.coordinate.latitude,
         event.nativeEvent.coordinate.longitude
       )
     } else {
-      navigateToVenue(venue.venueId)
+      navigateToVenue(foundVenue.venueId)
     }
   }
 
@@ -125,17 +153,25 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     analytics.logConsultVenue({ venueId, from: 'venueMap' })
   }
 
-  const snapPoints = useMemo(
-    () =>
-      from === 'searchResults'
-        ? [tabBarHeight + 140, windowHeight / 2 - tabBarHeight]
-        : ['25%', '50%'],
-    [from, tabBarHeight, windowHeight]
-  )
+  const hasOffers =
+    !!selectedVenueOffers &&
+    Array.isArray(selectedVenueOffers.hits) &&
+    selectedVenueOffers.hits.length > 0
+
+  const snapPoints = useMemo(() => {
+    const contentViewHeight = {
+      min: hasOffers ? 160 : 130,
+      max: hasOffers ? 160 + LENGTH_L : 130,
+    }
+    const bottomInset = from === 'venueMap' ? bottom : tabBarHeight
+    const points = Object.entries(contentViewHeight).map(([_key, value]) => bottomInset + value)
+
+    return Array.from(new Set(points))
+  }, [from, bottom, hasOffers, tabBarHeight])
 
   useEffect(() => {
-    if (selectedVenue && selectedVenue !== null) {
-      bottomSheetRef.current?.snapToIndex(0)
+    if (selectedVenue) {
+      bottomSheetRef.current?.collapse()
     } else {
       bottomSheetRef.current?.close()
     }
@@ -145,10 +181,10 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     <React.Fragment>
       <VenueMapBottomSheet
         snapPoints={snapPoints}
-        index={-1}
         ref={bottomSheetRef}
         onClose={removeSelectedVenue}
         venue={selectedVenue}
+        venueOffers={selectedVenueOffers?.hits}
       />
       <StyledMapView
         ref={mapViewRef}
@@ -172,10 +208,11 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
               latitude: venue._geoloc.lat ?? 0,
               longitude: venue._geoloc.lng ?? 0,
             }}
-            onPress={(event) => handleMarkerPress(venue, event)}
+            onPress={handleMarkerPress}
             image={{
               uri: getVenueTypeIconName(venue.venueId === selectedVenue?.venueId, venue.venue_type),
             }}
+            identifier={venue.venueId.toString()}
             zIndex={venue.venueId === selectedVenue?.venueId ? PIN_MAX_Z_INDEX : undefined}
           />
         ))}
