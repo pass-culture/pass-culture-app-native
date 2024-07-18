@@ -98,7 +98,7 @@ export const Home: FunctionComponent = () => {
   const triggerBatchAttrakdiffModal = async () => {
     const batchEvent = new BatchEventData()
     batchEvent.put('app_version', getAppVersion())
-    batchEvent.put('is_a_b_test_active', shouldApplyGraphicRedesign)
+    batchEvent.put('is_graphic_redesign_applied', shouldApplyGraphicRedesign)
     if (creditStore.activationDate) {
       batchEvent.put('credit_activation_date', creditStore.activationDate.toISOString())
     }
