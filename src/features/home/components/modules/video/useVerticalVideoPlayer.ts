@@ -112,7 +112,7 @@ export const useVerticalVideoPlayer = ({
   const toggleMute = () => {
     switch (true) {
       case Platform.OS === 'web':
-        if (playerRefCurrent ?? 'mute' in playerRefCurrent) {
+        if (playerRefCurrent && 'mute' in playerRefCurrent) {
           if (isMuted) {
             playerRefCurrent.unMute()
           } else {
@@ -129,10 +129,10 @@ export const useVerticalVideoPlayer = ({
     }
   }
 
-  const pauseVideo = () => {
+  const pauseVideo = useCallback(() => {
     switch (true) {
       case Platform.OS === 'web':
-        if (playerRefCurrent ?? 'pauseVideo' in playerRefCurrent) {
+        if (playerRefCurrent && 'pauseVideo' in playerRefCurrent) {
           playerRefCurrent.pauseVideo()
           setIsPlaying(false)
           logPausedVideo()
@@ -145,7 +145,7 @@ export const useVerticalVideoPlayer = ({
       default:
         break
     }
-  }
+  }, [playerRefCurrent, setIsPlaying])
 
   const togglePlay = () => {
     if (isPlaying) {
