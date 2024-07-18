@@ -17,7 +17,7 @@ describe('AsyncStorageAttrakdiff', () => {
     expect(await attrakdiff.hasTriggered()).toBe(true)
   })
 
-  it('should set hasTriggered true when setTrigger is call', async () => {
+  it('should set hasTrigged to true when setTrigger is called', async () => {
     const attrakdiff = createAsyncStorageAttrakdiff(KEY)
 
     await attrakdiff.setTriggered()
