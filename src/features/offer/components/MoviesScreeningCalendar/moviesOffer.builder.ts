@@ -1,6 +1,6 @@
 import { addDays, differenceInMilliseconds, isAfter, isSameDay } from 'date-fns'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponseV2, OfferStockResponse } from 'api/gen'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 
@@ -61,6 +61,13 @@ export const moviesOfferBuilder = (offersWithStocks: OfferResponseV2[] = []) => 
 
         if (aValue === null || aValue === undefined) return 1
         if (bValue === null || bValue === undefined) return -1
+
+        if (bValue === aValue) {
+          const aEarliestDate = getEarliestDate(a.offer.stocks)
+          const bEarliestDate = getEarliestDate(b.offer.stocks)
+
+          return aEarliestDate - bEarliestDate
+        }
 
         return bValue - aValue
       })
@@ -143,4 +150,12 @@ const findClosestFutureDate = (datesArray: Date[], referenceDate: Date) => {
 
 const getUpcomingDate = (offer: OfferResponseV2) => {
   return getNextDate(offer, new Date())
+}
+
+const getEarliestDate = (stocks: OfferStockResponse[]) => {
+  return stocks.reduce((earliest, stock) => {
+    if (!stock.beginningDatetime) return earliest
+    const stockDate = new Date(stock.beginningDatetime).getTime()
+    return stockDate < earliest ? stockDate : earliest
+  }, Infinity)
 }

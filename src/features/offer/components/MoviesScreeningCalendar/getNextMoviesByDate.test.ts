@@ -154,4 +154,44 @@ describe('getNextMoviesByDate', () => {
 
     expect(offersContainingNoOfferAfterNow).toHaveLength(0)
   })
+
+  it('should sort the offers by descending last30DaysBookings order', () => {
+    const offers: OfferResponseV2[] = [
+      offerResponseBuilder().withLast30DaysBookings(100).withStocks(TOMORROW_STOCKS).build(),
+      offerResponseBuilder().withLast30DaysBookings(300).withStocks(TOMORROW_STOCKS).build(),
+      offerResponseBuilder().withLast30DaysBookings(200).withStocks(TOMORROW_STOCKS).build(),
+      offerResponseBuilder().withLast30DaysBookings(400).withStocks(TOMORROW_STOCKS).build(),
+    ]
+
+    const filteredOffersStocks = getNextMoviesByDate(offers, new Date(TODAY))
+
+    expect(filteredOffersStocks[0]?.offer?.last30DaysBookings).toBe(400)
+    expect(filteredOffersStocks[1]?.offer?.last30DaysBookings).toBe(300)
+    expect(filteredOffersStocks[2]?.offer.last30DaysBookings).toBe(200)
+    expect(filteredOffersStocks[3]?.offer.last30DaysBookings).toBe(100)
+  })
+
+  it('should sort the offers by ascending beginingDateTime order if 2 offers have the same last30DaysBooking value', () => {
+    const EARLIER_BEGINNING_DATE_TIME = dateBuilder().withDay(2).withHours(1).toString()
+    const LATER_BEGINNING_DATE_TIME = dateBuilder().withDay(2).withHours(2).toString()
+
+    const EARLIER_STOCKS = [
+      stockBuilder().withBeginningDatetime(EARLIER_BEGINNING_DATE_TIME).build(),
+    ]
+    const LATER_STOCKS = [stockBuilder().withBeginningDatetime(LATER_BEGINNING_DATE_TIME).build()]
+
+    const offers: OfferResponseV2[] = [
+      offerResponseBuilder().withId(1).withLast30DaysBookings(300).withStocks(LATER_STOCKS).build(),
+      offerResponseBuilder()
+        .withId(2)
+        .withLast30DaysBookings(300)
+        .withStocks(EARLIER_STOCKS)
+        .build(),
+    ]
+
+    const filteredOffersStocks = getNextMoviesByDate(offers, new Date(TODAY))
+
+    expect(filteredOffersStocks[0]?.offer?.id).toBe(2)
+    expect(filteredOffersStocks[1]?.offer?.id).toBe(1)
+  })
 })
