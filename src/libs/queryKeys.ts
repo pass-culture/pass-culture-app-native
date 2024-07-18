@@ -46,6 +46,7 @@ export enum QueryKeys {
   SUBSCRIPTION_PROFILE_INFO = 'subscriptionProfileInfo',
   EMAIL_UPDATE_STATUS_V2 = 'emailUpdateStatusV2',
   VIDEO_CAROUSEL_OFFERS = 'videoCarouselOffers',
+  SEARCH_N1_BOOKS_GTL_PLAYLISTS = 'searchN1BooksGtlPlaylists',
 }
 
 export enum MutationKeys {

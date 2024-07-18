@@ -11,7 +11,7 @@ import { analytics } from 'libs/analytics'
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenue(params.id)
-  const { gtlPlaylists } = useGTLPlaylists({ venue })
+  const { gtlPlaylists } = useGTLPlaylists({ venue, queryKey: 'VENUE_GTL_PLAYLISTS' })
   const { data: venueOffers } = useVenueOffers(venue)
 
   useEffect(() => {

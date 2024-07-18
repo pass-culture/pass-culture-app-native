@@ -5,8 +5,8 @@ import styled from 'styled-components/native'
 import { VenueTypeCodeKey } from 'api/gen'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { VenueOffersProps } from 'features/venue/components/VenueOffers/VenueOffers'
-import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -53,7 +53,8 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({ venue, venueOffers
   const renderItem: CustomListRenderItem<Offer> = ({ item, width, height }) => {
     const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
     return (
-      <VenueOfferTile
+      <OfferTile
+        analyticsFrom="venue"
         offerLocation={item._geoloc}
         categoryLabel={labelMapping[item.offer.subcategoryId]}
         categoryId={mapping[item.offer.subcategoryId]}
@@ -91,8 +92,14 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({ venue, venueOffers
       />
       {shouldDisplayGtlPlaylist ? (
         <React.Fragment>
-          {playlists.map((playlist) => (
-            <GtlPlaylist key={playlist.entryId} venue={venue} playlist={playlist} />
+          {playlists?.map((playlist) => (
+            <GtlPlaylist
+              key={playlist.entryId}
+              venue={venue}
+              playlist={playlist}
+              analyticsFrom="venue"
+              route="Venue"
+            />
           ))}
         </React.Fragment>
       ) : null}

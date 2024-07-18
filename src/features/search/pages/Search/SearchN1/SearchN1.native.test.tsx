@@ -2,6 +2,8 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
+import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { SearchN1 } from 'features/search/pages/Search/SearchN1/SearchN1'
@@ -17,6 +19,10 @@ const mockDispatch = jest.fn()
 jest.mock('libs/firebase/analytics/analytics')
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest
+  .spyOn(useGTLPlaylists, 'useGTLPlaylists')
+  .mockReturnValue({ isLoading: false, gtlPlaylists: gtlPlaylistAlgoliaSnapshot })
+
 jest.spyOn(useSearch, 'useSearch').mockReturnValue({
   searchState: mockSearchState,
   dispatch: mockDispatch,
@@ -29,80 +35,110 @@ jest.spyOn(useSearch, 'useSearch').mockReturnValue({
 describe('<SearchN1/>', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
-    useRoute.mockImplementation(() => ({
-      params: { offerCategories: [SearchGroupNameEnumv2.LIVRES] },
-    }))
   })
 
-  it('should render <SearchN1 />', async () => {
-    render(reactQueryProviderHOC(<SearchN1 />))
+  describe('book offerCategory', () => {
+    beforeEach(() => {
+      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+    })
 
-    await screen.findByText('Romans et littérature')
-
-    expect(screen).toMatchSnapshot()
-  })
-
-  describe('Search bar', () => {
-    it('should navigate to search results with the corresponding parameters', async () => {
-      const QUERY = 'Harry'
+    it('should render <SearchN1 />', async () => {
       render(reactQueryProviderHOC(<SearchN1 />))
-      const searchInput = screen.getByPlaceholderText('Rechercher parmi les livres')
-      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: QUERY } })
 
-      await act(async () => {})
+      await screen.findByText('Romans et littérature')
 
-      expect(navigate).toHaveBeenCalledWith(
-        'TabNavigator',
-        expect.objectContaining({
-          screen: 'SearchStackNavigator',
-          params: expect.objectContaining({
+      expect(screen).toMatchSnapshot()
+    })
+
+    describe('Search bar', () => {
+      it('should navigate to search results with the corresponding parameters', async () => {
+        const QUERY = 'Harry'
+        render(reactQueryProviderHOC(<SearchN1 />))
+        const searchInput = screen.getByPlaceholderText('Rechercher parmi les livres')
+        fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: QUERY } })
+
+        await act(async () => {})
+
+        expect(navigate).toHaveBeenCalledWith(
+          'TabNavigator',
+          expect.objectContaining({
+            screen: 'SearchStackNavigator',
             params: expect.objectContaining({
-              offerCategories: ['LIVRES'],
-              query: QUERY,
+              params: expect.objectContaining({
+                offerCategories: ['LIVRES'],
+                query: QUERY,
+              }),
             }),
-          }),
-        })
-      )
+          })
+        )
+      })
+    })
+
+    describe('Subcategory buttons', () => {
+      it('should update SearchState with correct data', async () => {
+        render(reactQueryProviderHOC(<SearchN1 />))
+        const subcategoryButton = await screen.findByText('Romans et littérature')
+        fireEvent.press(subcategoryButton)
+        await screen.findByText('Romans et littérature')
+
+        expect(mockDispatch).toHaveBeenCalledWith(
+          expect.objectContaining({
+            payload: expect.objectContaining({
+              offerCategories: [SearchGroupNameEnumv2.LIVRES],
+              offerNativeCategories: ['ROMANS_ET_LITTERATURE'],
+            }),
+            type: 'SET_STATE',
+          })
+        )
+      })
+
+      it('should navigate to search results with the corresponding parameters', async () => {
+        render(reactQueryProviderHOC(<SearchN1 />))
+        const subcategoryButton = await screen.findByText('Romans et littérature')
+
+        fireEvent.press(subcategoryButton)
+        await screen.findByText('Romans et littérature')
+
+        expect(navigate).toHaveBeenCalledWith(
+          'TabNavigator',
+          expect.objectContaining({
+            screen: 'SearchStackNavigator',
+            params: expect.objectContaining({
+              params: expect.objectContaining({
+                offerCategories: ['LIVRES'],
+                offerNativeCategories: ['ROMANS_ET_LITTERATURE'],
+              }),
+            }),
+          })
+        )
+      })
+    })
+
+    describe('gtl playlists', () => {
+      it('should render gtl playlists when offerCategory is `LIVRES`', async () => {
+        render(reactQueryProviderHOC(<SearchN1 />))
+        await screen.findByText('Romans et littérature')
+
+        expect(await screen.findByText('GTL playlist')).toBeOnTheScreen()
+      })
+    })
+  })
+
+  describe('gtl playlists', () => {
+    it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
+      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+      render(reactQueryProviderHOC(<SearchN1 />))
+      await screen.findByText('Festivals')
+
+      expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
     })
   })
 })
 
-describe('Subcategory buttons', () => {
-  it('should update SearchState with correct data', async () => {
-    render(reactQueryProviderHOC(<SearchN1 />))
-    const subcategoryButton = await screen.findByText('Romans et littérature')
-    fireEvent.press(subcategoryButton)
-    await screen.findByText('Romans et littérature')
-
-    expect(mockDispatch).toHaveBeenCalledWith(
-      expect.objectContaining({
-        payload: expect.objectContaining({
-          offerCategories: [SearchGroupNameEnumv2.LIVRES],
-          offerNativeCategories: ['ROMANS_ET_LITTERATURE'],
-        }),
-        type: 'SET_STATE',
-      })
-    )
-  })
-
-  it('should navigate to search results with the corresponding parameters', async () => {
-    render(reactQueryProviderHOC(<SearchN1 />))
-    const subcategoryButton = await screen.findByText('Romans et littérature')
-
-    fireEvent.press(subcategoryButton)
-    await screen.findByText('Romans et littérature')
-
-    expect(navigate).toHaveBeenCalledWith(
-      'TabNavigator',
-      expect.objectContaining({
-        screen: 'SearchStackNavigator',
-        params: expect.objectContaining({
-          params: expect.objectContaining({
-            offerCategories: ['LIVRES'],
-            offerNativeCategories: ['ROMANS_ET_LITTERATURE'],
-          }),
-        }),
-      })
-    )
-  })
-})
+function MockOfferCategoriesParams(offerCategoriesParams: {
+  offerCategories: SearchGroupNameEnumv2[]
+}) {
+  useRoute.mockImplementation(() => ({
+    params: offerCategoriesParams,
+  }))
+}

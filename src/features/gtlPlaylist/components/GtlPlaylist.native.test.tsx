@@ -1,15 +1,16 @@
-import { SearchResponse } from '@algolia/client-search'
 import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { InViewProps } from 'react-native-intersection-observer'
 
-import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
-import { GtlPlaylist, GtlPlaylistProps } from 'features/gtlPlaylist/components/GtlPlaylist'
+import { VenueResponse } from 'api/gen'
+import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
+import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
+import { GtlPlaylistData } from 'features/gtlPlaylist/types'
+import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -24,96 +25,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 const venue: VenueResponse = venueDataTest
 
-const playlist: GtlPlaylistProps['playlist'] = {
-  title: 'Test',
-  offers: {
-    hits: [
-      {
-        offer: {
-          name: 'Mon abonnement bibliothèque',
-          subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
-        },
-        venue,
-        _geoloc: {
-          lat: 2,
-          lng: 2,
-        },
-        objectID: '12',
-      },
-      {
-        offer: {
-          name: 'Mon abonnement médiathèque',
-          subcategoryId: SubcategoryIdEnum.ABO_MEDIATHEQUE,
-        },
-        venue,
-        _geoloc: {
-          lat: 2,
-          lng: 2,
-        },
-        objectID: '13',
-      },
-      {
-        offer: {
-          name: 'Mon abonnement livres numériques',
-          subcategoryId: SubcategoryIdEnum.ABO_LIVRE_NUMERIQUE,
-        },
-        venue,
-        _geoloc: {
-          lat: 2,
-          lng: 2,
-        },
-        objectID: '14',
-      },
-      {
-        offer: {
-          name: 'Mon abonnement ludothèque',
-          subcategoryId: SubcategoryIdEnum.ABO_LUDOTHEQUE,
-        },
-        venue,
-        _geoloc: {
-          lat: 2,
-          lng: 2,
-        },
-        objectID: '15',
-      },
-      {
-        offer: {
-          name: 'Mon abonnement concert',
-          subcategoryId: SubcategoryIdEnum.ABO_CONCERT,
-        },
-        venue,
-        _geoloc: {
-          lat: 2,
-          lng: 2,
-        },
-        objectID: '16',
-      },
-      {
-        offer: {
-          name: 'Mon abonnement jeu vidéo',
-          subcategoryId: SubcategoryIdEnum.ABO_JEU_VIDEO,
-        },
-        venue,
-        _geoloc: {
-          lat: 2,
-          lng: 2,
-        },
-        objectID: '17',
-      },
-    ],
-    page: 0,
-    nbPages: 1,
-    nbHits: 1,
-    hitsPerPage: 25,
-    processingTimeMS: 1,
-    exhaustiveNbHits: true,
-    query: '',
-    params: '',
-  } as SearchResponse<Offer>,
-  layout: 'one-item-medium',
-  entryId: '2xUlLBRfxdk6jeYyJszunX',
-  minNumberOfOffers: 1,
-}
+const playlist = gtlPlaylistAlgoliaSnapshot[0] as GtlPlaylistData
 
 const nativeEventEnd = {
   layoutMeasurement: { width: 1000 },
@@ -141,64 +53,149 @@ jest.mock('react-native-intersection-observer', () => {
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('GtlPlaylist', () => {
-  it('should log ConsultOffer when pressing an item', () => {
-    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlist} venue={venue} />))
+  describe('on venue page', () => {
+    it('should log ConsultOffer when pressing an item', () => {
+      renderGtlPlaylistOnVenuePage()
 
-    const result = screen.queryAllByText('Mon abonnement bibliothèque')[0]
+      const result = screen.queryAllByText('Mon abonnement bibliothèque')[0]
 
-    if (result) {
-      fireEvent.press(result)
-    }
+      if (result) {
+        fireEvent.press(result)
+      }
 
-    expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-      from: 'venue',
-      index: 0,
-      moduleId: '2xUlLBRfxdk6jeYyJszunX',
-      offerId: 12,
-      venueId: 5543,
+      expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
+        from: 'venue',
+        index: 0,
+        moduleId: '2xUlLBRfxdk6jeYyJszunX',
+        offerId: 12,
+        venueId: 5543,
+      })
+    })
+
+    it('should log AllTilesSeen only once when scrolling to the end of the playlist', async () => {
+      renderGtlPlaylistOnVenuePage()
+      const scrollView = screen.getByTestId('offersModuleList')
+
+      await act(async () => {
+        // 1st scroll to last item => trigger
+        await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+      })
+
+      expect(analytics.logAllTilesSeen).toHaveBeenNthCalledWith(1, {
+        moduleId: '2xUlLBRfxdk6jeYyJszunX',
+        numberOfTiles: 6,
+        venueId: 5543,
+      })
+      expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
+
+      await act(async () => {
+        await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+      })
+
+      expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
+    })
+
+    it('should log ModuleDisplayed when scrolling to the playlist', () => {
+      renderGtlPlaylistOnVenuePage()
+
+      mockInView(true)
+
+      expect(analytics.logModuleDisplayed).toHaveBeenNthCalledWith(1, {
+        displayedOn: 'venue',
+        moduleId: '2xUlLBRfxdk6jeYyJszunX',
+        venueId: 5543,
+      })
+    })
+
+    it('should not log ModuleDisplayed when not scrolling to the playlist', () => {
+      renderGtlPlaylistOnVenuePage()
+
+      mockInView(false)
+
+      expect(analytics.logModuleDisplayed).not.toHaveBeenCalled()
     })
   })
 
-  it('should log AllTilesSeen only once when scrolling to the end of the playlist', async () => {
-    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlist} venue={venue} />))
-    const scrollView = screen.getByTestId('offersModuleList')
+  describe('on searchN1 page', () => {
+    it('should log ConsultOffer when pressing an item', () => {
+      renderGtlPlaylistOnSearchN1Page()
 
-    await act(async () => {
-      // 1st scroll to last item => trigger
-      await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+      const result = screen.queryAllByText('Mon abonnement bibliothèque')[0]
+
+      if (result) {
+        fireEvent.press(result)
+      }
+
+      expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
+        from: 'searchn1',
+        index: 0,
+        moduleId: '2xUlLBRfxdk6jeYyJszunX',
+        offerId: 12,
+      })
     })
 
-    expect(analytics.logAllTilesSeen).toHaveBeenNthCalledWith(1, {
-      moduleId: '2xUlLBRfxdk6jeYyJszunX',
-      numberOfTiles: 6,
-      venueId: 5543,
+    it('should log AllTilesSeen only once when scrolling to the end of the playlist', async () => {
+      renderGtlPlaylistOnSearchN1Page()
+      const scrollView = screen.getByTestId('offersModuleList')
+
+      await act(async () => {
+        // 1st scroll to last item => trigger
+        await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+      })
+
+      expect(analytics.logAllTilesSeen).toHaveBeenNthCalledWith(1, {
+        moduleId: '2xUlLBRfxdk6jeYyJszunX',
+        numberOfTiles: 6,
+      })
+
+      expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
+
+      await act(async () => {
+        await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+      })
+
+      expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
     })
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
 
-    await act(async () => {
-      await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
+    it('should log ModuleDisplayed when scrolling to the playlist', () => {
+      renderGtlPlaylistOnSearchN1Page()
+
+      mockInView(true)
+
+      expect(analytics.logModuleDisplayed).toHaveBeenNthCalledWith(1, {
+        displayedOn: 'searchn1',
+        moduleId: '2xUlLBRfxdk6jeYyJszunX',
+      })
     })
 
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
-  })
+    it('should not log ModuleDisplayed when not scrolling to the playlist', () => {
+      renderGtlPlaylistOnVenuePage()
 
-  it('should log ModuleDisplayed when scrolling to the playlist', () => {
-    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlist} venue={venue} />))
+      mockInView(false)
 
-    mockInView(true)
-
-    expect(analytics.logModuleDisplayed).toHaveBeenNthCalledWith(1, {
-      displayedOn: 'venue',
-      moduleId: '2xUlLBRfxdk6jeYyJszunX',
-      venueId: 5543,
+      expect(analytics.logModuleDisplayed).not.toHaveBeenCalled()
     })
-  })
-
-  it('should not log ModuleDisplayed when not scrolling to the playlist', () => {
-    render(reactQueryProviderHOC(<GtlPlaylist playlist={playlist} venue={venue} />))
-
-    mockInView(false)
-
-    expect(analytics.logModuleDisplayed).not.toHaveBeenCalled()
   })
 })
+
+function renderGtlPlaylist(
+  gtlPlaylist: GtlPlaylistData,
+  analyticsFrom: Referrals,
+  route: Extract<ScreenNames, 'Venue' | 'SearchN1'>,
+  venue?: VenueResponse
+) {
+  return render(
+    reactQueryProviderHOC(
+      <GtlPlaylist
+        playlist={gtlPlaylist}
+        venue={venue}
+        analyticsFrom={analyticsFrom}
+        route={route}
+      />
+    )
+  )
+}
+
+const renderGtlPlaylistOnVenuePage = () => renderGtlPlaylist(playlist, 'venue', 'Venue', venue)
+
+const renderGtlPlaylistOnSearchN1Page = () => renderGtlPlaylist(playlist, 'searchn1', 'SearchN1')
