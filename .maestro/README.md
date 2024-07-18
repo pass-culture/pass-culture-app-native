@@ -268,10 +268,23 @@ Ajouter ceci dans le scenario de test
 
 ```yaml
 - runScript:
-    file: analytics/hasBeenCalled.js
+    when:
+      true: ${MAESTRO_RUN_TRACKING_TESTS}
+    label: 'Check tracking data'
+    file: subFolder/analytics/hasBeenCalled.js
     env:
       EXPECTED_ANALYTICS_CALL: 'HasAcceptedAllCookies'
-- assertTrue: ${output.analyticsHasBeenCalled}
+- runFlow:
+    when:
+      true: ${MAESTRO_RUN_TRACKING_TESTS}
+      label: 'Verify needed analytics is in the list'
+    commands:
+    - assertTrue: ${output.analyticsHasBeenCalled}
+- runScript:
+    when:
+      true: ${MAESTRO_RUN_TRACKING_TESTS}
+    label: 'Clear tracking storage'
+    file: subFolder/analytics/clear.js
 ```
 
 ### Limites

@@ -16,6 +16,7 @@ tags:
 - runFlow:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
+      label: 'Verify needed analytics is in the list'
     commands:
     - assertTrue: ${output.analyticsHasBeenCalled}
 - runScript:
@@ -31,6 +32,8 @@ tags:
 - runFlow: subFolder/GoToSearchFromTabBar.yml
 - runFlow: subFolder/search/SearchBookableCinemaOffer.yml
 - runScript:
+    when:
+      true: ${MAESTRO_RUN_TRACKING_TESTS}
     label: 'Check tracking data'
     file: subFolder/analytics/hasBeenCalled.js
     env:
@@ -38,14 +41,19 @@ tags:
 - runFlow:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
+    label: 'Verify needed analytic is in the list'
     commands:
     - assertTrue: ${output.analyticsHasBeenCalled}
 - runScript:
+    when:
+      true: ${MAESTRO_RUN_TRACKING_TESTS}
     label: 'Clear tracking storage'
     file: subFolder/analytics/clear.js
 - runFlow: subFolder/booking/BookCinemaOffer.yml
 
 - runScript:
+    when:
+      true: ${MAESTRO_RUN_TRACKING_TESTS}
     label: 'Check tracking data'
     file: subFolder/analytics/hasBeenCalled.js
     env:
@@ -53,9 +61,12 @@ tags:
 - runFlow:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
+    label: 'Verify needed analytics is in the list'
     commands:
     - assertTrue: ${output.analyticsHasBeenCalled}
 - runScript:
+    when:
+      true: ${MAESTRO_RUN_TRACKING_TESTS}
     label: 'Clear tracking storage'
     file: subFolder/analytics/clear.js
 
@@ -64,6 +75,8 @@ tags:
 - runFlow: subFolder/booking/BookDuoOffer.yml
 
 - runScript:
+    when:
+      true: ${MAESTRO_RUN_TRACKING_TESTS}
     label: 'Check tracking data'
     file: subFolder/analytics/hasBeenCalled.js
     env:
@@ -71,9 +84,12 @@ tags:
 - runFlow:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
+    label: 'Verify needed analytics is in the list'
     commands:
     - assertTrue: ${output.analyticsHasBeenCalled}
 - runScript:
+    when:
+      true: ${MAESTRO_RUN_TRACKING_TESTS}
     label: 'Clear tracking storage'
     file: subFolder/analytics/clear.js
 
