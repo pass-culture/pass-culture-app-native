@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchN1/> should render <SearchN1 /> 1`] = `
+exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
 <RCTScrollView
   collapsable={false}
   handlerTag={1}

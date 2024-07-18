@@ -27,7 +27,7 @@ export const SearchN1: React.FC = () => {
   })
 
   const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
-  const offerCategory = offerCategories[0] || SearchGroupNameEnumv2.LIVRES
+  const offerCategory = offerCategories?.[0] || SearchGroupNameEnumv2.LIVRES
   const isBookCategory = offerCategory === SearchGroupNameEnumv2.LIVRES
 
   const nativeCategories = useNativeCategories(offerCategory)

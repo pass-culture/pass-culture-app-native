@@ -69,7 +69,7 @@ export const SearchN1Bar: FC<PropsWithChildren<Props>> = ({
       <Configure
         facetFilters={[
           [
-            `${env.ALGOLIA_OFFERS_INDEX_NAME}.facets.analytics.offer.searchGroupNamev2.value:${offerCategories[0]}`,
+            `${env.ALGOLIA_OFFERS_INDEX_NAME}.facets.analytics.offer.searchGroupNamev2.value:${offerCategories?.[0]}`,
           ],
         ]}
         clickAnalytics
