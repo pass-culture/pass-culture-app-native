@@ -24,7 +24,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { useElementHeight } from 'ui/hooks/useElementHeight'
+import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -38,7 +38,7 @@ const SPACER_BETWEEN_IMAGE_AND_CONTENT = 4
 
 export const Favorite: React.FC<Props> = (props) => {
   const { offer } = props.favorite
-  const { onLayout, height } = useElementHeight()
+  const { onLayout, height } = useLayout()
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
   const prePopulateOffer = usePrePopulateOffer()

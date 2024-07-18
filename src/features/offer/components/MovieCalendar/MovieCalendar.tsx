@@ -1,4 +1,5 @@
-import React from 'react'
+import { differenceInCalendarDays } from 'date-fns'
+import React, { useCallback } from 'react'
 import { FlatList, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
@@ -6,6 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/components/MovieCalendarDay'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
+import { useLayout } from 'ui/hooks/useLayout'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 import { getSpacing } from 'ui/theme'
 
@@ -32,6 +34,31 @@ export const MovieCalendar: React.FC<Props> = ({
     isEnd,
     isStart,
   } = useHorizontalFlatListScroll({ ref: flatListRef, isActive: isDesktopViewport })
+  const { width: flatListWidth, onLayout: onFlatListLayout } = useLayout()
+  const { width: itemWidth, onLayout: onItemLayout } = useLayout()
+
+  const scrollToMiddleElement = useCallback(
+    (currentIndex: number) => {
+      const nbElements = Math.floor(flatListWidth / itemWidth)
+      const shift = Math.floor(nbElements / 2)
+      if (currentIndex - shift < 0) {
+        return
+      }
+      // console.log({ currentIndex, shift })
+      flatListRef.current?.scrollToIndex({ animated: true, index: currentIndex - shift })
+    },
+    [flatListRef, flatListWidth, itemWidth]
+  )
+
+  const onInternalTabChange = useCallback(
+    (date: Date) => {
+      const currentIndex = differenceInCalendarDays(date, new Date())
+      onTabChange(date)
+      scrollToMiddleElement(currentIndex)
+    },
+    [onTabChange, scrollToMiddleElement]
+  )
+
   return (
     <View onLayout={onContainerLayout}>
       <MovieCalendarBottomBar />
@@ -44,6 +71,7 @@ export const MovieCalendar: React.FC<Props> = ({
       ) : null}
       <View>
         <FlatList
+          onLayout={onFlatListLayout}
           ref={flatListRef}
           data={dates}
           horizontal
@@ -53,7 +81,12 @@ export const MovieCalendar: React.FC<Props> = ({
           onContentSizeChange={onContentSizeChange}
           testID="movie-calendar-flat-list"
           renderItem={({ item: date }) => (
-            <MovieCalendarDay date={date} selectedDate={selectedDate} onTabChange={onTabChange} />
+            <MovieCalendarDay
+              onLayout={onItemLayout}
+              date={date}
+              selectedDate={selectedDate}
+              onTabChange={onInternalTabChange}
+            />
           )}
         />
         {isDesktopViewport ? (

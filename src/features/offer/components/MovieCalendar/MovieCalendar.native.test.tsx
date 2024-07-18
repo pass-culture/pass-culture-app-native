@@ -1,20 +1,28 @@
+import mockDate from 'mockdate'
 import React from 'react'
 import { FlatList } from 'react-native'
 
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
+import { toMutable } from 'shared/types/toMutable'
 import { render, act, screen, CustomRenderOptions, fireEvent } from 'tests/utils'
 
-const dummyDates: Date[] = [
-  new Date(1296518400000), // 1er février 2011 (Mardi)
-  new Date(1330627200000), // 1er mars 2012 (Jeudi)
-  new Date(1380912000000), // 4 octobre 2013 (Vendredi)
-  new Date(1417286400000), // 30 novembre 2014 (Dimanche)
-  new Date(1464739200000), // 31 mai 2016 (Mardi)
-  new Date(1509532800000), // 1er novembre 2017 (Mercredi)
-  new Date(1559376000000), // 1er juin 2019 (Samedi)
-  new Date(1606780800000), // 1er décembre 2022 (Jeudi)
-  new Date(1654099200000), // 31 mai 2024 (Vendredi)
-]
+const dummyDates = toMutable([
+  new Date('2024-07-18T00:00:00.000Z'), // Jeudi 18 juillet 2024
+  new Date('2024-07-19T00:00:00.000Z'), // Vendredi 19 juillet 2024
+  new Date('2024-07-20T00:00:00.000Z'), // Samedi 20 juillet 2024
+  new Date('2024-07-21T00:00:00.000Z'), // Dimanche 21 juillet 2024
+  new Date('2024-07-22T00:00:00.000Z'), // Lundi 22 juillet 2024
+  new Date('2024-07-23T00:00:00.000Z'), // Mardi 23 juillet 2024
+  new Date('2024-07-24T00:00:00.000Z'), // Mercredi 24 juillet 2024
+  new Date('2024-07-25T00:00:00.000Z'), // Jeudi 25 juillet 2024
+  new Date('2024-07-26T00:00:00.000Z'), // Vendredi 26 juillet 2024
+  new Date('2024-07-27T00:00:00.000Z'), // Samedi 27 juillet 2024
+  new Date('2024-07-28T00:00:00.000Z'), // Dimanche 28 juillet 2024
+  new Date('2024-07-29T00:00:00.000Z'), // Lundi 29 juillet 2024
+  new Date('2024-07-30T00:00:00.000Z'), // Mardi 30 juillet 2024
+  new Date('2024-07-31T00:00:00.000Z'), // Mercredi 31 juillet 2024
+  new Date('2024-08-01T00:00:00.000Z'), // Jeudi 1er août 2024
+] as const) satisfies Date[]
 
 const mockOnTabChange = jest.fn()
 
@@ -99,12 +107,69 @@ describe('<MovieCalendar/>', () => {
       expect(screen.getByTestId('movie-calendar-left-arrow')).toBeOnTheScreen()
     })
   })
+
+  describe('Animation', () => {
+    const mockFlatListRef = {
+      current: {
+        scrollToEnd: jest.fn(),
+        scrollToIndex: jest.fn(),
+        scrollToItem: jest.fn(),
+        scrollToOffset: jest.fn(),
+        recordInteraction: jest.fn(),
+        flashScrollIndicators: jest.fn(),
+        getScrollResponder: jest.fn(),
+        getNativeScrollRef: jest.fn(),
+        getScrollableNode: jest.fn(),
+        setNativeProps: jest.fn(),
+        context: undefined,
+        setState: jest.fn(),
+        forceUpdate: jest.fn(),
+        render: jest.fn(),
+        props: {
+          data: [],
+          renderItem: jest.fn(),
+        },
+        state: {},
+        refs: {},
+      },
+    }
+
+    jest.mock('ui/hooks/useHorizontalFlatListScroll', () => ({
+      useHorizontalFlatListScroll: () => ({
+        handleScrollPrevious: jest.fn(),
+        handleScrollNext: jest.fn(),
+        onScroll: jest.fn(),
+        onContentSizeChange: jest.fn(),
+        onContainerLayout: jest.fn(),
+        isEnd: false,
+        isStart: false,
+      }),
+    }))
+
+    it.only('should scroll to the middle element when an item is clicked', () => {
+      mockDate.set(dummyDates[0])
+      const onTabChange = jest.fn()
+
+      renderMovieCalendar(dummyDates, { isDesktopViewport: false }, mockFlatListRef)
+
+      const firstDateItem = screen.getAllByText('Mar.')[0]
+
+      if (firstDateItem) {
+        fireEvent.press(firstDateItem)
+      }
+
+      expect(onTabChange).toHaveBeenCalledWith(dummyDates[5])
+      expect(mockFlatListRef.current.scrollToIndex).toHaveBeenCalled()
+    })
+  })
 })
 
-const renderMovieCalendar = (dates: Date[], theme?: CustomRenderOptions['theme']) => {
+const renderMovieCalendar = (
+  dates: Date[],
+  theme?: CustomRenderOptions['theme'],
+  ref = React.createRef<FlatList | null>()
+) => {
   const TestWrapper = () => {
-    const ref = React.useRef<FlatList | null>(null)
-
     return (
       <MovieCalendar
         dates={dates}
