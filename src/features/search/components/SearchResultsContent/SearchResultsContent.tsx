@@ -18,6 +18,7 @@ import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { HEADER_SEARCH_VENUE_MAP } from 'features/search/constants'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
+import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/getStringifySearchStateWithoutLocation/getStringifySearchStateWithoutLocation'
 import {
   FILTER_TYPES,
   useAppliedFilters,
@@ -99,6 +100,11 @@ export const SearchResultsContent: React.FC = () => {
   const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
 
   const isVenue = !!searchState.venue
+
+  // Initial copy of location filters
+  const stringifySearchStateWithoutLocation = useRef(
+    getStringifySearchStateWithoutLocation(searchState)
+  )
 
   // Execute log only on initial search fetch
   const previousIsLoading = usePrevious(isLoading)
@@ -188,6 +194,20 @@ export const SearchResultsContent: React.FC = () => {
       setDefaultTab(Tab.SEARCHLIST)
     }
   }, [selectedLocationMode, venueMapLocationModalVisible])
+
+  // This useEffect monitors changes to `searchState`. When `searchState` is updated, it
+  // generates a string representation of the filters excluding location data. If the new
+  // filter string differs from the previously stored value, it resets the default tab to
+  // `Tab.SEARCHLIST` and updates the stored filter string. This ensures that the UI
+  // responds correctly to filter changes while ignoring location information.
+  useEffect(() => {
+    const currentFiltersWithoutLocation = getStringifySearchStateWithoutLocation(searchState)
+
+    if (currentFiltersWithoutLocation !== stringifySearchStateWithoutLocation.current) {
+      setDefaultTab(Tab.SEARCHLIST)
+      stringifySearchStateWithoutLocation.current = currentFiltersWithoutLocation
+    }
+  }, [searchState])
 
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
