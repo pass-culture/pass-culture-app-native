@@ -14,6 +14,7 @@ import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Li } from 'ui/components/Li'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
+import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const GRADIENT_HEIGHT = getSpacing(30)
@@ -97,7 +98,11 @@ export function StatusFlatList({
             renderItem={renderItem}
           />
         </FlatListContainer>
-      ) : null}
+      ) : (
+        <SpinnerView headerHeight={headerHeight}>
+          <Spinner testID="spinner" />
+        </SpinnerView>
+      )}
       <Gradient ref={gradientRef} bottomViewHeight={bottomViewHeight} />
       <BottomView onLayout={onBottomViewLayout}>
         <ButtonPrimary
@@ -134,6 +139,13 @@ const BottomView = styled(View)(({ theme }) => ({
   paddingTop: getSpacing(3),
   backgroundColor: theme.colors.white,
   paddingHorizontal: getSpacing(5),
+}))
+
+const SpinnerView = styled(View).attrs<{ headerHeight: number }>({
+  flex: 1,
+  justifyContent: 'center',
+})<{ headerHeight: number }>(({ headerHeight }) => ({
+  paddingTop: headerHeight,
 }))
 
 const AnimatedGradient = createAnimatableComponent(LinearGradient)

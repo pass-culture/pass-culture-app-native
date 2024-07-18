@@ -70,12 +70,14 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
+let mockIsLoading = false
 const mockActivities = ActivityTypesSnap.activities
 jest.mock('features/identityCheck/api/useActivityTypes', () => {
   return {
     useActivityTypes: jest.fn(() => {
       return {
         activities: mockActivities,
+        isLoading: mockIsLoading,
       }
     }),
   }
@@ -91,6 +93,15 @@ describe('<ChangeStatus/>', () => {
 
   it('should render correctly', async () => {
     mockedUseIsUserUnderage.mockReturnValueOnce(true)
+    mockIsLoading = false
+    renderChangedStatus()
+
+    await waitFor(() => expect(screen).toMatchSnapshot())
+  })
+
+  it('should show loading component', async () => {
+    mockedUseIsUserUnderage.mockReturnValueOnce(true)
+    mockIsLoading = true
     renderChangedStatus()
 
     await waitFor(() => expect(screen).toMatchSnapshot())
