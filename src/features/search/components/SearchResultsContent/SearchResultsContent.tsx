@@ -289,7 +289,10 @@ export const SearchResultsContent: React.FC = () => {
         venuesUserData={venuesUserData}
       />
     ),
-    [Tab.MAP]: <VenueMapView height={venueMapHeight} from="searchResults" />,
+    [Tab.MAP]:
+      selectedLocationMode === LocationMode.EVERYWHERE ? null : (
+        <VenueMapView height={venueMapHeight} from="searchResults" />
+      ),
   }
 
   const shouldDisplayTabLayout = shouldDisplayVenueMapInSearch && !isWeb
