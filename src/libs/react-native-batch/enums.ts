@@ -12,4 +12,5 @@ export enum BatchEvent {
   hasValidatedSubscription = 'has_validated_subscription',
   screenViewComeBackLater = 'screen_view_come_back_later',
   screenViewExpiredOrLostId = 'screen_view_expired_or_lost_id',
+  hasSeenEnoughHomeContent = 'has_seen_enough_home_content',
 }

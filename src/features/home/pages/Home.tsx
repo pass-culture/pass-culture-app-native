@@ -1,8 +1,11 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
+import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { createAsyncStorageAttrakdiff } from 'features/home/api/asyncStorageAttrakdiff'
+import { useAttrakdiffModal } from 'features/home/api/useAttrakdiffModal'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
@@ -12,18 +15,25 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { analytics } from 'libs/analytics'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
+import { getAppVersion } from 'libs/packageJson'
+import { BatchEvent, BatchEventData, BatchUser } from 'libs/react-native-batch'
 import { startTransaction } from 'shared/performance/transactions'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
+
+import { useCreditStore } from '../../identityCheck/api/useCreditActivation'
 
 const Header = () => (
   <ListHeaderContainer>
     <HomeHeader />
   </ListHeaderContainer>
 )
+
+const attrakdiff = createAsyncStorageAttrakdiff('hasTriggeredHomeContent')
 
 export const Home: FunctionComponent = () => {
   const startPerfHomeLoadingOnce = useFunctionOnce(() => startTransaction(PERFORMANCE_HOME_LOADING))
@@ -48,6 +58,9 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
+  const { height } = useWindowDimensions()
+  const { shouldApplyGraphicRedesign } = useRemoteConfigContext()
+  const creditStore = useCreditStore()
 
   useEffect(() => {
     if (id) {
@@ -82,6 +95,22 @@ export const Home: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition])
 
+  const triggerBatchAttrakdiffModal = async () => {
+    const batchEvent = new BatchEventData()
+    batchEvent.put('app_version', getAppVersion())
+    batchEvent.put('is_graphic_redesign_applied', shouldApplyGraphicRedesign)
+    if (creditStore.activationDate) {
+      batchEvent.put('credit_activation_date', creditStore.activationDate.toISOString())
+    }
+    BatchUser.trackEvent(BatchEvent.hasSeenEnoughHomeContent, undefined, batchEvent)
+  }
+
+  const { checkTrigger } = useAttrakdiffModal({
+    screenHeight: height,
+    onTrigger: triggerBatchAttrakdiffModal,
+    attrakdiff,
+  })
+
   return (
     <React.Fragment>
       <GenericHome
@@ -93,6 +122,9 @@ export const Home: FunctionComponent = () => {
         }
         videoModuleId={params?.videoModuleId}
         statusBar={<StatusBarBlurredBackground />}
+        onScroll={({ nativeEvent }) => {
+          checkTrigger(nativeEvent.contentOffset.y)
+        }}
       />
       <OnboardingSubscriptionModal
         visible={onboardingSubscriptionModalVisible}
