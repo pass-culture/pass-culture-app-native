@@ -18,6 +18,8 @@ type Props = {
   flatListRef: React.MutableRefObject<FlatList | null>
 }
 
+export const MOVIE_CALENDAR_PADDING = getSpacing(6)
+
 export const MovieCalendar: React.FC<Props> = ({
   dates,
   selectedDate,
@@ -39,13 +41,19 @@ export const MovieCalendar: React.FC<Props> = ({
 
   const scrollToMiddleElement = useCallback(
     (currentIndex: number) => {
-      const nbElements = Math.floor(flatListWidth / itemWidth)
-      const shift = Math.floor(nbElements / 2)
-      if (currentIndex - shift < 0) {
+      const shift = flatListWidth / 2 - MOVIE_CALENDAR_PADDING
+      const centerOfSelectedElement = currentIndex * itemWidth + itemWidth / 2
+      if (centerOfSelectedElement - shift < 0) {
+        flatListRef.current?.scrollToOffset({
+          animated: true,
+          offset: 0,
+        })
         return
       }
-      // console.log({ currentIndex, shift })
-      flatListRef.current?.scrollToIndex({ animated: true, index: currentIndex - shift })
+      flatListRef.current?.scrollToOffset({
+        animated: true,
+        offset: centerOfSelectedElement - shift,
+      })
     },
     [flatListRef, flatListWidth, itemWidth]
   )
@@ -107,7 +115,7 @@ export const MovieCalendar: React.FC<Props> = ({
 }
 
 const flatListContainer = {
-  paddingHorizontal: getSpacing(6),
+  paddingHorizontal: MOVIE_CALENDAR_PADDING,
 }
 
 const FadeComponent = styled(LinearGradient)`

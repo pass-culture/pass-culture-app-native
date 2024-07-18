@@ -2,9 +2,13 @@ import mockDate from 'mockdate'
 import React from 'react'
 import { FlatList } from 'react-native'
 
-import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
+import {
+  MovieCalendar,
+  MOVIE_CALENDAR_PADDING,
+} from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { toMutable } from 'shared/types/toMutable'
 import { render, act, screen, CustomRenderOptions, fireEvent } from 'tests/utils'
+import * as useLayout from 'ui/hooks/useLayout'
 
 const dummyDates = toMutable([
   new Date('2024-07-18T00:00:00.000Z'), // Jeudi 18 juillet 2024
@@ -25,6 +29,16 @@ const dummyDates = toMutable([
 ] as const) satisfies Date[]
 
 const mockOnTabChange = jest.fn()
+
+const defaultUseLayoutReturnValue = {
+  width: 1000,
+  height: 100,
+  x: 100,
+  y: 100,
+  onLayout: jest.fn(),
+}
+
+const useLayoutSpy = jest.spyOn(useLayout, 'useLayout').mockReturnValue(defaultUseLayoutReturnValue)
 
 describe('<MovieCalendar/>', () => {
   it('should render MovieCalendar', async () => {
@@ -134,23 +148,23 @@ describe('<MovieCalendar/>', () => {
       },
     }
 
-    jest.mock('ui/hooks/useHorizontalFlatListScroll', () => ({
-      useHorizontalFlatListScroll: () => ({
-        handleScrollPrevious: jest.fn(),
-        handleScrollNext: jest.fn(),
-        onScroll: jest.fn(),
-        onContentSizeChange: jest.fn(),
-        onContainerLayout: jest.fn(),
-        isEnd: false,
-        isStart: false,
-      }),
-    }))
+    const flatListWidth = 1000
+    const itemWidth = 200
 
-    it.only('should scroll to the middle element when an item is clicked', () => {
+    beforeEach(() => {
       mockDate.set(dummyDates[0])
-      const onTabChange = jest.fn()
 
+      useLayoutSpy
+        .mockReturnValueOnce({ ...defaultUseLayoutReturnValue, width: 0 })
+        .mockReturnValueOnce({ ...defaultUseLayoutReturnValue, width: 0 })
+        .mockReturnValueOnce({ ...defaultUseLayoutReturnValue, width: flatListWidth })
+        .mockReturnValueOnce({ ...defaultUseLayoutReturnValue, width: itemWidth })
+    })
+
+    it('should scroll to the middle element when an item is clicked', () => {
+      const itemIndex = 5
       renderMovieCalendar(dummyDates, { isDesktopViewport: false }, mockFlatListRef)
+      mockFlatListRef.current.scrollToOffset = jest.fn()
 
       const firstDateItem = screen.getAllByText('Mar.')[0]
 
@@ -158,8 +172,29 @@ describe('<MovieCalendar/>', () => {
         fireEvent.press(firstDateItem)
       }
 
-      expect(onTabChange).toHaveBeenCalledWith(dummyDates[5])
-      expect(mockFlatListRef.current.scrollToIndex).toHaveBeenCalled()
+      expect(mockOnTabChange).toHaveBeenCalledWith(dummyDates[itemIndex])
+      expect(mockFlatListRef.current.scrollToOffset).toHaveBeenCalledWith({
+        animated: true,
+        offset: MOVIE_CALENDAR_PADDING + itemWidth / 2 + itemIndex * itemWidth - flatListWidth / 2,
+      })
+    })
+
+    it('should scroll to the start when the offset is less than 0', () => {
+      const itemIndex = 1
+      renderMovieCalendar(dummyDates, { isDesktopViewport: false }, mockFlatListRef)
+      mockFlatListRef.current.scrollToOffset = jest.fn()
+
+      const firstDateItem = screen.getAllByText('Ven.')[0]
+
+      if (firstDateItem) {
+        fireEvent.press(firstDateItem)
+      }
+
+      expect(mockOnTabChange).toHaveBeenCalledWith(dummyDates[itemIndex])
+      expect(mockFlatListRef.current.scrollToOffset).toHaveBeenCalledWith({
+        animated: true,
+        offset: 0,
+      })
     })
   })
 })

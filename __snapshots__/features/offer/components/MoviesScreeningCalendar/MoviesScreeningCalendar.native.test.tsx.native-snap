@@ -99,6 +99,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -237,6 +238,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -360,6 +362,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -483,6 +486,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -606,6 +610,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -729,6 +734,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -852,6 +858,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -975,6 +982,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -1098,6 +1106,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -1221,6 +1230,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -2288,6 +2298,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -2426,6 +2437,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -2549,6 +2561,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -2672,6 +2685,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -2795,6 +2809,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -2918,6 +2933,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -3041,6 +3057,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -3164,6 +3181,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -3287,6 +3305,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}
@@ -3410,6 +3429,7 @@ exports[`MoviesScreeningCalendar should render MoviesScreeningCalendar correctly
               accessible={false}
               focusable={true}
               onClick={[Function]}
+              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}

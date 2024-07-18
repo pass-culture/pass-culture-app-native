@@ -28,15 +28,21 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
       }
       data={
         [
-          2011-02-01T00:00:00.000Z,
-          2012-03-01T18:40:00.000Z,
-          2013-10-04T18:40:00.000Z,
-          2014-11-29T18:40:00.000Z,
-          2016-06-01T00:00:00.000Z,
-          2017-11-01T10:40:00.000Z,
-          2019-06-01T08:00:00.000Z,
-          2020-12-01T00:00:00.000Z,
-          2022-06-01T16:00:00.000Z,
+          2024-07-18T00:00:00.000Z,
+          2024-07-19T00:00:00.000Z,
+          2024-07-20T00:00:00.000Z,
+          2024-07-21T00:00:00.000Z,
+          2024-07-22T00:00:00.000Z,
+          2024-07-23T00:00:00.000Z,
+          2024-07-24T00:00:00.000Z,
+          2024-07-25T00:00:00.000Z,
+          2024-07-26T00:00:00.000Z,
+          2024-07-27T00:00:00.000Z,
+          2024-07-28T00:00:00.000Z,
+          2024-07-29T00:00:00.000Z,
+          2024-07-30T00:00:00.000Z,
+          2024-07-31T00:00:00.000Z,
+          2024-08-01T00:00:00.000Z,
         ]
       }
       getItem={[Function]}
@@ -92,6 +98,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             accessible={false}
             focusable={true}
             onClick={[Function]}
+            onLayout={[MockFunction]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -118,7 +125,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             testID="movie-calendar-day"
           >
             <View
-              accessibilityLabel="Mardi 1 Février"
+              accessibilityLabel="Jeudi 18 Juillet"
               style={
                 [
                   {
@@ -143,7 +150,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                Mar.
+                Jeu.
               </Text>
               <Text
                 numberOfLines={1}
@@ -160,7 +167,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                1
+                18
               </Text>
               <Text
                 numberOfLines={1}
@@ -177,7 +184,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                Févr.
+                Juil.
               </Text>
             </View>
             <View
@@ -230,6 +237,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             accessible={false}
             focusable={true}
             onClick={[Function]}
+            onLayout={[MockFunction]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -256,130 +264,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             testID="movie-calendar-day"
           >
             <View
-              accessibilityLabel="Jeudi 1 Mars"
-              style={
-                [
-                  {
-                    "marginBottom": 8,
-                    "marginHorizontal": 16,
-                  },
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "textAlign": "center",
-                      "width": 40,
-                    },
-                  ]
-                }
-              >
-                Jeu.
-              </Text>
-              <Text
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "textAlign": "center",
-                      "width": 40,
-                    },
-                  ]
-                }
-              >
-                1
-              </Text>
-              <Text
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "textAlign": "center",
-                      "width": 40,
-                    },
-                  ]
-                }
-              >
-                Mars
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={
-            [
-              {
-                "flexDirection": "row",
-              },
-              null,
-            ]
-          }
-        >
-          <View
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexWrap": "wrap",
-                    "justifyContent": "center",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="movie-calendar-day"
-          >
-            <View
-              accessibilityLabel="Vendredi 4 Octobre"
+              accessibilityLabel="Vendredi 19 Juillet"
               style={
                 [
                   {
@@ -421,7 +306,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                4
+                19
               </Text>
               <Text
                 numberOfLines={1}
@@ -438,7 +323,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                Oct.
+                Juil.
               </Text>
             </View>
           </View>
@@ -476,6 +361,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             accessible={false}
             focusable={true}
             onClick={[Function]}
+            onLayout={[MockFunction]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -502,7 +388,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             testID="movie-calendar-day"
           >
             <View
-              accessibilityLabel="Samedi 29 Novembre"
+              accessibilityLabel="Samedi 20 Juillet"
               style={
                 [
                   {
@@ -544,7 +430,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                29
+                20
               </Text>
               <Text
                 numberOfLines={1}
@@ -561,7 +447,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                Nov.
+                Juil.
               </Text>
             </View>
           </View>
@@ -599,6 +485,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             accessible={false}
             focusable={true}
             onClick={[Function]}
+            onLayout={[MockFunction]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -625,7 +512,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             testID="movie-calendar-day"
           >
             <View
-              accessibilityLabel="Mercredi 1 Juin"
+              accessibilityLabel="Dimanche 21 Juillet"
               style={
                 [
                   {
@@ -650,7 +537,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                Mer.
+                Dim.
               </Text>
               <Text
                 numberOfLines={1}
@@ -667,7 +554,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                1
+                21
               </Text>
               <Text
                 numberOfLines={1}
@@ -684,7 +571,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                Juin
+                Juil.
               </Text>
             </View>
           </View>
@@ -722,6 +609,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             accessible={false}
             focusable={true}
             onClick={[Function]}
+            onLayout={[MockFunction]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -748,7 +636,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             testID="movie-calendar-day"
           >
             <View
-              accessibilityLabel="Mercredi 1 Novembre"
+              accessibilityLabel="Lundi 22 Juillet"
               style={
                 [
                   {
@@ -773,7 +661,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                Mer.
+                Lun.
               </Text>
               <Text
                 numberOfLines={1}
@@ -790,7 +678,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                1
+                22
               </Text>
               <Text
                 numberOfLines={1}
@@ -807,7 +695,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                Nov.
+                Juil.
               </Text>
             </View>
           </View>
@@ -845,6 +733,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             accessible={false}
             focusable={true}
             onClick={[Function]}
+            onLayout={[MockFunction]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -871,130 +760,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             testID="movie-calendar-day"
           >
             <View
-              accessibilityLabel="Samedi 1 Juin"
-              style={
-                [
-                  {
-                    "marginBottom": 8,
-                    "marginHorizontal": 16,
-                  },
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "textAlign": "center",
-                      "width": 40,
-                    },
-                  ]
-                }
-              >
-                Sam.
-              </Text>
-              <Text
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "textAlign": "center",
-                      "width": 40,
-                    },
-                  ]
-                }
-              >
-                1
-              </Text>
-              <Text
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "textAlign": "center",
-                      "width": 40,
-                    },
-                  ]
-                }
-              >
-                Juin
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={
-            [
-              {
-                "flexDirection": "row",
-              },
-              null,
-            ]
-          }
-        >
-          <View
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexWrap": "wrap",
-                    "justifyContent": "center",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="movie-calendar-day"
-          >
-            <View
-              accessibilityLabel="Mardi 1 Décembre"
+              accessibilityLabel="Mardi 23 Juillet"
               style={
                 [
                   {
@@ -1036,7 +802,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                1
+                23
               </Text>
               <Text
                 numberOfLines={1}
@@ -1053,7 +819,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                Déc.
+                Juil.
               </Text>
             </View>
           </View>
@@ -1091,6 +857,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             accessible={false}
             focusable={true}
             onClick={[Function]}
+            onLayout={[MockFunction]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
             onResponderRelease={[Function]}
@@ -1117,7 +884,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
             testID="movie-calendar-day"
           >
             <View
-              accessibilityLabel="Mercredi 1 Juin"
+              accessibilityLabel="Mercredi 24 Juillet"
               style={
                 [
                   {
@@ -1159,7 +926,7 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                1
+                24
               </Text>
               <Text
                 numberOfLines={1}
@@ -1176,11 +943,390 @@ exports[`<MovieCalendar/> should render MovieCalendar 1`] = `
                   ]
                 }
               >
-                Juin
+                Juil.
               </Text>
             </View>
           </View>
         </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={
+            [
+              {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={false}
+            focusable={true}
+            onClick={[Function]}
+            onLayout={[MockFunction]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="movie-calendar-day"
+          >
+            <View
+              accessibilityLabel="Jeudi 25 Juillet"
+              style={
+                [
+                  {
+                    "marginBottom": 8,
+                    "marginHorizontal": 16,
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                      "width": 40,
+                    },
+                  ]
+                }
+              >
+                Jeu.
+              </Text>
+              <Text
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                      "width": 40,
+                    },
+                  ]
+                }
+              >
+                25
+              </Text>
+              <Text
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                      "width": 40,
+                    },
+                  ]
+                }
+              >
+                Juil.
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={
+            [
+              {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={false}
+            focusable={true}
+            onClick={[Function]}
+            onLayout={[MockFunction]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="movie-calendar-day"
+          >
+            <View
+              accessibilityLabel="Vendredi 26 Juillet"
+              style={
+                [
+                  {
+                    "marginBottom": 8,
+                    "marginHorizontal": 16,
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                      "width": 40,
+                    },
+                  ]
+                }
+              >
+                Ven.
+              </Text>
+              <Text
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                      "width": 40,
+                    },
+                  ]
+                }
+              >
+                26
+              </Text>
+              <Text
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                      "width": 40,
+                    },
+                  ]
+                }
+              >
+                Juil.
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={
+            [
+              {
+                "flexDirection": "row",
+              },
+              null,
+            ]
+          }
+        >
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={false}
+            focusable={true}
+            onClick={[Function]}
+            onLayout={[MockFunction]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexWrap": "wrap",
+                    "justifyContent": "center",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="movie-calendar-day"
+          >
+            <View
+              accessibilityLabel="Samedi 27 Juillet"
+              style={
+                [
+                  {
+                    "marginBottom": 8,
+                    "marginHorizontal": 16,
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                      "width": 40,
+                    },
+                  ]
+                }
+              >
+                Sam.
+              </Text>
+              <Text
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                      "width": 40,
+                    },
+                  ]
+                }
+              >
+                27
+              </Text>
+              <Text
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "textAlign": "center",
+                      "width": 40,
+                    },
+                  ]
+                }
+              >
+                Juil.
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "width": 0,
+            }
+          }
+        />
       </View>
     </RCTScrollView>
   </View>
