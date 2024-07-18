@@ -21,6 +21,7 @@ import { PLACEHOLDER_DATA as mockSubcategoriesData } from 'libs/subcategories/pl
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 
@@ -779,7 +780,7 @@ describe('SearchResultsContent component', () => {
     beforeEach(() => {
       mockHits = mockedAlgoliaResponse.hits
       mockNbHits = mockedAlgoliaResponse.nbHits
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+      useFeatureFlagSpy.mockReturnValue(true)
     })
 
     afterEach(() => {
@@ -794,7 +795,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should log consult venue map when pressing map tab', async () => {
-      renderSearchResultsContent()
+      render(reactQueryProviderHOC(<SearchResultsContent />))
 
       fireEvent.press(await screen.findByText('Carte'))
 
@@ -822,22 +823,28 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should not open venue map location modal when pressing map tab and user location selected is not everywhere', async () => {
-      renderSearchResultsContent()
+      render(reactQueryProviderHOC(<SearchResultsContent />))
 
       fireEvent.press(await screen.findByText('Carte'))
 
       expect(screen.queryByText('Localisation')).not.toBeOnTheScreen()
     })
 
-    it('should redirect to search list results when pressing map tab and closing venue map location modal', async () => {
+    it('should display venue map when pressing map tab if user location selected is not everywhere', async () => {
+      render(reactQueryProviderHOC(<SearchResultsContent />))
+
+      fireEvent.press(await screen.findByText('Carte'))
+
+      expect(screen.getByTestId('venue-map-view')).toBeOnTheScreen()
+    })
+
+    it('should not display venue map when pressing map tab if user location selected is everywhere', async () => {
       mockSelectedLocationMode = LocationMode.EVERYWHERE
       renderSearchResultsContent()
 
       fireEvent.press(await screen.findByText('Carte'))
 
-      fireEvent.press(await screen.findByLabelText('Fermer la modale'))
-
-      expect(screen.getByText('Les offres')).toBeOnTheScreen()
+      expect(screen.queryByTestId('venue-map-view')).not.toBeOnTheScreen()
     })
   })
 })
