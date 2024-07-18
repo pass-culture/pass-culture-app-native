@@ -69,6 +69,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
             tags={venueTags}
             navigateTo={{ screen: 'Venue', params: { id: venue.venueId } }}
             noBorder
+            testID="venueMapPreview"
           />
         )
       }

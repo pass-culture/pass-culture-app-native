@@ -126,6 +126,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     const foundVenue = filteredVenues.find(
       (venue) => venue.venueId.toString() === event.nativeEvent.id
     )
+
     if (!foundVenue) {
       return
     }
@@ -194,7 +195,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
         pitchEnabled={false}
         moveOnMarkerPress={false}
         onRegionChangeComplete={handleRegionChangeComplete}
-        renderCluster={(props) => <VenueMapCluster {...props} />}
+        renderCluster={VenueMapCluster}
         onPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         onClusterPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         radius={50}
@@ -213,6 +214,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
               uri: getVenueTypeIconName(venue.venueId === selectedVenue?.venueId, venue.venue_type),
             }}
             identifier={venue.venueId.toString()}
+            testID={`marker-${venue.venueId}`}
             zIndex={venue.venueId === selectedVenue?.venueId ? PIN_MAX_Z_INDEX : undefined}
           />
         ))}

@@ -7,6 +7,7 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
+jest.mock('features/venue/api/useVenueOffers')
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 const mockGoBack = jest.fn()

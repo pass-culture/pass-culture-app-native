@@ -14,7 +14,7 @@ export const venuesFixture = [
     label: 'La librairie quantique',
     info: 'Syndicat des librairies physiques',
     venueId: 4192,
-    _geoloc: { lat: 48.871728, lng: 2.308157 },
+    _geoloc: { lat: 48.84751, lng: 2.34231 },
     banner_url:
       'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/venues/CBQA_1678748459',
     postalCode: '',

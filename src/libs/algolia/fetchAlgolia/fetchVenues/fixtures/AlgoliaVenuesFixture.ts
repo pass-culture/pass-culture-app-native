@@ -28,7 +28,7 @@ export const algoliaVenuesFixture: AlgoliaVenue[] = [
     _geoloc: { lat: 48.871728, lng: 2.308157 },
   },
   {
-    _geoloc: { lat: 48.871728, lng: 2.308157 },
+    _geoloc: { lat: 48.84751, lng: 2.34231 },
     audio_disability: false,
     banner_url:
       'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/venues/CBQA_1678748459',

@@ -55,6 +55,7 @@ export const VenueOfferPlaylist = ({ offers, onPressMore }: VenueOfferPlaylistPr
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         FlatListComponent={FlatList}
+        testID="venueOfferPlaylist"
       />
       <StyleButtonTertiaryBlack
         inline
