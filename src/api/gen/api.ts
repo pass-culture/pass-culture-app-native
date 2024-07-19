@@ -2652,6 +2652,22 @@ export enum PopOverIcon {
 }
 /**
  * @export
+ * @interface PostReactionRequest
+ */
+export interface PostReactionRequest {
+  /**
+   * @type {number}
+   * @memberof PostReactionRequest
+   */
+  offerId: number
+  /**
+   * @type {ReactionTypeEnum}
+   * @memberof PostReactionRequest
+   */
+  reactionType: ReactionTypeEnum
+}
+/**
+ * @export
  * @interface ProfileUpdateRequest
  */
 export interface ProfileUpdateRequest {
@@ -3787,6 +3803,7 @@ export interface UserReportedOffersResponse {
  */
 export enum UserRole {
   'ADMIN' = 'ADMIN',
+  'ANONYMIZED' = 'ANONYMIZED',
   'BENEFICIARY' = 'BENEFICIARY',
   'PRO' = 'PRO',
   'NON_ATTACHED_PRO' = 'NON_ATTACHED_PRO',
@@ -4520,6 +4537,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      */
     async getNativeV1ProfileTokenExpiration(options: any = {}): Promise<FetchArgs> {
       let pathname = `/native/v1/profile/token_expiration`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_available_reactions <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1ReactionAvailable(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v1/reaction/available`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5283,6 +5318,30 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization =
         <any>'UserProfileEmailUpdate' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary post_reaction <POST>
+     * @param {PostReactionRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1Reaction(body?: PostReactionRequest, options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v1/reaction`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization =
+        <any>'PostReactionRequest' !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
       return {
@@ -6164,6 +6223,22 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
     },
     /**
      *
+     * @summary get_available_reactions <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1ReactionAvailable(options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1ReactionAvailable(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     *
      * @summary similar_offers <GET>
      * @param {number} offer_id
      * @param {number} [longitude]
@@ -6750,6 +6825,24 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
       const localVarFetchArgs = await DefaultApiFetchParamCreator(
         configuration
       ).postNativeV1ProfileUpdateEmail(body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     *
+     * @summary post_reaction <POST>
+     * @param {PostReactionRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1Reaction(body?: PostReactionRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1Reaction(body, options)
       const response = await safeFetch(
         configuration?.basePath + localVarFetchArgs.url,
         localVarFetchArgs.options,
@@ -7412,6 +7505,17 @@ export class DefaultApi extends BaseAPI {
   }
   /**
    *
+   * @summary get_available_reactions <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async getNativeV1ReactionAvailable(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1ReactionAvailable(options)
+  }
+  /**
+   *
    * @summary similar_offers <GET>
    * @param {number} offer_id
    * @param {number} [longitude]
@@ -7813,6 +7917,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1ProfileUpdateEmail(body?: UserProfileEmailUpdate, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1ProfileUpdateEmail(body, options)
+  }
+  /**
+   *
+   * @summary post_reaction <POST>
+   * @param {PostReactionRequest} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async postNativeV1Reaction(body?: PostReactionRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV1Reaction(body, options)
   }
   /**
    *
