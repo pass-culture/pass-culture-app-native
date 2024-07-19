@@ -89,4 +89,4 @@ jobs:
           workspace: .maestro/testsV2/
           include-tags: ci
           env: |
-            appId: ${MAESTRO_APP_ID}
+            MAESTRO_APP_ID=app.passculture.staging
