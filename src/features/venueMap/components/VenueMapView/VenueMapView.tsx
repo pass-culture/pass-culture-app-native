@@ -1,6 +1,7 @@
 import BottomSheet from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheet/BottomSheet'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
+import { View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
@@ -162,6 +163,16 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     }
   }, [selectedVenue])
 
+  const PlaylistContainer = useMemo(() => {
+    if (from === 'venueMap') {
+      return undefined
+    }
+    return styled(View)({
+      flex: 1,
+      paddingBottom: tabBarHeight,
+    })
+  }, [tabBarHeight, from])
+
   return (
     <React.Fragment>
       <VenueMapBottomSheet
@@ -170,6 +181,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
         onClose={removeSelectedVenue}
         venue={selectedVenue}
         venueOffers={selectedVenueOffers?.hits}
+        PlaylistContainer={PlaylistContainer}
       />
       <StyledMapView
         ref={mapViewRef}
