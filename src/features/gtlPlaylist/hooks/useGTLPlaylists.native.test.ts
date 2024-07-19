@@ -4,7 +4,7 @@ import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { LocationMode, Position } from 'libs/location/types'
 import { QueryKeys } from 'libs/queryKeys'
-import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -42,10 +42,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('useGTLPlaylists', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>(
-      '/v1/subcategories/v2',
-      subcategoriesResponseFixture
-    )
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
   describe('with venue', () => {

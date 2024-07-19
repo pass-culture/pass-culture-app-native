@@ -6,7 +6,7 @@ import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -29,10 +29,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('VideoModule', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>(
-      '/v1/subcategories/v2',
-      subcategoriesResponseFixture
-    )
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
   it('should show modal when pressing video thumbnail', async () => {

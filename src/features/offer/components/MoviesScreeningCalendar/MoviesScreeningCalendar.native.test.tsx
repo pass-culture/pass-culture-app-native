@@ -12,7 +12,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { screen, render, act } from 'tests/utils'
@@ -79,10 +79,7 @@ describe('MoviesScreeningCalendar', () => {
         },
       ],
     })
-    mockServer.getApi<SubcategoriesResponseModelv2>(
-      `/v1/subcategories/v2`,
-      subcategoriesResponseFixture
-    )
+    mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
   })
 
   it('should render MoviesScreeningCalendar correctly on mobile', async () => {

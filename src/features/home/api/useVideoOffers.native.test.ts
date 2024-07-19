@@ -5,7 +5,7 @@ import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffe
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -34,10 +34,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('useVideoOffers', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>(
-      '/v1/subcategories/v2',
-      subcategoriesResponseFixture
-    )
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
   it('should return offers when asking for specific ids', async () => {

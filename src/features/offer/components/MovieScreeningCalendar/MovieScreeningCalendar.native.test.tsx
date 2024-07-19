@@ -20,7 +20,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Subcategory } from 'libs/subcategories/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -199,10 +199,7 @@ describe('Movie screening calendar', () => {
   describe('Authentication dependant', () => {
     beforeEach(() => {
       mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
-      mockServer.getApi<SubcategoriesResponseModelv2>(
-        '/v1/subcategories/v2',
-        subcategoriesResponseFixture
-      )
+      mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
       mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
       mockAuthContext = defaultAuthContext
     })

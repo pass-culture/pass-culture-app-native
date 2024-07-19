@@ -17,8 +17,8 @@ import { createMappingTree } from 'features/search/helpers/categoriesHelpers/map
 import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import {
-  searchGroupsFixture,
-  subcategoriesResponseFixture,
+  searchGroupsDataTest,
+  subcategoriesDataTest,
 } from 'libs/subcategories/fixtures/subcategoriesResponse'
 
 let mockSearchState: SearchState = {
@@ -28,14 +28,14 @@ let mockSearchState: SearchState = {
 const mockedFacets = undefined
 const mockedNewMappingEnabled = true
 
-const tree = createMappingTree(subcategoriesResponseFixture, mockedFacets, mockedNewMappingEnabled)
+const tree = createMappingTree(subcategoriesDataTest, mockedFacets, mockedNewMappingEnabled)
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('categoriesHelpers', () => {
   it('should sort categories by alphabetical order', () => {
-    const categories = searchGroupsFixture
+    const categories = searchGroupsDataTest
       .filter((category) => category.name !== SearchGroupNameEnumv2.NONE)
       .sort(searchGroupOrNativeCategorySortComparator)
 
@@ -97,7 +97,7 @@ describe('categoriesHelpers', () => {
 
   it('should sort native subcategories by alphabetical order', () => {
     const nativeSubcategories = getNativeCategories(
-      subcategoriesResponseFixture,
+      subcategoriesDataTest,
       SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS
     )
 
@@ -127,36 +127,33 @@ describe('categoriesHelpers', () => {
 
   describe('isOnlyOnline', () => {
     it('should return false when category and native category are undefined', () => {
-      const value = isOnlyOnline(subcategoriesResponseFixture)
+      const value = isOnlyOnline(subcategoriesDataTest)
 
       expect(value).toEqual(false)
     })
 
     describe('Category', () => {
       it('should return true when all native categories of the category are online platform', () => {
-        const value = isOnlyOnline(
-          subcategoriesResponseFixture,
-          SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE
-        )
+        const value = isOnlyOnline(subcategoriesDataTest, SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE)
 
         expect(value).toEqual(true)
       })
 
       it('should return false when all native categories of the category are offline', () => {
-        const value = isOnlyOnline(subcategoriesResponseFixture, SearchGroupNameEnumv2.LIVRES)
+        const value = isOnlyOnline(subcategoriesDataTest, SearchGroupNameEnumv2.LIVRES)
 
         expect(value).toEqual(false)
       })
 
       it('should return false when native categories of the category are online and offline platform', () => {
-        const value = isOnlyOnline(subcategoriesResponseFixture, SearchGroupNameEnumv2.SPECTACLES)
+        const value = isOnlyOnline(subcategoriesDataTest, SearchGroupNameEnumv2.SPECTACLES)
 
         expect(value).toEqual(false)
       })
 
       it('should return false when native categories of the category are online, offline and online or offline platform', () => {
         const value = isOnlyOnline(
-          subcategoriesResponseFixture,
+          subcategoriesDataTest,
           SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS
         )
 
@@ -167,7 +164,7 @@ describe('categoriesHelpers', () => {
     describe('Native category', () => {
       it('should return true when all pro subcategories of the native category are online platform', () => {
         const value = isOnlyOnline(
-          subcategoriesResponseFixture,
+          subcategoriesDataTest,
           undefined,
           NativeCategoryIdEnumv2.PRATIQUE_ARTISTIQUE_EN_LIGNE
         )
@@ -177,7 +174,7 @@ describe('categoriesHelpers', () => {
 
       it('should return false when all pro subcategories of the native category are offline', () => {
         const value = isOnlyOnline(
-          subcategoriesResponseFixture,
+          subcategoriesDataTest,
           undefined,
           NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT
         )
@@ -187,7 +184,7 @@ describe('categoriesHelpers', () => {
 
       it('should return false when pro subcategories of the native category are online and offline platform', () => {
         const value = isOnlyOnline(
-          subcategoriesResponseFixture,
+          subcategoriesDataTest,
           undefined,
           NativeCategoryIdEnumv2.VISITES_CULTURELLES
         )
@@ -197,7 +194,7 @@ describe('categoriesHelpers', () => {
 
       it('should return false when pro subcategories of the native category are offline and online or offline platform', () => {
         const value = isOnlyOnline(
-          subcategoriesResponseFixture,
+          subcategoriesDataTest,
           undefined,
           NativeCategoryIdEnumv2.ARTS_VISUELS
         )
@@ -215,14 +212,14 @@ describe('categoriesHelpers', () => {
     })
 
     it('should return undefined when native category id is undefined', () => {
-      const value = getNativeCategoryFromEnum(subcategoriesResponseFixture, undefined)
+      const value = getNativeCategoryFromEnum(subcategoriesDataTest, undefined)
 
       expect(value).toEqual(undefined)
     })
 
     it('should return the native category from native category id', () => {
       const value = getNativeCategoryFromEnum(
-        subcategoriesResponseFixture,
+        subcategoriesDataTest,
         NativeCategoryIdEnumv2.ARTS_VISUELS
       )
 
@@ -239,7 +236,7 @@ describe('categoriesHelpers', () => {
       })
 
       it('without native category in parameter', () => {
-        const value = getSearchGroupsEnumArrayFromNativeCategoryEnum(subcategoriesResponseFixture)
+        const value = getSearchGroupsEnumArrayFromNativeCategoryEnum(subcategoriesDataTest)
 
         expect(value).toEqual([])
       })
@@ -247,7 +244,7 @@ describe('categoriesHelpers', () => {
 
     it('should return an array of categories id', () => {
       const value = getSearchGroupsEnumArrayFromNativeCategoryEnum(
-        subcategoriesResponseFixture,
+        subcategoriesDataTest,
         NativeCategoryIdEnumv2.ARTS_VISUELS
       )
 
@@ -267,7 +264,7 @@ describe('categoriesHelpers', () => {
 
     it('should return false when native category not associated to category', () => {
       const value = isNativeCategoryOfCategory(
-        subcategoriesResponseFixture,
+        subcategoriesDataTest,
         SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
         NativeCategoryIdEnumv2.ACHAT_LOCATION_INSTRUMENT
       )
@@ -277,7 +274,7 @@ describe('categoriesHelpers', () => {
 
     it('should return true when native category associated to category', () => {
       const value = isNativeCategoryOfCategory(
-        subcategoriesResponseFixture,
+        subcategoriesDataTest,
         SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
         NativeCategoryIdEnumv2.ARTS_VISUELS
       )
@@ -420,7 +417,7 @@ describe('categoriesHelpers', () => {
         genreType: null,
       }
 
-      const result = buildBookSearchPayloadValues(subcategoriesResponseFixture, mockedForm)
+      const result = buildBookSearchPayloadValues(subcategoriesDataTest, mockedForm)
 
       expect(result).toEqual({
         offerCategories: [SearchGroupNameEnumv2.LIVRES],
@@ -469,7 +466,7 @@ describe('categoriesHelpers', () => {
         genreType: 'KODOMO',
       }
 
-      const result = buildBookSearchPayloadValues(subcategoriesResponseFixture, mockedForm)
+      const result = buildBookSearchPayloadValues(subcategoriesDataTest, mockedForm)
 
       expect(result).toEqual({
         offerCategories: [SearchGroupNameEnumv2.LIVRES],

@@ -5,7 +5,7 @@ import { env } from 'libs/environment/fixtures'
 import { EmptyResponse } from 'libs/fetch'
 import { eventMonitoring } from 'libs/monitoring'
 import * as PackageJson from 'libs/packageJson'
-import { searchGroupsFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { searchGroupsDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -210,14 +210,14 @@ describe('getCategories', () => {
   })
 
   it('should return an array with category of categoryIncluded parameter when defined', () => {
-    const categories = getCategories(searchGroupsFixture, SearchGroupNameEnumv2.CARTES_JEUNES)
+    const categories = getCategories(searchGroupsDataTest, SearchGroupNameEnumv2.CARTES_JEUNES)
 
     expect(categories).toEqual([SearchGroupNameEnumv2.CARTES_JEUNES])
   })
 
   it('should return an array with all categories except none category and categoryExcluded parameter when it is defined', () => {
     const categories = getCategories(
-      searchGroupsFixture,
+      searchGroupsDataTest,
       undefined,
       SearchGroupNameEnumv2.CARTES_JEUNES
     )

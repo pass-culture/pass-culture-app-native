@@ -6,7 +6,7 @@ import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
@@ -38,10 +38,7 @@ describe('<SearchLanding />', () => {
     })
 
     beforeEach(() => {
-      mockServer.getApi<SubcategoriesResponseModelv2>(
-        '/v1/subcategories/v2',
-        subcategoriesResponseFixture
-      )
+      mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     })
 
     it('Performance test for Search Landing page', async () => {

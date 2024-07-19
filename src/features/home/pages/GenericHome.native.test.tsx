@@ -10,7 +10,7 @@ import { GenericHome } from 'features/home/pages/GenericHome'
 import { analytics } from 'libs/analytics'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { BatchUser } from 'libs/react-native-batch'
-import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, waitFor, screen, act } from 'tests/utils'
@@ -50,10 +50,7 @@ describe('GenericHome', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>(
-      '/v1/subcategories/v2',
-      subcategoriesResponseFixture
-    )
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
   describe('With not displayed skeleton by default', () => {
@@ -145,10 +142,7 @@ describe('GenericHome page - Analytics', () => {
   }
 
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>(
-      '/v1/subcategories/v2',
-      subcategoriesResponseFixture
-    )
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {

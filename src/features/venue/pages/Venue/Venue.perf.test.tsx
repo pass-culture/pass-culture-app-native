@@ -7,7 +7,7 @@ import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -60,10 +60,7 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 
 describe('<Venue />', () => {
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>(
-      '/v1/subcategories/v2',
-      subcategoriesResponseFixture
-    )
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueDataTest.id}`, {
       responseOptions: { data: venueDataTest },
       requestOptions: { persist: true },

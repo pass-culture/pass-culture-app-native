@@ -19,7 +19,7 @@ import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
-import { subcategoriesResponseFixture } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -72,10 +72,7 @@ describe('BookingDetails', () => {
     ongoingBookings = mockBookings.ongoing_bookings[0]
     endedBookings = mockBookings.ended_bookings[0]
 
-    mockServer.getApi<SubcategoriesResponseModelv2>(
-      '/v1/subcategories/v2',
-      subcategoriesResponseFixture
-    )
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
   })
 
