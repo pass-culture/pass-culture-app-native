@@ -6,7 +6,7 @@ import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/Ve
 import { fireEvent, render, screen } from 'tests/utils'
 
 describe('<VenueMapPreview />', () => {
-  it('should render correctly by default', () => {
+  it('should render correctly with border by default', () => {
     renderVenueMapPreview({})
 
     expect(screen.getByTestId('venueMapPreview')).toHaveStyle({ borderWidth: 1 })

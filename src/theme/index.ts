@@ -256,6 +256,7 @@ export const theme = {
     tabBar: zIndex.tabBar,
     headerNav: zIndex.headerNav,
     snackbar: zIndex.snackbar,
+    bottomSheet: zIndex.bottomSheet,
   },
   offlineMode: {
     banner: {

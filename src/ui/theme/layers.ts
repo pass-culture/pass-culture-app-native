@@ -13,5 +13,6 @@ export const zIndex = {
   tabBar: 2,
   cheatCodeButton: 50,
   snackbar: 50,
+  bottomSheet: 60,
   // !!! Important !!! Whatever you do, you will never get something above a react-native modal
 }

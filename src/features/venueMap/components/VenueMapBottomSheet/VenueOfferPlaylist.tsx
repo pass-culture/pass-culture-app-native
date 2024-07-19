@@ -7,7 +7,7 @@ import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { Playlist } from 'ui/components/Playlist'
+import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, LENGTH_S, RATIO_HOME_IMAGE } from 'ui/theme'
 
@@ -25,8 +25,8 @@ export const VenueOfferPlaylist = ({ offers, onPressMore }: VenueOfferPlaylistPr
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
-  const renderItem = useCallback(
-    ({ item }: { item: Offer }) => (
+  const renderItem: CustomListRenderItem<Offer> = useCallback(
+    ({ item }) => (
       <OfferTile
         offerId={Number(item.objectID)}
         categoryLabel={labelMapping[item.offer.subcategoryId]}

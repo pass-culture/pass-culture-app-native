@@ -41,7 +41,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     }, [venue, distanceToVenue])
 
     const offersPlaylist = useMemo(() => {
-      if (Array.isArray(venueOffers) && venueOffers.length > 0) {
+      if (venueOffers?.length) {
         const handlePressMore = venue ? () => navigate('Venue', { id: venue.venueId }) : undefined
         return (
           <Fragment>
@@ -88,15 +88,14 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
 )
 
 const StyledBottomSheetView = styled(BottomSheetView)({
-  paddingRight: getSpacing(4),
-  paddingLeft: getSpacing(4),
   paddingTop: getSpacing(2),
+  paddingHorizontal: getSpacing(4),
   flex: 1,
 })
 
-const StyledBottomSheet = styled(BottomSheet).attrs<VenueMapBottomSheetProps>({
-  containerStyle: { zIndex: 99 },
-})``
+const StyledBottomSheet = styled(BottomSheet).attrs<VenueMapBottomSheetProps>(({ theme }) => ({
+  containerStyle: { zIndex: theme.zIndex.bottomSheet },
+}))``
 
 const StyledSeparator = styled(Separator.Horizontal)({
   marginTop: getSpacing(4),

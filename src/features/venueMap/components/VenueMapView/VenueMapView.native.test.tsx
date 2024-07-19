@@ -26,9 +26,11 @@ jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 
 describe('<VenueMapView />', () => {
-  mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
-  mockUseCenterOnLocation.mockReturnValue(jest.fn())
-  useFeatureFlagSpy.mockReturnValue(true)
+  beforeAll(() => {
+    mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
+    mockUseCenterOnLocation.mockReturnValue(jest.fn())
+    useFeatureFlagSpy.mockReturnValue(true)
+  })
 
   it('should render map', async () => {
     renderVenueMapView()

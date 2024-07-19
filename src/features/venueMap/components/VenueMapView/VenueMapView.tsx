@@ -4,12 +4,11 @@ import React, { FunctionComponent, useEffect, useMemo, useRef, useState } from '
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { VenueResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueMapBottomSheet } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapBottomSheet'
 import { VenueMapCluster } from 'features/venueMap/components/VenueMapCluster/VenueMapCluster'
-import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
+import { transformGeoLocatedVenueToVenueResponse } from 'features/venueMap/helpers/geoLocatedVenueToVenueResponse/geoLocatedVenueToVenueResponse'
 import { getVenueTypeIconName } from 'features/venueMap/helpers/getVenueTypeIconName/getVenueTypeIconName'
 import { zoomOutIfMapEmpty } from 'features/venueMap/helpers/zoomOutIfMapEmpty'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
@@ -43,21 +42,6 @@ const PREVIEW_HEIGHT_ESTIMATION = 114
 
 const PIN_MAX_Z_INDEX = 10_000
 
-const geoLocatedVenueToVenueResponse = (
-  data?: GeolocatedVenue | null
-): VenueResponse | undefined =>
-  data && data !== null
-    ? ({
-        id: data.venueId,
-        name: data.label,
-        longitude: data._geoloc.lng,
-        latitude: data._geoloc.lat,
-        accessibility: {},
-        timezone: '',
-        isVirtual: false,
-      } satisfies VenueResponse)
-    : undefined
-
 export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { tabBarHeight } = useCustomSafeInsets()
@@ -88,7 +72,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   useTrackMapSeenDuration()
 
   const { data: selectedVenueOffers } = useVenueOffers(
-    geoLocatedVenueToVenueResponse(selectedVenue)
+    transformGeoLocatedVenueToVenueResponse(selectedVenue)
   )
 
   useEffect(() => {
@@ -154,10 +138,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     analytics.logConsultVenue({ venueId, from: 'venueMap' })
   }
 
-  const hasOffers =
-    !!selectedVenueOffers &&
-    Array.isArray(selectedVenueOffers.hits) &&
-    selectedVenueOffers.hits.length > 0
+  const hasOffers = !!selectedVenueOffers && selectedVenueOffers.hits?.length
 
   const snapPoints = useMemo(() => {
     const contentViewHeight = {

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
@@ -23,7 +23,7 @@ import { getSpacing } from 'ui/theme'
 
 const MAX_VENUE_CHARACTERS = 20
 
-export const VenueMapBase: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
+export const VenueMapBase: FunctionComponent<PropsWithChildren> = ({ children }) => {
   const { goBack } = useGoBack(...getSearchStackConfig('SearchLanding'))
 
   const venueTypeCode = useVenueTypeCode()
@@ -97,6 +97,5 @@ const StyledUl = styled(Ul)({
 
 const StyledLi = styled(Li)({
   marginLeft: getSpacing(1),
-  marginTop: getSpacing(1),
-  marginBottom: getSpacing(1),
+  marginVertical: getSpacing(1),
 })
