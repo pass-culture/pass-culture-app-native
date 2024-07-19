@@ -25,6 +25,7 @@ export const NextScreeningButton: FC<Props> = ({ onPress, date }) => {
             wording={`${fullWeekDay} ${dayDate} ${fullMonth.toLocaleLowerCase()}`}
             inline
             fullWidth
+            onPress={onPress}
           />
         </InfoBanner>
       </Container>
