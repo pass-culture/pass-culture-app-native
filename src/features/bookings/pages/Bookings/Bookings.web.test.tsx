@@ -67,15 +67,15 @@ describe('Bookings', () => {
     renderBookings(bookingsSnap)
 
     await waitFor(() => {
-      expect(screen.getByText('1')).toBeInTheDocument()
-      expect(screen.getByText('Réservation terminée')).toBeInTheDocument()
+      expect(screen.getByText('2')).toBeInTheDocument()
+      expect(screen.getByText('Réservations terminées')).toBeInTheDocument()
     })
   })
 
   it('should navigate to ended bookings page on press ended bookings CTA', async () => {
     renderBookings(bookingsSnap)
 
-    const cta = screen.getByText('Réservation terminée')
+    const cta = screen.getByText('Réservations terminées')
     fireEvent.click(cta)
 
     await waitFor(() => {

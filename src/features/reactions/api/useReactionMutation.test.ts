@@ -1,4 +1,4 @@
-import { ReactionTypeEnum, RefreshResponse } from 'api/gen'
+import { ReactionTypeEnum } from 'api/gen'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -13,14 +13,11 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
   SNACK_BAR_TIME_OUT: 5000,
 }))
+jest.mock('libs/jwt/jwt')
 
 describe('useReactionMutation', () => {
   it('should call reaction mutation function', async () => {
-    mockServer.postApi<RefreshResponse>('/v1/refresh_access_token', {
-      requestOptions: { persist: true },
-      responseOptions: { statusCode: 200 },
-    })
-    mockServer.postApi(`/v1/reaction`, { offerId: 1, reactionType: ReactionTypeEnum.LIKE })
+    mockServer.postApi('/v1/reaction', { offerId: 1, reactionType: ReactionTypeEnum.LIKE })
 
     const { result } = renderUseReactionMutation()
 
@@ -29,12 +26,8 @@ describe('useReactionMutation', () => {
     await waitFor(() => expect(result.current.isSuccess).toBeTruthy())
   })
 
-  it.skip('should call reaction mutate function with error', async () => {
-    mockServer.postApi<RefreshResponse>('/v1/refresh_access_token', {
-      requestOptions: { persist: true },
-      responseOptions: { statusCode: 200 },
-    })
-    mockServer.postApi(`/v1/reaction`, {})
+  it('should call reaction mutate function with error', async () => {
+    mockServer.postApi('/v1/reaction', { responseOptions: { statusCode: 400, data: {} } })
 
     const { result } = renderUseReactionMutation()
 
@@ -42,7 +35,10 @@ describe('useReactionMutation', () => {
 
     await waitFor(() => {
       expect(result.current.isError).toBeTruthy()
-      expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, 'Une erreur s’est produite')
+      expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
+        message: 'Une erreur s’est produite',
+        timeout: 5000,
+      })
     })
   })
 })

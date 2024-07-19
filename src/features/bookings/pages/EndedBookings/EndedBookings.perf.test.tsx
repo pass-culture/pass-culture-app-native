@@ -40,7 +40,7 @@ describe('<EndedBookings />', () => {
       ),
       {
         scenario: async () => {
-          await screen.findByText('1 réservation terminée')
+          await screen.findByText('2 réservations terminées')
         },
       }
     )

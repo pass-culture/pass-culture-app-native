@@ -80,14 +80,14 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {})
 
-    expect(screen.getByText('1')).toBeOnTheScreen()
-    expect(screen.getByText('Réservation terminée')).toBeOnTheScreen()
+    expect(screen.getByText('2')).toBeOnTheScreen()
+    expect(screen.getByText('Réservations terminées')).toBeOnTheScreen()
   })
 
   it('should navigate to ended bookings page on press ended bookings CTA', async () => {
     renderBookings()
 
-    const cta = await screen.findByText('Réservation terminée')
+    const cta = await screen.findByText('Réservations terminées')
     fireEvent.press(cta)
 
     expect(navigate).toHaveBeenCalledWith('EndedBookings', undefined)
@@ -116,7 +116,7 @@ describe('Bookings', () => {
 
       fireEvent.press(await screen.findByText('Terminées'))
 
-      expect(await screen.findAllByText('Avez-vous déjà vu\u00a0?')).toHaveLength(1)
+      expect(await screen.findAllByText('Avez-vous déjà vu\u00a0?')).toHaveLength(2)
     })
   })
 })

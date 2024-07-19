@@ -13,18 +13,18 @@ describe('<BookingNotFound/>', () => {
   it('should render correctly', () => {
     render(<EndedBookingsSection endedBookings={bookingsSnap.ended_bookings} />)
 
-    expect(screen.getByText('Réservation terminée')).toBeOnTheScreen()
+    expect(screen.getByText('Réservations terminées')).toBeOnTheScreen()
   })
 
   it('should not render when there is no ended bookings', () => {
     render(<EndedBookingsSection />)
 
-    expect(screen.queryByText('Réservation terminée')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Réservations terminées')).not.toBeOnTheScreen()
   })
 
   it('should navigate to ended bookings when clicking on cta', () => {
     render(<EndedBookingsSection endedBookings={bookingsSnap.ended_bookings} />)
-    fireEvent.press(screen.getByText('Réservation terminée'))
+    fireEvent.press(screen.getByText('Réservations terminées'))
 
     expect(navigate).toHaveBeenCalledWith('EndedBookings', undefined)
   })
@@ -33,7 +33,7 @@ describe('<BookingNotFound/>', () => {
     it('should navigate to bookings when clicking on cta', () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
       render(<EndedBookingsSection endedBookings={bookingsSnap.ended_bookings} />)
-      fireEvent.press(screen.getByText('Réservation terminée'))
+      fireEvent.press(screen.getByText('Réservations terminées'))
 
       expect(navigate).toHaveBeenCalledWith('Bookings', undefined)
     })
