@@ -24,6 +24,7 @@ export const NextScreeningButton: FC<Props> = ({ onPress, date }) => {
             icon={PlainArrowNext}
             wording={`${fullWeekDay} ${dayDate} ${fullMonth.toLocaleLowerCase()}`}
             inline
+            onPress={onPress}
             fullWidth
           />
         </InfoBanner>
