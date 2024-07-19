@@ -6,6 +6,18 @@ import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/Ve
 import { fireEvent, render, screen } from 'tests/utils'
 
 describe('<VenueMapPreview />', () => {
+  it('should render correctly with border by default', () => {
+    renderVenueMapPreview({})
+
+    expect(screen.getByTestId('venueMapPreview')).toHaveStyle({ borderWidth: 1 })
+  })
+
+  it('should render correctly with no border', () => {
+    renderVenueMapPreview({ noBorder: true })
+
+    expect(screen.getByTestId('venueMapPreview')).not.toHaveStyle({ borderWidth: 1 })
+  })
+
   it('should display venue name', () => {
     renderVenueMapPreview({})
 
@@ -48,15 +60,18 @@ function renderVenueMapPreview({
   address = offerResponseSnap.venue.address ?? '',
   bannerUrl = offerResponseSnap.venue.bannerUrl ?? '',
   tags = [],
+  noBorder = false,
   navigateTo = { screen: 'Venue' },
 }: RenderVenueMapPreviewType) {
-  render(
+  return render(
     <VenueMapPreview
       venueName={venueName}
       address={address}
       bannerUrl={bannerUrl}
       tags={tags}
+      noBorder={noBorder}
       navigateTo={navigateTo}
+      testID="venueMapPreview"
     />
   )
 }

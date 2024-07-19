@@ -14,6 +14,8 @@ type Props = {
   bannerUrl: string
   tags: string[]
   onClose?: VoidFunction
+  noBorder?: boolean
+  iconSize?: number
 } & ComponentProps<typeof InternalTouchableLink>
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(12)
@@ -24,13 +26,16 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
   bannerUrl,
   tags,
   onClose,
+  iconSize,
+  noBorder,
   ...touchableProps
 }) => {
+  const Wrapper = noBorder ? InternalTouchableLink : Container
   return (
-    <Container {...touchableProps}>
+    <Wrapper {...touchableProps}>
       <Row>
         <StyledInformationTags tags={tags} />
-        <StyledCloseButton onClose={onClose} />
+        <StyledCloseButton onClose={onClose} size={iconSize} />
       </Row>
       <Spacer.Column numberOfSpaces={2} />
       <VenuePreview
@@ -40,7 +45,7 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
         imageWidth={VENUE_THUMBNAIL_SIZE}
         imageHeight={VENUE_THUMBNAIL_SIZE}
       />
-    </Container>
+    </Wrapper>
   )
 }
 

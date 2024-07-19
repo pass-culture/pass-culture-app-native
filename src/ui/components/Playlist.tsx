@@ -1,8 +1,9 @@
 /* We use many `any` on purpose in this module, so we deactivate the following rule : */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FlashList, ListRenderItemInfo, ListRenderItem } from '@shopify/flash-list'
+import { ListRenderItemInfo, FlashList } from '@shopify/flash-list'
 import React, { FunctionComponent, useCallback, useMemo, useRef } from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
+import { FlatList as RNGHFlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
 import { PlaylistType } from 'features/offer/enums'
@@ -39,6 +40,7 @@ type Props = {
   children?: never
   tileType?: 'offer' | 'venue' | 'video-module-offer'
   playlistType?: PlaylistType
+  FlatListComponent?: typeof FlashList | typeof RNGHFlatList
 }
 
 function defaultKeyExtractor(item: any, index: number): string {
@@ -63,6 +65,7 @@ export const Playlist: FunctionComponent<Props> = ({
   renderHeader,
   renderFooter,
   onEndReached,
+  FlatListComponent = FlashList,
   tileType = 'offer',
 }) => {
   const { isTouch, tiles } = useTheme()
@@ -100,8 +103,8 @@ export const Playlist: FunctionComponent<Props> = ({
     [renderHeader, renderFooter, keyExtractor, nbOfItems]
   )
 
-  const renderItemWithHeaderAndFooter: ListRenderItem<any> = useCallback(
-    function ({ item, index }) {
+  const renderItemWithHeaderAndFooter = useCallback(
+    function ({ item, index = -1 }: { item: object; index: number }) {
       if (renderHeader && index === 0) {
         return renderHeader({ height: itemHeight, width: itemWidth })
       }
@@ -144,7 +147,7 @@ export const Playlist: FunctionComponent<Props> = ({
           top={scrollButtonOffsetY}
         />
       ) : null}
-      <FlashList
+      <FlatListComponent
         onScroll={onScroll}
         onContentSizeChange={onContentSizeChange}
         testID={testID}
