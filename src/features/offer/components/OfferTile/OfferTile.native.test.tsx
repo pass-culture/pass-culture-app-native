@@ -164,6 +164,33 @@ describe('OfferTile component', () => {
     })
   })
 
+  it('Analytics - should log ConsultOffer from searchN1 gtl playlist', async () => {
+    const propsFromSearchN1GtlPlaylist = {
+      ...props,
+      analyticsFrom: 'searchn1' as Referrals,
+      categoryLabel: HomepageLabelNameEnumv2.LIVRES,
+      categoryId: CategoryIdEnum.LIVRE,
+      searchId,
+    }
+
+    render(reactQueryProviderHOC(<OfferTile {...propsFromSearchN1GtlPlaylist} />))
+
+    fireEvent.press(screen.getByTestId('tileImage'))
+
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      from: 'searchn1',
+      offerId: OFFER_ID,
+      searchId: propsFromSearchN1GtlPlaylist.searchId,
+      moduleName: propsFromSearchN1GtlPlaylist.moduleName,
+      fromOfferId: undefined,
+      homeEntryId: undefined,
+      index: undefined,
+      moduleId: undefined,
+      playlistType: undefined,
+      venueId: undefined,
+    })
+  })
+
   it('should prepopulate react-query cache when clicking on offer', async () => {
     render(reactQueryProviderHOC(<OfferTile {...props} />))
     await fireEvent.press(screen.getByTestId('tileImage'))
