@@ -81,6 +81,9 @@ jobs:
       - name: Build android apk
         run: cd android && ENVFILE=.env.staging ./gradlew assembleDebug
 
+      - name: Set MAESTRO_APP_ID environment variable
+        run: echo "MAESTRO_APP_ID=app.passculture.staging" 
+
       - name: Upload APK to Maestro Cloud
         uses: mobile-dev-inc/action-maestro-cloud@v1.8.1
         with:
@@ -89,4 +92,5 @@ jobs:
           workspace: .maestro/testsV2/
           include-tags: ci
           env: |
-            MAESTRO_APP_ID=$app_id
+            MAESTRO_APP_ID=${{ env.MAESTRO_APP_ID }}
+            
