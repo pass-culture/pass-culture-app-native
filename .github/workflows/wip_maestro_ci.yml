@@ -87,6 +87,6 @@ jobs:
           api-key: ${{ steps.secrets.outputs.MAESTRO_CLOUD_API_KEY }}
           app-file: android/app/build/outputs/apk/staging/debug/app-staging-debug.apk
           workspace: .maestro/testsV2/
-          include-tags: ci
+          include-tags: cloud
           env: |
             MAESTRO_APP_ID=app.passculture.staging
