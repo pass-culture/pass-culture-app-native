@@ -88,3 +88,5 @@ jobs:
           app-file: android/app/build/outputs/apk/staging/debug/app-staging-debug.apk
           workspace: .maestro/testsV2/
           include-tags: ci
+          env: |
+      appId: ${MAESTRO_APP_ID}

@@ -1,4 +1,4 @@
-appId: 'app.passculture.staging'
+appId: ${MAESTRO_APP_ID}
 tags:
   - ci
 ---
