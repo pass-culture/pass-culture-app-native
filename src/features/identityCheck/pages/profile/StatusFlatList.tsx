@@ -57,23 +57,24 @@ export function StatusFlatList({
   }
 
   const renderItem: ListRenderItem<ActivityResponseModel> = ({ item }) => (
-    <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
-      <Li key={item.label}>
-        <Controller
-          control={control}
-          name="selectedStatus"
-          render={({ field: { value, onChange } }) => (
-            <RadioSelector
-              checked={item.id === value}
-              label={item.label}
-              description={item.description}
-              onPress={() => onChange(item.id)}
-            />
-          )}
-        />
-        <Spacer.Column numberOfSpaces={3} />
-      </Li>
-    </View>
+    <Li
+      key={item.label}
+      accessibilityRole={AccessibilityRole.RADIOGROUP}
+      accessibilityLabelledBy={titleID}>
+      <Controller
+        control={control}
+        name="selectedStatus"
+        render={({ field: { value, onChange } }) => (
+          <RadioSelector
+            checked={item.id === value}
+            label={item.label}
+            description={item.description}
+            onPress={() => onChange(item.id)}
+          />
+        )}
+      />
+      <Spacer.Column numberOfSpaces={3} />
+    </Li>
   )
 
   return (
@@ -81,6 +82,7 @@ export function StatusFlatList({
       {activities ? (
         <FlatListContainer>
           <FlatList
+            listAs="ul"
             scrollIndicatorInsets={{ right: 1 }} // Corrects scrollbar in the middle
             contentContainerStyle={flatListStyles}
             onViewableItemsChanged={onViewableItemsChanged}
@@ -89,9 +91,9 @@ export function StatusFlatList({
             keyExtractor={(item) => item.label}
             ListHeaderComponent={
               <React.Fragment>
-                <View style={{ height: headerHeight }} />
+                <HeaderHeightSpacer headerHeight={headerHeight} />
                 <Spacer.Column numberOfSpaces={2} />
-                <Typo.Title3>{'Sélectionne ton statut'}</Typo.Title3>
+                <Typo.Title3>Sélectionne ton statut</Typo.Title3>
                 <Spacer.Column numberOfSpaces={8} />
               </React.Fragment>
             }
@@ -140,6 +142,10 @@ const BottomView = styled(View)(({ theme }) => ({
   backgroundColor: theme.colors.white,
   paddingHorizontal: getSpacing(5),
 }))
+
+const HeaderHeightSpacer = styled(View).attrs<{ headerHeight: number }>(({ headerHeight }) => ({
+  paddingTop: headerHeight,
+}))<{ headerHeight: number }>``
 
 const SpinnerView = styled(View).attrs<{ headerHeight: number }>({
   flex: 1,

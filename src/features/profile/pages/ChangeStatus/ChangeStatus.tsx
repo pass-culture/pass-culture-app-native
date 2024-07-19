@@ -1,13 +1,8 @@
-import React, { useCallback } from 'react'
-import { useForm } from 'react-hook-form'
+import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
-import { StatusFlatList, StatusForm } from 'features/identityCheck/pages/profile/StatusFlatList'
-import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
-import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
-import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { StatusFlatList } from 'features/identityCheck/pages/profile/StatusFlatList'
+import { useSubmitChangeStatus } from 'features/profile/pages/ChangeStatus/useSubmitChangeStatus'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
@@ -15,39 +10,9 @@ import {
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 export const ChangeStatus = () => {
-  const storedName = useName()
-  const storedCity = useCity()
-  const storedAddress = useAddress()
+  const { isLoading, control, handleSubmit, selectedStatus, submitStatus } = useSubmitChangeStatus()
 
-  const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
   const titleID = uuidv4()
-  const { control, handleSubmit, watch } = useForm<StatusForm>({
-    mode: 'onChange',
-    defaultValues: {
-      selectedStatus: null,
-    },
-  })
-
-  const selectedStatus = watch('selectedStatus')
-
-  const submitStatus = useCallback(
-    async (formValues: StatusForm) => {
-      if (!formValues.selectedStatus) return
-
-      const profile = {
-        name: storedName,
-        city: storedCity,
-        address: storedAddress,
-        status: formValues.selectedStatus,
-        hasSchoolTypes: false,
-        schoolType: null,
-      }
-      await patchProfile(profile)
-      navigateToHome()
-    },
-    [storedName, storedCity, storedAddress, patchProfile]
-  )
-
   const headerHeight = useGetHeaderHeight()
 
   return (
