@@ -88,12 +88,12 @@ jobs:
           api-key: ${{ steps.secrets.outputs.MAESTRO_CLOUD_API_KEY }}
           app-file: android/app/build/outputs/apk/staging/debug/app-staging-debug.apk
           workspace: .maestro/testsV2/
-          include-tags: ci
+          include-tags: cloud
           env: |
             MAESTRO_APP_ID=app.passculture.staging
             MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}
-            MAESTRO_VALID_EMAIL="dev-tests-e2e@passculture.team"
-            MAESTRO_INVALID_EMAIL="dev-tests-e2e-invalid@passculture.team"
-            MAESTRO_UNREGISTERED_EMAIL="dev-tests-unregistered+e2e@passculture.team"
-            MAESTRO_MOCK_ANALYTICS_SERVER="http://localhost:$MOCK_ANALYTICS_SERVER_PORT"
-            MAESTRO_NUMBER_PHONE="0607080910"
+            MAESTRO_VALID_EMAIL=dev-tests-e2e@passculture.team
+            MAESTRO_INVALID_EMAIL=dev-tests-e2e-invalid@passculture.team
+            MAESTRO_UNREGISTERED_EMAIL=dev-tests-unregistered+e2e@passculture.team
+            MAESTRO_MOCK_ANALYTICS_SERVER=http://localhost:$MOCK_ANALYTICS_SERVER_PORT
+            MAESTRO_NUMBER_PHONE=0607080910
