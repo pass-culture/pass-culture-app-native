@@ -1,6 +1,6 @@
-appId: ${MAESTRO_APP_ID}
+appId: 'app.passculture.staging'
 tags:
-  - cloud
+  - ci
 ---
 - runFlow: subFolder/LaunchApp.yml
 
