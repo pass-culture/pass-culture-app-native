@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } f
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingOfferResponse, OfferResponse, ReactionTypeEnum } from 'api/gen'
+import { BookingOfferResponse, OfferResponse, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { ReactionToggleButton } from 'features/reactions/components/ReactionToggleButton/ReactionToggleButton'
 import { useSubcategory } from 'libs/subcategories'
 import { theme } from 'theme'
@@ -24,6 +24,7 @@ type Props = {
   visible: boolean
   defaultReaction?: ReactionTypeEnum | null
   closeModal: () => void
+  onSave?: ({ offerId, reactionType }: PostReactionRequest) => void
 }
 
 export const ReactionChoiceModal: FunctionComponent<Props> = ({
@@ -32,18 +33,24 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   visible,
   defaultReaction,
   closeModal,
+  onSave,
 }) => {
   const { height } = useWindowDimensions()
   const { top } = useCustomSafeInsets()
   const iconFactory = useIconFactory()
   const { categoryId } = useSubcategory(offer.subcategoryId)
 
-  const [reactionStatus, setReactionStatus] = useState(defaultReaction)
+  const [reactionStatus, setReactionStatus] = useState<ReactionTypeEnum>(
+    ReactionTypeEnum.NO_REACTION
+  )
 
-  const onPressReactionButton = (reaction: ReactionTypeEnum) => {
-    setReactionStatus((oldValue) =>
-      oldValue === reaction ? ReactionTypeEnum.NO_REACTION : reaction
-    )
+  const onPressReactionButton = (reactionType: ReactionTypeEnum) => {
+    setReactionStatus((previousValue) => {
+      if (reactionType === previousValue) {
+        return ReactionTypeEnum.NO_REACTION
+      }
+      return reactionType
+    })
   }
 
   const handleCloseModal = () => {
@@ -51,8 +58,10 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   }
 
   useEffect(() => {
-    if (visible) {
+    if (visible && defaultReaction !== undefined && defaultReaction !== null) {
       setReactionStatus(defaultReaction)
+    } else {
+      setReactionStatus(ReactionTypeEnum.NO_REACTION)
     }
   }, [visible, defaultReaction])
 
@@ -99,7 +108,10 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
         <ButtonPrimary
           wording="Valider la réaction"
           onPress={() => {
-            return
+            onSave?.({
+              offerId: offer.id,
+              reactionType: reactionStatus,
+            })
           }}
           disabled={!reactionStatus || reactionStatus === ReactionTypeEnum.NO_REACTION}
         />

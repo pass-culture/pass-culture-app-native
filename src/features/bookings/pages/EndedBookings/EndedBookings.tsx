@@ -2,12 +2,14 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
+import { PostReactionRequest } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
 import { Booking } from 'features/bookings/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { plural } from 'libs/plural'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
@@ -19,7 +21,6 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-const renderItem: ListRenderItem<Booking> = ({ item }) => <EndedBookingItem booking={item} />
 const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 
 type Props = {
@@ -30,12 +31,26 @@ export const EndedBookings: FunctionComponent<Props> = ({ enableBookingImprove }
   const { data: bookings } = useBookings()
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
   const headerHeight = useGetHeaderHeight()
+  const { mutate } = useReactionMutation()
 
   const endedBookingsCount = bookings?.ended_bookings?.length ?? 0
   const endedBookingsLabel = plural(endedBookingsCount, {
     singular: '# réservation terminée',
     plural: '# réservations terminées',
   })
+
+  const handleSaveReaction = useCallback(
+    ({ offerId, reactionType }: PostReactionRequest) => {
+      mutate({ offerId, reactionType })
+      return Promise.resolve(true)
+    },
+    [mutate]
+  )
+
+  const renderItem: ListRenderItem<Booking> = useCallback(
+    ({ item }) => <EndedBookingItem booking={item} onSaveReaction={handleSaveReaction} />,
+    [handleSaveReaction]
+  )
 
   const ListHeaderComponent = useCallback(
     () => (
