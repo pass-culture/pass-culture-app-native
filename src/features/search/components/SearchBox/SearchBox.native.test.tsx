@@ -7,7 +7,7 @@ import { navigationRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import { SearchView, SearchState } from 'features/search/types'
+import { SearchView, SearchState, BooksNativeCategoriesEnum } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -520,6 +520,41 @@ describe('SearchBox component with venue previous route on search results', () =
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
+
+  it('should update searchState without offerNativeCategories set to undefined when a query is made from another page than searchN1', async () => {
+    const BOOK_OFFER_CATEGORIES = [SearchGroupNameEnumv2.LIVRES]
+    const BOOK_OFFER_NATIVE_CATEGORIES = [BooksNativeCategoriesEnum.BD_ET_COMICS]
+
+    useRoute.mockReturnValueOnce({
+      name: SearchView.Results,
+    })
+
+    mockSearchState = {
+      ...mockSearchState,
+      offerCategories: BOOK_OFFER_CATEGORIES,
+      offerNativeCategories: BOOK_OFFER_NATIVE_CATEGORIES,
+    }
+
+    renderSearchBox()
+
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+
+    await act(async () => {
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'harry potter' } })
+    })
+
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_STATE',
+      payload: {
+        ...initialSearchState,
+        query: 'harry potter',
+        offerCategories: BOOK_OFFER_CATEGORIES,
+        offerNativeCategories: BOOK_OFFER_NATIVE_CATEGORIES,
+        priceRange: mockSearchState.priceRange,
+        searchId,
+      },
+    })
+  })
 })
 
 describe('SearchBox component with SearchN1 previous route on search results', () => {
@@ -544,17 +579,65 @@ describe('SearchBox component with SearchN1 previous route on search results', (
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
+
+  it('should update searchState with offerNativeCategories set to undefined when a query is made', async () => {
+    const BOOK_OFFER_CATEGORIES = [SearchGroupNameEnumv2.LIVRES]
+    const BOOK_SEARCH_BOX_PLACEHOLDER = 'Rechercher parmi les livres'
+
+    useRoute.mockReturnValueOnce({
+      name: SearchView.N1,
+      params: {
+        offerCategories: [SearchGroupNameEnumv2.LIVRES],
+      },
+    })
+
+    mockSearchState = {
+      ...mockSearchState,
+      offerCategories: BOOK_OFFER_CATEGORIES,
+      offerNativeCategories: [BooksNativeCategoriesEnum.BD_ET_COMICS],
+    }
+
+    renderSearchBox(false, BOOK_OFFER_CATEGORIES, BOOK_SEARCH_BOX_PLACEHOLDER)
+
+    const searchInput = screen.getByPlaceholderText(BOOK_SEARCH_BOX_PLACEHOLDER)
+
+    await act(async () => {
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'harry potter' } })
+    })
+
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_STATE',
+      payload: {
+        ...initialSearchState,
+        query: 'harry potter',
+        offerCategories: BOOK_OFFER_CATEGORIES,
+        offerNativeCategories: undefined,
+        priceRange: mockSearchState.priceRange,
+        searchId,
+      },
+    })
+  })
 })
 
-function renderSearchBox(isDesktopViewport?: boolean) {
+function renderSearchBox(
+  isDesktopViewport?: boolean,
+  offerCategories?: SearchGroupNameEnumv2[],
+  placeholder?: string
+) {
   return render(
-    <DummySearchBox />,
+    <DummySearchBox offerCategories={offerCategories} placeholder={placeholder} />,
 
     { theme: { isDesktopViewport: isDesktopViewport ?? false } }
   )
 }
 
-const DummySearchBox = () => {
+const DummySearchBox = ({
+  placeholder,
+  offerCategories,
+}: {
+  offerCategories?: SearchGroupNameEnumv2[]
+  placeholder?: string
+}) => {
   const searchInputID = uuidv4()
 
   return (
@@ -563,6 +646,8 @@ const DummySearchBox = () => {
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
+        offerCategories={offerCategories}
+        placeholder={placeholder}
       />
     </React.Fragment>
   )

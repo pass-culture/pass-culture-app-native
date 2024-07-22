@@ -88,18 +88,19 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         ...searchState,
         ...(options.reset ? initialSearchState : {}),
         ...partialSearchState,
-        offerCategories: offerCategories ?? searchState.offerCategories,
       }
+
       dispatch({
         type: 'SET_STATE',
         payload: newSearchState,
       })
       navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
     },
-    [dispatch, navigateToSearchResults, offerCategories, searchState]
+    [dispatch, navigateToSearchResults, searchState]
   )
 
-  const hasEditableSearchInput = isFocusOnSuggestions || currentView === SearchView.Results
+  const hasEditableSearchInput =
+    isFocusOnSuggestions || currentView === SearchView.Results || currentView === SearchView.N1
 
   // Track when the InstantSearch query changes to synchronize it with
   // the React state.
@@ -209,7 +210,9 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         query: queryText,
         locationFilter: searchState.locationFilter,
         venue: searchState.venue,
-        offerCategories: searchState.offerCategories,
+        offerCategories: offerCategories ?? searchState.offerCategories,
+        offerNativeCategories:
+          currentView === SearchView.N1 ? undefined : searchState.offerNativeCategories,
         priceRange: searchState.priceRange,
         searchId,
         isAutocomplete: undefined,
@@ -223,7 +226,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       searchState.locationFilter,
       searchState.venue,
       searchState.offerCategories,
+      searchState.offerNativeCategories,
       searchState.priceRange,
+      offerCategories,
+      currentView,
       pushWithSearch,
       hideSuggestions,
     ]
