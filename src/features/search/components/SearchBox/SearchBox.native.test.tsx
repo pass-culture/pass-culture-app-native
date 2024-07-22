@@ -224,6 +224,28 @@ describe('SearchBox component', () => {
     })
   })
 
+  it('should not navigate to searchResults when user clicks on reset icon', async () => {
+    mockQuery = 'Some text'
+    mockSearchState = {
+      ...mockSearchState,
+      query: mockQuery,
+    }
+
+    renderSearchBox()
+
+    const resetSearchInputButton = screen.getByTestId('Réinitialiser la recherche')
+    fireEvent.press(resetSearchInputButton)
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: {
+        ...mockSearchState,
+        query: '',
+      },
+    })
+    expect(navigate).not.toHaveBeenCalled()
+  })
+
   it('should not show back button when being on the search landing view', async () => {
     renderSearchBox()
 

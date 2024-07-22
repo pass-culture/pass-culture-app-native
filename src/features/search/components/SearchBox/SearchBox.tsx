@@ -94,7 +94,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         type: 'SET_STATE',
         payload: newSearchState,
       })
-      navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
+
+      if (newSearchState.query !== '') {
+        navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
+      }
     },
     [dispatch, navigateToSearchResults, searchState]
   )
