@@ -194,19 +194,17 @@ exports[`<SetStatus/> should render correctly 1`] = `
     <RCTScrollView
       ListHeaderComponent={
         <React.Fragment>
-          <View
-            style={
-              {
-                "height": 65,
-              }
-            }
-          />
-          <CenteredTitle
-            title="Sélectionne ton statut"
-            titleID="testUuidV4"
+          <Styled(View)
+            headerHeight={65}
           />
           <Styled(View)
-            numberOfSpaces={5}
+            numberOfSpaces={2}
+          />
+          <Styled(Text)>
+            Sélectionne ton statut
+          </Styled(Text)>
+          <Styled(View)
+            numberOfSpaces={8}
           />
         </React.Fragment>
       }
@@ -271,6 +269,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
       getItem={[Function]}
       getItemCount={[Function]}
       keyExtractor={[Function]}
+      listAs="ul"
       onContentSizeChange={[Function]}
       onLayout={[Function]}
       onMomentumScrollBegin={[Function]}
@@ -310,45 +309,44 @@ exports[`<SetStatus/> should render correctly 1`] = `
           onLayout={[Function]}
         >
           <View
+            headerHeight={65}
+            paddingTop={65}
             style={
-              {
-                "height": 65,
-              }
+              [
+                {},
+              ]
             }
           />
           <View
+            numberOfSpaces={2}
             style={
               [
                 {
-                  "alignItems": "center",
-                  "width": "100%",
+                  "height": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 20,
+                  "lineHeight": 24,
                 },
               ]
             }
           >
-            <Text
-              nativeID="testUuidV4"
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
-                    "textAlign": "center",
-                  },
-                ]
-              }
-            >
-              Sélectionne ton statut
-            </Text>
-          </View>
+            Sélectionne ton statut
+          </Text>
           <View
-            numberOfSpaces={5}
+            numberOfSpaces={8}
             style={
               [
                 {
-                  "height": 20,
+                  "height": 32,
                 },
               ]
             }
@@ -360,6 +358,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
           style={null}
         >
           <View
+            accessibilityLabelledBy="testUuidV4"
             accessibilityRole="none"
             style={
               [
@@ -542,6 +541,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
           style={null}
         >
           <View
+            accessibilityLabelledBy="testUuidV4"
             accessibilityRole="none"
             style={
               [
@@ -724,6 +724,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
           style={null}
         >
           <View
+            accessibilityLabelledBy="testUuidV4"
             accessibilityRole="none"
             style={
               [
@@ -906,6 +907,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
           style={null}
         >
           <View
+            accessibilityLabelledBy="testUuidV4"
             accessibilityRole="none"
             style={
               [
@@ -1088,6 +1090,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
           style={null}
         >
           <View
+            accessibilityLabelledBy="testUuidV4"
             accessibilityRole="none"
             style={
               [
@@ -1270,6 +1273,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
           style={null}
         >
           <View
+            accessibilityLabelledBy="testUuidV4"
             accessibilityRole="none"
             style={
               [
@@ -1452,6 +1456,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
           style={null}
         >
           <View
+            accessibilityLabelledBy="testUuidV4"
             accessibilityRole="none"
             style={
               [
@@ -1649,6 +1654,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
           style={null}
         >
           <View
+            accessibilityLabelledBy="testUuidV4"
             accessibilityRole="none"
             style={
               [
@@ -1846,6 +1852,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
           style={null}
         >
           <View
+            accessibilityLabelledBy="testUuidV4"
             accessibilityRole="none"
             style={
               [
@@ -2098,7 +2105,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
     }
   >
     <View
-      accessibilityLabel="Choisis ton statut"
+      accessibilityLabel="Valider mon statut"
       accessibilityState={
         {
           "busy": undefined,
@@ -2152,7 +2159,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
           },
         ]
       }
-      testID="Choisis ton statut"
+      testID="Valider mon statut"
     >
       <View
         style={
@@ -2179,7 +2186,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
             ]
           }
         >
-          Choisis ton statut
+          Valider mon statut
         </Text>
       </View>
     </View>

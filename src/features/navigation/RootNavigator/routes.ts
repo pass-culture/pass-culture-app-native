@@ -55,6 +55,7 @@ import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
+import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
@@ -313,6 +314,13 @@ export const routes: RootRoute[] = [
     component: OnboardingSubscription,
     path: 'choix-abonnement',
     options: { title: 'Choix des thèmes à suivre' },
+    secure: true,
+  },
+  {
+    name: 'ChangeStatus',
+    component: ChangeStatus,
+    path: 'profil/modification-statut',
+    options: { title: 'Ton statut | Profil' },
     secure: true,
   },
   {
