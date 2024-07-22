@@ -75,7 +75,7 @@ elif [ "$platform" = "web" ]; then
 fi
 
 start_mock_analytics_server() {
-  pushd .maestro/testsV2/mock_analytics_server
+  pushd .maestro/mock_analytics_server
   yarn install
   PORT="$MOCK_ANALYTICS_SERVER_PORT" yarn start
 }
