@@ -51,8 +51,8 @@ describe('VideoModal', () => {
     expect(analytics.logHasDismissedModal).toHaveBeenNthCalledWith(1, {
       moduleId: 'abcd',
       modalType: 'video',
-      videoDuration: 3,
-      seenDuration: 2,
+      videoDuration: 267,
+      seenDuration: 135,
     })
   })
 
