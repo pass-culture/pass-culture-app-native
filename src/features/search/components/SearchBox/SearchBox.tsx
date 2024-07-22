@@ -173,9 +173,12 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         setQuery('')
         dispatch({
           type: 'SET_STATE',
-          payload: initialSearchState,
+          payload: { ...initialSearchState, locationFilter: searchState.locationFilter },
         })
-        navigateToSearchLanding(initialSearchState, defaultDisabilitiesProperties)
+        navigateToSearchLanding(
+          { ...initialSearchState, locationFilter: searchState.locationFilter },
+          defaultDisabilitiesProperties
+        )
         break
       default:
         break
