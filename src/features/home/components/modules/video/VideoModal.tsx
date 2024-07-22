@@ -31,10 +31,6 @@ interface VideoModalProps extends VideoModule {
 }
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
-  const StyledCloseIcon = styled(Close).attrs(({ theme }) => ({
-    size: theme.icons.sizes.smaller,
-  }))``
-
   const playerRef = useRef<YoutubeIframeRef>(null)
 
   const analyticsParams: OfferAnalyticsParams = {
@@ -177,3 +173,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 const StyledScrollView = styled.ScrollView({
   paddingHorizontal: getSpacing(6),
 })
+
+const StyledCloseIcon = styled(Close).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``
