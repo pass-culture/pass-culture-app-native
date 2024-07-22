@@ -156,11 +156,21 @@ export const useVerticalVideoPlayer = ({
   }
 
   const playVideo = () => {
-    if ('playVideo' in playerRefCurrent) {
-      playerRefCurrent.playVideo()
+    switch (true) {
+      case Platform.OS === 'web':
+        if (playerRefCurrent && 'playVideo' in playerRefCurrent) {
+          playerRefCurrent.playVideo()
+          setIsPlaying(true)
+          setHasFinishedPlaying(false)
+        }
+        break
+      case Platform.OS !== 'web':
+        setIsPlaying(true)
+        setHasFinishedPlaying(false)
+        break
+      default:
+        break
     }
-    setIsPlaying(true)
-    setHasFinishedPlaying(false)
   }
 
   const replayVideo = () => {
