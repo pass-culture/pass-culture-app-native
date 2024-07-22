@@ -259,7 +259,9 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     currentView === SearchView.Results || (currentView === SearchView.N1 && !isFocusOnSuggestions)
 
   const disableInputClearButton =
-    currentView === SearchView.Results && !isFocusOnSuggestions && !isDesktopViewport
+    (currentView === SearchView.Results || currentView === SearchView.N1) &&
+    !isFocusOnSuggestions &&
+    !isDesktopViewport
 
   return (
     <RowContainer>

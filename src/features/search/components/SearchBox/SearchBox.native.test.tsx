@@ -292,6 +292,31 @@ describe('SearchBox component', () => {
     expect(mockDispatch).not.toHaveBeenCalled()
   })
 
+  it('should show reset button when search input is filled', async () => {
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
+    mockIsFocusOnSuggestions = true
+    mockQuery = 'Some text'
+    mockSearchState = {
+      ...mockSearchState,
+      query: mockQuery,
+    }
+
+    renderSearchBox()
+
+    expect(await screen.findByLabelText('Réinitialiser la recherche')).toBeOnTheScreen()
+  })
+
+  it('should not show reset button when search input is empty', async () => {
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
+    mockIsFocusOnSuggestions = true
+
+    renderSearchBox()
+
+    expect(screen.queryByLabelText('Réinitialiser la recherche')).not.toBeOnTheScreen()
+  })
+
   describe('With autocomplete', () => {
     beforeAll(() => {
       mockSettings.mockReturnValue({ data: { appEnableAutocomplete: true } })
