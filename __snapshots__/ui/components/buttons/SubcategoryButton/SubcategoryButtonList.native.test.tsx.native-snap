@@ -67,16 +67,17 @@ exports[`<SubcategoryButtonList/> should render SubcategoryButtonList 1`] = `
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderBottomWidth": 1,
-                "borderColor": "#90949D",
+                "backgroundColor": "#EC3478",
+                "borderColor": "#C01371",
                 "borderRadius": 8,
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
+                "borderWidth": 1,
                 "flexDirection": "row",
                 "height": 56,
                 "maxWidth": 182.5,
-                "paddingRight": 16,
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
                 "shadowColor": "#696A6F",
                 "shadowOffset": {
                   "height": 4,
@@ -95,40 +96,6 @@ exports[`<SubcategoryButtonList/> should render SubcategoryButtonList 1`] = `
         }
         testID="Romans et littérature"
       >
-        <BVLinearGradient
-          colors={
-            [
-              4293670008,
-              4290777969,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
-          style={
-            [
-              {
-                "borderBottomLeftRadius": 8,
-                "borderTopLeftRadius": 8,
-                "height": "100%",
-                "left": 0,
-                "marginRight": 8,
-                "top": 0,
-                "width": 8,
-              },
-            ]
-          }
-        />
         <Text
           ellipsizeMode="tail"
           numberOfLines={2}
@@ -194,16 +161,17 @@ exports[`<SubcategoryButtonList/> should render SubcategoryButtonList 1`] = `
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderBottomWidth": 1,
-                "borderColor": "#90949D",
+                "backgroundColor": "#EC3478",
+                "borderColor": "#C01371",
                 "borderRadius": 8,
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
+                "borderWidth": 1,
                 "flexDirection": "row",
                 "height": 56,
                 "maxWidth": 182.5,
-                "paddingRight": 16,
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
                 "shadowColor": "#696A6F",
                 "shadowOffset": {
                   "height": 4,
@@ -222,40 +190,6 @@ exports[`<SubcategoryButtonList/> should render SubcategoryButtonList 1`] = `
         }
         testID="Mangas"
       >
-        <BVLinearGradient
-          colors={
-            [
-              4293670008,
-              4290777969,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
-          style={
-            [
-              {
-                "borderBottomLeftRadius": 8,
-                "borderTopLeftRadius": 8,
-                "height": "100%",
-                "left": 0,
-                "marginRight": 8,
-                "top": 0,
-                "width": 8,
-              },
-            ]
-          }
-        />
         <Text
           ellipsizeMode="tail"
           numberOfLines={2}
@@ -333,16 +267,17 @@ exports[`<SubcategoryButtonList/> should render SubcategoryButtonList 1`] = `
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderBottomWidth": 1,
-                "borderColor": "#90949D",
+                "backgroundColor": "#EC3478",
+                "borderColor": "#C01371",
                 "borderRadius": 8,
-                "borderRightWidth": 1,
-                "borderTopWidth": 1,
+                "borderWidth": 1,
                 "flexDirection": "row",
                 "height": 56,
                 "maxWidth": 182.5,
-                "paddingRight": 16,
+                "paddingBottom": 8,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 8,
                 "shadowColor": "#696A6F",
                 "shadowOffset": {
                   "height": 4,
@@ -361,40 +296,6 @@ exports[`<SubcategoryButtonList/> should render SubcategoryButtonList 1`] = `
         }
         testID="BD & Comics"
       >
-        <BVLinearGradient
-          colors={
-            [
-              4293670008,
-              4290777969,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          locations={null}
-          startPoint={
-            {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
-          style={
-            [
-              {
-                "borderBottomLeftRadius": 8,
-                "borderTopLeftRadius": 8,
-                "height": "100%",
-                "left": 0,
-                "marginRight": 8,
-                "top": 0,
-                "width": 8,
-              },
-            ]
-          }
-        />
         <Text
           ellipsizeMode="tail"
           numberOfLines={2}

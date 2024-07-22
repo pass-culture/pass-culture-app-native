@@ -52,92 +52,6 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
           style={
             [
               {
-                "alignItems": "center",
-                "display": "flex",
-                "flexDirection": "row",
-                "height": 40,
-                "justifyContent": "center",
-                "width": 40,
-              },
-            ]
-          }
-        >
-          <View
-            accessibilityLabel="Revenir en arrière"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Revenir en arrière"
-          >
-            <View
-              height={24}
-              testID="icon-back"
-              width={24}
-            >
-              <Text>
-                icon-back-SVG-Mock
-              </Text>
-            </View>
-            <Text
-              style={
-                [
-                  {
-                    "display": "none",
-                  },
-                ]
-              }
-            >
-              Retour
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            [
-              {
                 "flexDirection": "row",
                 "justifyContent": "space-between",
               },
@@ -455,16 +369,17 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomWidth": 1,
-                    "borderColor": "#90949D",
+                    "backgroundColor": "#FFD7E9",
+                    "borderColor": "#EC3478",
                     "borderRadius": 8,
-                    "borderRightWidth": 1,
-                    "borderTopWidth": 1,
+                    "borderWidth": 1,
                     "flexDirection": "row",
                     "height": 56,
                     "maxWidth": 182.5,
-                    "paddingRight": 16,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                     "shadowColor": "#696A6F",
                     "shadowOffset": {
                       "height": 4,
@@ -483,40 +398,6 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
             }
             testID="Romans et littérature"
           >
-            <BVLinearGradient
-              colors={
-                [
-                  4293670008,
-                  4290777969,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
-              style={
-                [
-                  {
-                    "borderBottomLeftRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "height": "100%",
-                    "left": 0,
-                    "marginRight": 8,
-                    "top": 0,
-                    "width": 8,
-                  },
-                ]
-              }
-            />
             <Text
               ellipsizeMode="tail"
               numberOfLines={2}
@@ -582,16 +463,17 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomWidth": 1,
-                    "borderColor": "#90949D",
+                    "backgroundColor": "#FFD7E9",
+                    "borderColor": "#EC3478",
                     "borderRadius": 8,
-                    "borderRightWidth": 1,
-                    "borderTopWidth": 1,
+                    "borderWidth": 1,
                     "flexDirection": "row",
                     "height": 56,
                     "maxWidth": 182.5,
-                    "paddingRight": 16,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                     "shadowColor": "#696A6F",
                     "shadowOffset": {
                       "height": 4,
@@ -610,40 +492,6 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
             }
             testID="Mangas"
           >
-            <BVLinearGradient
-              colors={
-                [
-                  4293670008,
-                  4290777969,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
-              style={
-                [
-                  {
-                    "borderBottomLeftRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "height": "100%",
-                    "left": 0,
-                    "marginRight": 8,
-                    "top": 0,
-                    "width": 8,
-                  },
-                ]
-              }
-            />
             <Text
               ellipsizeMode="tail"
               numberOfLines={2}
@@ -721,16 +569,17 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomWidth": 1,
-                    "borderColor": "#90949D",
+                    "backgroundColor": "#FFD7E9",
+                    "borderColor": "#EC3478",
                     "borderRadius": 8,
-                    "borderRightWidth": 1,
-                    "borderTopWidth": 1,
+                    "borderWidth": 1,
                     "flexDirection": "row",
                     "height": 56,
                     "maxWidth": 182.5,
-                    "paddingRight": 16,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                     "shadowColor": "#696A6F",
                     "shadowOffset": {
                       "height": 4,
@@ -749,40 +598,6 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
             }
             testID="BD & Comics"
           >
-            <BVLinearGradient
-              colors={
-                [
-                  4293670008,
-                  4290777969,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
-              style={
-                [
-                  {
-                    "borderBottomLeftRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "height": "100%",
-                    "left": 0,
-                    "marginRight": 8,
-                    "top": 0,
-                    "width": 8,
-                  },
-                ]
-              }
-            />
             <Text
               ellipsizeMode="tail"
               numberOfLines={2}
@@ -848,16 +663,17 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomWidth": 1,
-                    "borderColor": "#90949D",
+                    "backgroundColor": "#FFD7E9",
+                    "borderColor": "#EC3478",
                     "borderRadius": 8,
-                    "borderRightWidth": 1,
-                    "borderTopWidth": 1,
+                    "borderWidth": 1,
                     "flexDirection": "row",
                     "height": 56,
                     "maxWidth": 182.5,
-                    "paddingRight": 16,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                     "shadowColor": "#696A6F",
                     "shadowOffset": {
                       "height": 4,
@@ -876,40 +692,6 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
             }
             testID="Loisirs & Bien-être"
           >
-            <BVLinearGradient
-              colors={
-                [
-                  4293670008,
-                  4290777969,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
-              style={
-                [
-                  {
-                    "borderBottomLeftRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "height": "100%",
-                    "left": 0,
-                    "marginRight": 8,
-                    "top": 0,
-                    "width": 8,
-                  },
-                ]
-              }
-            />
             <Text
               ellipsizeMode="tail"
               numberOfLines={2}
@@ -987,16 +769,17 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomWidth": 1,
-                    "borderColor": "#90949D",
+                    "backgroundColor": "#FFD7E9",
+                    "borderColor": "#EC3478",
                     "borderRadius": 8,
-                    "borderRightWidth": 1,
-                    "borderTopWidth": 1,
+                    "borderWidth": 1,
                     "flexDirection": "row",
                     "height": 56,
                     "maxWidth": 182.5,
-                    "paddingRight": 16,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                     "shadowColor": "#696A6F",
                     "shadowOffset": {
                       "height": 4,
@@ -1015,40 +798,6 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
             }
             testID="Société & Politique"
           >
-            <BVLinearGradient
-              colors={
-                [
-                  4293670008,
-                  4290777969,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
-              style={
-                [
-                  {
-                    "borderBottomLeftRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "height": "100%",
-                    "left": 0,
-                    "marginRight": 8,
-                    "top": 0,
-                    "width": 8,
-                  },
-                ]
-              }
-            />
             <Text
               ellipsizeMode="tail"
               numberOfLines={2}
@@ -1114,16 +863,17 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomWidth": 1,
-                    "borderColor": "#90949D",
+                    "backgroundColor": "#FFD7E9",
+                    "borderColor": "#EC3478",
                     "borderRadius": 8,
-                    "borderRightWidth": 1,
-                    "borderTopWidth": 1,
+                    "borderWidth": 1,
                     "flexDirection": "row",
                     "height": 56,
                     "maxWidth": 182.5,
-                    "paddingRight": 16,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                     "shadowColor": "#696A6F",
                     "shadowOffset": {
                       "height": 4,
@@ -1142,40 +892,6 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
             }
             testID="Théâtre, Poésie & Essais"
           >
-            <BVLinearGradient
-              colors={
-                [
-                  4293670008,
-                  4290777969,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
-              style={
-                [
-                  {
-                    "borderBottomLeftRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "height": "100%",
-                    "left": 0,
-                    "marginRight": 8,
-                    "top": 0,
-                    "width": 8,
-                  },
-                ]
-              }
-            />
             <Text
               ellipsizeMode="tail"
               numberOfLines={2}
@@ -1253,16 +969,17 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomWidth": 1,
-                    "borderColor": "#90949D",
+                    "backgroundColor": "#FFD7E9",
+                    "borderColor": "#EC3478",
                     "borderRadius": 8,
-                    "borderRightWidth": 1,
-                    "borderTopWidth": 1,
+                    "borderWidth": 1,
                     "flexDirection": "row",
                     "height": 56,
                     "maxWidth": 182.5,
-                    "paddingRight": 16,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                     "shadowColor": "#696A6F",
                     "shadowOffset": {
                       "height": 4,
@@ -1281,40 +998,6 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
             }
             testID="Compétences générales"
           >
-            <BVLinearGradient
-              colors={
-                [
-                  4293670008,
-                  4290777969,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
-              style={
-                [
-                  {
-                    "borderBottomLeftRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "height": "100%",
-                    "left": 0,
-                    "marginRight": 8,
-                    "top": 0,
-                    "width": 8,
-                  },
-                ]
-              }
-            />
             <Text
               ellipsizeMode="tail"
               numberOfLines={2}
@@ -1380,16 +1063,17 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomWidth": 1,
-                    "borderColor": "#90949D",
+                    "backgroundColor": "#FFD7E9",
+                    "borderColor": "#EC3478",
                     "borderRadius": 8,
-                    "borderRightWidth": 1,
-                    "borderTopWidth": 1,
+                    "borderWidth": 1,
                     "flexDirection": "row",
                     "height": 56,
                     "maxWidth": 182.5,
-                    "paddingRight": 16,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                     "shadowColor": "#696A6F",
                     "shadowOffset": {
                       "height": 4,
@@ -1408,40 +1092,6 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
             }
             testID="Mode et Art"
           >
-            <BVLinearGradient
-              colors={
-                [
-                  4293670008,
-                  4290777969,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
-              style={
-                [
-                  {
-                    "borderBottomLeftRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "height": "100%",
-                    "left": 0,
-                    "marginRight": 8,
-                    "top": 0,
-                    "width": 8,
-                  },
-                ]
-              }
-            />
             <Text
               ellipsizeMode="tail"
               numberOfLines={2}
@@ -1519,16 +1169,17 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderBottomWidth": 1,
-                    "borderColor": "#90949D",
+                    "backgroundColor": "#FFD7E9",
+                    "borderColor": "#EC3478",
                     "borderRadius": 8,
-                    "borderRightWidth": 1,
-                    "borderTopWidth": 1,
+                    "borderWidth": 1,
                     "flexDirection": "row",
                     "height": 56,
                     "maxWidth": 182.5,
-                    "paddingRight": 16,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                     "shadowColor": "#696A6F",
                     "shadowOffset": {
                       "height": 4,
@@ -1547,40 +1198,6 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
             }
             testID="Tourisme & Voyages"
           >
-            <BVLinearGradient
-              colors={
-                [
-                  4293670008,
-                  4290777969,
-                ]
-              }
-              endPoint={
-                {
-                  "x": 0.5,
-                  "y": 1,
-                }
-              }
-              locations={null}
-              startPoint={
-                {
-                  "x": 0.5,
-                  "y": 0,
-                }
-              }
-              style={
-                [
-                  {
-                    "borderBottomLeftRadius": 8,
-                    "borderTopLeftRadius": 8,
-                    "height": "100%",
-                    "left": 0,
-                    "marginRight": 8,
-                    "top": 0,
-                    "width": 8,
-                  },
-                ]
-              }
-            />
             <Text
               ellipsizeMode="tail"
               numberOfLines={2}

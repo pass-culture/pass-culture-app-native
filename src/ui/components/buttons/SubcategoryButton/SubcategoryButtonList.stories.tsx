@@ -26,54 +26,58 @@ const Template: ComponentStory<typeof SubcategoryButtonList> = (props) => (
   <SubcategoryButtonList {...props} />
 )
 
+const colors = {
+  backgroundColor: theme.colors.aquamarine,
+  borderColor: theme.colors.aquamarineDark,
+}
 // TODO(PC-28526): Fix this stories
 const Default = Template.bind({})
 Default.args = {
   subcategoryButtonContent: [
     {
       label: 'Société & Politique',
-      colors: [theme.colors.aquamarine, theme.colors.aquamarineDark],
-      nativeCategory: BooksNativeCategoriesEnum['SOCIETE_ET_POLITIQUE'],
+      ...colors,
+      nativeCategory: BooksNativeCategoriesEnum.SOCIETE_ET_POLITIQUE,
     },
     {
       label: 'Romans & Littérature',
-      colors: [theme.colors.aquamarine, theme.colors.aquamarineDark],
-      nativeCategory: BooksNativeCategoriesEnum['ROMANS_ET_LITTERATURE'],
+      ...colors,
+      nativeCategory: BooksNativeCategoriesEnum.ROMANS_ET_LITTERATURE,
     },
     {
       label: 'Mangas',
-      colors: [theme.colors.aquamarine, theme.colors.aquamarineDark],
-      nativeCategory: BooksNativeCategoriesEnum['MANGAS'],
+      ...colors,
+      nativeCategory: BooksNativeCategoriesEnum.MANGAS,
     },
     {
       label: 'BD & Comics',
-      colors: [theme.colors.aquamarine, theme.colors.aquamarineDark],
-      nativeCategory: BooksNativeCategoriesEnum['BD_ET_COMICS'],
+      ...colors,
+      nativeCategory: BooksNativeCategoriesEnum.BD_ET_COMICS,
     },
     {
       label: 'Compétences générales',
-      colors: [theme.colors.aquamarine, theme.colors.aquamarineDark],
-      nativeCategory: BooksNativeCategoriesEnum['COMPETENCES_GENERALES'],
+      ...colors,
+      nativeCategory: BooksNativeCategoriesEnum.COMPETENCES_GENERALES,
     },
     {
       label: 'Loisirs & Bien-être',
-      colors: [theme.colors.aquamarine, theme.colors.aquamarineDark],
-      nativeCategory: BooksNativeCategoriesEnum['LOISIRS_ET_BIEN_ETRE'],
+      ...colors,
+      nativeCategory: BooksNativeCategoriesEnum.LOISIRS_ET_BIEN_ETRE,
     },
     {
       label: 'Mode & Art',
-      colors: [theme.colors.aquamarine, theme.colors.aquamarineDark],
-      nativeCategory: BooksNativeCategoriesEnum['MODE_ET_ART'],
+      ...colors,
+      nativeCategory: BooksNativeCategoriesEnum.MODE_ET_ART,
     },
     {
       label: 'Théâtre, poésie et essais',
-      colors: [theme.colors.aquamarine, theme.colors.aquamarineDark],
-      nativeCategory: BooksNativeCategoriesEnum['THEATRE_POESIE_ET_ESSAIS'],
+      ...colors,
+      nativeCategory: BooksNativeCategoriesEnum.THEATRE_POESIE_ET_ESSAIS,
     },
     {
       label: 'Tourisme & Voyage',
-      colors: [theme.colors.aquamarine, theme.colors.aquamarineDark],
-      nativeCategory: BooksNativeCategoriesEnum['TOURISME_ET_VOYAGES'],
+      ...colors,
+      nativeCategory: BooksNativeCategoriesEnum.TOURISME_ET_VOYAGES,
     },
   ],
 }
