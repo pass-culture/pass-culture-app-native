@@ -4,7 +4,6 @@ import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { createAsyncStorageAttrakdiff } from 'features/home/api/asyncStorageAttrakdiff'
 import { useAttrakdiffModal } from 'features/home/api/useAttrakdiffModal'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
@@ -26,6 +25,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
 import { useCreditStore } from '../../identityCheck/api/useCreditActivation'
+import { createInMemoryAttrakdiff } from '../api/inMemoryAttrakdiff'
 
 const Header = () => (
   <ListHeaderContainer>
@@ -33,7 +33,7 @@ const Header = () => (
   </ListHeaderContainer>
 )
 
-const attrakdiff = createAsyncStorageAttrakdiff('hasTriggeredHomeContent')
+const attrakdiff = createInMemoryAttrakdiff()
 
 export const Home: FunctionComponent = () => {
   const startPerfHomeLoadingOnce = useFunctionOnce(() => startTransaction(PERFORMANCE_HOME_LOADING))
