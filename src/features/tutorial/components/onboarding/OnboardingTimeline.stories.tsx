@@ -18,25 +18,22 @@ export default meta
 const Template: ComponentStory<typeof OnboardingTimeline> = (props) => (
   <OnboardingTimeline {...props} />
 )
-//TODO(PC-28526): Fix this stories
-const Eighteen = Template.bind({})
+export const Eighteen = Template.bind({})
 Eighteen.args = {
   age: 18,
 }
 
-//TODO(PC-28526): Fix this stories
-const Seventeen = Template.bind({})
+export const Seventeen = Template.bind({})
 Seventeen.args = {
   age: 17,
 }
-//TODO(PC-28526): Fix this stories
-const Sixteen = Template.bind({})
+
+export const Sixteen = Template.bind({})
 Sixteen.args = {
   age: 16,
 }
 
-//TODO(PC-28526): Fix this stories
-const Fifteen = Template.bind({})
+export const Fifteen = Template.bind({})
 Fifteen.args = {
   age: 15,
 }

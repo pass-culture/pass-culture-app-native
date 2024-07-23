@@ -13,22 +13,19 @@ export default meta
 
 const Template: ComponentStory<typeof ProgressBar> = (props) => <ProgressBar {...props} />
 
-//TODO(PC-28526): Fix this stories
-const Default = Template.bind({})
+export const Default = Template.bind({})
 Default.args = {
   progress: 0.5,
   colors: [theme.colors.primary, theme.colors.secondary],
 }
 
-//TODO(PC-28526): Fix this stories
-const Empty = Template.bind({})
+export const Empty = Template.bind({})
 Empty.args = {
   progress: 0,
   colors: [theme.colors.greenLight],
 }
 
-//TODO(PC-28526): Fix this stories
-const Full = Template.bind({})
+export const Full = Template.bind({})
 Full.args = {
   progress: 1,
   colors: [theme.colors.error],
