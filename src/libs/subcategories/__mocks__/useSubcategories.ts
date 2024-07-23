@@ -1,7 +1,7 @@
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
-import { useSubcategories as ActualUseSubcategories } from 'libs/subcategories/useSubcategories'
+import { useSubcategories as actualUseSubcategories } from 'libs/subcategories/useSubcategories'
 
-export const useSubcategories: jest.Mock<typeof ActualUseSubcategories> = jest
+export const useSubcategories: jest.Mock<typeof actualUseSubcategories> = jest
   .fn()
   .mockReturnValue({
     data: subcategoriesDataTest,
