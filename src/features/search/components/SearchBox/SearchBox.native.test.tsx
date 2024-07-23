@@ -627,22 +627,32 @@ describe('SearchBox component with SearchN1 previous route on search results', (
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
-  it('should update searchState with offerNativeCategories set to undefined when a query is made', async () => {
+  it('should clear offerNativeCategories and gtls when a previous search was made on searchResults and now a query is made on searchN1', async () => {
     const BOOK_OFFER_CATEGORIES = [SearchGroupNameEnumv2.LIVRES]
     const BOOK_SEARCH_BOX_PLACEHOLDER = 'Rechercher parmi les livres'
-
-    useRoute.mockReturnValueOnce({
-      name: SearchView.N1,
-      params: {
-        offerCategories: [SearchGroupNameEnumv2.LIVRES],
-      },
-    })
 
     mockSearchState = {
       ...mockSearchState,
       offerCategories: BOOK_OFFER_CATEGORIES,
-      offerNativeCategories: [BooksNativeCategoriesEnum.BD_ET_COMICS],
+      offerNativeCategories: [BooksNativeCategoriesEnum.MANGAS],
+      offerGenreTypes: undefined,
+      gtls: [
+        {
+          code: '03040300',
+          label: 'Kodomo',
+          level: 3,
+        },
+        {
+          code: '03040400',
+          label: 'Shôjo',
+          level: 3,
+        },
+      ],
     }
+
+    useRoute.mockReturnValueOnce({
+      name: SearchView.N1,
+    })
 
     renderSearchBox(false, BOOK_OFFER_CATEGORIES, BOOK_SEARCH_BOX_PLACEHOLDER)
 
@@ -659,6 +669,7 @@ describe('SearchBox component with SearchN1 previous route on search results', (
         query: 'harry potter',
         offerCategories: BOOK_OFFER_CATEGORIES,
         offerNativeCategories: undefined,
+        gtls: [],
         priceRange: mockSearchState.priceRange,
         searchId,
       },

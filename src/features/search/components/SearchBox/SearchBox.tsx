@@ -216,6 +216,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         offerCategories: offerCategories ?? searchState.offerCategories,
         offerNativeCategories:
           currentView === SearchView.N1 ? undefined : searchState.offerNativeCategories,
+        gtls: currentView === SearchView.N1 ? [] : searchState.gtls,
         priceRange: searchState.priceRange,
         searchId,
         isAutocomplete: undefined,
@@ -230,6 +231,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       searchState.venue,
       searchState.offerCategories,
       searchState.offerNativeCategories,
+      searchState.gtls,
       searchState.priceRange,
       offerCategories,
       currentView,
