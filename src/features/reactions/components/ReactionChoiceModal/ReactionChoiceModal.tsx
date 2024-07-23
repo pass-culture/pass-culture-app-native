@@ -43,13 +43,15 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   const [reactionStatus, setReactionStatus] = useState<ReactionTypeEnum>(
     ReactionTypeEnum.NO_REACTION
   )
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
+
+  const wording =
+    reactionStatus === ReactionTypeEnum.NO_REACTION ? 'Confirmer' : 'Valider la réaction'
 
   const onPressReactionButton = (reactionType: ReactionTypeEnum) => {
+    setIsButtonDisabled(false)
     setReactionStatus((previousValue) => {
-      if (reactionType === previousValue) {
-        return ReactionTypeEnum.NO_REACTION
-      }
-      return reactionType
+      return reactionType === previousValue ? ReactionTypeEnum.NO_REACTION : reactionType
     })
   }
 
@@ -60,8 +62,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   useEffect(() => {
     if (visible && defaultReaction !== undefined && defaultReaction !== null) {
       setReactionStatus(defaultReaction)
-    } else {
-      setReactionStatus(ReactionTypeEnum.NO_REACTION)
+      setIsButtonDisabled(true)
     }
   }, [visible, defaultReaction])
 
@@ -106,14 +107,14 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
       rightIconAccessibilityLabel="Fermer la modale"
       fixedModalBottom={
         <ButtonPrimary
-          wording="Valider la réaction"
+          wording={wording}
           onPress={() => {
             onSave?.({
               offerId: offer.id,
               reactionType: reactionStatus,
             })
           }}
-          disabled={!reactionStatus || reactionStatus === ReactionTypeEnum.NO_REACTION}
+          disabled={isButtonDisabled}
         />
       }>
       <Spacer.Column numberOfSpaces={6} />
