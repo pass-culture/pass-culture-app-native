@@ -22,12 +22,13 @@ module.exports = {
         const openingElement = node.openingElement.name
 
         if (openingElement?.object?.name === 'Typo') return
+        if (openingElement?.object?.name === 'TypoDS') return
         if (ALLOWED_JSX_TAGS.some((value) => value.test(openingElement.name))) return
         if (node.children.every(checkJSXTextAreEmpty)) return
 
         return context.report({
           node,
-          message: `No raw text outside tags <Text>, <Typo.***>, <Styled***> or tag with prefix 'Text'. \n *** = all exported Typo in src/ui/theme/typography.tsx`,
+          message: `No raw text outside tags <Text>, <Typo.***>, <TypoDS.***>, <Styled***> or tag with prefix 'Text'. \n *** = all exported Typo in src/ui/theme/typography.tsx`,
         })
       },
     }
