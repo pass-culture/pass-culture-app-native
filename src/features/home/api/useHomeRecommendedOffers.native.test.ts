@@ -10,7 +10,6 @@ import {
 import { RecommendedOffersModule, RecommendedOffersParameters } from 'features/home/types'
 import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 const position = {
@@ -20,14 +19,7 @@ const position = {
 const mockModuleId = 'abcd'
 mockdate.set(new Date('2022-11-25T00:00+00:00'))
 
-const mockSubcategories = PLACEHOLDER_DATA.subcategories
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      subcategories: mockSubcategories,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('libs/firebase/analytics/analytics')
 

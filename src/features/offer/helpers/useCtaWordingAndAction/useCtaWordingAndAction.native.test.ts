@@ -11,7 +11,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Subcategory } from 'libs/subcategories/types'
 import { OfferModal } from 'shared/offer/enums'
 
@@ -932,7 +932,7 @@ const buildOffer = (partialOffer: Partial<OfferResponseV2>): OfferResponseV2 => 
   ...partialOffer,
 })
 
-const baseSubcategory = PLACEHOLDER_DATA.subcategories[0]
+const baseSubcategory = subcategoriesDataTest.subcategories[0]
 // @ts-expect-error: because of noUncheckedIndexedAccess
 const buildSubcategory = (partialSubcategory: Partial<Subcategory>): Subcategory => ({
   ...baseSubcategory,

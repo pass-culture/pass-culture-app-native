@@ -4,7 +4,6 @@ import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
@@ -13,14 +12,7 @@ import { BookingOfferModalComponent } from './BookingOfferModal'
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/bookOffer/helpers/useBookingStock')
 
-const mockSubcategories = PLACEHOLDER_DATA.subcategories
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      subcategories: mockSubcategories,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 let mockStep: Step | undefined = undefined
 jest.mock('features/bookOffer/context/useBookingContext', () => ({

@@ -2,7 +2,6 @@ import { OffersModuleParameters } from 'features/home/types'
 import * as parseSearchParametersAPI from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/adaptOffersPlaylistParameters'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 const mockMaxPrice = 172
@@ -15,16 +14,7 @@ jest.mock('libs/location', () => ({
   useLocation: jest.fn(() => ({ geolocPosition: mockPosition })),
 }))
 
-const mockSubcategories = PLACEHOLDER_DATA.subcategories
-const mockGenreTypes = PLACEHOLDER_DATA.genreTypes
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      subcategories: mockSubcategories,
-      genreTypes: mockGenreTypes,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 describe('useAdaptOffersPlaylistParameters', () => {
   const {

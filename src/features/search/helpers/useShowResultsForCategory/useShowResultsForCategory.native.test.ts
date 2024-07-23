@@ -5,7 +5,6 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { LocationMode } from 'libs/location/types'
-import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 import { useShowResultsForCategory } from './useShowResultsForCategory'
@@ -19,11 +18,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: mockData,
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 const searchId = uuidv4()
 

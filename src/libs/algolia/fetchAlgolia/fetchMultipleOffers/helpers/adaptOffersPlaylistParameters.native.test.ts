@@ -6,21 +6,11 @@ import { OffersModuleParameters } from 'features/home/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
-import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
 import { adaptOffersPlaylistParameters } from './adaptOffersPlaylistParameters'
 
-const mockSubcategories = PLACEHOLDER_DATA.subcategories
-const mockGenreTypes = PLACEHOLDER_DATA.genreTypes
-jest.mock('libs/subcategories/useSubcategories', () => ({
-  useSubcategories: () => ({
-    data: {
-      subcategories: mockSubcategories,
-      genreTypes: mockGenreTypes,
-    },
-  }),
-}))
+jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 mockdate.set(new Date('2020-10-01T00:00+00:00'))
