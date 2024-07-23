@@ -43,13 +43,18 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   const [reactionStatus, setReactionStatus] = useState<ReactionTypeEnum>(
     ReactionTypeEnum.NO_REACTION
   )
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
+  const [buttonWording, setButtonWording] = useState<string>('Valider la réaction')
 
   const onPressReactionButton = (reactionType: ReactionTypeEnum) => {
     setReactionStatus((previousValue) => {
-      if (reactionType === previousValue) {
-        return ReactionTypeEnum.NO_REACTION
-      }
-      return reactionType
+      const newReactionStatus =
+        reactionType === previousValue ? ReactionTypeEnum.NO_REACTION : reactionType
+      setIsButtonDisabled(false)
+      setButtonWording(
+        newReactionStatus === ReactionTypeEnum.NO_REACTION ? 'Confirmer' : 'Valider la réaction'
+      )
+      return newReactionStatus
     })
   }
 
@@ -60,10 +65,16 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   useEffect(() => {
     if (visible && defaultReaction !== undefined && defaultReaction !== null) {
       setReactionStatus(defaultReaction)
-    } else {
-      setReactionStatus(ReactionTypeEnum.NO_REACTION)
+      setIsButtonDisabled(true)
+      setButtonWording('Valider la réaction')
     }
   }, [visible, defaultReaction])
+
+  useEffect(() => {
+    if (reactionStatus === ReactionTypeEnum.NO_REACTION) {
+      setButtonWording('Confirmer')
+    }
+  }, [reactionStatus])
 
   const getStyledIcon = useCallback(
     (name: IconNames, props?: object) =>
@@ -106,14 +117,14 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
       rightIconAccessibilityLabel="Fermer la modale"
       fixedModalBottom={
         <ButtonPrimary
-          wording="Valider la réaction"
+          wording={buttonWording}
           onPress={() => {
             onSave?.({
               offerId: offer.id,
               reactionType: reactionStatus,
             })
           }}
-          disabled={!reactionStatus || reactionStatus === ReactionTypeEnum.NO_REACTION}
+          disabled={isButtonDisabled}
         />
       }>
       <Spacer.Column numberOfSpaces={6} />
