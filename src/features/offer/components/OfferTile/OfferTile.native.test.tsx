@@ -8,7 +8,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { OfferTile } from './OfferTile'
 
@@ -56,117 +56,20 @@ describe('OfferTile component', () => {
 
   it('should navigate to the offer when clicking on the image', async () => {
     render(reactQueryProviderHOC(<OfferTile {...props} />))
-    await fireEvent.press(screen.getByTestId('tileImage'))
-
-    expect(push).toHaveBeenCalledWith('Offer', {
-      id: OFFER_ID,
-      from: 'home',
-      moduleName: 'Module Name',
-    })
-  })
-
-  it('Analytics - should log ConsultOffer that user opened the offer', async () => {
-    render(reactQueryProviderHOC(<OfferTile {...props} />))
-    await fireEvent.press(screen.getByTestId('tileImage'))
-
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      offerId: OFFER_ID,
-      from: 'home',
-      moduleName: props.moduleName,
-    })
-  })
-
-  it('Analytics - should log ConsultOffer that user opened the offer from the list of similar offers', async () => {
-    const propsFromSimilarOffers = {
-      ...props,
-      fromOfferId: 1,
-      playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-      apiRecoParams,
-    }
-
-    render(
-      reactQueryProviderHOC(
-        <OfferTile {...propsFromSimilarOffers} offerLocation={OFFER_LOCATION} />
-      )
-    )
-    await fireEvent.press(screen.getByTestId('tileImage'))
-
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      ...apiRecoParams,
-      offerId: OFFER_ID,
-      from: 'similar_offer',
-      moduleName: props.moduleName,
-      fromOfferId: 1,
-      playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-    })
-  })
-
-  it('Analytics - should log ConsultOffer with homeEntryId if provide', async () => {
-    render(reactQueryProviderHOC(<OfferTile {...props} homeEntryId="abcd" />))
     fireEvent.press(screen.getByTestId('tileImage'))
 
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      offerId: OFFER_ID,
-      from: 'home',
-      moduleName: props.moduleName,
-      homeEntryId: 'abcd',
-    })
-  })
-
-  it('Analytics - should log ConsultOffer from venue offers playlist and from search venues playlist', async () => {
-    const propsFromSearchVenuesPlaylist = {
-      offerId: OFFER_ID,
-      analyticsFrom: 'venue' as Referrals,
-      venueId: 1,
-      searchId,
-      categoryLabel: HomepageLabelNameEnumv2.MUSIQUE,
-      categoryId: CategoryIdEnum.MUSIQUE_LIVE,
-      subcategoryId: OFFER.subcategoryId,
-      price: '28 €',
-      width: 100,
-      height: 100,
-      thumbUrl: OFFER.thumbUrl,
-    }
-
-    render(
-      reactQueryProviderHOC(
-        <OfferTile {...propsFromSearchVenuesPlaylist} offerLocation={OFFER_LOCATION} />
-      )
-    )
-    await fireEvent.press(screen.getByTestId('tileImage'))
-
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      offerId: OFFER_ID,
-      from: 'venue',
-      venueId: 1,
-      searchId,
-    })
-  })
-
-  it('Analytics - should log ConsultOffer that user opened the offer from the list of same artist', async () => {
-    const propsFromSimilarOffers = {
-      ...props,
-      fromOfferId: 1,
-      playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
-      apiRecoParams,
-    }
-
-    render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
-    await fireEvent.press(screen.getByTestId('tileImage'))
-
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-      ...apiRecoParams,
-      offerId: OFFER_ID,
-      fromOfferId: 1,
-      from: 'same_artist_playlist',
-      moduleName: props.moduleName,
-      playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
+    await waitFor(() => {
+      expect(push).toHaveBeenCalledWith('Offer', {
+        id: OFFER_ID,
+        from: 'home',
+        moduleName: 'Module Name',
+      })
     })
   })
 
   it('should prepopulate react-query cache when clicking on offer', async () => {
     render(reactQueryProviderHOC(<OfferTile {...props} />))
-    await fireEvent.press(screen.getByTestId('tileImage'))
+    fireEvent.press(screen.getByTestId('tileImage'))
 
     const queryHash = JSON.stringify(['offer', OFFER_ID])
     const query = queryCache.get(queryHash)
@@ -192,6 +95,134 @@ describe('OfferTile component', () => {
       isEducational: false,
       metadata: undefined,
       isExternalBookingsDisabled: false,
+    })
+  })
+
+  describe('Analytics', () => {
+    it('should log ConsultOffer that user opened the offer', async () => {
+      render(reactQueryProviderHOC(<OfferTile {...props} />))
+      fireEvent.press(screen.getByTestId('tileImage'))
+
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        offerId: OFFER_ID,
+        from: 'home',
+        moduleName: props.moduleName,
+      })
+    })
+
+    it('should log ConsultOffer that user opened the offer from the list of similar offers', async () => {
+      const propsFromSimilarOffers = {
+        ...props,
+        fromOfferId: 1,
+        playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+        apiRecoParams,
+      }
+
+      render(
+        reactQueryProviderHOC(
+          <OfferTile {...propsFromSimilarOffers} offerLocation={OFFER_LOCATION} />
+        )
+      )
+      fireEvent.press(screen.getByTestId('tileImage'))
+
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        ...apiRecoParams,
+        offerId: OFFER_ID,
+        from: 'similar_offer',
+        moduleName: props.moduleName,
+        fromOfferId: 1,
+        playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+      })
+    })
+
+    it('should log ConsultOffer with homeEntryId if provide', async () => {
+      render(reactQueryProviderHOC(<OfferTile {...props} homeEntryId="abcd" />))
+      fireEvent.press(screen.getByTestId('tileImage'))
+
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        offerId: OFFER_ID,
+        from: 'home',
+        moduleName: props.moduleName,
+        homeEntryId: 'abcd',
+      })
+    })
+
+    it('should log ConsultOffer from venue offers playlist and from search venues playlist', async () => {
+      const propsFromSearchVenuesPlaylist = {
+        offerId: OFFER_ID,
+        analyticsFrom: 'venue' as Referrals,
+        venueId: 1,
+        searchId,
+        categoryLabel: HomepageLabelNameEnumv2.MUSIQUE,
+        categoryId: CategoryIdEnum.MUSIQUE_LIVE,
+        subcategoryId: OFFER.subcategoryId,
+        price: '28 €',
+        width: 100,
+        height: 100,
+        thumbUrl: OFFER.thumbUrl,
+      }
+
+      render(
+        reactQueryProviderHOC(
+          <OfferTile {...propsFromSearchVenuesPlaylist} offerLocation={OFFER_LOCATION} />
+        )
+      )
+      fireEvent.press(screen.getByTestId('tileImage'))
+
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        offerId: OFFER_ID,
+        from: 'venue',
+        venueId: 1,
+        searchId,
+      })
+    })
+
+    it('should log ConsultOffer that user opened the offer from the list of same artist', async () => {
+      const propsFromSimilarOffers = {
+        ...props,
+        fromOfferId: 1,
+        playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
+        apiRecoParams,
+      }
+
+      render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
+      fireEvent.press(screen.getByTestId('tileImage'))
+
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        ...apiRecoParams,
+        offerId: OFFER_ID,
+        fromOfferId: 1,
+        from: 'same_artist_playlist',
+        moduleName: props.moduleName,
+        playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
+      })
+    })
+
+    it('should log ConsultOffer from searchN1 gtl playlist', async () => {
+      const propsFromSearchN1GtlPlaylist = {
+        ...props,
+        analyticsFrom: 'searchn1' as Referrals,
+        categoryLabel: HomepageLabelNameEnumv2.LIVRES,
+        categoryId: CategoryIdEnum.LIVRE,
+        searchId,
+      }
+
+      render(reactQueryProviderHOC(<OfferTile {...propsFromSearchN1GtlPlaylist} />))
+
+      fireEvent.press(screen.getByTestId('tileImage'))
+
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        from: 'searchn1',
+        offerId: OFFER_ID,
+        searchId: propsFromSearchN1GtlPlaylist.searchId,
+        moduleName: propsFromSearchN1GtlPlaylist.moduleName,
+        fromOfferId: undefined,
+        homeEntryId: undefined,
+        index: undefined,
+        moduleId: undefined,
+        playlistType: undefined,
+        venueId: undefined,
+      })
     })
   })
 })
