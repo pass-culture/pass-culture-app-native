@@ -81,9 +81,9 @@ export const useVerticalVideoPlayer = ({
     [setIsPlaying, setHasFinishedPlaying, currentVideoId, moduleId]
   )
 
-  const getVideoDuration = async () => {
+  const getVideoDuration = useCallback(async () => {
     return verticalPlayerRef.current?.getDuration()
-  }
+  }, [])
 
   const logPausedVideo = async () => {
     const videoDuration = await getVideoDuration()
@@ -146,5 +146,6 @@ export const useVerticalVideoPlayer = ({
     onChangeState,
     toggleErrorView,
     videoState,
+    getVideoDuration,
   }
 }
