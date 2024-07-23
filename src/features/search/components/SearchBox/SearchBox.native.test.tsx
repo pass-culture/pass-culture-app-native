@@ -629,7 +629,7 @@ describe('SearchBox component with SearchN1 previous route on search results', (
 
   it('should clear offerNativeCategories and gtls when a previous search was made on searchResults and now a query is made on searchN1', async () => {
     const BOOK_OFFER_CATEGORIES = [SearchGroupNameEnumv2.LIVRES]
-    const BOOK_SEARCH_BOX_PLACEHOLDER = 'Rechercher parmi les livres'
+    const BOOK_SEARCH_BOX_PLACEHOLDER = 'Livres'
 
     mockSearchState = {
       ...mockSearchState,

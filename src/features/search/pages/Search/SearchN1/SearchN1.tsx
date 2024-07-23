@@ -60,7 +60,7 @@ export const SearchN1: React.FC = () => {
     <ScrollView>
       <SearchN1Bar
         offerCategories={offerCategories}
-        placeholder={`Rechercher parmi les ${titles[offerCategory].toLowerCase()}`}
+        placeholder={titles[offerCategory]}
         title={titles[offerCategory]}
       />
       <SubcategoryButtonList subcategoryButtonContent={subCategoriesContent} />

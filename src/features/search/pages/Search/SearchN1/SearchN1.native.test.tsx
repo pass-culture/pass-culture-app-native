@@ -54,7 +54,7 @@ describe('<SearchN1/>', () => {
       it('should navigate to search results with the corresponding parameters', async () => {
         const QUERY = 'Harry'
         render(reactQueryProviderHOC(<SearchN1 />))
-        const searchInput = screen.getByPlaceholderText('Rechercher parmi les livres')
+        const searchInput = screen.getByPlaceholderText('Livres')
         fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: QUERY } })
 
         await act(async () => {})
