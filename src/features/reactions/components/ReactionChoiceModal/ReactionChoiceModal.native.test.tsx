@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { ReactionTypeEnum } from 'api/gen'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { fireEvent, render, screen } from 'tests/utils'
@@ -105,5 +106,26 @@ describe('ReactionChoiceModal', () => {
     fireEvent.press(screen.getByTestId('Fermer la modale'))
 
     expect(mockCloseModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should save reaction when click on reaction button', () => {
+    const mockHandleSave = jest.fn()
+    render(
+      <ReactionChoiceModal
+        offer={mockOffer}
+        dateUsed="2023-05-30"
+        visible
+        closeModal={mockCloseModal}
+        onSave={mockHandleSave}
+      />
+    )
+
+    fireEvent.press(screen.getByText('J’aime'))
+    fireEvent.press(screen.getByTestId('Valider la réaction'))
+
+    expect(mockHandleSave).toHaveBeenCalledWith({
+      offerId: mockOffer.id,
+      reactionType: ReactionTypeEnum.LIKE,
+    })
   })
 })

@@ -163,7 +163,7 @@ describe('EndedBookingItem', () => {
     })
 
     it('should display reaction button', () => {
-      renderEndedBookingItem(bookingsSnap.ended_bookings[0])
+      renderEndedBookingItem(bookingsSnap.ended_bookings[1])
 
       expect(screen.getByLabelText('Réagis à ta réservation')).toBeOnTheScreen()
     })
@@ -176,7 +176,7 @@ describe('EndedBookingItem', () => {
       'should display correct icon and correct a11y label when data has reaction %s',
       async (userReaction, labelRegex) => {
         renderEndedBookingItem({
-          ...bookingsSnap.ended_bookings[0],
+          ...bookingsSnap.ended_bookings[1],
           userReaction,
         })
 
@@ -193,7 +193,7 @@ describe('EndedBookingItem', () => {
         toggleModal: jest.fn(),
       })
 
-      renderEndedBookingItem(bookingsSnap.ended_bookings[0])
+      renderEndedBookingItem(bookingsSnap.ended_bookings[1])
 
       fireEvent.press(screen.getByLabelText('Réagis à ta réservation'))
 

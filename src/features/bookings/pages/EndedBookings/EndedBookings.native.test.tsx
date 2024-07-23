@@ -7,7 +7,7 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { EndedBookings } from './EndedBookings'
 
@@ -20,7 +20,12 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
+const mockMutate = jest.fn()
+jest.mock('features/reactions/api/useReactionMutation', () => ({
+  useReactionMutation: () => ({ mutate: mockMutate }),
+}))
 
 describe('EndedBookings', () => {
   it('should render correctly', () => {
@@ -39,7 +44,7 @@ describe('EndedBookings', () => {
   it('should display the right number of ended bookings', () => {
     renderEndedBookings(bookingsSnap)
 
-    expect(screen.getByText('1 réservation terminée')).toBeOnTheScreen()
+    expect(screen.getByText('2 réservations terminées')).toBeOnTheScreen()
   })
 
   it('should goBack when we press on the back button', () => {
@@ -47,6 +52,25 @@ describe('EndedBookings', () => {
     fireEvent.press(screen.getByTestId('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
+  })
+
+  describe('with feature flag activated', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
+    })
+
+    it('should send reaction from cinema offer', async () => {
+      renderEndedBookings(bookingsSnap)
+
+      fireEvent.press(screen.getByLabelText('Réagis à ta réservation'))
+
+      fireEvent.press(await screen.findByText('J’aime'))
+      fireEvent.press(screen.getByText('Valider la réaction'))
+
+      await waitFor(() => {
+        expect(mockMutate).toHaveBeenCalledTimes(1)
+      })
+    })
   })
 })
 

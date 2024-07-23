@@ -1,7 +1,7 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { BookingCancellationReasons, ReactionTypeEnum } from 'api/gen'
+import { BookingCancellationReasons, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { BookingItemTitle } from 'features/bookings/components/BookingItemTitle'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
@@ -29,7 +29,7 @@ import { Valid } from 'ui/svg/icons/Valid'
 import { Wrong } from 'ui/svg/icons/Wrong'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const EndedBookingItem = ({ booking }: BookingItemProps) => {
+export const EndedBookingItem = ({ booking, onSaveReaction }: BookingItemProps) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
   const categoryId = useCategoryId(stock.offer.subcategoryId)
   const prePopulateOffer = usePrePopulateOffer()
@@ -37,6 +37,10 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
   const iconFactory = useIconFactory()
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
+
+  const [userReaction, setUserReaction] = useState<ReactionTypeEnum | null | undefined>(
+    booking.userReaction
+  )
 
   const isEligibleBookingsForArchiveValue = isEligibleBookingsForArchive(booking)
 
@@ -126,6 +130,12 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     utmMedium: 'ended_booking',
   })
 
+  const handleSaveReaction = async ({ offerId, reactionType }: PostReactionRequest) => {
+    await onSaveReaction?.({ offerId, reactionType })
+    setUserReaction(reactionType)
+    hideReactionModal()
+  }
+
   const pressShareOffer = useCallback(() => {
     analytics.logShare({ type: 'Offer', from: 'endedbookings', offerId: stock.offer.id })
     shareOffer()
@@ -174,13 +184,13 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
             accessibilityLabel={`Partager l’offre ${stock.offer.name}`}
           />
         </ShareContainer>
-        {shouldDisplayReactionFeature ? (
+        {shouldDisplayReactionFeature && !cancellationDate ? (
           <ReactionContainer>
             <RoundedButton
               iconName="like"
-              Icon={getCustomReactionIcon(booking.userReaction)}
+              Icon={getCustomReactionIcon(userReaction)}
               onPress={showReactionModal}
-              accessibilityLabel={getReactionButtonAccessibilityLabel(booking.userReaction)}
+              accessibilityLabel={getReactionButtonAccessibilityLabel(userReaction)}
             />
           </ReactionContainer>
         ) : null}
@@ -199,7 +209,8 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
           dateUsed={endedBookingDateLabel ?? ''}
           closeModal={hideReactionModal}
           visible={reactionModalVisible}
-          defaultReaction={booking.userReaction}
+          defaultReaction={userReaction}
+          onSave={handleSaveReaction}
         />
       ) : null}
     </Container>

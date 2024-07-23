@@ -880,7 +880,7 @@ exports[`Bookings should render correctly 1`] = `
               }
             >
               <View
-                accessibilityLabel="Réservation terminée"
+                accessibilityLabel="Réservations terminées"
                 accessibilityRole="link"
                 accessibilityState={
                   {
@@ -921,7 +921,7 @@ exports[`Bookings should render correctly 1`] = `
                     },
                   ]
                 }
-                testID="Réservation terminée"
+                testID="Réservations terminées"
               >
                 <View
                   style={
@@ -973,7 +973,7 @@ exports[`Bookings should render correctly 1`] = `
                           ]
                         }
                       >
-                        1
+                        2
                       </Text>
                     </View>
                   </View>
@@ -1012,7 +1012,7 @@ exports[`Bookings should render correctly 1`] = `
                         ]
                       }
                     >
-                      Réservation terminée
+                      Réservations terminées
                     </Text>
                   </View>
                   <View
