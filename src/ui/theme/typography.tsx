@@ -10,10 +10,6 @@ interface CustomTextProps {
 }
 export type TextProps = CustomTextProps & RNTextProps
 
-const Hero = styled(RNText)(({ theme }) => ({
-  ...theme.typography.hero,
-}))
-
 const Title1 = styled(RNText).attrs<{ accessibilityLevel: HeadingLevel }>(
   ({ accessibilityLevel }) => getHeadingAttrs(accessibilityLevel ?? 1)
 )(({ theme }) => ({
@@ -81,7 +77,6 @@ const Hint = styled(RNText)(({ theme }) => ({
 }))
 
 export const Typo = {
-  Hero,
   Title1,
   Title2,
   Title3,

@@ -5,7 +5,8 @@ import styled from 'styled-components/native'
 import { DomainsCredit } from 'api/gen'
 import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { formatToFrenchDecimal } from 'libs/parsers/getDisplayPrice'
-import { Typo, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
+import { TypoDS } from 'ui/theme/designSystemTypographie'
 
 type CreditInfoProps = {
   totalCredit: DomainsCredit['all']
@@ -14,13 +15,13 @@ type CreditInfoProps = {
 export function CreditInfo({ totalCredit }: PropsWithChildren<CreditInfoProps>) {
   return (
     <View testID="credit-info">
-      <Hero>{formatToFrenchDecimal(totalCredit.remaining)}</Hero>
+      <Title>{formatToFrenchDecimal(totalCredit.remaining)}</Title>
       <Spacer.Column numberOfSpaces={3} />
       <CreditProgressBar progress={totalCredit.remaining / totalCredit.initial} />
     </View>
   )
 }
 
-const Hero = styled(Typo.Hero)(({ theme }) => ({
+const Title = styled(TypoDS.Title1)(({ theme }) => ({
   color: theme.colors.secondary,
 }))

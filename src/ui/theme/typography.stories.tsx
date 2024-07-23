@@ -9,9 +9,10 @@ export default {
   title: 'Fondations/Typo',
 }
 
-export const Typographies: ComponentStory<typeof Typo.Hero> = () => (
+type TypographyComponents = (typeof Typo)[keyof typeof Typo]
+
+export const Typographies: ComponentStory<TypographyComponents> = () => (
   <React.Fragment>
-    <Typo.Hero>Hero</Typo.Hero>
     <Spacer.Column numberOfSpaces={2} />
     <Typo.Title1>Title1</Typo.Title1>
     <Spacer.Column numberOfSpaces={2} />
