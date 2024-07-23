@@ -3,6 +3,8 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Rechercher'
 - tapOn: 'Livres'
 
+- tapOn: "Romans & littérature"
+
 - runFlow:
     when:
       visible: 'Ma position'
@@ -10,13 +12,11 @@ appId: ${MAESTRO_APP_ID}
       - tapOn: 'Ma position'
       - tapOn: 'Partout'
 
-# TODO: Attendre que "Catégories soit check"
 - tapOn: 'Catégories'
 
-- tapOn: 'Tout'
+- tapOn: 'Thriller'
 - tapOn: 'Rechercher'
 
-# TODO: Faire remonter des offres N-1 dans l'arbo
 - swipe: # Permet d'éviter les offres gratuite en haut de liste
     from:
       text: Les offres

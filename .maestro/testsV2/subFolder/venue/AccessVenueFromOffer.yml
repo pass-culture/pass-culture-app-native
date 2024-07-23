@@ -4,6 +4,18 @@ appId: ${MAESTRO_APP_ID}
     text: "Livres papier"
     index: 0
 
+- swipe:
+    from:
+      id: "tagsContainer"
+    direction: "UP"
 - scroll
+- scroll
+- scroll
+- scrollUntilVisible:
+    element:
+      text: "À propos"
+    direction: "UP"
+
+
 - tapOn:
     id: "Accéder à la page du lieu.*"

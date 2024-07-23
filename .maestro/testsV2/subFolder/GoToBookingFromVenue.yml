@@ -10,6 +10,10 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Détails de la réservation'
 - tapOn: 'Confirmer la réservation'
 
-- tapOn: "Retourner à l’accueil"
+- assertVisible: "Réservation confirmée\_!"
+- tapOn: 'Voir ma réservation'
 
-- tapOn: "Mes réservations"
+- scrollUntilVisible:
+    element: 'Annuler ma réservation'
+- tapOn: 'Annuler ma réservation'
+- tapOn: 'Annuler ma réservation'

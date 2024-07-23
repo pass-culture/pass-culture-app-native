@@ -11,10 +11,6 @@ appId: ${MAESTRO_APP_ID}
 - hideKeyboard
 - tapOn: 'Se connecter' # Android
 
-- extendedWaitUntil:
-    notVisible: 
-        id: "Se connecter"
-    timeout: 20000
 
 - runFlow: # Si apparition de la modale de suivi des thèmes
     when:

@@ -90,8 +90,6 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Confirmer la réservation'
 
 - assertVisible: "Réservation confirmée\_!"
-- waitForAnimationToEnd:
-    timeout: 10000
 - tapOn: 
     text: "Voir ma réservation"
     retryTapIfNoChange: true
