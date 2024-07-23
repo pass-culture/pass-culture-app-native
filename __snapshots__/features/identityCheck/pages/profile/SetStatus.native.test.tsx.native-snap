@@ -310,10 +310,11 @@ exports[`<SetStatus/> should render correctly 1`] = `
         >
           <View
             headerHeight={65}
-            paddingTop={65}
             style={
               [
-                {},
+                {
+                  "paddingTop": 65,
+                },
               ]
             }
           />
