@@ -143,15 +143,18 @@ const BottomView = styled(View)(({ theme }) => ({
   paddingHorizontal: getSpacing(5),
 }))
 
-const HeaderHeightSpacer = styled(View).attrs<{ headerHeight: number }>(({ headerHeight }) => ({
+const HeaderHeightSpacer = styled(View).attrs<{ headerHeight: number }>({})<{
+  headerHeight: number
+}>(({ headerHeight }) => ({
   paddingTop: headerHeight,
-}))<{ headerHeight: number }>``
+}))
 
-const SpinnerView = styled(View).attrs<{ headerHeight: number }>({
+const SpinnerView = styled(View).attrs<{ headerHeight: number }>({})<{
+  headerHeight: number
+}>(({ headerHeight }) => ({
   flex: 1,
-  justifyContent: 'center',
-})<{ headerHeight: number }>(({ headerHeight }) => ({
   paddingTop: headerHeight,
+  justifyContent: 'center',
 }))
 
 const AnimatedGradient = createAnimatableComponent(LinearGradient)
