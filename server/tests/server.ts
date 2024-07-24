@@ -1,66 +1,36 @@
-import { http } from 'msw'
+import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
 import { env } from '../src/libs/environment/env'
 
 import {
   OFFER_RESPONSE_SNAPSHOT,
-  VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT,
   VENUE_WITH_BANNER_RESPONSE_SNAPSHOT,
+  VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT,
 } from './constants'
 
 export const server = setupServer(
   // offer
-  http.get(
+  rest.get(
     `${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/offer/${OFFER_RESPONSE_SNAPSHOT.id}`,
-    () =>
-      new Response(JSON.stringify(OFFER_RESPONSE_SNAPSHOT), {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        status: 200,
-      })
+    (req, res, ctx) => res(ctx.status(200), ctx.json(OFFER_RESPONSE_SNAPSHOT))
   ),
-
   // 404 offer
-  http.get(
-    `${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/offer/0`,
-    () =>
-      new Response(JSON.stringify({}), {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        status: 200,
-      })
+  rest.get(`${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/offer/0`, (req, res, ctx) =>
+    res(ctx.status(200), ctx.json({}))
   ),
   // 502 offer
-  http.get(
-    `${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/offer/502`,
-    () =>
-      new Response(undefined, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        status: 502,
-      })
+  rest.get(`${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/offer/502`, (req, res, ctx) =>
+    res(ctx.status(502))
   ),
   // venue
-  http.get(
+  rest.get(
     `${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/venue/${VENUE_WITH_BANNER_RESPONSE_SNAPSHOT.id}`,
-    () =>
-      new Response(JSON.stringify(VENUE_WITH_BANNER_RESPONSE_SNAPSHOT), {
-        status: 200,
-      })
+    (req, res, ctx) => res(ctx.status(200), ctx.json(VENUE_WITH_BANNER_RESPONSE_SNAPSHOT))
   ),
   // venue alternative
-  http.get(
+  rest.get(
     `${env.API_BASE_URL}/${env.API_BASE_PATH_NATIVE_V1}/venue/${VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT.id}`,
-    () =>
-      new Response(JSON.stringify(VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT), {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        status: 200,
-      })
+    (req, res, ctx) => res(ctx.status(200), ctx.json(VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT))
   )
 )
