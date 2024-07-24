@@ -76,13 +76,14 @@ const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
   return (
     <React.Fragment>
       {/* As long as all modules are not shown, we keep the spinner */}
-      {hasShownAll ? null : (
+      {hasShownAll ? (
+        <AccessibilityFooter />
+      ) : (
         <React.Fragment>
           <FooterContainer>
             <Spinner testID="spinner" />
           </FooterContainer>
           <Spacer.TabBar />
-          <AccessibilityFooter />
         </React.Fragment>
       )}
       <Spacer.TabBar />
