@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
-import styled from 'styled-components'
 
 import { CategoryIdEnum } from 'api/gen'
+import { theme } from 'theme'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
@@ -57,17 +57,13 @@ WithMutilpleDetails.args = {
   ),
 }
 
-const ArrowRightIcon = styled(ArrowRight).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-}))({
-  flexShrink: 0,
-})
-
 export const WithRightElement = Template.bind({})
 WithRightElement.args = {
   title: 'La Joconde',
   subtitle: 'Arts visuels',
   details: ['Du 12/06 au 24/06'],
   rightTagLabel: 'Gratuit',
-  bottomRightElement: <ArrowRightIcon />,
+  // we inline because when we use styled we get the ts error : 'Type of property 'defaultProps' circularly references itself in mapped type'
+  // eslint-disable-next-line react-native/no-inline-styles
+  bottomRightElement: <ArrowRight style={{ flexShrink: 0 }} size={theme.icons.sizes.extraSmall} />,
 }
