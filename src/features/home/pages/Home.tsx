@@ -1,9 +1,11 @@
 import { useRoute } from '@react-navigation/native'
+import { maxBy } from 'lodash'
 import React, { FunctionComponent, useEffect } from 'react'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useBookings } from 'features/bookings/api'
 import { useAttrakdiffModal } from 'features/home/api/useAttrakdiffModal'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
@@ -19,12 +21,11 @@ import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
-import { BatchEvent, BatchEventData, BatchUser } from 'libs/react-native-batch'
+import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { startTransaction } from 'shared/performance/transactions'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
-import { useCreditStore } from '../../identityCheck/api/useCreditActivation'
 import { createInMemoryAttrakdiff } from '../api/inMemoryAttrakdiff'
 
 const Header = () => (
@@ -60,7 +61,6 @@ export const Home: FunctionComponent = () => {
   })
   const { height } = useWindowDimensions()
   const { shouldApplyGraphicRedesign } = useRemoteConfigContext()
-  const creditStore = useCreditStore()
 
   useEffect(() => {
     if (id) {
@@ -95,14 +95,25 @@ export const Home: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition])
 
+  const { data: bookings } = useBookings()
+
   const triggerBatchAttrakdiffModal = async () => {
-    const batchEvent = new BatchEventData()
-    batchEvent.put('app_version', getAppVersion())
-    batchEvent.put('is_graphic_redesign_applied', shouldApplyGraphicRedesign)
-    if (creditStore.activationDate) {
-      batchEvent.put('credit_activation_date', creditStore.activationDate.toISOString())
+    const editor = BatchUser.editor()
+    editor
+      .setAttribute('has_seen_graphique_redesign', shouldApplyGraphicRedesign)
+      .setAttribute('app_version', getAppVersion())
+
+    const allBookings = [...(bookings?.ongoing_bookings || []), ...(bookings?.ended_bookings || [])]
+    const lastBooking = maxBy(allBookings, (booking) => booking?.dateCreated)
+    if (lastBooking) {
+      editor.setAttribute('last_booking_date', lastBooking.dateCreated)
     }
-    BatchUser.trackEvent(BatchEvent.hasSeenEnoughHomeContent, undefined, batchEvent)
+    if (user?.firstDepositActivationDate) {
+      editor.setAttribute('credit_activation_date', user.firstDepositActivationDate)
+    }
+
+    editor.save()
+    BatchUser.trackEvent(BatchEvent.hasSeenEnoughHomeContent)
   }
 
   const { checkTrigger } = useAttrakdiffModal({

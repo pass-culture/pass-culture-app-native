@@ -3702,6 +3702,11 @@ export interface UserProfileResponse {
    * @type {string}
    * @memberof UserProfileResponse
    */
+  firstDepositActivationDate?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
   firstName?: string | null
   /**
    * @type {boolean}
