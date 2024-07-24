@@ -294,9 +294,7 @@ const OnlineProfile: React.FC = () => {
               {isWeb ? null : <Spacer.TabBar />}
             </ProfileContainer>
           </View>
-          <FooterContainer>
-            <AccessibilityFooter />
-          </FooterContainer>
+          <AccessibilityFooter />
         </ScrollViewContentContainer>
       </ScrollView>
       <StatusBarBlurredBackground />
@@ -324,10 +322,6 @@ const ScrollViewContentContainer = styled.View({
   flex: 1,
   flexDirection: 'column',
 })
-
-const FooterContainer = styled.View(({ theme }) => ({
-  paddingHorizontal: theme.contentPage.marginHorizontal,
-}))
 
 const paddingVertical = getSpacing(4)
 

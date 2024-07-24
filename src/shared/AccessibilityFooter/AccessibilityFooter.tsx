@@ -21,46 +21,52 @@ export const FOOTER_ID = 'footer_id_for_quick_access'
 export const AccessibilityFooter = () => {
   if (isWeb) {
     return (
-      <View accessibilityRole={AccessibilityRole.FOOTER} nativeID={FOOTER_ID}>
-        <Separator.Horizontal />
-        <Container>
-          <LogoContainer>
-            <ColoredPassCultureLogo />
-          </LogoContainer>
-          <LinksContainer>
-            <InternalTouchableLink navigateTo={{ screen: 'Accessibility' }}>
-              <CaptionNeutralInfo>Accessibilité&nbsp;: partiellement conforme</CaptionNeutralInfo>
-            </InternalTouchableLink>
-            <InternalTouchableLink navigateTo={{ screen: 'LegalNotices' }}>
-              <CaptionNeutralInfo>Mentions légales</CaptionNeutralInfo>
-            </InternalTouchableLink>
-            <ExternalTouchableLink
-              as={ButtonQuaternaryGrey}
-              wording="CGU utilisateurs"
-              externalNav={{ url: env.CGU_LINK }}
-              icon={ExternalSiteFilled}
-              justifyContent="flex-start"
-              inline
-            />
-            <ExternalTouchableLink
-              as={ButtonQuaternaryGrey}
-              wording="Charte des données personnelles"
-              externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
-              icon={ExternalSiteFilled}
-              justifyContent="flex-start"
-              inline
-            />
-          </LinksContainer>
-          <LogoContainer>
-            <LogoMinistere />
-          </LogoContainer>
-          <Spacer.TabBar />
-        </Container>
-      </View>
+      <AccessibilityFooterContainer>
+        <View accessibilityRole={AccessibilityRole.FOOTER} nativeID={FOOTER_ID}>
+          <Separator.Horizontal />
+          <Container>
+            <LogoContainer>
+              <ColoredPassCultureLogo />
+            </LogoContainer>
+            <LinksContainer>
+              <InternalTouchableLink navigateTo={{ screen: 'Accessibility' }}>
+                <CaptionNeutralInfo>Accessibilité&nbsp;: partiellement conforme</CaptionNeutralInfo>
+              </InternalTouchableLink>
+              <InternalTouchableLink navigateTo={{ screen: 'LegalNotices' }}>
+                <CaptionNeutralInfo>Mentions légales</CaptionNeutralInfo>
+              </InternalTouchableLink>
+              <ExternalTouchableLink
+                as={ButtonQuaternaryGrey}
+                wording="CGU utilisateurs"
+                externalNav={{ url: env.CGU_LINK }}
+                icon={ExternalSiteFilled}
+                justifyContent="flex-start"
+                inline
+              />
+              <ExternalTouchableLink
+                as={ButtonQuaternaryGrey}
+                wording="Charte des données personnelles"
+                externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
+                icon={ExternalSiteFilled}
+                justifyContent="flex-start"
+                inline
+              />
+            </LinksContainer>
+            <LogoContainer>
+              <LogoMinistere />
+            </LogoContainer>
+            <Spacer.TabBar />
+          </Container>
+        </View>
+      </AccessibilityFooterContainer>
     )
   }
   return null
 }
+
+const AccessibilityFooterContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
 
 const Container = styled.View(({ theme }) => ({
   alignItems: theme.isDesktopViewport ? 'center' : undefined,
