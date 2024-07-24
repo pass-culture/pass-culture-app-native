@@ -294,7 +294,11 @@ const OnlineProfile: React.FC = () => {
               {isWeb ? null : <Spacer.TabBar />}
             </ProfileContainer>
           </View>
-          <AccessibilityFooter />
+          {isWeb ? (
+            <View accessibilityRole={AccessibilityRole.FOOTER}>
+              <AccessibilityFooter />
+            </View>
+          ) : null}
         </ScrollViewContentContainer>
       </ScrollView>
       <StatusBarBlurredBackground />

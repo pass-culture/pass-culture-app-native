@@ -4,6 +4,7 @@ import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useS
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
+  Platform,
   ScrollView,
   useWindowDimensions,
 } from 'react-native'
@@ -73,22 +74,27 @@ const renderModule = (
 )
 
 const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
-  return (
-    <React.Fragment>
-      {/* As long as all modules are not shown, we keep the spinner */}
-      {hasShownAll ? (
-        <AccessibilityFooter />
-      ) : (
-        <React.Fragment>
-          <FooterContainer>
-            <Spinner testID="spinner" />
-          </FooterContainer>
-          <Spacer.TabBar />
-        </React.Fragment>
-      )}
-      <Spacer.TabBar />
-    </React.Fragment>
-  )
+  if (hasShownAll && Platform.OS === 'web') {
+    return (
+      <React.Fragment>
+        <footer>
+          <AccessibilityFooter />
+        </footer>
+        <Spacer.TabBar />
+      </React.Fragment>
+    )
+  }
+  if (!hasShownAll) {
+    return (
+      <React.Fragment>
+        <FooterContainer>
+          <Spinner testID="spinner" />
+        </FooterContainer>
+        <Spacer.TabBar />
+      </React.Fragment>
+    )
+  }
+  return null
 }
 
 const buildModulesWithVideoCarousel = (

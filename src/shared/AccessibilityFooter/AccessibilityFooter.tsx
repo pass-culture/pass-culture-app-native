@@ -2,7 +2,6 @@ import React from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { env } from 'libs/environment'
 import { ButtonQuaternaryGrey } from 'ui/components/buttons/ButtonQuaternaryGrey'
 import { Separator } from 'ui/components/Separator'
@@ -22,7 +21,7 @@ export const AccessibilityFooter = () => {
   if (isWeb) {
     return (
       <AccessibilityFooterContainer>
-        <View accessibilityRole={AccessibilityRole.FOOTER} nativeID={FOOTER_ID}>
+        <View nativeID={FOOTER_ID}>
           <Separator.Horizontal />
           <Container>
             <LogoContainer>
