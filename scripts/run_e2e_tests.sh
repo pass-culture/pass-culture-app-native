@@ -27,10 +27,12 @@ fi
 case "$target" in
   "test")
     TAGS=""
+    run_tracking_tests=true
     ;;
 
   "cloud")
-    TAGS="--include-tags=cloud"
+    TAGS="--include-tags cloud"
+    run_tracking_tests=false
     ;;
 esac
 
@@ -94,7 +96,6 @@ stop_mock_analytics_server() {
 password=$(parse_env_variable PASSWORD .maestro/.env.secret)
 
 if [ "$target" == "test" ]; then
-  tracking_tests_value=true
   stop_mock_analytics_server
   start_mock_analytics_server_silently_in_the_background
 fi
@@ -108,11 +109,10 @@ maestro "$target" \
   --env MAESTRO_MOCK_ANALYTICS_SERVER="http://localhost:$MOCK_ANALYTICS_SERVER_PORT" \
   --env MAESTRO_NUMBER_PHONE="0607080910" \
   --env MAESTRO_PASSWORD="$password" \
-  --env MAESTRO_RUN_TRACKING_TESTS="$tracking_tests_value" \
+  --env MAESTRO_RUN_TRACKING_TESTS="$run_tracking_tests" \
   $TAGS \
   $rest_of_arguments
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" true
 if [ "$target" == "test" ]; then
   stop_mock_analytics_server
-  tracking_tests_value=false
 fi

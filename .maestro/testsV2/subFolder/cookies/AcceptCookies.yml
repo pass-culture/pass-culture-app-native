@@ -1,8 +1,4 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- extendedWaitUntil:
-    visible: 
-        text: 'Respect de ta vie privée'
-    timeout: 10000
 - assertVisible: 'Respect de ta vie privée'
 - tapOn: 'Tout accepter'
