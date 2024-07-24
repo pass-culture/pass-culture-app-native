@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
 import { ICarouselInstance } from 'react-native-reanimated-carousel'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import {
   EnrichedVideoCarouselItem,
@@ -37,6 +38,7 @@ export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBa
   const mapping = useCategoryIdMapping()
 
   const carouselRef = React.useRef<ICarouselInstance>(null)
+  const carouselDotId = uuidv4()
   const progressValue = useSharedValue<number>(0)
 
   const enableVideoCarousel = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_710_WEB)
@@ -52,7 +54,7 @@ export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBa
   const videoSources = videoSourceExtractor(itemsWithRelatedData)
 
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(autoplay ? true : false)
+  const [isPlaying, setIsPlaying] = useState(autoplay ?? false)
   const [hasFinishedPlaying, setHasFinishedPlaying] = useState(false)
 
   useEffect(() => {
@@ -184,7 +186,7 @@ export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBa
           {hasMultipleItems ?? (
             <BarContainer>
               {itemsWithRelatedData.map((_, index) => (
-                <CarouselBar animValue={progressValue} index={index} key={index} />
+                <CarouselBar animValue={progressValue} index={index} key={index + carouselDotId} />
               ))}
             </BarContainer>
           )}

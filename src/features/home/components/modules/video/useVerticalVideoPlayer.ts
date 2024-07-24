@@ -45,6 +45,7 @@ export const useVerticalVideoPlayer = ({
   playerRefCurrent,
   homeEntryId,
 }: Props) => {
+  const isWeb = Platform.OS === 'web'
   const [isMuted, setIsMuted] = useState(true)
   const [showErrorView, setShowErrorView] = useState(false)
   const [videoState, setVideoState] = useState(PlayerState.UNSTARTED)
@@ -111,7 +112,7 @@ export const useVerticalVideoPlayer = ({
 
   const toggleMute = () => {
     switch (true) {
-      case Platform.OS === 'web':
+      case isWeb:
         if (playerRefCurrent && 'mute' in playerRefCurrent) {
           if (isMuted) {
             playerRefCurrent.unMute()
@@ -121,28 +122,24 @@ export const useVerticalVideoPlayer = ({
         }
         setIsMuted(!isMuted)
         break
-      case Platform.OS !== 'web':
-        setIsMuted(!isMuted)
-        break
       default:
+        setIsMuted(!isMuted)
         break
     }
   }
 
   const pauseVideo = useCallback(() => {
     switch (true) {
-      case Platform.OS === 'web':
+      case isWeb:
         if (playerRefCurrent && 'pauseVideo' in playerRefCurrent) {
           playerRefCurrent.pauseVideo()
           setIsPlaying(false)
           logPausedVideo()
         }
         break
-      case Platform.OS !== 'web':
+      default:
         setIsPlaying(false)
         logPausedVideo()
-        break
-      default:
         break
     }
   }, [playerRefCurrent, setIsPlaying])
@@ -157,18 +154,16 @@ export const useVerticalVideoPlayer = ({
 
   const playVideo = () => {
     switch (true) {
-      case Platform.OS === 'web':
+      case isWeb:
         if (playerRefCurrent && 'playVideo' in playerRefCurrent) {
           playerRefCurrent.playVideo()
           setIsPlaying(true)
           setHasFinishedPlaying(false)
         }
         break
-      case Platform.OS !== 'web':
+      default:
         setIsPlaying(true)
         setHasFinishedPlaying(false)
-        break
-      default:
         break
     }
   }

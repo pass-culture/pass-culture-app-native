@@ -165,9 +165,7 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
       {isPlaying ? (
         <PressListener style={{ height: playerHeight }} onPress={togglePlay} />
       ) : (
-        <React.Fragment>
-          <PlayerCalque />
-        </React.Fragment>
+        <PlayerCalque />
       )}
 
       {isPlaying ? (
