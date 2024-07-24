@@ -1,16 +1,15 @@
 import colorAlpha from 'color-alpha'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useWindowDimensions, Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import Animated, {
   cancelAnimation,
   Easing,
-  interpolate,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
-import YouTubePlayer from 'react-native-youtube-iframe'
+import YouTubePlayer, { PLAYER_STATES } from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -18,13 +17,9 @@ import {
   RATIO710,
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
-import {
-  PlayerState,
-  useVerticalVideoPlayer,
-} from 'features/home/components/modules/video/useVerticalVideoPlayer'
+import { useVerticalVideoPlayer } from 'features/home/components/modules/video/useVerticalVideoPlayer'
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
 import { VerticalVideoErrorView } from 'features/home/components/modules/video/VerticalVideoErrorView'
-import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { theme } from 'theme'
 import { Pause } from 'ui/svg/icons/Pause'
@@ -33,17 +28,10 @@ import { SoundOff } from 'ui/svg/icons/SoundOff'
 import { SoundOn } from 'ui/svg/icons/SoundOn'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+import { PlayerState } from './types'
+
 const PLAYER_CONTROLS_HEIGHT = getSpacing(0)
 
-/* TO DO : 
-- [x] faire une ProgressBar
-- [x] syncro avec la play pause
-- [ ] changer de vidéos dans le carrousel
-- [ ] syncro avec les autres états
-- [ ] attention y a le mobile 
-- [ ] et le web
-- [ ] Revoir l'UI 
-*/
 export enum VideoPlayerButtonsWording {
   CONTINUE_PLAYING = 'Continuer à regarder',
   START_PLAYING = 'Lire la vidéo',
@@ -83,12 +71,12 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     playVideo,
     replayVideo,
     playerRef,
-    elapsed,
     onChangeState,
     showErrorView,
     toggleErrorView,
     videoState,
     getVideoDuration,
+    getCurrentTime,
   } = useVerticalVideoPlayer({
     isPlaying,
     setIsPlaying,
@@ -108,40 +96,57 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
 
   const animValue = useSharedValue(0)
 
-  useEffect(() => {
-    if (!isPlaying) return cancelAnimation(animValue)
-    ;(async () => {
-      const videoDuration = await getVideoDuration()
-      if (!videoDuration) return
-
-      animValue.value = withTiming(100, { duration: videoDuration * 1000, easing: Easing.linear })
-    })()
-  }, [animValue, getVideoDuration, isPlaying])
-
-  useEffect(() => {
-    animValue.value = 0
-    ;(async () => {
-      const videoDuration = await getVideoDuration()
-      if (!videoDuration) return
-
-      animValue.value = withTiming(100, { duration: videoDuration * 1000, easing: Easing.linear })
-    })()
-  }, [animValue, currentIndex, getVideoDuration])
-
   const animStyle = useAnimatedStyle(() => {
-    const inputRange = [0, 100]
-    const outputRange = [0, 100]
     return {
-      width: `${interpolate(animValue?.value, inputRange, outputRange)}%`,
+      width: `${animValue?.value}%`,
     }
   }, [animValue])
+
+  const handleReplayVideo = () => {
+    animValue.value = 0
+    replayVideo()
+  }
+
+  const handleChangeState = async (event: string) => {
+    onChangeState(event)
+
+    switch (event) {
+      case PLAYER_STATES.ENDED:
+        animValue.value = 100
+        break
+      case PLAYER_STATES.UNSTARTED:
+        animValue.value = 0
+        break
+      case PLAYER_STATES.PAUSED:
+      case PLAYER_STATES.BUFFERING:
+        cancelAnimation(animValue)
+        break
+      case PLAYER_STATES.PLAYING:
+        {
+          const [currentTime, videoDuration] = await Promise.all([
+            getCurrentTime(),
+            getVideoDuration(),
+          ])
+          if (videoDuration && currentTime) {
+            animValue.value = (currentTime / videoDuration) * 100
+            animValue.value = withTiming(100, {
+              duration: (videoDuration - currentTime) * 1000,
+              easing: Easing.linear,
+            })
+          }
+        }
+        break
+      default:
+        break
+    }
+  }
 
   const PlayerCalque = () => {
     if (hasFinishedPlaying) {
       return (
         <VerticalVideoEndView
           style={{ height: playerHeight, width: windowWidth }}
-          onPressReplay={replayVideo}
+          onPressReplay={handleReplayVideo}
           onPressNext={playNextVideo}
           hasMultipleSources={videoSources.length > 1}
         />
@@ -199,7 +204,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           `,
             scrollEnabled: false,
           }}
-          onChangeState={onChangeState}
+          onChangeState={handleChangeState}
         />
       </StyledVideoPlayerContainer>
 
@@ -230,7 +235,6 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
               accessibilityLabel="Activer ou désactiver le son"
             />
           </ControlsContainer>
-          <CreditProgressBar progress={elapsed} height="smaller" />
           <ProgressBar style={animStyle} />
         </StyledProgressContainer>
       ) : null}
@@ -242,11 +246,16 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
   )
 }
 
-const ProgressBar = styled(Animated.View)(({ theme }) => ({
-  backgroundColor: theme.colors.deepPink,
-  width: '6%',
-  height: getSpacing(3),
-}))
+const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient)
+
+const ProgressBar = styled(AnimatedGradient).attrs(({ theme }) => ({
+  colors: [theme.colors.primary, theme.colors.secondary],
+  angle: 90,
+  useAngle: true,
+}))({
+  height: getSpacing(1),
+  borderRadius: getSpacing(12),
+})
 
 const StyledVideoPlayerContainer = styled.View({
   backgroundColor: theme.colors.black,

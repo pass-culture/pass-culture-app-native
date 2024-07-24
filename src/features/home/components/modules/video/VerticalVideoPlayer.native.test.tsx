@@ -1,16 +1,27 @@
 import React from 'react'
 
-import MockedYouTubePlayer from '__mocks__/react-native-youtube-iframe'
-import { PlayerState } from 'features/home/components/modules/video/useVerticalVideoPlayer'
+import MockedYouTubePlayer, { PLAYER_STATES } from '__mocks__/react-native-youtube-iframe'
 import {
   VerticalVideoPlayer,
   VideoPlayerButtonsWording,
   VideoPlayerProps,
 } from 'features/home/components/modules/video/VerticalVideoPlayer'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.mock('features/home/components/modules/video/useVerticalVideoPlayer', () => {
+  return {
+    useVerticalVideoPlayer: (params: unknown) => ({
+      ...jest
+        .requireActual('features/home/components/modules/video/useVerticalVideoPlayer')
+        .useVerticalVideoPlayer(params),
+      getVideoDuration: () => Promise.resolve(300),
+      getCurrentTime: () => Promise.resolve(30),
+    }),
+  }
+})
 
 const defaultVerticalVideoPlayerProps = {
   videoSources: [''],
@@ -26,7 +37,7 @@ const defaultVerticalVideoPlayerProps = {
 
 describe('VerticalVideoPlayer', () => {
   beforeEach(() => {
-    MockedYouTubePlayer.setPlayerState(PlayerState.UNSTARTED)
+    MockedYouTubePlayer.setPlayerState(PLAYER_STATES.UNSTARTED)
     MockedYouTubePlayer.setError(false)
   })
 
@@ -54,12 +65,15 @@ describe('VerticalVideoPlayer', () => {
 
   describe('the video is finished', () => {
     beforeEach(() => {
-      MockedYouTubePlayer.setPlayerState(PlayerState.ENDED)
+      MockedYouTubePlayer.setPlayerState(PLAYER_STATES.ENDED)
     })
 
     it('should display `replay button`', async () => {
+      const mockSetIsPlaying = jest.fn()
+
       renderVideoPlayer({
         ...defaultVerticalVideoPlayerProps,
+        setIsPlaying: mockSetIsPlaying,
         hasFinishedPlaying: true,
         videoSources: ['abc'],
       })
@@ -69,6 +83,10 @@ describe('VerticalVideoPlayer', () => {
       })
 
       expect(replayButton).toBeOnTheScreen()
+
+      fireEvent.press(replayButton)
+
+      expect(mockSetIsPlaying).toHaveBeenCalledWith(true)
     })
 
     it('should not display `next video button` when only one video source is provided', async () => {
@@ -109,7 +127,7 @@ describe('VerticalVideoPlayer', () => {
   })
 
   it('should display `play video` when video has not started', async () => {
-    MockedYouTubePlayer.setPlayerState(PlayerState.UNSTARTED)
+    MockedYouTubePlayer.setPlayerState(PLAYER_STATES.UNSTARTED)
 
     renderVideoPlayer(defaultVerticalVideoPlayerProps)
 
@@ -117,7 +135,7 @@ describe('VerticalVideoPlayer', () => {
   })
 
   it('should display `pause button` and `sound button` when video is playing', async () => {
-    MockedYouTubePlayer.setPlayerState(PlayerState.PLAYING)
+    MockedYouTubePlayer.setPlayerState(PLAYER_STATES.PLAYING)
 
     renderVideoPlayer({ ...defaultVerticalVideoPlayerProps, isPlaying: true })
 
@@ -133,7 +151,7 @@ describe('VerticalVideoPlayer', () => {
   })
 
   it('should display `keep watching` when video is paused', async () => {
-    MockedYouTubePlayer.setPlayerState(PlayerState.PAUSED)
+    MockedYouTubePlayer.setPlayerState(PLAYER_STATES.PAUSED)
 
     renderVideoPlayer(defaultVerticalVideoPlayerProps)
 
