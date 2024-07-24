@@ -94,7 +94,7 @@ const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
       </React.Fragment>
     )
   }
-  return null
+  return <Spacer.TabBar />
 }
 
 const buildModulesWithVideoCarousel = (
