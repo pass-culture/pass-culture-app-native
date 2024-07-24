@@ -356,7 +356,7 @@
     "ts-node": "^10.8.0",
     "ts-prune": "^0.10.3",
     "type-fest": "^4.15.0",
-    "typescript": "^4.9",
+    "typescript": "5.0.4",
     "url-loader": "^4.1.1",
     "webpack": "^4.44.2",
     "webpack-bundle-analyzer": "^4.5.0",
@@ -395,7 +395,8 @@
     "@react-navigation/core": "6.2.2",
     "react-side-effect": "2.1.2",
     "react-is": "^16.13.1",
-    "@sentry/core": "7.62.0"
+    "@sentry/core": "7.62.0",
+    "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0"
   },
   "exports": {
     ".": "./index.js",

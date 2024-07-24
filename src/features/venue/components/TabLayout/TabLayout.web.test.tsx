@@ -1,7 +1,6 @@
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { act } from 'react-test-renderer'
-import styled from 'styled-components'
 
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Tab } from 'features/venue/types'
@@ -10,10 +9,9 @@ import { fireEvent, render, screen } from 'tests/utils/web'
 import { theme } from 'theme'
 import { Typo } from 'ui/theme'
 
-const ExampleText = styled(Typo.Body)``
 const tabPanels = {
-  [Tab.OFFERS]: <ExampleText>Offres disponibles content</ExampleText>,
-  [Tab.INFOS]: <ExampleText>Infos pratiques content</ExampleText>,
+  [Tab.OFFERS]: <Typo.Body>Offres disponibles content</Typo.Body>,
+  [Tab.INFOS]: <Typo.Body>Infos pratiques content</Typo.Body>,
 }
 
 describe('TabLayout', () => {
