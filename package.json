@@ -259,7 +259,6 @@
     "@types/react": "18.2.21",
     "@types/react-dom": "^18.0.0",
     "@types/react-helmet": "^6.1.2",
-    "@types/react-native": "^0.71.8",
     "@types/react-native-calendars": "^1.1264.3",
     "@types/react-test-renderer": "^18.0.7",
     "@types/react-window": "^1.8.6",
@@ -403,5 +402,6 @@
     "./jsx-dev-runtime": "./jsx-dev-runtime.js",
     "./jsx-runtime": "./jsx-runtime.js",
     "./": "./"
-  }
+  },
+  "packageManager": "yarn@3.6.4"
 }
