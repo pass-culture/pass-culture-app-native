@@ -2623,15 +2623,6 @@ exports[`Profile component should render correctly 1`] = `
             />
           </View>
         </View>
-        <View
-          style={
-            [
-              {
-                "paddingHorizontal": 24,
-              },
-            ]
-          }
-        />
       </View>
     </View>
   </RCTScrollView>
