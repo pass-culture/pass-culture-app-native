@@ -41,7 +41,7 @@ exports[`<SubcategoryButton/> should render SubcategoryButton 1`] = `
           "backgroundColor": "#EC3478",
           "borderColor": "#C01371",
           "borderRadius": 8,
-          "borderWidth": 1,
+          "borderWidth": 1.6,
           "flexDirection": "row",
           "height": 56,
           "maxWidth": 182.5,
