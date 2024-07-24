@@ -240,7 +240,9 @@ describe('<OfferCTAButton />', () => {
           fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
         })
 
-        expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
+        await waitFor(() => {
+          expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
+        })
       })
     })
 
