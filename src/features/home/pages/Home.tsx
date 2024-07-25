@@ -120,6 +120,7 @@ export const Home: FunctionComponent = () => {
   }
 
   const { checkTrigger } = useAttrakdiffModal({
+    isLoggedIn,
     screenHeight: height,
     onTrigger: triggerBatchAttrakdiffModal,
     attrakdiff,

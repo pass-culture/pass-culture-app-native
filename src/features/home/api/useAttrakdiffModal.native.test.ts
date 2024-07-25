@@ -28,6 +28,7 @@ describe('useAttrakdiffModal', () => {
       screenHeight: 500,
       onTrigger,
       attrakdiff,
+      isLoggedIn: true,
     })
 
     await checkTrigger(2500)
@@ -47,6 +48,7 @@ describe('useAttrakdiffModal', () => {
       screenHeight: 500,
       onTrigger,
       attrakdiff,
+      isLoggedIn: true,
     })
 
     await checkTrigger(1500)
@@ -66,6 +68,7 @@ describe('useAttrakdiffModal', () => {
       screenHeight: 300,
       onTrigger,
       attrakdiff,
+      isLoggedIn: true,
     })
 
     await checkTrigger(1500)
@@ -85,6 +88,7 @@ describe('useAttrakdiffModal', () => {
       screenHeight: 300,
       onTrigger,
       attrakdiff,
+      isLoggedIn: true,
     })
 
     await checkTrigger(1501)
@@ -106,6 +110,7 @@ describe('useAttrakdiffModal', () => {
       screenHeight: 300,
       onTrigger,
       attrakdiff,
+      isLoggedIn: true,
     })
 
     await checkTrigger(1500)
@@ -120,6 +125,7 @@ describe('useAttrakdiffModal', () => {
       screenHeight: 300,
       onTrigger: jest.fn(),
       attrakdiff,
+      isLoggedIn: true,
     })
 
     await checkTrigger(1500)
@@ -134,10 +140,31 @@ describe('useAttrakdiffModal', () => {
       screenHeight: 300,
       onTrigger: jest.fn(),
       attrakdiff,
+      isLoggedIn: true,
     })
 
     await checkTrigger(1000)
 
     expect(attrakdiff.hasSetTriggered()).toBe(false)
+  })
+
+  it('should NOT trigger when user is not logged in', async () => {
+    const attrakdiff = createStubAttrakdiff()
+
+    let triggerCalled = false
+
+    const onTrigger = async () => {
+      triggerCalled = true
+    }
+    const { checkTrigger } = useAttrakdiffModal({
+      screenHeight: 300,
+      onTrigger,
+      attrakdiff,
+      isLoggedIn: false,
+    })
+
+    await checkTrigger(2500)
+
+    expect(triggerCalled).toBe(false)
   })
 })
