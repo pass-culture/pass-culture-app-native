@@ -91,7 +91,6 @@ describe('ChangePassword', () => {
   it('should display success snackbar and navigate to Profile when the password is updated', async () => {
     mockServer.postApi('/v1/change_password', {
       responseOptions: { data: {} },
-      requestOptions: { persist: true },
     })
     mockedUseSnackBarContext.mockImplementationOnce(() => ({
       showSuccessSnackBar,
@@ -114,16 +113,14 @@ describe('ChangePassword', () => {
       fireEvent.press(screen.getByTestId('Enregistrer les modifications'))
     })
 
-    await waitFor(() => {
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Ton mot de passe est modifié',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
-      expect(analytics.logHasChangedPassword).toHaveBeenCalledWith({
-        from: 'personaldata',
-        reason: 'changePassword',
-      })
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+      message: 'Ton mot de passe est modifié',
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
+    expect(analytics.logHasChangedPassword).toHaveBeenCalledWith({
+      from: 'personaldata',
+      reason: 'changePassword',
     })
   })
 
