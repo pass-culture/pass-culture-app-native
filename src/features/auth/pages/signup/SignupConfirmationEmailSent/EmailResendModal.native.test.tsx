@@ -73,13 +73,11 @@ describe('<EmailResendModal />', () => {
 
     fireEvent.press(screen.getByText('Demander un nouveau lien'))
 
-    await waitFor(() => {
-      expect(
-        screen.getByText(
-          'Nous t’avons envoyé un nouveau lien. Une autre demande sera possible dans 60s.'
-        )
-      ).toBeOnTheScreen()
-    })
+    expect(
+      await screen.findByText(
+        'Nous t’avons envoyé un nouveau lien. Une autre demande sera possible dans 60s.'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should display error message when email resend fails', async () => {
@@ -90,13 +88,11 @@ describe('<EmailResendModal />', () => {
 
     fireEvent.press(screen.getByText('Demander un nouveau lien'))
 
-    await waitFor(() => {
-      expect(
-        screen.getByText(
-          'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
-        )
-      ).toBeOnTheScreen()
-    })
+    expect(
+      await screen.findByText(
+        'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should display error message when maximum number of resends is reached', async () => {
@@ -107,9 +103,9 @@ describe('<EmailResendModal />', () => {
 
     fireEvent.press(screen.getByText('Demander un nouveau lien'))
 
-    await waitFor(() => {
-      expect(screen.getByText('Tu as dépassé le nombre de renvois autorisés.')).toBeOnTheScreen()
-    })
+    expect(
+      await screen.findByText('Tu as dépassé le nombre de renvois autorisés.')
+    ).toBeOnTheScreen()
   })
 
   it('should reset error message when another resend attempt is made', async () => {
@@ -135,15 +131,14 @@ describe('<EmailResendModal />', () => {
       remainingResends: 0,
       counterResetDatetime: '2023-09-30T12:58:04.065652Z',
     })
+
     renderEmailResendModal({})
 
-    await waitFor(() => {
-      expect(
-        screen.queryByText(
-          'Tu as dépassé le nombre de 3 demandes de lien autorisées. Tu pourras réessayer le 30/09/2023 à 12h58.'
-        )
-      ).not.toBeOnTheScreen()
-    })
+    expect(
+      screen.queryByText(
+        'Tu as dépassé le nombre de 3 demandes de lien autorisées. Tu pourras réessayer le 30/09/2023 à 12h58.'
+      )
+    ).not.toBeOnTheScreen()
   })
 
   describe('When shouldLogInfo remote config is false', () => {
