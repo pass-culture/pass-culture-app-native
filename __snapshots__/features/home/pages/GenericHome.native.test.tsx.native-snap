@@ -45,6 +45,7 @@ exports[`GenericHome With not displayed skeleton by default should display real 
           "zIndex": 1,
         }
       }
+      accessibilityRole="none"
       bounces={true}
       data={
         [
@@ -236,6 +237,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           "zIndex": 1,
         }
       }
+      accessibilityRole="none"
       bounces={true}
       data={
         [

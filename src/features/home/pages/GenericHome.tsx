@@ -4,6 +4,7 @@ import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useS
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
+  Platform,
   ScrollView,
   useWindowDimensions,
 } from 'react-native'
@@ -32,11 +33,13 @@ import {
   ThematicHeader,
   VideoCarouselModule as VideoCarouselModuleType,
 } from 'features/home/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchEventData, BatchUser } from 'libs/react-native-batch'
+import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { finishTransaction } from 'shared/performance/transactions'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
@@ -71,17 +74,27 @@ const renderModule = (
 )
 
 const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
-  return (
-    <React.Fragment>
-      {/* As long as all modules are not shown, we keep the spinner */}
-      {hasShownAll ? null : (
+  if (hasShownAll && Platform.OS === 'web') {
+    return (
+      <React.Fragment>
+        <footer>
+          <AccessibilityFooter />
+        </footer>
+        <Spacer.TabBar />
+      </React.Fragment>
+    )
+  }
+  if (!hasShownAll) {
+    return (
+      <React.Fragment>
         <FooterContainer>
           <Spinner testID="spinner" />
         </FooterContainer>
-      )}
-      <Spacer.TabBar />
-    </React.Fragment>
-  )
+        <Spacer.TabBar />
+      </React.Fragment>
+    )
+  }
+  return <Spacer.TabBar />
 }
 
 const buildModulesWithVideoCarousel = (
@@ -255,6 +268,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       ) : null}
       <HomeBodyLoadingContainer hide={showSkeleton}>
         <FlatListContainer
+          accessibilityRole={AccessibilityRole.MAIN}
           ref={scrollRef}
           testID="homeBodyScrollView"
           onScroll={onScroll}

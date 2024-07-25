@@ -19,6 +19,7 @@ import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
 
+import { determineAccessibilityRole } from './determineAccessibilityRole'
 import { Header } from './Header/Header'
 import { RootScreens } from './screens'
 import { RootStack } from './Stack'
@@ -68,10 +69,13 @@ export const RootNavigator: React.ComponentType = () => {
     return <LoadingPage />
   }
 
+  const mainAccessibilityRole: AccessibilityRole | undefined =
+    determineAccessibilityRole(currentRoute)
+
   return (
     <TabNavigationStateProvider>
       {showTabBar ? headerWithQuickAccess : <Header mainId={mainId} />}
-      <Main nativeID={mainId} accessibilityRole={AccessibilityRole.MAIN}>
+      <Main nativeID={mainId} accessibilityRole={mainAccessibilityRole}>
         <RootStackNavigator initialRouteName={initialScreen} />
       </Main>
       {showTabBar ? (

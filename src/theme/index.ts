@@ -355,6 +355,10 @@ export const theme = {
         iconColor: ColorsEnum.GREY_DARK,
         textColor: ColorsEnum.GREY_DARK,
       },
+      quaternaryGrey: {
+        iconColor: ColorsEnum.GREY_DARK,
+        textColor: ColorsEnum.GREY_DARK,
+      },
       quaternarySecondary: {
         iconColor: ColorsEnum.GREY_DARK,
         textColor: ColorsEnum.GREY_DARK,
@@ -494,6 +498,15 @@ export const theme = {
       loadingIconColor: ColorsEnum.PRIMARY_DARK,
       iconColor: ColorsEnum.BLACK,
       textColor: ColorsEnum.BLACK,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      iconSize: iconSizes.extraSmall,
+    },
+    quaternaryGrey: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(1),
+      loadingIconColor: ColorsEnum.PRIMARY_DARK,
+      iconColor: ColorsEnum.GREY_DARK,
+      textColor: ColorsEnum.GREY_DARK,
       backgroundColor: ColorsEnum.TRANSPARENT,
       iconSize: iconSizes.extraSmall,
     },

@@ -69,6 +69,7 @@ exports[`ThematicHome should render correctly 1`] = `
             "zIndex": 1,
           }
         }
+        accessibilityRole="none"
         bounces={true}
         data={
           [

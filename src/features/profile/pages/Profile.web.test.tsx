@@ -32,6 +32,26 @@ describe('<Profile/>', () => {
 
     expect(screen.queryByText('Partage le pass Culture')).not.toBeInTheDocument()
   })
+
+  it('should render correctly on desktop', async () => {
+    const { container } = render(reactQueryProviderHOC(<Profile />), {
+      theme: { isDesktopViewport: true },
+    })
+
+    await screen.findByText('Centre d’aide')
+
+    expect(container).toMatchSnapshot()
+  })
+
+  it('should render correctly on mobile browser', async () => {
+    const { container } = render(reactQueryProviderHOC(<Profile />), {
+      theme: { isDesktopViewport: false },
+    })
+
+    await screen.findByText('Centre d’aide')
+
+    expect(container).toMatchSnapshot()
+  })
 })
 
 const renderProfile = () => render(reactQueryProviderHOC(<Profile />))
