@@ -106,30 +106,7 @@ export const theme = {
       },
     },
   },
-  designSystem: {
-    typography: {
-      title1: designTokens.typography.title1,
-      title2: designTokens.typography.title2,
-      title3: designTokens.typography.title3,
-      title4: designTokens.typography.title4,
-      body: designTokens.typography.body,
-      bodyS: designTokens.typography.bodyS,
-      bodyXs: designTokens.typography.bodyXs,
-      bodySemiBold: designTokens.typography.bodySemiBold,
-      bodySemiBoldS: designTokens.typography.bodySemiBoldS,
-      bodySemiBoldXs: designTokens.typography.bodySemiboldXs,
-      bodyItalic: designTokens.typography.bodyItalic,
-      bodySemiBoldItalic: designTokens.typography.bodyItalicSemiBold,
-      button: designTokens.typography.button,
-      link: designTokens.typography.link,
-      caption: designTokens.typography.bodySemiboldXs,
-      hint: designTokens.typography.bodySemiboldXs,
-      placeholder: {
-        ...designTokens.typography.bodyItalic,
-        color: ColorsEnum.GREY_DARK,
-      },
-    },
-  },
+  designSystem: designTokens,
   typography: {
     hero: {
       fontFamily: 'Montserrat-Medium',

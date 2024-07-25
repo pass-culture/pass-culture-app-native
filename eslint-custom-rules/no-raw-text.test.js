@@ -68,7 +68,7 @@ tests.invalid.forEach((t) =>
   Object.assign(t, config, {
     errors: [
       {
-        message: `No raw text outside tags <Text>, <Typo.***>, <Styled***> or tag with prefix 'Text'. \n *** = all exported Typo in src/ui/theme/typography.tsx`,
+        message: `No raw text outside tags <Text>, <Typo.***>, <TypoDS.***>, <allowed JSX tag.***>. \n *** = all exported Typo in src/ui/theme/typography.tsx`,
       },
     ],
   })

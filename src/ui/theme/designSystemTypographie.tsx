@@ -1,85 +1,35 @@
 import { Text as RNText } from 'react-native'
 import styled from 'styled-components/native'
 
+import { theme } from 'theme'
 import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-// Remove DS after merged with the new typo from design-system
+const createStyledText = (
+  typographyStyle: keyof typeof theme.designSystem.typography,
+  headingLevel?: HeadingLevel
+) => {
+  const getAttributes =
+    headingLevel === undefined ? () => ({}) : () => getHeadingAttrs(headingLevel)
 
-const Title1 = styled(RNText).attrs<{ accessibilityLevel: HeadingLevel }>(
-  ({ accessibilityLevel }) => getHeadingAttrs(accessibilityLevel ?? 1)
-)(({ theme }) => ({
-  ...theme.designSystem.typography.title1,
-}))
+  return styled(RNText).attrs(getAttributes)(
+    ({ theme }) => theme.designSystem.typography[typographyStyle]
+  )
+}
 
-const Title2 = styled(RNText).attrs<{ accessibilityLevel: HeadingLevel }>(
-  ({ accessibilityLevel }) => getHeadingAttrs(accessibilityLevel ?? 2)
-)(({ theme }) => ({
-  ...theme.designSystem.typography.title2,
-}))
-
-const Title3 = styled(RNText).attrs<{ accessibilityLevel: HeadingLevel }>(
-  ({ accessibilityLevel }) => getHeadingAttrs(accessibilityLevel ?? 3)
-)(({ theme }) => ({
-  ...theme.designSystem.typography.title3,
-}))
-
-const Title4 = styled(RNText).attrs<{ accessibilityLevel: HeadingLevel }>(
-  ({ accessibilityLevel }) => getHeadingAttrs(accessibilityLevel ?? 4)
-)(({ theme }) => ({
-  ...theme.designSystem.typography.title4,
-}))
-
-const Body = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.body,
-}))
-
-const BodyS = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.bodyS,
-}))
-
-const BodyXs = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.bodyXs,
-}))
-
-const BodySemiBold = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.bodySemiBold,
-}))
-
-const BodySemiBoldS = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.bodySemiBoldS,
-}))
-
-const BodySemiBoldXs = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.bodySemiBoldXs,
-}))
-
-const BodyItalic = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.bodyItalic,
-}))
-
-const BodySemiBoldItalic = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.bodyItalic,
-}))
-
-const Button = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.button,
-}))
-
-const Link = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.button,
-}))
-
-const Caption = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.caption,
-}))
-
-const Hint = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.hint,
-}))
-
-const Placeholder = styled(RNText)(({ theme }) => ({
-  ...theme.designSystem.typography.placeholder,
-}))
+const Title1 = createStyledText('title1', 1)
+const Title2 = createStyledText('title2', 2)
+const Title3 = createStyledText('title3', 3)
+const Title4 = createStyledText('title4', 4)
+const Body = createStyledText('body')
+const BodyS = createStyledText('bodyS')
+const BodyXs = createStyledText('bodyXs')
+const BodySemiBold = createStyledText('bodySemiBold')
+const BodySemiBoldS = createStyledText('bodySemiBoldS')
+const BodySemiBoldXs = createStyledText('bodySemiboldXs')
+const BodyItalic = createStyledText('bodyItalic')
+const BodyItalicSemiBold = createStyledText('bodyItalicSemiBold')
+const Button = createStyledText('button')
+const Link = createStyledText('button')
 
 export const TypoDS = {
   Title1,
@@ -93,10 +43,7 @@ export const TypoDS = {
   BodySemiBoldS,
   BodySemiBoldXs,
   BodyItalic,
-  BodySemiBoldItalic,
+  BodyItalicSemiBold,
   Button,
   Link,
-  Caption,
-  Hint,
-  Placeholder,
 }
