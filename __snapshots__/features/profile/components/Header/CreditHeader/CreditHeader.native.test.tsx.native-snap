@@ -698,9 +698,9 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
           [
             {
               "color": "#320096",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 38,
-              "lineHeight": 48,
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 28,
+              "lineHeight": 44.8,
             },
           ]
         }
@@ -1242,9 +1242,9 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 15 yea
           [
             {
               "color": "#320096",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 38,
-              "lineHeight": 48,
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 28,
+              "lineHeight": 44.8,
             },
           ]
         }
@@ -1750,9 +1750,9 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 16 yea
           [
             {
               "color": "#320096",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 38,
-              "lineHeight": 48,
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 28,
+              "lineHeight": 44.8,
             },
           ]
         }
@@ -2258,9 +2258,9 @@ exports[`CreditHeader Beneficiary is underage should render correctly for 17 yea
           [
             {
               "color": "#320096",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 38,
-              "lineHeight": 48,
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 28,
+              "lineHeight": 44.8,
             },
           ]
         }
