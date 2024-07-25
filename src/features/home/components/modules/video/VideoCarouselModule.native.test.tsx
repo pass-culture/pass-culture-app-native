@@ -17,7 +17,7 @@ import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -181,11 +181,13 @@ describe('<VideoCarouselModule />', () => {
       })
       await act(async () => fireEvent.press(nextVideoButton))
 
-      expect(analytics.logConsultVideo).toHaveBeenNthCalledWith(1, {
-        from: 'video_carousel_block',
-        moduleId: videoCarouselModuleFixture.id,
-        homeEntryId: videoCarouselModuleFixture.homeEntryId,
-        youtubeId: videoCarouselModuleFixture.items[2].youtubeVideoId,
+      await waitFor(() => {
+        expect(analytics.logConsultVideo).toHaveBeenNthCalledWith(1, {
+          from: 'video_carousel_block',
+          moduleId: videoCarouselModuleFixture.id,
+          homeEntryId: videoCarouselModuleFixture.homeEntryId,
+          youtubeId: videoCarouselModuleFixture.items[2].youtubeVideoId,
+        })
       })
     })
 
