@@ -34,9 +34,7 @@ describe('<EmailResendModal />', () => {
   it('should dismiss modal when close icon is pressed', async () => {
     renderEmailResendModal({})
 
-    await act(async () => {
-      fireEvent.press(screen.getByLabelText('Fermer la modale'))
-    })
+    fireEvent.press(screen.getByLabelText('Fermer la modale'))
 
     expect(onDismissMock).toHaveBeenCalledTimes(1)
   })
@@ -125,8 +123,6 @@ describe('<EmailResendModal />', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
 
-    await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
-
     expect(
       screen.queryByText(
         'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
@@ -188,7 +184,7 @@ describe('<EmailResendModal />', () => {
         expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
       })
 
-      await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+      fireEvent.press(screen.getByText('Demander un nouveau lien'))
 
       await waitFor(() => {
         expect(eventMonitoring.captureException).toHaveBeenCalledWith(
