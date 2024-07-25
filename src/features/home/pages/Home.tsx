@@ -97,7 +97,7 @@ export const Home: FunctionComponent = () => {
 
   const { data: bookings } = useBookings()
 
-  const triggerBatchAttrakdiffModal = async () => {
+  useEffect(() => {
     const editor = BatchUser.editor()
     editor
       .setAttribute('has_seen_graphique_redesign', shouldApplyGraphicRedesign)
@@ -113,6 +113,9 @@ export const Home: FunctionComponent = () => {
     }
 
     editor.save()
+  }, [shouldApplyGraphicRedesign, bookings, user?.firstDepositActivationDate])
+
+  const triggerBatchAttrakdiffModal = async () => {
     BatchUser.trackEvent(BatchEvent.hasSeenEnoughHomeContent)
   }
 
