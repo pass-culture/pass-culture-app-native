@@ -132,7 +132,7 @@ describe('TabBar', () => {
   })
 
   it('render correctly', () => {
-    renderTabBar()
+    renderTabBar(mockTabNavigationState)
 
     expect(screen).toMatchSnapshot()
   })
@@ -141,13 +141,13 @@ describe('TabBar', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true) // first time for theme provider
     useFeatureFlagSpy.mockReturnValueOnce(true) // second time for theme provider
     useFeatureFlagSpy.mockReturnValueOnce(true) // third time for tabbar
-    renderTabBar()
+    renderTabBar(mockTabNavigationState)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display the 5 following tabs with Home selected', async () => {
-    renderTabBar()
+    renderTabBar(mockTabNavigationState)
 
     const expectedTabsTestIds = [
       'Accueil sélectionné',
@@ -171,7 +171,7 @@ describe('TabBar', () => {
         isSelected: route.name === 'Bookings',
       })),
     })
-    renderTabBar()
+    renderTabBar(mockTabNavigationState)
     const expectedTabsTestIds = [
       'Accueil',
       'Rechercher des offres',
@@ -187,7 +187,7 @@ describe('TabBar', () => {
   })
 
   it('displays only one selected at a time', () => {
-    renderTabBar()
+    renderTabBar(mockTabNavigationState)
 
     expect(screen.queryAllByTestId(/sélectionné/)).toHaveLength(1)
   })
@@ -200,7 +200,7 @@ describe('TabBar', () => {
         isSelected: route.name === 'Profile',
       })),
     })
-    renderTabBar()
+    renderTabBar(mockTabNavigationState)
 
     expect(screen.getByTestId('Mon profil sélectionné')).toBeOnTheScreen()
 
@@ -211,7 +211,7 @@ describe('TabBar', () => {
   })
 
   it('should navigate again to Home tab on click Home tab icon when Home tab is already selected', async () => {
-    renderTabBar()
+    renderTabBar(mockTabNavigationState)
 
     expect(screen.getByTestId('Accueil sélectionné')).toBeOnTheScreen()
 
@@ -229,7 +229,7 @@ describe('TabBar', () => {
         isSelected: route.name === 'SearchStackNavigator',
       })),
     })
-    renderTabBar()
+    renderTabBar(mockTabNavigationState)
 
     screen.getByTestId('Rechercher des offres sélectionné')
 
@@ -247,7 +247,7 @@ describe('TabBar', () => {
         isSelected: route.name === 'SearchStackNavigator',
       })),
     })
-    renderTabBar()
+    renderTabBar(mockTabNavigationState)
 
     screen.getByTestId('Rechercher des offres sélectionné')
 
@@ -258,7 +258,7 @@ describe('TabBar', () => {
   })
 
   it('navigates to Profile on Profile tab click', async () => {
-    renderTabBar()
+    renderTabBar(mockTabNavigationState)
     const profileTab = screen.getByTestId('Mon profil')
 
     fireEvent.press(profileTab)
@@ -270,7 +270,7 @@ describe('TabBar', () => {
   })
 
   it('should call navigate with searchState params on press "Recherche"', async () => {
-    renderTabBar()
+    renderTabBar(mockTabNavigationState)
     const searchButton = screen.getByText('Recherche')
     fireEvent.press(searchButton)
 
@@ -287,7 +287,7 @@ describe('TabBar', () => {
       ...initialSearchState,
       locationFilter: mockAroundMeLocationFilter,
     }
-    renderTabBar()
+    renderTabBar(mockTabNavigationState)
     const searchButton = screen.getByText('Recherche')
     fireEvent.press(searchButton)
 
@@ -302,13 +302,86 @@ describe('TabBar', () => {
       })
     )
   })
+
+  it('should return `SearchLanding` when there is less than 1 route in routes state', () => {
+    renderTabBar({
+      ...mockTabNavigationState,
+      routeNames: ['SearchLanding'],
+      routes: [{ name: 'SearchLanding', key: '', params: undefined }],
+    })
+
+    const searchButton = screen.getByText('Recherche')
+    fireEvent.press(searchButton)
+
+    expect(navigation.navigate).toHaveBeenCalledWith(
+      ...getTabNavConfig('SearchStackNavigator', {
+        screen: 'SearchLanding',
+        params: {
+          ...initialSearchState,
+          accessibilityFilter: mockAccessibilityState,
+        },
+      })
+    )
+  })
+
+  it('should return last visited route when there is more than 1 route in routes state', async () => {
+    const routes = [
+      {
+        screen: 'SearchLanding',
+        key: 'SearchLanding-NKQnogZCniOoY0bM3fe1c',
+        name: 'SearchLanding',
+        params: { screen: 'SearchLanding' },
+      },
+      {
+        screen: 'SearchN1',
+        key: 'SearchN1-X8VXvOMAWRm3n0SOvktHX',
+        name: 'SearchN1',
+        params: { screen: 'SearchN1' },
+        path: undefined,
+      },
+    ]
+
+    mockedUseTabNavigationContext.mockReturnValueOnce({
+      setTabNavigationState: jest.fn(),
+      tabRoutes: DEFAULT_TAB_ROUTES.map((route) => ({
+        ...route,
+        isSelected: false,
+        state: {
+          routes,
+        },
+      })),
+    })
+
+    renderTabBar({
+      ...mockTabNavigationState,
+      routeNames: ['SearchLanding, SearchN1'],
+      routes,
+    })
+
+    const searchButton = screen.getByText('Recherche')
+    fireEvent.press(searchButton)
+
+    expect(navigation.navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: {
+          ...initialSearchState,
+          accessibilityFilter: mockAccessibilityState,
+        },
+        screen: {
+          ...routes[1],
+          screen: 'SearchN1',
+        },
+      },
+      screen: 'SearchStackNavigator',
+    })
+  })
 })
 
-function renderTabBar() {
+function renderTabBar(tabNavigationState: TabNavigationState<ParamListBase>) {
   render(
     reactQueryProviderHOC(
       <ThemeProvider theme={computedTheme}>
-        <TabBar navigation={navigation} state={mockTabNavigationState} />
+        <TabBar navigation={navigation} state={tabNavigationState} />
       </ThemeProvider>
     )
   )

@@ -23,7 +23,6 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
   const { searchState, dispatch, hideSuggestions } = useSearch()
   const { setDisabilities, disabilities } = useAccessibilityFiltersContext()
   const enableTabBarV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_TAB_BAR)
-
   const { locationFilter } = searchState
 
   useTabBar({ state })
@@ -69,8 +68,9 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
                 }
               } else {
                 const nbOfRoutes = route.state?.routes?.length ? route.state.routes.length : 0
+                const lastRouteVisited = route.state?.routes?.at(-1)
                 navigateParams.params = {
-                  screen: nbOfRoutes > 1 ? 'SearchResults' : 'SearchLanding',
+                  screen: nbOfRoutes > 1 ? lastRouteVisited : 'SearchLanding',
                   params: { ...searchState, accessibilityFilter: disabilities },
                 }
               }

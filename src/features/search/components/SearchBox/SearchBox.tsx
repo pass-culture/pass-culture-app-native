@@ -21,7 +21,6 @@ import { HiddenSuggestionsButton } from 'features/search/components/Buttons/Hidd
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { getIsPreviousRouteFromSearch } from 'features/search/helpers/getIsPreviousRouteFromSearch/getIsPreviousRouteFromSearch'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
 import { BackButton } from 'ui/components/headers/BackButton'
@@ -58,7 +57,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const [displayedQuery, setDisplayedQuery] = useState<string>(searchState.query)
   const inputRef = useRef<RNTextInput | null>(null)
   const route = useRoute()
-  const { navigateToSearch: navigateToSearchLanding } = useNavigateToSearch('SearchLanding')
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
 
   const currentView = route.name
@@ -88,18 +86,22 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         ...searchState,
         ...(options.reset ? initialSearchState : {}),
         ...partialSearchState,
-        offerCategories: offerCategories ?? searchState.offerCategories,
       }
+
       dispatch({
         type: 'SET_STATE',
         payload: newSearchState,
       })
-      navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
+
+      if (newSearchState.query !== '') {
+        navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
+      }
     },
-    [dispatch, navigateToSearchResults, offerCategories, searchState]
+    [dispatch, navigateToSearchResults, searchState]
   )
 
-  const hasEditableSearchInput = isFocusOnSuggestions || currentView === SearchView.Results
+  const hasEditableSearchInput =
+    isFocusOnSuggestions || currentView === SearchView.Results || currentView === SearchView.N1
 
   // Track when the InstantSearch query changes to synchronize it with
   // the React state.
@@ -146,52 +148,25 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     // To force remove focus on search input
     Keyboard.dismiss()
 
-    const isVenuePreviousRoute = getIsPreviousRouteFromSearch('Venue')
-    const isSearchN1PreviousRoute = getIsPreviousRouteFromSearch('SearchN1')
-
-    switch (true) {
-      case isFocusOnSuggestions &&
-        (currentView === SearchView.Results || currentView === SearchView.N1):
-        setQuery(searchState.query)
-        hideSuggestions()
-        break
-      case isFocusOnSuggestions && currentView === SearchView.Landing:
-        setQuery('')
-        hideSuggestions()
-        break
-      case isVenuePreviousRoute:
-        dispatch({
-          type: 'SET_STATE',
-          payload: { ...searchState, venue: undefined },
-        })
-        goBack()
-        break
-      case isSearchN1PreviousRoute:
-        goBack()
-        break
-      case currentView === SearchView.Results:
-        setQuery('')
-        dispatch({
-          type: 'SET_STATE',
-          payload: { ...initialSearchState, locationFilter: searchState.locationFilter },
-        })
-        navigateToSearchLanding(
-          { ...initialSearchState, locationFilter: searchState.locationFilter },
-          defaultDisabilitiesProperties
-        )
-        break
-      default:
-        break
+    if (isFocusOnSuggestions) {
+      setQuery(searchState.query)
+      hideSuggestions()
+      return
     }
+    setQuery('')
+    dispatch({
+      type: 'SET_STATE',
+      payload: { ...initialSearchState, locationFilter: searchState.locationFilter },
+    })
+    goBack()
   }, [
-    isFocusOnSuggestions,
-    searchState,
-    setQuery,
-    hideSuggestions,
     dispatch,
     goBack,
-    currentView,
-    navigateToSearchLanding,
+    hideSuggestions,
+    isFocusOnSuggestions,
+    searchState.locationFilter,
+    searchState.query,
+    setQuery,
   ])
 
   const onSubmitQuery = useCallback(
@@ -209,7 +184,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         query: queryText,
         locationFilter: searchState.locationFilter,
         venue: searchState.venue,
-        offerCategories: searchState.offerCategories,
+        offerCategories: offerCategories ?? searchState.offerCategories,
+        offerNativeCategories:
+          currentView === SearchView.N1 ? undefined : searchState.offerNativeCategories,
+        gtls: currentView === SearchView.N1 ? [] : searchState.gtls,
         priceRange: searchState.priceRange,
         searchId,
         isAutocomplete: undefined,
@@ -223,7 +201,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       searchState.locationFilter,
       searchState.venue,
       searchState.offerCategories,
+      searchState.offerNativeCategories,
+      searchState.gtls,
       searchState.priceRange,
+      offerCategories,
+      currentView,
       pushWithSearch,
       hideSuggestions,
     ]
@@ -247,10 +229,12 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   ])
 
   const showLocationButton =
-    currentView === SearchView.Results || (currentView === SearchView.N1 && !isFocusOnSuggestions)
+    (currentView === SearchView.Results || currentView === SearchView.N1) && !isFocusOnSuggestions
 
   const disableInputClearButton =
-    currentView === SearchView.Results && !isFocusOnSuggestions && !isDesktopViewport
+    (currentView === SearchView.Results || currentView === SearchView.N1) &&
+    !isFocusOnSuggestions &&
+    !isDesktopViewport
 
   return (
     <RowContainer>

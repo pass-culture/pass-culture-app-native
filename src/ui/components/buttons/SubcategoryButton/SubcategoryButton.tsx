@@ -1,7 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { useWindowDimensions, Platform } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -9,7 +8,7 @@ import { defaultDisabilitiesProperties } from 'features/accessibility/context/Ac
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { CategoriesModalView, Gradient } from 'features/search/enums'
+import { CategoriesModalView } from 'features/search/enums'
 import { handleCategoriesSearchPress } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
@@ -18,20 +17,28 @@ import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { getShadow, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 import { getSpacing } from 'ui/theme/spacing'
 
 export type SubcategoryButtonProps = {
   label: string
-  colors: Gradient
+  backgroundColor: ColorsEnum
+  borderColor: ColorsEnum
   nativeCategory: NativeCategoryEnum
 }
 
 export const SUBCATEGORY_BUTTON_HEIGHT = getSpacing(14)
 export const SUBCATEGORY_BUTTON_WIDTH = getSpacing(45.6)
 
-export const SubcategoryButton = ({ label, colors, nativeCategory }: SubcategoryButtonProps) => {
+export const SubcategoryButton = ({
+  label,
+  backgroundColor,
+  borderColor,
+  nativeCategory,
+}: SubcategoryButtonProps) => {
   const { data: subcategories } = useSubcategories()
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const { params } = useRoute<UseRouteType<SearchStackRouteName>>()
@@ -66,8 +73,9 @@ export const SubcategoryButton = ({ label, colors, nativeCategory }: Subcategory
       onPress={handleSubcategoryButtonPress}
       testID={`SubcategoryButton ${label}`}
       accessibilityLabel={label}
-      windowWidth={windowWidth}>
-      <Color colors={colors} />
+      windowWidth={windowWidth}
+      backgroundColor={backgroundColor}
+      borderColor={borderColor}>
       <StyledText>{label}</StyledText>
     </StyledTouchable>
   )
@@ -76,9 +84,11 @@ export const SubcategoryButton = ({ label, colors, nativeCategory }: Subcategory
 const StyledTouchable = styledButton(Touchable)<{
   isFocus?: boolean
   windowWidth: number
-}>(({ theme, isFocus, windowWidth }) => ({
+  backgroundColor: ColorsEnum
+  borderColor: ColorsEnum
+}>(({ theme, isFocus, windowWidth, backgroundColor, borderColor }) => ({
   flexDirection: 'row',
-  backgroundColor: theme.colors.white,
+  backgroundColor,
   height: SUBCATEGORY_BUTTON_HEIGHT,
   ...(theme.isMobileViewport
     ? {
@@ -86,10 +96,8 @@ const StyledTouchable = styledButton(Touchable)<{
         maxWidth: SUBCATEGORY_BUTTON_WIDTH,
       }
     : { width: SUBCATEGORY_BUTTON_WIDTH }),
-  borderColor: theme.colors.greySemiDark,
-  borderTopWidth: 1,
-  borderRightWidth: 1,
-  borderBottomWidth: 1,
+  borderColor,
+  borderWidth: 1.6,
   borderRadius: theme.borderRadius.radius,
   ...getShadow({
     shadowOffset: { width: 0, height: getSpacing(1) },
@@ -100,17 +108,7 @@ const StyledTouchable = styledButton(Touchable)<{
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
   textAlign: 'left',
   alignItems: 'center',
-  paddingRight: getSpacing(4),
-}))
-
-const Color = styled(LinearGradient)(({ theme }) => ({
-  top: 0,
-  left: 0,
-  height: '100%',
-  width: getSpacing(2),
-  marginRight: getSpacing(2),
-  borderTopLeftRadius: theme.borderRadius.radius,
-  borderBottomLeftRadius: theme.borderRadius.radius,
+  padding: getSpacing(2),
 }))
 
 const StyledText = styled(Typo.Caption).attrs({
