@@ -17,6 +17,9 @@ export const BatchUser = {
   setIdentifier() {
     return this
   },
+  setAttribute() {
+    return this
+  },
   trackEvent() {},
   save() {},
 }
