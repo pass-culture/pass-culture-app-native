@@ -75,7 +75,6 @@ describe('<OfferCTAButton />', () => {
   it('should open booking modal when login after booking attempt', async () => {
     mockServer.getApi<BookingsResponse>(`/v1/bookings`, {})
     mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, {
-      requestOptions: { persist: true },
       responseOptions: { data: offerResponseSnap },
     })
 
@@ -85,20 +84,15 @@ describe('<OfferCTAButton />', () => {
     useRoute.mockReturnValueOnce({ params: { fromOfferId, openModalOnNavigation } })
     renderOfferCTAButton(offerNotEventCTAButtonProps)
 
-    await act(async () => {})
+    await screen.findByText('Réserver l’offre')
 
-    await waitFor(() => {
-      expect(screen.getByText('Valider la date')).toBeOnTheScreen()
-    })
+    expect(await screen.findByText('Valider la date')).toBeOnTheScreen()
   })
 
   it('should display authentication modal when clicking on "Réserver l’offre"', async () => {
     renderOfferCTAButton(offerNotEventCTAButtonProps)
 
-    const bookingOfferButton = await screen.findByText('Réserver l’offre')
-    await act(async () => {
-      fireEvent.press(bookingOfferButton)
-    })
+    fireEvent.press(await screen.findByText('Réserver l’offre'))
 
     expect(screen.getByText('Identifie-toi pour réserver l’offre')).toBeOnTheScreen()
   })
@@ -106,10 +100,7 @@ describe('<OfferCTAButton />', () => {
   it('should log analytics when display authentication modal', async () => {
     renderOfferCTAButton(offerNotEventCTAButtonProps)
 
-    const bookingOfferButton = await screen.findByText('Réserver l’offre')
-    await act(async () => {
-      fireEvent.press(bookingOfferButton)
-    })
+    fireEvent.press(await screen.findByText('Réserver l’offre'))
 
     expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
   })
@@ -117,7 +108,6 @@ describe('<OfferCTAButton />', () => {
   it('should display reservation impossible when user has already booked the offer', async () => {
     mockAuthContextWithUser(beneficiaryUser, { persist: true })
     mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, {
-      requestOptions: { persist: true },
       responseOptions: { data: offerResponseSnap },
     })
 
@@ -146,9 +136,7 @@ describe('<OfferCTAButton />', () => {
 
     fireEvent.press(screen.getByText('Réserver l’offre'))
 
-    await act(async () => {})
-
-    expect(screen.getByText('Réservation impossible')).toBeOnTheScreen()
+    expect(await screen.findByText('Réservation impossible')).toBeOnTheScreen()
   })
 
   describe('When offer is digital and free and not already booked', () => {
@@ -211,7 +199,7 @@ describe('<OfferCTAButton />', () => {
       })
 
       it('should log BookingConfirmation when pressing button to book the offer', async () => {
-        mockAuthContextWithUser(beneficiaryUser, { persist: true })
+        mockAuthContextWithUser(beneficiaryUser)
 
         renderOfferCTAButton({
           ...offerNotEventCTAButtonProps,
@@ -229,16 +217,14 @@ describe('<OfferCTAButton />', () => {
       })
 
       it('should not display an error message when pressing button to book the offer', async () => {
-        mockAuthContextWithUser(beneficiaryUser, { persist: true })
+        mockAuthContextWithUser(beneficiaryUser)
 
         renderOfferCTAButton({
           ...offerNotEventCTAButtonProps,
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
-        await act(async () => {
-          fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
-        })
+        fireEvent.press(await screen.findByText('Accéder à l’offre en ligne'))
 
         await waitFor(() => {
           expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
@@ -261,31 +247,27 @@ describe('<OfferCTAButton />', () => {
       })
 
       it('should not direclty redirect to the offer when pressing button to book the offer', async () => {
-        mockAuthContextWithUser(beneficiaryUser, { persist: true })
+        mockAuthContextWithUser(beneficiaryUser)
 
         renderOfferCTAButton({
           ...offerNotEventCTAButtonProps,
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
-        await act(async () => {
-          fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
-        })
+        fireEvent.press(await screen.findByText('Accéder à l’offre en ligne'))
 
         expect(mockedOpenUrl).not.toHaveBeenCalled()
       })
 
       it('should not log BookingConfirmation when pressing button to book the offer', async () => {
-        mockAuthContextWithUser(beneficiaryUser, { persist: true })
+        mockAuthContextWithUser(beneficiaryUser)
 
         renderOfferCTAButton({
           ...offerNotEventCTAButtonProps,
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
-        await act(async () => {
-          fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
-        })
+        fireEvent.press(await screen.findByText('Accéder à l’offre en ligne'))
 
         expect(analytics.logBookingConfirmation).not.toHaveBeenCalled()
       })
