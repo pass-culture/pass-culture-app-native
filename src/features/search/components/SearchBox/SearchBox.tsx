@@ -258,7 +258,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   ])
 
   const showLocationButton =
-    currentView === SearchView.Results || (currentView === SearchView.N1 && !isFocusOnSuggestions)
+    (currentView === SearchView.Results || currentView === SearchView.N1) && !isFocusOnSuggestions
 
   const disableInputClearButton =
     (currentView === SearchView.Results || currentView === SearchView.N1) &&
