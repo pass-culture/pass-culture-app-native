@@ -76,7 +76,6 @@ export const SearchN1Bar: FC<PropsWithChildren<Props>> = ({
         hitsPerPage={5}
       />
       <SearchHeader
-        withArrow
         title={title}
         searchInputID={searchInputID}
         addSearchHistory={addToHistory}

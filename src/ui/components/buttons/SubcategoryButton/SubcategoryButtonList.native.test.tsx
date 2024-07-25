@@ -7,21 +7,21 @@ import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
-const bookColorsGradient = [theme.colors.deepPink, theme.colors.deepPinkDark]
+const colors = { backgroundColor: theme.colors.deepPink, borderColor: theme.colors.deepPinkDark }
 const subcategoryButtonContent = [
   {
     label: 'Romans et littérature',
-    colors: bookColorsGradient,
+    ...colors,
     nativeCategory: BooksNativeCategoriesEnum.ROMANS_ET_LITTERATURE,
   },
   {
     label: 'Mangas',
-    colors: bookColorsGradient,
+    ...colors,
     nativeCategory: BooksNativeCategoriesEnum.MANGAS,
   },
   {
     label: 'BD & Comics',
-    colors: bookColorsGradient,
+    ...colors,
     nativeCategory: BooksNativeCategoriesEnum.BD_ET_COMICS,
   },
 ]

@@ -29,7 +29,8 @@ export const SubcategoryButtonList: React.FC<Props> = ({ subcategoryButtonConten
     <React.Fragment>
       <SubcategoryButton
         label={item.label}
-        colors={item.colors}
+        backgroundColor={item.backgroundColor}
+        borderColor={item.borderColor}
         nativeCategory={item.nativeCategory}
       />
       <Spacer.Row numberOfSpaces={4} />

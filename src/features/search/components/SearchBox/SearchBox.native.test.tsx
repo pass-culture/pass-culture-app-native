@@ -7,7 +7,7 @@ import { navigationRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import { SearchView, SearchState } from 'features/search/types'
+import { SearchView, SearchState, BooksNativeCategoriesEnum } from 'features/search/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -224,6 +224,28 @@ describe('SearchBox component', () => {
     })
   })
 
+  it('should not navigate to searchResults when user clicks on reset icon', async () => {
+    mockQuery = 'Some text'
+    mockSearchState = {
+      ...mockSearchState,
+      query: mockQuery,
+    }
+
+    renderSearchBox()
+
+    const resetSearchInputButton = screen.getByTestId('Réinitialiser la recherche')
+    fireEvent.press(resetSearchInputButton)
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: {
+        ...mockSearchState,
+        query: '',
+      },
+    })
+    expect(navigate).not.toHaveBeenCalled()
+  })
+
   it('should not show back button when being on the search landing view', async () => {
     renderSearchBox()
 
@@ -268,6 +290,31 @@ describe('SearchBox component', () => {
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
 
     expect(mockDispatch).not.toHaveBeenCalled()
+  })
+
+  it('should show reset button when search input is filled', async () => {
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
+    mockIsFocusOnSuggestions = true
+    mockQuery = 'Some text'
+    mockSearchState = {
+      ...mockSearchState,
+      query: mockQuery,
+    }
+
+    renderSearchBox()
+
+    expect(await screen.findByLabelText('Réinitialiser la recherche')).toBeOnTheScreen()
+  })
+
+  it('should not show reset button when search input is empty', async () => {
+    useRoute.mockReturnValueOnce({ name: SearchView.Results })
+
+    mockIsFocusOnSuggestions = true
+
+    renderSearchBox()
+
+    expect(screen.queryByLabelText('Réinitialiser la recherche')).not.toBeOnTheScreen()
   })
 
   describe('With autocomplete', () => {
@@ -507,7 +554,7 @@ describe('SearchBox component with venue previous route on search results', () =
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_STATE',
-      payload: { ...mockSearchState, venue: undefined },
+      payload: initialSearchState,
     })
   })
 
@@ -519,6 +566,41 @@ describe('SearchBox component with venue previous route on search results', () =
     fireEvent.press(previousButton)
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
+  })
+
+  it('should update searchState without offerNativeCategories set to undefined when a query is made from another page than searchN1', async () => {
+    const BOOK_OFFER_CATEGORIES = [SearchGroupNameEnumv2.LIVRES]
+    const BOOK_OFFER_NATIVE_CATEGORIES = [BooksNativeCategoriesEnum.BD_ET_COMICS]
+
+    useRoute.mockReturnValueOnce({
+      name: SearchView.Results,
+    })
+
+    mockSearchState = {
+      ...mockSearchState,
+      offerCategories: BOOK_OFFER_CATEGORIES,
+      offerNativeCategories: BOOK_OFFER_NATIVE_CATEGORIES,
+    }
+
+    renderSearchBox()
+
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+
+    await act(async () => {
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'harry potter' } })
+    })
+
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_STATE',
+      payload: {
+        ...initialSearchState,
+        query: 'harry potter',
+        offerCategories: BOOK_OFFER_CATEGORIES,
+        offerNativeCategories: BOOK_OFFER_NATIVE_CATEGORIES,
+        priceRange: mockSearchState.priceRange,
+        searchId,
+      },
+    })
   })
 })
 
@@ -544,17 +626,76 @@ describe('SearchBox component with SearchN1 previous route on search results', (
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
+
+  it('should clear offerNativeCategories and gtls when a previous search was made on searchResults and now a query is made on searchN1', async () => {
+    const BOOK_OFFER_CATEGORIES = [SearchGroupNameEnumv2.LIVRES]
+    const BOOK_SEARCH_BOX_PLACEHOLDER = 'Livres'
+
+    mockSearchState = {
+      ...mockSearchState,
+      offerCategories: BOOK_OFFER_CATEGORIES,
+      offerNativeCategories: [BooksNativeCategoriesEnum.MANGAS],
+      offerGenreTypes: undefined,
+      gtls: [
+        {
+          code: '03040300',
+          label: 'Kodomo',
+          level: 3,
+        },
+        {
+          code: '03040400',
+          label: 'Shôjo',
+          level: 3,
+        },
+      ],
+    }
+
+    useRoute.mockReturnValueOnce({
+      name: SearchView.N1,
+    })
+
+    renderSearchBox(false, BOOK_OFFER_CATEGORIES, BOOK_SEARCH_BOX_PLACEHOLDER)
+
+    const searchInput = screen.getByPlaceholderText(BOOK_SEARCH_BOX_PLACEHOLDER)
+
+    await act(async () => {
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'harry potter' } })
+    })
+
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_STATE',
+      payload: {
+        ...initialSearchState,
+        query: 'harry potter',
+        offerCategories: BOOK_OFFER_CATEGORIES,
+        offerNativeCategories: undefined,
+        gtls: [],
+        priceRange: mockSearchState.priceRange,
+        searchId,
+      },
+    })
+  })
 })
 
-function renderSearchBox(isDesktopViewport?: boolean) {
+function renderSearchBox(
+  isDesktopViewport?: boolean,
+  offerCategories?: SearchGroupNameEnumv2[],
+  placeholder?: string
+) {
   return render(
-    <DummySearchBox />,
+    <DummySearchBox offerCategories={offerCategories} placeholder={placeholder} />,
 
     { theme: { isDesktopViewport: isDesktopViewport ?? false } }
   )
 }
 
-const DummySearchBox = () => {
+const DummySearchBox = ({
+  placeholder,
+  offerCategories,
+}: {
+  offerCategories?: SearchGroupNameEnumv2[]
+  placeholder?: string
+}) => {
   const searchInputID = uuidv4()
 
   return (
@@ -563,6 +704,8 @@ const DummySearchBox = () => {
         searchInputID={searchInputID}
         addSearchHistory={jest.fn()}
         searchInHistory={jest.fn()}
+        offerCategories={offerCategories}
+        placeholder={placeholder}
       />
     </React.Fragment>
   )

@@ -34,7 +34,8 @@ const label = 'Société & Politique'
 const Default = Template.bind({})
 Default.args = {
   label,
-  colors: [theme.colors.aquamarine, theme.colors.aquamarineDark],
+  backgroundColor: theme.colors.aquamarine,
+  borderColor: theme.colors.aquamarineDark,
 }
 const Container = styled.View({
   margin: getSpacing(4),
