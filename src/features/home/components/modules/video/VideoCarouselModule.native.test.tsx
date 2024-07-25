@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import MockedYouTubePlayer, { PLAYER_STATES } from '__mocks__/react-native-youtube-iframe'
+import MockedYouTubePlayer from '__mocks__/react-native-youtube-iframe'
+import { PlayerState } from 'features/home/components/modules/video/types'
 import { VideoPlayerButtonsWording } from 'features/home/components/modules/video/VerticalVideoPlayer'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import {
@@ -33,7 +34,7 @@ const MOCKED_ALGOLIA_RESPONSE_OFFER = mockedAlgoliaResponse.hits[0]
 
 describe('<VideoCarouselModule />', () => {
   beforeEach(() => {
-    MockedYouTubePlayer.setPlayerState(PLAYER_STATES.UNSTARTED)
+    MockedYouTubePlayer.setPlayerState(PlayerState.UNSTARTED)
     MockedYouTubePlayer.setError(false)
   })
 
@@ -171,7 +172,7 @@ describe('<VideoCarouselModule />', () => {
     })
 
     it('should send logConsultVideo event when user presses `next video button`', async () => {
-      MockedYouTubePlayer.setPlayerState(PLAYER_STATES.ENDED)
+      MockedYouTubePlayer.setPlayerState(PlayerState.ENDED)
 
       renderVideoCarouselModule(videoCarouselModuleFixture)
 
