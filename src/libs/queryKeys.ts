@@ -26,7 +26,6 @@ export enum QueryKeys {
   PHONE_VALIDATION_CODE = 'phoneValidationCode',
   PHONE_VALIDATION_REMAINING_ATTEMPTS = 'phoneValidationRemainingAttempts',
   PLACES = 'places',
-  REACTIONS = 'reactions',
   RECOMMENDATION_HITS = 'recommendationHits',
   RECOMMENDATION_OFFER_IDS = 'recommendationOfferIds',
   RESET_PASSWORD_EXPIRED_LINK = 'resetPasswordExpiredLink',

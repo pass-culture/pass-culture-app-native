@@ -12,8 +12,6 @@ export const useReactionMutation = () => {
     (reactionRequest: PostReactionRequest) => api.postNativeV1Reaction(reactionRequest),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries([QueryKeys.USER_PROFILE])
-        queryClient.invalidateQueries([QueryKeys.REACTIONS])
         queryClient.invalidateQueries([QueryKeys.BOOKINGS])
       },
       onError: () => {
