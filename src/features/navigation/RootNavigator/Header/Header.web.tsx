@@ -5,7 +5,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
-import { FOOTER_ID } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
@@ -81,7 +80,6 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
   return (
     <HeaderContainer>
       <QuickAccess href={`#${mainId}`} title="Aller au contenu principal" />
-      <QuickAccess href={`#${FOOTER_ID}`} title="Aller au pied de page" />
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         {isBrandVisible ? (
           <LogoContainer

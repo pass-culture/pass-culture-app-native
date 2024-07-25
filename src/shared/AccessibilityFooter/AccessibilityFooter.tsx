@@ -1,5 +1,5 @@
 import React from 'react'
-import { Platform, View } from 'react-native'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { env } from 'libs/environment'
@@ -15,48 +15,44 @@ import { CaptionNeutralInfo } from 'ui/theme/typography'
 
 const isWeb = Platform.OS === 'web'
 
-export const FOOTER_ID = 'footer_id_for_quick_access'
-
 export const AccessibilityFooter = () => {
   if (isWeb) {
     return (
       <AccessibilityFooterContainer>
-        <View nativeID={FOOTER_ID}>
-          <Separator.Horizontal />
-          <Container>
-            <LogoContainer>
-              <ColoredPassCultureLogo />
-            </LogoContainer>
-            <LinksContainer>
-              <InternalTouchableLink navigateTo={{ screen: 'Accessibility' }}>
-                <CaptionNeutralInfo>Accessibilité&nbsp;: partiellement conforme</CaptionNeutralInfo>
-              </InternalTouchableLink>
-              <InternalTouchableLink navigateTo={{ screen: 'LegalNotices' }}>
-                <CaptionNeutralInfo>Mentions légales</CaptionNeutralInfo>
-              </InternalTouchableLink>
-              <ExternalTouchableLink
-                as={ButtonQuaternaryGrey}
-                wording="CGU utilisateurs"
-                externalNav={{ url: env.CGU_LINK }}
-                icon={ExternalSiteFilled}
-                justifyContent="flex-start"
-                inline
-              />
-              <ExternalTouchableLink
-                as={ButtonQuaternaryGrey}
-                wording="Charte des données personnelles"
-                externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
-                icon={ExternalSiteFilled}
-                justifyContent="flex-start"
-                inline
-              />
-            </LinksContainer>
-            <LogoContainer>
-              <LogoMinistere />
-            </LogoContainer>
-            <Spacer.TabBar />
-          </Container>
-        </View>
+        <Separator.Horizontal />
+        <Container>
+          <LogoContainer>
+            <ColoredPassCultureLogo />
+          </LogoContainer>
+          <LinksContainer>
+            <InternalTouchableLink navigateTo={{ screen: 'Accessibility' }}>
+              <CaptionNeutralInfo>Accessibilité&nbsp;: partiellement conforme</CaptionNeutralInfo>
+            </InternalTouchableLink>
+            <InternalTouchableLink navigateTo={{ screen: 'LegalNotices' }}>
+              <CaptionNeutralInfo>Mentions légales</CaptionNeutralInfo>
+            </InternalTouchableLink>
+            <ExternalTouchableLink
+              as={ButtonQuaternaryGrey}
+              wording="CGU utilisateurs"
+              externalNav={{ url: env.CGU_LINK }}
+              icon={ExternalSiteFilled}
+              justifyContent="flex-start"
+              inline
+            />
+            <ExternalTouchableLink
+              as={ButtonQuaternaryGrey}
+              wording="Charte des données personnelles"
+              externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
+              icon={ExternalSiteFilled}
+              justifyContent="flex-start"
+              inline
+            />
+          </LinksContainer>
+          <LogoContainer>
+            <LogoMinistere />
+          </LogoContainer>
+          <Spacer.TabBar />
+        </Container>
       </AccessibilityFooterContainer>
     )
   }
