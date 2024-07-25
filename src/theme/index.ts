@@ -1,3 +1,4 @@
+import { theme as designTokens } from 'design-system/dist/build/ts'
 import { Platform } from 'react-native'
 
 // eslint-disable-next-line no-restricted-imports
@@ -105,6 +106,7 @@ export const theme = {
       },
     },
   },
+  designSystem: designTokens,
   typography: {
     hero: {
       fontFamily: 'Montserrat-Medium',

@@ -15,7 +15,12 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ['Fondations', 'ui', 'Features'],
+      order: [
+        'Design System',
+        'Fondations',
+        'ui',
+        'Features'
+      ],
     },
   },
 }
