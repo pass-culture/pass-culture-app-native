@@ -3,7 +3,7 @@ import React from 'react'
 import { CategoryIdEnum } from 'api/gen'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { render, screen, waitFor } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useCategoryId')
 
@@ -74,9 +74,7 @@ describe('<OfferImageContainer />', () => {
         />
       )
 
-      await waitFor(() => {
-        expect(screen.getByTestId('offerImageContainerCarousel')).toBeOnTheScreen()
-      })
+      expect(await screen.findByTestId('offerImageContainerCarousel')).toBeOnTheScreen()
     })
 
     it('should display carousel dots when offer has several images', async () => {
@@ -87,6 +85,7 @@ describe('<OfferImageContainer />', () => {
           onPress={jest.fn()}
         />
       )
+      await screen.findByTestId('offerImageContainerCarousel')
 
       expect(await screen.findByTestId('onlyDotsContainer')).toBeOnTheScreen()
     })
