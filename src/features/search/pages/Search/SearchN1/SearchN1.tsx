@@ -57,27 +57,27 @@ export const SearchN1: React.FC = () => {
   }
 
   return (
-    <ScrollView>
-      <SearchN1Bar
-        offerCategories={offerCategories}
-        placeholder={titles[offerCategory]}
-        title={titles[offerCategory]}
-      />
-      <SubcategoryButtonList subcategoryButtonContent={subCategoriesContent} />
-      {isBookCategory && gtlPlaylists.length > 0 ? (
-        <React.Fragment>
-          {gtlPlaylists.map((playlist) => (
-            <GtlPlaylist
-              key={playlist.entryId}
-              playlist={playlist}
-              analyticsFrom="searchn1"
-              route="SearchN1"
-            />
-          ))}
-          <Spacer.Column numberOfSpaces={6} />
-        </React.Fragment>
-      ) : null}
-      <Spacer.Column numberOfSpaces={6} />
-    </ScrollView>
+    <SearchN1Bar
+      offerCategories={offerCategories}
+      placeholder={titles[offerCategory]}
+      title={titles[offerCategory]}>
+      <ScrollView>
+        <SubcategoryButtonList subcategoryButtonContent={subCategoriesContent} />
+        {isBookCategory && gtlPlaylists.length > 0 ? (
+          <React.Fragment>
+            {gtlPlaylists.map((playlist) => (
+              <GtlPlaylist
+                key={playlist.entryId}
+                playlist={playlist}
+                analyticsFrom="searchn1"
+                route="SearchN1"
+              />
+            ))}
+            <Spacer.Column numberOfSpaces={6} />
+          </React.Fragment>
+        ) : null}
+        <Spacer.Column numberOfSpaces={6} />
+      </ScrollView>
+    </SearchN1Bar>
   )
 }
