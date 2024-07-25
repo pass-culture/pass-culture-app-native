@@ -31,7 +31,7 @@ export const EndedBookings: FunctionComponent<Props> = ({ enableBookingImprove }
   const { data: bookings } = useBookings()
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
   const headerHeight = useGetHeaderHeight()
-  const { mutate } = useReactionMutation()
+  const { mutate: addReaction } = useReactionMutation()
 
   const endedBookingsCount = bookings?.ended_bookings?.length ?? 0
   const endedBookingsLabel = plural(endedBookingsCount, {
@@ -41,10 +41,10 @@ export const EndedBookings: FunctionComponent<Props> = ({ enableBookingImprove }
 
   const handleSaveReaction = useCallback(
     ({ offerId, reactionType }: PostReactionRequest) => {
-      mutate({ offerId, reactionType })
+      addReaction({ offerId, reactionType })
       return Promise.resolve(true)
     },
-    [mutate]
+    [addReaction]
   )
 
   const renderItem: ListRenderItem<Booking> = useCallback(
