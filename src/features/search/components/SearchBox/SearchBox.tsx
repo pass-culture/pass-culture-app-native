@@ -148,7 +148,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     // To force remove focus on search input
     Keyboard.dismiss()
 
-    if (true === isFocusOnSuggestions) {
+    if (isFocusOnSuggestions) {
       setQuery(searchState.query)
       hideSuggestions()
       return
