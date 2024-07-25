@@ -11,3 +11,4 @@ flows:
   - 'subFolder/search/*'
   - 'subFolder/home/*'
   - 'subFolder/venue/*'
+  - 'subFolder/analytics/*'

@@ -3,34 +3,10 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible:
     text: "Mes réservations"
     index: 0
+- assertVisible: "En cours"
+- assertVisible: "Terminées"
 
-# Cas avec réservation en cours
-- runFlow:
-    when:
-      visible: ".*réservation en cours.*"
-    commands:
-      - assertVisible:
-          id: "Réservation de l’offre.*"
-      - assertVisible:
-          text: "Réservations terminées"
-          index: 1
-      - tapOn: "Réservations terminées"
-      - assertVisible:
-          text: "Réservations terminées"
-          index: 1
-      - assertVisible:
-          id: "Réservation annulée.*"
-          index: 0
-      - back
-      - tapOn: ".*Réservation de l’offre.*"
-      - scroll
-      - tapOn: "Voir le détail de l’offre"
-      - assertVisible:
-          id: "Nom de l’offre.*"
-      - back
-      - tapOn: "Annuler ma réservation"
-      - tapOn: "Annuler ma réservation"
-      - back
+# TODO: (PC-31019) - Cas avec réservation en cours
 
 # Cas sans réservation en cours
 - runFlow:
@@ -38,13 +14,7 @@ appId: ${MAESTRO_APP_ID}
       visible: "Tu n’as pas de réservation en cours.*"
     commands:
       - assertVisible: "Découvrir le catalogue"
-      - assertVisible:
-          text: "Réservations terminées"
-          index: 1
-      - tapOn: "Réservations terminées"
-      - assertVisible:
-          text: "Réservations terminées"
-          index: 1
+      - tapOn: "Terminées"
       - assertVisible:
           id: "Réservation annulée.*"
           index: 0

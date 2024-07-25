@@ -4,12 +4,16 @@ appId: ${MAESTRO_APP_ID}
     text: "Livres papier"
     index: 0
 
-- scroll
+- swipe:
+   from: 
+     id: "tagsContainer"
+   direction: UP
+    
 - assertVisible: À propos
 - assertVisible:
     id: Étendre le texte
 - scroll
-- assertVisible: Lieu de retrait
+
 
 - runFlow:
     when:

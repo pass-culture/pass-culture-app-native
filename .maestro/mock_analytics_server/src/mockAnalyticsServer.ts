@@ -18,7 +18,7 @@ app.use(express.json())
 let calledAnalytics: unknown[] = []
 
 app.post('/', (req, res) => {
-  calledAnalytics.push(req.body.analyticsKey)
+  calledAnalytics.push(req.body)
   console.debug('post', calledAnalytics)
   res.sendStatus(201)
 })

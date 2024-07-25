@@ -16,3 +16,8 @@ appId: ${MAESTRO_APP_ID}
 
 - assertVisible: "À 18 ans, profite de ton pass Culture\_!"
 - tapOn: 'Plus tard'
+
+- extendedWaitUntil:
+    visible: 
+        id: "intersectionObserver"
+    timeout: 20000

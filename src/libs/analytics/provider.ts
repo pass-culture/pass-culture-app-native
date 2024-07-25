@@ -36,7 +36,7 @@ export const analytics: AnalyticsProvider = {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ analyticsKey: eventName.firebase }),
+        body: JSON.stringify({ analyticsKey: eventName.firebase, params }),
       })
     }
   },

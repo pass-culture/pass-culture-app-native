@@ -1,3 +1,10 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - tapOn: 'Mon profil'
+- waitForAnimationToEnd
+
+- runFlow:
+    when:
+      notVisible: "Paramètres de l’application"
+    commands:
+      - tapOn: 'Mon profil'
