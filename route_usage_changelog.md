@@ -43,6 +43,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/profile/email_update/cancel
 - /native/v1/profile/email_update/confirm
 - /native/v1/profile/update_email
+- /native/v1/reaction
 - /native/v1/recommendation/playlist
 - /native/v1/refresh_access_token
 - /native/v1/request_password_reset
@@ -67,6 +68,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 ## Unused routes:
 - /native/v1/offer/report/reasons
 - /native/v1/offers/reports
+- /native/v1/reaction/available
 - /native/v1/subscription/next_step
 - /native/v1/subscription/stepper
 - /native/v1/offer/{offer_id}/report
