@@ -74,7 +74,7 @@ const renderModule = (
 )
 
 const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
-  if (hasShownAll && Platform.OS === 'web') {
+  if (Platform.OS === 'web') {
     return (
       <React.Fragment>
         <footer>
