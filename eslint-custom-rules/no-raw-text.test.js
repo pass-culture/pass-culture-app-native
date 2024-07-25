@@ -10,7 +10,6 @@ const tests = {
     // <Text>string</Text>
     { code: '<Text>toto</Text>' },
     // <Typo.***>string</Typo.***>
-    { code: '<Typo.Hero>toto</Typo.Hero>' },
     { code: '<Typo.Title1>toto</Typo.Title1>' },
     { code: '<Typo.Title2>toto</Typo.Title2>' },
     { code: '<Typo.Title3>toto</Typo.Title3>' },
@@ -24,7 +23,6 @@ const tests = {
     { code: '<Typo.CaptionPrimary>toto</Typo.CaptionPrimary>' },
     { code: '<Typo.CaptionSecondary>toto</Typo.CaptionSecondary>' },
     // <Styled***>string</Styled***>
-    { code: '<StyledHero>toto</StyledHero>' },
     { code: '<StyledTitle1>toto</StyledTitle1>' },
     { code: '<StyledTitle2>toto</StyledTitle2>' },
     { code: '<StyledTitle3>toto</StyledTitle3>' },

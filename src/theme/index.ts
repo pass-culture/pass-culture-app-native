@@ -108,12 +108,6 @@ export const theme = {
   },
   designSystem: designTokens,
   typography: {
-    hero: {
-      fontFamily: 'Montserrat-Medium',
-      fontSize: getSpacing(9.5),
-      lineHeight: getSpacingString(12),
-      color: ColorsEnum.BLACK,
-    },
     title1: {
       fontFamily: 'Montserrat-Black',
       fontSize: getSpacing(6.5),

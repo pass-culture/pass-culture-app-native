@@ -1,12 +1,12 @@
 const ALLOWED_JSX_TAGS = [
   /^.*Text$/,
-  /^(Styled|)+(Hero|Title[1-4]|Body|ButtonText(|NeutralInfo|Primary|Secondary)|Caption(|NeutralInfo|Primary|Secondary))$/,
-];
+  /^(Styled|)+(Title[1-4]|Body|ButtonText(|NeutralInfo|Primary|Secondary)|Caption(|NeutralInfo|Primary|Secondary))$/,
+]
 
-const WHITESPACES_REGEX = /^\s*$/;
+const WHITESPACES_REGEX = /^\s*$/
 
 const checkJSXTextAreEmpty = (child) =>
-  child.type !== 'JSXText' || (child.type === 'JSXText' && WHITESPACES_REGEX.test(child.value));
+  child.type !== 'JSXText' || (child.type === 'JSXText' && WHITESPACES_REGEX.test(child.value))
 
 const conditions = [
   {
@@ -21,7 +21,7 @@ const conditions = [
     check: (openingElement) => ALLOWED_JSX_TAGS.some((value) => value.test(openingElement.name)),
     message: 'allowed JSX tag',
   },
-];
+]
 
 module.exports = {
   name: 'no-raw-text',
@@ -49,6 +49,6 @@ module.exports = {
           message: `No raw text outside tags <Text>, ${allowedTags}. \n *** = all exported Typo in src/ui/theme/typography.tsx`,
         });
       },
-    };
+    }
   },
-};
+}
