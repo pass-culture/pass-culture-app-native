@@ -32,7 +32,6 @@ interface VideoModalProps extends VideoModule {
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
   const playerRef = useRef<YouTube>(null)
-  const playerCurrentRef = playerRef?.current?.internalPlayer
 
   const analyticsParams: OfferAnalyticsParams = {
     moduleId: props.id,
@@ -42,6 +41,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
   }
 
   const onCloseModal = async () => {
+    const playerCurrentRef = playerRef?.current?.internalPlayer
     if (playerCurrentRef) {
       const [videoDuration, elapsed] = await Promise.all([
         playerCurrentRef.getDuration(),
