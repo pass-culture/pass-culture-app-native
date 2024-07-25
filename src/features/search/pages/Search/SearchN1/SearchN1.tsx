@@ -59,7 +59,7 @@ export const SearchN1: React.FC = () => {
   return (
     <SearchN1Bar
       offerCategories={offerCategories}
-      placeholder={titles[offerCategory]}
+      placeholder={`${titles[offerCategory]}...`}
       title={titles[offerCategory]}>
       <ScrollView>
         <SubcategoryButtonList subcategoryButtonContent={subCategoriesContent} />

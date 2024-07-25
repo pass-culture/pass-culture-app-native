@@ -554,7 +554,7 @@ describe('SearchBox component with venue previous route on search results', () =
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_STATE',
-      payload: { ...mockSearchState, venue: undefined },
+      payload: initialSearchState,
     })
   })
 
