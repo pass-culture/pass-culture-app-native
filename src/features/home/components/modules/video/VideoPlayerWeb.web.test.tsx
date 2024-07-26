@@ -2,7 +2,6 @@ import React from 'react'
 import YouTube from 'react-youtube'
 
 import MockedYouTubePlayer from '__mocks__/react-youtube'
-import { PlayerState } from 'features/home/components/modules/video/types'
 import { VideoPlayerWeb } from 'features/home/components/modules/video/VideoPlayerWeb.web'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
@@ -33,7 +32,7 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('VideoPlayer', () => {
   describe('analytics', () => {
     it('should logHasSeenAllVideo when all video were seen', async () => {
-      MockedYouTubePlayer.setPlayerState(PlayerState.ENDED)
+      MockedYouTubePlayer.setPlayerStateData(YouTube.PlayerState.ENDED)
 
       renderVideoPlayer()
 
@@ -47,7 +46,7 @@ describe('VideoPlayer', () => {
     })
 
     it('should logConsultVideo when player is ready', async () => {
-      MockedYouTubePlayer.setPlayerState(PlayerState.UNSTARTED)
+      MockedYouTubePlayer.setPlayerStateData(YouTube.PlayerState.UNSTARTED)
 
       renderVideoPlayer()
 

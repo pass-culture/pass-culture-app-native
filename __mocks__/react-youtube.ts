@@ -5,15 +5,15 @@ import { PlayerState } from 'features/home/components/modules/video/types'
 
 let mockState = PlayerState.UNSTARTED
 let mockError = false
-const mockEvent = { data: YouTube.PlayerState.ENDED, target: jest.fn() }
+let mockPlayerStateData: number
 const YouTubePlayerMock = React.forwardRef(function Component(
   props: YouTubeProps,
   ref: ForwardedRef<YouTube>
 ) {
   React.useEffect(() => {
-    if (props.onReady) props.onReady(mockEvent)
-    if (props.onStateChange) props.onStateChange(mockEvent)
-    if (props.onError && mockError) props.onError(mockEvent)
+    if (props.onReady) props.onReady({ data: mockPlayerStateData, target: jest.fn() })
+    if (props.onStateChange) props.onStateChange({ data: mockPlayerStateData, target: jest.fn() })
+    if (props.onError && mockError) props.onError({ data: mockPlayerStateData, target: jest.fn() })
   }, [props])
 
   if (typeof ref === 'object' && ref !== null) {
@@ -66,8 +66,13 @@ const setError = (error: boolean) => {
   mockError = error
 }
 
+const setPlayerStateData = (playerStateData: number) => {
+  mockPlayerStateData = playerStateData
+}
+
 const MockedYoutubePlayer = YouTubePlayerMock as typeof YouTubePlayerMock & {
   setPlayerState: (playerState: PlayerState) => void
+  setPlayerStateData: (playerStateData: number) => void
   setError: (error: boolean) => void
   PlayerState: typeof YouTube.PlayerState
 }
@@ -75,5 +80,6 @@ const MockedYoutubePlayer = YouTubePlayerMock as typeof YouTubePlayerMock & {
 MockedYoutubePlayer.setPlayerState = setPlayerState
 MockedYoutubePlayer.setError = setError
 MockedYoutubePlayer.PlayerState = YouTube.PlayerState
+MockedYoutubePlayer.setPlayerStateData = setPlayerStateData
 
 export default MockedYoutubePlayer

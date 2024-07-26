@@ -47,11 +47,9 @@ describe('VerticalVideoPlayer', () => {
 
     renderVideoPlayer(defaultVerticalVideoPlayerProps)
 
-    const errorMessage = screen.queryByText(
-      'Une erreur s’est produite pendant le chargement de la vidéo'
-    )
-
-    expect(errorMessage).toBeOnTheScreen()
+    expect(
+      await screen.findByText('Une erreur s’est produite pendant le chargement de la vidéo')
+    ).toBeOnTheScreen()
   })
 
   it('should not render error view without error', async () => {
