@@ -1,12 +1,24 @@
-import { ShareAppTrigger } from 'libs/firebase/remoteConfig/remoteConfig.types'
+import { useEffect } from 'react'
 
-type Params = {
-  openModal: () => void
-  lastBookingConsumed: boolean
+import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
+import { ShareAppModalType } from 'features/share/types'
+
+import { useShareAppModalStore } from './useShareAppModalStore'
+
+export type ShareAppModalTrigger = () => boolean
+
+export const useShareAppModaleTrigger = (trigger: ShareAppModalTrigger) => {
+  const {
+    hasSeenShareAppModal,
+    actions: { seeShareAppModal },
+  } = useShareAppModalStore()
+  const { showShareAppModal } = useShareAppContext()
+
+  useEffect(() => {
+    if (hasSeenShareAppModal || !trigger()) return
+    showShareAppModal(ShareAppModalType.BENEFICIARY)
+    seeShareAppModal()
+  }, [hasSeenShareAppModal, seeShareAppModal, showShareAppModal, trigger])
 }
-export const useShareAppModaleTrigger = (
-  variant: ShareAppTrigger,
-  { openModal, lastBookingConsumed }: Params
-) => {
-  if (lastBookingConsumed) openModal()
-}
+
+export const defaultTrigger: ShareAppModalTrigger = () => false
