@@ -57,6 +57,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   const [lastRegionSearched, setLastRegionSearched] = useState<Region>(defaultRegion)
   const [showSearchButton, setShowSearchButton] = useState<boolean>(false)
   const hasSearchButton = from === 'venueMap' ? showSearchButton : false
+  const [mapReady, setMapReady] = useState(false)
 
   const selectedVenue = useSelectedVenue()
   const venueTypeCode = useVenueTypeCode()
@@ -74,12 +75,6 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   const { data: selectedVenueOffers } = useVenueOffers(
     transformGeoLocatedVenueToVenueResponse(selectedVenue)
   )
-
-  useEffect(() => {
-    if (venues.length > 1) {
-      zoomOutIfMapEmpty({ mapViewRef, venues })
-    }
-  }, [venues])
 
   const centerOnLocation = useCenterOnLocation({
     currentRegion,
@@ -134,6 +129,8 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     }
   }
 
+  const handleMapReady = () => setMapReady(true)
+
   const onNavigateToVenuePress = (venueId: number) => {
     analytics.logConsultVenue({ venueId, from: 'venueMap' })
   }
@@ -150,6 +147,12 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
 
     return Array.from(new Set(points))
   }, [from, bottom, hasOffers, tabBarHeight])
+
+  useEffect(() => {
+    if (mapReady && venues.length > 1) {
+      zoomOutIfMapEmpty({ mapViewRef, venues })
+    }
+  }, [venues, mapReady])
 
   useEffect(() => {
     if (selectedVenue) {
@@ -174,6 +177,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
         initialRegion={defaultRegion}
         rotateEnabled={false}
         pitchEnabled={false}
+        onMapReady={handleMapReady}
         moveOnMarkerPress={false}
         onRegionChangeComplete={handleRegionChangeComplete}
         renderCluster={VenueMapCluster}
