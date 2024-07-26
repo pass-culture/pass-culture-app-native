@@ -2,6 +2,7 @@ import React from 'react'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
+import * as useVersion from 'ui/hooks/useVersion.web'
 
 import { Profile } from './Profile'
 
@@ -10,6 +11,8 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/favorites/context/FavoritesWrapper')
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
 
 describe('<Profile/>', () => {
   describe('Accessibility', () => {
