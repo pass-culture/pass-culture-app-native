@@ -11,11 +11,8 @@ export const firstSessionAfterBookingTrigger =
   ({ currentDate, ongoingBookings }: Params): ShareAppModalTrigger =>
   () => {
     const lastBooking = ongoingBookings[0]
-    const hasNoBooking = !lastBooking
-    if (hasNoBooking) return false
-    const hasNotUseBooking = !lastBooking.dateUsed
+    const hasNotUseBooking = !lastBooking?.dateUsed
     if (hasNotUseBooking) return false
-
     const isLastBookingUsed = new Date(lastBooking.dateUsed as string) >= currentDate
     return isLastBookingUsed
   }
