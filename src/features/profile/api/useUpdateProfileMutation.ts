@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
-import { UserProfileResponse, UserProfileUpdateRequest } from 'api/gen'
+import { UserProfileResponse, UserProfilePatchRequest } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
 export function useUpdateProfileMutation(
@@ -9,7 +9,7 @@ export function useUpdateProfileMutation(
   onErrorCallback: (error: unknown) => void
 ) {
   const client = useQueryClient()
-  return useMutation((body: UserProfileUpdateRequest) => api.postNativeV1Profile(body), {
+  return useMutation((body: UserProfilePatchRequest) => api.patchNativeV1Profile(body), {
     onSuccess(response: UserProfileResponse) {
       client.setQueryData([QueryKeys.USER_PROFILE], (old: UserProfileResponse | undefined) => ({
         ...(old ?? {}),

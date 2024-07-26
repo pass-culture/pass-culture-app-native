@@ -3645,6 +3645,37 @@ export interface UserProfileEmailUpdate {
 }
 /**
  * @export
+ * @interface UserProfilePatchRequest
+ */
+export interface UserProfilePatchRequest {
+  /**
+   * @type {ActivityIdEnum}
+   * @memberof UserProfilePatchRequest
+   */
+  activityId?: ActivityIdEnum | null
+  /**
+   * @type {string}
+   * @memberof UserProfilePatchRequest
+   */
+  city?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfilePatchRequest
+   */
+  origin?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfilePatchRequest
+   */
+  postalCode?: string | null
+  /**
+   * @type {NotificationSubscriptions}
+   * @memberof UserProfilePatchRequest
+   */
+  subscriptions?: NotificationSubscriptions | null
+}
+/**
+ * @export
  * @interface UserProfileResponse
  */
 export interface UserProfileResponse {
@@ -3778,17 +3809,6 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   subscriptions: NotificationSubscriptions
-}
-/**
- * @export
- * @interface UserProfileUpdateRequest
- */
-export interface UserProfileUpdateRequest {
-  /**
-   * @type {NotificationSubscriptions}
-   * @memberof UserProfileUpdateRequest
-   */
-  subscriptions?: NotificationSubscriptions | null
 }
 /**
  * @export
@@ -4832,6 +4852,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary patch_user_profile <PATCH>
+     * @param {UserProfilePatchRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async patchNativeV1Profile(
+      body?: UserProfilePatchRequest,
+      options: any = {}
+    ): Promise<FetchArgs> {
+      let pathname = `/native/v1/profile`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'PATCH' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization =
+        <any>'UserProfilePatchRequest' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary create_account <POST>
      * @param {AccountRequest} [body]
      * @param {*} [options] Override http request option.
@@ -5228,13 +5275,13 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary update_user_profile <POST>
-     * @param {UserProfileUpdateRequest} [body]
+     * @summary patch_user_profile <POST>
+     * @param {UserProfilePatchRequest} [body]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async postNativeV1Profile(
-      body?: UserProfileUpdateRequest,
+      body?: UserProfilePatchRequest,
       options: any = {}
     ): Promise<FetchArgs> {
       let pathname = `/native/v1/profile`
@@ -5246,7 +5293,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization =
-        <any>'UserProfileUpdateRequest' !== 'string' ||
+        <any>'UserProfilePatchRequest' !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
       return {
@@ -6450,6 +6497,27 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
     },
     /**
      *
+     * @summary patch_user_profile <PATCH>
+     * @param {UserProfilePatchRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async patchNativeV1Profile(
+      body?: UserProfilePatchRequest,
+      options?: any
+    ): Promise<UserProfileResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).patchNativeV1Profile(body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     *
      * @summary create_account <POST>
      * @param {AccountRequest} [body]
      * @param {*} [options] Override http request option.
@@ -6754,13 +6822,13 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
     },
     /**
      *
-     * @summary update_user_profile <POST>
-     * @param {UserProfileUpdateRequest} [body]
+     * @summary patch_user_profile <POST>
+     * @param {UserProfilePatchRequest} [body]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async postNativeV1Profile(
-      body?: UserProfileUpdateRequest,
+      body?: UserProfilePatchRequest,
       options?: any
     ): Promise<UserProfileResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(
@@ -7665,6 +7733,18 @@ export class DefaultApi extends BaseAPI {
   }
   /**
    *
+   * @summary patch_user_profile <PATCH>
+   * @param {UserProfilePatchRequest} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async patchNativeV1Profile(body?: UserProfilePatchRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).patchNativeV1Profile(body, options)
+  }
+  /**
+   *
    * @summary create_account <POST>
    * @param {AccountRequest} [body]
    * @param {*} [options] Override http request option.
@@ -7870,13 +7950,13 @@ export class DefaultApi extends BaseAPI {
   }
   /**
    *
-   * @summary update_user_profile <POST>
-   * @param {UserProfileUpdateRequest} [body]
+   * @summary patch_user_profile <POST>
+   * @param {UserProfilePatchRequest} [body]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof DefaultApi
    */
-  public async postNativeV1Profile(body?: UserProfileUpdateRequest, options?: any) {
+  public async postNativeV1Profile(body?: UserProfilePatchRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1Profile(body, options)
   }
