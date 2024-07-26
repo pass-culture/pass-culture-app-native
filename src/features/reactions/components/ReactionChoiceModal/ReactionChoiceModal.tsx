@@ -44,9 +44,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
     ReactionTypeEnum.NO_REACTION
   )
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
-
-  const wording =
-    reactionStatus === ReactionTypeEnum.NO_REACTION ? 'Confirmer' : 'Valider la réaction'
+  const [buttonWording, setButtonWording] = useState<string>('Valider la réaction')
 
   const onPressReactionButton = (reactionType: ReactionTypeEnum) => {
     setIsButtonDisabled(false)
@@ -63,8 +61,15 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
     if (visible && defaultReaction !== undefined && defaultReaction !== null) {
       setReactionStatus(defaultReaction)
       setIsButtonDisabled(true)
+      setButtonWording('Valider la réaction')
     }
   }, [visible, defaultReaction])
+
+  useEffect(() => {
+    if (!isButtonDisabled && reactionStatus === ReactionTypeEnum.NO_REACTION) {
+      setButtonWording('Confirmer')
+    }
+  }, [reactionStatus, isButtonDisabled])
 
   const getStyledIcon = useCallback(
     (name: IconNames, props?: object) =>
@@ -107,7 +112,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
       rightIconAccessibilityLabel="Fermer la modale"
       fixedModalBottom={
         <ButtonPrimary
-          wording={wording}
+          wording={buttonWording}
           onPress={() => {
             onSave?.({
               offerId: offer.id,
