@@ -2027,7 +2027,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                         }
                       }
                       accessible={true}
-                      focusable={false}
+                      focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
@@ -4151,7 +4151,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                         }
                       }
                       accessible={true}
-                      focusable={false}
+                      focusable={true}
                       onClick={[Function]}
                       onResponderGrant={[Function]}
                       onResponderMove={[Function]}
