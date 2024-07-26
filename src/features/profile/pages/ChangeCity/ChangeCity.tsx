@@ -1,31 +1,20 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { object, string } from 'yup'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
 import { useCity, useCityActions } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
-import { analytics } from 'libs/analytics'
-import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export type CityForm = { city: SuggestedCity }
-
-export const cityResolver = object().shape({
-  city: object()
-    .shape({
-      name: string().required(),
-      code: string().required(),
-      postalCode: string().required(),
-    })
-    .required(),
-})
-
-export const SetCity = () => {
+export const ChangeCity = () => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const storedCity = useCity()
   const { setCity } = useCityActions()
   const {
@@ -37,15 +26,25 @@ export const SetCity = () => {
     resolver: yupResolver(cityResolver),
     defaultValues: { city: storedCity ?? undefined },
   })
-
-  useEffect(() => {
-    analytics.logScreenViewSetCity()
-  }, [])
+  const { mutate: updateProfile } = useUpdateProfileMutation(
+    () => {
+      showSuccessSnackBar({
+        message: 'Ta ville de résidence a bien été modifiée\u00a0!',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+    () => {
+      showErrorSnackBar({
+        message: 'Une erreur est survenue',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    }
+  )
 
   const onSubmit = ({ city }: CityForm) => {
     setCity(city)
-    analytics.logSetPostalCodeClicked()
-    navigate('SetAddress')
+    updateProfile({ city: city.name, postalCode: city.postalCode })
+    navigate('PersonalData')
   }
 
   return (

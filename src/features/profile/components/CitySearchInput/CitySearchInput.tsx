@@ -33,7 +33,7 @@ const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${c
 
 type CitySearchInputProps = {
   city?: SuggestedCity
-  onCitySelected: (city?: SuggestedCity) => void
+  onCitySelected?: (city?: SuggestedCity) => void
 }
 
 type PostalCodeForm = { postalCode: string }
@@ -67,7 +67,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
 
   const onSubmit = useCallback(
     ({ postalCode }: PostalCodeForm) => {
-      onCitySelected()
+      onCitySelected?.()
       debouncedSetPostalCode(postalCode)
     },
     [debouncedSetPostalCode, onCitySelected]
