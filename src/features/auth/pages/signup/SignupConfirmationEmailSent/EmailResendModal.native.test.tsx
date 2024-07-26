@@ -34,9 +34,7 @@ describe('<EmailResendModal />', () => {
   it('should dismiss modal when close icon is pressed', async () => {
     renderEmailResendModal({})
 
-    await act(async () => {
-      fireEvent.press(screen.getByLabelText('Fermer la modale'))
-    })
+    fireEvent.press(screen.getByLabelText('Fermer la modale'))
 
     expect(onDismissMock).toHaveBeenCalledTimes(1)
   })
@@ -68,14 +66,15 @@ describe('<EmailResendModal />', () => {
 
   it('should display timer when resend email button is clicked', async () => {
     renderEmailResendModal({})
+
     await waitFor(() => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+    fireEvent.press(screen.getByText('Demander un nouveau lien'))
 
     expect(
-      screen.getByText(
+      await screen.findByText(
         'Nous t’avons envoyé un nouveau lien. Une autre demande sera possible dans 60s.'
       )
     ).toBeOnTheScreen()
@@ -87,10 +86,10 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+    fireEvent.press(screen.getByText('Demander un nouveau lien'))
 
     expect(
-      screen.getByText(
+      await screen.findByText(
         'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
       )
     ).toBeOnTheScreen()
@@ -102,9 +101,11 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+    fireEvent.press(screen.getByText('Demander un nouveau lien'))
 
-    expect(screen.getByText('Tu as dépassé le nombre de renvois autorisés.')).toBeOnTheScreen()
+    expect(
+      await screen.findByText('Tu as dépassé le nombre de renvois autorisés.')
+    ).toBeOnTheScreen()
   })
 
   it('should reset error message when another resend attempt is made', async () => {
@@ -115,8 +116,6 @@ describe('<EmailResendModal />', () => {
     await waitFor(() => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
-
-    await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
 
     await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
 
@@ -132,15 +131,14 @@ describe('<EmailResendModal />', () => {
       remainingResends: 0,
       counterResetDatetime: '2023-09-30T12:58:04.065652Z',
     })
+
     renderEmailResendModal({})
 
-    await waitFor(() => {
-      expect(
-        screen.queryByText(
-          'Tu as dépassé le nombre de 3 demandes de lien autorisées. Tu pourras réessayer le 30/09/2023 à 12h58.'
-        )
-      ).not.toBeOnTheScreen()
-    })
+    expect(
+      screen.queryByText(
+        'Tu as dépassé le nombre de 3 demandes de lien autorisées. Tu pourras réessayer le 30/09/2023 à 12h58.'
+      )
+    ).not.toBeOnTheScreen()
   })
 
   describe('When shouldLogInfo remote config is false', () => {
@@ -181,12 +179,14 @@ describe('<EmailResendModal />', () => {
         expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
       })
 
-      await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+      fireEvent.press(screen.getByText('Demander un nouveau lien'))
 
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        'Could not resend validation email: error',
-        { level: 'info' }
-      )
+      await waitFor(() => {
+        expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+          'Could not resend validation email: error',
+          { level: 'info' }
+        )
+      })
     })
   })
 })

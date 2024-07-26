@@ -75,8 +75,7 @@ describe('<OfferPreviewModal />', () => {
       />
     )
 
-    const previousButton = await screen.findByTestId('Image précédente')
-    fireEvent.click(previousButton)
+    await act(() => fireEvent.click(screen.getByTestId('Image précédente')))
 
     await waitFor(() => expect(screen.getByText('2/3')).toBeInTheDocument())
   })

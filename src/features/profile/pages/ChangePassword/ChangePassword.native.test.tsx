@@ -91,7 +91,6 @@ describe('ChangePassword', () => {
   it('should display success snackbar and navigate to Profile when the password is updated', async () => {
     mockServer.postApi('/v1/change_password', {
       responseOptions: { data: {} },
-      requestOptions: { persist: true },
     })
     mockedUseSnackBarContext.mockImplementationOnce(() => ({
       showSuccessSnackBar,
@@ -149,6 +148,8 @@ describe('ChangePassword', () => {
       fireEvent.press(continueButton)
     })
 
-    expect(screen.getByText('Mot de passe incorrect')).toBeOnTheScreen()
+    await waitFor(() => {
+      expect(screen.getByText('Mot de passe incorrect')).toBeOnTheScreen()
+    })
   })
 })

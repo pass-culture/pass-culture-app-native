@@ -2,7 +2,7 @@ import React from 'react'
 
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, render } from 'tests/utils/web'
+import { checkAccessibilityFor, render, waitFor } from 'tests/utils/web'
 
 // Fix the error "IDs used in ARIA and labels must be unique (duplicate-id-aria)" because the UUIDV4 mock returns "testUuidV4"
 jest.mock('uuid', () => {
@@ -18,7 +18,7 @@ describe('<NewEmailSelection />', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<NewEmailSelection />))
 
-      await act(async () => {
+      await waitFor(async () => {
         const results = await checkAccessibilityFor(container)
 
         expect(results).toHaveNoViolations()
