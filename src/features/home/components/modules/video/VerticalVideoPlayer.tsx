@@ -2,7 +2,14 @@ import colorAlpha from 'color-alpha'
 import React from 'react'
 import { useWindowDimensions, Platform } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import YouTubePlayer from 'react-native-youtube-iframe'
+import Animated, {
+  cancelAnimation,
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated'
+import YouTubePlayer, { PLAYER_STATES } from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -10,13 +17,9 @@ import {
   RATIO710,
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
-import {
-  PlayerState,
-  useVerticalVideoPlayer,
-} from 'features/home/components/modules/video/useVerticalVideoPlayer'
+import { useVerticalVideoPlayer } from 'features/home/components/modules/video/useVerticalVideoPlayer'
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
 import { VerticalVideoErrorView } from 'features/home/components/modules/video/VerticalVideoErrorView'
-import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { theme } from 'theme'
 import { Pause } from 'ui/svg/icons/Pause'
@@ -24,6 +27,8 @@ import { PlayV2 } from 'ui/svg/icons/PlayV2'
 import { SoundOff } from 'ui/svg/icons/SoundOff'
 import { SoundOn } from 'ui/svg/icons/SoundOn'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+
+import { PlayerState } from './types'
 
 const PLAYER_CONTROLS_HEIGHT = getSpacing(0)
 
@@ -66,11 +71,12 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     playVideo,
     replayVideo,
     playerRef,
-    elapsed,
     onChangeState,
     showErrorView,
     toggleErrorView,
     videoState,
+    getVideoDuration,
+    getCurrentTime,
   } = useVerticalVideoPlayer({
     isPlaying,
     setIsPlaying,
@@ -88,12 +94,59 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     RATIO710
   )
 
+  const animValue = useSharedValue(0)
+
+  const animStyle = useAnimatedStyle(() => {
+    return {
+      width: `${animValue?.value}%`,
+    }
+  }, [animValue])
+
+  const handleReplayVideo = () => {
+    animValue.value = 0
+    replayVideo()
+  }
+
+  const handleChangeState = async (event: string) => {
+    onChangeState(event)
+
+    switch (event) {
+      case PLAYER_STATES.ENDED:
+        animValue.value = 100
+        break
+      case PLAYER_STATES.UNSTARTED:
+        animValue.value = 0
+        break
+      case PLAYER_STATES.PAUSED:
+      case PLAYER_STATES.BUFFERING:
+        cancelAnimation(animValue)
+        break
+      case PLAYER_STATES.PLAYING:
+        {
+          const [currentTime, videoDuration] = await Promise.all([
+            getCurrentTime(),
+            getVideoDuration(),
+          ])
+          if (videoDuration && currentTime) {
+            animValue.value = (currentTime / videoDuration) * 100
+            animValue.value = withTiming(100, {
+              duration: (videoDuration - currentTime) * 1000,
+              easing: Easing.linear,
+            })
+          }
+        }
+        break
+      default:
+        break
+    }
+  }
+
   const PlayerCalque = () => {
     if (hasFinishedPlaying) {
       return (
         <VerticalVideoEndView
           style={{ height: playerHeight, width: windowWidth }}
-          onPressReplay={replayVideo}
+          onPressReplay={handleReplayVideo}
           onPressNext={playNextVideo}
           hasMultipleSources={videoSources.length > 1}
         />
@@ -151,7 +204,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
           `,
             scrollEnabled: false,
           }}
-          onChangeState={onChangeState}
+          onChangeState={handleChangeState}
         />
       </StyledVideoPlayerContainer>
 
@@ -182,7 +235,7 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
               accessibilityLabel="Activer ou désactiver le son"
             />
           </ControlsContainer>
-          <CreditProgressBar progress={elapsed} height="smaller" />
+          <ProgressBar style={animStyle} />
         </StyledProgressContainer>
       ) : null}
 
@@ -192,6 +245,17 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     </IntersectionObserver>
   )
 }
+
+const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient)
+
+const ProgressBar = styled(AnimatedGradient).attrs(({ theme }) => ({
+  colors: [theme.colors.primary, theme.colors.secondary],
+  angle: 90,
+  useAngle: true,
+}))({
+  height: getSpacing(1),
+  borderRadius: getSpacing(12),
+})
 
 const StyledVideoPlayerContainer = styled.View({
   backgroundColor: theme.colors.black,

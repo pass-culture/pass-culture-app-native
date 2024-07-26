@@ -1,9 +1,7 @@
-import React from 'react'
-import YouTubePlayer from 'react-native-youtube-iframe'
+import React, { ForwardedRef } from 'react'
+import YouTubePlayer, { PLAYER_STATES, YoutubeIframeRef } from 'react-native-youtube-iframe'
 
-import { PlayerState } from 'features/home/components/modules/video/useVerticalVideoPlayer'
-
-let mockState = PlayerState.UNSTARTED
+let mockState = PLAYER_STATES.UNSTARTED
 let mockError = false
 
 const YouTubePlayerMock = React.forwardRef(function Component(
@@ -12,7 +10,7 @@ const YouTubePlayerMock = React.forwardRef(function Component(
     onChangeState?: (state: string) => void
     onError?: () => void
   },
-  ref: unknown
+  ref: ForwardedRef<Partial<YoutubeIframeRef>>
 ) {
   React.useEffect(() => {
     if (props.onReady) props.onReady()
@@ -24,7 +22,7 @@ const YouTubePlayerMock = React.forwardRef(function Component(
   return React.createElement(YouTubePlayer, { ref, ...props })
 })
 
-const setPlayerState = (playerState: PlayerState) => {
+const setPlayerState = (playerState: PLAYER_STATES) => {
   mockState = playerState
 }
 
@@ -33,7 +31,7 @@ const setError = (error: boolean) => {
 }
 
 const MockedYoutubePlayer = YouTubePlayerMock as typeof YouTubePlayerMock & {
-  setPlayerState: (playerState: PlayerState) => void
+  setPlayerState: (playerState: PLAYER_STATES) => void
   setError: (error: boolean) => void
 }
 
@@ -41,3 +39,4 @@ MockedYoutubePlayer.setPlayerState = setPlayerState
 MockedYoutubePlayer.setError = setError
 
 export default MockedYoutubePlayer
+export { PLAYER_STATES }

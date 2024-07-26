@@ -5,3 +5,11 @@ export declare type YouTubeEvent<T = any> = {
   data: T
   target: YouTubePlayer
 }
+
+export enum PlayerState {
+  UNSTARTED = 'unstarted',
+  BUFFERING = 'buffering',
+  PLAYING = 'playing',
+  PAUSED = 'paused',
+  ENDED = 'ended',
+}
