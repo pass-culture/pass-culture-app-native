@@ -1,59 +1,59 @@
+import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
+import { renderHook, waitFor } from 'tests/utils'
+
 import { useShareAppModaleTrigger } from './useShareAppModaleTrigger'
+import * as ShareAppModalStore from './useShareAppModalStore'
 
-describe('Share app modale trigger', () => {
-  describe('Variant first_session_after_reservation', () => {
-    test('Modal is shown when first session after last booking was consumed', () => {
-      let modalIsOpen = false
-      const openModal = () => {
-        modalIsOpen = true
-      }
-      useShareAppModaleTrigger('first_session_after_reservation', {
-        lastBookingConsumed: true,
-        openModal,
-      })
+const TRUE_TRIGGER = () => true
+const FALSE_TRIGGER = () => false
+const mockShowAppModal = jest.fn()
+const mockShareAppModalSeeShareAppAction = jest.fn()
+jest
+  .spyOn(ShareAppWrapperModule, 'useShareAppContext')
+  .mockReturnValue({ showShareAppModal: mockShowAppModal })
+const mockShareAppModalStore = jest.spyOn(ShareAppModalStore, 'useShareAppModalStore')
 
-      expect(modalIsOpen).toBe(true)
-    })
-
-    test('Modal is NOT shown when last booking was NOT consumed', () => {
-      let modalIsOpen = false
-      const openModal = () => {
-        modalIsOpen = true
-      }
-      useShareAppModaleTrigger('first_session_after_reservation', {
-        lastBookingConsumed: false,
-        openModal,
-      })
-
-      expect(modalIsOpen).toBe(false)
+describe('Use Share app modale trigger', () => {
+  beforeEach(() => {
+    mockShareAppModalStore.mockReturnValue({
+      hasSeenShareAppModal: false,
+      actions: { seeShareAppModal: mockShareAppModalSeeShareAppAction },
     })
   })
 
-  describe('Variant two_weeks_after_credit', () => {
-    test('Modal is shown when credit was received two weeks ago', () => {
-      let modalIsOpen = false
-      const openModal = () => {
-        modalIsOpen = true
-      }
-      useShareAppModaleTrigger('first_session_after_reservation', {
-        lastBookingConsumed: true,
-        openModal,
-      })
+  test('Modal is shown when trigger is true', async () => {
+    renderHook(() => useShareAppModaleTrigger(TRUE_TRIGGER))
 
-      expect(modalIsOpen).toBe(true)
+    await waitFor(() => {
+      expect(mockShowAppModal).toHaveBeenCalled()
     })
+  })
 
-    test('Modal is NOT shown when last booking was NOT consumed', () => {
-      let modalIsOpen = false
-      const openModal = () => {
-        modalIsOpen = true
-      }
-      useShareAppModaleTrigger('first_session_after_reservation', {
-        lastBookingConsumed: false,
-        openModal,
-      })
+  test('Save modal seen', async () => {
+    renderHook(() => useShareAppModaleTrigger(TRUE_TRIGGER))
 
-      expect(modalIsOpen).toBe(false)
+    await waitFor(() => {
+      expect(mockShareAppModalSeeShareAppAction).toHaveBeenCalled()
+    })
+  })
+
+  test('Modal is NOT shown when trigger is false', async () => {
+    renderHook(() => useShareAppModaleTrigger(FALSE_TRIGGER))
+
+    await waitFor(() => {
+      expect(mockShowAppModal).not.toHaveBeenCalled()
+    })
+  })
+
+  test('Modal is NOT shown when shareAppModal was already shown', async () => {
+    mockShareAppModalStore.mockReturnValueOnce({
+      hasSeenShareAppModal: true,
+      actions: { seeShareAppModal: mockShareAppModalSeeShareAppAction },
+    })
+    renderHook(() => useShareAppModaleTrigger(TRUE_TRIGGER))
+
+    await waitFor(() => {
+      expect(mockShowAppModal).not.toHaveBeenCalled()
     })
   })
 })
