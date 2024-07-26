@@ -836,7 +836,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                   dir="ltr"
                 >
-                  Version 1.301.0
+                  Version 1.10.5
                 </div>
                 <div
                   class="css-view-175oi2r r-height-10ptun7"
@@ -1843,7 +1843,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                   dir="ltr"
                 >
-                  Version 1.301.0
+                  Version 1.10.5
                 </div>
                 <div
                   class="css-view-175oi2r r-height-10ptun7"
