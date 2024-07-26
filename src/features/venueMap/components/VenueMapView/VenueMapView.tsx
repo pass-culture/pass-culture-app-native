@@ -50,6 +50,9 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   const initialVenues = useInitialVenues()
   const { setInitialVenues } = useInitialVenuesActions()
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
+  const bottomSheetOffersEnabled = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET
+  )
   const mapViewRef = useRef<Map>(null)
   const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
 
@@ -74,7 +77,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   useTrackMapSeenDuration()
 
   const { data: selectedVenueOffers } = useVenueOffers(
-    transformGeoLocatedVenueToVenueResponse(selectedVenue)
+    bottomSheetOffersEnabled ? transformGeoLocatedVenueToVenueResponse(selectedVenue) : undefined
   )
 
   const centerOnLocation = useCenterOnLocation({
@@ -180,7 +183,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
         ref={bottomSheetRef}
         onClose={removeSelectedVenue}
         venue={selectedVenue}
-        venueOffers={selectedVenueOffers?.hits}
+        venueOffers={bottomSheetOffersEnabled ? selectedVenueOffers?.hits : undefined}
         PlaylistContainer={PlaylistContainer}
       />
       <StyledMapView
