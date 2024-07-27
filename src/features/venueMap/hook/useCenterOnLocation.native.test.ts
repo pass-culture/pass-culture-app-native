@@ -24,11 +24,24 @@ const pointForCoordinate = jest.fn()
 const animateToRegion = jest.fn()
 
 describe('useCenterOnLocation', () => {
+  it('should not center if MapRef is not defined', async () => {
+    const {
+      result: { current: centerOnLocation },
+    } = renderHook(() =>
+      useCenterOnLocation({ currentRegion, mapViewRef: { current: null }, mapHeight })
+    )
+
+    centerOnLocation(48.8566, 2, previewHeight)
+    await waitFor(() => {
+      expect(animateToRegion).not.toHaveBeenCalled()
+    })
+  })
+
   it('should center on location if the pin is too far on the left', async () => {
     pointForCoordinate.mockResolvedValueOnce({ x: 0, y: 200 })
     const centerOnLocation = renderUseCenterOnLocation()
 
-    centerOnLocation(48.8566, 2)
+    centerOnLocation(48.8566, 2, previewHeight)
 
     await waitFor(() => {
       expect(animateToRegion).toHaveBeenCalledWith({
@@ -43,7 +56,7 @@ describe('useCenterOnLocation', () => {
     pointForCoordinate.mockResolvedValueOnce({ x: WIDTH_MOCK, y: 200 })
     const centerOnLocation = renderUseCenterOnLocation()
 
-    centerOnLocation(48.8566, 3)
+    centerOnLocation(48.8566, 3, previewHeight)
 
     await waitFor(() => {
       expect(animateToRegion).toHaveBeenCalledWith({
@@ -58,7 +71,7 @@ describe('useCenterOnLocation', () => {
     pointForCoordinate.mockResolvedValueOnce({ x: 200, y: 0 })
     const centerOnLocation = renderUseCenterOnLocation()
 
-    centerOnLocation(49, 2.3522)
+    centerOnLocation(49, 2.3522, previewHeight)
 
     await waitFor(() => {
       expect(animateToRegion).toHaveBeenCalledWith({
@@ -73,7 +86,7 @@ describe('useCenterOnLocation', () => {
     pointForCoordinate.mockResolvedValueOnce({ x: 200, y: mapHeight - previewHeight })
     const centerOnLocation = renderUseCenterOnLocation()
 
-    centerOnLocation(48, 2.3522)
+    centerOnLocation(48, 2.3522, previewHeight)
 
     await waitFor(() => {
       expect(animateToRegion).toHaveBeenCalledWith({
@@ -81,6 +94,17 @@ describe('useCenterOnLocation', () => {
         latitude: 48,
         longitude: 2.3522,
       })
+    })
+  })
+
+  it('should not center if previewHeight is not given', async () => {
+    pointForCoordinate.mockResolvedValueOnce({ x: 200, y: mapHeight - previewHeight })
+    const centerOnLocation = renderUseCenterOnLocation()
+
+    centerOnLocation(48, 2.3522)
+
+    await waitFor(() => {
+      expect(animateToRegion).not.toHaveBeenCalledWith()
     })
   })
 })
@@ -91,13 +115,6 @@ const renderUseCenterOnLocation = () => {
   >[0]['mapViewRef']
   const {
     result: { current: centerOnLocation },
-  } = renderHook(() =>
-    useCenterOnLocation({
-      currentRegion,
-      previewHeight,
-      mapViewRef,
-      mapHeight,
-    })
-  )
+  } = renderHook(() => useCenterOnLocation({ currentRegion, mapViewRef, mapHeight }))
   return centerOnLocation
 }

@@ -1,6 +1,6 @@
-import BottomSheet from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheet/BottomSheet'
+import BottomSheet from '@gorhom/bottom-sheet'
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -39,8 +39,6 @@ type Props = {
   from: 'venueMap' | 'searchResults'
 }
 
-const PREVIEW_HEIGHT_ESTIMATION = 114
-
 const PIN_MAX_Z_INDEX = 10_000
 
 export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
@@ -54,7 +52,6 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET
   )
   const mapViewRef = useRef<Map>(null)
-  const previewHeight = useRef<number>(PREVIEW_HEIGHT_ESTIMATION)
 
   const defaultRegion = useGetDefaultRegion()
   const [currentRegion, setCurrentRegion] = useState<Region>(defaultRegion)
@@ -66,6 +63,7 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   const selectedVenue = useSelectedVenue()
   const venueTypeCode = useVenueTypeCode()
   const bottomSheetRef = useRef<BottomSheet>(null)
+  const [bottomSheetIndex, setBottomSheetIndex] = useState(-1)
   const { setSelectedVenue, removeSelectedVenue } = useSelectedVenueActions()
 
   const venues = useGetVenuesInRegion(lastRegionSearched, selectedVenue, initialVenues)
@@ -80,12 +78,20 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     bottomSheetOffersEnabled ? transformGeoLocatedVenueToVenueResponse(selectedVenue) : undefined
   )
 
-  const centerOnLocation = useCenterOnLocation({
-    currentRegion,
-    previewHeight: previewHeight.current,
-    mapViewRef,
-    mapHeight: height,
-  })
+  const hasOffers = !!selectedVenueOffers && selectedVenueOffers.hits?.length
+
+  const snapPoints = useMemo(() => {
+    const contentViewHeight = {
+      min: hasOffers ? 160 : 130,
+      max: hasOffers ? 160 + LENGTH_L : 130,
+    }
+    const bottomInset = from === 'venueMap' ? bottom : tabBarHeight
+    const points = Object.entries(contentViewHeight).map(([_key, value]) => bottomInset + value)
+
+    return Array.from(new Set(points))
+  }, [from, bottom, hasOffers, tabBarHeight])
+
+  const centerOnLocation = useCenterOnLocation({ currentRegion, mapViewRef, mapHeight: height })
 
   const handleRegionChangeComplete = (region: Region) => {
     setCurrentRegion(region)
@@ -103,6 +109,12 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     navigate('Venue', { id: venueId })
   }
 
+  const calculatePreviewHeight = useCallback(
+    (bottomSheetSnapPoint = 0) =>
+      Math.max(0, bottomSheetSnapPoint - (from === 'venueMap' ? 0 : tabBarHeight)),
+    [from, tabBarHeight]
+  )
+
   const handleMarkerPress = (event: MarkerPressEvent) => {
     // Prevents the onPress of the MapView from being triggered
     event.stopPropagation()
@@ -118,9 +130,11 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     analytics.logPinMapPressed({ venueType: foundVenue.venue_type, venueId: foundVenue.venueId })
     if (isPreviewEnabled) {
       setSelectedVenue(foundVenue)
+
       centerOnLocation(
         event.nativeEvent.coordinate.latitude,
-        event.nativeEvent.coordinate.longitude
+        event.nativeEvent.coordinate.longitude,
+        calculatePreviewHeight(snapPoints[bottomSheetIndex])
       )
     } else {
       navigateToVenue(foundVenue.venueId)
@@ -139,18 +153,18 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
     analytics.logConsultVenue({ venueId, from: 'venueMap' })
   }
 
-  const hasOffers = !!selectedVenueOffers && selectedVenueOffers.hits?.length
-
-  const snapPoints = useMemo(() => {
-    const contentViewHeight = {
-      min: hasOffers ? 160 : 130,
-      max: hasOffers ? 160 + LENGTH_L : 130,
-    }
-    const bottomInset = from === 'venueMap' ? bottom : tabBarHeight
-    const points = Object.entries(contentViewHeight).map(([_key, value]) => bottomInset + value)
-
-    return Array.from(new Set(points))
-  }, [from, bottom, hasOffers, tabBarHeight])
+  const handleBottomSheetAnimation = useCallback(
+    (fromIndex: number, toIndex: number) => {
+      if (toIndex === 0 && fromIndex < toIndex && selectedVenue) {
+        centerOnLocation(
+          selectedVenue?._geoloc.lat,
+          selectedVenue?._geoloc.lng,
+          calculatePreviewHeight(snapPoints[toIndex])
+        )
+      }
+    },
+    [centerOnLocation, calculatePreviewHeight, selectedVenue, snapPoints]
+  )
 
   useEffect(() => {
     if (mapReady && venues.length > 1) {
@@ -159,12 +173,16 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
   }, [venues, mapReady])
 
   useEffect(() => {
+    if (!mapReady) {
+      return
+    }
+
     if (selectedVenue) {
       bottomSheetRef.current?.collapse()
     } else {
       bottomSheetRef.current?.close()
     }
-  }, [selectedVenue])
+  }, [selectedVenue, mapReady])
 
   const PlaylistContainer = useMemo(() => {
     if (from === 'venueMap') {
@@ -185,6 +203,8 @@ export const VenueMapView: FunctionComponent<Props> = ({ height, from }) => {
         venue={selectedVenue}
         venueOffers={bottomSheetOffersEnabled ? selectedVenueOffers?.hits : undefined}
         PlaylistContainer={PlaylistContainer}
+        onAnimate={handleBottomSheetAnimation}
+        onChange={setBottomSheetIndex}
       />
       <StyledMapView
         ref={mapViewRef}
