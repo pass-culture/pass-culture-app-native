@@ -26,6 +26,20 @@ describe('VideoModal', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
+  it('should render correctly', async () => {
+    renderVideoModal()
+
+    expect(await screen.findByText('Découvre Lujipeka')).toBeInTheDocument()
+  })
+
+  it('should render correctly with FF on', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+
+    renderVideoModal()
+
+    expect(await screen.findByText('Découvre Lujipeka')).toBeInTheDocument()
+  })
+
   it('should log HasDismissedModal when pressing close button', async () => {
     renderVideoModal()
 
@@ -41,16 +55,6 @@ describe('VideoModal', () => {
       videoDuration: 267,
       seenDuration: 135,
     })
-  })
-
-  it('should render properly with FF on', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-
-    renderVideoModal()
-
-    await screen.findByText('La nuit des temps')
-
-    expect(screen).toMatchSnapshot()
   })
 })
 

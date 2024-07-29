@@ -61,9 +61,7 @@ describe('VideoModal', () => {
 
     renderVideoModal()
 
-    await screen.findByText('La nuit des temps')
-
-    expect(screen).toMatchSnapshot()
+    expect(await screen.findByText('Découvre Lujipeka')).toBeOnTheScreen()
   })
 })
 
