@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import YouTube from 'react-youtube'
 
 import MockedYouTubePlayer from '__mocks__/react-youtube'
@@ -11,21 +11,6 @@ import { render, waitFor } from 'tests/utils/web'
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
 const hideModalMock = jest.fn()
-
-const mockRef = {
-  current: {
-    internalPlayer: {
-      getCurrentTime: jest.fn(),
-      getDuration: jest.fn(),
-      getVideoUrl: jest.fn(),
-      isMuted: jest.fn(),
-      getVolume: jest.fn(),
-      getPlaybackRate: jest.fn(),
-      getAvailablePlaybackRates: jest.fn(),
-      seekTo: jest.fn(),
-    },
-  },
-}
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -61,18 +46,21 @@ describe('VideoPlayer', () => {
   })
 })
 
-function renderVideoPlayer() {
-  render(
-    reactQueryProviderHOC(
-      <VideoPlayerWeb
-        youtubeVideoId={videoModuleFixture.youtubeVideoId}
-        offer={mockOffer}
-        onPressSeeOffer={hideModalMock}
-        moduleId="abcd"
-        moduleName="lujipeka"
-        homeEntryId="xyz"
-        playerRef={mockRef as React.RefObject<YouTube>}
-      />
-    )
+const Player = () => {
+  const mockRef = useRef<YouTube>(null)
+  return (
+    <VideoPlayerWeb
+      youtubeVideoId={videoModuleFixture.youtubeVideoId}
+      offer={mockOffer}
+      onPressSeeOffer={hideModalMock}
+      moduleId="abcd"
+      moduleName="lujipeka"
+      homeEntryId="xyz"
+      playerRef={mockRef}
+    />
   )
+}
+
+function renderVideoPlayer() {
+  render(reactQueryProviderHOC(<Player />))
 }

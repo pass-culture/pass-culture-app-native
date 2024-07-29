@@ -1,4 +1,4 @@
-import React, { ForwardedRef, ReactInstance } from 'react'
+import React, { ForwardedRef } from 'react'
 import YouTube, { YouTubeProps } from 'react-youtube'
 
 import { PlayerState } from 'features/home/components/modules/video/types'
@@ -51,7 +51,7 @@ const YouTubePlayerMock = React.forwardRef(function Component(
       forceUpdate: jest.fn(),
       state: mockState,
       props,
-      refs: null as unknown as { [key: string]: ReactInstance },
+      refs: {},
     }
   }
   // @ts-ignore avoid internal typing complexity
