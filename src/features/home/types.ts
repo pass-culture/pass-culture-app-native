@@ -158,11 +158,6 @@ export type PlaylistOffersParams = {
   locationParams: BuildLocationParameterParams
 }
 
-export enum BusinessModuleCTAWording {
-  JE_TENTE_MA_CHANCE = 'Je tente ma chance',
-  EN_SAVOIR_PLUS = 'En savoir plus',
-}
-
 export type BusinessModule = {
   type: HomepageModuleType.BusinessModule
   id: string
@@ -175,7 +170,7 @@ export type BusinessModule = {
   shouldTargetNotConnectedUsers?: boolean
   localizationArea?: LocationCircleArea
   date?: string
-  callToAction?: BusinessModuleCTAWording
+  callToAction?: string
 }
 
 export type LocationCircleArea = {

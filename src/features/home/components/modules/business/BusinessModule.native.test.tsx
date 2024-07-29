@@ -4,7 +4,6 @@ import {
   BusinessModule,
   BusinessModuleProps,
 } from 'features/home/components/modules/business/BusinessModule'
-import { BusinessModuleCTAWording } from 'features/home/types'
 import { REDESIGN_AB_TESTING_HOME_MODULES } from 'libs/contentful/constants'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -25,7 +24,7 @@ const props: BusinessModuleProps = {
   homeEntryId: 'abcd',
   index: 1,
   localizationArea: undefined,
-  callToAction: BusinessModuleCTAWording.EN_SAVOIR_PLUS,
+  callToAction: 'En savoir plus',
   date: undefined,
 }
 

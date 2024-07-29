@@ -1,4 +1,4 @@
-import { BusinessModuleCTAWording, Color } from 'features/home/types'
+import { Color } from 'features/home/types'
 import { GtlLevel } from 'shared/gtl/types'
 
 export enum ContentTypes {
@@ -311,7 +311,7 @@ interface BusinessFields {
   longitude?: number
   radius?: number
   date?: string
-  callToAction?: BusinessModuleCTAWording
+  callToAction?: string
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/exclusivity/fields

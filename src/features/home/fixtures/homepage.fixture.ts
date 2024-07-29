@@ -2,7 +2,6 @@ import { highlightOfferModuleFixture as formattedHighlightOfferModule } from 'fe
 import {
   AppV2VenuesModule,
   BusinessModule,
-  BusinessModuleCTAWording,
   CategoryListModule,
   Color,
   ExclusivityModule,
@@ -59,7 +58,7 @@ export const formattedNewBusinessModule: BusinessModule = {
     longitude: 40,
     radius: 20,
   },
-  callToAction: BusinessModuleCTAWording.EN_SAVOIR_PLUS,
+  callToAction: 'En savoir plus',
   date: 'Du 2 mai au 4 août',
 }
 
