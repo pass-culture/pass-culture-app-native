@@ -9,10 +9,9 @@ import {
   getVideoPlayerDimensions,
   RATIO169,
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
-import { YouTubeEvent } from 'features/home/components/modules/video/types'
+import { VideoPlayerProps, YouTubeEvent } from 'features/home/components/modules/video/types'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
-import { VideoPlayerProps } from 'features/home/components/modules/video/VideoPlayer'
 import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { isMobileDeviceDetectOnWeb } from 'libs/react-device-detect'

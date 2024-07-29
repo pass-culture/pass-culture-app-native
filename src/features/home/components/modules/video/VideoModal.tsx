@@ -4,15 +4,14 @@ import { YoutubeIframeRef } from 'react-native-youtube-iframe'
 import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
+import { VideoModalProps } from 'features/home/components/modules/video/types'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferList } from 'features/home/components/modules/video/VideoMultiOfferList'
 import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
-import { VideoModule } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
-import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -20,15 +19,6 @@ import { ModalSwipeDirection } from 'ui/components/modals/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-interface VideoModalProps extends VideoModule {
-  offers: Offer[]
-  visible: boolean
-  hideModal: () => void
-  moduleId: string
-  homeEntryId: string
-  isMultiOffer: boolean
-}
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
   const playerRef = useRef<YoutubeIframeRef>(null)

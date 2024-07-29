@@ -7,21 +7,12 @@ import {
   getVideoPlayerDimensions,
   RATIO169,
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
+import { VideoPlayerProps } from 'features/home/components/modules/video/types'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
 import { analytics } from 'libs/analytics'
-import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
-
-export interface VideoPlayerProps {
-  youtubeVideoId: string
-  offer?: Offer
-  onPressSeeOffer: () => void
-  moduleId: string
-  moduleName: string
-  homeEntryId: string
-}
 
 interface VideoPlayerNativeProps extends VideoPlayerProps {
   playerRef: RefObject<YoutubeIframeRef>
