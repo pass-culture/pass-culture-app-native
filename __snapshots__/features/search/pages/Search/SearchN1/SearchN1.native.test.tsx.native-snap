@@ -1308,9 +1308,69 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
               style={{}}
             >
               <RCTScrollView
-                ItemSeparatorComponent={[Function]}
-                ListFooterComponent={[Function]}
-                ListHeaderComponent={[Function]}
+                ItemSeparatorComponent={
+                  {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": [
+                      {
+                        "width": 16,
+                      },
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": [
+                        [Function],
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                ListFooterComponent={
+                  {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": [
+                      {
+                        "width": 24,
+                      },
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": [
+                        [Function],
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                ListHeaderComponent={
+                  {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": [
+                      {
+                        "width": 24,
+                      },
+                    ],
+                    "inlineStyle": InlineStyle {
+                      "rules": [
+                        [Function],
+                        "",
+                      ],
+                    },
+                    "render": [Function],
+                    "shouldForwardProp": undefined,
+                    "styledComponentId": "StyledNativeComponent",
+                    "target": [Function],
+                    "withComponent": [Function],
+                  }
+                }
                 applyWindowCorrection={[Function]}
                 canChangeSize={true}
                 contentContainerStyle={
@@ -2808,9 +2868,63 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                       "span": undefined,
                     },
                     "props": {
-                      "ItemSeparatorComponent": [Function],
-                      "ListFooterComponent": [Function],
-                      "ListHeaderComponent": [Function],
+                      "ItemSeparatorComponent": {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": [
+                          {
+                            "width": 16,
+                          },
+                        ],
+                        "inlineStyle": InlineStyle {
+                          "rules": [
+                            [Function],
+                            "",
+                          ],
+                        },
+                        "render": [Function],
+                        "shouldForwardProp": undefined,
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                      },
+                      "ListFooterComponent": {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": [
+                          {
+                            "width": 24,
+                          },
+                        ],
+                        "inlineStyle": InlineStyle {
+                          "rules": [
+                            [Function],
+                            "",
+                          ],
+                        },
+                        "render": [Function],
+                        "shouldForwardProp": undefined,
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                      },
+                      "ListHeaderComponent": {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": [
+                          {
+                            "width": 24,
+                          },
+                        ],
+                        "inlineStyle": InlineStyle {
+                          "rules": [
+                            [Function],
+                            "",
+                          ],
+                        },
+                        "render": [Function],
+                        "shouldForwardProp": undefined,
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                      },
                       "data": [
                         {
                           "_geoloc": {
@@ -3851,12 +3965,242 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                           </View>
                         </View>
                         <View
+                          leadingItem={
+                            {
+                              "_geoloc": {
+                                "lat": 2,
+                                "lng": 2,
+                              },
+                              "objectID": "12",
+                              "offer": {
+                                "name": "Mon abonnement bibliothèque",
+                                "subcategoryId": "ABO_BIBLIOTHEQUE",
+                              },
+                              "venue": {
+                                "accessibility": {
+                                  "audioDisability": false,
+                                  "mentalDisability": false,
+                                  "motorDisability": false,
+                                  "visualDisability": true,
+                                },
+                                "address": "1 boulevard Poissonnière",
+                                "city": "Paris",
+                                "contact": {
+                                  "email": "contact@venue.com",
+                                  "phoneNumber": "+33102030405",
+                                  "website": "https://my@website.com",
+                                },
+                                "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
+                                "externalAccessibilityData": {
+                                  "audioDisability": {
+                                    "deafAndHardOfHearing": [
+                                      "Boucle à induction magnétique portative",
+                                      "Autre système non renseigné",
+                                    ],
+                                  },
+                                  "isAccessibleAudioDisability": false,
+                                  "isAccessibleMentalDisability": true,
+                                  "isAccessibleMotorDisability": false,
+                                  "isAccessibleVisualDisability": false,
+                                  "mentalDisability": {
+                                    "trainedPersonnel": "Personnel formé",
+                                  },
+                                  "motorDisability": {
+                                    "entrance": "Non renseigné",
+                                    "exterior": "Non renseigné",
+                                    "facilities": "Sanitaire non adapté",
+                                    "parking": "Pas de stationnement adapté à proximité",
+                                  },
+                                  "visualDisability": {
+                                    "audioDescription": [
+                                      "Non renseigné",
+                                    ],
+                                    "soundBeacon": "Non renseigné",
+                                  },
+                                },
+                                "externalAccessibilityId": "slug-d-accessibilite-1",
+                                "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
+                                "id": 5543,
+                                "isPermanent": true,
+                                "isVirtual": false,
+                                "latitude": 48.87004,
+                                "longitude": 2.3785,
+                                "name": "Le Petit Rintintin 1",
+                                "openingHours": {
+                                  "FRIDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "MONDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "SATURDAY": undefined,
+                                  "SUNDAY": undefined,
+                                  "THURSDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "TUESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "WEDNESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                },
+                                "postalCode": "75000",
+                                "publicName": "Le Petit Rintintin 1",
+                                "timezone": "UTC",
+                                "venueTypeCode": "BOOKSTORE",
+                                "withdrawalDetails": "How to withdraw, https://test.com",
+                              },
+                            }
+                          }
                           style={
                             [
                               {
                                 "width": 16,
                               },
                             ]
+                          }
+                          trailingItem={
+                            {
+                              "_geoloc": {
+                                "lat": 2,
+                                "lng": 2,
+                              },
+                              "objectID": "13",
+                              "offer": {
+                                "name": "Mon abonnement médiathèque",
+                                "subcategoryId": "ABO_MEDIATHEQUE",
+                              },
+                              "venue": {
+                                "accessibility": {
+                                  "audioDisability": false,
+                                  "mentalDisability": false,
+                                  "motorDisability": false,
+                                  "visualDisability": true,
+                                },
+                                "address": "1 boulevard Poissonnière",
+                                "city": "Paris",
+                                "contact": {
+                                  "email": "contact@venue.com",
+                                  "phoneNumber": "+33102030405",
+                                  "website": "https://my@website.com",
+                                },
+                                "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
+                                "externalAccessibilityData": {
+                                  "audioDisability": {
+                                    "deafAndHardOfHearing": [
+                                      "Boucle à induction magnétique portative",
+                                      "Autre système non renseigné",
+                                    ],
+                                  },
+                                  "isAccessibleAudioDisability": false,
+                                  "isAccessibleMentalDisability": true,
+                                  "isAccessibleMotorDisability": false,
+                                  "isAccessibleVisualDisability": false,
+                                  "mentalDisability": {
+                                    "trainedPersonnel": "Personnel formé",
+                                  },
+                                  "motorDisability": {
+                                    "entrance": "Non renseigné",
+                                    "exterior": "Non renseigné",
+                                    "facilities": "Sanitaire non adapté",
+                                    "parking": "Pas de stationnement adapté à proximité",
+                                  },
+                                  "visualDisability": {
+                                    "audioDescription": [
+                                      "Non renseigné",
+                                    ],
+                                    "soundBeacon": "Non renseigné",
+                                  },
+                                },
+                                "externalAccessibilityId": "slug-d-accessibilite-1",
+                                "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
+                                "id": 5543,
+                                "isPermanent": true,
+                                "isVirtual": false,
+                                "latitude": 48.87004,
+                                "longitude": 2.3785,
+                                "name": "Le Petit Rintintin 1",
+                                "openingHours": {
+                                  "FRIDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "MONDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "SATURDAY": undefined,
+                                  "SUNDAY": undefined,
+                                  "THURSDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "TUESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "WEDNESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                },
+                                "postalCode": "75000",
+                                "publicName": "Le Petit Rintintin 1",
+                                "timezone": "UTC",
+                                "venueTypeCode": "BOOKSTORE",
+                                "withdrawalDetails": "How to withdraw, https://test.com",
+                              },
+                            }
                           }
                           width={16}
                         />
@@ -4088,12 +4432,242 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                           </View>
                         </View>
                         <View
+                          leadingItem={
+                            {
+                              "_geoloc": {
+                                "lat": 2,
+                                "lng": 2,
+                              },
+                              "objectID": "13",
+                              "offer": {
+                                "name": "Mon abonnement médiathèque",
+                                "subcategoryId": "ABO_MEDIATHEQUE",
+                              },
+                              "venue": {
+                                "accessibility": {
+                                  "audioDisability": false,
+                                  "mentalDisability": false,
+                                  "motorDisability": false,
+                                  "visualDisability": true,
+                                },
+                                "address": "1 boulevard Poissonnière",
+                                "city": "Paris",
+                                "contact": {
+                                  "email": "contact@venue.com",
+                                  "phoneNumber": "+33102030405",
+                                  "website": "https://my@website.com",
+                                },
+                                "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
+                                "externalAccessibilityData": {
+                                  "audioDisability": {
+                                    "deafAndHardOfHearing": [
+                                      "Boucle à induction magnétique portative",
+                                      "Autre système non renseigné",
+                                    ],
+                                  },
+                                  "isAccessibleAudioDisability": false,
+                                  "isAccessibleMentalDisability": true,
+                                  "isAccessibleMotorDisability": false,
+                                  "isAccessibleVisualDisability": false,
+                                  "mentalDisability": {
+                                    "trainedPersonnel": "Personnel formé",
+                                  },
+                                  "motorDisability": {
+                                    "entrance": "Non renseigné",
+                                    "exterior": "Non renseigné",
+                                    "facilities": "Sanitaire non adapté",
+                                    "parking": "Pas de stationnement adapté à proximité",
+                                  },
+                                  "visualDisability": {
+                                    "audioDescription": [
+                                      "Non renseigné",
+                                    ],
+                                    "soundBeacon": "Non renseigné",
+                                  },
+                                },
+                                "externalAccessibilityId": "slug-d-accessibilite-1",
+                                "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
+                                "id": 5543,
+                                "isPermanent": true,
+                                "isVirtual": false,
+                                "latitude": 48.87004,
+                                "longitude": 2.3785,
+                                "name": "Le Petit Rintintin 1",
+                                "openingHours": {
+                                  "FRIDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "MONDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "SATURDAY": undefined,
+                                  "SUNDAY": undefined,
+                                  "THURSDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "TUESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "WEDNESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                },
+                                "postalCode": "75000",
+                                "publicName": "Le Petit Rintintin 1",
+                                "timezone": "UTC",
+                                "venueTypeCode": "BOOKSTORE",
+                                "withdrawalDetails": "How to withdraw, https://test.com",
+                              },
+                            }
+                          }
                           style={
                             [
                               {
                                 "width": 16,
                               },
                             ]
+                          }
+                          trailingItem={
+                            {
+                              "_geoloc": {
+                                "lat": 2,
+                                "lng": 2,
+                              },
+                              "objectID": "14",
+                              "offer": {
+                                "name": "Mon abonnement livres numériques",
+                                "subcategoryId": "ABO_LIVRE_NUMERIQUE",
+                              },
+                              "venue": {
+                                "accessibility": {
+                                  "audioDisability": false,
+                                  "mentalDisability": false,
+                                  "motorDisability": false,
+                                  "visualDisability": true,
+                                },
+                                "address": "1 boulevard Poissonnière",
+                                "city": "Paris",
+                                "contact": {
+                                  "email": "contact@venue.com",
+                                  "phoneNumber": "+33102030405",
+                                  "website": "https://my@website.com",
+                                },
+                                "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
+                                "externalAccessibilityData": {
+                                  "audioDisability": {
+                                    "deafAndHardOfHearing": [
+                                      "Boucle à induction magnétique portative",
+                                      "Autre système non renseigné",
+                                    ],
+                                  },
+                                  "isAccessibleAudioDisability": false,
+                                  "isAccessibleMentalDisability": true,
+                                  "isAccessibleMotorDisability": false,
+                                  "isAccessibleVisualDisability": false,
+                                  "mentalDisability": {
+                                    "trainedPersonnel": "Personnel formé",
+                                  },
+                                  "motorDisability": {
+                                    "entrance": "Non renseigné",
+                                    "exterior": "Non renseigné",
+                                    "facilities": "Sanitaire non adapté",
+                                    "parking": "Pas de stationnement adapté à proximité",
+                                  },
+                                  "visualDisability": {
+                                    "audioDescription": [
+                                      "Non renseigné",
+                                    ],
+                                    "soundBeacon": "Non renseigné",
+                                  },
+                                },
+                                "externalAccessibilityId": "slug-d-accessibilite-1",
+                                "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
+                                "id": 5543,
+                                "isPermanent": true,
+                                "isVirtual": false,
+                                "latitude": 48.87004,
+                                "longitude": 2.3785,
+                                "name": "Le Petit Rintintin 1",
+                                "openingHours": {
+                                  "FRIDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "MONDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "SATURDAY": undefined,
+                                  "SUNDAY": undefined,
+                                  "THURSDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "TUESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "WEDNESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                },
+                                "postalCode": "75000",
+                                "publicName": "Le Petit Rintintin 1",
+                                "timezone": "UTC",
+                                "venueTypeCode": "BOOKSTORE",
+                                "withdrawalDetails": "How to withdraw, https://test.com",
+                              },
+                            }
                           }
                           width={16}
                         />
@@ -4325,12 +4899,242 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                           </View>
                         </View>
                         <View
+                          leadingItem={
+                            {
+                              "_geoloc": {
+                                "lat": 2,
+                                "lng": 2,
+                              },
+                              "objectID": "14",
+                              "offer": {
+                                "name": "Mon abonnement livres numériques",
+                                "subcategoryId": "ABO_LIVRE_NUMERIQUE",
+                              },
+                              "venue": {
+                                "accessibility": {
+                                  "audioDisability": false,
+                                  "mentalDisability": false,
+                                  "motorDisability": false,
+                                  "visualDisability": true,
+                                },
+                                "address": "1 boulevard Poissonnière",
+                                "city": "Paris",
+                                "contact": {
+                                  "email": "contact@venue.com",
+                                  "phoneNumber": "+33102030405",
+                                  "website": "https://my@website.com",
+                                },
+                                "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
+                                "externalAccessibilityData": {
+                                  "audioDisability": {
+                                    "deafAndHardOfHearing": [
+                                      "Boucle à induction magnétique portative",
+                                      "Autre système non renseigné",
+                                    ],
+                                  },
+                                  "isAccessibleAudioDisability": false,
+                                  "isAccessibleMentalDisability": true,
+                                  "isAccessibleMotorDisability": false,
+                                  "isAccessibleVisualDisability": false,
+                                  "mentalDisability": {
+                                    "trainedPersonnel": "Personnel formé",
+                                  },
+                                  "motorDisability": {
+                                    "entrance": "Non renseigné",
+                                    "exterior": "Non renseigné",
+                                    "facilities": "Sanitaire non adapté",
+                                    "parking": "Pas de stationnement adapté à proximité",
+                                  },
+                                  "visualDisability": {
+                                    "audioDescription": [
+                                      "Non renseigné",
+                                    ],
+                                    "soundBeacon": "Non renseigné",
+                                  },
+                                },
+                                "externalAccessibilityId": "slug-d-accessibilite-1",
+                                "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
+                                "id": 5543,
+                                "isPermanent": true,
+                                "isVirtual": false,
+                                "latitude": 48.87004,
+                                "longitude": 2.3785,
+                                "name": "Le Petit Rintintin 1",
+                                "openingHours": {
+                                  "FRIDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "MONDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "SATURDAY": undefined,
+                                  "SUNDAY": undefined,
+                                  "THURSDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "TUESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "WEDNESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                },
+                                "postalCode": "75000",
+                                "publicName": "Le Petit Rintintin 1",
+                                "timezone": "UTC",
+                                "venueTypeCode": "BOOKSTORE",
+                                "withdrawalDetails": "How to withdraw, https://test.com",
+                              },
+                            }
+                          }
                           style={
                             [
                               {
                                 "width": 16,
                               },
                             ]
+                          }
+                          trailingItem={
+                            {
+                              "_geoloc": {
+                                "lat": 2,
+                                "lng": 2,
+                              },
+                              "objectID": "15",
+                              "offer": {
+                                "name": "Mon abonnement ludothèque",
+                                "subcategoryId": "ABO_LUDOTHEQUE",
+                              },
+                              "venue": {
+                                "accessibility": {
+                                  "audioDisability": false,
+                                  "mentalDisability": false,
+                                  "motorDisability": false,
+                                  "visualDisability": true,
+                                },
+                                "address": "1 boulevard Poissonnière",
+                                "city": "Paris",
+                                "contact": {
+                                  "email": "contact@venue.com",
+                                  "phoneNumber": "+33102030405",
+                                  "website": "https://my@website.com",
+                                },
+                                "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
+                                "externalAccessibilityData": {
+                                  "audioDisability": {
+                                    "deafAndHardOfHearing": [
+                                      "Boucle à induction magnétique portative",
+                                      "Autre système non renseigné",
+                                    ],
+                                  },
+                                  "isAccessibleAudioDisability": false,
+                                  "isAccessibleMentalDisability": true,
+                                  "isAccessibleMotorDisability": false,
+                                  "isAccessibleVisualDisability": false,
+                                  "mentalDisability": {
+                                    "trainedPersonnel": "Personnel formé",
+                                  },
+                                  "motorDisability": {
+                                    "entrance": "Non renseigné",
+                                    "exterior": "Non renseigné",
+                                    "facilities": "Sanitaire non adapté",
+                                    "parking": "Pas de stationnement adapté à proximité",
+                                  },
+                                  "visualDisability": {
+                                    "audioDescription": [
+                                      "Non renseigné",
+                                    ],
+                                    "soundBeacon": "Non renseigné",
+                                  },
+                                },
+                                "externalAccessibilityId": "slug-d-accessibilite-1",
+                                "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
+                                "id": 5543,
+                                "isPermanent": true,
+                                "isVirtual": false,
+                                "latitude": 48.87004,
+                                "longitude": 2.3785,
+                                "name": "Le Petit Rintintin 1",
+                                "openingHours": {
+                                  "FRIDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "MONDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "SATURDAY": undefined,
+                                  "SUNDAY": undefined,
+                                  "THURSDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "TUESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "WEDNESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                },
+                                "postalCode": "75000",
+                                "publicName": "Le Petit Rintintin 1",
+                                "timezone": "UTC",
+                                "venueTypeCode": "BOOKSTORE",
+                                "withdrawalDetails": "How to withdraw, https://test.com",
+                              },
+                            }
                           }
                           width={16}
                         />
@@ -4562,12 +5366,242 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                           </View>
                         </View>
                         <View
+                          leadingItem={
+                            {
+                              "_geoloc": {
+                                "lat": 2,
+                                "lng": 2,
+                              },
+                              "objectID": "15",
+                              "offer": {
+                                "name": "Mon abonnement ludothèque",
+                                "subcategoryId": "ABO_LUDOTHEQUE",
+                              },
+                              "venue": {
+                                "accessibility": {
+                                  "audioDisability": false,
+                                  "mentalDisability": false,
+                                  "motorDisability": false,
+                                  "visualDisability": true,
+                                },
+                                "address": "1 boulevard Poissonnière",
+                                "city": "Paris",
+                                "contact": {
+                                  "email": "contact@venue.com",
+                                  "phoneNumber": "+33102030405",
+                                  "website": "https://my@website.com",
+                                },
+                                "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
+                                "externalAccessibilityData": {
+                                  "audioDisability": {
+                                    "deafAndHardOfHearing": [
+                                      "Boucle à induction magnétique portative",
+                                      "Autre système non renseigné",
+                                    ],
+                                  },
+                                  "isAccessibleAudioDisability": false,
+                                  "isAccessibleMentalDisability": true,
+                                  "isAccessibleMotorDisability": false,
+                                  "isAccessibleVisualDisability": false,
+                                  "mentalDisability": {
+                                    "trainedPersonnel": "Personnel formé",
+                                  },
+                                  "motorDisability": {
+                                    "entrance": "Non renseigné",
+                                    "exterior": "Non renseigné",
+                                    "facilities": "Sanitaire non adapté",
+                                    "parking": "Pas de stationnement adapté à proximité",
+                                  },
+                                  "visualDisability": {
+                                    "audioDescription": [
+                                      "Non renseigné",
+                                    ],
+                                    "soundBeacon": "Non renseigné",
+                                  },
+                                },
+                                "externalAccessibilityId": "slug-d-accessibilite-1",
+                                "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
+                                "id": 5543,
+                                "isPermanent": true,
+                                "isVirtual": false,
+                                "latitude": 48.87004,
+                                "longitude": 2.3785,
+                                "name": "Le Petit Rintintin 1",
+                                "openingHours": {
+                                  "FRIDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "MONDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "SATURDAY": undefined,
+                                  "SUNDAY": undefined,
+                                  "THURSDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "TUESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "WEDNESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                },
+                                "postalCode": "75000",
+                                "publicName": "Le Petit Rintintin 1",
+                                "timezone": "UTC",
+                                "venueTypeCode": "BOOKSTORE",
+                                "withdrawalDetails": "How to withdraw, https://test.com",
+                              },
+                            }
+                          }
                           style={
                             [
                               {
                                 "width": 16,
                               },
                             ]
+                          }
+                          trailingItem={
+                            {
+                              "_geoloc": {
+                                "lat": 2,
+                                "lng": 2,
+                              },
+                              "objectID": "16",
+                              "offer": {
+                                "name": "Mon abonnement concert",
+                                "subcategoryId": "ABO_CONCERT",
+                              },
+                              "venue": {
+                                "accessibility": {
+                                  "audioDisability": false,
+                                  "mentalDisability": false,
+                                  "motorDisability": false,
+                                  "visualDisability": true,
+                                },
+                                "address": "1 boulevard Poissonnière",
+                                "city": "Paris",
+                                "contact": {
+                                  "email": "contact@venue.com",
+                                  "phoneNumber": "+33102030405",
+                                  "website": "https://my@website.com",
+                                },
+                                "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
+                                "externalAccessibilityData": {
+                                  "audioDisability": {
+                                    "deafAndHardOfHearing": [
+                                      "Boucle à induction magnétique portative",
+                                      "Autre système non renseigné",
+                                    ],
+                                  },
+                                  "isAccessibleAudioDisability": false,
+                                  "isAccessibleMentalDisability": true,
+                                  "isAccessibleMotorDisability": false,
+                                  "isAccessibleVisualDisability": false,
+                                  "mentalDisability": {
+                                    "trainedPersonnel": "Personnel formé",
+                                  },
+                                  "motorDisability": {
+                                    "entrance": "Non renseigné",
+                                    "exterior": "Non renseigné",
+                                    "facilities": "Sanitaire non adapté",
+                                    "parking": "Pas de stationnement adapté à proximité",
+                                  },
+                                  "visualDisability": {
+                                    "audioDescription": [
+                                      "Non renseigné",
+                                    ],
+                                    "soundBeacon": "Non renseigné",
+                                  },
+                                },
+                                "externalAccessibilityId": "slug-d-accessibilite-1",
+                                "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
+                                "id": 5543,
+                                "isPermanent": true,
+                                "isVirtual": false,
+                                "latitude": 48.87004,
+                                "longitude": 2.3785,
+                                "name": "Le Petit Rintintin 1",
+                                "openingHours": {
+                                  "FRIDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "MONDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "SATURDAY": undefined,
+                                  "SUNDAY": undefined,
+                                  "THURSDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "TUESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "WEDNESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                },
+                                "postalCode": "75000",
+                                "publicName": "Le Petit Rintintin 1",
+                                "timezone": "UTC",
+                                "venueTypeCode": "BOOKSTORE",
+                                "withdrawalDetails": "How to withdraw, https://test.com",
+                              },
+                            }
                           }
                           width={16}
                         />
@@ -4799,12 +5833,242 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                           </View>
                         </View>
                         <View
+                          leadingItem={
+                            {
+                              "_geoloc": {
+                                "lat": 2,
+                                "lng": 2,
+                              },
+                              "objectID": "16",
+                              "offer": {
+                                "name": "Mon abonnement concert",
+                                "subcategoryId": "ABO_CONCERT",
+                              },
+                              "venue": {
+                                "accessibility": {
+                                  "audioDisability": false,
+                                  "mentalDisability": false,
+                                  "motorDisability": false,
+                                  "visualDisability": true,
+                                },
+                                "address": "1 boulevard Poissonnière",
+                                "city": "Paris",
+                                "contact": {
+                                  "email": "contact@venue.com",
+                                  "phoneNumber": "+33102030405",
+                                  "website": "https://my@website.com",
+                                },
+                                "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
+                                "externalAccessibilityData": {
+                                  "audioDisability": {
+                                    "deafAndHardOfHearing": [
+                                      "Boucle à induction magnétique portative",
+                                      "Autre système non renseigné",
+                                    ],
+                                  },
+                                  "isAccessibleAudioDisability": false,
+                                  "isAccessibleMentalDisability": true,
+                                  "isAccessibleMotorDisability": false,
+                                  "isAccessibleVisualDisability": false,
+                                  "mentalDisability": {
+                                    "trainedPersonnel": "Personnel formé",
+                                  },
+                                  "motorDisability": {
+                                    "entrance": "Non renseigné",
+                                    "exterior": "Non renseigné",
+                                    "facilities": "Sanitaire non adapté",
+                                    "parking": "Pas de stationnement adapté à proximité",
+                                  },
+                                  "visualDisability": {
+                                    "audioDescription": [
+                                      "Non renseigné",
+                                    ],
+                                    "soundBeacon": "Non renseigné",
+                                  },
+                                },
+                                "externalAccessibilityId": "slug-d-accessibilite-1",
+                                "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
+                                "id": 5543,
+                                "isPermanent": true,
+                                "isVirtual": false,
+                                "latitude": 48.87004,
+                                "longitude": 2.3785,
+                                "name": "Le Petit Rintintin 1",
+                                "openingHours": {
+                                  "FRIDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "MONDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "SATURDAY": undefined,
+                                  "SUNDAY": undefined,
+                                  "THURSDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "TUESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "WEDNESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                },
+                                "postalCode": "75000",
+                                "publicName": "Le Petit Rintintin 1",
+                                "timezone": "UTC",
+                                "venueTypeCode": "BOOKSTORE",
+                                "withdrawalDetails": "How to withdraw, https://test.com",
+                              },
+                            }
+                          }
                           style={
                             [
                               {
                                 "width": 16,
                               },
                             ]
+                          }
+                          trailingItem={
+                            {
+                              "_geoloc": {
+                                "lat": 2,
+                                "lng": 2,
+                              },
+                              "objectID": "17",
+                              "offer": {
+                                "name": "Mon abonnement jeu vidéo",
+                                "subcategoryId": "ABO_JEU_VIDEO",
+                              },
+                              "venue": {
+                                "accessibility": {
+                                  "audioDisability": false,
+                                  "mentalDisability": false,
+                                  "motorDisability": false,
+                                  "visualDisability": true,
+                                },
+                                "address": "1 boulevard Poissonnière",
+                                "city": "Paris",
+                                "contact": {
+                                  "email": "contact@venue.com",
+                                  "phoneNumber": "+33102030405",
+                                  "website": "https://my@website.com",
+                                },
+                                "description": "https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,",
+                                "externalAccessibilityData": {
+                                  "audioDisability": {
+                                    "deafAndHardOfHearing": [
+                                      "Boucle à induction magnétique portative",
+                                      "Autre système non renseigné",
+                                    ],
+                                  },
+                                  "isAccessibleAudioDisability": false,
+                                  "isAccessibleMentalDisability": true,
+                                  "isAccessibleMotorDisability": false,
+                                  "isAccessibleVisualDisability": false,
+                                  "mentalDisability": {
+                                    "trainedPersonnel": "Personnel formé",
+                                  },
+                                  "motorDisability": {
+                                    "entrance": "Non renseigné",
+                                    "exterior": "Non renseigné",
+                                    "facilities": "Sanitaire non adapté",
+                                    "parking": "Pas de stationnement adapté à proximité",
+                                  },
+                                  "visualDisability": {
+                                    "audioDescription": [
+                                      "Non renseigné",
+                                    ],
+                                    "soundBeacon": "Non renseigné",
+                                  },
+                                },
+                                "externalAccessibilityId": "slug-d-accessibilite-1",
+                                "externalAccessibilityUrl": "https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/",
+                                "id": 5543,
+                                "isPermanent": true,
+                                "isVirtual": false,
+                                "latitude": 48.87004,
+                                "longitude": 2.3785,
+                                "name": "Le Petit Rintintin 1",
+                                "openingHours": {
+                                  "FRIDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "MONDAY": [
+                                    {
+                                      "close": "19:00",
+                                      "open": "09:00",
+                                    },
+                                  ],
+                                  "SATURDAY": undefined,
+                                  "SUNDAY": undefined,
+                                  "THURSDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "TUESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                  "WEDNESDAY": [
+                                    {
+                                      "close": "12:00",
+                                      "open": "09:00",
+                                    },
+                                    {
+                                      "close": "19:00",
+                                      "open": "14:00",
+                                    },
+                                  ],
+                                },
+                                "postalCode": "75000",
+                                "publicName": "Le Petit Rintintin 1",
+                                "timezone": "UTC",
+                                "venueTypeCode": "BOOKSTORE",
+                                "withdrawalDetails": "How to withdraw, https://test.com",
+                              },
+                            }
                           }
                           width={16}
                         />

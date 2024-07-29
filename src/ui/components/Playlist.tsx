@@ -130,6 +130,15 @@ export const Playlist: FunctionComponent<Props> = ({
     [renderHeader, renderFooter, nbOfItems, renderItem, itemWidth, itemHeight, playlistType]
   )
 
+  const MemoizedItemSeparatorComponent = useMemo(
+    () => styled(ItemSeparatorComponent).attrs({ width: itemSeparatorSize })``,
+    [itemSeparatorSize]
+  )
+  const MemoizedHorizontalMargin = useMemo(
+    () => styled(HorizontalMargin).attrs({ width: horizontalMargin })``,
+    [horizontalMargin]
+  )
+
   const maxCaptionHeight =
     tileType === 'video-module-offer'
       ? tiles.maxCaptionHeight.videoModuleOffer
@@ -168,9 +177,9 @@ export const Playlist: FunctionComponent<Props> = ({
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={16}
         horizontal
-        ItemSeparatorComponent={() => <ItemSeparatorComponent width={itemSeparatorSize} />}
-        ListHeaderComponent={() => <HorizontalMargin width={horizontalMargin} />}
-        ListFooterComponent={() => <HorizontalMargin width={horizontalMargin} />}
+        ItemSeparatorComponent={MemoizedItemSeparatorComponent}
+        ListHeaderComponent={MemoizedHorizontalMargin}
+        ListFooterComponent={MemoizedHorizontalMargin}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.2}
       />

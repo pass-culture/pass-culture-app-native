@@ -55,10 +55,15 @@ exports[`VenuesModule component should render correctly 1`] = `
         ItemSeparatorComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 16,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 16px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -71,10 +76,15 @@ exports[`VenuesModule component should render correctly 1`] = `
         ListFooterComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 24,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 24px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -87,10 +97,15 @@ exports[`VenuesModule component should render correctly 1`] = `
         ListHeaderComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 24,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 24px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -524,10 +539,15 @@ exports[`VenuesModule component should render correctly 1`] = `
             "props": {
               "ItemSeparatorComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 16,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 16px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -538,10 +558,15 @@ exports[`VenuesModule component should render correctly 1`] = `
               },
               "ListFooterComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 24,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 24px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -552,10 +577,15 @@ exports[`VenuesModule component should render correctly 1`] = `
               },
               "ListHeaderComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 24,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 24px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -826,6 +856,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                     },
                   ]
                 }
+                width={24}
               />
             </View>
             <AutoLayoutView
@@ -1083,6 +1114,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                       "venueTypeCode": "MOVIE",
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -1325,6 +1357,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                       "venueTypeCode": "MOVIE",
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -1567,6 +1600,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                       "venueTypeCode": "MOVIE",
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -1809,6 +1843,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                       "venueTypeCode": "MOVIE",
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
             </AutoLayoutView>
@@ -1829,6 +1864,7 @@ exports[`VenuesModule component should render correctly 1`] = `
                     },
                   ]
                 }
+                width={24}
               />
             </CellContainer>
             <View
