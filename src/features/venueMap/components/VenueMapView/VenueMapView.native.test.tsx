@@ -5,6 +5,7 @@ import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -148,6 +149,31 @@ describe('<VenueMapView />', () => {
     })
 
     await waitFor(() => expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen())
+  })
+
+  it('should not display offers in bottom-sheet if FF disabled', async () => {
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockImplementation((flagId: RemoteStoreFeatureFlags) =>
+      flagId === RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET ? false : true
+    )
+    renderVenueMapView()
+    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+    fireEvent.press(screen.getByTestId(`marker-${venuesFixture[0].venueId}`), {
+      stopPropagation: () => false,
+      nativeEvent: {
+        id: venuesFixture[0].venueId.toString(),
+        coordinate: {
+          latitude: venuesFixture[0]._geoloc.lat,
+          longitude: venuesFixture[0]._geoloc.lng,
+        },
+      },
+    })
+
+    await screen.findByTestId('venueMapPreview')
+
+    expect(screen.getByTestId('venueMapPreview')).toBeOnTheScreen()
+    expect(screen.queryByTestId('venueOfferPlaylist')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Voir les offres du lieu')).not.toBeOnTheScreen()
   })
 
   it('should hide bottom sheet when a marker is selected and map is pressed', async () => {

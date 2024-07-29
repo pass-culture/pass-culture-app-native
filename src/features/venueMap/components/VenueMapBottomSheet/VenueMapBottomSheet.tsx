@@ -1,7 +1,7 @@
 import BottomSheet, { BottomSheetProps, BottomSheetView } from '@gorhom/bottom-sheet'
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
 import { useNavigation } from '@react-navigation/native'
-import React, { forwardRef, Fragment, useMemo } from 'react'
+import React, { forwardRef, Fragment, FunctionComponent, useMemo } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -22,10 +22,14 @@ interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
   onClose?: () => void
   venue?: GeolocatedVenue | null
   venueOffers?: Offer[] | null
+  PlaylistContainer?: FunctionComponent
 }
 
 export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottomSheetProps>(
-  function VenueMapBottomSheet({ onClose, venue, venueOffers, ...bottomSheetProps }, ref) {
+  function VenueMapBottomSheet(
+    { onClose, venue, venueOffers, PlaylistContainer = Fragment, ...bottomSheetProps },
+    ref
+  ) {
     const distanceToVenue = useDistance({
       lat: venue?._geoloc.lat,
       lng: venue?._geoloc.lng,
@@ -44,16 +48,16 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
       if (venueOffers?.length) {
         const handlePressMore = venue ? () => navigate('Venue', { id: venue.venueId }) : undefined
         return (
-          <Fragment>
+          <PlaylistContainer>
             <StyledSeparator />
             <ScrollView>
               <VenueOfferPlaylist offers={venueOffers} onPressMore={handlePressMore} />
             </ScrollView>
-          </Fragment>
+          </PlaylistContainer>
         )
       }
       return null
-    }, [venueOffers, navigate, venue])
+    }, [venueOffers, navigate, venue, PlaylistContainer])
 
     const venueMapPreview = useMemo(() => {
       if (venue) {
