@@ -11,7 +11,7 @@ import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, LENGTH_S, RATIO_HOME_IMAGE } from 'ui/theme'
 
-type VenueOfferPlaylistProps = {
+type VenueMapOfferPlaylistProps = {
   offers: Offer[]
   onPressMore?: () => void
 }
@@ -21,7 +21,7 @@ const PLAYLIST_ITEM_WIDTH = PLAYLIST_ITEM_HEIGHT * RATIO_HOME_IMAGE
 
 const keyExtractor = (item: Offer) => item.objectID
 
-export const VenueOfferPlaylist = ({ offers, onPressMore }: VenueOfferPlaylistProps) => {
+export const VenueMapOfferPlaylist = ({ offers, onPressMore }: VenueMapOfferPlaylistProps) => {
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
@@ -56,6 +56,8 @@ export const VenueOfferPlaylist = ({ offers, onPressMore }: VenueOfferPlaylistPr
         keyExtractor={keyExtractor}
         FlatListComponent={FlatList}
         testID="venueOfferPlaylist"
+        itemSeparatorSize={getSpacing(2)}
+        horizontalMargin={getSpacing(4)}
       />
       <StyleButtonTertiaryBlack
         inline
