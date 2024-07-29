@@ -235,7 +235,9 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
               accessibilityLabel="Activer ou désactiver le son"
             />
           </ControlsContainer>
-          <ProgressBar style={animStyle} />
+          <ProgressBarWrapper>
+            <ProgressBar style={animStyle} />
+          </ProgressBarWrapper>
         </StyledProgressContainer>
       ) : null}
 
@@ -247,6 +249,10 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
 }
 
 const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient)
+
+const ProgressBarWrapper = styled.View({
+  backgroundColor: theme.colors.white,
+})
 
 const ProgressBar = styled(AnimatedGradient).attrs(({ theme }) => ({
   colors: [theme.colors.primary, theme.colors.secondary],
