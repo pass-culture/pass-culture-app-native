@@ -1,9 +1,25 @@
 import { useEffect } from 'react'
 
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
+import { eventMonitoring } from 'libs/monitoring'
 import { useUtmParams } from 'libs/utm'
 
-export const setFirebaseParams = (campaignDate?: Date | null) => {
+export const oldCampaigns = ['calendrieravent23', 'poissondavril24', 'saintvalentin24']
+
+export const setFirebaseParams = (
+  campaignDate?: Date | null,
+  campaign?: string | null,
+  content?: string | null,
+  gen?: string | null,
+  medium?: string | null,
+  source?: string | null
+) => {
+  if (campaign && oldCampaigns.includes(campaign)) {
+    eventMonitoring.captureException(new Error(`Old marketing campaign`), {
+      extra: { campaignDate, campaign, content, gen, medium, source },
+    })
+  }
+
   const ago24Hours = new Date()
   ago24Hours.setDate(ago24Hours.getDate() - 1)
 
@@ -21,9 +37,9 @@ export const setFirebaseParams = (campaignDate?: Date | null) => {
 }
 
 export const useInit = () => {
-  const { campaignDate } = useUtmParams()
+  const { campaignDate, campaign, content, gen, medium, source } = useUtmParams()
 
   useEffect(() => {
-    setFirebaseParams(campaignDate)
-  }, [campaignDate])
+    setFirebaseParams(campaignDate, campaign, content, gen, medium, source)
+  }, [campaign, campaignDate, content, gen, medium, source])
 }
