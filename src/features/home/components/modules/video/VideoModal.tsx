@@ -71,7 +71,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
 
   return (
     <AppModal
-      title=""
+      title={`Modal ${props.title}`}
       visible={props.visible}
       isUpToStatusBar
       noPadding

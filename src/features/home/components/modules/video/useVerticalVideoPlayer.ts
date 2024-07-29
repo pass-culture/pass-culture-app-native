@@ -48,7 +48,7 @@ export const useVerticalVideoPlayer = ({
       setShowErrorView(false)
       if (state === PlayerState.ENDED) {
         const analyticsAllVideo = { moduleId, youtubeId: currentVideoId }
-        analytics.logHasSeenAllVideo({ ...analyticsAllVideo })
+        analytics.logHasSeenAllVideo(analyticsAllVideo)
         setHasFinishedPlaying(true)
         setIsPlaying(false)
       } else if (state === PlayerState.PAUSED) {

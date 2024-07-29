@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Platform, View } from 'react-native'
+import { View } from 'react-native'
 import YouTube from 'react-youtube'
 import styled from 'styled-components/native'
 
@@ -16,7 +16,6 @@ import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { ModalSwipeDirection } from 'ui/components/modals/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -59,27 +58,16 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
     props.hideModal()
   }
 
-  const swipeProperties =
-    Platform.OS === 'web'
-      ? {}
-      : {
-          onSwipe: onCloseModal,
-          swipeDirection: ModalSwipeDirection.DOWN,
-          animationOutTiming: 400,
-          propagateSwipe: true,
-        }
-
   return (
     <AppModal
-      title=""
+      title={`Modal ${props.title}`}
       visible={props.visible}
       isUpToStatusBar
       noPadding
       noPaddingBottom
       scrollEnabled={false}
       customModalHeader={<React.Fragment />}
-      onBackdropPress={onCloseModal}
-      {...swipeProperties}>
+      onBackdropPress={onCloseModal}>
       <VideoPlayerWeb
         youtubeVideoId={props.youtubeVideoId}
         offer={props.isMultiOffer ? undefined : props.offers[0]}
