@@ -55,10 +55,15 @@ exports[`OffersModule should render correctly for one-item-medium layout 1`] = `
         ItemSeparatorComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 16,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 16px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -71,10 +76,15 @@ exports[`OffersModule should render correctly for one-item-medium layout 1`] = `
         ListFooterComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 24,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 24px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -87,10 +97,15 @@ exports[`OffersModule should render correctly for one-item-medium layout 1`] = `
         ListHeaderComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 24,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 24px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -441,10 +456,15 @@ exports[`OffersModule should render correctly for one-item-medium layout 1`] = `
             "props": {
               "ItemSeparatorComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 16,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 16px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -455,10 +475,15 @@ exports[`OffersModule should render correctly for one-item-medium layout 1`] = `
               },
               "ListFooterComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 24,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 24px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -469,10 +494,15 @@ exports[`OffersModule should render correctly for one-item-medium layout 1`] = `
               },
               "ListHeaderComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 24,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 24px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -704,6 +734,7 @@ exports[`OffersModule should render correctly for one-item-medium layout 1`] = `
                     },
                   ]
                 }
+                width={24}
               />
             </View>
             <AutoLayoutView
@@ -1006,6 +1037,7 @@ exports[`OffersModule should render correctly for one-item-medium layout 1`] = `
                       },
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -1278,6 +1310,7 @@ exports[`OffersModule should render correctly for one-item-medium layout 1`] = `
                       },
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -1548,6 +1581,7 @@ exports[`OffersModule should render correctly for one-item-medium layout 1`] = `
                       },
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -1773,6 +1807,7 @@ exports[`OffersModule should render correctly for one-item-medium layout 1`] = `
                     },
                   ]
                 }
+                width={24}
               />
             </CellContainer>
             <View
@@ -2037,10 +2072,15 @@ exports[`OffersModule should render correctly for two-items layout 1`] = `
         ItemSeparatorComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 16,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 16px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -2053,10 +2093,15 @@ exports[`OffersModule should render correctly for two-items layout 1`] = `
         ListFooterComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 24,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 24px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -2069,10 +2114,15 @@ exports[`OffersModule should render correctly for two-items layout 1`] = `
         ListHeaderComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 24,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 24px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -2427,10 +2477,15 @@ exports[`OffersModule should render correctly for two-items layout 1`] = `
             "props": {
               "ItemSeparatorComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 16,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 16px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -2441,10 +2496,15 @@ exports[`OffersModule should render correctly for two-items layout 1`] = `
               },
               "ListFooterComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 24,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 24px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -2455,10 +2515,15 @@ exports[`OffersModule should render correctly for two-items layout 1`] = `
               },
               "ListHeaderComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 24,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 24px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -2690,6 +2755,7 @@ exports[`OffersModule should render correctly for two-items layout 1`] = `
                     },
                   ]
                 }
+                width={24}
               />
             </View>
             <AutoLayoutView
@@ -2992,6 +3058,7 @@ exports[`OffersModule should render correctly for two-items layout 1`] = `
                       },
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -3264,6 +3331,7 @@ exports[`OffersModule should render correctly for two-items layout 1`] = `
                       },
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -3534,6 +3602,7 @@ exports[`OffersModule should render correctly for two-items layout 1`] = `
                       },
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -3759,6 +3828,7 @@ exports[`OffersModule should render correctly for two-items layout 1`] = `
                     },
                   ]
                 }
+                width={24}
               />
             </CellContainer>
             <View
@@ -4023,10 +4093,15 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
         ItemSeparatorComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 16,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 16px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -4039,10 +4114,15 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
         ListFooterComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 24,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 24px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -4055,10 +4135,15 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
         ListHeaderComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 24,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 24px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -4409,10 +4494,15 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
             "props": {
               "ItemSeparatorComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 16,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 16px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -4423,10 +4513,15 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
               },
               "ListFooterComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 24,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 24px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -4437,10 +4532,15 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
               },
               "ListHeaderComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 24,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 24px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -4672,6 +4772,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                     },
                   ]
                 }
+                width={24}
               />
             </View>
             <AutoLayoutView
@@ -4949,6 +5050,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                       },
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -5196,6 +5298,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                       },
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -5441,6 +5544,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                       },
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -5641,6 +5745,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                     },
                   ]
                 }
+                width={24}
               />
             </CellContainer>
             <View
@@ -5880,10 +5985,15 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
         ItemSeparatorComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 16,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 16px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -5896,10 +6006,15 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
         ListFooterComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 24,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 24px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -5912,10 +6027,15 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
         ListHeaderComponent={
           {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": [],
+            "attrs": [
+              {
+                "width": 24,
+              },
+            ],
             "inlineStyle": InlineStyle {
               "rules": [
-                "width: 24px;",
+                [Function],
+                "",
               ],
             },
             "render": [Function],
@@ -6266,10 +6386,15 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
             "props": {
               "ItemSeparatorComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 16,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 16px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -6280,10 +6405,15 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
               },
               "ListFooterComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 24,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 24px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -6294,10 +6424,15 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
               },
               "ListHeaderComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": [],
+                "attrs": [
+                  {
+                    "width": 24,
+                  },
+                ],
                 "inlineStyle": InlineStyle {
                   "rules": [
-                    "width: 24px;",
+                    [Function],
+                    "",
                   ],
                 },
                 "render": [Function],
@@ -6529,6 +6664,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                     },
                   ]
                 }
+                width={24}
               />
             </View>
             <AutoLayoutView
@@ -6806,6 +6942,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                       },
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -7053,6 +7190,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                       },
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -7298,6 +7436,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                       },
                     }
                   }
+                  width={16}
                 />
               </CellContainer>
               <CellContainer
@@ -7498,6 +7637,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                     },
                   ]
                 }
+                width={24}
               />
             </CellContainer>
             <View

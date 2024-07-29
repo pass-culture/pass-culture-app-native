@@ -1311,10 +1311,15 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                 ItemSeparatorComponent={
                   {
                     "$$typeof": Symbol(react.forward_ref),
-                    "attrs": [],
+                    "attrs": [
+                      {
+                        "width": 16,
+                      },
+                    ],
                     "inlineStyle": InlineStyle {
                       "rules": [
-                        "width: 16px;",
+                        [Function],
+                        "",
                       ],
                     },
                     "render": [Function],
@@ -1327,10 +1332,15 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                 ListFooterComponent={
                   {
                     "$$typeof": Symbol(react.forward_ref),
-                    "attrs": [],
+                    "attrs": [
+                      {
+                        "width": 24,
+                      },
+                    ],
                     "inlineStyle": InlineStyle {
                       "rules": [
-                        "width: 24px;",
+                        [Function],
+                        "",
                       ],
                     },
                     "render": [Function],
@@ -1343,10 +1353,15 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                 ListHeaderComponent={
                   {
                     "$$typeof": Symbol(react.forward_ref),
-                    "attrs": [],
+                    "attrs": [
+                      {
+                        "width": 24,
+                      },
+                    ],
                     "inlineStyle": InlineStyle {
                       "rules": [
-                        "width: 24px;",
+                        [Function],
+                        "",
                       ],
                     },
                     "render": [Function],
@@ -2855,10 +2870,15 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                     "props": {
                       "ItemSeparatorComponent": {
                         "$$typeof": Symbol(react.forward_ref),
-                        "attrs": [],
+                        "attrs": [
+                          {
+                            "width": 16,
+                          },
+                        ],
                         "inlineStyle": InlineStyle {
                           "rules": [
-                            "width: 16px;",
+                            [Function],
+                            "",
                           ],
                         },
                         "render": [Function],
@@ -2869,10 +2889,15 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                       },
                       "ListFooterComponent": {
                         "$$typeof": Symbol(react.forward_ref),
-                        "attrs": [],
+                        "attrs": [
+                          {
+                            "width": 24,
+                          },
+                        ],
                         "inlineStyle": InlineStyle {
                           "rules": [
-                            "width: 24px;",
+                            [Function],
+                            "",
                           ],
                         },
                         "render": [Function],
@@ -2883,10 +2908,15 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                       },
                       "ListHeaderComponent": {
                         "$$typeof": Symbol(react.forward_ref),
-                        "attrs": [],
+                        "attrs": [
+                          {
+                            "width": 24,
+                          },
+                        ],
                         "inlineStyle": InlineStyle {
                           "rules": [
-                            "width: 24px;",
+                            [Function],
+                            "",
                           ],
                         },
                         "render": [Function],
@@ -3690,6 +3720,7 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                             },
                           ]
                         }
+                        width={24}
                       />
                     </View>
                     <AutoLayoutView
@@ -4171,6 +4202,7 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                               },
                             }
                           }
+                          width={16}
                         />
                       </CellContainer>
                       <CellContainer
@@ -4637,6 +4669,7 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                               },
                             }
                           }
+                          width={16}
                         />
                       </CellContainer>
                       <CellContainer
@@ -5103,6 +5136,7 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                               },
                             }
                           }
+                          width={16}
                         />
                       </CellContainer>
                       <CellContainer
@@ -5569,6 +5603,7 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                               },
                             }
                           }
+                          width={16}
                         />
                       </CellContainer>
                       <CellContainer
@@ -6035,6 +6070,7 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                               },
                             }
                           }
+                          width={16}
                         />
                       </CellContainer>
                     </AutoLayoutView>
@@ -6055,6 +6091,7 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                             },
                           ]
                         }
+                        width={24}
                       />
                     </CellContainer>
                     <View

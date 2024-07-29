@@ -1,4 +1,8 @@
-import BottomSheet, { BottomSheetProps, BottomSheetView } from '@gorhom/bottom-sheet'
+import BottomSheet, {
+  BottomSheetHandleProps,
+  BottomSheetProps,
+  BottomSheetView,
+} from '@gorhom/bottom-sheet'
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
 import { useNavigation } from '@react-navigation/native'
 import React, { forwardRef, Fragment, FunctionComponent, useMemo } from 'react'
@@ -6,7 +10,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { VenueOfferPlaylist } from 'features/venueMap/components/VenueMapBottomSheet/VenueOfferPlaylist'
+import { VenueMapOfferPlaylist } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapOfferPlaylist'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { getVenueTags } from 'features/venueMap/helpers/getVenueTags/getVenueTags'
@@ -49,9 +53,11 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
         const handlePressMore = venue ? () => navigate('Venue', { id: venue.venueId }) : undefined
         return (
           <PlaylistContainer>
-            <StyledSeparator />
+            <StyledView>
+              <StyledSeparator />
+            </StyledView>
             <ScrollView>
-              <VenueOfferPlaylist offers={venueOffers} onPressMore={handlePressMore} />
+              <VenueMapOfferPlaylist offers={venueOffers} onPressMore={handlePressMore} />
             </ScrollView>
           </PlaylistContainer>
         )
@@ -74,6 +80,8 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
             navigateTo={{ screen: 'Venue', params: { id: venue.venueId } }}
             noBorder
             testID="venueMapPreview"
+            withRightArrow
+            style={{ paddingHorizontal: getSpacing(4) }}
           />
         )
       }
@@ -81,7 +89,11 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     }, [venue, onClose, venueTags])
 
     return (
-      <StyledBottomSheet ref={ref} index={venue ? 0 : -1} {...bottomSheetProps}>
+      <StyledBottomSheet
+        ref={ref}
+        index={venue ? 0 : -1}
+        handleComponent={HandleComponent}
+        {...bottomSheetProps}>
         <StyledBottomSheetView>
           {venueMapPreview}
           {offersPlaylist}
@@ -93,7 +105,6 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
 
 const StyledBottomSheetView = styled(BottomSheetView)({
   paddingTop: getSpacing(2),
-  paddingHorizontal: getSpacing(4),
   flex: 1,
 })
 
@@ -105,3 +116,30 @@ const StyledSeparator = styled(Separator.Horizontal)({
   marginTop: getSpacing(4),
   marginBottom: getSpacing(3),
 })
+
+const StyledView = styled.View({
+  paddingHorizontal: 16,
+})
+
+const HANDLE_STROKE = getSpacing(0.75)
+const HANDLE_LENGTH = getSpacing(14)
+
+const HandleComponent: FunctionComponent<BottomSheetHandleProps> = () => {
+  return (
+    <HandleContainer>
+      <Handle />
+    </HandleContainer>
+  )
+}
+
+const HandleContainer = styled.View({
+  alignItems: 'center',
+  paddingTop: 16,
+  paddingBottom: 8,
+})
+
+const Handle = styled.View(({ theme }) => ({
+  width: HANDLE_LENGTH,
+  height: HANDLE_STROKE,
+  backgroundColor: theme.colors.greySemiDark,
+}))

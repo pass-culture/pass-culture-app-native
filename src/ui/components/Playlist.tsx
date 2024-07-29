@@ -41,6 +41,8 @@ type Props = {
   tileType?: 'offer' | 'venue' | 'video-module-offer'
   playlistType?: PlaylistType
   FlatListComponent?: typeof FlashList | typeof RNGHFlatList
+  itemSeparatorSize?: number
+  horizontalMargin?: number
 }
 
 function defaultKeyExtractor(item: any, index: number): string {
@@ -52,6 +54,9 @@ const defaultProps = {
 }
 
 const isWeb = Platform.OS === 'web' ? true : undefined
+
+const ITEM_SEPARATOR_WIDTH = getSpacing(4)
+const HORIZONTAL_MARGIN = getSpacing(6)
 
 export const Playlist: FunctionComponent<Props> = ({
   data,
@@ -67,6 +72,8 @@ export const Playlist: FunctionComponent<Props> = ({
   onEndReached,
   FlatListComponent = FlashList,
   tileType = 'offer',
+  itemSeparatorSize = ITEM_SEPARATOR_WIDTH,
+  horizontalMargin = HORIZONTAL_MARGIN,
 }) => {
   const { isTouch, tiles } = useTheme()
   const { width } = useWindowDimensions()
@@ -123,6 +130,15 @@ export const Playlist: FunctionComponent<Props> = ({
     [renderHeader, renderFooter, nbOfItems, renderItem, itemWidth, itemHeight, playlistType]
   )
 
+  const MemoizedItemSeparatorComponent = useMemo(
+    () => styled(ItemSeparatorComponent).attrs({ width: itemSeparatorSize })``,
+    [itemSeparatorSize]
+  )
+  const MemoizedHorizontalMargin = useMemo(
+    () => styled(HorizontalMargin).attrs({ width: horizontalMargin })``,
+    [horizontalMargin]
+  )
+
   const maxCaptionHeight =
     tileType === 'video-module-offer'
       ? tiles.maxCaptionHeight.videoModuleOffer
@@ -161,9 +177,9 @@ export const Playlist: FunctionComponent<Props> = ({
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={16}
         horizontal
-        ItemSeparatorComponent={ItemSeparatorComponent}
-        ListHeaderComponent={HorizontalMargin}
-        ListFooterComponent={HorizontalMargin}
+        ItemSeparatorComponent={MemoizedItemSeparatorComponent}
+        ListHeaderComponent={MemoizedHorizontalMargin}
+        ListFooterComponent={MemoizedHorizontalMargin}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.2}
       />
@@ -179,9 +195,8 @@ const FlatListContainer = styled.View<{ minHeight?: number }>(({ minHeight }) =>
   minHeight,
 }))
 
-const HorizontalMargin = styled.View({
-  width: getSpacing(6),
-})
+const HorizontalMargin = styled.View<{ width: number }>(({ width }) => ({
+  width,
+}))
 
-const ITEM_SEPARATOR_WIDTH = getSpacing(4)
-const ItemSeparatorComponent = styled.View({ width: ITEM_SEPARATOR_WIDTH })
+const ItemSeparatorComponent = styled.View<{ width: number }>(({ width }) => ({ width }))
