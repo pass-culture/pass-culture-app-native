@@ -2,7 +2,7 @@ import React from 'react'
 
 import { NewBusinessModule } from 'features/home/components/modules/business/NewBusinessModule'
 import { OldBusinessModule } from 'features/home/components/modules/business/OldBusinessModule'
-import { BusinessModuleCTAWording, LocationCircleArea } from 'features/home/types'
+import { LocationCircleArea } from 'features/home/types'
 import { useHasGraphicRedesign } from 'libs/contentful/useHasGraphicRedesign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -19,7 +19,7 @@ export interface BusinessModuleProps {
   url?: string
   shouldTargetNotConnectedUsers?: boolean
   localizationArea?: LocationCircleArea
-  callToAction?: BusinessModuleCTAWording
+  callToAction?: string
   date?: string
 }
 

@@ -4,7 +4,6 @@ import { Linking } from 'react-native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BusinessModuleProps } from 'features/home/components/modules/business/BusinessModule'
 import { NewBusinessModule } from 'features/home/components/modules/business/NewBusinessModule'
-import { BusinessModuleCTAWording } from 'features/home/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
@@ -37,7 +36,7 @@ const props: BusinessModuleProps = {
   homeEntryId: 'abcd',
   index: 1,
   localizationArea: undefined,
-  callToAction: BusinessModuleCTAWording.EN_SAVOIR_PLUS,
+  callToAction: 'En savoir plus',
   date: 'Du 3 juillet au 4 novembre',
 }
 
