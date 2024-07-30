@@ -1,7 +1,7 @@
 import React from 'react'
+import { PLAYER_STATES } from 'react-native-youtube-iframe'
 
 import MockedYouTubePlayer from '__mocks__/react-native-youtube-iframe'
-import { PlayerState } from 'features/home/components/modules/video/types'
 import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -61,8 +61,7 @@ describe('VideoPlayer', () => {
   })
 
   it('should not have replay button visible after clicked', async () => {
-    MockedYouTubePlayer.setPlayerState(PlayerState.ENDED)
-
+    MockedYouTubePlayer.setPlayerState(PLAYER_STATES.ENDED)
     renderVideoPlayer()
 
     const replayButton = await screen.findByRole(AccessibilityRole.BUTTON, {
@@ -75,7 +74,7 @@ describe('VideoPlayer', () => {
 
   describe('analytics', () => {
     it('should logHasSeenAllVideo when all video were seen', async () => {
-      MockedYouTubePlayer.setPlayerState(PlayerState.ENDED)
+      MockedYouTubePlayer.setPlayerState(PLAYER_STATES.ENDED)
 
       renderVideoPlayer()
 
@@ -89,7 +88,7 @@ describe('VideoPlayer', () => {
     })
 
     it('should logConsultVideo when player is ready', async () => {
-      MockedYouTubePlayer.setPlayerState(PlayerState.UNSTARTED)
+      MockedYouTubePlayer.setPlayerState(PLAYER_STATES.UNSTARTED)
 
       renderVideoPlayer()
 

@@ -1,7 +1,7 @@
 import React from 'react'
+import { PLAYER_STATES } from 'react-native-youtube-iframe'
 
 import MockedYouTubePlayer from '__mocks__/react-native-youtube-iframe'
-import { PlayerState } from 'features/home/components/modules/video/types'
 import {
   VerticalVideoPlayer,
   VideoPlayerButtonsWording,
@@ -38,7 +38,7 @@ const defaultVerticalVideoPlayerProps = {
 
 describe('VerticalVideoPlayer', () => {
   beforeEach(() => {
-    MockedYouTubePlayer.setPlayerState(PlayerState.UNSTARTED)
+    MockedYouTubePlayer.setPlayerState(PLAYER_STATES.UNSTARTED)
     MockedYouTubePlayer.setError(false)
   })
 
@@ -64,7 +64,7 @@ describe('VerticalVideoPlayer', () => {
 
   describe('the video is finished', () => {
     beforeEach(() => {
-      MockedYouTubePlayer.setPlayerState(PlayerState.ENDED)
+      MockedYouTubePlayer.setPlayerState(PLAYER_STATES.ENDED)
     })
 
     it('should display `replay button`', async () => {
@@ -126,7 +126,7 @@ describe('VerticalVideoPlayer', () => {
   })
 
   it('should display `play video` when video has not started', async () => {
-    MockedYouTubePlayer.setPlayerState(PlayerState.UNSTARTED)
+    MockedYouTubePlayer.setPlayerState(PLAYER_STATES.UNSTARTED)
 
     renderVideoPlayer(defaultVerticalVideoPlayerProps)
 
@@ -134,7 +134,7 @@ describe('VerticalVideoPlayer', () => {
   })
 
   it('should display `pause button` and `sound button` when video is playing', async () => {
-    MockedYouTubePlayer.setPlayerState(PlayerState.PLAYING)
+    MockedYouTubePlayer.setPlayerState(PLAYER_STATES.PLAYING)
 
     renderVideoPlayer({ ...defaultVerticalVideoPlayerProps, isPlaying: true })
 
@@ -150,7 +150,7 @@ describe('VerticalVideoPlayer', () => {
   })
 
   it('should display `keep watching` when video is paused', async () => {
-    MockedYouTubePlayer.setPlayerState(PlayerState.PAUSED)
+    MockedYouTubePlayer.setPlayerState(PLAYER_STATES.PAUSED)
 
     renderVideoPlayer(defaultVerticalVideoPlayerProps)
 

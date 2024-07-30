@@ -1,9 +1,9 @@
 import React, { ForwardedRef } from 'react'
-import YouTubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe'
+import YouTubePlayer, { PLAYER_STATES, YoutubeIframeRef } from 'react-native-youtube-iframe'
 
-import { PlayerState } from 'features/home/components/modules/video/types'
+export { PLAYER_STATES } from 'react-native-youtube-iframe'
 
-let mockState = PlayerState.UNSTARTED
+let mockState = PLAYER_STATES.UNSTARTED
 let mockError = false
 
 const YouTubePlayerMock = React.forwardRef(function Component(
@@ -37,7 +37,7 @@ const YouTubePlayerMock = React.forwardRef(function Component(
   return React.createElement(YouTubePlayer, props)
 })
 
-const setPlayerState = (playerState: PlayerState) => {
+const setPlayerState = (playerState: PLAYER_STATES) => {
   mockState = playerState
 }
 
@@ -46,7 +46,7 @@ const setError = (error: boolean) => {
 }
 
 const MockedYoutubePlayer = YouTubePlayerMock as typeof YouTubePlayerMock & {
-  setPlayerState: (playerState: PlayerState) => void
+  setPlayerState: (playerState: PLAYER_STATES) => void
   setError: (error: boolean) => void
 }
 
