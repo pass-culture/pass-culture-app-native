@@ -4,7 +4,7 @@ import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { useUtmParams } from 'libs/utm'
 
-export const oldCampaigns = ['calendrieravent23', 'poissondavril24', 'saintvalentin24']
+export const oldCampaigns = ['calendrieravent23', 'poissondavril24', 'saintvalentin24'] // campaigns that should no longer be triggered but visible in metabase
 
 export const setFirebaseParams = (
   campaignDate?: Date | null,

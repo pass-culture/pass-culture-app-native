@@ -96,10 +96,13 @@ describe('setMarketingParams', () => {
 
       await act(() => {}) // Because of the "await" in the setTimeout
 
-      // We don't test campaign_date because even with mockDate, the setTimeout creates delay.
       expect(Object.fromEntries(await storage.readMultiString(storageKeysWithoutDate))).toEqual(
         EXPECTED_STORAGE_WITHOUT_DATE
       )
+      // setTimeout creates delay so we have to round to ignore difference.
+      expect(
+        Math.round(Number(await storage.readString('campaign_date')) / 100).toString()
+      ).toEqual(Math.round(new Date().getTime() / 100).toString())
     })
 
     it('should set analytics event params', async () => {
