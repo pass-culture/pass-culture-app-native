@@ -1,13 +1,34 @@
 import { useEffect, useRef } from 'react'
 import { Alert, AlertButton, Platform } from 'react-native'
 import LN from 'react-native-launch-navigator'
-import { AppEnum } from 'react-native-launch-navigator/enum'
 
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { openGoogleMapsItinerary } from './openGoogleMapsItinerary'
 import { UseItineraryResult } from './types'
+
+enum AppEnum {
+  APPLE_MAPS = 'apple_maps',
+  GOOGLE_MAPS = 'google_maps',
+  WAZE = 'waze',
+  CITYMAPPER = 'citymapper',
+  NAVIGON = 'navigon',
+  TRANSIT_APP = 'transit_app',
+  YANDEX = 'yandex',
+  UBER = 'uber',
+  TOMTOM = 'tomtom',
+  BING_MAPS = 'bing_maps',
+  SYGIC = 'sygic',
+  HERE_MAPS = 'here_maps',
+  MOOVIT = 'moovit',
+  LYFT = 'lyft',
+  MAPS_ME = 'maps_me',
+  CABIFY = 'cabify',
+  BAIDU = 'baidu',
+  TAXIS_99 = 'taxis_99',
+  GAODE = 'gaode',
+}
 
 const appEnumTypeGuard = (app: string): app is AppEnum =>
   Object.values<string>(AppEnum).includes(app)
