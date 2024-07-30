@@ -108,10 +108,10 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
             hideModal={props.hideModal}
             analyticsParams={analyticsParams}
           />
-        ) : (
+        ) : null}
+        {!props.isMultiOffer && props.offers[0] ? (
           <React.Fragment>
             <VideoMonoOfferTile
-              // @ts-expect-error: because of noUncheckedIndexedAccess
               offer={props.offers[0]}
               color={props.color}
               hideModal={props.hideModal}
@@ -120,7 +120,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
             />
             <Spacer.Column numberOfSpaces={8} />
           </React.Fragment>
-        )}
+        ) : null}
       </StyledScrollView>
       <StyledTouchable onPress={onCloseModal} accessibilityLabel="Fermer la modale vidéo">
         <StyledCloseIcon />

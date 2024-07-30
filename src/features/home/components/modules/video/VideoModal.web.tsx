@@ -4,20 +4,30 @@ import YouTube from 'react-youtube'
 import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
-import { VideoModalProps } from 'features/home/components/modules/video/types'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferList } from 'features/home/components/modules/video/VideoMultiOfferList'
 import { VideoPlayerWeb } from 'features/home/components/modules/video/VideoPlayerWeb.web'
+import { VideoModule } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
+import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+
+interface VideoModalProps extends VideoModule {
+  offers: Offer[]
+  visible: boolean
+  hideModal: () => void
+  moduleId: string
+  homeEntryId: string
+  isMultiOffer: boolean
+}
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
   const playerRef = useRef<YouTube>(null)
@@ -96,10 +106,10 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
             hideModal={props.hideModal}
             analyticsParams={analyticsParams}
           />
-        ) : (
+        ) : null}
+        {!props.isMultiOffer && props.offers[0] ? (
           <React.Fragment>
             <VideoMonoOfferTile
-              // @ts-expect-error: because of noUncheckedIndexedAccess
               offer={props.offers[0]}
               color={props.color}
               hideModal={props.hideModal}
@@ -108,7 +118,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
             />
             <Spacer.Column numberOfSpaces={8} />
           </React.Fragment>
-        )}
+        ) : null}
       </StyledScrollView>
       <StyledTouchable onPress={onCloseModal} accessibilityLabel="Fermer la modale vidéo">
         <StyledCloseIcon />
