@@ -1,8 +1,10 @@
-import React, { FunctionComponent } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { FunctionComponent, useState } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum, OfferResponseV2, SearchGroupNameEnumv2 } from 'api/gen'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
@@ -42,9 +44,21 @@ type Props = {
 
 const FAKE_DOOR_ARTIST_SEARCH_GROUPS = [
   SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-  SearchGroupNameEnumv2.LIVRES,
   SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
 ]
+
+const DEFAULT_SURVEY_MODAL_DATA = {
+  title: 'Encore un peu de patience…',
+  description: 'Cette action n’est pas encore disponible, mais elle le sera bientôt\u00a0!',
+  surveyURL: '',
+}
+
+const ARTIST_SURVEY_MODAL_DATA = {
+  title: 'Encore un peu de patience',
+  description:
+    'Ce contenu n’est pas encore disponible.\n\nAide-nous à le mettre en place en répondant au questionnaire.',
+  surveyURL: 'https://passculture.qualtrics.com/jfe/form/SV_6xRze4sgvlbHNd4',
+}
 
 export const OfferBody: FunctionComponent<Props> = ({
   offer,
@@ -54,7 +68,10 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { reactionFakeDoorCategories } = useRemoteConfigContext()
   const { isDesktopViewport } = useTheme()
   const { visible, showModal, hideModal } = useModal()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const [surveyModalState, setSurveyModalState] = useState(DEFAULT_SURVEY_MODAL_DATA)
   const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
+  const hasAccessToArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const enableNewXpCineFromOffer = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER
   )
@@ -90,8 +107,19 @@ export const OfferBody: FunctionComponent<Props> = ({
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
   const onReactButtonPress = () => {
+    setSurveyModalState(DEFAULT_SURVEY_MODAL_DATA)
     analytics.logConsultReactionFakeDoor({ from: subcategory.nativeCategoryId })
     showModal()
+  }
+
+  const handleArtistLinkPress = () => {
+    if (shouldDisplayFakeDoorArtist) {
+      setSurveyModalState(ARTIST_SURVEY_MODAL_DATA)
+      analytics.logConsultArtistFakeDoor()
+      showModal()
+    } else {
+      navigate('Artist', { id: offer.extraData?.ean ?? '' })
+    }
   }
 
   return (
@@ -106,7 +134,7 @@ export const OfferBody: FunctionComponent<Props> = ({
                 {artists ? (
                   <OfferArtists
                     artists={artists}
-                    shouldDisplayFakeDoor={shouldDisplayFakeDoorArtist}
+                    onPressArtistLink={hasAccessToArtistPage ? handleArtistLinkPress : undefined}
                   />
                 ) : null}
               </ViewGap>
@@ -166,10 +194,11 @@ export const OfferBody: FunctionComponent<Props> = ({
         )}
       </Container>
       <SurveyModal
-        title="Encore un peu de patience…"
+        title={surveyModalState.title}
         visible={visible}
         hideModal={hideModal}
-        surveyDescription="Cette action n’est pas encore disponible, mais elle le sera bientôt&nbsp;!"
+        surveyDescription={surveyModalState.description}
+        surveyUrl={surveyModalState.surveyURL}
         Icon={BicolorCircledClock}
       />
     </React.Fragment>

@@ -1,3 +1,4 @@
+import * as reactNavigation from '@react-navigation/native'
 import React, { ComponentProps } from 'react'
 
 import {
@@ -10,7 +11,7 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
+import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -34,6 +35,12 @@ jest.mock('libs/location/LocationWrapper', () => ({
     geolocPosition: mockPosition,
     place: Kourou,
   }),
+}))
+
+jest.mock('@react-navigation/native')
+const mockNavigate = jest.fn()
+jest.spyOn(reactNavigation, 'useNavigation').mockImplementation(() => ({
+  navigate: mockNavigate,
 }))
 
 const mockUseFeatureFlag = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
@@ -471,6 +478,29 @@ describe('<OfferBody />', () => {
     await screen.findByText(offerResponseSnap.name)
 
     expect(screen.queryByTestId('messagingApp-container-without-divider')).not.toBeOnTheScreen()
+  })
+
+  it('should redirect to artist page when FF is enabled', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      extraData: { author: 'Stephen King' },
+    }
+    // eslint-disable-next-line local-rules/independent-mocks
+    mockUseFeatureFlag.mockReturnValue(true)
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
+    })
+
+    await screen.findByText('Stephen King')
+    fireEvent.press(screen.getByText('Stephen King'))
+
+    expect(mockNavigate).toHaveBeenCalledWith(
+      'Artist',
+      expect.objectContaining({ id: expect.anything() })
+    )
   })
 })
 
