@@ -81,24 +81,24 @@ exports[`<SetCity/> should render correctly 1`] = `
               class="css-view-175oi2r"
               style="height: 65px;"
             />
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
+            >
+              <h2
+                aria-level="2"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
+                dir="ltr"
+                role="heading"
+              >
+                Renseigne ta ville de résidence
+              </h2>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-z80fyv"
+            />
             <form
               class="sc-eqUAAy eNtqXY"
             >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
-              >
-                <h2
-                  aria-level="2"
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Dans quelle ville résides-tu ?
-                </h2>
-              </div>
-              <div
-                class="css-view-175oi2r r-height-z80fyv"
-              />
               <label
                 class="sc-dcJsrY sc-iGgWBj gLhikU fedyYd"
               >

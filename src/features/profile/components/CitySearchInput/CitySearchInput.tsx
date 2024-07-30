@@ -8,7 +8,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { object, string } from 'yup'
 
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
-import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { eventMonitoring } from 'libs/monitoring'
@@ -95,9 +94,6 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
   return (
     <React.Fragment>
       <Form.MaxWidth>
-        <CenteredTitle title="Dans quelle ville résides-tu&nbsp;?" />
-        <Spacer.Column numberOfSpaces={5} />
-
         <Controller
           control={control}
           name="postalCode"

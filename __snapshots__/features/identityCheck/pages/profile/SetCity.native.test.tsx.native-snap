@@ -260,48 +260,48 @@ exports[`<SetCity/> should render correctly 1`] = `
               style={
                 [
                   {
+                    "alignItems": "center",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                      "textAlign": "center",
+                    },
+                  ]
+                }
+              >
+                Renseigne ta ville de résidence
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                [
+                  {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
                     "maxWidth": 500,
                     "width": "100%",
                   },
                 ]
               }
             >
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Dans quelle ville résides-tu ?
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={5}
-                style={
-                  [
-                    {
-                      "height": 20,
-                    },
-                  ]
-                }
-              />
               <View>
                 <View
                   style={

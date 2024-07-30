@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 
+import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useCity, useCityActions } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -11,6 +12,7 @@ import { CitySearchInput } from 'features/profile/components/CitySearchInput/Cit
 import { analytics } from 'libs/analytics'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Spacer } from 'ui/theme'
 
 export type CityForm = { city: SuggestedCity }
 
@@ -52,13 +54,18 @@ export const SetCity = () => {
     <PageWithHeader
       title="Profil"
       scrollChildren={
-        <Controller
-          control={control}
-          name="city"
-          render={({ field: { value, onChange } }) => (
-            <CitySearchInput city={value} onCitySelected={onChange} />
-          )}
-        />
+        <React.Fragment>
+          <CenteredTitle title="Renseigne ta ville de résidence" />
+          <Spacer.Column numberOfSpaces={5} />
+
+          <Controller
+            control={control}
+            name="city"
+            render={({ field: { value, onChange } }) => (
+              <CitySearchInput city={value} onCitySelected={onChange} />
+            )}
+          />
+        </React.Fragment>
       }
       fixedBottomChildren={
         <ButtonPrimary

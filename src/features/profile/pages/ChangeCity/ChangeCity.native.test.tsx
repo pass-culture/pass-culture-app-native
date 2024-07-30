@@ -56,7 +56,7 @@ describe('<SetCity/>', () => {
       fireEvent.press(screen.getByText(city.nom))
     })
     await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
+      fireEvent.press(screen.getByText('Valider ma ville de résidence'))
     })
 
     await waitFor(async () => {
@@ -67,7 +67,7 @@ describe('<SetCity/>', () => {
     })
   })
 
-  it('should navigate to PersonalData when clicking on "Continuer"', async () => {
+  it('should navigate to PersonalData when clicking on "Valider"', async () => {
     const city = mockedSuggestedCities[0]
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
@@ -84,7 +84,7 @@ describe('<SetCity/>', () => {
       fireEvent.press(screen.getByText(city.nom))
     })
     await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
+      fireEvent.press(screen.getByText('Valider ma ville de résidence'))
     })
 
     await waitFor(async () => {
@@ -109,7 +109,7 @@ describe('<SetCity/>', () => {
       fireEvent.press(screen.getByText(city.nom))
     })
     await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
+      fireEvent.press(screen.getByText('Valider ma ville de résidence'))
     })
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
@@ -136,7 +136,7 @@ describe('<SetCity/>', () => {
       fireEvent.press(screen.getByText(city.nom))
     })
     await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
+      fireEvent.press(screen.getByText('Valider ma ville de résidence'))
     })
 
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
