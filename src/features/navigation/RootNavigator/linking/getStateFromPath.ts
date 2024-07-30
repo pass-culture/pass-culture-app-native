@@ -4,6 +4,8 @@ import { isScreen, RootNavigateParams } from 'features/navigation/RootNavigator/
 import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { oldCampaigns } from 'libs/firebase/analytics/useInit'
+import { eventMonitoring } from 'libs/monitoring'
 import { storeUtmParams } from 'libs/utm'
 import { getUtmParamsConsent } from 'libs/utm/getUtmParamsConsent'
 
@@ -40,6 +42,7 @@ export async function setUtmParameters(queryParams: QueryParams) {
     utm_gen = null,
     utm_medium = null,
     utm_source = null,
+    campaign_date = null,
   } = queryParams
 
   const campaign = acceptedTrafficCampaign ? utm_campaign : null
@@ -47,9 +50,15 @@ export async function setUtmParameters(queryParams: QueryParams) {
   const gen = acceptedTrafficCampaign ? utm_gen : null
   const medium = acceptedTrafficMedium ? utm_medium : null
   const source = acceptedTrafficSource ? utm_source : null
+  const campaignDate = campaign_date
   // we want to set the marketing parameters right after the user clicked on marketing link
   if (campaign || content || gen || medium || source) {
     await storeUtmParams({ campaign, content, gen, medium, source })
+  }
+  if (campaign && oldCampaigns.includes(campaign)) {
+    eventMonitoring.captureException(new Error(`Old marketing campaign`), {
+      extra: { campaignDate, campaign, content, gen, medium, source },
+    })
   }
   firebaseAnalytics.setDefaultEventParameters({
     traffic_campaign: campaign,
