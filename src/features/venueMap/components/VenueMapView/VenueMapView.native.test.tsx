@@ -27,10 +27,13 @@ jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 
 describe('<VenueMapView />', () => {
+  beforeEach(() => {
+    useFeatureFlagSpy.mockReturnValue(true)
+  })
+
   beforeAll(() => {
     mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
     mockUseCenterOnLocation.mockReturnValue(jest.fn())
-    useFeatureFlagSpy.mockReturnValue(true)
   })
 
   it('should render map', async () => {
@@ -134,7 +137,8 @@ describe('<VenueMapView />', () => {
   })
 
   it('should not display preview is FF disabled', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(false)
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockReturnValue(false)
     renderVenueMapView()
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
     fireEvent.press(screen.getByTestId(`marker-${venuesFixture[0].venueId}`), {
@@ -193,6 +197,25 @@ describe('<VenueMapView />', () => {
     fireEvent.press(screen.getByTestId('venue-map-view'))
 
     await waitFor(() => expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen())
+  })
+
+  it('should center map on bottom sheet animation', async () => {
+    renderVenueMapView()
+    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+    fireEvent.press(screen.getByTestId('venue-map-view'))
+
+    fireEvent.press(screen.getByTestId(`marker-${venuesFixture[0].venueId}`), {
+      stopPropagation: () => false,
+      nativeEvent: {
+        id: venuesFixture[0].venueId.toString(),
+        coordinate: {
+          latitude: venuesFixture[0]._geoloc.lat,
+          longitude: venuesFixture[0]._geoloc.lng,
+        },
+      },
+    })
+
+    expect(mockUseCenterOnLocation).toHaveBeenCalledWith(expect.any(Object))
   })
 })
 

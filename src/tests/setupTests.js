@@ -11,11 +11,6 @@ import { queryCache } from './reactQueryProviderHOC'
 // Configuration for performance tests
 configure({ testingLibrary: 'react-native' })
 
-jest.mock('@gorhom/bottom-sheet', () => ({
-  __esModule: true,
-  ...require('@gorhom/bottom-sheet/mock'),
-}))
-
 global.expect.extend(toHaveNoViolations)
 global.TextEncoder = TextEncoder
 

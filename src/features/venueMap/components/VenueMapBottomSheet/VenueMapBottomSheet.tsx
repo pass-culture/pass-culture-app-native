@@ -91,9 +91,9 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     return (
       <StyledBottomSheet
         ref={ref}
-        index={venue ? 0 : -1}
-        handleComponent={HandleComponent}
-        {...bottomSheetProps}>
+        index={-1}
+        {...bottomSheetProps}
+        handleComponent={HandleComponent}>
         <StyledBottomSheetView>
           {venueMapPreview}
           {offersPlaylist}

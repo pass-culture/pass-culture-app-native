@@ -77,3 +77,24 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest.mock('@gorhom/bottom-sheet', () => {
+  const ActualBottomSheet = jest.requireActual('@gorhom/bottom-sheet/mock').default
+
+  class MockBottomSheet extends ActualBottomSheet {
+    close() {
+      this.props.onAnimate(0, -1)
+    }
+    expand() {
+      this.props.onAnimate(0, 2)
+    }
+    collapse() {
+      this.props.onAnimate(-1, 0)
+    }
+  }
+  return {
+    __esModule: true,
+    ...require('@gorhom/bottom-sheet/mock'),
+    default: MockBottomSheet,
+  }
+})
