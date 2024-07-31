@@ -97,9 +97,11 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     const venueMap = new Map()
     hits.offers.forEach((hit) => {
       if (hit.venue) {
-        const { id, ...restVenue } = hit.venue
+        const { id, name, address, city, ...restVenue } = hit.venue
         const venue = {
           venueId: id,
+          label: name,
+          info: `${address}, ${city}`,
           ...restVenue,
           _geoloc: hit._geoloc,
         }

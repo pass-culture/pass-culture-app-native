@@ -15,6 +15,7 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
@@ -225,7 +226,7 @@ describe('<SearchResults/>', () => {
   })
 
   it('should render SearchResults', async () => {
-    render(<SearchResults />)
+    render(reactQueryProviderHOC(<SearchResults />))
 
     await screen.findByText('Rechercher')
 
