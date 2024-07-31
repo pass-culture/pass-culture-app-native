@@ -25,6 +25,8 @@ function onEmailChangeClick() {
 export function PersonalData() {
   const { user } = useAuthContext()
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
+  const hasCity = true //user?.postalCode && user?.city
+  const city = hasCity ? '51290, Saint-Remy-en-Bouzemont-Saint-Genest-et-Isson' : '' //`${user?.postalCode},${user?.city}`
 
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
 
@@ -82,6 +84,30 @@ export function PersonalData() {
           <StyledSeparator />
         </React.Fragment>
       ) : null}
+
+      <Typo.CaptionNeutralInfo>Statut</Typo.CaptionNeutralInfo>
+      <Spacer.Column numberOfSpaces={2} />
+      <EditContainer>
+        <EditText>{'Lycéen'}</EditText>
+        <EditButton
+          navigateTo={{ screen: 'ChangeStatus' }}
+          wording="Modifier"
+          accessibilityLabel="Modifier le statut"
+        />
+      </EditContainer>
+      <StyledSeparator />
+
+      <Typo.CaptionNeutralInfo>Ville de résidence</Typo.CaptionNeutralInfo>
+      <Spacer.Column numberOfSpaces={2} />
+      <EditContainer>
+        <EditText numberOfLines={2}>{city}</EditText>
+        <EditButton
+          navigateTo={{ screen: 'ChangeCity' }}
+          wording="Modifier"
+          accessibilityLabel="Modifier la ville de résidence"
+        />
+      </EditContainer>
+      <StyledSeparator />
 
       <InfoBanner message="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.">
         <Spacer.Column numberOfSpaces={3} />
