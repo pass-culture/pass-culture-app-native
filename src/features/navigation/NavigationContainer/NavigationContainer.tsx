@@ -8,8 +8,10 @@ import React, { useEffect, useState } from 'react'
 import { Platform } from 'react-native'
 import { DefaultTheme, useTheme } from 'styled-components/native'
 
+import { resetNavigationStateUponFeatureFlags } from 'features/navigation/helpers/navigationStateUtils'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
+import { useAllFeatureFlagsQuery } from 'libs/firebase/firestore/featureFlags/useAllFeatureFlagsQuery'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -38,6 +40,7 @@ export const AppNavigationContainer = () => {
 
   const [isNavReady, setIsNavReady] = useState(false)
   const [initialNavigationState, setInitialNavigationState] = useState<NavigationState>()
+  const { data: featureFlagDocument, isFetched } = useAllFeatureFlagsQuery()
 
   useEffect(() => {
     async function restoreNavStateOnReload() {
@@ -57,19 +60,31 @@ export const AppNavigationContainer = () => {
   }, [])
 
   useEffect(() => {
-    if (isNavReady) {
+    if (isFetched && isNavReady) {
       hideSplashScreen?.()
     }
-  }, [isNavReady, hideSplashScreen])
+  }, [isNavReady, hideSplashScreen, isFetched])
 
-  if (!isNavReady) {
+  const handleNavigationStateChange = async (state?: NavigationState) => {
+    let newState = state
+    try {
+      newState = await resetNavigationStateUponFeatureFlags(state, featureFlagDocument)
+      if (newState !== state) {
+        navigationRef.resetRoot(newState)
+      }
+    } finally {
+      onNavigationStateChange(newState)
+    }
+  }
+
+  if (!isNavReady || !isFetched) {
     return <LoadingPage />
   }
   return (
     <NavigationContainer
       linking={linking}
       initialState={initialNavigationState}
-      onStateChange={onNavigationStateChange}
+      onStateChange={handleNavigationStateChange}
       fallback={<LoadingPage />}
       ref={navigationRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}
