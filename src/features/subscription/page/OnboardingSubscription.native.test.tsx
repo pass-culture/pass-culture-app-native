@@ -97,7 +97,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should subscribed to selected themes when user presses "Suivre la sélection"', async () => {
-    mockServer.postApi('/v1/profile', {})
+    mockServer.patchApi('/v1/profile', {})
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
@@ -117,7 +117,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should navigate to home on subscription success', async () => {
-    mockServer.postApi('/v1/profile', {})
+    mockServer.patchApi('/v1/profile', {})
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
@@ -130,7 +130,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should show success snackbar on subscription success', async () => {
-    mockServer.postApi('/v1/profile', {})
+    mockServer.patchApi('/v1/profile', {})
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
@@ -146,7 +146,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should log analytics on subscription success', async () => {
-    mockServer.postApi('/v1/profile', {})
+    mockServer.patchApi('/v1/profile', {})
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
@@ -181,7 +181,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should save subscriptions when user subscribes from notifications settings modal', async () => {
-    mockServer.postApi('/v1/profile', {})
+    mockServer.patchApi('/v1/profile', {})
     mockAuthContextWithUser(
       {
         ...beneficiaryUser,

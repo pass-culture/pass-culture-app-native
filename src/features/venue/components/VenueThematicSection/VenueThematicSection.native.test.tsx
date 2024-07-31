@@ -66,7 +66,7 @@ describe('<VenueThematicSection/>', () => {
 
   describe('when the user presses SubscribeButton', () => {
     it('should notify when subscription succeeds', async () => {
-      mockServer.postApi('/v1/profile', {})
+      mockServer.patchApi('/v1/profile', {})
 
       render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
@@ -81,7 +81,7 @@ describe('<VenueThematicSection/>', () => {
     })
 
     it('should notify when subscription fails', async () => {
-      mockServer.postApi('/v1/profile', {
+      mockServer.patchApi('/v1/profile', {
         responseOptions: { statusCode: 400, data: {} },
       })
 
@@ -120,7 +120,7 @@ describe('<VenueThematicSection/>', () => {
     })
 
     it('should show unsubscribing confirmation modal when user subscribed and unsubscribe', async () => {
-      mockServer.postApi('/v1/profile', {})
+      mockServer.patchApi('/v1/profile', {})
 
       render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 

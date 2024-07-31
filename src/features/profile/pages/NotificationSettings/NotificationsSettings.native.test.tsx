@@ -27,7 +27,7 @@ const userWithoutNotificationsOn = {
 }
 mockAuthContextWithUser(userWithoutNotificationsOn, { persist: true })
 
-const postProfileSpy = jest.spyOn(API.api, 'postNativeV1Profile')
+const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
 
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
@@ -236,7 +236,7 @@ describe('NotificationsSettings', () => {
 
   describe('When the user saves the changes', () => {
     it('should update profile', async () => {
-      mockServer.postApi<UserProfileResponse>('/v1/profile', {
+      mockServer.patchApi<UserProfileResponse>('/v1/profile', {
         ...beneficiaryUser,
         subscriptions: { marketingEmail: true, marketingPush: false },
       })
@@ -250,7 +250,7 @@ describe('NotificationsSettings', () => {
       await act(async () => fireEvent.press(saveButton))
 
       await waitFor(() => {
-        expect(postProfileSpy).toHaveBeenCalledWith({
+        expect(patchProfileSpy).toHaveBeenCalledWith({
           subscriptions: {
             marketingEmail: true,
             marketingPush: false,
@@ -261,7 +261,7 @@ describe('NotificationsSettings', () => {
     })
 
     it('should show snackbar on success', async () => {
-      mockServer.postApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+      mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
 
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
@@ -278,7 +278,7 @@ describe('NotificationsSettings', () => {
     })
 
     it('should show snackbar on error', async () => {
-      mockServer.postApi('/v1/profile', {
+      mockServer.patchApi('/v1/profile', {
         responseOptions: { statusCode: 400, data: {} },
       })
 
@@ -297,7 +297,7 @@ describe('NotificationsSettings', () => {
     })
 
     it('should reset settings on error', async () => {
-      mockServer.postApi('/v1/profile', {
+      mockServer.patchApi('/v1/profile', {
         responseOptions: { statusCode: 400, data: {} },
       })
 
@@ -373,7 +373,7 @@ describe('NotificationsSettings', () => {
 
   describe('Analytics', () => {
     it('should log subscription update when user changes their subscription', async () => {
-      mockServer.postApi('/v1/profile', {})
+      mockServer.patchApi('/v1/profile', {})
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
@@ -394,7 +394,7 @@ describe('NotificationsSettings', () => {
     })
 
     it('should log notification toggle update when user changes their settings', async () => {
-      mockServer.postApi('/v1/profile', {})
+      mockServer.patchApi('/v1/profile', {})
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
@@ -409,7 +409,7 @@ describe('NotificationsSettings', () => {
     })
 
     it('should log notification toggle update when user changes their settings from save modal', async () => {
-      mockServer.postApi('/v1/profile', {})
+      mockServer.patchApi('/v1/profile', {})
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
@@ -427,7 +427,7 @@ describe('NotificationsSettings', () => {
     })
 
     it('should not log subscription update when user only changes their notifications settings', async () => {
-      mockServer.postApi('/v1/profile', {})
+      mockServer.patchApi<UserProfileResponse>('/v1/profile', {})
       render(reactQueryProviderHOC(<NotificationsSettings />))
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')

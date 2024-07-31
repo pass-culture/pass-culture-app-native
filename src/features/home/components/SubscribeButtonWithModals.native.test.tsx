@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { UserProfileResponse } from 'api/gen'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
@@ -99,7 +100,7 @@ describe('SubscribeButtonWithModals', () => {
   })
 
   it('should show subscription success modal when user subscribe to a thematic for the second time', async () => {
-    mockServer.postApi('/v1/profile', {})
+    mockServer.patchApi<UserProfileResponse>('/v1/profile', {})
 
     await storage.saveObject('times_user_subscribed_to_a_theme', 1)
     render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
@@ -111,7 +112,7 @@ describe('SubscribeButtonWithModals', () => {
   })
 
   it('should show snackbar when user subscribe to a thematic home for more than 3 times', async () => {
-    mockServer.postApi('/v1/profile', {})
+    mockServer.patchApi<UserProfileResponse>('/v1/profile', {})
 
     await storage.saveObject('times_user_subscribed_to_a_theme', 3)
     render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))

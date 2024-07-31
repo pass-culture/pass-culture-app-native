@@ -65,6 +65,7 @@ class MswMockServer
             DELETE: () => http.delete(url, generatedHandler, { once }),
             POST: () => http.post(url, generatedHandler, { once }),
             PUT: () => http.put(url, generatedHandler, { once }),
+            PATCH: () => http.patch(url, generatedHandler, { once }),
           }
 
           const mockByMethod = matching[handler.method]
@@ -343,6 +344,30 @@ class MswMockServer
     const fullUrl = `${this.baseUrl}${url}`
 
     this.universalPut(fullUrl, options)
+  }
+  universalPatch<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
+    const urlWithoutParams = url.split('?')[0] ?? url
+    if (this.isMockOptions(options)) {
+      const handler = http.patch(urlWithoutParams, this.generateMockHandler(url, options, 'PATCH'))
+      this.mswServer.use(handler)
+    } else {
+      const handler = http.patch(
+        url,
+        this.generateMockHandler(url, { responseOptions: { data: options as TResponse } }, 'PATCH')
+      )
+      this.mswServer.use(handler)
+    }
+  }
+  patchApi<TResponse extends DefaultBodyType>(
+    url: string,
+    options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
+  ): MockReturnType {
+    const fullUrl = `${this.baseUrl}${url}`
+
+    this.universalPatch(fullUrl, options)
   }
 }
 

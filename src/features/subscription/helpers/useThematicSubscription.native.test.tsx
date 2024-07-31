@@ -31,7 +31,7 @@ jest
   .spyOn(useMapSubscriptionHomeIdsToThematic, 'useMapSubscriptionHomeIdsToThematic')
   .mockReturnValue(SubscriptionTheme.CINEMA)
 
-const postProfileSpy = jest.spyOn(API.api, 'postNativeV1Profile')
+const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
 
 const userWithNotificationsAndSubscribed: UserProfileResponse = {
   ...beneficiaryUser,
@@ -97,7 +97,7 @@ describe('useThematicSubscription', () => {
       })
 
       it('should unsubscribe when the user clicks the subscribe button', async () => {
-        mockServer.postApi('/v1/profile', {})
+        mockServer.patchApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsAndSubscribed,
           thematic: SubscriptionTheme.CINEMA,
@@ -108,7 +108,7 @@ describe('useThematicSubscription', () => {
         result.current.updateSubscription()
 
         await waitFor(() => {
-          expect(postProfileSpy).toHaveBeenCalledWith({
+          expect(patchProfileSpy).toHaveBeenCalledWith({
             subscriptions: {
               marketingEmail: true,
               marketingPush: true,
@@ -134,7 +134,7 @@ describe('useThematicSubscription', () => {
       })
 
       it('should subscribe when the user clicks the subscribe button', async () => {
-        mockServer.postApi('/v1/profile', {})
+        mockServer.patchApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithNotificationsButNoSubscriptions,
           thematic: SubscriptionTheme.CINEMA,
@@ -145,7 +145,7 @@ describe('useThematicSubscription', () => {
         result.current.updateSubscription()
 
         await waitFor(() => {
-          expect(postProfileSpy).toHaveBeenCalledWith({
+          expect(patchProfileSpy).toHaveBeenCalledWith({
             subscriptions: {
               marketingEmail: true,
               marketingPush: true,
@@ -186,7 +186,7 @@ describe('useThematicSubscription', () => {
       })
 
       it('should not change subscribed themes when the user clicks subscribe button', async () => {
-        mockServer.postApi('/v1/profile', {})
+        mockServer.patchApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsButWithSubscriptions,
           thematic: SubscriptionTheme.CINEMA,
@@ -200,7 +200,7 @@ describe('useThematicSubscription', () => {
         })
 
         await waitFor(() => {
-          expect(postProfileSpy).toHaveBeenCalledWith({
+          expect(patchProfileSpy).toHaveBeenCalledWith({
             subscriptions: {
               marketingEmail: true,
               marketingPush: true,
@@ -226,7 +226,7 @@ describe('useThematicSubscription', () => {
       })
 
       it('should subscribe when the user clicks the subscribe button', async () => {
-        mockServer.postApi('/v1/profile', {})
+        mockServer.patchApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: userWithoutNotificationsAndWithoutSubscriptions,
           thematic: SubscriptionTheme.CINEMA,
@@ -240,7 +240,7 @@ describe('useThematicSubscription', () => {
         })
 
         await waitFor(() => {
-          expect(postProfileSpy).toHaveBeenCalledWith({
+          expect(patchProfileSpy).toHaveBeenCalledWith({
             subscriptions: {
               marketingEmail: true,
               marketingPush: true,
@@ -253,7 +253,7 @@ describe('useThematicSubscription', () => {
 
     describe("when we don't have the user", () => {
       it('should default to false for marketingEmail and marketingPush', async () => {
-        mockServer.postApi('/v1/profile', {})
+        mockServer.patchApi('/v1/profile', {})
         const { result } = renderUseThematicSubscription({
           user: undefined,
           thematic: SubscriptionTheme.CINEMA,
@@ -267,7 +267,7 @@ describe('useThematicSubscription', () => {
         })
 
         await waitFor(() => {
-          expect(postProfileSpy).toHaveBeenCalledWith({
+          expect(patchProfileSpy).toHaveBeenCalledWith({
             subscriptions: {
               marketingEmail: false,
               marketingPush: false,
@@ -281,7 +281,7 @@ describe('useThematicSubscription', () => {
 
   describe('API calls', () => {
     it('should show a snackbar when settings update fails', async () => {
-      mockServer.postApi('/v1/profile', {
+      mockServer.patchApi('/v1/profile', {
         responseOptions: { statusCode: 400, data: {} },
       })
 
@@ -306,7 +306,7 @@ describe('useThematicSubscription', () => {
     })
 
     it('should call onSuccess when subscription update succeeds', async () => {
-      mockServer.postApi('/v1/profile', {})
+      mockServer.patchApi('/v1/profile', {})
       const onUpdateSubscriptionSuccessMock = jest.fn()
 
       const { result } = renderUseThematicSubscription({
@@ -326,7 +326,7 @@ describe('useThematicSubscription', () => {
 
   describe('Analytics', () => {
     it('should log when the user subscribes', async () => {
-      mockServer.postApi('/v1/profile', {})
+      mockServer.patchApi('/v1/profile', {})
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsButNoSubscriptions,
         thematic: SubscriptionTheme.CINEMA,
@@ -346,7 +346,7 @@ describe('useThematicSubscription', () => {
     })
 
     it('should log when the user unsubscribes', async () => {
-      mockServer.postApi('/v1/profile', {})
+      mockServer.patchApi('/v1/profile', {})
       const { result } = renderUseThematicSubscription({
         user: userWithNotificationsAndSubscribed,
         thematic: SubscriptionTheme.CINEMA,
