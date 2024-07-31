@@ -27,11 +27,14 @@ export const SetStatus = () => {
   const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const titleID = uuidv4()
-  const { control, handleSubmit, watch } = useForm<StatusForm>({
+  const {
+    control,
+    handleSubmit,
+    watch,
+    formState: { isValid: formIsValid },
+  } = useForm<StatusForm>({
     mode: 'onChange',
-    defaultValues: {
-      selectedStatus: null,
-    },
+    defaultValues: {},
   })
 
   useEffect(() => {
@@ -73,6 +76,7 @@ export const SetStatus = () => {
         titleID={titleID}
         control={control}
         headerHeight={headerHeight}
+        formIsValid={formIsValid}
       />
       <BlurHeader height={headerHeight} />
     </React.Fragment>

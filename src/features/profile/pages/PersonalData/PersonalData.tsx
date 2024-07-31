@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components/native'
 
+import { ActivityIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
@@ -22,11 +23,23 @@ function onEmailChangeClick() {
   void analytics.logModifyMail()
 }
 
+const ACTIVITIES: Record<ActivityIdEnum, string> = {
+  [ActivityIdEnum.MIDDLE_SCHOOL_STUDENT]: 'Collégien',
+  [ActivityIdEnum.HIGH_SCHOOL_STUDENT]: 'Lycéen',
+  [ActivityIdEnum.STUDENT]: 'Étudiant',
+  [ActivityIdEnum.EMPLOYEE]: 'Employé',
+  [ActivityIdEnum.APPRENTICE]: 'Apprenti',
+  [ActivityIdEnum.APPRENTICE_STUDENT]: 'Alternant',
+  [ActivityIdEnum.VOLUNTEER]: 'Volontaire',
+  [ActivityIdEnum.INACTIVE]: 'Inactif',
+  [ActivityIdEnum.UNEMPLOYED]: 'Demandeur d’emploi',
+}
+
 export function PersonalData() {
   const { user } = useAuthContext()
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
-  const hasCity = true //user?.postalCode && user?.city
-  const city = hasCity ? '51290, Saint-Remy-en-Bouzemont-Saint-Genest-et-Isson' : '' //`${user?.postalCode},${user?.city}`
+  const hasCity = user?.postalCode && user?.city
+  const city = hasCity ? `${user?.postalCode}, ${user?.city}` : ''
 
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
 
@@ -88,7 +101,7 @@ export function PersonalData() {
       <Typo.CaptionNeutralInfo>Statut</Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={2} />
       <EditContainer>
-        <EditText>{'Lycéen'}</EditText>
+        <EditText>{user?.activityId && ACTIVITIES[user.activityId]}</EditText>
         <EditButton
           navigateTo={{ screen: 'ChangeStatus' }}
           wording="Modifier"

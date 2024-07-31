@@ -1,45 +1,54 @@
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigation } from '@react-navigation/native'
 import { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
 
-import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { StatusForm } from 'features/identityCheck/pages/profile/StatusFlatList'
-import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
-import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
-import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+
+const schema = yup.object().shape({
+  selectedStatus: yup.string().required(),
+})
 
 export const useSubmitChangeStatus = () => {
-  const storedName = useName()
-  const storedCity = useCity()
-  const storedAddress = useAddress()
-
-  const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
-  const { control, handleSubmit, watch } = useForm<StatusForm>({
-    mode: 'onChange',
-    defaultValues: {
-      selectedStatus: null,
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+  const { mutate: patchProfile, isLoading } = useUpdateProfileMutation(
+    () => {
+      showSuccessSnackBar({
+        message: 'Ton statut a bien été modifié\u00a0!',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     },
+    () => {
+      showErrorSnackBar({
+        message: 'Une erreur est survenue',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    }
+  )
+  const {
+    control,
+    handleSubmit,
+    watch,
+    formState: { isValid: formIsValid },
+  } = useForm<StatusForm>({
+    mode: 'onChange',
+    resolver: yupResolver(schema),
   })
 
   const selectedStatus = watch('selectedStatus')
 
   const submitStatus = useCallback(
     async (formValues: StatusForm) => {
-      if (!formValues.selectedStatus) return
-
-      const profile = {
-        name: storedName,
-        city: storedCity,
-        address: storedAddress,
-        status: formValues.selectedStatus,
-        hasSchoolTypes: false,
-        schoolType: null,
-      }
-      await patchProfile(profile)
-      navigateToHome()
+      patchProfile({ activityId: formValues.selectedStatus })
+      navigate('PersonalData')
     },
-    [storedName, storedCity, storedAddress, patchProfile]
+    [navigate, patchProfile]
   )
 
-  return { isLoading, control, handleSubmit, selectedStatus, submitStatus }
+  return { isLoading, control, handleSubmit, selectedStatus, submitStatus, formIsValid }
 }

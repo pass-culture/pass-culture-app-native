@@ -10,7 +10,8 @@ import {
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 export const ChangeStatus = () => {
-  const { isLoading, control, handleSubmit, selectedStatus, submitStatus } = useSubmitChangeStatus()
+  const { isLoading, control, handleSubmit, selectedStatus, submitStatus, formIsValid } =
+    useSubmitChangeStatus()
 
   const titleID = uuidv4()
   const headerHeight = useGetHeaderHeight()
@@ -23,6 +24,7 @@ export const ChangeStatus = () => {
         isLoading={isLoading}
         selectedStatus={selectedStatus}
         submitStatus={submitStatus}
+        formIsValid={formIsValid}
         titleID={titleID}
         control={control}
         headerHeight={headerHeight}
