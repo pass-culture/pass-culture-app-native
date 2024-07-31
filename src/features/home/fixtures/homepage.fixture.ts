@@ -227,6 +227,37 @@ export const formattedVideoCarouselModule: VideoCarouselModule = {
   ],
 }
 
+export const formattedVideoCarouselModuleWithMultipleItems: VideoCarouselModule = {
+  id: '3wfVCUGOPYBIKggC0nkJW1',
+  type: HomepageModuleType.VideoCarouselModule,
+  title: 'Test carousel video',
+  color: Color.Lilac,
+  items: [
+    {
+      id: '7ihPsS7RcX0WuLtCAJCI69',
+      title: 'Quinzaine du ciné',
+      youtubeVideoId: 'NsFmOttIW9Y',
+      offerId: undefined,
+      homeEntryId: '123456',
+      tag: undefined,
+      thematicHomeSubtitle: 'Les sorties du moment',
+      thematicHomeTag: 'Cinéma',
+      thematicHomeTitle: 'La quinzaine du ciné',
+    },
+    {
+      id: '7ihPsS7RcX0WuLtCAJCI69',
+      title: 'Une vidéo',
+      youtubeVideoId: 'NsFmOttIW9Y',
+      offerId: '1116',
+      homeEntryId: undefined,
+      tag: undefined,
+      thematicHomeSubtitle: undefined,
+      thematicHomeTag: undefined,
+      thematicHomeTitle: undefined,
+    },
+  ],
+}
+
 export const formattedTrendsModule: TrendsModule = {
   id: 'g6VpeYbOosfALeqR55Ah6',
   type: HomepageModuleType.TrendsModule,

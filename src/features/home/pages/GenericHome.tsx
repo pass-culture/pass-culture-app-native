@@ -7,6 +7,7 @@ import {
   Platform,
   ScrollView,
   useWindowDimensions,
+  View,
 } from 'react-native'
 import {
   IOFlatList as IntersectionObserverFlatlist,
@@ -24,14 +25,13 @@ import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/ho
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import {
   HomepageModule,
+  HomepageModuleType,
   isAppV2VenuesModule,
-  isNotVideoCarouselModule,
   isOffersModule,
   isOneOfVenuesModule,
   isVenuesModule,
   isVideoCarouselModule,
   ThematicHeader,
-  VideoCarouselModule as VideoCarouselModuleType,
 } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics, isCloseToBottom } from 'libs/analytics'
@@ -97,14 +97,15 @@ const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
   return <Spacer.TabBar />
 }
 
-const buildModulesWithVideoCarousel = (
+const buildModulesHandlingVideoCarouselPosition = (
   modules: HomepageModule[],
-  videoModules: VideoCarouselModuleType[]
+  thematicHeader?: ThematicHeader
 ) => {
-  if (videoModules.length > 1) {
-    return without(modules, videoModules[0])
+  if (thematicHeader) return modules
+  if (modules[0] && modules[0].type === HomepageModuleType.VideoCarouselModule) {
+    return without(modules, modules[0])
   }
-  return modules.filter(isNotVideoCarouselModule)
+  return modules
 }
 
 const MODULES_TIMEOUT_VALUE_IN_MS = 3000
@@ -164,12 +165,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       module.data = venuesModulesData.find((mod) => mod.moduleId === module.id)
     }
   })
-
-  const videoCarouselModules = modulesToDisplay.filter(isVideoCarouselModule)
-  const modulesToDisplayWithoutCarousel = buildModulesWithVideoCarousel(
-    modulesToDisplay,
-    videoCarouselModules
-  )
 
   const scrollRef = useRef<IOFlatListController>(null)
   useScrollToTop(scrollRef)
@@ -238,12 +233,21 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     [homeId, videoModuleId]
   )
 
+  const modulesToDisplayHandlingVideoCarousel = buildModulesHandlingVideoCarouselPosition(
+    modulesToDisplay,
+    thematicHeader
+  )
+  const videoCarouselModules = modulesToDisplay.filter(isVideoCarouselModule)
+
+  const shouldDisplayVideoInHeader =
+    !thematicHeader && modulesToDisplay[0]?.type === HomepageModuleType.VideoCarouselModule
+
   const ListHeader = useMemo(
     () => (
-      <React.Fragment>
+      <View testID="listHeader">
         {Header}
         <Spacer.Column numberOfSpaces={6} />
-        {videoCarouselModules[0] ? (
+        {shouldDisplayVideoInHeader && videoCarouselModules[0] ? (
           <VideoCarouselModule
             index={0}
             homeEntryId={homeId}
@@ -252,9 +256,9 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
           />
         ) : null}
         <PageContent>{HomeBanner}</PageContent>
-      </React.Fragment>
+      </View>
     ),
-    [videoCarouselModules, HomeBanner, Header, homeId]
+    [Header, shouldDisplayVideoInHeader, videoCarouselModules, homeId, HomeBanner]
   )
 
   return (
@@ -272,7 +276,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
           ref={scrollRef}
           testID="homeBodyScrollView"
           onScroll={onScroll}
-          data={modulesToDisplayWithoutCarousel}
+          data={modulesToDisplayHandlingVideoCarousel}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
           ListFooterComponent={

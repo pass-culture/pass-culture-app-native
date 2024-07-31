@@ -42,7 +42,9 @@ exports[`ThematicHome should render correctly 1`] = `
           />
         }
         ListHeaderComponent={
-          <React.Fragment>
+          <View
+            testID="listHeader"
+          >
             <React.Fragment>
               <ThematicHeaderWithGeolocBanner
                 homeId="fakeEntryId"
@@ -62,7 +64,7 @@ exports[`ThematicHome should render correctly 1`] = `
               numberOfSpaces={6}
             />
             <Styled(View) />
-          </React.Fragment>
+          </View>
         }
         ListHeaderComponentStyle={
           {
@@ -147,34 +149,38 @@ exports[`ThematicHome should render correctly 1`] = `
             }
           >
             <View
-              numberOfSpaces={51}
-              style={
-                [
-                  {
-                    "height": 204,
-                  },
-                ]
-              }
-            />
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "marginHorizontal": 24,
-                  },
-                ]
-              }
-            />
+              testID="listHeader"
+            >
+              <View
+                numberOfSpaces={51}
+                style={
+                  [
+                    {
+                      "height": 204,
+                    },
+                  ]
+                }
+              />
+              <View
+                numberOfSpaces={6}
+                style={
+                  [
+                    {
+                      "height": 24,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "marginHorizontal": 24,
+                    },
+                  ]
+                }
+              />
+            </View>
           </View>
           <View
             onFocusCapture={[Function]}
