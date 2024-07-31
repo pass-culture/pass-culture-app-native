@@ -10,7 +10,9 @@ import { SearchResultsContent } from 'features/search/components/SearchResultsCo
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState, UserData } from 'features/search/types'
+import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
+import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -37,6 +39,17 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     dispatch: mockDispatch,
   }),
 }))
+
+jest.mock('features/venueMap/useGetAllVenues')
+const mockUseGetAllVenues = useGetAllVenues as jest.Mock
+
+const mockSetInitialVenues = jest.fn()
+jest.mock('features/venueMap/store/initialVenuesStore', () => ({
+  useInitialVenuesActions: () => ({ setInitialVenues: mockSetInitialVenues }),
+  useInitialVenues: jest.fn(),
+}))
+
+jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 
 jest.mock('features/accessibility/context/AccessibilityFiltersWrapper')
 const mockAccessibilityFilter = useAccessibilityFiltersContext as jest.MockedFunction<
@@ -143,6 +156,7 @@ describe('SearchResultsContent component', () => {
   beforeAll(() => {
     mockHits = []
     mockNbHits = 0
+    mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
   })
 
   afterEach(() => {
