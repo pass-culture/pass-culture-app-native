@@ -72,4 +72,4 @@ export type MockReturnType = {
   requestData: () => void
 } | void
 
-export type SupportedMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
+export type SupportedMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'

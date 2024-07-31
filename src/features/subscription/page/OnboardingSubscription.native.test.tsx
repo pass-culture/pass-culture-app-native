@@ -19,7 +19,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
-const postProfileSpy = jest.spyOn(API.api, 'postNativeV1Profile')
+const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -97,7 +97,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should subscribed to selected themes when user presses "Suivre la sélection"', async () => {
-    mockServer.postApi('/v1/profile', {})
+    mockServer.patchApi('/v1/profile', {})
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
@@ -106,7 +106,7 @@ describe('OnboardingSubscription', () => {
     await act(async () => fireEvent.press(screen.getByText('Suivre la sélection')))
 
     await waitFor(() => {
-      expect(postProfileSpy).toHaveBeenCalledWith({
+      expect(patchProfileSpy).toHaveBeenCalledWith({
         subscriptions: {
           marketingEmail: true,
           marketingPush: true,
@@ -117,7 +117,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should navigate to home on subscription success', async () => {
-    mockServer.postApi('/v1/profile', {})
+    mockServer.patchApi('/v1/profile', {})
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
@@ -130,7 +130,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should show success snackbar on subscription success', async () => {
-    mockServer.postApi('/v1/profile', {})
+    mockServer.patchApi('/v1/profile', {})
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
@@ -146,7 +146,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should log analytics on subscription success', async () => {
-    mockServer.postApi('/v1/profile', {})
+    mockServer.patchApi('/v1/profile', {})
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
@@ -181,7 +181,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should save subscriptions when user subscribes from notifications settings modal', async () => {
-    mockServer.postApi('/v1/profile', {})
+    mockServer.patchApi('/v1/profile', {})
     mockAuthContextWithUser(
       {
         ...beneficiaryUser,
@@ -198,7 +198,7 @@ describe('OnboardingSubscription', () => {
     fireEvent.press(screen.getByLabelText('Valider'))
 
     await waitFor(() => {
-      expect(postProfileSpy).toHaveBeenCalledWith({
+      expect(patchProfileSpy).toHaveBeenCalledWith({
         subscriptions: {
           marketingEmail: true,
           marketingPush: false,

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetCity/> should render correctly 1`] = `
+exports[`<ChangeCity/> should render correctly 1`] = `
 <div>
   <header
     class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
@@ -52,7 +52,7 @@ exports[`<SetCity/> should render correctly 1`] = `
           dir="ltr"
           role="heading"
         >
-          Profil
+          Modifier ma ville de résidence
         </h1>
         <div
           class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
@@ -81,18 +81,14 @@ exports[`<SetCity/> should render correctly 1`] = `
               class="css-view-175oi2r"
               style="height: 65px;"
             />
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
+            <h1
+              aria-level="1"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+              dir="ltr"
+              role="heading"
             >
-              <h2
-                aria-level="2"
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
-                dir="ltr"
-                role="heading"
-              >
-                Renseigne ta ville de résidence
-              </h2>
-            </div>
+              Renseigne ta ville de résidence
+            </h1>
             <div
               class="css-view-175oi2r r-height-z80fyv"
             />
@@ -157,9 +153,9 @@ exports[`<SetCity/> should render correctly 1`] = `
           class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
         >
           <button
-            aria-label="Continuer vers l’étape suivante"
+            aria-label="Valider ma ville de résidence"
             class="sc-gsFSXq ceMVEO sc-imWYAI lgAUYa"
-            data-testid="Continuer vers l’étape suivante"
+            data-testid="Valider ma ville de résidence"
             disabled=""
             type="submit"
           >
@@ -170,7 +166,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                 class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
                 dir="ltr"
               >
-                Continuer
+                Valider ma ville de résidence
               </div>
             </div>
           </button>

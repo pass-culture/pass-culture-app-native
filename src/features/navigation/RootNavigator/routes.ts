@@ -51,6 +51,7 @@ import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
+import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
@@ -321,6 +322,13 @@ export const routes: RootRoute[] = [
     component: ChangeStatus,
     path: 'profil/modification-statut',
     options: { title: 'Ton statut | Profil' },
+    secure: true,
+  },
+  {
+    name: 'ChangeCity',
+    component: ChangeCity,
+    path: 'profil/modification-ville',
+    options: { title: 'Ton code postal | Profil' },
     secure: true,
   },
   {

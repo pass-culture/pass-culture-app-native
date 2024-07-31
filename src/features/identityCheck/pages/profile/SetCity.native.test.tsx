@@ -8,7 +8,7 @@ import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategory')
 jest.mock('libs/network/NetInfoWrapper')
@@ -22,46 +22,23 @@ describe('<SetCity/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should display error message when the user enters a valid postal code but no city found', async () => {
-    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, [])
-    renderSetCity()
-
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
-    fireEvent.changeText(input, POSTAL_CODE)
-
-    await waitFor(() => {
-      expect(
-        screen.getByText(
-          'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).'
-        )
-      ).toBeOnTheScreen()
-    })
-  })
-
-  it('should display cities when the user enters a valid postal code', async () => {
-    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    renderSetCity()
-
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
-    fireEvent.changeText(input, POSTAL_CODE)
-
-    await waitFor(() => {
-      expect(screen.getByText(mockedSuggestedCities[0].nom)).toBeOnTheScreen()
-      expect(screen.getByText(mockedSuggestedCities[1].nom)).toBeOnTheScreen()
-    })
-  })
-
   it('should navigate to SetAddress when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     renderSetCity()
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
-    fireEvent.changeText(input, POSTAL_CODE)
+    await act(async () => {
+      const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+      fireEvent.changeText(input, POSTAL_CODE)
+    })
 
     await screen.findByText(city.nom)
-    fireEvent.press(screen.getByText(city.nom))
-    fireEvent.press(screen.getByText('Continuer'))
+    await act(async () => {
+      fireEvent.press(screen.getByText(city.nom))
+    })
+    await act(async () => {
+      fireEvent.press(screen.getByText('Continuer'))
+    })
 
     await waitFor(async () => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress')
@@ -73,12 +50,21 @@ describe('<SetCity/>', () => {
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     renderSetCity()
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
-    fireEvent.changeText(input, POSTAL_CODE)
+    await act(async () => {
+      const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+      fireEvent.changeText(input, POSTAL_CODE)
+    })
 
     await screen.findByText(city.nom)
-    fireEvent.press(screen.getByText(city.nom))
-    fireEvent.press(screen.getByText('Continuer'))
+    await act(async () => {
+      const cityInput = screen.getByText(city.nom)
+      fireEvent.press(cityInput)
+    })
+
+    await act(async () => {
+      const continueButton = screen.getByText('Continuer')
+      fireEvent.press(continueButton)
+    })
 
     await waitFor(async () => {
       expect(await storage.readObject('profile-city')).toMatchObject({
@@ -100,14 +86,21 @@ describe('<SetCity/>', () => {
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     renderSetCity()
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
-    fireEvent.changeText(input, POSTAL_CODE)
+    await act(async () => {
+      const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+      fireEvent.changeText(input, POSTAL_CODE)
+    })
 
-    const CityNameButton = await screen.findByText(city.nom)
-    fireEvent.press(CityNameButton)
+    await screen.findByText(city.nom)
+    await act(async () => {
+      const cityInput = screen.getByText(city.nom)
+      fireEvent.press(cityInput)
+    })
 
-    const ContinueButton = screen.getByText('Continuer')
-    fireEvent.press(ContinueButton)
+    await act(async () => {
+      const ContinueButton = screen.getByText('Continuer')
+      fireEvent.press(ContinueButton)
+    })
 
     await waitFor(() => {
       expect(analytics.logSetPostalCodeClicked).toHaveBeenCalledTimes(1)

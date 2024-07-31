@@ -157,7 +157,7 @@ exports[`<SetCity/> should render correctly 1`] = `
             ]
           }
         >
-          Profil
+          Modifier ma ville de résidence
         </Text>
         <View
           positionInHeader="right"
@@ -256,32 +256,20 @@ exports[`<SetCity/> should render correctly 1`] = `
                 }
               }
             />
-            <View
+            <Text
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 20,
+                    "lineHeight": 24,
                   },
                 ]
               }
             >
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 18,
-                      "lineHeight": 22,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
-              >
-                Renseigne ta ville de résidence
-              </Text>
-            </View>
+              Renseigne ta ville de résidence
+            </Text>
             <View
               numberOfSpaces={5}
               style={
@@ -465,7 +453,7 @@ exports[`<SetCity/> should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Continuer vers l’étape suivante"
+            accessibilityLabel="Valider ma ville de résidence"
             accessibilityState={
               {
                 "busy": undefined,
@@ -519,7 +507,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Continuer vers l’étape suivante"
+            testID="Valider ma ville de résidence"
           >
             <View
               style={
@@ -546,7 +534,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                   ]
                 }
               >
-                Continuer
+                Valider ma ville de résidence
               </Text>
             </View>
           </View>

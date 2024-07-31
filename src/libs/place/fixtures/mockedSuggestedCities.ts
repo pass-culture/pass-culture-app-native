@@ -6,7 +6,7 @@ import { toMutable } from 'shared/types/toMutable'
 export const mockedSuggestedCities = toMutable([
   {
     nom: 'City 1',
-    code: '',
+    code: '00001',
     codeDepartement: '01',
     codeRegion: '',
     codesPostaux: ['00001'],
@@ -14,7 +14,7 @@ export const mockedSuggestedCities = toMutable([
   },
   {
     nom: 'City 2',
-    code: '',
+    code: '00002',
     codeDepartement: '02',
     codeRegion: '',
     codesPostaux: ['00002'],

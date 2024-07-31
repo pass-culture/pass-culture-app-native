@@ -13,12 +13,16 @@ export type CitiesResponse = Array<{
   codesPostaux: string[]
   population: number
 }>
+type Options = {
+  onError?: (error: Error) => void
+  onSuccess?: (cities: SuggestedCity[]) => void
+}
 
 export const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
 
 const STALE_TIME_CITIES = 5 * 60 * 1000
 
-export const useCities = (postalCode: string) => {
+export const useCities = (postalCode: string, options?: Options) => {
   const netInfo = useNetInfoContext()
   return useQuery([QueryKeys.CITIES, postalCode], () => fetchCities(postalCode), {
     staleTime: STALE_TIME_CITIES,
@@ -29,5 +33,7 @@ export const useCities = (postalCode: string) => {
         code,
         postalCode,
       })) as SuggestedCity[],
+    onError: options?.onError,
+    onSuccess: options?.onSuccess,
   })
 }
