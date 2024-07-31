@@ -3680,6 +3680,11 @@ export interface UserProfilePatchRequest {
  */
 export interface UserProfileResponse {
   /**
+   * @type {ActivityIdEnum}
+   * @memberof UserProfileResponse
+   */
+  activityId?: ActivityIdEnum | null
+  /**
    * @type {string}
    * @memberof UserProfileResponse
    */
@@ -3688,7 +3693,12 @@ export interface UserProfileResponse {
    * @type {{ [key: string]: number; }}
    * @memberof UserProfileResponse
    */
-  bookedOffers: { [key: string]: number }
+  bookedOffers: { [key: string]: number; }
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  city?: string | null
   /**
    * @type {string}
    * @memberof UserProfileResponse
@@ -3774,6 +3784,11 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   phoneNumber?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  postalCode?: string | null
   /**
    * @type {number}
    * @memberof UserProfileResponse
