@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/constant'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
+import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
 import { VenueMapBase } from 'features/venueMap/pages/VenueMap/VenueMapBase'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
@@ -11,10 +12,33 @@ export const VenueMap: FunctionComponent = () => {
   const headerHeight = useGetHeaderHeight()
   const { height } = useWindowDimensions()
   const venueMapHeight = height - (headerHeight + FILTER_BANNER_HEIGHT)
+
+  const {
+    selectedVenue,
+    venueTypeCode,
+    setSelectedVenue,
+    removeSelectedVenue,
+    currentRegion,
+    setCurrentRegion,
+    setLastRegionSearched,
+    venuesMap,
+  } = useVenuesMapData()
+
   return (
     <VenueMapBase>
       <MapContainer>
-        <VenueMapView height={venueMapHeight} from="venueMap" />
+        <VenueMapView
+          height={venueMapHeight}
+          from="venueMap"
+          venues={venuesMap}
+          selectedVenue={selectedVenue}
+          venueTypeCode={venueTypeCode}
+          setSelectedVenue={setSelectedVenue}
+          removeSelectedVenue={removeSelectedVenue}
+          currentRegion={currentRegion}
+          setCurrentRegion={setCurrentRegion}
+          setLastRegionSearched={setLastRegionSearched}
+        />
       </MapContainer>
     </VenueMapBase>
   )

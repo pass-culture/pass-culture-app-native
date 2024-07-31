@@ -1,6 +1,10 @@
-import { VenueTypeCodeKey } from 'api/gen'
+import type { ReadonlyDeep } from 'type-fest'
 
-export const venuesFixture = [
+import { VenueTypeCodeKey } from 'api/gen'
+import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
+import { toMutable } from 'shared/types/toMutable'
+
+export const venuesFixture = toMutable([
   {
     label: 'Cinéma de la fin',
     info: 'Paris',
@@ -20,4 +24,4 @@ export const venuesFixture = [
     postalCode: '',
     venue_type: VenueTypeCodeKey.VISUAL_ARTS,
   },
-] as const
+] as const satisfies ReadonlyDeep<GeolocatedVenue[]>)
