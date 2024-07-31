@@ -19,7 +19,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
-const postProfileSpy = jest.spyOn(API.api, 'postNativeV1Profile')
+const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -106,7 +106,7 @@ describe('OnboardingSubscription', () => {
     await act(async () => fireEvent.press(screen.getByText('Suivre la sélection')))
 
     await waitFor(() => {
-      expect(postProfileSpy).toHaveBeenCalledWith({
+      expect(patchProfileSpy).toHaveBeenCalledWith({
         subscriptions: {
           marketingEmail: true,
           marketingPush: true,
@@ -198,7 +198,7 @@ describe('OnboardingSubscription', () => {
     fireEvent.press(screen.getByLabelText('Valider'))
 
     await waitFor(() => {
-      expect(postProfileSpy).toHaveBeenCalledWith({
+      expect(patchProfileSpy).toHaveBeenCalledWith({
         subscriptions: {
           marketingEmail: true,
           marketingPush: false,
