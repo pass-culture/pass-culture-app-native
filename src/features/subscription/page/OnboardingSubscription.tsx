@@ -106,6 +106,7 @@ export const OnboardingSubscription = () => {
           marketingPush: notifications.allowPush,
           subscribedThemes,
         },
+        origin: 'OnboardingSubscription',
       })
     },
     [subscribedThemes, updateProfile]

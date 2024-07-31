@@ -112,6 +112,7 @@ describe('OnboardingSubscription', () => {
           marketingPush: true,
           subscribedThemes: [SubscriptionTheme.ACTIVITES],
         },
+        origin: 'OnboardingSubscription',
       })
     })
   })
@@ -204,6 +205,7 @@ describe('OnboardingSubscription', () => {
           marketingPush: false,
           subscribedThemes: [SubscriptionTheme.ACTIVITES],
         },
+        origin: 'OnboardingSubscription',
       })
     })
   })
