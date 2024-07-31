@@ -114,6 +114,7 @@ describe('useThematicSubscription', () => {
               marketingPush: true,
               subscribedThemes: [SubscriptionTheme.ACTIVITES],
             },
+            origin: 'ThematicHome',
           })
         })
       })
@@ -151,6 +152,7 @@ describe('useThematicSubscription', () => {
               marketingPush: true,
               subscribedThemes: [SubscriptionTheme.CINEMA],
             },
+            origin: 'ThematicHome',
           })
         })
       })
@@ -206,6 +208,7 @@ describe('useThematicSubscription', () => {
               marketingPush: true,
               subscribedThemes: [SubscriptionTheme.CINEMA, SubscriptionTheme.ACTIVITES],
             },
+            origin: 'Profile',
           })
         })
       })
@@ -246,6 +249,7 @@ describe('useThematicSubscription', () => {
               marketingPush: true,
               subscribedThemes: [SubscriptionTheme.CINEMA],
             },
+            origin: 'Profile',
           })
         })
       })
@@ -273,6 +277,7 @@ describe('useThematicSubscription', () => {
               marketingPush: false,
               subscribedThemes: [SubscriptionTheme.CINEMA],
             },
+            origin: 'Profile',
           })
         })
       })

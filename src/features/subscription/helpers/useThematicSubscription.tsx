@@ -101,6 +101,7 @@ export const useThematicSubscription = ({
           ? state.themePreferences.filter((t) => t !== thematic)
           : [...state.themePreferences, thematic],
       },
+      origin: homeId ? 'ThematicHome' : 'Venue',
     })
   }
 
@@ -119,6 +120,7 @@ export const useThematicSubscription = ({
           ? state.themePreferences
           : [...state.themePreferences, thematic],
       },
+      origin: 'Profile',
     })
   }
 

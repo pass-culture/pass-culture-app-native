@@ -256,6 +256,7 @@ describe('NotificationsSettings', () => {
             marketingPush: false,
             subscribedThemes: [],
           },
+          origin: 'ProfileNotificationsSettings',
         })
       })
     })

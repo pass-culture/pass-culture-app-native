@@ -133,6 +133,7 @@ export const NotificationsSettings = () => {
           marketingPush: state.allowPush,
           subscribedThemes: state.themePreferences,
         },
+        origin: 'ProfileNotificationsSettings',
       })
     }
   }
