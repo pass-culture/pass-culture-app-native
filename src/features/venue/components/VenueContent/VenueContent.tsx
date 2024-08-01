@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Platform } from 'react-native'
-import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
@@ -16,6 +16,7 @@ import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import ScrollViewWithContext from 'ui/components/scrollViewWithContext/ScrollViewWithContext'
 import { Spacer } from 'ui/theme'
 
 type Props = {
@@ -54,6 +55,10 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   const headerHeight = useGetHeaderHeight()
   const isLargeScreen = isDesktopViewport || isTabletViewport
 
+  const theme = useTheme()
+  const { top } = useSafeAreaInsets()
+  const stickyOffset = theme.appBarHeight + top
+
   const shouldDisplayCTA =
     (venueOffers && venueOffers.hits.length > 0) || (gtlPlaylists && gtlPlaylists.length > 0)
 
@@ -62,7 +67,12 @@ export const VenueContent: React.FunctionComponent<Props> = ({
       <VenueWebMetaHeader venue={venue} />
       {/* On web VenueHeader is called before Body for accessibility navigate order */}
       {isWeb ? <VenueHeader headerTransition={headerTransition} venue={venue} /> : null}
-      <ContentContainer onScroll={onScroll} scrollEventThrottle={16} bounces={false}>
+      <ContentContainer
+        stickyOffset={stickyOffset}
+        sticky
+        onScroll={onScroll}
+        scrollEventThrottle={16}
+        bounces={false}>
         {isLargeScreen ? <Placeholder height={headerHeight} /> : null}
         <VenueTopComponent venue={venue} />
         <Spacer.Column numberOfSpaces={isDesktopViewport ? 10 : 6} />
@@ -85,7 +95,7 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
-const ContentContainer = styled(IntersectionObserverScrollView).attrs({
+const ContentContainer = styled(ScrollViewWithContext).attrs({
   scrollIndicatorInsets: { right: 1 },
 })({
   overflow: 'visible',

@@ -33,7 +33,7 @@ export const MovieCalendar: React.FC<Props> = ({
     isStart,
   } = useHorizontalFlatListScroll({ ref: flatListRef, isActive: isDesktopViewport })
   return (
-    <View onLayout={onContainerLayout}>
+    <Container onLayout={onContainerLayout}>
       <MovieCalendarBottomBar />
       {isDesktopViewport && !isStart ? (
         <PlaylistArrowButton
@@ -69,13 +69,17 @@ export const MovieCalendar: React.FC<Props> = ({
           testID="movie-calendar-right-arrow"
         />
       ) : null}
-    </View>
+    </Container>
   )
 }
 
 const flatListContainer = {
   paddingHorizontal: getSpacing(6),
 }
+
+const Container = styled.View(({ theme }) => ({
+  backgroundColor: theme.colors.white,
+}))
 
 const FadeComponent = styled(LinearGradient)`
   position: absolute;

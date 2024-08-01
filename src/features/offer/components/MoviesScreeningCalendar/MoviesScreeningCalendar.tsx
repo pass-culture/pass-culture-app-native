@@ -8,8 +8,10 @@ import React, {
   useEffect,
   FC,
   PropsWithChildren,
+  useContext,
 } from 'react'
-import { FlatList, Animated, Easing, Text, View } from 'react-native'
+import { FlatList, Animated, Easing, View } from 'react-native'
+import { v4 } from 'uuid'
 
 import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
@@ -21,10 +23,7 @@ import {
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { getDates } from 'shared/date/getDates'
-import { PortalProvider, usePortal } from 'ui/components/scrollViewWithContext/PortalProvider'
-import { useOnScroll } from 'ui/components/scrollViewWithContext/ScrollContext'
-import { useElementHeight } from 'ui/hooks/useElementHeight'
-import { Spacer } from 'ui/theme'
+import { ScrollContext } from 'ui/components/scrollViewWithContext/ScrollContext'
 
 type Props = {
   venueOffers: VenueOffers
@@ -107,130 +106,59 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
 
   return (
     <React.Fragment>
-      <StickyContainer>
-        <StickyElement>
-          <MovieCalendar
-            dates={nextFifteenDates}
-            selectedDate={selectedDate}
-            onTabChange={setSelectedDate}
-            flatListRef={flatListRef}
-          />
-        </StickyElement>
-        <Spacer.Column numberOfSpaces={4} />
-        <Animated.View
-          onLayout={({ nativeEvent }) => {
-            setWidth(nativeEvent.layout.width)
-          }}
-          style={{
-            opacity: fadeAnim,
-            transform: [
-              { translateX: Animated.subtract(Animated.multiply(translateAnim, width), width) },
-            ],
-          }}>
-          <FlatList
-            data={moviesOffers}
-            keyExtractor={(item) => item.offer.id.toString()}
-            renderItem={({ item, index }) => (
-              <MovieOfferTile
-                movieOffer={item}
-                venueOffers={venueOffers}
-                date={selectedDate}
-                isLast={getIsLast(index)}
-                setSelectedDate={setSelectedDate}
-                nextScreeningDate={item.nextDate}
-              />
-            )}
-          />
-        </Animated.View>
-      </StickyContainer>
-    </React.Fragment>
-  )
-}
-
-export enum STICKY_CONTAINER_ID {
-  VENUE_CALENDAR = 'VENUE_CALENDAR',
-}
-
-export const StickyContainer: FC<PropsWithChildren<{ offset?: number }>> = ({
-  offset,
-  children,
-}) => {
-  return (
-    <PortalProvider>
-      <InnerStickyContainer>{children}</InnerStickyContainer>
-    </PortalProvider>
-  )
-}
-
-const InnerStickyContainer: FC<PropsWithChildren> = ({ children }) => {
-  const { elements } = usePortal<{ position?: number }>()
-
-  const nodes = useMemo(
-    () =>
-      elements
-        .sort((a, b) => {
-          if (!a.parameters.position || !b.parameters.position) {
-            return 0
-          }
-          return a.parameters.position - b.parameters.position
-        })
-        .map((element) => <React.Fragment key={element.id}>{element.component}</React.Fragment>),
-    [elements]
-  )
-  return (
-    <React.Fragment>
-      <View style={{ position: 'absolute' }}>{nodes}</View>
-      {children}
-    </React.Fragment>
-  )
-}
-
-// pouvoir envoyer la position dans le portal
-export const StickyElement: FC<PropsWithChildren<{ position?: number }>> = ({
-  position,
-  children,
-}) => {
-  const { addElement } = usePortal<{ position?: number }>()
-  const { height, onLayout } = useElementHeight()
-  useOnScroll(({ nativeEvent }) => {
-    // comment savoir quand le scroll atteint l'élément?
-    const scrollY = nativeEvent.contentOffset.y
-    console.log({ scrollY })
-  })
-  const removePortal = useRef<() => void | null>()
-
-  const setSticky = useCallback(() => {
-    if (!removePortal) {
-      return
-    }
-    removePortal.current = addElement(children, { position })
-  }, [addElement, children, position])
-
-  return removePortal ? <View style={{ height }} /> : <View onLayout={onLayout}>{children}</View>
-}
-
-const text = 'Hello'
-const stickyElement1 = 'stickyElement1'
-export const Main: FC = () => {
-  return (
-    <StickyContainer>
-      <Text>{text}</Text>
-      <Text>{text}</Text>
-      <Text>{text}</Text>
-      <Text>{text}</Text>
-      <StickyElement position={0}>
-        <Text>{stickyElement1}</Text>
+      <StickyElement>
+        <MovieCalendar
+          dates={nextFifteenDates}
+          selectedDate={selectedDate}
+          onTabChange={setSelectedDate}
+          flatListRef={flatListRef}
+        />
       </StickyElement>
-      <Text>{text}</Text>
-      <Text>{text}</Text>
-      <Text>{text}</Text>
-      <Text>{text}</Text>
-    </StickyContainer>
+      <Animated.View
+        onLayout={({ nativeEvent }) => {
+          setWidth(nativeEvent.layout.width)
+        }}
+        style={{
+          opacity: fadeAnim,
+          transform: [
+            { translateX: Animated.subtract(Animated.multiply(translateAnim, width), width) },
+          ],
+        }}>
+        <FlatList
+          data={moviesOffers}
+          keyExtractor={(item) => item.offer.id.toString()}
+          renderItem={({ item, index }) => (
+            <MovieOfferTile
+              movieOffer={item}
+              venueOffers={venueOffers}
+              date={selectedDate}
+              isLast={getIsLast(index)}
+              setSelectedDate={setSelectedDate}
+              nextScreeningDate={item.nextDate}
+            />
+          )}
+        />
+      </Animated.View>
+    </React.Fragment>
   )
 }
 
-// usePortal doit prendre en paramètre les paramètres
-// logger position de chaque element et la position du scroll actuel
-// trigger quand le croisement se fait
-// faire passer dans le container
-// faire que ca suive la position à l'écran
+export const StickyElement: FC<PropsWithChildren> = ({ children }) => {
+  const elementRef = useRef<View>(null)
+  const context = useContext(ScrollContext)
+
+  if (context === undefined) {
+    throw new Error(
+      'StickyElement must be used within a ScrollViewWithContext, replace the ScrollView by a ScrollViewWithContext'
+    )
+  }
+  const id = useMemo(() => v4(), [])
+  const Element = () => <View ref={elementRef}>{children}</View>
+
+  useEffect(() => {
+    context.registerElement(id, elementRef, <Element />)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [children])
+
+  return <Element key={id} />
+}
