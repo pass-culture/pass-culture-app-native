@@ -9,7 +9,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
-import YouTubePlayer, { PLAYER_STATES } from 'react-native-youtube-iframe'
+import YouTubePlayer from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -111,17 +111,17 @@ export const VerticalVideoPlayer: React.FC<VideoPlayerProps> = ({
     onChangeState(event)
 
     switch (event) {
-      case PLAYER_STATES.ENDED:
+      case PlayerState.ENDED:
         animValue.value = 100
         break
-      case PLAYER_STATES.UNSTARTED:
+      case PlayerState.UNSTARTED:
         animValue.value = 0
         break
-      case PLAYER_STATES.PAUSED:
-      case PLAYER_STATES.BUFFERING:
+      case PlayerState.PAUSED:
+      case PlayerState.BUFFERING:
         cancelAnimation(animValue)
         break
-      case PLAYER_STATES.PLAYING:
+      case PlayerState.PLAYING:
         {
           const [currentTime, videoDuration] = await Promise.all([
             getCurrentTime(),

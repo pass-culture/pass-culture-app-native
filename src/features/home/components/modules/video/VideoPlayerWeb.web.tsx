@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { RefObject, useState } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { isChrome } from 'react-device-detect'
 import { useWindowDimensions } from 'react-native'
@@ -9,32 +9,27 @@ import {
   getVideoPlayerDimensions,
   RATIO169,
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
-import { YouTubeEvent } from 'features/home/components/modules/video/types'
+import { VideoPlayerProps, YouTubeEvent } from 'features/home/components/modules/video/types'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
 import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { isMobileDeviceDetectOnWeb } from 'libs/react-device-detect'
-import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
-interface VideoPlayerProps {
-  youtubeVideoId: string
-  offer: Offer
-  onPressSeeOffer: () => void
-  moduleId: string
-  moduleName: string
-  homeEntryId: string
+interface VideoPlayerWebProps extends VideoPlayerProps {
+  playerRef: RefObject<YouTube>
 }
 
-export const VideoPlayer: React.FC<VideoPlayerProps> = ({
+export const VideoPlayerWeb: React.FC<VideoPlayerWebProps> = ({
   youtubeVideoId,
   offer,
   onPressSeeOffer,
   moduleId,
   moduleName,
   homeEntryId,
+  playerRef,
 }) => {
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
   const [showErrorView, setShowErrorView] = React.useState(false)
@@ -46,14 +41,12 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     RATIO169
   )
 
-  const playerRef = useRef<YouTube>(null)
-
   const logConsultVideo = () => {
     analytics.logConsultVideo({ from: 'home', moduleId, homeEntryId })
   }
 
   const replayVideo = () => {
-    playerRef.current?.internalPlayer.seekTo(0, true)
+    playerRef?.current?.internalPlayer.seekTo(0, true)
   }
 
   // remove the fullscreen video for Chrome - mobile as
@@ -71,13 +64,23 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     },
   }
 
-  function onPlayerStateChange(event: YouTubeEvent) {
+  async function onPlayerStateChange(event: YouTubeEvent) {
     if (event.data === YouTube.PlayerState.ENDED) {
       setHasFinishPlaying(true)
-      analytics.logHasSeenAllVideo(moduleId)
+      if (playerRef.current) {
+        const [videoDuration, seenDuration] = await Promise.all([
+          playerRef.current.internalPlayer.getDuration(),
+          playerRef.current.internalPlayer.getCurrentTime(),
+        ])
+        analytics.logHasSeenAllVideo({
+          moduleId,
+          videoDuration: Math.round(videoDuration),
+          seenDuration: Math.round(seenDuration),
+        })
+      }
+      if (event.data !== YouTube.PlayerState.ENDED && hasFinishPlaying === true)
+        setHasFinishPlaying(false)
     }
-    if (event.data !== YouTube.PlayerState.ENDED && hasFinishPlaying === true)
-      setHasFinishPlaying(false)
   }
 
   return (

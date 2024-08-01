@@ -1,7 +1,8 @@
 import React from 'react'
+import { PLAYER_STATES } from 'react-native-youtube-iframe'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import MockedYouTubePlayer, { PLAYER_STATES } from '__mocks__/react-native-youtube-iframe'
+import MockedYouTubePlayer from '__mocks__/react-native-youtube-iframe'
 import { VideoPlayerButtonsWording } from 'features/home/components/modules/video/VerticalVideoPlayer'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import {

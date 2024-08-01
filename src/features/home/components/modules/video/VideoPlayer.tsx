@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { RefObject, useCallback, useEffect, useState } from 'react'
 import { useWindowDimensions, AppState } from 'react-native'
 import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
@@ -7,29 +7,25 @@ import {
   getVideoPlayerDimensions,
   RATIO169,
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
+import { VideoPlayerProps } from 'features/home/components/modules/video/types'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
 import { analytics } from 'libs/analytics'
-import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
-interface VideoPlayerProps {
-  youtubeVideoId: string
-  offer?: Offer
-  onPressSeeOffer: () => void
-  moduleId: string
-  moduleName: string
-  homeEntryId: string
+interface VideoPlayerNativeProps extends VideoPlayerProps {
+  playerRef: RefObject<YoutubeIframeRef>
 }
 
-export const VideoPlayer: React.FC<VideoPlayerProps> = ({
+export const VideoPlayer: React.FC<VideoPlayerNativeProps> = ({
   youtubeVideoId,
   offer,
   onPressSeeOffer,
   moduleId,
   moduleName,
   homeEntryId,
+  playerRef,
 }) => {
   const [isPlaying, setIsPlaying] = useState(true)
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
@@ -41,8 +37,6 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     windowWidth,
     RATIO169
   )
-
-  const playerRef = useRef<YoutubeIframeRef>(null)
 
   // Make sure the video stop playing when app is not in an active state (eg: background/inactive)
   useEffect(() => {
@@ -69,14 +63,24 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   }
 
   const onChangeState = useCallback(
-    (state: string) => {
+    async (state: string) => {
       if (state === 'ended') {
         setIsPlaying(false)
         setHasFinishPlaying(true)
-        analytics.logHasSeenAllVideo(moduleId)
+        if (playerRef.current) {
+          const [videoDuration, seenDuration] = await Promise.all([
+            playerRef.current.getDuration(),
+            playerRef.current.getCurrentTime(),
+          ])
+          analytics.logHasSeenAllVideo({
+            moduleId,
+            videoDuration: Math.round(videoDuration),
+            seenDuration: Math.round(seenDuration),
+          })
+        }
       }
     },
-    [moduleId]
+    [moduleId, playerRef]
   )
 
   return (

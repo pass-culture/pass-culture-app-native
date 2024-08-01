@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 const mockReplay = jest.fn()
 const mockHideModal = jest.fn()
@@ -18,29 +18,29 @@ describe('VideoEndView', () => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  it('should replay video when pressing replay button', () => {
+  it('should replay video when pressing replay button', async () => {
     renderVideoEndView()
 
-    const replayButton = screen.getByText('Revoir')
+    const replayButton = await screen.findByText('Revoir')
     fireEvent.press(replayButton)
 
     expect(mockReplay).toHaveBeenCalledTimes(1)
   })
 
-  it('should hide modal page when pressing "Voir l’offre" button', () => {
+  it('should hide modal page when pressing "Voir l’offre" button', async () => {
     renderVideoEndView()
 
-    const seeOfferButton = screen.getByText('Voir l’offre')
+    const seeOfferButton = await screen.findByText('Voir l’offre')
 
     fireEvent.press(seeOfferButton)
 
     expect(mockHideModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should log ConsultOffer when pressing "Voir l’offre" button', () => {
+  it('should log ConsultOffer when pressing "Voir l’offre" button', async () => {
     renderVideoEndView()
 
-    const seeOfferButton = screen.getByText('Voir l’offre')
+    const seeOfferButton = await screen.findByText('Voir l’offre')
 
     fireEvent.press(seeOfferButton)
 
@@ -70,6 +70,4 @@ const renderVideoEndView = async () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     }
   )
-
-  await act(async () => {})
 }

@@ -361,8 +361,12 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CORRECTED_EMAIL }, { from }),
   logHasDismissedAppSharingModal: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_DISMISSED_APP_SHARING_MODAL }),
-  logHasDismissedModal: (params: { moduleId: string; modalType: ContentTypes }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_DISMISSED_MODAL }, params),
+  logHasDismissedModal: (params: {
+    moduleId: string
+    modalType: ContentTypes
+    seenDuration: number
+    videoDuration: number
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_DISMISSED_MODAL }, params),
   logHasMadeAChoiceForCookies: ({ from, type }: { from: string; type: CookiesChoiceByCategory }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.HAS_MADE_A_CHOICE_FOR_COOKIES },
@@ -380,8 +384,12 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION }, { type }),
   logHasRefusedCookie: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REFUSED_COOKIE }),
   logHasRequestedCode: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REQUESTED_CODE }),
-  logHasSeenAllVideo: (moduleId: string, youtubeId?: string) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_SEEN_ALL_VIDEO }, { moduleId, youtubeId }),
+  logHasSeenAllVideo: (params: {
+    moduleId: string
+    seenDuration?: number
+    videoDuration?: number
+    youtubeId?: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_SEEN_ALL_VIDEO }, params),
   logHasSharedApp: (type: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_SHARED_APP }, { type }),
   logHasSkippedCulturalSurvey: () =>

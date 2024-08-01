@@ -1,42 +1,43 @@
 import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
-import { VideoModal } from 'features/home/components/modules/video/VideoModal'
+import { VideoModal } from 'features/home/components/modules/video/VideoModal.web'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
-import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/network/NetInfoWrapper')
+jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
-jest.useFakeTimers()
 
 const hideModalMock = jest.fn()
 
 const mockOffers = mockedAlgoliaResponse.hits
-
-jest.mock('libs/firebase/analytics/analytics')
 
 describe('VideoModal', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
-  it('should render correctly if modal visible', async () => {
+  it('should render correctly', async () => {
     renderVideoModal()
 
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
+    expect(await screen.findByText('Découvre Lujipeka')).toBeInTheDocument()
+  })
 
-    expect(screen).toMatchSnapshot()
+  it('should render correctly with FF on', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+
+    renderVideoModal()
+
+    expect(await screen.findByText('Découvre Lujipeka')).toBeInTheDocument()
   })
 
   it('should log HasDismissedModal when pressing close button', async () => {
@@ -45,7 +46,7 @@ describe('VideoModal', () => {
     const closeButton = screen.getByTestId('Fermer la modale vidéo')
 
     await act(async () => {
-      fireEvent.press(closeButton)
+      fireEvent.click(closeButton)
     })
 
     expect(analytics.logHasDismissedModal).toHaveBeenNthCalledWith(1, {
@@ -54,14 +55,6 @@ describe('VideoModal', () => {
       videoDuration: 267,
       seenDuration: 135,
     })
-  })
-
-  it('should render properly with FF on', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
-
-    renderVideoModal()
-
-    expect(await screen.findByText('Découvre Lujipeka')).toBeOnTheScreen()
   })
 })
 

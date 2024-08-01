@@ -1,27 +1,36 @@
 import React, { useRef } from 'react'
-import { Platform, View } from 'react-native'
-import { YoutubeIframeRef } from 'react-native-youtube-iframe'
+import { View } from 'react-native'
+import YouTube from 'react-youtube'
 import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
-import { VideoModalProps } from 'features/home/components/modules/video/types'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferList } from 'features/home/components/modules/video/VideoMultiOfferList'
-import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
+import { VideoPlayerWeb } from 'features/home/components/modules/video/VideoPlayerWeb.web'
+import { VideoModule } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'
+import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { ModalSwipeDirection } from 'ui/components/modals/types'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+interface VideoModalProps extends VideoModule {
+  offers: Offer[]
+  visible: boolean
+  hideModal: () => void
+  moduleId: string
+  homeEntryId: string
+  isMultiOffer: boolean
+}
+
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
-  const playerRef = useRef<YoutubeIframeRef>(null)
+  const playerRef = useRef<YouTube>(null)
 
   const analyticsParams: OfferAnalyticsParams = {
     moduleId: props.id,
@@ -31,7 +40,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
   }
 
   const onCloseModal = async () => {
-    const playerCurrentRef = playerRef.current
+    const playerCurrentRef = playerRef?.current?.internalPlayer
     if (playerCurrentRef) {
       const [videoDuration, elapsed] = await Promise.all([
         playerCurrentRef.getDuration(),
@@ -49,16 +58,6 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
     props.hideModal()
   }
 
-  const swipeProperties =
-    Platform.OS === 'web'
-      ? {}
-      : {
-          onSwipe: onCloseModal,
-          swipeDirection: ModalSwipeDirection.DOWN,
-          animationOutTiming: 400,
-          propagateSwipe: true,
-        }
-
   return (
     <AppModal
       title={`Modal ${props.title}`}
@@ -68,9 +67,8 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       noPaddingBottom
       scrollEnabled={false}
       customModalHeader={<React.Fragment />}
-      onBackdropPress={onCloseModal}
-      {...swipeProperties}>
-      <VideoPlayer
+      onBackdropPress={onCloseModal}>
+      <VideoPlayerWeb
         youtubeVideoId={props.youtubeVideoId}
         offer={props.isMultiOffer ? undefined : props.offers[0]}
         onPressSeeOffer={props.hideModal}

@@ -48,7 +48,6 @@
 ./src/features/home/components/modules/OffersModule.tsx:68
 ./src/features/home/components/modules/video/OldVideoModuleDesktop.tsx:96
 ./src/features/home/components/modules/video/OldVideoModuleMobile.tsx:70
-./src/features/home/components/modules/video/VideoModal.tsx:109
 ./src/features/home/components/modules/video/VideoModuleDesktop.tsx:86
 ./src/features/home/components/modules/video/VideoModuleMobile.tsx:71
 ./src/features/identityCheck/api/useProfileInfo.ts:21

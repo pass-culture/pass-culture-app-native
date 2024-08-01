@@ -1,6 +1,7 @@
 import React from 'react'
+import { PLAYER_STATES } from 'react-native-youtube-iframe'
 
-import MockedYouTubePlayer, { PLAYER_STATES } from '__mocks__/react-native-youtube-iframe'
+import MockedYouTubePlayer from '__mocks__/react-native-youtube-iframe'
 import {
   VerticalVideoPlayer,
   VideoPlayerButtonsWording,
@@ -46,11 +47,9 @@ describe('VerticalVideoPlayer', () => {
 
     renderVideoPlayer(defaultVerticalVideoPlayerProps)
 
-    const errorMessage = screen.queryByText(
-      'Une erreur s’est produite pendant le chargement de la vidéo'
-    )
-
-    expect(errorMessage).toBeOnTheScreen()
+    expect(
+      await screen.findByText('Une erreur s’est produite pendant le chargement de la vidéo')
+    ).toBeOnTheScreen()
   })
 
   it('should not render error view without error', async () => {
