@@ -31,9 +31,8 @@ import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferD
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
-import { Venue } from 'features/venue/types'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
-import { TransformVenues, useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
+import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -82,7 +81,7 @@ export const SearchResultsContent: React.FC = () => {
     userData,
     venuesUserData,
     facets,
-    searchVenuesFromOffers,
+    offerVenues,
   } = useSearchResults()
 
   const { disabilities } = useAccessibilityFiltersContext()
@@ -276,15 +275,13 @@ export const SearchResultsContent: React.FC = () => {
     hideVenueMapLocationModal()
   }
 
-  const transformVenues: TransformVenues = useMemo(() => {
-    return (initialVenues: Venue[]): Venue[] => {
-      if (hits.venues && hits.venues.length > 0) {
-        return initialVenues
-      } else {
-        return searchVenuesFromOffers
-      }
+  const transformedVenues = useMemo(() => {
+    if (hits.venues && hits.venues.length > 0) {
+      return hits.venues
+    } else {
+      return offerVenues
     }
-  }, [hits.venues, searchVenuesFromOffers])
+  }, [hits.venues, offerVenues])
 
   const {
     selectedVenue,
@@ -295,7 +292,7 @@ export const SearchResultsContent: React.FC = () => {
     setCurrentRegion,
     setLastRegionSearched,
     venuesMap,
-  } = useVenuesMapData(transformVenues)
+  } = useVenuesMapData(transformedVenues)
 
   if (showSkeleton) return <SearchResultsPlaceHolder />
 

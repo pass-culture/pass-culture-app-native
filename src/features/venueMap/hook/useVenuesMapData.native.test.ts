@@ -3,6 +3,7 @@ import { Venue } from 'features/venue/types'
 import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
 import { useVenuesActions } from 'features/venueMap/store/venuesStore'
 import { useVenueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
+import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
@@ -23,7 +24,7 @@ mockUseVenuesActions.mockReturnValue({ setVenues: mockSetVenues })
 
 describe('useVenuesMapData', () => {
   it('should return default values without transformVenues', () => {
-    const { result } = renderHook(() => useVenuesMapData(), {
+    const { result } = renderHook(() => useVenuesMapData(venuesFixture), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -40,7 +41,7 @@ describe('useVenuesMapData', () => {
       setLastRegionSearched: expect.any(Function),
       setSelectedVenue: expect.any(Function),
       venueTypeCode: undefined,
-      venuesMap: [],
+      venuesMap: venuesFixture,
     })
   })
 
@@ -58,9 +59,7 @@ describe('useVenuesMapData', () => {
       },
     ]
 
-    const transformVenues = jest.fn(() => transformedVenues)
-
-    const { result } = renderHook(() => useVenuesMapData(transformVenues), {
+    const { result } = renderHook(() => useVenuesMapData(transformedVenues), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 

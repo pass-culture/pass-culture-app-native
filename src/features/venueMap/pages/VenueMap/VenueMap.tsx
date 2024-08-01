@@ -6,6 +6,7 @@ import { FILTER_BANNER_HEIGHT } from 'features/venueMap/components/VenueMapView/
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
 import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
 import { VenueMapBase } from 'features/venueMap/pages/VenueMap/VenueMapBase'
+import { useInitialVenues } from 'features/venueMap/store/initialVenuesStore'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 
 export const VenueMap: FunctionComponent = () => {
@@ -13,6 +14,7 @@ export const VenueMap: FunctionComponent = () => {
   const { height } = useWindowDimensions()
   const venueMapHeight = height - (headerHeight + FILTER_BANNER_HEIGHT)
 
+  const initialVenues = useInitialVenues()
   const {
     selectedVenue,
     venueTypeCode,
@@ -22,7 +24,7 @@ export const VenueMap: FunctionComponent = () => {
     setCurrentRegion,
     setLastRegionSearched,
     venuesMap,
-  } = useVenuesMapData()
+  } = useVenuesMapData(initialVenues)
 
   return (
     <VenueMapBase>
