@@ -1,4 +1,5 @@
-import React, { FC, useMemo } from 'react'
+import React, { FC, useCallback, useMemo } from 'react'
+import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import type { OfferPreviewResponse } from 'api/gen'
@@ -9,6 +10,7 @@ import {
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
 import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
+import { handleMovieCalendarScroll } from 'features/offer/components/MoviesScreeningCalendar/utils'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
@@ -24,6 +26,10 @@ type MovieOfferTileProps = {
   isLast: boolean
   nextScreeningDate?: Date
   setSelectedDate: (date: Date) => void
+  nextDateIndex: number
+  flatListRef: React.MutableRefObject<FlatList | null>
+  flatListWidth: number
+  itemWidth: number
 }
 
 export const MovieOfferTile: FC<MovieOfferTileProps> = ({
@@ -33,6 +39,10 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
   isLast,
   nextScreeningDate,
   setSelectedDate,
+  nextDateIndex,
+  flatListRef,
+  flatListWidth,
+  itemWidth,
 }) => {
   const movieScreenings = getMovieScreenings(offer.stocks)
 
@@ -46,6 +56,18 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
   const { bookingData, selectedDateScreenings } = useSelectedDateScreening(
     selectedScreeningStock,
     offer.isExternalBookingsDisabled
+  )
+
+  const scrollToMiddleElement = useCallback(
+    (currentIndex: number) => {
+      const { offset } = handleMovieCalendarScroll(currentIndex, flatListWidth, itemWidth)
+
+      flatListRef.current?.scrollToOffset({
+        animated: true,
+        offset,
+      })
+    },
+    [flatListRef, flatListWidth, itemWidth]
   )
 
   const {
@@ -84,6 +106,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
             date={nextScreeningDate}
             onPress={() => {
               setSelectedDate(nextScreeningDate)
+              scrollToMiddleElement(nextDateIndex)
             }}
           />
         </ContainerWithMargin>

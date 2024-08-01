@@ -93,7 +93,6 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
               accessible={false}
               focusable={true}
               onClick={[Function]}
-              onLayout={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
               onResponderRelease={[Function]}

@@ -12,6 +12,7 @@ import {
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { getDates } from 'shared/date/getDates'
+import { useLayout } from 'ui/hooks/useLayout'
 import { Spacer } from 'ui/theme'
 
 type Props = {
@@ -54,12 +55,14 @@ const useMoviesScreeningsList = (offerIds: number[]) => {
 }
 
 export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers }) => {
+  const { width: flatListWidth, onLayout: onFlatListLayout } = useLayout()
+  const { width: itemWidth, onLayout: onItemLayout } = useLayout()
+
   const offerIds = venueOffers.hits.map((offer) => Number(offer.objectID))
   const flatListRef = useRef<FlatList | null>(null)
   const fadeAnim = useRef(new Animated.Value(0)).current
   const translateAnim = useRef(new Animated.Value(0)).current
   const [width, setWidth] = useState<number>(0)
-
   const {
     dates: nextFifteenDates,
     selectedDate,
@@ -93,6 +96,15 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
     [moviesOffers.length]
   )
 
+  const getNextDateIndex = useCallback(
+    (nextDate: Date) => {
+      return nextFifteenDates.findIndex(
+        (date) => date.toISOString().split('T')[0] === nextDate.toISOString().split('T')[0]
+      )
+    },
+    [nextFifteenDates]
+  )
+
   return (
     <React.Fragment>
       <MovieCalendar
@@ -100,6 +112,10 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
         selectedDate={selectedDate}
         onTabChange={setSelectedDate}
         flatListRef={flatListRef}
+        flatListWidth={flatListWidth}
+        onFlatListLayout={onFlatListLayout}
+        itemWidth={itemWidth}
+        onItemLayout={onItemLayout}
       />
       <Spacer.Column numberOfSpaces={4} />
       <Animated.View
@@ -123,6 +139,10 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
               isLast={getIsLast(index)}
               setSelectedDate={setSelectedDate}
               nextScreeningDate={item.nextDate}
+              nextDateIndex={item.nextDate ? getNextDateIndex(item.nextDate) : 0}
+              flatListRef={flatListRef}
+              flatListWidth={flatListWidth}
+              itemWidth={itemWidth}
             />
           )}
         />

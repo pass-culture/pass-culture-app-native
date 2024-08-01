@@ -1,13 +1,13 @@
 import { differenceInCalendarDays } from 'date-fns'
 import React, { useCallback } from 'react'
-import { FlatList, View } from 'react-native'
+import { FlatList, LayoutChangeEvent, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/components/MovieCalendarDay'
+import { handleMovieCalendarScroll } from 'features/offer/components/MoviesScreeningCalendar/utils'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
-import { useLayout } from 'ui/hooks/useLayout'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 import { getSpacing } from 'ui/theme'
 
@@ -16,6 +16,10 @@ type Props = {
   selectedDate: Date | undefined
   onTabChange: (date: Date) => void
   flatListRef: React.MutableRefObject<FlatList | null>
+  flatListWidth: number
+  onFlatListLayout: (event: LayoutChangeEvent) => void
+  itemWidth: number
+  onItemLayout: (event: LayoutChangeEvent) => void
 }
 
 export const MOVIE_CALENDAR_PADDING = getSpacing(6)
@@ -25,6 +29,10 @@ export const MovieCalendar: React.FC<Props> = ({
   selectedDate,
   onTabChange,
   flatListRef,
+  flatListWidth,
+  onFlatListLayout,
+  itemWidth,
+  onItemLayout,
 }) => {
   const { isDesktopViewport } = useTheme()
   const {
@@ -36,23 +44,14 @@ export const MovieCalendar: React.FC<Props> = ({
     isEnd,
     isStart,
   } = useHorizontalFlatListScroll({ ref: flatListRef, isActive: isDesktopViewport })
-  const { width: flatListWidth, onLayout: onFlatListLayout } = useLayout()
-  const { width: itemWidth, onLayout: onItemLayout } = useLayout()
 
   const scrollToMiddleElement = useCallback(
     (currentIndex: number) => {
-      const shift = flatListWidth / 2 - MOVIE_CALENDAR_PADDING
-      const centerOfSelectedElement = currentIndex * itemWidth + itemWidth / 2
-      if (centerOfSelectedElement - shift < 0) {
-        flatListRef.current?.scrollToOffset({
-          animated: true,
-          offset: 0,
-        })
-        return
-      }
+      const { offset } = handleMovieCalendarScroll(currentIndex, flatListWidth, itemWidth)
+
       flatListRef.current?.scrollToOffset({
         animated: true,
-        offset: centerOfSelectedElement - shift,
+        offset,
       })
     },
     [flatListRef, flatListWidth, itemWidth]

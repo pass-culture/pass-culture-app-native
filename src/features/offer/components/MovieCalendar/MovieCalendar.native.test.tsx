@@ -8,7 +8,6 @@ import {
 } from 'features/offer/components/MovieCalendar/MovieCalendar'
 import { toMutable } from 'shared/types/toMutable'
 import { render, act, screen, CustomRenderOptions, fireEvent } from 'tests/utils'
-import * as useLayout from 'ui/hooks/useLayout'
 
 const dummyDates = toMutable([
   new Date('2024-07-18T00:00:00.000Z'), // Jeudi 18 juillet 2024
@@ -28,17 +27,10 @@ const dummyDates = toMutable([
   new Date('2024-08-01T00:00:00.000Z'), // Jeudi 1er août 2024
 ] as const) satisfies Date[]
 
+const DEFAULT_FLATLIST_WIDTH = 1000
+const DEFAULT_ITEM_WIDTH = 200
+
 const mockOnTabChange = jest.fn()
-
-const defaultUseLayoutReturnValue = {
-  width: 1000,
-  height: 100,
-  x: 100,
-  y: 100,
-  onLayout: jest.fn(),
-}
-
-const useLayoutSpy = jest.spyOn(useLayout, 'useLayout').mockReturnValue(defaultUseLayoutReturnValue)
 
 describe('<MovieCalendar/>', () => {
   it('should render MovieCalendar', async () => {
@@ -153,12 +145,6 @@ describe('<MovieCalendar/>', () => {
 
     beforeEach(() => {
       mockDate.set(dummyDates[0])
-
-      useLayoutSpy
-        .mockReturnValueOnce({ ...defaultUseLayoutReturnValue, width: 0 })
-        .mockReturnValueOnce({ ...defaultUseLayoutReturnValue, width: 0 })
-        .mockReturnValueOnce({ ...defaultUseLayoutReturnValue, width: flatListWidth })
-        .mockReturnValueOnce({ ...defaultUseLayoutReturnValue, width: itemWidth })
     })
 
     it('should scroll to the middle element when an item is clicked', () => {
@@ -204,16 +190,20 @@ const renderMovieCalendar = (
   theme?: CustomRenderOptions['theme'],
   ref = React.createRef<FlatList | null>()
 ) => {
-  const TestWrapper = () => {
+  const MovieCalendarWrapper = () => {
     return (
       <MovieCalendar
         dates={dates}
         selectedDate={dates[0]}
         onTabChange={mockOnTabChange}
         flatListRef={ref}
+        flatListWidth={DEFAULT_FLATLIST_WIDTH}
+        onFlatListLayout={jest.fn()}
+        itemWidth={DEFAULT_ITEM_WIDTH}
+        onItemLayout={jest.fn()}
       />
     )
   }
 
-  return render(<TestWrapper />, { theme })
+  return render(<MovieCalendarWrapper />, { theme })
 }
