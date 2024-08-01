@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components/native'
 
+import { ActivityIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
@@ -22,9 +23,23 @@ function onEmailChangeClick() {
   void analytics.logModifyMail()
 }
 
+const ACTIVITIES: Record<ActivityIdEnum, string> = {
+  [ActivityIdEnum.MIDDLE_SCHOOL_STUDENT]: 'Collégien',
+  [ActivityIdEnum.HIGH_SCHOOL_STUDENT]: 'Lycéen',
+  [ActivityIdEnum.STUDENT]: 'Étudiant',
+  [ActivityIdEnum.EMPLOYEE]: 'Employé',
+  [ActivityIdEnum.APPRENTICE]: 'Apprenti',
+  [ActivityIdEnum.APPRENTICE_STUDENT]: 'Alternant',
+  [ActivityIdEnum.VOLUNTEER]: 'Volontaire',
+  [ActivityIdEnum.INACTIVE]: 'Inactif',
+  [ActivityIdEnum.UNEMPLOYED]: 'Demandeur d’emploi',
+}
+
 export function PersonalData() {
   const { user } = useAuthContext()
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
+  const hasCity = user?.postalCode && user?.city
+  const city = hasCity ? `${user?.postalCode}, ${user?.city}` : ''
 
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
 
@@ -82,6 +97,30 @@ export function PersonalData() {
           <StyledSeparator />
         </React.Fragment>
       ) : null}
+
+      <Typo.CaptionNeutralInfo>Statut</Typo.CaptionNeutralInfo>
+      <Spacer.Column numberOfSpaces={2} />
+      <EditContainer>
+        <EditText>{user?.activityId && ACTIVITIES[user.activityId]}</EditText>
+        <EditButton
+          navigateTo={{ screen: 'ChangeStatus' }}
+          wording="Modifier"
+          accessibilityLabel="Modifier le statut"
+        />
+      </EditContainer>
+      <StyledSeparator />
+
+      <Typo.CaptionNeutralInfo>Ville de résidence</Typo.CaptionNeutralInfo>
+      <Spacer.Column numberOfSpaces={2} />
+      <EditContainer>
+        <EditText numberOfLines={2}>{city}</EditText>
+        <EditButton
+          navigateTo={{ screen: 'ChangeCity' }}
+          wording="Modifier"
+          accessibilityLabel="Modifier la ville de résidence"
+        />
+      </EditContainer>
+      <StyledSeparator />
 
       <InfoBanner message="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.">
         <Spacer.Column numberOfSpaces={3} />

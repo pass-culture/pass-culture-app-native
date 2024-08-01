@@ -1,6 +1,8 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import React, { useCallback, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
+import * as yup from 'yup'
 
 import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
@@ -18,6 +20,9 @@ import {
 
 import { StatusFlatList, StatusForm } from './StatusFlatList'
 
+const schema = yup.object().shape({
+  selectedStatus: yup.string().required(),
+})
 export const SetStatus = () => {
   const saveStep = useSaveStep()
   const storedName = useName()
@@ -27,11 +32,14 @@ export const SetStatus = () => {
   const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const titleID = uuidv4()
-  const { control, handleSubmit, watch } = useForm<StatusForm>({
+  const {
+    control,
+    handleSubmit,
+    watch,
+    formState: { isValid: formIsValid },
+  } = useForm<StatusForm>({
+    resolver: yupResolver(schema),
     mode: 'onChange',
-    defaultValues: {
-      selectedStatus: null,
-    },
   })
 
   useEffect(() => {
@@ -73,6 +81,7 @@ export const SetStatus = () => {
         titleID={titleID}
         control={control}
         headerHeight={headerHeight}
+        formIsValid={formIsValid}
       />
       <BlurHeader height={headerHeight} />
     </React.Fragment>

@@ -21,7 +21,7 @@ const GRADIENT_HEIGHT = getSpacing(30)
 const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
 
 export type StatusForm = {
-  selectedStatus: ActivityIdEnum | null
+  selectedStatus: ActivityIdEnum
 }
 
 interface Props {
@@ -32,6 +32,7 @@ interface Props {
   titleID: string
   control: Control<StatusForm>
   headerHeight: number
+  formIsValid: boolean
 }
 
 export function StatusFlatList({
@@ -42,6 +43,7 @@ export function StatusFlatList({
   titleID,
   control,
   headerHeight,
+  formIsValid,
 }: Props) {
   const { activities } = useActivityTypes()
 
@@ -115,7 +117,7 @@ export function StatusFlatList({
             selectedStatus ? 'Continuer vers l’étape suivante' : 'Valider mon statut'
           }
           isLoading={isLoading}
-          disabled={!selectedStatus}
+          disabled={!formIsValid}
         />
         <Spacer.BottomScreen />
       </BottomView>

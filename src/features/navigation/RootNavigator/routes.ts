@@ -309,6 +309,7 @@ export const routes: RootRoute[] = [
     component: PersonalData,
     path: 'profil/donnees-personnelles',
     options: { title: 'Mes informations personnelles' },
+    secure: true,
   },
   {
     name: 'OnboardingSubscription',
