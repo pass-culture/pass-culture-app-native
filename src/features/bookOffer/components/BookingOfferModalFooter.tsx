@@ -24,27 +24,42 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
   const enabledButton = getButtonState(bookingState)
 
   const validateOptions = useCallback(() => {
-    if (step === Step.DATE) {
-      dispatch({ type: 'RESET_HOUR' })
-      return dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
+    switch (step) {
+      case Step.DATE:
+        dispatch({ type: 'RESET_HOUR' })
+        dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
+        break
+
+      case Step.HOUR:
+        analytics.logHasChosenTime()
+        if (hasPricesStep) {
+          dispatch({ type: 'RESET_STOCK' })
+          dispatch({ type: 'CHANGE_STEP', payload: Step.PRICE })
+        } else if (isDuo) {
+          dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
+        } else {
+          dispatch({ type: 'VALIDATE_OPTIONS' })
+        }
+        break
+
+      case Step.PRICE:
+        analytics.logHasChosenPrice()
+        if (isDuo) {
+          dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
+        } else {
+          dispatch({ type: 'VALIDATE_OPTIONS' })
+        }
+        break
+
+      case Step.DUO:
+        analytics.logHasClickedDuoStep()
+        dispatch({ type: 'VALIDATE_OPTIONS' })
+        break
+
+      default:
+        dispatch({ type: 'VALIDATE_OPTIONS' })
+        break
     }
-
-    if (step === Step.HOUR && hasPricesStep) {
-      analytics.logHasChosenTime()
-      dispatch({ type: 'RESET_STOCK' })
-      return dispatch({ type: 'CHANGE_STEP', payload: Step.PRICE })
-    }
-
-    if (step === Step.PRICE) analytics.logHasChosenPrice()
-
-    if (isDuo && ((step === Step.HOUR && !hasPricesStep) || step === Step.PRICE)) {
-      if (step === Step.HOUR) analytics.logHasChosenTime()
-      return dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
-    }
-
-    if (step === Step.DUO) analytics.logHasClickedDuoStep()
-
-    return dispatch({ type: 'VALIDATE_OPTIONS' })
   }, [dispatch, hasPricesStep, isDuo, step])
 
   return step == Step.CONFIRMATION ? null : (
