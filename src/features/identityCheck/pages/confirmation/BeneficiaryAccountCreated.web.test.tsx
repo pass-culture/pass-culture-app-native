@@ -5,6 +5,7 @@ import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
 import { BeneficiaryAccountCreated } from './BeneficiaryAccountCreated'
 
 jest.mock('features/auth/context/AuthContext')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<BeneficiaryAccountCreated/>', () => {
   describe('Accessibility', () => {
