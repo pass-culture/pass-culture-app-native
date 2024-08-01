@@ -48,6 +48,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
 
   const onPressReactionButton = (reactionType: ReactionTypeEnum) => {
     setIsButtonDisabled(false)
+    setButtonWording('Valider la réaction')
     setReactionStatus((previousValue) => {
       return reactionType === previousValue ? ReactionTypeEnum.NO_REACTION : reactionType
     })
