@@ -26,6 +26,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v2/offer/{offer_id}
 - /native/v2/profile/email_update/status
 - /native/v2/subscription/stepper
+- /native/v1/profile
 - /native/v1/account
 - /native/v1/account/suspend
 - /native/v1/account/suspend_for_suspicious_login
