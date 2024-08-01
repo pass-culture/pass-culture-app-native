@@ -12,6 +12,7 @@ import {
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
 import { VenueOffers } from 'features/venue/api/useVenueOffers'
 import { getDates } from 'shared/date/getDates'
+import { StickyElement } from 'ui/components/scrollViewWithContext/StickyElement'
 import { useLayout } from 'ui/hooks/useLayout'
 import { Spacer } from 'ui/theme'
 
@@ -107,16 +108,18 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
 
   return (
     <React.Fragment>
-      <MovieCalendar
-        dates={nextFifteenDates}
-        selectedDate={selectedDate}
-        onTabChange={setSelectedDate}
-        flatListRef={flatListRef}
-        flatListWidth={flatListWidth}
-        onFlatListLayout={onFlatListLayout}
-        itemWidth={itemWidth}
-        onItemLayout={onItemLayout}
-      />
+      <StickyElement>
+        <MovieCalendar
+          dates={nextFifteenDates}
+          selectedDate={selectedDate}
+          onTabChange={setSelectedDate}
+          flatListRef={flatListRef}
+          flatListWidth={flatListWidth}
+          onFlatListLayout={onFlatListLayout}
+          itemWidth={itemWidth}
+          onItemLayout={onItemLayout}
+        />
+      </StickyElement>
       <Spacer.Column numberOfSpaces={4} />
       <Animated.View
         onLayout={({ nativeEvent }) => {
