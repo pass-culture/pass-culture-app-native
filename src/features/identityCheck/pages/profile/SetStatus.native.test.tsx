@@ -15,7 +15,7 @@ import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 let mockStatus: ActivityIdEnum | null = null
@@ -102,8 +102,13 @@ describe('<SetStatus/>', () => {
     mockStatus = ActivityTypesSnap.activities[2].id
     renderSetStatus()
 
-    fireEvent.press(screen.getByText(ActivityTypesSnap.activities[2].label)) // select student status
-    fireEvent.press(screen.getByText('Continuer'))
+    await act(async () => {
+      fireEvent.press(screen.getByText(ActivityTypesSnap.activities[2].label)) // select student status
+    })
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Continuer'))
+    })
 
     await waitFor(() => {
       expect(dispatch).toHaveBeenCalledWith({
@@ -122,8 +127,12 @@ describe('<SetStatus/>', () => {
   it('should log analytics on press Continuer', async () => {
     renderSetStatus()
 
-    fireEvent.press(screen.getByText(ActivityTypesSnap.activities[1].label))
-    fireEvent.press(screen.getByText('Continuer'))
+    await act(async () => {
+      fireEvent.press(screen.getByText(ActivityTypesSnap.activities[1].label))
+    })
+    await act(async () => {
+      fireEvent.press(screen.getByText('Continuer'))
+    })
 
     await waitFor(() => {
       expect(analytics.logSetStatusClicked).toHaveBeenCalledTimes(1)
