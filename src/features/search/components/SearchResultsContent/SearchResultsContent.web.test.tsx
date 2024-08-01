@@ -1,6 +1,9 @@
 import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
+import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
+import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
+import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import {
   mockedAlgoliaResponse,
   mockedAlgoliaVenueResponse,
@@ -70,7 +73,27 @@ jest.mock('features/location/helpers/useLocationState', () => ({
   }),
 }))
 
+const mockSetInitialVenues = jest.fn()
+jest.mock('features/venueMap/store/initialVenuesStore', () => ({
+  useInitialVenuesActions: () => ({ setInitialVenues: mockSetInitialVenues }),
+  useInitialVenues: jest.fn(),
+}))
+
+jest.mock('features/venueMap/useGetAllVenues')
+const mockUseGetAllVenues = useGetAllVenues as jest.Mock
+
+jest.mock('features/venueMap/hook/useCenterOnLocation')
+const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
+
+jest.mock('features/venue/api/useVenueOffers')
+jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
+
 describe('SearchResultsContent component', () => {
+  beforeAll(() => {
+    mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
+    mockUseCenterOnLocation.mockReturnValue(jest.fn())
+  })
+
   it('should render correctly', async () => {
     const { container } = render(reactQueryProviderHOC(<SearchResultsContent />))
 
