@@ -30,7 +30,9 @@ exports[`GenericHome With not displayed skeleton by default should display real 
         />
       }
       ListHeaderComponent={
-        <React.Fragment>
+        <View
+          testID="listHeader"
+        >
           <Styled(Text)>
             Header
           </Styled(Text)>
@@ -38,7 +40,7 @@ exports[`GenericHome With not displayed skeleton by default should display real 
             numberOfSpaces={6}
           />
           <Styled(View) />
-        </React.Fragment>
+        </View>
       }
       ListHeaderComponentStyle={
         {
@@ -122,39 +124,43 @@ exports[`GenericHome With not displayed skeleton by default should display real 
             }
           }
         >
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Black",
-                  "fontSize": 26,
-                  "lineHeight": 34,
-                },
-              ]
-            }
+          <View
+            testID="listHeader"
           >
-            Header
-          </Text>
-          <View
-            numberOfSpaces={6}
-            style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "marginHorizontal": 24,
-                },
-              ]
-            }
-          />
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Black",
+                    "fontSize": 26,
+                    "lineHeight": 34,
+                  },
+                ]
+              }
+            >
+              Header
+            </Text>
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "marginHorizontal": 24,
+                  },
+                ]
+              }
+            />
+          </View>
         </View>
         <View
           onFocusCapture={[Function]}
@@ -222,7 +228,9 @@ exports[`GenericHome With not displayed skeleton by default should display skele
         />
       }
       ListHeaderComponent={
-        <React.Fragment>
+        <View
+          testID="listHeader"
+        >
           <Styled(Text)>
             Header
           </Styled(Text)>
@@ -230,7 +238,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             numberOfSpaces={6}
           />
           <Styled(View) />
-        </React.Fragment>
+        </View>
       }
       ListHeaderComponentStyle={
         {
@@ -314,39 +322,43 @@ exports[`GenericHome With not displayed skeleton by default should display skele
             }
           }
         >
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Black",
-                  "fontSize": 26,
-                  "lineHeight": 34,
-                },
-              ]
-            }
+          <View
+            testID="listHeader"
           >
-            Header
-          </Text>
-          <View
-            numberOfSpaces={6}
-            style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "marginHorizontal": 24,
-                },
-              ]
-            }
-          />
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Black",
+                    "fontSize": 26,
+                    "lineHeight": 34,
+                  },
+                ]
+              }
+            >
+              Header
+            </Text>
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "marginHorizontal": 24,
+                  },
+                ]
+              }
+            />
+          </View>
         </View>
         <View
           onFocusCapture={[Function]}

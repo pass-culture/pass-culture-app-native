@@ -401,10 +401,6 @@ export const isVideoCarouselModule = (module: HomepageModule): module is VideoCa
   return module.type === HomepageModuleType.VideoCarouselModule
 }
 
-export const isNotVideoCarouselModule = (module: HomepageModule): module is HomepageModule => {
-  return module.type !== HomepageModuleType.VideoCarouselModule
-}
-
 export const isOneOfVenuesModule = (
   module: HomepageModule
 ): module is VenuesModule | AppV2VenuesModule => {
