@@ -16,10 +16,10 @@ type Props = {
   selectedDate: Date | undefined
   onTabChange: (date: Date) => void
   flatListRef: React.MutableRefObject<FlatList | null>
-  flatListWidth: number
-  onFlatListLayout: (event: LayoutChangeEvent) => void
-  itemWidth: number
-  onItemLayout: (event: LayoutChangeEvent) => void
+  flatListWidth?: number
+  onFlatListLayout?: (event: LayoutChangeEvent) => void
+  itemWidth?: number
+  onItemLayout?: (event: LayoutChangeEvent) => void
 }
 
 export const MOVIE_CALENDAR_PADDING = getSpacing(6)
@@ -47,6 +47,7 @@ export const MovieCalendar: React.FC<Props> = ({
 
   const scrollToMiddleElement = useCallback(
     (currentIndex: number) => {
+      if (!flatListWidth || !itemWidth) return
       const { offset } = handleMovieCalendarScroll(currentIndex, flatListWidth, itemWidth)
 
       flatListRef.current?.scrollToOffset({
