@@ -93,6 +93,24 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const venuesUserData = data?.pages?.[0]?.venues?.userData
   const facets = data?.pages?.[0]?.facets.facets as FacetData
 
+  const offerVenues = useMemo(() => {
+    const venueMap = new Map()
+    hits.offers.forEach((hit) => {
+      if (hit.venue) {
+        const { id, name, address, city, ...restVenue } = hit.venue
+        const venue = {
+          venueId: id,
+          label: name,
+          info: `${address}, ${city}`,
+          ...restVenue,
+          _geoloc: hit._geoloc,
+        }
+        venueMap.set(id, venue)
+      }
+    })
+    return Array.from(venueMap.values())
+  }, [hits.offers])
+
   return {
     data,
     hits,
@@ -100,6 +118,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     userData,
     venuesUserData,
     facets,
+    offerVenues,
     ...infiniteQuery,
   }
 }

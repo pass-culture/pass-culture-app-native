@@ -5,6 +5,9 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
+import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
+import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
+import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -67,10 +70,30 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
+const mockSetInitialVenues = jest.fn()
+jest.mock('features/venueMap/store/initialVenuesStore', () => ({
+  useInitialVenuesActions: () => ({ setInitialVenues: mockSetInitialVenues }),
+  useInitialVenues: jest.fn(),
+}))
+
+jest.mock('features/venueMap/useGetAllVenues')
+const mockUseGetAllVenues = useGetAllVenues as jest.Mock
+
+jest.mock('features/venueMap/hook/useCenterOnLocation')
+const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
+
+jest.mock('features/venue/api/useVenueOffers')
+jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
+
 describe('<SearchResults/>', () => {
   describe('Accessibility', () => {
     beforeEach(() => {
       mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+    })
+
+    beforeAll(() => {
+      mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
+      mockUseCenterOnLocation.mockReturnValue(jest.fn())
     })
 
     it('should not have basic accessibility issues', async () => {

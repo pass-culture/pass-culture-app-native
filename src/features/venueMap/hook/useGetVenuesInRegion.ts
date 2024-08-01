@@ -14,7 +14,6 @@ export const useGetVenuesInRegion = (
 ): GeolocatedVenue[] => {
   const radius = calculateRoundRadiusInKilometers(region)
   const { venues = [] } = useGetAllVenues({ region, radius, initialVenues })
-
   // We want to add the selected venue to the list of venues if it's not already there
   // but it can only happen if the venues change
   // eslint-disable-next-line react-hooks/exhaustive-deps

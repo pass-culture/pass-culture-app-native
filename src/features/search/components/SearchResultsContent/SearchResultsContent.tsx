@@ -32,6 +32,7 @@ import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
+import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -80,7 +81,9 @@ export const SearchResultsContent: React.FC = () => {
     userData,
     venuesUserData,
     facets,
+    offerVenues,
   } = useSearchResults()
+
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
@@ -272,6 +275,25 @@ export const SearchResultsContent: React.FC = () => {
     hideVenueMapLocationModal()
   }
 
+  const transformedVenues = useMemo(() => {
+    if (hits.venues && hits.venues.length > 0) {
+      return hits.venues
+    } else {
+      return offerVenues
+    }
+  }, [hits.venues, offerVenues])
+
+  const {
+    selectedVenue,
+    venueTypeCode,
+    setSelectedVenue,
+    removeSelectedVenue,
+    currentRegion,
+    setCurrentRegion,
+    setLastRegionSearched,
+    venuesMap,
+  } = useVenuesMapData(transformedVenues)
+
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
   const numberOfResults =
@@ -311,7 +333,18 @@ export const SearchResultsContent: React.FC = () => {
     ),
     [Tab.MAP]:
       selectedLocationMode === LocationMode.EVERYWHERE ? null : (
-        <VenueMapView height={venueMapHeight} from="searchResults" />
+        <VenueMapView
+          height={venueMapHeight}
+          from="searchResults"
+          venues={venuesMap}
+          selectedVenue={selectedVenue}
+          venueTypeCode={venueTypeCode}
+          setSelectedVenue={setSelectedVenue}
+          removeSelectedVenue={removeSelectedVenue}
+          currentRegion={currentRegion}
+          setCurrentRegion={setCurrentRegion}
+          setLastRegionSearched={setLastRegionSearched}
+        />
       ),
   }
 
