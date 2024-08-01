@@ -30,6 +30,7 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
     }
 
     if (step === Step.HOUR && hasPricesStep) {
+      analytics.logHasChosenTime()
       dispatch({ type: 'RESET_STOCK' })
       return dispatch({ type: 'CHANGE_STEP', payload: Step.PRICE })
     }
@@ -37,6 +38,7 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
     if (step === Step.PRICE) analytics.logHasChosenPrice()
 
     if (isDuo && ((step === Step.HOUR && !hasPricesStep) || step === Step.PRICE)) {
+      if (step === Step.HOUR) analytics.logHasChosenTime()
       return dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
     }
 

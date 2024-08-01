@@ -354,6 +354,7 @@ export const logEventAnalytics = {
     reason: 'changePassword' | 'resetPassword'
   }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PASSWORD }, { from, reason }),
   logHasChosenPrice: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_PRICE }),
+  logHasChosenTime: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_TIME }),
   logHasClickedDuoStep: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_DUO_STEP }),
   logHasClickedMissingCode: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_MISSING_CODE }),

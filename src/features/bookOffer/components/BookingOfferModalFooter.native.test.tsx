@@ -319,7 +319,7 @@ describe('BookingOfferModalFooter', () => {
           stockId: 1,
           offerId: 1,
           step: Step.PRICE,
-          quantity: 1,
+          quantity: 2,
           date: new Date('01/02/2021'),
           hour: '2023-04-01T18:00:00Z',
         },
@@ -333,6 +333,50 @@ describe('BookingOfferModalFooter', () => {
       fireEvent.press(submitButton)
 
       expect(analytics.logHasChosenPrice).toHaveBeenCalledTimes(1)
+    })
+
+    it('should log hasChosenTime event when user submits an hour and there is PricesStep', async () => {
+      mockUseBookingContext.mockReturnValueOnce({
+        bookingState: {
+          stockId: 1,
+          offerId: 1,
+          step: Step.HOUR,
+          quantity: 2,
+          date: new Date('01/02/2021'),
+          hour: '2023-04-01T18:00:00Z',
+        },
+        dispatch: mockDispatch,
+        dismissModal: jest.fn(),
+      })
+
+      render(<BookingOfferModalFooter hasPricesStep />)
+
+      const submitButton = await screen.findByText(`Valider lʼhoraire`)
+      fireEvent.press(submitButton)
+
+      expect(analytics.logHasChosenTime).toHaveBeenCalledTimes(1)
+    })
+
+    it("should log hasChosenTime event when user submits an hour and offer isDuo and doesn't have price step", async () => {
+      mockUseBookingContext.mockReturnValueOnce({
+        bookingState: {
+          stockId: 1,
+          offerId: 1,
+          step: Step.HOUR,
+          quantity: 2,
+          date: new Date('01/02/2021'),
+          hour: '2023-04-01T18:00:00Z',
+        },
+        dispatch: mockDispatch,
+        dismissModal: jest.fn(),
+      })
+
+      render(<BookingOfferModalFooter isDuo />)
+
+      const submitButton = await screen.findByText(`Valider lʼhoraire`)
+      fireEvent.press(submitButton)
+
+      expect(analytics.logHasChosenTime).toHaveBeenCalledTimes(1)
     })
 
     it('should log hasClickedDuoStep event when user submits solo or duo option', async () => {
