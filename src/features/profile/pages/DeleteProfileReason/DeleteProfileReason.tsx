@@ -1,6 +1,6 @@
 import colorAlpha from 'color-alpha'
 import React, { useRef } from 'react'
-import { FlatList, ViewStyle } from 'react-native'
+import { FlatList, Platform, ViewStyle } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -14,13 +14,14 @@ import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
-import { Li } from 'ui/components/Li'
 import { BicolorSadFace } from 'ui/svg/icons/BicolorSadFace'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const GRADIENT_HEIGHT = getSpacing(30)
 const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
+
+const isWeb = Platform.OS === 'web'
 
 type ReasonButton = {
   wording: string
@@ -66,50 +67,53 @@ export function DeleteProfileReason() {
   return (
     <React.Fragment>
       <PageHeaderWithoutPlaceholder />
-      <Content>
-        <FlatList
-          listAs="ul"
-          onViewableItemsChanged={onViewableItemsChanged}
-          viewabilityConfig={VIEWABILITY_CONFIG}
-          ListHeaderComponent={
-            <HeaderContainer>
-              <HeaderHeightSpacer headerHeight={headerHeight} />
-              <StyledIcon />
-              <TitlesContainer>
-                <Typo.Title3 {...getHeadingAttrs(1)}>
-                  Pourquoi souhaites-tu supprimer ton compte&nbsp;?
-                </Typo.Title3>
-                <Typo.Body>
-                  Triste de te voir partir&nbsp;! Dis-nous pourquoi pour nous aider à améliorer
-                  l’application.
-                </Typo.Body>
-              </TitlesContainer>
-            </HeaderContainer>
-          }
-          ListFooterComponent={
-            <React.Fragment>
-              <Spacer.BottomScreen />
-            </React.Fragment>
-          }
-          contentContainerStyle={flatListStyles}
-          data={reasonButtons}
-          renderItem={({ item }) => {
-            const { wording, navigateTo } = item
-            return (
-              <Li>
-                <ReasonButton navigateTo={{ screen: navigateTo }} accessibilityLabel={wording}>
-                  <Typo.ButtonText>{wording}</Typo.ButtonText>
-                </ReasonButton>
-              </Li>
-            )
-          }}
-        />
-        <Gradient ref={gradientRef} bottomViewHeight={0} />
-      </Content>
+      <FlatList
+        listAs="ul"
+        itemAs="li"
+        onViewableItemsChanged={isWeb ? null : onViewableItemsChanged}
+        viewabilityConfig={VIEWABILITY_CONFIG}
+        ListHeaderComponent={
+          <HeaderContainer>
+            <HeaderHeightSpacer headerHeight={headerHeight} />
+            <StyledIcon />
+            <TitlesContainer>
+              <Typo.Title3 {...getHeadingAttrs(1)}>
+                Pourquoi souhaites-tu supprimer ton compte&nbsp;?
+              </Typo.Title3>
+              <Typo.Body>
+                Triste de te voir partir&nbsp;! Dis-nous pourquoi pour nous aider à améliorer
+                l’application.
+              </Typo.Body>
+            </TitlesContainer>
+          </HeaderContainer>
+        }
+        ListFooterComponent={
+          <React.Fragment>
+            <Spacer.BottomScreen />
+          </React.Fragment>
+        }
+        contentContainerStyle={flatListStyles}
+        data={reasonButtons}
+        renderItem={({ item }) => {
+          const { wording, navigateTo } = item
+          return (
+            <ItemContainer>
+              <ReasonButton navigateTo={{ screen: navigateTo }} accessibilityLabel={wording}>
+                <Typo.ButtonText>{wording}</Typo.ButtonText>
+              </ReasonButton>
+            </ItemContainer>
+          )
+        }}
+      />
+      <Gradient ref={gradientRef} bottomViewHeight={isWeb ? 0 : 0} />
       <BlurHeader height={headerHeight} />
     </React.Fragment>
   )
 }
+
+const ItemContainer = styled.View(() => ({
+  paddingBottom: isWeb ? getSpacing(4) : 0,
+}))
 
 const HeaderHeightSpacer = styled.View.attrs<{ headerHeight: number }>({})<{
   headerHeight: number
@@ -140,12 +144,6 @@ const flatListStyles: ViewStyle = {
 const StyledIcon = styled(BicolorSadFace).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.medium,
 }))({ width: '100%' })
-
-const Content = styled.View({
-  marginTop: getSpacing(2),
-  flex: 1,
-  alignContent: 'center',
-})
 
 const AnimatedGradient = createAnimatableComponent(LinearGradient)
 const Gradient = styled(AnimatedGradient).attrs<{ bottomViewHeight: number }>(({ theme }) => ({
