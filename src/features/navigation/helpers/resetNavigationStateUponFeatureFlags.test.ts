@@ -1,6 +1,6 @@
 import { NavigationState } from '@react-navigation/native'
 
-import { resetNavigationStateUponFeatureFlags } from 'features/navigation/helpers/navigationStateUtils'
+import { resetNavigationStateUponFeatureFlags } from 'features/navigation/helpers/resetNavigationStateUponFeatureFlags'
 import { FeatureFlagDocument } from 'libs/firebase/firestore/featureFlags/types'
 
 describe('navigationStateUtils', () => {

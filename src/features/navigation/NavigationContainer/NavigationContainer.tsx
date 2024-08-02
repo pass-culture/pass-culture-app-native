@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react'
 import { Platform } from 'react-native'
 import { DefaultTheme, useTheme } from 'styled-components/native'
 
-import { resetNavigationStateUponFeatureFlags } from 'features/navigation/helpers/navigationStateUtils'
+import { resetNavigationStateUponFeatureFlags } from 'features/navigation/helpers/resetNavigationStateUponFeatureFlags'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
 import { useAllFeatureFlagsQuery } from 'libs/firebase/firestore/featureFlags/useAllFeatureFlagsQuery'
@@ -37,10 +37,14 @@ const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
 export const AppNavigationContainer = () => {
   const { hideSplashScreen } = useSplashScreenContext()
   const theme = useTheme()
+  const isNotWeb = Platform.OS !== 'web'
 
   const [isNavReady, setIsNavReady] = useState(false)
   const [initialNavigationState, setInitialNavigationState] = useState<NavigationState>()
-  const { data: featureFlagDocument, isFetched } = useAllFeatureFlagsQuery()
+  const { data: featureFlagDocument, isSuccess, isError } = useAllFeatureFlagsQuery()
+
+  // Fetch all feature flags at start where in web
+  const featureFlagsReady = isNotWeb || isSuccess || isError
 
   useEffect(() => {
     async function restoreNavStateOnReload() {
@@ -60,24 +64,21 @@ export const AppNavigationContainer = () => {
   }, [])
 
   useEffect(() => {
-    if (isFetched && isNavReady) {
+    if (featureFlagsReady && isNavReady) {
       hideSplashScreen?.()
     }
-  }, [isNavReady, hideSplashScreen, isFetched])
+  }, [isNavReady, hideSplashScreen, featureFlagsReady])
 
   const handleNavigationStateChange = async (state?: NavigationState) => {
-    let newState = state
-    try {
-      newState = await resetNavigationStateUponFeatureFlags(state, featureFlagDocument)
-      if (newState !== state) {
-        navigationRef.resetRoot(newState)
-      }
-    } finally {
-      onNavigationStateChange(newState)
+    const newState = await resetNavigationStateUponFeatureFlags(state, featureFlagDocument)
+    if (newState !== state) {
+      navigationRef.resetRoot(newState)
     }
+
+    onNavigationStateChange(newState)
   }
 
-  if (!isNavReady || !isFetched) {
+  if (!isNavReady || !featureFlagsReady) {
     return <LoadingPage />
   }
   return (

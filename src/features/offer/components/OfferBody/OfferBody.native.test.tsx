@@ -19,7 +19,7 @@ import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -486,21 +486,56 @@ describe('<OfferBody />', () => {
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       extraData: { author: 'Stephen King' },
     }
-    // eslint-disable-next-line local-rules/independent-mocks
-    mockUseFeatureFlag.mockReturnValue(true)
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+    mockUseFeatureFlag.mockReturnValueOnce(true)
 
     renderOfferBody({
       offer,
       subcategory: mockSubcategoryBook,
     })
 
-    await screen.findByText('Stephen King')
-    fireEvent.press(screen.getByText('Stephen King'))
+    fireEvent.press(await screen.findByText('Stephen King'))
 
-    expect(mockNavigate).toHaveBeenCalledWith(
-      'Artist',
-      expect.objectContaining({ id: expect.anything() })
-    )
+    expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: offerResponseSnap.id })
+  })
+
+  it('should not redirect to artist page when FF is disabled', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      extraData: { author: 'Stephen King', ean: '123456' },
+    }
+
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+    mockUseFeatureFlag.mockReturnValueOnce(false)
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
+    })
+
+    fireEvent.press(await screen.findByText('Stephen King'))
+
+    expect(mockNavigate).not.toHaveBeenCalled()
+  })
+
+  it('should display artist fakedoor if FF enabled and category is CINEMA or CD', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+      extraData: { stageDirector: 'Stephen King' },
+    }
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategory,
+    })
+
+    fireEvent.press(await screen.findByText('Stephen King'))
+
+    await waitFor(() => expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen())
   })
 })
 

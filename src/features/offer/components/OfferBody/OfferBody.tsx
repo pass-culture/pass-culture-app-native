@@ -54,7 +54,7 @@ const DEFAULT_SURVEY_MODAL_DATA = {
 }
 
 const ARTIST_SURVEY_MODAL_DATA = {
-  title: 'Encore un peu de patience',
+  title: 'Encore un peu de patience…',
   description:
     'Ce contenu n’est pas encore disponible.\n\nAide-nous à le mettre en place en répondant au questionnaire.',
   surveyURL: 'https://passculture.qualtrics.com/jfe/form/SV_6xRze4sgvlbHNd4',
@@ -118,7 +118,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       analytics.logConsultArtistFakeDoor()
       showModal()
     } else {
-      navigate('Artist', { id: offer.extraData?.ean ?? '' })
+      navigate('Artist', { id: offer.id })
     }
   }
 

@@ -1,4 +1,4 @@
-import { isFeatureFlagEnabled } from 'libs/firebase/firestore/featureFlags/featureFlagUtils'
+import { isFeatureFlagEnabled } from 'libs/firebase/firestore/featureFlags/isFeatureFlagEnabled'
 import { FeatureFlagConfig } from 'libs/firebase/firestore/featureFlags/types'
 import { useAllFeatureFlagsQuery } from 'libs/firebase/firestore/featureFlags/useAllFeatureFlagsQuery'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -16,22 +16,23 @@ export const useFeatureFlag = (featureFlag: RemoteStoreFeatureFlags): boolean =>
 
   const featureFlagConfig = docSnapshot.get<FeatureFlagConfig>(featureFlag) ?? {}
 
-  try {
-    return isFeatureFlagEnabled(featureFlagConfig)
-  } catch (error) {
-    if (logType === LogTypeEnum.INFO) {
-      const { minimalBuildNumber, maximalBuildNumber } = featureFlagConfig
-      eventMonitoring.captureException(
-        `Minimal build number is greater than maximal build number for feature flag ${featureFlag}`,
-        {
-          level: logType,
-          extra: {
-            minimalBuildNumber,
-            maximalBuildNumber,
-          },
-        }
-      )
-    }
-    return false
+  const { minimalBuildNumber, maximalBuildNumber } = featureFlagConfig
+  if (
+    !!(minimalBuildNumber && maximalBuildNumber) &&
+    minimalBuildNumber > maximalBuildNumber &&
+    logType === LogTypeEnum.INFO
+  ) {
+    eventMonitoring.captureException(
+      `Minimal build number is greater than maximal build number for feature flag ${featureFlag}`,
+      {
+        level: logType,
+        extra: {
+          minimalBuildNumber,
+          maximalBuildNumber,
+        },
+      }
+    )
   }
+
+  return isFeatureFlagEnabled(featureFlagConfig)
 }

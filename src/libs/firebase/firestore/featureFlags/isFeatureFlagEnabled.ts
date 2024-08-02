@@ -5,15 +5,9 @@ const appBuildVersion = getAppBuildVersion()
 
 export const isFeatureFlagEnabled = (featureFlagConfig: FeatureFlagConfig = {}) => {
   const { minimalBuildNumber, maximalBuildNumber } = featureFlagConfig
-  if (minimalBuildNumber === undefined && maximalBuildNumber === undefined) return false
 
-  if (!!(minimalBuildNumber && maximalBuildNumber) && minimalBuildNumber > maximalBuildNumber) {
-    throw new Error('BUILD_NUMBERS_ERROR', {
-      cause: {
-        minimalBuildNumber,
-        maximalBuildNumber,
-      },
-    })
+  if (minimalBuildNumber === undefined && maximalBuildNumber === undefined) {
+    return false
   }
 
   return (
