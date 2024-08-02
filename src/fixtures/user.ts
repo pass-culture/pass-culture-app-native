@@ -1,6 +1,7 @@
 import { format } from 'date-fns'
 
 import {
+  ActivityIdEnum,
   DepositType,
   EligibilityType,
   UserProfileResponse,
@@ -52,6 +53,7 @@ export const beneficiaryUser: UserProfileResponse = {
   birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
   city: 'Paris',
   postalCode: '75001',
+  activityId: ActivityIdEnum.STUDENT,
 }
 
 export const underageBeneficiaryUser: UserProfileResponse = {
