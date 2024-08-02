@@ -703,6 +703,8 @@ export const logEventAnalytics = {
     newCity: string
     newPostalCode: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.UPDATE_POSTAL_CODE }, params),
+  logUpdateStatus: (params: { oldStatus: string; newStatus: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.UPDATE_STATUS }, params),
   logUserSetLocation: (from: 'home' | 'search' | 'venueMap') =>
     analytics.logEvent({ firebase: AnalyticsEvent.USER_SET_LOCATION }, { from }),
   logUserSetVenue: ({ venueLabel }: { venueLabel: string }) =>
