@@ -98,29 +98,37 @@ export function PersonalData() {
         </React.Fragment>
       ) : null}
 
-      <Typo.CaptionNeutralInfo>Statut</Typo.CaptionNeutralInfo>
-      <Spacer.Column numberOfSpaces={2} />
-      <EditContainer>
-        <EditText>{user?.activityId && ACTIVITIES[user.activityId]}</EditText>
-        <EditButton
-          navigateTo={{ screen: 'ChangeStatus' }}
-          wording="Modifier"
-          accessibilityLabel="Modifier le statut"
-        />
-      </EditContainer>
-      <StyledSeparator />
+      {user?.isBeneficiary ? (
+        <React.Fragment>
+          <Typo.CaptionNeutralInfo>Statut</Typo.CaptionNeutralInfo>
+          <Spacer.Column numberOfSpaces={2} />
+          <EditContainer>
+            <EditText>{user?.activityId && ACTIVITIES[user.activityId]}</EditText>
+            <EditButton
+              navigateTo={{ screen: 'ChangeStatus' }}
+              wording="Modifier"
+              accessibilityLabel="Modifier le statut"
+            />
+          </EditContainer>
+          <StyledSeparator />
+        </React.Fragment>
+      ) : null}
 
-      <Typo.CaptionNeutralInfo>Ville de résidence</Typo.CaptionNeutralInfo>
-      <Spacer.Column numberOfSpaces={2} />
-      <EditContainer>
-        <EditText numberOfLines={2}>{city}</EditText>
-        <EditButton
-          navigateTo={{ screen: 'ChangeCity' }}
-          wording="Modifier"
-          accessibilityLabel="Modifier la ville de résidence"
-        />
-      </EditContainer>
-      <StyledSeparator />
+      {user?.isBeneficiary ? (
+        <React.Fragment>
+          <Typo.CaptionNeutralInfo>Ville de résidence</Typo.CaptionNeutralInfo>
+          <Spacer.Column numberOfSpaces={2} />
+          <EditContainer>
+            <EditText numberOfLines={2}>{city}</EditText>
+            <EditButton
+              navigateTo={{ screen: 'ChangeCity' }}
+              wording="Modifier"
+              accessibilityLabel="Modifier la ville de résidence"
+            />
+          </EditContainer>
+          <StyledSeparator />
+        </React.Fragment>
+      ) : null}
 
       <InfoBanner message="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.">
         <Spacer.Column numberOfSpaces={3} />
