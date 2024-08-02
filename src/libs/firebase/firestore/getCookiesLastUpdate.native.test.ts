@@ -23,8 +23,8 @@ describe('[method] getCookiesLastUpdate', () => {
       })
   )
 
-  it('should call the right path: cookiesLastUpdate', () => {
-    getCookiesLastUpdate()
+  it('should call the right path: cookiesLastUpdate', async () => {
+    await getCookiesLastUpdate()
 
     expect(collection).toHaveBeenCalledWith('cookiesLastUpdate')
   })

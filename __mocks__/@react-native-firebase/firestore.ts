@@ -10,4 +10,6 @@ const collection = jest.fn().mockReturnValue({ doc })
 
 export default () => ({
   collection,
+  disableNetwork: jest.fn(),
+  enableNetwork: jest.fn(),
 })

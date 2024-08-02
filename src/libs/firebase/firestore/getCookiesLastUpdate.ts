@@ -1,17 +1,32 @@
+// eslint-disable-next-line no-restricted-imports
+import { fetch } from '@react-native-community/netinfo'
+
 import { env } from 'libs/environment'
 import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
 import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
 import { captureMonitoringError } from 'libs/monitoring'
 
-export const getCookiesLastUpdate = (): Promise<
+export const getCookiesLastUpdate = async (): Promise<
   | void
   | {
       lastUpdated: Date
       lastUpdateBuildVersion: number
     }
   | undefined
-> =>
-  firestoreRemoteStore
+> => {
+  const networkStatus = await fetch()
+  if (networkStatus.isInternetReachable) {
+    await firestoreRemoteStore.enableNetwork()
+  } else {
+    /**
+     * While the network is disabled, any snapshot listeners or get() calls
+     * will return results from cache, and any write operations will be queued
+     * until the network is restored.
+     */
+    await firestoreRemoteStore.disableNetwork()
+  }
+
+  return firestoreRemoteStore
     .collection(RemoteStoreCollections.COOKIES_LAST_UPDATE)
     .doc(env.ENV)
     .get()
@@ -30,3 +45,4 @@ export const getCookiesLastUpdate = (): Promise<
     .catch((error) => {
       captureMonitoringError(error.message, 'firestore_not_available')
     })
+}
