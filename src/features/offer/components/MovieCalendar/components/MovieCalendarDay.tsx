@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
@@ -12,9 +12,15 @@ type Props = {
   date: Date
   onTabChange: (date: Date) => void
   selectedDate?: Date
+  onLayout?: ViewProps['onLayout']
 }
 
-export const MovieCalendarDay: React.FC<Props> = ({ date, selectedDate, onTabChange }) => {
+export const MovieCalendarDay: React.FC<Props> = ({
+  date,
+  selectedDate,
+  onTabChange,
+  onLayout,
+}) => {
   const { weekDay, dayDate, month, accessibilityLabel, isSelected } = useMovieCalendarDay(
     date,
     selectedDate
@@ -22,7 +28,7 @@ export const MovieCalendarDay: React.FC<Props> = ({ date, selectedDate, onTabCha
   const { CalendarText } = StatusPattern[isSelected ? 'selected' : 'default']
 
   return (
-    <CalendarCell testID="movie-calendar-day" onPress={() => onTabChange(date)}>
+    <CalendarCell onLayout={onLayout} testID="movie-calendar-day" onPress={() => onTabChange(date)}>
       <CalendarTextView accessibilityLabel={accessibilityLabel}>
         <CalendarText numberOfLines={1}>{weekDay}</CalendarText>
         <CalendarText numberOfLines={1}>{dayDate}</CalendarText>

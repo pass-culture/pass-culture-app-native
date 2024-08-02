@@ -1,10 +1,12 @@
-import React from 'react'
-import { FlatList, View } from 'react-native'
+import { differenceInCalendarDays } from 'date-fns'
+import React, { useCallback } from 'react'
+import { FlatList, LayoutChangeEvent, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/components/MovieCalendarDay'
+import { handleMovieCalendarScroll } from 'features/offer/components/MoviesScreeningCalendar/utils'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 import { getSpacing } from 'ui/theme'
@@ -14,13 +16,23 @@ type Props = {
   selectedDate: Date | undefined
   onTabChange: (date: Date) => void
   flatListRef: React.MutableRefObject<FlatList | null>
+  flatListWidth?: number
+  onFlatListLayout?: (event: LayoutChangeEvent) => void
+  itemWidth?: number
+  onItemLayout?: (event: LayoutChangeEvent) => void
 }
+
+export const MOVIE_CALENDAR_PADDING = getSpacing(6)
 
 export const MovieCalendar: React.FC<Props> = ({
   dates,
   selectedDate,
   onTabChange,
   flatListRef,
+  flatListWidth,
+  onFlatListLayout,
+  itemWidth,
+  onItemLayout,
 }) => {
   const { isDesktopViewport } = useTheme()
   const {
@@ -32,6 +44,29 @@ export const MovieCalendar: React.FC<Props> = ({
     isEnd,
     isStart,
   } = useHorizontalFlatListScroll({ ref: flatListRef, isActive: isDesktopViewport })
+
+  const scrollToMiddleElement = useCallback(
+    (currentIndex: number) => {
+      if (!flatListWidth || !itemWidth) return
+      const { offset } = handleMovieCalendarScroll(currentIndex, flatListWidth, itemWidth)
+
+      flatListRef.current?.scrollToOffset({
+        animated: true,
+        offset,
+      })
+    },
+    [flatListRef, flatListWidth, itemWidth]
+  )
+
+  const onInternalTabChange = useCallback(
+    (date: Date) => {
+      const currentIndex = differenceInCalendarDays(date, new Date())
+      onTabChange(date)
+      scrollToMiddleElement(currentIndex)
+    },
+    [onTabChange, scrollToMiddleElement]
+  )
+
   return (
     <View onLayout={onContainerLayout}>
       <MovieCalendarBottomBar />
@@ -44,6 +79,7 @@ export const MovieCalendar: React.FC<Props> = ({
       ) : null}
       <View>
         <FlatList
+          onLayout={onFlatListLayout}
           ref={flatListRef}
           data={dates}
           horizontal
@@ -53,7 +89,12 @@ export const MovieCalendar: React.FC<Props> = ({
           onContentSizeChange={onContentSizeChange}
           testID="movie-calendar-flat-list"
           renderItem={({ item: date }) => (
-            <MovieCalendarDay date={date} selectedDate={selectedDate} onTabChange={onTabChange} />
+            <MovieCalendarDay
+              onLayout={onItemLayout}
+              date={date}
+              selectedDate={selectedDate}
+              onTabChange={onInternalTabChange}
+            />
           )}
         />
         {isDesktopViewport ? (
@@ -74,7 +115,7 @@ export const MovieCalendar: React.FC<Props> = ({
 }
 
 const flatListContainer = {
-  paddingHorizontal: getSpacing(6),
+  paddingHorizontal: MOVIE_CALENDAR_PADDING,
 }
 
 const FadeComponent = styled(LinearGradient)`
