@@ -147,16 +147,13 @@ describe('<MovieCalendar/>', () => {
       mockDate.set(dummyDates[0])
     })
 
-    it('should scroll to the middle element when an item is clicked', () => {
+    it('should scroll to the middle element when an item is clicked', async () => {
       const itemIndex = 5
       renderMovieCalendar(dummyDates, { isDesktopViewport: false }, mockFlatListRef)
       mockFlatListRef.current.scrollToOffset = jest.fn()
 
-      const firstDateItem = screen.getAllByText('Mar.')[0]
-
-      if (firstDateItem) {
-        fireEvent.press(firstDateItem)
-      }
+      const firstDateItem = await screen.findByLabelText('Mardi 23 Juillet')
+      fireEvent.press(firstDateItem)
 
       expect(mockOnTabChange).toHaveBeenCalledWith(dummyDates[itemIndex])
       expect(mockFlatListRef.current.scrollToOffset).toHaveBeenCalledWith({
@@ -165,16 +162,13 @@ describe('<MovieCalendar/>', () => {
       })
     })
 
-    it('should scroll to the start when the offset is less than 0', () => {
+    it('should scroll to the start when the offset is less than 0', async () => {
       const itemIndex = 1
       renderMovieCalendar(dummyDates, { isDesktopViewport: false }, mockFlatListRef)
       mockFlatListRef.current.scrollToOffset = jest.fn()
 
-      const firstDateItem = screen.getAllByText('Ven.')[0]
-
-      if (firstDateItem) {
-        fireEvent.press(firstDateItem)
-      }
+      const firstDateItem = await screen.findByLabelText('Vendredi 19 Juillet')
+      fireEvent.press(firstDateItem)
 
       expect(mockOnTabChange).toHaveBeenCalledWith(dummyDates[itemIndex])
       expect(mockFlatListRef.current.scrollToOffset).toHaveBeenCalledWith({
