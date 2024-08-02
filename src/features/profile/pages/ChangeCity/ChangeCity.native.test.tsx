@@ -5,6 +5,7 @@ import * as API from 'api/api'
 import { UserProfileResponse } from 'api/gen'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { beneficiaryUser } from 'fixtures/user'
+import { analytics } from 'libs/analytics'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -15,6 +16,7 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
+jest.mock('libs/firebase/analytics/analytics')
 mockAuthContextWithUser(beneficiaryUser)
 
 const patchProfileSpy = jest.spyOn(API.api, 'patchNativeV1Profile')
@@ -27,6 +29,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showErrorSnackBar: mockShowErrorSnackBar,
   }),
 }))
+jest.mock('libs/firebase/analytics/analytics')
 
 const POSTAL_CODE = '83570'
 
@@ -115,6 +118,34 @@ describe('<SetCity/>', () => {
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Ta ville de résidence a bien été modifiée\u00a0!',
       timeout: SNACK_BAR_TIME_OUT,
+    })
+  })
+
+  it('should send analytics when success', async () => {
+    const city = mockedSuggestedCities[0]
+    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
+    mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
+
+    render(reactQueryProviderHOC(<ChangeCity />))
+
+    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    await act(async () => {
+      fireEvent.changeText(input, POSTAL_CODE)
+    })
+
+    await screen.findByText(city.nom)
+    await act(async () => {
+      fireEvent.press(screen.getByText(city.nom))
+    })
+    await act(async () => {
+      fireEvent.press(screen.getByText('Valider ma ville de résidence'))
+    })
+
+    expect(analytics.logUpdatePostalCode).toHaveBeenCalledWith({
+      oldPostalCode: beneficiaryUser.postalCode,
+      oldCity: beneficiaryUser.city,
+      newPostalCode: POSTAL_CODE,
+      newCity: city.nom,
     })
   })
 

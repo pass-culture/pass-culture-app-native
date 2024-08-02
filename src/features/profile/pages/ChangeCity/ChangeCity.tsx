@@ -3,18 +3,21 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
 import { useCity, useCityActions } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ChangeCity = () => {
+  const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const storedCity = useCity()
@@ -29,7 +32,13 @@ export const ChangeCity = () => {
     defaultValues: { city: storedCity ?? undefined },
   })
   const { mutate: updateProfile } = useUpdateProfileMutation(
-    () => {
+    (_, variables) => {
+      analytics.logUpdatePostalCode({
+        newCity: variables.city ?? '',
+        oldCity: user?.city ?? '',
+        newPostalCode: variables.postalCode ?? '',
+        oldPostalCode: user?.postalCode ?? '',
+      })
       showSuccessSnackBar({
         message: 'Ta ville de résidence a bien été modifiée\u00a0!',
         timeout: SNACK_BAR_TIME_OUT,

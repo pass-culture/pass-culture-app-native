@@ -697,6 +697,12 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.TRENDS_BLOCK_CLICKED }, params),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
+  logUpdatePostalCode: (params: {
+    oldCity: string
+    oldPostalCode: string
+    newCity: string
+    newPostalCode: string
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.UPDATE_POSTAL_CODE }, params),
   logUserSetLocation: (from: 'home' | 'search' | 'venueMap') =>
     analytics.logEvent({ firebase: AnalyticsEvent.USER_SET_LOCATION }, { from }),
   logUserSetVenue: ({ venueLabel }: { venueLabel: string }) =>

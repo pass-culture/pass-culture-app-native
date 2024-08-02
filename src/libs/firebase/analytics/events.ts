@@ -160,6 +160,7 @@ export enum AnalyticsEvent {
   SYSTEM_BLOCK_DISPLAYED = 'SystemBlockDisplayed',
   TRENDS_BLOCK_CLICKED = 'TrendsBlockClicked',
   TRY_SELECT_DEPOSIT = 'TrySelectDeposit',
+  UPDATE_POSTAL_CODE = 'UpdatePostalCode',
   USE_FILTER = 'UseFilter',
   USER_SET_LOCATION = 'UserSetLocation',
   USER_SET_VENUE = 'UserSetVenue',
