@@ -1,7 +1,7 @@
 import React, { ForwardedRef } from 'react'
 import YouTubePlayer, { PLAYER_STATES, YoutubeIframeRef } from 'react-native-youtube-iframe'
 
-
+export { PLAYER_STATES } from 'react-native-youtube-iframe'
 
 let mockState = PLAYER_STATES.UNSTARTED
 let mockError = false

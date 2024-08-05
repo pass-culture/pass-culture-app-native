@@ -1,7 +1,6 @@
 import React from 'react'
-import { PLAYER_STATES } from 'react-native-youtube-iframe'
 
-import MockedYouTubePlayer from '__mocks__/react-native-youtube-iframe'
+import MockedYouTubePlayer, { PLAYER_STATES } from '__mocks__/react-native-youtube-iframe'
 import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'

@@ -1,14 +1,13 @@
 import React from 'react'
-import { PLAYER_STATES } from 'react-native-youtube-iframe'
 
-import MockedYouTubePlayer from '__mocks__/react-native-youtube-iframe'
+import MockedYouTubePlayer, { PLAYER_STATES } from '__mocks__/react-native-youtube-iframe'
+import { VerticalVideoPlayerProps } from 'features/home/components/modules/video/useVerticalVideoPlayer'
 import {
   VerticalVideoPlayer,
-  VideoPlayerButtonsWording,  
+  VideoPlayerButtonsWording,
 } from 'features/home/components/modules/video/VerticalVideoPlayer'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { fireEvent, render, screen } from 'tests/utils'
-import { VerticalVideoPlayerProps } from 'features/home/components/modules/video/useVerticalVideoPlayer'
 
 jest.mock('libs/firebase/analytics/analytics')
 
