@@ -8,10 +8,8 @@ import React, { useEffect, useState } from 'react'
 import { Platform } from 'react-native'
 import { DefaultTheme, useTheme } from 'styled-components/native'
 
-import { resetNavigationStateUponFeatureFlags } from 'features/navigation/helpers/resetNavigationStateUponFeatureFlags'
 import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
-import { useAllFeatureFlagsQuery } from 'libs/firebase/firestore/featureFlags/useAllFeatureFlagsQuery'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -37,14 +35,9 @@ const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
 export const AppNavigationContainer = () => {
   const { hideSplashScreen } = useSplashScreenContext()
   const theme = useTheme()
-  const isNotWeb = Platform.OS !== 'web'
 
   const [isNavReady, setIsNavReady] = useState(false)
   const [initialNavigationState, setInitialNavigationState] = useState<NavigationState>()
-  const { data: featureFlagDocument, isSuccess, isError } = useAllFeatureFlagsQuery()
-
-  // Fetch all feature flags at start where in web
-  const featureFlagsReady = isNotWeb || isSuccess || isError
 
   useEffect(() => {
     async function restoreNavStateOnReload() {
@@ -64,28 +57,19 @@ export const AppNavigationContainer = () => {
   }, [])
 
   useEffect(() => {
-    if (featureFlagsReady && isNavReady) {
+    if (isNavReady) {
       hideSplashScreen?.()
     }
-  }, [isNavReady, hideSplashScreen, featureFlagsReady])
+  }, [isNavReady, hideSplashScreen])
 
-  const handleNavigationStateChange = async (state?: NavigationState) => {
-    const newState = await resetNavigationStateUponFeatureFlags(state, featureFlagDocument)
-    if (newState !== state) {
-      navigationRef.resetRoot(newState)
-    }
-
-    onNavigationStateChange(newState)
-  }
-
-  if (!isNavReady || !featureFlagsReady) {
+  if (!isNavReady) {
     return <LoadingPage />
   }
   return (
     <NavigationContainer
       linking={linking}
       initialState={initialNavigationState}
-      onStateChange={handleNavigationStateChange}
+      onStateChange={onNavigationStateChange}
       fallback={<LoadingPage />}
       ref={navigationRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}

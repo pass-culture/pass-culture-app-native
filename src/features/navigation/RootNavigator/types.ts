@@ -281,7 +281,7 @@ export type RootStackParamList = {
     searchId?: string
   }
   Artist: {
-    id: number | string
+    fromOfferId: number
   }
   VenueMap: undefined
   DeeplinksGenerator: undefined

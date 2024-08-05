@@ -11,7 +11,11 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
+import {
+  mockSubcategory,
+  mockSubcategoryBook,
+  mockSubcategoryCD,
+} from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -496,7 +500,7 @@ describe('<OfferBody />', () => {
 
     fireEvent.press(await screen.findByText('Stephen King'))
 
-    expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: offerResponseSnap.id })
+    expect(mockNavigate).toHaveBeenCalledWith('Artist', { fromOfferId: offerResponseSnap.id })
   })
 
   it('should not redirect to artist page when FF is disabled', async () => {
@@ -519,7 +523,7 @@ describe('<OfferBody />', () => {
     expect(mockNavigate).not.toHaveBeenCalled()
   })
 
-  it('should display artist fakedoor if FF enabled and category is CINEMA or CD', async () => {
+  it('should display artist fakedoor if FF enabled and category is CINEMA', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
@@ -534,6 +538,25 @@ describe('<OfferBody />', () => {
     })
 
     fireEvent.press(await screen.findByText('Stephen King'))
+
+    await waitFor(() => expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen())
+  })
+
+  it('should display artist fakedoor if FF enabled and category is CD', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD,
+      extraData: { performer: 'Newjeans' },
+    }
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryCD,
+    })
+
+    fireEvent.press(await screen.findByText('Newjeans'))
 
     await waitFor(() => expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen())
   })

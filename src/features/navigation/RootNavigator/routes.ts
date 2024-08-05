@@ -1,4 +1,4 @@
-import { ArtistScreen } from 'features/artist/pages/ArtistScreen'
+import { Artist } from 'features/artist/pages/Artist'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/pages/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent'
@@ -464,9 +464,9 @@ export const routes: RootRoute[] = [
   },
   {
     name: 'Artist',
-    component: ArtistScreen,
-    path: 'artiste/:id',
-    deeplinkPaths: ['artist/:id'],
+    component: Artist,
+    path: 'artiste/:fromOfferId',
+    deeplinkPaths: ['artist/:fromOfferId'],
     options: { title: 'Artiste' },
   },
   // Internals

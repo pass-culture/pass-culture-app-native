@@ -118,7 +118,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       analytics.logConsultArtistFakeDoor()
       showModal()
     } else {
-      navigate('Artist', { id: offer.id })
+      navigate('Artist', { fromOfferId: offer.id })
     }
   }
 
