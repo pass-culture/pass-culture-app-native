@@ -85,13 +85,13 @@ export const useVerticalVideoPlayer = ({
 
   const getVideoDuration = useCallback(async () => {
     return playerRefCurrent?.getDuration()
-  }, [])
+  }, [playerRefCurrent])
 
   const getCurrentTime = useCallback(async () => {
     return playerRefCurrent?.getCurrentTime()
-  }, [])
+  }, [playerRefCurrent])
 
-  const logPausedVideo = async () => {
+  const logPausedVideo = useCallback(async () => {
     const [currentTime = 0, videoDuration = 0] = await Promise.all([
       playerRefCurrent?.getCurrentTime(),
       playerRefCurrent?.getDuration(),
@@ -104,45 +104,30 @@ export const useVerticalVideoPlayer = ({
       homeEntryId,
       moduleId,
     })
-  }
+  }, [currentVideoId, homeEntryId, moduleId, playerRefCurrent])
 
   const intersectionObserverListener = (isInView: boolean) => {
     if (!isInView) pauseVideo()
   }
 
   const toggleMute = () => {
-    switch (true) {
-      case isWeb:
-        if (playerRefCurrent && 'mute' in playerRefCurrent) {
-          if (isMuted) {
-            playerRefCurrent.unMute()
-          } else {
-            playerRefCurrent.mute()
-          }
-        }
-        setIsMuted(!isMuted)
-        break
-      default:
-        setIsMuted(!isMuted)
-        break
+    if (isWeb && playerRefCurrent && 'mute' in playerRefCurrent) {
+      if (isMuted) {
+        playerRefCurrent.unMute()
+      } else {
+        playerRefCurrent.mute()
+      }
     }
+    setIsMuted(!isMuted)
   }
 
   const pauseVideo = useCallback(() => {
-    switch (true) {
-      case isWeb:
-        if (playerRefCurrent && 'pauseVideo' in playerRefCurrent) {
-          playerRefCurrent.pauseVideo()
-          setIsPlaying(false)
-          logPausedVideo()
-        }
-        break
-      default:
-        setIsPlaying(false)
-        logPausedVideo()
-        break
+    if (isWeb && playerRefCurrent && 'pauseVideo' in playerRefCurrent) {
+      playerRefCurrent.pauseVideo()
     }
-  }, [playerRefCurrent, setIsPlaying])
+    setIsPlaying(false)
+    logPausedVideo()
+  }, [playerRefCurrent, setIsPlaying, isWeb, logPausedVideo])
 
   const togglePlay = () => {
     if (isPlaying) {

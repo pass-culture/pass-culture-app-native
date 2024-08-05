@@ -3,6 +3,13 @@ import React, { useRef } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { isChrome } from 'react-device-detect'
 import LinearGradient from 'react-native-linear-gradient'
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  cancelAnimation,
+  withTiming,
+  Easing,
+} from 'react-native-reanimated'
 import YouTube, { YouTubeEvent, YouTubeProps } from 'react-youtube'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
@@ -12,15 +19,14 @@ import {
   RATIO710,
 } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
+import { PlayerState } from 'features/home/components/modules/video/types'
 import {
-  PlayerState,
   useVerticalVideoPlayer,
   VerticalVideoPlayerProps,
   VideoPlayerButtonsWording,
 } from 'features/home/components/modules/video/useVerticalVideoPlayer'
 import { VerticalVideoEndView } from 'features/home/components/modules/video/VerticalVideoEndView'
 import { VerticalVideoErrorView } from 'features/home/components/modules/video/VerticalVideoErrorView'
-import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 // eslint-disable-next-line no-restricted-imports
 import { isMobileDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
@@ -33,24 +39,18 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const PLAYER_FIXED_WIDTH = 375
 
-const translatePlatformState = (
-  newWebPlayerState: (typeof YouTube.PlayerState)[keyof typeof YouTube.PlayerState]
-): PlayerState | undefined => {
-  switch (newWebPlayerState) {
-    case YouTube.PlayerState.UNSTARTED:
-      return PlayerState.UNSTARTED
-    case YouTube.PlayerState.ENDED:
+const adaptWebPlayerState = (state: number) => {
+  switch (state) {
+    case 0:
       return PlayerState.ENDED
-    case YouTube.PlayerState.PLAYING:
+    case 1:
       return PlayerState.PLAYING
-    case YouTube.PlayerState.PAUSED:
+    case 2:
       return PlayerState.PAUSED
-    case YouTube.PlayerState.BUFFERING:
+    case 3:
       return PlayerState.BUFFERING
-    case YouTube.PlayerState.CUED:
-      return PlayerState.CUED
     default:
-      return undefined
+      return PlayerState.UNSTARTED
   }
 }
 
@@ -75,10 +75,11 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
     intersectionObserverListener,
     replayVideo,
     videoState,
-    elapsed,
     showErrorView,
     onChangeState,
     toggleErrorView,
+    getVideoDuration,
+    getCurrentTime,
   } = useVerticalVideoPlayer({
     playerRefCurrent,
     isPlaying,
@@ -91,6 +92,53 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
 
   const { isDesktopViewport } = useTheme()
   const { playerHeight } = getVideoPlayerDimensions(isDesktopViewport, PLAYER_FIXED_WIDTH, RATIO710)
+
+  const animValue = useSharedValue(0)
+
+  const animStyle = useAnimatedStyle(() => {
+    return {
+      width: `${animValue?.value}%`,
+    }
+  }, [animValue])
+
+  const handleReplayVideo = () => {
+    animValue.value = 0
+    replayVideo()
+  }
+
+  const handleChangeState = async (event: YouTubeEvent) => {
+    onChangeState(adaptWebPlayerState(event.data))
+
+    switch (event.data) {
+      case YouTube.PlayerState.ENDED:
+        animValue.value = 100
+        break
+      case YouTube.PlayerState.UNSTARTED:
+        animValue.value = 0
+        break
+      case YouTube.PlayerState.PAUSED:
+      case YouTube.PlayerState.BUFFERING:
+        cancelAnimation(animValue)
+        break
+      case YouTube.PlayerState.PLAYING:
+        {
+          const [currentTime, videoDuration] = await Promise.all([
+            getCurrentTime(),
+            getVideoDuration(),
+          ])
+          if (videoDuration && currentTime) {
+            animValue.value = (currentTime / videoDuration) * 100
+            animValue.value = withTiming(100, {
+              duration: (videoDuration - currentTime) * 1000,
+              easing: Easing.linear,
+            })
+          }
+        }
+        break
+      default:
+        break
+    }
+  }
 
   // remove the fullscreen video for Chrome - mobile as
   // the dimensions are not appropriated and not working
@@ -115,7 +163,7 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
       return (
         <VerticalVideoEndView
           style={{ height: playerHeight, width: PLAYER_FIXED_WIDTH }}
-          onPressReplay={replayVideo}
+          onPressReplay={handleReplayVideo}
           onPressNext={playNextVideo}
           hasMultipleSources={videoSources.length > 1}
         />
@@ -157,7 +205,7 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
           videoId={videoSources[currentIndex]}
           opts={opts}
           onReady={playVideo}
-          onStateChange={(state) => onChangeState(translatePlatformState(state.data))}
+          onStateChange={handleChangeState}
           onError={toggleErrorView}
         />
       </StyledVideoPlayerContainer>
@@ -184,7 +232,9 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
               accessibilityLabel="Activer ou désactiver le son"
             />
           </ControlsContainer>
-          <CreditProgressBar progress={elapsed} height="smaller" />
+          <ProgressBarWrapper>
+            <ProgressBar style={animStyle} />
+          </ProgressBarWrapper>
         </StyledProgressContainer>
       ) : null}
 
@@ -194,6 +244,21 @@ export const VerticalVideoPlayer: React.FC<VerticalVideoPlayerProps> = ({
     </IntersectionObserver>
   )
 }
+
+const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient)
+
+const ProgressBarWrapper = styled.View({
+  backgroundColor: theme.colors.white,
+})
+
+const ProgressBar = styled(AnimatedGradient).attrs(({ theme }) => ({
+  colors: [theme.colors.primary, theme.colors.secondary],
+  angle: 90,
+  useAngle: true,
+}))({
+  height: getSpacing(1),
+  borderRadius: getSpacing(12),
+})
 
 const StyledVideoPlayerContainer = styled.View(({ theme }) => ({
   borderRadius: getSpacing(1),
