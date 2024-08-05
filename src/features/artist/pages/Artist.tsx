@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 
-import { ArtistBody } from 'features/artist/components/ArtistBody'
+import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
