@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
+import { Referrals } from 'features/navigation/RootNavigator/types'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { OfferTileProps } from 'features/offer/types'
@@ -13,8 +14,9 @@ type OfferPlaylistItemProps = {
   offer: OfferResponseV2
   categoryMapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping
-  apiRecoParams?: RecommendationApiParams
   variant: OfferTileProps['variant']
+  apiRecoParams?: RecommendationApiParams
+  analyticsFrom?: Referrals
 }
 
 type RenderOfferPlaylistItemProps = {
@@ -28,8 +30,9 @@ export const OfferPlaylistItem = ({
   offer,
   categoryMapping,
   labelMapping,
-  apiRecoParams,
   variant,
+  apiRecoParams,
+  analyticsFrom = 'offer',
 }: OfferPlaylistItemProps) => {
   return function RenderItem({ item, width, height, playlistType }: RenderOfferPlaylistItemProps) {
     const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
@@ -48,8 +51,8 @@ export const OfferPlaylistItem = ({
         price={getDisplayPrice(item.offer.prices)}
         width={width}
         height={height}
-        analyticsFrom="offer"
-        fromOfferId={offer.id}
+        analyticsFrom={analyticsFrom}
+        fromOfferId={analyticsFrom === 'offer' ? offer.id : undefined}
         playlistType={playlistType}
         apiRecoParams={apiRecoParams}
         variant={variant}

@@ -204,5 +204,31 @@ describe('OfferTile component', () => {
         venueId: undefined,
       })
     })
+
+    it('should log ConsultOffer from artist page playlist', async () => {
+      const propsFromArtistPagePlaylist = {
+        ...props,
+        analyticsFrom: 'artist' as Referrals,
+        moduleName: undefined,
+        playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
+      }
+
+      render(reactQueryProviderHOC(<OfferTile {...propsFromArtistPagePlaylist} />))
+
+      fireEvent.press(screen.getByTestId('tileImage'))
+
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        from: 'artist',
+        offerId: OFFER_ID,
+        playlistType: propsFromArtistPagePlaylist.playlistType,
+        searchId: undefined,
+        moduleName: undefined,
+        fromOfferId: undefined,
+        homeEntryId: undefined,
+        index: undefined,
+        moduleId: undefined,
+        venueId: undefined,
+      })
+    })
   })
 })

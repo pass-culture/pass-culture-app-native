@@ -38,7 +38,13 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({ subcate
       playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
       title="Toutes ses offres disponibles"
       data={sameArtistPlaylist}
-      renderItem={OfferPlaylistItem({ offer, categoryMapping, labelMapping, variant: 'new' })}
+      renderItem={OfferPlaylistItem({
+        offer,
+        categoryMapping,
+        labelMapping,
+        variant: 'new',
+        analyticsFrom: 'artist',
+      })}
       itemWidth={itemWidth}
       itemHeight={itemHeight}
       keyExtractor={keyExtractor}

@@ -15,12 +15,12 @@ import { TabParamList, TabRouteName } from '../TabBar/types'
 
 export type Referrals =
   | Lowercase<keyof AllNavParamList>
+  | 'artist'
   | 'bookingimpossible'
   | 'deeplink'
   | 'exclusivity'
   | 'highlightOffer'
   | 'home'
-  | 'same_artist_playlist'
   | 'search'
   | 'searchAutoComplete'
   | 'searchLanding'
