@@ -529,7 +529,7 @@ describe('<OfferBody />', () => {
       subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       extraData: { stageDirector: 'Stephen King' },
     }
-    mockUseFeatureFlag.mockReturnValueOnce(true)
+
     mockUseFeatureFlag.mockReturnValueOnce(true)
 
     renderOfferBody({
@@ -548,7 +548,7 @@ describe('<OfferBody />', () => {
       subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD,
       extraData: { performer: 'Newjeans' },
     }
-    mockUseFeatureFlag.mockReturnValueOnce(true)
+
     mockUseFeatureFlag.mockReturnValueOnce(true)
 
     renderOfferBody({

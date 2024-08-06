@@ -5,20 +5,16 @@ import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { OfferPlaylist } from 'features/offer/components/OfferPlaylist/OfferPlaylist'
-import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
+import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
-import { OfferTileProps } from 'features/offer/types'
 import { analytics } from 'libs/analytics'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { formatDates } from 'libs/parsers/formatDates'
-import { getDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
-import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer, SimilarOfferPlaylist } from 'shared/offer/types'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -34,55 +30,6 @@ export type OfferPlaylistListProps = {
 
 function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
   return Boolean(data?.length)
-}
-
-type PlaylistItemProps = {
-  offer: OfferResponseV2
-  categoryMapping: CategoryIdMapping
-  labelMapping: CategoryHomeLabelMapping
-  apiRecoParams?: RecommendationApiParams
-  variant: OfferTileProps['variant']
-}
-
-type RenderPlaylistItemProps = {
-  item: Offer
-  width: number
-  height: number
-  playlistType?: PlaylistType
-}
-
-const renderPlaylistItem = ({
-  offer,
-  categoryMapping,
-  labelMapping,
-  apiRecoParams,
-  variant,
-}: PlaylistItemProps) => {
-  return function RenderItem({ item, width, height, playlistType }: RenderPlaylistItemProps) {
-    const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
-
-    return (
-      <OfferTile
-        offerLocation={item._geoloc}
-        categoryLabel={labelMapping[item.offer.subcategoryId]}
-        categoryId={categoryMapping[item.offer.subcategoryId]}
-        subcategoryId={item.offer.subcategoryId}
-        offerId={+item.objectID}
-        name={item.offer.name}
-        date={formatDates(timestampsInMillis)}
-        isDuo={item.offer.isDuo}
-        thumbUrl={item.offer.thumbUrl}
-        price={getDisplayPrice(item.offer.prices)}
-        width={width}
-        height={height}
-        analyticsFrom="offer"
-        fromOfferId={offer.id}
-        playlistType={playlistType}
-        apiRecoParams={apiRecoParams}
-        variant={variant}
-      />
-    )
-  }
 }
 
 export function OfferPlaylistList({
@@ -195,7 +142,7 @@ export function OfferPlaylistList({
               items={playlist.offers}
               itemWidth={itemWidth}
               itemHeight={itemHeight}
-              renderItem={renderPlaylistItem({
+              renderItem={OfferPlaylistItem({
                 offer,
                 categoryMapping,
                 labelMapping,
