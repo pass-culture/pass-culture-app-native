@@ -17,7 +17,6 @@ import { Spacer } from 'ui/theme'
 type Props = {
   categoryId: CategoryIdEnum | null
   imageUrls?: string[]
-  shouldDisplayOfferPreview?: boolean
   onPress?: (defaultIndex?: number) => void
 }
 
@@ -26,7 +25,6 @@ const isWeb = Platform.OS === 'web'
 export const OfferImageContainer: FunctionComponent<Props> = ({
   categoryId,
   imageUrls = [],
-  shouldDisplayOfferPreview,
   onPress,
 }) => {
   const { backgroundHeight } = useOfferImageContainerDimensions()
@@ -56,7 +54,6 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
       <OfferImageRenderer
         categoryId={categoryId}
         offerImages={imageUrls}
-        shouldDisplayOfferPreview={shouldDisplayOfferPreview}
         hasCarousel={hasCarousel}
         progressValue={progressValue}
         onPress={onPress}

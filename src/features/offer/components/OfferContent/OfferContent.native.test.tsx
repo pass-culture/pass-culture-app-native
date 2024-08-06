@@ -152,60 +152,24 @@ describe('<OfferContent />', () => {
     expect(await screen.findByTestId('offerHeaderName')).toBeOnTheScreen()
   })
 
-  describe('When WIP_OFFER_PREVIEW feature flag activated', () => {
-    beforeEach(() => {
-      jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
-    })
+  it('should navigate to offer preview screen when clicking on image offer', async () => {
+    renderOfferContent({})
 
-    it('should navigate to offer preview screen when clicking on image offer', async () => {
-      renderOfferContent({})
+    fireEvent.press(await screen.findByTestId('offerImageWithoutCarousel'))
 
-      fireEvent.press(await screen.findByTestId('offerImageWithoutCarousel'))
-
-      expect(navigate).toHaveBeenCalledWith('OfferPreview', { id: 116656, defaultIndex: 0 })
-    })
-
-    it('should not navigate to offer preview screen when clicking on image offer and there is not an image', async () => {
-      const offer: OfferResponseV2 = {
-        ...offerResponseSnap,
-        images: null,
-      }
-      renderOfferContent({ offer })
-
-      fireEvent.press(await screen.findByTestId('offerImageWithoutCarousel'))
-
-      expect(navigate).not.toHaveBeenCalled()
-    })
+    expect(navigate).toHaveBeenCalledWith('OfferPreview', { id: 116656, defaultIndex: 0 })
   })
 
-  describe('When WIP_OFFER_PREVIEW feature flag deactivated', () => {
-    beforeEach(() => {
-      jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-    })
+  it('should not navigate to offer preview screen when clicking on image offer and there is not an image', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      images: null,
+    }
+    renderOfferContent({ offer })
 
-    it('should not navigate to offer preview screen when clicking on image offer', async () => {
-      renderOfferContent({})
+    fireEvent.press(await screen.findByTestId('offerImageWithoutCarousel'))
 
-      fireEvent.press(await screen.findByTestId('offerImageWithoutCarousel'))
-
-      expect(navigate).not.toHaveBeenCalled()
-    })
-
-    it('should not display linear gradient on offer image when enableOfferPreview feature flag deactivated', async () => {
-      renderOfferContent({})
-
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.queryByTestId('imageGradient')).not.toBeOnTheScreen()
-    })
-
-    it('should not display tag on offer image when enableOfferPreview feature flag deactivated', async () => {
-      renderOfferContent({})
-
-      await screen.findByText('Réserver l’offre')
-
-      expect(screen.queryByTestId('imageTag')).not.toBeOnTheScreen()
-    })
+    expect(navigate).not.toHaveBeenCalled()
   })
 
   it('should animate on scroll', async () => {

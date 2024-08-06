@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactElement, useCallback, useEffect, useMemo } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent, ViewStyle, StyleProp } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import styled from 'styled-components/native'
 
@@ -17,7 +17,6 @@ import { useFunctionOnce } from 'libs/hooks'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 
 type OfferContentBaseProps = OfferContentProps & {
-  showOfferPreview: boolean
   BodyWrapper: FunctionComponent
   onOfferPreviewPress: (index?: number) => void
   footer?: ReactElement | null
@@ -30,7 +29,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   offer,
   searchGroupList,
   subcategory,
-  showOfferPreview,
   footer,
   onOfferPreviewPress,
   contentContainerStyle,
@@ -100,7 +98,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           <OfferImageContainer
             imageUrls={offerImages}
             categoryId={subcategory.categoryId}
-            shouldDisplayOfferPreview={showOfferPreview}
             onPress={offerImages.length > 0 ? onOfferPreviewPress : undefined}
           />
           <OfferBody

@@ -137,19 +137,13 @@ describe('<OfferContent />', () => {
     })
   })
 
-  describe('When WIP_OFFER_PREVIEW feature flag activated and we are on a web', () => {
-    beforeEach(() => {
-      jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
-    })
+  it('should not navigate to offer preview screen when clicking on image offer', async () => {
+    renderOfferContent({ isDesktopViewport: false })
 
-    it('should not navigate to offer preview screen when clicking on image offer', async () => {
-      renderOfferContent({ isDesktopViewport: false })
+    fireEvent.click(await screen.findByTestId('offerImageWithoutCarousel'))
 
-      fireEvent.click(await screen.findByTestId('offerImageWithoutCarousel'))
-
-      await waitFor(async () => {
-        expect(navigate).not.toHaveBeenCalled()
-      })
+    await waitFor(async () => {
+      expect(navigate).not.toHaveBeenCalled()
     })
   })
 })
