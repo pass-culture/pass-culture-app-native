@@ -1,11 +1,12 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
+import { SubcategoryIdEnum } from 'api/gen'
 import { Artist } from 'features/artist/pages/Artist'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
@@ -25,14 +26,6 @@ mockUseOffer.mockReturnValue({
 jest.mock('features/offer/api/useOffer', () => ({
   useOffer: () => mockUseOffer(),
 }))
-
-const mockUseSubcategoriesMapping = jest.fn()
-jest.mock('libs/subcategories', () => ({
-  useSubcategoriesMapping: jest.fn(() => mockUseSubcategoriesMapping()),
-}))
-mockUseSubcategoriesMapping.mockReturnValue({
-  SUPPORT_PHYSIQUE_MUSIQUE_CD: { isEvent: false, categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE },
-})
 
 useRoute.mockReturnValue({
   params: {
@@ -55,7 +48,7 @@ describe('<Artist />', () => {
     })
 
     it('should display artist page content', () => {
-      render(<Artist />)
+      render(reactQueryProviderHOC(<Artist />))
 
       expect(screen.getAllByText('Céline Dion')[0]).toBeOnTheScreen()
     })
