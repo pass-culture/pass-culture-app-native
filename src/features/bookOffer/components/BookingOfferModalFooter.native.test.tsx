@@ -319,7 +319,7 @@ describe('BookingOfferModalFooter', () => {
           stockId: 1,
           offerId: 1,
           step: Step.PRICE,
-          quantity: 2,
+          quantity: 1,
           date: new Date('01/02/2021'),
           hour: '2023-04-01T18:00:00Z',
         },
