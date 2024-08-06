@@ -16,6 +16,22 @@ type Props = {
   isDuo?: boolean
 }
 
+const doBeforeValidate = (aStep: Step) => {
+  switch (aStep) {
+    case Step.HOUR:
+      analytics.logHasChosenTime()
+      break
+
+    case Step.PRICE:
+      analytics.logHasChosenPrice()
+      break
+
+    case Step.DUO:
+      analytics.logHasClickedDuoStep()
+      break
+  }
+}
+
 export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
   const { dispatch, bookingState } = useBookingContext()
   const { step } = bookingState
@@ -24,6 +40,7 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
   const enabledButton = getButtonState(bookingState)
 
   const validateOptions = useCallback(() => {
+    doBeforeValidate(step)
     switch (step) {
       case Step.DATE:
         dispatch({ type: 'RESET_HOUR' })
@@ -31,7 +48,6 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
         break
 
       case Step.HOUR:
-        analytics.logHasChosenTime()
         if (hasPricesStep) {
           dispatch({ type: 'RESET_STOCK' })
           dispatch({ type: 'CHANGE_STEP', payload: Step.PRICE })
@@ -43,7 +59,6 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
         break
 
       case Step.PRICE:
-        analytics.logHasChosenPrice()
         if (isDuo) {
           dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
         } else {
@@ -52,7 +67,6 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
         break
 
       case Step.DUO:
-        analytics.logHasClickedDuoStep()
         dispatch({ type: 'VALIDATE_OPTIONS' })
         break
 
