@@ -200,16 +200,16 @@ describe('<OfferBody />', () => {
     })
 
     it('should not display reaction button when feature flag is disabled', async () => {
-      // eslint-disable-next-line local-rules/independent-mocks -- we have multiple renders
-      mockUseFeatureFlag.mockReturnValue(false)
+      mockUseFeatureFlag
+        .mockReturnValueOnce(false) // Artist Fake Door
+        .mockReturnValueOnce(false) // Artist Page
+        .mockReturnValueOnce(false) // New XP cine from offer
+        .mockReturnValueOnce(false) // Reaction Fake Door
 
       renderOfferBody({})
       await screen.findByText(offerResponseSnap.name)
 
       expect(screen.queryByText('Réagir')).not.toBeOnTheScreen()
-
-      // eslint-disable-next-line local-rules/independent-mocks -- to reset the mock
-      mockUseFeatureFlag.mockReturnValue(true)
     })
   })
 
