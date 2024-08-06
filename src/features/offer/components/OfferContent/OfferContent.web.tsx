@@ -8,8 +8,6 @@ import { OfferPreviewModal } from 'features/offer/components/OfferPreviewModal/O
 import { getOfferImageUrls } from 'features/offer/helpers/getOfferImageUrls/getOfferImageUrls'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { OfferContentProps } from 'features/offer/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
@@ -19,7 +17,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   searchGroupList,
   subcategory,
 }) => {
-  const showOfferPreview = useFeatureFlag(RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW)
   const { visible, showModal, hideModal } = useModal(false)
   const { isDesktopViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
@@ -35,10 +32,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   })
 
   const handlePress = (defaultIndex = 0) => {
-    if (showOfferPreview) {
-      setCarouselDefaultIndex(defaultIndex)
-      showModal()
-    }
+    setCarouselDefaultIndex(defaultIndex)
+    showModal()
   }
 
   const footer = isDesktopViewport ? null : (
@@ -67,7 +62,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         defaultIndex={carouselDefaultIndex}
       />
       <StyledOfferContentBase
-        showOfferPreview={showOfferPreview}
         offer={offer}
         searchGroupList={searchGroupList}
         subcategory={subcategory}

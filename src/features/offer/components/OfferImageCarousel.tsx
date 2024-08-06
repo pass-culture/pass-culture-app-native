@@ -16,7 +16,6 @@ import { Spacer } from 'ui/theme'
 type Props = {
   progressValue: SharedValue<number>
   offerImages: string[]
-  shouldDisplayOfferPreview?: boolean
   onItemPress?: (index: number) => void
 }
 
@@ -26,7 +25,6 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
   progressValue,
   offerImages,
   onItemPress,
-  shouldDisplayOfferPreview,
 }) => {
   const { imageStyle } = useOfferImageContainerDimensions()
   const headerHeight = useGetHeaderHeight()
@@ -70,10 +68,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
             disabled={!onItemPress}
             onPress={() => onItemPress?.(index)}
             delayPressIn={70}>
-            <OfferImageWrapper
-              imageUrl={image}
-              shouldDisplayOfferPreview={shouldDisplayOfferPreview}
-              isInCarousel>
+            <OfferImageWrapper imageUrl={image} isInCarousel shouldDisplayOfferPreview>
               <OfferBodyImage imageUrl={image} isInCarousel />
             </OfferImageWrapper>
           </TouchableOpacity>
