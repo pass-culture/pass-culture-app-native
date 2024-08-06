@@ -16,15 +16,13 @@ type BookingOptions = {
   isDuo?: boolean
 }
 
-type Props = BookingOptions
-
 const analyticsBySteps: { [key in Step]?: () => Promise<void> } = {
   [Step.HOUR]: analytics.logHasChosenTime,
   [Step.PRICE]: analytics.logHasChosenPrice,
   [Step.DUO]: analytics.logHasClickedDuoStep,
 }
 
-export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
+export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: BookingOptions) => {
   const { dispatch, bookingState } = useBookingContext()
   const { step } = bookingState
 
