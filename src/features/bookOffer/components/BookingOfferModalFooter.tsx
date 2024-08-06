@@ -18,6 +18,12 @@ type BookingOptions = {
 
 type Props = BookingOptions
 
+const analyticsBySteps: { [key in Step]?: () => Promise<void> } = {
+  [Step.HOUR]: analytics.logHasChosenTime,
+  [Step.PRICE]: analytics.logHasChosenPrice,
+  [Step.DUO]: analytics.logHasClickedDuoStep,
+}
+
 export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
   const { dispatch, bookingState } = useBookingContext()
   const { step } = bookingState
@@ -26,7 +32,8 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
   const enabledButton = getButtonState(bookingState)
 
   const validateOptions = useCallback(() => {
-    triggerAnalytics(step)
+    analyticsBySteps[step]?.()
+
     handleBookingSteps(step, dispatch, { isDuo, hasPricesStep })
   }, [dispatch, hasPricesStep, isDuo, step])
 
@@ -39,19 +46,6 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
       />
     </FooterContainer>
   )
-}
-
-const triggerAnalytics = async (step: Step): Promise<void> => {
-  switch (step) {
-    case Step.HOUR:
-      return analytics.logHasChosenTime()
-
-    case Step.PRICE:
-      return analytics.logHasChosenPrice()
-
-    case Step.DUO:
-      return analytics.logHasClickedDuoStep()
-  }
 }
 
 const handleBookingSteps = (
