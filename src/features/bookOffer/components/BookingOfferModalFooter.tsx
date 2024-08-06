@@ -16,22 +16,6 @@ type Props = {
   isDuo?: boolean
 }
 
-const doBeforeValidate = (aStep: Step) => {
-  switch (aStep) {
-    case Step.HOUR:
-      analytics.logHasChosenTime()
-      break
-
-    case Step.PRICE:
-      analytics.logHasChosenPrice()
-      break
-
-    case Step.DUO:
-      analytics.logHasClickedDuoStep()
-      break
-  }
-}
-
 export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
   const { dispatch, bookingState } = useBookingContext()
   const { step } = bookingState
@@ -40,39 +24,34 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
   const enabledButton = getButtonState(bookingState)
 
   const validateOptions = useCallback(() => {
-    doBeforeValidate(step)
     switch (step) {
       case Step.DATE:
         dispatch({ type: 'RESET_HOUR' })
-        dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
-        break
+        return dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
 
       case Step.HOUR:
+        analytics.logHasChosenTime()
+
         if (hasPricesStep) {
           dispatch({ type: 'RESET_STOCK' })
-          dispatch({ type: 'CHANGE_STEP', payload: Step.PRICE })
-        } else if (isDuo) {
-          dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
-        } else {
-          dispatch({ type: 'VALIDATE_OPTIONS' })
+          return dispatch({ type: 'CHANGE_STEP', payload: Step.PRICE })
         }
-        break
+        if (isDuo) {
+          return dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
+        }
+        return dispatch({ type: 'VALIDATE_OPTIONS' })
 
       case Step.PRICE:
+        analytics.logHasChosenPrice()
+
         if (isDuo) {
-          dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
-        } else {
-          dispatch({ type: 'VALIDATE_OPTIONS' })
+          return dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
         }
-        break
+        return dispatch({ type: 'VALIDATE_OPTIONS' })
 
       case Step.DUO:
-        dispatch({ type: 'VALIDATE_OPTIONS' })
-        break
-
-      default:
-        dispatch({ type: 'VALIDATE_OPTIONS' })
-        break
+        analytics.logHasClickedDuoStep()
+        return dispatch({ type: 'VALIDATE_OPTIONS' })
     }
   }, [dispatch, hasPricesStep, isDuo, step])
 
