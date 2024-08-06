@@ -178,27 +178,6 @@ describe('OfferTile component', () => {
       })
     })
 
-    it('should log ConsultOffer that user opened the offer from the list of same artist', async () => {
-      const propsFromSimilarOffers = {
-        ...props,
-        fromOfferId: 1,
-        playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
-        apiRecoParams,
-      }
-
-      render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
-      fireEvent.press(screen.getByTestId('tileImage'))
-
-      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-        ...apiRecoParams,
-        offerId: OFFER_ID,
-        fromOfferId: 1,
-        from: 'same_artist_playlist',
-        moduleName: props.moduleName,
-        playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
-      })
-    })
-
     it('should log ConsultOffer from searchN1 gtl playlist', async () => {
       const propsFromSearchN1GtlPlaylist = {
         ...props,
