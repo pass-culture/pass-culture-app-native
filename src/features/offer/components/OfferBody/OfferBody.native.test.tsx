@@ -1,3 +1,4 @@
+import * as reactNavigation from '@react-navigation/native'
 import React, { ComponentProps } from 'react'
 
 import {
@@ -10,7 +11,11 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
+import {
+  mockSubcategory,
+  mockSubcategoryBook,
+  mockSubcategoryCD,
+} from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -18,7 +23,7 @@ import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -34,6 +39,12 @@ jest.mock('libs/location/LocationWrapper', () => ({
     geolocPosition: mockPosition,
     place: Kourou,
   }),
+}))
+
+jest.mock('@react-navigation/native')
+const mockNavigate = jest.fn()
+jest.spyOn(reactNavigation, 'useNavigation').mockImplementation(() => ({
+  navigate: mockNavigate,
 }))
 
 const mockUseFeatureFlag = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
@@ -471,6 +482,83 @@ describe('<OfferBody />', () => {
     await screen.findByText(offerResponseSnap.name)
 
     expect(screen.queryByTestId('messagingApp-container-without-divider')).not.toBeOnTheScreen()
+  })
+
+  it('should redirect to artist page when FF is enabled', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      extraData: { author: 'Stephen King' },
+    }
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
+    })
+
+    fireEvent.press(await screen.findByText('Stephen King'))
+
+    expect(mockNavigate).toHaveBeenCalledWith('Artist', { fromOfferId: offerResponseSnap.id })
+  })
+
+  it('should not redirect to artist page when FF is disabled', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      extraData: { author: 'Stephen King', ean: '123456' },
+    }
+
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+    mockUseFeatureFlag.mockReturnValueOnce(false)
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
+    })
+
+    fireEvent.press(await screen.findByText('Stephen King'))
+
+    expect(mockNavigate).not.toHaveBeenCalled()
+  })
+
+  it('should display artist fakedoor if FF enabled and category is CINEMA', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+      extraData: { stageDirector: 'Stephen King' },
+    }
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategory,
+    })
+
+    fireEvent.press(await screen.findByText('Stephen King'))
+
+    await waitFor(() => expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen())
+  })
+
+  it('should display artist fakedoor if FF enabled and category is CD', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD,
+      extraData: { performer: 'Newjeans' },
+    }
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryCD,
+    })
+
+    fireEvent.press(await screen.findByText('Newjeans'))
+
+    await waitFor(() => expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen())
   })
 })
 

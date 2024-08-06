@@ -280,6 +280,9 @@ export type RootStackParamList = {
     from?: Referrals
     searchId?: string
   }
+  Artist: {
+    fromOfferId: number
+  }
   VenueMap: undefined
   DeeplinksGenerator: undefined
   UTMParameters: undefined

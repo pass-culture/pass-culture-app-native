@@ -25,3 +25,21 @@ export const mockSubcategoryNotEvent: Subcategory = {
   onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
   nativeCategoryId: NativeCategoryIdEnumv2.PRATIQUES_ET_ATELIERS_ARTISTIQUES,
 }
+export const mockSubcategoryBook: Subcategory = {
+  categoryId: CategoryIdEnum.LIVRE,
+  appLabel: 'Livre',
+  searchGroupName: SearchGroupNameEnumv2.LIVRES,
+  homepageLabelName: HomepageLabelNameEnumv2.LIVRES,
+  isEvent: false,
+  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+  nativeCategoryId: NativeCategoryIdEnumv2.LIVRES_PAPIER,
+}
+export const mockSubcategoryCD: Subcategory = {
+  categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
+  appLabel: 'CD',
+  searchGroupName: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+  homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
+  isEvent: false,
+  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+  nativeCategoryId: NativeCategoryIdEnumv2.CD,
+}
