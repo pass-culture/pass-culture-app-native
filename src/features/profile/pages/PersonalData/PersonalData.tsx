@@ -137,7 +137,7 @@ export function PersonalData() {
       <SectionRow
         title="Supprimer mon compte"
         type="navigable"
-        navigateTo={{ screen: 'ConfirmDeleteProfile' }}
+        navigateTo={{ screen: 'DeleteProfileReason' }}
         onPress={analytics.logAccountDeletion}
         icon={Trash}
         iconSize={SECTION_ROW_ICON_SIZE}
