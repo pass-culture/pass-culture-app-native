@@ -396,16 +396,6 @@ export interface BookingOfferExtraData {
   ean?: string | null
 }
 /**
- * An enumeration.
- * @export
- * @enum {string}
- */
-export enum ReactionTypeEnum {
-  'LIKE' = 'LIKE',
-  'DISLIKE' = 'DISLIKE',
-  'NO_REACTION' = 'NO_REACTION',
-}
-/**
  * @export
  * @interface BookingOfferResponse
  */
@@ -2185,6 +2175,11 @@ export interface OfferResponse {
    */
   name: string
   /**
+   * @type {ReactionCount}
+   * @memberof OfferResponse
+   */
+  reactionsCount: ReactionCount
+  /**
    * @type {Array<OfferStockResponse>}
    * @memberof OfferResponse
    */
@@ -2300,6 +2295,11 @@ export interface OfferResponseV2 {
    * @memberof OfferResponseV2
    */
   name: string
+  /**
+   * @type {ReactionCount}
+   * @memberof OfferResponseV2
+   */
+  reactionsCount: ReactionCount
   /**
    * @type {Array<OfferStockResponse>}
    * @memberof OfferResponseV2
@@ -2706,6 +2706,27 @@ export interface ProfileUpdateRequest {
    * @memberof ProfileUpdateRequest
    */
   schoolTypeId?: SchoolTypesIdEnum | null
+}
+/**
+ * @export
+ * @interface ReactionCount
+ */
+export interface ReactionCount {
+  /**
+   * @type {number}
+   * @memberof ReactionCount
+   */
+  likes: number
+}
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
+export enum ReactionTypeEnum {
+  'LIKE' = 'LIKE',
+  'DISLIKE' = 'DISLIKE',
+  'NO_REACTION' = 'NO_REACTION',
 }
 /**
  * Describe possible reason codes to used when reporting an offer.  The whole meta part is only consumed by the api client, it has no meaning inside the whole API code.  Note: when adding a new enum symbol, do not forget to update the meta method.
@@ -3693,7 +3714,7 @@ export interface UserProfileResponse {
    * @type {{ [key: string]: number; }}
    * @memberof UserProfileResponse
    */
-  bookedOffers: { [key: string]: number; }
+  bookedOffers: { [key: string]: number }
   /**
    * @type {string}
    * @memberof UserProfileResponse
