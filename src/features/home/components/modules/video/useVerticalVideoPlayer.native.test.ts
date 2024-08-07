@@ -9,6 +9,7 @@ const mockProps = {
   moduleId: '123456',
   currentVideoId: 'TEST_ID_VIDEO',
   homeEntryId: '123456',
+  playerRefCurrent: null,
 }
 
 describe('useVerticalVideoPlayer', () => {

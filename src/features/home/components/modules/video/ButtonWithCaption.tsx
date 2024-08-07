@@ -45,6 +45,7 @@ export const ButtonWithCaption: React.FC<ButtonWithCaptionProps> = ({
 
 const ButtonWithCaptionContainer = styled.View({
   alignItems: 'center',
+  maxWidth: getSpacing(19),
 })
 
 const ButtonCaption = styled(Typo.Caption)(({ theme }) => ({

@@ -1,16 +1,37 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { AppState } from 'react-native'
+import { useCallback, useEffect, useState } from 'react'
+import { AppState, Platform } from 'react-native'
 import { YoutubeIframeRef } from 'react-native-youtube-iframe'
+import YouTube from 'react-youtube'
 
 import { analytics } from 'libs/analytics'
 
+export enum VideoPlayerButtonsWording {
+  CONTINUE_PLAYING = 'Continuer à regarder',
+  START_PLAYING = 'Lire la vidéo',
+  NEXT_VIDEO = 'Voir la vidéo suivante',
+  REPLAY_VIDEO = 'Revoir la vidéo',
+}
+
 import { PlayerState } from './types'
+
+export interface VerticalVideoPlayerProps {
+  videoSources: string[]
+  playNextVideo: () => void
+  currentIndex: number
+  isPlaying: boolean
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
+  hasFinishedPlaying: boolean
+  setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
+  moduleId: string
+  homeEntryId: string
+}
 
 type Props = {
   isPlaying: boolean
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
   setHasFinishedPlaying: React.Dispatch<React.SetStateAction<boolean>>
   moduleId: string
+  playerRefCurrent: YoutubeIframeRef | YouTube['internalPlayer'] | null
   currentVideoId?: string
   homeEntryId: string
 }
@@ -21,12 +42,13 @@ export const useVerticalVideoPlayer = ({
   setHasFinishedPlaying,
   moduleId,
   currentVideoId,
+  playerRefCurrent,
   homeEntryId,
 }: Props) => {
+  const isWeb = Platform.OS === 'web'
   const [isMuted, setIsMuted] = useState(true)
   const [showErrorView, setShowErrorView] = useState(false)
   const [videoState, setVideoState] = useState(PlayerState.UNSTARTED)
-  const verticalPlayerRef = useRef<YoutubeIframeRef>(null)
 
   // Make sure the video stop playing when app is not in an active state (eg: background/inactive)
   useEffect(() => {
@@ -39,7 +61,6 @@ export const useVerticalVideoPlayer = ({
     return () => {
       subscription.remove()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const onChangeState = useCallback(
@@ -63,17 +84,17 @@ export const useVerticalVideoPlayer = ({
   )
 
   const getVideoDuration = useCallback(async () => {
-    return verticalPlayerRef.current?.getDuration()
-  }, [])
+    return playerRefCurrent?.getDuration()
+  }, [playerRefCurrent])
 
   const getCurrentTime = useCallback(async () => {
-    return verticalPlayerRef.current?.getCurrentTime()
-  }, [])
+    return playerRefCurrent?.getCurrentTime()
+  }, [playerRefCurrent])
 
-  const logPausedVideo = async () => {
+  const logPausedVideo = useCallback(async () => {
     const [currentTime = 0, videoDuration = 0] = await Promise.all([
-      verticalPlayerRef.current?.getCurrentTime(),
-      verticalPlayerRef.current?.getDuration(),
+      playerRefCurrent?.getCurrentTime(),
+      playerRefCurrent?.getDuration(),
     ])
 
     analytics.logVideoPaused({
@@ -83,43 +104,67 @@ export const useVerticalVideoPlayer = ({
       homeEntryId,
       moduleId,
     })
-  }
+  }, [currentVideoId, homeEntryId, moduleId, playerRefCurrent])
 
   const intersectionObserverListener = (isInView: boolean) => {
     if (!isInView) pauseVideo()
   }
 
   const toggleMute = () => {
+    if (isWeb && playerRefCurrent && 'mute' in playerRefCurrent) {
+      if (isMuted) {
+        playerRefCurrent.unMute()
+      } else {
+        playerRefCurrent.mute()
+      }
+    }
     setIsMuted(!isMuted)
   }
 
-  const pauseVideo = () => {
-    if (isPlaying) {
-      setIsPlaying(false)
-      logPausedVideo()
+  const pauseVideo = useCallback(() => {
+    if (isWeb && playerRefCurrent && 'pauseVideo' in playerRefCurrent) {
+      playerRefCurrent.pauseVideo()
     }
-  }
+    setIsPlaying(false)
+    logPausedVideo()
+  }, [playerRefCurrent, setIsPlaying, isWeb, logPausedVideo])
 
   const togglePlay = () => {
     if (isPlaying) {
       pauseVideo()
     } else {
-      setIsPlaying(true)
+      playVideo()
     }
   }
 
   const playVideo = () => {
-    setIsPlaying(true)
-    setHasFinishedPlaying(false)
+    switch (true) {
+      case isWeb:
+        if (playerRefCurrent && 'playVideo' in playerRefCurrent) {
+          playerRefCurrent.playVideo()
+          setIsPlaying(true)
+          setHasFinishedPlaying(false)
+        }
+        break
+      default:
+        setIsPlaying(true)
+        setHasFinishedPlaying(false)
+        break
+    }
   }
 
   const replayVideo = () => {
-    verticalPlayerRef.current?.seekTo(0, false)
-    setHasFinishedPlaying(false)
-    setIsPlaying(true)
+    playerRefCurrent?.seekTo(0, false)
+    playVideo()
   }
 
   const toggleErrorView = () => setShowErrorView(true)
+
+  useEffect(() => {
+    if (!isPlaying) {
+      pauseVideo()
+    }
+  }, [isPlaying, pauseVideo])
 
   return {
     isMuted,
@@ -129,7 +174,6 @@ export const useVerticalVideoPlayer = ({
     intersectionObserverListener,
     playVideo,
     replayVideo,
-    playerRef: verticalPlayerRef,
     showErrorView,
     onChangeState,
     toggleErrorView,

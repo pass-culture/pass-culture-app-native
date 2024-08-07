@@ -1,7 +1,7 @@
-import React, { FunctionComponent, useState, useEffect } from 'react'
-import { Platform, useWindowDimensions } from 'react-native'
+import React, { FunctionComponent, useEffect, useState } from 'react'
+import { View } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
-import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
+import { ICarouselInstance } from 'react-native-reanimated-carousel'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -14,7 +14,7 @@ import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/A
 import { AttachedThematicCard } from 'features/home/components/AttachedModuleCard/AttachedThematicCard'
 import { videoSourceExtractor } from 'features/home/components/helpers/videoSourceExtractor'
 import { newColorMapping } from 'features/home/components/modules/categories/CategoryBlock'
-import { VerticalVideoPlayer } from 'features/home/components/modules/video/VerticalVideoPlayer'
+import { VerticalVideoPlayer } from 'features/home/components/modules/video/VerticalVideoPlayer.web'
 import { Color, VideoCarouselModuleBaseProps } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
@@ -25,61 +25,47 @@ import { useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { CarouselBar } from 'ui/CarouselBar/CarouselBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getShadow, getSpacing } from 'ui/theme'
+import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
+import { getSpacing } from 'ui/theme'
 
-const CAROUSEL_HEIGHT = getSpacing(35)
-const CAROUSEL_ANIMATION_DURATION = 500
+const COLORED_BACKGROUND_HEIGHT = getSpacing(115)
+const ATTACHED_CARD_WIDTH = getSpacing(94.25)
 
-export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps> = (props) => {
+export const VideoCarouselModuleDesktop: FunctionComponent<VideoCarouselModuleBaseProps> = (
+  props
+) => {
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
 
-  const { width: windowWidth } = useWindowDimensions()
   const carouselRef = React.useRef<ICarouselInstance>(null)
-  const progressValue = useSharedValue<number>(0)
   const carouselDotId = uuidv4()
+  const progressValue = useSharedValue<number>(0)
 
-  const enableVideoCarousel = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16)
+  const enableVideoCarousel = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_710_WEB)
   const hasGraphicRedesign = useHasGraphicRedesign({
     isFeatureFlagActive: enableVideoCarousel,
     homeId: props.homeEntryId,
   })
-
   const { homeEntryId, items, color, id, autoplay, index } = props
   const itemsWithRelatedData = useVideoCarouselData(items, id)
 
   const hasItems = itemsWithRelatedData.length > 0
+  const hasMultipleItems = itemsWithRelatedData.length > 1
   const videoSources = videoSourceExtractor(itemsWithRelatedData)
 
-  const shouldModuleBeDisplayed = Platform.OS !== 'web' && hasItems && hasGraphicRedesign
-
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(autoplay ? true : false)
+  const [isPlaying, setIsPlaying] = useState(autoplay ?? false)
   const [hasFinishedPlaying, setHasFinishedPlaying] = useState(false)
 
   useEffect(() => {
-    if (shouldModuleBeDisplayed) {
-      analytics.logModuleDisplayedOnHomepage({
-        moduleId: id,
-        moduleType: ContentTypes.VIDEO_CAROUSEL,
-        index,
-        homeEntryId,
-      })
-    }
+    analytics.logModuleDisplayedOnHomepage({
+      moduleId: id,
+      moduleType: ContentTypes.VIDEO_CAROUSEL,
+      index,
+      homeEntryId,
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shouldModuleBeDisplayed])
-
-  useEffect(() => {
-    if (shouldModuleBeDisplayed) {
-      analytics.logConsultVideo({
-        from: 'video_carousel_block',
-        moduleId: id,
-        homeEntryId,
-        youtubeId: videoSources[currentIndex],
-      })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex, shouldModuleBeDisplayed])
+  }, [])
 
   const playNextVideo = () => {
     let nextIndex
@@ -93,9 +79,15 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     setCurrentIndex(nextIndex)
     setIsPlaying(true)
     setHasFinishedPlaying(false)
+    analytics.logConsultVideo({
+      from: 'video_carousel_block',
+      moduleId: id,
+      homeEntryId,
+      youtubeId: videoSources[nextIndex],
+    })
   }
 
-  if (!shouldModuleBeDisplayed) return null
+  if (!hasItems || !hasGraphicRedesign) return null
 
   const renderItem = ({ item, index }: { item: EnrichedVideoCarouselItem; index: number }) => {
     if (item.redirectionMode === RedirectionMode.OFFER && item.offer) {
@@ -110,6 +102,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
               params: { id: +offer.objectID },
             },
             onBeforeNavigate: () => {
+              setIsPlaying(false)
               prePopulateOffer({
                 ...offer.offer,
                 offerId: +offer.objectID,
@@ -166,88 +159,83 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
       )
     return null
   }
-
   return (
-    <Container>
-      <VerticalVideoPlayer
-        videoSources={videoSources}
-        playNextVideo={playNextVideo}
-        currentIndex={currentIndex}
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-        hasFinishedPlaying={hasFinishedPlaying}
-        setHasFinishedPlaying={setHasFinishedPlaying}
-        moduleId={id}
-        homeEntryId={homeEntryId}
-      />
-      <ColoredAttachedTileContainer color={color}>
-        {itemsWithRelatedData.length > 1 ? (
-          <React.Fragment>
-            <Carousel
-              ref={carouselRef}
-              mode="parallax"
-              testID="videoCarousel"
-              vertical={false}
-              height={CAROUSEL_HEIGHT}
-              panGestureHandlerProps={{ activeOffsetX: [-5, 5] }}
-              width={windowWidth}
-              loop={false}
-              scrollAnimationDuration={CAROUSEL_ANIMATION_DURATION}
-              onProgressChange={(_, absoluteProgress) => {
-                progressValue.value = absoluteProgress
-                setCurrentIndex(Math.round(absoluteProgress))
-              }}
-              data={itemsWithRelatedData}
-              renderItem={renderItem}
-            />
-            <DotContainer>
+    <View testID="MarketingBlockContentDesktop">
+      <Container>
+        {hasMultipleItems ?? (
+          <PlaylistArrowButton
+            direction="right"
+            onPress={() => {
+              setCurrentIndex(currentIndex - 1)
+            }}
+          />
+        )}
+        <VerticalVideoPlayer
+          videoSources={videoSources}
+          playNextVideo={playNextVideo}
+          currentIndex={currentIndex}
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+          hasFinishedPlaying={hasFinishedPlaying}
+          setHasFinishedPlaying={setHasFinishedPlaying}
+          moduleId={id}
+          homeEntryId={homeEntryId}
+        />
+        <ContainerAttachedOfferCardWithBar>
+          <SingleAttachedItem />
+          {hasMultipleItems ?? (
+            <BarContainer>
               {itemsWithRelatedData.map((_, index) => (
                 <CarouselBar animValue={progressValue} index={index} key={index + carouselDotId} />
               ))}
-            </DotContainer>
-          </React.Fragment>
-        ) : (
-          <SingleAttachedItem />
+            </BarContainer>
+          )}
+        </ContainerAttachedOfferCardWithBar>
+        {hasMultipleItems ?? (
+          <PlaylistArrowButton direction="left" onPress={() => playNextVideo()} />
         )}
-      </ColoredAttachedTileContainer>
-    </Container>
+      </Container>
+      <ColoredAttachedTileContainer color={color} />
+    </View>
   )
 }
 
 const Container = styled.View({
-  marginBottom: getSpacing(6),
+  alignContent: 'center',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: getSpacing(11),
+  margin: getSpacing(6),
 })
 
 const ColoredAttachedTileContainer = styled.View<{
   color: Color
-}>(({ color }) => ({
+}>(({ color, theme }) => ({
   backgroundColor: newColorMapping[color].fill,
-}))
-
-const StyledInternalTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: getSpacing(3),
-    },
-    shadowRadius: getSpacing(12),
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.15,
-  }),
-  paddingHorizontal: getSpacing(1),
-}))
-
-const SingleItemContainer = styled.View({
-  marginHorizontal: getSpacing(5),
-  marginVertical: getSpacing(4),
-})
-
-const DotContainer = styled.View({
+  height: COLORED_BACKGROUND_HEIGHT,
   position: 'absolute',
+  width: '100%',
+  zIndex: theme.zIndex.background,
+  top: 0,
   bottom: 0,
-  left: 0,
-  right: 0,
+  margin: 'auto',
+}))
+
+const StyledInternalTouchableLink = styled(InternalTouchableLink)({})
+
+const BarContainer = styled.View({
   flexDirection: 'row',
   justifyContent: 'center',
   paddingBottom: getSpacing(1),
+})
+
+const ContainerAttachedOfferCardWithBar = styled.View({
+  flexDirection: 'column',
+  gap: getSpacing(8),
+  width: ATTACHED_CARD_WIDTH,
+})
+const SingleItemContainer = styled.View({
+  marginHorizontal: getSpacing(5),
+  marginVertical: getSpacing(4),
 })
