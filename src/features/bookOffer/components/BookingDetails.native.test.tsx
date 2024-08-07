@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
-import { BookingState, initialBookingState, Step } from 'features/bookOffer/context/reducer'
+import { BookingState, Step, initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as BookingOfferAPI from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
@@ -232,7 +232,9 @@ describe('<BookingDetails />', () => {
       mockedUseIsUserUnderage.mockReturnValueOnce(true)
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
 
-      expect(screen).toMatchSnapshot()
+      const bookingButton = screen.getByText('Confirmer la réservation')
+
+      expect(bookingButton).toBeDisabled()
     })
 
     it('should run validation booking when pressing "Confirmer la réservation" button', () => {
