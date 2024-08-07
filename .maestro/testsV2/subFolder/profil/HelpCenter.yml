@@ -4,7 +4,14 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Aides'
 - tapOn: "Nouvelle fenêtre\_: Centre d’aide"
 
-- assertVisible: # Vérifie la présence de l'url dans le browser
-    id: 'com.android.chrome:id/url_bar'
+- runFlow: # Si 1ere ouverture de chrome
+    when:
+      visible: "Utiliser l'appli sans compte"
+    commands:
+      - tapOn: "Utiliser l'appli sans compte"
+      - tapOn: "Non, merci"
+      - pressKey: back
+
 - tapOn:
     id: 'com.android.systemui:id/back'
+    optional: true

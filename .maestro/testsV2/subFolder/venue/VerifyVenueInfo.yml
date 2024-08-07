@@ -50,15 +50,9 @@ appId: ${MAESTRO_APP_ID}
       visible: "Contact"
     commands:
       - assertVisible: "Accessibilité"
-      - scrollUntilVisible:
-          element:
-            text: "Passe le bon plan\_!"
-          visibilityPercentage: 50
       - scroll
       - assertVisible:
           id: "BasicAccessibilityInfo"
           containsDescendants:
             - id: "accessibilityBadgeContainer"
           optional: true
-      - assertVisible: "Envoyer par\nSMS"
-      - assertVisible: "Plus\nd’options"

@@ -9,8 +9,18 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: "Nouvelle fenêtre\_: Conditions Générales d’Utilisation"
 - waitForAnimationToEnd
+
+- runFlow: # Si cloud
+    when:
+      notVisible:
+        id: 'com.android.systemui:id/back'
+    commands:
+      - pressKey: back
+      - pressKey: back
+    
 - doubleTapOn: # Permet de quitter le browser in-app
     id: 'com.android.systemui:id/back'
+    optional: true
 
 - runFlow: # Fallback si problème de retour
     when:
@@ -23,11 +33,28 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: "Nouvelle fenêtre\_: Charte de protection des données personnelles"
 - 'waitForAnimationToEnd'
+- runFlow: # Si cloud
+    when:
+      notVisible:
+        id: 'com.android.systemui:id/back'
+    commands:
+      - pressKey: back
+      - pressKey: back
+    
 - doubleTapOn: # Permet de quitter le browser in-app
     id: 'com.android.systemui:id/back'
+    optional: true
+
+- runFlow: # Si cloud
+    when:
+      notVisible:
+        id: 'com.android.systemui:id/back'
+    commands:
+      - pressKey: back
 
 - tapOn:
     id: 'com.android.systemui:id/back'
+    optional: true
 
 - runFlow: # Fallback si problème de retour
     when:

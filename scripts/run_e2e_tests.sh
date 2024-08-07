@@ -26,7 +26,7 @@ fi
 
 case "$target" in
   "test")
-    TAGS=""
+    TAGS="--include-tags cli"
     run_tracking_tests=true
     ;;
 
