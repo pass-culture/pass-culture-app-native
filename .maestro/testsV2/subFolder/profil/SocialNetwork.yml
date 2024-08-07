@@ -3,6 +3,13 @@ appId: ${MAESTRO_APP_ID}
 - scroll
 - tapOn: 'Instagram'
 - 'waitForAnimationToEnd'
+
+- runFlow: # Si 1ere ouverture de chrome
+    when:
+      visible: "Accepter et continuer"
+    commands:
+      - tapOn: "Accepter et continuer"
+
 - assertVisible:
     id: 'com.android.chrome:id/url_bar'
 - tapOn:
