@@ -6,9 +6,9 @@ import styled from 'styled-components/native'
 
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
-import { AgeButton as ReasonButton } from 'features/tutorial/components/AgeButton'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
 import { theme } from 'theme'
+import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
@@ -94,9 +94,11 @@ export function DeleteProfileReason() {
           const { wording, navigateTo } = item
           return (
             <ItemContainer>
-              <ReasonButton navigateTo={{ screen: navigateTo }} accessibilityLabel={wording}>
-                <Typo.ButtonText>{wording}</Typo.ButtonText>
-              </ReasonButton>
+              <HeroButtonList
+                Title={<Typo.ButtonText>{wording}</Typo.ButtonText>}
+                navigateTo={{ screen: navigateTo }}
+                accessibilityLabel={wording}
+              />
             </ItemContainer>
           )
         }}

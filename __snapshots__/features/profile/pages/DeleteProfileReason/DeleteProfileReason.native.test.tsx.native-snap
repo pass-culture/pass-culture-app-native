@@ -404,11 +404,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "padding": 16,
                     "width": "100%",
                   },
-                  [
-                    {
-                      "paddingVertical": 24,
-                    },
-                  ],
+                  undefined,
                 ]
               }
             >
@@ -424,20 +420,31 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                   ]
                 }
               >
-                <Text
+                <View
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "justifyContent": "center",
+                        "minHeight": 58,
                       },
                     ]
                   }
                 >
-                  J’aimerais créer un compte avec une adresse e-mail différente
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    J’aimerais créer un compte avec une adresse e-mail différente
+                  </Text>
+                </View>
               </View>
               <View>
                 <View
@@ -524,11 +531,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "padding": 16,
                     "width": "100%",
                   },
-                  [
-                    {
-                      "paddingVertical": 24,
-                    },
-                  ],
+                  undefined,
                 ]
               }
             >
@@ -544,20 +547,31 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                   ]
                 }
               >
-                <Text
+                <View
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "justifyContent": "center",
+                        "minHeight": 58,
                       },
                     ]
                   }
                 >
-                  Je n’utilise plus l’application
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Je n’utilise plus l’application
+                  </Text>
+                </View>
               </View>
               <View>
                 <View
@@ -644,11 +658,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "padding": 16,
                     "width": "100%",
                   },
-                  [
-                    {
-                      "paddingVertical": 24,
-                    },
-                  ],
+                  undefined,
                 ]
               }
             >
@@ -664,20 +674,31 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                   ]
                 }
               >
-                <Text
+                <View
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "justifyContent": "center",
+                        "minHeight": 58,
                       },
                     ]
                   }
                 >
-                  Je n’ai plus de crédit ou très peu de crédit restant
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Je n’ai plus de crédit ou très peu de crédit restant
+                  </Text>
+                </View>
               </View>
               <View>
                 <View
@@ -764,11 +785,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "padding": 16,
                     "width": "100%",
                   },
-                  [
-                    {
-                      "paddingVertical": 24,
-                    },
-                  ],
+                  undefined,
                 ]
               }
             >
@@ -784,20 +801,31 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                   ]
                 }
               >
-                <Text
+                <View
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "justifyContent": "center",
+                        "minHeight": 58,
                       },
                     ]
                   }
                 >
-                  Je souhaite supprimer mes données personnelles
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Je souhaite supprimer mes données personnelles
+                  </Text>
+                </View>
               </View>
               <View>
                 <View
@@ -884,11 +912,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "padding": 16,
                     "width": "100%",
                   },
-                  [
-                    {
-                      "paddingVertical": 24,
-                    },
-                  ],
+                  undefined,
                 ]
               }
             >
@@ -904,20 +928,31 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                   ]
                 }
               >
-                <Text
+                <View
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "justifyContent": "center",
+                        "minHeight": 58,
                       },
                     ]
                   }
                 >
-                  Ma boite mail a été piratée
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Ma boite mail a été piratée
+                  </Text>
+                </View>
               </View>
               <View>
                 <View
@@ -1004,11 +1039,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "padding": 16,
                     "width": "100%",
                   },
-                  [
-                    {
-                      "paddingVertical": 24,
-                    },
-                  ],
+                  undefined,
                 ]
               }
             >
@@ -1024,20 +1055,31 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                   ]
                 }
               >
-                <Text
+                <View
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "justifyContent": "center",
+                        "minHeight": 58,
                       },
                     ]
                   }
                 >
-                  Je pense que quelqu’un d’autre a accès à mon compte
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Je pense que quelqu’un d’autre a accès à mon compte
+                  </Text>
+                </View>
               </View>
               <View>
                 <View
@@ -1124,11 +1166,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "padding": 16,
                     "width": "100%",
                   },
-                  [
-                    {
-                      "paddingVertical": 24,
-                    },
-                  ],
+                  undefined,
                 ]
               }
             >
@@ -1144,20 +1182,31 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                   ]
                 }
               >
-                <Text
+                <View
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "justifyContent": "center",
+                        "minHeight": 58,
                       },
                     ]
                   }
                 >
-                  Autre
-                </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Autre
+                  </Text>
+                </View>
               </View>
               <View>
                 <View
