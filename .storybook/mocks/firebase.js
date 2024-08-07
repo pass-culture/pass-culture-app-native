@@ -11,6 +11,7 @@ const firebase = {
   }),
   firestore: () => ({
     settings: () => {},
+    enablePersistence: () => true
   }),
 }
 
