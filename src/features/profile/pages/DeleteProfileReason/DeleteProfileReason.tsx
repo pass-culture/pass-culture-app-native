@@ -87,11 +87,7 @@ export function DeleteProfileReason() {
             </TitlesContainer>
           </HeaderContainer>
         }
-        ListFooterComponent={
-          <React.Fragment>
-            <Spacer.BottomScreen />
-          </React.Fragment>
-        }
+        ListFooterComponent={Spacer.BottomScreen}
         contentContainerStyle={flatListStyles}
         data={reasonButtons}
         renderItem={({ item }) => {
@@ -105,15 +101,15 @@ export function DeleteProfileReason() {
           )
         }}
       />
-      <Gradient ref={gradientRef} bottomViewHeight={isWeb ? 0 : 0} />
+      <Gradient ref={gradientRef} />
       <BlurHeader height={headerHeight} />
     </React.Fragment>
   )
 }
 
-const ItemContainer = styled.View(() => ({
+const ItemContainer = styled.View({
   paddingBottom: isWeb ? getSpacing(4) : 0,
-}))
+})
 
 const HeaderHeightSpacer = styled.View.attrs<{ headerHeight: number }>({})<{
   headerHeight: number
@@ -121,16 +117,16 @@ const HeaderHeightSpacer = styled.View.attrs<{ headerHeight: number }>({})<{
   paddingTop: headerHeight,
 }))
 
-const HeaderContainer = styled.View(() => ({
+const HeaderContainer = styled.View({
   alignItems: 'center',
   paddingBottom: getSpacing(2),
-}))
+})
 
-const TitlesContainer = styled.View(() => ({
+const TitlesContainer = styled.View({
   alignItems: 'flex-start',
   gap: getSpacing(4),
   width: '100%',
-}))
+})
 
 const flatListStyles: ViewStyle = {
   paddingHorizontal: theme.contentPage.marginHorizontal,
@@ -146,14 +142,14 @@ const StyledIcon = styled(BicolorSadFace).attrs(({ theme }) => ({
 }))({ width: '100%' })
 
 const AnimatedGradient = createAnimatableComponent(LinearGradient)
-const Gradient = styled(AnimatedGradient).attrs<{ bottomViewHeight: number }>(({ theme }) => ({
+const Gradient = styled(AnimatedGradient).attrs(({ theme }) => ({
   colors: [colorAlpha(theme.colors.white, 0), theme.colors.white],
   locations: [0, 1],
   pointerEvents: 'none',
-}))<{ bottomViewHeight: number }>(({ bottomViewHeight }) => ({
+}))({
   position: 'absolute',
   height: GRADIENT_HEIGHT,
   left: 0,
   right: 0,
-  bottom: bottomViewHeight,
-}))
+  bottom: 0,
+})
