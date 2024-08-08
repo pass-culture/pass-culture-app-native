@@ -72,9 +72,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const [surveyModalState, setSurveyModalState] = useState(DEFAULT_SURVEY_MODAL_DATA)
   const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
   const hasAccessToArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
-  const enableNewXpCineFromOffer = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER
-  )
+
   const enableReactionFakeDoor = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FAKE_DOOR)
   const shouldDisplayFakeDoorArtist =
     hasFakeDoorArtist && FAKE_DOOR_ARTIST_SEARCH_GROUPS.includes(subcategory.searchGroupName)
@@ -87,7 +85,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const prices = getOfferPrices(offer.stocks)
 
-  const isCinemaOffer = enableNewXpCineFromOffer && subcategory.categoryId === CategoryIdEnum.CINEMA
+  const isCinemaOffer = subcategory.categoryId === CategoryIdEnum.CINEMA
 
   const { summaryInfoItems } = useOfferSummaryInfoList({
     offer,

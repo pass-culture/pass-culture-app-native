@@ -42,7 +42,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_GOOGLE_SSO = 'wipEnableGoogleSSO',
   WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES = 'wipEnableGTLPlaylistsInBookstoreVenues',
   WIP_ENABLE_NEW_CHANGE_EMAIL = 'wipEnableNewChangeEmail',
-  WIP_ENABLE_NEW_XP_CINE_FROM_OFFER = 'wipEnableNewXpCineFromOffer',
   WIP_ENABLE_NEW_XP_CINE_FROM_VENUE = 'wipEnableNewXpCineFromVenue',
   WIP_OFFER_PREVIEW_WITH_CAROUSEL = 'wipOfferPreviewWithCarousel',
   WIP_PAGE_SEARCH_N1 = 'wipPageSearchN1',
