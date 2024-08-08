@@ -68,6 +68,8 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('features/auth/context/AuthContext')
+
 describe('<OfferBody />', () => {
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }

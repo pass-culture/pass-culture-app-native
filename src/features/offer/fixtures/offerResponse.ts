@@ -24,6 +24,9 @@ export const offerResponseSnap = toMutable({
   isExpired: false,
   isForbiddenToUnderage: false,
   isSoldOut: false,
+  reactionsCount: {
+    likes: 1,
+  },
   stocks: [
     {
       id: 118929,
