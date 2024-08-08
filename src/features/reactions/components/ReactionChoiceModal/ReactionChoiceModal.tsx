@@ -1,11 +1,10 @@
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
 import { useWindowDimensions } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { BookingOfferResponse, OfferResponse, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { ReactionToggleButton } from 'features/reactions/components/ReactionToggleButton/ReactionToggleButton'
 import { useSubcategory } from 'libs/subcategories'
-import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { IconNames } from 'ui/components/icons/iconFactory'
 import { useIconFactory } from 'ui/components/icons/useIconFactory'
@@ -39,6 +38,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
   const { top } = useCustomSafeInsets()
   const iconFactory = useIconFactory()
   const { categoryId } = useSubcategory(offer.subcategoryId)
+  const theme = useTheme()
 
   const [reactionStatus, setReactionStatus] = useState<ReactionTypeEnum>(
     ReactionTypeEnum.NO_REACTION
@@ -89,7 +89,7 @@ export const ReactionChoiceModal: FunctionComponent<Props> = ({
         color: theme.colors.primary,
       }),
     }),
-    [getStyledIcon]
+    [getStyledIcon, theme.colors.primary]
   )
 
   const ThumbDownIcon = useMemo(

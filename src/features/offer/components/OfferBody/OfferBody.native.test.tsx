@@ -68,6 +68,8 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('features/auth/context/AuthContext')
+
 describe('<OfferBody />', () => {
   beforeEach(() => {
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
@@ -134,59 +136,6 @@ describe('<OfferBody />', () => {
     expect(await screen.findByText('5,00 €')).toBeOnTheScreen()
   })
 
-  it('should display reaction button when feature flag is enabled and native category included in reactionFakeDoorCategories remote config', async () => {
-    renderOfferBody({})
-
-    expect(await screen.findByText('Réagir')).toBeOnTheScreen()
-  })
-
-  it('should open survey modal when pressing "Réagir" button', async () => {
-    renderOfferBody({})
-
-    fireEvent.press(await screen.findByText('Réagir'))
-
-    expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen()
-  })
-
-  it('should log reaction fake door consultation when pressing "Réagir" button', async () => {
-    renderOfferBody({})
-
-    fireEvent.press(await screen.findByText('Réagir'))
-
-    expect(analytics.logConsultReactionFakeDoor).toHaveBeenNthCalledWith(1, {
-      from: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-    })
-  })
-
-  it('should not display reaction button when feature flag is enabled and native category not included in reactionFakeDoorCategories remote config', async () => {
-    renderOfferBody({
-      offer: {
-        ...offerResponseSnap,
-        subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
-      },
-      subcategory: {
-        ...mockSubcategory,
-        nativeCategoryId: NativeCategoryIdEnumv2.FESTIVALS,
-      },
-    })
-    await screen.findByText(offerResponseSnap.name)
-
-    expect(screen.queryByText('Réagir')).not.toBeOnTheScreen()
-  })
-
-  it('should not display reaction button when feature flag is disabled', async () => {
-    // eslint-disable-next-line local-rules/independent-mocks -- we have multiple renders
-    mockUseFeatureFlag.mockReturnValue(false)
-
-    renderOfferBody({})
-    await screen.findByText(offerResponseSnap.name)
-
-    expect(screen.queryByText('Réagir')).not.toBeOnTheScreen()
-
-    // eslint-disable-next-line local-rules/independent-mocks -- to reset the mock
-    mockUseFeatureFlag.mockReturnValue(true)
-  })
-
   it('should not display prices when the offer is free', async () => {
     const offerFree: OfferResponseV2 = {
       ...offerResponseSnap,
@@ -209,6 +158,61 @@ describe('<OfferBody />', () => {
     await screen.findByText(offerFree.name)
 
     expect(screen.queryByText('5,00 €')).not.toBeOnTheScreen()
+  })
+
+  describe('Reaction section', () => {
+    it('should display reaction button when feature flag is enabled and native category included in reactionFakeDoorCategories remote config', async () => {
+      renderOfferBody({})
+
+      expect(await screen.findByText('Réagir')).toBeOnTheScreen()
+    })
+
+    it('should open survey modal when pressing "Réagir" button', async () => {
+      renderOfferBody({})
+
+      fireEvent.press(await screen.findByText('Réagir'))
+
+      expect(screen.getByText('Encore un peu de patience…')).toBeOnTheScreen()
+    })
+
+    it('should log reaction fake door consultation when pressing "Réagir" button', async () => {
+      renderOfferBody({})
+
+      fireEvent.press(await screen.findByText('Réagir'))
+
+      expect(analytics.logConsultReactionFakeDoor).toHaveBeenNthCalledWith(1, {
+        from: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+      })
+    })
+
+    it('should not display reaction button when feature flag is enabled and native category not included in reactionFakeDoorCategories remote config', async () => {
+      renderOfferBody({
+        offer: {
+          ...offerResponseSnap,
+          subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
+        },
+        subcategory: {
+          ...mockSubcategory,
+          nativeCategoryId: NativeCategoryIdEnumv2.FESTIVALS,
+        },
+      })
+      await screen.findByText(offerResponseSnap.name)
+
+      expect(screen.queryByText('Réagir')).not.toBeOnTheScreen()
+    })
+
+    it('should not display reaction button when feature flag is disabled', async () => {
+      mockUseFeatureFlag
+        .mockReturnValueOnce(false) // Artist Fake Door
+        .mockReturnValueOnce(false) // Artist Page
+        .mockReturnValueOnce(false) // New XP cine from offer
+        .mockReturnValueOnce(false) // Reaction Fake Door
+
+      renderOfferBody({})
+      await screen.findByText(offerResponseSnap.name)
+
+      expect(screen.queryByText('Réagir')).not.toBeOnTheScreen()
+    })
   })
 
   describe('Venue button section & Summary info section', () => {
