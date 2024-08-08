@@ -270,7 +270,7 @@ export const routes: RootRoute[] = [
   {
     name: 'FeedbackInApp',
     component: FeedbackInApp,
-    path: 'profil/suggestion',
+    path: 'profil/formulaire-suggestion',
     options: { title: 'Suggestion' },
   },
   {

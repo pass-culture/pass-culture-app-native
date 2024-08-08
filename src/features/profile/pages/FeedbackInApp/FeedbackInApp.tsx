@@ -5,7 +5,10 @@ import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { setFeedbackInAppSchema } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
+import {
+  FEEDBACK_IN_APP_VALUE_MAX_LENGTH,
+  setFeedbackInAppSchema,
+} from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
@@ -14,8 +17,6 @@ import { BicolorRequestSent } from 'ui/svg/icons/BicolorRequestSent'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-export const FEEDBACK_IN_APP_VALUE_MAX_LENGTH = 800
 
 export const FeedbackInApp = () => {
   const {
