@@ -44,7 +44,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_NEW_CHANGE_EMAIL = 'wipEnableNewChangeEmail',
   WIP_ENABLE_NEW_XP_CINE_FROM_OFFER = 'wipEnableNewXpCineFromOffer',
   WIP_ENABLE_NEW_XP_CINE_FROM_VENUE = 'wipEnableNewXpCineFromVenue',
-  WIP_OFFER_PREVIEW_WITH_CAROUSEL = 'wipOfferPreviewWithCarousel',
   WIP_PAGE_SEARCH_N1 = 'wipPageSearchN1',
   WIP_NEW_HIGHLIGHT_THEMATIC_MODULE = 'wipNewHighlightThematicModule',
   WIP_NEW_HOME_MODULE_SIZES = 'wipNewHomeModuleSizes',

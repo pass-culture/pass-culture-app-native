@@ -12,8 +12,6 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { useOffer } from 'features/offer/api/useOffer'
 import { PinchableBox } from 'features/offer/components/PinchableBox/PinchableBox'
 import { getOfferImageUrls } from 'features/offer/helpers/getOfferImageUrls/getOfferImageUrls'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
 import { BlurFooter } from 'ui/components/headers/BlurFooter'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
@@ -34,9 +32,6 @@ export const OfferPreview: FunctionComponent = () => {
   const headerHeight = useGetHeaderHeight()
   const footerHeight = useGetFooterHeight(FOOTER_HEIGHT)
 
-  const shouldDisplayCarousel = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW_WITH_CAROUSEL
-  )
   const defaultIndex = params.defaultIndex ?? 0
   const progressValue = useSharedValue<number>(defaultIndex)
   const [index, setIndex] = React.useState(defaultIndex)
@@ -49,49 +44,40 @@ export const OfferPreview: FunctionComponent = () => {
 
   return (
     <Container>
-      <StyledHeader
-        title={shouldDisplayCarousel ? `${index + 1}/${images.length}` : '1/1'}
-        onGoBack={goBack}
-      />
+      <StyledHeader title={`${index + 1}/${images.length}`} onGoBack={goBack} />
 
-      {shouldDisplayCarousel ? (
+      <Carousel
+        vertical={false}
+        height={screenHeight}
+        width={screenWidth}
+        loop={false}
+        scrollAnimationDuration={500}
+        onProgressChange={(_, absoluteProgress) => {
+          progressValue.value = absoluteProgress
+          setIndex(Math.round(absoluteProgress))
+        }}
+        defaultIndex={defaultIndex}
+        data={images}
+        renderItem={({ item: image }) => <PinchableBox imageUrl={image} />}
+      />
+      {images.length > 1 ? (
         <React.Fragment>
-          <Carousel
-            vertical={false}
-            height={screenHeight}
-            width={screenWidth}
-            loop={false}
-            scrollAnimationDuration={500}
-            onProgressChange={(_, absoluteProgress) => {
-              progressValue.value = absoluteProgress
-              setIndex(Math.round(absoluteProgress))
-            }}
-            defaultIndex={defaultIndex}
-            data={images}
-            renderItem={({ item: image }) => <PinchableBox imageUrl={image} />}
-          />
-          {images.length > 1 ? (
-            <React.Fragment>
-              <BlurFooter height={footerHeight} />
-              {progressValue ? (
-                <Footer height={footerHeight}>
-                  <PaginationContainer gap={2}>
-                    {images.map((_, index) => (
-                      <CarouselDot
-                        animValue={progressValue}
-                        index={index}
-                        key={index + carouselDotId}
-                      />
-                    ))}
-                  </PaginationContainer>
-                </Footer>
-              ) : null}
-            </React.Fragment>
+          <BlurFooter height={footerHeight} />
+          {progressValue ? (
+            <Footer height={footerHeight}>
+              <PaginationContainer gap={2}>
+                {images.map((_, index) => (
+                  <CarouselDot
+                    animValue={progressValue}
+                    index={index}
+                    key={index + carouselDotId}
+                  />
+                ))}
+              </PaginationContainer>
+            </Footer>
           ) : null}
         </React.Fragment>
-      ) : (
-        <PinchableBox imageUrl={images[0] ?? ''} />
-      )}
+      ) : null}
 
       <BlurHeader height={headerHeight} />
     </Container>
