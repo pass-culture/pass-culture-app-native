@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { api } from 'api/api'
 import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
-import { initialBookingState, Step } from 'features/bookOffer/context/reducer'
+import { Step, initialBookingState } from 'features/bookOffer/context/reducer'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics'
 import { mockServer } from 'tests/mswServer'
@@ -55,12 +55,20 @@ describe('<BookingImpossible />', () => {
       )
     })
 
-    it('should render without CTAs', async () => {
+    it('should render correctly', async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
 
       await screen.findByLabelText('Voir le détail de l’offre')
 
       expect(screen).toMatchSnapshot()
+    })
+
+    it('should render without CTAs', async () => {
+      render(reactQueryProviderHOC(<BookingImpossible />))
+
+      await screen.findByLabelText('Voir le détail de l’offre')
+
+      expect(screen.queryByText('Mettre en favoris')).not.toBeOnTheScreen()
     })
 
     it("should log 'BookingImpossibleiOS' on mount", async () => {
@@ -99,7 +107,7 @@ describe('<BookingImpossible />', () => {
       })
     })
 
-    it('should render with CTAs', async () => {
+    it('should render correctly', async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
 
       await screen.findByText(
@@ -107,6 +115,16 @@ describe('<BookingImpossible />', () => {
       )
 
       expect(screen).toMatchSnapshot()
+    })
+
+    it('should render with CTAs', async () => {
+      render(reactQueryProviderHOC(<BookingImpossible />))
+
+      await screen.findByText(
+        'Les conditions générales d’utilisation de l’App Store iOS ne permettent pas de réserver cette offre sur l’application.'
+      )
+
+      expect(screen.getByText('Mettre en favoris')).toBeOnTheScreen()
     })
 
     it('should send email/push notification when adding to favorites', async () => {

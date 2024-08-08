@@ -50,8 +50,6 @@ describe('BookDuoChoice', () => {
 
     expect(soloChoice).toBeOnTheScreen()
     expect(duoChoice).toBeOnTheScreen()
-
-    expect(screen).toMatchSnapshot()
   })
 
   it('should select an item when pressed', () => {

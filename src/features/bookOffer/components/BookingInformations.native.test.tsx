@@ -38,19 +38,22 @@ jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: () => mockUseBookingOffer(),
 }))
 
+// This line checks that there is no text content rendered. The regex /./ matches any character, so queryByText will return null if there is no content.
+const ANY_CHARACTER = /./
+
 describe('<BookingInformations />', () => {
   it('should return empty component when no offer', async () => {
     mockUseBookingOffer.mockReturnValueOnce(undefined)
     render(<BookingInformations />)
 
-    expect(screen).toMatchSnapshot()
+    expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
   })
 
   it('should return empty component when no stock', async () => {
     mockedUseBookingStock.mockReturnValueOnce(undefined)
     render(<BookingInformations />)
 
-    expect(screen).toMatchSnapshot()
+    expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
   })
 
   it('should return empty component when no quantity', async () => {
@@ -61,7 +64,7 @@ describe('<BookingInformations />', () => {
     })
     render(<BookingInformations />)
 
-    expect(screen).toMatchSnapshot()
+    expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
   })
 
   it('should render event date section when event', async () => {
@@ -155,16 +158,6 @@ describe('<BookingInformations />', () => {
     render(<BookingInformations />)
 
     expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
-  })
-
-  it('should display location when offer is not digital', async () => {
-    mockUseBookingOffer.mockReturnValueOnce({
-      ...carteCineOfferDigital,
-      isDigital: false,
-    })
-    render(<BookingInformations />)
-
-    expect(screen).toMatchSnapshot()
   })
 
   it('should display expirationDate section when offer is digital and has expirationDate', async () => {

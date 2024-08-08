@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BookingImpossible /> When offer is already favorite should render without CTAs 1`] = `
+exports[`<BookingImpossible /> When offer is already favorite should render correctly 1`] = `
 <View
   style={
     [
@@ -182,7 +182,7 @@ exports[`<BookingImpossible /> When offer is already favorite should render with
 </View>
 `;
 
-exports[`<BookingImpossible /> When offer is not yet favorite should render with CTAs 1`] = `
+exports[`<BookingImpossible /> When offer is not yet favorite should render correctly 1`] = `
 <View
   style={
     [

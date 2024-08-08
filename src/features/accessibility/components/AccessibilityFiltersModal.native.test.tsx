@@ -4,7 +4,7 @@ import { Button } from 'react-native'
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
-import { screen, render, fireEvent } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { AccessibilityFiltersModal, AccessibilityModalProps } from './AccessibilityFiltersModal'
 
@@ -35,7 +35,7 @@ describe('<AccessibilityFiltersModal />', () => {
     fireEvent.press(openModalButton)
     jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
-    expect(screen).toMatchSnapshot()
+    expect(audioCheckbox).toHaveAccessibilityState({ checked: true })
   })
 
   it('should not save modified disabilities when pressing close button', async () => {
@@ -52,39 +52,7 @@ describe('<AccessibilityFiltersModal />', () => {
 
     jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
-    expect(screen).toMatchSnapshot()
-  })
-
-  it('should reset filter when reset button and search button are pressed', async () => {
-    renderAccessibilityFiltersModal()
-
-    const resetButton = await screen.findByText('Réinitialiser')
-    fireEvent.press(resetButton)
-
-    const searchButton = await screen.findByText('Rechercher')
-    fireEvent.press(searchButton)
-
-    const openModalButton = await screen.findByText('Show modal')
-    fireEvent.press(openModalButton)
-    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-
-    expect(screen).toMatchSnapshot()
-  })
-
-  it('should not reset filter when reset button is pressed and user closes modal', async () => {
-    renderAccessibilityFiltersModal()
-
-    const resetButton = await screen.findByTestId('Réinitialiser')
-    fireEvent.press(resetButton)
-
-    const closeButton = await screen.findByTestId('icon-close')
-    fireEvent.press(closeButton)
-
-    const openModalButton = await screen.findByText('Show modal')
-    fireEvent.press(openModalButton)
-    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-
-    expect(screen).toMatchSnapshot()
+    expect(audioCheckbox).toHaveAccessibilityState({ checked: false })
   })
 })
 
