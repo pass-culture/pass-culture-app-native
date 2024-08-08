@@ -38,20 +38,22 @@ jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
   useBookingOffer: () => mockUseBookingOffer(),
 }))
 
+// This line checks that there is no text content rendered. The regex /./ matches any character, so queryByText will return null if there is no content.
+const ANY_CHARACTER = /./
+
 describe('<BookingInformations />', () => {
   it('should return empty component when no offer', async () => {
     mockUseBookingOffer.mockReturnValueOnce(undefined)
     render(<BookingInformations />)
 
-    // This line checks that there is no text content rendered. The regex /./ matches any character, so queryByText will return null if there is no content.
-    expect(screen.queryByText(/./)).toBeNull()
+    expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
   })
 
   it('should return empty component when no stock', async () => {
     mockedUseBookingStock.mockReturnValueOnce(undefined)
     render(<BookingInformations />)
 
-    expect(screen.queryByText(/./)).toBeNull()
+    expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
   })
 
   it('should return empty component when no quantity', async () => {
@@ -62,7 +64,7 @@ describe('<BookingInformations />', () => {
     })
     render(<BookingInformations />)
 
-    expect(screen.queryByText(/./)).toBeNull()
+    expect(screen.queryByText(ANY_CHARACTER)).toBeNull()
   })
 
   it('should render event date section when event', async () => {
