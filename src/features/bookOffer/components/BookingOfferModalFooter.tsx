@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { Step } from 'features/bookOffer/context/reducer'
+import { Action, Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import {
   getButtonState,
@@ -11,12 +11,18 @@ import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing } from 'ui/theme'
 
-type Props = {
+type BookingOptions = {
   hasPricesStep?: boolean
   isDuo?: boolean
 }
 
-export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
+const analyticsBySteps: { [key in Step]?: () => Promise<void> } = {
+  [Step.HOUR]: analytics.logHasChosenTime,
+  [Step.PRICE]: analytics.logHasChosenPrice,
+  [Step.DUO]: analytics.logHasClickedDuoStep,
+}
+
+export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: BookingOptions) => {
   const { dispatch, bookingState } = useBookingContext()
   const { step } = bookingState
 
@@ -24,25 +30,9 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
   const enabledButton = getButtonState(bookingState)
 
   const validateOptions = useCallback(() => {
-    if (step === Step.DATE) {
-      dispatch({ type: 'RESET_HOUR' })
-      return dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
-    }
+    analyticsBySteps[step]?.()
 
-    if (step === Step.HOUR && hasPricesStep) {
-      dispatch({ type: 'RESET_STOCK' })
-      return dispatch({ type: 'CHANGE_STEP', payload: Step.PRICE })
-    }
-
-    if (step === Step.PRICE) analytics.logHasChosenPrice()
-
-    if (isDuo && ((step === Step.HOUR && !hasPricesStep) || step === Step.PRICE)) {
-      return dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
-    }
-
-    if (step === Step.DUO) analytics.logHasClickedDuoStep()
-
-    return dispatch({ type: 'VALIDATE_OPTIONS' })
+    handleBookingSteps(step, dispatch, { isDuo, hasPricesStep })
   }, [dispatch, hasPricesStep, isDuo, step])
 
   return step == Step.CONFIRMATION ? null : (
@@ -54,6 +44,37 @@ export const BookingOfferModalFooter = ({ hasPricesStep, isDuo }: Props) => {
       />
     </FooterContainer>
   )
+}
+
+const handleBookingSteps = (
+  step: Step,
+  dispatch: React.Dispatch<Action>,
+  { isDuo, hasPricesStep }: BookingOptions
+) => {
+  switch (step) {
+    case Step.DATE:
+      dispatch({ type: 'RESET_HOUR' })
+      return dispatch({ type: 'CHANGE_STEP', payload: Step.HOUR })
+
+    case Step.HOUR:
+      if (hasPricesStep) {
+        dispatch({ type: 'RESET_STOCK' })
+        return dispatch({ type: 'CHANGE_STEP', payload: Step.PRICE })
+      }
+      if (isDuo) {
+        return dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
+      }
+      return dispatch({ type: 'VALIDATE_OPTIONS' })
+
+    case Step.PRICE:
+      if (isDuo) {
+        return dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
+      }
+      return dispatch({ type: 'VALIDATE_OPTIONS' })
+
+    case Step.DUO:
+      return dispatch({ type: 'VALIDATE_OPTIONS' })
+  }
 }
 
 const FooterContainer = styled.View({
