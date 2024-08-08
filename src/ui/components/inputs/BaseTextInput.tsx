@@ -4,6 +4,7 @@ import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AppThemeType } from 'theme'
+import { getSpacing } from 'ui/theme'
 
 import { RNTextInputProps } from './types'
 
@@ -60,6 +61,7 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
       placeholder={props.placeholder || ''}
       returnKeyType={props.returnKeyType ?? 'next'}
       defaultValue={defaultValue}
+      multiline={!!props.multiline}
       ref={(ref) => {
         if (ref) {
           /* @ts-expect-error Conflicts between types */
@@ -76,21 +78,24 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
 
 const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
   placeholderTextColor: theme.typography.placeholder.color,
-}))<{ isEmpty: boolean; textStyle?: Typography }>(({ theme, isEmpty, textStyle, editable }) => {
-  let inputStyle: Typography = theme.typography.body
-  if (isEmpty) {
-    inputStyle = theme.typography.placeholder
-  } else if (textStyle) {
-    inputStyle = textStyle
-  }
+}))<{ isEmpty: boolean; textStyle?: Typography; multiline: boolean }>(
+  ({ theme, isEmpty, textStyle, editable, multiline }) => {
+    let inputStyle: Typography = theme.typography.body
+    if (isEmpty) {
+      inputStyle = theme.typography.placeholder
+    } else if (textStyle) {
+      inputStyle = textStyle
+    }
 
-  return {
-    flex: 1,
-    padding: 0,
-    height: '100%',
-    ...inputStyle,
-    color: editable ? inputStyle.color : theme.colors.greyDark,
-    lineHeight: undefined,
-    ...(Platform.OS === 'web' && { width: 'inherit' }),
+    return {
+      flex: 1,
+      padding: 0,
+      paddingTop: multiline ? getSpacing(2.5) : 0,
+      height: '100%',
+      ...inputStyle,
+      color: editable ? inputStyle.color : theme.colors.greyDark,
+      lineHeight: undefined,
+      ...(Platform.OS === 'web' && { width: 'inherit' }),
+    }
   }
-})
+)
