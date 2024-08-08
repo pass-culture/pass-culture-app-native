@@ -21,7 +21,6 @@ import { useLocation } from 'libs/location'
 import { useDistance } from 'libs/location/hooks/useDistance'
 import { QueryKeys } from 'libs/queryKeys'
 import { Subcategory } from 'libs/subcategories/types'
-import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
 import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
@@ -179,9 +178,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
           />
         )}
         {isOfferAMovieScreening ? (
-          <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER}>
-            <MovieScreeningCalendar offer={offer} subcategory={subcategory} />
-          </FeatureFlag>
+          <MovieScreeningCalendar offer={offer} subcategory={subcategory} />
         ) : null}
       </ViewGap>
     )

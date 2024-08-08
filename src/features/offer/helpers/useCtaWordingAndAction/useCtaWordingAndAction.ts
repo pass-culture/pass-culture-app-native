@@ -31,8 +31,6 @@ import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getB
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Subcategory } from 'libs/subcategories/types'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
@@ -70,7 +68,6 @@ type Props = {
   booking: BookingReponse | null | undefined
   from?: Referrals
   searchId?: string
-  enableNewXpCine?: boolean
   isDepositExpired?: boolean
   apiRecoParams?: RecommendationApiParams
   playlistType?: PlaylistType
@@ -104,7 +101,6 @@ export const getCtaWordingAndAction = ({
   booking,
   from,
   searchId,
-  enableNewXpCine,
   isDepositExpired,
   apiRecoParams,
   playlistType,
@@ -114,12 +110,11 @@ export const getCtaWordingAndAction = ({
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
   const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
   const isMovieScreeningOffer = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
-  const isNewXPCine = isMovieScreeningOffer && enableNewXpCine
 
   if (!isLoggedIn) {
     return {
       modalToDisplay: OfferModal.AUTHENTICATION,
-      wording: isNewXPCine ? undefined : 'Réserver l’offre',
+      wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
       isDisabled: false,
       onPress: () => {
         analytics.logConsultAuthenticationModal(offer.id)
@@ -130,7 +125,7 @@ export const getCtaWordingAndAction = ({
 
   if (userStatus?.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
     return {
-      wording: isNewXPCine ? undefined : 'Réserver l’offre',
+      wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
       bottomBannerText: BottomBannerTextEnum.NOT_ELIGIBLE,
       isDisabled: true,
       movieScreeningUserData: { isUserEligible: false },
@@ -140,17 +135,17 @@ export const getCtaWordingAndAction = ({
   if (isEndedUsedBooking) {
     return {
       modalToDisplay: OfferModal.BOOKING,
-      wording: isNewXPCine ? undefined : 'Réserver l’offre',
+      wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
       isEndedUsedBooking,
       isDisabled: false,
-      bottomBannerText: isNewXPCine ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
+      bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
       movieScreeningUserData: { bookings: booking as BookingReponse },
     }
   }
 
   if (userStatus?.statusType === YoungStatusType.eligible) {
     const common = {
-      wording: isNewXPCine ? undefined : 'Réserver l’offre',
+      wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
       isDisabled: false,
     }
     switch (userStatus.subscriptionStatus) {
@@ -212,7 +207,7 @@ export const getCtaWordingAndAction = ({
           params: { id: bookedOffers[offer.id] },
           fromRef: true,
         },
-        bottomBannerText: isNewXPCine ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
+        bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
         movieScreeningUserData: {
           hasBookedOffer: true,
           bookings: booking as BookingReponse,
@@ -246,7 +241,7 @@ export const getCtaWordingAndAction = ({
         params: { id: bookedOffers[offer.id] },
         fromRef: true,
       },
-      bottomBannerText: isNewXPCine ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
+      bottomBannerText: isMovieScreeningOffer ? BottomBannerTextEnum.ALREADY_BOOKED : undefined,
       movieScreeningUserData: {
         hasBookedOffer: true,
         bookings: booking as BookingReponse,
@@ -267,7 +262,7 @@ export const getCtaWordingAndAction = ({
   }
 
   // Beneficiary
-  if (isDepositExpired && isNewXPCine)
+  if (isDepositExpired && isMovieScreeningOffer)
     return {
       bottomBannerText: BottomBannerTextEnum.CREDIT_HAS_EXPIRED,
       movieScreeningUserData: { isUserCreditExpired: true },
@@ -275,7 +270,7 @@ export const getCtaWordingAndAction = ({
 
   if (!offer.isReleased || offer.isExpired) return { wording: 'Offre expirée', isDisabled: true }
   if (offer.isSoldOut)
-    return { wording: isNewXPCine ? undefined : 'Offre épuisée', isDisabled: true }
+    return { wording: isMovieScreeningOffer ? undefined : 'Offre épuisée', isDisabled: true }
 
   if (!subcategory.isEvent) {
     if (!hasEnoughCredit) {
@@ -303,15 +298,17 @@ export const getCtaWordingAndAction = ({
   if (subcategory.isEvent) {
     if (!hasEnoughCredit)
       return {
-        wording: isNewXPCine ? undefined : 'Crédit insuffisant',
-        bottomBannerText: isNewXPCine ? BottomBannerTextEnum.NOT_ENOUGH_CREDIT : undefined,
+        wording: isMovieScreeningOffer ? undefined : 'Crédit insuffisant',
+        bottomBannerText: isMovieScreeningOffer
+          ? BottomBannerTextEnum.NOT_ENOUGH_CREDIT
+          : undefined,
         movieScreeningUserData: { isUserLoggedIn: isLoggedIn, hasEnoughCredit },
         isDisabled: true,
       }
 
     return {
       modalToDisplay: OfferModal.BOOKING,
-      wording: isNewXPCine ? undefined : 'Voir les disponibilités',
+      wording: isMovieScreeningOffer ? undefined : 'Voir les disponibilités',
       isDisabled: false,
       onPress: () => {
         analytics.logConsultAvailableDates(offer.id)
@@ -337,7 +334,6 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
   const { showErrorSnackBar } = useSnackBarContext()
-  const enableNewXpCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_OFFER)
   const route = useRoute<UseRouteType<'Offer'>>()
   const apiRecoParams: RecommendationApiParams = route.params.apiRecoParams
     ? JSON.parse(route.params.apiRecoParams)
@@ -407,7 +403,6 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     booking,
     from,
     searchId,
-    enableNewXpCine,
     isDepositExpired,
     apiRecoParams,
     playlistType,
