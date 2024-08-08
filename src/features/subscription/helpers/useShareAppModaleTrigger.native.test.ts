@@ -25,7 +25,7 @@ describe('Use Share app modale trigger', () => {
     renderHook(() => useShareAppModaleTrigger(TRUE_TRIGGER))
 
     await waitFor(() => {
-      expect(mockShowAppModal).toHaveBeenCalled()
+      expect(mockShowAppModal).toHaveBeenCalledWith()
     })
   })
 
@@ -33,7 +33,7 @@ describe('Use Share app modale trigger', () => {
     renderHook(() => useShareAppModaleTrigger(TRUE_TRIGGER))
 
     await waitFor(() => {
-      expect(mockShareAppModalSeeShareAppAction).toHaveBeenCalled()
+      expect(mockShareAppModalSeeShareAppAction).toHaveBeenCalledWith()
     })
   })
 
