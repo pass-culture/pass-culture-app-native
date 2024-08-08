@@ -209,6 +209,7 @@ export type RootStackParamList = {
   CheatCodes: undefined
   CheatMenu: undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number }
+  DeleteProfileReason: undefined
   ConfirmDeleteProfile: undefined
   BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
   BookingDetails: { id: number }

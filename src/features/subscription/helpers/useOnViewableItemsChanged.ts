@@ -16,7 +16,10 @@ export const useOnViewableItemsChanged = (
 
       if (!lastItemVisibilityChanged) return
 
-      const isLastItemVisible = viewableItems.some((view) => view.item === lastItem)
+      const isLastItemVisible = viewableItems.some((view) => {
+        if (view.item === lastItem) return view.isViewable
+        return false
+      })
       gradientRef.current.transition(
         { transform: [{ translateY: isLastItemVisible ? 0 : 100 }] },
         { transform: [{ translateY: isLastItemVisible ? 100 : 0 }] },

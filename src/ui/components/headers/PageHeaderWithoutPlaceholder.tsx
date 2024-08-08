@@ -12,7 +12,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface Props {
-  title: string
+  title?: string
   titleID?: string
   onGoBack?: () => void
   testID?: string
@@ -52,7 +52,7 @@ export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
               <BackButton onGoBack={onGoBack} color={ColorsEnum.BLACK} />
             ) : null}
           </ButtonContainer>
-          <Title nativeID={titleID}>{title}</Title>
+          {title ? <Title nativeID={titleID}>{title}</Title> : null}
           <ButtonContainer positionInHeader="right" testID="close-button-container">
             {RightButton}
           </ButtonContainer>

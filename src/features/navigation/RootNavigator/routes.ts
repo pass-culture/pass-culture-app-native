@@ -62,6 +62,7 @@ import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/Co
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
+import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
@@ -249,6 +250,13 @@ export const routes: RootRoute[] = [
     component: AccountReactivationSuccess,
     path: 'compte-reactive',
     options: { title: 'Compte réactivé' },
+    secure: true,
+  },
+  {
+    name: 'DeleteProfileReason',
+    component: DeleteProfileReason,
+    path: 'profil/suppression/raison',
+    options: { title: 'Raison de suppression de compte' },
     secure: true,
   },
   {
