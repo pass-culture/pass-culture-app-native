@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { useFeedback } from 'features/profile/api/useFeedback'
 import {
   FEEDBACK_IN_APP_VALUE_MAX_LENGTH,
   setFeedbackInAppSchema,
@@ -15,21 +16,29 @@ import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInp
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { BicolorRequestSent } from 'ui/svg/icons/BicolorRequestSent'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+type FormValue = {
+  feedback: string
+}
 
 export const FeedbackInApp = () => {
   const {
     control,
     formState: { isValid },
     handleSubmit,
-  } = useForm({
+  } = useForm<FormValue>({
     defaultValues: { feedback: '' },
     resolver: yupResolver(setFeedbackInAppSchema),
     mode: 'onChange',
   })
 
-  const onSubmit = () => 'doNothing'
+  const { mutate: sendFeedback } = useFeedback()
+
+  const onSubmit = ({ feedback }: FormValue) => {
+    sendFeedback({ feedback })
+  }
 
   return (
     <PageWithHeader
@@ -44,12 +53,12 @@ export const FeedbackInApp = () => {
             Comment pourrions-nous améliorer l’application&nbsp;?
           </Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
-          <Typo.Body>
+          <TypoDS.Body>
             Nous ne pouvons pas te répondre individuellement mais ta suggestion sera transmise à nos
             équipes.
-          </Typo.Body>
+          </TypoDS.Body>
           <Spacer.Column numberOfSpaces={5} />
-          <Typo.Body>
+          <TypoDS.Body>
             Si tu as une question ou besoin d’aide nous t’invitons à
             <Spacer.Row numberOfSpaces={1} />
             <ExternalTouchableLink
@@ -59,7 +68,7 @@ export const FeedbackInApp = () => {
               icon={EmailFilled}
               externalNav={contactSupport.forGenericQuestion}
             />
-          </Typo.Body>
+          </TypoDS.Body>
           <Spacer.Column numberOfSpaces={10} />
           <Controller
             control={control}
