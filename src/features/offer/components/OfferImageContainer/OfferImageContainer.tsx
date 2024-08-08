@@ -9,8 +9,6 @@ import {
   offerImageContainerMarginTop,
   useOfferImageContainerDimensions,
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { Spacer } from 'ui/theme'
 
@@ -28,12 +26,9 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   onPress,
 }) => {
   const { backgroundHeight } = useOfferImageContainerDimensions()
-  const shouldDisplayCarousel = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_OFFER_PREVIEW_WITH_CAROUSEL
-  )
   const { isDesktopViewport } = useTheme()
 
-  const hasCarousel = !!(shouldDisplayCarousel && imageUrls.length > 1)
+  const hasCarousel = imageUrls.length > 1
   const progressValue = useSharedValue<number>(0)
 
   const Wrapper = useCallback(

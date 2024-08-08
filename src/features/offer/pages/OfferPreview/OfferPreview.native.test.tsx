@@ -4,10 +4,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2 } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen } from 'tests/utils'
-
-const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 const mockOffer = jest.fn((): { data: OfferResponseV2 } => ({
   data: {
@@ -29,43 +26,16 @@ jest.mock('features/offer/api/useOffer', () => ({
 jest.useFakeTimers()
 
 describe('<OfferPreview />', () => {
-  describe('when the feature flag is enabled', () => {
-    beforeAll(() => {
-      mockFeatureFlag.mockReturnValue(true)
-    })
+  it('should display offer preview page', () => {
+    render(<OfferPreview />)
 
-    it('should display offer preview page', () => {
-      render(<OfferPreview />)
-
-      expect(screen.getByText('1/2')).toBeOnTheScreen()
-    })
-
-    it('should display the right image in carousel when a default index is provided', () => {
-      useRoute.mockReturnValueOnce({ params: { id: '1', defaultIndex: 1 } })
-      render(<OfferPreview />)
-
-      expect(screen.getByText('2/2')).toBeOnTheScreen()
-    })
+    expect(screen.getByText('1/2')).toBeOnTheScreen()
   })
 
-  describe('when the feature flag is disabled', () => {
-    beforeAll(() => {
-      mockFeatureFlag.mockReturnValue(false)
-    })
+  it('should display the right image in carousel when a default index is provided', () => {
+    useRoute.mockReturnValueOnce({ params: { id: '1', defaultIndex: 1 } })
+    render(<OfferPreview />)
 
-    it('should display offer preview page', () => {
-      render(<OfferPreview />)
-
-      expect(screen.getByText('1/1')).toBeOnTheScreen()
-    })
-
-    it('should not display offer preview page when there is not an image', () => {
-      mockOffer.mockReturnValueOnce({
-        data: { ...offerResponseSnap, images: null },
-      })
-      render(<OfferPreview />)
-
-      expect(screen.queryByText('1/1')).not.toBeOnTheScreen()
-    })
+    expect(screen.getByText('2/2')).toBeOnTheScreen()
   })
 })
