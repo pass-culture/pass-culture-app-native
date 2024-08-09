@@ -115,8 +115,7 @@ export const buildBookSearchPayloadValues = (
 
 function buildSearchPayloadValues(
   data: SubcategoriesResponseModelv2,
-  form: CategoriesModalFormProps,
-  enableNewMapping?: boolean
+  form: CategoriesModalFormProps
 ) {
   const buildGenreType = (genreTypeId: typeof form.genreType) => {
     if (genreTypeId === null) return []
@@ -131,7 +130,7 @@ function buildSearchPayloadValues(
     return [{ name: genreTypeId, value: genreType.value, key: genreTypeKey }]
   }
 
-  if (form.category === SearchGroupNameEnumv2.LIVRES && enableNewMapping) {
+  if (form.category === SearchGroupNameEnumv2.LIVRES) {
     return buildBookSearchPayloadValues(data, form)
   }
 
@@ -148,7 +147,7 @@ function buildSearchPayloadValues(
   return {
     offerCategories: form.category === SearchGroupNameEnumv2.NONE ? [] : [form.category],
     offerNativeCategories: offerGenericNativeCategories,
-    offerGenreTypes: buildGenreType(form.genreType),
+    offerGenreTypes: genreType,
     gtls: [],
   }
 }
@@ -345,8 +344,8 @@ export function getNativeCategories(
 export const useNativeCategories = (nativeCategory?: SearchGroupNameEnumv2) => {
   const { data: subcategories } = useSubcategories()
   const { facets } = useSearchResults()
-  const enableNewMapping = true
-  const tree = createMappingTree(subcategories, facets, enableNewMapping)
+
+  const tree = createMappingTree(subcategories, facets)
 
   const nativeCategories =
     nativeCategory &&
@@ -522,14 +521,13 @@ export function getNbResultsFacetLabel(nbResultsFacet?: number) {
 
 export const handleCategoriesSearchPress = (
   form: CategoriesModalFormProps,
-  data: SubcategoriesResponseModelv2,
-  enableNewMapping?: boolean
+  data: SubcategoriesResponseModelv2
 ) => {
   if (!data) {
     return
   }
 
-  const payload = buildSearchPayloadValues(data, form, enableNewMapping)
+  const payload = buildSearchPayloadValues(data, form)
   if (!payload) return
 
   let isFullyDigitalOffersCategory = false

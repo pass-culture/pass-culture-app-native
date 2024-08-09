@@ -23,8 +23,6 @@ import {
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -61,11 +59,10 @@ export const CategoriesModal = ({
   const { data } = useSubcategories()
   const { modal } = useTheme()
   const { dispatch, searchState } = useSearch()
-  const enableNewMapping = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_MAPPING_BOOKS)
 
   const tree = useMemo(() => {
-    return createMappingTree(data, facets, enableNewMapping)
-  }, [data, facets, enableNewMapping])
+    return createMappingTree(data, facets)
+  }, [data, facets])
 
   const {
     formState: { isSubmitting },
@@ -167,7 +164,7 @@ export const CategoriesModal = ({
         return
       }
 
-      const searchPressData = handleCategoriesSearchPress(form, data, enableNewMapping)
+      const searchPressData = handleCategoriesSearchPress(form, data)
 
       let additionalSearchState: SearchState = { ...searchState, ...searchPressData?.payload }
       additionalSearchState = {
@@ -178,7 +175,7 @@ export const CategoriesModal = ({
       dispatch({ type: 'SET_STATE', payload: additionalSearchState })
       hideModal()
     },
-    [data, dispatch, hideModal, searchState, enableNewMapping]
+    [data, dispatch, hideModal, searchState]
   )
 
   const handleReset = useCallback(() => {
@@ -211,7 +208,7 @@ export const CategoriesModal = ({
   )
 
   const getNativeCategoriesSection = () => {
-    if (category === SearchGroupNameEnumv2.LIVRES && enableNewMapping) {
+    if (category === SearchGroupNameEnumv2.LIVRES) {
       return (
         <BookCategoriesSection
           data={nativeCategories}

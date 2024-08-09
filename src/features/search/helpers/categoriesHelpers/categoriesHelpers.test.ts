@@ -26,9 +26,8 @@ let mockSearchState: SearchState = {
 }
 
 const mockedFacets = undefined
-const mockedNewMappingEnabled = true
 
-const tree = createMappingTree(subcategoriesDataTest, mockedFacets, mockedNewMappingEnabled)
+const tree = createMappingTree(subcategoriesDataTest, mockedFacets)
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')

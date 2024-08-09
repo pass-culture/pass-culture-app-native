@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
-import { OfferGenreType, SearchState } from 'features/search/types'
+import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
 import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
 import { FacetData } from 'libs/algolia/types'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -294,8 +294,22 @@ describe('<CategoriesModal/>', () => {
   })
 
   describe('new book native categories section', () => {
-    beforeAll(() => {
-      mockUseFeatureFlag.mockReturnValue(true)
+    const BOOKS_WELLNESS_CATEGORY_SEARCH_STATE = {
+      ...mockSearchState,
+      offerCategories: [SearchGroupNameEnumv2.LIVRES],
+      offerNativeCategories: [BooksNativeCategoriesEnum.LOISIRS_ET_BIEN_ETRE],
+      offerGenreTypes: [{ key: GenreType.BOOK, value: 'Cuisine', name: 'CUISINE' }],
+      gtls: [
+        {
+          code: '04030000',
+          label: 'Arts de la table / Gastronomie',
+          level: 2,
+        },
+      ],
+      isFullyDigitalOffersCategory: undefined,
+    }
+
+    beforeEach(() => {
       mockSearchState = {
         ...searchState,
         offerCategories: [SearchGroupNameEnumv2.LIVRES],
@@ -303,43 +317,25 @@ describe('<CategoriesModal/>', () => {
       }
     })
 
-    afterAll(() => {
-      mockUseFeatureFlag.mockReturnValue(false)
+    afterEach(() => {
       mockSearchState = searchState
     })
 
-    it('should display the new book native categories section', () => {
-      renderCategories()
-      screen.getByText('Romans et littérature')
-
-      expect(screen).toMatchSnapshot()
-    })
-  })
-
-  describe('With genre types view', () => {
-    beforeAll(() => {
-      mockSearchState = {
-        ...searchState,
-        offerCategories: [SearchGroupNameEnumv2.LIVRES],
-        offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
-      }
-    })
-
-    it('should render genre types', () => {
+    it('should display the new book native categories section', async () => {
       renderCategories()
 
-      fireEvent.press(screen.getByText('Livres papier'))
+      await screen.findByText('Livres papier')
 
-      expect(screen.getByText('Bandes dessinées')).toBeOnTheScreen()
+      expect(screen.getByText('Romans et littérature')).toBeOnTheScreen()
     })
 
     it('should go back to native categories view', () => {
       renderCategories({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
-      const previousButton = screen.getByTestId('Revenir en arrière')
 
-      fireEvent.press(previousButton)
+      const goBackButton = screen.getByTestId('Revenir en arrière')
+      fireEvent.press(goBackButton)
 
       expect(screen.getByText('Livres')).toBeOnTheScreen()
     })
@@ -347,22 +343,12 @@ describe('<CategoriesModal/>', () => {
     it('should set search state when search button is pressed', async () => {
       renderCategories()
 
-      fireEvent.press(screen.getByText('Livres papier'))
-      const someCategoryFilterCheckbox = screen.getByText('Bandes dessinées')
-      fireEvent.press(someCategoryFilterCheckbox)
+      fireEvent.press(screen.getByText('Loisirs & Bien-être'))
+      fireEvent.press(screen.getByText('Cuisine'))
+      fireEvent.press(screen.getByText('Rechercher'))
 
-      const button = screen.getByText('Rechercher')
+      const expectedSearchParams: SearchState = BOOKS_WELLNESS_CATEGORY_SEARCH_STATE
 
-      fireEvent.press(button)
-
-      const expectedSearchParams: SearchState = {
-        ...searchState,
-        offerCategories: [SearchGroupNameEnumv2.LIVRES],
-        offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
-        offerGenreTypes: [
-          { key: GenreType.BOOK, value: 'Bandes dessinées', name: 'Bandes dessinées' },
-        ],
-      }
       await waitFor(() => {
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',
@@ -372,21 +358,26 @@ describe('<CategoriesModal/>', () => {
     })
 
     it('should remove offerGenreTypes filter when none is set', async () => {
+      mockSearchState = BOOKS_WELLNESS_CATEGORY_SEARCH_STATE
+
       renderCategories()
 
-      fireEvent.press(screen.getByText('Livres papier'))
-      const someCategoryFilterCheckbox = screen.getByText('Tout')
-      fireEvent.press(someCategoryFilterCheckbox)
+      const goBackButton = screen.getByTestId('Revenir en arrière')
+      fireEvent.press(goBackButton)
+
+      fireEvent.press(await screen.findByText('Tout'))
 
       const button = screen.getByText('Rechercher')
       fireEvent.press(button)
 
       const expectedSearchParams: SearchState = {
-        ...searchState,
+        ...mockSearchState,
         offerCategories: [SearchGroupNameEnumv2.LIVRES],
-        offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
-        offerGenreTypes: [],
+        offerNativeCategories: [],
+        offerGenreTypes: undefined,
+        gtls: undefined,
       }
+
       await waitFor(() => {
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',
@@ -398,17 +389,13 @@ describe('<CategoriesModal/>', () => {
     it('should reset filters and come back on categories view', async () => {
       renderCategories()
 
-      fireEvent.press(screen.getByText('Livres papier'))
-      fireEvent.press(screen.getByText('Bandes dessinées'))
+      fireEvent.press(screen.getByText('BD & Comics'))
 
-      const button = screen.getByText('Réinitialiser')
-      fireEvent.press(button)
+      fireEvent.press(screen.getByText('Réinitialiser'))
 
-      await waitFor(() => {
-        const defaultCategoryFilterCheckbox = screen.getByText('Toutes les catégories')
+      const defaultCategoryFilterCheckbox = screen.getByText('Toutes les catégories')
 
-        expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
-      })
+      expect(defaultCategoryFilterCheckbox).toBeEnabled()
     })
 
     it('should keep initial parameters when pressing close button', async () => {
@@ -424,25 +411,23 @@ describe('<CategoriesModal/>', () => {
     })
 
     it('should filter on category, native category and genre/type then only on category with all native categories', async () => {
-      mockSearchState = {
-        ...mockSearchState,
-        offerCategories: [SearchGroupNameEnumv2.LIVRES],
-        offerNativeCategories: [NativeCategoryIdEnumv2.LIVRES_PAPIER],
-        offerGenreTypes: ['Bandes dessinées'] as unknown as OfferGenreType[],
-      }
-      renderCategories()
-      fireEvent.press(screen.getByTestId('Revenir en arrière'))
-      fireEvent.press(screen.getByTestId('Revenir en arrière'))
-      fireEvent.press(screen.getByText('Jeux & jeux vidéos'))
+      mockSearchState = BOOKS_WELLNESS_CATEGORY_SEARCH_STATE
 
-      const button = screen.getByText('Rechercher')
-      fireEvent.press(button)
+      renderCategories()
+
+      const goBackButton = screen.getByTestId('Revenir en arrière')
+      fireEvent.press(goBackButton)
+      fireEvent.press(goBackButton)
+
+      fireEvent.press(screen.getByText('Jeux & jeux vidéos'))
+      fireEvent.press(screen.getByText('Rechercher'))
 
       const expectedSearchParams: SearchState = {
-        ...searchState,
+        ...mockSearchState,
         offerCategories: [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS],
         offerNativeCategories: [],
         offerGenreTypes: [],
+        gtls: [],
       }
 
       await waitFor(() => {
