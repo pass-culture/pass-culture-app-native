@@ -1,10 +1,14 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
+- swipe:
+    from:
+      text: 'Les offres'
+    direction: UP
 - tapOn:
     label: 'Sélection de la 1ère offre disponible'
-    below:
-      text: .*résultats
+    text: 'Séances de cinéma'
+    index: 1
 
 - waitForAnimationToEnd
 

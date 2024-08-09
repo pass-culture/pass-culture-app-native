@@ -87,6 +87,8 @@ jobs:
         with:
           api-key: ${{ steps.secrets.outputs.MAESTRO_CLOUD_API_KEY }}
           app-file: android/app/build/outputs/apk/staging/debug/app-staging-debug.apk
+          device-locale: fr_FR
+          android-api-level: 34
           workspace: .maestro/testsV2/
           include-tags: cloud
           env: |
