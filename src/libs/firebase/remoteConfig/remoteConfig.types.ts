@@ -18,6 +18,7 @@ export type CustomRemoteConfig = {
   shouldApplyGraphicRedesign: boolean
   shouldDisplayReassuranceMention: boolean
   shouldLogInfo: boolean
+  displayInAppFeedback: boolean
   subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
 }
 
