@@ -9,6 +9,9 @@ jest.mock('uuid', () => ({
   v4: jest.fn(),
 }))
 
+jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 describe('<ChangeCity/>', () => {
   it('should render correctly', () => {
     const { container } = render(reactQueryProviderHOC(<ChangeCity />))
