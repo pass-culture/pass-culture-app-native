@@ -271,7 +271,8 @@ export const routes: RootRoute[] = [
     name: 'FeedbackInApp',
     component: FeedbackInApp,
     path: 'profil/formulaire-suggestion',
-    options: { title: 'Suggestion' },
+    options: { title: 'Forumulaire de suggestion' },
+    secure: true,
   },
   {
     name: 'DeleteProfileSuccess',
