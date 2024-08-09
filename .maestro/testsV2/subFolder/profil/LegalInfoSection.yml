@@ -10,15 +10,12 @@ appId: ${MAESTRO_APP_ID}
     id: "Nouvelle fenêtre\_: Conditions Générales d’Utilisation"
 - waitForAnimationToEnd
 
-- runFlow: # Si cloud
+- runFlow: # Permet de retourner sur la page précédente (cloud)
     when:
-      notVisible:
-        id: 'com.android.systemui:id/back'
-    commands:
-      - pressKey: back
-      - pressKey: back
-    
-- doubleTapOn: # Permet de quitter le browser in-app
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    file: ../../subFolder/cloud/commands/DoubleTapOnBack.yml
+
+- doubleTapOn: # Permet de quitter le browser in-app (local)
     id: 'com.android.systemui:id/back'
     optional: true
 
@@ -33,24 +30,19 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: "Nouvelle fenêtre\_: Charte de protection des données personnelles"
 - 'waitForAnimationToEnd'
-- runFlow: # Si cloud
+- runFlow: # Permet de retourner sur la page précédente (cloud)
     when:
-      notVisible:
-        id: 'com.android.systemui:id/back'
-    commands:
-      - pressKey: back
-      - pressKey: back
-    
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    file: ../../subFolder/cloud/commands/DoubleTapOnBack.yml
+
 - doubleTapOn: # Permet de quitter le browser in-app
     id: 'com.android.systemui:id/back'
     optional: true
 
-- runFlow: # Si cloud
+- runFlow: # Permet de retourner sur la page précédente (cloud)
     when:
-      notVisible:
-        id: 'com.android.systemui:id/back'
-    commands:
-      - pressKey: back
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn:
     id: 'com.android.systemui:id/back'
