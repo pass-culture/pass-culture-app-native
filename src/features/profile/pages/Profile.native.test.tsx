@@ -16,6 +16,8 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import {
   GeoCoordinates,
   GeolocationError,
@@ -94,11 +96,19 @@ const useVersionSpy = jest.spyOn(useVersion, 'useVersion').mockReturnValue('Vers
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('Profile component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+
+  beforeAll(() => {
+    useRemoteConfigContextSpy.mockReturnValue({
+      ...DEFAULT_REMOTE_CONFIG,
+      displayInAppFeedback: true,
+    })
+  })
 
   beforeEach(() => {
     mockServer.getApi<SubscriptionStepperResponseV2>(
