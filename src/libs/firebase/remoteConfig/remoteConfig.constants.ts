@@ -21,6 +21,7 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   shouldApplyGraphicRedesign: false,
   shouldDisplayReassuranceMention: false,
   shouldLogInfo: false,
+  displayInAppFeedback: false,
   subscriptionHomeEntryIds: {
     [SubscriptionTheme.CINEMA]: '',
     [SubscriptionTheme.MUSIQUE]: '',

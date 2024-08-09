@@ -42,6 +42,7 @@ import { BicolorTabBarProfileV2 } from 'ui/svg/icons/BicolorTabBarProfileV2'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
 import { Booking } from 'ui/svg/icons/Booking'
+import { Bulb } from 'ui/svg/icons/Bulb'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { Check } from 'ui/svg/icons/Check'
@@ -194,6 +195,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorUnlock,
   BicolorWarning,
   Booking,
+  Bulb,
   Calendar,
   CalendarS,
   Check,
@@ -245,6 +247,7 @@ export const TertiaryAndSmallerIcons = {
   Again,
   ClockFilled,
   Connect,
+  Bulb,
   Digital,
   Duplicate,
   EditPen,
