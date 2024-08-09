@@ -1,7 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - wip
-  - cli
+  - local
 ---
 - runFlow: subFolder/LaunchApp.yml
 
@@ -19,7 +19,7 @@ tags:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
       label: 'Verify needed analytics is in the list'
     commands:
-    - assertTrue: ${output.analyticsHasBeenCalled}
+      - assertTrue: ${output.analyticsHasBeenCalled}
 - runScript:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
@@ -44,7 +44,7 @@ tags:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
     label: 'Verify needed analytic is in the list'
     commands:
-    - assertTrue: ${output.analyticsHasBeenCalled}
+      - assertTrue: ${output.analyticsHasBeenCalled}
 - runScript:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
@@ -64,7 +64,7 @@ tags:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
     label: 'Verify needed analytics is in the list'
     commands:
-    - assertTrue: ${output.analyticsHasBeenCalled}
+      - assertTrue: ${output.analyticsHasBeenCalled}
 - runScript:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
@@ -87,7 +87,7 @@ tags:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
     label: 'Verify needed analytics is in the list'
     commands:
-    - assertTrue: ${output.analyticsHasBeenCalled}
+      - assertTrue: ${output.analyticsHasBeenCalled}
 - runScript:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}
