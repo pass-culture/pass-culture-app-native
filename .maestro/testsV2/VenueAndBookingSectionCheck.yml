@@ -1,7 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - wip
-  - cli
+  - local
 ---
 - runFlow: subFolder/LaunchApp.yml
 - runFlow: subFolder/cookies/AcceptCookies.yml
