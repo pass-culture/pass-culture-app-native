@@ -2652,6 +2652,17 @@ export enum PopOverIcon {
 }
 /**
  * @export
+ * @interface PostFeedbackBody
+ */
+export interface PostFeedbackBody {
+  /**
+   * @type {string}
+   * @memberof PostFeedbackBody
+   */
+  feedback: string
+}
+/**
+ * @export
  * @interface PostReactionRequest
  */
 export interface PostReactionRequest {
@@ -5141,10 +5152,30 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization =
-        <any>'CulturalSurveyAnswersRequest' !== 'string' ||
-        localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
+      const needsSerialization = (<any>"CulturalSurveyAnswersRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary post_feedback <POST>
+     * @param {PostFeedbackBody} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1Feedback(body?: PostFeedbackBody, options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v1/feedback`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"PostFeedbackBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
         options: localVarRequestOptions,
@@ -6722,9 +6753,19 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
       ).postNativeV1CulturalSurveyAnswers(body, options)
       const response = await safeFetch(
         configuration?.basePath + localVarFetchArgs.url,
-        localVarFetchArgs.options,
-        api
-      )
+        localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary post_feedback <POST>
+     * @param {PostFeedbackBody} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1Feedback(body?: PostFeedbackBody, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postNativeV1Feedback(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
     /**
@@ -7896,6 +7937,18 @@ export class DefaultApi extends BaseAPI {
   ) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1CulturalSurveyAnswers(body, options)
+  }
+/**
+    * 
+    * @summary post_feedback <POST>
+    * @param {PostFeedbackBody} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postNativeV1Feedback(body?: PostFeedbackBody, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV1Feedback(body, options)
   }
   /**
    *

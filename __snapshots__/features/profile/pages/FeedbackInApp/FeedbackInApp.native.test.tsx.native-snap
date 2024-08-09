@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetCity/> should render correctly 1`] = `
+exports[`<FeedbackInApp/> should match snapshot 1`] = `
 [
   <View
     accessibilityRole="header"
@@ -157,7 +157,7 @@ exports[`<SetCity/> should render correctly 1`] = `
             ]
           }
         >
-          Profil
+          Faire une suggestion
         </Text>
         <View
           positionInHeader="right"
@@ -260,27 +260,21 @@ exports[`<SetCity/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "width": "100%",
+                    "flexDirection": "row",
+                    "justifyContent": "center",
                   },
                 ]
               }
             >
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 18,
-                      "lineHeight": 22,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
+              <View
+                fill="url(#gradienttestUuid)"
+                height={156}
+                width={200}
               >
-                Renseigne ta ville de résidence
-              </Text>
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
             </View>
             <View
               numberOfSpaces={5}
@@ -292,10 +286,191 @@ exports[`<SetCity/> should render correctly 1`] = `
                 ]
               }
             />
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 20,
+                    "lineHeight": 24,
+                  },
+                ]
+              }
+            >
+              Comment pourrions-nous améliorer l’application ?
+            </Text>
+            <View
+              numberOfSpaces={5}
+              style={
+                [
+                  {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  },
+                ]
+              }
+            >
+              Nous ne pouvons pas te répondre individuellement mais ta suggestion sera transmise à nos équipes.
+            </Text>
+            <View
+              numberOfSpaces={5}
+              style={
+                [
+                  {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                  },
+                ]
+              }
+            >
+              Si tu as une question ou besoin d’aide nous t’invitons à
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
+              <View>
+                <View
+                  accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+                  accessibilityRole="link"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "top": 3,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Ouvrir le gestionnaire mail pour contacter le support"
+                >
+                  <View
+                    paddingForIcon={0}
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "top": 0,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={20}
+                      testID="button-icon"
+                      width={20}
+                    >
+                      <Text>
+                        button-icon-SVG-Mock
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        [
+                          {
+                            "width": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      color="#161617"
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                      typography="ButtonText"
+                    >
+                      contacter le support
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </Text>
+            <View
+              numberOfSpaces={10}
+              style={
+                [
+                  {
+                    "height": 40,
+                  },
+                ]
+              }
+            />
             <View
               style={
                 [
                   {
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "column",
                     "maxWidth": 500,
                     "width": "100%",
                   },
@@ -327,7 +502,21 @@ exports[`<SetCity/> should render correctly 1`] = `
                       ]
                     }
                   >
-                    Indique ton code postal et choisis ta ville
+                    Ma suggestion
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Obligatoire
                   </Text>
                 </View>
               </View>
@@ -364,8 +553,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                       "width": "100%",
                     },
                     {
-                      "borderRadius": 24,
-                      "outlineOffset": 0,
+                      "height": 240,
                     },
                   ]
                 }
@@ -373,22 +561,17 @@ exports[`<SetCity/> should render correctly 1`] = `
               >
                 <TextInput
                   accessibilityDescribedBy="testUuidV4"
-                  accessibilityHidden={false}
-                  autoCorrect={false}
+                  accessibilityRequired={true}
                   editable={true}
-                  enablesReturnKeyAutomatically={true}
-                  focusable={true}
                   isEmpty={true}
-                  keyboardType="number-pad"
-                  multiline={false}
+                  multiline={true}
                   nativeID="testUuidV4"
                   onBlur={[Function]}
                   onChangeText={[Function]}
                   onFocus={[Function]}
-                  placeholder="Ex : 75017"
+                  placeholder="Ma suggestion..."
                   placeholderTextColor="#696A6F"
-                  returnKeyType="search"
-                  selectionColor="#696A6F"
+                  returnKeyType="next"
                   style={
                     [
                       {
@@ -402,167 +585,174 @@ exports[`<SetCity/> should render correctly 1`] = `
                         "paddingBottom": 0,
                         "paddingLeft": 0,
                         "paddingRight": 0,
-                        "paddingTop": 0,
+                        "paddingTop": 10,
                       },
-                      {},
                     ]
                   }
-                  testID="Entrée pour la ville"
-                  textContentType="postalCode"
+                  testID="Champ de texte"
                   value=""
                 />
               </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
             </View>
             <View
-              accessibilityRole="radiogroup"
               style={
                 [
                   {
-                    "flexGrow": 1,
-                    "overflowY": "scroll",
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityRole="list"
-                style={
-                  [
-                    {
-                      "flexDirection": "column",
-                      "paddingLeft": 0,
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </RCTScrollView>
-        <View
-          onLayout={[Function]}
-          style={
-            [
-              {
-                "backgroundColor": "#ffffff",
-                "bottom": 0,
-                "left": 0,
-                "paddingBottom": 20,
-                "paddingHorizontal": 20,
-                "paddingTop": 12,
-                "position": "absolute",
-                "right": 0,
-              },
-            ]
-          }
-        >
-          <View
-            accessibilityLabel="Continuer vers l’étape suivante"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#F1F1F4",
-                    "borderRadius": 24,
                     "flexDirection": "row",
-                    "justifyContent": "center",
+                    "marginVertical": 8,
                     "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  },
-                  {},
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Continuer vers l’étape suivante"
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
                   },
                 ]
               }
             >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+              <View
                 style={
                   [
                     {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "maxWidth": "100%",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "textAlign": "end",
+                      "width": 72,
                     },
                   ]
                 }
               >
-                Continuer
-              </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  0
+                   / 
+                  800
+                </Text>
+              </View>
             </View>
+            <View
+              style={
+                [
+                  {
+                    "paddingVertical": 20,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Envoyer ma suggestion"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": true,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={false}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#F1F1F4",
+                        "borderRadius": 24,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "maxWidth": 500,
+                        "minHeight": 40,
+                        "paddingBottom": 2,
+                        "paddingLeft": 20,
+                        "paddingRight": 20,
+                        "paddingTop": 2,
+                        "width": "100%",
+                      },
+                      {},
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Envoyer ma suggestion"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    adjustsFontSizeToFit={false}
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "maxWidth": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    Envoyer ma suggestion
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                [
+                  {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
           </View>
-          <View
-            customHeight={8}
-            enable={true}
-            style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-        </View>
+        </RCTScrollView>
       </View>
     </View>
   </View>,

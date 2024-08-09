@@ -63,6 +63,7 @@ import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentS
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
+import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
@@ -264,6 +265,13 @@ export const routes: RootRoute[] = [
     component: ConfirmDeleteProfile,
     path: 'profil/suppression',
     options: { title: 'Suppression de compte' },
+    secure: true,
+  },
+  {
+    name: 'FeedbackInApp',
+    component: FeedbackInApp,
+    path: 'profil/formulaire-suggestion',
+    options: { title: 'Forumulaire de suggestion' },
     secure: true,
   },
   {

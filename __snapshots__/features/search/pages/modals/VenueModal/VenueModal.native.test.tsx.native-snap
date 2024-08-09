@@ -488,6 +488,7 @@ exports[`VenueModal should render correctly 1`] = `
                 enablesReturnKeyAutomatically={true}
                 focusable={true}
                 isEmpty={false}
+                multiline={false}
                 nativeID="testUuidV4"
                 onBlur={[Function]}
                 onChangeText={[Function]}

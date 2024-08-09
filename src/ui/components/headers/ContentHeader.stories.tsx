@@ -46,7 +46,8 @@ const Template: ComponentStory<typeof ContentHeader> = (props) => {
   )
 }
 
-export const Default = Template.bind({})
+//TODO(PC-28526): Fix this stories
+const Default = Template.bind({})
 Default.args = {
   headerTitle: 'Titre',
 }

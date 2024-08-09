@@ -622,6 +622,8 @@ export const logEventAnalytics = {
       },
       { age, from }
     ),
+  logSelectDeletionReason: (type: string) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.SELECT_DELETION_REASON }, { type }),
   logSelectIdStatusClicked: (type: IDStatus) =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SELECT_ID_STATUS_CLICKED }, { type }),
   logSendActivationMailAgain: (numberOfTimes: number) =>

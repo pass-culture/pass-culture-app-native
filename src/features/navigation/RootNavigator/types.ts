@@ -203,6 +203,7 @@ export type RootStackParamList = {
   ChangeEmail: undefined
   ChangeEmailSetPassword: { token: string; emailSelectionToken: string }
   ChangeStatus: undefined
+  FeedbackInApp: undefined
   TrackEmailChange: undefined
   NewEmailSelection: { token: string }
   ChangeEmailExpiredLink: undefined

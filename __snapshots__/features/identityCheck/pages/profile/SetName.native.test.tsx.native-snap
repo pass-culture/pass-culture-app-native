@@ -474,6 +474,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                     accessibilityRequired={true}
                     editable={true}
                     isEmpty={true}
+                    multiline={false}
                     nativeID="testUuidV4"
                     onBlur={[Function]}
                     onChangeText={[Function]}
@@ -611,6 +612,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                     accessibilityRequired={true}
                     editable={true}
                     isEmpty={true}
+                    multiline={false}
                     nativeID="testUuidV4"
                     onBlur={[Function]}
                     onChangeText={[Function]}
