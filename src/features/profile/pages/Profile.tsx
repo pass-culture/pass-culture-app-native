@@ -34,6 +34,7 @@ import { useDebounce } from 'ui/hooks/useDebounce'
 import { useVersion } from 'ui/hooks/useVersion'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
+import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
@@ -230,6 +231,16 @@ const OnlineProfile: React.FC = () => {
                       icon={HandicapMental}
                     />
                   </Li>
+                  {isLoggedIn ? (
+                    <Li>
+                      <Row
+                        title="Faire une suggestion"
+                        type="navigable"
+                        navigateTo={{ screen: 'FeedbackInApp' }}
+                        icon={Bulb}
+                      />
+                    </Li>
+                  ) : null}
                   <Li>
                     <Row
                       title="Informations légales"
