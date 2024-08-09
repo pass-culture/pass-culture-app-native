@@ -28,10 +28,10 @@ const BicolorRequestSentSvg: React.FunctionComponent<AccessibleIcon> = ({
       <Defs>
         <LinearGradient
           id={gradientId}
-          x1="30.5"
-          y1="13.5007"
-          x2="64.5905"
-          y2="107.459"
+          x1="50"
+          y1="100"
+          x2="50"
+          y2="50"
           gradientUnits="userSpaceOnUse">
           <Stop offset="0%" stopColor={color} />
           <Stop offset="100%" stopColor={color2} />
