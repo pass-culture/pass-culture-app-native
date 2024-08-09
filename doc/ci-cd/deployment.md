@@ -8,10 +8,10 @@ There are two types of deployments: **soft** and **hard**:
 
 - a **soft** deployment is typically the most frequent scenario, occurring when only the JavaScript code has been modified.
 - a **hard** deployment is only required if the native code has changed:
-  - environment variable changed or added
-  - new native library
-  - new build step
-  - ...
+- environment variable changed or added
+- new native library
+- new build step
+- ...
 
 Deployments are triggered using tags and pushing them to the remote repository. The CI detects if the tag contains a certain keyword (for example `patch` or `prod-hard-deploy`) and starts the appropriate deployment.
 
@@ -28,7 +28,7 @@ Then the build is faster as only the javascript code is published. The download 
 #### Troubleshooting
 
 <details>
-  <summary>I don't see my changes on testing</summary>
+ <summary>I don't see my changes on testing</summary>
 
 If you don't see your changes, try to check if the codepush was correctly downloaded. To do so, go to "CheatCodes", and click on the "check update" button.
 
@@ -62,7 +62,7 @@ It will bump the `minor` version, create a tag `vX.X+1.X` and push it.
 #### Troubleshooting
 
 <details>
-  <summary>Problem during MES automation</summary>
+ <summary>Problem during MES automation</summary>
 
 In case there is a problem with the automation when you want to deploy the new staging version from a specific commit you can manually trigger the [GithubAction][9] :
 
@@ -105,8 +105,8 @@ If not urgent (but still can't wait until the next MEP), it's better for the use
 
 - List all tags of the version `X.X.X`, tags of type: `vX.X.X-Y` (`git fetch --tag`and then `git tag | grep vX.X`)
 - Two cases:
-  - There is already a previous hotfix on this version (`hotfix-production-vX.X.X.Y`): checkout on the tag with the biggest `Y`
-  - It is the first hotfix on this version : Checkout on the tag `vX.X.X` (could be `patch/vX.X.X`) with the bigger minor `X`
+- There is already a previous hotfix on this version (`hotfix-production-vX.X.X.Y`): checkout on the tag with the biggest `Y`
+- It is the first hotfix on this version : Checkout on the tag `vX.X.X` (could be `patch/vX.X.X`) with the bigger minor `X`
 - Cherry-pick all the commits of the feature `git cherry-pick <commit-hash>`
 - Check if tests are OK `yarn test`
 - `git tag hotfix-staging-vX.X.X-(Y+1)`
@@ -120,13 +120,46 @@ If not urgent (but still can't wait until the next MEP), it's better for the use
 ### Troubleshooting
 
 <details>
-  <summary>I don't see my CodePush on staging/prod app</summary>
+ <summary>I don't see my CodePush on staging/prod app</summary>
 
 Check if you can find it on AppCenter. Example for [staging iOS][8].
 
 ![img](./CodePushOnAppCenter.png)
 
 </details>
+
+## Sprints, MeS and MeP
+
+Iteration 300.
+
+- tag is 300
+- Testing is under version number 301
+- Staging is under version number 300
+- Prod is under version number 300
+
+We run processes for 301 (MeS).
+
+- Set Tag under version « 301 »
+- Testing is under version number 302, compilation and merges on master prepare the 302's future version well
+- Staging is compiled from tag's 301, we are testing version 301
+- Prod is under version number 300
+- New iteration goes on 302
+
+We run processes for 302 (MeS and MeP).
+
+- Set Tag under version « 302 »
+- Testing is under version number 303, compilation and merges on master prepare the 303's future version well
+- Staging is compiled from tag's 302, we are testing version 302
+- Prod is compiled from tag's 302, we publish result of 301+302
+- New iteration goes on 303
+
+Nous lançons la mes de la version 303 (MeS).
+
+- Set Tag under version « 303 »
+- Testing is under version number 304, le compilation et les merges sur master préparent bien la future version 304
+- Staging is compiled from tag's 303, we are testing version 303
+- Prod is under version number 302
+- New iteration goes on 304
 
 [1]: https://www.notion.so/passcultureapp/Processus-d-ploiement-MES-MEP-App-Native-bc75cbf31d6146ee88c8c031eb14b655
 [2]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-ios
