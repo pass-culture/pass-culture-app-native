@@ -230,6 +230,7 @@ exports[`<SearchN1/> book offerCategory should render <SearchN1 /> 1`] = `
                   enablesReturnKeyAutomatically={true}
                   focusable={false}
                   isEmpty={true}
+                  multiline={false}
                   nativeID="testUuidV4"
                   onBlur={[Function]}
                   onChangeText={[Function]}

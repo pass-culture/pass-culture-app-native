@@ -380,6 +380,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                   focusable={true}
                   isEmpty={true}
                   keyboardType="number-pad"
+                  multiline={false}
                   nativeID="testUuidV4"
                   onBlur={[Function]}
                   onChangeText={[Function]}

@@ -440,6 +440,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                         editable={true}
                         isEmpty={true}
                         keyboardType="number-pad"
+                        multiline={false}
                         nativeID="testUuidV4"
                         onBlur={[Function]}
                         onChangeText={[Function]}

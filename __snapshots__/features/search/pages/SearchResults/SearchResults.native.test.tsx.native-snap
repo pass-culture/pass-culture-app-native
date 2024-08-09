@@ -240,6 +240,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   enablesReturnKeyAutomatically={true}
                   focusable={false}
                   isEmpty={true}
+                  multiline={false}
                   nativeID="testUuidV4"
                   onBlur={[Function]}
                   onChangeText={[Function]}
