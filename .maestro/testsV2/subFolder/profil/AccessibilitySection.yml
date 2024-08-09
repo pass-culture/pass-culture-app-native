@@ -11,12 +11,10 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible:
     id: 'AccessibilityEngagement'
 
-- runFlow: # Si cloud
+- runFlow: # Permet de retourner sur la page précédente (cloud)
     when:
-      notVisible:
-        id: 'com.android.systemui:id/back'
-    commands:
-      - pressKey: back
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn:
     id: 'com.android.systemui:id/back'
@@ -26,34 +24,28 @@ appId: ${MAESTRO_APP_ID}
     text: 'Parcours recommandés'
     index: 1
 - assertVisible: 'Parcours recommandés'
-- runFlow: # Si cloud
+- runFlow: # Permet de retourner sur la page précédente (cloud)
     when:
-      notVisible:
-        id: 'com.android.systemui:id/back'
-    commands:
-      - pressKey: back
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn:
     id: 'com.android.systemui:id/back'
     optional: true
-
 
 - tapOn:
     text: 'Déclaration d’accessibilité'
     index: 1
 - assertVisible:
     id: 'AccessibilityDeclaration'
-- runFlow: # Si cloud
+- runFlow: # Permet de retourner sur la page précédente (cloud)
     when:
-      notVisible:
-        id: 'com.android.systemui:id/back'
-    commands:
-      - pressKey: back
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn:
     id: 'com.android.systemui:id/back'
     optional: true
-
 
 - tapOn:
     text: 'Schéma pluriannuel'
@@ -61,26 +53,20 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Schéma pluriannuel'
 - assertVisible:
     id: 'AccessibilityActionPlan'
-- runFlow: # Si cloud
+- runFlow: # Permet de retourner sur la page précédente (cloud)
     when:
-      notVisible:
-        id: 'com.android.systemui:id/back'
-    commands:
-      - pressKey: back
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn:
     id: 'com.android.systemui:id/back'
     optional: true
 
-
-- runFlow: # Si cloud
+- runFlow: # Permet de retourner sur la page précédente (cloud)
     when:
-      notVisible:
-        id: 'com.android.systemui:id/back'
-    commands:
-      - pressKey: back
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn:
     id: 'com.android.systemui:id/back'
     optional: true
-

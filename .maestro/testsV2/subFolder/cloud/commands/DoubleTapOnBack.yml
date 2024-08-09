@@ -1,0 +1,4 @@
+appId: ${MAESTRO_APP_ID}
+---
+- pressKey: back
+- pressKey: back

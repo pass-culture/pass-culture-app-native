@@ -28,11 +28,13 @@ case "$target" in
   "test")
     TAGS="--include-tags local"
     run_tracking_tests=true
+    run_cloud_commands=false
     ;;
 
   "cloud")
     TAGS="--include-tags cloud"
     run_tracking_tests=false
+    run_cloud_commands=true
     ;;
 esac
 
@@ -110,6 +112,7 @@ maestro "$target" \
   --env MAESTRO_NUMBER_PHONE="0607080910" \
   --env MAESTRO_PASSWORD="$password" \
   --env MAESTRO_RUN_TRACKING_TESTS="$run_tracking_tests" \
+  --env MAESTRO_RUN_CLOUD_COMMANDS="$run_cloud_commands" \
   $TAGS \
   $rest_of_arguments
 ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppRecaptcha.ts "$env" true
