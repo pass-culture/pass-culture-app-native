@@ -36,6 +36,7 @@ export function NavigationProfile(): React.JSX.Element {
       <CheatcodesHeader title="Profile 🎨" />
       <StyledContainer>
         <LinkToComponent name="Login" />
+        <LinkToComponent name="FeedbackInApp" />
         <LinkToComponent name="ChangeCity" />
         <LinkToComponent name="ChangeEmail" />
         <LinkToComponent name="ChangeStatus" />

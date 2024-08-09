@@ -960,6 +960,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   editable={true}
                   isEmpty={true}
                   keyboardType="numeric"
+                  multiline={false}
                   nativeID="testUuidV4"
                   onBlur={[Function]}
                   onChangeText={[Function]}
@@ -1100,6 +1101,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   editable={true}
                   isEmpty={true}
                   keyboardType="numeric"
+                  multiline={false}
                   nativeID="testUuidV4"
                   onBlur={[Function]}
                   onChangeText={[Function]}

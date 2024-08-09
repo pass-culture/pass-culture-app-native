@@ -408,6 +408,7 @@ exports[`<SearchLanding /> When App V2 feature flag activated should render V2 A
                     enablesReturnKeyAutomatically={true}
                     focusable={false}
                     isEmpty={true}
+                    multiline={false}
                     nativeID="testUuidV4"
                     onBlur={[Function]}
                     onChangeText={[Function]}
@@ -2925,6 +2926,7 @@ exports[`<SearchLanding /> When wipAppV2SearchLandingHeader feature flag deactiv
                   enablesReturnKeyAutomatically={true}
                   focusable={false}
                   isEmpty={true}
+                  multiline={false}
                   nativeID="testUuidV4"
                   onBlur={[Function]}
                   onChangeText={[Function]}

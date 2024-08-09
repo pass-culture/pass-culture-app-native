@@ -75,6 +75,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
           onBlur={onBlur}
           accessibilityRequired={customProps.isRequiredField}
           accessibilityDescribedBy={customProps.accessibilityDescribedBy}
+          multiline={props.multiline}
         />
         {customProps.rightButton && StyledIcon ? (
           <React.Fragment>
