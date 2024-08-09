@@ -114,34 +114,8 @@ function mapBookCategories(data: SubcategoriesResponseModelv2) {
   }, {} as MappedNativeCategories)
 }
 
-export function createMappingTree(
-  data?: SubcategoriesResponseModelv2,
-  facetsData?: FacetData,
-  newMappingEnabled?: boolean
-) {
+export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsData?: FacetData) {
   if (!data) return {} as MappingTree
-  /**
-   * We want to create a mapping tree that looks like this:
-   * {
-   *   'SearchGroup': {
-   *     label: 'Tout',
-   *     children: {
-   *       'NativeCategoryOne': {
-   *         label: 'Tout',
-   *       },
-   *       'NativeCategoryTwo': {
-   *         label: 'Évènement',
-   *         genreTypeKey: 'EventType',
-   *         children: {
-   *           'GenreType': {
-   *             label: 'Cinéma',
-   *           },
-   *         }
-   *       },
-   *     }
-   *   }
-   * }
-   */
 
   return data.searchGroups
     .filter(
@@ -158,7 +132,7 @@ export function createMappingTree(
       let mappedNativeCategories: MappedNativeCategories | undefined = undefined
       let mappedNativeCategoriesBooks: MappedNativeCategories | undefined = undefined
 
-      if (searchGroup.name === SearchGroupNameEnumv2.LIVRES && newMappingEnabled) {
+      if (searchGroup.name === SearchGroupNameEnumv2.LIVRES) {
         mappedNativeCategoriesBooks = mapBookCategories(data)
       }
       const nativeCategories = getNativeCategories(data, searchGroup.name).filter(
