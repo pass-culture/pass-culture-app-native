@@ -3,7 +3,8 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
-import { fireEvent, render, screen } from 'tests/utils'
+import { analytics } from 'libs/analytics'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
@@ -21,11 +22,21 @@ describe('<DeleteProfileReason />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to Home page when clicking on "Autre"', () => {
+  it('should redirect to Home page when clicking on "Autre"', async () => {
     render(<DeleteProfileReason />)
 
-    fireEvent.press(screen.getByText(`Autre`))
+    fireEvent.press(screen.getByText('Autre'))
 
-    expect(navigate).toHaveBeenCalledWith('ConfirmDeleteProfile', undefined)
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('ConfirmDeleteProfile', undefined)
+    })
+  })
+
+  it('should log analytics when clicking on reasonButton', () => {
+    render(<DeleteProfileReason />)
+
+    fireEvent.press(screen.getByText('Autre'))
+
+    expect(analytics.logSelectDeletionReason).toHaveBeenNthCalledWith(1, 'other')
   })
 })
