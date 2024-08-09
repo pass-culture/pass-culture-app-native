@@ -1,7 +1,7 @@
 import firebaseRemoteConfig from 'libs/firebase/shims/remote-config'
 
 import { DEFAULT_REMOTE_CONFIG } from './remoteConfig.constants'
-import { CustomRemoteConfig, GenericRemoteConfig } from './remoteConfig.types'
+import { CustomRemoteConfig, GenericRemoteConfig, ShareAppTrigger } from './remoteConfig.types'
 
 export const remoteConfig = {
   async configure() {
@@ -53,6 +53,8 @@ export const remoteConfig = {
       shouldLogInfo: parameters.shouldLogInfo.asBoolean(),
       // @ts-expect-error: because of noUncheckedIndexedAccess
       subscriptionHomeEntryIds: JSON.parse(parameters.subscriptionHomeEntryIds.asString()),
+      shareAppTrigger:
+        (parameters.shareAppTrigger?.asString() as ShareAppTrigger | undefined) ?? 'default',
     }
   },
 }
