@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
+import { analytics } from 'libs/analytics'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
 import { theme } from 'theme'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
@@ -26,36 +27,44 @@ const isWeb = Platform.OS === 'web'
 type ReasonButton = {
   wording: string
   navigateTo: RootScreenNames
+  analyticsReason: string
 }
 
 const reasonButtons: ReasonButton[] = [
   {
     wording: 'J’aimerais créer un compte avec une adresse e-mail différente',
     navigateTo: 'ConfirmDeleteProfile',
+    analyticsReason: 'changeEmail',
   },
   {
     wording: 'Je n’utilise plus l’application',
     navigateTo: 'ConfirmDeleteProfile',
+    analyticsReason: 'noLongerUsed',
   },
   {
     wording: 'Je n’ai plus de crédit ou très peu de crédit restant',
     navigateTo: 'ConfirmDeleteProfile',
+    analyticsReason: 'noMoreCredit',
   },
   {
     wording: 'Je souhaite supprimer mes données personnelles',
     navigateTo: 'ConfirmDeleteProfile',
+    analyticsReason: 'dataDeletion',
   },
   {
     wording: 'Ma boite mail a été piratée',
     navigateTo: 'ConfirmDeleteProfile',
+    analyticsReason: 'hackedMailBox',
   },
   {
     wording: 'Je pense que quelqu’un d’autre a accès à mon compte',
     navigateTo: 'ConfirmDeleteProfile',
+    analyticsReason: 'hackedAccount',
   },
   {
     wording: 'Autre',
     navigateTo: 'ConfirmDeleteProfile',
+    analyticsReason: 'other',
   },
 ]
 
@@ -91,12 +100,13 @@ export function DeleteProfileReason() {
         contentContainerStyle={flatListStyles}
         data={reasonButtons}
         renderItem={({ item }) => {
-          const { wording, navigateTo } = item
+          const { wording, navigateTo, analyticsReason } = item
           return (
             <ItemContainer>
               <HeroButtonList
                 Title={<Typo.ButtonText>{wording}</Typo.ButtonText>}
                 navigateTo={{ screen: navigateTo }}
+                onBeforeNavigate={() => analytics.logSelectDeletionReason(analyticsReason)}
                 accessibilityLabel={wording}
               />
             </ItemContainer>
