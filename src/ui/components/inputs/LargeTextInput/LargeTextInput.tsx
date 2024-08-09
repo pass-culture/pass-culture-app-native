@@ -8,7 +8,7 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { TextInputProps } from 'ui/components/inputs/types'
 import { getSpacing, Typo } from 'ui/theme'
 
-export interface LargeTextInputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
+interface LargeTextInputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
   label: string
   value: string
   onChangeText: (suggestion: string) => void
@@ -18,10 +18,7 @@ export interface LargeTextInputProps extends Omit<TextInputProps, 'value' | 'onC
   maxValueLength?: number
 }
 
-export const WithRefLargeTextInput: React.ForwardRefRenderFunction<
-  RNTextInput,
-  LargeTextInputProps
-> = (
+const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTextInputProps> = (
   {
     label,
     value,
