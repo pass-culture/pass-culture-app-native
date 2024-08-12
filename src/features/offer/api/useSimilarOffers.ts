@@ -69,7 +69,9 @@ export const useSimilarOffers = ({
           categories
         )
       } catch (err) {
-        const statusCode = (err as ApiError).statusCode
+        const statusCode = err instanceof ApiError ? err.statusCode : 'unknown'
+        const errorMessage = err instanceof Error ? err.message : JSON.stringify(err)
+
         eventMonitoring.captureException(
           `Error ${statusCode} with recommendation endpoint to get similar offers`,
           {
@@ -78,7 +80,8 @@ export const useSimilarOffers = ({
               longitude: position?.longitude,
               latitude: position?.latitude,
               categories: JSON.stringify(categories),
-              statusCode: statusCode,
+              statusCode,
+              errorMessage,
             },
           }
         )

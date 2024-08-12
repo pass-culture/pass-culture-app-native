@@ -33,7 +33,15 @@ describe('useHomeRecommendedIdsQuery', () => {
     await waitFor(() => {
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
         'Error 502 with recommendation endpoint',
-        { extra: { playlistRequestBody: '{}', playlistRequestQuery: '{}', statusCode: 502 } }
+        {
+          extra: {
+            playlistRequestBody: '{}',
+            playlistRequestQuery: '{}',
+            statusCode: 502,
+            errorMessage:
+              'Échec de la requête https://localhost/native/v1/recommendation/playlist?, code: 502',
+          },
+        }
       )
     })
   })

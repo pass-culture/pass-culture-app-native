@@ -187,6 +187,8 @@ describe('useSimilarOffers', () => {
             longitude: undefined,
             offerId: 1,
             statusCode: 503,
+            errorMessage:
+              'Échec de la requête https://localhost/native/v1/recommendation/similar_offers/1?categories=FILMS_SERIES_CINEMA, code: 503',
           },
         }
       )
