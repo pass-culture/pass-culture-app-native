@@ -33,12 +33,15 @@ export const useHomeRecommendedIdsQuery = (parameters: Parameters) => {
 
         return response
       } catch (err) {
-        const statusCode = (err as ApiError).statusCode
+        const statusCode = err instanceof ApiError ? err.statusCode : 'unknown'
+        const errorMessage = err instanceof ApiError ? err.message : (err as Error).message
+
         eventMonitoring.captureException(`Error ${statusCode} with recommendation endpoint`, {
           extra: {
             playlistRequestBody: stringifyPlaylistRequestBody,
             playlistRequestQuery: stringifyPlaylistRequestQuery,
             statusCode: statusCode,
+            errorMessage,
           },
         })
 
