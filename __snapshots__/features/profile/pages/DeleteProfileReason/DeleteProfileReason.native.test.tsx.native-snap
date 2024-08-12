@@ -196,37 +196,54 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
       [
         {
           "analyticsReason": "changeEmail",
-          "navigateTo": "ConfirmDeleteProfile",
+          "navigateTo": {
+            "params": {
+              "showModal": true,
+            },
+            "screen": "ChangeEmail",
+          },
           "wording": "J’aimerais créer un compte avec une adresse e-mail différente",
         },
         {
           "analyticsReason": "noLongerUsed",
-          "navigateTo": "ConfirmDeleteProfile",
+          "navigateTo": {
+            "screen": "ConfirmDeleteProfile",
+          },
           "wording": "Je n’utilise plus l’application",
         },
         {
           "analyticsReason": "noMoreCredit",
-          "navigateTo": "ConfirmDeleteProfile",
+          "navigateTo": {
+            "screen": "ConfirmDeleteProfile",
+          },
           "wording": "Je n’ai plus de crédit ou très peu de crédit restant",
         },
         {
           "analyticsReason": "dataDeletion",
-          "navigateTo": "ConfirmDeleteProfile",
+          "navigateTo": {
+            "screen": "ConfirmDeleteProfile",
+          },
           "wording": "Je souhaite supprimer mes données personnelles",
         },
         {
           "analyticsReason": "hackedMailBox",
-          "navigateTo": "ConfirmDeleteProfile",
+          "navigateTo": {
+            "screen": "ConfirmDeleteProfile",
+          },
           "wording": "Ma boite mail a été piratée",
         },
         {
           "analyticsReason": "hackedAccount",
-          "navigateTo": "ConfirmDeleteProfile",
+          "navigateTo": {
+            "screen": "ConfirmDeleteProfile",
+          },
           "wording": "Je pense que quelqu’un d’autre a accès à mon compte",
         },
         {
           "analyticsReason": "other",
-          "navigateTo": "ConfirmDeleteProfile",
+          "navigateTo": {
+            "screen": "ConfirmDeleteProfile",
+          },
           "wording": "Autre",
         },
       ]

@@ -22,7 +22,19 @@ describe('<DeleteProfileReason />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to Home page when clicking on "Autre"', async () => {
+  it('should redirect to ChangeEmail page with correct params when clicking on change email button', async () => {
+    render(<DeleteProfileReason />)
+
+    fireEvent.press(
+      screen.getByText('J’aimerais créer un compte avec une adresse e-mail différente')
+    )
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenCalledWith('ChangeEmail', { showModal: true })
+    })
+  })
+
+  it('should redirect to Home page when clicking on "Autre" button', async () => {
     render(<DeleteProfileReason />)
 
     fireEvent.press(screen.getByText('Autre'))
