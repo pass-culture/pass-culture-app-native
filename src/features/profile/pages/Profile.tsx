@@ -16,6 +16,7 @@ import { TutorialTypes } from 'features/tutorial/enums'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -34,6 +35,7 @@ import { useDebounce } from 'ui/hooks/useDebounce'
 import { useVersion } from 'ui/hooks/useVersion'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
+import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
@@ -57,7 +59,7 @@ const OnlineProfile: React.FC = () => {
   const scrollViewRef = useRef<ScrollView | null>(null)
   const locationActivationErrorId = uuidv4()
   const userAge = getAge(user?.birthDate)
-
+  const { displayInAppFeedback } = useRemoteConfigContext()
   const {
     geolocPositionError,
     permissionState,
@@ -230,6 +232,16 @@ const OnlineProfile: React.FC = () => {
                       icon={HandicapMental}
                     />
                   </Li>
+                  {displayInAppFeedback ? (
+                    <Li>
+                      <Row
+                        title="Faire une suggestion"
+                        type="navigable"
+                        navigateTo={{ screen: 'FeedbackInApp' }}
+                        icon={Bulb}
+                      />
+                    </Li>
+                  ) : null}
                   <Li>
                     <Row
                       title="Informations légales"

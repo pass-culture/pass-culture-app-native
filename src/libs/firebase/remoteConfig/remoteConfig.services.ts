@@ -52,6 +52,8 @@ export const remoteConfig = {
       // @ts-expect-error: because of noUncheckedIndexedAccess
       shouldLogInfo: parameters.shouldLogInfo.asBoolean(),
       // @ts-expect-error: because of noUncheckedIndexedAccess
+      displayInAppFeedback: parameters.displayInAppFeedback.asBoolean(),
+      // @ts-expect-error: because of noUncheckedIndexedAccess
       subscriptionHomeEntryIds: JSON.parse(parameters.subscriptionHomeEntryIds.asString()),
       shareAppTrigger:
         (parameters.shareAppTrigger?.asString() as ShareAppTrigger | undefined) ?? 'default',
