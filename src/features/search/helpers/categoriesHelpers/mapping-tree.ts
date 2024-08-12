@@ -115,6 +115,29 @@ function mapBookCategories(data: SubcategoriesResponseModelv2) {
 }
 
 export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsData?: FacetData) {
+  /**
+   * We want to create a mapping tree that looks like this:
+   * {
+   *   'SearchGroup': {
+   *     label: 'Tout',
+   *     children: {
+   *       'NativeCategoryOne': {
+   *         label: 'Tout',
+   *       },
+   *       'NativeCategoryTwo': {
+   *         label: 'Évènement',
+   *         genreTypeKey: 'EventType',
+   *         children: {
+   *           'GenreType': {
+   *             label: 'Cinéma',
+   *           },
+   *         }
+   *       },
+   *     }
+   *   }
+   * }
+   */
+
   if (!data) return {} as MappingTree
 
   return data.searchGroups

@@ -9,7 +9,7 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('MappingTree', () => {
-  it('should return a mapping tree for book category ROMANS_ET_LITTERATURE with FF newMappingEnabled to true', () => {
+  it('should return a mapping tree for book category ROMANS_ET_LITTERATURE', () => {
     const result = createMappingTree(mockedSubcateroriesV2Response, mockedUndefinedFacets)
 
     expect(result.LIVRES.children).toEqual(
