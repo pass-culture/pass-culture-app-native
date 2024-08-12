@@ -37,6 +37,9 @@ const mergeOfferData =
     metadata: prevData?.metadata,
     isExternalBookingsDisabled: false,
     ...(prevData ?? {}),
+    reactionsCount: {
+      likes: 0,
+    },
   })
 
 export const usePrePopulateOffer = () => {

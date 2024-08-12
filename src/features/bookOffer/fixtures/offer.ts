@@ -117,6 +117,9 @@ export const mockOffer = toMutable({
     },
   },
   isExternalBookingsDisabled: false,
+  reactionsCount: {
+    likes: 0,
+  },
 } as const satisfies ReadonlyDeep<OfferResponseV2>)
 
 export const mockDigitalOffer = toMutable({
@@ -209,4 +212,7 @@ export const mockDigitalOffer = toMutable({
     },
   },
   isExternalBookingsDisabled: false,
+  reactionsCount: {
+    likes: 0,
+  },
 } as const satisfies ReadonlyDeep<OfferResponseV2>)

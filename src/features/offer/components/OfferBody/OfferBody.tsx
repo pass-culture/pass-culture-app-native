@@ -4,6 +4,7 @@ import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum, OfferResponseV2, SearchGroupNameEnumv2 } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
@@ -11,6 +12,7 @@ import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCT
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { OfferPrice } from 'features/offer/components/OfferPrice/OfferPrice'
+import { OfferReactions } from 'features/offer/components/OfferReactions/OfferReactions'
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
 import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
@@ -69,6 +71,8 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { isDesktopViewport } = useTheme()
   const { visible, showModal, hideModal } = useModal()
   const { navigate } = useNavigation<UseNavigationType>()
+
+  const { isLoggedIn, user } = useAuthContext()
   const [surveyModalState, setSurveyModalState] = useState(DEFAULT_SURVEY_MODAL_DATA)
   const hasFakeDoorArtist = useFeatureFlag(RemoteStoreFeatureFlags.FAKE_DOOR_ARTIST)
   const hasAccessToArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
@@ -140,6 +144,8 @@ export const OfferBody: FunctionComponent<Props> = ({
           </GroupWithoutGap>
 
           {prices ? <OfferPrice prices={prices} /> : null}
+
+          <OfferReactions user={user} isLoggedIn={isLoggedIn} offer={offer} />
 
           {shouldDisplayReactionButton ? (
             <ToggleButton
