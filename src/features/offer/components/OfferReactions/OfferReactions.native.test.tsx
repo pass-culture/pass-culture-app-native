@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { OfferResponseV2, ReactionTypeEnum } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { OfferReactions } from 'features/offer/components/OfferReactions/OfferReactions'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -108,34 +108,4 @@ it('should display nothing when the user is not a beneficiary', async () => {
 
   expect(screen.queryByText('Sois le premier à réagir :')).not.toBeOnTheScreen()
   expect(screen.queryByText(/Aimé par/)).not.toBeOnTheScreen()
-})
-
-// TO-DO on peut retirer ce test car sur le screenshot du debug
-// l'icon n'as pas de style et je ne sais pas comment faire pour
-// récupérer son style on voit juste sa width et sa height et le testID
-// Dans ce cas là on peut retirer aussi le testID
-// le mock du test fonctionne bien parcontre
-it.skip('should display the like icon with greyDark color if the user has not liked the offer', async () => {
-  const offerWithLikes = {
-    ...offerResponseSnap,
-    reactionsCount: { likes: 1 },
-  }
-  mockUseBookings.mockReturnValueOnce({
-    data: {
-      ...mockBookings,
-      ended_bookings: [
-        {
-          ...mockBookings.ended_bookings[0],
-          userReaction: ReactionTypeEnum.NO_REACTION,
-        },
-      ],
-    },
-  })
-
-  mockAuthContextWithUser(beneficiaryUser, { persist: true })
-  render(<OfferReactions isLoggedIn user={beneficiaryUser} offer={offerWithLikes} />)
-  screen.debug()
-  const thumbUpIcon = screen.getByTestId('thumbUp')
-
-  expect(thumbUpIcon).toHaveStyle({ color: '#eb0055' })
 })

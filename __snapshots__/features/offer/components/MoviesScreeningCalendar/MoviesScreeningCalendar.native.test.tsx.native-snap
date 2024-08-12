@@ -1507,6 +1507,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                 "validFrom": "2024-06-05",
               },
               "name": "Sailor et Lula",
+              "reactionsCount": {
+                "likes": 0,
+              },
               "stocks": [
                 {
                   "activationCode": null,
@@ -3641,6 +3644,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                 "validFrom": "2024-06-05",
               },
               "name": "Sailor et Lula",
+              "reactionsCount": {
+                "likes": 0,
+              },
               "stocks": [
                 {
                   "activationCode": null,
