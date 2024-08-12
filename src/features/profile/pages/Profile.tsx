@@ -232,7 +232,7 @@ const OnlineProfile: React.FC = () => {
                       icon={HandicapMental}
                     />
                   </Li>
-                  {isLoggedIn && displayInAppFeedback ? (
+                  {displayInAppFeedback ? (
                     <Li>
                       <Row
                         title="Faire une suggestion"
