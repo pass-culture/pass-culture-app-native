@@ -29,11 +29,14 @@ export const getUserIdFromAccessToken = (accessToken: string) => {
 
 type TokenStatus = 'valid' | 'expired' | 'unknown'
 
+const TOKEN_EXPIRATION_BUFFER_MS = 2 * 60 * 1000 // 2 minutes buffer in milliseconds
+
 export const getTokenStatus = (token: string | null): TokenStatus => {
   if (!token) return 'unknown'
   const tokenContent = decodeToken(token)
   if (!tokenContent?.exp) return 'unknown'
-  return tokenContent.exp * 1000 > Date.now() ? 'valid' : 'expired'
+  const currentTimeWithBuffer = Date.now() + TOKEN_EXPIRATION_BUFFER_MS
+  return tokenContent.exp * 1000 > currentTimeWithBuffer ? 'valid' : 'expired'
 }
 
 export const computeTokenRemainingLifetimeInMs = (encodedToken: string): number | undefined => {
