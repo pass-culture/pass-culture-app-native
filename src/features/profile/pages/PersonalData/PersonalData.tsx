@@ -16,7 +16,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Trash } from 'ui/svg/icons/Trash'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 function onEmailChangeClick() {
@@ -54,7 +54,7 @@ export function PersonalData() {
         <React.Fragment>
           <Typo.CaptionNeutralInfo>Prénom et nom</Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
-          <Typo.Body>{fullname}</Typo.Body>
+          <TypoDS.Body>{fullname}</TypoDS.Body>
           <StyledSeparator />
         </React.Fragment>
       ) : null}
@@ -77,7 +77,7 @@ export function PersonalData() {
         <React.Fragment>
           <Typo.CaptionNeutralInfo>Numéro de téléphone</Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
-          <Typo.Body>{user?.phoneNumber}</Typo.Body>
+          <TypoDS.Body>{user?.phoneNumber}</TypoDS.Body>
           <StyledSeparator />
         </React.Fragment>
       ) : null}
@@ -98,29 +98,37 @@ export function PersonalData() {
         </React.Fragment>
       ) : null}
 
-      <Typo.CaptionNeutralInfo>Statut</Typo.CaptionNeutralInfo>
-      <Spacer.Column numberOfSpaces={2} />
-      <EditContainer>
-        <EditText>{user?.activityId && ACTIVITIES[user.activityId]}</EditText>
-        <EditButton
-          navigateTo={{ screen: 'ChangeStatus' }}
-          wording="Modifier"
-          accessibilityLabel="Modifier le statut"
-        />
-      </EditContainer>
-      <StyledSeparator />
+      {user?.isBeneficiary ? (
+        <React.Fragment>
+          <Typo.CaptionNeutralInfo>Statut</Typo.CaptionNeutralInfo>
+          <Spacer.Column numberOfSpaces={2} />
+          <EditContainer>
+            <EditText>{user?.activityId && ACTIVITIES[user.activityId]}</EditText>
+            <EditButton
+              navigateTo={{ screen: 'ChangeStatus' }}
+              wording="Modifier"
+              accessibilityLabel="Modifier le statut"
+            />
+          </EditContainer>
+          <StyledSeparator />
+        </React.Fragment>
+      ) : null}
 
-      <Typo.CaptionNeutralInfo>Ville de résidence</Typo.CaptionNeutralInfo>
-      <Spacer.Column numberOfSpaces={2} />
-      <EditContainer>
-        <EditText numberOfLines={2}>{city}</EditText>
-        <EditButton
-          navigateTo={{ screen: 'ChangeCity' }}
-          wording="Modifier"
-          accessibilityLabel="Modifier la ville de résidence"
-        />
-      </EditContainer>
-      <StyledSeparator />
+      {user?.isBeneficiary ? (
+        <React.Fragment>
+          <Typo.CaptionNeutralInfo>Ville de résidence</Typo.CaptionNeutralInfo>
+          <Spacer.Column numberOfSpaces={2} />
+          <EditContainer>
+            <EditText numberOfLines={2}>{city}</EditText>
+            <EditButton
+              navigateTo={{ screen: 'ChangeCity' }}
+              wording="Modifier"
+              accessibilityLabel="Modifier la ville de résidence"
+            />
+          </EditContainer>
+          <StyledSeparator />
+        </React.Fragment>
+      ) : null}
 
       <InfoBanner message="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.">
         <Spacer.Column numberOfSpaces={3} />
@@ -155,7 +163,7 @@ const EditContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const EditText = styled(Typo.Body)({
+const EditText = styled(TypoDS.Body)({
   flexShrink: 1,
   marginRight: getSpacing(2),
 })
