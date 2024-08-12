@@ -70,7 +70,7 @@ export const useSimilarOffers = ({
         )
       } catch (err) {
         const statusCode = err instanceof ApiError ? err.statusCode : 'unknown'
-        const errorMessage = err instanceof ApiError ? err.message : (err as Error).message
+        const errorMessage = err instanceof Error ? err.message : JSON.stringify(err)
 
         eventMonitoring.captureException(
           `Error ${statusCode} with recommendation endpoint to get similar offers`,
