@@ -16,13 +16,10 @@ import {
   mockHitWithoutCategoryAndNativeCategory,
 } from 'features/search/fixtures/autocompleteHits'
 import { SearchState } from 'features/search/types'
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const venue = mockedSuggestedVenue
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 let mockSearchState: SearchState = {
   ...initialSearchState,
@@ -520,9 +517,7 @@ describe('AutocompleteOfferItem component', () => {
         expect(screen.getByText('CD, vinyles, musique en ligne')).toBeOnTheScreen()
       })
 
-      it('native category is Livres Papier and FF WIP_NEW_MAPPING_BOOKS is enabled', async () => {
-        useFeatureFlagSpy.mockReturnValueOnce(true)
-
+      it('native category is Livres Papier', async () => {
         render(
           <AutocompleteOfferItem
             hit={mockHitSeveralCategoriesWithAssociationToBooksNativeCategory}

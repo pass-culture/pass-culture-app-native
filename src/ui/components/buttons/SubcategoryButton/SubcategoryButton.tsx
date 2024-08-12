@@ -55,7 +55,7 @@ export const SubcategoryButton = ({
       genreType: null,
       nativeCategory,
     }
-    const searchPayload = handleCategoriesSearchPress(form, subcategories, true)
+    const searchPayload = handleCategoriesSearchPress(form, subcategories)
 
     const additionalSearchState: SearchState = {
       ...searchState,
