@@ -23,7 +23,7 @@ export const DeleteProfileReasonNewEmailModal: React.FC<Props> = ({ isVisible, h
       <StyledBody>
         Pour modifier ton adresse e-mail, suis les instructions sur cette page.
       </StyledBody>
-      <Spacer.Column numberOfSpaces={8} />
+      <Spacer.Column numberOfSpaces={5} />
       <ButtonPrimary wording="J’ai compris" onPress={hideModal} />
     </AppModal>
   )
