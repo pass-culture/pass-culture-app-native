@@ -6,7 +6,10 @@ export const formatDuration = (duration: number | null | undefined): string => {
 
   if (minutes === 0) {
     return `${hours}h`
+  } else if (minutes < 10) {
+    return `${hours}h0${minutes}`
   }
+
   if (hours === 0) {
     return `${minutes} minutes`
   }

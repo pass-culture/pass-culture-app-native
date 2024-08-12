@@ -17,6 +17,10 @@ describe('formatDuration', () => {
     expect(formatDuration(75)).toEqual('1h15')
   })
 
+  it('should format duration with hours and add a 0 before minutes when minutes are below 10', () => {
+    expect(formatDuration(125)).toEqual('2h05')
+  })
+
   it('should format duration with zero duration', () => {
     expect(formatDuration(0)).toEqual('-')
   })
