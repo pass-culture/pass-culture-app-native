@@ -4,15 +4,14 @@ export const formatDuration = (duration: number | null | undefined): string => {
   const hours = Math.floor(duration / 60)
   const minutes = duration % 60
 
-  if (minutes === 0) {
-    return `${hours}h`
-  } else if (minutes < 10) {
-    return `${hours}h0${minutes}`
-  }
-
   if (hours === 0) {
     return `${minutes} minutes`
   }
 
-  return `${hours}h${minutes}`
+  if (minutes === 0) {
+    return `${hours}h`
+  }
+
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes
+  return `${hours}h${formattedMinutes}`
 }
