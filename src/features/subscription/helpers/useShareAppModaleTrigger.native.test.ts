@@ -1,4 +1,5 @@
 import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
+import { ShareAppModalType } from 'features/share/types'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useShareAppModaleTrigger } from './useShareAppModaleTrigger'
@@ -25,7 +26,7 @@ describe('Use Share app modale trigger', () => {
     renderHook(() => useShareAppModaleTrigger(TRUE_TRIGGER))
 
     await waitFor(() => {
-      expect(mockShowAppModal).toHaveBeenCalledWith()
+      expect(mockShowAppModal).toHaveBeenCalledWith(ShareAppModalType.BENEFICIARY)
     })
   })
 
