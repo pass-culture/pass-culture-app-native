@@ -20,8 +20,8 @@ export function ChangeEmail() {
   const { hideModal, showModal, visible } = useModal(false)
 
   useEffect(() => {
-    if (params.showModal === true) return showModal()
-  }, [params.showModal, showModal])
+    if (params?.showModal === true) return showModal()
+  }, [params?.showModal, showModal])
 
   const handleHideModal = () => {
     replace('ChangeEmail', { showModal: false })
