@@ -721,7 +721,9 @@ exports[`PersonalData should render personal data success 1`] = `
               },
             ]
           }
-        />
+        >
+          Étudiant
+        </Text>
         <View
           accessibilityLabel="Modifier le statut"
           accessibilityState={
@@ -903,7 +905,9 @@ exports[`PersonalData should render personal data success 1`] = `
               },
             ]
           }
-        />
+        >
+          75001, Paris
+        </Text>
         <View
           accessibilityLabel="Modifier la ville de résidence"
           accessibilityState={
