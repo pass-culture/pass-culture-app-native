@@ -7,12 +7,12 @@ export const useContactSupportForDeletionProfile = ({
 }: {
   emailProvider: EmailProvider
 }) => {
-  const openMail = async () => {
+  const requestSendMail = async () => {
     return emailProvider.requestSendEmail({
       to: 'contact@passculture.com',
       subject: 'Suppression de mon compte',
     })
   }
 
-  return { openMail }
+  return { requestSendMail }
 }

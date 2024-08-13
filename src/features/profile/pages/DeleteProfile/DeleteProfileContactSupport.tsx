@@ -6,10 +6,12 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { Email } from 'ui/svg/icons/Email'
-import { Typo, TypoDS, getSpacing } from 'ui/theme'
+import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 import { nativeEmailProvider } from './EmailProvider'
 import { useContactSupportForDeletionProfile } from './useContactSupportForDeletionProfile'
@@ -18,7 +20,7 @@ import { webEmailProvider } from './WebEmailProvider.web'
 export const DeleteProfileContactSupport: FC = () => {
   const isWeb = Platform.OS === 'web'
   const emailProvider = isWeb ? webEmailProvider() : nativeEmailProvider()
-  const { openMail } = useContactSupportForDeletionProfile({ emailProvider })
+  const { requestSendMail } = useContactSupportForDeletionProfile({ emailProvider })
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
@@ -40,8 +42,12 @@ export const DeleteProfileContactSupport: FC = () => {
         </ContentBody>
 
         <ContentBottom>
-          <ButtonPrimary icon={Email} wording="Contacter le support" onPress={openMail} />
-          <Typo.ButtonText onPress={navigateToProfile}>Retourner au profile</Typo.ButtonText>
+          <ButtonPrimary icon={Email} wording="Contacter le support" onPress={requestSendMail} />
+          <ButtonTertiaryBlack
+            wording="Retourner au profile"
+            onPress={navigateToProfile}
+            icon={PlainArrowNext}
+          />
         </ContentBottom>
       </Content>
     </GenericInfoPageWhite>

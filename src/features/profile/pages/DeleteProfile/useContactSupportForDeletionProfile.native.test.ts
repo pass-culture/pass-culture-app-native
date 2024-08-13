@@ -24,9 +24,13 @@ describe('Use contact support for deletion profile', () => {
   })
 
   it('Should request sending mail with object and recipient', async () => {
-    const { result } = renderHook(() => useContactSupportForDeletionProfile({ emailProvider }))
+    const {
+      result: {
+        current: { requestSendMail },
+      },
+    } = renderHook(() => useContactSupportForDeletionProfile({ emailProvider }))
 
-    await result.current.openMail()
+    await requestSendMail()
 
     expect(emailProvider.lastRequestedEmailSent()).toEqual({
       to: 'contact@passculture.com',
