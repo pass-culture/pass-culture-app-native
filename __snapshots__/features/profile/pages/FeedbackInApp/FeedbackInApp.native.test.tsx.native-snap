@@ -256,36 +256,6 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                 }
               }
             />
-            <View
-              style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <View
-                fill="url(#gradienttestUuid)"
-                height={156}
-                width={200}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "height": 20,
-                  },
-                ]
-              }
-            />
             <Text
               style={
                 [
@@ -553,7 +523,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                       "width": "100%",
                     },
                     {
-                      "height": 240,
+                      "height": 200,
                     },
                   ]
                 }
@@ -564,6 +534,7 @@ exports[`<FeedbackInApp/> should match snapshot 1`] = `
                   accessibilityRequired={true}
                   editable={true}
                   isEmpty={true}
+                  maxLength={825}
                   multiline={true}
                   nativeID="testUuidV4"
                   onBlur={[Function]}

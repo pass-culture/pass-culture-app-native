@@ -14,7 +14,6 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { BicolorRequestSent } from 'ui/svg/icons/BicolorRequestSent'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -45,10 +44,6 @@ export const FeedbackInApp = () => {
       title="Faire une suggestion"
       scrollChildren={
         <React.Fragment>
-          <IllustrationContainer>
-            <StyledIllustration />
-          </IllustrationContainer>
-          <Spacer.Column numberOfSpaces={5} />
           <Typo.Title3 {...getHeadingAttrs(1)}>
             Comment pourrions-nous améliorer l’application&nbsp;?
           </Typo.Title3>
@@ -100,15 +95,6 @@ export const FeedbackInApp = () => {
     />
   )
 }
-
-const IllustrationContainer = styled.View({
-  justifyContent: 'center',
-  flexDirection: 'row',
-})
-
-const StyledIllustration = styled(BicolorRequestSent).attrs(({ theme }) => ({
-  size: theme.illustrations.sizes.fullPage,
-}))``
 
 const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
   buttonColor: theme.colors.black,

@@ -41,9 +41,10 @@ const WithRefLargeTextInput: React.ForwardRefRenderFunction<RNTextInput, LargeTe
         label={label}
         value={value}
         onChangeText={onChangeText}
-        containerStyle={{ height: containerHeight ?? getSpacing(60) }}
+        containerStyle={{ height: containerHeight ?? getSpacing(50) }}
         multiline
         accessibilityDescribedBy={feedbackInAppInputErrorId}
+        maxLength={maxValueLength + 25}
         ref={forwardedRef}
         {...inputProps}
       />
