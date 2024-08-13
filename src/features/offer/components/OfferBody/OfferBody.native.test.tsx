@@ -507,6 +507,50 @@ describe('<OfferBody />', () => {
     expect(mockNavigate).toHaveBeenCalledWith('Artist', { fromOfferId: offerResponseSnap.id })
   })
 
+  it('should log ConsultArtist when pressing artist name button and FF is enabled', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      extraData: { author: 'Stephen King' },
+    }
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
+    })
+
+    fireEvent.press(await screen.findByText('Stephen King'))
+
+    expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
+      offerId: offerResponseSnap.id,
+      artistName: 'Stephen King',
+    })
+  })
+
+  it('should log ConsultArtist with the main artist if there are several when pressing artist name button and FF is enabled', async () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      extraData: { author: 'Stephen King,Robert McCammon' },
+    }
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+    mockUseFeatureFlag.mockReturnValueOnce(true)
+
+    renderOfferBody({
+      offer,
+      subcategory: mockSubcategoryBook,
+    })
+
+    fireEvent.press(await screen.findByText('Stephen King,Robert McCammon'))
+
+    expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
+      offerId: offerResponseSnap.id,
+      artistName: 'Stephen King',
+    })
+  })
+
   it('should not redirect to artist page when FF is disabled', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
