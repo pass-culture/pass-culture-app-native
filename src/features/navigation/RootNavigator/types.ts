@@ -200,7 +200,7 @@ export type RootStackParamList = {
   BannedCountryError: undefined
   ChangeCity: undefined
   ChangePassword: undefined
-  ChangeEmail: undefined
+  ChangeEmail: { showModal: boolean } | undefined
   ChangeEmailSetPassword: { token: string; emailSelectionToken: string }
   ChangeStatus: undefined
   FeedbackInApp: undefined

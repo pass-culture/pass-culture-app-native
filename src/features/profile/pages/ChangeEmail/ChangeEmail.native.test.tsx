@@ -1,13 +1,14 @@
+import * as reactNavigation from '@react-navigation/native'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { UpdateEmailTokenExpiration } from 'api/gen'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT, SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -31,6 +32,14 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
+jest.mock('@react-navigation/native')
+const mockNavigate = jest.fn()
+const mockReplace = jest.fn()
+jest.spyOn(reactNavigation, 'useNavigation').mockImplementation(() => ({
+  navigate: mockNavigate,
+  replace: mockReplace,
+}))
+
 describe('<ChangeEmail/>', () => {
   beforeEach(() => {
     mockServer.getApi<UpdateEmailTokenExpiration>('/v1/profile/token_expiration', {
@@ -47,10 +56,56 @@ describe('<ChangeEmail/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  describe('from DeleteProfileReason', () => {
+    it('should show DeleteProfileReasonNewEmailModal when showModal params is set to true', async () => {
+      useRoute.mockReturnValueOnce({ params: { showModal: true } })
+      renderChangeEmail()
+
+      await screen.findByText('Modifier mon e-mail')
+
+      expect(screen.getByText('Modifie ton adresse e-mail sur ce compte')).toBeOnTheScreen()
+    })
+
+    it('should not show DeleteProfileReasonNewEmailModal when showModal params is set to false', async () => {
+      useRoute.mockReturnValueOnce({ params: { showModal: false } })
+      renderChangeEmail()
+
+      await screen.findByText('Modifier mon e-mail')
+
+      expect(screen.queryByText('Modifie ton adresse e-mail sur ce compte')).not.toBeOnTheScreen()
+    })
+
+    it('should hide DeleteProfileReasonNewEmailModal when clicking on "Fermer la modale"', async () => {
+      useRoute.mockReturnValueOnce({ params: { showModal: true } })
+      renderChangeEmail()
+
+      const closeButton = screen.getByLabelText('Fermer la modale')
+      fireEvent.press(closeButton)
+
+      await waitFor(() => {
+        expect(screen.queryByText('Modifie ton adresse e-mail sur ce compte')).not.toBeOnTheScreen()
+      })
+    })
+
+    it('should update the URL params when the modal is closed', async () => {
+      useRoute.mockReturnValueOnce({ params: { showModal: true } })
+      renderChangeEmail()
+
+      await screen.findByText('Modifier mon e-mail')
+
+      const closeButton = screen.getByLabelText('Fermer la modale')
+      fireEvent.press(closeButton)
+
+      await waitFor(() => {
+        expect(mockReplace).toHaveBeenNthCalledWith(1, 'ChangeEmail', { showModal: false })
+      })
+    })
+  })
+
   it('should not display the update app banner when FF (disableOldChangeEmail) is disabled', async () => {
     renderChangeEmail()
 
-    await act(() => {})
+    await screen.findByText('Modifier mon e-mail')
 
     const updateAppBanner = screen.queryByText(
       'Tu dois mettre à jour ton application pour pouvoir modifier ton adresse e-mail'
@@ -94,7 +149,8 @@ describe('<ChangeEmail/>', () => {
   describe('submit button', () => {
     it('should be disabled by default', async () => {
       renderChangeEmail()
-      await act(async () => {})
+
+      await screen.findByText('Modifier mon e-mail')
 
       const submitButton = await screen.findByLabelText(
         'Valider la demande de modification de mon e-mail'
@@ -133,7 +189,7 @@ describe('<ChangeEmail/>', () => {
       await fillInputs({})
       await submitForm()
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
+      expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
     })
 
     it('should show success snackbar', async () => {
@@ -182,7 +238,7 @@ describe('<ChangeEmail/>', () => {
       await fillInputs({})
       await submitForm()
 
-      expect(navigate).not.toHaveBeenCalled()
+      expect(mockNavigate).not.toHaveBeenCalled()
     })
 
     it('should show error message', async () => {
@@ -216,7 +272,7 @@ describe('<ChangeEmail/>', () => {
       await fillInputs({})
       await submitForm()
 
-      expect(navigate).not.toHaveBeenCalled()
+      expect(mockNavigate).not.toHaveBeenCalled()
     })
 
     it('should show the generic error message', async () => {
