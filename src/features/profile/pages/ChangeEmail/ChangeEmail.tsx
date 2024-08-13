@@ -1,5 +1,6 @@
 import { useRoute, useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -24,8 +25,8 @@ export function ChangeEmail() {
   }, [params?.showModal, showModal])
 
   const handleHideModal = () => {
-    replace('ChangeEmail', { showModal: false })
     hideModal()
+    if (Platform.OS === 'web') return replace('ChangeEmail', { showModal: false })
   }
 
   const disableOldChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_OLD_CHANGE_EMAIL)

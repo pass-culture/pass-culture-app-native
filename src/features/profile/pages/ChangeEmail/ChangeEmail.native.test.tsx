@@ -1,7 +1,6 @@
-import * as reactNavigation from '@react-navigation/native'
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute, navigate } from '__mocks__/@react-navigation/native'
 import { UpdateEmailTokenExpiration } from 'api/gen'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
 import { analytics } from 'libs/analytics'
@@ -16,7 +15,6 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 import { ChangeEmail } from './ChangeEmail'
 
 jest.mock('libs/network/NetInfoWrapper')
-
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 jest.useFakeTimers()
@@ -31,14 +29,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
-jest.mock('@react-navigation/native')
-const mockNavigate = jest.fn()
-const mockReplace = jest.fn()
-jest.spyOn(reactNavigation, 'useNavigation').mockImplementation(() => ({
-  navigate: mockNavigate,
-  replace: mockReplace,
-}))
 
 describe('<ChangeEmail/>', () => {
   beforeEach(() => {
@@ -84,20 +74,6 @@ describe('<ChangeEmail/>', () => {
 
       await waitFor(() => {
         expect(screen.queryByText('Modifie ton adresse e-mail sur ce compte')).not.toBeOnTheScreen()
-      })
-    })
-
-    it('should update the URL params when the modal is closed', async () => {
-      useRoute.mockReturnValueOnce({ params: { showModal: true } })
-      renderChangeEmail()
-
-      await screen.findByText('Modifier mon e-mail')
-
-      const closeButton = screen.getByLabelText('Fermer la modale')
-      fireEvent.press(closeButton)
-
-      await waitFor(() => {
-        expect(mockReplace).toHaveBeenNthCalledWith(1, 'ChangeEmail', { showModal: false })
       })
     })
   })
@@ -189,7 +165,7 @@ describe('<ChangeEmail/>', () => {
       await fillInputs({})
       await submitForm()
 
-      expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
     })
 
     it('should show success snackbar', async () => {
@@ -238,7 +214,7 @@ describe('<ChangeEmail/>', () => {
       await fillInputs({})
       await submitForm()
 
-      expect(mockNavigate).not.toHaveBeenCalled()
+      expect(navigate).not.toHaveBeenCalled()
     })
 
     it('should show error message', async () => {
@@ -272,7 +248,7 @@ describe('<ChangeEmail/>', () => {
       await fillInputs({})
       await submitForm()
 
-      expect(mockNavigate).not.toHaveBeenCalled()
+      expect(navigate).not.toHaveBeenCalled()
     })
 
     it('should show the generic error message', async () => {
