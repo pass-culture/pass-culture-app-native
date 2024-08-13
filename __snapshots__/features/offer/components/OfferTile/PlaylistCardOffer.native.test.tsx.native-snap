@@ -13,6 +13,7 @@ exports[`PlaylistCardOffer component should render correctly 1`] = `
       },
     ]
   }
+  testID="playlist-card-offer-v2"
 >
   <View
     gap={1}
