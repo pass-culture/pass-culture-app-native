@@ -211,6 +211,7 @@ describe('OfferTile component', () => {
         analyticsFrom: 'artist' as Referrals,
         moduleName: undefined,
         playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
+        artistName: 'Céline Dion',
       }
 
       render(reactQueryProviderHOC(<OfferTile {...propsFromArtistPagePlaylist} />))
@@ -221,6 +222,7 @@ describe('OfferTile component', () => {
         from: 'artist',
         offerId: OFFER_ID,
         playlistType: propsFromArtistPagePlaylist.playlistType,
+        artistName: 'Céline Dion',
         searchId: undefined,
         moduleName: undefined,
         fromOfferId: undefined,

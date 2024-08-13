@@ -38,6 +38,7 @@ export interface OfferTileProps {
   apiRecoParams?: RecommendationApiParams
   index?: number
   variant?: 'default' | 'new'
+  artistName?: string
 }
 
 export interface SimilarOffersResponse {

@@ -15,6 +15,7 @@ type OfferPlaylistItemProps = {
   categoryMapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping
   variant: OfferTileProps['variant']
+  artistName?: string
   apiRecoParams?: RecommendationApiParams
   analyticsFrom?: Referrals
 }
@@ -31,6 +32,7 @@ export const OfferPlaylistItem = ({
   categoryMapping,
   labelMapping,
   variant,
+  artistName,
   apiRecoParams,
   analyticsFrom = 'offer',
 }: OfferPlaylistItemProps) => {
@@ -56,6 +58,7 @@ export const OfferPlaylistItem = ({
         playlistType={playlistType}
         apiRecoParams={apiRecoParams}
         variant={variant}
+        artistName={artistName}
       />
     )
   }
