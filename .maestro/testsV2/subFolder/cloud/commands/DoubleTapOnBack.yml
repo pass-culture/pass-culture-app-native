@@ -1,0 +1,12 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow: # Permet de retourner sur la page précédente (cloud)
+    when:
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    commands:
+      - pressKey: back
+      - pressKey: back
+
+- doubleTapOn: # Permet de quitter le browser in-app (local)
+    id: 'com.android.systemui:id/back'
+    optional: true

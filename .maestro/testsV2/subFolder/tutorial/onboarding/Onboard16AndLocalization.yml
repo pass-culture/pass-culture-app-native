@@ -12,4 +12,4 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: "À 16 ans, profite de ton pass Culture\_!"
 - tapOn: 'Plus tard'
 
-- assertVisible: 'Ma position'
+- waitForAnimationToEnd

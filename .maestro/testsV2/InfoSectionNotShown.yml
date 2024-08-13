@@ -1,6 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - cloud
+  - local
 ---
 - runFlow: subFolder/LaunchApp.yml
 - runFlow: subFolder/cookies/AcceptCookies.yml

@@ -9,8 +9,9 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: "Nouvelle fenêtre\_: Conditions Générales d’Utilisation"
 - waitForAnimationToEnd
-- doubleTapOn: # Permet de quitter le browser in-app
-    id: 'com.android.systemui:id/back'
+
+- runFlow:
+    file: ../../subFolder/cloud/commands/DoubleTapOnBack.yml
 
 - runFlow: # Fallback si problème de retour
     when:
@@ -23,11 +24,11 @@ appId: ${MAESTRO_APP_ID}
 - tapOn:
     id: "Nouvelle fenêtre\_: Charte de protection des données personnelles"
 - 'waitForAnimationToEnd'
-- doubleTapOn: # Permet de quitter le browser in-app
-    id: 'com.android.systemui:id/back'
+- runFlow:
+    file: ../../subFolder/cloud/commands/DoubleTapOnBack.yml
 
-- tapOn:
-    id: 'com.android.systemui:id/back'
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - runFlow: # Fallback si problème de retour
     when:

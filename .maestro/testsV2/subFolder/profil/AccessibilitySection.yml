@@ -10,23 +10,24 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Les engagements du pass Culture'
 - assertVisible:
     id: 'AccessibilityEngagement'
-- tapOn:
-    id: 'com.android.systemui:id/back'
+
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn:
     text: 'Parcours recommandés'
     index: 1
 - assertVisible: 'Parcours recommandés'
-- tapOn:
-    id: 'com.android.systemui:id/back'
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn:
     text: 'Déclaration d’accessibilité'
     index: 1
 - assertVisible:
     id: 'AccessibilityDeclaration'
-- tapOn:
-    id: 'com.android.systemui:id/back'
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
 - tapOn:
     text: 'Schéma pluriannuel'
@@ -34,8 +35,8 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Schéma pluriannuel'
 - assertVisible:
     id: 'AccessibilityActionPlan'
-- tapOn:
-    id: 'com.android.systemui:id/back'
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn:
-    id: 'com.android.systemui:id/back'
+- runFlow:
+    file: ../../subFolder/cloud/commands/TapOnBack.yml

@@ -22,7 +22,7 @@ appId: ${MAESTRO_APP_ID}
 
 - scrollUntilVisible:
     element:
-      text: 'Dans la même catégorie'
+      text: "Passe le bon plan\_!"
     visibilityPercentage: 100
 - assertVisible: 'Voir l’itinéraire'
 - assertVisible: "Envoyer par\nSMS"
