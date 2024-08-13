@@ -58,6 +58,7 @@ describe('adaptOffersModule', () => {
           title: 'Musique',
           categories: ['Cartes jeunes', 'Spectacles'],
           hitsPerPage: 2,
+          enrichPlaylistWithRecoOffers: false,
         },
       ],
     }
