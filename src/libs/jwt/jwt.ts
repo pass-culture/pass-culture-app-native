@@ -29,7 +29,7 @@ export const getUserIdFromAccessToken = (accessToken: string) => {
 
 type TokenStatus = 'valid' | 'expired' | 'unknown'
 
-const TOKEN_EXPIRATION_BUFFER_MS = 2 * 60 * 1000 // 2 minutes buffer in milliseconds
+const TOKEN_EXPIRATION_BUFFER_MS = 1 * 60 * 1000 // 1 minute buffer in milliseconds
 
 export const getTokenStatus = (token: string | null): TokenStatus => {
   if (!token) return 'unknown'
