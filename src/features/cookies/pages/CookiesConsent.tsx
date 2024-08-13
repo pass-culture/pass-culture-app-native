@@ -30,6 +30,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
 
   const params = route?.params
   const acceptAll = useCallback(async () => {
+    hideModal()
     setCookiesConsent({
       mandatory: COOKIES_BY_CATEGORY.essential,
       accepted: ALL_OPTIONAL_COOKIES,
@@ -38,20 +39,20 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
     startTracking(true)
     analytics.logHasAcceptedAllCookies()
     await setMarketingParams(params, ALL_OPTIONAL_COOKIES)
-    hideModal()
   }, [params, hideModal, setCookiesConsent])
 
   const declineAll = useCallback(() => {
+    hideModal()
     setCookiesConsent({
       mandatory: COOKIES_BY_CATEGORY.essential,
       accepted: [],
       refused: ALL_OPTIONAL_COOKIES,
     })
     startTracking(false)
-    hideModal()
   }, [hideModal, setCookiesConsent])
 
   const customChoice = useCallback(async () => {
+    hideModal()
     const { accepted, refused } = getCookiesChoiceFromCategories(settingsCookiesChoice)
     setCookiesConsent({
       mandatory: COOKIES_BY_CATEGORY.essential,
@@ -64,7 +65,6 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
       type: settingsCookiesChoice,
     })
     await setMarketingParams(params, accepted)
-    hideModal()
   }, [params, settingsCookiesChoice, hideModal, setCookiesConsent])
 
   const { childrenProps } = useCookiesModalContent({
