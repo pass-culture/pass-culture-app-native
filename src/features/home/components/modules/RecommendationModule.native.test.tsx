@@ -46,6 +46,13 @@ describe('RecommendationModule', () => {
     expect(screen.getAllByTestId('playlist-card-offer-v2')).toBeTruthy()
   })
 
+  it('should NOT display V2 playlist when FF deactivated', () => {
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    renderRecommendationModule()
+
+    expect(screen.queryByTestId('playlist-card-offer-v2')).not.toBeTruthy()
+  })
+
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', async () => {
     renderRecommendationModule()
 
