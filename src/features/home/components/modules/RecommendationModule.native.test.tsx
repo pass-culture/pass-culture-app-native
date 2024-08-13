@@ -30,13 +30,20 @@ jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
   })),
 }))
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('RecommendationModule', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+  })
+
+  it('should display V2 playlist when FF activated', () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    renderRecommendationModule()
+
+    expect(screen.getAllByTestId('playlist-card-offer-v2')).toBeTruthy()
   })
 
   it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', async () => {

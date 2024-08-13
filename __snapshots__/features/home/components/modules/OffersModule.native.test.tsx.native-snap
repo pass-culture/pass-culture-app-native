@@ -4860,6 +4860,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                             },
                           ]
                         }
+                        testID="playlist-card-offer-v2"
                       >
                         <View
                           gap={1}
@@ -5123,6 +5124,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                             },
                           ]
                         }
+                        testID="playlist-card-offer-v2"
                       >
                         <View
                           gap={1}
@@ -5371,6 +5373,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                             },
                           ]
                         }
+                        testID="playlist-card-offer-v2"
                       >
                         <View
                           gap={1}
@@ -5617,6 +5620,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                             },
                           ]
                         }
+                        testID="playlist-card-offer-v2"
                       >
                         <View
                           gap={1}
@@ -5813,6 +5817,7 @@ exports[`OffersModule should render correctly for v2 one-item-medium layout 1`] 
                         },
                       ]
                     }
+                    testID="playlist-card-offer-v2"
                   >
                     <View
                       gap={1}
@@ -6752,6 +6757,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                             },
                           ]
                         }
+                        testID="playlist-card-offer-v2"
                       >
                         <View
                           gap={1}
@@ -7015,6 +7021,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                             },
                           ]
                         }
+                        testID="playlist-card-offer-v2"
                       >
                         <View
                           gap={1}
@@ -7263,6 +7270,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                             },
                           ]
                         }
+                        testID="playlist-card-offer-v2"
                       >
                         <View
                           gap={1}
@@ -7509,6 +7517,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                             },
                           ]
                         }
+                        testID="playlist-card-offer-v2"
                       >
                         <View
                           gap={1}
@@ -7705,6 +7714,7 @@ exports[`OffersModule should render correctly for v2 three-items layout 1`] = `
                         },
                       ]
                     }
+                    testID="playlist-card-offer-v2"
                   >
                     <View
                       gap={1}

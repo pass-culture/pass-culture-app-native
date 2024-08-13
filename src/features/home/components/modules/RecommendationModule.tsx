@@ -7,6 +7,8 @@ import { RecommendedOffersModule } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { formatDates } from 'libs/parsers/formatDates'
@@ -27,6 +29,7 @@ type RecommendationModuleProps = {
 const keyExtractor = (item: Offer) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
+  const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
   const { userLocation: position } = useLocation()
   const { user: profile } = useAuthContext()
@@ -84,6 +87,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           height={height}
           homeEntryId={homeEntryId}
           apiRecoParams={recommendationApiParams}
+          variant={isNewOfferTileDisplayed ? 'new' : 'default'}
         />
       )
     },

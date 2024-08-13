@@ -38,7 +38,7 @@ export const PlaylistCardOffer: FC<Props> = ({
   const distanceText = `à ${distance}`
 
   return (
-    <Container maxWidth={width}>
+    <Container maxWidth={width} testID="playlist-card-offer-v2">
       <NewOfferCaption
         name={name}
         date={date}
