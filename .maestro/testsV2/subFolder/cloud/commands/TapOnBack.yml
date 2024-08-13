@@ -1,3 +1,11 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- pressKey: back
+- runFlow: # Permet de retourner sur la page précédente (cloud)
+    when:
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+    commands:
+      - pressKey: back
+
+- tapOn: # Permet de retourner sur la page précédente (local)
+    id: 'com.android.systemui:id/back'
+    optional: true

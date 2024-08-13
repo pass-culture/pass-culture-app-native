@@ -11,41 +11,23 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible:
     id: 'AccessibilityEngagement'
 
-- runFlow: # Permet de retourner sur la page précédente (cloud)
-    when:
-      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+- runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
-
-- tapOn:
-    id: 'com.android.systemui:id/back'
-    optional: true
 
 - tapOn:
     text: 'Parcours recommandés'
     index: 1
 - assertVisible: 'Parcours recommandés'
-- runFlow: # Permet de retourner sur la page précédente (cloud)
-    when:
-      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+- runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
-
-- tapOn:
-    id: 'com.android.systemui:id/back'
-    optional: true
 
 - tapOn:
     text: 'Déclaration d’accessibilité'
     index: 1
 - assertVisible:
     id: 'AccessibilityDeclaration'
-- runFlow: # Permet de retourner sur la page précédente (cloud)
-    when:
-      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+- runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
-
-- tapOn:
-    id: 'com.android.systemui:id/back'
-    optional: true
 
 - tapOn:
     text: 'Schéma pluriannuel'
@@ -53,20 +35,8 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Schéma pluriannuel'
 - assertVisible:
     id: 'AccessibilityActionPlan'
-- runFlow: # Permet de retourner sur la page précédente (cloud)
-    when:
-      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+- runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
-- tapOn:
-    id: 'com.android.systemui:id/back'
-    optional: true
-
-- runFlow: # Permet de retourner sur la page précédente (cloud)
-    when:
-      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+- runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
-
-- tapOn:
-    id: 'com.android.systemui:id/back'
-    optional: true
