@@ -39,14 +39,34 @@ describe('getTokenStatus', () => {
     expect(accessTokenStatus).toBe('expired')
   })
 
-  it('valid status given access token that expires in the future', () => {
+  it('valid status given access token that expires in the future and expiration is more than 1 minute away', () => {
     mockJwtDecode.mockReturnValueOnce({
-      exp: new Date().getTime() / 1000 + 1,
+      exp: new Date().getTime() / 1000 + 1 * 60 + 1,
     } as jwtDecode.JwtPayload)
 
     const accessTokenStatus = getTokenStatus(fakeAccessToken)
 
     expect(accessTokenStatus).toBe('valid')
+  })
+
+  it('expired status given access token that expires in the future and expiration is exactly 1 minute', () => {
+    mockJwtDecode.mockReturnValueOnce({
+      exp: new Date().getTime() / 1000 + 1 * 60,
+    } as jwtDecode.JwtPayload)
+
+    const accessTokenStatus = getTokenStatus(fakeAccessToken)
+
+    expect(accessTokenStatus).toBe('expired')
+  })
+
+  it('expired status given access token that expires in the future and expiration is less than 1 minute away', () => {
+    mockJwtDecode.mockReturnValueOnce({
+      exp: new Date().getTime() / 1000 + 1 * 60 - 1,
+    } as jwtDecode.JwtPayload)
+
+    const accessTokenStatus = getTokenStatus(fakeAccessToken)
+
+    expect(accessTokenStatus).toBe('expired')
   })
 })
 
