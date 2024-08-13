@@ -67,6 +67,8 @@ const offerEventCTAButtonProps = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.useFakeTimers()
+
 describe('<OfferCTAButton />', () => {
   beforeEach(() => {
     mockAuthContextWithoutUser({ persist: true })
@@ -207,6 +209,8 @@ describe('<OfferCTAButton />', () => {
         })
 
         fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
+
+        jest.advanceTimersByTime(500)
 
         await waitFor(() => {
           expect(analytics.logBookingConfirmation).toHaveBeenNthCalledWith(1, {
