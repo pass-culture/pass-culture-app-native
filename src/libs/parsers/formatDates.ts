@@ -1,7 +1,7 @@
 import { utcToZonedTime } from 'date-fns-tz'
 
 import { DAYS } from 'shared/date/days'
-import { MONTHS, FullMonth } from 'shared/date/months'
+import { FullMonth, MONTHS } from 'shared/date/months'
 
 export const pad = (num: number): string => {
   const res = num.toString()
@@ -112,7 +112,7 @@ export function joinArrayElement(array: (string | number)[] | MonthDays) {
     return array.join(' et ')
   } else {
     const first = array.slice(0, -1).join(', ')
-    const last = array.slice(-1)
+    const last = array.slice(-1).join('')
     return `${first} et ${last}`
   }
 }
@@ -124,7 +124,8 @@ export function formatGroupedDates(grouped: GroupResult) {
       return Object.entries(groupedMonths).map(([month, days]) => {
         const prefix = days.length > 1 ? 'les' : 'le'
         arrayDays = [...arrayDays, days]
-        return `${prefix} ${joinArrayElement(days)} ${month} ${year}`
+        const arrayElementJoined = joinArrayElement(days)
+        return arrayElementJoined ? `${prefix} ${arrayElementJoined} ${month} ${year}` : ''
       })
     })
     .flat()
