@@ -15,9 +15,13 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const keyExtractor = (venue: Venue) => {
   const { label, info } = venue
-  const prefix = `venue-${venue.venueId}`
 
-  return `${prefix}-${label}-${info}`
+  if (venue.venueId) {
+    const prefix = `venue-${venue.venueId}`
+    return `${prefix}-${label}-${info}`
+  }
+
+  return ''
 }
 
 const MAXIMUM_RESULTS = 5

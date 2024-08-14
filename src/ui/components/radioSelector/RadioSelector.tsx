@@ -46,7 +46,10 @@ export const RadioSelector = ({
       render={({ isHover }) => (
         <Container>
           <LeftContent>
-            <Label disabled={disabled} testID={`${testID}-label`} isHover={isHover}>
+            <Label
+              disabled={disabled}
+              testID={testID ? `${testID}-label` : undefined}
+              isHover={isHover}>
               {label}
             </Label>
             {
@@ -56,7 +59,7 @@ export const RadioSelector = ({
             }
           </LeftContent>
 
-          <RightText disabled={disabled} testID={`${testID}-right-text`}>
+          <RightText disabled={disabled} testID={testID ? `${testID}-right-text` : undefined}>
             {rightText}
           </RightText>
         </Container>

@@ -25,11 +25,16 @@ export const EligibleFooter: FunctionComponent<Props> = ({ age }) => {
     [17, seventeenYearsOldDeposit],
     [18, eighteenYearsOldDeposit],
   ])
+
+  const deposit = depositsByAge.get(age)
+
+  if (!deposit) return null
+
   return (
     <React.Fragment>
-      <StyledBody>{`Vérifie ton identité et active tes ${depositsByAge.get(
-        age
-      )} de crédit dès maintenant\u00a0!`}</StyledBody>
+      <StyledBody>
+        {`Vérifie ton identité et active tes ${deposit} de crédit dès maintenant\u00a0!`}
+      </StyledBody>
       <Spacer.Column numberOfSpaces={4} />
       <InternalTouchableLink
         as={ButtonWithLinearGradient}

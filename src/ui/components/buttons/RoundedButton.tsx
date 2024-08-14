@@ -62,7 +62,7 @@ export const RoundedButton = (props: Props) => {
           <AnimatedIcon
             Icon={Icon}
             initialColor={props.initialColor || colors.black}
-            testID={`animated-icon-${props.iconName}`}
+            testID={props.iconName ? `animated-icon-${props.iconName}` : undefined}
             transition={props.animationState.transition}
             finalColor={props.finalColor || colors.black}
             size={icons.sizes.small}
@@ -75,7 +75,7 @@ export const RoundedButton = (props: Props) => {
           }}>
           <Icon
             size={icons.sizes.small}
-            testID={`icon-${props.iconName}`}
+            testID={props.iconName ? `icon-${props.iconName}` : undefined}
             color={props.finalColor || colors.black}
           />
         </IconContainer>

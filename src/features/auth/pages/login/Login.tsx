@@ -153,7 +153,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         )
       } else {
         setErrorMessage('Un problème est survenu, réessaie plus tard.')
-        captureMonitoringError(`${errorCode} ${error}`, 'LoginOnRecaptchaError')
+        captureMonitoringError(`${errorCode} ${error ?? ''}`, 'LoginOnRecaptchaError')
       }
     },
     [setErrorMessage]

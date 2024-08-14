@@ -89,7 +89,11 @@ export class OfferNotFoundError extends ScreenError {
     offerId: number | undefined | number[],
     { Screen, callback, logType = LogTypeEnum.INFO }: ScreenErrorInfo
   ) {
-    const message = offerId ? `Offer ${offerId} could not be retrieved` : 'offerId is undefined'
+    const message =
+      Array.isArray(offerId) || !offerId
+        ? 'offerId is undefined'
+        : `Offer ${offerId} could not be retrieved`
+
     super(message, { Screen, callback, logType })
   }
 }

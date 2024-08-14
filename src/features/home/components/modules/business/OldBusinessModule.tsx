@@ -14,7 +14,7 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { getSpacing, LENGTH_XS, MARGIN_DP, RATIO_BUSINESS, Spacer, Typo } from 'ui/theme'
+import { LENGTH_XS, MARGIN_DP, RATIO_BUSINESS, Spacer, Typo, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
@@ -87,7 +87,8 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 
   if (!shouldModuleBeDisplayed) return null
 
-  const accessibilityLabel = secondLine ? `${firstLine} ${secondLine}` : firstLine
+  const firstLineText = firstLine ?? ''
+  const accessibilityLabel = secondLine ? `${firstLineText} ${secondLine}` : firstLine
   const imageToDisplay = isDesktopViewport && imageWebURL ? imageWebURL : imageURL
 
   return (

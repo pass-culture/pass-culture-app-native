@@ -51,10 +51,14 @@ export function buildSearchVenuePosition(
 
   if (venue?._geoloc) {
     const venuePosition = venue._geoloc
+    const latitude = venuePosition.lat
+    const longitude = venuePosition.lng
 
-    searchVenuePosition = {
-      aroundLatLng: `${venuePosition.lat}, ${venuePosition.lng}`,
-      aroundRadius: convertKmToMeters(MAX_RADIUS),
+    if (latitude && longitude) {
+      searchVenuePosition = {
+        aroundLatLng: `${latitude}, ${longitude}`,
+        aroundRadius: convertKmToMeters(MAX_RADIUS),
+      }
     }
   }
 

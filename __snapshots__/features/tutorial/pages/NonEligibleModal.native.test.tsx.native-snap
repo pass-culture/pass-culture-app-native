@@ -6,7 +6,6 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible ov
   hardwareAccelerated={false}
   onRequestClose={[MockFunction]}
   statusBarTranslucent={true}
-  testID="modal-undefined"
   transparent={true}
   visible={true}
 >
@@ -433,7 +432,6 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
   hardwareAccelerated={false}
   onRequestClose={[MockFunction]}
   statusBarTranslucent={true}
-  testID="modal-undefined"
   transparent={true}
   visible={true}
 >
@@ -987,7 +985,6 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
   hardwareAccelerated={false}
   onRequestClose={[MockFunction]}
   statusBarTranslucent={true}
-  testID="modal-undefined"
   transparent={true}
   visible={true}
 >
@@ -1414,7 +1411,6 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
   hardwareAccelerated={false}
   onRequestClose={[MockFunction]}
   statusBarTranslucent={true}
-  testID="modal-undefined"
   transparent={true}
   visible={true}
 >

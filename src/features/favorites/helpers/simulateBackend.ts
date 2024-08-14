@@ -4,8 +4,8 @@ import {
   FavoriteResponse,
   OfferResponseV2,
   PaginatedFavoritesResponse,
-  UserProfileResponse,
   SubcategoriesResponseModelv2,
+  UserProfileResponse,
 } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
@@ -55,23 +55,13 @@ export function simulateBackend(options: Options = defaultOptions) {
     })
   }
 
-  if (hasRemoveFavoriteError) {
-    mockServer.deleteApi<EmptyResponse>(
-      `/v1/me/favorites/${
-        paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
-      }`,
-      {
-        responseOptions: { statusCode: 422, data: {} },
-      }
-    )
-  } else {
-    mockServer.deleteApi<EmptyResponse>(
-      `/v1/me/favorites/${
-        paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
-      }`,
-      {
-        responseOptions: { statusCode: 204 },
-      }
-    )
+  const favoriteId = paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
+
+  if (favoriteId) {
+    const responseOptions = hasRemoveFavoriteError
+      ? { statusCode: 422, data: {} }
+      : { statusCode: 204 }
+
+    mockServer.deleteApi<EmptyResponse>(`/v1/me/favorites/${favoriteId}`, { responseOptions })
   }
 }

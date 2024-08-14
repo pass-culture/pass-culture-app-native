@@ -16,7 +16,7 @@ import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
-import { Typo, getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const FIXED_SIZE = getSpacing(81.75)
@@ -90,7 +90,8 @@ const UnmemoizedNewBusinessModule = (props: BusinessModuleProps) => {
 
   if (!shouldModuleBeDisplayed) return null
 
-  const accessibilityLabel = subtitle ? `${title} ${subtitle}` : title
+  const titleText = title ?? ''
+  const accessibilityLabel = subtitle ? `${titleText} ${subtitle}` : title
 
   return (
     <StyledTouchableOpacity

@@ -10,14 +10,14 @@ import {
   SubcategoriesResponseModelv2,
 } from 'api/gen'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
-import { CategoriesModalView, CATEGORY_CRITERIA } from 'features/search/enums'
+import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
+  MappedNativeCategories,
+  MappingTree,
   createMappingTree,
   getBooksGenreTypes,
   getBooksNativeCategories,
   getKeyFromStringLabel,
-  MappedNativeCategories,
-  MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import {
@@ -383,12 +383,12 @@ function getFilterRowDescription(data: SubcategoriesResponseModelv2, ctx: Descri
     const genreType = getGenreTypeFromEnum(data, genreTypeId)
     if (!nativeCategory) return undefined
     if (!genreType) return undefined
-    return `${nativeCategory.value} - ${genreType.value}`
+    if (nativeCategory.value) return `${nativeCategory.value} - ${genreType.value}`
   }
   if (nativeCategoryId) {
     const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
     if (!nativeCategory) return undefined
-    return `${nativeCategory.value}`
+    if (nativeCategory.value) return `${nativeCategory.value}`
   }
   if (categoryId) {
     const category = getCategoryFromEnum(data, categoryId)

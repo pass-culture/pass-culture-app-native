@@ -1758,7 +1758,6 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
                         />
                         <div
                           class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                          data-testid="caption-undefined"
                           dir="ltr"
                         >
                           Envoyer sur
@@ -1798,7 +1797,6 @@ WhatsApp
                         />
                         <div
                           class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                          data-testid="caption-undefined"
                           dir="ltr"
                         >
                           Envoyer sur
@@ -1838,7 +1836,6 @@ Telegram
                         />
                         <div
                           class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                          data-testid="caption-undefined"
                           dir="ltr"
                         >
                           Envoyer sur
@@ -1882,7 +1879,6 @@ X
                         />
                         <div
                           class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                          data-testid="caption-undefined"
                           dir="ltr"
                         >
                           Plus
@@ -4159,7 +4155,6 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
                         />
                         <div
                           class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                          data-testid="caption-undefined"
                           dir="ltr"
                         >
                           Envoyer sur
@@ -4199,7 +4194,6 @@ WhatsApp
                         />
                         <div
                           class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                          data-testid="caption-undefined"
                           dir="ltr"
                         >
                           Envoyer sur
@@ -4239,7 +4233,6 @@ Telegram
                         />
                         <div
                           class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                          data-testid="caption-undefined"
                           dir="ltr"
                         >
                           Envoyer sur
@@ -4283,7 +4276,6 @@ X
                         />
                         <div
                           class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0 r-textAlign-q4m81j"
-                          data-testid="caption-undefined"
                           dir="ltr"
                         >
                           Plus

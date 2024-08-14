@@ -101,7 +101,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         const venue = {
           venueId: id,
           label: name,
-          info: `${address}, ${city}`,
+          info: address && city ? `${address}, ${city}` : '',
           ...restVenue,
           _geoloc: hit._geoloc,
         }

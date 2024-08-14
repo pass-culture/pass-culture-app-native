@@ -7,7 +7,7 @@ export function useEduConnectLogin() {
 
   const getLoginUrl = useCallback(async () => {
     try {
-      const accessToken = await eduConnectClient.getAccessToken()
+      const accessToken = (await eduConnectClient.getAccessToken()) ?? ''
 
       const response = await fetch(`${eduConnectClient.getLoginUrl()}?redirect=false`, {
         headers: {

@@ -503,7 +503,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Collégien
                     </Text>
@@ -519,7 +518,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -686,7 +684,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Lycéen
                     </Text>
@@ -702,7 +699,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -869,7 +865,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Étudiant
                     </Text>
@@ -885,7 +880,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -1052,7 +1046,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Employé
                     </Text>
@@ -1068,7 +1061,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -1235,7 +1227,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Apprenti
                     </Text>
@@ -1251,7 +1242,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -1418,7 +1408,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Alternant
                     </Text>
@@ -1434,7 +1423,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -1601,7 +1589,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Volontaire
                     </Text>
@@ -1632,7 +1619,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -1799,7 +1785,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Inactif
                     </Text>
@@ -1830,7 +1815,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -1997,7 +1981,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Chômeur
                     </Text>
@@ -2028,7 +2011,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -2744,7 +2726,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Collégien
                     </Text>
@@ -2760,7 +2741,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -2927,7 +2907,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Lycéen
                     </Text>
@@ -2943,7 +2922,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -3110,7 +3088,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Étudiant
                     </Text>
@@ -3126,7 +3103,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -3293,7 +3269,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Employé
                     </Text>
@@ -3309,7 +3284,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -3476,7 +3450,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Apprenti
                     </Text>
@@ -3492,7 +3465,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -3659,7 +3631,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Alternant
                     </Text>
@@ -3675,7 +3646,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -3842,7 +3812,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Volontaire
                     </Text>
@@ -3873,7 +3842,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -4040,7 +4008,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Inactif
                     </Text>
@@ -4071,7 +4038,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>
@@ -4238,7 +4204,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                           },
                         ]
                       }
-                      testID="undefined-label"
                     >
                       Chômeur
                     </Text>
@@ -4269,7 +4234,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         },
                       ]
                     }
-                    testID="undefined-right-text"
                   />
                 </View>
               </View>

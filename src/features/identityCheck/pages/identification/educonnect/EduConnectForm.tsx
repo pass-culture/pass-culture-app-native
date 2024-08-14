@@ -28,10 +28,12 @@ export const EduConnectForm = () => {
       eduConnectClient
         ?.getAccessToken()
         .then((value) => {
-          setWebViewSource({
-            uri: eduConnectClient.getLoginUrl(),
-            headers: { Authorization: `Bearer ${value}` },
-          })
+          if (value) {
+            setWebViewSource({
+              uri: eduConnectClient.getLoginUrl(),
+              headers: { Authorization: `Bearer ${value}` },
+            })
+          }
         })
         .catch(setError)
     }
@@ -80,7 +82,7 @@ export const EduConnectForm = () => {
   const renderError = (errorDomain: string | undefined, errorCode: number, errorDesc: string) => {
     setError(
       new Error(
-        `EduConnectForm fail to render Webview. errorDomain: ${errorDomain}, errorCode: ${errorCode}, errorDesc: ${errorDesc}`
+        `EduConnectForm fail to render Webview. errorDomain: ${errorDomain ?? ''}, errorCode: ${errorCode}, errorDesc: ${errorDesc}`
       )
     )
     return <React.Fragment />
