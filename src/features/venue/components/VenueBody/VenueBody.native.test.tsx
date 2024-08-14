@@ -61,7 +61,7 @@ describe('<VenueBody />', () => {
   it('should share on Instagram', async () => {
     render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
 
-    const instagramButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
+    const instagramButton = await screen.findByText(`Envoyer sur ${Network.instagram}`)
 
     fireEvent.press(instagramButton)
 
@@ -99,5 +99,5 @@ describe('<VenueBody />', () => {
 const waitUntilRendered = async () => {
   // We wait until the full render is done
   // This is due to asynchronous calls to check the media on the phone
-  await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
+  await screen.findByText(`Envoyer sur ${Network.instagram}`)
 }
