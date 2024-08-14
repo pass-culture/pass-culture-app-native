@@ -530,10 +530,12 @@ describe('<OfferBody />', () => {
   })
 
   it('should log ConsultArtist with the main artist if there are several when pressing artist name button and FF is enabled', async () => {
+    const artists = 'Stephen King,Robert McCammon'
+    const mainArtist = artists.split(',')[0]
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      extraData: { author: 'Stephen King,Robert McCammon' },
+      extraData: { author: artists },
     }
     mockUseFeatureFlag.mockReturnValueOnce(true)
     mockUseFeatureFlag.mockReturnValueOnce(true)
@@ -547,7 +549,7 @@ describe('<OfferBody />', () => {
 
     expect(analytics.logConsultArtist).toHaveBeenNthCalledWith(1, {
       offerId: offerResponseSnap.id,
-      artistName: 'Stephen King',
+      artistName: mainArtist,
     })
   })
 
