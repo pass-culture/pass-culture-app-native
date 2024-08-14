@@ -242,7 +242,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
         {
           "analyticsReason": "other",
           "navigateTo": {
-            "screen": "ConfirmDeleteProfile",
+            "screen": "DeleteProfileContactSupport",
           },
           "wording": "Autre",
         },

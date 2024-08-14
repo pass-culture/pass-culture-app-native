@@ -61,6 +61,7 @@ import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
+import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfile/DeleteProfileContactSupport'
 import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
@@ -258,6 +259,13 @@ export const routes: RootRoute[] = [
     component: DeleteProfileReason,
     path: 'profil/suppression/raison',
     options: { title: 'Raison de suppression de compte' },
+    secure: true,
+  },
+  {
+    name: 'DeleteProfileContactSupport',
+    component: DeleteProfileContactSupport,
+    path: 'profil/suppression/support',
+    options: { title: 'Contact support' },
     secure: true,
   },
   {

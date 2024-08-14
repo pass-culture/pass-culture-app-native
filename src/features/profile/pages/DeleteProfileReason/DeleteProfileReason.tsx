@@ -63,7 +63,7 @@ const reasonButtons: ReasonButton[] = [
   },
   {
     wording: 'Autre',
-    navigateTo: { screen: 'ConfirmDeleteProfile' },
+    navigateTo: { screen: 'DeleteProfileContactSupport' },
     analyticsReason: 'other',
   },
 ]

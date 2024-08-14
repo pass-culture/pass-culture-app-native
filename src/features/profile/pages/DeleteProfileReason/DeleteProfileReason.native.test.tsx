@@ -40,7 +40,7 @@ describe('<DeleteProfileReason />', () => {
     fireEvent.press(screen.getByText('Autre'))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('ConfirmDeleteProfile', undefined)
+      expect(navigate).toHaveBeenCalledWith('DeleteProfileContactSupport', undefined)
     })
   })
 
