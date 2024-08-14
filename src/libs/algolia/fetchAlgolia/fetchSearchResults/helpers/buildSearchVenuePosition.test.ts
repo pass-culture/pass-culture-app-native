@@ -72,7 +72,7 @@ describe('buildSearchVenuePosition', () => {
       )
 
       expect(searchVenuePosition).toEqual({
-        aroundLatLng: `${venue?._geoloc?.lat}, ${venue?._geoloc?.lng}`,
+        aroundLatLng: '5.16186, -52.669736',
         aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
@@ -81,7 +81,7 @@ describe('buildSearchVenuePosition', () => {
       const searchVenuePosition = buildSearchVenuePosition(buildLocationParameterParamsAroundPlace)
 
       expect(searchVenuePosition).toEqual({
-        aroundLatLng: `${Kourou?.geolocation?.latitude}, ${Kourou?.geolocation?.longitude}`,
+        aroundLatLng: '5.16186, -52.669736',
         aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
@@ -114,7 +114,7 @@ describe('buildSearchVenuePosition', () => {
       )
 
       expect(searchVenuePosition).toEqual({
-        aroundLatLng: `${venue?._geoloc?.lat}, ${venue?._geoloc?.lng}`,
+        aroundLatLng: '5.16186, -52.669736',
         aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
@@ -123,7 +123,7 @@ describe('buildSearchVenuePosition', () => {
       const searchVenuePosition = buildSearchVenuePosition(buildLocationParameterParamsAroundPlace)
 
       expect(searchVenuePosition).toEqual({
-        aroundLatLng: `${Kourou?.geolocation?.latitude}, ${Kourou?.geolocation?.longitude}`,
+        aroundLatLng: '5.16186, -52.669736',
         aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })

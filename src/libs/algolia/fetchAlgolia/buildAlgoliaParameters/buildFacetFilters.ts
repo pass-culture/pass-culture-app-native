@@ -102,7 +102,7 @@ export const buildFacetFilters = ({
   }
 
   if (isDigital) {
-    const isDigitalPredicate = [`${FACETS_FILTERS_ENUM.OFFER_IS_DIGITAL}:${isDigital}`]
+    const isDigitalPredicate = [`${FACETS_FILTERS_ENUM.OFFER_IS_DIGITAL}:true`]
     facetFilters.push(isDigitalPredicate)
   }
 
