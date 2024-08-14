@@ -79,6 +79,7 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
     }
   />
   <View
+    gap={8}
     style={
       [
         {
@@ -88,6 +89,7 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
     }
   >
     <View
+      gap={6}
       style={
         [
           {
@@ -126,6 +128,7 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
       </Text>
     </View>
     <View
+      gap={6}
       style={
         [
           {

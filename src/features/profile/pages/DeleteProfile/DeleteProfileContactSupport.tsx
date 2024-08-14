@@ -7,11 +7,12 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 import { nativeEmailProvider } from './EmailProvider'
 import { useContactSupportForDeletionProfile } from './useContactSupportForDeletionProfile'
@@ -31,15 +32,15 @@ export const DeleteProfileContactSupport: FC = () => {
       icon={BicolorEmailSent}
       titleComponent={TypoDS.Title2}
       title="Contacte le support">
-      <Content>
-        <ContentBody>
+      <ViewGap gap={8}>
+        <ViewGap gap={6}>
           <TypoDS.BodyS>
             Pour traiter ta demande, nous te conseillons d’écrire à notre équipe support.
           </TypoDS.BodyS>
           <TypoDS.BodyS>
             Ta demande sera analysée et tu pourras être redirigé vers la meilleure solution.
           </TypoDS.BodyS>
-        </ContentBody>
+        </ViewGap>
 
         <ContentBottom>
           <ButtonPrimary icon={Email} wording="Contacter le support" onPress={requestSendMail} />
@@ -49,20 +50,13 @@ export const DeleteProfileContactSupport: FC = () => {
             icon={PlainArrowNext}
           />
         </ContentBottom>
-      </Content>
+      </ViewGap>
     </GenericInfoPageWhite>
   )
 }
 
-const Content = styled.View({
-  gap: getSpacing(8),
-})
-
-const ContentBody = styled.View({
-  gap: getSpacing(6),
-})
-
-const ContentBottom = styled.View({
+const ContentBottom = styled(ViewGap).attrs({
+  gap: 6,
+})({
   alignItems: 'center',
-  gap: getSpacing(6),
 })
