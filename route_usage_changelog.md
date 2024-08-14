@@ -37,6 +37,7 @@ To find the diff, use `git diff tag_min_required_version tag_current_version -- 
 - /native/v1/change_password
 - /native/v1/cookies_consent
 - /native/v1/cultural_survey/answers
+- /native/v1/feedback
 - /native/v1/me/favorites
 - /native/v1/oauth/google/account
 - /native/v1/oauth/google/authorize
