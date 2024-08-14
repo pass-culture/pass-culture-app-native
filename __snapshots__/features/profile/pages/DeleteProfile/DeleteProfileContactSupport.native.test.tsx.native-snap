@@ -252,7 +252,7 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
         </View>
       </View>
       <View
-        accessibilityLabel="Retourner au profile"
+        accessibilityLabel="Retourner au profil"
         accessibilityState={
           {
             "busy": undefined,
@@ -307,7 +307,7 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
             },
           ]
         }
-        testID="Retourner au profile"
+        testID="Retourner au profil"
       >
         <View
           style={
@@ -364,7 +364,7 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
               ]
             }
           >
-            Retourner au profile
+            Retourner au profil
           </Text>
         </View>
       </View>

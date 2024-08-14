@@ -44,7 +44,7 @@ export const DeleteProfileContactSupport: FC = () => {
         <ContentBottom>
           <ButtonPrimary icon={Email} wording="Contacter le support" onPress={requestSendMail} />
           <ButtonTertiaryBlack
-            wording="Retourner au profile"
+            wording="Retourner au profil"
             onPress={navigateToProfile}
             icon={PlainArrowNext}
           />
