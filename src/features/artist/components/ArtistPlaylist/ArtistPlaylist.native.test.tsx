@@ -21,7 +21,9 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 describe('ArtistPlaylist', () => {
   it('should display artist playlist when there is some offer from this artist', () => {
     render(
-      reactQueryProviderHOC(<ArtistPlaylist offer={mockOffer} subcategory={mockSubcategory} />)
+      reactQueryProviderHOC(
+        <ArtistPlaylist offer={mockOffer} subcategory={mockSubcategory} artistName="Céline Dion" />
+      )
     )
 
     expect(screen.getByText('Toutes ses offres disponibles')).toBeOnTheScreen()
@@ -33,7 +35,9 @@ describe('ArtistPlaylist', () => {
       sameArtistPlaylist: [],
     })
     render(
-      reactQueryProviderHOC(<ArtistPlaylist offer={mockOffer} subcategory={mockSubcategory} />)
+      reactQueryProviderHOC(
+        <ArtistPlaylist offer={mockOffer} subcategory={mockSubcategory} artistName="Céline Dion" />
+      )
     )
 
     expect(screen.queryByText('Toutes ses offres disponibles')).not.toBeOnTheScreen()

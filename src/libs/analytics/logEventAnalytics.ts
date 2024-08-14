@@ -9,7 +9,7 @@ import {
 } from 'api/gen'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { PreValidationSignupStep } from 'features/auth/enums'
-import { Step, STEP_LABEL } from 'features/bookOffer/context/reducer'
+import { STEP_LABEL, Step } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { IDOrigin } from 'features/identityCheck/pages/identification/ubble/SelectIDOrigin'
@@ -249,6 +249,7 @@ export const logEventAnalytics = {
     playlistType?: PlaylistType
     offer_display_index?: number
     index?: number
+    artistName?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER }, params),
   logConsultPracticalInformations: (params: { venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_PRACTICAL_INFORMATIONS }, params),

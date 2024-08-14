@@ -35,17 +35,17 @@ export const ArtistBody: FunctionComponent = () => {
 
   const subcategory = subcategoriesMapping[offer?.subcategoryId]
   const artists = getOfferArtists(subcategory.categoryId, offer)
-  const mainArtist = artists?.split(',')[0] ?? ''
+  const mainArtistName = artists?.split(',')[0] ?? ''
 
-  if (mainArtist === '') return null
+  if (mainArtistName === '') return null
 
   return (
     <Container>
-      <ArtistWebMetaHeader artist={mainArtist} />
+      <ArtistWebMetaHeader artist={mainArtistName} />
       {/* On web header is called before Body for accessibility navigate order */}
       {isWeb ? (
         <ContentHeader
-          headerTitle={mainArtist}
+          headerTitle={mainArtistName}
           onBackPress={goBack}
           headerTransition={headerTransition}
         />
@@ -57,15 +57,15 @@ export const ArtistBody: FunctionComponent = () => {
         onScroll={onScroll}
         contentContainerStyle={{ paddingTop: headerHeight }}>
         <ViewGap gap={8}>
-          <ArtistTitle>{mainArtist}</ArtistTitle>
-          <ArtistPlaylist offer={offer} subcategory={subcategory} />
+          <ArtistTitle>{mainArtistName}</ArtistTitle>
+          <ArtistPlaylist offer={offer} subcategory={subcategory} artistName={mainArtistName} />
         </ViewGap>
       </ContentContainer>
 
       {/* On native header is called after Body to implement the BlurView for iOS */}
       {isWeb ? null : (
         <ContentHeader
-          headerTitle={mainArtist}
+          headerTitle={mainArtistName}
           onBackPress={goBack}
           headerTransition={headerTransition}
         />

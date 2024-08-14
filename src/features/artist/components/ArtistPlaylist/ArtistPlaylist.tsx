@@ -14,11 +14,16 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 type ArtistPlaylistProps = {
   offer: OfferResponseV2
   subcategory: Subcategory
+  artistName: string
 }
 
 const keyExtractor = (item: Offer | HitOfferWithArtistAndEan) => item.objectID
 
-export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({ subcategory, offer }) => {
+export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
+  subcategory,
+  offer,
+  artistName,
+}) => {
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout('two-items')
@@ -38,7 +43,14 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({ subcate
       playlistType={PlaylistType.SAME_ARTIST_PLAYLIST}
       title="Toutes ses offres disponibles"
       data={sameArtistPlaylist}
-      renderItem={OfferPlaylistItem({ offer, categoryMapping, labelMapping, variant: 'new' })}
+      renderItem={OfferPlaylistItem({
+        offer,
+        categoryMapping,
+        labelMapping,
+        variant: 'new',
+        analyticsFrom: 'artist',
+        artistName,
+      })}
       itemWidth={itemWidth}
       itemHeight={itemHeight}
       keyExtractor={keyExtractor}

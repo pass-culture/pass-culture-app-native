@@ -178,27 +178,6 @@ describe('OfferTile component', () => {
       })
     })
 
-    it('should log ConsultOffer that user opened the offer from the list of same artist', async () => {
-      const propsFromSimilarOffers = {
-        ...props,
-        fromOfferId: 1,
-        playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
-        apiRecoParams,
-      }
-
-      render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
-      fireEvent.press(screen.getByTestId('tileImage'))
-
-      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
-        ...apiRecoParams,
-        offerId: OFFER_ID,
-        fromOfferId: 1,
-        from: 'same_artist_playlist',
-        moduleName: props.moduleName,
-        playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
-      })
-    })
-
     it('should log ConsultOffer from searchN1 gtl playlist', async () => {
       const propsFromSearchN1GtlPlaylist = {
         ...props,
@@ -222,6 +201,34 @@ describe('OfferTile component', () => {
         index: undefined,
         moduleId: undefined,
         playlistType: undefined,
+        venueId: undefined,
+      })
+    })
+
+    it('should log ConsultOffer from artist page playlist', async () => {
+      const propsFromArtistPagePlaylist = {
+        ...props,
+        analyticsFrom: 'artist' as Referrals,
+        moduleName: undefined,
+        playlistType: PlaylistType.SAME_ARTIST_PLAYLIST,
+        artistName: 'Céline Dion',
+      }
+
+      render(reactQueryProviderHOC(<OfferTile {...propsFromArtistPagePlaylist} />))
+
+      fireEvent.press(screen.getByTestId('tileImage'))
+
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        from: 'artist',
+        offerId: OFFER_ID,
+        playlistType: propsFromArtistPagePlaylist.playlistType,
+        artistName: 'Céline Dion',
+        searchId: undefined,
+        moduleName: undefined,
+        fromOfferId: undefined,
+        homeEntryId: undefined,
+        index: undefined,
+        moduleId: undefined,
         venueId: undefined,
       })
     })
