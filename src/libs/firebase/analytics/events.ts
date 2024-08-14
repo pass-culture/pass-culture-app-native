@@ -32,6 +32,7 @@ export enum AnalyticsEvent {
   CONSULT_ACCESSIBILITY_MODALITIES = 'ConsultAccessibilityModalities',
   CONSULT_APPLICATION_PROCESSING_MODAL = 'ConsultApplicationProcessingModal',
   CONSULT_ARTICLE_ACCOUNT_DELETION = 'ConsultArticleAccountDeletion',
+  CONSULT_ARTIST = 'ConsultArtist',
   CONSULT_ARTIST_FAKE_DOOR = 'ConsultArtistFakeDoor',
   CONSULT_AUTHENTICATION_MODAL = 'ConsultAuthenticationModal',
   CONSULT_AVAILABLE_DATES = 'ConsultAvailableDates',
