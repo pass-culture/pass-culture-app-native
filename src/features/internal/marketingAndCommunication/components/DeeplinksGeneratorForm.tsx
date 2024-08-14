@@ -27,6 +27,7 @@ import { env } from 'libs/environment'
 import { LocationMode } from 'libs/location/types'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers/getDisplayPrice'
 import { Range } from 'libs/typesUtils/typeHelpers'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { Accordion } from 'ui/components/Accordion'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Slider } from 'ui/components/inputs/Slider'
@@ -95,8 +96,9 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     function validate(value: unknown) {
       if (config.serverValidator) {
         config.serverValidator(value).catch((error) => {
+          const errorMessage = getErrorMessage(error)
           showErrorSnackBar({
-            message: `${name} invalide: ${error.message}`,
+            message: `${name} invalide: ${errorMessage}`,
             timeout: SNACK_BAR_TIME_OUT,
           })
         })

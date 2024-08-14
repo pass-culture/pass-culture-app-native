@@ -9,6 +9,7 @@ import { env } from 'libs/environment'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { eventMonitoring } from 'libs/monitoring'
 import { LogTypeEnum } from 'libs/monitoring/errors'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -40,13 +41,13 @@ export const SuspensionChoice = () => {
             'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
           timeout: SNACK_BAR_TIME_OUT,
         })
-        if (logType === LogTypeEnum.INFO)
+        if (logType === LogTypeEnum.INFO) {
+          const errorMessage = getErrorMessage(error)
           eventMonitoring.captureException(
-            `Can’t suspend account for suspicious login ; reason: "${
-              error instanceof Error ? error.message : undefined
-            }"`,
+            `Can’t suspend account for suspicious login ; reason: "${errorMessage}"`,
             { level: logType }
           )
+        }
       },
     })
 

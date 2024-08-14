@@ -13,6 +13,7 @@ import { clearRefreshToken } from 'libs/keychain/keychain'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { BatchUser } from 'libs/react-native-batch'
 import { storage } from 'libs/storage'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -98,10 +99,12 @@ export const CheatCodes: FunctionComponent<Props> = function () {
 async function getBatchInstallationID() {
   try {
     return await BatchUser.getInstallationID()
-  } catch (e) {
+  } catch (error) {
+    const errorMessage = getErrorMessage(error)
+
     Alert.alert(
       'Batch error',
-      `An error has occured while obtaining the Batch installation ID: ${e}`
+      `An error has occured while obtaining the Batch installation ID: ${errorMessage}`
     )
     return 'Batch error'
   }

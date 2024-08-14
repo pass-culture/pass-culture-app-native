@@ -264,12 +264,9 @@ describe('[api] helpers', () => {
 
       await safeFetch(apiUrl, optionsWithAccessToken, api)
 
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        new Error('safeFetch Error: Error'),
-        {
-          extra: { url: '/native/v1/me' },
-        }
-      )
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(new Error('safeFetch Error'), {
+        extra: { url: '/native/v1/me' },
+      })
     })
 
     it('retries to regenerate the access token when the access token is expired and the first try to regenerate fails', async () => {

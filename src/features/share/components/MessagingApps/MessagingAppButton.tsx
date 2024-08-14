@@ -6,6 +6,7 @@ import { eventMonitoring } from 'libs/monitoring'
 import { mapNetworkToSocial } from 'libs/share/mapNetworkToSocial'
 import { share } from 'libs/share/share'
 import { Network, ShareContent } from 'libs/share/types'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
 type MessagingAppsButtonProps = {
@@ -24,8 +25,9 @@ export const MessagingAppButton = ({
     try {
       onPressAnalytics(mapNetworkToSocial[network].social)
       await share({ content: { ...shareContent, url: shareUrlWithUtmSource }, mode: network })
-    } catch (e) {
-      eventMonitoring.captureException(`MessagingApp click: ${e}`)
+    } catch (error) {
+      const errorMessage = getErrorMessage(error)
+      eventMonitoring.captureException(`MessagingApp click: ${errorMessage}`)
     }
   }
 

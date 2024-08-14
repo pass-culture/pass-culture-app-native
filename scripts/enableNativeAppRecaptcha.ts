@@ -1,5 +1,7 @@
 /// <reference types="node" />
 
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
+
 type Feature = { name: string; isActive: boolean }
 type Features = Array<Feature>
 
@@ -34,9 +36,10 @@ async function patchFeatures(features: Features) {
         .join('\n')}`
     )
   } catch (error) {
+    const errorMessage = getErrorMessage(error)
     console.error(
       `${RED}ERROR`,
-      `${RESET_COLOR}Failed to patch ${features.length} feature(s): ${error}`
+      `${RESET_COLOR}Failed to patch ${features.length} feature(s): ${errorMessage}`
     )
   }
 }

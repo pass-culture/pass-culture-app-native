@@ -33,7 +33,7 @@ describe('getTokenInfo', () => {
     getTokenInfo(INVALID_TOKEN)
 
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-      "Failed to get token info from suspicious login email: InvalidTokenError: Invalid token specified: Cannot read properties of undefined (reading 'replace')",
+      "Failed to get token info from suspicious login email: Invalid token specified: Cannot read properties of undefined (reading 'replace')",
       { extra: { token: INVALID_TOKEN } }
     )
   })

@@ -6,6 +6,7 @@ import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfi
 import { eventMonitoring } from 'libs/monitoring'
 import { LogTypeEnum } from 'libs/monitoring/errors'
 import { GoogleLoginOptions } from 'libs/react-native-google-sso/types'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export const useGoogleLogin = ({ onSuccess }: GoogleLoginOptions) => {
   const { data } = useOAuthState()
@@ -25,9 +26,13 @@ export const useGoogleLogin = ({ onSuccess }: GoogleLoginOptions) => {
           state: data.oauthStateToken,
         })
       }
-    } catch (e) {
-      if (logType === LogTypeEnum.INFO)
-        eventMonitoring.captureException(`Can’t login via Google: ${e}`, { level: 'info' })
+    } catch (error) {
+      if (logType === LogTypeEnum.INFO) {
+        const errorMessage = getErrorMessage(error)
+        eventMonitoring.captureException(`Can’t login via Google: ${errorMessage}`, {
+          level: 'info',
+        })
+      }
     }
   }
 }

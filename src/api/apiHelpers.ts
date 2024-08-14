@@ -11,6 +11,7 @@ import { eventMonitoring } from 'libs/monitoring'
 import { getAppVersion } from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 import { ApiError } from './ApiError'
 import { DefaultApi } from './gen'
@@ -101,10 +102,11 @@ export const safeFetch = async (
         },
       }
     } catch (error) {
+      const errorMessage = getErrorMessage(error)
       // Here we are supposed to be logged-in (calling an authenticated endpoint)
       // But the access token is expired and cannot be refreshed.
       // In this case, we cleared the access token and we need to login again
-      eventMonitoring.captureException(new Error(`safeFetch ${error}`, { cause: error }), {
+      eventMonitoring.captureException(new Error(`safeFetch ${errorMessage}`, { cause: error }), {
         extra: { url },
       })
       return createNeedsAuthenticationResponse(url)

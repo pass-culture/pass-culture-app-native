@@ -1,6 +1,7 @@
 import jwtDecode from 'jwt-decode'
 
 import { eventMonitoring } from 'libs/monitoring'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export type TokenInfo = {
   exp: number
@@ -11,10 +12,14 @@ export type TokenInfo = {
 export const getTokenInfo = (token: string): TokenInfo | undefined => {
   try {
     return jwtDecode<TokenInfo>(token)
-  } catch (e) {
-    eventMonitoring.captureException(`Failed to get token info from suspicious login email: ${e}`, {
-      extra: { token },
-    })
+  } catch (error) {
+    const errorMessage = getErrorMessage(error)
+    eventMonitoring.captureException(
+      `Failed to get token info from suspicious login email: ${errorMessage}`,
+      {
+        extra: { token },
+      }
+    )
 
     return undefined
   }
