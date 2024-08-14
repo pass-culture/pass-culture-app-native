@@ -18,8 +18,9 @@ import { nativeEmailProvider } from './EmailProvider'
 import { useContactSupportForDeletionProfile } from './useContactSupportForDeletionProfile'
 import { webEmailProvider } from './WebEmailProvider.web'
 
+const isWeb = Platform.OS === 'web'
+
 export const DeleteProfileContactSupport: FC = () => {
-  const isWeb = Platform.OS === 'web'
   const emailProvider = isWeb ? webEmailProvider() : nativeEmailProvider()
   const { requestSendMail } = useContactSupportForDeletionProfile({ emailProvider })
   const { navigate } = useNavigation<UseNavigationType>()
