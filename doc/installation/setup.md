@@ -1,20 +1,29 @@
 ## Installation - setup
 
-We advise to **follow [the guidelines](https://reactnative.dev/docs/environment-setup)** to set up your environment by selecting your Development OS and your target OS (Android/iOS).
+### Install global tools
 
 [Install `nix` package manager](https://github.com/DeterminateSystems/nix-installer#the-determinate-nix-installer)
 
-[Install DirEnv](https://direnv.net/) (`brew install direnv`) please make sure to [hook into your shell](https://direnv.net/docs/hook.html)
+[Install DirEnv](https://direnv.net/) 
+
+```sh
+brew install direnv
+```
+
+Then please make sure to [hook into your shell](https://direnv.net/docs/hook.html)
 
 Start a new terminal to load the new configuration
 
-Load environment
+We advise to **follow [the guidelines](https://reactnative.dev/docs/set-up-your-environment)** to set up your environment by selecting your Development OS and your target OS (Android/iOS).
+
+### Load project environment
 
 ```sh
 cd ./pass-culture-app-native # if needed
 direnv allow
-direnv allow # run twice on error
 ```
+
+If you got an error when executing `direnv allow` run it twice
 
 ### Android
 
