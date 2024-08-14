@@ -10,6 +10,13 @@ describe('<OfferPreviewModal />', () => {
     jest.spyOn(console, 'warn').mockImplementation()
   })
 
+  afterEach(async () => {
+    await act(async () => {
+      jest.runOnlyPendingTimers()
+    })
+    jest.useRealTimers()
+  })
+
   it('should display offer preview modal correctly with several images', async () => {
     render(
       <OfferPreviewModal
@@ -38,6 +45,7 @@ describe('<OfferPreviewModal />', () => {
   })
 
   it('should start at specific index', async () => {
+    jest.useFakeTimers()
     render(
       <OfferPreviewModal
         isVisible
@@ -47,10 +55,15 @@ describe('<OfferPreviewModal />', () => {
       />
     )
 
-    await waitFor(() => expect(screen.getByText('2/3')).toBeInTheDocument())
+    await act(async () => {
+      jest.advanceTimersByTime(500)
+    })
+
+    expect(screen.getByText('2/3')).toBeInTheDocument()
   })
 
   it('should display next image', async () => {
+    jest.useFakeTimers()
     render(
       <OfferPreviewModal
         isVisible
@@ -62,10 +75,15 @@ describe('<OfferPreviewModal />', () => {
     const nextButton = await screen.findByTestId('Image suivante')
     fireEvent.click(nextButton)
 
-    await waitFor(() => expect(screen.getByText('2/3')).toBeInTheDocument())
+    await act(async () => {
+      jest.advanceTimersByTime(500)
+    })
+
+    expect(screen.getByText('2/3')).toBeInTheDocument()
   })
 
   it('should display previous image', async () => {
+    jest.useFakeTimers()
     render(
       <OfferPreviewModal
         isVisible
@@ -75,12 +93,20 @@ describe('<OfferPreviewModal />', () => {
       />
     )
 
-    await act(() => fireEvent.click(screen.getByTestId('Image précédente')))
+    await screen.findByText('3/3')
 
-    await waitFor(() => expect(screen.getByText('2/3')).toBeInTheDocument())
+    const previousButton = screen.getByTestId('Image précédente')
+    fireEvent.click(previousButton)
+
+    await act(async () => {
+      jest.advanceTimersByTime(500)
+    })
+
+    expect(screen.getByText('2/3')).toBeInTheDocument()
   })
 
   it('should close modal on click on close button', async () => {
+    jest.useFakeTimers()
     const mockOnClose = jest.fn()
     render(
       <OfferPreviewModal
@@ -92,7 +118,11 @@ describe('<OfferPreviewModal />', () => {
     )
 
     const closeButton = await screen.findByTestId('Fermer la fenêtre')
-    await act(() => fireEvent.click(closeButton))
+    fireEvent.click(closeButton)
+
+    await act(async () => {
+      jest.advanceTimersByTime(500)
+    })
 
     expect(mockOnClose).toHaveBeenCalledWith()
   })
