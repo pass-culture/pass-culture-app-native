@@ -23,6 +23,8 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { getSpacing } from 'ui/theme'
@@ -41,6 +43,8 @@ type Props = UseSearchBoxProps & {
 
 const accessibilityDescribedBy = uuidv4()
 
+const BOOK_KEYWORD_PATTERN = /\bLIVRES?\b$/i
+
 export const SearchBox: React.FunctionComponent<Props> = ({
   searchInputID,
   accessibleHiddenTitle,
@@ -58,6 +62,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const inputRef = useRef<RNTextInput | null>(null)
   const route = useRoute()
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
+  const { navigateToSearch: navigateToSearchN1 } = useNavigateToSearch('SearchN1')
+  const enableWipPageSearchN1 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1)
 
   const currentView = route.name
 
@@ -81,7 +87,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     [setDisplayedQuery, appEnableAutocomplete, debounceSetAutocompleteQuery, searchInHistory]
   )
   const pushWithSearch = useCallback(
-    (partialSearchState: Partial<SearchState>, options: { reset?: boolean } = {}) => {
+    (
+      partialSearchState: Partial<SearchState>,
+      options: { reset?: boolean } = {},
+      hasSearchedForBookKeyword?: boolean
+    ) => {
       const newSearchState = {
         ...searchState,
         ...(options.reset ? initialSearchState : {}),
@@ -93,11 +103,15 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         payload: newSearchState,
       })
 
+      if (hasSearchedForBookKeyword) {
+        return navigateToSearchN1(newSearchState, defaultDisabilitiesProperties)
+      }
+
       if (newSearchState.query !== '') {
         navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
       }
     },
-    [dispatch, navigateToSearchResults, searchState]
+    [dispatch, navigateToSearchN1, navigateToSearchResults, searchState]
   )
 
   const hasEditableSearchInput =
@@ -180,20 +194,41 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       addSearchHistory({ query: queryText })
       const searchId = uuidv4()
 
-      const partialSearchState: Partial<SearchState> = {
+      const hasSearchedForBookKeyword =
+        enableWipPageSearchN1 &&
+        currentView === SearchView.Landing &&
+        BOOK_KEYWORD_PATTERN.test(queryText.trim())
+
+      let partialSearchState: Partial<SearchState> = {
         query: queryText,
         locationFilter: searchState.locationFilter,
         venue: searchState.venue,
-        offerCategories: offerCategories ?? searchState.offerCategories,
-        offerNativeCategories:
-          currentView === SearchView.N1 ? undefined : searchState.offerNativeCategories,
-        gtls: currentView === SearchView.N1 ? [] : searchState.gtls,
+        offerCategories: searchState.offerCategories,
+        offerNativeCategories: searchState.offerNativeCategories,
+        gtls: searchState.gtls,
         priceRange: searchState.priceRange,
         searchId,
         isAutocomplete: undefined,
         isFromHistory: undefined,
       }
-      pushWithSearch(partialSearchState)
+
+      if (currentView === SearchView.N1) {
+        partialSearchState = {
+          ...partialSearchState,
+          offerCategories,
+          offerNativeCategories: undefined,
+          gtls: [],
+        }
+      }
+
+      if (hasSearchedForBookKeyword) {
+        partialSearchState = {
+          ...partialSearchState,
+          query: queryText.trim(),
+          offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        }
+      }
+      pushWithSearch(partialSearchState, {}, hasSearchedForBookKeyword)
       hideSuggestions()
     },
     [
@@ -204,10 +239,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       searchState.offerNativeCategories,
       searchState.gtls,
       searchState.priceRange,
-      offerCategories,
       currentView,
+      enableWipPageSearchN1,
       pushWithSearch,
       hideSuggestions,
+      offerCategories,
     ]
   )
 

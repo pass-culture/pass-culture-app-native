@@ -140,5 +140,6 @@ function MockOfferCategoriesParams(offerCategoriesParams: {
 }) {
   useRoute.mockImplementation(() => ({
     params: offerCategoriesParams,
+    name: 'SearchN1',
   }))
 }
