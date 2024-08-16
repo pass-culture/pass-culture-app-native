@@ -1,27 +1,27 @@
 import { RouteProp } from '@react-navigation/native'
 import React from 'react'
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
-import { QueryObserverResult } from 'react-query'
+import { UseQueryResult } from 'react-query'
 
 import * as API from 'api/api'
 import { ApiError } from 'api/ApiError'
-import { EmailHistoryEventTypeEnum, EmailUpdateStatus } from 'api/gen'
+import { EmailHistoryEventTypeEnum, EmailUpdateStatusResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
+import * as useEmailUpdateStatusV2 from 'features/profile/helpers/useEmailUpdateStatusV2'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
-const useEmailUpdateStatusSpy = jest
-  .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus')
+const useEmailUpdateStatusV2Spy = jest
+  .spyOn(useEmailUpdateStatusV2, 'useEmailUpdateStatusV2')
   .mockReturnValue({
     data: {
       newEmail: 'john@doe.com',
       expired: false,
       status: EmailHistoryEventTypeEnum.VALIDATION,
     },
-  } as QueryObserverResult<EmailUpdateStatus>)
+  } as UseQueryResult<EmailUpdateStatusResponse>)
 
 jest.mock('features/navigation/helpers/navigateToHome')
 
@@ -157,13 +157,13 @@ describe('ValidateEmailChange', () => {
   })
 
   it('should redirect to change email expired when status is expired', () => {
-    useEmailUpdateStatusSpy.mockReturnValueOnce({
+    useEmailUpdateStatusV2Spy.mockReturnValueOnce({
       data: {
         expired: true,
         newEmail: 'john@doe.com',
         status: EmailHistoryEventTypeEnum.VALIDATION,
       },
-    } as QueryObserverResult<EmailUpdateStatus>)
+    } as UseQueryResult<EmailUpdateStatusResponse>)
 
     renderValidateEmailChange()
 
@@ -173,9 +173,9 @@ describe('ValidateEmailChange', () => {
   })
 
   it('should redirect to home when there is no email update', () => {
-    useEmailUpdateStatusSpy.mockReturnValueOnce({
+    useEmailUpdateStatusV2Spy.mockReturnValueOnce({
       data: undefined,
-    } as QueryObserverResult<EmailUpdateStatus>)
+    } as UseQueryResult<EmailUpdateStatusResponse>)
 
     renderValidateEmailChange()
 

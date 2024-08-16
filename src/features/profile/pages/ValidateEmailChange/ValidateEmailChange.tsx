@@ -8,7 +8,7 @@ import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
+import { useEmailUpdateStatusV2 } from 'features/profile/helpers/useEmailUpdateStatusV2'
 import { ValidateEmailChangeSubtitleComponent } from 'features/profile/pages/ValidateEmailChange/SubtitleComponent'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -22,7 +22,8 @@ import { Spacer, Typo } from 'ui/theme'
 type ValidateEmailChangeProps = NativeStackScreenProps<RootStackParamList, 'ValidateEmailChange'>
 
 export function ValidateEmailChange({ route: { params }, navigation }: ValidateEmailChangeProps) {
-  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
+  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } =
+    useEmailUpdateStatusV2()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)
@@ -83,7 +84,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
       icon={BicolorPhonePending}
       titleComponent={Typo.Title3}
       title="Valides-tu la nouvelle adresse e-mail&nbsp;?"
-      subtitle={emailUpdateStatus?.newEmail}
+      subtitle={emailUpdateStatus?.newEmail || undefined}
       subtitleComponent={ValidateEmailChangeSubtitleComponent}
       separateIconFromTitle={false}
       mobileBottomFlex={0.3}>
