@@ -16,7 +16,6 @@ export enum RemoteStoreDocuments {
 }
 
 export enum RemoteStoreFeatureFlags {
-  DISABLE_OLD_CHANGE_EMAIL = 'disableOldChangeEmail',
   ENABLE_MUSIC_LIVE_BOOKING_SURVEY = 'enableMusicLiveBookingSurvey',
   FAKE_DOOR_ARTIST = 'fakeDoorArtist',
   WIP_APP_V2_BUSINESS_BLOCK = 'wipAppV2BusinessBlock',
