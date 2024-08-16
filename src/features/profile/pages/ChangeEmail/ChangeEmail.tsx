@@ -7,9 +7,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { DeleteProfileReasonNewEmailModal } from 'features/profile/components/Modals/DeleteProfileReasonNewEmailModal'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
-import { ChangeEmailContentDeprecated } from 'features/profile/pages/ChangeEmail/ChangeEmailContentDeprecated'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 
@@ -29,26 +26,14 @@ export function ChangeEmail() {
     if (Platform.OS === 'web') return replace('ChangeEmail', { showModal: false })
   }
 
-  const disableOldChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_OLD_CHANGE_EMAIL)
-  const enableNewChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_CHANGE_EMAIL)
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
   const { user } = useAuthContext()
 
   return (
     <React.Fragment>
-      {enableNewChangeEmail ? (
-        <SecondaryPageWithBlurHeader title="Modifier mon e-mail">
-          <ChangeEmailContent hasCurrentEmailChange={hasCurrentEmailChange} user={user} />
-        </SecondaryPageWithBlurHeader>
-      ) : (
-        <SecondaryPageWithBlurHeader title="Modifier mon e-mail">
-          <ChangeEmailContentDeprecated
-            disableOldChangeEmail={disableOldChangeEmail}
-            hasCurrentEmailChange={hasCurrentEmailChange}
-            user={user}
-          />
-        </SecondaryPageWithBlurHeader>
-      )}
+      <SecondaryPageWithBlurHeader title="Modifier mon e-mail">
+        <ChangeEmailContent hasCurrentEmailChange={hasCurrentEmailChange} user={user} />
+      </SecondaryPageWithBlurHeader>
       <DeleteProfileReasonNewEmailModal isVisible={visible} hideModal={handleHideModal} />
     </React.Fragment>
   )
