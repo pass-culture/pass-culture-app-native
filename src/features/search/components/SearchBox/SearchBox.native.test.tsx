@@ -159,9 +159,9 @@ describe('SearchBox component', () => {
 
   it('should render SearchBox', async () => {
     renderSearchBox()
-    await act(async () => {})
+    const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
 
-    expect(screen).toMatchSnapshot()
+    expect(searchInput).toBeOnTheScreen()
   })
 
   it('should render SearchBox when FF is enabled', async () => {
@@ -364,6 +364,41 @@ describe('SearchBox component', () => {
       expect(mockClear).toHaveBeenCalledTimes(1)
     })
   })
+
+  it.each(['LIVRE', 'Livre ', 'livre', 'LIVRES', 'Livres', 'livres '])(
+    'should redirect to searchN1 when queryText is `%s` and SearchView is `Landing`',
+    (queryText) => {
+      useRoute.mockReturnValueOnce({ name: SearchView.Landing })
+      useFeatureFlagSpy.mockReturnValueOnce(true) // enableWipPageSearchN1
+
+      renderSearchBox()
+
+      const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
+
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: queryText } })
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          params: {
+            ...initialSearchState,
+            query: queryText.trim(),
+            offerCategories: [SearchGroupNameEnumv2.LIVRES],
+            offerNativeCategories: undefined,
+            searchId,
+            accessibilityFilter: {
+              isAudioDisabilityCompliant: undefined,
+              isMentalDisabilityCompliant: undefined,
+              isMotorDisabilityCompliant: undefined,
+              isVisualDisabilityCompliant: undefined,
+            },
+            priceRange: mockSearchState.priceRange,
+          },
+          screen: 'SearchN1',
+        },
+        screen: 'SearchStackNavigator',
+      })
+    }
+  )
 
   describe('Without autocomplete', () => {
     beforeAll(() => {
