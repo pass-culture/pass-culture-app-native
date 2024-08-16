@@ -12,6 +12,13 @@ exports[`Movie screening calendar should render <MovieScreeningCalendar /> with 
 >
   <View
     onLayout={[Function]}
+    style={
+      [
+        {
+          "backgroundColor": "#ffffff",
+        },
+      ]
+    }
   >
     <View
       style={

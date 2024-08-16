@@ -16,6 +16,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { screen, render, act } from 'tests/utils'
+import ScrollViewWithContext from 'ui/components/scrollViewWithContext/ScrollViewWithContext'
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
@@ -113,7 +114,14 @@ const renderMoviesScreeningCalendar = ({
   isDesktopViewport?: boolean
   venueOffers: VenueOffers
 }) => {
-  render(reactQueryProviderHOC(<MoviesScreeningCalendar venueOffers={venueOffers} />), {
-    theme: { isDesktopViewport },
-  })
+  render(
+    reactQueryProviderHOC(
+      <ScrollViewWithContext>
+        <MoviesScreeningCalendar venueOffers={venueOffers} />
+      </ScrollViewWithContext>
+    ),
+    {
+      theme: { isDesktopViewport },
+    }
+  )
 }

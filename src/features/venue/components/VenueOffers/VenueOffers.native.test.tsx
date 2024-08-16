@@ -20,6 +20,7 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { LocationMode } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
+import ScrollViewWithContext from 'ui/components/scrollViewWithContext/ScrollViewWithContext'
 
 const mockFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
@@ -215,7 +216,9 @@ const renderVenueOffers = ({
 }) => {
   return render(
     reactQueryProviderHOC(
-      <VenueOffers venue={venue} venueOffers={venueOffers} playlists={playlists} />
+      <ScrollViewWithContext>
+        <VenueOffers venue={venue} venueOffers={venueOffers} playlists={playlists} />
+      </ScrollViewWithContext>
     )
   )
 }

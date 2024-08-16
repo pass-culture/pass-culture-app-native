@@ -159,6 +159,9 @@ exports[`<Venue /> Accessibility should render correctly 1`] = `
       />
     </div>
     <div
+      class="css-view-175oi2r r-left-1d2f490 r-marginTop-19tq15n r-position-u8s1d r-right-zchlnj r-zIndex-184en5c"
+    />
+    <div
       class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh r-overflow-bztko3"
     >
       <div
@@ -2126,6 +2129,9 @@ exports[`<Venue /> Accessibility should render correctly with practical informat
         class="css-view-175oi2r r-height-3da1kt"
       />
     </div>
+    <div
+      class="css-view-175oi2r r-left-1d2f490 r-marginTop-19tq15n r-position-u8s1d r-right-zchlnj r-zIndex-184en5c"
+    />
     <div
       class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh r-overflow-bztko3"
     >

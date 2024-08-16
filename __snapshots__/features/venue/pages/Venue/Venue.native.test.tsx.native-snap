@@ -13,6 +13,20 @@ exports[`<Venue /> should match snapshot 1`] = `
     ]
   }
 >
+  <View
+    stickyOffset={80}
+    style={
+      [
+        {
+          "left": 0,
+          "marginTop": 80,
+          "position": "absolute",
+          "right": 0,
+          "zIndex": 1,
+        },
+      ]
+    }
+  />
   <RCTScrollView
     bounces={false}
     onContentSizeChange={[Function]}
@@ -4945,6 +4959,20 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
     ]
   }
 >
+  <View
+    stickyOffset={80}
+    style={
+      [
+        {
+          "left": 0,
+          "marginTop": 80,
+          "position": "absolute",
+          "right": 0,
+          "zIndex": 1,
+        },
+      ]
+    }
+  />
   <RCTScrollView
     bounces={false}
     onContentSizeChange={[Function]}
