@@ -62,6 +62,7 @@ import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/Co
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfile/DeleteProfileContactSupport'
+import { DeleteProfileSecureAccount } from 'features/profile/pages/DeleteProfile/DeleteProfileSecureAccount'
 import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
@@ -266,6 +267,13 @@ export const routes: RootRoute[] = [
     component: DeleteProfileContactSupport,
     path: 'profil/suppression/support',
     options: { title: 'Contact support' },
+    secure: true,
+  },
+  {
+    name: 'DeleteProfileSecureAccount',
+    component: DeleteProfileSecureAccount,
+    path: 'profil/suppression/secure',
+    options: { title: 'Sécurise ton compte' },
     secure: true,
   },
   {
