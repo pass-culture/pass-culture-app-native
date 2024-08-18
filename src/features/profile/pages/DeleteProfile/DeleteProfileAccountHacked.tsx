@@ -13,12 +13,12 @@ import { Clear } from 'ui/svg/icons/Clear'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
 import { TypoDS } from 'ui/theme'
 
-export const DeleteProfileSecureAccount: FC = () => {
+export const DeleteProfileAccountHacked: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
 
-  const navigateToChangeEmail = () => navigate('ChangeEmail')
+  const navigateToChangePassword = () => navigate('ChangePassword')
 
   const navigateToSuspendAccount = () => {
     // suspend account
@@ -34,7 +34,8 @@ export const DeleteProfileSecureAccount: FC = () => {
       <ViewGap gap={8}>
         <ViewGap gap={6}>
           <TypoDS.BodyS>
-            Tu as indiqué <StyledBoldText>que ta boite mail a été piraté</StyledBoldText>.
+            Tu as indiqué
+            <StyledBoldText> que quelqu’un d’autre a accès à ton compte</StyledBoldText>.
           </TypoDS.BodyS>
           <TypoDS.BodyS>
             Pour des raisons de <StyledBoldText>sécurité</StyledBoldText>, nous te conseillons de
@@ -43,7 +44,7 @@ export const DeleteProfileSecureAccount: FC = () => {
         </ViewGap>
 
         <ContentBottom>
-          <ButtonPrimary wording="Modifier mon adresse e-mail" onPress={navigateToChangeEmail} />
+          <ButtonPrimary wording="Modifier mon mot de passe" onPress={navigateToChangePassword} />
           <ButtonSecondary wording="Suspendre mon compte" onPress={navigateToSuspendAccount} />
           <ButtonTertiaryBlack
             wording="Ne pas sécuriser mon compte"

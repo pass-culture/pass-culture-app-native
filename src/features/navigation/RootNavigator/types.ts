@@ -213,6 +213,7 @@ export type RootStackParamList = {
   DeleteProfileReason: undefined
   DeleteProfileContactSupport: undefined
   DeleteProfileSecureAccount: undefined
+  DeleteProfileAccountHacked: undefined
   ConfirmDeleteProfile: undefined
   BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
   BookingDetails: { id: number }

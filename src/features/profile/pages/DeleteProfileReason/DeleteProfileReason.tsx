@@ -58,7 +58,7 @@ const reasonButtons: ReasonButton[] = [
   },
   {
     wording: 'Je pense que quelqu’un d’autre a accès à mon compte',
-    navigateTo: { screen: 'ConfirmDeleteProfile' },
+    navigateTo: { screen: 'DeleteProfileAccountHacked' },
     analyticsReason: 'hackedAccount',
   },
   {
