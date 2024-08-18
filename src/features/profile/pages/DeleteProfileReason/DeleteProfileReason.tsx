@@ -53,7 +53,7 @@ const reasonButtons: ReasonButton[] = [
   },
   {
     wording: 'Ma boite mail a été piratée',
-    navigateTo: { screen: 'DeleteProfileSecureAccount' },
+    navigateTo: { screen: 'DeleteProfileEmailHacked' },
     analyticsReason: 'hackedMailBox',
   },
   {

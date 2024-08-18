@@ -13,7 +13,7 @@ import { Clear } from 'ui/svg/icons/Clear'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
 import { TypoDS } from 'ui/theme'
 
-export const DeleteProfileSecureAccount: FC = () => {
+export const DeleteProfileEmailHacked: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))

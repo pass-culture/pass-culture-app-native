@@ -63,7 +63,7 @@ import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentS
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountHacked'
 import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfile/DeleteProfileContactSupport'
-import { DeleteProfileSecureAccount } from 'features/profile/pages/DeleteProfile/DeleteProfileSecureAccount'
+import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
 import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
@@ -271,9 +271,9 @@ export const routes: RootRoute[] = [
     secure: true,
   },
   {
-    name: 'DeleteProfileSecureAccount',
-    component: DeleteProfileSecureAccount,
-    path: 'profil/suppression/secure',
+    name: 'DeleteProfileEmailHacked',
+    component: DeleteProfileEmailHacked,
+    path: 'profil/suppression/email-piratee',
     options: { title: 'Sécurise ton compte' },
     secure: true,
   },
