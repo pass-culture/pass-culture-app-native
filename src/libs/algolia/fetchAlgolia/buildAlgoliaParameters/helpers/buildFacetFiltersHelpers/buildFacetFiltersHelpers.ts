@@ -48,7 +48,7 @@ const offerGenreTypesPredicate = {
 export const buildOfferGenreTypesPredicate = (offerGenreTypes: OfferGenreType[]) =>
   offerGenreTypes.map((offerGenreType) =>
     offerGenreTypesPredicate[offerGenreType.key]
-      ? `${offerGenreTypesPredicate[offerGenreType.key]}:${[offerGenreType.name]}`
+      ? `${offerGenreTypesPredicate[offerGenreType.key]}:${offerGenreType.name}`
       : ''
   )
 
@@ -71,7 +71,7 @@ export const buildAllocineIdPredicate = (allocineId: number) => [
 ]
 
 export const buildOfferIsDuoPredicate = (offerIsDuo: boolean): string[] | undefined =>
-  offerIsDuo ? [`${FACETS_FILTERS_ENUM.OFFER_IS_DUO}:${offerIsDuo}`] : undefined
+  offerIsDuo ? [`${FACETS_FILTERS_ENUM.OFFER_IS_DUO}:true`] : undefined
 
 export const buildTagsPredicate = (
   tags: SearchQueryParameters['tags']
