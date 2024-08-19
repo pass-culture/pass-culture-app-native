@@ -8,6 +8,7 @@ import { useAppStateChange } from 'libs/appState'
 export const useTrackDuration = (callback: (durationInSeconds: number) => void) => {
   const timeInBackground = useRef(0)
   const startTimeBackground = useRef<Date | null>(null)
+
   const onAppBecomeActive = () => {
     const endTimeBackground = new Date()
     if (startTimeBackground.current)
@@ -20,14 +21,19 @@ export const useTrackDuration = (callback: (durationInSeconds: number) => void) 
 
   useAppStateChange(onAppBecomeActive, onAppBecomeInactive)
 
-  const getMappSeenDuration = useCallback(() => {
+  const getMapSeenDuration = useCallback(() => {
     const startTime = new Date()
     return () => {
       const endTime = new Date()
       const totalDurationOnPage = (endTime.getTime() - startTime.getTime()) / 1000
       const durationWithoutBackgroundTime = totalDurationOnPage - timeInBackground.current
       callback(Number(durationWithoutBackgroundTime.toFixed(3)))
+
+      // Resetting the refs to initial values
+      timeInBackground.current = 0
+      startTimeBackground.current = null
     }
   }, [callback])
-  return getMappSeenDuration
+
+  return getMapSeenDuration
 }
