@@ -112,7 +112,7 @@ export function joinArrayElement(array: (string | number)[] | MonthDays) {
     return array.join(' et ')
   } else {
     const first = array.slice(0, -1).join(', ')
-    const last = array.slice(-1).join('')
+    const last = array.at(-1) ?? ''
     return `${first} et ${last}`
   }
 }
