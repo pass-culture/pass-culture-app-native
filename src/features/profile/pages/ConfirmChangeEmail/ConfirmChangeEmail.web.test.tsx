@@ -23,11 +23,12 @@ describe('<ConfirmChangeEmail />', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<ConfirmChangeEmail />))
 
+      let results
       await act(async () => {
-        const results = await checkAccessibilityFor(container)
-
-        expect(results).toHaveNoViolations()
+        results = await checkAccessibilityFor(container)
       })
+
+      expect(results).toHaveNoViolations()
     })
   })
 })

@@ -116,9 +116,9 @@ describe('Signup Form', () => {
       await screen.findByText('Crée-toi un compte')
 
       const goBackButton = screen.queryByText('Quitter')
-      await act(() => {})
-
-      expect(goBackButton).not.toBeOnTheScreen()
+      await act(() => {
+        expect(goBackButton).not.toBeOnTheScreen()
+      })
     })
 
     it('should open quit modal when pressing quit button on second step', async () => {

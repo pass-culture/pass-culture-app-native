@@ -4,23 +4,21 @@ import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
 import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import * as useEmailUpdateStatusV2 from 'features/profile/helpers/useEmailUpdateStatusV2'
+import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-type UseEmailUpdateStatusV2Mock = ReturnType<
-  (typeof useEmailUpdateStatusV2)['useEmailUpdateStatusV2']
->
+type useEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
 
-jest.spyOn(useEmailUpdateStatusV2, 'useEmailUpdateStatusV2').mockReturnValue({
+jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
   data: {
     expired: false,
     newEmail: '',
     status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
   },
   isLoading: false,
-} as UseEmailUpdateStatusV2Mock)
+} as useEmailUpdateStatusMock)
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')

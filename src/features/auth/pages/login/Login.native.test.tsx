@@ -91,16 +91,6 @@ describe('<Login/>', () => {
   })
 
   it('should render correctly', async () => {
-    mockUsePreviousRoute.mockReturnValueOnce(null)
-
-    renderLogin()
-
-    await screen.findByText('Connecte-toi')
-
-    expect(screen).toMatchSnapshot()
-  })
-
-  it('should render correctly when feature flag is enabled', async () => {
     renderLogin()
 
     await screen.findByText('Connecte-toi')
@@ -131,7 +121,7 @@ describe('<Login/>', () => {
     )
   })
 
-  it('should sign in when SSO button is clicked with device info when feature flag is active', async () => {
+  it('should sign in when SSO button is clicked with device info', async () => {
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
     mockServer.postApi<SigninResponse>('/v1/oauth/google/authorize', {

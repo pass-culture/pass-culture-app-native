@@ -255,7 +255,7 @@ describe('<SetEmail />', () => {
   })
 
   describe('SSO', () => {
-    it('should display SSO button when FF is enabled', async () => {
+    it('should display SSO button', async () => {
       renderSetEmail()
 
       expect(await screen.findByTestId('S’inscrire avec Google')).toBeOnTheScreen()

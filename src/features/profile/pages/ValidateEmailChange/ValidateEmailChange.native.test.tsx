@@ -9,12 +9,12 @@ import { EmailHistoryEventTypeEnum, EmailUpdateStatusResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import * as useEmailUpdateStatusV2 from 'features/profile/helpers/useEmailUpdateStatusV2'
+import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
-const useEmailUpdateStatusV2Spy = jest
-  .spyOn(useEmailUpdateStatusV2, 'useEmailUpdateStatusV2')
+const useEmailUpdateStatusSpy = jest
+  .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus')
   .mockReturnValue({
     data: {
       newEmail: 'john@doe.com',
@@ -157,7 +157,7 @@ describe('ValidateEmailChange', () => {
   })
 
   it('should redirect to change email expired when status is expired', () => {
-    useEmailUpdateStatusV2Spy.mockReturnValueOnce({
+    useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: {
         expired: true,
         newEmail: 'john@doe.com',
@@ -173,7 +173,7 @@ describe('ValidateEmailChange', () => {
   })
 
   it('should redirect to home when there is no email update', () => {
-    useEmailUpdateStatusV2Spy.mockReturnValueOnce({
+    useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: undefined,
     } as UseQueryResult<EmailUpdateStatusResponse>)
 

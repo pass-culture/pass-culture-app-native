@@ -1,6 +1,6 @@
 import { EmailHistoryEventTypeEnum } from 'api/gen'
 
-export function getEmailUpdateStepV2(
+export function getEmailUpdateStep(
   hasRecentlyResetPassword: boolean,
   step?: EmailHistoryEventTypeEnum
 ) {

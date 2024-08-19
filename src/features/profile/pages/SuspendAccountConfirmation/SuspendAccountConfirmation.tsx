@@ -7,7 +7,7 @@ import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { useEmailUpdateStatusV2 } from 'features/profile/helpers/useEmailUpdateStatusV2'
+import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -26,8 +26,7 @@ export function SuspendAccountConfirmation({
   route: { params },
   navigation,
 }: SuspendAccountConfirmationProps) {
-  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } =
-    useEmailUpdateStatusV2()
+  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
   const { showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)

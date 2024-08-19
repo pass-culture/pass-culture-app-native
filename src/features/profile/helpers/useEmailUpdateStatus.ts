@@ -5,7 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useEmailUpdateStatusV2 = () => {
+export const useEmailUpdateStatus = () => {
   const netInfo = useNetInfoContext()
   const { isLoggedIn } = useAuthContext()
 

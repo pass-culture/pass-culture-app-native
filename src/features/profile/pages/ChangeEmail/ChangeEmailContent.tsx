@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { UserProfileResponse } from 'api/gen'
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
 import { ChangeEmailDisclaimer } from 'features/profile/components/Disclaimers/ChangeEmailDisclaimer'
-import { useChangeEmailMutationV2 } from 'features/profile/helpers/useChangeEmailMutationV2'
+import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -21,7 +21,7 @@ export function ChangeEmailContent({
   hasCurrentEmailChange: boolean
   user: UserProfileResponse | undefined
 }) {
-  const { changeEmail, isLoading } = useChangeEmailMutationV2()
+  const { changeEmail, isLoading } = useChangeEmailMutation()
 
   const submitEmailChange = () => {
     if (user?.email) {

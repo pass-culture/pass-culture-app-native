@@ -7,16 +7,14 @@ import { ApiError } from 'api/ApiError'
 import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import * as useEmailUpdateStatusV2 from 'features/profile/helpers/useEmailUpdateStatusV2'
+import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
-type UseEmailUpdateStatusV2Mock = ReturnType<
-  (typeof useEmailUpdateStatusV2)['useEmailUpdateStatusV2']
->
+type useEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
 
-const useEmailUpdateStatusV2Spy = jest
-  .spyOn(useEmailUpdateStatusV2, 'useEmailUpdateStatusV2')
+const useEmailUpdateStatusSpy = jest
+  .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus')
   .mockReturnValue({
     data: {
       expired: false,
@@ -24,7 +22,7 @@ const useEmailUpdateStatusV2Spy = jest
       status: EmailHistoryEventTypeEnum.CANCELLATION,
     },
     isLoading: false,
-  } as UseEmailUpdateStatusV2Mock)
+  } as useEmailUpdateStatusMock)
 
 jest.mock('features/navigation/helpers/navigateToHome')
 
@@ -57,24 +55,24 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('<SuspendAccountConfirmation />', () => {
   describe('should navigate to home', () => {
     it('When there is no email change', () => {
-      useEmailUpdateStatusV2Spy.mockReturnValueOnce({
+      useEmailUpdateStatusSpy.mockReturnValueOnce({
         data: undefined,
         isLoading: false,
-      } as UseEmailUpdateStatusV2Mock)
+      } as useEmailUpdateStatusMock)
       renderSuspendAccountConfirmation()
 
       expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
 
     it('When pressing "Ne pas suspendre mon compte" button', () => {
-      useEmailUpdateStatusV2Spy.mockReturnValueOnce({
+      useEmailUpdateStatusSpy.mockReturnValueOnce({
         data: {
           expired: false,
           newEmail: '',
           status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
         },
         isLoading: false,
-      } as UseEmailUpdateStatusV2Mock)
+      } as useEmailUpdateStatusMock)
       renderSuspendAccountConfirmation()
 
       fireEvent.press(screen.getByText('Ne pas suspendre mon compte'))
@@ -95,14 +93,14 @@ describe('<SuspendAccountConfirmation />', () => {
   })
 
   it('should display message and buttons when there is current email change', () => {
-    useEmailUpdateStatusV2Spy.mockReturnValueOnce({
+    useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: {
         expired: false,
         newEmail: '',
         status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
       },
       isLoading: false,
-    } as UseEmailUpdateStatusV2Mock)
+    } as useEmailUpdateStatusMock)
     renderSuspendAccountConfirmation()
 
     expect(screen.getByText('Souhaites-tu suspendre ton compte pass Culture ?')).toBeOnTheScreen()
@@ -143,14 +141,14 @@ describe('<SuspendAccountConfirmation />', () => {
 
   describe('should navigate to change email expired', () => {
     it('When last email change expired', () => {
-      useEmailUpdateStatusV2Spy.mockReturnValueOnce({
+      useEmailUpdateStatusSpy.mockReturnValueOnce({
         data: {
           expired: true,
           newEmail: '',
           status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
         },
         isLoading: false,
-      } as UseEmailUpdateStatusV2Mock)
+      } as useEmailUpdateStatusMock)
       renderSuspendAccountConfirmation()
 
       expect(navigation.reset).toHaveBeenNthCalledWith(1, {
