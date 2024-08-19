@@ -21,7 +21,7 @@ export const DeleteProfileEmailHacked: FC = () => {
   const navigateToChangeEmail = () => navigate('ChangeEmail')
 
   const navigateToSuspendAccount = () => {
-    // suspend account
+    navigate('ConfirmDeleteProfile')
   }
 
   return (
