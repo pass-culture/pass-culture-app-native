@@ -27,14 +27,9 @@ export const SpellingHelp = ({ suggestedEmail, onEmailChange, onSpellingHelpPres
     if (suggestedEmail) onEmailChange(suggestedEmail.full)
   }, [onEmailChange, onSpellingHelpPress, suggestedEmail])
 
-  if (!showBanner) return null
+  if (!showBanner || !suggestedEmail) return null
 
-  const emailMessage =
-    suggestedEmail?.address && suggestedEmail?.domain
-      ? `Veux-tu plutôt dire ${suggestedEmail.address}@${suggestedEmail.domain}\u00a0?`
-      : ''
-
-  if (emailMessage === '') return null
+  const emailMessage = `Veux-tu plutôt dire ${suggestedEmail.address}@${suggestedEmail.domain}\u00a0?`
 
   return (
     <Container>

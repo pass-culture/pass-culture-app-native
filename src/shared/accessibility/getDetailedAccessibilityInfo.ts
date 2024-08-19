@@ -6,8 +6,8 @@ import {
   VisualDisabilityModel,
 } from 'api/gen'
 import {
-  getAccessibilityCategoryAndIcon,
   HandicapCategory,
+  getAccessibilityCategoryAndIcon,
 } from 'shared/accessibility/getAccessibilityCategoryAndIcon'
 
 const descriptionTranslations: Record<string, string> = {
@@ -27,7 +27,7 @@ type DisabilityModel =
   | MotorDisabilityModel
   | VisualDisabilityModel
 
-const translateDescriptions = (descriptions?: DisabilityModel) => {
+const translateDescriptions = (descriptions?: DisabilityModel): Record<string, string> => {
   if (descriptions) {
     return Object.fromEntries(
       Object.entries(descriptions).map(([key, value]) => [
@@ -36,7 +36,7 @@ const translateDescriptions = (descriptions?: DisabilityModel) => {
       ])
     )
   }
-  return 'Information non disponible'
+  return { notAvailable: 'Information non disponible' }
 }
 
 export const getDetailedAccessibilityInfo = (
