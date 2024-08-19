@@ -16,7 +16,14 @@
           packages = [
             pkgs.nix # ensure to have always the same version
             pkgs.devbox
+            self.packages.${system}.maestro
           ];
         };
+
+      packages.maestro =
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        pkgs.callPackage ./packages/maestro.nix { };
     });
 }

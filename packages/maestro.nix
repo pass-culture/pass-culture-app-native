@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation rec {
   pname = "maestro";
-  version = "1.36.0";
+  version = "1.37.9";
 
   src = fetchurl {
     url = "https://github.com/mobile-dev-inc/maestro/releases/download/cli-${version}/maestro.zip";
