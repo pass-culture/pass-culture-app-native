@@ -112,13 +112,13 @@ describe('useLoginRoutine', () => {
   })
 
   describe('resetContexts', () => {
-    it('should reset search context', async () => {
+    it('should reset search context because search results can be different for connected user (example: video games are hidden for underage beneficiaries)', async () => {
       await renderUseLoginRoutine()
 
       expect(mockResetSearch).toHaveBeenCalledTimes(1)
     })
 
-    it('should reset identity check context', async () => {
+    it('should reset identity check context because user logged in can be different than previous user', async () => {
       await renderUseLoginRoutine()
 
       expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
