@@ -34,7 +34,7 @@ export const DeleteProfileEmailHacked: FC = () => {
       <ViewGap gap={8}>
         <ViewGap gap={6}>
           <TypoDS.BodyS>
-            Tu as indiqué <StyledBoldText>que ta boite mail a été piraté</StyledBoldText>.
+            Tu as indiqué <StyledBoldText>que ta boite mail a été piratée</StyledBoldText>.
           </TypoDS.BodyS>
           <TypoDS.BodyS>
             Pour des raisons de <StyledBoldText>sécurité</StyledBoldText>, nous te conseillons de

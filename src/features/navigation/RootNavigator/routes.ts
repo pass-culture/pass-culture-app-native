@@ -273,14 +273,14 @@ export const routes: RootRoute[] = [
   {
     name: 'DeleteProfileEmailHacked',
     component: DeleteProfileEmailHacked,
-    path: 'profil/suppression/email-piratee',
+    path: 'profil/suppression/email-pirate',
     options: { title: 'Sécurise ton compte' },
     secure: true,
   },
   {
     name: 'DeleteProfileAccountHacked',
     component: DeleteProfileAccountHacked,
-    path: 'profil/suppression/compte-piratee',
+    path: 'profil/suppression/compte-pirate',
     options: { title: 'Sécurise ton compte' },
     secure: true,
   },
