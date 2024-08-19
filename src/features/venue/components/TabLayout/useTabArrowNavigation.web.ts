@@ -21,10 +21,14 @@ export const useTabArrowNavigation = <TabKeyType extends string>({
           event.key === 'ArrowRight'
             ? (index + 1) % tabs.length
             : (index - 1 + tabs.length) % tabs.length // + length, to avoid -1%length -> -1 instead of 1
-        // @ts-expect-error: because of noUncheckedIndexedAccess
-        setSelectedTab(tabs[nextIndex])
 
-        htmlRef?.querySelector<HTMLElement>(`[role="tab"][id="${tabs[nextIndex]}"]`)?.focus()
+        const tabId = tabs[nextIndex]
+
+        if (tabId) {
+          setSelectedTab(tabId)
+
+          htmlRef?.querySelector<HTMLElement>(`[role="tab"][id="${String(tabId)}"]`)?.focus()
+        }
       }
     },
     [selectedTab, setSelectedTab, tabListRef, tabs]

@@ -11,10 +11,10 @@ export async function getSentryConfig() {
     release:
       env.ENV === 'testing'
         ? `${getAppVersion()}-web`
-        : `${getAppVersion()}-web-${env.COMMIT_HASH}`,
+        : `${getAppVersion()}-web-${String(env.COMMIT_HASH)}`,
     dist:
       env.ENV === 'testing'
-        ? `${getAppBuildVersion()}-web-${env.COMMIT_HASH}`
+        ? `${getAppBuildVersion()}-web-${String(env.COMMIT_HASH)}`
         : `${getAppBuildVersion()}-web`,
     integrations: [new Integrations.BrowserTracing()],
     tracesSampleRate: 0.01,

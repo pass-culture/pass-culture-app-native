@@ -73,10 +73,12 @@ function waitForServiceWorkers(page) {
     await waitForServiceWorkers(page)
 
     let version = await page.evaluate(evaluateMetaContentVersion)
-    console.log(`meta version is v${version} while it should be ${versionFrom}`)
+    console.log(`meta version is v${String(version)} while it should be ${versionFrom}`)
 
     if (!versionFrom.includes(version)) {
-      throw new Error(`Version v${version} differ from build version ${versionFrom}, aborting...`)
+      throw new Error(
+        `Version v${String(version)} differ from build version ${versionFrom}, aborting...`
+      )
     }
 
     cpSync(join(process.cwd(), 'versionTo/build'), join(process.cwd(), 'build'), {
@@ -94,10 +96,12 @@ function waitForServiceWorkers(page) {
 
     await waitFor(15000)
     version = await page.evaluate(evaluateMetaContentVersion)
-    console.log(`meta version is v${version} while it should be ${versionTo}`)
+    console.log(`meta version is v${String(version)} while it should be ${versionTo}`)
 
     if (!versionTo.includes(version)) {
-      throw new Error(`Version v${version} differ from build version ${versionTo}, aborting...`)
+      throw new Error(
+        `Version v${String(version)} differ from build version ${versionTo}, aborting...`
+      )
     }
 
     success = true

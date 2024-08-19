@@ -4,7 +4,7 @@ module.exports = {
   /** resolves from test to snapshot path */
   resolveSnapshotPath: (testPath) => {
     const WEB_SNAPSHOT_EXTENSION = '.web-snap'
-    return `${testPath.replace('src/', '__snapshots__/')}${WEB_SNAPSHOT_EXTENSION}`
+    return `${String(testPath).replace('src/', '__snapshots__/')}${WEB_SNAPSHOT_EXTENSION}`
   },
 
   /** resolves from snapshot to test path */

@@ -50,7 +50,7 @@ describe('<SearchVenueItem />', () => {
 
     expect(screen.getByText(mockAlgoliaVenue.name)).toBeOnTheScreen()
     expect(
-      screen.getByText(`${mockAlgoliaVenue.city}, ${mockAlgoliaVenue.postalCode}`)
+      screen.getByText(`${mockAlgoliaVenue.city}, ${String(mockAlgoliaVenue.postalCode)}`)
     ).toBeOnTheScreen()
   })
 

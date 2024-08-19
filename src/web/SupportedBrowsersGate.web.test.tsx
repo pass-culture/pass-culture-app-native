@@ -26,9 +26,12 @@ describe('SupportedBrowsersGate', () => {
   `(
     '$browserName v$minimalSupportedVersion',
     ({ browserProperty, browserName, minimalSupportedVersion }) => {
+      const currentbrowserName: string = browserName
+      const currentMinimalSupportedVersion: number = minimalSupportedVersion
+
       beforeAll(() => {
         browserProperty in DeviceDetect && jest.replaceProperty(DeviceDetect, browserProperty, true)
-        jest.replaceProperty(DeviceDetect, 'browserName', browserName)
+        jest.replaceProperty(DeviceDetect, 'browserName', currentbrowserName)
       })
 
       afterAll(() => {
@@ -38,27 +41,27 @@ describe('SupportedBrowsersGate', () => {
         jest.replaceProperty(DeviceDetect, 'browserVersion', '')
       })
 
-      it(`should support ${browserName} for versions ${minimalSupportedVersion} and above`, () => {
-        jest.replaceProperty(DeviceDetect, 'browserVersion', minimalSupportedVersion)
+      it(`should support ${currentbrowserName} for versions ${currentMinimalSupportedVersion} and above`, () => {
+        jest.replaceProperty(DeviceDetect, 'browserVersion', String(currentMinimalSupportedVersion))
 
         render(<SupportedBrowsersGate />)
 
         expect(
           screen.queryByText(
-            `Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (${browserName} v${minimalSupportedVersion}) n’est pas à jour`
+            `Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (${currentbrowserName} v${currentMinimalSupportedVersion}) n’est pas à jour`
           )
         ).not.toBeInTheDocument()
       })
 
-      it(`should not support ${browserName} for versions below ${minimalSupportedVersion}`, () => {
-        const unsupportedVersion = minimalSupportedVersion - 1
+      it(`should not support ${currentbrowserName} for versions below ${currentMinimalSupportedVersion}`, () => {
+        const unsupportedVersion = currentMinimalSupportedVersion - 1
         jest.replaceProperty(DeviceDetect, 'browserVersion', unsupportedVersion.toString())
 
         render(<SupportedBrowsersGate />)
 
         expect(
           screen.getByText(
-            `Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (${browserName} v${unsupportedVersion}) n’est pas à jour`
+            `Oups ! Nous ne pouvons afficher correctement l’application car ton navigateur (${currentbrowserName} v${unsupportedVersion}) n’est pas à jour`
           )
         ).toBeInTheDocument()
       })

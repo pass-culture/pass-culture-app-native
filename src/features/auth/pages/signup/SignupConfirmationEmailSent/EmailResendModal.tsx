@@ -39,9 +39,12 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
     }
 
     if (logType === LogTypeEnum.INFO)
-      eventMonitoring.captureException(`Could not resend validation email: ${error.content}`, {
-        level: logType,
-      })
+      eventMonitoring.captureException(
+        `Could not resend validation email: ${String(error.content)}`,
+        {
+          level: logType,
+        }
+      )
   }
 
   const { data: remainingResendsResponse, refetch: refetchRemainingResends } =

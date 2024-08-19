@@ -41,7 +41,7 @@ export const DetailedAccessibilityInfo: FC<Props> = ({ url, accessibilities, acc
                 {Object.entries(detail.description).map(([descriptionTitle, descriptionInfo]) => (
                   <View
                     key={descriptionTitle}
-                    accessibilityLabel={`${descriptionTitle}: ${descriptionInfo}`}>
+                    accessibilityLabel={`${descriptionTitle}: ${String(descriptionInfo)}`}>
                     <Typo.Caption accessibilityHidden>{descriptionTitle}</Typo.Caption>
                     <Spacer.Column numberOfSpaces={2} />
                     {Array.isArray(descriptionInfo) ? (

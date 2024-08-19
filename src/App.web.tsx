@@ -1,10 +1,10 @@
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
-import 'react-app-polyfill/ie9'
-import 'react-app-polyfill/ie11'
-import 'react-app-polyfill/stable'
 import globalThisShim from 'globalthis/shim'
 import React, { Suspense, useEffect } from 'react'
+import 'react-app-polyfill/ie11'
+import 'react-app-polyfill/ie9'
+import 'react-app-polyfill/stable'
 import { ErrorBoundary } from 'react-error-boundary'
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
@@ -29,12 +29,12 @@ import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthPro
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { ThemeProvider } from 'libs/styled'
+import 'resize-observer-polyfill/dist/ResizeObserver.global'
 import { theme } from 'theme'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
 import { ServiceWorkerProvider } from 'web/useServiceWorker'
-import 'resize-observer-polyfill/dist/ResizeObserver.global'
 
 globalThisShim()
 
@@ -49,7 +49,7 @@ export function App() {
 
   return (
     <RemoteConfigProvider>
-      <ServiceWorkerProvider fileName={`${env.PUBLIC_URL}/service-worker.js`}>
+      <ServiceWorkerProvider fileName={`${String(env.PUBLIC_URL)}/service-worker.js`}>
         <ReactQueryClientProvider>
           <ThemeProvider theme={theme}>
             <SupportedBrowsersGate>
