@@ -123,7 +123,7 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
             ]
           }
         >
-          que ta boite mail a été piraté
+          que ta boite mail a été piratée
         </Text>
         .
       </Text>
