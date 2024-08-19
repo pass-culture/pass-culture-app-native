@@ -14,12 +14,16 @@ export const StickyElement: FC<PropsWithChildren> = ({ children }) => {
     )
   }
   const id = useMemo(() => v4(), [])
-  const Element = () => <View ref={elementRef}>{children}</View>
 
   useEffect(() => {
-    context.registerElement(id, elementRef, <Element />)
+    context.registerElement(id, elementRef, <View>{children}</View>)
+  }, [children, context, id])
+
+  useEffect(() => {
+    console.log('children changed')
+    // context.rerenderElement(id, <View>{children}</View>)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children])
 
-  return <Element key={id} />
+  return <View ref={elementRef}>{children}</View>
 }

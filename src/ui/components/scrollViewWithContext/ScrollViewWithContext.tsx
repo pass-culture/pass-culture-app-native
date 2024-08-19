@@ -33,24 +33,35 @@ const ScrollViewWithContext = forwardRef<
 
   const onScrollListeners: ScrollViewProps['onScroll'][] = useMemo(() => [onScroll], [onScroll])
 
+  const registerElement = useCallback(
+    (id: string, ref: RefObject<View>, element: React.JSX.Element) => {
+      elements.current[id] = { ref, element: () => element }
+      console.log('registering element', id)
+    },
+    []
+  )
+
+  const rerenderElement = useCallback((id: string, element: React.JSX.Element) => {
+    console.log('rerendering element', id)
+
+    const elementtoUpdate = elements.current[id]
+
+    const Element = () => element
+    if (elementtoUpdate) {
+      elementtoUpdate.element = Element
+    }
+    // setStickyElements((stickyElements) => ({ ...stickyElements, [id]: <Element /> }))
+  }, [])
+
   const contextValue: ScrollContextType = useMemo(
     () => ({
       addScrollListener: (listener: (event: NativeSyntheticEvent<NativeScrollEvent>) => void) => {
         onScrollListeners.push(listener)
       },
-      scrollViewRef,
-      stickyElements,
-      registerElement: (id: string, ref: RefObject<View>, element: React.JSX.Element) => {
-        elements.current[id] = { ref, element: () => element }
-
-        if (stickyElements[id]) {
-          const Element = () => element
-          const newStickyElements = { ...stickyElements, [id]: <Element key={id} /> }
-          setStickyElements(newStickyElements)
-        }
-      },
+      registerElement,
+      rerenderElement,
     }),
-    [onScrollListeners, stickyElements]
+    [onScrollListeners, registerElement, rerenderElement]
   )
 
   const onScrollStickyListener = useCallback(() => {
