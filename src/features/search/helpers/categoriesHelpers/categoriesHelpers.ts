@@ -375,25 +375,57 @@ function getIsNativeCategory(
   )
 }
 
-function getFilterRowDescription(data: SubcategoriesResponseModelv2, ctx: DescriptionContext) {
-  const { category: categoryId, nativeCategory: nativeCategoryId, genreType: genreTypeId } = ctx
-
+function getFilterRowDescriptionFromNativeCategoryAndGenre(
+  data: SubcategoriesResponseModelv2,
+  nativeCategoryId: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null,
+  genreTypeId: string
+) {
   if (genreTypeId && nativeCategoryId) {
     const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
     const genreType = getGenreTypeFromEnum(data, genreTypeId)
-    if (!nativeCategory) return undefined
-    if (!genreType) return undefined
-    if (nativeCategory.value) return `${nativeCategory.value} - ${genreType.value}`
+    if (!nativeCategory || !genreType) return undefined
+    return nativeCategory.value ? `${nativeCategory.value} - ${genreType.value}` : undefined
   }
+
+  return undefined
+}
+
+function getFilterRowDescriptionFromNativeCategory(
+  data: SubcategoriesResponseModelv2,
+  nativeCategoryId: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null
+) {
   if (nativeCategoryId) {
     const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
     if (!nativeCategory) return undefined
-    if (nativeCategory.value) return `${nativeCategory.value}`
+    return nativeCategory.value ?? undefined
   }
+
+  return undefined
+}
+
+function getFilterRowDescriptionFromCategory(
+  data: SubcategoriesResponseModelv2,
+  categoryId: SearchGroupNameEnumv2
+) {
   if (categoryId) {
     const category = getCategoryFromEnum(data, categoryId)
     if (!category) return undefined
     return category.value ?? undefined
+  }
+  return undefined
+}
+
+function getFilterRowDescription(data: SubcategoriesResponseModelv2, ctx: DescriptionContext) {
+  const { category: categoryId, nativeCategory: nativeCategoryId, genreType: genreTypeId } = ctx
+
+  if (genreTypeId && nativeCategoryId) {
+    return getFilterRowDescriptionFromNativeCategoryAndGenre(data, nativeCategoryId, genreTypeId)
+  }
+  if (nativeCategoryId) {
+    return getFilterRowDescriptionFromNativeCategory(data, nativeCategoryId)
+  }
+  if (categoryId) {
+    return getFilterRowDescriptionFromCategory(data, categoryId)
   }
   return undefined
 }
