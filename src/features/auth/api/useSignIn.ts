@@ -17,7 +17,6 @@ import {
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
 import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
-import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 import { useShouldShowCulturalSurvey } from 'shared/culturalSurvey/useShouldShowCulturalSurvey'
 
@@ -104,7 +103,6 @@ const useHandleSigninSuccess = (
           return navigate('SuspensionScreen')
         }
         if (accountState !== AccountState.ACTIVE) {
-          eventMonitoring.captureException(`Unexpected account state: ${accountState}`)
           throw new Error(`Unexpected account state: ${accountState}`)
         }
 

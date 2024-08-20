@@ -26,7 +26,7 @@ import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
@@ -327,18 +327,6 @@ describe('<Login/>', () => {
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
-  })
-
-  it('should log WHEN signin is successful but no account status (shouldn’t happen)', async () => {
-    simulateSignin200(undefined)
-    renderLogin()
-
-    await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
-
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-      'Unexpected account state: undefined'
-    )
   })
 
   it('should show email error message WHEN invalid e-mail format', async () => {
