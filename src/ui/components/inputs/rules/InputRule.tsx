@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Typo, Spacer } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -41,7 +41,7 @@ export const InputRule: FunctionComponent<Props> = ({
       </StyledCaption>
       <Spacer.Row numberOfSpaces={1} />
       <IconContainer>
-        <Icon testID={`rule-icon-${testIdSuffix}`} />
+        <Icon testID={testIdSuffix ? `rule-icon-${testIdSuffix}` : undefined} />
       </IconContainer>
     </StyledView>
   )

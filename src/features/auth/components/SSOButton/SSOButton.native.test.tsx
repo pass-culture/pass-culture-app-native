@@ -162,7 +162,7 @@ describe('<SSOButton />', () => {
 
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
         'Can’t login via Google: GoogleSignIn Error',
-        { level: 'info' }
+        { level: 'info', extra: { error: 'GoogleSignIn Error' } }
       )
     })
   })

@@ -5,7 +5,7 @@ import BottomSheet, {
 } from '@gorhom/bottom-sheet'
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
 import { useNavigation } from '@react-navigation/native'
-import React, { forwardRef, Fragment, FunctionComponent, useMemo } from 'react'
+import React, { Fragment, FunctionComponent, forwardRef, useMemo } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -67,12 +67,13 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
 
     const venueMapPreview = useMemo(() => {
       if (venue) {
+        const address = venue.postalCode ? `${venue.info}, ${venue.postalCode}` : venue.info
         return (
           <VenueMapPreview
             venueName={venue.label}
             onClose={onClose}
             iconSize={20}
-            address={`${venue?.info}, ${venue?.postalCode}`}
+            address={address}
             bannerUrl={venue.banner_url ?? ''}
             imageWidth={VENUE_THUMBNAIL_SIZE}
             imageHeight={VENUE_THUMBNAIL_SIZE}

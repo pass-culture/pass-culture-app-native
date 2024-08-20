@@ -35,8 +35,6 @@ export const PlaylistCardOffer: FC<Props> = ({
   isBeneficiary,
   isDuo,
 }) => {
-  const distanceText = `à ${distance}`
-
   return (
     <Container maxWidth={width} testID="playlist-card-offer-v2">
       <NewOfferCaption
@@ -48,7 +46,7 @@ export const PlaylistCardOffer: FC<Props> = ({
         isBeneficiary={isBeneficiary}
       />
       <ImageContainer>
-        {distance ? <DistanceTag label={distanceText} /> : null}
+        {distance ? <DistanceTag label={`à ${distance}`} /> : null}
         <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />
       </ImageContainer>
     </Container>

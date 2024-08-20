@@ -26,7 +26,7 @@ const SECONDARY_TITLE = author?.name || 'pass Culture'
 const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
   formatter(options, _route) {
     if (options?.title) {
-      return `${options.title} | ${SECONDARY_TITLE}`
+      return `${String(options.title)} | ${SECONDARY_TITLE}`
     }
     return SECONDARY_TITLE
   },

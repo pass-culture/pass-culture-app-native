@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { IncompleteSearchHit, AlgoliaHit } from 'libs/algolia/types'
+import { AlgoliaHit, IncompleteSearchHit } from 'libs/algolia/types'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 
 // Go to https://github.com/pass-culture/pass-culture-api/blob/master/src/pcapi/algolia/infrastructure/builder.py
@@ -26,7 +26,7 @@ export const parseThumbUrl = (
   if (!thumbUrl) return undefined
   if (!urlPrefix) return thumbUrl
   const [base, suffix] = thumbUrl.split('/thumbs')
-  return `${urlPrefix || base}/thumbs${suffix}`
+  return `${String(urlPrefix || base)}/thumbs${String(suffix)}`
 }
 
 // The _geoloc is hardcoded for digital offers (without position) so that the results appear in the Search:

@@ -430,12 +430,14 @@ describe('useCookies', () => {
     })
 
     describe('when can not log cookies consent choice', () => {
+      const error = new Error('unknown network error')
+
       beforeEach(() => {
         ;(
           api.postNativeV1CookiesConsent as jest.MockedFunction<
             typeof api.postNativeV1CookiesConsent
           >
-        ).mockRejectedValueOnce(new Error('unknown network error'))
+        ).mockRejectedValueOnce(error)
       })
 
       it('should not throw errors', async () => {
@@ -504,7 +506,7 @@ describe('useCookies', () => {
 
           expect(eventMonitoring.captureException).toHaveBeenCalledWith(
             `can‘t log cookies consent choice ; reason: "unknown network error"`,
-            { level: 'info' }
+            { level: 'info', extra: { error } }
           )
         })
       })

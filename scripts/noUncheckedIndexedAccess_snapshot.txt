@@ -102,7 +102,6 @@
 ./src/features/search/pages/SuggestedPlacesOrVenues/SuggestedVenues.native.test.tsx:37
 ./src/features/search/pages/modals/CategoriesModal/CategoriesModal.tsx:118
 ./src/features/venue/components/OpeningHoursStatus/OpeningHoursStatus.native.test.tsx:68
-./src/features/venue/components/TabLayout/useTabArrowNavigation.web.ts:24
 ./src/features/venueMap/store/selectedVenueStore.native.test.ts:20
 ./src/features/venueMap/store/selectedVenueStore.native.test.ts:31
 ./src/libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters.ts:23
@@ -154,9 +153,9 @@
 ./src/libs/location/geolocation/requestGeolocPermission/requestGeolocPermission.android.ts:22
 ./src/libs/location/geolocation/requestGeolocPermission/requestGeolocPermission.android.ts:24
 ./src/libs/location/geolocation/requestGeolocPermission/requestGeolocPermission.android.ts:9
-./src/libs/parsers/formatDates.ts:139
-./src/libs/parsers/formatDates.ts:162
-./src/libs/parsers/formatDates.ts:164
+./src/libs/parsers/formatDates.ts:140
+./src/libs/parsers/formatDates.ts:163
+./src/libs/parsers/formatDates.ts:165
 ./src/libs/parsers/formatDates.ts:58
 ./src/libs/parsers/formatDates.ts:60
 ./src/libs/parsers/formatDates.ts:87

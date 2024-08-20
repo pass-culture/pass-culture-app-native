@@ -192,7 +192,10 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
           )
         } else {
           setCustomError('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
-          captureMonitoringError(`${errorCode} ${error}`, 'ForgottenPasswordOnRecaptchaError')
+          captureMonitoringError(
+            `${errorCode} ${error ?? 'EMPTY_ERROR'}`,
+            'ForgottenPasswordOnRecaptchaError'
+          )
         }
       },
       onBackNavigation() {

@@ -50,7 +50,7 @@ export function CreditHeader({
       highlightedLabel: `${depositAmount.eighteenYearsOldDeposit}`,
     },
   }
-  const name = `${firstName} ${lastName}`
+  const name = firstName && lastName ? `${firstName} ${lastName}` : ''
   const IsUserUnderageBeneficiary = useIsUserUnderageBeneficiary()
 
   if (!domainsCredit || !age) return null

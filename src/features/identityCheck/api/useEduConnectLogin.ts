@@ -7,7 +7,12 @@ export function useEduConnectLogin() {
 
   const getLoginUrl = useCallback(async () => {
     try {
-      const accessToken = await eduConnectClient.getAccessToken()
+      const accessToken = (await eduConnectClient.getAccessToken()) ?? ''
+
+      if (accessToken === '') {
+        setError(new Error('Failed to get access token'))
+        return
+      }
 
       const response = await fetch(`${eduConnectClient.getLoginUrl()}?redirect=false`, {
         headers: {

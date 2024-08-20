@@ -6,7 +6,6 @@ exports[`QuitSignupModal should render correctly 1`] = `
   hardwareAccelerated={false}
   onRequestClose={[Function]}
   statusBarTranslucent={true}
-  testID="modal-undefined"
   transparent={true}
   visible={true}
 >

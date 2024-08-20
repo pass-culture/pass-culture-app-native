@@ -604,11 +604,10 @@ exports[`EndedBookings should render correctly 1`] = `
                   >
                     <View
                       height={20}
-                      testID="rule-icon-undefined"
                       width={20}
                     >
                       <Text>
-                        rule-icon-undefined-SVG-Mock
+                        undefined-SVG-Mock
                       </Text>
                     </View>
                   </View>
@@ -1047,11 +1046,10 @@ exports[`EndedBookings should render correctly 1`] = `
                   >
                     <View
                       height={20}
-                      testID="rule-icon-undefined"
                       width={20}
                     >
                       <Text>
-                        rule-icon-undefined-SVG-Mock
+                        undefined-SVG-Mock
                       </Text>
                     </View>
                   </View>

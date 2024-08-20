@@ -14,6 +14,7 @@ import { LogTypeEnum } from 'libs/monitoring/errors'
 import { getAppBuildVersion } from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 const COOKIES_CONSENT_KEY = 'cookies'
 
@@ -121,13 +122,13 @@ const usePersistCookieConsent = () => {
         await api.postNativeV1CookiesConsent(omit(cookiesChoice, ['buildVersion']))
       }
     } catch (error) {
-      if (logType === LogTypeEnum.INFO)
+      if (logType === LogTypeEnum.INFO) {
+        const errorMessage = getErrorMessage(error)
         eventMonitoring.captureException(
-          `can‘t log cookies consent choice ; reason: "${
-            error instanceof Error ? error.message : undefined
-          }"`,
-          { level: logType }
+          `can‘t log cookies consent choice ; reason: "${errorMessage}"`,
+          { level: logType, extra: { error } }
         )
+      }
     }
   })
 }

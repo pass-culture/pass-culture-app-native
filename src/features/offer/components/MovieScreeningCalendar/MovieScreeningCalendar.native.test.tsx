@@ -47,7 +47,7 @@ const defaultLoggedInUser: UserProfileResponse | IAuthContext = {
   refetchUser: jest.fn(),
   user: {
     ...beneficiaryUser,
-    depositExpirationDate: `${new Date()}`,
+    depositExpirationDate: String(new Date()),
   },
 }
 
@@ -316,7 +316,7 @@ describe('Movie screening calendar', () => {
         ...defaultLoggedInUser,
         user: {
           ...beneficiaryUser,
-          depositExpirationDate: `${new Date()}`,
+          depositExpirationDate: String(new Date()),
           bookedOffers: { '213': 123 },
         },
       }

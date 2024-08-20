@@ -259,17 +259,15 @@ describe('[api] helpers', () => {
     })
 
     it('log exception to sentry when cannot get refresh token', async () => {
+      const error = new Error('Error')
       mockGetTokenStatus.mockReturnValueOnce('expired')
-      mockGetRefreshToken.mockRejectedValueOnce(new Error('Error'))
+      mockGetRefreshToken.mockRejectedValueOnce(error)
 
       await safeFetch(apiUrl, optionsWithAccessToken, api)
 
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        new Error('safeFetch Error: Error'),
-        {
-          extra: { url: '/native/v1/me' },
-        }
-      )
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(new Error('safeFetch Error'), {
+        extra: { url: '/native/v1/me', error },
+      })
     })
 
     it('retries to regenerate the access token when the access token is expired and the first try to regenerate fails', async () => {

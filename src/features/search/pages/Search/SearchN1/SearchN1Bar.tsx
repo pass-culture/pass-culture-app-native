@@ -60,21 +60,20 @@ export const SearchN1Bar: FC<PropsWithChildren<Props>> = ({
     [setQueryHistory]
   )
 
+  const facetFilters =
+    offerCategories.length > 0
+      ? [
+          `${env.ALGOLIA_OFFERS_INDEX_NAME}.facets.analytics.offer.searchGroupNamev2.value:${String(offerCategories[0])}`,
+        ]
+      : []
+
   return (
     <InstantSearch
       searchClient={searchClient}
       indexName={suggestionsIndex}
       future={{ preserveSharedStateOnUnmount: true }}
       insights={{ insightsClient: AlgoliaSearchInsights }}>
-      <Configure
-        facetFilters={[
-          [
-            `${env.ALGOLIA_OFFERS_INDEX_NAME}.facets.analytics.offer.searchGroupNamev2.value:${offerCategories?.[0]}`,
-          ],
-        ]}
-        clickAnalytics
-        hitsPerPage={5}
-      />
+      <Configure facetFilters={[facetFilters]} clickAnalytics hitsPerPage={5} />
       <SearchHeader
         title={title}
         searchInputID={searchInputID}

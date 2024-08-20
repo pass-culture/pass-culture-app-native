@@ -21,7 +21,7 @@ export function generateLongFirebaseDynamicLink(
   let params = ''
   if (deepLinkParams) {
     Object.entries(deepLinkParams).forEach(([key, value]) => {
-      params += `&${key}=${value}`
+      params += `&${key}=${String(value)}`
     })
   }
   return `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodeURIComponent(

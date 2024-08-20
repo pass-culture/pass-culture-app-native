@@ -3,7 +3,7 @@ const NATIVE_SNAPSHOT_EXTENSION = '.native-snap'
 module.exports = {
   /** resolves from test to snapshot path */
   resolveSnapshotPath: (testPath) => {
-    return `${testPath.replace('src/', '__snapshots__/')}${NATIVE_SNAPSHOT_EXTENSION}`
+    return `${String(testPath).replace('src/', '__snapshots__/')}${NATIVE_SNAPSHOT_EXTENSION}`
   },
 
   /** resolves from snapshot to test path */

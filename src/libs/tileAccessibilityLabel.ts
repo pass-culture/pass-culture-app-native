@@ -51,8 +51,8 @@ function getBookingAccessibilityLabel(booking: Booking) {
   const datePrefix = properties?.isEvent ? 'pour' : ''
   const bookingDateLabel = date ? `${datePrefix} ${date}` : ''
   const ongoingBookingDateLabel = properties?.isPermanent ? 'permanente' : bookingDateLabel
-  const usedBookingDateLabel =
-    dateUsed || cancellationDate ? `le ${dateUsed ?? cancellationDate}` : undefined
+  const labelDate = dateUsed ?? cancellationDate
+  const usedBookingDateLabel = labelDate ? `le ${labelDate}` : undefined
   return bookingLabel + ` ${nameLabel}, ${usedBookingDateLabel ?? ongoingBookingDateLabel}`
 }
 

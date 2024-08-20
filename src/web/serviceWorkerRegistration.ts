@@ -140,9 +140,7 @@ function checkValidServiceWorker(
         emit(
           'error',
           new Error(
-            `Expected ${swUrl} to have javascript content-type, but received ${response.headers.get(
-              'content-type'
-            )}`
+            `Expected ${swUrl} to have javascript content-type, but received ${contentType}`
           )
         )
         unregister(emit)

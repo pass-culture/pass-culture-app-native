@@ -47,7 +47,8 @@ describe('getDeviceId', () => {
 
     expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
       1,
-      `Error when save device ID in storage: ${error}`
+      `Error when save device ID in storage: SAVING_REJECTED`,
+      { extra: { error } }
     )
   })
 

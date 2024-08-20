@@ -30,6 +30,8 @@ export const EduConnectForm = () => {
         .then((value) => {
           setWebViewSource({
             uri: eduConnectClient.getLoginUrl(),
+            // TODO(PC-31394): Essayer de retirer la ligne en faisant une refacto
+            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
             headers: { Authorization: `Bearer ${value}` },
           })
         })
@@ -80,7 +82,7 @@ export const EduConnectForm = () => {
   const renderError = (errorDomain: string | undefined, errorCode: number, errorDesc: string) => {
     setError(
       new Error(
-        `EduConnectForm fail to render Webview. errorDomain: ${errorDomain}, errorCode: ${errorCode}, errorDesc: ${errorDesc}`
+        `EduConnectForm fail to render Webview. errorDomain: ${errorDomain ?? ''}, errorCode: ${errorCode}, errorDesc: ${errorDesc}`
       )
     )
     return <React.Fragment />

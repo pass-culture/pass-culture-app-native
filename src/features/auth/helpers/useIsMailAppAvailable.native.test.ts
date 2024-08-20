@@ -1,7 +1,7 @@
 import { Linking, Platform } from 'react-native'
 
 import { eventMonitoring } from 'libs/monitoring'
-import { waitFor, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useIsMailAppAvailable } from './useIsMailAppAvailable'
 
@@ -57,7 +57,8 @@ describe('useIsMailAppAvailable', () => {
 
       await waitFor(() => {
         expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-          'Error checking mail app availability: Error: Error'
+          'Error checking mail app availability: Error',
+          { extra: { error } }
         )
       })
     })

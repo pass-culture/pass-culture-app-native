@@ -47,7 +47,7 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
   const movieScreenings = getMovieScreenings(offer.stocks)
 
   const selectedScreeningStock = useMemo(
-    () => movieScreenings[getDateString(`${date}`)],
+    () => movieScreenings[getDateString(String(date))],
     [movieScreenings, date]
   )
 

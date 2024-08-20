@@ -18,22 +18,25 @@ interface Props {
   tabName: TabRouteName
 }
 
-export const TabBarInnerComponent: React.FC<Props> = ({ isSelected, BicolorIcon, tabName }) => (
-  <React.Fragment>
-    {isSelected ? (
-      <BicolorSelector
-        width={SELECTOR_WIDTH}
-        height={SELECTOR_HEIGHT}
-        testID={`${menu[tabName].accessibilityLabel} sélectionné`}
-      />
-    ) : null}
-    <Spacer.Flex />
-    <StyledIcon as={BicolorIcon} selected={isSelected} />
-    <Title selected={isSelected} displayName={menu[tabName].displayName} />
-    <Spacer.Flex />
-    {isSelected ? <BicolorSelectorPlaceholder /> : null}
-  </React.Fragment>
-)
+export const TabBarInnerComponent: React.FC<Props> = ({ isSelected, BicolorIcon, tabName }) => {
+  const accessibilityLabel = menu[tabName].accessibilityLabel
+  return (
+    <React.Fragment>
+      {isSelected ? (
+        <BicolorSelector
+          width={SELECTOR_WIDTH}
+          height={SELECTOR_HEIGHT}
+          testID={accessibilityLabel ? `${accessibilityLabel} sélectionné` : undefined}
+        />
+      ) : null}
+      <Spacer.Flex />
+      <StyledIcon as={BicolorIcon} selected={isSelected} />
+      <Title selected={isSelected} displayName={menu[tabName].displayName} />
+      <Spacer.Flex />
+      {isSelected ? <BicolorSelectorPlaceholder /> : null}
+    </React.Fragment>
+  )
+}
 
 const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
   color: selected ? undefined : theme.colors.greyDark,

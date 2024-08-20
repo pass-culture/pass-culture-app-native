@@ -39,7 +39,7 @@ export function PersonalData() {
   const { user } = useAuthContext()
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
   const hasCity = user?.postalCode && user?.city
-  const city = hasCity ? `${user?.postalCode}, ${user?.city}` : ''
+  const city = hasCity && user?.postalCode && user?.city ? `${user.postalCode}, ${user.city}` : ''
 
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
 

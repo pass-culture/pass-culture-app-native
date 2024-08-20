@@ -10,14 +10,14 @@ import {
   SubcategoriesResponseModelv2,
 } from 'api/gen'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
-import { CategoriesModalView, CATEGORY_CRITERIA } from 'features/search/enums'
+import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
+  MappedNativeCategories,
+  MappingTree,
   createMappingTree,
   getBooksGenreTypes,
   getBooksNativeCategories,
   getKeyFromStringLabel,
-  MappedNativeCategories,
-  MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import {
@@ -375,25 +375,57 @@ function getIsNativeCategory(
   )
 }
 
-function getFilterRowDescription(data: SubcategoriesResponseModelv2, ctx: DescriptionContext) {
-  const { category: categoryId, nativeCategory: nativeCategoryId, genreType: genreTypeId } = ctx
-
+function getFilterRowDescriptionFromNativeCategoryAndGenre(
+  data: SubcategoriesResponseModelv2,
+  nativeCategoryId: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null,
+  genreTypeId: string
+) {
   if (genreTypeId && nativeCategoryId) {
     const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
     const genreType = getGenreTypeFromEnum(data, genreTypeId)
-    if (!nativeCategory) return undefined
-    if (!genreType) return undefined
+    if (!nativeCategory || !genreType || !nativeCategory.value) return undefined
     return `${nativeCategory.value} - ${genreType.value}`
   }
+
+  return undefined
+}
+
+function getFilterRowDescriptionFromNativeCategory(
+  data: SubcategoriesResponseModelv2,
+  nativeCategoryId: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null
+) {
   if (nativeCategoryId) {
     const nativeCategory = getNativeCategoryFromEnum(data, nativeCategoryId)
     if (!nativeCategory) return undefined
-    return `${nativeCategory.value}`
+    return nativeCategory.value ?? undefined
   }
+
+  return undefined
+}
+
+function getFilterRowDescriptionFromCategory(
+  data: SubcategoriesResponseModelv2,
+  categoryId: SearchGroupNameEnumv2
+) {
   if (categoryId) {
     const category = getCategoryFromEnum(data, categoryId)
     if (!category) return undefined
     return category.value ?? undefined
+  }
+  return undefined
+}
+
+function getFilterRowDescription(data: SubcategoriesResponseModelv2, ctx: DescriptionContext) {
+  const { category: categoryId, nativeCategory: nativeCategoryId, genreType: genreTypeId } = ctx
+
+  if (genreTypeId && nativeCategoryId) {
+    return getFilterRowDescriptionFromNativeCategoryAndGenre(data, nativeCategoryId, genreTypeId)
+  }
+  if (nativeCategoryId) {
+    return getFilterRowDescriptionFromNativeCategory(data, nativeCategoryId)
+  }
+  if (categoryId) {
+    return getFilterRowDescriptionFromCategory(data, categoryId)
   }
   return undefined
 }

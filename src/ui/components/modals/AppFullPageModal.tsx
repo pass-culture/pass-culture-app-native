@@ -23,7 +23,7 @@ export const AppFullPageModal: FunctionComponent<Props> = ({
       statusBarTranslucent
       transparent
       visible={visible}
-      testID={`modal-${testIdSuffix}`}
+      testID={testIdSuffix ? `modal-${testIdSuffix}` : undefined}
       onRequestClose={onRequestClose}>
       <Container windowHeight={windowHeight}>{children}</Container>
     </Modal>

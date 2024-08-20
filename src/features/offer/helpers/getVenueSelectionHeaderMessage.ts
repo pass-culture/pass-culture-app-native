@@ -8,9 +8,9 @@ export const getVenueSelectionHeaderMessage = (
 ) => {
   switch (selectedLocationMode) {
     case LocationMode.AROUND_PLACE:
-      return `Lieux à proximité de “${place?.label}”`
+      return place?.label ? `Lieux à proximité de “${place?.label}”` : ''
     case LocationMode.EVERYWHERE:
-      return `Lieux à proximité de “${venueName}”`
+      return venueName ? `Lieux à proximité de “${venueName}”` : ''
     case LocationMode.AROUND_ME:
       return 'Lieux disponibles autour de moi'
   }

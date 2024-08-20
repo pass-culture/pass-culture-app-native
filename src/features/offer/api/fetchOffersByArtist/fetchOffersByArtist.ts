@@ -49,9 +49,10 @@ export const fetchOffersByArtist = async ({
       attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.artist', 'offer.ean'],
       attributesToHighlight: [], // We disable highlighting because we don't need it
       aroundRadius: venueLocation ? convertKmToMeters(DEFAULT_RADIUS) : 'all',
-      aroundLatLng: venueLocation
-        ? `${venueLocation.latitude}, ${venueLocation.longitude}`
-        : undefined,
+      aroundLatLng:
+        venueLocation.latitude && venueLocation.longitude
+          ? `${venueLocation.latitude}, ${venueLocation.longitude}`
+          : undefined,
     })
 
     return response.hits
@@ -63,6 +64,8 @@ export const fetchOffersByArtist = async ({
 
 export function buildAlgoliaFilter({ artists, ean }: BuildAlgoliaFilterType) {
   const firstArtist = artists?.split(' ; ')[0]
+
+  if (!firstArtist) return ''
 
   let filterString = `offer.artist:"${firstArtist}"`
   if (ean) filterString += ` AND NOT offer.ean:"${ean}"`

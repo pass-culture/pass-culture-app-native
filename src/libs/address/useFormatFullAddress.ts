@@ -6,22 +6,7 @@ export function formatFullAddress(
   postalCode: FullAddressType,
   city: FullAddressType
 ) {
-  let fullAddress = ''
-  if (isNotEmpty(address)) fullAddress = fullAddress.concat(`${address}`)
-  if (isNotEmpty(fullAddress) && (isNotEmpty(postalCode) || isNotEmpty(city))) {
-    fullAddress = fullAddress.concat(', ')
-  }
-  if (isNotEmpty(postalCode)) {
-    if (isNotEmpty(city)) {
-      fullAddress = fullAddress.concat(`${postalCode} ${city}`)
-    } else {
-      fullAddress = fullAddress.concat(`${postalCode}`)
-    }
-  } else if (isNotEmpty(city)) {
-    fullAddress = fullAddress.concat(`${city}`)
-  }
-
-  return fullAddress
+  return [address, [postalCode, city].filter(isNotEmpty).join(' ')].filter(isNotEmpty).join(', ')
 }
 
 export function formatFullAddressStartsWithPostalCode(

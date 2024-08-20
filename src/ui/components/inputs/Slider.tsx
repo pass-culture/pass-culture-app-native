@@ -114,7 +114,7 @@ export function Slider(props: Props) {
         rightCursor?.setAttribute('role', 'slider')
         rightCursor?.setAttribute('aria-valuemin', `${values[0]}`)
         rightCursor?.setAttribute('aria-valuemax', `${max}`)
-        rightCursor?.setAttribute('aria-valuenow', `${values[1]}`)
+        if (values[1]) rightCursor?.setAttribute('aria-valuenow', `${values[1]}`)
         const rightCursorValue = `${maxLabel} ${formatValues(values[1] ?? max)}`
         props.accessibilityLabelledBy &&
           rightCursor?.setAttribute('aria-labelledby', props.accessibilityLabelledBy)

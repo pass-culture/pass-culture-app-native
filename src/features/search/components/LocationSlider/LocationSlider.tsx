@@ -25,7 +25,7 @@ export function LocationSlider({ field }: Readonly<{ field: LocationSliderProps 
       <Spacer.Column numberOfSpaces={4} />
       <LabelRadiusContainer nativeID={radiusLabelId}>
         <Typo.Body>Dans un rayon de&nbsp;:</Typo.Body>
-        <Typo.ButtonText testID="value-radius">{`${value}\u00a0km`}</Typo.ButtonText>
+        <Typo.ButtonText testID="value-radius">{`${String(value)}\u00a0km`}</Typo.ButtonText>
       </LabelRadiusContainer>
 
       <Spacer.Column numberOfSpaces={2} />

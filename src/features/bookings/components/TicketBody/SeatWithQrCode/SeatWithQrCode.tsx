@@ -16,8 +16,8 @@ export const SeatWithQrCode: FunctionComponent<SeatWithQrCodeProps> = ({
   seat,
   barcode,
 }) => {
-  const currentSeatWithIndex = `Place\u00a0${seatIndex}\u00a0: `
-  const currentSeat = `Siège\u00a0${seat?.toUpperCase()}`
+  const currentSeatWithIndex = seatIndex ? `Place\u00a0${seatIndex}\u00a0: ` : ''
+  const currentSeat = seat ? `Siège\u00a0${seat?.toUpperCase()}` : ''
   return (
     <React.Fragment>
       <SeatContainer>

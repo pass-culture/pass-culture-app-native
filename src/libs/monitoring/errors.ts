@@ -89,7 +89,11 @@ export class OfferNotFoundError extends ScreenError {
     offerId: number | undefined | number[],
     { Screen, callback, logType = LogTypeEnum.INFO }: ScreenErrorInfo
   ) {
-    const message = offerId ? `Offer ${offerId} could not be retrieved` : 'offerId is undefined'
+    const message =
+      Array.isArray(offerId) || !offerId
+        ? 'offerId is undefined'
+        : `Offer ${offerId} could not be retrieved`
+
     super(message, { Screen, callback, logType })
   }
 }
@@ -101,5 +105,12 @@ export class VenueNotFoundError extends ScreenError {
   ) {
     const message = venueId ? `Venue ${venueId} could not be retrieved` : 'venueId is undefined'
     super(message, { Screen, callback, logType })
+  }
+}
+
+export class FetchError extends Error {
+  constructor(message: string) {
+    super(message)
+    this.name = 'FetchError'
   }
 }

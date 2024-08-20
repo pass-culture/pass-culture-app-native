@@ -27,13 +27,14 @@ export const SpellingHelp = ({ suggestedEmail, onEmailChange, onSpellingHelpPres
     if (suggestedEmail) onEmailChange(suggestedEmail.full)
   }, [onEmailChange, onSpellingHelpPress, suggestedEmail])
 
-  if (!showBanner) return null
+  if (!showBanner || !suggestedEmail) return null
+
+  const emailMessage = `Veux-tu plutôt dire ${suggestedEmail.address}@${suggestedEmail.domain}\u00a0?`
 
   return (
     <Container>
       <Spacer.Column numberOfSpaces={2} />
-      <InfoBanner
-        message={`Veux-tu plutôt dire ${suggestedEmail?.address}@${suggestedEmail?.domain}\u00a0?`}>
+      <InfoBanner message={emailMessage}>
         <Spacer.Column numberOfSpaces={2} />
         <ButtonQuaternarySecondary
           numberOfLines={2}

@@ -8,6 +8,7 @@ import { env } from 'libs/environment'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring, MonitoringError } from 'libs/monitoring'
+import { FetchError } from 'libs/monitoring/errors'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -111,7 +112,14 @@ describe('<SuspensionChoice/>', () => {
       expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
         1,
         'Can’t suspend account for suspicious login ; reason: "invalid json response body at https://localhost/native/v1/account/suspend_for_suspicious_login reason: Unexpected end of JSON input"',
-        { level: 'info' }
+        {
+          level: 'info',
+          extra: {
+            error: new FetchError(
+              'invalid json response body at https://localhost/native/v1/account/suspend_for_suspicious_login reason: Unexpected end of JSON input'
+            ),
+          },
+        }
       )
     })
   })

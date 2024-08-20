@@ -5,7 +5,7 @@ import Share, { Social } from 'react-native-share'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { eventMonitoring } from 'libs/monitoring'
 import { Network } from 'libs/share/types'
-import { render, screen, act, fireEvent } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { InstalledMessagingApps } from './InstalledMessagingApps'
 
@@ -26,7 +26,7 @@ describe('<InstalledMessagingApps />', () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
     render(<InstalledMessagingApps {...props} />)
 
-    expect(await screen.findByText(`Envoyer sur ${[Network.instagram]}`)).toBeOnTheScreen()
+    expect(await screen.findByText(`Envoyer sur ${Network.instagram}`)).toBeOnTheScreen()
   })
 
   it('should hide social medium when not installed', async () => {
@@ -34,7 +34,7 @@ describe('<InstalledMessagingApps />', () => {
     render(<InstalledMessagingApps {...props} />)
     await act(async () => {})
 
-    expect(screen.queryByText(`Envoyer sur ${[Network.instagram]}`)).not.toBeOnTheScreen()
+    expect(screen.queryByText(`Envoyer sur ${Network.instagram}`)).not.toBeOnTheScreen()
   })
 
   it('should not display more than 3 social media apps', async () => {
@@ -54,7 +54,7 @@ describe('<InstalledMessagingApps />', () => {
     render(<InstalledMessagingApps {...props} />)
 
     await act(async () => {
-      fireEvent.press(await screen.findByText(`Envoyer sur ${[Network.instagram]}`))
+      fireEvent.press(await screen.findByText(`Envoyer sur ${Network.instagram}`))
     })
 
     expect(mockShareSingle).toHaveBeenCalledWith({
@@ -72,7 +72,7 @@ describe('<InstalledMessagingApps />', () => {
     render(<InstalledMessagingApps {...props} />)
 
     await act(async () => {
-      fireEvent.press(await screen.findByText(`Envoyer sur ${[Network.whatsapp]}`))
+      fireEvent.press(await screen.findByText(`Envoyer sur ${Network.whatsapp}`))
     })
 
     expect(mockShareSingle).toHaveBeenCalledWith({
@@ -88,7 +88,7 @@ describe('<InstalledMessagingApps />', () => {
     render(<InstalledMessagingApps {...props} />)
 
     await act(async () => {
-      fireEvent.press(await screen.findByText(`Envoyer sur ${[Network.instagram]}`))
+      fireEvent.press(await screen.findByText(`Envoyer sur ${Network.instagram}`))
     })
 
     expect(logShareMock).toHaveBeenCalledWith(Social.Instagram)
@@ -100,7 +100,10 @@ describe('<InstalledMessagingApps />', () => {
     render(<InstalledMessagingApps {...props} />)
     await act(async () => {})
 
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(`Installed apps: ${error}`)
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+      `Installed apps: ${error.message}`,
+      { extra: { error } }
+    )
   })
 
   it('should log to sentry when an error occurs when clicking on messaging app', async () => {
@@ -110,10 +113,13 @@ describe('<InstalledMessagingApps />', () => {
     render(<InstalledMessagingApps {...props} />)
 
     await act(async () => {
-      const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
+      const socialMediumButton = await screen.findByText(`Envoyer sur ${Network.instagram}`)
       fireEvent.press(socialMediumButton)
     })
 
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith(`MessagingApp click: ${error}`)
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+      `MessagingApp click: ${error.message}`,
+      { extra: { error } }
+    )
   })
 })

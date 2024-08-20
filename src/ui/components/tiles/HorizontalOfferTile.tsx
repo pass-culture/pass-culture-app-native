@@ -107,7 +107,7 @@ export const HorizontalOfferTile = ({
               ellipsizeMode="tail"
               numberOfLines={1}
               testID="native-category-value"
-              key={`${subtitle}_${index}`}>
+              key={subtitle ? `${subtitle}_${index}` : index}>
               {subtitle}
             </Body>
           ))}

@@ -3,7 +3,13 @@ import { EmailProvider } from './useContactSupportForDeletionProfile'
 export const webEmailProvider = (): EmailProvider => {
   return {
     requestSendEmail: async ({ to, subject, body }) => {
-      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`
+      let mailtoLink = `mailto:${to}?subject=${subject}`
+
+      if (body) {
+        mailtoLink += `&body=${body}`
+      }
+
+      window.location.href = mailtoLink
     },
   }
 }

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Social } from 'react-native-share'
 
 import { getInstalledApps } from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { MessagingAppButton } from 'features/share/components/MessagingApps/MessagingAppButton'
 import { eventMonitoring } from 'libs/monitoring'
 import { Network, ShareContent } from 'libs/share/types'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 type Props = {
   shareContent: ShareContent
@@ -17,7 +18,10 @@ export const InstalledMessagingApps = ({ shareContent, messagingAppAnalytics }: 
   useEffect(() => {
     getInstalledApps()
       .then(setInstalledApps)
-      .catch((e) => eventMonitoring.captureException(`Installed apps: ${e}`))
+      .catch((error) => {
+        const errorMessage = getErrorMessage(error)
+        eventMonitoring.captureException(`Installed apps: ${errorMessage}`, { extra: { error } })
+      })
   }, [])
 
   return (

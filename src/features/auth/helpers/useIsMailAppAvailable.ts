@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Linking, Platform } from 'react-native'
 
 import { eventMonitoring } from 'libs/monitoring'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export const useIsMailAppAvailable = (): boolean => {
   const [isMailAppAvailable, setIsMailAppAvailable] = useState<boolean>(Platform.OS === 'android')
@@ -18,7 +19,10 @@ export const useIsMailAppAvailable = (): boolean => {
           }
         }
       } catch (error) {
-        eventMonitoring.captureException(`Error checking mail app availability: ${error}`)
+        const errorMessage = getErrorMessage(error)
+        eventMonitoring.captureException(`Error checking mail app availability: ${errorMessage}`, {
+          extra: { error },
+        })
       }
     }
 

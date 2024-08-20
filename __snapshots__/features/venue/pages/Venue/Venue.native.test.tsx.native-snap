@@ -3940,7 +3940,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                             },
                           ]
                         }
-                        testID="caption-undefined"
                       >
                         Envoyer sur
 Instagram
@@ -4060,7 +4059,6 @@ Instagram
                             },
                           ]
                         }
-                        testID="caption-undefined"
                       >
                         Envoyer sur
 WhatsApp
@@ -4180,7 +4178,6 @@ WhatsApp
                             },
                           ]
                         }
-                        testID="caption-undefined"
                       >
                         Envoyer sur
 iMessage
@@ -4316,7 +4313,6 @@ iMessage
                             },
                           ]
                         }
-                        testID="caption-undefined"
                       >
                         Plus
 d’options
@@ -8145,7 +8141,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                             },
                           ]
                         }
-                        testID="caption-undefined"
                       >
                         Envoyer sur
 Instagram
@@ -8265,7 +8260,6 @@ Instagram
                             },
                           ]
                         }
-                        testID="caption-undefined"
                       >
                         Envoyer sur
 WhatsApp
@@ -8385,7 +8379,6 @@ WhatsApp
                             },
                           ]
                         }
-                        testID="caption-undefined"
                       >
                         Envoyer sur
 iMessage
@@ -8521,7 +8514,6 @@ iMessage
                             },
                           ]
                         }
-                        testID="caption-undefined"
                       >
                         Plus
 d’options
