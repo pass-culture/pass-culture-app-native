@@ -9,7 +9,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { InfoTab } from './InfoTab'
 
 type TabLayoutProps<TabKeyType extends string> = {
-  tabPanels: Record<TabKeyType, JSX.Element | null>
+  tabPanels: Record<TabKeyType, React.JSX.Element | null>
   onTabChange?: Partial<Record<TabKeyType, () => void>>
   tabs: { key: TabKeyType; Icon?: React.FC<AccessibleIcon> }[]
   defaultTab: TabKeyType

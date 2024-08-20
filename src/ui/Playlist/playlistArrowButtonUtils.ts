@@ -16,7 +16,7 @@ type ScrollButtonPropStyle = {
 } & HorizontalAlignPropStyle
 
 export type ScrollButtonForNotTouchDeviceProps = {
-  children?: JSX.Element
+  children?: React.JSX.Element
   onPress?: () => void
 } & ScrollButtonPropStyle
 
