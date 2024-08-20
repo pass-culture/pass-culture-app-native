@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -o errexit -o nounset -o pipefail
 
-SSL_CERT_FILE='/Library/Application Support/Netskope/STAgent/data/nscacert.pem'
+SSL_CERT_FILE="$(ls '/Library/Application Support'/*/*/data/*cacert.pem)"
 
 if [ -f "$SSL_CERT_FILE" ]; then
 	export SSL_CERT_FILE="$SSL_CERT_FILE"

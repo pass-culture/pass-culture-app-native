@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -o errexit -o nounset -o pipefail
 
-CERTIFICATE_PATH='/Library/Application Support/Netskope/STAgent/data/nscacert.pem'
+CERTIFICATE_PATH="$(ls '/Library/Application Support'/*/*/data/*cacert.pem)"
 NIX_CONF="/etc/nix/nix.conf"
 
 is_nix_using_certificate() {
