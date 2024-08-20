@@ -40,7 +40,10 @@ export const useSignupRecaptcha = ({
       setIsDoingReCaptchaChallenge(false)
       setErrorMessage('Un problème est survenu pendant l’inscription, réessaie plus tard.')
       if (errorCode !== 'ReCaptchaNetworkError') {
-        captureMonitoringError(`${errorCode} ${error ?? ''}`, 'AcceptCguOnReCaptchaError')
+        captureMonitoringError(
+          `${errorCode} ${error ?? 'EMPTY_ERROR'}`,
+          'AcceptCguOnReCaptchaError'
+        )
       }
     },
     [setErrorMessage]

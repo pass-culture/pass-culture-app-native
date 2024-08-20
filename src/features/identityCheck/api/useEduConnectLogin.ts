@@ -9,6 +9,11 @@ export function useEduConnectLogin() {
     try {
       const accessToken = (await eduConnectClient.getAccessToken()) ?? ''
 
+      if (accessToken === '') {
+        setError(new Error('Failed to get access token'))
+        return
+      }
+
       const response = await fetch(`${eduConnectClient.getLoginUrl()}?redirect=false`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
