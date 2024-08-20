@@ -17,6 +17,8 @@ import {
   UseRouteType,
 } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSafeState } from 'libs/hooks'
 import { captureMonitoringError } from 'libs/monitoring'
 import { ReCaptchaError, ReCaptchaInternalError } from 'libs/recaptcha/errors'
@@ -45,6 +47,7 @@ type Props = {
 }
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
+  const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
   const { data: settings } = useSettingsContext()
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -235,12 +238,17 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             onPress={handleSubmit(onSubmit)}
             disabled={shouldDisableLoginButton}
           />
-
-          <Spacer.Column numberOfSpaces={4} />
-          <StyledSeparatorWithText label="ou" />
-          <Spacer.Column numberOfSpaces={4} />
-          <SSOButtonBase type="login" onSuccess={signIn} />
-          <Spacer.Column numberOfSpaces={10} />
+          {enableGoogleSSO ? (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={4} />
+              <StyledSeparatorWithText label="ou" />
+              <Spacer.Column numberOfSpaces={4} />
+              <SSOButtonBase type="login" onSuccess={signIn} />
+              <Spacer.Column numberOfSpaces={10} />
+            </React.Fragment>
+          ) : (
+            <Spacer.Column numberOfSpaces={8} />
+          )}
         </Form.MaxWidth>
         <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
       </SecondaryPageWithBlurHeader>

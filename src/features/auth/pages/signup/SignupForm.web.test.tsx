@@ -5,6 +5,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { EmailValidationRemainingResendsResponse, OauthStateResponse } from 'api/gen'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment/fixtures'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -24,6 +25,8 @@ jest.mock('uuid', () => {
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')

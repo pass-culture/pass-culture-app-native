@@ -5,6 +5,7 @@ import { OauthStateResponse } from 'api/gen'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -18,6 +19,8 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),
 }))
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const defaultProps = {
   previousSignupData: {
@@ -54,12 +57,10 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<SetEmail />', () => {
-  it('should disable validate button when email input is not filled', async () => {
+  it('should disable validate button when email input is not filled', () => {
     renderSetEmail()
 
     const button = screen.getByText('Continuer')
-
-    await act(() => {})
 
     expect(button).toBeDisabled()
   })
@@ -255,10 +256,22 @@ describe('<SetEmail />', () => {
   })
 
   describe('SSO', () => {
-    it('should display SSO button', async () => {
+    afterEach(() => {
+      useFeatureFlagSpy.mockReturnValue(false)
+    })
+
+    it('should display SSO button when FF is enabled', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+
       renderSetEmail()
 
       expect(await screen.findByTestId('S’inscrire avec Google')).toBeOnTheScreen()
+    })
+
+    it('should not display SSO button when FF is disabled', () => {
+      renderSetEmail()
+
+      expect(screen.queryByTestId('S’inscrire avec Google')).not.toBeOnTheScreen()
     })
 
     it('should go to next step when clicking SSO button and account does not already exist', async () => {
@@ -273,6 +286,9 @@ describe('<SetEmail />', () => {
           },
         },
       })
+
+      useFeatureFlagSpy.mockReturnValueOnce(true) // first call in SetEmail
+      useFeatureFlagSpy.mockReturnValueOnce(true) // second call in useOAuthState
 
       renderSetEmail()
 
@@ -298,6 +314,9 @@ describe('<SetEmail />', () => {
           },
         },
       })
+
+      useFeatureFlagSpy.mockReturnValueOnce(true) // first call in SetEmail
+      useFeatureFlagSpy.mockReturnValueOnce(true) // second call in useOAuthState
 
       renderSetEmail()
 

@@ -20,6 +20,7 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { eventMonitoring } from 'libs/monitoring'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -30,6 +31,8 @@ import { SignupForm } from './SignupForm'
 jest.mock('libs/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('libs/network/NetInfoWrapper')
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
@@ -73,11 +76,6 @@ describe('Signup Form', () => {
       }
     )
     useRoute.mockReturnValue({ params: { from: StepperOrigin.HOME } })
-
-    mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
-      responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
-      requestOptions: { persist: true },
-    })
   })
 
   it.each`
@@ -91,8 +89,6 @@ describe('Signup Form', () => {
     mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
     renderSignupForm()
 
-    await act(() => {})
-
     await screen.findByText('Inscription')
 
     expect(screen).toMatchSnapshot()
@@ -101,12 +97,9 @@ describe('Signup Form', () => {
   it('should have accessibility label indicating current step and total steps', async () => {
     renderSignupForm()
 
-    await act(() => {})
-    await screen.findByText('Inscription')
+    const step = await screen.findByText('Étape 1 sur 5', { includeHiddenElements: true })
 
-    expect(
-      await screen.findByText('Étape 1 sur 5', { includeHiddenElements: true })
-    ).toBeOnTheScreen()
+    expect(step).toBeOnTheScreen()
   })
 
   describe('Quit button', () => {
@@ -116,9 +109,8 @@ describe('Signup Form', () => {
       await screen.findByText('Crée-toi un compte')
 
       const goBackButton = screen.queryByText('Quitter')
-      await act(() => {
-        expect(goBackButton).not.toBeOnTheScreen()
-      })
+
+      expect(goBackButton).not.toBeOnTheScreen()
     })
 
     it('should open quit modal when pressing quit button on second step', async () => {
@@ -176,7 +168,6 @@ describe('Signup Form', () => {
   describe('Go back button', () => {
     it('should call goBack() when left icon is pressed from first step', async () => {
       renderSignupForm()
-      await screen.findByText('Inscription')
 
       const goBackButton = await screen.findByTestId('Revenir en arrière')
       fireEvent.press(goBackButton)
@@ -471,6 +462,17 @@ describe('Signup Form', () => {
       email: 'user@gmail.com',
       general: [],
     }
+
+    beforeEach(() => {
+      mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
+        responseOptions: { data: { oauthStateToken: 'oauth_state_token' } },
+        requestOptions: { persist: true },
+      })
+    })
+
+    beforeAll(() => useFeatureFlagSpy.mockReturnValue(true))
+
+    afterAll(() => useFeatureFlagSpy.mockReturnValue(false))
 
     it('should sign in when sso button is clicked and sso account already exists', async () => {
       getModelSpy.mockReturnValueOnce('iPhone 13')

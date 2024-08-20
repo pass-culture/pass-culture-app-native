@@ -11,6 +11,8 @@ import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEm
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CheckboxController } from 'shared/forms/controllers/CheckboxController'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -36,6 +38,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   const { showErrorSnackBar } = useSnackBarContext()
 
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
+  const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
   const theme = useTheme()
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
@@ -105,11 +108,17 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         isLoading={false}
         disabled={watch('email').trim() === ''}
       />
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledSeparatorWithText label="ou" />
-      <Spacer.Column numberOfSpaces={4} />
-      <SSOButton type="signup" onSignInFailure={onSSOSignInFailure} />
-      <Spacer.Column numberOfSpaces={10} />
+      {enableGoogleSSO ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <StyledSeparatorWithText label="ou" />
+          <Spacer.Column numberOfSpaces={4} />
+          <SSOButton type="signup" onSignInFailure={onSSOSignInFailure} />
+          <Spacer.Column numberOfSpaces={10} />
+        </React.Fragment>
+      ) : (
+        <Spacer.Column numberOfSpaces={8} />
+      )}
       <AuthenticationButton
         type="login"
         onAdditionalPress={onLogAnalytics}

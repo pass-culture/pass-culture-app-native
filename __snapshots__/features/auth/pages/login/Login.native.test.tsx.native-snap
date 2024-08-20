@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Login/> should render correctly 1`] = `
+exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
 [
   <View
     accessibilityRole="header"
