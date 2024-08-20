@@ -228,14 +228,14 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
         {
           "analyticsReason": "hackedMailBox",
           "navigateTo": {
-            "screen": "ConfirmDeleteProfile",
+            "screen": "DeleteProfileEmailHacked",
           },
           "wording": "Ma boite mail a été piratée",
         },
         {
           "analyticsReason": "hackedAccount",
           "navigateTo": {
-            "screen": "ConfirmDeleteProfile",
+            "screen": "DeleteProfileAccountHacked",
           },
           "wording": "Je pense que quelqu’un d’autre a accès à mon compte",
         },

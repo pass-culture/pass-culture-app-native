@@ -212,6 +212,8 @@ export type RootStackParamList = {
   ConfirmChangeEmail: { token: string; expiration_timestamp: number }
   DeleteProfileReason: undefined
   DeleteProfileContactSupport: undefined
+  DeleteProfileEmailHacked: undefined
+  DeleteProfileAccountHacked: undefined
   ConfirmDeleteProfile: undefined
   BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
   BookingDetails: { id: number }
