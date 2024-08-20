@@ -12,7 +12,7 @@ import { Spacer, Typo } from 'ui/theme'
 import { OpeningHours } from '../OpeningHours/OpeningHours'
 
 type Props = { venue: VenueResponse }
-type Section = { title: string; body: JSX.Element; isDisplayed: boolean }
+type Section = { title: string; body: React.JSX.Element; isDisplayed: boolean }
 
 export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
   const sections: Section[] = [
@@ -81,7 +81,7 @@ const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const Section: FunctionComponent<{ title: string; children?: JSX.Element }> = ({
+const Section: FunctionComponent<{ title: string; children?: React.JSX.Element }> = ({
   title,
   children,
 }) => (

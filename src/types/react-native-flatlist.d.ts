@@ -5,7 +5,7 @@ declare module 'react-native' {
     /**
      * react-native-web support of Ul>li and Ol>li (See PC-17828)
      */
-    listAs?: 'ul' | 'ol' | (() => JSX.Element)
-    itemAs?: 'li' | (() => JSX.Element)
+    listAs?: 'ul' | 'ol' | (() => React.JSX.Element)
+    itemAs?: 'li' | (() => React.JSX.Element)
   }
 }
