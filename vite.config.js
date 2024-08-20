@@ -2,6 +2,8 @@ import { defineConfig, loadEnv, transformWithEsbuild } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 import { createHtmlPlugin } from 'vite-plugin-html'
+import { sentryVitePlugin } from '@sentry/vite-plugin'
+import legacy from '@vitejs/plugin-legacy'
 
 const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
 const allExtensions = [
@@ -87,6 +89,33 @@ export default ({ mode }) => {
               },
             },
           ],
+        },
+      }),
+      legacy({
+        targets: ['defaults', 'not IE 11'],
+      }),
+      // Put the Sentry vite plugin after all other plugins
+      sentryVitePlugin({
+        url: 'https://sentry.passculture.team/',
+        org: 'sentry',
+        project: 'application-native',
+        authToken: env.SENTRY_AUTH_TOKEN, // locally from .env.local, otherwise will come from CI
+        release: {
+          finalize: env.ENV !== 'testing',
+          cleanArtifacts: false,
+          name:
+            env.ENV === 'testing'
+              ? `${packageJson.version}-web-${env.COMMIT_HASH}`
+              : `${packageJson.version}-web`,
+          dist:
+            env.ENV === 'testing'
+              ? `${packageJson.build}-web-${env.COMMIT_HASH}`
+              : `${packageJson.build}-web`,
+          deploy: {
+            env: isDevMode ? 'development' : env.ENV,
+            name: isDevMode ? 'development' : env.ENV,
+            url: env.API_BASE_URL,
+          },
         },
       }),
     ],
