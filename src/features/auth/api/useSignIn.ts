@@ -17,6 +17,7 @@ import {
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
 import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
+import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 import { useShouldShowCulturalSurvey } from 'shared/culturalSurvey/useShouldShowCulturalSurvey'
 
@@ -93,8 +94,18 @@ const useHandleSigninSuccess = (
         if (doNotNavigateOnSigninSuccess) {
           return
         }
-        if (accountState !== AccountState.ACTIVE) {
+        const statesThatRedirectToSuspensionScreen = [
+          AccountState.INACTIVE,
+          AccountState.SUSPENDED,
+          AccountState.SUSPENDED_UPON_USER_REQUEST,
+          AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER,
+        ]
+        if (statesThatRedirectToSuspensionScreen.includes(accountState)) {
           return navigate('SuspensionScreen')
+        }
+        if (accountState !== AccountState.ACTIVE) {
+          eventMonitoring.captureException(`Unexpected account state: ${accountState}`)
+          throw new Error(`Unexpected account state: ${accountState}`)
         }
 
         const user = await api.getNativeV1Me()

@@ -26,7 +26,7 @@ import { analytics } from 'libs/analytics'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
@@ -80,7 +80,7 @@ describe('<Login/>', () => {
     mockServer.getApi<OauthStateResponse>('/v1/oauth/state', {
       oauthStateToken: 'oauth_state_token',
     })
-    simulateSignin200()
+    simulateSignin200(AccountState.ACTIVE)
     mockMeApiCall({
       needsToFillCulturalSurvey: false,
       showEligibleCard: false,
@@ -327,6 +327,18 @@ describe('<Login/>', () => {
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
+  })
+
+  it('should log WHEN signin is successful but no account status (shouldn’t happen)', async () => {
+    simulateSignin200(undefined)
+    renderLogin()
+
+    await fillInputs()
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+      'Unexpected account state: undefined'
+    )
   })
 
   it('should show email error message WHEN invalid e-mail format', async () => {
@@ -749,8 +761,12 @@ function mockMeApiCall(response: UserProfileResponse) {
   mockServer.getApi<UserProfileResponse>('/v1/me', response)
 }
 
-function simulateSignin200(accountState = AccountState.ACTIVE) {
-  mockServer.postApi<SigninResponse>('/v1/signin', {
+type SigninResponseWithOptionalAccountState = Omit<SigninResponse, 'accountState'> & {
+  accountState?: AccountState
+}
+
+function simulateSignin200(accountState: AccountState | undefined) {
+  mockServer.postApi<SigninResponseWithOptionalAccountState>('/v1/signin', {
     accessToken: 'accessToken',
     refreshToken: 'refreshToken',
     accountState,
